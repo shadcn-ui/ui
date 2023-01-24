@@ -54,6 +54,7 @@ export function DocsSidebarNavItems({
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
+            onClick={() => window.scrollTo(0, 0)}
           >
             {item.title}
           </Link>
