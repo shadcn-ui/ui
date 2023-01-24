@@ -35,7 +35,7 @@ npx create-next-app -e https://github.com/shadcn/next-template
 
 ### Tailwind CSS Features
 
-- Class merging with `taiwind-merge`
+- Class merging with `tailwind-merge`
 - Animation with `tailwindcss-animate`
 - Conditional classes with `clsx`
 - Variants with `class-variance-authority`
