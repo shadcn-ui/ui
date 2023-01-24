@@ -19,7 +19,7 @@ export function ThemeToggle() {
     setMounted(true)
   }, [])
 
-  if (mounted)
+  if (!mounted)
     return (
       <Button variant="ghost" size="sm">
         <Icons.loadingSpinner className="h-6 w-6 animate-spin hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100" />
