@@ -1,0 +1,138 @@
+---
+title: Installation
+description: How to install dependencies and structure your app.
+---
+
+## New Project
+
+Run the following command to create a new Next.js project using the `next-template` template:
+
+```bash
+npx create-next-app -e https://github.com/shadcn/next-template
+```
+
+## Existing Project
+
+The first step is to install Tailwind CSS. You can do this by running the following command:
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+```
+
+Follow the official guide to [install Tailwind CSS](https://tailwindcss.com/docs/installation) in your project.
+
+### Add dependencies
+
+Next add the following dependencies:
+
+```bash
+npm install tailwindcss-animate class-variance-authority clsx tailwind-merge lucide-react
+```
+
+See this [tweet](https://twitter.com/shadcn/status/1614692419039105024) to learn more about I use Tailwind CSS with Next.js.
+
+### Path Aliases
+
+I use the `@` alias to make it easier to import components. This is how I configure it in `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+### Configure tailwind.config.js
+
+Here's what my `tailwind.config.js` file looks like:
+
+```js
+const { fontFamily } = require("tailwindcss/defaultTheme")
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ["class", '[data-theme="dark"]'],
+  content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+}
+```
+
+### Icons
+
+I use icons from [Lucide](https://lucide.dev). You can use any icon library you want.
+
+### Add a cn helper
+
+I use a `cn` helper to make it easier to conditionally add Tailwind CSS classes. Here's how I define it in `lib/utils.ts`:
+
+```ts
+import { ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+That's it. You can now copy and paste components into `components/ui`. Then use them into your project.
+
+## App structure
+
+And here's how I structure my app. I use Next.js, but this is not required.
+
+```txt showLineNumbers {6-10,15-16}
+.
+├── app
+│   ├── layout.tsx
+│   └── page.tsx
+├── components
+│   ├── ui
+│   │   ├── alert-dialog.tsx
+│   │   ├── button.tsx
+│   │   ├── dropdown-menu.tsx
+│   │   └── ...
+│   ├── main-nav.tsx
+│   ├── page-header.tsx
+│   └── ...
+├── hooks
+├── lib
+│   └── utils.ts
+├── pages
+├── styles
+│   └── globals.css
+├── next.config.js
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+└── tsconfig.json
+```
+
+- I place the UI components in the `components/ui` folder.
+- The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
+- The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
+- The `styles` folder contains the global CSS.

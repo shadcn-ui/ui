@@ -1,0 +1,48 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/tooltip
+  api: https://www.radix-ui.com/docs/primitives/components/tooltip#api-reference
+---
+
+<ComponentExample src="/components/examples/tooltip/demo.tsx">
+  <TooltipDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-tooltip` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-tooltip
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/tooltip.tsx" />
+
+<Callout>
+
+This is the `<Tooltip />` primitive. You can place it in a file at `components/ui/tooltip.tsx`.
+
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+```
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>Hover</TooltipTrigger>
+  <TooltipContent>
+    <p>Add to library</p>
+  </TooltipContent>
+</Tooltip>
+```

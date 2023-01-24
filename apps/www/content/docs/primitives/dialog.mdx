@@ -1,0 +1,57 @@
+---
+title: Dialog
+description: A modal dialog that interrupts the user with important content and expects a response.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/dialog
+  api: https://www.radix-ui.com/docs/primitives/components/dialog#api-reference
+---
+
+<ComponentExample src="/components/examples/dialog/demo.tsx">
+  <DialogDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-dialog` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-dialog
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/dialog.tsx" />
+
+<Callout>
+
+This is the `<Dialog />` primitive. You can place it in a file at `components/ui/dialog.tsx`.
+
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+```
+
+```tsx
+<Dialog>
+  <DialogTrigger>Open</DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Are you sure absolutely sure?</DialogTitle>
+      <DialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```

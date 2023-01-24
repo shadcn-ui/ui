@@ -1,0 +1,38 @@
+---
+title: Label
+description: Renders an accessible label associated with controls.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/label
+  api: https://www.radix-ui.com/docs/primitives/components/label#api-reference
+---
+
+<ComponentExample src="/components/examples/label/demo.tsx" extractClassname>
+  <LabelDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-label` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-label
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/label.tsx" />
+
+<Callout>
+  This is the `<Label />` primitive. You can place it in a file at
+  `components/ui/label.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import { Label } from "@/components/ui/label"
+```
+
+```tsx
+<Label htmlFor="email">Your email address</Label>
+```

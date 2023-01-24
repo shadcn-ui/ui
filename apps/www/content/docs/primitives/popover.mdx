@@ -1,0 +1,45 @@
+---
+title: Popover
+description: Displays rich content in a portal, triggered by a button.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/popover
+  api: https://www.radix-ui.com/docs/primitives/components/popover#api-reference
+---
+
+<ComponentExample src="/components/examples/popover/demo.tsx">
+  <PopoverDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-popover` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-popover
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/popover.tsx" />
+
+<Callout>
+  This is the `<Popover />` primitive. You can place it in a file at
+  `components/ui/popover.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+```
+
+```tsx
+<Popover>
+  <PopoverTrigger>Open</PopoverTrigger>
+  <PopoverContent>Place content for the popover here.</PopoverContent>
+</Popover>
+```

@@ -1,0 +1,39 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/progress
+  api: https://www.radix-ui.com/docs/primitives/components/progress#api-reference
+---
+
+<ComponentExample src="/components/examples/progress/demo.tsx">
+  <ProgressDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-progress` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-progress
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/progress.tsx" />
+
+<Callout>
+
+This is the `<Progress />` primitive. You can place it in a file at `components/ui/progress.tsx`.
+
+</Callout>
+
+## Usage
+
+```tsx
+import { Progress } from "@/components/ui/progress"
+```
+
+```tsx
+<Progress value={33} />
+```

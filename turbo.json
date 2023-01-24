@@ -1,0 +1,26 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["NODE_ENV"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "env": [
+        "NEXT_PUBLIC_APP_URL",
+        "UPSTASH_REDIS_REST_URL",
+        "UPSTASH_REDIS_REST_TOKEN",
+        "LOGSNAG_TOKEN"
+      ],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "preview": {
+      "env": ["NEXT_PUBLIC_APP_URL"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    }
+  }
+}

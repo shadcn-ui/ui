@@ -1,0 +1,60 @@
+---
+title: Menubar
+description: A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/menubar
+  api: https://www.radix-ui.com/docs/primitives/components/menubar#api-reference
+---
+
+<ComponentExample src="/components/examples/menubar/demo.tsx">
+  <MenubarDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-menubar` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-menubar
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/menubar.tsx" />
+
+<Callout>
+  This is the `<Menubar />` primitive. You can place it in a file at
+  `components/ui/menubar.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
+```
+
+```tsx
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>
+        New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+      </MenubarItem>
+      <MenubarItem>New Window</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Share</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Print</MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```

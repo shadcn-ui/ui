@@ -1,0 +1,54 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/tabs
+  api: https://www.radix-ui.com/docs/primitives/components/tabs#api-reference
+---
+
+<ComponentExample src="/components/examples/tabs/demo.tsx">
+  <TabsDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-tabs` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-tabs
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/tabs.tsx" />
+
+<Callout>
+
+This is the `<Tabs />` primitive. You can place it in a file at `components/ui/tabs.tsx`.
+
+</Callout>
+
+## Usage
+
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+```
+
+```tsx
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">
+    <p className="text-sm text-slate-500 dark:text-slate-400">
+      Make changes to your account here. Click save when you&apos;re done.
+    </p>
+  </TabsContent>
+  <TabsContent value="password">
+    <p className="text-sm text-slate-500 dark:text-slate-400">
+      Change your password here. After saving, you&apos;ll be logged out.
+    </p>
+  </TabsContent>
+</Tabs>
+```

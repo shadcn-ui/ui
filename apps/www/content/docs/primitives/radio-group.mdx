@@ -1,0 +1,48 @@
+---
+title: Radio Group
+description: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/radio-group
+  api: https://www.radix-ui.com/docs/primitives/components/radio-group#api-reference
+---
+
+<ComponentExample src="/components/examples/radio-group/demo.tsx">
+  <RadioGroupDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-radio-group` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-radio-group
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/radio-group.tsx" />
+
+<Callout>
+  This is the `<RadioGroup />` primitive. You can place it in a file at
+  `components/ui/radio-group.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+```
+
+```tsx
+<RadioGroup defaultValue="option-one">
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-one" id="option-one" />
+    <Label htmlFor="option-one">Option One</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-two" id="option-two" />
+    <Label htmlFor="option-two">Option Two</Label>
+  </div>
+</RadioGroup>
+```

@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "rules": {
+    "react/no-unescaped-entities": "off"
+  }
+}

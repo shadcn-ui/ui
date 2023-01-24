@@ -1,0 +1,48 @@
+---
+title: Scroll-area
+description: Visually or semantically separates content.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/scroll-area
+  api: https://www.radix-ui.com/docs/primitives/components/scroll-area#api-reference
+---
+
+<ComponentExample
+  src="/components/examples/scroll-area/demo.tsx"
+  extractClassname
+>
+  <ScrollAreaDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-scroll-area` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-scroll-area
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/scroll-area.tsx" />
+
+<Callout>
+  This is the `<ScrollArea />` primitive. You can place it in a file at
+  `components/ui/scroll-area.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import { ScrollArea } from "@/components/ui/scroll-area"
+```
+
+```tsx
+<ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
+  Jokester began sneaking into the castle in the middle of the night and leaving
+  jokes all over the place: under the king's pillow, in his soup, even in the
+  royal toilet. The king was furious, but he couldn't seem to stop Jokester. And
+  then, one day, the people of the kingdom discovered that the jokes left by
+  Jokester were so funny that they couldn't help but laugh. And once they
+  started laughing, they couldn't stop.
+</ScrollArea>
+```

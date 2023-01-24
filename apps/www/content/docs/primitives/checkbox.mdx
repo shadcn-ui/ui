@@ -1,0 +1,52 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked and not checked.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/checkbox
+  api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
+---
+
+<ComponentExample src="/components/examples/checkbox/demo.tsx">
+  <CheckboxDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-checkbox` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-checkbox
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/checkbox.tsx" />
+
+<Callout>
+  This is the `<Checkbox />` primitive. You can place it in a file at
+  `components/ui/checkbox.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox"
+```
+
+```tsx
+<Checkbox />
+```
+
+## Examples
+
+### With text
+
+<ComponentExample src="/components/examples/checkbox/with-text.tsx">
+  <CheckboxWithText />
+</ComponentExample>
+
+### Disabled
+
+<ComponentExample src="/components/examples/checkbox/disabled.tsx">
+  <CheckboxDisabled />
+</ComponentExample>

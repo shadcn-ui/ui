@@ -1,0 +1,39 @@
+---
+title: Slider
+description: An input where the user selects a value from within a given range.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/slider
+  api: https://www.radix-ui.com/docs/primitives/components/slider#api-reference
+---
+
+<ComponentExample src="/components/examples/slider/demo.tsx">
+  <SliderDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-slider` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-slider
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/slider.tsx" />
+
+<Callout>
+
+This is the `<Slider />` primitive. You can place it in a file at `components/ui/slider.tsx`.
+
+</Callout>
+
+## Usage
+
+```tsx
+import { Slider } from "@/components/ui/slider"
+```
+
+```tsx
+<Slider defaultValue={[33]} max={100} step={1} />
+```

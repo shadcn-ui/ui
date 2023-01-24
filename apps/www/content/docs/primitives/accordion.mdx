@@ -1,0 +1,64 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal an associated section of content.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/accordion
+  api: https://www.radix-ui.com/docs/primitives/components/accordion#api-reference
+---
+
+<ComponentExample src="/components/examples/accordion/demo.tsx">
+  <AccordionDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-accordion` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-accordion
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/accordion.tsx" />
+
+<Callout>
+
+This is the `<Accordion />` primitive. You can place it in a file at `components/ui/accordion.tsx`.
+
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+```
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Is it styled?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It comes with default styles that matches the other components'
+      aesthetic.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-3">
+    <AccordionTrigger>Is it animated?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It's animated by default, but you can disable it if you prefer.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```

@@ -1,0 +1,65 @@
+---
+title: Dropdown Menu
+description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/dropdown-menu
+  api: https://www.radix-ui.com/docs/primitives/components/dropdown-menu#api-reference
+---
+
+<ComponentExample src="/components/examples/dropdown-menu/demo.tsx">
+  <DropdownMenuDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-dropdown-menu` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-dropdown-menu
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/dropdown-menu.tsx" />
+
+<Callout>
+  This is the `<DropdownMenu />` primitive. You can place it in a file at
+  `components/ui/dropdown-menu.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+```
+
+```tsx
+<DropdownMenu>
+  <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuItem>Profile</DropdownMenuItem>
+    <DropdownMenuItem>Billing</DropdownMenuItem>
+    <DropdownMenuItem>Team</DropdownMenuItem>
+    <DropdownMenuItem>Subscription</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+## Examples
+
+### Checkboxes
+
+<ComponentExample src="/components/examples/dropdown-menu/checkboxes.tsx">
+  <DropdownMenuCheckboxes />
+</ComponentExample>
+
+### Radio Group
+
+<ComponentExample src="/components/examples/dropdown-menu/radio-group.tsx">
+  <DropdownMenuRadioGroupDemo />
+</ComponentExample>

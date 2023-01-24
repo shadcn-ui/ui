@@ -1,0 +1,81 @@
+---
+title: "shadcn/ui"
+description: Re-usable components built using Radix UI and Tailwind CSS.
+---
+
+<Callout>
+
+This site is a work in progress. You can follow updates on Twitter [@shadcn](https://twitter.com/shadcn).
+
+</Callout>
+
+This is **NOT** a component library.
+
+It's a collection of re-usable components built using [Radix UI](https://radix-ui.com/) and [Tailwind CSS](https://tailwindcss.com/). It's a work in progress and I'm adding components as I need them.
+
+**All components are compatible with Next.js 13 (Client Components).**
+
+## FAQs
+
+### What do mean by not a component library?
+
+I mean you do not install it as a dependency. You copy and paste the code into your project and customize to your needs. The code is yours.
+
+You can also use it as a reference to build your own components.
+
+### What is this based on?
+
+The primitives are from [Radix UI](https://radix-ui.com/). I use [Tailwind CSS](https://tailwindcss.com/) for styling.
+
+Go say hi to the Radix team. They're awesome.
+
+### Why did you build this?
+
+I'm working on several open source products. I needed components that maintain a unified design style across all my products.
+
+### Is it available as an npm package?
+
+No. I have no plans to publish it as an npm package (right now).
+
+If you want to publish it to npm, you're free to do so. The code is open source.
+
+### Why copy/paste and not install as a dependency?
+
+The idea behind this is to give you ownership and control over the code, allowing you to decide how the components are constructed and styled.
+
+We start with some sensible defaults, but you can customize the components to your needs.
+
+One of the drawback of packaging the components in an npm package is that the style is coupled with the implementation.
+
+_The design of your components should be separate from their implementation._
+
+### The design looks great. Did you design this yourself?
+
+I did. But I'm not really a designer. Most of what you see here, I learned by looking at other component libraries and "copying" them.
+
+### Is it ready for production?
+
+Almost. I'm using it in production, but I'm still adding components and fixing bugs. See the roadmap on [GitHub](https://github.com/shadcn/ui).
+
+### How do I customize the colors?
+
+I use slate for everything. But you can customize the colors by editing the `tailwind.config.js` file.
+
+See the [Tailwind CSS documentation](https://tailwindcss.com/docs/customizing-colors) for more information.
+
+### Can I contribute?
+
+Of course. You can open an issue or submit a pull request on [GitHub](https://github.com/shadcn/ui).
+
+### Can I use this in my project?
+
+Yes. Free to use for personal and commercial projects. No attribution required.
+
+But hey, let me know if you do. I'd love to see what you build.
+
+## Credits
+
+- [Radix UI](https://radix-ui.com) - For the primitives.
+- [Vercel](https://vercel.com) - Where I host all my projects.
+- [Shu Ding](https://shud.in) - The typography styles is adapted from his work on Nextra.
+- [Cal](https://cal.com) - Where I copied the styles for the first component: the `Button`.

@@ -1,0 +1,52 @@
+---
+title: Hover Card
+description: For sighted users to preview content available behind a link.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/hover-card
+  api: https://www.radix-ui.com/docs/primitives/components/hover-card#api-reference
+---
+
+<ComponentExample src="/components/examples/hover-card/demo.tsx">
+  <HoverCardDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-hover-card` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-hover-card
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/hover-card.tsx" />
+
+<Callout>
+  This is the `<HoverCard />` primitive. You can place it in a file at
+  `components/ui/hover-card.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+```
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger>Hover</HoverCardTrigger>
+  <HoverCardContent>
+    <div className="space-y-2">
+      <h4 className="text-sm font-semibold">@nextjs</h4>
+      <p className="text-sm">
+        The React Framework – created and maintained by @vercel.
+      </p>
+    </div>
+  </HoverCardContent>
+</HoverCard>
+```

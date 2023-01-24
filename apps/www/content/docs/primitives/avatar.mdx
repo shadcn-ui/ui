@@ -1,0 +1,42 @@
+---
+title: Avatar
+description: An image element with a fallback for representing the user.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/avatar
+  api: https://www.radix-ui.com/docs/primitives/components/avatar#api-reference
+---
+
+<ComponentExample src="/components/examples/avatar/demo.tsx">
+  <AvatarDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-avatar` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-avatar
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/avatar.tsx" />
+
+<Callout>
+
+This is the `<Avatar />` primitive. You can place it in a file at `components/ui/avatar.tsx`.
+
+</Callout>
+
+## Usage
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+```
+
+```tsx
+<Avatar>
+  <AvatarImage src="https://github.com/shadcn.png" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+```

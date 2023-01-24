@@ -1,0 +1,54 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/select
+  api: https://www.radix-ui.com/docs/primitives/components/select#api-reference
+---
+
+<ComponentExample src="/components/examples/select/demo.tsx">
+  <SelectDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-select` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-select
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/select.tsx" />
+
+<Callout>
+
+This is the `<Select />` primitive. You can place it in a file at `components/ui/select.tsx`.
+
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+```
+
+```tsx
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Light</SelectItem>
+    <SelectItem value="dark">Dark</SelectItem>
+    <SelectItem value="system">System</SelectItem>
+  </SelectContent>
+</Select>
+```
