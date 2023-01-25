@@ -25,20 +25,18 @@ interface MainNavProps {
   items?: MainNavItem[]
   children?: React.ReactNode
 }
-
 export function MainNav({ items, children }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
-
   return (
     <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="hidden items-center space-x-2 md:flex">
-        <Icons.logo className="h-6 w-6" />
+      <Link href="/" className="items-center hidden space-x-2 lg:flex">
+        <Icons.logo className="w-6 h-6" />
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>
       </Link>
       {items?.length ? (
-        <nav className="hidden gap-6 md:flex">
+        <nav className="hidden gap-6 lg:flex">
           {items?.map(
             (item, index) =>
               item.href && (
@@ -61,9 +59,9 @@ export function MainNav({ items, children }: MainNavProps) {
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
-            className="-ml-4 text-base hover:bg-transparent focus:ring-0 md:hidden"
+            className="-ml-4 text-base hover:bg-transparent focus:ring-0 lg:hidden"
           >
-            <Icons.logo className="mr-2 h-4 w-4" />{" "}
+            <Icons.logo className="w-4 h-4 mr-2" />{" "}
             <span className="font-bold">Menu</span>
           </Button>
         </DropdownMenuTrigger>
@@ -74,7 +72,7 @@ export function MainNav({ items, children }: MainNavProps) {
         >
           <DropdownMenuLabel>
             <Link href="/" className="flex items-center">
-              <Icons.logo className="mr-2 h-4 w-4" /> {siteConfig.name}
+              <Icons.logo className="w-4 h-4 mr-2" /> {siteConfig.name}
             </Link>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
@@ -104,7 +102,7 @@ export function MainNav({ items, children }: MainNavProps) {
                   ))}
               </DropdownMenuGroup>
             ))}
-          </ScrollArea>
+          </ScrollArea>i
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
