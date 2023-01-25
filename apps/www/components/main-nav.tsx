@@ -31,14 +31,14 @@ export function MainNav({ items, children }: MainNavProps) {
 
   return (
     <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="hidden items-center space-x-2 lg:flex">
+      <Link href="/" className="hidden items-center space-x-2 md:flex">
         <Icons.logo className="h-6 w-6" />
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>
       </Link>
       {items?.length ? (
-        <nav className="hidden gap-6 lg:flex">
+        <nav className="hidden gap-6 md:flex">
           {items?.map(
             (item, index) =>
               item.href && (
@@ -61,7 +61,7 @@ export function MainNav({ items, children }: MainNavProps) {
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
-            className="-ml-4 text-base hover:bg-transparent focus:ring-0 lg:hidden"
+            className="-ml-4 text-base hover:bg-transparent focus:ring-0 md:hidden"
           >
             <Icons.logo className="mr-2 h-4 w-4" />{" "}
             <span className="font-bold">Menu</span>
