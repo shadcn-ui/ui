@@ -1,0 +1,41 @@
+import { Meta, Story } from "@storybook/addon-docs";
+
+import { Button } from "@/components/ui/button";
+import { Mail, Loader2 } from "lucide-react";
+
+<Meta title="Button" component={Button} />
+
+# Button
+
+<Story name="Default">
+  <Button>Button</Button>
+</Story>
+
+<Story name="Outline">
+  <Button variant="outline">Outline</Button>
+</Story>
+
+<Story name="Subtle">
+  <Button variant="subtle">Subtle</Button>
+</Story>
+
+<Story name="Ghost">
+  <Button variant="ghost">Ghost</Button>
+</Story>
+
+<Story name="Link">
+  <Button variant="link">Link</Button>
+</Story>
+
+<Story name="With Icon">
+  <Button>
+    <Mail className="mr-2 h-4 w-4" /> Login with Email
+  </Button>
+</Story>
+
+<Story name="Loading">
+  <Button disabled>
+    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+    Please wait
+  </Button>
+</Story>

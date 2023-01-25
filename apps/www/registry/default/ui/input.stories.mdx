@@ -1,0 +1,39 @@
+import { Meta, Story } from "@storybook/addon-docs";
+
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+
+<Meta title="Input" component={Input} />
+
+# Input
+
+<Story name="Default">
+  <Input type="email" placeholder="Email" />
+</Story>
+
+<Story name="Disabled">
+  <Input disabled type="email" placeholder="Email" />
+</Story>
+
+<Story name="With Label">
+  <div className="grid w-full max-w-sm items-center gap-1.5">
+    <Label htmlFor="email">Email</Label>
+    <Input type="email" id="email" placeholder="Email" />
+  </div>
+</Story>
+
+<Story name="With Text">
+  <div className="grid w-full max-w-sm items-center gap-1.5">
+    <Label htmlFor="email-2">Email</Label>
+    <Input type="email" id="email-2" placeholder="Email" />
+    <p className="text-sm text-slate-500">Enter your email address.</p>
+  </div>
+</Story>
+
+<Story name="With Button">
+  <div className="flex w-full max-w-sm items-center space-x-2">
+    <Input type="email" placeholder="Email" />
+    <Button type="submit">Subscribe</Button>
+  </div>
+</Story>
