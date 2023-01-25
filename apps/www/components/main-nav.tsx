@@ -25,12 +25,13 @@ interface MainNavProps {
   items?: MainNavItem[]
   children?: React.ReactNode
 }
+
 export function MainNav({ items, children }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
   return (
     <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="items-center hidden space-x-2 lg:flex">
-        <Icons.logo className="w-6 h-6" />
+      <Link href="/" className="hidden items-center space-x-2 lg:flex">
+        <Icons.logo className="h-6 w-6" />
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>
@@ -61,7 +62,7 @@ export function MainNav({ items, children }: MainNavProps) {
             variant="ghost"
             className="-ml-4 text-base hover:bg-transparent focus:ring-0 lg:hidden"
           >
-            <Icons.logo className="w-4 h-4 mr-2" />{" "}
+            <Icons.logo className="mr-2 h-4 w-4" />{" "}
             <span className="font-bold">Menu</span>
           </Button>
         </DropdownMenuTrigger>
@@ -72,7 +73,7 @@ export function MainNav({ items, children }: MainNavProps) {
         >
           <DropdownMenuLabel>
             <Link href="/" className="flex items-center">
-              <Icons.logo className="w-4 h-4 mr-2" /> {siteConfig.name}
+              <Icons.logo className="mr-2 h-4 w-4" /> {siteConfig.name}
             </Link>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
@@ -102,7 +103,7 @@ export function MainNav({ items, children }: MainNavProps) {
                   ))}
               </DropdownMenuGroup>
             ))}
-          </ScrollArea>i
+          </ScrollArea>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
