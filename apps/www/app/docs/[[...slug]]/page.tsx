@@ -37,7 +37,7 @@ export default async function DocPage({ params }: DocPageProps) {
   const toc = await getTableOfContents(doc.body.raw)
 
   return (
-    <main className="md:w-[calc(theme(screens.md)-220px)] lg:w-[calc(theme(screens.lg)-theme(spacing.16)-240px)] lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
+    <main className="relative py-6 md:w-[calc(theme(screens.md)-220px)] lg:w-[calc(theme(screens.lg)-theme(spacing.16)-240px)] lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <DocsPageHeader heading={doc.title} text={doc.description}>
           {doc.radix ? (
