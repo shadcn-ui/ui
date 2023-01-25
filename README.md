@@ -16,7 +16,21 @@ Beautifully designed components built with Radix UI and Tailwind CSS.
 - [ ] Navigation Menu
 - [ ] Figma?
 
-## Get Started
+## Storybook
+
+Storybook is supported so that you can easily select the correct component and view its properties
+
+![Storybook Preview](apps/www/public/demo/storybook.png)
+
+To open Storybook, run the following:
+
+```bash
+cd apps/www
+npm i
+npm run storybook
+```
+
+## Use in your own project
 
 Starting a new project? Check out the Next.js template.
 
@@ -32,6 +46,7 @@ npx create-next-app -e https://github.com/shadcn/next-template
 - Icons from [Lucide](https://lucide.dev)
 - Dark mode with `next-themes`
 - Automatic import sorting with `@ianvs/prettier-plugin-sort-imports`
+- Storybook support (Thanks [@XavierGeerinck](https://twitter.com/XavierGeerinck))
 
 ### Tailwind CSS Features
 
