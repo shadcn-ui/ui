@@ -26,6 +26,9 @@ import { InputWithLabel } from "@/components/examples/input/with-label"
 import { InputWithText } from "@/components/examples/input/with-text"
 import { LabelDemo } from "@/components/examples/label/demo"
 import { MenubarDemo } from "@/components/examples/menubar/demo"
+import { NavigationMenuDemo } from "@/components/examples/navigation-menu/demo"
+import { NavigationMenuSubmenus } from "@/components/examples/navigation-menu/submenus"
+import { NavigationMenuVertical } from "@/components/examples/navigation-menu/vertical"
 import { PopoverDemo } from "@/components/examples/popover/demo"
 import { ProgressDemo } from "@/components/examples/progress/demo"
 import { RadioGroupDemo } from "@/components/examples/radio-group/demo"
@@ -85,6 +88,9 @@ export const examples = {
   InputWithText,
   LabelDemo,
   MenubarDemo,
+  NavigationMenuDemo,
+  NavigationMenuSubmenus,
+  NavigationMenuVertical,
   PopoverDemo,
   ProgressDemo,
   RadioGroupDemo,
