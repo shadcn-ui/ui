@@ -105,7 +105,7 @@ const ToastViewport: React.FC<ToastPrimitives.ToastViewportProps> = ({
 }) => (
   <ToastPrimitives.Viewport
     className={cn(
-      "fixed right-0 bottom-0 z-50 flex max-h-screen w-screen flex-col items-end justify-end gap-3 p-6 md:max-w-[390px]",
+      "fixed right-0 bottom-0 z-50 flex max-h-screen w-full flex-col items-end justify-end gap-3 p-6 md:max-w-[390px]",
       className
     )}
     {...props}
