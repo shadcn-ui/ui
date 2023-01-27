@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-export const NavigationMenuRoot: React.FC<
+const NavigationMenuRoot: React.FC<
   NavigationMenuPrimitive.NavigationMenuProps
 > = ({ className, ...props }) => (
   <NavigationMenuPrimitive.Root
@@ -14,7 +14,7 @@ export const NavigationMenuRoot: React.FC<
   />
 )
 
-export const NavigationMenuList: React.FC<
+const NavigationMenuList: React.FC<
   NavigationMenuPrimitive.NavigationMenuListProps
 > = ({ className, ...props }) => (
   <NavigationMenuPrimitive.List
@@ -26,13 +26,13 @@ export const NavigationMenuList: React.FC<
   />
 )
 
-export const NavigationMenuItem = NavigationMenuPrimitive.NavigationMenuItem
+const NavigationMenuItem = NavigationMenuPrimitive.NavigationMenuItem
 
 const navigationMenuTriggerStyle = cva(
   "rounded-md py-2 px-3 font-medium leading-none hover:bg-slate-100 focus:shadow-sm focus:ring-2 focus:ring-slate-300 focus:bg-slate-100 dark:focus:bg-slate-700 dark:hover:bg-slate-700 dark:focus:ring-slate-500 outline-none w-full transition-all duration-300"
 )
 
-export const NavigationMenuTrigger: React.FC<
+const NavigationMenuTrigger: React.FC<
   NavigationMenuPrimitive.NavigationMenuTriggerProps
 > = ({ className, children, ...props }) => (
   <NavigationMenuPrimitive.Trigger
@@ -63,7 +63,7 @@ const navigationMenuLinkVariants = cva([], {
   },
 })
 
-export const NavigationMenuLink: React.FC<
+const NavigationMenuLink: React.FC<
   NavigationMenuPrimitive.NavigationMenuLinkProps &
     VariantProps<typeof navigationMenuLinkVariants>
 > = ({ className, variant, ...props }) => (
@@ -73,7 +73,7 @@ export const NavigationMenuLink: React.FC<
   />
 )
 
-export const NavigationMenuContent: React.FC<
+const NavigationMenuContent: React.FC<
   NavigationMenuPrimitive.NavigationMenuContentProps
 > = ({ className, ...props }) => (
   <NavigationMenuPrimitive.Content
@@ -88,7 +88,7 @@ export const NavigationMenuContent: React.FC<
   />
 )
 
-export const NavigationMenuIndicator: React.FC<
+const NavigationMenuIndicator: React.FC<
   NavigationMenuPrimitive.NavigationMenuIndicatorProps
 > = ({ className, ...props }) => (
   <NavigationMenuPrimitive.Indicator
@@ -102,7 +102,7 @@ export const NavigationMenuIndicator: React.FC<
   </NavigationMenuPrimitive.Indicator>
 )
 
-export const NavigationMenuViewport: React.FC<
+const NavigationMenuViewport: React.FC<
   NavigationMenuPrimitive.NavigationMenuViewportProps
 > = ({ className, ...props }) => (
   <div
@@ -119,4 +119,16 @@ export const NavigationMenuViewport: React.FC<
   </div>
 )
 
-export const NavigationMenuSub = NavigationMenuPrimitive.Sub
+const NavigationMenuSub = NavigationMenuPrimitive.Sub
+
+export {
+  NavigationMenuRoot,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuContent,
+  NavigationMenuTrigger,
+  NavigationMenuLink,
+  NavigationMenuIndicator,
+  NavigationMenuSub,
+  NavigationMenuViewport,
+}
