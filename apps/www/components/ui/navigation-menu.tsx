@@ -19,7 +19,7 @@ const NavigationMenuList: React.FC<
 > = ({ className, ...props }) => (
   <NavigationMenuPrimitive.List
     className={cn(
-      "group flex flex-1 list-none justify-center rounded-lg border border-slate-300 bg-white p-1 dark:border-slate-700 dark:bg-slate-800",
+      "group flex flex-1 list-none justify-center rounded-md border border-slate-300 bg-white p-1 dark:border-slate-700 dark:bg-slate-800",
       className
     )}
     {...props}
