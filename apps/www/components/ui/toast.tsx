@@ -58,10 +58,11 @@ const ToastDescription: React.FC<ToastPrimitives.ToastDescriptionProps> = ({
 const toastVariants = cva(
   [
     "relative w-full rounded-md border-2 px-3 py-2 shadow-md",
-    "translate-x-[var(--radix-toast-swipe-move-x)]",
     "data-[state=open]:animate-in data-[state=open]:fade-in data-[state=open]:slide-in-from-right-52",
     "data-[state=closed]:animate-out data-[state=closed]:fade-out",
-    "data-[state=end]:animate-out data-[state=end]:fade-out data-[state=end]:slide-out-to-right-52",
+    "data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)]",
+    "data-[swipe=end]:animate-out data-[swipe=end]:fade-out data-[swipe=end]:translate-x-[calc(100% + var(--radix-toast-swipe-move-x))] data-[swipe=end]:transition",
+    "data-[swipe=cancel]:translate-x-0 data[swipe=cancel]:transition data[swipe=cancel]:duration-200",
   ],
   {
     variants: {
