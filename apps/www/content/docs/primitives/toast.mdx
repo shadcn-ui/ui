@@ -1,0 +1,55 @@
+---
+title: Toast
+description: A succinct message that is displayed temporarily.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/toast
+  api: https://www.radix-ui.com/docs/primitives/components/toast#api-reference
+---
+
+<ComponentExample src="/components/examples/toast/demo.tsx">
+  <ToastDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-toast` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-toast
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/toast.tsx" />
+
+<Callout>
+  This is the `<Toast />` primitive. You can place it in a file at
+  `components/ui/toast.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  Toast,
+  ToastAction,
+  ToastClose,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
+} from "@/components/ui/toast"
+```
+
+```tsx
+<ToastProvider>
+  <Toast>
+    <ToastTitle />
+    <ToastDescription />
+    <ToastAction />
+    <ToastClose />
+  </Toast>
+
+  <ToastViewport />
+</ToastProvider>
+```
