@@ -1,12 +1,12 @@
 "use client"
 
 import {
+  NavigationMenu,
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuRoot,
   NavigationMenuSub,
   NavigationMenuTrigger,
   NavigationMenuViewport,
@@ -16,7 +16,7 @@ import {
 
 export const NavigationMenuSubmenus = () => {
   return (
-    <NavigationMenuRoot>
+    <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Sub menu</NavigationMenuTrigger>
@@ -51,6 +51,6 @@ export const NavigationMenuSubmenus = () => {
       </NavigationMenuList>
 
       <NavigationMenuViewport />
-    </NavigationMenuRoot>
+    </NavigationMenu>
   )
 }

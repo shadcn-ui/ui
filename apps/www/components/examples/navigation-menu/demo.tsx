@@ -5,12 +5,12 @@ import React, { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import {
+  NavigationMenu,
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuRoot,
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
@@ -55,7 +55,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export const NavigationMenuDemo = () => {
   return (
-    <NavigationMenuRoot>
+    <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
@@ -118,7 +118,7 @@ export const NavigationMenuDemo = () => {
         <NavigationMenuIndicator />
       </NavigationMenuList>
       <NavigationMenuViewport />
-    </NavigationMenuRoot>
+    </NavigationMenu>
   )
 }
 
@@ -139,7 +139,7 @@ const ListItem = React.forwardRef<
         <div className="mb-1 text-sm font-medium leading-tight text-slate-700 dark:text-slate-200">
           {title}
         </div>
-        <p className="line-clamp-3 text-sm leading-snug text-slate-500 dark:text-slate-400">
+        <p className="text-sm leading-snug text-slate-500 line-clamp-3 dark:text-slate-400">
           {children}
         </p>
       </a>

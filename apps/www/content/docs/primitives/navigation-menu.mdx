@@ -31,12 +31,12 @@ npm install @radix-ui/react-navigation-menu
 
 ```tsx
 import {
+  NavigationMenu,
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuRoot,
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
@@ -44,7 +44,7 @@ import {
 
 ```tsx
 export default () => (
-  <NavigationMenuRoot>
+  <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
         <NavigationMenuTrigger />
@@ -61,7 +61,7 @@ export default () => (
     </NavigationMenuList>
 
     <NavigationMenuViewport />
-  </NavigationMenuRoot>
+  </NavigationMenu>
 )
 ```
 

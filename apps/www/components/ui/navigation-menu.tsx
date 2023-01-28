@@ -5,9 +5,10 @@ import { ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const NavigationMenuRoot: React.FC<
-  NavigationMenuPrimitive.NavigationMenuProps
-> = ({ className, ...props }) => (
+const NavigationMenu: React.FC<NavigationMenuPrimitive.NavigationMenuProps> = ({
+  className,
+  ...props
+}) => (
   <NavigationMenuPrimitive.Root
     className={cn("relative z-[1] flex flex-1 justify-center", className)}
     {...props}
@@ -122,7 +123,7 @@ const NavigationMenuViewport: React.FC<
 const NavigationMenuSub = NavigationMenuPrimitive.Sub
 
 export {
-  NavigationMenuRoot,
+  NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuContent,

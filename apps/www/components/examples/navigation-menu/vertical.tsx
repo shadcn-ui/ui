@@ -5,12 +5,12 @@ import React, { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import {
+  NavigationMenu,
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuRoot,
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
@@ -20,7 +20,7 @@ import {
 
 export const NavigationMenuVertical = () => {
   return (
-    <NavigationMenuRoot orientation="vertical">
+    <NavigationMenu orientation="vertical">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
@@ -111,7 +111,7 @@ export const NavigationMenuVertical = () => {
         <NavigationMenuIndicator />
       </NavigationMenuList>
       <NavigationMenuViewport />
-    </NavigationMenuRoot>
+    </NavigationMenu>
   )
 }
 
