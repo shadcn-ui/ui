@@ -4,6 +4,7 @@ import { AspectRatioDemo } from "@/components/examples/aspect-ratio/demo"
 import { AvatarDemo } from "@/components/examples/avatar/demo"
 import { ButtonDemo } from "@/components/examples/button/demo"
 import { ButtonGhost } from "@/components/examples/button/ghost"
+import { ButtonDestructive } from "@/components/examples/button/destructive"
 import { ButtonLink } from "@/components/examples/button/link"
 import { ButtonLoading } from "@/components/examples/button/loading"
 import { ButtonOutline } from "@/components/examples/button/outline"
@@ -63,6 +64,7 @@ export const examples = {
   AvatarDemo,
   ButtonDemo,
   ButtonGhost,
+  ButtonDestructive,
   ButtonLink,
   ButtonLoading,
   ButtonOutline,
