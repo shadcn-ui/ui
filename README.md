@@ -38,8 +38,6 @@ npx create-next-app -e https://github.com/shadcn/next-template
 - Icons from [Lucide](https://lucide.dev)
 - Dark mode with `next-themes`
 - Automatic import sorting with `@ianvs/prettier-plugin-sort-imports`
-- Easily integrated into any project
-- Povides a solid foundation for building you own components
 
 ### Tailwind CSS Features
 
