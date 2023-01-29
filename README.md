@@ -13,7 +13,7 @@ Beautifully designed components built with Radix UI and Tailwind CSS.
 - [ ] Toggle
 - [ ] Toggle Group
 - [ ] Toolbar
-- [ ] Navigation Menu (Vertical and Submenus)
+- [x] ~Navigation Menu~
 - [ ] Figma?
 
 ## Get Started
