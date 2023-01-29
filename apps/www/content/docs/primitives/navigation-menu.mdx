@@ -1,0 +1,76 @@
+---
+title: Navigation Menu
+description: A collection of links for navigating websites.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/navigation-menu
+  api: https://www.radix-ui.com/docs/primitives/components/navigation-menu#api-reference
+---
+
+<ComponentExample src="/components/examples/navigation-menu/demo.tsx">
+  <NavigationMenuDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-navigation-menu` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-navigation-menu
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/navigation-menu.tsx" />
+
+<Callout>
+  This is the `<NavigationMenu />` primitive. You can place it in a file at
+  `components/ui/navigation-menu.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu"
+```
+
+```tsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <NavigationMenuLink>Link</NavigationMenuLink>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+### Link Component
+
+When using the Next.js `<Link />` component, you can use `navigationMenuTriggerStyle()` to apply the correct styles to the trigger.
+
+```tsx
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
+```
+
+```tsx {3-5}
+<NavigationMenuItem>
+  <Link href="/docs" legacyBehavior passHref>
+    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+      Documentation
+    </NavigationMenuLink>
+  </Link>
+</NavigationMenuItem>
+```
+
+See also the [Radix UI documentation](https://www.radix-ui.com/docs/primitives/components/navigation-menu#with-client-side-routing) for handling client side routing.

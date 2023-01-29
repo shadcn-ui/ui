@@ -60,6 +60,11 @@ export const Doc = defineDocumentType(() => ({
       type: "nested",
       of: RadixProperties,
     },
+    featured: {
+      type: "boolean",
+      default: false,
+      required: false,
+    },
   },
   computedFields,
 }))

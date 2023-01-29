@@ -8,7 +8,14 @@ COMMIT_MESSAGE=$(git log -1 --pretty=%B)
 
 for folder in $GLOB; do
   [ -d "$folder" ] || continue
+  cp -r ./apps/www/components/ui $folder/components
   cd $BASE
+
+  if [ -n "$(git status --porcelain)" ]; then
+    git add .
+    git commit -m "chore: update template"
+    git push origin main
+  fi
 
   NAME=${folder##*/}
   CLONE_DIR="__${NAME}__clone__"

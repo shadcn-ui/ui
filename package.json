@@ -24,6 +24,7 @@
   "dependencies": {
     "@babel/core": "^7.20.7",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "eslint": "^8.31.0",
     "eslint-config-next": "13.0.0",
     "eslint-config-prettier": "^8.3.0",

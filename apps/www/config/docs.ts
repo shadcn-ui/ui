@@ -121,6 +121,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Navigation Menu",
+          href: "/docs/primitives/navigation-menu",
+          items: [],
+        },
+        {
           title: "Popover",
           href: "/docs/primitives/popover",
           items: [],
