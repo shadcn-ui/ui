@@ -34,15 +34,18 @@ This is the `<Tooltip />` primitive. You can place it in a file at `components/u
 import {
   Tooltip,
   TooltipContent,
+  TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 ```
 
 ```tsx
-<Tooltip>
-  <TooltipTrigger>Hover</TooltipTrigger>
-  <TooltipContent>
-    <p>Add to library</p>
-  </TooltipContent>
-</Tooltip>
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger>Hover</TooltipTrigger>
+    <TooltipContent>
+      <p>Add to library</p>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>
 ```
