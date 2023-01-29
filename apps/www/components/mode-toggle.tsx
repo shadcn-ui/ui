@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useMounted } from "@/hooks/use-mounted"
 import { useTheme } from "next-themes"
 
 import { Icons } from "@/components/icons"
@@ -13,17 +14,31 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 export function ModeToggle() {
-  const { setTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
+  const mounted = useMounted()
+
+  if (!mounted)
+    return (
+      <Button variant="ghost" size="sm">
+        <Icons.loadingSpinner className="h-6 w-6 animate-spin hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100" />
+      </Button>
+    )
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm">
-          <Icons.sun className="hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100" />
+          {theme === "dark" ? (
+            <Icons.moon className="hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100" />
+          ) : theme === "light" ? (
+            <Icons.sun className="hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100" />
+          ) : (
+            <Icons.laptop className="hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100" />
+          )}
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" forceMount>
         <DropdownMenuItem onClick={() => setTheme("light")}>
           <Icons.sun className="mr-2 h-4 w-4" />
           <span>Light</span>
