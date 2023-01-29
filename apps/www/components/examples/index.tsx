@@ -3,8 +3,8 @@ import { AlertDialogDemo } from "@/components/examples/alert-dialog/demo"
 import { AspectRatioDemo } from "@/components/examples/aspect-ratio/demo"
 import { AvatarDemo } from "@/components/examples/avatar/demo"
 import { ButtonDemo } from "@/components/examples/button/demo"
-import { ButtonGhost } from "@/components/examples/button/ghost"
 import { ButtonDestructive } from "@/components/examples/button/destructive"
+import { ButtonGhost } from "@/components/examples/button/ghost"
 import { ButtonLink } from "@/components/examples/button/link"
 import { ButtonLoading } from "@/components/examples/button/loading"
 import { ButtonOutline } from "@/components/examples/button/outline"
@@ -27,6 +27,7 @@ import { InputWithLabel } from "@/components/examples/input/with-label"
 import { InputWithText } from "@/components/examples/input/with-text"
 import { LabelDemo } from "@/components/examples/label/demo"
 import { MenubarDemo } from "@/components/examples/menubar/demo"
+import { NavigationMenuDemo } from "@/components/examples/navigation-menu/demo"
 import { PopoverDemo } from "@/components/examples/popover/demo"
 import { ProgressDemo } from "@/components/examples/progress/demo"
 import { RadioGroupDemo } from "@/components/examples/radio-group/demo"
@@ -87,6 +88,7 @@ export const examples = {
   InputWithText,
   LabelDemo,
   MenubarDemo,
+  NavigationMenuDemo,
   PopoverDemo,
   ProgressDemo,
   RadioGroupDemo,

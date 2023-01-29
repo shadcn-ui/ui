@@ -24,6 +24,7 @@
     "@radix-ui/react-hover-card": "^1.0.3",
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-menubar": "^1.0.0",
+    "@radix-ui/react-navigation-menu": "^1.1.1",
     "@radix-ui/react-popover": "^1.0.2",
     "@radix-ui/react-progress": "^1.0.1",
     "@radix-ui/react-radio-group": "^1.1.0",
