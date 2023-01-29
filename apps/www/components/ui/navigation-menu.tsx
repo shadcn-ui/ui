@@ -20,7 +20,7 @@ const NavigationMenuList: React.FC<
 > = ({ className, ...props }) => (
   <NavigationMenuPrimitive.List
     className={cn(
-      "group flex flex-1 list-none justify-center rounded-md border border-slate-300 bg-white p-1 dark:border-slate-700 dark:bg-slate-800",
+      "group flex flex-1 list-none items-center justify-center rounded-md",
       className
     )}
     {...props}
@@ -30,7 +30,7 @@ const NavigationMenuList: React.FC<
 const NavigationMenuItem = NavigationMenuPrimitive.NavigationMenuItem
 
 const navigationMenuTriggerStyle = cva(
-  "rounded-md py-2 px-3 font-medium leading-none hover:bg-slate-100 focus:shadow-sm focus:ring-2 focus:ring-slate-300 focus:bg-slate-100 dark:focus:bg-slate-700 dark:hover:bg-slate-700 dark:focus:ring-slate-500 outline-none w-full transition-all duration-300"
+  "rounded-md py-2 px-3 font-medium leading-none hover:bg-slate-100 focus:shadow-sm focus:ring-2 focus:ring-slate-300 focus:bg-slate-100 dark:focus:bg-slate-700 dark:hover:bg-slate-700 dark:focus:ring-slate-500 text-sm outline-none w-full transition-all duration-300"
 )
 
 const NavigationMenuTrigger: React.FC<
