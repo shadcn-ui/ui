@@ -8,6 +8,7 @@ COMMIT_MESSAGE=$(git log -1 --pretty=%B)
 
 for folder in $GLOB; do
   [ -d "$folder" ] || continue
+  cp -r ./apps/www/components/ui $folder/components
   cd $BASE
 
   NAME=${folder##*/}
