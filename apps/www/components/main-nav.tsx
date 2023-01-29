@@ -2,111 +2,131 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { useSelectedLayoutSegment } from "next/navigation"
-import { MainNavItem } from "types/nav"
+import { allDocs } from "contentlayer/generated"
 
-import { docsConfig } from "@/config/docs"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
-import { Button } from "@/components/ui/button"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { ScrollArea } from "@/components/ui/scroll-area"
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+import { buttonVariants } from "./ui/button"
+import { Separator } from "./ui/separator"
 
-interface MainNavProps {
-  items?: MainNavItem[]
-  children?: React.ReactNode
-}
-
-export function MainNav({ items, children }: MainNavProps) {
-  const segment = useSelectedLayoutSegment()
-
+export function MainNav() {
   return (
-    <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="hidden items-center space-x-2 md:flex">
+    <div className="hidden md:flex">
+      <Link href="/" className="mr-6 flex items-center space-x-2">
         <Icons.logo className="h-6 w-6" />
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>
       </Link>
-      {items?.length ? (
-        <nav className="hidden gap-6 md:flex">
-          {items?.map(
-            (item, index) =>
-              item.href && (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className={cn(
-                    "flex items-center text-lg font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-100 sm:text-sm",
-                    item.href.startsWith(`/${segment}`) && "text-slate-900",
-                    item.disabled && "cursor-not-allowed opacity-80"
-                  )}
-                >
-                  {item.title}
-                </Link>
-              )
-          )}
-        </nav>
-      ) : null}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="-ml-4 text-base hover:bg-transparent focus:ring-0 md:hidden"
-          >
-            <Icons.logo className="mr-2 h-4 w-4" />{" "}
-            <span className="font-bold">Menu</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align="start"
-          sideOffset={24}
-          className="w-[300px] overflow-scroll"
-        >
-          <DropdownMenuLabel>
-            <Link href="/" className="flex items-center">
-              <Icons.logo className="mr-2 h-4 w-4" /> {siteConfig.name}
-            </Link>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <ScrollArea className="h-[400px]">
-            {items?.map(
-              (item, index) =>
-                item.href && (
-                  <DropdownMenuItem key={index} asChild>
-                    <Link href={item.href}>{item.title}</Link>
-                  </DropdownMenuItem>
-                )
-            )}
-            {docsConfig.sidebarNav.map((item, index) => (
-              <DropdownMenuGroup key={index}>
-                <DropdownMenuSeparator />
-                <DropdownMenuLabel>{item.title}</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                {item?.items?.length &&
-                  item.items.map((item) => (
-                    <DropdownMenuItem key={item.title} asChild>
-                      {item.href ? (
-                        <Link href={item.href}>{item.title}</Link>
-                      ) : (
-                        item.title
-                      )}
-                    </DropdownMenuItem>
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger className="h-9">
+              Getting started
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                <li className="row-span-3">
+                  <Link href="/" passHref legacyBehavior>
+                    <NavigationMenuLink
+                      className="flex h-full w-full select-none 
+                    flex-col justify-end space-y-2 rounded-md bg-gradient-to-b from-rose-500 to-indigo-700 p-6 no-underline outline-none focus:shadow-md"
+                    >
+                      <div className="text-lg font-medium text-white">
+                        {siteConfig.name}
+                      </div>
+                      <p className="text-sm leading-snug text-white/90">
+                        {siteConfig.description}
+                      </p>
+                    </NavigationMenuLink>
+                  </Link>
+                </li>
+                <ListItem href="/docs" title="Introduction">
+                  Re-usable components built using Radix UI and Tailwind CSS.
+                </ListItem>
+                <ListItem href="/docs/installation" title="Installation">
+                  How to install dependencies and structure your app.
+                </ListItem>
+                <ListItem href="/docs/primitives/typography" title="Typography">
+                  Styles for headings, paragraphs, lists...etc
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger className="h-9">
+              Components
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid w-[600px] grid-cols-2 gap-3 p-4">
+                {allDocs
+                  .filter((doc) => doc.featured)
+                  .map((doc) => (
+                    <ListItem key={doc._id} title={doc.title} href={doc.slug}>
+                      {doc.description}
+                    </ListItem>
                   ))}
-              </DropdownMenuGroup>
-            ))}
-          </ScrollArea>
-        </DropdownMenuContent>
-      </DropdownMenu>
+              </ul>
+              <div className="p-4 pt-0">
+                <Separator className="mb-4" />
+                <Link href="/docs/primitives/accordion" passHref legacyBehavior>
+                  <NavigationMenuLink
+                    className={cn(
+                      buttonVariants({ variant: "outline" }),
+                      "w-full dark:hover:bg-slate-700"
+                    )}
+                  >
+                    Browse components
+                  </NavigationMenuLink>
+                </Link>
+              </div>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem className="hidden lg:flex">
+            <Link href={siteConfig.links.github} legacyBehavior passHref>
+              <NavigationMenuLink
+                className={cn(navigationMenuTriggerStyle(), "h-9")}
+              >
+                GitHub
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
     </div>
   )
 }
+
+const ListItem = React.forwardRef<
+  React.ElementRef<typeof Link>,
+  React.ComponentPropsWithoutRef<typeof Link>
+>(({ className, title, children, href, ...props }, ref) => {
+  return (
+    <li>
+      <Link href={href} passHref legacyBehavior {...props}>
+        <NavigationMenuLink
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-slate-700 dark:focus:bg-slate-700",
+            className
+          )}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="text-sm leading-snug text-slate-500 line-clamp-2 dark:text-slate-400">
+            {children}
+          </p>
+        </NavigationMenuLink>
+      </Link>
+    </li>
+  )
+})
+ListItem.displayName = "ListItem"
