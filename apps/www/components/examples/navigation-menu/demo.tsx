@@ -1,18 +1,18 @@
 "use client"
 
-import React, { ComponentProps } from "react"
+import * as React from "react"
+import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
 const components: { title: string; href: string; description: string }[] = [
@@ -53,16 +53,16 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 
-export const NavigationMenuDemo = () => {
+export function NavigationMenuDemo() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-x-2.5 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
-                <NavigationMenuLink variant="unstyled" asChild>
+                <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-rose-500 to-indigo-700 p-6 no-underline outline-none focus:shadow-md"
                     href="/"
@@ -71,14 +71,13 @@ export const NavigationMenuDemo = () => {
                     <div className="mt-4 mb-2 text-lg font-medium text-white">
                       shadcn/ui
                     </div>
-                    <p className="leading-tight text-white/90">
+                    <p className="text-sm leading-tight text-white/90">
                       Beautifully designed components built with Radix UI and
                       Tailwind CSS.
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
-
               <ListItem href="/docs" title="Introduction">
                 Re-usable components built using Radix UI and Tailwind CSS.
               </ListItem>
@@ -91,11 +90,10 @@ export const NavigationMenuDemo = () => {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-
         <NavigationMenuItem>
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-x-2.5 p-6 md:w-[400px] md:grid-cols-2 lg:w-[600px] lg:grid-cols-3">
+            <ul className="grid w-[600px] gap-3 p-4 md:grid-cols-2">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
@@ -108,43 +106,40 @@ export const NavigationMenuDemo = () => {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-
         <NavigationMenuItem>
-          <NavigationMenuLink href="https://github.com/shadcn/ui">
-            Github
-          </NavigationMenuLink>
+          <Link href="/docs" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Documentation
+            </NavigationMenuLink>
+          </Link>
         </NavigationMenuItem>
-
-        <NavigationMenuIndicator />
       </NavigationMenuList>
-      <NavigationMenuViewport />
     </NavigationMenu>
   )
 }
 
 const ListItem = React.forwardRef<
-  HTMLAnchorElement,
-  { title: string } & ComponentProps<"a">
->(({ className, children, title, ...props }, ref) => (
-  <li>
-    <NavigationMenuLink variant="unstyled" asChild>
-      <a
-        className={cn(
-          "block select-none rounded-md p-3 leading-none no-underline outline-none hover:bg-slate-100 focus:shadow-md dark:hover:bg-slate-700",
-          className
-        )}
-        {...props}
-        ref={ref}
-      >
-        <div className="mb-1 text-sm font-medium leading-tight text-slate-700 dark:text-slate-200">
-          {title}
-        </div>
-        <p className="text-sm leading-snug text-slate-500 line-clamp-3 dark:text-slate-400">
-          {children}
-        </p>
-      </a>
-    </NavigationMenuLink>
-  </li>
-))
-
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-slate-700 dark:focus:bg-slate-700",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="text-sm leading-snug text-slate-500 line-clamp-2 dark:text-slate-400">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  )
+})
 ListItem.displayName = "ListItem"

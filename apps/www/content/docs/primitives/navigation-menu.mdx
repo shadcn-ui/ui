@@ -43,32 +43,34 @@ import {
 ```
 
 ```tsx
-export default () => (
-  <NavigationMenu>
-    <NavigationMenuList>
-      <NavigationMenuItem>
-        <NavigationMenuTrigger />
-        <NavigationMenuContent>
-          <NavigationMenuLink />
-        </NavigationMenuContent>
-      </NavigationMenuItem>
-
-      <NavigationMenuItem>
-        <NavigationMenuLink />
-      </NavigationMenuItem>
-
-      <NavigationMenuIndicator />
-    </NavigationMenuList>
-
-    <NavigationMenuViewport />
-  </NavigationMenu>
-)
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <NavigationMenuLink>Link</NavigationMenuLink>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
 ```
 
-## Examples
+### Link Component
 
-### Default
+When using the Next.js `<Link />` component, you can use `navigationMenuTriggerStyle()` to apply the correct styles to the trigger.
 
-<ComponentExample src="/components/examples/navigation-menu/demo.tsx">
-  <NavigationMenuDemo />
-</ComponentExample>
+```tsx
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
+```
+
+```tsx {3-5}
+<NavigationMenuItem>
+  <Link href="/docs" legacyBehavior passHref>
+    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+      Documentation
+    </NavigationMenuLink>
+  </Link>
+</NavigationMenuItem>
+```
+
+See also the [Radix UI documentation](https://www.radix-ui.com/docs/primitives/components/navigation-menu#with-client-side-routing) for handling client side routing.
