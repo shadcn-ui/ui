@@ -13,8 +13,10 @@ import {
   ToastViewport,
 } from "@/components/ui/toast"
 
-export const ToastDemo = () => {
+export const ToastAdvanced = () => {
   const [open, setOpen] = useState(false)
+
+  //TODO: Advanced example for doc with position and swipe direction <Select />s
 
   return (
     <div className="flex flex-col items-center gap-3">
@@ -23,19 +25,21 @@ export const ToastDemo = () => {
           setOpen(true)
         }}
       >
-        Add to components
+        Show toast
       </Button>
-      <ToastProvider>
+      <ToastProvider swipeDirection="down" duration={10000000}>
         <Toast open={open} onOpenChange={setOpen}>
           <div className="mb-2">
-            <ToastTitle>New component</ToastTitle>
-            <ToastDescription>Awesome toast component</ToastDescription>
+            <ToastTitle>Awesome toast</ToastTitle>
+            <ToastDescription>
+              Made with RadixUI and TailwindCSS
+            </ToastDescription>
           </div>
           <ToastAction altText="undo">Cheers</ToastAction>
           <ToastClose />
         </Toast>
 
-        <ToastViewport />
+        <ToastViewport position="bottom-center" />
       </ToastProvider>
     </div>
   )

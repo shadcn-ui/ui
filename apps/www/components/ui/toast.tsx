@@ -50,44 +50,27 @@ const ToastDescription: React.FC<ToastPrimitives.ToastDescriptionProps> = ({
   ...props
 }) => (
   <ToastPrimitives.Description
-    className={cn("text-sm font-medium leading-none", className)}
+    className={cn("text-sm leading-none", className)}
     {...props}
   />
 )
 
-const toastVariants = cva(
-  [
-    "relative w-full rounded-md border-2 px-3 py-2 shadow-md",
-    "data-[state=open]:animate-in data-[state=open]:fade-in data-[state=open]:slide-in-from-right-52",
-    "data-[state=closed]:animate-out data-[state=closed]:fade-out",
-    "data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)]",
-    "data-[swipe=end]:animate-out data-[swipe=end]:fade-out data-[swipe=end]:translate-x-[calc(100% + var(--radix-toast-swipe-move-x))] data-[swipe=end]:transition",
-    "data-[swipe=cancel]:translate-x-0 data[swipe=cancel]:transition data[swipe=cancel]:duration-200",
-  ],
-  {
-    variants: {
-      status: {
-        default:
-          "border-slate-200 bg-slate-50 dark:bg-slate-800 dark:border-slate-700",
-        success:
-          "border-green-200 bg-green-50 dark:bg-green-900 dark:border-green-800",
-        error: "border-red-200 bg-red-50 dark:bg-red-900 dark:border-red-800",
-        info: "border-blue-200 bg-blue-50 dark:bg-blue-900 dark:border-blue-800",
-      },
-    },
-    defaultVariants: {
-      status: "default",
-    },
-  }
-)
-
-type ToastStatus = VariantProps<typeof toastVariants>["status"]
-
-const Toast: React.FC<
-  ToastPrimitives.ToastProps & VariantProps<typeof toastVariants>
-> = ({ className, status, ...props }) => (
+const Toast: React.FC<ToastPrimitives.ToastProps> = ({
+  className,
+  ...props
+}) => (
   <ToastPrimitives.Root
-    className={cn(toastVariants({ status }), className)}
+    className={cn(
+      [
+        "relative w-full items-start rounded-md border border-b-4 border-slate-900 bg-white p-3 shadow-lg dark:border-slate-700 dark:bg-slate-800",
+        "data-[state=open]:animate-in data-[state=open]:fade-in data-[swipe-direction=right]:data-[state=open]:slide-in-from-right-52 data-[swipe-direction=left]:data-[state=open]:slide-in-from-left-52 data-[swipe-direction=up]:data-[state=open]:slide-in-from-top-52 data-[swipe-direction=down]:data-[state=open]:slide-in-from-bottom-52",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out",
+        "data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:translate-y-[var(--radix-toast-swipe-move-y)]",
+        "data-[swipe=end]:translate-x-[calc(100% + var(--radix-toast-swipe-move-x))] data-[swipe=end]:transition data-[swipe=end]:animate-out data-[swipe=end]:fade-out",
+        "data[swipe=cancel]:transition data[swipe=cancel]:duration-200 data-[swipe=cancel]:translate-x-0",
+      ],
+      className
+    )}
     {...props}
   />
 )
@@ -100,15 +83,31 @@ const ToastProvider: React.FC<ToastPrimitives.ToastProviderProps> = (props) => (
   />
 )
 
-const ToastViewport: React.FC<ToastPrimitives.ToastViewportProps> = ({
-  className,
-  ...props
-}) => (
+const toastViewportVariants = cva(
+  "fixed z-50 flex max-h-screen w-full flex-col items-end justify-end gap-3 p-6 md:max-w-[390px]",
+  {
+    variants: {
+      position: {
+        "top-left": "top-0 left-0",
+        "top-center": "top-0 left-[50%] -translate-x-[50%]",
+        "top-right": "top-0 right-0",
+        "bottom-left": "bottom-0 left-0",
+        "bottom-center": "bottom-0 left-[50%] -translate-x-[50%]",
+        "bottom-right": "bottom-0 right-0",
+      },
+    },
+    defaultVariants: {
+      position: "bottom-right",
+    },
+  }
+)
+
+const ToastViewport: React.FC<
+  ToastPrimitives.ToastViewportProps &
+    VariantProps<typeof toastViewportVariants>
+> = ({ className, position, ...props }) => (
   <ToastPrimitives.Viewport
-    className={cn(
-      "fixed right-0 bottom-0 z-50 flex max-h-screen w-full flex-col items-end justify-end gap-3 p-6 md:max-w-[390px]",
-      className
-    )}
+    className={cn(toastViewportVariants({ position }), className)}
     {...props}
   />
 )
@@ -117,7 +116,6 @@ export {
   ToastProvider,
   ToastViewport,
   Toast,
-  type ToastStatus,
   ToastTitle,
   ToastDescription,
   ToastClose,

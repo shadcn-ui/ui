@@ -42,6 +42,7 @@ import { TextareaDisabled } from "@/components/examples/textarea/disabled"
 import { TextareaWithButton } from "@/components/examples/textarea/with-button"
 import { TextareaWithLabel } from "@/components/examples/textarea/with-label"
 import { TextareaWithText } from "@/components/examples/textarea/with-text"
+import { ToastAdvanced } from "@/components/examples/toast/advanced"
 import { ToastDemo } from "@/components/examples/toast/demo"
 import { TooltipDemo } from "@/components/examples/tooltip/demo"
 import { TypographyBlockquote } from "@/components/examples/typography/blockquote"
@@ -105,6 +106,7 @@ export const examples = {
   TextareaWithLabel,
   TextareaWithText,
   ToastDemo,
+  ToastAdvanced,
   TooltipDemo,
   TypographyBlockquote,
   TypographyDemo,
