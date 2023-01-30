@@ -91,7 +91,7 @@ export const ToastAdvanced = () => {
           Show toast
         </Button>
         <ToastProvider swipeDirection={swipeDirection}>
-          <Toast open={open} onOpenChange={setOpen}>
+          <Toast open={open} onOpenChange={setOpen} position={position}>
             <ToastTitle>Awesome toast</ToastTitle>
             <ToastDescription>
               Made with RadixUI and TailwindCSS
@@ -99,7 +99,7 @@ export const ToastAdvanced = () => {
             <ToastClose />
           </Toast>
 
-          <ToastViewport position={position} />
+          <ToastViewport />
         </ToastProvider>
       </div>
     </div>
