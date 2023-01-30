@@ -40,7 +40,7 @@ export const ToastAdvanced = () => {
 
   return (
     <div>
-      <div className="mb-4 flex gap-2">
+      <div className="mb-4 flex flex-col gap-2 md:flex-row">
         <div>
           <Label htmlFor="position">Position</Label>
           <Select
