@@ -63,7 +63,7 @@ const Toast: React.FC<ToastPrimitives.ToastProps> = ({
         "data-[state=open]:animate-in data-[state=open]:fade-in data-[swipe-direction=right]:data-[state=open]:slide-in-from-right-52 data-[swipe-direction=left]:data-[state=open]:slide-in-from-left-52 data-[swipe-direction=up]:data-[state=open]:slide-in-from-top-52 data-[swipe-direction=down]:data-[state=open]:slide-in-from-bottom-52",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out",
         "data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:translate-y-[var(--radix-toast-swipe-move-y)]",
-        "data-[swipe=end]:translate-x-[calc(100% + var(--radix-toast-swipe-move-x))] data-[swipe=end]:transition data-[swipe=end]:animate-out data-[swipe=end]:fade-out",
+        "data-[swipe=end]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=end]:translate-y-[var(--radix-toast-swipe-move-y)] data-[swipe=end]:animate-out data-[swipe=end]:fade-out data-[swipe-direction=down]=data-[swipe=end]:slide-out-to-bottom-full data-[swipe-direction=right]=data-[swipe=end]:slide-out-to-right-full data-[swipe-direction=left]=data-[swipe=end]:slide-out-to-left-full data-[swipe-direction=up]=data-[swipe=end]:slide-out-to-top-full",
         "data[swipe=cancel]:transition data[swipe=cancel]:duration-200 data-[swipe=cancel]:translate-x-0",
       ],
       className
