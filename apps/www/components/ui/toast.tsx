@@ -23,7 +23,7 @@ const ToastClose: React.FC<ToastPrimitives.ToastCloseProps> = ({
 }) => (
   <ToastPrimitives.Close
     className={cn(
-      "absolute top-2 right-2 rounded-md p-1 hover:bg-slate-500/10 dark:hover:bg-slate-100/30",
+      "absolute top-1 right-1 rounded-md p-1 hover:bg-slate-500/10 dark:hover:bg-slate-100/30",
       className
     )}
     {...props}
@@ -37,10 +37,7 @@ const ToastTitle: React.FC<ToastPrimitives.ToastTitleProps> = ({
   ...props
 }) => (
   <ToastPrimitives.Title
-    className={cn(
-      "text-lg font-semibold text-slate-900 dark:text-slate-50",
-      className
-    )}
+    className={cn("font-semibold text-slate-900 dark:text-slate-50", className)}
     {...props}
   />
 )
@@ -91,9 +88,10 @@ const toastViewportVariants = cva(
         "top-left": "top-0 left-0",
         "top-center": "top-0 left-[50%] -translate-x-[50%]",
         "top-right": "top-0 right-0",
-        "bottom-left": "bottom-0 left-0",
-        "bottom-center": "bottom-0 left-[50%] -translate-x-[50%]",
-        "bottom-right": "bottom-0 right-0",
+        "bottom-left": "bottom-0 left-0 flex-col-reverse",
+        "bottom-center":
+          "bottom-0 left-[50%] -translate-x-[50%] flex-col-reverse",
+        "bottom-right": "bottom-0 right-0 flex-col-reverse",
       },
     },
     defaultVariants: {

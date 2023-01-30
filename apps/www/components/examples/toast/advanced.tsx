@@ -3,9 +3,16 @@
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import {
   Toast,
-  ToastAction,
   ToastClose,
   ToastDescription,
   ToastProvider,
@@ -13,34 +20,88 @@ import {
   ToastViewport,
 } from "@/components/ui/toast"
 
+const positions = [
+  "top-left",
+  "top-center",
+  "top-right",
+  "bottom-left",
+  "bottom-center",
+  "bottom-right",
+] as const
+type Position = typeof positions[number]
+
+const swipeDirections = ["up", "right", "left", "down"] as const
+type SwipeDirection = typeof swipeDirections[number]
+
 export const ToastAdvanced = () => {
   const [open, setOpen] = useState(false)
-
-  //TODO: Advanced example for doc with position and swipe direction <Select />s
+  const [position, setPosition] = useState<Position>("bottom-right")
+  const [swipeDirection, setSwipeDirection] = useState<SwipeDirection>("right")
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <Button
-        onClick={() => {
-          setOpen(true)
-        }}
-      >
-        Show toast
-      </Button>
-      <ToastProvider swipeDirection="down" duration={10000000}>
-        <Toast open={open} onOpenChange={setOpen}>
-          <div className="mb-2">
+    <div>
+      <div className="mb-4 flex gap-2">
+        <div>
+          <Label htmlFor="position">Position</Label>
+          <Select
+            defaultValue="bottom-right"
+            onValueChange={(newPosition) =>
+              setPosition(newPosition as Position)
+            }
+          >
+            <SelectTrigger id="position" className="w-[180px]">
+              <SelectValue placeholder="Position" />
+            </SelectTrigger>
+            <SelectContent>
+              {positions.map((pos) => (
+                <SelectItem key={pos} value={pos}>
+                  {pos}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div>
+          <Label htmlFor="swipe-direction">Swipe Direction</Label>
+          <Select
+            defaultValue="right"
+            onValueChange={(newSwipeDirection) =>
+              setSwipeDirection(newSwipeDirection as SwipeDirection)
+            }
+          >
+            <SelectTrigger id="swipe-direction" className="w-[180px]">
+              <SelectValue placeholder="Swipe Direction" />
+            </SelectTrigger>
+            <SelectContent>
+              {swipeDirections.map((direction) => (
+                <SelectItem key={direction} value={direction}>
+                  {direction}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+      <div className="flex flex-col items-center gap-3">
+        <Button
+          onClick={() => {
+            setOpen(true)
+          }}
+        >
+          Show toast
+        </Button>
+        <ToastProvider swipeDirection={swipeDirection}>
+          <Toast open={open} onOpenChange={setOpen}>
             <ToastTitle>Awesome toast</ToastTitle>
             <ToastDescription>
               Made with RadixUI and TailwindCSS
             </ToastDescription>
-          </div>
-          <ToastAction altText="undo">Cheers</ToastAction>
-          <ToastClose />
-        </Toast>
+            <ToastClose />
+          </Toast>
 
-        <ToastViewport position="bottom-center" />
-      </ToastProvider>
+          <ToastViewport position={position} />
+        </ToastProvider>
+      </div>
     </div>
   )
 }
