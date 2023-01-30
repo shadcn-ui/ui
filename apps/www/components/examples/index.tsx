@@ -59,6 +59,7 @@ import { TypographyP } from "@/components/examples/typography/p"
 import { TypographySmall } from "@/components/examples/typography/small"
 import { TypographySubtle } from "@/components/examples/typography/subtle"
 import { TypographyTable } from "@/components/examples/typography/table"
+import { UseToasterDemo } from "@/components/examples/use-toaster/demo"
 
 export const examples = {
   AccordionDemo,
@@ -122,4 +123,5 @@ export const examples = {
   TypographySmall,
   TypographySubtle,
   TypographyTable,
+  UseToasterDemo,
 }

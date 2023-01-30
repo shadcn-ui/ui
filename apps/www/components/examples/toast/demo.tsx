@@ -25,7 +25,7 @@ export const ToastDemo = () => {
       >
         Add to components
       </Button>
-      <ToastProvider duration={300000}>
+      <ToastProvider>
         <Toast open={open} onOpenChange={setOpen}>
           <div className="mb-2">
             <ToastTitle>New component</ToastTitle>
