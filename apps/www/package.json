@@ -51,6 +51,7 @@
     "react-dom": "^18.2.0",
     "sharp": "^0.31.3",
     "tailwind-merge": "^1.8.0",
+    "tailwind-styled-components": "2.1.6",
     "zod": "^3.20.2"
   },
   "devDependencies": {
