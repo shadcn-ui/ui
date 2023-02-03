@@ -1,0 +1,53 @@
+---
+title: Toggle Group
+description: A set of two-state buttons that can be toggled on or off.
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/toggle-group
+  api: https://www.radix-ui.com/docs/primitives/components/toggle-group#api-reference
+---
+
+<ComponentExample src="/components/examples/toggle-group/demo.tsx">
+  <ToggleGroupDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `@radix-ui/react-toggle-group` component from radix-ui:
+
+```bash
+yarn add @radix-ui/react-toggle-group
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/toggle-group.tsx" />
+
+<Callout>
+  This is the `<ToggleGroup />` primitive. You can place it in a file at
+  `components/ui/toggle-group.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from "components/ui/toggle-group"
+```
+
+```tsx
+<ToggleGroup
+  type="single"
+  defaultValue="center"
+  aria-label="Text alignment"
+  className="inline-flex items-center justify-center rounded shadow"
+>
+  <ToggleGroupItem value="left" aria-label="Left aligned">
+    Left aligned
+  </ToggleGroupItem>
+  <ToggleGroupItem value="center" aria-label="Center aligned">
+    Center aligned
+  </ToggleGroupItem>
+  <ToggleGroupItem value="right" aria-label="Right aligned">
+    Right aligned
+  </ToggleGroupItem>
+</ToggleGroup>
+```
