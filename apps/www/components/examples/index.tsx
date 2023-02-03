@@ -43,6 +43,7 @@ import { TextareaWithButton } from "@/components/examples/textarea/with-button"
 import { TextareaWithLabel } from "@/components/examples/textarea/with-label"
 import { TextareaWithText } from "@/components/examples/textarea/with-text"
 import { ToastDemo } from "@/components/examples/toast/demo"
+import { ToastDestructive } from "@/components/examples/toast/destructive"
 import { ToastSimple } from "@/components/examples/toast/simple"
 import { ToastWithAction } from "@/components/examples/toast/with-action"
 import { ToastWithTitle } from "@/components/examples/toast/with-title"
@@ -108,6 +109,7 @@ export const examples = {
   TextareaWithLabel,
   TextareaWithText,
   ToastDemo,
+  ToastDestructive,
   ToastSimple,
   ToastWithTitle,
   ToastWithAction,
