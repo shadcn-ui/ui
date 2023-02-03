@@ -52,6 +52,16 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Community",
+      items: [
+        {
+          title: "Figma",
+          href: "/figma",
+          items: [],
+        },
+      ],
+    },
+    {
       title: "Components",
       items: [
         {
