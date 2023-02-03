@@ -16,6 +16,10 @@ export const docsConfig: DocsConfig = {
       href: "/docs/primitives/accordion",
     },
     {
+      title: "Figma",
+      href: "/figma",
+    },
+    {
       title: "GitHub",
       href: "https://github.com/shadcn/ui",
       external: true,
@@ -43,6 +47,16 @@ export const docsConfig: DocsConfig = {
         {
           title: "Typography",
           href: "/docs/primitives/typography",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Community",
+      items: [
+        {
+          title: "Figma",
+          href: "/figma",
           items: [],
         },
       ],
