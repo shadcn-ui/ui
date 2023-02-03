@@ -92,7 +92,7 @@ export function MainNav() {
               </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem className="hidden lg:flex">
+          {/* <NavigationMenuItem className="hidden lg:flex">
             <Link href="/figma" legacyBehavior passHref>
               <NavigationMenuLink
                 className={cn(navigationMenuTriggerStyle(), "h-9")}
@@ -100,7 +100,7 @@ export function MainNav() {
                 Figma
               </NavigationMenuLink>
             </Link>
-          </NavigationMenuItem>
+          </NavigationMenuItem> */}
           <NavigationMenuItem className="hidden lg:flex">
             <Link href={siteConfig.links.github} legacyBehavior passHref>
               <NavigationMenuLink
