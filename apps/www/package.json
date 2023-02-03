@@ -12,7 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@next/font": "^13.1.5",
+    "@next/font": "^13.1.6",
     "@radix-ui/react-accessible-icon": "^1.0.1",
     "@radix-ui/react-accordion": "^1.1.0",
     "@radix-ui/react-alert-dialog": "^1.0.2",
@@ -26,7 +26,8 @@
     "@radix-ui/react-hover-card": "^1.0.3",
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-menubar": "^1.0.0",
-    "@radix-ui/react-popover": "^1.0.3",
+    "@radix-ui/react-navigation-menu": "^1.1.1",
+    "@radix-ui/react-popover": "^1.0.2",
     "@radix-ui/react-progress": "^1.0.1",
     "@radix-ui/react-radio-group": "^1.1.1",
     "@radix-ui/react-scroll-area": "^1.0.2",
@@ -45,7 +46,7 @@
     "contentlayer": "^0.3.0",
     "logsnag": "^0.1.6",
     "lucide-react": "0.105.0-alpha.4",
-    "next": "^13.1.5",
+    "next": "^13.1.6",
     "next-contentlayer": "^0.3.0",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",

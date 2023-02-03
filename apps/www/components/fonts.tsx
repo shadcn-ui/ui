@@ -8,11 +8,13 @@ import {
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: 'swap',
 })
 
 const fontMono = FontMono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: 'swap',
 })
 
 export function Fonts() {

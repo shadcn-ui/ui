@@ -10,7 +10,7 @@
     "preview": "next build && next start"
   },
   "dependencies": {
-    "@next/font": "^13.1.5",
+    "@next/font": "^13.1.6",
     "@radix-ui/react-accessible-icon": "^1.0.1",
     "@radix-ui/react-accordion": "^1.1.0",
     "@radix-ui/react-alert-dialog": "^1.0.2",
@@ -24,6 +24,7 @@
     "@radix-ui/react-hover-card": "^1.0.3",
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-menubar": "^1.0.0",
+    "@radix-ui/react-navigation-menu": "^1.1.1",
     "@radix-ui/react-popover": "^1.0.2",
     "@radix-ui/react-progress": "^1.0.1",
     "@radix-ui/react-radio-group": "^1.1.0",
@@ -39,7 +40,7 @@
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
     "lucide-react": "0.105.0-alpha.4",
-    "next": "^13.1.5",
+    "next": "^13.1.6",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
