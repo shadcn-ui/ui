@@ -42,8 +42,10 @@ import { TextareaDisabled } from "@/components/examples/textarea/disabled"
 import { TextareaWithButton } from "@/components/examples/textarea/with-button"
 import { TextareaWithLabel } from "@/components/examples/textarea/with-label"
 import { TextareaWithText } from "@/components/examples/textarea/with-text"
-import { ToastAdvanced } from "@/components/examples/toast/advanced"
 import { ToastDemo } from "@/components/examples/toast/demo"
+import { ToastSimple } from "@/components/examples/toast/simple"
+import { ToastWithAction } from "@/components/examples/toast/with-action"
+import { ToastWithTitle } from "@/components/examples/toast/with-title"
 import { TooltipDemo } from "@/components/examples/tooltip/demo"
 import { TypographyBlockquote } from "@/components/examples/typography/blockquote"
 import { TypographyDemo } from "@/components/examples/typography/demo"
@@ -59,7 +61,6 @@ import { TypographyP } from "@/components/examples/typography/p"
 import { TypographySmall } from "@/components/examples/typography/small"
 import { TypographySubtle } from "@/components/examples/typography/subtle"
 import { TypographyTable } from "@/components/examples/typography/table"
-import { UseToasterDemo } from "@/components/examples/use-toaster/demo"
 
 export const examples = {
   AccordionDemo,
@@ -107,7 +108,9 @@ export const examples = {
   TextareaWithLabel,
   TextareaWithText,
   ToastDemo,
-  ToastAdvanced,
+  ToastSimple,
+  ToastWithTitle,
+  ToastWithAction,
   TooltipDemo,
   TypographyBlockquote,
   TypographyDemo,
@@ -123,5 +126,4 @@ export const examples = {
   TypographySmall,
   TypographySubtle,
   TypographyTable,
-  UseToasterDemo,
 }

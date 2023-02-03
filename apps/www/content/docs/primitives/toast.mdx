@@ -27,41 +27,79 @@ npm install @radix-ui/react-toast
   `components/ui/toast.tsx`.
 </Callout>
 
-<Callout type="warning">
-  You can also install the [`useToaster()`](/docs/hooks/use-toaster) hook. To
-  have fully functional toast in your project.
+3. Copy and paste the `<Toaster />` component into your project.
+
+<ComponentSource src="/components/ui/toaster.tsx" />
+
+<Callout>
+  This is the `<Toaster />` primitive. You can place it in a file at
+  `components/ui/toaster.tsx`.
+</Callout>
+
+4. Add the `<Toaster />` component to your app.
+
+```tsx title="_app.tsx" {1,7}
+import { Toaster } from "@/components/ui/toaster"
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <Toaster />
+    </>
+  )
+}
+```
+
+5. Copy and paste the `useToast` hook into your project.
+
+<ComponentSource src="/hooks/use-toast.ts" />
+
+<Callout>
+  You can place the `use-toast` hook in a file at `hooks/ui/use-toast.tsx`.
 </Callout>
 
 ## Usage
 
 ```tsx
-import {
-  Toast,
-  ToastAction,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-} from "@/components/ui/toast"
+import { useToast } from "@/hooks/use-toast"
 ```
 
-```tsx
-<ToastProvider>
-  <Toast position="bottom-right">
-    <ToastTitle />
-    <ToastDescription />
-    <ToastAction />
-    <ToastClose />
-  </Toast>
-  <ToastViewport />
-</ToastProvider>
+```tsx {2,8-11}
+export const ToastDemo = () => {
+  const { toast } = useToast()
+
+  return (
+    <Button
+      onClick={() => {
+        toast({
+          title: "Scheduled: Catch up",
+          description: "Friday, February 10, 2023 at 5:57 PM",
+        })
+      }}
+    >
+      Add to calendar
+    </Button>
+  )
+}
 ```
 
 ## Examples
 
-### Advanced
+### Simple
 
-<ComponentExample src="/components/examples/toast/advanced.tsx">
-  <ToastAdvanced />
+<ComponentExample src="/components/examples/toast/simple.tsx">
+  <ToastSimple />
+</ComponentExample>
+
+### With title
+
+<ComponentExample src="/components/examples/toast/with-title.tsx">
+  <ToastWithTitle />
+</ComponentExample>
+
+### With Action
+
+<ComponentExample src="/components/examples/toast/with-action.tsx">
+  <ToastWithAction />
 </ComponentExample>

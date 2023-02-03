@@ -187,15 +187,5 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-    {
-      title: "Hooks",
-      items: [
-        {
-          title: "useToaster",
-          href: "/docs/hooks/use-toaster",
-          items: [],
-        },
-      ],
-    },
   ],
 }
