@@ -10,7 +10,7 @@ export function ToggleGroupOutline() {
       aria-label="Text alignment"
       variant="outline"
     >
-      <ToggleGroupItem value="left" aria-label="Left aligned" variant="outline">
+      <ToggleGroupItem value="left" aria-label="Left aligned">
         <AlignLeft className="h-4 w-4" />
       </ToggleGroupItem>
       <ToggleGroupItem value="center" aria-label="Center aligned">
