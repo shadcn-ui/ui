@@ -46,7 +46,7 @@ export function DocsSidebarNavItems({
             key={index}
             href={item.href}
             className={cn(
-              "flex w-full items-center rounded-md p-2 hover:underline",
+              "group flex w-full items-center rounded-md p-2 hover:bg-slate-50",
               item.disabled && "cursor-not-allowed opacity-60",
               {
                 "bg-slate-100 dark:bg-slate-800": pathname === item.href,
@@ -56,6 +56,11 @@ export function DocsSidebarNavItems({
             rel={item.external ? "noreferrer" : ""}
           >
             {item.title}
+            {item.isNew && (
+              <span className="ml-2 rounded-md bg-teal-100 px-1.5 py-0.5 text-xs no-underline group-hover:no-underline">
+                New
+              </span>
+            )}
           </Link>
         ) : (
           <span

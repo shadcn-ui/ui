@@ -18,6 +18,7 @@ export const docsConfig: DocsConfig = {
     {
       title: "Figma",
       href: "/figma",
+      isNew: true,
     },
     {
       title: "GitHub",
@@ -57,6 +58,7 @@ export const docsConfig: DocsConfig = {
         {
           title: "Figma",
           href: "/figma",
+          isNew: true,
           items: [],
         },
       ],
@@ -102,6 +104,7 @@ export const docsConfig: DocsConfig = {
         {
           title: "Command",
           href: "/docs/primitives/command",
+          isNew: true,
           items: [],
         },
         {
@@ -142,6 +145,7 @@ export const docsConfig: DocsConfig = {
         {
           title: "Navigation Menu",
           href: "/docs/primitives/navigation-menu",
+          isNew: true,
           items: [],
         },
         {
@@ -197,6 +201,7 @@ export const docsConfig: DocsConfig = {
         {
           title: "Toggle",
           href: "/docs/primitives/toggle",
+          isNew: true,
           items: [],
         },
         {

@@ -6,6 +6,7 @@ export interface NavItem {
   disabled?: boolean
   external?: boolean
   icon?: keyof typeof Icons
+  isNew?: boolean
 }
 
 export interface NavItemWithChildren extends NavItem {
