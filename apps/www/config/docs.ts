@@ -100,6 +100,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Command",
+          href: "/docs/primitives/command",
+          items: [],
+        },
+        {
           title: "Context Menu",
           href: "/docs/primitives/context-menu",
           items: [],

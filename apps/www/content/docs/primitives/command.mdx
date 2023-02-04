@@ -1,0 +1,100 @@
+---
+title: Command
+description: Fast, composable, unstyled command menu for React.
+---
+
+<ComponentExample src="/components/examples/command/demo.tsx">
+  <CommandDemo />
+</ComponentExample>
+
+## Installation
+
+1. Install the `cmdk` package:
+
+```bash
+npm install cmdk
+```
+
+2. The `<Command />` component depends on the `<Dialog />` component. Follow the [Dialog installation instructions](//docs/primitives/dialog#installation).
+
+3. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/command.tsx" />
+
+<Callout>
+  This is the `<Command />` primitive. You can place it in a file at
+  `components/ui/command.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/components/ui/command"
+```
+
+```tsx
+<CommandDialog triggerKey="j">
+  <CommandInput placeholder="Type a command or search..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>Calendar</CommandItem>
+      <CommandItem>Search Emoji</CommandItem>
+      <CommandItem>Calculator</CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Settings">
+      <CommandItem>Profile</CommandItem>
+      <CommandItem>Billing</CommandItem>
+      <CommandItem>Settings</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</CommandDialog>
+```
+
+## Examples
+
+### Dialog
+
+<ComponentExample src="/components/examples/command/dialog.tsx">
+  <CommandDialogDemo />
+</ComponentExample>
+
+To show the command menu in a dialog, use the `<CommandDialog />` component.
+
+```diff
+- <Command>
++ <CommandDialog>
+    <CommandInput placeholder="Type a command or search..." />
+    <CommandList>
+      <CommandEmpty>No results found.</CommandEmpty>
+      <CommandGroup heading="Suggestions">
+        <CommandItem>Calendar</CommandItem>
+        <CommandItem>Search Emoji</CommandItem>
+        <CommandItem>Calculator</CommandItem>
+      </CommandGroup>
+    </CommandList>
+- </Command>
++ </CommandDialog>
+```
+
+You can customize the key using the `triggerKey` prop.
+
+```tsx /triggerKey="j"/
+<CommandDialog triggerKey="j" />
+```
+
+### Popover
+
+<ComponentExample src="/components/examples/command/popover.tsx">
+  <CommandPopover />
+</ComponentExample>
