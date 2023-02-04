@@ -2,7 +2,7 @@ import { AlignCenter, AlignLeft, AlignRight } from "lucide-react"
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
-export function ToggleGroupDemo() {
+export function ToggleGroupDisabled() {
   return (
     <ToggleGroup
       type="single"
@@ -10,13 +10,13 @@ export function ToggleGroupDemo() {
       aria-label="Text alignment"
     >
       <ToggleGroupItem value="left" aria-label="Left aligned">
-        <AlignLeft className="h-4 w-4" />
+        <AlignLeft className="w-4 h-4" />
       </ToggleGroupItem>
       <ToggleGroupItem value="center" aria-label="Center aligned">
-        <AlignCenter className="h-4 w-4" />
+        <AlignCenter className="w-4 h-4" />
       </ToggleGroupItem>
-      <ToggleGroupItem value="right" aria-label="Right aligned">
-        <AlignRight className="h-4 w-4" />
+      <ToggleGroupItem disabled value="right" aria-label="Right aligned">
+        <AlignRight className="w-4 h-4" />
       </ToggleGroupItem>
     </ToggleGroup>
   )
