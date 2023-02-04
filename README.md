@@ -10,11 +10,11 @@ Beautifully designed components built with Radix UI and Tailwind CSS.
 > This is work in progress. I'm building this in public. You can follow the progress on Twitter [@shadcn](https://twitter.com/shadcn).
 
 - [ ] Toast
-- [ ] Toggle
 - [ ] Toggle Group
 - [ ] Toolbar
+- [x] ~Toggle~
 - [x] ~Navigation Menu~
-- [ ] Figma?
+- [x] ~Figma~
 
 ## Get Started
 
