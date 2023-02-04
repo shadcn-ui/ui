@@ -190,6 +190,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Toggle",
+          href: "/docs/primitives/toggle",
+          items: [],
+        },
+        {
           title: "Tooltip",
           href: "/docs/primitives/tooltip",
           items: [],
