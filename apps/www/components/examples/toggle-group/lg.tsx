@@ -11,13 +11,13 @@ export function ToggleGroupLg() {
       size="lg"
     >
       <ToggleGroupItem value="left" aria-label="Left aligned">
-        <AlignLeft className="w-4 h-4" />
+        <AlignLeft className="h-4 w-4" />
       </ToggleGroupItem>
       <ToggleGroupItem value="center" aria-label="Center aligned">
-        <AlignCenter className="w-4 h-4" />
+        <AlignCenter className="h-4 w-4" />
       </ToggleGroupItem>
       <ToggleGroupItem value="right" aria-label="Right aligned">
-        <AlignRight className="w-4 h-4" />
+        <AlignRight className="h-4 w-4" />
       </ToggleGroupItem>
     </ToggleGroup>
   )
