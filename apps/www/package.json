@@ -35,6 +35,7 @@
     "@radix-ui/react-slot": "^1.0.1",
     "@radix-ui/react-switch": "^1.0.1",
     "@radix-ui/react-tabs": "^1.0.2",
+    "@radix-ui/react-toggle": "^1.0.1",
     "@radix-ui/react-toggle-group": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.3",
     "@vercel/analytics": "^0.1.6",
