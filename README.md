@@ -41,6 +41,22 @@ npx create-next-app -e https://github.com/shadcn/next-template
 - Variants with `class-variance-authority`
 - Automatic class sorting with `eslint-plugin-tailwindcss`
 
+### Development
+
+This project is configured to use [pnpm](https://pnpm.io/) .
+
+Use `pnpm install` to download dependencies.
+
+Duplicate `.env.example` and rename it to `.env.local` (modify the default `3000` port according to your situation.)
+
+Run `pnpm dev` , then you can see it at `localhost:3000`
+
+#### Troubleshooting
+
+Failed to fetch `Inter` from Google Fonts.
+pnpm run build exited
+https://github.com/shadcn/ui/issues/62
+
 ## License
 
 Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
