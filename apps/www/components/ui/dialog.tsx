@@ -4,56 +4,21 @@ import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 
-import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-
-const dialogVariants = cva(
-	"fixed z-50 scale-100 gap-4 bg-white p-6 opacity-100 dark:bg-slate-900",
-	{
-		variants: {
-			type: {
-				modal:
-					"grid w-full animate-in fade-in-90 slide-in-from-bottom-10 sm:max-w-lg sm:rounded-lg sm:zoom-in-90 sm:slide-in-from-bottom-0",
-				"drawer-top": "animate-in slide-in-from-top w-full duration-300",
-				"drawer-bottom": "animate-in slide-in-from-bottom w-full duration-300",
-				"drawer-left": "animate-in slide-in-from-left h-full duration-300",
-				"drawer-right": "animate-in slide-in-from-right h-full duration-300",
-			},
-		},
-		defaultVariants: {
-			type: "modal",
-		},
-	},
-);
-
-const portalVariants = cva("fixed inset-0 z-50 flex", {
-	variants: {
-		type: {
-			modal: "justify-center items-start sm:items-center",
-			"drawer-top": "items-start",
-			"drawer-bottom": "items-end",
-			"drawer-left": "justify-start",
-			"drawer-right": "justify-end",
-		},
-	},
-	defaultVariants: { type: "modal" },
-});
-interface DialogPortalProps
-	extends DialogPrimitive.DialogPortalProps,
-		VariantProps<typeof portalVariants> {}
 
 const Dialog = DialogPrimitive.Root;
 
 const DialogTrigger = DialogPrimitive.Trigger;
 
 const DialogPortal = ({
-	type,
 	className,
 	children,
 	...props
-}: DialogPortalProps) => (
+}: DialogPrimitive.DialogPortalProps) => (
 	<DialogPrimitive.Portal className={cn(className)} {...props}>
-		<div className={portalVariants({ type })}>{children}</div>
+		<div className="fixed inset-0 z-50 flex items-start justify-center sm:items-center">
+			{children}
+		</div>
 	</DialogPrimitive.Portal>
 );
 DialogPortal.displayName = DialogPrimitive.Portal.displayName;
@@ -73,19 +38,19 @@ const DialogOverlay = React.forwardRef<
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
-export interface DialogContentProps
-	extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>,
-		VariantProps<typeof dialogVariants> {}
-
 const DialogContent = React.forwardRef<
 	React.ElementRef<typeof DialogPrimitive.Content>,
-	DialogContentProps
->(({ className, type, children, ...props }, ref) => (
-	<DialogPortal type={type}>
+	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+	<DialogPortal>
 		<DialogOverlay />
 		<DialogPrimitive.Content
 			ref={ref}
-			className={cn(dialogVariants({ type }), className)}
+			className={cn(
+				"fixed z-50 grid w-full scale-100 gap-4 bg-white p-6 opacity-100 animate-in fade-in-90 slide-in-from-bottom-10 sm:max-w-lg sm:rounded-lg sm:zoom-in-90 sm:slide-in-from-bottom-0",
+				"dark:bg-slate-900",
+				className,
+			)}
 			{...props}
 		>
 			{children}
