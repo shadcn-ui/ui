@@ -68,7 +68,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                 <CommandItem
                   key={navItem.href}
                   onSelect={() => {
-                    runCommand(() => router.push(navItem.href))
+                    runCommand(() => router.push(navItem.href as string))
                   }}
                 >
                   <File className="mr-2 h-4 w-4" />
