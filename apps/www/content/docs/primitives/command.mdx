@@ -1,9 +1,10 @@
 ---
 title: Command
 description: Fast, composable, unstyled command menu for React.
+component: true
 ---
 
-<ComponentExample src="/components/examples/command/demo.tsx">
+<ComponentExample src="/components/examples/command/demo.tsx" align="start">
   <CommandDemo />
 </ComponentExample>
 
@@ -71,30 +72,50 @@ import {
 
 To show the command menu in a dialog, use the `<CommandDialog />` component.
 
-```diff
-- <Command>
-+ <CommandDialog>
-    <CommandInput placeholder="Type a command or search..." />
-    <CommandList>
-      <CommandEmpty>No results found.</CommandEmpty>
-      <CommandGroup heading="Suggestions">
-        <CommandItem>Calendar</CommandItem>
-        <CommandItem>Search Emoji</CommandItem>
-        <CommandItem>Calculator</CommandItem>
-      </CommandGroup>
-    </CommandList>
-- </Command>
-+ </CommandDialog>
+```tsx
+export function CommandMenu() {
+  const [open, setOpen] = React.useState(false)
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && e.metaKey) {
+        setOpen((open) => !open)
+      }
+    }
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
+  }, [])
+
+  return (
+    <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandInput placeholder="Type a command or search..." />
+      <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandGroup heading="Suggestions">
+          <CommandItem>Calendar</CommandItem>
+          <CommandItem>Search Emoji</CommandItem>
+          <CommandItem>Calculator</CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </CommandDialog>
+  )
+}
 ```
 
-You can customize the key using the `triggerKey` prop.
+### Combobox
 
-```tsx /triggerKey="j"/
-<CommandDialog triggerKey="j" />
-```
+<ComponentExample src="/components/examples/command/combobox.tsx">
+  <CommandCombobox />
+</ComponentExample>
 
 ### Popover
 
 <ComponentExample src="/components/examples/command/popover.tsx">
   <CommandPopover />
+</ComponentExample>
+
+### Dropdown menu
+
+<ComponentExample src="/components/examples/command/dropdown-menu.tsx">
+  <CommandDropdownMenu />
 </ComponentExample>

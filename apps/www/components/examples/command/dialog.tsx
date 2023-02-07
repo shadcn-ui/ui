@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import {
   Calculator,
   Calendar,
@@ -21,6 +22,19 @@ import {
 } from "@/components/ui/command"
 
 export function CommandDialogDemo() {
+  const [open, setOpen] = React.useState(false)
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "j" && e.metaKey) {
+        setOpen((open) => !open)
+      }
+    }
+
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
+  }, [])
+
   return (
     <>
       <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -29,7 +43,7 @@ export function CommandDialogDemo() {
           <span className="text-xs">⌘</span>J
         </kbd>
       </p>
-      <CommandDialog triggerKey="j">
+      <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
