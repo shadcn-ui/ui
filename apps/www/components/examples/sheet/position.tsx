@@ -43,7 +43,7 @@ export function SheetPosition() {
 				<SheetTrigger asChild>
 					<Button>Open {position} sheet</Button>
 				</SheetTrigger>
-				<SheetContent position={position} size="default">
+				<SheetContent position={position} size="content">
 					<SheetHeader>
 						<SheetTitle>Edit profile</SheetTitle>
 						<SheetDescription>
