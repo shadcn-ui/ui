@@ -82,6 +82,49 @@ module.exports = {
 }
 ```
 
+### Fonts
+
+To add a font to your project you have to install [@nextjs/font](https://nextjs.org/docs/basic-features/font-optimization) and add the following to your `next.config.js`:
+
+```js
+const config = {
+  reactStrictMode: true,
+  experimental: {
+    fontLoaders: [
+      {
+        loader: "@next/font/google",
+        options: { subsets: ["latin"] },
+      },
+    ],
+  },
+}
+```
+
+Then declare the CSS variable in your `\_app.tsx`
+
+```ts
+import { Inter as FontSans } from "@next/font/google"
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+})
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <style jsx global>{`
+				:root {
+					--font-sans: ${fontSans.style.fontFamily};
+				}
+			}`}</style>
+      <Component {...pageProps} />
+    </>
+  )
+}
+```
+
 ### Icons
 
 I use icons from [Lucide](https://lucide.dev). You can use any icon library you want.
