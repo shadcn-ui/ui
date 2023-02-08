@@ -2,7 +2,7 @@
   "name": "ui",
   "version": "0.0.1",
   "private": true,
-  "license" : "MIT",
+  "license": "MIT",
   "author": {
     "name": "shadcn",
     "url": "https://twitter.com/shadcn"
@@ -18,7 +18,8 @@
     "lint": "turbo run lint",
     "preview": "turbo run preview",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "sync:templates": "./scripts/sync-templates.sh \"templates/*\""
+    "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
+    "prepare": "husky install"
   },
   "packageManager": "pnpm@7.13.5",
   "dependencies": {

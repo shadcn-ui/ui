@@ -11,7 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: 'swap',
+  display: "swap",
 })
 
 interface RootLayoutProps {
