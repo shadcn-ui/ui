@@ -200,9 +200,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Toggle",
           href: "/docs/primitives/toggle",
-          label: "New",
+          items: [],
+        },
+        {
           title: "Toast",
           href: "/docs/primitives/toast",
+          label: "New",
           items: [],
         },
         {

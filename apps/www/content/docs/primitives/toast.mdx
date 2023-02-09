@@ -1,6 +1,7 @@
 ---
 title: Toast
 description: A succinct message that is displayed temporarily.
+component: true
 radix:
   link: https://www.radix-ui.com/docs/primitives/components/toast
   api: https://www.radix-ui.com/docs/primitives/components/toast#api-reference
@@ -78,11 +79,21 @@ export const ToastDemo = () => {
         })
       }}
     >
-      Add to calendar
+      Show Toast
     </Button>
   )
 }
 ```
+
+The `<Toaster />` component is where your toasts are displayed. You can place it anywhere in your app, but it's recommended to place it at the root of your app.
+
+The `useToast` hook returns a `toast` function that you can use to display a toast.
+
+<Callout>
+
+To display multiple toasts at the same time, you can update the `TOAST_LIMIT` in `use-toast.tsx`.
+
+</Callout>
 
 ## Examples
 
