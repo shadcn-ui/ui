@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preview": "next build && next start"
+    "preview": "next build && next start",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@next/font": "^13.1.6",
