@@ -17,7 +17,9 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "preview": "turbo run preview",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "typecheck": "turbo run typecheck",
+    "format:write": "turbo run format",
+    "format:check": "turbo run format:check",
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
     "prepare": "husky install"
   },
