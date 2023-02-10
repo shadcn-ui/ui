@@ -18,8 +18,8 @@
     "lint": "turbo run lint",
     "preview": "turbo run preview",
     "typecheck": "turbo run typecheck",
-    "format:write": "prettier --write \"**/*.{ts,tsx,md}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,md}\" --cache",
+    "format:write": "turbo run format",
+    "format:check": "turbo run format:check",
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
     "prepare": "husky install"
   },
