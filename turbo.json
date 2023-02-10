@@ -19,6 +19,10 @@
     "lint": {
       "outputs": []
     },
+    "format:check": {
+      "outputs": []
+    },
+    "typecheck": {},
     "dev": {
       "cache": false
     }

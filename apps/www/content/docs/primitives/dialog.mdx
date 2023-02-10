@@ -2,6 +2,7 @@
 title: Dialog
 description: A modal dialog that interrupts the user with important content and expects a response.
 featured: true
+component: true
 radix:
   link: https://www.radix-ui.com/docs/primitives/components/dialog
   api: https://www.radix-ui.com/docs/primitives/components/dialog#api-reference
@@ -53,6 +54,40 @@ import {
         and remove your data from our servers.
       </DialogDescription>
     </DialogHeader>
+  </DialogContent>
+</Dialog>
+```
+
+## Notes
+
+To activate the Dialog component from within a Context Menu or Dropdown Menu, you must encase the Context Menu or
+Dropdown Menu component in the Dialog component. For more information, refer to the linked issue [here](https://github.com/radix-ui/primitives/issues/1836).
+
+```tsx
+<Dialog>
+  <ContextMenu>
+    <ContextMenuTrigger>Right click</ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuItem>Open</ContextMenuItem>
+      <ContextMenuItem>Download</ContextMenuItem>
+      <DialogTrigger asChild>
+        <ContextMenuItem>
+          <span>Delete</span>
+        </ContextMenuItem>
+      </DialogTrigger>
+    </ContextMenuContent>
+  </ContextMenu>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Are you sure absolutely sure?</DialogTitle>
+      <DialogDescription>
+        This action cannot be undone. Are you sure you want to permanently
+        delete this file from our servers?
+      </DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <Button type="submit">Confirm</Button>
+    </DialogFooter>
   </DialogContent>
 </Dialog>
 ```

@@ -14,6 +14,11 @@ import { CheckboxDemo } from "@/components/examples/checkbox/demo"
 import { CheckboxDisabled } from "@/components/examples/checkbox/disabled"
 import { CheckboxWithText } from "@/components/examples/checkbox/with-text"
 import { CollapsibleDemo } from "@/components/examples/collapsible/demo"
+import { CommandCombobox } from "@/components/examples/command/combobox"
+import { CommandDemo } from "@/components/examples/command/demo"
+import { CommandDialogDemo } from "@/components/examples/command/dialog"
+import { CommandDropdownMenu } from "@/components/examples/command/dropdown-menu"
+import { CommandPopover } from "@/components/examples/command/popover"
 import { ContextMenuDemo } from "@/components/examples/context-menu/demo"
 import { DialogDemo } from "@/components/examples/dialog/demo"
 import { DropdownMenuCheckboxes } from "@/components/examples/dropdown-menu/checkboxes"
@@ -42,6 +47,11 @@ import { TextareaDisabled } from "@/components/examples/textarea/disabled"
 import { TextareaWithButton } from "@/components/examples/textarea/with-button"
 import { TextareaWithLabel } from "@/components/examples/textarea/with-label"
 import { TextareaWithText } from "@/components/examples/textarea/with-text"
+import { ToastDemo } from "@/components/examples/toast/demo"
+import { ToastDestructive } from "@/components/examples/toast/destructive"
+import { ToastSimple } from "@/components/examples/toast/simple"
+import { ToastWithAction } from "@/components/examples/toast/with-action"
+import { ToastWithTitle } from "@/components/examples/toast/with-title"
 import { ToggleDemo } from "@/components/examples/toggle/demo"
 import { ToggleDisabled } from "@/components/examples/toggle/disabled"
 import { ToggleLg } from "@/components/examples/toggle/lg"
@@ -81,6 +91,11 @@ export const examples = {
   CheckboxDisabled,
   CheckboxWithText,
   CollapsibleDemo,
+  CommandDemo,
+  CommandDialogDemo,
+  CommandCombobox,
+  CommandPopover,
+  CommandDropdownMenu,
   ContextMenuDemo,
   DialogDemo,
   DropdownMenuCheckboxes,
@@ -109,6 +124,11 @@ export const examples = {
   TextareaWithButton,
   TextareaWithLabel,
   TextareaWithText,
+  ToastDemo,
+  ToastDestructive,
+  ToastSimple,
+  ToastWithTitle,
+  ToastWithAction,
   TooltipDemo,
   TypographyBlockquote,
   TypographyDemo,

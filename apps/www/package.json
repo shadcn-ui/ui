@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preview": "next build && next start"
+    "preview": "next build && next start",
+    "typecheck": "contentlayer build && tsc --noEmit",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
     "@next/font": "^13.1.6",
@@ -35,6 +38,7 @@
     "@radix-ui/react-slot": "^1.0.1",
     "@radix-ui/react-switch": "^1.0.1",
     "@radix-ui/react-tabs": "^1.0.2",
+    "@radix-ui/react-toast": "^1.1.2",
     "@radix-ui/react-toggle": "^1.0.1",
     "@radix-ui/react-toggle-group": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.3",
@@ -42,6 +46,7 @@
     "@vercel/og": "^0.0.21",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
+    "cmdk": "^0.1.21",
     "contentlayer": "^0.3.0",
     "logsnag": "^0.1.6",
     "lucide-react": "0.105.0-alpha.4",
