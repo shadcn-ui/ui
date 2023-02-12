@@ -33,3 +33,4 @@ yarn-error.log*
 .turbo
 
 .contentlayer
+tsconfig.tsbuildinfo

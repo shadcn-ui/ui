@@ -45,7 +45,7 @@
   @apply rounded-md bg-slate-300 bg-opacity-10 p-1;
 }
 [data-rehype-pretty-code-title] {
-  @apply inline-block mt-6 py-1 px-1 text-sm font-medium text-slate-700 dark:text-slate-400;
+  @apply inline-block mt-2 py-1 px-1 text-sm font-medium text-slate-700 dark:text-slate-400;
 }
 [data-rehype-pretty-code-title] + pre {
   @apply mt-2;

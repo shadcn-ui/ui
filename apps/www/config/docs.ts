@@ -16,6 +16,11 @@ export const docsConfig: DocsConfig = {
       href: "/docs/primitives/accordion",
     },
     {
+      title: "Figma",
+      href: "/figma",
+      label: "New",
+    },
+    {
       title: "GitHub",
       href: "https://github.com/shadcn/ui",
       external: true,
@@ -43,6 +48,17 @@ export const docsConfig: DocsConfig = {
         {
           title: "Typography",
           href: "/docs/primitives/typography",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Community",
+      items: [
+        {
+          title: "Figma",
+          href: "/figma",
+          label: "New",
           items: [],
         },
       ],
@@ -86,6 +102,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Command",
+          href: "/docs/primitives/command",
+          label: "Beta",
+          items: [],
+        },
+        {
           title: "Context Menu",
           href: "/docs/primitives/context-menu",
           items: [],
@@ -118,6 +140,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Menubar",
           href: "/docs/primitives/menubar",
+          items: [],
+        },
+        {
+          title: "Navigation Menu",
+          href: "/docs/primitives/navigation-menu",
           items: [],
         },
         {
@@ -168,6 +195,17 @@ export const docsConfig: DocsConfig = {
         {
           title: "Textarea",
           href: "/docs/primitives/textarea",
+          items: [],
+        },
+        {
+          title: "Toggle",
+          href: "/docs/primitives/toggle",
+          items: [],
+        },
+        {
+          title: "Toast",
+          href: "/docs/primitives/toast",
+          label: "New",
           items: [],
         },
         {

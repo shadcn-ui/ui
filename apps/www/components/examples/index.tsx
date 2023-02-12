@@ -3,6 +3,7 @@ import { AlertDialogDemo } from "@/components/examples/alert-dialog/demo"
 import { AspectRatioDemo } from "@/components/examples/aspect-ratio/demo"
 import { AvatarDemo } from "@/components/examples/avatar/demo"
 import { ButtonDemo } from "@/components/examples/button/demo"
+import { ButtonDestructive } from "@/components/examples/button/destructive"
 import { ButtonGhost } from "@/components/examples/button/ghost"
 import { ButtonLink } from "@/components/examples/button/link"
 import { ButtonLoading } from "@/components/examples/button/loading"
@@ -13,6 +14,11 @@ import { CheckboxDemo } from "@/components/examples/checkbox/demo"
 import { CheckboxDisabled } from "@/components/examples/checkbox/disabled"
 import { CheckboxWithText } from "@/components/examples/checkbox/with-text"
 import { CollapsibleDemo } from "@/components/examples/collapsible/demo"
+import { CommandCombobox } from "@/components/examples/command/combobox"
+import { CommandDemo } from "@/components/examples/command/demo"
+import { CommandDialogDemo } from "@/components/examples/command/dialog"
+import { CommandDropdownMenu } from "@/components/examples/command/dropdown-menu"
+import { CommandPopover } from "@/components/examples/command/popover"
 import { ContextMenuDemo } from "@/components/examples/context-menu/demo"
 import { DialogDemo } from "@/components/examples/dialog/demo"
 import { DropdownMenuCheckboxes } from "@/components/examples/dropdown-menu/checkboxes"
@@ -26,6 +32,7 @@ import { InputWithLabel } from "@/components/examples/input/with-label"
 import { InputWithText } from "@/components/examples/input/with-text"
 import { LabelDemo } from "@/components/examples/label/demo"
 import { MenubarDemo } from "@/components/examples/menubar/demo"
+import { NavigationMenuDemo } from "@/components/examples/navigation-menu/demo"
 import { PopoverDemo } from "@/components/examples/popover/demo"
 import { ProgressDemo } from "@/components/examples/progress/demo"
 import { RadioGroupDemo } from "@/components/examples/radio-group/demo"
@@ -40,6 +47,17 @@ import { TextareaDisabled } from "@/components/examples/textarea/disabled"
 import { TextareaWithButton } from "@/components/examples/textarea/with-button"
 import { TextareaWithLabel } from "@/components/examples/textarea/with-label"
 import { TextareaWithText } from "@/components/examples/textarea/with-text"
+import { ToastDemo } from "@/components/examples/toast/demo"
+import { ToastDestructive } from "@/components/examples/toast/destructive"
+import { ToastSimple } from "@/components/examples/toast/simple"
+import { ToastWithAction } from "@/components/examples/toast/with-action"
+import { ToastWithTitle } from "@/components/examples/toast/with-title"
+import { ToggleDemo } from "@/components/examples/toggle/demo"
+import { ToggleDisabled } from "@/components/examples/toggle/disabled"
+import { ToggleLg } from "@/components/examples/toggle/lg"
+import { ToggleOutline } from "@/components/examples/toggle/outline"
+import { ToggleSm } from "@/components/examples/toggle/sm"
+import { ToggleWithText } from "@/components/examples/toggle/with-text"
 import { TooltipDemo } from "@/components/examples/tooltip/demo"
 import { TypographyBlockquote } from "@/components/examples/typography/blockquote"
 import { TypographyDemo } from "@/components/examples/typography/demo"
@@ -63,6 +81,7 @@ export const examples = {
   AvatarDemo,
   ButtonDemo,
   ButtonGhost,
+  ButtonDestructive,
   ButtonLink,
   ButtonLoading,
   ButtonOutline,
@@ -72,6 +91,11 @@ export const examples = {
   CheckboxDisabled,
   CheckboxWithText,
   CollapsibleDemo,
+  CommandDemo,
+  CommandDialogDemo,
+  CommandCombobox,
+  CommandPopover,
+  CommandDropdownMenu,
   ContextMenuDemo,
   DialogDemo,
   DropdownMenuCheckboxes,
@@ -85,6 +109,7 @@ export const examples = {
   InputWithText,
   LabelDemo,
   MenubarDemo,
+  NavigationMenuDemo,
   PopoverDemo,
   ProgressDemo,
   RadioGroupDemo,
@@ -99,6 +124,11 @@ export const examples = {
   TextareaWithButton,
   TextareaWithLabel,
   TextareaWithText,
+  ToastDemo,
+  ToastDestructive,
+  ToastSimple,
+  ToastWithTitle,
+  ToastWithAction,
   TooltipDemo,
   TypographyBlockquote,
   TypographyDemo,
@@ -114,4 +144,10 @@ export const examples = {
   TypographySmall,
   TypographySubtle,
   TypographyTable,
+  ToggleDemo,
+  ToggleSm,
+  ToggleLg,
+  ToggleOutline,
+  ToggleDisabled,
+  ToggleWithText,
 }

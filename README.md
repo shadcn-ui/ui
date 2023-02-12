@@ -10,11 +10,11 @@ Beautifully designed components built with Radix UI and Tailwind CSS.
 > This is work in progress. I'm building this in public. You can follow the progress on Twitter [@shadcn](https://twitter.com/shadcn).
 
 - [ ] Toast
-- [ ] Toggle
 - [ ] Toggle Group
 - [ ] Toolbar
-- [ ] Navigation Menu
-- [ ] Figma?
+- [x] ~Toggle~
+- [x] ~Navigation Menu~
+- [x] ~Figma~
 
 ## Get Started
 
@@ -35,7 +35,7 @@ npx create-next-app -e https://github.com/shadcn/next-template
 
 ### Tailwind CSS Features
 
-- Class merging with `taiwind-merge`
+- Class merging with `tailwind-merge`
 - Animation with `tailwindcss-animate`
 - Conditional classes with `clsx`
 - Variants with `class-variance-authority`

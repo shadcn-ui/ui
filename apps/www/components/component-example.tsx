@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {
   extractClassname?: boolean
   extractedClassNames?: string
+  align?: "center" | "start" | "end"
 }
 
 export function ComponentExample({
@@ -16,6 +17,7 @@ export function ComponentExample({
   className,
   extractClassname,
   extractedClassNames,
+  align = "center",
   ...props
 }: ComponentExampleProps) {
   const [Example, Code, ...Children] = React.Children.toArray(
@@ -55,7 +57,13 @@ export function ComponentExample({
           )}
         </div>
         <TabsContent value="preview" className="p-0">
-          <div className="flex min-h-[350px] items-center justify-center p-10">
+          <div
+            className={cn("flex min-h-[350px] justify-center p-10", {
+              "items-center": align === "center",
+              "items-start": align === "start",
+              "items-end": align === "end",
+            })}
+          >
             {Example}
           </div>
         </TabsContent>
