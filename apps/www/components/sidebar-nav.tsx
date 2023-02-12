@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { SidebarNavItem } from "types/nav"
 
 import { cn } from "@/lib/utils"
+import { Icons } from "../icons"
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[]
@@ -34,10 +35,19 @@ interface DocsSidebarNavItemsProps {
   pathname: string | null
 }
 
+export function DocsSidebarNavIcon({ icon }: { icon: string }) {
+  const Icon = Icons[icon]
+  return (
+    <Icon className="mr-2 h-4 w-4" />
+  )
+}
+
+
 export function DocsSidebarNavItems({
   items,
   pathname,
 }: DocsSidebarNavItemsProps) {
+   
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max text-sm">
       {items.map((item, index) =>
@@ -46,7 +56,7 @@ export function DocsSidebarNavItems({
             key={index}
             href={item.href}
             className={cn(
-              "group flex w-full items-center rounded-md py-1.5 px-2 hover:bg-slate-50 dark:hover:bg-slate-800",
+              "group flex w-full items-center rounded-md py-2 px-2 my-0.5 hover:bg-slate-50 dark:hover:bg-slate-800",
               item.disabled && "cursor-not-allowed opacity-60",
               {
                 "bg-slate-100 dark:bg-slate-800": pathname === item.href,
@@ -55,6 +65,7 @@ export function DocsSidebarNavItems({
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
           >
+            {item.icon && <DocsSidebarNavIcon icon={item.icon} />}
             {item.title}
             {item.label && (
               <span className="ml-2 rounded-md bg-teal-100 px-1.5 py-0.5 text-xs no-underline group-hover:no-underline dark:text-slate-900">
