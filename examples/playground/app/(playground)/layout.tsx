@@ -28,13 +28,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           </div>
           <nav className="ml-auto flex items-center space-x-1">
             <Link
-              href="/login"
-              className={cn(
-                buttonVariants({ variant: "ghost" }),
-                "h-9 px-2 text-emerald-700"
-              )}
+              href={siteConfig.links.github}
+              className={cn(buttonVariants({ variant: "ghost" }), "h-9 px-2")}
             >
-              <Zap className="mr-2 h-4 w-4" /> Upgrade
+              <Icons.gitHub className="mr-2 h-4 w-4" /> GitHub
             </Link>
             <Button variant="ghost" className="h-9 pl-2">
               <HelpCircle className="mr-2 h-4 w-4" /> Help
