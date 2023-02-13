@@ -9,7 +9,7 @@ interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: "OpenUI",
+  name: "Playground",
   description: "Dashboard built using Next.js, Tailwind CSS, and Radix UI",
   links: {
     twitter: "https://twitter.com/shadcn",
