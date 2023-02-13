@@ -25,7 +25,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     // Simulate a login request
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    router.push("/dashboard")
+    router.push("/")
 
     return toast({
       title: "Check your email",

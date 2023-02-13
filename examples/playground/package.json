@@ -1,13 +1,13 @@
 {
-  "name": "demo",
+  "name": "playground",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3333",
+    "dev": "next dev -p 4000",
     "build": "next build",
-    "start": "next start -p 3333",
+    "start": "next start -p 4000",
     "lint": "next lint",
-    "preview": "next build && next start -p 3333",
+    "preview": "next build && next start -p 4000",
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"

@@ -1,5 +1,6 @@
 "use client"
 
+import { PopoverProps } from "@radix-ui/react-popover"
 import { Clipboard, Copy } from "lucide-react"
 
 import { Button } from "@/components/ui/button"

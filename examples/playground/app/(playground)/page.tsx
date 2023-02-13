@@ -26,22 +26,24 @@ import { Textarea } from "@/components/ui/textarea"
 export default function PlaygroundPage() {
   return (
     <div className="flex h-full flex-col">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex flex-col items-start justify-between space-y-2 py-4 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
         <h1 className="text-lg font-semibold text-slate-900 dark:text-slate-50">
           Playground
         </h1>
-        <div className="flex space-x-2">
+        <div className="ml-auto flex w-full space-x-2 sm:justify-end">
           <PresetSelector presets={presets} />
           <PresetSave />
-          <CodeViewer />
-          <PresetShare />
+          <div className="hidden space-x-2 md:flex">
+            <CodeViewer />
+            <PresetShare />
+          </div>
           <PresetActions />
         </div>
       </div>
       <Separator />
       <Tabs defaultValue="complete" className="flex-1">
         <div className="container h-full py-6">
-          <div className="grid h-full grid-cols-[1fr_200px] items-stretch gap-6">
+          <div className="grid h-full items-stretch gap-6 md:grid-cols-[1fr_200px]">
             <TabsContent value="complete" className="mt-0 border-0 p-0">
               <div className="flex h-full flex-col space-y-4">
                 <Textarea
@@ -95,7 +97,7 @@ export default function PlaygroundPage() {
                 <div className="mt-[21px] rounded-md border border-slate-200 bg-slate-100"></div>
               </div>
             </TabsContent>
-            <div className="flex flex-col space-y-4">
+            <div className="hidden flex-col space-y-4 sm:flex">
               <div className="grid gap-2">
                 <HoverCard openDelay={200}>
                   <HoverCardTrigger className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">

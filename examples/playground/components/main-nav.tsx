@@ -18,7 +18,7 @@ import {
 
 export function MainNav() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="hidden lg:flex">
       <NavigationMenuList className="space-x-1">
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>

@@ -38,7 +38,7 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[300px] justify-between"
+          className="max-w-[300px] flex-1 justify-between"
         >
           {selectedPreset ? selectedPreset.name : "Load a preset..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -69,7 +69,7 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
               </CommandItem>
             ))}
           </CommandGroup>
-          <CommandGroup>
+          <CommandGroup className="pt-0">
             <CommandItem onSelect={() => router.push("/examples")}>
               More examples
             </CommandItem>

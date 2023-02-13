@@ -92,12 +92,12 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
               </div>
             </HoverCardContent>
             <Command loop>
-              <CommandList className="h-[var(--cmdk-list-height)] max-h-[none]">
+              <CommandList className="h-[var(--cmdk-list-height)] max-h-[400px]">
                 <CommandInput placeholder="Search Models..." />
                 <CommandEmpty>No Models found.</CommandEmpty>
                 <HoverCardTrigger />
                 {types.map((type) => (
-                  <CommandGroup heading={type}>
+                  <CommandGroup key={type} heading={type}>
                     {models
                       .filter((model) => model.type === type)
                       .map((model) => (
@@ -105,7 +105,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
                           key={model.id}
                           model={model}
                           isSelected={selectedModel?.id === model.id}
-                          onPeek={() => setPeekedModel(model)}
+                          onPeek={(model) => setPeekedModel(model)}
                           onSelect={() => {
                             setSelectedModel(model)
                             setOpen(false)
@@ -127,7 +127,7 @@ interface ModelItemProps {
   model: Model
   isSelected: boolean
   onSelect: () => void
-  onPeek: () => void
+  onPeek: (model: Model) => void
 }
 
 function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
@@ -138,8 +138,8 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
       (mutation) => mutation.attributeName === "aria-selected"
     )
 
-    if (mutation) {
-      onPeek()
+    if (mutation && mutation.target?.getAttribute("aria-selected")) {
+      onPeek(model)
     }
   })
 
