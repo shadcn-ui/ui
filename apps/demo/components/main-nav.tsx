@@ -43,7 +43,7 @@ export function MainNav() {
             Examples
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[640px] ">
               {examples.map((example) => (
                 <ListItem key={example.title} example={example} />
               ))}
@@ -74,7 +74,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "flex select-none items-center space-x-4 space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-slate-700 dark:focus:bg-slate-700",
+            "flex select-none items-start space-x-4 space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-slate-700 dark:focus:bg-slate-700",
             className
           )}
           {...props}
