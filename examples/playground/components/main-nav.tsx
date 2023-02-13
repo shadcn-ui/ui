@@ -30,7 +30,7 @@ export function MainNav() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(navigationMenuTriggerStyle(), "h-9")}
             >
