@@ -37,6 +37,7 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
         <Button
           variant="outline"
           role="combobox"
+          aria-label="Load a preset..."
           aria-expanded={open}
           className="max-w-[300px] flex-1 justify-between"
         >

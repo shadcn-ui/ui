@@ -42,7 +42,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
   return (
     <div className="grid gap-2">
       <HoverCard openDelay={200}>
-        <HoverCardTrigger>
+        <HoverCardTrigger asChild>
           <Label htmlFor="model">Model</Label>
         </HoverCardTrigger>
         <HoverCardContent
@@ -60,6 +60,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
             variant="outline"
             role="combobox"
             aria-expanded={open}
+            aria-label="Select a model"
             className="w-full justify-between"
           >
             {selectedModel ? selectedModel.name : "Select a model..."}

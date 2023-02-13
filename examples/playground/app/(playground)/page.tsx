@@ -100,8 +100,10 @@ export default function PlaygroundPage() {
             <div className="hidden flex-col space-y-4 sm:flex">
               <div className="grid gap-2">
                 <HoverCard openDelay={200}>
-                  <HoverCardTrigger className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                    Mode
+                  <HoverCardTrigger asChild>
+                    <span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      Mode
+                    </span>
                   </HoverCardTrigger>
                   <HoverCardContent className="w-[320px] text-sm" side="left">
                     Choose the interface that best suits your task. You can
@@ -112,12 +114,15 @@ export default function PlaygroundPage() {
                 </HoverCard>
                 <TabsList className="grid grid-cols-3">
                   <TabsTrigger value="complete">
+                    <span className="sr-only">Complete</span>
                     <Icons.completeMode className="h-5 w-5" />
                   </TabsTrigger>
                   <TabsTrigger value="insert">
+                    <span className="sr-only">Insert</span>
                     <Icons.insertMode className="h-5 w-5" />
                   </TabsTrigger>
                   <TabsTrigger value="edit">
+                    <span className="sr-only">Edit</span>
                     <Icons.editMode className="h-5 w-5" />
                   </TabsTrigger>
                 </TabsList>

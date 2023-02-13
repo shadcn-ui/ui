@@ -3,6 +3,7 @@ import { HelpCircle, Zap } from "lucide-react"
 
 import { workspaces } from "@/data/teams"
 import { user } from "@/data/user"
+import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
@@ -21,6 +22,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <div className="flex items-center space-x-4">
             <Link href="/">
               <Icons.logo />
+              <span className="sr-only">{siteConfig.name}</span>
             </Link>
             <MainNav />
           </div>
@@ -29,7 +31,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               href="/login"
               className={cn(
                 buttonVariants({ variant: "ghost" }),
-                "h-9 px-2 text-emerald-600"
+                "h-9 px-2 text-emerald-700"
               )}
             >
               <Zap className="mr-2 h-4 w-4" /> Upgrade
