@@ -9,6 +9,7 @@
   },
   "workspaces": [
     "apps/*",
+    "examples/*",
     "packages/*",
     "templates/*"
   ],

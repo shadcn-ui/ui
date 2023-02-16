@@ -187,6 +187,121 @@ importers:
       unist-builder: 3.0.0
       unist-util-visit: 4.1.1
 
+  examples/playground:
+    specifiers:
+      "@ianvs/prettier-plugin-sort-imports": ^3.7.1
+      "@next/font": ^13.1.6
+      "@radix-ui/react-accessible-icon": ^1.0.1
+      "@radix-ui/react-accordion": ^1.1.0
+      "@radix-ui/react-alert-dialog": ^1.0.2
+      "@radix-ui/react-aspect-ratio": ^1.0.1
+      "@radix-ui/react-avatar": ^1.0.1
+      "@radix-ui/react-checkbox": ^1.0.1
+      "@radix-ui/react-collapsible": ^1.0.1
+      "@radix-ui/react-context-menu": ^2.1.1
+      "@radix-ui/react-dialog": ^1.0.2
+      "@radix-ui/react-dropdown-menu": ^2.0.1
+      "@radix-ui/react-hover-card": ^1.0.3
+      "@radix-ui/react-label": ^2.0.0
+      "@radix-ui/react-menubar": ^1.0.0
+      "@radix-ui/react-navigation-menu": ^1.1.1
+      "@radix-ui/react-popover": ^1.0.2
+      "@radix-ui/react-progress": ^1.0.1
+      "@radix-ui/react-radio-group": ^1.1.0
+      "@radix-ui/react-scroll-area": ^1.0.2
+      "@radix-ui/react-select": ^1.2.0
+      "@radix-ui/react-separator": ^1.0.1
+      "@radix-ui/react-slider": ^1.1.0
+      "@radix-ui/react-slot": ^1.0.1
+      "@radix-ui/react-switch": ^1.0.1
+      "@radix-ui/react-tabs": ^1.0.2
+      "@radix-ui/react-toast": ^1.1.2
+      "@radix-ui/react-toggle": ^1.0.1
+      "@radix-ui/react-toggle-group": ^1.0.1
+      "@radix-ui/react-tooltip": ^1.0.3
+      "@types/node": ^17.0.12
+      "@types/react": ^18.0.22
+      "@types/react-dom": ^18.0.7
+      "@vercel/analytics": ^0.1.6
+      autoprefixer: ^10.4.13
+      class-variance-authority: ^0.4.0
+      clsx: ^1.2.1
+      cmdk: ^0.1.21
+      eslint: ^8.31.0
+      eslint-config-next: 13.0.0
+      eslint-config-prettier: ^8.3.0
+      eslint-plugin-react: ^7.31.11
+      eslint-plugin-tailwindcss: ^3.8.0
+      lucide-react: 0.105.0-alpha.4
+      next: ^13.1.6
+      next-themes: ^0.2.1
+      postcss: ^8.4.14
+      prettier: ^2.7.1
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      sharp: ^0.31.3
+      tailwind-merge: ^1.8.0
+      tailwindcss: ^3.1.7
+      tailwindcss-animate: ^1.0.5
+      typescript: ^4.5.3
+    dependencies:
+      "@next/font": 13.1.6
+      "@radix-ui/react-accessible-icon": 1.0.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-accordion": 1.1.0_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-alert-dialog": 1.0.2_ib3m5ricvtkl2cll7qpr2f6lvq
+      "@radix-ui/react-aspect-ratio": 1.0.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-avatar": 1.0.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-checkbox": 1.0.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-collapsible": 1.0.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-context-menu": 2.1.1_ib3m5ricvtkl2cll7qpr2f6lvq
+      "@radix-ui/react-dialog": 1.0.2_ib3m5ricvtkl2cll7qpr2f6lvq
+      "@radix-ui/react-dropdown-menu": 2.0.1_ib3m5ricvtkl2cll7qpr2f6lvq
+      "@radix-ui/react-hover-card": 1.0.3_ib3m5ricvtkl2cll7qpr2f6lvq
+      "@radix-ui/react-label": 2.0.0_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-menubar": 1.0.0_ib3m5ricvtkl2cll7qpr2f6lvq
+      "@radix-ui/react-navigation-menu": 1.1.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-popover": 1.0.2_ib3m5ricvtkl2cll7qpr2f6lvq
+      "@radix-ui/react-progress": 1.0.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-radio-group": 1.1.0_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-scroll-area": 1.0.2_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-select": 1.2.0_ib3m5ricvtkl2cll7qpr2f6lvq
+      "@radix-ui/react-separator": 1.0.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-slider": 1.1.0_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-slot": 1.0.1_react@18.2.0
+      "@radix-ui/react-switch": 1.0.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-tabs": 1.0.2_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-toast": 1.1.2_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-toggle": 1.0.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-toggle-group": 1.0.1_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-tooltip": 1.0.3_ib3m5ricvtkl2cll7qpr2f6lvq
+      "@vercel/analytics": 0.1.6_react@18.2.0
+      class-variance-authority: 0.4.0_typescript@4.9.4
+      clsx: 1.2.1
+      cmdk: 0.1.21_ib3m5ricvtkl2cll7qpr2f6lvq
+      lucide-react: 0.105.0-alpha.4_react@18.2.0
+      next: 13.1.6_7xlrwlvvs7cv2obrs6a5y6oxxq
+      next-themes: 0.2.1_3vryta7zmbcsw4rrqf4axjqggm
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      sharp: 0.31.3
+      tailwind-merge: 1.8.0
+      tailwindcss-animate: 1.0.5_tailwindcss@3.2.4
+    devDependencies:
+      "@ianvs/prettier-plugin-sort-imports": 3.7.1_prettier@2.8.1
+      "@types/node": 17.0.45
+      "@types/react": 18.0.26
+      "@types/react-dom": 18.0.10
+      autoprefixer: 10.4.13_postcss@8.4.20
+      eslint: 8.31.0
+      eslint-config-next: 13.0.0_iukboom6ndih5an6iafl45j2fe
+      eslint-config-prettier: 8.5.0_eslint@8.31.0
+      eslint-plugin-react: 7.31.11_eslint@8.31.0
+      eslint-plugin-tailwindcss: 3.8.0
+      postcss: 8.4.20
+      prettier: 2.8.1
+      tailwindcss: 3.2.4_postcss@8.4.20
+      typescript: 4.9.4
+
   templates/next-template:
     specifiers:
       "@ianvs/prettier-plugin-sort-imports": ^3.7.1
@@ -1354,7 +1469,7 @@ packages:
     engines: { node: ^8.13.0 || >=10.10.0 }
     dependencies:
       "@grpc/proto-loader": 0.7.4
-      "@types/node": 18.11.17
+      "@types/node": 18.13.0
     dev: false
 
   /@grpc/proto-loader/0.6.13:
@@ -3290,7 +3405,7 @@ packages:
         integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==,
       }
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.2.4:
@@ -3451,6 +3566,13 @@ packages:
         integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==,
       }
 
+  /@types/node/18.13.0:
+    resolution:
+      {
+        integrity: sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==,
+      }
+    dev: false
+
   /@types/normalize-package-data/2.4.1:
     resolution:
       {
@@ -3477,6 +3599,15 @@ packages:
       {
         integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==,
       }
+
+  /@types/react-dom/18.0.10:
+    resolution:
+      {
+        integrity: sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg==,
+      }
+    dependencies:
+      "@types/react": 18.0.26
+    dev: true
 
   /@types/react-dom/18.0.6:
     resolution:
@@ -3543,10 +3674,10 @@ packages:
       }
     dev: false
 
-  /@typescript-eslint/parser/5.47.0_iukboom6ndih5an6iafl45j2fe:
+  /@typescript-eslint/parser/5.51.0_iukboom6ndih5an6iafl45j2fe:
     resolution:
       {
-        integrity: sha512-udPU4ckK+R1JWCGdQC4Qa27NtBg7w020ffHqGyAK8pAgOVuNw7YaKXGChk+udh+iiGIJf6/E/0xhVXyPAbsczw==,
+        integrity: sha512-fEV0R9gGmfpDeRzJXn+fGQKcl0inIeYobmmUWijZh9zA7bxJ8clPhV9up2ZQzATxAiFAECqPQyMDB4o4B81AaA==,
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
     peerDependencies:
@@ -3556,9 +3687,9 @@ packages:
       typescript:
         optional: true
     dependencies:
-      "@typescript-eslint/scope-manager": 5.47.0
-      "@typescript-eslint/types": 5.47.0
-      "@typescript-eslint/typescript-estree": 5.47.0_typescript@4.9.4
+      "@typescript-eslint/scope-manager": 5.51.0
+      "@typescript-eslint/types": 5.51.0
+      "@typescript-eslint/typescript-estree": 5.51.0_typescript@4.9.4
       debug: 4.3.4
       eslint: 8.31.0
       typescript: 4.9.4
@@ -3566,10 +3697,10 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/parser/5.47.0_wogtpudmlxya2leoxia5qf2rl4:
+  /@typescript-eslint/parser/5.51.0_wogtpudmlxya2leoxia5qf2rl4:
     resolution:
       {
-        integrity: sha512-udPU4ckK+R1JWCGdQC4Qa27NtBg7w020ffHqGyAK8pAgOVuNw7YaKXGChk+udh+iiGIJf6/E/0xhVXyPAbsczw==,
+        integrity: sha512-fEV0R9gGmfpDeRzJXn+fGQKcl0inIeYobmmUWijZh9zA7bxJ8clPhV9up2ZQzATxAiFAECqPQyMDB4o4B81AaA==,
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
     peerDependencies:
@@ -3579,9 +3710,9 @@ packages:
       typescript:
         optional: true
     dependencies:
-      "@typescript-eslint/scope-manager": 5.47.0
-      "@typescript-eslint/types": 5.47.0
-      "@typescript-eslint/typescript-estree": 5.47.0_typescript@4.7.4
+      "@typescript-eslint/scope-manager": 5.51.0
+      "@typescript-eslint/types": 5.51.0
+      "@typescript-eslint/typescript-estree": 5.51.0_typescript@4.7.4
       debug: 4.3.4
       eslint: 8.31.0
       typescript: 4.7.4
@@ -3589,27 +3720,27 @@ packages:
       - supports-color
     dev: false
 
-  /@typescript-eslint/scope-manager/5.47.0:
+  /@typescript-eslint/scope-manager/5.51.0:
     resolution:
       {
-        integrity: sha512-dvJab4bFf7JVvjPuh3sfBUWsiD73aiftKBpWSfi3sUkysDQ4W8x+ZcFpNp7Kgv0weldhpmMOZBjx1wKN8uWvAw==,
+        integrity: sha512-gNpxRdlx5qw3yaHA0SFuTjW4rxeYhpHxt491PEcKF8Z6zpq0kMhe0Tolxt0qjlojS+/wArSDlj/LtE69xUJphQ==,
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
     dependencies:
-      "@typescript-eslint/types": 5.47.0
-      "@typescript-eslint/visitor-keys": 5.47.0
+      "@typescript-eslint/types": 5.51.0
+      "@typescript-eslint/visitor-keys": 5.51.0
 
-  /@typescript-eslint/types/5.47.0:
+  /@typescript-eslint/types/5.51.0:
     resolution:
       {
-        integrity: sha512-eslFG0Qy8wpGzDdYKu58CEr3WLkjwC5Usa6XbuV89ce/yN5RITLe1O8e+WFEuxnfftHiJImkkOBADj58ahRxSg==,
+        integrity: sha512-SqOn0ANn/v6hFn0kjvLwiDi4AzR++CBZz0NV5AnusT2/3y32jdc0G4woXPWHCumWtUXZKPAS27/9vziSsC9jnw==,
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
 
-  /@typescript-eslint/typescript-estree/5.47.0_typescript@4.7.4:
+  /@typescript-eslint/typescript-estree/5.51.0_typescript@4.7.4:
     resolution:
       {
-        integrity: sha512-LxfKCG4bsRGq60Sqqu+34QT5qT2TEAHvSCCJ321uBWywgE2dS0LKcu5u+3sMGo+Vy9UmLOhdTw5JHzePV/1y4Q==,
+        integrity: sha512-TSkNupHvNRkoH9FMA3w7TazVFcBPveAAmb7Sz+kArY6sLT86PA5Vx80cKlYmd8m3Ha2SwofM1KwraF24lM9FvA==,
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
     peerDependencies:
@@ -3618,8 +3749,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      "@typescript-eslint/types": 5.47.0
-      "@typescript-eslint/visitor-keys": 5.47.0
+      "@typescript-eslint/types": 5.51.0
+      "@typescript-eslint/visitor-keys": 5.51.0
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
@@ -3630,10 +3761,10 @@ packages:
       - supports-color
     dev: false
 
-  /@typescript-eslint/typescript-estree/5.47.0_typescript@4.9.4:
+  /@typescript-eslint/typescript-estree/5.51.0_typescript@4.9.4:
     resolution:
       {
-        integrity: sha512-LxfKCG4bsRGq60Sqqu+34QT5qT2TEAHvSCCJ321uBWywgE2dS0LKcu5u+3sMGo+Vy9UmLOhdTw5JHzePV/1y4Q==,
+        integrity: sha512-TSkNupHvNRkoH9FMA3w7TazVFcBPveAAmb7Sz+kArY6sLT86PA5Vx80cKlYmd8m3Ha2SwofM1KwraF24lM9FvA==,
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
     peerDependencies:
@@ -3642,8 +3773,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      "@typescript-eslint/types": 5.47.0
-      "@typescript-eslint/visitor-keys": 5.47.0
+      "@typescript-eslint/types": 5.51.0
+      "@typescript-eslint/visitor-keys": 5.51.0
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
@@ -3654,14 +3785,14 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/visitor-keys/5.47.0:
+  /@typescript-eslint/visitor-keys/5.51.0:
     resolution:
       {
-        integrity: sha512-ByPi5iMa6QqDXe/GmT/hR6MZtVPi0SqMQPDx15FczCBXJo/7M8T88xReOALAfpBLm+zxpPfmhuEvPb577JRAEg==,
+        integrity: sha512-Oh2+eTdjHjOFjKA27sxESlA87YPSOJafGCR0md5oeMdh1ZcCfAGCIOL216uTBAkAIptvLIfKQhl7lHxMJet4GQ==,
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
     dependencies:
-      "@typescript-eslint/types": 5.47.0
+      "@typescript-eslint/types": 5.51.0
       eslint-visitor-keys: 3.3.0
 
   /@vercel/analytics/0.1.6_react@18.2.0:
@@ -3866,7 +3997,7 @@ packages:
     dependencies:
       "@types/react": 18.0.26
       react: 18.2.0
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /aria-query/4.2.2:
@@ -5020,7 +5151,7 @@ packages:
     dependencies:
       "@next/eslint-plugin-next": 13.0.0
       "@rushstack/eslint-patch": 1.2.0
-      "@typescript-eslint/parser": 5.47.0_iukboom6ndih5an6iafl45j2fe
+      "@typescript-eslint/parser": 5.51.0_iukboom6ndih5an6iafl45j2fe
       eslint: 8.31.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_ol7jqilc3wemtdbq3nzhywgxq4
@@ -5048,7 +5179,7 @@ packages:
     dependencies:
       "@next/eslint-plugin-next": 13.0.0
       "@rushstack/eslint-patch": 1.2.0
-      "@typescript-eslint/parser": 5.47.0_wogtpudmlxya2leoxia5qf2rl4
+      "@typescript-eslint/parser": 5.51.0_wogtpudmlxya2leoxia5qf2rl4
       eslint: 8.31.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_ol7jqilc3wemtdbq3nzhywgxq4
@@ -8760,7 +8891,7 @@ packages:
       "@protobufjs/pool": 1.1.0
       "@protobufjs/utf8": 1.1.0
       "@types/long": 4.0.2
-      "@types/node": 18.11.17
+      "@types/node": 18.13.0
       long: 4.0.0
     dev: false
 
@@ -8782,7 +8913,7 @@ packages:
       "@protobufjs/path": 1.1.2
       "@protobufjs/pool": 1.1.0
       "@protobufjs/utf8": 1.1.0
-      "@types/node": 18.11.17
+      "@types/node": 18.13.0
       long: 5.2.1
     dev: false
 
@@ -8879,7 +9010,7 @@ packages:
       "@types/react": 18.0.26
       react: 18.2.0
       react-style-singleton: 2.2.1_kzbn2opkn2327fwg5yzwzya5o4
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /react-remove-scroll/2.5.4_kzbn2opkn2327fwg5yzwzya5o4:
@@ -8899,7 +9030,7 @@ packages:
       react: 18.2.0
       react-remove-scroll-bar: 2.3.4_kzbn2opkn2327fwg5yzwzya5o4
       react-style-singleton: 2.2.1_kzbn2opkn2327fwg5yzwzya5o4
-      tslib: 2.4.1
+      tslib: 2.5.0
       use-callback-ref: 1.3.0_kzbn2opkn2327fwg5yzwzya5o4
       use-sidecar: 1.1.2_kzbn2opkn2327fwg5yzwzya5o4
     dev: false
@@ -8921,7 +9052,7 @@ packages:
       react: 18.2.0
       react-remove-scroll-bar: 2.3.4_kzbn2opkn2327fwg5yzwzya5o4
       react-style-singleton: 2.2.1_kzbn2opkn2327fwg5yzwzya5o4
-      tslib: 2.4.1
+      tslib: 2.5.0
       use-callback-ref: 1.3.0_kzbn2opkn2327fwg5yzwzya5o4
       use-sidecar: 1.1.2_kzbn2opkn2327fwg5yzwzya5o4
     dev: false
@@ -8943,7 +9074,7 @@ packages:
       get-nonce: 1.0.1
       invariant: 2.2.4
       react: 18.2.0
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /react/18.2.0:
@@ -10138,6 +10269,13 @@ packages:
       }
     dev: false
 
+  /tslib/2.5.0:
+    resolution:
+      {
+        integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==,
+      }
+    dev: false
+
   /tsutils/3.21.0_typescript@4.7.4:
     resolution:
       {
@@ -10516,7 +10654,7 @@ packages:
     dependencies:
       "@types/react": 18.0.26
       react: 18.2.0
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /use-isomorphic-layout-effect/1.1.2_kzbn2opkn2327fwg5yzwzya5o4:
@@ -10551,7 +10689,7 @@ packages:
       "@types/react": 18.0.26
       detect-node-es: 1.1.0
       react: 18.2.0
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /util-deprecate/1.0.2:
