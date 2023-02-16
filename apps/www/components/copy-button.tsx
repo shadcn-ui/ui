@@ -23,21 +23,6 @@ async function copyToClipboardWithMeta(
   meta?: Record<string, unknown>
 ) {
   navigator.clipboard.writeText(value)
-
-  if (meta) {
-    await fetch("/api/log", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        event: "copy_primitive",
-        data: {
-          primitive: meta?.component,
-        },
-      }),
-    })
-  }
 }
 
 export function CopyButton({
