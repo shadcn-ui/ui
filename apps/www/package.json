@@ -48,7 +48,6 @@
     "clsx": "^1.2.1",
     "cmdk": "^0.1.21",
     "contentlayer": "^0.3.0",
-    "logsnag": "^0.1.6",
     "lucide-react": "0.105.0-alpha.4",
     "next": "^13.1.6",
     "next-contentlayer": "^0.3.0",
