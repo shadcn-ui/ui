@@ -1,9 +1,8 @@
 import * as React from "react"
-import type { VariantProps } from "class-variance-authority"
-import { cva } from "class-variance-authority"
+import { VariantProps, cva } from "class-variance-authority"
+import { Loader2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Loader2 } from "lucide-react"
 
 const buttonVariants = cva(
   "active:scale-95 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:hover:bg-slate-800 dark:hover:text-slate-100 disabled:opacity-50 dark:focus:ring-slate-400 disabled:pointer-events-none dark:focus:ring-offset-slate-900 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800",
@@ -27,10 +26,6 @@ const buttonVariants = cva(
         sm: "h-9 px-2 rounded-md",
         lg: "h-11 px-8 rounded-md",
       },
-
-      modifiers: {
-        loading: "opacity-50 animate-pulse pointer-events-none",
-      },
     },
     defaultVariants: {
       variant: "default",
@@ -46,23 +41,24 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, loading, children, ...props }, ref) => {
+  (
+    { className, variant, size, loading, disabled, children, ...props },
+    ref
+  ) => {
     return (
       <button
         className={cn(
           buttonVariants({
             variant,
             size,
-            ...(loading && { modifiers: "loading" }),
             className,
           })
         )}
+        disabled={loading || disabled}
         ref={ref}
         {...props}
       >
-        {!loading && children}
-        {/* Maintain same width of element */}
-        {loading && <LoadingIndicator>{children}</LoadingIndicator>}
+        {loading ? <LoadingIndicator>{children}</LoadingIndicator> : children}
       </button>
     )
   }
@@ -74,8 +70,8 @@ export { Button, buttonVariants }
 const LoadingIndicator = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="relative flex items-center justify-center">
-      <div className="absolute top-0 left-0 flex h-full w-full transform items-center justify-center">
-        <Loader2 className="animate-spin animate-pulse" />
+      <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center">
+        <Loader2 className="animate-spin" />
       </div>
       <div className="invisible">{children}</div>
     </div>
