@@ -1,6 +1,6 @@
 # shadcn/ui
 
-Beautifully designed components built with Radix UI and Tailwind CSS.
+Accessible and customizable components that you can copy and paste into your apps. Free. Open Source. **Use this to build your own component library**.
 
 ![hero](apps/www/public/og.jpg)
 
@@ -9,9 +9,9 @@ Beautifully designed components built with Radix UI and Tailwind CSS.
 > **Warning**
 > This is work in progress. I'm building this in public. You can follow the progress on Twitter [@shadcn](https://twitter.com/shadcn).
 
-- [ ] Toast
 - [ ] Toggle Group
 - [ ] Toolbar
+- [x] ~Toast~
 - [x] ~Toggle~
 - [x] ~Navigation Menu~
 - [x] ~Figma~

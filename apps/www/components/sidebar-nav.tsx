@@ -16,7 +16,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   return items.length ? (
     <div className="w-full">
       {items.map((item, index) => (
-        <div key={index} className={cn("pb-8")}>
+        <div key={index} className={cn("pb-6")}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {item.title}
           </h4>
@@ -46,7 +46,7 @@ export function DocsSidebarNavItems({
             key={index}
             href={item.href}
             className={cn(
-              "flex w-full items-center rounded-md p-2 hover:underline",
+              "group flex w-full items-center rounded-md py-1.5 px-2 hover:bg-slate-50 dark:hover:bg-slate-800",
               item.disabled && "cursor-not-allowed opacity-60",
               {
                 "bg-slate-100 dark:bg-slate-800": pathname === item.href,
@@ -56,6 +56,11 @@ export function DocsSidebarNavItems({
             rel={item.external ? "noreferrer" : ""}
           >
             {item.title}
+            {item.label && (
+              <span className="ml-2 rounded-md bg-teal-100 px-1.5 py-0.5 text-xs no-underline group-hover:no-underline dark:text-slate-900">
+                {item.label}
+              </span>
+            )}
           </Link>
         ) : (
           <span

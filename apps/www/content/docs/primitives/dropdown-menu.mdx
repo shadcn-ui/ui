@@ -2,6 +2,7 @@
 title: Dropdown Menu
 description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
 featured: true
+component: true
 radix:
   link: https://www.radix-ui.com/docs/primitives/components/dropdown-menu
   api: https://www.radix-ui.com/docs/primitives/components/dropdown-menu#api-reference
@@ -35,6 +36,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 ```
@@ -43,6 +46,8 @@ import {
 <DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
   <DropdownMenuContent>
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
     <DropdownMenuItem>Profile</DropdownMenuItem>
     <DropdownMenuItem>Billing</DropdownMenuItem>
     <DropdownMenuItem>Team</DropdownMenuItem>
