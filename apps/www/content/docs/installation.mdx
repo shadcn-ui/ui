@@ -91,7 +91,7 @@ I use icons from [Lucide](https://lucide.dev). You can use any icon library you 
 I use a `cn` helper to make it easier to conditionally add Tailwind CSS classes. Here's how I define it in `lib/utils.ts`:
 
 ```ts
-import { ClassValue, clsx } from "clsx"
+import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
