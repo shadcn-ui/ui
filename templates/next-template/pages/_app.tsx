@@ -7,7 +7,7 @@ import "@/styles/globals.css"
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: 'swap',
+  display: "swap",
 })
 
 export default function App({ Component, pageProps }: AppProps) {

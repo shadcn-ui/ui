@@ -47,6 +47,11 @@ import { TextareaDisabled } from "@/components/examples/textarea/disabled"
 import { TextareaWithButton } from "@/components/examples/textarea/with-button"
 import { TextareaWithLabel } from "@/components/examples/textarea/with-label"
 import { TextareaWithText } from "@/components/examples/textarea/with-text"
+import { ToastDemo } from "@/components/examples/toast/demo"
+import { ToastDestructive } from "@/components/examples/toast/destructive"
+import { ToastSimple } from "@/components/examples/toast/simple"
+import { ToastWithAction } from "@/components/examples/toast/with-action"
+import { ToastWithTitle } from "@/components/examples/toast/with-title"
 import { ToggleDemo } from "@/components/examples/toggle/demo"
 import { ToggleDisabled } from "@/components/examples/toggle/disabled"
 import { ToggleLg } from "@/components/examples/toggle/lg"
@@ -119,6 +124,11 @@ export const examples = {
   TextareaWithButton,
   TextareaWithLabel,
   TextareaWithText,
+  ToastDemo,
+  ToastDestructive,
+  ToastSimple,
+  ToastWithTitle,
+  ToastWithAction,
   TooltipDemo,
   TypographyBlockquote,
   TypographyDemo,
