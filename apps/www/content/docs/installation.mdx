@@ -82,6 +82,30 @@ module.exports = {
 }
 ```
 
+### Configure postcss.config.js
+
+Here's what my `postcss.config.js` file looks like:
+
+```js
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+```
+
+### Configure global styles
+
+Here's what my `globals.css` file looks like:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+
 ### Icons
 
 I use icons from [Lucide](https://lucide.dev). You can use any icon library you want.
