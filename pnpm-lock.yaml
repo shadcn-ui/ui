@@ -328,6 +328,8 @@ importers:
       "@radix-ui/react-slot": ^1.0.1
       "@radix-ui/react-switch": ^1.0.1
       "@radix-ui/react-tabs": ^1.0.2
+      "@radix-ui/react-toast": ^1.1.2
+      "@radix-ui/react-toggle": ^1.0.1
       "@radix-ui/react-toggle-group": ^1.0.1
       "@radix-ui/react-tooltip": ^1.0.3
       "@types/node": ^17.0.12
@@ -336,6 +338,7 @@ importers:
       autoprefixer: ^10.4.13
       class-variance-authority: ^0.4.0
       clsx: ^1.2.1
+      cmdk: ^0.1.21
       eslint: ^8.31.0
       eslint-config-next: 13.0.0
       eslint-config-prettier: ^8.3.0
@@ -379,10 +382,13 @@ importers:
       "@radix-ui/react-slot": 1.0.1_react@18.2.0
       "@radix-ui/react-switch": 1.0.1_biqbaboplfbrettd7655fr4n2y
       "@radix-ui/react-tabs": 1.0.2_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-toast": 1.1.2_biqbaboplfbrettd7655fr4n2y
+      "@radix-ui/react-toggle": 1.0.1_biqbaboplfbrettd7655fr4n2y
       "@radix-ui/react-toggle-group": 1.0.1_biqbaboplfbrettd7655fr4n2y
       "@radix-ui/react-tooltip": 1.0.3_ib3m5ricvtkl2cll7qpr2f6lvq
       class-variance-authority: 0.4.0_typescript@4.9.4
       clsx: 1.2.1
+      cmdk: 0.1.21_ib3m5ricvtkl2cll7qpr2f6lvq
       lucide-react: 0.105.0-alpha.4_react@18.2.0
       next: 13.1.6_7xlrwlvvs7cv2obrs6a5y6oxxq
       next-themes: 0.2.1_3vryta7zmbcsw4rrqf4axjqggm
@@ -1622,7 +1628,7 @@ packages:
     engines: { node: ">=12" }
     dependencies:
       jsbi: 4.3.0
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /@mdx-js/esbuild/2.2.1_esbuild@0.17.3:
@@ -4264,7 +4270,7 @@ packages:
       }
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /camelcase-css/2.0.1:
@@ -7181,7 +7187,7 @@ packages:
         integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==,
       }
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /lru-cache/5.1.1:
@@ -8247,7 +8253,7 @@ packages:
       }
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /node-abi/3.30.0:
@@ -8569,7 +8575,7 @@ packages:
       }
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /path-exists/4.0.0:
@@ -10214,13 +10220,6 @@ packages:
       {
         integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==,
       }
-
-  /tslib/2.4.1:
-    resolution:
-      {
-        integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==,
-      }
-    dev: false
 
   /tslib/2.5.0:
     resolution:
