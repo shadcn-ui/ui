@@ -30,7 +30,7 @@ export function PresetSave() {
         <div className="grid gap-4 py-4">
           <div className="grid gap-2">
             <Label htmlFor="name">Name</Label>
-            <Input id="name" value="" autoFocus />
+            <Input id="name" autoFocus />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="description">Description</Label>
