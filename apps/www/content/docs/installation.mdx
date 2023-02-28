@@ -136,3 +136,16 @@ And here's how I structure my app. I use Next.js, but this is not required.
 - The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
 - The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
 - The `styles` folder contains the global CSS.
+
+## Optional: VSCode intellisense for tailwind classes (used in class-variance-authority)
+
+I am using a package called `class-variance-authority` which provides us options for building type-safe UI components.
+To get VSCode Tailwind intellisense you can add the following piece of code in our VSCode `settings.json` file.
+
+```json
+{
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
+}
+```
