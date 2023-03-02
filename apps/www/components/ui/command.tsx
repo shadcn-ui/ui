@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { DialogProps } from "@radix-ui/react-dialog"
-import { Command as CommandPrimitive, useCommandState } from "cmdk"
-import { ChevronsUpDown, Search } from "lucide-react"
+import { Command as CommandPrimitive } from "cmdk"
+import { Search } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
@@ -28,7 +28,7 @@ interface CommandDialogProps extends DialogProps {}
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
     <Dialog {...props}>
-      <DialogContent className="overflow-hidden p-0 shadow-2xl [&_[dialog-overlay]]:bg-red-100">
+      <DialogContent className="top-1/4 overflow-hidden p-0 shadow-2xl [&_[dialog-overlay]]:bg-red-100">
         <Command className="[&_[cmdk-group]]:px-2 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-slate-500 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-input]]:h-12 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0">
           {children}
         </Command>
@@ -65,7 +65,12 @@ const CommandList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.List
     ref={ref}
-    className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)}
+    className={cn(
+      "h-[min(330px,calc(var(--cmdk-list-height)))] max-h-[300px] transition-height duration-100 ease-in" +
+        " overflow-y-auto" +
+        " overflow-x-hidden",
+      className
+    )}
     {...props}
   />
 ))
