@@ -1,0 +1,8 @@
+name: "Determine version"
+description: "Determines npm package version based on PR number and commit SHA"
+outputs:
+  version:
+    description: "npm package version"
+runs:
+  using: "node16"
+  main: "index.js"
