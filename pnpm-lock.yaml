@@ -14,6 +14,7 @@ importers:
       "@types/react": 18.0.15
       "@types/react-dom": 18.0.6
       autoprefixer: ^10.4.8
+      cross-env: ^7.0.3
       eslint: ^8.31.0
       eslint-config-next: 13.0.0
       eslint-config-prettier: ^8.3.0
@@ -35,6 +36,7 @@ importers:
       "@changesets/cli": 2.26.0
       "@ianvs/prettier-plugin-sort-imports": 3.7.1_prettier@2.8.1
       "@tailwindcss/line-clamp": 0.4.2_tailwindcss@3.2.4
+      cross-env: 7.0.3
       eslint: 8.31.0
       eslint-config-next: 13.0.0_wogtpudmlxya2leoxia5qf2rl4
       eslint-config-prettier: 8.5.0_eslint@8.31.0
@@ -5477,6 +5479,17 @@ packages:
         integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==,
       }
 
+  /cross-env/7.0.3:
+    resolution:
+      {
+        integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==,
+      }
+    engines: { node: ">=10.14", npm: ">=6", yarn: ">=1" }
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: false
+
   /cross-spawn/5.1.0:
     resolution:
       {
@@ -9985,7 +9998,6 @@ packages:
       lilconfig: 2.0.6
       postcss: 8.4.20
       yaml: 1.10.2
-    dev: true
 
   /postcss-load-config/3.1.4_ra2vnoek4vhbzktaezawwqbin4:
     resolution:
@@ -11458,7 +11470,7 @@ packages:
     peerDependencies:
       tailwindcss: ">=3.0.0 || insiders"
     dependencies:
-      tailwindcss: 3.2.4_ra2vnoek4vhbzktaezawwqbin4
+      tailwindcss: 3.2.4_postcss@8.4.20
     dev: false
 
   /tailwindcss/3.2.4_postcss@8.4.20:
@@ -11496,7 +11508,6 @@ packages:
       resolve: 1.22.1
     transitivePeerDependencies:
       - ts-node
-    dev: true
 
   /tailwindcss/3.2.4_ra2vnoek4vhbzktaezawwqbin4:
     resolution:

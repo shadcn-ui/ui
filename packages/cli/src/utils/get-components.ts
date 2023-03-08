@@ -1,10 +1,7 @@
 import fetch from "node-fetch"
 import * as z from "zod"
 
-const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://ui.shadcn.com"
-    : "http://localhost:3000"
+const baseUrl = process.env.COMPONENTS_BASE_URL ?? "https://ui.shadcn.com"
 
 const componentSchema = z.object({
   name: z.string(),
@@ -29,6 +26,8 @@ export async function getAvailableComponents() {
 
     return componentsSchema.parse(components)
   } catch (error) {
-    throw new Error("Failed to fetch components")
+    throw new Error(
+      `Failed to fetch components from ${baseUrl}/api/components.`
+    )
   }
 }

@@ -2,6 +2,9 @@
   "name": "@shadcn/ui",
   "version": "0.0.2",
   "description": "Add @shadcn/ui components to your app.",
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "author": {
     "name": "shadcn",
@@ -22,7 +25,7 @@
   "type": "module",
   "exports": "./dist/index.js",
   "bin": {
-    "@shadcn/cli": "./dist/index.js"
+    "@shadcn/ui": "./dist/index.js"
   },
   "scripts": {
     "dev": "tsup --watch",
@@ -33,9 +36,9 @@
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "release": "changeset version",
-    "pub:beta": "pnpm build && npm publish --access public --tag beta",
-    "pub:next": "pnpm build && npm publish --access public --tag next",
-    "pub:release": "pnpm build && npm publish --access public"
+    "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
+    "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
+    "pub:release": "pnpm build && pnpm publish --access public"
   },
   "dependencies": {
     "chalk": "5.2.0",
