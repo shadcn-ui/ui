@@ -1,6 +1,6 @@
 {
   "name": "@shadcn/ui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Add @shadcn/ui components to your app.",
   "publishConfig": {
     "access": "public"

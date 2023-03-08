@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.0.4
+
+### Patch Changes
+
+- [#118](https://github.com/shadcn/ui/pull/118) [`712e625`](https://github.com/shadcn/ui/commit/712e625d485a0d7ac77fea4d5077d9ec7a33c513) Thanks [@shadcn](https://github.com/shadcn)! - add warning for command
+
 ## 0.0.3
 
 ### Patch Changes
