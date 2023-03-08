@@ -1,5 +1,5 @@
 ---
-"@shadcn/ui": patch
+"shadcn-ui": patch
 ---
 
 Initial commit.
