@@ -4,14 +4,14 @@ name: Release - Beta
 
 on:
   pull_request:
-    # types: [labeled]
+    types: [labeled]
     branches:
       - main
 jobs:
   prerelease:
-    # if: |
-    #   github.repository_owner == 'shadcn' &&
-    #   contains(github.event.pull_request.labels.*.name, '🚀 autorelease')
+    if: |
+      github.repository_owner == 'shadcn' &&
+      contains(github.event.pull_request.labels.*.name, '🚀 autorelease')
     name: Build & Publish a beta release to NPM
     runs-on: ubuntu-latest
     environment: Preview
