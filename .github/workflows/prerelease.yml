@@ -36,14 +36,13 @@ jobs:
       - name: Modify package.json version
         run: node .github/version-script-beta.js
 
-      - name: Publish Beta to NPM
-        run: |
-          cd packages/cli 
-          npm config set //registry.npmjs.org/:_authToken ${NPM_PUBLISH_TOKEN:?}
-          cd ../..
-          pnpm pub:beta
+      - name: Authenticate to NPM
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_ACCESS_TOKEN}" > packages/cli/.npmrc
         env:
-          NPM_PUBLISH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+          NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+
+      - name: Publish Beta to NPM
+        run: pnpm pub:beta
 
       - name: get-npm-version
         id: package-version
