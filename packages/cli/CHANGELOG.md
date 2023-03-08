@@ -1,4 +1,4 @@
-# shadcn-ui
+# @shadcn/ui
 
 ## 0.0.2
 

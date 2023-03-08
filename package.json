@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "build:cli": "turbo --filter=shadcn-ui build",
+    "build:cli": "turbo --filter=@shadcn/ui build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "preview": "turbo run preview",
