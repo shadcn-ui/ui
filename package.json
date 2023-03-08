@@ -29,6 +29,7 @@
   "packageManager": "pnpm@7.13.5",
   "dependencies": {
     "@babel/core": "^7.20.7",
+    "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.0",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
     "@tailwindcss/line-clamp": "^0.4.2",
