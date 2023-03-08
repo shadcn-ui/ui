@@ -1,4 +1,4 @@
-import { Inter as FontSans } from "@next/font/google"
+import { Inter as FontSans } from "next/font/google"
 
 import "@/styles/globals.css"
 import { cn } from "@/lib/utils"

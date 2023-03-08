@@ -188,7 +188,6 @@ importers:
   examples/playground:
     specifiers:
       "@ianvs/prettier-plugin-sort-imports": ^3.7.1
-      "@next/font": ^13.1.6
       "@radix-ui/react-accessible-icon": ^1.0.1
       "@radix-ui/react-accordion": ^1.1.0
       "@radix-ui/react-alert-dialog": ^1.0.2
@@ -243,7 +242,6 @@ importers:
       tailwindcss-animate: ^1.0.5
       typescript: ^4.5.3
     dependencies:
-      "@next/font": 13.1.6
       "@radix-ui/react-accessible-icon": 1.0.1_biqbaboplfbrettd7655fr4n2y
       "@radix-ui/react-accordion": 1.1.0_biqbaboplfbrettd7655fr4n2y
       "@radix-ui/react-alert-dialog": 1.0.2_ib3m5ricvtkl2cll7qpr2f6lvq

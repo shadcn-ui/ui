@@ -13,7 +13,6 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
-    "@next/font": "^13.1.6",
     "@radix-ui/react-accessible-icon": "^1.0.1",
     "@radix-ui/react-accordion": "^1.1.0",
     "@radix-ui/react-alert-dialog": "^1.0.2",
