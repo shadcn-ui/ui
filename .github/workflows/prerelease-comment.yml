@@ -28,7 +28,7 @@ jobs:
 
             for (const artifact of allArtifacts.data.artifacts) {
               // Extract the PR number and package version from the artifact name
-              const match = /^npm-package-shadcn-ui@(.*?)-pr-(\d+)/.exec(artifact.name);
+              const match = /^npm-package-@shadcn-ui@(.*?)-pr-(\d+)/.exec(artifact.name);
               
               if (match) {
                 require("fs").appendFileSync(
@@ -46,7 +46,7 @@ jobs:
         with:
           number: ${{ env.WORKFLOW_RUN_PR }}
           message: |
-            A new @shadcn/ui prerelease is available for testing. You can use this latest build in your project with:
+            A new prerelease is available for testing:
 
             ```sh
             pnpm @shadcn/ui@${{ env.BETA_PACKAGE_VERSION }}
