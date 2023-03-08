@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "build:cli": "turbo --filter=@shadcn/ui build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "preview": "turbo run preview",
@@ -22,7 +23,8 @@
     "format:write": "turbo run format",
     "format:check": "turbo run format:check",
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "changeset version"
   },
   "packageManager": "pnpm@7.13.5",
   "dependencies": {
