@@ -49,7 +49,7 @@ jobs:
             A new prerelease is available for testing:
 
             ```sh
-            pnpm @shadcn/ui@${{ env.BETA_PACKAGE_VERSION }}
+            npx @shadcn/ui@${{ env.BETA_PACKAGE_VERSION }}
             ```
 
       - name: "Remove the autorelease label once published"
