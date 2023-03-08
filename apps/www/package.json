@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "pnpm build:components && next build",
+    "build:components": "ts-node --esm --project ./tsconfig.scripts.json ./scripts/build-components.ts",
     "start": "next start",
     "lint": "next lint",
     "preview": "next build && next start",
