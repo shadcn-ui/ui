@@ -12,6 +12,7 @@ const componentSchema = z.object({
   files: z.array(
     z.object({
       name: z.string(),
+      dir: z.string(),
       content: z.string(),
     })
   ),

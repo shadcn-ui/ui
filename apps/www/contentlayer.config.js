@@ -70,20 +70,6 @@ export const Doc = defineDocumentType(() => ({
       default: false,
       required: false,
     },
-    files: {
-      type: "list",
-      of: {
-        type: "string",
-      },
-      required: false,
-    },
-    dependencies: {
-      type: "list",
-      of: {
-        type: "string",
-      },
-      required: false,
-    },
   },
   computedFields,
 }))

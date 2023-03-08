@@ -27,6 +27,7 @@
   "packageManager": "pnpm@7.13.5",
   "dependencies": {
     "@babel/core": "^7.20.7",
+    "@changesets/cli": "^2.26.0",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
     "@tailwindcss/line-clamp": "^0.4.2",
     "eslint": "^8.31.0",
@@ -36,6 +37,7 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-tailwindcss": "^3.8.0",
     "tailwindcss-animate": "^1.0.5",
+    "ts-node": "^10.9.1",
     "turbo": "^1.6.3"
   },
   "devDependencies": {
