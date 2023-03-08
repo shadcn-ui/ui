@@ -1,0 +1,57 @@
+# Adapted from create-t3-app.
+
+name: Release - Beta
+
+on:
+  pull_request:
+    types: [labeled]
+    branches:
+      - main
+jobs:
+  prerelease:
+    if: |
+      github.repository_owner == 'shadcn' &&
+      contains(github.event.pull_request.labels.*.name, '🚀 autorelease')
+    name: Build & Publish a beta release to NPM
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use PNPM
+        uses: pnpm/action-setup@v2.2.4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install NPM Dependencies
+        run: pnpm install
+
+      - name: Modify package.json version
+        run: node .github/version-script-beta.js
+
+      - name: Authenticate to NPM
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN }}" > packages/cli/.npmrc
+
+      - name: Publish Beta to NPM
+        run: pnpm pub:beta
+        env:
+          NPM_PUBLISH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+        with:
+          path: packages/cli
+
+      - name: Upload packaged artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: npm-package-@shadcn\/ui@${{ steps.package-version.outputs.current-version }}-pr-${{ github.event.number }} # encode the PR number into the artifact name
+          path: packages/cli/dist/index.js

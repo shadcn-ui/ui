@@ -1,16 +1,14 @@
 # Adapted from create-t3-app.
 
-name: Publish
+name: Release
 
 on:
   push:
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
-
 jobs:
-  build:
+  release:
     if: ${{ github.repository_owner == 'shadcn' }}
     name: Create a PR for release workflow
     runs-on: ubuntu-latest
@@ -32,13 +30,20 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install
 
+      - name: Check for errors
+        run: pnpm check
+
+      - name: Build the package
+        run: pnpm build:cli
+
       - name: Create Version PR or Publish to NPM
         id: changesets
         uses: changesets/action@v1.4.1
         with:
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
-          publish: pnpm build:cli
+          version: node .github/changeset-version.js
+          publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
