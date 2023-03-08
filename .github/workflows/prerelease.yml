@@ -41,6 +41,8 @@ jobs:
 
       - name: Publish Beta to NPM
         run: pnpm pub:beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
       - name: get-npm-version
         id: package-version
