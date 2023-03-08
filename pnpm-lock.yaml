@@ -4,6 +4,7 @@ importers:
   .:
     specifiers:
       "@babel/core": ^7.20.7
+      "@changesets/changelog-github": ^0.4.8
       "@changesets/cli": ^2.26.0
       "@commitlint/cli": ^17.3.0
       "@commitlint/config-conventional": ^17.3.0
@@ -31,6 +32,7 @@ importers:
       typescript: 4.7.4
     dependencies:
       "@babel/core": 7.20.7
+      "@changesets/changelog-github": 0.4.8
       "@changesets/cli": 2.26.0
       "@ianvs/prettier-plugin-sort-imports": 3.7.1_prettier@2.8.1
       "@tailwindcss/line-clamp": 0.4.2_tailwindcss@3.2.4
@@ -771,6 +773,19 @@ packages:
       "@changesets/types": 5.2.1
     dev: false
 
+  /@changesets/changelog-github/0.4.8:
+    resolution:
+      {
+        integrity: sha512-jR1DHibkMAb5v/8ym77E4AMNWZKB5NPzw5a5Wtqm1JepAuIF+hrKp2u04NKM14oBZhHglkCfrla9uq8ORnK/dw==,
+      }
+    dependencies:
+      "@changesets/get-github-info": 0.5.2
+      "@changesets/types": 5.2.1
+      dotenv: 8.6.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /@changesets/cli/2.26.0:
     resolution:
       {
@@ -848,6 +863,18 @@ packages:
       chalk: 2.4.2
       fs-extra: 7.0.1
       semver: 5.7.1
+    dev: false
+
+  /@changesets/get-github-info/0.5.2:
+    resolution:
+      {
+        integrity: sha512-JppheLu7S114aEs157fOZDjFqUDpm7eHdq5E8SSR0gUBTEK0cNSHsrSR5a66xs0z3RWuo46QvA3vawp8BxDHvg==,
+      }
+    dependencies:
+      dataloader: 1.4.0
+      node-fetch: 2.6.9
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /@changesets/get-release-plan/3.0.16:
@@ -9971,7 +9998,6 @@ packages:
       lilconfig: 2.0.6
       postcss: 8.4.20
       yaml: 1.10.2
-    dev: true
 
   /postcss-load-config/3.1.4_ra2vnoek4vhbzktaezawwqbin4:
     resolution:
@@ -11444,7 +11470,7 @@ packages:
     peerDependencies:
       tailwindcss: ">=3.0.0 || insiders"
     dependencies:
-      tailwindcss: 3.2.4_ra2vnoek4vhbzktaezawwqbin4
+      tailwindcss: 3.2.4_postcss@8.4.20
     dev: false
 
   /tailwindcss/3.2.4_postcss@8.4.20:
@@ -11482,7 +11508,6 @@ packages:
       resolve: 1.22.1
     transitivePeerDependencies:
       - ts-node
-    dev: true
 
   /tailwindcss/3.2.4_ra2vnoek4vhbzktaezawwqbin4:
     resolution:
@@ -11652,6 +11677,13 @@ packages:
     resolution:
       {
         integrity: sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==,
+      }
+    dev: false
+
+  /tr46/0.0.3:
+    resolution:
+      {
+        integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==,
       }
     dev: false
 
@@ -12437,12 +12469,29 @@ packages:
     engines: { node: ">= 8" }
     dev: false
 
+  /webidl-conversions/3.0.1:
+    resolution:
+      {
+        integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==,
+      }
+    dev: false
+
   /webidl-conversions/4.0.2:
     resolution:
       {
         integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==,
       }
     dev: true
+
+  /whatwg-url/5.0.0:
+    resolution:
+      {
+        integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==,
+      }
+    dependencies:
+      tr46: 0.0.3
+      webidl-conversions: 3.0.1
+    dev: false
 
   /whatwg-url/7.1.0:
     resolution:
