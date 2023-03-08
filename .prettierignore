@@ -3,3 +3,4 @@ node_modules
 .next
 build
 .contentlayer
+apps/www/pages/api/components.json
