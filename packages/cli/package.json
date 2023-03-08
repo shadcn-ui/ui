@@ -30,6 +30,7 @@
     "typecheck": "tsc",
     "clean": "rimraf dist && rimraf components",
     "start": "node dist/index.js",
+    "start:dev": "cross-env COMPONENTS_BASE_URL=http://localhost:3000 node dist/index.js",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "release": "changeset version",
