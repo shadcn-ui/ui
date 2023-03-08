@@ -18,6 +18,8 @@
     "build": "turbo run build",
     "build:cli": "turbo --filter=@shadcn/ui build",
     "dev": "turbo run dev --parallel",
+    "dev:cli": "turbo --filter=@shadcn/ui dev",
+    "start:cli": "pnpm --filter=@shadcn/ui start:dev",
     "lint": "turbo run lint",
     "preview": "turbo run preview",
     "typecheck": "turbo run typecheck",
