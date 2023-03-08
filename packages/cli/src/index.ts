@@ -30,6 +30,14 @@ async function main() {
     .command("add")
     .description("add components to your project")
     .action(async () => {
+      logger.warn(
+        "Running the following command will overwrite existing files."
+      )
+      logger.warn(
+        "Make sure you have committed your changes before proceeding."
+      )
+      logger.warn("")
+
       const { components, dir } = await promptForAddOptions()
       if (!components?.length) {
         logger.warn("No components selected. Nothing to install.")
