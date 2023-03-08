@@ -3,7 +3,7 @@
 name: Release - Beta
 
 on:
-  pull_request:
+  pull_request_target:
     # types: [labeled]
     branches:
       - main
@@ -42,9 +42,7 @@ jobs:
           NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
       - name: Publish Beta to NPM
-        run: |
-          ls -al packages/cli
-          pnpm pub:beta
+        run: pnpm pub:beta
 
       - name: get-npm-version
         id: package-version
