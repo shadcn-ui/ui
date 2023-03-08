@@ -42,7 +42,9 @@ jobs:
           NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
       - name: Publish Beta to NPM
-        run: pnpm pub:beta
+        run: |
+          ls -al packages/cli
+          pnpm pub:beta
 
       - name: get-npm-version
         id: package-version
