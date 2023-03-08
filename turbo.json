@@ -16,14 +16,22 @@
       "env": ["NEXT_PUBLIC_APP_URL"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "start": {
+      "dependsOn": ["^build"]
+    },
     "lint": {
+      "cache": false,
       "outputs": []
     },
     "format:check": {
+      "cache": false,
       "outputs": []
     },
     "typecheck": {},
     "dev": {
+      "cache": false
+    },
+    "check": {
       "cache": false
     }
   }

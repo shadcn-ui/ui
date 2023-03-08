@@ -27,7 +27,7 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "typecheck": "tsc",
+    "typecheck": "tsc --noEmit",
     "clean": "rimraf dist && rimraf components",
     "start": "node dist/index.js",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
