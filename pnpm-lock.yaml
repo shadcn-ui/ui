@@ -226,12 +226,12 @@ importers:
       clsx: ^1.2.1
       cmdk: ^0.1.21
       eslint: ^8.31.0
-      eslint-config-next: 13.0.0
+      eslint-config-next: 13.2.3
       eslint-config-prettier: ^8.3.0
       eslint-plugin-react: ^7.31.11
       eslint-plugin-tailwindcss: ^3.8.0
       lucide-react: 0.105.0-alpha.4
-      next: ^13.1.6
+      next: ^13.2.3
       next-themes: ^0.2.1
       postcss: ^8.4.14
       prettier: ^2.7.1
@@ -277,8 +277,8 @@ importers:
       clsx: 1.2.1
       cmdk: 0.1.21_ib3m5ricvtkl2cll7qpr2f6lvq
       lucide-react: 0.105.0-alpha.4_react@18.2.0
-      next: 13.1.6_7xlrwlvvs7cv2obrs6a5y6oxxq
-      next-themes: 0.2.1_3vryta7zmbcsw4rrqf4axjqggm
+      next: 13.2.3_7xlrwlvvs7cv2obrs6a5y6oxxq
+      next-themes: 0.2.1_nvzgbose6yf6w7ijjprgspqefi
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       sharp: 0.31.3
@@ -291,7 +291,7 @@ importers:
       "@types/react-dom": 18.0.10
       autoprefixer: 10.4.13_postcss@8.4.20
       eslint: 8.31.0
-      eslint-config-next: 13.0.0_iukboom6ndih5an6iafl45j2fe
+      eslint-config-next: 13.2.3_iukboom6ndih5an6iafl45j2fe
       eslint-config-prettier: 8.5.0_eslint@8.31.0
       eslint-plugin-react: 7.31.11_eslint@8.31.0
       eslint-plugin-tailwindcss: 3.8.0
@@ -1693,6 +1693,7 @@ packages:
       }
     dependencies:
       glob: 7.1.7
+    dev: false
 
   /@next/eslint-plugin-next/13.2.3:
     resolution:
@@ -5345,34 +5346,6 @@ packages:
     engines: { node: ">=12" }
     dev: true
 
-  /eslint-config-next/13.0.0_iukboom6ndih5an6iafl45j2fe:
-    resolution:
-      {
-        integrity: sha512-y2nqWS2tycWySdVhb+rhp6CuDmDazGySqkzzQZf3UTyfHyC7og1m5m/AtMFwCo5mtvDqvw1BENin52kV9733lg==,
-      }
-    peerDependencies:
-      eslint: ^7.23.0 || ^8.0.0
-      typescript: ">=3.3.1"
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      "@next/eslint-plugin-next": 13.0.0
-      "@rushstack/eslint-patch": 1.2.0
-      "@typescript-eslint/parser": 5.51.0_iukboom6ndih5an6iafl45j2fe
-      eslint: 8.31.0
-      eslint-import-resolver-node: 0.3.6
-      eslint-import-resolver-typescript: 2.7.1_ol7jqilc3wemtdbq3nzhywgxq4
-      eslint-plugin-import: 2.26.0_eslint@8.31.0
-      eslint-plugin-jsx-a11y: 6.6.1_eslint@8.31.0
-      eslint-plugin-react: 7.31.11_eslint@8.31.0
-      eslint-plugin-react-hooks: 4.6.0_eslint@8.31.0
-      typescript: 4.9.4
-    transitivePeerDependencies:
-      - eslint-import-resolver-webpack
-      - supports-color
-    dev: true
-
   /eslint-config-next/13.0.0_wogtpudmlxya2leoxia5qf2rl4:
     resolution:
       {
@@ -5482,6 +5455,7 @@ packages:
       tsconfig-paths: 3.14.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /eslint-import-resolver-typescript/3.5.3_ol7jqilc3wemtdbq3nzhywgxq4:
     resolution:
@@ -8474,53 +8448,6 @@ packages:
       next: 13.2.3_7xlrwlvvs7cv2obrs6a5y6oxxq
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /next/13.1.6_7xlrwlvvs7cv2obrs6a5y6oxxq:
-    resolution:
-      {
-        integrity: sha512-hHlbhKPj9pW+Cymvfzc15lvhaOZ54l+8sXDXJWm3OBNBzgrVj6hwGPmqqsXg40xO1Leq+kXpllzRPuncpC0Phw==,
-      }
-    engines: { node: ">=14.6.0" }
-    hasBin: true
-    peerDependencies:
-      fibers: ">= 3.1.0"
-      node-sass: ^6.0.0 || ^7.0.0
-      react: ^18.2.0
-      react-dom: ^18.2.0
-      sass: ^1.3.0
-    peerDependenciesMeta:
-      fibers:
-        optional: true
-      node-sass:
-        optional: true
-      sass:
-        optional: true
-    dependencies:
-      "@next/env": 13.1.6
-      "@swc/helpers": 0.4.14
-      caniuse-lite: 1.0.30001439
-      postcss: 8.4.14
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      styled-jsx: 5.1.1_dojr2aquw55jwdpbannhlirjf4
-    optionalDependencies:
-      "@next/swc-android-arm-eabi": 13.1.6
-      "@next/swc-android-arm64": 13.1.6
-      "@next/swc-darwin-arm64": 13.1.6
-      "@next/swc-darwin-x64": 13.1.6
-      "@next/swc-freebsd-x64": 13.1.6
-      "@next/swc-linux-arm-gnueabihf": 13.1.6
-      "@next/swc-linux-arm64-gnu": 13.1.6
-      "@next/swc-linux-arm64-musl": 13.1.6
-      "@next/swc-linux-x64-gnu": 13.1.6
-      "@next/swc-linux-x64-musl": 13.1.6
-      "@next/swc-win32-arm64-msvc": 13.1.6
-      "@next/swc-win32-ia32-msvc": 13.1.6
-      "@next/swc-win32-x64-msvc": 13.1.6
-    transitivePeerDependencies:
-      - "@babel/core"
-      - babel-plugin-macros
     dev: false
 
   /next/13.1.6_biqbaboplfbrettd7655fr4n2y:
