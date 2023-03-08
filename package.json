@@ -24,7 +24,10 @@
     "format:check": "turbo run format:check",
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
     "prepare": "husky install",
-    "release": "changeset version"
+    "check": "turbo lint typecheck format:check",
+    "release": "changeset version",
+    "pub:beta": "cd cli && pnpm pub:beta",
+    "pub:release": "cd cli && pnpm pub:release"
   },
   "packageManager": "pnpm@7.13.5",
   "dependencies": {
