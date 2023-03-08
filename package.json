@@ -27,8 +27,8 @@
     "prepare": "husky install",
     "check": "turbo lint typecheck format:check",
     "release": "changeset version",
-    "pub:beta": "cd cli && pnpm pub:beta",
-    "pub:release": "cd cli && pnpm pub:release"
+    "pub:beta": "cd packages/cli && pnpm pub:beta",
+    "pub:release": "cd packages/cli && pnpm pub:release"
   },
   "packageManager": "pnpm@7.13.5",
   "dependencies": {
