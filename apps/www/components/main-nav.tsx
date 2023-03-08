@@ -7,6 +7,7 @@ import { allDocs } from "contentlayer/generated"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import { buttonVariants } from "@/components/ui/button"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,8 +17,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { buttonVariants } from "./ui/button"
-import { Separator } from "./ui/separator"
+import { Separator } from "@/components/ui/separator"
 
 export function MainNav() {
   return (
@@ -130,7 +130,7 @@ const ListItem = React.forwardRef<
           )}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="text-sm leading-snug text-slate-500 line-clamp-2 dark:text-slate-400">
+          <p className="line-clamp-2 text-sm leading-snug text-slate-500 dark:text-slate-400">
             {children}
           </p>
         </NavigationMenuLink>
