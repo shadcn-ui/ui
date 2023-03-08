@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 0.0.3
+
+### Patch Changes
+
+- [#115](https://github.com/shadcn/ui/pull/115) [`92fe541`](https://github.com/shadcn/ui/commit/92fe54184b5e9b5ac7259829436d7786a52606b3) Thanks [@shadcn](https://github.com/shadcn)! - Initial commit.
+
+- [#115](https://github.com/shadcn/ui/pull/115) [`92fe541`](https://github.com/shadcn/ui/commit/92fe54184b5e9b5ac7259829436d7786a52606b3) Thanks [@shadcn](https://github.com/shadcn)! - implement component base url
+
 ## 0.0.2
 
 ### Patch Changes
