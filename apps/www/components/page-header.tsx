@@ -1,3 +1,4 @@
+import { fontHeading } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
 
@@ -16,7 +17,12 @@ export function DocsPageHeader({
   return (
     <>
       <div className={cn("space-y-4", className)} {...props}>
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        <h1
+          className={cn(
+            "font-heading scroll-m-20 text-4xl font-bold lg:text-5xl",
+            fontHeading.className
+          )}
+        >
           {heading}
         </h1>
         {text && (

@@ -1,17 +1,30 @@
+import { Metadata } from "next"
 import Link from "next/link"
 import { Heart } from "lucide-react"
 
+import { fontHeading } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { buttonVariants } from "@/components/ui/button"
 
+export const metadata: Metadata = {
+  title: "Figma",
+  description:
+    "Every component recreated in Figma. With customizable props, typography and icons.",
+}
+
 export default function FigmaPage() {
   return (
     <>
-      <section className="grid items-center gap-6 pt-6 pb-8 md:py-10">
+      <section className="mb-4 grid items-center gap-6 pt-6 pb-8 md:py-4">
         <div className="flex max-w-[980px] flex-col items-start gap-2">
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-5xl lg:text-6xl lg:leading-[1.1]">
-            Figma UI Kit. Crafted to perfectly match the Radix UI components.
+          <h1
+            className={cn(
+              "text-3xl font-extrabold leading-tight tracking-tighter md:text-5xl lg:text-6xl lg:leading-[1.1]",
+              fontHeading.className
+            )}
+          >
+            Grab the free Figma UI Kit.
           </h1>
           <p className="max-w-[750px] text-lg text-slate-700 dark:text-slate-400 sm:text-xl">
             Every component recreated in Figma. With customizable props,

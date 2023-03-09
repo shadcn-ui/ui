@@ -13,6 +13,15 @@ radix:
 
 ## Installation
 
+```bash
+npx @shadcn/ui add aspect-ratio
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
 1. Install the `@radix-ui/react-aspect-ratio` component from radix-ui:
 
 ```bash
@@ -29,6 +38,11 @@ This is the `<AspectRatio />` primitive. You can place it in a file at `componen
 
 </Callout>
 
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
 ## Usage
 
 ```tsx
@@ -41,9 +55,8 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 <div className="w-[450px]">
   <AspectRatio ratio={16 / 9}>
     <Image
-      src="https://images.unsplash.com/photo-1576075796033-848c2a5f3696?w=800&dpr=2&q=80"
-      alt="Photo by Alvaro Pinot"
-      fill
+      src="..."
+      alt=Image""
       className="rounded-md object-cover"
     />
   </AspectRatio>

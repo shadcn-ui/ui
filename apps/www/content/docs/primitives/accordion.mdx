@@ -13,6 +13,15 @@ radix:
 
 ## Installation
 
+```bash
+npx @shadcn/ui add accordion
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
 1. Install the `@radix-ui/react-accordion` component from radix-ui:
 
 ```bash
@@ -28,6 +37,11 @@ npm install @radix-ui/react-accordion
 This is the `<Accordion />` primitive. You can place it in a file at `components/ui/accordion.tsx`.
 
 </Callout>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
 
 ## Usage
 
@@ -46,19 +60,6 @@ import {
     <AccordionTrigger>Is it accessible?</AccordionTrigger>
     <AccordionContent>
       Yes. It adheres to the WAI-ARIA design pattern.
-    </AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="item-2">
-    <AccordionTrigger>Is it styled?</AccordionTrigger>
-    <AccordionContent>
-      Yes. It comes with default styles that matches the other components'
-      aesthetic.
-    </AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="item-3">
-    <AccordionTrigger>Is it animated?</AccordionTrigger>
-    <AccordionContent>
-      Yes. It's animated by default, but you can disable it if you prefer.
     </AccordionContent>
   </AccordionItem>
 </Accordion>

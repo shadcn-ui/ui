@@ -58,7 +58,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Figma",
           href: "/figma",
-          label: "New",
           items: [],
         },
       ],
@@ -104,7 +103,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Command",
           href: "/docs/primitives/command",
-          label: "Beta",
           items: [],
         },
         {
@@ -203,14 +201,13 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Toggle",
-          href: "/docs/primitives/toggle",
+          title: "Toast",
+          href: "/docs/primitives/toast",
           items: [],
         },
         {
-          title: "Toast",
-          href: "/docs/primitives/toast",
-          label: "New",
+          title: "Toggle",
+          href: "/docs/primitives/toggle",
           items: [],
         },
         {
