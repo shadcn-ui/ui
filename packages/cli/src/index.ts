@@ -29,7 +29,8 @@ async function main() {
   program
     .command("add")
     .description("add components to your project")
-    .action(async () => {
+    .argument("[components...]", "name of components")
+    .action(async (components: string[]) => {
       logger.warn(
         "Running the following command will overwrite existing files."
       )
@@ -38,7 +39,25 @@ async function main() {
       )
       logger.warn("")
 
-      const { components, dir } = await promptForAddOptions()
+      const availableComponents = await getAvailableComponents()
+
+      if (!availableComponents?.length) {
+        logger.error(
+          "An error occurred while fetching components. Please try again."
+        )
+        process.exit(0)
+      }
+
+      let selectedComponents = availableComponents.filter((component) =>
+        components.includes(component.component)
+      )
+
+      if (!selectedComponents?.length) {
+        selectedComponents = await promptForComponents(availableComponents)
+      }
+
+      const dir = await promptForDestinationDir()
+
       if (!components?.length) {
         logger.warn("No components selected. Nothing to install.")
         process.exit(0)
@@ -54,8 +73,8 @@ async function main() {
 
       const packageManager = getPackageManager()
 
-      logger.success(`Installing components...`)
-      for (const component of components) {
+      logger.success(`Installing ${selectedComponents.length} component(s)...`)
+      for (const component of selectedComponents) {
         const componentSpinner = ora(`${component.name}...`).start()
 
         // Write the files.
@@ -84,29 +103,24 @@ type AddOptions = {
   dir: string
 }
 
-async function promptForAddOptions() {
-  const availableComponents = await getAvailableComponents()
+async function promptForComponents(components: Component[]) {
+  const { components: selectedComponents } = await prompts({
+    type: "multiselect",
+    name: "components",
+    message: "Which component(s) would you like to add?",
+    hint: "Space to select. A to select all. I to invert selection.",
+    instructions: false,
+    choices: components.map((component) => ({
+      title: component.name,
+      value: component,
+    })),
+  })
 
-  if (!availableComponents?.length) {
-    logger.error(
-      "An error occurred while fetching components. Please try again."
-    )
-    process.exit(0)
-  }
+  return selectedComponents
+}
 
-  const options = await prompts([
-    {
-      type: "multiselect",
-      name: "components",
-      message: "Which component(s) would you like to add?",
-      hint: "Space to select. A to select all. I to invert selection.",
-      instructions: false,
-
-      choices: availableComponents.map((component) => ({
-        title: component.name,
-        value: component,
-      })),
-    },
+async function promptForDestinationDir() {
+  const { dir } = await prompts([
     {
       type: "text",
       name: "dir",
@@ -115,7 +129,7 @@ async function promptForAddOptions() {
     },
   ])
 
-  return options as AddOptions
+  return dir
 }
 
 main()

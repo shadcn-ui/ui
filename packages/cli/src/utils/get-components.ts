@@ -4,6 +4,7 @@ import * as z from "zod"
 const baseUrl = process.env.COMPONENTS_BASE_URL ?? "https://ui.shadcn.com"
 
 const componentSchema = z.object({
+  component: z.string(),
   name: z.string(),
   dependencies: z.array(z.string()).optional(),
   files: z.array(
