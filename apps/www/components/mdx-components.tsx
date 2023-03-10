@@ -7,7 +7,6 @@ import { NpmCommands } from "types/unist"
 
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
-import { Card } from "@/components/card"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentExample } from "@/components/component-example"
 import { ComponentSource } from "@/components/component-source"
@@ -222,7 +221,6 @@ const components = {
   ),
   Image,
   Callout,
-  Card,
   ComponentExample,
   ComponentSource,
   CodeBlockWrapper: ({ ...props }) => (
