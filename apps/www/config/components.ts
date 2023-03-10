@@ -24,9 +24,19 @@ export const components = [
     files: ["components/ui/avatar.tsx"],
   },
   {
+    component: "badge",
+    name: "Badge",
+    files: ["components/ui/badge.tsx"],
+  },
+  {
     component: "button",
     name: "Button",
     files: ["components/ui/button.tsx"],
+  },
+  {
+    component: "card",
+    name: "Card",
+    files: ["components/ui/card.tsx"],
   },
   {
     component: "checkbox",

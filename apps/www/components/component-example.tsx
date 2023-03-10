@@ -45,13 +45,13 @@ export function ComponentExample({
           <TabsList className="w-full justify-start rounded-none border-b border-b-slate-200 bg-transparent p-0 dark:border-slate-700 dark:bg-transparent">
             <TabsTrigger
               value="preview"
-              className="relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold text-slate-600 shadow-none data-[state=active]:border-b-slate-900 data-[state=active]:text-slate-900 data-[state=active]:shadow-none dark:text-slate-400 dark:data-[state=active]:border-b-slate-400"
+              className="relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold text-slate-600 shadow-none transition-none data-[state=active]:border-b-slate-900 data-[state=active]:text-slate-900 data-[state=active]:shadow-none dark:text-slate-400 dark:data-[state=active]:border-b-slate-400"
             >
               Preview
             </TabsTrigger>
             <TabsTrigger
               value="code"
-              className="relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold text-slate-600 shadow-none data-[state=active]:border-b-slate-900 data-[state=active]:text-slate-900 data-[state=active]:shadow-none dark:text-slate-400 dark:data-[state=active]:border-b-slate-400"
+              className="relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold text-slate-600 shadow-none transition-none data-[state=active]:border-b-slate-900 data-[state=active]:text-slate-900 data-[state=active]:shadow-none dark:text-slate-400 dark:data-[state=active]:border-b-slate-400"
             >
               Code
             </TabsTrigger>

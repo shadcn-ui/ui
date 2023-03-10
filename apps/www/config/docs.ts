@@ -97,6 +97,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Card",
+          href: "/docs/primitives/card",
+          label: "New",
+          items: [],
+        },
+        {
           title: "Checkbox",
           href: "/docs/primitives/checkbox",
           items: [],

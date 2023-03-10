@@ -14,6 +14,7 @@ import { ButtonLoading } from "@/components/examples/button/loading"
 import { ButtonOutline } from "@/components/examples/button/outline"
 import { ButtonSubtle } from "@/components/examples/button/subtle"
 import { ButtonWithIcon } from "@/components/examples/button/with-icon"
+import { CardDemo } from "@/components/examples/card/demo"
 import { CheckboxDemo } from "@/components/examples/checkbox/demo"
 import { CheckboxDisabled } from "@/components/examples/checkbox/disabled"
 import { CheckboxWithText } from "@/components/examples/checkbox/with-text"
@@ -98,6 +99,7 @@ export const examples = {
   ButtonOutline,
   ButtonSubtle,
   ButtonWithIcon,
+  CardDemo,
   CheckboxDemo,
   CheckboxDisabled,
   CheckboxWithText,
