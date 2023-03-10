@@ -2,6 +2,10 @@ import { AccordionDemo } from "@/components/examples/accordion/demo"
 import { AlertDialogDemo } from "@/components/examples/alert-dialog/demo"
 import { AspectRatioDemo } from "@/components/examples/aspect-ratio/demo"
 import { AvatarDemo } from "@/components/examples/avatar/demo"
+import { BadgeDemo } from "@/components/examples/badge/demo"
+import { BadgeDestructive } from "@/components/examples/badge/destructive"
+import { BadgeOutline } from "@/components/examples/badge/outline"
+import { BadgeSubtle } from "@/components/examples/badge/subtle"
 import { ButtonDemo } from "@/components/examples/button/demo"
 import { ButtonDestructive } from "@/components/examples/button/destructive"
 import { ButtonGhost } from "@/components/examples/button/ghost"
@@ -82,6 +86,10 @@ export const examples = {
   AlertDialogDemo,
   AspectRatioDemo,
   AvatarDemo,
+  BadgeDemo,
+  BadgeDestructive,
+  BadgeOutline,
+  BadgeSubtle,
   ButtonDemo,
   ButtonGhost,
   ButtonDestructive,

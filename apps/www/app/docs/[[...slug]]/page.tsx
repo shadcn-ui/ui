@@ -7,12 +7,13 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
-import { absoluteUrl } from "@/lib/utils"
+import { absoluteUrl, cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { Mdx } from "@/components/mdx-components"
 import { DocsPageHeader } from "@/components/page-header"
 import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
+import { badgeVariants } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 
 interface DocPageProps {
@@ -96,7 +97,10 @@ export default async function DocPage({ params }: DocPageProps) {
                   href={doc.radix.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-900 transition-colors hover:bg-slate-700 hover:text-slate-50"
+                  className={cn(
+                    badgeVariants(),
+                    "hover:bg-slate-700 hover:text-slate-50"
+                  )}
                 >
                   <Icons.radix className="mr-1 h-3 w-3" />
                   Radix UI
@@ -107,7 +111,7 @@ export default async function DocPage({ params }: DocPageProps) {
                   href={doc.radix.api}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-900 transition-colors hover:bg-slate-700 hover:text-slate-50"
+                  className={badgeVariants()}
                 >
                   API Reference
                 </Link>

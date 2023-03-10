@@ -86,6 +86,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Badge",
+          href: "/docs/primitives/badge",
+          label: "New",
+          items: [],
+        },
+        {
           title: "Button",
           href: "/docs/primitives/button",
           items: [],
