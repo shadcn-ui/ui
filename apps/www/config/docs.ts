@@ -193,6 +193,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Skeleton",
+          href: "/docs/primitives/skeleton",
+          label: "New",
+          items: [],
+        },
+        {
           title: "Slider",
           href: "/docs/primitives/slider",
           items: [],

@@ -48,6 +48,7 @@ import { SeparatorDemo } from "@/components/examples/separator/demo"
 import { SheetDemo } from "@/components/examples/sheet/demo"
 import { SheetPosition } from "@/components/examples/sheet/position"
 import { SheetSize } from "@/components/examples/sheet/size"
+import { SkeletonDemo } from "@/components/examples/skeleton/demo"
 import { SliderDemo } from "@/components/examples/slider/demo"
 import { SwitchDemo } from "@/components/examples/switch/demo"
 import { TabsDemo } from "@/components/examples/tabs/demo"
@@ -134,6 +135,7 @@ export const examples = {
   SheetDemo,
   SheetSize,
   SheetPosition,
+  SkeletonDemo,
   SliderDemo,
   SwitchDemo,
   TabsDemo,

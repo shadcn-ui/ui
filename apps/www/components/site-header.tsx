@@ -10,7 +10,7 @@ import { buttonVariants } from "@/components/ui/button"
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-b-slate-200 bg-white dark:border-b-slate-700 dark:bg-slate-900">
+    <header className="bg-background sticky top-0 z-40 w-full border-b">
       <div className="container flex h-16 items-center">
         <MainNav />
         <MobileNav />
@@ -28,7 +28,6 @@ export function SiteHeader() {
                 className={buttonVariants({
                   size: "sm",
                   variant: "ghost",
-                  className: "text-slate-700 dark:text-slate-400",
                 })}
               >
                 <Icons.gitHub className="h-5 w-5" />
@@ -44,7 +43,6 @@ export function SiteHeader() {
                 className={buttonVariants({
                   size: "sm",
                   variant: "ghost",
-                  className: "text-slate-700 dark:text-slate-400",
                 })}
               >
                 <Icons.twitter className="h-5 w-5 fill-current" />

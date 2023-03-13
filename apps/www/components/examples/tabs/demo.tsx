@@ -6,12 +6,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 export function TabsDemo() {
   return (
     <Tabs defaultValue="account" className="w-[400px]">
-      <TabsList>
+      <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
       </TabsList>
       <TabsContent value="account">
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-base-500 dark:text-base-400 text-sm">
           Make changes to your account here. Click save when you're done.
         </p>
         <div className="grid gap-2 py-4">
@@ -29,7 +29,7 @@ export function TabsDemo() {
         </div>
       </TabsContent>
       <TabsContent value="password">
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-base-500 dark:text-base-400 text-sm">
           Change your password here. After saving, you'll be logged out.
         </p>
         <div className="grid gap-2 py-4">

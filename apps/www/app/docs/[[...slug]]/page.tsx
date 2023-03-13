@@ -87,7 +87,7 @@ export default async function DocPage({ params }: DocPageProps) {
   const toc = await getTableOfContents(doc.body.raw)
 
   return (
-    <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
+    <main className="relative py-6 lg:gap-10 lg:py-4 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <DocsPageHeader heading={doc.title} text={doc.description}>
           {doc.radix ? (
@@ -99,7 +99,7 @@ export default async function DocPage({ params }: DocPageProps) {
                   rel="noreferrer"
                   className={cn(
                     badgeVariants(),
-                    "hover:bg-slate-700 hover:text-slate-50"
+                    "hover:bg-base-700 hover:text-base-50"
                   )}
                 >
                   <Icons.radix className="mr-1 h-3 w-3" />
@@ -124,7 +124,7 @@ export default async function DocPage({ params }: DocPageProps) {
         <DocsPager doc={doc} />
       </div>
       <div className="hidden text-sm xl:block">
-        <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
+        <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-6">
           <DashboardTableOfContents toc={toc} />
         </div>
       </div>

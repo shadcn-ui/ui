@@ -22,7 +22,7 @@ import {
 
 export function CommandDemo() {
   return (
-    <Command className="rounded-lg border border-slate-100  shadow-md dark:border-slate-800">
+    <Command className="rounded-lg border shadow-md">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
