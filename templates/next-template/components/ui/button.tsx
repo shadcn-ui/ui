@@ -1,6 +1,5 @@
 import * as React from "react"
 import { VariantProps, cva } from "class-variance-authority"
-import { Loader2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -36,44 +35,19 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  loading?: boolean
-}
+    VariantProps<typeof buttonVariants> {}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    { className, variant, size, loading, disabled, children, ...props },
-    ref
-  ) => {
+  ({ className, variant, size, ...props }, ref) => {
     return (
       <button
-        className={cn(
-          buttonVariants({
-            variant,
-            size,
-            className,
-          })
-        )}
-        disabled={loading || disabled}
+        className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
-      >
-        {loading ? <LoadingIndicator>{children}</LoadingIndicator> : children}
-      </button>
+      />
     )
   }
 )
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
-
-const LoadingIndicator = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="relative flex items-center justify-center">
-      <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center">
-        <Loader2 className="animate-spin" />
-      </div>
-      <div className="invisible">{children}</div>
-    </div>
-  )
-}
