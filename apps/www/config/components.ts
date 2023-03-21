@@ -40,6 +40,15 @@ export const components = [
     ],
   },
   {
+    name: "Breadcrumb",
+    file: [
+      {
+        name: "breadcrumb.tsx",
+        dir: "components/ui",
+      },
+    ],
+  },
+  {
     name: "Button",
     files: [
       {

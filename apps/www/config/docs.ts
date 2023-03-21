@@ -87,6 +87,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Breadcrumb",
+          href: "/docs/primitives/breadcrumb",
+          items: [],
+        },
+        {
           title: "Button",
           href: "/docs/primitives/button",
           items: [],
