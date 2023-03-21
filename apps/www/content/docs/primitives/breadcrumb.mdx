@@ -1,0 +1,73 @@
+---
+title: Breadcrumb
+description: Navigation scheme that reveals the user’s location in a website.
+component: true
+---
+
+<ComponentExample src="/components/examples/breadcrumb/demo.tsx">
+  <BreadcrumbDemo />
+</ComponentExample>
+
+## Installation
+
+1. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/breadcrumb.tsx" />
+
+<Callout>
+  This is the `<Breadcrumb />` primitive. You can place it in a file at
+  `components/ui/breadcrumb.tsx`.
+</Callout>
+
+## Usage
+
+```tsx
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+} from "@/components/ui/breadcrumb"
+```
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="/">UI</BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem isCurrentPage>
+    <BreadcrumbLink href="/components/breadcrumb">Breadcrumb</BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
+## Examples
+
+### Default
+
+<ComponentExample src="/components/examples/breadcrumb/demo.tsx">
+  <BreadcrumbDemo />
+</ComponentExample>
+
+---
+
+### Custom separator
+
+Pass the `separator` prop to change the separator between items.
+
+<ComponentExample src="/components/examples/breadcrumb/with-custom-separator.tsx">
+  <BreadcrumbWithCustomSeparator />
+</ComponentExample>
+
+---
+
+### Routing library
+
+If you are using a routing library, you can use the `as` prop to render the
+`<BreadcrumbLink />` as a custom link component from your routing library.
+
+<ComponentExample src="/components/examples/breadcrumb/with-routing-library.tsx">
+  <BreadcrumbWithRoutingLibrary />
+</ComponentExample>

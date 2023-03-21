@@ -76,12 +76,18 @@ import { TypographyP } from "@/components/examples/typography/p"
 import { TypographySmall } from "@/components/examples/typography/small"
 import { TypographySubtle } from "@/components/examples/typography/subtle"
 import { TypographyTable } from "@/components/examples/typography/table"
+import { BreadcrumbDemo } from "./breadcrumb/demo"
+import { BreadcrumbWithCustomSeparator } from "./breadcrumb/with-custom-separator"
+import { BreadcrumbWithRoutingLibrary } from "./breadcrumb/with-routing-library"
 
 export const examples = {
   AccordionDemo,
   AlertDialogDemo,
   AspectRatioDemo,
   AvatarDemo,
+  BreadcrumbDemo,
+  BreadcrumbWithCustomSeparator,
+  BreadcrumbWithRoutingLibrary,
   ButtonDemo,
   ButtonGhost,
   ButtonDestructive,
