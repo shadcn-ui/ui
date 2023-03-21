@@ -7,7 +7,9 @@
       "env": [
         "NEXT_PUBLIC_APP_URL",
         "UPSTASH_REDIS_REST_URL",
-        "UPSTASH_REDIS_REST_TOKEN"
+        "UPSTASH_REDIS_REST_TOKEN",
+        "COMPONENTS_BASE_URL",
+        "npm_config_user_agent"
       ],
       "outputs": ["dist/**", ".next/**"]
     },
@@ -15,14 +17,22 @@
       "env": ["NEXT_PUBLIC_APP_URL"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "start": {
+      "dependsOn": ["^build"]
+    },
     "lint": {
+      "cache": false,
       "outputs": []
     },
     "format:check": {
+      "cache": false,
       "outputs": []
     },
     "typecheck": {},
     "dev": {
+      "cache": false
+    },
+    "check": {
       "cache": false
     }
   }

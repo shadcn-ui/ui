@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
+  "type": "module",
   "author": {
     "name": "shadcn",
     "url": "https://twitter.com/shadcn"
@@ -15,20 +16,30 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "build:cli": "turbo --filter=@shadcn/ui build",
     "dev": "turbo run dev --parallel",
+    "dev:cli": "turbo --filter=@shadcn/ui dev",
+    "start:cli": "pnpm --filter=@shadcn/ui start:dev",
     "lint": "turbo run lint",
     "preview": "turbo run preview",
     "typecheck": "turbo run typecheck",
     "format:write": "turbo run format",
     "format:check": "turbo run format:check",
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "check": "turbo lint typecheck format:check",
+    "release": "changeset version",
+    "pub:beta": "cd packages/cli && pnpm pub:beta",
+    "pub:release": "cd packages/cli && pnpm pub:release"
   },
   "packageManager": "pnpm@7.13.5",
   "dependencies": {
     "@babel/core": "^7.20.7",
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.0",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8.31.0",
     "eslint-config-next": "13.0.0",
     "eslint-config-prettier": "^8.3.0",
@@ -36,6 +47,7 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-tailwindcss": "^3.8.0",
     "tailwindcss-animate": "^1.0.5",
+    "ts-node": "^10.9.1",
     "turbo": "^1.6.3"
   },
   "devDependencies": {

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "isolatedModules": false
+  },
+  "include": [".contentlayer/generated", "scripts/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -39,6 +39,9 @@ import { RadioGroupDemo } from "@/components/examples/radio-group/demo"
 import { ScrollAreaDemo } from "@/components/examples/scroll-area/demo"
 import { SelectDemo } from "@/components/examples/select/demo"
 import { SeparatorDemo } from "@/components/examples/separator/demo"
+import { SheetDemo } from "@/components/examples/sheet/demo"
+import { SheetPosition } from "@/components/examples/sheet/position"
+import { SheetSize } from "@/components/examples/sheet/size"
 import { SliderDemo } from "@/components/examples/slider/demo"
 import { SwitchDemo } from "@/components/examples/switch/demo"
 import { TabsDemo } from "@/components/examples/tabs/demo"
@@ -116,6 +119,9 @@ export const examples = {
   ScrollAreaDemo,
   SelectDemo,
   SeparatorDemo,
+  SheetDemo,
+  SheetSize,
+  SheetPosition,
   SliderDemo,
   SwitchDemo,
   TabsDemo,

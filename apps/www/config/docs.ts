@@ -178,6 +178,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Sheet",
+          href: "/docs/primitives/sheet",
+          items: [],
+        },
+        {
           title: "Slider",
           href: "/docs/primitives/slider",
           items: [],
