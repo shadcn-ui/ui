@@ -30,8 +30,8 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
     const clones = validChildren.map((child, index) => {
       return React.cloneElement(child, {
         addSeparator,
-        separator: separator,
-        lastChild: validChildren.length === index + 1,
+        separator,
+        isLastChild: validChildren.length === index + 1,
       })
     })
 
@@ -55,7 +55,7 @@ export interface BreadcrumbItemProps extends BreadcrumbProps {
    * `aria-current=page` and renders a `span`
    */
   isCurrentPage?: boolean
-  lastChild?: boolean
+  isLastChild?: boolean
 }
 
 export const BreadcrumbItem = React.forwardRef<
@@ -67,7 +67,7 @@ export const BreadcrumbItem = React.forwardRef<
       children,
       className,
       isCurrentPage,
-      lastChild,
+      isLastChild,
       separator,
       addSeparator,
       ...props
@@ -96,7 +96,7 @@ export const BreadcrumbItem = React.forwardRef<
         ref={forwardedRef}
       >
         {clones}
-        {!lastChild && addSeparator && (
+        {!isLastChild && addSeparator && (
           <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>
         )}
       </li>
