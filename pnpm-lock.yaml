@@ -272,9 +272,6 @@ importers:
       typescript:
         specifier: ^4.5.3
         version: 4.9.4
-      unist:
-        specifier: ^8.0.11
-        version: 8.0.11
       unist-builder:
         specifier: ^3.0.0
         version: 3.0.0
@@ -12288,13 +12285,6 @@ packages:
       "@types/unist": 2.0.6
       unist-util-is: 5.1.1
       unist-util-visit-parents: 5.1.1
-
-  /unist@8.0.11:
-    resolution:
-      {
-        integrity: sha512-qnWJT2X2zv8UVrAFAxz83rRek9NBdzNLEM5+EKSP0kbZeEGVWuxwKbVwoi2GvgBoIrQLsZ0xLok6+q7VEv4ERw==,
-      }
-    dev: true
 
   /universalify@0.1.2:
     resolution:
