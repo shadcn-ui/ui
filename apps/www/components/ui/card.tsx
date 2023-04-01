@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import { fontHeading } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<
@@ -8,7 +9,7 @@ const Card = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("rounded-lg border shadow-sm", className)}
+    className={cn("bg-background rounded-lg border shadow-sm", className)}
     {...props}
   />
 ))
@@ -20,10 +21,7 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      "flex flex-col space-y-1 border-b p-4 pt-[1.2rem]",
-      className
-    )}
+    className={cn("flex flex-col space-y-1.5 border-b p-4", className)}
     {...props}
   />
 ))
@@ -36,7 +34,8 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "line-clamp-1 text-foreground text-lg font-semibold leading-none",
+      "text-foreground text-lg font-semibold leading-none",
+      fontHeading.className,
       className
     )}
     {...props}
@@ -50,7 +49,7 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-foreground-muted text-sm", className)}
+    className={cn("text-muted-foreground text-sm", className)}
     {...props}
   />
 ))

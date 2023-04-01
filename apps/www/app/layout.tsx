@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Analytics } from "@/components/analytics"
+import { Fonts } from "@/components/fonts"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
@@ -77,7 +78,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen font-sans antialiased",
+            "bg-background min-h-screen font-sans antialiased",
             fontSans.variable
           )}
         >

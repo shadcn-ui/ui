@@ -1,9 +1,28 @@
+---
+title: Theming
+description: Use CSS Variables to customize the look and feel of your application.
+---
+
+# Default Theme
+
+```css title=styles/globals.css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    --base-50: 210 40% 98%;
+    --base-100: 210 40% 96.1%;
+    --base-200: 214.3 31.8% 91.4%;
+    --base-300: 212.7 26.8% 83.9%;
+    --base-400: 215 20.2% 65.1%;
+    --base-500: 215.4 16.3% 46.9%;
+    --base-600: 215.3 19.3% 34.5%;
+    --base-700: 215.3 25% 26.7%;
+    --base-800: 217.2 32.6% 17.5%;
+    --base-900: 222.2 47.4% 11.2%;
+
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
 
@@ -16,11 +35,11 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
 
-    --primary: 223 82% 53%;
-    --primary-foreground: 210 40% 98%;
-
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -38,8 +57,8 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 222.2 47.4% 11.2%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 217.2 32.6% 12.5%;
+    --accent-foreground: 0 0% 80%;
 
     --popover: 222.2 47.4% 8%;
     --popover-foreground: 215 20.2% 65.1%;
@@ -47,10 +66,10 @@
     --border: 217.2 32.6% 17.5%;
     --input: 215.3 25% 26.7%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
+    --primary: 125 81% 36%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
 
     --destructive: 0 63% 31%;
@@ -68,3 +87,4 @@
     @apply bg-background text-foreground;
   }
 }
+```

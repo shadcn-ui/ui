@@ -5,15 +5,19 @@ import { AvatarDemo } from "@/components/examples/avatar/demo"
 import { BadgeDemo } from "@/components/examples/badge/demo"
 import { BadgeDestructive } from "@/components/examples/badge/destructive"
 import { BadgeOutline } from "@/components/examples/badge/outline"
-import { BadgeSubtle } from "@/components/examples/badge/subtle"
+import { BadgeSecondary } from "@/components/examples/badge/secondary"
 import { ButtonDemo } from "@/components/examples/button/demo"
 import { ButtonDestructive } from "@/components/examples/button/destructive"
 import { ButtonGhost } from "@/components/examples/button/ghost"
 import { ButtonLink } from "@/components/examples/button/link"
 import { ButtonLoading } from "@/components/examples/button/loading"
 import { ButtonOutline } from "@/components/examples/button/outline"
-import { ButtonSubtle } from "@/components/examples/button/subtle"
+import { ButtonSecondary } from "@/components/examples/button/secondary"
 import { ButtonWithIcon } from "@/components/examples/button/with-icon"
+import { CalendarDatePicker } from "@/components/examples/calendar/date-picker"
+import { CalendarDateRangePicker } from "@/components/examples/calendar/date-range-picker"
+import { CalendarDemo } from "@/components/examples/calendar/demo"
+import { CalendarDatePickerWithPresets } from "@/components/examples/calendar/with-presets"
 import { CardDemo } from "@/components/examples/card/demo"
 import { CardWithForm } from "@/components/examples/card/with-form"
 import { CheckboxDemo } from "@/components/examples/checkbox/demo"
@@ -79,9 +83,9 @@ import { TypographyInlineCode } from "@/components/examples/typography/inline-co
 import { TypographyLarge } from "@/components/examples/typography/large"
 import { TypographyLead } from "@/components/examples/typography/lead"
 import { TypographyList } from "@/components/examples/typography/list"
+import { TypographyMuted } from "@/components/examples/typography/muted"
 import { TypographyP } from "@/components/examples/typography/p"
 import { TypographySmall } from "@/components/examples/typography/small"
-import { TypographySubtle } from "@/components/examples/typography/subtle"
 import { TypographyTable } from "@/components/examples/typography/table"
 
 export const examples = {
@@ -92,15 +96,19 @@ export const examples = {
   BadgeDemo,
   BadgeDestructive,
   BadgeOutline,
-  BadgeSubtle,
+  BadgeSecondary,
   ButtonDemo,
   ButtonGhost,
   ButtonDestructive,
   ButtonLink,
   ButtonLoading,
   ButtonOutline,
-  ButtonSubtle,
+  ButtonSecondary: ButtonSecondary,
   ButtonWithIcon,
+  CalendarDemo,
+  CalendarDatePicker,
+  CalendarDateRangePicker,
+  CalendarDatePickerWithPresets,
   CardDemo,
   CardWithForm,
   CheckboxDemo,
@@ -162,7 +170,7 @@ export const examples = {
   TypographyList,
   TypographyP,
   TypographySmall,
-  TypographySubtle,
+  TypographyMuted,
   TypographyTable,
   ToggleDemo,
   ToggleSm,

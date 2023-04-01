@@ -46,6 +46,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Theming",
+          href: "/docs/theming",
+          items: [],
+        },
+        {
           title: "Typography",
           href: "/docs/primitives/typography",
           items: [],
@@ -94,6 +99,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Button",
           href: "/docs/primitives/button",
+          items: [],
+        },
+        {
+          title: "Calendar",
+          href: "/docs/primitives/calendar",
           items: [],
         },
         {

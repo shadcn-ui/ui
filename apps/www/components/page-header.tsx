@@ -19,7 +19,7 @@ export function DocsPageHeader({
       <div className={cn("space-y-4", className)} {...props}>
         <h1
           className={cn(
-            "font-heading scroll-m-20 text-4xl font-bold lg:text-5xl",
+            "scroll-m-20 text-4xl font-bold lg:text-5xl",
             fontHeading.className
           )}
         >
@@ -32,7 +32,7 @@ export function DocsPageHeader({
         )}
       </div>
       {children}
-      <Separator className="my-4 md:my-6" />
+      <div className="my-4 md:my-6" />
     </>
   )
 }

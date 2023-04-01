@@ -10,8 +10,8 @@ import { buttonVariants } from "@/components/ui/button"
 
 export function SiteHeader() {
   return (
-    <header className="bg-background sticky top-0 z-40 w-full border-b">
-      <div className="container flex h-16 items-center">
+    <header className="bg-background sticky top-0 z-40 w-full">
+      <div className="container flex h-20 items-center">
         <MainNav />
         <MobileNav />
         <div className="flex flex-1 items-center justify-between space-x-2 sm:space-x-4 md:justify-end">

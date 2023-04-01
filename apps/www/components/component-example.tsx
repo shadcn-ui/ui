@@ -42,16 +42,16 @@ export function ComponentExample({
     >
       <Tabs defaultValue="preview" className="mr-auto w-full">
         <div className="flex items-center justify-between pb-3">
-          <TabsList className="border-b-base-200 dark:border-base-700 w-full justify-start rounded-none border-b bg-transparent p-0 dark:bg-transparent">
+          <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
             <TabsTrigger
               value="preview"
-              className="text-base-600 data-[state=active]:border-b-base-900 data-[state=active]:text-foreground dark:text-base-400 dark:data-[state=active]:border-b-base-400 relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none"
+              className="text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:text-foreground relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none"
             >
               Preview
             </TabsTrigger>
             <TabsTrigger
               value="code"
-              className="text-base-600 data-[state=active]:border-b-base-900 data-[state=active]:text-foreground dark:text-base-400 dark:data-[state=active]:border-b-base-400 relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none"
+              className="text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:text-foreground relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none"
             >
               Code
             </TabsTrigger>

@@ -356,7 +356,7 @@ export function AppleMusicDemo() {
                   </h2>
                   <div className="space-y-1">
                     <Button
-                      variant="subtle"
+                      variant="secondary"
                       size="sm"
                       className="w-full justify-start"
                     >
