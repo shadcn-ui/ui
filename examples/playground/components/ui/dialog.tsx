@@ -27,7 +27,7 @@ const DialogOverlay = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <DialogPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-all duration-100 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in",
+      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-all duration-100",
       className
     )}
     {...props}
@@ -46,7 +46,7 @@ const DialogContent = React.forwardRef<
       ref={ref}
       className={cn(
         "fixed top-0 left-1/2 z-50 grid w-full -translate-x-1/2 gap-4 rounded-b-lg bg-white p-6 sm:top-1/2 sm:max-w-lg sm:-translate-y-1/2 sm:rounded-lg",
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in data-[state=closed]:slide-out-to-left-1/2 data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-3/4 data-[state=closed]:slide-out-to-top-3/4 sm:max-w-lg data-[state=open]:sm:zoom-in-90 data-[state=closed]:sm:zoom-out-90 data-[state=closed]:sm:slide-out-to-top-1/2 data-[state=open]:sm:slide-in-from-top-1/2",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in data-[state=closed]:slide-out-to-left-1/2 data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-3/4 data-[state=closed]:slide-out-to-top-3/4 data-[state=open]:sm:zoom-in-90 data-[state=closed]:sm:zoom-out-90 data-[state=closed]:sm:slide-out-to-top-1/2 data-[state=open]:sm:slide-in-from-top-1/2",
         "dark:bg-slate-900",
         className
       )}
