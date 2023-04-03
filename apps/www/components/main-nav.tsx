@@ -16,6 +16,7 @@ export function MainNav() {
       <nav className="flex items-center space-x-6 text-sm font-medium">
         <Link href="/docs">Documentation</Link>
         <Link href="/docs/primitives/accordion">Components</Link>
+        <Link href="/examples">Examples</Link>
         <Link href="/figma">Figma</Link>
         <Link href={siteConfig.links.github}>GitHub</Link>
       </nav>

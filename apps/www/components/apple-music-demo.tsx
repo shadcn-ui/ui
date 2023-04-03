@@ -180,8 +180,8 @@ const madeForYouAlbums: Album[] = [
 
 export function AppleMusicDemo() {
   return (
-    <div className="overflow-hidden rounded-md border border-slate-200 bg-gradient-to-b from-rose-500 to-indigo-700 shadow-2xl dark:border-slate-800">
-      <Menubar className="rounded-none border-b border-none dark:bg-slate-900">
+    <div className="overflow-hidden rounded-md border bg-gradient-to-b from-rose-500 to-indigo-700 shadow-2xl">
+      <Menubar className="rounded-none border-b border-none">
         <MenubarMenu>
           <MenubarTrigger className="font-bold">Music</MenubarTrigger>
           <MenubarContent>

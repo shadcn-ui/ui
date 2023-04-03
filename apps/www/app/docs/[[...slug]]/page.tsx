@@ -2,15 +2,15 @@ import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
 
 import "@/styles/mdx.css"
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
+import { fontHeading } from "@/lib/fonts"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { Mdx } from "@/components/mdx-components"
-import { DocsPageHeader } from "@/components/page-header"
 import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
 import { badgeVariants } from "@/components/ui/badge"
@@ -89,36 +89,50 @@ export default async function DocPage({ params }: DocPageProps) {
   return (
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
-        <DocsPageHeader heading={doc.title} text={doc.description}>
-          {doc.radix ? (
-            <div className="flex items-center space-x-2 pt-4">
-              {doc.radix?.link && (
-                <Link
-                  href={doc.radix.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={cn(
-                    badgeVariants(),
-                    "hover:bg-base-700 hover:text-base-50"
-                  )}
-                >
-                  <Icons.radix className="mr-1 h-3 w-3" />
-                  Radix UI
-                </Link>
-              )}
-              {doc.radix?.api && (
-                <Link
-                  href={doc.radix.api}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={badgeVariants()}
-                >
-                  API Reference
-                </Link>
-              )}
-            </div>
-          ) : null}
-        </DocsPageHeader>
+        <div className="space-y-4">
+          <h1
+            className={cn(
+              "scroll-m-20 text-4xl font-bold lg:text-5xl",
+              fontHeading.className
+            )}
+          >
+            {doc.title}
+          </h1>
+          {doc.description && (
+            <p className="max-w-[95%] text-xl text-slate-700 dark:text-slate-400">
+              {doc.description}
+            </p>
+          )}
+        </div>
+        {doc.radix ? (
+          <div className="flex items-center space-x-2 pt-4">
+            {doc.radix?.link && (
+              <Link
+                href={doc.radix.link}
+                target="_blank"
+                rel="noreferrer"
+                className={cn(
+                  badgeVariants(),
+                  "hover:bg-base-700 hover:text-base-50"
+                )}
+              >
+                <Icons.radix className="mr-1 h-3 w-3" />
+                Radix UI
+              </Link>
+            )}
+            {doc.radix?.api && (
+              <Link
+                href={doc.radix.api}
+                target="_blank"
+                rel="noreferrer"
+                className={badgeVariants()}
+              >
+                API Reference
+              </Link>
+            )}
+          </div>
+        ) : null}
+        <Separator className="my-4 md:my-6" />
         <Mdx code={doc.body.code} />
         <Separator className="my-4 md:my-6" />
         <DocsPager doc={doc} />

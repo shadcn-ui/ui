@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { useMDXComponent } from "next-contentlayer/hooks"
+import { getMDXComponent } from "next-contentlayer/hooks"
 import { NpmCommands } from "types/unist"
 
 import { cn } from "@/lib/utils"
@@ -237,7 +237,7 @@ interface MdxProps {
 }
 
 export function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code)
+  const Component = getMDXComponent(code)
 
   return (
     <div className="mdx">

@@ -2,8 +2,12 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Heart } from "lucide-react"
 
-import { fontHeading } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "@/components/page-header"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { buttonVariants } from "@/components/ui/button"
 
@@ -16,30 +20,23 @@ export const metadata: Metadata = {
 export default function FigmaPage() {
   return (
     <>
-      <section className="mb-4 grid items-center gap-6 pt-6 pb-8 md:py-4">
-        <div className="flex max-w-[980px] flex-col items-start gap-2">
-          <h1
-            className={cn(
-              "text-3xl font-extrabold leading-tight tracking-tighter md:text-5xl lg:text-6xl lg:leading-[1.1]",
-              fontHeading.className
-            )}
+      <PageHeader>
+        <PageHeaderHeading>Grab the free Figma UI Kit.</PageHeaderHeading>
+        <PageHeaderDescription>
+          Every component recreated in Figma. With customizable props,
+          typography and icons. Open sourced by{" "}
+          <Link
+            href="https://twitter.com/skirano"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium underline underline-offset-4"
           >
-            Grab the free Figma UI Kit.
-          </h1>
-          <p className="max-w-[750px] text-lg text-slate-700 dark:text-slate-400 sm:text-xl">
-            Every component recreated in Figma. With customizable props,
-            typography and icons. Open sourced by{" "}
-            <Link
-              href="https://twitter.com/skirano"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Pietro Schirano
-            </Link>
-            .
-          </p>
-        </div>
+            Pietro Schirano
+          </Link>
+          .
+        </PageHeaderDescription>
+      </PageHeader>
+      <section className="mb-4 grid items-center gap-6">
         <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 md:flex-row">
           <Link
             href="https://www.figma.com/community/file/1203061493325953101"
