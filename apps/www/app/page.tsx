@@ -5,6 +5,7 @@ import { fontHeading } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { AppleMusicDemo } from "@/components/apple-music-demo"
 import { CopyButton } from "@/components/copy-button"
+import { Icons } from "@/components/icons"
 import { PromoVideo } from "@/components/promo-video"
 import { buttonVariants } from "@/components/ui/button"
 
@@ -44,9 +45,10 @@ export default function IndexPage() {
             href={siteConfig.links.github}
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "md:hidden"
+              "pl-6"
             )}
           >
+            <Icons.gitHub className="mr-2 h-4 w-4" />
             GitHub
           </Link>
           <pre className="hidden h-11 items-center justify-between space-x-2 overflow-x-auto rounded-lg border border-slate-100 bg-slate-100 pr-2 pl-6 dark:border-slate-700 dark:bg-black md:flex">
