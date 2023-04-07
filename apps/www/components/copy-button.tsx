@@ -42,7 +42,7 @@ export function CopyButton({
   return (
     <button
       className={cn(
-        "relative z-20 inline-flex h-8 items-center justify-center rounded-md border-slate-200 p-2 text-sm font-medium text-slate-900 transition-all hover:bg-slate-100 focus:outline-none dark:text-slate-100 dark:hover:bg-slate-800",
+        "relative z-20 inline-flex h-8 items-center justify-center rounded-md border-slate-200 p-2 text-sm font-medium text-slate-900 transition-all hover:bg-slate-100 focus-visible:outline-none dark:text-slate-100 dark:hover:bg-slate-800",
         className
       )}
       onClick={() => {
@@ -92,7 +92,7 @@ export function CopyWithClassNames({
     <DropdownMenu>
       <DropdownMenuTrigger
         className={cn(
-          "relative z-20 inline-flex h-8 items-center justify-center rounded-md p-2 text-sm font-medium text-slate-900 transition-all hover:bg-slate-100 focus:outline-none dark:text-slate-100 dark:hover:bg-slate-800",
+          "relative z-20 inline-flex h-8 items-center justify-center rounded-md p-2 text-sm font-medium text-slate-900 transition-all hover:bg-slate-100 focus-visible:outline-none dark:text-slate-100 dark:hover:bg-slate-800",
           className
         )}
         {...props}
@@ -144,7 +144,7 @@ export function CopyNpmCommandButton({
     <DropdownMenu>
       <DropdownMenuTrigger
         className={cn(
-          "relative z-20 inline-flex h-8 items-center justify-center rounded-md p-2 text-sm font-medium text-slate-900 transition-all hover:bg-slate-100 focus:outline-none",
+          "relative z-20 inline-flex h-8 items-center justify-center rounded-md p-2 text-sm font-medium text-slate-900 transition-all hover:bg-slate-100 focus-visible:outline-none",
           className
         )}
         {...props}
