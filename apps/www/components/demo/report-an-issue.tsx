@@ -22,7 +22,7 @@ import { Textarea } from "@/components/ui/textarea"
 
 export function DemoReportAnIssue() {
   return (
-    <Card className="w-full">
+    <Card>
       <CardHeader>
         <CardTitle>Report an issue</CardTitle>
         <CardDescription>
@@ -37,10 +37,10 @@ export function DemoReportAnIssue() {
               <SelectTrigger id="area">
                 <SelectValue placeholder="Select" />
               </SelectTrigger>
-              <SelectContent className="w-[300px]">
+              <SelectContent>
                 <SelectItem value="team">Team</SelectItem>
                 <SelectItem value="billing">Billing</SelectItem>
-                <SelectItem value="account">Account Management</SelectItem>
+                <SelectItem value="account">Account</SelectItem>
                 <SelectItem value="deployments">Deployments</SelectItem>
                 <SelectItem value="support">Support</SelectItem>
               </SelectContent>

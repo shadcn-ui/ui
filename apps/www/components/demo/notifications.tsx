@@ -10,7 +10,7 @@ import {
 
 export function DemoNotifications() {
   return (
-    <Card className="w-2/3">
+    <Card>
       <CardHeader>
         <CardTitle>Notifications</CardTitle>
         <CardDescription>

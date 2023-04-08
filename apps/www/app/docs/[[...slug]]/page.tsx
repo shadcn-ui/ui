@@ -4,9 +4,9 @@ import { allDocs } from "contentlayer/generated"
 import "@/styles/mdx.css"
 import type { Metadata } from "next"
 import Link from "next/link"
+import Balancer from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
-import { fontHeading } from "@/lib/fonts"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
@@ -89,18 +89,13 @@ export default async function DocPage({ params }: DocPageProps) {
   return (
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
-        <div className="space-y-4">
-          <h1
-            className={cn(
-              "scroll-m-20 text-4xl font-bold lg:text-5xl",
-              fontHeading.className
-            )}
-          >
+        <div className="space-y-2">
+          <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
             {doc.title}
           </h1>
           {doc.description && (
-            <p className="max-w-[95%] text-xl text-slate-700 dark:text-slate-400">
-              {doc.description}
+            <p className="text-muted-foreground text-lg">
+              <Balancer>{doc.description}</Balancer>
             </p>
           )}
         </div>
@@ -111,10 +106,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 href={doc.radix.link}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(
-                  badgeVariants(),
-                  "hover:bg-base-700 hover:text-base-50"
-                )}
+                className={cn(badgeVariants({ variant: "secondary" }))}
               >
                 <Icons.radix className="mr-1 h-3 w-3" />
                 Radix UI
@@ -125,7 +117,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 href={doc.radix.api}
                 target="_blank"
                 rel="noreferrer"
-                className={badgeVariants()}
+                className={cn(badgeVariants({ variant: "secondary" }))}
               >
                 API Reference
               </Link>

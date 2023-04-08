@@ -74,7 +74,7 @@ export function CommandPopover() {
           <Button
             variant="outline"
             size="sm"
-            className="w-[120px] justify-start"
+            className="w-[150px] justify-start"
           >
             {selectedStatus ? (
               <>

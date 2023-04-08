@@ -10,6 +10,7 @@ interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {
   extractClassname?: boolean
   extractedClassNames?: string
   align?: "center" | "start" | "end"
+  src?: string
 }
 
 export function ComponentExample({
@@ -18,6 +19,7 @@ export function ComponentExample({
   extractClassname,
   extractedClassNames,
   align = "center",
+  src: _,
   ...props
 }: ComponentExampleProps) {
   const [Example, Code, ...Children] = React.Children.toArray(
@@ -66,7 +68,7 @@ export function ComponentExample({
             codeString && <CopyButton value={codeString} />
           )}
         </div>
-        <TabsContent value="preview" className="p-0">
+        <TabsContent value="preview" className="rounded-md border">
           <div
             className={cn("flex min-h-[350px] justify-center p-10", {
               "items-center": align === "center",
@@ -77,16 +79,16 @@ export function ComponentExample({
             {Example}
           </div>
         </TabsContent>
-        <TabsContent value="code" className="border-none p-0">
+        <TabsContent value="code">
           <div className="flex flex-col space-y-4">
             <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto [&_button]:hidden">
               {Code}
             </div>
-            {Children && (
+            {Children?.length ? (
               <div className="rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto [&_button]:hidden">
                 {Children}
               </div>
-            )}
+            ) : null}
           </div>
         </TabsContent>
       </Tabs>

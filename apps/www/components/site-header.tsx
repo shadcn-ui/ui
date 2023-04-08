@@ -10,7 +10,7 @@ import { buttonVariants } from "@/components/ui/button"
 
 export function SiteHeader() {
   return (
-    <header className="bg-background/95 supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b backdrop-blur">
+    <header className="bg-background/95 supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b shadow-sm backdrop-blur">
       <div className="container flex h-14 items-center">
         <MainNav />
         <MobileNav />

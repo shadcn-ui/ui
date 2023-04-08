@@ -39,14 +39,6 @@ export function SelectDemo() {
           <SelectItem value="courgette">Courgette</SelectItem>
           <SelectItem value="leek">Leek</SelectItem>
         </SelectGroup>
-        <SelectSeparator />
-        <SelectGroup>
-          <SelectLabel>Meat</SelectLabel>
-          <SelectItem value="beef">Beef</SelectItem>
-          <SelectItem value="chicken">Chicken</SelectItem>
-          <SelectItem value="lamb">Lamb</SelectItem>
-          <SelectItem value="pork">Pork</SelectItem>
-        </SelectGroup>
       </SelectContent>
     </Select>
   )

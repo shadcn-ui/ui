@@ -103,7 +103,7 @@ export const examples = {
   ButtonLink,
   ButtonLoading,
   ButtonOutline,
-  ButtonSecondary: ButtonSecondary,
+  ButtonSecondary,
   ButtonWithIcon,
   CalendarDemo,
   CalendarDatePicker,

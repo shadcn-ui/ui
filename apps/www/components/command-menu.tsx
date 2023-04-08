@@ -3,7 +3,7 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { DialogProps } from "@radix-ui/react-alert-dialog"
-import { allDocs } from "contentlayer/generated"
+// import { allDocs } from "contentlayer/generated"
 import { Circle, File, Laptop, Moon, SunMedium } from "lucide-react"
 import { useTheme } from "next-themes"
 
@@ -77,7 +77,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                 </CommandItem>
               ))}
           </CommandGroup>
-          <CommandGroup heading="Components">
+          {/* <CommandGroup heading="Components">
             {allDocs
               .filter((doc) => doc.component)
               .map((doc) => (
@@ -93,7 +93,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                   {doc.title}
                 </CommandItem>
               ))}
-          </CommandGroup>
+          </CommandGroup> */}
           <CommandSeparator />
           <CommandGroup heading="Theme">
             <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>

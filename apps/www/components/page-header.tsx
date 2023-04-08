@@ -1,4 +1,4 @@
-import { fontHeading } from "@/lib/fonts"
+// import { fontHeading } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 
 function PageHeader({
@@ -23,8 +23,7 @@ function PageHeaderHeading({
   return (
     <h1
       className={cn(
-        "text-3xl font-bold leading-tight md:text-5xl lg:text-6xl lg:leading-[1.1]",
-        fontHeading.className,
+        "text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl lg:leading-[1.1]",
         className
       )}
       {...props}
@@ -39,7 +38,7 @@ function PageHeaderDescription({
   return (
     <p
       className={cn(
-        "max-w-[750px] text-lg text-slate-700 dark:text-slate-400 sm:text-xl",
+        "text-muted-foreground max-w-[750px] text-lg sm:text-xl",
         className
       )}
       {...props}

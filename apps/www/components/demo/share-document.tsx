@@ -22,13 +22,13 @@ import { Separator } from "@/components/ui/separator"
 export function DemoShareDocument() {
   return (
     <Card>
-      <CardHeader className="p-4">
+      <CardHeader>
         <CardTitle>Share this document</CardTitle>
         <CardDescription>
           Anyone with the link can view this document.
         </CardDescription>
       </CardHeader>
-      <CardContent className="p-4">
+      <CardContent>
         <div className="flex space-x-2">
           <Input value="http://example.com/link/to/document" readOnly />
           <Button variant="secondary" className="shrink-0">

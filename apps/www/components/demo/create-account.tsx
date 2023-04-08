@@ -16,13 +16,13 @@ import { Label } from "@/components/ui/label"
 export function DemoCreateAccount() {
   return (
     <Card>
-      <CardHeader className="border-0 p-6 pb-0">
+      <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Create an account</CardTitle>
         <CardDescription>
           Enter your email below to create your account
         </CardDescription>
       </CardHeader>
-      <CardContent className="grid gap-4 p-6">
+      <CardContent className="grid gap-4">
         <div className="grid grid-cols-2 gap-6">
           <Button variant="outline">
             <Icons.gitHub className="mr-2 h-4 w-4" />
@@ -52,7 +52,7 @@ export function DemoCreateAccount() {
           <Input id="password" type="password" />
         </div>
       </CardContent>
-      <CardFooter className="border-0 p-6 pt-0">
+      <CardFooter>
         <Button className="w-full">Create account</Button>
       </CardFooter>
     </Card>

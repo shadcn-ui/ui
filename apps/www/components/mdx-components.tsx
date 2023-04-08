@@ -5,6 +5,7 @@ import Image from "next/image"
 import { getMDXComponent } from "next-contentlayer/hooks"
 import { NpmCommands } from "types/unist"
 
+import { fontMono } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
@@ -36,7 +37,7 @@ const components = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        "font-heading mt-12 scroll-m-20 border-b border-b-slate-200 pb-2 text-3xl font-semibold first:mt-0 dark:border-b-slate-700",
+        "font-heading mt-12 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
         className
       )}
       {...props}
@@ -80,10 +81,7 @@ const components = {
   ),
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a
-      className={cn(
-        "font-medium text-slate-900 underline underline-offset-4 dark:text-slate-50",
-        className
-      )}
+      className={cn("font-medium underline underline-offset-4", className)}
       {...props}
     />
   ),
@@ -104,10 +102,7 @@ const components = {
   ),
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <blockquote
-      className={cn(
-        "mt-6 border-l-2 border-slate-300 pl-6 italic text-slate-800 [&>*]:text-slate-600",
-        className
-      )}
+      className={cn("mt-6 border-l-2 pl-6 italic", className)}
       {...props}
     />
   ),
@@ -117,17 +112,10 @@ const components = {
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img
-      className={cn("rounded-md border border-slate-200", className)}
-      alt={alt}
-      {...props}
-    />
+    <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
-    <hr
-      className="my-4 border-slate-200 dark:border-slate-700 md:my-8"
-      {...props}
-    />
+    <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="my-6 w-full overflow-y-auto">
@@ -136,10 +124,7 @@ const components = {
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
     <tr
-      className={cn(
-        "m-0 border-t border-slate-300 p-0 even:bg-slate-100",
-        className
-      )}
+      className={cn("even:bg-muted m-0 border-t p-0", className)}
       {...props}
     />
   ),
@@ -179,7 +164,7 @@ const components = {
       <>
         <pre
           className={cn(
-            "mt-6 mb-4 overflow-x-auto rounded-lg border border-slate-900 bg-slate-900 py-4 px-2 dark:border-slate-700 dark:bg-black",
+            "mt-6 mb-4 overflow-x-auto rounded-lg border bg-black py-4 px-2",
             className
           )}
           {...props}
@@ -213,7 +198,7 @@ const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded bg-slate-100 py-[0.2rem] px-[0.3rem] font-mono text-sm font-semibold text-slate-900 dark:bg-slate-800 dark:text-slate-400",
+        "bg-muted relative rounded py-[0.2rem] px-[0.3rem] font-mono text-sm",
         className
       )}
       {...props}
@@ -224,10 +209,7 @@ const components = {
   ComponentExample,
   ComponentSource,
   CodeBlockWrapper: ({ ...props }) => (
-    <CodeBlockWrapper
-      className="rounded-md border border-slate-100"
-      {...props}
-    />
+    <CodeBlockWrapper className="rounded-md border" {...props} />
   ),
   ...examples,
 }

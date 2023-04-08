@@ -1,22 +1,8 @@
-:root {
-  --shiki-color-text: #414141;
-  --shiki-color-background: transparent;
-  --shiki-token-constant: #1976d2;
-  --shiki-token-string: #22863a;
-  --shiki-token-comment: #aaa;
-  --shiki-token-keyword: #d32f2f;
-  --shiki-token-parameter: #ff9800;
-  --shiki-token-function: #6f42c1;
-  --shiki-token-string-expression: #22863a;
-  --shiki-token-punctuation: #212121;
-  --shiki-token-link: #22863a;
-}
-
 [data-rehype-pretty-code-fragment] {
   @apply relative;
 }
 [data-rehype-pretty-code-fragment] code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent dark:bg-transparent p-0;
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
   counter-reset: line;
   box-decoration-break: clone;
 }
@@ -36,16 +22,23 @@
   color: gray;
 }
 [data-rehype-pretty-code-fragment] .line--highlighted {
-  @apply bg-slate-300 bg-opacity-10;
+  @apply bg-zinc-900 rounded-t-md border-zinc-800 border border-b-0;
+}
+[data-rehype-pretty-code-fragment] .line--highlighted ~ .line--highlighted {
+  @apply rounded-none border-t-0 border-b-0;
+}
+[data-rehype-pretty-code-fragment]
+  .line--highlighted:not(:has(~ .line--highlighted)) {
+  @apply rounded-b-md border-b;
 }
 [data-rehype-pretty-code-fragment] .line-highlighted span {
   @apply relative;
 }
 [data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply rounded-md bg-slate-300 bg-opacity-10 p-1;
+  @apply rounded-md bg-zinc-900 border border-zinc-800 p-1;
 }
 [data-rehype-pretty-code-title] {
-  @apply inline-block mt-2 py-1 px-1 text-sm font-medium text-slate-700 dark:text-slate-400;
+  @apply inline-block mt-2 pt-1 px-4 text-sm font-medium;
 }
 [data-rehype-pretty-code-title] + pre {
   @apply mt-2;

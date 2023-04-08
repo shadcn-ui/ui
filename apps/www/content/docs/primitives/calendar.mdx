@@ -41,7 +41,22 @@ npm install react-day-picker date-fns
 
 ## Usage
 
-Use this.
+```tsx
+import { Calendar } from "@/components/ui/calendar"
+```
+
+```tsx
+const [date, setDate] = React.useState<Date | undefined>(new Date())
+
+return (
+  <Calendar
+    mode="single"
+    selected={date}
+    onSelect={setDate}
+    className="rounded-md border"
+  />
+)
+```
 
 ## Examples
 
