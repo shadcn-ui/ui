@@ -38,7 +38,7 @@
   @apply rounded-md bg-zinc-900 border border-zinc-800 p-1;
 }
 [data-rehype-pretty-code-title] {
-  @apply inline-block mt-2 pt-1 px-4 text-sm font-medium;
+  @apply inline-block mt-2 pt-6 px-4 text-sm font-medium;
 }
 [data-rehype-pretty-code-title] + pre {
   @apply mt-2;

@@ -1,5 +1,7 @@
 import { AccordionDemo } from "@/components/examples/accordion/demo"
 import { AlertDialogDemo } from "@/components/examples/alert-dialog/demo"
+import { AlertDemo } from "@/components/examples/alert/demo"
+import { AlertDestructive } from "@/components/examples/alert/destructive"
 import { AspectRatioDemo } from "@/components/examples/aspect-ratio/demo"
 import { AvatarDemo } from "@/components/examples/avatar/demo"
 import { BadgeDemo } from "@/components/examples/badge/demo"
@@ -90,7 +92,9 @@ import { TypographyTable } from "@/components/examples/typography/table"
 
 export const examples = {
   AccordionDemo,
+  AlertDemo,
   AlertDialogDemo,
+  AlertDestructive,
   AspectRatioDemo,
   AvatarDemo,
   BadgeDemo,

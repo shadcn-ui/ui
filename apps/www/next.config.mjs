@@ -10,6 +10,15 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  redirects() {
+    return [
+      {
+        source: "/docs/primitives/:path*",
+        destination: "/docs/components/:path*",
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default withContentlayer(nextConfig)

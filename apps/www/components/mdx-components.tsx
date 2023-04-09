@@ -5,7 +5,6 @@ import Image from "next/image"
 import { getMDXComponent } from "next-contentlayer/hooks"
 import { NpmCommands } from "types/unist"
 
-import { fontMono } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
@@ -19,12 +18,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 const components = {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Alert,
+  AlertTitle,
+  AlertDescription,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -37,7 +40,7 @@ const components = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        "font-heading mt-12 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
+        "font-heading mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0",
         className
       )}
       {...props}
@@ -46,7 +49,7 @@ const components = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-2xl font-semibold tracking-tight",
+        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -55,7 +58,7 @@ const components = {
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "font-heading mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
         className
       )}
       {...props}

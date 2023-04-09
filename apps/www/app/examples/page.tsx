@@ -34,14 +34,14 @@ function DemoContainer({ children }: DemoContainerProps) {
 
 export default function DemoPage() {
   return (
-    <>
+    <div className="container">
       <PageHeader>
         <PageHeaderHeading>Examples</PageHeaderHeading>
         <PageHeaderDescription>
           Check out some examples app built using the components.
         </PageHeaderDescription>
       </PageHeader>
-      <div className="bg-muted grid grid-cols-3 items-start justify-center gap-6 rounded-lg p-8">
+      <div className="grid grid-cols-3 items-start justify-center gap-6">
         <div className="grid items-start gap-6">
           <DemoContainer>
             <DemoReportAnIssue />
@@ -76,6 +76,6 @@ export default function DemoPage() {
           </DemoContainer>
         </div>
       </div>
-    </>
+    </div>
   )
 }
