@@ -9,6 +9,7 @@ import { ButtonLink } from "@/components/examples/button/link"
 import { ButtonLoading } from "@/components/examples/button/loading"
 import { ButtonOutline } from "@/components/examples/button/outline"
 import { ButtonSubtle } from "@/components/examples/button/subtle"
+import { ButtonSuccess } from "@/components/examples/button/success"
 import { ButtonWithIcon } from "@/components/examples/button/with-icon"
 import { CheckboxDemo } from "@/components/examples/checkbox/demo"
 import { CheckboxDisabled } from "@/components/examples/checkbox/disabled"
@@ -89,6 +90,7 @@ export const examples = {
   ButtonLoading,
   ButtonOutline,
   ButtonSubtle,
+  ButtonSuccess,
   ButtonWithIcon,
   CheckboxDemo,
   CheckboxDisabled,
