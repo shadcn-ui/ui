@@ -30,7 +30,7 @@ export function DemoGithub() {
             CSS.
           </CardDescription>
         </div>
-        <div className="bg-secondary text-secondary-foreground flex items-center space-x-1 rounded-md">
+        <div className="flex items-center space-x-1 rounded-md bg-secondary text-secondary-foreground">
           <Button variant="secondary" className="px-3">
             <Star className="mr-2 h-4 w-4" />
             Star
@@ -39,7 +39,7 @@ export function DemoGithub() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" className="px-2">
-                <ChevronDown className="text-muted-foreground h-4 w-4" />
+                <ChevronDown className="h-4 w-4 text-muted-foreground" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
@@ -64,7 +64,7 @@ export function DemoGithub() {
         </div>
       </CardHeader>
       <CardContent>
-        <div className="text-muted-foreground flex space-x-4 text-sm">
+        <div className="flex space-x-4 text-sm text-muted-foreground">
           <div className="flex items-center">
             <Circle className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
             TypeScipt

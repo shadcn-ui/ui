@@ -16,7 +16,8 @@
   },
   "settings": {
     "tailwindcss": {
-      "callees": ["cn"]
+      "callees": ["cn"],
+      "config": "tailwind.config.cjs"
     },
     "next": {
       "rootDir": ["apps/*/"]

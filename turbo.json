@@ -28,6 +28,10 @@
       "cache": false,
       "outputs": []
     },
+    "format:write": {
+      "cache": false,
+      "outputs": []
+    },
     "typecheck": {},
     "dev": {
       "cache": false

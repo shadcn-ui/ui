@@ -94,7 +94,7 @@ export default async function DocPage({ params }: DocPageProps) {
             {doc.title}
           </h1>
           {doc.description && (
-            <p className="text-muted-foreground text-lg">
+            <p className="text-lg text-muted-foreground">
               <Balancer>{doc.description}</Balancer>
             </p>
           )}

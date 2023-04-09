@@ -10,7 +10,6 @@
   },
   "workspaces": [
     "apps/*",
-    "examples/*",
     "packages/*",
     "templates/*"
   ],
@@ -53,7 +52,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-turbo": "^0.0.7",
     "eslint-plugin-react": "^7.31.11",
-    "eslint-plugin-tailwindcss": "^3.8.0",
+    "eslint-plugin-tailwindcss": "^3.11.0",
     "husky": "^8.0.2",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",

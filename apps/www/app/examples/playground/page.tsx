@@ -1,3 +1,4 @@
+import { Metadata } from "next"
 import { History } from "lucide-react"
 
 import {
@@ -28,9 +29,14 @@ import { TopPSelector } from "./components/top-p-selector"
 import { models, types } from "./data/models"
 import { presets } from "./data/presets"
 
+export const metadata: Metadata = {
+  title: "Playground",
+  description: "The OpenAI Playground built using the components.",
+}
+
 export default function PlaygroundPage() {
   return (
-    <>
+    <div className="container">
       <PageHeader>
         <PageHeaderHeading>Playground</PageHeaderHeading>
         <PageHeaderDescription>
@@ -75,7 +81,7 @@ export default function PlaygroundPage() {
                     placeholder="We're writing to [inset]. Congrats from OpenAI!"
                     className="h-full md:min-h-[800px]"
                   />
-                  <div className="bg-muted rounded-md border"></div>
+                  <div className="rounded-md border bg-muted"></div>
                 </div>
               </TabsContent>
               <TabsContent value="edit" className="mt-0 border-0 p-0">
@@ -146,6 +152,6 @@ export default function PlaygroundPage() {
           </div>
         </Tabs>
       </div>
-    </>
+    </div>
   )
 }

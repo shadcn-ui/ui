@@ -23,7 +23,7 @@ export function MainNav() {
         <Link
           href="/docs"
           className={cn(
-            "hover:text-foreground/80 transition-colors",
+            "transition-colors hover:text-foreground/80",
             pathname === "/docs" ? "text-foreground" : "text-foreground/60"
           )}
         >
@@ -32,7 +32,7 @@ export function MainNav() {
         <Link
           href="/docs/primitives/accordion"
           className={cn(
-            "hover:text-foreground/80 transition-colors",
+            "transition-colors hover:text-foreground/80",
             pathname?.startsWith("/docs/components")
               ? "text-foreground"
               : "text-foreground/60"
@@ -43,7 +43,7 @@ export function MainNav() {
         <Link
           href="/examples"
           className={cn(
-            "hover:text-foreground/80 transition-colors",
+            "transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")
               ? "text-foreground"
               : "text-foreground/60"
@@ -54,7 +54,7 @@ export function MainNav() {
         <Link
           href="/figma"
           className={cn(
-            "hover:text-foreground/80 transition-colors",
+            "transition-colors hover:text-foreground/80",
             pathname === "/figma" ? "text-foreground" : "text-foreground/60"
           )}
         >
@@ -63,7 +63,7 @@ export function MainNav() {
         <Link
           href={siteConfig.links.github}
           className={cn(
-            "hover:text-foreground/80 text-foreground/60 transition-colors"
+            "text-foreground/60 transition-colors hover:text-foreground/80"
           )}
         >
           GitHub

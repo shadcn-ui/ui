@@ -34,7 +34,7 @@ export function DemoPaymentMethod() {
         <RadioGroup defaultValue="card" className="grid grid-cols-3 gap-4">
           <Label
             htmlFor="card"
-            className="[&:has([data-state=checked])]:border-primary hover:bg-accent hover:text-accent-foreground bg-popover border-muted flex flex-col items-center justify-between rounded-md border-2 p-4"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
           >
             <RadioGroupItem value="card" id="card" className="sr-only" />
             <CreditCard className="mb-3 h-6 w-6" />
@@ -42,7 +42,7 @@ export function DemoPaymentMethod() {
           </Label>
           <Label
             htmlFor="paypal"
-            className="[&:has([data-state=checked])]:border-primary hover:bg-accent hover:text-accent-foreground bg-popover border-muted flex flex-col items-center justify-between rounded-md border-2 p-4"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
           >
             <RadioGroupItem value="paypal" id="paypal" className="sr-only" />
             <Icons.paypal className="mb-3 h-6 w-6" />
@@ -50,7 +50,7 @@ export function DemoPaymentMethod() {
           </Label>
           <Label
             htmlFor="apple"
-            className="[&:has([data-state=checked])]:border-primary hover:bg-accent hover:text-accent-foreground bg-popover border-muted flex flex-col items-center justify-between rounded-md border-2 p-4"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
           >
             <RadioGroupItem value="apple" id="apple" className="sr-only" />
             <Icons.apple className="mb-3 h-6 w-6" />

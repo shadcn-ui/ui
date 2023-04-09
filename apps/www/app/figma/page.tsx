@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function FigmaPage() {
   return (
-    <>
+    <div className="container">
       <PageHeader>
         <PageHeaderHeading>Grab the free Figma UI Kit.</PageHeaderHeading>
         <PageHeaderDescription>
@@ -66,6 +66,6 @@ export default function FigmaPage() {
           className="h-full w-full overflow-hidden rounded-lg border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800"
         />
       </AspectRatio>
-    </>
+    </div>
   )
 }

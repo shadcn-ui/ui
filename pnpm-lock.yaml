@@ -58,8 +58,8 @@ importers:
         specifier: ^7.31.11
         version: 7.31.11(eslint@8.31.0)
       eslint-plugin-tailwindcss:
-        specifier: ^3.8.0
-        version: 3.8.0(ts-node@10.9.1)
+        specifier: ^3.11.0
+        version: 3.11.0(tailwindcss@3.2.4)
       husky:
         specifier: ^8.0.2
         version: 8.0.2
@@ -5014,7 +5014,6 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@typescript-eslint/parser@5.51.0(eslint@8.31.0)(typescript@4.9.4):
     resolution:
@@ -5037,6 +5036,7 @@ packages:
       typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@typescript-eslint/scope-manager@5.51.0:
     resolution:
@@ -5077,7 +5077,6 @@ packages:
       typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@typescript-eslint/typescript-estree@5.51.0(typescript@4.9.4):
     resolution:
@@ -5101,6 +5100,7 @@ packages:
       typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
+    dev: true
 
   /@typescript-eslint/visitor-keys@5.51.0:
     resolution:
@@ -5272,6 +5272,7 @@ packages:
       {
         integrity: sha512-7UvmKalWRt1wgjL1RrGxoSJW/0QZFIegpeGvZG9kjp8vrRu55XTHbwnqq2GpXm9uLbcuhxm3IqX9OB4MZR1b2A==,
       }
+    dev: true
 
   /anymatch@3.1.3:
     resolution:
@@ -6072,6 +6073,7 @@ packages:
         integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==,
       }
     engines: { node: ">= 6" }
+    dev: true
 
   /commander@8.3.0:
     resolution:
@@ -6967,7 +6969,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      "@typescript-eslint/parser": 5.51.0(eslint@8.31.0)(typescript@4.9.4)
+      "@typescript-eslint/parser": 5.51.0(eslint@8.31.0)(typescript@4.7.4)
       debug: 3.2.7
       eslint: 8.31.0
       eslint-import-resolver-node: 0.3.6
@@ -6988,7 +6990,7 @@ packages:
       "@typescript-eslint/parser":
         optional: true
     dependencies:
-      "@typescript-eslint/parser": 5.51.0(eslint@8.31.0)(typescript@4.9.4)
+      "@typescript-eslint/parser": 5.51.0(eslint@8.31.0)(typescript@4.7.4)
       array-includes: 3.1.6
       array.prototype.flat: 1.3.1
       debug: 2.6.9
@@ -7069,6 +7071,20 @@ packages:
       semver: 6.3.0
       string.prototype.matchall: 4.0.8
 
+  /eslint-plugin-tailwindcss@3.11.0(tailwindcss@3.2.4):
+    resolution:
+      {
+        integrity: sha512-RaraOG4D6VXutKnoNvFQ4+frTWGJDKtezy1yCrGFS7Um1to/npDNdh2GL19IRoGB/eanbtwhxFXy+xyEw0grAg==,
+      }
+    engines: { node: ">=12.13.0" }
+    peerDependencies:
+      tailwindcss: ^3.2.2
+    dependencies:
+      fast-glob: 3.2.12
+      postcss: 8.4.20
+      tailwindcss: 3.2.4(postcss@8.4.20)(ts-node@10.9.1)
+    dev: false
+
   /eslint-plugin-tailwindcss@3.8.0(ts-node@10.9.1):
     resolution:
       {
@@ -7081,6 +7097,7 @@ packages:
       tailwindcss: 3.3.0(postcss@8.4.20)(ts-node@10.9.1)
     transitivePeerDependencies:
       - ts-node
+    dev: true
 
   /eslint-plugin-turbo@0.0.7(eslint@8.31.0):
     resolution:
@@ -7815,6 +7832,7 @@ packages:
       minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
+    dev: true
 
   /glob@7.1.7:
     resolution:
@@ -8696,6 +8714,7 @@ packages:
         integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==,
       }
     hasBin: true
+    dev: true
 
   /jju@1.4.0:
     resolution:
@@ -10138,6 +10157,7 @@ packages:
       any-promise: 1.3.0
       object-assign: 4.1.1
       thenify-all: 1.6.0
+    dev: true
 
   /nanoid@3.3.4:
     resolution:
@@ -10938,6 +10958,7 @@ packages:
         integrity: sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==,
       }
     engines: { node: ">= 6" }
+    dev: true
 
   /pkg-dir@4.2.0:
     resolution:
@@ -12553,6 +12574,7 @@ packages:
       mz: 2.7.0
       pirates: 4.0.5
       ts-interface-checker: 0.1.13
+    dev: true
 
   /supports-color@4.5.0:
     resolution:
@@ -12679,6 +12701,7 @@ packages:
       sucrase: 3.29.0
     transitivePeerDependencies:
       - ts-node
+    dev: true
 
   /tar-fs@2.1.1:
     resolution:
@@ -12736,6 +12759,7 @@ packages:
     engines: { node: ">=0.8" }
     dependencies:
       thenify: 3.3.1
+    dev: true
 
   /thenify@3.3.1:
     resolution:
@@ -12744,6 +12768,7 @@ packages:
       }
     dependencies:
       any-promise: 1.3.0
+    dev: true
 
   /through2@4.0.2:
     resolution:
@@ -12899,6 +12924,7 @@ packages:
       {
         integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==,
       }
+    dev: true
 
   /ts-node@10.9.1(@types/node@14.18.35)(typescript@4.9.5):
     resolution:
@@ -13049,7 +13075,6 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.7.4
-    dev: false
 
   /tsutils@3.21.0(typescript@4.9.4):
     resolution:
@@ -13062,6 +13087,7 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.9.4
+    dev: true
 
   /tty-table@4.1.6:
     resolution:

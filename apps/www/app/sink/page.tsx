@@ -1,8 +1,5 @@
-"use client"
-
 import * as React from "react"
 import Link from "next/link"
-import { ChromePicker, ColorResult } from "react-color"
 
 import { cn } from "@/lib/utils"
 import { AccordionDemo } from "@/components/examples/accordion/demo"
@@ -49,72 +46,11 @@ import { ToggleDisabled } from "@/components/examples/toggle/disabled"
 import { ToggleOutline } from "@/components/examples/toggle/outline"
 import { ToggleWithText } from "@/components/examples/toggle/with-text"
 import { TooltipDemo } from "@/components/examples/tooltip/demo"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-
-const colors = [
-  "300 0% 0%",
-  "220 79% 48%",
-  "106.41509433962264 65.43965588551576% 32.114428499999995%",
-  "258.4049079754601 64.39459741483951% 50.063758%",
-  "0 0% 100%",
-]
-
-// :root {
-// --primary: ${selectedColor.hsl.h} ${selectedColor.hsl.s * 100}%
-//   ${selectedColor.hsl.l * 100}%;
-// }
 
 export default function KitchenSinkPage() {
-  const [selectedColor, setSelectedColor] = React.useState<ColorResult>({
-    hex: "#000000",
-    hsl: { h: 0, s: 0, l: 0, a: 1 },
-    rgb: { r: 0, g: 0, b: 0, a: 1 },
-  })
-
   return (
-    <>
-      <div className="font-ui grid gap-4 py-10">
-        <div className="flex justify-end rounded-md border p-2">
-          <div className="flex items-center space-x-2 rounded-md border p-2">
-            <p className="text-sm font-medium leading-none">Primary</p>
-            <Popover>
-              <PopoverTrigger
-                className="h-6 w-6 rounded-full"
-                style={{
-                  backgroundColor: selectedColor.hex,
-                }}
-              >
-                <span className="sr-only">Toggle</span>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-2">
-                <ChromePicker
-                  className="shadow-none"
-                  styles={{
-                    default: {
-                      picker: {
-                        boxShadow: "none",
-                        border: "none",
-                      },
-                      saturation: {
-                        borderRadius: "0.375rem",
-                        overflow: "hidden",
-                        border: "1px solid #fff",
-                      },
-                    },
-                  }}
-                  color={selectedColor.hex}
-                  onChange={(color) => {
-                    setSelectedColor(color)
-                  }}
-                />
-              </PopoverContent>
-            </Popover>
-          </div>
-        </div>
+    <div className="container">
+      <div className="grid gap-4 py-10">
         <div className="grid grid-cols-3 items-start gap-4">
           <div className="grid gap-4">
             <ComponentWrapper>
@@ -130,13 +66,13 @@ export default function KitchenSinkPage() {
               <p className="text-foreground-muted text-sm">Documentation</p>
               <p className="text-sm font-medium leading-none">
                 You can customize the theme using{" "}
-                <code className="bg-muted text-foreground relative rounded py-[0.2rem] px-[0.3rem] font-mono text-sm font-semibold">
+                <code className="relative rounded bg-muted py-[0.2rem] px-[0.3rem] font-mono text-sm font-semibold text-foreground">
                   CSS variables
                 </code>
                 .{" "}
                 <Link
                   href="#"
-                  className="text-primary font-medium underline underline-offset-4"
+                  className="font-medium text-primary underline underline-offset-4"
                 >
                   Click here
                 </Link>{" "}
@@ -244,7 +180,7 @@ export default function KitchenSinkPage() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
