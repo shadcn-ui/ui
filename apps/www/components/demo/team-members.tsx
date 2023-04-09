@@ -56,7 +56,7 @@ export function DemoTeamMembers() {
                 <CommandInput placeholder="Select new role..." />
                 <CommandList>
                   <CommandEmpty>No roles found.</CommandEmpty>
-                  <CommandGroup className="p-1.5">
+                  <CommandGroup>
                     <CommandItem className="flex flex-col items-start space-y-1 p-2">
                       <p>Viewer</p>
                       <p className="text-sm text-muted-foreground">

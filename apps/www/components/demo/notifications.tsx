@@ -18,7 +18,7 @@ export function DemoNotifications() {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-1 p-1.5">
-        <div className="flex items-center space-x-4 rounded-[0.24rem] p-2 hover:bg-accent hover:text-accent-foreground">
+        <div className="flex items-center space-x-4 rounded-md p-2 hover:bg-accent hover:text-accent-foreground">
           <Bell className="h-5 w-5" />
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Everything</p>
@@ -27,7 +27,7 @@ export function DemoNotifications() {
             </p>
           </div>
         </div>
-        <div className="flex items-center space-x-4 rounded-[0.24rem] bg-accent p-2 text-accent-foreground">
+        <div className="flex items-center space-x-4 rounded-md bg-accent p-2 text-accent-foreground">
           <AtSign className="h-5 w-5" />
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Available</p>
@@ -36,7 +36,7 @@ export function DemoNotifications() {
             </p>
           </div>
         </div>
-        <div className="flex items-center space-x-4 rounded-[0.24rem] p-2 hover:bg-accent hover:text-accent-foreground">
+        <div className="flex items-center space-x-4 rounded-md p-2 hover:bg-accent hover:text-accent-foreground">
           <BellOff className="h-5 w-5" />
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Ignoring</p>
