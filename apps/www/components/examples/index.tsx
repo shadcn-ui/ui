@@ -76,6 +76,10 @@ import { TypographyP } from "@/components/examples/typography/p"
 import { TypographySmall } from "@/components/examples/typography/small"
 import { TypographySubtle } from "@/components/examples/typography/subtle"
 import { TypographyTable } from "@/components/examples/typography/table"
+import { FileInputDemo } from "@/components/examples/file-input/demo"
+import { FileInputDisabled } from "@/components/examples/file-input/disabled"
+import { FileInputWithLabel } from "@/components/examples/file-input/with-label"
+import { FileInputWithText } from "@/components/examples/file-input/with-text"
 
 export const examples = {
   AccordionDemo,
@@ -156,4 +160,8 @@ export const examples = {
   ToggleOutline,
   ToggleDisabled,
   ToggleWithText,
+  FileInputDemo,
+  FileInputDisabled,
+  FileInputWithLabel,
+  FileInputWithText,
 }
