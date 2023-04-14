@@ -190,12 +190,13 @@ const DropdownMenuDialogItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
     trigger: React.ReactNode
     children: React.ReactNode
-    onSelect?: () => void
+    open?: boolean
     onOpenChange?: (open: boolean) => void
+    onSelect?: () => void
   }
->(({ trigger, children, onSelect, onOpenChange, ...props }, ref) => {
+>(({ trigger, children, open, onOpenChange, onSelect, ...props }, ref) => {
   return (
-    <Dialog onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         <DropdownMenuItem
           ref={ref}
