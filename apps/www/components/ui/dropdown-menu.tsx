@@ -5,6 +5,7 @@ import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { Check, ChevronRight, Circle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { Dialog, DialogTrigger } from "./dialog"
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 
@@ -184,6 +185,35 @@ const DropdownMenuShortcut = ({
 }
 DropdownMenuShortcut.displayName = "DropdownMenuShortcut"
 
+const DropdownMenuDialogItem = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
+    trigger: React.ReactNode
+    children: React.ReactNode
+    onSelect?: () => void
+    onOpenChange?: (open: boolean) => void
+  }
+>(({ trigger, children, onSelect, onOpenChange, ...props }, ref) => {
+  return (
+    <Dialog onOpenChange={onOpenChange}>
+      <DialogTrigger asChild>
+        <DropdownMenuItem
+          ref={ref}
+          onSelect={(event) => {
+            event.preventDefault()
+            onSelect && onSelect()
+          }}
+          {...props}
+        >
+          {trigger}
+        </DropdownMenuItem>
+      </DialogTrigger>
+      {children}
+    </Dialog>
+  )
+})
+DropdownMenuDialogItem.displayName = "DropdownMenuDialogItem"
+
 export {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -200,4 +230,5 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
+  DropdownMenuDialogItem,
 }
