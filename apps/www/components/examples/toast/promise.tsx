@@ -36,7 +36,7 @@ export function ToastWithPromise() {
 
   return (
     <Button variant="outline" onClick={handleToast}>
-      Show Toast
+      Trigger promise that might reject
     </Button>
   )
 }

@@ -123,7 +123,9 @@ Use `toast({ variant: "destructive" }})` to display a destructive toast.
   <ToastDestructive />
 </ComponentExample>
 
-### Using promises
+### Updating a toast
+
+You can update your toast using the `update` method returned from the `toast` function. This can be used in conjunction with a promise to update the toast when the promise resolves or rejects.
 
 <ComponentExample src="/components/examples/toast/promise.tsx">
   <ToastWithPromise />
