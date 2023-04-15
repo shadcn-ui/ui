@@ -8,6 +8,7 @@ const TOAST_REMOVE_DELAY = 1000
 
 type ToasterToast = ToastProps & {
   id: string
+  ref?: React.RefObject<HTMLLIElement>
   title?: React.ReactNode
   description?: React.ReactNode
   action?: ToastActionElement
@@ -78,6 +79,28 @@ export const reducer = (state: State, action: Action): State => {
       }
 
     case "UPDATE_TOAST":
+      const toast = state.toasts.find((t) => t.id === action.toast.id)
+      if (
+        toast?.variant !== "destructive" &&
+        action.toast.variant === "destructive" &&
+        toast?.ref?.current
+      ) {
+        toast.ref.current.animate(
+          [
+            { transform: "translateX(-30px)" },
+            { transform: "translateX(30px)" },
+            { transform: "translateX(-20px)" },
+            { transform: "translateX(20px)" },
+            { transform: "translateX(-10px)" },
+            { transform: "translateX(10px)" },
+            { transform: "translateX(0)" },
+          ],
+          {
+            duration: 400,
+            iterations: 1,
+          }
+        )
+      }
       return {
         ...state,
         toasts: state.toasts.map((t) =>
@@ -151,6 +174,7 @@ function toast({ ...props }: Toast) {
     type: "ADD_TOAST",
     toast: {
       ...props,
+      ref: props.ref ?? React.createRef(),
       id,
       open: true,
       onOpenChange: (open) => {
