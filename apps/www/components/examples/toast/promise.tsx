@@ -4,20 +4,34 @@ import { useToast } from "@/hooks/use-toast"
 
 import { Button } from "@/components/ui/button"
 
+const promiseThatMightReject = () => {
+  return new Promise((res, rej) =>
+    setTimeout(Math.random() < 0.5 ? res : rej, 2000)
+  )
+}
+
 export function ToastWithPromise() {
-  const { toast } = useToast()
+  const toaster = useToast()
 
   const handleToast = async () => {
-    const progress = toast({
-      title: "Saving...",
+    const progress = toaster.toast({
+      title: "Sending...",
       description: "Your message is being sent.",
     })
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-    progress.update({
-      title: "Error",
-      description: "Failed to send message.",
-      variant: "destructive",
-    })
+    await promiseThatMightReject()
+      .then(() => {
+        progress.update({
+          title: "Success",
+          description: "Message sent.",
+        })
+      })
+      .catch(() => {
+        progress.update({
+          title: "Error",
+          description: "Failed to send message.",
+          variant: "destructive",
+        })
+      })
   }
 
   return (
