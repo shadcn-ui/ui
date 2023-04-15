@@ -4,12 +4,6 @@ import { useToast } from "@/hooks/use-toast"
 
 import { Button } from "@/components/ui/button"
 
-const promiseThatMightReject = () => {
-  return new Promise((res, rej) =>
-    setTimeout(Math.random() < 0.5 ? res : rej, 2000)
-  )
-}
-
 export function ToastWithPromise() {
   const toaster = useToast()
 
@@ -38,5 +32,11 @@ export function ToastWithPromise() {
     <Button variant="outline" onClick={handleToast}>
       Trigger promise that might reject
     </Button>
+  )
+}
+
+function promiseThatMightReject() {
+  return new Promise((res, rej) =>
+    setTimeout(Math.random() < 0.5 ? res : rej, 2000)
   )
 }
