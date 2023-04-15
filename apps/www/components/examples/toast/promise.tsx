@@ -5,10 +5,10 @@ import { useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 
 export function ToastWithPromise() {
-  const toaster = useToast()
+  const { toast } = useToast()
 
   const handleToast = async () => {
-    const progress = toaster.toast({
+    const progress = toast({
       title: "Sending...",
       description: "Your message is being sent.",
     })
