@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { PopoverProps } from "@radix-ui/react-popover"
 import { Check, ChevronsUpDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { Button } from "@/components/ui/button"
 import {
   Command,
@@ -26,8 +26,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { ModelType } from "../data/models"
-import { Model } from "../types"
+
+import { Model, ModelType } from "../data/models"
 
 interface ModelSelectorProps extends PopoverProps {
   types: readonly ModelType[]
@@ -77,7 +77,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
             >
               <div className="grid gap-2">
                 <h4 className="font-medium leading-none">{peekedModel.name}</h4>
-                <div className="text-sm text-slate-500 dark:text-slate-400">
+                <div className="text-sm text-muted-foreground">
                   {peekedModel.description}
                 </div>
                 {peekedModel.strengths ? (
@@ -85,7 +85,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
                     <h5 className="text-sm font-medium leading-none">
                       Strengths
                     </h5>
-                    <ul className="text-sm text-slate-500 dark:text-slate-400">
+                    <ul className="text-sm text-muted-foreground">
                       {peekedModel.strengths}
                     </ul>
                   </div>
@@ -149,7 +149,7 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
       key={model.id}
       onSelect={onSelect}
       ref={ref}
-      className="aria-selected:bg-slate-900 aria-selected:text-slate-50"
+      className="aria-selected:bg-primary aria-selected:text-primary-foreground"
     >
       {model.name}
       <Check

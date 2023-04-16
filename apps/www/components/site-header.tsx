@@ -1,12 +1,13 @@
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
 import { CommandMenu } from "@/components/command-menu"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
-import { buttonVariants } from "@/components/ui/button"
 
 export function SiteHeader() {
   return (
@@ -25,10 +26,13 @@ export function SiteHeader() {
               rel="noreferrer"
             >
               <div
-                className={buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                })}
+                className={cn(
+                  buttonVariants({
+                    size: "sm",
+                    variant: "ghost",
+                  }),
+                  "w-9 px-0"
+                )}
               >
                 <Icons.gitHub className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
@@ -40,10 +44,13 @@ export function SiteHeader() {
               rel="noreferrer"
             >
               <div
-                className={buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                })}
+                className={cn(
+                  buttonVariants({
+                    size: "sm",
+                    variant: "ghost",
+                  }),
+                  "w-9 px-0"
+                )}
               >
                 <Icons.twitter className="h-5 w-5 fill-current" />
                 <span className="sr-only">Twitter</span>

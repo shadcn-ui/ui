@@ -60,13 +60,13 @@ export default function KitchenSinkPage() {
               <SliderDemo className="w-full" />
             </ComponentWrapper>
             <ComponentWrapper
-              className="spa flex-col items-start space-y-2
-				space-x-0"
+              className="spa flex-col items-start space-x-0
+				space-y-2"
             >
               <p className="text-foreground-muted text-sm">Documentation</p>
               <p className="text-sm font-medium leading-none">
                 You can customize the theme using{" "}
-                <code className="relative rounded bg-muted py-[0.2rem] px-[0.3rem] font-mono text-sm font-semibold text-foreground">
+                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground">
                   CSS variables
                 </code>
                 .{" "}
@@ -92,7 +92,7 @@ export default function KitchenSinkPage() {
               <MenubarDemo />
               <AvatarDemo />
             </ComponentWrapper>
-            <ComponentWrapper className="flex-col items-start space-y-2 space-x-0">
+            <ComponentWrapper className="flex-col items-start space-x-0 space-y-2">
               <div className="flex space-x-2">
                 <ButtonDemo />
                 <ButtonSecondary />

@@ -12,7 +12,7 @@ export function MainNav() {
   const pathname = usePathname()
 
   return (
-    <div className="hidden md:flex">
+    <div className="mr-4 hidden md:flex">
       <Link href="/" className="mr-6 flex items-center space-x-2">
         <Icons.logo className="h-6 w-6" />
         <span className="hidden font-bold sm:inline-block">
@@ -30,7 +30,7 @@ export function MainNav() {
           Documentation
         </Link>
         <Link
-          href="/docs/primitives/accordion"
+          href="/docs/components"
           className={cn(
             "transition-colors hover:text-foreground/80",
             pathname?.startsWith("/docs/components")
@@ -52,18 +52,9 @@ export function MainNav() {
           Examples
         </Link>
         <Link
-          href="/figma"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname === "/figma" ? "text-foreground" : "text-foreground/60"
-          )}
-        >
-          Figma
-        </Link>
-        <Link
           href={siteConfig.links.github}
           className={cn(
-            "text-foreground/60 transition-colors hover:text-foreground/80"
+            "hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
           )}
         >
           GitHub

@@ -6,7 +6,6 @@ import Link from "next/link"
 import { docsConfig } from "@/config/docs"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -18,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Icons } from "@/components/icons"
 
 export function MobileNav() {
   return (
@@ -25,7 +25,7 @@ export function MobileNav() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="-ml-4 text-base hover:bg-transparent focus:ring-0  focus:ring-offset-0 md:hidden"
+          className="-ml-4 text-base hover:bg-transparent focus:ring-0 focus:ring-offset-0 md:hidden"
         >
           <Icons.logo className="mr-2 h-4 w-4" />{" "}
           <span className="font-bold">Menu</span>
@@ -44,7 +44,7 @@ export function MobileNav() {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <ScrollArea className="h-[400px]">
-          {docsConfig.sidebarNav?.map(
+          {docsConfig.mainNav?.map(
             (item, index) =>
               item.href && (
                 <DropdownMenuItem key={index} asChild>
@@ -52,6 +52,7 @@ export function MobileNav() {
                 </DropdownMenuItem>
               )
           )}
+          <DropdownMenuSeparator />
           {docsConfig.sidebarNav.map((item, index) => (
             <DropdownMenuGroup key={index}>
               <DropdownMenuSeparator

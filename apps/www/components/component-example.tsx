@@ -3,8 +3,8 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
 
 interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {
   extractClassname?: boolean
@@ -47,13 +47,13 @@ export function ComponentExample({
           <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
             <TabsTrigger
               value="preview"
-              className="relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+              className="relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
             >
               Preview
             </TabsTrigger>
             <TabsTrigger
               value="code"
-              className="relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+              className="relative top-[1px] rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
             >
               Code
             </TabsTrigger>
@@ -81,11 +81,11 @@ export function ComponentExample({
         </TabsContent>
         <TabsContent value="code">
           <div className="flex flex-col space-y-4">
-            <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto [&_button]:hidden">
+            <div className="w-full rounded-md [&_button]:hidden [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
               {Code}
             </div>
             {Children?.length ? (
-              <div className="rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto [&_button]:hidden">
+              <div className="rounded-md [&_button]:hidden [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
                 {Children}
               </div>
             ) : null}

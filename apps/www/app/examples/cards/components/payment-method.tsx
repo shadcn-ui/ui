@@ -1,6 +1,5 @@
 import { CreditCard } from "lucide-react"
 
-import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -20,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Icons } from "@/components/icons"
 
 export function DemoPaymentMethod() {
   return (
@@ -54,7 +54,7 @@ export function DemoPaymentMethod() {
           >
             <RadioGroupItem value="apple" id="apple" className="sr-only" />
             <Icons.apple className="mb-3 h-6 w-6" />
-            Apple Pay
+            Apple
           </Label>
         </RadioGroup>
         <div className="grid gap-2">

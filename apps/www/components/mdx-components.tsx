@@ -2,16 +2,10 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { getMDXComponent } from "next-contentlayer/hooks"
+import { useMDXComponent } from "next-contentlayer/hooks"
 import { NpmCommands } from "types/unist"
 
 import { cn } from "@/lib/utils"
-import { Callout } from "@/components/callout"
-import { CodeBlockWrapper } from "@/components/code-block-wrapper"
-import { ComponentExample } from "@/components/component-example"
-import { ComponentSource } from "@/components/component-source"
-import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
-import { examples } from "@/components/examples"
 import {
   Accordion,
   AccordionContent,
@@ -19,6 +13,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Callout } from "@/components/callout"
+import { CodeBlockWrapper } from "@/components/code-block-wrapper"
+import { ComponentExample } from "@/components/component-example"
+import { ComponentSource } from "@/components/component-source"
+import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
+import { examples } from "@/components/examples"
 
 const components = {
   Accordion,
@@ -167,7 +167,7 @@ const components = {
       <>
         <pre
           className={cn(
-            "mt-6 mb-4 overflow-x-auto rounded-lg border bg-black py-4 px-2",
+            "mb-4 mt-6 overflow-x-auto rounded-lg border py-4 data-[theme=dark]:bg-background data-[theme=light]:bg-white",
             className
           )}
           {...props}
@@ -176,10 +176,7 @@ const components = {
           <CopyButton
             value={__rawString__}
             src={__src__}
-            className={cn(
-              "absolute top-4 right-4 border-none text-slate-300 opacity-50 hover:bg-transparent hover:opacity-100",
-              __withMeta__ && "top-20"
-            )}
+            className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
         {__npmCommand__ && __yarnCommand__ && __pnpmCommand__ && (
@@ -189,10 +186,7 @@ const components = {
               __pnpmCommand__,
               __yarnCommand__,
             }}
-            className={cn(
-              "absolute top-4 right-4 border-none text-slate-300 opacity-50 hover:bg-transparent hover:opacity-100",
-              __withMeta__ && "top-20"
-            )}
+            className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
       </>
@@ -201,7 +195,7 @@ const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded bg-muted py-[0.2rem] px-[0.3rem] font-mono text-sm",
+        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm",
         className
       )}
       {...props}
@@ -222,7 +216,7 @@ interface MdxProps {
 }
 
 export function Mdx({ code }: MdxProps) {
-  const Component = getMDXComponent(code)
+  const Component = useMDXComponent(code)
 
   return (
     <div className="mdx">

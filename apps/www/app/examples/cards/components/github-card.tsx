@@ -39,7 +39,7 @@ export function DemoGithub() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" className="px-2">
-                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                <ChevronDown className="h-4 w-4 text-secondary-foreground" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent

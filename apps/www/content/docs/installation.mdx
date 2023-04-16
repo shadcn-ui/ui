@@ -5,13 +5,19 @@ description: How to install dependencies and structure your app.
 
 <Alert>
   <svg viewBox="0 0 24 24" className="w-4 h-4">
-    <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
+    <path
+      d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
+      fill="currentColor"
+    />
   </svg>
-  <AlertTitle>Prerequisites</AlertTitle>
   <AlertDescription>
-    Components are styled using [Tailwind CSS](https://tailwindcss.com). You
-    need to install Tailwind CSS in your project.
+
+    **Prerequisites**: Components are styled using [Tailwind
+    CSS](https://tailwindcss.com). You need to install Tailwind CSS in your
+    project. Follow the [Tailwind CSS installation instructions](https://tailwindcss.com/docs/installation) to get started.
+
   </AlertDescription>
+  
 </Alert>
 
 ## New Project
@@ -51,7 +57,7 @@ I use the `@` alias to make it easier to import components. This is how I config
 
 Here's what my `tailwind.config.js` file looks like:
 
-```js title="tailwind.config.js"
+```js title="tailwind.config.js" showLineNumbers {4-5,10-18} /animation/
 const { fontFamily } = require("tailwindcss/defaultTheme")
 
 /** @type {import('tailwindcss').Config} */
@@ -119,6 +125,8 @@ Add the following to your `styles/globals.css` file. You can learn more about us
     --destructive-foreground: 210 40% 98%;
 
     --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -147,6 +155,8 @@ Add the following to your `styles/globals.css` file. You can learn more about us
     --destructive-foreground: 210 40% 98%;
 
     --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
   }
 }
 
@@ -180,7 +190,7 @@ I use icons from [Lucide](https://lucide.dev). You can use any icon library.
 
 ## App structure
 
-And here's how I structure my app. I use Next.js, but this is not required.
+Here's how I structure my app. I use Next.js, but this is not required.
 
 ```txt showLineNumbers {6-10,15-16}
 .

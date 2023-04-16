@@ -1,4 +1,7 @@
-import { Preset } from "../types"
+export interface Preset {
+  id: string
+  name: string
+}
 
 export const presets: Preset[] = [
   {

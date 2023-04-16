@@ -41,7 +41,7 @@ export function CommandDropdownMenu() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <div className="flex w-full flex-col items-start justify-between rounded-md border border-slate-200 py-3 px-4 dark:border-slate-700 sm:flex-row sm:items-center">
+    <div className="flex w-full flex-col items-start justify-between rounded-md border border-slate-200 px-4 py-3 dark:border-slate-700 sm:flex-row sm:items-center">
       <p className="text-sm font-medium leading-none">
         <span className="mr-2 rounded-lg bg-slate-900 px-2 py-1 text-xs text-slate-50 dark:bg-slate-800 dark:text-slate-100">
           {label}

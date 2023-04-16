@@ -1,4 +1,5 @@
-// import { fontHeading } from "@/lib/fonts"
+import Balance from "react-wrap-balancer"
+
 import { cn } from "@/lib/utils"
 
 function PageHeader({
@@ -8,7 +9,7 @@ function PageHeader({
   return (
     <section
       className={cn(
-        "flex max-w-[980px] flex-col items-start gap-2 pt-4 pb-6",
+        "flex max-w-[980px] flex-col items-start gap-2 py-6",
         className
       )}
       {...props}
@@ -36,7 +37,7 @@ function PageHeaderDescription({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p
+    <Balance
       className={cn(
         "max-w-[750px] text-lg text-muted-foreground sm:text-xl",
         className

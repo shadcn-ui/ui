@@ -39,6 +39,7 @@ import { DropdownMenuRadioGroupDemo } from "@/components/examples/dropdown-menu/
 import { HoverCardDemo } from "@/components/examples/hover-card/demo"
 import { InputDemo } from "@/components/examples/input/demo"
 import { InputDisabled } from "@/components/examples/input/disabled"
+import { InputFile } from "@/components/examples/input/file"
 import { InputWithButton } from "@/components/examples/input/with-button"
 import { InputWithLabel } from "@/components/examples/input/with-label"
 import { InputWithText } from "@/components/examples/input/with-text"
@@ -132,6 +133,7 @@ export const examples = {
   HoverCardDemo,
   InputDemo,
   InputDisabled,
+  InputFile,
   InputWithButton,
   InputWithLabel,
   InputWithText,

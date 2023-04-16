@@ -19,7 +19,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { Preset } from "../types"
+
+import { Preset } from "../data/presets"
 
 interface PresetSelectorProps extends PopoverProps {
   presets: Preset[]
@@ -38,7 +39,7 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
           role="combobox"
           aria-label="Load a preset..."
           aria-expanded={open}
-          className="max-w-[300px] flex-1 justify-between"
+          className="flex-1 justify-between md:max-w-[200px] lg:max-w-[300px]"
         >
           {selectedPreset ? selectedPreset.name : "Load a preset..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />

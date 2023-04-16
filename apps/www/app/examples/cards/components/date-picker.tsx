@@ -1,6 +1,6 @@
-import { CalendarDateRangePicker } from "@/components/examples/calendar/date-range-picker"
 import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
+import { CalendarDateRangePicker } from "@/components/examples/calendar/date-range-picker"
 
 export function DemoDatePicker() {
   return (

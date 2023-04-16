@@ -6,6 +6,11 @@ export const components = [
     files: ["components/ui/accordion.tsx"],
   },
   {
+    component: "alert",
+    name: "Alert",
+    files: ["components/ui/alert.tsx"],
+  },
+  {
     component: "alert-dialog",
     name: "Alert Dialog",
     dependencies: ["@radix-ui/react-alert-dialog"],
@@ -37,6 +42,12 @@ export const components = [
     component: "card",
     name: "Card",
     files: ["components/ui/card.tsx"],
+  },
+  {
+    component: "calendar",
+    name: "Calendar",
+    dependencies: ["react-day-picker"],
+    files: ["components/ui/calendar.tsx"],
   },
   {
     component: "checkbox",
@@ -79,6 +90,11 @@ export const components = [
     name: "Hover Card",
     dependencies: ["@radix-ui/react-hover-card"],
     files: ["components/ui/hover-card.tsx"],
+  },
+  {
+    component: "input",
+    name: "Input",
+    files: ["components/ui/input.tsx"],
   },
   {
     component: "label",
@@ -139,6 +155,11 @@ export const components = [
     name: "Sheet",
     dependencies: ["@radix-ui/react-dialog"],
     files: ["components/ui/sheet.tsx"],
+  },
+  {
+    component: "skeleton",
+    name: "Skeleton",
+    files: ["components/ui/skeleton.tsx"],
   },
   {
     component: "slider",

@@ -3,13 +3,13 @@ import Link from "next/link"
 import { Heart } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
+import { buttonVariants } from "@/components/ui/button"
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { buttonVariants } from "@/components/ui/button"
 
 export const metadata: Metadata = {
   title: "Figma",
@@ -37,7 +37,7 @@ export default function FigmaPage() {
         </PageHeaderDescription>
       </PageHeader>
       <section className="mb-4 grid items-center gap-6">
-        <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 md:flex-row">
+        <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:flex-row">
           <Link
             href="https://www.figma.com/community/file/1203061493325953101"
             className={buttonVariants({ size: "lg" })}

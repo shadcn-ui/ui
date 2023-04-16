@@ -36,11 +36,11 @@ export function DemoTeamMembers() {
         <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="https://avatar.vercel.sh/shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
+              <AvatarImage src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxMCwibm9zZSI6MTAsIm1vdXRoIjo5LCJleWVzIjo3LCJleWVicm93cyI6MTIsImdsYXNzZXMiOjcsImhhaXIiOjU1LCJhY2Nlc3NvcmllcyI6MCwiZGV0YWlscyI6MCwiYmVhcmQiOjAsImZsaXAiOjAsImNvbG9yIjoiI2ViZWJlYiIsInNoYXBlIjoiY2lyY2xlIn0=" />
+              <AvatarFallback>OM</AvatarFallback>
             </Avatar>
             <div>
-              <p className="text-sm font-medium leading-none">shadcn</p>
+              <p className="text-sm font-medium leading-none">Sofia Davis</p>
               <p className="text-sm text-muted-foreground">m@example.com</p>
             </div>
           </div>
@@ -57,25 +57,25 @@ export function DemoTeamMembers() {
                 <CommandList>
                   <CommandEmpty>No roles found.</CommandEmpty>
                   <CommandGroup>
-                    <CommandItem className="flex flex-col items-start space-y-1 p-2">
+                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Viewer</p>
                       <p className="text-sm text-muted-foreground">
                         Can view and comment.
                       </p>
                     </CommandItem>
-                    <CommandItem className="flex flex-col items-start space-y-1 p-2">
+                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Developer</p>
                       <p className="text-sm text-muted-foreground">
                         Can view, comment and edit.
                       </p>
                     </CommandItem>
-                    <CommandItem className="flex flex-col items-start space-y-1 p-2">
+                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Billing</p>
                       <p className="text-sm text-muted-foreground">
                         Can view, comment and manage billing.
                       </p>
                     </CommandItem>
-                    <CommandItem className="flex flex-col items-start space-y-1 p-2">
+                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Owner</p>
                       <p className="text-sm text-muted-foreground">
                         Admin-level access to all resources.
@@ -90,12 +90,12 @@ export function DemoTeamMembers() {
         <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="https://avatar.vercel.sh/benoit" />
-              <AvatarFallback>BN</AvatarFallback>
+              <AvatarImage src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxMSwibm9zZSI6MywibW91dGgiOjExLCJleWVzIjo5LCJleWVicm93cyI6MiwiZ2xhc3NlcyI6MSwiaGFpciI6MSwiYWNjZXNzb3JpZXMiOjAsImRldGFpbHMiOjAsImJlYXJkIjowLCJmbGlwIjowLCJjb2xvciI6IiNlYmViZWIiLCJzaGFwZSI6ImNpcmNsZSJ9" />
+              <AvatarFallback>JL</AvatarFallback>
             </Avatar>
             <div>
-              <p className="text-sm font-medium leading-none">benoit</p>
-              <p className="text-sm text-muted-foreground">b@example.com</p>
+              <p className="text-sm font-medium leading-none">Jackson Lee</p>
+              <p className="text-sm text-muted-foreground">p@example.com</p>
             </div>
           </div>
           <Popover>
@@ -111,25 +111,25 @@ export function DemoTeamMembers() {
                 <CommandList>
                   <CommandEmpty>No roles found.</CommandEmpty>
                   <CommandGroup className="p-1.5">
-                    <CommandItem className="flex flex-col items-start space-y-1 p-2">
+                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Viewer</p>
                       <p className="text-sm text-muted-foreground">
                         Can view and comment.
                       </p>
                     </CommandItem>
-                    <CommandItem className="flex flex-col items-start space-y-1 p-2">
+                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Developer</p>
                       <p className="text-sm text-muted-foreground">
                         Can view, comment and edit.
                       </p>
                     </CommandItem>
-                    <CommandItem className="flex flex-col items-start space-y-1 p-2">
+                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Billing</p>
                       <p className="text-sm text-muted-foreground">
                         Can view, comment and manage billing.
                       </p>
                     </CommandItem>
-                    <CommandItem className="flex flex-col items-start space-y-1 p-2">
+                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Owner</p>
                       <p className="text-sm text-muted-foreground">
                         Admin-level access to all resources.

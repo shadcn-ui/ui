@@ -16,9 +16,12 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components/accordion",
     },
     {
+      title: "Examples",
+      href: "/examples",
+    },
+    {
       title: "Figma",
       href: "/figma",
-      label: "New",
     },
     {
       title: "GitHub",
@@ -78,6 +81,7 @@ export const docsConfig: DocsConfig = {
         {
           title: "Alert",
           href: "/docs/components/alert",
+          label: "New",
           items: [],
         },
         {
@@ -109,6 +113,7 @@ export const docsConfig: DocsConfig = {
         {
           title: "Calendar",
           href: "/docs/components/calendar",
+          label: "New",
           items: [],
         },
         {
