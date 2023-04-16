@@ -1,7 +1,8 @@
+"use client"
+
 import * as React from "react"
 import { useTheme } from "next-themes"
 
-import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -9,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icons } from "@/components/icons"
 
 export function ThemeToggle() {
   const { setTheme } = useTheme()

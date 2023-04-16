@@ -1,6 +1,6 @@
 {
   "name": "next-template",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,7 +13,6 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
-    "@next/font": "^13.1.6",
     "@radix-ui/react-accessible-icon": "^1.0.1",
     "@radix-ui/react-accordion": "^1.1.0",
     "@radix-ui/react-alert-dialog": "^1.0.2",
@@ -44,14 +43,15 @@
     "@radix-ui/react-tooltip": "^1.0.3",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
-    "cmdk": "^0.1.21",
+    "cmdk": "^0.2.0",
     "lucide-react": "0.105.0-alpha.4",
-    "next": "^13.1.6",
+    "next": "^13.3.0",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
+    "react-day-picker": "^8.6.0",
     "react-dom": "^18.2.0",
     "sharp": "^0.31.3",
-    "tailwind-merge": "^1.8.0",
+    "tailwind-merge": "^1.12.0",
     "tailwindcss-animate": "^1.0.5"
   },
   "devDependencies": {
@@ -59,6 +59,7 @@
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "@typescript-eslint/parser": "^5.58.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.31.0",
     "eslint-config-next": "13.0.0",
