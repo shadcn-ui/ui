@@ -79,3 +79,9 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+}

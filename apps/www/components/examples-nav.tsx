@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 
 const examples = [
   {
@@ -34,19 +35,24 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
   const pathname = usePathname()
 
   return (
-    <div className={cn("mb-4 flex items-center", className)} {...props}>
-      {examples.map((example) => (
-        <Link
-          href={example.href}
-          key={example.href}
-          className={cn(
-            "flex px-4 font-medium",
-            pathname === example.href ? "text-primary" : "text-muted-foreground"
-          )}
-        >
-          {example.name}
-        </Link>
-      ))}
-    </div>
+    <ScrollArea>
+      <div className={cn("mb-4 flex items-center", className)} {...props}>
+        {examples.map((example) => (
+          <Link
+            href={example.href}
+            key={example.href}
+            className={cn(
+              "flex px-4 font-medium",
+              pathname === example.href
+                ? "text-primary"
+                : "text-muted-foreground"
+            )}
+          >
+            {example.name}
+          </Link>
+        ))}
+      </div>
+      <ScrollBar orientation="horizontal" className="invisible" />
+    </ScrollArea>
   )
 }

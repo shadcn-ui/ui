@@ -24,13 +24,16 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
     <>
       <div className="container relative pb-10">
         <PageHeader className="page-header">
-          <PageHeaderHeading>Check out some examples.</PageHeaderHeading>
+          <PageHeaderHeading className="hidden md:block">
+            Check out some examples.
+          </PageHeaderHeading>
+          <PageHeaderHeading className="md:hidden">Examples</PageHeaderHeading>
           <PageHeaderDescription>
             Dashboard, cards, authentication. Some examples built using the
             components. Use this as a guide to build your own.
           </PageHeaderDescription>
         </PageHeader>
-        <section className="pb-10">
+        <section className="hidden pb-10 md:block">
           <div className="block md:hidden"></div>
           <div className="flex items-center justify-between">
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:flex-row">
@@ -55,7 +58,7 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
             </div>
           </div>
         </section>
-        <section className="hidden md:block">
+        <section>
           <ExamplesNav />
           <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-xl">
             {children}
