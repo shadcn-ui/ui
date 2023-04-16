@@ -18,8 +18,8 @@ async function main() {
   const packageInfo = await getPackageInfo()
 
   const program = new Command()
-    .name("@shadcn/ui")
-    .description("Add @shadcn/ui components to your project")
+    .name("shadcn-ui")
+    .description("Add shadcn-ui components to your project")
     .version(
       packageInfo.version || "1.0.0",
       "-v, --version",
