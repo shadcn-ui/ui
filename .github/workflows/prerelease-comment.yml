@@ -28,7 +28,7 @@ jobs:
 
             for (const artifact of allArtifacts.data.artifacts) {
               // Extract the PR number and package version from the artifact name
-              const match = /^npm-package-@shadcn-ui@(.*?)-pr-(\d+)/.exec(artifact.name);
+              const match = /^npm-package-shadcn-ui@(.*?)-pr-(\d+)/.exec(artifact.name);
               
               if (match) {
                 require("fs").appendFileSync(
