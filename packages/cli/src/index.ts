@@ -9,6 +9,7 @@ import prompts from "prompts"
 import { Component, getAvailableComponents } from "./utils/get-components"
 import { getPackageInfo } from "./utils/get-package-info"
 import { getPackageManager } from "./utils/get-package-manager"
+import { getProjectInfo } from "./utils/get-project-info"
 import { logger } from "./utils/logger"
 
 process.on("SIGINT", () => process.exit(0))
@@ -16,10 +17,11 @@ process.on("SIGTERM", () => process.exit(0))
 
 async function main() {
   const packageInfo = await getPackageInfo()
+  const projectInfo = await getProjectInfo()
 
   const program = new Command()
-    .name("@shadcn/ui")
-    .description("Add @shadcn/ui components to your project")
+    .name("shadcn-ui")
+    .description("Add shadcn-ui components to your project")
     .version(
       packageInfo.version || "1.0.0",
       "-v, --version",
@@ -29,7 +31,8 @@ async function main() {
   program
     .command("add")
     .description("add components to your project")
-    .action(async () => {
+    .argument("[components...]", "name of components")
+    .action(async (components: string[]) => {
       logger.warn(
         "Running the following command will overwrite existing files."
       )
@@ -38,8 +41,26 @@ async function main() {
       )
       logger.warn("")
 
-      const { components, dir } = await promptForAddOptions()
-      if (!components?.length) {
+      const availableComponents = await getAvailableComponents()
+
+      if (!availableComponents?.length) {
+        logger.error(
+          "An error occurred while fetching components. Please try again."
+        )
+        process.exit(0)
+      }
+
+      let selectedComponents = availableComponents.filter((component) =>
+        components.includes(component.component)
+      )
+
+      if (!selectedComponents?.length) {
+        selectedComponents = await promptForComponents(availableComponents)
+      }
+
+      const dir = await promptForDestinationDir()
+
+      if (!selectedComponents?.length) {
         logger.warn("No components selected. Nothing to install.")
         process.exit(0)
       }
@@ -54,12 +75,19 @@ async function main() {
 
       const packageManager = getPackageManager()
 
-      logger.success(`Installing components...`)
-      for (const component of components) {
+      logger.success(
+        `Installing ${selectedComponents.length} component(s) and dependencies...`
+      )
+      for (const component of selectedComponents) {
         const componentSpinner = ora(`${component.name}...`).start()
 
         // Write the files.
         for (const file of component.files) {
+          // Replace alias with the project's alias.
+          if (projectInfo?.alias) {
+            file.content = file.content.replace(/@\//g, projectInfo.alias)
+          }
+
           const filePath = path.resolve(dir, file.name)
           await fs.writeFile(filePath, file.content)
         }
@@ -79,34 +107,24 @@ async function main() {
   program.parse()
 }
 
-type AddOptions = {
-  components: Component[]
-  dir: string
+async function promptForComponents(components: Component[]) {
+  const { components: selectedComponents } = await prompts({
+    type: "autocompleteMultiselect",
+    name: "components",
+    message: "Which component(s) would you like to add?",
+    hint: "Space to select. A to select all. I to invert selection.",
+    instructions: false,
+    choices: components.map((component) => ({
+      title: component.name,
+      value: component,
+    })),
+  })
+
+  return selectedComponents
 }
 
-async function promptForAddOptions() {
-  const availableComponents = await getAvailableComponents()
-
-  if (!availableComponents?.length) {
-    logger.error(
-      "An error occurred while fetching components. Please try again."
-    )
-    process.exit(0)
-  }
-
-  const options = await prompts([
-    {
-      type: "multiselect",
-      name: "components",
-      message: "Which component(s) would you like to add?",
-      hint: "Space to select. A to select all. I to invert selection.",
-      instructions: false,
-
-      choices: availableComponents.map((component) => ({
-        title: component.name,
-        value: component,
-      })),
-    },
+async function promptForDestinationDir() {
+  const { dir } = await prompts([
     {
       type: "text",
       name: "dir",
@@ -115,7 +133,7 @@ async function promptForAddOptions() {
     },
   ])
 
-  return options as AddOptions
+  return dir
 }
 
 main()

@@ -1,7 +1,7 @@
-# @shadcn/ui
+# shadcn-ui
 
 ## Usage
 
 ```
-npx @shadcn/ui
+npx shadcn-ui add
 ```

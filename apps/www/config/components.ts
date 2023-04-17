@@ -1,295 +1,179 @@
 export const components = [
   {
+    component: "accordion",
     name: "Accordion",
     dependencies: ["@radix-ui/react-accordion"],
-    files: [
-      {
-        name: "accordion.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/accordion.tsx"],
   },
   {
+    component: "alert-dialog",
     name: "Alert Dialog",
     dependencies: ["@radix-ui/react-alert-dialog"],
-    files: [
-      {
-        name: "alert-dialog.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/alert-dialog.tsx"],
   },
   {
+    component: "aspect-ratio",
     name: "Aspect Ratio",
     dependencies: ["@radix-ui/react-aspect-ratio"],
-    files: [
-      {
-        name: "aspect-ratio.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/aspect-ratio.tsx"],
   },
   {
+    component: "avatar",
     name: "Avatar",
     dependencies: ["@radix-ui/react-avatar"],
-    files: [
-      {
-        name: "avatar.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/avatar.tsx"],
   },
   {
+    component: "button",
     name: "Button",
-    files: [
-      {
-        name: "button.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/button.tsx"],
   },
   {
+    component: "checkbox",
     name: "Checkbox",
     dependencies: ["@radix-ui/react-checkbox"],
-    files: [
-      {
-        name: "checkbox.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/checkbox.tsx"],
   },
   {
+    component: "collapsible",
     name: "Collapsible",
     dependencies: ["@radix-ui/react-collapsible"],
-    files: [
-      {
-        name: "collapsible.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/collapsible.tsx"],
   },
   {
+    component: "command",
     name: "Command",
     dependencies: ["cmdk"],
-    files: [
-      {
-        name: "command.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/command.tsx"],
   },
   {
+    component: "context-menu",
     name: "Context Menu",
     dependencies: ["@radix-ui/react-context-menu"],
-    files: [
-      {
-        name: "context-menu.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/context-menu.tsx"],
   },
   {
+    component: "dialog",
     name: "Dialog",
     dependencies: ["@radix-ui/react-dialog"],
-    files: [
-      {
-        name: "dialog.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/dialog.tsx"],
   },
   {
+    component: "dropdown-menu",
     name: "Dropdown Menu",
     dependencies: ["@radix-ui/react-dropdown-menu"],
-    files: [
-      {
-        name: "dropdown-menu.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/dropdown-menu.tsx"],
   },
   {
+    component: "hover-card",
     name: "Hover Card",
     dependencies: ["@radix-ui/react-hover-card"],
-    files: [
-      {
-        name: "hover-card.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/hover-card.tsx"],
   },
-  { name: "Input", files: [{ name: "input.tsx", dir: "components/ui" }] },
   {
+    component: "input",
+    name: "Input",
+    files: ["components/ui/input.tsx"],
+  },
+  {
+    component: "label",
     name: "Label",
     dependencies: ["@radix-ui/react-label"],
-    files: [
-      {
-        name: "label.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/label.tsx"],
   },
   {
+    component: "menubar",
     name: "Menubar",
     dependencies: ["@radix-ui/react-menubar"],
-    files: [
-      {
-        name: "menubar.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/menubar.tsx"],
   },
   {
+    component: "navigation-menu",
     name: "Navigation Menu",
     dependencies: ["@radix-ui/react-navigation-menu"],
-    files: [
-      {
-        name: "navigation-menu.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/navigation-menu.tsx"],
   },
   {
+    component: "popover",
     name: "Popover",
     dependencies: ["@radix-ui/react-popover"],
-    files: [
-      {
-        name: "popover.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/popover.tsx"],
   },
   {
+    component: "progress",
     name: "Progress",
     dependencies: ["@radix-ui/react-progress"],
-    files: [
-      {
-        name: "progress.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/progress.tsx"],
   },
   {
+    component: "radio-group",
     name: "Radio Group",
     dependencies: ["@radix-ui/react-radio-group"],
-    files: [
-      {
-        name: "radio-group.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/radio-group.tsx"],
   },
   {
+    component: "scroll-area",
     name: "Scroll-area",
     dependencies: ["@radix-ui/react-scroll-area"],
-    files: [
-      {
-        name: "scroll-area.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/scroll-area.tsx"],
   },
   {
+    component: "select",
     name: "Select",
     dependencies: ["@radix-ui/react-select"],
-    files: [
-      {
-        name: "select.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/select.tsx"],
   },
   {
+    component: "separator",
     name: "Separator",
     dependencies: ["@radix-ui/react-separator"],
-    files: [
-      {
-        name: "separator.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/separator.tsx"],
   },
   {
+    component: "sheet",
     name: "Sheet",
     dependencies: ["@radix-ui/react-dialog"],
-    files: [
-      {
-        name: "sheet.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/sheet.tsx"],
   },
   {
+    component: "slider",
     name: "Slider",
     dependencies: ["@radix-ui/react-slider"],
-    files: [
-      {
-        name: "slider.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/slider.tsx"],
   },
   {
+    component: "switch",
     name: "Switch",
     dependencies: ["@radix-ui/react-switch"],
-    files: [
-      {
-        name: "switch.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/switch.tsx"],
   },
   {
+    component: "tabs",
     name: "Tabs",
     dependencies: ["@radix-ui/react-tabs"],
-    files: [
-      {
-        name: "tabs.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/tabs.tsx"],
   },
   {
+    component: "textarea",
     name: "Textarea",
-    files: [
-      {
-        name: "textarea.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/textarea.tsx"],
   },
   {
+    component: "toast",
     name: "Toast",
     dependencies: ["@radix-ui/react-toast"],
-    files: [
-      {
-        name: "toast.tsx",
-        dir: "components/ui",
-      },
-      {
-        name: "use-toast.ts",
-        dir: "hooks",
-      },
-    ],
+    files: ["components/ui/toast.tsx", "components/ui/use-toast.ts"],
   },
   {
+    component: "toggle",
     name: "Toggle",
     dependencies: ["@radix-ui/react-toggle"],
-    files: [
-      {
-        name: "toggle.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/toggle.tsx"],
   },
   {
+    component: "tooltip",
     name: "Tooltip",
     dependencies: ["@radix-ui/react-tooltip"],
-    files: [
-      {
-        name: "tooltip.tsx",
-        dir: "components/ui",
-      },
-    ],
+    files: ["components/ui/tooltip.tsx"],
   },
 ]
