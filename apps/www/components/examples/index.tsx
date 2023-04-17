@@ -8,6 +8,7 @@ import { BadgeDemo } from "@/components/examples/badge/demo"
 import { BadgeDestructive } from "@/components/examples/badge/destructive"
 import { BadgeOutline } from "@/components/examples/badge/outline"
 import { BadgeSecondary } from "@/components/examples/badge/secondary"
+import { ButtonAsChild } from "@/components/examples/button/as-child"
 import { ButtonDemo } from "@/components/examples/button/demo"
 import { ButtonDestructive } from "@/components/examples/button/destructive"
 import { ButtonGhost } from "@/components/examples/button/ghost"
@@ -110,6 +111,7 @@ export const examples = {
   ButtonOutline,
   ButtonSecondary,
   ButtonWithIcon,
+  ButtonAsChild,
   CalendarDemo,
   CalendarDatePicker,
   CalendarDateRangePicker,
