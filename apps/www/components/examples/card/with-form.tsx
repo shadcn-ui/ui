@@ -1,9 +1,5 @@
-"use client"
-
 import * as React from "react"
-import { Check } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -24,8 +20,6 @@ import {
 } from "@/components/ui/select"
 
 export function CardWithForm() {
-  const [value, setValue] = React.useState("")
-
   return (
     <Card className="w-[350px]">
       <CardHeader>

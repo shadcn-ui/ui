@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 
 import {
@@ -8,7 +6,6 @@ import {
   SelectGroup,
   SelectItem,
   SelectLabel,
-  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"

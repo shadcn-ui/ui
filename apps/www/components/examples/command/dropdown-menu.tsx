@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Calendar, MoreHorizontal, Pen, Tags, Trash, User } from "lucide-react"
+import { Calendar, MoreHorizontal, Tags, Trash, User } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
