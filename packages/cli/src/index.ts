@@ -73,7 +73,7 @@ async function main() {
       const dependenciesSpinner = ora(`Installing dependencies...`).start()
       await execa(packageManager, [
         packageManager === "npm" ? "install" : "add",
-        PROJECT_DEPENDENCIES.join(" "),
+        ...PROJECT_DEPENDENCIES,
       ])
       dependenciesSpinner.succeed()
 
