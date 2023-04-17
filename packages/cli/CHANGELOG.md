@@ -1,5 +1,15 @@
 # @shadcn/ui
 
+## 0.1.0
+
+### Minor Changes
+
+- [#178](https://github.com/shadcn/ui/pull/178) [`96f300e`](https://github.com/shadcn/ui/commit/96f300ea7471de9de9d433114d010d8fef2c8bae) Thanks [@shadcn](https://github.com/shadcn)! - add init command
+
+### Patch Changes
+
+- [#175](https://github.com/shadcn/ui/pull/175) [`b5d4368`](https://github.com/shadcn/ui/commit/b5d43688b975eb66b95b71af0396d07f94dde247) Thanks [@shadcn](https://github.com/shadcn)! - rename package to shadcn-ui
+
 ## 0.0.4
 
 ### Patch Changes
