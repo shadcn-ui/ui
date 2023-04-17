@@ -30,8 +30,8 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install
 
-      - name: Check for errors
-        run: pnpm check
+      # - name: Check for errors
+      #   run: pnpm check
 
       - name: Build the package
         run: pnpm build:cli

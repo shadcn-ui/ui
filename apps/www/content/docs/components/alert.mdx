@@ -1,0 +1,61 @@
+---
+title: Alert
+description: Displays a callout for user attention.
+component: true
+---
+
+<ComponentExample src="/components/examples/alert/demo.tsx">
+  <AlertDemo />
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add alert
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/alert.tsx" />
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Usage
+
+```tsx
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/card"
+```
+
+```tsx
+<Alert>
+  <Terminal className="h-4 w-4" />
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>
+    You can add components and dependencies to your app using the cli.
+  </AlertDescription>
+</Alert>
+```
+
+## Examples
+
+### Default
+
+<ComponentExample src="/components/examples/alert/demo.tsx">
+  <AlertDemo />
+</ComponentExample>
+
+---
+
+### Destructive
+
+<ComponentExample src="/components/examples/alert/destructive.tsx">
+  <AlertDestructive />
+</ComponentExample>

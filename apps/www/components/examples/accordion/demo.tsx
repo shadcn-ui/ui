@@ -7,7 +7,7 @@ import {
 
 export function AccordionDemo() {
   return (
-    <Accordion type="single" collapsible className="w-[450px]">
+    <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1">
         <AccordionTrigger>Is it accessible?</AccordionTrigger>
         <AccordionContent>

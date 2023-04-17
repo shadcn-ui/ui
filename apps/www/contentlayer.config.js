@@ -1,3 +1,4 @@
+import fs from "fs"
 import path from "path"
 import {
   defineDocumentType,
@@ -98,12 +99,20 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          getHighlighter: async () => {
-            const theme = await loadTheme(
-              path.join(process.cwd(), "lib/vscode-theme.json")
-            )
-            return await getHighlighter({ theme })
+          theme: {
+            dark: JSON.parse(
+              fs.readFileSync(path.resolve("./lib/themes/dark.json"), "utf-8")
+            ),
+            light: JSON.parse(
+              fs.readFileSync(path.resolve("./lib/themes/light.json"), "utf-8")
+            ),
           },
+          // getHighlighter: async () => {
+          //   const theme = await loadTheme(
+          //     path.join(process.cwd(), "lib/vscode-theme.json")
+          //   )
+          //   return await getHighlighter({ theme })
+          // },
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted

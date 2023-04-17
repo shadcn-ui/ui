@@ -1,0 +1,64 @@
+---
+title: Aspect Ratio
+description: Displays content within a desired ratio.
+component: true
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/aspect-ratio
+  api: https://www.radix-ui.com/docs/primitives/components/aspect-ratio#api-reference
+---
+
+<ComponentExample src="/components/examples/aspect-ratio/demo.tsx">
+  <AspectRatioDemo />
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add aspect-ratio
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Install the `@radix-ui/react-aspect-ratio` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-aspect-ratio
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/aspect-ratio.tsx" />
+
+<Callout>
+
+This is the `<AspectRatio />` primitive. You can place it in a file at `components/ui/aspect-ratio.tsx`.
+
+</Callout>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Usage
+
+```tsx
+import Image from "next/image"
+
+import { AspectRatio } from "@/components/ui/aspect-ratio"
+```
+
+```tsx
+<div className="w-[450px]">
+  <AspectRatio ratio={16 / 9}>
+    <Image
+      src="..."
+      alt=Image""
+      className="rounded-md object-cover"
+    />
+  </AspectRatio>
+</div>
+```
