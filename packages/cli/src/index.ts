@@ -90,8 +90,8 @@ async function main() {
 
       // Update styles.css
       let stylesDestination = projectInfo?.srcDir
-        ? "./src/styles/global.css"
-        : "./styles/global.css"
+        ? "./src/styles/globals.css"
+        : "./styles/globals.css"
       if (projectInfo?.appDir) {
         stylesDestination = projectInfo?.srcDir
           ? "./src/app/globals.css"
