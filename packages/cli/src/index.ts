@@ -11,7 +11,7 @@ import { getPackageInfo } from "./utils/get-package-info"
 import { getPackageManager } from "./utils/get-package-manager"
 import { getProjectInfo } from "./utils/get-project-info"
 import { logger } from "./utils/logger"
-import { STYLES, UTILS } from "./utils/templates"
+import { STYLES, TAILWIND_CONFIG, UTILS } from "./utils/templates"
 
 process.on("SIGINT", () => process.exit(0))
 process.on("SIGTERM", () => process.exit(0))
@@ -97,7 +97,7 @@ async function main() {
           ? "./src/app/globals.css"
           : "./app/globals.css"
       }
-      const stylesSpinner = ora(`Updating ${stylesDestination}...`).start()
+      const stylesSpinner = ora(`Adding styles with CSS variables...`).start()
       await fs.writeFile(stylesDestination, STYLES, "utf8")
       stylesSpinner.succeed()
 
@@ -111,9 +111,14 @@ async function main() {
       const utilsDestination = projectInfo?.srcDir
         ? "./src/lib/utils.ts"
         : "./lib/utils.ts"
-      const utilsSpinner = ora(`Creating ${utilsDestination}...`).start()
+      const utilsSpinner = ora(`Adding utils...`).start()
       await fs.writeFile(utilsDestination, UTILS, "utf8")
       utilsSpinner.succeed()
+
+      const tailwindDestination = "./tailwind.config.js"
+      const tailwindSpinner = ora(`Updating tailwind.config.js...`).start()
+      await fs.writeFile(tailwindDestination, TAILWIND_CONFIG, "utf8")
+      tailwindSpinner.succeed()
     })
 
   program
