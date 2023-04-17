@@ -30,7 +30,29 @@ This creates a new Next.js 13 project with the following features:
 - [ESLint](https://eslint.org)
 - [Prettier](https://prettier.io)
 
-## Existing Project
+## create-next-app
+
+If you have created a project using `create-next-app`, you can use the `shadcn-ui` CLI to initialize the project.
+
+<Steps>
+
+### Create a new project
+
+```bash
+npx create-next-app my-app
+```
+
+### Run the CLI
+
+```bash
+npx shadcn-ui init
+```
+
+This will install dependencies, setup Tailwind CSS, and configure the `cn` utils for you.
+
+</Steps>
+
+## Manual Installation
 
 <Steps>
 
@@ -68,10 +90,57 @@ const { fontFamily } = require("tailwindcss/defaultTheme")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class", '[data-theme="dark"]'],
+  darkMode: ["class"],
   content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: "calc(var(--radius) - 4px)",
+      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
@@ -196,15 +265,17 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
-### Icons
+</Steps>
+
+## Icons
 
 I use icons from [Lucide](https://lucide.dev). You can use any icon library.
 
-### App structure
+## App structure
 
 Here's how I structure my app. I use Next.js, but this is not required.
 
-```txt showLineNumbers {6-10,14-15}
+```txt {6-10,14-15}
 .
 ├── app
 │   ├── layout.tsx
@@ -233,7 +304,5 @@ Here's how I structure my app. I use Next.js, but this is not required.
 - The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
 - The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
 - The `styles` folder contains the global CSS.
-
-</Steps>
 
 That's it. You can now start adding components to your project.
