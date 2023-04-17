@@ -15,6 +15,9 @@
     "url": "https://github.com/shadcn/ui.git",
     "directory": "packages/cli"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "components",
     "ui",
