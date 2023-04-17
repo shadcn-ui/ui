@@ -7,6 +7,7 @@ export async function getProjectInfo() {
     tsconfig: null,
     alias: null,
     srcDir: false,
+    appDir: false,
   }
 
   try {
@@ -18,6 +19,9 @@ export async function getProjectInfo() {
       tsconfig,
       alias,
       srcDir: existsSync(path.resolve("./src")),
+      appDir:
+        existsSync(path.resolve("./app")) ||
+        existsSync(path.resolve("./src/app")),
     }
   } catch (error) {
     return info

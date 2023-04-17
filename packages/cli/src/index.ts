@@ -41,7 +41,8 @@ async function main() {
   program
     .command("init")
     .description("Configure your Next.js project.")
-    .action(async () => {
+    .option("-y, --yes", "Skip confirmation prompt.")
+    .action(async (options) => {
       logger.warn(
         "Running the following command will overwrite existing files."
       )
@@ -53,20 +54,22 @@ async function main() {
         "This command assumes a Next.js project with TypeScript and Tailwind CSS."
       )
       logger.warn(
-        "If you don't have these, follow the steps in the documentation at https://ui.shadcn.com/docs/installation."
+        "If you don't have these, follow the manual steps at https://ui.shadcn.com/docs/installation."
       )
       logger.warn("")
 
-      const { proceed } = await prompts({
-        type: "confirm",
-        name: "proceed",
-        message:
-          "Running this command will install dependencies and overwrite files. Proceed?",
-        initial: true,
-      })
+      if (!options.yes) {
+        const { proceed } = await prompts({
+          type: "confirm",
+          name: "proceed",
+          message:
+            "Running this command will install dependencies and overwrite files. Proceed?",
+          initial: true,
+        })
 
-      if (!proceed) {
-        process.exit(0)
+        if (!proceed) {
+          process.exit(0)
+        }
       }
 
       // Install dependencies.
@@ -78,15 +81,22 @@ async function main() {
       dependenciesSpinner.succeed()
 
       // Ensure styles directory exists.
-      const stylesDir = projectInfo?.srcDir ? "./src/styles" : "./styles"
-      if (!existsSync(path.resolve(stylesDir))) {
-        await fs.mkdir(path.resolve(stylesDir), { recursive: true })
+      if (!projectInfo?.appDir) {
+        const stylesDir = projectInfo?.srcDir ? "./src/styles" : "./styles"
+        if (!existsSync(path.resolve(stylesDir))) {
+          await fs.mkdir(path.resolve(stylesDir), { recursive: true })
+        }
       }
 
       // Update styles.css
-      const stylesDestination = projectInfo?.srcDir
+      let stylesDestination = projectInfo?.srcDir
         ? "./src/styles/global.css"
         : "./styles/global.css"
+      if (projectInfo?.appDir) {
+        stylesDestination = projectInfo?.srcDir
+          ? "./src/app/globals.css"
+          : "./app/globals.css"
+      }
       const stylesSpinner = ora(`Updating ${stylesDestination}...`).start()
       await fs.writeFile(stylesDestination, STYLES, "utf8")
       stylesSpinner.succeed()
