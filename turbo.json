@@ -24,6 +24,10 @@
       "cache": false,
       "outputs": []
     },
+    "lint:fix": {
+      "cache": false,
+      "outputs": []
+    },
     "format:check": {
       "cache": false,
       "outputs": []

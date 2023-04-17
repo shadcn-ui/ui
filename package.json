@@ -21,6 +21,7 @@
     "dev:cli": "turbo --filter=shadcn-ui dev",
     "start:cli": "pnpm --filter=shadcn-ui start:dev",
     "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
     "preview": "turbo run preview",
     "typecheck": "turbo run typecheck",
     "format:write": "turbo run format",
