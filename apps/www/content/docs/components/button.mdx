@@ -1,0 +1,121 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+featured: true
+component: true
+---
+
+<ComponentExample src="/components/examples/button/demo.tsx">
+  <ButtonDemo />
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add button
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/button.tsx" />
+
+<Callout>
+  This is the `<Button />` primitive. You can place it in a file at
+  `components/ui/button.tsx`.
+</Callout>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button"
+```
+
+```tsx
+<Button variant="outline">Button</Button>
+```
+
+### Link
+
+You can use the `buttonVariants` helper to create a link that looks like a button.
+
+```tsx
+import { buttonVariants } from "@/components/ui/button"
+```
+
+```tsx
+<Link className={buttonVariants({ variant: "outline" })}>Click here</Link>
+```
+
+## Examples
+
+### Primary
+
+<ComponentExample src="/components/examples/button/demo.tsx">
+  <ButtonDemo />
+</ComponentExample>
+
+---
+
+### Secondary
+
+<ComponentExample src="/components/examples/button/secondary.tsx">
+  <ButtonSecondary />
+</ComponentExample>
+
+---
+
+### Destructive
+
+<ComponentExample src="/components/examples/button/destructive.tsx">
+  <ButtonDestructive />
+</ComponentExample>
+
+---
+
+### Outline
+
+<ComponentExample src="/components/examples/button/outline.tsx">
+  <ButtonOutline />
+</ComponentExample>
+
+---
+
+### Ghost
+
+<ComponentExample src="/components/examples/button/ghost.tsx">
+  <ButtonGhost />
+</ComponentExample>
+
+---
+
+### Link
+
+<ComponentExample src="/components/examples/button/link.tsx">
+  <ButtonLink />
+</ComponentExample>
+
+---
+
+### With Icon
+
+<ComponentExample src="/components/examples/button/with-icon.tsx">
+  <ButtonWithIcon />
+</ComponentExample>
+
+---
+
+### Loading
+
+<ComponentExample src="/components/examples/button/loading.tsx">
+  <ButtonLoading />
+</ComponentExample>

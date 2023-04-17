@@ -1,67 +1,74 @@
+import Image from "next/image"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { AppleMusicDemo } from "@/components/apple-music-demo"
-import { CopyButton } from "@/components/copy-button"
-import { Icons } from "@/components/icons"
-import { PromoVideo } from "@/components/promo-video"
 import { buttonVariants } from "@/components/ui/button"
+import { ExamplesNav } from "@/components/examples-nav"
+import { Icons } from "@/components/icons"
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "@/components/page-header"
+import { PromoVideo } from "@/components/promo-video"
+import { StyleSwitcher } from "@/components/style-switcher"
+import DashboardPage from "@/app/examples/dashboard/page"
 
 export default function IndexPage() {
   return (
-    <>
-      <section className="grid items-center gap-6 pt-6 pb-8 md:py-10">
-        <div className="flex max-w-[980px] flex-col items-start gap-2">
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-5xl lg:text-6xl lg:leading-[1.1]">
-            Beautifully designed components <br className="hidden sm:inline" />
-            built with Radix UI and Tailwind CSS.
-          </h1>
-          <p className="max-w-[750px] text-lg text-slate-700 dark:text-slate-400 sm:text-xl">
-            Accessible and customizable components that you can copy and paste
-            into your apps. Free. Open Source.{" "}
-            <span className="font-semibold">
-              Use this to build your own component library
-            </span>
-            .
-          </p>
-        </div>
-        <div className="block lg:hidden">
-          <PromoVideo />
-        </div>
-        <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 md:flex-row">
-          <Link href="/docs" className={buttonVariants({ size: "lg" })}>
-            Get Started
-          </Link>
-          <Link
-            target="_blank"
-            rel="noreferrer"
-            href={siteConfig.links.github}
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "pl-6"
-            )}
-          >
-            <Icons.gitHub className="mr-2 h-4 w-4" />
-            GitHub
-          </Link>
-        </div>
-        <div>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
-            You are looking at an early preview. You can follow the progress on{" "}
-            <Link
-              href={siteConfig.links.twitter}
-              className="font-medium underline underline-offset-4"
-            >
-              Twitter
+    <div className="container relative pb-10">
+      <StyleSwitcher />
+      <PageHeader>
+        <PageHeaderHeading>Build your component library.</PageHeaderHeading>
+        <PageHeaderDescription>
+          Beautifully designed components that you can copy and paste into your
+          apps. Accessible. Customizable. Open Source.
+        </PageHeaderDescription>
+      </PageHeader>
+      <section className="pb-8 md:pb-10">
+        <div className="flex w-full items-center justify-between">
+          <div className="flex space-x-4">
+            <Link href="/docs" className={cn(buttonVariants({ size: "lg" }))}>
+              Get Started
             </Link>
-            .
-          </p>
+            <Link
+              target="_blank"
+              rel="noreferrer"
+              href={siteConfig.links.github}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "pl-6"
+              )}
+            >
+              <Icons.gitHub className="mr-2 h-4 w-4" />
+              GitHub
+            </Link>
+          </div>
         </div>
       </section>
-      <section className="hidden lg:block">
-        <AppleMusicDemo />
+      <ExamplesNav className="[&>a:first-child]:text-primary" />
+      <section className="space-y-8 overflow-hidden rounded-lg border-2 border-primary dark:border-muted md:hidden">
+        <Image
+          src="/examples/dashboard-light.png"
+          width={1280}
+          height={866}
+          alt="Dashboard"
+          className="block dark:hidden"
+        />
+        <Image
+          src="/examples/dashboard-dark.png"
+          width={1280}
+          height={866}
+          alt="Dashboard"
+          className="hidden dark:block"
+        />
       </section>
-    </>
+      <section className="hidden md:block">
+        <div className="overflow-hidden rounded-lg border bg-background shadow-xl">
+          <DashboardPage />
+        </div>
+      </section>
+    </div>
   )
 }

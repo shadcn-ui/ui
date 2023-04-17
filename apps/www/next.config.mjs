@@ -9,12 +9,30 @@ const nextConfig = {
   },
   experimental: {
     appDir: true,
-    fontLoaders: [
+  },
+  redirects() {
+    return [
       {
-        loader: "@next/font/google",
-        options: { subsets: ["latin"] },
+        source: "/components",
+        destination: "/docs/components/accordion",
+        permanent: true,
       },
-    ],
+      {
+        source: "/docs/components",
+        destination: "/docs/components/accordion",
+        permanent: true,
+      },
+      {
+        source: "/examples",
+        destination: "/examples/dashboard",
+        permanent: false,
+      },
+      {
+        source: "/docs/primitives/:path*",
+        destination: "/docs/components/:path*",
+        permanent: true,
+      },
+    ]
   },
 }
 

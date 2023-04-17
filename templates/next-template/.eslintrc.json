@@ -14,7 +14,17 @@
   },
   "settings": {
     "tailwindcss": {
-      "callees": ["cn"]
+      "callees": ["cn"],
+      "config": "./tailwind.config.js"
+    },
+    "next": {
+      "rootDir": ["./"]
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser"
+    }
+  ]
 }

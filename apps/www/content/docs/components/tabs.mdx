@@ -1,0 +1,61 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+component: true
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/tabs
+  api: https://www.radix-ui.com/docs/primitives/components/tabs#api-reference
+---
+
+<ComponentExample src="/components/examples/tabs/demo.tsx">
+  <TabsDemo />
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add tabs
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Install the `@radix-ui/react-tabs` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-tabs
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/tabs.tsx" />
+
+<Callout>
+
+This is the `<Tabs />` primitive. You can place it in a file at `components/ui/tabs.tsx`.
+
+</Callout>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Usage
+
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+```
+
+```tsx
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+  <TabsContent value="password">Change your password here.</TabsContent>
+</Tabs>
+```

@@ -1,14 +1,7 @@
-interface SiteConfig {
-  name: string
-  description: string
-  links: {
-    twitter: string
-    github: string
-  }
-}
-
-export const siteConfig: SiteConfig = {
+export const siteConfig = {
   name: "shadcn/ui",
+  url: "https://ui.shadcn.com",
+  ogImage: "https://ui.shadcn.com/og.jpg",
   description:
     "Beautifully designed components built with Radix UI and Tailwind CSS.",
   links: {
@@ -16,3 +9,5 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/shadcn/ui",
   },
 }
+
+export type SiteConfig = typeof siteConfig

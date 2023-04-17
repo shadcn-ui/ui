@@ -1,0 +1,92 @@
+---
+title: Sheet
+description: Extends the Dialog component to display content that complements the main content of the screen.
+component: true
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/dialog
+  api: https://www.radix-ui.com/docs/primitives/components/dialog#api-reference
+---
+
+<ComponentExample src="/components/examples/sheet/demo.tsx">
+  <SheetDemo />
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add sheet
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Install the `@radix-ui/react-dialog` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-dialog
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/sheet.tsx" />
+
+<Callout>
+
+This is the `<Sheet />` primitive. You can place it in a file at `components/ui/sheet.tsx`.
+
+</Callout>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Usage
+
+```tsx
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+```
+
+```tsx
+<Sheet>
+  <SheetTrigger>Open</SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Are you sure absolutely sure?</SheetTitle>
+      <SheetDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+```
+
+## Examples
+
+### Position
+
+Pass the `position` property to `<SheetContent />` to indicate the edge of the screen where the component will appear. The values can be `top`, `right`, `bottom` or `left`.
+
+<ComponentExample src="/components/examples/sheet/position.tsx">
+  <SheetPosition />
+</ComponentExample>
+
+---
+
+### Size
+
+Pass the `size` property to `<SheetContent />` if you need to adjust the size of the sheet. The values can be `sm`, `default`, `lg`, `xl`, `full` or `content`.
+
+<ComponentExample src="/components/examples/sheet/size.tsx">
+  <SheetSize />
+</ComponentExample>

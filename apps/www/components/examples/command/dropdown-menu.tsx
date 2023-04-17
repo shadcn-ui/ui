@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Calendar, MoreHorizontal, Pen, Tags, Trash, User } from "lucide-react"
+import { Calendar, MoreHorizontal, Tags, Trash, User } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -41,12 +41,12 @@ export function CommandDropdownMenu() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <div className="flex w-full flex-col items-start justify-between rounded-md border border-slate-200 py-3 px-4 dark:border-slate-700 sm:flex-row sm:items-center">
+    <div className="flex w-full flex-col items-start justify-between rounded-md border px-4 py-3 sm:flex-row sm:items-center">
       <p className="text-sm font-medium leading-none">
-        <span className="mr-2 rounded-lg bg-slate-900 px-2 py-1 text-xs text-slate-50 dark:bg-slate-800 dark:text-slate-100">
+        <span className="mr-2 rounded-lg bg-primary px-2 py-1 text-xs text-primary-foreground">
           {label}
         </span>
-        <span className="text-slate-500">Create a new project</span>
+        <span className="text-muted-foreground">Create a new project</span>
       </p>
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>

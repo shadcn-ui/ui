@@ -1,15 +1,27 @@
 import { AccordionDemo } from "@/components/examples/accordion/demo"
 import { AlertDialogDemo } from "@/components/examples/alert-dialog/demo"
+import { AlertDemo } from "@/components/examples/alert/demo"
+import { AlertDestructive } from "@/components/examples/alert/destructive"
 import { AspectRatioDemo } from "@/components/examples/aspect-ratio/demo"
 import { AvatarDemo } from "@/components/examples/avatar/demo"
+import { BadgeDemo } from "@/components/examples/badge/demo"
+import { BadgeDestructive } from "@/components/examples/badge/destructive"
+import { BadgeOutline } from "@/components/examples/badge/outline"
+import { BadgeSecondary } from "@/components/examples/badge/secondary"
 import { ButtonDemo } from "@/components/examples/button/demo"
 import { ButtonDestructive } from "@/components/examples/button/destructive"
 import { ButtonGhost } from "@/components/examples/button/ghost"
 import { ButtonLink } from "@/components/examples/button/link"
 import { ButtonLoading } from "@/components/examples/button/loading"
 import { ButtonOutline } from "@/components/examples/button/outline"
-import { ButtonSubtle } from "@/components/examples/button/subtle"
+import { ButtonSecondary } from "@/components/examples/button/secondary"
 import { ButtonWithIcon } from "@/components/examples/button/with-icon"
+import { CalendarDatePicker } from "@/components/examples/calendar/date-picker"
+import { CalendarDateRangePicker } from "@/components/examples/calendar/date-range-picker"
+import { CalendarDemo } from "@/components/examples/calendar/demo"
+import { CalendarDatePickerWithPresets } from "@/components/examples/calendar/with-presets"
+import { CardDemo } from "@/components/examples/card/demo"
+import { CardWithForm } from "@/components/examples/card/with-form"
 import { CheckboxDemo } from "@/components/examples/checkbox/demo"
 import { CheckboxDisabled } from "@/components/examples/checkbox/disabled"
 import { CheckboxWithText } from "@/components/examples/checkbox/with-text"
@@ -27,6 +39,7 @@ import { DropdownMenuRadioGroupDemo } from "@/components/examples/dropdown-menu/
 import { HoverCardDemo } from "@/components/examples/hover-card/demo"
 import { InputDemo } from "@/components/examples/input/demo"
 import { InputDisabled } from "@/components/examples/input/disabled"
+import { InputFile } from "@/components/examples/input/file"
 import { InputWithButton } from "@/components/examples/input/with-button"
 import { InputWithLabel } from "@/components/examples/input/with-label"
 import { InputWithText } from "@/components/examples/input/with-text"
@@ -42,6 +55,7 @@ import { SeparatorDemo } from "@/components/examples/separator/demo"
 import { SheetDemo } from "@/components/examples/sheet/demo"
 import { SheetPosition } from "@/components/examples/sheet/position"
 import { SheetSize } from "@/components/examples/sheet/size"
+import { SkeletonDemo } from "@/components/examples/skeleton/demo"
 import { SliderDemo } from "@/components/examples/slider/demo"
 import { SwitchDemo } from "@/components/examples/switch/demo"
 import { TabsDemo } from "@/components/examples/tabs/demo"
@@ -72,24 +86,36 @@ import { TypographyInlineCode } from "@/components/examples/typography/inline-co
 import { TypographyLarge } from "@/components/examples/typography/large"
 import { TypographyLead } from "@/components/examples/typography/lead"
 import { TypographyList } from "@/components/examples/typography/list"
+import { TypographyMuted } from "@/components/examples/typography/muted"
 import { TypographyP } from "@/components/examples/typography/p"
 import { TypographySmall } from "@/components/examples/typography/small"
-import { TypographySubtle } from "@/components/examples/typography/subtle"
 import { TypographyTable } from "@/components/examples/typography/table"
 
 export const examples = {
   AccordionDemo,
+  AlertDemo,
   AlertDialogDemo,
+  AlertDestructive,
   AspectRatioDemo,
   AvatarDemo,
+  BadgeDemo,
+  BadgeDestructive,
+  BadgeOutline,
+  BadgeSecondary,
   ButtonDemo,
   ButtonGhost,
   ButtonDestructive,
   ButtonLink,
   ButtonLoading,
   ButtonOutline,
-  ButtonSubtle,
+  ButtonSecondary,
   ButtonWithIcon,
+  CalendarDemo,
+  CalendarDatePicker,
+  CalendarDateRangePicker,
+  CalendarDatePickerWithPresets,
+  CardDemo,
+  CardWithForm,
   CheckboxDemo,
   CheckboxDisabled,
   CheckboxWithText,
@@ -107,6 +133,7 @@ export const examples = {
   HoverCardDemo,
   InputDemo,
   InputDisabled,
+  InputFile,
   InputWithButton,
   InputWithLabel,
   InputWithText,
@@ -122,6 +149,7 @@ export const examples = {
   SheetDemo,
   SheetSize,
   SheetPosition,
+  SkeletonDemo,
   SliderDemo,
   SwitchDemo,
   TabsDemo,
@@ -148,7 +176,7 @@ export const examples = {
   TypographyList,
   TypographyP,
   TypographySmall,
-  TypographySubtle,
+  TypographyMuted,
   TypographyTable,
   ToggleDemo,
   ToggleSm,

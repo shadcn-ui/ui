@@ -1,33 +1,43 @@
+import { Metadata } from "next"
 import Link from "next/link"
 import { Heart } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { buttonVariants } from "@/components/ui/button"
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "@/components/page-header"
+
+export const metadata: Metadata = {
+  title: "Figma",
+  description:
+    "Every component recreated in Figma. With customizable props, typography and icons.",
+}
 
 export default function FigmaPage() {
   return (
-    <>
-      <section className="grid items-center gap-6 pt-6 pb-8 md:py-10">
-        <div className="flex max-w-[980px] flex-col items-start gap-2">
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-5xl lg:text-6xl lg:leading-[1.1]">
-            Figma UI Kit. Crafted to perfectly match the Radix UI components.
-          </h1>
-          <p className="max-w-[750px] text-lg text-slate-700 dark:text-slate-400 sm:text-xl">
-            Every component recreated in Figma. With customizable props,
-            typography and icons. Open sourced by{" "}
-            <Link
-              href="https://twitter.com/skirano"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Pietro Schirano
-            </Link>
-            .
-          </p>
-        </div>
-        <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 md:flex-row">
+    <div className="container pb-10">
+      <PageHeader>
+        <PageHeaderHeading>Grab the free Figma UI Kit.</PageHeaderHeading>
+        <PageHeaderDescription>
+          Every component recreated in Figma. With customizable props,
+          typography and icons. Open sourced by{" "}
+          <Link
+            href="https://twitter.com/skirano"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium underline underline-offset-4"
+          >
+            Pietro Schirano
+          </Link>
+          .
+        </PageHeaderDescription>
+      </PageHeader>
+      <section className="mb-4 grid items-center gap-6">
+        <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:flex-row">
           <Link
             href="https://www.figma.com/community/file/1203061493325953101"
             className={buttonVariants({ size: "lg" })}
@@ -53,9 +63,9 @@ export default function FigmaPage() {
       <AspectRatio ratio={16 / 9} className="w-full">
         <iframe
           src="https://embed.figma.com/file/1203061493325953101/hf_embed?community_viewer=true&embed_host=shadcn&hub_file_id=1203061493325953101&kind=&viewer=1"
-          className="h-full w-full overflow-hidden rounded-lg border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800"
+          className="h-full w-full overflow-hidden rounded-lg border bg-muted"
         />
       </AspectRatio>
-    </>
+    </div>
   )
 }
