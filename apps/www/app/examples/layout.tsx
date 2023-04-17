@@ -49,7 +49,7 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
                 href="/components"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
-                  "rounded-[0.5rem] pl-6"
+                  "rounded-[0.5rem]"
                 )}
               >
                 Components
