@@ -4,67 +4,70 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
+    --background: theme(colors.white);
+    --foreground: theme(colors.slate.900);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: theme(colors.slate.100);
+    --muted-foreground: theme(colors.slate.500);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+    --popover: theme(colors.white);
+    --popover-foreground: theme(colors.slate.900);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --card: theme(colors.white);
+    --card-foreground: theme(colors.slate.900);
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
+    --border: theme(colors.slate.200);
+    --input: theme(colors.slate.200);
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: theme(colors.slate.900);
+    --primary-foreground: theme(colors.slate.50);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: theme(colors.slate.100);
+    --secondary-foreground: theme(colors.slate.900);
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: theme(colors.slate.100);
+    --accent-foreground: theme(colors.slate.900);
 
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: red;
+    --destructive-foreground: theme(colors.slate.50);
 
-    --ring: 215 20.2% 65.1%;
+    --ring: theme(colors.slate.400);
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: theme(colors.gray.950);
+    /* Similar to theme(colors.gray.200) */
+    --foreground: hsl(213 31% 91%);
 
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
+    /* Similar to theme(colors.slate.200) */
+    --muted: hsl(223 47% 11%);
+    --muted-foreground: hsl(215.4 16.3% 56.9%);
 
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
+    --popover: theme(colors.gray.950);
+    --popover-foreground: theme(colors.slate.400);
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
+    --card: theme(colors.white);
+    --card-foreground: theme(colors.slate.900);
 
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
+    --border: theme(colors.slate.800);
+    --input: theme(colors.slate.800);
 
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
+    --primary: theme(colors.slate.50);
+    /* Slightly off-black */
+    --primary-foreground: hsl(222.2 47.4% 1.2%);
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
+    --secondary: theme(colors.slate.900);
+    --secondary-foreground: theme(colors.slate.50);
 
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
+    --accent: theme(colors.slate.800);
+    --accent-foreground: theme(colors.slate.50);
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: hsl(0 63% 31%);
+    --destructive-foreground: theme(colors.slate.50);
 
-    --ring: 216 34% 17%;
+    --ring: theme(colors.slate.800);
 
     --radius: 0.5rem;
   }
