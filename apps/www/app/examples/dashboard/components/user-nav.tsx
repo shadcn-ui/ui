@@ -19,10 +19,7 @@ export function UserNav() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage
-              src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjo2LCJub3NlIjo4LCJtb3V0aCI6NiwiZXllcyI6MTEsImV5ZWJyb3dzIjoxNSwiZ2xhc3NlcyI6MTEsImhhaXIiOjQxLCJhY2Nlc3NvcmllcyI6MCwiZGV0YWlscyI6MCwiYmVhcmQiOjAsImZsaXAiOjAsImNvbG9yIjoiIzAwMDAwMCIsInNoYXBlIjoiY2lyY2xlIn0="
-              alt="@shadcn"
-            />
+            <AvatarImage src="/avatars/01.png" alt="@shadcn" />
             <AvatarFallback>SC</AvatarFallback>
           </Avatar>
         </Button>
@@ -31,7 +28,7 @@ export function UserNav() {
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">shadcn</p>
-            <p className="text-xs leading-none text-muted-foreground">
+            <p className="text-muted-foreground text-xs leading-none">
               m@example.com
             </p>
           </div>

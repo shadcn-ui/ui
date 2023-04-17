@@ -36,19 +36,19 @@ export function DemoTeamMembers() {
         <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxMCwibm9zZSI6MTAsIm1vdXRoIjo5LCJleWVzIjo3LCJleWVicm93cyI6MTIsImdsYXNzZXMiOjcsImhhaXIiOjU1LCJhY2Nlc3NvcmllcyI6MCwiZGV0YWlscyI6MCwiYmVhcmQiOjAsImZsaXAiOjAsImNvbG9yIjoiI2ViZWJlYiIsInNoYXBlIjoiY2lyY2xlIn0=" />
+              <AvatarImage src="/avatars/01.png" />
               <AvatarFallback>OM</AvatarFallback>
             </Avatar>
             <div>
               <p className="text-sm font-medium leading-none">Sofia Davis</p>
-              <p className="text-sm text-muted-foreground">m@example.com</p>
+              <p className="text-muted-foreground text-sm">m@example.com</p>
             </div>
           </div>
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" className="ml-auto">
                 Owner{" "}
-                <ChevronDown className="ml-2 h-4 w-4 text-muted-foreground" />
+                <ChevronDown className="text-muted-foreground ml-2 h-4 w-4" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="p-0" align="end">
@@ -59,25 +59,25 @@ export function DemoTeamMembers() {
                   <CommandGroup>
                     <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Viewer</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         Can view and comment.
                       </p>
                     </CommandItem>
                     <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Developer</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         Can view, comment and edit.
                       </p>
                     </CommandItem>
                     <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Billing</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         Can view, comment and manage billing.
                       </p>
                     </CommandItem>
                     <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Owner</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         Admin-level access to all resources.
                       </p>
                     </CommandItem>
@@ -90,19 +90,19 @@ export function DemoTeamMembers() {
         <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxMSwibm9zZSI6MywibW91dGgiOjExLCJleWVzIjo5LCJleWVicm93cyI6MiwiZ2xhc3NlcyI6MSwiaGFpciI6MSwiYWNjZXNzb3JpZXMiOjAsImRldGFpbHMiOjAsImJlYXJkIjowLCJmbGlwIjowLCJjb2xvciI6IiNlYmViZWIiLCJzaGFwZSI6ImNpcmNsZSJ9" />
+              <AvatarImage src="/avatars/02.png" />
               <AvatarFallback>JL</AvatarFallback>
             </Avatar>
             <div>
               <p className="text-sm font-medium leading-none">Jackson Lee</p>
-              <p className="text-sm text-muted-foreground">p@example.com</p>
+              <p className="text-muted-foreground text-sm">p@example.com</p>
             </div>
           </div>
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" className="ml-auto">
                 Member{" "}
-                <ChevronDown className="ml-2 h-4 w-4 text-muted-foreground" />
+                <ChevronDown className="text-muted-foreground ml-2 h-4 w-4" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="p-0" align="end">
@@ -113,25 +113,25 @@ export function DemoTeamMembers() {
                   <CommandGroup className="p-1.5">
                     <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Viewer</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         Can view and comment.
                       </p>
                     </CommandItem>
                     <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Developer</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         Can view, comment and edit.
                       </p>
                     </CommandItem>
                     <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Billing</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         Can view, comment and manage billing.
                       </p>
                     </CommandItem>
                     <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
                       <p>Owner</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         Admin-level access to all resources.
                       </p>
                     </CommandItem>
