@@ -28,17 +28,6 @@ export function SelectDemo() {
           <SelectItem value="grapes">Grapes</SelectItem>
           <SelectItem value="pineapple">Pineapple</SelectItem>
         </SelectGroup>
-        <SelectSeparator />
-        <SelectGroup>
-          <SelectLabel>Vegetables</SelectLabel>
-          <SelectItem value="aubergine">Aubergine</SelectItem>
-          <SelectItem value="broccoli">Broccoli</SelectItem>
-          <SelectItem value="carrot" disabled>
-            Carrot
-          </SelectItem>
-          <SelectItem value="courgette">Courgette</SelectItem>
-          <SelectItem value="leek">Leek</SelectItem>
-        </SelectGroup>
       </SelectContent>
     </Select>
   )
