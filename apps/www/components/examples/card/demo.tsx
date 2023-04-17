@@ -44,7 +44,7 @@ export function CardDemo({ className, ...props }: CardProps) {
             <p className="text-sm font-medium leading-none">
               Push Notifications
             </p>
-            <p className="text-base-500 dark:text-base-400 text-sm">
+            <p className="text-sm text-muted-foreground">
               Send notifications to device.
             </p>
           </div>
@@ -61,7 +61,7 @@ export function CardDemo({ className, ...props }: CardProps) {
                 <p className="text-sm font-medium leading-none">
                   {notification.title}
                 </p>
-                <p className="text-base-500 dark:text-base-400 text-sm">
+                <p className="text-sm text-muted-foreground">
                   {notification.description}
                 </p>
               </div>

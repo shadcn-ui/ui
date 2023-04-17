@@ -25,7 +25,7 @@ export function CodeViewer() {
         <div className="grid gap-4">
           <div className="rounded-md bg-black p-6">
             <pre>
-              <code className="grid gap-1 text-sm text-slate-50 [&_span]:h-4">
+              <code className="grid gap-1 text-sm text-muted-foreground [&_span]:h-4">
                 <span>
                   <span className="text-sky-300">import</span> os
                 </span>
@@ -76,7 +76,7 @@ export function CodeViewer() {
             </pre>
           </div>
           <div>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-sm text-muted-foreground">
               Your API Key can be found here. You should use environment
               variables or a secret management tool to expose your key to your
               applications.

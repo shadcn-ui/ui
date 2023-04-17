@@ -33,10 +33,9 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
             components. Use this as a guide to build your own.
           </PageHeaderDescription>
         </PageHeader>
-        <section className="hidden pb-10 md:block">
-          <div className="block md:hidden"></div>
-          <div className="flex items-center justify-between">
-            <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:flex-row">
+        <section className="pb-6 md:pb-10">
+          <div className="flex w-full items-center justify-between">
+            <div className="flex space-x-4">
               <Link
                 href="/docs"
                 className={cn(
@@ -53,7 +52,7 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
                   "rounded-[0.5rem] pl-6"
                 )}
               >
-                Browse Components
+                Components
               </Link>
             </div>
           </div>

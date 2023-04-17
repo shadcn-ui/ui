@@ -89,6 +89,9 @@ export default function MusicPage() {
                                 key={album.name}
                                 album={album}
                                 className="w-[250px]"
+                                aspectRatio="portrait"
+                                width={250}
+                                height={330}
                               />
                             ))}
                           </div>
@@ -112,7 +115,9 @@ export default function MusicPage() {
                                 key={album.name}
                                 album={album}
                                 className="w-[150px]"
-                                aspectRatio={1 / 1}
+                                aspectRatio="square"
+                                width={150}
+                                height={150}
                               />
                             ))}
                           </div>

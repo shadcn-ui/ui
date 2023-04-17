@@ -1,10 +1,9 @@
 import * as React from "react"
 import Link from "next/link"
-
 import { NavItem } from "@/types/nav"
+
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -14,6 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icons } from "@/components/icons"
 
 interface MainNavProps {
   items?: NavItem[]
@@ -37,7 +37,7 @@ export function MainNav({ items }: MainNavProps) {
                   key={index}
                   href={item.href}
                   className={cn(
-                    "flex items-center text-lg font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-100 sm:text-sm",
+                    "text-muted-foreground flex items-center text-lg font-semibold sm:text-sm",
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
                 >

@@ -11,7 +11,7 @@ export default function IndexPage() {
           Beautifully designed components <br className="hidden sm:inline" />
           built with Radix UI and Tailwind CSS.
         </h1>
-        <p className="max-w-[700px] text-lg text-slate-700 dark:text-slate-400 sm:text-xl">
+        <p className="text-muted-foreground max-w-[700px] text-lg sm:text-xl">
           Accessible and customizable components that you can copy and paste
           into your apps. Free. Open Source. And Next.js 13 Ready.
         </p>

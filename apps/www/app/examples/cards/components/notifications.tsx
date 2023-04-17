@@ -27,7 +27,7 @@ export function DemoNotifications() {
             </p>
           </div>
         </div>
-        <div className="flex items-center space-x-4 bg-accent p-2 text-accent-foreground">
+        <div className="flex items-center space-x-4 rounded-md bg-accent p-2 text-accent-foreground">
           <AtSign className="h-5 w-5" />
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Available</p>

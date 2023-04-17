@@ -17,10 +17,8 @@ export function PresetShare() {
       </PopoverTrigger>
       <PopoverContent align="end" className="w-[520px]">
         <div className="flex flex-col space-y-2 text-center sm:text-left">
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">
-            Share preset
-          </h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          <h3 className="text-lg font-semibold">Share preset</h3>
+          <p className="text-sm text-muted-foreground">
             Anyone who has this link and an OpenAI account will be able to view
             this.
           </p>

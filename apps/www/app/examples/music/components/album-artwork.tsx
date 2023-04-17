@@ -19,12 +19,16 @@ import { playlists } from "../data/playlists"
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
   album: Album
-  aspectRatio?: number
+  aspectRatio?: "portrait" | "square"
+  width?: number
+  height?: number
 }
 
 export function AlbumArtwork({
   album,
-  aspectRatio = 3 / 4,
+  aspectRatio = "portrait",
+  width,
+  height,
   className,
   ...props
 }: AlbumArtworkProps) {
@@ -32,17 +36,18 @@ export function AlbumArtwork({
     <div className={cn("space-y-3", className)} {...props}>
       <ContextMenu>
         <ContextMenuTrigger>
-          <AspectRatio
-            ratio={aspectRatio}
-            className="overflow-hidden rounded-md"
-          >
+          <div className="overflow-hidden rounded-md">
             <Image
               src={album.cover}
               alt={album.name}
-              fill
-              className="object-cover transition-all hover:scale-105"
+              width={width}
+              height={height}
+              className={cn(
+                "h-auto w-auto object-cover transition-all hover:scale-105",
+                aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
+              )}
             />
-          </AspectRatio>
+          </div>
         </ContextMenuTrigger>
         <ContextMenuContent className="w-40">
           <ContextMenuItem>Add to Library</ContextMenuItem>
@@ -72,9 +77,7 @@ export function AlbumArtwork({
       </ContextMenu>
       <div className="space-y-1 text-sm">
         <h3 className="font-medium leading-none">{album.name}</h3>
-        <p className="text-xs text-slate-500 dark:text-slate-400">
-          {album.artist}
-        </p>
+        <p className="text-xs text-muted-foreground">{album.artist}</p>
       </div>
     </div>
   )

@@ -4,17 +4,18 @@ import { allDocs } from "contentlayer/generated"
 import "@/styles/mdx.css"
 import type { Metadata } from "next"
 import Link from "next/link"
+import { ChevronRight } from "lucide-react"
 import Balancer from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
+import { badgeVariants } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
 import { Icons } from "@/components/icons"
 import { Mdx } from "@/components/mdx-components"
 import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
-import { badgeVariants } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
 
 interface DocPageProps {
   params: {
@@ -89,6 +90,13 @@ export default async function DocPage({ params }: DocPageProps) {
   return (
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
+        <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
+          <div className="overflow-hidden text-ellipsis whitespace-nowrap">
+            Docs
+          </div>
+          <ChevronRight className="h-4 w-4" />
+          <div className="font-medium text-foreground">{doc.title}</div>
+        </div>
         <div className="space-y-2">
           <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
             {doc.title}

@@ -66,7 +66,7 @@ export function CopyButton({
 interface CopyWithClassNamesProps extends DropdownMenuTriggerProps {
   value: string
   classNames: string
-  className: string
+  className?: string
 }
 
 export function CopyWithClassNames({

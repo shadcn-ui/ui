@@ -4,12 +4,6 @@ description: How to install dependencies and structure your app.
 ---
 
 <Alert>
-  <svg viewBox="0 0 24 24" className="w-4 h-4">
-    <path
-      d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
-      fill="currentColor"
-    />
-  </svg>
   <AlertDescription>
 
     **Prerequisites**: Components are styled using [Tailwind
@@ -28,7 +22,17 @@ Run the following command to create a new Next.js project using the `next-templa
 npx create-next-app -e https://github.com/shadcn/next-template
 ```
 
+This creates a new Next.js 13 project with the following features:
+
+- [Next.js App directory](https://nextjs.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [TypeScript](https://www.typescriptlang.org)
+- [ESLint](https://eslint.org)
+- [Prettier](https://prettier.io)
+
 ## Existing Project
+
+<Steps>
 
 ### Add dependencies
 
@@ -53,11 +57,13 @@ I use the `@` alias to make it easier to import components. This is how I config
 }
 ```
 
+If you use a different alias such as `~`, you'll need to update `import` statements when adding components.
+
 ### Configure tailwind.config.js
 
 Here's what my `tailwind.config.js` file looks like:
 
-```js title="tailwind.config.js" showLineNumbers {4-5,10-18} /animation/
+```js title="tailwind.config.js"
 const { fontFamily } = require("tailwindcss/defaultTheme")
 
 /** @type {import('tailwindcss').Config} */
@@ -109,6 +115,9 @@ Add the following to your `styles/globals.css` file. You can learn more about us
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
 
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
 
@@ -134,13 +143,13 @@ Add the following to your `styles/globals.css` file. You can learn more about us
     --foreground: 213 31% 91%;
 
     --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
+    --muted-foreground: 215.4 16.3% 56.9%;
 
     --popover: 224 71% 4%;
     --popover-foreground: 215 20.2% 65.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
 
     --border: 216 34% 17%;
     --input: 216 34% 17%;
@@ -150,6 +159,9 @@ Add the following to your `styles/globals.css` file. You can learn more about us
 
     --secondary: 222.2 47.4% 11.2%;
     --secondary-foreground: 210 40% 98%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
@@ -188,7 +200,7 @@ export function cn(...inputs: ClassValue[]) {
 
 I use icons from [Lucide](https://lucide.dev). You can use any icon library.
 
-## App structure
+### App structure
 
 Here's how I structure my app. I use Next.js, but this is not required.
 
@@ -221,5 +233,7 @@ Here's how I structure my app. I use Next.js, but this is not required.
 - The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
 - The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
 - The `styles` folder contains the global CSS.
+
+</Steps>
 
 That's it. You can now start adding components to your project.

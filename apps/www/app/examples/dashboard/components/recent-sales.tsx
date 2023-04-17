@@ -5,7 +5,10 @@ export function RecentSales() {
     <div className="space-y-8">
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
-          <AvatarImage src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxMCwibm9zZSI6MTAsIm1vdXRoIjo5LCJleWVzIjo3LCJleWVicm93cyI6MTIsImdsYXNzZXMiOjcsImhhaXIiOjU1LCJhY2Nlc3NvcmllcyI6MCwiZGV0YWlscyI6MCwiYmVhcmQiOjAsImZsaXAiOjAsImNvbG9yIjoiI2ViZWJlYiIsInNoYXBlIjoiY2lyY2xlIn0=" />
+          <AvatarImage
+            src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxMCwibm9zZSI6MTAsIm1vdXRoIjo5LCJleWVzIjo3LCJleWVicm93cyI6MTIsImdsYXNzZXMiOjcsImhhaXIiOjU1LCJhY2Nlc3NvcmllcyI6MCwiZGV0YWlscyI6MCwiYmVhcmQiOjAsImZsaXAiOjAsImNvbG9yIjoiI2ViZWJlYiIsInNoYXBlIjoiY2lyY2xlIn0="
+            alt="Avatar"
+          />
           <AvatarFallback>OM</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
@@ -18,7 +21,10 @@ export function RecentSales() {
       </div>
       <div className="flex items-center">
         <Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
-          <AvatarImage src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxMiwibm9zZSI6MywibW91dGgiOjksImV5ZXMiOjQsImV5ZWJyb3dzIjo0LCJnbGFzc2VzIjoxMCwiaGFpciI6NDMsImFjY2Vzc29yaWVzIjowLCJkZXRhaWxzIjowLCJiZWFyZCI6MCwiZmxpcCI6MCwiY29sb3IiOiIjZWJlYmViIiwic2hhcGUiOiJjaXJjbGUifQ==" />
+          <AvatarImage
+            src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxMiwibm9zZSI6MywibW91dGgiOjksImV5ZXMiOjQsImV5ZWJyb3dzIjo0LCJnbGFzc2VzIjoxMCwiaGFpciI6NDMsImFjY2Vzc29yaWVzIjowLCJkZXRhaWxzIjowLCJiZWFyZCI6MCwiZmxpcCI6MCwiY29sb3IiOiIjZWJlYmViIiwic2hhcGUiOiJjaXJjbGUifQ=="
+            alt="Avatar"
+          />
           <AvatarFallback>JL</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
@@ -29,7 +35,10 @@ export function RecentSales() {
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
-          <AvatarImage src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjowLCJub3NlIjoxMSwibW91dGgiOjE2LCJleWVzIjoxLCJleWVicm93cyI6MTAsImdsYXNzZXMiOjAsImhhaXIiOjU4LCJhY2Nlc3NvcmllcyI6MCwiZGV0YWlscyI6MCwiYmVhcmQiOjAsImZsaXAiOjAsImNvbG9yIjoiI2ViZWJlYiIsInNoYXBlIjoiY2lyY2xlIn0=" />
+          <AvatarImage
+            src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjowLCJub3NlIjoxMSwibW91dGgiOjE2LCJleWVzIjoxLCJleWVicm93cyI6MTAsImdsYXNzZXMiOjAsImhhaXIiOjU4LCJhY2Nlc3NvcmllcyI6MCwiZGV0YWlscyI6MCwiYmVhcmQiOjAsImZsaXAiOjAsImNvbG9yIjoiI2ViZWJlYiIsInNoYXBlIjoiY2lyY2xlIn0="
+            alt="Avatar"
+          />
           <AvatarFallback>IN</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
@@ -42,7 +51,10 @@ export function RecentSales() {
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
-          <AvatarImage src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxLCJub3NlIjo3LCJtb3V0aCI6OSwiZXllcyI6MiwiZXllYnJvd3MiOjgsImdsYXNzZXMiOjIsImhhaXIiOjksImFjY2Vzc29yaWVzIjowLCJkZXRhaWxzIjowLCJiZWFyZCI6MCwiZmxpcCI6MCwiY29sb3IiOiIjZWJlYmViIiwic2hhcGUiOiJjaXJjbGUifQ==" />
+          <AvatarImage
+            src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxLCJub3NlIjo3LCJtb3V0aCI6OSwiZXllcyI6MiwiZXllYnJvd3MiOjgsImdsYXNzZXMiOjIsImhhaXIiOjksImFjY2Vzc29yaWVzIjowLCJkZXRhaWxzIjowLCJiZWFyZCI6MCwiZmxpcCI6MCwiY29sb3IiOiIjZWJlYmViIiwic2hhcGUiOiJjaXJjbGUifQ=="
+            alt="Avatar"
+          />
           <AvatarFallback>WK</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
@@ -53,7 +65,10 @@ export function RecentSales() {
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
-          <AvatarImage src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjozLCJub3NlIjo4LCJtb3V0aCI6MTEsImV5ZXMiOjgsImV5ZWJyb3dzIjo2LCJnbGFzc2VzIjoxNCwiaGFpciI6MjUsImFjY2Vzc29yaWVzIjowLCJkZXRhaWxzIjowLCJiZWFyZCI6MCwiZmxpcCI6MCwiY29sb3IiOiIjZWJlYmViIiwic2hhcGUiOiJjaXJjbGUifQ==" />
+          <AvatarImage
+            src="https://notion-avatar.vercel.app/api/img/eyJmYWNlIjozLCJub3NlIjo4LCJtb3V0aCI6MTEsImV5ZXMiOjgsImV5ZWJyb3dzIjo2LCJnbGFzc2VzIjoxNCwiaGFpciI6MjUsImFjY2Vzc29yaWVzIjowLCJkZXRhaWxzIjowLCJiZWFyZCI6MCwiZmxpcCI6MCwiY29sb3IiOiIjZWJlYmViIiwic2hhcGUiOiJjaXJjbGUifQ=="
+            alt="Avatar"
+          />
           <AvatarFallback>SD</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">

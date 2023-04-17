@@ -7,11 +7,34 @@ We use CSS variables for styling. This allows you to easily change the colors of
 
 **CSS variables must be defined without color space function**. See the [Tailwind CSS documentation](https://tailwindcss.com/docs/customizing-colors#using-css-variables) for more information.
 
+## Convention
+
+We use a simple `background` and `foreground` convention for colors. The `background` variable is used for the background color of the component and the `foreground` variable is used for the text color.
+
+<Callout>
+
+The `background` suffix can be omitted if the variable is used for the background color of the component.
+
+</Callout>
+
+Given the following CSS variables:
+
+```css
+--primary: 222.2 47.4% 11.2%;
+--primary-foreground: 210 40% 98%;
+```
+
+The `background` color of the following component will be `hsl(var(--primary))` and the `foreground` color will be `hsl(var(--primary-foreground))`.
+
+```tsx
+<div className="bg-primary text-primary-foreground">Hello</div>
+```
+
 ## CSS Variables
 
 Here's the list of variables available for customization:
 
-```css title="Default background color of <body />, <Card />...etc"
+```css title="Default background color of <body />...etc"
 --background: 0 0% 100%;
 --foreground: 222.2 47.4% 11.2%;
 ```
@@ -19,6 +42,11 @@ Here's the list of variables available for customization:
 ```css title="Muted backgrounds such as <TabsList />, <Skeleton /> and <Switch />"
 --muted: 210 40% 96.1%;
 --muted-foreground: 215.4 16.3% 46.9%;
+```
+
+```css title="Background color for <Card />"
+--card: 0 0% 100%;
+--card-foreground: 222.2 47.4% 11.2%;
 ```
 
 ```css title="Background color for popovers such as <DropdownMenu />, <HoverCard />, <Popover />"
@@ -82,6 +110,9 @@ The following is the default color palette used by the components.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
 
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
 
@@ -107,13 +138,13 @@ The following is the default color palette used by the components.
     --foreground: 213 31% 91%;
 
     --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
+    --muted-foreground: 215.4 16.3% 56.9%;
 
     --popover: 224 71% 4%;
     --popover-foreground: 215 20.2% 65.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
 
     --border: 216 34% 17%;
     --input: 216 34% 17%;
@@ -123,6 +154,9 @@ The following is the default color palette used by the components.
 
     --secondary: 222.2 47.4% 11.2%;
     --secondary-foreground: 210 40% 98%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;

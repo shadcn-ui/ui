@@ -71,7 +71,7 @@ export function PresetActions() {
             </DialogDescription>
           </DialogHeader>
           <div className="py-6">
-            <h4 className="text-sm text-slate-500 dark:text-slate-400">
+            <h4 className="text-sm text-muted-foreground">
               Playground Warnings
             </h4>
             <div className="flex items-start justify-between space-x-4 pt-3">
@@ -80,7 +80,7 @@ export function PresetActions() {
                 <span className="font-semibold">
                   Show a warning when content is flagged
                 </span>
-                <span className="text-sm text-slate-500 dark:text-slate-400">
+                <span className="text-sm text-muted-foreground">
                   A warning will be shown when sexual, hateful, violent or
                   self-harm content is detected.
                 </span>
