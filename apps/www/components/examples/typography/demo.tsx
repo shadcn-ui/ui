@@ -16,7 +16,7 @@ export function TypographyDemo() {
         The king thought long and hard, and finally came up with{" "}
         <a
           href="#"
-          className="font-medium text-primary-foreground underline underline-offset-4"
+          className="font-medium text-primary underline underline-offset-4"
         >
           a brilliant plan
         </a>
