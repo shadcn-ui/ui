@@ -257,7 +257,7 @@ Add the following to your `styles/globals.css` file. You can learn more about us
 I use a `cn` helper to make it easier to conditionally add Tailwind CSS classes. Here's how I define it in `lib/utils.ts`:
 
 ```ts title="lib/utils.ts"
-import { ClassValue, clsx } from "clsx"
+import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
