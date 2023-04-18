@@ -44,13 +44,6 @@ async function main() {
     .option("-y, --yes", "Skip confirmation prompt.")
     .action(async (options) => {
       logger.warn(
-        "Running the following command will overwrite existing files."
-      )
-      logger.warn(
-        "Make sure you have committed your changes before proceeding."
-      )
-      logger.warn("")
-      logger.warn(
         "This command assumes a Next.js project with TypeScript and Tailwind CSS."
       )
       logger.warn(
@@ -63,7 +56,7 @@ async function main() {
           type: "confirm",
           name: "proceed",
           message:
-            "Running this command will install dependencies and overwrite files. Proceed?",
+            "Running this command will install dependencies and overwrite your existing tailwind.config.js. Proceed?",
           initial: true,
         })
 
