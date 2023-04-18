@@ -113,6 +113,7 @@ export const docsConfig: DocsConfig = {
         {
           title: "Breadcrumb",
           href: "/docs/components/breadcrumb",
+          label: "New",
           items: [],
         },
         {

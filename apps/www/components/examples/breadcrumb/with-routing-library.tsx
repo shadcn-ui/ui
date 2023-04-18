@@ -1,14 +1,12 @@
-"use client"
-
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
-import { Icons } from "@/components/icons"
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
 } from "@/components/ui/breadcrumb"
+import { Icons } from "@/components/icons"
 
 export function BreadcrumbWithRoutingLibrary() {
   return (

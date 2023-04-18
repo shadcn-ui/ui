@@ -90,6 +90,7 @@ import { TypographyMuted } from "@/components/examples/typography/muted"
 import { TypographyP } from "@/components/examples/typography/p"
 import { TypographySmall } from "@/components/examples/typography/small"
 import { TypographyTable } from "@/components/examples/typography/table"
+
 import { BreadcrumbDemo } from "./breadcrumb/demo"
 import { BreadcrumbWithCustomSeparator } from "./breadcrumb/with-custom-separator"
 import { BreadcrumbWithRoutingLibrary } from "./breadcrumb/with-routing-library"
@@ -101,6 +102,10 @@ export const examples = {
   AlertDestructive,
   AspectRatioDemo,
   AvatarDemo,
+  BadgeDemo,
+  BadgeDestructive,
+  BadgeOutline,
+  BadgeSecondary,
   BreadcrumbDemo,
   BreadcrumbWithCustomSeparator,
   BreadcrumbWithRoutingLibrary,
