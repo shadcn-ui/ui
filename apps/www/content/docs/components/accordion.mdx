@@ -1,0 +1,96 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+component: true
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/accordion
+  api: https://www.radix-ui.com/docs/primitives/components/accordion#api-reference
+---
+
+<ComponentExample src="/components/examples/accordion/demo.tsx">
+  <div className="max-w-[70%] w-full">
+    <AccordionDemo />
+  </div>
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add accordion
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Install the `@radix-ui/react-accordion` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-accordion
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/accordion.tsx" />
+
+<Callout>
+
+This is the `<Accordion />` primitive. You can place it in a file at `components/ui/accordion.tsx`.
+
+</Callout>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## tailwind.config.js
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {5-18} /module/
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+}
+```
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+```
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```

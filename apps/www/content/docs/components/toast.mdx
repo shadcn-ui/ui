@@ -1,0 +1,146 @@
+---
+title: Toast
+description: A succinct message that is displayed temporarily.
+component: true
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/toast
+  api: https://www.radix-ui.com/docs/primitives/components/toast#api-reference
+---
+
+<ComponentExample src="/components/examples/toast/demo.tsx">
+  <ToastDemo />
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add toast
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Install the `@radix-ui/react-toast` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-toast
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/toast.tsx" />
+
+3. Copy and paste the `<Toaster />` component into your project.
+
+<ComponentSource src="/components/ui/toaster.tsx" />
+
+4. Copy and paste the `useToast` hook into your project.
+
+<ComponentSource src="/components/ui/use-toast.ts" />
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Toaster
+
+Add the `<Toaster />` component to your app.
+
+The `<Toaster />` component is where your toasts are displayed. You can place it anywhere in your app, but it's recommended to place it at the root of your app.
+
+### Pages
+
+```tsx title="_app.tsx" {1,7}
+import { Toaster } from "@/components/ui/toaster"
+
+export default function App({ Component, pageProps }) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <Toaster />
+    </>
+  )
+}
+```
+
+### App Directory
+
+```tsx title="app/layout.tsx" {1,9}
+import { Toaster } from "@/components/ui/toaster"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <main>{children}</main>
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
+## Usage
+
+The `useToast` hook returns a `toast` function that you can use to display a toast.
+
+```tsx
+import { useToast } from "@/components/ui/use-toast"
+```
+
+```tsx {2,7-10}
+export const ToastDemo = () => {
+  const { toast } = useToast()
+
+  return (
+    <Button
+      onClick={() => {
+        toast({
+          title: "Scheduled: Catch up",
+          description: "Friday, February 10, 2023 at 5:57 PM",
+        })
+      }}
+    >
+      Show Toast
+    </Button>
+  )
+}
+```
+
+<Callout>
+
+To display multiple toasts at the same time, you can update the `TOAST_LIMIT` in `use-toast.tsx`.
+
+</Callout>
+
+## Examples
+
+### Simple
+
+<ComponentExample src="/components/examples/toast/simple.tsx">
+  <ToastSimple />
+</ComponentExample>
+
+### With title
+
+<ComponentExample src="/components/examples/toast/with-title.tsx">
+  <ToastWithTitle />
+</ComponentExample>
+
+### With Action
+
+<ComponentExample src="/components/examples/toast/with-action.tsx">
+  <ToastWithAction />
+</ComponentExample>
+
+### Destructive
+
+Use `toast({ variant: "destructive" }})` to display a destructive toast.
+
+<ComponentExample src="/components/examples/toast/destructive.tsx">
+  <ToastDestructive />
+</ComponentExample>

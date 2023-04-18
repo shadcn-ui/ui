@@ -6,13 +6,11 @@ import { components } from "../config/components"
 const payload = components
   .map((component) => {
     const files = component.files?.map((file) => {
-      const content = fs.readFileSync(
-        path.join(process.cwd(), file.dir, file.name),
-        "utf8"
-      )
+      const content = fs.readFileSync(path.join(process.cwd(), file), "utf8")
 
       return {
-        ...file,
+        name: basename(file),
+        dir: dirname(file),
         content,
       }
     })

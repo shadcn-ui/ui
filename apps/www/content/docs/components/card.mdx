@@ -1,0 +1,68 @@
+---
+title: Card
+description: Displays a card with header, content, and footer.
+component: true
+---
+
+<ComponentExample src="/components/examples/card/demo.tsx">
+  <CardDemo />
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add card
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/card.tsx" />
+
+<Callout>
+  This is the `<Card />` primitive. You can place it in a file at
+  `components/ui/card.tsx`.
+</Callout>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Usage
+
+```tsx
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+```
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card Description</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Card Content</p>
+  </CardContent>
+  <CardFooter>
+    <p>Card Footer</p>
+  </CardFooter>
+</Card>
+```
+
+## Examples
+
+<ComponentExample src="/components/examples/card/with-form.tsx">
+  <CardWithForm />
+</ComponentExample>
