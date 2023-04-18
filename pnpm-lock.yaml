@@ -319,9 +319,6 @@ importers:
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
-      react-day-picker:
-        specifier: ^8.6.0
-        version: 8.6.0(date-fns@2.29.3)(react@18.2.0)
       zod:
         specifier: ^3.20.2
         version: 3.20.2
