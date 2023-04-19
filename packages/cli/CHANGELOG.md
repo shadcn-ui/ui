@@ -1,5 +1,17 @@
 # @shadcn/ui
 
+## 0.1.1
+
+### Patch Changes
+
+- [#205](https://github.com/shadcn/ui/pull/205) [`dc573c7`](https://github.com/shadcn/ui/commit/dc573c7e9ecf73a9a8f53320bc4f5db17d7bd2b3) Thanks [@shadcn](https://github.com/shadcn)! - fix changeset config
+
+- [#204](https://github.com/shadcn/ui/pull/204) [`68e1c56`](https://github.com/shadcn/ui/commit/68e1c5624a35edb3c38e5f739acf3387fdca541c) Thanks [@shadcn](https://github.com/shadcn)! - update typescript
+
+- [#203](https://github.com/shadcn/ui/pull/203) [`acf4ae7`](https://github.com/shadcn/ui/commit/acf4ae79cb734671a5b5c227b5009f38b59e3f19) Thanks [@shadcn](https://github.com/shadcn)! - update readme
+
+- [#197](https://github.com/shadcn/ui/pull/197) [`4a794a3`](https://github.com/shadcn/ui/commit/4a794a354f3e03b76cba32049971afc2f6986080) Thanks [@shadcn](https://github.com/shadcn)! - update init message
+
 ## 0.1.0
 
 ### Minor Changes
