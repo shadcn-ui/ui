@@ -64,7 +64,7 @@ const groups = [
   },
 ]
 
-type Team = typeof groups[number]["teams"][number]
+type Team = (typeof groups)[number]["teams"][number]
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
