@@ -60,6 +60,6 @@ jobs:
             github.rest.issues.removeLabel({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: ${{ env.WORKFLOW_RUN_PR }},
+              issue_number: '${{ env.WORKFLOW_RUN_PR }}',
               name: '🚀 autorelease',
             });
