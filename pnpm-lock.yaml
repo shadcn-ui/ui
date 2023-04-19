@@ -290,7 +290,7 @@ importers:
         specifier: ^4.5.5
         version: 4.7.4
       unist-builder:
-        specifier: ^3.0.0
+        specifier: 3.0.0
         version: 3.0.0
       unist-util-visit:
         specifier: ^4.1.1
