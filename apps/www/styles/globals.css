@@ -92,13 +92,6 @@
   }
 }
 
-/** Prevent scrolling on body when modal is open */
-body[style*="pointer-events: none"] .overflow-auto,
-body[style*="pointer-events: none"] .overflow-y-auto,
-body[style*="pointer-events: none"] .overflow-x-auto {
-  overflow: hidden !important;
-}
-
 @media (max-width: 640px) {
   .container {
     @apply px-4;

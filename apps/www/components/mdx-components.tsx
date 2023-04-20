@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NpmCommands } from "types/unist"
 
+import { Event } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import {
   Accordion,
@@ -157,11 +158,13 @@ const components = {
     __yarnCommand__,
     __withMeta__,
     __src__,
+    __event__,
     ...props
   }: React.HTMLAttributes<HTMLPreElement> & {
     __rawString__?: string
     __withMeta__?: boolean
     __src__?: string
+    __event__?: Event["name"]
   } & NpmCommands) => {
     return (
       <>
@@ -176,6 +179,7 @@ const components = {
           <CopyButton
             value={__rawString__}
             src={__src__}
+            event={__event__}
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
