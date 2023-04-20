@@ -33,7 +33,7 @@ export function ComponentExample({
       const [, Button] = React.Children.toArray(
         Code.props.children
       ) as React.ReactElement[]
-      return Button?.props?.value || null
+      return Button?.props?.value || Button?.props?.__rawString__ || null
     }
   }, [Code])
 
