@@ -176,7 +176,7 @@ export function CopyNpmCommandButton({
         )}
         <span className="sr-only">Copy</span>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent align="end">
         <DropdownMenuItem
           onClick={() => copyCommand(commands.__npmCommand__, "npm")}
         >
