@@ -43,7 +43,7 @@
     "@radix-ui/react-toggle": "^1.0.1",
     "@radix-ui/react-toggle-group": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.3",
-    "@vercel/analytics": "^0.1.6",
+    "@vercel/analytics": "^1.0.0",
     "@vercel/og": "^0.0.21",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
