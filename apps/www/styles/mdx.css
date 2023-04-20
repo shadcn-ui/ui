@@ -18,14 +18,6 @@
   @apply relative;
 }
 
-[data-rehype-pretty-code-fragment] button {
-  @apply opacity-0;
-}
-
-[data-rehype-pretty-code-fragment]:hover button {
-  @apply opacity-100;
-}
-
 [data-rehype-pretty-code-fragment] code {
   @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
   counter-reset: line;

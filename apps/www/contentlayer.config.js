@@ -91,6 +91,16 @@ export default makeSource({
               return
             }
 
+            if (codeEl.data?.meta) {
+              // Extract event from meta and pass it down the tree.
+              const regex = /event="([^"]*)"/
+              const match = codeEl.data?.meta.match(regex)
+              if (match) {
+                node.__event__ = match ? match[1] : null
+                codeEl.data.meta = codeEl.data.meta.replace(regex, "")
+              }
+            }
+
             node.__rawString__ = codeEl.children?.[0].value
             node.__src__ = node.properties?.__src__
           }
@@ -146,6 +156,10 @@ export default makeSource({
 
             if (node.__src__) {
               preElement.properties["__src__"] = node.__src__
+            }
+
+            if (node.__event__) {
+              preElement.properties["__event__"] = node.__event__
             }
           }
         })
