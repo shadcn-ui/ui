@@ -180,19 +180,19 @@ export function CopyNpmCommandButton({
         <DropdownMenuItem
           onClick={() => copyCommand(commands.__npmCommand__, "npm")}
         >
-          <Icons.npm className="mr-2 h-4 w-4" />
+          <Icons.npm className="mr-2 h-4 w-4 fill-foreground dark:fill-secondary-foreground" />
           <span>npm</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => copyCommand(commands.__yarnCommand__, "yarn")}
         >
-          <Icons.yarn className="mr-2 h-4 w-4" />
+          <Icons.yarn className="mr-2 h-4 w-4 fill-foreground dark:fill-secondary-foreground" />
           <span>yarn</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
         >
-          <Icons.pnpm className="mr-2 h-4 w-4" />
+          <Icons.pnpm className="mr-2 h-4 w-4 fill-foreground dark:fill-secondary-foreground" />
           <span>pnpm</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
