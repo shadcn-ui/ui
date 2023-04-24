@@ -26,6 +26,7 @@ const PROJECT_DEPENDENCIES = [
 
 async function main() {
   const packageInfo = await getPackageInfo()
+  const packageInfo = getPackageInfo()
   const projectInfo = await getProjectInfo()
   const packageManager = getPackageManager()
 
