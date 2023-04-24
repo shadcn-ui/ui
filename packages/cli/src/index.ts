@@ -121,7 +121,8 @@ async function main() {
     .command("add")
     .description("add components to your project")
     .argument("[components...]", "name of components")
-    .action(async (components: string[]) => {
+    .option("-p, --path", "Path to install components to.")
+    .action(async (components: string[], options: { path: string }) => {
       logger.warn(
         "Running the following command will overwrite existing files."
       )
@@ -147,7 +148,11 @@ async function main() {
         selectedComponents = await promptForComponents(availableComponents)
       }
 
-      const dir = await promptForDestinationDir(process.cwd(), projectInfo)
+      let dir = options.path
+
+      if (!dir) {
+        dir = await promptForDestinationDir(process.cwd(), projectInfo)
+      }
 
       if (!selectedComponents?.length) {
         logger.warn("No components selected. Nothing to install.")
