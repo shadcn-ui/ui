@@ -2,8 +2,15 @@ import { existsSync } from "fs"
 import path from "path"
 import fs from "fs-extra"
 
+export interface ProjectInfo {
+  tsconfig: any | null
+  alias: null | string
+  srcDir: boolean
+  appDir: boolean
+}
+
 export async function getProjectInfo() {
-  const info = {
+  const info: ProjectInfo = {
     tsconfig: null,
     alias: null,
     srcDir: false,

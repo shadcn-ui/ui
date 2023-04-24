@@ -10,7 +10,7 @@ import * as config from "./utils/config"
 import { Component, getAvailableComponents } from "./utils/get-components"
 import { getPackageInfo } from "./utils/get-package-info"
 import { getPackageManager } from "./utils/get-package-manager"
-import { getProjectInfo } from "./utils/get-project-info"
+import { ProjectInfo, getProjectInfo } from "./utils/get-project-info"
 import { logger } from "./utils/logger"
 import { STYLES, TAILWIND_CONFIG, UTILS } from "./utils/templates"
 
@@ -147,7 +147,7 @@ async function main() {
         selectedComponents = await promptForComponents(availableComponents)
       }
 
-      const dir = await promptForDestinationDir(process.cwd())
+      const dir = await promptForDestinationDir(process.cwd(), projectInfo)
 
       if (!selectedComponents?.length) {
         logger.warn("No components selected. Nothing to install.")
@@ -209,7 +209,7 @@ async function promptForComponents(components: Component[]) {
   return selectedComponents
 }
 
-async function promptForDestinationDir(projectDir: string) {
+async function promptForDestinationDir(projectDir: string, info: ProjectInfo) {
   const { projects } = await config.get()
 
   const project = projects[projectDir]
@@ -220,7 +220,7 @@ async function promptForDestinationDir(projectDir: string) {
       type: "text",
       name: "dir",
       message: "Where would you like to install the component(s)?",
-      initial: "./components/ui",
+      initial: `./${info.srcDir ? "src/" : ""}components/ui`,
     },
   ])
 
