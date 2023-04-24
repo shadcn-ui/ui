@@ -6,6 +6,7 @@ import { execa } from "execa"
 import ora from "ora"
 import prompts from "prompts"
 
+import * as config from "./utils/config"
 import { Component, getAvailableComponents } from "./utils/get-components"
 import { getPackageInfo } from "./utils/get-package-info"
 import { getPackageManager } from "./utils/get-package-manager"
@@ -25,7 +26,8 @@ const PROJECT_DEPENDENCIES = [
 ]
 
 async function main() {
-  const packageInfo = await getPackageInfo()
+  await config.init()
+
   const packageInfo = getPackageInfo()
   const projectInfo = await getProjectInfo()
   const packageManager = getPackageManager()
@@ -145,7 +147,7 @@ async function main() {
         selectedComponents = await promptForComponents(availableComponents)
       }
 
-      const dir = await promptForDestinationDir()
+      const dir = await promptForDestinationDir(process.cwd())
 
       if (!selectedComponents?.length) {
         logger.warn("No components selected. Nothing to install.")
@@ -207,7 +209,12 @@ async function promptForComponents(components: Component[]) {
   return selectedComponents
 }
 
-async function promptForDestinationDir() {
+async function promptForDestinationDir(projectDir: string) {
+  const { projects } = await config.get()
+
+  const project = projects[projectDir]
+  if (!!project) return project
+
   const { dir } = await prompts([
     {
       type: "text",
@@ -216,6 +223,8 @@ async function promptForDestinationDir() {
       initial: "./components/ui",
     },
   ])
+
+  await config.upsertProject(projectDir, dir)
 
   return dir
 }
