@@ -34,3 +34,58 @@ You can also run the command without any arguments to view a list of all availab
 ```bash
 npx shadcn-ui add
 ```
+
+### Advance CLI Config
+
+Because under the hood for our cli config we are using [Cosmiconfig](https://github.com/cosmiconfig/cosmiconfig) we can set different sources for the configuration.
+This means you can configure shadcn-ui via (in order of precedence):
+
+1. `"shadcn-ui"` key in your package.json file.
+2. `.shadcn-uirc` file written in JSON or YAML.
+3. `.shadcn-uirc.json`, `.shadcn-uirc.yml`, `.shadcn-uirc.yaml` or `.shadcn-uirc.json5` file.
+4. `.shadcn-uirc.js`, `.shadcn-uirc.cjs`, `shadcn-ui.config.js` or `shadcn-ui.config.cjs` file that exports an object using module.exports.
+5. `.shadcn-uirc.toml` file.
+
+#### configuration keys:
+
+| value                       | details                                                                                                                                                      | default            |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ |
+| `componentsDirInstallation` | string containing the destination path where you want to install the components                                                                              | `./components/ui/` |
+| `askForDir`                 | boolean in order to skip the prompt of the dir where to install components(if `componentsDirInstallation` is provided, this will set to false automatically) | `true`             |
+| `utilsLocation`             | replacer for the utils lib in case they are installed on a different folder                                                                                  | `@/lib/utils/`     |
+| `componentDirAlias`         | if an installed components depends on other shadcn-ui components here we can define where to find them                                                       | `@/components/ui/` |
+
+#### for example these are valid configurations files
+
+**JSON:**
+
+```json
+{
+  "componentsDirInstallation": "./custom-path/beautiful-components/",
+  "askForDir": false,
+  "utilsLocation": "./my-utils-path/utils",
+  "componentDirAlias": "@/shadcn/components/"
+}
+```
+
+**JS:**
+
+```javascript
+// shadcn-ui.config.js or .shadcn-uirc.js
+module.exports = {
+  componentsDirInstallation: "./custom-path/beautiful-components/",
+  askForDir: false,
+  utilsLocation: "./my-utils-path/utils",
+  componentDirAlias: "@/shadcn/components/",
+}
+```
+
+YAML:
+
+```yaml
+# .shadcn-uirc or .shadcn-uirc.yaml
+componentsDirInstallation: "./custom-path/beautiful-components/"
+askForDir: false
+utilsLocation: "./my-utils-path/utils"
+componentDirAlias: "@/shadcn/components/"
+```
