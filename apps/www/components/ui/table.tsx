@@ -3,84 +3,68 @@ import { VariantProps, cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-const tableVariants = cva("bg-secondary [&>tbody>*]:border-b-[1px]", {
-  variants: {
-    size: {
-      sm: "[&_th]:p-3",
-      md: "[&_td]:p-3 [&_th]:p-5",
-      lg: "[&_td]:p-5 [&_th]:p-7",
-      xl: "[&_td]:p-7 [&_th]:p-9",
+const tableVariants = cva(
+  "bg-secondary [&>tbody>*:not(:first-child)]:border-t-[1px]",
+  {
+    variants: {
+      size: {
+        sm: "[&_th]:p-3",
+        md: "[&_td]:p-3 [&_th]:p-5",
+        lg: "[&_td]:p-5 [&_th]:p-7",
+        xl: "[&_td]:p-7 [&_th]:p-9",
+      },
+      striped: {
+        true: "[&>tbody>*:nth-child(odd)]:bg-ring",
+        false: "",
+      },
+      fullWidth: {
+        false: "",
+        true: "w-full",
+      },
+      hover: {
+        true: "[&>tbody>*:hover]:bg-primary [&>tbody>*:hover]:text-primary-foreground",
+        false: "",
+      },
+      shadow: {
+        none: "",
+        sm: "shadow-sm",
+        md: "shadow-md",
+        lg: "shadow-lg",
+        xl: "shadow-xl",
+        "2xl": "shadow-2xl",
+      },
+      rounded: {
+        true: "overflow-hidden rounded-lg",
+        false: "",
+      },
     },
-    striped: {
-      true: "[&>tbody>*:nth-child(odd)]:bg-ring",
-      false: "",
+    defaultVariants: {
+      size: "md",
+      striped: false,
+      fullWidth: false,
+      hover: false,
+      shadow: "none",
+      rounded: true,
     },
-    fullWidth: {
-      false: "",
-      true: "w-full",
-    },
-    hover: {
-      true: "[&>tbody>*:hover]:bg-primary [&>tbody>*:hover]:text-primary-foreground",
-      false: "",
-    },
-  },
-  defaultVariants: {
-    size: "md",
-    striped: false,
-    fullWidth: false,
-    hover: false,
-  },
-})
-
-const wrapperVariants = cva("", {
-  variants: {
-    shadow: {
-      none: "",
-      sm: "shadow-sm",
-      md: "shadow-md",
-      lg: "shadow-lg",
-      xl: "shadow-xl",
-      "2xl": "shadow-2xl",
-    },
-    rounded: {
-      true: "rounded-lg",
-      false: "",
-    },
-  },
-  defaultVariants: {
-    shadow: "none",
-    rounded: true,
-  },
-})
+  }
+)
 
 const Table = React.forwardRef<
   HTMLTableElement,
-  React.HTMLAttributes<HTMLTableElement> &
-    VariantProps<typeof tableVariants> &
-    VariantProps<typeof wrapperVariants>
+  React.HTMLAttributes<HTMLTableElement> & VariantProps<typeof tableVariants>
 >(
   (
     { className, size, striped, fullWidth, hover, shadow, rounded, ...props },
     ref
   ) => (
-    <div>
-      <div
-        className={cn(
-          "inline-block overflow-hidden",
-          fullWidth ? "w-full" : "",
-          wrapperVariants({ shadow, rounded })
-        )}
-      >
-        <table
-          ref={ref}
-          className={cn(
-            tableVariants({ size, striped, fullWidth, hover }),
-            className
-          )}
-          {...props}
-        />
-      </div>
-    </div>
+    <table
+      ref={ref}
+      className={cn(
+        tableVariants({ size, striped, fullWidth, hover, shadow, rounded }),
+        className
+      )}
+      {...props}
+    />
   )
 )
 Table.displayName = "Table"
