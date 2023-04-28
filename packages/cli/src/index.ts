@@ -207,12 +207,18 @@ async function promptForComponents(components: Component[]) {
 }
 
 async function promptForDestinationDir() {
+  let destDir = "./components/ui"
+  const pkg = getPackageInfo()
+  const config = pkg["shadow-ui"]
+  if (config?.componentsDir) {
+    destDir = config.componentsDir
+  }
   const { dir } = await prompts([
     {
       type: "text",
       name: "dir",
       message: "Where would you like to install the component(s)?",
-      initial: "./components/ui",
+      initial: destDir,
     },
   ])
 
