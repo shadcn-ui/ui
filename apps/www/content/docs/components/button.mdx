@@ -56,6 +56,14 @@ import { buttonVariants } from "@/components/ui/button"
 <Link className={buttonVariants({ variant: "outline" })}>Click here</Link>
 ```
 
+Alternatively, you can set the `asChild` parameter and nest the link component.
+
+```tsx
+<Button asChild>
+  <Link href="/login">Login</Link>
+</Button>
+```
+
 ## Examples
 
 ### Primary
@@ -118,4 +126,12 @@ import { buttonVariants } from "@/components/ui/button"
 
 <ComponentExample src="/components/examples/button/loading.tsx">
   <ButtonLoading />
+</ComponentExample>
+
+---
+
+### As Child
+
+<ComponentExample src="/components/examples/button/as-child.tsx">
+  <ButtonAsChild />
 </ComponentExample>
