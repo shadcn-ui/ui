@@ -1,17 +1,20 @@
 #!/usr/bin/env node
-import { existsSync, promises as fs } from "fs"
-import path from "path"
-import { Command } from "commander"
-import { execa } from "execa"
-import ora from "ora"
-import prompts from "prompts"
+import { existsSync, promises as fs } from "fs";
+import path from "path";
+import { Command } from "commander";
+import { execa } from "execa";
+import ora from "ora";
+import prompts from "prompts";
 
-import { Component, getAvailableComponents } from "./utils/get-components"
-import { getPackageInfo } from "./utils/get-package-info"
-import { getPackageManager } from "./utils/get-package-manager"
-import { getProjectInfo } from "./utils/get-project-info"
-import { logger } from "./utils/logger"
-import { STYLES, TAILWIND_CONFIG, UTILS } from "./utils/templates"
+
+
+import { Component, getAvailableComponents } from "./utils/get-components";
+import { getPackageInfo } from "./utils/get-package-info";
+import { getPackageManager } from "./utils/get-package-manager";
+import { getProjectInfo } from "./utils/get-project-info";
+import { logger } from "./utils/logger";
+import { STYLES, TAILWIND_CONFIG, UTILS } from "./utils/templates";
+
 
 process.on("SIGINT", () => process.exit(0))
 process.on("SIGTERM", () => process.exit(0))
@@ -144,12 +147,32 @@ async function main() {
         selectedComponents = await promptForComponents(availableComponents)
       }
 
-      const dir = await promptForDestinationDir()
-
       if (!selectedComponents?.length) {
-        logger.warn("No components selected. Nothing to install.")
-        process.exit(0)
+        await onNoComponentsSelected()
       }
+
+      async function onNoComponentsSelected() {
+        logger.warn("Oops! You didn't select any components.")
+        const { wantToTryAgain } = await prompts({
+          type: "confirm",
+          name: "wantToTryAgain",
+          message: "Would you like to try again?",
+          initial: true,
+        })
+
+        if (wantToTryAgain) {
+          const components = await promptForComponents(availableComponents)
+          if (components?.length) {
+            selectedComponents = components
+          } else {
+            await onNoComponentsSelected()
+          }
+        } else {
+          process.exit(0)
+        }
+      }
+
+      const dir = await promptForDestinationDir()
 
       // Create componentPath directory if it doesn't exist.
       const destinationDir = path.resolve(dir)
