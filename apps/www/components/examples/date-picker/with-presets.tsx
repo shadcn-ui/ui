@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-export function CalendarDatePickerWithPresets() {
+export function DatePickerWithPresets() {
   const [date, setDate] = React.useState<Date>()
 
   return (
