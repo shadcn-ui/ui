@@ -17,10 +17,7 @@ import { ButtonLoading } from "@/components/examples/button/loading"
 import { ButtonOutline } from "@/components/examples/button/outline"
 import { ButtonSecondary } from "@/components/examples/button/secondary"
 import { ButtonWithIcon } from "@/components/examples/button/with-icon"
-import { CalendarDatePicker } from "@/components/examples/calendar/date-picker"
-import { CalendarDateRangePicker } from "@/components/examples/calendar/date-range-picker"
 import { CalendarDemo } from "@/components/examples/calendar/demo"
-import { CalendarDatePickerWithPresets } from "@/components/examples/calendar/with-presets"
 import { CardDemo } from "@/components/examples/card/demo"
 import { CardWithForm } from "@/components/examples/card/with-form"
 import { CheckboxDemo } from "@/components/examples/checkbox/demo"
@@ -33,6 +30,9 @@ import { ComboboxPopover } from "@/components/examples/combobox/popover"
 import { CommandDemo } from "@/components/examples/command/demo"
 import { CommandDialogDemo } from "@/components/examples/command/dialog"
 import { ContextMenuDemo } from "@/components/examples/context-menu/demo"
+import { DatePickerDemo } from "@/components/examples/date-picker/demo"
+import { DatePickerWithPresets } from "@/components/examples/date-picker/with-presets"
+import { DatePickerWithRange } from "@/components/examples/date-picker/with-range"
 import { DialogDemo } from "@/components/examples/dialog/demo"
 import { DropdownMenuCheckboxes } from "@/components/examples/dropdown-menu/checkboxes"
 import { DropdownMenuDemo } from "@/components/examples/dropdown-menu/demo"
@@ -113,9 +113,9 @@ export const examples = {
   ButtonWithIcon,
   ButtonAsChild,
   CalendarDemo,
-  CalendarDatePicker,
-  CalendarDateRangePicker,
-  CalendarDatePickerWithPresets,
+  DatePickerDemo,
+  DatePickerWithRange,
+  DatePickerWithPresets,
   CardDemo,
   CardWithForm,
   CheckboxDemo,
