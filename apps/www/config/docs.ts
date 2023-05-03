@@ -138,6 +138,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Combobox",
+          href: "/docs/components/combobox",
+          items: [],
+        },
+        {
           title: "Command",
           href: "/docs/components/command",
           items: [],
@@ -145,6 +150,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Context Menu",
           href: "/docs/components/context-menu",
+          items: [],
+        },
+        {
+          title: "Date Picker",
+          href: "/docs/components/date-picker",
           items: [],
         },
         {

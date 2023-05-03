@@ -18,12 +18,12 @@ import { ButtonLoading } from "@/components/examples/button/loading"
 import { ButtonOutline } from "@/components/examples/button/outline"
 import { ButtonSecondary } from "@/components/examples/button/secondary"
 import { ButtonWithIcon } from "@/components/examples/button/with-icon"
-import { CalendarDatePicker } from "@/components/examples/calendar/date-picker"
 import { CardDemo } from "@/components/examples/card/demo"
 import { CheckboxDemo } from "@/components/examples/checkbox/demo"
 import { CollapsibleDemo } from "@/components/examples/collapsible/demo"
 import { CommandDemo } from "@/components/examples/command/demo"
 import { ContextMenuDemo } from "@/components/examples/context-menu/demo"
+import { DatePickerDemo } from "@/components/examples/date-picker/demo"
 import { DialogDemo } from "@/components/examples/dialog/demo"
 import { DropdownMenuDemo } from "@/components/examples/dropdown-menu/demo"
 import { HoverCardDemo } from "@/components/examples/hover-card/demo"
@@ -109,7 +109,7 @@ export default function KitchenSinkPage() {
               </div>
             </ComponentWrapper>
             <ComponentWrapper>
-              <CalendarDatePicker />
+              <DatePickerDemo />
             </ComponentWrapper>
             <ComponentWrapper>
               <AccordionDemo />
