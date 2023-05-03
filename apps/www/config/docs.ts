@@ -138,6 +138,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Combobox",
+          href: "/docs/components/combobox",
+          items: [],
+        },
+        {
           title: "Command",
           href: "/docs/components/command",
           items: [],

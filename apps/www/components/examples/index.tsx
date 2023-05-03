@@ -27,11 +27,11 @@ import { CheckboxDemo } from "@/components/examples/checkbox/demo"
 import { CheckboxDisabled } from "@/components/examples/checkbox/disabled"
 import { CheckboxWithText } from "@/components/examples/checkbox/with-text"
 import { CollapsibleDemo } from "@/components/examples/collapsible/demo"
-import { CommandCombobox } from "@/components/examples/command/combobox"
+import { ComboboxDemo } from "@/components/examples/combobox/demo"
+import { ComboboxDropdownMenu } from "@/components/examples/combobox/dropdown-menu"
+import { ComboboxPopover } from "@/components/examples/combobox/popover"
 import { CommandDemo } from "@/components/examples/command/demo"
 import { CommandDialogDemo } from "@/components/examples/command/dialog"
-import { CommandDropdownMenu } from "@/components/examples/command/dropdown-menu"
-import { CommandPopover } from "@/components/examples/command/popover"
 import { ContextMenuDemo } from "@/components/examples/context-menu/demo"
 import { DialogDemo } from "@/components/examples/dialog/demo"
 import { DropdownMenuCheckboxes } from "@/components/examples/dropdown-menu/checkboxes"
@@ -124,9 +124,9 @@ export const examples = {
   CollapsibleDemo,
   CommandDemo,
   CommandDialogDemo,
-  CommandCombobox,
-  CommandPopover,
-  CommandDropdownMenu,
+  ComboboxDemo,
+  ComboboxPopover,
+  ComboboxDropdownMenu,
   ContextMenuDemo,
   DialogDemo,
   DropdownMenuCheckboxes,
