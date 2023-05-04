@@ -35,6 +35,7 @@ import { DatePickerWithPresets } from "@/components/examples/date-picker/with-pr
 import { DatePickerWithRange } from "@/components/examples/date-picker/with-range"
 import { DialogDemo } from "@/components/examples/dialog/demo"
 import { DropdownMenuCheckboxes } from "@/components/examples/dropdown-menu/checkboxes"
+import { DropdownMenuCheckboxesDialog } from "@/components/examples/dropdown-menu/checkboxes-with-dialog"
 import { DropdownMenuDemo } from "@/components/examples/dropdown-menu/demo"
 import { DropdownMenuRadioGroupDemo } from "@/components/examples/dropdown-menu/radio-group"
 import { HoverCardDemo } from "@/components/examples/hover-card/demo"
@@ -130,6 +131,7 @@ export const examples = {
   ContextMenuDemo,
   DialogDemo,
   DropdownMenuCheckboxes,
+  DropdownMenuCheckboxesDialog,
   DropdownMenuDemo,
   DropdownMenuRadioGroupDemo,
   HoverCardDemo,
