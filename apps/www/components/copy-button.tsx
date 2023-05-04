@@ -115,7 +115,7 @@ export function CopyWithClassNames({
         )}
         <span className="sr-only">Copy</span>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => copyToClipboard(value)}>
           <Icons.react className="mr-2 h-4 w-4" />
           <span>Component</span>

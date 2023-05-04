@@ -42,7 +42,7 @@ export function ComponentExample({
       className={cn("group relative my-4 flex flex-col space-y-2", className)}
       {...props}
     >
-      <Tabs defaultValue="preview" className="mr-auto w-full">
+      <Tabs defaultValue="preview" className="relative mr-auto w-full">
         <div className="flex items-center justify-between pb-3">
           <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
             <TabsTrigger
@@ -62,9 +62,15 @@ export function ComponentExample({
             <CopyWithClassNames
               value={codeString}
               classNames={extractedClassNames}
+              className="absolute right-4 top-20"
             />
           ) : (
-            codeString && <CopyButton value={codeString} />
+            codeString && (
+              <CopyButton
+                value={codeString}
+                className="absolute right-4 top-20"
+              />
+            )
           )}
         </div>
         <TabsContent value="preview" className="rounded-md border">

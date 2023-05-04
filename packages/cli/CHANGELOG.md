@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.1.2
+
+### Patch Changes
+
+- [#271](https://github.com/shadcn/ui/pull/271) [`888a5ad`](https://github.com/shadcn/ui/commit/888a5ad6f602371a27cc88a2573993d5818e745c) Thanks [@shadcn](https://github.com/shadcn)! - fix card color
+
 ## 0.1.1
 
 ### Patch Changes
