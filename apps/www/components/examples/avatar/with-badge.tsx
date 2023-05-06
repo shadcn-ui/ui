@@ -10,7 +10,7 @@ export function AvatarWithBadge() {
     <Avatar>
       <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
       <AvatarFallback>CN</AvatarFallback>
-      <AvatarBadge placement="botttom-right" badgeColor="green" />
+      <AvatarBadge placement="botttom-right" color="green" />
     </Avatar>
   )
 }

@@ -11,7 +11,7 @@ const Avatar = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
-    className={cn("relative flex h-10 w-10 shrink-0  rounded-full", className)}
+    className={cn("relative flex h-10 w-10 shrink-0 rounded-full", className)}
     {...props}
   />
 ))
@@ -44,26 +44,26 @@ const AvatarFallback = React.forwardRef<
 ))
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
 
-interface IAvatarBadge extends React.HTMLAttributes<HTMLDivElement> {
-  badgeColor?: string
+interface AvatarBadgeProps extends React.ComponentProps<"div"> {
+  color?: string
   placement?: "botttom-right" | "bottom-left" | "top-right" | "top-left"
 }
 
 const AvatarBadge = ({
-  badgeColor = "green",
+  color = "green",
   placement = "botttom-right",
   className,
   ...props
-}: IAvatarBadge) => {
+}: AvatarBadgeProps) => {
   const [positionY, positionX] = placement.split("-")
-  const placementTailwindClass = `${positionY}-0 ${positionX}-0`
+  const placementClass = `${positionY}-0 ${positionX}-0`
 
   return (
     <div
       className={cn(
         "absolute bottom-0 right-0 box-border flex h-4 w-4 translate-x-[2px] translate-y-[2px] select-none items-center justify-center rounded-full border-2 border-background text-xs font-bold text-white",
-        placementTailwindClass,
-        `bg-${badgeColor}-500`,
+        placementClass,
+        `bg-${color}-500`,
         className
       )}
       {...props}
