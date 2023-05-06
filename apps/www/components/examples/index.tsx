@@ -92,6 +92,8 @@ import { TypographyP } from "@/components/examples/typography/p"
 import { TypographySmall } from "@/components/examples/typography/small"
 import { TypographyTable } from "@/components/examples/typography/table"
 
+import { MultiSelect } from "./combobox/multi-select"
+
 export const examples = {
   AccordionDemo,
   AlertDemo,
@@ -186,4 +188,5 @@ export const examples = {
   ToggleOutline,
   ToggleDisabled,
   ToggleWithText,
+  MultiSelect,
 }
