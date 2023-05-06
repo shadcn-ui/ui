@@ -58,16 +58,12 @@ const AvatarBadge = ({
   const [positionY, positionX] = placement.split("-")
   const placementTailwindClass = `${positionY}-0 ${positionX}-0`
 
-  const badgeColorTailwindClass = `bg-${badgeColor}-500`
-
-  console.log(badgeColorTailwindClass)
-
   return (
     <div
       className={cn(
         "absolute bottom-0 right-0 box-border flex h-4 w-4 translate-x-[2px] translate-y-[2px] select-none items-center justify-center rounded-full border-2 border-background text-xs font-bold text-white",
         placementTailwindClass,
-        badgeColorTailwindClass,
+        `bg-${badgeColor}-500`,
         className
       )}
       {...props}
