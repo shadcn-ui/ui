@@ -4,6 +4,7 @@ import { AlertDemo } from "@/components/examples/alert/demo"
 import { AlertDestructive } from "@/components/examples/alert/destructive"
 import { AspectRatioDemo } from "@/components/examples/aspect-ratio/demo"
 import { AvatarDemo } from "@/components/examples/avatar/demo"
+import { AvatarWithBadge } from "./avatar/with-badge"
 import { BadgeDemo } from "@/components/examples/badge/demo"
 import { BadgeDestructive } from "@/components/examples/badge/destructive"
 import { BadgeOutline } from "@/components/examples/badge/outline"
@@ -99,6 +100,7 @@ export const examples = {
   AlertDestructive,
   AspectRatioDemo,
   AvatarDemo,
+  AvatarWithBadge,
   BadgeDemo,
   BadgeDestructive,
   BadgeOutline,
