@@ -187,6 +187,11 @@ const ui: Registry = [
     files: ["ui/slider.tsx"],
   },
   {
+    name: "stepper",
+    type: "components:ui",
+    files: ["ui/stepper.tsx", "ui/use-stepper.ts"],
+  },
+  {
     name: "switch",
     type: "components:ui",
     dependencies: ["@radix-ui/react-switch"],
@@ -646,6 +651,54 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["slider"],
     files: ["example/slider-demo.tsx"],
+  },
+  {
+    name: "stepper-demo",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-demo.tsx"],
+  },
+  {
+    name: "stepper-orientation",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-orientation.tsx"],
+  },
+  {
+    name: "stepper-description",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-description.tsx"],
+  },
+  {
+    name: "stepper-custom-icons",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-custom-icons.tsx"],
+  },
+  {
+    name: "stepper-custom-success-error-icon",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-custom-success-error-icon.tsx"],
+  },
+  {
+    name: "stepper-label-orientation",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-label-orientation.tsx"],
+  },
+  {
+    name: "stepper-clickable-steps",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-clickable-steps.tsx"],
+  },
+  {
+    name: "stepper-optional-steps",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-optional-steps.tsx"],
   },
   {
     name: "switch-demo",
