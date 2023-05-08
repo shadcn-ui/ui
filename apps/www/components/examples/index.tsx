@@ -58,6 +58,15 @@ import { SheetPosition } from "@/components/examples/sheet/position"
 import { SheetSize } from "@/components/examples/sheet/size"
 import { SkeletonDemo } from "@/components/examples/skeleton/demo"
 import { SliderDemo } from "@/components/examples/slider/demo"
+import { StepperWithClickableSteps } from "@/components/examples/stepper/clickable-steps"
+import { StepperWithCustomIcons } from "@/components/examples/stepper/custom-icons"
+import { StepperWithCustomSuccessErrorIcon } from "@/components/examples/stepper/custom-success-error-icon"
+import { StepperDemo } from "@/components/examples/stepper/demo"
+import { StepperWithDescriptions } from "@/components/examples/stepper/descriptions"
+import { StepperWithLabelOrientation } from "@/components/examples/stepper/label-orientation"
+import { StepperWithOptionalSteps } from "@/components/examples/stepper/optional-steps"
+import { StepperVertical } from "@/components/examples/stepper/orientation"
+import { StepperWithStates } from "@/components/examples/stepper/states"
 import { SwitchDemo } from "@/components/examples/switch/demo"
 import { TabsDemo } from "@/components/examples/tabs/demo"
 import { TextareaDemo } from "@/components/examples/textarea/demo"
@@ -153,6 +162,15 @@ export const examples = {
   SheetPosition,
   SkeletonDemo,
   SliderDemo,
+  StepperDemo,
+  StepperVertical,
+  StepperWithClickableSteps,
+  StepperWithCustomIcons,
+  StepperWithCustomSuccessErrorIcon,
+  StepperWithDescriptions,
+  StepperWithLabelOrientation,
+  StepperWithOptionalSteps,
+  StepperWithStates,
   SwitchDemo,
   TabsDemo,
   TextareaDemo,

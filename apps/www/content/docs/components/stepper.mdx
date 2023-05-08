@@ -1,0 +1,247 @@
+---
+title: Stepper
+description: Display content divided into a steps sequence.
+component: true
+---
+
+<ComponentExample src="/components/examples/stepper/demo.tsx">
+  <StepperDemo />
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add stepper
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/stepper.tsx" />
+
+4. Copy and paste the `useSteps` hook into your project.
+
+<ComponentSource src="/components/ui/use-steps.ts" />
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Usage
+
+```tsx
+import { Step, Steps, useSteps } from "@/components/ui/stepper"
+```
+
+```tsx {1,4-16}
+const steps = [
+  { label: "Step 1" },
+  { label: "Step 2" },
+  { label: "Step 3" },
+] satisfies StepConfig[]
+
+export const StepperDemo = () => {
+  const {
+    nextStep,
+    prevStep,
+    resetSteps,
+    setStep,
+    activeStep,
+    isDisabledStep,
+    isLastStep,
+    isOptionalStep,
+  } = useSteps({
+    initialStep: 0,
+    steps,
+  })
+
+  return (
+    <>
+      <Steps activeStep={activeStep}>
+        {steps.map((step, index) => (
+          <Step index={index} key={index} {...step}>
+            <div className="bg-muted h-40 w-full p-4">
+              <p>Step {index + 1} content</p>
+            </div>
+          </Step>
+        ))}
+      </Steps>
+      <div className="flex items-center justify-end gap-2">
+        {activeStep === steps.length ? (
+          <>
+            <h2>All steps completed!</h2>
+            <Button onClick={resetSteps}>Reset</Button>
+          </>
+        ) : (
+          <>
+            <Button disabled={isDisabledStep} onClick={prevStep}>
+              Prev
+            </Button>
+            <Button onClick={nextStep}>
+              {isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
+            </Button>
+          </>
+        )}
+      </div>
+    </>
+  )
+}
+```
+
+## API
+
+### `<Steps />`
+
+```tsx
+interface StepsProps {
+  activeStep: number
+  orientation?: "vertical" | "horizontal"
+  state?: "loading" | "error"
+  responsive?: boolean
+  onClickStep?: (step: number) => void
+  successIcon?: React.ReactElement
+  errorIcon?: React.ReactElement
+  labelOrientation?: "vertical" | "horizontal"
+  children?: React.ReactNode
+  variant?: "default" | "ghost" | "outline" | "secondary"
+}
+```
+
+### `<Step />`
+
+```tsx
+interface StepLabelProps {
+  label: string | React.ReactNode
+  description?: string | React.ReactNode
+  optional?: boolean
+  optionalLabel?: string | React.ReactNode
+}
+
+interface StepConfig extends StepLabelProps {
+  icon?: React.ReactElement
+}
+
+interface StepProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof stepVariants>,
+    StepConfig {
+  isCompletedStep?: boolean
+}
+
+interface StepStatus {
+  index: number
+  isCompletedStep?: boolean
+  isCurrentStep?: boolean
+}
+
+interface StepAndStatusProps extends StepProps, StepStatus {}
+```
+
+### `useSteps`
+
+`useSteps` returns values and functions that allow to render the stepper in a modular way.
+
+```tsx
+function useSteps(
+  initialStep: number,
+  steps: {
+    label: string | React.ReactNode
+    description?: string | React.ReactNode
+    optional?: boolean
+    optionalLabel?: string | React.ReactNode
+    icon?: React.ReactElement
+  }[]
+): {
+  nextStep: () => void
+  prevStep: () => void
+  resetSteps: () => void
+  setStep: (step: number) => void
+  activeStep: number
+  isDisabledStep: boolean
+  isLastStep: boolean
+  isOptionalStep: boolean | undefined
+}
+```
+
+## Examples
+
+### Default
+
+<ComponentExample src="/components/examples/stepper/demo.tsx">
+  <StepperDemo />
+</ComponentExample>
+
+---
+
+### Orientation
+
+We can pass the `orientation` prop to the Steps component to set the orientation as "vertical" or "horizontal".
+
+<ComponentExample src="/components/examples/stepper/orientation.tsx">
+  <StepperVertical />
+</ComponentExample>
+
+### Descriptions
+
+The Step component also accepts a `description` prop which can be used to provide some extra information about the step.
+
+<ComponentExample src="/components/examples/stepper/descriptions.tsx">
+  <StepperWithDescriptions />
+</ComponentExample>
+
+### Custom Icons
+
+If you want to show custom icons instead of the default numerical indicators, you can do so by using the `icon` prop on the Step component.
+
+<ComponentExample src="/components/examples/stepper/custom-icons.tsx">
+  <StepperWithCustomIcons />
+</ComponentExample>
+
+### Custom Success/Error icon
+
+If you want to show a custom success/error icon instead of the default, you can do so by using the `successIcon` and `errorIcon` prop on the Steps component.
+
+<ComponentExample src="/components/examples/stepper/custom-success-error-icon.tsx">
+  <StepperWithCustomSuccessErrorIcon />
+</ComponentExample>
+
+### Label orientation
+
+If you would like the labels to be positioned below the step icons you can do so using the `labelOrientation` prop on the Steps component.
+
+<ComponentExample src="/components/examples/stepper/label-orientation.tsx">
+  <StepperWithLabelOrientation />
+</ComponentExample>
+
+### States
+
+Sometimes it is useful to show visual feedback to the user depending on some asynchronous logic. In this case we can use the `state` prop.
+
+<ComponentExample src="/components/examples/stepper/states.tsx">
+  <StepperWithStates />
+</ComponentExample>
+
+### Clickable Steps
+
+By providing the onClickStep prop the steps will become clickable.
+
+<ComponentExample src="/components/examples/stepper/clickable-steps.tsx">
+  <StepperWithClickableSteps />
+</ComponentExample>
+
+### Optional Steps
+
+If you want to make a step optional, you can use the value of optional and optionalLabel in the array of steps.
+
+<ComponentExample src="/components/examples/stepper/optional-steps.tsx">
+  <StepperWithOptionalSteps />
+</ComponentExample>
+
+### Responsive
+
+By default, the stepper behaves vertically on small screens. If you need to remove that functionality, you can change the `responsive` prop to false in the Steps component.

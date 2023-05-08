@@ -388,6 +388,16 @@
       }
     ]
   },
+    {
+    "component": "stepper",
+    "name": "Stepper",
+    "files": [
+      {
+        "name": "stepper.tsx",
+        "dir": "components/ui"
+      }
+    ]
+  },
   {
     "component": "switch",
     "name": "Switch",

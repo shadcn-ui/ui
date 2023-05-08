@@ -168,6 +168,11 @@ export const components = [
     files: ["components/ui/slider.tsx"],
   },
   {
+    component: "stepper",
+    name: "Stepper",
+    files: ["components/ui/stepper.tsx", "components/ui/use-steps.ts"],
+  },
+  {
     component: "switch",
     name: "Switch",
     dependencies: ["@radix-ui/react-switch"],
