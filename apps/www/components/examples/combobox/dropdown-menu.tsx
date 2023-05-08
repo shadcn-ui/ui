@@ -36,7 +36,7 @@ const labels = [
   "maintenance",
 ]
 
-export function CommandDropdownMenu() {
+export function ComboboxDropdownMenu() {
   const [label, setLabel] = React.useState("feature")
   const [open, setOpen] = React.useState(false)
 
