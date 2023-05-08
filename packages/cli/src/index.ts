@@ -212,7 +212,7 @@ async function promptForDestinationDir() {
       type: "text",
       name: "dir",
       message: "Where would you like to install the component(s)?",
-      initial: "./components/ui",
+      initial: "./src/components/ui",
     },
   ])
 
