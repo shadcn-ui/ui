@@ -32,6 +32,11 @@ const nextConfig = {
         destination: "/docs/components/:path*",
         permanent: true,
       },
+      {
+        source: "/figma",
+        destination: "/docs/figma",
+        permanent: true,
+      },
     ]
   },
 }

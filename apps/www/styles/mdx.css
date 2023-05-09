@@ -33,13 +33,13 @@
 }
 
 [data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+  @apply text-muted-foreground/40 text-xs;
   counter-increment: line;
   content: counter(line);
   display: inline-block;
-  width: 1rem;
-  margin-right: 1rem;
+  width: 1.8rem;
+  margin-right: 1.4rem;
   text-align: right;
-  color: gray;
 }
 
 [data-rehype-pretty-code-fragment] .line--highlighted {
