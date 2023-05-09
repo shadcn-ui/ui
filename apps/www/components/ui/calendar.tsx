@@ -6,15 +6,41 @@ import { DayPicker } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
+export type CalendarProps = React.ComponentProps<typeof DayPicker> & {
+  startCalendarAt?: number
+  endCalendarAt?: number
+}
 
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
+  startCalendarAt = 1970,
+  endCalendarAt = 2070,
   ...props
 }: CalendarProps) {
+  const [focusedMonth, setFocusedMonth] = React.useState(new Date())
+
+  const focusedMonthMonthString = focusedMonth.toLocaleString("default", {
+    month: "long",
+  })
+  const focusedMonthYearString = focusedMonth.toLocaleString("default", {
+    year: "numeric",
+  })
+
+  const allMonthNames = Array.from({ length: 12 }, (_, i) =>
+    new Date(new Date().setMonth(i)).toLocaleString("default", {
+      month: "long",
+    })
+  )
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
@@ -54,7 +80,57 @@ function Calendar({
       components={{
         IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
         IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
+        Caption: () => (
+          <div className="space-around flex flex-row justify-center gap-4">
+            <Select
+              value={focusedMonthMonthString}
+              onValueChange={(value) => {
+                const newFocusedMonth = new Date(focusedMonth)
+                newFocusedMonth.setMonth(allMonthNames.indexOf(value))
+                setFocusedMonth(newFocusedMonth)
+              }}
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {allMonthNames.map((monthName) => (
+                  <SelectItem key={monthName} value={monthName}>
+                    {monthName}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select
+              value={focusedMonthYearString}
+              onValueChange={(value) => {
+                const newFocusedMonth = new Date(focusedMonth)
+                newFocusedMonth.setFullYear(parseInt(value))
+                setFocusedMonth(newFocusedMonth)
+              }}
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {Array.from(
+                  { length: endCalendarAt - startCalendarAt },
+                  (_, i) => (
+                    <SelectItem
+                      key={i}
+                      value={(i + startCalendarAt + 1).toString()}
+                    >
+                      {i + startCalendarAt + 1}
+                    </SelectItem>
+                  )
+                )}
+              </SelectContent>
+            </Select>
+          </div>
+        ),
       }}
+      onMonthChange={(month) => setFocusedMonth(month)}
+      month={focusedMonth}
       {...props}
     />
   )
