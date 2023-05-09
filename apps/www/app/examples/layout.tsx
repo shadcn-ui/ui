@@ -32,28 +32,24 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
             Dashboard, cards, authentication. Some examples built using the
             components. Use this as a guide to build your own.
           </PageHeaderDescription>
+          <section className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
+            <Link
+              href="/docs"
+              className={cn(buttonVariants(), "rounded-[6px]")}
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/components"
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "rounded-[6px]"
+              )}
+            >
+              Components
+            </Link>
+          </section>
         </PageHeader>
-        <section className="pb-6 md:pb-10">
-          <div className="flex w-full items-center justify-between">
-            <div className="flex space-x-4">
-              <Link
-                href="/docs"
-                className={cn(buttonVariants(), "rounded-[6px]")}
-              >
-                Get Started
-              </Link>
-              <Link
-                href="/components"
-                className={cn(
-                  buttonVariants({ variant: "outline" }),
-                  "rounded-[6px]"
-                )}
-              >
-                Components
-              </Link>
-            </div>
-          </div>
-        </section>
         <section>
           <ExamplesNav />
           <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-xl">

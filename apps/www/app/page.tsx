@@ -25,25 +25,21 @@ export default function IndexPage() {
           Beautifully designed components that you can copy and paste into your
           apps. Accessible. Customizable. Open Source.
         </PageHeaderDescription>
-      </PageHeader>
-      <section className="pb-8 md:pb-10">
-        <div className="flex w-full items-center justify-between">
-          <div className="flex space-x-4">
-            <Link href="/docs" className={cn(buttonVariants())}>
-              Get Started
-            </Link>
-            <Link
-              target="_blank"
-              rel="noreferrer"
-              href={siteConfig.links.github}
-              className={cn(buttonVariants({ variant: "outline" }))}
-            >
-              <Icons.gitHub className="mr-2 h-4 w-4" />
-              GitHub
-            </Link>
-          </div>
+        <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
+          <Link href="/docs" className={cn(buttonVariants())}>
+            Get Started
+          </Link>
+          <Link
+            target="_blank"
+            rel="noreferrer"
+            href={siteConfig.links.github}
+            className={cn(buttonVariants({ variant: "outline" }))}
+          >
+            <Icons.gitHub className="mr-2 h-4 w-4" />
+            GitHub
+          </Link>
         </div>
-      </section>
+      </PageHeader>
       <ExamplesNav className="[&>a:first-child]:text-primary" />
       <section className="space-y-8 overflow-hidden rounded-lg border-2 border-primary dark:border-muted md:hidden">
         <Image

@@ -16,6 +16,10 @@ const examples = [
     href: "/examples/cards",
   },
   {
+    name: "Tasks",
+    href: "/examples/tasks",
+  },
+  {
     name: "Playground",
     href: "/examples/playground",
   },
@@ -26,10 +30,6 @@ const examples = [
   {
     name: "Authentication",
     href: "/examples/authentication",
-  },
-  {
-    name: "Tasks",
-    href: "/examples/tasks",
   },
 ]
 
@@ -46,10 +46,10 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
             href={example.href}
             key={example.href}
             className={cn(
-              "flex px-4 font-medium",
+              "flex px-4",
               pathname === example.href
-                ? "text-primary"
-                : "text-muted-foreground"
+                ? "font-bold text-primary"
+                : "font-medium text-muted-foreground"
             )}
           >
             {example.name}
