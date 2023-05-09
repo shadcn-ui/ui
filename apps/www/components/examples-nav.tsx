@@ -27,6 +27,10 @@ const examples = [
     name: "Authentication",
     href: "/examples/authentication",
   },
+  {
+    name: "Tasks",
+    href: "/examples/tasks",
+  },
 ]
 
 interface ExamplesNavProps extends React.HTMLAttributes<HTMLDivElement> {}
