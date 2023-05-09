@@ -21,7 +21,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Figma",
-      href: "/figma",
+      href: "/docs/figma",
     },
     {
       title: "GitHub",
@@ -70,7 +70,7 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Figma",
-          href: "/figma",
+          href: "/docs/figma",
           items: [],
         },
       ],
