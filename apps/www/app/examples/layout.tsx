@@ -1,8 +1,10 @@
 import { Metadata } from "next"
 import Link from "next/link"
+import { ChevronRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import { ExamplesNav } from "@/components/examples-nav"
 import {
   PageHeader,
@@ -24,6 +26,14 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
     <>
       <div className="container relative pb-10">
         <PageHeader className="page-header">
+          <Link
+            href="/docs/components/data-table"
+            className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
+          >
+            🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
+            Introducing Table and Data Table{" "}
+            <ChevronRight className="ml-1 h-4 w-4" />
+          </Link>
           <PageHeaderHeading className="hidden md:block">
             Check out some examples.
           </PageHeaderHeading>
@@ -32,31 +42,24 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
             Dashboard, cards, authentication. Some examples built using the
             components. Use this as a guide to build your own.
           </PageHeaderDescription>
+          <section className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
+            <Link
+              href="/docs"
+              className={cn(buttonVariants(), "rounded-[6px]")}
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/components"
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "rounded-[6px]"
+              )}
+            >
+              Components
+            </Link>
+          </section>
         </PageHeader>
-        <section className="pb-6 md:pb-10">
-          <div className="flex w-full items-center justify-between">
-            <div className="flex space-x-4">
-              <Link
-                href="/docs"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "rounded-[0.5rem]"
-                )}
-              >
-                Get Started
-              </Link>
-              <Link
-                href="/components"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "rounded-[0.5rem] pl-6"
-                )}
-              >
-                Components
-              </Link>
-            </div>
-          </div>
-        </section>
         <section>
           <ExamplesNav />
           <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-xl">

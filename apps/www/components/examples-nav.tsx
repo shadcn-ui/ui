@@ -16,6 +16,11 @@ const examples = [
     href: "/examples/cards",
   },
   {
+    name: "Tasks",
+    href: "/examples/tasks",
+    label: "New",
+  },
+  {
     name: "Playground",
     href: "/examples/playground",
   },
@@ -42,13 +47,18 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
             href={example.href}
             key={example.href}
             className={cn(
-              "flex px-4 font-medium",
+              "flex items-center px-4",
               pathname === example.href
-                ? "text-primary"
-                : "text-muted-foreground"
+                ? "font-bold text-primary"
+                : "font-medium text-muted-foreground"
             )}
           >
-            {example.name}
+            {example.name}{" "}
+            {example.label && (
+              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs font-medium leading-none text-[#000000] no-underline group-hover:no-underline">
+                {example.label}
+              </span>
+            )}
           </Link>
         ))}
       </div>

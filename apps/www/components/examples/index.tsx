@@ -30,6 +30,7 @@ import { ComboboxPopover } from "@/components/examples/combobox/popover"
 import { CommandDemo } from "@/components/examples/command/demo"
 import { CommandDialogDemo } from "@/components/examples/command/dialog"
 import { ContextMenuDemo } from "@/components/examples/context-menu/demo"
+import { DataTableDemo } from "@/components/examples/data-table/demo"
 import { DatePickerDemo } from "@/components/examples/date-picker/demo"
 import { DatePickerWithPresets } from "@/components/examples/date-picker/with-presets"
 import { DatePickerWithRange } from "@/components/examples/date-picker/with-range"
@@ -68,6 +69,7 @@ import { StepperWithOptionalSteps } from "@/components/examples/stepper/optional
 import { StepperVertical } from "@/components/examples/stepper/orientation"
 import { StepperWithStates } from "@/components/examples/stepper/states"
 import { SwitchDemo } from "@/components/examples/switch/demo"
+import { TableDemo } from "@/components/examples/table/demo"
 import { TabsDemo } from "@/components/examples/tabs/demo"
 import { TextareaDemo } from "@/components/examples/textarea/demo"
 import { TextareaDisabled } from "@/components/examples/textarea/disabled"
@@ -122,6 +124,7 @@ export const examples = {
   ButtonWithIcon,
   ButtonAsChild,
   CalendarDemo,
+  DataTableDemo,
   DatePickerDemo,
   DatePickerWithRange,
   DatePickerWithPresets,
@@ -172,6 +175,7 @@ export const examples = {
   StepperWithOptionalSteps,
   StepperWithStates,
   SwitchDemo,
+  TableDemo,
   TabsDemo,
   TextareaDemo,
   TextareaDisabled,
