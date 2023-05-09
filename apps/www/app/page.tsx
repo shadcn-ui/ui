@@ -1,9 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
+import { ChevronRight } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import { ExamplesNav } from "@/components/examples-nav"
 import { Icons } from "@/components/icons"
 import {
@@ -20,6 +22,14 @@ export default function IndexPage() {
     <div className="container relative pb-10">
       <StyleSwitcher />
       <PageHeader>
+        <Link
+          href="/docs/components/data-table"
+          className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
+        >
+          🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
+          Introducing Table and Data Table{" "}
+          <ChevronRight className="ml-1 h-4 w-4" />
+        </Link>
         <PageHeaderHeading>Build your component library.</PageHeaderHeading>
         <PageHeaderDescription>
           Beautifully designed components that you can copy and paste into your
