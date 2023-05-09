@@ -29,17 +29,14 @@ export default function IndexPage() {
       <section className="pb-8 md:pb-10">
         <div className="flex w-full items-center justify-between">
           <div className="flex space-x-4">
-            <Link href="/docs" className={cn(buttonVariants({ size: "lg" }))}>
+            <Link href="/docs" className={cn(buttonVariants())}>
               Get Started
             </Link>
             <Link
               target="_blank"
               rel="noreferrer"
               href={siteConfig.links.github}
-              className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "pl-6"
-              )}
+              className={cn(buttonVariants({ variant: "outline" }))}
             >
               <Icons.gitHub className="mr-2 h-4 w-4" />
               GitHub

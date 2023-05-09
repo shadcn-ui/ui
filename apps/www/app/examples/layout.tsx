@@ -38,18 +38,15 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
             <div className="flex space-x-4">
               <Link
                 href="/docs"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "rounded-[0.5rem]"
-                )}
+                className={cn(buttonVariants(), "rounded-[6px]")}
               >
                 Get Started
               </Link>
               <Link
                 href="/components"
                 className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "rounded-[0.5rem] pl-6"
+                  buttonVariants({ variant: "outline" }),
+                  "rounded-[6px]"
                 )}
               >
                 Components
