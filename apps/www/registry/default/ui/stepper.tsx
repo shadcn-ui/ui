@@ -291,7 +291,7 @@ export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
             data-clickable={isClickable}
             disabled={!(hasVisited || isClickable)}
             className={cn(
-              "h-12 w-12 rounded-full data-[highlighted=true]:bg-green-700 data-[highlighted=true]:text-white",
+              "h-10 w-10 rounded-full data-[highlighted=true]:bg-green-700 data-[highlighted=true]:text-white",
               isCompletedStep || typeof RenderIcon !== "number"
                 ? "px-3 py-2"
                 : ""
@@ -392,7 +392,7 @@ const Connector = React.memo(
         <div
           data-highlighted={isCompletedStep}
           className={cn(
-            "ms-6 mt-1 flex h-auto min-h-[2rem] flex-1 self-stretch border-l-2 ps-8",
+            "ms-5 mt-1 flex h-auto min-h-[2rem] flex-1 self-stretch border-l-2 ps-8",
             isLastStep ? "min-h-0 border-transparent" : "",
             isCompletedStep ? "border-green-700" : ""
           )}
