@@ -60,7 +60,7 @@ export function DataTableRowActions<TData>({
             <Tags className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
             Labels
           </DropdownMenuSubTrigger>
-          <DropdownMenuSubContent className="p-0">
+          <DropdownMenuSubContent>
             <DropdownMenuRadioGroup value={task.label}>
               {labels.map((label) => (
                 <DropdownMenuRadioItem key={label.value} value={label.value}>
