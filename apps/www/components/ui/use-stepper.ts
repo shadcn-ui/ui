@@ -1,16 +1,16 @@
 import * as React from "react"
 
-import { StepProps } from "./stepper"
+import { StepperStepProps } from "./stepper"
 
-type UseSteps = {
+type UseStepper = {
   initialStep: number
   steps: Pick<
-    StepProps,
+    StepperStepProps,
     "label" | "description" | "optional" | "optionalLabel" | "icon"
   >[]
 }
 
-type UseStepsReturn = {
+type UseStepperReturn = {
   nextStep: () => void
   prevStep: () => void
   resetSteps: () => void
@@ -21,7 +21,10 @@ type UseStepsReturn = {
   isOptionalStep: boolean | undefined
 }
 
-export function useSteps({ initialStep, steps }: UseSteps): UseStepsReturn {
+export function useStepper({
+  initialStep,
+  steps,
+}: UseStepper): UseStepperReturn {
   const [activeStep, setActiveStep] = React.useState(initialStep)
 
   const nextStep = () => {

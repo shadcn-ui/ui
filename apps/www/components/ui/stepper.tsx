@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils"
 
 import { Button } from "./button"
 import { Separator } from "./separator"
-import { useMediaQuery } from "./use-steps"
+import { useMediaQuery } from "./use-stepper"
 
-/********** Context **********/
+/********** StepperProvider **********/
 
-interface StepsContextValue extends StepsProps {
+interface StepperContextValue extends StepperProps {
   isClickable?: boolean
   isError?: boolean
   isLoading?: boolean
@@ -19,14 +19,14 @@ interface StepsContextValue extends StepsProps {
   stepCount?: number
 }
 
-const StepsContext = React.createContext<StepsContextValue>({
+const StepsContext = React.createContext<StepperContextValue>({
   activeStep: 0,
 })
 
-export const useStepsContext = () => React.useContext(StepsContext)
+export const useStepperContext = () => React.useContext(StepsContext)
 
-export const StepsProvider: React.FC<{
-  value: StepsContextValue
+export const StepperProvider: React.FC<{
+  value: StepperContextValue
   children: React.ReactNode
 }> = ({ value, children }) => {
   const isError = value.state === "error"
@@ -51,9 +51,9 @@ export const StepsProvider: React.FC<{
   )
 }
 
-/********** Steps **********/
+/********** Stepper **********/
 
-export interface StepsProps {
+export interface StepperProps {
   activeStep: number
   orientation?: "vertical" | "horizontal"
   state?: "loading" | "error"
@@ -66,7 +66,7 @@ export interface StepsProps {
   variant?: "default" | "ghost" | "outline" | "secondary"
 }
 
-export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
+export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
   (
     {
       activeStep = 0,
@@ -106,7 +106,7 @@ export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
     const orientation = isMobile && responsive ? "vertical" : orientationProp
 
     return (
-      <StepsProvider
+      <StepperProvider
         value={{
           activeStep,
           orientation,
@@ -150,14 +150,14 @@ export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
           })}
         </div>
         {orientation === "horizontal" && renderHorizontalContent()}
-      </StepsProvider>
+      </StepperProvider>
     )
   }
 )
 
-Steps.displayName = "Steps"
+Stepper.displayName = "Stepper"
 
-/********** Step **********/
+/********** StepperStep **********/
 
 const stepVariants = cva("flex-row flex relative gap-2", {
   variants: {
@@ -182,166 +182,164 @@ const stepVariants = cva("flex-row flex relative gap-2", {
   ],
 })
 
-export interface StepConfig extends StepLabelProps {
+export interface StepperConfig extends StepperStepLabelProps {
   icon?: React.ReactElement
 }
 
-export interface StepProps
+export interface StepperStepProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof stepVariants>,
-    StepConfig {
+    StepperConfig {
   isCompletedStep?: boolean
 }
 
-interface StepStatus {
+interface StepperStepStatus {
   index: number
   isCompletedStep?: boolean
   isCurrentStep?: boolean
 }
 
-interface StepAndStatusProps extends StepProps, StepStatus {}
+interface StepperStepAndStatusProps
+  extends StepperStepProps,
+    StepperStepStatus {}
 
-export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
-  (props, ref) => {
-    const {
-      children,
-      description,
-      icon: CustomIcon,
-      index,
-      isCompletedStep,
-      isCurrentStep,
-      isLastStep,
-      label,
-      optional,
-      optionalLabel,
-    } = props
+export const StepperStep = React.forwardRef<
+  HTMLDivElement,
+  StepperStepAndStatusProps
+>((props, ref) => {
+  const {
+    children,
+    description,
+    icon: CustomIcon,
+    index,
+    isCompletedStep,
+    isCurrentStep,
+    isLastStep,
+    label,
+    optional,
+    optionalLabel,
+  } = props
 
-    const {
-      isVertical,
-      isError,
-      isLoading,
-      successIcon: CustomSuccessIcon,
-      errorIcon: CustomErrorIcon,
-      isLabelVertical,
-      onClickStep,
-      isClickable,
-      variant,
-    } = useStepsContext()
+  const {
+    isVertical,
+    isError,
+    isLoading,
+    successIcon: CustomSuccessIcon,
+    errorIcon: CustomErrorIcon,
+    isLabelVertical,
+    onClickStep,
+    isClickable,
+    variant,
+  } = useStepperContext()
 
-    const hasVisited = isCurrentStep || isCompletedStep
+  const hasVisited = isCurrentStep || isCompletedStep
 
-    const handleClick = (index: number) => {
-      if (isClickable && onClickStep) {
-        onClickStep(index)
-      }
+  const handleClick = (index: number) => {
+    if (isClickable && onClickStep) {
+      onClickStep(index)
     }
-
-    const Icon = React.useMemo(() => CustomIcon ?? null, [CustomIcon])
-
-    const Success = React.useMemo(
-      () => CustomSuccessIcon ?? <Check />,
-      [CustomSuccessIcon]
-    )
-
-    const Error = React.useMemo(
-      () => CustomErrorIcon ?? <X />,
-      [CustomErrorIcon]
-    )
-
-    const RenderIcon = React.useMemo(() => {
-      if (isCompletedStep) return Success
-      if (isCurrentStep) {
-        if (isError) return Error
-        if (isLoading) return <Loader2 className="animate-spin" />
-      }
-      if (Icon) return Icon
-      return (index || 0) + 1
-    }, [
-      isCompletedStep,
-      Success,
-      isCurrentStep,
-      Icon,
-      index,
-      isError,
-      Error,
-      isLoading,
-    ])
-
-    return (
-      <div
-        className={stepVariants({
-          isLastStep,
-          isVertical,
-          isClickable: isClickable && !!onClickStep,
-        })}
-        ref={ref}
-        onClick={() => handleClick(index)}
-        aria-disabled={!hasVisited}
-      >
-        <div
-          className={cn(
-            "flex items-center gap-2",
-            isLabelVertical ? "flex-col" : ""
-          )}
-        >
-          <Button
-            aria-current={isCurrentStep ? "step" : undefined}
-            data-invalid={isCurrentStep && isError}
-            data-highlighted={isCompletedStep}
-            data-clickable={isClickable}
-            disabled={!(hasVisited || isClickable)}
-            className={cn(
-              "h-12 w-12 rounded-full data-[highlighted=true]:bg-green-700 data-[highlighted=true]:text-white",
-              isCompletedStep || typeof RenderIcon !== "number"
-                ? "px-3 py-2"
-                : ""
-            )}
-            variant={isCurrentStep && isError ? "destructive" : variant}
-          >
-            {RenderIcon}
-          </Button>
-          <StepLabel
-            label={label}
-            description={description}
-            optional={optional}
-            optionalLabel={optionalLabel}
-            {...{ isCurrentStep }}
-          />
-        </div>
-        <Connector
-          index={index}
-          isLastStep={isLastStep}
-          hasLabel={!!label || !!description}
-          isCompletedStep={isCompletedStep || false}
-        >
-          {(isCurrentStep || isCompletedStep) && children}
-        </Connector>
-      </div>
-    )
   }
-)
 
-Step.displayName = "Step"
+  const Icon = React.useMemo(() => CustomIcon ?? null, [CustomIcon])
 
-/********** StepLabel **********/
+  const Success = React.useMemo(
+    () => CustomSuccessIcon ?? <Check />,
+    [CustomSuccessIcon]
+  )
 
-interface StepLabelProps {
+  const Error = React.useMemo(() => CustomErrorIcon ?? <X />, [CustomErrorIcon])
+
+  const RenderIcon = React.useMemo(() => {
+    if (isCompletedStep) return Success
+    if (isCurrentStep) {
+      if (isError) return Error
+      if (isLoading) return <Loader2 className="animate-spin" />
+    }
+    if (Icon) return Icon
+    return (index || 0) + 1
+  }, [
+    isCompletedStep,
+    Success,
+    isCurrentStep,
+    Icon,
+    index,
+    isError,
+    Error,
+    isLoading,
+  ])
+
+  return (
+    <div
+      className={stepVariants({
+        isLastStep,
+        isVertical,
+        isClickable: isClickable && !!onClickStep,
+      })}
+      ref={ref}
+      onClick={() => handleClick(index)}
+      aria-disabled={!hasVisited}
+    >
+      <div
+        className={cn(
+          "flex items-center gap-2",
+          isLabelVertical ? "flex-col" : ""
+        )}
+      >
+        <Button
+          aria-current={isCurrentStep ? "step" : undefined}
+          data-invalid={isCurrentStep && isError}
+          data-highlighted={isCompletedStep}
+          data-clickable={isClickable}
+          disabled={!(hasVisited || isClickable)}
+          className={cn(
+            "h-12 w-12 rounded-full data-[highlighted=true]:bg-green-700 data-[highlighted=true]:text-white",
+            isCompletedStep || typeof RenderIcon !== "number" ? "px-3 py-2" : ""
+          )}
+          variant={isCurrentStep && isError ? "destructive" : variant}
+        >
+          {RenderIcon}
+        </Button>
+        <StepperStepLabel
+          label={label}
+          description={description}
+          optional={optional}
+          optionalLabel={optionalLabel}
+          {...{ isCurrentStep }}
+        />
+      </div>
+      <StepperStepConnector
+        index={index}
+        isLastStep={isLastStep}
+        hasLabel={!!label || !!description}
+        isCompletedStep={isCompletedStep || false}
+      >
+        {(isCurrentStep || isCompletedStep) && children}
+      </StepperStepConnector>
+    </div>
+  )
+})
+
+StepperStep.displayName = "StepperStep"
+
+/********** StepperStepLabel **********/
+
+interface StepperStepLabelProps {
   label: string | React.ReactNode
   description?: string | React.ReactNode
   optional?: boolean
   optionalLabel?: string | React.ReactNode
 }
 
-const StepLabel = ({
+const StepperStepLabel = ({
   isCurrentStep,
   label,
   description,
   optional,
   optionalLabel,
-}: StepLabelProps & {
+}: StepperStepLabelProps & {
   isCurrentStep?: boolean
 }) => {
-  const { isLabelVertical } = useStepsContext()
+  const { isLabelVertical } = useStepperContext()
 
   const shouldRender = !!label || !!description
 
@@ -372,20 +370,21 @@ const StepLabel = ({
   ) : null
 }
 
-StepLabel.displayName = "StepLabel"
+StepperStepLabel.displayName = "StepperStepLabel"
 
-/********** Connector **********/
+/********** StepperStepConnector **********/
 
-interface ConnectorProps extends React.HTMLAttributes<HTMLDivElement> {
+interface StepperStepConnectorProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   isCompletedStep: boolean
   isLastStep?: boolean | null
   hasLabel?: boolean
   index: number
 }
 
-const Connector = React.memo(
-  ({ isCompletedStep, children, isLastStep }: ConnectorProps) => {
-    const { isVertical } = useStepsContext()
+const StepperStepConnector = React.memo(
+  ({ isCompletedStep, children, isLastStep }: StepperStepConnectorProps) => {
+    const { isVertical } = useStepperContext()
 
     if (isVertical) {
       return (
@@ -418,4 +417,4 @@ const Connector = React.memo(
   }
 )
 
-Connector.displayName = "Connector"
+StepperStepConnector.displayName = "StepperStepConnector"

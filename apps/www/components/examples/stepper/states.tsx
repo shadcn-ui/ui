@@ -3,14 +3,14 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Step, StepConfig, Steps } from "@/components/ui/stepper"
-import { useSteps } from "@/components/ui/use-steps"
+import { Stepper, StepperConfig, StepperStep } from "@/components/ui/stepper"
+import { useStepper } from "@/components/ui/use-stepper"
 
 const steps = [
   { label: "Step 1" },
   { label: "Step 2" },
   { label: "Step 3" },
-] satisfies StepConfig[]
+] satisfies StepperConfig[]
 
 export const StepperWithStates = () => {
   const {
@@ -21,7 +21,7 @@ export const StepperWithStates = () => {
     isDisabledStep,
     isLastStep,
     isOptionalStep,
-  } = useSteps({
+  } = useStepper({
     initialStep: 0,
     steps,
   })
@@ -45,15 +45,15 @@ export const StepperWithStates = () => {
           <Label htmlFor="r2">Error</Label>
         </div>
       </RadioGroup>
-      <Steps state={value} activeStep={activeStep}>
+      <Stepper state={value} activeStep={activeStep}>
         {steps.map((step, index) => (
-          <Step index={index} key={index} {...step}>
+          <StepperStep index={index} key={index} {...step}>
             <div className="h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300">
               <p>Step {index + 1} content</p>
             </div>
-          </Step>
+          </StepperStep>
         ))}
-      </Steps>
+      </Stepper>
       <div className="flex items-center justify-end gap-2">
         {activeStep === steps.length ? (
           <>

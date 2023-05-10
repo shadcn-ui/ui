@@ -23,9 +23,9 @@ npx shadcn-ui add stepper
 
 <ComponentSource src="/components/ui/stepper.tsx" />
 
-4. Copy and paste the `useSteps` hook into your project.
+4. Copy and paste the `useStepper` hook into your project.
 
-<ComponentSource src="/components/ui/use-steps.ts" />
+<ComponentSource src="/components/ui/use-stepper.ts" />
 
     </AccordionContent>
 
@@ -35,15 +35,20 @@ npx shadcn-ui add stepper
 ## Usage
 
 ```tsx
-import { Step, Steps, useSteps } from "@/components/ui/stepper"
+import {
+  Stepper,
+  StepperConfig,
+  StepperStep,
+  useStepper,
+} from "@/components/ui/stepper"
 ```
 
-```tsx {1,4-16}
+```tsx {1-5,8-20}
 const steps = [
   { label: "Step 1" },
   { label: "Step 2" },
   { label: "Step 3" },
-] satisfies StepConfig[]
+] satisfies StepperConfig[]
 
 export const StepperDemo = () => {
   const {
@@ -55,22 +60,22 @@ export const StepperDemo = () => {
     isDisabledStep,
     isLastStep,
     isOptionalStep,
-  } = useSteps({
+  } = useStepper({
     initialStep: 0,
     steps,
   })
 
   return (
     <>
-      <Steps activeStep={activeStep}>
+      <Stepper activeStep={activeStep}>
         {steps.map((step, index) => (
-          <Step index={index} key={index} {...step}>
+          <StepperStep index={index} key={index} {...step}>
             <div className="bg-muted h-40 w-full p-4">
               <p>Step {index + 1} content</p>
             </div>
-          </Step>
+          </StepperStep>
         ))}
-      </Steps>
+      </Stepper>
       <div className="flex items-center justify-end gap-2">
         {activeStep === steps.length ? (
           <>
@@ -95,10 +100,10 @@ export const StepperDemo = () => {
 
 ## API
 
-### `<Steps />`
+### Stepper
 
 ```tsx
-interface StepsProps {
+interface StepperProps {
   activeStep: number
   orientation?: "vertical" | "horizontal"
   state?: "loading" | "error"
@@ -112,42 +117,44 @@ interface StepsProps {
 }
 ```
 
-### `<Step />`
+### StepperStep
 
 ```tsx
-interface StepLabelProps {
+interface StepperStepLabelProps {
   label: string | React.ReactNode
   description?: string | React.ReactNode
   optional?: boolean
   optionalLabel?: string | React.ReactNode
 }
 
-interface StepConfig extends StepLabelProps {
+interface StepperConfig extends StepperStepLabelProps {
   icon?: React.ReactElement
 }
 
-interface StepProps
+interface StepperStepProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof stepVariants>,
     StepConfig {
   isCompletedStep?: boolean
 }
 
-interface StepStatus {
+interface StepperStepStatus {
   index: number
   isCompletedStep?: boolean
   isCurrentStep?: boolean
 }
 
-interface StepAndStatusProps extends StepProps, StepStatus {}
+interface StepperStepAndStatusProps
+  extends StepperStepProps,
+    StepperStepStatus {}
 ```
 
-### `useSteps`
+### useStepper
 
-`useSteps` returns values and functions that allow to render the stepper in a modular way.
+`useStepper` returns values and functions that allow to render the stepper in a modular way.
 
 ```tsx
-function useSteps(
+function useStepper(
   initialStep: number,
   steps: {
     label: string | React.ReactNode

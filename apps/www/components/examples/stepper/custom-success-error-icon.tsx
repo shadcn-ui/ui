@@ -1,14 +1,14 @@
 import { CheckCircle2, XCircle } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Step, StepConfig, Steps } from "@/components/ui/stepper"
-import { useSteps } from "@/components/ui/use-steps"
+import { Stepper, StepperConfig, StepperStep } from "@/components/ui/stepper"
+import { useStepper } from "@/components/ui/use-stepper"
 
 const steps = [
   { label: "Step 1" },
   { label: "Step 2" },
   { label: "Step 3" },
-] satisfies StepConfig[]
+] satisfies StepperConfig[]
 
 export const StepperWithCustomSuccessErrorIcon = () => {
   const {
@@ -19,26 +19,26 @@ export const StepperWithCustomSuccessErrorIcon = () => {
     isDisabledStep,
     isLastStep,
     isOptionalStep,
-  } = useSteps({
+  } = useStepper({
     initialStep: 0,
     steps,
   })
 
   return (
     <div className="flex w-full flex-col gap-4">
-      <Steps
+      <Stepper
         activeStep={activeStep}
         successIcon={<CheckCircle2 />}
         errorIcon={<XCircle />}
       >
         {steps.map((step, index) => (
-          <Step index={index} key={index} {...step}>
+          <StepperStep index={index} key={index} {...step}>
             <div className="h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300">
               <p>Step {index + 1} content</p>
             </div>
-          </Step>
+          </StepperStep>
         ))}
-      </Steps>
+      </Stepper>
       <div className="flex items-center justify-end gap-2">
         {activeStep === steps.length ? (
           <>

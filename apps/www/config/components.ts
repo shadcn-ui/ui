@@ -170,7 +170,7 @@ export const components = [
   {
     component: "stepper",
     name: "Stepper",
-    files: ["components/ui/stepper.tsx", "components/ui/use-steps.ts"],
+    files: ["components/ui/stepper.tsx", "components/ui/use-stepper.ts"],
   },
   {
     component: "switch",
