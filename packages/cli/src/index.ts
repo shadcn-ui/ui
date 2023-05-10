@@ -25,9 +25,11 @@ const PROJECT_DEPENDENCIES = [
 ]
 
 async function main() {
-  const packageInfo = await getPackageInfo()
-  const projectInfo = await getProjectInfo()
-  const packageManager = getPackageManager()
+  const [packageInfo, projectInfo, packageManager] = await Promise.all([
+    getPackageInfo(),
+    getProjectInfo(),
+    getPackageManager(),
+  ])
 
   const program = new Command()
     .name("shadcn-ui")
