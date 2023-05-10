@@ -6,6 +6,7 @@
     "dev": "concurrently \"contentlayer dev\" \"next dev -p 3001\"",
     "build": "contentlayer build && pnpm build:components && next build",
     "build:components": "ts-node --esm --project ./tsconfig.scripts.json ./scripts/build-components.ts",
+    "seed:tasks": "ts-node --esm --project ./tsconfig.scripts.json ./app/examples/tasks/data/seed.ts",
     "start": "next start -p 3001",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -15,6 +16,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@radix-ui/react-accessible-icon": "^1.0.1",
     "@radix-ui/react-accordion": "^1.1.0",
     "@radix-ui/react-alert-dialog": "^1.0.2",
@@ -43,6 +45,7 @@
     "@radix-ui/react-toggle": "^1.0.1",
     "@radix-ui/react-toggle-group": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.3",
+    "@tanstack/react-table": "^8.9.1",
     "@vercel/analytics": "^1.0.0",
     "@vercel/og": "^0.0.21",
     "class-variance-authority": "^0.4.0",
@@ -50,7 +53,7 @@
     "cmdk": "^0.2.0",
     "contentlayer": "0.3.0",
     "date-fns": "^2.29.3",
-    "lucide-react": "0.154.0",
+    "lucide-react": "0.214.0",
     "next": "13.3.5-canary.5",
     "next-contentlayer": "0.3.0",
     "next-themes": "^0.2.1",
