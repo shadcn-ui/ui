@@ -1,9 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
+import { ChevronRight } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import { ExamplesNav } from "@/components/examples-nav"
 import { Icons } from "@/components/icons"
 import {
@@ -20,33 +22,34 @@ export default function IndexPage() {
     <div className="container relative pb-10">
       <StyleSwitcher />
       <PageHeader>
+        <Link
+          href="/docs/components/data-table"
+          className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
+        >
+          🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
+          Introducing Table and Data Table{" "}
+          <ChevronRight className="ml-1 h-4 w-4" />
+        </Link>
         <PageHeaderHeading>Build your component library.</PageHeaderHeading>
         <PageHeaderDescription>
           Beautifully designed components that you can copy and paste into your
           apps. Accessible. Customizable. Open Source.
         </PageHeaderDescription>
-      </PageHeader>
-      <section className="pb-8 md:pb-10">
-        <div className="flex w-full items-center justify-between">
-          <div className="flex space-x-4">
-            <Link href="/docs" className={cn(buttonVariants({ size: "lg" }))}>
-              Get Started
-            </Link>
-            <Link
-              target="_blank"
-              rel="noreferrer"
-              href={siteConfig.links.github}
-              className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "pl-6"
-              )}
-            >
-              <Icons.gitHub className="mr-2 h-4 w-4" />
-              GitHub
-            </Link>
-          </div>
+        <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
+          <Link href="/docs" className={cn(buttonVariants())}>
+            Get Started
+          </Link>
+          <Link
+            target="_blank"
+            rel="noreferrer"
+            href={siteConfig.links.github}
+            className={cn(buttonVariants({ variant: "outline" }))}
+          >
+            <Icons.gitHub className="mr-2 h-4 w-4" />
+            GitHub
+          </Link>
         </div>
-      </section>
+      </PageHeader>
       <ExamplesNav className="[&>a:first-child]:text-primary" />
       <section className="space-y-8 overflow-hidden rounded-lg border-2 border-primary dark:border-muted md:hidden">
         <Image
