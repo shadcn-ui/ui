@@ -30,6 +30,7 @@ import { ComboboxPopover } from "@/components/examples/combobox/popover"
 import { CommandDemo } from "@/components/examples/command/demo"
 import { CommandDialogDemo } from "@/components/examples/command/dialog"
 import { ContextMenuDemo } from "@/components/examples/context-menu/demo"
+import { DataTableDemo } from "@/components/examples/data-table/demo"
 import { DatePickerDemo } from "@/components/examples/date-picker/demo"
 import { DatePickerWithPresets } from "@/components/examples/date-picker/with-presets"
 import { DatePickerWithRange } from "@/components/examples/date-picker/with-range"
@@ -59,6 +60,7 @@ import { SheetSize } from "@/components/examples/sheet/size"
 import { SkeletonDemo } from "@/components/examples/skeleton/demo"
 import { SliderDemo } from "@/components/examples/slider/demo"
 import { SwitchDemo } from "@/components/examples/switch/demo"
+import { TableDemo } from "@/components/examples/table/demo"
 import { TabsDemo } from "@/components/examples/tabs/demo"
 import { TextareaDemo } from "@/components/examples/textarea/demo"
 import { TextareaDisabled } from "@/components/examples/textarea/disabled"
@@ -113,6 +115,7 @@ export const examples = {
   ButtonWithIcon,
   ButtonAsChild,
   CalendarDemo,
+  DataTableDemo,
   DatePickerDemo,
   DatePickerWithRange,
   DatePickerWithPresets,
@@ -154,6 +157,7 @@ export const examples = {
   SkeletonDemo,
   SliderDemo,
   SwitchDemo,
+  TableDemo,
   TabsDemo,
   TextareaDemo,
   TextareaDisabled,
