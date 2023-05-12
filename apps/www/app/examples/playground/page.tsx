@@ -99,7 +99,7 @@ export default function PlaygroundPage() {
                   </TabsList>
                 </div>
                 <ModelSelector types={types} models={models} />
-                <TemperatureSelector defaultValue={[0.56]} />
+                <TemperatureSelector defaultValue={[0, 0.56]} />
                 <MaxLengthSelector defaultValue={[256]} />
                 <TopPSelector defaultValue={[0.9]} />
               </div>
