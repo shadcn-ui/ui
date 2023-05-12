@@ -1,6 +1,6 @@
 ---
 title: Slider
-description: An input where the user selects a value from within a given range.
+description: An input where the user selects a value or values from within a given range.
 component: true
 radix:
   link: https://www.radix-ui.com/docs/primitives/components/slider
@@ -52,3 +52,26 @@ import { Slider } from "@/components/ui/slider"
 ```tsx
 <Slider defaultValue={[33]} max={100} step={1} />
 ```
+
+### Range Slider
+
+You can use the `SliderThumb` component to enable selection of multiple values within a range using additional thumbs.
+
+```tsx
+import { Slider, SliderThumb } from "@/components/ui/slider"
+```
+
+```tsx
+<Slider defaultValue={[20, 80]} max={100} step={1}>
+  <SliderThumb />
+  <SliderThumb />
+</Slider>
+```
+
+## Examples
+
+### Range Slider
+
+<ComponentExample src="/components/examples/slider/slider-range.tsx">
+  <SliderRange defaultValue={[20, 80]} max={100} step={1} />
+</ComponentExample>

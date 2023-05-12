@@ -59,6 +59,7 @@ import { SheetPosition } from "@/components/examples/sheet/position"
 import { SheetSize } from "@/components/examples/sheet/size"
 import { SkeletonDemo } from "@/components/examples/skeleton/demo"
 import { SliderDemo } from "@/components/examples/slider/demo"
+import { SliderRange } from "@/components/examples/slider/slider-range"
 import { SwitchDemo } from "@/components/examples/switch/demo"
 import { TableDemo } from "@/components/examples/table/demo"
 import { TabsDemo } from "@/components/examples/tabs/demo"
@@ -156,6 +157,7 @@ export const examples = {
   SheetPosition,
   SkeletonDemo,
   SliderDemo,
+  SliderRange,
   SwitchDemo,
   TableDemo,
   TabsDemo,
