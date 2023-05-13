@@ -14,6 +14,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentExample } from "@/components/component-example"
@@ -170,7 +171,7 @@ const components = {
       <>
         <pre
           className={cn(
-            "mb-4 mt-6 overflow-x-auto rounded-lg border py-4 data-[theme=dark]:bg-background data-[theme=light]:bg-white",
+            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border py-4 data-[theme=dark]:bg-background data-[theme=light]:bg-white",
             className
           )}
           {...props}
@@ -209,6 +210,7 @@ const components = {
   Callout,
   ComponentExample,
   ComponentSource,
+  AspectRatio,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
   ),

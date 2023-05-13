@@ -46,8 +46,8 @@ export const STYLES = `@tailwind base;
     --popover: 224 71% 4%;
     --popover-foreground: 215 20.2% 65.1%;
  
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
  
     --border: 216 34% 17%;
     --input: 216 34% 17%;

@@ -175,6 +175,11 @@ export const components = [
     files: ["components/ui/switch.tsx"],
   },
   {
+    component: "table",
+    name: "Table",
+    files: ["components/ui/table.tsx"],
+  },
+  {
     component: "tabs",
     name: "Tabs",
     dependencies: ["@radix-ui/react-tabs"],
