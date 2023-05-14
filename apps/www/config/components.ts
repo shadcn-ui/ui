@@ -36,6 +36,7 @@ export const components = [
   {
     component: "button",
     name: "Button",
+    dependencies: ["@radix-ui/react-slot"],
     files: ["components/ui/button.tsx"],
   },
   {
