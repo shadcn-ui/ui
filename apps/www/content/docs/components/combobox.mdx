@@ -12,6 +12,8 @@ component: true
 
 The Combobox is built using a composition of the `<Popover />` and the `<Command />` components.
 
+**Be aware** the `<Command />` component utilizes [`cmdk`](https://cmdk.paco.me) which automatically will trim and lower case the `value` property.
+
 ## Installation
 
 See installation instructions for the [Popover](/docs/components/popover#installation) and the [Command](/docs/components/command#installation) components.
@@ -92,7 +94,9 @@ export function ComboboxDemo() {
                 value={framework.value}
                 onSelect={(currentValue) => {
                   setValue(
-                    currentValue === value.toLowerCase() ? "" : currentValue
+                    currentValue === value.trim().toLowerCase()
+                      ? ""
+                      : currentValue
                   )
                   setOpen(false)
                 }}

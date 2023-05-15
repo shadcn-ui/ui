@@ -71,7 +71,9 @@ export function ComboboxDemo() {
                 value={framework.value}
                 onSelect={(currentValue) => {
                   setValue(
-                    currentValue === value.toLowerCase() ? "" : currentValue
+                    currentValue === value.trim().toLowerCase()
+                      ? ""
+                      : currentValue
                   )
                   setOpen(false)
                 }}
