@@ -443,7 +443,8 @@
       {
         "name": "toaster.tsx",
         "dir": "components/ui",
-        "constent":"\"use client\"\nimport { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from \"@/components/ui/toast\"\nimport { useToast } from \"@/components/ui/use-toast\" "
+        "content": "\"use client\";\r\n\r\nimport {\r\n  Toast,\r\n  ToastClose,\r\n  ToastDescription,\r\n  ToastProvider,\r\n  ToastTitle,\r\n  ToastViewport,\r\n} from \"@/components/ui/toast\";\r\nimport { useToast } from \"@/components/ui/use-toast\";\r\n\r\nexport function Toaster() {\r\n  const { toasts } = useToast();\r\n\r\n  return (\r\n    <ToastProvider>\r\n      {toasts.map(function ({ id, title, description, action, ...props }) {\r\n        return (\r\n          <Toast key={id} {...props}>\r\n            <div className=\"grid gap-1\">\r\n              {title && <ToastTitle>{title}</ToastTitle>}\r\n              {description && <ToastDescription>{description}</ToastDescription>}\r\n            </div>\r\n            {action}\r\n            <ToastClose />\r\n          </Toast>\r\n        );\r\n      })}\r\n      <ToastViewport />\r\n    </ToastProvider>\r\n  );\r\n}\r\n"
+
       },
       {
         "name": "use-toast.ts",
