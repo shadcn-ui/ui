@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.1.3
+
+### Patch Changes
+
+- [#259](https://github.com/shadcn/ui/pull/259) [`87ad14c`](https://github.com/shadcn/ui/commit/87ad14cb2a27ee2d1000344cbe5f8f4fdbfc939a) Thanks [@ghoshnirmalya](https://github.com/ghoshnirmalya)! - add missing deps for button
+
 ## 0.1.2
 
 ### Patch Changes
