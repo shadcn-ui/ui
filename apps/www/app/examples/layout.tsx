@@ -27,11 +27,11 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
       <div className="container relative pb-10">
         <PageHeader className="page-header">
           <Link
-            href="/docs/components/data-table"
+            href="/docs/forms/react-hook-form"
             className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
           >
             🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-            Introducing Table and Data Table{" "}
+            Building forms with React Hook Form and Zod
             <ChevronRight className="ml-1 h-4 w-4" />
           </Link>
           <PageHeaderHeading className="hidden md:block">
