@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@hookform/resolvers": "^3.1.0",
     "@radix-ui/react-accessible-icon": "^1.0.1",
     "@radix-ui/react-accordion": "^1.1.0",
     "@radix-ui/react-alert-dialog": "^1.0.2",
@@ -60,6 +61,7 @@
     "react": "^18.2.0",
     "react-day-picker": "^8.6.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-wrap-balancer": "^0.4.0",
     "recharts": "^2.5.0",
     "sharp": "^0.31.3",

@@ -13,7 +13,6 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { PromoVideo } from "@/components/promo-video"
 import { StyleSwitcher } from "@/components/style-switcher"
 import DashboardPage from "@/app/examples/dashboard/page"
 
@@ -23,11 +22,11 @@ export default function IndexPage() {
       <StyleSwitcher />
       <PageHeader>
         <Link
-          href="/docs/components/data-table"
+          href="/docs/forms/react-hook-form"
           className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
         >
-          🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-          Introducing Table and Data Table{" "}
+          🎉 <Separator className="mx-2 h-4" orientation="vertical" /> Building
+          forms with React Hook Form and Zod
           <ChevronRight className="ml-1 h-4 w-4" />
         </Link>
         <PageHeaderHeading>Build your component library.</PageHeaderHeading>
