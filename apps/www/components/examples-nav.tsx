@@ -1,7 +1,8 @@
 "use client"
 
+import path from "path"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useSelectedLayoutSegments } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
@@ -23,6 +24,11 @@ const examples = [
   {
     name: "Playground",
     href: "/examples/playground",
+  },
+  {
+    name: "Settings",
+    href: "/examples/settings",
+    label: "New",
   },
   {
     name: "Music",
@@ -48,7 +54,7 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
             key={example.href}
             className={cn(
               "flex items-center px-4",
-              pathname === example.href
+              pathname?.startsWith(example.href)
                 ? "font-bold text-primary"
                 : "font-medium text-muted-foreground"
             )}
