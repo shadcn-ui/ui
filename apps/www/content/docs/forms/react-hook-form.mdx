@@ -201,7 +201,10 @@ export function ProfileForm() {
 
 That's it. You now have a fully accessible form that is type-safe with client-side validation.
 
-<ComponentExample src="/components/examples/input/react-hook-form.tsx">
+<ComponentExample
+  src="/components/examples/input/react-hook-form.tsx"
+  className="[&_[role=tablist]]:hidden [&>div>div:first-child]:hidden"
+>
   <InputReactHookForm />
 </ComponentExample>
 
