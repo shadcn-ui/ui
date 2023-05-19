@@ -1,8 +1,7 @@
 "use client"
 
-import path from "path"
 import Link from "next/link"
-import { usePathname, useSelectedLayoutSegments } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
@@ -26,8 +25,8 @@ const examples = [
     href: "/examples/playground",
   },
   {
-    name: "Settings",
-    href: "/examples/settings",
+    name: "Forms",
+    href: "/examples/forms",
     label: "New",
   },
   {

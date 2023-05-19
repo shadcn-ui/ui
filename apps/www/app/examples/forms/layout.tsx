@@ -2,33 +2,33 @@ import { Metadata } from "next"
 import Image from "next/image"
 
 import { Separator } from "@/components/ui/separator"
-import { SidebarNav } from "@/app/examples/settings/components/sidebar-nav"
+import { SidebarNav } from "@/app/examples/forms/components/sidebar-nav"
 
 export const metadata: Metadata = {
-  title: "Settings",
+  title: "Forms",
   description: "Advanced form example using react-hook-form and Zod.",
 }
 
 const sidebarNavItems = [
   {
     title: "Profile",
-    href: "/examples/settings",
+    href: "/examples/forms",
   },
   {
     title: "Account",
-    href: "/examples/settings/account",
+    href: "/examples/forms/account",
   },
   {
     title: "Appearance",
-    href: "/examples/settings/appearance",
+    href: "/examples/forms/appearance",
   },
   {
     title: "Notifications",
-    href: "/examples/settings/notifications",
+    href: "/examples/forms/notifications",
   },
   {
     title: "Display",
-    href: "/examples/settings/display",
+    href: "/examples/forms/display",
   },
 ]
 
@@ -41,17 +41,17 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
     <>
       <div className="md:hidden">
         <Image
-          src="/examples/dashboard-light.png"
+          src="/examples/forms-light.png"
           width={1280}
-          height={866}
-          alt="Dashboard"
+          height={791}
+          alt="Forms"
           className="block dark:hidden"
         />
         <Image
-          src="/examples/dashboard-dark.png"
+          src="/examples/forms-dark.png"
           width={1280}
-          height={866}
-          alt="Dashboard"
+          height={791}
+          alt="Forms"
           className="hidden dark:block"
         />
       </div>

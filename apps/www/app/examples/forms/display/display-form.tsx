@@ -1,12 +1,12 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Clock9 } from "lucide-react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { toast } from "@/components/ui/use-toast"
 import {
   Form,
   FormControl,
@@ -15,14 +15,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { toast } from "@/components/ui/use-toast"
+} from "@/components/react-hook-form/form"
 
 const items = [
   {
     id: "recents",
     label: "Recents",
-    icon: Clock9,
   },
   {
     id: "home",
@@ -56,7 +54,7 @@ type DisplayFormValues = z.infer<typeof displayFormSchema>
 
 // This can come from your database or API.
 const defaultValues: Partial<DisplayFormValues> = {
-  items: ["recents", "favorites"],
+  items: ["recents", "home"],
 }
 
 export function DisplayForm() {
@@ -103,12 +101,12 @@ export function DisplayForm() {
                       >
                         <FormControl>
                           <Checkbox
-                            checked={field.value.includes(item.id)}
+                            checked={field.value?.includes(item.id)}
                             onCheckedChange={(checked) => {
                               return checked
                                 ? field.onChange([...field.value, item.id])
                                 : field.onChange(
-                                    field.value.filter(
+                                    field.value?.filter(
                                       (value) => value !== item.id
                                     )
                                   )

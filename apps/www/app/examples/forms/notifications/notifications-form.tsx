@@ -7,6 +7,9 @@ import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Switch } from "@/components/ui/switch"
+import { toast } from "@/components/ui/use-toast"
 import {
   Form,
   FormControl,
@@ -15,14 +18,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Switch } from "@/components/ui/switch"
-import { toast } from "@/components/ui/use-toast"
+} from "@/components/react-hook-form/form"
 
 const notificationsFormSchema = z.object({
   type: z.enum(["all", "mentions", "none"], {
-    required_error: "You need to select at least one notification type",
+    required_error: "You need to select a notification type.",
   }),
   mobile: z.boolean().default(false).optional(),
   communication_emails: z.boolean().default(false).optional(),
@@ -209,7 +209,7 @@ export function NotificationsForm() {
                 </FormLabel>
                 <FormDescription>
                   You can manage your mobile notifications in the{" "}
-                  <Link href="/examples/settings">mobile settings</Link> page.
+                  <Link href="/examples/forms">mobile settings</Link> page.
                 </FormDescription>
               </div>
             </FormItem>
