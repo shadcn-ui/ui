@@ -18,14 +18,9 @@ import {
 } from "@/components/react-hook-form/form"
 
 const FormSchema = z.object({
-  username: z
-    .string()
-    .min(2, {
-      message: "Username must be at least 2 characters.",
-    })
-    .max(10, {
-      message: "Username must not be longer than 10 characters.",
-    }),
+  username: z.string().min(2, {
+    message: "Username must be at least 2 characters.",
+  }),
 })
 
 export function InputReactHookForm() {

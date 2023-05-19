@@ -37,6 +37,11 @@ const nextConfig = {
         destination: "/docs/figma",
         permanent: true,
       },
+      {
+        source: "/docs/forms",
+        destination: "/docs/forms/react-hook-form",
+        permanent: false,
+      },
     ]
   },
 }
