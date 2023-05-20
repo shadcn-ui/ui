@@ -59,7 +59,7 @@ export function AppearanceForm() {
         <FormField
           control={form.control}
           name="font"
-          render={() => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Font</FormLabel>
               <div className="relative w-max">
@@ -69,7 +69,7 @@ export function AppearanceForm() {
                       buttonVariants({ variant: "outline" }),
                       "w-[200px] appearance-none bg-transparent font-normal"
                     )}
-                    {...form.register("font")}
+                    {...field}
                   >
                     <option value="inter">Inter</option>
                     <option value="manrope">Manrope</option>
