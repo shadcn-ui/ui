@@ -91,11 +91,11 @@ export function ProfileForm() {
         <FormField
           control={form.control}
           name="username"
-          render={() => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...form.register("username")} />
+                <Input placeholder="shadcn" {...field} />
               </FormControl>
               <FormDescription>
                 This is your public display name. It can be your real name or a
@@ -134,14 +134,14 @@ export function ProfileForm() {
         <FormField
           control={form.control}
           name="bio"
-          render={() => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Bio</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="Tell us a little bit about yourself"
                   className="resize-none"
-                  {...form.register("bio")}
+                  {...field}
                 />
               </FormControl>
               <FormDescription>
