@@ -93,21 +93,19 @@ export function AccountForm() {
         <FormField
           control={form.control}
           name="name"
-          render={() => {
-            return (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Your name" {...form.register("name")} />
-                </FormControl>
-                <FormDescription>
-                  This is the name that will be displayed on your profile and in
-                  emails.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )
-          }}
+          render={() => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input placeholder="Your name" {...form.register("name")} />
+              </FormControl>
+              <FormDescription>
+                This is the name that will be displayed on your profile and in
+                emails.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
         />
         <FormField
           control={form.control}
