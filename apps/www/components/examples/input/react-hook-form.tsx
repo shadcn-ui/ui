@@ -45,11 +45,11 @@ export function InputReactHookForm() {
         <FormField
           control={form.control}
           name="username"
-          render={() => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...form.register("username")} />
+                <Input placeholder="shadcn" {...field} />
               </FormControl>
               <FormDescription>
                 This is your public display name.
