@@ -103,6 +103,7 @@ export function AccountForm() {
                 This is the name that will be displayed on your profile and in
                 emails.
               </FormDescription>
+              <FormMessage />
             </FormItem>
           )}
         />
