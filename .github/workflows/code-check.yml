@@ -4,6 +4,12 @@ on:
   pull_request:
     branches: ["*"]
 
+env:
+  TURBO_API: "https://cache.turbocache.build"
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: "shadcn_ui"
+  TURBO_RUN_SUMMARY: true
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -12,6 +18,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - uses: turbocache-build/turbocache-action@v1
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -47,6 +55,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - uses: turbocache-build/turbocache-action@v1
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -84,6 +94,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - uses: turbocache-build/turbocache-action@v1
 
       - name: Install Node.js
         uses: actions/setup-node@v3
