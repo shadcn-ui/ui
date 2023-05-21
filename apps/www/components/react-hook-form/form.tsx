@@ -11,6 +11,7 @@ import {
 } from "react-hook-form"
 
 import { cn } from "@/lib/utils"
+import { InputProps } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 const Form = FormProvider
@@ -100,6 +101,29 @@ const FormLabel = React.forwardRef<
   )
 })
 FormLabel.displayName = "FormLabel"
+
+const FormInput = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, ...props }, ref) => {
+    const { error, formItemId } = useFormField()
+
+    return (
+      <input
+        ref={ref}
+        id={formItemId}
+        className={cn(
+          "flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          error &&
+            "border-destructive text-destructive placeholder:text-destructive focus:ring-destructive",
+          !error &&
+            "border-input bg-transparent  placeholder:text-muted-foreground",
+          className
+        )}
+        {...props}
+      />
+    )
+  }
+)
+FormInput.displayName = "FormInput"
 
 const FormControl = React.forwardRef<
   React.ElementRef<typeof Slot>,
