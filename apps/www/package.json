@@ -55,7 +55,7 @@
     "contentlayer": "0.3.0",
     "date-fns": "^2.29.3",
     "lucide-react": "0.214.0",
-    "next": "13.3.5-canary.5",
+    "next": "13.4.3",
     "next-contentlayer": "0.3.0",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
