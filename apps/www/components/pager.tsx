@@ -3,8 +3,8 @@ import { Doc } from "contentlayer/generated"
 import { NavItem, NavItemWithChildren } from "types/nav"
 
 import { docsConfig } from "@/config/docs"
-import { Icons } from "@/components/icons"
 import { buttonVariants } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 interface DocsPagerProps {
   doc: Doc
@@ -58,7 +58,9 @@ export function getPagerForDoc(doc: Doc) {
 }
 
 export function flatten(links: NavItemWithChildren[]): NavItem[] {
-  return links.reduce<NavItem[]>((flat, link) => {
-    return flat.concat(link.items?.length ? flatten(link.items) : link)
-  }, [])
+  return links
+    .reduce<NavItem[]>((flat, link) => {
+      return flat.concat(link.items?.length ? flatten(link.items) : link)
+    }, [])
+    .filter((link) => !link?.disabled)
 }

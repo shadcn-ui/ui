@@ -20,7 +20,13 @@ npx shadcn-ui add button
     <AccordionTrigger>Manual Installation</AccordionTrigger>
     <AccordionContent>
 
-1. Copy and paste the following code into your project.
+1. Install the `@radix-ui/react-slot` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+2.
 
 <ComponentSource src="/components/ui/button.tsx" />
 
@@ -54,6 +60,14 @@ import { buttonVariants } from "@/components/ui/button"
 
 ```tsx
 <Link className={buttonVariants({ variant: "outline" })}>Click here</Link>
+```
+
+Alternatively, you can set the `asChild` parameter and nest the link component.
+
+```tsx
+<Button asChild>
+  <Link href="/login">Login</Link>
+</Button>
 ```
 
 ## Examples
@@ -118,4 +132,12 @@ import { buttonVariants } from "@/components/ui/button"
 
 <ComponentExample src="/components/examples/button/loading.tsx">
   <ButtonLoading />
+</ComponentExample>
+
+---
+
+### As Child
+
+<ComponentExample src="/components/examples/button/as-child.tsx">
+  <ButtonAsChild />
 </ComponentExample>

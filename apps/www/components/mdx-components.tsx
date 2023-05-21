@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NpmCommands } from "types/unist"
 
+import { Event } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import {
   Accordion,
@@ -13,6 +14,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentExample } from "@/components/component-example"
@@ -157,17 +159,19 @@ const components = {
     __yarnCommand__,
     __withMeta__,
     __src__,
+    __event__,
     ...props
   }: React.HTMLAttributes<HTMLPreElement> & {
     __rawString__?: string
     __withMeta__?: boolean
     __src__?: string
+    __event__?: Event["name"]
   } & NpmCommands) => {
     return (
       <>
         <pre
           className={cn(
-            "mb-4 mt-6 overflow-x-auto rounded-lg border py-4 data-[theme=dark]:bg-background data-[theme=light]:bg-white",
+            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border py-4 data-[theme=dark]:bg-background data-[theme=light]:bg-white",
             className
           )}
           {...props}
@@ -176,6 +180,7 @@ const components = {
           <CopyButton
             value={__rawString__}
             src={__src__}
+            event={__event__}
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
@@ -205,12 +210,13 @@ const components = {
   Callout,
   ComponentExample,
   ComponentSource,
+  AspectRatio,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
   ),
   Steps: ({ ...props }) => (
     <div
-      className="[&>h3]:step mb-12 ml-4 border-l pl-6 [counter-reset:step]"
+      className="[&>h3]:step mb-12 ml-4 border-l pl-8 [counter-reset:step]"
       {...props}
     />
   ),

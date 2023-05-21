@@ -18,7 +18,7 @@ import {
 
 const SHEET_SIZES = ["sm", "default", "lg", "xl", "full", "content"] as const
 
-type SheetSize = typeof SHEET_SIZES[number]
+type SheetSize = (typeof SHEET_SIZES)[number]
 
 export function SheetSize() {
   const [size, setSize] = useState<SheetSize>("default")

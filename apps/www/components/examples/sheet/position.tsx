@@ -18,7 +18,7 @@ import {
 
 const SHEET_POSITIONS = ["top", "right", "bottom", "left"] as const
 
-type SheetPosition = typeof SHEET_POSITIONS[number]
+type SheetPosition = (typeof SHEET_POSITIONS)[number]
 
 export function SheetPosition() {
   const [position, setPosition] = useState<SheetPosition>("right")

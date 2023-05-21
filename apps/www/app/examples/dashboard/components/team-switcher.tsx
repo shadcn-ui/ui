@@ -64,7 +64,7 @@ const groups = [
   },
 ]
 
-type Team = typeof groups[number]["teams"][number]
+type Team = (typeof groups)[number]["teams"][number]
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
@@ -82,7 +82,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
-            variant="ghost"
+            variant="outline"
             size="sm"
             role="combobox"
             aria-expanded={open}

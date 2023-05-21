@@ -11,6 +11,7 @@ import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { badgeVariants } from "@/components/ui/badge"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Icons } from "@/components/icons"
 import { Mdx } from "@/components/mdx-components"
@@ -138,8 +139,10 @@ export default async function DocPage({ params }: DocPageProps) {
         <DocsPager doc={doc} />
       </div>
       <div className="hidden text-sm xl:block">
-        <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-6">
-          <DashboardTableOfContents toc={toc} />
+        <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] overflow-hidden pt-6">
+          <ScrollArea className="pb-10">
+            <DashboardTableOfContents toc={toc} />
+          </ScrollArea>
         </div>
       </div>
     </main>
