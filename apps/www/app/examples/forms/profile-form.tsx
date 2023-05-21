@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Trash2 } from "lucide-react"
 import { useFieldArray, useForm } from "react-hook-form"
 import * as z from "zod"
 
@@ -69,7 +70,7 @@ export function ProfileForm() {
     mode: "onChange",
   })
 
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     name: "urls",
     control: form.control,
   })
@@ -167,9 +168,24 @@ export function ProfileForm() {
                     Add links to your website, blog, or social media profiles.
                   </FormDescription>
                   <FormControl>
-                    <Input {...form.register(`urls.${index}.value`)} />
+                    <div className="flex flex-row gap-2">
+                      <Input {...form.register(`urls.${index}.value`)} />
+                      {fields.length > 1 && (
+                        <Button
+                          type="button"
+                          variant={"secondary"}
+                          onClick={() => remove(index)}
+                        >
+                          <Trash2 width={16} height={16} />
+                        </Button>
+                      )}
+                    </div>
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="pb-2">
+                    {form?.formState?.errors?.urls &&
+                      form?.formState?.errors?.urls[index] &&
+                      form?.formState?.errors?.urls[index]?.value?.message}
+                  </FormMessage>
                 </FormItem>
               )}
             />
