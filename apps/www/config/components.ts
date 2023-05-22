@@ -36,6 +36,7 @@ export const components = [
   {
     component: "button",
     name: "Button",
+    dependencies: ["@radix-ui/react-slot"],
     files: ["components/ui/button.tsx"],
   },
   {
@@ -172,6 +173,11 @@ export const components = [
     name: "Switch",
     dependencies: ["@radix-ui/react-switch"],
     files: ["components/ui/switch.tsx"],
+  },
+  {
+    component: "table",
+    name: "Table",
+    files: ["components/ui/table.tsx"],
   },
   {
     component: "tabs",

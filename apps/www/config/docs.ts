@@ -21,7 +21,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Figma",
-      href: "/figma",
+      href: "/docs/figma",
     },
     {
       title: "GitHub",
@@ -70,8 +70,26 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Figma",
-          href: "/figma",
+          href: "/docs/figma",
           items: [],
+        },
+      ],
+    },
+    {
+      title: "Forms",
+      items: [
+        {
+          title: "React Hook Form",
+          href: "/docs/forms/react-hook-form",
+          label: "New",
+          items: [],
+        },
+        {
+          title: "TanStack Form",
+          href: "#",
+          items: [],
+          label: "Soon",
+          disabled: true,
         },
       ],
     },
@@ -86,7 +104,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Alert",
           href: "/docs/components/alert",
-          label: "New",
           items: [],
         },
         {
@@ -107,7 +124,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Badge",
           href: "/docs/components/badge",
-          label: "New",
           items: [],
         },
         {
@@ -118,13 +134,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Calendar",
           href: "/docs/components/calendar",
-          label: "New",
           items: [],
         },
         {
           title: "Card",
           href: "/docs/components/card",
-          label: "New",
           items: [],
         },
         {
@@ -150,6 +164,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Context Menu",
           href: "/docs/components/context-menu",
+          items: [],
+        },
+        {
+          title: "Data Table",
+          href: "/docs/components/data-table",
+          label: "New",
           items: [],
         },
         {
@@ -230,7 +250,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Skeleton",
           href: "/docs/components/skeleton",
-          label: "New",
           items: [],
         },
         {
@@ -241,6 +260,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Switch",
           href: "/docs/components/switch",
+          items: [],
+        },
+        {
+          title: "Table",
+          href: "/docs/components/table",
+          label: "New",
           items: [],
         },
         {
