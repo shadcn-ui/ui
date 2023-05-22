@@ -25,6 +25,11 @@ const examples = [
     href: "/examples/playground",
   },
   {
+    name: "Forms",
+    href: "/examples/forms",
+    label: "New",
+  },
+  {
     name: "Music",
     href: "/examples/music",
   },
@@ -48,7 +53,7 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
             key={example.href}
             className={cn(
               "flex items-center px-4",
-              pathname === example.href
+              pathname?.startsWith(example.href)
                 ? "font-bold text-primary"
                 : "font-medium text-muted-foreground"
             )}

@@ -58,13 +58,14 @@ export function MobileNav() {
                 {item?.items?.length &&
                   item.items.map((item) => (
                     <React.Fragment key={item.href}>
-                      {item.href ? (
-                        <MobileLink href={item.href} onOpenChange={setOpen}>
-                          {item.title}
-                        </MobileLink>
-                      ) : (
-                        item.title
-                      )}
+                      {!item.disabled &&
+                        (item.href ? (
+                          <MobileLink href={item.href} onOpenChange={setOpen}>
+                            {item.title}
+                          </MobileLink>
+                        ) : (
+                          item.title
+                        ))}
                     </React.Fragment>
                   ))}
               </div>
