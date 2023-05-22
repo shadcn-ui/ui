@@ -103,7 +103,7 @@ import Link from "next/link"
 import * as z from "zod"
 
 const formSchema = z.object({
-  name: z.string().min(2).max(50),
+  username: z.string().min(2).max(50),
 })
 ```
 
@@ -154,7 +154,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import {
   Form,
   FormControl,
@@ -163,7 +162,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/form"
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
   username: z.string().min(2, {
