@@ -111,7 +111,7 @@ const formSchema = z.object({
 
 Use the `useForm` hook from `react-hook-form` to create a form.
 
-```tsx showLineNumbers {4,14-17,19-24}
+```tsx showLineNumbers {4,14-20,22-27}
 "use client"
 
 import Link from "next/link"
@@ -128,6 +128,9 @@ export function ProfileForm() {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+    },
   })
 
   // 2. Define a submit handler.
