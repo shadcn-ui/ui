@@ -76,6 +76,24 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Forms",
+      items: [
+        {
+          title: "React Hook Form",
+          href: "/docs/forms/react-hook-form",
+          label: "New",
+          items: [],
+        },
+        {
+          title: "TanStack Form",
+          href: "#",
+          items: [],
+          label: "Soon",
+          disabled: true,
+        },
+      ],
+    },
+    {
       title: "Components",
       items: [
         {
