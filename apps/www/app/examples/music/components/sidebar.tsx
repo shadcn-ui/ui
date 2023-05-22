@@ -80,8 +80,9 @@ export function Sidebar({ className, playlists }: SidebarProps) {
           </h2>
           <ScrollArea className="h-[300px] px-2">
             <div className="space-y-1 p-2">
-              {playlists?.map((playlist) => (
+              {playlists?.map((playlist, i) => (
                 <Button
+                  key={`${playlist}-${i}`}
                   variant="ghost"
                   size="sm"
                   className="w-full justify-start font-normal"
