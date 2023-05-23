@@ -103,7 +103,7 @@ import Link from "next/link"
 import * as z from "zod"
 
 const formSchema = z.object({
-  name: z.string().min(2).max(50),
+  username: z.string().min(2).max(50),
 })
 ```
 
@@ -111,7 +111,7 @@ const formSchema = z.object({
 
 Use the `useForm` hook from `react-hook-form` to create a form.
 
-```tsx showLineNumbers {4,14-17,19-24}
+```tsx showLineNumbers {4,14-20,22-27}
 "use client"
 
 import Link from "next/link"
@@ -128,6 +128,9 @@ export function ProfileForm() {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+    },
   })
 
   // 2. Define a submit handler.
@@ -138,6 +141,8 @@ export function ProfileForm() {
   }
 }
 ```
+
+Since `FormField` is using a controlled component, you need to provide a default value for the field. See the [React Hook Form docs](https://react-hook-form.com/api/usecontroller) to learn more about controlled components.
 
 ### Build your form
 
@@ -151,7 +156,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import {
   Form,
   FormControl,
@@ -160,7 +164,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/form"
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
   username: z.string().min(2, {
