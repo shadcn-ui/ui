@@ -143,9 +143,11 @@ async function main() {
       if (!selectedComponents?.length) {
         selectedComponents = await promptForComponents(availableComponents)
       }
-            
+
       const dir = await promptForDestinationDir(
-        projectInfo?.srcComponentsUiDir ? "./src/components/ui" : "./components/ui"
+        projectInfo?.srcComponentsUiDir
+          ? "./src/components/ui"
+          : "./components/ui"
       )
 
       if (!selectedComponents?.length) {
