@@ -1,11 +1,4 @@
 import React from "react"
-import { ChangeHandler } from "react-hook-form"
-
-export type CheckboxRHFOptions = {
-  ref?: React.ForwardedRef<HTMLInputElement | null>
-  onChange?: React.FormEventHandler<HTMLButtonElement> | undefined
-  onBlur?: React.FocusEventHandler<HTMLButtonElement> | undefined
-}
 
 export default function useCheckbox(options: CheckboxRHFOptions) {
   const { ref, onBlur, onChange } = options
@@ -65,4 +58,17 @@ function findInput(
       return
     }
   }
+}
+
+// This matches the react-hook-form (v7) ChangeHandler type
+// type ChangeHandler is compatible with the React.EventHandler type
+type ChangeHandler = (event: {
+  target: any
+  type?: any
+}) => Promise<void | boolean>
+
+export type CheckboxRHFOptions = {
+  ref?: React.ForwardedRef<HTMLInputElement | null>
+  onChange?: React.FormEventHandler<HTMLButtonElement> | undefined
+  onBlur?: React.FocusEventHandler<HTMLButtonElement> | undefined
 }
