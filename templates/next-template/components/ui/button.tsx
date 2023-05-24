@@ -1,15 +1,9 @@
 import * as React from "react"
 import { VariantProps, cva } from "class-variance-authority"
 
-import { cn, unmap } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
-const buttonBaseStyles = {
-  layout: "inline-flex items-center justify-center",
-  font: "text-sm font-medium transition-colors",
-  focus: "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-  disabled: "disabled:opacity-50 disabled:pointer-events-none",
-  other: "rounded-md ring-offset-background",
-}
+const buttonBaseStyles = "inline-flex items-center justify-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none rounded-md ring-offset-background";
 
 const buttonVariantStyles = {
   variant: {
@@ -30,7 +24,7 @@ const buttonVariantStyles = {
   },
 }
 
-const buttonVariants = cva(unmap(buttonBaseStyles),
+const buttonVariants = cva(buttonBaseStyles,
   {
     variants: buttonVariantStyles,
     defaultVariants: {
