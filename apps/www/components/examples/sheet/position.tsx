@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -66,7 +67,9 @@ export function SheetPosition() {
             </div>
           </div>
           <SheetFooter>
-            <Button type="submit">Save changes</Button>
+            <SheetClose asChild>
+              <Button type="submit">Save changes</Button>
+            </SheetClose>
           </SheetFooter>
         </SheetContent>
       </Sheet>
