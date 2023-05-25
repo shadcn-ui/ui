@@ -47,6 +47,7 @@
     "commander": "^10.0.0",
     "execa": "^7.0.0",
     "fs-extra": "^11.1.0",
+    "https-proxy-agent": "^6.2.0",
     "node-fetch": "^3.3.0",
     "ora": "^6.1.2",
     "prompts": "^2.4.2",
