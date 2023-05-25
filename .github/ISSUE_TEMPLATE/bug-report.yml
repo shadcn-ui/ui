@@ -1,0 +1,29 @@
+name: "\U0001F41E Bug report"
+description: Create a report to help us improve shadcn/ui
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please use a template below to create a minimal reproduction
+        👉 https://codesandbox.io/p/sandbox/shadcn-ui-n0vfo0
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Please provide a link to a repo that can reproduce the problem you ran into. A [**minimal reproduction**](https://codesandbox.io/p/sandbox/shadcn-ui-n0vfo0) is required unless you are absolutely sure that the issue is obvious and the provided information is enough to understand the problem. If no reproduction is provided we might close it.
+      placeholder: Reproduction
+    validations:
+      required: true
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      placeholder: Bug description
+    validations:
+      required: true
+  - type: textarea
+    id: additonal
+    attributes:
+      label: Additional context
+      description: If applicable, add any other context about the problem here (e.g. screenshots, logs, etc.).
