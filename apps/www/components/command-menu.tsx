@@ -3,7 +3,6 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { DialogProps } from "@radix-ui/react-alert-dialog"
-import { allDocs } from "contentlayer/generated"
 import { Circle, File, Laptop, Moon, SunMedium } from "lucide-react"
 import { useTheme } from "next-themes"
 
@@ -68,6 +67,7 @@ export function CommandMenu({ ...props }: DialogProps) {
               .map((navItem) => (
                 <CommandItem
                   key={navItem.href}
+                  value={navItem.title}
                   onSelect={() => {
                     runCommand(() => router.push(navItem.href as string))
                   }}
@@ -82,6 +82,7 @@ export function CommandMenu({ ...props }: DialogProps) {
               {group.items.map((navItem) => (
                 <CommandItem
                   key={navItem.href}
+                  value={navItem.title}
                   onSelect={() => {
                     runCommand(() => router.push(navItem.href as string))
                   }}
