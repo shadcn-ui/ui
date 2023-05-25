@@ -33,7 +33,7 @@
     "pub:beta": "cd packages/cli && pnpm pub:beta",
     "pub:release": "cd packages/cli && pnpm pub:release"
   },
-  "packageManager": "pnpm@7.13.5",
+  "packageManager": "pnpm@8.5.1",
   "dependencies": {
     "@babel/core": "^7.20.7",
     "@changesets/changelog-github": "^0.4.8",
