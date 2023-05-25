@@ -11,6 +11,8 @@ const Sheet = SheetPrimitive.Root
 
 const SheetTrigger = SheetPrimitive.Trigger
 
+const SheetClose = SheetPrimitive.Close
+
 const portalVariants = cva("fixed inset-0 z-50 flex", {
   variants: {
     position: {
@@ -222,6 +224,7 @@ SheetDescription.displayName = SheetPrimitive.Description.displayName
 export {
   Sheet,
   SheetTrigger,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetFooter,
