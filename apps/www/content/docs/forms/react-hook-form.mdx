@@ -96,10 +96,9 @@ npm install react-hook-form zod @hookform/resolvers @radix-ui/react-slot
 
 Define the shape of your form using a Zod schema. You can read more about using Zod in the [Zod documentation](https://zod.dev).
 
-```tsx showLineNumbers {4,6-8}
+```tsx showLineNumbers {3,5-7}
 "use client"
 
-import Link from "next/link"
 import * as z from "zod"
 
 const formSchema = z.object({
@@ -111,11 +110,11 @@ const formSchema = z.object({
 
 Use the `useForm` hook from `react-hook-form` to create a form.
 
-```tsx showLineNumbers {4,14-20,22-27}
+```tsx showLineNumbers {3-4,14-20,22-27}
 "use client"
 
-import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 const formSchema = z.object({
@@ -148,11 +147,11 @@ Since `FormField` is using a controlled component, you need to provide a default
 
 We can now use the `<Form />` components to build our form.
 
-```tsx showLineNumbers {7-17,28-50}
+```tsx showLineNumbers {7-17,41-63}
 "use client"
 
-import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
@@ -174,7 +173,20 @@ const formSchema = z.object({
 })
 
 export function ProfileForm() {
-  // ...
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+    },
+  })
+
+  // 2. Define a submit handler.
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values)
+  }
 
   return (
     <Form {...form}>
