@@ -11,17 +11,16 @@ const Checkbox = React.forwardRef<
   HTMLInputElement | null,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
 >(({ className, onBlur, onChange, ...props }, ref) => {
-  const { spyRef, handleClick } = useCheckbox({ ref, onBlur, onChange })
+  const cRef = useCheckbox({ ref, onBlur, onChange })
 
   return (
     <CheckboxPrimitive.Root
-      ref={spyRef}
+      ref={cRef}
       className={cn(
         "peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
         className
       )}
       {...props}
-      onClick={handleClick}
     >
       <CheckboxPrimitive.Indicator
         className={cn("flex items-center justify-center text-current")}
