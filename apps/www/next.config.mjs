@@ -7,6 +7,11 @@ const nextConfig = {
   images: {
     domains: ["avatars.githubusercontent.com", "images.unsplash.com"],
   },
+  modularizeImports: {
+    "lucide-react": {
+      transform: "lucide-react/dist/esm/icons/{{ kebabCase member }}",
+    },
+  },
   experimental: {
     appDir: true,
   },
