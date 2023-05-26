@@ -65,7 +65,7 @@ export const components = [
   {
     component: "command",
     name: "Command",
-    dependencies: ["cmdk"],
+    dependencies: ["@radix-ui/react-dialog", "cmdk"],
     files: ["components/ui/command.tsx"],
   },
   {
