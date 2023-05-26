@@ -1,51 +1,94 @@
-import React from "react"
+import React, { useRef } from "react"
 
 export default function useCheckbox(options: CheckboxRHFOptions) {
   const { ref, onBlur, onChange } = options
-
-  const inputRef = React.useRef<HTMLInputElement | null>(null)
-  const interceptorRef = React.useRef<HTMLButtonElement | null>(null)
+  const spyRef = useRef<HTMLButtonElement | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null)
 
   React.useEffect(() => {
     if (!ref) return
 
-    findInput(interceptorRef, inputRef)
-    const inputEl = inputRef.current
-
-    if (inputEl) {
-      inputEl.addEventListener("blur", onBlur as ChangeHandler)
-      inputEl.addEventListener("change", onChange as ChangeHandler)
+    if (!inputRef.current) {
+      inputRef.current = findInput(spyRef)
     }
 
-    if (ref instanceof Function) {
-      ref(inputEl)
-    } else {
-      ref.current = inputEl
+    const inputEl = inputRef.current
+    const btnElement = spyRef.current
+    setTimeout(() => btnElement?.removeAttribute("value"), 0)
+
+    function handleButtonClick() {
+      inputEl?.click()
+    }
+
+    function handleButtonBlur() {
+      inputEl?.focus()
+    }
+
+    function handleInputFocus() {
+      inputEl?.blur()
+    }
+
+    function handleInputChange(e: Event) {
+      setTimeout(() => {
+        const el = inputRef.current
+        el?.removeAttribute("value")
+        if (!ref) return
+
+        if (ref instanceof Function) {
+          ref(el)
+        } else {
+          ref.current = el
+        }
+
+        ;(onChange as ChangeHandler)(e)
+      }, 0)
+    }
+
+    function handleInputBlur(e: FocusEvent) {
+      setTimeout(() => {
+        const el = inputRef.current
+        el?.removeAttribute("value")
+        if (!ref) return
+
+        if (ref instanceof Function) {
+          ref(el)
+        } else {
+          ref.current = el
+        }
+
+        ;(onBlur as ChangeHandler)(e)
+      }, 0)
+    }
+
+    if (inputEl && btnElement) {
+      btnElement.addEventListener("click", handleButtonClick)
+      btnElement.addEventListener("blur", handleButtonBlur)
+      inputEl.addEventListener("focus", handleInputFocus)
+      inputEl.addEventListener("blur", handleInputBlur)
+      inputEl.addEventListener("change", handleInputChange)
     }
 
     return () => {
       if (inputEl) {
-        inputEl.removeEventListener("blur", onBlur as ChangeHandler)
-        inputEl.removeEventListener("change", onChange as ChangeHandler)
+        inputEl.addEventListener("focus", handleInputFocus)
+        inputEl.removeEventListener("blur", handleInputBlur)
+        inputEl.removeEventListener("change", handleInputChange)
+      }
+
+      if (btnElement) {
+        btnElement.addEventListener("click", handleButtonClick)
+        btnElement.addEventListener("blur", handleButtonBlur)
       }
     }
-  }, [ref, onBlur, onChange])
+  }, [ref, spyRef, onBlur, onChange])
 
-  const handleClick = React.useCallback(() => {
-    inputRef.current?.click()
-  }, [])
-
-  return {
-    spyRef: interceptorRef,
-    handleClick,
-  }
+  return spyRef
 }
 
 function findInput(
-  siblingRef: React.MutableRefObject<HTMLButtonElement | null>,
-  inputRef: React.MutableRefObject<HTMLInputElement | null>
+  siblingRef: React.MutableRefObject<HTMLButtonElement | null>
 ) {
-  if (!siblingRef.current) return
+  if (!siblingRef.current) return null
 
   const parent = siblingRef.current.parentNode
 
@@ -54,10 +97,13 @@ function findInput(
   while (sibling) {
     sibling = sibling.nextSibling
     if (sibling?.nodeName === "INPUT") {
-      inputRef.current = sibling as HTMLInputElement
-      return
+      const el = sibling as HTMLInputElement
+      setTimeout(() => el.removeAttribute("value"), 0)
+      return el
     }
   }
+
+  return null
 }
 
 // This matches the react-hook-form (v7) ChangeHandler type
