@@ -38,7 +38,36 @@ Follow the same pattern for any other function you use to generate class names i
 
 ## Class sorting
 
-There are two main ways to sort your Tailwind classes.
+There are a few ways to sort your Tailwind classes.
+
+## eslint-plugin-tailwindcss (recommended)
+
+If you are using ESLint, you can use the [eslint plugin for Tailwind](https://www.npmjs.com/package/eslint-plugin-tailwindcss),
+which supports [a few additional rules](https://github.com/francoismassart/eslint-plugin-tailwindcss#supported-rules) in
+addition to those offered by `prettier-plugin-tailwindcss`. You can install it using their
+[installation instructions](https://github.com/francoismassart/eslint-plugin-tailwindcss#installation).
+
+In order to support `cva` and `cn`, you need to modify `callees` field in the
+[plugin settings](https://github.com/francoismassart/eslint-plugin-tailwindcss#optional-shared-settings)
+of your ESLint config:
+
+```json
+{
+  "settings": {
+    "tailwindcss": {
+      "callees": ["cn", "cva"],
+    }
+  }
+}
+```
+
+To support other functions, add them to the `callees` array. For example:
+
+- `classNames` from [classnames](https://www.npmjs.com/package/classnames)
+
+```json
+["classNames"]
+```
 
 ### prettier-plugin-tailwindcss
 
@@ -53,10 +82,10 @@ However, it exposes the equivalent of the Tailwind extension's `tailwind.classAt
 `tailwindAttributes` and `tailwindFunctions` respectively:
 
 ```js
-// prettier.config.js
+// Example prettier.config.js
 module.exports = {
   tailwindAttributes: ["myCustomClassNameAttribute"],
-  tailwindFunctions: ["cn", "clsx", "twMerge", "tw"],
+  tailwindFunctions: ["cn", "cva", "clsx", "twMerge", "tw", "classNames"],
 }
 ```
 
