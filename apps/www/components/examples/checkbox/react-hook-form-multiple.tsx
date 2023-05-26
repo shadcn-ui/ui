@@ -6,16 +6,8 @@ import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/react-hook-form/form"
 
 const items = [
   {
@@ -45,16 +37,24 @@ const items = [
 ] as const
 
 const FormSchema = z.object({
-  items: z.array(z.string()).refine((value) => value.some((item) => item), {
-    message: "You have to select at least one item.",
-  }),
+  recents: z.boolean().default(false).optional(),
+  home: z.boolean().default(false).optional(),
+  applications: z.boolean().default(false).optional(),
+  desktop: z.boolean().default(false).optional(),
+  downloads: z.boolean().default(false).optional(),
+  documents: z.boolean().default(false).optional(),
 })
 
 export function CheckboxReactHookFormMultiple() {
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const { register, handleSubmit } = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      items: ["recents", "home"],
+      recents: false,
+      home: false,
+      applications: false,
+      desktop: false,
+      downloads: false,
+      documents: false,
     },
   })
 
@@ -70,58 +70,24 @@ export function CheckboxReactHookFormMultiple() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="items"
-          render={() => (
-            <FormItem>
-              <div className="mb-4">
-                <FormLabel className="text-base">Sidebar</FormLabel>
-                <FormDescription>
-                  Select the items you want to display in the sidebar.
-                </FormDescription>
-              </div>
-              {items.map((item) => (
-                <FormField
-                  key={item.id}
-                  control={form.control}
-                  name="items"
-                  render={({ field }) => {
-                    return (
-                      <FormItem
-                        key={item.id}
-                        className="flex flex-row items-start space-x-3 space-y-0"
-                      >
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value?.includes(item.id)}
-                            onCheckedChange={(checked) => {
-                              return checked
-                                ? field.onChange([...field.value, item.id])
-                                : field.onChange(
-                                    field.value?.filter(
-                                      (value) => value !== item.id
-                                    )
-                                  )
-                            }}
-                          />
-                        </FormControl>
-                        <FormLabel className="font-normal">
-                          {item.label}
-                        </FormLabel>
-                      </FormItem>
-                    )
-                  }}
-                />
-              ))}
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="mb-4">
+        <Label className="text-base">Sidebar</Label>
+        <p className="text-sm text-muted-foreground">
+          Select the items you want to display in the sidebar.
+        </p>
+      </div>
+      <div className="mb-8 space-y-2">
+        {items.map((item) => (
+          <div key={item.id} className="flex items-center gap-3">
+            <Checkbox id={item.id} {...register(item.id)} />
+            <Label className="font-normal" htmlFor={item.id}>
+              {item.label}
+            </Label>
+          </div>
+        ))}
+      </div>
+      <Button type="submit">Submit</Button>
+    </form>
   )
 }
