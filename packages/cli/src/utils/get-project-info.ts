@@ -15,7 +15,7 @@ export async function getProjectInfo() {
   try {
     const tsconfig = await getTsConfig()
     const paths = tsconfig?.compilerOptions?.paths
-    const alias = paths ? Object.keys(paths)[0].replace("*", "") : null
+    const alias = paths ? Object.keys(paths).find(str => str.endsWith('*')).replace("*", "") : null
 
     return {
       tsconfig,
