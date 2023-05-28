@@ -5,7 +5,6 @@ import fs from "fs-extra"
 export async function getProjectInfo() {
   const info = {
     tsconfig: null,
-    alias: null,
     srcDir: false,
     appDir: false,
     srcComponentsUiDir: false,
@@ -19,7 +18,6 @@ export async function getProjectInfo() {
 
     return {
       tsconfig,
-      alias,
       srcDir: existsSync(path.resolve("./src")),
       appDir:
         existsSync(path.resolve("./app")) ||
