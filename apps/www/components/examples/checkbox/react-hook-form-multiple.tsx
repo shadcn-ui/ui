@@ -36,20 +36,35 @@ const items = [
   },
 ] as const
 
-const FormSchema = z.object({
-  recents: z.boolean().default(false).optional(),
-  home: z.boolean().default(false).optional(),
-  applications: z.boolean().default(false).optional(),
-  desktop: z.boolean().default(false).optional(),
-  downloads: z.boolean().default(false).optional(),
-  documents: z.boolean().default(false).optional(),
+const FormSchema = z
+  .object({
+    recents: z.boolean().optional(),
+    home: z.boolean().optional(),
+    applications: z.boolean().optional(),
+    desktop: z.boolean().optional(),
+    downloads: z.boolean().optional(),
+    documents: z.boolean().optional(),
+  })
+  .refine((_items) => {
+    const x = Object.values(_items).some(Boolean)
+    console.log("x", x)
+    return x
+  }, "You have to select at least one item.")
+
+type Items = z.infer<typeof FormSchema>
+
+const prettifyRenderedItems = (obj: Items) => ({
+  items: Object.entries(obj).reduce(
+    (acc, [item, selected]) => (selected ? [...acc, item] : acc),
+    [] as string[]
+  ),
 })
 
 export function CheckboxReactHookFormMultiple() {
-  const { register, handleSubmit } = useForm<z.infer<typeof FormSchema>>({
+  const { register, handleSubmit } = useForm<Items>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      recents: false,
+      recents: true,
       home: false,
       applications: false,
       desktop: false,
@@ -58,16 +73,20 @@ export function CheckboxReactHookFormMultiple() {
     },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit(data: Items) {
     toast({
       title: "You submitted the following values:",
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          <code className="text-white">
+            {JSON.stringify(prettifyRenderedItems(data), null, 2)}
+          </code>
         </pre>
       ),
     })
   }
+
+  console.log("re-render")
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -80,8 +99,12 @@ export function CheckboxReactHookFormMultiple() {
       <div className="mb-8 space-y-2">
         {items.map((item) => (
           <div key={item.id} className="flex items-center gap-3">
-            <Checkbox id={item.id} {...register(item.id)} />
-            <Label className="font-normal" htmlFor={item.id}>
+            <Checkbox
+              id={item.id}
+              {...register(item.id)}
+              defaultChecked={item.id === "recents"}
+            />
+            <Label htmlFor={item.id} className="font-normal">
               {item.label}
             </Label>
           </div>
