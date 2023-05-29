@@ -36,20 +36,23 @@ const items = [
   },
 ] as const
 
-const FormSchema = z
-  .object({
-    recents: z.boolean().optional(),
-    home: z.boolean().optional(),
-    applications: z.boolean().optional(),
-    desktop: z.boolean().optional(),
-    downloads: z.boolean().optional(),
-    documents: z.boolean().optional(),
-  })
-  .refine((_items) => {
-    const x = Object.values(_items).some(Boolean)
-    console.log("x", x)
-    return x
-  }, "You have to select at least one item.")
+const defaultSelectedItems = {
+  recents: true,
+  home: true,
+  applications: false,
+  desktop: false,
+  downloads: false,
+  documents: false,
+} as const
+
+const FormSchema = z.object({
+  recents: z.boolean().optional(),
+  home: z.boolean().optional(),
+  applications: z.boolean().optional(),
+  desktop: z.boolean().optional(),
+  downloads: z.boolean().optional(),
+  documents: z.boolean().optional(),
+})
 
 type Items = z.infer<typeof FormSchema>
 
@@ -63,14 +66,7 @@ const prettifyRenderedItems = (obj: Items) => ({
 export function CheckboxReactHookFormMultiple() {
   const { register, handleSubmit } = useForm<Items>({
     resolver: zodResolver(FormSchema),
-    defaultValues: {
-      recents: true,
-      home: false,
-      applications: false,
-      desktop: false,
-      downloads: false,
-      documents: false,
-    },
+    defaultValues: defaultSelectedItems,
   })
 
   function onSubmit(data: Items) {
@@ -86,8 +82,6 @@ export function CheckboxReactHookFormMultiple() {
     })
   }
 
-  console.log("re-render")
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4">
@@ -102,7 +96,7 @@ export function CheckboxReactHookFormMultiple() {
             <Checkbox
               id={item.id}
               {...register(item.id)}
-              defaultChecked={item.id === "recents"}
+              defaultChecked={defaultSelectedItems[item.id]}
             />
             <Label htmlFor={item.id} className="font-normal">
               {item.label}
