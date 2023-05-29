@@ -22,11 +22,7 @@ module.exports = {
     "",
     "^[./]",
   ],
-  importOrderSeparation: false,
-  importOrderSortSpecifiers: true,
-  importOrderBuiltinModulesToTop: true,
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
-  importOrderMergeDuplicateImports: true,
-  importOrderCombineTypeAndValueImports: true,
+  importOrderTypeScriptVersion: "4.9.5",
   plugins: ["@ianvs/prettier-plugin-sort-imports"],
 }

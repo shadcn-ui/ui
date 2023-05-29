@@ -40,7 +40,7 @@
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
-    "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
+    "@ianvs/prettier-plugin-sort-imports": "^4.0.0",
     "@manypkg/cli": "^0.20.0",
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.7",
