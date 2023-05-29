@@ -10,6 +10,17 @@ export default function useCheckbox(options: CheckboxRHFOptions) {
 
     if (!inputRef.current) {
       inputRef.current = findInput(spyRef)
+
+      setTimeout(() => {
+        const el = inputRef.current
+        el?.removeAttribute("value")
+
+        if (ref instanceof Function) {
+          ref(el)
+        } else {
+          ref.current = el
+        }
+      }, 0)
     }
 
     const inputEl = inputRef.current
