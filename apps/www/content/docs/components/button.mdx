@@ -70,6 +70,16 @@ Alternatively, you can set the `asChild` parameter and nest the link component.
 </Button>
 ```
 
+For external links, you can set the `asChild` parameter and nest an anchor element.
+
+It is recommended to use an `<a>` element to link to pages outside of your app. Framework-provided `<Link>` components from Next.js, Remix and Gatsby use client-side JavaScript for client-side routing, whereas the `<a>` element does not.
+
+```tsx
+<Button asChild>
+  <a href="https://github.com/shadcn/ui">View source code</a>
+</Button>
+```
+
 ## Examples
 
 ### Primary
