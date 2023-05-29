@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -39,7 +40,9 @@ export function SheetDemo() {
           </div>
         </div>
         <SheetFooter>
-          <Button type="submit">Save changes</Button>
+          <SheetClose asChild>
+            <Button type="submit">Save changes</Button>
+          </SheetClose>
         </SheetFooter>
       </SheetContent>
     </Sheet>

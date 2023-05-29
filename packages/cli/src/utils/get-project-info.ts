@@ -5,23 +5,23 @@ import fs from "fs-extra"
 export async function getProjectInfo() {
   const info = {
     tsconfig: null,
-    alias: null,
     srcDir: false,
     appDir: false,
+    srcComponentsUiDir: false,
+    componentsUiDir: false,
   }
 
   try {
     const tsconfig = await getTsConfig()
-    const paths = tsconfig?.compilerOptions?.paths
-    const alias = paths ? Object.keys(paths)[0].replace("*", "") : null
 
     return {
       tsconfig,
-      alias,
       srcDir: existsSync(path.resolve("./src")),
       appDir:
         existsSync(path.resolve("./app")) ||
         existsSync(path.resolve("./src/app")),
+      srcComponentsUiDir: existsSync(path.resolve("./src/components/ui")),
+      componentsUiDir: existsSync(path.resolve("./components/ui")),
     }
   } catch (error) {
     return info
