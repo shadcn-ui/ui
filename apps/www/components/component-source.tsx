@@ -12,7 +12,7 @@ interface ComponentSourceProps extends React.HTMLAttributes<HTMLDivElement> {
 export function ComponentSource({ children, className }: ComponentSourceProps) {
   return (
     <CodeBlockWrapper
-      expandButtonTitle="View Primitive"
+      expandButtonTitle="Expand"
       className={cn("my-6 overflow-hidden rounded-md", className)}
     >
       {children}

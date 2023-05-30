@@ -32,6 +32,16 @@ const nextConfig = {
         destination: "/docs/components/:path*",
         permanent: true,
       },
+      {
+        source: "/figma",
+        destination: "/docs/figma",
+        permanent: true,
+      },
+      {
+        source: "/docs/forms",
+        destination: "/docs/forms/react-hook-form",
+        permanent: false,
+      },
     ]
   },
 }
