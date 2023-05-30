@@ -5,7 +5,9 @@ import { cn } from "@/lib/utils"
 import { AccordionDemo } from "@/components/examples/accordion/demo"
 import { AlertDialogDemo } from "@/components/examples/alert-dialog/demo"
 import { AspectRatioDemo } from "@/components/examples/aspect-ratio/demo"
+import { AvatarBadgeDemo } from "@/components/examples/avatar/badge"
 import { AvatarDemo } from "@/components/examples/avatar/demo"
+import { AvatarGroupDemo } from "@/components/examples/avatar/group"
 import { BadgeDemo } from "@/components/examples/badge/demo"
 import { BadgeDestructive } from "@/components/examples/badge/destructive"
 import { BadgeOutline } from "@/components/examples/badge/outline"
@@ -51,7 +53,7 @@ export default function KitchenSinkPage() {
   return (
     <div className="container">
       <div className="grid gap-4 py-10">
-        <div className="grid grid-cols-3 items-start gap-4">
+        <div className="grid items-start grid-cols-3 gap-4">
           <div className="grid gap-4">
             <ComponentWrapper>
               <CardDemo className="w-full" />
@@ -59,10 +61,7 @@ export default function KitchenSinkPage() {
             <ComponentWrapper>
               <SliderDemo className="w-full" />
             </ComponentWrapper>
-            <ComponentWrapper
-              className="spa flex-col items-start space-x-0
-				space-y-2"
-            >
+            <ComponentWrapper className="flex-col items-start space-x-0 space-y-2 spa">
               <p className="text-sm text-muted-foreground">Documentation</p>
               <p className="text-sm font-medium leading-none">
                 You can customize the theme using{" "}
@@ -72,7 +71,7 @@ export default function KitchenSinkPage() {
                 .{" "}
                 <Link
                   href="#"
-                  className="font-medium text-primary underline underline-offset-4"
+                  className="font-medium underline text-primary underline-offset-4"
                 >
                   Click here
                 </Link>{" "}
@@ -88,9 +87,13 @@ export default function KitchenSinkPage() {
             </ComponentWrapper>
           </div>
           <div className="grid gap-4">
-            <ComponentWrapper>
+            <ComponentWrapper className="flex-col space-y-2">
               <MenubarDemo />
-              <AvatarDemo />
+              <div className="flex space-x-2">
+                <AvatarDemo />
+                <AvatarBadgeDemo />
+                <AvatarGroupDemo />
+              </div>
             </ComponentWrapper>
             <ComponentWrapper className="flex-col items-start space-x-0 space-y-2">
               <div className="flex space-x-2">

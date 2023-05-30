@@ -3,7 +3,9 @@ import { AlertDialogDemo } from "@/components/examples/alert-dialog/demo"
 import { AlertDemo } from "@/components/examples/alert/demo"
 import { AlertDestructive } from "@/components/examples/alert/destructive"
 import { AspectRatioDemo } from "@/components/examples/aspect-ratio/demo"
+import { AvatarBadgeDemo } from "@/components/examples/avatar/badge"
 import { AvatarDemo } from "@/components/examples/avatar/demo"
+import { AvatarGroupDemo } from "@/components/examples/avatar/group"
 import { BadgeDemo } from "@/components/examples/badge/demo"
 import { BadgeDestructive } from "@/components/examples/badge/destructive"
 import { BadgeOutline } from "@/components/examples/badge/outline"
@@ -110,7 +112,9 @@ export const examples = {
   AlertDialogDemo,
   AlertDestructive,
   AspectRatioDemo,
+  AvatarBadgeDemo,
   AvatarDemo,
+  AvatarGroupDemo,
   BadgeDemo,
   BadgeDestructive,
   BadgeOutline,
