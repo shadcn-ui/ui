@@ -36,6 +36,14 @@ const profileFormSchema = z.object({
     .max(30, {
       message: "Username must not be longer than 30 characters.",
     }),
+  password: z
+    .string()
+    .min(8, {
+      message: "Password must be at least 8 characters.",
+    })
+    .max(30, {
+      message: "Password must not be longer than 30 characters.",
+    }),
   email: z
     .string({
       required_error: "Please select an email to display.",
@@ -101,6 +109,19 @@ export function ProfileForm() {
                 This is your public display name. It can be your real name or a
                 pseudonym. You can only change this once every 30 days.
               </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+         <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type="password" {...field} />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
