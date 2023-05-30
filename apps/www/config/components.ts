@@ -194,7 +194,11 @@ export const components = [
     component: "toast",
     name: "Toast",
     dependencies: ["@radix-ui/react-toast"],
-    files: ["components/ui/toast.tsx", "components/ui/use-toast.ts"],
+    files: [
+      "components/ui/toast.tsx",
+      "components/ui/use-toast.ts",
+      "components/ui/toaster.tsx",
+    ],
   },
   {
     component: "toggle",
