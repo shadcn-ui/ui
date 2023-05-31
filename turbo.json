@@ -9,7 +9,8 @@
         "UPSTASH_REDIS_REST_URL",
         "UPSTASH_REDIS_REST_TOKEN",
         "COMPONENTS_BASE_URL",
-        "npm_config_user_agent"
+        "npm_config_user_agent",
+        "https_proxy"
       ],
       "outputs": ["dist/**", ".next/**"]
     },
@@ -42,6 +43,10 @@
     },
     "check": {
       "cache": false
+    },
+    "test": {
+      "cache": false,
+      "outputs": []
     }
   }
 }

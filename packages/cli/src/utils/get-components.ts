@@ -8,9 +8,9 @@ const agent = process.env.https_proxy
   : undefined
 
 const componentSchema = z.object({
-  component: z.string(),
   name: z.string(),
   dependencies: z.array(z.string()).optional(),
+  componentDependencies: z.array(z.string()).optional(),
   files: z.array(
     z.object({
       name: z.string(),

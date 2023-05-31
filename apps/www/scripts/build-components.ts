@@ -1,11 +1,18 @@
 import fs from "fs"
 import path, { basename, dirname } from "path"
 
-import { components } from "../config/components"
+import { registry, registrySchema } from "./registry"
 
-const payload = components
-  .map((component) => {
-    const files = component.files?.map((file) => {
+const result = registrySchema.safeParse(registry)
+
+if (!result.success) {
+  console.error(result.error)
+  process.exit(1)
+}
+
+const payload = result.data
+  .map((entry) => {
+    const files = entry.files?.map((file) => {
       const content = fs.readFileSync(path.join(process.cwd(), file), "utf8")
 
       return {
@@ -16,7 +23,7 @@ const payload = components
     })
 
     return {
-      ...component,
+      ...entry,
       files,
     }
   })
@@ -34,3 +41,5 @@ fs.writeFileSync(
   path.join(process.cwd(), "pages/api/components.json"),
   JSON.stringify(payload, null, 2)
 )
+
+console.log("Done!")
