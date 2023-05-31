@@ -1,5 +1,5 @@
 {
-  "name": "test-cli-no-config",
+  "name": "test-cli-config-none",
   "version": "1.0.0",
   "main": "index.js",
   "author": "shadcn",

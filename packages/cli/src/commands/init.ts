@@ -1,6 +1,6 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { Config, getConfig, promptForConfig } from "@/src/utils/get-config"
+import { getConfig, promptForConfig, type Config } from "@/src/utils/get-config"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
@@ -89,29 +89,27 @@ export const init = new Command()
 export async function runInit(targetDir: string, config: Config) {
   const spinner = ora(`Initializing project...`)?.start()
 
-  // Ensure the components directory exists.
-  if (!existsSync(config.components)) {
-    await fs.mkdir(config.components, { recursive: true })
+  // Ensure all resolved paths directories exist.
+  for (const resolvedPath of Object.values(config.resolvedPaths)) {
+    // Determine if the path is a file or directory.
+    // TODO: is there a better way to do this?
+    const dirname = path.extname(resolvedPath)
+      ? path.dirname(resolvedPath)
+      : resolvedPath
+    if (!existsSync(dirname)) {
+      await fs.mkdir(dirname, { recursive: true })
+    }
   }
-
-  // Ensure the ui components directory exits.
-  if (!existsSync(config.ui)) {
-    await fs.mkdir(config.ui, { recursive: true })
-  }
-
-  // Write utils file.
-  const utilsDir = path.dirname(config.utils)
-  if (!existsSync(utilsDir)) {
-    await fs.mkdir(utilsDir, { recursive: true })
-  }
-  await fs.writeFile(config.utils, templates.UTILS, "utf8")
 
   // Write styles file.
-  const stylesDir = path.dirname(config.styles)
-  if (!existsSync(stylesDir)) {
-    await fs.mkdir(stylesDir, { recursive: true })
-  }
-  await fs.writeFile(config.styles, templates.STYLES_WITH_VARIABLES, "utf8")
+  await fs.writeFile(
+    config.resolvedPaths["styles"],
+    templates.STYLES_WITH_VARIABLES,
+    "utf8"
+  )
+
+  // Write cn file.
+  await fs.writeFile(config.resolvedPaths["utils:cn"], templates.UTILS, "utf8")
 
   // Write tailwind config.
   await fs.writeFile(

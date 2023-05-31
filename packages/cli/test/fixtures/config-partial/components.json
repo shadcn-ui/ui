@@ -1,4 +1,6 @@
 {
-  "components": "./components",
-  "ui": "./ui"
+  "importPaths": {
+    "utils:cn": "@/utils/cn.ts",
+    "components:ui": "@/components/ui"
+  }
 }

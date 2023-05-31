@@ -1,5 +1,5 @@
 {
-  "name": "t3-app",
+  "name": "test-cli-t3-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {

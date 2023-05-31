@@ -4,7 +4,7 @@ import { execa } from "execa"
 import { afterEach, expect, test, vi } from "vitest"
 
 import { runInit } from "../../src/commands/init"
-import { Config, getConfig } from "../../src/utils/get-config"
+import { RawConfig, getConfig } from "../../src/utils/get-config"
 import * as getPackageManger from "../../src/utils/get-package-manager"
 
 vi.mock("execa")
@@ -20,46 +20,46 @@ vi.mock("fs/promises", () => ({
 }))
 vi.mock("ora")
 
-test("init project", async () => {
+test("init config-full", async () => {
   vi.spyOn(getPackageManger, "getPackageManager").mockResolvedValue("pnpm")
   const mockMkdir = vi.spyOn(fs.promises, "mkdir").mockResolvedValue(undefined)
   const mockWriteFile = vi.spyOn(fs.promises, "writeFile").mockResolvedValue()
 
-  const targetDir = path.resolve(__dirname, "../fixtures/project")
-  const config = (await getConfig(targetDir)) as Config
+  const targetDir = path.resolve(__dirname, "../fixtures/config-full")
+  const config = await getConfig(targetDir)
 
   await runInit(targetDir, config)
 
   expect(mockMkdir).toHaveBeenNthCalledWith(
     1,
-    expect.stringMatching(/components$/),
+    expect.stringMatching(/src\/styles$/),
     expect.anything()
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
     2,
-    expect.stringMatching(/components\/ui$/),
+    expect.stringMatching(/src\/lib$/),
     expect.anything()
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
     3,
-    expect.stringMatching(/lib$/),
+    expect.stringMatching(/src\/components\/ui$/),
     expect.anything()
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
-    expect.stringMatching(/lib\/utils.ts$/),
-    expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
-    "utf8"
-  )
-  expect(mockWriteFile).toHaveBeenNthCalledWith(
-    2,
-    expect.stringMatching(/app\/globals.css$/),
+    expect.stringMatching(/src\/styles\/globals.css$/),
     expect.stringContaining(`@tailwind base`),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
+    2,
+    expect.stringMatching(/src\/lib\/cn.ts$/),
+    expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
+    "utf8"
+  )
+  expect(mockWriteFile).toHaveBeenNthCalledWith(
     3,
-    expect.stringMatching(/tailwind.config.js$/),
+    expect.stringMatching(/tailwind.config.ts$/),
     expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
     "utf8"
   )
@@ -82,46 +82,46 @@ test("init project", async () => {
   mockWriteFile.mockRestore()
 })
 
-test("init project-src", async () => {
+test("init config-partial", async () => {
   vi.spyOn(getPackageManger, "getPackageManager").mockResolvedValue("npm")
   const mockMkdir = vi.spyOn(fs.promises, "mkdir").mockResolvedValue(undefined)
   const mockWriteFile = vi.spyOn(fs.promises, "writeFile").mockResolvedValue()
 
-  const targetDir = path.resolve(__dirname, "../fixtures/project-src")
-  const config = (await getConfig(targetDir)) as Config
+  const targetDir = path.resolve(__dirname, "../fixtures/config-partial")
+  const config = (await getConfig(targetDir)) as RawConfig
 
   await runInit(targetDir, config)
 
   expect(mockMkdir).toHaveBeenNthCalledWith(
     1,
-    expect.stringMatching(/src\/components$/),
+    expect.stringMatching(/app$/),
     expect.anything()
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
     2,
-    expect.stringMatching(/src\/ui$/),
+    expect.stringMatching(/utils$/),
     expect.anything()
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
     3,
-    expect.stringMatching(/src\/lib$/),
+    expect.stringMatching(/components\/ui$/),
     expect.anything()
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
-    expect.stringMatching(/src\/lib\/cn.ts$/),
-    expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
-    "utf8"
-  )
-  expect(mockWriteFile).toHaveBeenNthCalledWith(
-    2,
-    expect.stringMatching(/src\/styles\/main.css$/),
+    expect.stringMatching(/app\/globals.css$/),
     expect.stringContaining(`@tailwind base`),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
+    2,
+    expect.stringMatching(/utils\/cn.ts$/),
+    expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
+    "utf8"
+  )
+  expect(mockWriteFile).toHaveBeenNthCalledWith(
     3,
-    expect.stringMatching(/tailwind.config.ts$/),
+    expect.stringMatching(/tailwind.config.js$/),
     expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
     "utf8"
   )
