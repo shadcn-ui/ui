@@ -1,13 +1,12 @@
-import { Settings2 } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/registry/default/ui/button"
+import { Input } from "@/registry/default/ui/input"
+import { Label } from "@/registry/default/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/registry/default/ui/popover"
+import { Settings2 } from "lucide-react"
 
 export function PopoverDemo() {
   return (

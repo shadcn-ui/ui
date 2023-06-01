@@ -1,14 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { ChevronsUpDown, Plus, X } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/registry/default/ui/collapsible"
+import { ChevronsUpDown, Plus, X } from "lucide-react"
 
 export function CollapsibleDemo() {
   const [isOpen, setIsOpen] = React.useState(false)

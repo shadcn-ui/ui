@@ -1,9 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Calendar, MoreHorizontal, Tags, Trash, User } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -11,7 +9,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command"
+} from "@/registry/default/ui/command"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +22,8 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/registry/default/ui/dropdown-menu"
+import { Calendar, MoreHorizontal, Tags, Trash, User } from "lucide-react"
 
 const labels = [
   "feature",

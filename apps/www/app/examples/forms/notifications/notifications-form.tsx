@@ -1,15 +1,15 @@
 "use client"
 
 import Link from "next/link"
+import { Button } from "@/registry/default/ui/button"
+import { Checkbox } from "@/registry/default/ui/checkbox"
+import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
+import { Switch } from "@/registry/default/ui/switch"
+import { toast } from "@/registry/default/ui/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Switch } from "@/components/ui/switch"
-import { toast } from "@/components/ui/use-toast"
 import {
   Form,
   FormControl,

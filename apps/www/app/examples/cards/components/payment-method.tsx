@@ -1,6 +1,4 @@
-import { CreditCard } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   Card,
   CardContent,
@@ -8,17 +6,19 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+} from "@/registry/default/ui/card"
+import { Input } from "@/registry/default/ui/input"
+import { Label } from "@/registry/default/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/registry/default/ui/select"
+import { CreditCard } from "lucide-react"
+
 import { Icons } from "@/components/icons"
 
 export function DemoPaymentMethod() {

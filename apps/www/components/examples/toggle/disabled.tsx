@@ -1,6 +1,5 @@
+import { Toggle } from "@/registry/default/ui/toggle"
 import { Underline } from "lucide-react"
-
-import { Toggle } from "@/components/ui/toggle"
 
 export function ToggleDisabled() {
   return (

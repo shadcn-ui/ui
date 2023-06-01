@@ -1,6 +1,9 @@
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/default/ui/alert"
 import { Terminal, Waves } from "lucide-react"
-
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 export function AlertDemo() {
   return (

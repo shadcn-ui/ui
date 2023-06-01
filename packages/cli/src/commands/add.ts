@@ -79,6 +79,7 @@ export const add = new Command()
           message: "Which components would you like to add?",
           hint: "Space to select. Return to submit.",
           instructions: false,
+
           choices: allComponents.map(({ name }) => ({
             title: name,
             value: name,

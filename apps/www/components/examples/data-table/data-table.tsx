@@ -1,6 +1,22 @@
 "use client"
 
 import * as React from "react"
+import { Button } from "@/registry/default/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/registry/default/ui/dropdown-menu"
+import { Input } from "@/registry/default/ui/input"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/default/ui/table"
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -14,23 +30,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table"
 import { ChevronDown } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]

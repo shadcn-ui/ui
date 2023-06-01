@@ -1,11 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
+import { buttonVariants } from "@/registry/default/ui/button"
+import { Separator } from "@/registry/default/ui/separator"
 import { ChevronRight } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
 import { ExamplesNav } from "@/components/examples-nav"
 import { Icons } from "@/components/icons"
 import {

@@ -16,7 +16,7 @@ export function rehypeComponent() {
           return null
         }
 
-        const src = `./registry/default/component/${name}.tsx`
+        const src = `./registry/default/example/${name}.tsx`
 
         node.attributes?.push({
           name: "src",

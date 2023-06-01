@@ -1,22 +1,22 @@
 "use client"
 
 import Link from "next/link"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useFieldArray, useForm } from "react-hook-form"
-import * as z from "zod"
-
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from "@/registry/default/ui/button"
+import { Input } from "@/registry/default/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+} from "@/registry/default/ui/select"
+import { Textarea } from "@/registry/default/ui/textarea"
+import { toast } from "@/registry/default/ui/use-toast"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useFieldArray, useForm } from "react-hook-form"
+import * as z from "zod"
+
+import { cn } from "@/lib/utils"
 import {
   Form,
   FormControl,

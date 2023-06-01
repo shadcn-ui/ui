@@ -1,15 +1,15 @@
 "use client"
 
-import { Style, styles } from "@/registry/styles"
-
-import { useConfig } from "@/hooks/use-config"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/registry/default/ui/select"
+import { styles, type Style } from "@/registry/styles"
+
+import { useConfig } from "@/hooks/use-config"
 
 export function Configurator() {
   const [config, setConfig] = useConfig()
@@ -20,7 +20,7 @@ export function Configurator() {
         value={config.style}
         onValueChange={(value) =>
           setConfig({
-            style: value as Style,
+            style: value as Style["name"],
           })
         }
       >
@@ -28,9 +28,9 @@ export function Configurator() {
           <SelectValue placeholder="Style" />
         </SelectTrigger>
         <SelectContent>
-          {Object.entries(styles).map(([key, value]) => (
-            <SelectItem key={key} value={key}>
-              {value.name}
+          {styles.map((style) => (
+            <SelectItem key={style.name} value={style.name}>
+              {style.label}
             </SelectItem>
           ))}
         </SelectContent>

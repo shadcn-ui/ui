@@ -1,15 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { SliderProps } from "@radix-ui/react-slider"
-
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card"
-import { Label } from "@/components/ui/label"
-import { Slider } from "@/components/ui/slider"
+} from "@/registry/default/ui/hover-card"
+import { Label } from "@/registry/default/ui/label"
+import { Slider } from "@/registry/default/ui/slider"
+import { SliderProps } from "@radix-ui/react-slider"
 
 interface TopPSelectorProps {
   defaultValue: SliderProps["defaultValue"]

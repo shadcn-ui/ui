@@ -2,19 +2,23 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { useMDXComponent } from "next-contentlayer/hooks"
-import { NpmCommands } from "types/unist"
-
-import { Event } from "@/lib/events"
-import { cn } from "@/lib/utils"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
+} from "@/registry/default/ui/accordion"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/default/ui/alert"
+import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
+import { useMDXComponent } from "next-contentlayer/hooks"
+import { NpmCommands } from "types/unist"
+
+import { Event } from "@/lib/events"
+import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentExample } from "@/components/component-example"

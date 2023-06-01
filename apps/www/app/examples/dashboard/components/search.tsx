@@ -1,4 +1,4 @@
-import { Input } from "@/components/ui/input"
+import { Input } from "@/registry/default/ui/input"
 
 export function Search() {
   return (

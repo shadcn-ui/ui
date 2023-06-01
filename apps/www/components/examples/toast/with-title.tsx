@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { useToast } from "@/components/ui/use-toast"
+import { Button } from "@/registry/default/ui/button"
+import { useToast } from "@/registry/default/ui/use-toast"
 
 export function ToastWithTitle() {
   const { toast } = useToast()

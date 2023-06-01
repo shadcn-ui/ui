@@ -1,10 +1,12 @@
-export const styles = {
-  default: {
-    name: "Default",
+export const styles = [
+  {
+    name: "default",
+    label: "Default",
   },
-  "new-york": {
-    name: "New York",
+  {
+    name: "new-york",
+    label: "New York",
   },
-} as const
+] as const
 
-export type Style = keyof typeof styles
+export type Style = (typeof styles)[number]

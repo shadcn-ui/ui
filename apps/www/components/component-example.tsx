@@ -1,9 +1,14 @@
 "use client"
 
 import * as React from "react"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/default/ui/tabs"
 
 import { cn } from "@/lib/utils"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
 
 interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -1,13 +1,11 @@
-import { ChevronDown, Circle, Plus, Star } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/registry/default/ui/card"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -16,8 +14,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Separator } from "@/components/ui/separator"
+} from "@/registry/default/ui/dropdown-menu"
+import { Separator } from "@/registry/default/ui/separator"
+import { ChevronDown, Circle, Plus, Star } from "lucide-react"
 
 export function DemoGithub() {
   return (

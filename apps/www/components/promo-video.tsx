@@ -1,6 +1,6 @@
 "use client"
 
-import { AspectRatio } from "@/components/ui/aspect-ratio"
+import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
 
 export function PromoVideo() {
   return (

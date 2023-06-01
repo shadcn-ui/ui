@@ -1,9 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Dialog } from "@radix-ui/react-dialog"
-import { Flag, MoreHorizontal, Trash } from "lucide-react"
-
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -12,25 +9,27 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
+} from "@/registry/default/ui/alert-dialog"
+import { Button } from "@/registry/default/ui/button"
 import {
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
+} from "@/registry/default/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
-import { toast } from "@/components/ui/use-toast"
+} from "@/registry/default/ui/dropdown-menu"
+import { Label } from "@/registry/default/ui/label"
+import { Switch } from "@/registry/default/ui/switch"
+import { toast } from "@/registry/default/ui/use-toast"
+import { Dialog } from "@radix-ui/react-dialog"
+import { Flag, MoreHorizontal, Trash } from "lucide-react"
 
 export function PresetActions() {
   const [open, setIsOpen] = React.useState(false)

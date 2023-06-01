@@ -1,25 +1,25 @@
 "use client"
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/ui/command"
+} from "@/registry/default/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { toast } from "@/components/ui/use-toast"
+} from "@/registry/default/ui/popover"
+import { toast } from "@/registry/default/ui/use-toast"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Check, ChevronsUpDown } from "lucide-react"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
+import { cn } from "@/lib/utils"
 import {
   Form,
   FormControl,

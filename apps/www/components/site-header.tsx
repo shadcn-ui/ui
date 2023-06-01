@@ -1,8 +1,8 @@
 import Link from "next/link"
+import { buttonVariants } from "@/registry/default/ui/button"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
 import { CommandMenu } from "@/components/command-menu"
 import { Configurator } from "@/components/configurator"
 import { Icons } from "@/components/icons"

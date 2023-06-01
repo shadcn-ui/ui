@@ -1,16 +1,21 @@
 import { Metadata } from "next"
 import Image from "next/image"
-import { Activity, CreditCard, DollarSign, Download, Users } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+} from "@/registry/default/ui/card"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/default/ui/tabs"
+import { Activity, CreditCard, DollarSign, Download, Users } from "lucide-react"
+
 import { CalendarDateRangePicker } from "@/app/examples/dashboard/components/date-range-picker"
 import { MainNav } from "@/app/examples/dashboard/components/main-nav"
 import { Overview } from "@/app/examples/dashboard/components/overview"

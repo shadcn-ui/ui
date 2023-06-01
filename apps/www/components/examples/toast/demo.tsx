@@ -1,8 +1,8 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { ToastAction } from "@/components/ui/toast"
-import { useToast } from "@/components/ui/use-toast"
+import { Button } from "@/registry/default/ui/button"
+import { ToastAction } from "@/registry/default/ui/toast"
+import { useToast } from "@/registry/default/ui/use-toast"
 
 export function ToastDemo() {
   const { toast } = useToast()

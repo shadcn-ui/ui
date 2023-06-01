@@ -1,12 +1,11 @@
-import { AtSign, Bell, BellOff } from "lucide-react"
-
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/registry/default/ui/card"
+import { AtSign, Bell, BellOff } from "lucide-react"
 
 export function DemoNotifications() {
   return (

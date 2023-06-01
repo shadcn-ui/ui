@@ -3,7 +3,7 @@ import { useAtom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
 
 type Config = {
-  style: Style
+  style: Style["name"]
 }
 
 const configAtom = atomWithStorage<Config>("config", {

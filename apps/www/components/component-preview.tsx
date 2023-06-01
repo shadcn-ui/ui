@@ -1,15 +1,21 @@
 "use client"
 
 import * as React from "react"
-import { Components } from "@/registry/components"
+import { Index } from "@/registry/__index__"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/default/ui/tabs"
+import { Style } from "@/registry/styles"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
 
 interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {
-  name: keyof typeof Components
+  name: keyof (typeof Index)[Style["name"]]
   extractClassname?: boolean
   extractedClassNames?: string
   align?: "center" | "start" | "end"
@@ -33,10 +39,18 @@ export function ComponentPreview({
   ) as React.ReactElement[]
 
   const Preview = React.useMemo(() => {
-    const Component = Components[name]?.["components"][config.style]
+    const Component = Index[config.style][name]?.component
 
     if (!Component) {
-      return null
+      return (
+        <p className="text-sm text-muted-foreground">
+          Component{" "}
+          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+            {name}
+          </code>{" "}
+          not found in registry.
+        </p>
+      )
     }
 
     return <Component />
