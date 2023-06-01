@@ -18,6 +18,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentExample } from "@/components/component-example"
+import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
 import { examples } from "@/components/examples"
@@ -208,6 +209,7 @@ const components = {
   ),
   Image,
   Callout,
+  ComponentPreview,
   ComponentExample,
   ComponentSource,
   AspectRatio,

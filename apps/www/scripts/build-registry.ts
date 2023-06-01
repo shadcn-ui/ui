@@ -1,5 +1,5 @@
 import fs from "fs"
-import path, { basename, dirname } from "path"
+import path, { basename } from "path"
 
 import { registry, registrySchema } from "./registry"
 
@@ -17,7 +17,6 @@ const payload = result.data
 
       return {
         name: basename(file),
-        dir: dirname(file),
         content,
       }
     })
@@ -38,7 +37,7 @@ const payload = result.data
   })
 
 fs.writeFileSync(
-  path.join(process.cwd(), "pages/api/components.json"),
+  path.join(process.cwd(), "app/api/registry/registry.json"),
   JSON.stringify(payload, null, 2)
 )
 

@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"contentlayer dev\" \"next dev -p 3001\"",
-    "build": "contentlayer build && pnpm build:components && next build",
-    "build:components": "ts-node --esm --project ./tsconfig.scripts.json ./scripts/build-components.ts",
+    "build": "contentlayer build && pnpm build:registry && next build",
+    "build:registry": "ts-node --esm --project ./tsconfig.scripts.json ./scripts/build-registry.ts",
     "seed:tasks": "ts-node --esm --project ./tsconfig.scripts.json ./app/examples/tasks/data/seed.ts",
     "start": "next start -p 3001",
     "lint": "next lint",
@@ -54,6 +54,7 @@
     "cmdk": "^0.2.0",
     "contentlayer": "0.3.0",
     "date-fns": "^2.30.0",
+    "jotai": "^2.1.0",
     "lucide-react": "0.214.0",
     "next": "13.4.3",
     "next-contentlayer": "0.3.0",

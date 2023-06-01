@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { CommandMenu } from "@/components/command-menu"
+import { Configurator } from "@/components/configurator"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
@@ -16,6 +17,7 @@ export function SiteHeader() {
         <MainNav />
         <MobileNav />
         <div className="flex flex-1 items-center justify-between space-x-2 sm:space-x-4 md:justify-end">
+          <Configurator />
           <div className="w-full flex-1 md:w-auto md:flex-none">
             <CommandMenu />
           </div>

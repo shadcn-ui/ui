@@ -20,7 +20,7 @@ const explorer = cosmiconfig("components", {
   searchPlaces: ["components.json"],
 })
 
-const rawConfigSchema = z
+export const rawConfigSchema = z
   .object({
     importPaths: z.object({
       styles: z.string().default(DEFAULT_STYLES),
@@ -33,7 +33,7 @@ const rawConfigSchema = z
 
 export type RawConfig = z.infer<typeof rawConfigSchema>
 
-const configSchema = rawConfigSchema.extend({
+export const configSchema = rawConfigSchema.extend({
   resolvedPaths: z.object({
     styles: z.string(),
     "utils:cn": z.string(),
@@ -89,64 +89,4 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
   } catch (error) {
     throw new Error(`Invald configuration found in ${cwd}/components.json.`)
   }
-}
-
-export async function promptForConfig(cwd: string) {
-  const highlight = (text: string) => chalk.cyan(text)
-
-  const options = await prompts([
-    {
-      type: "text",
-      name: "tailwindConfig",
-      message: `Where is your ${highlight("tailwind.config.js")} located?`,
-      initial: DEFAULT_TAILWIND_CONFIG,
-    },
-    {
-      type: "text",
-      name: "styles",
-      message: `Configure the import path for ${highlight("styles")}`,
-      initial: DEFAULT_STYLES,
-    },
-    {
-      type: "text",
-      name: "ui",
-      message: `Configure the import path for ${highlight("ui components")}`,
-      initial: DEFAULT_UI,
-    },
-    {
-      type: "text",
-      name: "cn",
-      message: `Configure the import path for ${highlight("cn")} util?`,
-      initial: DEFAULT_UTILS,
-    },
-  ])
-
-  const config = rawConfigSchema.parse({
-    tailwindConfig: options.tailwindConfig,
-    importPaths: {
-      styles: options.styles,
-      "utils:cn": options.cn,
-      "components:ui": options.ui,
-    },
-  })
-
-  const { proceed } = await prompts({
-    type: "confirm",
-    name: "proceed",
-    message: `Write configuration to ${highlight("components.json")}. Proceed?`,
-    initial: true,
-  })
-
-  if (!proceed) {
-    process.exit(0)
-  }
-
-  // Write to file.
-  logger.info("")
-  const spinner = ora(`Writing components.json...`).start()
-  const targetPath = path.resolve(cwd, "components.json")
-  await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
-  spinner.succeed()
-
-  return await resolveConfigPaths(cwd, config)
 }

@@ -9,6 +9,57 @@ export function rehypeComponent() {
     visit(tree, (node: UnistNode) => {
       const { value: src } = getNodeAttributeByName(node, "src") || {}
 
+      if (node.name === "ComponentPreview") {
+        const name = getNodeAttributeByName(node, "name")?.value as string
+
+        if (!name) {
+          return null
+        }
+
+        const src = `./registry/default/component/${name}.tsx`
+
+        node.attributes?.push({
+          name: "src",
+          type: "mdxJsxAttribute",
+          value: src,
+        })
+
+        let source = getComponentSourceFileContent(node)
+        if (!source) {
+          return
+        }
+
+        // Replace imports.
+        // TODO: Use @swc/core and a visitor to replace this.
+        // For now a simple regex should do.
+        source = source.replaceAll(/\@\/registry\/default\//g, "@/components/")
+        source = source.replaceAll("export default", "export")
+
+        // Add code as children so that rehype can take over at build time.
+        node.children?.push(
+          u("element", {
+            tagName: "pre",
+            properties: {
+              __src__: src,
+            },
+            children: [
+              u("element", {
+                tagName: "code",
+                properties: {
+                  className: ["language-tsx"],
+                },
+                children: [
+                  {
+                    type: "text",
+                    value: source,
+                  },
+                ],
+              }),
+            ],
+          })
+        )
+      }
+
       if (node.name === "ComponentExample") {
         const source = getComponentSourceFileContent(node)
         if (!source) {

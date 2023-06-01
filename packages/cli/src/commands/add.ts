@@ -13,8 +13,8 @@ import * as z from "zod"
 const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
   cwd: z.string(),
-  path: z.string().optional(),
   yes: z.boolean(),
+  path: z.string().optional(),
 })
 
 export const add = new Command()
@@ -43,7 +43,7 @@ export const add = new Command()
           type: "confirm",
           name: "proceed",
           message:
-            "Running this command will install dependencies and overwrite your existing files. Proceed?",
+            "Running this command will overwrite existing files. Proceed?",
           initial: true,
         })
 
@@ -52,21 +52,19 @@ export const add = new Command()
         }
       }
 
-      const targetDirectory = path.resolve(options.cwd)
+      const cwd = path.resolve(options.cwd)
 
-      if (!existsSync(targetDirectory)) {
-        logger.error(
-          `The path ${targetDirectory} does not exist. Please try again.`
-        )
+      if (!existsSync(cwd)) {
+        logger.error(`The path ${cwd} does not exist. Please try again.`)
         process.exit(1)
       }
 
-      const config = await getConfig(targetDirectory)
+      const config = await getConfig(cwd)
       if (!config) {
         logger.warn(
           `Configuration is missing. Please run ${chalk.green(
             `init`
-          )} to initialize your project.`
+          )} create a components.json file.`
         )
         process.exit(1)
       }

@@ -214,6 +214,9 @@ importers:
       date-fns:
         specifier: ^2.30.0
         version: 2.30.0
+      jotai:
+        specifier: ^2.1.0
+        version: 2.1.0(react@18.2.0)
       lucide-react:
         specifier: 0.214.0
         version: 0.214.0(react@18.2.0)
@@ -6729,6 +6732,18 @@ packages:
 
   /jju@1.4.0:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
+    dev: false
+
+  /jotai@2.1.0(react@18.2.0):
+    resolution: {integrity: sha512-fR82PtHAmEQrc/daMEYGc4EteW96/b6wodtDSCzLvoJA/6y4YG70er4hh2f8CYwYjqwQ0eZUModGfG4DmwkTyQ==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /joycon@3.1.1:

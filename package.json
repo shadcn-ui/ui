@@ -16,7 +16,7 @@
   "scripts": {
     "build": "turbo run build",
     "build:cli": "turbo --filter=shadcn-ui build",
-    "build:components": "pnpm --filter=www build:components",
+    "build:registry": "pnpm --filter=www build:registry",
     "dev": "turbo run dev --parallel",
     "dev:cli": "turbo --filter=shadcn-ui dev",
     "start:cli": "pnpm --filter=shadcn-ui start:dev",
