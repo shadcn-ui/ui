@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Index } from "@/registry/__index__"
+import { Index } from "@/__registry__"
 import { Badge } from "@/registry/default/ui/badge"
 import {
   Tabs,

@@ -54,10 +54,7 @@ index += `
 `
 
 // Write style index.
-fs.writeFileSync(
-  path.join(process.cwd(), "registry/__index__/index.tsx"),
-  index
-)
+fs.writeFileSync(path.join(process.cwd(), "__registry__/index.tsx"), index)
 
 // const payload = result.data
 //   .map((entry) => {
@@ -95,4 +92,4 @@ fs.writeFileSync(
 //   console.log()
 // }
 
-// console.log("Done!")
+console.log("✅ Done!")

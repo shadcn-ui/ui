@@ -4,7 +4,7 @@ import { UnistNode, UnistTree } from "types/unist"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
-import { Index } from "../registry/__index__"
+import { Index } from "../__registry__"
 import { styles } from "../registry/styles"
 
 export function rehypeComponent() {

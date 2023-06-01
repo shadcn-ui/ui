@@ -25,7 +25,6 @@ import { ComponentExample } from "@/components/component-example"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
-import { examples } from "@/components/examples"
 
 const components = {
   Accordion,
@@ -226,7 +225,6 @@ const components = {
       {...props}
     />
   ),
-  ...examples,
 }
 
 interface MdxProps {
