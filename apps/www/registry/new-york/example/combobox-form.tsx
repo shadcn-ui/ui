@@ -9,6 +9,15 @@ import {
   CommandItem,
 } from "@/registry/new-york/ui/command"
 import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/registry/new-york/ui/form"
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -20,15 +29,6 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { cn } from "@/lib/utils"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/react-hook-form/form"
 
 const languages = [
   { label: "English", value: "en" },
@@ -48,7 +48,7 @@ const FormSchema = z.object({
   }),
 })
 
-export default function ComboboxReactHookForm() {
+export default function ComboboxForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })

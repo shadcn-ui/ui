@@ -3,6 +3,15 @@
 import { Button } from "@/registry/default/ui/button"
 import { Calendar } from "@/registry/default/ui/calendar"
 import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/registry/default/ui/form"
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -15,15 +24,6 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { cn } from "@/lib/utils"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/react-hook-form/form"
 
 const FormSchema = z.object({
   dob: z.date({
@@ -31,7 +31,7 @@ const FormSchema = z.object({
   }),
 })
 
-export default function DatePickerReactHookForm() {
+export default function CalendarForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })

@@ -1,12 +1,6 @@
 "use client"
 
-import { Button } from "@/registry/default/ui/button"
-import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
-import { toast } from "@/registry/default/ui/use-toast"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Form,
   FormControl,
@@ -14,7 +8,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/react-hook-form/form"
+} from "@/registry/new-york/ui/form"
+import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
+import { toast } from "@/registry/new-york/ui/use-toast"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
 
 const FormSchema = z.object({
   type: z.enum(["all", "mentions", "none"], {
@@ -22,7 +21,7 @@ const FormSchema = z.object({
   }),
 })
 
-export default function RadioGroupReactHookForm() {
+export default function RadioGroupForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })

@@ -91,6 +91,18 @@ export const registry: Registry = [
     files: ["ui/dropdown-menu.tsx"],
   },
   {
+    name: "form",
+    type: "components:ui",
+    dependencies: [
+      "@radix-ui/react-label",
+      "@radix-ui/react-slot",
+      "@hookform/resolvers",
+      "zod",
+      "react-hook-form",
+    ],
+    files: ["ui/form.tsx"],
+  },
+  {
     name: "hover-card",
     type: "components:ui",
     dependencies: ["@radix-ui/react-hover-card"],
@@ -213,10 +225,52 @@ export const registry: Registry = [
     files: ["ui/tooltip.tsx"],
   },
   {
+    name: "accordion-demo",
+    type: "components:example",
+    componentDependencies: ["accordion"],
+    files: ["example/accordion-demo.tsx"],
+  },
+  {
+    name: "input-demo",
+    type: "components:example",
+    componentDependencies: ["input"],
+    files: ["example/input-demo.tsx"],
+  },
+  {
+    name: "input-disabled",
+    type: "components:example",
+    componentDependencies: ["input"],
+    files: ["example/input-disabled.tsx"],
+  },
+  {
+    name: "input-file",
+    type: "components:example",
+    componentDependencies: ["input"],
+    files: ["example/input-file.tsx"],
+  },
+  {
+    name: "input-form",
+    type: "components:example",
+    componentDependencies: ["input", "button", "form"],
+    files: ["example/input-form.tsx"],
+  },
+  {
     name: "input-with-button",
     type: "components:example",
     componentDependencies: ["input", "button"],
     files: ["example/input-with-button.tsx"],
+  },
+  {
+    name: "input-with-label",
+    type: "components:example",
+    componentDependencies: ["input", "button", "label"],
+    files: ["example/input-with-label.tsx"],
+  },
+  {
+    name: "input-with-text",
+    type: "components:example",
+    componentDependencies: ["input", "button", "label"],
+    files: ["example/input-with-text.tsx"],
   },
   {
     name: "select-demo",
@@ -225,10 +279,10 @@ export const registry: Registry = [
     files: ["example/select-demo.tsx"],
   },
   {
-    name: "select-react-hook-form",
+    name: "select-form",
     type: "components:example",
     componentDependencies: ["select"],
-    files: ["example/select-react-hook-form.tsx"],
+    files: ["example/select-form.tsx"],
   },
   {
     name: "card-with-form",

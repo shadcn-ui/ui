@@ -4,6 +4,9 @@ import { UnistNode, UnistTree } from "types/unist"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
+import { Index } from "../registry/__index__"
+import { styles } from "../registry/styles"
+
 export function rehypeComponent() {
   return async (tree: UnistTree) => {
     visit(tree, (node: UnistNode) => {
@@ -16,48 +19,51 @@ export function rehypeComponent() {
           return null
         }
 
-        const src = `./registry/default/example/${name}.tsx`
+        try {
+          for (const style of styles) {
+            const component = Index[style.name][name]
+            const src = component.files[0]
 
-        node.attributes?.push({
-          name: "src",
-          type: "mdxJsxAttribute",
-          value: src,
-        })
+            // Read the source file.
+            const filePath = path.join(process.cwd(), src)
+            let source = fs.readFileSync(filePath, "utf8")
 
-        let source = getComponentSourceFileContent(node)
-        if (!source) {
-          return
-        }
+            // Replace imports.
+            // TODO: Use @swc/core and a visitor to replace this.
+            // For now a simple regex should do.
+            source = source.replaceAll(
+              `@/registry/${style.name}/`,
+              "@/components/"
+            )
+            source = source.replaceAll("export default", "export")
 
-        // Replace imports.
-        // TODO: Use @swc/core and a visitor to replace this.
-        // For now a simple regex should do.
-        source = source.replaceAll(/\@\/registry\/default\//g, "@/components/")
-        source = source.replaceAll("export default", "export")
-
-        // Add code as children so that rehype can take over at build time.
-        node.children?.push(
-          u("element", {
-            tagName: "pre",
-            properties: {
-              __src__: src,
-            },
-            children: [
+            // Add code as children so that rehype can take over at build time.
+            node.children?.push(
               u("element", {
-                tagName: "code",
+                tagName: "pre",
                 properties: {
-                  className: ["language-tsx"],
+                  __src__: src,
                 },
                 children: [
-                  {
-                    type: "text",
-                    value: source,
-                  },
+                  u("element", {
+                    tagName: "code",
+                    properties: {
+                      className: ["language-tsx"],
+                    },
+                    children: [
+                      {
+                        type: "text",
+                        value: source,
+                      },
+                    ],
+                  }),
                 ],
-              }),
-            ],
-          })
-        )
+              })
+            )
+          }
+        } catch (error) {
+          console.error(error)
+        }
       }
 
       if (node.name === "ComponentExample") {

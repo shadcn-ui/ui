@@ -2,24 +2,24 @@
 
 import * as React from "react"
 import { Index } from "@/registry/__index__"
+import { Badge } from "@/registry/default/ui/badge"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/registry/default/ui/tabs"
-import { Style } from "@/registry/styles"
+import { styles } from "@/registry/styles"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
 
-interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {
-  name: keyof (typeof Index)[Style["name"]]
+interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
+  name: string
   extractClassname?: boolean
   extractedClassNames?: string
   align?: "center" | "start" | "end"
-  src?: string
 }
 
 export function ComponentPreview({
@@ -29,14 +29,14 @@ export function ComponentPreview({
   extractClassname,
   extractedClassNames,
   align = "center",
-  src: _,
   ...props
-}: ComponentExampleProps) {
+}: ComponentPreviewProps) {
   const [config] = useConfig()
+  const style = styles.find((style) => style.name === config.style)
+  const index = styles.findIndex((style) => style.name === config.style)
 
-  const [Code, ...Children] = React.Children.toArray(
-    children
-  ) as React.ReactElement[]
+  const Codes = React.Children.toArray(children) as React.ReactElement[]
+  const Code = Codes[index]
 
   const Preview = React.useMemo(() => {
     const Component = Index[config.style][name]?.component
@@ -103,9 +103,9 @@ export function ComponentPreview({
             )
           )}
         </div>
-        <TabsContent value="preview" className="rounded-md border">
+        <TabsContent value="preview" className="relative rounded-md border">
           <div
-            className={cn("flex min-h-[350px] justify-center p-10", {
+            className={cn("preview flex min-h-[350px] justify-center p-10", {
               "items-center": align === "center",
               "items-start": align === "start",
               "items-end": align === "end",
@@ -115,17 +115,17 @@ export function ComponentPreview({
               {Preview}
             </React.Suspense>
           </div>
+          {style && (
+            <span className="absolute left-4 top-5 text-xs font-medium text-muted-foreground">
+              {style.label}
+            </span>
+          )}
         </TabsContent>
         <TabsContent value="code">
           <div className="flex flex-col space-y-4">
             <div className="w-full rounded-md [&_button]:hidden [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
               {Code}
             </div>
-            {Children?.length ? (
-              <div className="rounded-md [&_button]:hidden [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
-                {Children}
-              </div>
-            ) : null}
           </div>
         </TabsContent>
       </Tabs>

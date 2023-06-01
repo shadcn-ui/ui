@@ -1,12 +1,6 @@
 "use client"
 
 import { Button } from "@/registry/default/ui/button"
-import { Input } from "@/registry/default/ui/input"
-import { toast } from "@/registry/default/ui/use-toast"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-
 import {
   Form,
   FormControl,
@@ -15,7 +9,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/react-hook-form/form"
+} from "@/registry/default/ui/form"
+import { Input } from "@/registry/default/ui/input"
+import { toast } from "@/registry/default/ui/use-toast"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
 
 const FormSchema = z.object({
   username: z.string().min(2, {
@@ -23,7 +22,7 @@ const FormSchema = z.object({
   }),
 })
 
-export default function InputReactHookForm() {
+export default function InputForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })

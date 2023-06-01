@@ -3,6 +3,15 @@
 import Link from "next/link"
 import { Button } from "@/registry/default/ui/button"
 import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/registry/default/ui/form"
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -14,16 +23,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/react-hook-form/form"
-
 const FormSchema = z.object({
   email: z
     .string({
@@ -32,7 +31,7 @@ const FormSchema = z.object({
     .email(),
 })
 
-export default function SelectReactHookForm() {
+export default function SelectForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })
