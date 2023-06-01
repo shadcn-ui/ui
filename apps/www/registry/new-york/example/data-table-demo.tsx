@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { Button } from "@/registry/new-york/ui/button"
 import { Checkbox } from "@/registry/new-york/ui/checkbox"
@@ -162,18 +164,6 @@ export const columns: ColumnDef<Payment>[] = [
 ]
 
 export default function DataTableDemo() {
-  return <DataTable columns={columns} data={data} />
-}
-
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
-}
-
-export default function DataTable<TData, TValue>({
-  columns,
-  data,
-}: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
