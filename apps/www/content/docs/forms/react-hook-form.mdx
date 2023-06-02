@@ -76,7 +76,7 @@ const form = useForm()
 1. Install the following dependencies:
 
 ```sh
-npm install react-hook-form zod @hookform/resolvers @radix-ui/react-slot
+npm install react-hook-form zod @hookform/resolvers @radix-ui/react-slot @radix-ui/react-label
 ```
 
 2. Copy and paste the following `<Form />` component to your app.
@@ -114,6 +114,7 @@ Use the `useForm` hook from `react-hook-form` to create a form.
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 const formSchema = z.object({
@@ -150,6 +151,7 @@ We can now use the `<Form />` components to build our form.
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
