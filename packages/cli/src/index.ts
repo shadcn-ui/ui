@@ -20,7 +20,6 @@ process.on("SIGTERM", () => process.exit(0))
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
   "class-variance-authority",
-  "clsx",
   "tailwind-merge",
   "lucide-react",
 ]

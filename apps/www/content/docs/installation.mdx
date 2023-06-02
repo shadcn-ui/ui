@@ -61,7 +61,7 @@ This will install dependencies, setup Tailwind CSS, and configure the `cn` utils
 Add the following dependencies to your project:
 
 ```bash
-npm install tailwindcss-animate class-variance-authority clsx tailwind-merge lucide-react
+npm install tailwindcss-animate class-variance-authority tailwind-merge lucide-react
 ```
 
 ### Path Aliases
@@ -257,11 +257,11 @@ Add the following to your `styles/globals.css` file. You can learn more about us
 I use a `cn` helper to make it easier to conditionally add Tailwind CSS classes. Here's how I define it in `lib/utils.ts`:
 
 ```ts title="lib/utils.ts"
-import { clsx, type ClassValue } from "clsx"
+import { cx, CxOptions } from "class-variance-authority"
 import { twMerge } from "tailwind-merge"
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+export function cn(...inputs: CxOptions) {
+  return twMerge(cx(inputs))
 }
 ```
 

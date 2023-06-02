@@ -80,11 +80,11 @@ export const STYLES = `@tailwind base;
   }
 }`
 
-export const UTILS = `import { ClassValue, clsx } from "clsx"
+export const UTILS = `import { cx, CxOptions } from "class-variance-authority"
 import { twMerge } from "tailwind-merge"
  
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+export function cn(...inputs: CxOptions) {
+  return twMerge(cx(inputs))
 }
 `
 
