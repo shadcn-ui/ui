@@ -1,9 +1,9 @@
 import { cosmiconfig } from "cosmiconfig"
 import * as z from "zod"
 
-export const COMPONENTS_DIR = "./components/ui/"
-export const UTILS_LOCATION = "@/lib/utils"
-export const COMPONENT_ALIAS = "@/components/ui/"
+export const COMPONENTS_DIR = "./shadcn/ui/"
+export const UTILS_LOCATION = "@/shadcn/lib/utils"
+export const COMPONENT_ALIAS = "@/shadcn/ui/"
 
 /**
  * this is the name of the key we are looking for, the following are the intended values to look for:

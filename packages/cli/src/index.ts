@@ -14,6 +14,7 @@ import { getProjectInfo } from "./utils/get-project-info"
 import { logger } from "./utils/logger"
 import { STYLES, TAILWIND_CONFIG, UTILS } from "./utils/templates"
 
+
 process.on("SIGINT", () => process.exit(0))
 process.on("SIGTERM", () => process.exit(0))
 
@@ -76,13 +77,15 @@ async function main() {
       ])
       dependenciesSpinner.succeed()
 
-      // Ensure styles directory exists.
+
+    // Ensure styles directory exists.
       if (!projectInfo?.appDir) {
         const stylesDir = projectInfo?.srcDir ? "./src/styles" : "./styles"
         if (!existsSync(path.resolve(stylesDir))) {
           await fs.mkdir(path.resolve(stylesDir), { recursive: true })
         }
       }
+
 
       // Update styles.css
       let stylesDestination = projectInfo?.srcDir
@@ -97,16 +100,16 @@ async function main() {
       await fs.writeFile(stylesDestination, STYLES, "utf8")
       stylesSpinner.succeed()
 
+      const shad_dir = await useShadConfig(projectInfo.srcDir)
+
       // Ensure lib directory exists.
-      const libDir = projectInfo?.srcDir ? "./src/lib" : "./lib"
+      const libDir = shad_dir.libDir
       if (!existsSync(path.resolve(libDir))) {
         await fs.mkdir(path.resolve(libDir), { recursive: true })
       }
 
       // Create lib/utils.ts
-      const utilsDestination = projectInfo?.srcDir
-        ? "./src/lib/utils.ts"
-        : "./lib/utils.ts"
+      const utilsDestination = libDir + "/utils.ts"
       const utilsSpinner = ora(`Adding utils...`).start()
       await fs.writeFile(utilsDestination, UTILS, "utf8")
       utilsSpinner.succeed()
@@ -117,7 +120,9 @@ async function main() {
       tailwindSpinner.succeed()
     })
 
-  program
+   
+   
+    program
     .command("add")
     .description("add components to your project")
     .argument("[components...]", "name of components")
@@ -147,7 +152,8 @@ async function main() {
         selectedComponents = await promptForComponents(availableComponents)
       }
 
-      const dir = await promptForDestinationDir(cliConfig)
+      const shad_dir = await useShadConfig(projectInfo.srcDir)
+      
 
       if (!selectedComponents?.length) {
         logger.warn("No components selected. Nothing to install.")
@@ -155,16 +161,17 @@ async function main() {
       }
 
       // Create componentPath directory if it doesn't exist.
-      const destinationDir = path.resolve(dir)
+      const destinationDir = path.resolve(shad_dir.componentsDir)
       if (!existsSync(destinationDir)) {
-        const spinner = ora(`Creating ${dir}...`).start()
+        const spinner = ora(`Creating ${shad_dir.componentsDir}...`).start()
         await fs.mkdir(destinationDir, { recursive: true })
         spinner.succeed()
       }
-
+    
       logger.success(
         `Installing ${selectedComponents.length} component(s) and dependencies...`
       )
+      const root_alias = shad_dir.directory.replace('./src','@')
       for (const component of selectedComponents) {
         const componentSpinner = ora(`${component.name}...`).start()
 
@@ -174,14 +181,14 @@ async function main() {
           // use them as a replacer for the defined routes on the installed file.
           file.content = file.content.replace(
             "@/lib/utils",
-            cliConfig.utilsLocation
+            `${root_alias}/lib/utils`
           )
           file.content = file.content.replace(
             "@/components/ui/",
-            cliConfig.componentDirAlias
+            `${root_alias}/components/ui/`
           )
 
-          const filePath = path.resolve(dir, file.name)
+          const filePath = path.resolve(shad_dir.componentsDir, file.name)
           await fs.writeFile(filePath, file.content)
         }
 
@@ -230,6 +237,42 @@ async function promptForDestinationDir(cliConfig: Config) {
   ])
 
   return dir
+}
+interface ShadConfig{
+  projectInfo: Awaited<ReturnType<typeof getProjectInfo>>
+}
+
+async function useShadConfig(srcDir:boolean) {
+
+  const shadConfigPath = "shad.config.json"
+
+
+
+  if (!existsSync(path.resolve(shadConfigPath))) {
+    const { dir } = await prompts([
+      {
+        type: "text",
+        name: "dir",
+        message: "pick a base directory?",
+        initial: srcDir ? "./src/shadcn" : "./shadcn",
+      },
+    ])
+
+    const base_dir = dir as string ?? (srcDir ? "./src/shadcn" : "./shadcn") as string
+    const defaultShadConfig = {
+      directory: base_dir,
+      componentsDir: base_dir + "/ui",
+      libDir: base_dir + "/lib",
+    }
+    await fs.writeFile(shadConfigPath, JSON.stringify(defaultShadConfig),"utf-8")
+    return defaultShadConfig
+  }
+  const shadConfig = JSON.parse(await fs.readFile(shadConfigPath, "utf-8")) as {
+    directory:string,
+    componentsDir:string,
+    libDir:string,
+    }
+  return shadConfig
 }
 
 main()
