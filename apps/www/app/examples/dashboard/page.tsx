@@ -1,19 +1,19 @@
 import { Metadata } from "next"
 import Image from "next/image"
-import { Button } from "@/registry/default/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/registry/default/ui/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/registry/default/ui/tabs"
+import { Button } from "@/registry/new-york/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/new-york/ui/card"
 import { Activity, CreditCard, DollarSign, Download, Users } from "lucide-react"
 
 import { CalendarDateRangePicker } from "@/app/examples/dashboard/components/date-range-picker"

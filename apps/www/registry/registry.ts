@@ -1,6 +1,6 @@
 import { Registry } from "@/registry/schema"
 
-export const registry: Registry = [
+const ui: Registry = [
   {
     name: "accordion",
     type: "components:ui",
@@ -224,11 +224,80 @@ export const registry: Registry = [
     dependencies: ["@radix-ui/react-tooltip"],
     files: ["ui/tooltip.tsx"],
   },
+]
+
+const example: Registry = [
   {
     name: "accordion-demo",
     type: "components:example",
     componentDependencies: ["accordion"],
     files: ["example/accordion-demo.tsx"],
+  },
+  {
+    name: "alert-demo",
+    type: "components:example",
+    componentDependencies: ["alert"],
+    files: ["example/alert-demo.tsx"],
+  },
+  {
+    name: "alert-destructive",
+    type: "components:example",
+    componentDependencies: ["alert"],
+    files: ["example/alert-destructive.tsx"],
+  },
+  {
+    name: "button-demo",
+    type: "components:example",
+    componentDependencies: ["button"],
+    files: ["example/button-demo.tsx"],
+  },
+  {
+    name: "button-secondary",
+    type: "components:example",
+    componentDependencies: ["button"],
+    files: ["example/button-secondary.tsx"],
+  },
+  {
+    name: "button-destructive",
+    type: "components:example",
+    componentDependencies: ["button"],
+    files: ["example/button-destructive.tsx"],
+  },
+  {
+    name: "button-outline",
+    type: "components:example",
+    componentDependencies: ["button"],
+    files: ["example/button-outline.tsx"],
+  },
+  {
+    name: "button-ghost",
+    type: "components:example",
+    componentDependencies: ["button"],
+    files: ["example/button-ghost.tsx"],
+  },
+  {
+    name: "button-link",
+    type: "components:example",
+    componentDependencies: ["button"],
+    files: ["example/button-link.tsx"],
+  },
+  {
+    name: "button-with-icon",
+    type: "components:example",
+    componentDependencies: ["button"],
+    files: ["example/button-with-icon.tsx"],
+  },
+  {
+    name: "button-loading",
+    type: "components:example",
+    componentDependencies: ["button"],
+    files: ["example/button-loading.tsx"],
+  },
+  {
+    name: "button-as-child",
+    type: "components:example",
+    componentDependencies: ["button"],
+    files: ["example/button-as-child.tsx"],
   },
   {
     name: "input-demo",
@@ -291,3 +360,5 @@ export const registry: Registry = [
     files: ["example/card-with-form.tsx"],
   },
 ]
+
+export const registry: Registry = [...ui, ...example]

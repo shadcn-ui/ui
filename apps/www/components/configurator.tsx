@@ -6,7 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select"
+} from "@/registry/new-york/ui/select"
 import { styles, type Style } from "@/registry/styles"
 
 import { useConfig } from "@/hooks/use-config"
