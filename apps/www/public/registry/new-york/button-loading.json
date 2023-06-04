@@ -1,0 +1,13 @@
+{
+  "name": "button-loading",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "name": "button-loading.tsx",
+      "content": "import { Button } from \"@/registry/new-york/ui/button\"\nimport { Loader2 } from \"lucide-react\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button disabled>\n      <Loader2 className=\"mr-2 h-4 w-4 animate-spin\" />\n      Please wait\n    </Button>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

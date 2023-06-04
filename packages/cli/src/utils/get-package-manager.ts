@@ -13,7 +13,6 @@ async function fileExists(path: string) {
 export async function getPackageManager(
   targetDir: string
 ): Promise<"yarn" | "pnpm" | "npm"> {
-  // match based on lockfile
   const [yarnLock, npmLock, pnpmLock] = await Promise.all([
     fileExists(path.resolve(targetDir, "yarn.lock")),
     fileExists(path.resolve(targetDir, "package-lock.json")),

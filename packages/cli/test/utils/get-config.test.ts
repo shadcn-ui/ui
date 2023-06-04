@@ -1,12 +1,7 @@
 import path from "path"
 import { expect, test } from "vitest"
 
-import {
-  DEFAULT_STYLES,
-  DEFAULT_TAILWIND_CONFIG,
-  getConfig,
-  getRawConfig,
-} from "../../src/utils/get-config"
+import { getConfig, getRawConfig } from "../../src/utils/get-config"
 
 test("get raw config", async () => {
   expect(
@@ -16,11 +11,12 @@ test("get raw config", async () => {
   expect(
     await getRawConfig(path.resolve(__dirname, "../fixtures/config-partial"))
   ).toEqual({
-    tailwindConfig: DEFAULT_TAILWIND_CONFIG,
-    importPaths: {
-      styles: DEFAULT_STYLES,
-      "components:ui": "@/components/ui",
-      "utils:cn": "@/utils/cn.ts",
+    style: "default",
+    tailwind: "tailwind.config.js",
+    css: "app/globals.css",
+    aliases: {
+      components: "@/components",
+      utils: "@/lib/utils",
     },
   })
 
@@ -41,31 +37,33 @@ test("get config", async () => {
   expect(
     await getConfig(path.resolve(__dirname, "../fixtures/config-partial"))
   ).toEqual({
-    tailwindConfig: path.resolve(
-      __dirname,
-      "../fixtures/config-partial",
-      DEFAULT_TAILWIND_CONFIG
-    ),
-    importPaths: {
-      styles: "app/globals.css",
-      "components:ui": "@/components/ui",
-      "utils:cn": "@/utils/cn.ts",
+    style: "default",
+    tailwind: "tailwind.config.js",
+    css: "app/globals.css",
+    aliases: {
+      components: "@/components",
+      utils: "@/lib/utils",
     },
     resolvedPaths: {
-      styles: path.resolve(
+      tailwind: path.resolve(
+        __dirname,
+        "../fixtures/config-partial",
+        "tailwind.config.js"
+      ),
+      css: path.resolve(
         __dirname,
         "../fixtures/config-partial",
         "./app/globals.css"
       ),
-      "components:ui": path.resolve(
+      components: path.resolve(
         __dirname,
         "../fixtures/config-partial",
-        "./components/ui"
+        "./components"
       ),
-      "utils:cn": path.resolve(
+      utils: path.resolve(
         __dirname,
         "../fixtures/config-partial",
-        "./utils/cn.ts"
+        "./lib/utils"
       ),
     },
   })
@@ -73,31 +71,33 @@ test("get config", async () => {
   expect(
     await getConfig(path.resolve(__dirname, "../fixtures/config-full"))
   ).toEqual({
-    tailwindConfig: path.resolve(
-      __dirname,
-      "../fixtures/config-full",
-      "tailwind.config.ts"
-    ),
-    importPaths: {
-      styles: "~/styles/globals.css",
-      "components:ui": "~/components/ui",
-      "utils:cn": "~/lib/cn.ts",
+    style: "default",
+    tailwind: "./tailwind.config.ts",
+    css: "src/app/globals.css",
+    aliases: {
+      components: "~/components",
+      utils: "~/lib/utils",
     },
     resolvedPaths: {
-      styles: path.resolve(
+      tailwind: path.resolve(
         __dirname,
         "../fixtures/config-full",
-        "./src/styles/globals.css"
+        "tailwind.config.ts"
       ),
-      "components:ui": path.resolve(
+      css: path.resolve(
         __dirname,
         "../fixtures/config-full",
-        "./src/components/ui"
+        "./src/app/globals.css"
       ),
-      "utils:cn": path.resolve(
+      components: path.resolve(
         __dirname,
         "../fixtures/config-full",
-        "./src/lib/cn.ts"
+        "./src/components"
+      ),
+      utils: path.resolve(
+        __dirname,
+        "../fixtures/config-full",
+        "./src/lib/utils"
       ),
     },
   })

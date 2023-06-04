@@ -1,6 +1,7 @@
 {
-  "importPaths": {
-    "utils:cn": "@/utils/cn.ts",
-    "components:ui": "@/components/ui"
+  "style": "default",
+  "aliases": {
+    "utils": "@/lib/utils",
+    "components": "@/components"
   }
 }

@@ -1,19 +1,23 @@
-import { existsSync } from "fs"
+import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { getAvailableComponents } from "@/src/utils/get-components"
 import { getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
-import { resolveTree } from "@/src/utils/resolve-tree"
+import {
+  fetchTree,
+  getItemTargetPath,
+  getRegistryIndex,
+  resolveTree,
+} from "@/src/utils/registry"
 import chalk from "chalk"
 import { Command } from "commander"
+import ora from "ora"
 import prompts from "prompts"
 import * as z from "zod"
 
 const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
   cwd: z.string(),
-  yes: z.boolean(),
   path: z.string().optional(),
 })
 
@@ -21,36 +25,18 @@ export const add = new Command()
   .name("add")
   .description("add a component to your project")
   .argument("[components...]", "the components to add")
-  .option("-y, --yes", "skip confirmation prompt.", false)
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
-  .option(
-    "-p, --path <path>",
-    "the path to add the component to. defaults to the components directory."
-  )
+  .option("-p, --path <path>", "the path to add the component to.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
         components,
         ...opts,
       })
-
-      if (!options.yes) {
-        const { proceed } = await prompts({
-          type: "confirm",
-          name: "proceed",
-          message:
-            "Running this command will overwrite existing files. Proceed?",
-          initial: true,
-        })
-
-        if (!proceed) {
-          process.exit(0)
-        }
-      }
 
       const cwd = path.resolve(options.cwd)
 
@@ -64,12 +50,12 @@ export const add = new Command()
         logger.warn(
           `Configuration is missing. Please run ${chalk.green(
             `init`
-          )} create a components.json file.`
+          )} to create a components.json file.`
         )
         process.exit(1)
       }
 
-      const allComponents = await getAvailableComponents()
+      const registryIndex = await getRegistryIndex()
 
       let selectedComponents = options.components
       if (!options.components?.length) {
@@ -79,10 +65,9 @@ export const add = new Command()
           message: "Which components would you like to add?",
           hint: "Space to select. Return to submit.",
           instructions: false,
-
-          choices: allComponents.map(({ name }) => ({
-            title: name,
-            value: name,
+          choices: registryIndex.map((entry) => ({
+            title: entry.name,
+            value: entry.name,
           })),
         })
         selectedComponents = components
@@ -92,20 +77,33 @@ export const add = new Command()
         process.exit(0)
       }
 
-      const resolvedComponents = await resolveTree(
-        allComponents,
-        selectedComponents
-      )
+      const tree = await resolveTree(registryIndex, selectedComponents)
+      const payload = await fetchTree(config.style, tree)
 
-      console.log({
-        resolvedComponents,
-      })
-
-      logger.info("")
-      logger.info(
-        `${chalk.green("Success!")} Project initialization completed.`
+      logger.success(
+        `Installing ${selectedComponents.length} components and dependencies...`
       )
-      logger.info("")
+      for (const item of payload) {
+        const spinner = ora(`${item.name}...`).start()
+        const targetDir = await getItemTargetPath(
+          config,
+          item,
+          options.path ? path.resolve(cwd, options.path) : undefined
+        )
+        if (!targetDir) {
+          continue
+        }
+
+        if (!existsSync(targetDir)) {
+          await fs.mkdir(targetDir, { recursive: true })
+        }
+
+        for (const file of item.files) {
+          const filePath = path.resolve(targetDir, file.name)
+          await fs.writeFile(filePath, file.content)
+        }
+        spinner.succeed(item.name)
+      }
     } catch (error) {
       handleError(error)
     }

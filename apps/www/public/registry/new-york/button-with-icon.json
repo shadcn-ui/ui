@@ -1,0 +1,13 @@
+{
+  "name": "button-with-icon",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "name": "button-with-icon.tsx",
+      "content": "import { Button } from \"@/registry/new-york/ui/button\"\nimport { Mail } from \"lucide-react\"\n\nexport default function ButtonWithIcon() {\n  return (\n    <Button>\n      <Mail className=\"mr-2 h-4 w-4\" /> Login with Email\n    </Button>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

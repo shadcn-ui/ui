@@ -1,0 +1,13 @@
+{
+  "name": "button-demo",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "name": "button-demo.tsx",
+      "content": "import { Button } from \"@/registry/new-york/ui/button\"\n\nexport default function ButtonDemo() {\n  return <Button>Button</Button>\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

@@ -32,35 +32,35 @@ test("init config-full", async () => {
 
   expect(mockMkdir).toHaveBeenNthCalledWith(
     1,
-    expect.stringMatching(/src\/styles$/),
+    expect.stringMatching(/src\/app$/),
     expect.anything()
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
     2,
-    expect.stringMatching(/src\/lib$/),
+    expect.stringMatching(/src\/lib\/utils$/),
     expect.anything()
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
     3,
-    expect.stringMatching(/src\/components\/ui$/),
+    expect.stringMatching(/src\/components$/),
     expect.anything()
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
-    expect.stringMatching(/src\/styles\/globals.css$/),
-    expect.stringContaining(`@tailwind base`),
+    expect.stringMatching(/tailwind.config.ts$/),
+    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     2,
-    expect.stringMatching(/src\/lib\/cn.ts$/),
-    expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
+    expect.stringMatching(/src\/app\/globals.css$/),
+    expect.stringContaining(`@tailwind base`),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     3,
-    expect.stringMatching(/tailwind.config.ts$/),
-    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
+    expect.stringMatching(/src\/lib\/utils\/cn.ts$/),
+    expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
     "utf8"
   )
   expect(execa).toHaveBeenCalledWith(
@@ -104,25 +104,25 @@ test("init config-partial", async () => {
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
     3,
-    expect.stringMatching(/components\/ui$/),
+    expect.stringMatching(/components$/),
     expect.anything()
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
+    expect.stringMatching(/tailwind.config.js$/),
+    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
+    "utf8"
+  )
+  expect(mockWriteFile).toHaveBeenNthCalledWith(
+    2,
     expect.stringMatching(/app\/globals.css$/),
     expect.stringContaining(`@tailwind base`),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
-    2,
+    3,
     expect.stringMatching(/utils\/cn.ts$/),
     expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
-    "utf8"
-  )
-  expect(mockWriteFile).toHaveBeenNthCalledWith(
-    3,
-    expect.stringMatching(/tailwind.config.js$/),
-    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
     "utf8"
   )
   expect(execa).toHaveBeenCalledWith(

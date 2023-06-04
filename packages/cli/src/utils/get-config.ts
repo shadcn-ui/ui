@@ -1,18 +1,14 @@
-import { promises as fs } from "fs"
 import path from "path"
-import { logger } from "@/src/utils/logger"
 import { resolveImport } from "@/src/utils/resolve-import"
-import chalk from "chalk"
 import { cosmiconfig } from "cosmiconfig"
-import ora from "ora"
-import prompts from "prompts"
 import { loadConfig } from "tsconfig-paths"
 import * as z from "zod"
 
-export const DEFAULT_UI = "@/components/ui"
-export const DEFAULT_UTILS = "@/lib/utils.ts"
-export const DEFAULT_STYLES = "app/globals.css"
-export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.js"
+export const DEFAULT_STYLE = "default"
+export const DEFAULT_COMPONENTS = "@/components"
+export const DEFAULT_UTILS = "@/lib/utils"
+export const DEFAULT_CSS = "app/globals.css"
+export const DEFAULT_TAILWIND = "tailwind.config.js"
 
 // TODO: Figure out if we want to support all cosmiconfig formats.
 // A simple components.json file would be nice.
@@ -22,12 +18,13 @@ const explorer = cosmiconfig("components", {
 
 export const rawConfigSchema = z
   .object({
-    importPaths: z.object({
-      styles: z.string().default(DEFAULT_STYLES),
-      "utils:cn": z.string().default(DEFAULT_UTILS),
-      "components:ui": z.string().default(DEFAULT_UI),
+    style: z.string().default(DEFAULT_STYLE),
+    tailwind: z.string().default(DEFAULT_TAILWIND),
+    css: z.string().default(DEFAULT_CSS),
+    aliases: z.object({
+      components: z.string().default(DEFAULT_COMPONENTS),
+      utils: z.string().default(DEFAULT_UTILS),
     }),
-    tailwindConfig: z.string().default(DEFAULT_TAILWIND_CONFIG),
   })
   .strict()
 
@@ -35,9 +32,10 @@ export type RawConfig = z.infer<typeof rawConfigSchema>
 
 export const configSchema = rawConfigSchema.extend({
   resolvedPaths: z.object({
-    styles: z.string(),
-    "utils:cn": z.string(),
-    "components:ui": z.string(),
+    tailwind: z.string(),
+    css: z.string(),
+    utils: z.string(),
+    components: z.string(),
   }),
 })
 
@@ -65,14 +63,11 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
 
   return configSchema.parse({
     ...config,
-    tailwindConfig: path.resolve(cwd, config.tailwindConfig),
     resolvedPaths: {
-      styles: await resolveImport(config.importPaths.styles, tsConfig),
-      "utils:cn": await resolveImport(config.importPaths["utils:cn"], tsConfig),
-      "components:ui": await resolveImport(
-        config.importPaths["components:ui"],
-        tsConfig
-      ),
+      tailwind: path.resolve(cwd, config.tailwind),
+      css: path.resolve(cwd, config.css),
+      utils: await resolveImport(config.aliases["utils"], tsConfig),
+      components: await resolveImport(config.aliases["components"], tsConfig),
     },
   })
 }

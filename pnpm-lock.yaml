@@ -302,6 +302,9 @@ importers:
       remark-gfm:
         specifier: ^3.0.1
         version: 3.0.1
+      rimraf:
+        specifier: ^4.1.3
+        version: 4.1.3
       shiki:
         specifier: ^0.12.1
         version: 0.12.1

@@ -1,9 +1,9 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
 import {
-  DEFAULT_STYLES,
-  DEFAULT_TAILWIND_CONFIG,
-  DEFAULT_UI,
+  DEFAULT_COMPONENTS,
+  DEFAULT_CSS,
+  DEFAULT_TAILWIND,
   DEFAULT_UTILS,
   getConfig,
   rawConfigSchema,
@@ -13,6 +13,7 @@ import {
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
+import { getRegistryStyles } from "@/src/utils/registry"
 import * as templates from "@/src/utils/templates"
 import chalk from "chalk"
 import { Command } from "commander"
@@ -99,39 +100,51 @@ export async function promptForConfig(
 ) {
   const highlight = (text: string) => chalk.cyan(text)
 
+  const styles = await getRegistryStyles()
+
   const options = await prompts([
     {
+      type: "select",
+      name: "style",
+      message: "Which style would you like to use?",
+      choices: styles.map((style) => ({
+        title: style.label,
+        value: style.name,
+      })),
+    },
+    {
       type: "text",
-      name: "tailwindConfig",
+      name: "tailwind",
       message: `Where is your ${highlight("tailwind.config.js")} located?`,
-      initial: defaultConfig?.tailwindConfig ?? DEFAULT_TAILWIND_CONFIG,
+      initial: defaultConfig?.tailwind ?? DEFAULT_TAILWIND,
     },
     {
       type: "text",
-      name: "styles",
-      message: `Configure the import path for ${highlight("styles")}`,
-      initial: defaultConfig?.importPaths.styles ?? DEFAULT_STYLES,
+      name: "css",
+      message: `Where is your global ${highlight("CSS")} file?`,
+      initial: defaultConfig?.css ?? DEFAULT_CSS,
     },
     {
       type: "text",
-      name: "ui",
-      message: `Configure the import path for ${highlight("ui components")}`,
-      initial: defaultConfig?.importPaths["components:ui"] ?? DEFAULT_UI,
+      name: "components",
+      message: `Configure the import alias for ${highlight("components")}`,
+      initial: defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS,
     },
     {
       type: "text",
-      name: "cn",
-      message: `Configure the import path for ${highlight("cn")} util?`,
-      initial: defaultConfig?.importPaths["utils:cn"] ?? DEFAULT_UTILS,
+      name: "utils",
+      message: `Configure the import alias for ${highlight("utils")}`,
+      initial: defaultConfig?.aliases["utils"] ?? DEFAULT_UTILS,
     },
   ])
 
   const config = rawConfigSchema.parse({
-    tailwindConfig: options.tailwindConfig,
-    importPaths: {
-      styles: options.styles,
-      "utils:cn": options.cn,
-      "components:ui": options.ui,
+    style: options.style,
+    tailwind: options.tailwind,
+    css: options.css,
+    aliases: {
+      utils: options.utils,
+      components: options.components,
     },
   })
 
@@ -171,20 +184,24 @@ export async function runInit(targetDir: string, config: Config) {
     }
   }
 
-  // Write styles file.
+  // Write tailwind config.
   await fs.writeFile(
-    config.resolvedPaths["styles"],
+    config.tailwind,
+    templates.TAILWIND_CONFIG_WITH_VARIABLES,
+    "utf8"
+  )
+
+  // Write css file.
+  await fs.writeFile(
+    config.resolvedPaths.css,
     templates.STYLES_WITH_VARIABLES,
     "utf8"
   )
 
   // Write cn file.
-  await fs.writeFile(config.resolvedPaths["utils:cn"], templates.UTILS, "utf8")
-
-  // Write tailwind config.
   await fs.writeFile(
-    config.tailwindConfig,
-    templates.TAILWIND_CONFIG_WITH_VARIABLES,
+    path.join(config.resolvedPaths.utils, "cn.ts"),
+    templates.UTILS,
     "utf8"
   )
 

@@ -17,6 +17,6 @@ test("get package manager", async () => {
   ).toBe("pnpm")
 
   expect(
-    await getPackageManager(path.resolve(__dirname, "../fixtures/next-app-dir"))
+    await getPackageManager(path.resolve(__dirname, "../fixtures/next"))
   ).toBe("pnpm")
 })

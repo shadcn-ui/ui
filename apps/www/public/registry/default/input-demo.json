@@ -1,0 +1,13 @@
+{
+  "name": "input-demo",
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "name": "input-demo.tsx",
+      "content": "import { Input } from \"@/registry/default/ui/input\"\n\nexport default function InputDemo() {\n  return <Input type=\"email\" placeholder=\"Email\" />\n}\n"
+    }
+  ],
+  "type": "components:example"
+}
