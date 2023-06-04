@@ -10,6 +10,7 @@ import {
   getRegistryIndex,
   resolveTree,
 } from "@/src/utils/registry"
+import { transform } from "@/src/utils/transformers"
 import chalk from "chalk"
 import { Command } from "commander"
 import { execa } from "execa"
@@ -116,14 +117,10 @@ export const add = new Command()
         for (const file of item.files) {
           const filePath = path.resolve(targetDir, file.name)
 
-          let raw = file.content
+          // Run transformers.
+          const content = await transform(file.name, file.content, config)
 
-          // Replace.
-          raw = raw
-            .replace("@/lib/utils", "@/lib/utils/cn")
-            .replace("@/registry/new-york", "@/components")
-
-          await fs.writeFile(filePath, raw)
+          await fs.writeFile(filePath, content)
         }
 
         // Install dependencies.

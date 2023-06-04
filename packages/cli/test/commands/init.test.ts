@@ -37,7 +37,7 @@ test("init config-full", async () => {
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
     2,
-    expect.stringMatching(/src\/lib\/utils$/),
+    expect.stringMatching(/src\/lib$/),
     expect.anything()
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
@@ -59,7 +59,7 @@ test("init config-full", async () => {
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     3,
-    expect.stringMatching(/src\/lib\/utils\/cn.ts$/),
+    expect.stringMatching(/src\/lib\/utils.ts$/),
     expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
     "utf8"
   )
@@ -99,7 +99,7 @@ test("init config-partial", async () => {
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
     2,
-    expect.stringMatching(/utils$/),
+    expect.stringMatching(/lib$/),
     expect.anything()
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
@@ -121,7 +121,7 @@ test("init config-partial", async () => {
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     3,
-    expect.stringMatching(/utils\/cn.ts$/),
+    expect.stringMatching(/utils.ts$/),
     expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
     "utf8"
   )

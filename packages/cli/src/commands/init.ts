@@ -136,12 +136,19 @@ export async function promptForConfig(
       message: `Configure the import alias for ${highlight("utils")}:`,
       initial: defaultConfig?.aliases["utils"] ?? DEFAULT_UTILS,
     },
+    {
+      type: "confirm",
+      name: "rsc",
+      message: `Are you using ${highlight("React Server Components")}?`,
+      initial: defaultConfig?.rsc ?? true,
+    },
   ])
 
   const config = rawConfigSchema.parse({
     style: options.style,
     tailwind: options.tailwind,
     css: options.css,
+    rsc: options.rsc,
     aliases: {
       utils: options.utils,
       components: options.components,
@@ -173,12 +180,21 @@ export async function runInit(cwd: string, config: Config) {
   const spinner = ora(`Initializing project...`)?.start()
 
   // Ensure all resolved paths directories exist.
-  for (const resolvedPath of Object.values(config.resolvedPaths)) {
+  for (const [key, resolvedPath] of Object.entries(config.resolvedPaths)) {
     // Determine if the path is a file or directory.
     // TODO: is there a better way to do this?
-    const dirname = path.extname(resolvedPath)
+    let dirname = path.extname(resolvedPath)
       ? path.dirname(resolvedPath)
       : resolvedPath
+
+    // If the utils alias is set to something like "@/lib/utils",
+    // assume this is a file and remove the "utils" file name.
+    // TODO: In future releases we should add support for individual utils.
+    if (key === "utils" && resolvedPath.endsWith("/utils")) {
+      // Remove /utils at the end.
+      dirname = dirname.replace(/\/utils$/, "")
+    }
+
     if (!existsSync(dirname)) {
       await fs.mkdir(dirname, { recursive: true })
     }
@@ -200,7 +216,7 @@ export async function runInit(cwd: string, config: Config) {
 
   // Write cn file.
   await fs.writeFile(
-    path.join(config.resolvedPaths.utils, "cn.ts"),
+    `${config.resolvedPaths.utils}.ts`,
     templates.UTILS,
     "utf8"
   )

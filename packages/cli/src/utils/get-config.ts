@@ -21,6 +21,7 @@ export const rawConfigSchema = z
     style: z.string().default(DEFAULT_STYLE),
     tailwind: z.string().default(DEFAULT_TAILWIND),
     css: z.string().default(DEFAULT_CSS),
+    rsc: z.coerce.boolean().default(true),
     aliases: z.object({
       components: z.string().default(DEFAULT_COMPONENTS),
       utils: z.string().default(DEFAULT_UTILS),

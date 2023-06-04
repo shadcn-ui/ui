@@ -2,6 +2,7 @@
   "style": "default",
   "tailwind": "./tailwind.config.ts",
   "css": "src/app/globals.css",
+  "rsc": false,
   "aliases": {
     "utils": "~/lib/utils",
     "components": "~/components"

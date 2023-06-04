@@ -14,6 +14,7 @@ test("get raw config", async () => {
     style: "default",
     tailwind: "tailwind.config.js",
     css: "app/globals.css",
+    rsc: true,
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
@@ -40,6 +41,7 @@ test("get config", async () => {
     style: "default",
     tailwind: "tailwind.config.js",
     css: "app/globals.css",
+    rsc: true,
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
@@ -74,6 +76,7 @@ test("get config", async () => {
     style: "default",
     tailwind: "./tailwind.config.ts",
     css: "src/app/globals.css",
+    rsc: false,
     aliases: {
       components: "~/components",
       utils: "~/lib/utils",
