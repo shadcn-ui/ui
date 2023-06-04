@@ -79,11 +79,17 @@ export const add = new Command()
       }
 
       if (!selectedComponents?.length) {
+        logger.warn("No components selected. Exiting.")
         process.exit(0)
       }
 
       const tree = await resolveTree(registryIndex, selectedComponents)
       const payload = await fetchTree(config.style, tree)
+
+      if (!payload.length) {
+        logger.warn("Selected components not found. Exiting.")
+        process.exit(0)
+      }
 
       if (!options.yes) {
         const { proceed } = await prompts({
@@ -99,8 +105,9 @@ export const add = new Command()
       }
 
       logger.info("")
+      const spinner = ora(`Installing components...`).start()
       for (const item of payload) {
-        const spinner = ora(`Installing ${item.name}...`).start()
+        spinner.text = `Installing ${item.name}...`
         const targetDir = await getItemTargetPath(
           config,
           item,
@@ -137,8 +144,8 @@ export const add = new Command()
             }
           )
         }
-        spinner.succeed(`Installing ${item.name}...`)
       }
+      spinner.succeed(`Done.`)
     } catch (error) {
       handleError(error)
     }
