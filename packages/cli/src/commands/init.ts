@@ -106,7 +106,7 @@ export async function promptForConfig(
     {
       type: "select",
       name: "style",
-      message: "Which style would you like to use?",
+      message: `Which ${highlight("style")} would you like to use?`,
       choices: styles.map((style) => ({
         title: style.label,
         value: style.name,
@@ -127,13 +127,13 @@ export async function promptForConfig(
     {
       type: "text",
       name: "components",
-      message: `Configure the import alias for ${highlight("components")}`,
+      message: `Configure the import alias for ${highlight("components")}:`,
       initial: defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS,
     },
     {
       type: "text",
       name: "utils",
-      message: `Configure the import alias for ${highlight("utils")}`,
+      message: `Configure the import alias for ${highlight("utils")}:`,
       initial: defaultConfig?.aliases["utils"] ?? DEFAULT_UTILS,
     },
   ])
@@ -169,7 +169,7 @@ export async function promptForConfig(
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function runInit(targetDir: string, config: Config) {
+export async function runInit(cwd: string, config: Config) {
   const spinner = ora(`Initializing project...`)?.start()
 
   // Ensure all resolved paths directories exist.
@@ -186,7 +186,7 @@ export async function runInit(targetDir: string, config: Config) {
 
   // Write tailwind config.
   await fs.writeFile(
-    config.tailwind,
+    config.resolvedPaths.tailwind,
     templates.TAILWIND_CONFIG_WITH_VARIABLES,
     "utf8"
   )
@@ -209,12 +209,12 @@ export async function runInit(targetDir: string, config: Config) {
 
   // Install dependencies.
   const dependenciesSpinner = ora(`Installing dependencies...`)?.start()
-  const packageManager = await getPackageManager(targetDir)
+  const packageManager = await getPackageManager(cwd)
   await execa(
     packageManager,
     [packageManager === "npm" ? "install" : "add", ...PROJECT_DEPENDENCIES],
     {
-      cwd: targetDir,
+      cwd,
     }
   )
   dependenciesSpinner?.succeed()

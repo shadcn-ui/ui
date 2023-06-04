@@ -1,6 +1,7 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { getConfig } from "@/src/utils/get-config"
+import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import {
@@ -11,12 +12,14 @@ import {
 } from "@/src/utils/registry"
 import chalk from "chalk"
 import { Command } from "commander"
+import { execa } from "execa"
 import ora from "ora"
 import prompts from "prompts"
 import * as z from "zod"
 
 const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
+  yes: z.boolean(),
   cwd: z.string(),
   path: z.string().optional(),
 })
@@ -25,6 +28,7 @@ export const add = new Command()
   .name("add")
   .description("add a component to your project")
   .argument("[components...]", "the components to add")
+  .option("-y, --yes", "skip confirmation prompt.", false)
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
@@ -80,11 +84,22 @@ export const add = new Command()
       const tree = await resolveTree(registryIndex, selectedComponents)
       const payload = await fetchTree(config.style, tree)
 
-      logger.success(
-        `Installing ${selectedComponents.length} components and dependencies...`
-      )
+      if (!options.yes) {
+        const { proceed } = await prompts({
+          type: "confirm",
+          name: "proceed",
+          message: `Ready to install components and dependencies. Proceed?`,
+          initial: true,
+        })
+
+        if (!proceed) {
+          process.exit(0)
+        }
+      }
+
+      logger.info("")
       for (const item of payload) {
-        const spinner = ora(`${item.name}...`).start()
+        const spinner = ora(`Installing ${item.name}...`).start()
         const targetDir = await getItemTargetPath(
           config,
           item,
@@ -100,9 +115,32 @@ export const add = new Command()
 
         for (const file of item.files) {
           const filePath = path.resolve(targetDir, file.name)
-          await fs.writeFile(filePath, file.content)
+
+          let raw = file.content
+
+          // Replace.
+          raw = raw
+            .replace("@/lib/utils", "@/lib/utils/cn")
+            .replace("@/registry/new-york", "@/components")
+
+          await fs.writeFile(filePath, raw)
         }
-        spinner.succeed(item.name)
+
+        // Install dependencies.
+        if (item.dependencies?.length) {
+          const packageManager = await getPackageManager(cwd)
+          await execa(
+            packageManager,
+            [
+              packageManager === "npm" ? "install" : "add",
+              ...item.dependencies,
+            ],
+            {
+              cwd,
+            }
+          )
+        }
+        spinner.succeed(`Installing ${item.name}...`)
       }
     } catch (error) {
       handleError(error)
