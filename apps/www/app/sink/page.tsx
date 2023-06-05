@@ -46,6 +46,7 @@ import ToggleDisabled from "@/registry/new-york/example/toggle-disabled"
 import ToggleOutline from "@/registry/new-york/example/toggle-outline"
 import ToggleWithText from "@/registry/new-york/example/toggle-with-text"
 import TooltipDemo from "@/registry/new-york/example/tooltip-demo"
+import { Button } from "@/registry/new-york/ui/button"
 
 export default function KitchenSinkPage() {
   return (
@@ -106,6 +107,10 @@ export default function KitchenSinkPage() {
               <div className="flex space-x-2">
                 <ButtonWithIcon />
                 <ButtonLoading />
+              </div>
+              <div className="flex space-x-2">
+                <Button size="lg">Large</Button>
+                <Button size="sm">Small</Button>
               </div>
             </ComponentWrapper>
             <ComponentWrapper>
@@ -191,7 +196,7 @@ function ComponentWrapper({
   return (
     <div
       className={cn(
-        "flex items-center justify-between space-x-4 rounded-md border p-4",
+        "flex items-center justify-between space-x-4 rounded-md p-4",
         className
       )}
     >

@@ -2,6 +2,7 @@ import fs from "fs"
 import path, { basename } from "path"
 import { rimraf } from "rimraf"
 
+import { colors } from "../registry/colors"
 import { registry } from "../registry/registry"
 import { registrySchema } from "../registry/schema"
 import { styles } from "../registry/styles"
@@ -117,5 +118,46 @@ const names = result.data // .filter((item) => item.type === "components:ui")
 const registryJson = JSON.stringify(names, null, 2)
 rimraf.sync(path.join(REGISTRY_PATH, "index.json"))
 fs.writeFileSync(path.join(REGISTRY_PATH, "index.json"), registryJson, "utf8")
+
+// ----------------------------------------------------------------------------
+// Build registry/colors.json.
+// ----------------------------------------------------------------------------
+const colorsData: Record<string, any> = {}
+for (const [color, value] of Object.entries(colors)) {
+  if (typeof value === "string") {
+    colorsData[color] = value
+    continue
+  }
+
+  if (Array.isArray(value)) {
+    colorsData[color] = value.map((item) => ({
+      ...item,
+      rgbChannel: item.rgb.replace(/^rgb\((\d+),(\d+),(\d+)\)$/, "$1 $2 $3"),
+      hslChannel: item.hsl.replace(
+        /^hsl\(([\d.]+),([\d.]+%),([\d.]+%)\)$/,
+        "$1 $2 $3"
+      ),
+    }))
+    continue
+  }
+
+  if (typeof value === "object") {
+    colorsData[color] = {
+      ...value,
+      rgbChannel: value.rgb.replace(/^rgb\((\d+),(\d+),(\d+)\)$/, "$1 $2 $3"),
+      hslChannel: value.hsl.replace(
+        /^hsl\(([\d.]+),([\d.]+%),([\d.]+%)\)$/,
+        "$1 $2 $3"
+      ),
+    }
+    continue
+  }
+}
+
+fs.writeFileSync(
+  path.join(REGISTRY_PATH, "colors.json"),
+  JSON.stringify(colorsData, null, 2),
+  "utf8"
+)
 
 console.log("✅ Done!")
