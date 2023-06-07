@@ -113,7 +113,7 @@ async function main() {
 
       const tailwindDestination = "./tailwind.config.js"
       const tailwindSpinner = ora(`Updating tailwind.config.js...`).start()
-      await fs.writeFile(tailwindDestination, TAILWIND_CONFIG, "utf8")
+      await fs.writeFile(tailwindDestination, TAILWIND_CONFIG(projectInfo?.srcDir), "utf8")
       tailwindSpinner.succeed()
     })
 

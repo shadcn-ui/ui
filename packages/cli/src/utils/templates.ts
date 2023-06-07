@@ -88,13 +88,13 @@ export function cn(...inputs: ClassValue[]) {
 }
 `
 
-export const TAILWIND_CONFIG = `/** @type {import('tailwindcss').Config} */
+export const TAILWIND_CONFIG = (srcDir: boolean) => `/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
+    '${srcDir ? './src/' : './'}pages/**/*.{ts,tsx}',
+    '${srcDir ? './src/' : './'}components/**/*.{ts,tsx}',
+    '${srcDir ? './src/' : './'}app/**/*.{ts,tsx}',
 	],
   theme: {
     container: {
