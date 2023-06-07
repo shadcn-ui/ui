@@ -55,6 +55,7 @@
     "contentlayer": "0.3.3",
     "date-fns": "^2.30.0",
     "jotai": "^2.1.0",
+    "lodash.template": "^4.5.0",
     "lucide-react": "0.214.0",
     "next": "13.4.4",
     "next-contentlayer": "0.3.3",
@@ -70,6 +71,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@types/lodash.template": "^4.5.1",
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.7",
     "@types/react-color": "^3.0.6",

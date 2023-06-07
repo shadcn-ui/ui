@@ -1,5 +1,12 @@
 import path from "path"
 import { Config } from "@/src/utils/get-config"
+import {
+  registryBaseColorSchema,
+  registryIndexSchema,
+  registryItemWithContentSchema,
+  registryWithContentSchema,
+  stylesSchema,
+} from "@/src/utils/registry/schema"
 import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
 import * as z from "zod"
@@ -9,40 +16,9 @@ const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined
 
-// TODO: Extract this to a shared package.
-const registryItemSchema = z.object({
-  name: z.string(),
-  dependencies: z.array(z.string()).optional(),
-  registryDependencies: z.array(z.string()).optional(),
-  files: z.array(z.string()),
-  type: z.enum(["components:ui", "components:component", "components:example"]),
-})
-
-const registryIndexSchema = z.array(registryItemSchema)
-
-export type RegistryIndex = z.infer<typeof registryIndexSchema>
-
-const registryItemWithContentSchema = registryItemSchema.extend({
-  files: z.array(
-    z.object({
-      name: z.string(),
-      content: z.string(),
-    })
-  ),
-})
-
-const registryWithContentSchema = z.array(registryItemWithContentSchema)
-
-const stylesSchema = z.array(
-  z.object({
-    name: z.string(),
-    label: z.string(),
-  })
-)
-
 export async function getRegistryIndex() {
   try {
-    const [result] = await fetchRegistry(["index"])
+    const [result] = await fetchRegistry(["index.json"])
 
     return registryIndexSchema.parse(result)
   } catch (error) {
@@ -52,7 +28,7 @@ export async function getRegistryIndex() {
 
 export async function getRegistryStyles() {
   try {
-    const [result] = await fetchRegistry(["styles"])
+    const [result] = await fetchRegistry(["styles/index.json"])
 
     return stylesSchema.parse(result)
   } catch (error) {
@@ -60,8 +36,46 @@ export async function getRegistryStyles() {
   }
 }
 
-export async function resolveTree(index: RegistryIndex, names: string[]) {
-  const tree: RegistryIndex = []
+export async function getRegistryBaseColors() {
+  return [
+    {
+      name: "slate",
+      label: "Slate",
+    },
+    {
+      name: "gray",
+      label: "Gray",
+    },
+    {
+      name: "zinc",
+      label: "Zinc",
+    },
+    {
+      name: "neutral",
+      label: "Neutral",
+    },
+    {
+      name: "stone",
+      label: "Stone",
+    },
+  ]
+}
+
+export async function getRegistryBaseColor(baseColor: string) {
+  try {
+    const [result] = await fetchRegistry([`colors/${baseColor}.json`])
+
+    return registryBaseColorSchema.parse(result)
+  } catch (error) {
+    throw new Error(`Failed to fetch base color from registry.`)
+  }
+}
+
+export async function resolveTree(
+  index: z.infer<typeof registryIndexSchema>,
+  names: string[]
+) {
+  const tree: z.infer<typeof registryIndexSchema> = []
 
   for (const name of names) {
     const entry = index.find((entry) => entry.name === name)
@@ -84,9 +98,12 @@ export async function resolveTree(index: RegistryIndex, names: string[]) {
   )
 }
 
-export async function fetchTree(style: string, tree: RegistryIndex) {
+export async function fetchTree(
+  style: string,
+  tree: z.infer<typeof registryIndexSchema>
+) {
   try {
-    const paths = tree.map((item) => `${style}/${item.name}`)
+    const paths = tree.map((item) => `styles/${style}/${item.name}.json`)
     const result = await fetchRegistry(paths)
 
     return registryWithContentSchema.parse(result)
@@ -120,7 +137,7 @@ async function fetchRegistry(paths: string[]) {
   try {
     const results = await Promise.all(
       paths.map(async (path) => {
-        const response = await fetch(`${baseUrl}/registry/${path}.json`, {
+        const response = await fetch(`${baseUrl}/registry/${path}`, {
           agent,
         })
         return await response.json()

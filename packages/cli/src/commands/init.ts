@@ -2,8 +2,9 @@ import { existsSync, promises as fs } from "fs"
 import path from "path"
 import {
   DEFAULT_COMPONENTS,
-  DEFAULT_CSS,
-  DEFAULT_TAILWIND,
+  DEFAULT_TAILWIND_BASE_COLOR,
+  DEFAULT_TAILWIND_CONFIG,
+  DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
   getConfig,
   rawConfigSchema,
@@ -13,7 +14,11 @@ import {
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
-import { getRegistryStyles } from "@/src/utils/registry"
+import {
+  getRegistryBaseColor,
+  getRegistryBaseColors,
+  getRegistryStyles,
+} from "@/src/utils/registry"
 import * as templates from "@/src/utils/templates"
 import chalk from "chalk"
 import { Command } from "commander"
@@ -47,21 +52,6 @@ export const init = new Command()
   .action(async (opts) => {
     try {
       const options = initOptionsSchema.parse(opts)
-
-      if (!options.yes) {
-        const { proceed } = await prompts({
-          type: "confirm",
-          name: "proceed",
-          message:
-            "Running this command will overwrite existing files. Proceed?",
-          initial: true,
-        })
-
-        if (!proceed) {
-          process.exit(0)
-        }
-      }
-
       const cwd = path.resolve(options.cwd)
 
       // Ensure target directory exists.
@@ -71,16 +61,8 @@ export const init = new Command()
       }
 
       // Read config.
-      let config = await getConfig(cwd)
-      let promptedForConfig = false
-      if (!config) {
-        promptedForConfig = true
-        config = await promptForConfig(cwd, config)
-      }
-
-      if (!promptedForConfig) {
-        logger.info("")
-      }
+      const existingConfig = await getConfig(cwd)
+      const config = await promptForConfig(cwd, existingConfig, options.yes)
 
       await runInit(cwd, config)
 
@@ -96,11 +78,13 @@ export const init = new Command()
 
 export async function promptForConfig(
   cwd: string,
-  defaultConfig: Config | null = null
+  defaultConfig: Config | null = null,
+  skip = false
 ) {
   const highlight = (text: string) => chalk.cyan(text)
 
   const styles = await getRegistryStyles()
+  const baseColors = await getRegistryBaseColors()
 
   const options = await prompts([
     {
@@ -113,16 +97,35 @@ export async function promptForConfig(
       })),
     },
     {
-      type: "text",
-      name: "tailwind",
-      message: `Where is your ${highlight("tailwind.config.js")} located?`,
-      initial: defaultConfig?.tailwind ?? DEFAULT_TAILWIND,
+      type: "select",
+      name: "tailwindBaseColor",
+      message: `Which color would you like to use as ${highlight(
+        "base color"
+      )}?`,
+      choices: baseColors.map((color) => ({
+        title: color.label,
+        value: color.name,
+      })),
     },
     {
       type: "text",
-      name: "css",
-      message: `Where is your global ${highlight("CSS")} file?`,
-      initial: defaultConfig?.css ?? DEFAULT_CSS,
+      name: "tailwindCss",
+      message: `Where is your ${highlight("global CSS")} file?`,
+      initial: defaultConfig?.tailwind.css ?? DEFAULT_TAILWIND_CSS,
+    },
+    {
+      type: "toggle",
+      name: "tailwindCssVariables",
+      message: `Do you want to use ${highlight("CSS variables")} for colors?`,
+      initial: defaultConfig?.tailwind.cssVariables ?? true,
+      active: "yes",
+      inactive: "no",
+    },
+    {
+      type: "text",
+      name: "tailwindConfig",
+      message: `Where is your ${highlight("tailwind.config.js")} located?`,
+      initial: defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG,
     },
     {
       type: "text",
@@ -137,17 +140,23 @@ export async function promptForConfig(
       initial: defaultConfig?.aliases["utils"] ?? DEFAULT_UTILS,
     },
     {
-      type: "confirm",
+      type: "toggle",
       name: "rsc",
       message: `Are you using ${highlight("React Server Components")}?`,
       initial: defaultConfig?.rsc ?? true,
+      active: "yes",
+      inactive: "no",
     },
   ])
 
   const config = rawConfigSchema.parse({
     style: options.style,
-    tailwind: options.tailwind,
-    css: options.css,
+    tailwind: {
+      config: options.tailwindConfig,
+      css: options.tailwindCss,
+      baseColor: options.tailwindBaseColor,
+      cssVariables: options.tailwindCssVariables,
+    },
     rsc: options.rsc,
     aliases: {
       utils: options.utils,
@@ -155,15 +164,19 @@ export async function promptForConfig(
     },
   })
 
-  const { proceed } = await prompts({
-    type: "confirm",
-    name: "proceed",
-    message: `Write configuration to ${highlight("components.json")}. Proceed?`,
-    initial: true,
-  })
+  if (!skip) {
+    const { proceed } = await prompts({
+      type: "confirm",
+      name: "proceed",
+      message: `Write configuration to ${highlight(
+        "components.json"
+      )}. Proceed?`,
+      initial: true,
+    })
 
-  if (!proceed) {
-    process.exit(0)
+    if (!proceed) {
+      process.exit(0)
+    }
   }
 
   // Write to file.
@@ -202,17 +215,22 @@ export async function runInit(cwd: string, config: Config) {
 
   // Write tailwind config.
   await fs.writeFile(
-    config.resolvedPaths.tailwind,
+    config.resolvedPaths.tailwindConfig,
     templates.TAILWIND_CONFIG_WITH_VARIABLES,
     "utf8"
   )
 
   // Write css file.
-  await fs.writeFile(
-    config.resolvedPaths.css,
-    templates.STYLES_WITH_VARIABLES,
-    "utf8"
-  )
+  const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+  if (baseColor) {
+    await fs.writeFile(
+      config.resolvedPaths.tailwindCss,
+      config.tailwind.cssVariables
+        ? baseColor.cssVarsTemplate
+        : baseColor.inlineColorsTemplate,
+      "utf8"
+    )
+  }
 
   // Write cn file.
   await fs.writeFile(

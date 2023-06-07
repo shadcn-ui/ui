@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 importers:
 
@@ -217,6 +221,9 @@ importers:
       jotai:
         specifier: ^2.1.0
         version: 2.1.0(react@18.2.0)
+      lodash.template:
+        specifier: ^4.5.0
+        version: 4.5.0
       lucide-react:
         specifier: 0.214.0
         version: 0.214.0(react@18.2.0)
@@ -257,6 +264,9 @@ importers:
         specifier: ^3.21.4
         version: 3.21.4
     devDependencies:
+      '@types/lodash.template':
+        specifier: ^4.5.1
+        version: 4.5.1
       '@types/node':
         specifier: ^17.0.45
         version: 17.0.45
@@ -3627,6 +3637,16 @@ packages:
       '@types/node': 17.0.45
     dev: false
 
+  /@types/lodash.template@4.5.1:
+    resolution: {integrity: sha512-0y71S2dGgmwdkSsyW95JBp8HSZchgKCsjr6F0lsT3eSMtaT3Nn9rcMHU1U4UKu6XjQT3YC6/PNwgFI7k9f+ltw==}
+    dependencies:
+      '@types/lodash': 4.14.195
+    dev: true
+
+  /@types/lodash@4.14.195:
+    resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
+    dev: true
+
   /@types/long@4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
     dev: false
@@ -6849,6 +6869,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
 
+  /lodash._reinterpolate@3.0.0:
+    resolution: {integrity: sha512-xYHt68QRoYGjeeM/XOE1uJtvXQAgvszfBhjV4yvsQH0u2i9I6cI6c6/eG4Hh3UAOVn0y/xAXwmTzEay49Q//HA==}
+    dev: false
+
   /lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
     dev: false
@@ -6888,6 +6912,19 @@ packages:
 
   /lodash.startcase@4.4.0:
     resolution: {integrity: sha512-+WKqsK294HMSc2jEbNgpHpd0JfIBhp7rEV4aqXWqFr6AlXov+SlcgB1Fv01y2kGe3Gc8nMW7VA0SrGuSkRfIEg==}
+    dev: false
+
+  /lodash.template@4.5.0:
+    resolution: {integrity: sha512-84vYFxIkmidUiFxidA/KjjH9pAycqW+h980j7Fuz5qxRtO9pgB7MDFTdys1N7A5mcucRiDyEq4fusljItR1T/A==}
+    dependencies:
+      lodash._reinterpolate: 3.0.0
+      lodash.templatesettings: 4.2.0
+    dev: false
+
+  /lodash.templatesettings@4.2.0:
+    resolution: {integrity: sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==}
+    dependencies:
+      lodash._reinterpolate: 3.0.0
     dev: false
 
   /lodash.uniq@4.5.0:

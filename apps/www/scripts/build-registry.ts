@@ -1,8 +1,10 @@
+// @ts-nocheck
 import fs from "fs"
 import path, { basename } from "path"
+import template from "lodash.template"
 import { rimraf } from "rimraf"
 
-import { colors } from "../registry/colors"
+import { colorMapping, colors } from "../registry/colors"
 import { registry } from "../registry/registry"
 import { registrySchema } from "../registry/schema"
 import { styles } from "../registry/styles"
@@ -65,10 +67,10 @@ rimraf.sync(path.join(process.cwd(), "__registry__/index.tsx"))
 fs.writeFileSync(path.join(process.cwd(), "__registry__/index.tsx"), index)
 
 // ----------------------------------------------------------------------------
-// Build registry/[style]/[name].json.
+// Build registry/styles/[style]/[name].json.
 // ----------------------------------------------------------------------------
 for (const style of styles) {
-  const targetPath = path.join(REGISTRY_PATH, style.name)
+  const targetPath = path.join(REGISTRY_PATH, "styles", style.name)
 
   // Create directory if it doesn't exist.
   if (!fs.existsSync(targetPath)) {
@@ -106,10 +108,14 @@ for (const style of styles) {
 }
 
 // ----------------------------------------------------------------------------
-// Build registry/styles.json.
+// Build registry/styles/index.json.
 // ----------------------------------------------------------------------------
 const stylesJson = JSON.stringify(styles, null, 2)
-fs.writeFileSync(path.join(REGISTRY_PATH, "styles.json"), stylesJson, "utf8")
+fs.writeFileSync(
+  path.join(REGISTRY_PATH, "styles/index.json"),
+  stylesJson,
+  "utf8"
+)
 
 // ----------------------------------------------------------------------------
 // Build registry/index.json.
@@ -120,8 +126,14 @@ rimraf.sync(path.join(REGISTRY_PATH, "index.json"))
 fs.writeFileSync(path.join(REGISTRY_PATH, "index.json"), registryJson, "utf8")
 
 // ----------------------------------------------------------------------------
-// Build registry/colors.json.
+// Build registry/colors/index.json.
 // ----------------------------------------------------------------------------
+const colorsTargetPath = path.join(REGISTRY_PATH, "colors")
+rimraf.sync(colorsTargetPath)
+if (!fs.existsSync(colorsTargetPath)) {
+  fs.mkdirSync(colorsTargetPath, { recursive: true })
+}
+
 const colorsData: Record<string, any> = {}
 for (const [color, value] of Object.entries(colors)) {
   if (typeof value === "string") {
@@ -155,9 +167,135 @@ for (const [color, value] of Object.entries(colors)) {
 }
 
 fs.writeFileSync(
-  path.join(REGISTRY_PATH, "colors.json"),
+  path.join(colorsTargetPath, "index.json"),
   JSON.stringify(colorsData, null, 2),
   "utf8"
 )
+
+// ----------------------------------------------------------------------------
+// Build registry/colors/[base].json.
+// ----------------------------------------------------------------------------
+export const STYLES = `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+`
+
+export const STYLES_WITH_VARIABLES = `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: <%- colors.light["background"] %>;
+    --foreground: <%- colors.light["foreground"] %>;
+ 
+    --muted: <%- colors.light["muted"] %>;
+    --muted-foreground: <%- colors.light["muted-foreground"] %>;
+ 
+    --popover: <%- colors.light["popover"] %>;
+    --popover-foreground: <%- colors.light["popover-foreground"] %>;
+ 
+    --card: <%- colors.light["card"] %>;
+    --card-foreground: <%- colors.light["card-foreground"] %>;
+ 
+    --border: <%- colors.light["border"] %>;
+    --input: <%- colors.light["input"] %>;
+ 
+    --primary: <%- colors.light["primary"] %>;
+    --primary-foreground: <%- colors.light["primary-foreground"] %>;
+ 
+    --secondary: <%- colors.light["secondary"] %>;
+    --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
+ 
+    --accent: <%- colors.light["accent"] %>;
+    --accent-foreground: <%- colors.light["accent-foregrond"] %>;
+ 
+    --destructive: <%- colors.light["destructive"] %>;
+    --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
+ 
+    --ring: <%- colors.light["ring"] %>;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: <%- colors.dark["background"] %>;
+    --foreground: <%- colors.dark["foreground"] %>;
+ 
+    --muted: <%- colors.dark["muted"] %>;
+    --muted-foreground: <%- colors.dark["muted-foreground"] %>;
+ 
+    --popover: <%- colors.dark["popover"] %>;
+    --popover-foreground: <%- colors.dark["popover-foreground"] %>;
+ 
+    --card: <%- colors.dark["card"] %>;
+    --card-foreground: <%- colors.dark["card-foreground"] %>;
+ 
+    --border: <%- colors.dark["border"] %>;
+    --input: <%- colors.dark["input"] %>;
+ 
+    --primary: <%- colors.dark["primary"] %>;
+    --primary-foreground: <%- colors.dark["primary-foreground"] %>;
+ 
+    --secondary: <%- colors.dark["secondary"] %>;
+    --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
+ 
+    --accent: <%- colors.dark["accent"] %>;
+    --accent-foreground: <%- colors.dark["accent-foregrond"] %>;
+ 
+    --destructive: <%- colors.dark["destructive"] %>;
+    --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
+ 
+    --ring: <%- colors.dark["ring"] %>;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}`
+
+for (const baseColor of ["slate", "gray", "zinc", "neutral", "stone"]) {
+  const base: Record<string, any> = {
+    inlineColors: {},
+    cssVars: {},
+  }
+  for (const [mode, values] of Object.entries(colorMapping)) {
+    base["inlineColors"][mode] = {}
+    base["cssVars"][mode] = {}
+    for (const [key, value] of Object.entries(values)) {
+      if (typeof value === "string") {
+        const resolvedColor = value.replace(/{{base}}-/g, `${baseColor}-`)
+        base["inlineColors"][mode][key] = resolvedColor
+
+        const [resolvedBase, scale] = resolvedColor.split("-")
+        const color = scale
+          ? colorsData[resolvedBase].find(
+              (item) => item.scale === parseInt(scale)
+            )
+          : colorsData[resolvedBase]
+        if (color) {
+          base["cssVars"][mode][key] = color.hslChannel
+        }
+      }
+    }
+  }
+
+  // Build css vars.
+  base["inlineColorsTemplate"] = template(STYLES)({})
+  base["cssVarsTemplate"] = template(STYLES_WITH_VARIABLES)({
+    colors: base["cssVars"],
+  })
+
+  fs.writeFileSync(
+    path.join(REGISTRY_PATH, `colors/${baseColor}.json`),
+    JSON.stringify(base, null, 2),
+    "utf8"
+  )
+}
 
 console.log("✅ Done!")

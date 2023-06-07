@@ -1,7 +1,11 @@
 {
   "style": "default",
-  "tailwind": "./tailwind.config.ts",
-  "css": "src/app/globals.css",
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "src/app/globals.css",
+    "baseColor": "zinc",
+    "cssVariales": true
+  },
   "rsc": false,
   "aliases": {
     "utils": "~/lib/utils",

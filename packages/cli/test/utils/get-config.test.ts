@@ -12,9 +12,13 @@ test("get raw config", async () => {
     await getRawConfig(path.resolve(__dirname, "../fixtures/config-partial"))
   ).toEqual({
     style: "default",
-    tailwind: "tailwind.config.js",
-    css: "app/globals.css",
-    rsc: true,
+    tailwind: {
+      config: "./tailwind.config.ts",
+      css: "./src/assets/css/tailwind.css",
+      baseColor: "neutral",
+      cssVariables: false,
+    },
+    rsc: false,
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
@@ -39,23 +43,27 @@ test("get config", async () => {
     await getConfig(path.resolve(__dirname, "../fixtures/config-partial"))
   ).toEqual({
     style: "default",
-    tailwind: "tailwind.config.js",
-    css: "app/globals.css",
-    rsc: true,
+    tailwind: {
+      config: "./tailwind.config.ts",
+      css: "./src/assets/css/tailwind.css",
+      baseColor: "neutral",
+      cssVariables: false,
+    },
+    rsc: false,
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
     },
     resolvedPaths: {
-      tailwind: path.resolve(
+      tailwindConfig: path.resolve(
         __dirname,
         "../fixtures/config-partial",
-        "tailwind.config.js"
+        "tailwind.config.ts"
       ),
-      css: path.resolve(
+      tailwindCss: path.resolve(
         __dirname,
         "../fixtures/config-partial",
-        "./app/globals.css"
+        "./src/assets/css/tailwind.css"
       ),
       components: path.resolve(
         __dirname,
@@ -74,20 +82,24 @@ test("get config", async () => {
     await getConfig(path.resolve(__dirname, "../fixtures/config-full"))
   ).toEqual({
     style: "default",
-    tailwind: "./tailwind.config.ts",
-    css: "src/app/globals.css",
     rsc: false,
+    tailwind: {
+      config: "tailwind.config.ts",
+      baseColor: "zinc",
+      css: "src/app/globals.css",
+      cssVariables: true,
+    },
     aliases: {
       components: "~/components",
       utils: "~/lib/utils",
     },
     resolvedPaths: {
-      tailwind: path.resolve(
+      tailwindConfig: path.resolve(
         __dirname,
         "../fixtures/config-full",
         "tailwind.config.ts"
       ),
-      css: path.resolve(
+      tailwindCss: path.resolve(
         __dirname,
         "../fixtures/config-full",
         "./src/app/globals.css"

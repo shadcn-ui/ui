@@ -104,7 +104,6 @@ export const add = new Command()
         }
       }
 
-      logger.info("")
       const spinner = ora(`Installing components...`).start()
       for (const item of payload) {
         spinner.text = `Installing ${item.name}...`
@@ -113,6 +112,7 @@ export const add = new Command()
           item,
           options.path ? path.resolve(cwd, options.path) : undefined
         )
+
         if (!targetDir) {
           continue
         }

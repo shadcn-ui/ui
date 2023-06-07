@@ -1,4 +1,5 @@
 import * as React from "react"
+
 import { Button } from "@/registry/default/ui/button"
 import {
   Card,
@@ -20,7 +21,7 @@ import {
 
 export default function CardWithForm() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[350px] bg-primary text-primary-foreground">
       <CardHeader>
         <CardTitle>Create project</CardTitle>
         <CardDescription>Deploy your new project in one-click.</CardDescription>

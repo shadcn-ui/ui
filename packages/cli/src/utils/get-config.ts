@@ -7,8 +7,9 @@ import * as z from "zod"
 export const DEFAULT_STYLE = "default"
 export const DEFAULT_COMPONENTS = "@/components"
 export const DEFAULT_UTILS = "@/lib/utils"
-export const DEFAULT_CSS = "app/globals.css"
-export const DEFAULT_TAILWIND = "tailwind.config.js"
+export const DEFAULT_TAILWIND_CSS = "app/globals.css"
+export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.js"
+export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
 
 // TODO: Figure out if we want to support all cosmiconfig formats.
 // A simple components.json file would be nice.
@@ -18,13 +19,17 @@ const explorer = cosmiconfig("components", {
 
 export const rawConfigSchema = z
   .object({
-    style: z.string().default(DEFAULT_STYLE),
-    tailwind: z.string().default(DEFAULT_TAILWIND),
-    css: z.string().default(DEFAULT_CSS),
-    rsc: z.coerce.boolean().default(true),
+    style: z.string(),
+    rsc: z.coerce.boolean().default(false),
+    tailwind: z.object({
+      config: z.string(),
+      css: z.string(),
+      baseColor: z.string(),
+      cssVariables: z.boolean().default(true),
+    }),
     aliases: z.object({
-      components: z.string().default(DEFAULT_COMPONENTS),
-      utils: z.string().default(DEFAULT_UTILS),
+      components: z.string(),
+      utils: z.string(),
     }),
   })
   .strict()
@@ -33,8 +38,8 @@ export type RawConfig = z.infer<typeof rawConfigSchema>
 
 export const configSchema = rawConfigSchema.extend({
   resolvedPaths: z.object({
-    tailwind: z.string(),
-    css: z.string(),
+    tailwindConfig: z.string(),
+    tailwindCss: z.string(),
     utils: z.string(),
     components: z.string(),
   }),
@@ -65,8 +70,8 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
   return configSchema.parse({
     ...config,
     resolvedPaths: {
-      tailwind: path.resolve(cwd, config.tailwind),
-      css: path.resolve(cwd, config.css),
+      tailwindConfig: path.resolve(cwd, config.tailwind.config),
+      tailwindCss: path.resolve(cwd, config.tailwind.css),
       utils: await resolveImport(config.aliases["utils"], tsConfig),
       components: await resolveImport(config.aliases["components"], tsConfig),
     },
