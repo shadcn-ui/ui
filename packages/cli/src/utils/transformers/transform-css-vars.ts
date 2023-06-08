@@ -16,20 +16,30 @@ export const transformCssVars: Transformer = async ({
   // Find jsx attributes with the name className.
   // const openingElements = sourceFile.getDescendantsOfKind(SyntaxKind.JsxElement)
   // console.log(openingElements)
-  const jsxAttributes = sourceFile
-    .getDescendantsOfKind(SyntaxKind.JsxAttribute)
-    .filter((node) => node.getName() === "className")
+  // const jsxAttributes = sourceFile
+  //   .getDescendantsOfKind(SyntaxKind.JsxAttribute)
+  //   .filter((node) => node.getName() === "className")
 
-  for (const jsxAttribute of jsxAttributes) {
-    const value = jsxAttribute.getInitializer()?.getText()
+  // for (const jsxAttribute of jsxAttributes) {
+  //   const value = jsxAttribute.getInitializer()?.getText()
+  //   if (value) {
+  //     const valueWithColorMapping = applyColorMapping(
+  //       value.replace(/"/g, ""),
+  //       baseColor.inlineColors
+  //     )
+  //     jsxAttribute.setInitializer(`"${valueWithColorMapping}"`)
+  //   }
+  // }
+  sourceFile.getDescendantsOfKind(SyntaxKind.StringLiteral).forEach((node) => {
+    const value = node.getText()
     if (value) {
       const valueWithColorMapping = applyColorMapping(
         value.replace(/"/g, ""),
         baseColor.inlineColors
       )
-      jsxAttribute.setInitializer(`"${valueWithColorMapping}"`)
+      node.replaceWithText(`"${valueWithColorMapping.trim()}"`)
     }
-  }
+  })
 
   return sourceFile
 }
@@ -129,15 +139,16 @@ export function applyColorMapping(
   input: string,
   mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"]
 ) {
+  // Handle border classes.
+  if (input.includes(" border ")) {
+    input = input.replace(" border ", " border border-border ")
+  }
+
   // Build color mappings.
   const classNames = input.split(" ")
   const lightMode: string[] = []
   const darkMode: string[] = []
   for (let className of classNames) {
-    // Handle border classes.
-    if (className === "border") {
-      className = "border-border"
-    }
     const [variant, value, modifier] = splitClassName(className)
     const prefix = PREFIXES.find((prefix) => value?.startsWith(prefix))
     if (!prefix) {
@@ -167,5 +178,5 @@ export function applyColorMapping(
     }
   }
 
-  return lightMode.join(" ") + " " + darkMode.join(" ")
+  return lightMode.join(" ") + " " + darkMode.join(" ").trim()
 }

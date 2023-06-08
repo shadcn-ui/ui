@@ -216,7 +216,9 @@ export async function runInit(cwd: string, config: Config) {
   // Write tailwind config.
   await fs.writeFile(
     config.resolvedPaths.tailwindConfig,
-    templates.TAILWIND_CONFIG_WITH_VARIABLES,
+    config.tailwind.cssVariables
+      ? templates.TAILWIND_CONFIG_WITH_VARIABLES
+      : templates.TAILWIND_CONFIG,
     "utf8"
   )
 

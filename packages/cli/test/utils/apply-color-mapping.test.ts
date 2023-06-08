@@ -58,7 +58,7 @@ describe("apply color mapping", async () => {
     {
       input: "rounded-lg border bg-card text-card-foreground shadow-sm",
       output:
-        "rounded-lg border-slate-200 bg-white text-slate-950 shadow-sm dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+        "rounded-lg border border-slate-200 bg-white text-slate-950 shadow-sm dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
     },
     {
       input:

@@ -7,6 +7,7 @@ import { logger } from "@/src/utils/logger"
 import {
   fetchTree,
   getItemTargetPath,
+  getRegistryBaseColor,
   getRegistryIndex,
   resolveTree,
 } from "@/src/utils/registry"
@@ -85,6 +86,7 @@ export const add = new Command()
 
       const tree = await resolveTree(registryIndex, selectedComponents)
       const payload = await fetchTree(config.style, tree)
+      const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
 
       if (!payload.length) {
         logger.warn("Selected components not found. Exiting.")
@@ -125,7 +127,12 @@ export const add = new Command()
           const filePath = path.resolve(targetDir, file.name)
 
           // Run transformers.
-          const content = await transform(file.name, file.content, config)
+          const content = await transform({
+            filename: file.name,
+            raw: file.content,
+            config,
+            baseColor,
+          })
 
           await fs.writeFile(filePath, content)
         }
