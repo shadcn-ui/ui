@@ -1,215 +1,171 @@
-import { API, FileInfo } from "jscodeshift"
+import { registryBaseColorSchema } from "@/src/utils/registry/schema"
+import { Transformer } from "@/src/utils/transformers"
+import { ScriptKind, SyntaxKind } from "ts-morph"
+import * as z from "zod"
 
-const COLOR_MAPPING = {
-  background: {
-    light: "white",
-    dark: "slate-950",
-  },
-  foreground: {
-    light: "slate-950",
-    dark: "slate-50",
-  },
-  muted: {
-    light: "slate-100",
-    dark: "slate-800",
-  },
-  "muted-foreground": {
-    light: "slate-500",
-    dark: "slate-400",
-  },
-  popover: {
-    light: "white",
-    dark: "slate-950",
-  },
-  "popover-foreground": {
-    light: "slate-950",
-    dark: "slate-50",
-  },
-  border: {
-    light: "slate-200",
-    dark: "slate-800",
-  },
-  "border-input": {
-    light: "slate-200",
-    dark: "slate-800",
-  },
-  card: {
-    light: "white",
-    dark: "slate-950",
-  },
-  "card-foreground": {
-    light: "slate-950",
-    dark: "slate-50",
-  },
-  primary: {
-    light: "slate-900",
-    dark: "slate-50",
-  },
-  "primary-foreground": {
-    light: "slate-50",
-    dark: "slate-900",
-  },
-  secondary: {
-    light: "slate-100",
-    dark: "slate-800",
-  },
-  "secondary-foreground": {
-    light: "slate-900",
-    dark: "slate-50",
-  },
-  accent: {
-    light: "slate-100",
-    dark: "slate-800",
-  },
-  "accent-foreground": {
-    light: "slate-900",
-    dark: "slate-50",
-  },
-  destructive: {
-    light: "red-500",
-    dark: "red-900",
-  },
-  "destructive-foreground": {
-    light: "slate-50",
-    dark: "red-50",
-  },
-  ring: {
-    light: "slate-400",
-    dark: "slate-800",
-  },
+export const transformCssVars: Transformer = async ({
+  sourceFile,
+  config,
+  baseColor,
+}) => {
+  // No transform if using css variables.
+  if (config.tailwind?.cssVariables || !baseColor?.inlineColors) {
+    return sourceFile
+  }
+
+  // Find jsx attributes with the name className.
+  // const openingElements = sourceFile.getDescendantsOfKind(SyntaxKind.JsxElement)
+  // console.log(openingElements)
+  const jsxAttributes = sourceFile
+    .getDescendantsOfKind(SyntaxKind.JsxAttribute)
+    .filter((node) => node.getName() === "className")
+
+  for (const jsxAttribute of jsxAttributes) {
+    const value = jsxAttribute.getInitializer()?.getText()
+    if (value) {
+      const valueWithColorMapping = applyColorMapping(
+        value.replace(/"/g, ""),
+        baseColor.inlineColors
+      )
+      jsxAttribute.setInitializer(`"${valueWithColorMapping}"`)
+    }
+  }
+
+  return sourceFile
 }
 
-const PREFIXES = ["bg-", "text-", "border-", "ring-", "ring-offset-"]
+// export default function transformer(file: FileInfo, api: API) {
+//   const j = api.jscodeshift.withParser("tsx")
 
-export default function transformer(file: FileInfo, api: API) {
-  const j = api.jscodeshift.withParser("tsx")
+//   // Replace bg-background with "bg-white dark:bg-slate-950"
+//   const $j = j(file.source)
+//   return $j
+//     .find(j.JSXAttribute, {
+//       name: {
+//         name: "className",
+//       },
+//     })
+//     .forEach((path) => {
+//       const { node } = path
+//       if (node?.value?.type) {
+//         if (node.value.type === "StringLiteral") {
+//           node.value.value = applyColorMapping(node.value.value)
+//           console.log(node.value.value)
+//         }
 
-  // Replace bg-background with "bg-white dark:bg-slate-950"
-  const $j = j(file.source)
-  return $j
-    .find(j.JSXAttribute, {
-      name: {
-        name: "className",
-      },
-    })
-    .forEach((path) => {
-      const { node } = path
-      if (node?.value?.type) {
-        if (node.value.type === "StringLiteral") {
-          node.value.value = applyColorMapping(node.value.value)
-          console.log(node.value.value)
-        }
+//         if (
+//           node.value.type === "JSXExpressionContainer" &&
+//           node.value.expression.type === "CallExpression"
+//         ) {
+//           const callee = node.value.expression.callee
+//           if (callee.type === "Identifier" && callee.name === "cn") {
+//             node.value.expression.arguments.forEach((arg) => {
+//               if (arg.type === "StringLiteral") {
+//                 arg.value = applyColorMapping(arg.value)
+//               }
 
-        if (
-          node.value.type === "JSXExpressionContainer" &&
-          node.value.expression.type === "CallExpression"
-        ) {
-          const callee = node.value.expression.callee
-          if (callee.type === "Identifier" && callee.name === "cn") {
-            node.value.expression.arguments.forEach((arg) => {
-              if (arg.type === "StringLiteral") {
-                arg.value = applyColorMapping(arg.value)
-              }
-
-              if (
-                arg.type === "LogicalExpression" &&
-                arg.right.type === "StringLiteral"
-              ) {
-                arg.right.value = applyColorMapping(arg.right.value)
-              }
-            })
-          }
-        }
-      }
-    })
-    .toSource()
-}
-
-// export function splitClassName(input: string): (string | null)[] {
-//   const parts = input.split(":")
-//   const classNames = parts.map((part) => {
-//     const match = part.match(/^\[?(.+)\]$/)
-//     if (match) {
-//       return match[1]
-//     } else {
-//       return null
-//     }
-//   })
-
-//   return classNames
+//               if (
+//                 arg.type === "LogicalExpression" &&
+//                 arg.right.type === "StringLiteral"
+//               ) {
+//                 arg.right.value = applyColorMapping(arg.right.value)
+//               }
+//             })
+//           }
+//         }
+//       }
+//     })
+//     .toSource()
 // }
 
-export function splitClassName(className: string): (string | null)[] {
-  const parts: (string | null)[] = []
-  const regex = /^(.*?:)?([^/]+)(?:\/(.+))?$/
+// // export function splitClassName(input: string): (string | null)[] {
+// //   const parts = input.split(":")
+// //   const classNames = parts.map((part) => {
+// //     const match = part.match(/^\[?(.+)\]$/)
+// //     if (match) {
+// //       return match[1]
+// //     } else {
+// //       return null
+// //     }
+// //   })
 
-  const match = className.match(regex)
-  if (match) {
-    const [, prefix, baseClass, suffix] = match
-    parts.push(prefix ? prefix.slice(0, -1) : null)
-    parts.push(baseClass)
-    parts.push(suffix || null)
-  } else {
-    parts.push(null, null, null)
+// //   return classNames
+// // }
+
+// Splits a className into variant-name-alpha.
+// eg. hover:bg-primary-100 -> [hover, bg-primary, 100]
+export function splitClassName(className: string): (string | null)[] {
+  if (!className.includes("/") && !className.includes(":")) {
+    return [null, className, null]
   }
+
+  const parts: (string | null)[] = []
+  // First we split to find the alpha.
+  let [rest, alpha] = className.split("/")
+
+  // Check if rest has a colon.
+  if (!rest.includes(":")) {
+    return [null, rest, alpha]
+  }
+
+  // Next we split the rest by the colon.
+  const split = rest.split(":")
+
+  // We take the last item from the split as the name.
+  const name = split.pop()
+
+  // We glue back the rest of the split.
+  const variant = split.join(":")
+
+  // Finally we push the variant, name and alpha.
+  parts.push(variant ?? null, name ?? null, alpha ?? null)
 
   return parts
 }
 
-export function glueClassName(input: (string | null)[]): string {
-  const classNames = input.map((value) => {
-    if (value === null) {
-      return ""
-    } else {
-      return value
-    }
-  })
+const PREFIXES = ["bg-", "text-", "border-", "ring-offset-", "ring-"]
 
-  return classNames.filter((className) => className !== "").join(":")
-}
-
-export function applyColorMapping(input: string) {
-  console.log(`Input: ${input}`)
-  // First we split the string by spaces.
+export function applyColorMapping(
+  input: string,
+  mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"]
+) {
+  // Build color mappings.
   const classNames = input.split(" ")
-
-  // Next we loop and split each class by the colon.
-  const splitClassNames = classNames.map((className) =>
-    splitClassName(className)
-  )
-
-  console.log({ splitClassNames })
-
-  // Now we can loop through each class and apply the color mapping.
+  const lightMode: string[] = []
   const darkMode: string[] = []
-  const result = []
-  for (const className of splitClassNames) {
-    const [variant, value, modifier] = className
-
-    for (const PREFIX of PREFIXES) {
-      for (const [key, { light, dark }] of Object.entries(COLOR_MAPPING)) {
-        const needle = `${PREFIX}${key}`
-
-        if (value?.startsWith(needle)) {
-          result.push(
-            [
-              variant,
-              value.replace(needle, `${PREFIX}${light}`),
-              modifier,
-            ].join(":")
-          )
-          darkMode.push([variant, `dark:${PREFIX}${dark}`, modifier].join(":"))
-        }
+  for (let className of classNames) {
+    // Handle border classes.
+    if (className === "border") {
+      className = "border-border"
+    }
+    const [variant, value, modifier] = splitClassName(className)
+    const prefix = PREFIXES.find((prefix) => value?.startsWith(prefix))
+    if (!prefix) {
+      if (!lightMode.includes(className)) {
+        lightMode.push(className)
       }
+      continue
+    }
+
+    const needle = value?.replace(prefix, "")
+    if (needle && needle in mapping.light) {
+      lightMode.push(
+        [variant, `${prefix}${mapping.light[needle]}`, modifier]
+          .filter(Boolean)
+          .join(":")
+      )
+      darkMode.push(
+        ["dark", variant, `${prefix}${mapping.dark[needle]}`, modifier]
+          .filter(Boolean)
+          .join(":")
+      )
+      continue
+    }
+
+    if (!lightMode.includes(className)) {
+      lightMode.push(className)
     }
   }
 
-  // Finally we join the classes back together.
-  const output = result.join(" ") + " " + darkMode.join(" ")
-
-  console.log(`Output: ${output}`)
-  console.log("")
-  console.log("")
-
-  return output
+  return lightMode.join(" ") + " " + darkMode.join(" ")
 }

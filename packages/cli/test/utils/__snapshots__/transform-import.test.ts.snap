@@ -34,33 +34,3 @@ import { Foo } from \\"bar\\"
     import { bar } from \\"@/lib/utils/bar\\"
     "
 `;
-
-exports[`transform rsc 1`] = `
-"import * as React from \\"react\\"
-import { Foo } from \\"bar\\"
-    "
-`;
-
-exports[`transform rsc 2`] = `
-"\\"use client\\"
-
-      import * as React from \\"react\\"
-import { Foo } from \\"bar\\"
-    "
-`;
-
-exports[`transform rsc 3`] = `
-"      import * as React from \\"react\\"
-import { Foo } from \\"bar\\"
-    "
-`;
-
-exports[`transform rsc 4`] = `
-"\\"use foo\\"
-
-      import * as React from \\"react\\"
-import { Foo } from \\"bar\\"
-
-\\"use client\\"
-    "
-`;
