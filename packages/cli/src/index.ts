@@ -7,6 +7,7 @@ import ora from "ora"
 import prompts from "prompts"
 
 import { Component, getAvailableComponents } from "./utils/get-components"
+import { Config, getCliConfig } from "./utils/get-config"
 import { getPackageInfo } from "./utils/get-package-info"
 import { getPackageManager } from "./utils/get-package-manager"
 import { getProjectInfo } from "./utils/get-project-info"
@@ -27,6 +28,8 @@ const PROJECT_DEPENDENCIES = [
 async function main() {
   const packageInfo = await getPackageInfo()
   const projectInfo = await getProjectInfo()
+  const cliConfig = await getCliConfig()
+
   const packageManager = getPackageManager()
 
   const program = new Command()
@@ -144,11 +147,7 @@ async function main() {
         selectedComponents = await promptForComponents(availableComponents)
       }
 
-      const dir = await promptForDestinationDir(
-        projectInfo?.srcComponentsUiDir
-          ? "./src/components/ui"
-          : "./components/ui"
-      )
+      const dir = await promptForDestinationDir(cliConfig)
 
       if (!selectedComponents?.length) {
         logger.warn("No components selected. Nothing to install.")
@@ -171,10 +170,16 @@ async function main() {
 
         // Write the files.
         for (const file of component.files) {
-          // Replace alias with the project's alias.
-          if (projectInfo?.alias) {
-            file.content = file.content.replace(/@\//g, projectInfo.alias)
-          }
+          // because these are the predefined routes for the utils and components we can
+          // use them as a replacer for the defined routes on the installed file.
+          file.content = file.content.replace(
+            "@/lib/utils",
+            cliConfig.utilsLocation
+          )
+          file.content = file.content.replace(
+            "@/components/ui/",
+            cliConfig.componentDirAlias
+          )
 
           const filePath = path.resolve(dir, file.name)
           await fs.writeFile(filePath, file.content)
@@ -210,13 +215,17 @@ async function promptForComponents(components: Component[]) {
   return selectedComponents
 }
 
-async function promptForDestinationDir(installDir = "./components/ui") {
+async function promptForDestinationDir(cliConfig: Config) {
+  if (!cliConfig.askForDir) {
+    return cliConfig.componentsDirInstallation
+  }
+
   const { dir } = await prompts([
     {
       type: "text",
       name: "dir",
       message: "Where would you like to install the component(s)?",
-      initial: installDir,
+      initial: cliConfig.componentsDirInstallation,
     },
   ])
 
