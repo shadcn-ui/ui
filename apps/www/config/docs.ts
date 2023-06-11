@@ -132,6 +132,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Button Group",
+          href: "/docs/components/button-group",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Calendar",
           href: "/docs/components/calendar",
           items: [],

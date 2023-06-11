@@ -1,0 +1,71 @@
+---
+title: Button Group
+description: A set of checkable buttons—known as button groups—where no more than one of the buttons can be checked at a time.
+component: true
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/radio-group
+  api: https://www.radix-ui.com/docs/primitives/components/radio-group#api-reference
+---
+
+<ComponentExample src="/components/examples/button-group/demo.tsx">
+  <ButtonGroupDemo />
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add button-group
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Install the `@radix-ui/react-radio-group` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-radio-group
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/radio-group.tsx" />
+
+<Callout>
+  This is the `<ButtonGroup />` primitive. You can place it in a file at
+  `components/ui/button-group.tsx`.
+</Callout>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Usage
+
+```tsx
+import { Label } from "@/components/ui/label"
+import { ButtonGroup, ButtonGroupItem } from "@/components/ui/button-group"
+```
+
+```tsx
+<ButtonGroup defaultValue="medium">
+  <ButtonGroupItem value="low">Low</ButtonGroupItem>
+  <ButtonGroupItem value="medium">Medium</ButtonGroupItem>
+  <ButtonGroupItem value="high">High</ButtonGroupItem>
+</ButtonGroup>
+```
+
+## React Hook form
+
+<Alert className="mt-4">
+  <AlertDescription>
+    **Note**: Learn more about using React Hook Form on the
+    [docs](/docs/forms/react-hook-form) page.
+  </AlertDescription>
+</Alert>
+
+<ComponentExample src="/components/examples/button-group/react-hook-form.tsx">
+  <ButtonGroupReactHookForm />
+</ComponentExample>

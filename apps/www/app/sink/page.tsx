@@ -18,6 +18,7 @@ import { ButtonLoading } from "@/components/examples/button/loading"
 import { ButtonOutline } from "@/components/examples/button/outline"
 import { ButtonSecondary } from "@/components/examples/button/secondary"
 import { ButtonWithIcon } from "@/components/examples/button/with-icon"
+import { ButtonGroupDemo } from "@/components/examples/button-group/demo"
 import { CardDemo } from "@/components/examples/card/demo"
 import { CheckboxDemo } from "@/components/examples/checkbox/demo"
 import { CollapsibleDemo } from "@/components/examples/collapsible/demo"
@@ -106,6 +107,9 @@ export default function KitchenSinkPage() {
               <div className="flex space-x-2">
                 <ButtonWithIcon />
                 <ButtonLoading />
+              </div>
+              <div>
+                <ButtonGroupDemo />
               </div>
             </ComponentWrapper>
             <ComponentWrapper>

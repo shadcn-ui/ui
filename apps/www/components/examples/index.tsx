@@ -17,6 +17,8 @@ import { ButtonLoading } from "@/components/examples/button/loading"
 import { ButtonOutline } from "@/components/examples/button/outline"
 import { ButtonSecondary } from "@/components/examples/button/secondary"
 import { ButtonWithIcon } from "@/components/examples/button/with-icon"
+import { ButtonGroupDemo } from "@/components/examples/button-group/demo"
+import { ButtonGroupReactHookForm } from "@/components/examples/button-group/react-hook-form"
 import { CalendarDemo } from "@/components/examples/calendar/demo"
 import { CalendarReactHookForm } from "@/components/examples/calendar/react-hook-form"
 import { CardDemo } from "@/components/examples/card/demo"
@@ -124,6 +126,8 @@ export const examples = {
   ButtonSecondary,
   ButtonWithIcon,
   ButtonAsChild,
+  ButtonGroupDemo,
+  ButtonGroupReactHookForm,
   CalendarDemo,
   CalendarReactHookForm,
   DataTableDemo,

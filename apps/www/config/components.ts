@@ -40,6 +40,12 @@ export const components = [
     files: ["components/ui/button.tsx"],
   },
   {
+    component: "button-group",
+    name: "Button Group",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: ["components/ui/button-group.tsx"],
+  },
+  {
     component: "card",
     name: "Card",
     files: ["components/ui/card.tsx"],
