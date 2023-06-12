@@ -16,9 +16,7 @@ const AlertDialogPortal = ({
   ...props
 }: AlertDialogPrimitive.AlertDialogPortalProps) => (
   <AlertDialogPrimitive.Portal className={cn(className)} {...props}>
-    <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
-      {children}
-    </div>
+    {children}
   </AlertDialogPrimitive.Portal>
 )
 AlertDialogPortal.displayName = AlertDialogPrimitive.Portal.displayName
@@ -29,7 +27,7 @@ const AlertDialogOverlay = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-opacity animate-in fade-in",
+      "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-opacity data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in data-[state=closed]:duration-100 data-[state=open]:duration-100",
       className
     )}
     {...props}
@@ -47,7 +45,8 @@ const AlertDialogContent = React.forwardRef<
     <AlertDialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed z-50 grid w-full max-w-lg scale-100 gap-4 border bg-background p-6 opacity-100 shadow-lg animate-in fade-in-90 slide-in-from-bottom-10 sm:rounded-lg sm:zoom-in-90 sm:slide-in-from-bottom-0 md:w-full",
+        "fixed bottom-0 left-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 scale-100 gap-4 border bg-background p-6 opacity-100 shadow-lg sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 sm:rounded-lg md:w-full",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in data-[state=closed]:slide-out-to-bottom-3/4 data-[state=closed]:slide-out-to-left-1/2 data-[state=open]:slide-in-from-bottom-3/4 data-[state=open]:slide-in-from-left-1/2 data-[state=closed]:duration-100 data-[state=open]:duration-100 data-[state=closed]:sm:zoom-out-90 data-[state=open]:sm:zoom-in-90 data-[state=closed]:sm:slide-out-to-top-1/2 data-[state=open]:sm:slide-in-from-top-1/2",
         className
       )}
       {...props}
