@@ -38,9 +38,7 @@ export function DemoGithub() {
           <Separator orientation="vertical" className="h-[20px]" />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="secondary" className="px-2">
-                <ChevronDown className="h-4 w-4 text-secondary-foreground" />
-              </Button>
+              <ChevronDown className="h-4 w-4 cursor-pointer text-secondary-foreground" />
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="end"
