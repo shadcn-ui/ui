@@ -76,6 +76,7 @@
     "esbuild": "^0.17.19",
     "eslint": "^8.41.0",
     "mdast-util-toc": "^6.1.1",
+    "next-in-it-stats": "^1.0.38",
     "postcss": "^8.4.24",
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",

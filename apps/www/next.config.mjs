@@ -1,4 +1,10 @@
 import { withContentlayer } from "next-contentlayer"
+import createWithInitStats from "next-in-it-stats/esm"
+
+const withInItStats = createWithInitStats({
+  legacy: true,
+  name: 'shadcn-web'
+})
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -46,4 +52,4 @@ const nextConfig = {
   },
 }
 
-export default withContentlayer(nextConfig)
+export default withInItStats(withContentlayer(nextConfig))
