@@ -157,8 +157,8 @@ export function ProfileForm() {
             <FormField
               control={form.control}
               key={field.id}
-              name={`urls.${index}`}
-              render={() => (
+              name={`urls.${index}.value`}
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel className={cn(index !== 0 && "sr-only")}>
                     URLs
@@ -167,7 +167,7 @@ export function ProfileForm() {
                     Add links to your website, blog, or social media profiles.
                   </FormDescription>
                   <FormControl>
-                    <Input {...form.register(`urls.${index}.value`)} />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
