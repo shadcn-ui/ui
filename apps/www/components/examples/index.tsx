@@ -82,6 +82,12 @@ import { ToastDestructive } from "@/components/examples/toast/destructive"
 import { ToastSimple } from "@/components/examples/toast/simple"
 import { ToastWithAction } from "@/components/examples/toast/with-action"
 import { ToastWithTitle } from "@/components/examples/toast/with-title"
+import { ToggleGroupDemo } from "@/components/examples/toggle-group/demo"
+import { ToggleGroupDisabled } from "@/components/examples/toggle-group/disabled"
+import { ToggleGroupLg } from "@/components/examples/toggle-group/lg"
+import { ToggleGroupMultiple } from "@/components/examples/toggle-group/multiple"
+import { ToggleGroupOutline } from "@/components/examples/toggle-group/outline"
+import { ToggleGroupSm } from "@/components/examples/toggle-group/sm"
 import { ToggleDemo } from "@/components/examples/toggle/demo"
 import { ToggleDisabled } from "@/components/examples/toggle/disabled"
 import { ToggleLg } from "@/components/examples/toggle/lg"
@@ -210,4 +216,10 @@ export const examples = {
   ToggleOutline,
   ToggleDisabled,
   ToggleWithText,
+  ToggleGroupDemo,
+  ToggleGroupSm,
+  ToggleGroupLg,
+  ToggleGroupOutline,
+  ToggleGroupMultiple,
+  ToggleGroupDisabled,
 }

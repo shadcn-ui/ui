@@ -203,6 +203,12 @@ export const components = [
     files: ["components/ui/toggle.tsx"],
   },
   {
+    component: "toggle-group",
+    name: "Toggle Group",
+    dependencies: ["@radix-ui/react-toggle-group"],
+    files: ["components/ui/toggle-group.tsx"],
+  },
+  {
     component: "tooltip",
     name: "Tooltip",
     dependencies: ["@radix-ui/react-tooltip"],

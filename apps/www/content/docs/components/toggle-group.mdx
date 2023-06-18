@@ -1,0 +1,111 @@
+---
+title: Toggle Group
+description: A set of two-state buttons that can be toggled on or off.
+component: true
+radix:
+  link: https://www.radix-ui.com/docs/primitives/components/toggle-group
+  api: https://www.radix-ui.com/docs/primitives/components/toggle-group#api-reference
+---
+
+<ComponentExample src="/components/examples/toggle-group/demo.tsx">
+  <ToggleGroupDemo />
+</ComponentExample>
+
+## Installation
+
+```bash
+npx shadcn-ui add toggle-group
+```
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="manual-installation">
+    <AccordionTrigger>Manual Installation</AccordionTrigger>
+    <AccordionContent>
+
+1. Install the `@radix-ui/react-toggle-group` component from radix-ui:
+
+```bash
+npm install @radix-ui/react-toggle-group
+```
+
+2. Copy and paste the following code into your project.
+
+<ComponentSource src="/components/ui/toggle-group.tsx" />
+
+<Callout>
+  This is the `<ToggleGroup />` primitive. You can place it in a file at
+  `components/ui/toggle-group.tsx`.
+</Callout>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Usage
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+```
+
+```tsx
+<ToggleGroup>
+  <ToggleGroupItem value="left" aria-label="Left aligned">
+    <AlignLeft size={16} />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="center" aria-label="Center aligned">
+    <AlignCenter size={16} />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="right" aria-label="Right aligned">
+    <AlignRight size={16} />
+  </ToggleGroupItem>
+</ToggleGroup>
+```
+
+## Examples
+
+### Default
+
+<ComponentExample src="/components/examples/toggle-group/demo.tsx">
+  <ToggleGroupDemo />
+</ComponentExample>
+
+---
+
+### Outline
+
+<ComponentExample src="/components/examples/toggle-group/outline.tsx">
+  <ToggleGroupOutline />
+</ComponentExample>
+
+---
+
+### Small
+
+<ComponentExample src="/components/examples/toggle-group/sm.tsx">
+  <ToggleGroupSm />
+</ComponentExample>
+
+---
+
+### Large
+
+<ComponentExample src="/components/examples/toggle-group/lg.tsx">
+  <ToggleGroupLg />
+</ComponentExample>
+
+---
+
+### Multiple
+
+<ComponentExample src="/components/examples/toggle-group/multiple.tsx">
+  <ToggleGroupMultiple />
+</ComponentExample>
+
+---
+
+### Disabled
+
+<ComponentExample src="/components/examples/toggle-group/disabled.tsx">
+  <ToggleGroupDisabled />
+</ComponentExample>

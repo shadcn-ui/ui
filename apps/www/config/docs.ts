@@ -289,6 +289,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Toggle Group",
+          href: "/docs/components/toggle-group",
+          label: "New",
+          items: [],
+        },
+        {
           title: "Tooltip",
           href: "/docs/components/tooltip",
           items: [],
