@@ -188,6 +188,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Form",
+          href: "/docs/components/form",
+          items: [],
+        },
+        {
           title: "Hover Card",
           href: "/docs/components/hover-card",
           items: [],

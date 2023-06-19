@@ -7,43 +7,19 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/tabs#api-reference
 ---
 
-<ComponentExample src="/components/examples/tabs/demo.tsx">
-  <TabsDemo />
-</ComponentExample>
+<ComponentPreview name="tabs-demo" />
 
 ## Installation
+
+<Steps>
+
+### Command
 
 ```bash
 npx shadcn-ui add tabs
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-tabs` component from radix-ui:
-
-```bash
-npm install @radix-ui/react-tabs
-```
-
-2. Copy and paste the following code into your project.
-
-<ComponentSource src="/components/ui/tabs.tsx" />
-
-<Callout>
-
-This is the `<Tabs />` primitive. You can place it in a file at `components/ui/tabs.tsx`.
-
-</Callout>
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-## Usage
+### Usage
 
 ```tsx
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -59,3 +35,5 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
   <TabsContent value="password">Change your password here.</TabsContent>
 </Tabs>
 ```
+
+</Steps>
