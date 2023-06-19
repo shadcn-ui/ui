@@ -1,10 +1,9 @@
+import { cn } from "@/lib/utils"
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@/registry/default/ui/alert"
-
-import { cn } from "@/lib/utils"
+} from "@/registry/new-york/ui/alert"
 
 interface CalloutProps {
   icon?: string

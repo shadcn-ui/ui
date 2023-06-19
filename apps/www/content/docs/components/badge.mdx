@@ -4,36 +4,19 @@ description: Displays a badge or a component that looks like a badge.
 component: true
 ---
 
-<ComponentExample src="/components/examples/badge/demo.tsx">
-  <BadgeDemo />
-</ComponentExample>
+<ComponentPreview name="badge-demo" />
 
 ## Installation
+
+<Steps>
+
+### Command
 
 ```bash
 npx shadcn-ui add badge
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Copy and paste the following code into your project.
-
-<ComponentSource src="/components/ui/badge.tsx" />
-
-<Callout>
-  This is the `<Badge />` primitive. You can place it in a file at
-  `components/ui/badge.tsx`.
-</Callout>
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-## Usage
+### Usage
 
 ```tsx
 import { Badge } from "@/components/ui/badge"
@@ -42,6 +25,8 @@ import { Badge } from "@/components/ui/badge"
 ```tsx
 <Badge variant="outline">Badge</Badge>
 ```
+
+</Steps>
 
 ### Link
 
@@ -59,30 +44,22 @@ import { badgeVariants } from "@/components/ui/badge"
 
 ### Default
 
-<ComponentExample src="/components/examples/badge/demo.tsx">
-  <BadgeDemo />
-</ComponentExample>
+<ComponentPreview name="badge-demo" />
 
 ---
 
 ### Secondary
 
-<ComponentExample src="/components/examples/badge/secondary.tsx">
-  <BadgeSecondary />
-</ComponentExample>
+<ComponentPreview name="badge-secondary" />
 
 ---
 
 ### Outline
 
-<ComponentExample src="/components/examples/badge/outline.tsx">
-  <BadgeOutline />
-</ComponentExample>
+<ComponentPreview name="badge-outline" />
 
 ---
 
 ### Destructive
 
-<ComponentExample src="/components/examples/badge/destructive.tsx">
-  <BadgeDestructive />
-</ComponentExample>
+<ComponentPreview name="badge-destructive" />

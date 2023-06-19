@@ -1,11 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { Button } from "@/registry/default/ui/button"
-import { Checkbox } from "@/registry/default/ui/checkbox"
-import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
-import { Switch } from "@/registry/default/ui/switch"
-import { toast } from "@/registry/default/ui/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -19,6 +14,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/react-hook-form/form"
+import { Button } from "@/registry/new-york/ui/button"
+import { Checkbox } from "@/registry/new-york/ui/checkbox"
+import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
+import { Switch } from "@/registry/new-york/ui/switch"
+import { toast } from "@/registry/new-york/ui/use-toast"
 
 const notificationsFormSchema = z.object({
   type: z.enum(["all", "mentions", "none"], {

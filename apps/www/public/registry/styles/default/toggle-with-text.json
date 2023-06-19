@@ -1,0 +1,13 @@
+{
+  "name": "toggle-with-text",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "name": "toggle-with-text.tsx",
+      "content": "import { Toggle } from \"@/registry/default/ui/toggle\"\nimport { Italic } from \"lucide-react\"\n\nexport default function ToggleWithText() {\n  return (\n    <Toggle aria-label=\"Toggle italic\">\n      <Italic className=\"mr-2 h-4 w-4\" />\n      Italic\n    </Toggle>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

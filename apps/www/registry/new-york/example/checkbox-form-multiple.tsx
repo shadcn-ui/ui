@@ -1,5 +1,9 @@
 "use client"
 
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
 import { Button } from "@/registry/new-york/ui/button"
 import { Checkbox } from "@/registry/new-york/ui/checkbox"
 import {
@@ -12,9 +16,6 @@ import {
   FormMessage,
 } from "@/registry/new-york/ui/form"
 import { toast } from "@/registry/new-york/ui/use-toast"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
 
 const items = [
   {
@@ -107,7 +108,7 @@ export default function CheckboxReactHookFormMultiple() {
                             }}
                           />
                         </FormControl>
-                        <FormLabel className="font-normal">
+                        <FormLabel className="text-sm font-normal">
                           {item.label}
                         </FormLabel>
                       </FormItem>

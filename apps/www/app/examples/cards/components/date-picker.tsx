@@ -1,6 +1,6 @@
 import DatePickerWithRange from "@/registry/default/example/date-picker-with-range"
-import { Card, CardContent } from "@/registry/default/ui/card"
-import { Label } from "@/registry/default/ui/label"
+import { Card, CardContent } from "@/registry/new-york/ui/card"
+import { Label } from "@/registry/new-york/ui/label"
 
 export function DemoDatePicker() {
   return (

@@ -1,4 +1,5 @@
 import Image from "next/image"
+
 import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
 
 export default function AspectRatioDemo() {

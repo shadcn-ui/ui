@@ -1,9 +1,11 @@
+import { CreditCard, LogOut, PlusCircle, Settings, User } from "lucide-react"
+
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/default/ui/avatar"
-import { Button } from "@/registry/default/ui/button"
+} from "@/registry/new-york/ui/avatar"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,8 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
-import { CreditCard, LogOut, PlusCircle, Settings, User } from "lucide-react"
+} from "@/registry/new-york/ui/dropdown-menu"
 
 export function UserNav() {
   return (

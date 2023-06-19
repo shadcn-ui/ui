@@ -4,9 +4,6 @@ import { allDocs } from "contentlayer/generated"
 import "@/styles/mdx.css"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { badgeVariants } from "@/registry/default/ui/badge"
-import { ScrollArea } from "@/registry/default/ui/scroll-area"
-import { Separator } from "@/registry/default/ui/separator"
 import { ChevronRight } from "lucide-react"
 import Balancer from "react-wrap-balancer"
 
@@ -17,6 +14,9 @@ import { Icons } from "@/components/icons"
 import { Mdx } from "@/components/mdx-components"
 import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
+import { badgeVariants } from "@/registry/new-york/ui/badge"
+import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
+import { Separator } from "@/registry/new-york/ui/separator"
 
 interface DocPageProps {
   params: {

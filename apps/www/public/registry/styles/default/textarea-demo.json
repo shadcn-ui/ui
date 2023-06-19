@@ -1,0 +1,13 @@
+{
+  "name": "textarea-demo",
+  "registryDependencies": [
+    "textarea"
+  ],
+  "files": [
+    {
+      "name": "textarea-demo.tsx",
+      "content": "import { Textarea } from \"@/registry/default/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return <Textarea placeholder=\"Type your message here.\" />\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

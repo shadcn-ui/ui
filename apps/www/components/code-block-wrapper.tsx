@@ -1,14 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/registry/default/ui/button"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/default/ui/collapsible"
-
-import { cn } from "@/lib/utils"
+} from "@/registry/new-york/ui/collapsible"
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   expandButtonTitle?: string

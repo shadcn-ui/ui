@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/registry/default/ui/button"
+import { PopoverProps } from "@radix-ui/react-popover"
+import { Check, ChevronsUpDown } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { useMutationObserver } from "@/hooks/use-mutation-observer"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -9,23 +14,18 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/default/ui/command"
+} from "@/registry/new-york/ui/command"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/registry/default/ui/hover-card"
-import { Label } from "@/registry/default/ui/label"
+} from "@/registry/new-york/ui/hover-card"
+import { Label } from "@/registry/new-york/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/default/ui/popover"
-import { PopoverProps } from "@radix-ui/react-popover"
-import { Check, ChevronsUpDown } from "lucide-react"
-
-import { cn } from "@/lib/utils"
-import { useMutationObserver } from "@/hooks/use-mutation-observer"
+} from "@/registry/new-york/ui/popover"
 
 import { Model, ModelType } from "../data/models"
 

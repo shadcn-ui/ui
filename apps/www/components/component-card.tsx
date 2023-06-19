@@ -1,7 +1,7 @@
 import React from "react"
-import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
 
 import { cn } from "@/lib/utils"
+import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
 
 export function ComponentCard({
   className,

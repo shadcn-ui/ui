@@ -1,0 +1,10 @@
+{
+  "name": "typography-small",
+  "files": [
+    {
+      "name": "typography-small.tsx",
+      "content": "export default function TypographySmall() {\n  return (\n    <small className=\"text-sm font-medium leading-none\">Email address</small>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

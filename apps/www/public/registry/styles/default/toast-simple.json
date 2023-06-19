@@ -1,0 +1,13 @@
+{
+  "name": "toast-simple",
+  "registryDependencies": [
+    "toast"
+  ],
+  "files": [
+    {
+      "name": "toast-simple.tsx",
+      "content": "\"use client\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { useToast } from \"@/registry/default/ui/use-toast\"\n\nexport default function ToastSimple() {\n  const { toast } = useToast()\n\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        toast({\n          description: \"Your message has been sent.\",\n        })\n      }}\n    >\n      Show Toast\n    </Button>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

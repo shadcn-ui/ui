@@ -1,10 +1,10 @@
 import Link from "next/link"
-import { buttonVariants } from "@/registry/default/ui/button"
 import { Doc } from "contentlayer/generated"
 import { NavItem, NavItemWithChildren } from "types/nav"
 
 import { docsConfig } from "@/config/docs"
 import { Icons } from "@/components/icons"
+import { buttonVariants } from "@/registry/new-york/ui/button"
 
 interface DocsPagerProps {
   doc: Doc

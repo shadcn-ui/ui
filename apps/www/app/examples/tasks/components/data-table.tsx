@@ -2,14 +2,6 @@
 
 import * as React from "react"
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/registry/default/ui/table"
-import {
   ColumnDef,
   ColumnFiltersState,
   SortingState,
@@ -23,6 +15,15 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/new-york/ui/table"
 
 import { DataTablePagination } from "../components/data-table-pagination"
 import { DataTableToolbar } from "../components/data-table-toolbar"

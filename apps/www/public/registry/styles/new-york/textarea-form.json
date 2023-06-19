@@ -1,0 +1,14 @@
+{
+  "name": "textarea-form",
+  "registryDependencies": [
+    "textarea",
+    "form"
+  ],
+  "files": [
+    {
+      "name": "textarea-form.tsx",
+      "content": "\"use client\"\n\nimport Link from \"next/link\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport { Checkbox } from \"@/registry/new-york/ui/checkbox\"\nimport {\n  Form,\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/registry/new-york/ui/form\"\nimport { RadioGroup, RadioGroupItem } from \"@/registry/new-york/ui/radio-group\"\nimport { Switch } from \"@/registry/new-york/ui/switch\"\nimport { Textarea } from \"@/registry/new-york/ui/textarea\"\nimport { toast } from \"@/registry/new-york/ui/use-toast\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { useForm } from \"react-hook-form\"\nimport * as z from \"zod\"\n\nconst FormSchema = z.object({\n  bio: z\n    .string()\n    .min(10, {\n      message: \"Bio must be at least 10 characters.\",\n    })\n    .max(160, {\n      message: \"Bio must not be longer than 30 characters.\",\n    }),\n})\n\nexport default function TextareaForm() {\n  const form = useForm<z.infer<typeof FormSchema>>({\n    resolver: zodResolver(FormSchema),\n  })\n\n  function onSubmit(data: z.infer<typeof FormSchema>) {\n    toast({\n      title: \"You submitted the following values:\",\n      description: (\n        <pre className=\"mt-2 w-[340px] rounded-md bg-slate-950 p-4\">\n          <code className=\"text-white\">{JSON.stringify(data, null, 2)}</code>\n        </pre>\n      ),\n    })\n  }\n\n  return (\n    <Form {...form}>\n      <form onSubmit={form.handleSubmit(onSubmit)} className=\"w-2/3 space-y-6\">\n        <FormField\n          control={form.control}\n          name=\"bio\"\n          render={({ field }) => (\n            <FormItem>\n              <FormLabel>Bio</FormLabel>\n              <FormControl>\n                <Textarea\n                  placeholder=\"Tell us a little bit about yourself\"\n                  className=\"resize-none\"\n                  {...field}\n                />\n              </FormControl>\n              <FormDescription>\n                You can <span>@mention</span> other users and organizations.\n              </FormDescription>\n              <FormMessage />\n            </FormItem>\n          )}\n        />\n        <Button type=\"submit\">Submit</Button>\n      </form>\n    </Form>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

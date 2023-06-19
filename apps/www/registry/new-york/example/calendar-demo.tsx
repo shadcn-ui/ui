@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import { Calendar } from "@/registry/new-york/ui/calendar"
 
 export default function CalendarDemo() {
@@ -11,7 +12,7 @@ export default function CalendarDemo() {
       mode="single"
       selected={date}
       onSelect={setDate}
-      className="rounded-md border"
+      className="rounded-md border shadow"
     />
   )
 }

@@ -1,0 +1,10 @@
+{
+  "name": "typography-large",
+  "files": [
+    {
+      "name": "typography-large.tsx",
+      "content": "export default function TypographyLarge() {\n  return (\n    <div className=\"text-lg font-semibold\">Are you sure absolutely sure?</div>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

@@ -1,11 +1,13 @@
-import { Button } from "@/registry/default/ui/button"
+import { ChevronDown, Circle, Plus, Star } from "lucide-react"
+
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/new-york/ui/card"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -14,9 +16,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
-import { Separator } from "@/registry/default/ui/separator"
-import { ChevronDown, Circle, Plus, Star } from "lucide-react"
+} from "@/registry/new-york/ui/dropdown-menu"
+import { Separator } from "@/registry/new-york/ui/separator"
 
 export function DemoGithub() {
   return (
@@ -70,7 +71,7 @@ export function DemoGithub() {
           </div>
           <div className="flex items-center">
             <Star className="mr-1 h-3 w-3" />
-            10k
+            20k
           </div>
           <div>Updated April 2023</div>
         </div>

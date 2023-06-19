@@ -1,5 +1,8 @@
 import Image from "next/image"
-import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
+import { ListMusic, PlusCircle } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -9,10 +12,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/registry/default/ui/context-menu"
-import { ListMusic, PlusCircle } from "lucide-react"
-
-import { cn } from "@/lib/utils"
+} from "@/registry/new-york/ui/context-menu"
 
 import { Album } from "../data/albums"
 import { playlists } from "../data/playlists"

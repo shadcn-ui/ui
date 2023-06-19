@@ -1,10 +1,10 @@
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { buttonVariants } from "@/registry/default/ui/button"
 import { Command } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/registry/new-york/ui/button"
 import { UserAuthForm } from "@/app/examples/authentication/components/user-auth-form"
 
 export const metadata: Metadata = {

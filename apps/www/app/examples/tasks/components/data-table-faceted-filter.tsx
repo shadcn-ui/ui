@@ -1,6 +1,10 @@
 import * as React from "react"
-import { Badge } from "@/registry/default/ui/badge"
-import { Button } from "@/registry/default/ui/button"
+import { Column } from "@tanstack/react-table"
+import { Check, LucideIcon, PlusCircle } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Badge } from "@/registry/new-york/ui/badge"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -9,17 +13,13 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/registry/default/ui/command"
+} from "@/registry/new-york/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/default/ui/popover"
-import { Separator } from "@/registry/default/ui/separator"
-import { Column } from "@tanstack/react-table"
-import { Check, LucideIcon, PlusCircle } from "lucide-react"
-
-import { cn } from "@/lib/utils"
+} from "@/registry/new-york/ui/popover"
+import { Separator } from "@/registry/new-york/ui/separator"
 
 interface DataTableFacetedFilter<TData, TValue> {
   column?: Column<TData, TValue>

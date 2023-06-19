@@ -1,0 +1,13 @@
+{
+  "name": "tooltip-demo",
+  "registryDependencies": [
+    "tooltip"
+  ],
+  "files": [
+    {
+      "name": "tooltip-demo.tsx",
+      "content": "import { Button } from \"@/registry/new-york/ui/button\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/registry/new-york/ui/tooltip\"\nimport { Plus } from \"lucide-react\"\n\nexport default function TooltipDemo() {\n  return (\n    <TooltipProvider>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button variant=\"outline\" className=\"w-10 rounded-full p-0\">\n            <Plus className=\"h-4 w-4\" />\n            <span className=\"sr-only\">Add</span>\n          </Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

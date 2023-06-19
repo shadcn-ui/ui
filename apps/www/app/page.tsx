@@ -1,7 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import { buttonVariants } from "@/registry/default/ui/button"
-import { Separator } from "@/registry/default/ui/separator"
 import { ChevronRight } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
@@ -13,13 +11,13 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { StyleSwitcher } from "@/components/style-switcher"
+import { buttonVariants } from "@/registry/new-york/ui/button"
+import { Separator } from "@/registry/new-york/ui/separator"
 import DashboardPage from "@/app/examples/dashboard/page"
 
 export default function IndexPage() {
   return (
     <div className="container relative pb-10">
-      <StyleSwitcher />
       <PageHeader>
         <Link
           href="/docs/forms/react-hook-form"
@@ -35,14 +33,14 @@ export default function IndexPage() {
           apps. Accessible. Customizable. Open Source.
         </PageHeaderDescription>
         <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
-          <Link href="/docs" className={cn(buttonVariants())}>
+          <Link href="/docs" className={cn(buttonVariants({ size: "lg" }))}>
             Get Started
           </Link>
           <Link
             target="_blank"
             rel="noreferrer"
             href={siteConfig.links.github}
-            className={cn(buttonVariants({ variant: "outline" }))}
+            className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
           >
             <Icons.gitHub className="mr-2 h-4 w-4" />
             GitHub
@@ -67,7 +65,7 @@ export default function IndexPage() {
         />
       </section>
       <section className="hidden md:block">
-        <div className="overflow-hidden rounded-lg border bg-background shadow-xl">
+        <div className="overflow-hidden rounded-lg border bg-background shadow">
           <DashboardPage />
         </div>
       </section>

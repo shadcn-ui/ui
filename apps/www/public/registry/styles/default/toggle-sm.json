@@ -1,0 +1,13 @@
+{
+  "name": "toggle-sm",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "name": "toggle-sm.tsx",
+      "content": "import { Toggle } from \"@/registry/default/ui/toggle\"\nimport { Italic } from \"lucide-react\"\n\nexport default function ToggleSm() {\n  return (\n    <Toggle size=\"sm\" aria-label=\"Toggle italic\">\n      <Italic className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

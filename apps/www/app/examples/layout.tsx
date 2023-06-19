@@ -1,7 +1,5 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { buttonVariants } from "@/registry/default/ui/button"
-import { Separator } from "@/registry/default/ui/separator"
 import { ChevronRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -11,6 +9,8 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
+import { buttonVariants } from "@/registry/new-york/ui/button"
+import { Separator } from "@/registry/new-york/ui/separator"
 
 export const metadata: Metadata = {
   title: "Examples",
@@ -62,7 +62,7 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
         </PageHeader>
         <section>
           <ExamplesNav />
-          <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-xl">
+          <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
             {children}
           </div>
         </section>

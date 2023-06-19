@@ -1,0 +1,13 @@
+{
+  "name": "toggle-lg",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "name": "toggle-lg.tsx",
+      "content": "import { Toggle } from \"@/registry/new-york/ui/toggle\"\nimport { Italic } from \"lucide-react\"\n\nexport default function ToggleLg() {\n  return (\n    <Toggle size=\"lg\" aria-label=\"Toggle italic\">\n      <Italic className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

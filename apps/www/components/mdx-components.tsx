@@ -2,18 +2,6 @@
 
 import * as React from "react"
 import Image from "next/image"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/registry/default/ui/accordion"
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/default/ui/alert"
-import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NpmCommands } from "types/unist"
 
@@ -25,6 +13,18 @@ import { ComponentExample } from "@/components/component-example"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/registry/new-york/ui/accordion"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/new-york/ui/alert"
+import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
 
 const components = {
   Accordion,

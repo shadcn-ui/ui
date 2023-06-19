@@ -1,0 +1,13 @@
+{
+  "name": "badge-secondary",
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "name": "badge-secondary.tsx",
+      "content": "import { Badge } from \"@/registry/new-york/ui/badge\"\n\nexport default function BadgeSecondary() {\n  return <Badge variant=\"secondary\">Secondary</Badge>\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

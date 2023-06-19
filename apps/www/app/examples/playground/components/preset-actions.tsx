@@ -1,6 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { Dialog } from "@radix-ui/react-dialog"
+import { Flag, MoreHorizontal, Trash } from "lucide-react"
+
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -9,27 +12,25 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/registry/default/ui/alert-dialog"
-import { Button } from "@/registry/default/ui/button"
+} from "@/registry/new-york/ui/alert-dialog"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/registry/default/ui/dialog"
+} from "@/registry/new-york/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
-import { Label } from "@/registry/default/ui/label"
-import { Switch } from "@/registry/default/ui/switch"
-import { toast } from "@/registry/default/ui/use-toast"
-import { Dialog } from "@radix-ui/react-dialog"
-import { Flag, MoreHorizontal, Trash } from "lucide-react"
+} from "@/registry/new-york/ui/dropdown-menu"
+import { Label } from "@/registry/new-york/ui/label"
+import { Switch } from "@/registry/new-york/ui/switch"
+import { toast } from "@/registry/new-york/ui/use-toast"
 
 export function PresetActions() {
   const [open, setIsOpen] = React.useState(false)

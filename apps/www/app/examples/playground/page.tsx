@@ -1,20 +1,21 @@
 import { Metadata } from "next"
-import { Button } from "@/registry/default/ui/button"
+import { History } from "lucide-react"
+
+import { Button } from "@/registry/new-york/ui/button"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/registry/default/ui/hover-card"
-import { Label } from "@/registry/default/ui/label"
-import { Separator } from "@/registry/default/ui/separator"
+} from "@/registry/new-york/ui/hover-card"
+import { Label } from "@/registry/new-york/ui/label"
+import { Separator } from "@/registry/new-york/ui/separator"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/default/ui/tabs"
-import { Textarea } from "@/registry/default/ui/textarea"
-import { History } from "lucide-react"
+} from "@/registry/new-york/ui/tabs"
+import { Textarea } from "@/registry/new-york/ui/textarea"
 
 import { CodeViewer } from "./components/code-viewer"
 import { Icons } from "./components/icons"

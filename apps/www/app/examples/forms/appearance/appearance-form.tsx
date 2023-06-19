@@ -1,8 +1,5 @@
 "use client"
 
-import { Button, buttonVariants } from "@/registry/default/ui/button"
-import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
-import { toast } from "@/registry/default/ui/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ChevronDown } from "lucide-react"
 import { useForm } from "react-hook-form"
@@ -18,6 +15,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/react-hook-form/form"
+import { Button, buttonVariants } from "@/registry/new-york/ui/button"
+import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
+import { toast } from "@/registry/new-york/ui/use-toast"
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {

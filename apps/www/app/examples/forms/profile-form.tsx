@@ -1,17 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { Button } from "@/registry/default/ui/button"
-import { Input } from "@/registry/default/ui/input"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/default/ui/select"
-import { Textarea } from "@/registry/default/ui/textarea"
-import { toast } from "@/registry/default/ui/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useFieldArray, useForm } from "react-hook-form"
 import * as z from "zod"
@@ -26,6 +15,17 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/react-hook-form/form"
+import { Button } from "@/registry/new-york/ui/button"
+import { Input } from "@/registry/new-york/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york/ui/select"
+import { Textarea } from "@/registry/new-york/ui/textarea"
+import { toast } from "@/registry/new-york/ui/use-toast"
 
 const profileFormSchema = z.object({
   username: z

@@ -1,0 +1,13 @@
+{
+  "name": "toast-destructive",
+  "registryDependencies": [
+    "toast"
+  ],
+  "files": [
+    {
+      "name": "toast-destructive.tsx",
+      "content": "\"use client\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { ToastAction } from \"@/registry/default/ui/toast\"\nimport { useToast } from \"@/registry/default/ui/use-toast\"\n\nexport default function ToastDestructive() {\n  const { toast } = useToast()\n\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        toast({\n          variant: \"destructive\",\n          title: \"Uh oh! Something went wrong.\",\n          description: \"There was a problem with your request.\",\n          action: <ToastAction altText=\"Try again\">Try again</ToastAction>,\n        })\n      }}\n    >\n      Show Toast\n    </Button>\n  )\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

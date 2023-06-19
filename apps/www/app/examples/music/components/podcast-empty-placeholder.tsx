@@ -1,4 +1,6 @@
-import { Button } from "@/registry/default/ui/button"
+import { Plus, Podcast } from "lucide-react"
+
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -7,10 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/default/ui/dialog"
-import { Input } from "@/registry/default/ui/input"
-import { Label } from "@/registry/default/ui/label"
-import { Plus, Podcast } from "lucide-react"
+} from "@/registry/new-york/ui/dialog"
+import { Input } from "@/registry/new-york/ui/input"
+import { Label } from "@/registry/new-york/ui/label"
 
 export function PodcastEmptyPlaceholder() {
   return (

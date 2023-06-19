@@ -3,15 +3,15 @@
 import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
-import { Button } from "@/registry/default/ui/button"
-import { ScrollArea } from "@/registry/default/ui/scroll-area"
-import { Sheet, SheetContent, SheetTrigger } from "@/registry/default/ui/sheet"
 import { SidebarOpen } from "lucide-react"
 
 import { docsConfig } from "@/config/docs"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import { Button } from "@/registry/new-york/ui/button"
+import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
+import { Sheet, SheetContent, SheetTrigger } from "@/registry/new-york/ui/sheet"
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)

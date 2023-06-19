@@ -1,16 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/registry/default/ui/button"
+import { useTheme } from "next-themes"
+
+import { Icons } from "@/components/icons"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
-import { useTheme } from "next-themes"
-
-import { Icons } from "@/components/icons"
+} from "@/registry/new-york/ui/dropdown-menu"
 
 export function ModeToggle() {
   const { setTheme } = useTheme()

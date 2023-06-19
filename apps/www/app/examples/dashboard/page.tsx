@@ -1,11 +1,7 @@
 import { Metadata } from "next"
 import Image from "next/image"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/default/ui/tabs"
+import { Activity, CreditCard, DollarSign, Download, Users } from "lucide-react"
+
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
@@ -14,8 +10,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/new-york/ui/card"
-import { Activity, CreditCard, DollarSign, Download, Users } from "lucide-react"
-
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/new-york/ui/tabs"
 import { CalendarDateRangePicker } from "@/app/examples/dashboard/components/date-range-picker"
 import { MainNav } from "@/app/examples/dashboard/components/main-nav"
 import { Overview } from "@/app/examples/dashboard/components/overview"
@@ -64,7 +64,7 @@ export default function DashboardPage() {
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
             <div className="flex items-center space-x-2">
               <CalendarDateRangePicker />
-              <Button size="sm">
+              <Button>
                 <Download className="mr-2 h-4 w-4" />
                 Download
               </Button>

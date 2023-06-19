@@ -1,12 +1,15 @@
 "use client"
 
 import * as React from "react"
+import { Check, ChevronsUpDown, PlusCircle } from "lucide-react"
+
+import { cn } from "@/lib/utils"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/default/ui/avatar"
-import { Button } from "@/registry/default/ui/button"
+} from "@/registry/new-york/ui/avatar"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -15,7 +18,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/registry/default/ui/command"
+} from "@/registry/new-york/ui/command"
 import {
   Dialog,
   DialogContent,
@@ -24,24 +27,21 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/default/ui/dialog"
-import { Input } from "@/registry/default/ui/input"
-import { Label } from "@/registry/default/ui/label"
+} from "@/registry/new-york/ui/dialog"
+import { Input } from "@/registry/new-york/ui/input"
+import { Label } from "@/registry/new-york/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/default/ui/popover"
+} from "@/registry/new-york/ui/popover"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select"
-import { Check, ChevronsUpDown, PlusCircle } from "lucide-react"
-
-import { cn } from "@/lib/utils"
+} from "@/registry/new-york/ui/select"
 
 const groups = [
   {
