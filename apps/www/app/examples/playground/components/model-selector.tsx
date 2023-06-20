@@ -36,8 +36,13 @@ interface ModelSelectorProps extends PopoverProps {
 
 export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
   const [open, setOpen] = React.useState(false)
+  const [previousOpen, setPreviousOpen] = React.useState(false)
   const [selectedModel, setSelectedModel] = React.useState<Model>(models[0])
   const [peekedModel, setPeekedModel] = React.useState<Model>(models[0])
+
+  React.useEffect(() => {
+    setPreviousOpen(open)
+  }, [open])
 
   return (
     <div className="grid gap-2">
@@ -74,6 +79,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
               align="start"
               forceMount
               className="min-h-[280px]"
+              hidden={!previousOpen}
             >
               <div className="grid gap-2">
                 <h4 className="font-medium leading-none">{peekedModel.name}</h4>
