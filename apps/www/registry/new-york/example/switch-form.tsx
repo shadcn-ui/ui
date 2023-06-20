@@ -1,8 +1,6 @@
 "use client"
 
-import Link from "next/link"
 import { Button } from "@/registry/new-york/ui/button"
-import { Checkbox } from "@/registry/new-york/ui/checkbox"
 import {
   Form,
   FormControl,
@@ -11,7 +9,6 @@ import {
   FormItem,
   FormLabel,
 } from "@/registry/new-york/ui/form"
-import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
 import { Switch } from "@/registry/new-york/ui/switch"
 import { toast } from "@/registry/new-york/ui/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -52,11 +49,9 @@ export default function SwitchForm() {
               control={form.control}
               name="marketing_emails"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                   <div className="space-y-0.5">
-                    <FormLabel className="text-base">
-                      Marketing emails
-                    </FormLabel>
+                    <FormLabel>Marketing emails</FormLabel>
                     <FormDescription>
                       Receive emails about new products, features, and more.
                     </FormDescription>
@@ -74,9 +69,9 @@ export default function SwitchForm() {
               control={form.control}
               name="security_emails"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                   <div className="space-y-0.5">
-                    <FormLabel className="text-base">Security emails</FormLabel>
+                    <FormLabel>Security emails</FormLabel>
                     <FormDescription>
                       Receive emails about your account security.
                     </FormDescription>

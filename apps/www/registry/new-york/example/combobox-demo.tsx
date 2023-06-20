@@ -62,7 +62,7 @@ export default function ComboboxDemo() {
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." />
+          <CommandInput placeholder="Search framework..." className="h-9" />
           <CommandEmpty>No framework found.</CommandEmpty>
           <CommandGroup>
             {frameworks.map((framework) => (
@@ -73,13 +73,13 @@ export default function ComboboxDemo() {
                   setOpen(false)
                 }}
               >
+                {framework.label}
                 <Check
                   className={cn(
-                    "mr-2 h-4 w-4",
+                    "ml-auto h-4 w-4",
                     value === framework.value ? "opacity-100" : "opacity-0"
                   )}
                 />
-                {framework.label}
               </CommandItem>
             ))}
           </CommandGroup>

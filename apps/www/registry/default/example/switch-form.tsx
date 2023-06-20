@@ -1,8 +1,6 @@
 "use client"
 
-import Link from "next/link"
 import { Button } from "@/registry/default/ui/button"
-import { Checkbox } from "@/registry/default/ui/checkbox"
 import {
   Form,
   FormControl,
@@ -11,7 +9,6 @@ import {
   FormItem,
   FormLabel,
 } from "@/registry/default/ui/form"
-import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 import { Switch } from "@/registry/default/ui/switch"
 import { toast } from "@/registry/default/ui/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"

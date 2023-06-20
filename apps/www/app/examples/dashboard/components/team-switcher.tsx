@@ -87,7 +87,6 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
         <PopoverTrigger asChild>
           <Button
             variant="outline"
-            size="sm"
             role="combobox"
             aria-expanded={open}
             aria-label="Select a team"
@@ -98,7 +97,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                 src={`https://avatar.vercel.sh/${selectedTeam.value}.png`}
                 alt={selectedTeam.label}
               />
-              <AvatarFallback>SC</AvatarFallback>
+              z<AvatarFallback>SC</AvatarFallback>
             </Avatar>
             {selectedTeam.label}
             <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />

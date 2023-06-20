@@ -1,6 +1,5 @@
 import * as React from "react"
 
-import { fontHeading } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<

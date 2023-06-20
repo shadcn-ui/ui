@@ -176,9 +176,9 @@ export function ProfileForm() {
           ))}
           <Button
             type="button"
-            variant="link"
+            variant="outline"
             size="sm"
-            className="mt-1"
+            className="mt-2"
             onClick={() => append({ value: "" })}
           >
             Add URL

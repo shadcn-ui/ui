@@ -1059,22 +1059,12 @@
     "type": "components:example"
   },
   {
-    "name": "sheet-position",
+    "name": "sheet-side",
     "registryDependencies": [
       "sheet"
     ],
     "files": [
-      "example/sheet-position.tsx"
-    ],
-    "type": "components:example"
-  },
-  {
-    "name": "sheet-size",
-    "registryDependencies": [
-      "sheet"
-    ],
-    "files": [
-      "example/sheet-size.tsx"
+      "example/sheet-side.tsx"
     ],
     "type": "components:example"
   },

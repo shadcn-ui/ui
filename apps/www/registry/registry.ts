@@ -622,16 +622,10 @@ const example: Registry = [
     files: ["example/sheet-demo.tsx"],
   },
   {
-    name: "sheet-position",
+    name: "sheet-side",
     type: "components:example",
     registryDependencies: ["sheet"],
-    files: ["example/sheet-position.tsx"],
-  },
-  {
-    name: "sheet-size",
-    type: "components:example",
-    registryDependencies: ["sheet"],
-    files: ["example/sheet-size.tsx"],
+    files: ["example/sheet-side.tsx"],
   },
   {
     name: "skeleton-demo",

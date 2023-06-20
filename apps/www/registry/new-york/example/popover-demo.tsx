@@ -12,10 +12,7 @@ export default function PopoverDemo() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="w-10 rounded-full p-0">
-          <Settings2 className="h-4 w-4" />
-          <span className="sr-only">Open popover</span>
-        </Button>
+        <Button variant="outline">Open popover</Button>
       </PopoverTrigger>
       <PopoverContent className="w-80">
         <div className="grid gap-4">

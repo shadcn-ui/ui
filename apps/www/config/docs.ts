@@ -81,7 +81,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "React Hook Form",
           href: "/docs/forms/react-hook-form",
-          label: "New",
           items: [],
         },
         {
@@ -169,7 +168,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Data Table",
           href: "/docs/components/data-table",
-          label: "New",
           items: [],
         },
         {
@@ -270,7 +268,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Table",
           href: "/docs/components/table",
-          label: "New",
           items: [],
         },
         {

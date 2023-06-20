@@ -29,7 +29,7 @@ export default function DatePickerWithPresets() {
         <Button
           variant={"outline"}
           className={cn(
-            "w-[280px] justify-start text-left font-normal",
+            "w-[240px] justify-start text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >
@@ -37,7 +37,10 @@ export default function DatePickerWithPresets() {
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="flex w-auto flex-col space-y-2 p-2">
+      <PopoverContent
+        align="start"
+        className="flex w-auto flex-col space-y-2 p-2"
+      >
         <Select
           onValueChange={(value) =>
             setDate(addDays(new Date(), parseInt(value)))

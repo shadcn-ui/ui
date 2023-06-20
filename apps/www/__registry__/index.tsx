@@ -459,19 +459,12 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/sheet-demo")),
       files: ["registry/default/example/sheet-demo.tsx"],
     },
-    "sheet-position": {
-      name: "sheet-position",
+    "sheet-side": {
+      name: "sheet-side",
       type: "components:example",
       registryDependencies: ["sheet"],
-      component: React.lazy(() => import("@/registry/default/example/sheet-position")),
-      files: ["registry/default/example/sheet-position.tsx"],
-    },
-    "sheet-size": {
-      name: "sheet-size",
-      type: "components:example",
-      registryDependencies: ["sheet"],
-      component: React.lazy(() => import("@/registry/default/example/sheet-size")),
-      files: ["registry/default/example/sheet-size.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/sheet-side")),
+      files: ["registry/default/example/sheet-side.tsx"],
     },
     "skeleton-demo": {
       name: "skeleton-demo",
@@ -1195,19 +1188,12 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/sheet-demo")),
       files: ["registry/new-york/example/sheet-demo.tsx"],
     },
-    "sheet-position": {
-      name: "sheet-position",
+    "sheet-side": {
+      name: "sheet-side",
       type: "components:example",
       registryDependencies: ["sheet"],
-      component: React.lazy(() => import("@/registry/new-york/example/sheet-position")),
-      files: ["registry/new-york/example/sheet-position.tsx"],
-    },
-    "sheet-size": {
-      name: "sheet-size",
-      type: "components:example",
-      registryDependencies: ["sheet"],
-      component: React.lazy(() => import("@/registry/new-york/example/sheet-size")),
-      files: ["registry/new-york/example/sheet-size.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/sheet-side")),
+      files: ["registry/new-york/example/sheet-side.tsx"],
     },
     "skeleton-demo": {
       name: "skeleton-demo",

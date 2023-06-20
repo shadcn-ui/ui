@@ -17,7 +17,7 @@ import DashboardPage from "@/app/examples/dashboard/page"
 
 export default function IndexPage() {
   return (
-    <div className="container relative pb-10">
+    <div className="container relative">
       <PageHeader>
         <Link
           href="/docs/forms/react-hook-form"
@@ -33,14 +33,14 @@ export default function IndexPage() {
           apps. Accessible. Customizable. Open Source.
         </PageHeaderDescription>
         <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
-          <Link href="/docs" className={cn(buttonVariants({ size: "lg" }))}>
+          <Link href="/docs" className={cn(buttonVariants())}>
             Get Started
           </Link>
           <Link
             target="_blank"
             rel="noreferrer"
             href={siteConfig.links.github}
-            className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+            className={cn(buttonVariants({ variant: "outline" }))}
           >
             <Icons.gitHub className="mr-2 h-4 w-4" />
             GitHub

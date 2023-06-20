@@ -24,7 +24,7 @@ interface ExamplesLayoutProps {
 export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
   return (
     <>
-      <div className="container relative pb-10">
+      <div className="container relative">
         <PageHeader className="page-header">
           <Link
             href="/docs/forms/react-hook-form"

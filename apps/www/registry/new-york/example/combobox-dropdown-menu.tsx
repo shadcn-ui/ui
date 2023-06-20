@@ -75,6 +75,7 @@ export default function ComboboxDropdownMenu() {
                   <CommandInput
                     placeholder="Filter label..."
                     autoFocus={true}
+                    className="h-9"
                   />
                   <CommandList>
                     <CommandEmpty>No label found.</CommandEmpty>

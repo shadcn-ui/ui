@@ -95,7 +95,10 @@ export default function ComboboxForm() {
                 </PopoverTrigger>
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
-                    <CommandInput placeholder="Search framework..." />
+                    <CommandInput
+                      placeholder="Search framework..."
+                      className="h-9"
+                    />
                     <CommandEmpty>No framework found.</CommandEmpty>
                     <CommandGroup>
                       {languages.map((language) => (
@@ -106,15 +109,15 @@ export default function ComboboxForm() {
                             form.setValue("language", value)
                           }}
                         >
+                          {language.label}
                           <Check
                             className={cn(
-                              "mr-2 h-4 w-4",
+                              "ml-auto h-4 w-4",
                               language.value === field.value
                                 ? "opacity-100"
                                 : "opacity-0"
                             )}
                           />
-                          {language.label}
                         </CommandItem>
                       ))}
                     </CommandGroup>
