@@ -130,6 +130,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/button-loading")),
       files: ["registry/default/example/button-loading.tsx"],
     },
+    "button-icon": {
+      name: "button-icon",
+      type: "components:example",
+      registryDependencies: ["button"],
+      component: React.lazy(() => import("@/registry/default/example/button-icon")),
+      files: ["registry/default/example/button-icon.tsx"],
+    },
     "button-as-child": {
       name: "button-as-child",
       type: "components:example",
@@ -858,6 +865,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["button"],
       component: React.lazy(() => import("@/registry/new-york/example/button-loading")),
       files: ["registry/new-york/example/button-loading.tsx"],
+    },
+    "button-icon": {
+      name: "button-icon",
+      type: "components:example",
+      registryDependencies: ["button"],
+      component: React.lazy(() => import("@/registry/new-york/example/button-icon")),
+      files: ["registry/new-york/example/button-icon.tsx"],
     },
     "button-as-child": {
       name: "button-as-child",

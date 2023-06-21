@@ -543,6 +543,16 @@
     "type": "components:example"
   },
   {
+    "name": "button-icon",
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      "example/button-icon.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "button-as-child",
     "registryDependencies": [
       "button"

@@ -336,6 +336,12 @@ const example: Registry = [
     files: ["example/button-loading.tsx"],
   },
   {
+    name: "button-icon",
+    type: "components:example",
+    registryDependencies: ["button"],
+    files: ["example/button-icon.tsx"],
+  },
+  {
     name: "button-as-child",
     type: "components:example",
     registryDependencies: ["button"],

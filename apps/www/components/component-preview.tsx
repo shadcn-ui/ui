@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Index } from "@/__registry__"
+import { Loader2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
@@ -112,7 +113,14 @@ export function ComponentPreview({
                 }
               )}
             >
-              <React.Suspense fallback={<div>Loading...</div>}>
+              <React.Suspense
+                fallback={
+                  <div className="flex items-center text-sm text-muted-foreground">
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Loading...
+                  </div>
+                }
+              >
                 {Preview}
               </React.Suspense>
             </div>

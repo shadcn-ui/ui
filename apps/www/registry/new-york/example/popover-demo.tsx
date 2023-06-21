@@ -6,7 +6,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
-import { Settings2 } from "lucide-react"
 
 export default function PopoverDemo() {
   return (
