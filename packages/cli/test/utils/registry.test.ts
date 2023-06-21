@@ -1,9 +1,9 @@
 import { expect, test } from "vitest"
 
-import { RegistryIndex, resolveTree } from "../../src/utils/registry"
+import { resolveTree } from "../../src/utils/registry"
 
 test("resolve tree", async () => {
-  const index: RegistryIndex = [
+  const index = [
     {
       name: "button",
       dependencies: ["@radix-ui/react-slot"],

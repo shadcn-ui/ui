@@ -8,7 +8,7 @@
         "NEXT_PUBLIC_APP_URL",
         "UPSTASH_REDIS_REST_URL",
         "UPSTASH_REDIS_REST_TOKEN",
-        "COMPONENTS_BASE_URL",
+        "COMPONENTS_REGISTRY_URL",
         "npm_config_user_agent",
         "https_proxy"
       ],
