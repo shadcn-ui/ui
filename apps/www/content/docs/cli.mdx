@@ -5,32 +5,87 @@ description: Use the CLI to add components to your project.
 
 ## init
 
-Use the `init` command to initialize dependencies for a new project.
+Use the `init` command to initialize configuration and dependencies for a new project.
 
 The `init` command installs dependencies, adds the `cn` util, configures `tailwind.config.js`, and CSS variables for the project.
 
 ```bash
-npx shadcn-ui init
+npx shadcn-ui@latest init
+```
+
+You will be asked a few questions to configure `components.json`:
+
+```txt showLineNumbers
+Which style would you like to use? › Default
+Which color would you like to use as base color? › Slate
+Where is your global CSS file? › › app/globals.css
+Do you want to use CSS variables for colors? › no / yes
+Where is your tailwind.config.js located? › tailwind.config.js
+Configure the import alias for components: › @/components
+Configure the import alias for utils: › @/lib/utils
+Are you using React Server Components? › no / yes
+```
+
+### Options
+
+```txt
+Usage: shadcn-ui init [options]
+
+initialize your project and install dependencies
+
+Options:
+  -y, --yes        skip confirmation prompt. (default: false)
+  -c, --cwd <cwd>  the working directory. defaults to the current directory.
+  -h, --help       display help for command
 ```
 
 ## add
 
-Use the `add` command to add components to your project.
-
-The `add` command adds a component to your project and installs all required dependencies.
+Use the `add` command to add components and dependencies to your project.
 
 ```bash
 npx shadcn-ui add [component]
 ```
 
-### Example
+You will be presented with a list of components to choose from:
 
-```bash
-npx shadcn-ui add alert-dialog
+```txt
+Which components would you like to add? › Space to select. Return to submit.
+
+◯  accordion
+◯  alert
+◯  alert-dialog
+◯  aspect-ratio
+◯  avatar
+◯  badge
+◯  button
+◯  calendar
+◯  card
+◯  checkbox
 ```
 
-You can also run the command without any arguments to view a list of all available components:
+### Options
 
-```bash
-npx shadcn-ui add
+```txt
+Usage: shadcn-ui add [options] [components...]
+
+add a component to your project
+
+Arguments:
+  components         the components to add
+
+Options:
+  -y, --yes          skip confirmation prompt. (default: false)
+  -o, --overwrite    overwrite existing files. (default: false)
+  -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  -p, --path <path>  the path to add the component to.
+  -h, --help         display help for command
+```
+
+## update
+
+A command to check for component updates.
+
+```txt
+In progress...
 ```

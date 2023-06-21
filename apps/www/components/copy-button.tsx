@@ -45,9 +45,12 @@ export function CopyButton({
 
   return (
     <Button
-      size="sm"
-      variant="outline"
-      className={cn("relative z-20 w-7 p-0", className)}
+      size="icon"
+      variant="ghost"
+      className={cn(
+        "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
+        className
+      )}
       onClick={() => {
         copyToClipboardWithMeta(
           value,
@@ -103,9 +106,12 @@ export function CopyWithClassNames({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          size="sm"
-          variant="outline"
-          className={cn("relative z-20 w-7 p-0", className)}
+          size="icon"
+          variant="ghost"
+          className={cn(
+            "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
+            className
+          )}
         >
           {hasCopied ? (
             <Icons.check className="h-3 w-3" />
@@ -164,9 +170,12 @@ export function CopyNpmCommandButton({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          size="sm"
-          variant="outline"
-          className={cn("relative z-20 w-7 p-0", className)}
+          size="icon"
+          variant="ghost"
+          className={cn(
+            "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
+            className
+          )}
         >
           {hasCopied ? (
             <Icons.check className="h-3 w-3" />
@@ -180,20 +189,17 @@ export function CopyNpmCommandButton({
         <DropdownMenuItem
           onClick={() => copyCommand(commands.__npmCommand__, "npm")}
         >
-          <Icons.npm className="mr-2 h-4 w-4" />
-          <span>npm</span>
+          npm
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => copyCommand(commands.__yarnCommand__, "yarn")}
         >
-          <Icons.yarn className="mr-2 h-4 w-4" />
-          <span>yarn</span>
+          yarn
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
         >
-          <Icons.pnpm className="mr-2 h-4 w-4" />
-          <span>pnpm</span>
+          pnpm
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

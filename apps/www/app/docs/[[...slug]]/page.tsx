@@ -133,7 +133,7 @@ export default async function DocPage({ params }: DocPageProps) {
             )}
           </div>
         ) : null}
-        <div className="pt-8">
+        <div className="pb-12 pt-8">
           <Mdx code={doc.body.code} />
         </div>
         <DocsPager doc={doc} />
