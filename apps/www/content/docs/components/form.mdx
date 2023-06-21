@@ -73,20 +73,15 @@ const form = useForm()
 
 ## Installation
 
-1. Install the following dependencies:
+<Steps>
 
-```sh
-npm install react-hook-form zod @hookform/resolvers @radix-ui/react-slot
+### Command
+
+```bash
+npx shadcn-ui add form
 ```
 
-2. Copy and paste the following `<Form />` component to your app.
-
-<ComponentSource src="/components/react-hook-form/form.tsx" />
-
-<Callout>
-  **Note**: You can place this component in a file at `components/ui/form.tsx`
-  and import it from there.
-</Callout>
+</Steps>
 
 ## Usage
 
@@ -206,12 +201,10 @@ export function ProfileForm() {
 
 That's it. You now have a fully accessible form that is type-safe with client-side validation.
 
-<ComponentExample
-  src="/components/examples/input/react-hook-form.tsx"
+<ComponentPreview
+  name="input-form"
   className="[&_[role=tablist]]:hidden [&>div>div:first-child]:hidden"
->
-  <InputReactHookForm />
-</ComponentExample>
+/>
 
 </Steps>
 
@@ -219,11 +212,11 @@ That's it. You now have a fully accessible form that is type-safe with client-si
 
 See the following links for more examples on how to use the `<Form />` component with other components:
 
-- [Checkbox](/docs/components/checkbox#react-hook-form)
-- [Date Picker](/docs/components/date-picker#react-hook-form)
-- [Input](/docs/components/input#react-hook-form)
-- [Radio Group](/docs/components/radio-group#react-hook-form)
-- [Select](/docs/components/select#react-hook-form)
-- [Switch](/docs/components/switch#react-hook-form)
-- [Textarea](/docs/components/textarea#react-hook-form)
-- [Combobox](/docs/components/combobox#react-hook-form)
+- [Checkbox](/docs/components/checkbox#form)
+- [Date Picker](/docs/components/date-picker#form)
+- [Input](/docs/components/input#form)
+- [Radio Group](/docs/components/radio-group#form)
+- [Select](/docs/components/select#form)
+- [Switch](/docs/components/switch#form)
+- [Textarea](/docs/components/textarea#form)
+- [Combobox](/docs/components/combobox#form)

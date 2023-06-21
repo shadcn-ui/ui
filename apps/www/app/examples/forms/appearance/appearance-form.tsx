@@ -14,7 +14,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/react-hook-form/form"
+} from "@/registry/new-york/ui/form"
 import { Button, buttonVariants } from "@/registry/new-york/ui/button"
 import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
 import { toast } from "@/registry/new-york/ui/use-toast"

@@ -36,7 +36,12 @@ const nextConfig = {
       },
       {
         source: "/docs/forms",
-        destination: "/docs/forms/react-hook-form",
+        destination: "/docs/components/form",
+        permanent: false,
+      },
+      {
+        source: "/docs/forms/react-hook-form",
+        destination: "/docs/components/form",
         permanent: false,
       },
     ]

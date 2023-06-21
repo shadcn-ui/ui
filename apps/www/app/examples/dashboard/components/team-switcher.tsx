@@ -96,8 +96,9 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
               <AvatarImage
                 src={`https://avatar.vercel.sh/${selectedTeam.value}.png`}
                 alt={selectedTeam.label}
+                className="grayscale"
               />
-              z<AvatarFallback>SC</AvatarFallback>
+              <AvatarFallback>SC</AvatarFallback>
             </Avatar>
             {selectedTeam.label}
             <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
@@ -123,6 +124,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                         <AvatarImage
                           src={`https://avatar.vercel.sh/${team.value}.png`}
                           alt={team.label}
+                          className="grayscale"
                         />
                         <AvatarFallback>SC</AvatarFallback>
                       </Avatar>
