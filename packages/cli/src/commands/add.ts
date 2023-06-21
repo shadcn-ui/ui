@@ -22,6 +22,7 @@ import * as z from "zod"
 const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
   yes: z.boolean(),
+  overwrite: z.boolean(),
   cwd: z.string(),
   path: z.string().optional(),
 })
@@ -31,6 +32,7 @@ export const add = new Command()
   .description("add a component to your project")
   .argument("[components...]", "the components to add")
   .option("-y, --yes", "skip confirmation prompt.", false)
+  .option("-o, --overwrite", "overwrite existing files.", false)
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
@@ -121,6 +123,23 @@ export const add = new Command()
 
         if (!existsSync(targetDir)) {
           await fs.mkdir(targetDir, { recursive: true })
+        }
+
+        const existingComponent = item.files.filter((file) =>
+          existsSync(path.resolve(targetDir, file.name))
+        )
+
+        if (existingComponent.length && !options.overwrite) {
+          if (selectedComponents.includes(item.name)) {
+            logger.warn(
+              `Component ${item.name} already exists. Use ${chalk.green(
+                "--overwrite"
+              )} to overwrite.`
+            )
+            process.exit(1)
+          }
+
+          continue
         }
 
         for (const file of item.files) {

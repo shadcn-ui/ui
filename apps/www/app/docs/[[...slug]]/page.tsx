@@ -133,9 +133,9 @@ export default async function DocPage({ params }: DocPageProps) {
             )}
           </div>
         ) : null}
-        <Separator className="my-4 md:my-6" />
-        <Mdx code={doc.body.code} />
-        <Separator className="my-4 md:my-6" />
+        <div className="pt-8">
+          <Mdx code={doc.body.code} />
+        </div>
         <DocsPager doc={doc} />
       </div>
       <div className="hidden text-sm xl:block">
