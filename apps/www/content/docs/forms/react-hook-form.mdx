@@ -117,6 +117,7 @@ Use the `useForm` hook from `react-hook-form` to create a form.
 import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import { useForm } from "react-hook-form"
 
 const formSchema = z.object({
   username: z.string().min(2, {
