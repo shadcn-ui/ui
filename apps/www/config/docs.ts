@@ -54,6 +54,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Dark mode",
+          href: "/docs/dark-mode",
+          items: [],
+        },
+        {
           title: "CLI",
           href: "/docs/cli",
           items: [],
