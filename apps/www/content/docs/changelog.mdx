@@ -25,6 +25,10 @@ I've been working on a new CLI for the past few weeks. It's a complete rewrite. 
 
 ### `init`
 
+```bash
+npx shadcn-ui init
+```
+
 When you run the `init` command, you will be asked a few questions to configure `components.json`:
 
 ```txt showLineNumbers
@@ -38,7 +42,9 @@ Configure the import alias for utils: › @/lib/utils
 Are you using React Server Components? › no / yes
 ```
 
-This file contains all the information about your components: where to install them, the import paths, how they are styled...etc. For example, you can change the import path of a component, set a baseColor or change the styling method.
+This file contains all the information about your components: where to install them, the import paths, how they are styled...etc.
+
+You can use this file to change the import path of a component, set a baseColor or change the styling method.
 
 ```json title="components.json"
 {
@@ -57,19 +63,29 @@ This file contains all the information about your components: where to install t
 }
 ```
 
-This means you can now use the cli with any directory structure including `src` or `app` directories.
+This means you can now use the CLI with any directory structure including `src` and `app` directories.
 
 ### `add`
 
+```bash
+npx shadcn-ui add
+```
+
 The `add` command is now much more capable. You can now add UI components but also import more complex components (coming soon).
 
-The CLI will automatically resolve all components and dependencies, format them to your custom config and add them to your project.
+The CLI will automatically resolve all components and dependencies, format them based on your custom config and add them to your project.
 
 ### `diff` (experimental)
 
-We're also introducing a new `diff` command to help you keep track of upstream updates. You can use this command to see what has changed in the upstream repository and update your project accordingly.
+```bash
+npx shadcn-ui diff
+```
 
-Run the following command to get a list of components that have updates available:
+We're also introducing a new `diff` command to help you keep track of upstream updates.
+
+You can use this command to see what has changed in the upstream repository and update your project accordingly.
+
+Run the `diff` command to get a list of components that have updates available:
 
 ```bash
 npx shadcn-ui diff
@@ -77,8 +93,6 @@ npx shadcn-ui diff
 
 ```txt
 The following components have updates available:
-- alert
-  - /path/to/my-app/components/ui/alert.tsx
 - button
   - /path/to/my-app/components/ui/button.tsx
 - toast
@@ -105,7 +119,7 @@ const alertVariants = cva(
 
 You can choose between using CSS variables or Tailwind CSS utility classes for theming.
 
-When you add new components, the CLI will automatically use the correct theming classes based on your `components.json` configuration.
+When you add new components, the CLI will automatically use the correct theming methods based on your `components.json` configuration.
 
 #### Utility classes
 
@@ -132,7 +146,7 @@ To use utility classes for theming set `tailwind.cssVariables` to `false` in you
 <div className="bg-background text-foreground" />
 ```
 
-To use utility classes for theming set `tailwind.cssVariables` to `true` in your `components.json` file.
+To use CSS variables classes for theming set `tailwind.cssVariables` to `true` in your `components.json` file.
 
 ```json {6} title="components.json"
 {
@@ -164,13 +178,13 @@ You can now configure the base color for your project. This will be used to gene
 
 Choose between `gray`, `neutral`, `slate`, `stone` or `zinc`.
 
-If you have `cssVariables` set to `true`, we will set the base colors as CSS variables in your `globals.css` file. If you have `cssVariables` set to `false`, we will use Tailwind CSS utility classes in your components.
+If you have `cssVariables` set to `true`, we will set the base colors as CSS variables in your `globals.css` file. If you have `cssVariables` set to `false`, we will inline the Tailwind CSS utility classes in your components.
 
 ---
 
 ### React Server Components
 
-You can now opt out of using React Server Components. We will automatically append or remove the `use client` directive when adding components.
+If you're using a framework that does not support React Server Components, you can now opt out by setting `rsc` to `false`. We will automatically append or remove the `use client` directive when adding components.
 
 ```json title="components.json"
 {
@@ -182,9 +196,11 @@ You can now opt out of using React Server Components. We will automatically appe
 
 ### Styles
 
-We are introducing a new concept called _Style_. You can think of style as a base. A style comes with its own set of components, animations, icons and more.
+We are introducing a new concept called _Style_.
 
-We are shipping with two styles: `default` and `new-york` (with more coming soon).
+_You can think of style as the visual foundation: shapes, icons, animations & typography._ A style comes with its own set of components, animations, icons and more.
+
+We are shipping two styles: `default` and `new-york` (with more coming soon).
 
 <Image
   src="/images/style.jpg"
@@ -198,7 +214,7 @@ The `default` style is the one you are used to. It's the one we've been using si
 
 The `new-york` style is a new style. It ships with smaller buttons, cards with shadows and a new set of icons from [Radix Icons](https://icons.radix-ui.com).
 
-When you run the `init` command, you will be asked which style you would like to use. You can also change the style in your `components.json` file.
+When you run the `init` command, you will be asked which style you would like to use. This is saved in your `components.json` file.
 
 ```json title="components.json"
 {
@@ -206,7 +222,9 @@ When you run the `init` command, you will be asked which style you would like to
 }
 ```
 
-Start with a style then theme using CSS variables or Tailwind CSS utility classes to completely change the look of your components.
+### Theming
+
+Start with a style as the base then theme using CSS variables or Tailwind CSS utility classes to completely change the look of your components.
 
 <Image
   src="/images/style-with-theming.jpg"
@@ -223,6 +241,8 @@ Start with a style then theme using CSS variables or Tailwind CSS utility classe
 I added exit animations to all components. Click on the combobox below to see the subtle exit animation.
 
 <ComponentPreview name="combobox-demo" className="[&_.preview]:items-start" />
+
+The animations can be customized using utility classes.
 
 ---
 
