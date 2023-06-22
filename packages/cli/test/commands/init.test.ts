@@ -80,7 +80,7 @@ test("init config-full", async () => {
       "class-variance-authority",
       "clsx",
       "tailwind-merge",
-      "lucide-react",
+      "@radix-ui/react-icons",
     ],
     {
       cwd: targetDir,

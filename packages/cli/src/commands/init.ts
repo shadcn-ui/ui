@@ -32,7 +32,6 @@ const PROJECT_DEPENDENCIES = [
   "class-variance-authority",
   "clsx",
   "tailwind-merge",
-  "lucide-react",
 ]
 
 const initOptionsSchema = z.object({
@@ -246,9 +245,16 @@ export async function runInit(cwd: string, config: Config) {
   // Install dependencies.
   const dependenciesSpinner = ora(`Installing dependencies...`)?.start()
   const packageManager = await getPackageManager(cwd)
+
+  // TODO: add support for other icon libraries.
+  const deps = [
+    ...PROJECT_DEPENDENCIES,
+    config.style === "new-york" ? "@radix-ui/react-icons" : "lucide-react",
+  ]
+
   await execa(
     packageManager,
-    [packageManager === "npm" ? "install" : "add", ...PROJECT_DEPENDENCIES],
+    [packageManager === "npm" ? "install" : "add", ...deps],
     {
       cwd,
     }

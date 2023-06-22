@@ -81,7 +81,7 @@ test("get config", async () => {
   expect(
     await getConfig(path.resolve(__dirname, "../fixtures/config-full"))
   ).toEqual({
-    style: "default",
+    style: "new-york",
     rsc: false,
     tailwind: {
       config: "tailwind.config.ts",
