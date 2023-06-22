@@ -82,10 +82,52 @@ Options:
   -h, --help         display help for command
 ```
 
-## update
+## diff (experimental)
 
-A command to check for component updates.
+You can use the diff command to check for updates against the registry.
+
+Run the following command to get a list of components that have updates available:
+
+```bash
+npx shadcn-ui diff
+```
 
 ```txt
-In progress...
+The following components have updates available:
+- alert
+  - /path/to/my-app/components/ui/alert.tsx
+- button
+  - /path/to/my-app/components/ui/button.tsx
+- toast
+  - /path/to/my-app/components/ui/use-toast.ts
+  - /path/to/my-app/components/ui/toaster.tsx
+```
+
+Then run `diff [component]` to see the changes:
+
+```bash
+npx shadcn-ui diff alert
+```
+
+```diff /pl-12/
+const alertVariants = cva(
+- "relative w-full rounded-lg border",
++ "relative w-full pl-12 rounded-lg border"
+)
+```
+
+### Options
+
+```txt
+Usage: shadcn-ui diff [options] [component]
+
+check for updates against the registry
+
+Arguments:
+  component        the component name
+
+Options:
+  -y, --yes        skip confirmation prompt. (default: false)
+  -c, --cwd <cwd>  the working directory. defaults to the current directory.
+  -h, --help       display help for command
 ```
