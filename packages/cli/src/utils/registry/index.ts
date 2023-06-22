@@ -114,7 +114,7 @@ export async function fetchTree(
 
 export async function getItemTargetPath(
   config: Config,
-  item: z.infer<typeof registryItemWithContentSchema>,
+  item: Pick<z.infer<typeof registryItemWithContentSchema>, "type">,
   override?: string
 ) {
   // Allow overrides for all items but ui.

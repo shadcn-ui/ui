@@ -342,6 +342,9 @@ importers:
       cosmiconfig:
         specifier: ^8.1.3
         version: 8.1.3
+      diff:
+        specifier: ^5.1.0
+        version: 5.1.0
       execa:
         specifier: ^7.0.0
         version: 7.0.0
@@ -370,6 +373,9 @@ importers:
         specifier: ^3.20.2
         version: 3.20.2
     devDependencies:
+      '@types/diff':
+        specifier: ^5.0.3
+        version: 5.0.3
       '@types/fs-extra':
         specifier: ^11.0.1
         version: 11.0.1
@@ -3674,6 +3680,10 @@ packages:
     resolution: {integrity: sha512-/vPO1EPOs306Cvhwv7KfVfYvOJqA/S/AXjaHQiJboCZzcNDb+TIJFN9/2C9DZ//ijSKWioNyUxD792QmDJ+HKQ==}
     dependencies:
       '@types/ms': 0.7.31
+
+  /@types/diff@5.0.3:
+    resolution: {integrity: sha512-amrLbRqTU9bXMCc6uX0sWpxsQzRIo9z6MJPkH1pkez/qOxuqSZVuryJAWoBRq94CeG8JxY+VK4Le9HtjQR5T9A==}
+    dev: true
 
   /@types/estree-jsx@1.0.0:
     resolution: {integrity: sha512-3qvGd0z8F2ENTGr/GG1yViqfiKmRfrXVx5sJyHGFu3z7m5g5utCQtGp/g29JnjflhtQJBv1WDQukHiT58xPcYQ==}

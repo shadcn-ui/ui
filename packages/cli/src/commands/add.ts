@@ -68,10 +68,10 @@ export const add = new Command()
       let selectedComponents = options.components
       if (!options.components?.length) {
         const { components } = await prompts({
-          type: "autocompleteMultiselect",
+          type: "multiselect",
           name: "components",
           message: "Which components would you like to add?",
-          hint: "Space to select. Return to submit.",
+          hint: "Space to select. A to toggle all. Enter to submit.",
           instructions: false,
           choices: registryIndex.map((entry) => ({
             title: entry.name,
