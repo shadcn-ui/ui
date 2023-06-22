@@ -1,5 +1,11 @@
 "use client"
 
+import { zodResolver } from "@hookform/resolvers/zod"
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
+import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
@@ -23,12 +29,6 @@ import {
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
 import { toast } from "@/registry/new-york/ui/use-toast"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-
-import { cn } from "@/lib/utils"
 
 const languages = [
   { label: "English", value: "en" },
@@ -89,7 +89,7 @@ export default function ComboboxForm() {
                             (language) => language.value === field.value
                           )?.label
                         : "Select language"}
-                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
@@ -110,7 +110,7 @@ export default function ComboboxForm() {
                           }}
                         >
                           {language.label}
-                          <Check
+                          <CheckIcon
                             className={cn(
                               "ml-auto h-4 w-4",
                               language.value === field.value

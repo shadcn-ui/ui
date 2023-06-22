@@ -1,4 +1,4 @@
-import { Terminal } from "lucide-react"
+import { RocketIcon } from "@radix-ui/react-icons"
 
 import {
   Alert,
@@ -9,7 +9,7 @@ import {
 export default function AlertDemo() {
   return (
     <Alert>
-      <Terminal className="h-4 w-4" />
+      <RocketIcon className="h-4 w-4" />
       <AlertTitle>Heads up!</AlertTitle>
       <AlertDescription>
         You can add components to your app using the cli.

@@ -29,7 +29,7 @@ export function StyleSwitcher({ className }: SelectTriggerProps) {
     >
       <SelectTrigger
         className={cn(
-          "h-7 w-[145px] text-xs [&_svg]:h-3 [&_svg]:w-3",
+          "h-7 w-[145px] text-xs [&_svg]:h-4 [&_svg]:w-4",
           className
         )}
       >

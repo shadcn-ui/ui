@@ -1,3 +1,6 @@
+import { BellIcon, CheckIcon } from "@radix-ui/react-icons"
+
+import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
@@ -9,9 +12,6 @@ import {
 } from "@/registry/new-york/ui/card"
 import { Separator } from "@/registry/new-york/ui/separator"
 import { Switch } from "@/registry/new-york/ui/switch"
-import { BellRing, Check } from "lucide-react"
-
-import { cn } from "@/lib/utils"
 
 const notifications = [
   {
@@ -39,7 +39,7 @@ export default function CardDemo({ className, ...props }: CardProps) {
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className=" flex items-center space-x-4 rounded-md border p-4">
-          <BellRing />
+          <BellIcon />
           <div className="flex-1 space-y-1">
             <p className="text-sm font-medium leading-none">
               Push Notifications
@@ -71,7 +71,7 @@ export default function CardDemo({ className, ...props }: CardProps) {
       </CardContent>
       <CardFooter>
         <Button className="w-full">
-          <Check className="mr-2 h-4 w-4" /> Mark all as read
+          <CheckIcon className="mr-2 h-4 w-4" /> Mark all as read
         </Button>
       </CardFooter>
     </Card>

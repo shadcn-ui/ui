@@ -1,4 +1,14 @@
 import {
+  CalendarIcon,
+  CaretDownIcon,
+  EnvelopeClosedIcon,
+  FaceIcon,
+  GearIcon,
+  PersonIcon,
+} from "@radix-ui/react-icons"
+import { RocketIcon } from "lucide-react"
+
+import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -8,14 +18,6 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/registry/new-york/ui/command"
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react"
 
 export default function CommandDemo() {
   return (
@@ -25,32 +27,32 @@ export default function CommandDemo() {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
           <CommandItem>
-            <Calendar className="mr-2 h-4 w-4" />
+            <CalendarIcon className="mr-2 h-4 w-4" />
             <span>Calendar</span>
           </CommandItem>
           <CommandItem>
-            <Smile className="mr-2 h-4 w-4" />
+            <FaceIcon className="mr-2 h-4 w-4" />
             <span>Search Emoji</span>
           </CommandItem>
           <CommandItem>
-            <Calculator className="mr-2 h-4 w-4" />
-            <span>Calculator</span>
+            <RocketIcon className="mr-2 h-4 w-4" />
+            <span>Launch</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Settings">
           <CommandItem>
-            <User className="mr-2 h-4 w-4" />
+            <PersonIcon className="mr-2 h-4 w-4" />
             <span>Profile</span>
             <CommandShortcut>⌘P</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <CreditCard className="mr-2 h-4 w-4" />
-            <span>Billing</span>
+            <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
+            <span>Mail</span>
             <CommandShortcut>⌘B</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <Settings className="mr-2 h-4 w-4" />
+            <GearIcon className="mr-2 h-4 w-4" />
             <span>Settings</span>
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>

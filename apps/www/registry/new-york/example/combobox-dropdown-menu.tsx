@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { DotsHorizontalIcon } from "@radix-ui/react-icons"
+
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
@@ -23,7 +25,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/new-york/ui/dropdown-menu"
-import { Calendar, MoreHorizontal, Tags, Trash, User } from "lucide-react"
 
 const labels = [
   "feature",
@@ -50,26 +51,17 @@ export default function ComboboxDropdownMenu() {
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="sm">
-            <MoreHorizontal />
+            <DotsHorizontalIcon />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[200px]">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <User className="mr-2 h-4 w-4" />
-              Assign to...
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Calendar className="mr-2 h-4 w-4" />
-              Set due date...
-            </DropdownMenuItem>
+            <DropdownMenuItem>Assign to...</DropdownMenuItem>
+            <DropdownMenuItem>Set due date...</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuSub>
-              <DropdownMenuSubTrigger>
-                <Tags className="mr-2 h-4 w-4" />
-                Apply label
-              </DropdownMenuSubTrigger>
+              <DropdownMenuSubTrigger>Apply label</DropdownMenuSubTrigger>
               <DropdownMenuSubContent className="p-0">
                 <Command>
                   <CommandInput
@@ -98,7 +90,6 @@ export default function ComboboxDropdownMenu() {
             </DropdownMenuSub>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="text-red-600">
-              <Trash className="mr-2 h-4 w-4" />
               Delete
               <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
             </DropdownMenuItem>
