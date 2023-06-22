@@ -7,49 +7,26 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/accordion#api-reference
 ---
 
-<ComponentExample src="/components/examples/accordion/demo.tsx">
-  <div className="max-w-[70%] w-full">
-    <AccordionDemo />
-  </div>
-</ComponentExample>
+<ComponentPreview
+  name="accordion-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
 
 ## Installation
+
+<Steps>
+
+### Command
 
 ```bash
 npx shadcn-ui add accordion
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-accordion` component from radix-ui:
-
-```bash
-npm install @radix-ui/react-accordion
-```
-
-2. Copy and paste the following code into your project.
-
-<ComponentSource src="/components/ui/accordion.tsx" />
-
-<Callout>
-
-This is the `<Accordion />` primitive. You can place it in a file at `components/ui/accordion.tsx`.
-
-</Callout>
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-## tailwind.config.js
+### tailwind.config.js
 
 Add the following animations to your `tailwind.config.js` file:
 
-```js title="tailwind.config.js" {5-18} /module/
+```js title="tailwind.config.js" {5-18}
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
@@ -73,7 +50,7 @@ module.exports = {
 }
 ```
 
-## Usage
+### Usage
 
 ```tsx
 import {
@@ -94,3 +71,5 @@ import {
   </AccordionItem>
 </Accordion>
 ```
+
+</Steps>

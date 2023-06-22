@@ -2,55 +2,56 @@ import * as React from "react"
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
-import { AccordionDemo } from "@/components/examples/accordion/demo"
-import { AlertDialogDemo } from "@/components/examples/alert-dialog/demo"
-import { AspectRatioDemo } from "@/components/examples/aspect-ratio/demo"
-import { AvatarDemo } from "@/components/examples/avatar/demo"
-import { BadgeDemo } from "@/components/examples/badge/demo"
-import { BadgeDestructive } from "@/components/examples/badge/destructive"
-import { BadgeOutline } from "@/components/examples/badge/outline"
-import { BadgeSecondary } from "@/components/examples/badge/secondary"
-import { ButtonDemo } from "@/components/examples/button/demo"
-import { ButtonDestructive } from "@/components/examples/button/destructive"
-import { ButtonGhost } from "@/components/examples/button/ghost"
-import { ButtonLink } from "@/components/examples/button/link"
-import { ButtonLoading } from "@/components/examples/button/loading"
-import { ButtonOutline } from "@/components/examples/button/outline"
-import { ButtonSecondary } from "@/components/examples/button/secondary"
-import { ButtonWithIcon } from "@/components/examples/button/with-icon"
-import { CardDemo } from "@/components/examples/card/demo"
-import { CheckboxDemo } from "@/components/examples/checkbox/demo"
-import { CollapsibleDemo } from "@/components/examples/collapsible/demo"
-import { CommandDemo } from "@/components/examples/command/demo"
-import { ContextMenuDemo } from "@/components/examples/context-menu/demo"
-import { DatePickerDemo } from "@/components/examples/date-picker/demo"
-import { DialogDemo } from "@/components/examples/dialog/demo"
-import { DropdownMenuDemo } from "@/components/examples/dropdown-menu/demo"
-import { HoverCardDemo } from "@/components/examples/hover-card/demo"
-import { MenubarDemo } from "@/components/examples/menubar/demo"
-import { NavigationMenuDemo } from "@/components/examples/navigation-menu/demo"
-import { PopoverDemo } from "@/components/examples/popover/demo"
-import { ProgressDemo } from "@/components/examples/progress/demo"
-import { RadioGroupDemo } from "@/components/examples/radio-group/demo"
-import { ScrollAreaDemo } from "@/components/examples/scroll-area/demo"
-import { SelectDemo } from "@/components/examples/select/demo"
-import { SeparatorDemo } from "@/components/examples/separator/demo"
-import { SheetDemo } from "@/components/examples/sheet/demo"
-import { SkeletonDemo } from "@/components/examples/skeleton/demo"
-import { SliderDemo } from "@/components/examples/slider/demo"
-import { SwitchDemo } from "@/components/examples/switch/demo"
-import { TabsDemo } from "@/components/examples/tabs/demo"
-import { ToastDemo } from "@/components/examples/toast/demo"
-import { ToggleDemo } from "@/components/examples/toggle/demo"
-import { ToggleDisabled } from "@/components/examples/toggle/disabled"
-import { ToggleOutline } from "@/components/examples/toggle/outline"
-import { ToggleWithText } from "@/components/examples/toggle/with-text"
-import { TooltipDemo } from "@/components/examples/tooltip/demo"
+import AccordionDemo from "@/registry/default/example/accordion-demo"
+import AlertDialogDemo from "@/registry/default/example/alert-dialog-demo"
+import AspectRatioDemo from "@/registry/default/example/aspect-ratio-demo"
+import AvatarDemo from "@/registry/default/example/avatar-demo"
+import BadgeDemo from "@/registry/default/example/badge-demo"
+import BadgeDestructive from "@/registry/default/example/badge-destructive"
+import BadgeOutline from "@/registry/default/example/badge-outline"
+import BadgeSecondary from "@/registry/default/example/badge-secondary"
+import ButtonDemo from "@/registry/default/example/button-demo"
+import ButtonDestructive from "@/registry/default/example/button-destructive"
+import ButtonGhost from "@/registry/default/example/button-ghost"
+import ButtonLink from "@/registry/default/example/button-link"
+import ButtonLoading from "@/registry/default/example/button-loading"
+import ButtonOutline from "@/registry/default/example/button-outline"
+import ButtonSecondary from "@/registry/default/example/button-secondary"
+import ButtonWithIcon from "@/registry/default/example/button-with-icon"
+import CardDemo from "@/registry/default/example/card-demo"
+import CheckboxDemo from "@/registry/default/example/checkbox-demo"
+import CollapsibleDemo from "@/registry/default/example/collapsible-demo"
+import CommandDemo from "@/registry/default/example/command-demo"
+import ContextMenuDemo from "@/registry/default/example/context-menu-demo"
+import DatePickerDemo from "@/registry/default/example/date-picker-demo"
+import DialogDemo from "@/registry/default/example/dialog-demo"
+import DropdownMenuDemo from "@/registry/default/example/dropdown-menu-demo"
+import HoverCardDemo from "@/registry/default/example/hover-card-demo"
+import MenubarDemo from "@/registry/default/example/menubar-demo"
+import NavigationMenuDemo from "@/registry/default/example/navigation-menu-demo"
+import PopoverDemo from "@/registry/default/example/popover-demo"
+import ProgressDemo from "@/registry/default/example/progress-demo"
+import RadioGroupDemo from "@/registry/default/example/radio-group-demo"
+import ScrollAreaDemo from "@/registry/default/example/scroll-area-demo"
+import SelectDemo from "@/registry/default/example/select-demo"
+import SeparatorDemo from "@/registry/default/example/separator-demo"
+import SheetDemo from "@/registry/default/example/sheet-demo"
+import SkeletonDemo from "@/registry/default/example/skeleton-demo"
+import SliderDemo from "@/registry/default/example/slider-demo"
+import SwitchDemo from "@/registry/default/example/switch-demo"
+import TabsDemo from "@/registry/default/example/tabs-demo"
+import ToastDemo from "@/registry/default/example/toast-demo"
+import ToggleDemo from "@/registry/default/example/toggle-demo"
+import ToggleDisabled from "@/registry/default/example/toggle-disabled"
+import ToggleOutline from "@/registry/default/example/toggle-outline"
+import ToggleWithText from "@/registry/default/example/toggle-with-text"
+import TooltipDemo from "@/registry/default/example/tooltip-demo"
+import { Button } from "@/registry/default/ui/button"
 
 export default function KitchenSinkPage() {
   return (
     <div className="container">
-      <div className="grid gap-4 py-10">
+      <div className="grid gap-4">
         <div className="grid grid-cols-3 items-start gap-4">
           <div className="grid gap-4">
             <ComponentWrapper>
@@ -106,6 +107,10 @@ export default function KitchenSinkPage() {
               <div className="flex space-x-2">
                 <ButtonWithIcon />
                 <ButtonLoading />
+              </div>
+              <div className="flex space-x-2">
+                <Button size="lg">Large</Button>
+                <Button size="sm">Small</Button>
               </div>
             </ComponentWrapper>
             <ComponentWrapper>
@@ -191,7 +196,7 @@ function ComponentWrapper({
   return (
     <div
       className={cn(
-        "flex items-center justify-between space-x-4 rounded-md border p-4",
+        "flex items-center justify-between space-x-4 rounded-md p-4",
         className
       )}
     >

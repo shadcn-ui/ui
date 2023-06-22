@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "style": {
+      "type": "string",
+      "enum": ["default"]
+    },
+    "tailwind": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "string"
+        },
+        "css": {
+          "type": "string"
+        },
+        "baseColor": {
+          "type": "string"
+        },
+        "cssVariables": {
+          "type": "boolean"
+        }
+      },
+      "required": ["config", "css", "baseColor", "cssVariables"]
+    },
+    "rsc": {
+      "type": "boolean"
+    },
+    "aliases": {
+      "type": "object",
+      "properties": {
+        "utils": {
+          "type": "string"
+        },
+        "components": {
+          "type": "string"
+        }
+      },
+      "required": ["utils", "components"]
+    }
+  },
+  "required": ["style", "tailwind", "rsc", "aliases"]
+}

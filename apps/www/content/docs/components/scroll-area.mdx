@@ -7,45 +7,19 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/scroll-area#api-reference
 ---
 
-<ComponentExample
-  src="/components/examples/scroll-area/demo.tsx"
-  extractClassname
->
-  <ScrollAreaDemo />
-</ComponentExample>
+<ComponentPreview name="scroll-area-demo" />
 
 ## Installation
+
+<Steps>
+
+### Command
 
 ```bash
 npx shadcn-ui add scroll-area
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-scroll-area` component from radix-ui:
-
-```bash
-npm install @radix-ui/react-scroll-area
-```
-
-2. Copy and paste the following code into your project.
-
-<ComponentSource src="/components/ui/scroll-area.tsx" />
-
-<Callout>
-  This is the `<ScrollArea />` primitive. You can place it in a file at
-  `components/ui/scroll-area.tsx`.
-</Callout>
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-## Usage
+### Usage
 
 ```tsx
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -61,3 +35,5 @@ import { ScrollArea } from "@/components/ui/scroll-area"
   started laughing, they couldn't stop.
 </ScrollArea>
 ```
+
+</Steps>

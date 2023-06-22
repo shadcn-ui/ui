@@ -4,13 +4,13 @@ import { Metadata } from "next"
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@/components/analytics"
+import { ThemeProvider } from "@/components/providers"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
-import { StyleSwitcher } from "@/components/style-switcher"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
+import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
 
 export const metadata: Metadata = {
   title: {
@@ -90,9 +90,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </div>
             <TailwindIndicator />
           </ThemeProvider>
-          <StyleSwitcher />
           <Analytics />
-          <Toaster />
+          <NewYorkToaster />
+          <DefaultToaster />
         </body>
       </html>
     </>

@@ -1,6 +1,7 @@
 import { CreditCard } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
   CardContent,
@@ -8,18 +9,17 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+} from "@/registry/new-york/ui/card"
+import { Input } from "@/registry/new-york/ui/input"
+import { Label } from "@/registry/new-york/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Icons } from "@/components/icons"
+} from "@/registry/new-york/ui/select"
 
 export function DemoPaymentMethod() {
   return (

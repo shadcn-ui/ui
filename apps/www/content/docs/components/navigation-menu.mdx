@@ -7,42 +7,19 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/navigation-menu#api-reference
 ---
 
-<ComponentExample src="/components/examples/navigation-menu/demo.tsx">
-  <NavigationMenuDemo />
-</ComponentExample>
+<ComponentPreview name="navigation-menu-demo" />
 
 ## Installation
+
+<Steps>
+
+### Command
 
 ```bash
 npx shadcn-ui add navigation-menu
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-navigation-menu` component from radix-ui:
-
-```bash
-npm install @radix-ui/react-navigation-menu
-```
-
-2. Copy and paste the following code into your project.
-
-<ComponentSource src="/components/ui/navigation-menu.tsx" />
-
-<Callout>
-  This is the `<NavigationMenu />` primitive. You can place it in a file at
-  `components/ui/navigation-menu.tsx`.
-</Callout>
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-## Usage
+### Usage
 
 ```tsx
 import {
@@ -69,6 +46,10 @@ import {
   </NavigationMenuList>
 </NavigationMenu>
 ```
+
+</Steps>
+
+## Examples
 
 ### Link Component
 

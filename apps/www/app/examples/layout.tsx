@@ -3,14 +3,14 @@ import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
 import { ExamplesNav } from "@/components/examples-nav"
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
+import { buttonVariants } from "@/registry/new-york/ui/button"
+import { Separator } from "@/registry/new-york/ui/separator"
 
 export const metadata: Metadata = {
   title: "Examples",
@@ -24,14 +24,17 @@ interface ExamplesLayoutProps {
 export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
   return (
     <>
-      <div className="container relative pb-10">
-        <PageHeader className="page-header">
+      <div className="container relative">
+        <PageHeader className="page-header pb-8">
           <Link
-            href="/docs/forms/react-hook-form"
+            href="/docs/changelog"
             className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
           >
             🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-            Building forms with React Hook Form and Zod
+            <span className="sm:hidden">Style, a new CLI and more.</span>
+            <span className="hidden sm:inline">
+              Introducing Style, a new CLI and more.
+            </span>
             <ChevronRight className="ml-1 h-4 w-4" />
           </Link>
           <PageHeaderHeading className="hidden md:block">
@@ -62,7 +65,7 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
         </PageHeader>
         <section>
           <ExamplesNav />
-          <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-xl">
+          <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
             {children}
           </div>
         </section>

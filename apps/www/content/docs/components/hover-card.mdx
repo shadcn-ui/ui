@@ -7,42 +7,19 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/hover-card#api-reference
 ---
 
-<ComponentExample src="/components/examples/hover-card/demo.tsx">
-  <HoverCardDemo />
-</ComponentExample>
+<ComponentPreview name="hover-card-demo" />
 
 ## Installation
+
+<Steps>
+
+### Command
 
 ```bash
 npx shadcn-ui add hover-card
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-hover-card` component from radix-ui:
-
-```bash
-npm install @radix-ui/react-hover-card
-```
-
-2. Copy and paste the following code into your project.
-
-<ComponentSource src="/components/ui/hover-card.tsx" />
-
-<Callout>
-  This is the `<HoverCard />` primitive. You can place it in a file at
-  `components/ui/hover-card.tsx`.
-</Callout>
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-## Usage
+### Usage
 
 ```tsx
 import {
@@ -60,3 +37,5 @@ import {
   </HoverCardContent>
 </HoverCard>
 ```
+
+</Steps>

@@ -1,63 +1,93 @@
+import path from "path"
+import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
+import { loadConfig } from "tsconfig-paths"
 import * as z from "zod"
 
-export const COMPONENTS_DIR = "./components/ui/"
-export const UTILS_LOCATION = "@/lib/utils"
-export const COMPONENT_ALIAS = "@/components/ui/"
+export const DEFAULT_STYLE = "default"
+export const DEFAULT_COMPONENTS = "@/components"
+export const DEFAULT_UTILS = "@/lib/utils"
+export const DEFAULT_TAILWIND_CSS = "app/globals.css"
+export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.js"
+export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
 
-/**
- * this is the name of the key we are looking for, the following are the intended values to look for:
- * - shadcn-ui property in package.json
- * - .shadcn-uirc file in JSON or YAML format
- * - .shadcn-uirc.json, .shadcn-uirc.yaml, .shadcn-uirc.yml, .shadcn-uirc.js, or .shadcn-uirc.cjs file
- * - shadcn-uirc, shadcn-uirc.json, shadcn-uirc.yaml, shadcn-uirc.yml, shadcn-uirc.js or shadcn-uirc.cjs file inside a .config subdirectory
- * - shadcn-ui.config.js or shadcn-ui.config.cjs CommonJS module exporting an object
- */
-const explorer = cosmiconfig("shadcn-ui")
+// TODO: Figure out if we want to support all cosmiconfig formats.
+// A simple components.json file would be nice.
+const explorer = cosmiconfig("components", {
+  searchPlaces: ["components.json"],
+})
 
-const configSchema = z.object({
-  componentsDirInstallation: z.string(),
-  askForDir: z.boolean(),
-  utilsLocation: z.string(),
-  componentDirAlias: z.string(),
+export const rawConfigSchema = z
+  .object({
+    style: z.string(),
+    rsc: z.coerce.boolean().default(false),
+    tailwind: z.object({
+      config: z.string(),
+      css: z.string(),
+      baseColor: z.string(),
+      cssVariables: z.boolean().default(true),
+    }),
+    aliases: z.object({
+      components: z.string(),
+      utils: z.string(),
+    }),
+  })
+  .strict()
+
+export type RawConfig = z.infer<typeof rawConfigSchema>
+
+export const configSchema = rawConfigSchema.extend({
+  resolvedPaths: z.object({
+    tailwindConfig: z.string(),
+    tailwindCss: z.string(),
+    utils: z.string(),
+    components: z.string(),
+  }),
 })
 
 export type Config = z.infer<typeof configSchema>
 
-export async function getCliConfig(): Promise<Config> {
-  const defaultConfig: Config = {
-    componentsDirInstallation: COMPONENTS_DIR,
-    askForDir: true,
-    utilsLocation: UTILS_LOCATION,
-    componentDirAlias: COMPONENT_ALIAS,
+export async function getConfig(cwd: string) {
+  const config = await getRawConfig(cwd)
+
+  if (!config) {
+    return null
   }
 
-  const userDefinedConfig = await getConfigFromEverywhere()
-
-  return {
-    ...defaultConfig,
-    ...userDefinedConfig,
-    askForDir: !userDefinedConfig.componentsDirInstallation,
-  }
+  return await resolveConfigPaths(cwd, config)
 }
 
-export async function getConfigFromEverywhere() {
+export async function resolveConfigPaths(cwd: string, config: RawConfig) {
+  // Read tsconfig.json.
+  const tsConfig = await loadConfig(cwd)
+
+  if (tsConfig.resultType === "failed") {
+    throw new Error(
+      `Failed to load tsconfig.json. ${tsConfig.message ?? ""}`.trim()
+    )
+  }
+
+  return configSchema.parse({
+    ...config,
+    resolvedPaths: {
+      tailwindConfig: path.resolve(cwd, config.tailwind.config),
+      tailwindCss: path.resolve(cwd, config.tailwind.css),
+      utils: await resolveImport(config.aliases["utils"], tsConfig),
+      components: await resolveImport(config.aliases["components"], tsConfig),
+    },
+  })
+}
+
+export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
   try {
-    const configResult = await explorer.search()
+    const configResult = await explorer.search(cwd)
 
     if (!configResult) {
-      // we should always return an object so we can then merge with
-      // the base config
-      return {}
+      return null
     }
 
-    const { config } = configResult
-
-    const parsedConfig = configSchema.partial().parse(config)
-    return parsedConfig
-  } catch (e) {
-    // lets just show the error to the user to aware about the issue, but lets not handle it.
-    console.log(e)
-    return {}
+    return rawConfigSchema.parse(configResult.config)
+  } catch (error) {
+    throw new Error(`Invald configuration found in ${cwd}/components.json.`)
   }
 }

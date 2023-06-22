@@ -3,8 +3,9 @@ import { Doc } from "contentlayer/generated"
 import { NavItem, NavItemWithChildren } from "types/nav"
 
 import { docsConfig } from "@/config/docs"
-import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import { buttonVariants } from "@/registry/new-york/ui/button"
 
 interface DocsPagerProps {
   doc: Doc
@@ -31,7 +32,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
       {pager?.next?.href && (
         <Link
           href={pager.next.href}
-          className={buttonVariants({ variant: "outline" })}
+          className={cn(buttonVariants({ variant: "outline" }), "ml-auto")}
         >
           {pager.next.title}
           <Icons.chevronRight className="ml-2 h-4 w-4" />
