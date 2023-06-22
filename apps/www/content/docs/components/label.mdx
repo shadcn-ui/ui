@@ -7,42 +7,19 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/label#api-reference
 ---
 
-<ComponentExample src="/components/examples/label/demo.tsx" extractClassname>
-  <LabelDemo />
-</ComponentExample>
+<ComponentPreview name="label-demo" />
 
 ## Installation
+
+<Steps>
+
+### Command
 
 ```bash
 npx shadcn-ui add label
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-label` component from radix-ui:
-
-```bash
-npm install @radix-ui/react-label
-```
-
-2. Copy and paste the following code into your project.
-
-<ComponentSource src="/components/ui/label.tsx" />
-
-<Callout>
-  This is the `<Label />` primitive. You can place it in a file at
-  `components/ui/label.tsx`.
-</Callout>
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-## Usage
+### Usage
 
 ```tsx
 import { Label } from "@/components/ui/label"
@@ -51,3 +28,5 @@ import { Label } from "@/components/ui/label"
 ```tsx
 <Label htmlFor="email">Your email address</Label>
 ```
+
+</Steps>

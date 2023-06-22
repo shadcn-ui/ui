@@ -1,0 +1,36 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`transform import 1`] = `
+"import * as React from \\"react\\"
+import { Foo } from \\"bar\\"
+    import { Button } from \\"@/components/ui/button\\"
+    import { Label} from \\"ui/label\\"
+    import { Box } from \\"@/components/box\\"
+
+    import { cn } from \\"@/lib/utils\\"
+    "
+`;
+
+exports[`transform import 2`] = `
+"import * as React from \\"react\\"
+import { Foo } from \\"bar\\"
+    import { Button } from \\"~/src/components/ui/button\\"
+    import { Label} from \\"ui/label\\"
+    import { Box } from \\"~/src/components/box\\"
+
+    import { cn, foo, bar } from \\"~/lib\\"
+    import { bar } from \\"@/lib/utils/bar\\"
+    "
+`;
+
+exports[`transform import 3`] = `
+"import * as React from \\"react\\"
+import { Foo } from \\"bar\\"
+    import { Button } from \\"~/src/components/ui/button\\"
+    import { Label} from \\"ui/label\\"
+    import { Box } from \\"~/src/components/box\\"
+
+    import { cn } from \\"~/src/utils\\"
+    import { bar } from \\"@/lib/utils/bar\\"
+    "
+`;

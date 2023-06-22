@@ -7,20 +7,24 @@ import { NpmCommands } from "types/unist"
 
 import { Event } from "@/lib/events"
 import { cn } from "@/lib/utils"
+import { Callout } from "@/components/callout"
+import { CodeBlockWrapper } from "@/components/code-block-wrapper"
+import { ComponentExample } from "@/components/component-example"
+import { ComponentPreview } from "@/components/component-preview"
+import { ComponentSource } from "@/components/component-source"
+import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { Callout } from "@/components/callout"
-import { CodeBlockWrapper } from "@/components/code-block-wrapper"
-import { ComponentExample } from "@/components/component-example"
-import { ComponentSource } from "@/components/component-source"
-import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
-import { examples } from "@/components/examples"
+} from "@/registry/new-york/ui/accordion"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/new-york/ui/alert"
+import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
 
 const components = {
   Accordion,
@@ -171,7 +175,7 @@ const components = {
       <>
         <pre
           className={cn(
-            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border py-4 data-[theme=dark]:bg-background data-[theme=light]:bg-white",
+            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900",
             className
           )}
           {...props}
@@ -208,6 +212,7 @@ const components = {
   ),
   Image,
   Callout,
+  ComponentPreview,
   ComponentExample,
   ComponentSource,
   AspectRatio,
@@ -220,7 +225,6 @@ const components = {
       {...props}
     />
   ),
-  ...examples,
 }
 
 interface MdxProps {

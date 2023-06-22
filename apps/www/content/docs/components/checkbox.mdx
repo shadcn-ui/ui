@@ -7,42 +7,19 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
 ---
 
-<ComponentExample src="/components/examples/checkbox/demo.tsx">
-  <CheckboxDemo />
-</ComponentExample>
+<ComponentPreview name="checkbox-demo" />
 
 ## Installation
+
+<Steps>
+
+### Command
 
 ```bash
 npx shadcn-ui add checkbox
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-checkbox` component from radix-ui:
-
-```bash
-npm install @radix-ui/react-checkbox
-```
-
-2. Copy and paste the following code into your project.
-
-<ComponentSource src="/components/ui/checkbox.tsx" />
-
-<Callout>
-  This is the `<Checkbox />` primitive. You can place it in a file at
-  `components/ui/checkbox.tsx`.
-</Callout>
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-## Usage
+### Usage
 
 ```tsx
 import { Checkbox } from "@/components/ui/checkbox"
@@ -52,37 +29,20 @@ import { Checkbox } from "@/components/ui/checkbox"
 <Checkbox />
 ```
 
+</Steps>
+
 ## Examples
 
 ### With text
 
-<ComponentExample src="/components/examples/checkbox/with-text.tsx">
-  <CheckboxWithText />
-</ComponentExample>
+<ComponentPreview name="checkbox-with-text" />
 
 ### Disabled
 
-<ComponentExample src="/components/examples/checkbox/disabled.tsx">
-  <CheckboxDisabled />
-</ComponentExample>
+<ComponentPreview name="checkbox-with-disabled" />
 
-## React Hook Form
+### Form
 
-<Alert className="mt-4">
-  <AlertDescription>
-    **Note**: Learn more about using React Hook Form on the
-    [docs](/docs/forms/react-hook-form) page.
-  </AlertDescription>
-</Alert>
+<ComponentPreview name="checkbox-form-single" />
 
-### Checkbox
-
-<ComponentExample src="/components/examples/checkbox/react-hook-form-single.tsx">
-  <CheckboxReactHookFormSingle />
-</ComponentExample>
-
-### Checkboxes
-
-<ComponentExample src="/components/examples/checkbox/react-hook-form-multiple.tsx">
-  <CheckboxReactHookFormMultiple />
-</ComponentExample>
+<ComponentPreview name="checkbox-form-multiple" />

@@ -1,8 +1,13 @@
 import { Metadata } from "next"
 
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
+import { Separator } from "@/registry/new-york/ui/separator"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/new-york/ui/tabs"
 
 import { AlbumArtwork } from "./components/album-artwork"
 import { Menu } from "./components/menu"
@@ -14,7 +19,7 @@ import "./styles.css"
 import Image from "next/image"
 import { PlusCircle } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 
 export const metadata: Metadata = {
   title: "Music App",

@@ -4,17 +4,15 @@ description: A date picker component with range and presets.
 component: true
 ---
 
-<ComponentExample src="/components/examples/date-picker/demo.tsx">
-  <DatePickerDemo />
-</ComponentExample>
-
-## About
-
-The Date Picker is built using a composition of the `<Popover />` and the `<Calendar />` components.
+<ComponentPreview name="date-picker-demo" />
 
 ## Installation
 
-See installation instructions for the [Popover](/docs/components/popover#installation) and the [Calendar](/docs/components/calendar#installation) components.
+<Steps>
+
+### About
+
+The Date Picker is built using a composition of the `<Popover />` and the `<Calendar />` components. See installation instructions for the [Popover](/docs/components/popover#installation) and the [Calendar](/docs/components/calendar#installation) components.
 
 ## Usage
 
@@ -66,35 +64,22 @@ export function DatePickerDemo() {
 
 See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
 
+</Steps>
+
 ## Examples
 
 ### Date Picker
 
-<ComponentExample src="/components/examples/date-picker/demo.tsx">
-  <DatePickerDemo />
-</ComponentExample>
+<ComponentPreview name="date-picker-demo" />
 
 ### Date Range Picker
 
-<ComponentExample src="/components/examples/date-picker/with-range.tsx">
-  <DatePickerWithRange />
-</ComponentExample>
+<ComponentPreview name="date-picker-with-range" />
 
 ### With Presets
 
-<ComponentExample src="/components/examples/date-picker/with-presets.tsx">
-  <DatePickerWithPresets />
-</ComponentExample>
+<ComponentPreview name="date-picker-with-presets" />
 
-## React Hook Form
+### Form
 
-<Alert className="mt-4">
-  <AlertDescription>
-    **Note**: Learn more about using React Hook Form on the
-    [docs](/docs/forms/react-hook-form) page.
-  </AlertDescription>
-</Alert>
-
-<ComponentExample src="/components/examples/date-picker/react-hook-form.tsx">
-  <DatePickerReactHookForm />
-</ComponentExample>
+<ComponentPreview name="date-picker-form" />

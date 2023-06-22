@@ -3,275 +3,42 @@ title: Installation
 description: How to install dependencies and structure your app.
 ---
 
-<Alert>
-  <AlertDescription>
-
-    **Prerequisites**: Components are styled using [Tailwind
-    CSS](https://tailwindcss.com). You need to install Tailwind CSS in your
-    project. Follow the [Tailwind CSS installation instructions](https://tailwindcss.com/docs/installation) to get started.
-
-  </AlertDescription>
-  
-</Alert>
-
-## New Project
-
-Run the following command to create a new Next.js project using the `next-template` template:
-
-```bash
-npx create-next-app -e https://github.com/shadcn/next-template
-```
-
-This creates a new Next.js 13 project with the following features:
-
-- [Next.js App directory](https://nextjs.org)
-- [Tailwind CSS](https://tailwindcss.com)
-- [TypeScript](https://www.typescriptlang.org)
-- [ESLint](https://eslint.org)
-- [Prettier](https://prettier.io)
-
-## create-next-app
-
-If you have created a project using `create-next-app`, you can use the `shadcn-ui` CLI to initialize the project.
+## Next.js
 
 <Steps>
 
-### Create a new project
+### Create project
+
+Start by creating a new Next.js project using `create-next-app`:
 
 ```bash
-npx create-next-app my-app
+npx create-next-app@latest my-app --typescript --tailwind --eslint
 ```
 
 ### Run the CLI
 
-```bash
-npx shadcn-ui init
-```
-
-This will install dependencies, setup Tailwind CSS, and configure the `cn` utils for you.
-
-</Steps>
-
-## Manual Installation
-
-<Steps>
-
-### Add dependencies
-
-Add the following dependencies to your project:
+Run the `shadcn-ui` init command to setup your project:
 
 ```bash
-npm install tailwindcss-animate class-variance-authority clsx tailwind-merge lucide-react
+npx shadcn-ui@latest init
 ```
 
-### Path Aliases
+### Configure components.json
 
-I use the `@` alias to make it easier to import components. This is how I configure it in `tsconfig.json`:
+You will be asked a few questions to configure `components.json`:
 
-```json title="tsconfig.json"
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
-  }
-}
+```txt showLineNumbers
+Which style would you like to use? › Default
+Which color would you like to use as base color? › Slate
+Where is your global CSS file? › › app/globals.css
+Do you want to use CSS variables for colors? › no / yes
+Where is your tailwind.config.js located? › tailwind.config.js
+Configure the import alias for components: › @/components
+Configure the import alias for utils: › @/lib/utils
+Are you using React Server Components? › no / yes
 ```
 
-If you use a different alias such as `~`, you'll need to update `import` statements when adding components.
-
-### Configure tailwind.config.js
-
-Here's what my `tailwind.config.js` file looks like:
-
-```js title="tailwind.config.js"
-const { fontFamily } = require("tailwindcss/defaultTheme")
-
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: ["class"],
-  content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-    extend: {
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
-        sm: "calc(var(--radius) - 4px)",
-      },
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: 0 },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
-  },
-  plugins: [require("tailwindcss-animate")],
-}
-```
-
-### Configure styles
-
-Add the following to your `styles/globals.css` file. You can learn more about using CSS variables for theming in the [theming section](/docs/theming).
-
-```css title="styles/globals.css"
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 215 20.2% 65.1%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
-
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
-
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
-
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 216 34% 17%;
-
-    --radius: 0.5rem;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-}
-```
-
-### Add a cn helper
-
-I use a `cn` helper to make it easier to conditionally add Tailwind CSS classes. Here's how I define it in `lib/utils.ts`:
-
-```ts title="lib/utils.ts"
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-```
-
-</Steps>
-
-## Icons
-
-I use icons from [Lucide](https://lucide.dev). You can use any icon library.
-
-## App structure
+### App structure
 
 Here's how I structure my app. I use Next.js, but this is not required.
 
@@ -305,4 +72,14 @@ Here's how I structure my app. I use Next.js, but this is not required.
 - The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
 - The `styles` folder contains the global CSS.
 
+</Steps>
+
 That's it. You can now start adding components to your project.
+
+```bash
+npx shadcn-ui add
+```
+
+## Other frameworks
+
+I'm looking for help writing guides for other frameworks. Help me write guides for Remix, Astro and Vite by [opening an PR](https://github.com/shadcn/ui).

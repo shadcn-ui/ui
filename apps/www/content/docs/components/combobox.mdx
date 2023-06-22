@@ -4,19 +4,17 @@ description: Autocomplete input and command palette with a list of suggestions.
 component: true
 ---
 
-<ComponentExample src="/components/examples/combobox/demo.tsx">
-  <ComboboxDemo />
-</ComponentExample>
-
-## About
-
-The Combobox is built using a composition of the `<Popover />` and the `<Command />` components.
+<ComponentPreview name="combobox-demo" />
 
 ## Installation
 
-See installation instructions for the [Popover](/docs/components/popover#installation) and the [Command](/docs/components/command#installation) components.
+<Steps>
 
-## Usage
+### About
+
+The Combobox is built using a composition of the `<Popover />` and the `<Command />` components. See installation instructions for the [Popover](/docs/components/popover#installation) and the [Command](/docs/components/command#installation) components.
+
+### Usage
 
 ```tsx
 "use client"
@@ -111,35 +109,22 @@ export function ComboboxDemo() {
 }
 ```
 
+</Steps>
+
 ## Examples
 
 ### Combobox
 
-<ComponentExample src="/components/examples/combobox/demo.tsx">
-  <ComboboxDemo />
-</ComponentExample>
+<ComponentPreview name="combobox-demo" />
 
 ### Popover
 
-<ComponentExample src="/components/examples/combobox/popover.tsx">
-  <ComboboxPopover />
-</ComponentExample>
+<ComponentPreview name="combobox-popover" />
 
 ### Dropdown menu
 
-<ComponentExample src="/components/examples/combobox/dropdown-menu.tsx">
-  <ComboboxDropdownMenu />
-</ComponentExample>
+<ComponentPreview name="combobox-dropdown-menu" />
 
-## React Hook Form
+### Form
 
-<Alert className="mt-4">
-  <AlertDescription>
-    **Note**: Learn more about using React Hook Form on the
-    [docs](/docs/forms/react-hook-form) page.
-  </AlertDescription>
-</Alert>
-
-<ComponentExample src="/components/examples/combobox/react-hook-form.tsx">
-  <ComboboxReactHookForm />
-</ComponentExample>
+<ComponentPreview name="combobox-form" />

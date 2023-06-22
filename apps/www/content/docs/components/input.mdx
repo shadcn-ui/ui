@@ -4,39 +4,19 @@ description: Displays a form input field or a component that looks like an input
 component: true
 ---
 
-<ComponentExample
-  src="/components/examples/input/demo.tsx"
-  className="[&_input]:max-w-sm"
->
-  <InputDemo />
-</ComponentExample>
+<ComponentPreview name="input-demo" className="[&_input]:max-w-xs" />
 
 ## Installation
+
+<Steps>
+
+### Command
 
 ```bash
 npx shadcn-ui add input
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Copy and paste the following code into your project.
-
-<ComponentSource src="/components/ui/input.tsx" />
-
-<Callout>
-  This is the `<Input />` primitive. You can place it in a file at
-  `components/ui/input.tsx`.
-</Callout>
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-## Usage
+### Usage
 
 ```tsx
 import { Input } from "@/components/ui/input"
@@ -46,72 +26,32 @@ import { Input } from "@/components/ui/input"
 <Input />
 ```
 
+</Steps>
+
+---
+
 ## Examples
 
 ### Default
 
-<ComponentExample
-  src="/components/examples/input/demo.tsx"
-  extractClassname
-  className="[&_input]:max-w-sm"
->
-  <InputDemo />
-</ComponentExample>
-
----
-
-### Disabled
-
-<ComponentExample
-  src="/components/examples/input/disabled.tsx"
-  extractClassname
-  className="[&_input]:max-w-sm"
->
-
-  <InputDisabled />
-</ComponentExample>
-
----
-
-### With Label
-
-<ComponentExample src="/components/examples/input/with-label.tsx">
-  <InputWithLabel />
-</ComponentExample>
-
----
-
-### With Text
-
-<ComponentExample src="/components/examples/input/with-text.tsx">
-  <InputWithText />
-</ComponentExample>
-
----
-
-### With Button
-
-<ComponentExample src="/components/examples/input/with-button.tsx">
-  <InputWithButton />
-</ComponentExample>
-
----
+<ComponentPreview name="input-demo" className="[&_input]:max-w-xs" />
 
 ### File
 
-<ComponentExample src="/components/examples/input/file.tsx">
-  <InputFile />
-</ComponentExample>
+<ComponentPreview name="input-file" className="[&_input]:max-w-xs" />
 
-## React Hook Form
+### Disabled
 
-<Alert className="mt-4">
-  <AlertDescription>
-    **Note**: Learn more about using React Hook Form on the
-    [docs](/docs/forms/react-hook-form) page.
-  </AlertDescription>
-</Alert>
+<ComponentPreview name="input-disabled" className="[&_input]:max-w-xs" />
 
-<ComponentExample src="/components/examples/input/react-hook-form.tsx">
-  <InputReactHookForm />
-</ComponentExample>
+### With Label
+
+<ComponentPreview name="input-with-label" className="[&_input]:max-w-xs" />
+
+### With Button
+
+<ComponentPreview name="input-with-button" className="[&_input]:max-w-xs" />
+
+### Form
+
+<ComponentPreview name="input-form" />

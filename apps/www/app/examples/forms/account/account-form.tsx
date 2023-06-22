@@ -7,22 +7,15 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+import { Button } from "@/registry/new-york/ui/button"
+import { Calendar } from "@/registry/new-york/ui/calendar"
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/ui/command"
-import { Input } from "@/components/ui/input"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { toast } from "@/components/ui/use-toast"
+} from "@/registry/new-york/ui/command"
 import {
   Form,
   FormControl,
@@ -31,7 +24,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/react-hook-form/form"
+} from "@/registry/new-york/ui/form"
+import { Input } from "@/registry/new-york/ui/input"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/registry/new-york/ui/popover"
+import { toast } from "@/registry/new-york/ui/use-toast"
 
 const languages = [
   { label: "English", value: "en" },

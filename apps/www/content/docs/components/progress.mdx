@@ -7,43 +7,19 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/progress#api-reference
 ---
 
-<ComponentExample src="/components/examples/progress/demo.tsx">
-  <ProgressDemo />
-</ComponentExample>
+<ComponentPreview name="progress-demo" />
 
 ## Installation
+
+<Steps>
+
+### Command
 
 ```bash
 npx shadcn-ui add progress
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-progress` component from radix-ui:
-
-```bash
-npm install @radix-ui/react-progress
-```
-
-2. Copy and paste the following code into your project.
-
-<ComponentSource src="/components/ui/progress.tsx" />
-
-<Callout>
-
-This is the `<Progress />` primitive. You can place it in a file at `components/ui/progress.tsx`.
-
-</Callout>
-
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
-
-## Usage
+### Usage
 
 ```tsx
 import { Progress } from "@/components/ui/progress"
@@ -52,3 +28,5 @@ import { Progress } from "@/components/ui/progress"
 ```tsx
 <Progress value={33} />
 ```
+
+</Steps>

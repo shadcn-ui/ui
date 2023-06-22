@@ -16,7 +16,7 @@
   "scripts": {
     "build": "turbo run build",
     "build:cli": "turbo --filter=shadcn-ui build",
-    "build:components": "pnpm --filter=www build:components",
+    "build:registry": "pnpm --filter=www build:registry",
     "dev": "turbo run dev --parallel",
     "dev:cli": "turbo --filter=shadcn-ui dev",
     "start:cli": "pnpm --filter=shadcn-ui start:dev",
@@ -24,14 +24,15 @@
     "lint:fix": "turbo run lint:fix",
     "preview": "turbo run preview",
     "typecheck": "turbo run typecheck",
-    "format:write": "turbo run format",
+    "format:write": "turbo run format:write",
     "format:check": "turbo run format:check",
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
     "prepare": "husky install",
     "check": "turbo lint typecheck format:check",
     "release": "changeset version",
     "pub:beta": "cd packages/cli && pnpm pub:beta",
-    "pub:release": "cd packages/cli && pnpm pub:release"
+    "pub:release": "cd packages/cli && pnpm pub:release",
+    "test": "turbo run test --force"
   },
   "packageManager": "pnpm@8.5.1",
   "dependencies": {
@@ -63,6 +64,8 @@
     "tailwindcss-animate": "^1.0.5",
     "ts-node": "^10.9.1",
     "turbo": "^1.9.9",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.31.1"
   }
 }
