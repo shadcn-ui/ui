@@ -1,5 +1,9 @@
 "use client"
 
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Form,
@@ -12,9 +16,6 @@ import {
 } from "@/registry/new-york/ui/form"
 import { Input } from "@/registry/new-york/ui/input"
 import { toast } from "@/registry/new-york/ui/use-toast"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
 
 const FormSchema = z.object({
   username: z.string().min(2, {

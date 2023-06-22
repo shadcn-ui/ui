@@ -1,5 +1,9 @@
 "use client"
 
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
 import { Button } from "@/registry/default/ui/button"
 import {
   Form,
@@ -11,9 +15,6 @@ import {
 } from "@/registry/default/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 import { toast } from "@/registry/default/ui/use-toast"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
 
 const FormSchema = z.object({
   type: z.enum(["all", "mentions", "none"], {

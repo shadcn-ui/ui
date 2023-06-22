@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { Calendar, MoreHorizontal, Tags, Trash, User } from "lucide-react"
+
 import { Button } from "@/registry/default/ui/button"
 import {
   Command,
@@ -23,7 +25,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/default/ui/dropdown-menu"
-import { Calendar, MoreHorizontal, Tags, Trash, User } from "lucide-react"
 
 const labels = [
   "feature",

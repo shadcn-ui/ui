@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { cn } from "@/lib/utils"
+import { Button, buttonVariants } from "@/registry/new-york/ui/button"
 import {
   Form,
   FormControl,
@@ -15,7 +16,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/registry/new-york/ui/form"
-import { Button, buttonVariants } from "@/registry/new-york/ui/button"
 import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
 import { toast } from "@/registry/new-york/ui/use-toast"
 

@@ -1,3 +1,5 @@
+import { ChevronDown } from "lucide-react"
+
 import {
   Avatar,
   AvatarFallback,
@@ -24,7 +26,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
-import { ChevronDown } from "lucide-react"
 
 export function DemoTeamMembers() {
   return (

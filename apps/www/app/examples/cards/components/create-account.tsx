@@ -1,5 +1,6 @@
 "use client"
 
+import { Icons } from "@/components/icons"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
@@ -11,8 +12,6 @@ import {
 } from "@/registry/new-york/ui/card"
 import { Input } from "@/registry/new-york/ui/input"
 import { Label } from "@/registry/new-york/ui/label"
-
-import { Icons } from "@/components/icons"
 
 export function DemoCreateAccount() {
   return (

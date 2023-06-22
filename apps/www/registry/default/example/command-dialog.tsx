@@ -2,6 +2,15 @@
 
 import * as React from "react"
 import {
+  Calculator,
+  Calendar,
+  CreditCard,
+  Settings,
+  Smile,
+  User,
+} from "lucide-react"
+
+import {
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -11,14 +20,6 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/registry/default/ui/command"
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react"
 
 export default function CommandDialogDemo() {
   const [open, setOpen] = React.useState(false)

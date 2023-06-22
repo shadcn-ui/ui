@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import { Progress } from "@/registry/new-york/ui/progress"
 
 export default function ProgressDemo() {

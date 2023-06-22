@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
+
 import { Button } from "@/registry/new-york/ui/button"
 import {
   DropdownMenu,
@@ -10,7 +12,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/registry/new-york/ui/dropdown-menu"
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 
 type Checked = DropdownMenuCheckboxItemProps["checked"]
 

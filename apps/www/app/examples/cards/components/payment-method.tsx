@@ -1,3 +1,6 @@
+import { CreditCard } from "lucide-react"
+
+import { Icons } from "@/components/icons"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
@@ -17,9 +20,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york/ui/select"
-import { CreditCard } from "lucide-react"
-
-import { Icons } from "@/components/icons"
 
 export function DemoPaymentMethod() {
   return (

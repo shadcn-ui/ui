@@ -6,6 +6,7 @@ import { useFieldArray, useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { cn } from "@/lib/utils"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Form,
   FormControl,
@@ -15,7 +16,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/registry/new-york/ui/form"
-import { Button } from "@/registry/new-york/ui/button"
 import { Input } from "@/registry/new-york/ui/input"
 import {
   Select,
