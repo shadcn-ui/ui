@@ -176,12 +176,12 @@ fs.writeFileSync(
 // ----------------------------------------------------------------------------
 // Build registry/colors/[base].json.
 // ----------------------------------------------------------------------------
-export const STYLES = `@tailwind base;
+export const BASE_STYLES = `@tailwind base;
 @tailwind components;
 @tailwind utilities;
 `
 
-export const STYLES_WITH_VARIABLES = `@tailwind base;
+export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
 @tailwind components;
 @tailwind utilities;
  
@@ -287,8 +287,8 @@ for (const baseColor of ["slate", "gray", "zinc", "neutral", "stone", "lime"]) {
   }
 
   // Build css vars.
-  base["inlineColorsTemplate"] = template(STYLES)({})
-  base["cssVarsTemplate"] = template(STYLES_WITH_VARIABLES)({
+  base["inlineColorsTemplate"] = template(BASE_STYLES)({})
+  base["cssVarsTemplate"] = template(BASE_STYLES_WITH_VARIABLES)({
     colors: base["cssVars"],
   })
 
@@ -302,7 +302,7 @@ for (const baseColor of ["slate", "gray", "zinc", "neutral", "stone", "lime"]) {
 // ----------------------------------------------------------------------------
 // Build registry/themes.css
 // ----------------------------------------------------------------------------
-export const STYLES_WITH_VARIABLES = `
+export const THEME_STYLES_WITH_VARIABLES = `
   .theme-<%- theme %> {
     --background: <%- colors.light["background"] %>;
     --foreground: <%- colors.light["foreground"] %>;
@@ -369,10 +369,12 @@ export const STYLES_WITH_VARIABLES = `
 
 const themeCSS = []
 for (const theme of themes) {
-  themeCSS.push(template(STYLES_WITH_VARIABLES)({
-    colors: theme.cssVars,
-    theme: theme.name,
-  }))
+  themeCSS.push(
+    template(THEME_STYLES_WITH_VARIABLES)({
+      colors: theme.cssVars,
+      theme: theme.name,
+    })
+  )
 }
 
 fs.writeFileSync(
