@@ -21,6 +21,9 @@
     "dependencies": [
       "@radix-ui/react-alert-dialog"
     ],
+    "registryDependencies": [
+      "button"
+    ],
     "files": [
       "ui/alert-dialog.tsx"
     ],
@@ -155,6 +158,10 @@
       "@hookform/resolvers",
       "zod",
       "react-hook-form"
+    ],
+    "registryDependencies": [
+      "button",
+      "label"
     ],
     "files": [
       "ui/form.tsx"

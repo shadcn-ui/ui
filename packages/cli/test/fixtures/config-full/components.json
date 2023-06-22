@@ -4,7 +4,7 @@
     "config": "tailwind.config.ts",
     "css": "src/app/globals.css",
     "baseColor": "zinc",
-    "cssVariales": true
+    "cssVariables": true
   },
   "rsc": false,
   "aliases": {

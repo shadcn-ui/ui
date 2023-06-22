@@ -16,6 +16,7 @@ const ui: Registry = [
     name: "alert-dialog",
     type: "components:ui",
     dependencies: ["@radix-ui/react-alert-dialog"],
+    registryDependencies: ["button"],
     files: ["ui/alert-dialog.tsx"],
   },
   {
@@ -100,6 +101,7 @@ const ui: Registry = [
       "zod",
       "react-hook-form",
     ],
+    registryDependencies: ["button", "label"],
     files: ["ui/form.tsx"],
   },
   {

@@ -3,6 +3,9 @@
   "dependencies": [
     "@radix-ui/react-alert-dialog"
   ],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "name": "alert-dialog.tsx",
