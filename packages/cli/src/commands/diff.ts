@@ -152,6 +152,11 @@ async function diffComponent(
 
     for (const file of item.files) {
       const filePath = path.resolve(targetDir, file.name)
+
+      if (!existsSync(filePath)) {
+        continue
+      }
+
       const fileContent = await fs.readFile(filePath, "utf8")
 
       const registryContent = await transform({
