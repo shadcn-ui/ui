@@ -60,7 +60,11 @@ export function MobileNav() {
                     <React.Fragment key={item.href}>
                       {!item.disabled &&
                         (item.href ? (
-                          <MobileLink href={item.href} onOpenChange={setOpen}>
+                          <MobileLink
+                            href={item.href}
+                            onOpenChange={setOpen}
+                            className="text-muted-foreground"
+                          >
                             {item.title}
                           </MobileLink>
                         ) : (

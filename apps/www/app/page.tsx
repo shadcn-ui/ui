@@ -18,13 +18,16 @@ import DashboardPage from "@/app/examples/dashboard/page"
 export default function IndexPage() {
   return (
     <div className="container relative">
-      <PageHeader>
+      <PageHeader className="pb-8">
         <Link
           href="/docs/changelog"
           className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
         >
           🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-          Introducing Style, a new CLI and more.
+          <span className="sm:hidden">Style, a new CLI and more.</span>
+          <span className="hidden sm:inline">
+            Introducing Style, a new CLI and more.
+          </span>
           <ChevronRight className="ml-1 h-4 w-4" />
         </Link>
         <PageHeaderHeading>Build your component library.</PageHeaderHeading>
