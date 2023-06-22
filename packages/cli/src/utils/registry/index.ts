@@ -11,7 +11,10 @@ import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
 import * as z from "zod"
 
-const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "https://ui.shadcn.com"
+// const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "https://ui.shadcn.com"
+const baseUrl =
+  process.env.COMPONENTS_REGISTRY_URL ??
+  "https://ui-git-feat-minor-updates-shadcn-pro.vercel.app"
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined
