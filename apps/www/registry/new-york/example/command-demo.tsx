@@ -1,12 +1,11 @@
 import {
   CalendarIcon,
-  CaretDownIcon,
   EnvelopeClosedIcon,
   FaceIcon,
   GearIcon,
   PersonIcon,
+  RocketIcon,
 } from "@radix-ui/react-icons"
-import { RocketIcon } from "lucide-react"
 
 import {
   Command,
