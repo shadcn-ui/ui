@@ -63,6 +63,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/typography",
           items: [],
         },
+        {
+          title: "Changelog",
+          href: "/docs/changelog",
+          items: [],
+        },
       ],
     },
     {

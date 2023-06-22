@@ -138,13 +138,15 @@ export default async function DocPage({ params }: DocPageProps) {
         </div>
         <DocsPager doc={doc} />
       </div>
-      <div className="hidden text-sm xl:block">
-        <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] overflow-hidden pt-6">
-          <ScrollArea className="pb-10">
-            <DashboardTableOfContents toc={toc} />
-          </ScrollArea>
+      {doc.toc && (
+        <div className="hidden text-sm xl:block">
+          <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] overflow-hidden pt-6">
+            <ScrollArea className="pb-10">
+              <DashboardTableOfContents toc={toc} />
+            </ScrollArea>
+          </div>
         </div>
-      </div>
+      )}
     </main>
   )
 }
