@@ -12,6 +12,7 @@ import {
   resolveTree,
 } from "@/src/utils/registry"
 import { transform } from "@/src/utils/transformers"
+import { parseNa, parseNi, runCli } from "@antfu/ni"
 import chalk from "chalk"
 import { Command } from "commander"
 import { execa } from "execa"
