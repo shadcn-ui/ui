@@ -124,8 +124,8 @@ export function splitClassName(className: string): (string | null)[] {
   // We take the last item from the split as the name.
   const name = split.pop()
 
-  // We glue back the rest of the split.
-  const variant = split.join(":")
+  // We glue back the rest of the split while checking if the last item is the opacity to determine if we should use a slash or colon.
+  const variant = split.join(split[split.length - 1].match(/\d+/) ? "/" : ":")
 
   // Finally we push the variant, name and alpha.
   parts.push(variant ?? null, name ?? null, alpha ?? null)
