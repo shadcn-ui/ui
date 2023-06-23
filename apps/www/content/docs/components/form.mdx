@@ -91,10 +91,9 @@ npx shadcn-ui@latest add form
 
 Define the shape of your form using a Zod schema. You can read more about using Zod in the [Zod documentation](https://zod.dev).
 
-```tsx showLineNumbers {4,6-8}
+```tsx showLineNumbers {3,5-7}
 "use client"
 
-import Link from "next/link"
 import * as z from "zod"
 
 const formSchema = z.object({
@@ -106,10 +105,9 @@ const formSchema = z.object({
 
 Use the `useForm` hook from `react-hook-form` to create a form.
 
-```tsx showLineNumbers {4-5,15-21,23-28}
+```tsx showLineNumbers {3-4,14-20,22-27}
 "use client"
 
-import Link from "next/link"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
@@ -144,10 +142,9 @@ Since `FormField` is using a controlled component, you need to provide a default
 
 We can now use the `<Form />` components to build our form.
 
-```tsx showLineNumbers {8-18,29-51}
+```tsx showLineNumbers {7-17,28-50}
 "use client"
 
-import Link from "next/link"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
