@@ -8,15 +8,37 @@ component: true
 
 ## Installation
 
-<Steps>
+<Tabs defaultValue="cli">
 
-### Command
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
 npx shadcn-ui@latest add textarea
 ```
 
-### Usage
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="textarea" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
 
 ```tsx
 import { Textarea } from "@/components/ui/textarea"
@@ -25,8 +47,6 @@ import { Textarea } from "@/components/ui/textarea"
 ```tsx
 <Textarea />
 ```
-
-</Steps>
 
 ## Examples
 
