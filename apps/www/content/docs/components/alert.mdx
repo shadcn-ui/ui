@@ -8,15 +8,37 @@ component: true
 
 ## Installation
 
-<Steps>
+<Tabs defaultValue="cli">
 
-### Command
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
 npx shadcn-ui@latest add alert
 ```
 
-### Usage
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="alert" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
 
 ```tsx
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -31,8 +53,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
   </AlertDescription>
 </Alert>
 ```
-
-</Steps>
 
 ## Examples
 

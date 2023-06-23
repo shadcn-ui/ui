@@ -11,15 +11,37 @@ radix:
 
 ## Installation
 
-<Steps>
+<Tabs defaultValue="cli">
 
-### CommandMenu
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
 npx shadcn-ui@latest add separator
 ```
 
-### Usage
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="separator" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
 
 ```tsx
 import { Separator } from "@/components/ui/separator"
@@ -28,5 +50,3 @@ import { Separator } from "@/components/ui/separator"
 ```tsx
 <Separator />
 ```
-
-</Steps>

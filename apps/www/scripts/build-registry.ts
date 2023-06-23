@@ -34,9 +34,9 @@ for (const style of styles) {
 
   // Build style index.
   for (const item of result.data) {
-    if (item.type === "components:ui") {
-      continue
-    }
+    // if (item.type === "components:ui") {
+    //   continue
+    // }
 
     const resolveFiles = item.files.map(
       (file) => `registry/${style.name}/${file}`

@@ -11,36 +11,23 @@ radix:
 
 ## Installation
 
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
 <Steps>
 
-### Command
+<Step>Run the following command:</Step>
 
 ```bash
-npx shadcn-ui@latest add toast
+npx shadcn-ui@latest add avatar
 ```
 
-### Toaster
-
-Add the `<Toaster />` component to your app.
-
-The `<Toaster />` component is where your toasts are displayed. You can place it anywhere in your app, but it's recommended to place it at the root of your app.
-
-#### Pages
-
-```tsx title="_app.tsx" {1,7}
-import { Toaster } from "@/components/ui/toaster"
-
-export default function App({ Component, pageProps }) {
-  return (
-    <Steps>
-      <Component {...pageProps} />
-      <Toaster />
-    </>
-  )
-}
-```
-
-#### App Directory
+<Step>Add the Toaster component</Step>
 
 ```tsx title="app/layout.tsx" {1,9}
 import { Toaster } from "@/components/ui/toaster"
@@ -58,7 +45,45 @@ export default function RootLayout({ children }) {
 }
 ```
 
-### Usage
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the Toaster component</Step>
+
+```tsx title="app/layout.tsx" {1,9}
+import { Toaster } from "@/components/ui/toaster"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <main>{children}</main>
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
 
 The `useToast` hook returns a `toast` function that you can use to display a toast.
 
@@ -90,8 +115,6 @@ export const ToastDemo = () => {
 To display multiple toasts at the same time, you can update the `TOAST_LIMIT` in `use-toast.tsx`.
 
 </Callout>
-
-</Steps>
 
 ## Examples
 
