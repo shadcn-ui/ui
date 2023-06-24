@@ -9,14 +9,6 @@ import { getPackageInfo } from "./utils/get-package-info"
 process.on("SIGINT", () => process.exit(0))
 process.on("SIGTERM", () => process.exit(0))
 
-const PROJECT_DEPENDENCIES = [
-  "tailwindcss-animate",
-  "class-variance-authority",
-  "clsx",
-  "tailwind-merge",
-  "lucide-react",
-]
-
 async function main() {
   const packageInfo = await getPackageInfo()
 

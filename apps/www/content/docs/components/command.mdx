@@ -16,15 +16,37 @@ The `<Command />` component uses the [`cmdk`](https://cmdk.paco.me) component by
 
 ## Installation
 
-<Steps>
+<Tabs defaultValue="cli">
 
-### Command
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
 npx shadcn-ui@latest add command
 ```
 
-### Usage
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="command" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
 
 ```tsx
 import {
@@ -58,10 +80,6 @@ import {
   </CommandList>
 </Command>
 ```
-
-</Steps>
-
----
 
 ## Examples
 

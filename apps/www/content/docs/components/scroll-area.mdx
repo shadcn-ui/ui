@@ -11,15 +11,37 @@ radix:
 
 ## Installation
 
-<Steps>
+<Tabs defaultValue="cli">
 
-### Command
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
 npx shadcn-ui@latest add scroll-area
 ```
 
-### Usage
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scroll-area" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
 
 ```tsx
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -35,5 +57,3 @@ import { ScrollArea } from "@/components/ui/scroll-area"
   started laughing, they couldn't stop.
 </ScrollArea>
 ```
-
-</Steps>

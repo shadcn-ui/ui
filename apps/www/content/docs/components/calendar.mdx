@@ -12,15 +12,37 @@ The `Calendar` component is built on top of [React DayPicker](https://react-day-
 
 ## Installation
 
-<Steps>
+<Tabs defaultValue="cli">
 
-### Command
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
 npx shadcn-ui@latest add calendar
 ```
 
-### Usage
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="calendar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
 
 ```tsx
 import { Calendar } from "@/components/ui/calendar"
@@ -40,8 +62,6 @@ return (
 ```
 
 See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
-
-</Steps>
 
 ## Date Picker
 
