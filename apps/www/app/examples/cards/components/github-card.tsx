@@ -67,7 +67,7 @@ export function DemoGithub() {
         <div className="flex space-x-4 text-sm text-muted-foreground">
           <div className="flex items-center">
             <Circle className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
-            TypeScipt
+            TypeScript
           </div>
           <div className="flex items-center">
             <Star className="mr-1 h-3 w-3" />
