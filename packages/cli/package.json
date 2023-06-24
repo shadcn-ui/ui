@@ -44,6 +44,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@antfu/ni": "^0.21.4",
     "chalk": "5.2.0",
     "commander": "^10.0.0",
     "cosmiconfig": "^8.1.3",
