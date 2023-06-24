@@ -1,4 +1,4 @@
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/registry/new-york/ui/separator"
 import { AccountForm } from "@/app/examples/forms/account/account-form"
 import { NotificationsForm } from "@/app/examples/forms/notifications/notifications-form"
 

@@ -7,40 +7,39 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/popover#api-reference
 ---
 
-<ComponentExample src="/components/examples/popover/demo.tsx">
-  <PopoverDemo />
-</ComponentExample>
+<ComponentPreview name="popover-demo" />
 
 ## Installation
 
-```bash
-npx shadcn-ui add popover
-```
+<Tabs defaultValue="cli">
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-popover` component from radix-ui:
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
-npm install @radix-ui/react-popover
+npx shadcn-ui@latest add popover
 ```
 
-2. Copy and paste the following code into your project.
+</TabsContent>
 
-<ComponentSource src="/components/ui/popover.tsx" />
+<TabsContent value="manual">
 
-<Callout>
-  This is the `<Popover />` primitive. You can place it in a file at
-  `components/ui/popover.tsx`.
-</Callout>
+<Steps>
 
-    </AccordionContent>
+<Step>Copy and paste the following code into your project.</Step>
 
-  </AccordionItem>
-</Accordion>
+<ComponentSource name="popover" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Usage
 

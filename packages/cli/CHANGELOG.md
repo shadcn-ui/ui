@@ -1,5 +1,17 @@
 # @shadcn/ui
 
+## 0.2.1
+
+### Patch Changes
+
+- [#641](https://github.com/shadcn/ui/pull/641) [`658c710`](https://github.com/shadcn/ui/commit/658c710bced7b827a0d32dbcda03a4136961dff1) Thanks [@shadcn](https://github.com/shadcn)! - everything is new
+
+## 0.2.0
+
+### Minor Changes
+
+- [#637](https://github.com/shadcn/ui/pull/637) [`eeb1754`](https://github.com/shadcn/ui/commit/eeb17545a16824e11d09149a5ecab9fca570c448) Thanks [@shadcn](https://github.com/shadcn)! - everything is new
+
 ## 0.1.3
 
 ### Patch Changes

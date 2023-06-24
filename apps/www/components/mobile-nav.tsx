@@ -8,10 +8,10 @@ import { SidebarOpen } from "lucide-react"
 import { docsConfig } from "@/config/docs"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Icons } from "@/components/icons"
+import { Button } from "@/registry/new-york/ui/button"
+import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
+import { Sheet, SheetContent, SheetTrigger } from "@/registry/new-york/ui/sheet"
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
@@ -27,7 +27,7 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent size="xl" position="left" className="pr-0">
+      <SheetContent side="left" className="pr-0">
         <MobileLink
           href="/"
           className="flex items-center"
@@ -60,7 +60,11 @@ export function MobileNav() {
                     <React.Fragment key={item.href}>
                       {!item.disabled &&
                         (item.href ? (
-                          <MobileLink href={item.href} onOpenChange={setOpen}>
+                          <MobileLink
+                            href={item.href}
+                            onOpenChange={setOpen}
+                            className="text-muted-foreground"
+                          >
                             {item.title}
                           </MobileLink>
                         ) : (

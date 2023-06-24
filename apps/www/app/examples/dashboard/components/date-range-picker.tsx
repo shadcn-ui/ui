@@ -6,13 +6,13 @@ import { Calendar as CalendarIcon } from "lucide-react"
 import { DateRange } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+import { Button } from "@/registry/new-york/ui/button"
+import { Calendar } from "@/registry/new-york/ui/calendar"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/registry/new-york/ui/popover"
 
 export function CalendarDateRangePicker({
   className,
@@ -29,9 +29,8 @@ export function CalendarDateRangePicker({
           <Button
             id="date"
             variant={"outline"}
-            size="sm"
             className={cn(
-              "w-[240px] justify-start text-left font-normal",
+              "w-[260px] justify-start text-left font-normal",
               !date && "text-muted-foreground"
             )}
           >

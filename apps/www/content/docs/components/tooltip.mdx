@@ -7,41 +7,39 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/tooltip#api-reference
 ---
 
-<ComponentExample src="/components/examples/tooltip/demo.tsx">
-  <TooltipDemo />
-</ComponentExample>
+<ComponentPreview name="tooltip-demo" />
 
 ## Installation
 
-```bash
-npx shadcn-ui add tooltip
-```
+<Tabs defaultValue="cli">
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-tooltip` component from radix-ui:
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
-npm install @radix-ui/react-tooltip
+npx shadcn-ui@latest add tooltip
 ```
 
-2. Copy and paste the following code into your project.
+</TabsContent>
 
-<ComponentSource src="/components/ui/tooltip.tsx" />
+<TabsContent value="manual">
 
-<Callout>
+<Steps>
 
-This is the `<Tooltip />` primitive. You can place it in a file at `components/ui/tooltip.tsx`.
+<Step>Copy and paste the following code into your project.</Step>
 
-</Callout>
+<ComponentSource name="tooltip" />
 
-    </AccordionContent>
+<Step>Update the import paths to match your project setup.</Step>
 
-  </AccordionItem>
-</Accordion>
+</Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Usage
 

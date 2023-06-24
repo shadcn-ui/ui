@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import { ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 
 const examples = [
   {
@@ -21,7 +21,6 @@ const examples = [
   {
     name: "Tasks",
     href: "/examples/tasks",
-    label: "New",
     code: "https://github.com/shadcn/ui/tree/main/apps/www/app/examples/tasks",
   },
   {
@@ -32,7 +31,6 @@ const examples = [
   {
     name: "Forms",
     href: "/examples/forms",
-    label: "New",
     code: "https://github.com/shadcn/ui/tree/main/apps/www/app/examples/forms",
   },
   {
@@ -67,12 +65,7 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
                   : "font-medium text-muted-foreground"
               )}
             >
-              {example.name}{" "}
-              {example.label && (
-                <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs font-medium leading-none text-[#000000] no-underline group-hover:no-underline">
-                  {example.label}
-                </span>
-              )}
+              {example.name}
             </Link>
           ))}
         </div>
