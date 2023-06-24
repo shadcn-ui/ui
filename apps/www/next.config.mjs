@@ -1,4 +1,4 @@
-import { withContentlayer } from "next-contentlayer"
+import { createContentlayerPlugin } from "next-contentlayer"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -6,9 +6,6 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["avatars.githubusercontent.com", "images.unsplash.com"],
-  },
-  experimental: {
-    appDir: true,
   },
   redirects() {
     return [
@@ -37,8 +34,22 @@ const nextConfig = {
         destination: "/docs/figma",
         permanent: true,
       },
+      {
+        source: "/docs/forms",
+        destination: "/docs/components/form",
+        permanent: false,
+      },
+      {
+        source: "/docs/forms/react-hook-form",
+        destination: "/docs/components/form",
+        permanent: false,
+      },
     ]
   },
 }
+
+const withContentlayer = createContentlayerPlugin({
+  // Additional Contentlayer config options
+})
 
 export default withContentlayer(nextConfig)

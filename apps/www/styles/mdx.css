@@ -33,7 +33,7 @@
 }
 
 [data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
-  @apply text-muted-foreground/40 text-xs;
+  @apply text-zinc-50/40 text-xs;
   counter-increment: line;
   content: counter(line);
   display: inline-block;
@@ -43,7 +43,7 @@
 }
 
 [data-rehype-pretty-code-fragment] .line--highlighted {
-  @apply bg-muted;
+  @apply bg-zinc-700/50;
 }
 
 [data-rehype-pretty-code-fragment] .line-highlighted span {
@@ -51,7 +51,7 @@
 }
 
 [data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply rounded-md bg-muted border-muted border p-1;
+  @apply rounded-md bg-zinc-700/50 border-zinc-700/70 p-1;
 }
 
 .dark [data-rehype-pretty-code-fragment] .word--highlighted {

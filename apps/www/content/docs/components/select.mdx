@@ -8,41 +8,39 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/select#api-reference
 ---
 
-<ComponentExample src="/components/examples/select/demo.tsx">
-  <SelectDemo />
-</ComponentExample>
+<ComponentPreview name="select-demo" />
 
 ## Installation
 
-```bash
-npx shadcn-ui add select
-```
+<Tabs defaultValue="cli">
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-select` component from radix-ui:
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
-npm install @radix-ui/react-select
+npx shadcn-ui@latest add select
 ```
 
-2. Copy and paste the following code into your project.
+</TabsContent>
 
-<ComponentSource src="/components/ui/select.tsx" />
+<TabsContent value="manual">
 
-<Callout>
+<Steps>
 
-This is the `<Select />` primitive. You can place it in a file at `components/ui/select.tsx`.
+<Step>Copy and paste the following code into your project.</Step>
 
-</Callout>
+<ComponentSource name="select" />
 
-    </AccordionContent>
+<Step>Update the import paths to match your project setup.</Step>
 
-  </AccordionItem>
-</Accordion>
+</Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Usage
 
@@ -68,3 +66,9 @@ import {
   </SelectContent>
 </Select>
 ```
+
+## Examples
+
+### Form
+
+<ComponentPreview name="select-form" />
