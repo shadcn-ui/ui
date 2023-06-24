@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Check, ChevronsUpDown } from "lucide-react"
 import { useForm } from "react-hook-form"
@@ -49,6 +50,7 @@ const FormSchema = z.object({
 })
 
 export default function ComboboxForm() {
+  const [open, setOpen] = React.useState(false)
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })
@@ -73,7 +75,7 @@ export default function ComboboxForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Language</FormLabel>
-              <Popover>
+              <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
@@ -104,6 +106,7 @@ export default function ComboboxForm() {
                           key={language.value}
                           onSelect={(value) => {
                             form.setValue("language", value)
+                            setOpen(false)
                           }}
                         >
                           <Check
