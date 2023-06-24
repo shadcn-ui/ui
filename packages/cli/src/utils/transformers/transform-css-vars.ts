@@ -161,14 +161,15 @@ export function applyColorMapping(
     const needle = value?.replace(prefix, "")
     if (needle && needle in mapping.light) {
       lightMode.push(
-        [variant, `${prefix}${mapping.light[needle]}`, modifier]
+        [variant, `${prefix}${mapping.light[needle]}`]
           .filter(Boolean)
-          .join(":")
+          .join(":") + (modifier ? `/${modifier}` : "")
       )
+
       darkMode.push(
-        ["dark", variant, `${prefix}${mapping.dark[needle]}`, modifier]
+        ["dark", variant, `${prefix}${mapping.dark[needle]}`]
           .filter(Boolean)
-          .join(":")
+          .join(":") + (modifier ? `/${modifier}` : "")
       )
       continue
     }
