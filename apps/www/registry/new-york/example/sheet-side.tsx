@@ -26,7 +26,7 @@ export default function SheetSide() {
           <SheetTrigger asChild>
             <Button variant="outline">{side}</Button>
           </SheetTrigger>
-          <SheetContent side={side}>
+          <SheetContent position={side}>
             <SheetHeader>
               <SheetTitle>Edit profile</SheetTitle>
               <SheetDescription>
