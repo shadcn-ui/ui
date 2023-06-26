@@ -48,11 +48,6 @@ export const docsConfig: DocsConfig = {
           href: "/docs/installation",
           items: [],
         },
-				{
-          title: "React with vite",
-          href: "/docs/react-with-vite",
-          items: [],
-        },
         {
           title: "Theming",
           href: "/docs/theming",

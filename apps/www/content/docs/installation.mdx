@@ -3,83 +3,188 @@ title: Installation
 description: How to install dependencies and structure your app.
 ---
 
-## Next.js
+<Tabs defaultValue="nextjs" className="relative mr-auto w-full">
+  <div className="flex items-center justify-between pb-3">
+    <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
+      <TabsTrigger
+        value="nextjs"
+        className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+      >
+        Next.js
+      </TabsTrigger>
+      <TabsTrigger
+        value="vite"
+        className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+      >
+        Vite
+      </TabsTrigger>
+    </TabsList>
+  </div>
 
-<Steps>
+    <TabsContent value="nextjs" className="relative rounded-md">
+    	<Steps>
+    	### Create project
 
-### Create project
+    	Start by creating a new Next.js project using `create-next-app`:
 
-Start by creating a new Next.js project using `create-next-app`:
+    	```bash
+    	npx create-next-app@latest my-app --typescript --tailwind --eslint
+    	```
 
-```bash
-npx create-next-app@latest my-app --typescript --tailwind --eslint
-```
+    	### Run the CLI
 
-### Run the CLI
+    	Run the `shadcn-ui` init command to setup your project:
 
-Run the `shadcn-ui` init command to setup your project:
+    	```bash
+    	npx shadcn-ui@latest init
+    	```
 
-```bash
-npx shadcn-ui@latest init
-```
+    	### Configure components.json
 
-### Configure components.json
+    	You will be asked a few questions to configure `components.json`:
 
-You will be asked a few questions to configure `components.json`:
+    	```txt showLineNumbers
+    	Which style would you like to use? › Default
+    	Which color would you like to use as base color? › Slate
+    	Where is your global CSS file? › › app/globals.css
+    	Do you want to use CSS variables for colors? › no / yes
+    	Where is your tailwind.config.js located? › tailwind.config.js
+    	Configure the import alias for components: › @/components
+    	Configure the import alias for utils: › @/lib/utils
+    	Are you using React Server Components? › no / yes
+    	```
 
-```txt showLineNumbers
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › › app/globals.css
-Do you want to use CSS variables for colors? › no / yes
-Where is your tailwind.config.js located? › tailwind.config.js
-Configure the import alias for components: › @/components
-Configure the import alias for utils: › @/lib/utils
-Are you using React Server Components? › no / yes
-```
+    	### App structure
 
-### App structure
+    	Here's how I structure my app. I use Next.js, but this is not required.
 
-Here's how I structure my app. I use Next.js, but this is not required.
+    	```txt {6-10,14-15}
+    	.
+    	├── app
+    	│   ├── layout.tsx
+    	│   └── page.tsx
+    	├── components
+    	│   ├── ui
+    	│   │   ├── alert-dialog.tsx
+    	│   │   ├── button.tsx
+    	│   │   ├── dropdown-menu.tsx
+    	│   │   └── ...
+    	│   ├── main-nav.tsx
+    	│   ├── page-header.tsx
+    	│   └── ...
+    	├── lib
+    	│   └── utils.ts
+    	├── styles
+    	│   └── globals.css
+    	├── next.config.js
+    	├── package.json
+    	├── postcss.config.js
+    	├── tailwind.config.js
+    	└── tsconfig.json
+    	```
 
-```txt {6-10,14-15}
-.
-├── app
-│   ├── layout.tsx
-│   └── page.tsx
-├── components
-│   ├── ui
-│   │   ├── alert-dialog.tsx
-│   │   ├── button.tsx
-│   │   ├── dropdown-menu.tsx
-│   │   └── ...
-│   ├── main-nav.tsx
-│   ├── page-header.tsx
-│   └── ...
-├── lib
-│   └── utils.ts
-├── styles
-│   └── globals.css
-├── next.config.js
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-└── tsconfig.json
-```
+    	- I place the UI components in the `components/ui` folder.
+    	- The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
+    	- The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
+    	- The `styles` folder contains the global CSS.
 
-- I place the UI components in the `components/ui` folder.
-- The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
-- The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
-- The `styles` folder contains the global CSS.
+    	</Steps>
 
-</Steps>
+    	That's it. You can now start adding components to your project.
 
-That's it. You can now start adding components to your project.
+    	```bash
+    	npx shadcn-ui@latest add
+    	```
 
-```bash
-npx shadcn-ui@latest add
-```
+    </TabsContent>
+
+
+    <TabsContent value="vite" className="relative rounded-md">
+
+    		<Steps>
+
+    		### Create project
+
+    		Start by creating a new React project using `vite`:
+
+    		```bash
+    		npm create vite@latest
+    		```
+
+    		### Add Tailwind and its configuration
+
+    		Install `tailwindcss` and its peer dependencies, then generate your `tailwind.config.js` and `postcss.config.js` files:
+
+    		```bash
+    		npm install -D tailwindcss postcss autoprefixer
+    		npx tailwindcss init -p
+    		```
+
+    		### Run the CLI
+
+    		Run the `shadcn-ui` init command to setup your project:
+
+    		```bash
+    		npx shadcn-ui@latest init
+    		```
+
+    		### Configure components.json
+
+    		You will be asked a few questions to configure `components.json`:
+
+    		```txt showLineNumbers
+    		Which style would you like to use? › Default
+    		Which color would you like to use as base color? › Slate
+    		Where is your global CSS file? › › src/index.css
+    		Do you want to use CSS variables for colors? › no / yes
+    		Where is your tailwind.config.js located? › tailwind.config.js
+    		Configure the import alias for components: › src/components
+    		Configure the import alias for utils: › src/lib/utils
+    		Are you using React Server Components? › no / yes (no)
+    		```
+
+    		### Edit tsconfig.json
+
+    		Add the code below to the compilerOptions of your tsconfig.json so components can import utils without error
+
+    		```bash
+    		"baseUrl": ".",
+    		```
+
+    		### Update vite.config.ts
+
+    		Add the code below to the vite.config.ts so components can import utils without error
+
+    		```bash
+    		# (so you can import "path" without error)
+    		npm i -D @types/node
+    		```
+
+    		```typescript
+    		import path from "path"
+    		import react from "@vitejs/plugin-react"
+    		import { defineConfig } from "vite"
+
+    		export default defineConfig({
+    			plugins: [react()],
+    			resolve: {
+    				alias: [{ find: "src", replacement: path.resolve(__dirname, "./src/") }],
+    			},
+    		})
+    		```
+
+    		</Steps>
+
+    	That's it. You can now start adding components to your project.
+
+    	```bash
+    	npx shadcn-ui@latest add
+    	```
+
+    </TabsContent>
+
+</Tabs>
 
 ## Other frameworks
 
-I'm looking for help writing guides for other frameworks. Help me write guides for Remix, Astro and Vite by [opening an PR](https://github.com/shadcn/ui).
+I'm looking for help writing guides for other frameworks. Help me write guides for Remix and Astro by [opening an PR](https://github.com/shadcn/ui).
