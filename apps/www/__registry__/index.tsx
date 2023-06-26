@@ -278,6 +278,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/alert-demo")),
       files: ["registry/default/example/alert-demo.tsx"],
     },
+    "alert-success": {
+      name: "alert-success",
+      type: "components:example",
+      registryDependencies: ["alert"],
+      component: React.lazy(() => import("@/registry/default/example/alert-success")),
+      files: ["registry/default/example/alert-success.tsx"],
+    },
     "alert-destructive": {
       name: "alert-destructive",
       type: "components:example",
@@ -1293,6 +1300,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["alert"],
       component: React.lazy(() => import("@/registry/new-york/example/alert-demo")),
       files: ["registry/new-york/example/alert-demo.tsx"],
+    },
+    "alert-success": {
+      name: "alert-success",
+      type: "components:example",
+      registryDependencies: ["alert"],
+      component: React.lazy(() => import("@/registry/new-york/example/alert-success")),
+      files: ["registry/new-york/example/alert-success.tsx"],
     },
     "alert-destructive": {
       name: "alert-destructive",

@@ -242,6 +242,12 @@ const example: Registry = [
     files: ["example/alert-demo.tsx"],
   },
   {
+    name: "alert-success",
+    type: "components:example",
+    registryDependencies: ["alert"],
+    files: ["example/alert-success.tsx"],
+  },
+  {
     name: "alert-destructive",
     type: "components:example",
     registryDependencies: ["alert"],
