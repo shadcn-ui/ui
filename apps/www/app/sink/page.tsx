@@ -18,6 +18,7 @@ import ButtonLink from "@/registry/default/example/button-link"
 import ButtonLoading from "@/registry/default/example/button-loading"
 import ButtonOutline from "@/registry/default/example/button-outline"
 import ButtonSecondary from "@/registry/default/example/button-secondary"
+import ButtonSuccess from "@/registry/default/example/button-success"
 import ButtonWithIcon from "@/registry/default/example/button-with-icon"
 import CardDemo from "@/registry/default/example/card-demo"
 import CheckboxDemo from "@/registry/default/example/checkbox-demo"
@@ -98,6 +99,7 @@ export default function KitchenSinkPage() {
               <div className="flex space-x-2">
                 <ButtonDemo />
                 <ButtonSecondary />
+                <ButtonSuccess />
                 <ButtonDestructive />
               </div>
               <div className="flex space-x-2">

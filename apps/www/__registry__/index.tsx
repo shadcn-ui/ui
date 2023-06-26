@@ -355,6 +355,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/button-secondary")),
       files: ["registry/default/example/button-secondary.tsx"],
     },
+    "button-success": {
+      name: "button-success",
+      type: "components:example",
+      registryDependencies: ["button"],
+      component: React.lazy(() => import("@/registry/default/example/button-success")),
+      files: ["registry/default/example/button-success.tsx"],
+    },
     "button-destructive": {
       name: "button-destructive",
       type: "components:example",
@@ -1363,6 +1370,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["button"],
       component: React.lazy(() => import("@/registry/new-york/example/button-secondary")),
       files: ["registry/new-york/example/button-secondary.tsx"],
+    },
+    "button-success": {
+      name: "button-success",
+      type: "components:example",
+      registryDependencies: ["button"],
+      component: React.lazy(() => import("@/registry/new-york/example/button-success")),
+      files: ["registry/new-york/example/button-success.tsx"],
     },
     "button-destructive": {
       name: "button-destructive",

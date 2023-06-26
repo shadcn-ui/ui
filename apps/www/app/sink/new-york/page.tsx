@@ -18,6 +18,7 @@ import ButtonLink from "@/registry/new-york/example/button-link"
 import ButtonLoading from "@/registry/new-york/example/button-loading"
 import ButtonOutline from "@/registry/new-york/example/button-outline"
 import ButtonSecondary from "@/registry/new-york/example/button-secondary"
+import ButtonSuccess from "@/registry/new-york/example/button-success"
 import ButtonWithIcon from "@/registry/new-york/example/button-with-icon"
 import CardDemo from "@/registry/new-york/example/card-demo"
 import CheckboxDemo from "@/registry/new-york/example/checkbox-demo"
@@ -98,6 +99,7 @@ export default function KitchenSinkPage() {
               <div className="flex space-x-2">
                 <ButtonDemo />
                 <ButtonSecondary />
+                <ButtonSuccess />
                 <ButtonDestructive />
               </div>
               <div className="flex space-x-2">
