@@ -211,6 +211,9 @@ export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
  
     --accent: <%- colors.light["accent"] %>;
     --accent-foreground: <%- colors.light["accent-foreground"] %>;
+
+    --success: <%- colors.light["success"] %>;
+    --success-foreground: <%- colors.light["success-foreground"] %>;
  
     --destructive: <%- colors.light["destructive"] %>;
     --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
@@ -244,6 +247,9 @@ export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
  
     --accent: <%- colors.dark["accent"] %>;
     --accent-foreground: <%- colors.dark["accent-foreground"] %>;
+
+    --success: <%- colors.dark["success"] %>;
+    --success-foreground: <%- colors.dark["success-foreground"] %>;
  
     --destructive: <%- colors.dark["destructive"] %>;
     --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;

@@ -17,6 +17,8 @@
       "secondary-foreground": "neutral-900",
       "accent": "neutral-100",
       "accent-foreground": "neutral-900",
+      "success": "green-500",
+      "success-foreground": "neutral-50",
       "destructive": "red-500",
       "destructive-foreground": "neutral-50",
       "ring": "neutral-400"
@@ -38,6 +40,8 @@
       "secondary-foreground": "neutral-50",
       "accent": "neutral-800",
       "accent-foreground": "neutral-50",
+      "success": "green-900",
+      "success-foreground": "green-50",
       "destructive": "red-900",
       "destructive-foreground": "red-50",
       "ring": "neutral-800"
@@ -61,6 +65,8 @@
       "secondary-foreground": "0 0% 9%",
       "accent": "0 0% 96.1%",
       "accent-foreground": "0 0% 9%",
+      "success": "142.1 70.6% 45.3%",
+      "success-foreground": "0 0% 98%",
       "destructive": "0 84.2% 60.2%",
       "destructive-foreground": "0 0% 98%",
       "ring": "0 0% 63.9%"
@@ -82,11 +88,13 @@
       "secondary-foreground": "0 0% 98%",
       "accent": "0 0% 14.9%",
       "accent-foreground": "0 0% 98%",
+      "success": "143.8 61.2% 20.2%",
+      "success-foreground": "138.5 76.5% 96.7%",
       "destructive": "0 62.8% 30.6%",
       "destructive-foreground": "0 85.7% 97.3%",
       "ring": "0 0% 14.9%"
     }
   },
   "inlineColorsTemplate": "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
-  "cssVarsTemplate": "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n \n@layer base {\n  :root {\n    --background: 0 0% 100%;\n    --foreground: 0 0% 3.9%;\n \n    --muted: 0 0% 96.1%;\n    --muted-foreground: 0 0% 45.1%;\n \n    --popover: 0 0% 100%;\n    --popover-foreground: 0 0% 3.9%;\n \n    --card: 0 0% 100%;\n    --card-foreground: 0 0% 3.9%;\n \n    --border: 0 0% 89.8%;\n    --input: 0 0% 89.8%;\n \n    --primary: 0 0% 9%;\n    --primary-foreground: 0 0% 98%;\n \n    --secondary: 0 0% 96.1%;\n    --secondary-foreground: 0 0% 9%;\n \n    --accent: 0 0% 96.1%;\n    --accent-foreground: 0 0% 9%;\n \n    --destructive: 0 84.2% 60.2%;\n    --destructive-foreground: 0 0% 98%;\n \n    --ring: 0 0% 63.9%;\n \n    --radius: 0.5rem;\n  }\n \n  .dark {\n    --background: 0 0% 3.9%;\n    --foreground: 0 0% 98%;\n \n    --muted: 0 0% 14.9%;\n    --muted-foreground: 0 0% 63.9%;\n \n    --popover: 0 0% 3.9%;\n    --popover-foreground: 0 0% 98%;\n \n    --card: 0 0% 3.9%;\n    --card-foreground: 0 0% 98%;\n \n    --border: 0 0% 14.9%;\n    --input: 0 0% 14.9%;\n \n    --primary: 0 0% 98%;\n    --primary-foreground: 0 0% 9%;\n \n    --secondary: 0 0% 14.9%;\n    --secondary-foreground: 0 0% 98%;\n \n    --accent: 0 0% 14.9%;\n    --accent-foreground: 0 0% 98%;\n \n    --destructive: 0 62.8% 30.6%;\n    --destructive-foreground: 0 85.7% 97.3%;\n \n    --ring: 0 0% 14.9%;\n  }\n}\n \n@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}"
+  "cssVarsTemplate": "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n \n@layer base {\n  :root {\n    --background: 0 0% 100%;\n    --foreground: 0 0% 3.9%;\n \n    --muted: 0 0% 96.1%;\n    --muted-foreground: 0 0% 45.1%;\n \n    --popover: 0 0% 100%;\n    --popover-foreground: 0 0% 3.9%;\n \n    --card: 0 0% 100%;\n    --card-foreground: 0 0% 3.9%;\n \n    --border: 0 0% 89.8%;\n    --input: 0 0% 89.8%;\n \n    --primary: 0 0% 9%;\n    --primary-foreground: 0 0% 98%;\n \n    --secondary: 0 0% 96.1%;\n    --secondary-foreground: 0 0% 9%;\n \n    --accent: 0 0% 96.1%;\n    --accent-foreground: 0 0% 9%;\n\n    --success: 142.1 70.6% 45.3%;\n    --success-foreground: 0 0% 98%;\n \n    --destructive: 0 84.2% 60.2%;\n    --destructive-foreground: 0 0% 98%;\n \n    --ring: 0 0% 63.9%;\n \n    --radius: 0.5rem;\n  }\n \n  .dark {\n    --background: 0 0% 3.9%;\n    --foreground: 0 0% 98%;\n \n    --muted: 0 0% 14.9%;\n    --muted-foreground: 0 0% 63.9%;\n \n    --popover: 0 0% 3.9%;\n    --popover-foreground: 0 0% 98%;\n \n    --card: 0 0% 3.9%;\n    --card-foreground: 0 0% 98%;\n \n    --border: 0 0% 14.9%;\n    --input: 0 0% 14.9%;\n \n    --primary: 0 0% 98%;\n    --primary-foreground: 0 0% 9%;\n \n    --secondary: 0 0% 14.9%;\n    --secondary-foreground: 0 0% 98%;\n \n    --accent: 0 0% 14.9%;\n    --accent-foreground: 0 0% 98%;\n\n    --success: 143.8 61.2% 20.2%;\n    --success-foreground: 138.5 76.5% 96.7%;\n \n    --destructive: 0 62.8% 30.6%;\n    --destructive-foreground: 0 85.7% 97.3%;\n \n    --ring: 0 0% 14.9%;\n  }\n}\n \n@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}"
 }
