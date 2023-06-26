@@ -272,6 +272,12 @@ const example: Registry = [
     files: ["example/badge-demo.tsx"],
   },
   {
+    name: "badge-success",
+    type: "components:example",
+    registryDependencies: ["badge"],
+    files: ["example/badge-success.tsx"],
+  },
+  {
     name: "badge-destructive",
     type: "components:example",
     registryDependencies: ["badge"],

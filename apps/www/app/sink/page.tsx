@@ -10,6 +10,7 @@ import BadgeDemo from "@/registry/default/example/badge-demo"
 import BadgeDestructive from "@/registry/default/example/badge-destructive"
 import BadgeOutline from "@/registry/default/example/badge-outline"
 import BadgeSecondary from "@/registry/default/example/badge-secondary"
+import BadgeSuccess from "@/registry/default/example/badge-success"
 import ButtonDemo from "@/registry/default/example/button-demo"
 import ButtonDestructive from "@/registry/default/example/button-destructive"
 import ButtonGhost from "@/registry/default/example/button-ghost"
@@ -161,6 +162,7 @@ export default function KitchenSinkPage() {
               <div className="flex space-x-2">
                 <BadgeDemo />
                 <BadgeSecondary />
+                <BadgeSuccess />
                 <BadgeDestructive />
                 <BadgeOutline />
               </div>

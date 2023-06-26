@@ -313,6 +313,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/badge-demo")),
       files: ["registry/default/example/badge-demo.tsx"],
     },
+    "badge-success": {
+      name: "badge-success",
+      type: "components:example",
+      registryDependencies: ["badge"],
+      component: React.lazy(() => import("@/registry/default/example/badge-success")),
+      files: ["registry/default/example/badge-success.tsx"],
+    },
     "badge-destructive": {
       name: "badge-destructive",
       type: "components:example",
@@ -1314,6 +1321,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["badge"],
       component: React.lazy(() => import("@/registry/new-york/example/badge-demo")),
       files: ["registry/new-york/example/badge-demo.tsx"],
+    },
+    "badge-success": {
+      name: "badge-success",
+      type: "components:example",
+      registryDependencies: ["badge"],
+      component: React.lazy(() => import("@/registry/new-york/example/badge-success")),
+      files: ["registry/new-york/example/badge-success.tsx"],
     },
     "badge-destructive": {
       name: "badge-destructive",
