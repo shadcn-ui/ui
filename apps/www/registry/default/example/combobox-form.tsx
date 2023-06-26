@@ -103,6 +103,7 @@ export default function ComboboxForm() {
                           value={language.value}
                           key={language.value}
                           onSelect={(value) => {
+                            form.clearErrors("language")
                             form.setValue("language", value)
                           }}
                         >
