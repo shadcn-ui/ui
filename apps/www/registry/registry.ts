@@ -732,6 +732,12 @@ const example: Registry = [
     files: ["example/toast-demo.tsx"],
   },
   {
+    name: "toast-success",
+    type: "components:example",
+    registryDependencies: ["toast"],
+    files: ["example/toast-success.tsx"],
+  },
+  {
     name: "toast-destructive",
     type: "components:example",
     registryDependencies: ["toast"],

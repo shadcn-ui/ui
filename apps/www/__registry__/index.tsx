@@ -845,6 +845,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/toast-demo")),
       files: ["registry/default/example/toast-demo.tsx"],
     },
+    "toast-success": {
+      name: "toast-success",
+      type: "components:example",
+      registryDependencies: ["toast"],
+      component: React.lazy(() => import("@/registry/default/example/toast-success")),
+      files: ["registry/default/example/toast-success.tsx"],
+    },
     "toast-destructive": {
       name: "toast-destructive",
       type: "components:example",
@@ -1867,6 +1874,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["toast"],
       component: React.lazy(() => import("@/registry/new-york/example/toast-demo")),
       files: ["registry/new-york/example/toast-demo.tsx"],
+    },
+    "toast-success": {
+      name: "toast-success",
+      type: "components:example",
+      registryDependencies: ["toast"],
+      component: React.lazy(() => import("@/registry/new-york/example/toast-success")),
+      files: ["registry/new-york/example/toast-success.tsx"],
     },
     "toast-destructive": {
       name: "toast-destructive",
