@@ -1,5 +1,5 @@
 ---
-"shadcn-ui": minor
+"shadcn-ui": patch
 ---
 
 feat: add success style/variants
