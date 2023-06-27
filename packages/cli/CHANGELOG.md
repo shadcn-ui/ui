@@ -1,5 +1,15 @@
 # @shadcn/ui
 
+## 0.2.2
+
+### Patch Changes
+
+- [#677](https://github.com/shadcn/ui/pull/677) [`0f84973`](https://github.com/shadcn/ui/commit/0f84973b4d779d16efe3877b9206ea908261ed8f) Thanks [@Xenfo](https://github.com/Xenfo)! - fix(cli): use `@antfu/ni` to detect package manager
+
+- [#681](https://github.com/shadcn/ui/pull/681) [`1971fa7`](https://github.com/shadcn/ui/commit/1971fa7511a22354a9acda12391b55517a261668) Thanks [@dan5py](https://github.com/dan5py)! - use slash for alpha modifier
+
+- [#682](https://github.com/shadcn/ui/pull/682) [`fbed50f`](https://github.com/shadcn/ui/commit/fbed50f4e8d4fc8a4736c2a80b5c61c9b3f5e05a) Thanks [@dan5py](https://github.com/dan5py)! - fix cssVars template typo
+
 ## 0.2.1
 
 ### Patch Changes
