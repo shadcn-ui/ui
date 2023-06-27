@@ -111,7 +111,42 @@ description: How to install dependencies and structure your app.
   		npx tailwindcss init -p
   		```
 
-    	### Run the CLI
+    	### Edit tsconfig.json
+
+    	Add the code below to the compilerOptions of your tsconfig.json so your app can resolve paths without error
+
+    	```typescript
+      "baseUrl": ".",
+      "paths": {
+      	  "@/*": ["./src/*"]
+      }
+    	```
+
+    	### Update vite.config.ts
+
+    	Add the code below to the vite.config.ts so your app can resolve paths without error
+
+    	```bash
+    	# (so you can import "path" without error)
+    	npm i -D @types/node
+    	```
+
+    	```typescript
+    	import path from "path"
+    	import react from "@vitejs/plugin-react"
+    	import { defineConfig } from "vite"
+
+    	export default defineConfig({
+    		plugins: [react()],
+    		resolve: {
+    			alias: {
+      			"@": path.resolve(__dirname, "./src"),
+    			},
+    		},
+    	})
+    	```
+
+			### Run the CLI
 
     	Run the `shadcn-ui` init command to setup your project:
 
@@ -129,40 +164,10 @@ description: How to install dependencies and structure your app.
     	Where is your global CSS file? › › src/index.css
     	Do you want to use CSS variables for colors? › no / yes
     	Where is your tailwind.config.js located? › tailwind.config.js
-    	Configure the import alias for components: › src/components
-    	Configure the import alias for utils: › src/lib/utils
+    	Configure the import alias for components: › @/components
+    	Configure the import alias for utils: › @/lib/utils
     	Are you using React Server Components? › no / yes (no)
     		```
-
-    	### Edit tsconfig.json
-
-    	Add the code below to the compilerOptions of your tsconfig.json so components can import utils without error
-
-    	```bash
-    	"baseUrl": ".",
-    	```
-
-    	### Update vite.config.ts
-
-    	Add the code below to the vite.config.ts so components can import utils without error
-
-    	```bash
-    	# (so you can import "path" without error)
-    	npm i -D @types/node
-    	```
-
-    	```typescript
-    	import path from "path"
-    	import react from "@vitejs/plugin-react"
-    	import { defineConfig } from "vite"
-
-    	export default defineConfig({
-    		plugins: [react()],
-    		resolve: {
-    			alias: [{ find: "src", replacement: path.resolve(__dirname, "./src/") }],
-    		},
-    	})
-    	```
 
     </Steps>
 
