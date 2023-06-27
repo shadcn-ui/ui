@@ -52,6 +52,113 @@ Place a mode toggle on your site to toggle between light and dark mode.
 
 </Steps>
 
+## Vite with React
+
+<Steps>
+
+### Create a theme provider
+
+```tsx title="themeContext.tsx"
+import {
+  createContext,
+  useState,
+  useEffect,
+  ReactNode,
+  useContext,
+  useCallback,
+} from 'react';
+
+interface IThemeContext {
+  theme: string;
+  toggleTheme: () => void;
+}
+
+export const ThemeContext = createContext<IThemeContext>({
+  theme: 'light',
+  toggleTheme: () => console.warn('no theme provider'),
+} as IThemeContext);
+
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  const [theme, setTheme] = useState<string>('light');
+
+  const toggleTheme = useCallback(() => {
+    const toggleTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(toggleTheme);
+    window.localStorage.setItem('theme', toggleTheme);
+  }, [theme]);
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    localTheme && setTheme(localTheme);
+  }, []);
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export const useTheme = () => useContext<IThemeContext>(ThemeContext);
+
+
+```
+
+### Wrap your root layout
+Add the ThemeProvider to your root layout.
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { ThemeProvider } from './themeContext';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+```
+
+### Add a mode toggle
+Place a mode toggle in your site to toggle between light and dark mode. You can use the useTheme hook to access
+the theme and toggleTheme function.
+
+```tsx
+
+import { Button } from '@/components/ui/button';
+import { useTheme } from '@/context/ThemeProvider';
+
+export const Home = () => {
+  const { toggleTheme, theme } = useTheme();
+  return (
+    <Button variant="outline" onClick={toggleTheme}>
+      Toggle theme to {theme === 'light' ? 'dark' : 'light'}
+    </Button>
+  );
+};
+
+```
+
+
+
+
 ## Other frameworks
 
 I'm looking for help writing guides for other frameworks. Help me write guides for Remix, Astro and Vite by [opening an PR](https://github.com/shadcn/ui).
