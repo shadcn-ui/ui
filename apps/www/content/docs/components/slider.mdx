@@ -7,41 +7,39 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/slider#api-reference
 ---
 
-<ComponentExample src="/components/examples/slider/demo.tsx">
-  <SliderDemo />
-</ComponentExample>
+<ComponentPreview name="slider-demo" />
 
 ## Installation
 
-```bash
-npx shadcn-ui add slider
-```
+<Tabs defaultValue="cli">
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-slider` component from radix-ui:
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
-npm install @radix-ui/react-slider
+npx shadcn-ui@latest add slider
 ```
 
-2. Copy and paste the following code into your project.
+</TabsContent>
 
-<ComponentSource src="/components/ui/slider.tsx" />
+<TabsContent value="manual">
 
-<Callout>
+<Steps>
 
-This is the `<Slider />` primitive. You can place it in a file at `components/ui/slider.tsx`.
+<Step>Copy and paste the following code into your project.</Step>
 
-</Callout>
+<ComponentSource name="slider" />
 
-    </AccordionContent>
+<Step>Update the import paths to match your project setup.</Step>
 
-  </AccordionItem>
-</Accordion>
+</Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Usage
 

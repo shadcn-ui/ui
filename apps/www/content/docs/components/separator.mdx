@@ -7,43 +7,39 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/separator#api-reference
 ---
 
-<ComponentExample
-  src="/components/examples/separator/demo.tsx"
-  extractClassname
->
-  <SeparatorDemo />
-</ComponentExample>
+<ComponentPreview name="separator-demo" />
 
 ## Installation
 
-```bash
-npx shadcn-ui add separator
-```
+<Tabs defaultValue="cli">
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
-
-1. Install the `@radix-ui/react-separator` component from radix-ui:
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
-npm install @radix-ui/react-separator
+npx shadcn-ui@latest add separator
 ```
 
-2. Copy and paste the following code into your project.
+</TabsContent>
 
-<ComponentSource src="/components/ui/separator.tsx" />
+<TabsContent value="manual">
 
-<Callout>
-  This is the `<Separator />` primitive. You can place it in a file at
-  `components/ui/separator.tsx`.
-</Callout>
+<Steps>
 
-    </AccordionContent>
+<Step>Copy and paste the following code into your project.</Step>
 
-  </AccordionItem>
-</Accordion>
+<ComponentSource name="separator" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Usage
 

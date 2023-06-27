@@ -3,3 +3,4 @@ node_modules
 .next
 build
 .contentlayer
+__registry__/index.tsx

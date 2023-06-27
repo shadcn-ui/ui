@@ -3,8 +3,13 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/new-york/ui/tabs"
 
 interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {
   extractClassname?: boolean
