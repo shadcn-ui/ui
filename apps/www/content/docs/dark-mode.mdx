@@ -3,6 +3,17 @@ title: Dark Mode
 description: Adding dark mode to your site.
 ---
 
+<Tabs defaultValue="nextjs">
+  <TabsList>
+    <TabsTrigger value="nextjs">
+      Next.js
+    </TabsTrigger>
+    <TabsTrigger value="vite">
+      Vite
+    </TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="nextjs">
 ## Next.js
 
 <Steps>
@@ -52,6 +63,9 @@ Place a mode toggle on your site to toggle between light and dark mode.
 
 </Steps>
 
+  </TabsContent>
+
+  <TabsContent value="vite">
 ## Vite with React
 
 <Steps>
@@ -60,70 +74,70 @@ Place a mode toggle on your site to toggle between light and dark mode.
 
 ```tsx title="themeContext.tsx"
 import {
-  createContext,
-  useState,
-  useEffect,
   ReactNode,
-  useContext,
+  createContext,
   useCallback,
-} from 'react';
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 
 interface IThemeContext {
-  theme: string;
-  toggleTheme: () => void;
+  theme: string
+  toggleTheme: () => void
 }
 
 export const ThemeContext = createContext<IThemeContext>({
-  theme: 'light',
-  toggleTheme: () => console.warn('no theme provider'),
-} as IThemeContext);
+  theme: "light",
+  toggleTheme: () => console.warn("no theme provider"),
+} as IThemeContext)
 
 interface ThemeProviderProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState<string>('light');
+  const [theme, setTheme] = useState<string>("light")
 
   const toggleTheme = useCallback(() => {
-    const toggleTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(toggleTheme);
-    window.localStorage.setItem('theme', toggleTheme);
-  }, [theme]);
+    const toggleTheme = theme === "light" ? "dark" : "light"
+    setTheme(toggleTheme)
+    window.localStorage.setItem("theme", toggleTheme)
+  }, [theme])
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem('theme');
-    localTheme && setTheme(localTheme);
-  }, []);
+    const localTheme = window.localStorage.getItem("theme")
+    localTheme && setTheme(localTheme)
+  }, [])
 
   useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark")
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark")
     }
-  }, [theme]);
+  }, [theme])
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
-  );
-};
+  )
+}
 
-export const useTheme = () => useContext<IThemeContext>(ThemeContext);
-
-
+export const useTheme = () => useContext<IThemeContext>(ThemeContext)
 ```
 
 ### Wrap your root layout
+
 Add the ThemeProvider to your root layout.
 
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { ThemeProvider } from './themeContext';
+import React from "react"
+import ReactDOM from "react-dom"
+
+import App from "./App"
+import { ThemeProvider } from "./themeContext"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -131,33 +145,33 @@ ReactDOM.render(
       <App />
     </ThemeProvider>
   </React.StrictMode>,
-  document.getElementById('root')
-);
-
+  document.getElementById("root")
+)
 ```
 
 ### Add a mode toggle
+
 Place a mode toggle in your site to toggle between light and dark mode. You can use the useTheme hook to access
 the theme and toggleTheme function.
 
 ```tsx
+import { useTheme } from "@/context/ThemeProvider"
 
-import { Button } from '@/components/ui/button';
-import { useTheme } from '@/context/ThemeProvider';
+import { Button } from "@/components/ui/button"
 
 export const Home = () => {
-  const { toggleTheme, theme } = useTheme();
+  const { toggleTheme, theme } = useTheme()
   return (
     <Button variant="outline" onClick={toggleTheme}>
-      Toggle theme to {theme === 'light' ? 'dark' : 'light'}
+      Toggle theme to {theme === "light" ? "dark" : "light"}
     </Button>
-  );
-};
-
+  )
+}
 ```
 
+  </TabsContent>
 
-
+</Tabs>
 
 ## Other frameworks
 
