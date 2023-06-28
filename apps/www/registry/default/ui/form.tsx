@@ -101,17 +101,24 @@ const FormLabel = React.forwardRef<
 })
 FormLabel.displayName = "FormLabel"
 
+type FormControlProps = React.ComponentPropsWithoutRef<typeof Slot> & {
+  enableErrorHighlight: boolean
+}
+
 const FormControl = React.forwardRef<
   React.ElementRef<typeof Slot>,
-  React.ComponentPropsWithoutRef<typeof Slot>
->(({ className, ...props }, ref) => {
+  FormControlProps
+>(({ className, enableErrorHighlight, ...props }, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
   return (
     <Slot
       ref={ref}
       id={formItemId}
-      className={cn(error && "border-destructive", className)}
+      className={cn(
+        enableErrorHighlight && error && "border-destructive",
+        className
+      )}
       aria-describedby={
         !error
           ? `${formDescriptionId}`
