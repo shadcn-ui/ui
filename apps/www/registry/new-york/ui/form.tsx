@@ -102,7 +102,7 @@ const FormLabel = React.forwardRef<
 FormLabel.displayName = "FormLabel"
 
 type FormControlProps = React.ComponentPropsWithoutRef<typeof Slot> & {
-  enableErrorHighlight: boolean
+  enableErrorHighlight?: boolean
 }
 
 const FormControl = React.forwardRef<
