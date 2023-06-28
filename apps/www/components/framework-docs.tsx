@@ -11,10 +11,7 @@ interface FrameworkDocsProps extends React.HTMLAttributes<HTMLDivElement> {
 export function FrameworkDocs({
   ...props
 }: FrameworkDocsProps) {
-  const frameworkDoc = allDocs.find((doc) => {
-    console.log(doc)
-    return doc.slug === `/docs/frameworks/${props.data}`
-  })
+  const frameworkDoc = allDocs.find((doc) => doc.slug === `/docs/frameworks/${props.data}`)
 
   if (!frameworkDoc) {
     return null
