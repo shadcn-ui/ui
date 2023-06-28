@@ -14,6 +14,7 @@ import { ComponentExample } from "@/components/component-example"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
+import { FrameworkDocs } from "@/components/framework-docs"
 import { StyleWrapper } from "@/components/style-wrapper"
 import {
   Accordion,
@@ -34,7 +35,6 @@ import {
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
 import { Style } from "@/registry/styles"
-import { FrameworkDocs } from "./framework-docs"
 
 const components = {
   Accordion,
@@ -289,12 +289,7 @@ const components = {
     className,
     ...props
   }: React.ComponentProps<typeof FrameworkDocs>) => (
-    <FrameworkDocs
-      className={cn(
-        className
-      )}
-      {...props}
-    />
+    <FrameworkDocs className={cn(className)} {...props} />
   ),
 }
 
