@@ -3,171 +3,22 @@ title: Installation
 description: How to install dependencies and structure your app.
 ---
 
-## Next.js
-
-<Steps>
-
-### Create project
-
-Start by creating a new Next.js project using `create-next-app`:
-
-```bash
-npx create-next-app@latest my-app --typescript --tailwind --eslint
-```
-
-### Run the CLI
-
-Run the `shadcn-ui` init command to setup your project:
-
-```bash
-npx shadcn-ui@latest init
-```
-
-### Configure components.json
-
-You will be asked a few questions to configure `components.json`:
-
-```txt showLineNumbers
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › › app/globals.css
-Do you want to use CSS variables for colors? › no / yes
-Where is your tailwind.config.js located? › tailwind.config.js
-Configure the import alias for components: › @/components
-Configure the import alias for utils: › @/lib/utils
-Are you using React Server Components? › no / yes
-```
-
-### App structure
-
-Here's how I structure my app. I use Next.js, but this is not required.
-
-```txt {6-10,14-15}
-.
-├── app
-│   ├── layout.tsx
-│   └── page.tsx
-├── components
-│   ├── ui
-│   │   ├── alert-dialog.tsx
-│   │   ├── button.tsx
-│   │   ├── dropdown-menu.tsx
-│   │   └── ...
-│   ├── main-nav.tsx
-│   ├── page-header.tsx
-│   └── ...
-├── lib
-│   └── utils.ts
-├── styles
-│   └── globals.css
-├── next.config.js
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-└── tsconfig.json
-```
-
-- I place the UI components in the `components/ui` folder.
-- The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
-- The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
-- The `styles` folder contains the global CSS.
-
-</Steps>
-
-That's it. You can now start adding components to your project.
-
-```bash
-npx shadcn-ui@latest add
-```
-
-## Remix
-
-<Steps>
-
-### Create project
-
-Start by creating a new Remix project using `create-remix`:
-
-```bash
-npx create-remix@latest my-app
-```
-
-### Run the CLI
-
-Run the `shadcn-ui` init command to setup your project:
-
-```bash
-npx shadcn-ui@latest init
-```
-
-### Configure components.json
-
-You will be asked a few questions to configure `components.json`:
-
-```txt showLineNumbers
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › › app/tailwind.css
-Do you want to use CSS variables for colors? › no / yes
-Where is your tailwind.config.js located? › tailwind.config.js
-Configure the import alias for components: › ~/components
-Configure the import alias for utils: › ~/lib/utils
-Are you using React Server Components? › no
-```
-
-### App structure
-
-- Place the UI components in the `app/components/ui` folder.
-- Your own components can be placed in the `app/components` folder.
-- The `app/lib` folder contains all the utility functions. We have a `utils.ts` where I define the `cn` helper.
-- The `app/tailwind.css` file contains the global CSS.
-
-### Enable Tailwind and PostCSS
-
-We have to install tailwindcss and autoprefixer.
-
-```bash
-pnpm add -D tailwindcss@latest autoprefixer@latest
-```
-
-Then we create a `postcss.config.js` file:
-
-```js
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  }
-}
-```
-
-And finally we add the following to our `remix.config.js` file:
-
-```js {4-5}
-/** @type {import('@remix-run/dev').AppConfig} */
-module.exports = {
-  ...
-  tailwind: true,
-  postcss: true,
-  ...
-};
-```
-
-### Include tailwind.css in your Remix app
-
-In your `app/root.tsx` file, import the `tailwind.css` file:
-
-```js {1, 4}
-import styles from "./tailwind.css";
-
-export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: styles },
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
-```
-
-
-</Steps>
+<Tabs defaultValue="nextjs">
+  <TabsList>
+    <TabsTrigger value="nextjs">
+      Next.js
+    </TabsTrigger>
+    <TabsTrigger value="remix">
+      Remix
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="nextjs">
+      <FrameworkDocs data="nextjs" />
+  </TabsContent>
+  <TabsContent value="remix">
+      <FrameworkDocs data="remix" />
+  </TabsContent>
+</Tabs>
 
 That's it. You are good to go and can now start adding components to your project.
 

@@ -34,6 +34,7 @@ import {
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
 import { Style } from "@/registry/styles"
+import { FrameworkDocs } from "./framework-docs"
 
 const components = {
   Accordion,
@@ -279,6 +280,17 @@ const components = {
     <TabsContent
       className={cn(
         "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-normal",
+        className
+      )}
+      {...props}
+    />
+  ),
+  FrameworkDocs: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof FrameworkDocs>) => (
+    <FrameworkDocs
+      className={cn(
         className
       )}
       {...props}
