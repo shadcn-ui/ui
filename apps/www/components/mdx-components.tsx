@@ -14,6 +14,7 @@ import { ComponentExample } from "@/components/component-example"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
+import { FrameworkDocs } from "@/components/framework-docs"
 import { StyleWrapper } from "@/components/style-wrapper"
 import {
   Accordion,
@@ -283,6 +284,12 @@ const components = {
       )}
       {...props}
     />
+  ),
+  FrameworkDocs: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof FrameworkDocs>) => (
+    <FrameworkDocs className={cn(className)} {...props} />
   ),
 }
 
