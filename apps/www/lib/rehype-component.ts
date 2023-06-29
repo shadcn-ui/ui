@@ -14,6 +14,9 @@ export function rehypeComponent() {
 
       if (node.name === "ComponentSource") {
         const name = getNodeAttributeByName(node, "name")?.value as string
+        const fileName = getNodeAttributeByName(node, "fileName")?.value as
+          | string
+          | undefined
 
         if (!name) {
           return null
@@ -22,7 +25,14 @@ export function rehypeComponent() {
         try {
           for (const style of styles) {
             const component = Index[style.name][name]
-            const src = component.files[0]
+            const src = fileName
+              ? component.files.find((file: string) => {
+                  return (
+                    file.endsWith(`${fileName}.tsx`) ||
+                    file.endsWith(`${fileName}.ts`)
+                  )
+                }) || component.files[0]
+              : component.files[0]
 
             // Read the source file.
             const filePath = path.join(process.cwd(), src)
