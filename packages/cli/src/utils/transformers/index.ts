@@ -8,6 +8,7 @@ import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 import * as z from "zod"
+import { transformTwPrefixes } from "./transform-tw-prefix"
 
 export type TransformOpts = {
   filename: string
@@ -26,6 +27,7 @@ const transformers: Transformer[] = [
   transformImport,
   transformRsc,
   transformCssVars,
+  transformTwPrefixes
 ]
 
 const project = new Project({
@@ -46,6 +48,5 @@ export async function transform(opts: TransformOpts) {
   for (const transformer of transformers) {
     transformer({ sourceFile, ...opts })
   }
-
   return sourceFile.getFullText()
 }

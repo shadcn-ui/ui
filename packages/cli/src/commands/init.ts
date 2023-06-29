@@ -85,6 +85,8 @@ export async function promptForConfig(
   const styles = await getRegistryStyles()
   const baseColors = await getRegistryBaseColors()
 
+
+
   const options = await prompts([
     {
       type: "select",
@@ -122,6 +124,12 @@ export async function promptForConfig(
     },
     {
       type: "text",
+      name: "tailwindPrefix",
+      message: `Do you want to use custom ${highlight("tailwind prefix")}? (if you don't use any, just leave it empty)`,
+      initial: "",
+    },
+    {
+      type: "text",
       name: "tailwindConfig",
       message: `Where is your ${highlight("tailwind.config.js")} located?`,
       initial: defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG,
@@ -156,6 +164,7 @@ export async function promptForConfig(
       css: options.tailwindCss,
       baseColor: options.tailwindBaseColor,
       cssVariables: options.tailwindCssVariables,
+      prefix: options.tailwindPrefix
     },
     rsc: options.rsc,
     aliases: {
@@ -217,8 +226,8 @@ export async function runInit(cwd: string, config: Config) {
   await fs.writeFile(
     config.resolvedPaths.tailwindConfig,
     config.tailwind.cssVariables
-      ? templates.TAILWIND_CONFIG_WITH_VARIABLES
-      : templates.TAILWIND_CONFIG,
+      ? templates.TAILWIND_CONFIG_WITH_VARIABLES(config.tailwind.prefix)
+      : templates.TAILWIND_CONFIG(config.tailwind.prefix),
     "utf8"
   )
 

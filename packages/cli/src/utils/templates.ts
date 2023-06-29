@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 `
 
-export const TAILWIND_CONFIG = `/** @type {import('tailwindcss').Config} */
+export const TAILWIND_CONFIG = (prefix?: string) => `/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -40,10 +40,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate")], ${prefix ? `\n  prefix: "${prefix}",` : ""}
 }`
 
-export const TAILWIND_CONFIG_WITH_VARIABLES = `/** @type {import('tailwindcss').Config} */
+export const TAILWIND_CONFIG_WITH_VARIABLES = (prefix?: string) => `/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -117,5 +117,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate")],  ${prefix ? `\n  prefix: "${prefix}",` : ""}
 }`
