@@ -11,6 +11,7 @@ import {
   getRegistryIndex,
   resolveTree,
 } from "@/src/utils/registry"
+import { capitalize } from "@/src/utils/strings"
 import { transform } from "@/src/utils/transformers"
 import chalk from "chalk"
 import { Command } from "commander"
@@ -143,6 +144,10 @@ export const add = new Command()
         }
 
         for (const file of item.files) {
+          if (config.components?.capitalizedFilenames) {
+            file.name = capitalize(file.name)
+          }
+
           const filePath = path.resolve(targetDir, file.name)
 
           // Run transformers.

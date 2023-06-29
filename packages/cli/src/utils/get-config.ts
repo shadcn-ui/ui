@@ -32,6 +32,11 @@ export const rawConfigSchema = z
       components: z.string(),
       utils: z.string(),
     }),
+    components: z
+      .object({
+        capitalizedFilenames: z.boolean().default(false),
+      })
+      .optional(),
   })
   .strict()
 

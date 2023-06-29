@@ -38,6 +38,16 @@
         }
       },
       "required": ["utils", "components"]
+    },
+    "components": {
+      "type": "object",
+      "properties": {
+        "capitalizedFilenames": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow filenames of components start with an uppercase letter."
+        }
+      }
     }
   },
   "required": ["style", "tailwind", "rsc", "aliases"]
