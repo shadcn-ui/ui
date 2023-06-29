@@ -1,0 +1,80 @@
+---
+title: Vite
+description: Learn how to install and use with Vite.
+---
+
+<Steps>
+
+### Create project
+
+Start by creating a new Vite Tailwind project using `vitawind`:
+
+```bash
+npm init vitawind my-app -- --react-ts
+```
+
+### After creating project
+
+Head inside my-app and install dependencies:
+
+```bash
+cd my-app
+npm install
+```
+
+### Run the CLI
+
+Run the `shadcn-ui` init command to setup your project:
+
+```bash
+npx shadcn-ui@latest init
+```
+
+### Configure components.json
+
+You will be asked a few questions to configure `components.json`:
+
+```txt showLineNumbers
+Which style would you like to use? › Default
+Which color would you like to use as base color? › Slate
+Where is your global CSS file? › › src/index.css
+Do you want to use CSS variables for colors? › no / yes
+Where is your tailwind.config.js located? › tailwind.config.js
+Configure the import alias for components: › /components
+Configure the import alias for utils: › /lib/utils
+Are you using React Server Components? › no / yes
+```
+
+### App structure
+
+Here's how the structure of my-app looks like.
+
+```txt {6-10,14-15}
+.
+├── src
+│   ├── app.tsx
+│   └── index.css
+├── components
+│   ├── ui
+│   │   ├── alert-dialog.tsx
+│   │   ├── button.tsx
+│   │   ├── dropdown-menu.tsx
+│   │   └── ...
+│   ├── main-nav.tsx
+│   ├── page-header.tsx
+│   └── ...
+├── lib
+│   └── utils.ts
+├── vite.config.js
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+└── tsconfig.json
+```
+
+- Place the UI components in the `components/ui` folder.
+- The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
+- The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
+- The `src` folder contains the global CSS.
+
+</Steps>
