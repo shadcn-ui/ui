@@ -1,4 +1,4 @@
-import { Input } from "@/components/ui/input"
+import { Input } from "@/registry/new-york/ui/input"
 
 export function Search() {
   return (
@@ -6,7 +6,7 @@ export function Search() {
       <Input
         type="search"
         placeholder="Search..."
-        className="h-9 md:w-[100px] lg:w-[300px]"
+        className="md:w-[100px] lg:w-[300px]"
       />
     </div>
   )

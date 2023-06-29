@@ -1,13 +1,13 @@
 import { ChevronDown, Circle, Plus, Star } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/registry/new-york/ui/card"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -16,8 +16,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Separator } from "@/components/ui/separator"
+} from "@/registry/new-york/ui/dropdown-menu"
+import { Separator } from "@/registry/new-york/ui/separator"
 
 export function DemoGithub() {
   return (
@@ -67,11 +67,11 @@ export function DemoGithub() {
         <div className="flex space-x-4 text-sm text-muted-foreground">
           <div className="flex items-center">
             <Circle className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
-            TypeScipt
+            TypeScript
           </div>
           <div className="flex items-center">
             <Star className="mr-1 h-3 w-3" />
-            10k
+            20k
           </div>
           <div>Updated April 2023</div>
         </div>

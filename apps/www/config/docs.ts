@@ -59,6 +59,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Dark mode",
+          href: "/docs/dark-mode",
+          items: [],
+        },
+        {
           title: "CLI",
           href: "/docs/cli",
           items: [],
@@ -66,6 +71,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Typography",
           href: "/docs/components/typography",
+          items: [],
+        },
+        {
+          title: "Changelog",
+          href: "/docs/changelog",
           items: [],
         },
       ],
@@ -77,24 +87,6 @@ export const docsConfig: DocsConfig = {
           title: "Figma",
           href: "/docs/figma",
           items: [],
-        },
-      ],
-    },
-    {
-      title: "Forms",
-      items: [
-        {
-          title: "React Hook Form",
-          href: "/docs/forms/react-hook-form",
-          label: "New",
-          items: [],
-        },
-        {
-          title: "TanStack Form",
-          href: "#",
-          items: [],
-          label: "Soon",
-          disabled: true,
         },
       ],
     },
@@ -174,7 +166,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Data Table",
           href: "/docs/components/data-table",
-          label: "New",
           items: [],
         },
         {
@@ -190,6 +181,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Dropdown Menu",
           href: "/docs/components/dropdown-menu",
+          items: [],
+        },
+        {
+          title: "Form",
+          href: "/docs/components/form",
           items: [],
         },
         {
@@ -270,7 +266,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Table",
           href: "/docs/components/table",
-          label: "New",
           items: [],
         },
         {
