@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.2.3
+
+### Patch Changes
+
+- [#707](https://github.com/shadcn/ui/pull/707) [`c337753`](https://github.com/shadcn/ui/commit/c3377530f43baa95c9e41cce7c07b1a4db1e3ee6) Thanks [@MarkLyck](https://github.com/MarkLyck)! - fix(cli): use bun add when bun detected
+
 ## 0.2.2
 
 ### Patch Changes
