@@ -26,6 +26,7 @@ import { execa } from "execa"
 import ora from "ora"
 import prompts from "prompts"
 import * as z from "zod"
+import { applyTwPrefixesCss } from "../utils/transformers/transform-tw-prefix"
 
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
@@ -237,7 +238,7 @@ export async function runInit(cwd: string, config: Config) {
     await fs.writeFile(
       config.resolvedPaths.tailwindCss,
       config.tailwind.cssVariables
-        ? baseColor.cssVarsTemplate
+        ? config.tailwind.prefix ? applyTwPrefixesCss(baseColor.cssVarsTemplate, config.tailwind.prefix) : baseColor.cssVarsTemplate
         : baseColor.inlineColorsTemplate,
       "utf8"
     )

@@ -31,7 +31,7 @@ export const transformTwPrefixes: Transformer = async ({
             if (value.split(" ").length > 1 && value.includes("-") || checkIfKnownSingleSpaceClass(value)) {
                 const valueWithColorMapping = applyTwPrefixes(
                     value.replace(/"/g, ""),
-                    config.tailwind?.prefix
+                    config.tailwind.prefix || ""
                 )
                 child.replaceWithText(`"${valueWithColorMapping.trim()}"`)
             }
@@ -56,4 +56,17 @@ export const applyTwPrefixes = (input: string, twPrefix: string) => {
         }
     }
     return prefixed.join(" ")
+}
+
+
+export const applyTwPrefixesCss = (css: string, twPrefix: string) => {
+    const lines = css.split("\n")
+    for (let line of lines) {
+        if (line.includes("@apply")) {
+            const originalTWCls = line.replace("@apply", "").trim()
+            const prefixedTwCls = applyTwPrefixes(originalTWCls, twPrefix)
+            css = css.replace(originalTWCls, prefixedTwCls)
+        }
+    }
+    return css
 }
