@@ -69,6 +69,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Figma",
+          href: "/docs/figma",
+          items: [],
+        },
+        {
           title: "Changelog",
           href: "/docs/changelog",
           items: [],
@@ -76,11 +81,26 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
-      title: "Community",
+      title: "Installation",
       items: [
         {
-          title: "Figma",
-          href: "/docs/figma",
+          title: "Next.js",
+          href: "/docs/installation/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/installation/vite",
+          items: [],
+        },
+        {
+          title: "Remix",
+          href: "/docs/installation/remix",
+          items: [],
+        },
+        {
+          title: "Manual",
+          href: "/docs/installation/manual",
           items: [],
         },
       ],
