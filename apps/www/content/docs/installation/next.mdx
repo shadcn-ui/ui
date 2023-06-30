@@ -1,6 +1,6 @@
 ---
 title: Next.js
-description: Learn how to install and use with Next.js.
+description: Install and configure Next.js.
 ---
 
 <Steps>
@@ -38,7 +38,7 @@ Are you using React Server Components? › no / yes
 
 ### App structure
 
-Here's how I structure my app. I use Next.js, but this is not required.
+Here's how I structure my Next.js apps. You can use this as a reference:
 
 ```txt {6-10,14-15}
 .
@@ -69,5 +69,27 @@ Here's how I structure my app. I use Next.js, but this is not required.
 - The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
 - The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
 - The `styles` folder contains the global CSS.
+
+### That's it
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn-ui@latest add button
+```
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx {1,6} showLineNumbers
+import { Button } from "@/components/ui"
+
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+```
 
 </Steps>
