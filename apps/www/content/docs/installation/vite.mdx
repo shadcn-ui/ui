@@ -1,6 +1,6 @@
 ---
 title: Vite
-description: Learn how to install and use with Vite.
+description: Install and configure Vite.
 ---
 
 <Steps>
@@ -79,6 +79,28 @@ Where is your tailwind.config.js located? › tailwind.config.js
 Configure the import alias for components: › @/components
 Configure the import alias for utils: › @/lib/utils
 Are you using React Server Components? › no / yes (no)
+```
+
+### That's it
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn-ui@latest add button
+```
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx {1,6} showLineNumbers
+import { Button } from "@/components/ui"
+
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
 ```
 
 </Steps>
