@@ -1,9 +1,20 @@
 import * as React from "react"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
+import {
+  NavigationMenuListProps,
+  NavigationMenuViewportProps,
+} from "@radix-ui/react-navigation-menu"
 import { cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
+
+interface NavigationViewPortExntededProps extends NavigationMenuViewportProps {
+  orientation?: "horizontal" | "vertical" | undefined
+}
+interface NavigatioListExtendedProps extends NavigationMenuListProps {
+  orientation?: "horizontal" | "vertical" | undefined
+}
 
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
@@ -17,20 +28,28 @@ const NavigationMenu = React.forwardRef<
     )}
     {...props}
   >
-    {children}
-    <NavigationMenuViewport />
+    {React.Children.map(children, (child) => {
+      if (React.isValidElement(child)) {
+        return React.cloneElement(child, {
+          ...props,
+        })
+      }
+      return child
+    })}
+    <NavigationMenuViewport orientation={props.orientation} />
   </NavigationMenuPrimitive.Root>
 ))
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
 
 const NavigationMenuList = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
+  NavigatioListExtendedProps
 >(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      "group flex flex-1 list-none items-center justify-center space-x-1",
+      "group flex flex-1 list-none  items-center justify-center space-x-1",
+      props.orientation === "vertical" && "flex-col",
       className
     )}
     {...props}
@@ -81,12 +100,18 @@ const NavigationMenuLink = NavigationMenuPrimitive.Link
 
 const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
+  NavigationViewPortExntededProps
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-full flex justify-center")}>
+  <div
+    className={cn(
+      "absolute left-0 top-full flex justify-center",
+      props.orientation === "vertical" && "left-full top-0"
+    )}
+  >
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
+        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
+        props.orientation === "vertical" && "ml-1.5 mt-0",
         className
       )}
       ref={ref}
