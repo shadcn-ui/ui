@@ -10,15 +10,26 @@ import { Label } from "@/registry/new-york/ui/label"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
+type LoadingState = "email" | "github"
+
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [isLoading, setIsLoading] = React.useState<LoadingState | null>(null)
+
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
-    setIsLoading(true)
+    setIsLoading("email")
 
     setTimeout(() => {
-      setIsLoading(false)
+      setIsLoading(null)
+    }, 3000)
+  }
+
+  const handleGithubLogin () => {
+    setIsLoading("github");
+
+     setTimeout(() => {
+      setIsLoading(null)
     }, 3000)
   }
 
@@ -37,11 +48,11 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
-              disabled={isLoading}
+              disabled={isLoading === "email"}
             />
           </div>
-          <Button disabled={isLoading}>
-            {isLoading && (
+          <Button disabled={isLoading === "email"}>
+            {isLoading === "email" && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
             Sign In with Email
@@ -58,8 +69,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
-        {isLoading ? (
+      <Button onClick={handleGithubLogin} variant="outline" type="button" disabled={isLoading === "github"}>
+        {isLoading === "github" ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
           <Icons.gitHub className="mr-2 h-4 w-4" />
