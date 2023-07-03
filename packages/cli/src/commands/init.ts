@@ -81,7 +81,12 @@ export async function promptForConfig(
 
   const styles = await getRegistryStyles()
   const baseColors = await getRegistryBaseColors()
-  const { DEFAULT_COMPONENTS, DEFAULT_TAILWIND_CONFIG, DEFAULT_UTILS, DEFAULT_TAILWIND_CSS } = await getDefaultValues()
+  const {
+    DEFAULT_COMPONENTS,
+    DEFAULT_TAILWIND_CONFIG,
+    DEFAULT_UTILS,
+    DEFAULT_TAILWIND_CSS,
+  } = await getDefaultValues()
 
   const options = await prompts([
     {

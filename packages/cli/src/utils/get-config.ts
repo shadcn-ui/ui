@@ -3,8 +3,8 @@ import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import { loadConfig } from "tsconfig-paths"
 import * as z from "zod"
-import { getProjectInfo } from "./get-project-info"
 
+import { getProjectInfo } from "./get-project-info"
 
 // TODO: Figure out if we want to support all cosmiconfig formats.
 // A simple components.json file would be nice.
@@ -89,13 +89,16 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
   }
 }
 
-
 export const getDefaultValues = async () => {
   const { srcDir, appDir, tsconfig } = await getProjectInfo()
   const src = srcDir ? "src/" : ""
-  let alias: string = tsconfig?.compilerOptions?.paths ? Object.keys(tsconfig.compilerOptions.paths)[0].split("/")[0] ?? "@" : ""
+  let alias: string = tsconfig?.compilerOptions?.paths
+    ? Object.keys(tsconfig.compilerOptions.paths)[0].split("/")[0] ?? "@"
+    : ""
   return {
-    DEFAULT_TAILWIND_CSS: appDir ? `${src}app/globals.css` : `${src}styles/global.css`,
+    DEFAULT_TAILWIND_CSS: appDir
+      ? `${src}app/globals.css`
+      : `${src}styles/global.css`,
     DEFAULT_COMPONENTS: `${alias}/components`,
     DEFAULT_UTILS: `${alias}/lib/utils`,
     DEFAULT_TAILWIND_BASE_COLOR: "slate",
