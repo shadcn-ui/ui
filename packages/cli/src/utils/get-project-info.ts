@@ -1,6 +1,7 @@
 import { existsSync } from "fs"
 import path from "path"
 import fs from "fs-extra"
+import { TsConfigJson } from "type-fest"
 
 export async function getProjectInfo() {
   const info = {
@@ -13,7 +14,6 @@ export async function getProjectInfo() {
 
   try {
     const tsconfig = await getTsConfig()
-
     return {
       tsconfig,
       srcDir: existsSync(path.resolve("./src")),
@@ -37,7 +37,7 @@ export async function getTsConfig() {
       throw new Error("tsconfig.json is missing")
     }
 
-    return tsconfig
+    return tsconfig as TsConfigJson
   } catch (error) {
     return null
   }

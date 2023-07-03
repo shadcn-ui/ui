@@ -3,13 +3,8 @@ import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import { loadConfig } from "tsconfig-paths"
 import * as z from "zod"
+import { getProjectInfo } from "./get-project-info"
 
-export const DEFAULT_STYLE = "default"
-export const DEFAULT_COMPONENTS = "@/components"
-export const DEFAULT_UTILS = "@/lib/utils"
-export const DEFAULT_TAILWIND_CSS = "app/globals.css"
-export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.js"
-export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
 
 // TODO: Figure out if we want to support all cosmiconfig formats.
 // A simple components.json file would be nice.
@@ -91,5 +86,20 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
     return rawConfigSchema.parse(configResult.config)
   } catch (error) {
     throw new Error(`Invalid configuration found in ${cwd}/components.json.`)
+  }
+}
+
+
+export const getDefaultValues = async () => {
+  const { srcDir, appDir, tsconfig } = await getProjectInfo()
+  const src = srcDir ? "src/" : ""
+  let alias: string = tsconfig?.compilerOptions?.paths ? Object.keys(tsconfig.compilerOptions.paths)[0].split("/")[0] ?? "@" : ""
+  return {
+    DEFAULT_TAILWIND_CSS: appDir ? `${src}app/globals.css` : `${src}styles/global.css`,
+    DEFAULT_COMPONENTS: `${alias}/components`,
+    DEFAULT_UTILS: `${alias}/lib/utils`,
+    DEFAULT_TAILWIND_BASE_COLOR: "slate",
+    DEFAULT_TAILWIND_CONFIG: "tailwind.config.js",
+    DEFAULT_STYLE: "default",
   }
 }
