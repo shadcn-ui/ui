@@ -25,7 +25,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     }, 3000)
   }
 
-  const handleGithubLogin () => {
+  const handleGithubLogin = () => {
     setIsLoading("github");
 
      setTimeout(() => {
