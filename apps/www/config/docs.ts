@@ -99,6 +99,16 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Gatsby",
+          href: "/docs/installation/gatsby",
+          items: [],
+        },
+        {
+          title: "Astro",
+          href: "/docs/installation/astro",
+          items: [],
+        },
+        {
           title: "Manual",
           href: "/docs/installation/manual",
           items: [],
