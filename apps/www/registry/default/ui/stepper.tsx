@@ -291,7 +291,7 @@ export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
             data-clickable={isClickable}
             disabled={!(hasVisited || isClickable)}
             className={cn(
-              "h-10 w-10 rounded-full data-[highlighted=true]:bg-green-700 data-[highlighted=true]:text-white",
+              "h-12 w-12 rounded-full data-[highlighted=true]:bg-green-700 data-[highlighted=true]:text-white",
               isCompletedStep || typeof RenderIcon !== "number"
                 ? "px-3 py-2"
                 : ""
