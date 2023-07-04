@@ -49,7 +49,10 @@ export function DemoReportAnIssue() {
           <div className="grid gap-2">
             <Label htmlFor="security-level">Security Level</Label>
             <Select defaultValue="2">
-              <SelectTrigger id="security-level">
+              <SelectTrigger
+                id="security-level"
+                className="line-clamp-1 w-[160px] truncate"
+              >
                 <SelectValue placeholder="Select level" />
               </SelectTrigger>
               <SelectContent>
