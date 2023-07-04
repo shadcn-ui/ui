@@ -104,6 +104,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Astro",
+          href: "/docs/installation/astro",
+          items: [],
+        },
+        {
           title: "Manual",
           href: "/docs/installation/manual",
           items: [],
