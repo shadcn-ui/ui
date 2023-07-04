@@ -1,8 +1,7 @@
 import Image from "next/image"
-import { ListMusic, PlusCircle } from "lucide-react"
+import { PlusCircledIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
-import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -55,13 +54,25 @@ export function AlbumArtwork({
             <ContextMenuSubTrigger>Add to Playlist</ContextMenuSubTrigger>
             <ContextMenuSubContent className="w-48">
               <ContextMenuItem>
-                <PlusCircle className="mr-2 h-4 w-4" />
+                <PlusCircledIcon className="mr-2 h-4 w-4" />
                 New Playlist
               </ContextMenuItem>
               <ContextMenuSeparator />
               {playlists.map((playlist) => (
                 <ContextMenuItem key={playlist}>
-                  <ListMusic className="mr-2 h-4 w-4" /> {playlist}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="mr-2 h-4 w-4"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M21 15V6M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM12 12H3M16 6H3M12 18H3" />
+                  </svg>
+                  {playlist}
                 </ContextMenuItem>
               ))}
             </ContextMenuSubContent>

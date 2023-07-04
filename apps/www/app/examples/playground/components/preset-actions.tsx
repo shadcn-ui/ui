@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Dialog } from "@radix-ui/react-dialog"
-import { Flag, MoreHorizontal, Trash } from "lucide-react"
+import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 
 import {
   AlertDialog,
@@ -42,12 +42,11 @@ export function PresetActions() {
         <DropdownMenuTrigger asChild>
           <Button variant="secondary">
             <span className="sr-only">Actions</span>
-            <MoreHorizontal className="h-4 w-4" />
+            <DotsHorizontalIcon className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onSelect={() => setIsOpen(true)}>
-            <Flag className="mr-2 h-4 w-4" />
             Content filter preferences
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -55,7 +54,6 @@ export function PresetActions() {
             onSelect={() => setShowDeleteDialog(true)}
             className="text-red-600"
           >
-            <Trash className="mr-2 h-4 w-4" />
             Delete preset
           </DropdownMenuItem>
         </DropdownMenuContent>
