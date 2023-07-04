@@ -7,10 +7,10 @@ description: Install and configure Gatsby.
 
 ### Create project
 
-Start by creating a new Gatsby project using `Gatsby CLI`:
+Start by creating a new Gatsby project using `create-gatsby`:
 
 ```bash
-npx gatsby new
+npm init gatsby
 ```
 
 ### Configure your Gatsby project to use TypeScript and Tailwind CSS
@@ -35,7 +35,7 @@ You will be asked a few questions to configure your project:
 
 ### Edit tsconfig.json file
 
-Add the code below to the tsconfig.json file to resolve paths:
+Add the code below to the `tsconfig.json` file to resolve paths:
 
 ```ts {4-9} showLineNumbers
 {
@@ -52,13 +52,14 @@ Add the code below to the tsconfig.json file to resolve paths:
 }
 ```
 
-### Create gatsby-node.js file
+### Create gatsby-node.ts file
 
-Create a `gatsby-node.js` file at the root of your project if it doesn’t already exist, and add the code below to the `gatsby-node.js` file so your app can resolve paths:
+Create a `gatsby-node.ts` file at the root of your project if it doesn’t already exist, and add the code below to the `gatsby-node` file so your app can resolve paths:
 
-```js
-const path = require("path")
-exports.onCreateWebpackConfig = ({ actions }) => {
+```ts
+import * as path from "path"
+
+export const onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
