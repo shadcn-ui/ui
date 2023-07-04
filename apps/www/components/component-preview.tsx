@@ -2,11 +2,11 @@
 
 import * as React from "react"
 import { Index } from "@/__registry__"
-import { Loader2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
+import { Icons } from "@/components/icons"
 import { StyleSwitcher } from "@/components/style-switcher"
 import { ThemeWrapper } from "@/components/theme-wrapper"
 import {
@@ -116,7 +116,7 @@ export function ComponentPreview({
               <React.Suspense
                 fallback={
                   <div className="flex items-center text-sm text-muted-foreground">
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                     Loading...
                   </div>
                 }

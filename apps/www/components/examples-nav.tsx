@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ArrowRight } from "lucide-react"
+import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
@@ -97,7 +97,7 @@ export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
       className="absolute right-0 top-0 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
     >
       View code
-      <ArrowRight className="ml-1 h-4 w-4" />
+      <ArrowRightIcon className="ml-1 h-4 w-4" />
     </Link>
   )
 }
