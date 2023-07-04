@@ -13,6 +13,7 @@ export function Foo() {
 }"
     `,
       config: {
+        tsx: true,
         tailwind: {
           baseColor: "stone",
           cssVariables: true,
@@ -35,6 +36,7 @@ export function Foo() {
 }"
     `,
       config: {
+        tsx: true,
         tailwind: {
           baseColor: "stone",
           cssVariables: false,
@@ -57,6 +59,7 @@ export function Foo() {
 }"
     `,
       config: {
+        tsx: true,
         tailwind: {
           baseColor: "stone",
           cssVariables: false,

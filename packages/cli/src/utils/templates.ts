@@ -6,14 +6,22 @@ export function cn(...inputs: ClassValue[]) {
 }
 `
 
+export const UTILS_JS = `import { clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+ 
+export function cn(...inputs) {
+  return twMerge(clsx(inputs))
+}
+`
+
 export const TAILWIND_CONFIG = `/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    './pages/**/*.{<%- extension %>,<%- extension %>x}',
+    './components/**/*.{<%- extension %>,<%- extension %>x}',
+    './app/**/*.{<%- extension %>,<%- extension %>x}',
+    './src/**/*.{<%- extension %>,<%- extension %>x}',
 	],
   theme: {
     container: {
@@ -47,10 +55,10 @@ export const TAILWIND_CONFIG_WITH_VARIABLES = `/** @type {import('tailwindcss').
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    './pages/**/*.{<%- extension %>,<%- extension %>x}',
+    './components/**/*.{<%- extension %>,<%- extension %>x}',
+    './app/**/*.{<%- extension %>,<%- extension %>x}',
+    './src/**/*.{<%- extension %>,<%- extension %>x}',
 	],
   theme: {
     container: {

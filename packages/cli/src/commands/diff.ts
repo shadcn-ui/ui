@@ -166,7 +166,7 @@ async function diffComponent(
         baseColor,
       })
 
-      const patch = diffLines(registryContent, fileContent)
+      const patch = diffLines(registryContent as string, fileContent)
       if (patch.length > 1) {
         changes.push({
           file: file.name,
