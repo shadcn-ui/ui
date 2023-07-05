@@ -9,7 +9,6 @@ export const getInitialValues = async () => {
   const cssDir = stylesDir ?? dir
   const css = (await findCssFile(cssDir)) ?? "globals.css"
   const paths = tsconfig?.compilerOptions?.paths
-  //find the alias for dir TODO://if there is no ts alias like @ we need to handle it better this is not ideal workaround
   const alias = paths
     ? Object.keys(paths)
         .find((key) => paths[key].toString().includes(dir))
@@ -31,17 +30,17 @@ export const getInitialValues = async () => {
 //find common global css files
 const findCssFile = async (dir: string) => {
   const files = await fs.readdir(dir || "./")
-  return files.find((file) => {
-    if (file.endsWith(".css")) {
-      return (
-        file.includes("index") ||
-        file.includes("global") ||
-        file.includes("style") ||
-        file.includes("tailwind") ||
-        file.includes("main")
-      )
-    }
+  const cssFiles = files.filter((file) => file.endsWith(".css"))
+  const prioritizedKeywords = ["index", "global", "style", "tailwind", "main"]
+
+  const matchingFile = cssFiles.find((file) => {
+    return prioritizedKeywords.some((keyword) => file.includes(keyword))
   })
+  if (matchingFile) {
+    return matchingFile
+  }
+
+  return null
 }
 
 const findTwConfig = async (dir: string) => {

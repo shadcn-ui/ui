@@ -6,6 +6,7 @@ import {
   resolveConfigPaths,
   type Config,
 } from "@/src/utils/get-config"
+import { getInitialValues } from "@/src/utils/get-initial-values"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
@@ -22,8 +23,6 @@ import template from "lodash.template"
 import ora from "ora"
 import prompts from "prompts"
 import * as z from "zod"
-
-import { getInitialValues } from "../utils/get-initial-values"
 
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",

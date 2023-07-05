@@ -46,18 +46,25 @@ export async function getTsConfig() {
 }
 
 export function getStylesDir() {
-  const stylesDir = existsSync(path.resolve("./styles"))
-    ? "./styles"
-    : existsSync(path.resolve("./src/styles"))
-    ? "./src/styles"
-    : existsSync(path.resolve("./src/app/styles"))
-    ? "./src/app/styles"
-    : existsSync(path.resolve("./app/styles"))
-    ? "./app/styles"
-    : null
+  const possiblePaths = [
+    "./styles",
+    "./src/styles",
+    "./src/app/styles",
+    "./app/styles",
+  ]
+
+  const stylesDir =
+    possiblePaths.find((possiblePath) =>
+      existsSync(path.resolve(possiblePath))
+    ) || null
+
   return stylesDir
 }
 
 export function resolveProjectDir(appDir: boolean, srcDir: boolean) {
-  return appDir && srcDir ? "src/app" : appDir ? "app" : srcDir ? "src" : ""
+  if (appDir && srcDir) return "src/app"
+  if (appDir) return "app"
+  if (srcDir) return "src"
+
+  return ""
 }
