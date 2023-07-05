@@ -2,7 +2,6 @@ import { existsSync, promises as fs } from "fs"
 import path from "path"
 import {
   getConfig,
-  getDefaultValues,
   rawConfigSchema,
   resolveConfigPaths,
   type Config,
@@ -23,6 +22,8 @@ import template from "lodash.template"
 import ora from "ora"
 import prompts from "prompts"
 import * as z from "zod"
+
+import { getInitialValues } from "../utils/get-initial-values"
 
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
@@ -86,7 +87,7 @@ export async function promptForConfig(
     DEFAULT_TAILWIND_CONFIG,
     DEFAULT_UTILS,
     DEFAULT_TAILWIND_CSS,
-  } = await getDefaultValues()
+  } = await getInitialValues()
 
   const options = await prompts([
     {
