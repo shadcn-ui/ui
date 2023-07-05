@@ -9,6 +9,7 @@ export const getInitialValues = async () => {
   const cssDir = stylesDir ?? dir
   const css = (await findCssFile(cssDir)) ?? "globals.css"
   const paths = tsconfig?.compilerOptions?.paths
+  //find the alias for dir TODO://if there is no ts alias like @ we need to handle it better this is not ideal workaround
   const alias = paths
     ? Object.keys(paths)
         .find((key) => paths[key].toString().includes(dir))
@@ -17,7 +18,6 @@ export const getInitialValues = async () => {
       "@"
     : dir.replace(".", "")
   const twConfig = await findTwConfig("./")
-
   return {
     DEFAULT_TAILWIND_CSS: `${cssDir}/${css}`,
     DEFAULT_COMPONENTS: `${alias}/components`,
@@ -28,6 +28,7 @@ export const getInitialValues = async () => {
   }
 }
 
+//find common global css files
 const findCssFile = async (dir: string) => {
   const files = await fs.readdir(dir || "./")
   return files.find((file) => {
