@@ -59,5 +59,5 @@ export function getStylesDir() {
 }
 
 export function resolveProjectDir(appDir: boolean, srcDir: boolean) {
-  return appDir && srcDir ? "src/app" : appDir ? "app" : srcDir ? "src" : "."
+  return appDir && srcDir ? "src/app" : appDir ? "app" : srcDir ? "src" : ""
 }

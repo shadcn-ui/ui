@@ -16,12 +16,12 @@ export const getInitialValues = async () => {
         ?.split("/*")[0] ??
       Object.keys(paths)[0].split("/")[0] ??
       "@"
-    : dir.replace(".", "")
+    : dir
   const twConfig = await findTwConfig("./")
   return {
-    DEFAULT_TAILWIND_CSS: `${cssDir}/${css}`,
-    DEFAULT_COMPONENTS: `${alias}/components`,
-    DEFAULT_UTILS: `${alias}/lib/utils`,
+    DEFAULT_TAILWIND_CSS: cssDir.length ? `${cssDir}/${css}` : css,
+    DEFAULT_COMPONENTS: alias.length ? `${alias}/components` : "components",
+    DEFAULT_UTILS: alias.length ? `${alias}/lib/utils` : "lib/utils",
     DEFAULT_TAILWIND_BASE_COLOR: "slate",
     DEFAULT_TAILWIND_CONFIG: twConfig,
     DEFAULT_STYLE: "default",
