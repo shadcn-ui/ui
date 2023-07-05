@@ -69,18 +69,53 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Figma",
+          href: "/docs/figma",
+          items: [],
+        },
+        {
           title: "Changelog",
           href: "/docs/changelog",
+          items: [],
+        },
+        {
+          title: "About",
+          href: "/docs/about",
           items: [],
         },
       ],
     },
     {
-      title: "Community",
+      title: "Installation",
       items: [
         {
-          title: "Figma",
-          href: "/docs/figma",
+          title: "Next.js",
+          href: "/docs/installation/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/installation/vite",
+          items: [],
+        },
+        {
+          title: "Remix",
+          href: "/docs/installation/remix",
+          items: [],
+        },
+        {
+          title: "Gatsby",
+          href: "/docs/installation/gatsby",
+          items: [],
+        },
+        {
+          title: "Astro",
+          href: "/docs/installation/astro",
+          items: [],
+        },
+        {
+          title: "Manual",
+          href: "/docs/installation/manual",
           items: [],
         },
       ],

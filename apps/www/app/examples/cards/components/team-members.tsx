@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react"
+import { ChevronDownIcon } from "@radix-ui/react-icons"
 
 import {
   Avatar,
@@ -52,7 +52,7 @@ export function DemoTeamMembers() {
             <PopoverTrigger asChild>
               <Button variant="outline" className="ml-auto">
                 Owner{" "}
-                <ChevronDown className="ml-2 h-4 w-4 text-muted-foreground" />
+                <ChevronDownIcon className="ml-2 h-4 w-4 text-muted-foreground" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="p-0" align="end">
@@ -106,7 +106,7 @@ export function DemoTeamMembers() {
             <PopoverTrigger asChild>
               <Button variant="outline" className="ml-auto">
                 Member{" "}
-                <ChevronDown className="ml-2 h-4 w-4 text-muted-foreground" />
+                <ChevronDownIcon className="ml-2 h-4 w-4 text-muted-foreground" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="p-0" align="end">
