@@ -63,6 +63,17 @@ export const add = new Command()
         process.exit(1)
       }
 
+      // Check if the prefix is invalid
+      if (
+        config.prefix &&
+        !/^(?![0-9])[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(config.prefix)
+      ) {
+        logger.warn(
+          `Invalid prefix "${config.prefix}". Prefix must be a valid identifier.`
+        )
+        process.exit(1)
+      }
+
       const registryIndex = await getRegistryIndex()
 
       let selectedComponents = options.components

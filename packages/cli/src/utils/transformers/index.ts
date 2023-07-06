@@ -6,6 +6,7 @@ import { registryBaseColorSchema } from "@/src/utils/registry/schema"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformJsx } from "@/src/utils/transformers/transform-jsx"
+import { transformPrefix } from "@/src/utils/transformers/transform-prefix"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 import * as z from "zod"
@@ -27,6 +28,7 @@ const transformers: Transformer[] = [
   transformImport,
   transformRsc,
   transformCssVars,
+  transformPrefix,
 ]
 
 const project = new Project({

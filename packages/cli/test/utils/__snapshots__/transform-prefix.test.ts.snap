@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`transform prefix 1`] = `
+"import * as React from \\"react\\"
+function NoPrefixFunc() {}
+const NoPrefixConst = () => {}
+type NoPrefixType = {}
+interface NoPrefixInterface {}
+
+function lowerFoo() {}
+const Foo = () => {}
+type FooType = {}
+export { Foo, type FooType, lowerFoo }
+
+export function Bar() {}
+export const Bar2 = () => {}
+export type Baz = {}
+export interface Qux {}
+\\"
+    "
+`;
+
+exports[`transform prefix 2`] = `
+"import * as React from \\"react\\"
+function NoPrefixFunc() {}
+const NoPrefixConst = () => {}
+type NoPrefixType = {}
+interface NoPrefixInterface {}
+
+function lowerFoo() {}
+const Foo = () => {}
+type ShFooType = {}
+export { Foo as ShFoo, type ShFooType, lowerFoo }
+
+export function Bar() {}
+export const Bar2 = () => {}
+export type ShBaz = {}
+export interface ShQux {}
+\\"
+    "
+`;
