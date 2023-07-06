@@ -81,6 +81,7 @@ export async function promptForConfig(
   skip = false
 ) {
   const highlight = (text: string) => chalk.cyan(text)
+  const placeholder = (text: string) => chalk.blackBright(text)
 
   const styles = await getRegistryStyles()
   const baseColors = await getRegistryBaseColors()
@@ -120,7 +121,7 @@ export async function promptForConfig(
       type: "text",
       name: "tailwindCss",
       message: `Where is your ${highlight("global CSS")} file?`,
-      initial: defaultConfig?.tailwind.css ?? DEFAULT_TAILWIND_CSS,
+      initial: placeholder(defaultConfig?.tailwind.css ?? DEFAULT_TAILWIND_CSS),
     },
     {
       type: "toggle",
@@ -136,19 +137,19 @@ export async function promptForConfig(
       type: "text",
       name: "tailwindConfig",
       message: `Where is your ${highlight("tailwind.config.js")} located?`,
-      initial: defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG,
+      initial: placeholder(defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG),
     },
     {
       type: "text",
       name: "components",
       message: `Configure the import alias for ${highlight("components")}:`,
-      initial: defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS,
+      initial: placeholder(defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS),
     },
     {
       type: "text",
       name: "utils",
       message: `Configure the import alias for ${highlight("utils")}:`,
-      initial: defaultConfig?.aliases["utils"] ?? DEFAULT_UTILS,
+      initial: placeholder(defaultConfig?.aliases["utils"] ?? DEFAULT_UTILS),
     },
     {
       type: "toggle",
