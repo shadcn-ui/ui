@@ -1,5 +1,3 @@
-import { Globe, Mic } from "lucide-react"
-
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -130,13 +128,37 @@ export function Menu() {
           <MenubarItem>
             Smart Dictation...{" "}
             <MenubarShortcut>
-              <Mic className="h-4 w-4" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="h-4 w-4"
+                viewBox="0 0 24 24"
+              >
+                <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
+                <circle cx="17" cy="7" r="5" />
+              </svg>
             </MenubarShortcut>
           </MenubarItem>
           <MenubarItem>
             Emoji & Symbols{" "}
             <MenubarShortcut>
-              <Globe className="h-4 w-4" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="h-4 w-4"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
             </MenubarShortcut>
           </MenubarItem>
         </MenubarContent>

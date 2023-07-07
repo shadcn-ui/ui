@@ -2,11 +2,11 @@
 
 import * as React from "react"
 import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu"
+import { CheckIcon, CopyIcon } from "@radix-ui/react-icons"
 import { NpmCommands } from "types/unist"
 
 import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   DropdownMenu,
@@ -69,9 +69,9 @@ export function CopyButton({
     >
       <span className="sr-only">Copy</span>
       {hasCopied ? (
-        <Icons.check className="h-3 w-3" />
+        <CheckIcon className="h-3 w-3" />
       ) : (
-        <Icons.copy className="h-3 w-3" />
+        <CopyIcon className="h-3 w-3" />
       )}
     </Button>
   )
@@ -114,21 +114,19 @@ export function CopyWithClassNames({
           )}
         >
           {hasCopied ? (
-            <Icons.check className="h-3 w-3" />
+            <CheckIcon className="h-3 w-3" />
           ) : (
-            <Icons.copy className="h-3 w-3" />
+            <CopyIcon className="h-3 w-3" />
           )}
           <span className="sr-only">Copy</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => copyToClipboard(value)}>
-          <Icons.react className="mr-2 h-4 w-4" />
-          <span>Component</span>
+          Component
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => copyToClipboard(classNames)}>
-          <Icons.tailwind className="mr-2 h-4 w-4" />
-          <span>Classname</span>
+          Classname
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -178,9 +176,9 @@ export function CopyNpmCommandButton({
           )}
         >
           {hasCopied ? (
-            <Icons.check className="h-3 w-3" />
+            <CheckIcon className="h-3 w-3" />
           ) : (
-            <Icons.copy className="h-3 w-3" />
+            <CopyIcon className="h-3 w-3" />
           )}
           <span className="sr-only">Copy</span>
         </Button>
