@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Image from "next/image"
 
 import { cn } from "@/lib/utils"
 
@@ -11,8 +12,6 @@ import { DemoPaymentMethod } from "./components/payment-method"
 import { DemoReportAnIssue } from "./components/report-an-issue"
 import { DemoShareDocument } from "./components/share-document"
 import { DemoTeamMembers } from "./components/team-members"
-import "./styles.css"
-import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Cards",
