@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
 import { ExamplesNav } from "@/components/examples-nav"
@@ -35,7 +35,7 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
             <span className="hidden sm:inline">
               Introducing Style, a new CLI and more.
             </span>
-            <ChevronRight className="ml-1 h-4 w-4" />
+            <ArrowRightIcon className="ml-1 h-4 w-4" />
           </Link>
           <PageHeaderHeading className="hidden md:block">
             Check out some examples.

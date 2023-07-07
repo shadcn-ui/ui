@@ -3,7 +3,13 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { DialogProps } from "@radix-ui/react-alert-dialog"
-import { Circle, File, Laptop, Moon, SunMedium } from "lucide-react"
+import {
+  CircleIcon,
+  FileIcon,
+  LaptopIcon,
+  MoonIcon,
+  SunIcon,
+} from "@radix-ui/react-icons"
 import { useTheme } from "next-themes"
 
 import { docsConfig } from "@/config/docs"
@@ -72,7 +78,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                     runCommand(() => router.push(navItem.href as string))
                   }}
                 >
-                  <File className="mr-2 h-4 w-4" />
+                  <FileIcon className="mr-2 h-4 w-4" />
                   {navItem.title}
                 </CommandItem>
               ))}
@@ -88,7 +94,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                   }}
                 >
                   <div className="mr-2 flex h-4 w-4 items-center justify-center">
-                    <Circle className="h-3 w-3" />
+                    <CircleIcon className="h-3 w-3" />
                   </div>
                   {navItem.title}
                 </CommandItem>
@@ -98,15 +104,15 @@ export function CommandMenu({ ...props }: DialogProps) {
           <CommandSeparator />
           <CommandGroup heading="Theme">
             <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>
-              <SunMedium className="mr-2 h-4 w-4" />
+              <SunIcon className="mr-2 h-4 w-4" />
               Light
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
-              <Moon className="mr-2 h-4 w-4" />
+              <MoonIcon className="mr-2 h-4 w-4" />
               Dark
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme("system"))}>
-              <Laptop className="mr-2 h-4 w-4" />
+              <LaptopIcon className="mr-2 h-4 w-4" />
               System
             </CommandItem>
           </CommandGroup>
