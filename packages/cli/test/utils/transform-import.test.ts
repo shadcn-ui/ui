@@ -15,6 +15,7 @@ import { Foo } from "bar"
     import { cn } from "@/lib/utils"
     `,
       config: {
+        tsx: true,
         tailwind: {
           baseColor: "neutral",
           cssVariables: true,
@@ -40,6 +41,7 @@ import { Foo } from "bar"
     import { bar } from "@/lib/utils/bar"
     `,
       config: {
+        tsx: true,
         aliases: {
           components: "~/src/components",
           utils: "~/lib",
@@ -61,6 +63,7 @@ import { Foo } from "bar"
     import { bar } from "@/lib/utils/bar"
     `,
       config: {
+        tsx: true,
         aliases: {
           components: "~/src/components",
           utils: "~/src/utils",
