@@ -27,6 +27,9 @@
     "rsc": {
       "type": "boolean"
     },
+    "tsx": {
+      "type": "boolean"
+    },
     "aliases": {
       "type": "object",
       "properties": {
