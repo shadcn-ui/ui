@@ -2,7 +2,6 @@ import { existsSync, promises as fs } from "fs"
 import path from "path"
 import {
   DEFAULT_COMPONENTS,
-  DEFAULT_TAILWIND_BASE_COLOR,
   DEFAULT_TAILWIND_CONFIG,
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
@@ -23,6 +22,7 @@ import * as templates from "@/src/utils/templates"
 import chalk from "chalk"
 import { Command } from "commander"
 import { execa } from "execa"
+import template from "lodash.template"
 import ora from "ora"
 import prompts from "prompts"
 import * as z from "zod"
@@ -87,6 +87,16 @@ export async function promptForConfig(
 
   const options = await prompts([
     {
+      type: "toggle",
+      name: "typescript",
+      message: `Would you like to use ${highlight(
+        "TypeScript"
+      )} (recommended)?`,
+      initial: defaultConfig?.tsx ?? true,
+      active: "yes",
+      inactive: "no",
+    },
+    {
       type: "select",
       name: "style",
       message: `Which ${highlight("style")} would you like to use?`,
@@ -115,7 +125,9 @@ export async function promptForConfig(
     {
       type: "toggle",
       name: "tailwindCssVariables",
-      message: `Do you want to use ${highlight("CSS variables")} for colors?`,
+      message: `Would you like to use ${highlight(
+        "CSS variables"
+      )} for colors?`,
       initial: defaultConfig?.tailwind.cssVariables ?? true,
       active: "yes",
       inactive: "no",
@@ -158,6 +170,7 @@ export async function promptForConfig(
       cssVariables: options.tailwindCssVariables,
     },
     rsc: options.rsc,
+    tsx: options.typescript,
     aliases: {
       utils: options.utils,
       components: options.components,
@@ -213,12 +226,14 @@ export async function runInit(cwd: string, config: Config) {
     }
   }
 
+  const extension = config.tsx ? "ts" : "js"
+
   // Write tailwind config.
   await fs.writeFile(
     config.resolvedPaths.tailwindConfig,
     config.tailwind.cssVariables
-      ? templates.TAILWIND_CONFIG_WITH_VARIABLES
-      : templates.TAILWIND_CONFIG,
+      ? template(templates.TAILWIND_CONFIG_WITH_VARIABLES)({ extension })
+      : template(templates.TAILWIND_CONFIG)({ extension }),
     "utf8"
   )
 
@@ -236,8 +251,8 @@ export async function runInit(cwd: string, config: Config) {
 
   // Write cn file.
   await fs.writeFile(
-    `${config.resolvedPaths.utils}.ts`,
-    templates.UTILS,
+    `${config.resolvedPaths.utils}.${extension}`,
+    extension === "ts" ? templates.UTILS : templates.UTILS_JS,
     "utf8"
   )
 
