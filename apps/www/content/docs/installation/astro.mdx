@@ -109,6 +109,19 @@ import '@/styles/globals.css'
 ---
 ```
 
+### Add a cn helper
+
+We use `cn` helper to make it easier to conditionally add Tailwind CSS classes. Define it in `@/lib/utils.ts`:
+
+```ts title="@/lib/utils.ts"
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
 ### That's it
 
 You can now start adding components to your project.
