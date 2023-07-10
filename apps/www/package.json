@@ -83,6 +83,7 @@
     "@types/react-dom": "^18.2.4",
     "@babel/core": "^7.20.12",
     "@mdx-js/react": "^2.2.1",
+    "@storybook/addon-docs": "^7.0.26",
     "@storybook/addon-essentials": "^7.0.26",
     "@storybook/addon-interactions": "^7.0.26",
     "@storybook/addon-links": "^7.0.26",
