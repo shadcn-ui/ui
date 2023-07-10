@@ -1,71 +1,77 @@
+import Image from "next/image"
 import Link from "next/link"
+import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { AppleMusicDemo } from "@/components/apple-music-demo"
-import { CopyButton } from "@/components/copy-button"
-import { PromoVideo } from "@/components/promo-video"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { buttonVariants } from "@/components/ui/button"
+import { ExamplesNav } from "@/components/examples-nav"
+import { Icons } from "@/components/icons"
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "@/components/page-header"
+import { buttonVariants } from "@/registry/new-york/ui/button"
+import { Separator } from "@/registry/new-york/ui/separator"
+import DashboardPage from "@/app/examples/dashboard/page"
 
 export default function IndexPage() {
   return (
-    <>
-      <section className="grid items-center gap-6 pt-6 pb-8 md:py-10">
-        <div className="flex max-w-[980px] flex-col items-start gap-2">
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-5xl lg:text-6xl lg:leading-[1.1]">
-            Beautifully designed components <br className="hidden sm:inline" />
-            built with Radix UI and Tailwind CSS.
-          </h1>
-          <p className="max-w-[700px] text-lg text-slate-700 dark:text-slate-400 sm:text-xl">
-            Accessible and customizable components that you can copy and paste
-            into your apps. Free. Open Source. And Next.js 13 Ready.
-          </p>
-        </div>
-        <div className="block lg:hidden">
-          <PromoVideo />
-        </div>
-        <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 md:flex-row">
-          <Link href="/docs" className={buttonVariants({ size: "lg" })}>
-            Documentation
+    <div className="container relative">
+      <PageHeader className="pb-8">
+        <Link
+          href="/docs/changelog"
+          className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
+        >
+          🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
+          <span className="sm:hidden">Style, a new CLI and more.</span>
+          <span className="hidden sm:inline">
+            Introducing Style, a new CLI and more.
+          </span>
+          <ArrowRightIcon className="ml-1 h-4 w-4" />
+        </Link>
+        <PageHeaderHeading>Build your component library.</PageHeaderHeading>
+        <PageHeaderDescription>
+          Beautifully designed components that you can copy and paste into your
+          apps. Accessible. Customizable. Open Source.
+        </PageHeaderDescription>
+        <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
+          <Link href="/docs" className={cn(buttonVariants())}>
+            Get Started
           </Link>
           <Link
             target="_blank"
             rel="noreferrer"
             href={siteConfig.links.github}
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "md:hidden"
-            )}
+            className={cn(buttonVariants({ variant: "outline" }))}
           >
+            <Icons.gitHub className="mr-2 h-4 w-4" />
             GitHub
           </Link>
-          <pre className="hidden h-11 items-center justify-between space-x-2 overflow-x-auto rounded-lg border border-slate-100 bg-slate-100 pr-2 pl-6 dark:border-slate-700 dark:bg-black md:flex">
-            <code className="font-mono text-sm font-semibold text-slate-900 dark:text-slate-50">
-              npx create-next-app -e https://github.com/shadcn/next-template
-            </code>
-            <CopyButton
-              value="npx create-next-app -e https://github.com/shadcn/next-template"
-              className="border-none text-slate-900 hover:bg-transparent dark:text-slate-50"
-            />
-          </pre>
         </div>
-        <div>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
-            You are looking at an early preview. You can follow the progress on{" "}
-            <Link
-              href={siteConfig.links.twitter}
-              className="font-medium underline underline-offset-4"
-            >
-              Twitter
-            </Link>
-            .
-          </p>
+      </PageHeader>
+      <ExamplesNav className="[&>a:first-child]:text-primary" />
+      <section className="space-y-8 overflow-hidden rounded-lg border-2 border-primary dark:border-muted md:hidden">
+        <Image
+          src="/examples/dashboard-light.png"
+          width={1280}
+          height={866}
+          alt="Dashboard"
+          className="block dark:hidden"
+        />
+        <Image
+          src="/examples/dashboard-dark.png"
+          width={1280}
+          height={866}
+          alt="Dashboard"
+          className="hidden dark:block"
+        />
+      </section>
+      <section className="hidden md:block">
+        <div className="overflow-hidden rounded-lg border bg-background shadow">
+          <DashboardPage />
         </div>
       </section>
-      <section className="hidden lg:block">
-        <AppleMusicDemo />
-      </section>
-    </>
+    </div>
   )
 }

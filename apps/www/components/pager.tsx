@@ -1,10 +1,11 @@
 import Link from "next/link"
+import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
 import { Doc } from "contentlayer/generated"
 import { NavItem, NavItemWithChildren } from "types/nav"
 
 import { docsConfig } from "@/config/docs"
-import { Icons } from "@/components/icons"
-import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/registry/new-york/ui/button"
 
 interface DocsPagerProps {
   doc: Doc
@@ -24,17 +25,17 @@ export function DocsPager({ doc }: DocsPagerProps) {
           href={pager.prev.href}
           className={buttonVariants({ variant: "outline" })}
         >
-          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          <ChevronLeftIcon className="mr-2 h-4 w-4" />
           {pager.prev.title}
         </Link>
       )}
       {pager?.next?.href && (
         <Link
           href={pager.next.href}
-          className={buttonVariants({ variant: "outline" })}
+          className={cn(buttonVariants({ variant: "outline" }), "ml-auto")}
         >
           {pager.next.title}
-          <Icons.chevronRight className="ml-2 h-4 w-4" />
+          <ChevronRightIcon className="ml-2 h-4 w-4" />
         </Link>
       )}
     </div>
@@ -58,7 +59,9 @@ export function getPagerForDoc(doc: Doc) {
 }
 
 export function flatten(links: NavItemWithChildren[]): NavItem[] {
-  return links.reduce<NavItem[]>((flat, link) => {
-    return flat.concat(link.items?.length ? flatten(link.items) : link)
-  }, [])
+  return links
+    .reduce<NavItem[]>((flat, link) => {
+      return flat.concat(link.items?.length ? flatten(link.items) : link)
+    }, [])
+    .filter((link) => !link?.disabled)
 }
