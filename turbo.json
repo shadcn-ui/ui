@@ -8,7 +8,9 @@
         "NEXT_PUBLIC_APP_URL",
         "UPSTASH_REDIS_REST_URL",
         "UPSTASH_REDIS_REST_TOKEN",
-        "LOGSNAG_TOKEN"
+        "COMPONENTS_REGISTRY_URL",
+        "npm_config_user_agent",
+        "https_proxy"
       ],
       "outputs": ["dist/**", ".next/**"]
     },
@@ -16,11 +18,35 @@
       "env": ["NEXT_PUBLIC_APP_URL"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "start": {
+      "dependsOn": ["^build"]
+    },
     "lint": {
+      "cache": false,
       "outputs": []
     },
+    "lint:fix": {
+      "cache": false,
+      "outputs": []
+    },
+    "format:check": {
+      "cache": false,
+      "outputs": []
+    },
+    "format:write": {
+      "cache": false,
+      "outputs": []
+    },
+    "typecheck": {},
     "dev": {
       "cache": false
+    },
+    "check": {
+      "cache": false
+    },
+    "test": {
+      "cache": false,
+      "outputs": []
     }
   }
 }

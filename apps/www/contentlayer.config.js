@@ -1,3 +1,4 @@
+import fs from "fs"
 import path from "path"
 import {
   defineDocumentType,
@@ -65,6 +66,16 @@ export const Doc = defineDocumentType(() => ({
       default: false,
       required: false,
     },
+    component: {
+      type: "boolean",
+      default: false,
+      required: false,
+    },
+    toc: {
+      type: "boolean",
+      default: true,
+      required: false,
+    },
   },
   computedFields,
 }))
@@ -85,8 +96,19 @@ export default makeSource({
               return
             }
 
+            if (codeEl.data?.meta) {
+              // Extract event from meta and pass it down the tree.
+              const regex = /event="([^"]*)"/
+              const match = codeEl.data?.meta.match(regex)
+              if (match) {
+                node.__event__ = match ? match[1] : null
+                codeEl.data.meta = codeEl.data.meta.replace(regex, "")
+              }
+            }
+
             node.__rawString__ = codeEl.children?.[0].value
             node.__src__ = node.properties?.__src__
+            node.__style__ = node.properties?.__style__
           }
         })
       },
@@ -95,7 +117,7 @@ export default makeSource({
         {
           getHighlighter: async () => {
             const theme = await loadTheme(
-              path.join(process.cwd(), "lib/vscode-theme.json")
+              path.join(process.cwd(), "/lib/themes/dark.json")
             )
             return await getHighlighter({ theme })
           },
@@ -132,6 +154,14 @@ export default makeSource({
 
             if (node.__src__) {
               preElement.properties["__src__"] = node.__src__
+            }
+
+            if (node.__event__) {
+              preElement.properties["__event__"] = node.__event__
+            }
+
+            if (node.__style__) {
+              preElement.properties["__style__"] = node.__style__
             }
           }
         })
