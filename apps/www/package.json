@@ -20,7 +20,6 @@
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
     "@hookform/resolvers": "^3.1.0",
-    "@next/font": "^13.1.6",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.4",
@@ -56,14 +55,14 @@
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
     "cmdk": "^0.2.0",
-    "contentlayer": "0.3.3",
+    "contentlayer": "0.3.4",
     "date-fns": "^2.30.0",
     "jotai": "^2.1.0",
     "lodash.template": "^4.5.0",
     "lucide-react": "0.214.0",
     "markdown-wasm": "^1.2.0",
-    "next": "13.4.8",
-    "next-contentlayer": "0.3.3",
+    "next": "13.4.9",
+    "next-contentlayer": "0.3.4",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-day-picker": "^8.7.1",
@@ -72,8 +71,7 @@
     "react-wrap-balancer": "^0.4.1",
     "recharts": "^2.6.2",
     "sharp": "^0.31.3",
-    "tailwind-merge": "^1.12.0",
-    "zod": "^3.21.4"
+    "zod": "^3.20.2"
   },
   "devDependencies": {
     "@types/lodash.template": "^4.5.1",
@@ -83,16 +81,17 @@
     "@types/react-dom": "^18.2.4",
     "@babel/core": "^7.20.12",
     "@mdx-js/react": "^2.2.1",
-    "@storybook/addon-docs": "^7.0.26",
     "@storybook/addon-essentials": "^7.0.26",
     "@storybook/addon-interactions": "^7.0.26",
     "@storybook/addon-links": "^7.0.26",
     "@storybook/addon-styling": "^1.3.2",
+    "@storybook/blocks": "^7.0.26",
     "@storybook/nextjs": "^7.0.26",
     "@storybook/react": "^7.0.26",
     "@storybook/testing-library": "^0.2.0",
     "esbuild": "^0.17.19",
     "eslint": "^8.41.0",
+    "eslint-plugin-storybook": "^0.6.12",
     "mdast-util-toc": "^6.1.1",
     "postcss": "^8.4.24",
     "rehype": "^12.0.1",
@@ -110,10 +109,14 @@
     "typescript": "^4.9.5",
     "unist-builder": "^3.0.1",
     "unist-util-visit": "^4.1.2",
-    "vite": "^4.0.4",
     "zod": "^3.21.4"
   },
   "peerDependencies": {
     "esbuild": "^0.17.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }
