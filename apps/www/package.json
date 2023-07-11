@@ -71,16 +71,10 @@
     "react-wrap-balancer": "^0.4.1",
     "recharts": "^2.6.2",
     "sharp": "^0.31.3",
+    "tailwind-merge": "^1.12.0",
     "zod": "^3.20.2"
   },
   "devDependencies": {
-    "@types/lodash.template": "^4.5.1",
-    "@types/node": "^17.0.45",
-    "@types/react": "^18.2.7",
-    "@types/react-color": "^3.0.6",
-    "@types/react-dom": "^18.2.4",
-    "@babel/core": "^7.20.12",
-    "@mdx-js/react": "^2.2.1",
     "@storybook/addon-essentials": "^7.0.26",
     "@storybook/addon-interactions": "^7.0.26",
     "@storybook/addon-links": "^7.0.26",
@@ -104,12 +98,10 @@
     "rimraf": "^4.1.3",
     "shiki": "^0.12.1",
     "storybook": "^7.0.26",
-    "tailwind-merge": "^1.12.0",
     "tailwindcss": "^3.3.2",
     "typescript": "^4.9.5",
-    "unist-builder": "^3.0.1",
-    "unist-util-visit": "^4.1.2",
-    "zod": "^3.21.4"
+    "unist-builder": "3.0.0",
+    "unist-util-visit": "^4.1.2"
   },
   "peerDependencies": {
     "esbuild": "^0.17.3"
