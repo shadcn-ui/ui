@@ -1,6 +1,6 @@
-import type { Preview } from "@storybook/react"
-import { Inter } from "next/font/google"
 import React from "react"
+import { Inter } from "next/font/google"
+import type { Preview } from "@storybook/react"
 
 import { cn } from "../lib/utils"
 import "../styles/globals.css"
