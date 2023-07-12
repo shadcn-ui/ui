@@ -109,6 +109,20 @@ import '@/styles/globals.css'
 ---
 ```
 
+### Update astro tailwind config
+
+To prevent serving the Tailwind base styles twice, we need to tell Astro not to apply the base styles, since we already include them in our own `globals.css` file. To do this, set the `applyBaseStyles` config option for the tailwind plugin in `astro.config.mjs` to `false`.
+
+```ts {3-5} showLineNumbers
+export default defineConfig({
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+  ],
+})
+```
+
 ### That's it
 
 You can now start adding components to your project.
