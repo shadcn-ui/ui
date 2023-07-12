@@ -52,6 +52,91 @@ Place a mode toggle on your site to toggle between light and dark mode.
 
 </Steps>
 
+## Astro
+
+<Steps>
+
+### Create a theme provider
+
+Since Astro is a multi-page site, we need to take special care to prevent the [FART](https://css-tricks.com/flash-of-inaccurate-color-theme-fart/) effect.
+
+```astro title="src/components/ThemeProvider.astro"
+<script is:inline>
+  // 👆 This script prevents the FART effect.
+
+  document.documentElement.classList.add(
+    localStorage.getItem("theme") ?? "dark" // 👈 Change this to your default theme ("dark" / "light")
+  );
+</script>
+<script>
+  const themeToggle = document.querySelector("#theme-toggle");
+
+  themeToggle?.addEventListener("click", function () {
+    const currentTheme = localStorage.getItem("theme") ?? "dark"; // 👈 Change this to your default theme ("dark" / "light")
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+    document.documentElement.classList.remove(currentTheme);
+    document.documentElement.classList.add(nextTheme);
+
+    localStorage.setItem("theme", nextTheme);
+  });
+</script>
+```
+
+### Wrap your root layout
+
+Add the `ThemeProvider` to your root layout.
+
+```astro {2,12} title="src/layouts/Layout.astro"
+---
+import ThemeProvider from "@/components/ThemeProvider.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+    <ThemeProvider />
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+```
+
+### Add a mode toggle
+
+Place a mode toggle on your site to toggle between light and dark mode.
+
+```astro title="src/components/ThemeToggle.astro"
+---
+import { Moon, Sun } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+---
+
+<Button
+  id="theme-toggle"
+  variant="outline"
+  size="icon"
+>
+  <Sun
+    className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+  />
+  <Moon
+    className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+  />
+  <span class="sr-only">Toggle theme</span>
+</Button>
+```
+
+</Steps>
+
 ## Other frameworks
 
-I'm looking for help writing guides for other frameworks. Help me write guides for Remix, Astro and Vite by [opening an PR](https://github.com/shadcn/ui).
+I'm looking for help writing guides for other frameworks. Help me write guides for Vite, Remix and Gatsby by [opening an PR](https://github.com/shadcn/ui).
