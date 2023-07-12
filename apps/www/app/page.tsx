@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -28,7 +28,7 @@ export default function IndexPage() {
           <span className="hidden sm:inline">
             Introducing Style, a new CLI and more.
           </span>
-          <ChevronRight className="ml-1 h-4 w-4" />
+          <ArrowRightIcon className="ml-1 h-4 w-4" />
         </Link>
         <PageHeaderHeading>Build your component library.</PageHeaderHeading>
         <PageHeaderDescription>

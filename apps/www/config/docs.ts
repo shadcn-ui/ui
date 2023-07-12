@@ -78,6 +78,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/changelog",
           items: [],
         },
+        {
+          title: "About",
+          href: "/docs/about",
+          items: [],
+        },
       ],
     },
     {
@@ -96,6 +101,16 @@ export const docsConfig: DocsConfig = {
         {
           title: "Remix",
           href: "/docs/installation/remix",
+          items: [],
+        },
+        {
+          title: "Gatsby",
+          href: "/docs/installation/gatsby",
+          items: [],
+        },
+        {
+          title: "Astro",
+          href: "/docs/installation/astro",
           items: [],
         },
         {

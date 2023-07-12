@@ -4,7 +4,7 @@ import { allDocs } from "contentlayer/generated"
 import "@/styles/mdx.css"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { ChevronRightIcon } from "@radix-ui/react-icons"
 import Balancer from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
@@ -16,7 +16,6 @@ import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
 import { badgeVariants } from "@/registry/new-york/ui/badge"
 import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
-import { Separator } from "@/registry/new-york/ui/separator"
 
 interface DocPageProps {
   params: {
@@ -95,7 +94,7 @@ export default async function DocPage({ params }: DocPageProps) {
           <div className="overflow-hidden text-ellipsis whitespace-nowrap">
             Docs
           </div>
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRightIcon className="h-4 w-4" />
           <div className="font-medium text-foreground">{doc.title}</div>
         </div>
         <div className="space-y-2">
