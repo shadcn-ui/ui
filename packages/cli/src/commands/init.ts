@@ -106,7 +106,17 @@ export async function promptForConfig(
       })),
     },
     {
-      type: "select",
+      type: "toggle",
+      name: "isDefaultColor",
+      message: `Would you like to use ${highlight(
+        "default base color"
+      )} (recommended)?`,
+      initial: true,
+      active: "yes",
+      inactive: "no",
+    },
+    {
+      type: prev => prev === true ? "select" : null,
       name: "tailwindBaseColor",
       message: `Which color would you like to use as ${highlight(
         "base color"
@@ -115,6 +125,12 @@ export async function promptForConfig(
         title: color.label,
         value: color.name,
       })),
+    },
+    {
+      type: (_, values) => values.isDefaultColor === false ? "text" : null,
+      name: "tailwindBaseColor",
+      message: `Type your custom base color`,
+      initial: "custom"
     },
     {
       type: "text",
@@ -238,16 +254,30 @@ export async function runInit(cwd: string, config: Config) {
   )
 
   // Write css file.
-  const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
-  if (baseColor) {
+  const baseColors = await getRegistryBaseColors()
+  const baseColorValues: string[] = baseColors.map((color) => color.name)
+  if(baseColorValues.includes(config.tailwind.baseColor)) {
+    const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+    if (baseColor) {
+      await fs.writeFile(
+        config.resolvedPaths.tailwindCss,
+        config.tailwind.cssVariables
+          ? baseColor.cssVarsTemplate
+          : baseColor.inlineColorsTemplate,
+        "utf8"
+      )
+    }
+  } else {
+    if(config.tailwind.cssVariables) {
+      throw new Error('Custom color does not support css variables')
+    }
     await fs.writeFile(
       config.resolvedPaths.tailwindCss,
-      config.tailwind.cssVariables
-        ? baseColor.cssVarsTemplate
-        : baseColor.inlineColorsTemplate,
+      "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
       "utf8"
     )
   }
+  // const baseColor = config.tailwind.baseColor
 
   // Write cn file.
   await fs.writeFile(
