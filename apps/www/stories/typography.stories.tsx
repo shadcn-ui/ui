@@ -23,7 +23,7 @@ import {
 } from "@/registry/default/ui/typography"
 
 const meta: Meta = {
-  title: "ui/Typography",
+  title: "theme/Typography",
   tags: ["autodocs"],
   argTypes: {},
 }
