@@ -33,9 +33,8 @@ export async function getProjectInfo() {
 
 export async function getTsConfig() {
   try {
-    const tsconfigPath = path.join("tsconfig.json")
+    const tsconfigPath = path.join(process.cwd(), "tsconfig.json")
     const tsconfig = await fs.readJSON(tsconfigPath)
-
     if (!tsconfig) {
       throw new Error("tsconfig.json is missing")
     }
