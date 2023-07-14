@@ -11,10 +11,62 @@ import {
 } from "@/components/page-header"
 import { buttonVariants } from "@/registry/new-york/ui/button"
 import { Separator } from "@/registry/new-york/ui/separator"
+import { siteConfig, siteConfigExamples } from "@/config/site"
 
 export const metadata: Metadata = {
-  title: "Examples",
-  description: "Check out some examples app built using the components.",
+  title: {
+    default: siteConfigExamples.name,
+    template: `%s - ${siteConfigExamples.name}`,
+  },
+  description: siteConfigExamples.description,
+  keywords: [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Server Components",
+    "Radix UI",
+    "Examples",
+  ],
+  authors: [
+    {
+      name: "shadcn",
+      url: "https://shadcn.com",
+    },
+  ],
+  creator: "shadcn",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfigExamples.url,
+    title: siteConfigExamples.name,
+    description: siteConfigExamples.description,
+    siteName: siteConfigExamples.name,
+    images: [
+      {
+        url: siteConfigExamples.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfigExamples.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfigExamples.name,
+    description: siteConfigExamples.description,
+    images: [siteConfigExamples.ogImage],
+    creator: "@shadcn",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
 interface ExamplesLayoutProps {
