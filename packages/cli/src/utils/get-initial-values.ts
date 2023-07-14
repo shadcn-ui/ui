@@ -3,8 +3,8 @@ import fs from "fs-extra"
 
 import { getProjectInfo, resolveProjectDir } from "./get-project-info"
 
-export const getInitialValues = async () => {
-  const { srcDir, appDir, tsconfig, stylesDir } = await getProjectInfo()
+export const getInitialValues = async (cwd: string) => {
+  const { srcDir, appDir, tsconfig, stylesDir } = await getProjectInfo(cwd)
   const dir = resolveProjectDir(appDir, srcDir)
   const cssDir = stylesDir ?? dir
   const css = (await findCssFile(cssDir)) ?? "globals.css"

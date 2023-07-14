@@ -3,7 +3,7 @@ import path from "path"
 import fs from "fs-extra"
 import { TsConfigJson } from "type-fest"
 
-export async function getProjectInfo() {
+export async function getProjectInfo(cwd: string) {
   const info = {
     tsconfig: null,
     srcDir: false,
@@ -14,26 +14,26 @@ export async function getProjectInfo() {
   }
 
   try {
-    const tsconfig = await getTsConfig()
-    const stylesDir = getStylesDir()
+    const tsconfig = await getTsConfig(cwd)
+    const stylesDir = getStylesDir(cwd)
     return {
       tsconfig,
-      srcDir: existsSync(path.resolve("./src")),
+      srcDir: existsSync(path.resolve(cwd, "./src")),
       appDir:
-        existsSync(path.resolve("./app")) ||
-        existsSync(path.resolve("./src/app")),
+        existsSync(path.resolve(cwd, "./app")) ||
+        existsSync(path.resolve(cwd, "./src/app")),
       stylesDir,
-      srcComponentsUiDir: existsSync(path.resolve("./src/components/ui")),
-      componentsUiDir: existsSync(path.resolve("./components/ui")),
+      srcComponentsUiDir: existsSync(path.resolve(cwd, "./src/components/ui")),
+      componentsUiDir: existsSync(path.resolve(cwd, "./components/ui")),
     }
   } catch (error) {
     return info
   }
 }
 
-export async function getTsConfig() {
+export async function getTsConfig(cwd: string) {
   try {
-    const tsconfigPath = path.join(process.cwd(), "tsconfig.json")
+    const tsconfigPath = path.join(cwd, "tsconfig.json")
     const tsconfig = await fs.readJSON(tsconfigPath)
     if (!tsconfig) {
       throw new Error("tsconfig.json is missing")
@@ -44,7 +44,7 @@ export async function getTsConfig() {
   }
 }
 
-export function getStylesDir() {
+export function getStylesDir(cwd: string) {
   const possiblePaths = [
     "./styles",
     "./src/styles",
@@ -54,7 +54,7 @@ export function getStylesDir() {
 
   const stylesDir =
     possiblePaths.find((possiblePath) =>
-      existsSync(path.resolve(possiblePath))
+      existsSync(path.resolve(cwd, possiblePath))
     ) || null
 
   return stylesDir

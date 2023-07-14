@@ -86,7 +86,7 @@ export async function promptForConfig(
     DEFAULT_TAILWIND_CONFIG,
     DEFAULT_UTILS,
     DEFAULT_TAILWIND_CSS,
-  } = await getInitialValues()
+  } = await getInitialValues(cwd)
 
   const options = await prompts([
     {
