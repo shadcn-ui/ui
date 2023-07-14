@@ -1,21 +1,6 @@
-import React from "react"
-import { Inter } from "next/font/google"
 import type { Preview } from "@storybook/react"
 
-import { cn } from "../lib/utils"
 import "../styles/globals.css"
-
-export const fontSans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-export const decorators = [
-  (Story) => (
-    <div className={cn("font-sans", fontSans.variable)}>
-      <Story />
-    </div>
-  ),
-]
 
 const preview: Preview = {
   parameters: {

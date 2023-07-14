@@ -118,7 +118,3 @@ export const Base: Story = {
   ),
   args: {},
 }
-
-{
-  ;(" ")
-}

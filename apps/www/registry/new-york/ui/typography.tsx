@@ -23,7 +23,7 @@ const H2 = React.forwardRef<
   <h2
     ref={ref}
     className={cn(
-      "mt-10 scroll-m-20 border-b border-b-slate-200 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 dark:border-b-slate-700",
+      "mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0",
       className
     )}
     {...props}
@@ -51,7 +51,7 @@ const H4 = React.forwardRef<
   <h4
     ref={ref}
     className={cn(
-      "mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+      "scroll-m-20 text-xl font-semibold tracking-tight",
       className
     )}
     {...props}
@@ -171,7 +171,7 @@ const InlineCode = React.forwardRef<
   <code
     ref={ref}
     className={cn(
-      "relative rounded bg-slate-100 py-[0.2rem] px-[0.3rem] font-mono text-sm font-semibold text-slate-900 dark:bg-slate-800 dark:text-slate-400",
+      "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
       className
     )}
     {...props}
@@ -184,7 +184,7 @@ const Lead = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-xl text-slate-700 dark:text-slate-400", className)}
+    className={cn("text-xl text-muted-foreground", className)}
     {...props}
   />
 ))
@@ -195,10 +195,7 @@ const Large = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      "text-lg font-semibold text-slate-900 dark:text-slate-50",
-      className
-    )}
+    className={cn("text-lg font-semibold", className)}
     {...props}
   />
 ))
@@ -220,7 +217,7 @@ const Subtle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-slate-500 dark:text-slate-400", className)}
+    className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
 ))
