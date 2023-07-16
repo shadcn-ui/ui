@@ -186,7 +186,7 @@ test("init config-partial (js)", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
     expect.stringMatching(/tailwind.config.js$/),
-    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
+    expect.stringContaining(`/** @type {import("tailwindcss").Config} */`),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
@@ -221,7 +221,7 @@ test("init tailwind.config.js with type: module", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
     expect.stringMatching(/tailwind.config.js$/),
-    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
+    expect.stringContaining(`/** @type {import("tailwindcss").Config} */`),
     "utf8"
   )
 

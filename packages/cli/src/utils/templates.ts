@@ -141,13 +141,13 @@ export function tailwindConfig(opts: {
 
   switch (opts.configType) {
     case "cjs": {
-      return `/** @type {import('tailwindcss').Config} */
+      return `/** @type {import("tailwindcss").Config} */
         const config = ${config}
         
         module.exports = config`
     }
     case "esm": {
-      return `/** @type {import('tailwindcss').Config} */
+      return `/** @type {import("tailwindcss").Config} */
         const config = ${config}
         
         export default config`
