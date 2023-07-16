@@ -14,7 +14,10 @@ import { transform } from "@/src/utils/transformers"
 import chalk from "chalk"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
+import prompts from "prompts"
 import * as z from "zod"
+
+import { RegistryPayload, installComponents } from "../utils/install-components"
 
 const updateOptionsSchema = z.object({
   component: z.string().optional(),
@@ -102,6 +105,63 @@ export const diff = new Command()
         logger.info(
           `Run ${chalk.green(`diff <component>`)} to see the changes.`
         )
+        logger.break()
+
+        if (componentsWithUpdates) {
+          const { components } = await prompts({
+            type: "multiselect",
+            name: "components",
+            message: "Which component(s) would you like to update?",
+            hint: "Space to select. A to toggle all. Enter to submit.",
+            instructions: false,
+            choices: componentsWithUpdates.map((entry) => ({
+              title: entry.name,
+              value: entry.name,
+            })),
+          })
+          if (!components) {
+            process.exit(0)
+          }
+
+          const { proceed } = await prompts({
+            type: "confirm",
+            name: "proceed",
+            message: `Keep in mind that any modifications to the current component(s) will be ${chalk.red(
+              "overwritten"
+            )}. Would you like to proceed?`,
+            initial: true,
+          })
+
+          if (!proceed) {
+            process.exit(0)
+          }
+          const selectedComponentNames = new Set<string>(components)
+          const payloads: RegistryPayload = []
+          for (const component of componentsWithUpdates) {
+            if (selectedComponentNames.has(component.name)) {
+              for (const { payload: currentPayloads } of component.changes) {
+                for (const payload of currentPayloads) {
+                  payloads.push({
+                    name: component.name,
+                    dependencies: payload.dependencies,
+                    files: payload.files,
+                    type: payload.type,
+                  })
+                }
+              }
+            }
+          }
+
+          await installComponents(
+            components,
+            payloads,
+            config,
+            cwd,
+            options.path,
+            false
+          )
+        }
+
         process.exit(0)
       }
 
@@ -172,6 +232,7 @@ async function diffComponent(
           file: file.name,
           filePath,
           patch,
+          payload,
         })
       }
     }
