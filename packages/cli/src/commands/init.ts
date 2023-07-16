@@ -22,7 +22,6 @@ import * as templates from "@/src/utils/templates"
 import chalk from "chalk"
 import { Command } from "commander"
 import { execa } from "execa"
-import template from "lodash.template"
 import ora from "ora"
 import prompts from "prompts"
 import * as z from "zod"
@@ -228,12 +227,22 @@ export async function runInit(cwd: string, config: Config) {
 
   const extension = config.tsx ? "ts" : "js"
 
+  const projectIsESM =
+    require(path.resolve(cwd, "package.json")).type === "module"
+  const twConfigExtension = path.extname(config.tailwind.config)
+  let twConfigType: "esm" | "cjs" | "ts" = projectIsESM ? "esm" : "cjs"
+  if (twConfigExtension === ".ts") twConfigType = "ts"
+  if (twConfigExtension === ".cjs") twConfigType = "cjs"
+  if (twConfigExtension === ".mjs") twConfigType = "esm"
+
   // Write tailwind config.
   await fs.writeFile(
     config.resolvedPaths.tailwindConfig,
-    config.tailwind.cssVariables
-      ? template(templates.TAILWIND_CONFIG_WITH_VARIABLES)({ extension })
-      : template(templates.TAILWIND_CONFIG)({ extension }),
+    templates.tailwindConfig({
+      cssVariables: config.tailwind.cssVariables,
+      extension,
+      configType: twConfigType,
+    }),
     "utf8"
   )
 

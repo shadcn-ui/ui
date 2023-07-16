@@ -21,7 +21,7 @@ vi.mock("fs/promises", () => ({
 }))
 vi.mock("ora")
 
-test("init config-full", async () => {
+test("init config-full (ts)", async () => {
   vi.spyOn(getPackageManger, "getPackageManager").mockResolvedValue("pnpm")
   vi.spyOn(registry, "getRegistryBaseColor").mockResolvedValue({
     inlineColors: {},
@@ -57,7 +57,7 @@ test("init config-full", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
     expect.stringMatching(/tailwind.config.ts$/),
-    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
+    expect.stringContaining(`import type { Config } from "tailwindcss"`),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
@@ -127,7 +127,7 @@ test("init config-partial", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
     expect.stringMatching(/tailwind.config.ts$/),
-    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
+    expect.stringContaining(`import type { Config } from "tailwindcss"`),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
@@ -163,4 +163,75 @@ test("init config-partial", async () => {
 
 afterEach(() => {
   vi.resetAllMocks()
+})
+
+test("init config-partial (js)", async () => {
+  vi.spyOn(getPackageManger, "getPackageManager").mockResolvedValue("pnpm")
+  vi.spyOn(registry, "getRegistryBaseColor").mockResolvedValue({
+    inlineColors: {},
+    cssVars: {},
+    inlineColorsTemplate:
+      "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
+    cssVarsTemplate:
+      "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
+  })
+  const mockMkdir = vi.spyOn(fs.promises, "mkdir").mockResolvedValue(undefined)
+  const mockWriteFile = vi.spyOn(fs.promises, "writeFile").mockResolvedValue()
+
+  const targetDir = path.resolve(__dirname, "../fixtures/config-jsx")
+  const config = await getConfig(targetDir)
+
+  await runInit(targetDir, config)
+
+  expect(mockWriteFile).toHaveBeenNthCalledWith(
+    1,
+    expect.stringMatching(/tailwind.config.js$/),
+    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
+    "utf8"
+  )
+  expect(mockWriteFile).toHaveBeenNthCalledWith(
+    1,
+    expect.stringMatching(/tailwind.config.js$/),
+    expect.stringContaining(`module.exports = config`),
+    "utf8"
+  )
+
+  mockMkdir.mockRestore()
+  mockWriteFile.mockRestore()
+})
+
+test("init tailwind.config.js with type: module", async () => {
+  vi.spyOn(getPackageManger, "getPackageManager").mockResolvedValue("pnpm")
+  vi.spyOn(registry, "getRegistryBaseColor").mockResolvedValue({
+    inlineColors: {},
+    cssVars: {},
+    inlineColorsTemplate:
+      "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
+    cssVarsTemplate:
+      "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
+  })
+  const mockMkdir = vi.spyOn(fs.promises, "mkdir").mockResolvedValue(undefined)
+  const mockWriteFile = vi.spyOn(fs.promises, "writeFile").mockResolvedValue()
+
+  const targetDir = path.resolve(__dirname, "../fixtures/config-js-esm")
+  const config = await getConfig(targetDir)
+
+  await runInit(targetDir, config)
+
+  expect(mockWriteFile).toHaveBeenNthCalledWith(
+    1,
+    expect.stringMatching(/tailwind.config.js$/),
+    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
+    "utf8"
+  )
+
+  expect(mockWriteFile).toHaveBeenNthCalledWith(
+    1,
+    expect.stringMatching(/tailwind.config.js$/),
+    expect.stringContaining(`export default config`),
+    "utf8"
+  )
+
+  mockMkdir.mockRestore()
+  mockWriteFile.mockRestore()
 })
