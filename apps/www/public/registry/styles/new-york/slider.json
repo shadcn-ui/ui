@@ -7,6 +7,10 @@
     {
       "name": "slider.tsx",
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as SliderPrimitive from \"@radix-ui/react-slider\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Slider = React.forwardRef<\n  React.ElementRef<typeof SliderPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>\n>(({ className, ...props }, ref) => (\n  <SliderPrimitive.Root\n    ref={ref}\n    className={cn(\n      \"relative flex w-full touch-none select-none items-center\",\n      className\n    )}\n    {...props}\n  >\n    <SliderPrimitive.Track className=\"relative h-1.5 w-full grow overflow-hidden rounded-full bg-primary/20\">\n      <SliderPrimitive.Range className=\"absolute h-full bg-primary\" />\n    </SliderPrimitive.Track>\n    <SliderPrimitive.Thumb className=\"block h-4 w-4 rounded-full border border-primary/50 bg-background shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50\" />\n  </SliderPrimitive.Root>\n))\nSlider.displayName = SliderPrimitive.Root.displayName\n\nexport { Slider }\n"
+    },
+    {
+      "name": "slider.stories.tsx",
+      "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Slider } from \"../default/ui/slider\"\n\nconst meta: Meta<typeof Slider> = {\n  title: \"ui/Slider\",\n  component: Slider,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\nexport default meta\n\ntype Story = StoryObj<typeof Slider>\n\nexport const Base: Story = {\n  args: {\n    defaultValue: [33],\n    max: 100,\n    step: 1,\n  },\n}\n"
     }
   ],
   "type": "components:ui"

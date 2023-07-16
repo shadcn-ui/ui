@@ -5,7 +5,8 @@
       "@radix-ui/react-accordion"
     ],
     "files": [
-      "ui/accordion.tsx"
+      "ui/accordion.tsx",
+      "stories/accordion.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -25,7 +26,8 @@
       "button"
     ],
     "files": [
-      "ui/alert-dialog.tsx"
+      "ui/alert-dialog.tsx",
+      "stories/alert-dialog.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -35,7 +37,8 @@
       "@radix-ui/react-aspect-ratio"
     ],
     "files": [
-      "ui/aspect-ratio.tsx"
+      "ui/aspect-ratio.tsx",
+      "stories/aspect-ratio.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -45,7 +48,8 @@
       "@radix-ui/react-avatar"
     ],
     "files": [
-      "ui/avatar.tsx"
+      "ui/avatar.tsx",
+      "stories/avatar.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -62,7 +66,8 @@
       "@radix-ui/react-slot"
     ],
     "files": [
-      "ui/button.tsx"
+      "ui/button.tsx",
+      "stories/button.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -93,7 +98,8 @@
       "@radix-ui/react-checkbox"
     ],
     "files": [
-      "ui/checkbox.tsx"
+      "ui/checkbox.tsx",
+      "stories/checkbox.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -103,7 +109,8 @@
       "@radix-ui/react-collapsible"
     ],
     "files": [
-      "ui/collapsible.tsx"
+      "ui/collapsible.tsx",
+      "stories/collapsible.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -126,7 +133,8 @@
       "@radix-ui/react-context-menu"
     ],
     "files": [
-      "ui/context-menu.tsx"
+      "ui/context-menu.tsx",
+      "stories/context-menu.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -136,7 +144,8 @@
       "@radix-ui/react-dialog"
     ],
     "files": [
-      "ui/dialog.tsx"
+      "ui/dialog.tsx",
+      "stories/dialog.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -146,7 +155,8 @@
       "@radix-ui/react-dropdown-menu"
     ],
     "files": [
-      "ui/dropdown-menu.tsx"
+      "ui/dropdown-menu.tsx",
+      "stories/dropdown-menu.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -174,14 +184,16 @@
       "@radix-ui/react-hover-card"
     ],
     "files": [
-      "ui/hover-card.tsx"
+      "ui/hover-card.tsx",
+      "stories/hover-card.stories.tsx"
     ],
     "type": "components:ui"
   },
   {
     "name": "input",
     "files": [
-      "ui/input.tsx"
+      "ui/input.tsx",
+      "stories/input.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -191,7 +203,8 @@
       "@radix-ui/react-label"
     ],
     "files": [
-      "ui/label.tsx"
+      "ui/label.tsx",
+      "stories/label.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -201,7 +214,8 @@
       "@radix-ui/react-menubar"
     ],
     "files": [
-      "ui/menubar.tsx"
+      "ui/menubar.tsx",
+      "stories/menubar.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -221,7 +235,8 @@
       "@radix-ui/react-popover"
     ],
     "files": [
-      "ui/popover.tsx"
+      "ui/popover.tsx",
+      "stories/popover.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -231,7 +246,8 @@
       "@radix-ui/react-progress"
     ],
     "files": [
-      "ui/progress.tsx"
+      "ui/progress.tsx",
+      "stories/progress.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -241,7 +257,8 @@
       "@radix-ui/react-radio-group"
     ],
     "files": [
-      "ui/radio-group.tsx"
+      "ui/radio-group.tsx",
+      "stories/radio-group.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -251,7 +268,8 @@
       "@radix-ui/react-scroll-area"
     ],
     "files": [
-      "ui/scroll-area.tsx"
+      "ui/scroll-area.tsx",
+      "stories/scroll-area.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -261,7 +279,8 @@
       "@radix-ui/react-select"
     ],
     "files": [
-      "ui/select.tsx"
+      "ui/select.tsx",
+      "stories/select.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -271,7 +290,8 @@
       "@radix-ui/react-separator"
     ],
     "files": [
-      "ui/separator.tsx"
+      "ui/separator.tsx",
+      "stories/separator.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -298,7 +318,8 @@
       "@radix-ui/react-slider"
     ],
     "files": [
-      "ui/slider.tsx"
+      "ui/slider.tsx",
+      "stories/slider.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -308,7 +329,8 @@
       "@radix-ui/react-switch"
     ],
     "files": [
-      "ui/switch.tsx"
+      "ui/switch.tsx",
+      "stories/switch.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -325,14 +347,16 @@
       "@radix-ui/react-tabs"
     ],
     "files": [
-      "ui/tabs.tsx"
+      "ui/tabs.tsx",
+      "stories/tabs.stories.tsx"
     ],
     "type": "components:ui"
   },
   {
     "name": "textarea",
     "files": [
-      "ui/textarea.tsx"
+      "ui/textarea.tsx",
+      "stories/textarea.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -364,7 +388,8 @@
       "@radix-ui/react-tooltip"
     ],
     "files": [
-      "ui/tooltip.tsx"
+      "ui/tooltip.tsx",
+      "stories/tooltip.stories.tsx"
     ],
     "type": "components:ui"
   }

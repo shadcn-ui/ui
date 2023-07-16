@@ -39,8 +39,10 @@ for (const style of styles) {
     //   continue
     // }
 
-    const resolveFiles = item.files.map(
-      (file) => `registry/${style.name}/${file}`
+    const resolveFiles = item.files.map((file) =>
+      file.includes(".stories.tsx")
+        ? `registry/${file}`
+        : `registry/${style.name}/${file}`
     )
 
     const type = item.type.split(":")[1]
@@ -85,10 +87,12 @@ for (const style of styles) {
     }
 
     const files = item.files?.map((file) => {
-      const content = fs.readFileSync(
-        path.join(process.cwd(), "registry", style.name, file),
-        "utf8"
-      )
+      const content = file.includes(".stories.tsx")
+        ? fs.readFileSync(path.join(process.cwd(), "registry", file), "utf8")
+        : fs.readFileSync(
+            path.join(process.cwd(), "registry", style.name, file),
+            "utf8"
+          )
 
       return {
         name: basename(file),

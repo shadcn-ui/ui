@@ -1,14 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react"
 import { Settings2 } from "lucide-react"
 
-import { Button } from "@/registry/default/ui/button"
-import { Input } from "@/registry/default/ui/input"
-import { Label } from "@/registry/default/ui/label"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/default/ui/popover"
+import { Button } from "../default/ui/button"
+import { Input } from "../default/ui/input"
+import { Label } from "../default/ui/label"
+import { Popover, PopoverContent, PopoverTrigger } from "../default/ui/popover"
 
 const meta: Meta<typeof Popover> = {
   title: "ui/Popover",

@@ -1,0 +1,94 @@
+import { ColorItem, ColorPalette, Meta } from "@storybook/blocks"
+
+<Meta title="theme/Colors" />
+
+# Colors
+
+The design system color palette consisting of a collection of color scales in a
+range of contrast ratios from the background color.
+
+## Color Palette
+
+Here's the list of variables available for customization:
+
+<ColorPalette>
+  <ColorItem
+    title="background"
+    subtitle="Default background color of <body />...etc"
+    colors={{
+      background: "hsl(var(--background))",
+      oreground: "hsl(var(--foreground))",
+    }}
+  />
+  <ColorItem
+    title="muted"
+    subtitle="Muted backgrounds such as <TabsList />, <Skeleton /> and <Switch />"
+    colors={{
+      DEFAULT: "hsl(var(--muted))",
+      foreground: "hsl(var(--muted-foreground))",
+    }}
+  />
+  <ColorItem
+    title="card"
+    subtitle="Background color for <Card />"
+    colors={{
+      DEFAULT: "hsl(var(--card))",
+      foreground: "hsl(var(--card-foreground))",
+    }}
+  />
+  <ColorItem
+    title="popover"
+    subtitle="Background color for popovers such as <DropdownMenu />, <HoverCard />, <Popover />"
+    colors={{
+      DEFAULT: "hsl(var(--popover))",
+      foreground: "hsl(var(--popover-foreground))",
+    }}
+  />
+  <ColorItem
+    title="border"
+    subtitle="Default border color"
+    colors={{ border: "hsl(var(--border))" }}
+  />
+  <ColorItem
+    title="input"
+    subtitle="Border color for inputs such as <Input />, <Select />, <Textarea />"
+    colors={{ input: "hsl(var(--input))" }}
+  />
+  <ColorItem
+    title="primary"
+    subtitle="Primary colors for <Button />"
+    colors={{
+      DEFAULT: "hsl(var(--primary))",
+      foreground: "hsl(var(--primary-foreground))",
+    }}
+  />
+  <ColorItem
+    title="secondary"
+    subtitle="Secondary colors for <Button />"
+    colors={{
+      DEFAULT: "hsl(var(--secondary))",
+      foreground: "hsl(var(--secondary-foreground))",
+    }}
+  />
+  <ColorItem
+    title="accent"
+    subtitle="Used for accents such as hover effects on <DropdownMenuItem>, <SelectItem>...etc"
+    colors={{
+      DEFAULT: "hsl(var(--accent))",
+      foreground: "hsl(var(--accent-foreground))",
+    }}
+  />
+  <ColorItem
+    title="destructive"
+    subtitle="Used for destructive actions such as <Button variant='destructive'>"
+    colors={{
+      DEFAULT: "hsl(var(--destructive))",
+      foreground: "hsl(var(--destructive-foreground))",
+    }}
+  />
+  <ColorItem
+    title="ring"
+    subtitle="Used for focus ring"
+    colors={{ ring: "hsl(var(--ring))" }}
+  />
+</ColorPalette>

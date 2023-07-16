@@ -14,7 +14,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/registry/default/ui/context-menu"
+} from "../default/ui/context-menu"
 
 const meta: Meta<typeof ContextMenu> = {
   title: "ui/ContextMenu",
