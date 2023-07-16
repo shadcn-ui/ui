@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react"
 import { Loader2, Mail } from "lucide-react"
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "../default/ui/button"
 
 const meta: Meta<typeof Button> = {
   title: "ui/Button",

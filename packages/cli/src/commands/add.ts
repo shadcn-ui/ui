@@ -152,6 +152,9 @@ export const add = new Command()
             config,
             baseColor,
           })
+          if (!config.storybook && filePath.includes(".stories.tsx")) {
+            return
+          }
 
           if (!config.tsx) {
             filePath = filePath.replace(/\.tsx$/, ".jsx")

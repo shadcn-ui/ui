@@ -1,17 +1,13 @@
 import { Meta, StoryObj } from "@storybook/react"
 import { CalendarDays } from "lucide-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/default/ui/avatar"
-import { Button } from "@/registry/default/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "../default/ui/avatar"
+import { Button } from "../default/ui/button"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/registry/default/ui/hover-card"
+} from "../default/ui/hover-card"
 
 const meta: Meta<typeof HoverCard> = {
   title: "ui/HoverCard",
