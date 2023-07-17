@@ -27,7 +27,7 @@ export function MainNav() {
             pathname === "/docs" ? "text-foreground" : "text-foreground/60"
           )}
         >
-          Documentation
+          Docs
         </Link>
         <Link
           href="/docs/components"
