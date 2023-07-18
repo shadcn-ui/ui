@@ -20,7 +20,7 @@ import {
   TR,
   Table,
   UL,
-} from "@/registry/default/ui/typography"
+} from "../default/ui/typography"
 
 const meta: Meta = {
   title: "theme/Typography",

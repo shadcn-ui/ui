@@ -7,6 +7,10 @@
     {
       "name": "aspect-ratio.tsx",
       "content": "\"use client\"\n\nimport * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\"\n\nconst AspectRatio = AspectRatioPrimitive.Root\n\nexport { AspectRatio }\n"
+    },
+    {
+      "name": "aspect-ratio.stories.tsx",
+      "content": "import Image from \"next/image\"\nimport { Meta, StoryObj } from \"@storybook/react\"\n\nimport { AspectRatio } from \"@/registry/default/ui/aspect-ratio\"\n\nconst meta: Meta<typeof AspectRatio> = {\n  title: \"ui/AspectRatio\",\n  component: AspectRatio,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\n\nexport default meta\n\ntype Story = StoryObj<typeof AspectRatio>\n\nexport const Base: Story = {\n  render: () => (\n    <AspectRatio ratio={16 / 9} className=\"bg-slate-50 dark:bg-slate-800\">\n      <Image\n        src=\"https://images.unsplash.com/photo-1576075796033-848c2a5f3696?w=800&dpr=2&q=80\"\n        alt=\"Photo by Alvaro Pinot\"\n        fill\n        className=\"rounded-md object-cover\"\n      />\n    </AspectRatio>\n  ),\n  args: {},\n}\n"
     }
   ],
   "type": "components:ui"

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "../default/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -9,9 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/default/ui/dialog"
-import { Input } from "@/registry/default/ui/input"
-import { Label } from "@/registry/default/ui/label"
+} from "../default/ui/dialog"
+import { Input } from "../default/ui/input"
+import { Label } from "../default/ui/label"
 
 const meta: Meta<typeof Dialog> = {
   title: "ui/Dialog",

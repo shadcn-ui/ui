@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { Button } from "@/registry/default/ui/button"
-import { Input } from "@/registry/default/ui/input"
-import { Label } from "@/registry/default/ui/label"
+import { Button } from "../default/ui/button"
+import { Input } from "../default/ui/input"
+import { Label } from "../default/ui/label"
 
 const meta: Meta<typeof Input> = {
   title: "ui/Input",

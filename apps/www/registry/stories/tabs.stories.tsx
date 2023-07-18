@@ -1,14 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { Button } from "@/registry/default/ui/button"
-import { Input } from "@/registry/default/ui/input"
-import { Label } from "@/registry/default/ui/label"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/default/ui/tabs"
+import { Button } from "../default/ui/button"
+import { Input } from "../default/ui/input"
+import { Label } from "../default/ui/label"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../default/ui/tabs"
 
 const meta: Meta<typeof Tabs> = {
   title: "ui/Tabs",
