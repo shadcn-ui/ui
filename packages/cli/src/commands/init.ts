@@ -110,7 +110,7 @@ export async function promptForConfig(
       name: "tailwindBaseColor",
       message: `Which color would you like to use as ${highlight(
         "base color"
-      )}?`,
+      )}? You can preview the colors here: https://tailwindcss.com/docs/customizing-colors`,
       choices: baseColors.map((color) => ({
         title: color.label,
         value: color.name,
