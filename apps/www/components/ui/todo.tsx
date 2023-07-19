@@ -19,12 +19,12 @@ import { toast } from "@/components/ui/use-toast"
 
 const items = [
   {
-    id: "hack",
-    label: "Hack",
-  },
-  {
     id: "navbar",
     label: "Navbar",
+  },
+  {
+    id: "hack",
+    label: "Hack",
   },
   {
     id: "sidebar",
@@ -142,7 +142,7 @@ export default function Todo() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Add to tasks</Button>
       </form>
     </Form>
   )

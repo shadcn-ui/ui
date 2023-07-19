@@ -33,7 +33,7 @@ export default function IndexPage() {
           </span>
           <ArrowRightIcon className="ml-1 h-4 w-4" />
         </Link>
-        <PageHeaderHeading>Build your component library.</PageHeaderHeading>
+        {/* <PageHeaderHeading>Build your component library.</PageHeaderHeading>
         <PageHeaderDescription>
           Beautifully designed components that you can copy and paste into your
           apps. Accessible. Customizable. Open Source.
@@ -51,10 +51,10 @@ export default function IndexPage() {
             <Icons.gitHub className="mr-2 h-4 w-4" />
             GitHub
           </Link>
-        </div>
+        </div> */}
       </PageHeader>
       <Todo />
-      
+
       {/* <ExamplesNav className="[&>a:first-child]:text-primary" />
       <section className="space-y-8 overflow-hidden rounded-lg border-2 border-primary dark:border-muted md:hidden">
         <Image
