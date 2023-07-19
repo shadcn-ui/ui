@@ -124,6 +124,26 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Navbar",
+          href: "/docs/components/accordion",
+          items: [],
+        },
+        {
+          title: "Accordion",
+          href: "/docs/components/accordion",
+          items: [],
+        },
+        {
+          title: "Accordion",
+          href: "/docs/components/accordion",
+          items: [],
+        },
+        {
+          title: "Accordion",
+          href: "/docs/components/accordion",
+          items: [],
+        },
+        {
           title: "Accordion",
           href: "/docs/components/accordion",
           items: [],
