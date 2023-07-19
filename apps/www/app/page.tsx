@@ -15,6 +15,9 @@ import { buttonVariants } from "@/registry/new-york/ui/button"
 import { Separator } from "@/registry/new-york/ui/separator"
 import DashboardPage from "@/app/examples/dashboard/page"
 
+import Todo from "@/components/ui/todo"
+
+
 export default function IndexPage() {
   return (
     <div className="container relative">
@@ -50,7 +53,9 @@ export default function IndexPage() {
           </Link>
         </div>
       </PageHeader>
-      <ExamplesNav className="[&>a:first-child]:text-primary" />
+      <Todo />
+      
+      {/* <ExamplesNav className="[&>a:first-child]:text-primary" />
       <section className="space-y-8 overflow-hidden rounded-lg border-2 border-primary dark:border-muted md:hidden">
         <Image
           src="/examples/dashboard-light.png"
@@ -71,7 +76,11 @@ export default function IndexPage() {
         <div className="overflow-hidden rounded-lg border bg-background shadow">
           <DashboardPage />
         </div>
-      </section>
+      </section> */}
+
+
+
+
     </div>
   )
 }
