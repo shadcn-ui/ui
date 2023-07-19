@@ -126,3 +126,11 @@ To configure import aliases, you can use the following `jsconfig.json`:
   }
 }
 ```
+
+### Custom tsconfig path
+
+To set a custom path for your tsconfig file, use the `TS_NODE_PROJECT` environment variable. Just prefix your shadcn-ui commands with `TS_NODE_PROJECT=<filepath>`. For example:
+
+```bash
+TS_NODE_PROJECT=tsconfig.base.json npx shadcn-ui@latest init
+```
