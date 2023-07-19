@@ -99,5 +99,13 @@
   },
   "peerDependencies": {
     "esbuild": "^0.17.3"
-  }
+  },
+  "main": "contentlayer.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
