@@ -1,0 +1,153 @@
+---
+title: components.json
+description: This file is used by the CLI when adding components and performing diffs.
+---
+
+## style
+
+`"default"` | `"new-york"`
+
+The new-york style ships with smaller buttons, cards with shadows and uses [Radix Icons](https://icons.radix-ui.com) instead of the default [Lucide Icons](https://lucide.dev/).
+
+<ComponentPreview name="card-with-form" />
+
+## tailwind
+
+Configuration to help the CLI understand how Tailwind CSS is set up in your project. Check the [installation section](/docs/installation) for how to set up Tailwind CSS.
+
+### tailwind.config
+
+Path to where your Tailwind CSS configuration file is located.
+
+Example:
+
+```json title="components.json"
+{
+  "tailwind": {
+    "config": "tailwind.config.js"
+  }
+}
+```
+
+### tailwind.css
+
+Path to the CSS file that imports Tailwind CSS into your project.
+
+Example:
+
+```json title="components.json"
+{
+  "tailwind": {
+    "css": "styles/global.css"
+  }
+}
+```
+
+```css title="styles/global.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+...
+```
+
+### tailwind.baseColor
+
+`"gray"` | `"neutral"` | `"slate"` | `"stone"` | `"zinc"`
+
+This is used to generate the default color palette for your components. You can see what the colors look like by viewing the [Tailwind CSS colors documentation](https://tailwindcss.com/docs/customizing-colors).
+
+Example:
+
+```json title="components.json"
+{
+  "tailwind": {
+    "baseColor": "slate"
+  }
+}
+```
+
+### tailwind.cssVariables
+
+`true` | `false`
+
+If you have this option set to `false`, Tailwind CSS utility classes will be inlined when adding components.
+
+Example:
+
+```tsx
+<div className="bg-zinc-950 text-zinc-50 dark:bg-white dark:text-zinc-950" />
+```
+
+If you have this option set to `true`, CSS variables with custom class names will be used instead.
+
+Example:
+
+```tsx
+<div className="bg-background text-foreground" />
+```
+
+For more information, check the [theming section](/docs/theming).
+
+## rsc
+
+`true` | `false`
+
+Whether or not, to add support for React Server Components. The CLI automatically adds a use client directive to components when this option is set to `true`.
+
+Example:
+
+```json title="components.json"
+{
+  "rsc": true
+}
+```
+
+## tsx
+
+`true` | `false`
+
+This is optional.
+
+By default, components are added as TypeScript files. Setting this option to `false` allows components to be added as JavaScript files with the `.jsx` extension.
+
+Example:
+
+```json title="components.json"
+{
+  "tsx": false
+}
+```
+
+## aliases
+
+Path aliases have to be set up in your tsconfig or jsconfig file. The CLI uses it as context when adding components.
+
+### aliases.utils
+
+Location of a file containing utility functions that are used by generated components.
+
+This file is created when initialising shadcn/ui.
+
+Example:
+
+```json title="components.json"
+{
+  "aliases": {
+    "utils": "@/lib/utils"
+  }
+}
+```
+
+### aliases.components
+
+Location of the folder where generated components will be saved.
+
+Example:
+
+```json title="components.json"
+{
+  "aliases": {
+    "components": "@/components"
+  }
+}
+```
