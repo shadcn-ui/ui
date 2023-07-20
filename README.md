@@ -6,8 +6,8 @@ Accessible and customizable components that you can copy and paste into your app
 
 ## Documentation
 
-Visit http://ui.shadcn.com/docs to view the documentation.
+Visit [(https://ui-www-five.vercel.app/docs)] to view the documentation.
 
-## License
+## Licensec
 
 Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
