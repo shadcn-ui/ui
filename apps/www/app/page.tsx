@@ -27,7 +27,7 @@ export default function IndexPage() {
           className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
         >
           🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-          <span className="sm:hidden">Style, a new CLI and more.</span>
+          <span className="sm:hidden">Make your Web Devlopmemt flawless with manfromearth/dx</span>
           <span className="hidden sm:inline">
             I am ManFromEarth
           </span>

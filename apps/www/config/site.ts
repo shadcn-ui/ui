@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "shadcn/ui",
+  name: "manfromearth/dx",
   url: "https://ui.shadcn.com",
   ogImage: "https://ui.shadcn.com/og.jpg",
   description:
