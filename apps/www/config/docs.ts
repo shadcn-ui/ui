@@ -124,28 +124,88 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Friday",
+          href: "/docs/components/friday",
+          items: [],
+        },
+        {
+          title: "Multiverse",
+          href: "/docs/components/multiverse",
+          items: [],
+        },
+        {
           title: "Navbar",
-          href: "/docs/components/accordion",
+          href: "/docs/components/navbar",
           items: [],
         },
         {
-          title: "Accordion",
-          href: "/docs/components/accordion",
+          title: "Blockchain Status",
+          href: "/docs/components/blockchain-status",
           items: [],
         },
         {
-          title: "Accordion",
-          href: "/docs/components/accordion",
+          title: "Theme",
+          href: "/docs/components/theme",
           items: [],
         },
         {
-          title: "Accordion",
-          href: "/docs/components/accordion",
+          title: "Keyboard Shortcuts",
+          href: "/docs/components/keyboard-shortcuts",
           items: [],
         },
         {
-          title: "Accordion",
-          href: "/docs/components/accordion",
+          title: "Hello Mode",
+          href: "/docs/components/hello-mode",
+          items: [],
+        },
+        {
+          title: "Activity Bar",
+          href: "/docs/components/hello-mode",
+          items: [],
+        },
+        {
+          title: "Primary Sidebar",
+          href: "/docs/components/sidebar",
+          items: [],
+        },
+        {
+          title: "Secondary Sidebar",
+          href: "/docs/components/sidebar",
+          items: [],
+        },
+        {
+          title: "BottomBar",
+          href: "/docs/components/bottombar",
+          items: [],
+        },
+        {
+          title: "Dockbar",
+          href: "/docs/components/dockbar",
+          items: [],
+        },
+        {
+          title: "Search",
+          href: "/docs/components/search",
+          items: [],
+        },
+        {
+          title: "Command Palette",
+          href: "/docs/components/command-palette",
+          items: [],
+        },
+        {
+          title: "Comment",
+          href: "/docs/components/comment",
+          items: [],
+        },
+        {
+          title: "Footer",
+          href: "/docs/components/footer",
+          items: [],
+        },
+        {
+          title: "According",
+          href: "/docs/components/according",
           items: [],
         },
         {
