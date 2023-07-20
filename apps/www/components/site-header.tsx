@@ -33,8 +33,8 @@ export function SiteHeader() {
                   "w-9 px-0"
                 )}
               >
-                <Icons.gitHub className="h-4 w-4" />
-                <span className="sr-only">GitHub</span>
+                <Icons.chevronDown className="h-4 w-4" />
+                <span className="sr-only">Social Medias</span>
               </div>
             </Link>
             <Link
@@ -50,8 +50,8 @@ export function SiteHeader() {
                   "w-9 px-0"
                 )}
               >
-                <Icons.twitter className="h-4 w-4 fill-current" />
-                <span className="sr-only">Twitter</span>
+                <Icons.hack className="h-4 w-4 fill-current" />
+                <span className="sr-only">HackIn</span>
               </div>
             </Link>
             <ModeToggle />
