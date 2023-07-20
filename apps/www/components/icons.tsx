@@ -2,30 +2,76 @@ type IconProps = React.HTMLAttributes<SVGElement>
 
 export const Icons = {
   logo: (props: IconProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" {...props}>
-      <rect width="256" height="256" fill="none" />
-      <line
-        x1="208"
-        y1="128"
-        x2="128"
-        y2="208"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
+    <svg
+      width="250"
+      height="250"
+      viewBox="0 0 250 250"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="250" height="250" fill="white" fill-opacity="0.22" />
+      <path
+        d="M122 40.5942C122 35.0713 126.488 30.5424 131.983 31.0938C141.691 32.0678 151.222 34.459 160.268 38.2062C172.401 43.2317 183.425 50.5976 192.711 59.8835C201.997 69.1693 209.362 80.1933 214.388 92.3258C219.413 104.458 222 117.462 222 130.594C222 143.726 219.413 156.73 214.388 168.863C209.362 180.995 201.997 192.019 192.711 201.305C183.425 210.591 172.401 217.957 160.268 222.982C151.222 226.729 141.691 229.121 131.983 230.095C126.488 230.646 122 226.117 122 220.594V199.061C122 194.632 124.911 190.735 129.135 189.404C134.039 187.858 140.34 185.785 144.199 184.187C151.237 181.272 157.632 176.999 163.018 171.612C168.405 166.226 172.678 159.831 175.593 152.793C178.508 145.755 180.009 138.212 180.009 130.594C180.009 122.976 178.508 115.433 175.593 108.395C172.678 101.357 168.405 94.9625 163.018 89.5759C157.632 84.1893 151.237 79.9164 144.199 77.0012C140.25 75.3654 136.142 74.1751 131.951 73.4454C126.51 72.498 122 68.1084 122 62.5855V40.5942Z"
+        fill="url(#paint0_linear_1_2)"
       />
-      <line
-        x1="192"
-        y1="40"
-        x2="40"
-        y2="192"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
+      <path
+        d="M37 93.5C37 89.9101 39.9101 87 43.5 87V87C47.0899 87 50 89.9101 50 93.5V180.5C50 184.09 47.0899 187 43.5 187V187C39.9101 187 37 184.09 37 180.5V93.5Z"
+        fill="url(#paint1_linear_1_2)"
       />
+      <path
+        d="M61.0605 71C61.0605 65.4772 65.5376 61 71.0605 61H79V211H71.0605C65.5376 211 61.0605 206.523 61.0605 201V200.447L59.5899 179.253C59.2072 173.738 60.6443 168.251 63.6807 163.632V163.632C66.2909 159.661 67.728 155.034 67.8266 150.283L68.3683 124.204C68.4676 119.427 67.066 114.738 64.3608 110.799V110.799C61.6264 106.817 60.2246 102.071 60.3569 97.2424L61.0605 71.5528V71Z"
+        fill="url(#paint2_linear_1_2)"
+      />
+      <path
+        d="M92.0605 41C92.0605 35.4771 96.5376 31 102.06 31H110V229H102.06C96.5376 229 92.0605 224.523 92.0605 219V215.07L90.5485 186.308C90.189 179.467 91.6046 172.65 94.6581 166.519V166.519C97.3028 161.208 98.7241 155.372 98.8174 149.44L99.3791 113.748C99.4722 107.83 98.0907 101.982 95.3591 96.7313V96.7313C92.5996 91.4271 91.2184 85.514 91.3424 79.5362L92.0605 44.9296V41Z"
+        fill="url(#paint3_linear_1_2)"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_1_2"
+          x1="172"
+          y1="230.594"
+          x2="172"
+          y2="30.5942"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#FF0084" />
+          <stop offset="1" stop-color="#33001B" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_1_2"
+          x1="37"
+          y1="137"
+          x2="50"
+          y2="137"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#FF0084" />
+          <stop offset="1" stop-color="#33001B" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_1_2"
+          x1="59"
+          y1="136"
+          x2="79"
+          y2="136"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#FF0084" />
+          <stop offset="1" stop-color="#33001B" />
+        </linearGradient>
+        <linearGradient
+          id="paint3_linear_1_2"
+          x1="90"
+          y1="130"
+          x2="110"
+          y2="130"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#FF0084" />
+          <stop offset="1" stop-color="#33001B" />
+        </linearGradient>
+      </defs>
     </svg>
   ),
   twitter: (props: IconProps) => (
