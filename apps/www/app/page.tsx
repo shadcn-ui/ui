@@ -29,7 +29,7 @@ export default function IndexPage() {
           🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
           <span className="sm:hidden">Make your Web Devlopmemt flawless with manfromearth/dx</span>
           <span className="hidden sm:inline">
-            I am ManFromEarth
+            I am ManFromEarth(Sumon brother of Shohan and Emom)
           </span>
           <ArrowRightIcon className="ml-1 h-4 w-4" />
         </Link>
