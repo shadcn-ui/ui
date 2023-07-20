@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -71,6 +73,12 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    screens: {
+      '2xs': {'max': '320px'},
+      'xs': {'min': '320px','max': '640px'},
+      ...defaultTheme.screens,
+    },
   },
+
   plugins: [require("tailwindcss-animate")],
 }
