@@ -24,13 +24,13 @@ export function MainNav() {
       </Link>
       <nav className="flex items-center space-x-6 text-sm font-medium">
         <Link
-          href="/docs"
+          href="/hack"
           className={cn(
             "transition-colors hover:text-foreground/80",
             pathname === "/docs" ? "text-foreground" : "text-foreground/60"
           )}
         >
-          Docs
+          HackIn
         </Link>
         <Link
           href="/docs/components"
