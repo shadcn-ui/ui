@@ -37,6 +37,7 @@ export function SiteHeader() {
                 <span className="sr-only">Social Medias</span>
               </div>
             </Link>
+            <ModeToggle />
             <Link
               href={siteConfig.links.twitter}
               target="_blank"
@@ -54,7 +55,6 @@ export function SiteHeader() {
                 <span className="sr-only">HackIn</span>
               </div>
             </Link>
-            <ModeToggle />
           </nav>
         </div>
       </div>
