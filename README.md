@@ -1,13 +1,13 @@
 # Dx!!!
 ![dx](https://github.com/Man-from-earth25/dx/assets/103621682/e899c5b7-5259-4311-9137-4a55f9425b6f)
 
-# manfromearth/dx
+# beingofexistence/dx
 Accessible and customizable components that you can copy and paste into your apps. Free. Open Source. **Use this to build your own component library**.
 ![hero](apps/www/public/og.jpg)
 ## Documentation
 Visit [(https://ui-www-five.vercel.app/docs)] to view the documentation.
 ## Licensec
-Licensed under the [MIT license](https://github.com/manfromearth/dx/blob/main/LICENSE.md).
+Licensed under the [MIT license](https://github.com/beingofexistence/dx/blob/main/LICENSE.md).
 
 This project contains the main features of the dx application.
 If you want to contribute, please refer to the [contributing guidelines](./CONTRIBUTING.md) of this project.
@@ -15,10 +15,10 @@ If you want to contribute, please refer to the [contributing guidelines](./CONTR
 - [Info](doc/Info.md)
 - [Cypress tests](doc/Cypress.md)
 > Install dependencies using **pnpm**
-## `manfromearth/dx`
+## `beingofexistence/dx`
 <details>
 <summary>
-How to Steall || LOL Just kidding!!! || Anything made by me in exitence plus (any+every)thing in not exitstencev like doesnot exits like now But will exit... Later!!! like me yeah... yeah yeeah me ManFromEarth is public and free to use anywhere!!! || Just put (ManFromEarth => Pleaaases pretty pleasaase!!!) logo in that software or anddd...  in exitence plus (any+every)thing in not exitstencev like doesnot exits like now But will exit... Later!!!!!!
+How to Steall || LOL Just kidding!!! || Anything made by me in exitence plus (any+every)thing in not exitstencev like doesnot exits like now But will exit... Later!!! like me yeah... yeah yeeah me BeingOfExistence is public and free to use anywhere!!! || Just put (BeingOfExistence => Pleaaases pretty pleasaase!!!) logo in that software or anddd...  in exitence plus (any+every)thing in not exitstencev like doesnot exits like now But will exit... Later!!!!!!
   Will update later(07/01/2023 --- 5:27 PM)!!!</summary>
 ```sh
 pnpm
@@ -76,8 +76,8 @@ yarn turbo run build --filter=aptos-web
 ```
 </details>
 
-                                                                       
-# This is ManFromEarth Signing or I say Hacking(Cool umm... name-of-new-login and singning systems or just name made by me ManFromEarth)!!!!!
+
+# This is BeingOfExistence Signing or I say Hacking(Cool umm... name-of-new-login and singning systems or just name made by me BeingOfExistence)!!!!!
 # Databses
 1. Mysql
 2. Postgresql
