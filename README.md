@@ -1,10 +1,5 @@
-![disney-plus](https://user-images.githubusercontent.com/103621682/211145362-eaef93bc-8b4f-45d5-8b93-5bd86a8908df.jpg)
-![animated](https://user-images.githubusercontent.com/103621682/211145427-e6087434-d7ea-48b8-837b-0b610be67412.jpg)
-![we-bare-bears-surfing-the-net-eh3w41yu8cqs0a44](https://user-images.githubusercontent.com/103621682/211145531-d814bab2-7c7f-46af-b9e6-9a590e38b5be.jpg)
-![one-punch-man-g0zd5osebqn6rbqh (1)](https://github.com/Man-from-earth25/dx/assets/103621682/bb558143-a04c-4d96-9107-4502d9c210b9)
-
 # Dx!!!
-![Logo]![dx](https://github.com/Man-from-earth25/dx/assets/103621682/e899c5b7-5259-4311-9137-4a55f9425b6f)
+![dx](https://github.com/Man-from-earth25/dx/assets/103621682/e899c5b7-5259-4311-9137-4a55f9425b6f)
 
 # manfromearth/dx
 Accessible and customizable components that you can copy and paste into your apps. Free. Open Source. **Use this to build your own component library**.
