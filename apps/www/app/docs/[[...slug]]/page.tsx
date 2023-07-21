@@ -127,7 +127,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 rel="noreferrer"
                 className={cn(badgeVariants({ variant: "secondary" }))}
               >
-                API Reference
+                API References
               </Link>
             )}
           </div>
