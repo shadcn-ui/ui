@@ -25,12 +25,17 @@ npx tailwindcss init -p
 
 ### Edit tsconfig.json
 
-Add the code below to the compilerOptions of your tsconfig.json so your app can resolve paths without error
+Add the code below to the `compilerOptions` field of your tsconfig.json so your app can resolve paths without error
 
 ```typescript
-"baseUrl": ".",
-"paths": {
-  "@/*": ["./src/*"]
+{
+  "compilerOptions": {
+   "baseUrl": ".",
+   "paths": {
+      "@/*": ["./src/*"]
+    },
+    ...
+  }
 }
 ```
 
