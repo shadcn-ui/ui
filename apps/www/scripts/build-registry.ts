@@ -261,7 +261,7 @@ export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
   }
 }`
 
-for (const baseColor of ["slate", "gray", "zinc", "neutral", "stone", "lime"]) {
+for (const baseColor of ["slate", "gray", "zinc", "neutral", "stone"]) {
   const base: Record<string, any> = {
     inlineColors: {},
     cssVars: {},
@@ -334,7 +334,7 @@ export const THEME_STYLES_WITH_VARIABLES = `
  
     --ring: <%- colors.light["ring"] %>;
  
-    --radius: 0.5rem;
+    --radius: <%- colors.light["radius"] %>;
   }
  
   .dark .theme-<%- theme %> {
@@ -383,5 +383,50 @@ fs.writeFileSync(
   themeCSS.join("\n"),
   "utf8"
 )
+
+// ----------------------------------------------------------------------------
+// Build registry/themes/[theme].json
+// ----------------------------------------------------------------------------
+rimraf.sync(path.join(REGISTRY_PATH, "themes"))
+for (const baseColor of ["slate", "gray", "zinc", "neutral", "stone"]) {
+  const payload = {
+    name: baseColor,
+    label: baseColor.charAt(0).toUpperCase() + baseColor.slice(1),
+    cssVars: {},
+  }
+
+  for (const [mode, values] of Object.entries(colorMapping)) {
+    payload["cssVars"][mode] = {}
+    for (const [key, value] of Object.entries(values)) {
+      if (typeof value === "string") {
+        const resolvedColor = value.replace(/{{base}}-/g, `${baseColor}-`)
+        payload["cssVars"][mode][key] = resolvedColor
+
+        const [resolvedBase, scale] = resolvedColor.split("-")
+        const color = scale
+          ? colorsData[resolvedBase].find(
+              (item) => item.scale === parseInt(scale)
+            )
+          : colorsData[resolvedBase]
+        if (color) {
+          payload["cssVars"][mode][key] = color.hslChannel
+        }
+      }
+    }
+  }
+
+  const targetPath = path.join(REGISTRY_PATH, "themes")
+
+  // Create directory if it doesn't exist.
+  if (!fs.existsSync(targetPath)) {
+    fs.mkdirSync(targetPath, { recursive: true })
+  }
+
+  fs.writeFileSync(
+    path.join(targetPath, `${payload.name}.json`),
+    JSON.stringify(payload, null, 2),
+    "utf8"
+  )
+}
 
 console.log("✅ Done!")
