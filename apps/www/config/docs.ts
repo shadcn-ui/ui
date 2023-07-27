@@ -13,7 +13,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Components",
-      href: "/docs/components/accordion",
+      href: "/docs/ui/accordion",
     },
     {
       title: "Examples",
@@ -25,7 +25,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "GitHub",
-      href: "https://github.com/shadcn/ui",
+      href: "https://github.com/beingofexistence/dx",
       external: true,
     },
     {
@@ -65,13 +65,19 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Typography",
-          href: "/docs/components/typography",
+          href: "/docs/ui/typography",
           items: [],
         },
         {
           title: "Figma",
           href: "/docs/figma",
           items: [],
+        },
+        {
+          title: "Spline",
+          href: "/docs/spline",
+          items: [],
+
         },
         {
           title: "Changelog",
@@ -121,206 +127,351 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
-      title: "Components",
+      title: "Ui",
       items: [
         {
-          title: "Accordion",
-          href: "/docs/components/accordion",
+          title: "Friday",
+          href: "/docs/ui/friday",
+          items: [],
+        },
+        {
+          title: "Multiverse",
+          href: "/docs/ui/multiverse",
+          items: [],
+        },
+        {
+          title: "Navbar",
+          href: "/docs/ui/navbar",
+          items: [],
+        },
+        {
+          title: "Blockchain Status",
+          href: "/docs/ui/blockchain-status",
+          items: [],
+        },
+        {
+          title: "Hello Mode",
+          href: "/docs/ui/hello-mode",
+          items: [],
+        },
+        {
+          title: "Activitybar",
+          href: "/docs/ui/activitybar",
+          items: [],
+        },
+        {
+          title: "Primary Sidebar",
+          href: "/docs/ui/primary-sidebar",
+          items: [],
+        },
+        {
+          title: "Secondary Sidebar",
+          href: "/docs/ui/secondary-sidebar",
+          items: [],
+        },
+        {
+          title: "Bottombar",
+          href: "/docs/ui/bottombar",
+          items: [],
+        },
+        {
+          title: "Dockbar",
+          href: "/docs/ui/dockbar",
+          items: [],
+        },
+        {
+          title: "Theme",
+          href: "/docs/ui/theme",
+          items: [],
+        },
+        {
+          title: "Keyboard Shortcuts",
+          href: "/docs/ui/keyboard-shortcuts",
+          items: [],
+        },
+        {
+          title: "Search",
+          href: "/docs/ui/search",
+          items: [],
+        },
+        {
+          title: "Command Palette",
+          href: "/docs/ui/command-palette",
+          items: [],
+        },
+        {
+          title: "Comment",
+          href: "/docs/ui/comment",
+          items: [],
+        },
+        {
+          title: "Footer",
+          href: "/docs/ui/footer",
+          items: [],
+        },
+        {
+          title: "According",
+          href: "/docs/ui/according",
           items: [],
         },
         {
           title: "Alert",
-          href: "/docs/components/alert",
+          href: "/docs/ui/alert",
           items: [],
         },
         {
           title: "Alert Dialog",
-          href: "/docs/components/alert-dialog",
+          href: "/docs/ui/alert-dialog",
           items: [],
         },
         {
           title: "Aspect Ratio",
-          href: "/docs/components/aspect-ratio",
+          href: "/docs/ui/aspect-ratio",
           items: [],
         },
         {
           title: "Avatar",
-          href: "/docs/components/avatar",
+          href: "/docs/ui/avatar",
           items: [],
         },
         {
           title: "Badge",
-          href: "/docs/components/badge",
+          href: "/docs/ui/badge",
           items: [],
         },
         {
           title: "Button",
-          href: "/docs/components/button",
+          href: "/docs/ui/button",
           items: [],
         },
         {
           title: "Calendar",
-          href: "/docs/components/calendar",
+          href: "/docs/ui/calendar",
           items: [],
         },
         {
           title: "Card",
-          href: "/docs/components/card",
+          href: "/docs/ui/card",
           items: [],
         },
         {
           title: "Checkbox",
-          href: "/docs/components/checkbox",
+          href: "/docs/ui/checkbox",
           items: [],
         },
         {
           title: "Collapsible",
-          href: "/docs/components/collapsible",
+          href: "/docs/ui/collapsible",
           items: [],
         },
         {
           title: "Combobox",
-          href: "/docs/components/combobox",
-          items: [],
-        },
-        {
-          title: "Command",
-          href: "/docs/components/command",
+          href: "/docs/ui/combobox",
           items: [],
         },
         {
           title: "Context Menu",
-          href: "/docs/components/context-menu",
+          href: "/docs/ui/context-menu",
           items: [],
         },
         {
           title: "Data Table",
-          href: "/docs/components/data-table",
-          items: [],
-        },
-        {
-          title: "Date Picker",
-          href: "/docs/components/date-picker",
+          href: "/docs/ui/data-table",
           items: [],
         },
         {
           title: "Dialog",
-          href: "/docs/components/dialog",
+          href: "/docs/ui/dialog",
           items: [],
         },
         {
           title: "Dropdown Menu",
-          href: "/docs/components/dropdown-menu",
+          href: "/docs/ui/dropdown-menu",
           items: [],
         },
         {
           title: "Form",
-          href: "/docs/components/form",
+          href: "/docs/ui/form",
           items: [],
         },
         {
           title: "Hover Card",
-          href: "/docs/components/hover-card",
+          href: "/docs/ui/hover-card",
           items: [],
         },
         {
           title: "Input",
-          href: "/docs/components/input",
+          href: "/docs/ui/input",
           items: [],
         },
         {
           title: "Label",
-          href: "/docs/components/label",
-          items: [],
-        },
-        {
-          title: "Menubar",
-          href: "/docs/components/menubar",
-          items: [],
-        },
-        {
-          title: "Navigation Menu",
-          href: "/docs/components/navigation-menu",
+          href: "/docs/ui/label",
           items: [],
         },
         {
           title: "Popover",
-          href: "/docs/components/popover",
+          href: "/docs/ui/popover",
           items: [],
         },
         {
           title: "Progress",
-          href: "/docs/components/progress",
+          href: "/docs/ui/progress",
           items: [],
         },
         {
           title: "Radio Group",
-          href: "/docs/components/radio-group",
+          href: "/docs/ui/radio-group",
           items: [],
         },
         {
           title: "Scroll Area",
-          href: "/docs/components/scroll-area",
+          href: "/docs/ui/scroll-area",
           items: [],
         },
         {
           title: "Select",
-          href: "/docs/components/select",
+          href: "/docs/ui/select",
           items: [],
         },
         {
           title: "Separator",
-          href: "/docs/components/separator",
+          href: "/docs/ui/separator",
           items: [],
         },
         {
           title: "Sheet",
-          href: "/docs/components/sheet",
+          href: "/docs/ui/sheet",
           items: [],
         },
         {
           title: "Skeleton",
-          href: "/docs/components/skeleton",
+          href: "/docs/ui/skeleton",
           items: [],
         },
         {
           title: "Slider",
-          href: "/docs/components/slider",
+          href: "/docs/ui/slider",
           items: [],
         },
         {
           title: "Switch",
-          href: "/docs/components/switch",
+          href: "/docs/ui/switch",
           items: [],
         },
         {
           title: "Table",
-          href: "/docs/components/table",
+          href: "/docs/ui/table",
           items: [],
         },
         {
           title: "Tabs",
-          href: "/docs/components/tabs",
+          href: "/docs/ui/tabs",
           items: [],
         },
         {
           title: "Textarea",
-          href: "/docs/components/textarea",
+          href: "/docs/ui/textarea",
           items: [],
         },
         {
           title: "Toast",
-          href: "/docs/components/toast",
+          href: "/docs/ui/toast",
           items: [],
         },
         {
           title: "Toggle",
-          href: "/docs/components/toggle",
+          href: "/docs/ui/toggle",
           items: [],
         },
         {
           title: "Tooltip",
-          href: "/docs/components/tooltip",
+          href: "/docs/ui/tooltip",
+          items: [],
+        },
+        {
+          title: "Text",
+          href: "/docs/ui/text",
+          items: [],
+        },
+        {
+          title: "Charts",
+          href: "/docs/ui/charts",
+          items: [],
+        },
+        {
+          title: "Pagination",
+          href: "/docs/ui/pagination",
+          items: [],
+        },
+        {
+          title: "Breadcrumbs",
+          href: "/docs/ui/breadcrumbs",
+          items: [],
+        },
+        {
+          title: "Chat Bubble",
+          href: "/docs/ui/chat-bubble",
+          items: [],
+        },
+        {
+          title: "Date and Time Picker",
+          href: "/docs/ui/date-and-time-picker",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Ux",
+      items: [
+        {
+          title: "Ar and Vr",
+          href: "/docs/ux/ar-and-vr",
+          items: [],
+        },
+        {
+          title: "Motionjs",
+          href: "/docs/ux/motionjs",
+          items: [],
+        },
+        {
+          title: "Framer Motion",
+          href: "/docs/ux/framer-motion",
+          items: [],
+        },
+        {
+          title: "Threejs",
+          href: "/docs/ux/threejs",
+          items: [],
+        },
+        {
+          title: "Unreal Engine",
+          href: "/docs/ux/unreal-engine",
+          items: [],
+        },
+        {
+          title: "Unity Engine",
+          href: "/docs/ux/unity-engine",
+          items: [],
+        },
+        {
+          title: "Blendar",
+          href: "/docs/ux/blendar",
+          items: [],
+        },
+        {
+          title: "Maya",
+          href: "/docs/ux/maya",
+          items: [],
+        },
+        {
+          title: "360Deg",
+          href: "/docs/ux/360deg",
+          items: [],
+        },
+        {
+          title: "WebAssembly",
+          href: "/docs/ux/webassembly",
           items: [],
         },
       ],

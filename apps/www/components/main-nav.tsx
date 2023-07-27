@@ -14,20 +14,23 @@ export function MainNav() {
   return (
     <div className="mr-4 hidden md:flex">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        <Icons.logo className="h-6 w-6" />
+        <div className="flex items-center justify-center rounded-full  p-1 ">
+          <Icons.logo className="h-6 w-6" />
+        </div>
+
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>
       </Link>
       <nav className="flex items-center space-x-6 text-sm font-medium">
         <Link
-          href="/docs"
+          href="/hack"
           className={cn(
             "transition-colors hover:text-foreground/80",
             pathname === "/docs" ? "text-foreground" : "text-foreground/60"
           )}
         >
-          Documentation
+          HackIn
         </Link>
         <Link
           href="/docs/components"

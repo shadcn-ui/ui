@@ -15,6 +15,9 @@ import { buttonVariants } from "@/registry/new-york/ui/button"
 import { Separator } from "@/registry/new-york/ui/separator"
 import DashboardPage from "@/app/examples/dashboard/page"
 
+import Todo from "@/components/ui/todo"
+
+
 export default function IndexPage() {
   return (
     <div className="container relative">
@@ -24,13 +27,13 @@ export default function IndexPage() {
           className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
         >
           🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-          <span className="sm:hidden">Style, a new CLI and more.</span>
+          <span className="sm:hidden">Make your Web Devlopmemt flawless with beingofexistence/dx</span>
           <span className="hidden sm:inline">
-            Introducing Style, a new CLI and more.
+            I am BeingOfExistence(Sumon brother of Shohan and Emon)
           </span>
           <ArrowRightIcon className="ml-1 h-4 w-4" />
         </Link>
-        <PageHeaderHeading>Build your component library.</PageHeaderHeading>
+        {/* <PageHeaderHeading>Build your component library.</PageHeaderHeading>
         <PageHeaderDescription>
           Beautifully designed components that you can copy and paste into your
           apps. Accessible. Customizable. Open Source.
@@ -48,9 +51,11 @@ export default function IndexPage() {
             <Icons.gitHub className="mr-2 h-4 w-4" />
             GitHub
           </Link>
-        </div>
+        </div> */}
       </PageHeader>
-      <ExamplesNav className="[&>a:first-child]:text-primary" />
+      <Todo />
+
+      {/* <ExamplesNav className="[&>a:first-child]:text-primary" />
       <section className="space-y-8 overflow-hidden rounded-lg border-2 border-primary dark:border-muted md:hidden">
         <Image
           src="/examples/dashboard-light.png"
@@ -71,7 +76,11 @@ export default function IndexPage() {
         <div className="overflow-hidden rounded-lg border bg-background shadow">
           <DashboardPage />
         </div>
-      </section>
+      </section> */}
+
+
+
+
     </div>
   )
 }
