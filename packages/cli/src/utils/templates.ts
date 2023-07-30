@@ -1,16 +1,14 @@
-export const UTILS = `import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
- 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+export const UTILS = `import { ClassNameValue, twJoin } from "tailwind-merge"
+
+export function cn(...inputs: ClassNameValue[]) {
+  return twJoin(...inputs)
 }
 `
 
-export const UTILS_JS = `import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
- 
+export const UTILS_JS = `import { twJoin } from "tailwind-merge"
+
 export function cn(...inputs) {
-  return twMerge(clsx(inputs))
+  return twJoin(...inputs)
 }
 `
 

@@ -30,7 +30,6 @@ import * as z from "zod"
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
   "class-variance-authority",
-  "clsx",
   "tailwind-merge",
 ]
 

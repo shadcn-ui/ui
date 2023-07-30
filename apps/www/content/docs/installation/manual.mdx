@@ -16,7 +16,7 @@ Components are styled using Tailwind CSS. You need to install Tailwind CSS in yo
 Add the following dependencies to your project:
 
 ```bash
-npm install tailwindcss-animate class-variance-authority clsx tailwind-merge
+npm install tailwindcss-animate class-variance-authority tailwind-merge
 ```
 
 ### Add icon library
@@ -228,11 +228,10 @@ Add the following to your styles/globals.css file. You can learn more about usin
 I use a `cn` helper to make it easier to conditionally add Tailwind CSS classes. Here's how I define it in `lib/utils.ts`:
 
 ```ts title="lib/utils.ts"
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { ClassNameValue, twJoin } from "tailwind-merge"
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+export function cn(...inputs: ClassNameValue[]) {
+  return twJoin(...inputs)
 }
 ```
 

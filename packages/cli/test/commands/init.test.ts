@@ -1,12 +1,15 @@
-import fs from "fs"
-import path from "path"
-import { execa } from "execa"
-import { afterEach, expect, test, vi } from "vitest"
+import fs from "fs";
+import path from "path";
+import { execa } from "execa";
+import { afterEach, expect, test, vi } from "vitest";
 
-import { runInit } from "../../src/commands/init"
-import { getConfig } from "../../src/utils/get-config"
-import * as getPackageManger from "../../src/utils/get-package-manager"
-import * as registry from "../../src/utils/registry"
+
+
+import { runInit } from "../../src/commands/init";
+import { getConfig } from "../../src/utils/get-config";
+import * as getPackageManger from "../../src/utils/get-package-manager";
+import * as registry from "../../src/utils/registry";
+
 
 vi.mock("execa")
 vi.mock("fs/promises", () => ({
@@ -69,7 +72,9 @@ test("init config-full", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     3,
     expect.stringMatching(/src\/lib\/utils.ts$/),
-    expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
+    expect.stringContaining(
+      `import { ClassNameValue, twJoin } from "tailwind-merge"`
+    ),
     "utf8"
   )
   expect(execa).toHaveBeenCalledWith(
@@ -78,7 +83,6 @@ test("init config-full", async () => {
       "add",
       "tailwindcss-animate",
       "class-variance-authority",
-      "clsx",
       "tailwind-merge",
       "@radix-ui/react-icons",
     ],
@@ -139,7 +143,9 @@ test("init config-partial", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     3,
     expect.stringMatching(/utils.ts$/),
-    expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
+    expect.stringContaining(
+      `import { ClassNameValue, twJoin } from "tailwind-merge"`
+    ),
     "utf8"
   )
   expect(execa).toHaveBeenCalledWith(
@@ -148,7 +154,6 @@ test("init config-partial", async () => {
       "install",
       "tailwindcss-animate",
       "class-variance-authority",
-      "clsx",
       "tailwind-merge",
       "lucide-react",
     ],
