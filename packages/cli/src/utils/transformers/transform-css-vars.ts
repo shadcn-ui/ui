@@ -179,9 +179,5 @@ export function applyColorMapping(
     }
   }
 
-  return (
-    Array.from(lightMode).join(" ") +
-    " " +
-    Array.from(darkMode).join(" ").trim()
-  )
+  return [...Array.from(lightMode), ...Array.from(darkMode)].join(" ").trim()
 }
