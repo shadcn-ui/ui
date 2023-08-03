@@ -103,7 +103,9 @@ export default App
 
 ### Add a mode toggle
 
-```tsx {14,26-34} title="components/theme-toggle.tsx"
+Place a mode toggle on your site to toggle between light and dark mode.
+
+```tsx title="components/mode-toggle.tsx"
 import { Moon, Sun } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -113,10 +115,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useTheme } from "@/components/theme-provider"
 
-import { useTheme } from "./theme-provider"
-
-export const ToggleTheme = () => {
+export function ModeToggle() {
   const { setTheme } = useTheme()
 
   return (
@@ -145,7 +146,3 @@ export const ToggleTheme = () => {
 ```
 
 </Steps>
-
-## Other frameworks
-
-I'm looking for help writing guides for other frameworks. Help me write those guides by [opening an PR](https://github.com/shadcn/ui).
