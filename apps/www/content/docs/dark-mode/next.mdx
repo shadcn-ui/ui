@@ -31,25 +31,23 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
 Add the `ThemeProvider` to your root layout, and the two `theme-color` meta tags.
 
-```tsx {1,7-18,20-22} title="app/layout.tsx"
+```tsx {1-2,4-9,17-19} title="app/layout.tsx"
+import { Metadata } from "next"
+
 import { ThemeProvider } from "@/components/theme-provider"
+
+export const metadata: Metadata = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+}
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head>
-          <meta
-            name="theme-color"
-            media="(prefers-color-scheme: light)"
-            content="white"
-          />
-          <meta
-            name="theme-color"
-            media="(prefers-color-scheme: dark)"
-            content="black"
-          />
-        </head>
+        <head />
         <body>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
