@@ -121,6 +121,21 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Dark Mode",
+      items: [
+        {
+          title: "Next.js",
+          href: "/docs/dark-mode/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/dark-mode/vite",
+          items: [],
+        },
+      ],
+    },
+    {
       title: "Components",
       items: [
         {
