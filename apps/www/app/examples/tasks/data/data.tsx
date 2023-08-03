@@ -1,13 +1,13 @@
 import {
-  ArrowDownToLine,
-  ArrowRightToLine,
-  ArrowUpCircle,
-  ArrowUpToLine,
-  CheckCircle2,
-  Circle,
-  HelpCircle,
-  XCircle,
-} from "lucide-react"
+  ArrowDownIcon,
+  ArrowRightIcon,
+  ArrowUpIcon,
+  CheckCircledIcon,
+  CircleIcon,
+  CrossCircledIcon,
+  QuestionMarkCircledIcon,
+  StopwatchIcon,
+} from "@radix-ui/react-icons"
 
 export const labels = [
   {
@@ -28,27 +28,27 @@ export const statuses = [
   {
     value: "backlog",
     label: "Backlog",
-    icon: HelpCircle,
+    icon: QuestionMarkCircledIcon,
   },
   {
     value: "todo",
     label: "Todo",
-    icon: Circle,
+    icon: CircleIcon,
   },
   {
     value: "in progress",
     label: "In Progress",
-    icon: ArrowUpCircle,
+    icon: StopwatchIcon,
   },
   {
     value: "done",
     label: "Done",
-    icon: CheckCircle2,
+    icon: CheckCircledIcon,
   },
   {
     value: "canceled",
     label: "Canceled",
-    icon: XCircle,
+    icon: CrossCircledIcon,
   },
 ]
 
@@ -56,16 +56,16 @@ export const priorities = [
   {
     label: "Low",
     value: "low",
-    icon: ArrowDownToLine,
+    icon: ArrowDownIcon,
   },
   {
     label: "Medium",
     value: "medium",
-    icon: ArrowRightToLine,
+    icon: ArrowRightIcon,
   },
   {
     label: "High",
     value: "high",
-    icon: ArrowUpToLine,
+    icon: ArrowUpIcon,
   },
 ]

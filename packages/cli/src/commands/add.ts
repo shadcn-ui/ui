@@ -143,7 +143,7 @@ export const add = new Command()
         }
 
         for (const file of item.files) {
-          const filePath = path.resolve(targetDir, file.name)
+          let filePath = path.resolve(targetDir, file.name)
 
           // Run transformers.
           const content = await transform({
@@ -152,6 +152,10 @@ export const add = new Command()
             config,
             baseColor,
           })
+
+          if (!config.tsx) {
+            filePath = filePath.replace(/\.tsx$/, ".jsx")
+          }
 
           await fs.writeFile(filePath, content)
         }
