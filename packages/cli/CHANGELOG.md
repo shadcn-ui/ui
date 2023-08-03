@@ -1,5 +1,39 @@
 # @shadcn/ui
 
+## 0.3.0
+
+### Minor Changes
+
+- [#834](https://github.com/shadcn/ui/pull/834) [`edc653c`](https://github.com/shadcn/ui/commit/edc653c01e6d4d5a51f3e414f2aeeb77af758257) Thanks [@shadcn](https://github.com/shadcn)! - add support for jsx
+
+## 0.2.3
+
+### Patch Changes
+
+- [#707](https://github.com/shadcn/ui/pull/707) [`c337753`](https://github.com/shadcn/ui/commit/c3377530f43baa95c9e41cce7c07b1a4db1e3ee6) Thanks [@MarkLyck](https://github.com/MarkLyck)! - fix(cli): use bun add when bun detected
+
+## 0.2.2
+
+### Patch Changes
+
+- [#677](https://github.com/shadcn/ui/pull/677) [`0f84973`](https://github.com/shadcn/ui/commit/0f84973b4d779d16efe3877b9206ea908261ed8f) Thanks [@Xenfo](https://github.com/Xenfo)! - fix(cli): use `@antfu/ni` to detect package manager
+
+- [#681](https://github.com/shadcn/ui/pull/681) [`1971fa7`](https://github.com/shadcn/ui/commit/1971fa7511a22354a9acda12391b55517a261668) Thanks [@dan5py](https://github.com/dan5py)! - use slash for alpha modifier
+
+- [#682](https://github.com/shadcn/ui/pull/682) [`fbed50f`](https://github.com/shadcn/ui/commit/fbed50f4e8d4fc8a4736c2a80b5c61c9b3f5e05a) Thanks [@dan5py](https://github.com/dan5py)! - fix cssVars template typo
+
+## 0.2.1
+
+### Patch Changes
+
+- [#641](https://github.com/shadcn/ui/pull/641) [`658c710`](https://github.com/shadcn/ui/commit/658c710bced7b827a0d32dbcda03a4136961dff1) Thanks [@shadcn](https://github.com/shadcn)! - everything is new
+
+## 0.2.0
+
+### Minor Changes
+
+- [#637](https://github.com/shadcn/ui/pull/637) [`eeb1754`](https://github.com/shadcn/ui/commit/eeb17545a16824e11d09149a5ecab9fca570c448) Thanks [@shadcn](https://github.com/shadcn)! - everything is new
+
 ## 0.1.3
 
 ### Patch Changes

@@ -3,12 +3,18 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { DialogProps } from "@radix-ui/react-alert-dialog"
-import { Circle, File, Laptop, Moon, SunMedium } from "lucide-react"
+import {
+  CircleIcon,
+  FileIcon,
+  LaptopIcon,
+  MoonIcon,
+  SunIcon,
+} from "@radix-ui/react-icons"
 import { useTheme } from "next-themes"
 
 import { docsConfig } from "@/config/docs"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   CommandDialog,
   CommandEmpty,
@@ -17,7 +23,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command"
+} from "@/registry/new-york/ui/command"
 
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter()
@@ -46,14 +52,14 @@ export function CommandMenu({ ...props }: DialogProps) {
       <Button
         variant="outline"
         className={cn(
-          "relative h-9 w-full justify-start rounded-[0.5rem] text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64"
+          "relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64"
         )}
         onClick={() => setOpen(true)}
         {...props}
       >
         <span className="hidden lg:inline-flex">Search documentation...</span>
         <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+        <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
@@ -72,7 +78,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                     runCommand(() => router.push(navItem.href as string))
                   }}
                 >
-                  <File className="mr-2 h-4 w-4" />
+                  <FileIcon className="mr-2 h-4 w-4" />
                   {navItem.title}
                 </CommandItem>
               ))}
@@ -88,7 +94,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                   }}
                 >
                   <div className="mr-2 flex h-4 w-4 items-center justify-center">
-                    <Circle className="h-3 w-3" />
+                    <CircleIcon className="h-3 w-3" />
                   </div>
                   {navItem.title}
                 </CommandItem>
@@ -98,15 +104,15 @@ export function CommandMenu({ ...props }: DialogProps) {
           <CommandSeparator />
           <CommandGroup heading="Theme">
             <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>
-              <SunMedium className="mr-2 h-4 w-4" />
+              <SunIcon className="mr-2 h-4 w-4" />
               Light
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
-              <Moon className="mr-2 h-4 w-4" />
+              <MoonIcon className="mr-2 h-4 w-4" />
               Dark
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme("system"))}>
-              <Laptop className="mr-2 h-4 w-4" />
+              <LaptopIcon className="mr-2 h-4 w-4" />
               System
             </CommandItem>
           </CommandGroup>

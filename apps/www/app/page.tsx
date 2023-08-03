@@ -1,11 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
 import { ExamplesNav } from "@/components/examples-nav"
 import { Icons } from "@/components/icons"
 import {
@@ -13,21 +11,24 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { StyleSwitcher } from "@/components/style-switcher"
+import { buttonVariants } from "@/registry/new-york/ui/button"
+import { Separator } from "@/registry/new-york/ui/separator"
 import DashboardPage from "@/app/examples/dashboard/page"
 
 export default function IndexPage() {
   return (
-    <div className="container relative pb-10">
-      <StyleSwitcher />
-      <PageHeader>
+    <div className="container relative">
+      <PageHeader className="pb-8">
         <Link
-          href="/docs/forms/react-hook-form"
+          href="/docs/changelog"
           className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
         >
-          🎉 <Separator className="mx-2 h-4" orientation="vertical" /> Building
-          forms with React Hook Form and Zod
-          <ChevronRight className="ml-1 h-4 w-4" />
+          🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
+          <span className="sm:hidden">Style, a new CLI and more.</span>
+          <span className="hidden sm:inline">
+            Introducing Style, a new CLI and more.
+          </span>
+          <ArrowRightIcon className="ml-1 h-4 w-4" />
         </Link>
         <PageHeaderHeading>Build your component library.</PageHeaderHeading>
         <PageHeaderDescription>
@@ -67,7 +68,7 @@ export default function IndexPage() {
         />
       </section>
       <section className="hidden md:block">
-        <div className="overflow-hidden rounded-lg border bg-background shadow-xl">
+        <div className="overflow-hidden rounded-lg border bg-background shadow">
           <DashboardPage />
         </div>
       </section>
