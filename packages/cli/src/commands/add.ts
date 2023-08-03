@@ -67,7 +67,9 @@ export const add = new Command()
 
       const registryIndex = await getRegistryIndex()
 
-      let selectedComponents = options.all ? registryIndex.map((entry) => entry.name) : options.components
+      let selectedComponents = options.all
+        ? registryIndex.map((entry) => entry.name)
+        : options.components
       if (!options.components?.length && !options.all) {
         const { components } = await prompts({
           type: "multiselect",
@@ -78,7 +80,9 @@ export const add = new Command()
           choices: registryIndex.map((entry) => ({
             title: entry.name,
             value: entry.name,
-            selected: options.all ? true : options.components?.includes(entry.name)
+            selected: options.all
+              ? true
+              : options.components?.includes(entry.name),
           })),
         })
         selectedComponents = components
