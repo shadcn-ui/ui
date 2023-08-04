@@ -1,30 +1,62 @@
 ---
 title: components.json
-description: This file is used by the CLI when adding components and performing diffs.
+description: Configuration for your project.
 ---
+
+The `components.json` file holds configuration for your project.
+
+We use it to understand how your project is set up and how to generate components customized for your project.
+
+<Callout className="mt-6">
+  Note: The `components.json` file is optional and **only required if you're
+  using the CLI** to add components to your project. If you're using the copy
+  and paste method, you don't need this file.
+</Callout>
+
+You can create a `components.json` file in your project by running the following command:
+
+```bash
+npx shadcn@latest init
+```
+
+See the <Link href="/docs/cli">CLI section</Link> for more information.
+
+## $schema
+
+You can see the JSON Schema for `components.json` [here](https://ui.shadcn.com/schema.json).
+
+```json title="components.json"
+{
+  "$schema": "https://ui.shadcn.com/schema.json"
+}
+```
 
 ## style
 
-`"default"` | `"new-york"`
+The style for your components. **This cannot be changed after initialization.**
 
-The new-york style ships with smaller buttons, cards with shadows and uses [Radix Icons](https://icons.radix-ui.com) instead of the default [Lucide Icons](https://lucide.dev/).
+```json title="components.json"
+{
+  "style": "default" | "new-york"
+}
+```
 
 <ComponentPreview name="card-with-form" />
 
 ## tailwind
 
-Configuration to help the CLI understand how Tailwind CSS is set up in your project. Check the <Link href="/docs/installation">installation section</Link> for how to set up Tailwind CSS.
+Configuration to help the CLI understand how Tailwind CSS is set up in your project.
+
+See the <Link href="/docs/installation">installation section</Link> for how to set up Tailwind CSS.
 
 ### tailwind.config
 
-Path to where your Tailwind CSS configuration file is located.
-
-Example:
+Path to where your `tailwind.config.js` file is located.
 
 ```json title="components.json"
 {
   "tailwind": {
-    "config": "tailwind.config.js"
+    "config": "tailwind.config.js" | "tailwind.config.ts"
   }
 }
 ```
@@ -32,8 +64,6 @@ Example:
 ### tailwind.css
 
 Path to the CSS file that imports Tailwind CSS into your project.
-
-Example:
 
 ```json title="components.json"
 {
@@ -43,92 +73,74 @@ Example:
 }
 ```
 
-```css title="styles/global.css"
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-...
-```
-
 ### tailwind.baseColor
 
-`"gray"` | `"neutral"` | `"slate"` | `"stone"` | `"zinc"`
-
-This is used to generate the default color palette for your components. You can see what the colors look like by viewing the [Tailwind CSS colors documentation](https://tailwindcss.com/docs/customizing-colors).
-
-Example:
+This is used to generate the default color palette for your components. **This cannot be changed after initialization.**
 
 ```json title="components.json"
 {
   "tailwind": {
-    "baseColor": "slate"
+    "baseColor": "gray" | "neutral" | "slate" | "stone" | "zinc"
   }
 }
 ```
 
 ### tailwind.cssVariables
 
-`true` | `false`
+You can choose between using CSS variables or Tailwind CSS utility classes for theming.
 
-If you have this option set to `false`, Tailwind CSS utility classes will be inlined when adding components.
-
-Example:
-
-```tsx
-<div className="bg-zinc-950 text-zinc-50 dark:bg-white dark:text-zinc-950" />
-```
-
-If you have this option set to `true`, CSS variables with custom class names will be used instead.
-
-Example:
-
-```tsx
-<div className="bg-background text-foreground" />
-```
-
-For more information, check the <Link href="/docs/theming">theming section</Link>.
-
-## rsc
-
-`true` | `false`
-
-Whether or not, to add support for React Server Components. The CLI automatically adds a use client directive to components when this option is set to `true`.
-
-Example:
+To use utility classes for theming set `tailwind.cssVariables` to `false`. For CSS variables, set `tailwind.cssVariables` to `true`.
 
 ```json title="components.json"
 {
-  "rsc": true
+  "tailwind": {
+    "cssVariables": `true` | `false`
+  }
+}
+```
+
+For more information, see the <Link href="/docs/theming">theming docs</Link>.
+
+**This cannot be changed after initialization.** To switch between CSS variables and utility classes, you'll have to delete and re-install your components.
+
+## rsc
+
+Whether or not to enable support for React Server Components.
+
+The CLI automatically adds a `use client` directive to client components when set to `true`.
+
+```json title="components.json"
+{
+  "rsc": `true` | `false`
 }
 ```
 
 ## tsx
 
-`true` | `false`
+Choose between TypeScript or JavaScript components.
 
-This is optional.
-
-By default, components are added as TypeScript files. Setting this option to `false` allows components to be added as JavaScript files with the `.jsx` extension.
-
-Example:
+Setting this option to `false` allows components to be added as JavaScript with the `.jsx` file extension.
 
 ```json title="components.json"
 {
-  "tsx": false
+  "tsx": `true` | `false`
 }
 ```
 
 ## aliases
 
-Path aliases have to be set up in your tsconfig or jsconfig file. The CLI uses it as context when adding components.
+The CLI uses these values and the `paths` config from your `tsconfig.json` or `jsconfig.json` file to place generated components in the correct location.
+
+Path aliases have to be set up in your `tsconfig.json` or `jsconfig.json` file.
+
+<Callout className="mt-6">
+  **Important:** If you're using the `src` directory, make sure it is included
+  under `paths` in your `tsconfig.json` or `jsconfig.json` file.
+</Callout>
 
 ### aliases.utils
 
-Location of a file containing utility functions that are used by generated components.
-
-This file is created when initialising shadcn/ui.
-
-Example:
+Import alias for your utility functions.
 
 ```json title="components.json"
 {
@@ -140,9 +152,7 @@ Example:
 
 ### aliases.components
 
-Location of the folder where generated components will be saved.
-
-Example:
+Import alias for your components.
 
 ```json title="components.json"
 {
