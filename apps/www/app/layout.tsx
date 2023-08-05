@@ -1,16 +1,16 @@
 import "@/styles/globals.css"
-import { Metadata } from "next"
 
-import { siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
 import { Analytics } from "@/components/analytics"
-import { ThemeProvider } from "@/components/providers"
+import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
+import { Metadata } from "next"
+import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
-import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
+import { ThemeProvider } from "@/components/providers"
+import { cn } from "@/lib/utils"
+import { fontSans } from "@/lib/fonts"
+import { siteConfig } from "@/config/site"
 
 export const metadata: Metadata = {
   title: {
@@ -23,15 +23,19 @@ export const metadata: Metadata = {
     "React",
     "Tailwind CSS",
     "Server Components",
-    "Radix UI",
+    "Mezcal UI",
   ],
   authors: [
     {
-      name: "shadcn",
-      url: "https://shadcn.com",
+      name: "Armando",
+      url: "https://armando.mx",
+    },
+    {
+      name: "Rafael",
+      url: "guzbarraf.com",
     },
   ],
-  creator: "shadcn",
+  creator: "mezcal-ui",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
@@ -57,7 +61,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@shadcn",
+    creator: "@mezcalui",
   },
   icons: {
     icon: "/favicon.ico",

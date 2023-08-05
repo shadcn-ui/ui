@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
 
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import Link from "next/link"
+import { cn } from "@/lib/utils"
+import { siteConfig } from "@/config/site"
+import { usePathname } from "next/navigation"
 
 export function MainNav() {
   const pathname = usePathname()
@@ -50,14 +50,6 @@ export function MainNav() {
           )}
         >
           Examples
-        </Link>
-        <Link
-          href={siteConfig.links.github}
-          className={cn(
-            "hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
-          )}
-        >
-          GitHub
         </Link>
       </nav>
     </div>

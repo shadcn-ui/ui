@@ -1,13 +1,12 @@
-import Link from "next/link"
-
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
 import { CommandMenu } from "@/components/command-menu"
 import { Icons } from "@/components/icons"
+import Link from "next/link"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
 import { buttonVariants } from "@/registry/new-york/ui/button"
+import { cn } from "@/lib/utils"
+import { siteConfig } from "@/config/site"
 
 export function SiteHeader() {
   return (
@@ -20,23 +19,6 @@ export function SiteHeader() {
             <CommandMenu />
           </div>
           <nav className="flex items-center">
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={cn(
-                  buttonVariants({
-                    variant: "ghost",
-                  }),
-                  "w-9 px-0"
-                )}
-              >
-                <Icons.gitHub className="h-4 w-4" />
-                <span className="sr-only">GitHub</span>
-              </div>
-            </Link>
             <Link
               href={siteConfig.links.twitter}
               target="_blank"
