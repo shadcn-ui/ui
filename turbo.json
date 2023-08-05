@@ -3,12 +3,13 @@
   "globalEnv": ["NODE_ENV"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^db:generate", "^build"],
       "env": [
         "NEXT_PUBLIC_APP_URL",
         "UPSTASH_REDIS_REST_URL",
         "UPSTASH_REDIS_REST_TOKEN",
         "COMPONENTS_REGISTRY_URL",
+        "SUPER_ADMIN_EMAIL",
         "npm_config_user_agent",
         "https_proxy"
       ],
@@ -39,6 +40,7 @@
     },
     "typecheck": {},
     "dev": {
+      "dependsOn": ["^db:generate"],
       "cache": false
     },
     "check": {
@@ -47,6 +49,12 @@
     "test": {
       "cache": false,
       "outputs": []
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
     }
   }
 }

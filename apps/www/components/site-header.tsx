@@ -1,6 +1,7 @@
 import { CommandMenu } from "@/components/command-menu"
 import { Icons } from "@/components/icons"
 import Link from "next/link"
+import LogoutButton from "./auth/logout-button"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
@@ -38,6 +39,7 @@ export function SiteHeader() {
             </Link>
             <ModeToggle />
           </nav>
+          <LogoutButton />
         </div>
       </div>
     </header>

@@ -46,6 +46,9 @@ const nextConfig = {
       },
     ]
   },
+  experimental: {
+    serverActions: true,
+  },
 }
 
 const withContentlayer = createContentlayerPlugin({

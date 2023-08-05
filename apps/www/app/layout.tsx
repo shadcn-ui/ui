@@ -10,6 +10,7 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/providers"
 import { cn } from "@/lib/utils"
 import { fontSans } from "@/lib/fonts"
+import { getCurrentUserSession } from "@/lib/session"
 import { siteConfig } from "@/config/site"
 
 export const metadata: Metadata = {
@@ -75,7 +76,8 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const user = await getCurrentUserSession()
   return (
     <>
       <html lang="en" suppressHydrationWarning>
@@ -88,7 +90,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
+              {user ? <SiteHeader /> : null}
               <div className="flex-1">{children}</div>
               <SiteFooter />
             </div>

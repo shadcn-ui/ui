@@ -1,5 +1,7 @@
-import { Button } from "@/registry/default/ui/button"
+import { Button, buttonVariants } from "@/registry/default/ui/button"
+
 import { Icons } from "@/components/icons"
+import Link from "next/link"
 
 export default function IndexPage() {
   return (
@@ -9,7 +11,14 @@ export default function IndexPage() {
           The elixir for your apps
         </h1>
         <div className="flex w-full flex-col items-center justify-center space-y-4">
-          <Button>Get free components 🎉</Button>
+          <Link
+            href="/login"
+            className={buttonVariants({
+              variant: "default",
+            })}
+          >
+            <span>Get free components 🎉</span>
+          </Link>
           <p className="text-lg font-medium leading-none text-muted-foreground">
             Login and get your first ✨ magic components ✨ for free.
           </p>

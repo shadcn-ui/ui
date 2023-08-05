@@ -1,21 +1,22 @@
 "use client"
 
 import * as React from "react"
-import { Index } from "@/__registry__"
 
-import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
 import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
-import { Icons } from "@/components/icons"
-import { StyleSwitcher } from "@/components/style-switcher"
-import { ThemeWrapper } from "@/components/theme-wrapper"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
+
+import { Icons } from "@/components/icons"
+import { Index } from "@/__registry__"
+import { StyleSwitcher } from "@/components/style-switcher"
+import { ThemeWrapper } from "@/components/theme-wrapper"
+import { cn } from "@/lib/utils"
 import { styles } from "@/registry/styles"
+import { useConfig } from "@/hooks/use-config"
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string
@@ -40,7 +41,12 @@ export function ComponentPreview({
   const Code = Codes[index]
 
   const Preview = React.useMemo(() => {
-    const Component = Index[config.style][name]?.component
+    let Component
+    try {
+      Component = Index[config.style][name]?.component
+    } catch (error) {
+      console.log({ error })
+    }
 
     if (!Component) {
       return (
