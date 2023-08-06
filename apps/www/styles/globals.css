@@ -95,3 +95,135 @@
     @apply px-4;
   }
 }
+
+/* START black hole*/
+.cont-black-hole {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.black-hole {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.black-hole-visible .black-hole-stars {
+  animation: blackHoleStarsRotate 70s linear infinite;
+}
+
+/*.black-hole-visible .black-hole-stars div {
+  animation: blackHoleStarsTwinkle linear infinite;
+}*/
+
+.black-hole-color {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 30%;
+  left: 50%;
+  border-radius: 50%;
+
+  -webkit-transition-duration: 2s;
+  -webkit-transition-property: all;
+  -webkit-transition-timing-function: ease-in-out;
+}
+
+.cont-img-black-hole-front {
+  position: relative;
+  width: 100px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+
+.img-black-hole-front {
+  width: 100%;
+  height: auto;
+}
+
+.img-black-hole {
+  opacity: 0.5;
+  filter: drop-shadow(5px 5px 5px white);
+}
+
+.black-hole-stars {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  -webkit-mask-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(217, 217, 217, 0) 27.08%,
+    #d9d9d9 47.92%,
+    rgba(217, 217, 217, 0.8) 75%,
+    rgba(217, 217, 217, 0) 100%
+  );
+  mask-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(217, 217, 217, 0) 27.08%,
+    #d9d9d9 47.92%,
+    rgba(217, 217, 217, 0.8) 75%,
+    rgba(217, 217, 217, 0) 100%
+  );
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  pointer-events: none;
+  transform: translateZ(0) translate(-50%, -50%);
+}
+/*.black-hole-stars div {*/
+.black-hole-stars div,
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  /*left: 50%;*/
+  background: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+  transform: translateZ(0) translate(0) scale(1);
+}
+
+.black-hole-stars div:nth-child(3n) {
+  opacity: 0.5;
+}
+
+@keyframes blackHoleStarsRotate {
+  0% {
+    transform: translateZ(0) translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translateZ(0) translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes blackHoleStarsRotateReverse {
+  0% {
+    transform: translateZ(0) translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translateZ(0) translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes blackHoleStarsTwinkle {
+  0% {
+    background: rgba(255, 255, 255, 0);
+    transform: translateZ(0) translate(0) scale(1);
+  }
+  10% {
+    background: rgb(255, 255, 255);
+  }
+  to {
+    background: rgb(255, 255, 255);
+    transform: translateZ(0) scale(0.5);
+  }
+}
+/* END black hole*/
