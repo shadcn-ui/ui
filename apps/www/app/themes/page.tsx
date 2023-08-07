@@ -12,7 +12,7 @@ import { ThemesTabs } from "@/app/themes/tabs"
 
 export const metadata: Metadata = {
   title: "Themes",
-  description: "Customize the look and feel of your components.",
+  description: "Hand-picked themes that you can copy and paste into your apps.",
 }
 
 export default function ThemesPage() {

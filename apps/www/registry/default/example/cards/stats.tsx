@@ -113,7 +113,7 @@ export function CardsStats() {
                   style={
                     {
                       fill: "var(--theme-primary)",
-                      opacity: 0.2,
+                      opacity: 1,
                       "--theme-primary": `hsl(${
                         theme?.cssVars[mode === "dark" ? "dark" : "light"]
                           .primary

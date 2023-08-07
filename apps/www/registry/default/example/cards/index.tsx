@@ -1,4 +1,3 @@
-import { ThemeWrapper } from "@/components/theme-wrapper"
 import { CardsActivityGoal } from "@/registry/default/example/cards/activity-goal"
 import { CardsCalendar } from "@/registry/default/example/cards/calendar"
 import { CardsChat } from "@/registry/default/example/cards/chat"
@@ -14,35 +13,51 @@ import { CardsTeamMembers } from "@/registry/default/example/cards/team-members"
 
 export default function CardsDemo() {
   return (
-    <ThemeWrapper>
-      <div className="grid grid-cols-10 gap-4">
-        <div className="col-span-6 space-y-4">
-          <CardsStats />
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <CardsTeamMembers />
-              <CardsCookieSettings />
-              <CardsPaymentMethod />
-            </div>
-            <div className="space-y-4">
-              <CardsChat />
-              <CardsCreateAccount />
+    <div className="md:grids-col-2 grid md:gap-4 lg:grid-cols-10 xl:gap-6">
+      <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-6">
+        <CardsStats />
+        <div className="grid gap-1 sm:grid-cols-[280px_1fr] md:hidden">
+          <CardsCalendar />
+          <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
+            <CardsActivityGoal />
+          </div>
+          <div className="pt-3 sm:col-span-2 xl:pt-4">
+            <CardsMetric />
+          </div>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+          <div className="space-y-4 xl:space-y-6">
+            <CardsTeamMembers />
+            <CardsCookieSettings />
+            <CardsPaymentMethod />
+          </div>
+          <div className="space-y-4 xl:space-y-6">
+            <CardsChat />
+            <CardsCreateAccount />
+            <div className="hidden xl:block">
               <CardsReportIssue />
             </div>
           </div>
         </div>
-        <div className="col-span-4 space-y-4">
-          <div className="row grid grid-cols-[275px_235px] gap-4">
-            <CardsCalendar />
+      </div>
+      <div className="space-y-4 lg:col-span-6 xl:col-span-4 xl:space-y-6">
+        <div className="hidden gap-1 sm:grid-cols-[280px_1fr] md:grid">
+          <CardsCalendar />
+          <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
             <CardsActivityGoal />
-            <div className="col-span-2">
-              <CardsMetric />
-            </div>
           </div>
+          <div className="pt-3 sm:col-span-2 xl:pt-4">
+            <CardsMetric />
+          </div>
+        </div>
+        <div className="hidden md:block">
           <CardsDataTable />
-          <CardsShare />
+        </div>
+        <CardsShare />
+        <div className="xl:hidden">
+          <CardsReportIssue />
         </div>
       </div>
-    </ThemeWrapper>
+    </div>
   )
 }

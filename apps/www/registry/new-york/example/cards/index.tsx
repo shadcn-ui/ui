@@ -1,4 +1,3 @@
-import { ThemeWrapper } from "@/components/theme-wrapper"
 import { CardsActivityGoal } from "@/registry/new-york/example/cards/activity-goal"
 import { CardsCalendar } from "@/registry/new-york/example/cards/calendar"
 import { CardsChat } from "@/registry/new-york/example/cards/chat"
@@ -11,7 +10,6 @@ import { CardsReportIssue } from "@/registry/new-york/example/cards/report-issue
 import { CardsShare } from "@/registry/new-york/example/cards/share"
 import { CardsStats } from "@/registry/new-york/example/cards/stats"
 import { CardsTeamMembers } from "@/registry/new-york/example/cards/team-members"
-import { CardsUnsubsribe } from "@/registry/new-york/example/cards/unsubscribe"
 
 export default function CardsDemo() {
   return (
@@ -55,7 +53,6 @@ export default function CardsDemo() {
         <div className="hidden md:block">
           <CardsDataTable />
         </div>
-        <CardsUnsubsribe />
         <CardsShare />
         <div className="xl:hidden">
           <CardsReportIssue />
