@@ -3,7 +3,7 @@ export const themes = [
     name: "zinc",
     label: "Zinc",
     activeColor: {
-      light: "240 3.8% 46.1%",
+      light: "240 5.9% 10%",
       dark: "240 5.2% 33.9%",
     },
     cssVars: {
