@@ -34,41 +34,16 @@ export const docsConfig: DocsConfig = {
           href: "/docs",
           items: [],
         },
-        {
-          title: "Installation",
-          href: "/docs/installation",
-          items: [],
-        },
+
         {
           title: "Theming",
           href: "/docs/theming",
-          items: [],
-        },
-        {
-          title: "Dark mode",
-          href: "/docs/dark-mode",
           items: [],
         },
 
         {
           title: "About",
           href: "/docs/about",
-          items: [],
-        },
-      ],
-    },
-
-    {
-      title: "Dark Mode",
-      items: [
-        {
-          title: "Next.js",
-          href: "/docs/dark-mode/next",
-          items: [],
-        },
-        {
-          title: "Vite",
-          href: "/docs/dark-mode/vite",
           items: [],
         },
       ],
@@ -82,28 +57,8 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Alert",
-          href: "/docs/components/alert",
-          items: [],
-        },
-        {
           title: "Alert Dialog",
           href: "/docs/components/alert-dialog",
-          items: [],
-        },
-        {
-          title: "Aspect Ratio",
-          href: "/docs/components/aspect-ratio",
-          items: [],
-        },
-        {
-          title: "Avatar",
-          href: "/docs/components/avatar",
-          items: [],
-        },
-        {
-          title: "Badge",
-          href: "/docs/components/badge",
           items: [],
         },
         {
@@ -114,34 +69,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Button",
           href: "/docs/components/button",
-          items: [],
-        },
-
-        {
-          title: "Card",
-          href: "/docs/components/card",
-          items: [],
-        },
-        {
-          title: "Hover Card",
-          href: "/docs/components/hover-card",
-          items: [],
-        },
-
-        {
-          title: "Progress",
-          href: "/docs/components/progress",
-          items: [],
-        },
-
-        {
-          title: "Sheet",
-          href: "/docs/components/sheet",
-          items: [],
-        },
-        {
-          title: "Skeleton",
-          href: "/docs/components/skeleton",
           items: [],
         },
         {

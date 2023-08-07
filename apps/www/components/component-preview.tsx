@@ -98,7 +98,10 @@ export function ComponentPreview({
         </div>
         <TabsContent value="preview" className="relative rounded-md border">
           <div className="flex items-center justify-between p-4">
+            {/*
+            We may need this later but for now we only support one style
             <StyleSwitcher />
+            */}
             {extractedClassNames ? (
               <CopyWithClassNames
                 value={codeString}
