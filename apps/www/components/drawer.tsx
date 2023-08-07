@@ -5,8 +5,6 @@ import { Drawer as DrawerPrimitive } from "vaul"
 
 import { cn } from "@/lib/utils"
 
-const Drawer = DrawerPrimitive.Root
-
 const DrawerTrigger = DrawerPrimitive.Trigger
 
 const DrawerContent = forwardRef<
@@ -30,4 +28,4 @@ const DrawerContent = forwardRef<
 ))
 DrawerContent.displayName = "DrawerContent"
 
-export { Drawer, DrawerTrigger, DrawerContent }
+export { DrawerTrigger, DrawerContent }

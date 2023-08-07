@@ -14,7 +14,7 @@ import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/drawer"
+import { DrawerContent, DrawerTrigger } from "@/components/drawer"
 import { ThemeWrapper } from "@/components/theme-wrapper"
 import { Button } from "@/registry/new-york/ui/button"
 import {
@@ -35,25 +35,26 @@ import { Skeleton } from "@/registry/new-york/ui/skeleton"
 import { Theme, themes } from "@/registry/themes"
 
 import "@/styles/mdx.css"
+import { Drawer } from "vaul"
 
 export function ThemeCustomizer() {
   return (
     <div className="flex items-center space-x-2">
-      <Drawer>
+      <Drawer.Root>
         <DrawerTrigger asChild>
           <Button variant="outline" className="md:hidden">
-            <Paintbrush className="mr-2 h-4 w-4 rotate-90" />
+            <Paintbrush className="mr-2 h-4 w-4" />
             Customize
           </Button>
         </DrawerTrigger>
         <DrawerContent className="h-[85%] p-6 pt-10">
           <Customizer />
         </DrawerContent>
-      </Drawer>
+      </Drawer.Root>
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline" className="hidden md:flex">
-            <Paintbrush className="mr-2 h-4 w-4 rotate-90" />
+            <Paintbrush className="mr-2 h-4 w-4" />
             Customize
           </Button>
         </PopoverTrigger>
