@@ -6,8 +6,6 @@ import { Index } from "@/__registry__"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { Icons } from "@/components/icons"
-import { StyleSwitcher } from "@/components/style-switcher"
-import { ThemeWrapper } from "@/components/theme-wrapper"
 
 interface ThemeComponentProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string

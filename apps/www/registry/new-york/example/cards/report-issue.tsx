@@ -30,7 +30,7 @@ export function CardsReportIssue() {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid gap-4 sm:grid-cols-2">
           <div className="grid gap-2">
             <Label htmlFor="area">Area</Label>
             <Select defaultValue="billing">
@@ -51,7 +51,7 @@ export function CardsReportIssue() {
             <Select defaultValue="2">
               <SelectTrigger
                 id="security-level"
-                className="line-clamp-1 w-[160px] truncate"
+                className="line-clamp-1 w-full truncate"
               >
                 <SelectValue placeholder="Select level" />
               </SelectTrigger>

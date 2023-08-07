@@ -190,18 +190,12 @@ export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
   :root {
     --background: <%- colors.light["background"] %>;
     --foreground: <%- colors.light["foreground"] %>;
- 
-    --muted: <%- colors.light["muted"] %>;
-    --muted-foreground: <%- colors.light["muted-foreground"] %>;
- 
-    --popover: <%- colors.light["popover"] %>;
-    --popover-foreground: <%- colors.light["popover-foreground"] %>;
- 
+
     --card: <%- colors.light["card"] %>;
     --card-foreground: <%- colors.light["card-foreground"] %>;
  
-    --border: <%- colors.light["border"] %>;
-    --input: <%- colors.light["input"] %>;
+    --popover: <%- colors.light["popover"] %>;
+    --popover-foreground: <%- colors.light["popover-foreground"] %>;
  
     --primary: <%- colors.light["primary"] %>;
     --primary-foreground: <%- colors.light["primary-foreground"] %>;
@@ -209,12 +203,17 @@ export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
     --secondary: <%- colors.light["secondary"] %>;
     --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
  
+    --muted: <%- colors.light["muted"] %>;
+    --muted-foreground: <%- colors.light["muted-foreground"] %>;
+ 
     --accent: <%- colors.light["accent"] %>;
     --accent-foreground: <%- colors.light["accent-foreground"] %>;
  
     --destructive: <%- colors.light["destructive"] %>;
     --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
- 
+
+    --border: <%- colors.light["border"] %>;
+    --input: <%- colors.light["input"] %>;
     --ring: <%- colors.light["ring"] %>;
  
     --radius: 0.5rem;
@@ -224,17 +223,11 @@ export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
     --background: <%- colors.dark["background"] %>;
     --foreground: <%- colors.dark["foreground"] %>;
  
-    --muted: <%- colors.dark["muted"] %>;
-    --muted-foreground: <%- colors.dark["muted-foreground"] %>;
- 
-    --popover: <%- colors.dark["popover"] %>;
-    --popover-foreground: <%- colors.dark["popover-foreground"] %>;
- 
     --card: <%- colors.dark["card"] %>;
     --card-foreground: <%- colors.dark["card-foreground"] %>;
  
-    --border: <%- colors.dark["border"] %>;
-    --input: <%- colors.dark["input"] %>;
+    --popover: <%- colors.dark["popover"] %>;
+    --popover-foreground: <%- colors.dark["popover-foreground"] %>;
  
     --primary: <%- colors.dark["primary"] %>;
     --primary-foreground: <%- colors.dark["primary-foreground"] %>;
@@ -242,12 +235,17 @@ export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
     --secondary: <%- colors.dark["secondary"] %>;
     --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
  
+    --muted: <%- colors.dark["muted"] %>;
+    --muted-foreground: <%- colors.dark["muted-foreground"] %>;
+ 
     --accent: <%- colors.dark["accent"] %>;
     --accent-foreground: <%- colors.dark["accent-foreground"] %>;
  
     --destructive: <%- colors.dark["destructive"] %>;
     --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
  
+    --border: <%- colors.dark["border"] %>;
+    --input: <%- colors.dark["input"] %>;
     --ring: <%- colors.dark["ring"] %>;
   }
 }

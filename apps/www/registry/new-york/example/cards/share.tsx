@@ -35,9 +35,7 @@ export function CardsShare() {
       <CardContent>
         <div className="flex space-x-2">
           <Input value="http://example.com/link/to/document" readOnly />
-          <Button variant="secondary" className="shrink-0">
-            Copy Link
-          </Button>
+          <Button className="shrink-0">Copy Link</Button>
         </div>
         <Separator className="my-4" />
         <div className="space-y-4">

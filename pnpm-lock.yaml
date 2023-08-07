@@ -266,6 +266,12 @@ importers:
       tailwind-merge:
         specifier: ^1.12.0
         version: 1.12.0
+      vaul:
+        specifier: ^0.2.0
+        version: 0.2.0(@types/react-dom@18.2.4)(@types/react@18.2.7)(react-dom@18.2.0)(react@18.2.0)
+      windy-radix-palette:
+        specifier: ^0.6.1
+        version: 0.6.1(@radix-ui/colors@1.0.1)(tailwindcss@3.3.2)
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -2400,6 +2406,10 @@ packages:
 
   /@protobufjs/utf8@1.1.0:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
+    dev: false
+
+  /@radix-ui/colors@1.0.1:
+    resolution: {integrity: sha512-xySw8f0ZVsAEP+e7iLl3EvcBXX7gsIlC1Zso/sPBW9gIWerBTgz6axrjU+MZ39wD+WFi5h5zdWpsg3+hwt2Qsg==}
     dev: false
 
   /@radix-ui/number@1.0.1:
@@ -4825,10 +4835,6 @@ packages:
 
   /camelize@1.0.1:
     resolution: {integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==}
-    dev: false
-
-  /caniuse-lite@1.0.30001489:
-    resolution: {integrity: sha512-x1mgZEXK8jHIfAxm+xgdpHpk50IN3z3q3zP261/WS+uvePxW8izXuCu6AHz0lkuYTlATDehiZ/tNyYBdSQsOUQ==}
     dev: false
 
   /caniuse-lite@1.0.30001512:
@@ -8596,7 +8602,7 @@ packages:
       '@opentelemetry/api': 1.4.1
       '@swc/helpers': 0.5.1
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001489
+      caniuse-lite: 1.0.30001512
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -8639,7 +8645,7 @@ packages:
       '@next/env': 13.4.8
       '@swc/helpers': 0.5.1
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001489
+      caniuse-lite: 1.0.30001512
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -11070,6 +11076,20 @@ packages:
       builtins: 1.0.3
     dev: false
 
+  /vaul@0.2.0(@types/react-dom@18.2.4)(@types/react@18.2.7)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-bzqiLz0RzTOewNFRptP9b9Ri5Zrz9cYoK/Qsmo+cbPBJOjiI/Y7Ch3p3BBZKmsmXcQYSp4FsQme9I5DCHxXfeg==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@radix-ui/react-dialog': 1.0.4(@types/react-dom@18.2.4)(@types/react@18.2.7)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
+    dev: false
+
   /vfile-location@4.1.0:
     resolution: {integrity: sha512-YF23YMyASIIJXpktBa4vIGLJ5Gs88UB/XePgqPmTa7cDA+JeO3yclbpheQYCHjVHBn/yePzrXuygIL+xbvRYHw==}
     dependencies:
@@ -11379,6 +11399,16 @@ packages:
     dependencies:
       siginfo: 2.0.0
       stackback: 0.0.2
+    dev: false
+
+  /windy-radix-palette@0.6.1(@radix-ui/colors@1.0.1)(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-n8hy1IWNuieGpQ5NS9gCGoUbtzdQ/j4zPk63ok84NgaCWkyP6kBsno/iHpb4ukt3LCQPqNPo+iok2wUgxw8PBQ==}
+    peerDependencies:
+      '@radix-ui/colors': '>=0.1.0'
+      tailwindcss: '>=3.0.0'
+    dependencies:
+      '@radix-ui/colors': 1.0.1
+      tailwindcss: 3.3.2(ts-node@10.9.1)
     dev: false
 
   /word-wrap@1.2.3:

@@ -9,7 +9,7 @@ const start = new Date(2023, 5, 5)
 
 export function CardsCalendar() {
   return (
-    <Card>
+    <Card className="max-w-[260px]">
       <CardContent className="p-1">
         <Calendar
           numberOfMonths={1}
