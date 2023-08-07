@@ -236,7 +236,9 @@ function Customizer() {
               variant={"outline"}
               size="sm"
               onClick={() => setConfig({ ...config, style: "default" })}
-              className={cn(config.style === "default" && "border-primary")}
+              className={cn(
+                config.style === "default" && "border-2 border-primary"
+              )}
             >
               Default
             </Button>
@@ -244,7 +246,9 @@ function Customizer() {
               variant={"outline"}
               size="sm"
               onClick={() => setConfig({ ...config, style: "new-york" })}
-              className={cn(config.style === "new-york" && "border-primary")}
+              className={cn(
+                config.style === "new-york" && "border-2 border-primary"
+              )}
             >
               New York
             </Button>
@@ -267,7 +271,10 @@ function Customizer() {
                       theme: theme.name,
                     })
                   }}
-                  className={cn("justify-start", isActive && "border-primary")}
+                  className={cn(
+                    "justify-start",
+                    isActive && "border-2 border-primary"
+                  )}
                   style={
                     {
                       "--theme-primary": `hsl(${
@@ -307,7 +314,8 @@ function Customizer() {
                     })
                   }}
                   className={cn(
-                    config.radius === parseFloat(value) && "border-primary"
+                    config.radius === parseFloat(value) &&
+                      "border-2 border-primary"
                   )}
                 >
                   {value}
@@ -325,7 +333,7 @@ function Customizer() {
                   variant={"outline"}
                   size="sm"
                   onClick={() => setMode("light")}
-                  className={cn(mode === "light" && "border-primary")}
+                  className={cn(mode === "light" && "border-2 border-primary")}
                 >
                   <SunIcon className="mr-1 -translate-x-1" />
                   Light
@@ -334,7 +342,7 @@ function Customizer() {
                   variant={"outline"}
                   size="sm"
                   onClick={() => setMode("dark")}
-                  className={cn(mode === "dark" && "border-primary")}
+                  className={cn(mode === "dark" && "border-2 border-primary")}
                 >
                   <MoonIcon className="mr-1 -translate-x-1" />
                   Dark
