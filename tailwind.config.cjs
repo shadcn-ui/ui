@@ -65,10 +65,44 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+
+        rotateCounterClockwise: {
+          "0%": {
+            transform: "rotate(0)",
+          },
+          to: {
+            transform: "rotate(-360deg)",
+          },
+        },
+        rotateClockwise: {
+          "0%": {
+            transform: "rotate(0)",
+          },
+          to: {
+            transform: "rotate(360deg)",
+          },
+        },
+        twinkling: {
+          "0%": {
+            background: "rgba(255, 255, 255, 0)",
+            transform: "translateZ(0) translate(0) scale(1)",
+          },
+          "10%": {
+            background: "rgb(255, 255, 255)",
+          },
+          to: {
+            background: "rgb(255, 255, 255)",
+            transform: "translateZ(0) scale(0.5)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "rotate-clockwise": "rotateClockwise 70s linear infinite",
+        "rotate-counter-clockwise":
+          "rotateCounterClockwise 70s linear infinite",
+        twinkling: "twinkling 13s linear infinite",
       },
     },
   },

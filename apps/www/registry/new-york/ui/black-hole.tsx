@@ -814,23 +814,46 @@ const stars: StarType[] = [
   },
 ]
 
-export const BlackHole = ({ children }: { children: React.ReactNode }) => {
-  const color = "bg-blue-900"
+const BlackHole = ({ children }: { children?: React.ReactNode }) => {
+  const bgColor = "bg-indigo-950"
 
   return (
-    <div className={"cont-black-hole"}>
-      <div className="black-hole black-hole-visible">
+    <div className="relative h-full w-full">
+      <div className="animate-rotate-clockwise flex h-[600px] w-full items-center justify-center">
         {children ? (
-          <div className={"cont-img-black-hole-front"}>{children}</div>
+          <div
+            className={
+              "relative z-20 flex h-auto w-[100px] items-center justify-center"
+            }
+          >
+            {children}
+          </div>
         ) : null}
 
-        <div className={`black-hole-stars ${color}`}>
-          {/*{stars.map((star, index) => {
-            return (
-              <div key={index} style={{ animationDuration: star.duration, animationDelay: star.delay, top: star.top, left: star.left, transform: `translate(${star.translateX}, ${star.translateY})` }}></div>
-            )
-          })}*/}
-
+        <div
+          className={`pointer-events-none absolute h-[500px] w-[500px] ${bgColor}  pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}
+          style={{
+            // @ts-ignore
+            "-webkit-mask-image": `radial-gradient(
+                50% 50% at 50% 50%,
+                rgba(217, 217, 217, 0) 27.08%,
+                #d9d9d9 52%,
+                rgba(217, 217, 217, 0.8) 75%,
+                rgba(217, 217, 217, 0) 100%
+              )`,
+            "mask-image": `radial-gradient(
+                50% 50% at 50% 50%,
+                rgba(217, 217, 217, 0) 27.08%,
+                #d9d9d9 52%,
+                rgba(217, 217, 217, 0.8) 75%,
+                rgba(217, 217, 217, 0) 100%
+              )`,
+            "webkit-mask-position": "0 0",
+            "mask-position": "0 0",
+            "webkit-mask-size": "cover",
+            "mask-size": "cover",
+          }}
+        >
           {stars.map((star, index) => {
             return <Star key={index} star={star} index={index} />
           })}
@@ -841,8 +864,19 @@ export const BlackHole = ({ children }: { children: React.ReactNode }) => {
 }
 
 function Star({ star, index }: { star: StarType; index: number }) {
-  const className = `duration-[${star.duration}] delay-[${star.delay}] top-[${star.top}] left-[${star.left}] translate-x-[${star.translateX}] translate-y-[${star.translateY}] animate-aniBlackHoleStarsTwinkle`
-  // console.log('className =>', className);
-
-  return <div key={index} className={className}></div>
+  return (
+    <div
+      key={index}
+      className="animate-twinkling absolute h-[2px] w-[2px] rounded-full bg-white"
+      style={{
+        animationDuration: star.duration,
+        animationDelay: star.delay,
+        top: star.top,
+        left: star.left,
+        transform: `translate(${star.translateX}, ${star.translateY})`,
+      }}
+    ></div>
+  )
 }
+
+export { BlackHole }
