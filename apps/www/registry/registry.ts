@@ -854,6 +854,11 @@ const example: Registry = [
     type: "components:example",
     files: ["example/mode-toggle.tsx"],
   },
+  {
+    name: "cards",
+    type: "components:example",
+    files: ["example/cards/cards.tsx"],
+  },
 ]
 
 export const registry: Registry = [...ui, ...example]
