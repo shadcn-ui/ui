@@ -90,6 +90,7 @@ export function CardsChat() {
       content: "I can't log in.",
     },
   ])
+  const [messageLength, setMessageLength] = React.useState(0)
 
   return (
     <>
@@ -143,15 +144,17 @@ export function CardsChat() {
           <form
             onSubmit={(event) => {
               event.preventDefault()
-              setMessages([
-                ...messages,
-                {
-                  role: "user",
-                  content: event.currentTarget.message.value,
-                },
-              ])
-
-              event.currentTarget.message.value = ""
+              if (messageLength > 0) {
+                setMessages([
+                  ...messages,
+                  {
+                    role: "user",
+                    content: event.currentTarget.message.value,
+                  },
+                ])
+                event.currentTarget.message.value = ""
+                setMessageLength(0)
+              }
             }}
             className="flex w-full items-center space-x-2"
           >
@@ -159,8 +162,11 @@ export function CardsChat() {
               id="message"
               placeholder="Type your message..."
               className="flex-1"
+              onChange={(event) =>
+                setMessageLength(event.target.value.trim().length)
+              }
             />
-            <Button type="submit" size="icon">
+            <Button type="submit" size="icon" disabled={messageLength === 0}>
               <PaperPlaneIcon className="h-4 w-4" />
               <span className="sr-only">Send</span>
             </Button>
