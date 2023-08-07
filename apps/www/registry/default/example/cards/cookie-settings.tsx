@@ -28,7 +28,7 @@ export function CardsCookieSettings() {
               its features.
             </span>
           </Label>
-          <Switch id="necessary" defaultChecked />
+          <Switch id="necessary" defaultChecked aria-label="Necessary" />
         </div>
         <div className="flex items-center justify-between space-x-4">
           <Label htmlFor="functional" className="flex flex-col space-y-1">
@@ -38,7 +38,7 @@ export function CardsCookieSettings() {
               functionality.
             </span>
           </Label>
-          <Switch id="functional" />
+          <Switch id="functional" aria-label="Functional" />
         </div>
         <div className="flex items-center justify-between space-x-4">
           <Label htmlFor="performance" className="flex flex-col space-y-1">
@@ -47,7 +47,7 @@ export function CardsCookieSettings() {
               These cookies help to improve the performance of the website.
             </span>
           </Label>
-          <Switch id="performance" />
+          <Switch id="performance" aria-label="Performance" />
         </div>
       </CardContent>
       <CardFooter>

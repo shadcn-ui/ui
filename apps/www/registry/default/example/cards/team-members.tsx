@@ -42,7 +42,7 @@ export function CardsTeamMembers() {
         <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="/avatars/01.png" />
+              <AvatarImage src="/avatars/01.png" alt="Image" />
               <AvatarFallback>OM</AvatarFallback>
             </Avatar>
             <div>
@@ -96,7 +96,7 @@ export function CardsTeamMembers() {
         <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="/avatars/02.png" />
+              <AvatarImage src="/avatars/02.png" alt="Image" />
               <AvatarFallback>JL</AvatarFallback>
             </Avatar>
             <div>
@@ -150,7 +150,7 @@ export function CardsTeamMembers() {
         <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="/avatars/03.png" />
+              <AvatarImage src="/avatars/03.png" alt="Image" />
               <AvatarFallback>IN</AvatarFallback>
             </Avatar>
             <div>

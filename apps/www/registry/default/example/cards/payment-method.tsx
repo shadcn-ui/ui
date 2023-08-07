@@ -36,7 +36,12 @@ export function CardsPaymentMethod() {
             htmlFor="card"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
           >
-            <RadioGroupItem value="card" id="card" className="sr-only" />
+            <RadioGroupItem
+              value="card"
+              id="card"
+              className="sr-only"
+              aria-label="Card"
+            />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -56,7 +61,12 @@ export function CardsPaymentMethod() {
             htmlFor="paypal"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
           >
-            <RadioGroupItem value="paypal" id="paypal" className="sr-only" />
+            <RadioGroupItem
+              value="paypal"
+              id="paypal"
+              className="sr-only"
+              aria-label="Paypal"
+            />
             <Icons.paypal className="mb-3 h-6 w-6" />
             Paypal
           </Label>
@@ -64,7 +74,12 @@ export function CardsPaymentMethod() {
             htmlFor="apple"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
           >
-            <RadioGroupItem value="apple" id="apple" className="sr-only" />
+            <RadioGroupItem
+              value="apple"
+              id="apple"
+              className="sr-only"
+              aria-label="Apple"
+            />
             <Icons.apple className="mb-3 h-6 w-6" />
             Apple
           </Label>
@@ -85,7 +100,7 @@ export function CardsPaymentMethod() {
           <div className="grid gap-2">
             <Label htmlFor="month">Expires</Label>
             <Select>
-              <SelectTrigger id="month">
+              <SelectTrigger id="month" aria-label="Month">
                 <SelectValue placeholder="Month" />
               </SelectTrigger>
               <SelectContent>
@@ -107,7 +122,7 @@ export function CardsPaymentMethod() {
           <div className="grid gap-2">
             <Label htmlFor="year">Year</Label>
             <Select>
-              <SelectTrigger id="year">
+              <SelectTrigger id="year" aria-label="Year">
                 <SelectValue placeholder="Year" />
               </SelectTrigger>
               <SelectContent>
