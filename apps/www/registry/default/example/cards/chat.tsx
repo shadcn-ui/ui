@@ -116,6 +116,7 @@ export function CardsChat() {
                   onClick={() => setOpen(true)}
                 >
                   <Plus className="h-4 w-4" />
+                  <span className="sr-only">New message</span>
                 </Button>
               </TooltipTrigger>
               <TooltipContent sideOffset={10}>New message</TooltipContent>
