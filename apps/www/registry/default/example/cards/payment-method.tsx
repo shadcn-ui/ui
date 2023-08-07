@@ -34,7 +34,7 @@ export function CardsPaymentMethod() {
         <RadioGroup defaultValue="card" className="grid grid-cols-3 gap-4">
           <Label
             htmlFor="card"
-            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
           >
             <RadioGroupItem
               value="card"
@@ -59,7 +59,7 @@ export function CardsPaymentMethod() {
           </Label>
           <Label
             htmlFor="paypal"
-            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
           >
             <RadioGroupItem
               value="paypal"
@@ -72,7 +72,7 @@ export function CardsPaymentMethod() {
           </Label>
           <Label
             htmlFor="apple"
-            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
           >
             <RadioGroupItem
               value="apple"
