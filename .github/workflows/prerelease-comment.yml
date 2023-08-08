@@ -10,7 +10,7 @@ on:
 jobs:
   comment:
     if: |
-      github.repository_owner == 'shadcn' &&
+      github.repository_owner == 'shadcn-ui' &&
       ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     name: Write comment to the PR
