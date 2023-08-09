@@ -1,0 +1,292 @@
+---
+title: Remix
+description: Adding dark mode to your Remix app.
+---
+
+## Dark mode
+
+<Steps>
+
+### Create a theme provider
+
+```tsx title="app/components/theme-provider.tsx"
+import { createContext, useContext, useEffect, useState } from "react";
+
+type Theme = "dark" | "light" | "system";
+
+type ThemeProviderProps = {
+  children: React.ReactNode;
+  defaultTheme?: Theme;
+  onThemeChange: (theme: Theme) => void;
+};
+
+type ThemeProviderState = {
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+};
+
+const initialState: ThemeProviderState = {
+  theme: "system",
+  setTheme: () => null,
+};
+
+const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
+
+export function ThemeProvider({
+  children,
+  defaultTheme = "system",
+  onThemeChange,
+  ...props
+}: ThemeProviderProps) {
+  const [theme, setTheme] = useState(defaultTheme);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+
+    root.classList.remove("light", "dark");
+
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+
+      root.classList.add(systemTheme);
+      return;
+    }
+
+    root.classList.add(theme);
+  }, [theme]);
+
+  const value = {
+    theme,
+    setTheme: (theme: Theme) => {
+      let selectedTheme = theme;
+      if (theme === "system" && typeof window !== "undefined") {
+        selectedTheme = window.matchMedia("(prefers-color-scheme: dark)")
+          .matches
+          ? "dark"
+          : "light";
+      }
+      onThemeChange(selectedTheme);
+      setTheme(selectedTheme);
+    },
+  };
+
+  return (
+    <ThemeProviderContext.Provider {...props} value={value}>
+      {children}
+    </ThemeProviderContext.Provider>
+  );
+}
+
+export const useTheme = () => {
+  const context = useContext(ThemeProviderContext);
+
+  if (context === undefined)
+    throw new Error("useTheme must be used within a ThemeProvider");
+
+  return context;
+};
+
+```
+
+### Add a Theme toggle
+
+Place a mode toggle on your site to toggle between light and dark mode.
+
+```tsx title="app/components/theme-toggle.tsx"
+import { Moon, Sun } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useTheme } from '@/components/theme-provider';
+
+export function ThemeToggle() {
+  const { setTheme } = useTheme();
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme('light')}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('dark')}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('system')}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```
+
+### Create a Session store for theme
+
+We will use cookie session for saving the theme selection and on initial load, we will fallback to "system"
+
+We will create a common session helper file. You can read more about session in [Remix Documentation](https://remix.run/docs/en/main/utils/sessions)
+
+```tsx title="app/lib/session.server.ts"
+import { createCookieSessionStorage } from '@remix-run/node';
+
+export const sessionStore = createCookieSessionStorage({
+  cookie: {
+    name: process.env.SESSION_NAME || '__session',
+    httpOnly: true,
+    path: '/',
+    sameSite: 'lax',
+    secrets: [process.env.SESSION_SECRET || 'E919649C3DE566D92F8E73FBD5DED'],
+    secure: process.env.NODE_ENV === 'production',
+  },
+});
+
+export const { getSession, commitSession, destroySession } = sessionStore;
+
+export const getCurrentSession = (request: Request) => {
+  const cookie = request.headers.get('cookie');
+  return getSession(cookie);
+};
+
+```
+
+```tsx title="app/lib/theme.server.ts"
+import { json } from '@remix-run/node';
+import { commitSession, getCurrentSession } from './session.server';
+
+// You can use any name for the session key
+const THEME_PREFERENCE_KEY = 'ui-theme';
+
+export const createThemeCookie = async (request: Request, theme: string) => {
+  const session = await getCurrentSession(request);
+  session.set(THEME_PREFERENCE_KEY, theme);
+  const headers = new Headers({
+    'Set-Cookie': await commitSession(session),
+  });
+  return json(
+    { theme },
+    {
+      headers,
+    },
+  );
+};
+
+export const getThemeFromCookie = async (request: Request) => {
+  const session = await getCurrentSession(request);
+  const theme = session.get(THEME_PREFERENCE_KEY) || 'system';
+  return theme;
+};
+
+
+```
+
+### Update your root layout file
+
+You can use the above session helper to read the user selected mode and wrap the `Outlet` component with our `ThemeProvider` context
+
+
+```tsx {2-9,17-18,23-24,31-48,50,57-60} title="app/root.tsx"
+import { cssBundleHref } from '@remix-run/css-bundle';
+import type {
+  LoaderFunction,
+  LoaderArgs,
+  LinksFunction,
+  ActionFunction,
+  ActionArgs,
+} from '@remix-run/node';
+import { json } from '@remix-run/node';
+import {
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+  useSubmit,
+} from '@remix-run/react';
+
+import globalStyles from '~/styles/global.css';
+
+import { createThemeCookie, getThemeFromCookie } from '~/lib/theme.server';
+import { ThemeProvider } from '~/components/theme-provider';
+
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: globalStyles },
+  ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
+];
+
+export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
+  const theme = await getThemeFromCookie(request);
+  return json({
+    theme,
+  });
+};
+
+export const action: ActionFunction = async ({ request }: ActionArgs) => {
+  const { theme = 'system' } = await request.json();
+  return createThemeCookie(request, theme);
+};
+
+export default function App() {
+  const { theme = 'system' } = useLoaderData<typeof loader>();
+  const submit = useSubmit();
+  const onThemeChange = (theme: string) => {
+    submit({ theme }, { method: 'post', encType: 'application/json' });
+  };
+  return (
+    <html lang="en" className={theme}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body className="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+        <ThemeProvider defaultTheme={theme} onThemeChange={onThemeChange}>
+          <Outlet />
+        </ThemeProvider>
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
+```
+
+### Add the theme toggle component
+
+You can add the `ThemeToggle` component in your shared header file or pages
+
+
+```tsx {1} title="app/routes/_index.tsx"
+import { ThemeToggle } from '~/components/theme-toggle';
+
+export default function Index() {
+  return (
+    <div className="min-h-screen">
+      <ThemeToggle />
+      {/* Your homepage contents or sections */}
+      ....
+      ....
+      ....
+    </div>
+  )
+```
+
+</Steps>
