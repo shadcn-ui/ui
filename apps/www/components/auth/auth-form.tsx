@@ -10,17 +10,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/registry/default/ui/form"
+} from "@/registry/new-york/ui/form"
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 import { FcGoogle } from "react-icons/fc"
-import { Input } from "@/registry/default/ui/input"
+import { Input } from "@/registry/new-york/ui/input"
 import { Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
 import { useSearchParams } from "next/navigation"
-import { useToast } from "@/registry/default/ui/use-toast"
+import { useToast } from "@/registry/new-york/ui/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLFormElement> {}
