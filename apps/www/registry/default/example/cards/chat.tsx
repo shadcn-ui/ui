@@ -162,6 +162,7 @@ export function CardsChat() {
               id="message"
               placeholder="Type your message..."
               className="flex-1"
+              autoComplete="off"
               onChange={(event) =>
                 setMessageLength(event.target.value.trim().length)
               }
