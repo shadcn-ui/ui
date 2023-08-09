@@ -124,7 +124,7 @@
       {
         "name": "collapsible.tsx",
         "dir": "components/ui",
-        "content": "\"use client\"\n\nimport * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\"\n\nconst Collapsible = CollapsiblePrimitive.Root\n\nconst CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger\n\nconst CollapsibleContent = CollapsiblePrimitive.CollapsibleContent\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n"
+        "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Collapsible = CollapsiblePrimitive.Root\n\nconst CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger\n\nconst CollapsibleContent = React.forwardRef<\n  React.ElementRef<typeof CollapsiblePrimitive.CollapsibleContent>,\n  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.CollapsibleContent>\n>(({ className, ...props }, ref) => (\n  <CollapsiblePrimitive.CollapsibleContent\n    ref={ref}\n    className={cn(\n      \"data-[state=closed]:animate-collapse-up data-[state=open]:animate-collapse-down overflow-hidden\",\n      className\n    )}\n    {...props}\n  />\n))\nCollapsibleContent.displayName = \"CollapsibleContent\"\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n"
       }
     ],
     "type": "ui"
