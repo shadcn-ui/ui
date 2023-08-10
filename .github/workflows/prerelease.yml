@@ -10,7 +10,7 @@ on:
 jobs:
   prerelease:
     if: |
-      github.repository_owner == 'shadcn' &&
+      github.repository_owner == 'shadcn-ui' &&
       contains(github.event.pull_request.labels.*.name, '🚀 autorelease')
     name: Build & Publish a beta release to NPM
     runs-on: ubuntu-latest
@@ -24,6 +24,8 @@ jobs:
 
       - name: Use PNPM
         uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8.6.1
 
       - name: Use Node.js 18
         uses: actions/setup-node@v3

@@ -1,13 +1,18 @@
-import { ChevronDown, Circle, Plus, Star } from "lucide-react"
+import {
+  ChevronDownIcon,
+  CircleIcon,
+  PlusIcon,
+  StarIcon,
+} from "@radix-ui/react-icons"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/registry/new-york/ui/card"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -16,8 +21,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Separator } from "@/components/ui/separator"
+} from "@/registry/new-york/ui/dropdown-menu"
+import { Separator } from "@/registry/new-york/ui/separator"
 
 export function DemoGithub() {
   return (
@@ -31,15 +36,15 @@ export function DemoGithub() {
           </CardDescription>
         </div>
         <div className="flex items-center space-x-1 rounded-md bg-secondary text-secondary-foreground">
-          <Button variant="secondary" className="px-3">
-            <Star className="mr-2 h-4 w-4" />
+          <Button variant="secondary" className="px-3 shadow-none">
+            <StarIcon className="mr-2 h-4 w-4" />
             Star
           </Button>
           <Separator orientation="vertical" className="h-[20px]" />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="secondary" className="px-2">
-                <ChevronDown className="h-4 w-4 text-secondary-foreground" />
+              <Button variant="secondary" className="px-2 shadow-none">
+                <ChevronDownIcon className="h-4 w-4 text-secondary-foreground" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
@@ -57,7 +62,7 @@ export function DemoGithub() {
               <DropdownMenuCheckboxItem>Inspiration</DropdownMenuCheckboxItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <Plus className="mr-2 h-4 w-4" /> Create List
+                <PlusIcon className="mr-2 h-4 w-4" /> Create List
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -66,12 +71,12 @@ export function DemoGithub() {
       <CardContent>
         <div className="flex space-x-4 text-sm text-muted-foreground">
           <div className="flex items-center">
-            <Circle className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
-            TypeScipt
+            <CircleIcon className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
+            TypeScript
           </div>
           <div className="flex items-center">
-            <Star className="mr-1 h-3 w-3" />
-            10k
+            <StarIcon className="mr-1 h-3 w-3" />
+            20k
           </div>
           <div>Updated April 2023</div>
         </div>

@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`transform css vars 1`] = `
+"import * as React from \\"react\\"
+export function Foo() {
+	return <div className=\\"bg-background hover:bg-muted text-primary-foreground sm:focus:text-accent-foreground\\">foo</div>
+}\\"
+    "
+`;
+
+exports[`transform css vars 2`] = `
+"import * as React from \\"react\\"
+export function Foo() {
+	return <div className=\\"bg-white hover:bg-stone-100 text-stone-50 sm:focus:text-stone-900 dark:bg-stone-950 dark:hover:bg-stone-800 dark:text-stone-900 dark:sm:focus:text-stone-50\\">foo</div>
+}\\"\\"
+    "
+`;
+
+exports[`transform css vars 3`] = `
+"import * as React from \\"react\\"
+export function Foo() {
+	return <div className={cn(\\"bg-white hover:bg-stone-100 dark:bg-stone-950 dark:hover:bg-stone-800\\", true && \\"text-stone-50 sm:focus:text-stone-900 dark:text-stone-900 dark:sm:focus:text-stone-50\\")}>foo</div>
+}\\"\\"
+    "
+`;
