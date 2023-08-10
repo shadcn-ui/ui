@@ -10,7 +10,7 @@ on:
 jobs:
   prerelease:
     if: |
-      github.repository_owner == 'shadcn' &&
+      github.repository_owner == 'shadcn-ui' &&
       contains(github.event.pull_request.labels.*.name, '🚀 autorelease')
     name: Build & Publish a beta release to NPM
     runs-on: ubuntu-latest
