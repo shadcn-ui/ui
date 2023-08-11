@@ -13,4 +13,5 @@ export const playlists = [
   "Runtober",
   "Mellow Days",
   "Eminem Essentials",
+  "Swifties Specials",
 ]
