@@ -65,6 +65,7 @@ export const docsConfig: DocsConfig = {
           title: "Black Hole",
           href: "/docs/components/black-hole",
           items: [],
+          label: "Free",
         },
         {
           title: "Button",

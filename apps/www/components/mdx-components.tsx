@@ -1,22 +1,7 @@
 "use client"
 
 import * as React from "react"
-import Image from "next/image"
-import Link, { LinkProps } from "next/link"
-import { useMDXComponent } from "next-contentlayer/hooks"
-import { NpmCommands } from "types/unist"
 
-import { Event } from "@/lib/events"
-import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
-import { Callout } from "@/components/callout"
-import { CodeBlockWrapper } from "@/components/code-block-wrapper"
-import { ComponentExample } from "@/components/component-example"
-import { ComponentPreview } from "@/components/component-preview"
-import { ComponentSource } from "@/components/component-source"
-import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
-import { FrameworkDocs } from "@/components/framework-docs"
-import { StyleWrapper } from "@/components/style-wrapper"
 import {
   Accordion,
   AccordionContent,
@@ -28,14 +13,30 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/registry/new-york/ui/alert"
-import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
+import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
+
+import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
+import { Callout } from "@/components/callout"
+import { CodeBlockWrapper } from "@/components/code-block-wrapper"
+import { ComponentExample } from "@/components/component-example"
+import { ComponentPreview } from "@/components/component-preview"
+import { ComponentSource } from "@/components/component-source"
+import { Event } from "@/lib/events"
+import { FrameworkDocs } from "@/components/framework-docs"
+import Image from "next/image"
+import Link from "next/link"
+import { NpmCommands } from "types/unist"
 import { Style } from "@/registry/styles"
+import { StyleWrapper } from "@/components/style-wrapper"
+import { cn } from "@/lib/utils"
+import { useConfig } from "@/hooks/use-config"
+import { useMDXComponent } from "next-contentlayer/hooks"
 
 const components = {
   Accordion,

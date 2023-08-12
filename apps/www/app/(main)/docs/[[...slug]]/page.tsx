@@ -1,21 +1,22 @@
-import { notFound } from "next/navigation"
-import { allDocs } from "contentlayer/generated"
-
 import "@/styles/mdx.css"
-import type { Metadata } from "next"
-import Link from "next/link"
-import { ChevronRightIcon } from "@radix-ui/react-icons"
-import Balancer from "react-wrap-balancer"
 
-import { siteConfig } from "@/config/site"
-import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
-import { Mdx } from "@/components/mdx-components"
-import { DocsPager } from "@/components/pager"
+import { getCurrentUserSession, isProUser } from "@/lib/session"
+
+import Balancer from "react-wrap-balancer"
+import BuyButton from "@/components/buy-button"
+import { ChevronRightIcon } from "@radix-ui/react-icons"
+import { ComponentPreview } from "@/components/component-preview"
+import { ComponentSource } from "@/components/component-source"
 import { DashboardTableOfContents } from "@/components/toc"
-import { badgeVariants } from "@/registry/new-york/ui/badge"
+import { DocsPager } from "@/components/pager"
+import { Mdx } from "@/components/mdx-components"
+import type { Metadata } from "next"
 import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
+import { allDocs } from "contentlayer/generated"
+import { getTableOfContents } from "@/lib/toc"
+import { notFound } from "next/navigation"
+import { siteConfig } from "@/config/site"
 
 interface DocPageProps {
   params: {
@@ -70,17 +71,10 @@ export async function generateMetadata({
   }
 }
 
-export async function generateStaticParams(): Promise<
-  DocPageProps["params"][]
-> {
-  return allDocs.map((doc) => ({
-    slug: doc.slugAsParams.split("/"),
-  }))
-}
-
 export default async function DocPage({ params }: DocPageProps) {
   const doc = await getDocFromParams({ params })
-
+  const isPro = await isProUser()
+  const user = await getCurrentUserSession()
   if (!doc) {
     notFound()
   }
@@ -107,33 +101,21 @@ export default async function DocPage({ params }: DocPageProps) {
             </p>
           )}
         </div>
-        {doc.radix ? (
-          <div className="flex items-center space-x-2 pt-4">
-            {doc.radix?.link && (
-              <Link
-                href={doc.radix.link}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }))}
-              >
-                <Icons.radix className="mr-1 h-3 w-3" />
-                Radix UI
-              </Link>
-            )}
-            {doc.radix?.api && (
-              <Link
-                href={doc.radix.api}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }))}
-              >
-                API Reference
-              </Link>
-            )}
-          </div>
-        ) : null}
+
         <div className="pb-12 pt-8">
-          <Mdx code={doc.body.code} />
+          {isPro || doc.isFree || !doc.component ? (
+            <Mdx code={doc.body.code} />
+          ) : (
+            <>
+              <ComponentPreview
+                name={doc.demoName!}
+                className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+              />
+              <div className="flex h-24 w-full items-center justify-center border">
+                <BuyButton user={user}>✨ Get all components now ✨</BuyButton>
+              </div>
+            </>
+          )}
         </div>
         <DocsPager doc={doc} />
       </div>

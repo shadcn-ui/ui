@@ -17,7 +17,7 @@
     "build": "turbo run build",
     "build:cli": "turbo --filter=shadcn-ui build",
     "build:registry": "pnpm --filter=www build:registry",
-    "dev": "turbo run dev --parallel",
+    "dev": "dotenv -- turbo dev --parallel",
     "dev:cli": "turbo --filter=shadcn-ui dev",
     "start:cli": "pnpm --filter=shadcn-ui start:dev",
     "lint": "turbo run lint",
@@ -68,5 +68,8 @@
     "typescript": "^4.9.5",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.31.1"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.2.1"
   }
 }

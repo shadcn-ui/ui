@@ -1,20 +1,20 @@
-import fs from "fs"
-import path from "path"
 import {
   defineDocumentType,
   defineNestedType,
   makeSource,
 } from "contentlayer/source-files"
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import rehypePrettyCode from "rehype-pretty-code"
-import rehypeSlug from "rehype-slug"
-import { codeImport } from "remark-code-import"
-import remarkGfm from "remark-gfm"
 import { getHighlighter, loadTheme } from "shiki"
-import { visit } from "unist-util-visit"
 
+import { codeImport } from "remark-code-import"
+import fs from "fs"
+import path from "path"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import { rehypeComponent } from "./lib/rehype-component"
 import { rehypeNpmCommand } from "./lib/rehype-npm-command"
+import rehypePrettyCode from "rehype-pretty-code"
+import rehypeSlug from "rehype-slug"
+import remarkGfm from "remark-gfm"
+import { visit } from "unist-util-visit"
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
@@ -74,6 +74,15 @@ export const Doc = defineDocumentType(() => ({
     toc: {
       type: "boolean",
       default: true,
+      required: false,
+    },
+    isFree: {
+      type: "boolean",
+      default: false,
+      required: false,
+    },
+    demoName: {
+      type: "string",
       required: false,
     },
   },

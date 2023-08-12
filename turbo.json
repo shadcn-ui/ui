@@ -11,7 +11,8 @@
         "COMPONENTS_REGISTRY_URL",
         "SUPER_ADMIN_EMAIL",
         "npm_config_user_agent",
-        "https_proxy"
+        "https_proxy",
+        "STRIPE_PRICE_ID"
       ],
       "outputs": ["dist/**", ".next/**"]
     },
