@@ -76,6 +76,7 @@ export const docsConfig: DocsConfig = {
           title: "Ring",
           href: "/docs/components/ring",
           items: [],
+          label: "Free",
         },
         {
           title: "Toast",
