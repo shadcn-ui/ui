@@ -1,0 +1,86 @@
+---
+title: Ring
+description: A ring that can be used to indicate a loading state or progress.
+component: true
+demoName: ring-demo
+---
+
+<ComponentPreview
+  name="ring-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="ring" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {5-42}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        rotateCounterClockwise: {
+          "0%": {
+            transform: "rotate(0)",
+          },
+          to: {
+            transform: "rotate(-360deg)",
+          },
+        },
+        rotateClockwise: {
+          "0%": {
+            transform: "rotate(0)",
+          },
+          to: {
+            transform: "rotate(360deg)",
+          },
+        },
+        twinkling: {
+          "0%": {
+            background: "rgba(255, 255, 255, 0)",
+            transform: "translateZ(0) translate(0) scale(1)",
+          },
+          "10%": {
+            background: "rgb(255, 255, 255)",
+          },
+          to: {
+            background: "rgb(255, 255, 255)",
+            transform: "translateZ(0) scale(0.5)",
+          },
+        },
+      },
+      animation: {
+        "rotate-clockwise": "rotateClockwise 70s linear infinite",
+        "rotate-counter-clockwise":
+          "rotateCounterClockwise 70s linear infinite",
+        twinkling: "twinkling 13s linear infinite",
+      },
+    },
+  },
+}
+```
+
+</Steps>
+
+## Usage
+
+```tsx
+import { BlackHole } from "@/components/ui/black-hole"
+```
+
+```tsx
+<BlackHole numberOfStars={200}>
+  <h1> Black Hole </h1>
+</BlackHole>
+```

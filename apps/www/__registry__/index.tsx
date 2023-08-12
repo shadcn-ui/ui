@@ -35,7 +35,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/button")),
       files: ["registry/default/ui/button.tsx"],
     },
-
+    ring: {
+      name: "ring",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/ring")),
+      files: ["registry/default/ui/ring.tsx"],
+    },
     toast: {
       name: "toast",
       type: "components:ui",
@@ -168,6 +174,15 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-as-child.tsx"],
     },
 
+    "ring-demo": {
+      name: "toast-demo",
+      type: "components:example",
+      registryDependencies: ["ring"],
+      component: React.lazy(
+        () => import("@/registry/default/example/ring-demo")
+      ),
+      files: ["registry/default/example/ring-demo.tsx"],
+    },
     "toast-demo": {
       name: "toast-demo",
       type: "components:example",
