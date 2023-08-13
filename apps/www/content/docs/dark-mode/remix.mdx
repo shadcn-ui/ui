@@ -193,20 +193,46 @@ export const getThemeFromCookie = async (request: Request) => {
 
 
 ```
+### Create an API Route file for saving the theme
+
+```tsx title="app/routes/api/toggleTheme.ts"
+
+import type {
+  ActionArgs,
+  ActionFunction,
+  LoaderFunction,
+} from '@remix-run/node';
+import { redirect } from '@remix-run/node';
+import { createThemeCookie } from '~/lib/theme.server';
+
+export const loader: LoaderFunction = async () => {
+  return redirect('/');
+};
+
+export const action: ActionFunction = async ({ request }: ActionArgs) => {
+  const { theme = 'system' } = await request.json();
+  return createThemeCookie(request, theme);
+};
+
+```
 
 ### Update your root layout file
 
 You can use the above session helper to read the user selected mode and wrap the `Outlet` component with our `ThemeProvider` context
 
 
-```tsx {2-9,17-18,23-24,31-48,50,57-60} title="app/root.tsx"
+
+
+
+
+
+
+```tsx {2-7,15-16,21-22,29-34,31-48,50,57-60} title="app/root.tsx"
 import { cssBundleHref } from '@remix-run/css-bundle';
 import type {
   LoaderFunction,
   LoaderArgs,
   LinksFunction,
-  ActionFunction,
-  ActionArgs,
 } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import {
@@ -217,7 +243,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
-  useSubmit,
+  useFetcher,
 } from '@remix-run/react';
 
 import globalStyles from '~/styles/global.css';
@@ -237,19 +263,14 @@ export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
   });
 };
 
-export const action: ActionFunction = async ({ request }: ActionArgs) => {
-  const { theme = 'system' } = await request.json();
-  return createThemeCookie(request, theme);
-};
-
 export default function App() {
   const { theme = 'system' } = useLoaderData<typeof loader>();
-  const submit = useSubmit();
+  const fetcher = useFetcher();
   const onThemeChange = (theme: string) => {
-    submit({ theme }, { method: 'post', encType: 'application/json' });
+    fetcher.submit({ theme }, { method: 'post', encType: 'application/json' });
   };
   return (
-    <html lang="en" className={theme}>
+    <html lang="en" className={theme??'theme'}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
