@@ -195,7 +195,7 @@ export const getThemeFromCookie = async (request: Request) => {
 ```
 ### Create an API Route file for saving the theme
 
-```tsx title="app/routes/api/toggleTheme.ts"
+```tsx title="app/routes/api.toggleTheme.tsx"
 
 import type {
   ActionArgs,
@@ -261,7 +261,7 @@ export default function App() {
   const { theme = 'system' } = useLoaderData<typeof loader>();
   const fetcher = useFetcher();
   const onThemeChange = (theme: string) => {
-    fetcher.submit({ theme }, { method: 'post', encType: 'application/json' });
+    fetcher.submit({ theme }, { method: 'post', encType: 'application/json', action: '/api/toggleTheme' });
   };
   return (
     <html lang="en" className={theme??'theme'}>
