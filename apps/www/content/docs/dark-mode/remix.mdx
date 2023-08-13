@@ -261,7 +261,7 @@ export default function App() {
   const { theme = 'system' } = useLoaderData<typeof loader>();
   const fetcher = useFetcher();
   const onThemeChange = (theme: string) => {
-    fetcher.submit({ theme }, { method: 'post', encType: 'application/json', action: '/api/toggleTheme' });
+    fetcher.submit({ theme }, { method: 'post', encType: 'application/json', action: '/api/toggleTheme',  });
   };
   return (
     <html lang="en" className={theme??'theme'}>
