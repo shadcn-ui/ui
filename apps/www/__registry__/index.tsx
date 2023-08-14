@@ -35,7 +35,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/button")),
       files: ["registry/default/ui/button.tsx"],
     },
-
+    "stars-moving": {
+      name: "stars-moving",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/stars-moving/stars-moving")),
+      files: ["registry/default/ui/stars-moving/stars-moving.tsx"],
+    },
     toast: {
       name: "toast",
       type: "components:ui",
@@ -167,7 +173,15 @@ export const Index: Record<string, any> = {
       ),
       files: ["registry/default/example/button-as-child.tsx"],
     },
-
+    "stars-moving-demo": {
+      name: "stars-moving-demo",
+      type: "components:example",
+      registryDependencies: ["stars-moving"],
+      component: React.lazy(
+        () => import("@/registry/default/example/stars-moving-demo")
+      ),
+      files: ["registry/default/example/stars-moving-demo.tsx"],
+    },
     "toast-demo": {
       name: "toast-demo",
       type: "components:example",
