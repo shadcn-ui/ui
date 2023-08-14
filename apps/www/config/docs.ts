@@ -73,6 +73,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Stars Moving",
+          href: "/docs/components/stars-moving",
+          items: [],
+        },
+        {
           title: "Toast",
           href: "/docs/components/toast",
           items: [],
