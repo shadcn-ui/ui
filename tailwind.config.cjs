@@ -95,6 +95,55 @@ module.exports = {
             transform: "translateZ(0) scale(0.5)",
           },
         },
+
+        starsMovingAnimationUp: {
+          '0%': {
+            transform: 'translateZ(0) translateY(0)'
+          },
+          'to': {
+            transform: 'translateZ(0) translateY(-2000px)'
+          }
+        },
+        starsMovingAnimationDown: {
+          '0%': {
+            transform: 'translateZ(0) translateY(-1900px)'
+          },
+          'to': {
+            transform: 'translateZ(0) translateY(0)'
+          }
+        },
+        starsMovingAnimationLRDown: {
+          '0%': {
+            transform: 'translateZ(0) translateX(-1000px) translateY(-1000px)'
+          },
+          'to': {
+            transform: 'translateZ(0) translateX(0) translateY(0)'
+          }
+        },
+        starsMovingAnimationLRUp: {
+          '0%': {
+            transform: 'translateZ(0) translateX(-1000px) translateY(0)'
+          },
+          'to': {
+            transform: 'translateZ(0) translateX(0) translateY(-1000px)'
+          }
+        },
+        starsMovingAnimationRLDown: {
+          '0%': {
+            transform: 'translateZ(0) translateX(0) translateY(-1000px)'
+          },
+          'to': {
+            transform: 'translateZ(0) translateX(-1000px) translateY(0)'
+          }
+        },
+        starsMovingAnimationRLUp: {
+          '0%': {
+            transform: 'translateZ(0) translateX(0) translateY(0)'
+          },
+          'to': {
+            transform: 'translateZ(0) translateX(-1000px) translateY(-1000px)'
+          }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -103,6 +152,13 @@ module.exports = {
         "rotate-counter-clockwise":
           "rotateCounterClockwise 70s linear infinite",
         twinkling: "twinkling 13s linear infinite",
+
+        starsMovingAnimationUp: 'starsMovingAnimationUp linear infinite',
+        starsMovingAnimationDown: 'starsMovingAnimationDown linear infinite',
+        starsMovingAnimationLRDown: 'starsMovingAnimationLRDown linear infinite',
+        starsMovingAnimationLRUp: 'starsMovingAnimationLRUp linear infinite',
+        starsMovingAnimationRLDown: 'starsMovingAnimationRLDown linear infinite',
+        starsMovingAnimationRLUp: 'starsMovingAnimationRLUp linear infinite',
       },
     },
   },
