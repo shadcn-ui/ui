@@ -1,4 +1,3 @@
-
   .theme-zinc {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -6,7 +5,7 @@
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
  
-    --popover: 0 0% 100%;;
+    --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
  
     --card: 0 0% 100%;
