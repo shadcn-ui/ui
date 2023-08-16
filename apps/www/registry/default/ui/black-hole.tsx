@@ -24,19 +24,19 @@ function buildStars(numberOfStars: number) {
   return stars
 }
 
-const BlackHole = ({
+export default function BlackHole({
   children,
   numberOfStars = 100,
 }: {
   children?: React.ReactNode
   numberOfStars?: number
-}) => {
+}) {
   const bgColor = "bg-indigo-800"
   const stars = React.useMemo(() => buildStars(numberOfStars), [numberOfStars])
 
   return (
     <div className="relative h-full w-full">
-      <div className="animate-rotate-clockwise flex h-[600px] w-full items-center justify-center">
+      <div className="flex h-[600px] w-full animate-rotate-clockwise items-center justify-center">
         {children ? (
           <div
             className={
@@ -84,7 +84,7 @@ function Star({ star, index }: { star: StarType; index: number }) {
   return (
     <div
       key={index}
-      className="animate-twinkling absolute h-[2px] w-[2px] rounded-full bg-white"
+      className="absolute h-[2px] w-[2px] animate-twinkling rounded-full bg-white"
       style={{
         animationDuration: star.duration,
         animationDelay: star.delay,
@@ -95,5 +95,3 @@ function Star({ star, index }: { star: StarType; index: number }) {
     ></div>
   )
 }
-
-export { BlackHole }

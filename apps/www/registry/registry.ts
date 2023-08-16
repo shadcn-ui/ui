@@ -26,6 +26,11 @@ const ui: Registry = [
     dependencies: ["@radix-ui/react-slot"],
     files: ["ui/button.tsx"],
   },
+  {
+    name: "ring",
+    type: "components:ui",
+    files: ["ui/ring.tsx"],
+  },
 
   {
     name: "toast",
@@ -116,7 +121,12 @@ const example: Registry = [
     registryDependencies: ["button"],
     files: ["example/button-as-child.tsx"],
   },
-
+  {
+    name: "ring-demo",
+    type: "components:example",
+    registryDependencies: ["ring"],
+    files: ["example/ring-demo.tsx"],
+  },
   {
     name: "toast-demo",
     type: "components:example",

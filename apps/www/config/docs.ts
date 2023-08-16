@@ -73,6 +73,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Ring",
+          href: "/docs/components/ring",
+          items: [],
+          label: "Free",
+        },
+        {
           title: "Toast",
           href: "/docs/components/toast",
           items: [],

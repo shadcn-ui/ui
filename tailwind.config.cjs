@@ -103,6 +103,7 @@ module.exports = {
         "rotate-counter-clockwise":
           "rotateCounterClockwise 70s linear infinite",
         twinkling: "twinkling 13s linear infinite",
+        rotate: "rotateClockwise 2s infinite",
       },
     },
   },
