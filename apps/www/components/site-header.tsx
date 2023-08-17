@@ -1,22 +1,24 @@
-import BuyButton from "./buy-button"
-import { CommandMenu } from "@/components/command-menu"
-import { CurrentUser } from "@/lib/session"
-import { Icons } from "@/components/icons"
 import Link from "next/link"
-import LogoutButton from "./auth/logout-button"
+
+import { siteConfig } from "@/config/site"
+import { CurrentUser } from "@/lib/session"
+import { cn } from "@/lib/utils"
+import { CommandMenu } from "@/components/command-menu"
+import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
 import { buttonVariants } from "@/registry/new-york/ui/button"
-import { cn } from "@/lib/utils"
-import { siteConfig } from "@/config/site"
+
+import LogoutButton from "./auth/logout-button"
+import BuyButton from "./buy-button"
 
 type SiteHeaderProps = {
   user: CurrentUser & { isPro: boolean }
 }
 export function SiteHeader({ user }: SiteHeaderProps) {
   return (
-    <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
+    <header className="supports-backdrop-blur:bg-background/50 sticky top-0 z-40 w-full border-b bg-background/50 backdrop-blur">
       <div className="container flex h-14 items-center">
         <MainNav />
         <MobileNav />

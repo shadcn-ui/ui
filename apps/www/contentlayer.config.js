@@ -1,20 +1,20 @@
+import fs from "fs"
+import path from "path"
 import {
   defineDocumentType,
   defineNestedType,
   makeSource,
 } from "contentlayer/source-files"
-import { getHighlighter, loadTheme } from "shiki"
-
-import { codeImport } from "remark-code-import"
-import fs from "fs"
-import path from "path"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import { rehypeComponent } from "./lib/rehype-component"
-import { rehypeNpmCommand } from "./lib/rehype-npm-command"
 import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
+import { codeImport } from "remark-code-import"
 import remarkGfm from "remark-gfm"
+import { getHighlighter, loadTheme } from "shiki"
 import { visit } from "unist-util-visit"
+
+import { rehypeComponent } from "./lib/rehype-component"
+import { rehypeNpmCommand } from "./lib/rehype-npm-command"
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {

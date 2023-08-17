@@ -35,6 +35,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/button")),
       files: ["registry/default/ui/button.tsx"],
     },
+    "crypto-card": {
+      name: "crypto-card",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/crypto-card")),
+      files: ["registry/default/ui/crypto-card.tsx"],
+    },
     ring: {
       name: "ring",
       type: "components:ui",
@@ -173,9 +180,26 @@ export const Index: Record<string, any> = {
       ),
       files: ["registry/default/example/button-as-child.tsx"],
     },
-
+    "crypto-card-demo": {
+      name: "crypto-card-demo",
+      type: "components:example",
+      registryDependencies: ["crypto-card"],
+      component: React.lazy(
+        () => import("@/registry/default/example/crypto-card-demo")
+      ),
+      files: ["registry/default/example/crypto-card-demo.tsx"],
+    },
+    "crypto-card-icon-demo": {
+      name: "crypto-card-icon-demo",
+      type: "components:example",
+      registryDependencies: ["crypto-card"],
+      component: React.lazy(
+        () => import("@/registry/default/example/crypto-card-icon-demo")
+      ),
+      files: ["registry/default/example/crypto-card-icon-demo.tsx"],
+    },
     "ring-demo": {
-      name: "toast-demo",
+      name: "ring-demo",
       type: "components:example",
       registryDependencies: ["ring"],
       component: React.lazy(

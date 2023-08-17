@@ -73,6 +73,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Crypto Card",
+          href: "/docs/components/crypto-card",
+          items: [],
+        },
+        {
           title: "Ring",
           href: "/docs/components/ring",
           items: [],
