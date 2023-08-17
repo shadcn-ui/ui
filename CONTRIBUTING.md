@@ -91,14 +91,14 @@ We use a registry system for developing components. You can find the source code
 
 ```bash
 apps
-  www
-    registry
-      default
-        example
-        ui
-      new-york
-        example
-        ui
+└── www
+    └── registry
+        ├── default
+        │   ├── example
+        │   └── ui
+        └── new-york
+            ├── example
+            └── ui
 ```
 
 When adding or modifying components, please ensure that:
