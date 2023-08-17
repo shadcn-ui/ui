@@ -122,7 +122,7 @@ Any changes to the CLI should be made in the `packages/cli` directory. If you ca
 Tests are written using [Vitest](https://vitest.dev). You can run all the tests from the root of the repository.
 
 ```bash
-pnpn test
+pnpm test
 ```
 
 Please ensure that the tests are passing when submitting a pull request. If you're adding new features, please include tests.
