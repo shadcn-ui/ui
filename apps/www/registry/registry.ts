@@ -27,11 +27,15 @@ const ui: Registry = [
     files: ["ui/button.tsx"],
   },
   {
+    name: "crypto-card",
+    type: "components:ui",
+    files: ["ui/crypto-card.tsx"],
+  },
+  {
     name: "ring",
     type: "components:ui",
     files: ["ui/ring.tsx"],
   },
-
   {
     name: "toast",
     type: "components:ui",
@@ -120,6 +124,18 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["button"],
     files: ["example/button-as-child.tsx"],
+  },
+  {
+    name: "crypto-card-demo",
+    type: "components:example",
+    registryDependencies: ["crypto-card"],
+    files: ["example/crypto-card.tsx"],
+  },
+  {
+    name: "crypto-card-icon-demo",
+    type: "components:example",
+    registryDependencies: ["crypto-card"],
+    files: ["example/crypto-card-icon-demo.tsx"],
   },
   {
     name: "ring-demo",

@@ -57,6 +57,7 @@
     "contentlayer": "0.3.4",
     "database": "workspace:*",
     "date-fns": "^2.30.0",
+    "framer-motion": "^10.16.0",
     "jotai": "^2.1.0",
     "lodash.template": "^4.5.0",
     "lucide-react": "0.214.0",

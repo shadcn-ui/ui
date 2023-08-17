@@ -1,0 +1,44 @@
+---
+title: Crypto Card
+description: A card component that can be used to display information about a brand or feature.
+component: true
+demoName: crypto-card-demo
+isFree: true
+---
+
+<ComponentPreview
+  name="crypto-card-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="crypto-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+## Usage
+
+```tsx
+import CryptoCard from "@/registry/default/ui/crypto-card"
+```
+
+```tsx
+<CryptoCard>
+  <span className="z-20 text-3xl font-bold text-black dark:text-white">
+    Mezcal UI
+  </span>
+</CryptoCard>
+```
+
+## Examples
+
+### With icon
+
+<ComponentPreview name="crypto-card-icon-demo" />

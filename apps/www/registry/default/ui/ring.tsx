@@ -4,7 +4,7 @@ export default function Ring() {
   return (
     <div className="flex h-[500px] w-full items-center justify-center bg-gradient-to-b from-indigo-800 to-indigo-950">
       <div
-        className="animate-rotate absolute mx-auto my-0 h-[300px] w-[300px] rounded-full"
+        className="absolute mx-auto my-0 h-[300px] w-[300px] animate-rotate rounded-full"
         style={{
           left: "calc(50% - 150px)",
           backgroundImage:
