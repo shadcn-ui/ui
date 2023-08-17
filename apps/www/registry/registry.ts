@@ -60,7 +60,7 @@ const example: Registry = [
   },
 
   {
-    name: "black-hole",
+    name: "black-hole-demo",
     type: "components:example",
     registryDependencies: ["black-hole"],
     files: ["example/black-hole-demo.tsx"],
