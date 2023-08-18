@@ -6,7 +6,7 @@ export default function CryptoCardDemo() {
   return (
     <CryptoCard>
       <span className="z-20 text-3xl font-bold text-black dark:text-white">
-        <Twitter size={88} />
+        <Twitter size={88} className="text-indigo-500" />
       </span>
     </CryptoCard>
   )

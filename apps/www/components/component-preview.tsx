@@ -1,22 +1,21 @@
 "use client"
 
 import * as React from "react"
+import { Index } from "@/__registry__"
 
+import { cn } from "@/lib/utils"
+import { useConfig } from "@/hooks/use-config"
 import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
+import { Icons } from "@/components/icons"
+import { StyleSwitcher } from "@/components/style-switcher"
+import { ThemeWrapper } from "@/components/theme-wrapper"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
-
-import { Icons } from "@/components/icons"
-import { Index } from "@/__registry__"
-import { StyleSwitcher } from "@/components/style-switcher"
-import { ThemeWrapper } from "@/components/theme-wrapper"
-import { cn } from "@/lib/utils"
 import { styles } from "@/registry/styles"
-import { useConfig } from "@/hooks/use-config"
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string
@@ -76,7 +75,7 @@ export function ComponentPreview({
 
   return (
     <div
-      className={cn("group relative my-4 flex flex-col space-y-2", className)}
+      className={cn("group relative my-4 flex flex-col space-y-2 ", className)}
       {...props}
     >
       <Tabs defaultValue="preview" className="relative mr-auto w-full">
@@ -96,7 +95,10 @@ export function ComponentPreview({
             </TabsTrigger>
           </TabsList>
         </div>
-        <TabsContent value="preview" className="relative rounded-md border">
+        <TabsContent
+          value="preview"
+          className="relative rounded-md border bg-white dark:bg-slate-950"
+        >
           <div className="flex items-center justify-between p-4">
             {/*
             We may need this later but for now we only support one style

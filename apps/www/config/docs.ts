@@ -34,13 +34,6 @@ export const docsConfig: DocsConfig = {
           href: "/docs",
           items: [],
         },
-
-        {
-          title: "Theming",
-          href: "/docs/theming",
-          items: [],
-        },
-
         {
           title: "About",
           href: "/docs/about",

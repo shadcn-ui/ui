@@ -89,7 +89,6 @@ export default function CryptoCard({
       <div className="relative z-10 flex items-center justify-center">
         <div className="relative flex h-48 w-48 items-center justify-center  px-2">
           <div className="absolute h-full w-full rounded-full bg-white opacity-0 blur-xl group-hover:opacity-50 dark:bg-slate-950" />
-
           {children}
         </div>
       </div>

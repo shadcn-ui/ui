@@ -34,6 +34,19 @@
     --ring: 240 5% 64.9%;
 
     --radius: 0.5rem;
+
+    /*Radix colors*/
+    --color-background: #fff;
+    --indigo-a5: rgba(2, 60, 235, 0.15);
+
+    --color-background-image-base: #fff;
+    --color-background-image-accent-1: var(--indigo-a5);
+    --color-background-image-accent-2: var(--indigo-a5);
+    --color-background-image-accent-3: var(--indigo-a5);
+    --color-background-image-accent-4: var(--indigo-a5);
+    --color-background-image-accent-5: var(--indigo-a5);
+    --color-background-image-accent-6: var(--indigo-a5);
+    --color-background-image-accent-7: var(--indigo-a5);
   }
 
   .dark {
@@ -93,5 +106,36 @@
 @media (max-width: 640px) {
   .container {
     @apply px-4;
+  }
+}
+
+.gradient_bg {
+  background: linear-gradient(-45deg, #fef2f2, #fee2e2, #f0f9ff, #e0f2fe);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
