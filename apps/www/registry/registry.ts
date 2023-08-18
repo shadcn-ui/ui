@@ -701,6 +701,12 @@ const example: Registry = [
     files: ["example/stepper-optional-steps.tsx"],
   },
   {
+    name: "stepper-states",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-states.tsx"],
+  },
+  {
     name: "switch-demo",
     type: "components:example",
     registryDependencies: ["switch"],

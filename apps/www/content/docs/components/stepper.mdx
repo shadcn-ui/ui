@@ -140,7 +140,7 @@ export const StepperDemo = () => {
 ### `<Steps />`
 
 ```tsx
-interface StepsProps {
+interface StepsProps extends React.HTMLAttributes<HTMLDivElement> {
   activeStep: number
   orientation?: "vertical" | "horizontal"
   state?: "loading" | "error"
@@ -181,7 +181,13 @@ interface StepStatus {
   isCurrentStep?: boolean
 }
 
-interface StepAndStatusProps extends StepProps, StepStatus {}
+interface StepAndStatusProps extends StepProps, StepStatus {
+  additionalClassName?: {
+    button?: string
+    label?: string
+    description?: string
+  }
+}
 ```
 
 ### `useStepper`
@@ -228,7 +234,7 @@ We can pass the `orientation` prop to the Steps component to set the orientation
 
 The Step component also accepts a `description` prop which can be used to provide some extra information about the step.
 
-<ComponentPreview name="stepper-descriptions" />
+<ComponentPreview name="stepper-description" />
 
 ### Custom Icons
 

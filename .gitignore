@@ -34,3 +34,5 @@ yarn-error.log*
 
 .contentlayer
 tsconfig.tsbuildinfo
+
+.pnpm-store

@@ -53,7 +53,7 @@ export const StepsProvider: React.FC<{
 
 /********** Steps **********/
 
-export interface StepsProps {
+export interface StepsProps extends React.HTMLAttributes<HTMLDivElement> {
   activeStep: number
   orientation?: "vertical" | "horizontal"
   state?: "loading" | "error"
@@ -79,6 +79,8 @@ export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
       errorIcon,
       successIcon,
       variant = "default",
+      className,
+      ...props
     },
     ref
   ) => {
@@ -122,10 +124,12 @@ export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
         }}
       >
         <div
+          {...props}
           ref={ref}
           className={cn(
             "flex w-full flex-1 justify-between gap-4 text-center",
-            orientation === "vertical" ? "flex-col" : "flex-row"
+            orientation === "vertical" ? "flex-col" : "flex-row",
+            className
           )}
         >
           {React.Children.map(children, (child, i) => {
@@ -188,8 +192,8 @@ export interface StepConfig extends StepLabelProps {
 
 export interface StepProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof stepVariants>,
-    StepConfig {
+  VariantProps<typeof stepVariants>,
+  StepConfig {
   isCompletedStep?: boolean
 }
 
@@ -199,7 +203,13 @@ interface StepStatus {
   isCurrentStep?: boolean
 }
 
-interface StepAndStatusProps extends StepProps, StepStatus {}
+interface StepAndStatusProps extends StepProps, StepStatus {
+  additionalClassName?: {
+    button?: string
+    label?: string
+    description?: string
+  }
+}
 
 export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
   (props, ref) => {
@@ -214,6 +224,9 @@ export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
       label,
       optional,
       optionalLabel,
+      className,
+      additionalClassName,
+      ...rest
     } = props
 
     const {
@@ -269,11 +282,15 @@ export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
 
     return (
       <div
-        className={stepVariants({
-          isLastStep,
-          isVertical,
-          isClickable: isClickable && !!onClickStep,
-        })}
+        {...rest}
+        className={cn(
+          stepVariants({
+            isLastStep,
+            isVertical,
+            isClickable: isClickable && !!onClickStep,
+          }),
+          className
+        )}
         ref={ref}
         onClick={() => handleClick(index)}
         aria-disabled={!hasVisited}
@@ -289,12 +306,13 @@ export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
             data-invalid={isCurrentStep && isError}
             data-highlighted={isCompletedStep}
             data-clickable={isClickable}
-            disabled={!(hasVisited || isClickable)}
+            disabled={!hasVisited}
             className={cn(
-              "h-10 w-10 rounded-full data-[highlighted=true]:bg-green-700 data-[highlighted=true]:text-white",
+              "aspect-square h-10 w-10 rounded-full data-[highlighted=true]:bg-green-700 data-[highlighted=true]:text-white",
               isCompletedStep || typeof RenderIcon !== "number"
                 ? "px-3 py-2"
-                : ""
+                : "",
+              additionalClassName?.button
             )}
             variant={isCurrentStep && isError ? "destructive" : variant}
           >
@@ -305,6 +323,8 @@ export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
             description={description}
             optional={optional}
             optionalLabel={optionalLabel}
+            labelClassName={additionalClassName?.label}
+            descriptionClassName={additionalClassName?.description}
             {...{ isCurrentStep }}
           />
         </div>
@@ -330,6 +350,8 @@ interface StepLabelProps {
   description?: string | React.ReactNode
   optional?: boolean
   optionalLabel?: string | React.ReactNode
+  labelClassName?: string
+  descriptionClassName?: string
 }
 
 const StepLabel = ({
@@ -338,6 +360,8 @@ const StepLabel = ({
   description,
   optional,
   optionalLabel,
+  labelClassName,
+  descriptionClassName,
 }: StepLabelProps & {
   isCurrentStep?: boolean
 }) => {
@@ -356,7 +380,7 @@ const StepLabel = ({
       )}
     >
       {!!label && (
-        <p>
+        <p className={labelClassName}>
           {label}
           {renderOptionalLabel && (
             <span className="ml-1 text-xs text-muted-foreground">
@@ -366,7 +390,7 @@ const StepLabel = ({
         </p>
       )}
       {!!description && (
-        <p className="text-sm text-muted-foreground">{description}</p>
+        <p className={cn("text-sm text-muted-foreground", descriptionClassName)}>{description}</p>
       )}
     </div>
   ) : null
