@@ -70,6 +70,7 @@
     "recharts": "^2.6.2",
     "sharp": "^0.31.3",
     "tailwind-merge": "^1.12.0",
+    "vaul": "^0.2.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
