@@ -21,7 +21,7 @@ interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   event?: Event["name"]
 }
 
-async function copyToClipboardWithMeta(value: string, event?: Event) {
+export async function copyToClipboardWithMeta(value: string, event?: Event) {
   navigator.clipboard.writeText(value)
   if (event) {
     trackEvent(event)
