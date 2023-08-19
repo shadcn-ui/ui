@@ -39,8 +39,8 @@ export const Index: Record<string, any> = {
       name: "stars-moving",
       type: "components:ui",
       registryDependencies: undefined,
-      component: React.lazy(() => import("@/registry/default/ui/stars-moving/stars-moving")),
-      files: ["registry/default/ui/stars-moving/stars-moving.tsx"],
+      component: React.lazy(() => import("@/registry/default/ui/stars-moving")),
+      files: ["registry/default/ui/stars-moving.tsx"],
     },
     toast: {
       name: "toast",
