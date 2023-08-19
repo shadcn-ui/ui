@@ -18,7 +18,7 @@ export default async function ShowcasePage({
     page: string
   }
 }) {
-  const dataPath = path.join(process.cwd(), "app", "showcase", "data.txt")
+  const dataPath = path.join(process.cwd(), "app", "showcase", "urls.txt")
   const file = await fs.readFile(dataPath, "utf8")
   const urls = file.split("\n").filter((line) => line !== "")
   const limit = 12
