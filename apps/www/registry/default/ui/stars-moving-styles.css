@@ -1,24 +1,9 @@
-.cont-stars-moving {
-  position: absolute;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.cont-stars-moving .stars-moving {
-  position: absolute;
-  width: 100%;
-  height: 400px;
-  left: 50%;
-
+.stars-moving {
   -webkit-mask-image: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, rgba(217, 217, 217, .8) 25%, #d9d9d9 50%, rgba(217, 217, 217, .8) 75%, rgba(217, 217, 217, 0) 100%);
   mask-image: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, rgba(217, 217, 217, .8) 25%, #d9d9d9 50%, rgba(217, 217, 217, .8) 75%, rgba(217, 217, 217, 0) 100%);
   -webkit-mask-size: cover;
   mask-size: cover;
   transform: translate(-50%);
-}
-
-.stars-moving {
   opacity: .7;
   pointer-events: none
 }
