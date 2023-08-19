@@ -4,15 +4,14 @@
 import * as React from "react"
 
 export const Index: Record<string, any> = {
-  default: {
-    accordion: {
+  "default": {
+    "accordion": {
       name: "accordion",
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/accordion")),
       files: ["registry/default/ui/accordion.tsx"],
     },
-
     "alert-dialog": {
       name: "alert-dialog",
       type: "components:ui",
@@ -20,7 +19,6 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/alert-dialog")),
       files: ["registry/default/ui/alert-dialog.tsx"],
     },
-
     "black-hole": {
       name: "black-hole",
       type: "components:ui",
@@ -28,7 +26,7 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/black-hole")),
       files: ["registry/default/ui/black-hole.tsx"],
     },
-    button: {
+    "button": {
       name: "button",
       type: "components:ui",
       registryDependencies: undefined,
@@ -42,137 +40,119 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/stars-moving")),
       files: ["registry/default/ui/stars-moving.tsx"],
     },
-    toast: {
+    "crypto-card": {
+      name: "crypto-card",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/crypto-card")),
+      files: ["registry/default/ui/crypto-card.tsx"],
+    },
+    "ring": {
+      name: "ring",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/ring")),
+      files: ["registry/default/ui/ring.tsx"],
+    },
+    "toast": {
       name: "toast",
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/toast")),
-      files: [
-        "registry/default/ui/toast.tsx",
-        "registry/default/ui/use-toast.ts",
-        "registry/default/ui/toaster.tsx",
-      ],
+      files: ["registry/default/ui/toast.tsx","registry/default/ui/use-toast.ts","registry/default/ui/toaster.tsx"],
     },
-
     "accordion-demo": {
       name: "accordion-demo",
       type: "components:example",
       registryDependencies: ["accordion"],
-      component: React.lazy(
-        () => import("@/registry/default/example/accordion-demo")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/accordion-demo")),
       files: ["registry/default/example/accordion-demo.tsx"],
     },
-
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
       type: "components:example",
-      registryDependencies: ["alert-dialog", "button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/alert-dialog-demo")
-      ),
+      registryDependencies: ["alert-dialog","button"],
+      component: React.lazy(() => import("@/registry/default/example/alert-dialog-demo")),
       files: ["registry/default/example/alert-dialog-demo.tsx"],
     },
-
     "black-hole-demo": {
       name: "black-hole-demo",
       type: "components:example",
       registryDependencies: ["black-hole"],
-      component: React.lazy(
-        () => import("@/registry/default/example/black-hole-demo")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/black-hole-demo")),
       files: ["registry/default/example/black-hole-demo.tsx"],
     },
     "button-demo": {
       name: "button-demo",
       type: "components:example",
       registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/button-demo")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/button-demo")),
       files: ["registry/default/example/button-demo.tsx"],
     },
     "button-secondary": {
       name: "button-secondary",
       type: "components:example",
       registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/button-secondary")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/button-secondary")),
       files: ["registry/default/example/button-secondary.tsx"],
     },
     "button-destructive": {
       name: "button-destructive",
       type: "components:example",
       registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/button-destructive")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/button-destructive")),
       files: ["registry/default/example/button-destructive.tsx"],
     },
     "button-outline": {
       name: "button-outline",
       type: "components:example",
       registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/button-outline")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/button-outline")),
       files: ["registry/default/example/button-outline.tsx"],
     },
     "button-ghost": {
       name: "button-ghost",
       type: "components:example",
       registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/button-ghost")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/button-ghost")),
       files: ["registry/default/example/button-ghost.tsx"],
     },
     "button-link": {
       name: "button-link",
       type: "components:example",
       registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/button-link")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/button-link")),
       files: ["registry/default/example/button-link.tsx"],
     },
     "button-with-icon": {
       name: "button-with-icon",
       type: "components:example",
       registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/button-with-icon")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/button-with-icon")),
       files: ["registry/default/example/button-with-icon.tsx"],
     },
     "button-loading": {
       name: "button-loading",
       type: "components:example",
       registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/button-loading")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/button-loading")),
       files: ["registry/default/example/button-loading.tsx"],
     },
     "button-icon": {
       name: "button-icon",
       type: "components:example",
       registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/button-icon")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/button-icon")),
       files: ["registry/default/example/button-icon.tsx"],
     },
     "button-as-child": {
       name: "button-as-child",
       type: "components:example",
       registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/default/example/button-as-child")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/button-as-child")),
       files: ["registry/default/example/button-as-child.tsx"],
     },
+<<<<<<< HEAD
     "stars-moving-demo": {
       name: "stars-moving-demo",
       type: "components:example",
@@ -181,262 +161,63 @@ export const Index: Record<string, any> = {
         () => import("@/registry/default/example/stars-moving-demo")
       ),
       files: ["registry/default/example/stars-moving-demo.tsx"],
+=======
+    "crypto-card-demo": {
+      name: "crypto-card-demo",
+      type: "components:example",
+      registryDependencies: ["crypto-card"],
+      component: React.lazy(() => import("@/registry/default/example/crypto-card-demo")),
+      files: ["registry/default/example/crypto-card.tsx"],
+    },
+    "crypto-card-icon-demo": {
+      name: "crypto-card-icon-demo",
+      type: "components:example",
+      registryDependencies: ["crypto-card"],
+      component: React.lazy(() => import("@/registry/default/example/crypto-card-icon-demo")),
+      files: ["registry/default/example/crypto-card-icon-demo.tsx"],
+    },
+    "ring-demo": {
+      name: "ring-demo",
+      type: "components:example",
+      registryDependencies: ["ring"],
+      component: React.lazy(() => import("@/registry/default/example/ring-demo")),
+      files: ["registry/default/example/ring-demo.tsx"],
+>>>>>>> main
     },
     "toast-demo": {
       name: "toast-demo",
       type: "components:example",
       registryDependencies: ["toast"],
-      component: React.lazy(
-        () => import("@/registry/default/example/toast-demo")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/toast-demo")),
       files: ["registry/default/example/toast-demo.tsx"],
     },
     "toast-destructive": {
       name: "toast-destructive",
       type: "components:example",
       registryDependencies: ["toast"],
-      component: React.lazy(
-        () => import("@/registry/default/example/toast-destructive")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/toast-destructive")),
       files: ["registry/default/example/toast-destructive.tsx"],
     },
     "toast-simple": {
       name: "toast-simple",
       type: "components:example",
       registryDependencies: ["toast"],
-      component: React.lazy(
-        () => import("@/registry/default/example/toast-simple")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/toast-simple")),
       files: ["registry/default/example/toast-simple.tsx"],
     },
     "toast-with-action": {
       name: "toast-with-action",
       type: "components:example",
       registryDependencies: ["toast"],
-      component: React.lazy(
-        () => import("@/registry/default/example/toast-with-action")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/toast-with-action")),
       files: ["registry/default/example/toast-with-action.tsx"],
     },
     "toast-with-title": {
       name: "toast-with-title",
       type: "components:example",
       registryDependencies: ["toast"],
-      component: React.lazy(
-        () => import("@/registry/default/example/toast-with-title")
-      ),
+      component: React.lazy(() => import("@/registry/default/example/toast-with-title")),
       files: ["registry/default/example/toast-with-title.tsx"],
-    },
-  },
-  "new-york": {
-    accordion: {
-      name: "accordion",
-      type: "components:ui",
-      registryDependencies: undefined,
-      component: React.lazy(() => import("@/registry/new-york/ui/accordion")),
-      files: ["registry/new-york/ui/accordion.tsx"],
-    },
-
-    "alert-dialog": {
-      name: "alert-dialog",
-      type: "components:ui",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/ui/alert-dialog")
-      ),
-      files: ["registry/new-york/ui/alert-dialog.tsx"],
-    },
-
-    "black-hole": {
-      name: "black-hole",
-      type: "components:ui",
-      registryDependencies: undefined,
-      component: React.lazy(() => import("@/registry/new-york/ui/black-hole")),
-      files: ["registry/new-york/ui/black-hole.tsx"],
-    },
-    button: {
-      name: "button",
-      type: "components:ui",
-      registryDependencies: undefined,
-      component: React.lazy(() => import("@/registry/new-york/ui/button")),
-      files: ["registry/new-york/ui/button.tsx"],
-    },
-
-    toast: {
-      name: "toast",
-      type: "components:ui",
-      registryDependencies: undefined,
-      component: React.lazy(() => import("@/registry/new-york/ui/toast")),
-      files: [
-        "registry/new-york/ui/toast.tsx",
-        "registry/new-york/ui/use-toast.ts",
-        "registry/new-york/ui/toaster.tsx",
-      ],
-    },
-
-    "accordion-demo": {
-      name: "accordion-demo",
-      type: "components:example",
-      registryDependencies: ["accordion"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/accordion-demo")
-      ),
-      files: ["registry/new-york/example/accordion-demo.tsx"],
-    },
-    "alert-dialog-demo": {
-      name: "alert-dialog-demo",
-      type: "components:example",
-      registryDependencies: ["alert-dialog", "button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/alert-dialog-demo")
-      ),
-      files: ["registry/new-york/example/alert-dialog-demo.tsx"],
-    },
-
-    "black-hole-demo": {
-      name: "black-hole-demo",
-      type: "components:example",
-      registryDependencies: ["black-hole"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/black-hole-demo")
-      ),
-      files: ["registry/new-york/example/black-hole-demo.tsx"],
-    },
-    "button-demo": {
-      name: "button-demo",
-      type: "components:example",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/button-demo")
-      ),
-      files: ["registry/new-york/example/button-demo.tsx"],
-    },
-    "button-secondary": {
-      name: "button-secondary",
-      type: "components:example",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/button-secondary")
-      ),
-      files: ["registry/new-york/example/button-secondary.tsx"],
-    },
-    "button-destructive": {
-      name: "button-destructive",
-      type: "components:example",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/button-destructive")
-      ),
-      files: ["registry/new-york/example/button-destructive.tsx"],
-    },
-    "button-outline": {
-      name: "button-outline",
-      type: "components:example",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/button-outline")
-      ),
-      files: ["registry/new-york/example/button-outline.tsx"],
-    },
-    "button-ghost": {
-      name: "button-ghost",
-      type: "components:example",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/button-ghost")
-      ),
-      files: ["registry/new-york/example/button-ghost.tsx"],
-    },
-    "button-link": {
-      name: "button-link",
-      type: "components:example",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/button-link")
-      ),
-      files: ["registry/new-york/example/button-link.tsx"],
-    },
-    "button-with-icon": {
-      name: "button-with-icon",
-      type: "components:example",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/button-with-icon")
-      ),
-      files: ["registry/new-york/example/button-with-icon.tsx"],
-    },
-    "button-loading": {
-      name: "button-loading",
-      type: "components:example",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/button-loading")
-      ),
-      files: ["registry/new-york/example/button-loading.tsx"],
-    },
-    "button-icon": {
-      name: "button-icon",
-      type: "components:example",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/button-icon")
-      ),
-      files: ["registry/new-york/example/button-icon.tsx"],
-    },
-    "button-as-child": {
-      name: "button-as-child",
-      type: "components:example",
-      registryDependencies: ["button"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/button-as-child")
-      ),
-      files: ["registry/new-york/example/button-as-child.tsx"],
-    },
-
-    "toast-demo": {
-      name: "toast-demo",
-      type: "components:example",
-      registryDependencies: ["toast"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/toast-demo")
-      ),
-      files: ["registry/new-york/example/toast-demo.tsx"],
-    },
-    "toast-destructive": {
-      name: "toast-destructive",
-      type: "components:example",
-      registryDependencies: ["toast"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/toast-destructive")
-      ),
-      files: ["registry/new-york/example/toast-destructive.tsx"],
-    },
-    "toast-simple": {
-      name: "toast-simple",
-      type: "components:example",
-      registryDependencies: ["toast"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/toast-simple")
-      ),
-      files: ["registry/new-york/example/toast-simple.tsx"],
-    },
-    "toast-with-action": {
-      name: "toast-with-action",
-      type: "components:example",
-      registryDependencies: ["toast"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/toast-with-action")
-      ),
-      files: ["registry/new-york/example/toast-with-action.tsx"],
-    },
-    "toast-with-title": {
-      name: "toast-with-title",
-      type: "components:example",
-      registryDependencies: ["toast"],
-      component: React.lazy(
-        () => import("@/registry/new-york/example/toast-with-title")
-      ),
-      files: ["registry/new-york/example/toast-with-title.tsx"],
     },
   },
 }

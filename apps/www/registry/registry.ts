@@ -26,7 +26,16 @@ const ui: Registry = [
     dependencies: ["@radix-ui/react-slot"],
     files: ["ui/button.tsx"],
   },
-
+  {
+    name: "crypto-card",
+    type: "components:ui",
+    files: ["ui/crypto-card.tsx"],
+  },
+  {
+    name: "ring",
+    type: "components:ui",
+    files: ["ui/ring.tsx"],
+  },
   {
     name: "toast",
     type: "components:ui",
@@ -51,7 +60,7 @@ const example: Registry = [
   },
 
   {
-    name: "black-hole",
+    name: "black-hole-demo",
     type: "components:example",
     registryDependencies: ["black-hole"],
     files: ["example/black-hole-demo.tsx"],
@@ -121,6 +130,24 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["stars-moving"],
     files: ["example/stars-moving-demo.tsx"],
+  },
+  {
+    name: "crypto-card-demo",
+    type: "components:example",
+    registryDependencies: ["crypto-card"],
+    files: ["example/crypto-card.tsx"],
+  },
+  {
+    name: "crypto-card-icon-demo",
+    type: "components:example",
+    registryDependencies: ["crypto-card"],
+    files: ["example/crypto-card-icon-demo.tsx"],
+  },
+  {
+    name: "ring-demo",
+    type: "components:example",
+    registryDependencies: ["ring"],
+    files: ["example/ring-demo.tsx"],
   },
   {
     name: "toast-demo",

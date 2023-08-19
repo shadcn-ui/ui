@@ -1,15 +1,16 @@
-import { getCurrentUserSession, isProUser } from "@/lib/session"
+import { redirect } from "next/navigation"
 
+import { fontSans } from "@/lib/fonts"
+import { getCurrentUserSession, isProUser } from "@/lib/session"
+import { cn } from "@/lib/utils"
 import { Analytics } from "@/components/analytics"
-import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
-import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
+import BgComponent from "@/components/bg-component"
+import { ThemeProvider } from "@/components/providers"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeProvider } from "@/components/providers"
-import { cn } from "@/lib/utils"
-import { fontSans } from "@/lib/fonts"
-import { redirect } from "next/navigation"
+import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
+import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
 
 interface MainLayoutProps {
   children: React.ReactNode
@@ -29,13 +30,14 @@ export default async function MainLayout({ children }: MainLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
+            "min-h-screen font-sans antialiased dark:bg-slate-950",
             fontSans.variable
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="relative flex min-h-screen flex-col">
-              {user ? <SiteHeader user={{ ...user, isPro }} /> : null}
+              <BgComponent />
+              <SiteHeader user={{ ...user, isPro }} />
               <div className="flex-1">{children}</div>
               <SiteFooter />
             </div>

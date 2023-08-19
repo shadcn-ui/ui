@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/registry/default/ui/button"
 import { CurrentUser } from "@/lib/session"
+import { Button } from "@/registry/default/ui/button"
 
 export default function BuyButton({
   user,

@@ -34,13 +34,6 @@ export const docsConfig: DocsConfig = {
           href: "/docs",
           items: [],
         },
-
-        {
-          title: "Theming",
-          href: "/docs/theming",
-          items: [],
-        },
-
         {
           title: "About",
           href: "/docs/about",
@@ -76,6 +69,17 @@ export const docsConfig: DocsConfig = {
           title: "Stars Moving",
           href: "/docs/components/stars-moving",
           items: [],
+        },
+        {
+          title: "Crypto Card",
+          href: "/docs/components/crypto-card",
+          items: [],
+        },
+        {
+          title: "Ring",
+          href: "/docs/components/ring",
+          items: [],
+          label: "Free",
         },
         {
           title: "Toast",

@@ -152,13 +152,13 @@ module.exports = {
         "rotate-counter-clockwise":
           "rotateCounterClockwise 70s linear infinite",
         twinkling: "twinkling 13s linear infinite",
-
         starsMovingAnimationUp: 'starsMovingAnimationUp linear infinite',
         starsMovingAnimationDown: 'starsMovingAnimationDown linear infinite',
         starsMovingAnimationLRDown: 'starsMovingAnimationLRDown linear infinite',
         starsMovingAnimationLRUp: 'starsMovingAnimationLRUp linear infinite',
         starsMovingAnimationRLDown: 'starsMovingAnimationRLDown linear infinite',
         starsMovingAnimationRLUp: 'starsMovingAnimationRLUp linear infinite',
+        rotate: "rotateClockwise 2s infinite",
       },
     },
   },

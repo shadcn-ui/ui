@@ -1,22 +1,20 @@
 import "@/styles/mdx.css"
-
-import { absoluteUrl, cn } from "@/lib/utils"
-import { getCurrentUserSession, isProUser } from "@/lib/session"
-
-import Balancer from "react-wrap-balancer"
-import BuyButton from "@/components/buy-button"
-import { ChevronRightIcon } from "@radix-ui/react-icons"
-import { ComponentPreview } from "@/components/component-preview"
-import { ComponentSource } from "@/components/component-source"
-import { DashboardTableOfContents } from "@/components/toc"
-import { DocsPager } from "@/components/pager"
-import { Mdx } from "@/components/mdx-components"
 import type { Metadata } from "next"
-import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
-import { allDocs } from "contentlayer/generated"
-import { getTableOfContents } from "@/lib/toc"
 import { notFound } from "next/navigation"
+import { ChevronRightIcon } from "@radix-ui/react-icons"
+import { allDocs } from "contentlayer/generated"
+import Balancer from "react-wrap-balancer"
+
 import { siteConfig } from "@/config/site"
+import { getCurrentUserSession, isProUser } from "@/lib/session"
+import { getTableOfContents } from "@/lib/toc"
+import { absoluteUrl, cn } from "@/lib/utils"
+import BuyButton from "@/components/buy-button"
+import { ComponentPreview } from "@/components/component-preview"
+import { Mdx } from "@/components/mdx-components"
+import { DocsPager } from "@/components/pager"
+import { DashboardTableOfContents } from "@/components/toc"
+import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
 
 interface DocPageProps {
   params: {
@@ -82,7 +80,7 @@ export default async function DocPage({ params }: DocPageProps) {
   const toc = await getTableOfContents(doc.body.raw)
 
   return (
-    <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+    <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px] ">
       <div className="mx-auto w-full min-w-0">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <div className="overflow-hidden text-ellipsis whitespace-nowrap">
