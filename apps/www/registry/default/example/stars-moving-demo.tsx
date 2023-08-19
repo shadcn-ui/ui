@@ -1,4 +1,4 @@
-import { StarsMoving } from "@/registry/default/ui/stars-moving/stars-moving"
+import { StarsMoving } from "@/registry/default/ui/stars-moving"
 import Image from "next/image";
 import img1 from '@/public/images/sphere-with-smoke-and-water.jpg';
 import img2 from '@/public/images/candle.jpg';
