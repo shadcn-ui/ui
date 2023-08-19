@@ -1,5 +1,5 @@
 import React from "react";
-import './styles-stars-moving.css';
+import './stars-moving-styles.css';
 
 const TYPE_ANIMATIONS = {
   'up': 'animate-starsMovingAnimationUp',
@@ -32,8 +32,8 @@ const StarsMoving = ({
   starsSize = starsSize <= 5 ? SIZES[starsSize] : 'w-[2px] h-[2px]';
 
   return (
-    <div className={'cont-stars-moving'}>
-      <div className="stars-moving">
+    <div className={'cont-stars-moving absolute w-full flex items-center justify-center'}>
+      <div className="stars-moving absolute w-full h-[400px] left-2/4">
         <div className={`${starsSize} ${typeAnimation}`}></div>
         <div className={`${starsSize} ${typeAnimation}`}></div>
         <div className={`${starsSize} ${typeAnimation}`}></div>
