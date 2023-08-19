@@ -152,7 +152,6 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/button-as-child")),
       files: ["registry/default/example/button-as-child.tsx"],
     },
-<<<<<<< HEAD
     "stars-moving-demo": {
       name: "stars-moving-demo",
       type: "components:example",
@@ -161,7 +160,7 @@ export const Index: Record<string, any> = {
         () => import("@/registry/default/example/stars-moving-demo")
       ),
       files: ["registry/default/example/stars-moving-demo.tsx"],
-=======
+    },
     "crypto-card-demo": {
       name: "crypto-card-demo",
       type: "components:example",
@@ -182,7 +181,6 @@ export const Index: Record<string, any> = {
       registryDependencies: ["ring"],
       component: React.lazy(() => import("@/registry/default/example/ring-demo")),
       files: ["registry/default/example/ring-demo.tsx"],
->>>>>>> main
     },
     "toast-demo": {
       name: "toast-demo",
