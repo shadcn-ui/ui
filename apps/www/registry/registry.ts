@@ -510,6 +510,12 @@ const example: Registry = [
     files: ["example/dropdown-menu-radio-group.tsx"],
   },
   {
+    name: "dropdown-menu-form",
+    type: "components:example",
+    registryDependencies: ["dropdown-menu", "checkbox", "form"],
+    files: ["example/dropdown-menu-form.tsx"],
+  },
+  {
     name: "hover-card-demo",
     type: "components:example",
     registryDependencies: ["hover-card"],
