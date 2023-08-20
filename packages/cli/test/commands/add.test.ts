@@ -1,28 +1,41 @@
-  import path from "path"
-  import { afterEach, expect, test, vi, describe,beforeAll, beforeEach } from "vitest"
-  import { runAdd } from "../../src/commands/add" // Assuming this is the correct path
-  import { logger } from "../../src/utils/logger"
+import fs from "fs"
+import path from "path"
+import { execa } from "execa"
+import { afterAll, expect, test, vi, describe,beforeAll, beforeEach } from "vitest"
+import { runAdd } from "../../src/commands/add"
+import * as getPackageManger from "../../src/utils/get-package-manager"
+import { logger } from "../../src/utils/logger"
 
-  vi.mock('prompts', () => ({
-    default: vi.fn(() => {
-      console.log('mock prompts');
-      return Promise.resolve({ components: [] } )}),
-  }));
+let mockWriteFile, mockMkdir, errorSpy, warnSpy;
 
+const setupMocks = () => {
   vi.mock("execa")
   vi.mock("fs/promises", () => ({
     writeFile: vi.fn(),
     mkdir: vi.fn(),
     existsSync: vi.fn()
   }))
-  vi.mock("ora")
 
-  vi.spyOn(process, 'exit').mockImplementation(((code?: number | undefined) => {
+  vi.spyOn(process, 'exit').mockImplementation((code) => {
     throw new Error(`Process exited with code ${code}`);
-  }) as any);
+  });
 
-  const errorSpy = vi.spyOn(logger, 'error').mockImplementation(() => {});
-  const warnSpy = vi.spyOn(logger, 'warn').mockImplementation(() => {});
+  mockWriteFile = vi.spyOn(fs.promises, "writeFile").mockResolvedValue();
+  mockMkdir = vi.spyOn(fs.promises, "mkdir").mockResolvedValue(undefined)
+  errorSpy = vi.spyOn(logger, 'error').mockImplementation(() => {});
+  warnSpy = vi.spyOn(logger, 'warn').mockImplementation(() => {});
+  vi.spyOn(getPackageManger, "getPackageManager").mockResolvedValue("npm");
+};
+
+
+describe("runAdd exit conditions", () => {
+  beforeAll(() => {
+    setupMocks();
+  });
+
+  afterAll(() => {
+    vi.clearAllMocks()
+  })
 
   test('should exit if provided path does not exist', async () => {
     await expect(runAdd([], { yes: true, overwrite: false, cwd: "unresolvable-path" })).rejects.toThrow("Process exited with code 1");
@@ -38,10 +51,97 @@
     expect(warnSpy).toHaveBeenCalledWith(expect.stringMatching(/^Configuration is missing\. Please run .* to create a components\.json file\.$/));
   });
 
-  test("should log warn if no components are selected", async () => {
-    let cwd = path.resolve(__dirname, "../fixtures/config-full");
+});
 
-    await expect(runAdd([], { yes: true, overwrite: false, cwd })).rejects.toThrow("Process exited with code 1");
-    expect(warnSpy).toHaveBeenCalledWith(expect.stringMatching("No components selected. Exiting."));
+describe("runAdd with given components", () => {
+  beforeAll(() => {
+    setupMocks();
   });
+  afterAll(() => {
+    vi.clearAllMocks()
+  })
+
+  test("should exit if the given component dosen't exist ", async () => {
+    let cwd = path.resolve(__dirname, "../fixtures/config-full");
+    await expect(runAdd(['non-existant-component'], { yes: true, cwd: cwd, overwrite: false })).rejects.toThrow("Process exited with code 1");
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringMatching("Selected components not found. Exiting."));
+  });
+
+  test("should write files for the given component", async () => {
+    let cwd = path.resolve(__dirname, "../fixtures/config-full");
+    await runAdd(['button'], { yes: true, cwd: cwd, overwrite: false });
+
+    expect(mockWriteFile).toHaveBeenNthCalledWith(
+      1,
+      path.join(cwd, "src", "components", "ui", "button.tsx"),
+      expect.any(String)
+    );
+  });
+
+  test("should write files for the given components", async () => {
+    let cwd = path.resolve(__dirname, "../fixtures/config-full");
+    await runAdd(['button', 'accordion'], { yes: true, cwd: cwd, overwrite: false });
+
+    expect(mockWriteFile).toHaveBeenCalledWith(
+      path.join(cwd, "src", "components", "ui", "button.tsx"),
+      expect.any(String)
+    );
+
+    expect(mockWriteFile).toHaveBeenCalledWith(
+      path.join(cwd, "src", "components", "ui", "accordion.tsx"),
+      expect.any(String)
+    );
+  });
+
+  test("should install dependencies for prompted components", async () => {
+    let cwd = path.resolve(__dirname, "../fixtures/config-full");
+    await runAdd(['button'], { yes: true, cwd: cwd, overwrite: false });
+    expect(execa).toHaveBeenCalledWith(
+      "npm",
+      [
+        "install",
+        "@radix-ui/react-slot"
+      ],
+      { cwd: cwd }
+    );
+  });
+
+});
+
+describe("runAdd with prompted components", () => {
+  beforeAll(() => {
+    setupMocks();
+    vi.mock('prompts', () => ({
+      default: vi.fn(() => Promise.resolve({ components: ['button'] }))
+    }));
+  });
+
+  afterAll(() => {
+    vi.clearAllMocks()
+  })
+
+  test("should write files for the prompted component", async () => {
+    let cwd = path.resolve(__dirname, "../fixtures/config-full");
+    await runAdd([], { yes: true, cwd: cwd, overwrite: false });
+
+    expect(mockWriteFile).toHaveBeenNthCalledWith(
+      1,
+      path.join(cwd, "src", "components", "ui", "button.tsx"),
+      expect.any(String)
+    );
+  });
+
+  test("should install dependencies for prompted components", async () => {
+    let cwd = path.resolve(__dirname, "../fixtures/config-full");
+    await runAdd([], { yes: true, cwd: cwd, overwrite: false });
+    expect(execa).toHaveBeenCalledWith(
+      "npm",
+      [
+        "install",
+        "@radix-ui/react-slot"
+      ],
+      { cwd: cwd }
+    );
+  });
+});
 

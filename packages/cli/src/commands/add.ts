@@ -28,7 +28,7 @@ const addOptionsSchema = z.object({
   path: z.string().optional(),
 })
 
-const runAdd = async (
+export const runAdd = async (
   components: string[],
   opts: {
     yes: boolean
