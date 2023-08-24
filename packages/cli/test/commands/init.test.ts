@@ -13,12 +13,6 @@ vi.mock("fs/promises", () => ({
   writeFile: vi.fn(),
   mkdir: vi.fn(),
 }))
-
-vi.mock("execa")
-vi.mock("fs/promises", () => ({
-  writeFile: vi.fn(),
-  mkdir: vi.fn(),
-}))
 vi.mock("ora")
 
 test("init config-full", async () => {
