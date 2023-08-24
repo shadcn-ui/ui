@@ -73,7 +73,7 @@ export function AppearanceForm() {
                   >
                     <option value="inter">Inter</option>
                     <option value="manrope">Manrope</option>
-                    <option value="system">System</option>
+                    <option selected value="system">System</option>
                   </select>
                 </FormControl>
                 <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
