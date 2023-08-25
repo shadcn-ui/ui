@@ -16,6 +16,10 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components/accordion",
     },
     {
+      title: "Themes",
+      href: "/themes",
+    },
+    {
       title: "Examples",
       href: "/examples",
     },
@@ -46,6 +50,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Installation",
           href: "/docs/installation",
+          items: [],
+        },
+        {
+          title: "components.json",
+          href: "/docs/components-json",
           items: [],
         },
         {
@@ -114,8 +123,28 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
           title: "Manual",
           href: "/docs/installation/manual",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Dark Mode",
+      items: [
+        {
+          title: "Next.js",
+          href: "/docs/dark-mode/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/dark-mode/vite",
           items: [],
         },
       ],
