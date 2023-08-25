@@ -7,7 +7,7 @@ import * as z from "zod"
 export const DEFAULT_STYLE = "default"
 export const DEFAULT_COMPONENTS = "@/components"
 export const DEFAULT_UTILS = "@/lib/utils"
-export const DEFAULT_TAILWIND_CSS = "app/globals.css"
+export const DEFAULT_GLOBAL_CSS = "src/app/globals.css"
 export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.js"
 export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
 

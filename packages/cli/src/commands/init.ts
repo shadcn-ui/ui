@@ -1,9 +1,9 @@
-import { existsSync, promises as fs } from "fs"
-import path from "path"
+import { existsSync, promises as fs } from "fs";
+import path from "path";
 import {
   DEFAULT_COMPONENTS,
+  DEFAULT_GLOBAL_CSS,
   DEFAULT_TAILWIND_CONFIG,
-  DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
   getConfig,
   rawConfigSchema,
@@ -120,7 +120,7 @@ export async function promptForConfig(
       type: "text",
       name: "tailwindCss",
       message: `Where is your ${highlight("global CSS")} file?`,
-      initial: defaultConfig?.tailwind.css ?? DEFAULT_TAILWIND_CSS,
+      initial: defaultConfig?.tailwind.css ?? DEFAULT_GLOBAL_CSS,
     },
     {
       type: "toggle",
