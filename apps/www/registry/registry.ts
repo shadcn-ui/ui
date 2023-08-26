@@ -37,6 +37,11 @@ const ui: Registry = [
     files: ["ui/badge.tsx"],
   },
   {
+    name: "kbd",
+    type: "components:ui",
+    files: ["ui/kbd.tsx"],
+  },
+  {
     name: "button",
     type: "components:ui",
     dependencies: ["@radix-ui/react-slot"],
@@ -288,6 +293,12 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["badge"],
     files: ["example/badge-secondary.tsx"],
+  },
+  {
+    name: "kbd-demo",
+    type: "components:example",
+    registryDependencies: ["kbd"],
+    files: ["example/kbd-demo.tsx"],
   },
   {
     name: "button-demo",

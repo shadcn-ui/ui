@@ -47,6 +47,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/badge")),
       files: ["registry/default/ui/badge.tsx"],
     },
+    "kbd": {
+      name: "kbd",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/kbd")),
+      files: ["registry/default/ui/kbd.tsx"],
+    },
     "button": {
       name: "button",
       type: "components:ui",
@@ -333,6 +340,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["badge"],
       component: React.lazy(() => import("@/registry/default/example/badge-secondary")),
       files: ["registry/default/example/badge-secondary.tsx"],
+    },
+    "kbd-demo": {
+      name: "kbd-demo",
+      type: "components:example",
+      registryDependencies: ["kbd"],
+      component: React.lazy(() => import("@/registry/default/example/kbd-demo")),
+      files: ["registry/default/example/kbd-demo.tsx"],
     },
     "button-demo": {
       name: "button-demo",
@@ -1056,6 +1070,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/ui/badge")),
       files: ["registry/new-york/ui/badge.tsx"],
     },
+    "kbd": {
+      name: "kbd",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/kbd")),
+      files: ["registry/new-york/ui/kbd.tsx"],
+    },
     "button": {
       name: "button",
       type: "components:ui",
@@ -1342,6 +1363,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["badge"],
       component: React.lazy(() => import("@/registry/new-york/example/badge-secondary")),
       files: ["registry/new-york/example/badge-secondary.tsx"],
+    },
+    "kbd-demo": {
+      name: "kbd-demo",
+      type: "components:example",
+      registryDependencies: ["kbd"],
+      component: React.lazy(() => import("@/registry/new-york/example/kbd-demo")),
+      files: ["registry/new-york/example/kbd-demo.tsx"],
     },
     "button-demo": {
       name: "button-demo",
