@@ -1,3 +1,4 @@
+import Link from "next/link"
 import {
   ChevronDownIcon,
   CircleIcon,
@@ -28,8 +29,10 @@ export function DemoGithub() {
   return (
     <Card>
       <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-4 space-y-0">
-        <div className="space-y-1">
-          <CardTitle>shadcn/ui</CardTitle>
+        <div className="space-y-1 cursor-pointer">
+          <Link href="https://github.com/shadcn-ui/ui.git">
+            <CardTitle>shadcn/ui</CardTitle>
+          </Link>
           <CardDescription>
             Beautifully designed components built with Radix UI and Tailwind
             CSS.
