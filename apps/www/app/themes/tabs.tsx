@@ -7,6 +7,7 @@ import { ThemeWrapper } from "@/components/theme-wrapper"
 import CardsDefault from "@/registry/default/example/cards"
 import { Skeleton } from "@/registry/default/ui/skeleton"
 import CardsNewYork from "@/registry/new-york/example/cards"
+import CardsTui from "@/registry/tui/example/cards"
 
 export function ThemesTabs() {
   const [mounted, setMounted] = React.useState(false)
@@ -66,6 +67,7 @@ export function ThemesTabs() {
         <ThemeWrapper>
           {config.style === "new-york" && <CardsNewYork />}
           {config.style === "default" && <CardsDefault />}
+          {config.style === "tui" && <CardsTui />}
         </ThemeWrapper>
       )}
     </div>

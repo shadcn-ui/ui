@@ -6,5 +6,9 @@
   {
     "name": "new-york",
     "label": "New York"
+  },
+  {
+    "name": "tui",
+    "label": "Tailwind UI"
   }
 ]
