@@ -155,6 +155,7 @@ export const add = new Command()
 
           if (!config.tsx) {
             filePath = filePath.replace(/\.tsx$/, ".jsx")
+            filePath = filePath.replace(/\.ts$/, ".js")
           }
 
           await fs.writeFile(filePath, content)
