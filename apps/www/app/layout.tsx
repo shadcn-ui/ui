@@ -1,4 +1,6 @@
 import "@/styles/globals.css"
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
 import { Metadata } from "next"
 
 import { siteConfig } from "@/config/site"
@@ -12,6 +14,7 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
 import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
+import '../config/font';
 
 export const metadata: Metadata = {
   title: {
@@ -71,6 +74,8 @@ export const metadata: Metadata = {
 interface RootLayoutProps {
   children: React.ReactNode
 }
+
+config.autoAddCss = false
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
