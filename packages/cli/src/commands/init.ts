@@ -24,7 +24,7 @@ import { Command } from "commander"
 import { execa } from "execa"
 import template from "lodash.template"
 import ora from "ora"
-import prompts from "prompts"
+import prompts, { Answers } from "prompts"
 import * as z from "zod"
 
 const PROJECT_DEPENDENCIES = [
@@ -135,8 +135,22 @@ export async function promptForConfig(
     {
       type: "text",
       name: "tailwindConfig",
-      message: `Where is your ${highlight("tailwind.config.js")} located?`,
-      initial: defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG,
+      message: (prev: string, { typescript }: Answers<string>) => {
+        const ext = typescript ? "ts" : "js"
+        console.log(
+          defaultConfig?.tailwind.config,
+          "defaultConfig?.tailwind.config"
+        )
+        return `Where would you like to write your ${highlight(
+          `tailwind.config.${ext}`
+        )} file?`
+      },
+      initial: (prev: string, { typescript }: Answers<string>) => {
+        const ext = typescript ? "ts" : "js"
+        return (
+          defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG + "." + ext
+        )
+      },
     },
     {
       type: "text",
@@ -227,7 +241,6 @@ export async function runInit(cwd: string, config: Config) {
   }
 
   const extension = config.tsx ? "ts" : "js"
-
   // Write tailwind config.
   await fs.writeFile(
     config.resolvedPaths.tailwindConfig,

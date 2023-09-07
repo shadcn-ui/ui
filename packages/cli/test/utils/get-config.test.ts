@@ -125,7 +125,7 @@ test("get config", async () => {
   ).toEqual({
     style: "default",
     tailwind: {
-      config: "./tailwind.config.js",
+      config: "./tailwind.config.ts",
       css: "./src/assets/css/tailwind.css",
       baseColor: "neutral",
       cssVariables: false,
@@ -140,7 +140,7 @@ test("get config", async () => {
       tailwindConfig: path.resolve(
         __dirname,
         "../fixtures/config-jsx",
-        "tailwind.config.js"
+        "tailwind.config.ts"
       ),
       tailwindCss: path.resolve(
         __dirname,
