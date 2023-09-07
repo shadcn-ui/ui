@@ -23,15 +23,13 @@ export function DemoCreateAccount() {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="grid grid-cols-2 gap-6">
-          <Button variant="outline">
-            <Icons.gitHub className="mr-2 h-4 w-4" />
-            Github
-          </Button>
-          <Button variant="outline">
-            <Icons.google className="mr-2 h-4 w-4" />
-            Google
-          </Button>
+        <div className="grid gap-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" type="email" placeholder="m@example.com" />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="password">Password</Label>
+          <Input id="password" type="password" />
         </div>
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
@@ -43,13 +41,15 @@ export function DemoCreateAccount() {
             </span>
           </div>
         </div>
-        <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" />
+        <div className="grid grid-cols-2 gap-6">
+          <Button variant="outline">
+            <Icons.gitHub className="mr-2 h-4 w-4" />
+            Github
+          </Button>
+          <Button variant="outline">
+            <Icons.google className="mr-2 h-4 w-4" />
+            Google
+          </Button>
         </div>
       </CardContent>
       <CardFooter>
