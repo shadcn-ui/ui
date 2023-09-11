@@ -37,8 +37,6 @@
   "packageManager": "pnpm@8.5.1",
   "dependencies": {
     "@babel/core": "^7.22.1",
-    "@babel/helper-module-imports": "^7.22.15",
-    "@babel/runtime": "^7.22.15",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^17.6.3",
@@ -62,7 +60,6 @@
     "@types/react-dom": "^18.2.4",
     "@typescript-eslint/parser": "^5.59.7",
     "autoprefixer": "^10.4.14",
-    "babel-plugin-macros": "^3.1.0",
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.41.0",

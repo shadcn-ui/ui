@@ -5,8 +5,7 @@
     "next/core-web-vitals",
     "turbo",
     "prettier",
-    "plugin:tailwindcss/recommended",
-    "next/babel"
+    "plugin:tailwindcss/recommended"
   ],
   "plugins": [
     "tailwindcss"
