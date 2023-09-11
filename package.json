@@ -53,6 +53,7 @@
     "@fortawesome/pro-light-svg-icons": "^6.4.2",
     "@fortawesome/pro-regular-svg-icons": "^6.4.2",
     "@fortawesome/pro-solid-svg-icons": "^6.4.2",
+    "@fortawesome/pro-thin-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.20.0",

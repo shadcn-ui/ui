@@ -59,6 +59,9 @@ importers:
       '@fortawesome/pro-solid-svg-icons':
         specifier: ^6.4.2
         version: 6.4.2
+      '@fortawesome/pro-thin-svg-icons':
+        specifier: ^6.4.2
+        version: 6.4.2
       '@fortawesome/react-fontawesome':
         specifier: ^0.2.0
         version: 0.2.0(@fortawesome/fontawesome-svg-core@6.4.2)(react@18.2.0)
@@ -1951,6 +1954,14 @@ packages:
 
   /@fortawesome/pro-solid-svg-icons@6.4.2:
     resolution: {integrity: sha512-60mEfU6Tw7Qn//4JS3O4jWVF2qfED94+wxrWfAD5Z0Bo002XJrA/xIKTbIo71HbhHV4LGQ1wltlzhG34O6Y0Cg==, tarball: https://npm.fontawesome.com/@fortawesome/pro-solid-svg-icons/-/6.4.2/pro-solid-svg-icons-6.4.2.tgz}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 6.4.2
+    dev: false
+
+  /@fortawesome/pro-thin-svg-icons@6.4.2:
+    resolution: {integrity: sha512-8PLLp4X2+6jpsB/2uM+kzWB8LYCzGv+yp+xecwPfpYiIL7l/+JNMWYj46sptpjF98+W9v+cCnqbRnzcjF90f2Q==, tarball: https://npm.fontawesome.com/@fortawesome/pro-thin-svg-icons/-/6.4.2/pro-thin-svg-icons-6.4.2.tgz}
     engines: {node: '>=6'}
     requiresBuild: true
     dependencies:

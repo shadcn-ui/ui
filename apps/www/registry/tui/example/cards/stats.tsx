@@ -125,7 +125,7 @@ export function CardsStats() {
           </div>
         </CardContent>
       </Card>
-      <Button icon={"mailbox"} iconStyle={"regular"} >
+      <Button icon={"compass"} iconStyle={"solid"} >
         Mail
       </Button>
     </div>

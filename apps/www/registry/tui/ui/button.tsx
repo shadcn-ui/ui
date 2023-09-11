@@ -5,8 +5,13 @@ import { cn } from "@/lib/utils";
 
 // TODO: pnpm i -w [the following libs]
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconName, IconStyle, IconLookup, IconDefinition, findIconDefinition, library, IconPrefix, IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faMailbox } from '@fortawesome/pro-solid-svg-icons';
+import { IconName, IconStyle, IconDefinition, findIconDefinition, library, IconPrefix, IconPack, } from "@fortawesome/fontawesome-svg-core";
+import * as FontAwesomeSolid from '@fortawesome/free-solid-svg-icons';
+import * as FontAwesomeLight from '@fortawesome/pro-light-svg-icons';
+import * as FontAwesomeBrands from '@fortawesome/free-brands-svg-icons';
+import * as FontAwesomeDuotone from '@fortawesome/pro-duotone-svg-icons';
+import * as FontAwesomeRegular from '@fortawesome/free-regular-svg-icons';
+import * as FontAwesomeThin from '@fortawesome/pro-thin-svg-icons';
 // import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 // import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 
@@ -50,28 +55,40 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, icon, iconStyle = "solid", ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    const iconPrefix: IconPrefix = `fa${iconStyle === "solid" ? "s" : iconStyle === 'light' ? "l" : "r"}`;
     let renderIcon: React.JSX.Element | null = null;
-
     if (icon) {
-      const iconStyleLookup: IconLookup = { prefix: `${iconPrefix}`, iconName: icon! }
-
-      const iconNameDefinition: IconDefinition | null = findIconDefinition(iconStyleLookup)
-
-      library.add(iconNameDefinition);
-
-      // TODO: to be removed after the component is ready with FA Icons
-      React.useEffect(() => {
-        console.log(iconStyleLookup, 'ISL');
-        console.log(iconNameDefinition, 'IND')
-      }, [])
-
-      // Conditionally render the icon based on iconStyle and icon prop
-      // <FontAwesomeIcon icon={eval(`${iconStyle}`)(iconStyleLookup)} />
+      let iconStyleLibrary;
+      switch (iconStyle) {
+        case "regular":
+          console.log("regular ############")
+          iconStyleLibrary = FontAwesomeRegular;
+          break;
+        case "brands":
+          iconStyleLibrary = FontAwesomeBrands;
+          break;
+        case "duotone":
+          iconStyleLibrary = FontAwesomeDuotone;
+          break;
+        case "light":
+          iconStyleLibrary = FontAwesomeLight;
+          break;
+        case "thin":
+          iconStyleLibrary = FontAwesomeThin;
+          break;
+        default:
+          iconStyleLibrary = FontAwesomeSolid;
+          break;
+      }
+      console.log(Object.values(iconStyleLibrary), 'Object.values(iconStyleLibrary)')
+      const findIcon: (IconDefinition | IconPrefix | IconPack)[] = Object.values(iconStyleLibrary).filter((val: any) => val.iconName === icon)
+      console.log(findIcon, 'findIcon')
+      library.add(findIcon);
       renderIcon = icon ? (
-        <FontAwesomeIcon icon={iconNameDefinition} />
+        <FontAwesomeIcon icon={icon} />
       ) : null;
     }
+
+
 
     return (
       <Comp
