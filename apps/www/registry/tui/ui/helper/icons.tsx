@@ -14,9 +14,9 @@ import { fat } from "@fortawesome/pro-thin-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 library.add(fas, fal, fab, fad, far, fat)
 
-export type Icons = `${IconName}-${IconStyle}`;
+export type IconsType = `${IconName}-${IconStyle}`;
 
-export const fontAwesomeIcon = (icons?: Icons) => {
+export const icons = (icons?: IconsType) => {
   const perfixList: { name: IconStyle; value: IconPrefix }[] = [
     { name: "solid", value: "fas" },
     { name: "regular", value: "far" },
