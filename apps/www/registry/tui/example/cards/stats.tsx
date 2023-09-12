@@ -125,7 +125,7 @@ export function CardsStats() {
           </div>
         </CardContent>
       </Card>
-      <Button icon={"compass"} iconStyle={"solid"} >
+      <Button icon={"pen-alt-regular"} >
         Mail
       </Button>
     </div>
