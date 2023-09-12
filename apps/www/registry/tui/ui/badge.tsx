@@ -1,6 +1,6 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-
+import colors from "tailwindcss/colors"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
@@ -28,11 +28,20 @@ const badgeVariants = cva(
         default: "px-2 py-1",
         sm: "px-1.5 py-0.5",
       },
+      rounded: {
+        sm: "rounded-sm",
+        md: "rounded-md",
+        lg: "rounded-lg",
+        xl: "rounded-xl",
+        full: "rounded-full",
+        none: "rounded-none",
+      }
     },
     defaultVariants: {
       variant: "default",
       size: "default",
       fontSize: "xs",
+      rounded: "md"
     },
   }
 )
@@ -43,11 +52,17 @@ export interface BadgeProps
   VariantProps<typeof badgeVariants> {
   prefixIcon?: any;
   suffixIcon?: any;
+  color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
+  "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
+  | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose"
 }
 
-function Badge({ children, className, variant, fontSize, size, prefixIcon, suffixIcon, ...props }: BadgeProps) {
+function Badge({ children, className, variant, fontSize, size, prefixIcon, suffixIcon, rounded, color, ...props }: BadgeProps) {
+  const badgeColor = (color?: string) => {
+    return `bg-${color}-50 text-${color}-600 ring-${color}-500/10`
+  }
   return (
-    <div className={cn(badgeVariants({ variant, fontSize, size }), className)} {...props}>
+    <div className={cn(badgeVariants({ variant, fontSize, size, rounded }), className, badgeColor(color))} {...props}>
       {prefixIcon && prefixIcon()}
       {children}
       {suffixIcon ? suffixIcon() : null}
