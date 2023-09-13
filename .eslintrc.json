@@ -7,7 +7,9 @@
     "prettier",
     "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["tailwindcss"],
+  "plugins": [
+    "tailwindcss"
+  ],
   "rules": {
     "@next/next/no-html-link-for-pages": "off",
     "tailwindcss/no-custom-classname": "off",
@@ -15,16 +17,24 @@
   },
   "settings": {
     "tailwindcss": {
-      "callees": ["cn", "cva"],
+      "callees": [
+        "cn",
+        "cva"
+      ],
       "config": "tailwind.config.cjs"
     },
     "next": {
-      "rootDir": ["apps/*/"]
+      "rootDir": [
+        "apps/*/"
+      ]
     }
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
       "parser": "@typescript-eslint/parser"
     }
   ]

@@ -1,5 +1,6 @@
 import { useTheme } from "next-themes"
 import { Bar, BarChart, Line, LineChart, ResponsiveContainer } from "recharts"
+import { Button } from "@/registry/tui/ui/button"
 
 import { useConfig } from "@/hooks/use-config"
 import {
@@ -124,6 +125,9 @@ export function CardsStats() {
           </div>
         </CardContent>
       </Card>
+      <Button icon={"pen-regular"} >
+        Mail
+      </Button>
     </div>
   )
 }

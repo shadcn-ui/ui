@@ -1,35 +1,72 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-
+import colors from "tailwindcss/colors"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center font-medium",
   {
     variants: {
       variant: {
         default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
-        secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-        outline: "text-foreground",
+          "gap-x-1.5 rounded-md bg-primary text-primary-foreground ring-1 ring-inset",
+        flat:
+          "rounded-md bg-primary text-primary-foreground",
+        borderPill: "rounded-full bg-primary text-primary-foreground ring-1 ring-inset",
+        flatPill: "rounded-full bg-primary text-primary-foreground",
+        outline: "rounded-md ring-1 ring-inset ring-gray-200",
+        dot: "gap-x-1.5 rounded-md ring-1 ring-inset ring-gray-200"
       },
+      fontSize: {
+        xs: 'text-xs',
+        sm: 'text-sm',
+        md: 'text-base',
+        lg: 'text-lg',
+        xl: 'text-xl',
+      },
+      size: {
+        default: "px-2 py-1",
+        sm: "px-1.5 py-0.5",
+      },
+      rounded: {
+        sm: "rounded-sm",
+        md: "rounded-md",
+        lg: "rounded-lg",
+        xl: "rounded-xl",
+        full: "rounded-full",
+        none: "rounded-none",
+      }
     },
     defaultVariants: {
       variant: "default",
+      size: "default",
+      fontSize: "xs",
+      rounded: "md"
     },
   }
 )
 
+
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+  VariantProps<typeof badgeVariants> {
+  prefixIcon?: any;
+  suffixIcon?: any;
+  color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
+  "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
+  | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose"
+}
 
-function Badge({ className, variant, ...props }: BadgeProps) {
+function Badge({ children, className, variant, fontSize, size, prefixIcon, suffixIcon, rounded, color, ...props }: BadgeProps) {
+  const badgeColor = (color?: string) => {
+    return `bg-${color}-50 text-${color}-600 ring-${color}-500/10`
+  }
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    <div className={cn(badgeVariants({ variant, fontSize, size, rounded }), className, badgeColor(color))} {...props}>
+      {prefixIcon && prefixIcon()}
+      {children}
+      {suffixIcon ? suffixIcon() : null}
+    </div>
   )
 }
 
