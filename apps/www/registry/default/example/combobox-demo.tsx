@@ -67,6 +67,7 @@ export default function ComboboxDemo() {
           <CommandGroup>
             {frameworks.map((framework) => (
               <CommandItem
+              value={framework.label}
                 key={framework.value}
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? "" : currentValue)

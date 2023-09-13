@@ -188,6 +188,7 @@ export function CardsChat() {
               <CommandGroup className="p-2">
                 {users.map((user) => (
                   <CommandItem
+                  value={user.email}
                     key={user.email}
                     className="flex items-center px-2"
                     onSelect={() => {

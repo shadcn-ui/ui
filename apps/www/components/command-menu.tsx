@@ -103,15 +103,15 @@ export function CommandMenu({ ...props }: DialogProps) {
           ))}
           <CommandSeparator />
           <CommandGroup heading="Theme">
-            <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>
+            <CommandItem value="Light" onSelect={() => runCommand(() => setTheme("light"))}>
               <SunIcon className="mr-2 h-4 w-4" />
               Light
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
+            <CommandItem value="Dark" onSelect={() => runCommand(() => setTheme("dark"))}>
               <MoonIcon className="mr-2 h-4 w-4" />
               Dark
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => setTheme("system"))}>
+            <CommandItem value="System" onSelect={() => runCommand(() => setTheme("system"))}>
               <LaptopIcon className="mr-2 h-4 w-4" />
               System
             </CommandItem>

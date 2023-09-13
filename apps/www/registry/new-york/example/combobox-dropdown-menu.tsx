@@ -74,6 +74,7 @@ export default function ComboboxDropdownMenu() {
                     <CommandGroup>
                       {labels.map((label) => (
                         <CommandItem
+                        value={label}
                           key={label}
                           onSelect={(value) => {
                             setLabel(value)

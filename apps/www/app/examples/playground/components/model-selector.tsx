@@ -146,6 +146,7 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
 
   return (
     <CommandItem
+    value={model.name}
       key={model.id}
       onSelect={onSelect}
       ref={ref}

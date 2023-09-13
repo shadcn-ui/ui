@@ -52,6 +52,7 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
           <CommandGroup heading="Examples">
             {presets.map((preset) => (
               <CommandItem
+              value={preset.name}
                 key={preset.id}
                 onSelect={() => {
                   setSelectedPreset(preset)
@@ -71,7 +72,7 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
             ))}
           </CommandGroup>
           <CommandGroup className="pt-0">
-            <CommandItem onSelect={() => router.push("/examples")}>
+            <CommandItem value="More examples" onSelect={() => router.push("/examples")}>
               More examples
             </CommandItem>
           </CommandGroup>
