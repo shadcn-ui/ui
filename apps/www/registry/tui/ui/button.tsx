@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { icons, IconsType } from "./helper/icons";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center text-sm font-medium shadow-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -16,21 +16,34 @@ const buttonVariants = cva(
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        soft:
+          "text-black-foreground hover:bg-indigo/90 bg-indigo-50",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        xs: "px-2 py-1 text-xs",
+        sm: "px-2 py-1 text-sm",
+        default: "px-2.5 py-1.5 text-sm",
+        lg: "px-3 py-2 text-sm",
+        xl: "px-3.5 py-2.5 text-sm",
         icon: "h-10 w-10",
       },
+      rounded: {
+        sm: "rounded-sm",
+        md: "rounded-md",
+        lg: "rounded-lg",
+        xl: "rounded-xl",
+        none: "rounded-none",
+        full: "rounded-full",
+      }
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      rounded: "md"
     },
   }
 );
@@ -44,11 +57,11 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, icon, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, icon, rounded, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, className, rounded }))}
         ref={ref}
         {...props}
       >
