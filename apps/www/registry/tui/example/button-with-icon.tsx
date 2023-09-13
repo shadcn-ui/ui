@@ -4,7 +4,7 @@ import { Button } from "@/registry/tui/ui/button"
 
 export default function ButtonWithIcon() {
   return (
-    <Button icon={"mailbox"} >
+    <Button icon={"mailbox-brands"} >
       Mail
     </Button>
   )

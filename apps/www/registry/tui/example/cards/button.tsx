@@ -58,11 +58,11 @@ export function CardsButton() {
           <Button rounded="full" variant="outline" size="xl">Button Text</Button>
         </div>
         <div className="space-x-2 space-y-2">
-          <Button icon={Check} size="xs">Button Text</Button>
-          <Button icon={Check} size="sm">Button Text</Button>
-          <Button icon={Check}>Button Text</Button>
-          <Button icon={Check} size="lg">Button Text</Button>
-          <Button icon={Check} size="xl">Button Text</Button>
+          <Button icon={"check-solid"} size="xs">Button Text</Button>
+          <Button icon={"check-solid"} size="sm">Button Text</Button>
+          <Button icon={"check-solid"}>Button Text</Button>
+          <Button icon={"check-solid"} size="lg">Button Text</Button>
+          <Button icon={"check-solid"} size="xl">Button Text</Button>
         </div>
         <div className="space-x-2 space-y-2">
           <ButtonAsChild />
