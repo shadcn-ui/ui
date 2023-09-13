@@ -67,7 +67,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         <div className="flex items-center">
           <div className="mr-2">
-            {icons(icon)}
+          {typeof icon === "string" && icons(icon)}
           </div>
           {props.children}
         </div>
