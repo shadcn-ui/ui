@@ -16,10 +16,10 @@ library.add(fas, fal, fab, fad, far, fat);
 
 
 
-export type IconsType = `${IconName}-${IconStyle}`;
+export type IconType = `${IconName}-${IconStyle}`;
 
 type Props = {
-  name: IconsType;
+  name: IconType;
   className?:string
 };
 
