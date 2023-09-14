@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
-import { ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -49,9 +48,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      {/* <Icon name="chevrons-down-solid" className="h-4 w-4 opacity-50" /> */}
-      {/* TODO: to replace with font awesome icon */}
-      <ChevronDown className="h-4 w-4 opacity-50" />
+      <Icon name="chevron-down-solid" className="h-4 w-4 opacity-50" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ))
