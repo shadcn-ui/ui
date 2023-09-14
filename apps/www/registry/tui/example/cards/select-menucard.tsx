@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/registry/tui/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../ui/select"
+import { Label } from "@/registry/tui/ui/label"
 
 const frameworks: any = [
   {
@@ -58,13 +59,11 @@ export function SelectMenu() {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <CardDescription>
-          Simple Select Menu
-        </CardDescription>
         <div className="grid gap-2">
-          <Select defaultValue="billing">
-            <SelectTrigger id={`area`} aria-label="Area">
-              <SelectValue placeholder="Select" />
+          <Label htmlFor="menu-1">Simple Select Menu</Label>
+          <Select defaultValue={frameworks[0]?.value}>
+            <SelectTrigger id={`menu-1`} aria-label="simple menu">
+              <SelectValue placeholder="Select ..." />
             </SelectTrigger>
             <SelectContent>
               {frameworks.map((framework: any, idx: number) =>
@@ -75,12 +74,10 @@ export function SelectMenu() {
         </div>
       </CardContent>
       <CardContent className="grid gap-4">
-        <CardDescription>
-          Simple Select Menu with Check Icon on Right
-        </CardDescription>
+        <Label htmlFor="menu-2">Simple Select Menu with Check Icon on Right</Label>
         <div className="grid gap-2">
-          <Select defaultValue="billing">
-            <SelectTrigger id={`area`} aria-label="Area">
+          <Select defaultValue={frameworks[0]?.value}>
+            <SelectTrigger id={`menu-2`} aria-label="simple menu">
               <SelectValue placeholder="Select" />
             </SelectTrigger>
             <SelectContent >
@@ -92,12 +89,10 @@ export function SelectMenu() {
         </div>
       </CardContent>
       <CardContent className="grid gap-4">
-        <CardDescription>
-          Select Menu with Image Avatar
-        </CardDescription>
+        <Label htmlFor="menu-3">Select Menu with Image Avatar</Label>
         <div className="grid gap-2">
-          <Select defaultValue="billing">
-            <SelectTrigger id={`area`} aria-label="Area">
+          <Select defaultValue={frameworks[0]?.value}>
+            <SelectTrigger id={`menu-3`} aria-label="simple menu">
               <SelectValue placeholder="Select" />
             </SelectTrigger>
             <SelectContent >
@@ -109,12 +104,10 @@ export function SelectMenu() {
         </div>
       </CardContent>
       <CardContent className="grid gap-4">
-        <CardDescription>
-          Select Menu with Status Indicator
-        </CardDescription>
+        <Label htmlFor="menu-4">Select Menu with Status Indicator</Label>
         <div className="grid gap-2">
-          <Select defaultValue="billing">
-            <SelectTrigger id={`area`} aria-label="Area">
+          <Select defaultValue={frameworks[0]?.value}>
+            <SelectTrigger id={`menu-4`} aria-label="simple menu">
               <SelectValue placeholder="Select" />
             </SelectTrigger>
             <SelectContent >
@@ -126,12 +119,10 @@ export function SelectMenu() {
         </div>
       </CardContent>
       <CardContent className="grid gap-4">
-        <CardDescription>
-          Select Menu with Secondary Text
-        </CardDescription>
+        <Label htmlFor="menu-5">Select Menu with Secondary Text</Label>
         <div className="grid gap-2">
-          <Select defaultValue="billing">
-            <SelectTrigger id={`area`} aria-label="Area">
+          <Select defaultValue={frameworks[0]?.value}>
+            <SelectTrigger id={`menu-5`} aria-label="simple menu">
               <SelectValue placeholder="Select" />
             </SelectTrigger>
             <SelectContent >
