@@ -44,12 +44,18 @@ const Combobox = ({ listArray, alignIcon = "left", avatarActive = false, statusI
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="flex w-[200px] justify-between"
         >
-          {value
-            ? listArray.find((list) => list.value === value)?.label
-            : "Select from list..."}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <div className="flex w-full items-center justify-between">
+            <div>
+              {value
+                ? listArray.find((list) => {
+                  return !secondaryActive ? list.value === value : list.value + list.secondaryText === value;
+                })?.label
+                : "Select from list..."}
+            </div>
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </div>
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
@@ -69,21 +75,21 @@ const Combobox = ({ listArray, alignIcon = "left", avatarActive = false, statusI
                 {statusIndicator &&
                   <span
                     className={cn(
-                      'mr-2 inline-block h-2 w-2 flex-shrink-0 rounded-full',
+                      'mr-2 inline-block h-2 w-2 shrink-0 rounded-full',
                       list.status ? 'bg-green-400' : 'bg-gray-200'
                     )}
                   >
                   </span>
                 }
                 {avatarActive &&
-                  <Avatar className="h-8 w-8 mr-2">
+                  <Avatar className="mr-2 h-8 w-8">
                     <AvatarImage src={list.imagePath} alt={list.value} />
                     <AvatarFallback>CW</AvatarFallback>
                   </Avatar>
                 }
                 {(alignIcon === 'left' && !avatarActive && !statusIndicator && !secondaryActive) && <Check
                   className={cn(
-                    "mr-2 h-4 w-4 inset-y-2 left-0 flex items-center",
+                    "inset-y-2 left-0 mr-2 flex h-4 w-4 items-center",
                     value === list.value ? "text-indigo-600" : "text-white opacity-0"
                   )}
                 />
@@ -92,14 +98,14 @@ const Combobox = ({ listArray, alignIcon = "left", avatarActive = false, statusI
                 {secondaryActive && <span
                   className={cn(
                     'ml-4 truncate text-gray-500',
-                    value === list.value ? 'text-indigo-200' : 'text-gray-500'
+                    value === list.value + list.secondaryText ? 'text-indigo-200' : 'text-gray-500'
                   )}
                 >
                   {list.secondaryText}
                 </span>}
                 {alignIcon === 'right' && <Check
                   className={cn(
-                    "h-4 w-4 absolute inset-y-2 right-0 flex items-center",
+                    "absolute inset-y-2 right-0 flex h-4 w-4 items-center",
                     value === list.value ? "text-indigo-600" : "text-white opacity-0"
                   )}
                 />}
