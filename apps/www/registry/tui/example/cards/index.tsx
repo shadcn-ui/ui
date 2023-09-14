@@ -13,6 +13,7 @@ import { CardsTeamMembers } from "@/registry/tui/example/cards/team-members"
 import { CardsBadge } from "./badge"
 import { CardsButton } from "./button"
 import { CardsAvatar } from "./avatar"
+import { SelectMenu } from "@/registry/tui/example/cards/select-menucard"
 
 export default function CardsDemo() {
   return (
@@ -29,6 +30,7 @@ export default function CardsDemo() {
         </div>
       </div>
       <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
+        <SelectMenu />
         <CardsStats />
         <div className="grid gap-1 sm:grid-cols-[280px_1fr] md:hidden">
           <CardsCalendar />
