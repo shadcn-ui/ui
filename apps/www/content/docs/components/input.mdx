@@ -58,6 +58,32 @@ import { Input } from "@/components/ui/input"
 
 <ComponentPreview name="input-file" className="[&_input]:max-w-xs" />
 
+When utilizing `<Input type="file" />` alongside [React Hook Form](https://www.react-hook-form.com/), it is important to have an uncontrolled input. You can achieve this by simply passing the `onChange` handler to the `onChange` prop of the input element.
+
+```tsx
+<FormField
+  control={form.control}
+  name="picture"
+  render={({ field: { value, onChange, ...fieldProps } }) => (
+    <FormItem>
+      <FormLabel>Picture</FormLabel>
+      <FormControl>
+        <Input
+          {...fieldProps}
+          placeholder="Picture"
+          type="file"
+          accept="image/*, application/pdf"
+          onChange={(event) =>
+            onChange(event.target.files && event.target.files[0])
+          }
+        />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+```
+
 ### Disabled
 
 <ComponentPreview name="input-disabled" className="[&_input]:max-w-xs" />
