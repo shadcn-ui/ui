@@ -32,7 +32,10 @@ const FontAwesome = ({ name, className, ...props }: Props) => {
     { name: "brands", value: "fab" },
     { name: "thin", value: "fat" },
   ];
-  const [icon, style] = name?.split("-") as [IconName, IconStyle];
+  
+  const lastHyphenIndex = name.lastIndexOf("-");
+  const icon = name.substring(0, lastHyphenIndex) as IconName;
+  const style = name.substring(lastHyphenIndex + 1) as IconStyle;
   const iconPrefix: IconPrefix | undefined =
     perfixList.find(obj => obj.name === style)?.value || "fas";
   const findIcon = findIconDefinition({ iconName: icon, prefix: iconPrefix });

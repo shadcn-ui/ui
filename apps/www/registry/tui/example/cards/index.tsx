@@ -10,10 +10,12 @@ import { CardsReportIssue } from "@/registry/tui/example/cards/report-issue"
 import { CardsShare } from "@/registry/tui/example/cards/share"
 import { CardsStats } from "@/registry/tui/example/cards/stats"
 import { CardsTeamMembers } from "@/registry/tui/example/cards/team-members"
+import { CardsComboBox } from "@/registry/tui/example/cards/combo-box"
 import { CardsBadge } from "./badge"
 import { CardsButton } from "./button"
 import { CardsAvatar } from "./avatar"
 import { DropdownMenuCard } from "@/registry/tui/example/cards/dropdown-card"
+import { SelectMenu } from "@/registry/tui/example/cards/select-menucard"
 
 export default function CardsDemo() {
   return (
@@ -33,6 +35,8 @@ export default function CardsDemo() {
         </div>
       </div>
       <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
+        <CardsComboBox />
+        <SelectMenu />
         <CardsStats />
         <div className="grid gap-1 sm:grid-cols-[280px_1fr] md:hidden">
           <CardsCalendar />
