@@ -6,6 +6,7 @@ import { Check } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Label } from "./label"
+import { Icon } from "./icon"
 
 const CheckboxCore = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
@@ -22,7 +23,7 @@ const CheckboxCore = React.forwardRef<
     <CheckboxPrimitive.Indicator
       className={cn("flex items-center justify-center text-current")}
     >
-      <Check className="h-4 w-4" />
+      <Icon name="check-solid" className="h-3 w-3" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ))
