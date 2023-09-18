@@ -215,6 +215,12 @@ const ui: Registry = [
     files: ["ui/toast.tsx", "ui/use-toast.ts", "ui/toaster.tsx"],
   },
   {
+    name: "toggle-group",
+    type: "components:ui",
+    dependencies: ["@radix-ui/react-toggle-group"],
+    files: ["ui/toggle-group.tsx"],
+  },
+  {
     name: "toggle",
     type: "components:ui",
     dependencies: ["@radix-ui/react-toggle"],
@@ -736,6 +742,42 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["toast"],
     files: ["example/toast-with-title.tsx"],
+  },
+  {
+    name: "toggle-group-demo",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-demo.tsx"],
+  },
+  {
+    name: "toggle-group-disabled",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-disabled.tsx"],
+  },
+  {
+    name: "toggle-group-lg",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-lg.tsx"],
+  },
+  {
+    name: "toggle-group-outline",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-outline.tsx"],
+  },
+  {
+    name: "toggle-group-sm",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-sm.tsx"],
+  },
+  {
+    name: "toggle-group-single",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-single.tsx"],
   },
   {
     name: "toggle-demo",
