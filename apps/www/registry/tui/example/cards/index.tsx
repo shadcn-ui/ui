@@ -13,11 +13,15 @@ import { CardsTeamMembers } from "@/registry/tui/example/cards/team-members"
 import { CardsBadge } from "./badge"
 import { CardsButton } from "./button"
 import { CardsAvatar } from "./avatar"
+import { DropdownMenuCard } from "@/registry/tui/example/cards/dropdown-card"
 
 export default function CardsDemo() {
   return (
     <div className="md:grids-col-2 grid md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4">
       <div className="col-span-12 space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <DropdownMenuCard />
+        </div>
         <div className="grid grid-cols-2 gap-4">
           <CardsBadge />
           <CardsButton />
