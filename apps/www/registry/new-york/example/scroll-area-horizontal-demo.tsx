@@ -2,11 +2,6 @@ import * as React from "react"
 import Image from "next/image"
 
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york/ui/tooltip"
 
 export interface Artwork {
   artist: string
@@ -31,24 +26,25 @@ export const works: Artwork[] = [
 export default function ScrollAreaHorizontalDemo() {
   return (
     <ScrollArea className="w-96 whitespace-nowrap rounded-md border">
-      <div className="flex space-x-4 pb-4">
+      <div className="flex w-max space-x-4 p-4">
         {works.map((artwork) => (
-          <div
-            key={artwork.artist}
-            className="h-[400px] w-[300px] overflow-hidden rounded-md"
-          >
-            <Tooltip>
-              <TooltipTrigger>
-                <Image
-                  src={artwork.art}
-                  alt={`Photo by ${artwork.artist}`}
-                  width={300}
-                  height={400}
-                />
-              </TooltipTrigger>
-              <TooltipContent>Photo by {artwork.artist}</TooltipContent>
-            </Tooltip>
-          </div>
+          <figure key={artwork.artist} className="shrink-0">
+            <div className="overflow-hidden rounded-md">
+              <Image
+                src={artwork.art}
+                alt={`Photo by ${artwork.artist}`}
+                className="aspect-[3/4] h-fit w-fit object-cover"
+                width={300}
+                height={400}
+              />
+            </div>
+            <figcaption className="pt-2 text-xs text-muted-foreground">
+              Photo by{" "}
+              <span className="font-semibold text-foreground">
+                {artwork.artist}
+              </span>
+            </figcaption>
+          </figure>
         ))}
       </div>
       <ScrollBar orientation="horizontal" />
