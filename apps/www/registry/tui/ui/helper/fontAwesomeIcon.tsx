@@ -20,10 +20,10 @@ export type IconType = `${IconName}-${IconStyle}`;
 
 type Props = {
   name: IconType;
-  className?:string
+  className?: string
 };
 
-const FontAwesome = ({ name,className, ...props }: Props) => {
+const FontAwesome = ({ name, className, ...props }: Props) => {
   const perfixList: { name: IconStyle; value: IconPrefix }[] = [
     { name: "solid", value: "fas" },
     { name: "regular", value: "far" },
@@ -36,7 +36,7 @@ const FontAwesome = ({ name,className, ...props }: Props) => {
   const iconPrefix: IconPrefix | undefined =
     perfixList.find(obj => obj.name === style)?.value || "fas";
   const findIcon = findIconDefinition({ iconName: icon, prefix: iconPrefix });
-  return <FontAwesomeIcon icon={findIcon} {...props} />;
+  return <FontAwesomeIcon icon={findIcon} className={className} {...props} />;
 };
 
 export default FontAwesome;
