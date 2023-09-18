@@ -34,7 +34,7 @@ const DialogOverlay = React.forwardRef<
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
-const dialogVarients = cva(
+const dialogVariants = cva(
   "fixed z-50 grid w-full  gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 sm:rounded-lg",
   {
     variants: {
@@ -69,7 +69,7 @@ const dialogVarients = cva(
 
 export interface DialogProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>,
-  VariantProps<typeof dialogVarients> {
+  VariantProps<typeof dialogVariants> {
   children?: React.ReactNode,
   className?: string
 }
@@ -83,7 +83,7 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        dialogVarients({ position, size }),
+        dialogVariants({ position, size }),
         className
       )}
       {...props}
