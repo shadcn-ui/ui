@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
-import Link, { LinkProps } from "next/link"
+import Link from "next/link"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NpmCommands } from "types/unist"
 
@@ -291,6 +291,12 @@ const components = {
     ...props
   }: React.ComponentProps<typeof FrameworkDocs>) => (
     <FrameworkDocs className={cn(className)} {...props} />
+  ),
+  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      className={cn("font-medium underline underline-offset-4", className)}
+      {...props}
+    />
   ),
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
