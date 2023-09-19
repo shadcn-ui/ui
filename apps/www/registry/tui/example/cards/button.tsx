@@ -60,9 +60,9 @@ export function CardsButton() {
         <div className="space-x-2 space-y-2">
           <Button icon={"check-solid"} size="xs">Button Text</Button>
           <Button icon={"check-solid"} size="sm">Button Text</Button>
-          <Button icon={"check-solid"}>Button Text</Button>
-          <Button icon={"check-solid"} size="lg">Button Text</Button>
-          <Button icon={"check-solid"} size="xl">Button Text</Button>
+          <Button icon={"home-solid"}>Button Text</Button>
+          <Button icon={"check-solid"} alignIcon="left" size="lg">Button Text</Button>
+          <Button icon={"check-circle-solid"} alignIcon="right" iconStyle="h-6" size="xl">Button Text</Button>
         </div>
         <div className="space-x-2 space-y-2">
           <ButtonAsChild />
