@@ -1,9 +1,25 @@
 const { fontFamily } = require("tailwindcss/defaultTheme")
 
+const colorClasses = [
+  '#EB5D4D',
+  '#0CCE6B',
+  '#EF2D56',
+  '#ED7D3A',
+  'gray-600',
+];
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+  purge: {
+    safelist: [
+      ...colorClasses.map((color) => `text-${color}`),
+      ...colorClasses.map((color) => `bg-${color}`),
+      ...colorClasses.map((color) => `text-[${color}]`),
+      ...colorClasses.map((color) => `bg-[${color}]`),
+    ],
+  },
   theme: {
     container: {
       center: true,

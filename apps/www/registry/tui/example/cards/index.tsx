@@ -16,6 +16,7 @@ import { CardsButton } from "./button"
 import CheckboxesCard from "./checkboxesCard"
 import PrimitiveToggleCards from "./primitiveToggleCards"
 import SwitchCard from "./switchCard"
+import RadioCard from "./radioGroupsCard"
 
 export default function CardsDemo() {
   return (
@@ -85,13 +86,10 @@ export default function CardsDemo() {
           <PrimitiveToggleCards />
         </div>
         <div className="col-span-2">
-          {/* <RadioCard /> */}
+          <RadioCard />
         </div>
         <div className="col-span-2">
           <CheckboxesCard />
-        </div>
-        <div className="col-span-2">
-          {/* <RadioGroupsInCardLayout /> */}
         </div>
       </div>
     </>
