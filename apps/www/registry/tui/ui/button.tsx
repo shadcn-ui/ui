@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 
-import {Icon, IconType } from "./icon";
+import { Icon, IconType } from "./icon";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center text-sm font-medium shadow-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
@@ -17,7 +17,7 @@ const buttonVariants = cva(
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         soft:
-          "text-black-foreground hover:bg-indigo/90 bg-indigo-50",
+          "text-black-foreground hover:bg-indigo/90 bg-primary-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
@@ -52,12 +52,13 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  icon?: IconType
-
+  icon?: IconType;
+  alignIcon?: "left" | "right";
+  iconStyle?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, icon, rounded, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, icon, alignIcon,iconStyle, rounded, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
@@ -65,10 +66,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        <div className="flex items-center">
-          <div className="mr-2">
-          {typeof icon === "string" && <Icon name={icon} />}
-          </div>
+        <div className="flex flex-row items-center">
+          {typeof icon === "string" && <Icon className={`${alignIcon === "right" ? "order-2 ml-2" :"mr-2"} ${iconStyle}`} name={icon} />}
           {props.children}
         </div>
       </Comp>

@@ -39,7 +39,7 @@ const FontAwesome = ({ name,className, ...props }: Props) => {
   const iconPrefix: IconPrefix | undefined =
     perfixList.find(obj => obj.name === style)?.value || "fas";
   const findIcon = findIconDefinition({ iconName: icon, prefix: iconPrefix });
-  return <FontAwesomeIcon icon={findIcon} {...props} />;
+  return <FontAwesomeIcon icon={findIcon} className={className} {...props} />;
 };
 
 export default FontAwesome;
