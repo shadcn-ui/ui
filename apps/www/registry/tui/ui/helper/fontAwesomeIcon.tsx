@@ -20,10 +20,10 @@ export type IconType = `${IconName}-${IconStyle}`;
 
 type Props = {
   name: IconType;
-  className?:string
+  className?: string
 };
 
-const FontAwesome = ({ name,className, ...props }: Props) => {
+const FontAwesome = ({ name, className, ...props }: Props) => {
   const perfixList: { name: IconStyle; value: IconPrefix }[] = [
     { name: "solid", value: "fas" },
     { name: "regular", value: "far" },
@@ -32,7 +32,7 @@ const FontAwesome = ({ name,className, ...props }: Props) => {
     { name: "brands", value: "fab" },
     { name: "thin", value: "fat" },
   ];
-  
+
   const lastHyphenIndex = name.lastIndexOf("-");
   const icon = name.substring(0, lastHyphenIndex) as IconName;
   const style = name.substring(lastHyphenIndex + 1) as IconStyle;
