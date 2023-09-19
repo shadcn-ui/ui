@@ -156,7 +156,7 @@ const dropDownData: DropdownItem[] = [
 ]
 
 export function DropdownMenuCard() {
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState<boolean>(false);
   return (
     <Card>
       <CardHeader className="space-y-1">
