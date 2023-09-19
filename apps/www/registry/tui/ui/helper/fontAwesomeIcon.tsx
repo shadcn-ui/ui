@@ -32,7 +32,7 @@ const FontAwesome = ({ name, className, ...props }: Props) => {
     { name: "brands", value: "fab" },
     { name: "thin", value: "fat" },
   ];
-  
+
   const lastHyphenIndex = name.lastIndexOf("-");
   const icon = name.substring(0, lastHyphenIndex) as IconName;
   const style = name.substring(lastHyphenIndex + 1) as IconStyle;
