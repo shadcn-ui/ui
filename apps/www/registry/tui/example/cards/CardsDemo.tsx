@@ -116,6 +116,6 @@ export default function CardsDemo() {
           <CheckboxesCard />
         </div>
       </div>
-    </>
+    </div>
   );
 }
