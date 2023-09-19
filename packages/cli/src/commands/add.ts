@@ -148,9 +148,11 @@ export const add = new Command()
 
             if (!overwrite) {
               logger.info(
-                `You can always use ${chalk.green("--overwrite")} to overwrite.`
+                `Skipped ${item.name}. To overwrite, run with the ${chalk.green(
+                  "--overwrite"
+                )} flag.`
               )
-              process.exit(1)
+              continue
             }
 
             spinner.start(`Installing ${item.name}...`)
