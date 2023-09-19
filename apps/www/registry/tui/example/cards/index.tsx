@@ -17,6 +17,7 @@ import CheckboxesCard from "./checkboxesCard"
 import PrimitiveToggleCards from "./primitiveToggleCards"
 import SwitchCard from "./switchCard"
 import RadioCard from "./radioGroupsCard"
+import DialogCard from "./dialogCard"
 
 export default function CardsDemo() {
   return (
@@ -78,18 +79,21 @@ export default function CardsDemo() {
           </div>
         </div>
       </div>
-      <div className="w-full sm:grid h-fit grid-cols-4 gap-6 space-y-2 py-6">
-        <div className="col-span-2">
+      <div className="grid-cols-12 w-full grid xl:gap-4" >
+        <div className="md:col-span-6 col-span-12 mt-2">
           <SwitchCard />
         </div>
-        <div className="col-span-2">
+        <div className="md:col-span-6 col-span-12 mt-2">
           <PrimitiveToggleCards />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-12">
           <RadioCard />
         </div>
-        <div className="col-span-2">
+        <div className="md:col-span-6 col-span-12">
           <CheckboxesCard />
+        </div>
+        <div className="md:col-span-6 col-span-12">
+          <DialogCard />
         </div>
       </div>
     </>

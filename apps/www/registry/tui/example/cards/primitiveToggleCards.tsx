@@ -2,6 +2,7 @@ import React from 'react'
 import { Toggle } from '../../ui/toggle'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../ui/card'
 import { Icon } from '../../ui/icon'
+
 const PrimitiveToggleCards = () => {
     return (
         <Card>
@@ -26,13 +27,13 @@ const PrimitiveToggleCards = () => {
                         Default Small Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Default Small Toggle" variant={"default"} size="sm" className='mt-2' icon="fan-solid">
+                    <Toggle aria-label="Default Small Toggle" variant={"default"} size="sm" className='mt-2 sm:mt-0' icon="fan-solid">
                         Default Small Toggle
                     </Toggle>
                 </div>
                 <div className="text-sm italic justify-end flex pb-3">
                     <p className='flex items-center'>
-                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-gray-600' /> Small sized outlined & default toggle with or without icons
+                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-muted-foreground' /> Small sized outlined & default toggle with or without icons
                     </p>
                 </div>
                 <hr />
@@ -49,13 +50,14 @@ const PrimitiveToggleCards = () => {
                         Default Default Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Default Default Toggle" variant={"default"} size="default" className='mt-2' icon="fan-solid" iconClassName='h-6 w-6'>
+                    <Toggle aria-label="Default Default Toggle" variant={"default"} size="default" className='mt-2 sm:mt-0' icon="fan-solid" iconClassName='h-6 w-6'>
                         Default Default Toggle
                     </Toggle>
                 </div>
                 <div className="text-sm italic justify-end flex pb-3">
                     <p className='flex items-center'>
-                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-gray-600' /> Default sized outlined & default toggle with or without icons
+                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-muted-foreground' />
+                        Default sized outlined & default toggle with or without icons
                     </p>
                 </div>
                 <hr />
@@ -67,7 +69,7 @@ const PrimitiveToggleCards = () => {
                     <Toggle aria-label="Outlined Large Toggle" variant={"outline"} size="lg" icon="fan-solid" iconClassName='h-6 w-6'>
                         Outlined Large Toggle
                     </Toggle>
-                    <Toggle aria-label="Default Large Toggle" variant={"default"} size="lg" className='mt-2'>
+                    <Toggle aria-label="Default Large Toggle" variant={"default"} size="lg" className='mt-2 sm:mt-0'>
                         Default Large Toggle
                     </Toggle>
 
@@ -77,7 +79,7 @@ const PrimitiveToggleCards = () => {
                 </div>
                 <div className="text-sm italic justify-end flex pt-3">
                     <p className='flex items-center'>
-                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-gray-600' /> Large sized outlined & default toggle with or without icons
+                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-muted-foreground' /> Large sized outlined & default toggle with or without icons
                     </p>
                 </div>
                 <hr />
