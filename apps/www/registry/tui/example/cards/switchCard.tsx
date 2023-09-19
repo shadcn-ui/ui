@@ -29,6 +29,10 @@ const SwitchCard = () => {
                 </CardDescription>
                 <div className='flex space-x-2 justify-center pt-3 pb-6 flex-wrap'>
                     <Switch aria-label="Small Toggle" variant={"icon"}
+                        iconLeft="sun-solid"
+                        iconLeftClassName='text-orange-600'
+                        iconRightClassName='text-gray-500'
+                        iconRight="moon-solid"
                         value={isChecked ? "true" : undefined}
                         onCheckedChange={(e: any) => setIsChecked(e)}
                     />

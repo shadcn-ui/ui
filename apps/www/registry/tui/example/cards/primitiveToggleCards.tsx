@@ -18,16 +18,15 @@ const PrimitiveToggleCards = () => {
                         Outlined Small Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Outlined Small Toggle" variant={"outline"} size="sm">
-                        <Icon name="fan-solid" className="h-6 w-6 mr-1" />Outlined Icon Toggle
+                    <Toggle aria-label="Outlined Small Toggle" variant={"outline"} size="sm" icon="fan-solid" iconClassName='h-6 w-6'>
+                        Outlined Icon Toggle
                     </Toggle>
 
                     <Toggle aria-label="Default Small Toggle" variant={"default"} size="sm">
                         Default Small Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Default Small Toggle" variant={"default"} size="sm" className='mt-2'>
-                        <Icon name="fan-solid" className='mr-1' />
+                    <Toggle aria-label="Default Small Toggle" variant={"default"} size="sm" className='mt-2' icon="fan-solid">
                         Default Small Toggle
                     </Toggle>
                 </div>
@@ -42,16 +41,16 @@ const PrimitiveToggleCards = () => {
                         Outlined Default Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Outlined Default Toggle" variant={"outline"} size="default">
-                        <Icon name="fan-solid" className="h-6 w-6 mr-1" /> Outlined Default Toggle
+                    <Toggle aria-label="Outlined Default Toggle" variant={"outline"} size="default" icon="fan-solid" iconClassName='h-6 w-6'>
+                        Outlined Default Toggle
                     </Toggle>
 
                     <Toggle aria-label="Default Default Toggle" variant={"default"} size="default" >
                         Default Default Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Default Default Toggle" variant={"default"} size="default" className='mt-2'>
-                        <Icon name="fan-solid" className="h-6 w-6 mr-1" /> Default Default Toggle
+                    <Toggle aria-label="Default Default Toggle" variant={"default"} size="default" className='mt-2' icon="fan-solid" iconClassName='h-6 w-6'>
+                        Default Default Toggle
                     </Toggle>
                 </div>
                 <div className="text-sm italic justify-end flex pb-3">
@@ -65,15 +64,15 @@ const PrimitiveToggleCards = () => {
                         Outlined Large Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Outlined Large Toggle" variant={"outline"} size="lg">
-                        <Icon name="fan-solid" className="h-6 w-6 mr-1" /> Outlined Large Toggle
+                    <Toggle aria-label="Outlined Large Toggle" variant={"outline"} size="lg" icon="fan-solid" iconClassName='h-6 w-6'>
+                        Outlined Large Toggle
                     </Toggle>
                     <Toggle aria-label="Default Large Toggle" variant={"default"} size="lg" className='mt-2'>
                         Default Large Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Default Large Toggle" variant={"default"} size="lg">
-                        <Icon name="fan-solid" className="h-6 w-6 mr-1" /> Default Large Toggle
+                    <Toggle aria-label="Default Large Toggle" variant={"default"} size="lg" icon="fan-solid" iconClassName='h-6 w-6'>
+                        Default Large Toggle
                     </Toggle>
                 </div>
                 <div className="text-sm italic justify-end flex pt-3">
