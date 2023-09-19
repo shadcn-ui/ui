@@ -39,7 +39,7 @@ export const add = new Command()
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
-  .option("-a, --all", "add ALL available components", false)
+  .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .action(async (components, opts) => {
     try {
