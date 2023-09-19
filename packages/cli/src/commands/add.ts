@@ -138,15 +138,27 @@ export const add = new Command()
 
         if (existingComponent.length && !options.overwrite) {
           if (selectedComponents.includes(item.name)) {
-            logger.warn(
-              `Component ${item.name} already exists. Use ${chalk.green(
-                "--overwrite"
-              )} to overwrite.`
-            )
-            process.exit(1)
-          }
+            spinner.stop()
+            const { overwrite } = await prompts({
+              type: "confirm",
+              name: "overwrite",
+              message: `Component ${item.name} already exists. Would you like to overwrite?`,
+              initial: false,
+            })
 
-          continue
+            if (!overwrite) {
+              logger.info(
+                `Skipped ${item.name}. To overwrite, run with the ${chalk.green(
+                  "--overwrite"
+                )} flag.`
+              )
+              continue
+            }
+
+            spinner.start(`Installing ${item.name}...`)
+          } else {
+            continue
+          }
         }
 
         for (const file of item.files) {
