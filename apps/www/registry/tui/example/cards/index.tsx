@@ -51,20 +51,12 @@ export default function CardsDemo() {
           </div>
         </div>
       </div>
-      <div className="space-y-4 lg:col-span-6 xl:col-span-5 xl:space-y-4">
-        <div className="col-span-2">
+      <div className="space-y-4 lg:col-span-12 xl:col-span-12 xl:space-y-4">
+        <div className="grid grid-cols-2 gap-4">
           <SwitchCard />
-        </div>
-        <div className="md:col-span-6 col-span-12 mt-2">
           <PrimitiveToggleCards />
-        </div>
-        <div className="col-span-12">
           <RadioCard />
-        </div>
-        <div className="md:col-span-6 col-span-12">
           <CheckboxesCard />
-        </div>
-        <div className="md:col-span-6 col-span-12">
           <DialogCard />
         </div>
       </div>
