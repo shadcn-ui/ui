@@ -21,7 +21,7 @@ import {
 } from "@/registry/new-york/ui/popover"
 import { Separator } from "@/registry/new-york/ui/separator"
 
-interface DataTableFacetedFilter<TData, TValue> {
+interface DataTableFacetedFilterProps<TData, TValue> {
   column?: Column<TData, TValue>
   title?: string
   options: {
@@ -35,7 +35,7 @@ export function DataTableFacetedFilter<TData, TValue>({
   column,
   title,
   options,
-}: DataTableFacetedFilter<TData, TValue>) {
+}: DataTableFacetedFilterProps<TData, TValue>) {
   const facets = column?.getFacetedUniqueValues()
   const selectedValues = new Set(column?.getFilterValue() as string[])
 
