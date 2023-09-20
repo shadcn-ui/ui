@@ -20,11 +20,12 @@ import CheckboxesCard from "./checkboxesCard";
 import PrimitiveToggleCards from "./primitiveToggleCards";
 import RadioCard from "./radioGroupsCard";
 import SwitchCard from "./switchCard";
+import DialogCard from "./dialogCard";
 
 
 export default function CardsDemo() {
   return (
-    <div className="md:grids-col-2 grid md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4">
+    <div className="md:grid-cols-2 grid md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4">
       <div className="col-span-12 space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <DropdownMenuCard />
@@ -44,8 +45,9 @@ export default function CardsDemo() {
           <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
             <CardsActivityGoal />
           </div>
-          <div className="pt-3 sm:col-span-2 xl:pt-4">
-            <CardsMetric />
+          <div className="grid grid-cols-2 gap-4">
+            <CardsBadge />
+            <CardsButton />
           </div>
         </div>
       </div>
@@ -53,14 +55,17 @@ export default function CardsDemo() {
         <div className="col-span-2">
           <SwitchCard />
         </div>
-        <div className="col-span-2">
+        <div className="md:col-span-6 col-span-12 mt-2">
           <PrimitiveToggleCards />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-12">
           <RadioCard />
         </div>
-        <div className="col-span-2">
+        <div className="md:col-span-6 col-span-12">
           <CheckboxesCard />
+        </div>
+        <div className="md:col-span-6 col-span-12">
+          <DialogCard />
         </div>
       </div>
 

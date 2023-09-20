@@ -2,6 +2,7 @@ import React from 'react'
 import { Toggle } from '../../ui/toggle'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../ui/card'
 import { Icon } from '../../ui/icon'
+
 const PrimitiveToggleCards = () => {
     return (
         <Card>
@@ -32,7 +33,7 @@ const PrimitiveToggleCards = () => {
                 </div>
                 <div className="text-sm italic justify-end flex pb-3">
                     <p className='flex items-center'>
-                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-gray-600' /> Small sized outlined & default toggle with or without icons
+                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-muted-foreground' /> Small sized outlined & default toggle with or without icons
                     </p>
                 </div>
                 <hr />
@@ -45,7 +46,7 @@ const PrimitiveToggleCards = () => {
                         Outlined Default Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Default Default Toggle" variant={"default"} size="default" >
+                    <Toggle aria-label="Default Default Toggle" variant={"default"} size="default" className='mt-2' >
                         Default Default Toggle
                     </Toggle>
 
@@ -55,7 +56,8 @@ const PrimitiveToggleCards = () => {
                 </div>
                 <div className="text-sm italic justify-end flex pb-3">
                     <p className='flex items-center'>
-                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-gray-600' /> Default sized outlined & default toggle with or without icons
+                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-muted-foreground' />
+                        Default sized outlined & default toggle with or without icons
                     </p>
                 </div>
                 <hr />
@@ -71,13 +73,13 @@ const PrimitiveToggleCards = () => {
                         Default Large Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Default Large Toggle" variant={"default"} size="lg" icon="fan-solid" iconClassName='h-6 w-6'>
+                    <Toggle aria-label="Default Large Toggle" variant={"default"} size="lg" icon="fan-solid" iconClassName='h-6 w-6' className='mt-2' >
                         Default Large Toggle
                     </Toggle>
                 </div>
                 <div className="text-sm italic justify-end flex pt-3">
                     <p className='flex items-center'>
-                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-gray-600' /> Large sized outlined & default toggle with or without icons
+                        <Icon name="info-circle-solid" className='mr-1 h-4 w-4 text-muted-foreground' /> Large sized outlined & default toggle with or without icons
                     </p>
                 </div>
                 <hr />

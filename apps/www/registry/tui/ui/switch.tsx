@@ -115,7 +115,6 @@ CoreSwitch.displayName = SwitchPrimitives.Root.displayName;
 type SwitchModifiedTypes = {
   className?: string;
   variant?: "default" | "short" | "icon" | null | undefined;
-  ref?: any;
   label?: string;
   description?: string;
   alignment?: "left" | "right" | "top" | "bottom";
@@ -131,7 +130,7 @@ const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   SwitchModifiedTypes &
   React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
->(({ className, variant, ref, label, description, alignment, inline, iconLeft, iconRight, iconLeftClassName, iconRightClassName, ...props }) => {
+>(({ className, variant, label, description, alignment, inline, iconLeft, iconRight, iconLeftClassName, iconRightClassName, ...props }, ref) => {
   return (
     <>
       {(label || description) && (alignment === undefined || alignment === "left" || alignment === "right") ?

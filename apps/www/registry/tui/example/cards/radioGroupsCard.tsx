@@ -41,7 +41,7 @@ const RadioCard = () => {
                     <CardDescription className='pt-4 px-0'>
                         Simple inline list
                     </CardDescription>
-                    <div className='mx-auto w-2/3 pt-4'>
+                    <div className='mx-auto w-2/3 pt-4 hidden sm:block'>
                         <RadioGroup
                             label="Notifications"
                             description='How do you prefer to receive notifications?'
