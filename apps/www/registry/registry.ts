@@ -558,6 +558,12 @@ const example: Registry = [
     files: ["example/input-with-text.tsx"],
   },
   {
+    name: "input-with-icon",
+    type: "components:example",
+    registryDependencies: ["input"],
+    files: ["example/input-with-icon.tsx"],
+  },
+  {
     name: "label-demo",
     type: "components:example",
     registryDependencies: ["label"],
