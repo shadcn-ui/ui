@@ -63,7 +63,7 @@ export const DismissDialog = ({ showDismissButton, withFooter, withLeftAlignButt
                     <Label className='font-semibold text-xl leading-10'>
                       Deactivate account
                     </Label>
-                    <legend className='text-muted-foreground font-light mt-2'>
+                    <legend className='text-muted-foreground font-light mt-2 leading-6'>
                       Are you sure you want to deactivate your account?
                       All of your data will be permanently removed from our servers forever.
                       This action cannot be undone.
@@ -111,7 +111,7 @@ export const BasicExample = () => {
                 </Label>
               </DialogTitle>
             </DialogHeader>
-            <legend className='text-center text-muted-foreground'>
+            <legend className='text-center text-muted-foreground leading-6'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.
             </legend>
             <Button variant="default" className='w-full' onClick={() => setOpen(!open)}>
@@ -131,6 +131,7 @@ const DialogCard = () => {
     <Card className='w-full'>
       {/* 1 */}
       <BasicExample />
+      <hr />
       {/* 2 */}
       <CardHeader>
         <CardDescription className='pb-2'>
@@ -153,7 +154,7 @@ const DialogCard = () => {
                 </Label>
               </DialogTitle>
             </DialogHeader>
-            <legend className='text-center text-muted-foreground'>
+            <legend className='text-center text-muted-foreground leading-6'>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius aliquam laudantium explicabo pariatur iste dolorem animi vitae error totam. At sapiente aliquam accusamus facere veritatis.
             </legend>
             <div className='w-full px-2 flex space-x-2'>
@@ -167,15 +168,20 @@ const DialogCard = () => {
           </DialogContent>
         </Dialog>
       </CardContent>
+      <hr />
       {/* 3 */}
       <DismissDialog />
+      <hr />
       {/* 4 */}
       <DismissDialog showDismissButton />
+      <hr />
       {/* 5 */}
       <DismissDialog withFooter />
+      <hr />
       {/* 6 */}
       <DismissDialog withLeftAlignButtons />
-    </Card>
+      <hr />
+    </Card >
   )
 }
 

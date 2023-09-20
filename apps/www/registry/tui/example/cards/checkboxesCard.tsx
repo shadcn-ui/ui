@@ -34,7 +34,7 @@ const CheckboxesCard = () => {
     ], [])
 
     return (
-        <Card>
+        <Card className='h-fit'>
             <CardHeader className="pb-3">
                 <CardTitle>Checkboxes</CardTitle>
                 <CardDescription>

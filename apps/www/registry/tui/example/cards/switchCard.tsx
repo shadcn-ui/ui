@@ -5,7 +5,7 @@ import { Switch } from '../../ui/switch'
 const SwitchCard = () => {
     const [isChecked, setIsChecked] = useState<boolean>(false)
     return (
-        <Card>
+        <Card className='h-fit'>
             <CardHeader className="pb-3">
                 <CardTitle>Switch Toggles</CardTitle>
             </CardHeader>
