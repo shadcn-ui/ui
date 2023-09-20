@@ -46,7 +46,7 @@ const PrimitiveToggleCards = () => {
                         Outlined Default Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Default Default Toggle" variant={"default"} size="default" >
+                    <Toggle aria-label="Default Default Toggle" variant={"default"} size="default" className='mt-2' >
                         Default Default Toggle
                     </Toggle>
 
@@ -73,7 +73,7 @@ const PrimitiveToggleCards = () => {
                         Default Large Toggle
                     </Toggle>
 
-                    <Toggle aria-label="Default Large Toggle" variant={"default"} size="lg" icon="fan-solid" iconClassName='h-6 w-6'>
+                    <Toggle aria-label="Default Large Toggle" variant={"default"} size="lg" icon="fan-solid" iconClassName='h-6 w-6' className='mt-2' >
                         Default Large Toggle
                     </Toggle>
                 </div>

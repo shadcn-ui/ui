@@ -1,4 +1,4 @@
-import { Dispatch, useState } from 'react'
+import { Dispatch, forwardRef, useState } from 'react'
 import { Button } from '../../ui/button'
 import { Card, CardContent, CardDescription, CardHeader } from '../../ui/card'
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../../ui/dialog'
@@ -23,8 +23,13 @@ export const DismissButtons = ({ withLeftAlignButtons, setOpen }: DismissButtonP
     </div>
   )
 }
-
-export const OpenDialogButton = ({ setOpen }: { setOpen: Dispatch<SetStateAction<boolean>> }) => <Button variant="outline" onClick={() => setOpen(true)}>Open Dialog</Button>
+const OpenDialogButton = forwardRef(({ setOpen }: any, ref) => {
+  return (
+    <Button variant="outline" onClick={() => setOpen(true)}>
+      Open Dialog
+    </Button>
+  );
+});
 
 interface DismissDialogProps {
   showDismissButton?: boolean

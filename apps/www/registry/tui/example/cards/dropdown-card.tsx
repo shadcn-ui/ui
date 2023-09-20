@@ -177,7 +177,7 @@ export function DropdownMenuCard() {
             <DropdownMenuGroup>
               {dropDownData.map((data: DropdownItem) => {
                 return (
-                  <>
+                  <React.Fragment key={(Math.floor(Math.random() * 10000))?.toString()}>
                     {
                       data.isLabel ? <DropdownMenuLabel>{data.title}</DropdownMenuLabel>
                         :
@@ -208,7 +208,7 @@ export function DropdownMenuCard() {
                               <DropdownMenuShortcut>{data?.shortcut}</DropdownMenuShortcut>
                             </DropdownMenuItem>
                     }
-                  </>
+                  </React.Fragment>
                 )
               })}
             </DropdownMenuGroup>
@@ -227,7 +227,7 @@ export function DropdownMenuCard() {
             <DropdownMenuGroup>
               {dropDownData.map((data: DropdownItem) => {
                 return (
-                  <>
+                  <React.Fragment key={(Math.floor(Math.random() * 10000))?.toString()}>
                     {
                       data.isLabel ? <DropdownMenuLabel>{data.title}</DropdownMenuLabel>
                         :
@@ -258,7 +258,7 @@ export function DropdownMenuCard() {
                               <DropdownMenuShortcut>{data?.shortcut}</DropdownMenuShortcut>
                             </DropdownMenuItem>
                     }
-                  </>
+                  </React.Fragment>
                 )
               })}
             </DropdownMenuGroup>
@@ -277,7 +277,7 @@ export function DropdownMenuCard() {
             <DropdownMenuGroup>
               {dropDownData.map((data: DropdownItem) => {
                 return (
-                  <>
+                  <React.Fragment key={(Math.floor(Math.random() * 10000))?.toString()}>
                     {
                       data.isLabel ? <DropdownMenuLabel>{data.title}</DropdownMenuLabel>
                         :
@@ -308,7 +308,7 @@ export function DropdownMenuCard() {
                               <DropdownMenuShortcut>{data?.shortcut}</DropdownMenuShortcut>
                             </DropdownMenuItem>
                     }
-                  </>
+                  </React.Fragment>
                 )
               })}
             </DropdownMenuGroup>
@@ -327,7 +327,7 @@ export function DropdownMenuCard() {
             <DropdownMenuGroup>
               {dropDownData.map((data: DropdownItem) => {
                 return (
-                  <>
+                  <React.Fragment key={(Math.floor(Math.random() * 10000))?.toString()}>
                     {
                       data.isLabel ? <DropdownMenuLabel>{data.title}</DropdownMenuLabel>
                         :
@@ -355,7 +355,7 @@ export function DropdownMenuCard() {
                             <DropdownMenuShortcut>{data?.shortcut}</DropdownMenuShortcut>
                           </DropdownMenuItem>
                     }
-                  </>
+                  </React.Fragment>
                 )
               })}
             </DropdownMenuGroup>
@@ -374,7 +374,7 @@ export function DropdownMenuCard() {
             <DropdownMenuGroup>
               {dropDownData.map((data: DropdownItem) => {
                 return (
-                  <>
+                  <React.Fragment key={(Math.floor(Math.random() * 10000))?.toString()}>
                     {
                       data.isLabel ? <DropdownMenuLabel>{data.title}</DropdownMenuLabel>
                         :
@@ -403,7 +403,7 @@ export function DropdownMenuCard() {
                               <DropdownMenuShortcut>{data?.shortcut}</DropdownMenuShortcut>
                             </DropdownMenuItem>
                     }
-                  </>
+                  </React.Fragment>
                 )
               })}
             </DropdownMenuGroup>
@@ -422,7 +422,7 @@ export function DropdownMenuCard() {
             <DropdownMenuGroup>
               {dropDownData.map((data: DropdownItem) => {
                 return (
-                  <>
+                  <React.Fragment key={(Math.floor(Math.random() * 10000))?.toString()}>
                     {
                       data.isLabel ? <DropdownMenuLabel>{data.title}</DropdownMenuLabel>
                         :
@@ -452,7 +452,7 @@ export function DropdownMenuCard() {
                             <DropdownMenuShortcut>{data?.shortcut}</DropdownMenuShortcut>
                           </DropdownMenuItem>
                     }
-                  </>
+                  </React.Fragment>
                 )
               })}
             </DropdownMenuGroup>
@@ -473,7 +473,7 @@ export function DropdownMenuCard() {
             <DropdownMenuGroup>
               {dropDownData.map((data: DropdownItem) => {
                 return (
-                  <>
+                  <React.Fragment key={(Math.floor(Math.random() * 10000))?.toString()}>
                     {
                       data.isLabel ? <DropdownMenuLabel>{data.title}</DropdownMenuLabel>
                         :
@@ -503,7 +503,7 @@ export function DropdownMenuCard() {
                             <DropdownMenuShortcut>{data?.shortcut}</DropdownMenuShortcut>
                           </DropdownMenuItem>
                     }
-                  </>
+                  </React.Fragment>
                 )
               })}
             </DropdownMenuGroup>
@@ -522,7 +522,7 @@ export function DropdownMenuCard() {
             <DropdownMenuGroup>
               {dropDownData.map((data: DropdownItem) => {
                 return (
-                  <>
+                  <React.Fragment key={(Math.floor(Math.random() * 10000))?.toString()}>
                     {
                       data.isLabel ? <DropdownMenuLabel>{data.title}</DropdownMenuLabel>
                         :
@@ -576,7 +576,7 @@ export function DropdownMenuCard() {
                                 <DropdownMenuShortcut>{data?.shortcut}</DropdownMenuShortcut>
                               </DropdownMenuItem>
                     }
-                  </>
+                  </React.Fragment>
                 )
               })}
             </DropdownMenuGroup>
