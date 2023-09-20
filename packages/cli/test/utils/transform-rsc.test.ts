@@ -10,6 +10,7 @@ test("transform rsc", async () => {
 import { Foo } from "bar"
     `,
       config: {
+        tsx: true,
         rsc: true,
       },
     })
@@ -24,6 +25,7 @@ import { Foo } from "bar"
 import { Foo } from "bar"
     `,
       config: {
+        tsx: true,
         rsc: true,
       },
     })
@@ -38,6 +40,7 @@ import { Foo } from "bar"
 import { Foo } from "bar"
     `,
       config: {
+        tsx: true,
         rsc: false,
       },
     })
@@ -54,6 +57,7 @@ import { Foo } from "bar"
 "use client"
     `,
       config: {
+        tsx: true,
         rsc: false,
       },
     })

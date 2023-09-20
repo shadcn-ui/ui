@@ -22,6 +22,7 @@ export const rawConfigSchema = z
     $schema: z.string().optional(),
     style: z.string(),
     rsc: z.coerce.boolean().default(false),
+    tsx: z.coerce.boolean().default(true),
     tailwind: z.object({
       config: z.string(),
       css: z.string(),
