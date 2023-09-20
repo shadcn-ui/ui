@@ -38,7 +38,7 @@ describe("runAdd exit conditions", () => {
   })
 
   test('should exit if provided path does not exist', async () => {
-    await expect(runAdd([], { yes: true, overwrite: false, cwd: "unresolvable-path" })).rejects.toThrow("Process exited with code 1");
+    await expect(runAdd([], { yes: true, overwrite: false, all: false, cwd: "unresolvable-path" })).rejects.toThrow("Process exited with code 1");
     expect(errorSpy).toHaveBeenCalledWith(expect.stringMatching(/^The path .* does not exist\. Please try again\.$/));
 
   });
@@ -47,7 +47,7 @@ describe("runAdd exit conditions", () => {
     vi.mock('@/src/utils/get-config', () => ({
       getConfig: vi.fn(() => null),
     }));
-    await expect(runAdd([], { yes: true, overwrite: false, cwd: '' })).rejects.toThrow("Process exited with code 1");
+    await expect(runAdd([], { yes: true, overwrite: false,  all: false,cwd: '' })).rejects.toThrow("Process exited with code 1");
     expect(warnSpy).toHaveBeenCalledWith(expect.stringMatching(/^Configuration is missing\. Please run .* to create a components\.json file\.$/));
   });
 
@@ -63,13 +63,13 @@ describe("runAdd with given components", () => {
 
   test("should exit if the given component dosen't exist ", async () => {
     let cwd = path.resolve(__dirname, "../fixtures/config-full");
-    await expect(runAdd(['non-existant-component'], { yes: true, cwd: cwd, overwrite: false })).rejects.toThrow("Process exited with code 1");
+    await expect(runAdd(['non-existant-component'], { yes: true, cwd: cwd,  all: false,overwrite: false })).rejects.toThrow("Process exited with code 1");
     expect(warnSpy).toHaveBeenCalledWith(expect.stringMatching("Selected components not found. Exiting."));
   });
 
   test("should write files for the given component", async () => {
     let cwd = path.resolve(__dirname, "../fixtures/config-full");
-    await runAdd(['button'], { yes: true, cwd: cwd, overwrite: false });
+    await runAdd(['button'], { yes: true, cwd: cwd,  all: false,overwrite: false });
 
     expect(mockWriteFile).toHaveBeenNthCalledWith(
       1,
@@ -80,7 +80,7 @@ describe("runAdd with given components", () => {
 
   test("should write files for the given components", async () => {
     let cwd = path.resolve(__dirname, "../fixtures/config-full");
-    await runAdd(['button', 'accordion'], { yes: true, cwd: cwd, overwrite: false });
+    await runAdd(['button', 'accordion'], { yes: true, cwd: cwd, all: false, overwrite: false });
 
     expect(mockWriteFile).toHaveBeenCalledWith(
       path.join(cwd, "src", "components", "ui", "button.tsx"),
@@ -95,7 +95,7 @@ describe("runAdd with given components", () => {
 
   test("should install dependencies for prompted components", async () => {
     let cwd = path.resolve(__dirname, "../fixtures/config-full");
-    await runAdd(['button'], { yes: true, cwd: cwd, overwrite: false });
+    await runAdd(['button'], { yes: true, cwd: cwd, all: false, overwrite: false });
     expect(execa).toHaveBeenCalledWith(
       "npm",
       [
@@ -122,7 +122,7 @@ describe("runAdd with prompted components", () => {
 
   test("should write files for the prompted component", async () => {
     let cwd = path.resolve(__dirname, "../fixtures/config-full");
-    await runAdd([], { yes: true, cwd: cwd, overwrite: false });
+    await runAdd([], { yes: true, cwd: cwd,  all: false,overwrite: false });
 
     expect(mockWriteFile).toHaveBeenNthCalledWith(
       1,
@@ -133,7 +133,7 @@ describe("runAdd with prompted components", () => {
 
   test("should install dependencies for prompted components", async () => {
     let cwd = path.resolve(__dirname, "../fixtures/config-full");
-    await runAdd([], { yes: true, cwd: cwd, overwrite: false });
+    await runAdd([], { yes: true, cwd: cwd,  all: false,overwrite: false });
     expect(execa).toHaveBeenCalledWith(
       "npm",
       [
