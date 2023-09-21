@@ -21,6 +21,7 @@ import PrimitiveToggleCards from "./primitiveToggleCards";
 import RadioCard from "./radioGroupsCard";
 import SwitchCard from "./switchCard";
 import DialogCard from "./dialogCard";
+import FlyoutMenu from "@/components/flyoutMenu";
 
 
 export default function CardsDemo() {
@@ -58,6 +59,7 @@ export default function CardsDemo() {
           <RadioCard />
           <CheckboxesCard />
           <DialogCard />
+          <FlyoutMenu />
         </div>
       </div>
 
