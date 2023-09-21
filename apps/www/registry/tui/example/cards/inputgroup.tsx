@@ -31,37 +31,37 @@ export function CardsInputGroup() {
                     <Input  labelAlign="left" color="black" label="Email" bottomBorder={true} borderStyle="borderFocus" placeholder="you@example.com" />
 
                     <div className="text-m font-bold text-primary">Input with keyboard shortcut </div>
-                    <Input label="Quick Search" color="black" labelAlign="left"  keyboard={true} placeholder="you@example.com" />
+                    <Input label="Quick Search" color="black" labelAlign="left" keyboardName="⌘K"  keyboard={true} placeholder="you@example.com" />
 
                     <div className="text-m font-bold text-primary">Input with validation error</div>
-                    <Input  label="Email" labelAlign="left" color="red" borderStyle="error"  note="Not a valid email address." placeholder="you@example.com" />
-
-                    <div className="text-m font-bold text-primary">Input with add-on</div>
-                    <Input  addOnLabel="www" labelAlign="left" color="gray" label="Email" borderStyle="innerBorder" borderInside="withoutborder" placeholder="you@example.com" />
+                    <Input  label="Email" labelAlign= "left" color="red" variant="destructive"  note="Not a valid email address." alignIcon="right" iconStyle="h-5 w-5 text-red-500" icon="circle-exclamation-solid" placeholder="you@example.com" />
 
                     <div className="text-m font-bold text-primary">Input with inline add-on</div>
-                    <Input  labelAlign="left" addOnLabel="https://" color="gray" label="Email" round="button" borderInside="withborder" borderStyle="innerBorder" placeholder="you@example.com" />
+                    <Input  addOnLabel="https://" labelAlign="left" color="gray" label="Email" borderStyle="innerBorder" borderInside="withoutBorder" placeholder="you@example.com" />
+
+                    <div className="text-m font-bold text-primary">Input with add-on</div>
+                    <Input  labelAlign="left" addOnLabel="https://" color="gray" label="Email" round="button" borderInside="withBorder" borderStyle="innerBorder" placeholder="you@example.com" />
 
                     <div className="text-m font-bold text-primary">Input with overlapping label</div>
                     <Input  label="Email" labelAlign="over" bgColor="white" color="black"  placeholder="you@example.com" />
 
                     <div className="text-m font-bold text-primary">Input with leading icon</div>
-                    <Input  labelAlign="left" label="Email" alignIcon="left"  icon="envelope-solid" color="gray"  borderStyle="iconWithLabel" placeholder="you@example.com" />
+                    <Input  labelAlign="left" label="Email" alignIcon="left" iconStyle="h-5 w-5"  icon="envelope-solid" color="gray"  borderStyle="iconWithLabel" placeholder="you@example.com" />
 
                     <div className="text-m font-bold text-primary">Input with trailing icon</div>
-                    <Input  labelAlign="left" label="Email" alignIcon="right" icon="question-circle-duotone" color="gray" placeholder="you@example.com" />
+                    <Input  labelAlign="left" label="Email" alignIcon="right" iconStyle="h-5 w-5" icon="question-circle-duotone" color="gray" placeholder="you@example.com" />
 
                     <div className="text-m font-bold text-primary">Input with inline leading and trailing add-ons</div>
-                    <Input  labelAlign="left" label="Email" alignIcon="left" color="gray"  icon="dollar-duotone"  trailingAddOn={true} borderStyle="iconWithLabel" addOnLabel="USD" placeholder="0.00" />
+                    <Input  labelAlign="left" label="Email" alignIcon="left" color="gray" iconStyle="h-5 w-5"  icon="dollar-duotone"  trailingAddOn={true} borderStyle="iconWithLabel" addOnLabel="USD" placeholder="0.00" />
 
                     <div className="text-m font-bold text-primary">Input with inline leading dropdown</div>
                     <Input  labelAlign="left" label="Email" options={["USA","CA", "UAE","India"]} color="gray" dropdown="prefix" borderStyle="leadingDropdown" placeholder="+1 (555) 987-6543" />
 
                     <div className="text-m font-bold text-primary">Input with inline leading add-on and trailing dropdown</div>
-                    <Input  label="Email" labelAlign="left" options={["USA","CA", "UAE"]}  color="gray"  dropdown="sufix" alignIcon="left" icon="dollar-duotone"  borderStyle="iconWithLabel"  placeholder="+1 (555) 987-6543" />
+                    <Input  label="Email" labelAlign="left" iconStyle="h-5 w-5" options={["USA","CA", "UAE"]}  color="gray"  dropdown="sufix" alignIcon="left" icon="dollar-duotone"  borderStyle="iconWithLabel"  placeholder="+1 (555) 987-6543" />
 
                     <div className="text-m font-bold text-primary">Input with inline leading add-on and trailing Button</div>
-                    <Input  labelAlign="left" alignIcon="left"  icon="users-solid" round="roundForButton"  borderStyle="iconWithLabel" trailingButton={true} buttonLabel="Sort" color="gray" label="Email" placeholder="John Smith" />
+                    <Input  labelAlign="left" alignIcon="left" iconStyle="h-5 w-5"  icon="users-solid" round="roundForButton"  borderStyle="iconWithLabel" trailingButton={true} buttonLabel="Sort" color="gray" label="Email" placeholder="John Smith" />
 
                     <div className="text-m font-bold text-primary">Input with inline leading add-on and trailing Button</div>
                     <Input  labelAlign="inside" label="Name" borderStyle="labelInside" placeholder="John Smith" />
