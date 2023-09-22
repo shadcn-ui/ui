@@ -23,6 +23,8 @@ import SwitchCard from "./switchCard";
 import DialogCard from "./dialogCard";
 import FlyoutMenu from "@/components/flyoutMenu";
 import TabsCard from "@/components/tabsCard";
+import DividerCard from "./dividerCard";
+import BannerCards from "./bannerCards";
 
 
 export default function CardsDemo() {
@@ -60,7 +62,9 @@ export default function CardsDemo() {
           <RadioCard />
           <CheckboxesCard />
           <DialogCard />
+          <DividerCard />
           <TabsCard />
+          <BannerCards />
           <FlyoutMenu />
         </div>
       </div>
