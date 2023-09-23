@@ -31,7 +31,10 @@ export function DemoCreateAccount() {
           <Label htmlFor="password">Password</Label>
           <Input id="password" type="password" />
         </div>
-        <div className="relative">
+                <Button className="w-full">Create account</Button>
+      </CardContent>
+      <CardFooter>
+                <div className="relative">
           <div className="absolute inset-0 flex items-center">
             <span className="w-full border-t" />
           </div>
@@ -51,9 +54,6 @@ export function DemoCreateAccount() {
             Google
           </Button>
         </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Create account</Button>
       </CardFooter>
     </Card>
   )
