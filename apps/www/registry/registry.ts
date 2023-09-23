@@ -187,6 +187,11 @@ const ui: Registry = [
     files: ["ui/slider.tsx"],
   },
   {
+    name: "spinner",
+    type: "components:ui",
+    files: ["ui/spinner.tsx"],
+  },
+  {
     name: "switch",
     type: "components:ui",
     dependencies: ["@radix-ui/react-switch"],
@@ -646,6 +651,12 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["slider"],
     files: ["example/slider-demo.tsx"],
+  },
+  {
+    name: "spinner-demo",
+    type: "components:example",
+    registryDependencies: ["spinner"],
+    files: ["example/spinner-demo.tsx"],
   },
   {
     name: "switch-demo",

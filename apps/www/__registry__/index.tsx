@@ -215,6 +215,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/slider")),
       files: ["registry/default/ui/slider.tsx"],
     },
+    "spinner": {
+      name: "spinner",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/spinner")),
+      files: ["registry/default/ui/spinner.tsx"],
+    },
     "switch": {
       name: "switch",
       type: "components:ui",
@@ -747,6 +754,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/slider-demo")),
       files: ["registry/default/example/slider-demo.tsx"],
     },
+    "spinner-demo": {
+      name: "spinner-demo",
+      type: "components:example",
+      registryDependencies: ["spinner"],
+      component: React.lazy(() => import("@/registry/default/example/spinner-demo")),
+      files: ["registry/default/example/spinner-demo.tsx"],
+    },
     "switch-demo": {
       name: "switch-demo",
       type: "components:example",
@@ -1223,6 +1237,13 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/slider")),
       files: ["registry/new-york/ui/slider.tsx"],
+    },
+    "spinner": {
+      name: "spinner",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/spinner")),
+      files: ["registry/new-york/ui/spinner.tsx"],
     },
     "switch": {
       name: "switch",
@@ -1755,6 +1776,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["slider"],
       component: React.lazy(() => import("@/registry/new-york/example/slider-demo")),
       files: ["registry/new-york/example/slider-demo.tsx"],
+    },
+    "spinner-demo": {
+      name: "spinner-demo",
+      type: "components:example",
+      registryDependencies: ["spinner"],
+      component: React.lazy(() => import("@/registry/new-york/example/spinner-demo")),
+      files: ["registry/new-york/example/spinner-demo.tsx"],
     },
     "switch-demo": {
       name: "switch-demo",

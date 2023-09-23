@@ -1,0 +1,10 @@
+{
+  "name": "spinner",
+  "files": [
+    {
+      "name": "spinner.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface SpinnerBar {\n  animationDelay: number\n  rotate: number\n}\n\nconst Spinner = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => {\n  const spinnerBars: SpinnerBar[] = [\n    { animationDelay: -1.2, rotate: 0.0001 },\n    { animationDelay: -1.1, rotate: 30 },\n    { animationDelay: -1, rotate: 60 },\n    { animationDelay: -0.9, rotate: 90 },\n    { animationDelay: -0.8, rotate: 120 },\n    { animationDelay: -0.7, rotate: 150 },\n    { animationDelay: -0.6, rotate: 180 },\n    { animationDelay: -0.5, rotate: 210 },\n    { animationDelay: -0.4, rotate: 240 },\n    { animationDelay: -0.3, rotate: 270 },\n    { animationDelay: -0.2, rotate: 300 },\n    { animationDelay: -0.1, rotate: 330 },\n  ]\n\n  return (\n    <div ref={ref} className={cn(\"h-5 w-5\", className)} {...props}>\n      <div className=\"relative left-1/2 top-1/2 h-full\">\n        {spinnerBars.map((bar) => (\n          <div\n            key={bar.rotate}\n            className=\"absolute left-[-10%] top-[-3.9%] h-[8%] w-[24%] animate-spinner rounded-md bg-muted-foreground\"\n            style={{\n              animationDelay: `${bar.animationDelay}s`,\n              transform: `rotate(${bar.rotate}deg) translate(146%)`,\n            }}\n          />\n        ))}\n      </div>\n    </div>\n  )\n})\nSpinner.displayName = \"Spinner\"\n\nexport { Spinner }\n"
+    }
+  ],
+  "type": "components:ui"
+}

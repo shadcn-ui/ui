@@ -303,6 +303,13 @@
     "type": "components:ui"
   },
   {
+    "name": "spinner",
+    "files": [
+      "ui/spinner.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "switch",
     "dependencies": [
       "@radix-ui/react-switch"
