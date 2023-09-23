@@ -107,7 +107,7 @@ export default async function DocPage({ params }: DocPageProps) {
             </p>
           )}
         </div>
-        {doc.radix ? (
+        {doc?.radix ? (
           <div className="flex items-center space-x-2 pt-4">
             {doc.radix?.link && (
               <Link
