@@ -16,6 +16,10 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components/accordion",
     },
     {
+      title: "Themes",
+      href: "/themes",
+    },
+    {
       title: "Examples",
       href: "/examples",
     },
@@ -49,8 +53,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "components.json",
+          href: "/docs/components-json",
+          items: [],
+        },
+        {
           title: "Theming",
           href: "/docs/theming",
+          items: [],
+        },
+        {
+          title: "Dark mode",
+          href: "/docs/dark-mode",
           items: [],
         },
         {
@@ -63,33 +77,75 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/typography",
           items: [],
         },
-      ],
-    },
-    {
-      title: "Community",
-      items: [
         {
           title: "Figma",
           href: "/docs/figma",
           items: [],
         },
-      ],
-    },
-    {
-      title: "Forms",
-      items: [
         {
-          title: "React Hook Form",
-          href: "/docs/forms/react-hook-form",
-          label: "New",
+          title: "Changelog",
+          href: "/docs/changelog",
           items: [],
         },
         {
-          title: "TanStack Form",
-          href: "#",
+          title: "About",
+          href: "/docs/about",
           items: [],
-          label: "Soon",
-          disabled: true,
+        },
+      ],
+    },
+    {
+      title: "Installation",
+      items: [
+        {
+          title: "Next.js",
+          href: "/docs/installation/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/installation/vite",
+          items: [],
+        },
+        {
+          title: "Remix",
+          href: "/docs/installation/remix",
+          items: [],
+        },
+        {
+          title: "Gatsby",
+          href: "/docs/installation/gatsby",
+          items: [],
+        },
+        {
+          title: "Astro",
+          href: "/docs/installation/astro",
+          items: [],
+        },
+        {
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
+          title: "Manual",
+          href: "/docs/installation/manual",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Dark Mode",
+      items: [
+        {
+          title: "Next.js",
+          href: "/docs/dark-mode/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/dark-mode/vite",
+          items: [],
         },
       ],
     },
@@ -169,7 +225,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Data Table",
           href: "/docs/components/data-table",
-          label: "New",
           items: [],
         },
         {
@@ -185,6 +240,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Dropdown Menu",
           href: "/docs/components/dropdown-menu",
+          items: [],
+        },
+        {
+          title: "Form",
+          href: "/docs/components/form",
           items: [],
         },
         {
@@ -265,7 +325,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Table",
           href: "/docs/components/table",
-          label: "New",
           items: [],
         },
         {

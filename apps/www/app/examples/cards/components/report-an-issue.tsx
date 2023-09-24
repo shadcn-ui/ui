@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
   CardContent,
@@ -8,17 +8,17 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/registry/new-york/ui/card"
+import { Input } from "@/registry/new-york/ui/input"
+import { Label } from "@/registry/new-york/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/registry/new-york/ui/select"
+import { Textarea } from "@/registry/new-york/ui/textarea"
 
 export function DemoReportAnIssue() {
   return (
@@ -49,7 +49,10 @@ export function DemoReportAnIssue() {
           <div className="grid gap-2">
             <Label htmlFor="security-level">Security Level</Label>
             <Select defaultValue="2">
-              <SelectTrigger id="security-level">
+              <SelectTrigger
+                id="security-level"
+                className="line-clamp-1 w-[160px] truncate"
+              >
                 <SelectValue placeholder="Select level" />
               </SelectTrigger>
               <SelectContent>
