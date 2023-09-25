@@ -26,6 +26,8 @@ import TabsCard from "@/components/tabsCard";
 import DividerCard from "./dividerCard";
 import BannerCards from "./bannerCards";
 import Navbars from "@/components/navbars";
+import { CardsInputGroup } from "./inputgroup";
+import { CardsButtonGroup } from "./button-group";
 
 
 export default function CardsDemo() {
@@ -35,6 +37,12 @@ export default function CardsDemo() {
         <Navbars />
       </div>
       <div className="col-span-12 space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <CardsButtonGroup />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <CardsInputGroup />
+        </div>
         <div className="grid grid-cols-2 gap-4">
           <DropdownMenuCard />
           <CardsAvatar />
