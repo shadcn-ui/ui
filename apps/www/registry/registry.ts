@@ -98,7 +98,7 @@ const ui: Registry = [
       "@radix-ui/react-label",
       "@radix-ui/react-slot",
       "@hookform/resolvers",
-      "zod",
+      "zod@3.21.4",
       "react-hook-form",
     ],
     registryDependencies: ["button", "label"],
