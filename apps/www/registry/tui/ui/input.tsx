@@ -147,7 +147,7 @@ const Input = React.forwardRef<
           </label>
           )
         }
-        <div className={cn("mt-2 flex rounded-md shadow-sm relative", className)}>
+        <div className={cn("mt-2 flex rounded-md items-center shadow-sm relative", className)}>
 
           {(borderInside === "withBorder") ?
             <div className={cn("flex rounded-l-md shadow-sm max-w-md", className)}>
@@ -156,11 +156,11 @@ const Input = React.forwardRef<
               <span className={cn("inline-flex items-center  rounded-l-md border border-r-0 px-3 sm:text-sm", className)}{...props}>
                 {addOnLabel}</span> : null
           }
-          {icon ? <Icon name={icon} className={cn(`${alignIcon === "left" ? "absolute top-[11px] left-0 flex items-center pl-3" : "mr-2 absolute top-[11px] right-0 flex items-center pl-3"} ${iconStyle}`, fontColor(color), className)} {...props} /> : null}
+          {icon ? <Icon name={icon} className={cn(`${alignIcon === "left" ? "absolute left-0 flex items-center pl-3" : "mr-2 absolute right-0 flex items-center pl-3"} ${iconStyle}`, fontColor(color), className)} {...props} /> : null}
           {
             alignDropdown && (
               <div className={cn(`absolute text-sm inset-y-0 ${alignDropdown === 'prefix' ? 'left-0 flex items-center' : 'right-0 flex pr-px items-center -mb-[7px]'}`, className)} {...props}>
-                <select className={cn(`mt-${alignDropdown === 'prefix' ? '8' : '6'} ${alignDropdown === 'prefix' ? 'pl-2 -top-[23px]' : 'pr-2 -left-[61px] -top-[14px]'} bg-inherit absolute`, fontColor(color), className)}>
+                <select className={cn(`${alignDropdown === 'prefix' ? 'mt-8' : 'mt-6'} ${alignDropdown === 'prefix' ? 'pl-2 -top-[23px]' : 'pr-2 -left-[61px] -top-[14px]'} bg-inherit absolute`, fontColor(color), className)}>
                   {options && options.map((option:string, index: number) => (
                     <option key={index}>{option}</option>
                   ))}
@@ -188,13 +188,12 @@ const Input = React.forwardRef<
               </button>
             )
           }
-        </div>
-
         {trailingAddOn && (
           <div className="pointer-events-none absolute -mb-[30px] inset-y-0 right-0 flex items-center pr-3">
             <span className={cn("text-sm absolute top-[8px] -left-[28px]", fontColor(color), className)} {...props}>{addOnLabel}</span>
           </div>
         )}
+        </div>
 
 
         {bottomBorder ? <div className={cn("absolute inset-x-0 bottom-0 border-t peer-focus:border-t-2 border peer-focus:border", className)} {...props} /> : ""}
