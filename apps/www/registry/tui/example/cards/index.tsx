@@ -21,15 +21,23 @@ import PrimitiveToggleCards from "./primitiveToggleCards";
 import RadioCard from "./radioGroupsCard";
 import SwitchCard from "./switchCard";
 import DialogCard from "./dialogCard";
+import FlyoutMenu from "@/components/flyoutMenu";
+import TabsCard from "@/components/tabsCard";
+import DividerCard from "./dividerCard";
+import BannerCards from "./bannerCards";
 import { CardsInputGroup } from "./inputgroup";
+import { CardsButtonGroup } from "./button-group";
 
 
 export default function CardsDemo() {
   return (
     <div className="md:grid-cols-2 grid md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4">
       <div className="col-span-12 space-y-4">
-      <div className="grid grid-cols-2 gap-4">
-          <CardsInputGroup/>
+        <div className="grid grid-cols-2 gap-4">
+          <CardsButtonGroup />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <CardsInputGroup />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <DropdownMenuCard />
@@ -55,21 +63,17 @@ export default function CardsDemo() {
           </div>
         </div>
       </div>
-      <div className="space-y-4 lg:col-span-6 xl:col-span-5 xl:space-y-4">
-        <div className="col-span-2">
+      <div className="space-y-4 lg:col-span-12 xl:col-span-12 xl:space-y-4">
+        <div className="grid grid-cols-2 gap-4">
           <SwitchCard />
-        </div>
-        <div className="md:col-span-6 col-span-12 mt-2">
           <PrimitiveToggleCards />
-        </div>
-        <div className="col-span-12">
           <RadioCard />
-        </div>
-        <div className="md:col-span-6 col-span-12">
           <CheckboxesCard />
-        </div>
-        <div className="md:col-span-6 col-span-12">
           <DialogCard />
+          <DividerCard />
+          <TabsCard />
+          <BannerCards />
+          <FlyoutMenu />
         </div>
       </div>
 
