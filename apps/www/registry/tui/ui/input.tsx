@@ -188,16 +188,18 @@ const Input = React.forwardRef<
               </button>
             )
           }
-        {trailingAddOn && (
-          <div className="pointer-events-none absolute right-0 flex items-center pr-11">
-            <span className={cn("text-sm absolute ", fontColor(color), className)} {...props}>{addOnLabel}</span>
-          </div>
-        )}
-         {keyboardName && (
-          <div className={cn("inset-y-0 right-0 absolute flex py-1.5 pr-1.5 items-center ", className)}>
-            <kbd className={cn("py-0.5 inline-flex items-center", keyboardVariant({}), className)} {...props}>{keyboardName}</kbd>
-          </div>
-        )}
+          {trailingAddOn && (
+            <div className={cn("pointer-events-none flex items-center",className)}>
+                <div className={cn("flex items-center justify-center -ml-8",className)}>
+                  <span className={cn("text-sm",fontColor(color),className)}>{addOnLabel}</span>
+                </div>
+            </div>
+          )}
+          {keyboardName && (
+            <div className={cn("inset-y-0 right-0 absolute flex py-1.5 pr-1.5 items-center ", className)}>
+              <kbd className={cn("py-0.5 inline-flex items-center", keyboardVariant({}), className)} {...props}>{keyboardName}</kbd>
+            </div>
+          )}
         </div>
 
 
