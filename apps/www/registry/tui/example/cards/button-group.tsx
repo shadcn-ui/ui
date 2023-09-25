@@ -9,7 +9,7 @@ export function CardsButtonGroup() {
             { name: 'Export PDF', href: '#' },
         ],
     };
-    const buttons = [
+    const buttonsList = [
         { checkbox: true },
         { dropdownOptions: ['Unread messages', 'Sent messages', 'All messages'] },
       ];
@@ -21,21 +21,21 @@ export function CardsButtonGroup() {
                 </CardHeader>
                 <CardContent>
                     <div className="text-m font-bold text-primary">Basic</div>
-                    <ButtonGroup buttons={ [{name:'Years'},{name:'Month'},{name:'Days'}]} color="gray" />
+                    <ButtonGroup buttonsList={ [{name:'Years'},{name:'Month'},{name:'Days'}]} color="gray" />
 
                     <div className="text-m mt-[13px] font-bold text-primary">Icon only</div>
-                    <ButtonGroup buttons={[{icon:"chevron-left-solid"},{icon:"chevron-right-solid"}]} iconStyle="h-4 w-4" color="gray" />
+                    <ButtonGroup buttonsList={[{icon:"chevron-left-solid"},{icon:"chevron-right-solid"}]} iconStyle="h-4 w-4" color="gray" />
 
 
                     <div className="text-m mt-[13px] font-bold text-primary">With stat</div>
-                    <ButtonGroup buttons={ [{name:'Bookmark',icon:"bookmark-solid"},{name:'12k'}]} iconStyle="h-4 w-4" color="gray" />
+                    <ButtonGroup buttonsList={ [{name:'Bookmark',icon:"bookmark-solid"},{name:'12k'}]} iconStyle="h-4 w-4" color="gray" />
 
 
                     <div className="text-m mt-[13px] font-bold text-primary">With checkbox and dropdown</div>
-                    <ButtonGroup buttons={ buttons}  color="gray"/>
+                    <ButtonGroup buttonsList={ buttonsList}  color="gray"/>
                     
                     <div className="text-m mt-[13px] font-bold text-primary">With dropdown</div>
-                    <ButtonGroup buttons={ [{name:'Save Changes'},{icon:"chevron-down-solid"}]} iconStyle="h-4 w-4" options={options} color="gray"/>
+                    <ButtonGroup buttonsList={ [{name:'Save Changes'},{icon:"chevron-down-solid"}]} iconStyle="h-4 w-4" options={options} color="gray"/>
 
                 </CardContent>
             </Card>

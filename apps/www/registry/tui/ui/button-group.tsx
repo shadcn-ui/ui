@@ -26,12 +26,22 @@ const buttonGroupVariants = cva(
 
     }
 )
+interface ButtonsList {
+    checkbox?: boolean | undefined;
+    name?:string | undefined;
+    icon?:IconType | undefined;
+    dropdownOptions?: string[] | undefined ;
+  }
+
+  interface Options {
+    items: { name: string | undefined; href: string | undefined }[];
+  }
 
 export interface ButtonProps
     extends React.HTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonGroupVariants> {
-    buttons?: any;
-    options?: any;
+    buttonsList?: ButtonsList[];
+    options?:Options;
     iconStyle?: string;
     color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
     "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
@@ -39,11 +49,11 @@ export interface ButtonProps
 }
 
 const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, buttons, options, color, iconStyle, ...props }, ref) => {
+    ({ className, buttonsList, options, color, iconStyle, ...props }, ref) => {
         const fontColor = (color?: string) => {
             return `text-${color}-500 `
         }
-        if (!buttons) {
+        if (!buttonsList) {
             return null;
         }
         const [isOpen, setIsOpen] = useState(false);
@@ -59,18 +69,18 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
         const toggleCheckbox = () => {
             setIsChecked(!isChecked);
         };
-        const toggleDropdown = (option: any, event: any) => {
+        const toggleDropdown = (option: React.SetStateAction<null>, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             event.stopPropagation();
             setSelectedOption(option === selectedOption ? null : option);
         };
         return (
             <>
                 <span className={cn("isolate inline-flex rounded-md shadow-sm", className)}>
-                    {buttons.map((button: any, index: any) => (
+                    {buttonsList && buttonsList.map((button:any, index: number) => (
                         <button
                             className={cn(buttonGroupVariants({ className }), {
                                 'rounded-l-md border-r-0': index === 0,
-                                'rounded-r-md border-l-0': index === buttons.length - 1,
+                                'rounded-r-md border-l-0': index === buttonsList.length - 1,
                             })}
                             key={index}
                             ref={ref}
@@ -94,7 +104,7 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
                                 <select
                                     className={cn(" rounded-l-none rounded-r-md py-1.5 pl-0 pr-0.5", fontColor(color), className, { ...props })}
                                     onClick={(e) => e.stopPropagation()}>
-                                    {button.dropdownOptions.map((option: any, index: any) => (
+                                    {button.dropdownOptions.map((option:string[], index: number) => (
                                         <option key={index}>{option}</option>
                                     ))}
                                 </select>
@@ -105,7 +115,7 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
                     {isOpen && (
                         <div className={cn("absolute left-2.5 z-10 -mr-1 mt-14 w-56 origin-top-right bg-accent rounded-md shadow-lg ring-opacity-5 focus:outline-none", fontColor(color), className, { ...props })}>
                             <div className={cn("py-1", className)}>
-                                {options.items.map((option: any, index: any) => (
+                                {options && options.items.map((option, index: number) => (
                                     <a href={option.href} key={index} className={cn("block px-4 py-2 text-sm", fontColor(color), className, { ...props })} >
                                         {option.name}
                                     </a>
