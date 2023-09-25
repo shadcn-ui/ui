@@ -11,7 +11,7 @@ const inputVariants = cva(
     variants: {
       variant: {
         destructive: " border text-destructive  border-destructive placeholder:text-destructive/50 ",
-        default: "border bg-background hover:bg-accent",
+        default: "border bg-background",
       },
       size: {
         default: "w-full py-1.5 pl-[12px] text-sm leading-6 "
@@ -117,11 +117,11 @@ export interface InputProps
   bottomBorder?: boolean | undefined;
   label?: string | undefined;
   trailingAddOn?: boolean | undefined;
-  options?: any;
+  options?: string[] | undefined ;
   borderInside?: string | undefined;
   addOnLabel?: string | undefined;
   buttonLabel?: string | undefined;
-  icon?: IconType;
+  icon?: IconType | undefined;
   iconStyle?: string | undefined;
   keyboardName?: string | undefined;
   alignDropdown?: "prefix"|"suffix" ;
@@ -160,8 +160,8 @@ const Input = React.forwardRef<
           {
             alignDropdown && (
               <div className={cn(`absolute text-sm inset-y-0 ${alignDropdown === 'prefix' ? 'left-0 flex items-center' : 'right-0 flex pr-px items-center -mb-[7px]'}`, className)} {...props}>
-                <select className={cn(`mt-[${alignDropdown === 'prefix' ? '30px' : '23px'}] bg-inherit ${alignDropdown === 'prefix' ? 'pl-2' : 'pr-2'}`, fontColor(color), className)}>
-                  {options.map((option: any, index: any) => (
+                <select className={cn(`mt-${alignDropdown === 'prefix' ? '8' : '6'} ${alignDropdown === 'prefix' ? 'pl-2' : 'pr-2'} bg-inherit`, fontColor(color), className)}>
+                  {options && options.map((option:string, index: number) => (
                     <option key={index}>{option}</option>
                   ))}
                 </select>
