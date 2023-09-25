@@ -68,8 +68,8 @@ export default function ComboboxDemo() {
             {frameworks.map((framework) => (
               <CommandItem
                 key={framework.value}
-                onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue)
+                onSelect={() => {
+                  setValue(framework.value === value ? "" : framework.value)
                   setOpen(false)
                 }}
               >
