@@ -38,7 +38,7 @@ export function rehypeNpmCommand() {
           "npx create-",
           "pnpm create "
         )
-        node.properties["__bunCommand__"] = npmCommand.replace("npx", "bunx")
+        node.properties["__bunCommand__"] = npmCommand.replace("npx", "bunx --bun")
       }
 
       // npx.
@@ -53,7 +53,7 @@ export function rehypeNpmCommand() {
           "npx",
           "pnpm dlx"
         )
-        node.properties["__bunCommand__"] = npmCommand.replace("npx", "bunx")
+        node.properties["__bunCommand__"] = npmCommand.replace("npx", "bunx --bun")
       }
     })
   }
