@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "@radix-ui/react-slot"
 import { Icon, IconType } from "./icon"
+import { colors } from "./helper/types"
 
 const inputVariants = cva(
   "block border-0  focus:outline-none shadow-sm ring-inset ",
@@ -125,9 +126,7 @@ type InputProps = {
   alignDropdown?: "prefix" | "suffix";
   labelAlign?: "left" | "over" | "inside";
   alignIcon?: "left" | "right";
-  color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
-  "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
-  | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose";
+  color?: colors;
 }
 
 const Input = React.forwardRef<
@@ -136,7 +135,7 @@ const Input = React.forwardRef<
   VariantProps<typeof inputVariants> &
   InputProps>(({ className, name, keyboardName, alignIcon, iconStyle, icon, borderInside, color, labelAlign, buttonLabel, trailingAddOn, options, variant, placeholder, label, labelAndBorderStyle, alignDropdown, addOnLabel, hint, bottomBorder, disabled, round, note, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "input"
-    const fontColor = (color?: string) => {
+    const fontColor = (color?: colors) => {
       return `text-${color}-500`
     }
     return (

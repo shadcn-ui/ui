@@ -5,7 +5,9 @@ const colorClasses = [
   '#0CCE6B',
   '#EF2D56',
   '#ED7D3A',
-  'gray-600',
+  "black", "white", "slate", "gray", "zinc", "neutral", "stone",
+  "red", "orange", "amber", "yellow", "lime", "green", "emerald", "teal", "cyan",
+  "sky", "blue", "indigo", "violet", "purple", "fuchsia", "pink", "rose"
 ];
 
 /** @type {import('tailwindcss').Config} */
@@ -18,6 +20,10 @@ module.exports = {
       ...colorClasses.map((color) => `bg-${color}`),
       ...colorClasses.map((color) => `text-[${color}]`),
       ...colorClasses.map((color) => `bg-[${color}]`),
+
+      ...colorClasses.map((color) => `bg-${color}-50`),
+      ...colorClasses.map((color) => `text-${color}-600`),
+      ...colorClasses.map((color) => `ring-${color}-500/10`),
     ],
   },
   theme: {
