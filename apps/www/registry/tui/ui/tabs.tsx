@@ -11,7 +11,7 @@ const Tabs = TabsPrimitive.Root
 
 
 const tabListVariants = cva(
-  "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground max-w-full overflow-x-auto overflow-y-clip",
+  "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground max-w-full overflow-x-auto overflow-y-clip ring-0 outline-none border-none",
   {
     variants: {
       variant: {

@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/registry/tui/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/registry/tui/ui/tabs'
 import React from 'react'

@@ -13,7 +13,8 @@
   "rules": {
     "@next/next/no-html-link-for-pages": "off",
     "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "error"
+    "tailwindcss/classnames-order": "off",
+    "@next/next/no-img-element": "off"
   },
   "settings": {
     "tailwindcss": {
