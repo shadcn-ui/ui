@@ -64,7 +64,7 @@ describe("apply color mapping", async () => {
       input:
         "text-destructive border-destructive/50 dark:border-destructive [&>svg]:text-destructive text-destructive",
       output:
-        "text-red-500 border-red-500/50 dark:border-red-500 [&>svg]:text-red-500 text-red-500 dark:text-red-900 dark:border-red-900/50 dark:dark:border-red-900 dark:[&>svg]:text-red-900 dark:text-red-900",
+        "text-red-500 border-red-500/50 dark:border-red-500 [&>svg]:text-red-500 dark:text-red-900 dark:border-red-900/50 dark:dark:border-red-900 dark:[&>svg]:text-red-900",
     },
     {
       input:
