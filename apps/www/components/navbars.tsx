@@ -407,12 +407,12 @@ const SimpleUnderLineMenuNavbar = () => {
             />
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-          <Tabs defaultValue="dashboard">
-                <TabsList className={"bg-background"}>
+          <Tabs defaultValue="dashboard" className="contents">
+                <TabsList variant="underline" className={"contents bg-background"}>
                   {navigation.map((item, i)=>(
                     <TabsTrigger
                     value={item.value}
-                    className="data-[state=active]:bg-muted"
+                    variant="underline"
                     key={i}
                   >
                     {item.name}
@@ -629,7 +629,7 @@ const CenteredSearchAndLinks = () => {
     <div className="mx-auto max-w-7xl border bg-background px-2 sm:px-4">
       <div className="relative flex h-16 justify-between border-b">
         <div className="relative z-10 flex px-2 lg:px-0">
-          <div className="flex flex-shrink-0 items-center">
+          <div className="flex shrink-0 items-center">
             <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
@@ -753,7 +753,7 @@ const CenteredSearchColumn = () => {
     <div className="mx-auto max-w-7xl border bg-background px-2 sm:px-4">
       <div className="relative flex h-16 justify-between">
         <div className="relative z-10 flex px-2 lg:px-0">
-          <div className="flex flex-shrink-0 items-center">
+          <div className="flex shrink-0 items-center">
             <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
