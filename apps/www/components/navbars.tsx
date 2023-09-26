@@ -22,6 +22,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/registry/tui/ui/tabs"
 
 import { TabsInPills } from "./tabsCard"
 import { Card, CardContent } from "@/registry/tui/ui/card"
+import Image from "next/image"
 
 interface DropdownItem {
   icon?: IconType
@@ -172,7 +173,7 @@ const SimpleNavbar = () => {
         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div className="flex shrink-0 items-center">
-            <img
+            <Image
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
@@ -182,14 +183,14 @@ const SimpleNavbar = () => {
             <div className="flex space-x-4">
               <Tabs defaultValue="dashboard">
                 <TabsList className={"bg-background"}>
-                  {navigation.map((item, i)=>(
+                  {navigation.map((item, i) => (
                     <TabsTrigger
-                    value={item.value}
-                    className="data-[state=active]:bg-muted"
-                    key={i}
-                  >
-                    {item.name}
-                  </TabsTrigger>
+                      value={item.value}
+                      className="data-[state=active]:bg-muted"
+                      key={i}
+                    >
+                      {item.name}
+                    </TabsTrigger>
                   ))}
                 </TabsList>
               </Tabs>
@@ -286,7 +287,7 @@ const QuickActionNavbar = () => {
         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div className="flex shrink-0 items-center">
-            <img
+            <Image
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
@@ -294,16 +295,16 @@ const QuickActionNavbar = () => {
           </div>
           <div className="hidden sm:ml-6 sm:block">
             <div className="flex space-x-4">
-            <Tabs defaultValue="dashboard">
+              <Tabs defaultValue="dashboard">
                 <TabsList className={"bg-background"}>
-                  {navigation.map((item, i)=>(
+                  {navigation.map((item, i) => (
                     <TabsTrigger
-                    value={item.value}
-                    className="data-[state=active]:bg-muted"
-                    key={i}
-                  >
-                    {item.name}
-                  </TabsTrigger>
+                      value={item.value}
+                      className="data-[state=active]:bg-muted"
+                      key={i}
+                    >
+                      {item.name}
+                    </TabsTrigger>
                   ))}
                 </TabsList>
               </Tabs>
@@ -400,26 +401,26 @@ const SimpleUnderLineMenuNavbar = () => {
       <div className="relative flex h-16 justify-between">
         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div className="flex shrink-0 items-center">
-            <img
+            <Image
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
               alt="Your Company"
             />
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-          <Tabs defaultValue="dashboard">
-                <TabsList className={"bg-background"}>
-                  {navigation.map((item, i)=>(
-                    <TabsTrigger
+            <Tabs defaultValue="dashboard">
+              <TabsList className={"bg-background"}>
+                {navigation.map((item, i) => (
+                  <TabsTrigger
                     value={item.value}
                     className="data-[state=active]:bg-muted"
                     key={i}
                   >
                     {item.name}
                   </TabsTrigger>
-                  ))}
-                </TabsList>
-              </Tabs>
+                ))}
+              </TabsList>
+            </Tabs>
           </div>
         </div>
         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -514,7 +515,7 @@ const SearchNavbar = () => {
         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div className="flex shrink-0 items-center">
-            <img
+            <Image
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
@@ -522,16 +523,16 @@ const SearchNavbar = () => {
           </div>
           <div className="hidden sm:ml-6 sm:block">
             <div className="flex space-x-4">
-            <Tabs defaultValue="dashboard">
+              <Tabs defaultValue="dashboard">
                 <TabsList className={"bg-background"}>
-                  {navigation.map((item, i)=>(
+                  {navigation.map((item, i) => (
                     <TabsTrigger
-                    value={item.value}
-                    className="data-[state=active]:bg-muted"
-                    key={i}
-                  >
-                    {item.name}
-                  </TabsTrigger>
+                      value={item.value}
+                      className="data-[state=active]:bg-muted"
+                      key={i}
+                    >
+                      {item.name}
+                    </TabsTrigger>
                   ))}
                 </TabsList>
               </Tabs>
@@ -540,7 +541,7 @@ const SearchNavbar = () => {
         </div>
         <div className="absolute inset-y-0 right-0 flex items-center space-x-3 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <div>
-          <Input alignIcon="left" iconStyle="h-5 w-5"  icon="magnifying-glass-regular" color="gray"  labelAndBorderStyle="iconWithLabel" placeholder="Search" />
+            <Input alignIcon="left" iconStyle="h-5 w-5" icon="magnifying-glass-regular" color="gray" labelAndBorderStyle="iconWithLabel" placeholder="Search" />
           </div>
           <div className="relative rounded-full p-1 text-secondary-foreground">
             <Icon name="bell-regular" className="h-6 w-6" aria-hidden="true" />
@@ -629,8 +630,8 @@ const CenteredSearchAndLinks = () => {
     <div className="mx-auto max-w-7xl border bg-background px-2 sm:px-4">
       <div className="relative flex h-16 justify-between border-b">
         <div className="relative z-10 flex px-2 lg:px-0">
-          <div className="flex flex-shrink-0 items-center">
-            <img
+          <div className="flex shrink-0 items-center">
+            <Image
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
@@ -643,7 +644,7 @@ const CenteredSearchAndLinks = () => {
               Search
             </label>
             <div className="relative">
-            <Input alignIcon="left" iconStyle="h-5 w-5"  icon="magnifying-glass-regular" color="gray"  labelAndBorderStyle="iconWithLabel" placeholder="Search" />
+              <Input alignIcon="left" iconStyle="h-5 w-5" icon="magnifying-glass-regular" color="gray" labelAndBorderStyle="iconWithLabel" placeholder="Search" />
 
             </div>
           </div>
@@ -730,19 +731,19 @@ const CenteredSearchAndLinks = () => {
         </div>
       </div>
       <nav className="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
-      <Tabs defaultValue="dashboard">
-                <TabsList className={"bg-background"}>
-                  {navigation.map((item, i)=>(
-                    <TabsTrigger
-                    value={item.value}
-                    className="data-[state=active]:bg-muted"
-                    key={i}
-                  >
-                    {item.name}
-                  </TabsTrigger>
-                  ))}
-                </TabsList>
-              </Tabs>
+        <Tabs defaultValue="dashboard">
+          <TabsList className={"bg-background"}>
+            {navigation.map((item, i) => (
+              <TabsTrigger
+                value={item.value}
+                className="data-[state=active]:bg-muted"
+                key={i}
+              >
+                {item.name}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
       </nav>
     </div>
   )
@@ -753,8 +754,8 @@ const CenteredSearchColumn = () => {
     <div className="mx-auto max-w-7xl border bg-background px-2 sm:px-4">
       <div className="relative flex h-16 justify-between">
         <div className="relative z-10 flex px-2 lg:px-0">
-          <div className="flex flex-shrink-0 items-center">
-            <img
+          <div className="flex shrink-0 items-center">
+            <Image
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
@@ -767,7 +768,7 @@ const CenteredSearchColumn = () => {
               Search
             </label>
             <div className="relative">
-            <Input alignIcon="left" iconStyle="h-5 w-5"  icon="magnifying-glass-regular" color="gray"  labelAndBorderStyle="iconWithLabel" placeholder="Search" />
+              <Input alignIcon="left" iconStyle="h-5 w-5" icon="magnifying-glass-regular" color="gray" labelAndBorderStyle="iconWithLabel" placeholder="Search" />
             </div>
           </div>
         </div>

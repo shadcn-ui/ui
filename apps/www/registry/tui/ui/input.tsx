@@ -108,23 +108,21 @@ const InputGroupButtonVariant = cva(
   }
 )
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-  VariantProps<typeof inputVariants> {
+type InputProps = {
   asChild?: boolean | undefined;
   note?: string | undefined;
   hint?: string | undefined;
   bottomBorder?: boolean | undefined;
   label?: string | undefined;
   trailingAddOn?: boolean | undefined;
-  options?: string[] | undefined ;
+  options?: string[] | undefined;
   borderInside?: string | undefined;
   addOnLabel?: string | undefined;
   buttonLabel?: string | undefined;
   icon?: IconType | undefined;
   iconStyle?: string | undefined;
   keyboardName?: string | undefined;
-  alignDropdown?: "prefix"|"suffix" ;
+  alignDropdown?: "prefix" | "suffix";
   labelAlign?: "left" | "over" | "inside";
   alignIcon?: "left" | "right";
   color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
@@ -134,6 +132,8 @@ export interface InputProps
 
 const Input = React.forwardRef<
   HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement> &
+  VariantProps<typeof inputVariants> &
   InputProps>(({ className, name, keyboardName, alignIcon, iconStyle, icon, borderInside, color, labelAlign, buttonLabel, trailingAddOn, options, variant, placeholder, label, labelAndBorderStyle, alignDropdown, addOnLabel, hint, bottomBorder, disabled, round, note, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "input"
     const fontColor = (color?: string) => {
@@ -142,8 +142,8 @@ const Input = React.forwardRef<
     return (
       <div className="relative">
         {
-          (labelAlign === "over" || labelAlign === "left") && (<label className={cn("flex justify-between items-end",(inputGroupLabelVariant({}), className))}>{label}
-            {hint && (<span className={cn( fontColor(color), className)}>{hint}</span>)}
+          (labelAlign === "over" || labelAlign === "left") && (<label className={cn("flex justify-between items-end", (inputGroupLabelVariant({}), className))}>{label}
+            {hint && (<span className={cn(fontColor(color), className)}>{hint}</span>)}
           </label>
           )
         }
@@ -161,7 +161,7 @@ const Input = React.forwardRef<
             alignDropdown && (
               <div className={cn(`absolute text-sm ${alignDropdown === 'prefix' ? 'left-0' : 'right-0 '} flex items-center`, className)} {...props}>
                 <select className={cn(`${alignDropdown === 'prefix' ? 'pl-2 ' : 'pr-1'} bg-inherit`, fontColor(color), className)}>
-                  {options && options.map((option:string, index: number) => (
+                  {options && options.map((option: string, index: number) => (
                     <option key={index}>{option}</option>
                   ))}
                 </select>
@@ -189,10 +189,10 @@ const Input = React.forwardRef<
             )
           }
           {trailingAddOn && (
-            <div className={cn("pointer-events-none flex items-center",className)}>
-                <div className={cn("flex items-center justify-center -ml-8",className)}>
-                  <span className={cn("text-sm",fontColor(color),className)}>{addOnLabel}</span>
-                </div>
+            <div className={cn("pointer-events-none flex items-center", className)}>
+              <div className={cn("flex items-center justify-center -ml-8", className)}>
+                <span className={cn("text-sm", fontColor(color), className)}>{addOnLabel}</span>
+              </div>
             </div>
           )}
           {keyboardName && (
