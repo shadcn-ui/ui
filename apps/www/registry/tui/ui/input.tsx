@@ -13,7 +13,7 @@ const inputVariants = cva(
         destructive: " border text-destructive  border-destructive placeholder:text-destructive/50 ",
         default: "border bg-background",
       },
-      size: {
+      inputSize: {
         default: "w-full py-1.5 pl-3 text-sm leading-6 "
       },
       round: {
@@ -32,7 +32,7 @@ const inputVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
+      inputSize: "default",
       round: "default"
     },
 
@@ -159,7 +159,7 @@ const Input = React.forwardRef<
           {icon ? <Icon name={icon} className={cn(`${alignIcon === "left" ? "absolute left-0 flex items-center pl-3" : " absolute pr-2 right-0 flex items-center pl-3"} ${iconStyle}`, fontColor(color), className)} {...props} /> : null}
           {
             alignDropdown && (
-              <div className={cn(`absolute text-sm ${alignDropdown === 'prefix' ? 'left-0 flex items-center' : 'right-0 flex items-center'}`, className)} {...props}>
+              <div className={cn(`absolute text-sm ${alignDropdown === 'prefix' ? 'left-0' : 'right-0 '} flex items-center`, className)} {...props}>
                 <select className={cn(`${alignDropdown === 'prefix' ? 'pl-2 ' : 'pr-1'} bg-inherit`, fontColor(color), className)}>
                   {options && options.map((option:string, index: number) => (
                     <option key={index}>{option}</option>
