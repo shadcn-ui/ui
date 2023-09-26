@@ -173,7 +173,7 @@ const SimpleNavbar = () => {
         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div className="flex shrink-0 items-center">
-            <Image
+            <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
@@ -287,7 +287,7 @@ const QuickActionNavbar = () => {
         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div className="flex shrink-0 items-center">
-            <Image
+            <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
@@ -401,7 +401,7 @@ const SimpleUnderLineMenuNavbar = () => {
       <div className="relative flex h-16 justify-between">
         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div className="flex shrink-0 items-center">
-            <Image
+            <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
               alt="Your Company"
@@ -515,7 +515,7 @@ const SearchNavbar = () => {
         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div className="flex shrink-0 items-center">
-            <Image
+            <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
@@ -631,7 +631,7 @@ const CenteredSearchAndLinks = () => {
       <div className="relative flex h-16 justify-between border-b">
         <div className="relative z-10 flex px-2 lg:px-0">
           <div className="flex shrink-0 items-center">
-            <Image
+            <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
@@ -755,7 +755,7 @@ const CenteredSearchColumn = () => {
       <div className="relative flex h-16 justify-between">
         <div className="relative z-10 flex px-2 lg:px-0">
           <div className="flex shrink-0 items-center">
-            <Image
+            <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
