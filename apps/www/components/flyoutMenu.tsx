@@ -514,7 +514,7 @@ export const FullWidthTwoColumns = () => {
                                             className="relative isolate flex max-w-2xl flex-col gap-x-8 gap-y-6 sm:flex-row sm:items-start lg:flex-col lg:items-stretch"
                                         >
                                             <div className="relative flex-none">
-                                                <Image
+                                                <img
                                                     className="aspect-[2/1] w-full rounded-lg bg-gray-100 object-cover sm:aspect-[16/9] sm:h-32 lg:h-auto"
                                                     src={post.imageUrl}
                                                     alt=""
