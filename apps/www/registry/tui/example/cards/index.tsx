@@ -38,10 +38,8 @@ export default function CardsDemo() {
       </div>
       <div className="col-span-12 space-y-4">
         <div className="grid grid-cols-2 gap-4">
-          <CardsButtonGroup />
-        </div>
-        <div className="grid grid-cols-2 gap-4">
           <CardsInputGroup />
+          <CardsButtonGroup />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <DropdownMenuCard />

@@ -33,16 +33,16 @@ interface ButtonsList {
     dropdownOptions?: string[] | undefined ;
   }
 
-  interface Options {
-    items: { name: string | undefined; href: string | undefined }[];
-  }
+interface Options {
+    items: { name?: string | undefined ; href?: string | undefined }[];
+}
 
 export interface ButtonProps
     extends React.HTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonGroupVariants> {
     buttonsList?: ButtonsList[];
-    options?:Options;
-    iconStyle?: string;
+    options?:Options | undefined;
+    iconStyle?: string | undefined;
     color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
     "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
     | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose";
@@ -76,7 +76,7 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
         return (
             <>
                 <span className={cn("isolate inline-flex rounded-md shadow-sm", className)}>
-                    {buttonsList && buttonsList.map((button:any, index: number) => (
+                    {buttonsList && buttonsList.map((button: any, index: number) => (
                         <button
                             className={cn(buttonGroupVariants({ className }), {
                                 'rounded-l-md border-r-0': index === 0,
@@ -104,7 +104,7 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
                                 <select
                                     className={cn(" rounded-l-none rounded-r-md py-1.5 pl-0 pr-0.5", fontColor(color), className, { ...props })}
                                     onClick={(e) => e.stopPropagation()}>
-                                    {button.dropdownOptions.map((option:string[], index: number) => (
+                                    {button.dropdownOptions.map((option: string[], index: number) => (
                                         <option key={index}>{option}</option>
                                     ))}
                                 </select>
@@ -113,17 +113,16 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
                     ))}
 
                     {isOpen && (
-                        <div className={cn("absolute left-2.5 z-10 -mr-1 mt-14 w-56 origin-top-right bg-accent rounded-md shadow-lg ring-opacity-5 focus:outline-none", fontColor(color), className, { ...props })}>
-                            <div className={cn("py-1", className)}>
-                                {options && options.items.map((option, index: number) => (
-                                    <a href={option.href} key={index} className={cn("block px-4 py-2 text-sm", fontColor(color), className, { ...props })} >
-                                        {option.name}
-                                    </a>
-                                ))}
-                            </div>
+                        <div className={cn(" z-10 mt-14 absolute w-56 rounded-md  py-3 text-base bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none", fontColor(color), className, { ...props })}>
+                            {options && options.items.map((option , index: number) => (
+                                <a href={option.href} key={index} className={cn("block px-4 py-2 text-sm", fontColor(color), className, { ...props })} >
+                                    {option.name}
+                                </a>
+                            ))}
                         </div>
                     )}
                 </span>
+
             </>
         )
     }
