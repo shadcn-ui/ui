@@ -70,7 +70,7 @@ const Avatar = React.forwardRef<
       >
         {children}
       </AvatarPrimitive.Fallback>
-      <span className={dotColor(color)} />
+      {(variant === "dotCircular" || variant === "dotRounded") && <span className={dotColor(color)} />}
     </AvatarPrimitive.Root>
   )
 })
