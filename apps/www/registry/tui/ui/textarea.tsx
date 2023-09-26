@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { cva, type VariantProps, } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { Icon, IconType } from "./icon"
@@ -58,14 +58,50 @@ const textAreaButtonVariants = cva(
   }
 )
 
+const textAreaImageVariants = cva(
+  "  flex-shrink-0 rounded-full",
+  {
+    variants: {
+
+      size: {
+        xs: "h-3 w-3 rounded-full ",
+        sm: "h-4 w-4 rounded-full ",
+        default: "h-5 w-5 rounded-full ",
+        lg: "h-6 w-6 rounded-full ",
+        xl: "h-7 w-7 rounded-full "
+      },
+
+    },
+    defaultVariants: {
+      size: "default"
+    },
+  }
+)
+
+const textAreaListVariants = cva(
+  " absolute right-0 z-10 mt-1 overflow-auto rounded-lg py-3 shadow",
+  {
+    variants: {
+      size: {
+        default: " w-52 text-sm ",
+      },
+    },
+    defaultVariants: {
+      size: "default"
+    },
+  }
+)
+
 interface AssignListItem {
   label?: string | undefined;
   image?: string | undefined;
 }
 
 interface IconList {
-  icon: IconType;
-  bg: string;
+  icon?: IconType;
+  bg?: string;
+  height?: string;
+  width?: string;
 }
 interface LabelListItem {
   label?: string;
@@ -77,6 +113,8 @@ interface IconButton {
   bg?: string;
   label?: string;
   icon?: string;
+  height?: string;
+  width?: string;
 }
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -108,8 +146,9 @@ export interface TextareaProps
   iconButton?: IconButton[] | undefined;
   previewContent?: string | undefined;
   createButton?: string | undefined;
-  iconStyle?:string | undefined;
-  submitButtonName?:string | undefined;
+  iconStyle?: string | undefined;
+  widthForUl?:string | undefined;
+  submitButtonName?: string | undefined;
   color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
   "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
   | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose";
@@ -117,7 +156,7 @@ export interface TextareaProps
 
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, showIconForTextArea,color,submitButtonName, iconButton,iconStyle, createButton, attachFileName, previewContent, labelList, attachIcon, dueDateList, dueDateButtonName, assignList, labelButtonName, assignButtonName, hasDivider, titlePlaceholder, icon, variant, icons, textareavariant, placeholder, showMoodButton, textAreaButtonvariant, previewButton, submitButton, writeButton, label, ...props }, ref) => {
+  ({ className, showIconForTextArea,widthForUl, color, submitButtonName, iconButton, iconStyle, createButton, attachFileName, previewContent, labelList, attachIcon, dueDateList, dueDateButtonName, assignList, labelButtonName, assignButtonName, hasDivider, titlePlaceholder, icon, variant, icons, textareavariant, placeholder, showMoodButton, textAreaButtonvariant, previewButton, submitButton, writeButton, label, ...props }, ref) => {
     const [showComment, setShowComment] = useState(false);
     const [showWrite, setShowWrite] = useState(false);
     const [showIcon, setShowIcon] = useState(false);
@@ -129,24 +168,32 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const [selectedLabelOption, setSelectedLabelOption] = useState<LabelListItem | null>(null);
     const [selectedDueDateOption, setSelectedDueDateOption] = useState<DueDateListItem | null>(null);
 
+    const memoizedSetShowComment = useCallback((value: boolean) => setShowComment(value), []);
+    const memoizedSetShowWrite = useCallback((value: boolean) => setShowWrite(value), []);
+    const memoizedSetSelectedIcon = useCallback((value: IconList) => setSelectedIcon(value), []);
+    const memoizedSetSelectedOption = useCallback((value: AssignListItem) => setSelectedOption(value), []);
+    const memoizedSetSelectedLabelOption = useCallback((value: LabelListItem) => setSelectedLabelOption(value), []);
+    const memoizedSetSelectedDueDateOption = useCallback((value: DueDateListItem) => setSelectedDueDateOption(value), []);
+
+
     const buttonColor = (color?: string) => {
       return ` bg-${color}-600 text-white`
     }
 
     const handleCommentButtonClick = () => {
-      setShowComment(true);
-      setShowWrite(false);
+      memoizedSetShowComment(true);
+      memoizedSetShowWrite(false);
     };
 
     const handleWriteButtonClick = () => {
-      setShowWrite(true);
-      setShowComment(false);
+      memoizedSetShowWrite(true);
+      memoizedSetShowComment(false);
     };
     const handleIconClick = () => {
       setShowIcon(prev => !prev);
     };
     const handleIconButtonClick = (icon: any) => {
-      setSelectedIcon(icon);
+      memoizedSetSelectedIcon(icon);
       handleIconClick();
 
     }
@@ -157,7 +204,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     }
 
     const handleOptionClick = (option: any) => {
-      setSelectedOption(option);
+      memoizedSetSelectedOption(option);
       toggleListVisibility();
     }
 
@@ -167,7 +214,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       setIsDueDateListVisible(false);
     }
     const handleLabelOptionClick = (option: any) => {
-      setSelectedLabelOption(option);
+      memoizedSetSelectedLabelOption(option);
       toggleLabelListVisibility();
     }
 
@@ -178,7 +225,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     }
 
     const handleDueDateOptionClick = (option: any) => {
-      setSelectedDueDateOption(option);
+      memoizedSetSelectedDueDateOption(option);
       toggleDueDateListVisibility();
     }
 
@@ -188,7 +235,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           {
             props.image ?
               <div className={cn("flex-shrink-0")}>
-                <img className={cn("inline-block h-10 w-10 rounded-full", className)} src={props.image} />
+                <img className={cn("inline-block", (textAreaImageVariants({})), className)} src={props.image} />
               </div>
               : ""
           }
@@ -215,7 +262,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                         {icons && icons.map((icon: IconType, index: number) => (
                           <div key={index} className={cn("flex items-center", className)}>
                             <button
-                              className={cn("inline-flex h-6 w-6 items-center justify-center rounded-full", className)} >
+                              className={cn("inline-flex items-center justify-center rounded-full", className)} >
                               <Icon name={icon} className={cn(`${iconStyle}`, className)} /></button>
                           </div>
                         ))}
@@ -228,10 +275,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             }
             {label ? <label className={cn("block leading-6 text-base", className)}>{label}</label> : ''}
             <div className={cn(" rounded-lg border shadow-sm", className)}>
-              {titlePlaceholder ? <Input className={cn("block w-full border-0 shadow-none text-lg font-medium", className)} placeholder={titlePlaceholder} /> : null}
+              {titlePlaceholder ? <Input className={cn("block border-0 shadow-none text-lg font-medium", className)} placeholder={titlePlaceholder} /> : null}
               {showComment && (
                 <div className={cn("mt-2", className)}>
-                  <div className={cn("-m-0.5 rounded-lg p-0.5", className)}>
+                  <div className={cn(" rounded-lg p-0.5", className)}>
                     <div className={cn("border-b", className)}>
                       <div className={cn("mx-px mt-px px-3 pb-12 pt-2 text-sm leading-5", className)}>{previewContent}</div>
                     </div>
@@ -258,7 +305,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                           <button className={cn("relative inline-flex items-center whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium sm:px-3")} onClick={toggleListVisibility}>
                             {selectedOption ? (
                               <>
-                                <img src={selectedOption.image} alt="" className={cn("h-5 w-5 flex-shrink-0 rounded-full", className)} />
+                                <img src={selectedOption.image} className={cn(textAreaImageVariants({}), className)} />
                                 <span className={cn("ml-3 block truncate font-medium", className)}>{selectedOption.label}</span>
                               </>
                             ) : (
@@ -269,14 +316,14 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                             )}
                           </button>
                           {isListVisible && (
-                            <ul className={cn("absolute right-0 z-10 mt-1 max-h-56 w-52 overflow-auto rounded-lg py-3 text-base shadow sm:text-sm", className)}>
+                            <ul className={cn(textAreaListVariants({}), className)}>
                               {assignList && assignList.map((option, index) => (
                                 <li
                                   key={index}
-                                  className={cn(" relative cursor-pointer select-none px-3 py-2", className)}
+                                  className={cn(" bg-white relative cursor-pointer select-none px-3 py-2", className)}
                                   onClick={() => handleOptionClick(option)}>
                                   <div className={cn("flex items-center", className)}>
-                                    <img src={option.image} className={cn("h-5 w-5 flex-shrink-0 rounded-full", className)} />
+                                    <img src={option.image} className={cn(textAreaImageVariants({}), className)} />
                                     <span className={cn("ml-3 block truncate font-medium", className)}>{option.label}</span>
                                   </div>
                                 </li>
@@ -301,7 +348,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                             )}
                           </button>
                           {isLabelListVisible && (
-                            <ul className={cn("absolute right-0 z-10 mt-1 max-h-56 w-52 overflow-auto rounded-lg py-3 text-base shadow ring-1 ring-opacity-5 focus:outline-none sm:text-sm", className)}>
+                            <ul className={cn(textAreaListVariants({}), className)}>
                               {labelList && labelList.map((option, index) => (
                                 <li
                                   key={index}
@@ -336,7 +383,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                             )}
                           </button>
                           {isDueDateListVisible && (
-                            <ul className={cn("absolute right-0 z-10 mt-1 max-h-56 w-52 overflow-auto rounded-lg py-3 text-base shadow sm:text-sm", className)}>
+                            <ul className={cn(textAreaListVariants({}), className)}>
                               {dueDateList && dueDateList.map((option, index) => (
                                 <li
                                   key={index}
@@ -383,7 +430,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                     <div className={cn("flex items-center space-x-5", className)}>
                       <div className={cn("flex root", className)}>
                         <button
-                          type="button" className={cn("inline-flex h-6 w-6 items-center justify-center rounded-full", className)}>
+                          type="button" className={cn("inline-flex items-center justify-center rounded-full", className)}>
                           {attachIcon ? <Icon name={attachIcon} className={cn(`${iconStyle}`, className)} /> : null}
                         </button>
                       </div>
@@ -392,16 +439,16 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                         {
                           selectedIcon ? (
                             <>
-                              <div className={cn(`bg-${selectedIcon.bg} flex h-8 w-8 items-center justify-center rounded-full`, className)}>
+                              <div className={cn(`${selectedIcon.bg} ${selectedIcon.height} ${selectedIcon.width} flex items-center justify-center rounded-full`, className)}>
                                 <button
-                                  className={cn("inline-flex h-6 w-6 items-center justify-center rounded-full", className)} onClick={handleIconClick}>
-                                  <Icon name={selectedIcon.icon} />
+                                  className={cn("inline-flex items-center justify-center rounded-full", className)} onClick={handleIconClick}>
+                                  {selectedIcon.icon ? <Icon name={selectedIcon.icon} /> : null}
                                 </button>
                               </div>
                             </>
                           ) : <>
                             <button
-                              className={cn("inline-flex h-6 w-6 items-center justify-center rounded-full", className)} onClick={handleIconClick}>
+                              className={cn("inline-flex items-center justify-center rounded-full", className)} onClick={handleIconClick}>
                               {icon ? <Icon name={icon} className={cn(`${iconStyle}`, className)} /> : null}
                             </button>
                           </>
@@ -415,12 +462,12 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                       <button type="submit" className={cn("rounded-md px-3 py-1.5 font-medium text-base leading-6 ",buttonColor(color),className)}>{submitButtonName}</button>
                     </div>
                   </div>
-                  <ul className={cn("absolute z-10 -ml-6 w-60 rounded-lg text-base shadow focus:outline-none sm:ml-auto w-64 text-sm", className)}>
+                  <ul className={cn(`absolute z-10 ${widthForUl} rounded-lg text-base shadow focus:outline-none text-sm`, className)}>
                     {showIcon && (
                       iconButton && iconButton.map((option: any, index: number) => (
-                        <li key={index} className={cn(` relative cursor-default select-none px-3 py-2`, className)} >
+                        <li key={index} className={cn(` relative bg-white cursor-default select-none px-3 py-2`, className)} >
                           <div className={cn("flex items-center", className)}>
-                            <div className={cn(`bg-${option.bg} flex h-8 w-8 items-center justify-center rounded-full`, className)}>
+                            <div className={cn(`${option.bg} flex ${option.height} ${option.width}  items-center justify-center rounded-full`, className)}>
                               <button onClick={() => handleIconButtonClick(option)} >
                                 <Icon name={option.icon} className={cn(`${iconStyle}`, className)} />
                               </button>
