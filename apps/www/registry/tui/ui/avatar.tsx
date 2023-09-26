@@ -5,6 +5,7 @@ import * as AvatarPrimitive from "@radix-ui/react-avatar"
 
 import { cn } from "@/lib/utils"
 import { VariantProps, cva } from "class-variance-authority"
+import { colors } from "./helper/types"
 
 const avatarVariants = cva(
   "bg-muted",
@@ -15,7 +16,7 @@ const avatarVariants = cva(
         rounded: "flex shrink-0 overflow-hidden rounded-md",
         dotCircular: "relative inline-block rounded-full",
         dotRounded: "relative inline-block rounded-md",
-        ring:"flex shrink-0 overflow-hidden rounded-full ring-2 ring-white"
+        ring: "flex shrink-0 overflow-hidden rounded-full ring-2 ring-white"
       },
       size: {
         xs: "h-6 w-6 text-xs",
@@ -37,23 +38,21 @@ export interface AvatarProps
   VariantProps<typeof avatarVariants> {
   src?: string;
   alt?: string;
-  color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
-  "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
-  | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose";
+  color?: colors;
 }
 
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   AvatarProps
 >(({ variant, size, className, children, src, alt, color, ...props }, ref) => {
-  const dotColor = (color?: string) => {
+  const dotColor = (color?: colors) => {
     return `absolute right-0 top-0 block h-2 w-2 rounded-full bg-${color}-400 ring-2 ring-white z-20`
   }
   return (
     <AvatarPrimitive.Root
       ref={ref}
       className={cn(
-        avatarVariants({ variant, size }),'inline-block',
+        avatarVariants({ variant, size }), 'inline-block',
         className
       )}
       {...props}

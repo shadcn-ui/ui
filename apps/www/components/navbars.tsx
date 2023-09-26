@@ -408,12 +408,12 @@ const SimpleUnderLineMenuNavbar = () => {
             />
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-            <Tabs defaultValue="dashboard">
-              <TabsList className={"bg-background"}>
+            <Tabs defaultValue="dashboard" className="contents">
+              <TabsList variant="underline" className={"contents bg-background"}>
                 {navigation.map((item, i) => (
                   <TabsTrigger
                     value={item.value}
-                    className="data-[state=active]:bg-muted"
+                    variant="underline"
                     key={i}
                   >
                     {item.name}

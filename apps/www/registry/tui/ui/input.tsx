@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "@radix-ui/react-slot"
 import { Icon, IconType } from "./icon"
+import { colors } from "./helper/types"
 
 const inputVariants = cva(
   "block border-0  focus:outline-none shadow-sm ring-inset ",
@@ -13,7 +14,7 @@ const inputVariants = cva(
         destructive: " border text-destructive  border-destructive placeholder:text-destructive/50 ",
         default: "border bg-background",
       },
-      size: {
+      inputSize: {
         default: "w-full py-1.5 pl-3 text-sm leading-6 "
       },
       round: {
@@ -32,7 +33,7 @@ const inputVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
+      inputSize: "default",
       round: "default"
     },
 
@@ -125,9 +126,7 @@ type InputProps = {
   alignDropdown?: "prefix" | "suffix";
   labelAlign?: "left" | "over" | "inside";
   alignIcon?: "left" | "right";
-  color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
-  "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
-  | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose";
+  color?: colors;
 }
 
 const Input = React.forwardRef<
@@ -136,7 +135,7 @@ const Input = React.forwardRef<
   VariantProps<typeof inputVariants> &
   InputProps>(({ className, name, keyboardName, alignIcon, iconStyle, icon, borderInside, color, labelAlign, buttonLabel, trailingAddOn, options, variant, placeholder, label, labelAndBorderStyle, alignDropdown, addOnLabel, hint, bottomBorder, disabled, round, note, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "input"
-    const fontColor = (color?: string) => {
+    const fontColor = (color?: colors) => {
       return `text-${color}-500`
     }
     return (
@@ -159,7 +158,7 @@ const Input = React.forwardRef<
           {icon ? <Icon name={icon} className={cn(`${alignIcon === "left" ? "absolute left-0 flex items-center pl-3" : " absolute pr-2 right-0 flex items-center pl-3"} ${iconStyle}`, fontColor(color), className)} {...props} /> : null}
           {
             alignDropdown && (
-              <div className={cn(`absolute text-sm ${alignDropdown === 'prefix' ? 'left-0 flex items-center' : 'right-0 flex items-center'}`, className)} {...props}>
+              <div className={cn(`absolute text-sm ${alignDropdown === 'prefix' ? 'left-0' : 'right-0 '} flex items-center`, className)} {...props}>
                 <select className={cn(`${alignDropdown === 'prefix' ? 'pl-2 ' : 'pr-1'} bg-inherit`, fontColor(color), className)}>
                   {options && options.map((option: string, index: number) => (
                     <option key={index}>{option}</option>
