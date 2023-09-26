@@ -113,7 +113,7 @@ export const TabsInPills = ({ withIcons, withGrayBg, withBrandColor }: TabsInPil
             </CardHeader>
             <CardContent>
                 <Tabs defaultValue="account">
-                    <TabsList className={withGrayBg ? "bg-gray-50 bg-opacity-75 h-24 pl-2 w-full flex justify-start" : "bg-background"}>
+                    <TabsList className={withGrayBg ? "bg-gray-50 bg-opacity-[75%] h-24 pl-2 w-full flex justify-start" : "bg-background"}>
                         <TabsTrigger value="account" icon={withIcons ? "user-solid" : undefined} className={tabsTriggerClassName}>
                             My Account
                         </TabsTrigger>
