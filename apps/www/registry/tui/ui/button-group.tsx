@@ -43,13 +43,14 @@ export interface ButtonProps
     buttonsList?: ButtonsList[];
     options?:Options | undefined;
     iconStyle?: string | undefined;
+    dropdownWidth?:string | undefined;
     color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
     "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
     | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose";
 }
 
 const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, buttonsList, options, color, iconStyle, ...props }, ref) => {
+    ({ className, buttonsList,dropdownWidth, options, color, iconStyle, ...props }, ref) => {
         const fontColor = (color?: string) => {
             return `text-${color}-500 `
         }
@@ -113,7 +114,7 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
                     ))}
 
                     {isOpen && (
-                        <div className={cn(" z-10 mt-14 absolute w-56 rounded-md  py-3 text-base bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none", fontColor(color), className, { ...props })}>
+                        <div className={cn(` z-10 ${dropdownWidth} mt-14 absolute rounded-md  py-3 text-base bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`, fontColor(color), className, { ...props })}>
                             {options && options.items.map((option , index: number) => (
                                 <a href={option.href} key={index} className={cn("block px-4 py-2 text-sm", fontColor(color), className, { ...props })} >
                                     {option.name}

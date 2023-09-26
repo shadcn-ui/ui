@@ -35,7 +35,7 @@ export function CardsButtonGroup() {
                     <ButtonGroup buttonsList={ buttonsList}  color="gray"/>
                     
                     <div className="text-m mt-[13px] font-bold text-primary">With dropdown</div>
-                    <ButtonGroup buttonsList={ [{name:'Save Changes'},{icon:"chevron-down-solid"}]} iconStyle="h-4 w-4" options={options} color="gray"/>
+                    <ButtonGroup buttonsList={ [{name:'Save Changes'},{icon:"chevron-down-solid"}]} dropdownWidth="w-56" iconStyle="h-4 w-4" options={options} color="gray"/>
 
                 </CardContent>
             </Card>
