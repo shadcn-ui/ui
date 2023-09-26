@@ -79,14 +79,14 @@ const SlideOverContent = React.forwardRef<
       ref={ref}
       className={cn(
         `fixed right-0 top-0 z-50 grid h-full w-full ${panelWidth ? 'max-w-' + panelWidth : 'max-w-5xl'} gap-4 ${disableYscroll ? 'overflow-hidden' : 'overflow-y-scroll'}
-        ${brandHeader || fixedFooter || fixedTitle ? 'p-0' : 'p-6'}
+
         border bg-background shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0
         data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-right-[48%] data-[state=open]:slide-in-from-right-[48%] sm:rounded-l-lg md:w-full`,
         className
       )}
       {...props}
     >
-      <div className="flex h-full flex-col overflow-hidden">
+      <div className={`flex h-full flex-col ${fixedFooter ? 'overflow-hidden' : ''}`}>
         <div className={`flex ${closeIconPosition === 'left' ? 'flex-row-reverse' : 'flex-row'} z-40 h-20 items-center justify-between ${brandHeader ? 'px-4 py-12 ' + brandStyle : ''}`}>
           <CardTitle className={`${fixedTitle ? 'fixed w-full border-b-2 bg-white p-6' : 'p-4'} text-base font-semibold leading-6`}>
             Panel title
@@ -97,13 +97,12 @@ const SlideOverContent = React.forwardRef<
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         </div>
-        <div className={`${brandHeader ? 'px-4' : 'px-0'} overflow-y-scroll px-2`}>
+        <div className={`${brandHeader ? 'px-4' : 'px-0'} px-2 ${fixedFooter ? 'overflow-y-scroll' : ''}`}>
           {children}
         </div>
-        <CardFooter className={`${fixedFooter ? 'absolute bottom-0 right-0 w-full border-t-2 bg-white p-6' : ''} flex items-center justify-between text-base`}>
-          Footer Title
+        {footerContent && <CardFooter className={`${fixedFooter ? 'absolute bottom-0 right-0 w-full border-t-2 bg-white p-6' : ''} flex items-center justify-between text-base`}>
           {footerContent}
-        </CardFooter>
+        </CardFooter>}
       </div>
     </DialogPrimitive.Content>
   </DialogPortal>
