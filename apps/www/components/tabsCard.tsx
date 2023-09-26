@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/registry/tui/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/registry/tui/ui/tabs'
 import React from 'react'
@@ -22,7 +23,7 @@ export const TabsWithUnderline = ({ showTitle, withIcons, fullWidth, withBar, wi
             </CardHeader>
             <CardContent>
                 <Tabs defaultValue="account">
-                    <TabsList variant={withBar ? "bar" : "underline"} className={fullWidth ? "w-full" : ""}>
+                    <TabsList variant={withBar ? "bar" : "underline"} className={cn(fullWidth ? "w-full" : "", withBadge && "pl-6")}>
                         <TabsTrigger
                             variant={withBar ? "bar" : "underline"}
                             value="account"
@@ -113,7 +114,7 @@ export const TabsInPills = ({ withIcons, withGrayBg, withBrandColor }: TabsInPil
             </CardHeader>
             <CardContent>
                 <Tabs defaultValue="account">
-                    <TabsList className={withGrayBg ? "bg-gray-50 bg-opacity-75 h-24 pl-2 w-full flex justify-start" : "bg-background"}>
+                    <TabsList className={withGrayBg ? "bg-gray-50 bg-opacity-[75%] h-24 pl-2 w-full flex justify-start" : "bg-background"}>
                         <TabsTrigger value="account" icon={withIcons ? "user-solid" : undefined} className={tabsTriggerClassName}>
                             My Account
                         </TabsTrigger>

@@ -3,6 +3,7 @@ import { Button } from '@/registry/tui/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/registry/tui/ui/card'
 import { Icon, IconType } from '@/registry/tui/ui/icon'
 import { Popover, PopoverContent, PopoverTrigger } from '@/registry/tui/ui/popover'
+import Image from 'next/image'
 import React from 'react'
 
 interface DataWithDesc {
@@ -365,8 +366,8 @@ export const FullWidth = () => {
                         </PopoverTrigger>
                         <PopoverContent
                             side="top" align='start' alignOffset={-2}
-                            sideOffset={0} className="p-0  mx-[0.10rem] pr-[2.85rem] px-0 rounded-none pt-0 mt-5 w-full shadow-b-sm shadow-x-none border-0 appearance-none ring-0 ring-gray-900/5 z-0">
-                            <div className="mx-auto grid max-w-[83.20rem] grid-cols-1 gap-2 shadow-none px-6 py-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-0 sm:py-10 lg:grid-cols-4 lg:gap-4 lg:px-8 xl:gap-8">
+                            sideOffset={0} className="p-0  mx-[0.10rem] pr-[2.85rem] rounded-none mt-5 w-full shadow-b-sm shadow-x-none border-0 appearance-none ring-0 ring-gray-900/5 z-0">
+                            <div className="mx-auto grid max-w-[83.20rem] grid-cols-1 gap-2 shadow-none p-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-0 sm:py-10 lg:grid-cols-4 lg:gap-4 lg:px-8 xl:gap-8">
                                 {solutions.map((item) => (
                                     <div
                                         key={item.name}

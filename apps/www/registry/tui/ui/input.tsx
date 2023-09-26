@@ -13,8 +13,8 @@ const inputVariants = cva(
         destructive: " border text-destructive  border-destructive placeholder:text-destructive/50 ",
         default: "border bg-background",
       },
-      size: {
-        default: "w-full py-1.5 pl-[12px] text-sm leading-6 "
+      inputSize: {
+        default: "w-full py-1.5 pl-3 text-sm leading-6 "
       },
       round: {
         default: "rounded-md ",
@@ -32,7 +32,7 @@ const inputVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
+      inputSize: "default",
       round: "default"
     },
 
@@ -108,23 +108,21 @@ const InputGroupButtonVariant = cva(
   }
 )
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-  VariantProps<typeof inputVariants> {
+type InputProps = {
   asChild?: boolean | undefined;
   note?: string | undefined;
   hint?: string | undefined;
   bottomBorder?: boolean | undefined;
   label?: string | undefined;
   trailingAddOn?: boolean | undefined;
-  options?: string[] | undefined ;
+  options?: string[] | undefined;
   borderInside?: string | undefined;
   addOnLabel?: string | undefined;
   buttonLabel?: string | undefined;
   icon?: IconType | undefined;
   iconStyle?: string | undefined;
   keyboardName?: string | undefined;
-  alignDropdown?: "prefix"|"suffix" ;
+  alignDropdown?: "prefix" | "suffix";
   labelAlign?: "left" | "over" | "inside";
   alignIcon?: "left" | "right";
   color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
@@ -134,6 +132,8 @@ export interface InputProps
 
 const Input = React.forwardRef<
   HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement> &
+  VariantProps<typeof inputVariants> &
   InputProps>(({ className, name, keyboardName, alignIcon, iconStyle, icon, borderInside, color, labelAlign, buttonLabel, trailingAddOn, options, variant, placeholder, label, labelAndBorderStyle, alignDropdown, addOnLabel, hint, bottomBorder, disabled, round, note, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "input"
     const fontColor = (color?: string) => {
@@ -142,26 +142,26 @@ const Input = React.forwardRef<
     return (
       <div className="relative">
         {
-          (labelAlign === "over" || labelAlign === "left") && (<label className={cn(inputGroupLabelVariant({}), className)}>{label}
-            {hint && (<span className={cn("pl-36", fontColor(color), className)}>{hint}</span>)}
+          (labelAlign === "over" || labelAlign === "left") && (<label className={cn("flex justify-between items-end", (inputGroupLabelVariant({}), className))}>{label}
+            {hint && (<span className={cn(fontColor(color), className)}>{hint}</span>)}
           </label>
           )
         }
-        <div className={cn("mt-2 flex rounded-md shadow-sm", className)}>
+        <div className={cn("mt-2 flex rounded-md items-center shadow-sm relative", className)}>
 
           {(borderInside === "withBorder") ?
             <div className={cn("flex rounded-l-md shadow-sm max-w-md", className)}>
-              <span className={cn("flex select-none border-r-0 border rounded-l-md items-center pl-3 text-sm", (fontColor(color)), className)}{...props}>{addOnLabel}</span> </div>
+              <span className={cn("flex pr-1 select-none border-r-0 border items-center rounded-l-md pl-3 text-sm py-2 ", (fontColor(color)), className)}{...props}>{addOnLabel}</span> </div>
             : (borderInside === "withoutBorder") ?
-              <span className={cn("inline-flex items-center  rounded-l-md border border-r-0 px-3 sm:text-sm", className)}{...props}>
+              <span className={cn("inline-flex  rounded-l-md border items-center  border-r-0 px-3 text-sm py-2", className)}{...props}>
                 {addOnLabel}</span> : null
           }
-          {icon ? <Icon name={icon} className={cn(`${alignIcon === "left" ? "absolute top-[37px] left-0 flex items-center pl-3" : "mr-2 absolute top-[37px] right-0 flex items-center pl-3"} ${iconStyle}`, fontColor(color), className)} {...props} /> : null}
+          {icon ? <Icon name={icon} className={cn(`${alignIcon === "left" ? "absolute left-0 flex items-center pl-3" : " absolute pr-2 right-0 flex items-center pl-3"} ${iconStyle}`, fontColor(color), className)} {...props} /> : null}
           {
             alignDropdown && (
-              <div className={cn(`absolute text-sm inset-y-0 ${alignDropdown === 'prefix' ? 'left-0 flex items-center' : 'right-0 flex pr-px items-center -mb-[7px]'}`, className)} {...props}>
-                <select className={cn(`mt-${alignDropdown === 'prefix' ? '8' : '6'} ${alignDropdown === 'prefix' ? 'pl-2' : 'pr-2'} bg-inherit`, fontColor(color), className)}>
-                  {options && options.map((option:string, index: number) => (
+              <div className={cn(`absolute text-sm ${alignDropdown === 'prefix' ? 'left-0' : 'right-0 '} flex items-center`, className)} {...props}>
+                <select className={cn(`${alignDropdown === 'prefix' ? 'pl-2 ' : 'pr-1'} bg-inherit`, fontColor(color), className)}>
+                  {options && options.map((option: string, index: number) => (
                     <option key={index}>{option}</option>
                   ))}
                 </select>
@@ -188,24 +188,24 @@ const Input = React.forwardRef<
               </button>
             )
           }
+          {trailingAddOn && (
+            <div className={cn("pointer-events-none flex items-center", className)}>
+              <div className={cn("flex items-center justify-center -ml-8", className)}>
+                <span className={cn("text-sm", fontColor(color), className)}>{addOnLabel}</span>
+              </div>
+            </div>
+          )}
+          {keyboardName && (
+            <div className={cn("inset-y-0 right-0 absolute flex py-1.5 pr-1.5 items-center ", className)}>
+              <kbd className={cn("py-0.5 inline-flex items-center", keyboardVariant({}), className)} {...props}>{keyboardName}</kbd>
+            </div>
+          )}
         </div>
-
-        {trailingAddOn && (
-          <div className="pointer-events-none absolute -mb-[30px] inset-y-0 right-0 flex items-center pr-3">
-            <span className={cn("text-sm", fontColor(color), className)} {...props}>{addOnLabel}</span>
-          </div>
-        )}
 
 
         {bottomBorder ? <div className={cn("absolute inset-x-0 bottom-0 border-t peer-focus:border-t-2 border peer-focus:border", className)} {...props} /> : ""}
 
         {note && <span className={cn("text-sm", fontColor(color), className)} {...props}>{note}</span>}
-
-        {keyboardName && (
-          <div className={cn("inset-y-0 right-0 flex py-1.5 pr-1.5 ml-56 -mt-[37px]", className)}>
-            <kbd className={cn("py-0.5", keyboardVariant({}), className)} {...props}>{keyboardName}</kbd>
-          </div>
-        )}
 
       </div>
     )
