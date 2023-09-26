@@ -5,12 +5,12 @@ import { Slot } from "@radix-ui/react-slot"
 import { Icon, IconType } from "./icon"
 
 const inputVariants = cva(
-  "block border-0  focus:outline-none shadow-sm ring-inset ",
+  "block border-0  shadow-sm ring-inset focus:outline-none ",
 
   {
     variants: {
       variant: {
-        destructive: " border text-destructive  border-destructive placeholder:text-destructive/50 ",
+        destructive: " border border-destructive  text-destructive placeholder:text-destructive/50 ",
         default: "border bg-background",
       },
       inputSize: {
@@ -87,7 +87,7 @@ const keyboardVariant = cva(
   }
 )
 const InputGroupButtonVariant = cva(
-  "relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-2 py-2 font-semibold",
+  "relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md p-2 font-semibold",
   {
     variants: {
       buttonvariant: {
@@ -142,21 +142,21 @@ const Input = React.forwardRef<
     return (
       <div className="relative">
         {
-          (labelAlign === "over" || labelAlign === "left") && (<label className={cn("flex justify-between items-end", (inputGroupLabelVariant({}), className))}>{label}
+          (labelAlign === "over" || labelAlign === "left") && (<label className={cn("flex items-end justify-between", (inputGroupLabelVariant({}), className))}>{label}
             {hint && (<span className={cn(fontColor(color), className)}>{hint}</span>)}
           </label>
           )
         }
-        <div className={cn("mt-2 flex rounded-md items-center shadow-sm relative", className)}>
+        <div className={cn("relative mt-2 flex items-center rounded-md shadow-sm", className)}>
 
           {(borderInside === "withBorder") ?
-            <div className={cn("flex rounded-l-md shadow-sm max-w-md", className)}>
-              <span className={cn("flex pr-1 select-none border-r-0 border items-center rounded-l-md pl-3 text-sm py-2 ", (fontColor(color)), className)}{...props}>{addOnLabel}</span> </div>
+            <div className={cn("flex max-w-md rounded-l-md shadow-sm", className)}>
+              <span className={cn("flex select-none items-center rounded-l-md border border-r-0 py-2 pl-3 pr-1 text-sm ", (fontColor(color)), className)}{...props}>{addOnLabel}</span> </div>
             : (borderInside === "withoutBorder") ?
-              <span className={cn("inline-flex  rounded-l-md border items-center  border-r-0 px-3 text-sm py-2", className)}{...props}>
+              <span className={cn("inline-flex  items-center rounded-l-md border  border-r-0 px-3 py-2 text-sm", className)}{...props}>
                 {addOnLabel}</span> : null
           }
-          {icon ? <Icon name={icon} className={cn(`${alignIcon === "left" ? "absolute left-0 flex items-center pl-3" : " absolute pr-2 right-0 flex items-center pl-3"} ${iconStyle}`, fontColor(color), className)} {...props} /> : null}
+          {icon ? <Icon name={icon} className={cn(`${alignIcon === "left" ? "absolute left-0 flex items-center pl-3" : " absolute right-0 flex items-center pl-3 pr-2"} ${iconStyle}`, fontColor(color), className)} {...props} /> : null}
           {
             alignDropdown && (
               <div className={cn(`absolute text-sm ${alignDropdown === 'prefix' ? 'left-0' : 'right-0 '} flex items-center`, className)} {...props}>
@@ -169,7 +169,7 @@ const Input = React.forwardRef<
             )
           }
           {labelAlign === "inside" ? (
-            <label className={cn("absolute left-2 top-2 pl-1.5 pointer-events-none text-sm", fontColor(color), className)} >
+            <label className={cn("pointer-events-none absolute left-2 top-2 pl-1.5 text-sm", fontColor(color), className)} >
               {label}
             </label>
           ) : null}
@@ -190,20 +190,20 @@ const Input = React.forwardRef<
           }
           {trailingAddOn && (
             <div className={cn("pointer-events-none flex items-center", className)}>
-              <div className={cn("flex items-center justify-center -ml-8", className)}>
+              <div className={cn("-ml-8 flex items-center justify-center", className)}>
                 <span className={cn("text-sm", fontColor(color), className)}>{addOnLabel}</span>
               </div>
             </div>
           )}
           {keyboardName && (
-            <div className={cn("inset-y-0 right-0 absolute flex py-1.5 pr-1.5 items-center ", className)}>
-              <kbd className={cn("py-0.5 inline-flex items-center", keyboardVariant({}), className)} {...props}>{keyboardName}</kbd>
+            <div className={cn("absolute inset-y-0 right-0 flex items-center py-1.5 pr-1.5 ", className)}>
+              <kbd className={cn("inline-flex items-center py-0.5", keyboardVariant({}), className)} {...props}>{keyboardName}</kbd>
             </div>
           )}
         </div>
 
 
-        {bottomBorder ? <div className={cn("absolute inset-x-0 bottom-0 border-t peer-focus:border-t-2 border peer-focus:border", className)} {...props} /> : ""}
+        {bottomBorder ? <div className={cn("absolute inset-x-0 bottom-0 border peer-focus:border peer-focus:border-t-2", className)} {...props} /> : ""}
 
         {note && <span className={cn("text-sm", fontColor(color), className)} {...props}>{note}</span>}
 

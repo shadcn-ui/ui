@@ -11,6 +11,7 @@ import { CardsPaymentMethod } from "@/registry/tui/example/cards/payment-method"
 import { CardsReportIssue } from "@/registry/tui/example/cards/report-issue";
 import { SelectMenu } from "@/registry/tui/example/cards/select-menucard";
 import { CardsShare } from "@/registry/tui/example/cards/share";
+import { SlideOverCard } from "@/registry/tui/example/cards/slideover-card";
 import { CardsStats } from "@/registry/tui/example/cards/stats";
 import { CardsTeamMembers } from "@/registry/tui/example/cards/team-members";
 import { CardsAvatar } from "./avatar";
@@ -39,12 +40,9 @@ export default function CardsDemo() {
       <div className="col-span-12 space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <CardsButtonGroup />
-        </div>
-        <div className="grid grid-cols-2 gap-4">
           <CardsInputGroup />
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <DropdownMenuCard />
           <CardsAvatar />
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -52,9 +50,13 @@ export default function CardsDemo() {
           <CardsButton />
         </div>
       </div>
-      <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
-        <CardsComboBox />
-        <SelectMenu />
+      <div className="space-y-4 lg:col-span-12 xl:col-span-12 xl:space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <DropdownMenuCard />
+          <CardsComboBox />
+          <SelectMenu />
+          <SlideOverCard />
+        </div>
         <CardsStats />
         <div className="grid gap-1 sm:grid-cols-[280px_1fr] md:hidden">
           <CardsCalendar />
@@ -125,6 +127,6 @@ export default function CardsDemo() {
           <CardsReportIssue />
         </div>
       </div>
-    </div>
+    </div >
   );
 }
