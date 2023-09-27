@@ -1,8 +1,8 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-import colors from "tailwindcss/colors"
 import { cn } from "@/lib/utils"
 import { Icon, IconType } from "./icon"
+import { colors } from "./helper/types"
 
 const badgeVariants = cva(
   "inline-flex items-center font-medium",
@@ -54,14 +54,12 @@ export interface BadgeProps
   icon?: IconType;
   alignIcon?: "left" | "right";
   iconStyle?: string;
-  color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
-  "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
-  | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose"
+  color?: colors;
 }
 
-function Badge({ children, className, variant, fontSize, size, icon,alignIcon,iconStyle, rounded, color, ...props }: BadgeProps) {
-  const badgeColor = (color?: string) => {
-    return `bg-${color}-50 text-${color}-600 ring-${color}-500/10`
+function Badge({ children, className, variant, fontSize, size, icon, alignIcon, iconStyle, rounded, color, ...props }: BadgeProps) {
+  const badgeColor = (color?: colors) => {
+    return `bg-${color}-50 text-${color}-600 ring-${color}-500/10`;
   }
   return (
     <div className={cn(badgeVariants({ variant, fontSize, size, rounded }), className, badgeColor(color))} {...props}>

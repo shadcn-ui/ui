@@ -4,6 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { Icon, IconType } from "./icon"
 import { Checkbox } from './checkbox';
+import { colors } from './helper/types';
 
 
 
@@ -28,29 +29,27 @@ const buttonGroupVariants = cva(
 )
 interface ButtonsList {
     checkbox?: boolean | undefined;
-    name?:string | undefined;
-    icon?:IconType | undefined;
-    dropdownOptions?: string[] | undefined ;
-  }
+    name?: string | undefined;
+    icon?: IconType | undefined;
+    dropdownOptions?: string[] | undefined;
+}
 
-  interface Options {
+interface Options {
     items: { name: string | undefined; href: string | undefined }[];
-  }
+}
 
 export interface ButtonProps
     extends React.HTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonGroupVariants> {
     buttonsList?: ButtonsList[];
-    options?:Options;
+    options?: Options;
     iconStyle?: string;
-    color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
-    "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
-    | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose";
+    color?: colors;
 }
 
 const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, buttonsList, options, color, iconStyle, ...props }, ref) => {
-        const fontColor = (color?: string) => {
+        const fontColor = (color?: colors) => {
             return `text-${color}-500 `
         }
         if (!buttonsList) {
@@ -76,7 +75,7 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
         return (
             <>
                 <span className={cn("isolate inline-flex rounded-md shadow-sm", className)}>
-                    {buttonsList && buttonsList.map((button:any, index: number) => (
+                    {buttonsList && buttonsList.map((button: any, index: number) => (
                         <button
                             className={cn(buttonGroupVariants({ className }), {
                                 'rounded-l-md border-r-0': index === 0,
@@ -104,7 +103,7 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
                                 <select
                                     className={cn(" rounded-l-none rounded-r-md py-1.5 pl-0 pr-0.5", fontColor(color), className, { ...props })}
                                     onClick={(e) => e.stopPropagation()}>
-                                    {button.dropdownOptions.map((option:string[], index: number) => (
+                                    {button.dropdownOptions.map((option: string[], index: number) => (
                                         <option key={index}>{option}</option>
                                     ))}
                                 </select>
