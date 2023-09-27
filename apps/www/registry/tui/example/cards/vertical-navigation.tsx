@@ -55,29 +55,7 @@ const verticalMenuData: MenuItem[] = [
     icon: "chart-mixed-light",
     title: 'Reports',
     isCheckBox: true
-  },
-  {
-    title: 'Projects',
-    children: [
-      {
-        icon: "envelope-solid",
-        title: 'Website redesign',
-        shortcut: 'W'
-      },
-      {
-        title: 'GraphQL API',
-        shortcut: 'G',
-      },
-      {
-        title: 'Customer migration guides',
-        shortcut: 'C',
-      },
-      {
-        title: 'Profit sharing program',
-        shortcut: 'P',
-      },
-    ]
-  },
+  }
 ]
 
 export function VerticalNavigationCard() {
