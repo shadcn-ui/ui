@@ -35,7 +35,7 @@ export const Banner = ({ align, body, actionItems, showDismissButton, onClickDis
                                 : "") : ""
     return (
         <>
-            {variant === "notice" ? <div className="pointer-events-none absolute inset-x-0 bottom-0 px-6 pb-6">
+            {variant === "notice" ? <div className="pointer-events-none absolute inset-x-0 bottom-0 px-6 pb-6 z-50">
                 <div className={cn(
                     "pointer-events-auto max-w-xl rounded-xl p-6 shadow-lg ring-1 ring-gray-900/10",
                     (align === "center" ? "mx-auto" : align === "left" ? "mr-auto" : "ml-auto"),
@@ -46,14 +46,14 @@ export const Banner = ({ align, body, actionItems, showDismissButton, onClickDis
                 </div>
             </div >
                 : variant === "notice-secondary" ?
-                    <div className={cn("absolute inset-x-0 bottom-0 flex flex-col justify-between gap-x-8 gap-y-4 p-6 ring-1 ring-gray-900/10 md:flex-row md:items-center lg:px-8",
+                    <div className={cn("absolute inset-x-0 bottom-0 flex flex-col justify-between gap-x-8 gap-y-4 p-6 ring-1 ring-gray-900/10 md:flex-row md:items-center lg:px-8 z-50",
                         backgroundColor ?? "bg-white",
                         (align === "center" ? "mx-auto" : align === "left" ? "mr-auto" : "ml-auto"),
                     )}>
                         {body}
                         {actionItems && actionItems}
                     </div>
-                    : variant === "secondary" ? <div className={secondaryClass}>
+                    : variant === "secondary" ? <div className={secondaryClass + " z-50"}>
                         <div className={cn(
                             align === "left" ? "flex w-full justify-between" : "pointer-events-auto flex items-center justify-between5",
                             backgroundColor ?? "bg-gray-800",
@@ -73,7 +73,7 @@ export const Banner = ({ align, body, actionItems, showDismissButton, onClickDis
                                 dark && "bg-gray-900",
                                 backgroundColor && `${backgroundColor}`,
                                 onBrands && "bg-primary",
-                                `flex w-full items-center gap-x-6 px-6 py-2.5 sm:px-3.5 sm:before:flex-1`
+                                `flex w-full items-center gap-x-6 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 z-50`
                             )}>
                             {body && body}
                             <div className="w-full flex flex-1 justify-end">
