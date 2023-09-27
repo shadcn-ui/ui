@@ -28,12 +28,16 @@ import BannerCards from "./bannerCards";
 import Navbars from "@/components/navbars";
 import { CardsInputGroup } from "./inputgroup";
 import { CardsButtonGroup } from "./button-group";
+import { CardsSidebarNavigation } from "./sidebar-navigation";
 
 
 export default function CardsDemo() {
   return (
     <div className="grid md:grid-cols-2 md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4">
       <div className="space-y-4 lg:col-span-12 xl:col-span-12 xl:space-y-4">
+      <div className="grid grid-cols-2 gap-4">
+          <CardsSidebarNavigation/>
+        </div>
         <Navbars />
       </div>
       <div className="col-span-12 space-y-4">
