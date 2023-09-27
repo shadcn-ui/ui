@@ -1013,6 +1013,20 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/cards")),
       files: ["registry/default/example/cards/cards.tsx"],
     },
+    "multi-select-demo": {
+      name: "multi-select-demo",
+      type: "components:example",
+      registryDependencies: ["command","popover","button"],
+      component: React.lazy(() => import("@/registry/default/example/multi-select-demo")),
+      files: ["registry/default/example/multi-select.tsx"],
+    },
+    "multi-select-form": {
+      name: "multi-select-form",
+      type: "components:example",
+      registryDependencies: ["multi-select"],
+      component: React.lazy(() => import("@/registry/default/example/multi-select-form")),
+      files: ["registry/default/example/multi-select-form.tsx"],
+    },
   },  "new-york": {
     "accordion": {
       name: "accordion",
@@ -2021,6 +2035,20 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/example/cards")),
       files: ["registry/new-york/example/cards/cards.tsx"],
+    },
+    "multi-select-demo": {
+      name: "multi-select-demo",
+      type: "components:example",
+      registryDependencies: ["command","popover","button"],
+      component: React.lazy(() => import("@/registry/new-york/example/multi-select-demo")),
+      files: ["registry/new-york/example/multi-select.tsx"],
+    },
+    "multi-select-form": {
+      name: "multi-select-form",
+      type: "components:example",
+      registryDependencies: ["multi-select"],
+      component: React.lazy(() => import("@/registry/new-york/example/multi-select-form")),
+      files: ["registry/new-york/example/multi-select-form.tsx"],
     },
   },
 }

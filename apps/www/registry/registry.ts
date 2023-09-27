@@ -859,6 +859,18 @@ const example: Registry = [
     type: "components:example",
     files: ["example/cards/cards.tsx"],
   },
+  {
+    name: "multi-select-demo",
+    type: "components:example",
+    registryDependencies: ["command", "popover", "button"],
+    files: ["example/multi-select.tsx"],
+  },
+  {
+    name: "multi-select-form",
+    type: "components:example",
+    registryDependencies: ["multi-select"],
+    files: ["example/multi-select-form.tsx"],
+  },
 ]
 
 export const registry: Registry = [...ui, ...example]

@@ -1,0 +1,66 @@
+---
+title: Multi Select
+description: Displays a list of options that a user can select one or more of. Supports search and filtering.
+component: false
+---
+
+<ComponentPreview name="multi-select-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add multi-select
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="navigation-menu" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { MultiSelect } from "@/components/ui/multi-select"
+```
+
+```tsx
+<MultiSelect
+  options={[
+    { value: "React", label: "React" },
+    { value: "Vue", label: "Vue" },
+    { value: "Svelte", label: "Svelte" },
+    { value: "Angular", label: "Angular" },
+  ]}
+  selected={selected}
+  onChange={setSelected}
+  className="sm:w-[300px]"
+  placeholder="Select a framework"
+/>
+```
+
+## Examples
+
+### Form
+
+<ComponentPreview name="multi-select-form" />
