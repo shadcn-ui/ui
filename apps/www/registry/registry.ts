@@ -178,7 +178,7 @@ const ui: Registry = [
   {
     name: "skeleton",
     type: "components:ui",
-    files: ["ui/skeleton.tsx"],
+    files: ["ui/skeleton.tsx", "stories/skeleton.stories.tsx"],
   },
   {
     name: "slider",
@@ -195,7 +195,7 @@ const ui: Registry = [
   {
     name: "table",
     type: "components:ui",
-    files: ["ui/table.tsx"],
+    files: ["ui/table.tsx", "stories/table.stories.tsx"],
   },
   {
     name: "tabs",
@@ -218,7 +218,7 @@ const ui: Registry = [
     name: "toggle",
     type: "components:ui",
     dependencies: ["@radix-ui/react-toggle"],
-    files: ["ui/toggle.tsx"],
+    files: ["ui/toggle.tsx", "stories/toggle.stories.tsx"],
   },
   {
     name: "tooltip",
