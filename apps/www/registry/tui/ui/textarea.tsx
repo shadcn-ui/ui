@@ -180,54 +180,58 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       return ` bg-${color}-600 text-white`
     }
 
-    const handleCommentButtonClick = () => {
+    const memoizedHandleCommentButtonClick = useCallback(() => {
       memoizedSetShowComment(true);
       memoizedSetShowWrite(false);
-    };
-
-    const handleWriteButtonClick = () => {
+    }, [memoizedSetShowComment, memoizedSetShowWrite]);
+    
+    const memoizedHandleWriteButtonClick = useCallback(() => {
       memoizedSetShowWrite(true);
       memoizedSetShowComment(false);
-    };
-    const handleIconClick = () => {
+    }, [memoizedSetShowWrite, memoizedSetShowComment]);
+    
+    const memoizedHandleIconClick = useCallback(() => {
       setShowIcon(prev => !prev);
-    };
-    const handleIconButtonClick = (icon: any) => {
+    }, []);
+    
+    const memoizedHandleIconButtonClick = useCallback((icon:any) => {
       memoizedSetSelectedIcon(icon);
-      handleIconClick();
-
-    }
-    const toggleListVisibility = () => {
+      memoizedHandleIconClick();
+    }, [memoizedSetSelectedIcon, memoizedHandleIconClick]);
+    
+    const memoizedToggleListVisibility = useCallback(() => {
       setIsListVisible(prev => !prev);
       setIsLabelListVisible(false);
       setIsDueDateListVisible(false);
-    }
-
-    const handleOptionClick = (option: any) => {
+    }, []);
+    
+    const memoizedHandleOptionClick = useCallback((option:any) => {
       memoizedSetSelectedOption(option);
-      toggleListVisibility();
-    }
-
-    const toggleLabelListVisibility = () => {
+      memoizedToggleListVisibility();
+    }, [memoizedSetSelectedOption, memoizedToggleListVisibility]);
+    
+    const memoizedToggleLabelListVisibility = useCallback(() => {
       setIsLabelListVisible(prev => !prev);
       setIsListVisible(false);
       setIsDueDateListVisible(false);
-    }
-    const handleLabelOptionClick = (option: any) => {
+    }, []);
+    
+    const memoizedHandleLabelOptionClick = useCallback((option:any) => {
       memoizedSetSelectedLabelOption(option);
-      toggleLabelListVisibility();
-    }
-
-    const toggleDueDateListVisibility = () => {
+      memoizedToggleLabelListVisibility();
+    }, [memoizedSetSelectedLabelOption, memoizedToggleLabelListVisibility]);
+    
+    const memoizedToggleDueDateListVisibility = useCallback(() => {
       setIsDueDateListVisible(prev => !prev);
       setIsListVisible(false);
       setIsLabelListVisible(false);
-    }
-
-    const handleDueDateOptionClick = (option: any) => {
+    }, []);
+    
+    const memoizedHandleDueDateOptionClick = useCallback((option:any) => {
       memoizedSetSelectedDueDateOption(option);
-      toggleDueDateListVisibility();
-    }
+      memoizedToggleDueDateListVisibility();
+    }, [memoizedSetSelectedDueDateOption, memoizedToggleDueDateListVisibility]);
+    
 
     return (
       <>
@@ -245,13 +249,13 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 <div className={cn("flex items-center", className)}>
                   <button
                     className={cn(textAreaButtonVariants({}))}
-                    onClick={handleWriteButtonClick}>
+                    onClick={memoizedHandleWriteButtonClick}>
                     {writeButton}
                   </button>
 
                   <button
                     className={cn(textAreaButtonVariants({}))}
-                    onClick={handleCommentButtonClick}>
+                    onClick={memoizedHandleCommentButtonClick}>
                     {previewButton}
                   </button>
 
@@ -302,7 +306,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                     <div className={cn("flex flex-nowrap justify-end space-x-2 px-2 py-2 sm:px-3", className)}>
                       <div className={cn("flex-shrink-0")}>
                         <div className={cn("relative", className)}>
-                          <button className={cn("relative inline-flex items-center whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium sm:px-3")} onClick={toggleListVisibility}>
+                          <button className={cn("relative inline-flex items-center whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium sm:px-3")} onClick={memoizedToggleListVisibility}>
                             {selectedOption ? (
                               <>
                                 <img src={selectedOption.image} className={cn(textAreaImageVariants({}), className)} />
@@ -321,7 +325,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                                 <li
                                   key={index}
                                   className={cn(" bg-white relative cursor-pointer select-none px-3 py-2", className)}
-                                  onClick={() => handleOptionClick(option)}>
+                                  onClick={() => memoizedHandleOptionClick(option)}>
                                   <div className={cn("flex items-center", className)}>
                                     <img src={option.image} className={cn(textAreaImageVariants({}), className)} />
                                     <span className={cn("ml-3 block truncate font-medium", className)}>{option.label}</span>
@@ -335,7 +339,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
                       <div className={cn("flex-shrink-0", className)}>
                         <div className={cn("relative", className)}>
-                          <button className={cn("relative inline-flex items-center whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium sm:px-3")} onClick={toggleLabelListVisibility}>
+                          <button className={cn("relative inline-flex items-center whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium sm:px-3")} onClick={memoizedToggleLabelListVisibility}>
                             {selectedLabelOption ? (
                               <>
                                 <span className={cn("ml-3 block truncate font-medium", className)}>{selectedLabelOption.label}</span>
@@ -355,7 +359,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                                   className={cn("bg-white relative cursor-pointer select-none px-3 py-2", className)}
                                   id={`listbox-option-${index}`}
                                   role="option"
-                                  onClick={() => handleLabelOptionClick(option)}
+                                  onClick={() => memoizedHandleLabelOptionClick(option)}
                                 >
                                   <div className={cn("flex items-center", className)}>
                                     <span className={cn("ml-3 block truncate font-medium", className)}>{option.label}</span>
@@ -370,7 +374,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
                       <div className={cn("flex-shrink-0", className)}>
                         <div className={cn("relative", className)}>
-                          <button className={cn("relative inline-flex items-center whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium sm:px-3", className)} onClick={toggleDueDateListVisibility}>
+                          <button className={cn("relative inline-flex items-center whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium sm:px-3", className)} onClick={memoizedToggleDueDateListVisibility}>
                             {selectedDueDateOption ? (
                               <>
                                 <span className={cn("ml-3 block truncate font-medium", className)}>{selectedDueDateOption.label}</span>
@@ -388,7 +392,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                                 <li
                                   key={index}
                                   className={cn("bg-white relative cursor-pointer select-none px-3 py-2", className)}
-                                  onClick={() => handleDueDateOptionClick(option)}
+                                  onClick={() => memoizedHandleDueDateOptionClick(option)}
                                 >
                                   <div className={cn("flex items-center", className)}>
                                     <span className={cn("ml-3 block truncate font-medium", className)}>{option.label}</span>
@@ -441,14 +445,14 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                             <>
                               <div className={cn(`${selectedIcon.bg} ${selectedIcon.height} ${selectedIcon.width} flex items-center justify-center rounded-full`, className)}>
                                 <button
-                                  className={cn("inline-flex items-center justify-center rounded-full", className)} onClick={handleIconClick}>
+                                  className={cn("inline-flex items-center justify-center rounded-full", className)} onClick={memoizedHandleIconClick}>
                                   {selectedIcon.icon ? <Icon name={selectedIcon.icon} /> : null}
                                 </button>
                               </div>
                             </>
                           ) : <>
                             <button
-                              className={cn("inline-flex items-center justify-center rounded-full", className)} onClick={handleIconClick}>
+                              className={cn("inline-flex items-center justify-center rounded-full", className)} onClick={memoizedHandleIconClick}>
                               {icon ? <Icon name={icon} className={cn(`${iconStyle}`, className)} /> : null}
                             </button>
                           </>
@@ -468,7 +472,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                         <li key={index} className={cn(` relative bg-white cursor-default select-none px-3 py-2`, className)} >
                           <div className={cn("flex items-center", className)}>
                             <div className={cn(`${option.bg} flex ${option.height} ${option.width}  items-center justify-center rounded-full`, className)}>
-                              <button onClick={() => handleIconButtonClick(option)} >
+                              <button onClick={() => memoizedHandleIconButtonClick(option)} >
                                 <Icon name={option.icon} className={cn(`${iconStyle}`, className)} />
                               </button>
                             </div>
