@@ -11,13 +11,13 @@ const Tabs = TabsPrimitive.Root
 
 
 const tabListVariants = cva(
-  "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground max-w-full overflow-x-auto overflow-y-clip ring-0 outline-none border-none",
+  "inline-flex h-10 max-w-full items-center justify-center overflow-x-auto overflow-y-clip rounded-md border-none bg-muted p-1 text-muted-foreground outline-none ring-0",
   {
     variants: {
       variant: {
         default: "",
-        underline: "bg-background border-b border-muted shadow-none rounded-none py-6 p-0",
-        bar: "bg-background p-0 flex h-full rounded-md border-muted border-2 shadow-none",
+        underline: "rounded-none border-b border-muted bg-background p-0 py-6 shadow-none",
+        bar: "flex h-full rounded-md border-2 border-muted bg-background p-0 shadow-none",
       },
     },
     defaultVariants: {
@@ -46,9 +46,9 @@ const tabsTriggerVariants = cva(
       variant: {
         default: "",
         underline:
-          "border-b-2 border-transparent pb-3 first-of-type:px-2 w-full ring-offset-0 rounded-none data-[state=active]:border-primary data-[state=active]:text-primary ring-0 bg-transparent shadow-none data-[state=active]:shadow-none",
+          "w-full rounded-none border-b-2 border-transparent bg-transparent pb-3 shadow-none ring-0 ring-offset-0 first-of-type:px-2 data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none",
         bar:
-          "border-b-2 border-transparent border-r-2 last-of-type:border-r-0 border-r-muted h-full py-6 w-full rounded-none data-[state=active]:border-b-primary data-[state=active]:text-primary ring-0 shadow-none data-[state=active]:shadow-none",
+          "h-full w-full rounded-none border-b-2 border-r-2 border-transparent border-r-muted py-6 shadow-none ring-0 last-of-type:border-r-0 data-[state=active]:border-b-primary data-[state=active]:text-primary data-[state=active]:shadow-none",
       },
     },
     defaultVariants: {
@@ -72,11 +72,12 @@ const TabsTrigger = React.forwardRef<
     className={cn(tabsTriggerVariants({ variant: variant ? variant : "default", className: className + (icon !== undefined ? " first-of-type:pl-20 sm:first-of-type:pl-2" : "") }))}
     {...props}
   >
-    <div>
-      {icon && <Icon name={icon || "check-solid"} className={cn("w-4 h-4 pr-2", iconClassName)} />}
-      {children}
-      {badge && <span className="ml-3 rounded-xl py-1 px-2 text-xs text-primary bg-primary-foreground">{badge}</span>}
-
+    <div className="flex w-full items-center justify-between">
+      <div className="flex items-center">
+        {icon && <Icon name={icon || "check-solid"} className={cn("h-4 w-4 px-2", iconClassName)} />}
+        {children}
+      </div>
+      {badge && <span className="ml-3 rounded-xl bg-primary-foreground px-2 py-1 text-xs text-primary">{badge}</span>}
     </div>
   </TabsPrimitive.Trigger>
 ))

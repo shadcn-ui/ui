@@ -30,6 +30,7 @@ import { CardsInputGroup } from "./inputgroup";
 import { CardsButtonGroup } from "./button-group";
 import { CardsTextArea } from "./text-area";
 import { CardsSidebarNavigation } from "./sidebar-navigation";
+import { VerticalNavigationCard } from "./vertical-navigation";
 
 
 export default function CardsDemo() {
@@ -61,6 +62,7 @@ export default function CardsDemo() {
       <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
         <CardsComboBox />
         <SelectMenu />
+        <VerticalNavigationCard />
         <CardsStats />
         <div className="grid gap-1 sm:grid-cols-[280px_1fr] md:hidden">
           <CardsCalendar />
