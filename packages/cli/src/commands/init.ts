@@ -158,6 +158,16 @@ export async function promptForConfig(
       active: "yes",
       inactive: "no",
     },
+    {
+      type: "toggle",
+      name: "storybook",
+      message: `Would you like to include ${highlight(
+        "stories (Storybook)"
+      )} with components?`,
+      initial: defaultConfig?.storybook ?? true,
+      active: "yes",
+      inactive: "no",
+    },
   ])
 
   const config = rawConfigSchema.parse({
@@ -169,6 +179,7 @@ export async function promptForConfig(
       baseColor: options.tailwindBaseColor,
       cssVariables: options.tailwindCssVariables,
     },
+    storybook: options.storybook,
     rsc: options.rsc,
     tsx: options.typescript,
     aliases: {
