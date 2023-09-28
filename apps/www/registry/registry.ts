@@ -34,7 +34,7 @@ const ui: Registry = [
   {
     name: "badge",
     type: "components:ui",
-    files: ["ui/badge.tsx"],
+    files: ["ui/badge.tsx", "stories/badge.stories.tsx"],
   },
   {
     name: "button",
@@ -52,7 +52,7 @@ const ui: Registry = [
   {
     name: "card",
     type: "components:ui",
-    files: ["ui/card.tsx"],
+    files: ["ui/card.tsx", "stories/card.stories.tsx"],
   },
   {
     name: "checkbox",
@@ -131,7 +131,7 @@ const ui: Registry = [
     name: "navigation-menu",
     type: "components:ui",
     dependencies: ["@radix-ui/react-navigation-menu"],
-    files: ["ui/navigation-menu.tsx"],
+    files: ["ui/navigation-menu.tsx", "stories/navigation-menu.stories.tsx"],
   },
   {
     name: "popover",
@@ -173,7 +173,7 @@ const ui: Registry = [
     name: "sheet",
     type: "components:ui",
     dependencies: ["@radix-ui/react-dialog"],
-    files: ["ui/sheet.tsx"],
+    files: ["ui/sheet.tsx", "stories/sheet.stories.tsx"],
   },
   {
     name: "skeleton",
