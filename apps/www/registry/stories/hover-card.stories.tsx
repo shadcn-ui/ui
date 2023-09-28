@@ -25,7 +25,7 @@ type Story = StoryObj<typeof HoverCard>
 
 export const Base: Story = {
   render: (args) => (
-    <HoverCard>
+    <HoverCard {...args}>
       <HoverCardTrigger asChild>
         <Button variant="link">@nextjs</Button>
       </HoverCardTrigger>

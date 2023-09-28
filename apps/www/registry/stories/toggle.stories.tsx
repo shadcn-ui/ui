@@ -65,7 +65,7 @@ export const Large: Story = {
   },
 }
 
-export const Disables: Story = {
+export const Disabled: Story = {
   render: (args) => (
     <Toggle {...args} aria-label="Toggle italic">
       <Underline className="h-4 w-4" />

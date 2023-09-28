@@ -39,8 +39,8 @@ const notifications = [
 ]
 
 export const Base: Story = {
-  render: () => (
-    <Card className={cn("w-[380px]")}>
+  render: (args) => (
+    <Card {...args} className={cn("w-[380px]")}>
       <CardHeader>
         <CardTitle>Notifications</CardTitle>
         <CardDescription>You have 3 unread messages.</CardDescription>

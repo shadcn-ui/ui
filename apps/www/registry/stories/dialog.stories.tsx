@@ -25,7 +25,7 @@ type Story = StoryObj<typeof Dialog>
 
 export const Base: Story = {
   render: (args) => (
-    <Dialog>
+    <Dialog {...args}>
       <DialogTrigger asChild>
         <Button variant="outline">Edit Profile</Button>
       </DialogTrigger>

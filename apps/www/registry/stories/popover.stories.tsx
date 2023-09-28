@@ -22,7 +22,7 @@ type Story = StoryObj<typeof Popover>
 
 export const Base: Story = {
   render: (args) => (
-    <Popover>
+    <Popover {...args}>
       <PopoverTrigger asChild>
         <Button variant="outline" className="w-10 rounded-full p-0">
           <Settings2 className="h-4 w-4" />

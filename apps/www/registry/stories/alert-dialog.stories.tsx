@@ -25,8 +25,8 @@ export default meta
 type Story = StoryObj<typeof AlertDialog>
 
 export const Base: Story = {
-  render: () => (
-    <AlertDialog>
+  render: (args) => (
+    <AlertDialog {...args}>
       <AlertDialogTrigger asChild>
         <Button variant="outline">Open</Button>
       </AlertDialogTrigger>

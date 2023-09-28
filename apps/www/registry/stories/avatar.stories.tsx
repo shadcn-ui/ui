@@ -18,8 +18,8 @@ export default meta
 type Story = StoryObj<typeof Avatar>
 
 export const Base: Story = {
-  render: () => (
-    <Avatar>
+  render: (args) => (
+    <Avatar {...args}>
       <AvatarImage src="https://github.com/shadcn.png" />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>

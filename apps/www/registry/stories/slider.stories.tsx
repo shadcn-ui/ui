@@ -19,3 +19,11 @@ export const Base: Story = {
     step: 1,
   },
 }
+
+export const Interval: Story = {
+  args: {
+    defaultValue: [33, 88],
+    max: 100,
+    step: 1,
+  },
+}

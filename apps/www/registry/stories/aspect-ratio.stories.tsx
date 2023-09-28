@@ -15,8 +15,8 @@ export default meta
 type Story = StoryObj<typeof AspectRatio>
 
 export const Base: Story = {
-  render: () => (
-    <AspectRatio ratio={16 / 9} className="bg-slate-50 dark:bg-slate-800">
+  render: (args) => (
+    <AspectRatio {...args} className="bg-slate-50 dark:bg-slate-800">
       <Image
         src="https://images.unsplash.com/photo-1576075796033-848c2a5f3696?w=800&dpr=2&q=80"
         alt="Photo by Alvaro Pinot"
@@ -25,5 +25,7 @@ export const Base: Story = {
       />
     </AspectRatio>
   ),
-  args: {},
+  args: {
+    ratio: 16 / 9,
+  },
 }

@@ -22,8 +22,8 @@ export const Default: Story = {
   },
 }
 export const Disabled: Story = {
-  render: (args) => <Input disabled {...args} />,
-  args: { ...Default.args },
+  render: (args) => <Input {...args} />,
+  args: { ...Default.args, disabled: true },
 }
 export const WithLabel: Story = {
   render: (args) => (

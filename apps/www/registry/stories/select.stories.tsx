@@ -23,7 +23,7 @@ type Story = StoryObj<typeof Select>
 
 export const Base: Story = {
   render: (args) => (
-    <Select>
+    <Select {...args}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>

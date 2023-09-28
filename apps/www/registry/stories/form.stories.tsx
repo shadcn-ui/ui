@@ -32,7 +32,7 @@ const formSchema = z.object({
   }),
 })
 
-const ProfileForm = () => {
+const ProfileForm = (args: Story["args"]) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,7 +43,7 @@ const ProfileForm = () => {
     action("onSubmit")(values)
   }
   return (
-    <Form {...form}>
+    <Form {...args} {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
@@ -68,6 +68,6 @@ const ProfileForm = () => {
 }
 
 export const Base: Story = {
-  render: () => <ProfileForm />,
+  render: (args) => <ProfileForm {...args} />,
   args: {},
 }

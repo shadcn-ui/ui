@@ -20,8 +20,8 @@ export default meta
 type Story = StoryObj<typeof NavigationMenu>
 
 export const Base: Story = {
-  render: () => (
-    <NavigationMenu>
+  render: (args) => (
+    <NavigationMenu {...args}>
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>

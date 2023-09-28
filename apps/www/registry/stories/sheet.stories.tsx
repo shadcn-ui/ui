@@ -24,8 +24,8 @@ export default meta
 type Story = StoryObj<typeof Sheet>
 
 export const Base: Story = {
-  render: () => (
-    <Sheet>
+  render: (args) => (
+    <Sheet {...args}>
       <SheetTrigger asChild>
         <Button variant="outline">Open</Button>
       </SheetTrigger>

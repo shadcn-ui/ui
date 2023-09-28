@@ -15,7 +15,7 @@ type Story = StoryObj<typeof RadioGroup>
 
 export const Base: Story = {
   render: (args) => (
-    <RadioGroup defaultValue="comfortable">
+    <RadioGroup {...args}>
       <div className="flex items-center space-x-2">
         <RadioGroupItem value="default" id="r1" />
         <Label htmlFor="r1">Default</Label>
@@ -30,5 +30,7 @@ export const Base: Story = {
       </div>
     </RadioGroup>
   ),
-  args: {},
+  args: {
+    defaultValue: "comfortable",
+  },
 }
