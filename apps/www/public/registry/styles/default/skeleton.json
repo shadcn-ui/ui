@@ -4,6 +4,10 @@
     {
       "name": "skeleton.tsx",
       "content": "import { cn } from \"@/lib/utils\"\n\nfunction Skeleton({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\"animate-pulse rounded-md bg-muted\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n"
+    },
+    {
+      "name": "skeleton.stories.tsx",
+      "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Skeleton } from \"@/registry/default/ui/skeleton\"\n\nconst meta: Meta<typeof Skeleton> = {\n  title: \"ui/Skeleton\",\n  component: Skeleton,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\nexport default meta\n\ntype Story = StoryObj<typeof Skeleton>\n\nexport const Base: Story = {\n  render: (args) => (\n    <div className=\"flex items-center space-x-4\">\n      <Skeleton {...args} className=\"h-12 w-12 rounded-full\" />\n      <div className=\"space-y-2\">\n        <Skeleton {...args} className=\"h-4 w-[250px]\" />\n        <Skeleton {...args} className=\"h-4 w-[200px]\" />\n      </div>\n    </div>\n  ),\n  args: {},\n}"
     }
   ],
   "type": "components:ui"

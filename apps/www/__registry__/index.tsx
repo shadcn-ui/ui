@@ -17,7 +17,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/alert")),
-      files: ["registry/default/ui/alert.tsx"],
+      files: ["registry/default/ui/alert.tsx","registry/stories/alert.stories.tsx"],
     },
     "alert-dialog": {
       name: "alert-dialog",
@@ -45,7 +45,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/badge")),
-      files: ["registry/default/ui/badge.tsx"],
+      files: ["registry/default/ui/badge.tsx","registry/stories/badge.stories.tsx"],
     },
     "button": {
       name: "button",
@@ -59,14 +59,14 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["button"],
       component: React.lazy(() => import("@/registry/default/ui/calendar")),
-      files: ["registry/default/ui/calendar.tsx"],
+      files: ["registry/default/ui/calendar.tsx","registry/stories/calendar.stories.tsx"],
     },
     "card": {
       name: "card",
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/card")),
-      files: ["registry/default/ui/card.tsx"],
+      files: ["registry/default/ui/card.tsx","registry/stories/card.stories.tsx"],
     },
     "checkbox": {
       name: "checkbox",
@@ -87,7 +87,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["dialog"],
       component: React.lazy(() => import("@/registry/default/ui/command")),
-      files: ["registry/default/ui/command.tsx"],
+      files: ["registry/default/ui/command.tsx","registry/stories/command.stories.tsx"],
     },
     "context-menu": {
       name: "context-menu",
@@ -115,7 +115,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["button","label"],
       component: React.lazy(() => import("@/registry/default/ui/form")),
-      files: ["registry/default/ui/form.tsx"],
+      files: ["registry/default/ui/form.tsx","registry/stories/form.stories.tsx"],
     },
     "hover-card": {
       name: "hover-card",
@@ -150,7 +150,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/navigation-menu")),
-      files: ["registry/default/ui/navigation-menu.tsx"],
+      files: ["registry/default/ui/navigation-menu.tsx","registry/stories/navigation-menu.stories.tsx"],
     },
     "popover": {
       name: "popover",
@@ -199,14 +199,14 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/sheet")),
-      files: ["registry/default/ui/sheet.tsx"],
+      files: ["registry/default/ui/sheet.tsx","registry/stories/sheet.stories.tsx"],
     },
     "skeleton": {
       name: "skeleton",
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/skeleton")),
-      files: ["registry/default/ui/skeleton.tsx"],
+      files: ["registry/default/ui/skeleton.tsx","registry/stories/skeleton.stories.tsx"],
     },
     "slider": {
       name: "slider",
@@ -227,7 +227,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/table")),
-      files: ["registry/default/ui/table.tsx"],
+      files: ["registry/default/ui/table.tsx","registry/stories/table.stories.tsx"],
     },
     "tabs": {
       name: "tabs",
@@ -255,7 +255,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/toggle")),
-      files: ["registry/default/ui/toggle.tsx"],
+      files: ["registry/default/ui/toggle.tsx","registry/stories/toggle.stories.tsx"],
     },
     "tooltip": {
       name: "tooltip",
@@ -1026,7 +1026,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/alert")),
-      files: ["registry/new-york/ui/alert.tsx"],
+      files: ["registry/new-york/ui/alert.tsx","registry/stories/alert.stories.tsx"],
     },
     "alert-dialog": {
       name: "alert-dialog",
@@ -1054,7 +1054,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/badge")),
-      files: ["registry/new-york/ui/badge.tsx"],
+      files: ["registry/new-york/ui/badge.tsx","registry/stories/badge.stories.tsx"],
     },
     "button": {
       name: "button",
@@ -1068,14 +1068,14 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["button"],
       component: React.lazy(() => import("@/registry/new-york/ui/calendar")),
-      files: ["registry/new-york/ui/calendar.tsx"],
+      files: ["registry/new-york/ui/calendar.tsx","registry/stories/calendar.stories.tsx"],
     },
     "card": {
       name: "card",
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/card")),
-      files: ["registry/new-york/ui/card.tsx"],
+      files: ["registry/new-york/ui/card.tsx","registry/stories/card.stories.tsx"],
     },
     "checkbox": {
       name: "checkbox",
@@ -1096,7 +1096,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["dialog"],
       component: React.lazy(() => import("@/registry/new-york/ui/command")),
-      files: ["registry/new-york/ui/command.tsx"],
+      files: ["registry/new-york/ui/command.tsx","registry/stories/command.stories.tsx"],
     },
     "context-menu": {
       name: "context-menu",
@@ -1124,7 +1124,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["button","label"],
       component: React.lazy(() => import("@/registry/new-york/ui/form")),
-      files: ["registry/new-york/ui/form.tsx"],
+      files: ["registry/new-york/ui/form.tsx","registry/stories/form.stories.tsx"],
     },
     "hover-card": {
       name: "hover-card",
@@ -1159,7 +1159,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/navigation-menu")),
-      files: ["registry/new-york/ui/navigation-menu.tsx"],
+      files: ["registry/new-york/ui/navigation-menu.tsx","registry/stories/navigation-menu.stories.tsx"],
     },
     "popover": {
       name: "popover",
@@ -1208,14 +1208,14 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/sheet")),
-      files: ["registry/new-york/ui/sheet.tsx"],
+      files: ["registry/new-york/ui/sheet.tsx","registry/stories/sheet.stories.tsx"],
     },
     "skeleton": {
       name: "skeleton",
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/skeleton")),
-      files: ["registry/new-york/ui/skeleton.tsx"],
+      files: ["registry/new-york/ui/skeleton.tsx","registry/stories/skeleton.stories.tsx"],
     },
     "slider": {
       name: "slider",
@@ -1236,7 +1236,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/table")),
-      files: ["registry/new-york/ui/table.tsx"],
+      files: ["registry/new-york/ui/table.tsx","registry/stories/table.stories.tsx"],
     },
     "tabs": {
       name: "tabs",
@@ -1264,7 +1264,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/toggle")),
-      files: ["registry/new-york/ui/toggle.tsx"],
+      files: ["registry/new-york/ui/toggle.tsx","registry/stories/toggle.stories.tsx"],
     },
     "tooltip": {
       name: "tooltip",

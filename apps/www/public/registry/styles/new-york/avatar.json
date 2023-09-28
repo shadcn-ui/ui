@@ -10,7 +10,7 @@
     },
     {
       "name": "avatar.stories.tsx",
-      "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"../default/ui/avatar\"\n\nconst meta: Meta<typeof Avatar> = {\n  title: \"ui/Avatar\",\n  component: Avatar,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\n\nexport default meta\n\ntype Story = StoryObj<typeof Avatar>\n\nexport const Base: Story = {\n  render: () => (\n    <Avatar>\n      <AvatarImage src=\"https://github.com/shadcn.png\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  ),\n  args: {},\n}\n"
+      "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\n\nconst meta: Meta<typeof Avatar> = {\n  title: \"ui/Avatar\",\n  component: Avatar,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\n\nexport default meta\n\ntype Story = StoryObj<typeof Avatar>\n\nexport const Base: Story = {\n  render: (args) => (\n    <Avatar {...args}>\n      <AvatarImage src=\"https://github.com/shadcn.png\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  ),\n  args: {},\n}\n"
     }
   ],
   "type": "components:ui"

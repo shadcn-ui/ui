@@ -10,7 +10,7 @@
     },
     {
       "name": "label.stories.tsx",
-      "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Label } from \"../default/ui/label\"\n\nconst meta: Meta<typeof Label> = {\n  title: \"ui/Label\",\n  component: Label,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\nexport default meta\n\ntype Story = StoryObj<typeof Label>\n\nexport const Base: Story = {\n  render: (args) => <Label htmlFor=\"email\">Your email address</Label>,\n  args: {},\n}\n"
+      "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Label } from \"@/registry/default/ui/label\"\n\nconst meta: Meta<typeof Label> = {\n  title: \"ui/Label\",\n  component: Label,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\nexport default meta\n\ntype Story = StoryObj<typeof Label>\n\nexport const Base: Story = {\n  render: (args) => <Label {...args} htmlFor=\"email\">Your email address</Label>,\n  args: {},\n}\n"
     }
   ],
   "type": "components:ui"

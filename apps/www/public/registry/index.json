@@ -13,7 +13,8 @@
   {
     "name": "alert",
     "files": [
-      "ui/alert.tsx"
+      "ui/alert.tsx",
+      "stories/alert.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -56,7 +57,8 @@
   {
     "name": "badge",
     "files": [
-      "ui/badge.tsx"
+      "ui/badge.tsx",
+      "stories/badge.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -81,14 +83,16 @@
       "button"
     ],
     "files": [
-      "ui/calendar.tsx"
+      "ui/calendar.tsx",
+      "stories/calendar.stories.tsx"
     ],
     "type": "components:ui"
   },
   {
     "name": "card",
     "files": [
-      "ui/card.tsx"
+      "ui/card.tsx",
+      "stories/card.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -123,7 +127,8 @@
       "dialog"
     ],
     "files": [
-      "ui/command.tsx"
+      "ui/command.tsx",
+      "stories/command.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -174,7 +179,8 @@
       "label"
     ],
     "files": [
-      "ui/form.tsx"
+      "ui/form.tsx",
+      "stories/form.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -225,7 +231,8 @@
       "@radix-ui/react-navigation-menu"
     ],
     "files": [
-      "ui/navigation-menu.tsx"
+      "ui/navigation-menu.tsx",
+      "stories/navigation-menu.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -301,14 +308,16 @@
       "@radix-ui/react-dialog"
     ],
     "files": [
-      "ui/sheet.tsx"
+      "ui/sheet.tsx",
+      "stories/sheet.stories.tsx"
     ],
     "type": "components:ui"
   },
   {
     "name": "skeleton",
     "files": [
-      "ui/skeleton.tsx"
+      "ui/skeleton.tsx",
+      "stories/skeleton.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -337,7 +346,8 @@
   {
     "name": "table",
     "files": [
-      "ui/table.tsx"
+      "ui/table.tsx",
+      "stories/table.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -378,7 +388,8 @@
       "@radix-ui/react-toggle"
     ],
     "files": [
-      "ui/toggle.tsx"
+      "ui/toggle.tsx",
+      "stories/toggle.stories.tsx"
     ],
     "type": "components:ui"
   },
