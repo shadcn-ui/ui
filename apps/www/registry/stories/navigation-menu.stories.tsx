@@ -1,22 +1,23 @@
-import { Meta, StoryObj } from "@storybook/react";
-import Link from "next/link";
+import Link from "next/link"
+import { Meta, StoryObj } from "@storybook/react"
+
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "../default/ui/navigation-menu";
+} from "@/registry/default/ui/navigation-menu"
 
 const meta: Meta<typeof NavigationMenu> = {
   title: "ui/NavigationMenu",
   component: NavigationMenu,
   tags: ["autodocs"],
   argTypes: {},
-};
-export default meta;
+}
+export default meta
 
-type Story = StoryObj<typeof NavigationMenu>;
+type Story = StoryObj<typeof NavigationMenu>
 
 export const Base: Story = {
   render: () => (
@@ -41,4 +42,4 @@ export const Base: Story = {
     </NavigationMenu>
   ),
   args: {},
-};
+}

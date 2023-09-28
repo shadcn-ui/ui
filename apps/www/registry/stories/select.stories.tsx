@@ -9,7 +9,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "../default/ui/select"
+} from "@/registry/default/ui/select"
 
 const meta: Meta<typeof Select> = {
   title: "ui/Select",

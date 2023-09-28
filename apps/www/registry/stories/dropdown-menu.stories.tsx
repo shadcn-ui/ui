@@ -16,7 +16,7 @@ import {
   Users,
 } from "lucide-react"
 
-import { Button } from "../default/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,7 +30,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../default/ui/dropdown-menu"
+} from "@/registry/default/ui/dropdown-menu"
 
 const meta: Meta<typeof DropdownMenu> = {
   title: "ui/DropdownMenu",

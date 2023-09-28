@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import { Button } from "../default/ui/button"
-import { Label } from "../default/ui/label"
+import { Button } from "@/registry/default/ui/button"
+import { Label } from "@/registry/default/ui/label"
 import {
   Sheet,
   SheetClose,
@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "../default/ui/sheet"
+} from "@/registry/default/ui/sheet"
 
 const meta: Meta<typeof Sheet> = {
   title: "ui/Sheet",

@@ -2,8 +2,7 @@ import { Meta, StoryObj } from "@storybook/react"
 import { BellRing, Check } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-
-import { Button } from "../default/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   Card,
   CardContent,
@@ -11,8 +10,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../default/ui/card"
-import { Switch } from "../default/ui/switch"
+} from "@/registry/default/ui/card"
+import { Switch } from "@/registry/default/ui/switch"
 
 const meta: Meta<typeof Card> = {
   title: "ui/Card",

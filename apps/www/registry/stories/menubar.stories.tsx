@@ -14,7 +14,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "../default/ui/menubar"
+} from "@/registry/default/ui/menubar"
 
 const meta: Meta<typeof Menubar> = {
   title: "ui/Menubar",
