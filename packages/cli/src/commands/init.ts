@@ -164,7 +164,7 @@ export async function promptForConfig(
       message: `Would you like to include ${highlight(
         "stories (Storybook)"
       )} with components?`,
-      initial: defaultConfig?.storybook ?? true,
+      initial: defaultConfig?.storybook ?? false,
       active: "yes",
       inactive: "no",
     },
