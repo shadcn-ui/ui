@@ -29,6 +29,7 @@ import Navbars from "@/components/navbars";
 import { CardsInputGroup } from "./inputgroup";
 import { CardsButtonGroup } from "./button-group";
 import { CardsTextArea } from "./text-area";
+import { CardsSidebarNavigation } from "./sidebar-navigation";
 
 
 export default function CardsDemo() {
@@ -39,6 +40,7 @@ export default function CardsDemo() {
           <CardsButtonGroup />
           <CardsTextArea />
           <CardsInputGroup />
+          <CardsSidebarNavigation />
         </div>
         <Navbars />
       </div>
