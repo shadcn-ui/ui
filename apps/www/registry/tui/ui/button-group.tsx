@@ -35,7 +35,7 @@ interface ButtonsList {
 }
 
 interface Options {
-    items: { name: string | undefined; href: string | undefined }[];
+    items: { name?: string | undefined; href?: string | undefined }[];
 }
 
 export interface ButtonProps
@@ -44,11 +44,12 @@ export interface ButtonProps
     buttonsList?: ButtonsList[];
     options?: Options;
     iconStyle?: string;
+    dropdownWidth?: string;
     color?: colors;
 }
 
 const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, buttonsList, options, color, iconStyle, ...props }, ref) => {
+    ({ className, buttonsList, dropdownWidth, options, color, iconStyle, ...props }, ref) => {
         const fontColor = (color?: colors) => {
             return `text-${color}-500 `
         }
@@ -112,17 +113,16 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
                     ))}
 
                     {isOpen && (
-                        <div className={cn("absolute left-2.5 z-10 -mr-1 mt-14 w-56 origin-top-right bg-accent rounded-md shadow-lg ring-opacity-5 focus:outline-none", fontColor(color), className, { ...props })}>
-                            <div className={cn("py-1", className)}>
-                                {options && options.items.map((option, index: number) => (
-                                    <a href={option.href} key={index} className={cn("block px-4 py-2 text-sm", fontColor(color), className, { ...props })} >
-                                        {option.name}
-                                    </a>
-                                ))}
-                            </div>
+                        <div className={cn(` z-10 ${dropdownWidth} mt-14 absolute rounded-md  py-3 text-base bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`, fontColor(color), className, { ...props })}>
+                            {options && options.items.map((option, index: number) => (
+                                <a href={option.href} key={index} className={cn("block px-4 py-2 text-sm", fontColor(color), className, { ...props })} >
+                                    {option.name}
+                                </a>
+                            ))}
                         </div>
                     )}
                 </span>
+
             </>
         )
     }
