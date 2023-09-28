@@ -7,7 +7,7 @@ const nextConfig = {
   fs: false,
   path: false,
   images: {
-    domains: ["avatars.githubusercontent.com", "images.unsplash.com"],
+    domains: ["avatars.githubusercontent.com", "images.unsplash.com", "tailwindui.com"],
   },
   redirects() {
     return [

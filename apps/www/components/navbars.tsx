@@ -177,6 +177,8 @@ const SimpleNavbar = () => {
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
+              width={100}
+              height={100}
             />
           </div>
           <div className="hidden sm:ml-6 sm:block">
@@ -291,6 +293,8 @@ const QuickActionNavbar = () => {
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
+              width={100}
+              height={100}
             />
           </div>
           <div className="hidden sm:ml-6 sm:block">
@@ -405,6 +409,8 @@ const SimpleUnderLineMenuNavbar = () => {
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
               alt="Your Company"
+              width={100}
+              height={100}
             />
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
@@ -519,6 +525,8 @@ const SearchNavbar = () => {
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
+              width={100}
+              height={100}
             />
           </div>
           <div className="hidden sm:ml-6 sm:block">
@@ -635,6 +643,8 @@ const CenteredSearchAndLinks = () => {
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
+              width={100}
+              height={100}
             />
           </div>
         </div>
@@ -759,6 +769,8 @@ const CenteredSearchColumn = () => {
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
+              width={100}
+              height={100}
             />
           </div>
         </div>
