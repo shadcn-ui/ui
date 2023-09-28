@@ -10,7 +10,7 @@ const ui: Registry = [
   {
     name: "alert",
     type: "components:ui",
-    files: ["ui/alert.tsx"],
+    files: ["ui/alert.tsx", "stories/alert.stories.tsx"],
   },
   {
     name: "alert-dialog",
@@ -47,7 +47,7 @@ const ui: Registry = [
     type: "components:ui",
     dependencies: ["react-day-picker", "date-fns"],
     registryDependencies: ["button"],
-    files: ["ui/calendar.tsx"],
+    files: ["ui/calendar.tsx", "stories/calendar.stories.tsx"],
   },
   {
     name: "card",
@@ -71,7 +71,7 @@ const ui: Registry = [
     type: "components:ui",
     dependencies: ["cmdk"],
     registryDependencies: ["dialog"],
-    files: ["ui/command.tsx"],
+    files: ["ui/command.tsx", "stories/command.stories.tsx"],
   },
   {
     name: "context-menu",
@@ -102,7 +102,7 @@ const ui: Registry = [
       "react-hook-form",
     ],
     registryDependencies: ["button", "label"],
-    files: ["ui/form.tsx"],
+    files: ["ui/form.tsx", "stories/form.stories.tsx"],
   },
   {
     name: "hover-card",
