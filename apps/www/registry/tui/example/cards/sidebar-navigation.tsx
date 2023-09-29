@@ -1,4 +1,4 @@
-import {Card,CardContent,CardHeader,CardTitle,} from "@/registry/tui/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, } from "@/registry/tui/ui/card"
 import { SideBarNavigation } from "@/registry/tui/ui/sidebar-navigation";
 
 export function CardsSidebarNavigation() {
@@ -31,31 +31,29 @@ export function CardsSidebarNavigation() {
     ];
 
     return (
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
-            <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-base font-normal text-primary">Sidebar Navigation</CardTitle>
-                </CardHeader>
-                <CardContent>
+        <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-base font-normal text-primary">Sidebar Navigation</CardTitle>
+            </CardHeader>
+            <CardContent>
 
-                    <div className="text-m font-bold text-primary">Brand</div>
-                    <SideBarNavigation items={items} teams={teams} hasIconAndBadge={true} backgroundColor="bg-indigo-700 text-white" teamName="Your Team" userName="Tim Cook" color="white" logoImage="https://tailwindui.com/img/logos/mark.svg?color=white" imageURL="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
+                <div className="text-m font-bold text-primary">Brand</div>
+                <SideBarNavigation items={items} teams={teams} hasIconAndBadge={true} color="gray" backgroundColor="text-red-500 bg-indigo-700 text-white red" teamName="Your Team" userName="Tim Cook" logoImage="https://tailwindui.com/img/logos/mark.svg?color=white" imageURL="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
 
-                    <div className="text-m mt-2 font-bold text-primary">Dark</div>
-                    <SideBarNavigation items={items} teams={teams} hasIconAndBadge={true} userName="Tim Cook" backgroundColor="bg-gray-900 text-white" teamName="Your Team" logoImage="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" imageURL="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
+                <div className="text-m mt-2 font-bold text-primary">Dark</div>
+                <SideBarNavigation items={items} teams={teams} hasIconAndBadge={true} userName="Tim Cook" backgroundColor="bg-gray-900 text-white" teamName="Your Team" logoImage="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" imageURL="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
 
-                    <div className="text-m mt-2 font-bold text-primary">Light</div>
-                    <SideBarNavigation items={items} teams={teams} hasIconAndBadge={true} userName="Tim Cook" teamName="Your Team" color="gray" logoImage="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" imageURL="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
+                <div className="text-m mt-2 font-bold text-primary">Light</div>
+                <SideBarNavigation items={items} teams={teams} hasIconAndBadge={true} userName="Tim Cook" teamName="Your Team" color="gray" logoImage="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" imageURL="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
 
-                    <div className="text-m mt-2 font-bold text-primary">With expandable sections</div>
-                    <SideBarNavigation items={items}  iconPrefix={true} userName="Tim Cook" color="gray" logoImage="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" imageURL="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
+                <div className="text-m mt-2 font-bold text-primary">With expandable sections</div>
+                <SideBarNavigation items={items} iconPrefix={true} userName="Tim Cook" color="gray" logoImage="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" imageURL="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
 
-                    <div className="text-m mt-2 font-bold text-primary">With secondary navigation</div>
-                    <SideBarNavigation items={items}  iconSuffix={true} userName="Tim Cook" color="gray" logoImage="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" imageURL="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
+                <div className="text-m mt-2 font-bold text-primary">With secondary navigation</div>
+                <SideBarNavigation items={items} iconSuffix={true} userName="Tim Cook" color="gray" logoImage="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" imageURL="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
 
-                </CardContent>
+            </CardContent>
 
-            </Card>
-        </div>
+        </Card>
     )
 }

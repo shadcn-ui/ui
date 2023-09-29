@@ -181,9 +181,9 @@ export default function CardsDemo() {
               <CardsInputGroup />
               <CardsTextArea />
             </div>
-            <div className="grid-cols-1 grid gap-4">
-              <CardsBadge />
-              <CardsButton />
+            <div className="grid-cols-2 grid gap-4">
+              <CardsButtonGroup />
+              <CardsSidebarNavigation />
             </div>
           </TabsContent>
         </Tabs >
