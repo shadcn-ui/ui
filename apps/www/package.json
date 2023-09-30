@@ -100,5 +100,8 @@
   },
   "peerDependencies": {
     "esbuild": "^0.17.3"
+  },
+  "engines": {
+    "node": "18.17.1"
   }
 }
