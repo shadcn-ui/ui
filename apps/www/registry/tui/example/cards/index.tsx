@@ -33,6 +33,7 @@ import { CardsSidebarNavigation } from "./sidebar-navigation";
 import { VerticalNavigationCard } from "./vertical-navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import { SlideOverCard } from "./slideover-card";
+import { CardsPagination } from "./pagination";
 
 
 export default function CardsDemo() {
@@ -177,6 +178,9 @@ export default function CardsDemo() {
           </TabsContent>
 
           <TabsContent value="pg-components" className="flex flex-col space-y-5">
+         
+              <CardsPagination />
+  
             <div className="grid-cols-2 grid gap-4">
               <CardsInputGroup />
               <CardsTextArea />
