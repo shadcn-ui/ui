@@ -33,6 +33,7 @@ import { CardsSidebarNavigation } from "./sidebar-navigation";
 import { VerticalNavigationCard } from "./vertical-navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import { SlideOverCard } from "./slideover-card";
+import { HeaderCard } from "./header-card";
 
 
 export default function CardsDemo() {
@@ -138,6 +139,7 @@ export default function CardsDemo() {
             <div className="grid-cols-3 grid gap-4">
               <VerticalNavigationCard />
             </div>
+            <HeaderCard />
           </TabsContent>
 
           <TabsContent value="rs-components" className="flex flex-col space-y-5">

@@ -21,7 +21,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/reg
 import { Icon, IconType } from "../../ui/icon"
 import React from "react"
 
-interface DropdownItem {
+export interface DropdownItem {
   icon?: IconType;
   title: string;
   shortcut?: string;
