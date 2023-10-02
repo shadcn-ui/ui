@@ -9,13 +9,20 @@ import { cn } from "@/lib/utils"
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
->(({ className, ...props }, ref) => {
+>(({ className, orientation = 'vertical', ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn("grid gap-2", className)}
-      {...props}
-      ref={ref}
-    />
+    className={cn(
+      'grid',
+      {
+        'gap-2 flex flex-row': orientation === 'horizontal', // Apply horizontal styles
+        'gap-2 flex flex-col': orientation === 'vertical', // Apply vertical styles
+      },
+      className
+    )}
+    {...props}
+    ref={ref}
+  />
   )
 })
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
