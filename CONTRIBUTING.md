@@ -45,10 +45,24 @@ packages
 
 ## Development
 
-### Start by cloning the repository:
+- Fork this repo (button on top)
+
+### Clone on your local machine
 
 ```
-git clone git@github.com:shadcn-ui/ui.git
+git clone https://github.com/your-username/ui.git
+```
+
+### Navigate to project directory
+  
+```terminal
+cd ui
+```
+
+### Create a new Branch
+
+```
+git checkout -b my-new-branch
 ```
 
 ### Install dependencies
