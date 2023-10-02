@@ -3,158 +3,181 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { Icon, IconType } from "./icon"
 import { colors } from './helper/types';
+import { Button } from './button';
 
 const paginationVariants = cva(
     "flex items-center justify-between border-t border-gray-200 px-4 sm:px-6",
 )
 
 const paginationAnchorVariants = cva(
-    "relative inline-flex items-center border px-4 py-2 text-sm font-medium",
+    "relative inline-flex items-center",
     {
         variants: {
-            size: {
-                default:"rounded-md"
+            leftButton: {
+                leftButtonRound: "rounded-l-md",
+            },
+            rightButton: {
+                rightButtonRound: "rounded-r-md"
             }
         },
         defaultVariants: {
-                size:"default"
+            
         }
     }
 
 )
-
-const paginationButtonAnchorVariants = cva(
-    "relative inline-flex items-center px-3 py-2 font-semibold ring-1 ring-inset focus-visible:outline-offset-0",
-    {
-        variants: {
-            size: {
-                default:"text-sm rounded-md"
-            }
-        },
-        defaultVariants: {
-                size:"default"
-        }
-    }
-)
-
-interface LinkData{
-    text?:string;
-    href?:string;
-}
-
 export interface paginationProps
     extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof paginationVariants> {
-    iconRight?: IconType;
-    iconLeft?: IconType;
+    nextButtonIcon?: IconType;
+    previousButtonIcon?: IconType;
     withFooter?: boolean;
-    numberResult?: boolean;
     showButton?: boolean;
     withNumberButton?: boolean;
-    pageNumbers?: any;
-    dataList?:LinkData[];
-    result?:string[];
-    previousButton?:string;
-    nextButton?:string;
-    textColor?:colors;
-    borderColor?:colors;
-    iconStyle?:string;
-    activeButtonClass?:string;
+    previousButtonText?: string;
+    nextButtonText?: string;
+    textColor?: colors;
+    borderColor?: colors;
+    totalPages?: any;
+    iconStyle?: string;
+    activeButtonClass?: string;
+    currentPage?:number;
+    firstPage?: number;
+    lastPage?: number;
+    rightButton?:"rightButtonRound";
+    leftButton?:"leftButtonRound";
 }
 
-function Pagination({ children, className,textColor,borderColor,activeButtonClass,iconStyle, result, iconRight,previousButton,nextButton, dataList, pageNumbers, numberResult, iconLeft, withFooter, showButton, withNumberButton, ...props }: paginationProps) {
-    const [activePage, setActivePage] = useState(null);
-    const [activeLink, setActiveLink] = useState<number | null>(null);
-    const handlePageClick = (pageNumber: any) => {
-        setActivePage(pageNumber);
-    };
-    const handleLinkClick = (index: number) => {
-        setActiveLink(index);
-    };
+function Pagination({ children, className, currentPage, firstPage,rightButton,leftButton, lastPage, totalPages, textColor, borderColor, activeButtonClass, iconStyle, nextButtonIcon, previousButtonText, nextButtonText, previousButtonIcon, withFooter, showButton, withNumberButton, ...props }: paginationProps) {
+    const [activePage, setActivePage] = useState<number | null>(null);
+    const [currentPageNumber, setCurrentPageNumber] = useState(1);
+    const onPageChange = (page: number) => {
+        setCurrentPageNumber(page);
+    }
+
     const fontColor = (textColor?: colors) => {
         return `text-${textColor}-700 ring-${textColor}-300 `
     }
     const borderColors = (borderColor?: colors) => {
         return `border-${borderColor}-300 `
     }
+    const range: (start:number, end: number) => number[] = (start, end) => {
+        if (start >= end) {
+            return [];
+        }
+        const result: number[] = [];
+        for (let i = start; i <= end; i++) {
+            result.push(i);
+        }
+        return result;
+    };
+    lastPage = Math.min(Math.max(currentPageNumber + 2, 5), totalPages);
+    firstPage = Math.max(1, lastPage - 4);
+
+    const goToNextPage = (): void => {
+        setActivePage(currentPageNumber);
+        onPageChange(Math.min(currentPageNumber + 1, totalPages));
+    };
+
+    const goToPreviousPage = (): void => {
+        setActivePage(currentPageNumber);
+        onPageChange(Math.max(currentPageNumber - 1, 1));
+    };
     return (
         <>
             <nav className={cn(paginationVariants({}), className)}>
                 {withFooter ?
-                    <><div className={cn("-mt-px flex w-0 flex-1", className)}>
-                        <a href="#" className={cn("inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium  ",fontColor(textColor), className)}>
-                            {iconLeft && <Icon name={iconLeft} className={cn("pr-2.5",`${iconStyle}`, className)} />}
-                            {previousButton}
-                        </a>
-                    </div>
-                        <div className="hidden md:-mt-px md:flex">
-                            {pageNumbers.map((pageNumber: any, index: number) => (
-                                <a
-                                    key={index}
-                                    href="#"
-                                    className={cn(
-                                        `inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium`,
-                                        {
-                                            [`${activeButtonClass}`]: pageNumber === activePage,
-                                        },
-                                        fontColor(textColor),
-                                        className
-                                    )}
-                                    onClick={() => handlePageClick(pageNumber)}
-                                >
-                                    {pageNumber}
-                                </a>
-                            ))}
-                        </div>
-                        <div className={cn("-mt-px flex w-0 flex-1 justify-end",className)}>
-                            <a href="#" className={cn("inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium",fontColor(textColor),className)}>
-                                {nextButton}
-                                {iconRight && <Icon name={iconRight} className={cn("pl-2.5",`${iconStyle}`, className)} />}
+                    <>
+                        <div className={cn("-mt-px flex w-0 flex-1", className)}>
+                            <a href="#" className={cn("inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium  ", fontColor(textColor), className)}
+                                onClick={goToPreviousPage}
+                            >
+                                {previousButtonIcon && <Icon name={previousButtonIcon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
+                                {previousButtonText}
                             </a>
-                        </div></>
-                    : null}
+                        </div>
+                        <div className="hidden md:-mt-px md:flex">
+                            {
+                                range(firstPage, lastPage).map((page: number) => (
+                                    <a
+                                        href="#"
+                                        className={cn(
+                                            `inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium`,
+                                            {
+                                                [`${activeButtonClass}`]: page === currentPageNumber,
+                                            },
+                                            fontColor(textColor),
+                                            className
+                                        )}
+                                        onClick={() => onPageChange(page)}
+                                    >
+                                        {page}
+                                    </a>
+                                ))}
+                        </div>
+                        <div className={cn("-mt-px flex w-0 flex-1 justify-end", className)}>
+                            <a href="#" className={cn("inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium", fontColor(textColor), className)}
+                                onClick={goToNextPage}
+                            >
+                                {nextButtonText}
+                                {nextButtonIcon && <Icon name={nextButtonIcon} className={cn("pl-2.5", `${iconStyle}`, className)} />}
+                            </a>
+                        </div>
+                    </>
+                    : null
+                }
                 {
                     withNumberButton ?
                         <>
                             <div className={cn("flex flex-1 justify-between sm:hidden", className)}>
-                                <a href="#" className={cn(paginationAnchorVariants({}),fontColor(textColor),borderColors(borderColor), className)}>{previousButton}</a>
-                                <a href="#" className={cn("ml-3",paginationAnchorVariants({}),fontColor(textColor),borderColors(borderColor), className)}>{nextButton}</a>
+                                <a href="#" className={cn("border px-4 py-2 font-medium", paginationAnchorVariants({}), fontColor(textColor), borderColors(borderColor), className)}
+                                    onClick={goToPreviousPage}
+                                >{previousButtonText}
+                                </a>
+
+                                <a href="#" className={cn("ml-3 border px-4 py-2  font-medium", paginationAnchorVariants({}), fontColor(textColor), borderColors(borderColor), className)}
+                                    onClick={goToNextPage}
+                                >{nextButtonText}</a>
                             </div>
+
                             <div className={cn("hidden sm:flex sm:flex-1 sm:items-center sm:justify-between", className)}>
                                 <div>
-                                    <p className={cn("text-sm",fontColor(textColor),className)}>
-                                        {result?.map((result: string, index: number) => (
-                                            <span key={index} className={cn("font-medium p-1", className)}>
-                                                {result}
-                                            </span>
-                                        ))}
+                                    <p className={cn("text-sm", fontColor(textColor), className)}>
+                                        Showing <span className={cn("font-medium p-0.5", className)}>{currentPageNumber}</span> to
+                                        <span className={cn("font-medium p-0.5", className)}>{lastPage}</span> of
+                                        <span className={cn("font-medium p-0.5", className)}>{totalPages}</span> Entries
                                     </p>
                                 </div>
                             </div>
                             <div>
-                                <nav className={cn("isolate inline-flex -space-x-px rounded-md shadow-sm",className)}>
-                                    <a href="#" className={cn("relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0",fontColor(textColor),className)}>
-                                        {iconLeft && <Icon name={iconLeft} className={`${iconStyle}`} />}
+                                <nav className={cn("isolate inline-flex -space-x-px shadow-sm mt-2.5", className)}>
+                                    <a href="#" className={cn("pl-3 pr-4 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0", paginationAnchorVariants({leftButton}), fontColor(textColor), className)}
+                                        onClick={goToPreviousPage}
+                                    >
+                                        {previousButtonIcon && <Icon name={previousButtonIcon} className={`${iconStyle}`} />}
                                     </a>
                                     {
-                                        dataList && dataList?.map((link:any, index: number) => (
+                                        range(firstPage, lastPage).map((page: number) => (
                                             <a
-                                                key={index}
-                                                href={link.href}
-                                                className={cn("relative inline-flex items-center px-4 py-2 text-sm  font-semibold ring-1 ring-inset",
+                                                href="#"
+                                                className={cn(
+                                                    `inline-flex items-center border px-4 py-2 text-sm font-medium`,
                                                     {
-                                                        [`${activeButtonClass}`]: link === activeLink,
+                                                        [`${activeButtonClass}`]: page === currentPageNumber,
                                                     },
                                                     fontColor(textColor),
-                                                    className)}
-                                                onClick={() => handleLinkClick(link)}
+                                                    className
+                                                )}
+                                                onClick={() => onPageChange(page)}
                                             >
-                                                {link.text}
+                                                {page}
                                             </a>
                                         ))
                                     }
-                                    <a href="#" className={cn("relative inline-flex items-center rounded-r-md px-2 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0",fontColor(textColor), className)}>
-                                        {iconRight && <Icon name={iconRight} className={cn("pl-2.5",`${iconStyle}`, className)} />}
+                                    <a href="#" className={cn("px-2 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0", paginationAnchorVariants({rightButton}), fontColor(textColor), className)}
+                                        onClick={goToNextPage}
+                                    >
+                                        {nextButtonIcon && <Icon name={nextButtonIcon} className={cn("pl-2.5", `${iconStyle}`, className)} />}
                                     </a>
                                 </nav>
                             </div>
@@ -165,17 +188,15 @@ function Pagination({ children, className,textColor,borderColor,activeButtonClas
                     showButton ?
                         <>
                             <div className={cn("hidden sm:block", className)}>
-                                <p className={cn("text-sm",fontColor(textColor), className)}>
-                                    {result?.map((result:string, index: number) => (
-                                        <span key={index} className={cn("font-medium p-1", className)}>
-                                            {result}
-                                        </span>
-                                    ))}
+                                <p className={cn("text-sm", fontColor(textColor), className)}>
+                                    Showing <span className={cn("font-medium p-0.5", className)}>{currentPageNumber}</span> to
+                                    <span className={cn("font-medium p-0.5", className)}>{lastPage}</span> of
+                                    <span className={cn("font-medium p-0.5", className)}>{totalPages}</span> Entries
                                 </p>
                             </div>
-                            <div className={cn("flex flex-1 justify-between sm:justify-end", className)}>
-                                <a href="#" className={cn(paginationButtonAnchorVariants({}),fontColor(textColor), className)}>{previousButton}</a>
-                                <a href="#" className={cn("ml-3",paginationButtonAnchorVariants({}),fontColor(textColor), className)}>{nextButton}</a>
+                            <div className={cn("flex flex-1 mt-4 justify-between sm:justify-end", className)}>
+                                 <Button variant="outline" size="xl" className={cn('px-7 cursor-pointer',className)} onClick={goToPreviousPage}>{previousButtonText}</Button>
+                                <Button variant="outline" size="xl" className={cn('ml-3 px-8 cursor-pointer',className)} onClick={goToNextPage} >{nextButtonText}</Button>
                             </div>
 
                         </> : null
