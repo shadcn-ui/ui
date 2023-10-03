@@ -14,6 +14,7 @@
     {
       "name": "alert-dialog.stories.tsx",
       "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport {\n  AlertDialog,\n  AlertDialogAction,\n  AlertDialogCancel,\n  AlertDialogContent,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n} from \"@/registry/default/ui/alert-dialog\"\nimport { Button } from \"@/registry/default/ui/button\"\n\nconst meta: Meta<typeof AlertDialog> = {\n  title: \"ui/AlertDialog\",\n  component: AlertDialog,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\n\nexport default meta\n\ntype Story = StoryObj<typeof AlertDialog>\n\nexport const Base: Story = {\n  render: (args) => (\n    <AlertDialog {...args}>\n      <AlertDialogTrigger asChild>\n        <Button variant=\"outline\">Open</Button>\n      </AlertDialogTrigger>\n      <AlertDialogContent>\n        <AlertDialogHeader>\n          <AlertDialogTitle>Are you sure absolutely sure?</AlertDialogTitle>\n          <AlertDialogDescription>\n            This action cannot be undone. This will permanently delete your\n            account and remove your data from our servers.\n          </AlertDialogDescription>\n        </AlertDialogHeader>\n        <AlertDialogFooter>\n          <AlertDialogCancel>Cancel</AlertDialogCancel>\n          <AlertDialogAction>Continue</AlertDialogAction>\n        </AlertDialogFooter>\n      </AlertDialogContent>\n    </AlertDialog>\n  ),\n  args: {},\n}\n"
+
     }
   ],
   "type": "components:ui"

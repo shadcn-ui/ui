@@ -8,6 +8,7 @@
     {
       "name": "alert.stories.tsx",
       "content": "import { Meta, StoryObj } from \"@storybook/react\"\nimport { AlertCircle, Terminal } from \"lucide-react\"\n\nimport {\n  Alert,\n  AlertDescription,\n  AlertTitle,\n} from \"@/registry/default/ui/alert\"\n\nconst meta: Meta<typeof Alert> = {\n  title: \"ui/Alert\",\n  component: Alert,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\n\nexport default meta\n\ntype Story = StoryObj<typeof Alert>\n\nexport const Base: Story = {\n  render: (args) => (\n    <Alert {...args}>\n      <Terminal className=\"h-4 w-4\" />\n      <AlertTitle>Heads up!</AlertTitle>\n      <AlertDescription>\n        You can add components to your app using the cli.\n      </AlertDescription>\n    </Alert>\n  ),\n  args: {\n    variant: \"default\",\n  },\n}\n\nexport const Destructive: Story = {\n  render: (args) => (\n    <Alert {...args}>\n      <AlertCircle className=\"h-4 w-4\" />\n      <AlertTitle>Error</AlertTitle>\n      <AlertDescription>\n        Your session has expired. Please log in again.\n      </AlertDescription>\n    </Alert>\n  ),\n  args: {\n    variant: \"destructive\",\n  },\n}\n"
+
     }
   ],
   "type": "components:ui"
