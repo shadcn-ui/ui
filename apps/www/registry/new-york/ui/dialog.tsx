@@ -10,6 +10,8 @@ const Dialog = DialogPrimitive.Root
 
 const DialogTrigger = DialogPrimitive.Trigger
 
+const DialogPortal = DialogPrimitive.Portal
+
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
@@ -29,7 +31,7 @@ const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <DialogPrimitive.Portal>
+  <DialogPortal>
     <DialogOverlay />
     <DialogPrimitive.Content
       ref={ref}
@@ -45,7 +47,7 @@ const DialogContent = React.forwardRef<
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
-  </DialogPrimitive.Portal>
+  </DialogPortal>
 ))
 DialogContent.displayName = DialogPrimitive.Content.displayName
 
@@ -106,6 +108,8 @@ DialogDescription.displayName = DialogPrimitive.Description.displayName
 
 export {
   Dialog,
+  DialogPortal,
+  DialogOverlay,
   DialogTrigger,
   DialogContent,
   DialogHeader,
