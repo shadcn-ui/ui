@@ -13,15 +13,14 @@ const paginationAnchorVariants = cva(
     "relative inline-flex items-center",
     {
         variants: {
-            leftButton: {
-                leftButtonRound: "rounded-l-md",
+            previousButton: {
+                previousButtonRound: "rounded-l-md",
             },
-            rightButton: {
-                rightButtonRound: "rounded-r-md"
+            nextButton: {
+                nextButtonRound: "rounded-r-md"
             }
         }
     }
-
 )
 export interface paginationProps
     extends React.HTMLAttributes<HTMLElement>,
@@ -38,17 +37,14 @@ export interface paginationProps
     totalPages?: number;
     iconStyle?: string;
     activeButtonClass?: string;
-    currentPage?: number;
-    firstPage?: number;
-    lastPage?: number;
-    rightButton?: "rightButtonRound";
-    leftButton?: "leftButtonRound";
+    nextButton?: "nextButtonRound";
+    previousButton?: "previousButtonRound";
     recordsPerPage?: number;
     onPageChange: (page: number) => void;
-    currentPageNumber?:any;
+    currentPageNumber: number;
 }
 
-function Pagination({ children, className, currentPage, onPageChange, currentPageNumber, firstPage, recordsPerPage, rightButton, leftButton, lastPage, totalPages, textColor, borderColor, activeButtonClass, iconStyle, nextButtonIcon, previousButtonText, nextButtonText, previousButtonIcon, withFooter, showButton, withNumberButton, ...props }: paginationProps) {
+function Pagination({ children, className, onPageChange, currentPageNumber, recordsPerPage, nextButton, previousButton, totalPages, textColor, borderColor, activeButtonClass, iconStyle, nextButtonIcon, previousButtonText, nextButtonText, previousButtonIcon, withFooter, showButton, withNumberButton, ...props }: paginationProps) {
     const [activePage, setActivePage] = useState<number | null>(null);
 
     const fontColor = (textColor?: colors) => {
@@ -73,8 +69,8 @@ function Pagination({ children, className, currentPage, onPageChange, currentPag
         }
         return result;
     };
-    lastPage = Math.min(Math.max(currentPageNumber + 2, recordsPerPage), totalPages ?? 0);
-    firstPage = Math.max(1, lastPage - 9);
+    const lastPage = Math.min(Math.max(currentPageNumber + 2, recordsPerPage), totalPages ?? 0);
+    const firstPage = Math.max(1, lastPage - 9);
 
     const firstNumber = (recordsPerPage * (currentPageNumber - 1)) + 1;
     const lastNumber = Math.min(recordsPerPage * currentPageNumber, totalPages ?? 0);
@@ -172,7 +168,7 @@ function Pagination({ children, className, currentPage, onPageChange, currentPag
                             </div>
                             <div>
                                 <nav className={cn("isolate inline-flex -space-x-px shadow-sm mt-2.5", className)}>
-                                    <button className={cn("pl-2 pr-[19px] py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", paginationAnchorVariants({ leftButton }), fontColor(textColor), className)}
+                                    <button className={cn("pl-2 pr-[19px] py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", paginationAnchorVariants({ previousButton }), fontColor(textColor), className)}
                                         onClick={(e) => {
                                             e.preventDefault();
                                             currentPageNumber !== 1 ? goToPreviousPage() : null;
@@ -199,7 +195,7 @@ function Pagination({ children, className, currentPage, onPageChange, currentPag
                                             </button>
                                         ))
                                     }
-                                    <button className={cn("pr-2 pl-2.5 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", paginationAnchorVariants({ rightButton }), fontColor(textColor), className)}
+                                    <button className={cn("pr-2 pl-2.5 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", paginationAnchorVariants({ nextButton }), fontColor(textColor), className)}
                                         onClick={(e) => {
                                             e.preventDefault();
                                             currentPageNumber < totalRecord ? goToNextPage() : null;

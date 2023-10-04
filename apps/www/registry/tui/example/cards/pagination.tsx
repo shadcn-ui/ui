@@ -36,7 +36,7 @@ export function CardsPagination() {
             <CardContent>
 
                 <div className="text-m font-bold text-primary mt-6">Card footer with page buttons</div>
-                <Pagination nextButtonIcon="chevron-right-solid" previousButtonIcon="chevron-left-solid" recordsPerPage={recordsPerPage} totalPages={data.length} textColor="gray" activeButtonClass="bg-indigo-600 text-white" withNumberButton={true} leftButton="leftButtonRound" rightButton="rightButtonRound" currentPageNumber={currentPageNumber2} onPageChange={(page: number) => setCurrentPageNumber2(page)} />
+                <Pagination nextButtonIcon="chevron-right-solid" previousButtonIcon="chevron-left-solid" recordsPerPage={recordsPerPage} totalPages={data.length} textColor="gray" activeButtonClass="bg-indigo-600 text-white" withNumberButton={true} nextButton="nextButtonRound" previousButton="previousButtonRound" currentPageNumber={currentPageNumber2} onPageChange={(page: number) => setCurrentPageNumber2(page)} />
 
                 <div className="text-m font-bold text-primary">Centered page numbers</div>
                 <Pagination nextButtonIcon="arrow-right-solid" previousButtonIcon="arrow-left-solid" recordsPerPage={recordsPerPage} totalPages={data.length} previousButtonText="Previous" nextButtonText="Next" borderColor="gray" activeButtonClass="border-indigo-500 text-indigo-600" withFooter={true} currentPageNumber={currentPageNumber1} onPageChange={(page: number) => setCurrentPageNumber1(page)} />
