@@ -85,17 +85,18 @@ export async function promptForConfig(
   const styles = await getRegistryStyles()
   const baseColors = await getRegistryBaseColors()
 
+  const tsxOption = await prompts({
+    type: "toggle",
+    name: "typescript",
+    message: `Would you like to use ${highlight("TypeScript")} (recommended)?`,
+    initial: defaultConfig?.tsx ?? true,
+    active: "yes",
+    inactive: "no",
+  })
+
+  const configExtension = tsxOption.typescript ? "ts" : "js";
+
   const options = await prompts([
-    {
-      type: "toggle",
-      name: "typescript",
-      message: `Would you like to use ${highlight(
-        "TypeScript"
-      )} (recommended)?`,
-      initial: defaultConfig?.tsx ?? true,
-      active: "yes",
-      inactive: "no",
-    },
     {
       type: "select",
       name: "style",
@@ -135,8 +136,12 @@ export async function promptForConfig(
     {
       type: "text",
       name: "tailwindConfig",
-      message: `Where is your ${highlight("tailwind.config.js")} located?`,
-      initial: defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG,
+      message: `Where is your ${highlight(
+        `tailwind.config.${configExtension}`
+      )} file?`,
+      initial:
+        defaultConfig?.tailwind.config ??
+        `${DEFAULT_TAILWIND_CONFIG}.${configExtension}`,
     },
     {
       type: "text",
@@ -170,7 +175,7 @@ export async function promptForConfig(
       cssVariables: options.tailwindCssVariables,
     },
     rsc: options.rsc,
-    tsx: options.typescript,
+    tsx: tsxOption.typescript,
     aliases: {
       utils: options.utils,
       components: options.components,
