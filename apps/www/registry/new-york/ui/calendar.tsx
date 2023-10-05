@@ -31,16 +31,16 @@ function Calendar({
       className={cn("p-3", className)}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-        month: "space-y-4",
+        month: "space-y-3",
         caption_start: "is-start",
         caption_between: "is-between",
         caption_end: "is-end",
         caption: "flex justify-center pt-1 relative items-center gap-1",
-        caption_label: "flex text-sm font-medium justify-center grow [.is-multiple_&]:flex",
-        caption_dropdowns: "flex justify-center gap-1 grow dropdowns pl-7 pr-8",
+        caption_label: "flex h-7 text-sm font-medium justify-center items-center grow [.is-multiple_&]:flex",
+        caption_dropdowns: "flex justify-center grow dropdowns pl-7 pr-8",
         multiple_months: "is-multiple",
         vhidden: "hidden [.is-between_&]:flex [.is-end_&]:flex [.is-start.is-end_&]:hidden",
-        nav: "flex items-center [&:has([name='previous-month'])]:order-first [&:has([name='next-month'])]:order-last gap-1",
+        nav: "flex items-center [&:has([name='previous-month'])]:order-first [&:has([name='next-month'])]:order-last",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
           "h-6 w-6 bg-transparent p-0 text-muted-foreground"
@@ -85,7 +85,7 @@ function Calendar({
             }}
             value={props.value as string}
           >
-            <SelectTrigger className={cn(buttonVariants({ variant: "ghost" }), "w-auto px-1 py-1 h-7 border-none shadow-none font-medium [.is-between_&]:hidden [.is-end_&]:hidden [.is-start.is-end_&]:flex")}>
+            <SelectTrigger className={cn(buttonVariants({ variant: "ghost" }), "px-2 py-1 h-7 border-none shadow-none font-medium [.is-between_&]:hidden [.is-end_&]:hidden [.is-start.is-end_&]:flex")}>
               <SelectValue placeholder={props?.caption}>{props?.caption}</SelectValue>
             </SelectTrigger>
             <SelectContent className="max-h-[var(--radix-popper-available-height);] overflow-y-auto scrolling-auto min-w-[var(--radix-popper-anchor-width)]">

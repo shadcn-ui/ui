@@ -37,7 +37,7 @@ function Calendar({
         caption_between: "is-between",
         caption_end: "is-end",
         caption: "flex justify-center pt-1 relative items-center gap-1",
-        caption_label: "flex text-sm font-medium justify-center grow [.is-multiple_&]:flex",
+        caption_label: "flex h-7 text-sm font-medium justify-center items-center grow [.is-multiple_&]:flex",
         caption_dropdowns: "flex justify-center gap-1 grow dropdowns pl-8 pr-9",
         multiple_months: "is-multiple",
         vhidden: "hidden [.is-between_&]:flex [.is-end_&]:flex [.is-start.is-end_&]:hidden",
@@ -85,7 +85,7 @@ function Calendar({
             }}
             value={props.value as string}
           >
-            <SelectTrigger className="pl-2 pr-1 py-2 h-7 w-fit font-medium [.is-between_&]:hidden [.is-end_&]:hidden [.is-start.is-end_&]:flex">
+            <SelectTrigger className={cn(buttonVariants({ variant: "ghost" }),"pl-2 pr-1 py-2 h-7 w-fit font-medium [.is-between_&]:hidden [.is-end_&]:hidden [.is-start.is-end_&]:flex")}>
               <SelectValue placeholder={props?.caption} >{props?.caption}</SelectValue>
             </SelectTrigger>
             <SelectContent className="max-h-[var(--radix-popper-available-height);] overflow-y-auto scrolling-auto min-w-[var(--radix-popper-anchor-width)]">
