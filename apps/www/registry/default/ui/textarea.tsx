@@ -1,28 +1,29 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { useRef, useEffect} from 'react'
+import { useRef, useEffect } from 'react'
 import { mergeRefs } from "react-merge-refs";
-export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> { }
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => {
-const texteAreaRef = useRef<HTMLTextAreaElement>(null);
+    const texteAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  useEffect(() => {
-    const ref = texteAreaRef?.current;
+    useEffect(() => {
+      const ref = texteAreaRef?.current;
 
-    const updateTextareaHeight = () => {
-      if(ref) {
-        ref.style.height = "auto";
-        ref.style.height = ref?.scrollHeight + "px";
-      }
-    };
+      const updateTextareaHeight = () => {
+        if (ref) {
+          ref.style.height = "auto";
+          ref.style.height = ref?.scrollHeight + "px";
+        }
+      };
 
-    updateTextareaHeight();
-    ref?.addEventListener("input", updateTextareaHeight);
+      updateTextareaHeight();
+      ref?.addEventListener("input", updateTextareaHeight);
 
-    return () => ref?.removeEventListener("input", updateTextareaHeight);
-  }, []);
+      return () => ref?.removeEventListener("input", updateTextareaHeight);
+    }, []);
+
     return (
       <textarea
         className={cn(
