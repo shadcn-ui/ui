@@ -33,7 +33,7 @@ export function CardsInputGroup() {
                 <Input label="Quick Search" textColor="black" labelAlign="left" keyboardName="⌘K" placeholder="you@example.com" />
 
                 <div className="text-m font-bold text-primary">Input with validation error</div>
-                <Input label="Email" labelAlign="left" error="Not a valid email address" alignIcon="right" iconStyle="h-5 w-5" icon="circle-exclamation-solid" placeholder="you@example.com" />
+                <Input label="Email" labelAlign="left" error="Not a valid email address" alignIcon="right" iconStyle="h-5 w-5" placeholder="you@example.com" />
 
                 <div className="text-m font-bold text-primary">Input with inline add-on</div>
                 <Input addOnLabel="https://" labelAlign="left" textColor="gray" label="Email" labelAndBorderStyle="innerBorder" borderInside="withoutBorder" placeholder="you@example.com" />

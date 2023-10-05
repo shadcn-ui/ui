@@ -161,7 +161,8 @@ const Input = React.forwardRef<
               <span className={cn("inline-flex  items-center rounded-l-md border  border-r-0 px-3 py-2 text-sm", className)}{...props}>
                 {addOnLabel}</span> : null
           }
-          {icon ? <Icon name={icon} className={cn(`${alignIcon === "left" ? "absolute left-0 flex items-center pl-3" : ` absolute right-0 flex items-center pl-3 pr-2 ${error ? "text-destructive":fontColor(textColor)}`} ${iconStyle}`, className)} {...props} /> : null}
+          {icon  ? <Icon name={icon} className={cn("absolute flex items-center pl-3",`${alignIcon === "left" ? "left-0" : " right-0 pr-2"} ${iconStyle}`,fontColor(textColor), className)} {...props} /> : null}
+          {error ? <Icon name="circle-exclamation-solid" className={cn("absolute flex items-center pl-3 text-destructive",`${alignIcon === "left" ? " left-0 " : " right-0 pr-2"} ${iconStyle}`, className)} {...props} /> : null}
           {
             alignDropdown && (
               <div className={cn(`absolute text-sm ${alignDropdown === 'prefix' ? 'left-0' : 'right-0 '} flex items-center`, className)} {...props}>
