@@ -14,7 +14,6 @@ export default function CalendarDropdown() {
       captionLayout="dropdown-buttons"
       fromYear={2022}
       toYear={2023}
-      // numberOfMonths={2}
       selected={date}
       onSelect={setDate}
       className="rounded-md border"

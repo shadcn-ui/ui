@@ -77,13 +77,13 @@ function Calendar({
         IconRight: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
         Dropdown: ({ ...props }) => (
           <Select
+            {...props}
             onValueChange={(value) => {
               if (props.onChange) {
                 handleCalendarChange(value, props.onChange)
               }
             }}
-            {...props}
-            value={`${props.value}`}
+            value={props.value as string}
           >
             <SelectTrigger className={cn(buttonVariants({ variant: "ghost" }), "w-auto px-1 py-1 h-7 border-none shadow-none font-medium [.is-between_&]:hidden [.is-end_&]:hidden [.is-start.is-end_&]:flex")}>
               <SelectValue placeholder={props?.caption}>{props?.caption}</SelectValue>

@@ -23,6 +23,7 @@ function Calendar({
       },
     } as React.ChangeEvent<HTMLSelectElement>
     _e(_event);
+    
   };
 
   return (
@@ -76,16 +77,16 @@ function Calendar({
         IconRight: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
         Dropdown: ({ ...props }) => (
           <Select
+            {...props}
             onValueChange={(value) => {
               if (props.onChange) {
                 handleCalendarChange(value, props.onChange)
               }
             }}
-            {...props}
-            value={`${props.value}`}
+            value={props.value as string}
           >
             <SelectTrigger className="pl-2 pr-1 py-2 h-7 w-fit font-medium [.is-between_&]:hidden [.is-end_&]:hidden [.is-start.is-end_&]:flex">
-              <SelectValue placeholder={props?.caption}>{props?.caption}</SelectValue>
+              <SelectValue placeholder={props?.caption} >{props?.caption}</SelectValue>
             </SelectTrigger>
             <SelectContent className="max-h-[var(--radix-popper-available-height);] overflow-y-auto scrolling-auto min-w-[var(--radix-popper-anchor-width)]">
               {props.children &&
