@@ -4,8 +4,8 @@ import * as React from "react"
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
 import { DayPicker } from "react-day-picker"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/registry/default/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/registry/default/ui/select"
+import { buttonVariants } from "@/registry/new-york/ui/button"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/registry/new-york/ui/select"
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 
@@ -14,12 +14,12 @@ function Calendar({
   classNames,
   showOutsideDays = true,
   ...props
-}: CalendarProps & { onChange: React.ChangeEventHandler<HTMLSelectElement> }) {
+}: CalendarProps & { onChange?: React.ChangeEventHandler<HTMLSelectElement> }) {
 
-  const handleCalendarChange = (_value: string, _e: React.ChangeEventHandler<HTMLSelectElement>) => {
+  const handleCalendarChange = (_value: string | number, _e: React.ChangeEventHandler<HTMLSelectElement>) => {
     const _event = {
       target: {
-        value: _value
+        value: String(_value)
       },
     } as React.ChangeEvent<HTMLSelectElement>
     _e(_event);
@@ -32,20 +32,24 @@ function Calendar({
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
-        caption: "flex justify-center pt-1 relative items-center gap-2",
-        caption_label: "flex text-sm font-medium justify-center grow",
-        caption_dropdowns: "flex justify-center gap-1 grow dropdowns",
-        vhidden: "hidden",
-        nav: "flex items-center [&:has([name='previous-month'])]:order-first [&:has([name='next-month'])]:order-last",
+        caption_start: "is-start",
+        caption_between: "is-between",
+        caption_end: "is-end",
+        caption: "flex justify-center pt-1 relative items-center gap-1",
+        caption_label: "flex text-sm font-medium justify-center grow [.is-multiple_&]:flex",
+        caption_dropdowns: "flex justify-center gap-1 grow dropdowns pl-7 pr-8",
+        multiple_months: "is-multiple",
+        vhidden: "hidden [.is-between_&]:flex [.is-end_&]:flex [.is-start.is-end_&]:hidden",
+        nav: "flex items-center [&:has([name='previous-month'])]:order-first [&:has([name='next-month'])]:order-last gap-1",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
-          "h-7 w-7 bg-transparent p-0 text-muted-foreground"
+          "h-6 w-6 bg-transparent p-0 text-muted-foreground"
         ),
-        nav_button_previous: cn({ 'absolute left-1': props.mode === 'single'}),
-        nav_button_next: cn({ 'absolute right-1' : props.mode === 'single'}),
+        nav_button_previous: 'absolute left-1',
+        nav_button_next: 'absolute right-1',
         table: "w-full border-collapse space-y-1",
         head_row: "flex",
-        head_cell: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
+        head_cell: "text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]",
         row: "flex w-full mt-2",
         cell: cn(
           "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent",
@@ -73,19 +77,22 @@ function Calendar({
         IconRight: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
         Dropdown: ({ ...props }) => (
           <Select
-            {...props}
             onValueChange={(value) => {
-              handleCalendarChange(value, props.onChange)
+              if (props.onChange) {
+                handleCalendarChange(value, props.onChange)
+              }
             }}
+            {...props}
+            value={`${props.value}`}
           >
-            <SelectTrigger>
-              <SelectValue placeholder={props.caption} />
+            <SelectTrigger className={cn(buttonVariants({ variant: "ghost" }), "w-auto px-1 py-1 h-7 border-none shadow-none font-medium [.is-between_&]:hidden [.is-end_&]:hidden [.is-start.is-end_&]:flex")}>
+              <SelectValue placeholder={props?.caption}>{props?.caption}</SelectValue>
             </SelectTrigger>
-            <SelectContent>
-              {
-                React.Children.map(props.children, (child) => (
-                  <SelectItem value={child.props.value}>{child.props.children}</SelectItem>
-                ))
+            <SelectContent className="max-h-[var(--radix-popper-available-height);] overflow-y-auto scrolling-auto min-w-[var(--radix-popper-anchor-width)]">
+              {props.children &&
+                React.Children.map(props.children, (child) =>
+                  <SelectItem value={(child as React.ReactElement<any>)?.props?.value} className="min-w-[var(--radix-popper-anchor-width)] pr-7">{(child as React.ReactElement<any>)?.props?.children}</SelectItem>
+                )
               }
             </SelectContent>
           </Select>

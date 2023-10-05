@@ -411,6 +411,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/calendar-demo")),
       files: ["registry/default/example/calendar-demo.tsx"],
     },
+    "calendar-dropdown-button": {
+      name: "calendar-dropdown-button",
+      type: "components:example",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/example/calendar-dropdown-button")),
+      files: ["registry/default/example/calendar-dropdown-button.tsx"],
+    },
     "calendar-form": {
       name: "calendar-form",
       type: "components:example",
@@ -1419,6 +1426,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["calendar"],
       component: React.lazy(() => import("@/registry/new-york/example/calendar-demo")),
       files: ["registry/new-york/example/calendar-demo.tsx"],
+    },
+    "calendar-dropdown-button": {
+      name: "calendar-dropdown-button",
+      type: "components:example",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/example/calendar-dropdown-button")),
+      files: ["registry/new-york/example/calendar-dropdown-button.tsx"],
     },
     "calendar-form": {
       name: "calendar-form",

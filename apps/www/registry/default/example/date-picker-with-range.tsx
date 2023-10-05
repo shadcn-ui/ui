@@ -53,6 +53,9 @@ export default function DatePickerWithRange({
           <Calendar
             initialFocus
             mode="range"
+            captionLayout="dropdown-buttons"
+            fromYear={2007} 
+            toYear={2023}
             defaultMonth={date?.from}
             selected={date}
             onSelect={setDate}

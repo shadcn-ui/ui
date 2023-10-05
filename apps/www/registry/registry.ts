@@ -356,6 +356,12 @@ const example: Registry = [
     files: ["example/calendar-demo.tsx"],
   },
   {
+    name: "calendar-dropdown-button",
+    type: "components:example",
+    registryDependencies: ["calendar"],
+    files: ["example/calendar-dropdown-button.tsx"],
+  },
+  {
     name: "calendar-form",
     type: "components:example",
     registryDependencies: ["calendar", "form", "popover"],
