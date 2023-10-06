@@ -8,45 +8,28 @@ import { Button } from './button';
 const paginationVariants = cva(
     "flex items-center justify-between border-t border-gray-200 px-4 sm:px-6",
 )
-
-const paginationAnchorVariants = cva(
-    "relative inline-flex items-center",
-    {
-        variants: {
-            previousButton: {
-                previousButtonRound: "rounded-l-md",
-            },
-            nextButton: {
-                nextButtonRound: "rounded-r-md"
-            }
-        }
-    }
-)
 export interface paginationProps
     extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof paginationVariants> {
     nextButtonIcon?: IconType;
     previousButtonIcon?: IconType;
-    withFooter?: boolean;
-    showButton?: boolean;
-    withNumberButton?: boolean;
     previousButtonText?: string;
     nextButtonText?: string;
-    textColor?: colors;
-    borderColor?: colors;
     totalPages?: number;
     iconStyle?: string;
     activeButtonClass?: string;
-    nextButton?: "nextButtonRound";
-    previousButton?: "previousButtonRound";
     recordsPerPage?: number;
-    onPageChange: (page: number) => void;
+    onButtonClick: (page: number) => void;
     currentPageNumber: number;
+    showLabel?: boolean;
+    showPreviousNextButton?: boolean;
+    showNumbersButton?: boolean;
+    textColor?: colors;
+    borderColor?: colors;
 }
 
-function Pagination({ children, className, onPageChange, currentPageNumber, recordsPerPage, nextButton, previousButton, totalPages, textColor, borderColor, activeButtonClass, iconStyle, nextButtonIcon, previousButtonText, nextButtonText, previousButtonIcon, withFooter, showButton, withNumberButton, ...props }: paginationProps) {
+function Pagination({ children, className, onButtonClick, currentPageNumber, recordsPerPage, totalPages, textColor, borderColor, activeButtonClass, iconStyle, nextButtonIcon, previousButtonText, nextButtonText, previousButtonIcon, showLabel, showPreviousNextButton, showNumbersButton, ...props }: paginationProps) {
     const [activePage, setActivePage] = useState<number | null>(null);
-
     const fontColor = (textColor?: colors) => {
         return `text-${textColor}-700 ring-${textColor}-300 `
     }
@@ -77,18 +60,18 @@ function Pagination({ children, className, onPageChange, currentPageNumber, reco
 
     const goToNextPage = (): void => {
         setActivePage(currentPageNumber);
-        onPageChange(currentPageNumber + 1);
+        onButtonClick(currentPageNumber + 1);
     };
 
     const goToPreviousPage = (): void => {
         setActivePage(currentPageNumber);
-        onPageChange(currentPageNumber - 1);
+        onButtonClick(currentPageNumber - 1);
     };
-    
+
     return (
         <>
             <nav className={cn(paginationVariants({}), className)}>
-                {withFooter ?
+                {showLabel ?
                     <>
                         <div className={cn("-mt-px flex flex-1", className)} >
                             <button  className={cn("inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium disabled:pointer-events-none disabled:opacity-50  ", fontColor(textColor), className)}
@@ -115,7 +98,7 @@ function Pagination({ children, className, onPageChange, currentPageNumber, reco
                                             },
                                             className
                                         )}
-                                        onClick={() => onPageChange(page)}
+                                        onClick={() => onButtonClick(page)}
                                     >
                                         {page}
                                     </button>
@@ -137,10 +120,10 @@ function Pagination({ children, className, onPageChange, currentPageNumber, reco
                     : null
                 }
                 {
-                    withNumberButton ?
+                    showNumbersButton ?
                         <>
                             <div className={cn("flex flex-1 justify-between sm:hidden", className)}>
-                                <button className={cn("border px-4 py-2 font-medium disabled:pointer-events-none disabled:opacity-50", paginationAnchorVariants({}), fontColor(textColor), borderColors(borderColor), className)}
+                                <button className={cn("border relative inline-flex items-center px-4 py-2 font-medium disabled:pointer-events-none disabled:opacity-50", fontColor(textColor), borderColors(borderColor), className)}
                                     onClick={(e) => {
                                         e.preventDefault();
                                         currentPageNumber !== 1 ? goToPreviousPage() : null;
@@ -149,7 +132,7 @@ function Pagination({ children, className, onPageChange, currentPageNumber, reco
                                 >{previousButtonText}
                                 </button>
 
-                                <button className={cn("ml-3 border px-4 py-2  font-medium disabled:pointer-events-none disabled:opacity-50", paginationAnchorVariants({}), fontColor(textColor), borderColors(borderColor), className)}
+                                <button className={cn("ml-3 relative inline-flex items-centerborder px-4 py-2  font-medium disabled:pointer-events-none disabled:opacity-50", fontColor(textColor), borderColors(borderColor), className)}
                                     onClick={(e) => {
                                         e.preventDefault();
                                         currentPageNumber < totalRecord ? goToNextPage() : null;
@@ -168,19 +151,31 @@ function Pagination({ children, className, onPageChange, currentPageNumber, reco
                             </div>
                             <div>
                                 <nav className={cn("isolate inline-flex -space-x-px shadow-sm mt-2.5", className)}>
-                                    <button className={cn("pl-2 pr-[19px] py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", paginationAnchorVariants({ previousButton }), fontColor(textColor), className)}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            currentPageNumber !== 1 ? goToPreviousPage() : null;
-                                        }}
-                                        disabled={currentPageNumber === 1} 
-                                    >
-                                        {previousButtonIcon && <Icon name={previousButtonIcon} className={`${iconStyle}`} />}
-                                    </button>
+                                    {
+                                        previousButtonIcon ?
+                                            <button className={cn(" rounded-l-md relative inline-flex items-center pl-2 pr-[19px] py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", fontColor(textColor), className)}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    currentPageNumber !== 1 ? goToPreviousPage() : null;
+                                                }}
+                                                disabled={currentPageNumber === 1}
+                                            >
+                                                {previousButtonIcon && <Icon name={previousButtonIcon} className={`${iconStyle}`} />}
+                                            </button>
+                                            :
+                                            <button className={cn(" rounded-l-md relative inline-flex items-center pl-5 pr-5 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", fontColor(textColor), className)}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    currentPageNumber !== 1 ? goToPreviousPage() : null;
+                                                }}
+                                                disabled={currentPageNumber === 1}
+                                            >
+                                                {previousButtonText}
+                                            </button>
+                                    }
                                     {
                                         range(firstPage, lastPage).map((page: number) => (
                                             <button
-                                              
                                                 className={cn(
                                                     `inline-flex items-center border px-4 py-2 text-sm font-medium`,
                                                     {
@@ -189,28 +184,42 @@ function Pagination({ children, className, onPageChange, currentPageNumber, reco
                                                     },
                                                     className
                                                 )}
-                                                onClick={() => onPageChange(page)}
+                                                onClick={() => onButtonClick(page)}
                                             >
                                                 {page}
                                             </button>
                                         ))
                                     }
-                                    <button className={cn("pr-2 pl-2.5 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", paginationAnchorVariants({ nextButton }), fontColor(textColor), className)}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            currentPageNumber < totalRecord ? goToNextPage() : null;
-                                        }}
-                                        disabled={currentPageNumber >= totalRecord}
-                                    >
-                                        {nextButtonIcon && <Icon name={nextButtonIcon} className={cn("pl-2.5", `${iconStyle}`, className)} />}
-                                    </button>
+                                    {
+                                        nextButtonIcon ?
+                                            <button className={cn(" rounded-r-md relative inline-flex items-center pr-2 pl-2.5 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", fontColor(textColor), className)}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    currentPageNumber < totalRecord ? goToNextPage() : null;
+                                                }}
+                                                disabled={currentPageNumber >= totalRecord}
+                                            >
+                                                {nextButtonIcon && <Icon name={nextButtonIcon} className={cn("pl-2.5", `${iconStyle}`, className)} />}
+                                            </button>
+                                            :
+                                            <button className={cn(" rounded-r-md relative inline-flex items-center pr-10 pl-7 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", fontColor(textColor), className)}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    currentPageNumber < totalRecord ? goToNextPage() : null;
+                                                }}
+                                                disabled={currentPageNumber >= totalRecord}
+                                            >
+                                                {nextButtonText}
+                                            </button>
+                                    }
+
                                 </nav>
                             </div>
                         </>
                         : null
                 }
                 {
-                    showButton ?
+                    showPreviousNextButton ?
                         <>
                             <div className={cn("hidden sm:block", className)}>
                                 <p className={cn("text-sm p-0.5", fontColor(textColor), className)}>
@@ -219,23 +228,50 @@ function Pagination({ children, className, onPageChange, currentPageNumber, reco
                                 </p>
                             </div>
                             <div className={cn("flex flex-1 mt-4 justify-between sm:justify-end", className)}>
-                                <Button variant="outline" size="xl" className={cn('px-7 cursor-pointer disabled:pointer-events-none disabled:opacity-50', className)}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        currentPageNumber !== 1 ? goToPreviousPage() : null;
-                                    }} 
-                                    disabled={currentPageNumber === 1} 
-                                    >{previousButtonText}</Button>
+                                {
+                                    previousButtonIcon ?
+                                        <button className={cn("rounded-md relative inline-flex items-center mr-3.5 ml-3 pl-2 pr-5 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", fontColor(textColor), className)}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                currentPageNumber !== 1 ? goToPreviousPage() : null;
+                                            }}
+                                            disabled={currentPageNumber === 1}
+                                        >
+                                            {previousButtonIcon && <Icon name={previousButtonIcon} className={cn("pl-2.5", `${iconStyle}`, className)} />}
+                                        </button>
+                                        :
+                                        <Button variant="outline" size="xl" className={cn('px-7 cursor-pointer disabled:pointer-events-none disabled:opacity-50', className)}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                currentPageNumber !== 1 ? goToPreviousPage() : null;
+                                            }}
+                                            disabled={currentPageNumber === 1}
+                                        >{previousButtonText}
+                                        </Button>
+                                }
 
-                                <Button variant="outline" size="xl" className={cn('ml-3 px-10 cursor-pointer disabled:pointer-events-none disabled:opacity-50', className)}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        currentPageNumber < totalRecord ? goToNextPage() : null;
-                                    }} 
-                                    disabled={currentPageNumber >= totalRecord}
-                                    >{nextButtonText}</Button>
+                                {
+                                    nextButtonIcon ?
+                                        <button className={cn("rounded-md relative inline-flex items-center pr-5 pl-2.5 py-2 ring-1 ring-inset focus:z-20 focus:outline-offset-0 disabled:pointer-events-none disabled:opacity-50", fontColor(textColor), className)}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                currentPageNumber < totalRecord ? goToNextPage() : null;
+                                            }}
+                                            disabled={currentPageNumber >= totalRecord}
+                                        >
+                                            {nextButtonIcon && <Icon name={nextButtonIcon} className={cn("pl-2", `${iconStyle}`, className)} />}
+                                        </button>
+                                        :
+                                        <Button variant="outline" size="xl" className={cn('ml-3 px-10 cursor-pointer disabled:pointer-events-none disabled:opacity-50', className)}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                currentPageNumber < totalRecord ? goToNextPage() : null;
+                                            }}
+                                            disabled={currentPageNumber >= totalRecord}
+                                        >{nextButtonText}
+                                        </Button>
+                                }
                             </div>
-
                         </> : null
                 }
             </nav>

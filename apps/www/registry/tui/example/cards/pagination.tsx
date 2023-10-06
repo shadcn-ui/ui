@@ -7,7 +7,7 @@ export function CardsPagination() {
     const [currentPageNumber2, setCurrentPageNumber2] = useState<number>(1);
     const [currentPageNumber3, setCurrentPageNumber3] = useState<number>(1);
 
-    let recordsPerPage: number = 5;
+    let recordsPerPage= 10;
     const data = [{ "id": 1, "first_name": "Jessamyn", "last_name": "Espinazo", "email": "jespinazo0@chicagotribune.com", "phone": "162-166-0977" },
     { "id": 2, "first_name": "Isac", "last_name": "Tooher", "email": "itooher1@psu.edu", "phone": "655-567-3619" },
     { "id": 3, "first_name": "Tabbatha", "last_name": "Proschke", "email": "tproschke2@weibo.com", "phone": "327-612-4850" },
@@ -34,15 +34,14 @@ export function CardsPagination() {
                 <CardTitle className="text-base font-normal text-primary">Pagination</CardTitle>
             </CardHeader>
             <CardContent>
-
                 <div className="text-m font-bold text-primary mt-6">Card footer with page buttons</div>
-                <Pagination nextButtonIcon="chevron-right-solid" previousButtonIcon="chevron-left-solid" recordsPerPage={recordsPerPage} totalPages={data.length} textColor="gray" activeButtonClass="bg-indigo-600 text-white" withNumberButton={true} nextButton="nextButtonRound" previousButton="previousButtonRound" currentPageNumber={currentPageNumber2} onPageChange={(page: number) => setCurrentPageNumber2(page)} />
+                <Pagination nextButtonIcon="chevron-right-solid" previousButtonIcon="chevron-left-solid" recordsPerPage={recordsPerPage} totalPages={data.length} textColor="gray" activeButtonClass="bg-indigo-600 text-white" showNumbersButton={true} currentPageNumber={currentPageNumber2} onButtonClick={(page: number) => setCurrentPageNumber2(page)} />
 
-                <div className="text-m font-bold text-primary">Centered page numbers</div>
-                <Pagination nextButtonIcon="arrow-right-solid" previousButtonIcon="arrow-left-solid" recordsPerPage={recordsPerPage} totalPages={data.length} previousButtonText="Previous" nextButtonText="Next" borderColor="gray" activeButtonClass="border-indigo-500 text-indigo-600" withFooter={true} currentPageNumber={currentPageNumber1} onPageChange={(page: number) => setCurrentPageNumber1(page)} />
+                 <div className="text-m font-bold text-primary">Centered page numbers</div>
+                <Pagination nextButtonIcon="arrow-right-solid" previousButtonIcon="arrow-left-solid" previousButtonText="Previous" nextButtonText="Next" recordsPerPage={recordsPerPage} totalPages={data.length}  borderColor="gray" activeButtonClass="border-indigo-500 text-indigo-600" showLabel={true} currentPageNumber={currentPageNumber1} onButtonClick={(page: number) => setCurrentPageNumber1(page)} />
 
                 <div className="text-m font-bold text-primary mt-6">Simple card footer</div>
-                <Pagination previousButtonText="Previous" nextButtonText="Next" showButton={true} recordsPerPage={recordsPerPage} totalPages={data.length} textColor="gray" currentPageNumber={currentPageNumber3} onPageChange={(page: number) => setCurrentPageNumber3(page)} />
+                <Pagination previousButtonText="Previous" nextButtonText="Next" showPreviousNextButton={true} recordsPerPage={recordsPerPage} totalPages={data.length} textColor="gray" currentPageNumber={currentPageNumber3} onButtonClick={(page: number) => setCurrentPageNumber3(page)} />
             </CardContent>
         </Card>
     )
