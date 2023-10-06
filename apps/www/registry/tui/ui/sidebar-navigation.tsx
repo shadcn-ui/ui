@@ -2,29 +2,30 @@ import React, { useState } from 'react';
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { Icon, IconType } from "./icon";
+import { colors } from './helper/types';
 const sideBarNavigationVariant = cva(
 
 )
-const sibeBarAnchorVariant = cva(
+const sideBarAnchorVariant = cva(
     " group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold",
     {
         variants: {
             anchorVariant: {
-                default: "text-accent-foreground",
+                primary:"hover:bg-primary/20",
+                accent: "hover:bg-accent/20",
+                ghost: "hover:bg-accent ",
+                soft:"hover:bg-primary/20 hover:text-primary/90",
             }
-        },
-        defaultVariants: {
-            anchorVariant: "default"
         }
     }
 )
 
 const sibeBarIconVariant = cva(
-    "shrink-0 ",
+    "flex items-center justify-center border font-medium ",
     {
         variants: {
             size: {
-                default: "h-6 w-6"
+                default: "h-6 w-6 rounded-lg"
             }
         },
         defaultVariants: {
@@ -42,7 +43,7 @@ const sibeBarImageVariant = cva(
     {
         variants: {
             size: {
-                default: "h-10 w-10"
+                default: "h-8 w-8 rounded-full"
             }
         },
         defaultVariants: {
@@ -51,99 +52,99 @@ const sibeBarImageVariant = cva(
     }
 )
 
+const sibeBarButtonVariant = cva(
+    "  flex items-center text-left p-2 gap-x-3 text-sm leading-6 font-semibold",
+    {
+        variants: {
+            variant:{
+                default:"hover:bg-accent"
+            },
+            size: {
+                default: "w-full rounded-md"
+            }
+        },
+        defaultVariants: {
+            variant:"default",
+            size: "default"
+        }
+    }
+)
 
-interface Team {
+
+interface ItemList {
     icon?: string | undefined;
     name?: string | undefined;
     href?: string | undefined;
 }
 interface MenuItem {
-    href?: string;
-    icon?: string;
-    text?: string;
-    subMenuItems?: { name: string }[];
-    badgeCount?: number;
-}
-interface  SubItem {
-    name: string;
+    href?: string | undefined;
+    icon?: string | undefined;
+    text?: string | undefined;
+    subMenuItems?: { name: string | undefined }[];
+    badgeCount?: number | undefined;
 }
 export interface SideBarNavigationProps
     extends React.HTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof sideBarNavigationVariant> {
-    href?: string;
-    icon?: IconType;
-    text?: string
-    badgeCount?: number[]
-    items?: MenuItem[];
-    teams?: Team[];
-    imageURL?: string;
-    userName?: string;
+    href?: string | undefined;
+    icon?: IconType | undefined;
+    items?: MenuItem[] | undefined;
+    itemList?: ItemList[] | undefined;
+    imageURL?: string | undefined;
+    userName?: string | undefined;
+    textItem?: string| undefined;
+    logoImage?: string| undefined;
+    backgroundColor?: colors| undefined;
+    hasIconAndBadge?: boolean| undefined;
+    textColor?: colors| undefined;
+    iconStyle?:string| undefined;
     divVariant?: "default";
-    anchorVariant?: "default";
+    anchorVariant?: "accent" | "primary" | "ghost" | "soft";
     iconVariant?: "default" | "primary";
     spanVariant?: "default";
-    hasIconAndCount?: boolean;
-    iconPrefix?: boolean;
-    iconSuffix?: boolean;
-    teamName?: string;
-    logoImage?: string;
-    backgroundColor?: string;
-    hasIconAndBadge?: boolean;
-    color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
-    "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
-    | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose";
+    alignIcon?: "left" | "right";
 }
 
 const SideBarNavigation = React.forwardRef<HTMLButtonElement, SideBarNavigationProps>(
-    ({ className, items, icon, backgroundColor, hasIconAndBadge, divVariant, color, teamName, logoImage, iconPrefix, spanVariant, iconSuffix, iconVariant, anchorVariant, teams, imageURL, userName, ...props }, ref) => {
-        const fontColor = (color?: string) => {
-            return `text-${color}-700 ring-${color}-700`
+    ({ className, items, icon, alignIcon,iconStyle, backgroundColor, hasIconAndBadge, divVariant, textColor, textItem, logoImage, spanVariant, iconVariant, anchorVariant, itemList, imageURL, userName, ...props }, ref) => {
+        const fontColor = (textColor?: colors) => {
+            return `text-${textColor}-400`
         }
-        const [isOpen, setIsOpen] = useState<boolean[]>(new Array(items?.length).fill(false));
-        const [buttonIcons, setButtonIcons] = useState<IconType[]>(new Array(items?.length).fill("chevron-right-duotone"));
+        const bgColor = (backgroundColor?: colors) => {
+            return `${backgroundColor}`=== "gray" ? `bg-${backgroundColor}-900`:`bg-${backgroundColor}-700`
+        }
+        const [isOpen, setIsOpen] = useState<boolean[]>(new Array(items?.length).fill(false))
         const handleButtonClick = (index: number) => {
-            console.log(`Clicked on item at index ${index}`);
             setIsOpen(prevIsOpen => {
                 const updatedIsOpen = [...prevIsOpen];
                 updatedIsOpen[index] = !updatedIsOpen[index];
-                console.log(`Clicked on item at updatedIsOpen ${updatedIsOpen[index]}`);
                 return updatedIsOpen;
             });
-            if (index === 1 || index === 2) {
-                setButtonIcons(prevIcons => {
-                    const updatedIcons = [...prevIcons];
-                    updatedIcons[index] = isOpen[index] ? "chevron-right-duotone" : "chevron-down-duotone";
-                    return updatedIcons;
-                });
-            }
         }
 
         return (
             <>
-                <div className={cn(` border flex grow flex-col gap-y-5 overflow-y-auto pl-6 pr-8 ${backgroundColor} `)}>
+                <div className={cn(" border flex grow flex-col gap-y-5 overflow-y-auto pl-6 pr-8", bgColor(backgroundColor), className)}>
                     <div className={cn("flex mt-3 shrink-0 items-center", className)}>
                         <img className={cn(sibeBarImageVariant({}), className)} src={logoImage} />
                     </div>
                     <nav className={cn("flex flex-1 flex-col", className)}>
                         <ul>
-                            {items && items.map((item:any, index: number) => (
+                            {items && items.map((item: any, index:number) => (
                                 <li key={index}>
-                                    {index === 1 || index === 2 ? (
+                                    {item.subMenuItems ? (
                                         <div>
-                                            <button onClick={() => handleButtonClick(index)} className={cn('flex items-center justify-between text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-semibold', className)}>
-                                                {iconPrefix && <Icon name={buttonIcons[index]} />}
-                                                <div className="flex items-center">
-                                                    {item.text}
-                                                </div>
-                                                {iconSuffix && <div className="flex ml-32 items-center">
-                                                    <Icon name={buttonIcons[index]} className={cn('shrink-0', className)} />
-                                                </div>}
+                                            <button onClick={() => handleButtonClick(index)} className={cn(sibeBarButtonVariant({}),fontColor(textColor), className)}>                    
+                                                        {item.icon && <Icon name={item.icon} className={cn(`${iconStyle}`,className)} />}
+                                                        {alignIcon === "right" ? isOpen[index] ? <Icon name={'chevron-down-duotone'} /> : <Icon name={'chevron-right-duotone'} /> : null}
+                                                        {item.text}
+                                                        {alignIcon === "left" ? isOpen[index]  ? <Icon name={'chevron-down-duotone'} className={cn(`shrink-0 ml-auto`, className)} /> : <Icon name={'chevron-right-duotone'} className={cn(`shrink-0 ml-auto`, className)} /> : null}
                                             </button>
                                             {isOpen[index] && (
                                                 <ul className={cn("mt-1 px-2", className)}>
-                                                    {items[index]?.subMenuItems && items[index].subMenuItems?.map((subItem:SubItem, subIndex: number) => (
+                                                    {item.subMenuItems.map((subItem:any, subIndex: number) => (
                                                         <li key={subIndex}>
-                                                            <a href="#" className={cn("block rounded-md py-2 pr-2 pl-9 text-sm leading-6", className)}>
+                                                            <a href="#" className={cn("block rounded-md py-2 pr-2 pl-9 text-sm hover:bg-accent leading-6", className)}>
                                                                 {subItem.name}
                                                             </a>
                                                         </li>
@@ -151,40 +152,35 @@ const SideBarNavigation = React.forwardRef<HTMLButtonElement, SideBarNavigationP
                                                 </ul>
                                             )}
                                         </div>
-
                                     ) : (
-                                        <a href={item.href} className={cn(`${backgroundColor}`  , (sibeBarAnchorVariant({ anchorVariant })), fontColor(color))}>
-                                            {hasIconAndBadge && <Icon name={item.icon} className={cn(sibeBarIconVariant({ }))} /> }
-
+                                        <a href={item.href} className={cn(sideBarAnchorVariant({ anchorVariant }), fontColor(textColor), bgColor(backgroundColor), className)}>
+                                            {item.icon && <Icon name={item.icon} className={cn(`${iconStyle}`,className)} />}
                                             {item.text}
                                             {hasIconAndBadge && item.badgeCount && item.badgeCount > 0 && (
-                                                    <span className={cn(sibeBarSpanVariant({}), fontColor(color))}>
-                                                        {item.badgeCount}
-                                                    </span>
-                                                ) 
-                                            }
-
-
+                                                <span className={cn(sibeBarSpanVariant({}), fontColor(textColor),className)}>
+                                                    {item.badgeCount}
+                                                </span>
+                                            )}
                                         </a>
                                     )}
                                 </li>
                             ))}
                         </ul>
 
-                        <div className={cn("font-semibold leading-6 text-xs mt-10", className)}>{teamName}</div>
+                        <div className={cn("font-semibold leading-6 text-xs mt-10",fontColor(textColor), className)}>{textItem}</div>
                         <ul role="list" className={cn("-mx-2 mt-2 space-y-1", className)}>
-                            {teams && teams.map((item: Team, index: number) => (
+                            {itemList && itemList.map((item: ItemList, index: number) => (
                                 <li key={index}>
-                                    <a href={item.href} className={cn("flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold")}>
-                                        <span className={cn("flex items-center justify-center rounded-lg border font-medium", sibeBarIconVariant({ }), className)}>{item.icon}</span>
+                                    <a href={item.href} className={cn("cursor-pointer",sideBarAnchorVariant({anchorVariant}),fontColor(textColor),className)}>
+                                        <span className={cn(sibeBarIconVariant({}), className)}>{item.icon}</span>
                                         <span className={cn("truncate", className)}>{item.name}</span>
                                     </a>
                                 </li>
                             ))}
-                            <li className={cn("-mx-6 mt-40", className)}>
-                                <a className={cn("flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6", className)}>
-                                    <img className={cn("inline-block rounded-full", sibeBarImageVariant({}))} src={imageURL} />
-                                    <span>{userName}</span>
+                            <li className={cn("mt-40",className)}>
+                                <a className={cn("flex items-center gap-x-4 mt-10 px-6 py-3 cursor-pointer",sideBarAnchorVariant({anchorVariant}), className)}>
+                                    <img className={cn("inline-block", sibeBarImageVariant({}),className)} src={imageURL} />
+                                    <span className={cn(fontColor(textColor),className)}>{userName}</span>
                                 </a>
                             </li>
                         </ul>
