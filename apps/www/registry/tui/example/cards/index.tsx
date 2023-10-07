@@ -35,6 +35,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import { SlideOverCard } from "./slideover-card";
 import { HeaderCard } from "./header-card";
 import { CardsPagination } from "./pagination";
+import { CardsBreadcrumb } from "./breadcrumb";
 
 
 export default function CardsDemo() {
@@ -183,6 +184,9 @@ export default function CardsDemo() {
 
             <CardsPagination />
 
+          <div className="grid-cols-2 grid gap-4">
+              <CardsBreadcrumb/>
+            </div>
             <div className="grid-cols-2 grid gap-4">
               <CardsInputGroup />
               <CardsTextArea />
