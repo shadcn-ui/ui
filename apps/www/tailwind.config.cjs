@@ -8,4 +8,7 @@ module.exports = {
     "content/**/*.mdx",
     "registry/**/*.{ts,tsx}",
   ],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ]
 }
