@@ -183,7 +183,7 @@ export default function CardsDemo() {
           <TabsContent value="pg-components" className="flex flex-col space-y-5">
 
             <CardsPagination />
-            <div className="grid-cols-1 grid gap-4">
+            <div className="grid-cols-2 grid gap-4">
               <CardsCommandPalettes />
             </div>
 
