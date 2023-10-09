@@ -35,6 +35,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import { SlideOverCard } from "./slideover-card";
 import { HeaderCard } from "./header-card";
 import { CardsPagination } from "./pagination";
+import { CardsCommandPalettes } from "./command-palettes";
 
 
 export default function CardsDemo() {
@@ -182,6 +183,9 @@ export default function CardsDemo() {
           <TabsContent value="pg-components" className="flex flex-col space-y-5">
 
             <CardsPagination />
+            <div className="grid-cols-1 grid gap-4">
+              <CardsCommandPalettes />
+            </div>
 
             <div className="grid-cols-2 grid gap-4">
               <CardsInputGroup />
