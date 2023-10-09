@@ -46,23 +46,23 @@ export interface CommandPalettesProps
     extends React.HTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof commandPalettesVariants> {
     withIcon?: boolean;
-    noFoundCommentText?: string;
-    description?: "withoutDescription" | "withDescription";
+    hasFooter?: boolean;
+    withPreview?: boolean;
     haskeyboard?: boolean;
+    description?: "withoutDescription" | "withDescription";
     variant?: "outline" | "secondary";
     listTitleName?: string;
     searchName?: string;
     titleText?: string;
     projectNameListName?: string;
-    footer?: boolean;
-    withPreview?: boolean;
-    iconStyle?: string;
     noResultText?: string;
-    imageStyle?: string;
+    noFoundCommentText?: string;
     buttonName?: string;
-    hoverColor?: colors;
+    iconStyle?: string;
+    imageStyle?: string;
     backgroundColor?: colors;
     textColor?: colors;
+    hoverColor?: colors;
     icon?: IconType;
     errorIcon?: IconType;
     folderIcon?: IconType;
@@ -73,7 +73,7 @@ export interface CommandPalettesProps
 }
 
 const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps>(
-    ({ className, withIcon, noFoundIcon, imageStyle,filteredList,handleChange,inputValue, buttonName, hoverColor, iconStyle, noResultText, backgroundColor, textColor, withPreview, footer, projectNameListName, searchName, listTitleName, titleText, folderIcon, variant, description, haskeyboard, errorIcon, icon, noFoundCommentText, ...props }, ref) => {
+    ({ className, withIcon, noFoundIcon, imageStyle,filteredList,handleChange,inputValue, buttonName, hoverColor, iconStyle, noResultText, backgroundColor, textColor, withPreview, hasFooter, projectNameListName, searchName, listTitleName, titleText, folderIcon, variant, description, haskeyboard, errorIcon, icon, noFoundCommentText, ...props }, ref) => {
 
         const bgColor = (backgroundColor?: colors) => {
             return `bg-${backgroundColor}-900 `
@@ -168,7 +168,7 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                                                     {listTitleName ? <h2 className={cn("bg-accent/50 mt-[-8px] px-4 py-2.5 text-xs font-semibold", className)}>{listTitleName}</h2> : null}
                                                     <ul className={cn("text-sm", fontColor(textColor), bgColor(backgroundColor), className)}>
                                                         {
-                                                            !footer ?
+                                                            !hasFooter ?
                                                                 <li className={cn("flex cursor-pointer select-none items-center px-3 py-2", hoveringColor(hoverColor), commandPalettesVariants({ variant }), className)}>
                                                                     {folderIcon && <Icon name={folderIcon} />}
                                                                     <span className={cn("ml-3 flex-auto truncate ", className)}>{titleText}</span>
@@ -203,7 +203,7 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
 
                                         </ul>
                                         {
-                                            footer ?
+                                            hasFooter ?
                                                 <div className={cn("flex flex-wrap items-center bg-accent/30 px-4 py-2.5 text-xs rounded-b-lg -mb-[8px]", fontColor(textColor), className)}>Type
                                                     {icon && <Icon name={icon} className={cn("mx-1 flex p-1 items-center justify-center rounded border font-semibold sm:mx-2", `${iconStyle}`, className)} />}
                                                     <span className={cn("hidden sm:inline", className)}>to access projects,</span>

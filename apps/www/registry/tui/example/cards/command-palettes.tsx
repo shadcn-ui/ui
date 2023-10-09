@@ -128,7 +128,7 @@ export function CardsCommandPalettes() {
 
 
                     <div className=" mt-3 text-m font-bold text-primary">with Footer</div>
-                    <CommandPalettes  footer={true} projectNameListName="Projects" haskeyboard={true} withIcon={true} errorIcon="circle-exclamation-regular" icon="hashtag-solid" iconStyle="w-3 h-3 border-gray-400 bg-white"  noFoundIcon="folder-open-solid"  noFoundCommentText="We couldn't find any projects with that term. Please try again."  hoverColor="indigo" variant="secondary" filteredList={filteredListItem} inputValue={listItemInputValue} handleChange={listItemHandleChange} />
+                    <CommandPalettes  hasFooter={true} projectNameListName="Projects" haskeyboard={true} withIcon={true} errorIcon="circle-exclamation-regular" icon="hashtag-solid" iconStyle="w-3 h-3 border-gray-400 bg-white"  noFoundIcon="folder-open-solid"  noFoundCommentText="We couldn't find any projects with that term. Please try again."  hoverColor="indigo" variant="secondary" filteredList={filteredListItem} inputValue={listItemInputValue} handleChange={listItemHandleChange} />
 
                     <div className=" mt-3 text-m font-bold text-primary">With preview</div>
                     <CommandPalettes  withIcon={true} withPreview={true} errorIcon="circle-exclamation-regular" noFoundCommentText="We couldn't find any projects with that term. Please try again." noResultText="No People Found" buttonName="Send Message" imageStyle="h-6 w-6" hoverColor="gray" filteredList={filteredDataList} inputValue={dataItemInputValue} handleChange={dataItemHandleChange}/>
