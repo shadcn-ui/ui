@@ -1,35 +1,36 @@
 import { Card, CardContent, CardHeader, CardTitle, } from "@/registry/tui/ui/card"
 import { Steps } from "../../ui/steps";
+import { useMemo } from "react";
 
-export function CardsSteps() {
+export const CardsSteps = ()=> {
     const steps = [
         { id: "Step 1", name: "Job details", borderClass: "border-indigo-600", textClass: "text-indigo-600",status: 'complete' },
         { id: "Step 2", name: "Application form", borderClass: "border-indigo-600", textClass: "text-indigo-600", status: 'current' },
         { id: "Step 3", name: "Preview", borderClass: "border-gray-200", textClass: "text-gray-500", status: 'upcoming' }
     ];
 
-    const stepsData = [
-        { name: 'Step 1', href: '#', status: 'complete' },
-        { name: 'Step 2', href: '#', status: 'current' },
-        { name: 'Step 3', href: '#', status: 'upcoming' },
-        { name: 'Step 4', href: '#', status: 'upcoming' },
-      ]
+    const stepsData = useMemo(() => [
+      { name: 'Step 1', href: '#', status: 'complete' },
+      { name: 'Step 2', href: '#', status: 'current' },
+      { name: 'Step 3', href: '#', status: 'upcoming' },
+      { name: 'Step 4', href: '#', status: 'upcoming' },
+    ], []);
 
-      const stepsList = [
-        { name: 'Step 1', href: '#', status: 'complete' },
-        { name: 'Step 2', href: '#', status: 'complete' },
-        { name: 'Step 3', href: '#', status: 'complete' },
-        { name: 'Step 4', href: '#', status: 'current' },
-        { name: 'Step 5', href: '#', status: 'upcoming' },
-      ]
+    const stepsList = useMemo(() => [
+      { name: 'Step 1', href: '#', status: 'complete' },
+      { name: 'Step 2', href: '#', status: 'complete' },
+      { name: 'Step 3', href: '#', status: 'complete' },
+      { name: 'Step 4', href: '#', status: 'current' },
+      { name: 'Step 5', href: '#', status: 'upcoming' },
+    ], []);
 
-      const stepsListItem = [
+      const stepsListItem = useMemo(() =>[
         { name: 'Create account', href: '#', status: 'complete' },
         { name: 'Profile information', href: '#', status: 'current' },
         { name: 'Theme', href: '#', status: 'upcoming' },
         { name: 'Preview', href: '#', status: 'upcoming' },
-      ]
-      const stepsDataItem = [
+      ], []);
+      const stepsDataItem = useMemo(() =>[
         { name: 'Create account', description: 'Vitae sed mi luctus laoreet.', href: '#', status: 'complete' },
         {
           name: 'Profile information',
@@ -40,19 +41,19 @@ export function CardsSteps() {
         { name: 'Business information', description: 'Penatibus eu quis ante.', href: '#', status: 'upcoming' },
         { name: 'Theme', description: 'Faucibus nec enim leo et.', href: '#', status: 'upcoming' },
         { name: 'Preview', description: 'Iusto et officia maiores porro ad non quas.', href: '#', status: 'upcoming' },
-      ]
-      const stepsText = [
+      ], []);
+      const stepsText = useMemo(() => [
         { text: "Copying files", align: "left", color: "indigo-600" },
         { text: "Migrating database", align: "center", color: "indigo-600" },
         { text: "Compiling assets", align: "center", color: null },
         { text: "Deployed", align: "right", color: null }
-      ];
+      ], []);
 
-      const stepsItem = [
+      const stepsItem =  useMemo(() => [
         { id: '01', name: 'Job details', href: '#', status: 'complete' },
         { id: '02', name: 'Application form', href: '#', status: 'current' },
         { id: '03', name: 'Preview', href: '#', status: 'upcoming' },
-      ]
+      ], []);
     
     return (
         <Card>

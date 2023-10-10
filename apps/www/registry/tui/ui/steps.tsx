@@ -5,11 +5,22 @@ import { Icon, IconType } from "./icon"
 import { colors } from "./helper/types"
 
 const stepsVariants = cva(
-    ""
+    " block ",
+    {
+        variants: {
+            anchorSize: {
+                default: "h-2.5 w-2.5 rounded-full",
+                xl: "h-full w-full rounded-full",
+            },
+        },
+        defaultVariants: {
+            anchorSize: "default"
+        }
+    }
 )
 
 const stepsSpanVariants = cva(
-    " ",
+    "",
     {
         variants: {
             fontSize: {
@@ -26,23 +37,9 @@ const stepsSpanVariants = cva(
     }
 )
 
-const stepsAnchorVariants = cva(
-    " block ",
-    {
-        variants: {
-            anchorSize: {
-                default: "h-2.5 w-2.5 rounded-full",
-                xl: "h-full w-full rounded-full",
-            },
-        },
-        defaultVariants: {
-            anchorSize: "default"
-        }
-    }
-)
 
 const stepsDivVariants = cva(
-    " ",
+    "mt-0.5 ",
     {
         variants: {
             divSize: {
@@ -128,7 +125,6 @@ function Steps({ children, className, iconStyle, backgroundColor,borderColor, te
     }
 
     return (
-        <>
             <nav>
                 {simple ?
                     <ol className={cn("space-y-4 md:flex md:space-x-8 md:space-y-0", className)}>
@@ -172,18 +168,18 @@ function Steps({ children, className, iconStyle, backgroundColor,borderColor, te
                             {steps.map((step: any) => (
                                 <li key={step.name}>
                                     {step.status === 'complete' ? (
-                                        <a href={step.href} className={cn(" hover:bg-indigo-900", bgColor(backgroundColor), stepsAnchorVariants({}), className)}>
+                                        <a href={step.href} className={cn(" hover:bg-indigo-900", bgColor(backgroundColor), stepsVariants({}), className)}>
                                         </a>
                                     ) : step.status === 'current' ? (
                                         <a href={step.href} className={cn("relative flex items-center justify-center", className)}>
                                             <span className={cn("absolute flex p-px", stepsSpanVariants({ spanSize }), className)} aria-hidden="true">
-                                                <span className={cn("bg-accent", stepsAnchorVariants({ anchorSize }), className)} />
+                                                <span className={cn("bg-accent", stepsVariants({ anchorSize }), className)} />
                                             </span>
-                                            <span className={cn("relative", bgColor(backgroundColor), stepsAnchorVariants({}), className)} aria-hidden="true" />
+                                            <span className={cn("relative", bgColor(backgroundColor), stepsVariants({}), className)} aria-hidden="true" />
 
                                         </a>
                                     ) : (
-                                        <a href={step.href} className={cn(" bg-primary/50", stepsAnchorVariants({}), className)}>
+                                        <a href={step.href} className={cn(" bg-primary/50", stepsVariants({}), className)}>
                                         </a>
                                     )}
                                 </li>
@@ -215,7 +211,7 @@ function Steps({ children, className, iconStyle, backgroundColor,borderColor, te
                                             <a
                                                 href="#"
                                                 className={cn("border-2",bordersColor(borderColor), stepsCircleVariants({}), className)} aria-current="step">
-                                                <span className={cn(bgColor(backgroundColor), stepsAnchorVariants({}), className)} aria-hidden="true" />
+                                                <span className={cn(bgColor(backgroundColor), stepsVariants({}), className)} aria-hidden="true" />
                                             </a>
                                         </>
                                     ) : (
@@ -226,7 +222,7 @@ function Steps({ children, className, iconStyle, backgroundColor,borderColor, te
                                             <a
                                                 href="#"
                                                 className={cn("border-2 border-primary/20 bg-white ", stepsCircleVariants({}), className)}>
-                                                <span className={cn(" bg-transparent ", stepsAnchorVariants({}), className)} aria-hidden="true" />
+                                                <span className={cn(" bg-transparent ", stepsVariants({}), className)} aria-hidden="true" />
                                             </a>
                                         </>
                                     )}
@@ -253,7 +249,7 @@ function Steps({ children, className, iconStyle, backgroundColor,borderColor, te
                                                     <a href={step.href} className={cn("flex items-start", className)} aria-current="step">
                                                         <span className={cn("relative flex flex-shrink-0 items-center justify-center", stepsSpanVariants({ spanSize }), className)} aria-hidden="true">
                                                             <span className={cn("absolute bg-indigo-200", stepsSpanVariants({ spanSize }), className)} />
-                                                            <span className={cn("relative", bgColor(backgroundColor), stepsAnchorVariants({}), className)} />
+                                                            <span className={cn("relative", bgColor(backgroundColor), stepsVariants({}), className)} />
                                                         </span>
                                                         <span className={cn("ml-3",fontColor(textColor), stepsSpanVariants({}), className)}>{step.name}</span>
                                                     </a>
@@ -279,7 +275,7 @@ function Steps({ children, className, iconStyle, backgroundColor,borderColor, te
                                             {step.status === 'complete' ? (
                                                 <>
                                                     {stepIdx !== steps.length - 1 ? (
-                                                        <div className={cn("absolute left-4 top-4 -ml-px mt-0.5", stepsDivVariants({ divSize }), bgColor(backgroundColor), className)} aria-hidden="true" />
+                                                        <div className={cn("absolute left-4 top-4 -ml-px ", stepsDivVariants({ divSize }), bgColor(backgroundColor), className)} aria-hidden="true" />
                                                     ) : null}
                                                     <a href={step.href} className={cn("group relative flex items-start", className)}>
                                                         <span className={cn("flex items-center", className)}>
@@ -296,12 +292,12 @@ function Steps({ children, className, iconStyle, backgroundColor,borderColor, te
                                             ) : step.status === 'current' ? (
                                                 <>
                                                     {stepIdx !== steps.length - 1 ? (
-                                                        <div className={cn("absolute left-4 top-4 -ml-px mt-0.5 bg-primary/20", stepsDivVariants({ divSize }), className)} aria-hidden="true" />
+                                                        <div className={cn("absolute left-4 top-4 -ml-px  bg-primary/20", stepsDivVariants({ divSize }), className)} aria-hidden="true" />
                                                     ) : null}
                                                     <a href={step.href} className={cn("group relative flex items-start", className)} aria-current="step">
                                                         <span className={cn("flex items-center", className)} aria-hidden="true">
                                                             <span className={cn("z-10 border-2 bg-white",bordersColor(borderColor), stepsCircleVariants({}), className)}>
-                                                                <span className={cn(bgColor(backgroundColor), stepsAnchorVariants({}), className)} />
+                                                                <span className={cn(bgColor(backgroundColor), stepsVariants({}), className)} />
                                                             </span>
                                                         </span>
                                                         <span className={cn("ml-4 flex min-w-0 flex-col", className)}>
@@ -313,12 +309,12 @@ function Steps({ children, className, iconStyle, backgroundColor,borderColor, te
                                             ) : (
                                                 <>
                                                     {stepIdx !== steps.length - 1 ? (
-                                                        <div className={cn("absolute left-4 top-4 -ml-px mt-0.5  bg-primary/20  ", stepsDivVariants({ divSize }), className)} aria-hidden="true" />
+                                                        <div className={cn("absolute left-4 top-4 -ml-px  bg-primary/20  ", stepsDivVariants({ divSize }), className)} aria-hidden="true" />
                                                     ) : null}
                                                     <a href={step.href} className={cn("group relative flex items-start", className)}>
                                                         <span className={cn("flex items-center", className)} aria-hidden="true">
                                                             <span className={cn("z-10 border-2 border-primary/20 bg-white group-hover:border-gray-400", stepsCircleVariants({}), className)}>
-                                                                <span className={cn(" bg-transparent ", stepsAnchorVariants({}), className)} />
+                                                                <span className={cn(" bg-transparent ", stepsVariants({}), className)} />
                                                             </span>
                                                         </span>
                                                         <span className={cn("ml-4 flex min-w-0 flex-col", className)}>
@@ -332,7 +328,7 @@ function Steps({ children, className, iconStyle, backgroundColor,borderColor, te
                                     ))}
                                 </ol> : progressBar ?
                                     <div>
-                                        <p className={cn("text-gray-900", stepsSpanVariants({}), className)}>Migrating MySQL database...</p>
+                                        <p className={cn( stepsSpanVariants({}), className)}>Migrating MySQL database...</p>
                                         <div className={cn("mt-6", className)} aria-hidden="true">
                                             <div className={cn("overflow-hidden rounded-full bg-accent", className)}>
                                                 <div className={cn(stepsDivVariants({ divSize }), bgColor(backgroundColor), stepsSpanVariants({}), className)} style={{ width: '37.5%' }} />
@@ -407,9 +403,7 @@ function Steps({ children, className, iconStyle, backgroundColor,borderColor, te
                                             ))}
                                         </ol> : null
                 }
-
             </nav>
-        </>
     )
 }
 
