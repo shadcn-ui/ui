@@ -107,10 +107,11 @@ export interface StepsProps
     divSize?: "default" | "l" | "m" | "xl";
 
 }
-function classNames(...classes: string[]) {
+const classNames = (...classes: string[])=>{
     return classes.filter(Boolean).join(' ')
 }
-function Steps({ children, className, iconStyle, backgroundColor,borderColor, textColor, spanSize, divSize, steps, simple, anchorSize, bulletOfText, bulletStepText, panels, bullets, circle, bulletText, progressBar, icon, circleText, ...props }: StepsProps) {
+
+const Steps = ({ children, className, iconStyle, backgroundColor,borderColor, textColor, spanSize, divSize, steps, simple, anchorSize, bulletOfText, bulletStepText, panels, bullets, circle, bulletText, progressBar, icon, circleText, ...props }: StepsProps) => {
 
     const bgColor = (backgroundColor?: colors) => {
         return `bg-${backgroundColor}-600 `

@@ -3,11 +3,11 @@ import { Steps } from "../../ui/steps";
 import { useMemo } from "react";
 
 export const CardsSteps = ()=> {
-    const steps = [
+    const steps = useMemo(() => [
         { id: "Step 1", name: "Job details", borderClass: "border-indigo-600", textClass: "text-indigo-600",status: 'complete' },
         { id: "Step 2", name: "Application form", borderClass: "border-indigo-600", textClass: "text-indigo-600", status: 'current' },
         { id: "Step 3", name: "Preview", borderClass: "border-gray-200", textClass: "text-gray-500", status: 'upcoming' }
-    ];
+      ], []);
 
     const stepsData = useMemo(() => [
       { name: 'Step 1', href: '#', status: 'complete' },
