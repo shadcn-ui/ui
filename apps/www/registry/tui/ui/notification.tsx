@@ -56,7 +56,6 @@ const Notifications = React.forwardRef<HTMLButtonElement, NotificationProps>(
             return `bg-${backgroundColor}-600 `
         }
         return (
-            <>
                 <div className={cn("pointer-events-none inset-0 flex px-4 py-6 sm:items-start sm:p-6", className)}>
                     <div className={cn(`flex w-3/4 flex-col space-y-4 ${alignment === "topRightCorner"? "items-end":alignment === "topLeftCorner"?"items-start":alignment === "bottomRightCorner"?"flex justify-end items-end h-full w-full":alignment === "bottomLeftCorner"?"grid grid-cols-1 grid-rows-1 justify-items-start items-end mb-4":null} `, className)}>
                         <div className={cn("max-w-sm overflow-hidden", NotificationVariants({}), className)}>
@@ -219,7 +218,6 @@ const Notifications = React.forwardRef<HTMLButtonElement, NotificationProps>(
                         </div>
                     </div>
                 </div>
-            </>
         )
     }
 )
