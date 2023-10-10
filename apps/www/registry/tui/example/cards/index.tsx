@@ -47,6 +47,7 @@ import { Flex, FlexItem } from "../../ui/flex";
 import { CardsBreadcrumb } from "./breadcrumb";
 import { CardsNotification } from "./notification";
 import { CardsCommandPalettes } from "./command-palettes";
+import { CardsSteps } from "./steps";
 
 
 export default function CardsDemo() {
@@ -243,6 +244,7 @@ export default function CardsDemo() {
               <CardsCommandPalettes />
             </div>
 
+            <CardsSteps />
             <div className="grid-cols-2 grid gap-4">
               <CardsBreadcrumb />
             </div>
