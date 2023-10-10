@@ -44,6 +44,7 @@ import { GridList5 } from "./GridLists/gridList5";
 import { GridList6 } from "./GridLists/gridList6";
 import { GridList7 } from "./GridLists/gridList7";
 import { Flex, FlexItem } from "../../ui/flex";
+import { CardsBreadcrumb } from "./breadcrumb";
 
 
 export default function CardsDemo() {
@@ -237,6 +238,9 @@ export default function CardsDemo() {
 
             <CardsPagination />
 
+            <div className="grid-cols-2 grid gap-4">
+              <CardsBreadcrumb />
+            </div>
             <div className="grid-cols-2 grid gap-4">
               <CardsInputGroup />
               <CardsTextArea />
