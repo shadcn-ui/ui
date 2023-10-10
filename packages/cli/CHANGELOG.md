@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.4.1
+
+### Patch Changes
+
+- [#1662](https://github.com/shadcn-ui/ui/pull/1662) [`95a9673`](https://github.com/shadcn-ui/ui/commit/95a9673b1ec6a1954d941d35624ad2cd93faccc4) Thanks [@shadcn](https://github.com/shadcn)! - minify build
+
 ## 0.4.0
 
 ### Minor Changes
