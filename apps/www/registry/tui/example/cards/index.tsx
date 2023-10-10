@@ -46,6 +46,7 @@ import { GridList7 } from "./GridLists/gridList7";
 import { Flex, FlexItem } from "../../ui/flex";
 import { CardsBreadcrumb } from "./breadcrumb";
 import { CardsNotification } from "./notification";
+import { CardsCommandPalettes } from "./command-palettes";
 
 
 export default function CardsDemo() {
@@ -238,6 +239,9 @@ export default function CardsDemo() {
           <TabsContent value="pg-components" className="flex flex-col space-y-5">
             <CardsNotification />
             <CardsPagination />
+            <div className="grid-cols-2 grid gap-4">
+              <CardsCommandPalettes />
+            </div>
 
             <div className="grid-cols-2 grid gap-4">
               <CardsBreadcrumb />
