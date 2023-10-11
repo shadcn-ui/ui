@@ -10,6 +10,8 @@ Visit http://ui.shadcn.com/docs to view the documentation.
 
 ## Contributing
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer)
+
 Please read the [contributing guide](/CONTRIBUTING.md).
 
 ## License

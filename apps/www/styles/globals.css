@@ -4,48 +4,101 @@
 
 @layer base {
   :root {
+    --body-background: rgb(255, 255, 255);
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
     --ring: 240 5% 64.9%;
+
     --radius: 0.5rem;
+
+    /* --chatgpt: rgb(0, 0, 0) (255, 0, 0); */
+    --code: rgb(0, 0, 0) (255, 0, 0);
+    --code-foreground: #f4f4f5;
+    --code--highlighted: rgb(240, 240, 240);
+    --copy-button-background: rgb(255, 255, 255);
+
+    --scrollbar-track: rgb(248, 248, 248);
+    --scrollbar-track-border: rgb(242, 242, 242);
+    --scrollbar-track-hover: rgb(240, 240, 240);
+    --scrollbar-track-active: rgb(244, 244, 244);
+    --scrollbar-thumb: rgb(225, 225, 225);
+    --scrollbar-thumb-hover: rgb(220, 220, 220);
+    --scrollbar-thumb-active: rgb(229, 229, 229);
+
+    --rainbow-background: rgba(0, 0, 0, 0.16);
   }
 
   .dark {
+    --body-background: rgb(0, 0, 0);
+
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+
+    --ring: 240 3.7% 15.9%;
+
+    --code: rgb(255, 255, 255);
+    --code-foreground: #18181b;
+    --code-highlighted: rgb(17, 17, 17);
+    --copy-button-background: rgb(17, 17, 17);
+
+    --scrollbar-track: #09090b;
+    --scrollbar-track-border: #1b1b1f;
+    --scrollbar-track-hover: #0b0b0c;
+    --scrollbar-track-active: #050507;
+    --scrollbar-thumb: rgb(62, 62, 62);
+    --scrollbar-thumb-hover: rgb(68, 68, 68);
+    --scrollbar-thumb-active: rgb(66, 66, 66);
+
+    --rainbow-background: rgb(255, 0, 0);
   }
 }
 
@@ -53,6 +106,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
@@ -65,7 +119,7 @@
   }
 
   .step:before {
-    @apply absolute w-9 h-9 bg-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 border-background;
+    @apply inline-flex absolute justify-center items-center w-9 h-9 font-mono text-base font-medium text-center rounded-full border-4 bg-muted -indent-px border-background;
     @apply ml-[-50px] mt-[-4px];
     content: counter(step);
   }
@@ -75,4 +129,87 @@
   .container {
     @apply px-4;
   }
+}
+
+span.line span {
+  color: var(--code) !important;
+}
+
+pre {
+  background-color: var(--code-foreground) !important;
+}
+
+span.line--highlighted {
+  background-color: var(--code-foreground) !important;
+}
+div[data-rehype-pretty-code-fragment] button:hover {
+  background-color: var(--copy-button-background) !important;
+}
+
+html.dark div[data-rehype-pretty-code-fragment] button svg {
+  color: rgb(255, 255, 255) !important;
+}
+
+html.light div[data-rehype-pretty-code-fragment] button svg {
+  color: rgb(0, 0, 0) !important;
+}
+
+.hello-tool button {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: 0 !important;
+}
+
+.hello-tool .collab {
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) !important;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  width: 7px;
+  width: 7px;
+  height: 7px;
+  height: 7px;
+}
+
+*::-webkit-scrollbar-corner {
+  background-color: var(--scrollbar-track) !important;
+  border: 1px solid var(--scrollbar-track) !important;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track) !important;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-hover) !important;
+  border-left: 1.5px solid var(--scrollbar-track-border) !important;
+  border-right: 1px solid var(--scrollbar-track-border) !important;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: var(--scrollbar-track-active) !important;
+  border-left: 1.5px solid var(--scrollbar-track-border) !important;
+  border-right: 1px solid var(--scrollbar-track-border) !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb) !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-hover) !important;
+  border-radius: 14px;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--scrollbar-thumb-active) !important;
+  border-radius: 14px;
 }
