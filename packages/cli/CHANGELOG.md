@@ -1,5 +1,31 @@
 # @shadcn/ui
 
+## 0.4.1
+
+### Patch Changes
+
+- [#1662](https://github.com/shadcn-ui/ui/pull/1662) [`95a9673`](https://github.com/shadcn-ui/ui/commit/95a9673b1ec6a1954d941d35624ad2cd93faccc4) Thanks [@shadcn](https://github.com/shadcn)! - minify build
+
+## 0.4.0
+
+### Minor Changes
+
+- [#1554](https://github.com/shadcn-ui/ui/pull/1554) [`2f0dbca`](https://github.com/shadcn-ui/ui/commit/2f0dbca22180507c20088f595613481adcfb51ed) Thanks [@shadcn](https://github.com/shadcn)! - do not ask for confirmation
+
+- [#1033](https://github.com/shadcn-ui/ui/pull/1033) [`963114e`](https://github.com/shadcn-ui/ui/commit/963114e118a2263f4ee449cc07b0f6f7e5104bc1) Thanks [@sramam](https://github.com/sramam)! - add --all option
+
+- [#973](https://github.com/shadcn-ui/ui/pull/973) [`58d012e`](https://github.com/shadcn-ui/ui/commit/58d012e342d2563b4c43ed2ac18879a6d5044980) Thanks [@plbstl](https://github.com/plbstl)! - ask for overwrite
+
+### Patch Changes
+
+- [#1466](https://github.com/shadcn-ui/ui/pull/1466) [`0a42865`](https://github.com/shadcn-ui/ui/commit/0a4286500ee06289eccde8fe9257c169b47dbc93) Thanks [@c0b41](https://github.com/c0b41)! - fix file extension
+
+- [#1555](https://github.com/shadcn-ui/ui/pull/1555) [`d3d52fc`](https://github.com/shadcn-ui/ui/commit/d3d52fc68723a895ddad99e1f5c9420d981d3387) Thanks [@shadcn](https://github.com/shadcn)! - update README
+
+- [#1319](https://github.com/shadcn-ui/ui/pull/1319) [`4506822`](https://github.com/shadcn-ui/ui/commit/450682238922bf025ff919f0a84147894710fb71) Thanks [@K-Sato1995](https://github.com/K-Sato1995)! - remove duplicate vi call
+
+- [#1089](https://github.com/shadcn-ui/ui/pull/1089) [`ae84578`](https://github.com/shadcn-ui/ui/commit/ae845788f688d60f0e8ac020e16a4bd357978baf) Thanks [@santidalmasso](https://github.com/santidalmasso)! - fix duplicate classnames
+
 ## 0.3.0
 
 ### Minor Changes
