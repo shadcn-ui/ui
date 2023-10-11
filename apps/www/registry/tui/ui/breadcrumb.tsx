@@ -107,13 +107,13 @@ function Breadcrumbs({ children, className,textColor,size, separatorIconStyle,  
                               : item.display === "onlyIcon" ?
                                 <>
                                   {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                  {item.separatorIcon && <Icon name={item.separatorIcon} className={`${separatorIconStyle}`} />}
+                                  {item.separatorIcon && <Icon name={item.separatorIcon} className={`pl-2.5 ${separatorIconStyle}`} />}
                                 </>
                                 : item.display === "iconWithText" ?
                                   <>
                                     {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
                                     {item.text}
-                                    {item.separatorIcon && <Icon name={item.separatorIcon} className={cn("pl-3", `${separatorIconStyle}`)} />}
+                                    {item.separatorIcon && <Icon name={item.separatorIcon} className={cn("pl-3,", `${separatorIconStyle}`)} />}
                                   </>
                                   : null
                           }
@@ -141,13 +141,13 @@ function Breadcrumbs({ children, className,textColor,size, separatorIconStyle,  
                                 <>
 
                                   {item.text}
-                                  {item.separatorIcon && <Icon name={item.separatorIcon} className={`${separatorIconStyle}`} />}
+                                  {item.separatorIcon && <Icon name={item.separatorIcon} className={`pl-2.5 ${separatorIconStyle}`} />}
 
                                 </>
                                 : item.display === "onlyIcon" ?
                                   <>
                                     {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                    {item.separatorIcon && <Icon name={item.separatorIcon} className={`${separatorIconStyle}`} />}
+                                    {item.separatorIcon && <Icon name={item.separatorIcon} className={`pl-2.5 ${separatorIconStyle}`} />}
                                   </>
                                   : item.display === "iconWithText" ?
                                     <>
@@ -180,13 +180,13 @@ function Breadcrumbs({ children, className,textColor,size, separatorIconStyle,  
                                   <>
 
                                     {item.text}
-                                    {item.separatorIcon && <Icon name={item.separatorIcon} className={`${separatorIconStyle}`} />}
+                                    {item.separatorIcon && <Icon name={item.separatorIcon} className={`pl-2.5 ${separatorIconStyle}`} />}
 
                                   </>
                                   : item.display === "onlyIcon" ?
                                     <>
                                       {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                      {item.separatorIcon && <Icon name={item.separatorIcon} className={`${separatorIconStyle}`} />}
+                                      {item.separatorIcon && <Icon name={item.separatorIcon} className={`pl-2.5 ${separatorIconStyle}`} />}
                                     </>
                                     : item.display === "iconWithText" ?
                                       <>
