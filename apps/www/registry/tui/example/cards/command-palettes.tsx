@@ -1,33 +1,12 @@
 "use client"
 import { Card, CardHeader, CardTitle, CardContent } from "@/registry/tui/ui/card"
 import React, { ChangeEvent, useState } from "react";
-import { CommandPalettes } from "../../ui/command-palettes";
+import { CommandPalettes, DataItem, ItemList, ListItem } from "../../ui/command-palettes";
 import { IconType } from "../../ui/icon";
 
 export function CardsCommandPalettes() {
     const names = ["Leslie Alexander", "Michael Foster", "Dries Vincent", "Lindsay Walton"];
     
-    interface ItemList {
-        title: string;
-        description: string;
-        icon: IconType;
-        backgroundStyle: string;
-    }
-    interface ListItem{
-        icon?:IconType;
-        keyboardName?:string;
-        command?:string;
-    }
-    interface DataItem {
-        name?: string;
-        image?: string;
-        position?: string;
-        phone?: number;
-        url?: string;
-        email?: string;
-        imageStyle?:string;
-        icon?:IconType;
-    }
     const lstItems:ItemList[] = [
         { title: "Text", description: "Add freeform text with basic formatting options.", icon: "pen-to-square-regular", backgroundStyle: "bg-indigo-500 h-10 w-10" },
         { title: "Video", description: "Add a video from Youtube, Vimeo or other services.", icon: "video-regular", backgroundStyle: "bg-blue-500 h-10 w-10" },
@@ -93,7 +72,7 @@ export function CardsCommandPalettes() {
     }
 
     const filteredNames = names.filter((name:string) => name.toLowerCase().includes(firstInputValue.toLowerCase()));
-    const filteredListName = lstItems?.filter((item: ItemList) => item.title.toLowerCase().includes(listInputValue.toLowerCase()));
+    const filteredListName = lstItems?.filter((item: ItemList) => item.title?.toLowerCase().includes(listInputValue.toLowerCase()));
     const filteredListItem = itemList?.filter((item: ListItem) => item.command?.toLowerCase().includes(listItemInputValue.toLowerCase()));
     const filteredDataList = dataList?.filter((item: DataItem) => item.name?.toLowerCase().includes(dataItemInputValue.toLowerCase()));
     return (
@@ -105,32 +84,32 @@ export function CardsCommandPalettes() {
                 </CardHeader>
                 <CardContent>
                     
-                    <div className="text-m font-bold text-primary">Simple</div>
+                    <div className=" font-bold text-primary">Simple</div>
                     <CommandPalettes description="withoutDescription" noFoundCommentText="No people found." withIcon={true} hoverColor="indigo" className="text-gray-800" filteredList={filteredNames} inputValue={firstInputValue} handleChange={nameHandleChange} />
 
-                    <div className=" mt-3 text-m font-bold text-primary">Simple with padding</div>
+                    <div className=" mt-3 font-bold text-primary">Simple with padding</div>
                     <CommandPalettes description="withoutDescription" noFoundCommentText="No people found using that search term." icon="user-group-regular" hoverColor="indigo" className="text-gray-800" filteredList={filteredNames} inputValue={firstInputValue} handleChange={nameHandleChange}  />
 
-                    <div className=" mt-3 text-m font-bold text-primary">With images and descriptions</div>
+                    <div className=" mt-3 font-bold text-primary">With images and descriptions</div>
                     <CommandPalettes description="withDescription" hoverColor="indigo" icon="user-group-regular" errorIcon="circle-exclamation-regular" textColor="gray" iconStyle="text-white" noFoundCommentText="No components found for this search term. Please try again." noResultText="No Result" withIcon={true} filteredList={filteredListName} inputValue={listInputValue} handleChange={listHandleChange} />
 
-                    <div className=" mt-3 text-m font-bold text-primary">With icons</div>
+                    <div className=" mt-3 font-bold text-primary">With icons</div>
                     <CommandPalettes folderIcon="folder-regular" noFoundIcon="folder-open-solid" iconStyle="h-5 w-5" noFoundCommentText="We couldn't find any projects with that term. Please try again." searchName="Recent Search" titleText="Workflow Inc. / Website Redesign" hoverColor="indigo" haskeyboard={true} withIcon={true} filteredList={filteredListItem} inputValue={listItemInputValue} handleChange={listItemHandleChange} />
 
-                    <div className=" mt-3 text-m font-bold text-primary">Semi-transparent with icons</div>
+                    <div className=" mt-3 font-bold text-primary">Semi-transparent with icons</div>
                     <CommandPalettes  folderIcon="folder-regular" titleText="Workflow Inc. / Website Redesign"  searchName="Recent Search" variant="outline" haskeyboard={true} withIcon={true} iconStyle="h-5 w-5" noFoundIcon="folder-open-solid" noFoundCommentText="We couldn't find any projects with that term. Please try again." filteredList={filteredListItem} inputValue={listItemInputValue} handleChange={listItemHandleChange} />
 
-                    <div className=" mt-3 text-m font-bold text-primary">Dark with icons</div>
+                    <div className=" mt-3 font-bold text-primary">Dark with icons</div>
                     <CommandPalettes  className=" border-none text-gray-500 hover:text-white" backgroundColor="gray" folderIcon="folder-regular"  titleText="Workflow Inc. / Website Redesign" searchName="Recent Search" color="gray" haskeyboard={true} withIcon={true} iconStyle="h-5 w-5" noFoundIcon="folder-open-solid" noFoundCommentText="We couldn't find any projects with that term. Please try again." filteredList={filteredListItem} inputValue={listItemInputValue} handleChange={listItemHandleChange} />
 
-                    <div className=" mt-3 text-m font-bold text-primary">With groups</div>
+                    <div className=" mt-3 font-bold text-primary">With groups</div>
                     <CommandPalettes  listTitleName="Client" titleText="Workflow Inc." projectNameListName="Project" haskeyboard={true} withIcon={true} hoverColor="indigo" textColor="gray" iconStyle="h-5 w-5" noFoundIcon="folder-open-solid" noFoundCommentText="We couldn't find any projects with that term. Please try again." variant="secondary" filteredList={filteredListItem} inputValue={listItemInputValue} handleChange={listItemHandleChange} />
 
 
-                    <div className=" mt-3 text-m font-bold text-primary">with Footer</div>
+                    <div className=" mt-3 font-bold text-primary">with Footer</div>
                     <CommandPalettes  hasFooter={true} projectNameListName="Projects" haskeyboard={true} withIcon={true} errorIcon="circle-exclamation-regular" icon="hashtag-solid" iconStyle="w-3 h-3 border-gray-400 bg-white"  noFoundIcon="folder-open-solid"  noFoundCommentText="We couldn't find any projects with that term. Please try again."  hoverColor="indigo" variant="secondary" filteredList={filteredListItem} inputValue={listItemInputValue} handleChange={listItemHandleChange} />
 
-                    <div className=" mt-3 text-m font-bold text-primary">With preview</div>
+                    <div className=" mt-3 font-bold text-primary">With preview</div>
                     <CommandPalettes  withIcon={true} withPreview={true} errorIcon="circle-exclamation-regular" noFoundCommentText="We couldn't find any projects with that term. Please try again." noResultText="No People Found" buttonName="Send Message" imageStyle="h-6 w-6" hoverColor="gray" filteredList={filteredDataList} inputValue={dataItemInputValue} handleChange={dataItemHandleChange}/>
                 </CardContent>
             </Card>
