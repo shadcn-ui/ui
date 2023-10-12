@@ -1,211 +1,66 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
-import { Icon } from "./icon"
-import { colors } from "./helper/types"
+import { Icon, IconType } from "./icon"
 
-const breadcrumbsVariants = cva(
+const breadcrumbVariants = cva(
   "flex space-x-4",
   {
     variants: {
-        size: {
-          default:"w-full max-w-screen-xl"
-        }
+      BreadcrumbStyle: {
+        fullWidth: "w-full max-w-screen-xl shadow",
+        shadow: "shadow"
+      }
     }
   }
 )
 
-interface DataItem {
-  icon?: string;
-  seperatorIcon?: string;
+export interface BreadcrumItem {
+  icon?: IconType;
   text?: string;
-  href?: string;
-  display?: string;
+  href: string;
+  display: "onlyIcon" | "onlyText" | "iconWithText";
 }
 
-export interface BreadcrumbsProps
+export interface BreadcrumbProps
   extends React.HTMLAttributes<HTMLElement>,
-  VariantProps<typeof breadcrumbsVariants> {
+  VariantProps<typeof breadcrumbVariants> {
   iconStyle?: string;
-  separatorIconStyle?: string;
-  dataItem?: DataItem[];
-  contained?: boolean;
-  fullWidthContained?: boolean;
-  withChevronSeparator?: boolean;
-  withSlashSeparator?: boolean;
-  textColor?:colors;
-  size?:"default";
+  itemIcon?: IconType;
+  itemIconStyle?: string;
+  items?: BreadcrumItem[];
+  BreadcrumbStyle?: "fullWidth" | "shadow";
 }
 
-function Breadcrumbs({ children, className,textColor,size, separatorIconStyle,  iconStyle, withSlashSeparator,fullWidthContained, withChevronSeparator, contained, dataItem, ...props }: BreadcrumbsProps) {
-
-  const fontColor = (textColor?: colors) => {
-    return `text-${textColor}-500 hover:text-${textColor}-700 `
-  }
+function Breadcrumb({ BreadcrumbStyle, itemIcon = "chevron-right-thin", itemIconStyle, iconStyle, items, className, ...props }: BreadcrumbProps) {
 
   return (
     <>
       {
-        contained ?
-          <nav className="flex" aria-label="Breadcrumb">
-            <ol role="list" className={cn("rounded-md px-6 shadow",breadcrumbsVariants({}), className)}>
-              {dataItem && dataItem.map((item: any) => (
-                <li key={item.name} className="flex">
-                  <div className="flex items-center">
-                    <a
-                      href={item.href}
-                      className={cn("ml-4 text-sm font-medium",fontColor(textColor), className)}
-                      aria-current={item.current ? 'page' : undefined}
-                    >
-                      <div className="flex items-center">
-                        {
-                          item.display === "onlyText" ?
-                            <>
-                              {item.text}
-                              {item.separatorIcon && <Icon name={item.separatorIcon} className={`${separatorIconStyle}`} />}
-                            </>
-                            : item.display === "onlyIcon" ?
-                              <>
-                                {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                {item.separatorIcon && <Icon name={item.separatorIcon} className={`${separatorIconStyle}`} />}
-                              </>
-                              : item.display === "iconWithText" ?
-                                <>
-                                  {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                  {item.text}
-                                  {item.separatorIcon && <Icon name={item.separatorIcon} className={cn("pl-3", `${separatorIconStyle}`)} />}
-                                </>
-                                : null
-                        }
-                      </div>
-                    </a>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </nav> :
-          fullWidthContained ?
-            <nav className={cn("flex border-b border-gray-200 ", className)} aria-label="Breadcrumb">
-              <ol role="list" className={cn("mx-auto px-4 sm:px-6 lg:px-8",breadcrumbsVariants({size}), className)}>
-                {dataItem && dataItem.map((item: any) => (
-                  <li key={item.name} className="flex">
-                    <div className="flex items-center">
-                      <a
-                        href={item.href}
-                        className={cn("ml-4 text-sm font-medium ",fontColor(textColor), className)}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        <div className="flex items-center">
-                          {
-                            item.display === "onlyText" ?
-                              <>
-
-                                {item.text}
-                                {item.separatorIcon && <Icon name={item.separatorIcon} className={`${separatorIconStyle}`} />}
-
-                              </>
-                              : item.display === "onlyIcon" ?
-                                <>
-                                  {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                  {item.separatorIcon && <Icon name={item.separatorIcon} className={`pl-2.5 ${separatorIconStyle}`} />}
-                                </>
-                                : item.display === "iconWithText" ?
-                                  <>
-                                    {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                    {item.text}
-                                    {item.separatorIcon && <Icon name={item.separatorIcon} className={cn("pl-3,", `${separatorIconStyle}`)} />}
-                                  </>
-                                  : null
-                          }
-                        </div>
-                      </a>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </nav> :
-            withChevronSeparator ?
-              <nav className={cn("flex", className)} aria-label="Breadcrumb">
-                <ol role="list" className={cn("items-center",breadcrumbsVariants({}), className)}>
-                  {dataItem && dataItem.map((item: any) => (
-                    <li key={item.name} className="flex">
-                      <div className="flex items-center">
-                        <a
-                          href={item.href}
-                          className={cn("ml-4 text-sm font-medium ",fontColor(textColor), className)}
-                          aria-current={item.current ? 'page' : undefined}
-                        >
-                          <div className="flex items-center">
-                            {
-                              item.display === "onlyText" ?
-                                <>
-
-                                  {item.text}
-                                  {item.separatorIcon && <Icon name={item.separatorIcon} className={`pl-2.5 ${separatorIconStyle}`} />}
-
-                                </>
-                                : item.display === "onlyIcon" ?
-                                  <>
-                                    {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                    {item.separatorIcon && <Icon name={item.separatorIcon} className={`pl-2.5 ${separatorIconStyle}`} />}
-                                  </>
-                                  : item.display === "iconWithText" ?
-                                    <>
-                                      {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                      {item.text}
-                                      {item.separatorIcon && <Icon name={item.separatorIcon} className={cn("pl-3", `${separatorIconStyle}`)} />}
-                                    </>
-                                    : null
-                            }
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </nav> : withSlashSeparator ?
-                <nav className={cn("flex", className)} aria-label="Breadcrumb">
-                  <ol role="list" className={cn("items-center",breadcrumbsVariants({}), className)}>
-                    {dataItem && dataItem.map((item: any) => (
-                      <li key={item.name} className="flex">
-                        <div className="flex items-center">
-                          <a
-                            href={item.href}
-                            className={cn("ml-4 text-sm font-medium ",fontColor(textColor), className)}
-                            aria-current={item.current ? 'page' : undefined}
-                          >
-                            <div className="flex items-center">
-                              {
-                                item.display === "onlyText" ?
-                                  <>
-
-                                    {item.text}
-                                    {item.separatorIcon && <Icon name={item.separatorIcon} className={`pl-2.5 ${separatorIconStyle}`} />}
-
-                                  </>
-                                  : item.display === "onlyIcon" ?
-                                    <>
-                                      {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                      {item.separatorIcon && <Icon name={item.separatorIcon} className={`pl-2.5 ${separatorIconStyle}`} />}
-                                    </>
-                                    : item.display === "iconWithText" ?
-                                      <>
-                                        {item.icon && <Icon name={item.icon} className={cn("pr-2.5", `${iconStyle}`, className)} />}
-                                        {item.text}
-                                        {item.separatorIcon && <Icon name={item.separatorIcon} className={cn("pl-3", `${separatorIconStyle}`)} />}
-                                      </>
-                                      : null
-                              }
-                            </div>
-                          </a>
-                        </div>
-                      </li>
-                    ))}
-                  </ol>
-                </nav> : null
+        <nav className="flex" aria-label="Breadcrumb">
+          <ol role="list" className={cn("px-6", breadcrumbVariants({ BreadcrumbStyle }), className)}>
+            {items && items.map((item: BreadcrumItem, index:number) => (
+              <li key={item.text} className="flex items-center">
+                  {index !== 0 && <Icon name={itemIcon} className={cn('h-full w-6 flex-shrink-0 text-primary/50',`${itemIconStyle}`) } />}
+                  <a
+                    href={item.href}
+                    className={cn("ml-4 text-sm font-medium text-primary/70 flex items-center", className)}
+                  >
+                    {(item.display === "onlyIcon" || item.display === "iconWithText") &&
+                    <>{item.icon && <Icon name={item.icon} className={cn("h-5 w-5 flex-shrink-0 text-primary/50",`${iconStyle}`)} /> }</>
+                    }
+                    {
+                      (item.display === "onlyText" || item.display === "iconWithText") &&
+                      <p className={cn("pl-2",className)}>{item.text}</p>
+                    }
+                  </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
       }
     </>
   )
 }
-Breadcrumbs.displayName = "Breadcrumbs"
-export { Breadcrumbs, breadcrumbsVariants }
+Breadcrumb.displayName = "Breadcrumb"
+export { Breadcrumb, breadcrumbVariants }
