@@ -1,38 +1,38 @@
-import { Breadcrumbs } from "../ui/breadcrumb"
+import { BreadcrumItem, Breadcrumb } from "../ui/breadcrumb"
 
 export const BreadcrumbIconWithText = () => {
-    const firstItem = [
-        { icon: 'house-solid', text: "Home", href: '#', separatorIcon: "chevron-right-thin", display: "iconWithText" },
-        { icon: "folder-solid", text: 'Projects', href: '#', separatorIcon: "chevron-right-thin", display: "iconWithText" },
+    const firstItem: BreadcrumItem[] = [
+        { icon: 'house-solid', text: "Home", href: '#', display: "iconWithText" },
+        { icon: "folder-solid", text: 'Projects', href: '#', display: "iconWithText" },
         { icon: "folder-open-solid", text: 'Project Nero', href: '#', display: "iconWithText" },
     ]
-    const secondItem = [
-        { icon: 'house-solid', text: "Home", href: '#', separatorIcon: "chevron-right-thin", display: "iconWithText" },
-        { icon: "folder-solid", text: 'Projects', href: '#', separatorIcon: "chevron-right-thin", display: "iconWithText" },
+    const secondItem: BreadcrumItem[] = [
+        { icon: 'house-solid', text: "Home", href: '#', display: "iconWithText" },
+        { icon: "folder-solid", text: 'Projects', href: '#', display: "iconWithText" },
         { icon: "folder-open-solid", text: 'Project Nero', href: '#', display: "iconWithText" },
     ]
 
-    const thirdItem = [
-        { icon: 'house-solid', text: "Home", href: '#', separatorIcon: "slash-forward-thin", display: "iconWithText" },
-        { icon: "folder-solid", text: 'Projects', href: '#', separatorIcon: "slash-forward-thin", display: "iconWithText" },
+    const thirdItem: BreadcrumItem[] = [
+        { icon: 'house-solid', text: "Home", href: '#', display: "iconWithText" },
+        { icon: "folder-solid", text: 'Projects', href: '#', display: "iconWithText" },
         { icon: "folder-open-solid", text: 'Project Nero', href: '#', display: "iconWithText" },
     ]
     return (
         <>
-            <h2 className="text-m text-primary pt-3">BreadCrumb with Icon and Text</h2>
-            <div className="text-m font-bold text-primary">Contained</div>
-            <Breadcrumbs dataItem={firstItem} contained={true} iconStyle="h-5 w-5 text-gray-500" separatorIconStyle="h-full w-6 flex-shrink-0 text-gray-200" textColor="gray" />
+            <h2 className="text-primary mt-8">BreadCrumb with Icon and Text</h2>
+            <div className="space-y-7 space-x-7">
+                <div className="font-bold text-primary">Contained</div>
+                <Breadcrumb items={firstItem} BreadcrumbStyle="shadow" />
 
-            <div className="text-m pt-11 font-bold text-primary">Full Width Bar</div>
-            <Breadcrumbs dataItem={firstItem} fullWidthContained={true} iconStyle="h-5 w-5 text-gray-500" separatorIconStyle="h-full w-6 flex-shrink-0 text-gray-200" textColor="gray" size="default" />
+                <div className="font-bold text-primary">Full Width Bar</div>
+                <Breadcrumb items={firstItem} BreadcrumbStyle="fullWidth" />
 
-            <div className="text-m pt-11 font-bold text-primary">Simple With Chevron</div>
-            <Breadcrumbs dataItem={secondItem} withChevronSeparator={true} iconStyle="h-5 w-5 text-gray-500" separatorIconStyle="h-4 w-4 flex-shrink-0 text-gray-400" textColor="gray" />
+                <div className="font-bold text-primary">Simple With Chevron</div>
+                <Breadcrumb items={secondItem} itemIconStyle="h-4 w-4" />
 
-            <div className="text-m pt-11 font-bold text-primary">Simple with slashes</div>
-            <Breadcrumbs dataItem={thirdItem} withSlashSeparator={true} iconStyle="h-5 w-5 text-gray-500" separatorIconStyle="h-4 w-4 flex-shrink-0 text-gray-400" textColor="gray" />
+                <div className="font-bold text-primary">Simple with slashes</div>
+                <Breadcrumb items={thirdItem} itemIcon="slash-forward-thin" itemIconStyle="h-4 w-4" />
+            </div>
         </>
-
-
     )
 }

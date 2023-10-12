@@ -238,24 +238,16 @@ export default function CardsDemo() {
           </TabsContent>
 
           <TabsContent value="pg-components" className="flex flex-col space-y-5">
+            <CardsBreadcrumb />
             <CardsNotification />
             <CardsPagination />
-            <div className="grid-cols-2 grid gap-4">
-              <CardsCommandPalettes />
-            </div>
-
+            <CardsCommandPalettes />
             <CardsSteps />
-            <div className="grid-cols-2 grid gap-4">
-              <CardsBreadcrumb />
-            </div>
-            <div className="grid-cols-2 grid gap-4">
-              <CardsInputGroup />
-              <CardsTextArea />
-            </div>
-            <div className="grid-cols-2 grid gap-4">
-              <CardsButtonGroup />
-              <CardsSidebarNavigation />
-            </div>
+            <CardsInputGroup />
+            <CardsTextArea />
+            <CardsButtonGroup />
+            <CardsSidebarNavigation />
+        
           </TabsContent>
         </Tabs >
       </div >
