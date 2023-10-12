@@ -19,14 +19,14 @@ const commandPalettesVariants = cva(
     }
 )
 
-interface ItemList {
+export interface ItemList {
     title?: string;
     description?: string;
     icon?: IconType;
     backgroundStyle?: string;
 }
 
-interface DataItem {
+export interface DataItem {
     name?: string;
     image?: string;
     position?: string;
@@ -36,7 +36,7 @@ interface DataItem {
     imageStyle?: string;
     icon?: IconType;
 }
-interface ListItem {
+export interface ListItem {
     icon?: IconType;
     keyboardName?: string;
     command?: string;
@@ -73,7 +73,7 @@ export interface CommandPalettesProps
 }
 
 const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps>(
-    ({ className, withIcon, noFoundIcon, imageStyle,filteredList,handleChange,inputValue, buttonName, hoverColor, iconStyle, noResultText, backgroundColor, textColor, withPreview, hasFooter, projectNameListName, searchName, listTitleName, titleText, folderIcon, variant, description, haskeyboard, errorIcon, icon, noFoundCommentText, ...props }, ref) => {
+    ({ withIcon, noFoundIcon, imageStyle,filteredList,handleChange,inputValue, buttonName, hoverColor, iconStyle, noResultText, backgroundColor, textColor, withPreview, hasFooter, projectNameListName, searchName, listTitleName, titleText, folderIcon, variant, description, haskeyboard, errorIcon, icon, noFoundCommentText,className, ...props }, ref) => {
 
         const bgColor = (backgroundColor?: colors) => {
             return `bg-${backgroundColor}-900 `
@@ -130,16 +130,18 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                                 filteredList && filteredList.length > 0 ? (
                                     <div className={cn("border rounded-b-lg")}>
                                         <ul className={cn("scroll-py-2 overflow-y-auto py-2 text-accent/50 ", className)}>
-                                            {filteredList && filteredList.map((item: ItemList, index: number) => (
-                                                <li key={index} className={cn("rounded-xl flex cursor-pointer select-none items-center px-3 py-2 p-3 mx-2 hover:bg-accent/50", fontColor(textColor), bgColor(backgroundColor), className)}>
-                                                    <div className={cn(`flex flex-none items-center justify-center rounded-lg ${item.backgroundStyle}`)}>
-                                                        {item.icon && <Icon name={item.icon} className={cn(`${iconStyle}`, className)} />}
-                                                    </div>
-                                                    <div className={cn("ml-4 flex-auto", className)}>
-                                                        <p className={cn("text-sm font-medium", fontColor(textColor), className)}>{item.title}</p>
-                                                        <p className={cn("text-sm", fontColor(textColor), className)}>{item.description}</p>
-                                                    </div>
-                                                </li>
+                                        {filteredList && filteredList.map((item: ItemList | string, index: number) => (
+                                                typeof item === 'object' && item !== null && 'title' in item && 'description' in item && (
+                                                    <li key={index} className={cn("rounded-xl flex cursor-pointer select-none items-center px-3 py-2 p-3 mx-2 hover:bg-accent/50", fontColor(textColor), bgColor(backgroundColor), className)}>
+                                                        <div className={cn(`flex flex-none items-center justify-center rounded-lg ${item.backgroundStyle}`)}>
+                                                            {item.icon && <Icon name={item.icon} className={cn(`${iconStyle}`, className)} />}
+                                                        </div>
+                                                        <div className={cn("ml-4 flex-auto", className)}>
+                                                            <p className={cn("text-sm font-medium", fontColor(textColor), className)}>{item.title}</p>
+                                                            <p className={cn("text-sm", fontColor(textColor), className)}>{item.description}</p>
+                                                        </div>
+                                                    </li>
+                                                )
                                             ))}
                                         </ul>
                                     </div>
@@ -182,7 +184,8 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                                             : null}
                                         <ul className={cn("text-sm", fontColor(textColor), bgColor(backgroundColor), className)}>
                                             {filteredList && filteredList.length > 0 ? (
-                                                filteredList.map((item: ListItem, index: number) => (
+                                                filteredList.map((item: ListItem | string, index: number) => (
+                                                    typeof item === 'object' && item !== null && 'command' in item && 'keyboardName' in item && (
                                                     <li key={index} className={cn("flex cursor-pointer select-none items-center px-3 py-2", hoveringColor(hoverColor), commandPalettesVariants({ variant }), className)}>
                                                         {item.icon && <Icon name={item.icon} />}
                                                         <span className={cn("ml-3 flex-auto truncate", className)}>{item.command}</span>
@@ -190,6 +193,7 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                                                             <kbd className={cn("font-sans")}>{item.keyboardName}</kbd>
                                                         </span>
                                                     </li>
+                                                    )
                                                 ))
                                             ) : (
                                                 <>
@@ -225,7 +229,8 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                                         <div className="border rounded-b-lg flex items-center">
                                             <div className="flex-auto border-r scroll-py-4 overflow-y-auto px-6 py-4 sm:h-96">
                                                 <ul className={cn("-ml-2 text-sm", className)} id="recent" role="listbox">
-                                                    {filteredList && filteredList.map((item: DataItem, index: number) => (
+                                                    {filteredList && filteredList.map((item: DataItem | string, index: number) => (
+                                                        typeof item === 'object' && item !== null && 'name' in item  && (
                                                         <li
                                                             key={index}
                                                             className={cn("group flex cursor-default select-none items-center rounded-md p-2 hover:bg-accent/50", className)}
@@ -236,6 +241,7 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                                                             <span className={cn("ml-3 flex-auto truncate", className)}>{item.name}</span>
                                                             {item.icon && <Icon name={item.icon} />}
                                                         </li>
+                                                        )
                                                     ))}
                                                 </ul>
                                             </div>
