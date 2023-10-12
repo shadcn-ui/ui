@@ -135,7 +135,7 @@ const Input = React.forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement> &
   VariantProps<typeof inputVariants> &
-  InputProps>(({ className, name,error, keyboardName, alignIcon, iconStyle, icon, borderInside, textColor, labelAlign, buttonLabel, trailingAddOn, options, variant, placeholder, label, labelAndBorderStyle, alignDropdown, addOnLabel, hint, bottomBorder, disabled, round, note, asChild = false, ...props }, ref) => {
+  InputProps>(({ name,error, keyboardName, alignIcon, iconStyle, icon, borderInside, textColor, labelAlign, buttonLabel, trailingAddOn, options, variant, placeholder, label, labelAndBorderStyle, alignDropdown, addOnLabel, hint, bottomBorder, disabled, round, note, asChild = false,className, ...props }, ref) => {
     const Comp = asChild ? Slot : "input"
     const fontColor = (textColor?: colors) => {
       return `text-${textColor}-500`
@@ -162,7 +162,7 @@ const Input = React.forwardRef<
                 {addOnLabel}</span> : null
           }
           {icon  ? <Icon name={icon} className={cn("absolute flex items-center pl-3",`${alignIcon === "left" ? "left-0" : " right-0 pr-2"} ${iconStyle}`,fontColor(textColor), className)} {...props} /> : null}
-          {error ? <Icon name="circle-exclamation-solid" className={cn("absolute flex items-center pl-3 text-destructive",`${alignIcon === "left" ? " left-0 " : " right-0 pr-2"} ${iconStyle}`, className)} {...props} /> : null}
+          {error ? <Icon name="circle-exclamation-solid" className={cn("h-5 w-5 absolute flex items-center pl-3 text-destructive",`${alignIcon === "left" ? " left-0 " : " right-0 pr-2"} ${iconStyle}`, className)} {...props} /> : null}
           {
             alignDropdown && (
               <div className={cn(`absolute text-sm ${alignDropdown === 'prefix' ? 'left-0' : 'right-0 '} flex items-center`, className)} {...props}>
