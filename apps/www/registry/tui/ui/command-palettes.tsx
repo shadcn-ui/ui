@@ -105,7 +105,7 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                             { filteredList && filteredList.length > 0 ? (
                                 <ul className={cn("scroll-py-2 overflow-y-auto py-2 text-accent/50 ", className)}>
                                     {filteredList && filteredList.map((name:any, index:number) => (
-                                        <li key={index} className={cn("px-4 text-sm py-2 flex cursor-pointer select-none items-center px-3 py-2 hover:text-accent", hoveringColor(hoverColor), className)}>
+                                        <li key={index} className={cn("px-4 text-sm py-2 flex cursor-pointer select-none items-center py-2 hover:text-accent", hoveringColor(hoverColor), className)}>
                                             {name}
                                         </li>
                                     ))}
