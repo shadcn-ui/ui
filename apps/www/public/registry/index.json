@@ -378,7 +378,8 @@
     "files": [
       "ui/toast.tsx",
       "ui/use-toast.ts",
-      "ui/toaster.tsx"
+      "ui/toaster.tsx",
+      "stories/toast.stories.tsx"
     ],
     "type": "components:ui"
   },

@@ -212,7 +212,12 @@ const ui: Registry = [
     name: "toast",
     type: "components:ui",
     dependencies: ["@radix-ui/react-toast"],
-    files: ["ui/toast.tsx", "ui/use-toast.ts", "ui/toaster.tsx"],
+    files: [
+      "ui/toast.tsx",
+      "ui/use-toast.ts",
+      "ui/toaster.tsx",
+      "stories/toast.stories.tsx",
+    ],
   },
   {
     name: "toggle",

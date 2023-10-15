@@ -248,7 +248,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/toast")),
-      files: ["registry/default/ui/toast.tsx","registry/default/ui/use-toast.ts","registry/default/ui/toaster.tsx"],
+      files: ["registry/default/ui/toast.tsx","registry/default/ui/use-toast.ts","registry/default/ui/toaster.tsx","registry/stories/toast.stories.tsx"],
     },
     "toggle": {
       name: "toggle",
@@ -1257,7 +1257,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/toast")),
-      files: ["registry/new-york/ui/toast.tsx","registry/new-york/ui/use-toast.ts","registry/new-york/ui/toaster.tsx"],
+      files: ["registry/new-york/ui/toast.tsx","registry/new-york/ui/use-toast.ts","registry/new-york/ui/toaster.tsx","registry/stories/toast.stories.tsx"],
     },
     "toggle": {
       name: "toggle",
