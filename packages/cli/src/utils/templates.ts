@@ -1,6 +1,6 @@
 export const UTILS = `import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
- 
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const UTILS_JS = `import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
- 
+
 export function cn(...inputs) {
   return twMerge(clsx(inputs))
 }
@@ -22,7 +22,7 @@ module.exports = {
     './components/**/*.{<%- extension %>,<%- extension %>x}',
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
-	],
+  ],
   theme: {
     container: {
       center: true,
@@ -59,7 +59,7 @@ module.exports = {
     './components/**/*.{<%- extension %>,<%- extension %>x}',
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
-	],
+  ],
   theme: {
     container: {
       center: true,
