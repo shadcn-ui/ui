@@ -72,7 +72,7 @@ const TabsTrigger = React.forwardRef<
     className={cn(tabsTriggerVariants({ variant: variant ? variant : "default", className: className + (icon !== undefined ? " first-of-type:pl-20 sm:first-of-type:pl-2" : "") }))}
     {...props}
   >
-    <div className="flex w-full items-center justify-between">
+    <div className={`flex w-full items-center ${icon ? "justify-between" : "justify-center"} `}>
       <div className="flex items-center">
         {icon && <Icon name={icon || "check-solid"} className={cn("h-4 w-4 px-2", iconClassName)} />}
         {children}
