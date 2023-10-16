@@ -5,7 +5,7 @@ import profile from '../../assest/profile.webp';
 
 export function CardsTextArea() {
   const assignList = [
-    { label: "UnAssigned", image: "" },
+    { label: "UnAssigned" },
     { label: "Wade Cooper1", image: "https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" },
     { label: "Wade Cooper", image: "https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" }
   ]

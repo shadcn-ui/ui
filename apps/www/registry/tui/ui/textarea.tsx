@@ -312,7 +312,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                                   className={cn(" bg-white relative cursor-pointer select-none px-3 py-2", className)}
                                   onClick={() => memoizedHandleOptionClick(option)}>
                                   <div className={cn("flex items-center", className)}>
-                                    <img src={option.image} className={cn("inline-block flex-shrink-0 rounded-full h-5 w-5", `${imageStyle}`, className)} />
+                                   {option.image && <img src={option.image} className={cn("inline-block flex-shrink-0 rounded-full h-5 w-5", `${imageStyle}`, className)} />}
                                     <span className={cn("ml-3 block truncate font-medium", className)}>{option.label}</span>
                                   </div>
                                 </li>
