@@ -56,40 +56,21 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 export function ModeToggle() {
-  const getInitialTheme = () => {
-    if (typeof window !== "undefined") {
-      const storedTheme = localStorage.getItem("theme") || "system"
-      if (storedTheme !== "system") {
-        return storedTheme as "theme-light" | "dark"
-      }
-
-      const systemDarkMode =
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      return systemDarkMode ? "dark" : "theme-light"
-    }
-    return "theme-light"
-  }
-
   const [theme, setThemeState] = React.useState<
     "theme-light" | "dark" | "system"
-  >(getInitialTheme)
-
-  const setTheme = (selectedTheme: "theme-light" | "dark" | "system") => {
-    setThemeState(selectedTheme)
-    localStorage.setItem("theme", selectedTheme)
-  }
+  >("theme-light")
 
   React.useEffect(() => {
-    if (
+    const isDarkMode = document.documentElement.classList.contains("dark")
+    setThemeState(isDarkMode ? "dark" : "theme-light")
+  }, [])
+
+  React.useEffect(() => {
+    const isDark =
       theme === "dark" ||
       (theme === "system" &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark")
   }, [theme])
 
   return (
@@ -102,13 +83,13 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("theme-light")}>
+        <DropdownMenuItem onClick={() => setThemeState("theme-light")}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem onClick={() => setThemeState("dark")}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        <DropdownMenuItem onClick={() => setThemeState("system")}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
