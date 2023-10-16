@@ -8,62 +8,77 @@ export function CardsInputGroup() {
                 <CardTitle className="text-base font-normal text-primary"  >Input Group</CardTitle>
             </CardHeader>
             <CardContent>
-                <div className="font-bold text-primary">Input</div>
-                <Input labelAlign="left" textColor="black" label="Email" placeholder="you@example.com" />
+                <div className="space-y-4">
+               
+                    <div className="font-bold text-primary">Input</div>
+                    <Input label="Email"  placeholder="you@example.com" textColor="black" />
 
-                <div className="font-bold text-primary">Input with help text</div>
-                <Input labelAlign="left" label="Email" textColor="black" note="We'll only use this for spam." placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with help text</div>
+                    <Input label="Email"  note="We'll only use this for spam." placeholder="you@example.com" textColor="gray" />
 
-                <div className="font-bold text-primary">Input with corner hint</div>
-                <Input labelAlign="left" label="Email" textColor="black" className="" hint="Optional" placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with validation error</div>
+                    <Input label="Email"  error="Not a valid email address" alignIcon="right" placeholder="you@example.com" />
+                    
+                    <div className="font-bold text-primary">Input with disabled state</div>
+                    <Input label="Email" placeholder="you@example.com" disabled={true} textColor="black" />
 
-                <div className="font-bold text-primary">Input with disabled state</div>
-                <Input labelAlign="left" textColor="black" label="Email" disabled={true} placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with hidden label</div>
+                    <Input placeholder="you@example.com" />
 
-                <div className="font-bold text-primary">Input with hidden label</div>
-                <Input placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with corner hint</div>
+                    <Input label="Email" placeholder="you@example.com" hint="Optional"/>
 
-                <div className="font-bold text-primary">Input with pill shape</div>
-                <Input labelAlign="left" textColor="black" label="Email" round="roundedPill" placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with leading icon</div>
+                    <Input  label="Email" placeholder="you@example.com" icon="envelope-solid" alignIcon="left" borderStyleForAddOn="iconWithLabel" textColor="gray" />
 
-                <div className="font-bold text-primary">Input with gray background and bottom border </div>
-                <Input labelAlign="left" textColor="black" label="Email" bottomBorder={true} placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with trailing icon</div>
+                    <Input  label="Account number" placeholder="000-00-0000" icon="question-circle-duotone" alignIcon="right" textColor="gray"/>
 
-                <div className="font-bold text-primary">Input with keyboard shortcut </div>
-                <Input label="Quick Search" textColor="black" labelAlign="left" keyboardName="⌘K" placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with add-on</div>
+                    <Input label="Company Website" placeholder="www.example.com" addOnText="https://" addOnBorder="withBorder" border="button" borderStyleForAddOn="innerBorder" textColor="gray"/>
 
-                <div className="font-bold text-primary">Input with validation error</div>
-                <Input label="Email" labelAlign="left" error="Not a valid email address" alignIcon="right" placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with inline add-on</div>
+                    <Input label="Email" placeholder="you@example.com" addOnText="https://" addOnBorder="withoutBorder" borderStyleForAddOn="innerBorder" textColor="gray" />
 
-                <div className="font-bold text-primary">Input with inline add-on</div>
-                <Input addOnLabel="https://" labelAlign="left" textColor="gray" label="Email" labelAndBorderStyle="innerBorder" borderInside="withoutBorder" placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with inline leading and trailing add-ons</div>
+                    <Input  label="Email" placeholder="0.00" icon="dollar-duotone" alignIcon="left" addOnText="USD" trailingAddOn={true} borderStyleForAddOn="iconWithLabel"  textColor="gray"/>
 
-                <div className="font-bold text-primary">Input with add-on</div>
-                <Input labelAlign="left" addOnLabel="https://" textColor="gray" label="Email" round="button" borderInside="withBorder" labelAndBorderStyle="innerBorder" placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with inline leading dropdown</div>
+                    <Input  label="Email" placeholder="+1 (555) 987-6543" options={["US", "CA", "EU"]} alignDropdown="left" borderStyleForAddOn="leadingDropdown" textColor="gray" />
+                    
+                    <div className="font-bold text-primary">Input with inline leading add-on and trailing dropdown</div>
+                    <Input label="Email" placeholder="+1 (555) 987-6543" options={["USD", "CAD", "EUR"]}  alignDropdown="right" alignIcon="left" icon="dollar-duotone" borderStyleForAddOn="iconWithLabel" textColor="gray"  />
+                    
+                    <div className="font-bold text-primary">Input with inline leading add-on and trailing Button</div>
+                    <Input label="Email" placeholder="John Smith"  alignIcon="left" icon="users-solid" border="roundedButton" borderStyleForAddOn="iconWithLabel" buttonLabelText="Sort" textColor="gray"  />
+                    
+                    <div className="font-bold text-primary">Input with inset label</div>
+                    <Input label="Name" labelAlign="inside" placeholder="John Smith" borderStyleForAddOn="labelInside"  />
 
-                <div className="font-bold text-primary">Input with overlapping label</div>
-                <Input label="Email" labelAlign="over" textColor="black" placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with overlapping label</div>
+                    <Input labelAlign="over" label="Email"  placeholder="you@example.com" textColor="black" />
 
-                <div className="font-bold text-primary">Input with leading icon</div>
-                <Input labelAlign="left" label="Email" alignIcon="left" iconStyle="h-5 w-5" icon="envelope-solid" textColor="gray" labelAndBorderStyle="iconWithLabel" placeholder="you@example.com" />
+                    <div className="font-bold text-primary">Input with pill shape</div>
+                    <Input label="Email" placeholder="you@example.com" border="roundedPill" textColor="black"   />
+                    
+                    <div className="font-bold text-primary">Input with gray background and bottom border </div>
+                    <Input label="Email" placeholder="you@example.com" bottomBorder={true} border="bottomBorder" textColor="black" />
+                    
+                    <div className="font-bold text-primary">Input with keyboard shortcut </div>
+                    <Input label="Quick Search" placeholder="you@example.com" keyboardName="⌘K" textColor="black"  />
 
-                <div className="font-bold text-primary">Input with trailing icon</div>
-                <Input labelAlign="left" label="Email" alignIcon="right" iconStyle="h-5 w-5" icon="question-circle-duotone" textColor="gray" placeholder="you@example.com" />
+                    
 
-                <div className="font-bold text-primary">Input with inline leading and trailing add-ons</div>
-                <Input labelAlign="left" label="Email" alignIcon="left" textColor="gray" iconStyle="h-5 w-5" icon="dollar-duotone" trailingAddOn={true} labelAndBorderStyle="iconWithLabel" addOnLabel="USD" placeholder="0.00" />
+                    
 
-                <div className="font-bold text-primary">Input with inline leading dropdown</div>
-                <Input labelAlign="left" label="Email" options={["USA", "CA", "UAE", "India"]} textColor="gray" alignDropdown="prefix" labelAndBorderStyle="leadingDropdown" placeholder="+1 (555) 987-6543" />
+                    
 
-                <div className="font-bold text-primary">Input with inline leading add-on and trailing dropdown</div>
-                <Input label="Email" labelAlign="left" iconStyle="h-5 w-5" options={["USA", "CA", "UAE"]} textColor="gray" alignDropdown="suffix" alignIcon="left" icon="dollar-duotone" labelAndBorderStyle="iconWithLabel" placeholder="+1 (555) 987-6543" />
+                   
 
-                <div className="font-bold text-primary">Input with inline leading add-on and trailing Button</div>
-                <Input labelAlign="left" alignIcon="left" iconStyle="h-5 w-5" icon="users-solid" round="roundForButton" labelAndBorderStyle="iconWithLabel" buttonLabel="Sort" textColor="gray" label="Email" placeholder="John Smith" />
+                    
 
-                <div className="font-bold text-primary">Input with inline leading add-on and trailing Button</div>
-                <Input labelAlign="inside" label="Name" labelAndBorderStyle="labelInside" placeholder="John Smith" />
+                   
+                </div>
 
 
             </CardContent>
