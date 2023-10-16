@@ -7,7 +7,7 @@ import { colors } from "./helper/types"
 import { useState } from "react"
 
 const inputVariants = cva(
-  `block border-0 shadow-sm ring-inset focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-900 disabled:ring-gray-200 `,
+  `block border-0 shadow-sm ring-inset focus:outline-none disabled:cursor-not-allowed disabled:bg-primary/10 disabled:text-primary/70 disabled:ring-primary/20 `,
 
   {
     variants: {
@@ -169,7 +169,7 @@ const Input = React.forwardRef<
           {
             alignDropdown && (
               <div className={cn(`absolute text-sm  pr-2 ${alignDropdown === 'right' ? 'right-0' : 'left-0 '} flex items-center`, className)} {...props}>
-                <select className={cn(`${alignDropdown === 'right' ? 'pr-1 ' : 'pl-1'} h-full rounded-md border-0 bg-transparent py-2 pl-1.5 pr-0 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm`, fontColor(textColor), className)}>
+                <select className={cn(`${alignDropdown === 'right' ? 'pr-1 ' : 'pl-1'} h-full rounded-md border-0 bg-transparent py-2 pl-1.5 pr-0 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary/60 sm:text-sm`, fontColor(textColor), className)}>
                   {options && options.map((option: string, index: number) => (
                     <option key={index}>{option}</option>
                   ))}
@@ -183,7 +183,7 @@ const Input = React.forwardRef<
             </label>
           ) : null}
           <Comp
-            className={cn(`${error ? "border-destructive text-destructive/40 placeholder:text-destructive/50 focus:ring-1 focus:ring-inset ring-destructive focus:ring-destructive " : "focus:ring-2 focus:ring-inset focus:ring-indigo-600"}`, inputVariants({ border, borderStyleForAddOn, variant, }), className)}
+            className={cn(`${error ? "border-destructive text-destructive/40 placeholder:text-destructive/50 focus:ring-1 focus:ring-inset ring-destructive focus:ring-destructive " : "focus:ring-2 focus:ring-inset focus:ring-primary/60"}`, inputVariants({ border, borderStyleForAddOn, variant, }), className)}
             placeholder={placeholder}
             disabled={disabled}
             name={name}
@@ -213,7 +213,7 @@ const Input = React.forwardRef<
         </div>
         {error && <span className={cn(`${error ? "text-destructive" : null} text-sm`, className)} {...props}>{error}</span>}
 
-        {bottomBorder && <div className={cn("absolute inset-x-0 bottom-0 border-t border-gray-300 focus:border-t focus:border-indigo-500 focus:ring-1 ring-gray-300 ring-1", className)} {...props} />}
+        {bottomBorder && <div className={cn("absolute inset-x-0 bottom-0 border-t border-primary/30 focus:border-t focus:ring-1 ring-primary/30 ring-1", className)} {...props} />}
 
         {note && <span className={cn("text-sm", fontColor(textColor), className)} {...props}>{note}</span>}
 
