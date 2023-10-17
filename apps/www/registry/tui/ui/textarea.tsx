@@ -92,9 +92,7 @@ interface LabelListItem {
 interface DueDateListItem {
   label?: string;
 }
-// export interface IconsList {
-//   icon?: IconType;
-// }
+
 export interface ButtonList {
   bg?: string;
   label?: string;
@@ -136,12 +134,15 @@ export interface TextareaProps
   buttonText?: string | undefined;
   textColor?: colors;
   imageStyle?: string;
-  actionIcons?: IconType[];
+  handleChange?:(event: React.ChangeEvent<HTMLTextAreaElement>) =>void;
+  handleKeyPress?: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
+  handleFocus?: (event: React.FocusEvent<HTMLTextAreaElement>) => void;
+  disabled?: boolean;
 }
 
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ showIconListForTextArea, imageSrc, imageStyle, textColor, actionIcons, buttonText, iconList, iconStyle, createButton, dividerText, buttonContent, labelList, attachIcon, dueDateList, dueDateButtonName, assignList, labelButtonName, assignButtonName, hasDivider, titlePlaceholder, icon, variant, icons, textareavariant, placeholder, showMoodButton, textAreaButtonvariant, secondButtonText, submitButton, firstButtonText, label, className, ...props }, ref) => {
+  ({ showIconListForTextArea, imageSrc,handleChange,handleKeyPress,handleFocus,disabled=false, imageStyle, textColor, buttonText, iconList, iconStyle, createButton, dividerText, buttonContent, labelList, attachIcon, dueDateList, dueDateButtonName, assignList, labelButtonName, assignButtonName, hasDivider, titlePlaceholder, icon, variant, icons, textareavariant, placeholder, showMoodButton, textAreaButtonvariant, secondButtonText, submitButton, firstButtonText, label, className, ...props }, ref) => {
     const [showComment, setShowComment] = useState(false);
     const [showWrite, setShowWrite] = useState(false);
     const [showIcon, setShowIcon] = useState(false);
@@ -279,9 +280,12 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                   <textarea
                     className={cn("pl-1.5", (textAreaVariants({ variant, textareavariant })))}
                     placeholder={placeholder}
+                    onChange={handleChange}
+                    onKeyDown={handleKeyPress}
+                    onFocus={handleFocus}
+                    disabled={disabled}
                     ref={ref}
                     {...props}
-
                   />
                   : null
               }
