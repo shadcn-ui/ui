@@ -128,7 +128,7 @@ type InputProps = {
   textColor?: colors;
   alignDropdown?: "left" | "right";
   labelAlign?: "over" | "inside";
-  alignIcon?: "left" | "right";
+  alignIcon?: "right";
   addOnBorder?: "withBorder" | "withoutBorder";
   border?:"default"|"roundedPill"|"button"|"roundedButton"|"bottomBorder";
   borderStyleForAddOn?:"innerBorder"|"iconWithLabel"|"leadingDropdown"|"labelInside";
@@ -138,7 +138,7 @@ const Input = React.forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement> &
   VariantProps<typeof inputVariants> &
-  InputProps>(({ name, error, keyboardName, alignIcon, iconStyle, icon, addOnBorder, textColor, labelAlign = "left", buttonLabelText, trailingAddOn, options, variant, placeholder, label, borderStyleForAddOn, alignDropdown, addOnText, hint, bottomBorder, disabled, border, note, asChild = false, className, ...props }, ref) => {
+  InputProps>(({ name, error, keyboardName, alignIcon="left", iconStyle, icon, addOnBorder, textColor, labelAlign = "left", buttonLabelText, trailingAddOn, options, variant, placeholder, label, borderStyleForAddOn, alignDropdown, addOnText, hint, bottomBorder, disabled, border, note, asChild = false, className, ...props }, ref) => {
     const Comp = asChild ? Slot : "input"
     const fontColor = (textColor?: colors) => {
       return `text-${textColor}-500`
@@ -159,17 +159,17 @@ const Input = React.forwardRef<
 
           {(addOnBorder === "withBorder") ?
             <div className={cn("flex max-w-md rounded-l-md shadow-sm", className)}>
-              <span className={cn("flex select-none items-center rounded-l-md border py-2 px-3 text-sm ", (fontColor(textColor)), className)}{...props}>{addOnText}</span> </div>
+              <span className={cn("flex select-none items-center rounded-l-md border py-2 px-3 text-sm text-primary/80 ", className)}{...props}>{addOnText}</span> </div>
             : (addOnBorder === "withoutBorder") ?
-              <span className={cn("flex items-center rounded-l-md border border-r-0 pl-3 py-2 text-sm", className)}{...props}>
+              <span className={cn("flex items-center rounded-l-md border border-r-0 pl-3 py-2 text-sm text-primary/80", className)}{...props}>
                 {addOnText}</span> : null
           }
-          {icon ? <Icon name={icon} className={cn(" h-4 w-4 absolute flex items-center pl-3 text-primary/50", `${alignIcon === "left" ? "left-0" : " right-0 pr-2"} ${iconStyle}`, className)} {...props} /> : null}
+          {icon ? <Icon name={icon} className={cn(" h-5 w-5 absolute flex items-center pl-3 text-primary/50", `${alignIcon === "left" ? "left-0" : " right-0 pr-2"} ${iconStyle}`, className)} {...props} /> : null}
           {error ? <Icon name="circle-exclamation-solid" className={cn("h-5 w-5 absolute flex items-center pl-3 text-destructive", `${alignIcon === "left" ? " left-0 " : " right-0 pr-2"} ${iconStyle}`, className)} {...props} /> : null}
           {
             alignDropdown && (
               <div className={cn(`absolute text-sm  pr-2 ${alignDropdown === 'right' ? 'right-0' : 'left-0 '} flex items-center`, className)} {...props}>
-                <select className={cn(`${alignDropdown === 'right' ? 'pr-1 ' : 'pl-1'} h-full rounded-md border-0 bg-transparent py-2 pl-1.5 pr-0 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary/60 sm:text-sm`, fontColor(textColor), className)}>
+                <select className={cn(`${alignDropdown === 'right' ? 'pr-1 ' : 'pl-1'} h-full rounded-md border-0 bg-transparent py-2 pl-1.5 pr-0 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary/60 sm:text-sm text-primary/50`, className)}>
                   {options && options.map((option: string, index: number) => (
                     <option key={index}>{option}</option>
                   ))}
@@ -178,12 +178,12 @@ const Input = React.forwardRef<
             )
           }
           {labelAlign === "inside" ? (
-            <label className={cn("pointer-events-none absolute left-2 top-2 pl-1.5 text-sm", fontColor(textColor), className)} >
+            <label className={cn("pointer-events-none absolute left-2 top-2 pl-1.5 text-sm text-primary/50", className)} >
               {label}
             </label>
           ) : null}
           <Comp
-            className={cn(`${error ? "border-destructive text-destructive/40 placeholder:text-destructive/50 focus:ring-1 focus:ring-inset ring-destructive focus:ring-destructive " : "focus:ring-2 focus:ring-inset focus:ring-primary/60"}`, inputVariants({ border, borderStyleForAddOn, variant, }), className)}
+            className={cn(`${error ? "border-destructive text-destructive/40 placeholder:text-destructive/50 focus:ring-1 focus:ring-inset ring-destructive focus:ring-destructive " : "focus:ring-2 focus:ring-inset focus:ring-secondary/60"}`, inputVariants({ border, borderStyleForAddOn, variant, }), className)}
             placeholder={placeholder}
             disabled={disabled}
             name={name}
@@ -195,14 +195,14 @@ const Input = React.forwardRef<
           {
             buttonLabelText && (
               <button type="button" className={cn(InputGroupButtonVariant({}))}>
-                {icon && <Icon name="arrow-up-wide-short-regular" className={cn(`${iconStyle}`, fontColor(textColor), className)} {...props} />}
+                {icon && <Icon name="arrow-up-wide-short-regular" className={cn(`text-primary/50 ${iconStyle}`, className)} {...props} />}
                 {buttonLabelText}
               </button>
             )
           }
           {trailingAddOn && (
             <div className={cn("pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3", className)}>
-              <span className={cn("text-sm", fontColor(textColor), className)}>{addOnText}</span>
+              <span className={cn("text-sm text-primary/50", className)}>{addOnText}</span>
             </div>
           )}
           {keyboardName && (
@@ -215,7 +215,7 @@ const Input = React.forwardRef<
 
         {bottomBorder && <div className={cn("absolute inset-x-0 bottom-0 border-t border-primary/30 focus:border-t focus:ring-1 ring-primary/30 ring-1", className)} {...props} />}
 
-        {note && <span className={cn("text-sm", fontColor(textColor), className)} {...props}>{note}</span>}
+        {note && <span className={cn("text-sm text-primary/90", className)} {...props}>{note}</span>}
 
       </div>
     )
