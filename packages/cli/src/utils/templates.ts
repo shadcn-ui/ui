@@ -22,7 +22,7 @@ module.exports = {
     './components/**/*.{<%- extension %>,<%- extension %>x}',
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
-	],
+  ],
   theme: {
     container: {
       center: true,
@@ -64,7 +64,7 @@ module.exports = {
     './components/**/*.{<%- extension %>,<%- extension %>x}',
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
-	],
+  ],
   theme: {
     container: {
       center: true,
