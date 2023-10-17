@@ -189,11 +189,11 @@ export function CopyNpmCommandButton({
         >
           npm
         </DropdownMenuItem>
-        <DropdownMenuItem
+        {/* <DropdownMenuItem
           onClick={() => copyCommand(commands.__yarnCommand__, "yarn")}
         >
           yarn
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         <DropdownMenuItem
           onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
         >
