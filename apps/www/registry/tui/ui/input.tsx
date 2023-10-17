@@ -4,7 +4,6 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "@radix-ui/react-slot"
 import { Icon, IconType } from "./icon"
 import { colors } from "./helper/types"
-import { useState } from "react"
 
 const inputVariants = cva(
   `block border-0 shadow-sm ring-inset focus:outline-none disabled:cursor-not-allowed disabled:bg-primary/10 disabled:text-primary/70 disabled:ring-primary/20 `,
@@ -132,21 +131,19 @@ type InputProps = {
   addOnBorder?: "withBorder" | "withoutBorder";
   border?:"default"|"roundedPill"|"button"|"roundedButton"|"bottomBorder";
   borderStyleForAddOn?:"innerBorder"|"iconWithLabel"|"leadingDropdown"|"labelInside";
+  inputValue?:string;
+  handleChange?: (event:React.ChangeEvent<HTMLInputElement>) => void;
+  handleInput?: (event:React.ChangeEvent<HTMLInputElement>) => void;
+  handleKeyDown?:(event:React.KeyboardEvent<HTMLInputElement>) => void;
+  handleSubmit?:(event: React.FormEvent) => void;
 }
 
 const Input = React.forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement> &
   VariantProps<typeof inputVariants> &
-  InputProps>(({ name, error, keyboardName, alignIcon="left", iconStyle, icon, addOnBorder, textColor, labelAlign = "left", buttonLabelText, trailingAddOn, options, variant, placeholder, label, borderStyleForAddOn, alignDropdown, addOnText, hint, bottomBorder, disabled, border, note, asChild = false, className, ...props }, ref) => {
+  InputProps>(({ name, error, keyboardName,inputValue,handleChange,handleInput,handleKeyDown,handleSubmit, alignIcon="left", iconStyle, icon, addOnBorder, textColor, labelAlign = "left", buttonLabelText, trailingAddOn, options, variant, placeholder, label, borderStyleForAddOn, alignDropdown, addOnText, hint, bottomBorder, disabled, border, note, asChild = false, className, ...props }, ref) => {
     const Comp = asChild ? Slot : "input"
-    const fontColor = (textColor?: colors) => {
-      return `text-${textColor}-500`
-    }
-    const [inputValue, setInputValue] = useState('');
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setInputValue(event.target.value);
-    };
     return (
       <div className="relative">
         {
@@ -188,7 +185,10 @@ const Input = React.forwardRef<
             disabled={disabled}
             name={name}
             value={inputValue}
-            onChange={handleChange}
+            onChange={handleChange} 
+            onInput={handleInput}
+            onKeyDown={handleKeyDown}
+            onSubmit={handleSubmit}
             ref={ref}
             {...props}
           />
