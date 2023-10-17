@@ -24,7 +24,7 @@ import { Command } from "commander"
 import { execa } from "execa"
 import template from "lodash.template"
 import ora from "ora"
-import prompts, { Answers } from "prompts"
+import prompts, { type Answers } from "prompts"
 import * as z from "zod"
 
 const PROJECT_DEPENDENCIES = [
