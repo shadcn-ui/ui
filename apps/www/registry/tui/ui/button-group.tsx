@@ -9,7 +9,7 @@ import { colors } from './helper/types';
 
 
 const buttonGroupVariants = cva(
-    "relative inline-flex items-center gap-x-1.5 -ml-px px-3 py-2 font-semibold ring-1 focus:z-10 ring-gray-500 ",
+    "relative inline-flex items-center gap-x-1.5 -ml-px font-semibold ring-1 focus:z-10 ring-primary/20 ",
 
     {
         variants: {
@@ -17,12 +17,12 @@ const buttonGroupVariants = cva(
                 default: "border border-input bg-background",
             },
             size: {
-                default: "px-3.5 py-2.5 text-sm",
+                default: "px-3.5 py-2 text-sm",
+                checkbox:"px-3"
             }
         },
         defaultVariants: {
             variant: "default",
-            size: "default",
         }
 
     }
@@ -42,16 +42,17 @@ export interface ButtonProps
     extends React.HTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonGroupVariants> {
     buttonsList?: ButtonsList[];
-    options?: Options;
+    dropDownOptions?: Options;
     iconStyle?: string;
     dropdownWidth?: string;
-    color?: colors;
+    textColor?: colors;
+    size?:"default"|"checkbox";
 }
 
 const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, buttonsList, dropdownWidth, options, color, iconStyle, ...props }, ref) => {
-        const fontColor = (color?: colors) => {
-            return `text-${color}-500 `
+    ({  buttonsList, dropdownWidth,size, dropDownOptions, textColor, iconStyle,className, ...props }, ref) => {
+        const fontColor = (textColor?: colors) => {
+            return `text-${textColor}-500 `
         }
         if (!buttonsList) {
             return null;
@@ -78,7 +79,7 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 <span className={cn("isolate inline-flex rounded-md shadow-sm", className)}>
                     {buttonsList && buttonsList.map((button: any, index: number) => (
                         <button
-                            className={cn(buttonGroupVariants({ className }), {
+                            className={cn(buttonGroupVariants({size, className }), {
                                 'rounded-l-md border-r-0': index === 0,
                                 'rounded-r-md border-l-0': index === buttonsList.length - 1,
                             })}
@@ -97,15 +98,15 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
                             }}
                             {...props}
                         >
-                            {button.icon && <Icon name={button.icon} className={cn(`${iconStyle}`, fontColor(color), className, { ...props })} />}
+                            {button.icon && <Icon name={button.icon} className={cn(`h-4 w-4 ${iconStyle}`, fontColor(textColor), className, { ...props })} />}
                             {button.name && button.name}
                             {button.checkbox && (<Checkbox onChange={handleCheckboxChange} className={cn(className)} {...props} />)}
                             {button.dropdownOptions && (
                                 <select
-                                    className={cn(" rounded-l-none rounded-r-md py-1.5 pl-0 pr-0.5", fontColor(color), className, { ...props })}
+                                    className={cn(" rounded-l-none rounded-r-md py-1.5 pl-0 pr-0.5", fontColor(textColor), className, { ...props })}
                                     onClick={(e) => e.stopPropagation()}>
                                     {button.dropdownOptions.map((option: string[], index: number) => (
-                                        <option key={index}>{option}</option>
+                                        <option key={index} className={cn("hover:bg-primary/50")}>{option}</option>
                                     ))}
                                 </select>
                             )}
@@ -113,9 +114,9 @@ const ButtonGroup = React.forwardRef<HTMLButtonElement, ButtonProps>(
                     ))}
 
                     {isOpen && (
-                        <div className={cn(` z-10 ${dropdownWidth} mt-14 absolute rounded-md  py-3 text-base bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`, fontColor(color), className, { ...props })}>
-                            {options && options.items.map((option, index: number) => (
-                                <a href={option.href} key={index} className={cn("block px-4 py-2 text-sm", fontColor(color), className, { ...props })} >
+                        <div className={cn(` z-10 ${dropdownWidth} mt-14 absolute rounded-md  py-3 text-base bg-primary-foreground shadow-lg ring-1 ring-primary/30 ring-opacity-5 focus:outline-none`, fontColor(textColor), className, { ...props })}>
+                            {dropDownOptions && dropDownOptions.items.map((option, index: number) => (
+                                <a href={option.href} key={index} className={cn("block px-4 py-2 text-sm", fontColor(textColor), className, { ...props })} >
                                     {option.name}
                                 </a>
                             ))}
