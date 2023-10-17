@@ -80,12 +80,7 @@ interface AssignListItem {
   image?: string | undefined;
 }
 
-interface IconList {
-  icon?: IconType;
-  bg?: string;
-  height?: string;
-  width?: string;
-}
+
 interface LabelListItem {
   label?: string;
 }
@@ -93,7 +88,7 @@ interface DueDateListItem {
   label?: string;
 }
 
-export interface ButtonList {
+export interface IconDropDown {
   bg?: string;
   label?: string;
   icon?: IconType;
@@ -127,7 +122,7 @@ export interface TextareaProps
   dueDateList?: DueDateListItem[] | undefined;
   attachIcon?: IconType | undefined;
   dividerText?: string | undefined;
-  iconList?: ButtonList[] | undefined;
+  iconList?: IconDropDown[] | undefined;
   buttonContent?: string | undefined;
   createButton?: string | undefined;
   iconStyle?: string | undefined;
@@ -146,7 +141,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const [showComment, setShowComment] = useState(false);
     const [showWrite, setShowWrite] = useState(false);
     const [showIcon, setShowIcon] = useState(false);
-    const [selectedIcon, setSelectedIcon] = useState<IconList | null>(null);
+    const [selectedIcon, setSelectedIcon] = useState<IconDropDown | null>(null);
     const [isListVisible, setIsListVisible] = useState(false);
     const [isLabelListVisible, setIsLabelListVisible] = useState(false);
     const [isDueDateListVisible, setIsDueDateListVisible] = useState(false);
@@ -156,7 +151,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     const memoizedSetShowComment = useCallback((value: boolean) => setShowComment(value), []);
     const memoizedSetShowWrite = useCallback((value: boolean) => setShowWrite(value), []);
-    const memoizedSetSelectedIcon = useCallback((value: IconList) => setSelectedIcon(value), []);
+    const memoizedSetSelectedIcon = useCallback((value: IconDropDown) => setSelectedIcon(value), []);
     const memoizedSetSelectedOption = useCallback((value: AssignListItem) => setSelectedOption(value), []);
     const memoizedSetSelectedLabelOption = useCallback((value: LabelListItem) => setSelectedLabelOption(value), []);
     const memoizedSetSelectedDueDateOption = useCallback((value: DueDateListItem) => setSelectedDueDateOption(value), []);
