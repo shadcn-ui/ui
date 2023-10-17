@@ -148,7 +148,7 @@ export async function promptForConfig(
       initial: (prev: string, { typescript }: Answers<string>) => {
         const ext = typescript ? "ts" : "js"
         return (
-          defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG + "." + ext
+          defaultConfig?.tailwind.config ?? `${DEFAULT_TAILWIND_CONFIG}.${ext}`
         )
       },
     },
