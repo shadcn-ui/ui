@@ -80,7 +80,7 @@ export interface CommandPalettesProps
 }
 
 const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps>(
-    ({ withInputIcon = true, noFoundIcon, onSearch, imageStyle, searchedList, inputValue, buttonName, iconStyle, noResultText, backgroundColor, withPreview, hasFooter, projectListName, searchNameText, listTitleName, titleText, folderIcon, description, haskeyboard, errorIcon, icon, noFoundCommentText,variant, className, ...props }, ref) => {
+    ({ withInputIcon = true, noFoundIcon, onSearch, imageStyle, searchedList, inputValue, buttonName, iconStyle, noResultText, backgroundColor, withPreview, hasFooter, projectListName, searchNameText, listTitleName, titleText, folderIcon, description, haskeyboard, errorIcon, icon, noFoundCommentText, variant, className, ...props }, ref) => {
 
         const bgColor = (backgroundColor?: colors) => {
             return `bg-${backgroundColor}-900 `
@@ -108,7 +108,9 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
         return (
             <>
                 <div className={cn((commandPalettesVariants({}), className))}>
-                    {withInputIcon ? <Input alignIcon="left" onKeyDown={onKeyDown} className={cn(`h-12 rounded-none  border-primary/20 ${open ? "rounded-t-lg border-b-0" : "rounded-lg"}`, bgColor(backgroundColor), className)} iconStyle="h-5 w-5" labelAndBorderStyle="iconWithLabel" icon="magnifying-glass-duotone" color="gray" placeholder="Search..." />
+                    {withInputIcon ? <Input alignIcon="left" onKeyDown={onKeyDown} className={cn(`h-12 rounded-none  border-primary/20 ${open ? "rounded-t-lg border-b-0" : "rounded-lg"}`, bgColor(backgroundColor), className)} iconStyle="h-5 w-5"
+                        // labelAndBorderStyle="iconWithLabel"
+                        icon="magnifying-glass-duotone" color="gray" placeholder="Search..." />
                         : <div className={cn(`mx-auto transform p-2 ring-1 ring-black  ring-opacity-5 transition-all ${open ? "rounded-t-lg border-b-0" : "rounded-lg"}`)}>
                             <input type="text" className={cn(`w-full rounded-md bg-primary/10 px-4 py-2.5 ring-0 focus:outline-none`, className)} placeholder="Search..." onKeyDown={onKeyDown} /></div>
                     }
@@ -126,7 +128,7 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                                 <>
                                     {icon ? (
                                         <div className={cn("px-4 py-14 text-center sm:px-14", className)}>
-                                            {icon && <Icon name={icon} className={cn(`h-5 w-5 ${iconStyle}`,className)} />}
+                                            {icon && <Icon name={icon} className={cn(`h-5 w-5 ${iconStyle}`, className)} />}
                                             <p className={cn("p-4 text-sm text-primary/50", className)}>{noFoundCommentText}</p>
                                         </div>
                                     ) : (
@@ -186,8 +188,8 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                                                         {
                                                             !hasFooter ?
                                                                 <li className={cn("flex cursor-pointer select-none items-center px-3 py-2", commandPalettesVariants({ variant }), className)}>
-                                                                    {folderIcon && <Icon name={folderIcon} className={cn(`h-5 w-5 text-primary/90,${iconStyle}`,className)} />}
-                                                                    <span className={cn("ml-3 flex-auto truncate text-primary/90 ",commandPalettesVariants({variant}), className)}>{titleText}</span>
+                                                                    {folderIcon && <Icon name={folderIcon} className={cn(`h-5 w-5 text-primary/90,${iconStyle}`, className)} />}
+                                                                    <span className={cn("ml-3 flex-auto truncate text-primary/90 ", commandPalettesVariants({ variant }), className)}>{titleText}</span>
                                                                 </li> : null
                                                         }
                                                     </ul>
@@ -202,7 +204,7 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                                                     {searchedList && searchedList.length > 0 ? (
                                                         searchedList.map((item: any, index: number) => (
                                                             <li key={index} className={cn("flex cursor-pointer select-none items-center px-3 py-2 hover:bg-indigo-600 hover:text-primary/50", commandPalettesVariants({ variant }), className)}>
-                                                                {item.icon && <Icon name={item.icon} className={cn(`h-5 w-5 text-primary/50 ${iconStyle}`,className)} />}
+                                                                {item.icon && <Icon name={item.icon} className={cn(`h-5 w-5 text-primary/50 ${iconStyle}`, className)} />}
                                                                 <span className={cn("ml-3 flex-auto truncate", className)}>{item.command}</span>
                                                                 <span className={cn("ml-3 flex-none text-xs font-semibold ", className)}>
                                                                     <kbd className={cn("font-sans")}>{item.keyboardName}</kbd>
@@ -253,7 +255,7 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
                                                             >
                                                                 <img src={item.image} alt="" className={cn(`h-5 w-5 flex-none rounded-full ${imageStyle}`, className)} />
                                                                 <span className={cn("ml-3 flex-auto truncate", className)}>{item.name}</span>
-                                                                {item.icon && <Icon name={item.icon} className={cn(`h-5 w-5 ${iconStyle}`,className)} />}
+                                                                {item.icon && <Icon name={item.icon} className={cn(`h-5 w-5 ${iconStyle}`, className)} />}
                                                             </li>
                                                         )
                                                     ))}

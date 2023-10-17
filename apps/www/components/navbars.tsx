@@ -549,7 +549,9 @@ const SearchNavbar = () => {
         </div>
         <div className="absolute inset-y-0 right-0 flex items-center space-x-3 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <div>
-            <Input alignIcon="left" iconStyle="h-5 w-5" icon="magnifying-glass-regular" color="gray" labelAndBorderStyle="iconWithLabel" placeholder="Search" />
+            <Input alignIcon="left" iconStyle="h-5 w-5" icon="magnifying-glass-regular" color="gray"
+              // labelAndBorderStyle="iconWithLabel" 
+              placeholder="Search" />
           </div>
           <div className="relative rounded-full p-1 text-secondary-foreground">
             <Icon name="bell-regular" className="h-6 w-6" aria-hidden="true" />
@@ -654,7 +656,9 @@ const CenteredSearchAndLinks = () => {
               Search
             </label>
             <div className="relative">
-              <Input alignIcon="left" iconStyle="h-5 w-5" icon="magnifying-glass-regular" color="gray" labelAndBorderStyle="iconWithLabel" placeholder="Search" />
+              <Input alignIcon="left" iconStyle="h-5 w-5" icon="magnifying-glass-regular" color="gray"
+                // labelAndBorderStyle="iconWithLabel"
+                placeholder="Search" />
 
             </div>
           </div>
@@ -780,7 +784,9 @@ const CenteredSearchColumn = () => {
               Search
             </label>
             <div className="relative">
-              <Input alignIcon="left" iconStyle="h-5 w-5" icon="magnifying-glass-regular" color="gray" labelAndBorderStyle="iconWithLabel" placeholder="Search" />
+              <Input alignIcon="left" iconStyle="h-5 w-5" icon="magnifying-glass-regular" color="gray"
+                // labelAndBorderStyle="iconWithLabel"
+                placeholder="Search" />
             </div>
           </div>
         </div>
