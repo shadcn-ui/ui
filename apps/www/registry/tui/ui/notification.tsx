@@ -35,6 +35,7 @@ export interface NotificationProps
     hasDualButton?: boolean;
     backgroundColor?: colors;
     textColor?: colors;
+    closeIconStyle?:string;
     onButtonClick?: () => void;
     onAllowButtonClick?: () => void;
     oncloseButtonClick?: () => void;
@@ -46,7 +47,7 @@ export interface NotificationProps
 }
 
 const Notifications = React.forwardRef<HTMLButtonElement, NotificationProps>(
-    ({ className, titleText, descriptionText,onDeclineButtonClick,onAcceptButtonClick,onFirstButtonClick,onSecondButtonClick,alignment, backgroundColor, parallelCrossButton, hasDualButton, acceptButtonText, declineButtonText, closeIcon, hasReplyButton, hasNoButton, onAllowButtonClick, allowButtonText, replyButtonText, icon, onButtonClick, imageStyle, iconStyle, imageSrc, textColor, buttonNameText, dismissButtonNameText, oncloseButtonClick, ...props }, ref) => {
+    ({ className, titleText, descriptionText,closeIconStyle,onDeclineButtonClick,onAcceptButtonClick,onFirstButtonClick,onSecondButtonClick,alignment, backgroundColor, parallelCrossButton, hasDualButton, acceptButtonText, declineButtonText, closeIcon, hasReplyButton, hasNoButton, onAllowButtonClick, allowButtonText, replyButtonText, icon, onButtonClick, imageStyle, iconStyle, imageSrc, textColor, buttonNameText, dismissButtonNameText, oncloseButtonClick, ...props }, ref) => {
 
         const fontColor = (textColor?: colors) => {
             return `text-${textColor}-600 `
@@ -72,7 +73,7 @@ const Notifications = React.forwardRef<HTMLButtonElement, NotificationProps>(
                                                     <div className="flex flex-col">
                                                         {titleText && <p className="text-sm font-medium">{titleText}</p>}
                                                         {descriptionText && (
-                                                            <p className={cn("mt-1 text-sm", className)}>{descriptionText}</p>
+                                                            <p className={cn("mt-1 text-sm text-primary/70", className)}>{descriptionText}</p>
                                                         )}
                                                     </div>
                                                 </div>
@@ -92,11 +93,11 @@ const Notifications = React.forwardRef<HTMLButtonElement, NotificationProps>(
                                                         <div className=" ml-3 mb-1.5 flex flex-col">
                                                             {titleText && <p className="text-sm font-medium">{titleText}</p>}
                                                             {descriptionText && (
-                                                                <p className={cn("mt-1 text-sm", className)}>{descriptionText}</p>
+                                                                <p className={cn("mt-1 text-sm text-primary/70", className)}>{descriptionText}</p>
                                                             )}
                                                         </div>
                                                         {buttonNameText && (<button className={cn("ml-3 flex-shrink-0", fontColor(textColor), bgColor(backgroundColor), notificationButtonVariant({}), className)} onClick={onFirstButtonClick ? onFirstButtonClick : () => {}}>{buttonNameText}</button>)}
-                                                        {dismissButtonNameText && (<button className={cn("ml-3 flex-shrink-0", notificationButtonVariant({}), className)} onClick={onSecondButtonClick ? onSecondButtonClick : () => {}}>{dismissButtonNameText}</button>)}
+                                                        {dismissButtonNameText && (<button className={cn("ml-4 flex-shrink-0", notificationButtonVariant({}), className)} onClick={onSecondButtonClick ? onSecondButtonClick : () => {}}>{dismissButtonNameText}</button>)}
 
                                                     </div>
                                                     {
@@ -125,7 +126,7 @@ const Notifications = React.forwardRef<HTMLButtonElement, NotificationProps>(
                                     {
                                         replyButtonText && allowButtonText ?
                                             <div className="flex mt-[-11px] mb-[-8px] border-l ">
-                                                <div className="flex flex-col divide-y divide-gray-200">
+                                                <div className="flex flex-col divide-y divide-primary/20">
                                                     <div className="flex flex-1">
                                                         <button
                                                             type="button"
@@ -172,7 +173,7 @@ const Notifications = React.forwardRef<HTMLButtonElement, NotificationProps>(
                                                         </button>
                                                         <button
                                                             type="button"
-                                                            className="ml-3 inline-flex items-center rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-accent/50"
+                                                            className="ml-3 inline-flex items-center rounded-md bg-primary/foreground px-2.5 py-1.5 text-sm font-semibold shadow-sm ring-1 ring-inset ring-primary/30 hover:bg-accent/50"
                                                             onClick={onDeclineButtonClick ? onDeclineButtonClick : () => {}}
                                                         >
                                                             {declineButtonText}
