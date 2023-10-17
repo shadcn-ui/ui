@@ -108,9 +108,8 @@ const CommandPalettes = React.forwardRef<HTMLButtonElement, CommandPalettesProps
         return (
             <>
                 <div className={cn((commandPalettesVariants({}), className))}>
-                    {withInputIcon ? <Input alignIcon="left" onKeyDown={onKeyDown} className={cn(`h-12 rounded-none  border-primary/20 ${open ? "rounded-t-lg border-b-0" : "rounded-lg"}`, bgColor(backgroundColor), className)} iconStyle="h-5 w-5"
-                        // labelAndBorderStyle="iconWithLabel"
-                        icon="magnifying-glass-duotone" color="gray" placeholder="Search..." />
+                    {withInputIcon ? <Input onKeyDown={onKeyDown} className={cn(`h-12 rounded-none  border-primary/20 ${open ? "rounded-t-lg border-b-0" : "rounded-lg"}`, bgColor(backgroundColor), className)} borderStyleForAddOn="iconWithLabel"
+                        icon="magnifying-glass-duotone" placeholder="Search..." />
                         : <div className={cn(`mx-auto transform p-2 ring-1 ring-black  ring-opacity-5 transition-all ${open ? "rounded-t-lg border-b-0" : "rounded-lg"}`)}>
                             <input type="text" className={cn(`w-full rounded-md bg-primary/10 px-4 py-2.5 ring-0 focus:outline-none`, className)} placeholder="Search..." onKeyDown={onKeyDown} /></div>
                     }

@@ -61,30 +61,26 @@ export const CardsSteps = ()=> {
                 <CardTitle className="text-base font-normal text-primary">Steps</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-5">
-              <div className=" font-bold text-primary pb-5">Simple</div>
-                <Steps steps={steps} simple={true} borderColor="indigo" />
+                <div className="text-m font-bold text-primary">Simple</div>
+                <Steps steps={steps} simple={true} />
 
-                <div className="font-bold text-primary pb-5">Panels</div>
-                <Steps steps={stepsItem} panels={true}  backgroundColor="indigo" divSize="xl" icon="check-duotone"  textColor="indigo" borderColor="indigo"/>
+                <div className="text-m mt-14 font-bold text-primary">Bullets</div>
+                <Steps steps={stepsData} bullets={true} backgroundColor="indigo" iconStyle="h-full w-full" spanSize="default" bulletStepText="Step" bulletOfText="of" anchorSize="xl" textColor="indigo" borderColor="indigo" />
 
-                <div className="font-bold text-primary pb-5">Bullets</div>
-                <Steps steps={stepsData} bullets={true} backgroundColor="indigo" spanSize="default" bulletStepText="Step" bulletOfText="of" anchorSize="xl" textColor="indigo" borderColor="indigo" />
+                <div className="text-m mt-14 font-bold text-primary">Circle</div>
+                <Steps steps={stepsList} circle={true} backgroundColor="indigo" iconStyle="h-full w-full" icon="check-duotone" borderColor="indigo" />
 
-                <div className="font-bold text-primary pb-5">Circle</div>
-                <Steps steps={stepsList} circle={true} backgroundColor="indigo" icon="check-duotone" borderColor="indigo" />
+                <div className="text-m mt-14 font-bold text-primary">Bullets and Text</div>
+                <Steps steps={stepsListItem} bulletText={true} backgroundColor="indigo" icon="check-duotone" spanSize="m" divSize="l" textColor="indigo" />
 
-                <div className="font-bold text-primary pb-5">Bullets and Text</div>
-                <Steps steps={stepsListItem} bulletText={true} backgroundColor="indigo" icon="check-duotone" iconStyle="group-hover:text-indigo-800" spanSize="m" divSize="l" textColor="indigo" />
+                <div className="text-m mt-14 font-bold text-primary">Circles with text</div>
+                <Steps steps={stepsDataItem} circleText={true} textColor="gray" backgroundColor="indigo" iconStyle="h-5 w-5 text-white" divSize="m" icon="check-duotone" borderColor="indigo" />
 
-                <div className="text-m mt-14 font-bold text-primary pb-5">Circles with text</div>
-                <Steps steps={stepsDataItem} circleText={true} textColor="gray" backgroundColor="indigo" divSize="m" icon="check-duotone" borderColor="indigo" />
+                <div className="text-m mt-14 font-bold text-primary">Progress bar</div>
+                <Steps steps={stepsText} progressBar={true} backgroundColor="indigo" divSize="l" iconStyle="h-6 w-6 text-white"  />
 
-                <div className="text-m mt-14 font-bold text-primary pb-5">Progress bar</div>
-                <Steps steps={stepsText} progressBar={true} backgroundColor="indigo" divSize="l"  />
-              </div>
-               
-
+                <div className="text-m mt-14 font-bold text-primary">Panels</div>
+                <Steps steps={stepsItem} panels={true}  backgroundColor="indigo" iconStyle="h-6 w-6 text-white" divSize="xl" icon="check-duotone"  textColor="indigo" borderColor="indigo"/>
             </CardContent>
         </Card>
     )
