@@ -3,7 +3,6 @@ import { cva, type VariantProps, } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { Icon, IconType } from "./icon"
 import { Input } from './input';
-import { colors } from './helper/types';
 
 
 const textAreaVariants = cva(
@@ -12,7 +11,7 @@ const textAreaVariants = cva(
     variants: {
       variant: {
         outline:
-          "border border-input placeholder:text-primary/50 focus:ring-0 ring-0 "
+          "border border-input placeholder:text-gray focus:ring-0 ring-0 "
 
       },
       size: {
@@ -23,7 +22,7 @@ const textAreaVariants = cva(
         xl: "text-xl leading-8 "
       },
       textareavariant: {
-        default: "resize-none p-0 pb-2 ring-0 focus:ring-0 ",
+        default: "resize-none p-0 pb-2 ring-0 focus:ring-0 border-b-4 ",
         borderForInput: "resize-none  py-0 border-t-0 border-b-0 border-l-0 border-r-0",
       }
     },
@@ -59,7 +58,25 @@ const textAreaButtonVariants = cva(
   }
 )
 
+const textAreaImageVariants = cva(
+  "  flex-shrink-0 rounded-full",
+  {
+    variants: {
 
+      size: {
+        xs: "h-3 w-3 rounded-full ",
+        sm: "h-4 w-4 rounded-full ",
+        default: "h-5 w-5 rounded-full ",
+        lg: "h-6 w-6 rounded-full ",
+        xl: "h-7 w-7 rounded-full "
+      },
+
+    },
+    defaultVariants: {
+      size: "default"
+    },
+  }
+)
 
 const textAreaListVariants = cva(
   " absolute right-0 z-10 mt-1 overflow-auto rounded-lg py-3 shadow",
@@ -92,13 +109,10 @@ interface LabelListItem {
 interface DueDateListItem {
   label?: string;
 }
-// export interface IconsList {
-//   icon?: IconType;
-// }
-export interface ButtonList {
+interface IconButton {
   bg?: string;
   label?: string;
-  icon?: IconType;
+  icon?: string;
   height?: string;
   width?: string;
 }
@@ -107,13 +121,13 @@ export interface TextareaProps
   VariantProps<typeof textAreaVariants> {
   asChild?: boolean;
   label?: string | undefined;
-  imageSrc?: string | undefined;
-  showIconListForTextArea?: boolean | undefined;
-  firstButtonText?: string | undefined;
-  secondButtonText?: string | undefined;
+  image?: string | undefined;
+  showIconForTextArea?: boolean | undefined;
+  writeButton?: string | undefined;
+  previewButton?: string | undefined;
   submitButton?: string | undefined;
   showMoodButton?: 'default' | "resultButton";
-  textAreaButtonvariant?: "outline";
+  textAreaButtonvariant?: "outline" | "gray";
   placeholder?: string | undefined;
   variant?: 'outline';
   textareavariant?: 'default' | 'borderForInput';
@@ -128,20 +142,21 @@ export interface TextareaProps
   dueDateButtonName?: string | undefined;
   dueDateList?: DueDateListItem[] | undefined;
   attachIcon?: IconType | undefined;
-  dividerText?: string | undefined;
-  iconList?: ButtonList[] | undefined;
-  buttonContent?: string | undefined;
+  attachFileName?: string | undefined;
+  iconButton?: IconButton[] | undefined;
+  previewContent?: string | undefined;
   createButton?: string | undefined;
   iconStyle?: string | undefined;
-  buttonText?: string | undefined;
-  textColor?: colors;
-  imageStyle?: string;
-  actionIcons?: IconType[];
+  widthForUl?:string | undefined;
+  submitButtonName?: string | undefined;
+  color?: "black" | "white" | "slate" | "gray" | "zinc" | "neutral" | "stone" |
+  "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan"
+  | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose";
 }
 
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ showIconListForTextArea, imageSrc, imageStyle, textColor, actionIcons, buttonText, iconList, iconStyle, createButton, dividerText, buttonContent, labelList, attachIcon, dueDateList, dueDateButtonName, assignList, labelButtonName, assignButtonName, hasDivider, titlePlaceholder, icon, variant, icons, textareavariant, placeholder, showMoodButton, textAreaButtonvariant, secondButtonText, submitButton, firstButtonText, label, className, ...props }, ref) => {
+  ({ className, showIconForTextArea,widthForUl, color, submitButtonName, iconButton, iconStyle, createButton, attachFileName, previewContent, labelList, attachIcon, dueDateList, dueDateButtonName, assignList, labelButtonName, assignButtonName, hasDivider, titlePlaceholder, icon, variant, icons, textareavariant, placeholder, showMoodButton, textAreaButtonvariant, previewButton, submitButton, writeButton, label, ...props }, ref) => {
     const [showComment, setShowComment] = useState(false);
     const [showWrite, setShowWrite] = useState(false);
     const [showIcon, setShowIcon] = useState(false);
@@ -161,87 +176,87 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const memoizedSetSelectedDueDateOption = useCallback((value: DueDateListItem) => setSelectedDueDateOption(value), []);
 
 
-    const buttonColor = (textColor?: string) => {
-      return ` bg-${textColor}-600 text-primary-foreground`
+    const buttonColor = (color?: string) => {
+      return ` bg-${color}-600 text-white`
     }
 
     const memoizedHandleCommentButtonClick = useCallback(() => {
       memoizedSetShowComment(true);
       memoizedSetShowWrite(false);
     }, [memoizedSetShowComment, memoizedSetShowWrite]);
-
+    
     const memoizedHandleWriteButtonClick = useCallback(() => {
       memoizedSetShowWrite(true);
       memoizedSetShowComment(false);
     }, [memoizedSetShowWrite, memoizedSetShowComment]);
-
+    
     const memoizedHandleIconClick = useCallback(() => {
       setShowIcon(prev => !prev);
     }, []);
-
-    const memoizedHandleIconButtonClick = useCallback((icon: any) => {
+    
+    const memoizedHandleIconButtonClick = useCallback((icon:any) => {
       memoizedSetSelectedIcon(icon);
       memoizedHandleIconClick();
     }, [memoizedSetSelectedIcon, memoizedHandleIconClick]);
-
+    
     const memoizedToggleListVisibility = useCallback(() => {
       setIsListVisible(prev => !prev);
       setIsLabelListVisible(false);
       setIsDueDateListVisible(false);
     }, []);
-
-    const memoizedHandleOptionClick = useCallback((option: any) => {
+    
+    const memoizedHandleOptionClick = useCallback((option:any) => {
       memoizedSetSelectedOption(option);
       memoizedToggleListVisibility();
     }, [memoizedSetSelectedOption, memoizedToggleListVisibility]);
-
+    
     const memoizedToggleLabelListVisibility = useCallback(() => {
       setIsLabelListVisible(prev => !prev);
       setIsListVisible(false);
       setIsDueDateListVisible(false);
     }, []);
-
-    const memoizedHandleLabelOptionClick = useCallback((option: any) => {
+    
+    const memoizedHandleLabelOptionClick = useCallback((option:any) => {
       memoizedSetSelectedLabelOption(option);
       memoizedToggleLabelListVisibility();
     }, [memoizedSetSelectedLabelOption, memoizedToggleLabelListVisibility]);
-
+    
     const memoizedToggleDueDateListVisibility = useCallback(() => {
       setIsDueDateListVisible(prev => !prev);
       setIsListVisible(false);
       setIsLabelListVisible(false);
     }, []);
-
-    const memoizedHandleDueDateOptionClick = useCallback((option: any) => {
+    
+    const memoizedHandleDueDateOptionClick = useCallback((option:any) => {
       memoizedSetSelectedDueDateOption(option);
       memoizedToggleDueDateListVisibility();
     }, [memoizedSetSelectedDueDateOption, memoizedToggleDueDateListVisibility]);
-
+    
 
     return (
       <>
         <div className={cn("flex items-start space-x-4", className)}>
           {
-            imageSrc ?
+            props.image ?
               <div className={cn("flex-shrink-0")}>
-                <img className={cn("inline-block flex-shrink-0 rounded-full h-10 w-10", `${imageStyle}`, className)} src={imageSrc} />
+                <img className={cn("inline-block", (textAreaImageVariants({})), className)} src={props.image} />
               </div>
               : ""
           }
           <div className={cn("min-w-0 flex-1", className)}>
             {
-              firstButtonText ?
+              writeButton ?
                 <div className={cn("flex items-center", className)}>
                   <button
                     className={cn(textAreaButtonVariants({}))}
                     onClick={memoizedHandleWriteButtonClick}>
-                    {firstButtonText}
+                    {writeButton}
                   </button>
 
                   <button
                     className={cn(textAreaButtonVariants({}))}
                     onClick={memoizedHandleCommentButtonClick}>
-                    {secondButtonText}
+                    {previewButton}
                   </button>
 
                   <div className={cn("ml-auto flex items-center space-x-5", className)}>
@@ -252,7 +267,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                           <div key={index} className={cn("flex items-center", className)}>
                             <button
                               className={cn("inline-flex items-center justify-center rounded-full", className)} >
-                              <Icon name={icon} className={cn(`h-5 w-5 text-primary/50 ${iconStyle}`, className)} /></button>
+                              <Icon name={icon} className={cn(`${iconStyle}`, className)} /></button>
                           </div>
                         ))}
                       </div>
@@ -263,13 +278,13 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 : ""
             }
             {label ? <label className={cn("block leading-6 text-base", className)}>{label}</label> : ''}
-            <div className={cn(` rounded-lg ${showComment ? "border-0" : "border shadow-sm"}`, className)}>
+            <div className={cn(" rounded-lg border shadow-sm", className)}>
               {titlePlaceholder ? <Input className={cn("block border-0 shadow-none text-lg font-medium", className)} placeholder={titlePlaceholder} /> : null}
               {showComment && (
                 <div className={cn("mt-2", className)}>
                   <div className={cn(" rounded-lg p-0.5", className)}>
                     <div className={cn("border-b", className)}>
-                      <div className={cn("mx-px mt-px px-3 pb-12 pt-2 text-sm leading-5", className)}>{buttonContent}</div>
+                      <div className={cn("mx-px mt-px px-3 pb-12 pt-2 text-sm leading-5", className)}>{previewContent}</div>
                     </div>
                   </div>
                 </div>
@@ -277,7 +292,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
               {
                 !showComment ?
                   <textarea
-                    className={cn("pl-1.5", (textAreaVariants({ variant, textareavariant })))}
+                    className={cn("pl-1.5",(textAreaVariants({ variant, textareavariant })))}
                     placeholder={placeholder}
                     ref={ref}
                     {...props}
@@ -294,12 +309,12 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                           <button className={cn("relative inline-flex items-center whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium sm:px-3")} onClick={memoizedToggleListVisibility}>
                             {selectedOption ? (
                               <>
-                                <img src={selectedOption.image} className={cn("inline-block flex-shrink-0 rounded-full h-5 w-5", `${imageStyle}`, className)} />
+                                <img src={selectedOption.image} className={cn(textAreaImageVariants({}), className)} />
                                 <span className={cn("ml-3 block truncate font-medium", className)}>{selectedOption.label}</span>
                               </>
                             ) : (
                               <>
-                                {icon ? <Icon name={icon} className={cn(` h-5 w-5 text-primary/50 ${iconStyle}`, className)}/> : null}
+                                {icon ? <Icon name={icon} className={cn(`${iconStyle}`, className)} /> : null}
                                 <span className={cn("hidden truncate sm:ml-2 sm:block", className)}>{assignButtonName}</span>
                               </>
                             )}
@@ -312,7 +327,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                                   className={cn(" bg-white relative cursor-pointer select-none px-3 py-2", className)}
                                   onClick={() => memoizedHandleOptionClick(option)}>
                                   <div className={cn("flex items-center", className)}>
-                                   {option.image && <img src={option.image} className={cn("inline-block flex-shrink-0 rounded-full h-5 w-5", `${imageStyle}`, className)} />}
+                                    <img src={option.image} className={cn(textAreaImageVariants({}), className)} />
                                     <span className={cn("ml-3 block truncate font-medium", className)}>{option.label}</span>
                                   </div>
                                 </li>
@@ -331,7 +346,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                               </>
                             ) : (
                               <>
-                                {icon && <Icon name={icon} className={cn(` h-5 w-5 text-primary/50 ${iconStyle}`, className)} />}
+                                {icon ? <Icon name={icon} className={cn(`${iconStyle}`,className)} /> : null}
                                 <span className={cn("hidden truncate sm:ml-2 sm:block", className)}>{labelButtonName}</span>
                               </>
                             )}
@@ -366,7 +381,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                               </>
                             ) : (
                               <>
-                                {icon ? <Icon name={icon} className={cn(`h-5 w-5 text-primary/50 ${iconStyle}`, className)} /> : null}
+                                {icon ? <Icon name={icon} className={cn(`${iconStyle}`, className)} /> : null}
                                 <span className={cn("hidden truncate sm:ml-2 sm:block", className)}>{dueDateButtonName}</span>
                               </>
                             )}
@@ -390,15 +405,15 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                         </div>
                       </div>
                     </div>
-                    <div className={cn("flex items-center justify-between space-x-3 border-t border-primary/20 px-2 py-2 sm:px-3", className)}>
+                    <div className={cn("flex items-center justify-between space-x-3 border-t border-gray-200 px-2 py-2 sm:px-3", className)}>
                       <div className={cn("flex", className)}>
-                        <button className={cn("group -my-2 -ml-2 inline-flex items-center rounded-full px-3 py-2 text-left text-primary/40", className)}>
-                          {attachIcon ? <Icon name={attachIcon} className={cn(`h-5 w-5 text-primary/20 ${iconStyle}`, className)} /> : null}
-                          <span className={cn("text-sm italic pl-2.5", className)}>{dividerText}</span>
+                        <button className={cn("group -my-2 -ml-2 inline-flex items-center rounded-full px-3 py-2 text-left text-gray-400", className)}>
+                          {attachIcon ? <Icon name={attachIcon} className={cn(`${iconStyle}`, className)} /> : null}
+                          <span className={cn("text-sm italic", className)}>{attachFileName}</span>
                         </button>
                       </div>
                       <div className={cn("flex-shrink-0", className)}>
-                        <button type="submit" className={cn("inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm ", buttonColor(textColor), className)}>{createButton}</button>
+                        <button type="submit" className={cn("inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm ",buttonColor(color), className)}>{createButton}</button>
                       </div>
                     </div>
                   </>
@@ -407,19 +422,20 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
             </div>
             {
-              submitButton &&
-              <div className={cn("mt-2 flex justify-end", className)}>
-                <button type="submit" className={cn("inline-flex items-center rounded-md  px-3 py-2 text-sm font-semibold shadow-sm ", buttonColor(textColor), className)}>{submitButton}</button>
-              </div>}
+              submitButton ?
+                <div className={cn("mt-2 flex justify-end", className)}>
+                  <button type="submit" className={cn("inline-flex items-center rounded-md  px-3 py-2 text-sm font-semibold shadow-sm ",buttonColor(color), className)}>{submitButton}</button>
+                </div> : ""
+            }
             {
-              showIconListForTextArea ?
+              showIconForTextArea ?
                 <>
                   <div className={cn("flex justify-between pt-2", className)}>
                     <div className={cn("flex items-center space-x-5", className)}>
                       <div className={cn("flex root", className)}>
                         <button
                           type="button" className={cn("inline-flex items-center justify-center rounded-full", className)}>
-                          {attachIcon ? <Icon name={attachIcon} className={cn(`h-5 w-5 text-primary/50 ${iconStyle}`, className)} /> : null}
+                          {attachIcon ? <Icon name={attachIcon} className={cn(`${iconStyle}`, className)} /> : null}
                         </button>
                       </div>
 
@@ -430,14 +446,14 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                               <div className={cn(`${selectedIcon.bg} ${selectedIcon.height} ${selectedIcon.width} flex items-center justify-center rounded-full`, className)}>
                                 <button
                                   className={cn("inline-flex items-center justify-center rounded-full", className)} onClick={memoizedHandleIconClick}>
-                                  {selectedIcon.icon ? <Icon name={selectedIcon.icon} className={cn(`h-5 w-5 text-primary-foreground ${iconStyle}`, className)} /> : null}
+                                  {selectedIcon.icon ? <Icon name={selectedIcon.icon} /> : null}
                                 </button>
                               </div>
                             </>
                           ) : <>
                             <button
                               className={cn("inline-flex items-center justify-center rounded-full", className)} onClick={memoizedHandleIconClick}>
-                              {icon ? <Icon name={icon} className={cn(`h-5 w-5 text-primary/50 ${iconStyle}`, className)} /> : null}
+                              {icon ? <Icon name={icon} className={cn(`${iconStyle}`, className)} /> : null}
                             </button>
                           </>
                         }
@@ -447,17 +463,17 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                     </div>
 
                     <div className={cn("flex-shrink-0", className)}>
-                      <button type="submit" className={cn("rounded-md px-3 py-1.5 font-medium text-base leading-6 ", buttonColor(textColor), className)}>{buttonText}</button>
+                      <button type="submit" className={cn("rounded-md px-3 py-1.5 font-medium text-base leading-6 ",buttonColor(color),className)}>{submitButtonName}</button>
                     </div>
                   </div>
-                  <ul className={cn(`absolute z-10 rounded-lg text-base shadow focus:outline-none text-sm`, className)}>
+                  <ul className={cn(`absolute z-10 ${widthForUl} rounded-lg text-base shadow focus:outline-none text-sm`, className)}>
                     {showIcon && (
-                      iconList && iconList.map((option: any, index: number) => (
+                      iconButton && iconButton.map((option: any, index: number) => (
                         <li key={index} className={cn(` relative bg-white cursor-default select-none px-3 py-2`, className)} >
                           <div className={cn("flex items-center", className)}>
                             <div className={cn(`${option.bg} flex ${option.height} ${option.width}  items-center justify-center rounded-full`, className)}>
                               <button onClick={() => memoizedHandleIconButtonClick(option)} >
-                                {option.icon && <Icon name={option.icon} className={cn(`h-5 w-5 text-primary-foreground ${iconStyle}`, className)} />}
+                                <Icon name={option.icon} className={cn(`${iconStyle}`, className)} />
                               </button>
                             </div>
                             <span className={cn("ml-3 block truncate font-medium", className)}>{option.label}</span>
