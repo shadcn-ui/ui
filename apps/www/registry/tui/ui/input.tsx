@@ -132,17 +132,17 @@ type InputProps = {
   border?:"default"|"roundedPill"|"button"|"roundedButton"|"bottomBorder";
   borderStyleForAddOn?:"innerBorder"|"iconWithLabel"|"leadingDropdown"|"labelInside";
   inputValue?:string;
-  handleChange?: (event:React.ChangeEvent<HTMLInputElement>) => void;
-  handleInput?: (event:React.ChangeEvent<HTMLInputElement>) => void;
-  handleKeyDown?:(event:React.KeyboardEvent<HTMLInputElement>) => void;
-  handleSubmit?:(event: React.FormEvent) => void;
+  onChange?: (event:React.ChangeEvent<HTMLInputElement>) => void;
+  onInput?: (event:React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?:(event:React.KeyboardEvent<HTMLInputElement>) => void;
+  onSubmit?:(event: React.FormEvent) => void;
 }
 
 const Input = React.forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement> &
   VariantProps<typeof inputVariants> &
-  InputProps>(({ name, error, keyboardName,inputValue,handleChange,handleInput,handleKeyDown,handleSubmit, alignIcon="left", iconStyle, icon, addOnBorder, textColor, labelAlign = "left", buttonLabelText, trailingAddOn, options, variant, placeholder, label, borderStyleForAddOn, alignDropdown, addOnText, hint, bottomBorder, disabled, border, note, asChild = false, className, ...props }, ref) => {
+  InputProps>(({ name, error, keyboardName,inputValue,onChange,onInput,onKeyDown,onSubmit, alignIcon="left", iconStyle, icon, addOnBorder, textColor, labelAlign = "left", buttonLabelText, trailingAddOn, options, variant, placeholder, label, borderStyleForAddOn, alignDropdown, addOnText, hint, bottomBorder, disabled, border, note, asChild = false, className, ...props }, ref) => {
     const Comp = asChild ? Slot : "input"
     return (
       <div className="relative">
@@ -185,10 +185,10 @@ const Input = React.forwardRef<
             disabled={disabled}
             name={name}
             value={inputValue}
-            onChange={handleChange} 
-            onInput={handleInput}
-            onKeyDown={handleKeyDown}
-            onSubmit={handleSubmit}
+            onChange={onChange} 
+            onInput={onInput}
+            onKeyDown={onKeyDown}
+            onSubmit={onSubmit}
             ref={ref}
             {...props}
           />
