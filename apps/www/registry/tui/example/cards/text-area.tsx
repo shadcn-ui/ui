@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle, } from "@/registry/tui/ui/card"
-import { ButtonList, Textarea } from "@/registry/tui/ui/textarea"
+import { IconDropDown, Textarea } from "@/registry/tui/ui/textarea"
 import profile from '../../assest/profile.webp';
 
 export function CardsTextArea() {
@@ -20,7 +20,7 @@ export function CardsTextArea() {
     { label: "Tomorrow" }
   ]
 
-  const IconButton: ButtonList[] = [
+  const IconButton: IconDropDown[] = [
     { bg: "bg-red-500", label: "Excited", icon: "fire-regular", height: "h-8", width: "w-8" },
     { bg: "bg-pink-600", label: "Loved", icon: "circle-heart-regular", height: "h-8", width: "w-8" },
     { bg: "bg-green-400", label: "Happy", icon: "face-smile-regular", height: "h-8", width: "w-8" },

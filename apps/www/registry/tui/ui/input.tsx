@@ -132,6 +132,11 @@ type InputProps = {
   addOnBorder?: "withBorder" | "withoutBorder";
   border?:"default"|"roundedPill"|"button"|"roundedButton"|"bottomBorder";
   borderStyleForAddOn?:"innerBorder"|"iconWithLabel"|"leadingDropdown"|"labelInside";
+  value?:string;
+  onChange?: (event:React.ChangeEvent<HTMLInputElement>) => void;
+  onInput?: (event:React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?:(event:React.KeyboardEvent<HTMLInputElement>) => void;
+  onSubmit?:(event: React.FormEvent) => void;
 }
 
 const Input = React.forwardRef<
