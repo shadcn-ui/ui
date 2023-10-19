@@ -25,10 +25,9 @@ npx tailwindcss init -p
 
 ### Edit tsconfig.json
 
-Add the code below to the compilerOptions of your tsconfig.json so your app can resolve paths without error
+Add the code below to `compilerOptions` in `tsconfig.json` so your app can resolve paths:
 
 ```typescript
-"baseUrl": ".",
 "paths": {
   "@/*": ["./src/*"]
 }
@@ -36,24 +35,21 @@ Add the code below to the compilerOptions of your tsconfig.json so your app can 
 
 ### Update vite.config.ts
 
-Add the code below to the vite.config.ts so your app can resolve paths without error
-
-```bash
-# (so you can import "path" without error)
-npm i -D @types/node
-```
+Add the code below to `vite.config.ts` so your app can resolve paths:
 
 ```typescript
-import path from "path"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
+    alias: [
+      {
+        find: "@",
+        replacement: "/src",
+      },
+    ],
   },
 })
 ```
