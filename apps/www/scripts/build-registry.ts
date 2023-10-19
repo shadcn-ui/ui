@@ -219,7 +219,7 @@ export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
     --radius: 0.5rem;
   }
  
-  .dark {
+  :root[class~="dark"] {
     --background: <%- colors.dark["background"] %>;
     --foreground: <%- colors.dark["foreground"] %>;
  

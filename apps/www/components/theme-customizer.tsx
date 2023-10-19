@@ -604,7 +604,7 @@ const BASE_STYLES_WITH_VARIABLES = `
     --radius: <%- radius %>rem;
   }
  
-  .dark {
+  :root[class~="dark"] {
     --background: <%- colors.dark["background"] %>;
     --foreground: <%- colors.dark["foreground"] %>;
     --card: <%- colors.dark["card"] %>;
