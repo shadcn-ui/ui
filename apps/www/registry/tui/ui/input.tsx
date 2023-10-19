@@ -145,7 +145,12 @@ const Input = React.forwardRef<
   VariantProps<typeof inputVariants> &
   InputProps>(({ name, error, keyboardName,value,onChange,onInput,onKeyDown,onSubmit, alignIcon="left", iconStyle, icon, addOnBorder, textColor, labelAlign = "left", buttonLabelText, trailingAddOn, options, variant, placeholder, label, borderStyleForAddOn, alignDropdown, addOnText, hint, bottomBorder, disabled, border, note, asChild = false, className, ...props }, ref) => {
     const Comp = asChild ? Slot : "input"
-   
+    
+    const [inputValue, setInputValue] = useState('');
+    onInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(event.target.value);
+    };
+    
     return (
       <div className="relative">
         {
@@ -164,7 +169,7 @@ const Input = React.forwardRef<
                 {addOnText}</span> : null
           }
           {icon ? <Icon name={icon} className={cn(" h-5 w-5 absolute flex items-center pl-3 text-primary/50", `${alignIcon === "left" ? "left-0" : " right-0 pr-2"} ${iconStyle}`, className)} {...props} /> : null}
-          {error ? <Icon name="circle-exclamation-solid" className={cn("h-5 w-5 absolute flex items-center pl-3 text-destructive", `${alignIcon === "left" ? " left-0 " : " right-0 pr-2"} ${iconStyle}`, className)} {...props} /> : null}
+          {error && (inputValue.length === 0) ? <Icon name="circle-exclamation-solid" className={cn("h-5 w-5 absolute flex items-center pl-3 text-destructive", `${alignIcon === "left" ? " left-0 " : " right-0 pr-2"} ${iconStyle}`, className)} {...props} /> : null}
           {
             alignDropdown && (
               <div className={cn(`absolute text-sm  pr-2 ${alignDropdown === 'right' ? 'right-0' : 'left-0 '} flex items-center`, className)} {...props}>
@@ -182,7 +187,7 @@ const Input = React.forwardRef<
             </label>
           ) : null}
           <Comp
-            className={cn(`${error ? "border-destructive text-destructive/40 placeholder:text-destructive/50 focus:ring-1 focus:ring-inset ring-destructive focus:ring-destructive " : "focus:ring-2 focus:ring-inset focus:ring-primary/60"}`, inputVariants({ border, borderStyleForAddOn, variant, }), className)}
+            className={cn(`${error && (inputValue.length === 0) ? "border-destructive text-destructive/40 placeholder:text-destructive/50 focus:ring-1 focus:ring-inset ring-destructive focus:ring-destructive " : "focus:ring-2 focus:ring-inset focus:ring-secondary/60"}`, inputVariants({ border, borderStyleForAddOn, variant, }), className)}
             placeholder={placeholder}
             disabled={disabled}
             name={name}
@@ -213,11 +218,11 @@ const Input = React.forwardRef<
             </div>
           )}
         </div>
-        {error && <span className={cn(`${error ? "text-destructive" : null} text-sm`, className)} {...props}>{error}</span>}
+        {error && (inputValue.length === 0) && <span className={cn(`${error ? "text-destructive" : null} text-sm`, className)} {...props}>{error}</span>}
 
         {bottomBorder && <div className={cn("absolute inset-x-0 bottom-0 border-t border-primary/30 focus:border-t focus:ring-1 ring-primary/30 ring-1", className)} {...props} />}
 
-        {note && <span className={cn("text-sm text-primary/80", className)} {...props}>{note}</span>}
+        {note && <span className={cn("text-sm text-primary/90", className)} {...props}>{note}</span>}
 
       </div>
     )
