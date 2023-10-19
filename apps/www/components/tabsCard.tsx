@@ -22,8 +22,37 @@ export const TabsWithUnderline = ({ showTitle, withIcons, fullWidth, withBar, wi
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="account">
+        <Tabs defaultValue="profile">
           <TabsList variant={withBar ? "bar" : "underline"} className={fullWidth ? "w-full" : ""}>
+            <TabsTrigger
+              variant={withBar ? "bar" : "underline"}
+              value="profile"
+              icon={withIcons ? "user-solid" : undefined}
+              badge={withBadge ? "52" : undefined}
+            >
+              Profile
+            </TabsTrigger>
+            <TabsTrigger
+              variant={withBar ? "bar" : "underline"}
+              value="property" icon={withIcons ? "building-solid" : undefined}
+              badge={withBadge ? "50" : undefined}
+            >
+              Property
+            </TabsTrigger>
+            <TabsTrigger
+              variant={withBar ? "bar" : "underline"}
+              value="agents" icon={withIcons ? "users-solid" : undefined}
+              badge={withBadge ? "4" : undefined}
+            >
+              Agents
+            </TabsTrigger >
+            <TabsTrigger
+              variant={withBar ? "bar" : "underline"}
+              value="transactions" icon={withIcons ? "credit-card-alt-solid" : undefined}
+              badge={withBadge ? "0" : undefined}
+            >
+              Transactions
+            </TabsTrigger>
             <TabsTrigger
               variant={withBar ? "bar" : "underline"}
               value="account"
@@ -33,6 +62,7 @@ export const TabsWithUnderline = ({ showTitle, withIcons, fullWidth, withBar, wi
               My Account
             </TabsTrigger>
             <TabsTrigger
+              tabIndex={6}
               variant={withBar ? "bar" : "underline"}
               value="company" icon={withIcons ? "building-solid" : undefined}
               badge={withBadge ? "50" : undefined}
@@ -40,6 +70,7 @@ export const TabsWithUnderline = ({ showTitle, withIcons, fullWidth, withBar, wi
               Company
             </TabsTrigger>
             <TabsTrigger
+              tabIndex={7}
               variant={withBar ? "bar" : "underline"}
               value="teamMembers" icon={withIcons ? "users-solid" : undefined}
               badge={withBadge ? "4" : undefined}
@@ -47,6 +78,7 @@ export const TabsWithUnderline = ({ showTitle, withIcons, fullWidth, withBar, wi
               Team Members
             </TabsTrigger >
             <TabsTrigger
+              tabIndex={8}
               variant={withBar ? "bar" : "underline"}
               value="billing" icon={withIcons ? "credit-card-alt-solid" : undefined}
               badge={withBadge ? "0" : undefined}

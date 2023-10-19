@@ -138,15 +138,12 @@ const Input = React.forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement> &
   VariantProps<typeof inputVariants> &
-  InputProps>(({ name, error, keyboardName, alignIcon, iconStyle, icon, addOnBorder, textColor, labelAlign = "left", buttonLabelText, trailingAddOn, options, variant, placeholder, label, borderStyleForAddOn, alignDropdown, addOnText, hint, bottomBorder, disabled, border, note, asChild = false, className, ...props }, ref) => {
+  InputProps>(({ name, error, keyboardName,value,onChange,onInput,onKeyDown,onSubmit, alignIcon="left", iconStyle, icon, addOnBorder, textColor, labelAlign = "left", buttonLabelText, trailingAddOn, options, variant, placeholder, label, borderStyleForAddOn, alignDropdown, addOnText, hint, bottomBorder, disabled, border, note, asChild = false, className, ...props }, ref) => {
     const Comp = asChild ? Slot : "input"
     const fontColor = (textColor?: colors) => {
       return `text-${textColor}-500`
     }
-    const [inputValue, setInputValue] = useState('');
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setInputValue(event.target.value);
-    };
+   
     return (
       <div className="relative">
         {
@@ -187,8 +184,11 @@ const Input = React.forwardRef<
             placeholder={placeholder}
             disabled={disabled}
             name={name}
-            value={inputValue}
-            onChange={handleChange}
+            value={value}
+            onChange={onChange} 
+            onInput={onInput}
+            onKeyDown={onKeyDown}
+            onSubmit={onSubmit}
             ref={ref}
             {...props}
           />

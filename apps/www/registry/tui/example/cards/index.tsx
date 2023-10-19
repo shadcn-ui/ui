@@ -48,6 +48,7 @@ import { CardsBreadcrumb } from "./breadcrumb";
 import { CardsNotification } from "./notification";
 import { CardsCommandPalettes } from "./command-palettes";
 import { CardsSteps } from "./steps";
+import { CardsForm } from "./form";
 
 
 export default function CardsDemo() {
@@ -238,6 +239,7 @@ export default function CardsDemo() {
           </TabsContent>
 
           <TabsContent value="pg-components" className="flex flex-col space-y-5">
+            <CardsForm/>
             <CardsBreadcrumb />
             <CardsNotification />
             <CardsPagination />
