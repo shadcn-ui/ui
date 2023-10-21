@@ -59,15 +59,19 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                                     <span
                                         className="ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
                                         onKeyDown={(e) => {
-                                            if (e.key === 'Enter') {
-                                                handleUnselect(item);
-                                            }
-                                        }}
-                                        onMouseDown={(e) => {
-                                            e.preventDefault();
-                                            e.stopPropagation();
-                                        }}
-                                        onClick={() => handleUnselect(item)}
+                                           if (e.key === 'Enter') {
+                                             handleUnselect(item)
+                                           }
+                                         }}
+                                         onMouseDown={(e) => {
+                                           e.preventDefault()
+                                           e.stopPropagation()
+                                         }}
+                                         onClick={(e) => {
+                                           e.preventDefault()
+                                           e.stopPropagation()
+                                           handleUnselect(item)
+                                         }}
                                     >
                                         <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
                                     </span>
