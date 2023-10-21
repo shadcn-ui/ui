@@ -228,12 +228,25 @@ export async function runInit(cwd: string, config: Config) {
 
   const extension = config.tsx ? "ts" : "js"
 
+  const tailwindConfigExtension = path.extname(
+    config.resolvedPaths.tailwindConfig
+  )
+
+  let tailwindConfigTemplate: string
+  if (tailwindConfigExtension === ".ts") {
+    tailwindConfigTemplate = config.tailwind.cssVariables
+      ? templates.TAILWIND_CONFIG_TS_WITH_VARIABLES
+      : templates.TAILWIND_CONFIG_TS
+  } else {
+    tailwindConfigTemplate = config.tailwind.cssVariables
+      ? templates.TAILWIND_CONFIG_WITH_VARIABLES
+      : templates.TAILWIND_CONFIG
+  }
+
   // Write tailwind config.
   await fs.writeFile(
     config.resolvedPaths.tailwindConfig,
-    config.tailwind.cssVariables
-      ? template(templates.TAILWIND_CONFIG_WITH_VARIABLES)({ extension })
-      : template(templates.TAILWIND_CONFIG)({ extension }),
+    template(tailwindConfigTemplate)({ extension }),
     "utf8"
   )
 

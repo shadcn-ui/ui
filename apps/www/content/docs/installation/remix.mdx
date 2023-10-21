@@ -59,7 +59,7 @@ npm add -D tailwindcss@latest autoprefixer@latest
 Then we create a `postcss.config.js` file:
 
 ```js
-module.exports = {
+export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
@@ -71,7 +71,7 @@ And finally we add the following to our `remix.config.js` file:
 
 ```js {4-5}
 /** @type {import('@remix-run/dev').AppConfig} */
-module.exports = {
+export default {
   ...
   tailwind: true,
   postcss: true,
