@@ -516,6 +516,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/command-dialog")),
       files: ["registry/default/example/command-dialog.tsx"],
     },
+    "command-custom-filtering": {
+      name: "command-custom-filtering",
+      type: "components:example",
+      registryDependencies: ["command"],
+      component: React.lazy(() => import("@/registry/default/example/command-custom-filtering")),
+      files: ["registry/default/example/command-custom-filtering.tsx"],
+    },
     "context-menu-demo": {
       name: "context-menu-demo",
       type: "components:example",
@@ -1538,6 +1545,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["command","dialog"],
       component: React.lazy(() => import("@/registry/new-york/example/command-dialog")),
       files: ["registry/new-york/example/command-dialog.tsx"],
+    },
+    "command-custom-filtering": {
+      name: "command-custom-filtering",
+      type: "components:example",
+      registryDependencies: ["command"],
+      component: React.lazy(() => import("@/registry/new-york/example/command-custom-filtering")),
+      files: ["registry/new-york/example/command-custom-filtering.tsx"],
     },
     "context-menu-demo": {
       name: "context-menu-demo",
