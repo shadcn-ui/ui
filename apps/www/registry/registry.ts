@@ -492,6 +492,12 @@ const example: Registry = [
     files: ["example/dialog-demo.tsx"],
   },
   {
+    name: "dialog-close-button",
+    type: "components:example",
+    registryDependencies: ["dialog", "button"],
+    files: ["example/dialog-close-button.tsx"],
+  },
+  {
     name: "dropdown-menu-demo",
     type: "components:example",
     registryDependencies: ["dropdown-menu"],
