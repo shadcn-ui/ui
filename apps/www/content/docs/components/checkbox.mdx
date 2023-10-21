@@ -7,40 +7,45 @@ radix:
   api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
 ---
 
-<ComponentExample src="/components/examples/checkbox/demo.tsx">
-  <CheckboxDemo />
-</ComponentExample>
+<ComponentPreview name="checkbox-demo" />
 
 ## Installation
 
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
 ```bash
-npx shadcn-ui add checkbox
+npx shadcn-ui@latest add checkbox
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
+</TabsContent>
 
-1. Install the `@radix-ui/react-checkbox` component from radix-ui:
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
 
 ```bash
 npm install @radix-ui/react-checkbox
 ```
 
-2. Copy and paste the following code into your project.
+<Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource src="/components/ui/checkbox.tsx" />
+<ComponentSource name="checkbox" />
 
-<Callout>
-  This is the `<Checkbox />` primitive. You can place it in a file at
-  `components/ui/checkbox.tsx`.
-</Callout>
+<Step>Update the import paths to match your project setup.</Step>
 
-    </AccordionContent>
+</Steps>
 
-  </AccordionItem>
-</Accordion>
+</TabsContent>
+
+</Tabs>
 
 ## Usage
 
@@ -56,33 +61,14 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 ### With text
 
-<ComponentExample src="/components/examples/checkbox/with-text.tsx">
-  <CheckboxWithText />
-</ComponentExample>
+<ComponentPreview name="checkbox-with-text" />
 
 ### Disabled
 
-<ComponentExample src="/components/examples/checkbox/disabled.tsx">
-  <CheckboxDisabled />
-</ComponentExample>
+<ComponentPreview name="checkbox-disabled" />
 
-## React Hook Form
+### Form
 
-<Alert className="mt-4">
-  <AlertDescription>
-    **Note**: Learn more about using React Hook Form on the
-    [docs](/docs/forms/react-hook-form) page.
-  </AlertDescription>
-</Alert>
+<ComponentPreview name="checkbox-form-single" />
 
-### Checkbox
-
-<ComponentExample src="/components/examples/checkbox/react-hook-form-single.tsx">
-  <CheckboxReactHookFormSingle />
-</ComponentExample>
-
-### Checkboxes
-
-<ComponentExample src="/components/examples/checkbox/react-hook-form-multiple.tsx">
-  <CheckboxReactHookFormMultiple />
-</ComponentExample>
+<ComponentPreview name="checkbox-form-multiple" />

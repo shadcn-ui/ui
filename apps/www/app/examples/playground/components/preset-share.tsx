@@ -1,13 +1,13 @@
-import { Copy } from "lucide-react"
+import { CopyIcon } from "@radix-ui/react-icons"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/registry/new-york/ui/button"
+import { Input } from "@/registry/new-york/ui/input"
+import { Label } from "@/registry/new-york/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/registry/new-york/ui/popover"
 
 export function PresetShare() {
   return (
@@ -37,7 +37,7 @@ export function PresetShare() {
           </div>
           <Button type="submit" size="sm" className="px-3">
             <span className="sr-only">Copy</span>
-            <Copy className="h-4 w-4" />
+            <CopyIcon className="h-4 w-4" />
           </Button>
         </div>
       </PopoverContent>

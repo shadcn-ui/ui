@@ -20,7 +20,7 @@ export function SiteHeader() {
             >
               <div
                 className={buttonVariants({
-                  size: "sm",
+                  size: "icon",
                   variant: "ghost",
                 })}
               >
@@ -35,7 +35,7 @@ export function SiteHeader() {
             >
               <div
                 className={buttonVariants({
-                  size: "sm",
+                  size: "icon",
                   variant: "ghost",
                 })}
               >
