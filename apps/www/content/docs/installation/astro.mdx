@@ -62,15 +62,19 @@ Answer `Yes` to all the question prompted by the CLI when installing Tailwind CS
 
 ### Edit tsconfig.json file
 
-Add the code below to the tsconfig.json file to resolve paths:
+Add the following code to the `tsconfig.json` file to resolve paths:
 
-```json {2-7} showLineNumbers
+```ts {4-9} showLineNumbers
 {
   "compilerOptions": {
+    // ...
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
+    // ...
   }
 }
 ```
