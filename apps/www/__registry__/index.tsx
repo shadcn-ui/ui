@@ -712,6 +712,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/scroll-area-demo")),
       files: ["registry/default/example/scroll-area-demo.tsx"],
     },
+    "scroll-area-horizontal-demo": {
+      name: "scroll-area-horizontal-demo",
+      type: "components:example",
+      registryDependencies: ["scroll-area"],
+      component: React.lazy(() => import("@/registry/default/example/scroll-area-horizontal-demo")),
+      files: ["registry/default/example/scroll-area-horizontal-demo.tsx"],
+    },
     "select-demo": {
       name: "select-demo",
       type: "components:example",
@@ -1776,6 +1783,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["scroll-area"],
       component: React.lazy(() => import("@/registry/new-york/example/scroll-area-demo")),
       files: ["registry/new-york/example/scroll-area-demo.tsx"],
+    },
+    "scroll-area-horizontal-demo": {
+      name: "scroll-area-horizontal-demo",
+      type: "components:example",
+      registryDependencies: ["scroll-area"],
+      component: React.lazy(() => import("@/registry/new-york/example/scroll-area-horizontal-demo")),
+      files: ["registry/new-york/example/scroll-area-horizontal-demo.tsx"],
     },
     "select-demo": {
       name: "select-demo",
