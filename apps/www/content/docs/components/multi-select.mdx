@@ -45,6 +45,8 @@ import { MultiSelect } from "@/components/ui/multi-select"
 ```
 
 ```tsx
+const [selected, setSelected] = React.useState<Record<string, string>>([])
+
 <MultiSelect
   options={[
     { value: "React", label: "React" },

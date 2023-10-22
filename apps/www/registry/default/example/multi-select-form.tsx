@@ -16,7 +16,7 @@ import { MultiSelect } from "@/registry/default/ui/multi-select"
 import { toast } from "@/registry/default/ui/use-toast"
 
 const FormSchema = z.object({
-    framework: z.array(z.string()),
+    framework: z.array(z.record(z.string())).min(2, "Select at least 2 frameworks"),
 })
 
 const frameworks = [
@@ -54,8 +54,15 @@ export default function SelectForm() {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
-            framework: ["next.js", "sveltekit"]
-        }
+            framework: [{
+                value: "next.js",
+                label: "Next.js",
+            }, {
+                value: "nuxt.js",
+                label: "Nuxt.js",
+            }]
+        },
+        mode: "onSubmit"
     })
 
     function onSubmit(data: z.infer<typeof FormSchema>) {

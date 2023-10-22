@@ -5,7 +5,7 @@ import * as React from "react"
 import { MultiSelect } from "@/registry/default/ui/multi-select"
 
 export default function MultiSelectDemo() {
-    const [selected, setSelected] = React.useState<string[]>([]);
+    const [selected, setSelected] = React.useState<Record<string, string>[]>([]);
 
     return (
         <MultiSelect
