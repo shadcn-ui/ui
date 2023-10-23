@@ -882,6 +882,12 @@ const example: Registry = [
     registryDependencies: ["input-number"],
     files: ["example/input-number-demo.tsx"],
   },
+  {
+    name: "input-number-form",
+    type: "components:example",
+    registryDependencies: ["input-number"],
+    files: ["example/input-number-form.tsx"],
+  },
 ]
 
 export const registry: Registry = [...ui, ...example]

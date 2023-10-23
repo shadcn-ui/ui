@@ -1041,6 +1041,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/input-number-demo")),
       files: ["registry/default/example/input-number-demo.tsx"],
     },
+    "input-number-form": {
+      name: "input-number-form",
+      type: "components:example",
+      registryDependencies: ["input-number"],
+      component: React.lazy(() => import("@/registry/default/example/input-number-form")),
+      files: ["registry/default/example/input-number-form.tsx"],
+    },
   },  "new-york": {
     "accordion": {
       name: "accordion",
@@ -2077,6 +2084,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["input-number"],
       component: React.lazy(() => import("@/registry/new-york/example/input-number-demo")),
       files: ["registry/new-york/example/input-number-demo.tsx"],
+    },
+    "input-number-form": {
+      name: "input-number-form",
+      type: "components:example",
+      registryDependencies: ["input-number"],
+      component: React.lazy(() => import("@/registry/new-york/example/input-number-form")),
+      files: ["registry/new-york/example/input-number-form.tsx"],
     },
   },
 }
