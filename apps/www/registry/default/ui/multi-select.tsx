@@ -32,6 +32,7 @@ interface MultiSelectProps {
 const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
   ({ options, selected, onChange, className, ...props }, ref) => {
     const [open, setOpen] = React.useState(false)
+    const [query, setQuery] = React.useState<string>("")
 
     const handleUnselect = (item: Record<"value" | "label", string>) => {
       onChange(selected.filter((i) => i.value !== item.value))
@@ -40,7 +41,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
     // on delete key press, remove last selected item
     React.useEffect(() => {
       const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Backspace" && selected.length > 0) {
+        if (e.key === "Backspace" && query === "" && selected.length > 0) {
           onChange(selected.filter((_, index) => index !== selected.length - 1))
         }
 
@@ -55,7 +56,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
       return () => {
         document.removeEventListener("keydown", handleKeyDown)
       }
-    }, [onChange, selected])
+    }, [onChange, query, selected])
 
     return (
       <Popover open={open} onOpenChange={setOpen}>
@@ -76,31 +77,34 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                   variant="outline"
                   key={item.value}
                   className="flex items-center gap-1 group-hover:bg-background"
-                  onClick={() => handleUnselect(item)}
                 >
                   {item.label}
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="icon"
-                    className="border-none"
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
+                  {open && (
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="icon"
+                      className={`border-none duration-300 ${
+                        open ? "opacity-100 ease-in" : "opacity-0 ease-out"
+                      }`}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          handleUnselect(item)
+                        }
+                      }}
+                      onMouseDown={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                      }}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
                         handleUnselect(item)
-                      }
-                    }}
-                    onMouseDown={(e) => {
-                      e.preventDefault()
-                      e.stopPropagation()
-                    }}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      e.stopPropagation()
-                      handleUnselect(item)
-                    }}
-                  >
-                    <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
-                  </Button>
+                      }}
+                    >
+                      <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
+                    </Button>
+                  )}
                 </Badge>
               ))}
               {selected.length === 0 && (
@@ -112,7 +116,13 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
         </PopoverTrigger>
         <PopoverContent className="w-full p-0">
           <Command className={className}>
-            <CommandInput placeholder="Search ..." />
+            <CommandInput
+              onValueChange={(item) => {
+                console.log("dd", item)
+                setQuery(item)
+              }}
+              placeholder="Search ..."
+            />
             <CommandEmpty>No item found.</CommandEmpty>
             <CommandGroup className="max-h-64 overflow-auto">
               {options.map((option) => (
