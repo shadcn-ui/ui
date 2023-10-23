@@ -226,6 +226,11 @@ const ui: Registry = [
     dependencies: ["@radix-ui/react-tooltip"],
     files: ["ui/tooltip.tsx"],
   },
+  {
+    name: "input-number",
+    type: "components:ui",
+    files: ["ui/input-number.tsx"],
+  },
 ]
 
 const example: Registry = [
@@ -870,6 +875,12 @@ const example: Registry = [
     name: "cards",
     type: "components:example",
     files: ["example/cards/cards.tsx"],
+  },
+  {
+    name: "input-number-demo",
+    type: "components:example",
+    registryDependencies: ["input-number"],
+    files: ["example/input-number-demo.tsx"],
   },
 ]
 

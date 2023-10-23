@@ -367,5 +367,12 @@
       "ui/tooltip.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "input-number",
+    "files": [
+      "ui/input-number.tsx"
+    ],
+    "type": "components:ui"
   }
 ]

@@ -264,6 +264,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/tooltip")),
       files: ["registry/default/ui/tooltip.tsx"],
     },
+    "input-number": {
+      name: "input-number",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/input-number")),
+      files: ["registry/default/ui/input-number.tsx"],
+    },
     "accordion-demo": {
       name: "accordion-demo",
       type: "components:example",
@@ -1027,6 +1034,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/cards")),
       files: ["registry/default/example/cards/cards.tsx"],
     },
+    "input-number-demo": {
+      name: "input-number-demo",
+      type: "components:example",
+      registryDependencies: ["input-number"],
+      component: React.lazy(() => import("@/registry/default/example/input-number-demo")),
+      files: ["registry/default/example/input-number-demo.tsx"],
+    },
   },  "new-york": {
     "accordion": {
       name: "accordion",
@@ -1286,6 +1300,13 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/tooltip")),
       files: ["registry/new-york/ui/tooltip.tsx"],
+    },
+    "input-number": {
+      name: "input-number",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/input-number")),
+      files: ["registry/new-york/ui/input-number.tsx"],
     },
     "accordion-demo": {
       name: "accordion-demo",
@@ -2049,6 +2070,13 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/example/cards")),
       files: ["registry/new-york/example/cards/cards.tsx"],
+    },
+    "input-number-demo": {
+      name: "input-number-demo",
+      type: "components:example",
+      registryDependencies: ["input-number"],
+      component: React.lazy(() => import("@/registry/new-york/example/input-number-demo")),
+      files: ["registry/new-york/example/input-number-demo.tsx"],
     },
   },
 }

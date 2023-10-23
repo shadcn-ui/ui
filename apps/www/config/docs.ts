@@ -263,6 +263,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Number Input",
+          href: "/docs/components/input-number",
+          items: [],
+        },
+        {
           title: "Label",
           href: "/docs/components/label",
           items: [],
