@@ -14,6 +14,7 @@ import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
 import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shadcn.com"),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,

@@ -24,6 +24,18 @@
     --input: 240 5.9% 90%;
     --ring: 240 5% 64.9%;
     --radius: 0.5rem;
+    --code: rgb(0, 0, 0) (255, 0, 0);
+    --code-foreground: #f4f4f5;
+    --code--highlighted: rgb(240, 240, 240);
+    --copy-button-background: rgb(255, 255, 255);
+    --scrollbar-track: rgb(248, 248, 248);
+    --scrollbar-track-border: rgb(242, 242, 242);
+    --scrollbar-track-hover: rgb(240, 240, 240);
+    --scrollbar-track-active: rgb(244, 244, 244);
+    --scrollbar-thumb: rgb(225, 225, 225);
+    --scrollbar-thumb-hover: rgb(220, 220, 220);
+    --scrollbar-thumb-active: rgb(229, 229, 229);
+    --rainbow-background: rgba(0, 0, 0, 0.16);
   }
 
   .dark {
@@ -46,6 +58,17 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+    --code: rgb(255, 255, 255);
+    --code-foreground: #18181b;
+    --code-highlighted: rgb(17, 17, 17);
+    --copy-button-background: rgb(17, 17, 17);
+    --scrollbar-track: #09090b;
+    --scrollbar-track-border: #1b1b1f;
+    --scrollbar-track-hover: #0b0b0c;
+    --scrollbar-track-active: #050507;
+    --scrollbar-thumb: rgb(62, 62, 62);
+    --scrollbar-thumb-hover: rgb(68, 68, 68);
+    --scrollbar-thumb-active: rgb(66, 66, 66);
   }
 }
 
@@ -75,4 +98,77 @@
   .container {
     @apply px-4;
   }
+}
+
+/* Light Theme For Codes */
+span.line span {
+  color: var(--code) !important;
+}
+
+pre {
+  background-color: var(--code-foreground) !important;
+}
+
+span.line--highlighted {
+  background-color: var(--code-foreground) !important;
+}
+div[data-rehype-pretty-code-fragment] button:hover {
+  background-color: var(--copy-button-background) !important;
+}
+
+html.dark div[data-rehype-pretty-code-fragment] button svg {
+  color: rgb(255, 255, 255) !important;
+}
+
+html.light div[data-rehype-pretty-code-fragment] button svg {
+  color: rgb(0, 0, 0) !important;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) !important;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  width: 7px;
+  width: 7px;
+  height: 7px;
+  height: 7px;
+}
+
+*::-webkit-scrollbar-corner {
+  background-color: var(--scrollbar-track) !important;
+  border: 1px solid var(--scrollbar-track) !important;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track) !important;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-hover) !important;
+  border-left: 1.5px solid var(--scrollbar-track-border) !important;
+  border-right: 1px solid var(--scrollbar-track-border) !important;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: var(--scrollbar-track-active) !important;
+  border-left: 1.5px solid var(--scrollbar-track-border) !important;
+  border-right: 1px solid var(--scrollbar-track-border) !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb) !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-hover) !important;
+  border-radius: 14px;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--scrollbar-thumb-active) !important;
+  border-radius: 14px;
 }
