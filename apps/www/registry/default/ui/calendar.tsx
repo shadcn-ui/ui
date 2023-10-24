@@ -9,21 +9,15 @@ import { buttonVariants } from "@/registry/default/ui/button"
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 
-const currentYear = new Date().getFullYear()
-
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
-  fromYear = currentYear - 100,
-  toYear = currentYear + 1,
   ...props
 }: CalendarProps) {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      fromYear={fromYear}
-      toYear={toYear}
       className={cn("p-3", className)}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",

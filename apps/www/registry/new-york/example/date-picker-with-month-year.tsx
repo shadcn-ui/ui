@@ -15,6 +15,7 @@ import {
 
 export default function DatePickerWithMonthYear() {
   const [date, setDate] = React.useState<Date>()
+  const currentYear = new Date().getFullYear()
 
   return (
     <Popover>
@@ -35,6 +36,8 @@ export default function DatePickerWithMonthYear() {
           mode="single"
           selected={date}
           onSelect={setDate}
+          fromYear={currentYear - 5}
+          toYear={currentYear + 5}
           captionLayout="dropdown-buttons"
         />
       </PopoverContent>
