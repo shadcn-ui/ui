@@ -4,7 +4,6 @@
 
 @layer base {
   :root {
-    --body-background: rgb(255, 255, 255);
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
 
@@ -36,7 +35,6 @@
 
     --radius: 0.5rem;
 
-    /* --chatgpt: rgb(0, 0, 0) (255, 0, 0); */
     --code: rgb(0, 0, 0) (255, 0, 0);
     --code-foreground: #f4f4f5;
     --code--highlighted: rgb(240, 240, 240);
@@ -49,13 +47,10 @@
     --scrollbar-thumb: rgb(225, 225, 225);
     --scrollbar-thumb-hover: rgb(220, 220, 220);
     --scrollbar-thumb-active: rgb(229, 229, 229);
-
     --rainbow-background: rgba(0, 0, 0, 0.16);
   }
 
   .dark {
-    --body-background: rgb(0, 0, 0);
-
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
 
@@ -152,17 +147,6 @@ html.dark div[data-rehype-pretty-code-fragment] button svg {
 
 html.light div[data-rehype-pretty-code-fragment] button svg {
   color: rgb(0, 0, 0) !important;
-}
-
-.hello-tool button {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding: 0 !important;
-}
-
-.hello-tool .collab {
-  margin-left: 8px !important;
-  margin-right: 8px !important;
 }
 
 /* Firefox */
