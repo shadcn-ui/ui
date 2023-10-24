@@ -6,40 +6,28 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
-
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
-
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
-
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
-
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
     --ring: 240 5% 64.9%;
-
     --radius: 0.5rem;
-
     --code: rgb(0, 0, 0) (255, 0, 0);
     --code-foreground: #f4f4f5;
     --code--highlighted: rgb(240, 240, 240);
     --copy-button-background: rgb(255, 255, 255);
-
     --scrollbar-track: rgb(248, 248, 248);
     --scrollbar-track-border: rgb(242, 242, 242);
     --scrollbar-track-hover: rgb(240, 240, 240);
@@ -53,38 +41,27 @@
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
-
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
     --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-
-    --ring: 240 3.7% 15.9%;
-
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
     --code: rgb(255, 255, 255);
     --code-foreground: #18181b;
     --code-highlighted: rgb(17, 17, 17);
     --copy-button-background: rgb(17, 17, 17);
-
     --scrollbar-track: #09090b;
     --scrollbar-track-border: #1b1b1f;
     --scrollbar-track-hover: #0b0b0c;
@@ -92,8 +69,6 @@
     --scrollbar-thumb: rgb(62, 62, 62);
     --scrollbar-thumb-hover: rgb(68, 68, 68);
     --scrollbar-thumb-active: rgb(66, 66, 66);
-
-    --rainbow-background: rgb(255, 0, 0);
   }
 }
 
@@ -101,7 +76,6 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
@@ -114,7 +88,7 @@
   }
 
   .step:before {
-    @apply inline-flex absolute justify-center items-center w-9 h-9 font-mono text-base font-medium text-center rounded-full border-4 bg-muted -indent-px border-background;
+    @apply absolute w-9 h-9 bg-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 border-background;
     @apply ml-[-50px] mt-[-4px];
     content: counter(step);
   }
@@ -126,6 +100,7 @@
   }
 }
 
+/* Light Theme For Codes */
 span.line span {
   color: var(--code) !important;
 }
