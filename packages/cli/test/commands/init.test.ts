@@ -13,12 +13,6 @@ vi.mock("fs/promises", () => ({
   writeFile: vi.fn(),
   mkdir: vi.fn(),
 }))
-
-vi.mock("execa")
-vi.mock("fs/promises", () => ({
-  writeFile: vi.fn(),
-  mkdir: vi.fn(),
-}))
 vi.mock("ora")
 
 test("init config-full", async () => {
@@ -57,7 +51,7 @@ test("init config-full", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
     expect.stringMatching(/tailwind.config.ts$/),
-    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
+    expect.stringContaining(`import type { Config } from "tailwindcss"`),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
@@ -127,7 +121,7 @@ test("init config-partial", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
     expect.stringMatching(/tailwind.config.ts$/),
-    expect.stringContaining(`/** @type {import('tailwindcss').Config} */`),
+    expect.stringContaining(`import type { Config } from "tailwindcss"`),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(

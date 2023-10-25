@@ -108,6 +108,7 @@ export default makeSource({
 
             node.__rawString__ = codeEl.children?.[0].value
             node.__src__ = node.properties?.__src__
+            node.__style__ = node.properties?.__style__
           }
         })
       },
@@ -157,6 +158,10 @@ export default makeSource({
 
             if (node.__event__) {
               preElement.properties["__event__"] = node.__event__
+            }
+
+            if (node.__style__) {
+              preElement.properties["__style__"] = node.__style__
             }
           }
         })

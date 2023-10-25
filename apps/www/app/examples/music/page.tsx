@@ -1,5 +1,8 @@
 import { Metadata } from "next"
+import Image from "next/image"
+import { PlusCircledIcon } from "@radix-ui/react-icons"
 
+import { Button } from "@/registry/new-york/ui/button"
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 import { Separator } from "@/registry/new-york/ui/separator"
 import {
@@ -15,11 +18,6 @@ import { PodcastEmptyPlaceholder } from "./components/podcast-empty-placeholder"
 import { Sidebar } from "./components/sidebar"
 import { listenNowAlbums, madeForYouAlbums } from "./data/albums"
 import { playlists } from "./data/playlists"
-import "./styles.css"
-import Image from "next/image"
-import { PlusCircle } from "lucide-react"
-
-import { Button } from "@/registry/new-york/ui/button"
 
 export const metadata: Metadata = {
   title: "Music App",
@@ -66,7 +64,7 @@ export default function MusicPage() {
                       </TabsList>
                       <div className="ml-auto mr-4">
                         <Button>
-                          <PlusCircle className="mr-2 h-4 w-4" />
+                          <PlusCircledIcon className="mr-2 h-4 w-4" />
                           Add music
                         </Button>
                       </div>

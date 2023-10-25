@@ -95,15 +95,15 @@ export default function ComboboxForm() {
                 </PopoverTrigger>
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
-                    <CommandInput placeholder="Search framework..." />
-                    <CommandEmpty>No framework found.</CommandEmpty>
+                    <CommandInput placeholder="Search language..." />
+                    <CommandEmpty>No language found.</CommandEmpty>
                     <CommandGroup>
                       {languages.map((language) => (
                         <CommandItem
-                          value={language.value}
+                          value={language.label}
                           key={language.value}
-                          onSelect={(value) => {
-                            form.setValue("language", value)
+                          onSelect={() => {
+                            form.setValue("language", language.value)
                           }}
                         >
                           <Check

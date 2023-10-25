@@ -4,6 +4,48 @@ description: Latest updates and announcements.
 toc: false
 ---
 
+## July 2023 - JavaScript
+
+This project and the components are written in TypeScript. **We recommend using TypeScript for your project as well**.
+
+However we provide a JavaScript version of the components, available via the [cli](/docs/cli).
+
+```txt
+Would you like to use TypeScript (recommended)? no
+```
+
+To opt-out of TypeScript, you can use the `tsx` flag in your `components.json` file.
+
+```json {10} title="components.json"
+{
+  "style": "default",
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/app/globals.css",
+    "baseColor": "zinc",
+    "cssVariables": true
+  },
+  "rsc": false,
+  "tsx": false,
+  "aliases": {
+    "utils": "~/lib/utils",
+    "components": "~/components"
+  }
+}
+```
+
+To configure import aliases, you can use the following `jsconfig.json`:
+
+```json {4} title="jsconfig.json"
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
 ## June 2023 - New CLI, Styles and more
 
 I have a lot of updates to share with you today:
@@ -11,7 +53,7 @@ I have a lot of updates to share with you today:
 - [**New CLI**](#new-cli) - Rewrote the CLI from scratch. You can now add components, dependencies and configure import paths.
 - [**Theming**](#theming-with-css-variables-or-tailwind-colors) - Choose between using CSS variables or Tailwind CSS utility classes for theming.
 - [**Base color**](#base-color) - Configure the base color for your project. This will be used to generate the default color palette for your components.
-- [**React Server Components**](react-server-components) - Opt out of using React Server Components. The CLI will automatically append or remove the `use client` directory.
+- [**React Server Components**](#react-server-components) - Opt out of using React Server Components. The CLI will automatically append or remove the `use client` directive.
 - [**Styles**](#styles) - Introducing a new concept called _Style_. A style comes with its own set of components, animations, icons and more.
 - [**Exit animations**](#exit-animations) - Added exit animations to all components.
 - [**Other updates**](#other-updates) - New `icon` button size, updated `sheet` component and more.

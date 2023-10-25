@@ -22,6 +22,7 @@ export const rawConfigSchema = z
     $schema: z.string().optional(),
     style: z.string(),
     rsc: z.coerce.boolean().default(false),
+    tsx: z.coerce.boolean().default(true),
     tailwind: z.object({
       config: z.string(),
       css: z.string(),
@@ -64,7 +65,9 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
 
   if (tsConfig.resultType === "failed") {
     throw new Error(
-      `Failed to load tsconfig.json. ${tsConfig.message ?? ""}`.trim()
+      `Failed to load ${config.tsx ? "tsconfig" : "jsconfig"}.json. ${
+        tsConfig.message ?? ""
+      }`.trim()
     )
   }
 
@@ -89,6 +92,6 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
 
     return rawConfigSchema.parse(configResult.config)
   } catch (error) {
-    throw new Error(`Invald configuration found in ${cwd}/components.json.`)
+    throw new Error(`Invalid configuration found in ${cwd}/components.json.`)
   }
 }

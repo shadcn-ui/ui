@@ -1,11 +1,19 @@
 ---
-title: Dark Mode
-description: Adding dark mode to your site.
+title: Next.js
+description: Adding dark mode to your next app.
 ---
 
-## Next.js
+## Dark mode
 
 <Steps>
+
+### Install next-themes
+
+Start by installing `next-themes`:
+
+```bash
+npm install next-themes
+```
 
 ### Create a theme provider
 
@@ -34,7 +42,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <html lang="en" suppressHydrationWarning>
         <head />
         <body>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
             {children}
           </ThemeProvider>
         </body>
@@ -51,7 +64,3 @@ Place a mode toggle on your site to toggle between light and dark mode.
 <ComponentPreview name="mode-toggle" className="[&_.preview]:items-start" />
 
 </Steps>
-
-## Other frameworks
-
-I'm looking for help writing guides for other frameworks. Help me write guides for Remix, Astro and Vite by [opening an PR](https://github.com/shadcn/ui).
