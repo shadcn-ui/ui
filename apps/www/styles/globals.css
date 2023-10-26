@@ -25,8 +25,8 @@
     --ring: 240 5% 64.9%;
     --radius: 0.5rem;
     --code: rgb(0, 0, 0) (255, 0, 0);
-    --code-foreground: #f4f4f5;
-    --code--highlighted: rgb(240, 240, 240);
+    --code-foreground: rgb(244, 244, 245);
+    --code-highlighted: rgb(234, 234, 235);
     --copy-button-background: rgb(255, 255, 255);
     --scrollbar-track: rgb(248, 248, 248);
     --scrollbar-track-border: rgb(207, 207, 207);
@@ -58,8 +58,8 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
     --code: rgb(255, 255, 255);
-    --code-foreground: #18181b;
-    --code-highlighted: rgb(17, 17, 17);
+    --code-foreground: rgb(24, 24, 27);
+    --code-highlighted: rgb(20, 20, 25);
     --copy-button-background: rgb(17, 17, 17);
     --scrollbar-track: #09090b;
     --scrollbar-track-border: #1b1b1f;
@@ -99,28 +99,29 @@
   }
 }
 
-/* Light Theme For Code Preview */
+/* Light Theme For Code Preview (!important is important here cause some of this values are already definded in data-rehype-pretty-code-fragment at mdx.css by default)*/
 span.line span {
-  color: var(--code);
+  color: var(--code) !important;
 }
 
 pre {
-  background-color: var(--code-foreground);
+  background-color: var(--code-foreground) !important;
 }
 
 span.line--highlighted {
-  background-color: var(--code-foreground);
+  background-color: var(--code-highlighted) !important;
 }
+
 div[data-rehype-pretty-code-fragment] button:hover {
-  background-color: var(--copy-button-background);
+  background-color: var(--copy-button-background) !important;
 }
 
 html.dark div[data-rehype-pretty-code-fragment] button svg {
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255) !important;
 }
 
 html.light div[data-rehype-pretty-code-fragment] button svg {
-  color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0) !important;
 }
 
 /* Firefox Scrollbar */
