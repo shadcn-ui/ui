@@ -29,13 +29,12 @@
     --code--highlighted: rgb(240, 240, 240);
     --copy-button-background: rgb(255, 255, 255);
     --scrollbar-track: rgb(248, 248, 248);
-    --scrollbar-track-border: rgb(242, 242, 242);
+    --scrollbar-track-border: rgb(207, 207, 207);
     --scrollbar-track-hover: rgb(240, 240, 240);
     --scrollbar-track-active: rgb(244, 244, 244);
-    --scrollbar-thumb: rgb(225, 225, 225);
-    --scrollbar-thumb-hover: rgb(220, 220, 220);
-    --scrollbar-thumb-active: rgb(229, 229, 229);
-    --rainbow-background: rgba(0, 0, 0, 0.16);
+    --scrollbar-thumb: rgb(213.5, 213.5, 213.5);
+    --scrollbar-thumb-hover:  rgb(220, 220, 220);
+    --scrollbar-thumb-active: rgb(205, 205, 205);
   }
 
   .dark {
@@ -66,9 +65,9 @@
     --scrollbar-track-border: #1b1b1f;
     --scrollbar-track-hover: #0b0b0c;
     --scrollbar-track-active: #050507;
-    --scrollbar-thumb: rgb(62, 62, 62);
-    --scrollbar-thumb-hover: rgb(68, 68, 68);
-    --scrollbar-thumb-active: rgb(66, 66, 66);
+    --scrollbar-thumb: rgb(65, 65, 65);
+    --scrollbar-thumb-hover: rgb(60, 60, 60);
+    --scrollbar-thumb-active: rgb(50, 50, 50);
   }
 }
 
@@ -100,75 +99,73 @@
   }
 }
 
-/* Light Theme For Codes */
+/* Light Theme For Code Preview */
 span.line span {
-  color: var(--code) !important;
+  color: var(--code);
 }
 
 pre {
-  background-color: var(--code-foreground) !important;
+  background-color: var(--code-foreground);
 }
 
 span.line--highlighted {
-  background-color: var(--code-foreground) !important;
+  background-color: var(--code-foreground);
 }
 div[data-rehype-pretty-code-fragment] button:hover {
-  background-color: var(--copy-button-background) !important;
+  background-color: var(--copy-button-background);
 }
 
 html.dark div[data-rehype-pretty-code-fragment] button svg {
-  color: rgb(255, 255, 255) !important;
+  color: rgb(255, 255, 255);
 }
 
 html.light div[data-rehype-pretty-code-fragment] button svg {
-  color: rgb(0, 0, 0) !important;
+  color: rgb(0, 0, 0);
 }
 
-/* Firefox */
+/* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb) !important;
+  scrollbar-color: var(--scrollbar-thumb);
 }
 
-/* Chrome, Edge and Safari */
+/* Chrome, Edge and Safari Scrollbar */
 *::-webkit-scrollbar {
-  width: 7px;
-  width: 7px;
-  height: 7px;
-  height: 7px;
+  width: 7.5px;
+  height: 7.5px;
 }
 
 *::-webkit-scrollbar-corner {
-  background-color: var(--scrollbar-track) !important;
-  border: 1px solid var(--scrollbar-track) !important;
+  background-color: var(--scrollbar-track);
+  border: 1px solid var(--scrollbar-track);
 }
 
 *::-webkit-scrollbar-track {
-  background-color: var(--scrollbar-track) !important;
+  background-color: var(--scrollbar-track);
 }
 
 *::-webkit-scrollbar-track {
-  background-color: var(--scrollbar-track-hover) !important;
-  border-left: 1.5px solid var(--scrollbar-track-border) !important;
-  border-right: 1px solid var(--scrollbar-track-border) !important;
+  background-color: var(--scrollbar-track-hover);
+  border-left: 1.5px solid var(--scrollbar-track-border);
+  border-right: 1px solid var(--scrollbar-track-border);
 }
 
 *::-webkit-scrollbar-track:active {
-  background-color: var(--scrollbar-track-active) !important;
-  border-left: 1.5px solid var(--scrollbar-track-border) !important;
-  border-right: 1px solid var(--scrollbar-track-border) !important;
+  background-color: var(--scrollbar-track-active);
+  border-left: 1.5px solid var(--scrollbar-track-border);
+  border-right: 1px solid var(--scrollbar-track-border);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb) !important;
+  background-color: var(--scrollbar-thumb);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb-hover) !important;
+  background-color: var(--scrollbar-thumb-hover);
   border-radius: 14px;
 }
 
 *::-webkit-scrollbar-thumb:active {
-  background-color: var(--scrollbar-thumb-active) !important;
+  background-color: var(--scrollbar-thumb-active);
   border-radius: 14px;
 }
