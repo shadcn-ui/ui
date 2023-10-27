@@ -497,6 +497,12 @@ const example: Registry = [
     files: ["example/dialog-demo.tsx"],
   },
   {
+    name: "dialog-close-button",
+    type: "components:example",
+    registryDependencies: ["dialog", "button"],
+    files: ["example/dialog-close-button.tsx"],
+  },
+  {
     name: "dropdown-menu-demo",
     type: "components:example",
     registryDependencies: ["dropdown-menu"],
@@ -609,6 +615,12 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["scroll-area"],
     files: ["example/scroll-area-demo.tsx"],
+  },
+  {
+    name: "scroll-area-horizontal-demo",
+    type: "components:example",
+    registryDependencies: ["scroll-area"],
+    files: ["example/scroll-area-horizontal-demo.tsx"],
   },
   {
     name: "select-demo",
