@@ -135,8 +135,8 @@ export async function promptForConfig(
     {
       type: "text",
       name: "tailwindConfig",
-      message: `Where is your ${highlight("tailwind.config.js")} located?`,
-      initial: defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG,
+      message: `Where is your ${defaultConfig?.tsx ? highlight("tailwind.config.ts") : highlight("tailwind.config.js")} located?`,
+      initial: defaultConfig?.tailwind.config && defaultConfig?.tsx ? DEFAULT_TAILWIND_CONFIG : "tailwind.config.js",
     },
     {
       type: "text",
