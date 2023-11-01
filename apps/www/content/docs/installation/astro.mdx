@@ -62,15 +62,19 @@ Answer `Yes` to all the question prompted by the CLI when installing Tailwind CS
 
 ### Edit tsconfig.json file
 
-Add the code below to the tsconfig.json file to resolve paths:
+Add the following code to the `tsconfig.json` file to resolve paths:
 
-```json {2-7} showLineNumbers
+```ts {4-9} showLineNumbers
 {
   "compilerOptions": {
+    // ...
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
+    // ...
   }
 }
 ```
@@ -121,6 +125,16 @@ export default defineConfig({
     }),
   ],
 })
+```
+
+### Update tailwind.config.cjs
+
+When running `npx shadcn-ui@latest init`, your tailwind config for content will be overwritten. To fix this, change the `content` section with the code below to your `tailwind.config.cjs` file:
+
+```js {2-4} showLineNumbers
+module.exports = {
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+}
 ```
 
 ### That's it

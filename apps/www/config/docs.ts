@@ -123,6 +123,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
           title: "Manual",
           href: "/docs/installation/manual",
           items: [],
@@ -140,6 +145,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Vite",
           href: "/docs/dark-mode/vite",
+          items: [],
+        },
+        {
+          title: "Astro",
+          href: "/docs/dark-mode/astro",
           items: [],
         },
       ],

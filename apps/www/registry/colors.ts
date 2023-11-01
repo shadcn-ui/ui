@@ -35,7 +35,7 @@ export const colors = {
       scale: 300,
       hex: "#cbd5e1",
       rgb: "rgb(203,213,225)",
-      hsl: "hsl(212.7,26.8%,83.9)",
+      hsl: "hsl(212.7,26.8%,83.9%)",
     },
     {
       scale: 400,
