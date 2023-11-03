@@ -1,4 +1,3 @@
-import { dirname, join } from "path"
 import type { StorybookConfig } from "@storybook/nextjs"
 
 const config: StorybookConfig = {
@@ -10,8 +9,6 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "@storybook/addon-styling",
-    "@storybook/addon-mdx-gfm",
   ],
   framework: {
     name: "@storybook/nextjs",
