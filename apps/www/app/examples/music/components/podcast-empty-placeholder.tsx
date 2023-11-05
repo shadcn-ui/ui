@@ -35,7 +35,7 @@ export function PodcastEmptyPlaceholder() {
           You have not added any podcasts. Add one below.
         </p>
         <Dialog>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <Button size="sm" className="relative">
               Add Podcast
             </Button>

@@ -76,6 +76,7 @@ export default function ComboboxDropdownMenu() {
                         <CommandItem
                         value={label}
                           key={label}
+                          value={label}
                           onSelect={(value) => {
                             setLabel(value)
                             setOpen(false)

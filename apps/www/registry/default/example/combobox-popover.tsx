@@ -96,6 +96,7 @@ export default function ComboboxPopover() {
                   <CommandItem
                   value={status.label}
                     key={status.value}
+                    value={status.value}
                     onSelect={(value) => {
                       setSelectedStatus(
                         statuses.find((priority) => priority.value === value) ||

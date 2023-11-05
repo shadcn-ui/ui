@@ -69,6 +69,7 @@ export default function ComboboxDemo() {
               <CommandItem
               value={framework.label}
                 key={framework.value}
+                value={framework.value}
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? "" : currentValue)
                   setOpen(false)
