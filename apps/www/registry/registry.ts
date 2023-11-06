@@ -672,6 +672,24 @@ const example: Registry = [
     files: ["example/switch-form.tsx"],
   },
   {
+    name: "switch-small",
+    type: "components:example",
+    registryDependencies: ["switch"],
+    files: ["example/switch-small.tsx"],
+  },
+  {
+    name: "switch-base",
+    type: "components:example",
+    registryDependencies: ["switch"],
+    files: ["example/switch-base.tsx"],
+  },
+  {
+    name: "switch-large",
+    type: "components:example",
+    registryDependencies: ["switch"],
+    files: ["example/switch-large.tsx"],
+  },
+  {
     name: "table-demo",
     type: "components:example",
     registryDependencies: ["table"],
