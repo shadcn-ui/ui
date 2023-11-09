@@ -22,6 +22,7 @@ module.exports = {
     './components/**/*.{<%- extension %>,<%- extension %>x}',
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
+    './@/**/*.{<%- extension %>,<%- extension %>x}',
   ],
   theme: {
     container: {
@@ -59,6 +60,7 @@ module.exports = {
     './components/**/*.{<%- extension %>,<%- extension %>x}',
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
+    './@/**/*.{<%- extension %>,<%- extension %>x}',
   ],
   theme: {
     container: {
@@ -137,6 +139,7 @@ const config = {
     './components/**/*.{<%- extension %>,<%- extension %>x}',
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
+    './@/**/*.{<%- extension %>,<%- extension %>x}',
   ],
   theme: {
     container: {
@@ -177,6 +180,7 @@ const config = {
     './components/**/*.{<%- extension %>,<%- extension %>x}',
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
+    './@/**/*.{<%- extension %>,<%- extension %>x}',
 	],
   theme: {
     container: {
