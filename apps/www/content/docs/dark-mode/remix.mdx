@@ -7,6 +7,16 @@ description: Adding dark mode to your remix app.
 
 <Steps>
 
+### Modify your tailwind.css file
+Add `:root[class~="dark"]` to your tailwind.css file. This will allow you to use the `dark` class on your html element to apply dark mode styles.
+
+```css {2} title="app/tailwind.css"
+  .dark,
+  :root[class~="dark"] {
+    ...
+  }
+```
+
 ### Install remix-themes
 
 Start by installing `remix-themes`:
