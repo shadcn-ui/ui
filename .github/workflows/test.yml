@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: Test
+    name: pnpm test
     steps:
       - uses: actions/checkout@v3
         with:
