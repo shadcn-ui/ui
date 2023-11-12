@@ -630,6 +630,12 @@ const example: Registry = [
     files: ["example/select-demo.tsx"],
   },
   {
+    name: "select-scrollable",
+    type: "components:example",
+    registryDependencies: ["select"],
+    files: ["example/select-scrollable.tsx"],
+  },
+  {
     name: "select-form",
     type: "components:example",
     registryDependencies: ["select"],
