@@ -308,6 +308,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Multi Select",
+          href: "/docs/components/multi-select",
+          items: [],
+        },
+        {
           title: "Separator",
           href: "/docs/components/separator",
           items: [],
