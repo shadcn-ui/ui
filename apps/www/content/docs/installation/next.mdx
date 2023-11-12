@@ -37,6 +37,61 @@ Configure the import alias for utils: › @/lib/utils
 Are you using React Server Components? › no / yes
 ```
 
+### Fonts
+
+I use [Inter](https://rsms.me/inter/) as the default font. Inter is not required. You can replace it with any other font.
+
+Here's how I configure Inter for Next.js:
+
+**1. Import the font in the root layout:**
+
+```js showLineNumbers title=app/layout.tsx {2,5-8,16-17}
+import "@/styles/globals.css"
+import { Inter as FontSans } from "next/font/google"
+
+import { cn } from "../@/lib/utils"
+
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
+        ...
+      </body>
+    </html>
+  )
+}
+```
+
+**2. Configure `theme.extend.fontFamily` in `tailwind.config.js`**
+
+```js showLineNumbers title=tailwind.config.js {9-11}
+const { fontFamily } = require("tailwindcss/defaultTheme")
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ["class"],
+  content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+      },
+    },
+  },
+}
+```
+
 ### App structure
 
 Here's how I structure my Next.js apps. You can use this as a reference:
