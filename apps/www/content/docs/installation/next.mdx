@@ -45,9 +45,11 @@ Here's how I configure Inter for Next.js:
 
 **1. Import the font in the root layout:**
 
-```js showLineNumbers title=app/layout.tsx {2,4-7,15-16}
+```js showLineNumbers title=app/layout.tsx {2,5-8,16-17}
 import "@/styles/globals.css"
 import { Inter as FontSans } from "next/font/google"
+
+import { cn } from "../@/lib/utils"
 
 export const fontSans = FontSans({
   subsets: ["latin"],
