@@ -7,7 +7,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Lint
+    name: pnpm lint
     steps:
       - uses: actions/checkout@v3
         with:
@@ -43,7 +43,7 @@ jobs:
 
   format:
     runs-on: ubuntu-latest
-    name: Format
+    name: pnpm format:check
     steps:
       - uses: actions/checkout@v3
         with:
@@ -81,7 +81,7 @@ jobs:
 
   tsc:
     runs-on: ubuntu-latest
-    name: TypeScript
+    name: pnpm typecheck
     steps:
       - uses: actions/checkout@v3
         with:

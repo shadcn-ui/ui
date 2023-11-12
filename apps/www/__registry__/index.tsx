@@ -705,12 +705,26 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/scroll-area-demo")),
       files: ["registry/default/example/scroll-area-demo.tsx"],
     },
+    "scroll-area-horizontal-demo": {
+      name: "scroll-area-horizontal-demo",
+      type: "components:example",
+      registryDependencies: ["scroll-area"],
+      component: React.lazy(() => import("@/registry/default/example/scroll-area-horizontal-demo")),
+      files: ["registry/default/example/scroll-area-horizontal-demo.tsx"],
+    },
     "select-demo": {
       name: "select-demo",
       type: "components:example",
       registryDependencies: ["select"],
       component: React.lazy(() => import("@/registry/default/example/select-demo")),
       files: ["registry/default/example/select-demo.tsx"],
+    },
+    "select-scrollable": {
+      name: "select-scrollable",
+      type: "components:example",
+      registryDependencies: ["select"],
+      component: React.lazy(() => import("@/registry/default/example/select-scrollable")),
+      files: ["registry/default/example/select-scrollable.tsx"],
     },
     "select-form": {
       name: "select-form",
@@ -1721,12 +1735,26 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/scroll-area-demo")),
       files: ["registry/new-york/example/scroll-area-demo.tsx"],
     },
+    "scroll-area-horizontal-demo": {
+      name: "scroll-area-horizontal-demo",
+      type: "components:example",
+      registryDependencies: ["scroll-area"],
+      component: React.lazy(() => import("@/registry/new-york/example/scroll-area-horizontal-demo")),
+      files: ["registry/new-york/example/scroll-area-horizontal-demo.tsx"],
+    },
     "select-demo": {
       name: "select-demo",
       type: "components:example",
       registryDependencies: ["select"],
       component: React.lazy(() => import("@/registry/new-york/example/select-demo")),
       files: ["registry/new-york/example/select-demo.tsx"],
+    },
+    "select-scrollable": {
+      name: "select-scrollable",
+      type: "components:example",
+      registryDependencies: ["select"],
+      component: React.lazy(() => import("@/registry/new-york/example/select-scrollable")),
+      files: ["registry/new-york/example/select-scrollable.tsx"],
     },
     "select-form": {
       name: "select-form",
