@@ -719,6 +719,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/select-demo")),
       files: ["registry/default/example/select-demo.tsx"],
     },
+    "select-scrollable": {
+      name: "select-scrollable",
+      type: "components:example",
+      registryDependencies: ["select"],
+      component: React.lazy(() => import("@/registry/default/example/select-scrollable")),
+      files: ["registry/default/example/select-scrollable.tsx"],
+    },
     "select-form": {
       name: "select-form",
       type: "components:example",
@@ -1741,6 +1748,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["select"],
       component: React.lazy(() => import("@/registry/new-york/example/select-demo")),
       files: ["registry/new-york/example/select-demo.tsx"],
+    },
+    "select-scrollable": {
+      name: "select-scrollable",
+      type: "components:example",
+      registryDependencies: ["select"],
+      component: React.lazy(() => import("@/registry/new-york/example/select-scrollable")),
+      files: ["registry/new-york/example/select-scrollable.tsx"],
     },
     "select-form": {
       name: "select-form",
