@@ -190,7 +190,7 @@ export function Menu() {
             <MenubarRadioItem value="Luis">Luis</MenubarRadioItem>
           </MenubarRadioGroup>
           <MenubarSeparator />
-          <MenubarItem inset>Manage Famliy...</MenubarItem>
+          <MenubarItem inset>Manage Family...</MenubarItem>
           <MenubarSeparator />
           <MenubarItem inset>Add Account...</MenubarItem>
         </MenubarContent>
