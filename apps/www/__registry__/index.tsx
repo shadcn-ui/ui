@@ -250,19 +250,19 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/toast")),
       files: ["registry/default/ui/toast.tsx","registry/default/ui/use-toast.ts","registry/default/ui/toaster.tsx"],
     },
-    "toggle-group": {
-      name: "toggle-group",
-      type: "components:ui",
-      registryDependencies: undefined,
-      component: React.lazy(() => import("@/registry/default/ui/toggle-group")),
-      files: ["registry/default/ui/toggle-group.tsx"],
-    },
     "toggle": {
       name: "toggle",
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/toggle")),
       files: ["registry/default/ui/toggle.tsx"],
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      type: "components:ui",
+      registryDependencies: ["toggle"],
+      component: React.lazy(() => import("@/registry/default/ui/toggle-group")),
+      files: ["registry/default/ui/toggle-group.tsx"],
     },
     "tooltip": {
       name: "tooltip",
@@ -1329,19 +1329,19 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/ui/toast")),
       files: ["registry/new-york/ui/toast.tsx","registry/new-york/ui/use-toast.ts","registry/new-york/ui/toaster.tsx"],
     },
-    "toggle-group": {
-      name: "toggle-group",
-      type: "components:ui",
-      registryDependencies: undefined,
-      component: React.lazy(() => import("@/registry/new-york/ui/toggle-group")),
-      files: ["registry/new-york/ui/toggle-group.tsx"],
-    },
     "toggle": {
       name: "toggle",
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/toggle")),
       files: ["registry/new-york/ui/toggle.tsx"],
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      type: "components:ui",
+      registryDependencies: ["toggle"],
+      component: React.lazy(() => import("@/registry/new-york/ui/toggle-group")),
+      files: ["registry/new-york/ui/toggle-group.tsx"],
     },
     "tooltip": {
       name: "tooltip",

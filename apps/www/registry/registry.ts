@@ -215,16 +215,17 @@ const ui: Registry = [
     files: ["ui/toast.tsx", "ui/use-toast.ts", "ui/toaster.tsx"],
   },
   {
-    name: "toggle-group",
-    type: "components:ui",
-    dependencies: ["@radix-ui/react-toggle-group"],
-    files: ["ui/toggle-group.tsx"],
-  },
-  {
     name: "toggle",
     type: "components:ui",
     dependencies: ["@radix-ui/react-toggle"],
     files: ["ui/toggle.tsx"],
+  },
+  {
+    name: "toggle-group",
+    type: "components:ui",
+    dependencies: ["@radix-ui/react-toggle-group"],
+    registryDependencies: ["toggle"],
+    files: ["ui/toggle-group.tsx"],
   },
   {
     name: "tooltip",

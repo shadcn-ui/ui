@@ -349,22 +349,25 @@
     "type": "components:ui"
   },
   {
-    "name": "toggle-group",
-    "dependencies": [
-      "@radix-ui/react-toggle-group"
-    ],
-    "files": [
-      "ui/toggle-group.tsx"
-    ],
-    "type": "components:ui"
-  },
-  {
     "name": "toggle",
     "dependencies": [
       "@radix-ui/react-toggle"
     ],
     "files": [
       "ui/toggle.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "toggle-group",
+    "dependencies": [
+      "@radix-ui/react-toggle-group"
+    ],
+    "registryDependencies": [
+      "toggle"
+    ],
+    "files": [
+      "ui/toggle-group.tsx"
     ],
     "type": "components:ui"
   },

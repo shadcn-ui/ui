@@ -43,6 +43,7 @@ import TabsDemo from "@/registry/default/example/tabs-demo"
 import ToastDemo from "@/registry/default/example/toast-demo"
 import ToggleDemo from "@/registry/default/example/toggle-demo"
 import ToggleDisabled from "@/registry/default/example/toggle-disabled"
+import ToggleGroupDemo from "@/registry/default/example/toggle-group-demo"
 import ToggleOutline from "@/registry/default/example/toggle-outline"
 import ToggleWithText from "@/registry/default/example/toggle-with-text"
 import TooltipDemo from "@/registry/default/example/tooltip-demo"
@@ -125,6 +126,9 @@ export default function KitchenSinkPage() {
             <ComponentWrapper className="justify-between">
               <SwitchDemo />
               <SelectDemo />
+            </ComponentWrapper>
+            <ComponentWrapper>
+              <ToggleGroupDemo />
             </ComponentWrapper>
             <ComponentWrapper>
               <SeparatorDemo />
