@@ -425,6 +425,18 @@
     "type": "ui"
   },
   {
+    "name": "toggle-group",
+    "dependencies": ["@radix-ui/react-toggle-group"],
+    "files": [
+      {
+        "name": "toggle-group.tsx",
+        "dir": "components/ui",
+        "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as ToggleGroupPrimitive from \"@radix-ui/react-toggle-group\"\nimport { VariantProps, cva } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst ToggleGroupContext = React.createContext<\n  VariantProps<typeof toggleGroupItemVariants>\n>({\n  size: \"default\",\n  variant: \"default\",\n})\n\nconst toggleGroupItemVariants = cva(\n  \"inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-transparent\",\n        outline:\n          \"border-r border-input bg-transparent last:border-0 hover:bg-accent hover:text-accent-foreground\",\n      },\n      size: {\n        default: \"h-10 px-3\",\n        sm: \"h-9 px-2.5\",\n        lg: \"h-11 px-5\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nconst ToggleGroup = React.forwardRef<\n  React.ElementRef<typeof ToggleGroupPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> &\n    VariantProps<typeof toggleGroupItemVariants>\n>(({ className, variant, size, children, ...props }, ref) => (\n  <ToggleGroupPrimitive.Root\n    ref={ref}\n    className={cn(\n      \"inline-flex items-center justify-center overflow-hidden rounded-md border border-input bg-transparent shadow\",\n      className\n    )}\n    {...props}\n  >\n    <ToggleGroupContext.Provider value={{ variant, size }}>\n      {children}\n    </ToggleGroupContext.Provider>\n  </ToggleGroupPrimitive.Root>\n))\n\nToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName\n\nconst ToggleGroupItem = React.forwardRef<\n  React.ElementRef<typeof ToggleGroupPrimitive.Item>,\n  React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item> &\n    VariantProps<typeof toggleGroupItemVariants>\n>(({ className, children, variant, size, ...props }, ref) => {\n  const context = React.useContext(ToggleGroupContext)\n\n  return (\n    <ToggleGroupPrimitive.Item\n      ref={ref}\n      className={cn(\n        toggleGroupItemVariants({\n          variant: context.variant || variant,\n          size: context.size || size,\n        }),\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </ToggleGroupPrimitive.Item>\n  )\n})\n\nToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName\n\nexport { ToggleGroup, ToggleGroupItem }\n"
+      }
+    ],
+    "type": "ui"
+  },
+  {
     "name": "tooltip",
     "dependencies": ["@radix-ui/react-tooltip"],
     "files": [
