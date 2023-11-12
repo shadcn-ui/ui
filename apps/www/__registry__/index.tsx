@@ -565,6 +565,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/dialog-demo")),
       files: ["registry/default/example/dialog-demo.tsx"],
     },
+    "dialog-close-button": {
+      name: "dialog-close-button",
+      type: "components:example",
+      registryDependencies: ["dialog","button"],
+      component: React.lazy(() => import("@/registry/default/example/dialog-close-button")),
+      files: ["registry/default/example/dialog-close-button.tsx"],
+    },
     "dropdown-menu-demo": {
       name: "dropdown-menu-demo",
       type: "components:example",
@@ -697,6 +704,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["scroll-area"],
       component: React.lazy(() => import("@/registry/default/example/scroll-area-demo")),
       files: ["registry/default/example/scroll-area-demo.tsx"],
+    },
+    "scroll-area-horizontal-demo": {
+      name: "scroll-area-horizontal-demo",
+      type: "components:example",
+      registryDependencies: ["scroll-area"],
+      component: React.lazy(() => import("@/registry/default/example/scroll-area-horizontal-demo")),
+      files: ["registry/default/example/scroll-area-horizontal-demo.tsx"],
     },
     "select-demo": {
       name: "select-demo",
@@ -1574,6 +1588,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/dialog-demo")),
       files: ["registry/new-york/example/dialog-demo.tsx"],
     },
+    "dialog-close-button": {
+      name: "dialog-close-button",
+      type: "components:example",
+      registryDependencies: ["dialog","button"],
+      component: React.lazy(() => import("@/registry/new-york/example/dialog-close-button")),
+      files: ["registry/new-york/example/dialog-close-button.tsx"],
+    },
     "dropdown-menu-demo": {
       name: "dropdown-menu-demo",
       type: "components:example",
@@ -1706,6 +1727,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["scroll-area"],
       component: React.lazy(() => import("@/registry/new-york/example/scroll-area-demo")),
       files: ["registry/new-york/example/scroll-area-demo.tsx"],
+    },
+    "scroll-area-horizontal-demo": {
+      name: "scroll-area-horizontal-demo",
+      type: "components:example",
+      registryDependencies: ["scroll-area"],
+      component: React.lazy(() => import("@/registry/new-york/example/scroll-area-horizontal-demo")),
+      files: ["registry/new-york/example/scroll-area-horizontal-demo.tsx"],
     },
     "select-demo": {
       name: "select-demo",

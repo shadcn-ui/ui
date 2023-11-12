@@ -147,6 +147,16 @@ export const docsConfig: DocsConfig = {
           href: "/docs/dark-mode/vite",
           items: [],
         },
+        {
+          title: "Astro",
+          href: "/docs/dark-mode/astro",
+          items: [],
+        },
+        {
+          title: "Remix",
+          href: "/docs/dark-mode/remix",
+          items: [],
+        },
       ],
     },
     {
