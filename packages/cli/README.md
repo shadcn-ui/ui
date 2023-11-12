@@ -36,7 +36,7 @@ npx shadcn-ui add
 
 ## Documentation
 
-Visit http://ui.shadcn.com/docs to view the documentation.
+Visit https://ui.shadcn.com/docs/cli to view the documentation.
 
 ## License
 
