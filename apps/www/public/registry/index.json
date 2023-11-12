@@ -359,6 +359,19 @@
     "type": "components:ui"
   },
   {
+    "name": "toggle-group",
+    "dependencies": [
+      "@radix-ui/react-toggle-group"
+    ],
+    "registryDependencies": [
+      "toggle"
+    ],
+    "files": [
+      "ui/toggle-group.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "tooltip",
     "dependencies": [
       "@radix-ui/react-tooltip"
