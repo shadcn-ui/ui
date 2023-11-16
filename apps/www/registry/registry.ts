@@ -221,6 +221,13 @@ const ui: Registry = [
     files: ["ui/toggle.tsx"],
   },
   {
+    name: "toggle-group",
+    type: "components:ui",
+    dependencies: ["@radix-ui/react-toggle-group"],
+    registryDependencies: ["toggle"],
+    files: ["ui/toggle-group.tsx"],
+  },
+  {
     name: "tooltip",
     type: "components:ui",
     dependencies: ["@radix-ui/react-tooltip"],
@@ -492,6 +499,12 @@ const example: Registry = [
     files: ["example/dialog-demo.tsx"],
   },
   {
+    name: "dialog-close-button",
+    type: "components:example",
+    registryDependencies: ["dialog", "button"],
+    files: ["example/dialog-close-button.tsx"],
+  },
+  {
     name: "dropdown-menu-demo",
     type: "components:example",
     registryDependencies: ["dropdown-menu"],
@@ -606,10 +619,22 @@ const example: Registry = [
     files: ["example/scroll-area-demo.tsx"],
   },
   {
+    name: "scroll-area-horizontal-demo",
+    type: "components:example",
+    registryDependencies: ["scroll-area"],
+    files: ["example/scroll-area-horizontal-demo.tsx"],
+  },
+  {
     name: "select-demo",
     type: "components:example",
     registryDependencies: ["select"],
     files: ["example/select-demo.tsx"],
+  },
+  {
+    name: "select-scrollable",
+    type: "components:example",
+    registryDependencies: ["select"],
+    files: ["example/select-scrollable.tsx"],
   },
   {
     name: "select-form",
@@ -736,6 +761,42 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["toast"],
     files: ["example/toast-with-title.tsx"],
+  },
+  {
+    name: "toggle-group-demo",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-demo.tsx"],
+  },
+  {
+    name: "toggle-group-disabled",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-disabled.tsx"],
+  },
+  {
+    name: "toggle-group-lg",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-lg.tsx"],
+  },
+  {
+    name: "toggle-group-outline",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-outline.tsx"],
+  },
+  {
+    name: "toggle-group-sm",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-sm.tsx"],
+  },
+  {
+    name: "toggle-group-single",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-single.tsx"],
   },
   {
     name: "toggle-demo",
