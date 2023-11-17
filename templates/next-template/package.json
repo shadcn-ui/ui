@@ -24,7 +24,7 @@
     "react-dom": "^18.2.0",
     "sharp": "^0.32.6",
     "tailwind-merge": "^1.13.2",
-    "tailwindcss-animate": "^1.0.6"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
@@ -32,15 +32,15 @@
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/parser": "^5.61.0",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8.44.0",
     "eslint-config-next": "13.0.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-tailwindcss": "^3.13.0",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.31",
     "prettier": "^2.8.8",
-    "tailwindcss": "^3.3.2",
+    "tailwindcss": "^3.3.5",
     "typescript": "^4.9.5"
   }
 }

@@ -82,7 +82,7 @@
     "esbuild": "^0.17.19",
     "eslint": "^8.41.0",
     "mdast-util-toc": "^6.1.1",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.31",
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.6.0",
@@ -92,7 +92,7 @@
     "remark-gfm": "^3.0.1",
     "rimraf": "^5.0.5",
     "shiki": "^0.12.1",
-    "tailwindcss": "^3.3.2",
+    "tailwindcss": "^3.3.5",
     "typescript": "^4.9.5",
     "unist-builder": "3.0.0",
     "unist-util-visit": "^4.1.2"
