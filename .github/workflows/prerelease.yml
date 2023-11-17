@@ -7,6 +7,7 @@ on:
     types: [labeled]
     branches:
       - main
+
 jobs:
   prerelease:
     if: |
@@ -17,23 +18,21 @@ jobs:
     environment: Preview
 
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Use PNPM
-        uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v2
         with:
-          version: 8.6.1
+          version: 8
 
-      - name: Use Node.js 18
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: "pnpm"
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: "**/pnpm-lock.yaml"
 
-      - name: Install NPM Dependencies
+      - name: Install dependencies
         run: pnpm install
 
       - name: Modify package.json version
