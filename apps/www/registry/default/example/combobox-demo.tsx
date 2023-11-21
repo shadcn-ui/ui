@@ -73,6 +73,7 @@ export default function ComboboxDemo() {
                   setValue(currentValue === value ? "" : currentValue)
                   setOpen(false)
                 }}
+                value={framework.value}
               >
                 <Check
                   className={cn(
