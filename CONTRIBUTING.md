@@ -45,15 +45,31 @@ packages
 
 ## Development
 
-### Start by cloning the repository:
+### Fork this repo
 
+You can fork this repo by clicking the fork button in the top right corner of this page.
+
+### Clone on your local machine
+
+```bash
+git clone https://github.com/your-username/ui.git
 ```
-git clone git@github.com:shadcn-ui/ui.git
+
+### Navigate to project directory
+
+```bash
+cd ui
+```
+
+### Create a new Branch
+
+```bash
+git checkout -b my-new-branch
 ```
 
 ### Install dependencies
 
-```
+```bash
 pnpm install
 ```
 
@@ -65,13 +81,13 @@ You can use the `pnpm --filter=[WORKSPACE]` command to start the development pro
 
 1. To run the `ui.shadcn.com` website:
 
-```
+```bash
 pnpm --filter=www dev
 ```
 
 2. To run the `shadcn-ui` package:
 
-```
+```bash
 pnpm --filter=shadcn-ui dev
 ```
 
@@ -134,12 +150,9 @@ the following categories:
 
   e.g. `feat(components): add new prop to the avatar component`
 
-
 If you are interested in the detailed specification you can visit
 https://www.conventionalcommits.org/ or check out the
 [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
-
-
 
 ## Requests for new components
 
