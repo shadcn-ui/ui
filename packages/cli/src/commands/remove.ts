@@ -155,7 +155,7 @@ export function createRemoveCommand() {
             const { confirm } = await prompts({
               type: "confirm",
               name: "confirm",
-              message: `would you like to remove dependencies of components?`,
+              message: `Would you like to remove dependencies of components?`,
               initial: true,
             })
             removeDependencies = confirm
