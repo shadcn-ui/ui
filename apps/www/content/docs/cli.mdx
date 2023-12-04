@@ -133,3 +133,51 @@ Options:
   -c, --cwd <cwd>  the working directory. defaults to the current directory.
   -h, --help       display help for command
 ```
+
+## remove
+
+You can use the diff command to remove shadcn/ui components.
+
+Run the following command to get a list of components that have installed, and choose components to remove:
+
+```bash
+npx shadcn-ui remove
+```
+
+```txt
+? Which components would you like to remove? › Space to select. A to toggle all. Enter to submit.
+◯   accordion
+◯   alert
+◯   alert-dialog
+◯   aspect-ratio
+◯   avatar
+◯   button
+◯   input
+```
+
+Then use `space` to select components to remove, or `a` to toggle all:
+
+```text
+✔ Which components would you like to remove? › button, input
+✔ Ready to remove components. Proceed? … yes
+✔ Done.
+```
+
+### Options
+
+```txt
+Usage: shadcn-ui remove [options] [component]
+
+check for updates against the registry
+
+Arguments:
+  component        the component name
+
+Options:
+  -y, --yes        skip confirmation prompt. (default: false)
+  -a, --all        remove all installed components. (default: false)
+  -c, --cwd <cwd>  the working directory. defaults to the current directory.
+  -d, --dependencies <cwd>  remove dependencies from selected components.
+  -p, --path <path>  the path to remove the component.
+  -h, --help       display help for command
+```
