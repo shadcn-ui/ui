@@ -9,6 +9,6 @@
   "rsc": false,
   "aliases": {
     "utils": "~/lib/utils",
-    "components": "~/components"
+    "components": "~/component-folder"
   }
 }
