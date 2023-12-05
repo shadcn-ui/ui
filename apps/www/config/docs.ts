@@ -152,6 +152,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/dark-mode/astro",
           items: [],
         },
+        {
+          title: "Remix",
+          href: "/docs/dark-mode/remix",
+          items: [],
+        },
       ],
     },
     {
@@ -350,6 +355,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Toggle",
           href: "/docs/components/toggle",
+          items: [],
+        },
+        {
+          title: "Toggle Group",
+          href: "/docs/components/toggle-group",
           items: [],
         },
         {

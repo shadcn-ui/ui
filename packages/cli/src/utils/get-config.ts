@@ -65,7 +65,9 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
 
   if (tsConfig.resultType === "failed") {
     throw new Error(
-      `Failed to load tsconfig.json. ${tsConfig.message ?? ""}`.trim()
+      `Failed to load ${config.tsx ? "tsconfig" : "jsconfig"}.json. ${
+        tsConfig.message ?? ""
+      }`.trim()
     )
   }
 
