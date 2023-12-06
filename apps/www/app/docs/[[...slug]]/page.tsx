@@ -28,7 +28,7 @@ async function getDocFromParams({ params }: DocPageProps) {
   const doc = allDocs.find((doc) => doc.slugAsParams === slug)
 
   if (!doc) {
-    null
+    return null
   }
 
   return doc
