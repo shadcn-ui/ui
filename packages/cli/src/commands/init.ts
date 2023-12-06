@@ -106,6 +106,14 @@ export async function promptForConfig(
       })),
     },
     {
+      type: "toggle",
+      name: "rtl",
+      message: `Would you like to support ${highlight("RTL")}?`,
+      initial: defaultConfig?.tailwind?.rtl ?? false,
+      active: "yes",
+      inactive: "no",
+    },
+    {
       type: "select",
       name: "tailwindBaseColor",
       message: `Which color would you like to use as ${highlight(
@@ -164,8 +172,9 @@ export async function promptForConfig(
     $schema: "https://ui.shadcn.com/schema.json",
     style: options.style,
     tailwind: {
-      config: options.tailwindConfig,
+      rtl: options.rtl,
       css: options.tailwindCss,
+      config: options.tailwindConfig,
       baseColor: options.tailwindBaseColor,
       cssVariables: options.tailwindCssVariables,
     },

@@ -20,6 +20,9 @@
         },
         "cssVariables": {
           "type": "boolean"
+        },
+        "rtl": {
+          "type": "boolean"
         }
       },
       "required": ["config", "css", "baseColor", "cssVariables"]

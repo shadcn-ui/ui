@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "default",
   "tailwind": {
+    "rtl": true,
     "config": "tailwind.config.js",
     "css": "app/globals.css",
     "baseColor": "slate",

@@ -3,6 +3,7 @@ import { tmpdir } from "os"
 import path from "path"
 import { Config } from "@/src/utils/get-config"
 import { registryBaseColorSchema } from "@/src/utils/registry/schema"
+import { transformRtl } from "@/src/utils/transformers//transform-rtl"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformJsx } from "@/src/utils/transformers/transform-jsx"
@@ -27,6 +28,7 @@ const transformers: Transformer[] = [
   transformImport,
   transformRsc,
   transformCssVars,
+  transformRtl,
 ]
 
 const project = new Project({

@@ -24,9 +24,10 @@ export const rawConfigSchema = z
     rsc: z.coerce.boolean().default(false),
     tsx: z.coerce.boolean().default(true),
     tailwind: z.object({
-      config: z.string(),
       css: z.string(),
+      config: z.string(),
       baseColor: z.string(),
+      rtl: z.boolean().default(false),
       cssVariables: z.boolean().default(true),
     }),
     aliases: z.object({
