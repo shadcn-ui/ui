@@ -18,6 +18,7 @@ import {
 } from "@/registry/new-york/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
 import { toast } from "@/registry/new-york/ui/use-toast"
+import { Select } from "@/registry/new-york/ui/select"
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {
@@ -64,7 +65,7 @@ export function AppearanceForm() {
               <FormLabel>Font</FormLabel>
               <div className="relative w-max">
                 <FormControl>
-                  <select
+                  <Select
                     className={cn(
                       buttonVariants({ variant: "outline" }),
                       "w-[200px] appearance-none bg-transparent font-normal"
@@ -74,7 +75,7 @@ export function AppearanceForm() {
                     <option value="inter">Inter</option>
                     <option value="manrope">Manrope</option>
                     <option value="system">System</option>
-                  </select>
+                  </Select>
                 </FormControl>
                 <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
               </div>
