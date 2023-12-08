@@ -4,34 +4,39 @@ description: Use to show a placeholder while content is loading.
 component: true
 ---
 
-<ComponentExample src="/components/examples/skeleton/demo.tsx">
-  <SkeletonDemo />
-</ComponentExample>
+<ComponentPreview name="skeleton-demo" />
 
 ## Installation
 
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
 ```bash
-npx shadcn-ui add skeleton
+npx shadcn-ui@latest add skeleton
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
+</TabsContent>
 
-1. Copy and paste the following code into your project.
+<TabsContent value="manual">
 
-<ComponentSource src="/components/ui/skeleton.tsx" />
+<Steps>
 
-<Callout>
-  This is the `<Skeleton />` primitive. You can place it in a file at
-  `components/ui/skeleton.tsx`.
-</Callout>
+<Step>Copy and paste the following code into your project.</Step>
 
-    </AccordionContent>
+<ComponentSource name="skeleton" />
 
-  </AccordionItem>
-</Accordion>
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Usage
 
