@@ -76,26 +76,60 @@ export async function resolveTree(
   names: string[]
 ) {
   const tree: z.infer<typeof registryIndexSchema> = []
+  const nonShadcnPrimitive: string[] = []
 
   for (const name of names) {
     const entry = index.find((entry) => entry.name === name)
 
     if (!entry) {
+      nonShadcnPrimitive.push(name)
       continue
     }
 
     tree.push(entry)
 
     if (entry.registryDependencies) {
-      const dependencies = await resolveTree(index, entry.registryDependencies)
+      const {tree:dependencies} = await resolveTree(index, entry.registryDependencies)
       tree.push(...dependencies)
     }
   }
 
-  return tree.filter(
+  return {tree:tree.filter(
     (component, index, self) =>
       self.findIndex((c) => c.name === component.name) === index
-  )
+  ),
+    addons:nonShadcnPrimitive
+  }
+}
+
+export async function fetchTreeMarketplace(
+  names: string[]
+) {
+  try {
+    const result = await fetchMarketplace(names)
+
+    return registryWithContentSchema.parse(result)
+  } catch (error) {
+    throw new Error(`Failed to fetch tree from marketplace registry.`)
+  }
+}
+
+async function fetchMarketplace(paths: string[]) {
+  try {
+    const results = await Promise.all(
+      paths.map(async (path) => {
+        const response = await fetch(`${baseUrl}/api/marketplace?name=${path}`, {
+          agent,
+        })
+        return await response.json()
+      })
+    )
+
+    return results
+  } catch (error) {
+    console.log(error)
+    throw new Error(`Failed to fetch registry from ${baseUrl}.`)
+  }
 }
 
 export async function fetchTree(
@@ -117,8 +151,8 @@ export async function getItemTargetPath(
   item: Pick<z.infer<typeof registryItemWithContentSchema>, "type">,
   override?: string
 ) {
-  // Allow overrides for all items but ui.
-  if (override && item.type !== "components:ui") {
+  // Allow overrides for all items but ui & addons.
+  if (override && (item.type !== "components:ui" && item.type !== "components:addons")) {
     return override
   }
 

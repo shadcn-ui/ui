@@ -6,6 +6,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import {
   fetchTree,
+  fetchTreeMarketplace,
   getItemTargetPath,
   getRegistryBaseColor,
   getRegistryIndex,
@@ -93,14 +94,19 @@ export const add = new Command()
         process.exit(0)
       }
 
-      const tree = await resolveTree(registryIndex, selectedComponents)
+      
+      const {tree, addons} = await resolveTree(registryIndex, selectedComponents)
       const payload = await fetchTree(config.style, tree)
+      const addonsPayload =  await fetchTreeMarketplace(addons)
       const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
 
-      if (!payload.length) {
+      if (!payload.length && !addons.length) {
         logger.warn("Selected components not found. Exiting.")
         process.exit(0)
       }
+
+      payload.length && logger.info(`${payload.length}x Shadcn Components found.`)
+      addons.length && logger.info(`${addons.length}x Marketplace Components found.`)
 
       if (!options.yes) {
         const { proceed } = await prompts({
@@ -116,7 +122,7 @@ export const add = new Command()
       }
 
       const spinner = ora(`Installing components...`).start()
-      for (const item of payload) {
+      for (const item of [...payload, ...addonsPayload]) {
         spinner.text = `Installing ${item.name}...`
         const targetDir = await getItemTargetPath(
           config,
@@ -133,7 +139,7 @@ export const add = new Command()
         }
 
         const existingComponent = item.files.filter((file) =>
-          existsSync(path.resolve(targetDir, file.name))
+          existsSync(path.resolve(targetDir, file.dir || "", file.name))
         )
 
         if (existingComponent.length && !options.overwrite) {
@@ -162,7 +168,14 @@ export const add = new Command()
         }
 
         for (const file of item.files) {
-          let filePath = path.resolve(targetDir, file.name)
+          let filePath = path.resolve(targetDir, file.dir || "", file.name)
+
+          if (file.dir) {
+            let fileParent = path.resolve(targetDir, file.dir || "")
+            if (!existsSync(fileParent)) {
+              await fs.mkdir(fileParent, { recursive: true })
+            }
+          }
 
           // Run transformers.
           const content = await transform({
