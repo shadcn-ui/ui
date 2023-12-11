@@ -1,0 +1,71 @@
+---
+title: Marketplace
+description: Marketplace for Components built on top of Shadcn ui.
+---
+
+Highly customizable library marketplace from your favourite creators. Components built on top of `Shadcn ui`, `Tailwind CSS` & `Radix UI` primitives.
+
+<Callout className="mt-6">
+  Note: Hi
+</Callout>
+
+### Example Installation
+
+```bash
+npx shadcn-ui@latest add item-selector-input
+```
+
+Explore the <Link href="/marketplace">Marketplace</Link> for more components.
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx {1,6} showLineNumbers
+import { selectorInput } from "@/components/addons/item-selector-input"
+
+export default function Home() {
+  return (
+    <div>
+      <selectorInput/>
+    </div>
+  )
+}
+```
+
+### App structure
+
+Here's how components are structured:
+
+```txt {6-10,14-15}
+.
+├── app
+│   ├── layout.tsx
+│   └── page.tsx
+│   
+├── components
+│   ├── ui
+│   │   ├── alert-dialog.tsx
+│   │   ├── button.tsx
+│   │   ├── dropdown-menu.tsx
+│   │   └── ...
+│   │
+│   ├── addons
+│   │   ├── item-selector-input
+│   │   │   ├── index.tsx
+│   │   │   ├── other-usefull-folders
+│   │   │   └── ...
+│   │   ├── item-selector-input
+│   │   └── ...
+│   │
+│   └── your-any-components.tsx
+│
+├── lib
+│   └── utils.ts
+├── styles
+│   └── globals.css
+│
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+└── tsconfig.json
+```
+### installation

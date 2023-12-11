@@ -24,6 +24,10 @@ export const docsConfig: DocsConfig = {
       href: "/examples",
     },
     {
+      title: "Marketplace",
+      href: "/marketplace",
+    },
+    {
       title: "Figma",
       href: "/docs/figma",
     },
@@ -75,6 +79,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Typography",
           href: "/docs/components/typography",
+          items: [],
+        },
+        {
+          title: "Marketplace",
+          href: "/docs/marketplace",
           items: [],
         },
         {

@@ -64,6 +64,17 @@ export function MainNav() {
           Examples
         </Link>
         <Link
+          href="/marketplace"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/marketplace")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          Marketplace
+        </Link>
+        <Link
           href={siteConfig.links.github}
           className={cn(
             "hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
