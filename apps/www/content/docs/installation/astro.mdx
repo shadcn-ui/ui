@@ -97,7 +97,7 @@ Which style would you like to use? › Default
 Which color would you like to use as base color? › Slate
 Where is your global CSS file? › › ./src/styles/globals.css
 Do you want to use CSS variables for colors? › no / yes
-Where is your tailwind.config.js located? › tailwind.config.cjs
+Where is your tailwind.config.js located? › tailwind.config.mjs
 Configure the import alias for components: › @/components
 Configure the import alias for utils: › @/lib/utils
 Are you using React Server Components? › no
@@ -105,7 +105,7 @@ Are you using React Server Components? › no
 
 ### Import the globals.css file
 
-Import the `globals.css` file in the `src/index.astro` file:
+Import the `globals.css` file in the `src/pages/index.astro` file:
 
 ```ts {2} showLineNumbers
 ---
@@ -127,12 +127,12 @@ export default defineConfig({
 })
 ```
 
-### Update tailwind.config.cjs
+### Update tailwind.config.mjs
 
-When running `npx shadcn-ui@latest init`, your tailwind config for content will be overwritten. To fix this, change the `content` section with the code below to your `tailwind.config.cjs` file:
+When running `npx shadcn-ui@latest init`, your tailwind config for content will be overwritten. To fix this, change the `module.exports` to `export default` and the `content` section with the code below to your `tailwind.config.mjs` file:
 
-```js {2-4} showLineNumbers
-module.exports = {
+```js {1-4} showLineNumbers
+export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 }
 ```
