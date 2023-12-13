@@ -313,6 +313,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/avatar-demo")),
       files: ["registry/default/example/avatar-demo.tsx"],
     },
+    "avatar-stack-demo": {
+      name: "avatar-stack-demo",
+      type: "components:example",
+      registryDependencies: ["avatar"],
+      component: React.lazy(() => import("@/registry/default/example/avatar-stack-demo")),
+      files: ["registry/default/example/avatar-stack-demo.tsx"],
+    },
     "badge-demo": {
       name: "badge-demo",
       type: "components:example",
@@ -1391,6 +1398,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["avatar"],
       component: React.lazy(() => import("@/registry/new-york/example/avatar-demo")),
       files: ["registry/new-york/example/avatar-demo.tsx"],
+    },
+    "avatar-stack-demo": {
+      name: "avatar-stack-demo",
+      type: "components:example",
+      registryDependencies: ["avatar"],
+      component: React.lazy(() => import("@/registry/new-york/example/avatar-stack-demo")),
+      files: ["registry/new-york/example/avatar-stack-demo.tsx"],
     },
     "badge-demo": {
       name: "badge-demo",

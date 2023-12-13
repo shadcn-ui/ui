@@ -1,0 +1,61 @@
+---
+title: Avatar Stack
+description: A stack of avatars.
+component: true
+---
+
+<ComponentPreview name="avatar-stack-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add avatar-stack
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-avatar-stack
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-stack" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { AvatarStack } from "@/components/ui/avatar-stack"
+```
+
+```tsx
+<AvatarStack avatars={['link-1', 'link-2', 'link-3', 'link-4']}>
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview name="avatar-stack-demo" />

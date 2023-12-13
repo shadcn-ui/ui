@@ -273,6 +273,12 @@ const example: Registry = [
     files: ["example/avatar-demo.tsx"],
   },
   {
+    name: "avatar-stack-demo",
+    type: "components:example",
+    registryDependencies: ["avatar"],
+    files: ["example/avatar-stack-demo.tsx"],
+  },
+  {
     name: "badge-demo",
     type: "components:example",
     registryDependencies: ["badge"],
