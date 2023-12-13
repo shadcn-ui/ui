@@ -40,6 +40,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/avatar")),
       files: ["registry/default/ui/avatar.tsx"],
     },
+    "avatar-stack": {
+      name: "avatar-stack",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/avatar-stack")),
+      files: ["registry/default/ui/avatar-stack.tsx"],
+    },
     "badge": {
       name: "badge",
       type: "components:ui",
@@ -1125,6 +1132,13 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/avatar")),
       files: ["registry/new-york/ui/avatar.tsx"],
+    },
+    "avatar-stack": {
+      name: "avatar-stack",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/avatar-stack")),
+      files: ["registry/new-york/ui/avatar-stack.tsx"],
     },
     "badge": {
       name: "badge",

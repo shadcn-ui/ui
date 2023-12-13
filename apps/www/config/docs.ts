@@ -188,6 +188,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Avatar Stack",
+          href: "/docs/components/avatar-stack",
+          items: [],
+        },
+        {
           title: "Badge",
           href: "/docs/components/badge",
           items: [],
