@@ -1,6 +1,18 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["NODE_ENV"],
+  "globalEnv": [
+      "NODE_ENV",
+      "VERCEL_URL",
+      "VERCEL",
+      "DATABASE_URL",
+      "NEXTAUTH_SECRET",
+      "DATABASE_URL",
+      "NODE_ENV",
+      "NEXTAUTH_SECRET",
+      "NEXTAUTH_URL",
+      "GITHUB_CLIENT_ID",
+      "GITHUB_CLIENT_SECRET"
+  ],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],

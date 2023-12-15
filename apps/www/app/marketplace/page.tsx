@@ -15,14 +15,17 @@ import { Icons } from "@/components/icons"
 import { badgeVariants } from "@/registry/new-york/ui/badge"
 import MarketplaceExplore from "@/components/marketplace-components"
 
+import { getServerAuthSession } from "@/server/auth";
+import { api } from "@/trpc/server";
+
 export const metadata: Metadata = {
   title: "Marketplace",
   description: "Components built on top of Shadcn-UI & Radix UI primitives.",
 }
 
-export default async function MarketplaceLayout() {
-  const session = null 
-  
+export default async function Marketplace() {
+  const session = await getServerAuthSession();
+
   return (
     <>
       <div className="container relative">
@@ -50,7 +53,7 @@ export default async function MarketplaceLayout() {
                 rel="noreferrer"
                 className={cn(badgeVariants({ variant: "secondary" }), "mx-2")}
               >
-                Shadcn UI
+                Shadcn UI 
               </Link>
               ,
               <Link
@@ -80,15 +83,26 @@ export default async function MarketplaceLayout() {
             >
               Explore
             </Link>
-            <Link
-              href="/components"
+            {!session ? <Link
+              href="/api/auth/signin"
               className={cn(
                 buttonVariants({ variant: "outline" }),
                 "rounded-[6px]"
               )}
             >
-              {session ? "Build your own components" : "Login to Github" } 
+              <Icons.gitHub className="mr-2 h-4 w-4" /> Login to Github 
             </Link>
+              :
+              <Link
+                href="/"
+                className={cn(
+                  buttonVariants({ variant: "outline" }),
+                  "rounded-[6px]"
+                )}
+              >
+                Distribute your components
+              </Link>
+            }
           </section>
         </PageHeader>
         <section>

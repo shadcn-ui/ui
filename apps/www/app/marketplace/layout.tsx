@@ -1,4 +1,5 @@
 import { headers } from "next/headers";
+import { TRPCReactProvider } from "@/trpc/react";
 
 interface MarketplaceLayoutProps {
   children: React.ReactNode
@@ -6,8 +7,6 @@ interface MarketplaceLayoutProps {
 
 export default function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
   return (
-    <>
-        {children}
-    </>
+    <TRPCReactProvider headers={headers()}>{children}</TRPCReactProvider>
   )
 }
