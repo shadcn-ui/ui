@@ -8,9 +8,9 @@ import { Button } from "./button"
 import { Separator } from "./separator"
 import { useMediaQuery } from "./use-stepper"
 
-/********** Context **********/
+/********** StepperContext **********/
 
-interface StepsContextValue extends StepsProps {
+interface StepperContextValue extends StepperProps {
   isClickable?: boolean
   isError?: boolean
   isLoading?: boolean
@@ -19,14 +19,14 @@ interface StepsContextValue extends StepsProps {
   stepCount?: number
 }
 
-const StepsContext = React.createContext<StepsContextValue>({
+const StepperContext = React.createContext<StepperContextValue>({
   activeStep: 0,
 })
 
-export const useStepperContext = () => React.useContext(StepsContext)
+export const useStepperContext = () => React.useContext(StepperContext)
 
-export const StepsProvider: React.FC<{
-  value: StepsContextValue
+export const StepperProvider: React.FC<{
+  value: StepperContextValue
   children: React.ReactNode
 }> = ({ value, children }) => {
   const isError = value.state === "error"
@@ -37,7 +37,7 @@ export const StepsProvider: React.FC<{
     value.orientation !== "vertical" && value.labelOrientation === "vertical"
 
   return (
-    <StepsContext.Provider
+    <StepperContext.Provider
       value={{
         ...value,
         isError,
@@ -47,13 +47,13 @@ export const StepsProvider: React.FC<{
       }}
     >
       {children}
-    </StepsContext.Provider>
+    </StepperContext.Provider>
   )
 }
 
-/********** Steps **********/
+/********** Stepper **********/
 
-export interface StepsProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface StepperProps extends React.HTMLAttributes<HTMLDivElement> {
   activeStep: number
   orientation?: "vertical" | "horizontal"
   state?: "loading" | "error"
@@ -66,7 +66,7 @@ export interface StepsProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "default" | "ghost" | "outline" | "secondary"
 }
 
-export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
+export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
   (
     {
       activeStep = 0,
@@ -108,7 +108,7 @@ export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
     const orientation = isMobile && responsive ? "vertical" : orientationProp
 
     return (
-      <StepsProvider
+      <StepperProvider
         value={{
           activeStep,
           orientation,
@@ -154,16 +154,16 @@ export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
           })}
         </div>
         {orientation === "horizontal" && renderHorizontalContent()}
-      </StepsProvider>
+      </StepperProvider>
     )
   }
 )
 
-Steps.displayName = "Steps"
+Stepper.displayName = "Stepper"
 
-/********** Step **********/
+/********** StepperItem **********/
 
-const stepVariants = cva("relative flex flex-row gap-2", {
+const stepperItemVariants = cva("relative flex flex-row gap-2", {
   variants: {
     isLastStep: {
       true: "flex-[0_0_auto] justify-end",
@@ -186,24 +186,24 @@ const stepVariants = cva("relative flex flex-row gap-2", {
   ],
 })
 
-export interface StepConfig extends StepLabelProps {
+export interface StepperConfig extends StepperItemLabelProps {
   icon?: React.ReactElement
 }
 
-export interface StepProps
+interface StepProps
   extends React.HTMLAttributes<HTMLDivElement>,
-  VariantProps<typeof stepVariants>,
-  StepConfig {
+    VariantProps<typeof stepperItemVariants>,
+    StepperConfig {
   isCompletedStep?: boolean
 }
 
-interface StepStatus {
+interface StepperItemStatus {
   index: number
   isCompletedStep?: boolean
   isCurrentStep?: boolean
 }
 
-interface StepAndStatusProps extends StepProps, StepStatus {
+export interface StepperItemProps extends StepProps, StepperItemStatus {
   additionalClassName?: {
     button?: string
     label?: string
@@ -211,7 +211,7 @@ interface StepAndStatusProps extends StepProps, StepStatus {
   }
 }
 
-export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
+export const StepperItem = React.forwardRef<HTMLDivElement, StepperItemProps>(
   (props, ref) => {
     const {
       children,
@@ -284,7 +284,7 @@ export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
       <div
         {...rest}
         className={cn(
-          stepVariants({
+          stepperItemVariants({
             isLastStep,
             isVertical,
             isClickable: isClickable && !!onClickStep,
@@ -318,7 +318,7 @@ export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
           >
             {RenderIcon}
           </Button>
-          <StepLabel
+          <StepperItemLabel
             label={label}
             description={description}
             optional={optional}
@@ -328,24 +328,24 @@ export const Step = React.forwardRef<HTMLDivElement, StepAndStatusProps>(
             {...{ isCurrentStep }}
           />
         </div>
-        <Connector
+        <StepperItemConnector
           index={index}
           isLastStep={isLastStep}
           hasLabel={!!label || !!description}
           isCompletedStep={isCompletedStep || false}
         >
           {(isCurrentStep || isCompletedStep) && children}
-        </Connector>
+        </StepperItemConnector>
       </div>
     )
   }
 )
 
-Step.displayName = "Step"
+StepperItem.displayName = "StepperItem"
 
-/********** StepLabel **********/
+/********** StepperItemLabel **********/
 
-interface StepLabelProps {
+interface StepperItemLabelProps {
   label: string | React.ReactNode
   description?: string | React.ReactNode
   optional?: boolean
@@ -353,8 +353,7 @@ interface StepLabelProps {
   labelClassName?: string
   descriptionClassName?: string
 }
-
-const StepLabel = ({
+const StepperItemLabel = ({
   isCurrentStep,
   label,
   description,
@@ -362,7 +361,7 @@ const StepLabel = ({
   optionalLabel,
   labelClassName,
   descriptionClassName,
-}: StepLabelProps & {
+}: StepperItemLabelProps & {
   isCurrentStep?: boolean
 }) => {
   const { isLabelVertical } = useStepperContext()
@@ -390,25 +389,30 @@ const StepLabel = ({
         </p>
       )}
       {!!description && (
-        <p className={cn("text-sm text-muted-foreground", descriptionClassName)}>{description}</p>
+        <p
+          className={cn("text-sm text-muted-foreground", descriptionClassName)}
+        >
+          {description}
+        </p>
       )}
     </div>
   ) : null
 }
 
-StepLabel.displayName = "StepLabel"
+StepperItemLabel.displayName = "StepperItemLabel"
 
-/********** Connector **********/
+/********** StepperItemConnector **********/
 
-interface ConnectorProps extends React.HTMLAttributes<HTMLDivElement> {
+interface StepperItemConnectorProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   isCompletedStep: boolean
   isLastStep?: boolean | null
   hasLabel?: boolean
   index: number
 }
 
-const Connector = React.memo(
-  ({ isCompletedStep, children, isLastStep }: ConnectorProps) => {
+const StepperItemConnector = React.memo(
+  ({ isCompletedStep, children, isLastStep }: StepperItemConnectorProps) => {
     const { isVertical } = useStepperContext()
 
     if (isVertical) {
@@ -442,4 +446,4 @@ const Connector = React.memo(
   }
 )
 
-Connector.displayName = "Connector"
+StepperItemConnector.displayName = "StepperItemConnector"

@@ -1,11 +1,11 @@
 import * as React from "react"
 
-import { StepProps } from "./stepper"
+import { StepperItemProps } from "./stepper"
 
 type useStepper = {
   initialStep: number
   steps: Pick<
-    StepProps,
+    StepperItemProps,
     "label" | "description" | "optional" | "optionalLabel" | "icon"
   >[]
 }
