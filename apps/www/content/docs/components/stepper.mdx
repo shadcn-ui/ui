@@ -49,7 +49,13 @@ export default function Page() {
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="toast" />
+`stepper.tsx`
+
+<ComponentSource name="stepper" />
+
+`use-stepper.tsx`
+
+<ComponentSource name="stepper" fileName="use-stepper" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -77,7 +83,12 @@ export default function Page() {
 ## Usage
 
 ```tsx
-import { Step, Steps, useStepper } from "@/components/ui/stepper"
+import {
+  Stepper,
+  StepperConfig,
+  StepperItem,
+  useStepper,
+} from "@/components/ui/stepper"
 ```
 
 ```tsx {1-5}
@@ -85,7 +96,7 @@ const steps = [
   { label: "Step 1" },
   { label: "Step 2" },
   { label: "Step 3" },
-] satisfies StepConfig[]
+] satisfies StepperConfig[]
 
 export const StepperDemo = () => {
   const {
@@ -104,15 +115,15 @@ export const StepperDemo = () => {
 
   return (
     <>
-      <Steps activeStep={activeStep}>
+      <Stepper activeStep={activeStep}>
         {steps.map((step, index) => (
-          <Step index={index} key={index} {...step}>
+          <StepperItem index={index} key={index} {...step}>
             <div className="bg-muted h-40 w-full p-4">
               <p>Step {index + 1} content</p>
             </div>
-          </Step>
+          </StepperItem>
         ))}
-      </Steps>
+      </Stepper>
       <div className="flex items-center justify-end gap-2">
         {activeStep === steps.length ? (
           <>
@@ -137,10 +148,10 @@ export const StepperDemo = () => {
 
 ## API
 
-### `<Steps />`
+### `<Stepper />`
 
 ```tsx
-interface StepsProps extends React.HTMLAttributes<HTMLDivElement> {
+interface StepperProps extends React.HTMLAttributes<HTMLDivElement> {
   activeStep: number
   orientation?: "vertical" | "horizontal"
   state?: "loading" | "error"
@@ -154,34 +165,34 @@ interface StepsProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 ```
 
-### `<Step />`
+### `<StepperItem />`
 
 ```tsx
-interface StepLabelProps {
+interface StepperItemLabelProps {
   label: string | React.ReactNode
   description?: string | React.ReactNode
   optional?: boolean
   optionalLabel?: string | React.ReactNode
 }
 
-interface StepConfig extends StepLabelProps {
+interface StepperConfig extends StepperItemLabelProps {
   icon?: React.ReactElement
 }
 
-interface StepProps
+interface StepperItemProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof stepVariants>,
-    StepConfig {
+    VariantProps<typeof stepperItemVariants>,
+    StepperConfig {
   isCompletedStep?: boolean
 }
 
-interface StepStatus {
+interface StepperItemStatus {
   index: number
   isCompletedStep?: boolean
   isCurrentStep?: boolean
 }
 
-interface StepAndStatusProps extends StepProps, StepStatus {
+interface StepperItemProps extends StepperItemProps, StepperItemStatus {
   additionalClassName?: {
     button?: string
     label?: string
