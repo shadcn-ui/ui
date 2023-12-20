@@ -9,6 +9,5 @@ export default {
   verbose: true,
   dbCredentials: {
     connectionString: env.DATABASE_URL,
-  },
-  tablesFilter: ["shadcn_marketplace_*"],
+  }
 } satisfies Config;

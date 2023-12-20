@@ -3,10 +3,9 @@ import {
     text,
     primaryKey,
     integer,
-    pgTableCreator,
     pgEnum,
-    pgView,
     json,
+    pgTable,
   } from "drizzle-orm/pg-core";
   import { type AdapterAccount } from "next-auth/adapters";
 import { relations } from "drizzle-orm";
@@ -17,7 +16,6 @@ import { relations } from "drizzle-orm";
    *
    * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
    */
-  export const pgTable = pgTableCreator((name) => `shadcn_marketplace_${name}`);
   
   export const roleEnum = pgEnum('role', ["USER", "OWNER"])
   
@@ -27,6 +25,7 @@ import { relations } from "drizzle-orm";
     email: text("email").notNull(),
     emailVerified: timestamp("emailVerified", { mode: "date" }),
     image: text("image"),
+    username: text("username").unique().notNull(),
     role: roleEnum('role').default("USER")
   });
   
@@ -79,14 +78,14 @@ import { relations } from "drizzle-orm";
       name: text("name").notNull().primaryKey(),
       description: text("description").notNull(),
       author: text("author").notNull(),
-      created_at: timestamp("created_at", { mode: "date" }).notNull(),
-      updated_at: timestamp("updated_at", { mode: "date" }).notNull(),
-      version: text("version"),
-      downloads: integer('downloads').default(0),
+      created_at: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+      updated_at: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
+      version: text("version").notNull(),
+      downloads: integer('downloads').default(0).notNull(),
       
       dependencies: text('dependencies').array(),
       registryDependencies: text('registryDependencies').array(),
-      files: json("files").array()
+      files: json("files").array().notNull()
     },
   )
 

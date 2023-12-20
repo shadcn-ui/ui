@@ -1,11 +1,9 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import type { DefaultSession, NextAuthConfig } from "next-auth";
+import type { DefaultSession, NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import { env } from "@/env.mjs";
 import { db } from "@/server/db";
 import { pgTable } from "@/server/db/schema";
-
-// @ts-ignore
 import {getServerSession} from "next-auth";  
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -33,7 +31,7 @@ declare module "next-auth" {
  *
  * @see https://next-auth.js.org/configuration/options
  */
-export const authOptions:NextAuthConfig = {
+export const authOptions:NextAuthOptions = {
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
@@ -48,6 +46,15 @@ export const authOptions:NextAuthConfig = {
     GithubProvider({
       clientId: env.GITHUB_CLIENT_ID,
       clientSecret: env.GITHUB_CLIENT_SECRET,
+      profile(profile) {
+        return {
+          id: profile.id.toString(),
+          name: profile.name || profile.login,
+          email: profile.email,
+          image: profile.avatar_url,
+          username: profile.login,
+        };
+      },
     }),
 
   ],
