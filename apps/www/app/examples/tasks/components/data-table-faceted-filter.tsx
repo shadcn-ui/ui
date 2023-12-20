@@ -20,6 +20,7 @@ import {
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
 import { Separator } from "@/registry/new-york/ui/separator"
+import { IconProps } from "@radix-ui/react-icons/dist/types"
 
 interface DataTableFacetedFilterProps<TData, TValue> {
   column?: Column<TData, TValue>
@@ -27,7 +28,7 @@ interface DataTableFacetedFilterProps<TData, TValue> {
   options: {
     label: string
     value: string
-    icon?: React.ComponentType<{ className?: string }>
+    icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<SVGSVGElement>>
   }[]
 }
 
