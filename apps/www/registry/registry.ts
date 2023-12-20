@@ -1,6 +1,6 @@
 import { Registry } from "@/registry/schema"
 
-const ui: Registry = [
+export const ui: Registry = [
   {
     name: "accordion",
     type: "components:ui",

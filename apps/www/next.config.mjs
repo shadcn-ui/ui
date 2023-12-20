@@ -5,10 +5,16 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["avatars.githubusercontent.com", "images.unsplash.com"],
+    domains: ["avatars.githubusercontent.com", "images.unsplash.com", "github.com"],
   },
   redirects() {
     return [
+      {
+        // to avoid CORS
+        source: '/api/npm/:path*',
+        destination: 'https://registry.npmjs.org/:path*', 
+        permanent: true,
+      },
       {
         source: "/components",
         destination: "/docs/components/accordion",
