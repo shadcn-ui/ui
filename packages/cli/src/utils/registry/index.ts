@@ -71,41 +71,50 @@ export async function getRegistryBaseColor(baseColor: string) {
   }
 }
 
+export const splitDependencies = (registryName: string[], dependencies: string[]) => {
+  let addons: string[] = []
+  let shadcn: string[] = []
+
+  dependencies.forEach(e => {
+    registryName.includes(e) ? shadcn.push(e) : addons.push(e)
+  })
+  return { addons, shadcn }
+}
+
 export async function resolveTree(
   index: z.infer<typeof registryIndexSchema>,
   names: string[]
 ) {
   const tree: z.infer<typeof registryIndexSchema> = []
-  const nonShadcnPrimitive: string[] = []
 
   for (const name of names) {
     const entry = index.find((entry) => entry.name === name)
 
     if (!entry) {
-      nonShadcnPrimitive.push(name)
+      console.log(name)
       continue
     }
 
     tree.push(entry)
 
     if (entry.registryDependencies) {
-      const {tree:dependencies} = await resolveTree(index, entry.registryDependencies)
+      const dependencies = await resolveTree(index, entry.registryDependencies)
       tree.push(...dependencies)
     }
   }
 
-  return {tree:tree.filter(
+  return tree.filter(
     (component, index, self) =>
       self.findIndex((c) => c.name === component.name) === index
-  ),
-    addons:nonShadcnPrimitive
-  }
+  )
 }
 
 export async function fetchTreeMarketplace(
   names: string[]
 ) {
   try {
+    if (!names.length) return []
+
     const result = await fetchMarketplace(names)
 
     return registryWithContentSchema.parse(result)
@@ -116,19 +125,19 @@ export async function fetchTreeMarketplace(
 
 async function fetchMarketplace(paths: string[]) {
   try {
-    const results = await Promise.all(
-      paths.map(async (path) => {
-        const response = await fetch(`${baseUrl}/api/marketplace?name=${path}`, {
-          agent,
-        })
-        return await response.json()
-      })
-    )
+    const results = await fetch(`${baseUrl}/api/marketplace`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ names: paths })
+    })
 
-    return results
+    return results.json()
   } catch (error) {
-    console.log(error)
-    throw new Error(`Failed to fetch registry from ${baseUrl}.`)
+    return []
+    // even if the marketplace is down, we should still be able to add components
+    // throw new Error(`Failed to fetch marketplace from ${baseUrl}.`)
   }
 }
 
@@ -148,10 +157,10 @@ export async function fetchTree(
 
 export async function getItemTargetPath(
   config: Config,
-  item: Pick<z.infer<typeof registryItemWithContentSchema>, "type">,
+  item: Pick<z.infer<typeof registryItemWithContentSchema>, "type" | "name">,
   override?: string
 ) {
-  // Allow overrides for all items but ui & addons.
+  // Allow overrides for all items but ui & addons
   if (override && (item.type !== "components:ui" && item.type !== "components:addons")) {
     return override
   }
@@ -163,7 +172,8 @@ export async function getItemTargetPath(
 
   return path.join(
     config.resolvedPaths[parent as keyof typeof config.resolvedPaths],
-    type
+    type,
+    type === "addons" ? item.name : ""
   )
 }
 

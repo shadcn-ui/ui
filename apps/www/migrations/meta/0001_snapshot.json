@@ -1,6 +1,6 @@
 {
-  "id": "3ad46c27-2fe4-4e5e-8fff-6bbcf029b6df",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "b340ccc0-e58f-4e71-8625-5b2619f538b0",
+  "prevId": "3ad46c27-2fe4-4e5e-8fff-6bbcf029b6df",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -156,6 +156,13 @@
           "primaryKey": false,
           "notNull": true,
           "default": 0
+        },
+        "components": {
+          "name": "components",
+          "type": "components",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'components:addons'"
         },
         "dependencies": {
           "name": "dependencies",
@@ -322,6 +329,15 @@
     }
   },
   "enums": {
+    "components": {
+      "name": "components",
+      "values": {
+        "components:ui": "components:ui",
+        "components:component": "components:component",
+        "components:example": "components:example",
+        "components:addons": "components:addons"
+      }
+    },
     "role": {
       "name": "role",
       "values": {

@@ -4,16 +4,30 @@ import {
   publicProcedure,
 } from "@/server/api/trpc";
 import { packages } from "@/server/db/schema";
-import { packageAdditionalZod, packageZod } from "@/lib/validations/packages";
+import { PackageFilterZod, PackageType, packageAdditionalZod, packageFilterZod, packageZod } from "@/lib/validations/packages";
 import { db } from "@/server/db";
 import { desc, eq } from "drizzle-orm";
 
 export const packagesRouter = createTRPCRouter({
-  newPackages: publicProcedure
+  nameSomePackages: publicProcedure
     .query(async () => {
       const data = await db.query.packages.findMany({
         limit: 10,
-        orderBy: desc(packages.created_at),
+        orderBy: packages.downloads,
+        columns: {
+          name:true
+        }
+      })
+
+      return data
+    }),
+  newPackages: publicProcedure
+    .input(packageFilterZod)
+    .query(async ({input}) => {
+      const filter = input.filter as keyof PackageType ?? "created_at"
+      const data = await db.query.packages.findMany({
+        limit: input.limit ?? 10,
+        orderBy: input.order ? desc(packages[filter]) : packages[filter],
         columns: {
           files: false,
           author: false
@@ -41,7 +55,6 @@ export const packagesRouter = createTRPCRouter({
       const data = await db.query.packages.findFirst({
         where: (packages, {eq}) => eq(packages.name, input.name),
         columns: {
-          files: false,
           author: false
         },
         with: {
@@ -61,23 +74,22 @@ export const packagesRouter = createTRPCRouter({
   createPackage: protectedProcedure
     .input(packageZod)
     .mutation(async ({ ctx, input }) => {
-
       await ctx.db.insert(packages).values({
         version: "1.0.0",
-        type: "components:addons",
         author: ctx.session.user.id,
         created_at: new Date,
         updated_at: new Date,
         downloads: 0,
         ...input,
+        type: "components:addons",
       });
     }),
-
-  updatePackage: protectedProcedure
+    
+    updatePackage: protectedProcedure
     .input(
       packageZod
-        .merge(packageAdditionalZod)
-        .deepPartial().required({
+      .merge(packageAdditionalZod)
+      .deepPartial().required({
           name: true
         })
     )
@@ -86,6 +98,7 @@ export const packagesRouter = createTRPCRouter({
       await ctx.db.update(packages).set({
         updated_at: new Date,
         ...input,
+        type: "components:addons",
       }).where(eq(packages.name, input.name))
 
     }),

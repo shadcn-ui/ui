@@ -3,7 +3,7 @@ import type { DefaultSession, NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import { env } from "@/env.mjs";
 import { db } from "@/server/db";
-import { pgTable } from "@/server/db/schema";
+import { pgTable } from "drizzle-orm/pg-core";
 import {getServerSession} from "next-auth";  
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`

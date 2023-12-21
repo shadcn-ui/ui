@@ -58,6 +58,12 @@ const packageFormSchema = packageZod
     })
   )
 
+const packageFileZod = z.object({
+  name: z.string(),
+  dir: z.string().transform((e) => e.split("/").filter(e => e.length).slice(1).join("/")),
+  content: z.string(),
+})
+
 type PackageFormValues = z.infer<typeof packageFormSchema>
 
 // const defaultValues: Partial<PackageFormValues> = {
@@ -82,6 +88,7 @@ export function PackageForm() {
   const { setValue } = form
 
   function onSubmit(data: PackageFormValues) {
+
     const result: z.infer<typeof packageZod> = {
       name: data.name,
       description: data.description,
@@ -98,10 +105,24 @@ export function PackageForm() {
         })
       },
       onError: (err) => {
-        toast({
-          title: "Package Creation Failed",
-          description: err.message,
-        })
+        console.log(err)
+        type T = { message: string; code: string }
+        const customError = JSON.parse(err.message) as T[]
+        if (Array.isArray(customError)) {
+          customError.forEach((e: T) => {
+            toast({
+              itemID: String(Math.random()),
+              title: "Package Creation Failed",
+              description: e.message,
+              variant: "destructive",
+            })
+          })
+        } else
+          toast({
+            title: "Package Creation Failed",
+            description: JSON.stringify(err),
+            variant: "destructive",
+          })
       },
     })
   }
@@ -114,7 +135,7 @@ export function PackageForm() {
         dir: file.path?.replace("/" + file.name, "") || "",
         content: await file.text(),
       }
-      fileSet.push(data)
+      fileSet.push(packageFileZod.parse(data))
     })
 
     setFiles((f) => ({ ...f, files: fileSet }))

@@ -25,6 +25,7 @@ export const metadata: Metadata = {
 
 export default async function Marketplace() {
   const session = await getServerAuthSession();
+  const data = await api.packages.newPackages.query()
 
   return (
     <>
@@ -94,7 +95,7 @@ export default async function Marketplace() {
             </Link>
               :
               <Link
-                href="/"
+                href="/marketplace/create"
                 className={cn(
                   buttonVariants({ variant: "outline" }),
                   "rounded-[6px]"
@@ -108,7 +109,7 @@ export default async function Marketplace() {
         <section>
           <MarketplaceNav />
           <div className="overflow-hidden rounded-[0.5rem] bg-background shadow">
-            <MarketplaceExplore/>
+            <MarketplaceExplore data={data}/>
           </div>
         </section>
       </div>

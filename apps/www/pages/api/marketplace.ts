@@ -1,36 +1,40 @@
+import { PackageType, packageZod } from "@/lib/validations/packages"
+import { db } from "@/server/db"
+import { packages } from "@/server/db/schema"
+import { eq, inArray } from "drizzle-orm"
 import { NextApiRequest, NextApiResponse } from "next"
-
-const data = {
-  name: "rajat",
-  description: "Description",
-  type: "components:addons",
-  // dependencies: [
-
-  // ],
-  registryDependencies: [
-    "button"
-  ],
-  files: [
-    {
-      content: "Components built on top of Shadcn-UI & Radix UI primitives.",
-      dir: "rajat",
-      name: "index.tsx"
-    },
-    {
-      content: "Components built on top of Shadcn-UI & Radix UI primitives.",
-      dir: "rajat/modules",
-      name: "types.d.ts"
-    }
-  ]
-}
+import { z } from "zod"
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== "GET") {
-    return res.status(405).end()
-  }
 
-  return res.status(200).json(data)
+  
+  const name = req.query?.name as string
+  
+  if (name) {
+    const data = await db.query.packages.findFirst({
+      where: eq(packages.name, name)
+    }) as PackageType
+
+    const safeData = packageZod.parse(data)
+    res.status(200).json([safeData])
+  }
+  else {
+    const names = req.body.names as string[]
+
+    console.log(names)
+
+    const data = await db.query.packages.findMany({
+      where: inArray(packages.name, names)
+
+    }) as PackageType[]
+
+
+    if (!data.length) return res.status(200).json([])
+
+    const safeData = z.array(packageZod).parse(data)
+    return res.status(200).json(safeData)
+  }
 }

@@ -1,19 +1,14 @@
+import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 import Image from "next/image"
 import Link from "next/link"
-import { MDXRemote,type MDXRemoteProps } from "next-mdx-remote/rsc"
-import { NpmCommands } from "types/unist"
 
-import { Event } from "@/lib/events"
-import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
 import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentExample } from "@/components/component-example"
-import { ComponentPreview } from "@/components/component-preview"
+import { MarketplacePreviw as ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
-import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
-import { FrameworkDocs } from "@/components/framework-docs"
-import { StyleWrapper } from "@/components/style-wrapper"
+import { Code as code, Pre as pre} from "@/components/custom-mdx-remote"
+import { cn } from "@/lib/utils"
 import {
   Accordion,
   AccordionContent,
@@ -32,7 +27,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
-import { Style } from "@/registry/styles"
 
 const components = {
   Accordion,
@@ -163,68 +157,8 @@ const components = {
       {...props}
     />
   ),
-  pre: ({
-    className,
-    __rawString__,
-    __npmCommand__,
-    __yarnCommand__,
-    __pnpmCommand__,
-    __bunCommand__,
-    __withMeta__,
-    __src__,
-    __event__,
-    __style__,
-    ...props
-  }: React.HTMLAttributes<HTMLPreElement> & {
-    __style__?: Style["name"]
-    __rawString__?: string
-    __withMeta__?: boolean
-    __src__?: string
-    __event__?: Event["name"]
-  } & NpmCommands) => {
-    return (
-      <StyleWrapper styleName={__style__}>
-        <pre
-          className={cn(
-            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900",
-            className
-          )}
-          {...props}
-        />
-        {__rawString__ && !__npmCommand__ && (
-          <CopyButton
-            value={__rawString__}
-            src={__src__}
-            event={__event__}
-            className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
-          />
-        )}
-        {__npmCommand__ &&
-          __yarnCommand__ &&
-          __pnpmCommand__ &&
-          __bunCommand__ && (
-            <CopyNpmCommandButton
-              commands={{
-                __npmCommand__,
-                __yarnCommand__,
-                __pnpmCommand__,
-                __bunCommand__,
-              }}
-              className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
-            />
-          )}
-      </StyleWrapper>
-    )
-  },
-  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <code
-      className={cn(
-        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm",
-        className
-      )}
-      {...props}
-    />
-  ),
+  code,
+  pre,
   Image,
   Callout,
   ComponentPreview,
@@ -288,12 +222,6 @@ const components = {
       {...props}
     />
   ),
-  FrameworkDocs: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof FrameworkDocs>) => (
-    <FrameworkDocs className={cn(className)} {...props} />
-  ),
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn("font-medium underline underline-offset-4", className)}
@@ -311,16 +239,16 @@ const components = {
   ),
 }
 
-interface MdxProps extends MDXRemoteProps{
-}
+interface MdxProps extends MDXRemoteProps {}
 
-export function MDRemote(props:MdxProps) {
-  const [config] = useConfig()
-
+export function MDRemote(props: MdxProps) {
   return (
     <div className="mdx">
-        {/* @ts-ignore */}
-      <MDXRemote {...props} components={{...components, ...(props.components || {})}} />
+      {/* @ts-ignore */}
+      <MDXRemote
+        {...props}
+        components={{ ...components, ...(props.components || {}) }}
+      />
     </div>
   )
 }

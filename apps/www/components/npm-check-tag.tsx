@@ -12,7 +12,7 @@ import {
 import useSWR from "swr"
 
 import { fetcher, swr_options } from "@/lib/fetcher"
-import { cn } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import {
   Avatar,
   AvatarFallback,
@@ -28,15 +28,7 @@ import {
 import { Tag, tagVariants } from "./tag-input"
 
 // Convert to human-readable format
-const options = {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-  hour: "numeric",
-  minute: "numeric",
-  second: "numeric",
-  timeZoneName: "short",
-} as const
+
 
 type NPMData =
   | "_id "
@@ -141,7 +133,7 @@ export const NpmRegisteryCheckTag = ({
             <span className="text-xs text-muted-foreground">
               Created:
               <br />
-              {new Date(data.time.created).toLocaleString("en-US", options)}
+              {formatDate(data.time.created)}
             </span>
           </div>
           <div className="flex items-center">
@@ -149,7 +141,7 @@ export const NpmRegisteryCheckTag = ({
             <span className="text-xs text-muted-foreground">
               Last modified:
               <br />
-              {new Date(data.time.modified).toLocaleString("en-US", options)}
+              {formatDate(data.time.modified)}
             </span>
           </div>
           {data.repository && (

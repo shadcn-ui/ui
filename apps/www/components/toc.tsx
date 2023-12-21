@@ -9,9 +9,10 @@ import { useMounted } from "@/hooks/use-mounted"
 
 interface TocProps {
   toc: TableOfContents
+  title?:string
 }
 
-export function DashboardTableOfContents({ toc }: TocProps) {
+export function DashboardTableOfContents({ toc, title }: TocProps) {
   const itemIds = React.useMemo(
     () =>
       toc.items
@@ -32,7 +33,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
 
   return (
     <div className="space-y-2">
-      <p className="font-medium">On This Page</p>
+      <p className="font-medium">{title ?? "On This Page"}</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
   )

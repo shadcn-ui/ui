@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS "packages" (
 	"downloads" integer DEFAULT 0 NOT NULL,
 	"dependencies" text[],
 	"registryDependencies" text[],
-	"files" json[] NOT NULL
+	"files" jsonb NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "session" (

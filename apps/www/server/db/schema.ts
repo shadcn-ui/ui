@@ -4,7 +4,7 @@ import {
     primaryKey,
     integer,
     pgEnum,
-    json,
+    jsonb,
     pgTable,
   } from "drizzle-orm/pg-core";
   import { type AdapterAccount } from "next-auth/adapters";
@@ -18,6 +18,8 @@ import { relations } from "drizzle-orm";
    */
   
   export const roleEnum = pgEnum('role', ["USER", "OWNER"])
+  export const componentsEnum = pgEnum('components', ['components:ui', 'components:component', 'components:example', 'components:addons'])
+  
   
   export const users = pgTable("user", {
     id: text("id").notNull().primaryKey(),
@@ -82,10 +84,10 @@ import { relations } from "drizzle-orm";
       updated_at: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
       version: text("version").notNull(),
       downloads: integer('downloads').default(0).notNull(),
-      
+      type: componentsEnum('components').default("components:addons"),
       dependencies: text('dependencies').array(),
       registryDependencies: text('registryDependencies').array(),
-      files: json("files").array().notNull()
+      files: jsonb("files").notNull()
     },
   )
 

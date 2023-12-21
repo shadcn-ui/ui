@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
@@ -16,7 +17,9 @@ import {
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
 import { styles } from "@/registry/styles"
-import Image from "next/image"
+
+import { Code, Pre } from "./custom-mdx-remote"
+import { CodeBlockWrapper } from "./code-block-wrapper"
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string
@@ -143,11 +146,14 @@ interface MarketplacePreviwProps extends React.HTMLAttributes<HTMLDivElement> {
   image: string
   code: string[]
 }
- 
-const MarketplacePreviw = ({
-  code, image, className, ...props
-}:MarketplacePreviwProps) => {
-  return ( 
+
+export const MarketplacePreviw = ({
+  code,
+  image,
+  className,
+  ...props
+}: MarketplacePreviwProps) => {
+  return (
     <div
       className={cn("group relative my-4 flex flex-col space-y-2", className)}
       {...props}
@@ -170,11 +176,12 @@ const MarketplacePreviw = ({
           </TabsList>
         </div>
         <TabsContent value="preview" className="relative rounded-md border">
-          {/* <div className="flex items-center justify-between p-4">
-            <StyleSwitcher />
-          </div> */}
           <ThemeWrapper defaultTheme="zinc">
-            <div className={cn( "preview flex min-h-[350px] w-full justify-center p-10", )} >
+            <div
+              className={cn(
+                "preview flex min-h-[350px] w-full justify-center p-10"
+              )}
+            >
               <React.Suspense
                 fallback={
                   <div className="flex items-center text-sm text-muted-foreground">
@@ -183,27 +190,26 @@ const MarketplacePreviw = ({
                   </div>
                 }
               >
-                <Image src={image} alt="Picture of the author" width={1000} height={1000} />
+                <Image
+                  src={image}
+                  alt="Picture of the author"
+                  width={1000}
+                  height={1000}
+                />
               </React.Suspense>
             </div>
           </ThemeWrapper>
         </TabsContent>
         <TabsContent value="code">
-          <div className="flex flex-col space-y-4">
-            <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
-              {code.map( (e, i) => (
-                <div key={i} className="flex flex-col space-y-4">
-                  <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
-                    {e}
-                  </div>
-                </div>
+          <div className="flex flex-col">
+              {code.map((e, i) => (
+                <Pre key={i}>
+                  <Code>{e}</Code>
+                </Pre>
               ))}
-            </div>
           </div>
         </TabsContent>
       </Tabs>
     </div>
-   );
+  )
 }
- 
-export default MarketplacePreviw;

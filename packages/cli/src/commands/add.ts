@@ -8,6 +8,7 @@ import {
   fetchTree,
   fetchTreeMarketplace,
   getItemTargetPath,
+  splitDependencies,
   getRegistryBaseColor,
   getRegistryIndex,
   resolveTree,
@@ -67,10 +68,12 @@ export const add = new Command()
       }
 
       const registryIndex = await getRegistryIndex()
+      const registryName = registryIndex.map((entry) => entry.name)
 
       let selectedComponents = options.all
-        ? registryIndex.map((entry) => entry.name)
+        ? registryName
         : options.components
+
       if (!options.components?.length && !options.all) {
         const { components } = await prompts({
           type: "multiselect",
@@ -94,19 +97,49 @@ export const add = new Command()
         process.exit(0)
       }
 
-      
-      const {tree, addons} = await resolveTree(registryIndex, selectedComponents)
+      const earlySpinner = ora(`Fetching components...`).start()
+
+      /**
+       * Split dependencies into shadcn and addons.
+       * Depending on option.all, it skip searching
+       */
+      const { shadcn, addons } = options.all
+        ? { shadcn: selectedComponents, addons: options.components ?? [] }
+        : splitDependencies(registryName, selectedComponents)
+
+      const addonsPayload = await fetchTreeMarketplace(addons)
+
+      // extra dependency tree is from addons
+      const extraTree = addonsPayload 
+        .map(e => e.registryDependencies)
+        .reduce((prev, next) => [...prev ? prev : [], ...next ? next : []], [])
+
+      earlySpinner.text = `Fetching shadcn dependencies...`
+
+      const tree = await resolveTree(registryIndex, [...shadcn, ...extraTree || []])
+
       const payload = await fetchTree(config.style, tree)
-      const addonsPayload =  await fetchTreeMarketplace(addons)
       const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
 
-      if (!payload.length && !addons.length) {
+      console.log(JSON.stringify(payload))
+
+      earlySpinner.stop()
+
+      if (!payload.length && !addonsPayload.length) {
         logger.warn("Selected components not found. Exiting.")
         process.exit(0)
       }
-
-      payload.length && logger.info(`${payload.length}x Shadcn Components found.`)
-      addons.length && logger.info(`${addons.length}x Marketplace Components found.`)
+      else {
+        if (payload.length) {
+          logger.info(`${payload.length}x shadcn/ui components found.`)
+          !options.all && payload.map(e => logger.success("- " + e.name))
+        }
+        if (addonsPayload.length) {
+          logger.info(`\n${addonsPayload.length}x addons found.`)
+          addonsPayload.map(e => logger.success("- " + e.name))
+        }
+        logger.info("\n")
+      }
 
       if (!options.yes) {
         const { proceed } = await prompts({
@@ -148,13 +181,13 @@ export const add = new Command()
             const { overwrite } = await prompts({
               type: "confirm",
               name: "overwrite",
-              message: `Component ${item.name} already exists. Would you like to overwrite?`,
+              message: `Component ${chalk.green(item.name)} already exists. Would you like to overwrite?`,
               initial: false,
             })
 
             if (!overwrite) {
               logger.info(
-                `Skipped ${item.name}. To overwrite, run with the ${chalk.green(
+                `Skipped ${chalk.green(item.name)}. To overwrite, run with the ${chalk.green(
                   "--overwrite"
                 )} flag.`
               )
@@ -168,10 +201,10 @@ export const add = new Command()
         }
 
         for (const file of item.files) {
-          let filePath = path.resolve(targetDir, file.dir || "", file.name)
+          let filePath = path.resolve(targetDir, file.dir ?? "", file.name)
 
           if (file.dir) {
-            let fileParent = path.resolve(targetDir, file.dir || "")
+            let fileParent = path.resolve(targetDir, file.dir ?? "")
             if (!existsSync(fileParent)) {
               await fs.mkdir(fileParent, { recursive: true })
             }
