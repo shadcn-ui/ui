@@ -34,6 +34,12 @@ npx shadcn-ui@latest add command
 
 <Steps>
 
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install cmdk
+```
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="command" />
@@ -50,6 +56,7 @@ npx shadcn-ui@latest add command
 
 ```tsx
 import {
+  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -95,7 +102,8 @@ export function CommandMenu() {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && e.metaKey) {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
         setOpen((open) => !open)
       }
     }

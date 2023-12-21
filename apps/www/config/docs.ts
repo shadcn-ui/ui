@@ -16,6 +16,10 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components/accordion",
     },
     {
+      title: "Themes",
+      href: "/themes",
+    },
+    {
       title: "Examples",
       href: "/examples",
     },
@@ -49,6 +53,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "components.json",
+          href: "/docs/components-json",
+          items: [],
+        },
+        {
           title: "Theming",
           href: "/docs/theming",
           items: [],
@@ -69,18 +78,83 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Figma",
+          href: "/docs/figma",
+          items: [],
+        },
+        {
           title: "Changelog",
           href: "/docs/changelog",
+          items: [],
+        },
+        {
+          title: "About",
+          href: "/docs/about",
           items: [],
         },
       ],
     },
     {
-      title: "Community",
+      title: "Installation",
       items: [
         {
-          title: "Figma",
-          href: "/docs/figma",
+          title: "Next.js",
+          href: "/docs/installation/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/installation/vite",
+          items: [],
+        },
+        {
+          title: "Remix",
+          href: "/docs/installation/remix",
+          items: [],
+        },
+        {
+          title: "Gatsby",
+          href: "/docs/installation/gatsby",
+          items: [],
+        },
+        {
+          title: "Astro",
+          href: "/docs/installation/astro",
+          items: [],
+        },
+        {
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
+          title: "Manual",
+          href: "/docs/installation/manual",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Dark Mode",
+      items: [
+        {
+          title: "Next.js",
+          href: "/docs/dark-mode/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/dark-mode/vite",
+          items: [],
+        },
+        {
+          title: "Astro",
+          href: "/docs/dark-mode/astro",
+          items: [],
+        },
+        {
+          title: "Remix",
+          href: "/docs/dark-mode/remix",
           items: [],
         },
       ],
@@ -281,6 +355,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Toggle",
           href: "/docs/components/toggle",
+          items: [],
+        },
+        {
+          title: "Toggle Group",
+          href: "/docs/components/toggle-group",
           items: [],
         },
         {

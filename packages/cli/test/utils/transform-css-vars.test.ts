@@ -13,6 +13,7 @@ export function Foo() {
 }"
     `,
       config: {
+        tsx: true,
         tailwind: {
           baseColor: "stone",
           cssVariables: true,
@@ -35,6 +36,7 @@ export function Foo() {
 }"
     `,
       config: {
+        tsx: true,
         tailwind: {
           baseColor: "stone",
           cssVariables: false,
@@ -57,6 +59,30 @@ export function Foo() {
 }"
     `,
       config: {
+        tsx: true,
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: false,
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+      baseColor: stone,
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+export function Foo() {
+	return <div className={cn("bg-background border border-input")}>foo</div>
+}"
+    `,
+      config: {
+        tsx: true,
         tailwind: {
           baseColor: "stone",
           cssVariables: false,

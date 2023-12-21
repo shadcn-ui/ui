@@ -1,7 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { ChevronDown } from "lucide-react"
+import { ChevronDownIcon } from "@radix-ui/react-icons"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
@@ -76,7 +76,7 @@ export function AppearanceForm() {
                     <option value="system">System</option>
                   </select>
                 </FormControl>
-                <ChevronDown className="absolute right-3 top-3 h-4 w-4 opacity-50" />
+                <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
               </div>
               <FormDescription>
                 Set the font you want to use in the dashboard.

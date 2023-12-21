@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { NpmCommands } from "types/unist"
 
@@ -14,6 +15,7 @@ import { ComponentExample } from "@/components/component-example"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
+import { FrameworkDocs } from "@/components/framework-docs"
 import { StyleWrapper } from "@/components/style-wrapper"
 import {
   Accordion,
@@ -168,8 +170,9 @@ const components = {
     className,
     __rawString__,
     __npmCommand__,
-    __pnpmCommand__,
     __yarnCommand__,
+    __pnpmCommand__,
+    __bunCommand__,
     __withMeta__,
     __src__,
     __event__,
@@ -199,16 +202,20 @@ const components = {
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
-        {__npmCommand__ && __yarnCommand__ && __pnpmCommand__ && (
-          <CopyNpmCommandButton
-            commands={{
-              __npmCommand__,
-              __pnpmCommand__,
-              __yarnCommand__,
-            }}
-            className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
-          />
-        )}
+        {__npmCommand__ &&
+          __yarnCommand__ &&
+          __pnpmCommand__ &&
+          __bunCommand__ && (
+            <CopyNpmCommandButton
+              commands={{
+                __npmCommand__,
+                __yarnCommand__,
+                __pnpmCommand__,
+                __bunCommand__,
+              }}
+              className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
+            />
+          )}
       </StyleWrapper>
     )
   },
@@ -241,7 +248,7 @@ const components = {
   ),
   Steps: ({ ...props }) => (
     <div
-      className="[&>h3]:step mb-12 ml-4 border-l pl-8 [counter-reset:step]"
+      className="[&>h3]:step steps mb-12 ml-4 border-l pl-8 [counter-reset:step]"
       {...props}
     />
   ),
@@ -278,7 +285,28 @@ const components = {
   }: React.ComponentProps<typeof TabsContent>) => (
     <TabsContent
       className={cn(
-        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-normal",
+        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
+        className
+      )}
+      {...props}
+    />
+  ),
+  FrameworkDocs: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof FrameworkDocs>) => (
+    <FrameworkDocs className={cn(className)} {...props} />
+  ),
+  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      className={cn("font-medium underline underline-offset-4", className)}
+      {...props}
+    />
+  ),
+  LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      className={cn(
+        "flex w-full flex-col items-center rounded-xl border bg-card p-6 text-card-foreground shadow transition-colors hover:bg-muted/50 sm:p-10",
         className
       )}
       {...props}

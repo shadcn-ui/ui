@@ -4,7 +4,7 @@ import { allDocs } from "contentlayer/generated"
 import "@/styles/mdx.css"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { ChevronRightIcon } from "@radix-ui/react-icons"
 import Balancer from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
@@ -16,7 +16,6 @@ import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
 import { badgeVariants } from "@/registry/new-york/ui/badge"
 import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
-import { Separator } from "@/registry/new-york/ui/separator"
 
 interface DocPageProps {
   params: {
@@ -29,7 +28,7 @@ async function getDocFromParams({ params }: DocPageProps) {
   const doc = allDocs.find((doc) => doc.slugAsParams === slug)
 
   if (!doc) {
-    null
+    return null
   }
 
   return doc
@@ -95,7 +94,7 @@ export default async function DocPage({ params }: DocPageProps) {
           <div className="overflow-hidden text-ellipsis whitespace-nowrap">
             Docs
           </div>
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRightIcon className="h-4 w-4" />
           <div className="font-medium text-foreground">{doc.title}</div>
         </div>
         <div className="space-y-2">
@@ -140,9 +139,11 @@ export default async function DocPage({ params }: DocPageProps) {
       </div>
       {doc.toc && (
         <div className="hidden text-sm xl:block">
-          <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] overflow-hidden pt-6">
+          <div className="sticky top-16 -mt-10 pt-4">
             <ScrollArea className="pb-10">
-              <DashboardTableOfContents toc={toc} />
+              <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12">
+                <DashboardTableOfContents toc={toc} />
+              </div>
             </ScrollArea>
           </div>
         </div>
