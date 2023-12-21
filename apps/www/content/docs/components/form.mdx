@@ -123,7 +123,7 @@ npm install @radix-ui/react-label @radix-ui/react-slot react-hook-form @hookform
 
 Define the shape of your form using a Zod schema. You can read more about using Zod in the [Zod documentation](https://zod.dev).
 
-```tsx showLineNumbers {4,6-8}
+```tsx showLineNumbers {3,5-7}
 "use client"
 
 import * as z from "zod"
@@ -137,7 +137,7 @@ const formSchema = z.object({
 
 Use the `useForm` hook from `react-hook-form` to create a form.
 
-```tsx showLineNumbers {4,14-20,22-27}
+```tsx showLineNumbers {3-4,14-20,22-27}
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
