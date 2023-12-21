@@ -1,72 +1,201 @@
 import { Transformer } from "@/src/utils/transformers"
 import { SyntaxKind } from "ts-morph"
+
 import { splitClassName } from "./transform-css-vars"
 
 export const transformTwPrefixes: Transformer = async ({
-    sourceFile,
-    config,
+  sourceFile,
+  config,
 }) => {
-    if (!config.tailwind || !config.tailwind.prefix) {
-        return sourceFile
-    }
-    sourceFile.getDescendantsOfKind(SyntaxKind.StringLiteral).forEach((child) => {
-        const value = child.getText()
-        //this is a hack to prevent the removal of single space classes. If new single space classes are added to tailwind, they need to be added here
-        const KNOWN_SINGLE_SPACE_CLASSES = [
-            "border-b",
-            "flex",
-            "invisible",
-            "space-y-4",
-            "sr-only",
-            "[&_tr:last-child]:border-0",
-            "[&_tr]:border-b"
-        ]
-        function checkIfKnownSingleSpaceClass(value: string) {
-            return KNOWN_SINGLE_SPACE_CLASSES.some((knownClass) =>
-                value.includes(knownClass)
-            )
-        }
-        if (value) {
-            TODO://this is very hacky way find tailwind classes but for current components it works. Need to find a better way
-            if (value.split(" ").length > 1 && value.includes("-") || checkIfKnownSingleSpaceClass(value)) {
-                const valueWithColorMapping = applyTwPrefixes(
-                    value.replace(/"/g, ""),
-                    config.tailwind.prefix || ""
-                )
-                child.replaceWithText(`"${valueWithColorMapping.trim()}"`)
-            }
-            return
-        }
-    })
+  if (!config.tailwind?.prefix) {
     return sourceFile
+  }
+
+  // Find the cva function calls.
+  sourceFile
+    .getDescendantsOfKind(SyntaxKind.CallExpression)
+    .filter((node) => node.getExpression().getText() === "cva")
+    .forEach((node) => {
+      // cva(base, ...)
+      if (node.getArguments()[0]?.isKind(SyntaxKind.StringLiteral)) {
+        const defaultClassNames = node.getArguments()[0]
+        if (defaultClassNames) {
+          defaultClassNames.replaceWithText(
+            `"${applyPrefix(
+              defaultClassNames.getText()?.replace(/"/g, ""),
+              config.tailwind.prefix
+            )}"`
+          )
+        }
+      }
+
+      // cva(..., { variants: { ... } })
+      if (node.getArguments()[1]?.isKind(SyntaxKind.ObjectLiteralExpression)) {
+        node
+          .getArguments()[1]
+          ?.getDescendantsOfKind(SyntaxKind.PropertyAssignment)
+          .find((node) => node.getName() === "variants")
+          ?.getDescendantsOfKind(SyntaxKind.PropertyAssignment)
+          .forEach((node) => {
+            node
+              .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
+              .forEach((node) => {
+                const classNames = node.getInitializerIfKind(
+                  SyntaxKind.StringLiteral
+                )
+                if (classNames) {
+                  classNames?.replaceWithText(
+                    `"${applyPrefix(
+                      classNames.getText()?.replace(/"/g, ""),
+                      config.tailwind.prefix
+                    )}"`
+                  )
+                }
+              })
+          })
+      }
+    })
+
+  // Find all jsx attributes with the name className.
+  sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
+    if (node.getName() === "className") {
+      // className="..."
+      if (node.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
+        const value = node.getInitializer()
+        if (value) {
+          value.replaceWithText(
+            `"${applyPrefix(
+              value.getText()?.replace(/"/g, ""),
+              config.tailwind.prefix
+            )}"`
+          )
+        }
+      }
+
+      // className={...}
+      if (node.getInitializer()?.isKind(SyntaxKind.JsxExpression)) {
+        // Check if it's a call to cn().
+        const callExpression = node
+          .getInitializer()
+          ?.getDescendantsOfKind(SyntaxKind.CallExpression)
+          .find((node) => node.getExpression().getText() === "cn")
+        if (callExpression) {
+          // Loop through the arguments.
+          callExpression.getArguments().forEach((node) => {
+            if (
+              node.isKind(SyntaxKind.ConditionalExpression) ||
+              node.isKind(SyntaxKind.BinaryExpression)
+            ) {
+              node
+                .getChildrenOfKind(SyntaxKind.StringLiteral)
+                .forEach((node) => {
+                  node.replaceWithText(
+                    `"${applyPrefix(
+                      node.getText()?.replace(/"/g, ""),
+                      config.tailwind.prefix
+                    )}"`
+                  )
+                })
+            }
+
+            if (node.isKind(SyntaxKind.StringLiteral)) {
+              node.replaceWithText(
+                `"${applyPrefix(
+                  node.getText()?.replace(/"/g, ""),
+                  config.tailwind.prefix
+                )}"`
+              )
+            }
+          })
+        }
+      }
+    }
+
+    // classNames={...}
+    if (node.getName() === "classNames") {
+      if (node.getInitializer()?.isKind(SyntaxKind.JsxExpression)) {
+        node
+          .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
+          .forEach((node) => {
+            if (node.getInitializer()?.isKind(SyntaxKind.CallExpression)) {
+              const callExpression = node.getInitializerIfKind(
+                SyntaxKind.CallExpression
+              )
+              if (callExpression) {
+                // Loop through the arguments.
+                callExpression.getArguments().forEach((arg) => {
+                  if (arg.isKind(SyntaxKind.ConditionalExpression)) {
+                    arg
+                      .getChildrenOfKind(SyntaxKind.StringLiteral)
+                      .forEach((node) => {
+                        node.replaceWithText(
+                          `"${applyPrefix(
+                            node.getText()?.replace(/"/g, ""),
+                            config.tailwind.prefix
+                          )}"`
+                        )
+                      })
+                  }
+
+                  if (arg.isKind(SyntaxKind.StringLiteral)) {
+                    arg.replaceWithText(
+                      `"${applyPrefix(
+                        arg.getText()?.replace(/"/g, ""),
+                        config.tailwind.prefix
+                      )}"`
+                    )
+                  }
+                })
+              }
+            }
+
+            if (node.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
+              if (node.getName() !== "variant") {
+                const classNames = node.getInitializer()
+                if (classNames) {
+                  classNames.replaceWithText(
+                    `"${applyPrefix(
+                      classNames.getText()?.replace(/"/g, ""),
+                      config.tailwind.prefix
+                    )}"`
+                  )
+                }
+              }
+            }
+          })
+      }
+    }
+  })
+
+  return sourceFile
 }
 
-
-export const applyTwPrefixes = (input: string, twPrefix: string) => {
-    const classNames = input.split(" ")
-    const prefixed: string[] = []
-    for (let className of classNames) {
-        const [variant, value, modifier] = splitClassName(className)
-        if (variant) {
-            modifier ? prefixed.push(`${variant}:${twPrefix}${value}/${modifier}`) :
-                prefixed.push(`${variant}:${twPrefix}${value}`)
-        } else {
-            modifier ? prefixed.push(`${twPrefix}${value}/${modifier}`) :
-                prefixed.push(`${twPrefix}${value}`)
-        }
+export function applyPrefix(input: string, prefix: string = "") {
+  const classNames = input.split(" ")
+  const prefixed: string[] = []
+  for (let className of classNames) {
+    const [variant, value, modifier] = splitClassName(className)
+    if (variant) {
+      modifier
+        ? prefixed.push(`${variant}:${prefix}${value}/${modifier}`)
+        : prefixed.push(`${variant}:${prefix}${value}`)
+    } else {
+      modifier
+        ? prefixed.push(`${prefix}${value}/${modifier}`)
+        : prefixed.push(`${prefix}${value}`)
     }
-    return prefixed.join(" ")
+  }
+  return prefixed.join(" ")
 }
 
-
-export const applyTwPrefixesCss = (css: string, twPrefix: string) => {
-    const lines = css.split("\n")
-    for (let line of lines) {
-        if (line.includes("@apply")) {
-            const originalTWCls = line.replace("@apply", "").trim()
-            const prefixedTwCls = applyTwPrefixes(originalTWCls, twPrefix)
-            css = css.replace(originalTWCls, prefixedTwCls)
-        }
+export function applyPrefixesCss(css: string, prefix: string) {
+  const lines = css.split("\n")
+  for (let line of lines) {
+    if (line.includes("@apply")) {
+      const originalTWCls = line.replace("@apply", "").trim()
+      const prefixedTwCls = applyPrefix(originalTWCls, prefix)
+      css = css.replace(originalTWCls, prefixedTwCls)
     }
-    return css
+  }
+  return css
 }

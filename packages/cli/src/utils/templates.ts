@@ -23,6 +23,7 @@ module.exports = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
   ],
+  prefix: "<%- prefix %>",
   theme: {
     container: {
       center: true,
@@ -48,10 +49,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")], ${prefix ? `\n  prefix: "${prefix}",` : ""}
+  plugins: [require("tailwindcss-animate")],
 }`
 
-export const TAILWIND_CONFIG_WITH_VARIABLES = (prefix?: string) => `/** @type {import('tailwindcss').Config} */
+export const TAILWIND_CONFIG_WITH_VARIABLES = `/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -60,6 +61,7 @@ module.exports = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
   ],
+  prefix: "<%- prefix %>",
   theme: {
     container: {
       center: true,
@@ -138,6 +140,7 @@ const config = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
   ],
+  prefix: "<%- prefix %>",
   theme: {
     container: {
       center: true,
@@ -178,6 +181,7 @@ const config = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
 	],
+  prefix: "<%- prefix %>",
   theme: {
     container: {
       center: true,

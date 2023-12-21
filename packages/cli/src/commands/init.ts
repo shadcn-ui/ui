@@ -26,7 +26,8 @@ import template from "lodash.template"
 import ora from "ora"
 import prompts from "prompts"
 import * as z from "zod"
-import { applyTwPrefixesCss } from "../utils/transformers/transform-tw-prefix"
+
+import { applyPrefixesCss } from "../utils/transformers/transform-tw-prefix"
 
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
@@ -86,8 +87,6 @@ export async function promptForConfig(
   const styles = await getRegistryStyles()
   const baseColors = await getRegistryBaseColors()
 
-
-
   const options = await prompts([
     {
       type: "toggle",
@@ -138,7 +137,9 @@ export async function promptForConfig(
     {
       type: "text",
       name: "tailwindPrefix",
-      message: `Do you want to use custom ${highlight("tailwind prefix")}? (if you don't use any, just leave it empty)`,
+      message: `Are you using a custom ${highlight(
+        "tailwind prefix eg. tw-"
+      )}? (Leave blank if not)`,
       initial: "",
     },
     {
@@ -177,7 +178,7 @@ export async function promptForConfig(
       css: options.tailwindCss,
       baseColor: options.tailwindBaseColor,
       cssVariables: options.tailwindCssVariables,
-      prefix: options.tailwindPrefix
+      prefix: options.tailwindPrefix,
     },
     rsc: options.rsc,
     tsx: options.typescript,
@@ -256,7 +257,10 @@ export async function runInit(cwd: string, config: Config) {
   // Write tailwind config.
   await fs.writeFile(
     config.resolvedPaths.tailwindConfig,
-    template(tailwindConfigTemplate)({ extension }),
+    template(tailwindConfigTemplate)({
+      extension,
+      prefix: config.tailwind.prefix,
+    }),
     "utf8"
   )
 
@@ -266,7 +270,9 @@ export async function runInit(cwd: string, config: Config) {
     await fs.writeFile(
       config.resolvedPaths.tailwindCss,
       config.tailwind.cssVariables
-        ? config.tailwind.prefix ? applyTwPrefixesCss(baseColor.cssVarsTemplate, config.tailwind.prefix) : baseColor.cssVarsTemplate
+        ? config.tailwind.prefix
+          ? applyPrefixesCss(baseColor.cssVarsTemplate, config.tailwind.prefix)
+          : baseColor.cssVarsTemplate
         : baseColor.inlineColorsTemplate,
       "utf8"
     )

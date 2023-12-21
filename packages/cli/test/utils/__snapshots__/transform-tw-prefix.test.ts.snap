@@ -3,24 +3,36 @@
 exports[`transform tailwind prefix 1`] = `
 "import * as React from \\"react\\"
             export function Foo() {
-                return <div className=\\"tw-bg-background hover:tw-bg-muted tw-text-primary-foreground sm:focus:tw-text-accent-foreground\\">foo</div>
-            }\\"
+                return (
+                    <div
+                        className=\\"tw-bg-background hover:tw-bg-muted tw-text-primary-foreground sm:focus:tw-text-accent-foreground\\">foo</div>
+                );
+            }
         "
 `;
 
 exports[`transform tailwind prefix 2`] = `
 "import * as React from \\"react\\"
 export function Foo() {
-	return <div className=\\"tw-bg-white hover:tw-bg-stone-100 tw-text-stone-50 sm:focus:tw-text-stone-900 dark:tw-bg-stone-950 dark:hover:tw-bg-stone-800 dark:tw-text-stone-900 dark:sm:focus:tw-text-stone-50\\">foo</div>
-}\\"\\"
+	return (
+        <div
+            className=\\"tw-bg-white hover:tw-bg-stone-100 tw-text-stone-50 sm:focus:tw-text-stone-900 dark:tw-bg-stone-950 dark:hover:tw-bg-stone-800 dark:tw-text-stone-900 dark:sm:focus:tw-text-stone-50\\">foo</div>
+    );
+}
     "
 `;
 
 exports[`transform tailwind prefix 3`] = `
 "import * as React from \\"react\\"
 export function Foo() {
-	return <div className={cn(\\"tw-bg-white hover:tw-bg-stone-100 dark:tw-bg-stone-950 dark:hover:tw-bg-stone-800\\", true && \\"tw-text-stone-50 sm:focus:tw-text-stone-900 dark:tw-text-stone-900 dark:sm:focus:tw-text-stone-50\\")}>foo</div>
-}\\"\\"
+	return (
+        <div
+            className={cn(
+                \\"tw-bg-white hover:tw-bg-stone-100 dark:tw-bg-stone-950 dark:hover:tw-bg-stone-800\\",
+                true && \\"tw-text-stone-50 sm:focus:tw-text-stone-900 dark:tw-text-stone-900 dark:sm:focus:tw-text-stone-50\\"
+            )}>foo</div>
+    );
+}
     "
 `;
 
