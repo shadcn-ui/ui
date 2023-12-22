@@ -42,7 +42,6 @@ export default function DialogCloseButton() {
           <Button type="submit" size="sm" className="px-3">
             <span className="sr-only">Copy</span>
             <CopyButtonForDialog value="https://ui.shadcn.com/docs/installation" />
-            {/* <Copy className="h-4 w-4" /> */}
           </Button>
         </div>
         <DialogFooter className="sm:justify-start">
