@@ -15,7 +15,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
             <DocsSidebarNav items={docsConfig.sidebarNav} />
           </ScrollArea>
         </aside>
-        {children}
+        <main vaul-drawer-wrapper="">{children}</main>
       </div>
     </div>
   )
