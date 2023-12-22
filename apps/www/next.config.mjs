@@ -21,7 +21,7 @@ const nextConfig = {
       },
       {
         source: "/examples",
-        destination: "/examples/dashboard",
+        destination: "/examples/mail",
         permanent: false,
       },
       {

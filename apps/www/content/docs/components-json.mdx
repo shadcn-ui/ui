@@ -103,6 +103,18 @@ For more information, see the <Link href="/docs/theming">theming docs</Link>.
 
 **This cannot be changed after initialization.** To switch between CSS variables and utility classes, you'll have to delete and re-install your components.
 
+### tailwind.prefix
+
+The prefix to use for your Tailwind CSS utility classes. Components will be added with this prefix.
+
+```json title="components.json"
+{
+  "tailwind": {
+    "prefix": "tw-"
+  }
+}
+```
+
 ## rsc
 
 Whether or not to enable support for React Server Components.

@@ -1,7 +1,9 @@
 import { Metadata } from "next"
 
 import "public/registry/themes.css"
+import { Announcement } from "@/components/announcement"
 import {
+  PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
@@ -22,15 +24,21 @@ export default function ThemesPage() {
         defaultTheme="zinc"
         className="relative flex flex-col items-start md:flex-row md:items-center"
       >
-        <PageHeader className="relative pb-4 md:pb-8 lg:pb-12">
-          <PageHeaderHeading>Make it yours.</PageHeaderHeading>
+        <PageHeader>
+          <Announcement />
+          <PageHeaderHeading className="hidden md:block">
+            Add colors. Make it yours.
+          </PageHeaderHeading>
+          <PageHeaderHeading className="md:hidden">
+            Make it yours
+          </PageHeaderHeading>
           <PageHeaderDescription>
             Hand-picked themes that you can copy and paste into your apps.
           </PageHeaderDescription>
+          <PageActions>
+            <ThemeCustomizer />
+          </PageActions>
         </PageHeader>
-        <div className="px-4 pb-8 md:ml-auto md:pb-0">
-          <ThemeCustomizer />
-        </div>
       </ThemeWrapper>
       <ThemesTabs />
     </div>
