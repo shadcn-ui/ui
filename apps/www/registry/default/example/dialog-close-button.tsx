@@ -1,5 +1,6 @@
 import { Copy } from "lucide-react"
 
+import { CopyButtonForDialog } from "@/components/copy-button"
 import { Button } from "@/registry/default/ui/button"
 import {
   Dialog,
@@ -40,7 +41,8 @@ export default function DialogCloseButton() {
           </div>
           <Button type="submit" size="sm" className="px-3">
             <span className="sr-only">Copy</span>
-            <Copy className="h-4 w-4" />
+            <CopyButtonForDialog value="https://ui.shadcn.com/docs/installation" />
+            {/* <Copy className="h-4 w-4" /> */}
           </Button>
         </div>
         <DialogFooter className="sm:justify-start">

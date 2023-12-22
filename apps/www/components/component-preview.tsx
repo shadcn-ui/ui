@@ -33,6 +33,7 @@ export function ComponentPreview({
   align = "center",
   ...props
 }: ComponentPreviewProps) {
+  
   const [config] = useConfig()
   const index = styles.findIndex((style) => style.name === config.style)
 

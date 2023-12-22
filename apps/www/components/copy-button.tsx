@@ -77,6 +77,36 @@ export function CopyButton({
   )
 }
 
+export function CopyButtonForDialog({
+  value,
+  className,
+  src,
+  event,
+  ...props
+}: CopyButtonProps) {
+  const [hasCopied, setHasCopied] = React.useState(false)
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setHasCopied(false)
+    }, 2000)
+  }, [hasCopied])
+
+  return (
+    <div>
+      <span className="sr-only">Copy</span>
+      {hasCopied ? (
+        <CheckIcon className="h-4 w-4 text-black" />
+      ) : (
+        <CopyIcon
+          className="h-4 w-4 text-black"
+          onClick={() => setHasCopied(true)}
+        />
+      )}
+    </div>
+  )
+}
+
 interface CopyWithClassNamesProps extends DropdownMenuTriggerProps {
   value: string
   classNames: string
