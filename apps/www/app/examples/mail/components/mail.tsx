@@ -1,5 +1,5 @@
 "use client"
-
+import * as React from "react"
 import {
   AlertCircle,
   Archive,
@@ -14,7 +14,6 @@ import {
   Trash2,
   Users2,
 } from "lucide-react"
-import * as React from "react"
 
 import { AccountSwitcher } from "@/app/examples/mail/components/account-switcher"
 import { MailDisplay } from "@/app/examples/mail/components/mail-display"
@@ -23,7 +22,7 @@ import { Nav } from "@/app/examples/mail/components/nav"
 import { Mail } from "@/app/examples/mail/data"
 import { useMail } from "@/app/examples/mail/use-mail"
 import { cn } from "@/lib/utils"
-import { Separator } from "@/registry/default/ui/separator"
+import { Separator } from "@/registry/new-york/ui/separator"
 import { Input } from "@/registry/new-york/ui/input"
 import {
   Tabs,
