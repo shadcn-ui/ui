@@ -710,6 +710,12 @@ const example: Registry = [
     files: ["example/resizable-demo.tsx"],
   },
   {
+    name: "resizable-demo-with-handle",
+    type: "components:example",
+    registryDependencies: ["resizable"],
+    files: ["example/resizable-demo-with-handle.tsx"],
+  },
+  {
     name: "resizable-vertical",
     type: "components:example",
     registryDependencies: ["resizable"],

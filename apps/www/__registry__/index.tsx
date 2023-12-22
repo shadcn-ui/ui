@@ -817,6 +817,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/resizable-demo")),
       files: ["registry/default/example/resizable-demo.tsx"],
     },
+    "resizable-demo-with-handle": {
+      name: "resizable-demo-with-handle",
+      type: "components:example",
+      registryDependencies: ["resizable"],
+      component: React.lazy(() => import("@/registry/default/example/resizable-demo-with-handle")),
+      files: ["registry/default/example/resizable-demo-with-handle.tsx"],
+    },
     "resizable-vertical": {
       name: "resizable-vertical",
       type: "components:example",
@@ -2028,6 +2035,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["resizable"],
       component: React.lazy(() => import("@/registry/new-york/example/resizable-demo")),
       files: ["registry/new-york/example/resizable-demo.tsx"],
+    },
+    "resizable-demo-with-handle": {
+      name: "resizable-demo-with-handle",
+      type: "components:example",
+      registryDependencies: ["resizable"],
+      component: React.lazy(() => import("@/registry/new-york/example/resizable-demo-with-handle")),
+      files: ["registry/new-york/example/resizable-demo-with-handle.tsx"],
     },
     "resizable-vertical": {
       name: "resizable-vertical",
