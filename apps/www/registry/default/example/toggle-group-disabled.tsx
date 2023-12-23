@@ -14,7 +14,7 @@ export default function ToggleGroupDemo() {
       <ToggleGroupItem value="italic" aria-label="Toggle italic">
         <Italic className="h-4 w-4" />
       </ToggleGroupItem>
-      <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">
+      <ToggleGroupItem value="underline" aria-label="Toggle underline">
         <Underline className="h-4 w-4" />
       </ToggleGroupItem>
     </ToggleGroup>
