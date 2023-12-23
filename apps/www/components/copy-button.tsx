@@ -21,7 +21,7 @@ interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   event?: Event["name"]
 }
 
-async function copyToClipboardWithMeta(value: string, event?: Event) {
+export async function copyToClipboardWithMeta(value: string, event?: Event) {
   navigator.clipboard.writeText(value)
   if (event) {
     trackEvent(event)
@@ -151,7 +151,7 @@ export function CopyNpmCommandButton({
   }, [hasCopied])
 
   const copyCommand = React.useCallback(
-    (value: string, pm: "npm" | "pnpm" | "yarn") => {
+    (value: string, pm: "npm" | "pnpm" | "yarn" | "bun") => {
       copyToClipboardWithMeta(value, {
         name: "copy_npm_command",
         properties: {
@@ -198,6 +198,11 @@ export function CopyNpmCommandButton({
           onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
         >
           pnpm
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => copyCommand(commands.__bunCommand__, "bun")}
+        >
+          bun
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

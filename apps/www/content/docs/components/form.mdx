@@ -1,6 +1,8 @@
 ---
 title: React Hook Form
 description: Building forms with React Hook Form and Zod.
+links:
+  doc: https://react-hook-form.com
 ---
 
 Forms are tricky. They are one of the most common things you'll build in a web application, but also one of the most complex.
@@ -73,6 +75,14 @@ const form = useForm()
 
 ## Installation
 
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
 <Steps>
 
 ### Command
@@ -83,6 +93,30 @@ npx shadcn-ui@latest add form
 
 </Steps>
 
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-label @radix-ui/react-slot react-hook-form @hookform/resolvers zod
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="form" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
 ## Usage
 
 <Steps>
@@ -91,10 +125,9 @@ npx shadcn-ui@latest add form
 
 Define the shape of your form using a Zod schema. You can read more about using Zod in the [Zod documentation](https://zod.dev).
 
-```tsx showLineNumbers {4,6-8}
+```tsx showLineNumbers {3,5-7}
 "use client"
 
-import Link from "next/link"
 import * as z from "zod"
 
 const formSchema = z.object({
@@ -106,11 +139,11 @@ const formSchema = z.object({
 
 Use the `useForm` hook from `react-hook-form` to create a form.
 
-```tsx showLineNumbers {4,14-20,22-27}
+```tsx showLineNumbers {3-4,14-20,22-27}
 "use client"
 
-import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 const formSchema = z.object({
@@ -146,8 +179,8 @@ We can now use the `<Form />` components to build our form.
 ```tsx showLineNumbers {7-17,28-50}
 "use client"
 
-import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { Button } from "@/components/ui/button"

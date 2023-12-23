@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import { Badge } from "@/registry/new-york/ui/badge"
 
 export function MainNav() {
   const pathname = usePathname()
@@ -19,7 +20,7 @@ export function MainNav() {
           {siteConfig.name}
         </span>
       </Link>
-      <nav className="flex items-center space-x-6 text-sm font-medium">
+      <nav className="flex items-center gap-6 text-sm">
         <Link
           href="/docs"
           className={cn(
@@ -27,7 +28,7 @@ export function MainNav() {
             pathname === "/docs" ? "text-foreground" : "text-foreground/60"
           )}
         >
-          Documentation
+          Docs
         </Link>
         <Link
           href="/docs/components"
@@ -39,6 +40,17 @@ export function MainNav() {
           )}
         >
           Components
+        </Link>
+        <Link
+          href="/themes"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/themes")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          Themes
         </Link>
         <Link
           href="/examples"

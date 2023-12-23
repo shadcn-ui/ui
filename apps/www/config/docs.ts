@@ -16,6 +16,10 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components/accordion",
     },
     {
+      title: "Themes",
+      href: "/themes",
+    },
+    {
       title: "Examples",
       href: "/examples",
     },
@@ -49,6 +53,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "components.json",
+          href: "/docs/components-json",
+          items: [],
+        },
+        {
           title: "Theming",
           href: "/docs/theming",
           items: [],
@@ -76,46 +85,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Changelog",
           href: "/docs/changelog",
-          items: [],
-        },
-        {
-          title: "About",
-          href: "/docs/about",
-          items: [],
-        },
-      ],
-    },
-    {
-      title: "Installation",
-      items: [
-        {
-          title: "Next.js",
-          href: "/docs/installation/next",
-          items: [],
-        },
-        {
-          title: "Vite",
-          href: "/docs/installation/vite",
-          items: [],
-        },
-        {
-          title: "Remix",
-          href: "/docs/installation/remix",
-          items: [],
-        },
-        {
-          title: "Gatsby",
-          href: "/docs/installation/gatsby",
-          items: [],
-        },
-        {
-          title: "Astro",
-          href: "/docs/installation/astro",
-          items: [],
-        },
-        {
-          title: "Manual",
-          href: "/docs/installation/manual",
           items: [],
         },
       ],
@@ -169,6 +138,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Carousel",
+          href: "/docs/components/carousel",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Checkbox",
           href: "/docs/components/checkbox",
           items: [],
@@ -209,6 +184,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Drawer",
+          href: "/docs/components/drawer",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Dropdown Menu",
           href: "/docs/components/dropdown-menu",
           items: [],
@@ -244,6 +225,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Pagination",
+          href: "/docs/components/pagination",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Popover",
           href: "/docs/components/popover",
           items: [],
@@ -257,6 +244,12 @@ export const docsConfig: DocsConfig = {
           title: "Radio Group",
           href: "/docs/components/radio-group",
           items: [],
+        },
+        {
+          title: "Resizable",
+          href: "/docs/components/resizable",
+          items: [],
+          label: "New",
         },
         {
           title: "Scroll Area",
@@ -289,6 +282,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Sonner",
+          href: "/docs/components/sonner",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Switch",
           href: "/docs/components/switch",
           items: [],
@@ -316,6 +315,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Toggle",
           href: "/docs/components/toggle",
+          items: [],
+        },
+        {
+          title: "Toggle Group",
+          href: "/docs/components/toggle-group",
           items: [],
         },
         {

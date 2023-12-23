@@ -1,6 +1,6 @@
 export const UTILS = `import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
- 
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const UTILS_JS = `import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
- 
+
 export function cn(...inputs) {
   return twMerge(clsx(inputs))
 }
@@ -143,13 +143,13 @@ export function tailwindConfig(opts: {
     case "cjs": {
       return `/** @type {import("tailwindcss").Config} */
         const config = ${config}
-        
+
         module.exports = config`
     }
     case "esm": {
       return `/** @type {import("tailwindcss").Config} */
         const config = ${config}
-        
+
         export default config`
     }
     case "ts": {

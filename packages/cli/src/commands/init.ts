@@ -26,6 +26,8 @@ import ora from "ora"
 import prompts from "prompts"
 import * as z from "zod"
 
+import { applyPrefixesCss } from "../utils/transformers/transform-tw-prefix"
+
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
   "class-variance-authority",
@@ -133,6 +135,14 @@ export async function promptForConfig(
     },
     {
       type: "text",
+      name: "tailwindPrefix",
+      message: `Are you using a custom ${highlight(
+        "tailwind prefix eg. tw-"
+      )}? (Leave blank if not)`,
+      initial: "",
+    },
+    {
+      type: "text",
       name: "tailwindConfig",
       message: `Where is your ${highlight("tailwind.config.js")} located?`,
       initial: defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG,
@@ -167,6 +177,7 @@ export async function promptForConfig(
       css: options.tailwindCss,
       baseColor: options.tailwindBaseColor,
       cssVariables: options.tailwindCssVariables,
+      prefix: options.tailwindPrefix,
     },
     rsc: options.rsc,
     tsx: options.typescript,
@@ -229,7 +240,7 @@ export async function runInit(cwd: string, config: Config) {
 
   const projectIsESM =
     require(path.resolve(cwd, "package.json")).type === "module"
-  const twConfigExtension = path.extname(config.tailwind.config)
+  const twConfigExtension = path.extname(config.resolvedPaths.tailwindConfig)
   let twConfigType: "esm" | "cjs" | "ts" = projectIsESM ? "esm" : "cjs"
   if (twConfigExtension === ".ts") twConfigType = "ts"
   if (twConfigExtension === ".cjs") twConfigType = "cjs"
@@ -252,7 +263,9 @@ export async function runInit(cwd: string, config: Config) {
     await fs.writeFile(
       config.resolvedPaths.tailwindCss,
       config.tailwind.cssVariables
-        ? baseColor.cssVarsTemplate
+        ? config.tailwind.prefix
+          ? applyPrefixesCss(baseColor.cssVarsTemplate, config.tailwind.prefix)
+          : baseColor.cssVarsTemplate
         : baseColor.inlineColorsTemplate,
       "utf8"
     )

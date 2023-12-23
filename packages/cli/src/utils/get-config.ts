@@ -28,6 +28,7 @@ export const rawConfigSchema = z
       css: z.string(),
       baseColor: z.string(),
       cssVariables: z.boolean().default(true),
+      prefix: z.string().default("").optional(),
     }),
     aliases: z.object({
       components: z.string(),
@@ -65,7 +66,9 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
 
   if (tsConfig.resultType === "failed") {
     throw new Error(
-      `Failed to load tsconfig.json. ${tsConfig.message ?? ""}`.trim()
+      `Failed to load ${config.tsx ? "tsconfig" : "jsconfig"}.json. ${
+        tsConfig.message ?? ""
+      }`.trim()
     )
   }
 

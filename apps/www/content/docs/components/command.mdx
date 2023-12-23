@@ -2,6 +2,8 @@
 title: Command
 description: Fast, composable, unstyled command menu for React.
 component: true
+links:
+  doc: https://cmdk.paco.me
 ---
 
 <ComponentPreview
@@ -56,6 +58,7 @@ npm install cmdk
 
 ```tsx
 import {
+  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -101,7 +104,8 @@ export function CommandMenu() {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && e.metaKey) {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
         setOpen((open) => !open)
       }
     }
