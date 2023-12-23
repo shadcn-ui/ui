@@ -243,8 +243,8 @@ export async function runInit(cwd: string, config: Config) {
   const twConfigExtension = path.extname(config.resolvedPaths.tailwindConfig)
   let twConfigType: "esm" | "cjs" | "ts" = projectIsESM ? "esm" : "cjs"
   if (twConfigExtension === ".ts") twConfigType = "ts"
-  if (twConfigExtension === ".cjs") twConfigType = "cjs"
-  if (twConfigExtension === ".mjs") twConfigType = "esm"
+  else if (twConfigExtension === ".cjs") twConfigType = "cjs"
+  else if (twConfigExtension === ".mjs") twConfigType = "esm"
 
   // Write tailwind config.
   await fs.writeFile(
