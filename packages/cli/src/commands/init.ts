@@ -1,4 +1,4 @@
-import { existsSync, promises as fs } from "fs"
+import { existsSync, promises as fs, readFileSync } from "fs"
 import path from "path"
 import {
   DEFAULT_COMPONENTS,
@@ -238,8 +238,8 @@ export async function runInit(cwd: string, config: Config) {
 
   const extension = config.tsx ? "ts" : "js"
 
-  const projectIsESM =
-    require(path.resolve(cwd, "package.json")).type === "module"
+  const pkgJson = readFileSync(path.resolve(cwd, "package.json"), "utf-8")
+  const projectIsESM = JSON.parse(pkgJson).type === "module"
   const twConfigExtension = path.extname(config.resolvedPaths.tailwindConfig)
   let twConfigType: "esm" | "cjs" | "ts" = projectIsESM ? "esm" : "cjs"
   if (twConfigExtension === ".ts") twConfigType = "ts"
