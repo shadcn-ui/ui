@@ -78,30 +78,12 @@ export function Mail({
               collapsed
             )}`
           }}
-          className={cn(isCollapsed && "transition-all duration-300 ease-in-out")}
+          className={cn(isCollapsed && "min-w-[50px] transition-all duration-300 ease-in-out")}
         >
-          <div className="flex items-center p-2">
-            <div
-            className="w-full"
-              // className={cn("w-full flex-1", isCollapsed ? "w-full" : "w-[80%]")}
-            >
-              <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
-            </div>
+          <div className={cn("flex h-[52px] items-center justify-center", isCollapsed ? 'h-[52px]': 'px-2')}>
+            <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
           </div>
           <Separator />
-          <div className={cn(isCollapsed ? "block" : "hidden")}>
-            <Nav
-              isCollapsed={isCollapsed}
-              links={[
-                {
-                  title: "Compose",
-                  label: "",
-                  icon: PenBox,
-                  variant: "ghost",
-                },
-              ]}
-            />
-          </div>
           <Nav
             isCollapsed={isCollapsed}
             links={[
