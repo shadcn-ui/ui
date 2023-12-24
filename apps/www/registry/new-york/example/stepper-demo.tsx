@@ -13,31 +13,28 @@ const steps = [
 ] satisfies StepperConfig[]
 
 export default function StepperDemo() {
-  const {
-    nextStep,
-    prevStep,
-    resetSteps,
-    activeStep,
-    isDisabledStep,
-    isLastStep,
-    isOptionalStep,
-  } = useStepper({
-    initialStep: 0,
-    steps,
-  })
+  // const {
+  //   nextStep,
+  //   prevStep,
+  //   resetSteps,
+  //   activeStep,
+  //   isDisabledStep,
+  //   isLastStep,
+  //   isOptionalStep,
+  // } = useStepper()
 
   return (
     <div className="flex w-full flex-col gap-4">
-      <Stepper activeStep={activeStep}>
+      <Stepper initialStep={0} steps={steps} orientation="vertical">
         {steps.map((step, index) => (
-          <StepperItem index={index} key={index} {...step}>
+          <StepperItem key={index}>
             <div className="h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300">
               <p>Step {index + 1} content</p>
             </div>
           </StepperItem>
         ))}
       </Stepper>
-      <div className="flex items-center justify-end gap-2">
+      {/* <div className="flex items-center justify-end gap-2">
         {activeStep === steps.length ? (
           <>
             <h2>All steps completed!</h2>
@@ -53,7 +50,7 @@ export default function StepperDemo() {
             </Button>
           </>
         )}
-      </div>
+      </div> */}
     </div>
   )
 }
