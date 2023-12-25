@@ -411,18 +411,9 @@ importers:
       '@babel/plugin-transform-typescript':
         specifier: ^7.22.5
         version: 7.22.5(@babel/core@7.22.1)
-      '@radix-ui/react-slot':
-        specifier: ^1.0.2
-        version: 1.0.2(@types/react@18.2.7)(react@18.2.0)
       chalk:
         specifier: 5.2.0
         version: 5.2.0
-      class-variance-authority:
-        specifier: ^0.4.0
-        version: 0.4.0(typescript@4.9.5)
-      clsx:
-        specifier: ^1.2.1
-        version: 1.2.1
       commander:
         specifier: ^10.0.0
         version: 10.0.0
@@ -444,9 +435,6 @@ importers:
       lodash.template:
         specifier: ^4.5.0
         version: 4.5.0
-      lucide-react:
-        specifier: ^0.299.0
-        version: 0.299.0(react@18.2.0)
       node-fetch:
         specifier: ^3.3.0
         version: 3.3.0
@@ -459,12 +447,6 @@ importers:
       recast:
         specifier: ^0.23.2
         version: 0.23.2
-      tailwind-merge:
-        specifier: ^2.1.0
-        version: 2.1.0
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.3.2)
       ts-morph:
         specifier: ^18.0.0
         version: 18.0.0
@@ -8993,14 +8975,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /lucide-react@0.299.0(react@18.2.0):
-    resolution: {integrity: sha512-59MiDzDzFI/efHhb4n0vGdXelMNwou7JlAFvVS4boA1G/7aYU7garPciYo73CODzkhrhz0JOgdtSTPSe5dMrlQ==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
     dependencies:
@@ -11980,12 +11954,6 @@ packages:
     resolution: {integrity: sha512-R2/nULkdg1VR/EL4RXg4dEohdoxNUJGLMnWIQnPKL+O9Twu7Cn3Rxi4dlXkDzZrEGtR+G+psSXFouWlpTyLhCQ==}
     dev: false
 
-  /tailwind-merge@2.1.0:
-    resolution: {integrity: sha512-l11VvI4nSwW7MtLSLYT4ldidDEUwQAMWuSHk7l4zcXZDgnCRa0V3OdCwFfM7DCzakVXMNRwAeje9maFFXT71dQ==}
-    dependencies:
-      '@babel/runtime': 7.23.6
-    dev: false
-
   /tailwindcss-animate@1.0.5(tailwindcss@3.3.2):
     resolution: {integrity: sha512-UU3qrOJ4lFQABY+MVADmBm+0KW3xZyhMdRvejwtXqYOL7YjHYxmuREFAZdmVG5LPe5E9CAst846SLC4j5I3dcw==}
     peerDependencies:
@@ -11996,14 +11964,6 @@ packages:
 
   /tailwindcss-animate@1.0.6(tailwindcss@3.3.2):
     resolution: {integrity: sha512-4WigSGMvbl3gCCact62ZvOngA+PRqhAn7si3TQ3/ZuPuQZcIEtVap+ENSXbzWhpojKB8CpvnIsrwBu8/RnHtuw==}
-    peerDependencies:
-      tailwindcss: '>=3.0.0 || insiders'
-    dependencies:
-      tailwindcss: 3.3.2(ts-node@10.9.1)
-    dev: false
-
-  /tailwindcss-animate@1.0.7(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
     dependencies:
