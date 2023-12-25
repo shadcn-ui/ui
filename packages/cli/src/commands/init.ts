@@ -27,6 +27,8 @@ import ora from "ora"
 import prompts from "prompts"
 import * as z from "zod"
 
+import { applyPrefixesCss } from "../utils/transformers/transform-tw-prefix"
+
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
   "class-variance-authority",
@@ -134,6 +136,14 @@ export async function promptForConfig(
     },
     {
       type: "text",
+      name: "tailwindPrefix",
+      message: `Are you using a custom ${highlight(
+        "tailwind prefix eg. tw-"
+      )}? (Leave blank if not)`,
+      initial: "",
+    },
+    {
+      type: "text",
       name: "tailwindConfig",
       message: `Where is your ${highlight("tailwind.config.js")} located?`,
       initial: defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG,
@@ -178,6 +188,7 @@ export async function promptForConfig(
       css: options.tailwindCss,
       baseColor: options.tailwindBaseColor,
       cssVariables: options.tailwindCssVariables,
+      prefix: options.tailwindPrefix,
     },
     storybook: options.storybook,
     rsc: options.rsc,
@@ -257,7 +268,10 @@ export async function runInit(cwd: string, config: Config) {
   // Write tailwind config.
   await fs.writeFile(
     config.resolvedPaths.tailwindConfig,
-    template(tailwindConfigTemplate)({ extension }),
+    template(tailwindConfigTemplate)({
+      extension,
+      prefix: config.tailwind.prefix,
+    }),
     "utf8"
   )
 
@@ -267,7 +281,9 @@ export async function runInit(cwd: string, config: Config) {
     await fs.writeFile(
       config.resolvedPaths.tailwindCss,
       config.tailwind.cssVariables
-        ? baseColor.cssVarsTemplate
+        ? config.tailwind.prefix
+          ? applyPrefixesCss(baseColor.cssVarsTemplate, config.tailwind.prefix)
+          : baseColor.cssVarsTemplate
         : baseColor.inlineColorsTemplate,
       "utf8"
     )

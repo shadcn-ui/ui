@@ -97,6 +97,19 @@
     "type": "components:ui"
   },
   {
+    "name": "carousel",
+    "dependencies": [
+      "embla-carousel-react"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      "ui/carousel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "checkbox",
     "dependencies": [
       "@radix-ui/react-checkbox"
@@ -151,6 +164,17 @@
     "files": [
       "ui/dialog.tsx",
       "stories/dialog.stories.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "drawer",
+    "dependencies": [
+      "vaul",
+      "@radix-ui/react-dialog"
+    ],
+    "files": [
+      "ui/drawer.tsx"
     ],
     "type": "components:ui"
   },
@@ -237,6 +261,16 @@
     "type": "components:ui"
   },
   {
+    "name": "pagination",
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      "ui/pagination.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "popover",
     "dependencies": [
       "@radix-ui/react-popover"
@@ -266,6 +300,16 @@
     "files": [
       "ui/radio-group.tsx",
       "stories/radio-group.stories.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "resizable",
+    "dependencies": [
+      "react-resizable-panels"
+    ],
+    "files": [
+      "ui/resizable.tsx"
     ],
     "type": "components:ui"
   },
@@ -329,6 +373,17 @@
     "files": [
       "ui/slider.tsx",
       "stories/slider.stories.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "sonner",
+    "dependencies": [
+      "sonner",
+      "next-themes"
+    ],
+    "files": [
+      "ui/sonner.tsx"
     ],
     "type": "components:ui"
   },

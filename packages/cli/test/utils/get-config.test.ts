@@ -94,6 +94,7 @@ test("get config", async () => {
       baseColor: "zinc",
       css: "src/app/globals.css",
       cssVariables: true,
+      prefix: "tw-"
     },
     aliases: {
       components: "~/components",
