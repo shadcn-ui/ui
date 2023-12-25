@@ -1,12 +1,10 @@
-"use client"
-
-import { ChevronRightIcon } from "lucide-react"
 import { Metadata } from "next"
+import { ChevronRightIcon } from "lucide-react"
 import Balancer from "react-wrap-balancer"
 
 import { cn } from "@/lib/utils"
 import { PackageForm } from "@/components/create-package-form"
-import PackageFolderStructure from "@/components/create-package-layout"
+import { PackageFolderStructure } from "@/components/create-package-layout"
 
 export const metadata: Metadata = {
   title: "Marketplace",
@@ -28,13 +26,15 @@ export default function MarketplaceCreatePackage() {
           <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
             Publish Components
           </h1>
-            <p className="text-lg text-muted-foreground">
-              <Balancer>Create Components built on top of Shadcn-UI & Radix UI primitives.</Balancer>
-            </p>
+          <p className="text-lg text-muted-foreground">
+            <Balancer>
+              Create Components built on top of Shadcn-UI & Radix UI primitives.
+            </Balancer>
+          </p>
         </div>
-        <PackageForm/>
+        <PackageForm />
       </div>
-      <PackageFolderStructure/>
+      <PackageFolderStructure />
     </main>
   )
 }

@@ -121,8 +121,6 @@ export const add = new Command()
       const payload = await fetchTree(config.style, tree)
       const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
 
-      console.log(JSON.stringify(payload))
-
       earlySpinner.stop()
 
       if (!payload.length && !addonsPayload.length) {

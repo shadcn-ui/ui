@@ -1,37 +1,24 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { useParams } from "next/navigation"
 import { api } from "@/trpc/server"
 import { ChevronRightIcon } from "lucide-react"
 import Balancer from "react-wrap-balancer"
 
-import { getTableOfContents } from "@/lib/toc"
+import { getReadme } from "@/lib/madeup-readme"
 import { cn } from "@/lib/utils"
-import { PackageType } from "@/lib/validations/packages"
-import { MarketplacePreviw } from "@/components/component-preview"
 import { Icons } from "@/components/icons"
 import { AsideMarketplaceExplore } from "@/components/marketplace-components"
 import { MDRemote } from "@/components/marketplace-doc"
-import { DashboardTableOfContents } from "@/components/toc"
 import { badgeVariants } from "@/registry/new-york/ui/badge"
-import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
 
 export const metadata: Metadata = {
   title: "Marketplace",
   description: "Components built on top of Shadcn-UI & Radix UI primitives.",
 }
 
-const tocItems = [
-  { title: "hi", url: "#hbdjf" },
-  { title: "hi", url: "#hbdjf" },
-  { title: "hi", url: "#hbdjf" },
-  { title: "hi", url: "#hbdjf" },
-  { title: "hi", url: "#hbdjf" },
-]
-
 export default async function Page({ params }: { params: { name: string } }) {
   const data = await api.packages.getPackage.query({ name: params.name })
-  if (!data) return null
+  if (!data) throw new Error("Addons not found")
 
   const dependency = data.dependencies?.map((e) => {
     const radix = e.startsWith("@radix-ui/react-")
@@ -51,6 +38,9 @@ export default async function Page({ params }: { params: { name: string } }) {
     link: `/docs/components/${e}`,
   }))
 
+  const readmeSource = 
+    data.files?.find((e) => e.name === "README.md")?.content || getReadme(data)
+
   return (
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
@@ -65,6 +55,17 @@ export default async function Page({ params }: { params: { name: string } }) {
           <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
             {data.name}
           </h1>
+          {data.author && (
+            <p className="text-lg text-muted-foreground">
+              Created by{" "}
+              <Link
+                href={`https://github.com/${data.author.username}`}
+                className="text-lg text-muted-foreground"
+              >
+                {data.author.username}
+              </Link>
+            </p>
+          )}
           {data.description && (
             <p className="text-lg text-muted-foreground">
               <Balancer>{data.description}</Balancer>
@@ -79,7 +80,10 @@ export default async function Page({ params }: { params: { name: string } }) {
                 href={r.link}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "w-auto")}
+                className={cn(
+                  badgeVariants({ variant: "secondary" }),
+                  "w-auto"
+                )}
               >
                 {r.radix ? (
                   <Icons.radix className="mr-1 h-3 w-3" />
@@ -105,11 +109,7 @@ export default async function Page({ params }: { params: { name: string } }) {
             ))}
         </div>
         <div className="pb-12 pt-8">
-          {/* <MarketplacePreviw
-            code={data?.files.map((e) => e.content)}
-            image="https://github.com/rajatsandeepsen.png"
-          /> */}
-          <MDRemote source={``} />
+          <MDRemote source={readmeSource} />
         </div>
       </div>
       <AsideMarketplaceExplore />

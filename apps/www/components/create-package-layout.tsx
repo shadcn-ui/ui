@@ -96,7 +96,7 @@ const packageToFolderProcess = (files: PackageFile["files"]): EasyFolder => {
   return tempRoot as EasyFolder
 }
 
-const PackageFolderStructure = () => {
+export const PackageFolderStructure = () => {
   const [packages] = useFolder()
   const tree = new AsciiTree()
 
@@ -126,5 +126,3 @@ const PackageFolderStructure = () => {
     </div>
   )
 }
-
-export default PackageFolderStructure

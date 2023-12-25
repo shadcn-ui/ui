@@ -9,13 +9,8 @@ import {
   } from "drizzle-orm/pg-core";
   import { type AdapterAccount } from "next-auth/adapters";
 import { relations } from "drizzle-orm";
-  
-  /**
-   * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
-   * database instance for multiple projects.
-   *
-   * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
-   */
+import { FilesType, PreviewFileType } from "@/lib/validations/packages";
+
   
   export const roleEnum = pgEnum('role', ["USER", "OWNER"])
   export const componentsEnum = pgEnum('components', ['components:ui', 'components:component', 'components:example', 'components:addons'])
@@ -87,7 +82,7 @@ import { relations } from "drizzle-orm";
       type: componentsEnum('components').default("components:addons"),
       dependencies: text('dependencies').array(),
       registryDependencies: text('registryDependencies').array(),
-      files: jsonb("files").notNull()
+      files: jsonb("files").$type<FilesType>(),
     },
   )
 

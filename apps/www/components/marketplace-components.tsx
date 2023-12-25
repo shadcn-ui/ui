@@ -35,7 +35,7 @@ interface MarketplaceContainerProps {
   data: inferRouterOutputs<AppRouter>["packages"]["newPackages"]
 }
 
-const MarketplaceExplore = ({ data }: MarketplaceContainerProps) => {
+export const MarketplaceExplore = ({ data }: MarketplaceContainerProps) => {
   return (
     <ScrollArea>
       <div
@@ -46,17 +46,10 @@ const MarketplaceExplore = ({ data }: MarketplaceContainerProps) => {
         {data.map((instance) => (
           <MarketCard key={instance.name} data={instance} />
         ))}
-        {data.map((instance) => (
-          <MarketCard key={instance.name} data={instance} />
-        ))}
-        {data.map((instance) => (
-          <MarketCard key={instance.name} data={instance} />
-        ))}
       </div>
     </ScrollArea>
   )
 }
-export default MarketplaceExplore
 
 interface MarketplaceCardProps {
   data: inferRouterOutputs<AppRouter>["packages"]["newPackages"][number]
@@ -64,7 +57,7 @@ interface MarketplaceCardProps {
 
 const MarketCard: FC<MarketplaceCardProps> = ({ data }) => {
   return (
-    <Link href={`./${data.name}`}>
+    <Link href={`/marketplace/${data.name}`}>
       <Card>
         <CardHeader className="flex-row items-center justify-between">
           <CardTitle>{data.name}</CardTitle>
@@ -160,3 +153,4 @@ export const AsideMarketplaceExplore = () => {
     </div>
   )
 }
+

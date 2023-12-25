@@ -92,6 +92,7 @@ export function PackageForm() {
     const result: z.infer<typeof packageZod> = {
       name: data.name,
       description: data.description,
+      type: "components:addons",
       files: files.files,
       dependencies: data.dependencies?.map((e) => e.text) ?? [],
       registryDependencies: data.registryDependencies?.map((e) => e.text) ?? [],
@@ -137,7 +138,7 @@ export function PackageForm() {
       }
       fileSet.push(packageFileZod.parse(data))
     })
-
+    // TODO: folder-structure state is not changing
     setFiles((f) => ({ ...f, files: fileSet }))
     setValue("files", fileSet)
   }, [])
@@ -235,7 +236,8 @@ export function PackageForm() {
                   These are the NPM Dependency you are using in component.
                   Dependencies will be automatically run `npm install` on
                   user&apos;s codebase. Type and press enter to verify if it is
-                  available in NPM registry.
+                  available in NPM registry. <br/>
+                  NB: <i>react, class-variance-authority, clsx, tailwind-merge, @radix-ui/react-slot</i> are not need to specify
                 </FormDescription>
                 <FormMessage />
               </FormItem>

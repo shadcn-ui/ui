@@ -13,7 +13,7 @@ import { buttonVariants } from "@/registry/new-york/ui/button"
 import { Separator } from "@/registry/new-york/ui/separator"
 import { Icons } from "@/components/icons"
 import { badgeVariants } from "@/registry/new-york/ui/badge"
-import MarketplaceExplore from "@/components/marketplace-components"
+import {MarketplaceExplore} from "@/components/marketplace-components"
 
 import { getServerAuthSession } from "@/server/auth";
 import { api } from "@/trpc/server";
@@ -25,7 +25,11 @@ export const metadata: Metadata = {
 
 export default async function Marketplace() {
   const session = await getServerAuthSession();
-  const data = await api.packages.newPackages.query()
+  const data = await api.packages.newPackages.query({
+    filter: "downloads",
+    limit: 10,
+    order: "desc",
+  })
 
   return (
     <>

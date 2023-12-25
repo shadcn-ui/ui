@@ -1,14 +1,14 @@
-import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 import Image from "next/image"
 import Link from "next/link"
+import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 
+import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentExample } from "@/components/component-example"
-import { MarketplacePreviw as ComponentPreview } from "@/components/component-preview"
+import { MarketplacePreviw as ComponentPreview } from "@/components/marketplace-component-preview"
 import { ComponentSource } from "@/components/component-source"
-import { Code as code, Pre as pre} from "@/components/custom-mdx-remote"
-import { cn } from "@/lib/utils"
+import { Code as code, Pre as pre } from "@/components/custom-mdx-remote"
 import {
   Accordion,
   AccordionContent,
@@ -27,8 +27,22 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
+import {Button} from "@/registry/new-york/ui/button"
+
+/**
+ * Import more registry components, so creators can access through their custom README.md
+ * 
+ * <ComponentPreview code={["code", "another code"]} name="example-component">
+ *    <Button>
+ *       Button
+ *    </Button>
+ * </ComponentPreview>
+ * 
+ */
+
 
 const components = {
+  Button,
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -247,6 +261,11 @@ export function MDRemote(props: MdxProps) {
       {/* @ts-ignore */}
       <MDXRemote
         {...props}
+        options={{
+          mdxOptions: {
+            jsxImportSource: "react",
+          }
+        }}
         components={{ ...components, ...(props.components || {}) }}
       />
     </div>

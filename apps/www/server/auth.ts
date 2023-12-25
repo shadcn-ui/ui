@@ -1,52 +1,38 @@
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import type { DefaultSession, NextAuthOptions } from "next-auth";
-import GithubProvider from "next-auth/providers/github";
 import { env } from "@/env.mjs";
 import { db } from "@/server/db";
-import { pgTable } from "drizzle-orm/pg-core";
-import {getServerSession} from "next-auth";  
-/**
- * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
- * object and keep type safety.
- *
- * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
- */
+import type { DefaultSession, DefaultUser, NextAuthOptions } from "next-auth";
+import { getServerSession } from "next-auth";
+import { Adapter } from "next-auth/adapters";
+import GithubProvider from "next-auth/providers/github";
+import { CustomPgDrizzleAdapter } from "./db/adapter";
+import { roleEnum } from "./db/schema";
+
 declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
-      // ...other properties
-      // role: UserRole;
+      username: string;
+      // role: (typeof roleEnum["enumValues"][number]);
     } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  interface User extends DefaultUser {
+    username: string;
+  }
 }
 
-/**
- * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
- *
- * @see https://next-auth.js.org/configuration/options
- */
-export const authOptions:NextAuthOptions = {
-  callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+export const authOptions: NextAuthOptions = {
+  debug: env.NODE_ENV !== "production",
+  session: {
+    strategy: "database"
   },
-  adapter: DrizzleAdapter(db, pgTable),
+  adapter: CustomPgDrizzleAdapter(db) as unknown as Adapter,
   providers: [
     GithubProvider({
       clientId: env.GITHUB_CLIENT_ID,
       clientSecret: env.GITHUB_CLIENT_SECRET,
-      profile(profile) {
+
+      profile: (profile) => {
         return {
           id: profile.id.toString(),
           name: profile.name || profile.login,
@@ -56,13 +42,22 @@ export const authOptions:NextAuthOptions = {
         };
       },
     }),
-
   ],
+  callbacks: {
+    redirect: ({ baseUrl, url }) => {
+      return `${baseUrl}/marketplace`
+    },
+    session: ({ session, user }) => {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          username: user.username,
+          id: user.id,
+        },
+      }
+    },
+  },
 };
 
-/**
- * Wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
- *
- * @see https://next-auth.js.org/configuration/nextjs
- */
 export const getServerAuthSession = () => getServerSession(authOptions);

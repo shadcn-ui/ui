@@ -4,9 +4,9 @@ import {
   publicProcedure,
 } from "@/server/api/trpc";
 import { packages } from "@/server/db/schema";
-import { PackageFilterZod, PackageType, packageAdditionalZod, packageFilterZod, packageZod } from "@/lib/validations/packages";
+import { PackageType, packageAdditionalZod, packageFilterZod, packageZod } from "@/lib/validations/packages";
 import { db } from "@/server/db";
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 
 export const packagesRouter = createTRPCRouter({
   nameSomePackages: publicProcedure
@@ -15,7 +15,7 @@ export const packagesRouter = createTRPCRouter({
         limit: 10,
         orderBy: packages.downloads,
         columns: {
-          name:true
+          name: true
         }
       })
 
@@ -23,7 +23,7 @@ export const packagesRouter = createTRPCRouter({
     }),
   newPackages: publicProcedure
     .input(packageFilterZod)
-    .query(async ({input}) => {
+    .query(async ({ input }) => {
       const filter = input.filter as keyof PackageType ?? "created_at"
       const data = await db.query.packages.findMany({
         limit: input.limit ?? 10,
@@ -53,7 +53,7 @@ export const packagesRouter = createTRPCRouter({
     )
     .query(async ({ input }) => {
       const data = await db.query.packages.findFirst({
-        where: (packages, {eq}) => eq(packages.name, input.name),
+        where: (packages, { eq }) => eq(packages.name, input.name),
         columns: {
           author: false
         },
@@ -63,7 +63,7 @@ export const packagesRouter = createTRPCRouter({
               image: true,
               name: true,
               username: true,
-            },
+            }
           }
         }
       })
@@ -77,30 +77,41 @@ export const packagesRouter = createTRPCRouter({
       await ctx.db.insert(packages).values({
         version: "1.0.0",
         author: ctx.session.user.id,
-        created_at: new Date,
-        updated_at: new Date,
+        created_at: new Date(),
+        updated_at: new Date(),
         downloads: 0,
         ...input,
         type: "components:addons",
       });
     }),
-    
-    updatePackage: protectedProcedure
+
+  updatePackage: protectedProcedure
     .input(
       packageZod
-      .merge(packageAdditionalZod)
-      .deepPartial().required({
-          name: true
+        .merge(packageAdditionalZod)
+        .deepPartial().required({
+          name: true,
         })
     )
     .mutation(async ({ ctx, input }) => {
 
-      await ctx.db.update(packages).set({
-        updated_at: new Date,
-        ...input,
-        type: "components:addons",
-      }).where(eq(packages.name, input.name))
+      // const readmeFile = input.files?.find(e => e.name === "README.md");
+      // const readme = readmeFile
+      //   ? (input.files = input.files?.filter(e => e !== readmeFile), readmeFile.content)
+      //   : "";
 
+      const type = (input.type ?? "components:addons") as PackageType["type"]
+      
+        await ctx.db.update(packages).set({
+          ...input,
+          type,
+          updated_at: new Date()
+        }).where(
+          and(
+            eq(packages.name, input.name),
+            eq(packages.author, ctx.session.user.id)
+          )
+        )
     }),
 
   deletePackage: protectedProcedure
@@ -110,6 +121,11 @@ export const packagesRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      await ctx.db.delete(packages).where(eq(packages.name, input.name))
+      await ctx.db.delete(packages).where(
+        and(
+          eq(packages.name, input.name),
+          eq(packages.author, ctx.session.user.id)
+        )
+      )
     }),
 });

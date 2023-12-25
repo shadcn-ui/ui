@@ -1,3 +1,4 @@
+import { Registry } from "@/registry/schema";
 import { packages } from "@/server/db/schema";
 import { z } from "zod";
 
@@ -7,9 +8,7 @@ const fileExtensionRegex = new RegExp(`\\.(${allowedFiles})$`);
 export const packageZod = z.object({
     name: z.string(),
     description: z.string(),
-    type: z.string().refine((x) => x === "components:addons", {
-        message: "type of component must be addons"
-    }).optional(),
+    type: z.enum(["components:addons"]).optional().default("components:addons"),
     dependencies: z.array(
         z.string()
     ).optional(),
@@ -34,14 +33,25 @@ export const packageZod = z.object({
     }),
   })
 
-  export type PackageType = z.infer<typeof packageZod>
-
+  export type PackageType = z.infer<typeof packageZod> & {
+    type : Registry[number]["type"] | "components:addons"
+  }
+  export type FilesType = Pretty<DeepPartial<PackageType["files"][number]>>[]
+  export type PreviewFileType = {
+    image:string, code:string
+  }
   export type PackageFilterZod = Exclude<keyof typeof packages["$inferInsert"], (keyof z.infer<typeof packageZod>) | (keyof typeof packageAdditionalZod)>
 
   
 
   export const packageFilterZod = z.object({
-    filter: z.string().optional(),
+    filter: z.enum([
+      "author",
+      "created_at",
+      "updated_at",
+      "downloads",
+      "type",
+    ]),
     order: z.union([z.literal("desc"), z.literal("asc")]).optional(),
     limit: z.number().optional()
   })
