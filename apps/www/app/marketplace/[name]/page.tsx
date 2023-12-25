@@ -18,7 +18,8 @@ export const metadata: Metadata = {
 
 export default async function Page({ params }: { params: { name: string } }) {
   const data = await api.packages.getPackage.query({ name: params.name })
-  if (!data) throw new Error("Addons not found")
+
+  if (!data) throw new Error("404 | Component not found")
 
   const dependency = data.dependencies?.map((e) => {
     const radix = e.startsWith("@radix-ui/react-")
