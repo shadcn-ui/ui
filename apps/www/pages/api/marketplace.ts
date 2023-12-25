@@ -10,8 +10,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
 
-
-  const names: string[] = [...req?.body?.names, req.query?.name]
+  const names = z.array(z.string().min(1)).parse([...req?.body?.names, ...req.query?.name ? [req.query?.name] : []])
 
   if (!names.length)
     res.status(400).json({ message: "Component name is not provided" })
