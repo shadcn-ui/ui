@@ -185,7 +185,7 @@ const ui: Registry = [
   {
     name: "select",
     type: "components:ui",
-    dependencies: ["@radix-ui/react-select"],
+    dependencies: ["@radix-ui/react-select", "@radix-ui/react-icons"],
     files: ["ui/select.tsx"],
   },
   {
