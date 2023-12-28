@@ -100,6 +100,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
               <AvatarImage
                 src={`https://avatar.vercel.sh/${selectedTeam.value}.png`}
                 alt={selectedTeam.label}
+                className="grayscale"
               />
               <AvatarFallback>SC</AvatarFallback>
             </Avatar>
