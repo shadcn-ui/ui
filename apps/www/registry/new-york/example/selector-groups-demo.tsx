@@ -41,7 +41,7 @@ const users = {
   ],
 }
 
-export default function SelectorSingleDemo() {
+export default function SelectorGroupsDemo() {
   return (
     <Selector
       data={users}
