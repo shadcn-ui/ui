@@ -670,6 +670,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/drawer-demo")),
       files: ["registry/default/example/drawer-demo.tsx"],
     },
+    "drawer-nested": {
+      name: "drawer-nested",
+      type: "components:example",
+      registryDependencies: ["drawer"],
+      component: React.lazy(() => import("@/registry/default/example/drawer-nested")),
+      files: ["registry/default/example/drawer-nested.tsx"],
+    },
     "drawer-dialog": {
       name: "drawer-dialog",
       type: "components:example",
@@ -1888,6 +1895,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["drawer"],
       component: React.lazy(() => import("@/registry/new-york/example/drawer-demo")),
       files: ["registry/new-york/example/drawer-demo.tsx"],
+    },
+    "drawer-nested": {
+      name: "drawer-nested",
+      type: "components:example",
+      registryDependencies: ["drawer"],
+      component: React.lazy(() => import("@/registry/new-york/example/drawer-nested")),
+      files: ["registry/new-york/example/drawer-nested.tsx"],
     },
     "drawer-dialog": {
       name: "drawer-dialog",

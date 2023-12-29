@@ -584,6 +584,12 @@ const example: Registry = [
     files: ["example/drawer-demo.tsx"],
   },
   {
+    name: "drawer-nested",
+    type: "components:example",
+    registryDependencies: ["drawer"],
+    files: ["example/drawer-nested.tsx"],
+  },
+  {
     name: "drawer-dialog",
     type: "components:example",
     registryDependencies: ["drawer", "dialog"],
