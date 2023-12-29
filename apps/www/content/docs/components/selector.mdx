@@ -1,0 +1,92 @@
+---
+title: Selector
+description: Provides powerful select tooling for complex data
+component: true
+featured: true
+---
+
+<ComponentPreview name="selector-single-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add selector
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-select
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="selector" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Selector } from "@/components/ui/selector"
+```
+
+```tsx
+<Selector
+  mode="single"
+  data={[
+    { label: "Option 1", value: "option-1" },
+    { label: "Option 2", value: "option-2" },
+    { label: "Option 3", value: "option-3" },
+  ]}
+  valueAccessor={(item) => item.value}
+  onSelectChange={({ value, action }) => console.log({ value, action })}
+  renderValue={(item) => item.label}
+/>
+```
+
+## Examples
+
+### Multi Select
+
+<ComponentPreview name="selector-multiple-demo" />
+
+### Disabled
+
+<ComponentPreview name="selector-disabled" />
+
+### Search
+
+<ComponentPreview name="selector-search" />
+
+### Groups
+
+<ComponentPreview name="selector-groups" />
+
+### Tooltip Values
+
+<ComponentPreview name="selector-tooltip" />
+
+### Reselect Strategies
+
+<ComponentPreview name="selector-reselect" />
