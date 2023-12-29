@@ -29,7 +29,7 @@ npx shadcn-ui@latest add selector
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @radix-ui/react-select
+npm install @radix-ui/react-popover cmdk
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -52,14 +52,13 @@ import { Selector } from "@/components/ui/selector"
 
 ```tsx
 <Selector
-  mode="single"
   data={[
     { label: "Option 1", value: "option-1" },
     { label: "Option 2", value: "option-2" },
     { label: "Option 3", value: "option-3" },
   ]}
   valueAccessor={(item) => item.value}
-  onSelectChange={({ value, action }) => console.log({ value, action })}
+  onSelectChange={({ added, removed }) => console.log({ added, removed })}
   renderValue={(item) => item.label}
 />
 ```
@@ -82,10 +81,6 @@ import { Selector } from "@/components/ui/selector"
 
 <ComponentPreview name="selector-groups-demo" />
 
-### Tooltip Values
-
-<ComponentPreview name="selector-tooltip" />
-
 ### Reselect Strategies
 
-<ComponentPreview name="selector-reselect" />
+<ComponentPreview name="selector-reselect-demo" />
