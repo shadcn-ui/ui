@@ -143,9 +143,9 @@ function Selector<T>({
       );
 
       return (
-        (renderLabel as MultipleProps<T>['renderLabel'])?.(options) ??
-        (options.length > 0
-          ? options.map(valueAccessor).join(', ')
+        (options.length > 0 ?
+          (renderLabel as MultipleProps<T>['renderLabel'])?.(options)
+          ?? options.map(valueAccessor).join(', ')
           : placeholder ?? '-')
       );
     } else if (mode === 'single' && !Array.isArray(selected)) {

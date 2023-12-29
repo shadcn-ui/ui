@@ -13,23 +13,23 @@ const users = [
   {
     id: 2,
     name: 'Jane',
-    surname: 'Doe',
+    surname: 'Smith',
     age: 25,
     address: '123 Main Street',
     phoneNumber: 1234567890,
   },
   {
     id: 3,
-    name: 'John',
-    surname: 'Smith',
+    name: 'Alicia',
+    surname: 'Koch',
     age: 28,
     address: '123 Main Street',
     phoneNumber: 1234567890,
   },
   {
     id: 4,
-    name: 'Jane',
-    surname: 'Smith',
+    name: 'Olivia',
+    surname: 'Martin',
     age: 32,
     address: '123 Main Street',
     phoneNumber: 1234567890,
@@ -44,11 +44,12 @@ export default function SelectorSingleDemo(){
   valueAccessor={user=> user.id}
   onSelectChange={({added, removed})=>{
       toast({
-        title: `${added ? "Selected" : "Unselected"} ${added ?? removed}`,
+        title: `${added ? "Selected" : "Unselected"}`,
         description: JSON.stringify(added ?? removed, null, 2)
       })
   }}
   renderValue={(user)=> `${user.name} ${user.surname}`}
-  placeholder="Select a user"
+  renderLabel={(users)=> users.map(user=> `${user.name} ${user.surname}`).join(", ")}
+  placeholder="Select some users"
   />
 }
