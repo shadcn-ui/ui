@@ -1,4 +1,5 @@
-import { useToast } from "@/registry/default/ui//use-toast"
+import { toast } from "sonner"
+
 import { Selector } from "@/registry/default/ui/selector"
 
 const users = [
@@ -37,15 +38,13 @@ const users = [
 ]
 
 export default function SelectorSingleDemo() {
-  const { toast } = useToast()
   return (
     <Selector
       mode="multiple"
       data={users}
       valueAccessor={(user) => user.id}
       onSelectChange={({ added, removed }) => {
-        toast({
-          title: `${added ? "Selected" : "Unselected"}`,
+        toast(`${added ? "Selected" : "Unselected"}`, {
           description: JSON.stringify(added ?? removed, null, 2),
         })
       }}

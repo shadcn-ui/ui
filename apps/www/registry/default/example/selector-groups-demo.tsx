@@ -44,7 +44,6 @@ const users = {
 export default function SelectorSingleDemo() {
   return (
     <Selector
-      mode="single"
       data={users}
       valueAccessor={(user) => user.id}
       onSelectChange={({ added, removed }) => {
