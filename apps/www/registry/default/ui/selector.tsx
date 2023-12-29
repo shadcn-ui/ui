@@ -401,9 +401,7 @@ function Selector<T>({
               </div>
             ) : null}
             <CommandList>
-              {!loading ? (
-                <CommandEmpty>Δεν βρέθηκαν αποτελέσματα</CommandEmpty>
-              ) : null}
+              {!loading ? <CommandEmpty>No results found.</CommandEmpty> : null}
               {Array.isArray(data) ? (
                 <CommandGroup>{renderOptions(data)}</CommandGroup>
               ) : (
