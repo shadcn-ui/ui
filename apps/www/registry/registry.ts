@@ -758,6 +758,18 @@ const example: Registry = [
     files: ["example/select-form.tsx"],
   },
   {
+    name: "selector-single-demo",
+    type: "components:example",
+    registryDependencies: ["popover", "command", "button"],
+    files: ["example/selector-single-demo.tsx"],
+  },
+  {
+    name: "selector-multiple-demo",
+    type: "components:example",
+    registryDependencies: ["popover", "command", "button"],
+    files: ["example/selector-multiple-demo.tsx"],
+  },
+  {
     name: "separator-demo",
     type: "components:example",
     registryDependencies: ["separator"],

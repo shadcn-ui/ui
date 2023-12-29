@@ -873,6 +873,20 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/select-form")),
       files: ["registry/default/example/select-form.tsx"],
     },
+    "selector-single-demo": {
+      name: "selector-single-demo",
+      type: "components:example",
+      registryDependencies: ["popover","command","button"],
+      component: React.lazy(() => import("@/registry/default/example/selector-single-demo")),
+      files: ["registry/default/example/selector-single-demo.tsx"],
+    },
+    "selector-multiple-demo": {
+      name: "selector-multiple-demo",
+      type: "components:example",
+      registryDependencies: ["popover","command","button"],
+      component: React.lazy(() => import("@/registry/default/example/selector-multiple-demo")),
+      files: ["registry/default/example/selector-multiple-demo.tsx"],
+    },
     "separator-demo": {
       name: "separator-demo",
       type: "components:example",
@@ -2091,6 +2105,20 @@ export const Index: Record<string, any> = {
       registryDependencies: ["select"],
       component: React.lazy(() => import("@/registry/new-york/example/select-form")),
       files: ["registry/new-york/example/select-form.tsx"],
+    },
+    "selector-single-demo": {
+      name: "selector-single-demo",
+      type: "components:example",
+      registryDependencies: ["popover","command","button"],
+      component: React.lazy(() => import("@/registry/new-york/example/selector-single-demo")),
+      files: ["registry/new-york/example/selector-single-demo.tsx"],
+    },
+    "selector-multiple-demo": {
+      name: "selector-multiple-demo",
+      type: "components:example",
+      registryDependencies: ["popover","command","button"],
+      component: React.lazy(() => import("@/registry/new-york/example/selector-multiple-demo")),
+      files: ["registry/new-york/example/selector-multiple-demo.tsx"],
     },
     "separator-demo": {
       name: "separator-demo",
