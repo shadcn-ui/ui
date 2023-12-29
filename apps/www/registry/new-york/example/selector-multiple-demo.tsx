@@ -51,8 +51,13 @@ export default function SelectorSingleDemo() {
           }
         )
       }}
+      renderValue={(user) => `${user.name} ${user.surname}`}
       renderLabel={(users) =>
-        users.map((user) => `${user.name} ${user.surname}`).join(", ")
+        users.reduce(
+          (acc, user, i) =>
+            `${acc + (i === 0 ? "" : ", ")} ${user.name} ${user.surname}`,
+          ""
+        )
       }
       placeholder="Select some users"
     />
