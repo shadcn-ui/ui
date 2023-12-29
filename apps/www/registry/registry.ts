@@ -776,6 +776,12 @@ const example: Registry = [
     files: ["example/selector-disabled-demo.tsx"],
   },
   {
+    name: "selector-groups-demo",
+    type: "components:example",
+    registryDependencies: ["popover", "command", "button"],
+    files: ["example/selector-groups-demo.tsx"],
+  },
+  {
     name: "separator-demo",
     type: "components:example",
     registryDependencies: ["separator"],
