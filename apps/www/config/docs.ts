@@ -262,6 +262,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Selector",
+          href: "/docs/components/selector",
+          items: [],
+        },
+        {
           title: "Separator",
           href: "/docs/components/separator",
           items: [],
