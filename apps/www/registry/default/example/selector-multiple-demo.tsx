@@ -37,7 +37,7 @@ const users = [
   },
 ]
 
-export default function SelectorSingleDemo() {
+export default function SelectorMultipleDemo() {
   return (
     <Selector
       mode="multiple"
