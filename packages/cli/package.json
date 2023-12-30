@@ -27,7 +27,10 @@
   ],
   "type": "module",
   "exports": "./dist/index.js",
-  "bin": "./dist/index.js",
+  "bin": {
+    "shadcn-ui": "./dist/index.js",
+    "shui": "./dist/index.js"
+  },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
