@@ -6,7 +6,7 @@ import {
   useRef,
   useState,
 } from "react"
-import { Check, Loader2 } from "lucide-react"
+import { Check } from "lucide-react"
 import { twMerge } from "tailwind-merge"
 
 import { cn } from "@/lib/utils"
@@ -59,21 +59,13 @@ type MultipleProps<T, R extends (...args: any[]) => any = Accessor<T>> = {
 type SelectorSearch<T, DataT> = {
   accessor?: (data: T) => Array<string | null>
   filter?: (value: string, search: string) => number
-  renderSearch?: (
-    InputComponent: typeof CommandInput,
-    data: DataT,
-    loading?: boolean
-  ) => ReactNode
+  renderSearch?: (InputComponent: typeof CommandInput, data: DataT) => ReactNode
   query?: string
   onSearchChange?: (search: string) => void
   suppressFiltering?: boolean
 }
 
-type CoreProps<
-  T,
-  DataT = T[] | Record<string, T[]>,
-  Loading = boolean | undefined
-> = {
+type CoreProps<T, DataT = T[] | Record<string, T[]>> = {
   data: DataT
   renderValue?: (
     value: T,
@@ -81,7 +73,6 @@ type CoreProps<
   ) => NonNullable<ReactNode>
   renderSelectedIcon?: (value: T) => ReactNode
   customId?: (data: T) => string | number
-  testPrefix?: string
   filters?: Array<{
     label: string
     filter: (data: T) => boolean
@@ -91,7 +82,6 @@ type CoreProps<
   contentStyles?: string
   placeholder?: ReactNode
   search?: SelectorSearch<T, DataT>
-  loading?: Loading
   disabledAccessor?: (value: T) => boolean
 }
 
@@ -109,10 +99,8 @@ function Selector<T>({
   triggerProps,
   contentStyles,
   placeholder,
-  loading,
   disabledAccessor,
   customId = valueAccessor,
-  testPrefix,
   filters = [],
 }: CoreProps<T> &
   (SingleProps<T> | MultipleProps<T>) &
@@ -301,11 +289,6 @@ function Selector<T>({
           <CommandItem
             disabled={disabledAccessor?.(choice)}
             key={customId(choice)}
-            data-testid={
-              testPrefix
-                ? `${testPrefix}-item-${customId(choice).toString()}`
-                : undefined
-            }
             value={createChoiceNameId(choice)}
             onSelect={(v) => handleSelect(v, data)}
           >
@@ -344,7 +327,6 @@ function Selector<T>({
       mode,
       selected,
       filtersState,
-      testPrefix,
       customId,
       renderValue,
       handleSelect,
@@ -357,10 +339,9 @@ function Selector<T>({
 
   return (
     <div id="selector-container" ref={containerRef}>
-      <Popover data-testid={testPrefix} open={open} onOpenChange={setOpen}>
+      <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
-            data-testid={testPrefix ? `${testPrefix}-trigger` : undefined}
             {...triggerProps}
             className={twMerge("w-fit", triggerProps?.className)}
             type="button"
@@ -380,14 +361,9 @@ function Selector<T>({
             filter={search?.filter}
           >
             {search
-              ? search.renderSearch?.(CommandInput, data, loading) ?? (
-                  <div className={loading ? "animate-pulse" : ""}>
+              ? search.renderSearch?.(CommandInput, data) ?? (
+                  <div>
                     <CommandInput
-                      data-testid={
-                        testPrefix
-                          ? `${testPrefix}-search-input`
-                          : "selector-search-input"
-                      }
                       value={search.query}
                       onValueChange={(v) => search.onSearchChange?.(v)}
                     />
@@ -395,13 +371,8 @@ function Selector<T>({
                 )
               : null}
 
-            {loading ? (
-              <div className="flex w-full justify-center p-2">
-                <Loader2 className="animate-spin text-primary" size={30} />
-              </div>
-            ) : null}
             <CommandList>
-              {!loading ? <CommandEmpty>No results found.</CommandEmpty> : null}
+              <CommandEmpty>No results found.</CommandEmpty>
               {Array.isArray(data) ? (
                 <CommandGroup>{renderOptions(data)}</CommandGroup>
               ) : (
