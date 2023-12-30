@@ -1473,8 +1473,8 @@ export const Index: Record<string, any> = {
       name: "selector",
       type: "components:ui",
       registryDependencies: ["popover", "command", "button"],
-      component: React.lazy(() => import("@/registry/default/ui/selector")),
-      files: ["registry/default/ui/selector.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/ui/selector")),
+      files: ["registry/new-york/ui/selector.tsx"],
     },
     "separator": {
       name: "separator",
