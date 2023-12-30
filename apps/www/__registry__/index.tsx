@@ -103,6 +103,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/context-menu")),
       files: ["registry/default/ui/context-menu.tsx"],
     },
+    "date-range-picker": {
+      name: "date-range-picker",
+      type: "components:ui",
+      registryDependencies: ["button","calendar","popover","select"],
+      component: React.lazy(() => import("@/registry/default/ui/date-range-picker")),
+      files: ["registry/default/ui/date-range-picker.tsx"],
+    },
     "dialog": {
       name: "dialog",
       type: "components:ui",
@@ -642,12 +649,12 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/date-picker-with-presets")),
       files: ["registry/default/example/date-picker-with-presets.tsx"],
     },
-    "date-picker-with-range": {
-      name: "date-picker-with-range",
+    "date-range-picker-demo": {
+      name: "date-range-picker-demo",
       type: "components:example",
-      registryDependencies: ["button","calendar","popover"],
-      component: React.lazy(() => import("@/registry/default/example/date-picker-with-range")),
-      files: ["registry/default/example/date-picker-with-range.tsx"],
+      registryDependencies: ["date-range-picker"],
+      component: React.lazy(() => import("@/registry/default/example/date-range-picker-demo")),
+      files: ["registry/default/example/date-range-picker-demo.tsx"],
     },
     "dialog-demo": {
       name: "dialog-demo",
@@ -1322,6 +1329,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/ui/context-menu")),
       files: ["registry/new-york/ui/context-menu.tsx"],
     },
+    "date-range-picker": {
+      name: "date-range-picker",
+      type: "components:ui",
+      registryDependencies: ["button","calendar","popover","select"],
+      component: React.lazy(() => import("@/registry/new-york/ui/date-range-picker")),
+      files: ["registry/new-york/ui/date-range-picker.tsx"],
+    },
     "dialog": {
       name: "dialog",
       type: "components:ui",
@@ -1861,12 +1875,12 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/date-picker-with-presets")),
       files: ["registry/new-york/example/date-picker-with-presets.tsx"],
     },
-    "date-picker-with-range": {
-      name: "date-picker-with-range",
+    "date-range-picker-demo": {
+      name: "date-range-picker-demo",
       type: "components:example",
-      registryDependencies: ["button","calendar","popover"],
-      component: React.lazy(() => import("@/registry/new-york/example/date-picker-with-range")),
-      files: ["registry/new-york/example/date-picker-with-range.tsx"],
+      registryDependencies: ["date-range-picker"],
+      component: React.lazy(() => import("@/registry/new-york/example/date-range-picker-demo")),
+      files: ["registry/new-york/example/date-range-picker-demo.tsx"],
     },
     "dialog-demo": {
       name: "dialog-demo",

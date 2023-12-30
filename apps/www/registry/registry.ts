@@ -87,6 +87,13 @@ const ui: Registry = [
     files: ["ui/context-menu.tsx"],
   },
   {
+    name: "date-range-picker",
+    type: "components:ui",
+    dependencies: ["react-day-picker", "date-fns"],
+    registryDependencies: ["button", "calendar", "popover", "select"],
+    files: ["ui/date-range-picker.tsx"],
+  },
+  {
     name: "dialog",
     type: "components:ui",
     dependencies: ["@radix-ui/react-dialog"],
@@ -559,25 +566,10 @@ const example: Registry = [
     dependencies: ["date-fns"],
   },
   {
-    name: "date-picker-with-range",
+    name: "date-range-picker-demo",
     type: "components:example",
-    registryDependencies: ["button", "calendar", "popover"],
-    files: ["example/date-picker-with-range.tsx"],
-    dependencies: ["date-fns"],
-  },
-  {
-    name: "date-picker-with-range-presets-internal",
-    type: "components:example",
-    registryDependencies: ["button", "calendar", "popover"],
-    files: ["example/date-picker-with-range-presets-internal.tsx"],
-    dependencies: ["date-fns"],
-  },
-  {
-    name: "date-picker-with-range-presets-external",
-    type: "components:example",
-    registryDependencies: ["button", "calendar", "popover", "select"],
-    files: ["example/date-picker-with-range-presets-external.tsx"],
-    dependencies: ["date-fns"],
+    registryDependencies: ["date-range-picker"],
+    files: ["example/date-range-picker-demo.tsx"],
   },
   {
     name: "dialog-demo",

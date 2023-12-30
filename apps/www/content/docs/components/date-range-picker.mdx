@@ -1,0 +1,59 @@
+---
+title: Date Range Picker
+description: A date picker component with range and presets.
+component: true
+---
+
+<ComponentPreview name="date-range-picker-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add date-range-picker
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-day-picker
+```
+```bash
+npm install date-fns
+```
+
+The Date Range Picker uses [`<Popover />`](/docs/components/popover#installation), [`<Select />`](/docs/components/select#installation) and [`<Calendar />`](/docs/components/calendar#installation).
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="date-range-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { DateRangePicker } from "@/registry/default/ui/date-range-picker"
+```
+```tsx
+<DateRangePicker showExternalPresets showInternalPresets numberOfMonths={2} />
+```

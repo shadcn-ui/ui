@@ -144,6 +144,23 @@
     "type": "components:ui"
   },
   {
+    "name": "date-range-picker",
+    "dependencies": [
+      "react-day-picker",
+      "date-fns"
+    ],
+    "registryDependencies": [
+      "button",
+      "calendar",
+      "popover",
+      "select"
+    ],
+    "files": [
+      "ui/date-range-picker.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "dialog",
     "dependencies": [
       "@radix-ui/react-dialog"
