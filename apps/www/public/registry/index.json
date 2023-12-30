@@ -310,6 +310,13 @@
     "type": "components:ui"
   },
   {
+    "name": "selector",
+    "files": [
+      "ui/selector.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "separator",
     "dependencies": [
       "@radix-ui/react-separator"

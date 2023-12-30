@@ -189,6 +189,11 @@ const ui: Registry = [
     files: ["ui/select.tsx"],
   },
   {
+    name: "selector",
+    type: "components:ui",
+    files: ["ui/selector.tsx"],
+  },
+  {
     name: "separator",
     type: "components:ui",
     dependencies: ["@radix-ui/react-separator"],
@@ -760,25 +765,25 @@ const example: Registry = [
   {
     name: "selector-single-demo",
     type: "components:example",
-    registryDependencies: ["popover", "command", "button"],
+    registryDependencies: ["selector"],
     files: ["example/selector-single-demo.tsx"],
   },
   {
     name: "selector-multiple-demo",
     type: "components:example",
-    registryDependencies: ["popover", "command", "button"],
+    registryDependencies: ["selector"],
     files: ["example/selector-multiple-demo.tsx"],
   },
   {
     name: "selector-disabled-demo",
     type: "components:example",
-    registryDependencies: ["popover", "command", "button"],
+    registryDependencies: ["selector"],
     files: ["example/selector-disabled-demo.tsx"],
   },
   {
     name: "selector-groups-demo",
     type: "components:example",
-    registryDependencies: ["popover", "command", "button"],
+    registryDependencies: ["selector"],
     files: ["example/selector-groups-demo.tsx"],
   },
   {
