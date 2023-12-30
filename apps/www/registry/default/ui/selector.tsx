@@ -1,16 +1,19 @@
 import {
+  Dispatch,
   ReactNode,
+  SetStateAction,
   useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from "react"
-import { Check } from "lucide-react"
+import { Check, Filter } from "lucide-react"
 import { twMerge } from "tailwind-merge"
 
 import { cn } from "@/lib/utils"
 import { Button, ButtonProps } from "@/registry/default/ui/button"
+import { Checkbox } from "@/registry/default/ui/checkbox"
 import {
   Command,
   CommandEmpty,
@@ -201,10 +204,11 @@ function Selector<T>({
           switch (onSelectedClick) {
             case "unselect": {
               setSelected(null)
-              ;(onSelectChange as UnselectReselectMode<T>["onSelectChange"])({
+              const onSelect =
+                onSelectChange as UnselectReselectMode<T>["onSelectChange"]
+              onSelect({
                 removed: choice,
               })
-
               break
             }
 
@@ -242,7 +246,9 @@ function Selector<T>({
                 (v, i) => i !== existingIndex
               )
               setSelected(newSelected)
-              ;(onSelectChange as UnselectReselectMode<T>["onSelectChange"])({
+              const onSelect =
+                onSelectChange as UnselectReselectMode<T>["onSelectChange"]
+              onSelect({
                 removed: choice,
               })
               break
@@ -282,7 +288,7 @@ function Selector<T>({
           const enabledFilters = filtersState.filter((v) => v.enabled)
 
           return enabledFilters.length > 0
-            ? enabledFilters.some((f) => f.filter(v))
+            ? enabledFilters.every((f) => f.filter(v))
             : true
         })
         .map((choice) => (
@@ -351,9 +357,8 @@ function Selector<T>({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className={twMerge("z-[60000] min-w-max max-w-0", contentStyles)}
+          className={twMerge("min-w-max max-w-0", contentStyles)}
           style={{ width: containerRef.current?.offsetWidth }}
-          side="bottom"
           hideWhenDetached
         >
           <Command
@@ -370,7 +375,7 @@ function Selector<T>({
                   </div>
                 )
               : null}
-
+            <FiltersButton filters={filtersState} setFilters={setFilters} />
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
               {Array.isArray(data) ? (
@@ -389,6 +394,74 @@ function Selector<T>({
         </PopoverContent>
       </Popover>
     </div>
+  )
+}
+
+type FiltersButtonProps<T> = {
+  filters: Array<T>
+  setFilters: Dispatch<SetStateAction<Array<T>>>
+}
+
+function FiltersButton<T extends { label: string; enabled: boolean }>({
+  filters,
+  setFilters,
+}: FiltersButtonProps<T>) {
+  const enabled = useMemo(() => filters.filter((v) => v.enabled), [filters])
+
+  return filters.length === 0 ? null : (
+    <Popover>
+      <div className="m-1 flex justify-end">
+        <PopoverTrigger asChild>
+          <Button
+            size="icon"
+            variant={"outline"}
+            className={`${
+              enabled.length > 0
+                ? "hover:bg-primary-500 bg-primary text-primary-foreground hover:text-primary-foreground"
+                : ""
+            } scale-75 font-bold`}
+          >
+            <Filter
+              className={
+                enabled.length > 0
+                  ? "text-primary-foreground"
+                  : "text-secondary-foreground"
+              }
+            />
+          </Button>
+        </PopoverTrigger>
+      </div>
+
+      <PopoverContent side="right" className="max-w-fit overflow-y-auto">
+        <div className="m-2 flex flex-col gap-2 text-sm">
+          {filters.map(({ enabled, label }, i) => (
+            <div key={i} className="flex items-center space-x-2">
+              <Checkbox
+                checked={enabled}
+                onCheckedChange={(checked) => {
+                  setFilters((prev) =>
+                    prev.map((v) => {
+                      const found = v.label === label
+
+                      return {
+                        ...v,
+                        enabled: found ? !!checked : v.enabled,
+                      }
+                    })
+                  )
+                }}
+              />
+              <label
+                htmlFor="terms"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                {label}
+              </label>
+            </div>
+          ))}
+        </div>
+      </PopoverContent>
+    </Popover>
   )
 }
 
