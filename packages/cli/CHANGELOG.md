@@ -1,5 +1,19 @@
 # @shadcn/ui
 
+## 0.5.0
+
+### Minor Changes
+
+- [#770](https://github.com/shadcn-ui/ui/pull/770) [`4fb98d5`](https://github.com/shadcn-ui/ui/commit/4fb98d520f2322f59bf2ae0bbbee706760df48a2) Thanks [@Bekacru](https://github.com/Bekacru)! - add support for custom tailwind prefix
+
+- [#1247](https://github.com/shadcn-ui/ui/pull/1247) [`4ec8a67`](https://github.com/shadcn-ui/ui/commit/4ec8a67dab94d0c2bcda2396d01174abee0991a0) Thanks [@lukahartwig](https://github.com/lukahartwig)! - add support for tailwind.config.ts
+
+### Patch Changes
+
+- [#1707](https://github.com/shadcn-ui/ui/pull/1707) [`46f247c`](https://github.com/shadcn-ui/ui/commit/46f247c47f87f771d98cc77bddb5697dac200de4) Thanks [@caiquecastro](https://github.com/caiquecastro)! - fix code style
+
+- [#1696](https://github.com/shadcn-ui/ui/pull/1696) [`5a13def`](https://github.com/shadcn-ui/ui/commit/5a13def46d9b91d19ad1bcab6cc2955007dfdf61) Thanks [@KMJ-007](https://github.com/KMJ-007)! - use jsconfig for non-ts projects
+
 ## 0.4.1
 
 ### Patch Changes
