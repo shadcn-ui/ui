@@ -1,5 +1,6 @@
 import React from "react"
 import { cva } from "class-variance-authority"
+import { Check } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
@@ -7,7 +8,22 @@ import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "./button"
 import { Separator } from "./separator"
 
-type UseStepper = {
+interface StepperProps {
+  steps: {
+    label: string | React.ReactNode
+    description?: string | React.ReactNode
+    optional?: boolean
+  }[]
+  initialStep: number
+  orientation?: "vertical" | "horizontal"
+  responsive?: boolean
+  labelOrientation?: "vertical" | "horizontal"
+  variant?: "default" | "ghost" | "outline" | "secondary"
+  status?: "default" | "success" | "error" | "warning" | "loading"
+  clickable?: boolean
+}
+
+interface ContextStepperProps extends StepperProps {
   nextStep: () => void
   prevStep: () => void
   resetSteps: () => void
@@ -18,17 +34,27 @@ type UseStepper = {
   isOptionalStep: boolean | undefined
 }
 
-export function useStepper(): UseStepper {
-  const { steps, initialStep } = useStepperContext()
+const StepperContext = React.createContext<ContextStepperProps>({
+  steps: [],
+  initialStep: 0,
+  nextStep: () => {},
+  prevStep: () => {},
+  resetSteps: () => {},
+  setStep: () => {},
+  activeStep: 0,
+  isDisabledStep: false,
+  isLastStep: false,
+  isOptionalStep: false,
+})
 
-  if (steps.length === 0) {
-    throw new Error(
-      "useStepper must be used within a StepperProvider. Wrap a parent component in <StepperProvider> to fix this error."
-    )
-  }
-
-  const [activeStep, setActiveStep] = React.useState(initialStep)
-
+const StepperProvider = ({
+  value,
+  children,
+}: {
+  value: StepperProps
+  children: React.ReactNode
+}) => {
+  const [activeStep, setActiveStep] = React.useState(value.initialStep)
   const nextStep = () => {
     setActiveStep((prev) => prev + 1)
   }
@@ -38,7 +64,7 @@ export function useStepper(): UseStepper {
   }
 
   const resetSteps = () => {
-    setActiveStep(initialStep)
+    setActiveStep(value.initialStep)
   }
 
   const setStep = (step: number) => {
@@ -47,54 +73,31 @@ export function useStepper(): UseStepper {
 
   const isDisabledStep = activeStep === 0
 
-  const isLastStep = activeStep === steps.length - 1
+  const isLastStep = activeStep === value.steps.length - 1
 
-  const isOptionalStep = steps[activeStep]?.optional
+  const isOptionalStep = value.steps[activeStep]?.optional
 
-  return {
-    nextStep,
-    prevStep,
-    resetSteps,
-    setStep,
-    activeStep,
-    isDisabledStep,
-    isLastStep,
-    isOptionalStep,
-  }
-}
-
-interface StepperProps {
-  initialStep: number
-  steps: {
-    label: string | React.ReactNode
-    description?: string | React.ReactNode
-    optional?: boolean
-  }[]
-  orientation?: "vertical" | "horizontal"
-  labelOrientation?: "vertical" | "horizontal"
-  responsive?: boolean
-  variant?: "default" | "ghost" | "outline" | "secondary"
-  status?: "default" | "success" | "error" | "warning" | "loading"
-  clickable?: boolean
-}
-
-const StepperContext = React.createContext<StepperProps>({
-  initialStep: 0,
-  steps: [],
-})
-
-export const useStepperContext = () => React.useContext(StepperContext)
-
-const StepperProvider = ({
-  value,
-  children,
-}: {
-  value: StepperProps
-  children: React.ReactNode
-}) => {
   return (
-    <StepperContext.Provider value={value}>{children}</StepperContext.Provider>
+    <StepperContext.Provider
+      value={{
+        ...value,
+        nextStep,
+        prevStep,
+        resetSteps,
+        setStep,
+        activeStep,
+        isDisabledStep,
+        isLastStep,
+        isOptionalStep,
+      }}
+    >
+      {children}
+    </StepperContext.Provider>
   )
+}
+
+export function useStepper() {
+  return React.useContext(StepperContext)
 }
 
 export const Stepper = React.forwardRef<
@@ -122,15 +125,18 @@ export const Stepper = React.forwardRef<
 
     const childrens = React.Children.toArray(children).map((child, index) => {
       if (!React.isValidElement(child)) {
-        return null
+        throw new Error("Stepper children must be valid React elements.")
       }
-      if (child.type !== StepperItem) {
-        return child
+      if (child.type !== StepperItem && child.type !== StepperFooter) {
+        throw new Error(
+          "Stepper children must be either <StepperItem> or <StepperFooter>."
+        )
       }
       const stepperItemProps = {
         ...child.props,
         step: index,
       }
+
       return React.cloneElement(child, stepperItemProps)
     })
 
@@ -143,23 +149,39 @@ export const Stepper = React.forwardRef<
           responsive,
           labelOrientation,
           variant,
+          clickable,
+          status,
         }}
       >
-        <div
-          {...props}
-          ref={ref}
-          className={cn(
-            "flex w-full flex-1 justify-between gap-4 text-center",
-            orientation === "vertical" ? "flex-col" : "flex-row",
-            className
+        <div ref={ref} className={cn("space-y-4", className)} {...props}>
+          <div
+            className={cn(
+              "flex w-full flex-1 justify-between gap-4 text-center",
+              orientation === "vertical" ? "flex-col" : "flex-row"
+            )}
+          >
+            {childrens}
+          </div>
+          {orientation === "horizontal" && (
+            <HorizontalContent>{children}</HorizontalContent>
           )}
-        >
-          {childrens}
         </div>
       </StepperProvider>
     )
   }
 )
+
+const HorizontalContent = ({ children }: { children?: React.ReactNode }) => {
+  const { activeStep } = useStepper()
+
+  const activeStepperItem = React.Children.toArray(children)[
+    activeStep
+  ] as React.ReactElement
+
+  const content = activeStepperItem?.props?.children
+
+  return content
+}
 
 const stepperItemVariants = cva("relative flex flex-row gap-2", {
   variants: {
@@ -189,14 +211,19 @@ export const StepperItem = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & {
     icon?: React.ReactNode
   }
-  // @ts-ignore
+  // @ts-ignore - step is a prop that is added from the Stepper through React.Children.
 >(({ step, children, className, onClick, ...props }, ref) => {
-  const { steps, orientation, labelOrientation, variant, status, clickable } =
-    useStepperContext()
-
-  const { activeStep, setStep } = useStepper()
-
-  const isLastStep = steps.length - 1 === step
+  const {
+    activeStep,
+    setStep,
+    steps,
+    isLastStep,
+    orientation,
+    labelOrientation,
+    variant,
+    status,
+    clickable,
+  } = useStepper()
 
   const isActive = step === activeStep
   const isCompleted = step < activeStep
@@ -229,6 +256,7 @@ export const StepperItem = React.forwardRef<
       ref={ref}
       onClick={onClickItem}
       aria-disabled={!isVisited}
+      {...props}
     >
       <div
         className={cn(
@@ -247,21 +275,7 @@ export const StepperItem = React.forwardRef<
           )}
           variant={isError ? "destructive" : variant}
         >
-          {isCompleted ? (
-            <svg
-              className="h-6 w-6"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-          ) : (
-            step + 1
-          )}
+          {isCompleted ? <Check className="h-6 w-6" /> : step + 1}
         </Button>
         <div
           className={cn(
@@ -295,3 +309,16 @@ export const StepperItem = React.forwardRef<
 })
 
 StepperItem.displayName = "StepperItem"
+
+export const StepperFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ children, ...props }, ref) => {
+  return (
+    <div ref={ref} {...props}>
+      {children}
+    </div>
+  )
+})
+
+StepperFooter.displayName = "StepperFooter"
