@@ -73,7 +73,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["button"],
       component: React.lazy(() => import("@/registry/default/ui/carousel")),
-      files: ["registry/default/ui/carousel.tsx"],
+      files: ["registry/default/ui/carousel.tsx","registry/stories/carousel.stories.tsx"],
     },
     "checkbox": {
       name: "checkbox",
@@ -115,7 +115,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/drawer")),
-      files: ["registry/default/ui/drawer.tsx"],
+      files: ["registry/default/ui/drawer.tsx","registry/stories/drawer.stories.tsx"],
     },
     "dropdown-menu": {
       name: "dropdown-menu",
@@ -171,7 +171,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["button"],
       component: React.lazy(() => import("@/registry/default/ui/pagination")),
-      files: ["registry/default/ui/pagination.tsx"],
+      files: ["registry/default/ui/pagination.tsx","registry/stories/pagination.stories.tsx"],
     },
     "popover": {
       name: "popover",
@@ -199,7 +199,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/resizable")),
-      files: ["registry/default/ui/resizable.tsx"],
+      files: ["registry/default/ui/resizable.tsx","registry/stories/resizable.stories.tsx"],
     },
     "scroll-area": {
       name: "scroll-area",
@@ -248,7 +248,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/sonner")),
-      files: ["registry/default/ui/sonner.tsx"],
+      files: ["registry/default/ui/sonner.tsx","registry/stories/sonner.stories.tsx"],
     },
     "switch": {
       name: "switch",
@@ -1292,7 +1292,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["button"],
       component: React.lazy(() => import("@/registry/new-york/ui/carousel")),
-      files: ["registry/new-york/ui/carousel.tsx"],
+      files: ["registry/new-york/ui/carousel.tsx","registry/stories/carousel.stories.tsx"],
     },
     "checkbox": {
       name: "checkbox",
@@ -1334,7 +1334,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/drawer")),
-      files: ["registry/new-york/ui/drawer.tsx"],
+      files: ["registry/new-york/ui/drawer.tsx","registry/stories/drawer.stories.tsx"],
     },
     "dropdown-menu": {
       name: "dropdown-menu",
@@ -1390,7 +1390,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["button"],
       component: React.lazy(() => import("@/registry/new-york/ui/pagination")),
-      files: ["registry/new-york/ui/pagination.tsx"],
+      files: ["registry/new-york/ui/pagination.tsx","registry/stories/pagination.stories.tsx"],
     },
     "popover": {
       name: "popover",
@@ -1418,7 +1418,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/resizable")),
-      files: ["registry/new-york/ui/resizable.tsx"],
+      files: ["registry/new-york/ui/resizable.tsx","registry/stories/resizable.stories.tsx"],
     },
     "scroll-area": {
       name: "scroll-area",
@@ -1467,7 +1467,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/sonner")),
-      files: ["registry/new-york/ui/sonner.tsx"],
+      files: ["registry/new-york/ui/sonner.tsx","registry/stories/sonner.stories.tsx"],
     },
     "switch": {
       name: "switch",

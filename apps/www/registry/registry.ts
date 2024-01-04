@@ -57,7 +57,7 @@ const ui: Registry = [
   {
     name: "carousel",
     type: "components:ui",
-    files: ["ui/carousel.tsx"],
+    files: ["ui/carousel.tsx", "stories/carousel.stories.tsx"],
     registryDependencies: ["button"],
     dependencies: ["embla-carousel-react"],
   },
@@ -96,7 +96,7 @@ const ui: Registry = [
     name: "drawer",
     type: "components:ui",
     dependencies: ["vaul", "@radix-ui/react-dialog"],
-    files: ["ui/drawer.tsx"],
+    files: ["ui/drawer.tsx", "stories/drawer.stories.tsx"],
   },
   {
     name: "dropdown-menu",
@@ -150,7 +150,7 @@ const ui: Registry = [
     name: "pagination",
     type: "components:ui",
     registryDependencies: ["button"],
-    files: ["ui/pagination.tsx"],
+    files: ["ui/pagination.tsx", "stories/pagination.stories.tsx"],
   },
   {
     name: "popover",
@@ -174,7 +174,7 @@ const ui: Registry = [
     name: "resizable",
     type: "components:ui",
     dependencies: ["react-resizable-panels"],
-    files: ["ui/resizable.tsx"],
+    files: ["ui/resizable.tsx", "stories/resizable.stories.tsx"],
   },
   {
     name: "scroll-area",
@@ -215,7 +215,7 @@ const ui: Registry = [
     name: "sonner",
     type: "components:ui",
     dependencies: ["sonner", "next-themes"],
-    files: ["ui/sonner.tsx"],
+    files: ["ui/sonner.tsx", "stories/sonner.stories.tsx"],
   },
   {
     name: "switch",

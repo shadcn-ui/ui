@@ -105,7 +105,8 @@
       "button"
     ],
     "files": [
-      "ui/carousel.tsx"
+      "ui/carousel.tsx",
+      "stories/carousel.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -174,7 +175,8 @@
       "@radix-ui/react-dialog"
     ],
     "files": [
-      "ui/drawer.tsx"
+      "ui/drawer.tsx",
+      "stories/drawer.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -266,7 +268,8 @@
       "button"
     ],
     "files": [
-      "ui/pagination.tsx"
+      "ui/pagination.tsx",
+      "stories/pagination.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -309,7 +312,8 @@
       "react-resizable-panels"
     ],
     "files": [
-      "ui/resizable.tsx"
+      "ui/resizable.tsx",
+      "stories/resizable.stories.tsx"
     ],
     "type": "components:ui"
   },
@@ -383,7 +387,8 @@
       "next-themes"
     ],
     "files": [
-      "ui/sonner.tsx"
+      "ui/sonner.tsx",
+      "stories/sonner.stories.tsx"
     ],
     "type": "components:ui"
   },
