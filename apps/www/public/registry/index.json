@@ -90,6 +90,7 @@
   {
     "name": "carousel",
     "dependencies": [
+      "embla-carousel",
       "embla-carousel-react"
     ],
     "registryDependencies": [

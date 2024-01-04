@@ -59,7 +59,7 @@ const ui: Registry = [
     type: "components:ui",
     files: ["ui/carousel.tsx"],
     registryDependencies: ["button"],
-    dependencies: ["embla-carousel-react"],
+    dependencies: ["embla-carousel", "embla-carousel-react"],
   },
   {
     name: "checkbox",
