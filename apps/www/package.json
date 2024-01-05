@@ -49,6 +49,7 @@
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-toggle-group": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.6",
+    "@storybook/addon-actions": "^7.6.7",
     "@tanstack/react-table": "^8.9.1",
     "@vercel/analytics": "^1.0.1",
     "@vercel/og": "^0.0.21",
