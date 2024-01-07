@@ -76,7 +76,7 @@
     "sonner": "^1.2.3",
     "tailwind-merge": "^1.12.0",
     "vaul": "^0.2.0",
-    "zod": "^3.21.4"
+    "zod": "^3.22.3"
   },
   "devDependencies": {
     "@types/lodash.template": "^4.5.1",
