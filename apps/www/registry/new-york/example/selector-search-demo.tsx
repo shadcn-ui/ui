@@ -1,5 +1,4 @@
 import { toast } from "sonner"
-import { z } from "zod"
 
 import { Selector } from "@/registry/new-york/ui/selector"
 
@@ -41,21 +40,6 @@ const users = [
     location: "Paris",
   },
 ]
-
-const userSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  surname: z.string(),
-  age: z.number(),
-  address: z.string(),
-  phoneNumber: z.number(),
-})
-
-const schema = z.object({
-  user: userSchema,
-})
-
-type Schema = z.infer<typeof schema>
 
 export default function SelectorSearchDemo() {
   return (
