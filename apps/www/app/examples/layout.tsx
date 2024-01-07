@@ -1,16 +1,16 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import { Announcement } from "@/components/announcement"
 import { ExamplesNav } from "@/components/examples-nav"
 import {
+  PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
+import { buttonVariants } from "@/registry/new-york/ui/button"
 
 export const metadata: Metadata = {
   title: "Examples",
@@ -24,25 +24,18 @@ interface ExamplesLayoutProps {
 export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
   return (
     <>
-      <div className="container relative pb-10">
-        <PageHeader className="page-header">
-          <Link
-            href="/docs/forms/react-hook-form"
-            className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
-          >
-            🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-            Building forms with React Hook Form and Zod
-            <ChevronRight className="ml-1 h-4 w-4" />
-          </Link>
+      <div className="container relative">
+        <PageHeader>
+          <Announcement />
           <PageHeaderHeading className="hidden md:block">
-            Check out some examples.
+            Check out some examples
           </PageHeaderHeading>
           <PageHeaderHeading className="md:hidden">Examples</PageHeaderHeading>
           <PageHeaderDescription>
             Dashboard, cards, authentication. Some examples built using the
             components. Use this as a guide to build your own.
           </PageHeaderDescription>
-          <section className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
+          <PageActions>
             <Link
               href="/docs"
               className={cn(buttonVariants(), "rounded-[6px]")}
@@ -58,11 +51,11 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
             >
               Components
             </Link>
-          </section>
+          </PageActions>
         </PageHeader>
         <section>
           <ExamplesNav />
-          <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-xl">
+          <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-xl">
             {children}
           </div>
         </section>

@@ -16,6 +16,10 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components/accordion",
     },
     {
+      title: "Themes",
+      href: "/themes",
+    },
+    {
       title: "Examples",
       href: "/examples",
     },
@@ -49,8 +53,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "components.json",
+          href: "/docs/components-json",
+          items: [],
+        },
+        {
           title: "Theming",
           href: "/docs/theming",
+          items: [],
+        },
+        {
+          title: "Dark mode",
+          href: "/docs/dark-mode",
           items: [],
         },
         {
@@ -63,33 +77,15 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/typography",
           items: [],
         },
-      ],
-    },
-    {
-      title: "Community",
-      items: [
         {
           title: "Figma",
           href: "/docs/figma",
           items: [],
         },
-      ],
-    },
-    {
-      title: "Forms",
-      items: [
         {
-          title: "React Hook Form",
-          href: "/docs/forms/react-hook-form",
-          label: "New",
+          title: "Changelog",
+          href: "/docs/changelog",
           items: [],
-        },
-        {
-          title: "TanStack Form",
-          href: "#",
-          items: [],
-          label: "Soon",
-          disabled: true,
         },
       ],
     },
@@ -142,6 +138,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Carousel",
+          href: "/docs/components/carousel",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Checkbox",
           href: "/docs/components/checkbox",
           items: [],
@@ -169,7 +171,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Data Table",
           href: "/docs/components/data-table",
-          label: "New",
           items: [],
         },
         {
@@ -183,8 +184,19 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Drawer",
+          href: "/docs/components/drawer",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Dropdown Menu",
           href: "/docs/components/dropdown-menu",
+          items: [],
+        },
+        {
+          title: "Form",
+          href: "/docs/components/form",
           items: [],
         },
         {
@@ -213,6 +225,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Pagination",
+          href: "/docs/components/pagination",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Popover",
           href: "/docs/components/popover",
           items: [],
@@ -226,6 +244,12 @@ export const docsConfig: DocsConfig = {
           title: "Radio Group",
           href: "/docs/components/radio-group",
           items: [],
+        },
+        {
+          title: "Resizable",
+          href: "/docs/components/resizable",
+          items: [],
+          label: "New",
         },
         {
           title: "Scroll Area",
@@ -258,6 +282,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Sonner",
+          href: "/docs/components/sonner",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Switch",
           href: "/docs/components/switch",
           items: [],
@@ -265,7 +295,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Table",
           href: "/docs/components/table",
-          label: "New",
           items: [],
         },
         {
@@ -286,6 +315,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Toggle",
           href: "/docs/components/toggle",
+          items: [],
+        },
+        {
+          title: "Toggle Group",
+          href: "/docs/components/toggle-group",
           items: [],
         },
         {

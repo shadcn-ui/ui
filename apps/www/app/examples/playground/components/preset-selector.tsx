@@ -2,23 +2,23 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
-import { Check, ChevronsUpDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/ui/command"
+} from "@/registry/new-york/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/registry/new-york/ui/popover"
 
 import { Preset } from "../data/presets"
 
@@ -42,7 +42,7 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
           className="flex-1 justify-between md:max-w-[200px] lg:max-w-[300px]"
         >
           {selectedPreset ? selectedPreset.name : "Load a preset..."}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[300px] p-0">
@@ -59,7 +59,7 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
                 }}
               >
                 {preset.name}
-                <Check
+                <CheckIcon
                   className={cn(
                     "ml-auto h-4 w-4",
                     selectedPreset?.id === preset.id
