@@ -41,6 +41,9 @@
         },
         "components": {
           "type": "string"
+        },
+        "ui": {
+          "type": "string"
         }
       },
       "required": ["utils", "components"]
