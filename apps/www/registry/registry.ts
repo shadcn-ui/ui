@@ -781,6 +781,12 @@ const example: Registry = [
     files: ["example/selector-disabled-demo.tsx"],
   },
   {
+    name: "selector-search-demo",
+    type: "components:example",
+    registryDependencies: ["selector"],
+    files: ["example/selector-search-demo.tsx"],
+  },
+  {
     name: "selector-groups-demo",
     type: "components:example",
     registryDependencies: ["selector"],
