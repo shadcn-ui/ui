@@ -191,6 +191,7 @@ const ui: Registry = [
   {
     name: "selector",
     type: "components:ui",
+    dependencies: ["@radix-ui/react-popover", "cmdk"],
     files: ["ui/selector.tsx"],
   },
   {

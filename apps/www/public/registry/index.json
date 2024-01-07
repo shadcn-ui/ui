@@ -311,6 +311,10 @@
   },
   {
     "name": "selector",
+    "dependencies": [
+      "@radix-ui/react-popover",
+      "cmdk"
+    ],
     "files": [
       "ui/selector.tsx"
     ],

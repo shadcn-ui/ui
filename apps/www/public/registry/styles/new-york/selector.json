@@ -1,5 +1,9 @@
 {
   "name": "selector",
+  "dependencies": [
+    "@radix-ui/react-popover",
+    "cmdk"
+  ],
   "files": [
     {
       "name": "selector.tsx",
