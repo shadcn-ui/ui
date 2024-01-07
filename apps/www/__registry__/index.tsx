@@ -915,6 +915,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/selector-filters-demo")),
       files: ["registry/default/example/selector-filters-demo.tsx"],
     },
+    "selector-reselect-demo": {
+      name: "selector-reselect-demo",
+      type: "components:example",
+      registryDependencies: ["selector"],
+      component: React.lazy(() => import("@/registry/default/example/selector-reselect-demo")),
+      files: ["registry/default/example/selector-reselect-demo.tsx"],
+    },
     "separator-demo": {
       name: "separator-demo",
       type: "components:example",
@@ -2175,6 +2182,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["selector"],
       component: React.lazy(() => import("@/registry/new-york/example/selector-filters-demo")),
       files: ["registry/new-york/example/selector-filters-demo.tsx"],
+    },
+    "selector-reselect-demo": {
+      name: "selector-reselect-demo",
+      type: "components:example",
+      registryDependencies: ["selector"],
+      component: React.lazy(() => import("@/registry/new-york/example/selector-reselect-demo")),
+      files: ["registry/new-york/example/selector-reselect-demo.tsx"],
     },
     "separator-demo": {
       name: "separator-demo",
