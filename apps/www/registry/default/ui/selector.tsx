@@ -9,7 +9,6 @@ import {
   useState,
 } from "react"
 import { Check, Filter } from "lucide-react"
-import { twMerge } from "tailwind-merge"
 
 import { cn } from "@/lib/utils"
 import { Button, ButtonProps } from "@/registry/default/ui/button"
@@ -349,7 +348,7 @@ function Selector<T>({
         <PopoverTrigger asChild>
           <Button
             {...triggerProps}
-            className={twMerge("w-fit", triggerProps?.className)}
+            className={cn("w-fit", triggerProps?.className)}
             type="button"
             variant="outline"
           >
@@ -357,7 +356,7 @@ function Selector<T>({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className={twMerge("min-w-max max-w-0", contentStyles)}
+          className={cn("min-w-max max-w-0", contentStyles)}
           style={{ width: containerRef.current?.offsetWidth }}
           hideWhenDetached
         >
