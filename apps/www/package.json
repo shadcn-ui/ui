@@ -62,7 +62,7 @@
     "lodash.template": "^4.5.0",
     "lucide-react": "0.288.0",
     "markdown-wasm": "^1.2.0",
-    "next": "14.0.4",
+    "next": "13.5.1",
     "next-contentlayer": "0.3.4",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
@@ -76,7 +76,7 @@
     "sonner": "^1.2.3",
     "tailwind-merge": "^1.12.0",
     "vaul": "^0.2.0",
-    "zod": "^3.21.4"
+    "zod": "^3.22.3"
   },
   "devDependencies": {
     "@types/lodash.template": "^4.5.1",
@@ -87,7 +87,7 @@
     "esbuild": "^0.17.19",
     "eslint": "^8.41.0",
     "mdast-util-toc": "^6.1.1",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.31",
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.6.0",
