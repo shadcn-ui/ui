@@ -50,7 +50,7 @@ function useActiveItem(itemIds: string[]) {
           }
         })
       },
-      { rootMargin: `0% 0% -80% 0%` }
+      { rootMargin: "0% 0% -80% 0%" }
     )
 
     itemIds?.forEach((id) => {
