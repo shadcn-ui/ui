@@ -236,7 +236,11 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     <Switch id="mute" aria-label="Mute thread" /> Mute this
                     thread
                   </Label>
-                  <Button size="sm" className="ml-auto">
+                  <Button
+                    onClick={(e) => e.preventDefault()}
+                    size="sm"
+                    className="ml-auto"
+                  >
                     Send
                   </Button>
                 </div>
