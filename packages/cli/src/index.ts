@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { add } from "@/src/commands/add"
 import { diff } from "@/src/commands/diff"
 import { init } from "@/src/commands/init"
