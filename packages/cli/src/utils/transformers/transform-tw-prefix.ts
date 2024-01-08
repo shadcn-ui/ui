@@ -170,7 +170,7 @@ export const transformTwPrefixes: Transformer = async ({
   return sourceFile
 }
 
-export function applyPrefix(input: string, prefix: string = "") {
+export function applyPrefix(input: string, prefix = "") {
   const classNames = input.split(" ")
   const prefixed: string[] = []
   for (let className of classNames) {
