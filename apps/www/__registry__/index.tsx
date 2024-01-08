@@ -278,6 +278,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/textarea")),
       files: ["registry/default/ui/textarea.tsx"],
     },
+    "timeline": {
+      name: "timeline",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/timeline")),
+      files: ["registry/default/ui/timeline.tsx"],
+    },
     "toast": {
       name: "toast",
       type: "components:ui",
@@ -985,6 +992,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/textarea-with-text")),
       files: ["registry/default/example/textarea-with-text.tsx"],
     },
+    "timeline-demo": {
+      name: "timeline-demo",
+      type: "components:example",
+      registryDependencies: ["timeline"],
+      component: React.lazy(() => import("@/registry/default/example/timeline-demo")),
+      files: ["registry/default/example/timeline-demo.tsx"],
+    },
     "toast-demo": {
       name: "toast-demo",
       type: "components:example",
@@ -1496,6 +1510,13 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/textarea")),
       files: ["registry/new-york/ui/textarea.tsx"],
+    },
+    "timeline": {
+      name: "timeline",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/timeline")),
+      files: ["registry/new-york/ui/timeline.tsx"],
     },
     "toast": {
       name: "toast",
@@ -2203,6 +2224,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["textarea","label"],
       component: React.lazy(() => import("@/registry/new-york/example/textarea-with-text")),
       files: ["registry/new-york/example/textarea-with-text.tsx"],
+    },
+    "timeline-demo": {
+      name: "timeline-demo",
+      type: "components:example",
+      registryDependencies: ["timeline"],
+      component: React.lazy(() => import("@/registry/new-york/example/timeline-demo")),
+      files: ["registry/new-york/example/timeline-demo.tsx"],
     },
     "toast-demo": {
       name: "toast-demo",

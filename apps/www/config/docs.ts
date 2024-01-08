@@ -308,6 +308,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Timeline",
+          href: "/docs/components/timeline",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Toast",
           href: "/docs/components/toast",
           items: [],

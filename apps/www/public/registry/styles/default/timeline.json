@@ -1,0 +1,10 @@
+{
+  "name": "timeline",
+  "files": [
+    {
+      "name": "timeline.tsx",
+      "content": "import React, { ReactNode } from 'react';\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype TimelineContentProps = {\r\n  children: ReactNode;\r\n};\r\n\r\nconst TimelineContent: React.FC<TimelineContentProps> = ({ children }) => (\r\n  <div className={cn(\"ml-4\")}>{children}</div>\r\n);\r\nTimelineContent.displayName = \"TimelineContent\";\r\n\r\nconst TimelineDot: React.FC = () => <div className={cn(\"h-3 w-3 bg-gray-700 rounded-full\")}></div>;\r\nTimelineDot.displayName = \"TimelineDot\";\r\n\r\ntype TimelineItemProps = {\r\n  children: React.ReactNode;\r\n  className?: string;\r\n};\r\n\r\nconst TimelineItem: React.FC<TimelineItemProps> = ({ children, className }) => (\r\n  <div className={cn(\"flex items-center\", className)}>\r\n    <TimelineDot />\r\n    <TimelineContent>{children}</TimelineContent>\r\n  </div>\r\n);\r\nTimelineItem.displayName = \"TimelineItem\";\r\n\r\ntype TimelineProps = {\r\n  children: React.ReactNode;\r\n};\r\n\r\nconst Timeline: React.FC<TimelineProps> = ({ children }) => {\r\n  const timelineItems = React.Children.toArray(children);\r\n\r\n  return (\r\n    <div className={cn(\"flex flex-col items-start\")}>\r\n      {timelineItems.map((child, index) => (\r\n        <React.Fragment key={index}>\r\n          {index > 0 && <div className={cn(\"h-16 w-[3px] bg-gray-400 self-stretch ml-[4px]\")}></div>}\r\n          {child}\r\n        </React.Fragment>\r\n      ))}\r\n    </div>\r\n  );\r\n};\r\nTimeline.displayName = \"Timeline\";\r\n\r\nexport { Timeline, TimelineItem };\r\n"
+    }
+  ],
+  "type": "components:ui"
+}

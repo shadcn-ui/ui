@@ -240,6 +240,11 @@ const ui: Registry = [
     files: ["ui/textarea.tsx"],
   },
   {
+    name: "timeline",
+    type: "components:ui",
+    files: ["ui/timeline.tsx"],
+  },
+  {
     name: "toast",
     type: "components:ui",
     dependencies: ["@radix-ui/react-toast"],
@@ -852,6 +857,12 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["textarea", "label"],
     files: ["example/textarea-with-text.tsx"],
+  },
+  {
+    name: "timeline-demo",
+    type: "components:example",
+    registryDependencies: ["timeline"],
+    files: ["example/timeline-demo.tsx"],
   },
   {
     name: "toast-demo",
