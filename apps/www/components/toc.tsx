@@ -1,4 +1,4 @@
-// @ts-nocheck
+// @ts-nocheck - this is ok because <reason>
 "use client"
 
 import * as React from "react"
