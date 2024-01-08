@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.6.0
+
+### Minor Changes
+
+- [#2266](https://github.com/shadcn-ui/ui/pull/2266) [`be580db`](https://github.com/shadcn-ui/ui/commit/be580dbf7671b7db84282aa3554b62304e668414) Thanks [@shadcn](https://github.com/shadcn)! - add support for custom ui dir
+
 ## 0.5.0
 
 ### Minor Changes
