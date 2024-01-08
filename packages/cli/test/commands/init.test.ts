@@ -127,13 +127,13 @@ test("init config-partial", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     2,
     expect.stringMatching(/src\/assets\/css\/tailwind.css$/),
-    expect.stringContaining(`@tailwind base`),
+    expect.stringContaining("@tailwind base"),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     3,
     expect.stringMatching(/utils.ts$/),
-    expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
+    expect.stringContaining('import { type ClassValue, clsx } from "clsx"'),
     "utf8"
   )
   expect(execa).toHaveBeenCalledWith(
