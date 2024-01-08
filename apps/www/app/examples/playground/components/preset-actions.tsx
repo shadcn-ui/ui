@@ -73,7 +73,7 @@ export function PresetActions() {
               Playground Warnings
             </h4>
             <div className="flex items-start justify-between space-x-4 pt-3">
-              <Switch name="show" id="show" defaultChecked={true} />
+              <Switch name="show" id="show" defaultChecked />
               <Label className="grid gap-1 font-normal" htmlFor="show">
                 <span className="font-semibold">
                   Show a warning when content is flagged

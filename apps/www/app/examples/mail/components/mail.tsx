@@ -69,7 +69,7 @@ export function Mail({
         <ResizablePanel
           defaultSize={defaultLayout[0]}
           collapsedSize={navCollapsedSize}
-          collapsible={true}
+          collapsible
           minSize={15}
           maxSize={20}
           onCollapse={(collapsed) => {
