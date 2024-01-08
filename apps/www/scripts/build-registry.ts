@@ -377,7 +377,7 @@ for (const theme of themes) {
 }
 
 fs.writeFileSync(
-  path.join(REGISTRY_PATH, `themes.css`),
+  path.join(REGISTRY_PATH, "themes.css"),
   themeCSS.join("\n"),
   "utf8"
 )

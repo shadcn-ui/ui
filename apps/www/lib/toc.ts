@@ -13,7 +13,7 @@ function flattenNode(node) {
     if (!textTypes.includes(node.type)) return
     p.push(node.value)
   })
-  return p.join(``)
+  return p.join("")
 }
 
 interface Item {
