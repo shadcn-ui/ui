@@ -1,4 +1,4 @@
-// @ts-nocheck
+// @ts-nocheck - this is ok because <reason>
 // TODO: I'll fix this later.
 
 import { toc } from "mdast-util-toc"

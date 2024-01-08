@@ -1,4 +1,4 @@
-// @ts-nocheck
+// @ts-nocheck - this is ok because <reason>
 import fs from "fs"
 import path, { basename } from "path"
 import template from "lodash.template"
@@ -50,8 +50,8 @@ for (const style of styles) {
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       component: React.lazy(() => import("@/registry/${style.name}/${type}/${
-        item.name
-      }")),
+      item.name
+    }")),
       files: [${resolveFiles.map((file) => `"${file}"`)}],
     },`
   }
