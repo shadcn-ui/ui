@@ -51,7 +51,7 @@ export const diff = new Command()
       if (!config) {
         logger.warn(
           `Configuration is missing. Please run ${chalk.green(
-            `init`
+            "init"
           )} to create a components.json file.`
         )
         process.exit(1)
@@ -100,7 +100,7 @@ export const diff = new Command()
         }
         logger.break()
         logger.info(
-          `Run ${chalk.green(`diff <component>`)} to see the changes.`
+          `Run ${chalk.green("diff <component>")} to see the changes.`
         )
         process.exit(0)
       }

@@ -59,7 +59,7 @@ export const add = new Command()
       if (!config) {
         logger.warn(
           `Configuration is missing. Please run ${chalk.green(
-            `init`
+            "init"
           )} to create a components.json file.`
         )
         process.exit(1)
@@ -106,7 +106,7 @@ export const add = new Command()
         const { proceed } = await prompts({
           type: "confirm",
           name: "proceed",
-          message: `Ready to install components and dependencies. Proceed?`,
+          message: "Ready to install components and dependencies. Proceed?",
           initial: true,
         })
 
@@ -115,7 +115,7 @@ export const add = new Command()
         }
       }
 
-      const spinner = ora(`Installing components...`).start()
+      const spinner = ora("Installing components...").start()
       for (const item of payload) {
         spinner.text = `Installing ${item.name}...`
         const targetDir = await getItemTargetPath(
@@ -195,7 +195,7 @@ export const add = new Command()
           )
         }
       }
-      spinner.succeed(`Done.`)
+      spinner.succeed("Done.")
     } catch (error) {
       handleError(error)
     }

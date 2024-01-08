@@ -51,19 +51,19 @@ test("init config-full", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
     expect.stringMatching(/tailwind.config.ts$/),
-    expect.stringContaining(`import type { Config } from "tailwindcss"`),
+    expect.stringContaining('import type { Config } from "tailwindcss"'),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     2,
     expect.stringMatching(/src\/app\/globals.css$/),
-    expect.stringContaining(`@tailwind base`),
+    expect.stringContaining("@tailwind base"),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     3,
     expect.stringMatching(/src\/lib\/utils.ts$/),
-    expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
+    expect.stringContaining('import { type ClassValue, clsx } from "clsx"'),
     "utf8"
   )
   expect(execa).toHaveBeenCalledWith(
@@ -121,7 +121,7 @@ test("init config-partial", async () => {
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     1,
     expect.stringMatching(/tailwind.config.ts$/),
-    expect.stringContaining(`import type { Config } from "tailwindcss"`),
+    expect.stringContaining('import type { Config } from "tailwindcss"'),
     "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(

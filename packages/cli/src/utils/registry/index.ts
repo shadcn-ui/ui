@@ -22,7 +22,7 @@ export async function getRegistryIndex() {
 
     return registryIndexSchema.parse(result)
   } catch (error) {
-    throw new Error(`Failed to fetch components from registry.`)
+    throw new Error("Failed to fetch components from registry.")
   }
 }
 
@@ -32,7 +32,7 @@ export async function getRegistryStyles() {
 
     return stylesSchema.parse(result)
   } catch (error) {
-    throw new Error(`Failed to fetch styles from registry.`)
+    throw new Error("Failed to fetch styles from registry.")
   }
 }
 
@@ -67,7 +67,7 @@ export async function getRegistryBaseColor(baseColor: string) {
 
     return registryBaseColorSchema.parse(result)
   } catch (error) {
-    throw new Error(`Failed to fetch base color from registry.`)
+    throw new Error("Failed to fetch base color from registry.")
   }
 }
 
@@ -108,7 +108,7 @@ export async function fetchTree(
 
     return registryWithContentSchema.parse(result)
   } catch (error) {
-    throw new Error(`Failed to fetch tree from registry.`)
+    throw new Error("Failed to fetch tree from registry.")
   }
 }
 
