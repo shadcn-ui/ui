@@ -50,8 +50,8 @@ for (const style of styles) {
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       component: React.lazy(() => import("@/registry/${style.name}/${type}/${
-      item.name
-    }")),
+        item.name
+      }")),
       files: [${resolveFiles.map((file) => `"${file}"`)}],
     },`
   }
