@@ -11,7 +11,7 @@ export function ThemeSwitcher() {
 
   React.useEffect(() => {
     document.body.classList.forEach((className) => {
-      if (className.match(/^theme.*/)) {
+      if (/^theme.*/.test(className)) {
         document.body.classList.remove(className)
       }
     })
