@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import { cva } from "class-variance-authority"
 import { Check } from "lucide-react"
 
@@ -29,9 +29,6 @@ interface ContextStepperProps extends StepperProps {
   resetSteps: () => void
   setStep: (step: number) => void
   activeStep: number
-  isDisabledStep: boolean
-  isLastStep: boolean
-  isOptionalStep: boolean | undefined
 }
 
 const StepperContext = React.createContext<ContextStepperProps>({
@@ -42,9 +39,6 @@ const StepperContext = React.createContext<ContextStepperProps>({
   resetSteps: () => {},
   setStep: () => {},
   activeStep: 0,
-  isDisabledStep: false,
-  isLastStep: false,
-  isOptionalStep: false,
 })
 
 const StepperProvider = ({
@@ -71,12 +65,6 @@ const StepperProvider = ({
     setActiveStep(step)
   }
 
-  const isDisabledStep = activeStep === 0
-
-  const isLastStep = activeStep === value.steps.length - 1
-
-  const isOptionalStep = value.steps[activeStep]?.optional
-
   return (
     <StepperContext.Provider
       value={{
@@ -86,9 +74,6 @@ const StepperProvider = ({
         resetSteps,
         setStep,
         activeStep,
-        isDisabledStep,
-        isLastStep,
-        isOptionalStep,
       }}
     >
       {children}
@@ -97,7 +82,24 @@ const StepperProvider = ({
 }
 
 export function useStepper() {
-  return React.useContext(StepperContext)
+  const context = React.useContext(StepperContext)
+
+  if (context === undefined) {
+    throw new Error("useStepper must be used within a StepperProvider")
+  }
+
+  const isDisabledStep = context.activeStep === 0
+  const isLastStep = context.activeStep === context.steps.length - 1
+  const isOptionalStep = context.steps[context.activeStep]?.optional
+  const isFinished = context.activeStep === context.steps.length
+
+  return {
+    ...context,
+    isDisabledStep,
+    isLastStep,
+    isOptionalStep,
+    isFinished,
+  }
 }
 
 export const Stepper = React.forwardRef<
@@ -123,7 +125,9 @@ export const Stepper = React.forwardRef<
     const isMobile = useMediaQuery("(max-width: 43em)")
     const orientation = isMobile && responsive ? "vertical" : orientationProp
 
-    const childrens = React.Children.toArray(children).map((child, index) => {
+    const footer = [] as React.ReactElement[]
+
+    const items = React.Children.toArray(children).map((child, index) => {
       if (!React.isValidElement(child)) {
         throw new Error("Stepper children must be valid React elements.")
       }
@@ -131,6 +135,10 @@ export const Stepper = React.forwardRef<
         throw new Error(
           "Stepper children must be either <StepperItem> or <StepperFooter>."
         )
+      }
+      if (child.type === StepperFooter) {
+        footer.push(child)
+        return null
       }
       const stepperItemProps = {
         ...child.props,
@@ -160,11 +168,12 @@ export const Stepper = React.forwardRef<
               orientation === "vertical" ? "flex-col" : "flex-row"
             )}
           >
-            {childrens}
+            {items}
           </div>
           {orientation === "horizontal" && (
             <HorizontalContent>{children}</HorizontalContent>
           )}
+          {footer}
         </div>
       </StepperProvider>
     )
@@ -172,7 +181,11 @@ export const Stepper = React.forwardRef<
 )
 
 const HorizontalContent = ({ children }: { children?: React.ReactNode }) => {
-  const { activeStep } = useStepper()
+  const { activeStep, isFinished } = useStepper()
+
+  if (isFinished) {
+    return null
+  }
 
   const activeStepperItem = React.Children.toArray(children)[
     activeStep
@@ -183,7 +196,7 @@ const HorizontalContent = ({ children }: { children?: React.ReactNode }) => {
   return content
 }
 
-const stepperItemVariants = cva("relative flex flex-row gap-2", {
+const stepperItemVariants = cva("relative flex flex-row gap-4", {
   variants: {
     isLastStep: {
       true: "flex-[0_0_auto] justify-end",
@@ -192,9 +205,6 @@ const stepperItemVariants = cva("relative flex flex-row gap-2", {
     isVertical: {
       true: "flex-col",
       false: "items-center",
-    },
-    isClickable: {
-      true: "cursor-pointer",
     },
   },
   compoundVariants: [
@@ -208,16 +218,16 @@ const stepperItemVariants = cva("relative flex flex-row gap-2", {
 
 export const StepperItem = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
+  Omit<React.HTMLAttributes<HTMLDivElement>, "onClick"> & {
     icon?: React.ReactNode
+    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   }
   // @ts-ignore - step is a prop that is added from the Stepper through React.Children.
->(({ step, children, className, onClick, ...props }, ref) => {
+>(({ step, children, className, onClick, icon, ...props }, ref) => {
   const {
     activeStep,
     setStep,
     steps,
-    isLastStep,
     orientation,
     labelOrientation,
     variant,
@@ -228,14 +238,25 @@ export const StepperItem = React.forwardRef<
   const isActive = step === activeStep
   const isCompleted = step < activeStep
   const isDisabled = step > activeStep && !clickable
-  const isVisited = isActive || isCompleted
+
+  const isLastStep = step === steps.length - 1
 
   const isVertical = orientation === "vertical"
   const isVerticalLabel = labelOrientation === "vertical"
 
   const isError = isActive && status === "error"
 
-  const onClickItem = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
+  const content = React.Children.toArray(children).filter(
+    (child) => React.isValidElement(child) && child.type !== StepperFooter
+  )
+
+  const footer = React.Children.toArray(children).filter(
+    (child) => React.isValidElement(child) && child.type === StepperFooter
+  )[0] as React.ReactElement
+
+  const onClickItem = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (isDisabled) {
       return
     }
@@ -243,43 +264,53 @@ export const StepperItem = React.forwardRef<
     onClick?.(e)
   }
 
+  useEffect(() => {
+    if (!isActive) {
+      return
+    }
+    buttonRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    })
+  }, [isActive])
+
+  const iconComponent = icon || step + 1
+
   return (
     <div
       className={cn(
         stepperItemVariants({
           isLastStep,
           isVertical,
-          isClickable: clickable,
         }),
         className
       )}
       ref={ref}
-      onClick={onClickItem}
-      aria-disabled={!isVisited}
       {...props}
     >
       <div
         className={cn(
           "flex items-center gap-3",
-          isVerticalLabel && !isVertical && "flex-col"
+          isVerticalLabel && !isVertical && "flex-col gap-2"
         )}
       >
         <Button
-          aria-current={isActive ? "step" : undefined}
-          data-invalid={isError}
           data-highlighted={isCompleted}
-          disabled={!isVisited}
+          disabled={isDisabled}
+          onClick={onClickItem}
+          ref={buttonRef}
           className={cn(
             "aspect-square h-12 w-12 rounded-full data-[highlighted=true]:bg-green-700 data-[highlighted=true]:text-white",
-            isActive ? "px-3 py-2" : ""
+            clickable && "cursor-pointer",
+            !isActive && !isDisabled && !isCompleted && "opacity-50"
           )}
           variant={isError ? "destructive" : variant}
         >
-          {isCompleted ? <Check className="h-6 w-6" /> : step + 1}
+          {isCompleted ? <Check className="h-6 w-6" /> : iconComponent}
         </Button>
         <div
           className={cn(
-            "text-start",
+            "w-max text-start",
             isVerticalLabel && !isVertical && "text-center"
           )}
         >
@@ -293,17 +324,25 @@ export const StepperItem = React.forwardRef<
           )}
         </div>
       </div>
-      {!isLastStep && (
-        <Separator
-          className={cn(
-            "data-[highlighted=true]:bg-green-700",
-            isVertical
-              ? "ms-6 mt-1 flex h-auto min-h-[2rem] w-[1px] border-l-2"
-              : "h-[2px] flex-1"
-          )}
-          orientation={isVertical ? "vertical" : "horizontal"}
-        />
-      )}
+      <div className="flex w-full gap-8">
+        {!isLastStep && (
+          <Separator
+            className={cn(
+              "data-[highlighted=true]:bg-green-700",
+              isVertical
+                ? "ms-6 mt-1 flex h-auto min-h-[2rem] w-[1px] border-l-2"
+                : "h-[2px] flex-1"
+            )}
+            orientation={isVertical ? "vertical" : "horizontal"}
+          />
+        )}
+        {isVertical && isActive && (
+          <div className="w-full space-y-4">
+            {content}
+            {footer}
+          </div>
+        )}
+      </div>
     </div>
   )
 })
