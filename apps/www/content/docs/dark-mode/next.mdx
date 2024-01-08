@@ -18,14 +18,25 @@ npm install next-themes
 ### Create a theme provider
 
 ```tsx title="components/theme-provider.tsx"
-"use client"
+"use client";
 
-import * as React from "react"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { type ThemeProviderProps } from "next-themes/dist/types"
+import * as React from "react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { type ThemeProviderProps } from "next-themes/dist/types";
+import { useEffect, useState } from "react";
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+  
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
 ```
 
@@ -39,9 +50,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
+      <html lang="en">
         <head />
-        <body>
+        <body suppressHydrationWarning>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
