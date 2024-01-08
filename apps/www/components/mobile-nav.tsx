@@ -3,7 +3,6 @@
 import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
-import { ViewVerticalIcon } from "@radix-ui/react-icons"
 
 import { docsConfig } from "@/config/docs"
 import { siteConfig } from "@/config/site"
@@ -115,7 +114,7 @@ export function MobileNav() {
 }
 
 interface MobileLinkProps extends LinkProps {
-  onOpenChange?: (open: boolean) => void
+  onOpenChange?: React.Dispatch<React.SetStateAction<boolean>>
   children: React.ReactNode
   className?: string
 }
