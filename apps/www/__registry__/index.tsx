@@ -194,6 +194,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/radio-group")),
       files: ["registry/default/ui/radio-group.tsx"],
     },
+    "ratings": {
+      name: "ratings",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/ratings")),
+      files: ["registry/default/ui/ratings.tsx"],
+    },
     "resizable": {
       name: "resizable",
       type: "components:ui",
@@ -802,6 +809,20 @@ export const Index: Record<string, any> = {
       registryDependencies: ["radio-group"],
       component: React.lazy(() => import("@/registry/default/example/radio-group-demo")),
       files: ["registry/default/example/radio-group-demo.tsx"],
+    },
+    "ratings-demo": {
+      name: "ratings-demo",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/default/example/ratings-demo")),
+      files: ["registry/default/example/ratings-demo.tsx"],
+    },
+    "ratings-variants": {
+      name: "ratings-variants",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/default/example/ratings-variants")),
+      files: ["registry/default/example/ratings-variants.tsx"],
     },
     "radio-group-form": {
       name: "radio-group-form",
@@ -1413,6 +1434,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/ui/radio-group")),
       files: ["registry/new-york/ui/radio-group.tsx"],
     },
+    "ratings": {
+      name: "ratings",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/ratings")),
+      files: ["registry/new-york/ui/ratings.tsx"],
+    },
     "resizable": {
       name: "resizable",
       type: "components:ui",
@@ -2021,6 +2049,20 @@ export const Index: Record<string, any> = {
       registryDependencies: ["radio-group"],
       component: React.lazy(() => import("@/registry/new-york/example/radio-group-demo")),
       files: ["registry/new-york/example/radio-group-demo.tsx"],
+    },
+    "ratings-demo": {
+      name: "ratings-demo",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/new-york/example/ratings-demo")),
+      files: ["registry/new-york/example/ratings-demo.tsx"],
+    },
+    "ratings-variants": {
+      name: "ratings-variants",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/new-york/example/ratings-variants")),
+      files: ["registry/new-york/example/ratings-variants.tsx"],
     },
     "radio-group-form": {
       name: "radio-group-form",

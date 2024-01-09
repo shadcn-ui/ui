@@ -171,6 +171,12 @@ const ui: Registry = [
     files: ["ui/radio-group.tsx"],
   },
   {
+    name: "ratings",
+    type: "components:ui",
+    dependencies: [],
+    files: ["ui/ratings.tsx"],
+  },
+  {
     name: "resizable",
     type: "components:ui",
     dependencies: ["react-resizable-panels"],
@@ -696,6 +702,18 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["radio-group"],
     files: ["example/radio-group-demo.tsx"],
+  },
+  {
+    name: "ratings-demo",
+    type: "components:example",
+    registryDependencies: ["ratings"],
+    files: ["example/ratings-demo.tsx"],
+  },
+  {
+    name: "ratings-variants",
+    type: "components:example",
+    registryDependencies: ["ratings"],
+    files: ["example/ratings-variants.tsx"],
   },
   {
     name: "radio-group-form",

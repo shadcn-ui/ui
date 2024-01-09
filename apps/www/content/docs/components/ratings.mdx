@@ -1,0 +1,72 @@
+---
+title: Ratings
+description: Displays a rating value as a series of stars ⭐ or other symbols.
+component: true
+links:
+  doc: /docs/components/ratings#props-api
+---
+
+<ComponentPreview name="ratings-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add ratings
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="ratings" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Ratings } from "@/components/ui/ratings"
+```
+
+```tsx
+<Ratings rating={3} />
+```
+
+## Props API
+
+| Name       | Type                | Default   | Description                             |
+| ---------- | ------------------- | --------- | --------------------------------------- |
+| rating     | number (required)   | -         | Rating value.                           |
+| totalStars | number              | 5         | Total number of stars.                  |
+| size       | number              | 20        | Size of each star.                      |
+| fill       | boolean             | true      | Whether to fill the stars or not.       |
+| Icon       | React.ComponentType | Star      | Custom icon instead of Star.            |
+| variant    | enum                | "default" | "default", "destructive", and "yellow". |
+
+## Examples
+
+### Default
+
+<ComponentPreview name="ratings-demo" />
+
+### Variants
+
+<ComponentPreview name="ratings-variants" />
