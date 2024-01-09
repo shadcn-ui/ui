@@ -64,6 +64,7 @@ type SelectorSearch<T, DataT> = {
   renderSearch?: (InputComponent: typeof CommandInput, data: DataT) => ReactNode
   query?: string
   onSearchChange?: (search: string) => void
+  placeholder?: string
   suppressFiltering?: boolean
 }
 
@@ -368,6 +369,7 @@ function Selector<T>({
               ? search.renderSearch?.(CommandInput, data) ?? (
                   <div>
                     <CommandInput
+                      placeholder={search.placeholder}
                       value={search.query}
                       onValueChange={(v) => search.onSearchChange?.(v)}
                     />
