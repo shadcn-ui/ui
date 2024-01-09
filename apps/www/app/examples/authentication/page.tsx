@@ -25,10 +25,10 @@ export default function AuthenticationPage() {
             "absolute right-4 top-4 md:right-8 md:top-8"
           )}
         >
-          S'inscrire
+          S&apos;inscrire
         </Link>
 
-        <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
+        <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
           <div className="absolute inset-0 bg-zinc-900" />
           <div className="relative z-20 flex items-center text-lg font-medium">
             <svg
@@ -62,7 +62,7 @@ export default function AuthenticationPage() {
                 href="/terms"
                 className="underline underline-offset-4 hover:text-primary"
               >
-                Conditions d'utilisation
+                Conditions d&apos;utilisation
               </Link>{" "}
               , la{" "}
               <Link
