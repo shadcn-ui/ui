@@ -55,6 +55,13 @@ const ui: Registry = [
     files: ["ui/card.tsx"],
   },
   {
+    name: "carousel",
+    type: "components:ui",
+    files: ["ui/carousel.tsx"],
+    registryDependencies: ["button"],
+    dependencies: ["embla-carousel-react"],
+  },
+  {
     name: "checkbox",
     type: "components:ui",
     dependencies: ["@radix-ui/react-checkbox"],
@@ -84,6 +91,12 @@ const ui: Registry = [
     type: "components:ui",
     dependencies: ["@radix-ui/react-dialog"],
     files: ["ui/dialog.tsx"],
+  },
+  {
+    name: "drawer",
+    type: "components:ui",
+    dependencies: ["vaul", "@radix-ui/react-dialog"],
+    files: ["ui/drawer.tsx"],
   },
   {
     name: "dropdown-menu",
@@ -134,6 +147,12 @@ const ui: Registry = [
     files: ["ui/navigation-menu.tsx"],
   },
   {
+    name: "pagination",
+    type: "components:ui",
+    registryDependencies: ["button"],
+    files: ["ui/pagination.tsx"],
+  },
+  {
     name: "popover",
     type: "components:ui",
     dependencies: ["@radix-ui/react-popover"],
@@ -150,6 +169,12 @@ const ui: Registry = [
     type: "components:ui",
     dependencies: ["@radix-ui/react-radio-group"],
     files: ["ui/radio-group.tsx"],
+  },
+  {
+    name: "resizable",
+    type: "components:ui",
+    dependencies: ["react-resizable-panels"],
+    files: ["ui/resizable.tsx"],
   },
   {
     name: "scroll-area",
@@ -187,6 +212,12 @@ const ui: Registry = [
     files: ["ui/slider.tsx"],
   },
   {
+    name: "sonner",
+    type: "components:ui",
+    dependencies: ["sonner", "next-themes"],
+    files: ["ui/sonner.tsx"],
+  },
+  {
     name: "switch",
     type: "components:ui",
     dependencies: ["@radix-ui/react-switch"],
@@ -219,6 +250,13 @@ const ui: Registry = [
     type: "components:ui",
     dependencies: ["@radix-ui/react-toggle"],
     files: ["ui/toggle.tsx"],
+  },
+  {
+    name: "toggle-group",
+    type: "components:ui",
+    dependencies: ["@radix-ui/react-toggle-group"],
+    registryDependencies: ["toggle"],
+    files: ["ui/toggle-group.tsx"],
   },
   {
     name: "tooltip",
@@ -392,6 +430,42 @@ const example: Registry = [
     files: ["example/card-with-form.tsx"],
   },
   {
+    name: "carousel-demo",
+    type: "components:example",
+    registryDependencies: ["carousel"],
+    files: ["example/carousel-demo.tsx"],
+  },
+  {
+    name: "carousel-size",
+    type: "components:example",
+    registryDependencies: ["carousel"],
+    files: ["example/carousel-size.tsx"],
+  },
+  {
+    name: "carousel-spacing",
+    type: "components:example",
+    registryDependencies: ["carousel"],
+    files: ["example/carousel-spacing.tsx"],
+  },
+  {
+    name: "carousel-orientation",
+    type: "components:example",
+    registryDependencies: ["carousel"],
+    files: ["example/carousel-orientation.tsx"],
+  },
+  {
+    name: "carousel-api",
+    type: "components:example",
+    registryDependencies: ["carousel"],
+    files: ["example/carousel-api.tsx"],
+  },
+  {
+    name: "carousel-plugin",
+    type: "components:example",
+    registryDependencies: ["carousel"],
+    files: ["example/carousel-plugin.tsx"],
+  },
+  {
     name: "checkbox-demo",
     type: "components:example",
     registryDependencies: ["checkbox"],
@@ -452,6 +526,12 @@ const example: Registry = [
     files: ["example/combobox-popover.tsx"],
   },
   {
+    name: "combobox-responsive",
+    type: "components:example",
+    registryDependencies: ["combobox", "popover", "drawer"],
+    files: ["example/combobox-responsive.tsx"],
+  },
+  {
     name: "command-demo",
     type: "components:example",
     registryDependencies: ["command"],
@@ -508,6 +588,24 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["dialog"],
     files: ["example/dialog-demo.tsx"],
+  },
+  {
+    name: "dialog-close-button",
+    type: "components:example",
+    registryDependencies: ["dialog", "button"],
+    files: ["example/dialog-close-button.tsx"],
+  },
+  {
+    name: "drawer-demo",
+    type: "components:example",
+    registryDependencies: ["drawer"],
+    files: ["example/drawer-demo.tsx"],
+  },
+  {
+    name: "drawer-dialog",
+    type: "components:example",
+    registryDependencies: ["drawer", "dialog"],
+    files: ["example/drawer-dialog.tsx"],
   },
   {
     name: "dropdown-menu-demo",
@@ -594,6 +692,12 @@ const example: Registry = [
     files: ["example/navigation-menu-demo.tsx"],
   },
   {
+    name: "pagination-demo",
+    type: "components:example",
+    registryDependencies: ["pagination"],
+    files: ["example/pagination-demo.tsx"],
+  },
+  {
     name: "popover-demo",
     type: "components:example",
     registryDependencies: ["popover"],
@@ -618,16 +722,52 @@ const example: Registry = [
     files: ["example/radio-group-form.tsx"],
   },
   {
+    name: "resizable-demo",
+    type: "components:example",
+    registryDependencies: ["resizable"],
+    files: ["example/resizable-demo.tsx"],
+  },
+  {
+    name: "resizable-demo-with-handle",
+    type: "components:example",
+    registryDependencies: ["resizable"],
+    files: ["example/resizable-demo-with-handle.tsx"],
+  },
+  {
+    name: "resizable-vertical",
+    type: "components:example",
+    registryDependencies: ["resizable"],
+    files: ["example/resizable-vertical.tsx"],
+  },
+  {
+    name: "resizable-handle",
+    type: "components:example",
+    registryDependencies: ["resizable"],
+    files: ["example/resizable-handle.tsx"],
+  },
+  {
     name: "scroll-area-demo",
     type: "components:example",
     registryDependencies: ["scroll-area"],
     files: ["example/scroll-area-demo.tsx"],
   },
   {
+    name: "scroll-area-horizontal-demo",
+    type: "components:example",
+    registryDependencies: ["scroll-area"],
+    files: ["example/scroll-area-horizontal-demo.tsx"],
+  },
+  {
     name: "select-demo",
     type: "components:example",
     registryDependencies: ["select"],
     files: ["example/select-demo.tsx"],
+  },
+  {
+    name: "select-scrollable",
+    type: "components:example",
+    registryDependencies: ["select"],
+    files: ["example/select-scrollable.tsx"],
   },
   {
     name: "select-form",
@@ -664,6 +804,12 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["slider"],
     files: ["example/slider-demo.tsx"],
+  },
+  {
+    name: "sonner-demo",
+    type: "components:example",
+    registryDependencies: ["sonner"],
+    files: ["example/sonner-demo.tsx"],
   },
   {
     name: "switch-demo",
@@ -760,6 +906,42 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["toast"],
     files: ["example/toast-with-title.tsx"],
+  },
+  {
+    name: "toggle-group-demo",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-demo.tsx"],
+  },
+  {
+    name: "toggle-group-disabled",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-disabled.tsx"],
+  },
+  {
+    name: "toggle-group-lg",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-lg.tsx"],
+  },
+  {
+    name: "toggle-group-outline",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-outline.tsx"],
+  },
+  {
+    name: "toggle-group-sm",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-sm.tsx"],
+  },
+  {
+    name: "toggle-group-single",
+    type: "components:example",
+    registryDependencies: ["toggle-group"],
+    files: ["example/toggle-group-single.tsx"],
   },
   {
     name: "toggle-demo",
