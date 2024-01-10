@@ -79,11 +79,11 @@ export function DemoPaymentMethod() {
         </RadioGroup>
         <div className="grid gap-2">
           <Label htmlFor="name">Name</Label>
-          <Input id="name" placeholder="First Last" />
+          <Input id="name" placeholder="Enter your name" />
         </div>
         <div className="grid gap-2">
           <Label htmlFor="number">Card number</Label>
-          <Input id="number" placeholder="" />
+          <Input id="number" placeholder="1234 1234 1234 1234" />
         </div>
         <div className="grid grid-cols-3 gap-4">
           <div className="grid gap-2">
@@ -125,7 +125,7 @@ export function DemoPaymentMethod() {
           </div>
           <div className="grid gap-2">
             <Label htmlFor="cvc">CVC</Label>
-            <Input id="cvc" placeholder="CVC" />
+            <Input id="cvc" placeholder="123" />
           </div>
         </div>
       </CardContent>
