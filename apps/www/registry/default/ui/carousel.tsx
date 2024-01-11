@@ -7,6 +7,7 @@ import {
   type EmblaOptionsType as CarouselOptions,
   type EmblaPluginType as CarouselPlugin,
 } from 'embla-carousel'
+
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
