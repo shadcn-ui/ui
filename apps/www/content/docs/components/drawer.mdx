@@ -22,9 +22,32 @@ Drawer is built on top of [Vaul](https://github.com/emilkowalski/vaul) by [emilk
 </TabsList>
 <TabsContent value="cli">
 
+<Steps>
+
+<Step>Run the following command:</Step>
+
 ```bash
 npx shadcn-ui@latest add drawer
 ```
+
+<Step>Add <div> with [vaul-drawer-wrapper] data attribute</Step>
+
+```tsx title="app/layout.tsx" {6}
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <div vaul-drawer-wrapper="">
+          <main>{children}</main>
+        </div>
+      </body>
+    </html>
+  )
+}
+```
+
+</Steps>
 
 </TabsContent>
 
@@ -43,6 +66,23 @@ npm install vaul
 <ComponentSource name="drawer" />
 
 <Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add <div> with [vaul-drawer-wrapper] data attribute</Step>
+
+```tsx title="app/layout.tsx" {6}
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <div vaul-drawer-wrapper="">
+          <main>{children}</main>
+        </div>
+      </body>
+    </html>
+  )
+}
+```
 
 </Steps>
 
