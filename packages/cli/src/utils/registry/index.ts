@@ -36,7 +36,7 @@ export async function getRegistryStyles() {
   }
 }
 
-export async function getRegistryBaseColors() {
+export function getRegistryBaseColors() {
   return [
     {
       name: "slate",
