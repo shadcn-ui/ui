@@ -42,7 +42,7 @@ export function PresetActions() {
         <DropdownMenuTrigger asChild>
           <Button variant="secondary">
             <span className="sr-only">Actions</span>
-            <DotsHorizontalIcon className="h-4 w-4" />
+            <DotsHorizontalIcon className="size-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

@@ -25,7 +25,7 @@
 }
 
 [data-rehype-pretty-code-fragment] .line {
-  @apply px-4 min-h-[1rem] py-0.5 w-full inline-block;
+  @apply px-4 min-h-4 py-0.5 w-full inline-block;
 }
 
 [data-rehype-pretty-code-fragment] [data-line-numbers] .line {

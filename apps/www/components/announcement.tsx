@@ -14,7 +14,7 @@ export function Announcement() {
       <span className="hidden sm:inline">
         New components, breadcrumb and input otp.
       </span>
-      <ArrowRightIcon className="ml-1 h-4 w-4" />
+      <ArrowRightIcon className="ml-1 size-4" />
     </Link>
   )
 }
