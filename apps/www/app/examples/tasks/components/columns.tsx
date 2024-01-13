@@ -40,7 +40,7 @@ export const columns: ColumnDef<Task>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Task" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+    cell: ({ row }) => <div className="w-[80px] cursor-pointer">{row.getValue("id")}</div>,
     enableSorting: false,
     enableHiding: false,
   },
@@ -54,8 +54,8 @@ export const columns: ColumnDef<Task>[] = [
 
       return (
         <div className="flex space-x-2">
-          {label && <Badge variant="outline">{label.label}</Badge>}
-          <span className="max-w-[500px] truncate font-medium">
+          {label && <Badge variant="outline" className="cursor-pointer">{label.label}</Badge>}
+          <span className="max-w-[500px] truncate font-medium cursor-pointer">
             {row.getValue("title")}
           </span>
         </div>
