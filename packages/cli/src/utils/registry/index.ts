@@ -11,14 +11,15 @@ import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
 import * as z from "zod"
 
-const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "https://ui.shadcn.com"
+export const DEFAULT_REGISTRY_URL =
+  process.env.COMPONENTS_REGISTRY_URL ?? "https://ui.shadcn.com"
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined
 
-export async function getRegistryIndex() {
+export async function getRegistryIndex(registryUrl: string) {
   try {
-    const [result] = await fetchRegistry(["index.json"])
+    const [result] = await fetchRegistry(registryUrl, ["index.json"])
 
     return registryIndexSchema.parse(result)
   } catch (error) {
@@ -26,9 +27,9 @@ export async function getRegistryIndex() {
   }
 }
 
-export async function getRegistryStyles() {
+export async function getRegistryStyles(registryUrl: string) {
   try {
-    const [result] = await fetchRegistry(["styles/index.json"])
+    const [result] = await fetchRegistry(registryUrl, ["styles/index.json"])
 
     return stylesSchema.parse(result)
   } catch (error) {
@@ -61,9 +62,14 @@ export async function getRegistryBaseColors() {
   ]
 }
 
-export async function getRegistryBaseColor(baseColor: string) {
+export async function getRegistryBaseColor(
+  registryUrl: string,
+  baseColor: string
+) {
   try {
-    const [result] = await fetchRegistry([`colors/${baseColor}.json`])
+    const [result] = await fetchRegistry(registryUrl, [
+      `colors/${baseColor}.json`,
+    ])
 
     return registryBaseColorSchema.parse(result)
   } catch (error) {
@@ -99,12 +105,13 @@ export async function resolveTree(
 }
 
 export async function fetchTree(
+  registryUrl: string,
   style: string,
   tree: z.infer<typeof registryIndexSchema>
 ) {
   try {
     const paths = tree.map((item) => `styles/${style}/${item.name}.json`)
-    const result = await fetchRegistry(paths)
+    const result = await fetchRegistry(registryUrl, paths)
 
     return registryWithContentSchema.parse(result)
   } catch (error) {
@@ -136,11 +143,11 @@ export async function getItemTargetPath(
   )
 }
 
-async function fetchRegistry(paths: string[]) {
+async function fetchRegistry(registryUrl: string, paths: string[]) {
   try {
     const results = await Promise.all(
       paths.map(async (path) => {
-        const response = await fetch(`${baseUrl}/registry/${path}`, {
+        const response = await fetch(`${registryUrl}/registry/${path}`, {
           agent,
         })
         return await response.json()
@@ -150,6 +157,6 @@ async function fetchRegistry(paths: string[]) {
     return results
   } catch (error) {
     console.log(error)
-    throw new Error(`Failed to fetch registry from ${baseUrl}.`)
+    throw new Error(`Failed to fetch registry from ${registryUrl}.`)
   }
 }

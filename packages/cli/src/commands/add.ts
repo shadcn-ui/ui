@@ -5,6 +5,7 @@ import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import {
+  DEFAULT_REGISTRY_URL,
   fetchTree,
   getItemTargetPath,
   getRegistryBaseColor,
@@ -26,6 +27,7 @@ const addOptionsSchema = z.object({
   cwd: z.string(),
   all: z.boolean(),
   path: z.string().optional(),
+  registry: z.string().optional(),
 })
 
 export const add = new Command()
@@ -41,6 +43,7 @@ export const add = new Command()
   )
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
+  .option("-r, --registry <registry>", "the components registry to use")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -65,7 +68,9 @@ export const add = new Command()
         process.exit(1)
       }
 
-      const registryIndex = await getRegistryIndex()
+      const registryUrl = options.registry ?? DEFAULT_REGISTRY_URL
+
+      const registryIndex = await getRegistryIndex(registryUrl)
 
       let selectedComponents = options.all
         ? registryIndex.map((entry) => entry.name)
@@ -94,8 +99,11 @@ export const add = new Command()
       }
 
       const tree = await resolveTree(registryIndex, selectedComponents)
-      const payload = await fetchTree(config.style, tree)
-      const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+      const payload = await fetchTree(registryUrl, config.style, tree)
+      const baseColor = await getRegistryBaseColor(
+        registryUrl,
+        config.tailwind.baseColor
+      )
 
       if (!payload.length) {
         logger.warn("Selected components not found. Exiting.")

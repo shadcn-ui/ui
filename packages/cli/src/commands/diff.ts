@@ -4,6 +4,7 @@ import { Config, getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import {
+  DEFAULT_REGISTRY_URL,
   fetchTree,
   getItemTargetPath,
   getRegistryBaseColor,
@@ -21,6 +22,7 @@ const updateOptionsSchema = z.object({
   yes: z.boolean(),
   cwd: z.string(),
   path: z.string().optional(),
+  registry: z.string().optional(),
 })
 
 export const diff = new Command()
@@ -33,6 +35,7 @@ export const diff = new Command()
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
+  .option("-r, --registry <registry>", "the components registry to use")
   .action(async (name, opts) => {
     try {
       const options = updateOptionsSchema.parse({
@@ -57,7 +60,9 @@ export const diff = new Command()
         process.exit(1)
       }
 
-      const registryIndex = await getRegistryIndex()
+      const registryUrl = options.registry ?? DEFAULT_REGISTRY_URL
+
+      const registryIndex = await getRegistryIndex(registryUrl)
 
       if (!options.component) {
         const targetDir = config.resolvedPaths.components
@@ -77,7 +82,7 @@ export const diff = new Command()
         // Check for updates.
         const componentsWithUpdates = []
         for (const component of projectComponents) {
-          const changes = await diffComponent(component, config)
+          const changes = await diffComponent(registryUrl, component, config)
           if (changes.length) {
             componentsWithUpdates.push({
               name: component.name,
@@ -117,7 +122,7 @@ export const diff = new Command()
         process.exit(1)
       }
 
-      const changes = await diffComponent(component, config)
+      const changes = await diffComponent(registryUrl, component, config)
 
       if (!changes.length) {
         logger.info(`No updates found for ${options.component}.`)
@@ -135,11 +140,15 @@ export const diff = new Command()
   })
 
 async function diffComponent(
+  registryUrl: string,
   component: z.infer<typeof registryIndexSchema>[number],
   config: Config
 ) {
-  const payload = await fetchTree(config.style, [component])
-  const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+  const payload = await fetchTree(registryUrl, config.style, [component])
+  const baseColor = await getRegistryBaseColor(
+    registryUrl,
+    config.tailwind.baseColor
+  )
 
   const changes = []
 
