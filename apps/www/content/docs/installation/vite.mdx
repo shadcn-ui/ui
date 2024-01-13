@@ -44,7 +44,7 @@ Add the following code to the `tsconfig.json` file to resolve paths:
 
 ### Update vite.config.ts
 
-Add the following code to the vite.config.ts so your app can resolve paths without error
+Add the following code to the vite.config.ts so your app can resolve paths without error and make you tailwind and autoprefixer effective
 
 ```bash
 # (so you can import "path" without error)
@@ -55,12 +55,19 @@ npm i -D @types/node
 import path from "path"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
+import tailwindcss from "tailwindcss";
+import autoprefixer from "autoprefixer";
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  css: {
+    postcss: {
+      plugins: [autoprefixer({}), tailwindcss],
     },
   },
 })
