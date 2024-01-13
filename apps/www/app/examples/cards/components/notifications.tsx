@@ -18,7 +18,7 @@ export function DemoNotifications() {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-1">
-        <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
+        <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground cursor-pointer">
           <BellIcon className="mt-px h-5 w-5" />
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Everything</p>
@@ -27,7 +27,7 @@ export function DemoNotifications() {
             </p>
           </div>
         </div>
-        <div className="-mx-2 flex items-start space-x-4 rounded-md bg-accent p-2 text-accent-foreground transition-all">
+        <div className="-mx-2 flex items-start space-x-4 rounded-md bg-accent p-2 text-accent-foreground transition-all cursor-pointer">
           <PersonIcon className="mt-px h-5 w-5" />
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Available</p>
@@ -36,7 +36,7 @@ export function DemoNotifications() {
             </p>
           </div>
         </div>
-        <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
+        <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground cursor-pointer">
           <EyeNoneIcon className="mt-px h-5 w-5" />
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Ignoring</p>
