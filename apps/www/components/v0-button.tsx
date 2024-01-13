@@ -64,7 +64,7 @@ export function V0Button({
           aria-label="Edit in v0"
           className={cn(
             "z-50 h-[calc(theme(spacing.7)_-_1px)] gap-1 rounded-[6px] bg-black px-3 text-xs text-white hover:bg-black hover:text-white dark:bg-white dark:text-black",
-            size === "icon" && "h-7 w-7 p-0",
+            size === "icon" && "size-7 p-0",
             className
           )}
           onClick={() => {
@@ -83,7 +83,7 @@ export function V0Button({
           {...props}
         >
           {size === "icon" ? (
-            <V0Logo className="h-4 w-4" />
+            <V0Logo className="size-4" />
           ) : (
             <>
               Edit in <V0Logo />
@@ -143,7 +143,7 @@ function Form({
         aria-label="Edit in v0"
         className={cn(
           "z-50 h-[calc(theme(spacing.7)_-_1px)] gap-1 rounded-[6px] bg-black px-3 text-xs text-white hover:bg-black hover:text-white dark:bg-white dark:text-black",
-          size === "icon" && "h-7 w-7 p-0"
+          size === "icon" && "size-7 p-0"
         )}
         disabled={disabled || pending}
         {...props}
@@ -151,14 +151,14 @@ function Form({
         {size === "icon" ? (
           <>
             {pending ? (
-              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              <Loader2 className="size-3.5 animate-spin" />
             ) : (
-              <V0Logo className="h-4 w-4" />
+              <V0Logo className="size-4" />
             )}
           </>
         ) : (
           <>
-            {pending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
+            {pending && <Loader2 className="size-3.5 animate-spin" />}
             Edit in <V0Logo />
           </>
         )}
@@ -173,7 +173,7 @@ export function V0Logo({ className, ...props }: React.ComponentProps<"svg">) {
       viewBox="0 0 40 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("h-5 w-5 text-current", className)}
+      className={cn("size-5 text-current", className)}
       {...props}
     >
       <path

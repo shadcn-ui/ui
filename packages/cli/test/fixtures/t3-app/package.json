@@ -28,8 +28,8 @@
     "eslint-config-next": "^13.4.2",
     "postcss": "^8.4.21",
     "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.2.8",
-    "tailwindcss": "^3.3.0",
+    "prettier-plugin-tailwindcss": "^3.14.1",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.0.4"
   },
   "ct3aMetadata": {

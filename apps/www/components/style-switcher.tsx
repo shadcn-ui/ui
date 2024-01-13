@@ -28,10 +28,7 @@ export function StyleSwitcher({ className, ...props }: SelectTriggerProps) {
       }
     >
       <SelectTrigger
-        className={cn(
-          "h-7 w-[145px] text-xs [&_svg]:h-4 [&_svg]:w-4",
-          className
-        )}
+        className={cn("h-7 w-[145px] text-xs [&_svg]:size-4", className)}
         {...props}
       >
         <span className="text-muted-foreground">Style: </span>

@@ -36,12 +36,12 @@ export function Nav({ links, isCollapsed }: NavProps) {
                   href="#"
                   className={cn(
                     buttonVariants({ variant: link.variant, size: "icon" }),
-                    "h-9 w-9",
+                    "size-9",
                     link.variant === "default" &&
                       "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
                   )}
                 >
-                  <link.icon className="h-4 w-4" />
+                  <link.icon className="size-4" />
                   <span className="sr-only">{link.title}</span>
                 </Link>
               </TooltipTrigger>
@@ -65,7 +65,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                 "justify-start"
               )}
             >
-              <link.icon className="mr-2 h-4 w-4" />
+              <link.icon className="mr-2 size-4" />
               {link.title}
               {link.label && (
                 <span

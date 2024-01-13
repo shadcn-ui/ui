@@ -119,7 +119,7 @@ export const columns: ColumnDef<Payment>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Email
-          <CaretSortIcon className="ml-2 h-4 w-4" />
+          <CaretSortIcon className="ml-2 size-4" />
         </Button>
       )
     },
@@ -149,9 +149,9 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
+            <Button variant="ghost" className="size-8 p-0">
               <span className="sr-only">Open menu</span>
-              <DotsHorizontalIcon className="h-4 w-4" />
+              <DotsHorizontalIcon className="size-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -213,7 +213,7 @@ export default function DataTableDemo() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
+              Columns <ChevronDownIcon className="ml-2 size-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

@@ -79,7 +79,7 @@
     "sharp": "^0.31.3",
     "sonner": "^1.2.3",
     "swr": "^2.2.5",
-    "tailwind-merge": "^1.12.0",
+    "tailwind-merge": "^2.2.2",
     "ts-morph": "^22.0.0",
     "vaul": "^0.9.0",
     "zod": "^3.21.4"
@@ -94,7 +94,7 @@
     "esbuild": "^0.17.19",
     "eslint": "^8.41.0",
     "mdast-util-toc": "^6.1.1",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.38",
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.6.0",
@@ -104,7 +104,7 @@
     "remark-gfm": "^3.0.1",
     "rimraf": "^4.1.3",
     "shiki": "^1.1.7",
-    "tailwindcss": "^3.4.0",
+    "tailwindcss": "^3.4.3",
     "typescript": "^5.4.2",
     "unist-builder": "3.0.0",
     "unist-util-visit": "^4.1.2"

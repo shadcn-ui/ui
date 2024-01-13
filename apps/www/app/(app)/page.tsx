@@ -35,7 +35,7 @@ export default function IndexPage() {
             href={siteConfig.links.github}
             className={cn(buttonVariants({ variant: "outline" }))}
           >
-            <Icons.gitHub className="mr-2 h-4 w-4" />
+            <Icons.gitHub className="mr-2 size-4" />
             GitHub
           </Link>
         </PageActions>

@@ -5,7 +5,7 @@ import { Toggle } from "@/registry/default/ui/toggle"
 export default function ToggleDemo() {
   return (
     <Toggle aria-label="Toggle bold">
-      <Bold className="h-4 w-4" />
+      <Bold className="size-4" />
     </Toggle>
   )
 }
