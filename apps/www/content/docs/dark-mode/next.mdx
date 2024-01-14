@@ -35,8 +35,7 @@ Add the `ThemeProvider` to your root layout.
 
 ```tsx {1,9-11} title="app/layout.tsx"
 import dynamic from "next/dynamic"
-import { ThemeProvider } from "@/components/theme-provider"
-const ThemeProvider = dynamic(() => import('@/components/theme-provider.tsx", { ssr: false })
+const ThemeProvider = dynamic(() => import('@/components/theme-provider.tsx"), { ssr: false })
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
