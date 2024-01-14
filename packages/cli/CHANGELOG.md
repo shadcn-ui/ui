@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.7.0
+
+### Minor Changes
+
+- [#2419](https://github.com/shadcn-ui/ui/pull/2419) [`7640ef7`](https://github.com/shadcn-ui/ui/commit/7640ef7bbc5fea280a8b5227a2455bb840478573) Thanks [@shadcn](https://github.com/shadcn)! - add support for devDependencies
+
 ## 0.6.0
 
 ### Minor Changes
