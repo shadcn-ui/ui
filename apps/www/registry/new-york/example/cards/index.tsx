@@ -13,8 +13,8 @@ import { CardsTeamMembers } from "@/registry/new-york/example/cards/team-members
 
 export default function CardsDemo() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4">
-      <div className="grid-cols-1 space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
+    <div className="grid grid-cols-1 md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4">
+      <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
         <CardsStats />
         <div className="grid grid-cols-1 gap-1 sm:grid-cols-[260px_minmax(0,1fr)] md:hidden">
           <CardsCalendar />
