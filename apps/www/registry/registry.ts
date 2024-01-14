@@ -823,12 +823,6 @@ const example: Registry = [
     files: ["example/stepper-custom-icons.tsx"],
   },
   {
-    name: "stepper-custom-success-error-icon",
-    type: "components:example",
-    registryDependencies: ["stepper"],
-    files: ["example/stepper-custom-success-error-icon.tsx"],
-  },
-  {
     name: "stepper-label-orientation",
     type: "components:example",
     registryDependencies: ["stepper"],
@@ -847,10 +841,10 @@ const example: Registry = [
     files: ["example/stepper-optional-steps.tsx"],
   },
   {
-    name: "stepper-states",
+    name: "stepper-status",
     type: "components:example",
     registryDependencies: ["stepper"],
-    files: ["example/stepper-states.tsx"],
+    files: ["example/stepper-status.tsx"],
   },
   {
     name: "switch-demo",

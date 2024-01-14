@@ -26,12 +26,27 @@ npx shadcn-ui@latest add stepper
 
 <Step>Use the Stepper component with useStepper hook</Step>
 
-```tsx title="page.tsx" {1,9}
+```tsx title="page.tsx"
 "use client"
 
 import { useStepper } from "@/components/ui/use-stepper"
 
 export default function Page() {
+  return (
+    <Stepper>
+      {steps.map((step, index) => (
+        <StepperItem index={index} key={index} {...step}>
+          <div className="bg-muted h-40 w-full p-4">
+            <p>Step {index + 1} content</p>
+          </div>
+        </StepperItem>
+      ))}
+      <Child />
+    </Stepper>
+  )
+}
+
+function Child() {
   const { currentStep, nextStep, prevStep, ...rest } = useStepper()
   return (
     // ...
@@ -53,20 +68,31 @@ export default function Page() {
 
 <ComponentSource name="stepper" />
 
-`use-stepper.tsx`
-
-<ComponentSource name="stepper" fileName="use-stepper" />
-
 <Step>Update the import paths to match your project setup.</Step>
 
 <Step>Use the Stepper component with useStepper hook</Step>
 
-```tsx title="page.tsx" {1,9}
+```tsx title="page.tsx"
 "use client"
 
 import { useStepper } from "@/components/ui/use-stepper"
 
 export default function Page() {
+  return (
+    <Stepper>
+      {steps.map((step, index) => (
+        <StepperItem index={index} key={index} {...step}>
+          <div className="bg-muted h-40 w-full p-4">
+            <p>Step {index + 1} content</p>
+          </div>
+        </StepperItem>
+      ))}
+      <Child />
+    </Stepper>
+  )
+}
+
+function Child() {
   const { currentStep, nextStep, prevStep, ...rest } = useStepper()
   return (
     // ...
@@ -85,63 +111,65 @@ export default function Page() {
 ```tsx
 import {
   Stepper,
-  StepperConfig,
   StepperItem,
+  StepperFooter
   useStepper,
 } from "@/components/ui/stepper"
 ```
 
-```tsx {1-5}
-const steps = [
-  { label: "Step 1" },
-  { label: "Step 2" },
-  { label: "Step 3" },
-] satisfies StepperConfig[]
+```tsx {1}
+const steps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }]
 
-export const StepperDemo = () => {
+export default function StepperDemo() {
+  return (
+    <div className="flex w-full flex-col gap-4">
+      <Stepper initialStep={0} steps={steps} orientation="horizontal">
+        {steps.map((step, index) => {
+          return (
+            <StepperItem key={index}>
+              <div className="h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300">
+                <p>Step {index + 1} content</p>
+              </div>
+            </StepperItem>
+          )
+        })}
+        <StepperFooter>
+          <MyStepperFooter />
+        </StepperFooter>
+      </Stepper>
+    </div>
+  )
+}
+
+function MyStepperFooter() {
   const {
+    activeStep,
+    isLastStep,
+    isOptionalStep,
+    isDisabledStep,
     nextStep,
     prevStep,
     resetSteps,
-    setStep,
-    activeStep,
-    isDisabledStep,
-    isLastStep,
-    isOptionalStep,
-  } = useStepper({
-    initialStep: 0,
     steps,
-  })
+  } = useStepper()
 
   return (
-    <>
-      <Stepper activeStep={activeStep}>
-        {steps.map((step, index) => (
-          <StepperItem index={index} key={index} {...step}>
-            <div className="bg-muted h-40 w-full p-4">
-              <p>Step {index + 1} content</p>
-            </div>
-          </StepperItem>
-        ))}
-      </Stepper>
-      <div className="flex items-center justify-end gap-2">
-        {activeStep === steps.length ? (
-          <>
-            <h2>All steps completed!</h2>
-            <Button onClick={resetSteps}>Reset</Button>
-          </>
-        ) : (
-          <>
-            <Button disabled={isDisabledStep} onClick={prevStep}>
-              Prev
-            </Button>
-            <Button onClick={nextStep}>
-              {isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
-            </Button>
-          </>
-        )}
-      </div>
-    </>
+    <div className="flex items-center justify-end gap-2">
+      {activeStep === steps.length ? (
+        <>
+          <Button onClick={resetSteps}>Reset</Button>
+        </>
+      ) : (
+        <>
+          <Button disabled={isDisabledStep} onClick={prevStep}>
+            Prev
+          </Button>
+          <Button onClick={nextStep}>
+            {isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
+          </Button>
+        </>
+      )}
+    </div>
   )
 }
 ```
@@ -151,53 +179,28 @@ export const StepperDemo = () => {
 ### `<Stepper />`
 
 ```tsx
-interface StepperProps extends React.HTMLAttributes<HTMLDivElement> {
-  activeStep: number
+interface StepperProps {
+  steps: {
+    label: string | React.ReactNode
+    description?: string | React.ReactNode
+    icon?: React.ReactNode
+    optional?: boolean
+  }[]
+  initialStep: number
   orientation?: "vertical" | "horizontal"
-  state?: "loading" | "error"
-  responsive?: boolean
-  onClickStep?: (step: number) => void
-  successIcon?: React.ReactElement
-  errorIcon?: React.ReactElement
   labelOrientation?: "vertical" | "horizontal"
-  children?: React.ReactNode
+  scrollTracking?: boolean
   variant?: "default" | "ghost" | "outline" | "secondary"
+  status?: "default" | "success" | "error" | "loading"
+  isClickable?: boolean
 }
 ```
 
 ### `<StepperItem />`
 
 ```tsx
-interface StepperItemLabelProps {
-  label: string | React.ReactNode
-  description?: string | React.ReactNode
-  optional?: boolean
-  optionalLabel?: string | React.ReactNode
-}
-
-interface StepperConfig extends StepperItemLabelProps {
-  icon?: React.ReactElement
-}
-
-interface StepperItemProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof stepperItemVariants>,
-    StepperConfig {
-  isCompletedStep?: boolean
-}
-
-interface StepperItemStatus {
-  index: number
-  isCompletedStep?: boolean
-  isCurrentStep?: boolean
-}
-
-interface StepperItemProps extends StepperItemProps, StepperItemStatus {
-  additionalClassName?: {
-    button?: string
-    label?: string
-    description?: string
-  }
+interface StepperItemProps {
+  onStepperItemClick?: () => void
 }
 ```
 
@@ -206,16 +209,7 @@ interface StepperItemProps extends StepperItemProps, StepperItemStatus {
 `useStepper` returns values and functions that allow to render the stepper in a modular way.
 
 ```tsx
-function useStepper(
-  initialStep: number,
-  steps: {
-    label: string | React.ReactNode
-    description?: string | React.ReactNode
-    optional?: boolean
-    optionalLabel?: string | React.ReactNode
-    icon?: React.ReactElement
-  }[]
-): {
+function useStepper(): StepperProps & {
   nextStep: () => void
   prevStep: () => void
   resetSteps: () => void
@@ -223,7 +217,8 @@ function useStepper(
   activeStep: number
   isDisabledStep: boolean
   isLastStep: boolean
-  isOptionalStep: boolean | undefined
+  isOptionalStep: boolean
+  isFinished: boolean
 }
 ```
 
@@ -232,3 +227,105 @@ function useStepper(
 ### Default
 
 <ComponentPreview name="stepper-demo" />
+
+### Orientation
+
+We can pass the `orientation` prop to the Stepper component to set the orientation as "vertical" or "horizontal".
+
+<ComponentPreview name="stepper-orientation" />
+
+### Description
+
+We can add a description to the array of steps
+
+<ComponentPreview name="stepper-description" />
+
+### Label orientation
+
+If you would like the labels to be positioned below the step icons you can do so using the `labelOrientation` prop on the Stepper component.
+
+<ComponentPreview name="stepper-label-orientation" />
+
+### Optional steps
+
+If you want to make a step optional, you can add `optional: true` in the array of steps.
+
+<ComponentPreview name="stepper-optional-steps" />
+
+### Status
+
+Sometimes it is useful to show visual feedback to the user depending on some asynchronous logic. In this case we can use the `status` prop on the Stepper component to show a loading indicator, a success indicator or an error indicator.
+
+<ComponentPreview name="stepper-status" />
+
+### Custom Icons
+
+If you want to show custom icons instead of the default numerical indicators, you can do so by using the `icon` prop on the Step component.
+
+<ComponentPreview name="stepper-custom-icons" />
+
+### Custom onClick item event
+
+If you need to control the onClick event when a user clicks on a step, you can set the `onStepperItemClick` prop. This event overrides the default setStep, so you must customize it with `useStepper`.
+
+<ComponentPreview name="stepper-clickable-steps" />
+
+### Responsive
+
+If you want the stepper to be responsive you can make it responsive by using some logic of your own so that the `orientation` prop changes according to the screen size.
+
+For example, you can use a hook like `useMediaQuery` that tells you when the screen becomes a certain size in this way:
+
+```tsx {8,10}
+import { useMediaQuery } from "@/hooks/use-media-query"
+import {
+  Stepper,
+  ...
+} from "@/components/ui/stepper"
+
+export default function Page() {
+  const isMobile = useMediaQuery("(max-width: 640px)")
+  return (
+    <Stepper orientation={isMobile ? "vertical" : "horizontal"}>
+      {/* ... */}
+    </Stepper>
+  )
+}
+```
+
+### Footer inside the step
+
+When using the vertical orientation, we may want to have the footer buttons inside each step and not located at the end. To do this, we can change the footer structure and place it below the first internal children of `StepperItem`.
+
+```tsx
+const steps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }]
+
+export default function StepperDemo() {
+  return (
+    <div className="flex w-full flex-col gap-4">
+      <Stepper initialStep={0} steps={steps} orientation="horizontal">
+        {steps.map((step, index) => {
+          return (
+            <StepperItem key={index}>
+              <div className="h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300">
+                <p>Step {index + 1} content</p>
+              </div>
+              <StepperFooter>
+                <MyStepperFooter />
+              </StepperFooter>
+            </StepperItem>
+          )
+        })}
+      </Stepper>
+    </div>
+  )
+}
+
+function MyStepperFooter() {
+  ...
+}
+```
+
+### Scroll tracking
+
+If you would like the stepper to scroll to the active step when it is not in view you can do so using the `scrollTracking` prop on the Stepper component.

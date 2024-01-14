@@ -1,4 +1,8 @@
+import { useState } from "react"
+
 import { Button } from "@/registry/default/ui/button"
+import { Label } from "@/registry/default/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 import {
   Stepper,
   StepperFooter,
@@ -8,10 +12,39 @@ import {
 
 const steps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }]
 
-export default function StepperDemo() {
+export default function StepperStates() {
+  const [value, setValue] = useState<"loading" | "error">("loading")
+
   return (
     <div className="flex w-full flex-col gap-4">
-      <Stepper initialStep={0} steps={steps}>
+      <RadioGroup
+        defaultValue="loading"
+        value={value}
+        onValueChange={(value) => setValue(value as "loading" | "error")}
+        className="mb-4"
+      >
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="loading" id="r1" />
+          <Label htmlFor="r1">Loading</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="error" id="r2" />
+          <Label htmlFor="r2">Error</Label>
+        </div>
+      </RadioGroup>
+      <StepperDemo status={value} />
+    </div>
+  )
+}
+
+function StepperDemo({
+  status = "default",
+}: {
+  status?: "default" | "loading" | "error"
+}) {
+  return (
+    <div className="flex w-full flex-col gap-4">
+      <Stepper initialStep={0} steps={steps} status={status}>
         {steps.map((step, index) => {
           return (
             <StepperItem key={index}>

@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from "react"
+import React from "react"
 import { cva } from "class-variance-authority"
-import { Check } from "lucide-react"
+import { Check, Loader2, X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
 
 import { Button } from "./button"
 import { Separator } from "./separator"
@@ -12,15 +11,16 @@ interface StepperProps {
   steps: {
     label: string | React.ReactNode
     description?: string | React.ReactNode
+    icon?: React.ReactNode
     optional?: boolean
   }[]
   initialStep: number
   orientation?: "vertical" | "horizontal"
-  responsive?: boolean
   labelOrientation?: "vertical" | "horizontal"
+  scrollTracking?: boolean
   variant?: "default" | "ghost" | "outline" | "secondary"
-  status?: "default" | "success" | "error" | "warning" | "loading"
-  clickable?: boolean
+  status?: "default" | "success" | "error" | "loading"
+  isClickable?: boolean
 }
 
 interface ContextStepperProps extends StepperProps {
@@ -111,20 +111,17 @@ export const Stepper = React.forwardRef<
       initialStep,
       steps,
       status = "default",
-      orientation: orientationProp = "horizontal",
-      responsive = true,
+      orientation = "horizontal",
       labelOrientation = "horizontal",
+      scrollTracking = false,
       children,
       variant = "default",
-      clickable = true,
+      isClickable = true,
       className,
       ...props
     },
     ref
   ) => {
-    const isMobile = useMediaQuery("(max-width: 43em)")
-    const orientation = isMobile && responsive ? "vertical" : orientationProp
-
     const footer = [] as React.ReactElement[]
 
     const items = React.Children.toArray(children).map((child, index) => {
@@ -154,17 +151,17 @@ export const Stepper = React.forwardRef<
           steps,
           initialStep,
           orientation,
-          responsive,
           labelOrientation,
+          scrollTracking,
           variant,
-          clickable,
+          isClickable,
           status,
         }}
       >
         <div ref={ref} className={cn("space-y-4", className)} {...props}>
           <div
             className={cn(
-              "flex w-full flex-1 justify-between gap-4 text-center",
+              "flex w-full flex-1 justify-between gap-2 text-center",
               orientation === "vertical" ? "flex-col" : "flex-row"
             )}
           >
@@ -196,7 +193,7 @@ const HorizontalContent = ({ children }: { children?: React.ReactNode }) => {
   return content
 }
 
-const stepperItemVariants = cva("relative flex flex-row gap-4", {
+const stepperItemVariants = cva("relative flex flex-row gap-2", {
   variants: {
     isLastStep: {
       true: "flex-[0_0_auto] justify-end",
@@ -216,28 +213,37 @@ const stepperItemVariants = cva("relative flex flex-row gap-4", {
   ],
 })
 
+const icons = {
+  success: <Check className="h-6 w-6" />,
+  error: <X className="h-6 w-6" />,
+  loading: <Loader2 className="h-6 w-6 animate-spin" />,
+  default: null,
+} as const
+
 export const StepperItem = React.forwardRef<
   HTMLDivElement,
-  Omit<React.HTMLAttributes<HTMLDivElement>, "onClick"> & {
-    icon?: React.ReactNode
-    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  React.HTMLAttributes<HTMLDivElement> & {
+    onStepperItemClick?: (
+      e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => void
   }
   // @ts-ignore - step is a prop that is added from the Stepper through React.Children.
->(({ step, children, className, onClick, icon, ...props }, ref) => {
+>(({ step, children, className, onStepperItemClick, ...props }, ref) => {
   const {
     activeStep,
     setStep,
     steps,
     orientation,
     labelOrientation,
+    scrollTracking,
     variant,
     status,
-    clickable,
+    isClickable,
   } = useStepper()
 
   const isActive = step === activeStep
   const isCompleted = step < activeStep
-  const isDisabled = step > activeStep && !clickable
+  const isDisabled = step > activeStep && !isClickable
 
   const isLastStep = step === steps.length - 1
 
@@ -246,7 +252,13 @@ export const StepperItem = React.forwardRef<
 
   const isError = isActive && status === "error"
 
-  const buttonRef = useRef<HTMLButtonElement>(null)
+  let icon = steps[step].icon || step + 1
+  if (status !== "default" && isActive) {
+    icon = icons[status!]
+  }
+  if (isCompleted) {
+    icon = icons.success
+  }
 
   const content = React.Children.toArray(children).filter(
     (child) => React.isValidElement(child) && child.type !== StepperFooter
@@ -260,25 +272,16 @@ export const StepperItem = React.forwardRef<
     if (isDisabled) {
       return
     }
-    setStep(step)
-    onClick?.(e)
-  }
-
-  useEffect(() => {
-    if (!isActive) {
-      return
+    if (onStepperItemClick) {
+      return onStepperItemClick(e)
     }
-    buttonRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    })
-  }, [isActive])
-
-  const iconComponent = icon || step + 1
+    setStep(step)
+  }
 
   return (
     <div
       className={cn(
+        "stepper-item",
         stepperItemVariants({
           isLastStep,
           isVertical,
@@ -293,20 +296,27 @@ export const StepperItem = React.forwardRef<
           "flex items-center gap-3",
           isVerticalLabel && !isVertical && "flex-col gap-2"
         )}
+        ref={(node) => {
+          if (scrollTracking) {
+            node?.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            })
+          }
+        }}
       >
         <Button
-          data-highlighted={isCompleted}
           disabled={isDisabled}
           onClick={onClickItem}
-          ref={buttonRef}
           className={cn(
-            "aspect-square h-12 w-12 rounded-full data-[highlighted=true]:bg-green-700 data-[highlighted=true]:text-white",
-            clickable && "cursor-pointer",
-            !isActive && !isDisabled && !isCompleted && "opacity-50"
+            "stepper-item-button aspect-square h-10 w-10 rounded-full p-2.5",
+            isClickable && "cursor-pointer",
+            !isActive && !isDisabled && !isCompleted && "opacity-50",
+            isCompleted && "bg-green-700 text-white"
           )}
           variant={isError ? "destructive" : variant}
         >
-          {isCompleted ? <Check className="h-6 w-6" /> : iconComponent}
+          {icon}
         </Button>
         <div
           className={cn(
@@ -324,16 +334,17 @@ export const StepperItem = React.forwardRef<
           )}
         </div>
       </div>
-      <div className="flex w-full gap-8">
+      <div className="flex w-full gap-7">
         {!isLastStep && (
           <Separator
             className={cn(
-              "data-[highlighted=true]:bg-green-700",
+              "stepper-item-separator",
               isVertical
-                ? "ms-6 mt-1 flex h-auto min-h-[2rem] w-[1px] border-l-2"
-                : "h-[2px] flex-1"
+                ? "ms-5 flex h-auto min-h-[2rem] w-[1px] border-l-2"
+                : "h-[2px] flex-1",
+              isCompleted && "bg-green-700"
             )}
-            orientation={isVertical ? "vertical" : "horizontal"}
+            orientation={orientation}
           />
         )}
         {isVertical && isActive && (
