@@ -30,7 +30,9 @@ Drawer is built on top of [Vaul](https://github.com/emilkowalski/vaul) by [emilk
 npx shadcn-ui@latest add drawer
 ```
 
-<Step>Add div with [vaul-drawer-wrapper] data attribute</Step>
+<Step>Add `[vaul-drawer-wrapper]` data attribute</Step>
+
+If you want to scale the background when the drawer is open i.e `shouldScaleBackground`, add `vaul-drawer-wrapper=""` to the background/root element.
 
 ```tsx title="app/layout.tsx" {6}
 export default function RootLayout({ children }) {
