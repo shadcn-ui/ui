@@ -22,7 +22,7 @@ export function ThemesTabs() {
         <div className="grid md:grid-cols-2 md:gap-4 lg:grid-cols-10 xl:gap-6">
           <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-6">
             <Skeleton className="h-[218px] w-full" />
-            <div className="grid gap-1 sm:grid-cols-[260px_1fr] md:hidden">
+            <div className="grid gap-1 sm:grid-cols-[260px_minmax(0,1fr)] md:hidden">
               <Skeleton className="h-[218px] w-full" />
               <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
                 <Skeleton className="h-[218px] w-full" />
@@ -47,7 +47,7 @@ export function ThemesTabs() {
             </div>
           </div>
           <div className="space-y-4 lg:col-span-6 xl:col-span-4 xl:space-y-6">
-            <div className="hidden gap-1 sm:grid-cols-[260px_1fr] md:grid">
+            <div className="hidden gap-1 sm:grid-cols-[260px_minmax(0,1fr)] md:grid">
               <Skeleton className="h-[218px] w-full" />
               <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
                 <Skeleton className="h-[218px] w-full" />
