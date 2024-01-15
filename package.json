@@ -55,7 +55,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-turbo": "^1.9.9",
     "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-tailwindcss": "^3.12.0",
+    "eslint-plugin-tailwindcss": "^3.14.0",
     "husky": "^8.0.3",
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",

@@ -66,8 +66,8 @@ importers:
         specifier: ^7.32.2
         version: 7.32.2(eslint@8.41.0)
       eslint-plugin-tailwindcss:
-        specifier: ^3.12.0
-        version: 3.12.0(tailwindcss@3.4.0)
+        specifier: ^3.14.0
+        version: 3.14.0(tailwindcss@3.4.0)
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -6350,17 +6350,6 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-tailwindcss@3.12.0(tailwindcss@3.4.0):
-    resolution: {integrity: sha512-DMfg8NcSV04V1v3iBgJGEhmRuapW36XZXyRV8WHdNFGEXGUkBwM9R8MujguKXeQKBG6VhjiX4t98rhzXdIlUFw==}
-    engines: {node: '>=12.13.0'}
-    peerDependencies:
-      tailwindcss: ^3.3.2
-    dependencies:
-      fast-glob: 3.2.12
-      postcss: 8.4.24
-      tailwindcss: 3.4.0(ts-node@10.9.1)
-    dev: false
-
   /eslint-plugin-tailwindcss@3.13.0(tailwindcss@3.3.2):
     resolution: {integrity: sha512-Fcep4KDRLWaK3KmkQbdyKHG0P4GdXFmXdDaweTIPcgOP60OOuWFbh1++dufRT28Q4zpKTKaHwTsXPJ4O/EjU2Q==}
     engines: {node: '>=12.13.0'}
@@ -6371,6 +6360,17 @@ packages:
       postcss: 8.4.24
       tailwindcss: 3.3.2(ts-node@10.9.1)
     dev: true
+
+  /eslint-plugin-tailwindcss@3.14.0(tailwindcss@3.4.0):
+    resolution: {integrity: sha512-SGy4JmZoP5m1bXCbcsPfQg1/axOdriJf9L22HghNMyDTM5mybg2XEkaMwgax4aR13zZJRRB1nWmkuYUn+SV6/Q==}
+    engines: {node: '>=12.13.0'}
+    peerDependencies:
+      tailwindcss: ^3.4.0
+    dependencies:
+      fast-glob: 3.3.0
+      postcss: 8.4.31
+      tailwindcss: 3.4.0(ts-node@10.9.1)
+    dev: false
 
   /eslint-plugin-turbo@1.9.9(eslint@8.41.0):
     resolution: {integrity: sha512-BgtBMcgNd2YKiHbn1clRiEAmnlpSl19kt9yfIhFEsNIVPg2Gx0O1H++vWXGzMtT19mjHG4Unx0uIMRENKnDYLg==}
