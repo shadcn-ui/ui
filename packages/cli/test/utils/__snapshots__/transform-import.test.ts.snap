@@ -34,3 +34,27 @@ import { Foo } from \\"bar\\"
     import { bar } from \\"@/lib/utils/bar\\"
     "
 `;
+
+exports[`transform import 4`] = `
+"import * as React from \\"react\\"
+import { Foo } from \\"bar\\"
+    import { Button } from \\"~/src/components/button\\"
+    import { Label} from \\"ui/label\\"
+    import { Box } from \\"@/registry/new-york/box\\"
+
+    import { cn } from \\"~/src/utils\\"
+    import { bar } from \\"@/lib/utils/bar\\"
+    "
+`;
+
+exports[`transform import 5`] = `
+"import * as React from \\"react\\"
+import { Foo } from \\"bar\\"
+    import { Button } from \\"~/src/ui/button\\"
+    import { Label} from \\"ui/label\\"
+    import { Box } from \\"@/registry/new-york/box\\"
+
+    import { cn } from \\"~/src/utils\\"
+    import { bar } from \\"@/lib/utils/bar\\"
+    "
+`;
