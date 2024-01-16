@@ -11,7 +11,7 @@ import {
   type Config,
 } from "@/src/utils/get-config"
 import { getPackageManager } from "@/src/utils/get-package-manager"
-import { getProjectConfig } from "@/src/utils/get-project-info"
+import { getProjectConfig, preFlight } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import {
@@ -63,6 +63,8 @@ export const init = new Command()
         logger.error(`The path ${cwd} does not exist. Please try again.`)
         process.exit(1)
       }
+
+      preFlight(cwd)
 
       const projectConfig = await getProjectConfig(cwd)
       if (projectConfig) {
