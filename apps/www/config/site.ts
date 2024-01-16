@@ -8,6 +8,7 @@ export const siteConfig = {
     twitter: "https://twitter.com/shadcn",
     github: "https://github.com/shadcn-ui/ui",
   },
+  demoCodeSlug: "/blob/main/apps/www/",
 }
 
 export type SiteConfig = typeof siteConfig

@@ -15,6 +15,7 @@ import { ComponentExample } from "@/components/component-example"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
+import { ExternalFileLinkButton } from "@/components/external-file-link-button"
 import { FrameworkDocs } from "@/components/framework-docs"
 import { StyleWrapper } from "@/components/style-wrapper"
 import {
@@ -195,12 +196,23 @@ const components = {
           {...props}
         />
         {__rawString__ && !__npmCommand__ && (
-          <CopyButton
-            value={__rawString__}
-            src={__src__}
-            event={__event__}
-            className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
-          />
+          <>
+            <CopyButton
+              value={__rawString__}
+              src={__src__}
+              event={__event__}
+              className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
+            />
+            {__src__ && (
+              <ExternalFileLinkButton
+                value={__rawString__}
+                src={__src__}
+                event={__event__}
+                className={cn("absolute right-10 top-4", __withMeta__ && "top-16")}
+                title="Link to code"
+              />
+            )}
+          </>
         )}
         {__npmCommand__ &&
           __yarnCommand__ &&
