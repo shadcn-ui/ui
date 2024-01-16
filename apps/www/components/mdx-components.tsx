@@ -208,7 +208,10 @@ const components = {
                 value={__rawString__}
                 src={__src__}
                 event={__event__}
-                className={cn("absolute right-10 top-4", __withMeta__ && "top-16")}
+                className={cn(
+                  "absolute right-10 top-4",
+                  __withMeta__ && "top-16"
+                )}
                 title="Link to code"
               />
             )}

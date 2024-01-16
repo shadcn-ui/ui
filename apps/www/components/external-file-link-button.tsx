@@ -3,17 +3,17 @@
 import * as React from "react"
 import { ExternalLinkIcon } from "@radix-ui/react-icons"
 
+import { siteConfig } from "@/config/site"
 import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
-import { siteConfig } from "@/config/site"
 
-interface ExternalFileLinkButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ExternalFileLinkButtonProps
+  extends React.HTMLAttributes<HTMLButtonElement> {
   value: string
   src?: string
   event?: Event["name"]
 }
-
 
 export function ExternalFileLinkButton({
   value,
@@ -22,9 +22,8 @@ export function ExternalFileLinkButton({
   event,
   ...props
 }: ExternalFileLinkButtonProps) {
-
   const redirectToExternalLink = React.useCallback(() => {
-    const prefix = `${siteConfig.links.github}${siteConfig.demoCodeSlug}`;
+    const prefix = `${siteConfig.links.github}${siteConfig.demoCodeSlug}`
     if (event) {
       trackEvent({
         name: event,
@@ -33,7 +32,7 @@ export function ExternalFileLinkButton({
         },
       })
     }
-    window.open(prefix+src, "_blank")
+    window.open(prefix + src, "_blank")
   }, [src, value, event])
   return (
     <Button
