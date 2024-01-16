@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.8.0
+
+### Minor Changes
+
+- [#2454](https://github.com/shadcn-ui/ui/pull/2454) [`0374ba8`](https://github.com/shadcn-ui/ui/commit/0374ba874d1c76ae08660c655aea6cdf7a7817f6) Thanks [@shadcn](https://github.com/shadcn)! - minimal config for Next.js
+
 ## 0.7.0
 
 ### Minor Changes
