@@ -1,0 +1,10 @@
+{
+  "name": "input-with-icon",
+  "files": [
+    {
+      "name": "input-with-icon.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Input, InputProps } from \"@/registry/new-york/ui/input\"\n\nexport interface InputWithIconProps\n  extends React.HTMLAttributes<HTMLDivElement> {\n  position: \"trailing\" | \"leading\"\n  icon: React.ReactNode\n  iconProps?: React.HTMLAttributes<HTMLDivElement>\n  inputProps?: InputProps\n}\n\nconst InputWithIcon = React.forwardRef<HTMLInputElement, InputWithIconProps>(\n  (\n    {\n      className,\n      children,\n      position,\n      icon,\n      iconProps = {},\n      inputProps = {},\n      ...props\n    },\n    ref\n  ) => {\n    const { className: classNameIconProps, ...restIconProps } = iconProps\n    const { className: classNameInputProps, ...restInputProps } = inputProps\n    return (\n      <div className={cn(\"relative\", className)} ref={ref} {...props}>\n        {position === \"trailing\" ? (\n          <>\n            <Input\n              className={cn(\"pl-10\", classNameInputProps)}\n              {...restInputProps}\n            />\n            <div\n              className={cn(\n                \"pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3\",\n                classNameIconProps\n              )}\n              {...restIconProps}\n            >\n              {icon}\n            </div>\n          </>\n        ) : (\n          <>\n            <Input\n              className={cn(\"pr-10\", classNameInputProps)}\n              {...restInputProps}\n            />\n          <div\n            className={cn(\n              \"pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3\",\n              classNameIconProps\n            )}\n            {...restIconProps}\n          >\n            {icon}\n          </div>\n          </>\n        )}\n      </div>\n    )\n  }\n)\nInputWithIcon.displayName = \"InputWithIcon\"\n\nexport { InputWithIcon }\n"
+    }
+  ],
+  "type": "components:ui"
+}

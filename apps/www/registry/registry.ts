@@ -265,6 +265,11 @@ const ui: Registry = [
     dependencies: ["@radix-ui/react-tooltip"],
     files: ["ui/tooltip.tsx"],
   },
+  {
+    name: "input-with-icon",
+    type: "components:ui",
+    files: ["ui/input-with-icon.tsx"],
+  },
 ]
 
 const example: Registry = [
@@ -1041,6 +1046,11 @@ const example: Registry = [
     name: "cards",
     type: "components:example",
     files: ["example/cards/cards.tsx"],
+  },
+  {
+    name: "input-leading-icon",
+    type: "components:example",
+    files: ["example/input-leading-icon.tsx"],
   },
 ]
 
