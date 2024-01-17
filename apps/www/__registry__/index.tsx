@@ -740,6 +740,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/input-with-button")),
       files: ["registry/default/example/input-with-button.tsx"],
     },
+    "input-with-icons": {
+      name: "input-with-icons",
+      type: "components:example",
+      registryDependencies: ["input","label"],
+      component: React.lazy(() => import("@/registry/default/example/input-with-icons")),
+      files: ["registry/default/example/input-with-icons.tsx"],
+    },
     "input-with-label": {
       name: "input-with-label",
       type: "components:example",
@@ -1958,6 +1965,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["input","button"],
       component: React.lazy(() => import("@/registry/new-york/example/input-with-button")),
       files: ["registry/new-york/example/input-with-button.tsx"],
+    },
+    "input-with-icons": {
+      name: "input-with-icons",
+      type: "components:example",
+      registryDependencies: ["input","label"],
+      component: React.lazy(() => import("@/registry/new-york/example/input-with-icons")),
+      files: ["registry/new-york/example/input-with-icons.tsx"],
     },
     "input-with-label": {
       name: "input-with-label",
