@@ -24,36 +24,6 @@ component: true
 npx shadcn-ui@latest add stepper
 ```
 
-<Step>Use the Stepper component with useStepper hook</Step>
-
-```tsx title="page.tsx"
-"use client"
-
-import { useStepper } from "@/components/ui/use-stepper"
-
-export default function Page() {
-  return (
-    <Stepper>
-      {steps.map((step, index) => (
-        <StepperItem index={index} key={index} {...step}>
-          <div className="bg-muted h-40 w-full p-4">
-            <p>Step {index + 1} content</p>
-          </div>
-        </StepperItem>
-      ))}
-      <Child />
-    </Stepper>
-  )
-}
-
-function Child() {
-  const { currentStep, nextStep, prevStep, ...rest } = useStepper()
-  return (
-    // ...
-  )
-}
-```
-
 </Steps>
 
 </TabsContent>
@@ -64,41 +34,9 @@ function Child() {
 
 <Step>Copy and paste the following code into your project.</Step>
 
-`stepper.tsx`
-
 <ComponentSource name="stepper" />
 
 <Step>Update the import paths to match your project setup.</Step>
-
-<Step>Use the Stepper component with useStepper hook</Step>
-
-```tsx title="page.tsx"
-"use client"
-
-import { useStepper } from "@/components/ui/use-stepper"
-
-export default function Page() {
-  return (
-    <Stepper>
-      {steps.map((step, index) => (
-        <StepperItem index={index} key={index} {...step}>
-          <div className="bg-muted h-40 w-full p-4">
-            <p>Step {index + 1} content</p>
-          </div>
-        </StepperItem>
-      ))}
-      <Child />
-    </Stepper>
-  )
-}
-
-function Child() {
-  const { currentStep, nextStep, prevStep, ...rest } = useStepper()
-  return (
-    // ...
-  )
-}
-```
 
 </Steps>
 
