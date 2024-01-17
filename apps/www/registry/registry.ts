@@ -1052,6 +1052,11 @@ const example: Registry = [
     type: "components:example",
     files: ["example/input-leading-icon.tsx"],
   },
+  {
+    name: "input-trailing-icon",
+    type: "components:example",
+    files: ["example/input-trailing-icon.tsx"],
+  },
 ]
 
 export const registry: Registry = [...ui, ...example]

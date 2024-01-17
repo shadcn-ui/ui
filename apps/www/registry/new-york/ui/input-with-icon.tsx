@@ -28,7 +28,7 @@ const InputWithIcon = React.forwardRef<HTMLInputElement, InputWithIconProps>(
     const { className: classNameInputProps, ...restInputProps } = inputProps
     return (
       <div className={cn("relative", className)} ref={ref} {...props}>
-        {position === "trailing" ? (
+        {position === "leading" ? (
           <>
             <Input
               className={cn("pl-10", classNameInputProps)}
@@ -50,15 +50,15 @@ const InputWithIcon = React.forwardRef<HTMLInputElement, InputWithIconProps>(
               className={cn("pr-10", classNameInputProps)}
               {...restInputProps}
             />
-          <div
-            className={cn(
-              "pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3",
-              classNameIconProps
-            )}
-            {...restIconProps}
-          >
-            {icon}
-          </div>
+            <div
+              className={cn(
+                "pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3",
+                classNameIconProps
+              )}
+              {...restIconProps}
+            >
+              {icon}
+            </div>
           </>
         )}
       </div>
