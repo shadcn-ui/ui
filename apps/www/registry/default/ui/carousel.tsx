@@ -211,6 +211,7 @@ const CarouselPrevious = React.forwardRef<
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
+      style={{ touchAction: "manipulation", ...props.style }}
       {...props}
     >
       <ArrowLeft className="h-4 w-4" />
@@ -240,6 +241,7 @@ const CarouselNext = React.forwardRef<
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
+      style={{ touchAction: "manipulation", ...props.style }}
       {...props}
     >
       <ArrowRight className="h-4 w-4" />
