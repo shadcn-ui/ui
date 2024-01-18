@@ -32,6 +32,12 @@ const ui: Registry = [
     files: ["ui/avatar.tsx"],
   },
   {
+    name: "avatar-group",
+    type: "components:ui",
+    registryDependencies: ["avatar", "avatar-group"],
+    files: ["ui/avatar-group.tsx"],
+  },
+  {
     name: "badge",
     type: "components:ui",
     files: ["ui/badge.tsx"],
@@ -302,6 +308,12 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["avatar"],
     files: ["example/avatar-demo.tsx"],
+  },
+  {
+    name: "avatar-group-demo",
+    type: "components:example",
+    registryDependencies: ["avatar", "avatar-group"],
+    files: ["example/avatar-group-demo.tsx"],
   },
   {
     name: "badge-demo",

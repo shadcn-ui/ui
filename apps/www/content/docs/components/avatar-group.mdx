@@ -1,0 +1,90 @@
+---
+title: Avatar Group
+description: Avatar Group is a wrapper component around Avatar component to display multiple avatars in a group
+component: true
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/avatar
+  api: https://www.radix-ui.com/docs/primitives/components/avatar#api-reference
+---
+
+<ComponentPreview name="avatar-group-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add avatar-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-avatar
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-group" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { AvatarGroup } from "@/components/ui/avatar-group"
+```
+
+```tsx
+<AvatarGroup max={4}>
+  <Avatar>
+    <AvatarImage src="..." alt="@shadcn" />
+    <AvatarFallback>...</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarImage src="..." alt="@shadcn" />
+    <AvatarFallback>...</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarImage src="..." alt="@shadcn" />
+    <AvatarFallback>...</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarImage src="..." alt="@shadcn" />
+    <AvatarFallback>...</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarImage src="..." alt="@shadcn" />
+    <AvatarFallback>...</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarImage src="..." alt="@shadcn" />
+    <AvatarFallback>...</AvatarFallback>
+  </Avatar>
+</AvatarGroup>
+```
+
+## Props API
+
+| Name | Type              | Default | Description                                   |
+| ---- | ----------------- | ------- | --------------------------------------------- |
+| max  | number (required) | 1       | maximum number of avatars to display upfront. |

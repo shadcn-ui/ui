@@ -1,0 +1,11 @@
+{
+  "name": "avatar-group",
+
+  "files": [
+    {
+      "name": "avatar-group.tsx",
+      "content": "import React from \"react\"\nimport clsx from \"clsx\"\nimport { cn } from \"@/lib/utils\"\n\ninterface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {\nmax: number\n}\n\n const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(\n({ className, children, max = 1, ...props}, ref) => {\nconst avatarItems = React.Children.toArray(children) as React.ReactElement[]\n\nconst handleMargin = (index: number) => {\nreturn index * 10\n}\n\nconst renderContent = React.useMemo(() => {\nreturn (\n<>\n{avatarItems.slice(0, max).map((child, index) => {\nreturn React.cloneElement(child,{\nclassName: clsx(\nchild.props.className,\n\"border-2 border-background\"\n),\nstyle: {\nright: handleMargin(index),\n...child.props.style,\n},\n})\n})}\n\n{avatarItems.length > max && (\n<div\nclassName={clsx(\n\"relative border-2 border-background h-10 w-10 flex items-center justify-center rounded-full bg-muted\", \navatarItems[0].props.className\n)}\nstyle={{ right: handleMargin(max)}}\n>\n<p>+{avatarItems.length - max}</p>\n</div>\n)}\n</>\n)\n// eslint-disable-next-line react-hooks/exhaustive-deps\n},[max])\n\nreturn (\n<div\nref={ref}\nclassName={cn(\"relative flex flex-wrap\", className)}\n{...props}\n>\n{renderContent}\n</div>\n)\n}\n)\n\nAvatarGroup.displayName = \"AvatarGroup\"\n\nexport { AvatarGroup }"
+    }
+  ],
+  "type": "components:ui"
+}

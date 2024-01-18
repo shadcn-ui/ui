@@ -6,6 +6,7 @@ import AccordionDemo from "@/registry/new-york/example/accordion-demo"
 import AlertDialogDemo from "@/registry/new-york/example/alert-dialog-demo"
 import AspectRatioDemo from "@/registry/new-york/example/aspect-ratio-demo"
 import AvatarDemo from "@/registry/new-york/example/avatar-demo"
+import AvatarGroupDemo from "@/registry/new-york/example/avatar-group-demo"
 import BadgeDemo from "@/registry/new-york/example/badge-demo"
 import BadgeDestructive from "@/registry/new-york/example/badge-destructive"
 import BadgeOutline from "@/registry/new-york/example/badge-outline"
@@ -135,6 +136,9 @@ export default function KitchenSinkPage() {
             <ComponentWrapper>
               <PopoverDemo />
               <ToastDemo />
+            </ComponentWrapper>
+            <ComponentWrapper>
+              <AvatarGroupDemo />
             </ComponentWrapper>
           </div>
           <div className="grid gap-4">
