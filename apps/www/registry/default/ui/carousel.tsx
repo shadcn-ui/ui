@@ -252,6 +252,35 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+const CarouselDots = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const { api } = useCarousel()
+  const isCurrent = (index: number) => index === api?.selectedScrollSnap()
+  const length = api?.scrollSnapList().length ?? 1
+
+  return (
+    <div
+      ref={ref}
+      className={cn("my-2 flex justify-center gap-1", className)}
+      {...props}
+    >
+      {Array.from({ length }).map((_, index) => (
+        <button
+          className={cn(
+            "h-2.5 w-2.5 rounded-full transition-all duration-300",
+            isCurrent(index) ? "bg-primary" : "bg-primary/50"
+          )}
+          key={index}
+          onClick={() => api?.scrollTo(index)}
+        />
+      ))}
+    </div>
+  )
+})
+CarouselDots.displayName = "CarouselDots"
+
 export {
   type CarouselApi,
   Carousel,
@@ -259,4 +288,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 }

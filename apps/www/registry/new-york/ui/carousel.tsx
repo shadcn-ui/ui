@@ -28,6 +28,7 @@ type CarouselContextProps = {
   scrollNext: () => void
   canScrollPrev: boolean
   canScrollNext: boolean
+  currentSlide: number
 } & CarouselProps
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
@@ -67,12 +68,14 @@ const Carousel = React.forwardRef<
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
+    const [currentSlide, setCurrentSlide] = React.useState(api?.selectedScrollSnap() ?? 0)
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
         return
       }
 
+      setCurrentSlide(api?.selectedScrollSnap())
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
     }, [])
@@ -132,6 +135,7 @@ const Carousel = React.forwardRef<
           scrollNext,
           canScrollPrev,
           canScrollNext,
+          currentSlide
         }}
       >
         <div
@@ -252,6 +256,38 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+const CarouselDots = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const { api, currentSlide } = useCarousel()
+  const length = api?.scrollSnapList().length ?? 1
+
+  return (
+    <div
+      ref={ref}
+      role="tablist"
+      className={cn("my-2 flex justify-center gap-1", className)}
+      {...props}
+    >
+      {Array.from({ length }).map((_, index) => (
+        <button
+          key={index}
+          role="tab"
+          aria-selected={index === currentSlide ? 'true' : 'false'}
+          aria-label={`Slide ${index + 1}`}
+          onClick={() => api?.scrollTo(index)}
+          className={cn(
+            "h-2.5 w-2.5 rounded-full transition-all duration-300",
+            index === currentSlide ? "bg-primary" : "bg-primary/50"
+          )}
+        />
+      ))}
+    </div>
+  )
+})
+CarouselDots.displayName = "CarouselDots"
+
 export {
   type CarouselApi,
   Carousel,
@@ -259,4 +295,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 }
