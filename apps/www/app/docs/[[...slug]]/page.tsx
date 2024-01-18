@@ -4,13 +4,12 @@ import { allDocs } from "contentlayer/generated"
 import "@/styles/mdx.css"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ChevronRightIcon } from "@radix-ui/react-icons"
+import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons"
 import Balancer from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
 import { Mdx } from "@/components/mdx-components"
 import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
@@ -28,7 +27,7 @@ async function getDocFromParams({ params }: DocPageProps) {
   const doc = allDocs.find((doc) => doc.slugAsParams === slug)
 
   if (!doc) {
-    null
+    return null
   }
 
   return doc
@@ -107,27 +106,28 @@ export default async function DocPage({ params }: DocPageProps) {
             </p>
           )}
         </div>
-        {doc.radix ? (
+        {doc.links ? (
           <div className="flex items-center space-x-2 pt-4">
-            {doc.radix?.link && (
+            {doc.links?.doc && (
               <Link
-                href={doc.radix.link}
+                href={doc.links.doc}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }))}
+                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
-                <Icons.radix className="mr-1 h-3 w-3" />
-                Radix UI
+                Docs
+                <ExternalLinkIcon className="h-3 w-3" />
               </Link>
             )}
-            {doc.radix?.api && (
+            {doc.links?.api && (
               <Link
-                href={doc.radix.api}
+                href={doc.links.api}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }))}
+                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
                 API Reference
+                <ExternalLinkIcon className="h-3 w-3" />
               </Link>
             )}
           </div>
