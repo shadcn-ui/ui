@@ -1042,6 +1042,26 @@ const example: Registry = [
     type: "components:example",
     files: ["example/cards/cards.tsx"],
   },
+  {
+    name: "code-block-demo",
+    type: "components:example",
+    files: ["example/code-block-demo.tsx"],
+  },
+  {
+    name: "code-block",
+    type: "components:ui",
+    files: ["ui/code-block.tsx"],
+  },
+  {
+    name: "code-block-show-line-no",
+    type: "components:example",
+    files: ["example/code-block-show-line-no.tsx"],
+  },
+  {
+    name: "code-block-overwrite-theme",
+    type: "components:example",
+    files: ["example/code-block-overwrite-theme.tsx"],
+  },
 ]
 
 export const registry: Registry = [...ui, ...example]

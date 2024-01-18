@@ -1,0 +1,10 @@
+{
+  "name": "code-block",
+  "files": [
+    {
+      "name": "code-block.tsx",
+      "content": "import React from \"react\"\nimport { useTheme } from \"next-themes\"\nimport SyntaxHighlighter, {\n  SyntaxHighlighterProps,\n} from \"react-syntax-highlighter\"\nimport * as languages from \"react-syntax-highlighter/dist/esm/languages/hljs\"\nimport * as themes from \"react-syntax-highlighter/dist/esm/styles/hljs\"\n\nimport { languageTypes } from \"@/types/code-block\"\nimport { cn } from \"@/lib/utils\"\nimport { useMediaQuery } from \"@/hooks/use-media-query\"\nimport { CopyButton } from \"@/components/copy-button\"\n\nconst SyntaxHighlighterWithType =\n  SyntaxHighlighter as any as React.FC<SyntaxHighlighterProps>\ninterface CodeBlockProps {\n  code: string\n  className?: string\n  overwriteTheme?: boolean\n  language: languageTypes\n  theme?: keyof typeof themes\n  hljsProps?: Omit<SyntaxHighlighterProps, \"children\">\n}\n\ninterface IThemeMatcher {\n  [key: string]: any\n}\nexport default function CodeBlock({\n  code,\n  className,\n  language,\n  theme,\n  hljsProps,\n}: CodeBlockProps) {\n  const { theme: nextTheme } = useTheme()\n\n  const isDarkMode = useMediaQuery(\"(prefers-color-scheme: dark)\")\n  const themeMatcher: IThemeMatcher = {\n    dark: themes.dark,\n    light: themes.docco,\n    system: isDarkMode ? themes.dark : themes.docco,\n  }\n  const themeName = theme\n    ? themes[theme]\n    : themeMatcher[nextTheme !== undefined ? nextTheme : \"system\"]\n  return (\n    <div className={cn(\"relative \", className)}>\n      <SyntaxHighlighterWithType\n        className={className}\n        language={languages[language]}\n        style={themeName}\n        {...hljsProps}\n      >\n        {code}\n      </SyntaxHighlighterWithType>\n      <CopyButton className=\"absolute right-0.5 top-0.5\" value={code} />\n    </div>\n  )\n}\n"
+    }
+  ],
+  "type": "components:ui"
+}

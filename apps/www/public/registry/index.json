@@ -92,6 +92,9 @@
     "dependencies": [
       "embla-carousel-react"
     ],
+    "devDependencies": [
+      "embla-carousel"
+    ],
     "registryDependencies": [
       "button"
     ],
@@ -433,6 +436,13 @@
     ],
     "files": [
       "ui/tooltip.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "code-block",
+    "files": [
+      "ui/code-block.tsx"
     ],
     "type": "components:ui"
   }

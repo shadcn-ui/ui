@@ -1,0 +1,75 @@
+---
+title: Code Block
+description: Displays a code block with copy button.
+component: true
+links:
+  doc: https://github.com/react-syntax-highlighter/react-syntax-highlighter
+---
+
+<ComponentPreview name="code-block-demo" className="[&_input]:max-w-xs" />
+
+## About
+
+The code block component is built using the [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) library.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add code-block
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="code-block" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { CodeBlock } from "@/components/ui/code-block"
+```
+
+```tsx
+<CodeBlock />
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview name="code-block-demo" className="[&_input]:max-w-xs" />
+
+### Show Line Number
+
+<ComponentPreview
+  name="code-block-show-line-no"
+  className="[&_input]:max-w-xs"
+/>
+
+### Overwrite Theme
+
+<ComponentPreview
+  name="code-block-overwrite-theme"
+  className="[&_input]:max-w-xs"
+/>
