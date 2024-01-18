@@ -49,7 +49,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/resizable"
+} from "@/components/ui/pagination"
 ```
 
 ```tsx
@@ -78,7 +78,7 @@ By default the `<PaginationLink />` component will render an `<a />` tag.
 To use the Next.js `<Link />` component, make the following updates to `pagination.tsx`.
 
 ```diff showLineNumbers /typeof Link/ {1}
-+ import { Link } from "next/link"
++ import Link from "next/link"
 
 - type PaginationLinkProps = ... & React.ComponentProps<"a">
 + type PaginationLinkProps = ... & React.ComponentProps<typeof Link>

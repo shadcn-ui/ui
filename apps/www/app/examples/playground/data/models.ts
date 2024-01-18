@@ -36,7 +36,7 @@ export const models: Model<ModelType>[] = [
     strengths: "Moderate classification, semantic search",
   },
   {
-    id: " be638fb1-973b-4471-a49c-290325085802",
+    id: "be638fb1-973b-4471-a49c-290325085802",
     name: "text-ada-001",
     description:
       "Capable of very simple tasks, usually the fastest model in the GPT-3 series, and lowest cost.",
