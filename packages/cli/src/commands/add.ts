@@ -195,6 +195,7 @@ export const add = new Command()
             }
           )
         }
+
         // Install devDependencies.
         if (item.devDependencies?.length) {
           await execa(
