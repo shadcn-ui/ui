@@ -8,12 +8,18 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
 
     // Replace @/registry/[style] with the components alias.
     if (moduleSpecifier.startsWith("@/registry/")) {
-      importDeclaration.setModuleSpecifier(
-        moduleSpecifier.replace(
-          /^@\/registry\/[^/]+/,
-          config.aliases.components
+      if (config.aliases.ui) {
+        importDeclaration.setModuleSpecifier(
+          moduleSpecifier.replace(/^@\/registry\/[^/]+\/ui/, config.aliases.ui)
         )
-      )
+      } else {
+        importDeclaration.setModuleSpecifier(
+          moduleSpecifier.replace(
+            /^@\/registry\/[^/]+/,
+            config.aliases.components
+          )
+        )
+      }
     }
 
     // Replace `import { cn } from "@/lib/utils"`
