@@ -10,7 +10,7 @@
     },
     {
       "name": "switch.stories.tsx",
-      "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Label } from \"@/registry/default/ui/label\"\nimport { Switch } from \"@/registry/default/ui/switch\"\n\nconst meta: Meta<typeof Switch> = {\n  title: \"ui/Switch\",\n  component: Switch,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\nexport default meta\n\ntype Story = StoryObj<typeof Switch>\n\nexport const Base: Story = {\n  render: (args) => (\n    <div className=\"flex items-center space-x-2\">\n      <Switch {...args} id=\"airplane-mode\" />\n      <Label htmlFor=\"airplane-mode\">Airplane Mode</Label>\n    </div>\n  ),\n  args: {},\n}\n"
+      "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Label } from \"@/registry/default/ui/label\"\nimport { Switch } from \"@/registry/default/ui/switch\"\n\n/**\n * A control that allows the user to toggle between checked and not checked.\n */\nconst meta: Meta<typeof Switch> = {\n  title: \"ui/Switch\",\n  component: Switch,\n  tags: [\"autodocs\"],\n  argTypes: {},\n  parameters: {\n    layout: 'centered',\n  },\n}\nexport default meta\n\ntype Story = StoryObj<typeof Switch>\n\nexport const Base: Story = {\n  render: (args) => (\n    <div className=\"flex items-center space-x-2\">\n      <Switch {...args} id=\"airplane-mode\" />\n      <Label htmlFor=\"airplane-mode\">Airplane Mode</Label>\n    </div>\n  ),\n  args: {},\n}\n\nexport const Disabled: Story = {\n  render: Base.render,\n  args: {\n    disabled: true,\n  },\n}\n"
     }
   ],
   "type": "components:ui"

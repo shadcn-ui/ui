@@ -463,7 +463,8 @@
       "toggle"
     ],
     "files": [
-      "ui/toggle-group.tsx"
+      "ui/toggle-group.tsx",
+      "stories/toggle-group.stories.tsx"
     ],
     "type": "components:ui"
   },

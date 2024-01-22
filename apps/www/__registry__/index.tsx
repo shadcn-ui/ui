@@ -297,7 +297,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["toggle"],
       component: React.lazy(() => import("@/registry/default/ui/toggle-group")),
-      files: ["registry/default/ui/toggle-group.tsx"],
+      files: ["registry/default/ui/toggle-group.tsx","registry/stories/toggle-group.stories.tsx"],
     },
     "tooltip": {
       name: "tooltip",
@@ -1516,7 +1516,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: ["toggle"],
       component: React.lazy(() => import("@/registry/new-york/ui/toggle-group")),
-      files: ["registry/new-york/ui/toggle-group.tsx"],
+      files: ["registry/new-york/ui/toggle-group.tsx","registry/stories/toggle-group.stories.tsx"],
     },
     "tooltip": {
       name: "tooltip",
