@@ -25,6 +25,9 @@ const meta: Meta<typeof ContextMenu> = {
   component: ContextMenu,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: "centered",
+  },
 }
 export default meta
 

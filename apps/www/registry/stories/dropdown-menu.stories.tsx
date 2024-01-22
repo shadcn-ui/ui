@@ -41,6 +41,9 @@ const meta: Meta<typeof DropdownMenu> = {
   component: DropdownMenu,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: "centered",
+  },
 }
 export default meta
 

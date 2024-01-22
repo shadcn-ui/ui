@@ -10,7 +10,7 @@ import {
 } from "@/registry/default/ui/tooltip"
 
 /**
- * A popup that displays information related to an element when the element 
+ * A popup that displays information related to an element when the element
  * receives keyboard focus or the mouse hovers over it.
  */
 const meta: Meta<typeof Tooltip> = {
@@ -18,6 +18,9 @@ const meta: Meta<typeof Tooltip> = {
   component: Tooltip,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: "centered",
+  },
 }
 export default meta
 

@@ -21,6 +21,9 @@ const meta: Meta<typeof Card> = {
   component: Card,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 export default meta
 

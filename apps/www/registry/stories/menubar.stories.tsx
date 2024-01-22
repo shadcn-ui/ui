@@ -25,6 +25,9 @@ const meta: Meta<typeof Menubar> = {
   component: Menubar,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: "centered",
+  },
 }
 export default meta
 

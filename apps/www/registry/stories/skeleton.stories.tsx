@@ -10,6 +10,9 @@ const meta: Meta<typeof Skeleton> = {
   component: Skeleton,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 export default meta
 

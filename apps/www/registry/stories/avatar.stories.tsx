@@ -14,6 +14,9 @@ const meta: Meta<typeof Avatar> = {
   component: Avatar,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export default meta

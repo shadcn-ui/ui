@@ -22,6 +22,9 @@ const meta: Meta<typeof Sheet> = {
   component: Sheet,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 export default meta
 

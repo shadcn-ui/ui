@@ -17,6 +17,9 @@ const meta: Meta<typeof NavigationMenu> = {
   component: NavigationMenu,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 export default meta
 

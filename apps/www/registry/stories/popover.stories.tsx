@@ -18,6 +18,9 @@ const meta: Meta<typeof Popover> = {
   component: Popover,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 export default meta
 

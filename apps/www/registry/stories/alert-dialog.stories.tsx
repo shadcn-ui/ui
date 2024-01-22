@@ -22,6 +22,9 @@ const meta: Meta<typeof AlertDialog> = {
   component: AlertDialog,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export default meta

@@ -18,6 +18,9 @@ const meta: Meta<typeof Pagination> = {
   component: Pagination,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 export default meta
 

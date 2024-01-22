@@ -17,6 +17,9 @@ const meta: Meta<typeof Carousel> = {
   component: Carousel,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: "centered",
+  },
 }
 export default meta
 
@@ -24,7 +27,7 @@ type Story = StoryObj<typeof Carousel>
 
 export const Base: Story = {
   render: (args) => (
-    <Carousel {...args} className="mx-12 w-full max-w-xs">
+    <Carousel {...args} className="w-full max-w-xs">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>

@@ -11,6 +11,9 @@ const meta: Meta<typeof Toggle> = {
   component: Toggle,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 export default meta
 

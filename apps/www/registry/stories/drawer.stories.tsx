@@ -20,6 +20,9 @@ const meta: Meta<typeof Drawer> = {
   component: Drawer,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: "centered",
+  },
 }
 export default meta
 

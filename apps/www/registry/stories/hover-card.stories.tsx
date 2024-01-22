@@ -21,6 +21,9 @@ const meta: Meta<typeof HoverCard> = {
   component: HoverCard,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: "centered",
+  },
 }
 export default meta
 

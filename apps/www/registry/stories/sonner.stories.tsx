@@ -12,6 +12,9 @@ const meta: Meta<typeof Toaster> = {
   component: Toaster,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 export default meta
 

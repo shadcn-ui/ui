@@ -18,6 +18,9 @@ const meta: Meta<typeof Toast> = {
   component: Toast,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'centered',
+  },
 }
 export default meta
 
