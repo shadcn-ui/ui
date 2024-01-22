@@ -29,6 +29,7 @@ interface ContextStepperProps extends StepperProps {
   resetSteps: () => void
   setStep: (step: number) => void
   activeStep: number
+  setStatus: (status: StepperProps["status"]) => void
 }
 
 const StepperContext = React.createContext<ContextStepperProps>({
@@ -39,6 +40,7 @@ const StepperContext = React.createContext<ContextStepperProps>({
   resetSteps: () => {},
   setStep: () => {},
   activeStep: 0,
+  setStatus: () => {},
 })
 
 const StepperProvider = ({
@@ -49,6 +51,9 @@ const StepperProvider = ({
   children: React.ReactNode
 }) => {
   const [activeStep, setActiveStep] = React.useState(value.initialStep)
+  const [status, setStatus] = React.useState<StepperProps["status"]>(
+    value.status
+  )
   const nextStep = () => {
     setActiveStep((prev) => prev + 1)
   }
@@ -74,6 +79,8 @@ const StepperProvider = ({
         resetSteps,
         setStep,
         activeStep,
+        status,
+        setStatus,
       }}
     >
       {children}
@@ -127,11 +134,6 @@ export const Stepper = React.forwardRef<
     const items = React.Children.toArray(children).map((child, index) => {
       if (!React.isValidElement(child)) {
         throw new Error("Stepper children must be valid React elements.")
-      }
-      if (child.type !== StepperItem && child.type !== StepperFooter) {
-        throw new Error(
-          "Stepper children must be either <StepperItem> or <StepperFooter>."
-        )
       }
       if (child.type === StepperFooter) {
         footer.push(child)

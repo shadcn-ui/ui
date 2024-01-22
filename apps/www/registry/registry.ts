@@ -221,7 +221,7 @@ const ui: Registry = [
   {
     name: "stepper",
     type: "components:ui",
-    files: ["ui/stepper.tsx", "ui/use-stepper.ts"],
+    files: ["ui/stepper.tsx"],
   },
   {
     name: "switch",
@@ -816,6 +816,12 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["stepper"],
     files: ["example/stepper-description.tsx"],
+  },
+  {
+    name: "stepper-form",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-form.tsx"],
   },
   {
     name: "stepper-custom-icons",

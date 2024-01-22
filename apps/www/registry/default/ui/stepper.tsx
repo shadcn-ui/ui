@@ -128,11 +128,6 @@ export const Stepper = React.forwardRef<
       if (!React.isValidElement(child)) {
         throw new Error("Stepper children must be valid React elements.")
       }
-      if (child.type !== StepperItem && child.type !== StepperFooter) {
-        throw new Error(
-          "Stepper children must be either <StepperItem> or <StepperFooter>."
-        )
-      }
       if (child.type === StepperFooter) {
         footer.push(child)
         return null

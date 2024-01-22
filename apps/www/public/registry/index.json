@@ -92,6 +92,9 @@
     "dependencies": [
       "embla-carousel-react"
     ],
+    "devDependencies": [
+      "embla-carousel"
+    ],
     "registryDependencies": [
       "button"
     ],
@@ -360,8 +363,7 @@
   {
     "name": "stepper",
     "files": [
-      "ui/stepper.tsx",
-      "ui/use-stepper.ts"
+      "ui/stepper.tsx"
     ],
     "type": "components:ui"
   },

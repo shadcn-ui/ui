@@ -255,7 +255,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/stepper")),
-      files: ["registry/default/ui/stepper.tsx","registry/default/ui/use-stepper.ts"],
+      files: ["registry/default/ui/stepper.tsx"],
     },
     "switch": {
       name: "switch",
@@ -943,6 +943,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/stepper-description")),
       files: ["registry/default/example/stepper-description.tsx"],
     },
+    "stepper-form": {
+      name: "stepper-form",
+      type: "components:example",
+      registryDependencies: ["stepper"],
+      component: React.lazy(() => import("@/registry/default/example/stepper-form")),
+      files: ["registry/default/example/stepper-form.tsx"],
+    },
     "stepper-custom-icons": {
       name: "stepper-custom-icons",
       type: "components:example",
@@ -1537,7 +1544,7 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/stepper")),
-      files: ["registry/new-york/ui/stepper.tsx","registry/new-york/ui/use-stepper.ts"],
+      files: ["registry/new-york/ui/stepper.tsx"],
     },
     "switch": {
       name: "switch",
@@ -2224,6 +2231,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-description")),
       files: ["registry/new-york/example/stepper-description.tsx"],
+    },
+    "stepper-form": {
+      name: "stepper-form",
+      type: "components:example",
+      registryDependencies: ["stepper"],
+      component: React.lazy(() => import("@/registry/new-york/example/stepper-form")),
+      files: ["registry/new-york/example/stepper-form.tsx"],
     },
     "stepper-custom-icons": {
       name: "stepper-custom-icons",

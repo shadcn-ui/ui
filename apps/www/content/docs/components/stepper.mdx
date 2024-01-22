@@ -152,6 +152,7 @@ function useStepper(): StepperProps & {
   prevStep: () => void
   resetSteps: () => void
   setStep: (step: number) => void
+  setStatus: (status: "default" | "success" | "error" | "loading") => void
   activeStep: number
   isDisabledStep: boolean
   isLastStep: boolean
@@ -267,3 +268,13 @@ function MyStepperFooter() {
 ### Scroll tracking
 
 If you would like the stepper to scroll to the active step when it is not in view you can do so using the `scrollTracking` prop on the Stepper component.
+
+### With Forms
+
+If you want to use the stepper with forms, you can do so by using the `useStepper` hook to control the component.
+
+This example uses the `Form` component of shadcn and the `react-hook-form` hooks to create a form with zod for validations.
+
+You can also use the component with server actions.
+
+<ComponentPreview name="stepper-form" />
