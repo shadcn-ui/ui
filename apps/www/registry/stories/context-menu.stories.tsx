@@ -17,7 +17,7 @@ import {
 } from "@/registry/default/ui/context-menu"
 
 /**
- * Displays a menu to the user — such as a set of actions or functions — 
+ * Displays a menu to the user — such as a set of actions or functions —
  * triggered by a button.
  */
 const meta: Meta<typeof ContextMenu> = {
@@ -81,4 +81,11 @@ export const Base: Story = {
     </ContextMenu>
   ),
   args: {},
+}
+
+export const DisableModal: Story = {
+  render: Base.render,
+  args: {
+    modal: false,
+  },
 }

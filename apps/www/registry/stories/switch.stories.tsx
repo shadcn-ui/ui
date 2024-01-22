@@ -25,3 +25,10 @@ export const Base: Story = {
   ),
   args: {},
 }
+
+export const Disabled: Story = {
+  render: Base.render,
+  args: {
+    disabled: true,
+  },
+}

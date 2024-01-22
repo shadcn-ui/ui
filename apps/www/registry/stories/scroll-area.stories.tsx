@@ -40,3 +40,24 @@ export const Base: Story = {
   ),
   args: {},
 }
+
+export const Always: Story = {
+  render: Base.render,
+  args: {
+    type: "always",
+  },
+}
+
+export const Hover: Story = {
+  render: Base.render,
+  args: {
+    type: "hover",
+  },
+}
+
+export const Scroll: Story = {
+  render: Base.render,
+  args: {
+    type: "scroll",
+  },
+}

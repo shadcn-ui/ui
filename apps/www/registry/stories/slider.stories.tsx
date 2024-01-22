@@ -23,6 +23,22 @@ export const Base: Story = {
   },
 }
 
+export const Inverted: Story = {
+  render: Base.render,
+  args: {
+    ...Base.args,
+    inverted: true,
+  },
+}
+
+export const Disabled: Story = {
+  render: Base.render,
+  args: {
+    ...Base.args,
+    disabled: true,
+  },
+}
+
 export const Interval: Story = {
   args: {
     defaultValue: [33, 88],

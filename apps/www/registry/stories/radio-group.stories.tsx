@@ -4,7 +4,7 @@ import { Label } from "@/registry/default/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 
 /**
- * A set of checkable buttons—known as radio buttons—where no more than one of 
+ * A set of checkable buttons—known as radio buttons—where no more than one of
  * the buttons can be checked at a time.
  */
 const meta: Meta<typeof RadioGroup> = {
@@ -36,5 +36,12 @@ export const Base: Story = {
   ),
   args: {
     defaultValue: "comfortable",
+  },
+}
+
+export const Disabled: Story = {
+  render: Base.render,
+  args: {
+    disabled: true,
   },
 }

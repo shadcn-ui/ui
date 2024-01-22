@@ -69,12 +69,9 @@ export const Large: Story = {
 }
 
 export const Disabled: Story = {
-  render: (args) => (
-    <Toggle {...args} aria-label="Toggle underline">
-      <Underline className="h-4 w-4" />
-    </Toggle>
-  ),
+  render: Base.render,
   args: {
+    ...Base.args,
     disabled: true,
   },
 }

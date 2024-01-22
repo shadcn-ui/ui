@@ -32,3 +32,24 @@ export const Base: Story = {
     ratio: 16 / 9,
   },
 }
+
+export const Square: Story = {
+  render: Base.render,
+  args: {
+    ratio: 1,
+  },
+}
+
+export const Portrait: Story = {
+  render: Base.render,
+  args: {
+    ratio: 3 / 4,
+  },
+}
+
+export const Landscape: Story = {
+  render: Base.render,
+  args: {
+    ratio: 4 / 3,
+  },
+}

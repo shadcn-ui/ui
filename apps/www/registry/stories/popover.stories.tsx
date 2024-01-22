@@ -80,3 +80,10 @@ export const Base: Story = {
   ),
   args: {},
 }
+
+export const DisableModal: Story = {
+  render: Base.render,
+  args: {
+    modal: false,
+  },
+}

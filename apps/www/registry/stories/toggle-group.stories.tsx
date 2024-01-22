@@ -72,7 +72,7 @@ export const Large: Story = {
 export const Disabled: Story = {
   render: Base.render,
   args: {
-    type: "single",
+    ...Base.args,
     disabled: true,
   },
 }

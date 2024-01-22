@@ -51,3 +51,11 @@ export const Base: Story = {
     collapsible: true,
   },
 }
+
+export const Disabled: Story = {
+  render: Base.render,
+  args: {
+    ...Base.args,
+    disabled: true,
+  },
+}

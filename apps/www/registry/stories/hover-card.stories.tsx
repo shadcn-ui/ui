@@ -56,3 +56,11 @@ export const Base: Story = {
   ),
   args: {},
 }
+
+export const Instant: Story = {
+  render: Base.render,
+  args: {
+    openDelay: 0,
+    closeDelay: 0,
+  },
+}
