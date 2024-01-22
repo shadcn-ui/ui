@@ -261,7 +261,7 @@ const ui: Registry = [
     type: "components:ui",
     dependencies: ["@radix-ui/react-toggle-group"],
     registryDependencies: ["toggle"],
-    files: ["ui/toggle-group.tsx"],
+    files: ["ui/toggle-group.tsx", "stories/toggle-group.stories.tsx"],
   },
   {
     name: "tooltip",
