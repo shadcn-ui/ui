@@ -18,7 +18,7 @@ type Story = StoryObj<typeof Toggle>
 
 export const Base: Story = {
   render: (args) => (
-    <Toggle {...args} aria-label="Toggle italic">
+    <Toggle {...args} aria-label="Toggle bold">
       <Bold className="h-4 w-4" />
     </Toggle>
   ),
@@ -70,7 +70,7 @@ export const Large: Story = {
 
 export const Disabled: Story = {
   render: (args) => (
-    <Toggle {...args} aria-label="Toggle italic">
+    <Toggle {...args} aria-label="Toggle underline">
       <Underline className="h-4 w-4" />
     </Toggle>
   ),

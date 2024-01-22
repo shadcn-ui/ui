@@ -21,21 +21,21 @@ export const Base: Story = {
 }
 
 export const Secondary: Story = {
-  render: (args) => <Badge {...args}>Badge</Badge>,
+  render: Base.render,
   args: {
     variant: "secondary",
   },
 }
 
 export const Destructive: Story = {
-  render: (args) => <Badge {...args}>Badge</Badge>,
+  render: Base.render,
   args: {
     variant: "destructive",
   },
 }
 
 export const Outline: Story = {
-  render: (args) => <Badge {...args}>Badge</Badge>,
+  render: Base.render,
   args: {
     variant: "outline",
   },

@@ -36,9 +36,6 @@ export default meta
 type Story = StoryObj<typeof Command>
 
 export const Base: Story = {
-  args: {
-    className: "rounded-lg border shadow-md",
-  },
   render: (args) => (
     <Command {...args}>
       <CommandInput placeholder="Type a command or search..." />
@@ -79,6 +76,9 @@ export const Base: Story = {
       </CommandList>
     </Command>
   ),
+  args: {
+    className: "rounded-lg border shadow-md",
+  },
 }
 
 export const Dialog: Story = {

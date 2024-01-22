@@ -17,7 +17,8 @@ export default meta
 
 type Story = StoryObj<typeof Input>
 
-export const Default: Story = {
+export const Base: Story = {
+  name: "Default",
   render: (args) => <Input {...args} />,
   args: {
     type: "email",
@@ -25,9 +26,10 @@ export const Default: Story = {
   },
 }
 export const Disabled: Story = {
-  render: (args) => <Input {...args} />,
-  args: { ...Default.args, disabled: true },
+  render: Base.render,
+  args: { ...Base.args, disabled: true },
 }
+
 export const WithLabel: Story = {
   render: (args) => (
     <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -35,8 +37,9 @@ export const WithLabel: Story = {
       <Input {...args} id="email" />
     </div>
   ),
-  args: { ...Default.args },
+  args: { ...Base.args },
 }
+
 export const WithText: Story = {
   render: (args) => (
     <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -45,8 +48,9 @@ export const WithText: Story = {
       <p className="text-sm text-slate-500">Enter your email address.</p>
     </div>
   ),
-  args: { ...Default.args },
+  args: { ...Base.args },
 }
+
 export const WithButton: Story = {
   render: (args) => (
     <div className="flex w-full max-w-sm items-center space-x-2">
@@ -54,5 +58,5 @@ export const WithButton: Story = {
       <Button type="submit">Subscribe</Button>
     </div>
   ),
-  args: { ...Default.args },
+  args: { ...Base.args },
 }

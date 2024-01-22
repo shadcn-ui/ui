@@ -17,7 +17,8 @@ export default meta
 
 type Story = StoryObj<typeof Textarea>
 
-export const Default: Story = {
+export const Base: Story = {
+  name: "Default",
   render: (args) => <Textarea {...args} />,
   args: {
     placeholder: "Type your message here.",
@@ -25,9 +26,9 @@ export const Default: Story = {
 }
 
 export const Disabled: Story = {
-  render: (args) => <Textarea {...args} />,
+  render: Base.render,
   args: {
-    ...Default.args,
+    ...Base.args,
     disabled: true,
   },
 }
@@ -39,7 +40,7 @@ export const WithLabel: Story = {
       <Textarea {...args} id="message" />
     </div>
   ),
-  args: { ...Default.args },
+  args: { ...Base.args },
 }
 
 export const WithText: Story = {
@@ -52,7 +53,7 @@ export const WithText: Story = {
       </p>
     </div>
   ),
-  args: { ...Default.args },
+  args: { ...Base.args },
 }
 
 export const WithButton: Story = {
@@ -62,5 +63,5 @@ export const WithButton: Story = {
       <Button>Send message</Button>
     </div>
   ),
-  args: { ...Default.args },
+  args: { ...Base.args },
 }

@@ -57,7 +57,7 @@ export const Simple: Story = {
 }
 
 export const WithTitle: Story = {
-  render: (args) => <ToastExample {...args} />,
+  render: Simple.render,
   args: {
     title: "Uh oh! Something went wrong.",
     description: "There was a problem with your request.",
@@ -65,7 +65,7 @@ export const WithTitle: Story = {
 }
 
 export const WithAction: Story = {
-  render: (args) => <ToastExample {...args} />,
+  render: Simple.render,
   args: {
     title: "Uh oh! Something went wrong.",
     description: "There was a problem with your request.",
@@ -74,7 +74,7 @@ export const WithAction: Story = {
 }
 
 export const Destructive: Story = {
-  render: (args) => <ToastExample {...args} />,
+  render: Simple.render,
   args: {
     variant: "destructive",
     title: "Uh oh! Something went wrong.",

@@ -18,39 +18,41 @@ type Story = StoryObj<typeof Button>
 
 export const Base: Story = {
   render: (args) => <Button {...args}>Button</Button>,
-  args: {},
+  args: {
+    variant: "default",
+  },
 }
 
 export const Outline: Story = {
-  render: (args) => <Button {...args}>Button</Button>,
+  render: Base.render,
   args: {
     variant: "outline",
   },
 }
 
 export const Ghost: Story = {
-  render: (args) => <Button {...args}>Button</Button>,
+  render: Base.render,
   args: {
     variant: "ghost",
   },
 }
 
 export const Secondary: Story = {
-  render: (args) => <Button {...args}>Button</Button>,
+  render: Base.render,
   args: {
     variant: "secondary",
   },
 }
 
 export const Destructive: Story = {
-  render: (args) => <Button {...args}>Button</Button>,
+  render: Base.render,
   args: {
     variant: "destructive",
   },
 }
 
 export const Link: Story = {
-  render: (args) => <Button {...args}>Button</Button>,
+  render: Base.render,
   args: {
     variant: "link",
   },
@@ -64,7 +66,7 @@ export const Loading: Story = {
     </Button>
   ),
   args: {
-    variant: "outline",
+    ...Outline.args,
   },
 }
 
@@ -75,6 +77,6 @@ export const WithIcon: Story = {
     </Button>
   ),
   args: {
-    variant: "secondary",
+    ...Secondary.args,
   },
 }

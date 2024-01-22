@@ -39,12 +39,6 @@ export default meta
 
 type Story = StoryObj<typeof Calendar>
 
-const FormSchema = z.object({
-  dob: z.date({
-    required_error: "A date of birth is required.",
-  }),
-})
-
 export const Base: Story = {
   args: {
     mode: "single",
@@ -53,11 +47,17 @@ export const Base: Story = {
 }
 
 export const CalendarForm: Story = {
+  render: (args) => <ExampleCalendarForm {...args} />,
   args: {
     mode: "single",
   },
-  render: (args) => <ExampleCalendarForm {...args} />,
 }
+
+const FormSchema = z.object({
+  dob: z.date({
+    required_error: "A date of birth is required.",
+  }),
+})
 
 const ExampleCalendarForm = (args: Story["args"]) => {
   const { toast } = useToast()
