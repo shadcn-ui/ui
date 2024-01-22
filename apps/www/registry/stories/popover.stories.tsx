@@ -10,6 +10,9 @@ import {
   PopoverTrigger,
 } from "@/registry/default/ui/popover"
 
+/**
+ * Displays rich content in a portal, triggered by a button.
+ */
 const meta: Meta<typeof Popover> = {
   title: "ui/Popover",
   component: Popover,

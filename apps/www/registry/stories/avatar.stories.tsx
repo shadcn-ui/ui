@@ -6,6 +6,9 @@ import {
   AvatarImage,
 } from "@/registry/default/ui/avatar"
 
+/**
+ * An image element with a fallback for representing the user.
+ */
 const meta: Meta<typeof Avatar> = {
   title: "ui/Avatar",
   component: Avatar,

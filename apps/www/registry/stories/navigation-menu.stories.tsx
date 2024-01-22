@@ -9,6 +9,9 @@ import {
   navigationMenuTriggerStyle,
 } from "@/registry/default/ui/navigation-menu"
 
+/**
+ * A collection of links for navigating websites.
+ */
 const meta: Meta<typeof NavigationMenu> = {
   title: "ui/NavigationMenu",
   component: NavigationMenu,

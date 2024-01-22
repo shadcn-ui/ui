@@ -13,6 +13,10 @@ import {
 import { Input } from "@/registry/default/ui/input"
 import { Label } from "@/registry/default/ui/label"
 
+/**
+ * A window overlaid on either the primary window or another dialog window, 
+ * rendering the content underneath inert.
+ */
 const meta: Meta<typeof Dialog> = {
   title: "ui/Dialog",
   component: Dialog,

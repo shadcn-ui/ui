@@ -16,6 +16,9 @@ import {
 } from "@/registry/default/ui/form"
 import { Input } from "@/registry/default/ui/input"
 
+/**
+ * Building forms with React Hook Form and Zod.
+ */
 const meta: Meta<typeof Form> = {
   title: "ui/Form",
   component: Form,

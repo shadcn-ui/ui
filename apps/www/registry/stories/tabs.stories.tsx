@@ -10,6 +10,10 @@ import {
   TabsTrigger,
 } from "@/registry/default/ui/tabs"
 
+/**
+ * A set of layered sections of content—known as tab panels—that are displayed 
+ * one at a time.
+ */
 const meta: Meta<typeof Tabs> = {
   title: "ui/Tabs",
   component: Tabs,

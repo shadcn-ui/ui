@@ -3,6 +3,9 @@ import { Bold, Italic, Underline } from "lucide-react"
 
 import { Toggle } from "@/registry/default/ui/toggle"
 
+/**
+ * A two-state button that can be either on or off.
+ */
 const meta: Meta<typeof Toggle> = {
   title: "ui/Toggle",
   component: Toggle,

@@ -4,6 +4,9 @@ import { Button } from "@/registry/default/ui/button"
 import { Input } from "@/registry/default/ui/input"
 import { Label } from "@/registry/default/ui/label"
 
+/**
+ * Displays a form input field or a component that looks like an input field.
+ */
 const meta: Meta<typeof Input> = {
   title: "ui/Input",
   component: Input,

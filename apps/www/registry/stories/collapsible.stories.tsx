@@ -8,6 +8,9 @@ import {
   CollapsibleTrigger,
 } from "@/registry/default/ui/collapsible"
 
+/**
+ * An interactive component which expands/collapses a panel.
+ */
 const meta: Meta<typeof Collapsible> = {
   title: "ui/Collapsible",
   component: Collapsible,

@@ -13,6 +13,9 @@ import {
 } from "@/registry/default/ui/card"
 import { Switch } from "@/registry/default/ui/switch"
 
+/**
+ * Displays a card with header, content, and footer.
+ */
 const meta: Meta<typeof Card> = {
   title: "ui/Card",
   component: Card,

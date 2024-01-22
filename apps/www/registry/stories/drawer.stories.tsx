@@ -12,6 +12,9 @@ import {
   DrawerTrigger,
 } from "@/registry/default/ui/drawer"
 
+/**
+ * A drawer component for React.
+ */
 const meta: Meta<typeof Drawer> = {
   title: "ui/Drawer",
   component: Drawer,

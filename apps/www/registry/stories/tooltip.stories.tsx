@@ -9,6 +9,10 @@ import {
   TooltipTrigger,
 } from "@/registry/default/ui/tooltip"
 
+/**
+ * A popup that displays information related to an element when the element 
+ * receives keyboard focus or the mouse hovers over it.
+ */
 const meta: Meta<typeof Tooltip> = {
   title: "ui/Tooltip",
   component: Tooltip,

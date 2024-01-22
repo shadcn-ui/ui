@@ -3,6 +3,10 @@ import { Meta, StoryObj } from "@storybook/react"
 import { Label } from "@/registry/default/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 
+/**
+ * A set of checkable buttons—known as radio buttons—where no more than one of 
+ * the buttons can be checked at a time.
+ */
 const meta: Meta<typeof RadioGroup> = {
   title: "ui/RadioGroup",
   component: RadioGroup,

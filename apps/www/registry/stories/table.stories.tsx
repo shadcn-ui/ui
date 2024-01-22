@@ -10,6 +10,9 @@ import {
   TableRow,
 } from "@/registry/default/ui/table"
 
+/**
+ * Powerful table and datagrids built using TanStack Table.
+ */
 const meta: Meta<typeof Table> = {
   title: "ui/Table",
   component: Table,

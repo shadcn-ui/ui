@@ -16,6 +16,10 @@ import {
   MenubarTrigger,
 } from "@/registry/default/ui/menubar"
 
+/**
+ * A visually persistent menu common in desktop applications that provides 
+ * quick access to a consistent set of commands.
+ */
 const meta: Meta<typeof Menubar> = {
   title: "ui/Menubar",
   component: Menubar,

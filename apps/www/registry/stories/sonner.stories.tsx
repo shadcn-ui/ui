@@ -4,6 +4,9 @@ import { toast } from "sonner"
 import { Button } from "@/registry/default/ui/button"
 import { Toaster } from "@/registry/default/ui/sonner"
 
+/**
+ * An opinionated toast component for React.
+ */
 const meta: Meta<typeof Toaster> = {
   title: "ui/Sonner",
   component: Toaster,

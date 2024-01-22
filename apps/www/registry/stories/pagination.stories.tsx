@@ -10,6 +10,9 @@ import {
   PaginationPrevious,
 } from "@/registry/default/ui/pagination"
 
+/**
+ * Pagination with page navigation, next and previous links.
+ */
 const meta: Meta<typeof Pagination> = {
   title: "ui/Pagination",
   component: Pagination,

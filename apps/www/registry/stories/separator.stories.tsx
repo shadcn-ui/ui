@@ -2,6 +2,9 @@ import { Meta, StoryObj } from "@storybook/react"
 
 import { Separator } from "@/registry/default/ui/separator"
 
+/**
+ * Visually or semantically separates content.
+ */
 const meta: Meta<typeof Separator> = {
   title: "ui/Separator",
   component: Separator,

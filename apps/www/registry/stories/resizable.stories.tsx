@@ -6,6 +6,9 @@ import {
   ResizablePanelGroup,
 } from "@/registry/default/ui/resizable"
 
+/**
+ * Accessible resizable panel groups and layouts with keyboard support.
+ */
 const meta: Meta<typeof ResizablePanelGroup> = {
   title: "ui/ResizablePanelGroup",
   component: ResizablePanelGroup,

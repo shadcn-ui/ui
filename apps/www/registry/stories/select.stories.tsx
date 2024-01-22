@@ -11,6 +11,9 @@ import {
   SelectValue,
 } from "@/registry/default/ui/select"
 
+/**
+ * Displays a list of options for the user to pick from—triggered by a button.
+ */
 const meta: Meta<typeof Select> = {
   title: "ui/Select",
   component: Select,

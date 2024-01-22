@@ -25,6 +25,9 @@ import {
 import { Toaster } from "@/registry/default/ui/toaster"
 import { useToast } from "@/registry/default/ui/use-toast"
 
+/**
+ * A date field component that allows users to enter and edit date.
+ */
 const meta: Meta<typeof Calendar> = {
   title: "ui/Calendar",
   component: Calendar,

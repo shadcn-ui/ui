@@ -2,6 +2,9 @@ import { Meta, StoryObj } from "@storybook/react"
 
 import { Skeleton } from "@/registry/default/ui/skeleton"
 
+/**
+ * Use to show a placeholder while content is loading.
+ */
 const meta: Meta<typeof Skeleton> = {
   title: "ui/Skeleton",
   component: Skeleton,

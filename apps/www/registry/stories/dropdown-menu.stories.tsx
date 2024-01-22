@@ -32,6 +32,10 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/default/ui/dropdown-menu"
 
+/**
+ * Displays a menu to the user — such as a set of actions or functions — 
+ * triggered by a button.
+ */
 const meta: Meta<typeof DropdownMenu> = {
   title: "ui/DropdownMenu",
   component: DropdownMenu,

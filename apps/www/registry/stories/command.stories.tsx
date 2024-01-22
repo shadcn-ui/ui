@@ -21,6 +21,9 @@ import {
   CommandShortcut,
 } from "@/registry/default/ui/command"
 
+/**
+ * Fast, composable, unstyled command menu for React.
+ */
 const meta: Meta<typeof Command> = {
   title: "ui/Command",
   component: Command,

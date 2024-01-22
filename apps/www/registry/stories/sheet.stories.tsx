@@ -13,6 +13,10 @@ import {
   SheetTrigger,
 } from "@/registry/default/ui/sheet"
 
+/**
+ * Extends the Dialog component to display content that complements the main 
+ * content of the screen.
+ */
 const meta: Meta<typeof Sheet> = {
   title: "ui/Sheet",
   component: Sheet,

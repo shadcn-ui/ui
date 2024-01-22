@@ -3,6 +3,9 @@ import { Meta, StoryObj } from "@storybook/react"
 
 import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
 
+/**
+ * Displays content within a desired ratio.
+ */
 const meta: Meta<typeof AspectRatio> = {
   title: "ui/AspectRatio",
   component: AspectRatio,

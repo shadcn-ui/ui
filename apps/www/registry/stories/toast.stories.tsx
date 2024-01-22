@@ -10,6 +10,9 @@ import {
 import { Toaster } from "@/registry/default/ui/toaster"
 import { useToast } from "@/registry/default/ui/use-toast"
 
+/**
+ * A succinct message that is displayed temporarily.
+ */
 const meta: Meta<typeof Toast> = {
   title: "ui/Toast",
   component: Toast,

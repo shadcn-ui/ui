@@ -2,6 +2,9 @@ import { Meta, StoryObj } from "@storybook/react"
 
 import { Badge } from "@/registry/default/ui/badge"
 
+/**
+ * Displays a badge or a component that looks like a badge.
+ */
 const meta: Meta<typeof Badge> = {
   title: "ui/Badge",
   component: Badge,

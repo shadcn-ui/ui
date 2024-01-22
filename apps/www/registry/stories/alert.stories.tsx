@@ -7,6 +7,9 @@ import {
   AlertTitle,
 } from "@/registry/default/ui/alert"
 
+/**
+ * Displays a callout for user attention.
+ */
 const meta: Meta<typeof Alert> = {
   title: "ui/Alert",
   component: Alert,

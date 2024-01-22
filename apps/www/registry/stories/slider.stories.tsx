@@ -2,6 +2,9 @@ import { Meta, StoryObj } from "@storybook/react"
 
 import { Slider } from "@/registry/default/ui/slider"
 
+/**
+ * An input where the user selects a value from within a given range.
+ */
 const meta: Meta<typeof Slider> = {
   title: "ui/Slider",
   component: Slider,

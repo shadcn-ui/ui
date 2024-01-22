@@ -13,6 +13,10 @@ import {
 } from "@/registry/default/ui/alert-dialog"
 import { Button } from "@/registry/default/ui/button"
 
+/**
+ * A modal dialog that interrupts the user with important content and expects 
+ * a response.
+ */
 const meta: Meta<typeof AlertDialog> = {
   title: "ui/AlertDialog",
   component: AlertDialog,

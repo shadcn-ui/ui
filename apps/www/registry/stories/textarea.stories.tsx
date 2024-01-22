@@ -4,6 +4,9 @@ import { Button } from "@/registry/default/ui/button"
 import { Label } from "@/registry/default/ui/label"
 import { Textarea } from "@/registry/default/ui/textarea"
 
+/**
+ * Displays a form textarea or a component that looks like a textarea.
+ */
 const meta: Meta<typeof Textarea> = {
   title: "ui/Textarea",
   component: Textarea,

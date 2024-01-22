@@ -3,6 +3,10 @@ import { Meta, StoryObj } from "@storybook/react"
 
 import { Progress } from "@/registry/default/ui/progress"
 
+/**
+ * Displays an indicator showing the completion progress of a task, typically 
+ * displayed as a progress bar.
+ */
 const meta: Meta<typeof Progress> = {
   title: "ui/Progress",
   component: Progress,

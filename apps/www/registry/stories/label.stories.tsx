@@ -2,6 +2,9 @@ import { Meta, StoryObj } from "@storybook/react"
 
 import { Label } from "@/registry/default/ui/label"
 
+/**
+ * Renders an accessible label associated with controls.
+ */
 const meta: Meta<typeof Label> = {
   title: "ui/Label",
   component: Label,

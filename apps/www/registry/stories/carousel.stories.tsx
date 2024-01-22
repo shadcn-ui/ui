@@ -9,6 +9,9 @@ import {
   CarouselPrevious,
 } from "@/registry/default/ui/carousel"
 
+/**
+ * A carousel with motion and swipe built using Embla.
+ */
 const meta: Meta<typeof Carousel> = {
   title: "ui/Carousel",
   component: Carousel,
