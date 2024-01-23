@@ -523,6 +523,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/checkbox-demo")),
       files: ["registry/default/example/checkbox-demo.tsx"],
     },
+    "checkbox-indeterminate": {
+      name: "checkbox-indeterminate",
+      type: "components:example",
+      registryDependencies: ["checkbox"],
+      component: React.lazy(() => import("@/registry/default/example/checkbox-indeterminate")),
+      files: ["registry/default/example/checkbox-indeterminate.tsx"],
+    },
     "checkbox-disabled": {
       name: "checkbox-disabled",
       type: "components:example",
@@ -1741,6 +1748,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["checkbox"],
       component: React.lazy(() => import("@/registry/new-york/example/checkbox-demo")),
       files: ["registry/new-york/example/checkbox-demo.tsx"],
+    },
+    "checkbox-indeterminate": {
+      name: "checkbox-indeterminate",
+      type: "components:example",
+      registryDependencies: ["checkbox"],
+      component: React.lazy(() => import("@/registry/new-york/example/checkbox-indeterminate")),
+      files: ["registry/new-york/example/checkbox-indeterminate.tsx"],
     },
     "checkbox-disabled": {
       name: "checkbox-disabled",
