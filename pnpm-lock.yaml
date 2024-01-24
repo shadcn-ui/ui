@@ -222,14 +222,14 @@ importers:
         specifier: ^2.30.0
         version: 2.30.0
       embla-carousel:
-        specifier: 8.0.0-rc19
-        version: 8.0.0-rc19
+        specifier: 8.0.0-rc20
+        version: 8.0.0-rc20
       embla-carousel-autoplay:
-        specifier: 8.0.0-rc19
-        version: 8.0.0-rc19(embla-carousel@8.0.0-rc19)
+        specifier: 8.0.0-rc20
+        version: 8.0.0-rc20(embla-carousel@8.0.0-rc20)
       embla-carousel-react:
-        specifier: 8.0.0-rc19
-        version: 8.0.0-rc19(react@18.2.0)
+        specifier: 8.0.0-rc20
+        version: 8.0.0-rc20(react@18.2.0)
       geist:
         specifier: ^1.1.0
         version: 1.1.0(next@14.0.4)
@@ -5792,34 +5792,34 @@ packages:
   /electron-to-chromium@1.4.450:
     resolution: {integrity: sha512-BLG5HxSELlrMx7dJ2s+8SFlsCtJp37Zpk2VAxyC6CZtbc+9AJeZHfYHbrlSgdXp6saQ8StMqOTEDaBKgA7u1sw==}
 
-  /embla-carousel-autoplay@8.0.0-rc19(embla-carousel@8.0.0-rc19):
-    resolution: {integrity: sha512-c1pxsGHuWbYD3outH5y4L+kzg15smyHKFIDmXLaXlI6rCiizzf6hWMW0ZgxJLV4y4nUwDrYhM6TtzxvvOcsfUw==}
+  /embla-carousel-autoplay@8.0.0-rc20(embla-carousel@8.0.0-rc20):
+    resolution: {integrity: sha512-HKr0+iFAmTz00GfTaJtEYn9dBwtMsN85Bsux2pF0a8cltXA9WRZZYcTIwdycFhLKF4wtcVv7j0Gkka1Z/hJvEQ==}
     peerDependencies:
-      embla-carousel: 8.0.0-rc19
+      embla-carousel: 8.0.0-rc20
     dependencies:
-      embla-carousel: 8.0.0-rc19
+      embla-carousel: 8.0.0-rc20
     dev: false
 
-  /embla-carousel-react@8.0.0-rc19(react@18.2.0):
-    resolution: {integrity: sha512-4BBj1HvlUqhWXFyDJOL/JbQ74jtekfdH646B1wQzM9QmWn6CEcbD/SmovKqc6B5jYTKaaGEGEEw7bpUJRajA8w==}
+  /embla-carousel-react@8.0.0-rc20(react@18.2.0):
+    resolution: {integrity: sha512-02xhtl/qd5VQtzRbG3jQKVXy/YzP4J3nxQcJhz7cIY73nK3aPwxoZL+Fjk0VdS5eUIWowRBH5qIv3nVNsqeYZQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.1 || ^18.0.0
     dependencies:
-      embla-carousel: 8.0.0-rc19
-      embla-carousel-reactive-utils: 8.0.0-rc19(embla-carousel@8.0.0-rc19)
+      embla-carousel: 8.0.0-rc20
+      embla-carousel-reactive-utils: 8.0.0-rc20(embla-carousel@8.0.0-rc20)
       react: 18.2.0
     dev: false
 
-  /embla-carousel-reactive-utils@8.0.0-rc19(embla-carousel@8.0.0-rc19):
-    resolution: {integrity: sha512-ed9NppY0OxTtrSIwTCYNcMLlQfSNcNy8Zsw8uIG0te3qrhvQ2ePPsbcElK2SRAV8VMU6G7JQweQIb6amzYMDXA==}
+  /embla-carousel-reactive-utils@8.0.0-rc20(embla-carousel@8.0.0-rc20):
+    resolution: {integrity: sha512-fE7IeSS8HqwDnTDMP8eo0i4pcYQAemmJq53zCLXnp3Yj/p5+IpB1nC7aKQjd2ug1dGOSwwNRFaPI3shlAVVW/A==}
     peerDependencies:
-      embla-carousel: 8.0.0-rc19
+      embla-carousel: 8.0.0-rc20
     dependencies:
-      embla-carousel: 8.0.0-rc19
+      embla-carousel: 8.0.0-rc20
     dev: false
 
-  /embla-carousel@8.0.0-rc19:
-    resolution: {integrity: sha512-PAChVyYoVZo8subkBN8LjZ7+0vk4CmVvMnxH0Y2ux76VUEUBl1wk5xDo8+MUhH5MXU6ZrgkBpMe++bKob1Z+2g==}
+  /embla-carousel@8.0.0-rc20:
+    resolution: {integrity: sha512-fhzhbIAcsjSpUsg5jWsg0+zVyJhY5x2SPXtuS4MPAWQWoVQpvkcbX9r0FvPBn6emTbgNFRtAcWczstJy2msdUw==}
     dev: false
 
   /emoji-regex@10.2.1:
