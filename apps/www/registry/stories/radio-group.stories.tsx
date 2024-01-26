@@ -17,7 +17,10 @@ export default meta
 
 type Story = StoryObj<typeof RadioGroup>
 
-export const Base: Story = {
+/**
+ * The default form of the radio group.
+ */
+export const Default: Story = {
   render: (args) => (
     <RadioGroup {...args}>
       <div className="flex items-center space-x-2">
@@ -39,8 +42,11 @@ export const Base: Story = {
   },
 }
 
+/**
+ * Use the `disabled` prop to disable the radio group.
+ */
 export const Disabled: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     disabled: true,
   },

@@ -29,7 +29,10 @@ export default meta
 
 type Story = StoryObj<typeof HoverCard>
 
-export const Base: Story = {
+/**
+ * The default form of the hover card.
+ */
+export const Default: Story = {
   render: (args) => (
     <HoverCard {...args}>
       <HoverCardTrigger asChild>
@@ -60,8 +63,12 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `openDelay` and `closeDelay` props to control the delay before the
+ * hover card opens and closes.
+ */
 export const Instant: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     openDelay: 0,
     closeDelay: 0,

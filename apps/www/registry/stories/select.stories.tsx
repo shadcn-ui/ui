@@ -27,7 +27,10 @@ export default meta
 
 type Story = StoryObj<typeof Select>
 
-export const Base: Story = {
+/**
+ * The default form of the select.
+ */
+export const Default: Story = {
   render: (args) => (
     <Select {...args}>
       <SelectTrigger className="w-[180px]">
@@ -67,8 +70,11 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `disabled` prop to disable the select.
+ */
 export const Disabled: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     disabled: true,
   },

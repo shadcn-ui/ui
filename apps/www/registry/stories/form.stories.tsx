@@ -70,7 +70,10 @@ const ProfileForm = (args: Story["args"]) => {
   )
 }
 
-export const Base: Story = {
+/**
+ * The default form of the form.
+ */
+export const Default: Story = {
   render: (args) => <ProfileForm {...args} />,
   args: {},
 }

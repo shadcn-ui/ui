@@ -25,7 +25,10 @@ export default meta
 
 type Story = StoryObj<typeof Carousel>
 
-export const Base: Story = {
+/**
+ * The default form of the carousel.
+ */
+export const Default: Story = {
   render: (args) => (
     <Carousel {...args} className="w-full max-w-xs">
       <CarouselContent>
@@ -48,6 +51,9 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `basis` utility class to change the size of the carousel.
+ */
 export const Size: Story = {
   render: (args) => (
     <Carousel {...args} className="mx-12 w-full max-w-xs">

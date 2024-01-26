@@ -15,7 +15,10 @@ export default meta
 
 type Story = StoryObj<typeof Slider>
 
-export const Base: Story = {
+/**
+ * The default form of the slider.
+ */
+export const Default: Story = {
   args: {
     defaultValue: [33],
     max: 100,
@@ -23,22 +26,31 @@ export const Base: Story = {
   },
 }
 
+/**
+ * Use the `inverted` prop to have the slider fill from right to left.
+ */
 export const Inverted: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
-    ...Base.args,
+    ...Default.args,
     inverted: true,
   },
 }
 
+/**
+ * Use the `disabled` prop to disable the slider.
+ */
 export const Disabled: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
-    ...Base.args,
+    ...Default.args,
     disabled: true,
   },
 }
 
+/**
+ * Use an array with the `defaultValue` prop to create a range slider.
+ */
 export const Interval: Story = {
   args: {
     defaultValue: [33, 88],

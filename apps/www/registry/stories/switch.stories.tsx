@@ -19,7 +19,10 @@ export default meta
 
 type Story = StoryObj<typeof Switch>
 
-export const Base: Story = {
+/**
+ * The default form of the switch.
+ */
+export const Default: Story = {
   render: (args) => (
     <div className="flex items-center space-x-2">
       <Switch {...args} id="airplane-mode" />
@@ -29,8 +32,11 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `disabled` prop to disable the switch.
+ */
 export const Disabled: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     disabled: true,
   },

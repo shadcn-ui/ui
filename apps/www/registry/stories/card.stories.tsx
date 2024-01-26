@@ -44,7 +44,10 @@ const notifications = [
   },
 ]
 
-export const Base: Story = {
+/**
+ * The default form of the card.
+ */
+export const Default: Story = {
   render: (args) => (
     <Card {...args} className={cn("w-[380px]")}>
       <CardHeader>

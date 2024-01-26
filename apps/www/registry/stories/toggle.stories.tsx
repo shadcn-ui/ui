@@ -19,7 +19,10 @@ export default meta
 
 type Story = StoryObj<typeof Toggle>
 
-export const Base: Story = {
+/**
+ * The default form of the toggle.
+ */
+export const Default: Story = {
   render: (args) => (
     <Toggle {...args} aria-label="Toggle bold">
       <Bold className="h-4 w-4" />
@@ -28,6 +31,10 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `outline` variant for a distinct outline, emphasizing the boundary
+ * of the selection circle for clearer visibility
+ */
 export const Outline: Story = {
   render: (args) => (
     <Toggle {...args} aria-label="Toggle italic">
@@ -39,6 +46,9 @@ export const Outline: Story = {
   },
 }
 
+/**
+ * Use the text element to add a label to the toggle.
+ */
 export const WithText: Story = {
   render: (args) => (
     <Toggle {...args} aria-label="Toggle italic">
@@ -49,6 +59,10 @@ export const WithText: Story = {
   args: {},
 }
 
+/**
+ * Use the `sm` size for a smaller toggle, suitable for interfaces needing
+ * compact elements without sacrificing usability.
+ */
 export const Small: Story = {
   render: (args) => (
     <Toggle {...args} aria-label="Toggle italic">
@@ -60,6 +74,10 @@ export const Small: Story = {
   },
 }
 
+/**
+ * Use the `lg` size for a larger toggle, offering better visibility and
+ * easier interaction for users.
+ */
 export const Large: Story = {
   render: (args) => (
     <Toggle {...args} aria-label="Toggle italic">
@@ -71,10 +89,13 @@ export const Large: Story = {
   },
 }
 
+/**
+ * Add the `disabled` prop to prevent interactions with the toggle.
+ */
 export const Disabled: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
-    ...Base.args,
+    ...Default.args,
     disabled: true,
   },
 }

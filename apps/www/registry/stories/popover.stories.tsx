@@ -26,7 +26,10 @@ export default meta
 
 type Story = StoryObj<typeof Popover>
 
-export const Base: Story = {
+/**
+ * The default form of the popover.
+ */
+export const Default: Story = {
   render: (args) => (
     <Popover {...args}>
       <PopoverTrigger asChild>
@@ -84,8 +87,11 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `modal` prop to allow interaction behind the popover.
+ */
 export const DisableModal: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     modal: false,
   },

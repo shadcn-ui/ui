@@ -20,8 +20,10 @@ const meta: Meta<typeof Alert> = {
 export default meta
 
 type Story = StoryObj<typeof Alert>
-
-export const Base: Story = {
+/**
+ * The default form of the alert.
+ */
+export const Default: Story = {
   render: (args) => (
     <Alert {...args}>
       <Terminal className="h-4 w-4" />
@@ -36,6 +38,9 @@ export const Base: Story = {
   },
 }
 
+/**
+ * Use the `destructive` alert to indicate a destructive action.
+ */
 export const Destructive: Story = {
   render: (args) => (
     <Alert {...args}>

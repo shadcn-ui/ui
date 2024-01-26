@@ -17,39 +17,53 @@ export default meta
 
 type Story = StoryObj<typeof AspectRatio>
 
-export const Base: Story = {
+/**
+ * The default form of the aspect ratio.
+ */
+export const Default: Story = {
   render: (args) => (
-    <AspectRatio {...args} className="bg-slate-50 dark:bg-slate-800">
-      <Image
-        src="https://images.unsplash.com/photo-1576075796033-848c2a5f3696?w=800&dpr=2&q=80"
-        alt="Photo by Alvaro Pinot"
-        fill
-        className="rounded-md object-cover"
-      />
-    </AspectRatio>
+    <div className="w-1/2">
+      <AspectRatio {...args} className="bg-slate-50 dark:bg-slate-800">
+        <Image
+          src="https://images.unsplash.com/photo-1576075796033-848c2a5f3696?w=800&dpr=2&q=80"
+          alt="Photo by Alvaro Pinot"
+          fill
+          className="rounded-md object-cover"
+        />
+      </AspectRatio>
+    </div>
   ),
   args: {
     ratio: 16 / 9,
   },
 }
 
+/**
+ * Use the `1:1` aspect ratio to display a square image.
+ */
 export const Square: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     ratio: 1,
   },
 }
 
-export const Portrait: Story = {
-  render: Base.render,
+/**
+ * Use the `4:3` aspect ratio to display a landscape image.
+ */
+export const Landscape: Story = {
+  render: Default.render,
   args: {
-    ratio: 3 / 4,
+    ratio: 4 / 3,
   },
 }
 
-export const Landscape: Story = {
-  render: Base.render,
+/**
+ * Use the `2.35:1` aspect ratio to display a cinemascope image.
+ */
+export const Cinemascope: Story = {
+  render: Default.render,
   args: {
-    ratio: 4 / 3,
+    ratio: 2.35 / 1,
   },
 }

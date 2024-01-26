@@ -28,7 +28,10 @@ export default meta
 
 type Story = StoryObj<typeof Drawer>
 
-export const Base: Story = {
+/**
+ * The default form of the drawer.
+ */
+export const Default: Story = {
   render: (args) => (
     <Drawer {...args}>
       <DrawerTrigger>Open</DrawerTrigger>

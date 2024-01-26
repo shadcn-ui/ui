@@ -27,7 +27,10 @@ export default meta
 
 type Story = StoryObj<typeof Tabs>
 
-export const Base: Story = {
+/**
+ * The default form of the tabs.
+ */
+export const Default: Story = {
   render: (args) => (
     <Tabs {...args} className="w-[400px]">
       <TabsList>

@@ -33,7 +33,10 @@ export default meta
 
 type Story = StoryObj<typeof Menubar>
 
-export const Base: Story = {
+/**
+ * The default form of the menubar.
+ */
+export const Default: Story = {
   render: (args) => (
     <Menubar {...args}>
       <MenubarMenu>

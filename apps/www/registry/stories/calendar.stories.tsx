@@ -39,7 +39,10 @@ export default meta
 
 type Story = StoryObj<typeof Calendar>
 
-export const Base: Story = {
+/**
+ * The default form of the calendar.
+ */
+export const Default: Story = {
   args: {
     mode: "single",
     className: "rounded-md border w-fit",

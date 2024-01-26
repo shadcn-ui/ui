@@ -30,7 +30,10 @@ export default meta
 
 type Story = StoryObj<typeof Dialog>
 
-export const Base: Story = {
+/**
+ * The default form of the dialog.
+ */
+export const Default: Story = {
   render: (args) => (
     <Dialog {...args}>
       <DialogTrigger asChild>
@@ -66,8 +69,11 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `modal` prop to allow interaction behind the dialog.
+ */
 export const DisableModal: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     modal: false,
   },

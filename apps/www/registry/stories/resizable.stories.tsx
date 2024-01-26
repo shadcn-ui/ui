@@ -19,7 +19,10 @@ export default meta
 
 type Story = StoryObj<typeof ResizablePanelGroup>
 
-export const Base: Story = {
+/**
+ * The default form of the resizable panel group.
+ */
+export const Default: Story = {
   render: (args) => (
     <ResizablePanelGroup
       {...args}

@@ -52,23 +52,32 @@ const ToastExample = (args: Story["args"]) => {
   )
 }
 
-export const Simple: Story = {
+/**
+ * The default form of the toast.
+ */
+export const Default: Story = {
   render: (args) => <ToastExample {...args} />,
   args: {
     description: "Your message has been sent.",
   },
 }
 
+/**
+ * Use the `title` prop to provide a title for the toast.
+ */
 export const WithTitle: Story = {
-  render: Simple.render,
+  render: Default.render,
   args: {
     title: "Uh oh! Something went wrong.",
     description: "There was a problem with your request.",
   },
 }
 
+/**
+ * Use the `action` prop to provide an action for the toast.
+ */
 export const WithAction: Story = {
-  render: Simple.render,
+  render: Default.render,
   args: {
     title: "Uh oh! Something went wrong.",
     description: "There was a problem with your request.",
@@ -76,8 +85,11 @@ export const WithAction: Story = {
   },
 }
 
+/**
+ * Use the `destructive` variant to indicate a destructive action.
+ */
 export const Destructive: Story = {
-  render: Simple.render,
+  render: Default.render,
   args: {
     variant: "destructive",
     title: "Uh oh! Something went wrong.",

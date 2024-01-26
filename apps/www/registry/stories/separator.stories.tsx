@@ -15,7 +15,10 @@ export default meta
 
 type Story = StoryObj<typeof Separator>
 
-export const Base: Story = {
+/**
+ * The default form of the separator.
+ */
+export const Default: Story = {
   render: (args) => (
     <div>
       <div className="space-y-1">

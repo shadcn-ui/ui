@@ -20,7 +20,10 @@ export default meta
 
 type Story = StoryObj<typeof Toaster>
 
-export const Base: Story = {
+/**
+ * The default form of the toaster.
+ */
+export const Default: Story = {
   render: (args) => (
     <div className="flex items-center space-x-2">
       <Button

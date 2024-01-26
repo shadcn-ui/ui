@@ -26,7 +26,10 @@ export default meta
 
 type Story = StoryObj<typeof Pagination>
 
-export const Base: Story = {
+/**
+ * The default form of the pagination.
+ */
+export const Default: Story = {
   render: (args) => (
     <Pagination {...args}>
       <PaginationContent>

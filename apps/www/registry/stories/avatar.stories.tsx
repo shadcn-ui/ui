@@ -23,7 +23,10 @@ export default meta
 
 type Story = StoryObj<typeof Avatar>
 
-export const Base: Story = {
+/**
+ * The default form of the avatar.
+ */
+export const Default: Story = {
   render: (args) => (
     <Avatar {...args}>
       <AvatarImage src="https://github.com/shadcn.png" />

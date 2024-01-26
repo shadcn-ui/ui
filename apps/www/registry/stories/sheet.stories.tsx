@@ -30,7 +30,10 @@ export default meta
 
 type Story = StoryObj<typeof Sheet>
 
-export const Base: Story = {
+/**
+ * The default form of the sheet.
+ */
+export const Default: Story = {
   render: (args) => (
     <Sheet {...args}>
       <SheetTrigger asChild>
@@ -68,8 +71,11 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `modal` prop to allow interaction behind the sheet.
+ */
 export const DisableModal: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     modal: false,
   },

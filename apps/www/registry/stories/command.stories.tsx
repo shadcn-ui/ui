@@ -35,7 +35,10 @@ export default meta
 
 type Story = StoryObj<typeof Command>
 
-export const Base: Story = {
+/**
+ * The default form of the command.
+ */
+export const Default: Story = {
   render: (args) => (
     <Command {...args}>
       <CommandInput placeholder="Type a command or search..." />
@@ -81,6 +84,9 @@ export const Base: Story = {
   },
 }
 
+/**
+ * Use the `CommandDialog` to display a command menu in a modal.
+ */
 export const Dialog: Story = {
   args: {
     className: "rounded-lg border shadow-md",

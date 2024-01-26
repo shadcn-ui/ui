@@ -33,7 +33,10 @@ export default meta
 
 type Story = StoryObj<typeof ContextMenu>
 
-export const Base: Story = {
+/**
+ * The default form of the context menu.
+ */
+export const Default: Story = {
   render: (args) => (
     <ContextMenu {...args}>
       <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed border-slate-200 text-sm dark:border-slate-700">
@@ -86,8 +89,11 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `modal` prop to allow the interaction behind the menu.
+ */
 export const DisableModal: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     modal: false,
   },

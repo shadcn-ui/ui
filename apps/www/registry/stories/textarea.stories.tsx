@@ -17,22 +17,31 @@ export default meta
 
 type Story = StoryObj<typeof Textarea>
 
-export const Base: Story = {
-  name: "Default",
+/**
+ * The default form of the textarea.
+ */
+export const Default: Story = {
   render: (args) => <Textarea {...args} />,
   args: {
     placeholder: "Type your message here.",
   },
 }
 
+/**
+ * Use the `disabled` prop to disable the textarea.
+ */
 export const Disabled: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
-    ...Base.args,
+    ...Default.args,
     disabled: true,
   },
 }
 
+/**
+ * Use the `Label` component to includes a clear, descriptive label above or
+ * alongside the text area to guide users.
+ */
 export const WithLabel: Story = {
   render: (args) => (
     <div className="grid w-full gap-1.5">
@@ -40,9 +49,13 @@ export const WithLabel: Story = {
       <Textarea {...args} id="message" />
     </div>
   ),
-  args: { ...Base.args },
+  args: { ...Default.args },
 }
 
+/**
+ * Use a text element below the text area to provide additional instructions
+ * or information to users.
+ */
 export const WithText: Story = {
   render: (args) => (
     <div className="grid w-full gap-1.5">
@@ -53,9 +66,13 @@ export const WithText: Story = {
       </p>
     </div>
   ),
-  args: { ...Base.args },
+  args: { ...Default.args },
 }
 
+/**
+ * Use the `Button` component to indicate that the text area can be submitted
+ * or used to trigger an action.
+ */
 export const WithButton: Story = {
   render: (args) => (
     <div className="grid w-full gap-2">
@@ -63,5 +80,5 @@ export const WithButton: Story = {
       <Button>Send message</Button>
     </div>
   ),
-  args: { ...Base.args },
+  args: { ...Default.args },
 }

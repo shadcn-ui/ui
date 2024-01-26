@@ -16,6 +16,8 @@ import { Button } from "@/registry/default/ui/button"
 /**
  * A modal dialog that interrupts the user with important content and expects
  * a response.
+ *
+ * __[AlertDialog Documentation](https://ui.shadcn.com/docs/components/alert-dialog)__
  */
 const meta: Meta<typeof AlertDialog> = {
   title: "ui/AlertDialog",
@@ -31,7 +33,10 @@ export default meta
 
 type Story = StoryObj<typeof AlertDialog>
 
-export const Base: Story = {
+/**
+ * The default form of the alert dialog.
+ */
+export const Default: Story = {
   render: (args) => (
     <AlertDialog {...args}>
       <AlertDialogTrigger asChild>

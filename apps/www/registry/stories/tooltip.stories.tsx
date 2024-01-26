@@ -26,7 +26,10 @@ export default meta
 
 type Story = StoryObj<typeof Tooltip>
 
-export const Base: Story = {
+/**
+ * The default form of the tooltip.
+ */
+export const Default: Story = {
   render: (args) => (
     <TooltipProvider>
       <Tooltip {...args}>

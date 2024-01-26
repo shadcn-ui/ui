@@ -24,7 +24,10 @@ export default meta
 
 type Story = StoryObj<typeof Collapsible>
 
-export const Base: Story = {
+/**
+ * The default form of the collapsible.
+ */
+export const Default: Story = {
   render: (args) => (
     <Collapsible {...args} className="w-[350px] space-y-2">
       <div className="flex items-center justify-between space-x-4 px-4">
@@ -54,8 +57,11 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `disabled` prop to disable the interaction.
+ */
 export const Disabled: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     disabled: true,
   },

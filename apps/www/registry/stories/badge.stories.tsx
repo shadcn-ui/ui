@@ -18,27 +18,42 @@ export default meta
 
 type Story = StoryObj<typeof Badge>
 
-export const Base: Story = {
+/**
+ * The default form of the badge.
+ */
+export const Default: Story = {
   render: (args) => <Badge {...args}>Badge</Badge>,
   args: {},
 }
 
+/**
+ * Use the `secondary` badge to call for less urgent information, blending
+ * into the interface while still signaling minor updates or statuses.
+ */
 export const Secondary: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     variant: "secondary",
   },
 }
 
+/**
+ * Use the `destructive` badge to  indicate errors, alerts, or the need for
+ * immediate attention.
+ */
 export const Destructive: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     variant: "destructive",
   },
 }
 
+/**
+ * Use the `outline` badge for overlaying without obscuring interface details,
+ * emphasizing clarity and subtlety..
+ */
 export const Outline: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     variant: "outline",
   },

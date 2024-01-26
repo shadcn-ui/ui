@@ -18,7 +18,10 @@ export default meta
 
 type Story = StoryObj<typeof Skeleton>
 
-export const Base: Story = {
+/**
+ * The default form of the skeleton.
+ */
+export const Default: Story = {
   render: (args) => (
     <div className="flex items-center space-x-4">
       <Skeleton {...args} className="h-12 w-12 rounded-full" />

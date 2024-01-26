@@ -23,7 +23,10 @@ export default meta
 
 type Story = StoryObj<typeof Table>
 
-export const Base: Story = {
+/**
+ * The default form of the table.
+ */
+export const Default: Story = {
   render: (args) => (
     <Table {...args}>
       <TableCaption>A list of your recent invoices.</TableCaption>

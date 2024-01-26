@@ -25,7 +25,10 @@ export default meta
 
 type Story = StoryObj<typeof NavigationMenu>
 
-export const Base: Story = {
+/**
+ * The default form of the navigation menu.
+ */
+export const Default: Story = {
   render: (args) => (
     <NavigationMenu {...args}>
       <NavigationMenuList>

@@ -17,12 +17,19 @@ export default meta
 
 type Story = StoryObj<typeof Progress>
 
-export const Base: Story = {
+/**
+ * The default form of the progress.
+ */
+export const Default: Story = {
   render: (args) => <Progress {...args} />,
   args: {
     value: 30,
   },
 }
+
+/**
+ * Use the `value` prop to set the progress value and animate between values.
+ */
 export const Animated: Story = {
   render: (args) => <ProgressDemo {...args} />,
   args: {
@@ -34,7 +41,7 @@ const ProgressDemo = (args: Story["args"]) => {
   const [progress, setProgress] = useState(args?.value)
 
   useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500)
+    const timer = setTimeout(() => setProgress(66), 2000)
     return () => clearTimeout(timer)
   }, [])
 

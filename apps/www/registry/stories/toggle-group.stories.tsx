@@ -22,7 +22,10 @@ export default meta
 
 type Story = StoryObj<typeof ToggleGroup>
 
-export const Base: Story = {
+/**
+ * The default form of the toggle group.
+ */
+export const Default: Story = {
   render: (args) => (
     <ToggleGroup {...args}>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
@@ -41,41 +44,60 @@ export const Base: Story = {
   },
 }
 
+/**
+ * Use the `outline` variant to emphasizing the individuality of each button
+ * while keeping them visually cohesive.
+ */
 export const Outline: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
-    ...Base.args,
+    ...Default.args,
     variant: "outline",
   },
 }
 
+/**
+ * Use the `single` type to create exclusive selection within the button
+ * group, allowing only one button to be active at a time.
+ */
 export const Single: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     type: "single",
   },
 }
 
+/**
+ * Use the `sm` size for a compact version of the button group, featuring
+ * smaller buttons for spaces with limited real estate.
+ */
 export const Small: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
-    ...Base.args,
+    ...Default.args,
     size: "sm",
   },
 }
 
+/**
+ * Use the `lg` size for a more prominent version of the button group, featuring
+ * larger buttons for emphasis.
+ */
 export const Large: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
-    ...Base.args,
+    ...Default.args,
     size: "lg",
   },
 }
 
+/**
+ * Add the `disabled` prop to a button to prevent interactions.
+ */
 export const Disabled: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
-    ...Base.args,
+    ...Default.args,
     disabled: true,
   },
 }

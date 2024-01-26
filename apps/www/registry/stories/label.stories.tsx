@@ -15,7 +15,10 @@ export default meta
 
 type Story = StoryObj<typeof Label>
 
-export const Base: Story = {
+/**
+ * The default form of the label.
+ */
+export const Default: Story = {
   render: (args) => (
     <Label {...args} htmlFor="email">
       Your email address

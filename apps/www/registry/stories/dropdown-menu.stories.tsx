@@ -49,7 +49,10 @@ export default meta
 
 type Story = StoryObj<typeof DropdownMenu>
 
-export const Base: Story = {
+/**
+ * The default form of the dropdown menu.
+ */
+export const Default: Story = {
   render: (args) => (
     <DropdownMenu {...args}>
       <DropdownMenuTrigger asChild>
@@ -140,8 +143,11 @@ export const Base: Story = {
   args: {},
 }
 
+/**
+ * Use the `modal` prop to allow interactions behind the menu.
+ */
 export const DisableModal: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
     modal: false,
   },

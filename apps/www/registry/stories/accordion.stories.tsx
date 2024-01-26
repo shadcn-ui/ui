@@ -21,8 +21,10 @@ const meta: Meta<typeof Accordion> = {
 export default meta
 
 type Story = StoryObj<typeof Accordion>
-
-export const Base: Story = {
+/**
+ * The default behavior of the accordion allows only one item to be open.
+ */
+export const Default: Story = {
   render: (args) => (
     <Accordion {...args}>
       <AccordionItem value="item-1">
@@ -52,10 +54,13 @@ export const Base: Story = {
   },
 }
 
+/**
+ * Use a `disabled` accordion to prevent users from interacting with it.
+ */
 export const Disabled: Story = {
-  render: Base.render,
+  render: Default.render,
   args: {
-    ...Base.args,
+    ...Default.args,
     disabled: true,
   },
 }
