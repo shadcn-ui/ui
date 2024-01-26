@@ -999,12 +999,19 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/skeleton-card")),
       files: ["registry/default/example/skeleton-card.tsx"],
     },
-    "slider-demo": {
-      name: "slider-demo",
+    "slider-horizontal-demo": {
+      name: "slider-horizontal-demo",
       type: "components:example",
       registryDependencies: ["slider"],
-      component: React.lazy(() => import("@/registry/default/example/slider-demo")),
-      files: ["registry/default/example/slider-demo.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/slider-horizontal-demo")),
+      files: ["registry/default/example/slider-horizontal-demo.tsx"],
+    },
+    "slider-vertical-demo": {
+      name: "slider-vertical-demo",
+      type: "components:example",
+      registryDependencies: ["slider"],
+      component: React.lazy(() => import("@/registry/default/example/slider-vertical-demo")),
+      files: ["registry/default/example/slider-vertical-demo.tsx"],
     },
     "sonner-demo": {
       name: "sonner-demo",
@@ -2316,12 +2323,19 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/skeleton-card")),
       files: ["registry/new-york/example/skeleton-card.tsx"],
     },
-    "slider-demo": {
-      name: "slider-demo",
+    "slider-horizontal-demo": {
+      name: "slider-horizontal-demo",
       type: "components:example",
       registryDependencies: ["slider"],
-      component: React.lazy(() => import("@/registry/new-york/example/slider-demo")),
-      files: ["registry/new-york/example/slider-demo.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/slider-horizontal-demo")),
+      files: ["registry/new-york/example/slider-horizontal-demo.tsx"],
+    },
+    "slider-vertical-demo": {
+      name: "slider-vertical-demo",
+      type: "components:example",
+      registryDependencies: ["slider"],
+      component: React.lazy(() => import("@/registry/new-york/example/slider-vertical-demo")),
+      files: ["registry/new-york/example/slider-vertical-demo.tsx"],
     },
     "sonner-demo": {
       name: "sonner-demo",
