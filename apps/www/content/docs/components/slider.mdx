@@ -7,7 +7,13 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/slider#api-reference
 ---
 
-<ComponentPreview name="slider-demo" description="A slider component." />
+### Horizontal slider
+
+<ComponentPreview name="slider-horizontal-demo" description="A horizontal slider component." />
+
+### Vertical slider
+
+<ComponentPreview name="slider-vertical-demo" description="A vertical slider component." />
 
 ## Installation
 
@@ -55,4 +61,14 @@ import { Slider } from "@/components/ui/slider"
 
 ```tsx
 <Slider defaultValue={[33]} max={100} step={1} />
+```
+
+By default, the slider is horizontal.
+
+### Vertical slider
+
+To create a vertical slider, pass in `orientation="vertical"`
+
+```tsx
+<Slider defaultValue={[33]} max={100} step={1} orientation="vertical" />
 ```

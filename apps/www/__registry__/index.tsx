@@ -1733,13 +1733,23 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "slider-demo": {
-      name: "slider-demo",
-      description: "",
-      type: "registry:example",
+    "slider-horizontal-demo": {
+      name: "slider-horizontal-demo",
+      type: "components:example",
       registryDependencies: ["slider"],
-      files: ["registry/new-york/example/slider-demo.tsx"],
-      component: React.lazy(() => import("@/registry/new-york/example/slider-demo.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/example/slider-horizontal-demo")),
+      files: ["registry/new-york/example/slider-horizontal-demo.tsx"],
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "slider-vertical-demo": {
+      name: "slider-vertical-demo",
+      type: "components:example",
+      registryDependencies: ["slider"],
+      component: React.lazy(() => import("@/registry/new-york/example/slider-vertical-demo")),
+      files: ["registry/new-york/example/slider-vertical-demo.tsx"],
       source: "",
       category: "",
       subcategory: "",
@@ -5490,13 +5500,23 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "slider-demo": {
-      name: "slider-demo",
-      description: "",
-      type: "registry:example",
+    "slider-horizontal-demo": {
+      name: "slider-horizontal-demo",
+      type: "components:example",
       registryDependencies: ["slider"],
-      files: ["registry/default/example/slider-demo.tsx"],
-      component: React.lazy(() => import("@/registry/default/example/slider-demo.tsx")),
+      component: React.lazy(() => import("@/registry/default/example/slider-horizontal-demo")),
+      files: ["registry/default/example/slider-horizontal-demo.tsx"],
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "slider-vertical-demo": {
+      name: "slider-vertical-demo",
+      type: "components:example",
+      registryDependencies: ["slider"],
+      component: React.lazy(() => import("@/registry/default/example/slider-vertical-demo")),
+      files: ["registry/default/example/slider-vertical-demo.tsx"],
       source: "",
       category: "",
       subcategory: "",

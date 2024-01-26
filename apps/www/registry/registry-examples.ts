@@ -588,10 +588,16 @@ export const examples: Registry = [
     files: ["example/skeleton-card.tsx"],
   },
   {
-    name: "slider-demo",
+    name: "slider-horizontal-demo",
     type: "registry:example",
     registryDependencies: ["slider"],
-    files: ["example/slider-demo.tsx"],
+    files: ["example/slider-horizontal-demo.tsx"],
+  },
+  {
+    name: "slider-vertical-demo",
+    type: "registry:example",
+    registryDependencies: ["slider"],
+    files: ["example/slider-vertical-demo.tsx"],
   },
   {
     name: "sonner-demo",

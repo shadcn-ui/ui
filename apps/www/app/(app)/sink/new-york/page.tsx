@@ -37,7 +37,8 @@ import SelectDemo from "@/registry/new-york/example/select-demo"
 import SeparatorDemo from "@/registry/new-york/example/separator-demo"
 import SheetDemo from "@/registry/new-york/example/sheet-demo"
 import SkeletonDemo from "@/registry/new-york/example/skeleton-demo"
-import SliderDemo from "@/registry/new-york/example/slider-demo"
+import SliderHoriztonalDemo from "@/registry/new-york/example/slider-horizontal-demo"
+import SliderVerticalDemo from "@/registry/new-york/example/slider-vertical-demo"
 import SwitchDemo from "@/registry/new-york/example/switch-demo"
 import TabsDemo from "@/registry/new-york/example/tabs-demo"
 import ToastDemo from "@/registry/new-york/example/toast-demo"
@@ -58,7 +59,10 @@ export default function KitchenSinkPage() {
               <CardDemo className="w-full" />
             </ComponentWrapper>
             <ComponentWrapper>
-              <SliderDemo className="w-full" />
+              <SliderHoriztonalDemo className="w-full" />
+            </ComponentWrapper>
+            <ComponentWrapper className="flex h-[300px] w-full justify-center">
+              <SliderVerticalDemo />
             </ComponentWrapper>
             <ComponentWrapper
               className="spa flex-col items-start space-x-0

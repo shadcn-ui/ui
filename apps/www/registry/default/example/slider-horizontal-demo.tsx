@@ -1,9 +1,12 @@
 import { cn } from "@/lib/utils"
 import { Slider } from "@/registry/default/ui/slider"
 
-type SliderProps = React.ComponentProps<typeof Slider>
+type SliderHorizontalProps = React.ComponentProps<typeof Slider>
 
-export default function SliderDemo({ className, ...props }: SliderProps) {
+export default function SliderHorizontalDemo({
+  className,
+  ...props
+}: SliderHorizontalProps) {
   return (
     <Slider
       defaultValue={[50]}
