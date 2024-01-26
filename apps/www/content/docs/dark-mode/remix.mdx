@@ -110,7 +110,7 @@ Create a file in `/routes/action.set-theme.ts`. Ensure that you pass the filenam
 ```tsx title="app/routes/action.set-theme.ts"
 import { createThemeAction } from "remix-themes"
 
-import { themeSessionResolver } from "./sessions.server"
+import { themeSessionResolver } from "../sessions.server"
 
 export const action = createThemeAction(themeSessionResolver)
 ```
