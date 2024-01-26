@@ -1,4 +1,3 @@
-import fs from "fs"
 import path from "path"
 import {
   defineDocumentType,
@@ -28,10 +27,10 @@ const computedFields = {
   },
 }
 
-const RadixProperties = defineNestedType(() => ({
-  name: "RadixProperties",
+const LinksProperties = defineNestedType(() => ({
+  name: "LinksProperties",
   fields: {
-    link: {
+    doc: {
       type: "string",
     },
     api: {
@@ -57,9 +56,9 @@ export const Doc = defineDocumentType(() => ({
       type: "boolean",
       default: true,
     },
-    radix: {
+    links: {
       type: "nested",
-      of: RadixProperties,
+      of: LinksProperties,
     },
     featured: {
       type: "boolean",
@@ -69,6 +68,11 @@ export const Doc = defineDocumentType(() => ({
     component: {
       type: "boolean",
       default: false,
+      required: false,
+    },
+    toc: {
+      type: "boolean",
+      default: true,
       required: false,
     },
   },
@@ -103,26 +107,19 @@ export default makeSource({
 
             node.__rawString__ = codeEl.children?.[0].value
             node.__src__ = node.properties?.__src__
+            node.__style__ = node.properties?.__style__
           }
         })
       },
       [
         rehypePrettyCode,
         {
-          theme: {
-            dark: JSON.parse(
-              fs.readFileSync(path.resolve("./lib/themes/dark.json"), "utf-8")
-            ),
-            light: JSON.parse(
-              fs.readFileSync(path.resolve("./lib/themes/light.json"), "utf-8")
-            ),
+          getHighlighter: async () => {
+            const theme = await loadTheme(
+              path.join(process.cwd(), "/lib/themes/dark.json")
+            )
+            return await getHighlighter({ theme })
           },
-          // getHighlighter: async () => {
-          //   const theme = await loadTheme(
-          //     path.join(process.cwd(), "lib/vscode-theme.json")
-          //   )
-          //   return await getHighlighter({ theme })
-          // },
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted
@@ -160,6 +157,10 @@ export default makeSource({
 
             if (node.__event__) {
               preElement.properties["__event__"] = node.__event__
+            }
+
+            if (node.__style__) {
+              preElement.properties["__style__"] = node.__style__
             }
           }
         })

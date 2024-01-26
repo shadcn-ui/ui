@@ -2,11 +2,11 @@
 title: Data Table
 description: Powerful table and datagrids built using TanStack Table.
 component: true
+links:
+  doc: https://tanstack.com/table/v8/docs/guide/introduction
 ---
 
-<ComponentExample src="/components/examples/data-table/demo.tsx">
-  <DataTableDemo />
-</ComponentExample>
+<ComponentPreview name="data-table-demo" />
 
 ## Introduction
 
@@ -42,7 +42,7 @@ This guide will show you how to use [TanStack Table](https://tanstack.com/table)
 1. Add the `<Table />` component to your project:
 
 ```bash
-npx shadcn-ui add table
+npx shadcn-ui@latest add table
 ```
 
 2. Add `tanstack/react-table` dependency:
@@ -748,7 +748,10 @@ export const columns: ColumnDef<Payment>[] = [
     id: "select",
     header: ({ table }) => (
       <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
       />

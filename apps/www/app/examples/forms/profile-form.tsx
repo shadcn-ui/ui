@@ -6,17 +6,7 @@ import { useFieldArray, useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Form,
   FormControl,
@@ -25,7 +15,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/react-hook-form/form"
+} from "@/registry/new-york/ui/form"
+import { Input } from "@/registry/new-york/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york/ui/select"
+import { Textarea } from "@/registry/new-york/ui/textarea"
+import { toast } from "@/registry/new-york/ui/use-toast"
 
 const profileFormSchema = z.object({
   username: z
@@ -176,9 +176,9 @@ export function ProfileForm() {
           ))}
           <Button
             type="button"
-            variant="link"
+            variant="outline"
             size="sm"
-            className="mt-1"
+            className="mt-2"
             onClick={() => append({ value: "" })}
           >
             Add URL

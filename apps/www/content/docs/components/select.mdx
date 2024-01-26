@@ -3,46 +3,50 @@ title: Select
 description: Displays a list of options for the user to pick from—triggered by a button.
 component: true
 featured: true
-radix:
-  link: https://www.radix-ui.com/docs/primitives/components/select
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/select
   api: https://www.radix-ui.com/docs/primitives/components/select#api-reference
 ---
 
-<ComponentExample src="/components/examples/select/demo.tsx">
-  <SelectDemo />
-</ComponentExample>
+<ComponentPreview name="select-demo" />
 
 ## Installation
 
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
 ```bash
-npx shadcn-ui add select
+npx shadcn-ui@latest add select
 ```
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="manual-installation">
-    <AccordionTrigger>Manual Installation</AccordionTrigger>
-    <AccordionContent>
+</TabsContent>
 
-1. Install the `@radix-ui/react-select` component from radix-ui:
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
 
 ```bash
 npm install @radix-ui/react-select
 ```
 
-2. Copy and paste the following code into your project.
+<Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource src="/components/ui/select.tsx" />
+<ComponentSource name="select" />
 
-<Callout>
+<Step>Update the import paths to match your project setup.</Step>
 
-This is the `<Select />` primitive. You can place it in a file at `components/ui/select.tsx`.
+</Steps>
 
-</Callout>
+</TabsContent>
 
-    </AccordionContent>
-
-  </AccordionItem>
-</Accordion>
+</Tabs>
 
 ## Usage
 
@@ -69,15 +73,12 @@ import {
 </Select>
 ```
 
-## React Hook Form
+## Examples
 
-<Alert className="mt-4">
-  <AlertDescription>
-    **Note**: Learn more about using React Hook Form on the
-    [docs](/docs/forms/react-hook-form) page.
-  </AlertDescription>
-</Alert>
+### Scrollable
 
-<ComponentExample src="/components/examples/select/react-hook-form.tsx">
-  <SelectReactHookForm />
-</ComponentExample>
+<ComponentPreview name="select-scrollable" />
+
+### Form
+
+<ComponentPreview name="select-form" />
