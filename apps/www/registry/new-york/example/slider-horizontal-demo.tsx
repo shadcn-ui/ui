@@ -12,7 +12,6 @@ export default function SliderHorizontalDemo({
       defaultValue={[50]}
       max={100}
       step={1}
-      orientation={"horizontal"}
       className={cn("w-[60%]", className)}
       {...props}
     />
