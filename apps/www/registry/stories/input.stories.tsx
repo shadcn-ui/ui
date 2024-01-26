@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import { Button } from "@/registry/default/ui/button"
 import { Input } from "@/registry/default/ui/input"

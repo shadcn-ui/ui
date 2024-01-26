@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import { Progress } from "@/registry/default/ui/progress"
 

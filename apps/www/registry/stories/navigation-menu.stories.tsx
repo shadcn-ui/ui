@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import {
   NavigationMenu,
@@ -18,7 +18,7 @@ const meta: Meta<typeof NavigationMenu> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta

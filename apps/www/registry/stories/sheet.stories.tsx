@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import { Button } from "@/registry/default/ui/button"
 import { Label } from "@/registry/default/ui/label"
@@ -14,7 +14,7 @@ import {
 } from "@/registry/default/ui/sheet"
 
 /**
- * Extends the Dialog component to display content that complements the main 
+ * Extends the Dialog component to display content that complements the main
  * content of the screen.
  */
 const meta: Meta<typeof Sheet> = {
@@ -23,7 +23,7 @@ const meta: Meta<typeof Sheet> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta

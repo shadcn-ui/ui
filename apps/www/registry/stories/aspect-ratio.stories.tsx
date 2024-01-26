@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
 

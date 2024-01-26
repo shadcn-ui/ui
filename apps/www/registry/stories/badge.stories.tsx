@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import { Badge } from "@/registry/default/ui/badge"
 
@@ -11,7 +11,7 @@ const meta: Meta<typeof Badge> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 import { toast } from "sonner"
 
 import { Button } from "@/registry/default/ui/button"
@@ -13,7 +13,7 @@ const meta: Meta<typeof Toaster> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta

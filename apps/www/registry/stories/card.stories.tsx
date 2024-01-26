@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 import { BellRing, Check } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -22,7 +22,7 @@ const meta: Meta<typeof Card> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import { Label } from "@/registry/default/ui/label"
 import { Switch } from "@/registry/default/ui/switch"
@@ -12,7 +12,7 @@ const meta: Meta<typeof Switch> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta

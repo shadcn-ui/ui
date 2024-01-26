@@ -1,5 +1,5 @@
 import React from "react"
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import { ScrollArea } from "@/registry/default/ui/scroll-area"
 import { Separator } from "@/registry/default/ui/separator"
@@ -13,7 +13,7 @@ const meta: Meta<typeof ScrollArea> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta

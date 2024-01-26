@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 import { Settings2 } from "lucide-react"
 
 import { Button } from "@/registry/default/ui/button"
@@ -19,7 +19,7 @@ const meta: Meta<typeof Popover> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta

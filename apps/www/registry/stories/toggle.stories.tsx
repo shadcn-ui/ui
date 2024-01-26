@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 import { Bold, Italic, Underline } from "lucide-react"
 
 import { Toggle } from "@/registry/default/ui/toggle"
@@ -12,7 +12,7 @@ const meta: Meta<typeof Toggle> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta

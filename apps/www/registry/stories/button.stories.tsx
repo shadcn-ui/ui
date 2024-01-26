@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 import { Loader2, Mail } from "lucide-react"
 
 import { Button } from "@/registry/default/ui/button"
@@ -12,7 +12,7 @@ const meta: Meta<typeof Button> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta

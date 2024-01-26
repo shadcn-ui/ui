@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import {
   Menubar,
@@ -17,7 +17,7 @@ import {
 } from "@/registry/default/ui/menubar"
 
 /**
- * A visually persistent menu common in desktop applications that provides 
+ * A visually persistent menu common in desktop applications that provides
  * quick access to a consistent set of commands.
  */
 const meta: Meta<typeof Menubar> = {

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import {
   AlertDialog,
@@ -14,7 +14,7 @@ import {
 import { Button } from "@/registry/default/ui/button"
 
 /**
- * A modal dialog that interrupts the user with important content and expects 
+ * A modal dialog that interrupts the user with important content and expects
  * a response.
  */
 const meta: Meta<typeof AlertDialog> = {
@@ -23,7 +23,7 @@ const meta: Meta<typeof AlertDialog> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 

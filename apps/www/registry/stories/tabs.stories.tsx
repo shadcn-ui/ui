@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react"
 
 import { Button } from "@/registry/default/ui/button"
 import { Input } from "@/registry/default/ui/input"
@@ -11,7 +11,7 @@ import {
 } from "@/registry/default/ui/tabs"
 
 /**
- * A set of layered sections of content—known as tab panels—that are displayed 
+ * A set of layered sections of content—known as tab panels—that are displayed
  * one at a time.
  */
 const meta: Meta<typeof Tabs> = {
@@ -20,7 +20,7 @@ const meta: Meta<typeof Tabs> = {
   tags: ["autodocs"],
   argTypes: {},
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 }
 export default meta
