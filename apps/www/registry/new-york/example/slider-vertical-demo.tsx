@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils"
 import { Slider } from "@/registry/new-york/ui/slider"
 
 type SliderVerticalProps = React.ComponentProps<typeof Slider>
@@ -16,7 +15,7 @@ export default function SliderVerticalDemo({
           max={100}
           step={1}
           orientation="vertical"
-          className={cn("h-[60%]", className)}
+          className={className}
           {...props}
         />
       </div>
