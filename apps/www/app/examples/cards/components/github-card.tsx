@@ -31,8 +31,8 @@ export function DemoGithub() {
         <div className="space-y-1">
           <CardTitle>shadcn/ui</CardTitle>
           <CardDescription>
-            Beautifully designed components built with Radix UI and Tailwind
-            CSS.
+            Beautifully designed components that you can copy and paste into
+            your apps. Accessible. Customizable. Open Source.
           </CardDescription>
         </div>
         <div className="flex items-center space-x-1 rounded-md bg-secondary text-secondary-foreground">

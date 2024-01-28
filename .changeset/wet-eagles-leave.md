@@ -2,4 +2,4 @@
 "shadcn-ui": patch
 ---
 
-fix code style
+update zod imports
