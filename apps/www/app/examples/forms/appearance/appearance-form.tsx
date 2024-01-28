@@ -1,12 +1,10 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { ChevronDownIcon } from "@radix-ui/react-icons"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/registry/new-york/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Form,
   FormControl,
@@ -17,6 +15,13 @@ import {
   FormMessage,
 } from "@/registry/new-york/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york/ui/select"
 import { toast } from "@/registry/new-york/ui/use-toast"
 
 const appearanceFormSchema = z.object({
@@ -34,6 +39,7 @@ type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
 // This can come from your database or API.
 const defaultValues: Partial<AppearanceFormValues> = {
   theme: "light",
+  font: "inter",
 }
 
 export function AppearanceForm() {
@@ -62,22 +68,18 @@ export function AppearanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Font</FormLabel>
-              <div className="relative w-max">
+              <Select defaultValue={field.value} onValueChange={field.onChange}>
                 <FormControl>
-                  <select
-                    className={cn(
-                      buttonVariants({ variant: "outline" }),
-                      "w-[200px] appearance-none bg-transparent font-normal"
-                    )}
-                    {...field}
-                  >
-                    <option value="inter">Inter</option>
-                    <option value="manrope">Manrope</option>
-                    <option value="system">System</option>
-                  </select>
+                  <SelectTrigger className="w-[200px]">
+                    <SelectValue placeholder="Select font" />
+                  </SelectTrigger>
                 </FormControl>
-                <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
-              </div>
+                <SelectContent>
+                  <SelectItem value="inter">Inter</SelectItem>
+                  <SelectItem value="manrope">Manrope</SelectItem>
+                  <SelectItem value="system">System</SelectItem>
+                </SelectContent>
+              </Select>
               <FormDescription>
                 Set the font you want to use in the dashboard.
               </FormDescription>
