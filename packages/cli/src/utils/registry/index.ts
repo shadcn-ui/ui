@@ -9,7 +9,7 @@ import {
 } from "@/src/utils/registry/schema"
 import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
-import * as z from "zod"
+import { z } from "zod"
 
 const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "https://ui.shadcn.com"
 const agent = process.env.https_proxy
