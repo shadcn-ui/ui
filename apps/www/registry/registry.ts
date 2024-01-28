@@ -782,6 +782,12 @@ const example: Registry = [
     files: ["example/skeleton-demo.tsx"],
   },
   {
+    name: "skeleton-card",
+    type: "components:example",
+    registryDependencies: ["skeleton"],
+    files: ["example/skeleton-card.tsx"],
+  },
+  {
     name: "slider-demo",
     type: "components:example",
     registryDependencies: ["slider"],
