@@ -1,5 +1,23 @@
 # @shadcn/ui
 
+## 0.8.0
+
+### Minor Changes
+
+- [#2454](https://github.com/shadcn-ui/ui/pull/2454) [`0374ba8`](https://github.com/shadcn-ui/ui/commit/0374ba874d1c76ae08660c655aea6cdf7a7817f6) Thanks [@shadcn](https://github.com/shadcn)! - add automatic config detection for Next.js
+
+## 0.7.0
+
+### Minor Changes
+
+- [#2419](https://github.com/shadcn-ui/ui/pull/2419) [`7640ef7`](https://github.com/shadcn-ui/ui/commit/7640ef7bbc5fea280a8b5227a2455bb840478573) Thanks [@shadcn](https://github.com/shadcn)! - add support for devDependencies
+
+## 0.6.0
+
+### Minor Changes
+
+- [#2266](https://github.com/shadcn-ui/ui/pull/2266) [`be580db`](https://github.com/shadcn-ui/ui/commit/be580dbf7671b7db84282aa3554b62304e668414) Thanks [@shadcn](https://github.com/shadcn)! - add support for custom ui dir
+
 ## 0.5.0
 
 ### Minor Changes

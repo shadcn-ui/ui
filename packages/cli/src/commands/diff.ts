@@ -14,7 +14,7 @@ import { transform } from "@/src/utils/transformers"
 import chalk from "chalk"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
-import * as z from "zod"
+import { z } from "zod"
 
 const updateOptionsSchema = z.object({
   component: z.string().optional(),
