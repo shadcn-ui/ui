@@ -71,4 +71,50 @@ import { Foo } from "bar"
       },
     })
   ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@/registry/new-york/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@/registry/new-york/box"
+
+    import { cn } from "@/lib/utils"
+    import { bar } from "@/lib/utils/bar"
+    `,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "~/src/components",
+          utils: "~/src/utils",
+          ui: "~/src/components",
+        },
+      },
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@/registry/new-york/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@/registry/new-york/box"
+
+    import { cn } from "@/lib/utils"
+    import { bar } from "@/lib/utils/bar"
+    `,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "~/src/components",
+          utils: "~/src/utils",
+          ui: "~/src/ui",
+        },
+      },
+    })
+  ).toMatchSnapshot()
 })

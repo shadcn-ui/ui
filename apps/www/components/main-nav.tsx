@@ -20,7 +20,7 @@ export function MainNav() {
           {siteConfig.name}
         </span>
       </Link>
-      <nav className="flex items-center space-x-6 text-sm font-medium">
+      <nav className="flex items-center gap-6 text-sm">
         <Link
           href="/docs"
           className={cn(
@@ -28,7 +28,7 @@ export function MainNav() {
             pathname === "/docs" ? "text-foreground" : "text-foreground/60"
           )}
         >
-          Documentation
+          Docs
         </Link>
         <Link
           href="/docs/components"
