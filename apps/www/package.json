@@ -58,7 +58,7 @@
     "embla-carousel-autoplay": "8.0.0-rc15",
     "embla-carousel-react": "8.0.0-rc15",
     "geist": "^1.1.0",
-    "jotai": "^2.1.0",
+    "jotai": "^2.6.3",
     "lodash.template": "^4.5.0",
     "lucide-react": "0.288.0",
     "markdown-wasm": "^1.2.0",

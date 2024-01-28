@@ -231,8 +231,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(next@14.0.4)
       jotai:
-        specifier: ^2.1.0
-        version: 2.1.0(react@18.2.0)
+        specifier: ^2.6.3
+        version: 2.6.3(@types/react@18.2.7)(react@18.2.0)
       lodash.template:
         specifier: ^4.5.0
         version: 4.5.0
@@ -7705,15 +7705,19 @@ packages:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
     dev: false
 
-  /jotai@2.1.0(react@18.2.0):
-    resolution: {integrity: sha512-fR82PtHAmEQrc/daMEYGc4EteW96/b6wodtDSCzLvoJA/6y4YG70er4hh2f8CYwYjqwQ0eZUModGfG4DmwkTyQ==}
+  /jotai@2.6.3(@types/react@18.2.7)(react@18.2.0):
+    resolution: {integrity: sha512-0htSJ2d6426ZdSEYHncJHXY6Lkgde1Hc2HE/ADIRi9d2L3hQL+jLKY1LkWBMeCNyOSlKH8+1u/Gc33Ox0uq21Q==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
+      '@types/react': '>=17.0.0'
       react: '>=17.0.0'
     peerDependenciesMeta:
+      '@types/react':
+        optional: true
       react:
         optional: true
     dependencies:
+      '@types/react': 18.2.7
       react: 18.2.0
     dev: false
 
