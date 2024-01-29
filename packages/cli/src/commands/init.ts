@@ -26,7 +26,7 @@ import { execa } from "execa"
 import template from "lodash.template"
 import ora from "ora"
 import prompts from "prompts"
-import * as z from "zod"
+import { z } from "zod"
 
 import { applyPrefixesCss } from "../utils/transformers/transform-tw-prefix"
 
