@@ -24,10 +24,12 @@ const meta: Meta<typeof Form> = {
   component: Form,
   tags: ["autodocs"],
   argTypes: {},
-}
+  render: (args) => <ProfileForm {...args} />,
+} satisfies Meta<typeof Form>
+
 export default meta
 
-type Story = StoryObj<typeof Form>
+type Story = StoryObj<typeof meta>
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -73,7 +75,4 @@ const ProfileForm = (args: Story["args"]) => {
 /**
  * The default form of the form.
  */
-export const Default: Story = {
-  render: (args) => <ProfileForm {...args} />,
-  args: {},
-}
+export const Default: Story = {}

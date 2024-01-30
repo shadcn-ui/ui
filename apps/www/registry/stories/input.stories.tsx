@@ -7,20 +7,11 @@ import { Label } from "@/registry/default/ui/label"
 /**
  * Displays a form input field or a component that looks like an input field.
  */
-const meta: Meta<typeof Input> = {
+const meta = {
   title: "ui/Input",
   component: Input,
   tags: ["autodocs"],
   argTypes: {},
-}
-export default meta
-
-type Story = StoryObj<typeof Input>
-
-/**
- * The default form of the input field.
- */
-export const Default: Story = {
   render: (args) => (
     <div className="grid w-full max-w-sm items-center gap-1.5">
       <Input {...args} />
@@ -30,15 +21,23 @@ export const Default: Story = {
     type: "email",
     placeholder: "Email",
   },
-}
+} satisfies Meta<typeof Input>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the input field.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `disabled` prop to make the input non-interactive and appears faded,
  * indicating that input is not currently accepted.
  */
 export const Disabled: Story = {
-  render: Default.render,
-  args: { ...Default.args, disabled: true },
+  args: { disabled: true },
 }
 
 /**
@@ -52,7 +51,6 @@ export const WithLabel: Story = {
       <Input {...args} id="email" />
     </div>
   ),
-  args: { ...Default.args },
 }
 
 /**
@@ -67,7 +65,6 @@ export const WithHelperText: Story = {
       <p className="text-sm text-slate-500">Enter your email address.</p>
     </div>
   ),
-  args: { ...Default.args },
 }
 
 /**
@@ -81,5 +78,4 @@ export const WithButton: Story = {
       <Button type="submit">Subscribe</Button>
     </div>
   ),
-  args: { ...Default.args },
 }

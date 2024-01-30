@@ -14,10 +14,11 @@ const meta: Meta<typeof ResizablePanelGroup> = {
   component: ResizablePanelGroup,
   tags: ["autodocs"],
   argTypes: {},
-}
+} satisfies Meta<typeof ResizablePanelGroup>
+
 export default meta
 
-type Story = StoryObj<typeof ResizablePanelGroup>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the resizable panel group.
@@ -52,5 +53,4 @@ export const Default: Story = {
       </ResizablePanel>
     </ResizablePanelGroup>
   ),
-  args: {},
 }

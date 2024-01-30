@@ -17,7 +17,7 @@ import { Label } from "@/registry/default/ui/label"
  * A window overlaid on either the primary window or another dialog window,
  * rendering the content underneath inert.
  */
-const meta: Meta<typeof Dialog> = {
+const meta = {
   title: "ui/Dialog",
   component: Dialog,
   tags: ["autodocs"],
@@ -25,15 +25,6 @@ const meta: Meta<typeof Dialog> = {
   parameters: {
     layout: "centered",
   },
-}
-export default meta
-
-type Story = StoryObj<typeof Dialog>
-
-/**
- * The default form of the dialog.
- */
-export const Default: Story = {
   render: (args) => (
     <Dialog {...args}>
       <DialogTrigger asChild>
@@ -66,14 +57,21 @@ export const Default: Story = {
       </DialogContent>
     </Dialog>
   ),
-  args: {},
-}
+} satisfies Meta<typeof Dialog>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the dialog.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `modal` prop to allow interaction behind the dialog.
  */
 export const DisableModal: Story = {
-  render: Default.render,
   args: {
     modal: false,
   },

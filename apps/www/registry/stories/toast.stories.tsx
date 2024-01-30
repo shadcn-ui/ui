@@ -13,7 +13,7 @@ import { useToast } from "@/registry/default/ui/use-toast"
 /**
  * A succinct message that is displayed temporarily.
  */
-const meta: Meta<typeof Toast> = {
+const meta = {
   title: "ui/Toast",
   component: Toast,
   tags: ["autodocs"],
@@ -21,10 +21,12 @@ const meta: Meta<typeof Toast> = {
   parameters: {
     layout: "centered",
   },
-}
+  render: (args) => <ToastExample {...args} />,
+} satisfies Meta<typeof Toast>
+
 export default meta
 
-type Story = Omit<StoryObj<typeof Toast>, "args"> & {
+type Story = Omit<StoryObj<typeof meta>, "args"> & {
   args: Omit<ToasterToast, "id">
 }
 
@@ -56,7 +58,6 @@ const ToastExample = (args: Story["args"]) => {
  * The default form of the toast.
  */
 export const Default: Story = {
-  render: (args) => <ToastExample {...args} />,
   args: {
     description: "Your message has been sent.",
   },
@@ -66,7 +67,6 @@ export const Default: Story = {
  * Use the `title` prop to provide a title for the toast.
  */
 export const WithTitle: Story = {
-  render: Default.render,
   args: {
     title: "Uh oh! Something went wrong.",
     description: "There was a problem with your request.",
@@ -77,7 +77,6 @@ export const WithTitle: Story = {
  * Use the `action` prop to provide an action for the toast.
  */
 export const WithAction: Story = {
-  render: Default.render,
   args: {
     title: "Uh oh! Something went wrong.",
     description: "There was a problem with your request.",
@@ -89,7 +88,6 @@ export const WithAction: Story = {
  * Use the `destructive` variant to indicate a destructive action.
  */
 export const Destructive: Story = {
-  render: Default.render,
   args: {
     variant: "destructive",
     title: "Uh oh! Something went wrong.",

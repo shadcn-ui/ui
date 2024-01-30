@@ -25,15 +25,6 @@ const meta: Meta<typeof Sheet> = {
   parameters: {
     layout: "centered",
   },
-}
-export default meta
-
-type Story = StoryObj<typeof Sheet>
-
-/**
- * The default form of the sheet.
- */
-export const Default: Story = {
   render: (args) => (
     <Sheet {...args}>
       <SheetTrigger asChild>
@@ -68,14 +59,21 @@ export const Default: Story = {
       </SheetContent>
     </Sheet>
   ),
-  args: {},
-}
+} satisfies Meta<typeof Sheet>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the sheet.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `modal` prop to allow interaction behind the sheet.
  */
 export const DisableModal: Story = {
-  render: Default.render,
   args: {
     modal: false,
   },

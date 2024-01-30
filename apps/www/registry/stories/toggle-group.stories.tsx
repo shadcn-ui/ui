@@ -9,7 +9,7 @@ import {
 /**
  * A set of two-state buttons that can be toggled on or off.
  */
-const meta: Meta<typeof ToggleGroup> = {
+const meta = {
   title: "ui/ToggleGroup",
   component: ToggleGroup,
   tags: ["autodocs"],
@@ -17,15 +17,6 @@ const meta: Meta<typeof ToggleGroup> = {
   parameters: {
     layout: "centered",
   },
-}
-export default meta
-
-type Story = StoryObj<typeof ToggleGroup>
-
-/**
- * The default form of the toggle group.
- */
-export const Default: Story = {
   render: (args) => (
     <ToggleGroup {...args}>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
@@ -42,16 +33,23 @@ export const Default: Story = {
   args: {
     type: "multiple",
   },
-}
+} satisfies Meta<typeof ToggleGroup>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the toggle group.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `outline` variant to emphasizing the individuality of each button
  * while keeping them visually cohesive.
  */
 export const Outline: Story = {
-  render: Default.render,
   args: {
-    ...Default.args,
     variant: "outline",
   },
 }
@@ -61,7 +59,6 @@ export const Outline: Story = {
  * group, allowing only one button to be active at a time.
  */
 export const Single: Story = {
-  render: Default.render,
   args: {
     type: "single",
   },
@@ -72,9 +69,7 @@ export const Single: Story = {
  * smaller buttons for spaces with limited real estate.
  */
 export const Small: Story = {
-  render: Default.render,
   args: {
-    ...Default.args,
     size: "sm",
   },
 }
@@ -84,9 +79,7 @@ export const Small: Story = {
  * larger buttons for emphasis.
  */
 export const Large: Story = {
-  render: Default.render,
   args: {
-    ...Default.args,
     size: "lg",
   },
 }
@@ -95,9 +88,7 @@ export const Large: Story = {
  * Add the `disabled` prop to a button to prevent interactions.
  */
 export const Disabled: Story = {
-  render: Default.render,
   args: {
-    ...Default.args,
     disabled: true,
   },
 }

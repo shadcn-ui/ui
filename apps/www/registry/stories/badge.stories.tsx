@@ -5,7 +5,7 @@ import { Badge } from "@/registry/default/ui/badge"
 /**
  * Displays a badge or a component that looks like a badge.
  */
-const meta: Meta<typeof Badge> = {
+const meta = {
   title: "ui/Badge",
   component: Badge,
   tags: ["autodocs"],
@@ -13,25 +13,26 @@ const meta: Meta<typeof Badge> = {
   parameters: {
     layout: "centered",
   },
-}
+  render: (args) => <Badge {...args} />,
+  args: {
+    children: "Badge",
+  },
+} satisfies Meta<typeof Badge>
+
 export default meta
 
-type Story = StoryObj<typeof Badge>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the badge.
  */
-export const Default: Story = {
-  render: (args) => <Badge {...args}>Badge</Badge>,
-  args: {},
-}
+export const Default: Story = {}
 
 /**
  * Use the `secondary` badge to call for less urgent information, blending
  * into the interface while still signaling minor updates or statuses.
  */
 export const Secondary: Story = {
-  render: Default.render,
   args: {
     variant: "secondary",
   },
@@ -42,7 +43,6 @@ export const Secondary: Story = {
  * immediate attention.
  */
 export const Destructive: Story = {
-  render: Default.render,
   args: {
     variant: "destructive",
   },
@@ -53,7 +53,6 @@ export const Destructive: Story = {
  * emphasizing clarity and subtlety..
  */
 export const Outline: Story = {
-  render: Default.render,
   args: {
     variant: "outline",
   },

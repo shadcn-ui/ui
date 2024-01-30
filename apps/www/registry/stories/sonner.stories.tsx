@@ -15,10 +15,11 @@ const meta: Meta<typeof Toaster> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof Toaster>
+
 export default meta
 
-type Story = StoryObj<typeof Toaster>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the toaster.
@@ -43,5 +44,4 @@ export const Default: Story = {
       <Toaster {...args} />
     </div>
   ),
-  args: {},
 }

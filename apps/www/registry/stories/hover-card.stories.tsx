@@ -16,7 +16,7 @@ import {
 /**
  * For sighted users to preview content available behind a link.
  */
-const meta: Meta<typeof HoverCard> = {
+const meta = {
   title: "ui/HoverCard",
   component: HoverCard,
   tags: ["autodocs"],
@@ -24,15 +24,6 @@ const meta: Meta<typeof HoverCard> = {
   parameters: {
     layout: "centered",
   },
-}
-export default meta
-
-type Story = StoryObj<typeof HoverCard>
-
-/**
- * The default form of the hover card.
- */
-export const Default: Story = {
   render: (args) => (
     <HoverCard {...args}>
       <HoverCardTrigger asChild>
@@ -60,15 +51,22 @@ export const Default: Story = {
       </HoverCardContent>
     </HoverCard>
   ),
-  args: {},
-}
+} satisfies Meta<typeof HoverCard>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the hover card.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `openDelay` and `closeDelay` props to control the delay before the
  * hover card opens and closes.
  */
 export const Instant: Story = {
-  render: Default.render,
   args: {
     openDelay: 0,
     closeDelay: 0,

@@ -20,7 +20,7 @@ import {
  * Displays a menu to the user — such as a set of actions or functions —
  * triggered by a button.
  */
-const meta: Meta<typeof ContextMenu> = {
+const meta = {
   title: "ui/ContextMenu",
   component: ContextMenu,
   tags: ["autodocs"],
@@ -28,15 +28,6 @@ const meta: Meta<typeof ContextMenu> = {
   parameters: {
     layout: "centered",
   },
-}
-export default meta
-
-type Story = StoryObj<typeof ContextMenu>
-
-/**
- * The default form of the context menu.
- */
-export const Default: Story = {
   render: (args) => (
     <ContextMenu {...args}>
       <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed border-slate-200 text-sm dark:border-slate-700">
@@ -86,14 +77,21 @@ export const Default: Story = {
       </ContextMenuContent>
     </ContextMenu>
   ),
-  args: {},
-}
+} satisfies Meta<typeof ContextMenu>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the context menu.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `modal` prop to allow the interaction behind the menu.
  */
 export const DisableModal: Story = {
-  render: Default.render,
   args: {
     modal: false,
   },

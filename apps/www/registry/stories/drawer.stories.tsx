@@ -23,10 +23,11 @@ const meta: Meta<typeof Drawer> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof Drawer>
+
 export default meta
 
-type Story = StoryObj<typeof Drawer>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the drawer.
@@ -49,5 +50,4 @@ export const Default: Story = {
       </DrawerContent>
     </Drawer>
   ),
-  args: {},
 }

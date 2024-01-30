@@ -7,33 +7,31 @@ import { Textarea } from "@/registry/default/ui/textarea"
 /**
  * Displays a form textarea or a component that looks like a textarea.
  */
-const meta: Meta<typeof Textarea> = {
+const meta = {
   title: "ui/Textarea",
   component: Textarea,
   tags: ["autodocs"],
   argTypes: {},
-}
-export default meta
-
-type Story = StoryObj<typeof Textarea>
-
-/**
- * The default form of the textarea.
- */
-export const Default: Story = {
   render: (args) => <Textarea {...args} />,
   args: {
     placeholder: "Type your message here.",
   },
-}
+} satisfies Meta<typeof Textarea>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the textarea.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `disabled` prop to disable the textarea.
  */
 export const Disabled: Story = {
-  render: Default.render,
   args: {
-    ...Default.args,
     disabled: true,
   },
 }
@@ -49,7 +47,6 @@ export const WithLabel: Story = {
       <Textarea {...args} id="message" />
     </div>
   ),
-  args: { ...Default.args },
 }
 
 /**
@@ -66,7 +63,6 @@ export const WithText: Story = {
       </p>
     </div>
   ),
-  args: { ...Default.args },
 }
 
 /**
@@ -80,5 +76,4 @@ export const WithButton: Story = {
       <Button>Send message</Button>
     </div>
   ),
-  args: { ...Default.args },
 }

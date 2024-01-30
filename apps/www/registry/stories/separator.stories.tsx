@@ -5,15 +5,16 @@ import { Separator } from "@/registry/default/ui/separator"
 /**
  * Visually or semantically separates content.
  */
-const meta: Meta<typeof Separator> = {
+const meta = {
   title: "ui/Separator",
   component: Separator,
   tags: ["autodocs"],
   argTypes: {},
-}
+} satisfies Meta<typeof Separator>
+
 export default meta
 
-type Story = StoryObj<typeof Separator>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the separator.

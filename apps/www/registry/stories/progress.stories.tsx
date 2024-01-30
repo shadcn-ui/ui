@@ -7,15 +7,16 @@ import { Progress } from "@/registry/default/ui/progress"
  * Displays an indicator showing the completion progress of a task, typically
  * displayed as a progress bar.
  */
-const meta: Meta<typeof Progress> = {
+const meta = {
   title: "ui/Progress",
   component: Progress,
   tags: ["autodocs"],
   argTypes: {},
-}
+} satisfies Meta<typeof Progress>
+
 export default meta
 
-type Story = StoryObj<typeof Progress>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the progress.

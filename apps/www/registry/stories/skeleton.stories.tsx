@@ -5,7 +5,7 @@ import { Skeleton } from "@/registry/default/ui/skeleton"
 /**
  * Use to show a placeholder while content is loading.
  */
-const meta: Meta<typeof Skeleton> = {
+const meta = {
   title: "ui/Skeleton",
   component: Skeleton,
   tags: ["autodocs"],
@@ -13,7 +13,8 @@ const meta: Meta<typeof Skeleton> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof Skeleton>
+
 export default meta
 
 type Story = StoryObj<typeof Skeleton>
@@ -31,5 +32,4 @@ export const Default: Story = {
       </div>
     </div>
   ),
-  args: {},
 }

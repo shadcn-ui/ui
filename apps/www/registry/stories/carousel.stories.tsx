@@ -20,10 +20,11 @@ const meta: Meta<typeof Carousel> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof Carousel>
+
 export default meta
 
-type Story = StoryObj<typeof Carousel>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the carousel.
@@ -48,7 +49,6 @@ export const Default: Story = {
       <CarouselNext />
     </Carousel>
   ),
-  args: {},
 }
 
 /**
@@ -74,5 +74,4 @@ export const Size: Story = {
       <CarouselNext />
     </Carousel>
   ),
-  args: {},
 }

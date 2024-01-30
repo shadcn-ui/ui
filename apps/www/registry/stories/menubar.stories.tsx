@@ -20,7 +20,7 @@ import {
  * A visually persistent menu common in desktop applications that provides
  * quick access to a consistent set of commands.
  */
-const meta: Meta<typeof Menubar> = {
+const meta = {
   title: "ui/Menubar",
   component: Menubar,
   tags: ["autodocs"],
@@ -28,10 +28,11 @@ const meta: Meta<typeof Menubar> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof Menubar>
+
 export default meta
 
-type Story = StoryObj<typeof Menubar>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the menubar.
@@ -126,5 +127,4 @@ export const Default: Story = {
       </MenubarMenu>
     </Menubar>
   ),
-  args: {},
 }

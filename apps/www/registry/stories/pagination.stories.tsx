@@ -13,7 +13,7 @@ import {
 /**
  * Pagination with page navigation, next and previous links.
  */
-const meta: Meta<typeof Pagination> = {
+const meta = {
   title: "ui/Pagination",
   component: Pagination,
   tags: ["autodocs"],
@@ -21,10 +21,11 @@ const meta: Meta<typeof Pagination> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof Pagination>
+
 export default meta
 
-type Story = StoryObj<typeof Pagination>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the pagination.
@@ -54,5 +55,4 @@ export const Default: Story = {
       </PaginationContent>
     </Pagination>
   ),
-  args: {},
 }

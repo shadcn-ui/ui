@@ -16,7 +16,7 @@ import { Switch } from "@/registry/default/ui/switch"
 /**
  * Displays a card with header, content, and footer.
  */
-const meta: Meta<typeof Card> = {
+const meta = {
   title: "ui/Card",
   component: Card,
   tags: ["autodocs"],
@@ -24,10 +24,11 @@ const meta: Meta<typeof Card> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof Card>
+
 export default meta
 
-type Story = StoryObj<typeof Card>
+type Story = StoryObj<typeof meta>
 
 const notifications = [
   {
@@ -93,5 +94,4 @@ export const Default: Story = {
       </CardFooter>
     </Card>
   ),
-  args: {},
 }

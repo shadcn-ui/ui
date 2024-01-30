@@ -24,16 +24,16 @@ import {
 /**
  * Fast, composable, unstyled command menu for React.
  */
-const meta: Meta<typeof Command> = {
+const meta = {
   title: "ui/Command",
   component: Command,
   tags: ["autodocs"],
   argTypes: {},
-}
+} satisfies Meta<typeof Command>
 
 export default meta
 
-type Story = StoryObj<typeof Command>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the command.

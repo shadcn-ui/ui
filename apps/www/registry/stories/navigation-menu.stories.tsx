@@ -12,7 +12,7 @@ import {
 /**
  * A collection of links for navigating websites.
  */
-const meta: Meta<typeof NavigationMenu> = {
+const meta = {
   title: "ui/NavigationMenu",
   component: NavigationMenu,
   tags: ["autodocs"],
@@ -20,10 +20,11 @@ const meta: Meta<typeof NavigationMenu> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof NavigationMenu>
+
 export default meta
 
-type Story = StoryObj<typeof NavigationMenu>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the navigation menu.
@@ -50,5 +51,4 @@ export const Default: Story = {
       </NavigationMenuList>
     </NavigationMenu>
   ),
-  args: {},
 }

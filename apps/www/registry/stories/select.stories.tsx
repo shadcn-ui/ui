@@ -22,15 +22,6 @@ const meta: Meta<typeof Select> = {
   parameters: {
     layout: "centered",
   },
-}
-export default meta
-
-type Story = StoryObj<typeof Select>
-
-/**
- * The default form of the select.
- */
-export const Default: Story = {
   render: (args) => (
     <Select {...args}>
       <SelectTrigger className="w-[180px]">
@@ -67,14 +58,21 @@ export const Default: Story = {
       </SelectContent>
     </Select>
   ),
-  args: {},
-}
+} satisfies Meta<typeof Select>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the select.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `disabled` prop to disable the select.
  */
 export const Disabled: Story = {
-  render: Default.render,
   args: {
     disabled: true,
   },

@@ -7,7 +7,7 @@ import { Separator } from "@/registry/default/ui/separator"
 /**
  * Augments native scroll functionality for custom, cross-browser styling.
  */
-const meta: Meta<typeof ScrollArea> = {
+const meta = {
   title: "ui/ScrollArea",
   component: ScrollArea,
   tags: ["autodocs"],
@@ -15,15 +15,6 @@ const meta: Meta<typeof ScrollArea> = {
   parameters: {
     layout: "centered",
   },
-}
-export default meta
-
-type Story = StoryObj<typeof ScrollArea>
-
-/**
- * The default form of the scroll area.
- */
-export const Default: Story = {
   render: (args) => (
     <ScrollArea
       {...args}
@@ -44,14 +35,21 @@ export const Default: Story = {
       </div>
     </ScrollArea>
   ),
-  args: {},
-}
+} satisfies Meta<typeof ScrollArea>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the scroll area.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `type` prop with `always` to always show the scroll area.
  */
 export const Always: Story = {
-  render: Default.render,
   args: {
     type: "always",
   },
@@ -61,7 +59,6 @@ export const Always: Story = {
  * Use the `type` prop with `hover` to show the scroll area on hover.
  */
 export const Hover: Story = {
-  render: Default.render,
   args: {
     type: "hover",
   },
@@ -71,7 +68,6 @@ export const Hover: Story = {
  * Use the `type` prop with `scroll` to show the scroll area when scrolling.
  */
 export const Scroll: Story = {
-  render: Default.render,
   args: {
     type: "scroll",
   },

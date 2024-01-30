@@ -7,20 +7,11 @@ import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
  * A set of checkable buttons—known as radio buttons—where no more than one of
  * the buttons can be checked at a time.
  */
-const meta: Meta<typeof RadioGroup> = {
+const meta = {
   title: "ui/RadioGroup",
   component: RadioGroup,
   tags: ["autodocs"],
   argTypes: {},
-}
-export default meta
-
-type Story = StoryObj<typeof RadioGroup>
-
-/**
- * The default form of the radio group.
- */
-export const Default: Story = {
   render: (args) => (
     <RadioGroup {...args}>
       <div className="flex items-center space-x-2">
@@ -40,13 +31,21 @@ export const Default: Story = {
   args: {
     defaultValue: "comfortable",
   },
-}
+} satisfies Meta<typeof RadioGroup>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the radio group.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `disabled` prop to disable the radio group.
  */
 export const Disabled: Story = {
-  render: Default.render,
   args: {
     disabled: true,
   },

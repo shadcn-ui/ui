@@ -14,6 +14,11 @@ const meta: Meta<typeof Toggle> = {
   parameters: {
     layout: "centered",
   },
+  render: (args) => <Toggle {...args} />,
+  args: {
+    children: <Bold className="h-4 w-4" />,
+    "aria-label": "Toggle bold",
+  },
 }
 export default meta
 
@@ -22,27 +27,17 @@ type Story = StoryObj<typeof Toggle>
 /**
  * The default form of the toggle.
  */
-export const Default: Story = {
-  render: (args) => (
-    <Toggle {...args} aria-label="Toggle bold">
-      <Bold className="h-4 w-4" />
-    </Toggle>
-  ),
-  args: {},
-}
+export const Default: Story = {}
 
 /**
  * Use the `outline` variant for a distinct outline, emphasizing the boundary
  * of the selection circle for clearer visibility
  */
 export const Outline: Story = {
-  render: (args) => (
-    <Toggle {...args} aria-label="Toggle italic">
-      <Italic className="h-4 w-4" />
-    </Toggle>
-  ),
   args: {
     variant: "outline",
+    children: <Italic className="h-4 w-4" />,
+    "aria-label": "Toggle italic",
   },
 }
 
@@ -50,13 +45,15 @@ export const Outline: Story = {
  * Use the text element to add a label to the toggle.
  */
 export const WithText: Story = {
-  render: (args) => (
-    <Toggle {...args} aria-label="Toggle italic">
-      <Italic className="mr-2 h-4 w-4" />
-      Italic
-    </Toggle>
-  ),
-  args: {},
+  args: {
+    children: (
+      <>
+        <Italic className="mr-2 h-4 w-4" />
+        Italic
+      </>
+    ),
+    "aria-label": "Toggle italic",
+  },
 }
 
 /**
@@ -64,11 +61,6 @@ export const WithText: Story = {
  * compact elements without sacrificing usability.
  */
 export const Small: Story = {
-  render: (args) => (
-    <Toggle {...args} aria-label="Toggle italic">
-      <Italic className="h-4 w-4" />
-    </Toggle>
-  ),
   args: {
     size: "sm",
   },
@@ -79,11 +71,6 @@ export const Small: Story = {
  * easier interaction for users.
  */
 export const Large: Story = {
-  render: (args) => (
-    <Toggle {...args} aria-label="Toggle italic">
-      <Italic className="h-4 w-4" />
-    </Toggle>
-  ),
   args: {
     size: "lg",
   },
@@ -93,9 +80,7 @@ export const Large: Story = {
  * Add the `disabled` prop to prevent interactions with the toggle.
  */
 export const Disabled: Story = {
-  render: Default.render,
   args: {
-    ...Default.args,
     disabled: true,
   },
 }

@@ -1,10 +1,11 @@
 import type { StorybookConfig } from "@storybook/nextjs"
 
-const config: StorybookConfig = {
+const config = {
   stories: [
     "../registry/stories/**/*.mdx",
     "../registry/stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "./theme/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+    "./theme/**/*.stories.@(js|jsx|ts|tsx)",
+    "./theme/**/*.mdx",
   ],
   addons: [
     "@storybook/addon-links",
@@ -18,5 +19,6 @@ const config: StorybookConfig = {
   docs: {
     autodocs: true,
   },
-}
+} satisfies StorybookConfig
+
 export default config

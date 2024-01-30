@@ -11,16 +11,16 @@ import {
  * A vertically stacked set of interactive headings that each reveal a section
  * of content.
  */
-const meta: Meta<typeof Accordion> = {
+const meta = {
   title: "ui/Accordion",
   component: Accordion,
   tags: ["autodocs"],
   argTypes: {},
-}
+} satisfies Meta<typeof Accordion>
 
 export default meta
 
-type Story = StoryObj<typeof Accordion>
+type Story = StoryObj<typeof meta>
 /**
  * The default behavior of the accordion allows only one item to be open.
  */

@@ -36,7 +36,7 @@ import {
  * Displays a menu to the user — such as a set of actions or functions —
  * triggered by a button.
  */
-const meta: Meta<typeof DropdownMenu> = {
+const meta = {
   title: "ui/DropdownMenu",
   component: DropdownMenu,
   tags: ["autodocs"],
@@ -44,15 +44,6 @@ const meta: Meta<typeof DropdownMenu> = {
   parameters: {
     layout: "centered",
   },
-}
-export default meta
-
-type Story = StoryObj<typeof DropdownMenu>
-
-/**
- * The default form of the dropdown menu.
- */
-export const Default: Story = {
   render: (args) => (
     <DropdownMenu {...args}>
       <DropdownMenuTrigger asChild>
@@ -140,14 +131,21 @@ export const Default: Story = {
       </DropdownMenuContent>
     </DropdownMenu>
   ),
-  args: {},
-}
+} satisfies Meta<typeof DropdownMenu>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the dropdown menu.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `modal` prop to allow interactions behind the menu.
  */
 export const DisableModal: Story = {
-  render: Default.render,
   args: {
     modal: false,
   },

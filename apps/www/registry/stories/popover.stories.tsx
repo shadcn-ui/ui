@@ -13,7 +13,7 @@ import {
 /**
  * Displays rich content in a portal, triggered by a button.
  */
-const meta: Meta<typeof Popover> = {
+const meta = {
   title: "ui/Popover",
   component: Popover,
   tags: ["autodocs"],
@@ -21,15 +21,6 @@ const meta: Meta<typeof Popover> = {
   parameters: {
     layout: "centered",
   },
-}
-export default meta
-
-type Story = StoryObj<typeof Popover>
-
-/**
- * The default form of the popover.
- */
-export const Default: Story = {
   render: (args) => (
     <Popover {...args}>
       <PopoverTrigger asChild>
@@ -84,14 +75,21 @@ export const Default: Story = {
       </PopoverContent>
     </Popover>
   ),
-  args: {},
-}
+} satisfies Meta<typeof Popover>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the popover.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `modal` prop to allow interaction behind the popover.
  */
 export const DisableModal: Story = {
-  render: Default.render,
   args: {
     modal: false,
   },

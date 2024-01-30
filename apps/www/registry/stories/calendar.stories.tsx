@@ -28,16 +28,19 @@ import { useToast } from "@/registry/default/ui/use-toast"
 /**
  * A date field component that allows users to enter and edit date.
  */
-const meta: Meta<typeof Calendar> = {
+const meta = {
   title: "ui/Calendar",
   component: Calendar,
   tags: ["autodocs"],
   argTypes: {},
-}
+  parameters: {
+    layout: "centered",
+  },
+} satisfies Meta<typeof Calendar>
 
 export default meta
 
-type Story = StoryObj<typeof Calendar>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the calendar.

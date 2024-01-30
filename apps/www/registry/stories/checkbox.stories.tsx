@@ -6,20 +6,11 @@ import { Label } from "@/registry/default/ui/label"
 /**
  * A control that allows the user to toggle between checked and not checked.
  */
-const meta: Meta<typeof Checkbox> = {
+const meta = {
   title: "ui/Checkbox",
   component: Checkbox,
   tags: ["autodocs"],
   argTypes: {},
-}
-export default meta
-
-type Story = StoryObj<typeof Checkbox>
-
-/**
- * The default form of the checkbox.
- */
-export const Default: Story = {
   render: (args) => (
     <div className="items-top flex space-x-2">
       <Checkbox {...args} />
@@ -36,6 +27,16 @@ export const Default: Story = {
       </div>
     </div>
   ),
+} satisfies Meta<typeof Checkbox>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the checkbox.
+ */
+export const Default: Story = {
   args: {
     id: "terms1",
   },
@@ -45,7 +46,6 @@ export const Default: Story = {
  * Use the `disabled` prop to disable the checkbox.
  */
 export const Disabled: Story = {
-  render: Default.render,
   args: {
     id: "terms2",
     disabled: true,

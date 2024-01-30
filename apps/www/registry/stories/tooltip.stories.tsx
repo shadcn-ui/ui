@@ -13,7 +13,7 @@ import {
  * A popup that displays information related to an element when the element
  * receives keyboard focus or the mouse hovers over it.
  */
-const meta: Meta<typeof Tooltip> = {
+const meta = {
   title: "ui/Tooltip",
   component: Tooltip,
   tags: ["autodocs"],
@@ -21,10 +21,11 @@ const meta: Meta<typeof Tooltip> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof Tooltip>
+
 export default meta
 
-type Story = StoryObj<typeof Tooltip>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the tooltip.
@@ -45,5 +46,4 @@ export const Default: Story = {
       </Tooltip>
     </TooltipProvider>
   ),
-  args: {},
 }

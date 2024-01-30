@@ -6,21 +6,11 @@ import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
 /**
  * Displays content within a desired ratio.
  */
-const meta: Meta<typeof AspectRatio> = {
+const meta = {
   title: "ui/AspectRatio",
   component: AspectRatio,
   tags: ["autodocs"],
   argTypes: {},
-}
-
-export default meta
-
-type Story = StoryObj<typeof AspectRatio>
-
-/**
- * The default form of the aspect ratio.
- */
-export const Default: Story = {
   render: (args) => (
     <div className="w-1/2">
       <AspectRatio {...args} className="bg-slate-50 dark:bg-slate-800">
@@ -33,6 +23,16 @@ export const Default: Story = {
       </AspectRatio>
     </div>
   ),
+} satisfies Meta<typeof AspectRatio>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the aspect ratio.
+ */
+export const Default: Story = {
   args: {
     ratio: 16 / 9,
   },
@@ -42,7 +42,6 @@ export const Default: Story = {
  * Use the `1:1` aspect ratio to display a square image.
  */
 export const Square: Story = {
-  render: Default.render,
   args: {
     ratio: 1,
   },
@@ -52,7 +51,6 @@ export const Square: Story = {
  * Use the `4:3` aspect ratio to display a landscape image.
  */
 export const Landscape: Story = {
-  render: Default.render,
   args: {
     ratio: 4 / 3,
   },
@@ -62,7 +60,6 @@ export const Landscape: Story = {
  * Use the `2.35:1` aspect ratio to display a cinemascope image.
  */
 export const Cinemascope: Story = {
-  render: Default.render,
   args: {
     ratio: 2.35 / 1,
   },

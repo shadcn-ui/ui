@@ -11,7 +11,7 @@ import {
 /**
  * An interactive component which expands/collapses a panel.
  */
-const meta: Meta<typeof Collapsible> = {
+const meta = {
   title: "ui/Collapsible",
   component: Collapsible,
   tags: ["autodocs"],
@@ -19,15 +19,6 @@ const meta: Meta<typeof Collapsible> = {
   parameters: {
     layout: "centered",
   },
-}
-export default meta
-
-type Story = StoryObj<typeof Collapsible>
-
-/**
- * The default form of the collapsible.
- */
-export const Default: Story = {
   render: (args) => (
     <Collapsible {...args} className="w-[350px] space-y-2">
       <div className="flex items-center justify-between space-x-4 px-4">
@@ -54,14 +45,25 @@ export const Default: Story = {
       </CollapsibleContent>
     </Collapsible>
   ),
-  args: {},
+} satisfies Meta<typeof Collapsible>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the collapsible.
+ */
+export const Default: Story = {
+  args: {
+    disabled: false,
+  },
 }
 
 /**
  * Use the `disabled` prop to disable the interaction.
  */
 export const Disabled: Story = {
-  render: Default.render,
   args: {
     disabled: true,
   },

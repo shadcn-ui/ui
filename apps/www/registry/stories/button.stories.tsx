@@ -6,7 +6,7 @@ import { Button } from "@/registry/default/ui/button"
 /**
  * Displays a button or a component that looks like a button.
  */
-const meta: Meta<typeof Button> = {
+const meta = {
   title: "ui/Button",
   component: Button,
   tags: ["autodocs"],
@@ -14,27 +14,27 @@ const meta: Meta<typeof Button> = {
   parameters: {
     layout: "centered",
   },
-}
+  render: (args) => <Button {...args} />,
+  args: {
+    children: "Button",
+    variant: "default",
+  },
+} satisfies Meta<typeof Button>
+
 export default meta
 
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the button, used for primary actions and commands.
  */
-export const Default: Story = {
-  render: (args) => <Button {...args}>Button</Button>,
-  args: {
-    variant: "default",
-  },
-}
+export const Default: Story = {}
 
 /**
  * Use the `outline` button to reduce emphasis on secondary actions, such as
  * canceling or dismissing a dialog.
  */
 export const Outline: Story = {
-  render: Default.render,
   args: {
     variant: "outline",
   },
@@ -45,7 +45,6 @@ export const Outline: Story = {
  * actions.
  */
 export const Ghost: Story = {
-  render: Default.render,
   args: {
     variant: "ghost",
   },
@@ -56,7 +55,6 @@ export const Ghost: Story = {
  * complement the primary button while being less conspicuous.
  */
 export const Secondary: Story = {
-  render: Default.render,
   args: {
     variant: "secondary",
   },
@@ -67,7 +65,6 @@ export const Secondary: Story = {
  * immediate attention.
  */
 export const Destructive: Story = {
-  render: Default.render,
   args: {
     variant: "destructive",
   },
@@ -78,7 +75,6 @@ export const Destructive: Story = {
  * hyperlink or navigation, providing a text-only interactive element.
  */
 export const Link: Story = {
-  render: Default.render,
   args: {
     variant: "link",
   },

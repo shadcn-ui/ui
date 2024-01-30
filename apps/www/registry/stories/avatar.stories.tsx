@@ -9,7 +9,7 @@ import {
 /**
  * An image element with a fallback for representing the user.
  */
-const meta: Meta<typeof Avatar> = {
+const meta = {
   title: "ui/Avatar",
   component: Avatar,
   tags: ["autodocs"],
@@ -17,11 +17,11 @@ const meta: Meta<typeof Avatar> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof Avatar>
 
 export default meta
 
-type Story = StoryObj<typeof Avatar>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the avatar.
@@ -33,5 +33,4 @@ export const Default: Story = {
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
   ),
-  args: {},
 }

@@ -5,34 +5,32 @@ import { Slider } from "@/registry/default/ui/slider"
 /**
  * An input where the user selects a value from within a given range.
  */
-const meta: Meta<typeof Slider> = {
+const meta = {
   title: "ui/Slider",
   component: Slider,
   tags: ["autodocs"],
   argTypes: {},
-}
-export default meta
-
-type Story = StoryObj<typeof Slider>
-
-/**
- * The default form of the slider.
- */
-export const Default: Story = {
   args: {
     defaultValue: [33],
     max: 100,
     step: 1,
   },
-}
+} satisfies Meta<typeof Slider>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the slider.
+ */
+export const Default: Story = {}
 
 /**
  * Use the `inverted` prop to have the slider fill from right to left.
  */
 export const Inverted: Story = {
-  render: Default.render,
   args: {
-    ...Default.args,
     inverted: true,
   },
 }
@@ -41,9 +39,7 @@ export const Inverted: Story = {
  * Use the `disabled` prop to disable the slider.
  */
 export const Disabled: Story = {
-  render: Default.render,
   args: {
-    ...Default.args,
     disabled: true,
   },
 }

@@ -14,7 +14,7 @@ import {
  * A set of layered sections of content—known as tab panels—that are displayed
  * one at a time.
  */
-const meta: Meta<typeof Tabs> = {
+const meta = {
   title: "ui/Tabs",
   component: Tabs,
   tags: ["autodocs"],
@@ -22,10 +22,11 @@ const meta: Meta<typeof Tabs> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof Tabs>
+
 export default meta
 
-type Story = StoryObj<typeof Tabs>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the tabs.

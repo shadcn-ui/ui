@@ -13,20 +13,11 @@ import {
 /**
  * Powerful table and datagrids built using TanStack Table.
  */
-const meta: Meta<typeof Table> = {
+const meta = {
   title: "ui/Table",
   component: Table,
   tags: ["autodocs"],
   argTypes: {},
-}
-export default meta
-
-type Story = StoryObj<typeof Table>
-
-/**
- * The default form of the table.
- */
-export const Default: Story = {
   render: (args) => (
     <Table {...args}>
       <TableCaption>A list of your recent invoices.</TableCaption>
@@ -50,8 +41,16 @@ export const Default: Story = {
       </TableBody>
     </Table>
   ),
-  args: {},
-}
+} satisfies Meta<typeof Table>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the table.
+ */
+export const Default: Story = {}
 
 const invoices = [
   {

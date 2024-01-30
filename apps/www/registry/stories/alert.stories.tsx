@@ -10,16 +10,16 @@ import {
 /**
  * Displays a callout for user attention.
  */
-const meta: Meta<typeof Alert> = {
+const meta = {
   title: "ui/Alert",
   component: Alert,
   tags: ["autodocs"],
   argTypes: {},
-}
+} satisfies Meta<typeof Alert>
 
 export default meta
 
-type Story = StoryObj<typeof Alert>
+type Story = StoryObj<typeof meta>
 /**
  * The default form of the alert.
  */

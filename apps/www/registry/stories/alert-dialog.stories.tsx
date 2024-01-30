@@ -16,10 +16,8 @@ import { Button } from "@/registry/default/ui/button"
 /**
  * A modal dialog that interrupts the user with important content and expects
  * a response.
- *
- * __[AlertDialog Documentation](https://ui.shadcn.com/docs/components/alert-dialog)__
  */
-const meta: Meta<typeof AlertDialog> = {
+const meta = {
   title: "ui/AlertDialog",
   component: AlertDialog,
   tags: ["autodocs"],
@@ -27,11 +25,11 @@ const meta: Meta<typeof AlertDialog> = {
   parameters: {
     layout: "centered",
   },
-}
+} satisfies Meta<typeof AlertDialog>
 
 export default meta
 
-type Story = StoryObj<typeof AlertDialog>
+type Story = StoryObj<typeof meta>
 
 /**
  * The default form of the alert dialog.
@@ -57,5 +55,4 @@ export const Default: Story = {
       </AlertDialogContent>
     </AlertDialog>
   ),
-  args: {},
 }
