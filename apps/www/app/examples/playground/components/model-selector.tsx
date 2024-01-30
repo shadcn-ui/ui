@@ -149,7 +149,7 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
       key={model.id}
       onSelect={onSelect}
       ref={ref}
-      className="aria-selected:bg-primary aria-selected:text-primary-foreground"
+      className="data-[selected]:bg-primary data-[selected]:text-primary-foreground"
     >
       {model.name}
       <CheckIcon
