@@ -24,8 +24,8 @@ import {
 import { toast } from "@/registry/new-york/ui/use-toast"
 
 const steps = [
-  { label: "Step 1", description: "Description 1" },
-  { label: "Step 2", description: "Description 2" },
+  { id: 0, label: "Step 1", description: "Description 1" },
+  { id: 1, label: "Step 2", description: "Description 2" },
 ]
 
 export default function StepperDemo() {
@@ -35,13 +35,13 @@ export default function StepperDemo() {
         {steps.map((step, index) => {
           if (index === 0) {
             return (
-              <StepperItem key={index}>
+              <StepperItem key={step.id}>
                 <FirstStepForm />
               </StepperItem>
             )
           }
           return (
-            <StepperItem key={index}>
+            <StepperItem key={step.id}>
               <SecondStepForm />
             </StepperItem>
           )
@@ -54,7 +54,7 @@ export default function StepperDemo() {
   )
 }
 
-const FormSchema = z.object({
+const FirstFormSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
@@ -63,14 +63,14 @@ const FormSchema = z.object({
 function FirstStepForm() {
   const { nextStep } = useStepper()
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof FirstFormSchema>>({
+    resolver: zodResolver(FirstFormSchema),
     defaultValues: {
       username: "",
     },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit(data: z.infer<typeof FirstFormSchema>) {
     nextStep()
     toast({
       title: "First step submitted!",
@@ -102,17 +102,23 @@ function FirstStepForm() {
   )
 }
 
+const SecondFormSchema = z.object({
+  password: z.string().min(8, {
+    message: "Password must be at least 8 characters.",
+  }),
+})
+
 function SecondStepForm() {
   const { nextStep } = useStepper()
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof SecondFormSchema>>({
+    resolver: zodResolver(SecondFormSchema),
     defaultValues: {
-      username: "",
+      password: "",
     },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit(data: z.infer<typeof SecondFormSchema>) {
     nextStep()
     toast({
       title: "Second step submitted!",
@@ -124,15 +130,15 @@ function SecondStepForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
-          name="username"
+          name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input type="password" {...field} />
               </FormControl>
               <FormDescription>
-                This is your public display name.
+                This is your private password.
               </FormDescription>
               <FormMessage />
             </FormItem>

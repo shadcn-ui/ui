@@ -7,9 +7,9 @@ import {
 } from "@/registry/new-york/ui/stepper"
 
 const steps = [
-  { label: "Step 1" },
-  { label: "Step 2", optional: true },
-  { label: "Step 3" },
+  { id: 0, label: "Step 1" },
+  { id: 1, label: "Step 2", optional: true },
+  { id: 2, label: "Step 3" },
 ]
 
 export default function StepperDemo() {
@@ -19,7 +19,7 @@ export default function StepperDemo() {
         {steps.map((step, index) => {
           return (
             <StepperItem
-              key={index}
+              key={step.id}
               onStepperItemClick={() =>
                 alert(`You clicked on step ${index + 1}!`)
               }

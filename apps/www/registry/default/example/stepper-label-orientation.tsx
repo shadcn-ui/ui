@@ -7,9 +7,9 @@ import {
 } from "@/registry/default/ui/stepper"
 
 const steps = [
-  { label: "Step 1", description: "Description 1" },
-  { label: "Step 2", description: "Description 2" },
-  { label: "Step 3", description: "Description 3" },
+  { id: 0, label: "Step 1", description: "Description 1" },
+  { id: 1, label: "Step 2", description: "Description 2" },
+  { id: 2, label: "Step 3", description: "Description 3" },
 ]
 
 export default function StepperDemo() {

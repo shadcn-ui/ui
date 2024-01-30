@@ -10,7 +10,11 @@ import {
   useStepper,
 } from "@/registry/default/ui/stepper"
 
-const steps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }]
+const steps = [
+  { id: 0, label: "Step 1" },
+  { id: 1, label: "Step 2" },
+  { id: 2, label: "Step 3" },
+]
 
 export default function StepperStates() {
   const [value, setValue] = useState<"loading" | "error">("loading")
@@ -47,7 +51,7 @@ function StepperDemo({
       <Stepper initialStep={0} steps={steps} status={status}>
         {steps.map((step, index) => {
           return (
-            <StepperItem key={index}>
+            <StepperItem key={step.id}>
               <div className="h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300">
                 <p>Step {index + 1} content</p>
               </div>

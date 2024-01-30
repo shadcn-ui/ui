@@ -9,6 +9,7 @@ import { Separator } from "./separator"
 
 interface StepperProps {
   steps: {
+    id: string | number
     label: string | React.ReactNode
     description?: string | React.ReactNode
     icon?: React.ReactNode

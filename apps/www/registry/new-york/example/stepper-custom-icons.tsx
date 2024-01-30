@@ -9,9 +9,9 @@ import {
 } from "@/registry/new-york/ui/stepper"
 
 const steps = [
-  { label: "Step 1", icon: <User /> },
-  { label: "Step 2", icon: <Calendar /> },
-  { label: "Step 3", icon: <Lock /> },
+  { id: 0, label: "Step 1", icon: <User /> },
+  { id: 1, label: "Step 2", icon: <Calendar /> },
+  { id: 2, label: "Step 3", icon: <Lock /> },
 ]
 
 export default function StepperDemo() {
@@ -20,7 +20,7 @@ export default function StepperDemo() {
       <Stepper initialStep={0} steps={steps}>
         {steps.map((step, index) => {
           return (
-            <StepperItem key={index}>
+            <StepperItem key={step.id}>
               <div className="h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300">
                 <p>Step {index + 1} content</p>
               </div>
