@@ -16,15 +16,6 @@ const meta = {
   component: Accordion,
   tags: ["autodocs"],
   argTypes: {},
-} satisfies Meta<typeof Accordion>
-
-export default meta
-
-type Story = StoryObj<typeof meta>
-/**
- * The default behavior of the accordion allows only one item to be open.
- */
-export const Default: Story = {
   render: (args) => (
     <Accordion {...args}>
       <AccordionItem value="item-1">
@@ -52,15 +43,22 @@ export const Default: Story = {
     type: "single",
     collapsible: true,
   },
-}
+} satisfies Meta<typeof Accordion>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default behavior of the accordion allows only one item to be open.
+ */
+export const Default: Story = {}
 
 /**
  * Use a `disabled` accordion to prevent users from interacting with it.
  */
 export const Disabled: Story = {
-  render: Default.render,
   args: {
-    ...Default.args,
     disabled: true,
   },
 }

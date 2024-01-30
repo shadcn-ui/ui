@@ -13,7 +13,6 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  render: (args) => <Badge {...args} />,
   args: {
     children: "Badge",
   },

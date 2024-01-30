@@ -10,9 +10,9 @@ const meta = {
   component: Label,
   tags: ["autodocs"],
   argTypes: {},
-  render: (args) => <Label {...args} htmlFor="email" />,
   args: {
     children: "Your email address",
+    htmlFor: "email",
   },
 } satisfies Meta<typeof Label>
 

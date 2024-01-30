@@ -23,6 +23,9 @@ const meta = {
       </AspectRatio>
     </div>
   ),
+  parameters: {
+    layout: "centered",
+  },
 } satisfies Meta<typeof AspectRatio>
 
 export default meta

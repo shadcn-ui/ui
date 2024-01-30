@@ -12,7 +12,6 @@ const meta = {
   component: Textarea,
   tags: ["autodocs"],
   argTypes: {},
-  render: (args) => <Textarea {...args} />,
   args: {
     placeholder: "Type your message here.",
   },

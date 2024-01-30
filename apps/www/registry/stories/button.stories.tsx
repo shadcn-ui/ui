@@ -14,7 +14,6 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  render: (args) => <Button {...args} />,
   args: {
     children: "Button",
     variant: "default",

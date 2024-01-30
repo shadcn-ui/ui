@@ -14,7 +14,6 @@ const meta: Meta<typeof Toggle> = {
   parameters: {
     layout: "centered",
   },
-  render: (args) => <Toggle {...args} />,
   args: {
     children: <Bold className="h-4 w-4" />,
     "aria-label": "Toggle bold",

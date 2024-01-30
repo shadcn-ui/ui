@@ -13,7 +13,7 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {},
   render: (args) => (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
+    <div className="max-w-sm">
       <Input {...args} />
     </div>
   ),
