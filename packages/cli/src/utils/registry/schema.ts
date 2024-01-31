@@ -1,4 +1,4 @@
-import * as z from "zod"
+import { z } from "zod"
 
 // TODO: Extract this to a shared package.
 export const registryItemSchema = z.object({
