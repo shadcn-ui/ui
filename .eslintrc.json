@@ -11,7 +11,10 @@
   "rules": {
     "@next/next/no-html-link-for-pages": "off",
     "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "error"
+    "tailwindcss/classnames-order": "error",
+    "tailwindcss/enforces-shorthand": ["warn", {
+      "callees": ["cn", "cva"]
+    }]
   },
   "settings": {
     "tailwindcss": {
