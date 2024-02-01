@@ -16,7 +16,6 @@ import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { DrawerContent, DrawerTrigger } from "@/components/drawer"
 import { ThemeWrapper } from "@/components/theme-wrapper"
 import { Button } from "@/registry/new-york/ui/button"
 import {
@@ -27,6 +26,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/new-york/ui/dialog"
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/registry/new-york/ui/drawer"
 import { Label } from "@/registry/new-york/ui/label"
 import {
   Popover,
@@ -37,8 +41,6 @@ import { Skeleton } from "@/registry/new-york/ui/skeleton"
 import { Theme, themes } from "@/registry/themes"
 
 import "@/styles/mdx.css"
-import { Drawer } from "vaul"
-
 import {
   Tooltip,
   TooltipContent,
@@ -56,17 +58,17 @@ export function ThemeCustomizer() {
 
   return (
     <div className="flex items-center space-x-2">
-      <Drawer.Root>
+      <Drawer>
         <DrawerTrigger asChild>
           <Button variant="outline" className="md:hidden">
             <Paintbrush className="mr-2 h-4 w-4" />
             Customize
           </Button>
         </DrawerTrigger>
-        <DrawerContent className="h-[85%] p-6 pt-10">
+        <DrawerContent className="p-6 pt-0">
           <Customizer />
         </DrawerContent>
-      </Drawer.Root>
+      </Drawer>
       <div className="hidden md:flex">
         <div className="mr-2 hidden items-center space-x-0.5 lg:flex">
           {mounted ? (
@@ -128,7 +130,7 @@ export function ThemeCustomizer() {
               })}
             </>
           ) : (
-            <div className="mr-1 flex items-center space-x-3">
+            <div className="mr-1 flex items-center gap-4">
               <Skeleton className="h-6 w-6 rounded-full" />
               <Skeleton className="h-6 w-6 rounded-full" />
               <Skeleton className="h-6 w-6 rounded-full" />
@@ -145,7 +147,7 @@ export function ThemeCustomizer() {
             </Button>
           </PopoverTrigger>
           <PopoverContent
-            align="end"
+            align="center"
             className="z-40 w-[340px] rounded-[0.5rem] bg-white p-6 dark:bg-zinc-950"
           >
             <Customizer />
@@ -171,7 +173,7 @@ function Customizer() {
       defaultTheme="zinc"
       className="flex flex-col space-y-4 md:space-y-6"
     >
-      <div className="flex items-start">
+      <div className="flex items-start pt-4 md:pt-0">
         <div className="space-y-1 pr-2">
           <div className="font-semibold leading-none tracking-tight">
             Customize
@@ -603,7 +605,7 @@ const BASE_STYLES_WITH_VARIABLES = `
     --ring: <%- colors.light["ring"] %>;
     --radius: <%- radius %>rem;
   }
- 
+
   .dark {
     --background: <%- colors.dark["background"] %>;
     --foreground: <%- colors.dark["foreground"] %>;
