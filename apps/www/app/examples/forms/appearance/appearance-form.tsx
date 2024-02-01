@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { z } from "zod"
 
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/registry/new-york/ui/button"
@@ -67,7 +67,7 @@ export function AppearanceForm() {
                   <select
                     className={cn(
                       buttonVariants({ variant: "outline" }),
-                      "w-[200px] appearance-none bg-transparent font-normal"
+                      "w-[200px] appearance-none font-normal"
                     )}
                     {...field}
                   >
