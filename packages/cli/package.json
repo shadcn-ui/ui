@@ -62,7 +62,7 @@
     "recast": "^0.23.2",
     "ts-morph": "^18.0.0",
     "tsconfig-paths": "^4.2.0",
-    "zod": "^3.22.3"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/babel__core": "^7.20.1",
