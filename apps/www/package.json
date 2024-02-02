@@ -87,7 +87,7 @@
     "esbuild": "^0.17.19",
     "eslint": "^8.41.0",
     "mdast-util-toc": "^6.1.1",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.33",
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.6.0",
