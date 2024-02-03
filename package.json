@@ -57,7 +57,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-tailwindcss": "^3.12.0",
     "husky": "^8.0.3",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.33",
     "prettier": "^2.8.8",
     "pretty-quick": "^3.1.3",
     "tailwindcss": "^3.4.0",
