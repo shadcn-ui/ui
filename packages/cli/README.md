@@ -34,6 +34,16 @@ You can also run the command without any arguments to view a list of all availab
 npx shadcn-ui add
 ```
 
+## Updating
+
+To ensure you're using the latest version of `shadcn-ui`, you can update the CLI tool using the following command:
+
+```bash
+npx shadcn-ui@latest
+```
+
+This command ensures that you're running the latest version of the CLI.
+
 ## Documentation
 
 Visit https://ui.shadcn.com/docs/cli to view the documentation.
