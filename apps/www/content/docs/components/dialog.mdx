@@ -115,3 +115,26 @@ To activate the `Dialog` component from within a `Context Menu` or `Dropdown Men
   </DialogContent>
 </Dialog>
 ```
+
+### Static backdrop
+
+<ComponentPreview name="dialog-static-backdrop" />
+
+## Notes
+
+To achieve the `static backdrop` dialog which does not close on clicking outside, add prop named `onInteractOutside` your`DialogContent` like given in example
+
+```tsx {14-25}
+<Dialog>
+  <DialogTrigger>Open</DialogTrigger>
+  <DialogContent onInteractOutside={(e) => e.preventDefault()}>
+    <DialogHeader>
+      <DialogTitle>Are you absolutely sure?</DialogTitle>
+      <DialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```
