@@ -78,3 +78,7 @@
     @apply px-4;
   }
 }
+/* vaul shouldScaleBackground */
+.element {
+  background: none !important;
+}
