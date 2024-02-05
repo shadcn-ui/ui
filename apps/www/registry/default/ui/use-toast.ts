@@ -13,7 +13,7 @@ type ToasterToast = ToastProps & {
   id: string
   title?: React.ReactNode
   description?: React.ReactNode
-  action?: ToastActionElement,
+  action?: ToastActionElement
   duration?: number
 }
 
@@ -44,7 +44,7 @@ type Action =
     }
   | {
       type: ActionType["DISMISS_TOAST"]
-      toastId?: ToasterToast["id"],
+      toastId?: ToasterToast["id"]
       duration?: number
     }
   | {
@@ -63,7 +63,7 @@ const addToRemoveQueue = (toastId: string, duration: number) => {
     return
   }
 
-  const timeoutDuration = duration || TOAST_REMOVE_DELAY;
+  const timeoutDuration = duration || TOAST_REMOVE_DELAY
   const timeout = setTimeout(() => {
     toastTimeouts.delete(toastId)
     dispatch({
