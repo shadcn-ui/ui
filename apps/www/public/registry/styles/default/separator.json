@@ -7,10 +7,6 @@
     {
       "name": "separator.tsx",
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as SeparatorPrimitive from \"@radix-ui/react-separator\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Separator = React.forwardRef<\n  React.ElementRef<typeof SeparatorPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>\n>(\n  (\n    { className, orientation = \"horizontal\", decorative = true, ...props },\n    ref\n  ) => (\n    <SeparatorPrimitive.Root\n      ref={ref}\n      decorative={decorative}\n      orientation={orientation}\n      className={cn(\n        \"shrink-0 bg-border\",\n        orientation === \"horizontal\" ? \"h-[1px] w-full\" : \"h-full w-[1px]\",\n        className\n      )}\n      {...props}\n    />\n  )\n)\nSeparator.displayName = SeparatorPrimitive.Root.displayName\n\nexport { Separator }\n"
-    },
-    {
-      "name": "separator.stories.tsx",
-      "content": "import type { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Separator } from \"@/registry/default/ui/separator\"\n\n/**\n * Visually or semantically separates content.\n */\nconst meta = {\n  title: \"ui/Separator\",\n  component: Separator,\n  tags: [\"autodocs\"],\n  argTypes: {},\n} satisfies Meta<typeof Separator>\n\nexport default meta\n\ntype Story = StoryObj<typeof meta>\n\n/**\n * The default form of the separator.\n */\nexport const Horizontal: Story = {\n  render: () => (\n    <div className=\"flex gap-2\">\n      <div>Left</div>\n      <Separator orientation=\"vertical\" className=\"h-auto\" />\n      <div>Right</div>\n    </div>\n  ),\n}\n\n/**\n * A vertical separator.\n */\nexport const Vertical: Story = {\n  render: () => (\n    <div className=\"grid gap-2\">\n      <div>Top</div>\n      <Separator orientation=\"horizontal\" />\n      <div>Bottom</div>\n    </div>\n  ),\n}\n"
     }
   ],
   "type": "components:ui"

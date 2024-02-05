@@ -7,10 +7,6 @@
     {
       "name": "collapsible.tsx",
       "content": "\"use client\"\n\nimport * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\"\n\nconst Collapsible = CollapsiblePrimitive.Root\n\nconst CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger\n\nconst CollapsibleContent = CollapsiblePrimitive.CollapsibleContent\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n"
-    },
-    {
-      "name": "collapsible.stories.tsx",
-      "content": "import type { Meta, StoryObj } from \"@storybook/react\"\nimport { Info } from \"lucide-react\"\n\nimport {\n  Collapsible,\n  CollapsibleContent,\n  CollapsibleTrigger,\n} from \"@/registry/default/ui/collapsible\"\n\n/**\n * An interactive component which expands/collapses a panel.\n */\nconst meta = {\n  title: \"ui/Collapsible\",\n  component: Collapsible,\n  tags: [\"autodocs\"],\n  argTypes: {\n    children: {\n      table: {\n        disable: true,\n      },\n    },\n  },\n  args: {\n    className: \"w-96\",\n    children: (\n      <>\n        <CollapsibleTrigger className=\"flex gap-2\">\n          <h3 className=\"font-semibold\">Can I use this in my project?</h3>\n          <Info className=\"size-6\" />\n        </CollapsibleTrigger>\n        <CollapsibleContent>\n          Yes. Free to use for personal and commercial projects. No attribution\n          required.\n        </CollapsibleContent>\n      </>\n    ),\n  },\n  parameters: {\n    layout: \"centered\",\n  },\n} satisfies Meta<typeof Collapsible>\n\nexport default meta\n\ntype Story = StoryObj<typeof meta>\n\n/**\n * The default form of the collapsible.\n */\nexport const Default: Story = {}\n\n/**\n * Use the `disabled` prop to disable the interaction.\n */\nexport const Disabled: Story = {\n  args: {\n    disabled: true,\n  },\n}\n"
     }
   ],
   "type": "components:ui"

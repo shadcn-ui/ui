@@ -7,10 +7,6 @@
     {
       "name": "aspect-ratio.tsx",
       "content": "\"use client\"\n\nimport * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\"\n\nconst AspectRatio = AspectRatioPrimitive.Root\n\nexport { AspectRatio }\n"
-    },
-    {
-      "name": "aspect-ratio.stories.tsx",
-      "content": "import Image from \"next/image\"\nimport type { Meta, StoryObj } from \"@storybook/react\"\n\nimport { AspectRatio } from \"@/registry/default/ui/aspect-ratio\"\n\n/**\n * Displays content within a desired ratio.\n */\nconst meta = {\n  title: \"ui/AspectRatio\",\n  component: AspectRatio,\n  tags: [\"autodocs\"],\n  argTypes: {},\n  render: (args) => (\n    <div className=\"w-1/2\">\n      <AspectRatio {...args} className=\"bg-slate-50 dark:bg-slate-800\">\n        <Image\n          src=\"https://images.unsplash.com/photo-1576075796033-848c2a5f3696?w=800&dpr=2&q=80\"\n          alt=\"Photo by Alvaro Pinot\"\n          fill\n          className=\"rounded-md object-cover\"\n        />\n      </AspectRatio>\n    </div>\n  ),\n  parameters: {\n    layout: \"centered\",\n  },\n} satisfies Meta<typeof AspectRatio>\n\nexport default meta\n\ntype Story = StoryObj<typeof meta>\n\n/**\n * The default form of the aspect ratio.\n */\nexport const Default: Story = {\n  args: {\n    ratio: 16 / 9,\n  },\n}\n\n/**\n * Use the `1:1` aspect ratio to display a square image.\n */\nexport const Square: Story = {\n  args: {\n    ratio: 1,\n  },\n}\n\n/**\n * Use the `4:3` aspect ratio to display a landscape image.\n */\nexport const Landscape: Story = {\n  args: {\n    ratio: 4 / 3,\n  },\n}\n\n/**\n * Use the `2.35:1` aspect ratio to display a cinemascope image.\n */\nexport const Cinemascope: Story = {\n  args: {\n    ratio: 2.35 / 1,\n  },\n}\n"
     }
   ],
   "type": "components:ui"

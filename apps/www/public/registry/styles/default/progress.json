@@ -7,10 +7,6 @@
     {
       "name": "progress.tsx",
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as ProgressPrimitive from \"@radix-ui/react-progress\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Progress = React.forwardRef<\n  React.ElementRef<typeof ProgressPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>\n>(({ className, value, ...props }, ref) => (\n  <ProgressPrimitive.Root\n    ref={ref}\n    className={cn(\n      \"relative h-4 w-full overflow-hidden rounded-full bg-secondary\",\n      className\n    )}\n    {...props}\n  >\n    <ProgressPrimitive.Indicator\n      className=\"h-full w-full flex-1 bg-primary transition-all\"\n      style={{ transform: `translateX(-${100 - (value || 0)}%)` }}\n    />\n  </ProgressPrimitive.Root>\n))\nProgress.displayName = ProgressPrimitive.Root.displayName\n\nexport { Progress }\n"
-    },
-    {
-      "name": "progress.stories.tsx",
-      "content": "import { useEffect, useState } from \"react\"\nimport type { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Progress } from \"@/registry/default/ui/progress\"\n\n/**\n * Displays an indicator showing the completion progress of a task, typically\n * displayed as a progress bar.\n */\nconst meta = {\n  title: \"ui/Progress\",\n  component: Progress,\n  tags: [\"autodocs\"],\n  argTypes: {},\n  args: {\n    value: 30,\n    max: 100,\n  },\n} satisfies Meta<typeof Progress>\n\nexport default meta\n\ntype Story = StoryObj<typeof meta>\n\n/**\n * The default form of the progress.\n */\nexport const Default: Story = {}\n\n/**\n * When the progress is indeterminate.\n */\nexport const Indeterminate: Story = {\n  args: {\n    value: undefined,\n  },\n}\n\n/**\n * When the progress is completed.\n */\nexport const Completed: Story = {\n  args: {\n    value: 100,\n  },\n}\n"
     }
   ],
   "type": "components:ui"
