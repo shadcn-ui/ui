@@ -19,7 +19,34 @@ const meta: Meta<typeof Drawer> = {
   title: "ui/Drawer",
   component: Drawer,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+  args: {
+    children: (
+      <>
+        <DrawerTrigger>Open</DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Are you sure absolutely sure?</DrawerTitle>
+            <DrawerDescription>This action cannot be undone.</DrawerDescription>
+          </DrawerHeader>
+          <DrawerFooter>
+            <button className="rounded bg-primary px-4 py-2 text-primary-foreground">
+              Submit
+            </button>
+            <DrawerClose>
+              <button className="hover:underline">Cancel</button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </>
+    ),
+  },
   parameters: {
     layout: "centered",
   },
@@ -32,22 +59,4 @@ type Story = StoryObj<typeof meta>
 /**
  * The default form of the drawer.
  */
-export const Default: Story = {
-  render: (args) => (
-    <Drawer {...args}>
-      <DrawerTrigger>Open</DrawerTrigger>
-      <DrawerContent>
-        <DrawerHeader>
-          <DrawerTitle>Are you sure absolutely sure?</DrawerTitle>
-          <DrawerDescription>This action cannot be undone.</DrawerDescription>
-        </DrawerHeader>
-        <DrawerFooter>
-          <Button>Submit</Button>
-          <DrawerClose>
-            <Button variant="outline">Cancel</Button>
-          </DrawerClose>
-        </DrawerFooter>
-      </DrawerContent>
-    </Drawer>
-  ),
-}
+export const Default: Story = {}

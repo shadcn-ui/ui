@@ -24,59 +24,31 @@ const meta = {
   title: "ui/ContextMenu",
   component: ContextMenu,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+  args: {
+    children: (
+      <>
+        <ContextMenuTrigger className="flex h-48 w-96 items-center justify-center rounded-md border border-dashed bg-accent text-sm">
+          Right click here
+        </ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem>Profile</ContextMenuItem>
+          <ContextMenuItem>Billing</ContextMenuItem>
+          <ContextMenuItem>Team</ContextMenuItem>
+          <ContextMenuItem>Subscription</ContextMenuItem>
+        </ContextMenuContent>
+      </>
+    ),
+  },
   parameters: {
     layout: "centered",
   },
-  render: (args) => (
-    <ContextMenu {...args}>
-      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed border-slate-200 text-sm dark:border-slate-700">
-        Right click here
-      </ContextMenuTrigger>
-      <ContextMenuContent className="w-64">
-        <ContextMenuItem inset>
-          Back
-          <ContextMenuShortcut>⌘[</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem inset disabled>
-          Forward
-          <ContextMenuShortcut>⌘]</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem inset>
-          Reload
-          <ContextMenuShortcut>⌘R</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuSub>
-          <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
-          <ContextMenuSubContent className="w-48">
-            <ContextMenuItem>
-              Save Page As...
-              <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
-            </ContextMenuItem>
-            <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-            <ContextMenuItem>Name Window...</ContextMenuItem>
-            <ContextMenuSeparator />
-            <ContextMenuItem>Developer Tools</ContextMenuItem>
-          </ContextMenuSubContent>
-        </ContextMenuSub>
-        <ContextMenuSeparator />
-        <ContextMenuCheckboxItem checked>
-          Show Bookmarks Bar
-          <ContextMenuShortcut>⌘⇧B</ContextMenuShortcut>
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-        <ContextMenuSeparator />
-        <ContextMenuRadioGroup value="pedro">
-          <ContextMenuLabel inset>People</ContextMenuLabel>
-          <ContextMenuSeparator />
-          <ContextMenuRadioItem value="pedro">
-            Pedro Duarte
-          </ContextMenuRadioItem>
-          <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
-        </ContextMenuRadioGroup>
-      </ContextMenuContent>
-    </ContextMenu>
-  ),
 } satisfies Meta<typeof ContextMenu>
 
 export default meta
@@ -87,12 +59,3 @@ type Story = StoryObj<typeof meta>
  * The default form of the context menu.
  */
 export const Default: Story = {}
-
-/**
- * Use the `modal` prop to allow the interaction behind the menu.
- */
-export const DisableModal: Story = {
-  args: {
-    modal: false,
-  },
-}

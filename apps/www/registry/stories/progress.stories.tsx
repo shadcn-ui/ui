@@ -12,6 +12,10 @@ const meta = {
   component: Progress,
   tags: ["autodocs"],
   argTypes: {},
+  args: {
+    value: 30,
+    max: 100,
+  },
 } satisfies Meta<typeof Progress>
 
 export default meta
@@ -21,30 +25,22 @@ type Story = StoryObj<typeof meta>
 /**
  * The default form of the progress.
  */
-export const Default: Story = {
-  render: (args) => <Progress {...args} />,
+export const Default: Story = {}
+
+/**
+ * When the progress is indeterminate.
+ */
+export const Indeterminate: Story = {
   args: {
-    value: 30,
+    value: undefined,
   },
 }
 
 /**
- * Use the `value` prop to set the progress value and animate between values.
+ * When the progress is completed.
  */
-export const Animated: Story = {
-  render: (args) => <ProgressDemo {...args} />,
+export const Completed: Story = {
   args: {
-    value: 13,
+    value: 100,
   },
-}
-
-const ProgressDemo = (args: Story["args"]) => {
-  const [progress, setProgress] = useState(args?.value)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 2000)
-    return () => clearTimeout(timer)
-  }, [])
-
-  return <Progress {...args} value={progress} className="w-[60%]" />
 }

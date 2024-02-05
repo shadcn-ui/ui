@@ -15,8 +15,9 @@ const meta = {
     layout: "centered",
   },
   args: {
-    children: "Button",
     variant: "default",
+    size: "default",
+    children: "Button",
   },
 } satisfies Meta<typeof Button>
 
@@ -108,5 +109,44 @@ export const WithIcon: Story = {
   ),
   args: {
     ...Secondary.args,
+  },
+}
+
+/**
+ * Use the `sm` size for a smaller button, suitable for interfaces needing
+ * compact elements without sacrificing usability.
+ */
+export const Small: Story = {
+  args: {
+    size: "sm",
+  },
+}
+
+/**
+ * Use the `lg` size for a larger button, offering better visibility and
+ * easier interaction for users.
+ */
+export const Large: Story = {
+  args: {
+    size: "lg",
+  },
+}
+
+/**
+ * Use the "icon" size for a button with only an icon.
+ */
+export const Icon: Story = {
+  args: {
+    ...Secondary.args,
+    children: <Mail />,
+  },
+}
+
+/**
+ * Add the `disabled` prop to prevent interactions with the button.
+ */
+export const Disabled: Story = {
+  args: {
+    disabled: true,
   },
 }

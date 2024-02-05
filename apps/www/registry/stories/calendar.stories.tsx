@@ -1,29 +1,8 @@
-import { zodResolver } from "@hookform/resolvers/zod"
+import { action } from "@storybook/addon-actions"
 import type { Meta, StoryObj } from "@storybook/react"
-import { format } from "date-fns"
-import { CalendarIcon } from "lucide-react"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { addDays } from "date-fns"
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/registry/default/ui/button"
 import { Calendar } from "@/registry/default/ui/calendar"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/registry/default/ui/form"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/default/ui/popover"
-import { Toaster } from "@/registry/default/ui/toaster"
-import { useToast } from "@/registry/default/ui/use-toast"
 
 /**
  * A date field component that allows users to enter and edit date.
@@ -33,6 +12,12 @@ const meta = {
   component: Calendar,
   tags: ["autodocs"],
   argTypes: {},
+  args: {
+    mode: "single",
+    selected: new Date(),
+    onSelect: action("onDayClick"),
+    className: "rounded-md border w-fit",
+  },
   parameters: {
     layout: "centered",
   },
@@ -45,96 +30,52 @@ type Story = StoryObj<typeof meta>
 /**
  * The default form of the calendar.
  */
-export const Default: Story = {
+export const Default: Story = {}
+
+/**
+ * Use the `multiple` mode to select multiple dates.
+ */
+export const Multiple: Story = {
   args: {
-    mode: "single",
-    className: "rounded-md border w-fit",
+    min: 1,
+    selected: [new Date(), addDays(new Date(), 2), addDays(new Date(), 8)],
+    mode: "multiple",
   },
 }
 
-export const CalendarForm: Story = {
-  render: (args) => <ExampleCalendarForm {...args} />,
+/**
+ * Use the `range` mode to select a range of dates.
+ */
+export const Range: Story = {
   args: {
-    mode: "single",
+    selected: {
+      from: new Date(),
+      to: addDays(new Date(), 7),
+    },
+    mode: "range",
   },
 }
 
-const FormSchema = z.object({
-  dob: z.date({
-    required_error: "A date of birth is required.",
-  }),
-})
+/**
+ * Use the `disabled` prop to disable specific dates.
+ */
+export const Disabled: Story = {
+  args: {
+    disabled: [
+      addDays(new Date(), 1),
+      addDays(new Date(), 2),
+      addDays(new Date(), 3),
+      addDays(new Date(), 5),
+    ],
+  },
+}
 
-const ExampleCalendarForm = (args: Story["args"]) => {
-  const { toast } = useToast()
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-  })
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    })
-  }
-
-  return (
-    <>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
-            control={form.control}
-            name="dob"
-            render={({ field }) => (
-              <FormItem className="flex flex-col">
-                <FormLabel>Date of birth</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={"outline"}
-                        className={cn(
-                          "w-[240px] pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground"
-                        )}
-                      >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      {...args}
-                      mode="single"
-                      selected={field.value}
-                      onSelect={field.onChange}
-                      disabled={(date) =>
-                        date > new Date() || date < new Date("1900-01-01")
-                      }
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-                <FormDescription>
-                  Your date of birth is used to calculate your age.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
-      <Toaster />
-    </>
-  )
+/**
+ * Use the `numberOfMonths` prop to display multiple months.
+ */
+export const MultipleMonths: Story = {
+  args: {
+    numberOfMonths: 2,
+    showOutsideDays: false,
+  },
 }

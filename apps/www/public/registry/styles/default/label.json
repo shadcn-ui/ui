@@ -10,7 +10,7 @@
     },
     {
       "name": "label.stories.tsx",
-      "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Label } from \"@/registry/default/ui/label\"\n\n/**\n * Renders an accessible label associated with controls.\n */\nconst meta: Meta<typeof Label> = {\n  title: \"ui/Label\",\n  component: Label,\n  tags: [\"autodocs\"],\n  argTypes: {},\n}\nexport default meta\n\ntype Story = StoryObj<typeof Label>\n\nexport const Base: Story = {\n  render: (args) => (\n    <Label {...args} htmlFor=\"email\">\n      Your email address\n    </Label>\n  ),\n  args: {},\n}\n"
+      "content": "import type { Meta, StoryObj } from \"@storybook/react\"\n\nimport { Label } from \"@/registry/default/ui/label\"\n\n/**\n * Renders an accessible label associated with controls.\n */\nconst meta = {\n  title: \"ui/Label\",\n  component: Label,\n  tags: [\"autodocs\"],\n  argTypes: {},\n  args: {\n    children: \"Your email address\",\n    htmlFor: \"email\",\n  },\n} satisfies Meta<typeof Label>\n\nexport default meta\n\ntype Story = StoryObj<typeof Label>\n\n/**\n * The default form of the label.\n */\nexport const Default: Story = {}\n"
     }
   ],
   "type": "components:ui"

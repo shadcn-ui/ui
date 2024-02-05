@@ -17,22 +17,15 @@ const meta = {
   title: "ui/Pagination",
   component: Pagination,
   tags: ["autodocs"],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
-} satisfies Meta<typeof Pagination>
-
-export default meta
-
-type Story = StoryObj<typeof meta>
-
-/**
- * The default form of the pagination.
- */
-export const Default: Story = {
-  render: (args) => (
-    <Pagination {...args}>
+  args: {
+    children: (
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious href="#" />
@@ -53,6 +46,18 @@ export const Default: Story = {
           <PaginationNext href="#" />
         </PaginationItem>
       </PaginationContent>
-    </Pagination>
-  ),
-}
+    ),
+  },
+  parameters: {
+    layout: "centered",
+  },
+} satisfies Meta<typeof Pagination>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * The default form of the pagination.
+ */
+export const Default: Story = {}

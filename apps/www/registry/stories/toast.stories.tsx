@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Button } from "@/registry/default/ui/button"
 import {
   Toast,
   ToastAction,
@@ -41,14 +40,13 @@ const ToastExample = (args: Story["args"]) => {
   const { toast } = useToast()
   return (
     <div>
-      <Button
-        variant="outline"
+      <button
         onClick={() => {
           toast(args)
         }}
       >
         Show Toast
-      </Button>
+      </button>
       <Toaster />
     </div>
   )

@@ -4,7 +4,6 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { Button } from "@/registry/default/ui/button"
 import {
   Form,
   FormControl,
@@ -14,7 +13,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/registry/default/ui/form"
-import { Input } from "@/registry/default/ui/input"
 
 /**
  * Building forms with React Hook Form and Zod.
@@ -57,7 +55,11 @@ const ProfileForm = (args: Story["args"]) => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="username" {...field} />
+                <input
+                  className="w-full rounded-md border border-input bg-background px-3 py-2"
+                  placeholder="username"
+                  {...field}
+                />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -66,7 +68,12 @@ const ProfileForm = (args: Story["args"]) => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <button
+          className="rounded bg-primary px-4 py-2 text-primary-foreground"
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </Form>
   )

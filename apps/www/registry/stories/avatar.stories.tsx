@@ -13,7 +13,21 @@ const meta = {
   title: "ui/Avatar",
   component: Avatar,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+  args: {
+    children: (
+      <>
+        <AvatarImage src="https://github.com/shadcn.png" />
+        <AvatarFallback>CN</AvatarFallback>
+      </>
+    ),
+  },
   parameters: {
     layout: "centered",
   },
@@ -26,11 +40,4 @@ type Story = StoryObj<typeof meta>
 /**
  * The default form of the avatar.
  */
-export const Default: Story = {
-  render: (args) => (
-    <Avatar {...args}>
-      <AvatarImage src="https://github.com/shadcn.png" />
-      <AvatarFallback>CN</AvatarFallback>
-    </Avatar>
-  ),
-}
+export const Default: Story = {}

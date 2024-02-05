@@ -43,14 +43,3 @@ export const Disabled: Story = {
     disabled: true,
   },
 }
-
-/**
- * Use an array with the `defaultValue` prop to create a range slider.
- */
-export const Interval: Story = {
-  args: {
-    defaultValue: [33, 88],
-    max: 100,
-    step: 1,
-  },
-}

@@ -11,7 +11,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/registry/default/ui/alert-dialog"
-import { Button } from "@/registry/default/ui/button"
 
 /**
  * A modal dialog that interrupts the user with important content and expects
@@ -21,9 +20,33 @@ const meta = {
   title: "ui/AlertDialog",
   component: AlertDialog,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   parameters: {
     layout: "centered",
+    children: (
+      <>
+        <AlertDialogTrigger>Open</AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </>
+    ),
   },
 } satisfies Meta<typeof AlertDialog>
 
@@ -34,25 +57,4 @@ type Story = StoryObj<typeof meta>
 /**
  * The default form of the alert dialog.
  */
-export const Default: Story = {
-  render: (args) => (
-    <AlertDialog {...args}>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">Open</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you sure absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  ),
-}
+export const Default: Story = {}

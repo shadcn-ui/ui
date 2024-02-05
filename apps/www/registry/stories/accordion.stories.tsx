@@ -15,33 +15,40 @@ const meta = {
   title: "ui/Accordion",
   component: Accordion,
   tags: ["autodocs"],
-  argTypes: {},
-  render: (args) => (
-    <Accordion {...args}>
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Is it styled?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It comes with default styles that matches the other components'
-          aesthetic.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Is it animated?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It's animated by default, but you can disable it if you prefer.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  ),
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   args: {
     type: "single",
     collapsible: true,
+    orientation: "vertical",
+    children: (
+      <>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Is it styled?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It comes with default styles that matches the other components'
+            aesthetic.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Is it animated?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It's animated by default, but you can disable it if you prefer.
+          </AccordionContent>
+        </AccordionItem>
+      </>
+    ),
   },
 } satisfies Meta<typeof Accordion>
 
@@ -53,12 +60,3 @@ type Story = StoryObj<typeof meta>
  * The default behavior of the accordion allows only one item to be open.
  */
 export const Default: Story = {}
-
-/**
- * Use a `disabled` accordion to prevent users from interacting with it.
- */
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
-}

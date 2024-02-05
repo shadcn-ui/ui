@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { toast } from "sonner"
 
-import { Button } from "@/registry/default/ui/button"
 import { Toaster } from "@/registry/default/ui/sonner"
 
 /**
@@ -27,8 +26,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: (args) => (
     <div className="flex items-center space-x-2">
-      <Button
-        variant="outline"
+      <button
         onClick={() =>
           toast("Event has been created", {
             description: new Date().toLocaleString(),
@@ -40,7 +38,7 @@ export const Default: Story = {
         }
       >
         Show Toast
-      </Button>
+      </button>
       <Toaster {...args} />
     </div>
   ),

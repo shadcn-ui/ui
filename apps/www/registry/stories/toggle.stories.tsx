@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Bold, Italic, Underline } from "lucide-react"
+import { Bold, Italic } from "lucide-react"
 
 import { Toggle } from "@/registry/default/ui/toggle"
 

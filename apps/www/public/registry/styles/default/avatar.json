@@ -10,7 +10,7 @@
     },
     {
       "name": "avatar.stories.tsx",
-      "content": "import { Meta, StoryObj } from \"@storybook/react\"\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\n\n/**\n * An image element with a fallback for representing the user.\n */\nconst meta: Meta<typeof Avatar> = {\n  title: \"ui/Avatar\",\n  component: Avatar,\n  tags: [\"autodocs\"],\n  argTypes: {},\n  parameters: {\n    layout: 'centered',\n  },\n}\n\nexport default meta\n\ntype Story = StoryObj<typeof Avatar>\n\nexport const Base: Story = {\n  render: (args) => (\n    <Avatar {...args}>\n      <AvatarImage src=\"https://github.com/shadcn.png\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  ),\n  args: {},\n}\n"
+      "content": "import type { Meta, StoryObj } from \"@storybook/react\"\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\n\n/**\n * An image element with a fallback for representing the user.\n */\nconst meta = {\n  title: \"ui/Avatar\",\n  component: Avatar,\n  tags: [\"autodocs\"],\n  argTypes: {\n    children: {\n      table: {\n        disable: true,\n      },\n    },\n  },\n  args: {\n    children: (\n      <>\n        <AvatarImage src=\"https://github.com/shadcn.png\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </>\n    ),\n  },\n  parameters: {\n    layout: \"centered\",\n  },\n} satisfies Meta<typeof Avatar>\n\nexport default meta\n\ntype Story = StoryObj<typeof meta>\n\n/**\n * The default form of the avatar.\n */\nexport const Default: Story = {}\n"
     }
   ],
   "type": "components:ui"

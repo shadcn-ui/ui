@@ -18,46 +18,54 @@ const meta: Meta<typeof Select> = {
   title: "ui/Select",
   component: Select,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+  args: {
+    children: (
+      <>
+        <SelectTrigger className="w-96">
+          <SelectValue placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes">Grapes</SelectItem>
+            <SelectItem value="pineapple">Pineapple</SelectItem>
+          </SelectGroup>
+          <SelectSeparator />
+          <SelectGroup>
+            <SelectLabel>Vegetables</SelectLabel>
+            <SelectItem value="aubergine">Aubergine</SelectItem>
+            <SelectItem value="broccoli">Broccoli</SelectItem>
+            <SelectItem value="carrot" disabled>
+              Carrot
+            </SelectItem>
+            <SelectItem value="courgette">Courgette</SelectItem>
+            <SelectItem value="leek">Leek</SelectItem>
+          </SelectGroup>
+          <SelectSeparator />
+          <SelectGroup>
+            <SelectLabel>Meat</SelectLabel>
+            <SelectItem value="beef">Beef</SelectItem>
+            <SelectItem value="chicken">Chicken</SelectItem>
+            <SelectItem value="lamb">Lamb</SelectItem>
+            <SelectItem value="pork">Pork</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </>
+    ),
+  },
   parameters: {
     layout: "centered",
   },
-  render: (args) => (
-    <Select {...args}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a fruit" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
-        </SelectGroup>
-        <SelectSeparator />
-        <SelectGroup>
-          <SelectLabel>Vegetables</SelectLabel>
-          <SelectItem value="aubergine">Aubergine</SelectItem>
-          <SelectItem value="broccoli">Broccoli</SelectItem>
-          <SelectItem value="carrot" disabled>
-            Carrot
-          </SelectItem>
-          <SelectItem value="courgette">Courgette</SelectItem>
-          <SelectItem value="leek">Leek</SelectItem>
-        </SelectGroup>
-        <SelectSeparator />
-        <SelectGroup>
-          <SelectLabel>Meat</SelectLabel>
-          <SelectItem value="beef">Beef</SelectItem>
-          <SelectItem value="chicken">Chicken</SelectItem>
-          <SelectItem value="lamb">Lamb</SelectItem>
-          <SelectItem value="pork">Pork</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  ),
 } satisfies Meta<typeof Select>
 
 export default meta
@@ -68,12 +76,3 @@ type Story = StoryObj<typeof meta>
  * The default form of the select.
  */
 export const Default: Story = {}
-
-/**
- * Use the `disabled` prop to disable the select.
- */
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
-}

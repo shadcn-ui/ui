@@ -10,11 +10,11 @@ const meta = {
   component: Badge,
   tags: ["autodocs"],
   argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
   args: {
     children: "Badge",
+  },
+  parameters: {
+    layout: "centered",
   },
 } satisfies Meta<typeof Badge>
 

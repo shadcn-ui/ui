@@ -21,44 +21,40 @@ const meta: Meta<typeof Sheet> = {
   title: "ui/Sheet",
   component: Sheet,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+  args: {
+    children: (
+      <>
+        <SheetTrigger>Open</SheetTrigger>
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle>Are you absolutely sure?</SheetTitle>
+            <SheetDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </SheetDescription>
+          </SheetHeader>
+          <SheetFooter>
+            <SheetClose>
+              <button className="hover:underline">Cancel</button>
+            </SheetClose>
+            <button className="rounded bg-primary px-4 py-2 text-primary-foreground">
+              Submit
+            </button>
+          </SheetFooter>
+        </SheetContent>
+      </>
+    ),
+  },
   parameters: {
     layout: "centered",
   },
-  render: (args) => (
-    <Sheet {...args}>
-      <SheetTrigger asChild>
-        <Button variant="outline">Open</Button>
-      </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>Edit profile</SheetTitle>
-          <SheetDescription>
-            Make changes to your profile here. Click save when youre done.
-          </SheetDescription>
-        </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <input id="name" value="Pedro Duarte" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <input id="username" value="@peduarte" className="col-span-3" />
-          </div>
-        </div>
-        <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
-          </SheetClose>
-        </SheetFooter>
-      </SheetContent>
-    </Sheet>
-  ),
 } satisfies Meta<typeof Sheet>
 
 export default meta
@@ -69,12 +65,3 @@ type Story = StoryObj<typeof meta>
  * The default form of the sheet.
  */
 export const Default: Story = {}
-
-/**
- * Use the `modal` prop to allow interaction behind the sheet.
- */
-export const DisableModal: Story = {
-  args: {
-    modal: false,
-  },
-}
