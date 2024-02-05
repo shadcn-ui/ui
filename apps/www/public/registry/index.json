@@ -240,6 +240,13 @@
     "type": "components:ui"
   },
   {
+    "name": "otp-input",
+    "files": [
+      "ui/otp-input.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "pagination",
     "registryDependencies": [
       "button"

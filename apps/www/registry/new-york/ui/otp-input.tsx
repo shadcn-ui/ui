@@ -3,39 +3,49 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Input } from "@/registry/new-york/ui/input"
+import { Input } from "@/registry/new-york/ui/input";
+
+type AllowedInputTypes = 'password' | 'text' | 'number' | 'tel';
 
 interface OTPInputProps
-  extends Omit<
+  extends Pick<
     React.InputHTMLAttributes<HTMLInputElement>,
-    | "ref"
-    | "value"
-    | "onFocus"
-    | "onBlur"
-    | "onKeyDown"
     | "onPaste"
-    | "autoComplete"
-    | "maxLength"
+    | "pattern"
+    | "autoFocus"
+    | "className"
+    | "id"
+    | "name"
   > {
   /** Value of the OTP input */
   value?: string
   /** Callback to be called when the OTP value changes */
-  onOtpChange?: (otp: string) => void
+  onChange?: (otp: string) => void
+  /** Callback to be called when pasting content into the component */
+  onPaste?: (event: React.ClipboardEvent<HTMLDivElement>) => void;
   /** Number of OTP inputs to be rendered */
   numInputs?: number
+  /** Placeholder for the inputs */
+  placeholder?: string;
+    /** Type of the input */
+  type?: AllowedInputTypes
+  /** Function to render the separator */
+  renderSeparator?: ((index: number) => React.ReactNode) | React.ReactNode;
 }
 
 export const OTPInput = ({
   value = "",
   numInputs = 6,
-  onOtpChange,
+  onChange,
   type = "text",
   placeholder = "_",
   pattern = "[0-9]",
-  autoFocus = false,
+  autoFocus = true,
   className,
   id,
   name,
+  onPaste,
+  renderSeparator,
   ...rest
 }: OTPInputProps) => {
   const [otpValue, setOTPValue] = React.useState(value)
@@ -134,7 +144,7 @@ export const OTPInput = ({
   const handleOTPChange = (otp: Array<string>) => {
     const otpValue = otp.join("")
     setOTPValue(otpValue)
-    onOtpChange?.(otpValue)
+    onChange?.(otpValue)
   }
 
   const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
@@ -167,27 +177,29 @@ export const OTPInput = ({
   }
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 items-center" onPaste={onPaste}>
       {Array.from({ length: numInputs }, (_, index) => index).map((i) => (
-        <Input
-          key={i}
-          id={`${id}-${i}`}
-          name={`${name}-${i}`}
-          value={getOTPValue()[i] ?? ""}
-          placeholder={placeholder}
-          ref={(element) => (inputRefs.current[i] = element)}
-          onChange={handleChange}
-          onFocus={(event) => handleFocus(event)(i)}
-          onBlur={handleBlur}
-          onKeyDown={handleKeyDown}
-          onPaste={handlePaste}
-          autoComplete="off"
-          maxLength={1}
-          size={1}
-          className={cn("text-center font-bold", className)}
-          pattern={pattern}
-          {...rest}
-        />
+        <React.Fragment key={i}>
+          <Input
+            id={`${id}-${i}`}
+            name={`${name}-${i}`}
+            value={getOTPValue()[i] ?? ""}
+            placeholder={placeholder}
+            ref={(element) => (inputRefs.current[i] = element)}
+            onChange={handleChange}
+            onFocus={(event) => handleFocus(event)(i)}
+            onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
+            onPaste={handlePaste}
+            autoComplete="off"
+            maxLength={1}
+            size={1}
+            className={cn("text-center font-bold", className)}
+            pattern={pattern}
+            {...rest}
+          />
+          {i < numInputs - 1 && (typeof renderSeparator === 'function' ? renderSeparator(i) : renderSeparator)}
+        </React.Fragment>
       ))}
       <input type="hidden" id={id} name={name} value={otpValue} />
     </div>

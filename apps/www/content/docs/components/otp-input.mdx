@@ -1,0 +1,111 @@
+---
+title: OTP Input
+description: A fully customizable, one-time password input component for the web.
+component: true
+---
+
+<ComponentPreview name="otp-input-demo" />
+
+## About
+
+OTP Input is built on top of the [react-otp-input](https://www.npmjs.com/package/react-otp-input) API and has been modified to suit the styles and needs of Shadcn. For more information on the original package, please refer to the [documentation](https://github.com/devfolioco/react-otp-input).
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add otp-input
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="otp-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { OTPInput } from '@/components/ui/otp-input';
+```
+
+```tsx
+<OTPInput />
+```
+
+## Examples
+
+### Basic Usage
+
+<ComponentPreview name="otp-input-demo" />
+
+### With custom number inputs
+
+You can customize the number of inputs by passing the `numInputs` prop.
+
+<ComponentPreview name="otp-input-custom-number" />
+
+### With custom placeholder
+
+By default the placeholder is `_`. You can customize it by passing the `placeholder` prop.
+
+<ComponentPreview name="otp-input-placeholder" />
+
+### With separator
+
+Sometimes you may need to have a separator between each generated input. For this case we have the `renderSeparator` prop.
+
+<ComponentPreview name="otp-input-separator" />
+
+### Controlling the value
+
+You can control the value of the OTP input by passing the `value` and `onChange` props.
+
+<ComponentPreview name="otp-input-controlled" />
+
+### Detecting onPaste event
+
+You can detect the `onPaste` event by passing the `onPaste` prop.
+
+<ComponentPreview name="otp-input-on-paste" />
+
+### Auto focus
+
+You can set the `autoFocus` prop to `true` to automatically focus the first input.
+
+<ComponentPreview name="otp-input-autofocus" />
+
+### With Form
+
+You can use the OTPInput component with the Form component.
+
+<ComponentPreview name="otp-input-form" />
+
+### With Server Actions
+
+The component renders by default this line of code
+
+```tsx
+<input type="hidden" id={id} name={name} value={otpValue} />
+```
+
+This allows to have a hidden input for the form you use with server actions and you can capture it inside the FormData. It is important that you set the `name` prop to be included inside the FormData.

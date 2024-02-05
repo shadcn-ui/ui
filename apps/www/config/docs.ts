@@ -225,6 +225,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "OTP Input",
+          href: "/docs/components/otp-input",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Pagination",
           href: "/docs/components/pagination",
           items: [],

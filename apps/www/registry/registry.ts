@@ -147,6 +147,11 @@ const ui: Registry = [
     files: ["ui/navigation-menu.tsx"],
   },
   {
+    name: "otp-input",
+    type: "components:ui",
+    files: ["ui/otp-input.tsx"],
+  },
+  {
     name: "pagination",
     type: "components:ui",
     registryDependencies: ["button"],
@@ -672,6 +677,54 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["navigation-menu"],
     files: ["example/navigation-menu-demo.tsx"],
+  },
+  {
+    name: "otp-input-demo",
+    type: "components:example",
+    registryDependencies: ["otp-input"],
+    files: ["example/otp-input-demo.tsx"],
+  },
+  {
+    name: "otp-input-custom-number",
+    type: "components:example",
+    registryDependencies: ["otp-input"],
+    files: ["example/otp-input-custom-number.tsx"],
+  },
+  {
+    name: "otp-input-placeholder",
+    type: "components:example",
+    registryDependencies: ["otp-input"],
+    files: ["example/otp-input-placeholder.tsx"],
+  },
+  {
+    name: "otp-input-separator",
+    type: "components:example",
+    registryDependencies: ["otp-input"],
+    files: ["example/otp-input-separator.tsx"],
+  },
+  {
+    name: "otp-input-controlled",
+    type: "components:example",
+    registryDependencies: ["otp-input"],
+    files: ["example/otp-input-controlled.tsx"],
+  },
+  {
+    name: "otp-input-on-paste",
+    type: "components:example",
+    registryDependencies: ["otp-input"],
+    files: ["example/otp-input-on-paste.tsx"],
+  },
+  {
+    name: "otp-input-autofocus",
+    type: "components:example",
+    registryDependencies: ["otp-input"],
+    files: ["example/otp-input-autofocus.tsx"],
+  },
+  {
+    name: "otp-input-form",
+    type: "components:example",
+    registryDependencies: ["otp-input"],
+    files: ["example/otp-input-form.tsx"],
   },
   {
     name: "pagination-demo",
