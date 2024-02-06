@@ -40,7 +40,7 @@ export const OTPInput = ({
   type = "text",
   placeholder = "_",
   pattern = "[0-9]",
-  autoFocus = true,
+  autoFocus = false,
   className,
   id,
   name,
