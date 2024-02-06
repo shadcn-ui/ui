@@ -5,11 +5,15 @@ import { Checkbox } from "@/registry/default/ui/checkbox"
 /**
  * A control that allows the user to toggle between checked and not checked.
  */
-const meta = {
+const meta: Meta<typeof Checkbox> = {
   title: "ui/Checkbox",
   component: Checkbox,
   tags: ["autodocs"],
   argTypes: {},
+  args: {
+    id: "terms",
+    disabled: false,
+  },
   render: (args) => (
     <div className="flex space-x-2">
       <Checkbox {...args} />
@@ -21,6 +25,9 @@ const meta = {
       </label>
     </div>
   ),
+  parameters: {
+    layout: "centered",
+  },
 } satisfies Meta<typeof Checkbox>
 
 export default meta
@@ -30,18 +37,14 @@ type Story = StoryObj<typeof meta>
 /**
  * The default form of the checkbox.
  */
-export const Default: Story = {
-  args: {
-    id: "terms1",
-  },
-}
+export const Default: Story = {}
 
 /**
  * Use the `disabled` prop to disable the checkbox.
  */
 export const Disabled: Story = {
   args: {
-    id: "terms2",
+    id: "disabled-terms",
     disabled: true,
   },
 }

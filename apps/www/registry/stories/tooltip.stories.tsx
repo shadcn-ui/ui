@@ -16,7 +16,17 @@ const meta: Meta<typeof TooltipContent> = {
   title: "ui/Tooltip",
   component: TooltipContent,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    side: {
+      options: ["top", "bottom", "left", "right"],
+      control: {
+        type: "radio",
+      },
+    },
+    children: {
+      control: "text",
+    },
+  },
   args: {
     side: "top",
     children: "Add to library",
@@ -24,19 +34,17 @@ const meta: Meta<typeof TooltipContent> = {
   parameters: {
     layout: "centered",
   },
-  decorators: [
-    (Story) => (
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger>
-            <Plus className="h-4 w-4" />
-            <span className="sr-only">Add</span>
-          </TooltipTrigger>
-          <Story />
-        </Tooltip>
-      </TooltipProvider>
-    ),
-  ],
+  render: (args) => (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          <Plus className="h-4 w-4" />
+          <span className="sr-only">Add</span>
+        </TooltipTrigger>
+        <TooltipContent {...args} />
+      </Tooltip>
+    </TooltipProvider>
+  ),
 } satisfies Meta<typeof TooltipContent>
 
 export default meta

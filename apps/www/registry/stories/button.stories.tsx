@@ -10,7 +10,11 @@ const meta = {
   title: "ui/Button",
   component: Button,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    children: {
+      control: "text",
+    },
+  },
   parameters: {
     layout: "centered",
   },

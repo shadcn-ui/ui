@@ -14,6 +14,7 @@ const meta = {
     className: "w-96",
     type: "email",
     placeholder: "Email",
+    disabled: false,
   },
   parameters: {
     layout: "centered",

@@ -14,21 +14,14 @@ const meta = {
   title: "ui/Popover",
   component: Popover,
   tags: ["autodocs"],
-  argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-  args: {
-    children: (
-      <>
-        <PopoverTrigger>Open</PopoverTrigger>
-        <PopoverContent>Place content for the popover here.</PopoverContent>
-      </>
-    ),
-  },
+  argTypes: {},
+
+  render: (args) => (
+    <Popover {...args}>
+      <PopoverTrigger>Open</PopoverTrigger>
+      <PopoverContent>Place content for the popover here.</PopoverContent>
+    </Popover>
+  ),
   parameters: {
     layout: "centered",
   },

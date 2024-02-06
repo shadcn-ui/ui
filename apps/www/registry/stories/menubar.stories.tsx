@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import {
   Menubar,
-  MenubarCheckboxItem,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
@@ -24,32 +23,25 @@ const meta = {
   title: "ui/Menubar",
   component: Menubar,
   tags: ["autodocs"],
-  argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-  args: {
-    children: (
-      <>
-        <MenubarMenu>
-          <MenubarTrigger>File</MenubarTrigger>
-          <MenubarContent>
-            <MenubarItem>
-              New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-            </MenubarItem>
-            <MenubarItem>New Window</MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem>Share</MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem>Print</MenubarItem>
-          </MenubarContent>
-        </MenubarMenu>
-      </>
-    ),
-  },
+  argTypes: {},
+
+  render: (args) => (
+    <Menubar {...args}>
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>
+            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>New Window</MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>Share</MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>Print</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  ),
   parameters: {
     layout: "centered",
   },
@@ -68,46 +60,42 @@ export const Default: Story = {}
  * A menubar with a submenu.
  */
 export const WithSubmenu: Story = {
-  args: {
-    children: (
-      <>
-        <MenubarMenu>
-          <MenubarTrigger>Actions</MenubarTrigger>
-          <MenubarContent>
-            <MenubarItem>Download</MenubarItem>
-            <MenubarSub>
-              <MenubarSubTrigger>Share</MenubarSubTrigger>
-              <MenubarSubContent>
-                <MenubarItem>Email link</MenubarItem>
-                <MenubarItem>Messages</MenubarItem>
-                <MenubarItem>Notes</MenubarItem>
-              </MenubarSubContent>
-            </MenubarSub>
-          </MenubarContent>
-        </MenubarMenu>
-      </>
-    ),
-  },
+  render: (args) => (
+    <Menubar {...args}>
+      <MenubarMenu>
+        <MenubarTrigger>Actions</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>Download</MenubarItem>
+          <MenubarSub>
+            <MenubarSubTrigger>Share</MenubarSubTrigger>
+            <MenubarSubContent>
+              <MenubarItem>Email link</MenubarItem>
+              <MenubarItem>Messages</MenubarItem>
+              <MenubarItem>Notes</MenubarItem>
+            </MenubarSubContent>
+          </MenubarSub>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  ),
 }
 
 /**
  * A menubar with radio items.
  */
 export const WithRadioItems: Story = {
-  args: {
-    children: (
-      <>
-        <MenubarMenu>
-          <MenubarTrigger>View</MenubarTrigger>
-          <MenubarContent>
-            <MenubarRadioGroup value="md">
-              <MenubarRadioItem value="sm">Small</MenubarRadioItem>
-              <MenubarRadioItem value="md">Medium</MenubarRadioItem>
-              <MenubarRadioItem value="lg">Large</MenubarRadioItem>
-            </MenubarRadioGroup>
-          </MenubarContent>
-        </MenubarMenu>
-      </>
-    ),
-  },
+  render: (args) => (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarContent>
+          <MenubarRadioGroup value="md">
+            <MenubarRadioItem value="sm">Small</MenubarRadioItem>
+            <MenubarRadioItem value="md">Medium</MenubarRadioItem>
+            <MenubarRadioItem value="lg">Large</MenubarRadioItem>
+          </MenubarRadioGroup>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  ),
 }

@@ -15,12 +15,22 @@ const meta = {
   component: Alert,
   tags: ["autodocs"],
   argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
+    variant: {
+      options: ["default", "destructive"],
+      control: { type: "radio" },
     },
   },
+  args: {
+    variant: "default",
+  },
+  render: (args) => (
+    <Alert {...args}>
+      <AlertTitle>Heads up!</AlertTitle>
+      <AlertDescription>
+        You can add components to your app using the cli.
+      </AlertDescription>
+    </Alert>
+  ),
 } satisfies Meta<typeof Alert>
 
 export default meta
@@ -29,35 +39,22 @@ type Story = StoryObj<typeof meta>
 /**
  * The default form of the alert.
  */
-export const Default: Story = {
-  args: {
-    variant: "default",
-    children: (
-      <>
-        <Terminal className="h-4 w-4" />
-        <AlertTitle>Heads up!</AlertTitle>
-        <AlertDescription>
-          You can add components to your app using the cli.
-        </AlertDescription>
-      </>
-    ),
-  },
-}
+export const Default: Story = {}
 
 /**
  * Use the `destructive` alert to indicate a destructive action.
  */
 export const Destructive: Story = {
+  render: (args) => (
+    <Alert {...args}>
+      <AlertCircle className="h-4 w-4" />
+      <AlertTitle>Error</AlertTitle>
+      <AlertDescription>
+        Your session has expired. Please log in again.
+      </AlertDescription>
+    </Alert>
+  ),
   args: {
     variant: "destructive",
-    children: (
-      <>
-        <AlertCircle className="h-4 w-4" />
-        <AlertTitle>Error</AlertTitle>
-        <AlertDescription>
-          Your session has expired. Please log in again.
-        </AlertDescription>
-      </>
-    ),
   },
 }

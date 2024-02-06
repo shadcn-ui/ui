@@ -12,6 +12,7 @@ const meta = {
   argTypes: {},
   args: {
     placeholder: "Type your message here.",
+    disabled: false,
   },
 } satisfies Meta<typeof Textarea>
 

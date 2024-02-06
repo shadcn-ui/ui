@@ -13,21 +13,13 @@ const meta = {
   title: "ui/Avatar",
   component: Avatar,
   tags: ["autodocs"],
-  argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-  args: {
-    children: (
-      <>
-        <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback>CN</AvatarFallback>
-      </>
-    ),
-  },
+  argTypes: {},
+  render: (args) => (
+    <Avatar {...args}>
+      <AvatarImage src="https://github.com/shadcn.png" />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
+  ),
   parameters: {
     layout: "centered",
   },

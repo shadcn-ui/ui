@@ -17,67 +17,53 @@ const meta = {
   title: "ui/NavigationMenu",
   component: NavigationMenu,
   tags: ["autodocs"],
-  argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-  args: {
-    children: (
-      <>
+  argTypes: {},
+  render: (args) => (
+    <NavigationMenu {...args}>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            Overview
+          </NavigationMenuLink>
+        </NavigationMenuItem>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Overview
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className={navigationMenuTriggerStyle()}>
-                Documentation
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-96 p-2">
-                  <li>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      API Reference
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      Getting Started
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      Guides
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              className={navigationMenuTriggerStyle()}
-              href="https:www.google.com"
-              target="_blank"
-            >
-              External
-            </NavigationMenuLink>
+            <NavigationMenuTrigger className={navigationMenuTriggerStyle()}>
+              Documentation
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid w-96 p-2">
+                <li>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    API Reference
+                  </NavigationMenuLink>
+                </li>
+                <li>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Getting Started
+                  </NavigationMenuLink>
+                </li>
+                <li>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Guides
+                  </NavigationMenuLink>
+                </li>
+              </ul>
+            </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>
-      </>
-    ),
-  },
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            className={navigationMenuTriggerStyle()}
+            href="https:www.google.com"
+            target="_blank"
+          >
+            External
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  ),
   parameters: {
     layout: "centered",
   },

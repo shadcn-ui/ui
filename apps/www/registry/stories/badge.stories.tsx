@@ -9,7 +9,11 @@ const meta = {
   title: "ui/Badge",
   component: Badge,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    children: {
+      control: "text",
+    },
+  },
   args: {
     children: "Badge",
   },

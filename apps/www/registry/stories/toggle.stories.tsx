@@ -10,13 +10,17 @@ const meta: Meta<typeof Toggle> = {
   title: "ui/Toggle",
   component: Toggle,
   tags: ["autodocs"],
-  argTypes: {},
-  parameters: {
-    layout: "centered",
+  argTypes: {
+    children: {
+      control: { disable: true },
+    },
   },
   args: {
     children: <Bold className="h-4 w-4" />,
     "aria-label": "Toggle bold",
+  },
+  parameters: {
+    layout: "centered",
   },
 }
 export default meta
@@ -44,15 +48,13 @@ export const Outline: Story = {
  * Use the text element to add a label to the toggle.
  */
 export const WithText: Story = {
-  args: {
-    children: (
-      <>
-        <Italic className="mr-2 h-4 w-4" />
-        Italic
-      </>
-    ),
-    "aria-label": "Toggle italic",
-  },
+  render: (args) => (
+    <Toggle {...args}>
+      <Italic className="mr-2 h-4 w-4" />
+      Italic
+    </Toggle>
+  ),
+  args: { ...Outline.args },
 }
 
 /**

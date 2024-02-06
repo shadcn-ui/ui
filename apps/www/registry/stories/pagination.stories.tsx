@@ -17,15 +17,9 @@ const meta = {
   title: "ui/Pagination",
   component: Pagination,
   tags: ["autodocs"],
-  argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-  args: {
-    children: (
+  argTypes: {},
+  render: (args) => (
+    <Pagination {...args}>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious href="#" />
@@ -46,8 +40,8 @@ const meta = {
           <PaginationNext href="#" />
         </PaginationItem>
       </PaginationContent>
-    ),
-  },
+    </Pagination>
+  ),
   parameters: {
     layout: "centered",
   },

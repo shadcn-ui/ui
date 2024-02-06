@@ -13,23 +13,16 @@ const meta = {
   title: "ui/HoverCard",
   component: HoverCard,
   tags: ["autodocs"],
-  argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-  args: {
-    children: (
-      <>
-        <HoverCardTrigger>Hover</HoverCardTrigger>
-        <HoverCardContent>
-          The React Framework - created and maintained by @vercel.
-        </HoverCardContent>
-      </>
-    ),
-  },
+  argTypes: {},
+  args: {},
+  render: (args) => (
+    <HoverCard {...args}>
+      <HoverCardTrigger>Hover</HoverCardTrigger>
+      <HoverCardContent>
+        The React Framework - created and maintained by @vercel.
+      </HoverCardContent>
+    </HoverCard>
+  ),
   parameters: {
     layout: "centered",
   },

@@ -14,28 +14,30 @@ const meta = {
   component: ToggleGroup,
   tags: ["autodocs"],
   argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
+    type: {
+      options: ["multiple", "single"],
+      control: { type: "radio" },
     },
   },
   args: {
+    variant: "default",
+    size: "default",
     type: "multiple",
-    children: (
-      <>
-        <ToggleGroupItem value="bold" aria-label="Toggle bold">
-          <Bold className="h-4 w-4" />
-        </ToggleGroupItem>
-        <ToggleGroupItem value="italic" aria-label="Toggle italic">
-          <Italic className="h-4 w-4" />
-        </ToggleGroupItem>
-        <ToggleGroupItem value="underline" aria-label="Toggle underline">
-          <Underline className="h-4 w-4" />
-        </ToggleGroupItem>
-      </>
-    ),
+    disabled: false,
   },
+  render: (args) => (
+    <ToggleGroup {...args}>
+      <ToggleGroupItem value="bold" aria-label="Toggle bold">
+        <Bold className="h-4 w-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic" aria-label="Toggle italic">
+        <Italic className="h-4 w-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="underline" aria-label="Toggle underline">
+        <Underline className="h-4 w-4" />
+      </ToggleGroupItem>
+    </ToggleGroup>
+  ),
   parameters: {
     layout: "centered",
   },

@@ -19,35 +19,27 @@ const meta = {
   title: "ui/Dialog",
   component: Dialog,
   tags: ["autodocs"],
-  argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-  args: {
-    children: (
-      <>
-        <DialogTrigger>Open</DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Are you absolutely sure?</DialogTitle>
-            <DialogDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter className="gap-4">
-            <button className="hover:underline">Cancel</button>
-            <button className="rounded bg-primary px-4 py-2 text-primary-foreground">
-              Continue
-            </button>
-          </DialogFooter>
-        </DialogContent>
-      </>
-    ),
-  },
+  argTypes: {},
+  render: (args) => (
+    <Dialog {...args}>
+      <DialogTrigger>Open</DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter className="gap-4">
+          <button className="hover:underline">Cancel</button>
+          <button className="rounded bg-primary px-4 py-2 text-primary-foreground">
+            Continue
+          </button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  ),
   parameters: {
     layout: "centered",
   },

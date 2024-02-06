@@ -6,26 +6,31 @@ import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
 /**
  * Displays content within a desired ratio.
  */
-const meta = {
+const meta: Meta<typeof AspectRatio> = {
   title: "ui/AspectRatio",
   component: AspectRatio,
   tags: ["autodocs"],
   argTypes: {},
   render: (args) => (
-    <div className="w-1/2">
-      <AspectRatio {...args} className="bg-slate-50 dark:bg-slate-800">
-        <Image
-          src="https://images.unsplash.com/photo-1576075796033-848c2a5f3696?w=800&dpr=2&q=80"
-          alt="Photo by Alvaro Pinot"
-          fill
-          className="rounded-md object-cover"
-        />
-      </AspectRatio>
-    </div>
+    <AspectRatio {...args} className="bg-slate-50 dark:bg-slate-800">
+      <Image
+        src="https://images.unsplash.com/photo-1576075796033-848c2a5f3696?w=800&dpr=2&q=80"
+        alt="Photo by Alvaro Pinot"
+        fill
+        className="rounded-md object-cover"
+      />
+    </AspectRatio>
   ),
   parameters: {
     layout: "centered",
   },
+  decorators: [
+    (Story) => (
+      <div className="w-1/2">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof AspectRatio>
 
 export default meta

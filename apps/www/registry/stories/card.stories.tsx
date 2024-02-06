@@ -32,38 +32,32 @@ const meta = {
   title: "ui/Card",
   component: Card,
   tags: ["autodocs"],
-  argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  argTypes: {},
   args: {
     className: "w-96",
-    children: (
-      <>
-        <CardHeader>
-          <CardTitle>Notifications</CardTitle>
-          <CardDescription>You have 3 unread messages.</CardDescription>
-        </CardHeader>
-        <CardContent className="grid gap-4">
-          {notifications.map((notification, index) => (
-            <div key={index} className="flex items-center gap-4">
-              <BellRing className="size-6" />
-              <div>
-                <p>{notification.title}</p>
-                <p className="text-foreground/50">{notification.description}</p>
-              </div>
-            </div>
-          ))}
-        </CardContent>
-        <CardFooter>
-          <button className="hover:underline">Close</button>
-        </CardFooter>
-      </>
-    ),
   },
+  render: (args) => (
+    <Card {...args}>
+      <CardHeader>
+        <CardTitle>Notifications</CardTitle>
+        <CardDescription>You have 3 unread messages.</CardDescription>
+      </CardHeader>
+      <CardContent className="grid gap-4">
+        {notifications.map((notification, index) => (
+          <div key={index} className="flex items-center gap-4">
+            <BellRing className="size-6" />
+            <div>
+              <p>{notification.title}</p>
+              <p className="text-foreground/50">{notification.description}</p>
+            </div>
+          </div>
+        ))}
+      </CardContent>
+      <CardFooter>
+        <button className="hover:underline">Close</button>
+      </CardFooter>
+    </Card>
+  ),
   parameters: {
     layout: "centered",
   },

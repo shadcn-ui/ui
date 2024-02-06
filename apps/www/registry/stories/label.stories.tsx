@@ -9,7 +9,11 @@ const meta = {
   title: "ui/Label",
   component: Label,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    children: {
+      control: { type: "text" },
+    },
+  },
   args: {
     children: "Your email address",
     htmlFor: "email",
