@@ -153,6 +153,13 @@ const ui: Registry = [
     files: ["ui/pagination.tsx"],
   },
   {
+    name: "phone-input",
+    type: "components:ui",
+    dependencies: ["react-phone-number-input"],
+    registryDependencies: ["button", "command", "input", "popover"],
+    files: ["ui/phone-input.tsx"],
+  },
+  {
     name: "popover",
     type: "components:ui",
     dependencies: ["@radix-ui/react-popover"],
@@ -678,6 +685,42 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["pagination"],
     files: ["example/pagination-demo.tsx"],
+  },
+  {
+    name: "phone-input-demo",
+    type: "components:example",
+    registryDependencies: ["phone-input"],
+    files: ["example/phone-input-demo.tsx"],
+  },
+  {
+    name: "phone-input-default",
+    type: "components:example",
+    registryDependencies: ["phone-input"],
+    files: ["example/phone-input-default.tsx"],
+  },
+  {
+    name: "phone-input-international",
+    type: "components:example",
+    registryDependencies: ["phone-input"],
+    files: ["example/phone-input-international.tsx"],
+  },
+  {
+    name: "phone-input-national",
+    type: "components:example",
+    registryDependencies: ["phone-input"],
+    files: ["example/phone-input-national.tsx"],
+  },
+  {
+    name: "phone-input-initial",
+    type: "components:example",
+    registryDependencies: ["phone-input"],
+    files: ["example/phone-input-initial.tsx"],
+  },
+  {
+    name: "phone-input-form",
+    type: "components:example",
+    registryDependencies: ["phone-input", "form"],
+    files: ["example/phone-input-form.tsx"],
   },
   {
     name: "popover-demo",

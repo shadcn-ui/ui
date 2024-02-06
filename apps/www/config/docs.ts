@@ -231,6 +231,12 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
+          title: "Phone Input",
+          href: "/docs/components/phone-input",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Popover",
           href: "/docs/components/popover",
           items: [],
