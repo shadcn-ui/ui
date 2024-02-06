@@ -13,7 +13,7 @@ import { UserNav } from "@/app/products/components/user-nav"
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex h-14  ml-1 justify-between">
+      <div className="ml-1  flex h-14 justify-between">
         <MainNav />
         <MobileNav />
         <div className="flex items-center pr-4">
