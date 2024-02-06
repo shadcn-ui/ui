@@ -715,12 +715,6 @@ const example: Registry = [
     files: ["example/otp-input-on-paste.tsx"],
   },
   {
-    name: "otp-input-autofocus",
-    type: "components:example",
-    registryDependencies: ["otp-input"],
-    files: ["example/otp-input-autofocus.tsx"],
-  },
-  {
     name: "otp-input-form",
     type: "components:example",
     registryDependencies: ["otp-input"],

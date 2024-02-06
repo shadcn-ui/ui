@@ -92,7 +92,17 @@ You can detect the `onPaste` event by passing the `onPaste` prop.
 
 You can set the `autoFocus` prop to `true` to automatically focus the first input.
 
-<ComponentPreview name="otp-input-autofocus" />
+<Callout>
+For practical purposes, we did not generate a live example for this case to avoid scrolling the page to this point because of the `autoFocus`
+</Callout>
+
+```tsx
+import { OTPInput } from "@/components/ui/otp-input";
+
+export default function OtpInputDemo() {
+  return <OTPInput autoFocus />
+}
+```
 
 ### With Form
 

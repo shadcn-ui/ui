@@ -824,13 +824,6 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/otp-input-on-paste")),
       files: ["registry/default/example/otp-input-on-paste.tsx"],
     },
-    "otp-input-autofocus": {
-      name: "otp-input-autofocus",
-      type: "components:example",
-      registryDependencies: ["otp-input"],
-      component: React.lazy(() => import("@/registry/default/example/otp-input-autofocus")),
-      files: ["registry/default/example/otp-input-autofocus.tsx"],
-    },
     "otp-input-form": {
       name: "otp-input-form",
       type: "components:example",
@@ -2112,13 +2105,6 @@ export const Index: Record<string, any> = {
       registryDependencies: ["otp-input"],
       component: React.lazy(() => import("@/registry/new-york/example/otp-input-on-paste")),
       files: ["registry/new-york/example/otp-input-on-paste.tsx"],
-    },
-    "otp-input-autofocus": {
-      name: "otp-input-autofocus",
-      type: "components:example",
-      registryDependencies: ["otp-input"],
-      component: React.lazy(() => import("@/registry/new-york/example/otp-input-autofocus")),
-      files: ["registry/new-york/example/otp-input-autofocus.tsx"],
     },
     "otp-input-form": {
       name: "otp-input-form",
