@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Button } from "@/registry/default/ui/button"
 import {
   Dialog,
   DialogContent,

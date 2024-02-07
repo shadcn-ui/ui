@@ -142,6 +142,7 @@ export const Large: Story = {
 export const Icon: Story = {
   args: {
     ...Secondary.args,
+    size: "icon",
     children: <Mail />,
   },
 }
