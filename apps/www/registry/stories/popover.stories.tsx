@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Settings2 } from "lucide-react"
 
 import {
   Popover,

@@ -1,13 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { CommandSeparator } from "cmdk"
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react"
 
 import {
   Command,
@@ -16,7 +8,6 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandShortcut,
 } from "@/registry/default/ui/command"
 
 /**

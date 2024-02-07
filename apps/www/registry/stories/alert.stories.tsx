@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { AlertCircle, Terminal } from "lucide-react"
+import { AlertCircle } from "lucide-react"
 
 import {
   Alert,
