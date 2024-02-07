@@ -21,9 +21,6 @@ const meta: Meta<typeof AspectRatio> = {
       />
     </AspectRatio>
   ),
-  parameters: {
-    layout: "centered",
-  },
   decorators: [
     (Story) => (
       <div className="w-1/2">
