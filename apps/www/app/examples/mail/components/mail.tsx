@@ -19,7 +19,7 @@ import { AccountSwitcher } from "@/app/examples/mail/components/account-switcher
 import { MailDisplay } from "@/app/examples/mail/components/mail-display"
 import { MailList } from "@/app/examples/mail/components/mail-list"
 import { Nav } from "@/app/examples/mail/components/nav"
-import { Mail } from "@/app/examples/mail/data"
+import type { Mail } from "@/app/examples/mail/data"
 import { useMail } from "@/app/examples/mail/use-mail"
 import { cn } from "@/lib/utils"
 import { Separator } from "@/registry/new-york/ui/separator"
