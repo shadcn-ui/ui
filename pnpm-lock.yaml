@@ -66,8 +66,8 @@ importers:
         specifier: ^7.32.2
         version: 7.32.2(eslint@8.41.0)
       eslint-plugin-tailwindcss:
-        specifier: ^3.14.0
-        version: 3.14.0(tailwindcss@3.4.0)
+        specifier: ^3.14.2
+        version: 3.14.2(tailwindcss@3.4.0)
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -6361,8 +6361,8 @@ packages:
       tailwindcss: 3.3.2(ts-node@10.9.1)
     dev: true
 
-  /eslint-plugin-tailwindcss@3.14.0(tailwindcss@3.4.0):
-    resolution: {integrity: sha512-SGy4JmZoP5m1bXCbcsPfQg1/axOdriJf9L22HghNMyDTM5mybg2XEkaMwgax4aR13zZJRRB1nWmkuYUn+SV6/Q==}
+  /eslint-plugin-tailwindcss@3.14.2(tailwindcss@3.4.0):
+    resolution: {integrity: sha512-fNzdf4poZP2yQC0xC2prQxMuArMSb5mnellLQvwb9HC3NcLzxs+0IVKWIg1BqUqyui0c+bbjMmhWcKUWK67SLQ==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       tailwindcss: ^3.4.0
@@ -11517,7 +11517,7 @@ packages:
     dependencies:
       '@types/node': 17.0.45
       esbuild: 0.17.19
-      postcss: 8.4.24
+      postcss: 8.4.31
       rollup: 3.23.0
     optionalDependencies:
       fsevents: 2.3.3
