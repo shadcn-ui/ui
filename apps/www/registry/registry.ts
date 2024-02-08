@@ -60,7 +60,6 @@ const ui: Registry = [
     files: ["ui/carousel.tsx"],
     registryDependencies: ["button"],
     dependencies: ["embla-carousel-react"],
-    devDependencies: ["embla-carousel"],
   },
   {
     name: "checkbox",
@@ -781,6 +780,12 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["skeleton"],
     files: ["example/skeleton-demo.tsx"],
+  },
+  {
+    name: "skeleton-card",
+    type: "components:example",
+    registryDependencies: ["skeleton"],
+    files: ["example/skeleton-card.tsx"],
   },
   {
     name: "slider-demo",
