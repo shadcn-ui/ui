@@ -2,8 +2,11 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import {
   Menubar,
+  MenubarCheckboxItem,
   MenubarContent,
+  MenubarGroup,
   MenubarItem,
+  MenubarLabel,
   MenubarMenu,
   MenubarRadioGroup,
   MenubarRadioItem,
@@ -35,7 +38,7 @@ const meta = {
           </MenubarItem>
           <MenubarItem>New Window</MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>Share</MenubarItem>
+          <MenubarItem disabled>Share</MenubarItem>
           <MenubarSeparator />
           <MenubarItem>Print</MenubarItem>
         </MenubarContent>
@@ -85,15 +88,37 @@ export const WithSubmenu: Story = {
  */
 export const WithRadioItems: Story = {
   render: (args) => (
-    <Menubar>
+    <Menubar {...args}>
       <MenubarMenu>
         <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent>
+          <MenubarLabel inset>Device Size</MenubarLabel>
           <MenubarRadioGroup value="md">
             <MenubarRadioItem value="sm">Small</MenubarRadioItem>
             <MenubarRadioItem value="md">Medium</MenubarRadioItem>
             <MenubarRadioItem value="lg">Large</MenubarRadioItem>
           </MenubarRadioGroup>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  ),
+}
+
+/**
+ * A menubar with checkbox items.
+ */
+export const WithCheckboxItems: Story = {
+  render: (args) => (
+    <Menubar {...args}>
+      <MenubarMenu>
+        <MenubarTrigger>Filters</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>Show All</MenubarItem>
+          <MenubarGroup>
+            <MenubarCheckboxItem checked>Unread</MenubarCheckboxItem>
+            <MenubarCheckboxItem checked>Important</MenubarCheckboxItem>
+            <MenubarCheckboxItem>Flagged</MenubarCheckboxItem>
+          </MenubarGroup>
         </MenubarContent>
       </MenubarMenu>
     </Menubar>

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -32,9 +33,11 @@ const meta = {
         </DialogHeader>
         <DialogFooter className="gap-4">
           <button className="hover:underline">Cancel</button>
-          <button className="rounded bg-primary px-4 py-2 text-primary-foreground">
-            Continue
-          </button>
+          <DialogClose>
+            <button className="rounded bg-primary px-4 py-2 text-primary-foreground">
+              Continue
+            </button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
