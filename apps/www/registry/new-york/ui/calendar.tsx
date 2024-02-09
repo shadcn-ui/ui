@@ -2,10 +2,18 @@
 
 import * as React from "react"
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
-import { DayPicker } from "react-day-picker"
+import { DayPicker, type DropdownProps } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/registry/default/ui/button"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york/ui/select"
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 
@@ -57,9 +65,60 @@ function Calendar({
         day_range_middle:
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
+        vhidden: "hidden",
+        caption_dropdowns: "flex gap-1 px-8",
+        dropdown: "flex space-x-1",
+        dropdown_year: "w-16",
+        dropdown_month: "w-16",
         ...classNames,
       }}
       components={{
+        Dropdown: ({
+          onChange,
+          value,
+          caption,
+          children,
+          "aria-label": ariaLabel,
+          ...props
+        }: DropdownProps) => {
+          const options = React.Children.toArray(
+            children
+          ) as React.ReactElement<React.HTMLProps<HTMLOptionElement>>[]
+
+          const handleChange = (value: string) => {
+            const changeEvent = {
+              target: { value },
+            } as React.ChangeEvent<HTMLSelectElement>
+            onChange?.(changeEvent)
+          }
+
+          return (
+            <Select
+              value={value?.toString()}
+              onValueChange={handleChange}
+              {...props}
+            >
+              <SelectTrigger
+                className="h-7 text-xs text-foreground/70 pl-2 pr-0"
+                aria-label={ariaLabel}
+              >
+                <SelectValue placeholder={caption} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {options.map((option, id: number) => (
+                    <SelectItem
+                      key={option.key}
+                      value={option.props.value?.toString() ?? ""}
+                    >
+                      {option.props.children}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          )
+        },
         IconLeft: ({ ...props }) => <ChevronLeftIcon className="h-4 w-4" />,
         IconRight: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
       }}

@@ -73,7 +73,8 @@
       "date-fns"
     ],
     "registryDependencies": [
-      "button"
+      "button",
+      "select"
     ],
     "files": [
       "ui/calendar.tsx"

@@ -57,7 +57,7 @@ export const Index: Record<string, any> = {
     "calendar": {
       name: "calendar",
       type: "components:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button","select"],
       component: React.lazy(() => import("@/registry/default/ui/calendar")),
       files: ["registry/default/ui/calendar.tsx"],
     },
@@ -648,6 +648,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["button","calendar","popover"],
       component: React.lazy(() => import("@/registry/default/example/date-picker-with-range")),
       files: ["registry/default/example/date-picker-with-range.tsx"],
+    },
+    "date-picker-with-dropdown": {
+      name: "date-picker-with-dropdown",
+      type: "components:example",
+      registryDependencies: ["button","calendar","popover"],
+      component: React.lazy(() => import("@/registry/default/example/date-picker-with-dropdown")),
+      files: ["registry/default/example/date-picker-with-dropdown.tsx"],
     },
     "dialog-demo": {
       name: "dialog-demo",
@@ -1283,7 +1290,7 @@ export const Index: Record<string, any> = {
     "calendar": {
       name: "calendar",
       type: "components:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button","select"],
       component: React.lazy(() => import("@/registry/new-york/ui/calendar")),
       files: ["registry/new-york/ui/calendar.tsx"],
     },
@@ -1874,6 +1881,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["button","calendar","popover"],
       component: React.lazy(() => import("@/registry/new-york/example/date-picker-with-range")),
       files: ["registry/new-york/example/date-picker-with-range.tsx"],
+    },
+    "date-picker-with-dropdown": {
+      name: "date-picker-with-dropdown",
+      type: "components:example",
+      registryDependencies: ["button","calendar","popover"],
+      component: React.lazy(() => import("@/registry/new-york/example/date-picker-with-dropdown")),
+      files: ["registry/new-york/example/date-picker-with-dropdown.tsx"],
     },
     "dialog-demo": {
       name: "dialog-demo",

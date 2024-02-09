@@ -46,7 +46,7 @@ const ui: Registry = [
     name: "calendar",
     type: "components:ui",
     dependencies: ["react-day-picker", "date-fns"],
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "select"],
     files: ["ui/calendar.tsx"],
   },
   {
@@ -563,6 +563,13 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["button", "calendar", "popover"],
     files: ["example/date-picker-with-range.tsx"],
+    dependencies: ["date-fns"],
+  },
+  {
+    name: "date-picker-with-dropdown",
+    type: "components:example",
+    registryDependencies: ["button", "calendar", "popover"],
+    files: ["example/date-picker-with-dropdown.tsx"],
     dependencies: ["date-fns"],
   },
   {
