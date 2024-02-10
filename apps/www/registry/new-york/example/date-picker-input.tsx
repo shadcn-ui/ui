@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { SelectSingleEventHandler } from "react-day-picker"
 import { CalendarIcon } from "@radix-ui/react-icons"
 import { format, isValid, parse } from "date-fns"
 
@@ -13,7 +14,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
-import { SelectSingleEventHandler } from "react-day-picker"
 
 
 export default function DatePickerInput() {

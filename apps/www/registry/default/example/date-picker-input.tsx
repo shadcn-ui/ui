@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { SelectSingleEventHandler } from "react-day-picker"
 import { format, isValid, parse } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
 
@@ -12,7 +13,6 @@ import {
   PopoverTrigger,
 } from "@/registry/default/ui/popover"
 import { Input } from "@/registry/default/ui/input"
-import { SelectSingleEventHandler } from "react-day-picker"
 import { cn } from "@/lib/utils"
 
 export default function DatePickerInput() {
