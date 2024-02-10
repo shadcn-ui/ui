@@ -33,6 +33,10 @@
     "tsx": {
       "type": "boolean"
     },
+    "case": {
+      "type": "string",
+      "enum": ["kebab", "pascal", "camel", "snake"]
+    },
     "aliases": {
       "type": "object",
       "properties": {

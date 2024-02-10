@@ -15,6 +15,7 @@ import { getProjectConfig, preFlight } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import {
+  getComponentFileCaseConventions,
   getRegistryBaseColor,
   getRegistryBaseColors,
   getRegistryStyles,
@@ -102,6 +103,7 @@ export async function promptForConfig(
 
   const styles = await getRegistryStyles()
   const baseColors = await getRegistryBaseColors()
+  const caseConventions = getComponentFileCaseConventions()
 
   const options = await prompts([
     {
@@ -171,6 +173,17 @@ export async function promptForConfig(
       initial: defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS,
     },
     {
+      type: "select",
+      name: "case",
+      message: `Which naming convention you like to use for ${highlight(
+        "component file names"
+      )}?`,
+      choices: caseConventions.map((cc) => ({
+        title: cc.label,
+        value: cc.name,
+      })),
+    },
+    {
       type: "text",
       name: "utils",
       message: `Configure the import alias for ${highlight("utils")}:`,
@@ -198,6 +211,7 @@ export async function promptForConfig(
     },
     rsc: options.rsc,
     tsx: options.typescript,
+    case: options.case,
     aliases: {
       utils: options.utils,
       components: options.components,

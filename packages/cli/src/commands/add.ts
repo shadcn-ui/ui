@@ -1,10 +1,12 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
+import { formatFileName } from "@/src/utils/format-file-name"
 import { getConfig } from "@/src/utils/get-config"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import {
+  CASE_CONVENTION,
   fetchTree,
   getItemTargetPath,
   getRegistryBaseColor,
@@ -131,6 +133,18 @@ export const add = new Command()
         if (!existsSync(targetDir)) {
           await fs.mkdir(targetDir, { recursive: true })
         }
+
+        item.files = item.files.map((file) => {
+          let filePath = file.name
+          if (config?.case) {
+            filePath = formatFileName(file.name, config.case as CASE_CONVENTION)
+          }
+
+          return {
+            name: filePath,
+            content: file.content,
+          }
+        })
 
         const existingComponent = item.files.filter((file) =>
           existsSync(path.resolve(targetDir, file.name))

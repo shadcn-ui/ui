@@ -393,6 +393,15 @@ importers:
       https-proxy-agent:
         specifier: ^6.2.0
         version: 6.2.0
+      lodash.camelcase:
+        specifier: 4.3.0
+        version: 4.3.0
+      lodash.kebabcase:
+        specifier: 4.1.1
+        version: 4.1.1
+      lodash.snakecase:
+        specifier: 4.1.1
+        version: 4.1.1
       lodash.template:
         specifier: ^4.5.0
         version: 4.5.0
@@ -427,6 +436,15 @@ importers:
       '@types/fs-extra':
         specifier: ^11.0.1
         version: 11.0.1
+      '@types/lodash.camelcase':
+        specifier: 4.3.9
+        version: 4.3.9
+      '@types/lodash.kebabcase':
+        specifier: 4.1.9
+        version: 4.1.9
+      '@types/lodash.snakecase':
+        specifier: 4.1.9
+        version: 4.1.9
       '@types/lodash.template':
         specifier: ^4.5.1
         version: 4.5.1
@@ -4499,6 +4517,24 @@ packages:
     dependencies:
       '@types/node': 17.0.45
     dev: false
+
+  /@types/lodash.camelcase@4.3.9:
+    resolution: {integrity: sha512-ys9/hGBfsKxzmFI8hckII40V0ASQ83UM2pxfQRghHAwekhH4/jWtjz/3/9YDy7ZpUd/H0k2STSqmPR28dnj7Zg==}
+    dependencies:
+      '@types/lodash': 4.14.195
+    dev: true
+
+  /@types/lodash.kebabcase@4.1.9:
+    resolution: {integrity: sha512-kPrrmcVOhSsjAVRovN0lRfrbuidfg0wYsrQa5IYuoQO1fpHHGSme66oyiYA/5eQPVl8Z95OA3HG0+d2SvYC85w==}
+    dependencies:
+      '@types/lodash': 4.14.195
+    dev: true
+
+  /@types/lodash.snakecase@4.1.9:
+    resolution: {integrity: sha512-emBZJUiNlo+QPXr1junMKXwzHJK9zbFvTVdyAoorFcm1YRsbzkZCYPTVMM9AW+dlnA6utG7vpfvOs8alxv/TMw==}
+    dependencies:
+      '@types/lodash': 4.14.195
+    dev: true
 
   /@types/lodash.template@4.5.1:
     resolution: {integrity: sha512-0y71S2dGgmwdkSsyW95JBp8HSZchgKCsjr6F0lsT3eSMtaT3Nn9rcMHU1U4UKu6XjQT3YC6/PNwgFI7k9f+ltw==}

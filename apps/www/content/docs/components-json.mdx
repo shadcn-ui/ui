@@ -139,6 +139,24 @@ Setting this option to `false` allows components to be added as JavaScript with 
 }
 ```
 
+## case
+
+The naming convention used for your component file names.
+
+```json title="components.json"
+{
+  "case": "kebab" | "pascal" | "camel" | "snake"
+}
+```
+
+<Callout className="mt-6">
+  For example, if you set `case` to `pascal`, and add a component called `dropdown-menu`:
+  ```bash
+  npx shadcn-ui@latest add dropdown-menu
+  ```
+  the component will be added as `DropdownMenu.(tsx|jsx)` file.
+</Callout>
+
 ## aliases
 
 The CLI uses these values and the `paths` config from your `tsconfig.json` or `jsconfig.json` file to place generated components in the correct location.
