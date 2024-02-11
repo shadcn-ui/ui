@@ -117,4 +117,53 @@ import { Foo } from "bar"
       },
     })
   ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+    import { AlertDialog } from "@/registry/new-york/ui/alert-dialog"
+    import { Toaster } from "@/registry/new-york/ui/toaster"
+    import { useToast } from "@/registry/new-york/ui/use-toast"
+    `,
+      config: {
+        tsx: true,
+        case: "pascal",
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: false,
+        },
+        aliases: {
+          components: "@/components"
+        },
+      },
+    })
+  ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+      import {
+        DropdownMenu,
+        DropdownMenuContent,
+        DropdownMenuItem,
+        DropdownMenuLabel,
+        DropdownMenuSeparator,
+        DropdownMenuTrigger,
+      } from "@/registry/new-york/ui/dropdown-menu"
+    `,
+      config: {
+        tsx: true,
+        case: "snake",
+        tailwind: {
+          baseColor: "stone",
+          cssVariables: false,
+        },
+        aliases: {
+          components: "@/components"
+        },
+      },
+    })
+  ).toMatchSnapshot()
 })

@@ -4,7 +4,7 @@ import toKebabCase from "lodash.kebabcase"
 import toSnakeCase from "lodash.snakecase"
 
 
-export function formatFileName(
+export function transformFileName(
   fullFileName: string,
   caseConvention: CASE_CONVENTION
 ) {
@@ -31,7 +31,8 @@ export function formatFileName(
       break
     case CASE_CONVENTION.PASCAL:
       const camelCase = toCamelCase(fileName)
-      fileName = camelCase.charAt(0).toUpperCase() + camelCase.slice(1)
+      const isHook = fileName.startsWith('use-')
+      fileName = isHook ? camelCase : camelCase.charAt(0).toUpperCase() + camelCase.slice(1)
       break
     case CASE_CONVENTION.CAMEL:
       fileName = toCamelCase(fileName)

@@ -1,23 +1,31 @@
+import { transformFileName } from "@/src/utils/transformers/transform-file-name"
+import { DEFAULT_CASE } from "@/src/utils/get-config"
+import { CASE_CONVENTION } from "@/src/utils/registry"
 import { Transformer } from "@/src/utils/transformers"
 
 export const transformImport: Transformer = async ({ sourceFile, config }) => {
   const importDeclarations = sourceFile.getImportDeclarations()
 
   for (const importDeclaration of importDeclarations) {
-    const moduleSpecifier = importDeclaration.getModuleSpecifierValue()
+    let moduleSpecifier = importDeclaration.getModuleSpecifierValue()
 
     // Replace @/registry/[style] with the components alias.
     if (moduleSpecifier.startsWith("@/registry/")) {
       if (config.aliases.ui) {
-        importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(/^@\/registry\/[^/]+\/ui/, config.aliases.ui)
+        moduleSpecifier = moduleSpecifier.replace(
+          /^@\/registry\/[^/]+\/ui/,
+          config.aliases.ui
         )
       } else {
-        importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(
-            /^@\/registry\/[^/]+/,
-            config.aliases.components
-          )
+        moduleSpecifier = moduleSpecifier.replace(
+          /^@\/registry\/[^/]+/,
+          config.aliases.components
+        )
+      }
+
+      if (config.case !== DEFAULT_CASE) {
+        moduleSpecifier = moduleSpecifier.replace(/[^\/]+$/, (name) =>
+          transformFileName(name, config.case as CASE_CONVENTION)
         )
       }
     }
@@ -27,11 +35,14 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
       const namedImports = importDeclaration.getNamedImports()
       const cnImport = namedImports.find((i) => i.getName() === "cn")
       if (cnImport) {
-        importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(/^@\/lib\/utils/, config.aliases.utils)
+        moduleSpecifier = moduleSpecifier.replace(
+          /^@\/lib\/utils/,
+          config.aliases.utils
         )
       }
     }
+
+    importDeclaration.setModuleSpecifier(moduleSpecifier)
   }
 
   return sourceFile

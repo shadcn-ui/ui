@@ -1,9 +1,9 @@
 import {describe, expect, test} from 'vitest';
 
-import {formatFileName} from '../../src/utils/format-file-name';
+import {transformFileName} from '../../src/utils/transformers/transform-file-name';
 import {CASE_CONVENTION} from '../../src/utils/registry';
 
-describe('format file name', async () => {
+describe('format component file name', async () => {
   test.each([
     {
       input: {
@@ -35,7 +35,11 @@ describe('format file name', async () => {
     }
   ])(`formatFileName($input.filesName, $input.caseConvention) -> $output`, async ({input: {filesName, caseConvention}, output}) => {
     expect(
-      formatFileName(filesName, caseConvention)
-    ).toBe(output);
-  });
-});
+      transformFileName(filesName, caseConvention)
+    ).toBe(output)
+  })
+})
+
+test(`format hook file name w/ chosen the '${CASE_CONVENTION.PASCAL}' case`, async () => {
+  expect(transformFileName('ui/use-toast.ts', CASE_CONVENTION.PASCAL)).toBe('ui/useToast.ts')
+})

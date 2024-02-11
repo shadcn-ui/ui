@@ -58,3 +58,24 @@ import { Foo } from \\"bar\\"
     import { bar } from \\"@/lib/utils/bar\\"
     "
 `;
+
+exports[`transform import 6`] = `
+"import * as React from \\"react\\"
+    import { AlertDialog } from \\"@/components/ui/AlertDialog\\"
+    import { Toaster } from \\"@/components/ui/Toaster\\"
+    import { useToast } from \\"@/components/ui/useToast\\"
+    "
+`;
+
+exports[`transform import 7`] = `
+"import * as React from \\"react\\"
+      import {
+        DropdownMenu,
+        DropdownMenuContent,
+        DropdownMenuItem,
+        DropdownMenuLabel,
+        DropdownMenuSeparator,
+        DropdownMenuTrigger,
+      } from \\"@/components/ui/dropdown_menu\\"
+    "
+`;

@@ -1,6 +1,6 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { formatFileName } from "@/src/utils/format-file-name"
+import { transformFileName } from "@/src/utils/transformers/transform-file-name"
 import { getConfig } from "@/src/utils/get-config"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
@@ -137,7 +137,7 @@ export const add = new Command()
         item.files = item.files.map((file) => {
           let filePath = file.name
           if (config?.case) {
-            filePath = formatFileName(file.name, config.case as CASE_CONVENTION)
+            filePath = transformFileName(file.name, config.case as CASE_CONVENTION)
           }
 
           return {
