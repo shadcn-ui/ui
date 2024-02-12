@@ -1,24 +1,41 @@
-'use server';
+"use server"
 
-import { signIn } from '@/auth';
-import { AuthError } from 'next-auth';
+import { signIn as signInAuth, signUp as signUpAuth } from "@/auth"
+import { AuthError } from "next-auth"
 
-export async function authenticate(
-    prevState: string | undefined,
-    formData: FormData,
-  ) {
-    console.log('authenticate called')
-    try {
-      await signIn('credentials', formData);
-    } catch (error) {
-      if (error instanceof AuthError) {
-        switch (error.type) {
-          case 'CredentialsSignin':
-            return 'Invalid credentials.';
-          default:
-            return 'Something went wrong.';
-        }
-      }
-      throw error;
+import { ActionResult } from "../sharedTypes"
+
+export async function signIn(
+  prevState: ActionResult | undefined,
+  formData: FormData
+): Promise<ActionResult | undefined> {
+  try {
+    await signInAuth("credentials", formData)
+  } catch (error) {
+    if (error instanceof AuthError && error.type === "CredentialsSignin") {
+      return { errorMessage: "Invalid credentials" }
     }
+    return { errorMessage: "Something went wrong" }
   }
+}
+
+export async function signUp(
+  prevState: ActionResult | undefined,
+  formData: FormData
+): Promise<ActionResult | undefined> {
+  try {
+    await signUpAuth(formData)
+  } catch (error) {
+    return { errorMessage: "User already exists" }
+  }
+  return {
+    successMessage: "Check your emails to finalise your account creation",
+  }
+}
+
+export async function requestResetPasswordEmail(
+  prevState: ActionResult | undefined,
+  formData: FormData
+): Promise<ActionResult | undefined> {
+  return Promise.resolve({ successMessage: "" })
+}

@@ -3,31 +3,26 @@ import bcrypt from "bcrypt"
 
 const users = [
   {
-    name: "raoul",
-    email: "raoul@flexup.com",
+    email: "raoulcheck@flexup.com",
     password: "123456",
   },
 ]
 
 async function seedUsers(client) {
   try {
-    await client.sql`
-    DROP EXTENSION "uuid-ossp"
-    CREATE EXTENSION "uuid-ossp"`
-
     const createTable = await client.sql`
-      DROP TABLE users
-      CREATE TABLE users (
-        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        firstName VARCHAR(255) NOT NULL,
-        lastName VARCHAR(255) NOT NULL,
-        email TEXT NOT NULL UNIQUE,
-        password TEXT NOT NULL,
-        status BOOLEAN DEFAULT false,
-        onboardingId DEFAULT uuid_generate_v4()
+    DROP TABLE users;
+    CREATE TABLE users (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      firstName VARCHAR(255),
+      lastName VARCHAR(255),
+      email TEXT NOT NULL UNIQUE,
+      password TEXT NOT NULL,
+      onboarded BOOLEAN DEFAULT false,
+      onboardingId UUID DEFAULT  uuid_generate_v4()
 
-      );
-    `
+    );
+  `
 
     console.log(`Created "users" table`)
 
@@ -36,8 +31,8 @@ async function seedUsers(client) {
       users.map(async (user) => {
         const hashedPassword = await bcrypt.hash(user.password, 10)
         return client.sql`
-        INSERT INTO users (name, email, password)
-        VALUES (${user.name}, ${user.email}, ${hashedPassword})
+        INSERT INTO users (firstName, lastName, email, password)
+        VALUES (${user.firstName}, ${user.lastName}, ${user.email}, ${hashedPassword})
         ON CONFLICT (id) DO NOTHING;
       `
       })
@@ -59,8 +54,6 @@ async function main() {
   const client = await db.connect()
 
   await seedUsers(client)
-
-  await client.end()
 }
 
 main().catch((err) => {

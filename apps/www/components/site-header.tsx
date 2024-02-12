@@ -8,7 +8,6 @@ import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
 import { buttonVariants } from "@/registry/new-york/ui/button"
-import { UserNav } from "@/app/products/components/user-nav"
 
 export function SiteHeader() {
   return (
@@ -16,10 +15,7 @@ export function SiteHeader() {
       <div className="ml-1  flex h-14 justify-between">
         <MainNav />
         <MobileNav />
-        <div className="flex items-center pr-4">
-            <UserNav />
-          </div>
-
+        <div className="flex items-center pr-4"></div>
       </div>
     </header>
   )

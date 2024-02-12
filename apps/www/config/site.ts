@@ -1,4 +1,5 @@
-import { applicationName } from "@/app/constants"
+import { applicationName } from "@/app/sharedLabels"
+
 
 export const siteConfig = {
   name: applicationName,

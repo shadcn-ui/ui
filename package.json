@@ -33,7 +33,8 @@
     "release": "changeset version",
     "pub:beta": "cd packages/cli && pnpm pub:beta",
     "pub:release": "cd packages/cli && pnpm pub:release",
-    "test": "turbo run test --force"
+    "test": "turbo run test --force",
+    "seed": "node -r dotenv/config ./scripts/seed.js"
   },
   "packageManager": "pnpm@8.5.1",
   "dependencies": {

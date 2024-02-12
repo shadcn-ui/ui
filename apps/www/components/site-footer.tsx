@@ -1,4 +1,5 @@
-import { companyName } from "@/app/constants"
+
+import { companyName } from "@/app/sharedLabels"
 import { siteConfig } from "@/config/site"
 
 export function SiteFooter() {
