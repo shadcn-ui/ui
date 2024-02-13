@@ -19,6 +19,7 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
+  dots?:boolean
 }
 
 type CarouselContextProps = {
@@ -26,6 +27,7 @@ type CarouselContextProps = {
   api: ReturnType<typeof useEmblaCarousel>[1]
   scrollPrev: () => void
   scrollNext: () => void
+  currentSlideIndex: number;
   canScrollPrev: boolean
   canScrollNext: boolean
 } & CarouselProps
@@ -54,6 +56,7 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
+      dots = false,
       ...props
     },
     ref
@@ -65,6 +68,7 @@ const Carousel = React.forwardRef<
       },
       plugins
     )
+    const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0)
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
@@ -72,7 +76,7 @@ const Carousel = React.forwardRef<
       if (!api) {
         return
       }
-
+      setCurrentSlideIndex(api.selectedScrollSnap());
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
     }, [])
@@ -120,11 +124,37 @@ const Carousel = React.forwardRef<
       }
     }, [api, onSelect])
 
+    const Dots: React.FC = () => {
+      const context = React.useContext(CarouselContext);
+      if (!context) {
+        throw new Error('Dots must be used within a Carousel');
+      }
+      const { api, currentSlideIndex } = context;
+    
+      return (
+        <div className="flex justify-center mt-6 flex-wrap">
+            {api && Array.from({ length: api.scrollSnapList().length }, (_, index) => (
+              <button
+                key={index}
+                onClick={() => api.scrollTo(index)}
+                className={cn(
+                                "m-1 h-5 w-5 cursor-pointer rounded-full bg-primary opacity-90",
+                                index === currentSlideIndex && "w-20"
+                              )}
+                aria-label={`Go to slide ${index + 1}`}
+              ></button>
+            ))}
+        </div>
+      );
+    };
+
+
     return (
       <CarouselContext.Provider
         value={{
           carouselRef,
           api: api,
+          currentSlideIndex,
           opts,
           orientation:
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
@@ -143,6 +173,7 @@ const Carousel = React.forwardRef<
           {...props}
         >
           {children}
+          {dots && <Dots />}
         </div>
       </CarouselContext.Provider>
     )
