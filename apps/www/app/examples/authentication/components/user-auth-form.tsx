@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useFormState, useFormStatus } from "react-dom"
 
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
@@ -12,42 +11,61 @@ import { Label } from "@/registry/new-york/ui/label"
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
-  const { pending } = useFormStatus()
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+
+  async function onSubmit(event: React.SyntheticEvent) {
+    event.preventDefault()
+    setIsLoading(true)
+
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+  }
 
   return (
-    <div {...props}>
-      <form>
-        <div className="grid gap-1">
+    <div className={cn("grid gap-6", className)} {...props}>
+      <form onSubmit={onSubmit}>
+        <div className="grid gap-2">
           <div className="grid gap-1">
-            <Input id="email" placeholder="Email" type="email" name="email" />
-          </div>
-          <div className="grid gap-1">
+            <Label className="sr-only" htmlFor="email">
+              Email
+            </Label>
             <Input
-              id="password"
-              placeholder="Password"
-              type="password"
-              name="password"
+              id="email"
+              placeholder="name@example.com"
+              type="email"
+              autoCapitalize="none"
+              autoComplete="email"
+              autoCorrect="off"
+              disabled={isLoading}
             />
           </div>
-          <Button disabled={pending}>
-            {pending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-            Sign in
+          <Button disabled={isLoading}>
+            {isLoading && (
+              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            )}
+            Sign In with Email
           </Button>
-          <div
-            className="flex h-8 items-end space-x-1"
-            aria-live="polite"
-            aria-atomic="true"
-          ></div>
         </div>
       </form>
-      <div className="mb-4 cursor-pointer px-8 text-center text-sm text-muted-foreground hover:text-primary">
-        Forgot password?
-      </div>
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <span className="w-full border-t" />
         </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">
+            Or continue with
+          </span>
+        </div>
       </div>
+      <Button variant="outline" type="button" disabled={isLoading}>
+        {isLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.gitHub className="mr-2 h-4 w-4" />
+        )}{" "}
+        GitHub
+      </Button>
     </div>
   )
 }

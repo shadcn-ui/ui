@@ -28,7 +28,7 @@ export function SignUpForm() {
     <>
       <Dialog>
         <Button variant="outline" type="button" asChild>
-          <DialogTrigger>Don't have an account? Sign up</DialogTrigger>
+          <DialogTrigger>Don&apos;t have an account? Sign up</DialogTrigger>
         </Button>
 
         <DialogContent>
