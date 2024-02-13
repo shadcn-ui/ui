@@ -1,12 +1,5 @@
 import { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/registry/new-york/ui/button"
-import { UserAuthForm } from "@/app/examples/authentication/components/user-auth-form"
-
-import { Signup } from "../examples/authentication/components/signUp"
 import { GeneralConditions } from "../sharedComponents/generalConditions"
 import { applicationName } from "../sharedLabels"
 import { ForgotPasswordForm } from "./forgotPasswordForm"
