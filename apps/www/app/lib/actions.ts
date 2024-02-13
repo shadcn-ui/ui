@@ -12,10 +12,13 @@ export async function signIn(
   try {
     await signInAuth("credentials", formData)
   } catch (error) {
-    if (error instanceof AuthError && error.type === "CredentialsSignin") {
-      return { errorMessage: "Invalid credentials" }
+    if (error instanceof AuthError) {
+      if (error.type === "CredentialsSignin") {
+        return { errorMessage: "Invalid credentials" }
+      }
+      return { errorMessage: "Something went wrong" }
     }
-    return { errorMessage: "Something went wrong" }
+    throw error
   }
 }
 

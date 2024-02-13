@@ -7,27 +7,6 @@ import { z } from "zod"
 
 import { authConfig } from "./auth.config"
 
-async function getUser(email: string): Promise<User | undefined> {
-  try {
-    const user = await sql<User>`SELECT * FROM users WHERE email=${email}`
-    return user.rows[0]
-  } catch (error) {
-    throw new Error("Failed to fetch user.")
-  }
-}
-
-async function insertUser(email: string, password: string) {
-  try {
-    await sql<User>`
-   INSERT INTO users (email, password)
-   VALUES (${email}, ${password})
-   ON CONFLICT (id) DO NOTHING;
- `
-  } catch (error) {
-    throw new Error("Failed to insert user.")
-  }
-}
-
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
@@ -40,10 +19,14 @@ export const { auth, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data
           const user = await getUser(email)
-          if (!user) return null
+          if (!user) {
+            return null
+          }
           const passwordsMatch = await bcrypt.compare(password, user.password)
 
-          if (passwordsMatch) return user
+          if (passwordsMatch) {
+            return user
+          }
         }
 
         return null
@@ -69,5 +52,26 @@ export const signUp = async (options: FormData) => {
     }
     const hashedPassword = await bcrypt.hash(password, 10)
     await insertUser(email, hashedPassword)
+  }
+}
+
+async function insertUser(email: string, password: string) {
+  try {
+    await sql<User>`
+   INSERT INTO users (email, password)
+   VALUES (${email}, ${password})
+   ON CONFLICT (id) DO NOTHING;
+ `
+  } catch (error) {
+    throw new Error("Failed to insert user.")
+  }
+}
+
+async function getUser(email: string): Promise<User | undefined> {
+  try {
+    const user = await sql<User>`SELECT * FROM users WHERE email=${email}`
+    return user.rows[0]
+  } catch (error) {
+    throw new Error("Failed to fetch user.")
   }
 }
