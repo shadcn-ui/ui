@@ -29,3 +29,11 @@ export interface NpmCommands {
   __pnpmCommand__?: string
   __bunCommand__?: string
 }
+
+export interface PackageManagerData {
+  npm: number;
+  yarn: number;
+  pnpm: number;
+  bun: number;
+  preferred?: 'npm'|'yarn'|'pnpm'|'bun';
+}
