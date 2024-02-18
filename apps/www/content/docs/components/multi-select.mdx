@@ -1,0 +1,109 @@
+---
+title: Multi Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+component: true
+featured: true
+---
+
+<ComponentPreview name="multi-select-basic" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add multi-select
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-icons @radix-ui/react-popover @radix-ui/react-primitive @radix-ui/react-use-controllable-state
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="multi-select" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  MultiSelect,
+  MultiSelectContent,
+  MultiSelectItem,
+  MultiSelectList,
+  MultiSelectTrigger,
+  MultiSelectValue,
+} from "@/components/ui/multi-select"
+```
+
+```tsx
+<MultiSelect>
+  <MultiSelectTrigger className="w-80">
+    <MultiSelectValue placeholder="Select Frameworks" />
+  </MultiSelectTrigger>
+  <MultiSelectContent>
+    <MultiSelectList>
+        <MultiSelectItem value="react">React</MultiSelectItem>
+        <MultiSelectItem value="vue">Vue</MultiSelectItem>
+        <MultiSelectItem value="angular">Angular</MultiSelectItem>
+        <MultiSelectItem value="svelte">Svelte</MultiSelectItem>
+    </MultiSelectList>>
+  </MultiSelectContent>
+</MultiSel>
+```
+
+## Examples
+
+### With Filter
+
+<ComponentPreview name="multi-select-filter" />
+
+### Controllable Search
+
+search by control or load remote data
+
+<ComponentPreview name="multi-select-controllable-search" />
+
+### Input Custom (tag mode)
+
+Allow user to select from input custom tag
+
+<ComponentPreview name="multi-select-input-custom" />
+
+### Limit Count
+
+limit max select count by `maxCount`
+
+<ComponentPreview name="multi-select-limit-count" />
+
+### Limit item display length
+
+limit max display item count with `maxDisplay`, or limit item display length with `maxDisplayLength
+
+<ComponentPreview name="multi-select-limit-display-length" />
+
+### Form
+
+<ComponentPreview name="multi-select-form" />
