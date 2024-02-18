@@ -189,12 +189,7 @@ export function CopyNpmCommandButton({
       } else {
         const pmData = JSON.parse(pmStorage) as PackageManagerData
         pmData[pm] += 1
-        if (
-          (pmData.preferred === undefined && pmData[pm] >= 3) ||
-          (pmData.preferred !== pm &&
-            pmData.preferred !== undefined &&
-            pmData[pm] > pmData[pmData.preferred] + 3)
-        ) {
+        if (pmData.preferred === undefined && pmData[pm] >= 3) {
           pmData.preferred = pm
         }
         localStorage.setItem("ppm", JSON.stringify(pmData))
