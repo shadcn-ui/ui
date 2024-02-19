@@ -10,7 +10,11 @@
         "UPSTASH_REDIS_REST_TOKEN",
         "COMPONENTS_REGISTRY_URL",
         "npm_config_user_agent",
-        "https_proxy"
+        "https_proxy",
+        "NODEMAILER_EMAIL",
+        "NODEMAILER_PW",
+        "NODEMAILER_EMAIL",
+        "APP_URL"
       ],
       "outputs": ["dist/**", ".next/**"]
     },

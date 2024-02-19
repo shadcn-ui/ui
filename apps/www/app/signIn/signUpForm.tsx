@@ -1,6 +1,6 @@
 "use client"
 
-import { useFormState } from "react-dom"
+import { useFormState, useFormStatus } from "react-dom"
 
 import { Icons } from "@/components/icons"
 import { Button } from "@/registry/new-york/ui/button"
@@ -16,6 +16,7 @@ import { Input } from "@/registry/new-york/ui/input"
 
 import { signUp } from "../lib/actions"
 import { GeneralConditions } from "../sharedComponents/generalConditions"
+import { SubmitButton } from "../sharedComponents/submitButton"
 import { applicationName } from "../sharedLabels"
 import { ActionResult } from "../sharedTypes"
 
@@ -24,6 +25,7 @@ export function SignUpForm() {
     signUp,
     undefined
   )
+
   return (
     <>
       <Dialog>
@@ -58,7 +60,8 @@ export function SignUpForm() {
                 />
               </div>
 
-              <Button>Submit</Button>
+              <SubmitButton></SubmitButton>
+
               <GeneralConditions callToAction="Submit" />
               <div
                 className="flex h-8 items-end space-x-1"

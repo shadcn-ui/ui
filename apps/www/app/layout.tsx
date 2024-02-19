@@ -1,4 +1,5 @@
 import "@/styles/globals.css"
+import { Suspense } from "react"
 import { Metadata, Viewport } from "next"
 
 import { siteConfig } from "@/config/site"
@@ -79,8 +80,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.className
           )}
         >
-          <main className="flex-1">{children}</main>
-
+          <Suspense>
+            <main className="flex-1">{children}</main>
+          </Suspense>
         </body>
       </html>
     </>

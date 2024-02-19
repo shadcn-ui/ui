@@ -14,6 +14,7 @@ import {
 import { Input } from "@/registry/new-york/ui/input"
 
 import { requestResetPasswordEmail } from "../lib/actions"
+import { SubmitButton } from "../sharedComponents/submitButton"
 import { applicationName } from "../sharedLabels"
 import { ActionResult } from "../sharedTypes"
 
@@ -49,7 +50,7 @@ export function ForgotPasswordForm() {
                 />
               </div>
 
-              <Button>Submit</Button>
+              <SubmitButton></SubmitButton>
               {/* <div
                 className="flex h-8 items-end space-x-1"
                 aria-live="polite"

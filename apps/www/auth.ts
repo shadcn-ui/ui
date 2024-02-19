@@ -1,11 +1,14 @@
+import { PrismaClient } from "@prisma/client"
 import { sql } from "@vercel/postgres"
 import bcrypt from "bcrypt"
-import type { User } from "lib/definitions"
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { z } from "zod"
 
 import { authConfig } from "./auth.config"
+import { createUser, getUser } from "./services/userService"
+
+const prisma = new PrismaClient()
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -16,9 +19,13 @@ export const { auth, signIn, signOut } = NextAuth({
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials)
 
+        console.log(parsedCredentials.success)
+
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data
-          const user = await getUser(email)
+          const user = await getUser({ email })
+          console.log("returned user")
+          console.log(user)
           if (!user) {
             return null
           }
@@ -36,6 +43,8 @@ export const { auth, signIn, signOut } = NextAuth({
 })
 
 export const signUp = async (options: FormData) => {
+  console.log("entering in auth")
+  let onBoardingId = ""
   const data = {
     email: options.get("email"),
     password: options.get("password"),
@@ -46,32 +55,18 @@ export const signUp = async (options: FormData) => {
 
   if (parsedData.success) {
     const { email, password } = parsedData.data
-    const user = await getUser(email)
+    const user = await getUser({ email })
+
+    console.log(user)
     if (user) {
       throw new Error("email already exists")
     }
     const hashedPassword = await bcrypt.hash(password, 10)
-    await insertUser(email, hashedPassword)
+    onBoardingId = (
+      await prisma.user.create({
+        data: { email, password: hashedPassword },
+      })
+    ).onBoardingId
   }
-}
-
-async function insertUser(email: string, password: string) {
-  try {
-    await sql<User>`
-   INSERT INTO users (email, password)
-   VALUES (${email}, ${password})
-   ON CONFLICT (id) DO NOTHING;
- `
-  } catch (error) {
-    throw new Error("Failed to insert user.")
-  }
-}
-
-async function getUser(email: string): Promise<User | undefined> {
-  try {
-    const user = await sql<User>`SELECT * FROM users WHERE email=${email}`
-    return user.rows[0]
-  } catch (error) {
-    throw new Error("Failed to fetch user.")
-  }
+  return onBoardingId
 }
