@@ -102,6 +102,7 @@ export async function promptForConfig(
 
   const styles = await getRegistryStyles()
   const baseColors = await getRegistryBaseColors()
+  const extension = defaultConfig?.tsx ? "ts" : "js"
 
   const options = await prompts([
     {
@@ -184,6 +185,14 @@ export async function promptForConfig(
       active: "yes",
       inactive: "no",
     },
+    {
+      type: "confirm",
+      name: "proceed",
+      message: `Running the command will overwrite following files.\n${highlight(
+        `\t/component.json\n\t/tailwind.config.${extension}\n\t/app/global.css\n\t/lib/utils.${extension}\n`
+      )}Make sure you have committed your changes before proceeding. Proceed?`,
+      initial: true,
+    },
   ])
 
   const config = rawConfigSchema.parse({
@@ -238,6 +247,7 @@ export async function promptForMinimalConfig(
   let style = defaultConfig.style
   let baseColor = defaultConfig.tailwind.baseColor
   let cssVariables = defaultConfig.tailwind.cssVariables
+  const extension = defaultConfig.tsx ? "ts" : "js"
 
   if (!defaults) {
     const styles = await getRegistryStyles()
@@ -273,6 +283,14 @@ export async function promptForMinimalConfig(
         initial: defaultConfig?.tailwind.cssVariables,
         active: "yes",
         inactive: "no",
+      },
+      {
+        type: "confirm",
+        name: "proceed",
+        message: `Running the command will overwrite following files.\n${highlight(
+          `\t/component.json\n\t/tailwind.config.${extension}\n\t/app/global.css\n\t/lib/utils.${extension}\n`
+        )}Make sure you have committed your changes before proceeding. Proceed?`,
+        initial: true,
       },
     ])
 
