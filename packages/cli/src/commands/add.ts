@@ -20,7 +20,13 @@ import prompts from "prompts"
 import { z } from "zod"
 
 const addOptionsSchema = z.object({
-  components: z.array(z.string()).optional(),
+  components: z
+    .array(z.string())
+    .optional()
+    .transform(
+      (components) =>
+        components?.map((component) => component.toLowerCase()) || components
+    ),
   yes: z.boolean(),
   overwrite: z.boolean(),
   cwd: z.string(),
