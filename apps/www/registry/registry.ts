@@ -225,6 +225,16 @@ const ui: Registry = [
     files: ["ui/switch.tsx"],
   },
   {
+    name: "star-rating",
+    type: "components:ui",
+    files: ["ui/star-rating.tsx"],
+  },
+  {
+    name: "star-rating-icon",
+    type: "components:ui",
+    files: ["ui/star-rating-icon.tsx"],
+  },
+  {
     name: "table",
     type: "components:ui",
     files: ["ui/table.tsx"],

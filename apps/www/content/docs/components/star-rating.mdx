@@ -1,0 +1,89 @@
+---
+title: Star Rating
+description: This component provides smooth star rating input
+component: true
+---
+
+<ComponentPreview name="star-rating" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add star-rating
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="star-rating" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { StarRating } from "@/components/ui/StarRating"
+```
+
+```tsx
+const [value, setValue] = React.useState<number>(3)
+
+return <StarRating value={value} setValue={setValue} />
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview name="star-rating-disabled" />
+
+### Setting default country
+
+<ComponentPreview
+  name="phone-input-default"
+  className="[&_phone-input]:max-w-xs"
+/>
+
+### Setting force international format
+
+<ComponentPreview
+  name="phone-input-international"
+  className="[&_phone-input]:max-w-xs"
+/>
+
+### Setting force national format
+
+<ComponentPreview
+  name="phone-input-national"
+  className="[&_phone-input]:max-w-xs"
+/>
+
+### Setting initial value format
+
+<ComponentPreview
+  name="phone-input-initial"
+  className="[&_phone-input]:max-w-xs"
+/>
+
+### Form
+
+<ComponentPreview name="phone-input-form" />

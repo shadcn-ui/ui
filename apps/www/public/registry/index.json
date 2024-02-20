@@ -368,6 +368,13 @@
     "type": "components:ui"
   },
   {
+    "name": "star-rating",
+    "files": [
+      "ui/star-rating.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "table",
     "files": [
       "ui/table.tsx"

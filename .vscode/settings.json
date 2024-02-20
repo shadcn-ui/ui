@@ -3,6 +3,7 @@
     { "pattern": "apps/*/" },
     { "pattern": "packages/*/" }
   ],
+  // "editor.formatOnSave": false,
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]

@@ -288,6 +288,12 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
+          title: "Star Rating",
+          href: "/docs/components/star-rating",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Switch",
           href: "/docs/components/switch",
           items: [],
