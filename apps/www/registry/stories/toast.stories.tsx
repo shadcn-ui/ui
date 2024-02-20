@@ -20,7 +20,21 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  render: (args) => <ToastExample {...args} />,
+  render: (args) => {
+    const { toast } = useToast()
+    return (
+      <div>
+        <button
+          onClick={() => {
+            toast(args)
+          }}
+        >
+          Show Toast
+        </button>
+        <Toaster />
+      </div>
+    )
+  },
 } satisfies Meta<typeof Toast>
 
 export default meta
@@ -34,22 +48,6 @@ type ToasterToast = ToastProps & {
   title?: string
   description?: string
   action?: ToastActionElement
-}
-
-const ToastExample = (args: Story["args"]) => {
-  const { toast } = useToast()
-  return (
-    <div>
-      <button
-        onClick={() => {
-          toast(args)
-        }}
-      >
-        Show Toast
-      </button>
-      <Toaster />
-    </div>
-  )
 }
 
 /**
