@@ -4,8 +4,7 @@ const config = {
   stories: [
     "../registry/stories/**/*.mdx",
     "../registry/stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "./theme/**/*.stories.@(js|jsx|ts|tsx)",
-    "./theme/**/*.mdx",
+    "./tokens/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
@@ -17,7 +16,7 @@ const config = {
     options: {},
   },
   docs: {
-    autodocs: true,
+    autodocs: "tag",
   },
 } satisfies StorybookConfig
 
