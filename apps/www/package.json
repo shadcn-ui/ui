@@ -115,10 +115,5 @@
   },
   "peerDependencies": {
     "esbuild": "^0.17.3"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   }
 }
