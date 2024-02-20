@@ -96,7 +96,6 @@
     "@types/react-dom": "^18.2.4",
     "esbuild": "^0.17.19",
     "eslint": "^8.41.0",
-    "eslint-plugin-storybook": "^0.6.15",
     "mdast-util-toc": "^6.1.1",
     "postcss": "^8.4.24",
     "rehype": "^12.0.1",
