@@ -36,7 +36,6 @@ import {
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
 import { Style } from "@/registry/styles"
-
 const components = {
   Accordion,
   AccordionContent,
@@ -303,6 +302,7 @@ const components = {
       {...props}
     />
   ),
+
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn(

@@ -327,6 +327,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/tooltip",
           items: [],
         },
+        {
+          title: "User Avatar",
+          href: "/docs/components/user-avatar",
+          items: [],
+        },
       ],
     },
   ],

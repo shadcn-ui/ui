@@ -38,7 +38,6 @@ export function ComponentPreview({
 
   const Codes = React.Children.toArray(children) as React.ReactElement[]
   const Code = Codes[index]
-
   const Preview = React.useMemo(() => {
     const Component = Index[config.style][name]?.component
 

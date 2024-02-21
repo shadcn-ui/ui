@@ -25,7 +25,6 @@ interface DocPageProps {
 async function getDocFromParams({ params }: DocPageProps) {
   const slug = params.slug?.join("/") || ""
   const doc = allDocs.find((doc) => doc.slugAsParams === slug)
-
   if (!doc) {
     return null
   }
@@ -79,7 +78,6 @@ export async function generateStaticParams(): Promise<
 
 export default async function DocPage({ params }: DocPageProps) {
   const doc = await getDocFromParams({ params })
-
   if (!doc) {
     notFound()
   }
