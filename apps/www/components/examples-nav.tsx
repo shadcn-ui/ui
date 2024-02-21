@@ -1,11 +1,14 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
+import {usePathname} from "next/navigation"
+import {ArrowRightIcon} from "@radix-ui/react-icons"
 
-import { cn } from "@/lib/utils"
-import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
+import {cn} from "@/lib/utils"
+import {ScrollArea, ScrollBar} from "@/registry/new-york/ui/scroll-area"
+import {siteConfig} from "@/config/site";
+import {buttonVariants} from "@/registry/new-york/ui/button";
+import {Icons} from "@/components/icons";
 
 const examples = [
   {
@@ -50,15 +53,16 @@ const examples = [
   },
 ]
 
-interface ExamplesNavProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface ExamplesNavProps extends React.HTMLAttributes<HTMLDivElement> {
+}
 
-export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
+export function ExamplesNav({className, ...props}: ExamplesNavProps) {
   const pathname = usePathname()
 
   return (
-    <div className="relative">
+    <div className="relative flex flex-col md:flex-row justify-between md:items-center mb-4">
       <ScrollArea className="max-w-[600px] lg:max-w-none">
-        <div className={cn("mb-4 flex items-center", className)} {...props}>
+        <div className={cn("mb-4 flex items-center md:mb-0", className)} {...props}>
           {examples.map((example, index) => (
             <Link
               href={example.href}
@@ -66,7 +70,7 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
               className={cn(
                 "flex h-7 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
                 pathname?.startsWith(example.href) ||
-                  (index === 0 && pathname === "/")
+                (index === 0 && pathname === "/")
                   ? "bg-muted font-medium text-primary"
                   : "text-muted-foreground"
               )}
@@ -75,8 +79,18 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
             </Link>
           ))}
         </div>
-        <ScrollBar orientation="horizontal" className="invisible" />
+        <ScrollBar orientation="horizontal" className="invisible"/>
       </ScrollArea>
+
+      <Link
+        target="_blank"
+        rel="noreferrer"
+        href={siteConfig.links.githubExampleCode}
+        className={cn(buttonVariants({variant: "outline"}), 'lg:mb-0')}
+      >
+        <Icons.gitHub className="mr-2 h-4 w-4"/>
+        Example code
+      </Link>
     </div>
   )
 }
@@ -85,7 +99,7 @@ interface ExampleCodeLinkProps {
   pathname: string | null
 }
 
-export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
+export function ExampleCodeLink({pathname}: ExampleCodeLinkProps) {
   const example = examples.find((example) => pathname?.startsWith(example.href))
 
   if (!example?.code) {
@@ -100,7 +114,7 @@ export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
       className="absolute right-0 top-0 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
     >
       View code
-      <ArrowRightIcon className="ml-1 h-4 w-4" />
+      <ArrowRightIcon className="ml-1 h-4 w-4"/>
     </Link>
   )
 }
