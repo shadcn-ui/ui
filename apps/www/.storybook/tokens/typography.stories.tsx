@@ -21,7 +21,7 @@ const meta: Meta<{
   },
   render: (args) => (
     <table className="w-full table-auto text-left text-sm text-foreground rtl:text-right">
-      <thead className="text-x bg-muted uppercase">
+      <thead className="text-xs bg-muted uppercase">
         <tr>
           <th scope="col" className="px-6 py-3">
             Name
