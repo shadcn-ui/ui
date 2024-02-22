@@ -1,0 +1,74 @@
+---
+title: Star rating new
+description: Use to show ratings of products as well as taking input for rating
+component: true
+---
+
+<ComponentPreview name="star-rating-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add star-rating
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="star-rating" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { StarRating } from "@/components/ui/star-rating"
+```
+
+```tsx
+const [value, setValue] = React.useState(3)
+
+<StarRating value={value} setValue={setValue} />
+```
+
+## Colored icons
+
+<ComponentPreview name="star-rating-colored" />
+
+## Different icon
+
+<ComponentPreview name="star-rating-icon" />
+
+## API Reference
+
+| Property       | Description                                                  | Default |
+| -------------- | ------------------------------------------------------------ | ------- |
+| `value`        | The value of the stars                                       | -       |
+| `setValue`     | A function to set the value of the stars                     | -       |
+| `numStars`     | Number of stars to render                                    | 5       |
+| `icon`         | The icon to use for the stars                                | -       |
+| `disabled`     | Prevents setting values, lower the opacity and disable hover | false   |
+| `wrapperProps` | Additional props for the wrapper div                         | -       |
+| `iconProps`    | Additional props for the icon component                      | -       |
+| `showcase`     | Prevents setting values and hover (does not affect opacity)  | false   |
+
+Every property is optional\*

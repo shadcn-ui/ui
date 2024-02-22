@@ -1,0 +1,10 @@
+{
+  "name": "star-rating",
+  "files": [
+    {
+      "name": "star-rating.tsx",
+      "content": "import React, { Dispatch, SetStateAction } from \"react\"\nimport { LucideIcon, LucideProps, StarIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface StarWrapperProps {\n  value?: number\n  setValue?: Dispatch<SetStateAction<number>>\n  numStars?: number\n  icon?: LucideIcon\n  disabled?: boolean\n  wrapperProps?: React.HTMLAttributes<HTMLDivElement>\n  iconProps?: LucideProps\n  showcase?: boolean\n}\n\nconst StarRating = ({\n  numStars = 5,\n  icon,\n  setValue,\n  value,\n  disabled,\n  showcase,\n  iconProps = {},\n  wrapperProps = {},\n}: StarWrapperProps) => {\n  const { className: wrapperClassName, ...restWrapperProps } = wrapperProps\n  const { className: iconClassName, ...restIconProps } = iconProps\n  const IconComponent = icon\n\n  return (\n    <div className={cn(\"flex items-center gap-1\", wrapperClassName)} {...restWrapperProps}>\n      {Array.from({ length: numStars }, (_, i) => {\n        const isRated = i < value!\n        const styledIconProps: LucideProps = {\n          onMouseEnter: () => !showcase && !disabled && setValue!(i + 1),\n          className: cn(\"size-5 fill-primary stroke-primary\",\n            {\n              \"opacity-50 pointer-events-none\": disabled,\n              \"transition-transform duration-300 hover:scale-110\": !disabled && !showcase,\n              '!fill-muted !stroke-muted': !isRated\n            },\n            iconClassName\n          ),\n          ...restIconProps\n        }\n        return (\n          IconComponent ? (\n            <IconComponent {...styledIconProps} />\n          ) : (\n            <StarIcon {...styledIconProps} />\n          )\n        )\n      })}\n    </div>\n  )\n}\n\nexport { StarRating }"
+    }
+  ],
+  "type": "components:ui"
+}

@@ -60,6 +60,7 @@ const ui: Registry = [
     files: ["ui/carousel.tsx"],
     registryDependencies: ["button"],
     dependencies: ["embla-carousel-react"],
+    devDependencies: ["embla-carousel"],
   },
   {
     name: "checkbox",
@@ -222,6 +223,21 @@ const ui: Registry = [
     type: "components:ui",
     dependencies: ["@radix-ui/react-switch"],
     files: ["ui/switch.tsx"],
+  },
+  {
+    name: "star-rating-demo",
+    type: "components:ui",
+    files: ["ui/star-rating-demo.tsx"],
+  },
+  {
+    name: "star-rating-colored",
+    type: "components:ui",
+    files: ["ui/star-rating-colored.tsx"],
+  },
+  {
+    name: "star-rating-icon",
+    type: "components:ui",
+    files: ["ui/star-rating-icon.tsx"],
   },
   {
     name: "table",
@@ -782,12 +798,6 @@ const example: Registry = [
     files: ["example/skeleton-demo.tsx"],
   },
   {
-    name: "skeleton-card",
-    type: "components:example",
-    registryDependencies: ["skeleton"],
-    files: ["example/skeleton-card.tsx"],
-  },
-  {
     name: "slider-demo",
     type: "components:example",
     registryDependencies: ["slider"],
@@ -798,6 +808,21 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["sonner"],
     files: ["example/sonner-demo.tsx"],
+  },
+  {
+    name: "star-rating-demo",
+    type: "components:example",
+    files: ["example/star-rating-demo.tsx"],
+  },
+  {
+    name: "star-rating-colored",
+    type: "components:example",
+    files: ["example/star-rating-colored.tsx"],
+  },
+  {
+    name: "star-rating-icon",
+    type: "components:example",
+    files: ["example/star-rating-icon.tsx"],
   },
   {
     name: "switch-demo",
