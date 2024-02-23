@@ -20,37 +20,41 @@ import {
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
 
-export type PhoneInputValue = RPNInput.Value
-
 type PhoneInputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  "onChange"
+  "onChange" | "value"
 > &
-  RPNInput.Props<typeof RPNInput.default>
+  RPNInput.Props<typeof RPNInput.default> & {
+    value: RPNInput.Value
+  }
 
-const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
-  React.forwardRef<React.ElementRef<typeof RPNInput.default>, PhoneInputProps>(
-    ({ className, onChange, ...props }, ref) => (
-      <RPNInput.default
-        ref={ref}
-        className={cn("flex", className)}
-        flagComponent={FlagComponent}
-        countrySelectComponent={CountrySelect}
-        inputComponent={InputComponent}
-        /**
-         * Handles the onChange event.
-         *
-         * react-phone-number-input might trigger the onChange event as undefined
-         * when a valid phone number is not entered. To prevent this,
-         * the value is coerced to an empty string.
-         *
-         * @param {E164Number | undefined} value - The entered value
-         */
-        onChange={(value) => onChange(value || "")}
-        {...props}
-      />
-    )
-  )
+const PhoneInput: React.ForwardRefExoticComponent<
+  Omit<PhoneInputProps, "onChange"> & {
+    onChange: (value: RPNInput.Value) => void
+  }
+> = React.forwardRef<
+  React.ElementRef<typeof RPNInput.default>,
+  PhoneInputProps
+>(({ className, onChange, ...props }, ref) => (
+  <RPNInput.default
+    ref={ref}
+    className={cn("flex", className)}
+    flagComponent={FlagComponent}
+    countrySelectComponent={CountrySelect}
+    inputComponent={InputComponent}
+    /**
+     * Handles the onChange event.
+     *
+     * react-phone-number-input might trigger the onChange event as undefined
+     * when a valid phone number is not entered. To prevent this,
+     * the value is coerced to an empty string.
+     *
+     * @param {E164Number | undefined} value - The entered value
+     */
+    onChange={(value) => onChange(value || "")}
+    {...props}
+  />
+))
 PhoneInput.displayName = "PhoneInput"
 
 const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(

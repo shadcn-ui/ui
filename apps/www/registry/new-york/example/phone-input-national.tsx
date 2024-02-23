@@ -1,12 +1,9 @@
 import * as React from "react"
 
-import {
-  PhoneInput,
-  type PhoneInputValue,
-} from "@/registry/new-york/ui/phone-input"
+import { PhoneInput } from "@/registry/new-york/ui/phone-input"
 
 export default function PhoneInputNational() {
-  const [value, setValue] = React.useState<PhoneInputValue>()
+  const [value, setValue] = React.useState("")
 
   return (
     <PhoneInput
