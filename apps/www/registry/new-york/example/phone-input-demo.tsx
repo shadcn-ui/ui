@@ -8,5 +8,11 @@ import {
 export default function PhoneInputDemo() {
   const [value, setValue] = React.useState<PhoneInputValue>()
 
-  return <PhoneInput value={value} onChange={setValue} />
+  return (
+    <PhoneInput
+      value={value}
+      onChange={setValue}
+      placeholder="Enter a phone number"
+    />
+  )
 }
