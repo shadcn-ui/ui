@@ -155,6 +155,6 @@ const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
     </span>
   )
 }
-InputComponent.displayName = "FlagComponent"
+FlagComponent.displayName = "FlagComponent"
 
 export { PhoneInput }

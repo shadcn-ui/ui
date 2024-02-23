@@ -50,11 +50,11 @@ npx shadcn-ui@latest add phone-input
 ## Usage
 
 ```tsx
-import { PhoneInput, type PhoneInputValue } from "@/components/ui/phone-input"
+import { PhoneInput } from "@/components/ui/phone-input"
 ```
 
 ```tsx
-const [value, setValue] = React.useState<PhoneInputValue>()
+const [value, setValue] = React.useState("")
 
 return <PhoneInput value={value} onChange={setValue} />
 ```
