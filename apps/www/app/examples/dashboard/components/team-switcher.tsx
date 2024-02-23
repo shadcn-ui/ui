@@ -82,7 +82,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
   const [open, setOpen] = React.useState(false)
   const [showNewTeamDialog, setShowNewTeamDialog] = React.useState(false)
   const [selectedTeam, setSelectedTeam] = React.useState<Team>(
-    groups[0].teams[0]
+    groups[0]!.teams[0]!
   )
 
   return (
