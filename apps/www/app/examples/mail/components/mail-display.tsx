@@ -43,6 +43,7 @@ import {
   TooltipTrigger,
 } from "@/registry/new-york/ui/tooltip"
 import { Mail } from "@/app/examples/mail/data"
+import React from "react"
 
 interface MailDisplayProps {
   mail: Mail | null
@@ -50,6 +51,12 @@ interface MailDisplayProps {
 
 export function MailDisplay({ mail }: MailDisplayProps) {
   const today = new Date()
+  const [textAreaValue, setTextAreaValue] = React.useState("")
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setTextAreaValue("")
+  }
+
 
   return (
     <div className="flex h-full flex-col">
@@ -227,6 +234,8 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                 <Textarea
                   className="p-4"
                   placeholder={`Reply ${mail.name}...`}
+                  value={textAreaValue}
+                  onChange={(e) => setTextAreaValue(e.target.value)}
                 />
                 <div className="flex items-center">
                   <Label
@@ -237,9 +246,10 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     thread
                   </Label>
                   <Button
-                    onClick={(e) => e.preventDefault()}
+                    onClick={handleClick}
                     size="sm"
                     className="ml-auto"
+                    type="submit"
                   >
                     Send
                   </Button>
