@@ -17,7 +17,7 @@ import { Command } from "commander"
 import { execa } from "execa"
 import ora from "ora"
 import prompts from "prompts"
-import * as z from "zod"
+import { z } from "zod"
 
 const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -180,14 +180,30 @@ export const add = new Command()
           await fs.writeFile(filePath, content)
         }
 
+        const packageManager = await getPackageManager(cwd)
+
         // Install dependencies.
         if (item.dependencies?.length) {
-          const packageManager = await getPackageManager(cwd)
           await execa(
             packageManager,
             [
               packageManager === "npm" ? "install" : "add",
               ...item.dependencies,
+            ],
+            {
+              cwd,
+            }
+          )
+        }
+
+        // Install devDependencies.
+        if (item.devDependencies?.length) {
+          await execa(
+            packageManager,
+            [
+              packageManager === "npm" ? "install" : "add",
+              "-D",
+              ...item.devDependencies,
             ],
             {
               cwd,

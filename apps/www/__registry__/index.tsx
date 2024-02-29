@@ -922,6 +922,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/skeleton-demo")),
       files: ["registry/default/example/skeleton-demo.tsx"],
     },
+    "skeleton-card": {
+      name: "skeleton-card",
+      type: "components:example",
+      registryDependencies: ["skeleton"],
+      component: React.lazy(() => import("@/registry/default/example/skeleton-card")),
+      files: ["registry/default/example/skeleton-card.tsx"],
+    },
     "slider-demo": {
       name: "slider-demo",
       type: "components:example",
@@ -2161,6 +2168,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["skeleton"],
       component: React.lazy(() => import("@/registry/new-york/example/skeleton-demo")),
       files: ["registry/new-york/example/skeleton-demo.tsx"],
+    },
+    "skeleton-card": {
+      name: "skeleton-card",
+      type: "components:example",
+      registryDependencies: ["skeleton"],
+      component: React.lazy(() => import("@/registry/new-york/example/skeleton-card")),
+      files: ["registry/new-york/example/skeleton-card.tsx"],
     },
     "slider-demo": {
       name: "slider-demo",
