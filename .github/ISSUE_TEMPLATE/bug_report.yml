@@ -1,17 +1,17 @@
-name: "🐞 Bug report"
-description: Report an issue with shadcn-ui
+name: "Bug report"
+description: Report an issue
 title: '[Bug]: '
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        ### Thanks for taking the time to create a bug report :heart:! Please search open/closed issues before submitting, as the issue may have already been reported/addressed.
+        ### Thanks for taking the time to create a bug report. Please search open/closed issues before submitting, as the issue may have already been reported/addressed.
  
   - type: markdown
     attributes:
       value: |
-        #### If you aren't sure this is a bug or not, please do not create an issue, instead ask here:
+        #### If you aren't sure this is a bug or not, please open a discussion instead:
         - [Discussions](https://github.com/shadcn-ui/ui/discussions/new?category=general)
 
   - type: textarea
@@ -27,7 +27,7 @@ body:
     id: components-affected
     attributes:
       label: Affected component/components
-      description: Which shadcn-ui components are affected?
+      description: Which shadcn/ui components are affected?
       placeholder: ex. Button, Checkbox...
     validations:
       required: true
@@ -52,7 +52,7 @@ body:
         A link to a CodeSandbox or StackBlitz that includes a minimal reproduction of the problem. In rare cases when not applicable, you can link to a GitHub repository that we can easily run to recreate the issue. If a report is vague and does not have a reproduction, it will be closed without warning. 
 
         > [!CAUTION]
-        > If you skip this step, this issue might be **closed** or **deleted** without any warning.
+        > If you skip this step, this issue might be **labeled** with `please add a reproduction` and **closed**.
     validations:
       required: false
 
@@ -70,18 +70,6 @@ body:
       description: Information about browsers, system or binaries that's relevant.
       render: bash
       placeholder: System, Binaries, Browsers
-    validations:
-      required: true
-
-  - type: dropdown
-    id: severity
-    attributes:
-      label: Severity
-      description: Select the severity of this issue
-      options:
-        - annoyance
-        - blocking an upgrade
-        - blocking all usage of shadcn-ui
     validations:
       required: true
 
