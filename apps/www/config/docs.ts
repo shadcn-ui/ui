@@ -210,6 +210,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Kbd",
+          href: "/docs/components/kbd",
+          items: [],
+        },
+        {
           title: "Label",
           href: "/docs/components/label",
           items: [],

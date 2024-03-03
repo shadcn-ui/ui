@@ -57,6 +57,13 @@
     "type": "components:ui"
   },
   {
+    "name": "kbd",
+    "files": [
+      "ui/kbd.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "button",
     "dependencies": [
       "@radix-ui/react-slot"
