@@ -31,6 +31,7 @@ npx shadcn-ui@latest add date-range-picker
 ```bash
 npm install react-day-picker
 ```
+
 ```bash
 npm install date-fns
 ```
@@ -54,6 +55,27 @@ The Date Range Picker uses [`<Popover />`](/docs/components/popover#installation
 ```tsx
 import { DateRangePicker } from "@/registry/default/ui/date-range-picker"
 ```
+
 ```tsx
-<DateRangePicker showExternalPresets showInternalPresets numberOfMonths={2} />
+<DateRangePicker
+  showExternalPresets
+  showInternalPresets
+  numberOfMonths={2}
+  presets={[
+    {
+      key: "yesterday",
+      label: "Yesterday",
+      range: {
+        from: new Date(new Date().setDate(new Date().getDate() - 1))
+      },
+    },
+    {
+      key: "last7days",
+      label: "Last 7 days",
+      range: {
+        from: new Date(new Date().setDate(new Date().getDate() - 7))
+      },
+    },
+  ]}
+/>
 ```
