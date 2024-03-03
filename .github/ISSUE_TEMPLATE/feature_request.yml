@@ -1,17 +1,17 @@
-name: "🚀 Feature request"
-description: Create a feature request for shadcn-ui
-title: '[Feat]: '
+name: "Feature request"
+description: Create a feature request for shadcn/ui
+title: '[feat]: '
 labels: ['area: request']
 body:
   - type: markdown
     attributes:
       value: |
-        ### Thanks for taking the time to create a feature request :heart:! Please search open/closed issues before submitting, as the issue may have already been reported/addressed.
+        ### Thanks for taking the time to create a feature request! Please search open/closed issues before submitting, as the issue may have already been reported/addressed.
  
   - type: markdown
     attributes:
       value: |
-        #### If you aren't sure this feature exists or not, please do not create an issue, instead ask here:
+        #### If you aren't sure this is a bug or not, please open a discussion instead:
         - [Discussions](https://github.com/shadcn-ui/ui/discussions/new?category=general)
 
   - type: textarea
@@ -51,5 +51,5 @@ body:
       options:
         - label: I've made research efforts and searched the documentation
           required: true
-        - label: I've searched for existing issues
+        - label: I've searched for existing issues and PRs
           required: true
