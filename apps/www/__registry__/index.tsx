@@ -502,6 +502,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/carousel-orientation")),
       files: ["registry/default/example/carousel-orientation.tsx"],
     },
+    "carousel-overflow": {
+      name: "carousel-overflow",
+      type: "components:example",
+      registryDependencies: ["carousel"],
+      component: React.lazy(() => import("@/registry/default/example/carousel-overflow")),
+      files: ["registry/default/example/carousel-overflow.tsx"],
+    },
     "carousel-api": {
       name: "carousel-api",
       type: "components:example",

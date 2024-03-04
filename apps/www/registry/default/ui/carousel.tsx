@@ -52,7 +52,7 @@ const Carousel = React.forwardRef<
       orientation = "horizontal",
       opts,
       setApi,
-      overflow = 'hidden',
+      overflow = "hidden",
       plugins,
       className,
       children,
@@ -128,6 +128,7 @@ const Carousel = React.forwardRef<
           carouselRef,
           api: api,
           opts,
+          overflow,
           orientation:
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
           scrollPrev,
@@ -159,12 +160,17 @@ const CarouselContent = React.forwardRef<
   const { overflow, carouselRef, orientation } = useCarousel()
 
   return (
-    <div ref={carouselRef} className="overflow-hidden">
+    <div
+      ref={carouselRef}
+      className={cn(
+        overflow === "hidden" ? "overflow-hidden" : "overflow-visible",
+        className
+      )}
+    >
       <div
         ref={ref}
         className={cn(
           "flex",
-          overflow === 'hidden' ? "overflow-hidden" : "overflow-visible",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}

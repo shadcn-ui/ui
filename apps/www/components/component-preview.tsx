@@ -90,7 +90,7 @@ export function ComponentPreview({
             </TabsTrigger>
           </TabsList>
         </div>
-        <TabsContent value="preview" className="relative rounded-md border">
+        <TabsContent value="preview" className="relative overflow-hidden rounded-md border">
           <div className="flex items-center justify-between p-4">
             <StyleSwitcher />
             {extractedClassNames ? (
