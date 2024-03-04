@@ -4,19 +4,17 @@ import { allDocs } from "contentlayer/generated"
 import "@/styles/mdx.css"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons"
 import Balancer from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { badgeVariants } from "@/components/ui/badge"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
-import { Icons } from "@/components/icons"
 import { Mdx } from "@/components/mdx-components"
 import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
+import { badgeVariants } from "@/registry/new-york/ui/badge"
+import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
 
 interface DocPageProps {
   params: {
@@ -29,7 +27,7 @@ async function getDocFromParams({ params }: DocPageProps) {
   const doc = allDocs.find((doc) => doc.slugAsParams === slug)
 
   if (!doc) {
-    null
+    return null
   }
 
   return doc
@@ -95,7 +93,7 @@ export default async function DocPage({ params }: DocPageProps) {
           <div className="overflow-hidden text-ellipsis whitespace-nowrap">
             Docs
           </div>
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRightIcon className="h-4 w-4" />
           <div className="font-medium text-foreground">{doc.title}</div>
         </div>
         <div className="space-y-2">
@@ -108,43 +106,48 @@ export default async function DocPage({ params }: DocPageProps) {
             </p>
           )}
         </div>
-        {doc.radix ? (
+        {doc.links ? (
           <div className="flex items-center space-x-2 pt-4">
-            {doc.radix?.link && (
+            {doc.links?.doc && (
               <Link
-                href={doc.radix.link}
+                href={doc.links.doc}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }))}
+                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
-                <Icons.radix className="mr-1 h-3 w-3" />
-                Radix UI
+                Docs
+                <ExternalLinkIcon className="h-3 w-3" />
               </Link>
             )}
-            {doc.radix?.api && (
+            {doc.links?.api && (
               <Link
-                href={doc.radix.api}
+                href={doc.links.api}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }))}
+                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
                 API Reference
+                <ExternalLinkIcon className="h-3 w-3" />
               </Link>
             )}
           </div>
         ) : null}
-        <Separator className="my-4 md:my-6" />
-        <Mdx code={doc.body.code} />
-        <Separator className="my-4 md:my-6" />
+        <div className="pb-12 pt-8">
+          <Mdx code={doc.body.code} />
+        </div>
         <DocsPager doc={doc} />
       </div>
-      <div className="hidden text-sm xl:block">
-        <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] overflow-hidden pt-6">
-          <ScrollArea className="pb-10">
-            <DashboardTableOfContents toc={toc} />
-          </ScrollArea>
+      {doc.toc && (
+        <div className="hidden text-sm xl:block">
+          <div className="sticky top-16 -mt-10 pt-4">
+            <ScrollArea className="pb-10">
+              <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12">
+                <DashboardTableOfContents toc={toc} />
+              </div>
+            </ScrollArea>
+          </div>
         </div>
-      </div>
+      )}
     </main>
   )
 }

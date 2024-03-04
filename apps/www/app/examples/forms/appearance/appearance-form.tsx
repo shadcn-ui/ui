@@ -1,14 +1,12 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { ChevronDown } from "lucide-react"
+import { ChevronDownIcon } from "@radix-ui/react-icons"
 import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { z } from "zod"
 
 import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { toast } from "@/components/ui/use-toast"
+import { Button, buttonVariants } from "@/registry/new-york/ui/button"
 import {
   Form,
   FormControl,
@@ -17,7 +15,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/react-hook-form/form"
+} from "@/registry/new-york/ui/form"
+import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
+import { toast } from "@/registry/new-york/ui/use-toast"
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {
@@ -67,7 +67,7 @@ export function AppearanceForm() {
                   <select
                     className={cn(
                       buttonVariants({ variant: "outline" }),
-                      "w-[200px] appearance-none bg-transparent font-normal"
+                      "w-[200px] appearance-none font-normal"
                     )}
                     {...field}
                   >
@@ -76,7 +76,7 @@ export function AppearanceForm() {
                     <option value="system">System</option>
                   </select>
                 </FormControl>
-                <ChevronDown className="absolute right-3 top-3 h-4 w-4 opacity-50" />
+                <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
               </div>
               <FormDescription>
                 Set the font you want to use in the dashboard.

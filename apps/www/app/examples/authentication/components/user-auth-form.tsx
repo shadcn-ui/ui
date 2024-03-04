@@ -3,10 +3,10 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Icons } from "@/components/icons"
+import { Button } from "@/registry/new-york/ui/button"
+import { Input } from "@/registry/new-york/ui/input"
+import { Label } from "@/registry/new-york/ui/label"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -64,7 +64,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         ) : (
           <Icons.gitHub className="mr-2 h-4 w-4" />
         )}{" "}
-        Github
+        GitHub
       </Button>
     </div>
   )

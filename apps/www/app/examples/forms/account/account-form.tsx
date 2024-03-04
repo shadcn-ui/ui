@@ -1,28 +1,21 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
-import { CalendarIcon, Check, ChevronsUpDown } from "lucide-react"
 import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { z } from "zod"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+import { Button } from "@/registry/new-york/ui/button"
+import { Calendar } from "@/registry/new-york/ui/calendar"
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/ui/command"
-import { Input } from "@/components/ui/input"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { toast } from "@/components/ui/use-toast"
+} from "@/registry/new-york/ui/command"
 import {
   Form,
   FormControl,
@@ -31,7 +24,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/react-hook-form/form"
+} from "@/registry/new-york/ui/form"
+import { Input } from "@/registry/new-york/ui/input"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/registry/new-york/ui/popover"
+import { toast } from "@/registry/new-york/ui/use-toast"
 
 const languages = [
   { label: "English", value: "en" },
@@ -173,7 +173,7 @@ export function AccountForm() {
                             (language) => language.value === field.value
                           )?.label
                         : "Select language"}
-                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
@@ -184,13 +184,13 @@ export function AccountForm() {
                     <CommandGroup>
                       {languages.map((language) => (
                         <CommandItem
-                          value={language.value}
+                          value={language.label}
                           key={language.value}
-                          onSelect={(value) => {
-                            form.setValue("language", value)
+                          onSelect={() => {
+                            form.setValue("language", language.value)
                           }}
                         >
-                          <Check
+                          <CheckIcon
                             className={cn(
                               "mr-2 h-4 w-4",
                               language.value === field.value

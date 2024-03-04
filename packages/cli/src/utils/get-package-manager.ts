@@ -1,17 +1,13 @@
-export function getPackageManager() {
-  const userAgent = process.env.npm_config_user_agent
+import { detect } from "@antfu/ni"
 
-  if (!userAgent) {
-    return "npm"
-  }
+export async function getPackageManager(
+  targetDir: string
+): Promise<"yarn" | "pnpm" | "bun" | "npm"> {
+  const packageManager = await detect({ programmatic: true, cwd: targetDir })
 
-  if (userAgent.startsWith("yarn")) {
-    return "yarn"
-  }
+  if (packageManager === "yarn@berry") return "yarn"
+  if (packageManager === "pnpm@6") return "pnpm"
+  if (packageManager === "bun") return "bun"
 
-  if (userAgent.startsWith("pnpm")) {
-    return "pnpm"
-  }
-
-  return "npm"
+  return packageManager ?? "npm"
 }

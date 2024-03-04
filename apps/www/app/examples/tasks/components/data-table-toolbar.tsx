@@ -1,10 +1,10 @@
 "use client"
 
+import { Cross2Icon } from "@radix-ui/react-icons"
 import { Table } from "@tanstack/react-table"
-import { X } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from "@/registry/new-york/ui/button"
+import { Input } from "@/registry/new-york/ui/input"
 import { DataTableViewOptions } from "@/app/examples/tasks/components/data-table-view-options"
 
 import { priorities, statuses } from "../data/data"
@@ -17,9 +17,7 @@ interface DataTableToolbarProps<TData> {
 export function DataTableToolbar<TData>({
   table,
 }: DataTableToolbarProps<TData>) {
-  const isFiltered =
-    table.getPreFilteredRowModel().rows.length >
-    table.getFilteredRowModel().rows.length
+  const isFiltered = table.getState().columnFilters.length > 0
 
   return (
     <div className="flex items-center justify-between">
@@ -53,7 +51,7 @@ export function DataTableToolbar<TData>({
             className="h-8 px-2 lg:px-3"
           >
             Reset
-            <X className="ml-2 h-4 w-4" />
+            <Cross2Icon className="ml-2 h-4 w-4" />
           </Button>
         )}
       </div>

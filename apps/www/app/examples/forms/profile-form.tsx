@@ -3,20 +3,10 @@
 import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useFieldArray, useForm } from "react-hook-form"
-import * as z from "zod"
+import { z } from "zod"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Form,
   FormControl,
@@ -25,7 +15,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/react-hook-form/form"
+} from "@/registry/new-york/ui/form"
+import { Input } from "@/registry/new-york/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york/ui/select"
+import { Textarea } from "@/registry/new-york/ui/textarea"
+import { toast } from "@/registry/new-york/ui/use-toast"
 
 const profileFormSchema = z.object({
   username: z
@@ -157,8 +157,8 @@ export function ProfileForm() {
             <FormField
               control={form.control}
               key={field.id}
-              name={`urls.${index}`}
-              render={() => (
+              name={`urls.${index}.value`}
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel className={cn(index !== 0 && "sr-only")}>
                     URLs
@@ -167,7 +167,7 @@ export function ProfileForm() {
                     Add links to your website, blog, or social media profiles.
                   </FormDescription>
                   <FormControl>
-                    <Input {...form.register(`urls.${index}.value`)} />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -176,9 +176,9 @@ export function ProfileForm() {
           ))}
           <Button
             type="button"
-            variant="link"
+            variant="outline"
             size="sm"
-            className="mt-1"
+            className="mt-2"
             onClick={() => append({ value: "" })}
           >
             Add URL
