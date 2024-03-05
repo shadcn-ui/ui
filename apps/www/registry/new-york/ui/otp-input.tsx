@@ -238,7 +238,6 @@ export const OTPInput = ({
             autoComplete="one-time-code"
             maxLength={1}
             size={1}
-            disabled={rest.disabled}
             className={cn(
               "text-center font-bold",
               activeInput === i && "z-10",
