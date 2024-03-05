@@ -14,8 +14,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/registry/default/ui/form"
-import { toast } from "@/registry/default/ui/use-toast"
 import { OTPInput } from "@/registry/default/ui/otp-input"
+import { toast } from "@/registry/default/ui/use-toast"
 
 const FormSchema = z.object({
   otp: z.string().min(6, {

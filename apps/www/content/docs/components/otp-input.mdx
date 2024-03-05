@@ -8,7 +8,7 @@ component: true
 
 ## About
 
-OTP Input is built on top of the [react-otp-input](https://www.npmjs.com/package/react-otp-input) API and has been modified to suit the styles and needs of Shadcn. For more information on the original package, please refer to the [documentation](https://github.com/devfolioco/react-otp-input).
+OTP Input is inspired by the [react-otp-input](https://www.npmjs.com/package/react-otp-input) and [input-otp](https://input-otp.rodz.dev/) libraries to build a simple, accessible and customizable component by composing Shadcn base components.
 
 ## Installation
 
@@ -45,7 +45,7 @@ npx shadcn-ui@latest add otp-input
 ## Usage
 
 ```tsx
-import { OTPInput } from '@/components/ui/otp-input';
+import { OTPInput } from "@/components/ui/otp-input"
 ```
 
 ```tsx
@@ -76,6 +76,11 @@ Sometimes you may need to have a separator between each generated input. For thi
 
 <ComponentPreview name="otp-input-separator" />
 
+<Callout>
+  The `renderSeparator` prop takes the index of the current input as an optional
+  argument. This can be useful if you need a separator in a certain place.
+</Callout>
+
 ### Controlling the value
 
 You can control the value of the OTP input by passing the `value` and `onChange` props.
@@ -93,11 +98,16 @@ You can detect the `onPaste` event by passing the `onPaste` prop.
 You can set the `autoFocus` prop to `true` to automatically focus the first input.
 
 <Callout>
-For practical purposes, we did not generate a live example for this case to avoid scrolling the page to this point because of the `autoFocus`
+  For practical purposes, we did not generate a live example for this case to
+  avoid scrolling the page to this point because of the `autoFocus`
 </Callout>
 
+#### Last Input Focused
+
+You can set the `lastInputFocused` prop to `true` to automatically focus the last input. This can be useful if by default the OTP value is already complete and we want the component to have the focus on the last input so that the user can easily modify the value.
+
 ```tsx
-import { OTPInput } from "@/components/ui/otp-input";
+import { OTPInput } from "@/components/ui/otp-input"
 
 export default function OtpInputDemo() {
   return <OTPInput autoFocus />
@@ -119,3 +129,54 @@ The component renders by default this line of code
 ```
 
 This allows to have a hidden input for the form you use with server actions and you can capture it inside the FormData. It is important that you set the `name` prop to be included inside the FormData.
+
+### Custom styles
+
+You can customize the styles of the OTP input by passing the `styles` prop. The `styles` prop is an object that accepts the following keys:
+
+- `container` - The container of the OTP input.
+- `input` - The input of the OTP input. It can be a string or a function that accepts the index of the input.
+
+<ComponentPreview name="otp-input-custom-style" />
+
+## API
+
+```tsx
+type AllowedInputTypes = "password" | "text" | "number" | "tel"
+
+interface OTPInputProps
+  extends Pick<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    "pattern" | "autoFocus" | "id" | "name"
+  > {
+  /** Value of the OTP input */
+  value?: string
+  /** Callback to be called when the OTP value changes */
+  onChange?: (otp: string) => void
+  /** Callback to be called when pasting content into the component */
+  onPaste?: (event: React.ClipboardEvent<HTMLDivElement>) => void
+  /** Callback to be called when the input is focused */
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void
+  /** Callback to be called when the input is blurred */
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
+  /** Callback to be called when a key is pressed */
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
+  /** Callback to be called when the input value changes */
+  onInput?: (event: React.FormEvent<HTMLInputElement>) => void
+  /** Number of OTP inputs to be rendered */
+  numInputs?: number
+  /** Placeholder for the inputs */
+  placeholder?: string
+  /** Type of the input */
+  type?: AllowedInputTypes
+  /** Function to render the separator */
+  renderSeparator?: ((index: number) => React.ReactNode) | React.ReactNode
+  /** Additional styles for the component */
+  styles?: {
+    container?: string
+    input?: string | ((index: number) => React.ReactNode)
+  }
+  /** Focus the last input */
+  lastInputFocused?: boolean
+}
+```

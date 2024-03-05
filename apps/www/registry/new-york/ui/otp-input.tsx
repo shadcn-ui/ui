@@ -3,56 +3,73 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Input } from "@/registry/new-york/ui/input";
+import { Input } from "@/registry/new-york/ui/input"
 
-type AllowedInputTypes = 'password' | 'text' | 'number' | 'tel';
+type AllowedInputTypes = "password" | "text" | "number" | "tel"
 
 interface OTPInputProps
   extends Pick<
     React.InputHTMLAttributes<HTMLInputElement>,
-    | "onPaste"
-    | "pattern"
-    | "autoFocus"
-    | "className"
-    | "id"
-    | "name"
+    "pattern" | "autoFocus" | "id" | "name"
   > {
   /** Value of the OTP input */
   value?: string
   /** Callback to be called when the OTP value changes */
   onChange?: (otp: string) => void
   /** Callback to be called when pasting content into the component */
-  onPaste?: (event: React.ClipboardEvent<HTMLDivElement>) => void;
+  onPaste?: (event: React.ClipboardEvent<HTMLDivElement>) => void
+  /** Callback to be called when the input is focused */
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void
+  /** Callback to be called when the input is blurred */
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
+  /** Callback to be called when a key is pressed */
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
+  /** Callback to be called when the input value changes */
+  onInput?: (event: React.FormEvent<HTMLInputElement>) => void
   /** Number of OTP inputs to be rendered */
   numInputs?: number
   /** Placeholder for the inputs */
-  placeholder?: string;
-    /** Type of the input */
+  placeholder?: string
+  /** Type of the input */
   type?: AllowedInputTypes
   /** Function to render the separator */
-  renderSeparator?: ((index: number) => React.ReactNode) | React.ReactNode;
+  renderSeparator?: ((index: number) => React.ReactNode) | React.ReactNode
+  /** Additional styles for the component */
+  styles?: {
+    container?: string
+    input?: string | ((index: number) => React.ReactNode)
+  }
+  /** Focus the last input */
+  lastInputFocused?: boolean
 }
 
 export const OTPInput = ({
   value = "",
   numInputs = 6,
   onChange,
+  onPaste,
+  onFocus,
+  onBlur,
+  onKeyDown,
+  onInput,
   type = "text",
   placeholder = "_",
   pattern = "[0-9]",
   autoFocus = false,
-  className,
+  lastInputFocused = false,
+  styles,
   id,
-  name,
-  onPaste,
+  name = "otp-input",
   renderSeparator,
   ...rest
 }: OTPInputProps) => {
-  const [otpValue, setOTPValue] = React.useState(value)
+  const [otpValue, setOTPValue] = React.useState(
+    new Array(numInputs).fill("").map((_, index) => value[index] ?? "")
+  )
   const [activeInput, setActiveInput] = React.useState(0)
   const inputRefs = React.useRef<Array<HTMLInputElement | null>>([])
 
-  const getOTPValue = () => (otpValue ? otpValue.toString().split("") : [])
+  const getOTPValue = () => otpValue
 
   const isInputNum = type === "number" || type === "tel"
 
@@ -63,8 +80,10 @@ export const OTPInput = ({
   React.useEffect(() => {
     if (autoFocus) {
       inputRefs.current[0]?.focus()
+    } else if (lastInputFocused) {
+      focusInput(numInputs - 1)
     }
-  }, [autoFocus])
+  }, [autoFocus, lastInputFocused])
 
   const isInputValueValid = (value: string) => {
     const isTypeValid = isInputNum
@@ -84,12 +103,22 @@ export const OTPInput = ({
 
   const handleFocus =
     (event: React.FocusEvent<HTMLInputElement>) => (index: number) => {
-      setActiveInput(index)
-      event.target.select()
+      const otp = getOTPValue()
+      if (otp[index] === "") {
+        const lastFilledIndex = otp.findIndex((value) => value === "")
+        setActiveInput(lastFilledIndex)
+        inputRefs.current[lastFilledIndex]?.select()
+        return
+      } else {
+        setActiveInput(index)
+        event.target.select()
+      }
+      onFocus?.(event)
     }
 
-  const handleBlur = () => {
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     setActiveInput(activeInput - 1)
+    onBlur?.(event)
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -106,7 +135,9 @@ export const OTPInput = ({
       focusInput(activeInput - 1)
     } else if (event.code === "ArrowRight") {
       event.preventDefault()
-      focusInput(activeInput + 1)
+      if (otp[activeInput]) {
+        focusInput(activeInput + 1)
+      }
     }
     // React does not trigger onChange when the same value is entered
     // again. So we need to focus the next input manually in this case.
@@ -123,6 +154,7 @@ export const OTPInput = ({
     } else if (isInputNum && !isInputValueValid(event.key)) {
       event.preventDefault()
     }
+    onKeyDown?.(event)
   }
 
   const focusInput = (index: number) => {
@@ -136,15 +168,21 @@ export const OTPInput = ({
   }
 
   const changeCodeAtFocus = (value: string) => {
-    const otp = getOTPValue()
-    otp[activeInput] = value[0]
-    handleOTPChange(otp)
+    let otp = getOTPValue()
+    if (value === "") {
+      // If the value is empty, then move the values to the left (e.g Backspace is pressed)
+      let newOtp = otp.slice(0, activeInput).concat(otp.slice(activeInput + 1))
+      newOtp = newOtp.concat(new Array(numInputs - newOtp.length).fill(""))
+      handleOTPChange(newOtp)
+    } else {
+      otp[activeInput] = value
+      handleOTPChange(otp)
+    }
   }
 
   const handleOTPChange = (otp: Array<string>) => {
-    const otpValue = otp.join("")
-    setOTPValue(otpValue)
-    onChange?.(otpValue)
+    setOTPValue([...otp, ...new Array(numInputs - otp.length).fill("")])
+    onChange?.(otp.join(""))
   }
 
   const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
@@ -174,13 +212,18 @@ export const OTPInput = ({
 
     focusInput(nextActiveInput)
     handleOTPChange(otp)
+    onPaste?.(event)
   }
 
   return (
-    <div className="flex gap-2 items-center" onPaste={onPaste}>
+    <div
+      className={cn("flex gap-2 items-center", styles?.container)}
+      onPaste={onPaste}
+    >
       {Array.from({ length: numInputs }, (_, index) => index).map((i) => (
         <React.Fragment key={i}>
           <Input
+            tabIndex={i + 1}
             id={`${id}-${i}`}
             name={`${name}-${i}`}
             value={getOTPValue()[i] ?? ""}
@@ -191,14 +234,23 @@ export const OTPInput = ({
             onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             onPaste={handlePaste}
+            onInput={onInput}
             autoComplete="one-time-code"
             maxLength={1}
             size={1}
-            className={cn("text-center font-bold", className)}
+            className={cn(
+              "text-center font-bold",
+              activeInput === i && "z-10",
+              typeof styles?.input === "function"
+                ? styles.input(i)
+                : styles?.input
+            )}
             pattern={pattern}
             {...rest}
           />
-          {i < numInputs - 1 && (typeof renderSeparator === 'function' ? renderSeparator(i) : renderSeparator)}
+          {typeof renderSeparator === "function"
+            ? renderSeparator(i)
+            : i < numInputs - 1 && renderSeparator}
         </React.Fragment>
       ))}
       <input type="hidden" id={id} name={name} value={otpValue} />

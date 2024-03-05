@@ -831,6 +831,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/otp-input-form")),
       files: ["registry/default/example/otp-input-form.tsx"],
     },
+    "otp-input-custom-style": {
+      name: "otp-input-custom-style",
+      type: "components:example",
+      registryDependencies: ["otp-input"],
+      component: React.lazy(() => import("@/registry/default/example/otp-input-custom-style")),
+      files: ["registry/default/example/otp-input-custom-style.tsx"],
+    },
     "pagination-demo": {
       name: "pagination-demo",
       type: "components:example",
@@ -2112,6 +2119,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["otp-input"],
       component: React.lazy(() => import("@/registry/new-york/example/otp-input-form")),
       files: ["registry/new-york/example/otp-input-form.tsx"],
+    },
+    "otp-input-custom-style": {
+      name: "otp-input-custom-style",
+      type: "components:example",
+      registryDependencies: ["otp-input"],
+      component: React.lazy(() => import("@/registry/new-york/example/otp-input-custom-style")),
+      files: ["registry/new-york/example/otp-input-custom-style.tsx"],
     },
     "pagination-demo": {
       name: "pagination-demo",

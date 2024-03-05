@@ -721,6 +721,12 @@ const example: Registry = [
     files: ["example/otp-input-form.tsx"],
   },
   {
+    name: "otp-input-custom-style",
+    type: "components:example",
+    registryDependencies: ["otp-input"],
+    files: ["example/otp-input-custom-style.tsx"],
+  },
+  {
     name: "pagination-demo",
     type: "components:example",
     registryDependencies: ["pagination"],
