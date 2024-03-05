@@ -53,7 +53,7 @@ export default function RadioGroupForm() {
                   defaultValue={field.value}
                   className="flex flex-col space-y-1"
                 >
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem className="flex items-center space-x-3 rtl:space-x-reverse space-y-0">
                     <FormControl>
                       <RadioGroupItem value="all" />
                     </FormControl>
@@ -61,7 +61,7 @@ export default function RadioGroupForm() {
                       All new messages
                     </FormLabel>
                   </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem className="flex items-center space-x-3 rtl:space-x-reverse space-y-0">
                     <FormControl>
                       <RadioGroupItem value="mentions" />
                     </FormControl>
@@ -69,7 +69,7 @@ export default function RadioGroupForm() {
                       Direct messages and mentions
                     </FormLabel>
                   </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem className="flex items-center space-x-3 rtl:space-x-reverse space-y-0">
                     <FormControl>
                       <RadioGroupItem value="none" />
                     </FormControl>

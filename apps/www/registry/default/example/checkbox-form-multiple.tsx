@@ -92,7 +92,7 @@ export default function CheckboxReactHookFormMultiple() {
                     return (
                       <FormItem
                         key={item.id}
-                        className="flex flex-row items-start space-x-3 space-y-0"
+                        className="flex flex-row items-start space-x-3 rtl:space-x-reverse space-y-0"
                       >
                         <FormControl>
                           <Checkbox

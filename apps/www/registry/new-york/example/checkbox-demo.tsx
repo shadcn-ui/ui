@@ -4,7 +4,7 @@ import { Checkbox } from "@/registry/new-york/ui/checkbox"
 
 export default function CheckboxDemo() {
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center space-x-2 rtl:space-x-reverse">
       <Checkbox id="terms" />
       <label
         htmlFor="terms"

@@ -19,7 +19,7 @@ export default function CollapsibleDemo() {
       onOpenChange={setIsOpen}
       className="w-[350px] space-y-2"
     >
-      <div className="flex items-center justify-between space-x-4 px-4">
+      <div className="flex items-center justify-between space-x-4 rtl:space-x-reverse px-4">
         <h4 className="text-sm font-semibold">
           @peduarte starred 3 repositories
         </h4>

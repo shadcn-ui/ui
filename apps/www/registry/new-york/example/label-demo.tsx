@@ -4,7 +4,7 @@ import { Label } from "@/registry/new-york/ui/label"
 export default function LabelDemo() {
   return (
     <div>
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 rtl:space-x-reverse">
         <Checkbox id="terms" />
         <Label htmlFor="terms">Accept terms and conditions</Label>
       </div>

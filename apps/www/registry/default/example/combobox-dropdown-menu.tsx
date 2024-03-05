@@ -42,8 +42,8 @@ export default function ComboboxDropdownMenu() {
 
   return (
     <div className="flex w-full flex-col items-start justify-between rounded-md border px-4 py-3 sm:flex-row sm:items-center">
-      <p className="text-sm font-medium leading-none">
-        <span className="mr-2 rounded-lg bg-primary px-2 py-1 text-xs text-primary-foreground">
+      <p className="text-sm font-medium leading-none flex items-center">
+        <span className="me-2 rounded-lg bg-primary px-2 py-1 text-xs text-primary-foreground">
           {label}
         </span>
         <span className="text-muted-foreground">Create a new project</span>
@@ -58,17 +58,17 @@ export default function ComboboxDropdownMenu() {
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              <User className="mr-2 h-4 w-4" />
+              <User className="me-2 h-4 w-4" />
               Assign to...
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Calendar className="mr-2 h-4 w-4" />
+              <Calendar className="me-2 h-4 w-4" />
               Set due date...
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
-                <Tags className="mr-2 h-4 w-4" />
+                <Tags className="me-2 h-4 w-4" />
                 Apply label
               </DropdownMenuSubTrigger>
               <DropdownMenuSubContent className="p-0">

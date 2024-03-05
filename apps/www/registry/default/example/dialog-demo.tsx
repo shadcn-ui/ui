@@ -26,7 +26,7 @@ export default function DialogDemo() {
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
+            <Label htmlFor="name" className="text-end">
               Name
             </Label>
             <Input
@@ -36,7 +36,7 @@ export default function DialogDemo() {
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
+            <Label htmlFor="username" className="text-end">
               Username
             </Label>
             <Input
