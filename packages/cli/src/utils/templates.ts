@@ -16,7 +16,7 @@ export function cn(...inputs) {
 
 export const TAILWIND_CONFIG = `/** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
+  darkMode: ["selector"],
   content: [
     './pages/**/*.{<%- extension %>,<%- extension %>x}',
     './components/**/*.{<%- extension %>,<%- extension %>x}',
