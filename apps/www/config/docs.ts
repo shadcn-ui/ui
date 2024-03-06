@@ -210,6 +210,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Input OTP",
+          href: "/docs/components/input-otp",
+          items: [],
+        },
+        {
           title: "Label",
           href: "/docs/components/label",
           items: [],

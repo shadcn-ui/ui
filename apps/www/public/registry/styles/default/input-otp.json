@@ -1,0 +1,13 @@
+{
+  "name": "input-otp",
+  "dependencies": [
+    "input-otp"
+  ],
+  "files": [
+    {
+      "name": "input-otp.tsx",
+      "content": "const InputOTP = () => <div>ds</div>\n\nexport { InputOTP }\n"
+    }
+  ],
+  "type": "components:ui"
+}

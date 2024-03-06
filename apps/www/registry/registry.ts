@@ -129,6 +129,12 @@ const ui: Registry = [
     files: ["ui/input.tsx"],
   },
   {
+    name: "input-otp",
+    type: "components:ui",
+    dependencies: ["input-otp"],
+    files: ["ui/input-otp.tsx"],
+  },
+  {
     name: "label",
     type: "components:ui",
     dependencies: ["@radix-ui/react-label"],
@@ -654,6 +660,12 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["input", "button", "label"],
     files: ["example/input-with-text.tsx"],
+  },
+  {
+    name: "input-otp-demo",
+    type: "components:example",
+    registryDependencies: ["input-otp"],
+    files: ["example/input-otp-demo.tsx"],
   },
   {
     name: "label-demo",

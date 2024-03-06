@@ -145,6 +145,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/input")),
       files: ["registry/default/ui/input.tsx"],
     },
+    "input-otp": {
+      name: "input-otp",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/input-otp")),
+      files: ["registry/default/ui/input-otp.tsx"],
+    },
     "label": {
       name: "label",
       type: "components:ui",
@@ -753,6 +760,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["input","button","label"],
       component: React.lazy(() => import("@/registry/default/example/input-with-text")),
       files: ["registry/default/example/input-with-text.tsx"],
+    },
+    "input-otp-demo": {
+      name: "input-otp-demo",
+      type: "components:example",
+      registryDependencies: ["input-otp"],
+      component: React.lazy(() => import("@/registry/default/example/input-otp-demo")),
+      files: ["registry/default/example/input-otp-demo.tsx"],
     },
     "label-demo": {
       name: "label-demo",
@@ -1371,6 +1385,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/ui/input")),
       files: ["registry/new-york/ui/input.tsx"],
     },
+    "input-otp": {
+      name: "input-otp",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/input-otp")),
+      files: ["registry/new-york/ui/input-otp.tsx"],
+    },
     "label": {
       name: "label",
       type: "components:ui",
@@ -1979,6 +2000,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["input","button","label"],
       component: React.lazy(() => import("@/registry/new-york/example/input-with-text")),
       files: ["registry/new-york/example/input-with-text.tsx"],
+    },
+    "input-otp-demo": {
+      name: "input-otp-demo",
+      type: "components:example",
+      registryDependencies: ["input-otp"],
+      component: React.lazy(() => import("@/registry/new-york/example/input-otp-demo")),
+      files: ["registry/new-york/example/input-otp-demo.tsx"],
     },
     "label-demo": {
       name: "label-demo",
