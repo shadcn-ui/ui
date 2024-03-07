@@ -231,8 +231,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(next@14.0.4)
       input-otp:
-        specifier: ^1.0.0
-        version: 1.0.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.0.1
+        version: 1.0.1(react-dom@18.2.0)(react@18.2.0)
       jotai:
         specifier: ^2.1.0
         version: 2.1.0(react@18.2.0)
@@ -7615,8 +7615,8 @@ packages:
     resolution: {integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==}
     dev: false
 
-  /input-otp@1.0.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-sJJJM0Gul6bHz/Hjewm0Ebxoj6GCcX0ZD2pEhxT85VWzkOrK0iGtysXhtMrovRJYBz5RVGlHBsLl1VE07J83EQ==}
+  /input-otp@1.0.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-AFMGRsOwXcH7koO+8nnVcJFYEe92tNmRlb2TUKbj9Bpdyc44GaS3LfJam3MdoXQv1jejpMS0+fxJFSCsEDHd9A==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
       react-dom: ^16.8 || ^17.0 || ^18.0
