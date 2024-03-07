@@ -12,7 +12,11 @@ const InputOTP = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <OTPInput
     ref={ref}
-    containerClassName={cn("flex items-center gap-2", className)}
+    containerClassName={cn(
+      "flex items-center gap-2 has-[:disabled]:opacity-50",
+      className
+    )}
+    className="disabled:cursor-not-allowed"
     {...props}
   />
 ))
