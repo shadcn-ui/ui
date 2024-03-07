@@ -220,6 +220,16 @@
     "type": "components:ui"
   },
   {
+    "name": "input-otp",
+    "dependencies": [
+      "input-otp"
+    ],
+    "files": [
+      "ui/input-otp.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "label",
     "dependencies": [
       "@radix-ui/react-label"
