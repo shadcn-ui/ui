@@ -160,6 +160,24 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 />
 ```
 
+### Disabled
+
+<ComponentPreview name="input-otp-disabled" />
+
+```tsx showLineNumbers {3}
+<InputOTP
+  maxLength={6}
+  disabled
+  render={({ slots }) => (
+    <InputOTPGroup>
+      {slots.map((slot, index) => (
+        <InputOTPSlot key={index} {...slot} />
+      ))}{" "}
+    </InputOTPGroup>
+  )}
+/>
+```
+
 ### Separator
 
 You can use the `<InputOTPSeparator />` component to add a separator between the input groups.

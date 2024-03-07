@@ -824,6 +824,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/input-otp-pattern")),
       files: ["registry/default/example/input-otp-pattern.tsx"],
     },
+    "input-otp-disabled": {
+      name: "input-otp-disabled",
+      type: "components:example",
+      registryDependencies: ["input-otp"],
+      component: React.lazy(() => import("@/registry/default/example/input-otp-disabled")),
+      files: ["registry/default/example/input-otp-disabled.tsx"],
+    },
     "input-otp-separator": {
       name: "input-otp-separator",
       type: "components:example",
@@ -2140,6 +2147,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["input-otp"],
       component: React.lazy(() => import("@/registry/new-york/example/input-otp-pattern")),
       files: ["registry/new-york/example/input-otp-pattern.tsx"],
+    },
+    "input-otp-disabled": {
+      name: "input-otp-disabled",
+      type: "components:example",
+      registryDependencies: ["input-otp"],
+      component: React.lazy(() => import("@/registry/default/example/input-otp-disabled")),
+      files: ["registry/default/example/input-otp-disabled.tsx"],
     },
     "input-otp-separator": {
       name: "input-otp-separator",
