@@ -37,6 +37,12 @@ const ui: Registry = [
     files: ["ui/badge.tsx"],
   },
   {
+    name: "breadcrumb",
+    type: "components:ui",
+    dependencies: ["@radix-ui/react-slot"],
+    files: ["ui/breadcrumb.tsx"],
+  },
+  {
     name: "button",
     type: "components:ui",
     dependencies: ["@radix-ui/react-slot"],
@@ -332,6 +338,42 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["badge"],
     files: ["example/badge-secondary.tsx"],
+  },
+  {
+    name: "breadcrumb-demo",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-demo.tsx"],
+  },
+  {
+    name: "breadcrumb-separator",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-separator.tsx"],
+  },
+  {
+    name: "breadcrumb-dropdown",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-dropdown.tsx"],
+  },
+  {
+    name: "breadcrumb-ellipsis",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-ellipsis"],
+  },
+  {
+    name: "breadcrumb-responsive",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-responsive"],
+  },
+  {
+    name: "breadcrumb-link",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-link"],
   },
   {
     name: "button-demo",
