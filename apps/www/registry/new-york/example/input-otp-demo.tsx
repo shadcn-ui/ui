@@ -19,7 +19,7 @@ export default function InputOTPDemo() {
           <InputOTPSeparator />
           <InputOTPGroup>
             {slots.slice(3).map((slot, index) => (
-              <InputOTPSlot key={index} {...slot} />
+              <InputOTPSlot key={index + 3} {...slot} />
             ))}
           </InputOTPGroup>
         </>

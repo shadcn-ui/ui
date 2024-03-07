@@ -6,7 +6,7 @@ import {
   InputOTPSlot,
 } from "@/registry/new-york/ui/input-otp"
 
-export default function InputOTPDemo() {
+export default function InputOTPPattern() {
   return (
     <InputOTP
       maxLength={6}

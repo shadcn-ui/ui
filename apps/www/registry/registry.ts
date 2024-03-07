@@ -680,6 +680,18 @@ const example: Registry = [
     files: ["example/input-otp-separator.tsx"],
   },
   {
+    name: "input-otp-controlled",
+    type: "components:example",
+    registryDependencies: ["input-otp"],
+    files: ["example/input-otp-controlled.tsx"],
+  },
+  {
+    name: "input-otp-form",
+    type: "components:example",
+    registryDependencies: ["input-otp", "form"],
+    files: ["example/input-otp-form.tsx"],
+  },
+  {
     name: "label-demo",
     type: "components:example",
     registryDependencies: ["label"],
