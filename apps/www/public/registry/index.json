@@ -57,6 +57,16 @@
     "type": "components:ui"
   },
   {
+    "name": "breadcrumb",
+    "dependencies": [
+      "@radix-ui/react-slot"
+    ],
+    "files": [
+      "ui/breadcrumb.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "button",
     "dependencies": [
       "@radix-ui/react-slot"
