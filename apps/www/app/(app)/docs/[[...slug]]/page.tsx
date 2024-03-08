@@ -19,7 +19,7 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
-} from "@/registry/new-york/ui/breadcrumb"
+} from "@/registry/default/ui/breadcrumb"
 import { badgeVariants } from "@/registry/new-york/ui/badge"
 import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
 
