@@ -324,6 +324,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "rating": {
+      name: "rating",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/rating")),
+      files: ["registry/default/ui/rating.tsx"],
+    },
     "resizable": {
       name: "resizable",
       type: "components:ui",
@@ -1412,6 +1419,48 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "rating-demo": {
+      name: "rating-demo",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/default/example/rating-demo")),
+      files: ["registry/default/example/rating-demo.tsx"],
+    },
+    "rating-custom-icon": {
+      name: "rating-custom-icon",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/default/example/rating-custom-icon")),
+      files: ["registry/default/example/rating-custom-icon.tsx"],
+    },
+    "rating-count": {
+      name: "rating-count",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/default/example/rating-count")),
+      files: ["registry/default/example/rating-count.tsx"],
+    },
+    "rating-custom-label": {
+      name: "rating-custom-label",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/default/example/rating-custom-label")),
+      files: ["registry/default/example/rating-custom-label.tsx"],
+    },
+    "rating-disabled": {
+      name: "rating-disabled",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/default/example/rating-disabled")),
+      files: ["registry/default/example/rating-disabled.tsx"],
+    },
+    "rating-readonly": {
+      name: "rating-readonly",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/default/example/rating-readonly")),
+      files: ["registry/default/example/rating-readonly.tsx"],
     },
     "resizable-demo": {
       name: "resizable-demo",
@@ -2714,6 +2763,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "rating": {
+      name: "rating",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/rating")),
+      files: ["registry/new-york/ui/rating.tsx"],
+    },
     "resizable": {
       name: "resizable",
       type: "components:ui",
@@ -3802,6 +3858,48 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "rating-demo": {
+      name: "rating-demo",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/new-york/example/rating-demo")),
+      files: ["registry/new-york/example/rating-demo.tsx"],
+    },
+    "rating-custom-icon": {
+      name: "rating-custom-icon",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/new-york/example/rating-custom-icon")),
+      files: ["registry/new-york/example/rating-custom-icon.tsx"],
+    },
+    "rating-count": {
+      name: "rating-count",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/new-york/example/rating-count")),
+      files: ["registry/new-york/example/rating-count.tsx"],
+    },
+    "rating-custom-label": {
+      name: "rating-custom-label",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/new-york/example/rating-custom-label")),
+      files: ["registry/new-york/example/rating-custom-label.tsx"],
+    },
+    "rating-disabled": {
+      name: "rating-disabled",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/new-york/example/rating-disabled")),
+      files: ["registry/new-york/example/rating-disabled.tsx"],
+    },
+    "rating-readonly": {
+      name: "rating-readonly",
+      type: "components:example",
+      registryDependencies: ["rating"],
+      component: React.lazy(() => import("@/registry/new-york/example/rating-readonly")),
+      files: ["registry/new-york/example/rating-readonly.tsx"],
     },
     "resizable-demo": {
       name: "resizable-demo",
