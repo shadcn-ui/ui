@@ -352,6 +352,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/alert-destructive")),
       files: ["registry/default/example/alert-destructive.tsx"],
     },
+    "alert-informative": {
+      name: "alert-informative",
+      type: "components:example",
+      registryDependencies: ["alert"],
+      component: React.lazy(() => import("@/registry/default/example/alert-informative")),
+      files: ["registry/default/example/alert-informative.tsx"],
+    },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
       type: "components:example",
@@ -386,6 +393,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["badge"],
       component: React.lazy(() => import("@/registry/default/example/badge-destructive")),
       files: ["registry/default/example/badge-destructive.tsx"],
+    },
+    "badge-informative": {
+      name: "badge-informative",
+      type: "components:example",
+      registryDependencies: ["badge"],
+      component: React.lazy(() => import("@/registry/default/example/badge-informative")),
+      files: ["registry/default/example/badge-informative.tsx"],
     },
     "badge-outline": {
       name: "badge-outline",
@@ -1174,6 +1188,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/toast-destructive")),
       files: ["registry/default/example/toast-destructive.tsx"],
     },
+    "toast-informative": {
+      name: "toast-informative",
+      type: "components:example",
+      registryDependencies: ["toast"],
+      component: React.lazy(() => import("@/registry/default/example/toast-informative")),
+      files: ["registry/default/example/toast-informative.tsx"],
+    },
     "toast-simple": {
       name: "toast-simple",
       type: "components:example",
@@ -1746,6 +1767,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/alert-destructive")),
       files: ["registry/new-york/example/alert-destructive.tsx"],
     },
+    "alert-informative": {
+      name: "alert-informative",
+      type: "components:example",
+      registryDependencies: ["alert"],
+      component: React.lazy(() => import("@/registry/new-york/example/alert-informative")),
+      files: ["registry/new-york/example/alert-informative.tsx"],
+    },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
       type: "components:example",
@@ -1780,6 +1808,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["badge"],
       component: React.lazy(() => import("@/registry/new-york/example/badge-destructive")),
       files: ["registry/new-york/example/badge-destructive.tsx"],
+    },
+    "badge-informative": {
+      name: "badge-informative",
+      type: "components:example",
+      registryDependencies: ["badge"],
+      component: React.lazy(() => import("@/registry/new-york/example/badge-informative")),
+      files: ["registry/new-york/example/badge-informative.tsx"],
     },
     "badge-outline": {
       name: "badge-outline",
@@ -2567,6 +2602,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["toast"],
       component: React.lazy(() => import("@/registry/new-york/example/toast-destructive")),
       files: ["registry/new-york/example/toast-destructive.tsx"],
+    },
+    "toast-informative": {
+      name: "toast-informative",
+      type: "components:example",
+      registryDependencies: ["toast"],
+      component: React.lazy(() => import("@/registry/new-york/example/toast-informative")),
+      files: ["registry/new-york/example/toast-informative.tsx"],
     },
     "toast-simple": {
       name: "toast-simple",
