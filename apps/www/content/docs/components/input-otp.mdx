@@ -1,0 +1,202 @@
+---
+title: Input OTP
+description: Accessible one-time password component with copy paste functionality.
+component: true
+links:
+  doc: https://input-otp.rodz.dev
+---
+
+<ComponentPreview name="input-otp-demo" />
+
+## About
+
+Input OTP is built on top of [input-otp](https://github.com/guilhermerodz/input-otp) by [@guilherme_rodz](https://twitter.com/guilherme_rodz).
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<Steps>
+
+<Step>Run the following command:</Step>
+
+```bash
+npx shadcn-ui@latest add input-otp
+```
+
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js showLineNumbers title="tailwind.config.js" {6-9,12}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        "caret-blink": {
+          "0%,70%,100%": { opacity: "1" },
+          "20%,50%": { opacity: "0" },
+        },
+      },
+      animation: {
+        "caret-blink": "caret-blink 1.25s ease-out infinite",
+      },
+    },
+  },
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install input-otp
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input-otp" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js showLineNumbers title="tailwind.config.js" {6-9,12}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        "caret-blink": {
+          "0%,70%,100%": { opacity: "1" },
+          "20%,50%": { opacity: "0" },
+        },
+      },
+      animation: {
+        "caret-blink": "caret-blink 1.25s ease-out infinite",
+      },
+    },
+  },
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+```
+
+```tsx
+<InputOTP
+  maxLength={6}
+  render={({ slots }) => (
+    <>
+      <InputOTPGroup>
+        {slots.slice(0, 3).map((slot, index) => (
+          <InputOTPSlot key={index} {...slot} />
+        ))}{" "}
+      </InputOTPGroup>
+      <InputOTPSeparator />
+      <InputOTPGroup>
+        {slots.slice(3).map((slot, index) => (
+          <InputOTPSlot key={index} {...slot} />
+        ))}
+      </InputOTPGroup>
+    </>
+  )}
+/>
+```
+
+## Examples
+
+### Pattern
+
+Use the `pattern` prop to define a custom pattern for the OTP input.
+
+<ComponentPreview name="input-otp-pattern" />
+
+```tsx showLineNumbers {1,7}
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
+
+...
+
+<InputOTP
+  maxLength={6}
+  pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
+  render={({ slots }) => (
+    <InputOTPGroup>
+      {slots.map((slot, index) => (
+        <InputOTPSlot key={index} {...slot} />
+      ))}{" "}
+    </InputOTPGroup>
+  )}
+/>
+```
+
+### Separator
+
+You can use the `<InputOTPSeparator />` component to add a separator between the input groups.
+
+<ComponentPreview name="input-otp-separator" />
+
+```tsx showLineNumbers {4,17}
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/registry/new-york/ui/input-otp"
+
+...
+
+<InputOTP
+  maxLength={6}
+  render={({ slots }) => (
+    <InputOTPGroup className="gap-2">
+      {slots.map((slot, index) => (
+        <React.Fragment key={index}>
+          <InputOTPSlot className="rounded-md border" {...slot} />
+          {index !== slots.length - 1 && <InputOTPSeparator />}
+        </React.Fragment>
+      ))}{" "}
+    </InputOTPGroup>
+  )}
+/>
+```
+
+### Controlled
+
+You can use the `value` and `onChange` props to control the input value.
+
+<ComponentPreview name="input-otp-controlled" />
+
+### Form
+
+<ComponentPreview name="input-otp-form" />
