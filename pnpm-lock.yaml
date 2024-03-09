@@ -306,9 +306,6 @@ importers:
       '@storybook/addon-links':
         specifier: ^7.6.17
         version: 7.6.17(react@18.2.0)
-      '@storybook/addon-mdx-gfm':
-        specifier: ^7.6.17
-        version: 7.6.17
       '@storybook/blocks':
         specifier: ^7.6.17
         version: 7.6.17(@types/react-dom@18.2.4)(@types/react@18.2.7)(react-dom@18.2.0)(react@18.2.0)
@@ -2798,6 +2795,10 @@ packages:
     peerDependencies:
       '@effect-ts/otel-node': '*'
     peerDependenciesMeta:
+      '@effect-ts/core':
+        optional: true
+      '@effect-ts/otel':
+        optional: true
       '@effect-ts/otel-node':
         optional: true
     dependencies:
@@ -6148,16 +6149,6 @@ packages:
       '@storybook/global': 5.0.0
       react: 18.2.0
       ts-dedent: 2.2.0
-    dev: true
-
-  /@storybook/addon-mdx-gfm@7.6.17:
-    resolution: {integrity: sha512-Dh1jcegykRMAhQCpAh5NZzRnJMtk+QzYrxKZlY/EbXNRmxrvhrrCDjovf9ntqFlA6vQjDtkwNu3ZVcMBKLXmiw==}
-    dependencies:
-      '@storybook/node-logger': 7.6.17
-      remark-gfm: 3.0.1
-      ts-dedent: 2.2.0
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /@storybook/addon-measure@7.6.17:

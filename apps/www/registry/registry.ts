@@ -40,7 +40,7 @@ const ui: Registry = [
     name: "breadcrumb",
     type: "components:ui",
     dependencies: ["@radix-ui/react-slot"],
-    files: ["ui/breadcrumb.tsx"],
+    files: ["ui/breadcrumb.tsx","stories/breadcrumb.stories.tsx"],
   },
   {
     name: "button",
@@ -138,7 +138,7 @@ const ui: Registry = [
     name: "input-otp",
     type: "components:ui",
     dependencies: ["input-otp"],
-    files: ["ui/input-otp.tsx"],
+    files: ["ui/input-otp.tsx","stories/input-otp.stories.tsx"],
   },
   {
     name: "label",
