@@ -17,6 +17,13 @@ import {
   FormMessage,
 } from "@/registry/new-york/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york/ui/select"
 import { toast } from "@/registry/new-york/ui/use-toast"
 
 const appearanceFormSchema = z.object({
@@ -64,19 +71,17 @@ export function AppearanceForm() {
               <FormLabel>Font</FormLabel>
               <div className="relative w-max">
                 <FormControl>
-                  <select
-                    className={cn(
-                      buttonVariants({ variant: "outline" }),
-                      "w-[200px] appearance-none font-normal"
-                    )}
-                    {...field}
-                  >
-                    <option value="inter">Inter</option>
-                    <option value="manrope">Manrope</option>
-                    <option value="system">System</option>
-                  </select>
+                  <Select>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Theme" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="inter">Inter</SelectItem>
+                      <SelectItem value="manrope">Manrope</SelectItem>
+                      <SelectItem value="system">System</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </FormControl>
-                <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
               </div>
               <FormDescription>
                 Set the font you want to use in the dashboard.
@@ -105,23 +110,23 @@ export function AppearanceForm() {
                     <FormControl>
                       <RadioGroupItem value="light" className="sr-only" />
                     </FormControl>
-                    <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent">
+                    <div className="items-center p-1 border-2 rounded-md border-muted hover:border-accent">
                       <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
-                        <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
+                        <div className="p-2 space-y-2 bg-white rounded-md shadow-sm">
                           <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
                           <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                         </div>
-                        <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                        <div className="flex items-center p-2 space-x-2 bg-white rounded-md shadow-sm">
                           <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
                           <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                         </div>
-                        <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                        <div className="flex items-center p-2 space-x-2 bg-white rounded-md shadow-sm">
                           <div className="h-4 w-4 rounded-full bg-[#ecedef]" />
                           <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                         </div>
                       </div>
                     </div>
-                    <span className="block w-full p-2 text-center font-normal">
+                    <span className="block w-full p-2 font-normal text-center">
                       Light
                     </span>
                   </FormLabel>
@@ -131,23 +136,23 @@ export function AppearanceForm() {
                     <FormControl>
                       <RadioGroupItem value="dark" className="sr-only" />
                     </FormControl>
-                    <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground">
-                      <div className="space-y-2 rounded-sm bg-slate-950 p-2">
-                        <div className="space-y-2 rounded-md bg-slate-800 p-2 shadow-sm">
+                    <div className="items-center p-1 border-2 rounded-md border-muted bg-popover hover:bg-accent hover:text-accent-foreground">
+                      <div className="p-2 space-y-2 rounded-sm bg-slate-950">
+                        <div className="p-2 space-y-2 rounded-md shadow-sm bg-slate-800">
                           <div className="h-2 w-[80px] rounded-lg bg-slate-400" />
                           <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                         </div>
-                        <div className="flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-sm">
-                          <div className="h-4 w-4 rounded-full bg-slate-400" />
+                        <div className="flex items-center p-2 space-x-2 rounded-md shadow-sm bg-slate-800">
+                          <div className="w-4 h-4 rounded-full bg-slate-400" />
                           <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                         </div>
-                        <div className="flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-sm">
-                          <div className="h-4 w-4 rounded-full bg-slate-400" />
+                        <div className="flex items-center p-2 space-x-2 rounded-md shadow-sm bg-slate-800">
+                          <div className="w-4 h-4 rounded-full bg-slate-400" />
                           <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                         </div>
                       </div>
                     </div>
-                    <span className="block w-full p-2 text-center font-normal">
+                    <span className="block w-full p-2 font-normal text-center">
                       Dark
                     </span>
                   </FormLabel>
