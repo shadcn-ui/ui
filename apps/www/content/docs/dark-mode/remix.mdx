@@ -55,11 +55,11 @@ export const themeSessionResolver = createThemeSessionResolver(sessionStorage)
 
 Add the `ThemeProvider` to your root layout.
 
-```tsx {1-3,6-11,15-22,25-26,28,33} title="app/root.tsx"
+```tsx {1-3,7-12,16-23,25-27, 34} title="app/root.tsx"
 import clsx from "clsx"
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "remix-themes"
 
-import { themeSessionResolver } from "./sessions.server"
+import { themeSessionResolver } from "../sessions.server"
 
 // Return the theme from the session storage using the loader
 export async function loader({ request }: LoaderFunctionArgs) {
