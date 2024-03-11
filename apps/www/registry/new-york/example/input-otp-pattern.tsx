@@ -15,7 +15,7 @@ export default function InputOTPPattern() {
         <InputOTPGroup>
           {slots.map((slot, index) => (
             <InputOTPSlot key={index} {...slot} />
-          ))}{" "}
+          ))}
         </InputOTPGroup>
       )}
     />

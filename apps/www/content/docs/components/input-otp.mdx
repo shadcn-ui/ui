@@ -121,7 +121,7 @@ import {
       <InputOTPGroup>
         {slots.slice(0, 3).map((slot, index) => (
           <InputOTPSlot key={index} {...slot} />
-        ))}{" "}
+        ))}
       </InputOTPGroup>
       <InputOTPSeparator />
       <InputOTPGroup>
@@ -154,7 +154,7 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
     <InputOTPGroup>
       {slots.map((slot, index) => (
         <InputOTPSlot key={index} {...slot} />
-      ))}{" "}
+      ))}
     </InputOTPGroup>
   )}
 />
@@ -172,7 +172,7 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
     <InputOTPGroup>
       {slots.map((slot, index) => (
         <InputOTPSlot key={index} {...slot} />
-      ))}{" "}
+      ))}
     </InputOTPGroup>
   )}
 />
@@ -203,7 +203,7 @@ import {
           <InputOTPSlot className="rounded-md border" {...slot} />
           {index !== slots.length - 1 && <InputOTPSeparator />}
         </React.Fragment>
-      ))}{" "}
+      ))}
     </InputOTPGroup>
   )}
 />

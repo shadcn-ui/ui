@@ -18,7 +18,7 @@ export default function InputOTPWithSeparator() {
               <InputOTPSlot className="rounded-md border" {...slot} />
               {index !== slots.length - 1 && <InputOTPSeparator />}
             </React.Fragment>
-          ))}{" "}
+          ))}
         </InputOTPGroup>
       )}
     />

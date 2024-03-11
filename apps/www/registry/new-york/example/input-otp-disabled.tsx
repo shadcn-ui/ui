@@ -13,7 +13,7 @@ export default function InputOTPDisabled() {
         <InputOTPGroup>
           {slots.map((slot, index) => (
             <InputOTPSlot key={index} {...slot} />
-          ))}{" "}
+          ))}
         </InputOTPGroup>
       )}
     />
