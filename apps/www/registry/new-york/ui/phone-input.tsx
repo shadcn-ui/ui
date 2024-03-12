@@ -25,8 +25,7 @@ type PhoneInputProps = Omit<
   "onChange" | "value"
 > &
   Omit<RPNInput.Props<typeof RPNInput.default>, "onChange"> & {
-    onChange: (value: RPNInput.Value) => void
-    value: RPNInput.Value
+    onChange?: (value: RPNInput.Value) => void
   }
 
 const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
@@ -47,7 +46,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
          *
          * @param {E164Number | undefined} value - The entered value
          */
-        onChange={(value) => onChange(value || "")}
+        onChange={(value) => onChange?.(value || "")}
         {...props}
       />
     )
