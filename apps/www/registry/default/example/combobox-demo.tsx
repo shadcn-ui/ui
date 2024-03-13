@@ -28,8 +28,8 @@ const frameworks = [
     label: "SvelteKit",
   },
   {
-    value: "nuxt.js",
-    label: "Nuxt.js",
+    value: "next.js",
+    label: "Next.js",
   },
   {
     value: "remix",
