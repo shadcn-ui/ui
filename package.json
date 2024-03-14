@@ -62,13 +62,13 @@
     "tailwindcss-animate": "^1.0.5",
     "tsx": "^4.1.4",
     "turbo": "^1.9.9",
-    "typescript": "^4.9.5",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.31.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
-    "@types/react-dom": "^18.2.22"
+    "@types/react-dom": "^18.2.22",
+    "typescript": "^5.4.2"
   }
 }
