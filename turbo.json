@@ -12,7 +12,8 @@
         "npm_config_user_agent",
         "https_proxy",
         "V0_URL",
-        "V0_EDIT_SECRET"
+        "V0_EDIT_SECRET",
+        "DEPLOYMENT_PROTECTION_BYPASS"
       ],
       "outputs": ["dist/**", ".next/**"]
     },
