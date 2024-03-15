@@ -75,6 +75,7 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
             </Link>
           ))}
         </div>
+        <ExampleCodeLink pathname={pathname} />
         <ScrollBar orientation="horizontal" className="invisible" />
       </ScrollArea>
     </div>
@@ -85,7 +86,7 @@ interface ExampleCodeLinkProps {
   pathname: string | null
 }
 
-export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
+function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
   const example = examples.find((example) => pathname?.startsWith(example.href))
 
   if (!example?.code) {
