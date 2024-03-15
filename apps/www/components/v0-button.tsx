@@ -7,9 +7,11 @@ import { useFormStatus } from "react-dom"
 import { Button } from "@/registry/new-york/ui/button"
 
 export function V0Button({
+  name,
   description,
   code,
 }: {
+  name: string
   description: string
   code: string
 }) {
@@ -17,6 +19,7 @@ export function V0Button({
     <form
       action={async () => {
         const result = await editInV0({
+          name,
           description,
           code,
         })

@@ -80,7 +80,7 @@ export function BlockPreviewTabs({
         </div>
         <TabsContent value="preview" className="relative rounded-md border">
           <div className="absolute right-5 top-5 z-10">
-            <V0Button description={description} code={codeString} />
+            <V0Button name={name} description={description} code={codeString} />
           </div>
           <div className="flex items-center justify-between p-4">
             <StyleSwitcher />
