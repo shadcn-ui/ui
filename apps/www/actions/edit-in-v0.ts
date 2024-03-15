@@ -1,12 +1,21 @@
 "use server"
 
+import { track } from "@vercel/analytics/server"
+
 export async function editInV0({
+  name,
   description,
   code,
 }: {
+  name: string
   description: string
   code: string
 }) {
+  await track("edit_in_v0", {
+    name,
+    description,
+  })
+
   const url = `${process.env.V0_URL}/api/edit`
   const response = await fetch(url, {
     method: "POST",
