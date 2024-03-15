@@ -25,7 +25,7 @@ import { Button } from "@/components/ui/button"
 import {
   Command,
   CommandEmpty,
-  CommandGroup,
+  CommandList,
   CommandInput,
   CommandItem,
 } from "@/components/ui/command"
@@ -81,7 +81,7 @@ export function ComboboxDemo() {
         <Command>
           <CommandInput placeholder="Search framework..." />
           <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandGroup>
+          <CommandList>
             {frameworks.map((framework) => (
               <CommandItem
                 key={framework.value}
@@ -100,7 +100,7 @@ export function ComboboxDemo() {
                 {framework.label}
               </CommandItem>
             ))}
-          </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>
