@@ -1,0 +1,73 @@
+---
+title: Button Group
+description: Group buttons together to form a button group.
+featured: true
+component: true
+---
+
+<ComponentPreview name="button-group-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add button-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<ComponentSource name="button-group" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ButtonGroup, ButtonGroupItem } from "@/components/ui/button-group"
+```
+
+```tsx
+<ButtonGroup>
+  <ButtonGroupItem>Button Group Item</ButtonGroupItem>
+  <Button>Button</Button>
+</ButtonGroup>
+```
+
+## Examples
+
+### Select
+
+<ComponentPreview name="button-group-outline" />
+
+### Separator
+
+<ComponentPreview name="button-group-separator" />
+
+### Vertical
+
+<ComponentPreview name="button-group-vertical" />
+
+### Vertical with separator
+
+<ComponentPreview name="button-group-separator-vertical" />
+
+### Form group
+
+<ComponentPreview name="button-group-input" />

@@ -77,6 +77,13 @@
     "type": "components:ui"
   },
   {
+    "name": "button-group",
+    "files": [
+      "ui/button-group.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "calendar",
     "dependencies": [
       "react-day-picker",

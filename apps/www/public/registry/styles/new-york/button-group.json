@@ -1,0 +1,10 @@
+{
+  "name": "button-group",
+  "files": [
+    {
+      "name": "button-group.tsx",
+      "content": "import React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonGroupVariants = cva(\n  \"flex [&>*:not(:last-child):not(:first-child)]:rounded-none\",\n  {\n    variants: {\n      orientation: {\n        horizontal:\n          \"flex-row [&>*:first-child]:rounded-e-none [&>*:last-child]:rounded-s-none [&>*]:mr-[-1px]\",\n        vertical:\n          \"flex-col [&>*:first-child]:rounded-b-none [&>*:last-child]:rounded-t-none [&>*]:mb-[-1px]\",\n      },\n      variants: {\n        line: \"[&.flex-col>*:not(:first-child)]:border-t [&.flex-row>*:not(:first-child)]:border-s\",\n      },\n    },\n    defaultVariants: {\n      orientation: \"horizontal\",\n    },\n  }\n)\n\nconst ButtonGroupItem = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"flex items-center rounded border bg-accent px-4\",\n      className\n    )}\n    {...props}\n  />\n))\nButtonGroupItem.displayName = \"ButtonGroupItem\"\n\nexport interface ButtonGroupProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof buttonGroupVariants> {}\n\nconst ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(\n  ({ className, orientation, variants, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(\n        buttonGroupVariants({\n          orientation,\n          variants,\n          className,\n        })\n      )}\n      {...props}\n    />\n  )\n)\nButtonGroup.displayName = \"ButtonGroup\"\n\nexport { ButtonGroup }\n"
+    }
+  ],
+  "type": "components:ui"
+}
