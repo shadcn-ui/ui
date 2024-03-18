@@ -1,7 +1,8 @@
+import { BellRing } from "lucide-react"
+
 import { ButtonGroupItem } from "@/registry/default/ui/button-group"
 import { Button } from "@/registry/new-york/ui/button"
 import { ButtonGroup } from "@/registry/new-york/ui/button-group"
-import { BellRing } from "lucide-react"
 
 export default function ButtonGroupDemo() {
   return (

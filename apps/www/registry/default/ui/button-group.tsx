@@ -29,10 +29,7 @@ const ButtonGroupItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      "flex items-center rounded border bg-accent px-4",
-      className
-    )}
+    className={cn("flex items-center rounded border bg-accent px-4", className)}
     {...props}
   />
 ))

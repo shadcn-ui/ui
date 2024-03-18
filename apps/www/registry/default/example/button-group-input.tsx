@@ -6,7 +6,10 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/registry/default/ui/button"
-import { ButtonGroup, ButtonGroupItem } from "@/registry/default/ui/button-group"
+import {
+  ButtonGroup,
+  ButtonGroupItem,
+} from "@/registry/default/ui/button-group"
 import {
   Form,
   FormControl,

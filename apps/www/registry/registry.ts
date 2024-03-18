@@ -449,7 +449,7 @@ const example: Registry = [
   {
     name: "button-group-input",
     type: "components:example",
-    registryDependencies: ["button-group", "button", "input", "form" ],
+    registryDependencies: ["button-group", "button", "input", "form"],
     files: ["example/button-group-input.tsx"],
   },
   {
