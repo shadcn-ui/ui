@@ -91,6 +91,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Components",
+      href: "/docs/components",
       items: [
         {
           title: "Accordion",
