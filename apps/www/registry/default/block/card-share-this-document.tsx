@@ -22,9 +22,14 @@ import {
 } from "@/registry/default/ui/select"
 import { Separator } from "@/registry/default/ui/separator"
 
+export const iframeHeight = "480px"
+
+export const containerClassName =
+  "w-full h-full flex items-center justify-center p-10"
+
 export default function CardShareThisDocument() {
   return (
-    <Card>
+    <Card className="mx-auto max-w-sm">
       <CardHeader className="pb-3">
         <CardTitle>Share this document</CardTitle>
         <CardDescription>

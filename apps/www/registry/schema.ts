@@ -20,3 +20,14 @@ export const registrySchema = z.array(registryEntrySchema)
 export type RegistryEntry = z.infer<typeof registryEntrySchema>
 
 export type Registry = z.infer<typeof registrySchema>
+
+export const indexEntrySchema = registryEntrySchema.extend({
+  component: z.any(),
+  container: z
+    .object({
+      height: z.string().optional(),
+      className: z.string().optional(),
+    })
+    .optional(),
+  code: z.string().optional(),
+})

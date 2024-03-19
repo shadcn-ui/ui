@@ -285,6 +285,9 @@ importers:
       tailwind-merge:
         specifier: ^1.12.0
         version: 1.12.0
+      ts-morph:
+        specifier: ^18.0.0
+        version: 18.0.0
       vaul:
         specifier: ^0.2.0
         version: 0.2.0(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)

@@ -10,9 +10,14 @@ import {
 import { Input } from "@/registry/default/ui/input"
 import { Label } from "@/registry/default/ui/label"
 
+export const iframeHeight = "510px"
+
+export const containerClassName =
+  "w-full h-full flex items-center justify-center p-10"
+
 export default function CardCreateAccount() {
   return (
-    <Card>
+    <Card className="mx-auto max-w-sm">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Create an account</CardTitle>
         <CardDescription>

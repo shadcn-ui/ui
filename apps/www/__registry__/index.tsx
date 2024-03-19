@@ -3043,7 +3043,7 @@ export const Index: Record<string, any> = {
       description: "An ecommerce dashboard showing an empty state.",
       type: "components:block",
       registryDependencies: ["badge","button","card","dropdown-menu","input"],
-      component: React.lazy(() => import("@/registry/new-york/block/dashboard-products-empty")),
+      component: React.lazy(() => import("@/registry/default/block/dashboard-products-empty")),
       files: ["registry/new-york/block/dashboard-products-empty.tsx"],
     },
     "card-share-this-document": {
@@ -3051,7 +3051,7 @@ export const Index: Record<string, any> = {
       description: "A card to share the current document.",
       type: "components:block",
       registryDependencies: ["avatar","button","card","input","label","select","separator"],
-      component: React.lazy(() => import("@/registry/new-york/block/card-share-this-document")),
+      component: React.lazy(() => import("@/registry/default/block/card-share-this-document")),
       files: ["registry/new-york/block/card-share-this-document.tsx"],
     },
     "card-create-account": {
@@ -3059,7 +3059,7 @@ export const Index: Record<string, any> = {
       description: "A card to create an account.",
       type: "components:block",
       registryDependencies: ["button","card","input","label"],
-      component: React.lazy(() => import("@/registry/new-york/block/card-create-account")),
+      component: React.lazy(() => import("@/registry/default/block/card-create-account")),
       files: ["registry/new-york/block/card-create-account.tsx"],
     },
   },

@@ -30,9 +30,13 @@ import {
 } from "@/registry/default/ui/dropdown-menu"
 import { Input } from "@/registry/default/ui/input"
 
-export default function Component() {
+export const iframeHeight = "800px"
+
+export const containerClassName = "w-full h-full"
+
+export default function DashboardProductsEmpty() {
   return (
-    <div className="grid min-h-screen w-full rounded-lg border lg:grid-cols-[280px_1fr]">
+    <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 lg:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-[60px] items-center border-b px-6">

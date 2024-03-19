@@ -43,6 +43,10 @@ for (const style of styles) {
       (file) => `registry/${style.name}/${file}`
     )
 
+    // Blocks are only available in default.
+    const componentStyle =
+      item.type === "components:block" ? "default" : style.name
+
     const type = item.type.split(":")[1]
     index += `
     "${item.name}": {
@@ -50,7 +54,7 @@ for (const style of styles) {
       description: "${item.description}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
-      component: React.lazy(() => import("@/registry/${style.name}/${type}/${
+      component: React.lazy(() => import("@/registry/${componentStyle}/${type}/${
       item.name
     }")),
       files: [${resolveFiles.map((file) => `"${file}"`)}],
