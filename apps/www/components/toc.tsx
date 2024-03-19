@@ -6,6 +6,7 @@ import * as React from "react"
 import { TableOfContents } from "@/lib/toc"
 import { cn } from "@/lib/utils"
 import { useMounted } from "@/hooks/use-mounted"
+import { Skeleton } from "@/registry/new-york/ui/skeleton"
 
 interface TocProps {
   toc: TableOfContents
@@ -26,14 +27,28 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   const activeHeading = useActiveItem(itemIds)
   const mounted = useMounted()
 
-  if (!toc?.items || !mounted) {
+  if (!toc?.items) {
     return null
   }
 
   return (
     <div className="space-y-2">
       <p className="font-medium">On This Page</p>
-      <Tree tree={toc} activeItem={activeHeading} />
+      {mounted ? (
+        <Tree tree={toc} activeItem={activeHeading} />
+      ) : (
+        <div className="flex flex-col gap-2 pt-2">
+          <Skeleton className="h-4 w-9" />
+          <Skeleton className="ml-4 h-4 w-12" />
+          <Skeleton className="ml-4 h-4 w-16" />
+          <Skeleton className="h-4 w-16" />
+          <Skeleton className="ml-4 h-4 w-12" />
+          <Skeleton className="ml-4 h-4 w-16" />
+          <Skeleton className="h-4 w-12" />
+          <Skeleton className="ml-4 h-4 w-16" />
+          <Skeleton className="ml-4 h-4 w-12" />
+        </div>
+      )}
     </div>
   )
 }
