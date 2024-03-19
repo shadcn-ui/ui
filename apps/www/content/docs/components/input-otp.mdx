@@ -246,3 +246,25 @@ npm install input-otp@latest
 ```
 
 </Steps>
+
+### 2024-03-19 Disabled
+
+To add a disabled state to the input, update `<InputOTP />` as follows:
+
+```tsx showLineNumbers title="input-otp.tsx" {4,7-11}
+const InputOTP = React.forwardRef<
+  React.ElementRef<typeof OTPInput>,
+  React.ComponentPropsWithoutRef<typeof OTPInput>
+>(({ className, containerClassName, ...props }, ref) => (
+  <OTPInput
+    ref={ref}
+    containerClassName={cn(
+      "flex items-center gap-2 has-[:disabled]:opacity-50",
+      containerClassName
+    )}
+    className={cn("disabled:cursor-not-allowed", className)}
+    {...props}
+  />
+))
+InputOTP.displayName = "InputOTP"
+```
