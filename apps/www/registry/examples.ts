@@ -690,6 +690,24 @@ export const examples: Registry = [
     files: ["example/toast-with-title.tsx"],
   },
   {
+    name: "toc-demo",
+    type: "components:example",
+    registryDependencies: ["toc"],
+    files: ["example/toc-demo.tsx"],
+  },
+  {
+    name: "toc-nested",
+    type: "components:example",
+    registryDependencies: ["toc"],
+    files: ["example/toc-nested.tsx"],
+  },
+  {
+    name: "toc-active",
+    type: "components:example",
+    registryDependencies: ["toc"],
+    files: ["example/toc-active.tsx"],
+  },
+  {
     name: "toggle-group-demo",
     type: "components:example",
     registryDependencies: ["toggle-group"],
