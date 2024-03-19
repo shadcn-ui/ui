@@ -390,6 +390,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/badge-secondary")),
       files: ["registry/default/example/badge-secondary.tsx"],
     },
+    "badge-colors": {
+      name: "badge-colors",
+      type: "components:example",
+      registryDependencies: ["badge"],
+      component: React.lazy(() => import("@/registry/default/example/badge-colors")),
+      files: ["registry/default/example/badge-colors.tsx"],
+    },
     "breadcrumb-demo": {
       name: "breadcrumb-demo",
       type: "components:example",
@@ -1706,6 +1713,13 @@ export const Index: Record<string, any> = {
       registryDependencies: ["badge"],
       component: React.lazy(() => import("@/registry/new-york/example/badge-secondary")),
       files: ["registry/new-york/example/badge-secondary.tsx"],
+    },
+    "badge-colors": {
+      name: "badge-colors",
+      type: "components:example",
+      registryDependencies: ["badge"],
+      component: React.lazy(() => import("@/registry/new-york/example/badge-colors")),
+      files: ["registry/new-york/example/badge-colors.tsx"],
     },
     "breadcrumb-demo": {
       name: "breadcrumb-demo",

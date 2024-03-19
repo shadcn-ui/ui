@@ -340,6 +340,12 @@ const example: Registry = [
     files: ["example/badge-secondary.tsx"],
   },
   {
+    name: "badge-colors",
+    type: "components:example",
+    registryDependencies: ["badge"],
+    files: ["example/badge-colors.tsx"],
+  },
+  {
     name: "breadcrumb-demo",
     type: "components:example",
     registryDependencies: ["breadcrumb"],
