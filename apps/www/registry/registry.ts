@@ -258,6 +258,11 @@ const ui: Registry = [
     files: ["ui/toast.tsx", "ui/use-toast.ts", "ui/toaster.tsx"],
   },
   {
+    name: "toc",
+    type: "components:ui",
+    files: ["ui/toc.tsx"],
+  },
+  {
     name: "toggle",
     type: "components:ui",
     dependencies: ["@radix-ui/react-toggle"],
@@ -966,6 +971,24 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["toast"],
     files: ["example/toast-with-title.tsx"],
+  },
+  {
+    name: "toc-demo",
+    type: "components:example",
+    registryDependencies: ["toc"],
+    files: ["example/toc-demo.tsx"],
+  },
+  {
+    name: "toc-nested",
+    type: "components:example",
+    registryDependencies: ["toc"],
+    files: ["example/toc-nested.tsx"],
+  },
+  {
+    name: "toc-active",
+    type: "components:example",
+    registryDependencies: ["toc"],
+    files: ["example/toc-active.tsx"],
   },
   {
     name: "toggle-group-demo",

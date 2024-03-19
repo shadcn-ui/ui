@@ -1,0 +1,131 @@
+---
+title: Table of Contents
+description: A list for the content of a document.
+component: true
+---
+
+<ComponentPreview name="toc-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<Steps>
+
+<Step>Run the following command:</Step>
+
+```bash
+npx shadcn-ui@latest add toc
+```
+
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+`toc.tsx`
+
+<ComponentSource name="toc" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the tocer component</Step>
+
+```tsx
+import {
+  TableOfContentsItem,
+  TableOfContentsLink,
+  TableOfContentsList,
+} from "../ui/toc"
+
+export default function TOCExample() {
+  return (
+    <TableOfContentsList>
+      <TableOfContentsItem>
+        <TableOfContentsLink href="#first-section">
+          First Section
+        </TableOfContentsLink>
+      </TableOfContentsItem>
+      <TableOfContentsItem>
+        <TableOfContentsLink href="#second-section">
+          Second Section
+        </TableOfContentsLink>
+      </TableOfContentsItem>
+      <TableOfContentsItem>
+        <TableOfContentsLink href="#third-section">
+          Third Section
+        </TableOfContentsLink>
+      </TableOfContentsItem>
+    </TableOfContentsList>
+  )
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  TableOfContentsItem,
+  TableOfContentsLink,
+  TableOfContentsList,
+} from "../ui/toc"
+
+export default function TOCExample() {
+  return (
+    <TableOfContentsList>
+      <TableOfContentsItem>
+        <TableOfContentsLink href="#first-section">
+          First Section
+        </TableOfContentsLink>
+      </TableOfContentsItem>
+      <TableOfContentsItem>
+        <TableOfContentsLink href="#second-section">
+          Second Section
+        </TableOfContentsLink>
+      </TableOfContentsItem>
+      <TableOfContentsItem>
+        <TableOfContentsLink href="#third-section">
+          Third Section
+        </TableOfContentsLink>
+      </TableOfContentsItem>
+    </TableOfContentsList>
+  )
+}
+```
+
+## Examples
+
+### Simple
+
+<ComponentPreview name="toc-demo" />
+
+### Nested
+
+You can place a list inside of another list to create a nested table of contents.
+
+<ComponentPreview name="toc-nested" />
+
+### Active Item
+
+A link can be set to active if the user is currently viewing the section it links to.
+
+When setting the `isActive` prop to `true` on the `TableOfContentsLink` component, it will be styled as the active item.
+
+<ComponentPreview name="toc-active" />
