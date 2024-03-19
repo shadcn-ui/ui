@@ -62,6 +62,12 @@ export function DatePickerDemo() {
 
 See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
 
+<Callout className="mt-6">
+
+**Dialog Browser Compatibility:** To address display issues with the Date Picker's Calendar not appearing inside Dialog components across browsers like Firefox, Safari, and iOS Chrome, use the `modal={true}` prop on the `<Popover>` component. This adjustment specifically helps the `Popover` function properly within dialogs by managing interaction scope and visibility.
+
+</Callout>
+
 ## Examples
 
 ### Date Picker
