@@ -230,6 +230,9 @@ importers:
       geist:
         specifier: ^1.1.0
         version: 1.1.0(next@14.0.4)
+      input-otp:
+        specifier: ^1.2.2
+        version: 1.2.2(react-dom@18.2.0)(react@18.2.0)
       jotai:
         specifier: ^2.1.0
         version: 2.1.0(react@18.2.0)
@@ -1475,10 +1478,6 @@ packages:
     peerDependencies:
       '@effect-ts/otel-node': '*'
     peerDependenciesMeta:
-      '@effect-ts/core':
-        optional: true
-      '@effect-ts/otel':
-        optional: true
       '@effect-ts/otel-node':
         optional: true
     dependencies:
