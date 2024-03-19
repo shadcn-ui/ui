@@ -92,13 +92,13 @@ const CountrySelect = ({
         <Button
           type="button"
           variant={"outline"}
-          className={cn("flex gap-1 rounded-e-none rounded-s-lg pr-1 pl-3")}
+          className={cn("flex gap-1 rounded-e-none rounded-s-lg px-3")}
           disabled={disabled}
         >
           <FlagComponent country={value} countryName={value} />
           <CaretSortIcon
             className={cn(
-              "h-4 w-4 opacity-50",
+              "h-4 w-4 opacity-50 -mr-2",
               disabled ? "hidden" : "opacity-100"
             )}
           />
