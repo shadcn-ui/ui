@@ -25,13 +25,13 @@ export function V0Button({
     return (
       <Button
         aria-label="Edit in v0"
-        className="h-7 gap-1 opacity-60"
+        className="h-7 gap-1"
         size="sm"
         onClick={() =>
           toast("New York not available.", {
             description: (
               <div className="flex items-center">
-                Only the default style is available in{" "}
+                Only the Default style is available in{" "}
                 <V0Logo className="ml-1 text-foreground" aria-label="v0" />.
               </div>
             ),
@@ -50,6 +50,7 @@ export function V0Button({
             name,
             description,
             code,
+            style,
           })
 
           if (result?.error) {

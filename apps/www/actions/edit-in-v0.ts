@@ -7,16 +7,19 @@ const EDIT_IN_V0_SOURCE = "ui.shadcn.com"
 export async function editInV0({
   name,
   description,
+  style,
   code,
 }: {
   name: string
   description: string
+  style: string
   code: string
 }) {
   try {
     await track("edit_in_v0", {
       name,
       description,
+      style,
     })
 
     const response = await fetch(`${process.env.V0_URL}/api/edit`, {
