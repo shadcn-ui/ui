@@ -30,7 +30,15 @@ export function BlockPreview({ block }: { block: Block }) {
   }
 
   return (
-    <Tabs defaultValue="preview" className="relative grid w-full gap-4">
+    <Tabs
+      defaultValue="preview"
+      className="relative grid w-full gap-4"
+      style={
+        {
+          "--container-height": block.container?.height,
+        } as React.CSSProperties
+      }
+    >
       <div className="flex flex-col items-center gap-4 sm:flex-row">
         <TabsList className="hidden sm:flex">
           <TabsTrigger value="preview">Preview</TabsTrigger>
@@ -58,12 +66,7 @@ export function BlockPreview({ block }: { block: Block }) {
             minSize={35}
           >
             {isLoading ? (
-              <div
-                className="absolute inset-0 z-10 flex h-full w-full items-center justify-center gap-2 text-sm text-muted-foreground"
-                style={{
-                  height: block.container?.height,
-                }}
-              >
+              <div className="absolute inset-0 z-10 flex h-[--container-height] w-full items-center justify-center gap-2 text-sm text-muted-foreground">
                 <Icons.spinner className="h-4 w-4 animate-spin" />
                 Loading...
               </div>
@@ -73,7 +76,6 @@ export function BlockPreview({ block }: { block: Block }) {
               height={block.container?.height}
               className="relative z-20 w-full bg-background"
               onLoad={() => {
-                console.log("done")
                 setIsLoading(false)
               }}
             />
@@ -86,7 +88,7 @@ export function BlockPreview({ block }: { block: Block }) {
         <div
           data-rehype-pretty-code-fragment
           dangerouslySetInnerHTML={{ __html: block.highlightedCode }}
-          className="w-full overflow-hidden rounded-md [&_pre]:my-0 [&_pre]:max-h-[450px] [&_pre]:overflow-auto [&_pre]:whitespace-break-spaces [&_pre]:p-6 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed"
+          className="w-full overflow-hidden rounded-md [&_pre]:my-0 [&_pre]:h-[--container-height] [&_pre]:overflow-auto [&_pre]:whitespace-break-spaces [&_pre]:p-6 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed"
         />
       </TabsContent>
     </Tabs>
