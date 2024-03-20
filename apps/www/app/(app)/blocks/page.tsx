@@ -38,7 +38,12 @@ export default async function BlocksPage() {
             <a href="#blocks">Browse</a>
           </Button>
           <Button asChild variant="outline">
-            <Link href="#">Request a block</Link>
+            <a
+              href="https://github.com/shadcn-ui/ui/issues/new/choose"
+              target="_blank"
+            >
+              Request a block
+            </a>
           </Button>
         </PageActions>
       </PageHeader>
