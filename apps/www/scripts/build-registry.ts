@@ -58,6 +58,8 @@ for (const style of styles) {
       item.name
     }")),
       files: [${resolveFiles.map((file) => `"${file}"`)}],
+      category: "${item.category}",
+      subcategory: "${item.subcategory}",
     },`
   }
 

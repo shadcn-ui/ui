@@ -31,13 +31,13 @@ export function BlockPreview({ block }: { block: Block }) {
 
   return (
     <Tabs defaultValue="preview" className="relative grid w-full gap-4">
-      <div className="flex items-center">
-        <TabsList>
+      <div className="flex flex-col items-center gap-4 sm:flex-row">
+        <TabsList className="hidden sm:flex">
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
         {block.code && (
-          <div className="ml-auto flex items-center gap-2 pr-[14px]">
+          <div className="flex items-center gap-2 pr-[14px] sm:ml-auto">
             <StyleSwitcher className="h-7" />
             <Separator orientation="vertical" className="mx-2 h-4" />
             <BlockCopyCodeButton name={block.name} code={block.code} />
@@ -78,7 +78,7 @@ export function BlockPreview({ block }: { block: Block }) {
               }}
             />
           </ResizablePanel>
-          <ResizableHandle className="relative w-3 bg-transparent p-0 after:absolute after:right-0 after:top-1/2 after:h-8 after:w-[6px] after:-translate-y-1/2 after:translate-x-[-1px] after:rounded-full after:bg-border after:transition-all after:hover:h-10" />
+          <ResizableHandle className="relative hidden w-3 bg-transparent p-0 after:absolute after:right-0 after:top-1/2 after:h-8 after:w-[6px] after:-translate-y-1/2 after:translate-x-[-1px] after:rounded-full after:bg-border after:transition-all after:hover:h-10 sm:block" />
           <ResizablePanel defaultSize={0} minSize={0} />
         </ResizablePanelGroup>
       </TabsContent>

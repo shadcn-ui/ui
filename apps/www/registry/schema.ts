@@ -13,6 +13,8 @@ export const registryEntrySchema = z.object({
     "components:example",
     "components:block",
   ]),
+  category: z.string().optional(),
+  subcategory: z.string().optional(),
 })
 
 export const registrySchema = z.array(registryEntrySchema)
