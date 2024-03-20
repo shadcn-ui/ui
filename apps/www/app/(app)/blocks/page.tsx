@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { getAllBlockIds } from "@/lib/blocks"
 import { Announcement } from "@/components/announcement"
-import { BlockPreview } from "@/components/block-preview"
+import { BlockDisplay } from "@/components/block-display"
 import {
   PageActions,
   PageHeader,
@@ -43,8 +43,8 @@ export default async function BlocksPage() {
         </PageActions>
       </PageHeader>
       <section id="blocks" className="grid scroll-mt-24 gap-24 lg:gap-32">
-        {blocks.map((name) => (
-          <BlockPreview key={name} name={name} />
+        {blocks.map((name, index) => (
+          <BlockDisplay key={`${name}-${index}`} name={name} />
         ))}
       </section>
     </div>

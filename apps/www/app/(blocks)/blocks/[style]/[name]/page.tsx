@@ -1,18 +1,22 @@
 import { siteConfig } from "@/config/site"
 import { getAllBlockIds, getBlock } from "@/lib/blocks"
 import { absoluteUrl } from "@/lib/utils"
+import { Style, styles } from "@/registry/styles"
 
 import "@/styles/mdx.css"
 import { Metadata } from "next"
+import { notFound } from "next/navigation"
 
 export async function generateMetadata({
   params,
 }: {
   params: {
+    style: Style["name"]
     name: string
   }
 }): Promise<Metadata> {
-  const block = await getBlock(params.name)
+  const { name, style } = params
+  const block = await getBlock(name, style)
 
   if (!block) {
     return {}
@@ -47,31 +51,29 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const blockIds = await getAllBlockIds()
-  return blockIds.map((name) => ({ name }))
+  return styles
+    .map((style) =>
+      blockIds.map((name) => ({
+        style: style.name,
+        name,
+      }))
+    )
+    .flat()
 }
 
 export default async function BlockPage({
   params,
 }: {
   params: {
+    style: Style["name"]
     name: string
   }
 }) {
-  const { name } = params
-  const block = await getBlock(name)
+  const { name, style } = params
+  const block = await getBlock(name, style)
 
   if (!block) {
-    return (
-      <div className="flex h-screen w-full items-center justify-center bg-red-100">
-        <p className="text-sm text-muted-foreground">
-          Block{" "}
-          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
-            {name}
-          </code>{" "}
-          not found in registry.
-        </p>
-      </div>
-    )
+    return notFound()
   }
 
   const Component = block.component

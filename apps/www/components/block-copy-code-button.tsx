@@ -31,8 +31,8 @@ export function BlockCopyCodeButton({
       <TooltipTrigger asChild>
         <Button
           size="icon"
-          variant="ghost"
-          className="[&_svg]:size-4"
+          variant="outline"
+          className="h-7 w-7 [&_svg]:size-3.5"
           onClick={() => {
             navigator.clipboard.writeText(code)
             trackEvent({

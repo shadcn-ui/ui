@@ -7,7 +7,8 @@ import { Index } from "@/__registry__"
 import { Project, ScriptKind, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
-import { indexEntrySchema } from "@/registry/schema"
+import { highlightCode } from "@/lib/highlight-code"
+import { blockSchema, registryEntrySchema } from "@/registry/schema"
 import { Style } from "@/registry/styles"
 
 const DEFAULT_BLOCKS_STYLE = "default" satisfies Style["name"]
@@ -16,20 +17,10 @@ const project = new Project({
   compilerOptions: {},
 })
 
-export async function getAllBlocks(
-  style: Style["name"] = DEFAULT_BLOCKS_STYLE
-) {
-  const index = z.record(indexEntrySchema).parse(Index[style])
-
-  return Object.values(index).filter(
-    (block) => block.type === "components:block"
-  )
-}
-
 export async function getAllBlockIds(
   style: Style["name"] = DEFAULT_BLOCKS_STYLE
 ) {
-  const blocks = await getAllBlocks(style)
+  const blocks = await _getAllBlocks(style)
   return blocks.map((block) => block.name)
 }
 
@@ -41,18 +32,29 @@ export async function getBlock(
 
   const content = await _getBlockContent(name, style)
 
-  return indexEntrySchema.parse({
+  return blockSchema.parse({
+    style,
+    highlightedCode: content.code ? await highlightCode(content.code) : "",
     ...entry,
     ...content,
+    type: "components:block",
   })
 }
 
-export async function getBlockCode(
+async function _getAllBlocks(style: Style["name"] = DEFAULT_BLOCKS_STYLE) {
+  const index = z.record(registryEntrySchema).parse(Index[style])
+
+  return Object.values(index).filter(
+    (block) => block.type === "components:block"
+  )
+}
+
+async function _getBlockCode(
   name: string,
   style: Style["name"] = DEFAULT_BLOCKS_STYLE
 ) {
   const entry = Index[style][name]
-  const block = indexEntrySchema.parse(entry)
+  const block = registryEntrySchema.parse(entry)
 
   const filepath = path.join(process.cwd(), block.files[0])
   return await fs.readFile(filepath, "utf-8")
@@ -64,7 +66,7 @@ async function _getBlockContent(name: string, style: Style["name"]) {
     return path.join(dir, filename)
   }
 
-  const raw = await getBlockCode(name, style)
+  const raw = await _getBlockCode(name, style)
 
   const tempFile = await createTempSourceFile(`${name}.tsx`)
   const sourceFile = project.createSourceFile(tempFile, raw, {
