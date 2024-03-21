@@ -11,15 +11,15 @@ import {
   Users,
 } from "lucide-react"
 
-import { Badge } from "@/registry/default/ui/badge"
-import { Button } from "@/registry/default/ui/button"
+import { Badge } from "@/registry/new-york/ui/badge"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/new-york/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,14 +27,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
-import { Input } from "@/registry/default/ui/input"
+} from "@/registry/new-york/ui/dropdown-menu"
+import { Input } from "@/registry/new-york/ui/input"
+
+export const description =
+  "An application shell with a header and main content area."
 
 export const iframeHeight = "800px"
 
 export const containerClassName = "w-full h-full"
 
-export default function DashboardProductsEmpty() {
+export default function Dashboard() {
   return (
     <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 lg:block">

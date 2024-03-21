@@ -4,7 +4,7 @@ import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
 import { Index } from "@/__registry__"
-import { Project, ScriptKind, SyntaxKind } from "ts-morph"
+import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
@@ -73,37 +73,37 @@ async function _getBlockContent(name: string, style: Style["name"]) {
     scriptKind: ScriptKind.TSX,
   })
 
-  // Extract the iframeHeight.
-  let iframeHeight = "350px"
-  const iframeHeightVariable = sourceFile.getVariableDeclaration("iframeHeight")
-  if (iframeHeightVariable) {
-    iframeHeight = iframeHeightVariable
-      .getInitializerIfKindOrThrow(SyntaxKind.StringLiteral)
-      .getLiteralValue()
-    iframeHeightVariable.remove()
-  }
+  // Extract meta.
+  const description = _extractVariable(sourceFile, "description")
+  const iframeHeight = _extractVariable(sourceFile, "iframeHeight")
+  const containerClassName = _extractVariable(sourceFile, "containerClassName")
 
-  // Extract the iframeHeight.
-  let containerClassName = ""
-  const containerClassNameVariable =
-    sourceFile.getVariableDeclaration("containerClassName")
-  if (containerClassNameVariable) {
-    containerClassName = containerClassNameVariable
-      .getInitializerIfKindOrThrow(SyntaxKind.StringLiteral)
-      .getLiteralValue()
-    containerClassNameVariable.remove()
-  }
-
+  // Format the code.
   let code = sourceFile.getText()
-
   code = code.replaceAll(`@/registry/${style}/`, "@/components/")
   code = code.replaceAll("export default", "export")
 
   return {
+    description,
     code,
     container: {
       height: iframeHeight,
       className: containerClassName,
     },
   }
+}
+
+function _extractVariable(sourceFile: SourceFile, name: string) {
+  const variable = sourceFile.getVariableDeclaration(name)
+  if (!variable) {
+    return null
+  }
+
+  const value = variable
+    .getInitializerIfKindOrThrow(SyntaxKind.StringLiteral)
+    .getLiteralValue()
+
+  variable.remove()
+
+  return value
 }

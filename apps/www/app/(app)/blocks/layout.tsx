@@ -25,7 +25,7 @@ export default function BlocksLayout({
       <PageHeader className="max-w-2xl">
         <Announcement />
         <PageHeaderHeading className="hidden md:block">
-          Need a headline here
+          Building Blocks.
         </PageHeaderHeading>
         <PageHeaderHeading className="md:hidden">
           Headline Here

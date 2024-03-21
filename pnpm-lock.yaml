@@ -241,8 +241,8 @@ importers:
         specifier: ^4.5.0
         version: 4.5.0
       lucide-react:
-        specifier: 0.288.0
-        version: 0.288.0(react@18.2.0)
+        specifier: 0.359.0
+        version: 0.359.0(react@18.2.0)
       markdown-wasm:
         specifier: ^1.2.0
         version: 1.2.0
@@ -8226,6 +8226,14 @@ packages:
 
   /lucide-react@0.288.0(react@18.2.0):
     resolution: {integrity: sha512-ikhb/9LOkq9orPoLV9lLC4UYyoXQycBhIgH7H59ahOkk0mkcAqkD52m84RXedE/qVqZHW8rEJquInT4xGmsNqw==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /lucide-react@0.359.0(react@18.2.0):
+    resolution: {integrity: sha512-bxVL+rM/wacjpT0BKShA6r5IIKb6LCRg+ltFG9pnnIwaRX8kK3hq8v5JwMpT7RC6XeqB5cSaaV6GapPWWmtliw==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:

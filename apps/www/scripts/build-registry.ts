@@ -51,7 +51,6 @@ for (const style of styles) {
     index += `
     "${item.name}": {
       name: "${item.name}",
-      description: "${item.description}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       component: React.lazy(() => import("@/registry/${style.name}/${type}/${
