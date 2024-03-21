@@ -219,8 +219,8 @@ importers:
         specifier: 0.3.4
         version: 0.3.4(esbuild@0.17.19)(markdown-wasm@1.2.0)
       date-fns:
-        specifier: ^2.30.0
-        version: 2.30.0
+        specifier: ^3.3.1
+        version: 3.3.1
       embla-carousel-autoplay:
         specifier: 8.0.0-rc15
         version: 8.0.0-rc15(embla-carousel@8.0.0-rc15)
@@ -258,8 +258,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0
       react-day-picker:
-        specifier: ^8.7.1
-        version: 8.7.1(date-fns@2.30.0)(react@18.2.0)
+        specifier: ^8.10.0
+        version: 8.10.0(date-fns@3.3.1)(react@18.2.0)
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
@@ -5782,6 +5782,10 @@ packages:
       '@babel/runtime': 7.22.3
     dev: false
 
+  /date-fns@3.3.1:
+    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
+    dev: false
+
   /date-time@3.1.0:
     resolution: {integrity: sha512-uqCUKXE5q1PNBXjPqvwhwJf9SwMoAHBgWJ6DcrnS5o+W2JOiIILl0JEdVD8SGujrNS02GGxgwAg2PN2zONgtjg==}
     engines: {node: '>=6'}
@@ -9854,13 +9858,13 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /react-day-picker@8.7.1(date-fns@2.30.0)(react@18.2.0):
-    resolution: {integrity: sha512-Gv426AW8b151CZfh3aP5RUGztLwHB/EyJgWZ5iMgtzbFBkjHfG6Y66CIQFMWGLnYjsQ9DYSJRmJ5S0Pg5HWKjA==}
+  /react-day-picker@8.10.0(date-fns@3.3.1)(react@18.2.0):
+    resolution: {integrity: sha512-mz+qeyrOM7++1NCb1ARXmkjMkzWVh2GL9YiPbRjKe0zHccvekk4HE+0MPOZOrosn8r8zTHIIeOUXTmXRqmkRmg==}
     peerDependencies:
-      date-fns: ^2.28.0
+      date-fns: ^2.28.0 || ^3.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      date-fns: 2.30.0
+      date-fns: 3.3.1
       react: 18.2.0
     dev: false
 

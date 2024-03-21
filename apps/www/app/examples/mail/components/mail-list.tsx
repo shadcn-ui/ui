@@ -1,5 +1,5 @@
 import { ComponentProps } from "react"
-import formatDistanceToNow from "date-fns/formatDistanceToNow"
+import { formatDistanceToNow } from 'date-fns'
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/registry/new-york/ui/badge"
