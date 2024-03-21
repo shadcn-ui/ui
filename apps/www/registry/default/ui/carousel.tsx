@@ -5,6 +5,7 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/default/ui/button"
@@ -252,6 +253,73 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+const dotsVariants = cva(
+  "rounded-full transition-all duration-300",
+  {
+    variants: {
+      size: {
+        default: "h-2.5 w-2.5",
+        sm: "h-2 w-2",
+        lg: "h-3.5 w-3.5",
+      },
+      gap: {
+        default: "mx-0.5",
+        sm: "mx-[1px]",
+        lg: "mx-1"
+      }
+    },
+    defaultVariants: {
+      size: "default",
+      gap: "default"
+    },
+  }
+)
+
+interface CarouselDotsProps extends React.HTMLAttributes<HTMLDivElement>,
+  VariantProps<typeof dotsVariants> {}
+
+const CarouselDots = React.forwardRef<
+  HTMLDivElement, CarouselDotsProps
+>(({ className, size, gap, ...props }, ref) => {
+  const { api } = useCarousel()
+  const [current, setCurrent] = React.useState(0)
+  const length = api?.scrollSnapList().length ?? 1
+
+  React.useEffect(() => {
+    if (!api) return
+    setCurrent(api.selectedScrollSnap())
+    api.on("select", () => setCurrent(api.selectedScrollSnap()))
+
+    return () => {
+      api?.off("select", () => setCurrent(api.selectedScrollSnap()))
+    }
+  }, [api])
+
+  return (
+    <div
+      ref={ref}
+      role="tablist"
+      className={cn("my-2 flex justify-center", className)}
+      {...props}
+    >
+      {Array.from({ length }).map((_, index) => (
+        <button
+          key={index}
+          role="tab"
+          aria-selected={current === index ? 'true' : 'false'}
+          aria-label={`Slide ${index + 1}`}
+          onClick={() => api?.scrollTo(index)}
+          className={cn(
+            dotsVariants({ size, gap, className }),
+            current === index ? "bg-muted-foreground" : "bg-muted-foreground/40"
+          )}
+        />
+      ))}
+    </div>
+  )
+})
+CarouselDots.displayName = "CarouselDots"
+
 export {
   type CarouselApi,
   Carousel,
@@ -259,4 +327,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 }

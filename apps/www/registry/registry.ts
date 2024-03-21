@@ -484,6 +484,12 @@ const example: Registry = [
     files: ["example/carousel-orientation.tsx"],
   },
   {
+    name: "carousel-dots",
+    type: "components:example",
+    registryDependencies: ["carousel"],
+    files: ["example/carousel-dots.tsx"],
+  },
+  {
     name: "carousel-api",
     type: "components:example",
     registryDependencies: ["carousel"],
