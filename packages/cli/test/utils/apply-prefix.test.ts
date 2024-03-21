@@ -25,10 +25,9 @@ describe("apply tailwind prefix", () => {
         "tw-text-red-500 tw-border-red-500/50 dark:tw-border-red-500 [&>svg]:tw-text-red-500 tw-text-red-500 dark:tw-text-red-900 dark:tw-border-red-900/50 dark:dark:tw-border-red-900 dark:[&>svg]:tw-text-red-900 dark:tw-text-red-900",
     },
     {
-      input:
-        "flex h-full w-full items-center justify-center rounded-full bg-muted",
+      input: "flex size-full items-center justify-center rounded-full bg-muted",
       output:
-        "tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center tw-rounded-full tw-bg-muted",
+        "tw-flex tw-size-full tw-items-center tw-justify-center tw-rounded-full tw-bg-muted",
     },
     {
       input:

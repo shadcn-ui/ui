@@ -67,10 +67,9 @@ describe("apply color mapping", async () => {
         "text-red-500 border-red-500/50 dark:border-red-500 [&>svg]:text-red-500 dark:text-red-900 dark:border-red-900/50 dark:dark:border-red-900 dark:[&>svg]:text-red-900",
     },
     {
-      input:
-        "flex h-full w-full items-center justify-center rounded-full bg-muted",
+      input: "flex size-full items-center justify-center rounded-full bg-muted",
       output:
-        "flex h-full w-full items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800",
+        "flex size-full items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800",
     },
     {
       input:

@@ -78,7 +78,7 @@ export default function ComboboxPopover() {
           >
             {selectedStatus ? (
               <>
-                <selectedStatus.icon className="mr-2 h-4 w-4 shrink-0" />
+                <selectedStatus.icon className="mr-2 size-4 shrink-0" />
                 {selectedStatus.label}
               </>
             ) : (
@@ -106,7 +106,7 @@ export default function ComboboxPopover() {
                   >
                     <status.icon
                       className={cn(
-                        "mr-2 h-4 w-4",
+                        "mr-2 size-4",
                         status.value === selectedStatus?.value
                           ? "opacity-100"
                           : "opacity-40"
