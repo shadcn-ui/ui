@@ -54,7 +54,7 @@ export const containerClassName = "w-full h-full"
 export default function Dashboard() {
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <header className="flex h-16 items-center gap-4 border-b px-4 md:px-6">
+      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="#"
@@ -249,8 +249,12 @@ export default function Dashboard() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>Customer</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Status</TableHead>
+                    <TableHead className="hidden xl:table-column">
+                      Type
+                    </TableHead>
+                    <TableHead className="hidden xl:table-column">
+                      Status
+                    </TableHead>
                     <TableHead className="hidden xl:table-column">
                       Date
                     </TableHead>
@@ -265,8 +269,10 @@ export default function Dashboard() {
                         liam@example.com
                       </div>
                     </TableCell>
-                    <TableCell>Sale</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden xl:table-column">
+                      Sale
+                    </TableCell>
+                    <TableCell className="hidden xl:table-column">
                       <Badge className="text-xs" variant="outline">
                         Approved
                       </Badge>
@@ -283,8 +289,10 @@ export default function Dashboard() {
                         olivia@example.com
                       </div>
                     </TableCell>
-                    <TableCell>Refund</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden xl:table-column">
+                      Refund
+                    </TableCell>
+                    <TableCell className="hidden xl:table-column">
                       <Badge className="text-xs" variant="outline">
                         Declined
                       </Badge>
@@ -301,8 +309,10 @@ export default function Dashboard() {
                         noah@example.com
                       </div>
                     </TableCell>
-                    <TableCell>Subscription</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden xl:table-column">
+                      Subscription
+                    </TableCell>
+                    <TableCell className="hidden xl:table-column">
                       <Badge className="text-xs" variant="outline">
                         Approved
                       </Badge>
@@ -319,8 +329,10 @@ export default function Dashboard() {
                         emma@example.com
                       </div>
                     </TableCell>
-                    <TableCell>Sale</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden xl:table-column">
+                      Sale
+                    </TableCell>
+                    <TableCell className="hidden xl:table-column">
                       <Badge className="text-xs" variant="outline">
                         Approved
                       </Badge>
@@ -337,8 +349,10 @@ export default function Dashboard() {
                         liam@example.com
                       </div>
                     </TableCell>
-                    <TableCell>Sale</TableCell>
-                    <TableCell>
+                    <TableCell className="hidden xl:table-column">
+                      Sale
+                    </TableCell>
+                    <TableCell className="hidden xl:table-column">
                       <Badge className="text-xs" variant="outline">
                         Approved
                       </Badge>
@@ -357,12 +371,12 @@ export default function Dashboard() {
               <CardTitle>Recent Sales</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-8">
-              <div className="flex items-center">
-                <Avatar className="h-9 w-9">
+              <div className="flex items-center gap-4">
+                <Avatar className="hidden h-9 w-9 sm:flex">
                   <AvatarImage src="/avatars/01.png" alt="Avatar" />
                   <AvatarFallback>OM</AvatarFallback>
                 </Avatar>
-                <div className="ml-4 space-y-1">
+                <div className="grid gap-1">
                   <p className="text-sm font-medium leading-none">
                     Olivia Martin
                   </p>
@@ -372,12 +386,12 @@ export default function Dashboard() {
                 </div>
                 <div className="ml-auto font-medium">+$1,999.00</div>
               </div>
-              <div className="flex items-center">
-                <Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
+              <div className="flex items-center gap-4">
+                <Avatar className="hidden h-9 w-9 sm:flex">
                   <AvatarImage src="/avatars/02.png" alt="Avatar" />
                   <AvatarFallback>JL</AvatarFallback>
                 </Avatar>
-                <div className="ml-4 space-y-1">
+                <div className="grid gap-1">
                   <p className="text-sm font-medium leading-none">
                     Jackson Lee
                   </p>
@@ -387,12 +401,12 @@ export default function Dashboard() {
                 </div>
                 <div className="ml-auto font-medium">+$39.00</div>
               </div>
-              <div className="flex items-center">
-                <Avatar className="h-9 w-9">
+              <div className="flex items-center gap-4">
+                <Avatar className="hidden h-9 w-9 sm:flex">
                   <AvatarImage src="/avatars/03.png" alt="Avatar" />
                   <AvatarFallback>IN</AvatarFallback>
                 </Avatar>
-                <div className="ml-4 space-y-1">
+                <div className="grid gap-1">
                   <p className="text-sm font-medium leading-none">
                     Isabella Nguyen
                   </p>
@@ -402,12 +416,12 @@ export default function Dashboard() {
                 </div>
                 <div className="ml-auto font-medium">+$299.00</div>
               </div>
-              <div className="flex items-center">
-                <Avatar className="h-9 w-9">
+              <div className="flex items-center gap-4">
+                <Avatar className="hidden h-9 w-9 sm:flex">
                   <AvatarImage src="/avatars/04.png" alt="Avatar" />
                   <AvatarFallback>WK</AvatarFallback>
                 </Avatar>
-                <div className="ml-4 space-y-1">
+                <div className="grid gap-1">
                   <p className="text-sm font-medium leading-none">
                     William Kim
                   </p>
@@ -417,12 +431,12 @@ export default function Dashboard() {
                 </div>
                 <div className="ml-auto font-medium">+$99.00</div>
               </div>
-              <div className="flex items-center">
-                <Avatar className="h-9 w-9">
+              <div className="flex items-center gap-4">
+                <Avatar className="hidden h-9 w-9 sm:flex">
                   <AvatarImage src="/avatars/05.png" alt="Avatar" />
                   <AvatarFallback>SD</AvatarFallback>
                 </Avatar>
-                <div className="ml-4 space-y-1">
+                <div className="grid gap-1">
                   <p className="text-sm font-medium leading-none">
                     Sofia Davis
                   </p>

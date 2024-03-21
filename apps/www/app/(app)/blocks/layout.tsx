@@ -10,9 +10,9 @@ import {
 import { Button } from "@/registry/new-york/ui/button"
 
 export const metadata: Metadata = {
-  title: "Blocks",
+  title: "Building Blocks.",
   description:
-    "Beautifully designed blocks that you can copy and paste into your apps.",
+    "Beautifully designed. Copy and paste into your apps. Open Source.",
 }
 
 export default function BlocksLayout({
@@ -24,15 +24,9 @@ export default function BlocksLayout({
     <div className="container relative">
       <PageHeader className="max-w-2xl">
         <Announcement />
-        <PageHeaderHeading className="hidden md:block">
-          Building Blocks.
-        </PageHeaderHeading>
-        <PageHeaderHeading className="md:hidden">
-          Headline Here
-        </PageHeaderHeading>
+        <PageHeaderHeading>Building Blocks</PageHeaderHeading>
         <PageHeaderDescription>
-          Beautifully designed blocks that you can copy and paste into your
-          apps.
+          Beautifully designed. Copy and paste into your apps. Open Source.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild>
@@ -48,7 +42,7 @@ export default function BlocksLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <section id="blocks" className="grid scroll-mt-24 gap-24 lg:gap-32">
+      <section id="blocks" className="grid scroll-mt-24 gap-24 lg:gap-48">
         {children}
       </section>
     </div>

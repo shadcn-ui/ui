@@ -17,10 +17,11 @@ export async function highlightCode(code: string) {
 
   await highlighter.loadTheme(JSON.parse(editorTheme))
 
-  const html = await highlighter.codeToHtml(code, {
-    lang: "typescript",
-    theme: "Lambda Studio — Blackout",
-  })
+  // const html = await highlighter.codeToHtml(code, {
+  //   lang: "typescript",
+  //   theme: "Lambda Studio — Blackout",
+  // })
 
-  return html
+  // return html
+  return "code"
 }

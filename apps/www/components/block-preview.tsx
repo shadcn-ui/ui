@@ -1,7 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Info, Monitor, Phone, Smartphone, Tablet } from "lucide-react"
+import {
+  CircleHelp,
+  Info,
+  Monitor,
+  Phone,
+  Smartphone,
+  Tablet,
+} from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
 
 import { useConfig } from "@/hooks/use-config"
@@ -9,6 +16,7 @@ import { BlockCopyCodeButton } from "@/components/block-copy-code-button"
 import { Icons } from "@/components/icons"
 import { StyleSwitcher } from "@/components/style-switcher"
 import { V0Button } from "@/components/v0-button"
+import { Badge } from "@/registry/new-york/ui/badge"
 import {
   Popover,
   PopoverContent,
@@ -52,24 +60,37 @@ export function BlockPreview({ block }: { block: Block }) {
       }
     >
       <div className="flex flex-col items-center gap-4 sm:flex-row">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <TabsList className="hidden sm:flex">
             <TabsTrigger value="preview">Preview</TabsTrigger>
             <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
-          <Popover>
-            <PopoverTrigger className="text-muted-foreground hover:text-foreground">
-              <Info className="h-3.5 w-3.5" />
-              <span className="sr-only">Block description</span>
-            </PopoverTrigger>
-            <PopoverContent side="right" sideOffset={10} className="text-sm">
-              {block.description}
-            </PopoverContent>
-          </Popover>
+          <div className="hidden items-center gap-2 sm:flex">
+            <Separator
+              orientation="vertical"
+              className="mx-2 hidden h-4 md:flex"
+            />
+            <div className="flex items-center gap-2">
+              <Badge variant="outline">{block.name}</Badge>
+              <Popover>
+                <PopoverTrigger className="hidden text-muted-foreground hover:text-foreground sm:flex">
+                  <Info className="h-3.5 w-3.5" />
+                  <span className="sr-only">Block description</span>
+                </PopoverTrigger>
+                <PopoverContent
+                  side="right"
+                  sideOffset={10}
+                  className="text-sm"
+                >
+                  {block.description}
+                </PopoverContent>
+              </Popover>
+            </div>
+          </div>
         </div>
         {block.code && (
           <div className="flex items-center gap-2 pr-[14px] sm:ml-auto">
-            <div className="flex h-[28px] items-center gap-1.5 rounded-md border p-[2px] shadow-sm">
+            <div className="hidden h-[28px] items-center gap-1.5 rounded-md border p-[2px] shadow-sm md:flex">
               <ToggleGroup
                 type="single"
                 defaultValue="100"
@@ -92,15 +113,47 @@ export function BlockPreview({ block }: { block: Block }) {
                   <Tablet className="h-3.5 w-3.5" />
                 </ToggleGroupItem>
                 <ToggleGroupItem
-                  value="35"
+                  value="25"
                   className="h-[22px] w-[22px] rounded-sm p-0"
                 >
                   <Smartphone className="h-3.5 w-3.5" />
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
-            <Separator orientation="vertical" className="mx-2 h-4" />
+            <Separator
+              orientation="vertical"
+              className="mx-2 hidden h-4 md:flex"
+            />
             <StyleSwitcher className="h-7" />
+            <Popover>
+              <PopoverTrigger className="hidden text-muted-foreground hover:text-foreground sm:flex">
+                <CircleHelp className="h-3.5 w-3.5" />
+                <span className="sr-only">Block description</span>
+              </PopoverTrigger>
+              <PopoverContent
+                side="top"
+                sideOffset={20}
+                className="space-y-3 rounded-[0.5rem] text-sm"
+              >
+                <p className="font-medium">
+                  What is the difference between the New York and Default style?
+                </p>
+                <p>
+                  A style comes with its own set of components, animations,
+                  icons and more.
+                </p>
+                <p>
+                  The <span className="font-medium">Default</span> style has
+                  larger inputs, uses lucide-react for icons and
+                  tailwindcss-animate for animations.
+                </p>
+                <p>
+                  The <span className="font-medium">New York</span> style ships
+                  with smaller buttons and inputs. It also uses shadows on cards
+                  and buttons.
+                </p>
+              </PopoverContent>
+            </Popover>
             <Separator orientation="vertical" className="mx-2 h-4" />
             <BlockCopyCodeButton name={block.name} code={block.code} />
             <V0Button
@@ -121,7 +174,7 @@ export function BlockPreview({ block }: { block: Block }) {
             ref={ref}
             className="relative rounded-lg border bg-background transition-all"
             defaultSize={100}
-            minSize={35}
+            minSize={25}
           >
             {isLoading ? (
               <div className="absolute inset-0 z-10 flex h-[--container-height] w-full items-center justify-center gap-2 text-sm text-muted-foreground">

@@ -30,7 +30,7 @@ export const blockSchema = registryEntrySchema.extend({
   container: z
     .object({
       height: z.string().optional(),
-      className: z.string().optional(),
+      className: z.string().nullish(),
     })
     .optional(),
   code: z.string(),
