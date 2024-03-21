@@ -866,10 +866,16 @@ const example: Registry = [
     files: ["example/skeleton-card.tsx"],
   },
   {
-    name: "slider-demo",
+    name: "slider-horizontal-demo",
     type: "components:example",
     registryDependencies: ["slider"],
-    files: ["example/slider-demo.tsx"],
+    files: ["example/slider-horizontal-demo.tsx"],
+  },
+  {
+    name: "slider-vertical-demo",
+    type: "components:example",
+    registryDependencies: ["slider"],
+    files: ["example/slider-vertical-demo.tsx"],
   },
   {
     name: "sonner-demo",
