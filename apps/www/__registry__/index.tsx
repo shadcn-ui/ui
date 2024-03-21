@@ -299,6 +299,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/toast")),
       files: ["registry/default/ui/toast.tsx","registry/default/ui/use-toast.ts","registry/default/ui/toaster.tsx"],
     },
+    "toc": {
+      name: "toc",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/toc")),
+      files: ["registry/default/ui/toc.tsx"],
+    },
     "toggle": {
       name: "toggle",
       type: "components:ui",
@@ -1118,6 +1125,27 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/toast-with-title")),
       files: ["registry/default/example/toast-with-title.tsx"],
     },
+    "toc-demo": {
+      name: "toc-demo",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/default/example/toc-demo")),
+      files: ["registry/default/example/toc-demo.tsx"],
+    },
+    "toc-nested": {
+      name: "toc-nested",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/default/example/toc-nested")),
+      files: ["registry/default/example/toc-nested.tsx"],
+    },
+    "toc-active": {
+      name: "toc-active",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/default/example/toc-active")),
+      files: ["registry/default/example/toc-active.tsx"],
+    },
     "toggle-group-demo": {
       name: "toggle-group-demo",
       type: "components:example",
@@ -1615,6 +1643,13 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/toast")),
       files: ["registry/new-york/ui/toast.tsx","registry/new-york/ui/use-toast.ts","registry/new-york/ui/toaster.tsx"],
+    },
+    "toc": {
+      name: "toc",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/toc")),
+      files: ["registry/new-york/ui/toc.tsx"],
     },
     "toggle": {
       name: "toggle",
@@ -2434,6 +2469,27 @@ export const Index: Record<string, any> = {
       registryDependencies: ["toast"],
       component: React.lazy(() => import("@/registry/new-york/example/toast-with-title")),
       files: ["registry/new-york/example/toast-with-title.tsx"],
+    },
+    "toc-demo": {
+      name: "toc-demo",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/new-york/example/toc-demo")),
+      files: ["registry/new-york/example/toc-demo.tsx"],
+    },
+    "toc-nested": {
+      name: "toc-nested",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/new-york/example/toc-nested")),
+      files: ["registry/new-york/example/toc-nested.tsx"],
+    },
+    "toc-active": {
+      name: "toc-active",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/new-york/example/toc-active")),
+      files: ["registry/new-york/example/toc-active.tsx"],
     },
     "toggle-group-demo": {
       name: "toggle-group-demo",
