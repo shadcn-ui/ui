@@ -300,6 +300,16 @@
     "type": "components:ui"
   },
   {
+    "name": "rating",
+    "dependencies": [
+      "@radix-ui/react-radio-group"
+    ],
+    "files": [
+      "ui/rating.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "resizable",
     "dependencies": [
       "react-resizable-panels"

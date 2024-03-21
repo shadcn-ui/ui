@@ -183,6 +183,12 @@ const ui: Registry = [
     files: ["ui/radio-group.tsx"],
   },
   {
+    name: "rating",
+    type: "components:ui",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: ["ui/rating.tsx"],
+  },
+  {
     name: "resizable",
     type: "components:ui",
     dependencies: ["react-resizable-panels"],
@@ -780,6 +786,42 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["radio-group", "form"],
     files: ["example/radio-group-form.tsx"],
+  },
+  {
+    name: "rating-demo",
+    type: "components:example",
+    registryDependencies: ["rating"],
+    files: ["example/rating-demo.tsx"],
+  },
+  {
+    name: "rating-custom-icon",
+    type: "components:example",
+    registryDependencies: ["rating"],
+    files: ["example/rating-custom-icon.tsx"],
+  },
+  {
+    name: "rating-count",
+    type: "components:example",
+    registryDependencies: ["rating"],
+    files: ["example/rating-count.tsx"],
+  },
+  {
+    name: "rating-custom-label",
+    type: "components:example",
+    registryDependencies: ["rating"],
+    files: ["example/rating-custom-label.tsx"],
+  },
+  {
+    name: "rating-disabled",
+    type: "components:example",
+    registryDependencies: ["rating"],
+    files: ["example/rating-disabled.tsx"],
+  },
+  {
+    name: "rating-readonly",
+    type: "components:example",
+    registryDependencies: ["rating"],
+    files: ["example/rating-readonly.tsx"],
   },
   {
     name: "resizable-demo",
