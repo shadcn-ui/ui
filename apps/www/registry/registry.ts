@@ -746,6 +746,48 @@ const example: Registry = [
     files: ["example/menubar-demo.tsx"],
   },
   {
+    name: "multi-select-basic",
+    type: "components:example",
+    registryDependencies: ["multi-select"],
+    files: ["example/multi-select-basic.tsx"],
+  },
+  {
+    name: "multi-select-filter",
+    type: "components:example",
+    registryDependencies: ["multi-select"],
+    files: ["example/multi-select-filter.tsx"],
+  },
+  {
+    name: "multi-select-controllable-search",
+    type: "components:example",
+    registryDependencies: ["multi-select"],
+    files: ["example/multi-select-controllable-search.tsx"],
+  },
+  {
+    name: "multi-select-input-custom",
+    type: "components:example",
+    registryDependencies: ["multi-select"],
+    files: ["example/multi-select-input-custom.tsx"],
+  },
+  {
+    name: "multi-select-limit-count",
+    type: "components:example",
+    registryDependencies: ["multi-select"],
+    files: ["example/multi-select-limit-count.tsx"],
+  },
+  {
+    name: "multi-select-limit-display-length",
+    type: "components:example",
+    registryDependencies: ["multi-select"],
+    files: ["example/multi-select-limit-display-length.tsx"],
+  },
+  {
+    name: "multi-select-form",
+    type: "components:example",
+    registryDependencies: ["multi-select"],
+    files: ["example/multi-select-form.tsx"],
+  },
+  {
     name: "navigation-menu-demo",
     type: "components:example",
     registryDependencies: ["navigation-menu"],
