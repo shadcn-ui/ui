@@ -79,7 +79,7 @@ export default async function BlockPage({
   const Component = block.component
 
   return (
-    <div className={block.container?.className}>
+    <div className={block.container?.className || ""}>
       <Component />
     </div>
   )
