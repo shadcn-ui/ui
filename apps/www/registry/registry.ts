@@ -674,6 +674,12 @@ const example: Registry = [
     files: ["example/input-disabled.tsx"],
   },
   {
+    name: "input-error",
+    type: "components:example",
+    registryDependencies: ["input"],
+    files: ["example/input-error.tsx"],
+  },
+  {
     name: "input-file",
     type: "components:example",
     registryDependencies: ["input"],
