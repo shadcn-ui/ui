@@ -574,6 +574,12 @@ const example: Registry = [
     files: ["example/command-dialog.tsx"],
   },
   {
+    name: "command-custom-filtering",
+    type: "components:example",
+    registryDependencies: ["command"],
+    files: ["example/command-custom-filtering.tsx"],
+  },
+  {
     name: "context-menu-demo",
     type: "components:example",
     registryDependencies: ["context-menu"],
