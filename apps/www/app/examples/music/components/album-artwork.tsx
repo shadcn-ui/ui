@@ -32,7 +32,7 @@ export function AlbumArtwork({
   ...props
 }: AlbumArtworkProps) {
   return (
-    <div className={cn("space-y-3", className)} {...props}>
+    <div className={cn("space-y-3 cursor-pointer", className)} {...props}>
       <ContextMenu>
         <ContextMenuTrigger>
           <div className="overflow-hidden rounded-md">
