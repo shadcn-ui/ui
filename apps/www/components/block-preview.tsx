@@ -51,8 +51,9 @@ export function BlockPreview({ block }: { block: Block }) {
 
   return (
     <Tabs
+      id={block.name}
       defaultValue="preview"
-      className="relative grid w-full gap-4"
+      className="relative grid w-full scroll-m-20 gap-4"
       style={
         {
           "--container-height": block.container?.height,
@@ -71,7 +72,9 @@ export function BlockPreview({ block }: { block: Block }) {
               className="mx-2 hidden h-4 md:flex"
             />
             <div className="flex items-center gap-2">
-              <Badge variant="outline">{block.name}</Badge>
+              <a href={`#${block.name}`}>
+                <Badge variant="outline">{block.name}</Badge>
+              </a>
               <Popover>
                 <PopoverTrigger className="hidden text-muted-foreground hover:text-foreground sm:flex">
                   <Info className="h-3.5 w-3.5" />

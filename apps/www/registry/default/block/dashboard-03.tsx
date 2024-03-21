@@ -47,7 +47,7 @@ import {
 export const description =
   "An AI playground with a sidebar navigation and a main content area. The playground has a header with a settings drawer and a share button. The sidebar has navigation links and a user menu. The main content area shows a form to configure the model and messages."
 
-export const iframeHeight = "720px"
+export const iframeHeight = "740px"
 
 export const containerClassName = "w-full h-full"
 
@@ -56,26 +56,20 @@ export default function Dashboard() {
     <div className="grid h-screen w-full pl-[53px]">
       <aside className="inset-y fixed  left-0 z-20 flex h-full flex-col border-r">
         <div className="border-b p-2">
-          <Button asChild variant="outline" size="icon">
-            <Link href="#">
-              <Triangle className="size-5 fill-foreground" />
-              <span className="sr-only">Acme Inc</span>
-            </Link>
+          <Button variant="outline" size="icon" aria-label="Home">
+            <Triangle className="size-5 fill-foreground" />
           </Button>
         </div>
         <nav className="grid gap-1 p-2">
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                asChild
                 variant="ghost"
                 size="icon"
                 className="rounded-lg bg-muted"
+                aria-label="Playground"
               >
-                <Link href="#">
-                  <SquareTerminal className="size-5" />
-                  <span className="sr-only">Playground</span>
-                </Link>
+                <SquareTerminal className="size-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -85,15 +79,12 @@ export default function Dashboard() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                asChild
                 variant="ghost"
                 size="icon"
                 className="rounded-lg"
+                aria-label="Models"
               >
-                <Link href="#">
-                  <Bot className="size-5" />
-                  <span className="sr-only">Models</span>
-                </Link>
+                <Bot className="size-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -103,15 +94,12 @@ export default function Dashboard() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                asChild
                 variant="ghost"
                 size="icon"
                 className="rounded-lg"
+                aria-label="API"
               >
-                <Link href="#">
-                  <Code2 className="size-5" />
-                  <span className="sr-only">API</span>
-                </Link>
+                <Code2 className="size-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -121,15 +109,12 @@ export default function Dashboard() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                asChild
                 variant="ghost"
                 size="icon"
                 className="rounded-lg"
+                aria-label="Documentation"
               >
-                <Link href="#">
-                  <Book className="size-5" />
-                  <span className="sr-only">Documentation</span>
-                </Link>
+                <Book className="size-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -139,15 +124,12 @@ export default function Dashboard() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                asChild
                 variant="ghost"
                 size="icon"
                 className="rounded-lg"
+                aria-label="Settings"
               >
-                <Link href="#">
-                  <Settings2 className="size-5" />
-                  <span className="sr-only">Settings</span>
-                </Link>
+                <Settings2 className="size-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -159,15 +141,12 @@ export default function Dashboard() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                asChild
                 variant="ghost"
                 size="icon"
                 className="mt-auto rounded-lg"
+                aria-label="Help"
               >
-                <Link href="#">
-                  <LifeBuoy className="size-5" />
-                  <span className="sr-only">Help</span>
-                </Link>
+                <LifeBuoy className="size-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -177,15 +156,12 @@ export default function Dashboard() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                asChild
                 variant="ghost"
                 size="icon"
                 className="mt-auto rounded-lg"
+                aria-label="Account"
               >
-                <Link href="#">
-                  <SquareUser className="size-5" />
-                  <span className="sr-only">Account</span>
-                </Link>
+                <SquareUser className="size-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
