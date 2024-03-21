@@ -211,6 +211,9 @@ export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
  
     --destructive: <%- colors.light["destructive"] %>;
     --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
+ 
+    --informative: <%- colors.light["informative"] %>;
+    --informative-foreground: <%- colors.light["informative-foreground"] %>;
 
     --border: <%- colors.light["border"] %>;
     --input: <%- colors.light["input"] %>;
@@ -243,6 +246,9 @@ export const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
  
     --destructive: <%- colors.dark["destructive"] %>;
     --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
+ 
+    --informative: <%- colors.dark["informative"] %>;
+    --informative-foreground: <%- colors.dark["informative-foreground"] %>;
  
     --border: <%- colors.dark["border"] %>;
     --input: <%- colors.dark["input"] %>;
@@ -330,6 +336,9 @@ export const THEME_STYLES_WITH_VARIABLES = `
     --destructive: <%- colors.light["destructive"] %>;
     --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
  
+    --informative: <%- colors.light["informative"] %>;
+    --informative-foreground: <%- colors.light["informative-foreground"] %>;
+ 
     --ring: <%- colors.light["ring"] %>;
  
     --radius: <%- colors.light["radius"] %>;
@@ -362,6 +371,9 @@ export const THEME_STYLES_WITH_VARIABLES = `
  
     --destructive: <%- colors.dark["destructive"] %>;
     --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
+ 
+    --informative: <%- colors.dark["informative"] %>;
+    --informative-foreground: <%- colors.dark["informative-foreground"] %>;
  
     --ring: <%- colors.dark["ring"] %>;
   }`
