@@ -37,6 +37,12 @@ const ui: Registry = [
     files: ["ui/badge.tsx"],
   },
   {
+    name: "breadcrumb",
+    type: "components:ui",
+    dependencies: ["@radix-ui/react-slot"],
+    files: ["ui/breadcrumb.tsx"],
+  },
+  {
     name: "button",
     type: "components:ui",
     dependencies: ["@radix-ui/react-slot"],
@@ -127,6 +133,12 @@ const ui: Registry = [
     name: "input",
     type: "components:ui",
     files: ["ui/input.tsx"],
+  },
+  {
+    name: "input-otp",
+    type: "components:ui",
+    dependencies: ["input-otp"],
+    files: ["ui/input-otp.tsx"],
   },
   {
     name: "label",
@@ -331,6 +343,42 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["badge"],
     files: ["example/badge-secondary.tsx"],
+  },
+  {
+    name: "breadcrumb-demo",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-demo.tsx"],
+  },
+  {
+    name: "breadcrumb-separator",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-separator.tsx"],
+  },
+  {
+    name: "breadcrumb-dropdown",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-dropdown.tsx"],
+  },
+  {
+    name: "breadcrumb-ellipsis",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-ellipsis.tsx"],
+  },
+  {
+    name: "breadcrumb-link",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-link.tsx"],
+  },
+  {
+    name: "breadcrumb-responsive",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-responsive.tsx"],
   },
   {
     name: "button-demo",
@@ -659,6 +707,36 @@ const example: Registry = [
     type: "components:example",
     registryDependencies: ["input", "button", "label"],
     files: ["example/input-with-text.tsx"],
+  },
+  {
+    name: "input-otp-demo",
+    type: "components:example",
+    registryDependencies: ["input-otp"],
+    files: ["example/input-otp-demo.tsx"],
+  },
+  {
+    name: "input-otp-pattern",
+    type: "components:example",
+    registryDependencies: ["input-otp"],
+    files: ["example/input-otp-pattern.tsx"],
+  },
+  {
+    name: "input-otp-separator",
+    type: "components:example",
+    registryDependencies: ["input-otp"],
+    files: ["example/input-otp-separator.tsx"],
+  },
+  {
+    name: "input-otp-controlled",
+    type: "components:example",
+    registryDependencies: ["input-otp"],
+    files: ["example/input-otp-controlled.tsx"],
+  },
+  {
+    name: "input-otp-form",
+    type: "components:example",
+    registryDependencies: ["input-otp", "form"],
+    files: ["example/input-otp-form.tsx"],
   },
   {
     name: "label-demo",
