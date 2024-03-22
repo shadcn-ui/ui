@@ -22,9 +22,11 @@ export default function BlocksLayout({
 }) {
   return (
     <div className="container relative">
-      <PageHeader className="max-w-2xl">
+      <PageHeader className="max-w-3xl">
         <Announcement />
-        <PageHeaderHeading>Building Blocks</PageHeaderHeading>
+        <PageHeaderHeading className="text-balance">
+          Building Blocks for the Web
+        </PageHeaderHeading>
         <PageHeaderDescription>
           Beautifully designed. Copy and paste into your apps. Open Source.
         </PageHeaderDescription>

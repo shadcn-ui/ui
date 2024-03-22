@@ -5,6 +5,13 @@ import path from "path"
 import { getHighlighter } from "shiki"
 
 export async function highlightCode(code: string) {
+  // Highlighting is failing in server components.
+  // Disabling this in development.
+  // TODO: Remove this when we figure out the issue.
+  if (process.env.NODE_ENV === "development") {
+    return code
+  }
+
   const editorTheme = await fs.readFile(
     path.join(process.cwd(), "lib/themes/dark.json"),
     "utf-8"
