@@ -344,6 +344,8 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/stepper")),
       files: ["registry/default/ui/stepper.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "switch": {
       name: "switch",
@@ -1314,6 +1316,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/default/example/stepper-demo")),
       files: ["registry/default/example/stepper-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-orientation": {
       name: "stepper-orientation",
@@ -1321,6 +1325,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/default/example/stepper-orientation")),
       files: ["registry/default/example/stepper-orientation.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-description": {
       name: "stepper-description",
@@ -1328,6 +1334,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/default/example/stepper-description")),
       files: ["registry/default/example/stepper-description.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-form": {
       name: "stepper-form",
@@ -1335,6 +1343,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/default/example/stepper-form")),
       files: ["registry/default/example/stepper-form.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-variants": {
       name: "stepper-variants",
@@ -1342,6 +1352,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/default/example/stepper-variants")),
       files: ["registry/default/example/stepper-variants.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-custom-icons": {
       name: "stepper-custom-icons",
@@ -1349,6 +1361,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/default/example/stepper-custom-icons")),
       files: ["registry/default/example/stepper-custom-icons.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-footer-inside": {
       name: "stepper-footer-inside",
@@ -1356,6 +1370,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/default/example/stepper-footer-inside")),
       files: ["registry/default/example/stepper-footer-inside.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-clickable-steps": {
       name: "stepper-clickable-steps",
@@ -1363,6 +1379,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/default/example/stepper-clickable-steps")),
       files: ["registry/default/example/stepper-clickable-steps.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-optional-steps": {
       name: "stepper-optional-steps",
@@ -1370,6 +1388,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/default/example/stepper-optional-steps")),
       files: ["registry/default/example/stepper-optional-steps.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-state": {
       name: "stepper-state",
@@ -1377,6 +1397,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/default/example/stepper-state")),
       files: ["registry/default/example/stepper-state.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "switch-demo": {
       name: "switch-demo",
@@ -2186,6 +2208,8 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/stepper")),
       files: ["registry/new-york/ui/stepper.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "switch": {
       name: "switch",
@@ -3156,6 +3180,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-demo")),
       files: ["registry/new-york/example/stepper-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-orientation": {
       name: "stepper-orientation",
@@ -3163,6 +3189,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-orientation")),
       files: ["registry/new-york/example/stepper-orientation.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-description": {
       name: "stepper-description",
@@ -3170,6 +3198,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-description")),
       files: ["registry/new-york/example/stepper-description.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-form": {
       name: "stepper-form",
@@ -3177,6 +3207,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-form")),
       files: ["registry/new-york/example/stepper-form.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-variants": {
       name: "stepper-variants",
@@ -3184,6 +3216,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-variants")),
       files: ["registry/new-york/example/stepper-variants.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-custom-icons": {
       name: "stepper-custom-icons",
@@ -3191,6 +3225,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-custom-icons")),
       files: ["registry/new-york/example/stepper-custom-icons.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-footer-inside": {
       name: "stepper-footer-inside",
@@ -3198,6 +3234,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-footer-inside")),
       files: ["registry/new-york/example/stepper-footer-inside.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-clickable-steps": {
       name: "stepper-clickable-steps",
@@ -3205,6 +3243,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-clickable-steps")),
       files: ["registry/new-york/example/stepper-clickable-steps.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-optional-steps": {
       name: "stepper-optional-steps",
@@ -3212,6 +3252,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-optional-steps")),
       files: ["registry/new-york/example/stepper-optional-steps.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "stepper-state": {
       name: "stepper-state",
@@ -3219,6 +3261,8 @@ export const Index: Record<string, any> = {
       registryDependencies: ["stepper"],
       component: React.lazy(() => import("@/registry/new-york/example/stepper-state")),
       files: ["registry/new-york/example/stepper-state.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "switch-demo": {
       name: "switch-demo",
