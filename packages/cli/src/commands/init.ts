@@ -1,5 +1,7 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
+import { promisify } from "util"
+import { readFile, writeFile, stat } from "fs"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -370,11 +372,48 @@ export async function runInit(cwd: string, config: Config) {
   }
 
   // Write cn file.
-  await fs.writeFile(
-    `${config.resolvedPaths.utils}.${extension}`,
-    extension === "ts" ? templates.UTILS : templates.UTILS_JS,
-    "utf8"
-  )
+
+  const readFileAsync = promisify(readFile)
+  const writeFileAsync = promisify(writeFile)
+  const statAsync = promisify(stat)
+
+  const linesTs = templates.UTILS.split('\n')
+  const importsTs = linesTs.slice(0, 2).join('\n')
+  const codeTs = linesTs.slice(2).join('\n')
+
+  const linesJs = templates.UTILS_JS.split('\n')
+  const importsJs = linesJs.slice(0, 2).join('\n')
+  const codeJs = linesJs.slice(2).join('\n')
+
+
+  const newImports = extension === "ts" ? `${importsTs}\n` :
+    `${importsJs}"\n`
+
+  const functionContent = extension === "ts" ? `${codeTs}\n` :
+    `${codeJs}\n`
+
+
+  let fileExists = true
+  try {
+    // Check if file exists
+    await statAsync(`${config.resolvedPaths.utils}.${extension}`);
+  } catch (error) {
+    // If the file doesn't exist, set fileExists to false
+    fileExists = false;
+  }
+
+  if (fileExists) {
+    // Append imports at the top and code at the bottom
+    let fileContent = await readFileAsync(`${config.resolvedPaths.utils}.${extension}`, 'utf8');
+    fileContent = `${newImports}${fileContent}\n${functionContent}`;
+
+    await writeFileAsync(`${config.resolvedPaths.utils}.${extension}`, fileContent, "utf-8");
+  } else {
+    // Write file with imports and code
+    const fileContent = `${newImports}${functionContent}`;
+    await writeFileAsync(`${config.resolvedPaths.utils}.${extension}`, fileContent, "utf-8");
+  }
+
 
   spinner?.succeed()
 
