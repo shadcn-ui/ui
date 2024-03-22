@@ -618,6 +618,12 @@ export const examples: Registry = [
     files: ["example/stepper-description.tsx"],
   },
   {
+    name: "stepper-sizes",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-sizes.tsx"],
+  },
+  {
     name: "stepper-form",
     type: "components:example",
     registryDependencies: ["stepper"],
