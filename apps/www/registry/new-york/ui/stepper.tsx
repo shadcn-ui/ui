@@ -144,7 +144,7 @@ interface StepOptions {
   checkIcon?: IconType
   errorIcon?: IconType
   onClickStep?: (step: number) => void
-  responsiveBreakpoint?: string
+  mobileBreakpoint?: string
   variant?: "circles" | "circles-alt" | "simple"
   expandVerticalSteps?: boolean
   size?: "sm" | "md" | "lg"
@@ -196,7 +196,7 @@ const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
       checkIcon,
       errorIcon,
       onClickStep,
-      responsiveBreakpoint,
+      mobileBreakpoint,
       expandVerticalSteps = false,
       initialStep = 0,
       size,
@@ -226,7 +226,7 @@ const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
     const stepCount = items.length
 
     const isMobile = useMediaQuery(
-      `(max-width: ${responsiveBreakpoint || "768px"})`
+      `(max-width: ${mobileBreakpoint || "768px"})`
     )
 
     const clickable = !!onClickStep
