@@ -1,26 +1,50 @@
-import { Building, Star, User } from "lucide-react"
+import * as React from "react"
 
-import { Button } from "@/registry/new-york/ui/button"
+import { Button } from "@/registry/default/ui/button"
+import { Label } from "@/registry/default/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 import {
   Step,
   StepItem,
   Stepper,
   useStepper,
-} from "@/registry/new-york/ui/stepper"
+  type StepperProps,
+} from "@/registry/default/ui/stepper"
 
 const steps = [
-  { label: "Step 1", icon: User },
-  { label: "Step 2", icon: Building },
-  { label: "Step 3", icon: Star },
+  { label: "Step 1" },
+  { label: "Step 2" },
+  { label: "Step 3" },
 ] satisfies StepItem[]
 
 export default function StepperDemo() {
+  const [variant, setVariant] =
+    React.useState<StepperProps["variant"]>("circles")
+
   return (
     <div className="flex w-full flex-col gap-4">
-      <Stepper initialStep={0} steps={steps}>
-        {steps.map(({ label, icon }, index) => {
+      <RadioGroup
+        className="mb-10"
+        value={variant}
+        onValueChange={(value) => setVariant(value as StepperProps["variant"])}
+      >
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="circles" id="circles" />
+          <Label htmlFor="circles">Circles</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="circles-alt" id="circles-alt" />
+          <Label htmlFor="circles-alt">Circles Alt</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="simple" id="simple" />
+          <Label htmlFor="simple">Simple</Label>
+        </div>
+      </RadioGroup>
+      <Stepper variant={variant} initialStep={0} steps={steps}>
+        {steps.map(({ label }, index) => {
           return (
-            <Step key={label} label={label} icon={icon}>
+            <Step key={label} label={label}>
               <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
                 <h1 className="text-xl">Step {index + 1}</h1>
               </div>

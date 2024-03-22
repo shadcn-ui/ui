@@ -1,68 +1,76 @@
-import { Calendar, Lock, User } from "lucide-react"
+import { Building, Star, User } from "lucide-react"
 
 import { Button } from "@/registry/default/ui/button"
 import {
+  Step,
+  StepItem,
   Stepper,
-  StepperFooter,
-  StepperItem,
   useStepper,
 } from "@/registry/default/ui/stepper"
 
 const steps = [
-  { id: 0, label: "Step 1", icon: <User /> },
-  { id: 1, label: "Step 2", icon: <Calendar /> },
-  { id: 2, label: "Step 3", icon: <Lock /> },
-]
+  { label: "Step 1", icon: User },
+  { label: "Step 2", icon: Building },
+  { label: "Step 3", icon: Star },
+] satisfies StepItem[]
 
 export default function StepperDemo() {
   return (
     <div className="flex w-full flex-col gap-4">
       <Stepper initialStep={0} steps={steps}>
-        {steps.map((step, index) => {
+        {steps.map(({ label, icon }, index) => {
           return (
-            <StepperItem key={step.id}>
-              <div className="h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300">
-                <p>Step {index + 1} content</p>
+            <Step key={label} label={label} icon={icon}>
+              <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
+                <h1 className="text-xl">Step {index + 1}</h1>
               </div>
-            </StepperItem>
+            </Step>
           )
         })}
-        <StepperFooter>
-          <MyStepperFooter />
-        </StepperFooter>
+        <Footer />
       </Stepper>
     </div>
   )
 }
 
-function MyStepperFooter() {
+const Footer = () => {
   const {
-    activeStep,
-    isLastStep,
-    isOptionalStep,
-    isDisabledStep,
     nextStep,
     prevStep,
-    resetSteps,
-    steps,
+    reset,
+    activeStep,
+    hasCompletedAllSteps,
+    isLastStep,
+    isOptional,
   } = useStepper()
-
   return (
-    <div className="flex items-center justify-end gap-2">
-      {activeStep === steps.length ? (
-        <>
-          <Button onClick={resetSteps}>Reset</Button>
-        </>
-      ) : (
-        <>
-          <Button disabled={isDisabledStep} onClick={prevStep}>
-            Prev
-          </Button>
-          <Button onClick={nextStep}>
-            {isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
-          </Button>
-        </>
+    <>
+      {hasCompletedAllSteps && (
+        <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
+          <h1 className="text-xl">Woohoo! All steps completed! 🎉</h1>
+        </div>
       )}
-    </div>
+      <div className="w-full flex justify-end gap-2">
+        {hasCompletedAllSteps ? (
+          <Button size="sm" onClick={reset}>
+            Reset
+          </Button>
+        ) : (
+          <>
+            <Button
+              disabled={activeStep === 0}
+              onClick={prevStep}
+              size="sm"
+              variant="secondary"
+            >
+              Prev
+            </Button>
+            <Button size="sm" onClick={nextStep}>
+              {isLastStep ? "Finish" : isOptional ? "Skip" : "Next"}
+            </Button>
+          </>
+        )}
+      </div>
+    </>
   )
 }

@@ -15,12 +15,7 @@ import {
   FormMessage,
 } from "@/registry/new-york/ui/form"
 import { Input } from "@/registry/new-york/ui/input"
-import {
-  Stepper,
-  StepperFooter,
-  StepperItem,
-  useStepper,
-} from "@/registry/new-york/ui/stepper"
+import { Step, Stepper, useStepper } from "@/registry/new-york/ui/stepper"
 import { toast } from "@/registry/new-york/ui/use-toast"
 
 const steps = [
@@ -31,24 +26,30 @@ const steps = [
 export default function StepperDemo() {
   return (
     <div className="flex w-full flex-col gap-4">
-      <Stepper initialStep={0} steps={steps}>
+      <Stepper variant="circles-alt" initialStep={0} steps={steps}>
         {steps.map((step, index) => {
           if (index === 0) {
             return (
-              <StepperItem key={step.id}>
+              <Step
+                key={step.id}
+                label={step.label}
+                description={step.description}
+              >
                 <FirstStepForm />
-              </StepperItem>
+              </Step>
             )
           }
           return (
-            <StepperItem key={step.id}>
+            <Step
+              key={step.id}
+              label={step.label}
+              description={step.description}
+            >
               <SecondStepForm />
-            </StepperItem>
+            </Step>
           )
         })}
-        <StepperFooter>
-          <MyStepperFooter />
-        </StepperFooter>
+        <MyStepperFooter />
       </Stepper>
     </div>
   )
@@ -137,9 +138,7 @@ function SecondStepForm() {
               <FormControl>
                 <Input type="password" {...field} />
               </FormControl>
-              <FormDescription>
-                This is your private password.
-              </FormDescription>
+              <FormDescription>This is your private password.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -152,28 +151,33 @@ function SecondStepForm() {
 
 function StepperFormActions() {
   const {
-    activeStep,
-    isLastStep,
-    isOptionalStep,
-    isDisabledStep,
+    nextStep,
     prevStep,
-    resetSteps,
-    steps,
+    reset,
+    activeStep,
+    hasCompletedAllSteps,
+    isLastStep,
+    isOptional,
   } = useStepper()
 
   return (
-    <div className="flex items-center justify-end gap-2">
-      {activeStep === steps.length ? (
-        <>
-          <Button onClick={resetSteps}>Reset</Button>
-        </>
+    <div className="w-full flex justify-end gap-2">
+      {hasCompletedAllSteps ? (
+        <Button size="sm" onClick={reset}>
+          Reset
+        </Button>
       ) : (
         <>
-          <Button disabled={isDisabledStep} onClick={prevStep}>
+          <Button
+            disabled={activeStep === 0}
+            onClick={prevStep}
+            size="sm"
+            variant="secondary"
+          >
             Prev
           </Button>
-          <Button type="submit">
-            {isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
+          <Button size="sm">
+            {isLastStep ? "Finish" : isOptional ? "Skip" : "Next"}
           </Button>
         </>
       )}
@@ -182,7 +186,7 @@ function StepperFormActions() {
 }
 
 function MyStepperFooter() {
-  const { activeStep, resetSteps, steps } = useStepper()
+  const { activeStep, reset, steps } = useStepper()
 
   if (activeStep !== steps.length) {
     return null
@@ -190,7 +194,7 @@ function MyStepperFooter() {
 
   return (
     <div className="flex items-center justify-end gap-2">
-      <Button onClick={resetSteps}>Reset Stepper with Form</Button>
+      <Button onClick={reset}>Reset Stepper with Form</Button>
     </div>
   )
 }

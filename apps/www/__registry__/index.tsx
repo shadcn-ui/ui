@@ -1048,6 +1048,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/stepper-form")),
       files: ["registry/default/example/stepper-form.tsx"],
     },
+    "stepper-variants": {
+      name: "stepper-variants",
+      type: "components:example",
+      registryDependencies: ["stepper"],
+      component: React.lazy(() => import("@/registry/default/example/stepper-variants")),
+      files: ["registry/default/example/stepper-variants.tsx"],
+    },
     "stepper-custom-icons": {
       name: "stepper-custom-icons",
       type: "components:example",
@@ -1055,12 +1062,12 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/stepper-custom-icons")),
       files: ["registry/default/example/stepper-custom-icons.tsx"],
     },
-    "stepper-label-orientation": {
-      name: "stepper-label-orientation",
+    "stepper-footer-inside": {
+      name: "stepper-footer-inside",
       type: "components:example",
       registryDependencies: ["stepper"],
-      component: React.lazy(() => import("@/registry/default/example/stepper-label-orientation")),
-      files: ["registry/default/example/stepper-label-orientation.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/stepper-footer-inside")),
+      files: ["registry/default/example/stepper-footer-inside.tsx"],
     },
     "stepper-clickable-steps": {
       name: "stepper-clickable-steps",
@@ -1076,12 +1083,12 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/stepper-optional-steps")),
       files: ["registry/default/example/stepper-optional-steps.tsx"],
     },
-    "stepper-status": {
-      name: "stepper-status",
+    "stepper-state": {
+      name: "stepper-state",
       type: "components:example",
       registryDependencies: ["stepper"],
-      component: React.lazy(() => import("@/registry/default/example/stepper-status")),
-      files: ["registry/default/example/stepper-status.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/stepper-state")),
+      files: ["registry/default/example/stepper-state.tsx"],
     },
     "switch-demo": {
       name: "switch-demo",
@@ -2435,6 +2442,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/stepper-form")),
       files: ["registry/new-york/example/stepper-form.tsx"],
     },
+    "stepper-variants": {
+      name: "stepper-variants",
+      type: "components:example",
+      registryDependencies: ["stepper"],
+      component: React.lazy(() => import("@/registry/new-york/example/stepper-variants")),
+      files: ["registry/new-york/example/stepper-variants.tsx"],
+    },
     "stepper-custom-icons": {
       name: "stepper-custom-icons",
       type: "components:example",
@@ -2442,12 +2456,12 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/stepper-custom-icons")),
       files: ["registry/new-york/example/stepper-custom-icons.tsx"],
     },
-    "stepper-label-orientation": {
-      name: "stepper-label-orientation",
+    "stepper-footer-inside": {
+      name: "stepper-footer-inside",
       type: "components:example",
       registryDependencies: ["stepper"],
-      component: React.lazy(() => import("@/registry/new-york/example/stepper-label-orientation")),
-      files: ["registry/new-york/example/stepper-label-orientation.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/stepper-footer-inside")),
+      files: ["registry/new-york/example/stepper-footer-inside.tsx"],
     },
     "stepper-clickable-steps": {
       name: "stepper-clickable-steps",
@@ -2463,12 +2477,12 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/stepper-optional-steps")),
       files: ["registry/new-york/example/stepper-optional-steps.tsx"],
     },
-    "stepper-status": {
-      name: "stepper-status",
+    "stepper-state": {
+      name: "stepper-state",
       type: "components:example",
       registryDependencies: ["stepper"],
-      component: React.lazy(() => import("@/registry/new-york/example/stepper-status")),
-      files: ["registry/new-york/example/stepper-status.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/stepper-state")),
+      files: ["registry/new-york/example/stepper-state.tsx"],
     },
     "switch-demo": {
       name: "switch-demo",

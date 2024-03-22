@@ -24,6 +24,34 @@ component: true
 npx shadcn-ui@latest add stepper
 ```
 
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js showLineNumbers title="tailwind.config.js" {6-13,16-17}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        "collapsible-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-collapsible-content-height)" },
+        },
+        "collapsible-up": {
+          from: { height: "var(--radix-collapsible-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "collapsible-down": "collapsible-down 0.2s ease-out",
+        "collapsible-up": "collapsible-up 0.2s ease-out",
+      },
+    },
+  },
+}
+```
+
 </Steps>
 
 </TabsContent>
@@ -48,116 +76,79 @@ npx shadcn-ui@latest add stepper
 
 ```tsx
 import {
+  Step,
   Stepper,
-  StepperItem,
-  StepperFooter
   useStepper,
+  type StepItem,
 } from "@/components/ui/stepper"
 ```
 
-```tsx {1}
-const steps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }]
+```tsx
+const steps = [
+  { label: "Step 1" },
+  { label: "Step 2" },
+  { label: "Step 3" },
+] satisfies StepItem[]
 
 export default function StepperDemo() {
   return (
     <div className="flex w-full flex-col gap-4">
-      <Stepper initialStep={0} steps={steps} orientation="horizontal">
-        {steps.map((step, index) => {
+      <Stepper initialStep={0} steps={steps}>
+        {steps.map(({ label }, index) => {
           return (
-            <StepperItem key={index}>
-              <div className="h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300">
-                <p>Step {index + 1} content</p>
+            <Step key={label} label={label}>
+              <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
+                <h1 className="text-xl">Step {index + 1}</h1>
               </div>
-            </StepperItem>
+            </Step>
           )
         })}
-        <StepperFooter>
-          <MyStepperFooter />
-        </StepperFooter>
+        <Footer />
       </Stepper>
     </div>
   )
 }
 
-function MyStepperFooter() {
+const Footer = () => {
   const {
-    activeStep,
-    isLastStep,
-    isOptionalStep,
-    isDisabledStep,
     nextStep,
     prevStep,
-    resetSteps,
-    steps,
+    reset,
+    activeStep,
+    hasCompletedAllSteps,
+    isLastStep,
+    isOptional,
   } = useStepper()
-
   return (
-    <div className="flex items-center justify-end gap-2">
-      {activeStep === steps.length ? (
-        <>
-          <Button onClick={resetSteps}>Reset</Button>
-        </>
-      ) : (
-        <>
-          <Button disabled={isDisabledStep} onClick={prevStep}>
-            Prev
-          </Button>
-          <Button onClick={nextStep}>
-            {isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
-          </Button>
-        </>
+    <>
+      {hasCompletedAllSteps && (
+        <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
+          <h1 className="text-xl">Woohoo! All steps completed! 🎉</h1>
+        </div>
       )}
-    </div>
+      <div className="w-full flex justify-end gap-2">
+        {hasCompletedAllSteps ? (
+          <Button size="sm" onClick={reset}>
+            Reset
+          </Button>
+        ) : (
+          <>
+            <Button
+              disabled={activeStep === 0}
+              onClick={prevStep}
+              size="sm"
+              variant="secondary"
+            >
+              Prev
+            </Button>
+            <Button size="sm" onClick={nextStep}>
+              {isLastStep ? "Finish" : isOptional ? "Skip" : "Next"}
+            </Button>
+          </>
+        )}
+      </div>
+    </>
   )
-}
-```
-
-## API
-
-### `<Stepper />`
-
-```tsx
-interface StepperProps {
-  steps: {
-    label: string | React.ReactNode
-    description?: string | React.ReactNode
-    icon?: React.ReactNode
-    optional?: boolean
-  }[]
-  initialStep: number
-  orientation?: "vertical" | "horizontal"
-  labelOrientation?: "vertical" | "horizontal"
-  scrollTracking?: boolean
-  variant?: "default" | "ghost" | "outline" | "secondary"
-  status?: "default" | "success" | "error" | "loading"
-  isClickable?: boolean
-}
-```
-
-### `<StepperItem />`
-
-```tsx
-interface StepperItemProps {
-  onStepperItemClick?: () => void
-}
-```
-
-### `useStepper`
-
-`useStepper` returns values and functions that allow to render the stepper in a modular way.
-
-```tsx
-function useStepper(): StepperProps & {
-  nextStep: () => void
-  prevStep: () => void
-  resetSteps: () => void
-  setStep: (step: number) => void
-  setStatus: (status: "default" | "success" | "error" | "loading") => void
-  activeStep: number
-  isDisabledStep: boolean
-  isLastStep: boolean
-  isOptionalStep: boolean
-  isFinished: boolean
 }
 ```
 
@@ -179,23 +170,35 @@ We can add a description to the array of steps
 
 <ComponentPreview name="stepper-description" />
 
-### Label orientation
-
-If you would like the labels to be positioned below the step icons you can do so using the `labelOrientation` prop on the Stepper component.
-
-<ComponentPreview name="stepper-label-orientation" />
-
 ### Optional steps
 
 If you want to make a step optional, you can add `optional: true` in the array of steps.
 
+In this example, the second step is optional. You can visualize the change of the label in the `Next` button
+
 <ComponentPreview name="stepper-optional-steps" />
 
-### Status
+### Variants
 
-Sometimes it is useful to show visual feedback to the user depending on some asynchronous logic. In this case we can use the `status` prop on the Stepper component to show a loading indicator, a success indicator or an error indicator.
+There are 3 design variants for the Stepper component:
 
-<ComponentPreview name="stepper-status" />
+- `circles`: allows you to display each step in a circular shape. The label and description are positioned horizontally next to the button of each step.
+- `circles-alt`: same circular design as the circles variant but the label and description are positioned vertically below the button of each step.
+- `simple`: this variant features a line layout with the title and description positioned below the line.
+
+<ComponentPreview name="stepper-variants" />
+
+### Responsive
+
+By using the orientation prop you are able to switch between horizontal (default) and vertical orientations. By default, when in mobile view the Steps component will switch to vertical orientation. You are also able to customize the breakpoint at which the component switches to vertical orientation by using the `responsiveBreakpoint` prop.
+
+### State
+
+Sometimes it is useful to display visual feedback to the user depending on some asynchronous logic. In this case we can use the `state` prop to display a loading or error indicator with the values of `loading | error`.
+
+This prop can be used globally within the Stepper component or locally in the Step component affected by this state.
+
+<ComponentPreview name="stepper-state" />
 
 ### Custom Icons
 
@@ -203,67 +206,24 @@ If you want to show custom icons instead of the default numerical indicators, yo
 
 <ComponentPreview name="stepper-custom-icons" />
 
-### Custom onClick item event
+<Callout>
+  To change the general check and error icons, we can use the `checkIcon` and
+  `errorIcon` prop inside the Stepper component
+</Callout>
 
-If you need to control the onClick event when a user clicks on a step, you can set the `onStepperItemClick` prop. This event overrides the default setStep, so you must customize it with `useStepper`.
+### Clickable steps
+
+If you need the step buttons to be clickable and to be able to set a custom logic for the onClick event, we can use the `onClickStep` prop in the Stepper component globally or in Step locally.
+
+In this example we have placed a global alert when any step is clicked. Try clicking on any step to see the result.
 
 <ComponentPreview name="stepper-clickable-steps" />
 
-### Responsive
-
-If you want the stepper to be responsive you can make it responsive by using some logic of your own so that the `orientation` prop changes according to the screen size.
-
-For example, you can use a hook like `useMediaQuery` that tells you when the screen becomes a certain size in this way:
-
-```tsx {8,10}
-import { useMediaQuery } from "@/hooks/use-media-query"
-import {
-  Stepper,
-  ...
-} from "@/components/ui/stepper"
-
-export default function Page() {
-  const isMobile = useMediaQuery("(max-width: 640px)")
-  return (
-    <Stepper orientation={isMobile ? "vertical" : "horizontal"}>
-      {/* ... */}
-    </Stepper>
-  )
-}
-```
-
 ### Footer inside the step
 
-When using the vertical orientation, we may want to have the footer buttons inside each step and not located at the end. To do this, we can change the footer structure and place it below the first internal children of `StepperItem`.
+When using the vertical orientation, we may want to have the footer buttons inside each step and not located at the end. To achieve this, we can simply move our footer below all the steps inside the Stepper component
 
-```tsx
-const steps = [{ label: "Step 1" }, { label: "Step 2" }, { label: "Step 3" }]
-
-export default function StepperDemo() {
-  return (
-    <div className="flex w-full flex-col gap-4">
-      <Stepper initialStep={0} steps={steps} orientation="horizontal">
-        {steps.map((step, index) => {
-          return (
-            <StepperItem key={index}>
-              <div className="h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300">
-                <p>Step {index + 1} content</p>
-              </div>
-              <StepperFooter>
-                <MyStepperFooter />
-              </StepperFooter>
-            </StepperItem>
-          )
-        })}
-      </Stepper>
-    </div>
-  )
-}
-
-function MyStepperFooter() {
-  ...
-}
-```
+<ComponentPreview name="stepper-footer-inside" />
 
 ### Scroll tracking
 
@@ -278,3 +238,37 @@ This example uses the `Form` component of shadcn and the `react-hook-form` hooks
 You can also use the component with server actions.
 
 <ComponentPreview name="stepper-form" />
+
+### Custom styles
+
+The Stepper component allows you to customize all the styles of each section that composes the component in terms of tailwind classes or custom classes that you want to define in CSS.
+
+Each name belongs to the general classes defined in each internal section of the component that are prefixed with `stepper__` followed by the class name.
+
+The following is the list of all the classes that can be customized through the `styles` prop:
+
+```ts
+styles?: {
+  /** Styles for the main container */
+  "main-container"?: string
+  /** Styles for the horizontal step */
+  "horizontal-step"?: string
+  /** Styles for the horizontal step container (button and labels) */
+  "horizontal-step-container"?: string
+  /** Styles for the vertical step */
+  "vertical-step"?: string
+  /** Styles for the vertical step container (button and labels) */
+  "vertical-step-container"?: string
+  /** Styles for the vertical step content */
+  "vertical-step-content"?: string
+  /** Styles for the step button container */
+  "step-button-container"?: string
+  /** Styles for the label and description container */
+  "step-label-container"?: string
+  /** Styles for the step label */
+  "step-label"?: string
+  /** Styles for the step description */
+  "step-description"?: string
+}
+```
+

@@ -907,16 +907,22 @@ const example: Registry = [
     files: ["example/stepper-form.tsx"],
   },
   {
+    name: "stepper-variants",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-variants.tsx"],
+  },
+  {
     name: "stepper-custom-icons",
     type: "components:example",
     registryDependencies: ["stepper"],
     files: ["example/stepper-custom-icons.tsx"],
   },
   {
-    name: "stepper-label-orientation",
+    name: "stepper-footer-inside",
     type: "components:example",
     registryDependencies: ["stepper"],
-    files: ["example/stepper-label-orientation.tsx"],
+    files: ["example/stepper-footer-inside.tsx"],
   },
   {
     name: "stepper-clickable-steps",
@@ -931,10 +937,10 @@ const example: Registry = [
     files: ["example/stepper-optional-steps.tsx"],
   },
   {
-    name: "stepper-status",
+    name: "stepper-state",
     type: "components:example",
     registryDependencies: ["stepper"],
-    files: ["example/stepper-status.tsx"],
+    files: ["example/stepper-state.tsx"],
   },
   {
     name: "switch-demo",

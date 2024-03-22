@@ -102,9 +102,6 @@
     "dependencies": [
       "embla-carousel-react"
     ],
-    "devDependencies": [
-      "embla-carousel"
-    ],
     "registryDependencies": [
       "button"
     ],
