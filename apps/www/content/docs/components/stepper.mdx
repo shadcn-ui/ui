@@ -277,3 +277,61 @@ styles?: {
   "step-description"?: string
 }
 ```
+
+## API
+
+### Stepper
+
+| Prop                  | Type                                     | Default      | Description                                                           |
+| --------------------- | ---------------------------------------- | ------------ | --------------------------------------------------------------------- |
+| `initialStep*`        | `number`                                 | `-`          | Currently active step                                                 |
+| `steps*`              | `StepItem[]`                             | `-`          | An array of objects with the label and description of each step.      |
+| `orientation`         | `"horizontal" \| "vertical"`             | `horizontal` | The orientation of the stepper.                                       |
+| `size`                | `"sm" \| "md" \| "lg"`                   | `md`         | The size of the stepper.                                              |
+| `state`               | `"loading" \| "error"`                   | `-`          | The state of the stepper (global).                                    |
+| `icon`                | `LucideIcon \| React.ComponentType<any>` | `-`          | The custom icon to be displayed in the step button.                   |
+| `checkIcon`           | `LucideIcon \| React.ComponentType<any>` | `-`          | The custom icon to be displayed when the step is completed.           |
+| `errorIcon`           | `LucideIcon \| React.ComponentType<any>` | `-`          | The custom icon to be displayed when the step has an error.           |
+| `responsive`          | `boolean`                                | `true`       | If the stepper should be responsive.                                  |
+| `mobileBreakpoint`    | `number`                                 | `768px`      | The breakpoint at which the stepper switches to vertical orientation. |
+| `scrollTracking`      | `boolean`                                | `false`      | Scroll to the active step when scrolling forward or backward.         |
+| `styles`              | `{ [key: string]: string }`              | `-`          | Custom styles for the stepper.                                        |
+| `onClickStep`         | `(index: number) => void`                | `-`          | The function to be executed when a step is clicked.                   |
+| `variant`             | `"circles" \| "circles-alt" \| "simple"` | `circles`    | The design variant of the stepper.                                    |
+| `expandVerticalSteps` | `boolean`                                | `false`      | Control whether or not the vertical steps should collapse.            |
+
+### Step
+
+| Prop              | Type                                     | Default | Description                                                            |
+| ----------------- | ---------------------------------------- | ------- | ---------------------------------------------------------------------- |
+| `label`           | `string`                                 | `-`     | The label of the step.                                                 |
+| `description`     | `string`                                 | `-`     | The description of the step.                                           |
+| `optional`        | `boolean`                                | `-`     | If the step is optional.                                               |
+| `icon`            | `LucideIcon \| React.ComponentType<any>` | `-`     | The custom icon to be displayed in the step button.                    |
+| `state`           | `"loading" \| "error"`                   | `-`     | The state of the step (local).                                         |
+| `isCompletedStep` | `boolean`                                | `-`     | Individually control each step state, defaults to active step          |
+| `isKeepError`     | `boolean`                                | `-`     | Individually control if each step should keep showing the error state. |
+| `checkIcon`       | `LucideIcon \| React.ComponentType<any>` | `-`     | The custom icon to be displayed when the step is completed.            |
+| `errorIcon`       | `LucideIcon \| React.ComponentType<any>` | `-`     | The custom icon to be displayed when the step has an error.            |
+
+### useStepper
+
+| Prop                   | Type                      | Description                               |
+| ---------------------- | ------------------------- | ----------------------------------------- |
+| `nextStep`             | `() => void`              | Function to go to the next step.          |
+| `prevStep`             | `() => void`              | Function to go to the previous step.      |
+| `setStep`              | `(index: number) => void` | Function to set a specific step.          |
+| `reset`                | `() => void`              | Function to reset the stepper.            |
+| `activeStep`           | `number`                  | The current active step.                  |
+| `hasCompletedAllSteps` | `boolean`                 | If all steps have been completed.         |
+| `isLastStep`           | `boolean`                 | If the current step is the last step.     |
+| `isOptional`           | `boolean`                 | If the current step is optional.          |
+| `currentStep`          | `StepItem`                | The current step object.                  |
+| `clickable`            | `boolean`                 | If the steps are clickable.               |
+| `isError`              | `boolean`                 | If the stepper has an error.              |
+| `isLoading`            | `boolean`                 | If the stepper is loading.                |
+| `isVertical`           | `boolean`                 | If the stepper is vertical.               |
+| `stepCount`            | `number`                  | The total number of steps.                |
+| `expandVerticalSteps`  | `boolean`                 | If the vertical steps should be expanded. |
+| `activeStep`           | `number`                  | The current active step.                  |
+| `initialStep`          | `number`                  | The initial active step.                  |
