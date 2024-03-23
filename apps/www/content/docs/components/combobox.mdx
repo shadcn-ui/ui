@@ -28,6 +28,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "@/components/ui/command"
 import {
   Popover,
@@ -81,6 +82,7 @@ export function ComboboxDemo() {
         <Command>
           <CommandInput placeholder="Search framework..." />
           <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandList>
           <CommandGroup>
             {frameworks.map((framework) => (
               <CommandItem
@@ -101,6 +103,7 @@ export function ComboboxDemo() {
               </CommandItem>
             ))}
           </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>
