@@ -488,6 +488,7 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
       styles,
       scrollTracking,
       orientation,
+      steps
     } = useStepper()
 
     const opacity = hasVisited ? 1 : 0.8
@@ -524,6 +525,8 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
             "[&:not(:last-child)]:after:bg-blue-500 [&:not(:last-child)]:after:data-[invalid=true]:bg-destructive",
           styles?.["vertical-step"]
         )}
+        data-optional={steps[index || 0]?.optional}
+        data-completed={isCompletedStep}
         data-active={active}
         data-clickable={clickable || !!onClickStep}
         data-invalid={localIsError}
@@ -601,6 +604,7 @@ const HorizontalStep = React.forwardRef<HTMLDivElement, StepSharedProps>(
       checkIcon: checkIconContext,
       errorIcon: errorIconContext,
       styles,
+      steps,
     } = useStepper()
 
     const {
@@ -647,6 +651,8 @@ const HorizontalStep = React.forwardRef<HTMLDivElement, StepSharedProps>(
             "[&:not(:last-child)]:after:bg-blue-500 [&:not(:last-child)]:after:data-[invalid=true]:bg-destructive",
           styles?.["horizontal-step"]
         )}
+        data-optional={steps[index || 0]?.optional}
+        data-completed={isCompletedStep}
         data-active={active}
         data-invalid={localIsError}
         data-clickable={clickable}
