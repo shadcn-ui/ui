@@ -247,36 +247,25 @@ You can also use the component with server actions.
 
 ### Custom styles
 
-The Stepper component allows you to customize all the styles of each section that composes the component in terms of tailwind classes or custom classes that you want to define in CSS.
+To customize the styles of the Steps component, `Stepper` provides a list of css classes for each part of the component. You can use these classes to override the default styles. Below is a list of the classes that are available.
 
-Each name belongs to the general classes defined in each internal section of the component that are prefixed with `stepper__` followed by the class name.
+- `main-container`: The main container of the stepper.
+- `horizontal-step`: Outer wrapper for each step in horizontal layout
+- `horizontal-step-container`: Inner wrapper for each step in horizontal layout
+- `vertical-step`: Outer wrapper for each step in vertical layout
+- `vertical-step-container`: Inner wrapper for each step in vertical layout
+- `vertical-step-content`: Content wrapper for each step in vertical layout
+- `step-button-container`: Wrapper for the step button
+- `step-label-container`: Wrapper for the label and description
+- `step-label`: The label of the step
+- `step-description`: The description of the step
 
-The following is the list of all the classes that can be customized through the `styles` prop:
+In some cases you may want to customize the styles of a step based on its state. For example, you may want to change the color of a step when it is active. To do this, you can use the data attributes defined below.
 
-```ts
-styles?: {
-  /** Styles for the main container */
-  "main-container"?: string
-  /** Styles for the horizontal step */
-  "horizontal-step"?: string
-  /** Styles for the horizontal step container (button and labels) */
-  "horizontal-step-container"?: string
-  /** Styles for the vertical step */
-  "vertical-step"?: string
-  /** Styles for the vertical step container (button and labels) */
-  "vertical-step-container"?: string
-  /** Styles for the vertical step content */
-  "vertical-step-content"?: string
-  /** Styles for the step button container */
-  "step-button-container"?: string
-  /** Styles for the label and description container */
-  "step-label-container"?: string
-  /** Styles for the step label */
-  "step-label"?: string
-  /** Styles for the step description */
-  "step-description"?: string
-}
-```
+- `data-active`: The active step
+- `data-invalid`: The step with an error
+- `data-loading`: The step in loading state
+- `data-clickable`: The step that is clickable
 
 ## API
 
