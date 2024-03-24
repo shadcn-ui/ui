@@ -73,3 +73,7 @@
 .steps > h3 {
   @apply mt-8 mb-4 text-base font-semibold;
 }
+
+[data-language="txt"] .line {
+  @apply text-zinc-50/60
+}
