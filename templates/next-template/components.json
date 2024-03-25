@@ -8,6 +8,7 @@
     "cssVariables": true
   },
   "rsc": false,
+  "case": "kebab",
   "aliases": {
     "utils": "@/lib/utils",
     "components": "@/components"

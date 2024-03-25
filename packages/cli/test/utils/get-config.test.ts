@@ -20,6 +20,7 @@ test("get raw config", async () => {
     },
     rsc: false,
     tsx: true,
+    case: "kebab",
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
@@ -52,6 +53,7 @@ test("get config", async () => {
     },
     rsc: false,
     tsx: true,
+    case: "kebab",
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
@@ -87,6 +89,7 @@ test("get config", async () => {
     style: "new-york",
     rsc: false,
     tsx: true,
+    case: "kebab",
     tailwind: {
       config: "tailwind.config.ts",
       baseColor: "zinc",
@@ -139,6 +142,7 @@ test("get config", async () => {
     },
     rsc: false,
     tsx: false,
+    case: "kebab",
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",

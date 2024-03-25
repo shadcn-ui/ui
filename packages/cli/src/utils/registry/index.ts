@@ -16,6 +16,13 @@ const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined
 
+export enum CASE_CONVENTION {
+  KEBAB = "kebab",
+  PASCAL = "pascal",
+  CAMEL = "camel",
+  SNAKE = "snake",
+}
+
 export async function getRegistryIndex() {
   try {
     const [result] = await fetchRegistry(["index.json"])
@@ -69,6 +76,27 @@ export async function getRegistryBaseColor(baseColor: string) {
   } catch (error) {
     throw new Error(`Failed to fetch base color from registry.`)
   }
+}
+
+export function getComponentFileCaseConventions() {
+  return [
+    {
+      name: CASE_CONVENTION.KEBAB,
+      label: "Kebab",
+    },
+    {
+      name: CASE_CONVENTION.PASCAL,
+      label: "Pascal",
+    },
+    {
+      name: CASE_CONVENTION.CAMEL,
+      label: "Camel",
+    },
+    {
+      name: CASE_CONVENTION.SNAKE,
+      label: "Snake",
+    }
+  ]
 }
 
 export async function resolveTree(
