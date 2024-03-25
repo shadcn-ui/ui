@@ -429,6 +429,24 @@ In some cases you may want to customize the styles of a step based on its state.
 
 ### useStepper
 
+In order to use the hook, we simply have to import it and use it inside the `<Stepper />` component as a wrapper.
+
+```tsx
+import { useStepper } from "@/components/ui/stepper"
+
+export funcion UseStepperDemo() {
+  { ... } = useStepper();
+
+  return (
+    <div>
+      { ... }
+    </div>
+  )
+}
+```
+
+The values returned by the hook are the following:
+
 <PropsTable
   data={[
     {
