@@ -273,57 +273,239 @@ In some cases you may want to customize the styles of a step based on its state.
 
 ### Stepper
 
-| Prop                  | Type                                     | Default      | Description                                                           |
-| --------------------- | ---------------------------------------- | ------------ | --------------------------------------------------------------------- |
-| `initialStep*`        | `number`                                 | `-`          | Currently active step                                                 |
-| `steps*`              | `StepItem[]`                             | `-`          | An array of objects with the label and description of each step.      |
-| `orientation`         | `"horizontal" \| "vertical"`             | `horizontal` | The orientation of the stepper.                                       |
-| `size`                | `"sm" \| "md" \| "lg"`                   | `md`         | The size of the stepper.                                              |
-| `state`               | `"loading" \| "error"`                   | `-`          | The state of the stepper (global).                                    |
-| `icon`                | `LucideIcon \| React.ComponentType<any>` | `-`          | The custom icon to be displayed in the step button.                   |
-| `checkIcon`           | `LucideIcon \| React.ComponentType<any>` | `-`          | The custom icon to be displayed when the step is completed.           |
-| `errorIcon`           | `LucideIcon \| React.ComponentType<any>` | `-`          | The custom icon to be displayed when the step has an error.           |
-| `responsive`          | `boolean`                                | `true`       | If the stepper should be responsive.                                  |
-| `mobileBreakpoint`    | `number`                                 | `768px`      | The breakpoint at which the stepper switches to vertical orientation. |
-| `scrollTracking`      | `boolean`                                | `false`      | Scroll to the active step when scrolling forward or backward.         |
-| `styles`              | `{ [key: string]: string }`              | `-`          | Custom styles for the stepper.                                        |
-| `onClickStep`         | `(index: number) => void`                | `-`          | The function to be executed when a step is clicked.                   |
-| `variant`             | `"circles" \| "circles-alt" \| "simple"` | `circles`    | The design variant of the stepper.                                    |
-| `expandVerticalSteps` | `boolean`                                | `false`      | Control whether or not the vertical steps should collapse.            |
-
+<PropsTable
+  data={[
+    {
+      name: 'initialStep',
+      required: true,
+      type: 'number',
+      description: 'Currently active step',
+    },
+    {
+      name: 'steps',
+      required: true,
+      type: 'StepItem[]',
+      description: 'An array of objects with the label and description of each step.',
+    },
+    {
+      name: 'orientation',
+      type: '"horizontal" | "vertical"',
+      default: 'horizontal',
+      description: 'The orientation of the stepper.',
+    },
+    {
+      name: 'size',
+      type: '"sm" | "md" | "lg"',
+      default: 'md',
+      description: 'The size of the stepper.',
+    },
+    {
+      name: 'state',
+      type: '"loading" | "error"',
+      description: 'The state of the stepper (global).',
+    },
+    {
+      name: 'icon',
+      type: 'LucideIcon | React.ComponentType<any>',
+      description: 'The custom icon to be displayed in the step button.',
+    },
+    {
+      name: 'checkIcon',
+      type: 'LucideIcon | React.ComponentType<any>',
+      description: 'The custom icon to be displayed when the step is completed.',
+    },
+    {
+      name: 'errorIcon',
+      type: 'LucideIcon | React.ComponentType<any>',
+      description: 'The custom icon to be displayed when the step has an error.',
+    },
+    {
+      name: 'responsive',
+      type: 'boolean',
+      default: 'true',
+      description: 'If the stepper should be responsive.',
+    },
+    {
+      name: 'mobileBreakpoint',
+      type: 'number',
+      default: '768px',
+      description: 'The breakpoint at which the stepper switches to vertical orientation.',
+    },
+    {
+      name: 'scrollTracking',
+      type: 'boolean',
+      default: 'false',
+      description: 'Scroll to the active step when scrolling forward or backward.',
+    },
+    {
+      name: 'styles',
+      type: '{ [key: string]: string }',
+      description: 'Custom styles for the stepper.',
+    },
+    {
+      name: 'onClickStep',
+      type: '(index: number) => void',
+      description: 'The function to be executed when a step is clicked.',
+    },
+    {
+      name: 'variant',
+      type: '"circles" | "circles-alt" | "simple"',
+      default: 'circles',
+      description: 'The design variant of the stepper.',
+    },
+    {
+      name: 'expandVerticalSteps',
+      type: 'boolean',
+      default: 'false',
+      description: 'Control whether or not the vertical steps should collapse.',
+    },
+  ]}
+/>
 ### Step
 
-| Prop              | Type                                     | Default | Description                                                            |
-| ----------------- | ---------------------------------------- | ------- | ---------------------------------------------------------------------- |
-| `id`              | `string`                                 | `-`     | The id of the step.                                                    |
-| `label`           | `string`                                 | `-`     | The label of the step.                                                 |
-| `description`     | `string`                                 | `-`     | The description of the step.                                           |
-| `optional`        | `boolean`                                | `-`     | If the step is optional.                                               |
-| `icon`            | `LucideIcon \| React.ComponentType<any>` | `-`     | The custom icon to be displayed in the step button.                    |
-| `state`           | `"loading" \| "error"`                   | `-`     | The state of the step (local).                                         |
-| `isCompletedStep` | `boolean`                                | `-`     | Individually control each step state, defaults to active step          |
-| `isKeepError`     | `boolean`                                | `-`     | Individually control if each step should keep showing the error state. |
-| `checkIcon`       | `LucideIcon \| React.ComponentType<any>` | `-`     | The custom icon to be displayed when the step is completed.            |
-| `errorIcon`       | `LucideIcon \| React.ComponentType<any>` | `-`     | The custom icon to be displayed when the step has an error.            |
+<PropsTable
+  data={[
+    {
+      name: 'id',
+      type: 'string',
+      description: 'The id of the step.',
+    },
+    {
+      name: 'label',
+      type: 'string',
+      description: 'The label of the step.',
+    },
+    {
+      name: 'description',
+      type: 'string',
+      description: 'The description of the step.',
+    },
+    {
+      name: 'optional',
+      type: 'boolean',
+      description: 'If the step is optional.',
+    },
+    {
+      name: 'icon',
+      type: 'LucideIcon | React.ComponentType<any>',
+      description: 'The custom icon to be displayed in the step button.',
+    },
+    {
+      name: 'state',
+      type: '"loading" | "error"',
+      description: 'The state of the step (local).',
+    },
+    {
+      name: 'isCompletedStep',
+      type: 'boolean',
+      description: 'Individually control each step state, defaults to active step.',
+    },
+    {
+      name: 'isKeepError',
+      type: 'boolean',
+      description: 'Individually control if each step should keep showing the error state.',
+    },
+    {
+      name: 'checkIcon',
+      type: 'LucideIcon | React.ComponentType<any>',
+      description: 'The custom icon to be displayed when the step is completed.',
+    },
+    {
+      name: 'errorIcon',
+      type: 'LucideIcon | React.ComponentType<any>',
+      description: 'The custom icon to be displayed when the step has an error.',
+    },
+  ]}
+/>
 
 ### useStepper
 
-| Prop                   | Type                      | Description                               |
-| ---------------------- | ------------------------- | ----------------------------------------- |
-| `activeStep`           | `number`                  | The current active step.                  |
-| `isLastStep`           | `boolean`                 | If the current step is the last step.     |
-| `isOptionalStep`       | `boolean`                 | If the current step is optional.          |
-| `isDisabledStep`       | `boolean`                 | If the current step is disabled.          |
-| `isError`              | `boolean`                 | If the stepper has an error.              |
-| `isLoading`            | `boolean`                 | If the stepper is loading.                |
-| `isVertical`           | `boolean`                 | If the stepper is vertical.               |
-| `expandVerticalSteps`  | `boolean`                 | If the vertical steps should be expanded. |
-| `nextStep`             | `() => void`              | Function to go to the next step.          |
-| `prevStep`             | `() => void`              | Function to go to the previous step.      |
-| `setStep`              | `(index: number) => void` | Function to set a specific step.          |
-| `resetSteps`           | `() => void`              | Function to reset the stepper.            |
-| `stepCount`            | `number`                  | The total number of steps.                |
-| `initialStep`          | `number`                  | The initial active step.                  |
-| `clickable`            | `boolean`                 | If the steps are clickable.               |
-| `hasCompletedAllSteps` | `boolean`                 | If all steps have been completed.         |
-| `currentStep`          | `StepItem`                | The current step object.                  |
+<PropsTable
+  data={[
+    {
+      name: 'activeStep',
+      type: 'number',
+      description: 'The current active step.',
+    },
+    {
+      name: 'isLastStep',
+      type: 'boolean',
+      description: 'If the current step is the last step.',
+    },
+    {
+      name: 'isOptionalStep',
+      type: 'boolean',
+      description: 'If the current step is optional.',
+    },
+    {
+      name: 'isDisabledStep',
+      type: 'boolean',
+      description: 'If the current step is disabled.',
+    },
+    {
+      name: 'isError',
+      type: 'boolean',
+      description: 'If the stepper has an error.',
+    },
+    {
+      name: 'isLoading',
+      type: 'boolean',
+      description: 'If the stepper is loading.',
+    },
+    {
+      name: 'isVertical',
+      type: 'boolean',
+      description: 'If the stepper is vertical.',
+    },
+    {
+      name: 'expandVerticalSteps',
+      type: 'boolean',
+      description: 'If the vertical steps should be expanded.',
+    },
+    {
+      name: 'nextStep',
+      type: '() => void',
+      description: 'Function to go to the next step.',
+    },
+    {
+      name: 'prevStep',
+      type: '() => void',
+      description: 'Function to go to the previous step.',
+    },
+    {
+      name: 'setStep',
+      type: '(index: number) => void',
+      description: 'Function to set a specific step.',
+    },
+    {
+      name: 'resetSteps',
+      type: '() => void',
+      description: 'Function to reset the stepper.',
+    },
+    {
+      name: 'stepCount',
+      type: 'number',
+      description: 'The total number of steps.',
+    },
+    {
+      name: 'initialStep',
+      type: 'number',
+      description: 'The initial active step.',
+    },
+    {
+      name: 'clickable',
+      type: 'boolean',
+      description: 'If the steps are clickable.',
+    },
+    {
+      name: 'hasCompletedAllSteps',
+      type: 'boolean',
+      description: 'If all steps have been completed.',
+    },
+    {
+      name: 'currentStep',
+      type: 'StepItem',
+      description: 'The current step object.',
+    },
+  ]}
+/>

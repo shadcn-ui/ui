@@ -11,6 +11,7 @@ import { Event } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { Callout } from "@/components/callout"
+import { PropsTable } from "@/components/props-table"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentExample } from "@/components/component-example"
 import { ComponentPreview } from "@/components/component-preview"
@@ -231,6 +232,7 @@ const components = {
   ),
   Image,
   Callout,
+  PropsTable,
   ComponentPreview,
   ComponentExample,
   ComponentSource,
