@@ -80,9 +80,7 @@ const CountrySelect = ({
   options,
 }: CountrySelectProps) => {
   const handleSelect = React.useCallback(
-    (country: RPNInput.Country) => {
-      onChange(country)
-    },
+    (country: RPNInput.Country) => onChange(country),
     [onChange]
   )
 
@@ -113,7 +111,7 @@ const CountrySelect = ({
               {options.map((option) => (
                 <CommandItem
                   className="gap-2"
-                  key={option.value}
+                  key={option.value || "ZZ"}
                   onSelect={() => handleSelect(option.value)}
                 >
                   <FlagComponent
