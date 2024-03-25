@@ -1,3 +1,4 @@
+import Link from "next/link"
 import {
   Activity,
   ArrowUpRight,
@@ -9,7 +10,6 @@ import {
   Search,
   Users,
 } from "lucide-react"
-import Link from "next/link"
 
 import {
   Avatar,
