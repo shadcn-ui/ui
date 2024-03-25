@@ -34,8 +34,8 @@ export function PropsTable({
   propHeaderFixedWidth?: boolean
 }) {
   return (
-		<div className="w-full overflow-auto border rounded-lg my-5">
-			<table className="w-full caption-bottom text-sm">
+    <div className="w-full overflow-auto border rounded-lg my-5">
+      <table className="w-full caption-bottom text-sm">
         <TableHeader className="bg-gray-100">
           <TableRow>
             <TableHead style={{ width: propHeaderFixedWidth ? "37%" : "auto" }}>
@@ -94,7 +94,9 @@ export function PropsTable({
                   </TableCell>
                   <TableCell>
                     <div className="inline-flex items-center gap-2">
-                      <code className="px-1 bg-gray-100">{Boolean(typeSimple) ? typeSimple : type}</code>
+                      <code className="px-1 bg-gray-100">
+                        {Boolean(typeSimple) ? typeSimple : type}
+                      </code>
                       {Boolean(typeSimple) && Boolean(type) && (
                         <Popover>
                           <PopoverTrigger asChild>
