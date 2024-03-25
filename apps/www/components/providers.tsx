@@ -9,7 +9,7 @@ import { TooltipProvider } from "@/registry/new-york/ui/tooltip"
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return (
     <NextThemesProvider {...props}>
-      <TooltipProvider>{children}</TooltipProvider>
+      <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
     </NextThemesProvider>
   )
 }
