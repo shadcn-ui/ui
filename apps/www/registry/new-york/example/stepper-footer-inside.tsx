@@ -16,9 +16,9 @@ export default function StepperDemo() {
   return (
     <div className="flex w-full flex-col gap-4">
       <Stepper orientation="vertical" initialStep={0} steps={steps}>
-        {steps.map(({ label }, index) => {
+        {steps.map((stepProps, index) => {
           return (
-            <Step key={label} label={label}>
+            <Step key={stepProps.label} {...stepProps}>
               <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
                 <h1 className="text-xl">Step {index + 1}</h1>
               </div>
@@ -33,12 +33,12 @@ export default function StepperDemo() {
 }
 
 const StepButtons = () => {
-  const { nextStep, prevStep, activeStep, isLastStep, isOptional } =
+  const { nextStep, prevStep, isLastStep, isOptionalStep, isDisabledStep } =
     useStepper()
   return (
     <div className="w-full flex gap-2">
       <Button
-        disabled={activeStep === 0}
+        disabled={isDisabledStep}
         onClick={prevStep}
         size="sm"
         variant="secondary"
@@ -46,14 +46,14 @@ const StepButtons = () => {
         Prev
       </Button>
       <Button size="sm" onClick={nextStep}>
-        {isLastStep ? "Finish" : isOptional ? "Skip" : "Next"}
+        {isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
       </Button>
     </div>
   )
 }
 
 const FinalStep = () => {
-  const { hasCompletedAllSteps, reset } = useStepper()
+  const { hasCompletedAllSteps, resetSteps } = useStepper()
 
   if (!hasCompletedAllSteps) {
     return null
@@ -65,7 +65,7 @@ const FinalStep = () => {
         <h1 className="text-xl">Woohoo! All steps completed! 🎉</h1>
       </div>
       <div className="w-full flex justify-end gap-2">
-        <Button size="sm" onClick={reset}>
+        <Button size="sm" onClick={resetSteps}>
           Reset
         </Button>
       </div>

@@ -19,32 +19,24 @@ import { Step, Stepper, useStepper } from "@/registry/new-york/ui/stepper"
 import { toast } from "@/registry/new-york/ui/use-toast"
 
 const steps = [
-  { id: 0, label: "Step 1", description: "Description 1" },
-  { id: 1, label: "Step 2", description: "Description 2" },
+  { label: "Step 1", description: "Description 1" },
+  { label: "Step 2", description: "Description 2" },
 ]
 
 export default function StepperDemo() {
   return (
     <div className="flex w-full flex-col gap-4">
       <Stepper variant="circles-alt" initialStep={0} steps={steps}>
-        {steps.map((step, index) => {
+        {steps.map((stepProps, index) => {
           if (index === 0) {
             return (
-              <Step
-                key={step.id}
-                label={step.label}
-                description={step.description}
-              >
+              <Step key={stepProps.label} {...stepProps}>
                 <FirstStepForm />
               </Step>
             )
           }
           return (
-            <Step
-              key={step.id}
-              label={step.label}
-              description={step.description}
-            >
+            <Step key={stepProps.label} {...stepProps}>
               <SecondStepForm />
             </Step>
           )
@@ -151,25 +143,24 @@ function SecondStepForm() {
 
 function StepperFormActions() {
   const {
-    nextStep,
     prevStep,
-    reset,
-    activeStep,
+    resetSteps,
+    isDisabledStep,
     hasCompletedAllSteps,
     isLastStep,
-    isOptional,
+    isOptionalStep,
   } = useStepper()
 
   return (
     <div className="w-full flex justify-end gap-2">
       {hasCompletedAllSteps ? (
-        <Button size="sm" onClick={reset}>
+        <Button size="sm" onClick={resetSteps}>
           Reset
         </Button>
       ) : (
         <>
           <Button
-            disabled={activeStep === 0}
+            disabled={isDisabledStep}
             onClick={prevStep}
             size="sm"
             variant="secondary"
@@ -177,7 +168,7 @@ function StepperFormActions() {
             Prev
           </Button>
           <Button size="sm">
-            {isLastStep ? "Finish" : isOptional ? "Skip" : "Next"}
+            {isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
           </Button>
         </>
       )}
@@ -186,7 +177,7 @@ function StepperFormActions() {
 }
 
 function MyStepperFooter() {
-  const { activeStep, reset, steps } = useStepper()
+  const { activeStep, resetSteps, steps } = useStepper()
 
   if (activeStep !== steps.length) {
     return null
@@ -194,7 +185,7 @@ function MyStepperFooter() {
 
   return (
     <div className="flex items-center justify-end gap-2">
-      <Button onClick={reset}>Reset Stepper with Form</Button>
+      <Button onClick={resetSteps}>Reset Stepper with Form</Button>
     </div>
   )
 }

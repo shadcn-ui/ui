@@ -113,11 +113,11 @@ const Footer = () => {
   const {
     nextStep,
     prevStep,
-    reset,
-    activeStep,
+    resetSteps,
+    isDisabledStep,
     hasCompletedAllSteps,
     isLastStep,
-    isOptional,
+    isOptionalStep,
   } = useStepper()
   return (
     <>
@@ -128,13 +128,13 @@ const Footer = () => {
       )}
       <div className="w-full flex justify-end gap-2">
         {hasCompletedAllSteps ? (
-          <Button size="sm" onClick={reset}>
+          <Button size="sm" onClick={resetSteps}>
             Reset
           </Button>
         ) : (
           <>
             <Button
-              disabled={activeStep === 0}
+              disabled={isDisabledStep}
               onClick={prevStep}
               size="sm"
               variant="secondary"
@@ -142,7 +142,7 @@ const Footer = () => {
               Prev
             </Button>
             <Button size="sm" onClick={nextStep}>
-              {isLastStep ? "Finish" : isOptional ? "Skip" : "Next"}
+              {isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
             </Button>
           </>
         )}
@@ -295,6 +295,7 @@ In some cases you may want to customize the styles of a step based on its state.
 
 | Prop              | Type                                     | Default | Description                                                            |
 | ----------------- | ---------------------------------------- | ------- | ---------------------------------------------------------------------- |
+| `id`              | `string`                                 | `-`     | The id of the step.                                                    |
 | `label`           | `string`                                 | `-`     | The label of the step.                                                 |
 | `description`     | `string`                                 | `-`     | The description of the step.                                           |
 | `optional`        | `boolean`                                | `-`     | If the step is optional.                                               |
@@ -309,20 +310,20 @@ In some cases you may want to customize the styles of a step based on its state.
 
 | Prop                   | Type                      | Description                               |
 | ---------------------- | ------------------------- | ----------------------------------------- |
-| `nextStep`             | `() => void`              | Function to go to the next step.          |
-| `prevStep`             | `() => void`              | Function to go to the previous step.      |
-| `setStep`              | `(index: number) => void` | Function to set a specific step.          |
-| `reset`                | `() => void`              | Function to reset the stepper.            |
 | `activeStep`           | `number`                  | The current active step.                  |
-| `hasCompletedAllSteps` | `boolean`                 | If all steps have been completed.         |
 | `isLastStep`           | `boolean`                 | If the current step is the last step.     |
-| `isOptional`           | `boolean`                 | If the current step is optional.          |
-| `currentStep`          | `StepItem`                | The current step object.                  |
-| `clickable`            | `boolean`                 | If the steps are clickable.               |
+| `isOptionalStep`       | `boolean`                 | If the current step is optional.          |
+| `isDisabledStep`       | `boolean`                 | If the current step is disabled.          |
 | `isError`              | `boolean`                 | If the stepper has an error.              |
 | `isLoading`            | `boolean`                 | If the stepper is loading.                |
 | `isVertical`           | `boolean`                 | If the stepper is vertical.               |
-| `stepCount`            | `number`                  | The total number of steps.                |
 | `expandVerticalSteps`  | `boolean`                 | If the vertical steps should be expanded. |
-| `activeStep`           | `number`                  | The current active step.                  |
+| `nextStep`             | `() => void`              | Function to go to the next step.          |
+| `prevStep`             | `() => void`              | Function to go to the previous step.      |
+| `setStep`              | `(index: number) => void` | Function to set a specific step.          |
+| `resetSteps`           | `() => void`              | Function to reset the stepper.            |
+| `stepCount`            | `number`                  | The total number of steps.                |
 | `initialStep`          | `number`                  | The initial active step.                  |
+| `clickable`            | `boolean`                 | If the steps are clickable.               |
+| `hasCompletedAllSteps` | `boolean`                 | If all steps have been completed.         |
+| `currentStep`          | `StepItem`                | The current step object.                  |

@@ -26,7 +26,7 @@ const StepperContext = React.createContext<
   StepperContextValue & {
     nextStep: () => void
     prevStep: () => void
-    reset: () => void
+    resetSteps: () => void
     setStep: (step: number) => void
   }
 >({
@@ -35,7 +35,7 @@ const StepperContext = React.createContext<
   initialStep: 0,
   nextStep: () => {},
   prevStep: () => {},
-  reset: () => {},
+  resetSteps: () => {},
   setStep: () => {},
 })
 
@@ -58,7 +58,7 @@ const StepperProvider = ({ value, children }: StepperContextProviderProps) => {
     setActiveStep((prev) => prev - 1)
   }
 
-  const reset = () => {
+  const resetSteps = () => {
     setActiveStep(value.initialStep)
   }
 
@@ -75,7 +75,7 @@ const StepperProvider = ({ value, children }: StepperContextProviderProps) => {
         activeStep,
         nextStep,
         prevStep,
-        reset,
+        resetSteps,
         setStep,
       }}
     >
@@ -99,13 +99,16 @@ function useStepper() {
   const hasCompletedAllSteps = context.activeStep === context.steps.length
 
   const currentStep = context.steps[context.activeStep]
-  const isOptional = currentStep?.optional
+  const isOptionalStep = currentStep?.optional
+
+  const isDisabledStep = context.activeStep === 0
 
   return {
     ...rest,
     isLastStep,
     hasCompletedAllSteps,
-    isOptional,
+    isOptionalStep,
+    isDisabledStep,
     currentStep,
   }
 }
@@ -131,6 +134,7 @@ function useMediaQuery(query: string) {
 // <---------- STEPS ---------->
 
 type StepItem = {
+  id?: string
   label?: string
   description?: string
   icon?: IconType
@@ -488,7 +492,7 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
       styles,
       scrollTracking,
       orientation,
-      steps
+      steps,
     } = useStepper()
 
     const opacity = hasVisited ? 1 : 0.8
@@ -721,6 +725,7 @@ const StepButtonContainer = ({
   children,
   isError,
   isLoading: isLoadingProp,
+  onClickStep,
 }: StepButtonContainerProps) => {
   const {
     clickable,
@@ -729,6 +734,8 @@ const StepButtonContainer = ({
     styles,
     size,
   } = useStepper()
+
+  const currentStepClickable = clickable || !!onClickStep
 
   const isLoading = isLoadingProp || isLoadingContext
 
@@ -741,8 +748,9 @@ const StepButtonContainer = ({
       variant="ghost"
       className={cn(
         "stepper__step-button-container",
-        "rounded-full p-0",
+        "rounded-full p-0 pointer-events-none",
         "border-2 flex rounded-full justify-center items-center",
+        "data-[clickable=true]:pointer-events-auto",
         "data-[active=true]:bg-blue-500 data-[active=true]:border-blue-500 data-[active=true]:text-primary-foreground dark:data-[active=true]:text-primary",
         "data-[current=true]:border-blue-500 data-[current=true]:bg-secondary",
         "data-[invalid=true]:!bg-destructive data-[invalid=true]:!border-destructive data-[invalid=true]:!text-primary-foreground dark:data-[invalid=true]:!text-primary",
@@ -753,7 +761,7 @@ const StepButtonContainer = ({
       data-current={isCurrentStep}
       data-invalid={isError && (isCurrentStep || isCompletedStep)}
       data-active={isCompletedStep}
-      data-clickable={clickable}
+      data-clickable={currentStepClickable}
       data-loading={isLoading && (isCurrentStep || isCompletedStep)}
     >
       {children}
