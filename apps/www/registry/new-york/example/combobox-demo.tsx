@@ -20,23 +20,23 @@ import {
 
 const frameworks = [
   {
-    value: "next.js",
+    value: "Next.js",
     label: "Next.js",
   },
   {
-    value: "sveltekit",
+    value: "SvelteKit",
     label: "SvelteKit",
   },
   {
-    value: "nuxt.js",
+    value: "Nuxt.js",
     label: "Nuxt.js",
   },
   {
-    value: "remix",
+    value: "Remix",
     label: "Remix",
   },
   {
-    value: "astro",
+    value: "Astro",
     label: "Astro",
   },
 ]
@@ -70,7 +70,7 @@ export default function ComboboxDemo() {
                 key={framework.value}
                 value={framework.value}
                 onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue)
+                  setValue(framework.value === value ? "" : framework.value)
                   setOpen(false)
                 }}
               >
