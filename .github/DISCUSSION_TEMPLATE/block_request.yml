@@ -1,7 +1,7 @@
 name: "Request a block"
 description: "Request a new block for shadcn/ui."
 title: "[blocks]: "
-labels: ["area: blocks", "area: request"]
+labels: ["Blocks Request"]
 body:
   - type: markdown
     attributes:
