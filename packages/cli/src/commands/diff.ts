@@ -66,7 +66,12 @@ export const diff = new Command()
         const projectComponents = registryIndex.filter((item) => {
           for (const file of item.files) {
             const filePath = path.resolve(targetDir, file)
-            if (existsSync(filePath)) {
+            if (
+              existsSync(filePath) ||
+              existsSync(
+                filePath.replace(/\.tsx$/, ".jsx").replace(/\.ts$/, ".js")
+              )
+            ) {
               return true
             }
           }
@@ -151,10 +156,13 @@ async function diffComponent(
     }
 
     for (const file of item.files) {
-      const filePath = path.resolve(targetDir, file.name)
+      let filePath = path.resolve(targetDir, file.name)
 
       if (!existsSync(filePath)) {
-        continue
+        filePath = filePath.replace(/\.tsx$/, ".jsx").replace(/\.ts$/, ".js")
+        if (!existsSync(filePath)) {
+          continue
+        }
       }
 
       const fileContent = await fs.readFile(filePath, "utf8")
