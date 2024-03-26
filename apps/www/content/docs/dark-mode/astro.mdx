@@ -27,7 +27,7 @@ import '../styles/globals.css'
 	if (typeof localStorage !== 'undefined') {
 		const observer = new MutationObserver(() => {
 			const isDark = document.documentElement.classList.contains('dark');
-			localStorage.setItem('theme', isDark ? 'dark' : 'light');
+			localStorage.setItem('theme', isDark ? 'dark' : 'theme-light');
 		});
 		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 	}
@@ -63,6 +63,13 @@ export function ModeToggle() {
   React.useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains("dark")
     setThemeState(isDarkMode ? "dark" : "theme-light")
+
+    // sync theme across tabs on same page
+		const handleStorageChange = (e) => setThemeState(e.newValue)
+		window.addEventListener('storage', handleStorageChange)
+		return () => {
+			window.removeEventListener('storage', handleStorageChange)
+		}
   }, [])
 
   React.useEffect(() => {
