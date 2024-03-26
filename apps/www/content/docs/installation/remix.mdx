@@ -13,6 +13,18 @@ Start by creating a new Remix project using `create-remix`:
 npx create-remix@latest my-app
 ```
 
+### Install Tailwind CSS
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+```
+
+Then we create the `tailwind.config.ts` and `postcss.config.js` files with:
+
+```bash
+npx tailwindcss init --ts -p
+```
+
 ### Run the CLI
 
 Run the `shadcn-ui` init command to setup your project:
@@ -25,58 +37,30 @@ npx shadcn-ui@latest init
 
 You will be asked a few questions to configure `components.json`:
 
-```txt showLineNumbers
-Would you like to use TypeScript (recommended)? no / yes
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › app/tailwind.css
-Do you want to use CSS variables for colors? › no / yes
-Where is your tailwind.config.js located? › tailwind.config.js
-Configure the import alias for components: › ~/components
-Configure the import alias for utils: › ~/lib/utils
-Are you using React Server Components? › no
-```
+<Callout className="mt-6">
+  **Note**: Be very careful with answering these questions, as the default values
+  are similar to the ones we use in this guide.
+  These are the questions that you will need to be careful with:
 
-### App structure
-
-<Callout>
-
-**Note**: This app structure is only a suggestion. You can place the files wherever you want.
+  - **Where is your global CSS file?** - Make sure to enter `app/tailwind.css`.
+  - **Where is your tailwind.config.js located?** - Make sure to enter the `.ts` extension.
+  - **Configure the import alias for components:** - Make sure to enter `~/components`.
+  - **Configure the import alias for utils:** - Make sure to enter `~/lib/utils`.
 
 </Callout>
 
-- Place the UI components in the `app/components/ui` folder.
-- Your own components can be placed in the `app/components` folder.
-- The `app/lib` folder contains all the utility functions. We have a `utils.ts` where we define the `cn` helper.
-- The `app/tailwind.css` file contains the global CSS.
-
-### Install Tailwind CSS
-
-```bash
-npm add -D tailwindcss@latest autoprefixer@latest
-```
-
-Then we create a `postcss.config.js` file:
-
-```js
-export default {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-}
-```
-
-And finally we add the following to our `remix.config.js` file:
-
-```js {4-5}
-/** @type {import('@remix-run/dev').AppConfig} */
-export default {
-  ...
-  tailwind: true,
-  postcss: true,
-  ...
-};
+```txt showLineNumbers
+Would you like to use TypeScript (recommended)? yes
+Which style would you like to use? > Default
+Which color would you like to use as base color? > Slate
+Where is your global CSS file? > app/tailwind.css
+Do you want to use CSS variables for colors? > yes
+Where is your tailwind.config.js located? > tailwind.config.ts
+Are you using a custom tailwind prefix eg. tw-? (Leave blank if not) …
+Configure the import alias for components: > ~/components
+Configure the import alias for utils: > ~/lib/utils
+Are you using React Server Components? > no
+Write configuration to components.json. Proceed? > yes
 ```
 
 ### Add `tailwind.css` to your app
@@ -105,7 +89,7 @@ The command above will add the `Button` component to your project. You can then 
 ```tsx {1,6} showLineNumbers
 import { Button } from "~/components/ui/button"
 
-export default function Home() {
+export default function Index() {
   return (
     <div>
       <Button>Click me</Button>
