@@ -1,5 +1,3 @@
-name: "Request a block"
-description: "Request a new block for shadcn/ui."
 title: "[blocks]: "
 labels: ["Blocks Request"]
 body:
