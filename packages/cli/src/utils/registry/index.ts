@@ -36,7 +36,7 @@ export async function getRegistryStyles() {
   }
 }
 
-export async function getRegistryBaseColors() {
+export function getRegistryBaseColors() {
   return [
     {
       name: "slate",
@@ -62,6 +62,11 @@ export async function getRegistryBaseColors() {
 }
 
 export async function getRegistryBaseColor(baseColor: string) {
+  const baseColors = getRegistryBaseColors().map((item) => item.name)
+  if (!baseColors.includes(baseColor)) {
+    throw new Error(`Base color ${baseColor} is not found.`)
+  }
+
   try {
     const [result] = await fetchRegistry([`colors/${baseColor}.json`])
 

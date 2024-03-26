@@ -101,7 +101,7 @@ export async function promptForConfig(
   const highlight = (text: string) => chalk.cyan(text)
 
   const styles = await getRegistryStyles()
-  const baseColors = await getRegistryBaseColors()
+  const baseColors = getRegistryBaseColors()
 
   const options = await prompts([
     {
