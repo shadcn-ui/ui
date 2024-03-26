@@ -36,7 +36,7 @@ export default function BlocksLayout({
           </Button>
           <Button asChild variant="outline">
             <a
-              href="https://github.com/shadcn-ui/ui/issues/new/choose"
+              href="https://github.com/shadcn-ui/ui/discussions/new/choose"
               target="_blank"
             >
               Request a block
