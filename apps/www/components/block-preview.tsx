@@ -98,7 +98,7 @@ export function BlockPreview({ block }: { block: Block }) {
                 type="single"
                 defaultValue="100"
                 onValueChange={(value) => {
-                  if (ref.current) {
+                  if (ref.current && !isNaN(parseFloat(value))) {
                     ref.current.resize(parseInt(value))
                   }
                 }}
