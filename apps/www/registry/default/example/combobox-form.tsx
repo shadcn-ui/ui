@@ -104,6 +104,7 @@ export default function ComboboxForm() {
                           key={language.value}
                           onSelect={() => {
                             form.setValue("language", language.value)
+                            form.trigger("language");
                           }}
                         >
                           <Check
