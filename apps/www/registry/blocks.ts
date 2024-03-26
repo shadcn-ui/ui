@@ -2,6 +2,14 @@ import { Registry } from "@/registry/schema"
 
 export const blocks: Registry = [
   {
+    name: "dashboard-05",
+    type: "components:block",
+    registryDependencies: ["button", "card", "input"],
+    files: ["block/dashboard-05.tsx"],
+    category: "Application",
+    subcategory: "Dashboard",
+  },
+  {
     name: "dashboard-01",
     type: "components:block",
     registryDependencies: ["button", "dropdown-menu", "input", "sheet"],
