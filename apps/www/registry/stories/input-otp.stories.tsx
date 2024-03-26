@@ -19,14 +19,21 @@ const meta = {
   args: {
     maxLength: 6,
     pattern: REGEXP_ONLY_DIGITS_AND_CHARS,
-    render: ({ slots }) => (
-      <InputOTPGroup>
-        {slots.map((slot, index) => (
-          <InputOTPSlot key={index} {...slot} />
-        ))}
-      </InputOTPGroup>
-    ),
+    children: null,
   },
+
+  render: (args) => (
+    <InputOTP {...args} render={undefined}>
+      <InputOTPGroup>
+        <InputOTPSlot index={0} />
+        <InputOTPSlot index={1} />
+        <InputOTPSlot index={2} />
+        <InputOTPSlot index={3} />
+        <InputOTPSlot index={4} />
+        <InputOTPSlot index={5} />
+      </InputOTPGroup>
+    </InputOTP>
+  ),
   parameters: {
     layout: "centered",
   },
@@ -46,23 +53,18 @@ export const Default: Story = {}
  */
 export const SeparatedGroup: Story = {
   render: (args) => (
-    <InputOTP
-      {...args}
-      render={({ slots }) => (
-        <>
-          <InputOTPGroup>
-            {slots.slice(0, args.maxLength / 2).map((slot, index) => (
-              <InputOTPSlot key={index} {...slot} />
-            ))}
-          </InputOTPGroup>
-          <InputOTPSeparator />
-          <InputOTPGroup>
-            {slots.slice(args.maxLength / 2).map((slot, index) => (
-              <InputOTPSlot key={index + 3} {...slot} />
-            ))}
-          </InputOTPGroup>
-        </>
-      )}
-    />
+    <InputOTP {...args} render={undefined}>
+      <InputOTPGroup>
+        <InputOTPSlot index={0} />
+        <InputOTPSlot index={1} />
+        <InputOTPSlot index={2} />
+      </InputOTPGroup>
+      <InputOTPSeparator />
+      <InputOTPGroup>
+        <InputOTPSlot index={3} />
+        <InputOTPSlot index={4} />
+        <InputOTPSlot index={5} />
+      </InputOTPGroup>
+    </InputOTP>
   ),
 }
