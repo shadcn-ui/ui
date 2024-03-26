@@ -4,11 +4,11 @@ import { Checkbox } from "@/registry/default/ui/checkbox"
 
 export default function CheckboxDemo() {
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center">
       <Checkbox id="terms" />
       <label
         htmlFor="terms"
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="text-sm font-medium leading-none pl-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
         Accept terms and conditions
       </label>
