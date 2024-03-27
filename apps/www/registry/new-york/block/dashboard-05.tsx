@@ -74,14 +74,14 @@ export const containerClassName = "w-full h-full"
 
 export default function Dashboard() {
   return (
-    <div className="flex min-h-screen bg-muted dark:bg-zinc-950 w-full flex-col">
-      <header className="sticky flex top-0 h-16 z-20 items-center gap-4 bg-background border-b px-4 md:px-6">
+    <div className="flex min-h-screen w-full flex-col bg-muted dark:bg-zinc-950">
+      <header className="sticky top-0 z-20 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="#"
-            className="flex items-center gap-2 text-lg bg-primary text-primary-foreground font-semibold md:text-base h-8 w-8 group justify-center rounded-full shrink-0"
+            className="group flex h-8 w-8 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
           >
-            <Package2 className="h-4 w-4 group-hover:scale-110 transition-all" />
+            <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
           </Link>
           <Link
@@ -172,7 +172,7 @@ export default function Dashboard() {
               <Input
                 type="search"
                 placeholder="Search transactions..."
-                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px] bg-background"
+                className="bg-background pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
               />
             </div>
           </form>
@@ -194,7 +194,7 @@ export default function Dashboard() {
           </DropdownMenu>
         </div>
       </header>
-      <main className="flex flex-1 flex-col gap-4 md:gap-6 pt-4 md:pt-6 bg-muted/40 px-4 md:px-6 md:pb-6">
+      <main className="flex flex-1 flex-col gap-4 bg-muted/40 px-4 pt-4 md:gap-6 md:p-6">
         <div className="flex items-center">
           <Breadcrumb className="pl-1">
             <BreadcrumbList>
@@ -214,8 +214,8 @@ export default function Dashboard() {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <div className="grid gap-4 md:gap-8 lg:grid-cols-3 items-start xl:grid-cols-3">
-          <div className="lg:col-span-2 grid gap-4 items-start auto-rows-max md:gap-8">
+        <div className="grid items-start gap-4 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
+          <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
             <div className="grid grid-cols-4 gap-4 md:gap-8">
               <Card className="col-span-2">
                 <CardHeader className="pb-3">
@@ -265,7 +265,7 @@ export default function Dashboard() {
                   <TabsTrigger value="month">Month</TabsTrigger>
                   <TabsTrigger value="year">Year</TabsTrigger>
                 </TabsList>
-                <div className="flex items-center ml-auto gap-2">
+                <div className="ml-auto flex items-center gap-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="outline" size="sm" className="gap-1">
@@ -469,26 +469,26 @@ export default function Dashboard() {
           <Card className="overflow-hidden">
             <CardHeader className="flex flex-row items-start bg-muted/50">
               <div className="grid gap-0.5">
-                <CardTitle className="flex items-center group gap-2 text-lg">
+                <CardTitle className="group flex items-center gap-2 text-lg">
                   Order ID: Oe31b70H
                   <Button
                     size="icon"
                     variant="outline"
-                    className="w-6 h-6 group-hover:opacity-100 opacity-0 transition-opacity"
+                    className="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100"
                   >
-                    <Copy className="w-3 h-3" />
+                    <Copy className="h-3 w-3" />
                   </Button>
                 </CardTitle>
                 <CardDescription>Date: November 23, 2023</CardDescription>
               </div>
-              <div className="ml-auto gap-1 flex items-center">
-                <Button size="sm" className="gap-1 h-8">
+              <div className="ml-auto flex items-center gap-1">
+                <Button size="sm" className="h-8 gap-1">
                   <Truck className="h-3.5 w-3.5" />
                   Track Order
                 </Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button size="icon" variant="outline" className="w-8 h-8">
+                    <Button size="icon" variant="outline" className="h-8 w-8">
                       <MoreVertical className="h-3.5 w-3.5" />
                       <span className="sr-only">More</span>
                     </Button>
@@ -502,7 +502,7 @@ export default function Dashboard() {
                 </DropdownMenu>
               </div>
             </CardHeader>
-            <CardContent className="text-sm p-6">
+            <CardContent className="p-6 text-sm">
               <div className="grid gap-3">
                 <div className="font-semibold">Order Details</div>
                 <ul className="grid gap-3">
@@ -543,13 +543,13 @@ export default function Dashboard() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-3">
                   <div className="font-semibold">Shipping Information</div>
-                  <address className="grid gap-0.5 text-muted-foreground not-italic">
+                  <address className="grid gap-0.5 not-italic text-muted-foreground">
                     <span>Liam Johnson</span>
                     <span>1234 Main St.</span>
                     <span>Anytown, CA 12345</span>
                   </address>
                 </div>
-                <div className="grid gap-3 auto-rows-max">
+                <div className="grid auto-rows-max gap-3">
                   <div className="font-semibold">Billing Information</div>
                   <div className="text-muted-foreground">
                     Same as shipping address
@@ -583,8 +583,8 @@ export default function Dashboard() {
                 <div className="font-semibold">Payment Information</div>
                 <dl className="grid gap-3">
                   <div className="flex items-center justify-between">
-                    <dt className="text-muted-foreground flex items-center gap-1">
-                      <CreditCard className="w-4 h-4" />
+                    <dt className="flex items-center gap-1 text-muted-foreground">
+                      <CreditCard className="h-4 w-4" />
                       Visa
                     </dt>
                     <dd>**** **** **** 4532</dd>
@@ -592,19 +592,19 @@ export default function Dashboard() {
                 </dl>
               </div>
             </CardContent>
-            <CardFooter className="flex border-t items-center flex-row py-3 px-6 bg-muted/50">
+            <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
               <div className="text-xs text-muted-foreground">
                 Updated <time dateTime="2023-11-23">November 23, 2023</time>
               </div>
-              <Pagination className="ml-auto w-auto mr-0">
+              <Pagination className="ml-auto mr-0 w-auto">
                 <PaginationContent>
                   <PaginationItem>
-                    <Button size="icon" variant="outline" className="w-6 h-6">
+                    <Button size="icon" variant="outline" className="h-6 w-6">
                       <ChevronLeft className="h-3.5 w-3.5" />
                     </Button>
                   </PaginationItem>
                   <PaginationItem>
-                    <Button size="icon" variant="outline" className="w-6 h-6">
+                    <Button size="icon" variant="outline" className="h-6 w-6">
                       <ChevronRight className="h-3.5 w-3.5" />
                     </Button>
                   </PaginationItem>

@@ -69,14 +69,14 @@ export const containerClassName = "w-full h-full"
 
 export default function Dashboard() {
   return (
-    <div className="flex min-h-screen bg-muted dark:bg-zinc-950 w-full flex-col">
-      <header className="sticky flex top-0 h-16 z-20 items-center gap-4 bg-background border-b px-4 md:px-6">
+    <div className="flex min-h-screen w-full flex-col bg-muted dark:bg-zinc-950">
+      <header className="sticky top-0 z-20 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="#"
-            className="flex items-center gap-2 text-lg bg-primary text-primary-foreground font-semibold md:text-base h-8 w-8 group justify-center rounded-full shrink-0"
+            className="group flex h-8 w-8 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
           >
-            <Package2 className="h-4 w-4 group-hover:scale-110 transition-all" />
+            <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
           </Link>
           <Link
@@ -167,7 +167,7 @@ export default function Dashboard() {
               <Input
                 type="search"
                 placeholder="Search transactions..."
-                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px] bg-background"
+                className="bg-background pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
               />
             </div>
           </form>
@@ -189,10 +189,10 @@ export default function Dashboard() {
           </DropdownMenu>
         </div>
       </header>
-      <main className="flex flex-1 flex-col gap-4 md:gap-6 pt-4 md:pt-6 bg-muted/40 px-4 md:px-6 md:pb-6">
-        <div className="flex-1 auto-rows-max max-w-5xl mx-auto grid gap-4">
+      <main className="flex flex-1 flex-col gap-4 bg-muted/40 px-4 pt-4 md:gap-6 md:p-6">
+        <div className="mx-auto grid max-w-5xl flex-1 auto-rows-max gap-4">
           <div className="flex items-center gap-4">
-            <Button variant="outline" size="icon" className="w-7 h-7">
+            <Button variant="outline" size="icon" className="h-7 w-7">
               <ChevronLeft className="h-4 w-4" />
               <span className="sr-only">Back</span>
             </Button>
@@ -210,7 +210,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="grid grid-cols-3 gap-4 md:gap-8">
-            <div className="col-span-2 grid items-start auto-rows-max gap-4 md:gap-8">
+            <div className="col-span-2 grid auto-rows-max items-start gap-4 md:gap-8">
               <Card>
                 <CardHeader>
                   <CardTitle>Product Details</CardTitle>
@@ -326,7 +326,7 @@ export default function Dashboard() {
                     </TableBody>
                   </Table>
                 </CardContent>
-                <CardFooter className="border-t justify-center p-4">
+                <CardFooter className="justify-center border-t p-4">
                   <Button size="sm" variant="ghost" className="gap-1">
                     <PlusCircle className="h-3.5 w-3.5" />
                     Add Variant
@@ -377,7 +377,7 @@ export default function Dashboard() {
                 </CardContent>
               </Card>
             </div>
-            <div className="grid gap-4 md:gap-8 items-start auto-rows-max">
+            <div className="grid auto-rows-max items-start gap-4 md:gap-8">
               <Card>
                 <CardHeader>
                   <CardTitle>Product Status</CardTitle>
@@ -439,7 +439,7 @@ export default function Dashboard() {
                       </button>
                       <label
                         htmlFor="upload"
-                        className="w-full aspect-square border border-dashed rounded-md flex items-center justify-center"
+                        className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed"
                       >
                         <Input id="upload" type="file" className="sr-only" />
                         <Upload className="h-4 w-4 text-muted-foreground" />
