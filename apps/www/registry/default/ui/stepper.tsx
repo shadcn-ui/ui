@@ -99,7 +99,7 @@ function useStepper() {
   const hasCompletedAllSteps = context.activeStep === context.steps.length
 
   const currentStep = context.steps[context.activeStep]
-  const isOptionalStep = !!currentStep.optional
+  const isOptionalStep = !!currentStep?.optional
 
   const isDisabledStep = context.activeStep === 0
 
