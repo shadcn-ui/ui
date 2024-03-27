@@ -9,18 +9,21 @@ import {
 
 export default function InputOTPWithSeparator() {
   return (
-    <InputOTP
-      maxLength={6}
-      render={({ slots }) => (
-        <InputOTPGroup className="gap-2">
-          {slots.map((slot, index) => (
-            <React.Fragment key={index}>
-              <InputOTPSlot className="rounded-md border" {...slot} />
-              {index !== slots.length - 1 && <InputOTPSeparator />}
-            </React.Fragment>
-          ))}{" "}
-        </InputOTPGroup>
-      )}
-    />
+    <InputOTP maxLength={6}>
+      <InputOTPGroup>
+        <InputOTPSlot index={0} />
+        <InputOTPSlot index={1} />
+      </InputOTPGroup>
+      <InputOTPSeparator />
+      <InputOTPGroup>
+        <InputOTPSlot index={2} />
+        <InputOTPSlot index={3} />
+      </InputOTPGroup>
+      <InputOTPSeparator />
+      <InputOTPGroup>
+        <InputOTPSlot index={4} />
+        <InputOTPSlot index={5} />
+      </InputOTPGroup>
+    </InputOTP>
   )
 }
