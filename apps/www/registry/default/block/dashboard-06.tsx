@@ -68,14 +68,14 @@ import {
 export const description =
   "A settings page. The settings page has a sidebar navigation and a main content area. The main content area has a form to update the store name and a form to update the plugins directory. The sidebar navigation has links to general, security, integrations, support, organizations, and advanced settings."
 
-export const iframeHeight = "960px"
+export const iframeHeight = "780px"
 
 export const containerClassName = "w-full h-full"
 
 export default function Dashboard() {
   return (
     <div className="flex min-h-screen bg-muted dark:bg-zinc-950 w-full flex-col">
-      <header className="sticky flex top-0 h-16 z-20 items-center gap-4 bg-background border-b px-4 md:px-6">
+      <header className="sticky top-0 flex h-16 z-20 items-center gap-4 bg-background border-b px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="#"
@@ -194,7 +194,7 @@ export default function Dashboard() {
           </DropdownMenu>
         </div>
       </header>
-      <main className="flex flex-1 flex-col gap-4 md:gap-6 pt-4 md:pt-6 bg-muted/40 px-4 md:px-6 md:pb-6">
+      <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 md:gap-6 pt-4 md:pt-6 bg-muted/40 px-4 md:px-6 md:gap-4 md:pb-10">
         <div className="flex items-center">
           <Breadcrumb className="pl-1">
             <BreadcrumbList>
@@ -592,7 +592,7 @@ export default function Dashboard() {
                 </dl>
               </div>
             </CardContent>
-            <CardFooter className="flex border-t items-center flex-row py-3 px-6 bg-muted/50">
+            <CardFooter className="flex border-t items-center flex-row py-4 px-6 bg-muted/50">
               <div className="text-xs text-muted-foreground">
                 Updated <time dateTime="2023-11-23">November 23, 2023</time>
               </div>
