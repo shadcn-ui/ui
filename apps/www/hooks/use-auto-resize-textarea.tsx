@@ -1,6 +1,6 @@
 import * as React from "react"
 
-export const useAutoResizeTextarea = (ref: React.ForwardedRef<HTMLTextAreaElement>) => {
+export const useAutoResizeTextarea = (ref: React.ForwardedRef<HTMLTextAreaElement>, autoResize: boolean) => {
 
     const textAreaRef = React.useRef<HTMLTextAreaElement>(null)
 
@@ -10,7 +10,7 @@ export const useAutoResizeTextarea = (ref: React.ForwardedRef<HTMLTextAreaElemen
         const ref = textAreaRef?.current
 
         const updateTextareaHeight = () => {
-            if (ref) {
+            if (ref && autoResize) {
                 ref.style.height = "auto"
                 ref.style.height = ref?.scrollHeight + "px"
             }
@@ -22,7 +22,7 @@ export const useAutoResizeTextarea = (ref: React.ForwardedRef<HTMLTextAreaElemen
 
         return () => ref?.removeEventListener("input", updateTextareaHeight)
 
-    }, [])
+    }, [autoResize])
 
     return { textAreaRef }
 }

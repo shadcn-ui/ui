@@ -1,17 +1,16 @@
 'use client'
+
 import * as React from "react"
-import { useEffect, useImperativeHandle, useRef } from "react"
 
 import { cn } from "@/lib/utils"
 import { useAutoResizeTextarea } from "@/hooks/use-auto-resize-textarea"
 
 export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> { }
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> { autoResize: boolean }
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, ...props }, ref) => {
-
-    const { textAreaRef } = useAutoResizeTextarea(ref)
+  ({ className, autoResize = false, ...props }, ref) => {
+    const { textAreaRef } = useAutoResizeTextarea(ref, autoResize)
 
     return (
       <textarea
