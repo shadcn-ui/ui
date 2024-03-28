@@ -62,7 +62,7 @@ export function BlockPreview({ block }: { block: Block }) {
     >
       <div className="flex flex-col items-center gap-4 sm:flex-row">
         <div className="flex items-center gap-2">
-          <TabsList className="hidden sm:flex">
+          <TabsList className="hidden h-8 sm:flex">
             <TabsTrigger value="preview">Preview</TabsTrigger>
             <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
@@ -75,19 +75,6 @@ export function BlockPreview({ block }: { block: Block }) {
               <a href={`#${block.name}`}>
                 <Badge variant="outline">{block.name}</Badge>
               </a>
-              <Popover>
-                <PopoverTrigger className="hidden text-muted-foreground hover:text-foreground sm:flex">
-                  <Info className="h-3.5 w-3.5" />
-                  <span className="sr-only">Block description</span>
-                </PopoverTrigger>
-                <PopoverContent
-                  side="right"
-                  sideOffset={10}
-                  className="text-sm"
-                >
-                  {block.description}
-                </PopoverContent>
-              </Popover>
             </div>
           </div>
         </div>

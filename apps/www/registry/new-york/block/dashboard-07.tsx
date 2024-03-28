@@ -235,7 +235,9 @@ export default function Dashboard() {
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbPage>Edit Product</BreadcrumbPage>
+              <BreadcrumbItem>
+                <BreadcrumbPage>Edit Product</BreadcrumbPage>
+              </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
           <div className="relative ml-auto flex-1 md:grow-0">
@@ -346,10 +348,24 @@ export default function Dashboard() {
                             GGPC-001
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="100" />
+                            <Label htmlFor="stock-1" className="sr-only">
+                              Stock
+                            </Label>
+                            <Input
+                              id="stock-1"
+                              type="number"
+                              defaultValue="100"
+                            />
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="99.99" />
+                            <Label htmlFor="price-1" className="sr-only">
+                              Price
+                            </Label>
+                            <Input
+                              id="price-1"
+                              type="number"
+                              defaultValue="99.99"
+                            />
                           </TableCell>
                           <TableCell>
                             <ToggleGroup
@@ -368,10 +384,24 @@ export default function Dashboard() {
                             GGPC-002
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="143" />
+                            <Label htmlFor="stock-2" className="sr-only">
+                              Stock
+                            </Label>
+                            <Input
+                              id="stock-2"
+                              type="number"
+                              defaultValue="143"
+                            />
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="99.99" />
+                            <Label htmlFor="price-2" className="sr-only">
+                              Price
+                            </Label>
+                            <Input
+                              id="price-2"
+                              type="number"
+                              defaultValue="99.99"
+                            />
                           </TableCell>
                           <TableCell>
                             <ToggleGroup
@@ -390,10 +420,24 @@ export default function Dashboard() {
                             GGPC-003
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="32" />
+                            <Label htmlFor="stock-3" className="sr-only">
+                              Stock
+                            </Label>
+                            <Input
+                              id="stock-3"
+                              type="number"
+                              defaultValue="32"
+                            />
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="99.99" />
+                            <Label htmlFor="price-3" className="sr-only">
+                              Stock
+                            </Label>
+                            <Input
+                              id="price-3"
+                              type="number"
+                              defaultValue="99.99"
+                            />
                           </TableCell>
                           <TableCell>
                             <ToggleGroup
@@ -426,8 +470,11 @@ export default function Dashboard() {
                       <div className="grid gap-3">
                         <Label htmlFor="category">Category</Label>
                         <Select>
-                          <SelectTrigger id="category">
-                            <SelectValue placeholder="Select status" />
+                          <SelectTrigger
+                            id="category"
+                            aria-label="Select category"
+                          >
+                            <SelectValue placeholder="Select category" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="clothing">Clothing</SelectItem>
@@ -445,8 +492,11 @@ export default function Dashboard() {
                           Subcategory (optional)
                         </Label>
                         <Select>
-                          <SelectTrigger id="subcategory">
-                            <SelectValue placeholder="Select status" />
+                          <SelectTrigger
+                            id="subcategory"
+                            aria-label="Select subcategory"
+                          >
+                            <SelectValue placeholder="Select subcategory" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="t-shirts">T-Shirts</SelectItem>
@@ -471,7 +521,7 @@ export default function Dashboard() {
                       <div className="grid gap-3">
                         <Label htmlFor="status">Status</Label>
                         <Select>
-                          <SelectTrigger id="status">
+                          <SelectTrigger id="status" aria-label="Select status">
                             <SelectValue placeholder="Select status" />
                           </SelectTrigger>
                           <SelectContent>
@@ -521,6 +571,7 @@ export default function Dashboard() {
                         </button>
                         <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
                           <Upload className="h-4 w-4 text-muted-foreground" />
+                          <span className="sr-only">Upload</span>
                         </button>
                       </div>
                     </div>

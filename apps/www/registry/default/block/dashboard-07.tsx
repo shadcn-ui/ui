@@ -231,11 +231,13 @@ export default function Dashboard() {
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="#">Orders</Link>
+                  <Link href="#">Products</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbPage>Recent Orders</BreadcrumbPage>
+              <BreadcrumbItem>
+                <BreadcrumbPage>Edit Product</BreadcrumbPage>
+              </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
           <div className="relative ml-auto flex-1 md:grow-0">
@@ -243,7 +245,7 @@ export default function Dashboard() {
             <Input
               type="search"
               placeholder="Search..."
-              className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
+              className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
             />
           </div>
           <DropdownMenu>
@@ -273,7 +275,7 @@ export default function Dashboard() {
           </DropdownMenu>
         </header>
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-          <div className="mx-auto grid max-w-[61rem] flex-1 auto-rows-max gap-4">
+          <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
             <div className="flex items-center gap-4">
               <Button variant="outline" size="icon" className="h-7 w-7">
                 <ChevronLeft className="h-4 w-4" />
@@ -346,10 +348,24 @@ export default function Dashboard() {
                             GGPC-001
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="100" />
+                            <Label htmlFor="stock-1" className="sr-only">
+                              Stock
+                            </Label>
+                            <Input
+                              id="stock-1"
+                              type="number"
+                              defaultValue="100"
+                            />
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="99.99" />
+                            <Label htmlFor="price-1" className="sr-only">
+                              Price
+                            </Label>
+                            <Input
+                              id="price-1"
+                              type="number"
+                              defaultValue="99.99"
+                            />
                           </TableCell>
                           <TableCell>
                             <ToggleGroup
@@ -368,10 +384,24 @@ export default function Dashboard() {
                             GGPC-002
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="143" />
+                            <Label htmlFor="stock-2" className="sr-only">
+                              Stock
+                            </Label>
+                            <Input
+                              id="stock-2"
+                              type="number"
+                              defaultValue="143"
+                            />
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="99.99" />
+                            <Label htmlFor="price-2" className="sr-only">
+                              Price
+                            </Label>
+                            <Input
+                              id="price-2"
+                              type="number"
+                              defaultValue="99.99"
+                            />
                           </TableCell>
                           <TableCell>
                             <ToggleGroup
@@ -390,10 +420,24 @@ export default function Dashboard() {
                             GGPC-003
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="32" />
+                            <Label htmlFor="stock-3" className="sr-only">
+                              Stock
+                            </Label>
+                            <Input
+                              id="stock-3"
+                              type="number"
+                              defaultValue="32"
+                            />
                           </TableCell>
                           <TableCell>
-                            <Input type="number" defaultValue="99.99" />
+                            <Label htmlFor="price-3" className="sr-only">
+                              Stock
+                            </Label>
+                            <Input
+                              id="price-3"
+                              type="number"
+                              defaultValue="99.99"
+                            />
                           </TableCell>
                           <TableCell>
                             <ToggleGroup
@@ -426,8 +470,11 @@ export default function Dashboard() {
                       <div className="grid gap-3">
                         <Label htmlFor="category">Category</Label>
                         <Select>
-                          <SelectTrigger id="category">
-                            <SelectValue placeholder="Select status" />
+                          <SelectTrigger
+                            id="category"
+                            aria-label="Select category"
+                          >
+                            <SelectValue placeholder="Select category" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="clothing">Clothing</SelectItem>
@@ -445,8 +492,11 @@ export default function Dashboard() {
                           Subcategory (optional)
                         </Label>
                         <Select>
-                          <SelectTrigger id="subcategory">
-                            <SelectValue placeholder="Select status" />
+                          <SelectTrigger
+                            id="subcategory"
+                            aria-label="Select subcategory"
+                          >
+                            <SelectValue placeholder="Select subcategory" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="t-shirts">T-Shirts</SelectItem>
@@ -521,6 +571,7 @@ export default function Dashboard() {
                         </button>
                         <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
                           <Upload className="h-4 w-4 text-muted-foreground" />
+                          <span className="sr-only">Upload</span>
                         </button>
                       </div>
                     </div>

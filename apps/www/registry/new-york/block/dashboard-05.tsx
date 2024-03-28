@@ -85,7 +85,7 @@ export const containerClassName = "w-full h-full"
 
 export default function Dashboard() {
   return (
-    <div className="flex min-h-screen w-full flex-col bg-muted">
+    <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
         <nav className="flex flex-col items-center gap-4 px-2 sm:py-4">
           <Link
@@ -241,7 +241,9 @@ export default function Dashboard() {
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbPage>Recent Orders</BreadcrumbPage>
+              <BreadcrumbItem>
+                <BreadcrumbPage>Recent Orders</BreadcrumbPage>
+              </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
           <div className="relative ml-auto flex-1 md:grow-0">
@@ -304,7 +306,7 @@ export default function Dashboard() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Progress value={25} />
+                  <Progress value={25} aria-label="25% increase" />
                 </CardFooter>
               </Card>
               <Card>
@@ -318,7 +320,7 @@ export default function Dashboard() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Progress value={12} />
+                  <Progress value={12} aria-label="12% increase" />
                 </CardFooter>
               </Card>
             </div>
@@ -570,6 +572,7 @@ export default function Dashboard() {
                       className="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100"
                     >
                       <Copy className="h-3 w-3" />
+                      <span className="sr-only">Copy Order ID</span>
                     </Button>
                   </CardTitle>
                   <CardDescription>Date: November 23, 2023</CardDescription>
@@ -696,11 +699,13 @@ export default function Dashboard() {
                     <PaginationItem>
                       <Button size="icon" variant="outline" className="h-6 w-6">
                         <ChevronLeft className="h-3.5 w-3.5" />
+                        <span className="sr-only">Previous Order</span>
                       </Button>
                     </PaginationItem>
                     <PaginationItem>
                       <Button size="icon" variant="outline" className="h-6 w-6">
                         <ChevronRight className="h-3.5 w-3.5" />
+                        <span className="sr-only">Next Order</span>
                       </Button>
                     </PaginationItem>
                   </PaginationContent>

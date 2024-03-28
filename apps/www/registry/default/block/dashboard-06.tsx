@@ -226,11 +226,13 @@ export default function Dashboard() {
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="#">Orders</Link>
+                  <Link href="#">Products</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbPage>Recent Orders</BreadcrumbPage>
+              <BreadcrumbItem>
+                <BreadcrumbPage>All Products</BreadcrumbPage>
+              </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
           <div className="relative ml-auto flex-1 md:grow-0">
@@ -238,7 +240,7 @@ export default function Dashboard() {
             <Input
               type="search"
               placeholder="Search..."
-              className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
+              className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
             />
           </div>
           <DropdownMenu>
@@ -376,7 +378,6 @@ export default function Dashboard() {
                             <DropdownMenuTrigger asChild>
                               <Button
                                 aria-haspopup="true"
-                                id="menu"
                                 size="icon"
                                 variant="ghost"
                               >
@@ -422,7 +423,6 @@ export default function Dashboard() {
                             <DropdownMenuTrigger asChild>
                               <Button
                                 aria-haspopup="true"
-                                id="menu"
                                 size="icon"
                                 variant="ghost"
                               >
@@ -468,7 +468,6 @@ export default function Dashboard() {
                             <DropdownMenuTrigger asChild>
                               <Button
                                 aria-haspopup="true"
-                                id="menu"
                                 size="icon"
                                 variant="ghost"
                               >
@@ -514,7 +513,6 @@ export default function Dashboard() {
                             <DropdownMenuTrigger asChild>
                               <Button
                                 aria-haspopup="true"
-                                id="menu"
                                 size="icon"
                                 variant="ghost"
                               >
@@ -560,7 +558,6 @@ export default function Dashboard() {
                             <DropdownMenuTrigger asChild>
                               <Button
                                 aria-haspopup="true"
-                                id="menu"
                                 size="icon"
                                 variant="ghost"
                               >
@@ -606,7 +603,6 @@ export default function Dashboard() {
                             <DropdownMenuTrigger asChild>
                               <Button
                                 aria-haspopup="true"
-                                id="menu"
                                 size="icon"
                                 variant="ghost"
                               >
