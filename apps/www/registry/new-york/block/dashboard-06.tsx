@@ -152,7 +152,7 @@ export default function Dashboard() {
           </Tooltip>
         </nav>
       </aside>
-      <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 pl-20 md:gap-6 md:p-6 md:pl-20">
+      <main className="flex flex-1 flex-col gap-4 bg-muted/40 p-4 pl-20 md:gap-6 md:p-6 md:pl-20">
         <div className="flex items-center">
           <Breadcrumb className="flex-1">
             <BreadcrumbList>
