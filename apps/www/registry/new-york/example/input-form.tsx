@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { z } from "zod"
 
 import { Button } from "@/registry/new-york/ui/button"
 import {
@@ -26,6 +26,9 @@ const FormSchema = z.object({
 export default function InputForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    defaultValues: {
+      username: "",
+    },
   })
 
   function onSubmit(data: z.infer<typeof FormSchema>) {

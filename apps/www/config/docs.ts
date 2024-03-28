@@ -24,18 +24,8 @@ export const docsConfig: DocsConfig = {
       href: "/examples",
     },
     {
-      title: "Figma",
-      href: "/docs/figma",
-    },
-    {
-      title: "GitHub",
-      href: "https://github.com/shadcn/ui",
-      external: true,
-    },
-    {
-      title: "Twitter",
-      href: "https://twitter.com/shadcn",
-      external: true,
+      title: "Blocks",
+      href: "/blocks",
     },
   ],
   sidebarNav: [
@@ -87,66 +77,6 @@ export const docsConfig: DocsConfig = {
           href: "/docs/changelog",
           items: [],
         },
-        {
-          title: "About",
-          href: "/docs/about",
-          items: [],
-        },
-      ],
-    },
-    {
-      title: "Installation",
-      items: [
-        {
-          title: "Next.js",
-          href: "/docs/installation/next",
-          items: [],
-        },
-        {
-          title: "Vite",
-          href: "/docs/installation/vite",
-          items: [],
-        },
-        {
-          title: "Remix",
-          href: "/docs/installation/remix",
-          items: [],
-        },
-        {
-          title: "Gatsby",
-          href: "/docs/installation/gatsby",
-          items: [],
-        },
-        {
-          title: "Astro",
-          href: "/docs/installation/astro",
-          items: [],
-        },
-        {
-          title: "Laravel",
-          href: "/docs/installation/laravel",
-          items: [],
-        },
-        {
-          title: "Manual",
-          href: "/docs/installation/manual",
-          items: [],
-        },
-      ],
-    },
-    {
-      title: "Dark Mode",
-      items: [
-        {
-          title: "Next.js",
-          href: "/docs/dark-mode/next",
-          items: [],
-        },
-        {
-          title: "Vite",
-          href: "/docs/dark-mode/vite",
-          items: [],
-        },
       ],
     },
     {
@@ -183,6 +113,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Breadcrumb",
+          href: "/docs/components/breadcrumb",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Button",
           href: "/docs/components/button",
           items: [],
@@ -195,6 +131,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Card",
           href: "/docs/components/card",
+          items: [],
+        },
+        {
+          title: "Carousel",
+          href: "/docs/components/carousel",
           items: [],
         },
         {
@@ -238,6 +179,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Drawer",
+          href: "/docs/components/drawer",
+          items: [],
+        },
+        {
           title: "Dropdown Menu",
           href: "/docs/components/dropdown-menu",
           items: [],
@@ -258,6 +204,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Input OTP",
+          href: "/docs/components/input-otp",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Label",
           href: "/docs/components/label",
           items: [],
@@ -273,6 +225,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Pagination",
+          href: "/docs/components/pagination",
+          items: [],
+        },
+        {
           title: "Popover",
           href: "/docs/components/popover",
           items: [],
@@ -285,6 +242,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Radio Group",
           href: "/docs/components/radio-group",
+          items: [],
+        },
+        {
+          title: "Resizable",
+          href: "/docs/components/resizable",
           items: [],
         },
         {
@@ -318,6 +280,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Sonner",
+          href: "/docs/components/sonner",
+          items: [],
+        },
+        {
           title: "Switch",
           href: "/docs/components/switch",
           items: [],
@@ -345,6 +312,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Toggle",
           href: "/docs/components/toggle",
+          items: [],
+        },
+        {
+          title: "Toggle Group",
+          href: "/docs/components/toggle-group",
           items: [],
         },
         {
