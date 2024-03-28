@@ -1,17 +1,23 @@
+import Image from "next/image"
 import Link from "next/link"
 import {
   ChevronLeft,
   ChevronRight,
-  CircleUser,
   Copy,
   CreditCard,
   File,
+  Home,
+  LineChart,
   ListFilter,
-  Menu,
   MoreVertical,
+  Package,
   Package2,
+  PanelLeft,
   Search,
+  Settings,
+  ShoppingCart,
   Truck,
+  Users2,
 } from "lucide-react"
 
 import { Badge } from "@/registry/default/ui/badge"
@@ -64,141 +70,164 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/default/ui/tabs"
-
-import "public/registry/themes.css"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/registry/default/ui/tooltip"
 
 export const description =
-  "A settings page. The settings page has a sidebar navigation and a main content area. The main content area has a form to update the store name and a form to update the plugins directory. The sidebar navigation has links to general, security, integrations, support, organizations, and advanced settings."
+  "An orders dashboard with a sidebar navigation. The sidebar has icon navigation. The content area has a breadcrumb and search in the header. The main area has a list of recent orders with a filter and export button. The main area also has a detailed view of a single order with order details, shipping information, billing information, customer information, and payment information."
 
-export const iframeHeight = "780px"
+export const iframeHeight = "1112px"
 
 export const containerClassName = "w-full h-full"
 
 export default function Dashboard() {
   return (
-    <div className="flex min-h-screen bg-muted w-full flex-col">
-      <header className="sticky top-0 flex h-16 z-20 items-center gap-4 bg-background border-b px-4 md:px-6">
-        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+    <div className="flex min-h-screen w-full flex-col bg-muted">
+      <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
+        <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
           <Link
             href="#"
-            className="flex items-center gap-2 text-lg bg-primary text-primary-foreground font-semibold md:text-base h-8 w-8 group justify-center rounded-full shrink-0"
+            className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
           >
-            <Package2 className="h-4 w-4 group-hover:scale-110 transition-all" />
+            <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
           </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Dashboard
-          </Link>
-          <Link
-            href="#"
-            className="text-foreground transition-colors hover:text-foreground"
-          >
-            Orders
-          </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Products
-          </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Customers
-          </Link>
-          <Link
-            href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Settings
-          </Link>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="#"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <Home className="h-5 w-5" />
+                <span className="sr-only">Dashboard</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Dashboard</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="#"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <ShoppingCart className="h-5 w-5" />
+                <span className="sr-only">Orders</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Orders</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="#"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <Package className="h-5 w-5" />
+                <span className="sr-only">Products</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Products</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="#"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <Users2 className="h-5 w-5" />
+                <span className="sr-only">Customers</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Customers</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="#"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <LineChart className="h-5 w-5" />
+                <span className="sr-only">Analytics</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Analytics</TooltipContent>
+          </Tooltip>
         </nav>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon"
-              className="shrink-0 md:hidden"
-            >
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left">
-            <nav className="grid gap-6 text-lg font-medium">
+        <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
+          <Tooltip>
+            <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex items-center gap-2 text-lg font-semibold"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
-                <Package2 className="h-6 w-6" />
-                <span className="sr-only">Acme Inc</span>
+                <Settings className="h-5 w-5" />
+                <span className="sr-only">Settings</span>
               </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Dashboard
-              </Link>
-              <Link href="#" className="text-foreground hover:text-foreground">
-                Orders
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Products
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Customers
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Settings
-              </Link>
-            </nav>
-          </SheetContent>
-        </Sheet>
-        <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-          <form className="ml-auto flex-1 sm:flex-initial">
-            <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search transactions..."
-                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px] bg-background"
-              />
-            </div>
-          </form>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="secondary" size="icon" className="rounded-full">
-                <CircleUser className="h-5 w-5" />
-                <span className="sr-only">Toggle user menu</span>
+            </TooltipTrigger>
+            <TooltipContent side="right">Settings</TooltipContent>
+          </Tooltip>
+        </nav>
+      </aside>
+      <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button size="icon" variant="outline" className="sm:hidden">
+                <PanelLeft className="h-5 w-5" />
+                <span className="sr-only">Toggle Menu</span>
               </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      </header>
-      <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 md:gap-6 pt-4 md:pt-6 bg-muted/40 px-4 md:px-6 md:gap-4 md:pb-10">
-        <div className="flex items-center">
-          <Breadcrumb className="pl-1">
+            </SheetTrigger>
+            <SheetContent side="left" className="sm:max-w-xs">
+              <nav className="grid gap-6 text-lg font-medium">
+                <Link
+                  href="#"
+                  className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
+                >
+                  <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
+                  <span className="sr-only">Acme Inc</span>
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                >
+                  <Home className="h-5 w-5" />
+                  Dashboard
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-2.5 text-foreground"
+                >
+                  <ShoppingCart className="h-5 w-5" />
+                  Orders
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                >
+                  <Package className="h-5 w-5" />
+                  Products
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                >
+                  <Users2 className="h-5 w-5" />
+                  Customers
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                >
+                  <LineChart className="h-5 w-5" />
+                  Settings
+                </Link>
+              </nav>
+            </SheetContent>
+          </Sheet>
+          <Breadcrumb className="hidden md:flex">
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
@@ -215,14 +244,47 @@ export default function Dashboard() {
               <BreadcrumbPage>Recent Orders</BreadcrumbPage>
             </BreadcrumbList>
           </Breadcrumb>
-        </div>
-        <div className="grid gap-4 md:gap-8 lg:grid-cols-3 items-start xl:grid-cols-3">
-          <div className="lg:col-span-2 grid gap-4 items-start auto-rows-max md:gap-8">
-            <div className="grid grid-cols-4 gap-4 md:gap-8">
-              <Card className="col-span-2">
+          <div className="relative ml-auto flex-1 md:grow-0">
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Search..."
+              className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
+            />
+          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="overflow-hidden rounded-full"
+              >
+                <Image
+                  src="/placeholder-user.jpg"
+                  width={36}
+                  height={36}
+                  alt="Avatar"
+                  className="overflow-hidden"
+                />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Settings</DropdownMenuItem>
+              <DropdownMenuItem>Support</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Logout</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </header>
+        <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
+          <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+              <Card className="sm:col-span-2">
                 <CardHeader className="pb-3">
                   <CardTitle>Your Orders</CardTitle>
-                  <CardDescription className="leading-relaxed">
+                  <CardDescription className="max-w-lg text-balance leading-relaxed">
                     Introducing Our Dynamic Orders Dashboard for Seamless
                     Management and Insightful Analysis.
                   </CardDescription>
@@ -267,12 +329,16 @@ export default function Dashboard() {
                   <TabsTrigger value="month">Month</TabsTrigger>
                   <TabsTrigger value="year">Year</TabsTrigger>
                 </TabsList>
-                <div className="flex items-center ml-auto gap-2">
+                <div className="ml-auto flex items-center gap-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="outline" size="sm" className="gap-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="h-7 gap-1 text-sm"
+                      >
                         <ListFilter className="h-3.5 w-3.5" />
-                        Filter
+                        <span className="sr-only sm:not-sr-only">Filter</span>
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
@@ -289,9 +355,13 @@ export default function Dashboard() {
                       </DropdownMenuCheckboxItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
-                  <Button size="sm" variant="outline" className="gap-1">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="h-7 gap-1 text-sm"
+                  >
                     <File className="h-3.5 w-3.5" />
-                    Export
+                    <span className="sr-only sm:not-sr-only">Export</span>
                   </Button>
                 </div>
               </div>
@@ -308,13 +378,13 @@ export default function Dashboard() {
                       <TableHeader>
                         <TableRow>
                           <TableHead>Customer</TableHead>
-                          <TableHead className="hidden xl:table-cell">
+                          <TableHead className="hidden sm:table-cell">
                             Type
                           </TableHead>
-                          <TableHead className="hidden xl:table-cell">
+                          <TableHead className="hidden sm:table-cell">
                             Status
                           </TableHead>
-                          <TableHead className="hidden xl:table-cell">
+                          <TableHead className="hidden md:table-cell">
                             Date
                           </TableHead>
                           <TableHead className="text-right">Amount</TableHead>
@@ -328,15 +398,15 @@ export default function Dashboard() {
                               liam@example.com
                             </div>
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             Sale
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             <Badge className="text-xs" variant="secondary">
                               Fulfilled
                             </Badge>
                           </TableCell>
-                          <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
+                          <TableCell className="hidden md:table-cell">
                             2023-06-23
                           </TableCell>
                           <TableCell className="text-right">$250.00</TableCell>
@@ -348,15 +418,15 @@ export default function Dashboard() {
                               olivia@example.com
                             </div>
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             Refund
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             <Badge className="text-xs" variant="outline">
                               Declined
                             </Badge>
                           </TableCell>
-                          <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
+                          <TableCell className="hidden md:table-cell">
                             2023-06-24
                           </TableCell>
                           <TableCell className="text-right">$150.00</TableCell>
@@ -368,15 +438,15 @@ export default function Dashboard() {
                               noah@example.com
                             </div>
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             Subscription
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             <Badge className="text-xs" variant="secondary">
                               Fulfilled
                             </Badge>
                           </TableCell>
-                          <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
+                          <TableCell className="hidden md:table-cell">
                             2023-06-25
                           </TableCell>
                           <TableCell className="text-right">$350.00</TableCell>
@@ -388,15 +458,15 @@ export default function Dashboard() {
                               emma@example.com
                             </div>
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             Sale
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             <Badge className="text-xs" variant="secondary">
                               Fulfilled
                             </Badge>
                           </TableCell>
-                          <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
+                          <TableCell className="hidden md:table-cell">
                             2023-06-26
                           </TableCell>
                           <TableCell className="text-right">$450.00</TableCell>
@@ -408,15 +478,35 @@ export default function Dashboard() {
                               liam@example.com
                             </div>
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             Sale
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             <Badge className="text-xs" variant="secondary">
                               Fulfilled
                             </Badge>
                           </TableCell>
-                          <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
+                          <TableCell className="hidden md:table-cell">
+                            2023-06-23
+                          </TableCell>
+                          <TableCell className="text-right">$250.00</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>
+                            <div className="font-medium">Liam Johnson</div>
+                            <div className="hidden text-sm text-muted-foreground md:inline">
+                              liam@example.com
+                            </div>
+                          </TableCell>
+                          <TableCell className="hidden sm:table-cell">
+                            Sale
+                          </TableCell>
+                          <TableCell className="hidden sm:table-cell">
+                            <Badge className="text-xs" variant="secondary">
+                              Fulfilled
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell">
                             2023-06-23
                           </TableCell>
                           <TableCell className="text-right">$250.00</TableCell>
@@ -428,15 +518,15 @@ export default function Dashboard() {
                               olivia@example.com
                             </div>
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             Refund
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             <Badge className="text-xs" variant="outline">
                               Declined
                             </Badge>
                           </TableCell>
-                          <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
+                          <TableCell className="hidden md:table-cell">
                             2023-06-24
                           </TableCell>
                           <TableCell className="text-right">$150.00</TableCell>
@@ -448,15 +538,15 @@ export default function Dashboard() {
                               emma@example.com
                             </div>
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             Sale
                           </TableCell>
-                          <TableCell className="hidden xl:table-cell">
+                          <TableCell className="hidden sm:table-cell">
                             <Badge className="text-xs" variant="secondary">
                               Fulfilled
                             </Badge>
                           </TableCell>
-                          <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
+                          <TableCell className="hidden md:table-cell">
                             2023-06-26
                           </TableCell>
                           <TableCell className="text-right">$450.00</TableCell>
@@ -468,154 +558,158 @@ export default function Dashboard() {
               </TabsContent>
             </Tabs>
           </div>
-          <Card className="overflow-hidden">
-            <CardHeader className="flex flex-row items-start bg-muted/50">
-              <div className="grid gap-0.5">
-                <CardTitle className="flex items-center group gap-2 text-lg">
-                  Order ID: Oe31b70H
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="w-6 h-6 group-hover:opacity-100 opacity-0 transition-opacity"
-                  >
-                    <Copy className="w-3 h-3" />
+          <div>
+            <Card className="overflow-hidden">
+              <CardHeader className="flex flex-row items-start bg-muted/50">
+                <div className="grid gap-0.5">
+                  <CardTitle className="group flex items-center gap-2 text-lg">
+                    Order ID: Oe31b70H
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100"
+                    >
+                      <Copy className="h-3 w-3" />
+                    </Button>
+                  </CardTitle>
+                  <CardDescription>Date: November 23, 2023</CardDescription>
+                </div>
+                <div className="ml-auto flex items-center gap-1">
+                  <Button size="sm" variant="outline" className="h-8 gap-1">
+                    <Truck className="h-3.5 w-3.5" />
+                    <span className="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">
+                      Track Order
+                    </span>
                   </Button>
-                </CardTitle>
-                <CardDescription>Date: November 23, 2023</CardDescription>
-              </div>
-              <div className="ml-auto gap-1 flex items-center">
-                <Button size="sm" className="gap-1">
-                  <Truck className="h-3.5 w-3.5" />
-                  Track Order
-                </Button>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button size="icon" variant="outline" className="w-8 h-8">
-                      <MoreVertical className="h-3.5 w-3.5" />
-                      <span className="sr-only">More</span>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuItem>Edit</DropdownMenuItem>
-                    <DropdownMenuItem>Export</DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>Trash</DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            </CardHeader>
-            <CardContent className="text-sm p-6">
-              <div className="grid gap-3">
-                <div className="font-semibold">Order Details</div>
-                <ul className="grid gap-3">
-                  <li className="flex items-center justify-between">
-                    <span className="text-muted-foreground">
-                      Glimmer Lamps x <span>2</span>
-                    </span>
-                    <span>$250.00</span>
-                  </li>
-                  <li className="flex items-center justify-between">
-                    <span className="text-muted-foreground">
-                      Aqua Filters x <span>1</span>
-                    </span>
-                    <span>$49.00</span>
-                  </li>
-                </ul>
-                <Separator className="my-2" />
-                <ul className="grid gap-3">
-                  <li className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Subtotal</span>
-                    <span>$299.00</span>
-                  </li>
-                  <li className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Shipping</span>
-                    <span>$5.00</span>
-                  </li>
-                  <li className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Tax</span>
-                    <span>$25.00</span>
-                  </li>
-                  <li className="flex items-center justify-between font-semibold">
-                    <span className="text-muted-foreground">Total</span>
-                    <span>$329.00</span>
-                  </li>
-                </ul>
-              </div>
-              <Separator className="my-4" />
-              <div className="grid grid-cols-2 gap-4">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button size="icon" variant="outline" className="h-8 w-8">
+                        <MoreVertical className="h-3.5 w-3.5" />
+                        <span className="sr-only">More</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem>Edit</DropdownMenuItem>
+                      <DropdownMenuItem>Export</DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Trash</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              </CardHeader>
+              <CardContent className="p-6 text-sm">
                 <div className="grid gap-3">
-                  <div className="font-semibold">Shipping Information</div>
-                  <address className="grid gap-0.5 text-muted-foreground not-italic">
-                    <span>Liam Johnson</span>
-                    <span>1234 Main St.</span>
-                    <span>Anytown, CA 12345</span>
-                  </address>
+                  <div className="font-semibold">Order Details</div>
+                  <ul className="grid gap-3">
+                    <li className="flex items-center justify-between">
+                      <span className="text-muted-foreground">
+                        Glimmer Lamps x <span>2</span>
+                      </span>
+                      <span>$250.00</span>
+                    </li>
+                    <li className="flex items-center justify-between">
+                      <span className="text-muted-foreground">
+                        Aqua Filters x <span>1</span>
+                      </span>
+                      <span>$49.00</span>
+                    </li>
+                  </ul>
+                  <Separator className="my-2" />
+                  <ul className="grid gap-3">
+                    <li className="flex items-center justify-between">
+                      <span className="text-muted-foreground">Subtotal</span>
+                      <span>$299.00</span>
+                    </li>
+                    <li className="flex items-center justify-between">
+                      <span className="text-muted-foreground">Shipping</span>
+                      <span>$5.00</span>
+                    </li>
+                    <li className="flex items-center justify-between">
+                      <span className="text-muted-foreground">Tax</span>
+                      <span>$25.00</span>
+                    </li>
+                    <li className="flex items-center justify-between font-semibold">
+                      <span className="text-muted-foreground">Total</span>
+                      <span>$329.00</span>
+                    </li>
+                  </ul>
                 </div>
-                <div className="grid gap-3 auto-rows-max">
-                  <div className="font-semibold">Billing Information</div>
-                  <div className="text-muted-foreground">
-                    Same as shipping address
+                <Separator className="my-4" />
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="grid gap-3">
+                    <div className="font-semibold">Shipping Information</div>
+                    <address className="grid gap-0.5 not-italic text-muted-foreground">
+                      <span>Liam Johnson</span>
+                      <span>1234 Main St.</span>
+                      <span>Anytown, CA 12345</span>
+                    </address>
+                  </div>
+                  <div className="grid auto-rows-max gap-3">
+                    <div className="font-semibold">Billing Information</div>
+                    <div className="text-muted-foreground">
+                      Same as shipping address
+                    </div>
                   </div>
                 </div>
-              </div>
-              <Separator className="my-4" />
-              <div className="grid gap-3">
-                <div className="font-semibold">Customer Information</div>
-                <dl className="grid gap-3">
-                  <div className="flex items-center justify-between">
-                    <dt className="text-muted-foreground">Customer</dt>
-                    <dd>Liam Johnson</dd>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <dt className="text-muted-foreground">Email</dt>
-                    <dd>
-                      <a href="mailto:">liam@acme.com</a>
-                    </dd>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <dt className="text-muted-foreground">Phone</dt>
-                    <dd>
-                      <a href="tel:">+1 234 567 890</a>
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-              <Separator className="my-4" />
-              <div className="grid gap-3">
-                <div className="font-semibold">Payment Information</div>
-                <dl className="grid gap-3">
-                  <div className="flex items-center justify-between">
-                    <dt className="text-muted-foreground flex items-center gap-1">
-                      <CreditCard className="w-4 h-4" />
-                      Visa
-                    </dt>
-                    <dd>**** **** **** 4532</dd>
-                  </div>
-                </dl>
-              </div>
-            </CardContent>
-            <CardFooter className="flex border-t items-center flex-row py-4 px-6 bg-muted/50">
-              <div className="text-xs text-muted-foreground">
-                Updated <time dateTime="2023-11-23">November 23, 2023</time>
-              </div>
-              <Pagination className="ml-auto w-auto mr-0">
-                <PaginationContent>
-                  <PaginationItem>
-                    <Button size="icon" variant="outline" className="w-6 h-6">
-                      <ChevronLeft className="h-3.5 w-3.5" />
-                    </Button>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <Button size="icon" variant="outline" className="w-6 h-6">
-                      <ChevronRight className="h-3.5 w-3.5" />
-                    </Button>
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
-            </CardFooter>
-          </Card>
-        </div>
-      </main>
+                <Separator className="my-4" />
+                <div className="grid gap-3">
+                  <div className="font-semibold">Customer Information</div>
+                  <dl className="grid gap-3">
+                    <div className="flex items-center justify-between">
+                      <dt className="text-muted-foreground">Customer</dt>
+                      <dd>Liam Johnson</dd>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <dt className="text-muted-foreground">Email</dt>
+                      <dd>
+                        <a href="mailto:">liam@acme.com</a>
+                      </dd>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <dt className="text-muted-foreground">Phone</dt>
+                      <dd>
+                        <a href="tel:">+1 234 567 890</a>
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+                <Separator className="my-4" />
+                <div className="grid gap-3">
+                  <div className="font-semibold">Payment Information</div>
+                  <dl className="grid gap-3">
+                    <div className="flex items-center justify-between">
+                      <dt className="flex items-center gap-1 text-muted-foreground">
+                        <CreditCard className="h-4 w-4" />
+                        Visa
+                      </dt>
+                      <dd>**** **** **** 4532</dd>
+                    </div>
+                  </dl>
+                </div>
+              </CardContent>
+              <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
+                <div className="text-xs text-muted-foreground">
+                  Updated <time dateTime="2023-11-23">November 23, 2023</time>
+                </div>
+                <Pagination className="ml-auto mr-0 w-auto">
+                  <PaginationContent>
+                    <PaginationItem>
+                      <Button size="icon" variant="outline" className="h-6 w-6">
+                        <ChevronLeft className="h-3.5 w-3.5" />
+                      </Button>
+                    </PaginationItem>
+                    <PaginationItem>
+                      <Button size="icon" variant="outline" className="h-6 w-6">
+                        <ChevronRight className="h-3.5 w-3.5" />
+                      </Button>
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              </CardFooter>
+            </Card>
+          </div>
+        </main>
+      </div>
     </div>
   )
 }

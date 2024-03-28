@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import {
-  CircleUser,
   File,
   Home,
   LineChart,
@@ -9,20 +8,20 @@ import {
   MoreHorizontal,
   Package,
   Package2,
+  PanelLeft,
+  PlusCircle,
   Search,
   Settings,
   ShoppingCart,
   Users2,
 } from "lucide-react"
 
-import { BreadcrumbList } from "@/registry/default/ui/breadcrumb"
-import { CardDescription } from "@/registry/default/ui/card"
-import { TabsContent } from "@/registry/default/ui/tabs"
 import { Badge } from "@/registry/new-york/ui/badge"
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/registry/new-york/ui/breadcrumb"
@@ -30,6 +29,7 @@ import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -44,6 +44,7 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/new-york/ui/dropdown-menu"
 import { Input } from "@/registry/new-york/ui/input"
+import { Sheet, SheetContent, SheetTrigger } from "@/registry/new-york/ui/sheet"
 import {
   Table,
   TableBody,
@@ -52,7 +53,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/registry/new-york/ui/table"
-import { Tabs, TabsList, TabsTrigger } from "@/registry/new-york/ui/tabs"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/new-york/ui/tabs"
 import {
   Tooltip,
   TooltipContent,
@@ -60,20 +66,20 @@ import {
 } from "@/registry/new-york/ui/tooltip"
 
 export const description =
-  "A settings page. The settings page has a sidebar navigation and a main content area. The main content area has a form to update the store name and a form to update the plugins directory. The sidebar navigation has links to general, security, integrations, support, organizations, and advanced settings."
+  "An products dashboard with a sidebar navigation. The sidebar has icon navigation. The content area has a breadcrumb and search in the header. It displays a list of products in a table with actions."
 
-export const iframeHeight = "835px"
+export const iframeHeight = "820px"
 
 export const containerClassName = "w-full h-full"
 
 export default function Dashboard() {
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted">
-      <aside className="fixed inset-y-0 left-0 z-10 w-14 border-r bg-background">
-        <nav className="flex h-full flex-col items-center gap-6 px-2 py-6">
+      <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
+        <nav className="flex flex-col items-center gap-4 px-2 py-4">
           <Link
             href="#"
-            className="group flex h-8 w-8 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
+            className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
           >
             <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
@@ -82,7 +88,7 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex justify-center text-muted-foreground transition-colors hover:text-foreground"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Home className="h-5 w-5" />
                 <span className="sr-only">Dashboard</span>
@@ -94,7 +100,7 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex justify-center text-muted-foreground transition-colors hover:text-foreground"
+                className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <ShoppingCart className="h-5 w-5" />
                 <span className="sr-only">Orders</span>
@@ -106,7 +112,7 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex justify-center text-foreground transition-colors hover:text-foreground"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Package className="h-5 w-5" />
                 <span className="sr-only">Products</span>
@@ -118,7 +124,7 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex justify-center text-muted-foreground transition-colors hover:text-foreground"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Users2 className="h-5 w-5" />
                 <span className="sr-only">Customers</span>
@@ -130,7 +136,7 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex justify-center text-muted-foreground transition-colors hover:text-foreground"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <LineChart className="h-5 w-5" />
                 <span className="sr-only">Analytics</span>
@@ -138,11 +144,13 @@ export default function Dashboard() {
             </TooltipTrigger>
             <TooltipContent side="right">Analytics</TooltipContent>
           </Tooltip>
+        </nav>
+        <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-4">
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="mt-auto flex justify-center text-muted-foreground transition-colors hover:text-foreground"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Settings className="h-5 w-5" />
                 <span className="sr-only">Settings</span>
@@ -152,9 +160,63 @@ export default function Dashboard() {
           </Tooltip>
         </nav>
       </aside>
-      <main className="flex flex-1 flex-col gap-4 bg-muted/40 p-4 pl-20 md:gap-6 md:p-6 md:pl-20">
-        <div className="flex items-center">
-          <Breadcrumb className="flex-1">
+      <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button size="icon" variant="outline" className="sm:hidden">
+                <PanelLeft className="h-5 w-5" />
+                <span className="sr-only">Toggle Menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="sm:max-w-xs">
+              <nav className="grid gap-6 text-lg font-medium">
+                <Link
+                  href="#"
+                  className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
+                >
+                  <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
+                  <span className="sr-only">Acme Inc</span>
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                >
+                  <Home className="h-5 w-5" />
+                  Dashboard
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                >
+                  <ShoppingCart className="h-5 w-5" />
+                  Orders
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-2.5 text-foreground"
+                >
+                  <Package className="h-5 w-5" />
+                  Products
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                >
+                  <Users2 className="h-5 w-5" />
+                  Customers
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                >
+                  <LineChart className="h-5 w-5" />
+                  Settings
+                </Link>
+              </nav>
+            </SheetContent>
+          </Sheet>
+          <Breadcrumb className="hidden md:flex">
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
@@ -162,57 +224,68 @@ export default function Dashboard() {
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbPage>Products</BreadcrumbPage>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="#">Products</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbPage>All Products</BreadcrumbPage>
             </BreadcrumbList>
           </Breadcrumb>
-          <div className="flex items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-            <form className="ml-auto flex-1 sm:flex-initial">
-              <div className="relative">
-                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input
-                  type="search"
-                  placeholder="Search..."
-                  className="rounded-lg bg-background pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
-                />
-              </div>
-            </form>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="secondary"
-                  size="icon"
-                  className="rounded-full bg-background"
-                >
-                  <CircleUser className="h-5 w-5" />
-                  <span className="sr-only">Toggle user menu</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Support</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+          <div className="relative ml-auto flex-1 md:grow-0">
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Search..."
+              className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
+            />
           </div>
-        </div>
-        <div className="flex-1">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="overflow-hidden rounded-full"
+              >
+                <Image
+                  src="/placeholder-user.jpg"
+                  width={36}
+                  height={36}
+                  alt="Avatar"
+                  className="overflow-hidden"
+                />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Settings</DropdownMenuItem>
+              <DropdownMenuItem>Support</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Logout</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </header>
+        <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
           <Tabs defaultValue="all">
             <div className="flex items-center">
               <TabsList>
                 <TabsTrigger value="all">All</TabsTrigger>
                 <TabsTrigger value="active">Active</TabsTrigger>
                 <TabsTrigger value="draft">Draft</TabsTrigger>
-                <TabsTrigger value="archived">Archived</TabsTrigger>
+                <TabsTrigger value="archived" className="hidden sm:flex">
+                  Archived
+                </TabsTrigger>
               </TabsList>
               <div className="ml-auto flex items-center gap-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="sm" className="h-7 gap-1">
                       <ListFilter className="h-3.5 w-3.5" />
-                      Filter
+                      <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                        Filter
+                      </span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -229,10 +302,15 @@ export default function Dashboard() {
                 </DropdownMenu>
                 <Button size="sm" variant="outline" className="h-7 gap-1">
                   <File className="h-3.5 w-3.5" />
-                  Export
+                  <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                    Export
+                  </span>
                 </Button>
-                <Button size="sm" className="h-7">
-                  Add Product
+                <Button size="sm" className="h-7 gap-1">
+                  <PlusCircle className="h-3.5 w-3.5" />
+                  <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                    Add Product
+                  </span>
                 </Button>
               </div>
             </div>
@@ -248,14 +326,18 @@ export default function Dashboard() {
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead className="w-[100px]">
+                        <TableHead className="hidden w-[100px] sm:table-cell">
                           <span className="sr-only">Image</span>
                         </TableHead>
                         <TableHead>Name</TableHead>
                         <TableHead>Status</TableHead>
                         <TableHead>Price</TableHead>
-                        <TableHead>Total Sales</TableHead>
-                        <TableHead>Created at</TableHead>
+                        <TableHead className="hidden md:table-cell">
+                          Total Sales
+                        </TableHead>
+                        <TableHead className="hidden md:table-cell">
+                          Created at
+                        </TableHead>
                         <TableHead>
                           <span className="sr-only">Actions</span>
                         </TableHead>
@@ -263,7 +345,7 @@ export default function Dashboard() {
                     </TableHeader>
                     <TableBody>
                       <TableRow>
-                        <TableCell>
+                        <TableCell className="hidden sm:table-cell">
                           <Image
                             alt="Product image"
                             className="aspect-square rounded-md object-cover"
@@ -279,8 +361,12 @@ export default function Dashboard() {
                           <Badge variant="outline">Draft</Badge>
                         </TableCell>
                         <TableCell>$499.99</TableCell>
-                        <TableCell>25</TableCell>
-                        <TableCell>2023-07-12 10:42 AM</TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          25
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          2023-07-12 10:42 AM
+                        </TableCell>
                         <TableCell>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -303,7 +389,7 @@ export default function Dashboard() {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>
+                        <TableCell className="hidden sm:table-cell">
                           <Image
                             alt="Product image"
                             className="aspect-square rounded-md object-cover"
@@ -319,8 +405,12 @@ export default function Dashboard() {
                           <Badge variant="outline">Active</Badge>
                         </TableCell>
                         <TableCell>$129.99</TableCell>
-                        <TableCell>100</TableCell>
-                        <TableCell>2023-10-18 03:21 PM</TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          100
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          2023-10-18 03:21 PM
+                        </TableCell>
                         <TableCell>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -343,7 +433,7 @@ export default function Dashboard() {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>
+                        <TableCell className="hidden sm:table-cell">
                           <Image
                             alt="Product image"
                             className="aspect-square rounded-md object-cover"
@@ -359,8 +449,12 @@ export default function Dashboard() {
                           <Badge variant="outline">Active</Badge>
                         </TableCell>
                         <TableCell>$39.99</TableCell>
-                        <TableCell>50</TableCell>
-                        <TableCell>2023-11-29 08:15 AM</TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          50
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          2023-11-29 08:15 AM
+                        </TableCell>
                         <TableCell>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -383,7 +477,7 @@ export default function Dashboard() {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>
+                        <TableCell className="hidden sm:table-cell">
                           <Image
                             alt="Product image"
                             className="aspect-square rounded-md object-cover"
@@ -399,8 +493,12 @@ export default function Dashboard() {
                           <Badge variant="secondary">Draft</Badge>
                         </TableCell>
                         <TableCell>$2.99</TableCell>
-                        <TableCell>0</TableCell>
-                        <TableCell>2023-12-25 11:59 PM</TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          0
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          2023-12-25 11:59 PM
+                        </TableCell>
                         <TableCell>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -423,7 +521,7 @@ export default function Dashboard() {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>
+                        <TableCell className="hidden sm:table-cell">
                           <Image
                             alt="Product image"
                             className="aspect-square rounded-md object-cover"
@@ -439,8 +537,12 @@ export default function Dashboard() {
                           <Badge variant="outline">Active</Badge>
                         </TableCell>
                         <TableCell>$59.99</TableCell>
-                        <TableCell>75</TableCell>
-                        <TableCell>2024-01-01 12:00 AM</TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          75
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          2024-01-01 12:00 AM
+                        </TableCell>
                         <TableCell>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -463,7 +565,7 @@ export default function Dashboard() {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>
+                        <TableCell className="hidden sm:table-cell">
                           <Image
                             alt="Product image"
                             className="aspect-square rounded-md object-cover"
@@ -479,8 +581,12 @@ export default function Dashboard() {
                           <Badge variant="outline">Active</Badge>
                         </TableCell>
                         <TableCell>$199.99</TableCell>
-                        <TableCell>30</TableCell>
-                        <TableCell>2024-02-14 02:14 PM</TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          30
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          2024-02-14 02:14 PM
+                        </TableCell>
                         <TableCell>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -514,8 +620,8 @@ export default function Dashboard() {
               </Card>
             </TabsContent>
           </Tabs>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   )
 }
