@@ -26,6 +26,7 @@ export const docsConfig: DocsConfig = {
     {
       title: "Blocks",
       href: "/blocks",
+      label: "New",
     },
   ],
   sidebarNav: [

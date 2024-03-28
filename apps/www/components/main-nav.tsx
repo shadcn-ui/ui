@@ -73,6 +73,9 @@ export function MainNav() {
           )}
         >
           Blocks
+          <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+            New
+          </span>
         </Link>
         <Link
           href={siteConfig.links.github}
