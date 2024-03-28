@@ -1700,7 +1700,7 @@ export const Index: Record<string, any> = {
     "dashboard-05": {
       name: "dashboard-05",
       type: "components:block",
-      registryDependencies: ["breadcrumb","badge","button","card","dropdown-menu","input","pagination","progress","separator","table","tabs"],
+      registryDependencies: ["badge","breadcrumb","button","card","dropdown-menu","input","pagination","progress","separator","sheet","table","tabs","tooltip"],
       component: React.lazy(() => import("@/registry/default/block/dashboard-05")),
       files: ["registry/default/block/dashboard-05.tsx"],
       category: "Application",
@@ -1709,7 +1709,7 @@ export const Index: Record<string, any> = {
     "dashboard-06": {
       name: "dashboard-06",
       type: "components:block",
-      registryDependencies: ["button","card","input"],
+      registryDependencies: ["badge","breadcrumb","button","card","dropdown-menu","input","sheet","table","tabs","tooltip"],
       component: React.lazy(() => import("@/registry/default/block/dashboard-06")),
       files: ["registry/default/block/dashboard-06.tsx"],
       category: "Application",
@@ -1718,7 +1718,7 @@ export const Index: Record<string, any> = {
     "dashboard-07": {
       name: "dashboard-07",
       type: "components:block",
-      registryDependencies: ["button","card","input"],
+      registryDependencies: ["badge","breadcrumb","button","card","dropdown-menu","input","pagination","progress","separator","sheet","table","tabs","tooltip"],
       component: React.lazy(() => import("@/registry/default/block/dashboard-07")),
       files: ["registry/default/block/dashboard-07.tsx"],
       category: "Application",
@@ -3492,7 +3492,7 @@ export const Index: Record<string, any> = {
     "dashboard-05": {
       name: "dashboard-05",
       type: "components:block",
-      registryDependencies: ["breadcrumb","badge","button","card","dropdown-menu","input","pagination","progress","separator","table","tabs"],
+      registryDependencies: ["badge","breadcrumb","button","card","dropdown-menu","input","pagination","progress","separator","sheet","table","tabs","tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/dashboard-05")),
       files: ["registry/new-york/block/dashboard-05.tsx"],
       category: "Application",
@@ -3501,7 +3501,7 @@ export const Index: Record<string, any> = {
     "dashboard-06": {
       name: "dashboard-06",
       type: "components:block",
-      registryDependencies: ["button","card","input"],
+      registryDependencies: ["badge","breadcrumb","button","card","dropdown-menu","input","sheet","table","tabs","tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/dashboard-06")),
       files: ["registry/new-york/block/dashboard-06.tsx"],
       category: "Application",
@@ -3510,7 +3510,7 @@ export const Index: Record<string, any> = {
     "dashboard-07": {
       name: "dashboard-07",
       type: "components:block",
-      registryDependencies: ["button","card","input"],
+      registryDependencies: ["badge","breadcrumb","button","card","dropdown-menu","input","pagination","progress","separator","sheet","table","tabs","tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/dashboard-07")),
       files: ["registry/new-york/block/dashboard-07.tsx"],
       category: "Application",
