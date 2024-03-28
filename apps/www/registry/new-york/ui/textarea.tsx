@@ -6,9 +6,7 @@ import { cn } from "@/lib/utils"
 import { useAutoResizeTextarea } from "@/hooks/use-auto-resize-textarea"
 
 export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  autoResize?: boolean
-}
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> { autoResize?: boolean }
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, autoResize = false, ...props }, ref) => {
@@ -26,6 +24,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     )
   }
 )
+
 Textarea.displayName = "Textarea"
 
 export { Textarea }

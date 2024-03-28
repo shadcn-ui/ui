@@ -22,7 +22,8 @@ export const useAutoResizeTextarea = (ref: React.ForwardedRef<HTMLTextAreaElemen
 
         return () => ref?.removeEventListener("input", updateTextareaHeight)
 
-    }, [autoResize])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return { textAreaRef }
 }
