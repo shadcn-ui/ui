@@ -65,7 +65,7 @@
     "markdown-wasm": "^1.2.0",
     "next": "14.1.3",
     "next-contentlayer": "0.3.4",
-    "next-themes": "^0.2.1",
+    "next-themes": "^0.3.0",
     "react": "^18.2.0",
     "react-day-picker": "^8.7.1",
     "react-dom": "^18.2.0",
