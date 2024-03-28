@@ -62,7 +62,7 @@ export function BlockPreview({ block }: { block: Block }) {
     >
       <div className="flex flex-col items-center gap-4 sm:flex-row">
         <div className="flex items-center gap-2">
-          <TabsList className="hidden sm:flex">
+          <TabsList className="hidden h-8 sm:flex">
             <TabsTrigger value="preview">Preview</TabsTrigger>
             <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
@@ -75,19 +75,6 @@ export function BlockPreview({ block }: { block: Block }) {
               <a href={`#${block.name}`}>
                 <Badge variant="outline">{block.name}</Badge>
               </a>
-              <Popover>
-                <PopoverTrigger className="hidden text-muted-foreground hover:text-foreground sm:flex">
-                  <Info className="h-3.5 w-3.5" />
-                  <span className="sr-only">Block description</span>
-                </PopoverTrigger>
-                <PopoverContent
-                  side="right"
-                  sideOffset={10}
-                  className="text-sm"
-                >
-                  {block.description}
-                </PopoverContent>
-              </Popover>
             </div>
           </div>
         </div>
@@ -116,7 +103,7 @@ export function BlockPreview({ block }: { block: Block }) {
                   <Tablet className="h-3.5 w-3.5" />
                 </ToggleGroupItem>
                 <ToggleGroupItem
-                  value="25"
+                  value="30"
                   className="h-[22px] w-[22px] rounded-sm p-0"
                 >
                   <Smartphone className="h-3.5 w-3.5" />
@@ -177,7 +164,7 @@ export function BlockPreview({ block }: { block: Block }) {
             ref={ref}
             className="relative rounded-lg border bg-background transition-all"
             defaultSize={100}
-            minSize={25}
+            minSize={30}
           >
             {isLoading ? (
               <div className="absolute inset-0 z-10 flex h-[--container-height] w-full items-center justify-center gap-2 text-sm text-muted-foreground">

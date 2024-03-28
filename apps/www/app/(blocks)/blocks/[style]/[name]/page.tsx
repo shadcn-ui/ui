@@ -1,11 +1,13 @@
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
+
 import { siteConfig } from "@/config/site"
 import { getAllBlockIds, getBlock } from "@/lib/blocks"
-import { absoluteUrl } from "@/lib/utils"
+import { absoluteUrl, cn } from "@/lib/utils"
 import { Style, styles } from "@/registry/styles"
 
 import "@/styles/mdx.css"
-import { Metadata } from "next"
-import { notFound } from "next/navigation"
+import "public/registry/themes.css"
 
 export async function generateMetadata({
   params,
@@ -79,7 +81,7 @@ export default async function BlockPage({
   const Component = block.component
 
   return (
-    <div className={block.container?.className || ""}>
+    <div className={cn(block.container?.className || "", "theme-zinc")}>
       <Component />
     </div>
   )
