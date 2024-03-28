@@ -15,7 +15,7 @@
 }
 
 [data-rehype-pretty-code-fragment] {
-  @apply relative;
+  @apply relative text-white;
 }
 
 [data-rehype-pretty-code-fragment] code {
