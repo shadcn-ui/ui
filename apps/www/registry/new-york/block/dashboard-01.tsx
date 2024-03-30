@@ -249,13 +249,13 @@ export default function Dashboard() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>Customer</TableHead>
-                    <TableHead className="hidden xl:table-column">
+                    <TableHead className="hidden xl:table-cell">
                       Type
                     </TableHead>
-                    <TableHead className="hidden xl:table-column">
+                    <TableHead className="hidden xl:table-cell">
                       Status
                     </TableHead>
-                    <TableHead className="hidden xl:table-column">
+                    <TableHead className="hidden md:table-cell lg:hidden xl:table-cell">
                       Date
                     </TableHead>
                     <TableHead className="text-right">Amount</TableHead>
@@ -269,15 +269,15 @@ export default function Dashboard() {
                         liam@example.com
                       </div>
                     </TableCell>
-                    <TableCell className="hidden xl:table-column">
+                    <TableCell className="hidden xl:table-cell">
                       Sale
                     </TableCell>
-                    <TableCell className="hidden xl:table-column">
+                    <TableCell className="hidden xl:table-cell">
                       <Badge className="text-xs" variant="outline">
                         Approved
                       </Badge>
                     </TableCell>
-                    <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
+                    <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
                       2023-06-23
                     </TableCell>
                     <TableCell className="text-right">$250.00</TableCell>
@@ -289,15 +289,15 @@ export default function Dashboard() {
                         olivia@example.com
                       </div>
                     </TableCell>
-                    <TableCell className="hidden xl:table-column">
+                    <TableCell className="hidden xl:table-cell">
                       Refund
                     </TableCell>
-                    <TableCell className="hidden xl:table-column">
+                    <TableCell className="hidden xl:table-cell">
                       <Badge className="text-xs" variant="outline">
                         Declined
                       </Badge>
                     </TableCell>
-                    <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
+                    <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
                       2023-06-24
                     </TableCell>
                     <TableCell className="text-right">$150.00</TableCell>
@@ -309,15 +309,15 @@ export default function Dashboard() {
                         noah@example.com
                       </div>
                     </TableCell>
-                    <TableCell className="hidden xl:table-column">
+                    <TableCell className="hidden xl:table-cell">
                       Subscription
                     </TableCell>
-                    <TableCell className="hidden xl:table-column">
+                    <TableCell className="hidden xl:table-cell">
                       <Badge className="text-xs" variant="outline">
                         Approved
                       </Badge>
                     </TableCell>
-                    <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
+                    <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
                       2023-06-25
                     </TableCell>
                     <TableCell className="text-right">$350.00</TableCell>
@@ -329,15 +329,15 @@ export default function Dashboard() {
                         emma@example.com
                       </div>
                     </TableCell>
-                    <TableCell className="hidden xl:table-column">
+                    <TableCell className="hidden xl:table-cell">
                       Sale
                     </TableCell>
-                    <TableCell className="hidden xl:table-column">
+                    <TableCell className="hidden xl:table-cell">
                       <Badge className="text-xs" variant="outline">
                         Approved
                       </Badge>
                     </TableCell>
-                    <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
+                    <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
                       2023-06-26
                     </TableCell>
                     <TableCell className="text-right">$450.00</TableCell>
@@ -349,15 +349,15 @@ export default function Dashboard() {
                         liam@example.com
                       </div>
                     </TableCell>
-                    <TableCell className="hidden xl:table-column">
+                    <TableCell className="hidden xl:table-cell">
                       Sale
                     </TableCell>
-                    <TableCell className="hidden xl:table-column">
+                    <TableCell className="hidden xl:table-cell">
                       <Badge className="text-xs" variant="outline">
                         Approved
                       </Badge>
                     </TableCell>
-                    <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
+                    <TableCell className="hidden md:table-cell lg:hidden xl:table-cell">
                       2023-06-27
                     </TableCell>
                     <TableCell className="text-right">$550.00</TableCell>
