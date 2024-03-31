@@ -34,7 +34,7 @@ export function PropsTable({
   propHeaderFixedWidth?: boolean
 }) {
   return (
-    <div className="w-full overflow-auto border rounded-lg my-5">
+    <div className="my-5 w-full overflow-auto rounded-lg border">
       <table className="w-full caption-bottom text-sm">
         <TableHeader className="bg-gray-100">
           <TableRow>
@@ -62,7 +62,7 @@ export function PropsTable({
                 <TableRow key={`${name}-${i}`} style={{ whiteSpace: "nowrap" }}>
                   <TableCell>
                     <div className="inline-flex items-center gap-2">
-                      <code className="text-blue-700 bg-blue-50 px-1">
+                      <code className="bg-blue-50 px-1 text-blue-700">
                         {name}
                         {required ? "*" : null}
                       </code>
@@ -71,7 +71,7 @@ export function PropsTable({
                           <PopoverTrigger asChild>
                             <Button
                               variant="ghost"
-                              className="p-1 h-max rounded-full"
+                              className="h-max rounded-full p-1"
                             >
                               <InfoCircledIcon />
                             </Button>
@@ -94,7 +94,7 @@ export function PropsTable({
                   </TableCell>
                   <TableCell>
                     <div className="inline-flex items-center gap-2">
-                      <code className="px-1 bg-gray-100">
+                      <code className="bg-gray-100 px-1">
                         {Boolean(typeSimple) ? typeSimple : type}
                       </code>
                       {Boolean(typeSimple) && Boolean(type) && (
@@ -102,7 +102,7 @@ export function PropsTable({
                           <PopoverTrigger asChild>
                             <Button
                               variant="ghost"
-                              className="p-1 h-max rounded-full"
+                              className="h-max rounded-full p-1"
                             >
                               <InfoCircledIcon />
                             </Button>
@@ -132,7 +132,7 @@ export function PropsTable({
 
                   <TableCell>
                     {Boolean(defaultValue) ? (
-                      <code className="px-1 bg-gray-100">{defaultValue}</code>
+                      <code className="bg-gray-100 px-1">{defaultValue}</code>
                     ) : (
                       <DividerHorizontalIcon
                         style={{ color: "var(--gray-8)" }}
