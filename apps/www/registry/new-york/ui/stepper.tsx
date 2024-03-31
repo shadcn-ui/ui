@@ -333,19 +333,20 @@ const HorizontalContent = ({ children }: { children: React.ReactNode }) => {
   const { activeStep } = useStepper()
   const childArr = React.Children.toArray(children)
 
-  const renderHorizontalContent = () => {
-    if (activeStep <= childArr.length) {
-      return React.Children.map(childArr[activeStep], (node) => {
-        if (!React.isValidElement(node)) {
-          return
-        }
-        return React.Children.map(node.props.children, (childNode) => childNode)
-      })
-    }
+  if (activeStep > childArr.length) {
     return null
   }
 
-  return <>{renderHorizontalContent()}</>
+  return (
+    <>
+      {React.Children.map(childArr[activeStep], (node) => {
+        if (!React.isValidElement(node)) {
+          return null
+        }
+        return React.Children.map(node.props.children, (childNode) => childNode)
+      })}
+    </>
+  )
 }
 
 // <---------- STEP ---------->
