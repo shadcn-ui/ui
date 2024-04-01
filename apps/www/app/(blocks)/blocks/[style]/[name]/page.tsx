@@ -78,6 +78,8 @@ export default async function BlockPage({
     return notFound()
   }
 
+  console.log(block.chunks)
+
   const Component = block.component
 
   return (

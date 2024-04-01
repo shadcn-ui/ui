@@ -13,6 +13,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/accordion.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "alert": {
       name: "alert",
@@ -22,6 +23,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/alert.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "alert-dialog": {
       name: "alert-dialog",
@@ -31,6 +33,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/alert-dialog.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "aspect-ratio": {
       name: "aspect-ratio",
@@ -40,6 +43,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/aspect-ratio.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "avatar": {
       name: "avatar",
@@ -49,6 +53,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/avatar.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "badge": {
       name: "badge",
@@ -58,6 +63,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/badge.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb": {
       name: "breadcrumb",
@@ -67,6 +73,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/breadcrumb.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button": {
       name: "button",
@@ -76,6 +83,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/button.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "calendar": {
       name: "calendar",
@@ -85,6 +93,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/calendar.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "card": {
       name: "card",
@@ -94,6 +103,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/card.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel": {
       name: "carousel",
@@ -103,6 +113,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/carousel.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox": {
       name: "checkbox",
@@ -112,6 +123,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/checkbox.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "collapsible": {
       name: "collapsible",
@@ -121,6 +133,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/collapsible.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "command": {
       name: "command",
@@ -130,6 +143,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/command.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "context-menu": {
       name: "context-menu",
@@ -139,6 +153,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/context-menu.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dialog": {
       name: "dialog",
@@ -148,6 +163,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/dialog.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "drawer": {
       name: "drawer",
@@ -157,6 +173,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/drawer.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dropdown-menu": {
       name: "dropdown-menu",
@@ -166,6 +183,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/dropdown-menu.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "form": {
       name: "form",
@@ -175,6 +193,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "hover-card": {
       name: "hover-card",
@@ -184,6 +203,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/hover-card.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input": {
       name: "input",
@@ -193,6 +213,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/input.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp": {
       name: "input-otp",
@@ -202,6 +223,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/input-otp.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "label": {
       name: "label",
@@ -211,6 +233,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/label.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "menubar": {
       name: "menubar",
@@ -220,6 +243,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/menubar.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "navigation-menu": {
       name: "navigation-menu",
@@ -229,6 +253,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/navigation-menu.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "pagination": {
       name: "pagination",
@@ -238,6 +263,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/pagination.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "popover": {
       name: "popover",
@@ -247,6 +273,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/popover.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "progress": {
       name: "progress",
@@ -256,6 +283,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/progress.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "radio-group": {
       name: "radio-group",
@@ -265,6 +293,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/radio-group.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "resizable": {
       name: "resizable",
@@ -274,6 +303,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/resizable.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "scroll-area": {
       name: "scroll-area",
@@ -283,6 +313,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/scroll-area.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "select": {
       name: "select",
@@ -292,6 +323,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/select.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "separator": {
       name: "separator",
@@ -301,6 +333,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/separator.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "sheet": {
       name: "sheet",
@@ -310,6 +343,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/sheet.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "skeleton": {
       name: "skeleton",
@@ -319,6 +353,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/skeleton.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "slider": {
       name: "slider",
@@ -328,6 +363,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/slider.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "sonner": {
       name: "sonner",
@@ -337,6 +373,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/sonner.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "switch": {
       name: "switch",
@@ -346,6 +383,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/switch.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "table": {
       name: "table",
@@ -355,6 +393,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/table.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "tabs": {
       name: "tabs",
@@ -364,6 +403,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/tabs.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea": {
       name: "textarea",
@@ -373,6 +413,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/textarea.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast": {
       name: "toast",
@@ -382,6 +423,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/toast.tsx","registry/default/ui/use-toast.ts","registry/default/ui/toaster.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle": {
       name: "toggle",
@@ -391,6 +433,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/toggle.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group": {
       name: "toggle-group",
@@ -400,6 +443,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/toggle-group.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "tooltip": {
       name: "tooltip",
@@ -409,6 +453,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/ui/tooltip.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "accordion-demo": {
       name: "accordion-demo",
@@ -418,6 +463,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/accordion-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "alert-demo": {
       name: "alert-demo",
@@ -427,6 +473,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/alert-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "alert-destructive": {
       name: "alert-destructive",
@@ -436,6 +483,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/alert-destructive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
@@ -445,6 +493,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/alert-dialog-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "aspect-ratio-demo": {
       name: "aspect-ratio-demo",
@@ -454,6 +503,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/aspect-ratio-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "avatar-demo": {
       name: "avatar-demo",
@@ -463,6 +513,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/avatar-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "badge-demo": {
       name: "badge-demo",
@@ -472,6 +523,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/badge-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "badge-destructive": {
       name: "badge-destructive",
@@ -481,6 +533,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/badge-destructive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "badge-outline": {
       name: "badge-outline",
@@ -490,6 +543,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/badge-outline.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "badge-secondary": {
       name: "badge-secondary",
@@ -499,6 +553,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/badge-secondary.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-demo": {
       name: "breadcrumb-demo",
@@ -508,6 +563,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/breadcrumb-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-separator": {
       name: "breadcrumb-separator",
@@ -517,6 +573,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/breadcrumb-separator.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-dropdown": {
       name: "breadcrumb-dropdown",
@@ -526,6 +583,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/breadcrumb-dropdown.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-ellipsis": {
       name: "breadcrumb-ellipsis",
@@ -535,6 +593,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/breadcrumb-ellipsis.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-link": {
       name: "breadcrumb-link",
@@ -544,6 +603,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/breadcrumb-link.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-responsive": {
       name: "breadcrumb-responsive",
@@ -553,6 +613,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/breadcrumb-responsive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-demo": {
       name: "button-demo",
@@ -562,6 +623,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-secondary": {
       name: "button-secondary",
@@ -571,6 +633,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-secondary.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-destructive": {
       name: "button-destructive",
@@ -580,6 +643,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-destructive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-outline": {
       name: "button-outline",
@@ -589,6 +653,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-outline.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-ghost": {
       name: "button-ghost",
@@ -598,6 +663,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-ghost.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-link": {
       name: "button-link",
@@ -607,6 +673,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-link.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-with-icon": {
       name: "button-with-icon",
@@ -616,6 +683,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-with-icon.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-loading": {
       name: "button-loading",
@@ -625,6 +693,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-loading.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-icon": {
       name: "button-icon",
@@ -634,6 +703,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-icon.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-as-child": {
       name: "button-as-child",
@@ -643,6 +713,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/button-as-child.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "calendar-demo": {
       name: "calendar-demo",
@@ -652,6 +723,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/calendar-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "calendar-form": {
       name: "calendar-form",
@@ -661,6 +733,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/calendar-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "card-demo": {
       name: "card-demo",
@@ -670,6 +743,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/card-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "card-with-form": {
       name: "card-with-form",
@@ -679,6 +753,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/card-with-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-demo": {
       name: "carousel-demo",
@@ -688,6 +763,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/carousel-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-size": {
       name: "carousel-size",
@@ -697,6 +773,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/carousel-size.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-spacing": {
       name: "carousel-spacing",
@@ -706,6 +783,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/carousel-spacing.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-orientation": {
       name: "carousel-orientation",
@@ -715,6 +793,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/carousel-orientation.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-api": {
       name: "carousel-api",
@@ -724,6 +803,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/carousel-api.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-plugin": {
       name: "carousel-plugin",
@@ -733,6 +813,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/carousel-plugin.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox-demo": {
       name: "checkbox-demo",
@@ -742,6 +823,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/checkbox-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox-disabled": {
       name: "checkbox-disabled",
@@ -751,6 +833,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/checkbox-disabled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox-form-multiple": {
       name: "checkbox-form-multiple",
@@ -760,6 +843,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/checkbox-form-multiple.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox-form-single": {
       name: "checkbox-form-single",
@@ -769,6 +853,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/checkbox-form-single.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox-with-text": {
       name: "checkbox-with-text",
@@ -778,6 +863,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/checkbox-with-text.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "collapsible-demo": {
       name: "collapsible-demo",
@@ -787,6 +873,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/collapsible-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "combobox-demo": {
       name: "combobox-demo",
@@ -796,6 +883,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/combobox-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "combobox-dropdown-menu": {
       name: "combobox-dropdown-menu",
@@ -805,6 +893,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/combobox-dropdown-menu.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "combobox-form": {
       name: "combobox-form",
@@ -814,6 +903,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/combobox-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "combobox-popover": {
       name: "combobox-popover",
@@ -823,6 +913,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/combobox-popover.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "combobox-responsive": {
       name: "combobox-responsive",
@@ -832,6 +923,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/combobox-responsive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "command-demo": {
       name: "command-demo",
@@ -841,6 +933,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/command-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "command-dialog": {
       name: "command-dialog",
@@ -850,6 +943,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/command-dialog.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "context-menu-demo": {
       name: "context-menu-demo",
@@ -859,6 +953,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/context-menu-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "data-table-demo": {
       name: "data-table-demo",
@@ -868,6 +963,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/data-table-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "date-picker-demo": {
       name: "date-picker-demo",
@@ -877,6 +973,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/date-picker-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "date-picker-form": {
       name: "date-picker-form",
@@ -886,6 +983,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/date-picker-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "date-picker-with-presets": {
       name: "date-picker-with-presets",
@@ -895,6 +993,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/date-picker-with-presets.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "date-picker-with-range": {
       name: "date-picker-with-range",
@@ -904,6 +1003,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/date-picker-with-range.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dialog-demo": {
       name: "dialog-demo",
@@ -913,6 +1013,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/dialog-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dialog-close-button": {
       name: "dialog-close-button",
@@ -922,6 +1023,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/dialog-close-button.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "drawer-demo": {
       name: "drawer-demo",
@@ -931,6 +1033,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/drawer-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "drawer-dialog": {
       name: "drawer-dialog",
@@ -940,6 +1043,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/drawer-dialog.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dropdown-menu-demo": {
       name: "dropdown-menu-demo",
@@ -949,6 +1053,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/dropdown-menu-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dropdown-menu-checkboxes": {
       name: "dropdown-menu-checkboxes",
@@ -958,6 +1063,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/dropdown-menu-checkboxes.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dropdown-menu-radio-group": {
       name: "dropdown-menu-radio-group",
@@ -967,6 +1073,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/dropdown-menu-radio-group.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "hover-card-demo": {
       name: "hover-card-demo",
@@ -976,6 +1083,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/hover-card-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-demo": {
       name: "input-demo",
@@ -985,6 +1093,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-disabled": {
       name: "input-disabled",
@@ -994,6 +1103,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-disabled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-file": {
       name: "input-file",
@@ -1003,6 +1113,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-file.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-form": {
       name: "input-form",
@@ -1012,6 +1123,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-with-button": {
       name: "input-with-button",
@@ -1021,6 +1133,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-with-button.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-with-label": {
       name: "input-with-label",
@@ -1030,6 +1143,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-with-label.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-with-text": {
       name: "input-with-text",
@@ -1039,6 +1153,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-with-text.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp-demo": {
       name: "input-otp-demo",
@@ -1048,6 +1163,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-otp-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp-pattern": {
       name: "input-otp-pattern",
@@ -1057,6 +1173,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-otp-pattern.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp-separator": {
       name: "input-otp-separator",
@@ -1066,6 +1183,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-otp-separator.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp-controlled": {
       name: "input-otp-controlled",
@@ -1075,6 +1193,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-otp-controlled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp-form": {
       name: "input-otp-form",
@@ -1084,6 +1203,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/input-otp-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "label-demo": {
       name: "label-demo",
@@ -1093,6 +1213,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/label-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "menubar-demo": {
       name: "menubar-demo",
@@ -1102,6 +1223,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/menubar-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "navigation-menu-demo": {
       name: "navigation-menu-demo",
@@ -1111,6 +1233,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/navigation-menu-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "pagination-demo": {
       name: "pagination-demo",
@@ -1120,6 +1243,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/pagination-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "popover-demo": {
       name: "popover-demo",
@@ -1129,6 +1253,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/popover-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "progress-demo": {
       name: "progress-demo",
@@ -1138,6 +1263,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/progress-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "radio-group-demo": {
       name: "radio-group-demo",
@@ -1147,6 +1273,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/radio-group-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "radio-group-form": {
       name: "radio-group-form",
@@ -1156,6 +1283,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/radio-group-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "resizable-demo": {
       name: "resizable-demo",
@@ -1165,6 +1293,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/resizable-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "resizable-demo-with-handle": {
       name: "resizable-demo-with-handle",
@@ -1174,6 +1303,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/resizable-demo-with-handle.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "resizable-vertical": {
       name: "resizable-vertical",
@@ -1183,6 +1313,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/resizable-vertical.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "resizable-handle": {
       name: "resizable-handle",
@@ -1192,6 +1323,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/resizable-handle.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "scroll-area-demo": {
       name: "scroll-area-demo",
@@ -1201,6 +1333,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/scroll-area-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "scroll-area-horizontal-demo": {
       name: "scroll-area-horizontal-demo",
@@ -1210,6 +1343,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/scroll-area-horizontal-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "select-demo": {
       name: "select-demo",
@@ -1219,6 +1353,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/select-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "select-scrollable": {
       name: "select-scrollable",
@@ -1228,6 +1363,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/select-scrollable.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "select-form": {
       name: "select-form",
@@ -1237,6 +1373,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/select-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "separator-demo": {
       name: "separator-demo",
@@ -1246,6 +1383,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/separator-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "sheet-demo": {
       name: "sheet-demo",
@@ -1255,6 +1393,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/sheet-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "sheet-side": {
       name: "sheet-side",
@@ -1264,6 +1403,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/sheet-side.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "skeleton-demo": {
       name: "skeleton-demo",
@@ -1273,6 +1413,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/skeleton-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "skeleton-card": {
       name: "skeleton-card",
@@ -1282,6 +1423,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/skeleton-card.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "slider-demo": {
       name: "slider-demo",
@@ -1291,6 +1433,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/slider-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "sonner-demo": {
       name: "sonner-demo",
@@ -1300,6 +1443,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/sonner-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "switch-demo": {
       name: "switch-demo",
@@ -1309,6 +1453,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/switch-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "switch-form": {
       name: "switch-form",
@@ -1318,6 +1463,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/switch-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "table-demo": {
       name: "table-demo",
@@ -1327,6 +1473,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/table-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "tabs-demo": {
       name: "tabs-demo",
@@ -1336,6 +1483,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/tabs-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-demo": {
       name: "textarea-demo",
@@ -1345,6 +1493,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/textarea-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-disabled": {
       name: "textarea-disabled",
@@ -1354,6 +1503,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/textarea-disabled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-form": {
       name: "textarea-form",
@@ -1363,6 +1513,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/textarea-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-with-button": {
       name: "textarea-with-button",
@@ -1372,6 +1523,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/textarea-with-button.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-with-label": {
       name: "textarea-with-label",
@@ -1381,6 +1533,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/textarea-with-label.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-with-text": {
       name: "textarea-with-text",
@@ -1390,6 +1543,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/textarea-with-text.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast-demo": {
       name: "toast-demo",
@@ -1399,6 +1553,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toast-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast-destructive": {
       name: "toast-destructive",
@@ -1408,6 +1563,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toast-destructive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast-simple": {
       name: "toast-simple",
@@ -1417,6 +1573,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toast-simple.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast-with-action": {
       name: "toast-with-action",
@@ -1426,6 +1583,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toast-with-action.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast-with-title": {
       name: "toast-with-title",
@@ -1435,6 +1593,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toast-with-title.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-demo": {
       name: "toggle-group-demo",
@@ -1444,6 +1603,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-group-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-disabled": {
       name: "toggle-group-disabled",
@@ -1453,6 +1613,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-group-disabled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-lg": {
       name: "toggle-group-lg",
@@ -1462,6 +1623,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-group-lg.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-outline": {
       name: "toggle-group-outline",
@@ -1471,6 +1633,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-group-outline.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-sm": {
       name: "toggle-group-sm",
@@ -1480,6 +1643,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-group-sm.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-single": {
       name: "toggle-group-single",
@@ -1489,6 +1653,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-group-single.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-demo": {
       name: "toggle-demo",
@@ -1498,6 +1663,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-disabled": {
       name: "toggle-disabled",
@@ -1507,6 +1673,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-disabled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-lg": {
       name: "toggle-lg",
@@ -1516,6 +1683,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-lg.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-outline": {
       name: "toggle-outline",
@@ -1525,6 +1693,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-outline.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-sm": {
       name: "toggle-sm",
@@ -1534,6 +1703,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-sm.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-with-text": {
       name: "toggle-with-text",
@@ -1543,6 +1713,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/toggle-with-text.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "tooltip-demo": {
       name: "tooltip-demo",
@@ -1552,6 +1723,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/tooltip-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-blockquote": {
       name: "typography-blockquote",
@@ -1561,6 +1733,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-blockquote.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-demo": {
       name: "typography-demo",
@@ -1570,6 +1743,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-h1": {
       name: "typography-h1",
@@ -1579,6 +1753,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-h1.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-h2": {
       name: "typography-h2",
@@ -1588,6 +1763,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-h2.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-h3": {
       name: "typography-h3",
@@ -1597,6 +1773,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-h3.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-h4": {
       name: "typography-h4",
@@ -1606,6 +1783,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-h4.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-inline-code": {
       name: "typography-inline-code",
@@ -1615,6 +1793,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-inline-code.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-large": {
       name: "typography-large",
@@ -1624,6 +1803,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-large.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-lead": {
       name: "typography-lead",
@@ -1633,6 +1813,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-lead.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-list": {
       name: "typography-list",
@@ -1642,6 +1823,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-list.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-muted": {
       name: "typography-muted",
@@ -1651,6 +1833,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-muted.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-p": {
       name: "typography-p",
@@ -1660,6 +1843,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-p.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-small": {
       name: "typography-small",
@@ -1669,6 +1853,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-small.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-table": {
       name: "typography-table",
@@ -1678,6 +1863,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typography-table.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "mode-toggle": {
       name: "mode-toggle",
@@ -1687,6 +1873,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/mode-toggle.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "cards": {
       name: "cards",
@@ -1696,6 +1883,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/cards/cards.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dashboard-05": {
       name: "dashboard-05",
@@ -1705,6 +1893,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-05.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-06": {
       name: "dashboard-06",
@@ -1714,6 +1903,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-06.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-07": {
       name: "dashboard-07",
@@ -1723,6 +1913,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-07.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-01": {
       name: "dashboard-01",
@@ -1732,6 +1923,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-01.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-02": {
       name: "dashboard-02",
@@ -1741,6 +1933,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-02.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-03": {
       name: "dashboard-03",
@@ -1750,6 +1943,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-03.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-04": {
       name: "dashboard-04",
@@ -1759,6 +1953,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-04.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "authentication-01": {
       name: "authentication-01",
@@ -1768,6 +1963,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/authentication-01.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
     },
     "authentication-02": {
       name: "authentication-02",
@@ -1777,6 +1973,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/authentication-02.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
     },
     "authentication-03": {
       name: "authentication-03",
@@ -1786,6 +1983,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/authentication-03.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
     },
     "authentication-04": {
       name: "authentication-04",
@@ -1795,6 +1993,7 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/authentication-04.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
     },
   },  "new-york": {
     "accordion": {
@@ -1805,6 +2004,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/accordion.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "alert": {
       name: "alert",
@@ -1814,6 +2014,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/alert.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "alert-dialog": {
       name: "alert-dialog",
@@ -1823,6 +2024,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/alert-dialog.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "aspect-ratio": {
       name: "aspect-ratio",
@@ -1832,6 +2034,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/aspect-ratio.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "avatar": {
       name: "avatar",
@@ -1841,6 +2044,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/avatar.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "badge": {
       name: "badge",
@@ -1850,6 +2054,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/badge.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb": {
       name: "breadcrumb",
@@ -1859,6 +2064,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/breadcrumb.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button": {
       name: "button",
@@ -1868,6 +2074,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/button.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "calendar": {
       name: "calendar",
@@ -1877,6 +2084,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/calendar.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "card": {
       name: "card",
@@ -1886,6 +2094,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/card.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel": {
       name: "carousel",
@@ -1895,6 +2104,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/carousel.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox": {
       name: "checkbox",
@@ -1904,6 +2114,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/checkbox.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "collapsible": {
       name: "collapsible",
@@ -1913,6 +2124,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/collapsible.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "command": {
       name: "command",
@@ -1922,6 +2134,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/command.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "context-menu": {
       name: "context-menu",
@@ -1931,6 +2144,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/context-menu.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dialog": {
       name: "dialog",
@@ -1940,6 +2154,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/dialog.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "drawer": {
       name: "drawer",
@@ -1949,6 +2164,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/drawer.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dropdown-menu": {
       name: "dropdown-menu",
@@ -1958,6 +2174,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/dropdown-menu.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "form": {
       name: "form",
@@ -1967,6 +2184,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "hover-card": {
       name: "hover-card",
@@ -1976,6 +2194,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/hover-card.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input": {
       name: "input",
@@ -1985,6 +2204,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/input.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp": {
       name: "input-otp",
@@ -1994,6 +2214,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/input-otp.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "label": {
       name: "label",
@@ -2003,6 +2224,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/label.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "menubar": {
       name: "menubar",
@@ -2012,6 +2234,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/menubar.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "navigation-menu": {
       name: "navigation-menu",
@@ -2021,6 +2244,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/navigation-menu.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "pagination": {
       name: "pagination",
@@ -2030,6 +2254,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/pagination.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "popover": {
       name: "popover",
@@ -2039,6 +2264,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/popover.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "progress": {
       name: "progress",
@@ -2048,6 +2274,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/progress.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "radio-group": {
       name: "radio-group",
@@ -2057,6 +2284,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/radio-group.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "resizable": {
       name: "resizable",
@@ -2066,6 +2294,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/resizable.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "scroll-area": {
       name: "scroll-area",
@@ -2075,6 +2304,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/scroll-area.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "select": {
       name: "select",
@@ -2084,6 +2314,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/select.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "separator": {
       name: "separator",
@@ -2093,6 +2324,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/separator.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "sheet": {
       name: "sheet",
@@ -2102,6 +2334,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/sheet.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "skeleton": {
       name: "skeleton",
@@ -2111,6 +2344,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/skeleton.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "slider": {
       name: "slider",
@@ -2120,6 +2354,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/slider.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "sonner": {
       name: "sonner",
@@ -2129,6 +2364,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/sonner.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "switch": {
       name: "switch",
@@ -2138,6 +2374,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/switch.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "table": {
       name: "table",
@@ -2147,6 +2384,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/table.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "tabs": {
       name: "tabs",
@@ -2156,6 +2394,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/tabs.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea": {
       name: "textarea",
@@ -2165,6 +2404,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/textarea.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast": {
       name: "toast",
@@ -2174,6 +2414,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/toast.tsx","registry/new-york/ui/use-toast.ts","registry/new-york/ui/toaster.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle": {
       name: "toggle",
@@ -2183,6 +2424,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/toggle.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group": {
       name: "toggle-group",
@@ -2192,6 +2434,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/toggle-group.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "tooltip": {
       name: "tooltip",
@@ -2201,6 +2444,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/ui/tooltip.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "accordion-demo": {
       name: "accordion-demo",
@@ -2210,6 +2454,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/accordion-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "alert-demo": {
       name: "alert-demo",
@@ -2219,6 +2464,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/alert-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "alert-destructive": {
       name: "alert-destructive",
@@ -2228,6 +2474,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/alert-destructive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
@@ -2237,6 +2484,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/alert-dialog-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "aspect-ratio-demo": {
       name: "aspect-ratio-demo",
@@ -2246,6 +2494,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/aspect-ratio-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "avatar-demo": {
       name: "avatar-demo",
@@ -2255,6 +2504,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/avatar-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "badge-demo": {
       name: "badge-demo",
@@ -2264,6 +2514,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/badge-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "badge-destructive": {
       name: "badge-destructive",
@@ -2273,6 +2524,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/badge-destructive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "badge-outline": {
       name: "badge-outline",
@@ -2282,6 +2534,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/badge-outline.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "badge-secondary": {
       name: "badge-secondary",
@@ -2291,6 +2544,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/badge-secondary.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-demo": {
       name: "breadcrumb-demo",
@@ -2300,6 +2554,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/breadcrumb-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-separator": {
       name: "breadcrumb-separator",
@@ -2309,6 +2564,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/breadcrumb-separator.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-dropdown": {
       name: "breadcrumb-dropdown",
@@ -2318,6 +2574,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/breadcrumb-dropdown.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-ellipsis": {
       name: "breadcrumb-ellipsis",
@@ -2327,6 +2584,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/breadcrumb-ellipsis.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-link": {
       name: "breadcrumb-link",
@@ -2336,6 +2594,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/breadcrumb-link.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "breadcrumb-responsive": {
       name: "breadcrumb-responsive",
@@ -2345,6 +2604,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/breadcrumb-responsive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-demo": {
       name: "button-demo",
@@ -2354,6 +2614,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/button-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-secondary": {
       name: "button-secondary",
@@ -2363,6 +2624,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/button-secondary.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-destructive": {
       name: "button-destructive",
@@ -2372,6 +2634,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/button-destructive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-outline": {
       name: "button-outline",
@@ -2381,6 +2644,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/button-outline.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-ghost": {
       name: "button-ghost",
@@ -2390,6 +2654,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/button-ghost.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-link": {
       name: "button-link",
@@ -2399,6 +2664,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/button-link.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-with-icon": {
       name: "button-with-icon",
@@ -2408,6 +2674,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/button-with-icon.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-loading": {
       name: "button-loading",
@@ -2417,6 +2684,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/button-loading.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-icon": {
       name: "button-icon",
@@ -2426,6 +2694,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/button-icon.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "button-as-child": {
       name: "button-as-child",
@@ -2435,6 +2704,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/button-as-child.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "calendar-demo": {
       name: "calendar-demo",
@@ -2444,6 +2714,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/calendar-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "calendar-form": {
       name: "calendar-form",
@@ -2453,6 +2724,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/calendar-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "card-demo": {
       name: "card-demo",
@@ -2462,6 +2734,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/card-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "card-with-form": {
       name: "card-with-form",
@@ -2471,6 +2744,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/card-with-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-demo": {
       name: "carousel-demo",
@@ -2480,6 +2754,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/carousel-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-size": {
       name: "carousel-size",
@@ -2489,6 +2764,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/carousel-size.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-spacing": {
       name: "carousel-spacing",
@@ -2498,6 +2774,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/carousel-spacing.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-orientation": {
       name: "carousel-orientation",
@@ -2507,6 +2784,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/carousel-orientation.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-api": {
       name: "carousel-api",
@@ -2516,6 +2794,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/carousel-api.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "carousel-plugin": {
       name: "carousel-plugin",
@@ -2525,6 +2804,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/carousel-plugin.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox-demo": {
       name: "checkbox-demo",
@@ -2534,6 +2814,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/checkbox-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox-disabled": {
       name: "checkbox-disabled",
@@ -2543,6 +2824,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/checkbox-disabled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox-form-multiple": {
       name: "checkbox-form-multiple",
@@ -2552,6 +2834,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/checkbox-form-multiple.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox-form-single": {
       name: "checkbox-form-single",
@@ -2561,6 +2844,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/checkbox-form-single.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "checkbox-with-text": {
       name: "checkbox-with-text",
@@ -2570,6 +2854,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/checkbox-with-text.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "collapsible-demo": {
       name: "collapsible-demo",
@@ -2579,6 +2864,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/collapsible-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "combobox-demo": {
       name: "combobox-demo",
@@ -2588,6 +2874,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/combobox-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "combobox-dropdown-menu": {
       name: "combobox-dropdown-menu",
@@ -2597,6 +2884,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/combobox-dropdown-menu.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "combobox-form": {
       name: "combobox-form",
@@ -2606,6 +2894,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/combobox-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "combobox-popover": {
       name: "combobox-popover",
@@ -2615,6 +2904,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/combobox-popover.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "combobox-responsive": {
       name: "combobox-responsive",
@@ -2624,6 +2914,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/combobox-responsive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "command-demo": {
       name: "command-demo",
@@ -2633,6 +2924,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/command-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "command-dialog": {
       name: "command-dialog",
@@ -2642,6 +2934,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/command-dialog.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "context-menu-demo": {
       name: "context-menu-demo",
@@ -2651,6 +2944,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/context-menu-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "data-table-demo": {
       name: "data-table-demo",
@@ -2660,6 +2954,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/data-table-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "date-picker-demo": {
       name: "date-picker-demo",
@@ -2669,6 +2964,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/date-picker-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "date-picker-form": {
       name: "date-picker-form",
@@ -2678,6 +2974,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/date-picker-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "date-picker-with-presets": {
       name: "date-picker-with-presets",
@@ -2687,6 +2984,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/date-picker-with-presets.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "date-picker-with-range": {
       name: "date-picker-with-range",
@@ -2696,6 +2994,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/date-picker-with-range.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dialog-demo": {
       name: "dialog-demo",
@@ -2705,6 +3004,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/dialog-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dialog-close-button": {
       name: "dialog-close-button",
@@ -2714,6 +3014,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/dialog-close-button.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "drawer-demo": {
       name: "drawer-demo",
@@ -2723,6 +3024,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/drawer-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "drawer-dialog": {
       name: "drawer-dialog",
@@ -2732,6 +3034,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/drawer-dialog.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dropdown-menu-demo": {
       name: "dropdown-menu-demo",
@@ -2741,6 +3044,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/dropdown-menu-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dropdown-menu-checkboxes": {
       name: "dropdown-menu-checkboxes",
@@ -2750,6 +3054,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/dropdown-menu-checkboxes.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dropdown-menu-radio-group": {
       name: "dropdown-menu-radio-group",
@@ -2759,6 +3064,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/dropdown-menu-radio-group.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "hover-card-demo": {
       name: "hover-card-demo",
@@ -2768,6 +3074,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/hover-card-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-demo": {
       name: "input-demo",
@@ -2777,6 +3084,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-disabled": {
       name: "input-disabled",
@@ -2786,6 +3094,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-disabled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-file": {
       name: "input-file",
@@ -2795,6 +3104,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-file.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-form": {
       name: "input-form",
@@ -2804,6 +3114,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-with-button": {
       name: "input-with-button",
@@ -2813,6 +3124,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-with-button.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-with-label": {
       name: "input-with-label",
@@ -2822,6 +3134,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-with-label.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-with-text": {
       name: "input-with-text",
@@ -2831,6 +3144,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-with-text.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp-demo": {
       name: "input-otp-demo",
@@ -2840,6 +3154,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-otp-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp-pattern": {
       name: "input-otp-pattern",
@@ -2849,6 +3164,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-otp-pattern.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp-separator": {
       name: "input-otp-separator",
@@ -2858,6 +3174,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-otp-separator.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp-controlled": {
       name: "input-otp-controlled",
@@ -2867,6 +3184,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-otp-controlled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "input-otp-form": {
       name: "input-otp-form",
@@ -2876,6 +3194,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/input-otp-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "label-demo": {
       name: "label-demo",
@@ -2885,6 +3204,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/label-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "menubar-demo": {
       name: "menubar-demo",
@@ -2894,6 +3214,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/menubar-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "navigation-menu-demo": {
       name: "navigation-menu-demo",
@@ -2903,6 +3224,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/navigation-menu-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "pagination-demo": {
       name: "pagination-demo",
@@ -2912,6 +3234,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/pagination-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "popover-demo": {
       name: "popover-demo",
@@ -2921,6 +3244,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/popover-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "progress-demo": {
       name: "progress-demo",
@@ -2930,6 +3254,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/progress-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "radio-group-demo": {
       name: "radio-group-demo",
@@ -2939,6 +3264,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/radio-group-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "radio-group-form": {
       name: "radio-group-form",
@@ -2948,6 +3274,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/radio-group-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "resizable-demo": {
       name: "resizable-demo",
@@ -2957,6 +3284,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/resizable-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "resizable-demo-with-handle": {
       name: "resizable-demo-with-handle",
@@ -2966,6 +3294,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/resizable-demo-with-handle.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "resizable-vertical": {
       name: "resizable-vertical",
@@ -2975,6 +3304,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/resizable-vertical.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "resizable-handle": {
       name: "resizable-handle",
@@ -2984,6 +3314,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/resizable-handle.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "scroll-area-demo": {
       name: "scroll-area-demo",
@@ -2993,6 +3324,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/scroll-area-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "scroll-area-horizontal-demo": {
       name: "scroll-area-horizontal-demo",
@@ -3002,6 +3334,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/scroll-area-horizontal-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "select-demo": {
       name: "select-demo",
@@ -3011,6 +3344,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/select-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "select-scrollable": {
       name: "select-scrollable",
@@ -3020,6 +3354,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/select-scrollable.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "select-form": {
       name: "select-form",
@@ -3029,6 +3364,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/select-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "separator-demo": {
       name: "separator-demo",
@@ -3038,6 +3374,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/separator-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "sheet-demo": {
       name: "sheet-demo",
@@ -3047,6 +3384,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/sheet-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "sheet-side": {
       name: "sheet-side",
@@ -3056,6 +3394,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/sheet-side.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "skeleton-demo": {
       name: "skeleton-demo",
@@ -3065,6 +3404,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/skeleton-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "skeleton-card": {
       name: "skeleton-card",
@@ -3074,6 +3414,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/skeleton-card.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "slider-demo": {
       name: "slider-demo",
@@ -3083,6 +3424,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/slider-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "sonner-demo": {
       name: "sonner-demo",
@@ -3092,6 +3434,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/sonner-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "switch-demo": {
       name: "switch-demo",
@@ -3101,6 +3444,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/switch-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "switch-form": {
       name: "switch-form",
@@ -3110,6 +3454,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/switch-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "table-demo": {
       name: "table-demo",
@@ -3119,6 +3464,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/table-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "tabs-demo": {
       name: "tabs-demo",
@@ -3128,6 +3474,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/tabs-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-demo": {
       name: "textarea-demo",
@@ -3137,6 +3484,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/textarea-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-disabled": {
       name: "textarea-disabled",
@@ -3146,6 +3494,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/textarea-disabled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-form": {
       name: "textarea-form",
@@ -3155,6 +3504,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/textarea-form.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-with-button": {
       name: "textarea-with-button",
@@ -3164,6 +3514,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/textarea-with-button.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-with-label": {
       name: "textarea-with-label",
@@ -3173,6 +3524,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/textarea-with-label.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "textarea-with-text": {
       name: "textarea-with-text",
@@ -3182,6 +3534,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/textarea-with-text.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast-demo": {
       name: "toast-demo",
@@ -3191,6 +3544,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toast-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast-destructive": {
       name: "toast-destructive",
@@ -3200,6 +3554,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toast-destructive.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast-simple": {
       name: "toast-simple",
@@ -3209,6 +3564,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toast-simple.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast-with-action": {
       name: "toast-with-action",
@@ -3218,6 +3574,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toast-with-action.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toast-with-title": {
       name: "toast-with-title",
@@ -3227,6 +3584,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toast-with-title.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-demo": {
       name: "toggle-group-demo",
@@ -3236,6 +3594,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-group-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-disabled": {
       name: "toggle-group-disabled",
@@ -3245,6 +3604,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-group-disabled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-lg": {
       name: "toggle-group-lg",
@@ -3254,6 +3614,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-group-lg.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-outline": {
       name: "toggle-group-outline",
@@ -3263,6 +3624,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-group-outline.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-sm": {
       name: "toggle-group-sm",
@@ -3272,6 +3634,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-group-sm.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-group-single": {
       name: "toggle-group-single",
@@ -3281,6 +3644,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-group-single.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-demo": {
       name: "toggle-demo",
@@ -3290,6 +3654,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-disabled": {
       name: "toggle-disabled",
@@ -3299,6 +3664,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-disabled.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-lg": {
       name: "toggle-lg",
@@ -3308,6 +3674,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-lg.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-outline": {
       name: "toggle-outline",
@@ -3317,6 +3684,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-outline.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-sm": {
       name: "toggle-sm",
@@ -3326,6 +3694,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-sm.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "toggle-with-text": {
       name: "toggle-with-text",
@@ -3335,6 +3704,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/toggle-with-text.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "tooltip-demo": {
       name: "tooltip-demo",
@@ -3344,6 +3714,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/tooltip-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-blockquote": {
       name: "typography-blockquote",
@@ -3353,6 +3724,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-blockquote.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-demo": {
       name: "typography-demo",
@@ -3362,6 +3734,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-h1": {
       name: "typography-h1",
@@ -3371,6 +3744,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-h1.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-h2": {
       name: "typography-h2",
@@ -3380,6 +3754,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-h2.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-h3": {
       name: "typography-h3",
@@ -3389,6 +3764,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-h3.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-h4": {
       name: "typography-h4",
@@ -3398,6 +3774,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-h4.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-inline-code": {
       name: "typography-inline-code",
@@ -3407,6 +3784,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-inline-code.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-large": {
       name: "typography-large",
@@ -3416,6 +3794,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-large.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-lead": {
       name: "typography-lead",
@@ -3425,6 +3804,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-lead.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-list": {
       name: "typography-list",
@@ -3434,6 +3814,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-list.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-muted": {
       name: "typography-muted",
@@ -3443,6 +3824,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-muted.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-p": {
       name: "typography-p",
@@ -3452,6 +3834,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-p.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-small": {
       name: "typography-small",
@@ -3461,6 +3844,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-small.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "typography-table": {
       name: "typography-table",
@@ -3470,6 +3854,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/typography-table.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "mode-toggle": {
       name: "mode-toggle",
@@ -3479,6 +3864,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/mode-toggle.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "cards": {
       name: "cards",
@@ -3488,6 +3874,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/example/cards/cards.tsx"],
       category: "undefined",
       subcategory: "undefined",
+      chunks: []
     },
     "dashboard-05": {
       name: "dashboard-05",
@@ -3497,6 +3884,17 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/dashboard-05.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: [{
+        name: "dashboard-05-0",
+        description: "A card for an orders dashboard with a description and a button to create a new order.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-0")),
+        file: "registry/new-york/block/dashboard-05-0.tsx"
+      },{
+        name: "dashboard-05-1",
+        description: "A stats card showing this week's total sales in USD, the percentage increase from last week, and a progress bar.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-1")),
+        file: "registry/new-york/block/dashboard-05-1.tsx"
+      }]
     },
     "dashboard-06": {
       name: "dashboard-06",
@@ -3506,6 +3904,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/dashboard-06.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-07": {
       name: "dashboard-07",
@@ -3515,6 +3914,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/dashboard-07.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-01": {
       name: "dashboard-01",
@@ -3524,6 +3924,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/dashboard-01.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-02": {
       name: "dashboard-02",
@@ -3533,6 +3934,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/dashboard-02.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-03": {
       name: "dashboard-03",
@@ -3542,6 +3944,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/dashboard-03.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "dashboard-04": {
       name: "dashboard-04",
@@ -3551,6 +3954,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/dashboard-04.tsx"],
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
     },
     "authentication-01": {
       name: "authentication-01",
@@ -3560,6 +3964,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/authentication-01.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
     },
     "authentication-02": {
       name: "authentication-02",
@@ -3569,6 +3974,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/authentication-02.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
     },
     "authentication-03": {
       name: "authentication-03",
@@ -3578,6 +3984,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/authentication-03.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
     },
     "authentication-04": {
       name: "authentication-04",
@@ -3587,6 +3994,7 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/authentication-04.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
     },
   },
 }
