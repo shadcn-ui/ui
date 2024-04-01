@@ -7,7 +7,6 @@ import { z } from "zod"
 import { columns } from "./components/columns"
 import { DataTable } from "./components/data-table"
 import { UserNav } from "./components/user-nav"
-import { productSchema } from "./data/schema"
 
 export const metadata: Metadata = {
   title: "Tasks",
@@ -21,7 +20,7 @@ export async function getProducts() {
 
   const products = JSON.parse(data.toString())
 
-  return z.array(productSchema).parse(products)
+  return []
 }
 
 export default async function TaskPage() {

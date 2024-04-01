@@ -332,7 +332,7 @@ export function DataTableRowActions<TData>({
                 </FormItem>
               )}
             />
-            <div className="flex  rounded-lg border p-4 justify-between">
+            <div className="flex  justify-between rounded-lg border p-4">
               <FormField
                 control={form.control}
                 name="status"
@@ -350,7 +350,11 @@ export function DataTableRowActions<TData>({
                         >
                           <option></option>
                           {Object.values(ProductStatus).map((v) => (
-                            <option value={v} selected={v === product?.status}>
+                            <option
+                              value={v}
+                              selected={v === product?.status}
+                              key={v}
+                            >
                               {v}
                             </option>
                           ))}
@@ -383,6 +387,7 @@ export function DataTableRowActions<TData>({
                           {Object.values(Currency).map((v) => (
                             <option
                               value={v}
+                              key={v}
                               selected={v === product?.currency}
                             >
                               {v}
@@ -415,7 +420,11 @@ export function DataTableRowActions<TData>({
                         >
                           <option></option>
                           {Object.values(ProductUnit).map((v) => (
-                            <option value={v} selected={v === product?.unit}>
+                            <option
+                              value={v}
+                              selected={v === product?.unit}
+                              key={v}
+                            >
                               {v}
                             </option>
                           ))}
