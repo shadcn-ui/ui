@@ -41,24 +41,16 @@ export const Index: Record<string, any> = {
 
     // Build style index.
     for (const item of registry) {
-      // if (item.type === "components:ui") {
-      //   continue
-      // }
-
       const resolveFiles = item.files.map(
         (file) => `registry/${style.name}/${file}`
       )
-
       const type = item.type.split(":")[1]
+      let sourceFilename = ""
 
-      let blocks: any = []
+      let chunks: any = []
       if (item.type === "components:block") {
-        const file = resolveFiles[0] // Only one file for blocks.
+        const file = resolveFiles[0]
         const filename = path.basename(file)
-        // const dirname = path.dirname(file)
-        // const filePath = file.replace(REGISTRY_PATH, "").replace(/\.tsx$/, "")
-        // const id = filename.replace(/\.tsx$/, "")
-
         const raw = await fs.readFile(file, "utf8")
         const tempFile = await createTempSourceFile(filename)
         const sourceFile = project.createSourceFile(tempFile, raw, {
@@ -90,19 +82,28 @@ export const Index: Record<string, any> = {
             return node.getAttribute("x-data-component") !== undefined
           })
 
-        blocks = await Promise.all(
+        chunks = await Promise.all(
           components.map(async (component, index) => {
+            const chunkName = `${item.name}-chunk-${index}`
+
             // Get the value of x-data-component attribute.
             const attr = component
               .getAttributeOrThrow("x-data-component")
               .asKindOrThrow(SyntaxKind.JsxAttribute)
+
             const description = attr
               .getInitializerOrThrow()
               .asKindOrThrow(SyntaxKind.StringLiteral)
               .getLiteralValue()
 
-            // Remove the x-data-component attribute.
+            // Delete the x-data-component attribute.
             attr.remove()
+
+            // Add a new attribute to the component.
+            component.addAttribute({
+              name: "x-data-chunk",
+              initializer: `"${chunkName}"`,
+            })
 
             const parentJsxElement = component.getParentIfKindOrThrow(
               SyntaxKind.JsxElement
@@ -127,7 +128,8 @@ export const Index: Record<string, any> = {
               const importLine = imports.get(child)
               if (importLine) {
                 const imports = componentImports.get(importLine.module) || []
-                componentImports.set(importLine.module, [...imports, child])
+                const newImports = new Set([...imports, child])
+                componentImports.set(importLine.module, Array.from(newImports))
               }
             })
 
@@ -146,10 +148,10 @@ export const Index: Record<string, any> = {
               return (${parentJsxElement.getText()})
             }`
 
-            const targetFile = file.replace(item.name, `${item.name}-${index}`)
+            const targetFile = file.replace(item.name, `${chunkName}`)
             const targetFilePath = path.join(
               cwd(),
-              `registry/${style.name}/${type}/${item.name}-${index}.tsx`
+              `registry/${style.name}/${type}/${chunkName}.tsx`
             )
 
             // Write component file.
@@ -157,13 +159,23 @@ export const Index: Record<string, any> = {
             await fs.writeFile(targetFilePath, code, "utf8")
 
             return {
-              name: `${item.name}-${index}`,
+              name: chunkName,
               description,
-              component: `React.lazy(() => import("@/registry/${style.name}/${type}/${item.name}-${index}")),`,
+              component: `React.lazy(() => import("@/registry/${style.name}/${type}/${chunkName}")),`,
               file: targetFile,
             }
           })
         )
+
+        // // Write the source file for blocks only.
+        sourceFilename = `__registry__/${style.name}/${type}/${item.name}.tsx`
+        const sourcePath = path.join(process.cwd(), sourceFilename)
+        if (!existsSync(sourcePath)) {
+          await fs.mkdir(sourcePath, { recursive: true })
+        }
+
+        rimraf.sync(sourcePath)
+        await fs.writeFile(sourcePath, sourceFile.getText())
       }
 
       index += `
@@ -174,10 +186,11 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/${style.name}/${type}/${
         item.name
       }")),
+      source: "${sourceFilename}",
       files: [${resolveFiles.map((file) => `"${file}"`)}],
       category: "${item.category}",
       subcategory: "${item.subcategory}",
-      chunks: [${blocks.map(
+      chunks: [${chunks.map(
         (block) => `{
         name: "${block.name}",
         description: "${block.description}",

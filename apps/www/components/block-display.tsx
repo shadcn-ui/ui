@@ -7,8 +7,9 @@ export async function BlockDisplay({ name }: { name: string }) {
     styles.map(async (style) => {
       const block = await getBlock(name, style.name)
 
-      // Cannot (and don't need to) pass component to the client.
+      // Cannot (and don't need to) pass to the client.
       delete block?.component
+      delete block?.chunks
 
       return block
     })

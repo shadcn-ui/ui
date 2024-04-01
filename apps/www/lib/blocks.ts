@@ -56,7 +56,11 @@ async function _getBlockCode(
   const entry = Index[style][name]
   const block = registryEntrySchema.parse(entry)
 
-  const filepath = path.join(process.cwd(), block.files[0])
+  if (!block.source) {
+    return ""
+  }
+
+  const filepath = path.join(process.cwd(), block.source)
   return await fs.readFile(filepath, "utf-8")
 }
 

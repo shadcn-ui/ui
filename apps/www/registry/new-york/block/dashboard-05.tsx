@@ -565,7 +565,10 @@ export default function Dashboard() {
             </Tabs>
           </div>
           <div>
-            <Card className="overflow-hidden">
+            <Card
+              className="overflow-hidden"
+              x-data-component="An order details card with order details, shipping information, customer information and payment information."
+            >
               <CardHeader className="flex flex-row items-start bg-muted/50">
                 <div className="grid gap-0.5">
                   <CardTitle className="group flex items-center gap-2 text-lg">

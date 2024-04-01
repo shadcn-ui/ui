@@ -8,6 +8,7 @@ import { Style, styles } from "@/registry/styles"
 
 import "@/styles/mdx.css"
 import "public/registry/themes.css"
+import { BlockWrapper } from "@/components/block-wrapper"
 
 export async function generateMetadata({
   params,
@@ -78,13 +79,22 @@ export default async function BlockPage({
     return notFound()
   }
 
-  console.log(block.chunks)
-
   const Component = block.component
 
+  const chunks = block.chunks?.map((chunk) => ({ ...chunk }))
+
+  delete block.component
+  block.chunks?.map((chunk) => delete chunk.component)
+
   return (
-    <div className={cn(block.container?.className || "", "theme-zinc")}>
+    <BlockWrapper
+      block={block}
+      className={cn(block.container?.className || "", "theme-zinc")}
+    >
       <Component />
-    </div>
+      {chunks?.map((chunk) => (
+        <chunk.component key={chunk.name} />
+      ))}
+    </BlockWrapper>
   )
 }

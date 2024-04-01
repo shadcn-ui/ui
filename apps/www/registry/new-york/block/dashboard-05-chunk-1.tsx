@@ -10,7 +10,7 @@ import { Progress } from "@/registry/new-york/ui/progress"
 
 export default function Component() {
   return (
-    <Card>
+    <Card x-data-chunk="dashboard-05-chunk-1">
       <CardHeader className="pb-2">
         <CardDescription>This Week</CardDescription>
         <CardTitle className="text-4xl">$1,329</CardTitle>
