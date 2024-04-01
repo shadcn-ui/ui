@@ -201,6 +201,8 @@ export function DataTableRowActions<TData>({
                   <FormItem>
                     <FormLabel>Description</FormLabel>
                     <FormControl>
+                      {/* 
+// @ts-ignore */}
                       <Textarea
                         placeholder="describe your product..."
                         className="resize-none"
@@ -341,6 +343,8 @@ export function DataTableRowActions<TData>({
                     <FormLabel>Status</FormLabel>
                     <div className="relative w-max">
                       <FormControl>
+                        {/* 
+// @ts-ignore */}
                         <select
                           className={cn(
                             buttonVariants({ variant: "outline" }),
@@ -376,6 +380,8 @@ export function DataTableRowActions<TData>({
                     <FormLabel>Currency</FormLabel>
                     <div className="relative w-max">
                       <FormControl>
+                        {/* 
+// @ts-ignore */}
                         <select
                           className={cn(
                             buttonVariants({ variant: "outline" }),
@@ -411,6 +417,8 @@ export function DataTableRowActions<TData>({
                     <FormLabel>Unit</FormLabel>
                     <div className="relative w-max">
                       <FormControl>
+                        {/* 
+// @ts-ignore */}
                         <select
                           className={cn(
                             buttonVariants({ variant: "outline" }),

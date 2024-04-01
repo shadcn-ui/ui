@@ -122,6 +122,8 @@ export function DataTable<TData, TValue>({
               : "Include hidden products"}
           </Label>
         </div>
+        {/* 
+// @ts-ignore */}
         <CreateProductForm setProducts={setProducts}></CreateProductForm>
       </div>
       <div className="rounded-md border">

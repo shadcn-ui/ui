@@ -100,7 +100,7 @@ export function CreateProductForm({ setProducts }: CreateProductForm) {
     await fetch("api/product", { method: "post", body: JSON.stringify(values) })
     const products = await fetch(`/api/products`)
 
-    setProducts((await products.json()).products)
+    setProducts!((await products.json()).products)
     setOpen(false)
   }
 
@@ -159,6 +159,8 @@ export function CreateProductForm({ setProducts }: CreateProductForm) {
                     <FormItem>
                       <FormLabel>Description</FormLabel>
                       <FormControl>
+                        {/* 
+// @ts-ignore */}
                         <Textarea
                           placeholder="describe your product..."
                           className="resize-none"
@@ -294,6 +296,8 @@ export function CreateProductForm({ setProducts }: CreateProductForm) {
                       <FormLabel>Status</FormLabel>
                       <div className="relative w-max">
                         <FormControl>
+                          {/* 
+// @ts-ignore */}
                           <select
                             className={cn(
                               buttonVariants({ variant: "outline" }),
@@ -325,6 +329,8 @@ export function CreateProductForm({ setProducts }: CreateProductForm) {
                       <FormLabel>Currency</FormLabel>
                       <div className="relative w-max">
                         <FormControl>
+                          {/* 
+// @ts-ignore */}
                           <select
                             className={cn(
                               buttonVariants({ variant: "outline" }),
@@ -356,6 +362,8 @@ export function CreateProductForm({ setProducts }: CreateProductForm) {
                       <FormLabel>Unit</FormLabel>
                       <div className="relative w-max">
                         <FormControl>
+                          {/* 
+// @ts-ignore */}
                           <select
                             className={cn(
                               buttonVariants({ variant: "outline" }),
