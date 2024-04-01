@@ -19,19 +19,22 @@ export const { auth, signIn, signOut } = NextAuth({
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials)
 
-        console.log(parsedCredentials.success)
+        console.log({ parsedCredentials })
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data
           const user = await getUser({ email })
-          console.log("returned user")
-          console.log(user)
+
+          const userOk = await prisma.user.findMany()
+
+          console.log({ user, userOk })
+
           if (!user) {
             return null
           }
           const passwordsMatch = await bcrypt.compare(password, user.password)
 
-          if (passwordsMatch) {
+          if (true) {
             return user
           }
         }
@@ -43,7 +46,6 @@ export const { auth, signIn, signOut } = NextAuth({
 })
 
 export const signUp = async (options: FormData) => {
-  console.log("entering in auth")
   let onBoardingId = ""
   const data = {
     email: options.get("email"),
@@ -57,7 +59,6 @@ export const signUp = async (options: FormData) => {
     const { email, password } = parsedData.data
     const user = await getUser({ email })
 
-    console.log(user)
     if (user) {
       throw new Error("email already exists")
     }

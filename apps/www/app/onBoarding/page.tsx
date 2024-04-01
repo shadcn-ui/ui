@@ -34,6 +34,7 @@ export default function OnBoarding() {
 
   const [email, setEmail] = useState<string>("")
   const [status, setStatus] = useState<string>("")
+  const [appUrl, setAppUrl] = useState<string>("")
 
   useEffect(() => {
     fetch(`/api?onBoardingId=${onBoardingId}`)
@@ -41,6 +42,12 @@ export default function OnBoarding() {
       .then((data) => {
         setEmail(data.email)
         setStatus(data.status)
+      })
+
+    fetch(`/api/appUrl`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAppUrl(data.appUrl)
       })
   })
 
@@ -56,7 +63,9 @@ export default function OnBoarding() {
       {status === "active" && (
         <p className="text-muted-foreground">
           Your onboarding is now completed, you can now connect to{" "}
-          {applicationName}
+          <a href={appUrl} className="font-bold">
+            {applicationName}
+          </a>
         </p>
       )}
 

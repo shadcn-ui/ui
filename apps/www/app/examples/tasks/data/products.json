@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "name": "carot",
+    "description": "a nice vegetable",
+    "priceWithoutTax": 12,
+    "taxRate": 10,
+    "taxAmount": 1.2,
+    "priceWithTax": 13.2,
+    "status": "pending",
+    "isDisplayed": false
+  },
+  {
+    "id": "2",
+    "name": "orange",
+    "description": "a nice fruit",
+    "priceWithoutTax": 12,
+    "taxRate": 10,
+    "taxAmount": 1.2,
+    "priceWithTax": 13.2,
+    "status": "active",
+    "isDisplayed": false
+  },
+  {
+    "id": "3",
+    "name": "salmon",
+    "description": "a nice fish",
+    "priceWithoutTax": 12,
+    "taxRate": 10,
+    "taxAmount": 1.2,
+    "priceWithTax": 13.2,
+    "status": "expired",
+    "isDisplayed": true
+  },
+  {
+    "id": "4",
+    "name": "beef",
+    "description": "a nice meet",
+    "priceWithoutTax": 12,
+    "taxRate": 10,
+    "taxAmount": 1.2,
+    "priceWithTax": 13.2,
+    "status": "suspended",
+    "isDisplayed": false
+  }
+]

@@ -1,4 +1,4 @@
-import { PrismaClient, Status } from "@prisma/client/edge"
+import { PrismaClient, UserStatus } from "@prisma/client/edge"
 import { withAccelerate } from "@prisma/extension-accelerate"
 import type { NextAuthConfig } from "next-auth"
 
@@ -11,12 +11,13 @@ export const authConfig = {
   callbacks: {
     async authorized({ auth, request: { nextUrl } }) {
       const isSignedIn = !!auth?.user
+
       if (nextUrl.pathname.startsWith("/onBoarding")) {
         if (isSignedIn) {
           const user = await prisma.user.findFirst({
             where: { email: auth.user?.email! },
           })
-          if (user?.status === Status.active) {
+          if (user?.status === UserStatus.active) {
             return false
           }
           return Response.redirect(
@@ -25,7 +26,10 @@ export const authConfig = {
         }
         return true
       }
-      console.log({ isSignedIn })
+      if (isSignedIn && !nextUrl.pathname.startsWith("/app")) {
+        return Response.redirect(new URL(`/app`, nextUrl))
+      }
+
       return isSignedIn
     },
   },

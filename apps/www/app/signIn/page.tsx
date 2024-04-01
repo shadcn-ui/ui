@@ -39,7 +39,7 @@ export default function SignIn() {
               <h1 className="text-2xl font-semibold tracking-tight">Welcome</h1>
             </div>
             <SignInForm />
-            <ForgotPasswordForm />
+            {/* <ForgotPasswordForm /> */}
             <SignUpForm />
             <GeneralConditions callToAction="Sign in" />
           </div>

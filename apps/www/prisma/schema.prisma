@@ -16,7 +16,7 @@ enum Currency {
   dollar
 }
 
-enum Status {
+enum UserStatus {
   emailToConfirm
   onBoardingToComplete
   active
@@ -29,6 +29,36 @@ model User {
   firstName String?
   lastName String?
   currency Currency?
-  status Status @default(emailToConfirm)
+  status UserStatus @default(emailToConfirm)
   onBoardingId String @default(uuid())
 }
+
+enum ProductStatus {
+  pending
+  active
+  expired
+  suspended
+}
+
+enum ProductUnit {
+  l
+  g
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+  name   String
+  description String?
+  priceWithoutTax Int?
+  taxRate Int?
+  taxAmount Int?
+  priceWithTax Int?
+  status ProductStatus?
+  currency Currency?
+  unit ProductUnit?
+  hidden Boolean @default(false)
+  
+
+}
+
+

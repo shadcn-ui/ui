@@ -1,7 +1,7 @@
 "use server"
 
 import { signIn as signInAuth, signUp as signUpAuth } from "@/auth"
-import { Currency, PrismaClient, Status } from "@prisma/client"
+import { Currency, PrismaClient, ProductStatus } from "@prisma/client"
 import { sql } from "@vercel/postgres"
 import { AuthError } from "next-auth"
 import nodemailer from "nodemailer"
@@ -14,9 +14,8 @@ export async function signIn(
   prevState: ActionResult | undefined,
   formData: FormData
 ): Promise<ActionResult | undefined> {
-  console.log("signin")
-  console.log(formData)
   try {
+    console.log("calling signin action")
     await signInAuth("credentials", {
       redirect: true,
       email: formData.get("email"),
@@ -24,6 +23,7 @@ export async function signIn(
       redirectTo: formData.get("callbackUrl")?.toString(),
     })
   } catch (error) {
+    console.log(error)
     if (error instanceof AuthError) {
       if (error.type === "CredentialsSignin") {
         return { errorMessage: "Invalid credentials" }
@@ -40,7 +40,7 @@ export async function signUp(
 ): Promise<ActionResult | undefined> {
   try {
     const onBoardingId = await signUpAuth(formData)
-    console.log("returned onboarding", onBoardingId)
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -48,7 +48,7 @@ export async function signUp(
         pass: process.env.NODEMAILER_PW,
       },
     })
-    console.log("transporter created")
+
     const mailOptions = {
       from: process.env.NODEMAILER_EMAIL,
       to: formData.get("email")!.toString(),
@@ -69,7 +69,6 @@ export async function requestResetPasswordEmail(
   prevState: ActionResult | undefined,
   formData: FormData
 ): Promise<ActionResult | undefined> {
-  console.log(formData)
   return Promise.resolve({ successMessage: "" })
 }
 
@@ -90,9 +89,38 @@ export async function submitOnboarding(
       currency: currency as Currency,
       lastName,
       firstName,
-      status: Status.active,
+      status: ProductStatus.active,
     },
   })
+
+  return Promise.resolve({ successMessage: "" })
+}
+
+export async function createProduct(
+  prevState: ActionResult | undefined,
+  formData: FormData
+): Promise<ActionResult | undefined> {
+  console.log(formData)
+  const name = formData.get("name")!.toString()
+  const description = formData.get("description")!.toString()
+  const priceWithoutTax = formData.get("priceWithoutTax")!.toString()
+  const taxRate = formData.get("taxRate")!.toString()
+  const taxAmount = formData.get("taxAmount")!.toString()
+  const priceWithTax = formData.get("priceWithTax")!.toString()
+  const status = formData.get("status")!.toString()
+  const currency = formData.get("currency")!.toString()
+  const unit = formData.get("unit")!.toString()
+  //const hidden = formData.get("hidden")!.toString()
+
+  try {
+    await prisma.product.create({
+      data: {
+        name: "okoko",
+      },
+    })
+  } catch (err) {
+    console.log(err)
+  }
 
   return Promise.resolve({ successMessage: "" })
 }
