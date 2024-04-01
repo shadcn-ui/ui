@@ -10,12 +10,12 @@ export const description =
 
 export const iframeHeight = "800px"
 
-export const containerClassName = "w-full h-full p-4 lg:p-0"
+export const containerClassName = "w-full h-full p-0"
 
 export default function Dashboard() {
   return (
-    <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
-      <div className="flex items-center justify-center py-12">
+    <div className="grid h-full min-h-[800px] w-full lg:grid-cols-2">
+      <div className="flex items-center justify-center">
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
             <h1 className="text-3xl font-bold">Login</h1>
