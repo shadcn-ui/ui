@@ -158,6 +158,25 @@ Use the `orientation` prop to set the orientation of the carousel.
 </Carousel>
 ```
 
+### Dots
+
+Use the `<CarouselDots>` component to add dots to the carousel, and position them using tailwind classes.
+
+<ComponentPreview name="carousel-dots" />
+
+```tsx
+<Carousel>
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+  <CarouselDots className="absolute bottom-4 left-1/2 -translate-x-1/2" />
+</Carousel>
+```
+
 ## Options
 
 You can pass options to the carousel using the `opts` prop. See the [Embla Carousel docs](https://www.embla-carousel.com/api/options/) for more information.
