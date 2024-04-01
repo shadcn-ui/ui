@@ -6,7 +6,6 @@ import { Currency, PrismaClient, Product } from "@prisma/client"
 
 import { columns } from "../examples/tasks/components/columns"
 import { DataTable } from "../examples/tasks/components/data-table"
-import { getProducts } from "../examples/tasks/page"
 
 const prisma = new PrismaClient()
 

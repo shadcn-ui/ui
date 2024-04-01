@@ -13,16 +13,6 @@ export const metadata: Metadata = {
   description: "A task and issue tracker build using Tanstack Table.",
 }
 
-export async function getProducts() {
-  const data = await fs.readFile(
-    path.join(process.cwd(), "app/examples/tasks/data/products.json")
-  )
-
-  const products = JSON.parse(data.toString())
-
-  return []
-}
-
 export default async function TaskPage() {
   //const tasks = await getTasks()
 
