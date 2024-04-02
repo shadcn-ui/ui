@@ -319,7 +319,7 @@ const CarouselDots = React.forwardRef<
           key={index}
           aria-label={`Slide - ${index}`}
           className={cn(
-            "size-2.5 cursor-pointer rounded-full bg-muted",
+            "size-2.5 cursor-pointer rounded-full border border-primary",
             index === selectedIndex && "bg-primary"
           )}
           onClick={() => onDotButtonClick(index)}
