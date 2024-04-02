@@ -1,34 +1,62 @@
 "use client"
 
 import * as React from "react"
+import { AnimatePresence, motion } from "framer-motion"
 
+import { useChunkMode } from "@/hooks/use-chunk-mode"
 import { Block } from "@/registry/schema"
 
 export function BlockWrapper({
   block,
-  ...props
-}: { block: Block } & JSX.IntrinsicElements["div"]) {
+  children,
+}: React.PropsWithChildren<{ block: Block }>) {
+  const { chunkMode } = useChunkMode()
+
+  const showChunks = chunkMode.includes(block.name)
+
   React.useEffect(() => {
     const components = document.querySelectorAll("[x-data-component]")
     block.chunks?.map((chunk, index) => {
-      const $chunk = document.querySelector(`[x-data-chunk="${chunk.name}"]`)
+      const $chunk = document.querySelector<HTMLElement>(
+        `[x-data-chunk="${chunk.name}"]`
+      )
+      const $toolbar = document.querySelector<HTMLElement>(
+        `[x-data-chunk-toolbar="${chunk.name}"]`
+      )
+
       const $component = components[index]
 
-      if (!$chunk || !$component) {
+      if (!$chunk || !$component || !$toolbar) {
         return
       }
 
-      // Find the position of the component in the DOM.
       const position = $component.getBoundingClientRect()
-
-      // Set the position of the chunk.
+      $chunk.style.zIndex = "9999"
       $chunk.style.position = "absolute"
       $chunk.style.top = `${position.top}px`
       $chunk.style.left = `${position.left}px`
       $chunk.style.width = `${position.width}px`
       $chunk.style.height = `${position.height}px`
-    })
-  }, [block.chunks])
 
-  return <div className="bg-red-100" {...props} />
+      $toolbar.style.zIndex = "999999"
+      $toolbar.style.position = "absolute"
+      $toolbar.style.top = `${position.top - 40}px`
+      $toolbar.style.left = `${position.left + position.width - 80}px`
+    })
+  }, [block.chunks, showChunks])
+
+  return (
+    <AnimatePresence>
+      {children}
+      {showChunks && (
+        <motion.div
+          className="absolute inset-0 z-30 bg-white/90"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ ease: "easeIn", duration: 0.1, delay: 0.18 }}
+        />
+      )}
+    </AnimatePresence>
+  )
 }

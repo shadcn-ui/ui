@@ -80,7 +80,7 @@ import {
 export const description =
   "An orders dashboard with a sidebar navigation. The sidebar has icon navigation. The content area has a breadcrumb and search in the header. The main area has a list of recent orders with a filter and export button. The main area also has a detailed view of a single order with order details, shipping information, billing information, customer information, and payment information."
 
-export const iframeHeight = "956px"
+export const iframeHeight = "906px"
 
 export const containerClassName = "w-full h-full"
 
@@ -437,7 +437,7 @@ export default function Dashboard() {
                           </TableCell>
                           <TableCell className="text-right">$150.00</TableCell>
                         </TableRow>
-                        <TableRow>
+                        {/* <TableRow>
                           <TableCell>
                             <div className="font-medium">Liam Johnson</div>
                             <div className="hidden text-sm text-muted-foreground md:inline">
@@ -456,7 +456,7 @@ export default function Dashboard() {
                             2023-06-23
                           </TableCell>
                           <TableCell className="text-right">$250.00</TableCell>
-                        </TableRow>
+                        </TableRow> */}
                         <TableRow>
                           <TableCell>
                             <div className="font-medium">Noah Williams</div>
@@ -572,7 +572,7 @@ export default function Dashboard() {
               <CardHeader className="flex flex-row items-start bg-muted/50">
                 <div className="grid gap-0.5">
                   <CardTitle className="group flex items-center gap-2 text-lg">
-                    Order ID: Oe31b70H
+                    Order Oe31b70H
                     <Button
                       size="icon"
                       variant="outline"

@@ -25,7 +25,7 @@ export function V0Button({
     return (
       <Button
         aria-label="Edit in v0"
-        className="h-7 gap-1"
+        className="z-50 h-7 gap-1 rounded-[0.2rem] bg-black text-white"
         size="sm"
         onClick={() =>
           toast("New York not available.", {
