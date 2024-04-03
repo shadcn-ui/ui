@@ -1,4 +1,5 @@
 import path from "path"
+import { getHighlighter, loadTheme } from "@shikijs/compat"
 import {
   defineDocumentType,
   defineNestedType,
@@ -9,7 +10,6 @@ import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import { codeImport } from "remark-code-import"
 import remarkGfm from "remark-gfm"
-import { getHighlighter, loadTheme } from "shiki"
 import { visit } from "unist-util-visit"
 
 import { rehypeComponent } from "./lib/rehype-component"
