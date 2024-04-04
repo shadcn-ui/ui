@@ -36,7 +36,7 @@ export function PropsTable({
   return (
     <div className="my-5 w-full overflow-auto rounded-lg border">
       <table className="w-full caption-bottom text-sm">
-        <TableHeader className="bg-gray-100">
+        <TableHeader className="bg-gray-100 dark:bg-gray-800">
           <TableRow>
             <TableHead style={{ width: propHeaderFixedWidth ? "37%" : "auto" }}>
               Prop
@@ -62,7 +62,7 @@ export function PropsTable({
                 <TableRow key={`${name}-${i}`} style={{ whiteSpace: "nowrap" }}>
                   <TableCell>
                     <div className="inline-flex items-center gap-2">
-                      <code className="bg-blue-50 px-1 text-blue-700">
+                      <code className="bg-blue-50 px-1 text-blue-700 dark:bg-gray-800 dark:text-blue-300">
                         {name}
                         {required ? "*" : null}
                       </code>
@@ -94,7 +94,7 @@ export function PropsTable({
                   </TableCell>
                   <TableCell>
                     <div className="inline-flex items-center gap-2">
-                      <code className="bg-gray-100 px-1">
+                      <code className="bg-gray-100 px-1 dark:bg-gray-700">
                         {Boolean(typeSimple) ? typeSimple : type}
                       </code>
                       {Boolean(typeSimple) && Boolean(type) && (
@@ -132,7 +132,9 @@ export function PropsTable({
 
                   <TableCell>
                     {Boolean(defaultValue) ? (
-                      <code className="bg-gray-100 px-1">{defaultValue}</code>
+                      <code className="bg-gray-100 px-1 dark:bg-gray-700">
+                        {defaultValue}
+                      </code>
                     ) : (
                       <DividerHorizontalIcon
                         style={{ color: "var(--gray-8)" }}
