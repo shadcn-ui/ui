@@ -182,9 +182,9 @@ In this example, the second step is optional. You can visualize the change of th
 
 There are 3 design variants for the Stepper component:
 
-- `circles`: allows you to display each step in a circular shape. The label and description are positioned horizontally next to the button of each step.
-- `circles-alt`: same circular design as the circles variant but the label and description are positioned vertically below the button of each step.
-- `simple`: this variant features a line layout with the title and description positioned below the line.
+- `circle`: allows you to display each step in a circular shape. The label and description are positioned horizontally next to the button of each step.
+- `circle-alt`: same circular design as the circle variant but the label and description are positioned vertically below the button of each step.
+- `line`: this variant features a line layout with the title and description positioned below the line.
 
 <ComponentPreview name="stepper-variants" />
 
@@ -269,6 +269,11 @@ In some cases you may want to customize the styles of a step based on its state.
 - `data-completed`: The step that is completed
 - `data-optional`: The step that is optional
 
+Finally, we also have the `variables` prop that allows you to set values for the css variables that calculate the position of the separator lines. These variables can be useful when we need to set custom elements that have a different size than those offered by the component.
+
+- `--step-icon-size`: defines the width of the step icon. It is important to define this value in pixels. By default it has the values of the width of a shadcn/ui button depending if the style is default (`36px, 40px, 44px`) or new york (`32px, 36px, 40px`).
+- `--step-gap`: defines the gap between the separator and the elements that follow it. The default value is `8px`.
+
 ## API
 
 ### Stepper
@@ -348,14 +353,19 @@ In some cases you may want to customize the styles of a step based on its state.
       description: "Custom styles for the stepper.",
     },
     {
+      name: "variables",
+      type: "{ [key: string]: string }",
+      description: "Custom css variables values for the stepper.",
+    },
+    {
       name: "onClickStep",
       type: "(index: number) => void",
       description: "The function to be executed when a step is clicked.",
     },
     {
       name: "variant",
-      type: '"circles" | "circles-alt" | "simple"',
-      default: "circles",
+      type: '"circle" | "circle-alt" | "line"',
+      default: "circle",
       description: "The design variant of the stepper.",
     },
     {
@@ -366,6 +376,7 @@ In some cases you may want to customize the styles of a step based on its state.
     },
   ]}
 />
+
 ### Step
 
 <PropsTable

@@ -1,9 +1,14 @@
+import * as React from "react"
+
 import { Button } from "@/registry/default/ui/button"
+import { Label } from "@/registry/default/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 import {
   Step,
   StepItem,
   Stepper,
   useStepper,
+  type StepperProps,
 } from "@/registry/default/ui/stepper"
 
 const steps = [
@@ -13,9 +18,28 @@ const steps = [
 ] satisfies StepItem[]
 
 export default function StepperDemo() {
+  const [orientation, setOrientation] =
+    React.useState<StepperProps["orientation"]>("vertical")
+
   return (
     <div className="flex w-full flex-col gap-4">
-      <Stepper orientation="vertical" initialStep={0} steps={steps}>
+      <RadioGroup
+        className="mb-10"
+        value={orientation}
+        onValueChange={(value) =>
+          setOrientation(value as StepperProps["orientation"])
+        }
+      >
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="horizontal" id="horizontal" />
+          <Label htmlFor="horizontal">horizontal</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="vertical" id="vertical" />
+          <Label htmlFor="vertical">vertical</Label>
+        </div>
+      </RadioGroup>
+      <Stepper orientation={orientation} initialStep={0} steps={steps}>
         {steps.map((stepProps, index) => {
           return (
             <Step key={stepProps.label} {...stepProps}>

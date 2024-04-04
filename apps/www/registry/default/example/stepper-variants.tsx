@@ -19,7 +19,7 @@ const steps = [
 
 export default function StepperDemo() {
   const [variant, setVariant] =
-    React.useState<StepperProps["variant"]>("circles")
+    React.useState<StepperProps["variant"]>("circle")
 
   return (
     <div className="flex w-full flex-col gap-4">
@@ -29,16 +29,16 @@ export default function StepperDemo() {
         onValueChange={(value) => setVariant(value as StepperProps["variant"])}
       >
         <div className="flex items-center space-x-2">
-          <RadioGroupItem value="circles" id="circles" />
-          <Label htmlFor="circles">Circles</Label>
+          <RadioGroupItem value="circle" id="circle" />
+          <Label htmlFor="circle">circle</Label>
         </div>
         <div className="flex items-center space-x-2">
-          <RadioGroupItem value="circles-alt" id="circles-alt" />
-          <Label htmlFor="circles-alt">Circles Alt</Label>
+          <RadioGroupItem value="circle-alt" id="circle-alt" />
+          <Label htmlFor="circle-alt">circle-alt</Label>
         </div>
         <div className="flex items-center space-x-2">
-          <RadioGroupItem value="simple" id="simple" />
-          <Label htmlFor="simple">Simple</Label>
+          <RadioGroupItem value="line" id="line" />
+          <Label htmlFor="line">line</Label>
         </div>
       </RadioGroup>
       <Stepper variant={variant} initialStep={0} steps={steps}>

@@ -26,7 +26,7 @@ const steps = [
 export default function StepperDemo() {
   return (
     <div className="flex w-full flex-col gap-4">
-      <Stepper variant="circles-alt" initialStep={0} steps={steps}>
+      <Stepper variant="circle-alt" initialStep={0} steps={steps}>
         {steps.map((stepProps, index) => {
           if (index === 0) {
             return (
