@@ -225,6 +225,13 @@ In this example we have placed a global alert when any step is clicked. Try clic
 
 <ComponentPreview name="stepper-clickable-steps" />
 
+<Callout>
+  The `onClickStep` function has as parameters the index of the clicked step and
+  the setter that allows to change to that step index. The setter is useful when
+  we want to send an onClick event globally and we don't have access to the
+  useStepper hook.
+</Callout>
+
 ### Footer inside the step
 
 When using the vertical orientation, we may want to have the footer buttons inside each step and not located at the end. To achieve this, we can simply move our footer below all the steps inside the Stepper component
@@ -359,7 +366,7 @@ Finally, we also have the `variables` prop that allows you to set values for the
     },
     {
       name: "onClickStep",
-      type: "(index: number) => void",
+      type: "(index: number, setStep: (index: number) => void) => void",
       description: "The function to be executed when a step is clicked.",
     },
     {
@@ -434,6 +441,11 @@ Finally, we also have the `variables` prop that allows you to set values for the
       type: "LucideIcon | React.ComponentType<any>",
       description:
         "The custom icon to be displayed when the step has an error.",
+    },
+    {
+      name: "onClickStep",
+      type: "(index: number, setStep: (index: number) => void) => void",
+      description: "The function to be executed when a step is clicked.",
     },
   ]}
 />

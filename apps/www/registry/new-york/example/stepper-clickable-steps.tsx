@@ -19,13 +19,14 @@ export default function StepperDemo() {
       <Stepper
         initialStep={0}
         steps={steps}
-        onClickStep={() =>
+        onClickStep={(step, setStep) => {
           toast({
             title: "Step clicked",
             description:
               "This event is executed globally for all steps. If you want to have an event for a specific step, use the `onClickStep` prop of the independent step.",
           })
-        }
+          setStep(step)
+        }}
       >
         {steps.map((stepProps, index) => {
           return (

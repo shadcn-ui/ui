@@ -149,7 +149,7 @@ interface StepOptions {
   responsive?: boolean
   checkIcon?: IconType
   errorIcon?: IconType
-  onClickStep?: (step: number) => void
+  onClickStep?: (step: number, setStep: (step: number) => void) => void
   mobileBreakpoint?: string
   variant?: "circle" | "circle-alt" | "line"
   expandVerticalSteps?: boolean
@@ -367,7 +367,7 @@ interface StepProps extends React.HTMLAttributes<HTMLLIElement> {
   errorIcon?: IconType
   isCompletedStep?: boolean
   isKeepError?: boolean
-  onClickStep?: (step: number) => void
+  onClickStep?: (step: number, setStep: (step: number) => void) => void
 }
 
 interface StepSharedProps extends StepProps {
@@ -503,6 +503,7 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
       scrollTracking,
       orientation,
       steps,
+      setStep,
     } = useStepper()
 
     const opacity = hasVisited ? 1 : 0.8
@@ -545,7 +546,8 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
         data-clickable={clickable || !!onClickStep}
         data-invalid={localIsError}
         onClick={() =>
-          onClickStep?.(index || 0) || onClickStepGeneral?.(index || 0)
+          onClickStep?.(index || 0, setStep) ||
+          onClickStepGeneral?.(index || 0, setStep)
         }
       >
         <div
@@ -619,6 +621,7 @@ const HorizontalStep = React.forwardRef<HTMLDivElement, StepSharedProps>(
       errorIcon: errorIconContext,
       styles,
       steps,
+      setStep,
     } = useStepper()
 
     const {
@@ -670,7 +673,7 @@ const HorizontalStep = React.forwardRef<HTMLDivElement, StepSharedProps>(
         data-active={active}
         data-invalid={localIsError}
         data-clickable={clickable}
-        onClick={() => onClickStep?.(index || 0)}
+        onClick={() => onClickStep?.(index || 0, setStep)}
         ref={ref}
       >
         <div
