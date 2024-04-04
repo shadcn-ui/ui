@@ -135,11 +135,13 @@ export function CopyWithClassNames({
 
 interface CopyNpmCommandButtonProps extends DropdownMenuTriggerProps {
   commands: Required<NpmCommands>
+  isBlockAction?: boolean
 }
 
 export function CopyNpmCommandButton({
   commands,
   className,
+  isBlockAction = false,
   ...props
 }: CopyNpmCommandButtonProps) {
   const [hasCopied, setHasCopied] = React.useState(false)
@@ -153,15 +155,17 @@ export function CopyNpmCommandButton({
   const copyCommand = React.useCallback(
     (value: string, pm: "npm" | "pnpm" | "yarn" | "bun") => {
       copyToClipboardWithMeta(value, {
-        name: "copy_npm_command",
+        name: isBlockAction ? "copy_block_dependencies" : "copy_npm_command",
         properties: {
           command: value,
-          pm,
+          packageManager: pm,
+          isBlockAction,
         },
       })
       setHasCopied(true)
     },
-    []
+
+    [isBlockAction]
   )
 
   return (

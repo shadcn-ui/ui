@@ -40,6 +40,8 @@ import {
 } from "@/registry/new-york/ui/toggle-group"
 import { Block } from "@/registry/schema"
 
+import { BlockCopyDependenciesButton } from "./block-copy-dependencies-button"
+
 export function BlockPreview({ block }: { block: Block }) {
   const [config] = useConfig()
   const [isLoading, setIsLoading] = React.useState(true)
@@ -145,6 +147,11 @@ export function BlockPreview({ block }: { block: Block }) {
               </PopoverContent>
             </Popover>
             <Separator orientation="vertical" className="mx-2 h-4" />
+            {block.registryDependencies && (
+              <BlockCopyDependenciesButton
+                registryDependencies={block.registryDependencies}
+              />
+            )}
             <BlockCopyCodeButton name={block.name} code={block.code} />
             <V0Button
               name={block.name}

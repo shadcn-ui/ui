@@ -9,6 +9,7 @@ const eventSchema = z.object({
     "copy_primitive_code",
     "copy_theme_code",
     "copy_block_code",
+    "copy_block_dependencies",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z
