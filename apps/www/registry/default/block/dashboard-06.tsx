@@ -317,7 +317,7 @@ export default function Dashboard() {
               </div>
             </div>
             <TabsContent value="all">
-              <Card>
+              <Card x-chunk="A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.">
                 <CardHeader>
                   <CardTitle>Products</CardTitle>
                   <CardDescription>

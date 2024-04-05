@@ -283,7 +283,9 @@ export default function Dashboard() {
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
           <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-              <Card className="sm:col-span-2">
+              <Card
+                className="sm:col-span-2" x-chunk="dashboard-05-chunk-0"
+              >
                 <CardHeader className="pb-3">
                   <CardTitle>Your Orders</CardTitle>
                   <CardDescription className="max-w-lg text-balance leading-relaxed">
@@ -295,10 +297,10 @@ export default function Dashboard() {
                   <Button>Create New Order</Button>
                 </CardFooter>
               </Card>
-              <Card>
+              <Card x-chunk="dashboard-05-chunk-1">
                 <CardHeader className="pb-2">
                   <CardDescription>This Week</CardDescription>
-                  <CardTitle className="text-4xl">$1329</CardTitle>
+                  <CardTitle className="text-4xl">$1,329</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-xs text-muted-foreground">
@@ -309,10 +311,10 @@ export default function Dashboard() {
                   <Progress value={25} aria-label="25% increase" />
                 </CardFooter>
               </Card>
-              <Card>
+              <Card x-chunk="dashboard-05-chunk-2">
                 <CardHeader className="pb-2">
                   <CardDescription>This Month</CardDescription>
-                  <CardTitle className="text-3xl">$5,329</CardTitle>
+                  <CardTitle className="text-4xl">$5,329</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-xs text-muted-foreground">
@@ -368,7 +370,7 @@ export default function Dashboard() {
                 </div>
               </div>
               <TabsContent value="week">
-                <Card>
+                <Card x-chunk="dashboard-05-chunk-3">
                   <CardHeader className="px-7">
                     <CardTitle>Orders</CardTitle>
                     <CardDescription>
@@ -562,12 +564,12 @@ export default function Dashboard() {
           </div>
           <div>
             <Card
-              className="overflow-hidden" x-chunk="dashboard-05-chunk-0"
+              className="overflow-hidden" x-chunk="dashboard-05-chunk-4"
             >
               <CardHeader className="flex flex-row items-start bg-muted/50">
                 <div className="grid gap-0.5">
                   <CardTitle className="group flex items-center gap-2 text-lg">
-                    Order ID: Oe31b70H
+                    Order Oe31b70H
                     <Button
                       size="icon"
                       variant="outline"

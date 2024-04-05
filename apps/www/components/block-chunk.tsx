@@ -21,8 +21,6 @@ export function BlockChunk({
     return null
   }
 
-  console.log(chunk)
-
   return (
     <AnimatePresence>
       {isLiftMode && (

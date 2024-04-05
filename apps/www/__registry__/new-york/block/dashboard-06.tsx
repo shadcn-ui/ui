@@ -319,7 +319,7 @@ export default function Dashboard() {
               </div>
             </div>
             <TabsContent value="all">
-              <Card>
+              <Card x-chunk="dashboard-06-chunk-1">
                 <CardHeader>
                   <CardTitle>Products</CardTitle>
                   <CardDescription>
@@ -434,7 +434,7 @@ export default function Dashboard() {
                           </DropdownMenu>
                         </TableCell>
                       </TableRow>
-                      <TableRow x-chunk="dashboard-06-chunk-1">
+                      <TableRow>
                         <TableCell className="hidden sm:table-cell">
                           <Image
                             alt="Product image"

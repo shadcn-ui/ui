@@ -6,12 +6,16 @@ export async function BlockDisplay({ name }: { name: string }) {
   const blocks = await Promise.all(
     styles.map(async (style) => {
       const block = await getBlock(name, style.name)
+      const hasLiftMode = block?.chunks?.length > 1
 
       // Cannot (and don't need to) pass to the client.
       delete block?.component
       delete block?.chunks
 
-      return block
+      return {
+        ...block,
+        hasLiftMode,
+      }
     })
   )
 

@@ -1,19 +1,25 @@
-import { Search } from "lucide-react"
-
-import { Input } from "@/registry/new-york/ui/input"
+import { Button } from "@/registry/new-york/ui/button"
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/registry/new-york/ui/card"
 
 export default function Component() {
   return (
-    <div
-      className="relative ml-auto flex-1 md:grow-0"
-      x-chunk="dashboard-05-chunk-0"
-    >
-      <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-      <Input
-        type="search"
-        placeholder="Search..."
-        className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
-      />
-    </div>
+    <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
+      <CardHeader className="pb-3">
+        <CardTitle>Your Orders</CardTitle>
+        <CardDescription className="max-w-lg text-balance leading-relaxed">
+          Introducing Our Dynamic Orders Dashboard for Seamless Management and
+          Insightful Analysis.
+        </CardDescription>
+      </CardHeader>
+      <CardFooter>
+        <Button>Create New Order</Button>
+      </CardFooter>
+    </Card>
   )
 }

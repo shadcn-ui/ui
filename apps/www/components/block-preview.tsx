@@ -16,7 +16,11 @@ import {
 import { Tabs, TabsContent } from "@/registry/new-york/ui/tabs"
 import { Block } from "@/registry/schema"
 
-export function BlockPreview({ block }: { block: Block }) {
+export function BlockPreview({
+  block,
+}: {
+  block: Block & { hasLiftMode: boolean }
+}) {
   const [config] = useConfig()
   const { isLiftMode } = useLiftMode(block.name)
   const [isLoading, setIsLoading] = React.useState(true)

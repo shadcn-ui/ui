@@ -317,7 +317,7 @@ export default function Dashboard() {
               </div>
             </div>
             <TabsContent value="all">
-              <Card>
+              <Card x-chunk="dashboard-06-chunk-0">
                 <CardHeader>
                   <CardTitle>Products</CardTitle>
                   <CardDescription>

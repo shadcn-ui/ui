@@ -2084,9 +2084,41 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-05-chunk-0",
-        description: "An order details card with order details, shipping information, customer information and payment information.",
+        description: "A card for an orders dashboard with a description and a button to create a new order.",
         component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-0")),
         file: "registry/default/block/dashboard-05-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-05-chunk-1",
+        description: "A stats card showing this week's total sales in USD, the percentage difference from last week, and a progress bar.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-1")),
+        file: "registry/default/block/dashboard-05-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-05-chunk-2",
+        description: "A stats card showing this month's total sales in USD, the percentage difference from last month, and a progress bar.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-2")),
+        file: "registry/default/block/dashboard-05-chunk-2.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-05-chunk-3",
+        description: "A table of recent orders showing the following columns: Customer, Type, Status, Date, and Amount.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-3")),
+        file: "registry/default/block/dashboard-05-chunk-3.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-05-chunk-4",
+        description: "An order details card with order details, shipping information, customer information and payment information.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-4")),
+        file: "registry/default/block/dashboard-05-chunk-4.tsx",
         container: {
           className: "undefined"
         }
@@ -2101,7 +2133,15 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-06.tsx"],
       category: "Application",
       subcategory: "Dashboard",
-      chunks: []
+      chunks: [{
+        name: "dashboard-06-chunk-0",
+        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-06-chunk-0")),
+        file: "registry/default/block/dashboard-06-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
     },
     "dashboard-07": {
       name: "dashboard-07",
@@ -2112,40 +2152,55 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-07.tsx"],
       category: "Application",
       subcategory: "Dashboard",
-      chunks: []
-    },
-    "dashboard-01": {
-      name: "dashboard-01",
-      type: "components:block",
-      registryDependencies: ["button","dropdown-menu","input","sheet"],
-      component: React.lazy(() => import("@/registry/default/block/dashboard-01")),
-      source: "__registry__/default/block/dashboard-01.tsx",
-      files: ["registry/default/block/dashboard-01.tsx"],
-      category: "Application",
-      subcategory: "Dashboard",
-      chunks: []
-    },
-    "dashboard-02": {
-      name: "dashboard-02",
-      type: "components:block",
-      registryDependencies: ["badge","button","card","dropdown-menu","input"],
-      component: React.lazy(() => import("@/registry/default/block/dashboard-02")),
-      source: "__registry__/default/block/dashboard-02.tsx",
-      files: ["registry/default/block/dashboard-02.tsx"],
-      category: "Application",
-      subcategory: "Dashboard",
-      chunks: []
-    },
-    "dashboard-03": {
-      name: "dashboard-03",
-      type: "components:block",
-      registryDependencies: ["badge","button","drawer","input","label","select","textarea","tooltip"],
-      component: React.lazy(() => import("@/registry/default/block/dashboard-03")),
-      source: "__registry__/default/block/dashboard-03.tsx",
-      files: ["registry/default/block/dashboard-03.tsx"],
-      category: "Application",
-      subcategory: "Dashboard",
-      chunks: []
+      chunks: [{
+        name: "dashboard-07-chunk-0",
+        description: "A card with a form to edit the product details",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-0")),
+        file: "registry/default/block/dashboard-07-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-07-chunk-1",
+        description: "A card with a form to edit the product stock and variants",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-1")),
+        file: "registry/default/block/dashboard-07-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-07-chunk-2",
+        description: "A card with a form to edit the product category and subcategory",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-2")),
+        file: "registry/default/block/dashboard-07-chunk-2.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-07-chunk-3",
+        description: "A card with a form to edit the product status",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-3")),
+        file: "registry/default/block/dashboard-07-chunk-3.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-07-chunk-4",
+        description: "A card with a form to upload product images",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-4")),
+        file: "registry/default/block/dashboard-07-chunk-4.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-07-chunk-5",
+        description: "A card with a call to action to archive the product",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-5")),
+        file: "registry/default/block/dashboard-07-chunk-5.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
     },
     "dashboard-04": {
       name: "dashboard-04",
@@ -2156,7 +2211,144 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-04.tsx"],
       category: "Application",
       subcategory: "Dashboard",
-      chunks: []
+      chunks: [{
+        name: "dashboard-04-chunk-0",
+        description: "A sidebar navigation with links to general, security, integrations, support, organizations, and advanced settings.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-04-chunk-0")),
+        file: "registry/default/block/dashboard-04-chunk-0.tsx",
+        container: {
+          className: "chunk-container after:right-0"
+        }
+      },{
+        name: "dashboard-04-chunk-1",
+        description: "A form to update the store name.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-04-chunk-1")),
+        file: "registry/default/block/dashboard-04-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-04-chunk-2",
+        description: "A form to update the plugins directory with a checkbox to allow administrators to change the directory.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-04-chunk-2")),
+        file: "registry/default/block/dashboard-04-chunk-2.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
+    },
+    "dashboard-03": {
+      name: "dashboard-03",
+      type: "components:block",
+      registryDependencies: ["badge","button","drawer","input","label","select","textarea","tooltip"],
+      component: React.lazy(() => import("@/registry/default/block/dashboard-03")),
+      source: "__registry__/default/block/dashboard-03.tsx",
+      files: ["registry/default/block/dashboard-03.tsx"],
+      category: "Application",
+      subcategory: "Dashboard",
+      chunks: [{
+        name: "dashboard-03-chunk-0",
+        description: "A settings form a configuring an AI model and messages.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-03-chunk-0")),
+        file: "registry/default/block/dashboard-03-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-03-chunk-1",
+        description: "A form for sending a message to an AI chatbot. The form has a textarea and buttons to upload files and record audio.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-03-chunk-1")),
+        file: "registry/default/block/dashboard-03-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
+    },
+    "dashboard-02": {
+      name: "dashboard-02",
+      type: "components:block",
+      registryDependencies: ["badge","button","card","dropdown-menu","input"],
+      component: React.lazy(() => import("@/registry/default/block/dashboard-02")),
+      source: "__registry__/default/block/dashboard-02.tsx",
+      files: ["registry/default/block/dashboard-02.tsx"],
+      category: "Application",
+      subcategory: "Dashboard",
+      chunks: [{
+        name: "dashboard-02-chunk-0",
+        description: "A card with a call to action",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-02-chunk-0")),
+        file: "registry/default/block/dashboard-02-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-02-chunk-1",
+        description: "An empty state showing no products with a heading, description and a call to action to add a product.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-02-chunk-1")),
+        file: "registry/default/block/dashboard-02-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
+    },
+    "dashboard-01": {
+      name: "dashboard-01",
+      type: "components:block",
+      registryDependencies: ["button","dropdown-menu","input","sheet"],
+      component: React.lazy(() => import("@/registry/default/block/dashboard-01")),
+      source: "__registry__/default/block/dashboard-01.tsx",
+      files: ["registry/default/block/dashboard-01.tsx"],
+      category: "Application",
+      subcategory: "Dashboard",
+      chunks: [{
+        name: "dashboard-01-chunk-0",
+        description: "A card showing the total revenue in USD and the percentage difference from last month.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-0")),
+        file: "registry/default/block/dashboard-01-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-01-chunk-1",
+        description: "A card showing the total subscriptions and the percentage difference from last month.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-1")),
+        file: "registry/default/block/dashboard-01-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-01-chunk-2",
+        description: "A card showing the total sales and the percentage difference from last month.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-2")),
+        file: "registry/default/block/dashboard-01-chunk-2.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-01-chunk-3",
+        description: "A card showing the total active users and the percentage difference from last hour.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-3")),
+        file: "registry/default/block/dashboard-01-chunk-3.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-01-chunk-4",
+        description: "A card showing a table of recent transactions with a link to view all transactions.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-4")),
+        file: "registry/default/block/dashboard-01-chunk-4.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-01-chunk-5",
+        description: "A card showing a list of recent sales with customer names and email addresses.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-5")),
+        file: "registry/default/block/dashboard-01-chunk-5.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
     },
     "authentication-01": {
       name: "authentication-01",
@@ -4282,7 +4474,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-05-chunk-0",
-        description: "A search input with a user dropdown menu in a dashboard header",
+        description: "A card for an orders dashboard with a description and a button to create a new order.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-0")),
         file: "registry/new-york/block/dashboard-05-chunk-0.tsx",
         container: {
@@ -4290,7 +4482,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-1",
-        description: "A card for an orders dashboard with a description and a button to create a new order.",
+        description: "A stats card showing this week's total sales in USD, the percentage difference from last week, and a progress bar.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-1")),
         file: "registry/new-york/block/dashboard-05-chunk-1.tsx",
         container: {
@@ -4298,7 +4490,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-2",
-        description: "A stats card showing this week's total sales in USD, the percentage difference from last week, and a progress bar.",
+        description: "A stats card showing this month's total sales in USD, the percentage difference from last month, and a progress bar.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-2")),
         file: "registry/new-york/block/dashboard-05-chunk-2.tsx",
         container: {
@@ -4306,7 +4498,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-3",
-        description: "A stats card showing this month's total sales in USD, the percentage difference from last month, and a progress bar.",
+        description: "A table of recent orders showing the following columns: Customer, Type, Status, Date, and Amount.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-3")),
         file: "registry/new-york/block/dashboard-05-chunk-3.tsx",
         container: {
@@ -4314,17 +4506,9 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-4",
-        description: "A table of recent orders showing the following columns: Customer, Type, Status, Date, and Amount.",
+        description: "An order details card with order details, shipping information, customer information and payment information.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-4")),
         file: "registry/new-york/block/dashboard-05-chunk-4.tsx",
-        container: {
-          className: "undefined"
-        }
-      },{
-        name: "dashboard-05-chunk-5",
-        description: "An order details card with order details, shipping information, customer information and payment information.",
-        component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-5")),
-        file: "registry/new-york/block/dashboard-05-chunk-5.tsx",
         container: {
           className: "undefined"
         }
@@ -4349,7 +4533,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-06-chunk-1",
-        description: "A table row",
+        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-1")),
         file: "registry/new-york/block/dashboard-06-chunk-1.tsx",
         container: {
@@ -4366,40 +4550,55 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/dashboard-07.tsx"],
       category: "Application",
       subcategory: "Dashboard",
-      chunks: []
-    },
-    "dashboard-01": {
-      name: "dashboard-01",
-      type: "components:block",
-      registryDependencies: ["button","dropdown-menu","input","sheet"],
-      component: React.lazy(() => import("@/registry/new-york/block/dashboard-01")),
-      source: "__registry__/new-york/block/dashboard-01.tsx",
-      files: ["registry/new-york/block/dashboard-01.tsx"],
-      category: "Application",
-      subcategory: "Dashboard",
-      chunks: []
-    },
-    "dashboard-02": {
-      name: "dashboard-02",
-      type: "components:block",
-      registryDependencies: ["badge","button","card","dropdown-menu","input"],
-      component: React.lazy(() => import("@/registry/new-york/block/dashboard-02")),
-      source: "__registry__/new-york/block/dashboard-02.tsx",
-      files: ["registry/new-york/block/dashboard-02.tsx"],
-      category: "Application",
-      subcategory: "Dashboard",
-      chunks: []
-    },
-    "dashboard-03": {
-      name: "dashboard-03",
-      type: "components:block",
-      registryDependencies: ["badge","button","drawer","input","label","select","textarea","tooltip"],
-      component: React.lazy(() => import("@/registry/new-york/block/dashboard-03")),
-      source: "__registry__/new-york/block/dashboard-03.tsx",
-      files: ["registry/new-york/block/dashboard-03.tsx"],
-      category: "Application",
-      subcategory: "Dashboard",
-      chunks: []
+      chunks: [{
+        name: "dashboard-07-chunk-0",
+        description: "A card with a form to edit the product details",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-0")),
+        file: "registry/new-york/block/dashboard-07-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-07-chunk-1",
+        description: "A card with a form to edit the product stock and variants",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-1")),
+        file: "registry/new-york/block/dashboard-07-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-07-chunk-2",
+        description: "A card with a form to edit the product category and subcategory",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-2")),
+        file: "registry/new-york/block/dashboard-07-chunk-2.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-07-chunk-3",
+        description: "A card with a form to edit the product status",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-3")),
+        file: "registry/new-york/block/dashboard-07-chunk-3.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-07-chunk-4",
+        description: "A card with a form to upload product images",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-4")),
+        file: "registry/new-york/block/dashboard-07-chunk-4.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-07-chunk-5",
+        description: "A card with a call to action to archive the product",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-5")),
+        file: "registry/new-york/block/dashboard-07-chunk-5.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
     },
     "dashboard-04": {
       name: "dashboard-04",
@@ -4410,7 +4609,144 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/dashboard-04.tsx"],
       category: "Application",
       subcategory: "Dashboard",
-      chunks: []
+      chunks: [{
+        name: "dashboard-04-chunk-0",
+        description: "A sidebar navigation with links to general, security, integrations, support, organizations, and advanced settings.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-04-chunk-0")),
+        file: "registry/new-york/block/dashboard-04-chunk-0.tsx",
+        container: {
+          className: "chunk-container after:right-0"
+        }
+      },{
+        name: "dashboard-04-chunk-1",
+        description: "A form to update the store name.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-04-chunk-1")),
+        file: "registry/new-york/block/dashboard-04-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-04-chunk-2",
+        description: "A form to update the plugins directory with a checkbox to allow administrators to change the directory.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-04-chunk-2")),
+        file: "registry/new-york/block/dashboard-04-chunk-2.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
+    },
+    "dashboard-03": {
+      name: "dashboard-03",
+      type: "components:block",
+      registryDependencies: ["badge","button","drawer","input","label","select","textarea","tooltip"],
+      component: React.lazy(() => import("@/registry/new-york/block/dashboard-03")),
+      source: "__registry__/new-york/block/dashboard-03.tsx",
+      files: ["registry/new-york/block/dashboard-03.tsx"],
+      category: "Application",
+      subcategory: "Dashboard",
+      chunks: [{
+        name: "dashboard-03-chunk-0",
+        description: "A settings form a configuring an AI model and messages.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-03-chunk-0")),
+        file: "registry/new-york/block/dashboard-03-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-03-chunk-1",
+        description: "A form for sending a message to an AI chatbot. The form has a textarea and buttons to upload files and record audio.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-03-chunk-1")),
+        file: "registry/new-york/block/dashboard-03-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
+    },
+    "dashboard-02": {
+      name: "dashboard-02",
+      type: "components:block",
+      registryDependencies: ["badge","button","card","dropdown-menu","input"],
+      component: React.lazy(() => import("@/registry/new-york/block/dashboard-02")),
+      source: "__registry__/new-york/block/dashboard-02.tsx",
+      files: ["registry/new-york/block/dashboard-02.tsx"],
+      category: "Application",
+      subcategory: "Dashboard",
+      chunks: [{
+        name: "dashboard-02-chunk-0",
+        description: "A card with a call to action",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-02-chunk-0")),
+        file: "registry/new-york/block/dashboard-02-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-02-chunk-1",
+        description: "An empty state showing no products with a heading, description and a call to action to add a product.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-02-chunk-1")),
+        file: "registry/new-york/block/dashboard-02-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
+    },
+    "dashboard-01": {
+      name: "dashboard-01",
+      type: "components:block",
+      registryDependencies: ["button","dropdown-menu","input","sheet"],
+      component: React.lazy(() => import("@/registry/new-york/block/dashboard-01")),
+      source: "__registry__/new-york/block/dashboard-01.tsx",
+      files: ["registry/new-york/block/dashboard-01.tsx"],
+      category: "Application",
+      subcategory: "Dashboard",
+      chunks: [{
+        name: "dashboard-01-chunk-0",
+        description: "A card showing the total revenue in USD and the percentage difference from last month.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-0")),
+        file: "registry/new-york/block/dashboard-01-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-01-chunk-1",
+        description: "A card showing the total subscriptions and the percentage difference from last month.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-1")),
+        file: "registry/new-york/block/dashboard-01-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-01-chunk-2",
+        description: "A card showing the total sales and the percentage difference from last month.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-2")),
+        file: "registry/new-york/block/dashboard-01-chunk-2.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-01-chunk-3",
+        description: "A card showing the total active users and the percentage difference from last hour.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-3")),
+        file: "registry/new-york/block/dashboard-01-chunk-3.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-01-chunk-4",
+        description: "A card showing a table of recent transactions with a link to view all transactions.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-4")),
+        file: "registry/new-york/block/dashboard-01-chunk-4.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-01-chunk-5",
+        description: "A card showing a list of recent sales with customer names and email addresses.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-5")),
+        file: "registry/new-york/block/dashboard-01-chunk-5.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
     },
     "authentication-01": {
       name: "authentication-01",

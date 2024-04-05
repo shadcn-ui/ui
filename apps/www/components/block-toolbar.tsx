@@ -11,12 +11,14 @@ import { StyleSwitcher } from "@/components/style-switcher"
 import { V0Button } from "@/components/v0-button"
 import { Badge } from "@/registry/new-york/ui/badge"
 import { Button } from "@/registry/new-york/ui/button"
+import { Label } from "@/registry/new-york/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
 import { Separator } from "@/registry/new-york/ui/separator"
+import { Switch } from "@/registry/new-york/ui/switch"
 import { TabsList, TabsTrigger } from "@/registry/new-york/ui/tabs"
 import {
   ToggleGroup,
@@ -33,7 +35,7 @@ export function BlockToolbar({
   block,
   resizablePanelRef,
 }: {
-  block: Block
+  block: Block & { hasLiftMode: boolean }
   resizablePanelRef: React.RefObject<ImperativePanelHandle>
 }) {
   const { isLiftMode, toggleLiftMode } = useLiftMode(block.name)
@@ -110,24 +112,24 @@ export function BlockToolbar({
       </div>
       {block.code && (
         <div className="flex items-center gap-2 pr-[14px] sm:ml-auto">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                size="icon"
-                variant={isLiftMode ? "default" : "outline"}
-                className="h-7 w-7"
-                onClick={() => {
-                  resizablePanelRef?.current?.resize(100)
-                  toggleLiftMode(block.name)
-                }}
-              >
-                <Blocks className="h-3.5 w-3.5" />
-                <span className="sr-only">Chunk mode</span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>Lift Mode</TooltipContent>
-          </Tooltip>
-          <Separator orientation="vertical" className="mx-2 h-4" />
+          {block.hasLiftMode && (
+            <>
+              <div className="flex h-7 items-center justify-between gap-2">
+                <Label htmlFor="lift-mode" className="text-xs">
+                  Lift Mode
+                </Label>
+                <Switch
+                  id="lift-mode"
+                  checked={isLiftMode}
+                  onCheckedChange={() => toggleLiftMode(block.name)}
+                />
+              </div>
+              <Separator
+                orientation="vertical"
+                className="mx-2 hidden h-4 lg:inline-flex"
+              />
+            </>
+          )}
           <div className="hidden h-[28px] items-center gap-1.5 rounded-md border p-[2px] shadow-sm md:flex">
             <ToggleGroup
               disabled={isLiftMode}

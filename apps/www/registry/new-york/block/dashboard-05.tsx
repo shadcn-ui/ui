@@ -247,10 +247,7 @@ export default function Dashboard() {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <div
-            x-chunk="A search input with a user dropdown menu in a dashboard header"
-            className="relative ml-auto flex-1 md:grow-0"
-          >
+          <div className="relative ml-auto flex-1 md:grow-0">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
@@ -319,7 +316,7 @@ export default function Dashboard() {
               <Card x-chunk="A stats card showing this month's total sales in USD, the percentage difference from last month, and a progress bar.">
                 <CardHeader className="pb-2">
                   <CardDescription>This Month</CardDescription>
-                  <CardTitle className="text-3xl">$5,329</CardTitle>
+                  <CardTitle className="text-4xl">$5,329</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-xs text-muted-foreground">

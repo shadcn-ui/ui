@@ -296,7 +296,7 @@ export default function Dashboard() {
             </div>
             <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
               <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
-                <Card>
+                <Card x-chunk="A card with a form to edit the product details">
                   <CardHeader>
                     <CardTitle>Product Details</CardTitle>
                     <CardDescription>
@@ -325,7 +325,7 @@ export default function Dashboard() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card x-chunk="A card with a form to edit the product stock and variants">
                   <CardHeader>
                     <CardTitle>Stock</CardTitle>
                     <CardDescription>
@@ -461,7 +461,7 @@ export default function Dashboard() {
                     </Button>
                   </CardFooter>
                 </Card>
-                <Card>
+                <Card x-chunk="A card with a form to edit the product category and subcategory">
                   <CardHeader>
                     <CardTitle>Product Category</CardTitle>
                   </CardHeader>
@@ -512,7 +512,7 @@ export default function Dashboard() {
                 </Card>
               </div>
               <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
-                <Card>
+                <Card x-chunk="A card with a form to edit the product status">
                   <CardHeader>
                     <CardTitle>Product Status</CardTitle>
                   </CardHeader>
@@ -534,7 +534,10 @@ export default function Dashboard() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="overflow-hidden">
+                <Card
+                  className="overflow-hidden"
+                  x-chunk="A card with a form to upload product images"
+                >
                   <CardHeader>
                     <CardTitle>Product Images</CardTitle>
                     <CardDescription>
@@ -577,7 +580,7 @@ export default function Dashboard() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card x-chunk="A card with a call to action to archive the product">
                   <CardHeader>
                     <CardTitle>Archive Product</CardTitle>
                     <CardDescription>
