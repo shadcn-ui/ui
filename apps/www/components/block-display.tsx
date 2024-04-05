@@ -6,7 +6,7 @@ export async function BlockDisplay({ name }: { name: string }) {
   const blocks = await Promise.all(
     styles.map(async (style) => {
       const block = await getBlock(name, style.name)
-      const hasLiftMode = block?.chunks && block?.chunks?.length > 0
+      const hasLiftMode = block?.chunks ? block?.chunks?.length > 0 : false
 
       // Cannot (and don't need to) pass to the client.
       delete block?.component
