@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Blocks, CircleHelp, Monitor, Smartphone, Tablet } from "lucide-react"
+import { CircleHelp, Monitor, Smartphone, Tablet } from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
 
 import { cn } from "@/lib/utils"
@@ -10,7 +10,6 @@ import { BlockCopyButton } from "@/components/block-copy-button"
 import { StyleSwitcher } from "@/components/style-switcher"
 import { V0Button } from "@/components/v0-button"
 import { Badge } from "@/registry/new-york/ui/badge"
-import { Button } from "@/registry/new-york/ui/button"
 import { Label } from "@/registry/new-york/ui/label"
 import {
   Popover,
@@ -24,11 +23,6 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/new-york/ui/toggle-group"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york/ui/tooltip"
 import { Block } from "@/registry/schema"
 
 export function BlockToolbar({
@@ -121,7 +115,10 @@ export function BlockToolbar({
                 <Switch
                   id="lift-mode"
                   checked={isLiftMode}
-                  onCheckedChange={() => toggleLiftMode(block.name)}
+                  onCheckedChange={() => {
+                    resizablePanelRef.current?.resize(100)
+                    toggleLiftMode(block.name)
+                  }}
                 />
               </div>
               <Separator
