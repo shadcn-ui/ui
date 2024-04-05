@@ -216,7 +216,10 @@ export default function Dashboard() {
               </nav>
             </SheetContent>
           </Sheet>
-          <Breadcrumb className="hidden md:flex">
+          <Breadcrumb
+            className="hidden md:flex"
+            x-chunk="A breadcrumb with two links and a page indicator."
+          >
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
@@ -255,7 +258,7 @@ export default function Dashboard() {
                   width={36}
                   height={36}
                   alt="Avatar"
-                  className="overflow-hidden"
+                  className="overflow-hidden rounded-full"
                 />
               </Button>
             </DropdownMenuTrigger>
@@ -317,7 +320,7 @@ export default function Dashboard() {
               </div>
             </div>
             <TabsContent value="all">
-              <Card>
+              <Card x-chunk="A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.">
                 <CardHeader>
                   <CardTitle>Products</CardTitle>
                   <CardDescription>
