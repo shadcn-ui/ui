@@ -216,7 +216,10 @@ export default function Dashboard() {
               </nav>
             </SheetContent>
           </Sheet>
-          <Breadcrumb className="hidden md:flex">
+          <Breadcrumb
+            className="hidden md:flex"
+            x-chunk="A breadcrumb with two links and a page indicator."
+          >
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
@@ -432,7 +435,7 @@ export default function Dashboard() {
                           </DropdownMenu>
                         </TableCell>
                       </TableRow>
-                      <TableRow>
+                      <TableRow x-chunk="A table row">
                         <TableCell className="hidden sm:table-cell">
                           <Image
                             alt="Product image"

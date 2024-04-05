@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -247,7 +247,9 @@ export default function Dashboard() {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <div className="relative ml-auto flex-1 md:grow-0">
+          <div
+            className="relative ml-auto flex-1 md:grow-0" x-chunk="dashboard-05-chunk-0"
+          >
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
@@ -285,7 +287,7 @@ export default function Dashboard() {
           <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
               <Card
-                className="sm:col-span-2" x-data-chunk="dashboard-05-chunk-0"
+                className="sm:col-span-2" x-chunk="dashboard-05-chunk-1"
               >
                 <CardHeader className="pb-3">
                   <CardTitle>Your Orders</CardTitle>
@@ -298,7 +300,7 @@ export default function Dashboard() {
                   <Button>Create New Order</Button>
                 </CardFooter>
               </Card>
-              <Card x-data-chunk="dashboard-05-chunk-1">
+              <Card x-chunk="dashboard-05-chunk-2">
                 <CardHeader className="pb-2">
                   <CardDescription>This Week</CardDescription>
                   <CardTitle className="text-4xl">$1,329</CardTitle>
@@ -312,7 +314,7 @@ export default function Dashboard() {
                   <Progress value={25} aria-label="25% increase" />
                 </CardFooter>
               </Card>
-              <Card>
+              <Card x-chunk="dashboard-05-chunk-3">
                 <CardHeader className="pb-2">
                   <CardDescription>This Month</CardDescription>
                   <CardTitle className="text-3xl">$5,329</CardTitle>
@@ -371,7 +373,7 @@ export default function Dashboard() {
                 </div>
               </div>
               <TabsContent value="week">
-                <Card>
+                <Card x-chunk="dashboard-05-chunk-4">
                   <CardHeader className="px-7">
                     <CardTitle>Orders</CardTitle>
                     <CardDescription>
@@ -565,7 +567,7 @@ export default function Dashboard() {
           </div>
           <div>
             <Card
-              className="overflow-hidden" x-data-chunk="dashboard-05-chunk-2"
+              className="overflow-hidden" x-chunk="dashboard-05-chunk-5"
             >
               <CardHeader className="flex flex-row items-start bg-muted/50">
                 <div className="grid gap-0.5">

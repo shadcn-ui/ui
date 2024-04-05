@@ -8,10 +8,10 @@ import { Style, styles } from "@/registry/styles"
 
 import "@/styles/mdx.css"
 import "public/registry/themes.css"
+import { AnimatePresence } from "framer-motion"
+
 import { BlockChunk } from "@/components/block-chunk"
-import { BlockComponent } from "@/components/block-component"
 import { BlockWrapper } from "@/components/block-wrapper"
-import { V0Button } from "@/components/v0-button"
 
 export async function generateMetadata({
   params,
@@ -85,19 +85,13 @@ export default async function BlockPage({
   const Component = block.component
 
   const chunks = block.chunks?.map((chunk) => ({ ...chunk }))
-
   delete block.component
   block.chunks?.map((chunk) => delete chunk.component)
 
-  // "[&_[x-data-chunk]]:z-10 [&_[x-data-chunk]]:border-4 [&_[x-data-chunk]]:border-dashed [&_[x-data-chunk]]:border-gray-300 [&_[x-data-chunk]]:bg-gray-100 [&_[x-data-chunk]]:transition-all [&_[x-data-chunk]]:duration-300 [&_[x-data-chunk]]:animate-in [&_[x-data-chunk]]:slide-in-from-bottom-2",
-
   return (
-    <div className={cn("", block.container?.className || "", "theme-zinc")}>
-      {/* TODO: use a provider */}
+    <div className={cn(block.container?.className || "", "theme-zinc")}>
       <BlockWrapper block={block}>
-        <BlockComponent block={block}>
-          <Component />
-        </BlockComponent>
+        <Component />
         {chunks?.map((chunk, index) => (
           <BlockChunk
             key={chunk.name}
@@ -105,14 +99,6 @@ export default async function BlockPage({
             chunk={block.chunks?.[index]}
           >
             <chunk.component />
-            <div x-data-chunk-toolbar={chunk.name} className="hidden">
-              <V0Button
-                name={chunk.name}
-                code={block.code}
-                description={chunk.description}
-                style={block.style}
-              />
-            </div>
           </BlockChunk>
         ))}
       </BlockWrapper>

@@ -2082,7 +2082,15 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/dashboard-05.tsx"],
       category: "Application",
       subcategory: "Dashboard",
-      chunks: []
+      chunks: [{
+        name: "dashboard-05-chunk-0",
+        description: "An order details card with order details, shipping information, customer information and payment information.",
+        component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-0")),
+        file: "registry/default/block/dashboard-05-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
     },
     "dashboard-06": {
       name: "dashboard-06",
@@ -4274,19 +4282,52 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-05-chunk-0",
-        description: "A card for an orders dashboard with a description and a button to create a new order.",
+        description: "A search input with a user dropdown menu in a dashboard header",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-0")),
-        file: "registry/new-york/block/dashboard-05-chunk-0.tsx"
+        file: "registry/new-york/block/dashboard-05-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
       },{
         name: "dashboard-05-chunk-1",
-        description: "A stats card showing this week's total sales in USD, the percentage increase from last week, and a progress bar.",
+        description: "A card for an orders dashboard with a description and a button to create a new order.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-1")),
-        file: "registry/new-york/block/dashboard-05-chunk-1.tsx"
+        file: "registry/new-york/block/dashboard-05-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
       },{
         name: "dashboard-05-chunk-2",
-        description: "An order details card with order details, shipping information, customer information and payment information.",
+        description: "A stats card showing this week's total sales in USD, the percentage difference from last week, and a progress bar.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-2")),
-        file: "registry/new-york/block/dashboard-05-chunk-2.tsx"
+        file: "registry/new-york/block/dashboard-05-chunk-2.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-05-chunk-3",
+        description: "A stats card showing this month's total sales in USD, the percentage difference from last month, and a progress bar.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-3")),
+        file: "registry/new-york/block/dashboard-05-chunk-3.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-05-chunk-4",
+        description: "A table of recent orders showing the following columns: Customer, Type, Status, Date, and Amount.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-4")),
+        file: "registry/new-york/block/dashboard-05-chunk-4.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-05-chunk-5",
+        description: "An order details card with order details, shipping information, customer information and payment information.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-5")),
+        file: "registry/new-york/block/dashboard-05-chunk-5.tsx",
+        container: {
+          className: "undefined"
+        }
       }]
     },
     "dashboard-06": {
@@ -4298,7 +4339,23 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/dashboard-06.tsx"],
       category: "Application",
       subcategory: "Dashboard",
-      chunks: []
+      chunks: [{
+        name: "dashboard-06-chunk-0",
+        description: "A breadcrumb with two links and a page indicator.",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-0")),
+        file: "registry/new-york/block/dashboard-06-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "dashboard-06-chunk-1",
+        description: "A table row",
+        component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-1")),
+        file: "registry/new-york/block/dashboard-06-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
     },
     "dashboard-07": {
       name: "dashboard-07",

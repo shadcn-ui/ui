@@ -63,6 +63,7 @@ export const Index: Record<string, any> = {
           {
             module: string
             text: string
+            isDefault?: boolean
           }
         >()
         sourceFile.getImportDeclarations().forEach((node) => {
@@ -73,22 +74,31 @@ export const Index: Record<string, any> = {
               text: node.getText(),
             })
           })
+
+          const defaultImport = node.getDefaultImport()
+          if (defaultImport) {
+            imports.set(defaultImport.getText(), {
+              module,
+              text: defaultImport.getText(),
+              isDefault: true,
+            })
+          }
         })
 
-        // Find all opening tags with x-data-component attribute.
+        // Find all opening tags with x-chunk attribute.
         const components = sourceFile
           .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
           .filter((node) => {
-            return node.getAttribute("x-data-component") !== undefined
+            return node.getAttribute("x-chunk") !== undefined
           })
 
         chunks = await Promise.all(
           components.map(async (component, index) => {
             const chunkName = `${item.name}-chunk-${index}`
 
-            // Get the value of x-data-component attribute.
+            // Get the value of x-chunk attribute.
             const attr = component
-              .getAttributeOrThrow("x-data-component")
+              .getAttributeOrThrow("x-chunk")
               .asKindOrThrow(SyntaxKind.JsxAttribute)
 
             const description = attr
@@ -96,14 +106,26 @@ export const Index: Record<string, any> = {
               .asKindOrThrow(SyntaxKind.StringLiteral)
               .getLiteralValue()
 
-            // Delete the x-data-component attribute.
+            // Delete the x-chunk attribute.
             attr.remove()
 
             // Add a new attribute to the component.
             component.addAttribute({
-              name: "x-data-chunk",
+              name: "x-chunk",
               initializer: `"${chunkName}"`,
             })
+
+            // Get the value of x-chunk-container attribute.
+            const containerAttr = component
+              .getAttribute("x-chunk-container")
+              ?.asKindOrThrow(SyntaxKind.JsxAttribute)
+
+            const containerClassName = containerAttr
+              ?.getInitializer()
+              ?.asKindOrThrow(SyntaxKind.StringLiteral)
+              .getLiteralValue()
+
+            containerAttr?.remove()
 
             const parentJsxElement = component.getParentIfKindOrThrow(
               SyntaxKind.JsxElement
@@ -123,13 +145,23 @@ export const Index: Record<string, any> = {
                   })
               )
 
-            const componentImports = new Map()
+            const componentImports = new Map<
+              string,
+              string | string[] | Set<string>
+            >()
             children.forEach((child) => {
               const importLine = imports.get(child)
               if (importLine) {
                 const imports = componentImports.get(importLine.module) || []
-                const newImports = new Set([...imports, child])
-                componentImports.set(importLine.module, Array.from(newImports))
+
+                const newImports = importLine.isDefault
+                  ? importLine.text
+                  : new Set([...imports, child])
+
+                componentImports.set(
+                  importLine.module,
+                  importLine?.isDefault ? newImports : Array.from(newImports)
+                )
               }
             })
 
@@ -137,8 +169,11 @@ export const Index: Record<string, any> = {
               componentImports.keys()
             ).map((key) => {
               const values = componentImports.get(key)
+              const specifier = Array.isArray(values)
+                ? `{${values.join(",")}}`
+                : values
 
-              return `import {${values.join(",")}} from "${key}"`
+              return `import ${specifier} from "${key}"`
             })
 
             const code = `
@@ -163,6 +198,9 @@ export const Index: Record<string, any> = {
               description,
               component: `React.lazy(() => import("@/registry/${style.name}/${type}/${chunkName}")),`,
               file: targetFile,
+              container: {
+                className: containerClassName,
+              },
             }
           })
         )
@@ -191,11 +229,14 @@ export const Index: Record<string, any> = {
       category: "${item.category}",
       subcategory: "${item.subcategory}",
       chunks: [${chunks.map(
-        (block) => `{
-        name: "${block.name}",
-        description: "${block.description}",
-        component: ${block.component}
-        file: "${block.file}"
+        (chunk) => `{
+        name: "${chunk.name}",
+        description: "${chunk.description}",
+        component: ${chunk.component}
+        file: "${chunk.file}",
+        container: {
+          className: "${chunk.container.className}"
+        }
       }`
       )}]
     },`

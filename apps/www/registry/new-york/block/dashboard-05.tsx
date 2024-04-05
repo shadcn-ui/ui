@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -247,7 +247,10 @@ export default function Dashboard() {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <div className="relative ml-auto flex-1 md:grow-0">
+          <div
+            x-chunk="A search input with a user dropdown menu in a dashboard header"
+            className="relative ml-auto flex-1 md:grow-0"
+          >
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
@@ -286,7 +289,7 @@ export default function Dashboard() {
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
               <Card
                 className="sm:col-span-2"
-                x-data-component="A card for an orders dashboard with a description and a button to create a new order."
+                x-chunk="A card for an orders dashboard with a description and a button to create a new order."
               >
                 <CardHeader className="pb-3">
                   <CardTitle>Your Orders</CardTitle>
@@ -299,7 +302,7 @@ export default function Dashboard() {
                   <Button>Create New Order</Button>
                 </CardFooter>
               </Card>
-              <Card x-data-component="A stats card showing this week's total sales in USD, the percentage increase from last week, and a progress bar.">
+              <Card x-chunk="A stats card showing this week's total sales in USD, the percentage difference from last week, and a progress bar.">
                 <CardHeader className="pb-2">
                   <CardDescription>This Week</CardDescription>
                   <CardTitle className="text-4xl">$1,329</CardTitle>
@@ -313,7 +316,7 @@ export default function Dashboard() {
                   <Progress value={25} aria-label="25% increase" />
                 </CardFooter>
               </Card>
-              <Card>
+              <Card x-chunk="A stats card showing this month's total sales in USD, the percentage difference from last month, and a progress bar.">
                 <CardHeader className="pb-2">
                   <CardDescription>This Month</CardDescription>
                   <CardTitle className="text-3xl">$5,329</CardTitle>
@@ -372,7 +375,7 @@ export default function Dashboard() {
                 </div>
               </div>
               <TabsContent value="week">
-                <Card>
+                <Card x-chunk="A table of recent orders showing the following columns: Customer, Type, Status, Date, and Amount.">
                   <CardHeader className="px-7">
                     <CardTitle>Orders</CardTitle>
                     <CardDescription>
@@ -567,7 +570,7 @@ export default function Dashboard() {
           <div>
             <Card
               className="overflow-hidden"
-              x-data-component="An order details card with order details, shipping information, customer information and payment information."
+              x-chunk="An order details card with order details, shipping information, customer information and payment information."
             >
               <CardHeader className="flex flex-row items-start bg-muted/50">
                 <div className="grid gap-0.5">

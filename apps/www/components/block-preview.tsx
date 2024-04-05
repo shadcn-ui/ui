@@ -1,48 +1,24 @@
 "use client"
 
 import * as React from "react"
-import { Blocks, CircleHelp, Monitor, Smartphone, Tablet } from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
 
-import { useChunkMode } from "@/hooks/use-chunk-mode"
+import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { BlockCopyCodeButton } from "@/components/block-copy-code-button"
+import { useLiftMode } from "@/hooks/use-lift-mode"
+import { BlockToolbar } from "@/components/block-toolbar"
 import { Icons } from "@/components/icons"
-import { StyleSwitcher } from "@/components/style-switcher"
-import { V0Button } from "@/components/v0-button"
-import { Badge } from "@/registry/new-york/ui/badge"
-import { Button } from "@/registry/new-york/ui/button"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/new-york/ui/popover"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/registry/new-york/ui/resizable"
-import { Separator } from "@/registry/new-york/ui/separator"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/new-york/ui/tabs"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/new-york/ui/toggle-group"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york/ui/tooltip"
+import { Tabs, TabsContent } from "@/registry/new-york/ui/tabs"
 import { Block } from "@/registry/schema"
 
 export function BlockPreview({ block }: { block: Block }) {
   const [config] = useConfig()
-  const { chunkMode, toggleChunkMode } = useChunkMode()
+  const { isLiftMode } = useLiftMode(block.name)
   const [isLoading, setIsLoading] = React.useState(true)
   const ref = React.useRef<ImperativePanelHandle>(null)
 
@@ -61,121 +37,7 @@ export function BlockPreview({ block }: { block: Block }) {
         } as React.CSSProperties
       }
     >
-      <div className="flex flex-col items-center gap-4 sm:flex-row">
-        <div className="flex items-center gap-2">
-          <TabsList className="hidden h-8 p-[0.18rem] sm:flex">
-            <TabsTrigger value="preview">Preview</TabsTrigger>
-            <TabsTrigger value="code">Code</TabsTrigger>
-          </TabsList>
-          <Separator
-            orientation="vertical"
-            className="mx-2 hidden h-4 md:flex"
-          />
-          <StyleSwitcher className="h-7" />
-          <Popover>
-            <PopoverTrigger className="hidden text-muted-foreground hover:text-foreground sm:flex">
-              <CircleHelp className="h-3.5 w-3.5" />
-              <span className="sr-only">Block description</span>
-            </PopoverTrigger>
-            <PopoverContent
-              side="top"
-              sideOffset={20}
-              className="space-y-3 rounded-[0.5rem] text-sm"
-            >
-              <p className="font-medium">
-                What is the difference between the New York and Default style?
-              </p>
-              <p>
-                A style comes with its own set of components, animations, icons
-                and more.
-              </p>
-              <p>
-                The <span className="font-medium">Default</span> style has
-                larger inputs, uses lucide-react for icons and
-                tailwindcss-animate for animations.
-              </p>
-              <p>
-                The <span className="font-medium">New York</span> style ships
-                with smaller buttons and inputs. It also uses shadows on cards
-                and buttons.
-              </p>
-            </PopoverContent>
-          </Popover>
-          <div className="hidden">
-            <Separator
-              orientation="vertical"
-              className="mx-2 hidden h-4 md:flex"
-            />
-            <div className="flex items-center gap-2">
-              <a href={`#${block.name}`}>
-                <Badge variant="outline">{block.name}</Badge>
-              </a>
-            </div>
-          </div>
-        </div>
-        {block.code && (
-          <div className="flex items-center gap-2 pr-[14px] sm:ml-auto">
-            <div className="hidden h-[28px] items-center gap-1.5 rounded-md border p-[2px] shadow-sm md:flex">
-              <ToggleGroup
-                type="single"
-                defaultValue="100"
-                onValueChange={(value) => {
-                  if (ref.current) {
-                    ref.current.resize(parseInt(value))
-                  }
-                }}
-              >
-                <ToggleGroupItem
-                  value="100"
-                  className="h-[22px] w-[22px] rounded-sm p-0"
-                >
-                  <Monitor className="h-3.5 w-3.5" />
-                </ToggleGroupItem>
-                <ToggleGroupItem
-                  value="60"
-                  className="h-[22px] w-[22px] rounded-sm p-0"
-                >
-                  <Tablet className="h-3.5 w-3.5" />
-                </ToggleGroupItem>
-                <ToggleGroupItem
-                  value="30"
-                  className="h-[22px] w-[22px] rounded-sm p-0"
-                >
-                  <Smartphone className="h-3.5 w-3.5" />
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-            <Separator
-              orientation="vertical"
-              className="mx-2 hidden h-4 md:flex"
-            />
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  size="icon"
-                  variant={
-                    chunkMode.includes(block.name) ? "secondary" : "outline"
-                  }
-                  className="h-7 w-7"
-                  onClick={() => toggleChunkMode(block.name)}
-                >
-                  <Blocks className="h-3.5 w-3.5" />
-                  <span className="sr-only">Chunk mode</span>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>Lift</TooltipContent>
-            </Tooltip>
-            <Separator orientation="vertical" className="mx-2 h-4" />
-            <BlockCopyCodeButton name={block.name} code={block.code} />
-            <V0Button
-              name={block.name}
-              description={block.description || "Edit in v0"}
-              code={block.code}
-              style={block.style}
-            />
-          </div>
-        )}
-      </div>
+      <BlockToolbar block={block} resizablePanelRef={ref} />
       <TabsContent
         value="preview"
         className="relative after:absolute after:inset-0 after:right-3 after:z-0 after:rounded-lg after:bg-muted"
@@ -183,7 +45,10 @@ export function BlockPreview({ block }: { block: Block }) {
         <ResizablePanelGroup direction="horizontal" className="relative z-10">
           <ResizablePanel
             ref={ref}
-            className="relative rounded-lg border bg-background transition-all"
+            className={cn(
+              "relative rounded-lg border bg-background",
+              isLiftMode ? "border-border/50" : "border-border"
+            )}
             defaultSize={100}
             minSize={30}
           >
@@ -202,7 +67,12 @@ export function BlockPreview({ block }: { block: Block }) {
               }}
             />
           </ResizablePanel>
-          <ResizableHandle className="relative hidden w-3 bg-transparent p-0 after:absolute after:right-0 after:top-1/2 after:h-8 after:w-[6px] after:-translate-y-1/2 after:translate-x-[-1px] after:rounded-full after:bg-border after:transition-all after:hover:h-10 sm:block" />
+          <ResizableHandle
+            className={cn(
+              "relative hidden w-3 bg-transparent p-0 after:absolute after:right-0 after:top-1/2 after:h-8 after:w-[6px] after:-translate-y-1/2 after:translate-x-[-1px] after:rounded-full after:bg-border after:transition-all after:hover:h-10 sm:block",
+              isLiftMode && "invisible"
+            )}
+          />
           <ResizablePanel defaultSize={0} minSize={0} />
         </ResizablePanelGroup>
       </TabsContent>

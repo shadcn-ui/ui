@@ -5,6 +5,12 @@ export const blockChunkSchema = z.object({
   description: z.string(),
   component: z.any(),
   file: z.string(),
+  code: z.string().optional(),
+  container: z
+    .object({
+      className: z.string().nullish(),
+    })
+    .optional(),
 })
 
 export const registryEntrySchema = z.object({
