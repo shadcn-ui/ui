@@ -696,6 +696,30 @@ export const examples: Registry = [
     files: ["example/textarea-with-text.tsx"],
   },
   {
+    name: "timeline-demo",
+    type: "components:example",
+    registryDependencies: ["timeline"],
+    files: ["example/timeline-demo.tsx"],
+  },
+  {
+    name: "timeline-right",
+    type: "components:example",
+    registryDependencies: ["timeline"],
+    files: ["example/timeline-right.tsx"],
+  },
+  {
+    name: "timeline-alternate",
+    type: "components:example",
+    registryDependencies: ["timeline"],
+    files: ["example/timeline-alternate.tsx"],
+  },
+  {
+    name: "timeline-labels",
+    type: "components:example",
+    registryDependencies: ["timeline"],
+    files: ["example/timeline-labels.tsx"],
+  },
+  {
     name: "toast-demo",
     type: "components:example",
     registryDependencies: ["toast"],
