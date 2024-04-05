@@ -19,14 +19,3 @@ export function useLiftMode(name: string) {
     toggleLiftMode,
   }
 }
-
-// export function useLiftMode(name: string) {
-//   const { data, mutate } = useSWR<boolean>([`lift-mode`, name], {
-//     fallbackData: false,
-//   })
-
-//   return {
-//     isLiftMode: data,
-//     toggleLiftMode: () => mutate(!data),
-//   }
-// }

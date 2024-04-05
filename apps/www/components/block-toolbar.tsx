@@ -4,6 +4,7 @@ import * as React from "react"
 import { CircleHelp, Monitor, Smartphone, Tablet } from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
 
+import { trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import { useLiftMode } from "@/hooks/use-lift-mode"
 import { BlockCopyButton } from "@/components/block-copy-button"
@@ -118,9 +119,18 @@ export function BlockToolbar({
                 <Switch
                   id="lift-mode"
                   checked={isLiftMode}
-                  onCheckedChange={() => {
+                  onCheckedChange={(value) => {
                     resizablePanelRef.current?.resize(100)
                     toggleLiftMode(block.name)
+
+                    if (value) {
+                      trackEvent({
+                        name: "enable_lift_mode",
+                        properties: {
+                          name: block.name,
+                        },
+                      })
+                    }
                   }}
                 />
               </div>

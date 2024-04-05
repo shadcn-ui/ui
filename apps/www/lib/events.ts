@@ -10,6 +10,7 @@ const eventSchema = z.object({
     "copy_theme_code",
     "copy_block_code",
     "copy_chunk_code",
+    "enable_lift_mode",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z
