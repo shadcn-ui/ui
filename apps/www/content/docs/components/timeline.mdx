@@ -44,15 +44,31 @@ npx shadcn-ui@latest add timeline
 ## Usage
 
 ```tsx
-import { Timeline, TimelineItem } from "@/components/ui/timeline"
+import {
+  Timeline,
+  TimelineContent,
+  TimelineDot,
+  TimelineHeading,
+  TimelineItem,
+  TimelineLine,
+} from "@/components/ui/timeline"
 ```
 
 ```tsx
 <Timeline>
-  <TimelineItem className="text-black text-sm font-medium">Think</TimelineItem>
-  <TimelineItem className="text-black text-sm font-medium">Design</TimelineItem>
-  <TimelineItem className="text-black text-sm font-medium">Code</TimelineItem>
-  <TimelineItem className="text-black text-sm font-medium">Deploy</TimelineItem>
+  <TimelineItem status="done">
+    <TimelineHeading>Plan!</TimelineHeading>
+    <TimelineDot status="done" />
+    <TimelineLine done />
+    <TimelineContent>
+      Before diving into coding, it is crucial to plan your software project
+      thoroughly.
+    </TimelineContent>
+  </TimelineItem>
+  <TimelineItem>
+    <TimelineHeading>Done!</TimelineHeading>
+    <TimelineDot />
+  </TimelineItem>
 </Timeline>
 ```
 
