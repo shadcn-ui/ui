@@ -39,7 +39,7 @@ Timeline.displayName = "Timeline"
 const timelineItemVariants = cva("grid items-center gap-x-2", {
   variants: {
     status: {
-      done: "text-foreground",
+      done: "text-primary",
       default: "text-muted-foreground",
     },
   },
