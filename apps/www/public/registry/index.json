@@ -412,6 +412,13 @@
     "type": "components:ui"
   },
   {
+    "name": "timeline",
+    "files": [
+      "ui/timeline.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "toast",
     "dependencies": [
       "@radix-ui/react-toast"
