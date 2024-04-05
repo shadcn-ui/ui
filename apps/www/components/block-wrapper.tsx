@@ -53,7 +53,7 @@ export function BlockWrapper({
       <AnimatePresence>
         {isLiftMode && (
           <motion.div
-            className="absolute inset-0 z-30 bg-background/90"
+            className="absolute inset-0 z-30 bg-background/90 fill-mode-backwards"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{

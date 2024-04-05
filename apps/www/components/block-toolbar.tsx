@@ -37,24 +37,27 @@ export function BlockToolbar({
   return (
     <div className="flex flex-col items-center gap-4 sm:flex-row">
       <div className="flex items-center gap-2">
-        <TabsList className="hidden h-8 rounded-md p-0 px-[calc(theme(spacing.1)_-_2px)] py-[theme(spacing.1)] sm:flex">
+        <TabsList className="hidden h-7 rounded-md p-0 px-[calc(theme(spacing.1)_-_2px)] py-[theme(spacing.1)] sm:flex">
           <TabsTrigger
             value="preview"
-            className="h-7 rounded-sm"
+            className="h-[1.45rem] rounded-sm px-2 text-xs"
             disabled={isLiftMode}
           >
             Preview
           </TabsTrigger>
           <TabsTrigger
             value="code"
-            className="h-7 rounded-sm"
+            className="h-[1.45rem] rounded-sm px-2 text-xs"
             disabled={isLiftMode}
           >
             Code
           </TabsTrigger>
         </TabsList>
         <Separator orientation="vertical" className="mx-2 hidden h-4 md:flex" />
-        <StyleSwitcher className="h-7" disabled={isLiftMode} />
+        <StyleSwitcher
+          className="h-[calc(theme(spacing.7)_-_1px)] dark:h-7"
+          disabled={isLiftMode}
+        />
         <Popover>
           <PopoverTrigger
             disabled={isLiftMode}
@@ -90,13 +93,13 @@ export function BlockToolbar({
         <div className="hidden items-center gap-2 sm:flex">
           <Separator
             orientation="vertical"
-            className="mx-2 hidden h-4 md:flex"
+            className="mx-2 mr-0 hidden h-4 md:flex"
           />
           <div className="flex items-center gap-2">
             <a href={`#${block.name}`}>
               <Badge
-                variant="outline"
-                className={cn(isLiftMode && "opacity-50")}
+                variant="secondary"
+                className={cn("bg-transparent", isLiftMode && "opacity-50")}
               >
                 {block.name}
               </Badge>
