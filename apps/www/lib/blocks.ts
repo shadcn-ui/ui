@@ -8,7 +8,7 @@ import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
-import { blockSchema, registryEntrySchema } from "@/registry/schema"
+import { BlockChunk, blockSchema, registryEntrySchema } from "@/registry/schema"
 import { Style } from "@/registry/styles"
 
 const DEFAULT_BLOCKS_STYLE = "default" satisfies Style["name"]
@@ -32,11 +32,40 @@ export async function getBlock(
 
   const content = await _getBlockContent(name, style)
 
+  const chunks = await Promise.all(
+    entry.chunks?.map(async (chunk: BlockChunk) => {
+      const code = await readFile(chunk.file)
+
+      const tempFile = await createTempSourceFile(`${chunk.name}.tsx`)
+      const sourceFile = project.createSourceFile(tempFile, code, {
+        scriptKind: ScriptKind.TSX,
+      })
+
+      sourceFile
+        .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
+        .filter((node) => {
+          return node.getAttribute("x-chunk") !== undefined
+        })
+        ?.map((component) => {
+          component
+            .getAttribute("x-chunk")
+            ?.asKind(SyntaxKind.JsxAttribute)
+            ?.remove()
+        })
+
+      return {
+        ...chunk,
+        code: sourceFile.getText(),
+      }
+    })
+  )
+
   return blockSchema.parse({
     style,
     highlightedCode: content.code ? await highlightCode(content.code) : "",
     ...entry,
     ...content,
+    chunks,
     type: "components:block",
   })
 }
@@ -56,16 +85,24 @@ async function _getBlockCode(
   const entry = Index[style][name]
   const block = registryEntrySchema.parse(entry)
 
-  const filepath = path.join(process.cwd(), block.files[0])
+  if (!block.source) {
+    return ""
+  }
+
+  return await readFile(block.source)
+}
+
+async function readFile(source: string) {
+  const filepath = path.join(process.cwd(), source)
   return await fs.readFile(filepath, "utf-8")
 }
 
-async function _getBlockContent(name: string, style: Style["name"]) {
-  async function createTempSourceFile(filename: string) {
-    const dir = await fs.mkdtemp(path.join(tmpdir(), "codex-"))
-    return path.join(dir, filename)
-  }
+async function createTempSourceFile(filename: string) {
+  const dir = await fs.mkdtemp(path.join(tmpdir(), "codex-"))
+  return path.join(dir, filename)
+}
 
+async function _getBlockContent(name: string, style: Style["name"]) {
   const raw = await _getBlockCode(name, style)
 
   const tempFile = await createTempSourceFile(`${name}.tsx`)

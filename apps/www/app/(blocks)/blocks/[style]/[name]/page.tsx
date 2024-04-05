@@ -8,6 +8,10 @@ import { Style, styles } from "@/registry/styles"
 
 import "@/styles/mdx.css"
 import "public/registry/themes.css"
+import { AnimatePresence } from "framer-motion"
+
+import { BlockChunk } from "@/components/block-chunk"
+import { BlockWrapper } from "@/components/block-wrapper"
 
 export async function generateMetadata({
   params,
@@ -80,9 +84,24 @@ export default async function BlockPage({
 
   const Component = block.component
 
+  const chunks = block.chunks?.map((chunk) => ({ ...chunk }))
+  delete block.component
+  block.chunks?.map((chunk) => delete chunk.component)
+
   return (
     <div className={cn(block.container?.className || "", "theme-zinc")}>
-      <Component />
+      <BlockWrapper block={block}>
+        <Component />
+        {chunks?.map((chunk, index) => (
+          <BlockChunk
+            key={chunk.name}
+            block={block}
+            chunk={block.chunks?.[index]}
+          >
+            <chunk.component />
+          </BlockChunk>
+        ))}
+      </BlockWrapper>
     </div>
   )
 }
