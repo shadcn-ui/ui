@@ -11,7 +11,7 @@ import {
 
 export default function TimelineDemo() {
   return (
-    <Timeline>
+    <Timeline positions="left">
       <TimelineItem status="done">
         <TimelineHeading>Plan!</TimelineHeading>
         <TimelineDot status="done" />
