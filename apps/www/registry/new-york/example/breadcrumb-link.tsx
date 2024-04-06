@@ -1,11 +1,11 @@
 import Link from "next/link"
 
+import { BreadcrumbPage } from "@/registry/default/ui/breadcrumb"
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/registry/new-york/ui/breadcrumb"
 
