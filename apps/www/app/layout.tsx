@@ -6,13 +6,13 @@ import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Analytics } from "@/components/analytics"
 import { ThemeProvider } from "@/components/providers"
+import { SiteFooter } from "@/components/site-footer"
+import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
 import { Toaster as NewYorkSonner } from "@/registry/new-york/ui/sonner"
 import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
   title: {

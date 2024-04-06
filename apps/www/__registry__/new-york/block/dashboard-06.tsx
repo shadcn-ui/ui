@@ -216,7 +216,9 @@ export default function Dashboard() {
               </nav>
             </SheetContent>
           </Sheet>
-          <Breadcrumb className="hidden md:flex" x-chunk="dashboard-06-chunk-0">
+          <Breadcrumb
+            className="hidden md:flex" x-chunk="dashboard-06-chunk-0"
+          >
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
