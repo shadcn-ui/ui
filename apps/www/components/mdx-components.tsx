@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client"
 
 import * as React from "react"
@@ -167,6 +168,7 @@ const components = {
     />
   ),
   pre: ({
+    children,
     className,
     __rawString__,
     __npmCommand__,
@@ -185,6 +187,7 @@ const components = {
     __src__?: string
     __event__?: Event["name"]
   } & NpmCommands) => {
+    console.log(children)
     return (
       <StyleWrapper styleName={__style__}>
         <pre
@@ -193,7 +196,9 @@ const components = {
             className
           )}
           {...props}
-        />
+        >
+          {children}
+        </pre>
         {__rawString__ && !__npmCommand__ && (
           <CopyButton
             value={__rawString__}
@@ -219,14 +224,20 @@ const components = {
       </StyleWrapper>
     )
   },
-  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+  code: ({
+    children,
+    className,
+    ...props
+  }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
         "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm",
         className
       )}
       {...props}
-    />
+    >
+      {children}
+    </code>
   ),
   Image,
   Callout,
@@ -323,6 +334,8 @@ export function Mdx({ code }: MdxProps) {
   const Component = useMDXComponent(code, {
     style: config.style,
   })
+
+  console.log(config, components, Component)
 
   return (
     <div className="mdx">
