@@ -492,13 +492,6 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/toc")),
       files: ["registry/default/ui/toc.tsx"],
     },
-    "toc": {
-      name: "toc",
-      type: "components:ui",
-      registryDependencies: undefined,
-      component: React.lazy(() => import("@/registry/default/ui/toc")),
-      files: ["registry/default/ui/toc.tsx"],
-    },
     "toggle": {
       name: "toggle",
       type: "components:ui",
@@ -1900,27 +1893,6 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/toc-active")),
       files: ["registry/default/example/toc-active.tsx"],
     },
-    "toc-demo": {
-      name: "toc-demo",
-      type: "components:example",
-      registryDependencies: ["toc"],
-      component: React.lazy(() => import("@/registry/default/example/toc-demo")),
-      files: ["registry/default/example/toc-demo.tsx"],
-    },
-    "toc-nested": {
-      name: "toc-nested",
-      type: "components:example",
-      registryDependencies: ["toc"],
-      component: React.lazy(() => import("@/registry/default/example/toc-nested")),
-      files: ["registry/default/example/toc-nested.tsx"],
-    },
-    "toc-active": {
-      name: "toc-active",
-      type: "components:example",
-      registryDependencies: ["toc"],
-      component: React.lazy(() => import("@/registry/default/example/toc-active")),
-      files: ["registry/default/example/toc-active.tsx"],
-    },
     "toggle-group-demo": {
       name: "toggle-group-demo",
       type: "components:example",
@@ -3041,13 +3013,6 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
-    },
-    "toc": {
-      name: "toc",
-      type: "components:ui",
-      registryDependencies: undefined,
-      component: React.lazy(() => import("@/registry/new-york/ui/toc")),
-      files: ["registry/new-york/ui/toc.tsx"],
     },
     "toc": {
       name: "toc",
@@ -4435,27 +4400,6 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
-    },
-    "toc-demo": {
-      name: "toc-demo",
-      type: "components:example",
-      registryDependencies: ["toc"],
-      component: React.lazy(() => import("@/registry/new-york/example/toc-demo")),
-      files: ["registry/new-york/example/toc-demo.tsx"],
-    },
-    "toc-nested": {
-      name: "toc-nested",
-      type: "components:example",
-      registryDependencies: ["toc"],
-      component: React.lazy(() => import("@/registry/new-york/example/toc-nested")),
-      files: ["registry/new-york/example/toc-nested.tsx"],
-    },
-    "toc-active": {
-      name: "toc-active",
-      type: "components:example",
-      registryDependencies: ["toc"],
-      component: React.lazy(() => import("@/registry/new-york/example/toc-active")),
-      files: ["registry/new-york/example/toc-active.tsx"],
     },
     "toc-demo": {
       name: "toc-demo",
