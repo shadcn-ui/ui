@@ -17,8 +17,6 @@
       "accent-foreground": "zinc-900",
       "destructive": "red-500",
       "destructive-foreground": "zinc-50",
-      "informative": "blue-500",
-      "informative-foreground": "zinc-50",
       "border": "zinc-200",
       "input": "zinc-200",
       "ring": "zinc-950"
@@ -40,8 +38,6 @@
       "accent-foreground": "zinc-50",
       "destructive": "red-900",
       "destructive-foreground": "zinc-50",
-      "informative": "blue-900",
-      "informative-foreground": "zinc-50",
       "border": "zinc-800",
       "input": "zinc-800",
       "ring": "zinc-300"
@@ -65,8 +61,6 @@
       "accent-foreground": "240 5.9% 10%",
       "destructive": "0 84.2% 60.2%",
       "destructive-foreground": "0 0% 98%",
-      "informative": "217.2 91.2% 59.8%",
-      "informative-foreground": "0 0% 98%",
       "border": "240 5.9% 90%",
       "input": "240 5.9% 90%",
       "ring": "240 10% 3.9%"
@@ -88,8 +82,6 @@
       "accent-foreground": "0 0% 98%",
       "destructive": "0 62.8% 30.6%",
       "destructive-foreground": "0 0% 98%",
-      "informative": "224.4 64.3% 32.9%",
-      "informative-foreground": "0 0% 98%",
       "border": "240 3.7% 15.9%",
       "input": "240 3.7% 15.9%",
       "ring": "240 4.9% 83.9%"
