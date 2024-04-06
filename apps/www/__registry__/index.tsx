@@ -467,6 +467,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "toc": {
+      name: "toc",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/toc")),
+      source: "",
+      files: ["registry/default/ui/toc.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "toggle": {
       name: "toggle",
       type: "components:ui",
@@ -1754,6 +1765,39 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "toc-demo": {
+      name: "toc-demo",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/default/example/toc-demo")),
+      source: "",
+      files: ["registry/default/example/toc-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "toc-nested": {
+      name: "toc-nested",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/default/example/toc-nested")),
+      source: "",
+      files: ["registry/default/example/toc-nested.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "toc-active": {
+      name: "toc-active",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/default/example/toc-active")),
+      source: "",
+      files: ["registry/default/example/toc-active.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "toggle-group-demo": {
       name: "toggle-group-demo",
       type: "components:example",
@@ -2853,6 +2897,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/ui/toast")),
       source: "",
       files: ["registry/new-york/ui/toast.tsx","registry/new-york/ui/use-toast.ts","registry/new-york/ui/toaster.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "toc": {
+      name: "toc",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/toc")),
+      source: "",
+      files: ["registry/new-york/ui/toc.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -4140,6 +4195,39 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/toast-with-title")),
       source: "",
       files: ["registry/new-york/example/toast-with-title.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "toc-demo": {
+      name: "toc-demo",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/new-york/example/toc-demo")),
+      source: "",
+      files: ["registry/new-york/example/toc-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "toc-nested": {
+      name: "toc-nested",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/new-york/example/toc-nested")),
+      source: "",
+      files: ["registry/new-york/example/toc-nested.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "toc-active": {
+      name: "toc-active",
+      type: "components:example",
+      registryDependencies: ["toc"],
+      component: React.lazy(() => import("@/registry/new-york/example/toc-active")),
+      source: "",
+      files: ["registry/new-york/example/toc-active.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
