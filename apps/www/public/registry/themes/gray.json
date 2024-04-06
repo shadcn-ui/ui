@@ -19,8 +19,6 @@
       "accent-foreground": "220.9 39.3% 11%",
       "destructive": "0 84.2% 60.2%",
       "destructive-foreground": "210 20% 98%",
-      "informative": "217.2 91.2% 59.8%",
-      "informative-foreground": "210 20% 98%",
       "border": "220 13% 91%",
       "input": "220 13% 91%",
       "ring": "224 71.4% 4.1%"
@@ -42,8 +40,6 @@
       "accent-foreground": "210 20% 98%",
       "destructive": "0 62.8% 30.6%",
       "destructive-foreground": "210 20% 98%",
-      "informative": "224.4 64.3% 32.9%",
-      "informative-foreground": "210 20% 98%",
       "border": "215 27.9% 16.9%",
       "input": "215 27.9% 16.9%",
       "ring": "216 12.2% 83.9%"

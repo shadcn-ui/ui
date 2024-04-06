@@ -183,6 +183,12 @@ export const ui: Registry = [
     files: ["ui/radio-group.tsx"],
   },
   {
+    name: "rating",
+    type: "components:ui",
+    dependencies: ["@radix-ui/react-rating"],
+    files: ["ui/radio-group.tsx"],
+  },
+  {
     name: "resizable",
     type: "components:ui",
     dependencies: ["react-resizable-panels"],

@@ -302,10 +302,10 @@
   {
     "name": "rating",
     "dependencies": [
-      "@radix-ui/react-radio-group"
+      "@radix-ui/react-rating"
     ],
     "files": [
-      "ui/rating.tsx"
+      "ui/radio-group.tsx"
     ],
     "type": "components:ui"
   },
