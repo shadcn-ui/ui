@@ -551,13 +551,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "alert-informative": {
-      name: "alert-informative",
-      type: "components:example",
-      registryDependencies: ["alert"],
-      component: React.lazy(() => import("@/registry/default/example/alert-informative")),
-      files: ["registry/default/example/alert-informative.tsx"],
-    },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
       type: "components:example",
@@ -612,13 +605,6 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
-    },
-    "badge-informative": {
-      name: "badge-informative",
-      type: "components:example",
-      registryDependencies: ["badge"],
-      component: React.lazy(() => import("@/registry/default/example/badge-informative")),
-      files: ["registry/default/example/badge-informative.tsx"],
     },
     "badge-outline": {
       name: "badge-outline",
@@ -1824,13 +1810,6 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
-    },
-    "toast-informative": {
-      name: "toast-informative",
-      type: "components:example",
-      registryDependencies: ["toast"],
-      component: React.lazy(() => import("@/registry/default/example/toast-informative")),
-      files: ["registry/default/example/toast-informative.tsx"],
     },
     "toast-simple": {
       name: "toast-simple",
@@ -3052,13 +3031,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "alert-informative": {
-      name: "alert-informative",
-      type: "components:example",
-      registryDependencies: ["alert"],
-      component: React.lazy(() => import("@/registry/new-york/example/alert-informative")),
-      files: ["registry/new-york/example/alert-informative.tsx"],
-    },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
       type: "components:example",
@@ -3113,13 +3085,6 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
-    },
-    "badge-informative": {
-      name: "badge-informative",
-      type: "components:example",
-      registryDependencies: ["badge"],
-      component: React.lazy(() => import("@/registry/new-york/example/badge-informative")),
-      files: ["registry/new-york/example/badge-informative.tsx"],
     },
     "badge-outline": {
       name: "badge-outline",
@@ -4325,13 +4290,6 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
-    },
-    "toast-informative": {
-      name: "toast-informative",
-      type: "components:example",
-      registryDependencies: ["toast"],
-      component: React.lazy(() => import("@/registry/new-york/example/toast-informative")),
-      files: ["registry/new-york/example/toast-informative.tsx"],
     },
     "toast-simple": {
       name: "toast-simple",
