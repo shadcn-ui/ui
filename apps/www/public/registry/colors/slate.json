@@ -17,6 +17,8 @@
       "accent-foreground": "slate-900",
       "destructive": "red-500",
       "destructive-foreground": "slate-50",
+      "informative": "blue-500",
+      "informative-foreground": "slate-50",
       "border": "slate-200",
       "input": "slate-200",
       "ring": "slate-950"
@@ -38,6 +40,8 @@
       "accent-foreground": "slate-50",
       "destructive": "red-900",
       "destructive-foreground": "slate-50",
+      "informative": "blue-900",
+      "informative-foreground": "slate-50",
       "border": "slate-800",
       "input": "slate-800",
       "ring": "slate-300"
@@ -61,6 +65,8 @@
       "accent-foreground": "222.2 47.4% 11.2%",
       "destructive": "0 84.2% 60.2%",
       "destructive-foreground": "210 40% 98%",
+      "informative": "217.2 91.2% 59.8%",
+      "informative-foreground": "210 40% 98%",
       "border": "214.3 31.8% 91.4%",
       "input": "214.3 31.8% 91.4%",
       "ring": "222.2 84% 4.9%"
@@ -82,6 +88,8 @@
       "accent-foreground": "210 40% 98%",
       "destructive": "0 62.8% 30.6%",
       "destructive-foreground": "210 40% 98%",
+      "informative": "224.4 64.3% 32.9%",
+      "informative-foreground": "210 40% 98%",
       "border": "217.2 32.6% 17.5%",
       "input": "217.2 32.6% 17.5%",
       "ring": "212.7 26.8% 83.9%"
