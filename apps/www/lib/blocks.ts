@@ -4,10 +4,17 @@ import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
 import { Index } from "@/__registry__"
-import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
+import {
+  ImportDeclaration,
+  Project,
+  ScriptKind,
+  SourceFile,
+  SyntaxKind,
+} from "ts-morph"
 import { z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
+import { BackendProvider, backendProviders } from "@/registry/backend-provider"
 import { BlockChunk, blockSchema, registryEntrySchema } from "@/registry/schema"
 import { Style } from "@/registry/styles"
 
@@ -21,7 +28,9 @@ export async function getAllBlockIds(
   style: Style["name"] = DEFAULT_BLOCKS_STYLE
 ) {
   const blocks = await _getAllBlocks(style)
-  return blocks.map((block) => block.name)
+  return blocks
+    .filter((x) => x.name === "authentication-01")
+    .map((block) => block.name)
 }
 
 export async function getBlock(
@@ -30,44 +39,75 @@ export async function getBlock(
 ) {
   const entry = Index[style][name]
 
-  const content = await _getBlockContent(name, style)
+  /*
+   * With backend providers, we need to fetch an array of content for each backend provider
+   */
+  if (entry.backendProviders.length > 0) {
+    const content = await _getBlockContent(name, style, undefined)
 
-  const chunks = await Promise.all(
-    entry.chunks?.map(async (chunk: BlockChunk) => {
-      const code = await readFile(chunk.file)
-
-      const tempFile = await createTempSourceFile(`${chunk.name}.tsx`)
-      const sourceFile = project.createSourceFile(tempFile, code, {
-        scriptKind: ScriptKind.TSX,
+    let code: any = {}
+    await Promise.all(
+      entry.backendProviders.map(async (provider: BackendProvider["name"]) => {
+        const _content = await _getBlockContent(name, style, provider)
+        code[provider] = _content.code
       })
+    )
 
-      sourceFile
-        .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
-        .filter((node) => {
-          return node.getAttribute("x-chunk") !== undefined
-        })
-        ?.map((component) => {
-          component
-            .getAttribute("x-chunk")
-            ?.asKind(SyntaxKind.JsxAttribute)
-            ?.remove()
-        })
-
-      return {
-        ...chunk,
-        code: sourceFile.getText(),
-      }
+    return blockSchema.parse({
+      style,
+      highlightedCode: content.code, // ? await highlightCode(content.code) : "",
+      ...entry,
+      ...content,
+      backendProvidersCode: code,
+      type: "components:block",
     })
-  )
+  } else {
+    /*
+     * With no backend providers, we need return one content block
+     */
+    const content = await _getBlockContent(name, style, undefined)
 
-  return blockSchema.parse({
-    style,
-    highlightedCode: content.code ? await highlightCode(content.code) : "",
-    ...entry,
-    ...content,
-    chunks,
-    type: "components:block",
-  })
+    // no chunks are available on authentiction blocks yet
+    const chunks = await Promise.all(
+      entry.chunks?.map(async (chunk: BlockChunk) => {
+        const code = await readFile(chunk.file)
+
+        const tempFile = await createTempSourceFile(`${chunk.name}.tsx`)
+        const sourceFile = project.createSourceFile(tempFile, code, {
+          scriptKind: ScriptKind.TSX,
+        })
+
+        sourceFile
+          .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
+          .filter((node) => {
+            return node.getAttribute("x-chunk") !== undefined
+          })
+          ?.map((component) => {
+            component
+              .getAttribute("x-chunk")
+              ?.asKind(SyntaxKind.JsxAttribute)
+              ?.remove()
+          })
+
+        // console.log("source", sourceFile.getText())
+
+        return {
+          ...chunk,
+          code: sourceFile.getText(),
+        }
+      })
+    )
+
+    return blockSchema.parse({
+      style,
+      highlightedCode: content.code,
+      // ? await highlightCode(content.code) : "",
+      ...entry,
+      ...content,
+      chunks,
+      type: "components:block",
+    })
+  }
 }
 
 async function _getAllBlocks(style: Style["name"] = DEFAULT_BLOCKS_STYLE) {
@@ -102,7 +142,11 @@ async function createTempSourceFile(filename: string) {
   return path.join(dir, filename)
 }
 
-async function _getBlockContent(name: string, style: Style["name"]) {
+async function _getBlockContent(
+  name: string,
+  style: Style["name"],
+  provider: BackendProvider["name"] | undefined
+) {
   const raw = await _getBlockCode(name, style)
 
   const tempFile = await createTempSourceFile(`${name}.tsx`)
@@ -115,10 +159,29 @@ async function _getBlockContent(name: string, style: Style["name"]) {
   const iframeHeight = _extractVariable(sourceFile, "iframeHeight")
   const containerClassName = _extractVariable(sourceFile, "containerClassName")
 
+  if (provider) {
+    // get file text content of auth backendLogic/authentication-01 for each provider
+    const newFunctionCode = await readFile(
+      path.join(`backendLogic/${name}`, `${provider}.tsx`)
+    )
+
+    console.log(provider, newFunctionCode)
+    replaceFunction(sourceFile, "handleSubmit", newFunctionCode)
+  }
+
+  // Usage example:
+  removeParameter(sourceFile, "LoginForm", "backendProvider")
+  // remove redundant imports
+  removeImportsWithSubstring(project, sourceFile, "backendLogic")
+  removeImportsWithSubstring(project, sourceFile, "backend-provider")
+
   // Format the code.
+
   let code = sourceFile.getText()
   code = code.replaceAll(`@/registry/${style}/`, "@/components/")
   code = code.replaceAll("export default", "export")
+
+  // console.log("code", code)
 
   return {
     description,
@@ -143,4 +206,78 @@ function _extractVariable(sourceFile: SourceFile, name: string) {
   variable.remove()
 
   return value
+}
+
+function replaceFunction(
+  sourceFile: SourceFile,
+  name: string,
+  newFunctionCode: string
+) {
+  // const _function = sourceFile.getClass(name)
+
+  if (sourceFile) {
+    // Find all function declarations in the file
+    const functionDeclarations = sourceFile.getDescendantsOfKind(
+      SyntaxKind.FunctionDeclaration
+    )
+
+    // Iterate over function declarations
+    for (const declaration of functionDeclarations) {
+      // Check if the function has default export
+      if (declaration.isDefaultExport()) {
+        // Search for function declaration inside the function
+        const foundFunction = declaration
+          .getDescendantsOfKind(SyntaxKind.FunctionDeclaration)
+          .find((subDeclaration) => subDeclaration.getName() === name)
+        if (foundFunction) {
+          // Replace the function declaration with the new implementation
+          foundFunction.replaceWithText(newFunctionCode)
+          break // Stop searching once found
+        }
+      }
+    }
+  } else {
+    console.log("Source file not found.")
+  }
+}
+
+function removeParameter(
+  sourceFile: SourceFile,
+  functionName: string,
+  parameterName: string
+) {
+  // Find the function declaration by name
+  const functionDeclaration = sourceFile
+    .getFunctions()
+    .find((func) => func.getName() === functionName)
+  if (functionDeclaration) {
+    // Find the parameter by name
+    const parameter = functionDeclaration.getParameter(parameterName)
+    if (parameter) {
+      // Remove the parameter
+      parameter.remove()
+    } else {
+      console.log(
+        `Parameter '${parameterName}' not found in '${functionName}' function.`
+      )
+    }
+  } else {
+    // console.log(`Function '${functionName}' not found.`)
+  }
+}
+function removeImportsWithSubstring(
+  project: Project,
+  sourceFile: SourceFile,
+  substring: string
+) {
+  sourceFile
+    .getImportDeclarations()
+    .forEach((importDeclaration: ImportDeclaration) => {
+      const importPath = importDeclaration.getModuleSpecifierValue()
+      if (importPath && importPath.includes(substring)) {
+        importDeclaration.remove()
+      }
+    })
+
+  project.saveSync()
 }

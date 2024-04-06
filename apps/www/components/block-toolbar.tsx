@@ -26,6 +26,8 @@ import {
 } from "@/registry/new-york/ui/toggle-group"
 import { Block } from "@/registry/schema"
 
+import { BackendProviderSwitcher } from "./backend-provider-switcher"
+
 export function BlockToolbar({
   block,
   resizablePanelRef,
@@ -56,6 +58,10 @@ export function BlockToolbar({
         </TabsList>
         <Separator orientation="vertical" className="mx-2 hidden h-4 md:flex" />
         <StyleSwitcher
+          className="h-[calc(theme(spacing.7)_-_1px)] dark:h-7"
+          disabled={isLiftMode}
+        />
+        <BackendProviderSwitcher
           className="h-[calc(theme(spacing.7)_-_1px)] dark:h-7"
           disabled={isLiftMode}
         />

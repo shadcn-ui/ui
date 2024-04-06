@@ -22,7 +22,7 @@ export default function LoginForm() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle className="text-2xl">Login</CardTitle>
+        <CardTitle className="text-2xl">Login HELLO WORLD</CardTitle>
         <CardDescription>
           Enter your email below to login to your account.
         </CardDescription>

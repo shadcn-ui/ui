@@ -30,6 +30,8 @@ export function BlockPreview({
     return null
   }
 
+  console.log(block.backendProvidersCode)
+
   return (
     <Tabs
       id={block.name}
@@ -63,7 +65,11 @@ export function BlockPreview({
               </div>
             ) : null}
             <iframe
-              src={`/blocks/${block.style}/${block.name}`}
+              src={`/blocks/${block.style}/${block.name}${
+                config.backendProvider
+                  ? `?backendProvider=${config.backendProvider}`
+                  : ""
+              }`}
               height={block.container?.height}
               className="chunk-mode relative z-20 w-full bg-background"
               onLoad={() => {
@@ -81,11 +87,16 @@ export function BlockPreview({
         </ResizablePanelGroup>
       </TabsContent>
       <TabsContent value="code">
-        <div
+        {/* <div
           data-rehype-pretty-code-fragment
           dangerouslySetInnerHTML={{ __html: block.highlightedCode }}
           className="w-full overflow-hidden rounded-md [&_pre]:my-0 [&_pre]:h-[--container-height] [&_pre]:overflow-auto [&_pre]:whitespace-break-spaces [&_pre]:p-6 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed"
-        />
+        /> */}
+        <pre>
+          {block.backendProvidersCode && config.backendProvider
+            ? block.backendProvidersCode[config.backendProvider]
+            : block.highlightedCode}
+        </pre>
       </TabsContent>
     </Tabs>
   )

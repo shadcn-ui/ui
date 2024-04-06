@@ -13,6 +13,13 @@ export const blockChunkSchema = z.object({
     .optional(),
 })
 
+const backendProviderValues = ["next-auth", "supabase", "auth0"]
+
+const isBackendProvider = (
+  value: unknown
+): value is (typeof backendProviderValues)[number] =>
+  backendProviderValues.includes(value as string)
+
 export const registryEntrySchema = z.object({
   name: z.string(),
   description: z.string().optional(),
@@ -28,6 +35,7 @@ export const registryEntrySchema = z.object({
     "components:block",
   ]),
   category: z.string().optional(),
+  backendProviders: z.array(z.string()).optional(),
   subcategory: z.string().optional(),
   chunks: z.array(blockChunkSchema).optional(),
 })
@@ -49,6 +57,7 @@ export const blockSchema = registryEntrySchema.extend({
     })
     .optional(),
   code: z.string(),
+  backendProvidersCode: z.any().optional(),
   highlightedCode: z.string(),
 })
 

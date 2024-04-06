@@ -110,6 +110,7 @@ export const blocks: Registry = [
     type: "components:block",
     registryDependencies: ["button", "card", "input", "label"],
     files: ["block/authentication-01.tsx"],
+    backendProviders: ["next-auth", "supabase", "auth0"],
     category: "Authentication",
     subcategory: "Login",
   },

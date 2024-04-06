@@ -12,6 +12,7 @@ import { AnimatePresence } from "framer-motion"
 
 import { BlockChunk } from "@/components/block-chunk"
 import { BlockWrapper } from "@/components/block-wrapper"
+import { BackendProvider } from "@/registry/backend-provider"
 
 export async function generateMetadata({
   params,
@@ -69,18 +70,26 @@ export async function generateStaticParams() {
 
 export default async function BlockPage({
   params,
+  searchParams,
 }: {
   params: {
     style: Style["name"]
     name: string
   }
+  searchParams: {
+    backendProvider: BackendProvider["name"]
+  }
 }) {
   const { name, style } = params
   const block = await getBlock(name, style)
 
+  console.log("searchParams", searchParams.backendProvider)
+
   if (!block) {
     return notFound()
   }
+
+  // console.log("block", block)
 
   const Component = block.component
 
@@ -91,7 +100,7 @@ export default async function BlockPage({
   return (
     <div className={cn(block.container?.className || "", "theme-zinc")}>
       <BlockWrapper block={block}>
-        <Component />
+        <Component backendProvider={searchParams.backendProvider} />
         {chunks?.map((chunk, index) => (
           <BlockChunk
             key={chunk.name}

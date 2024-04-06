@@ -228,6 +228,11 @@ export const Index: Record<string, any> = {
       files: [${resolveFiles.map((file) => `"${file}"`)}],
       category: "${item.category}",
       subcategory: "${item.subcategory}",
+      backendProviders: [${
+        item.backendProviders
+          ? item.backendProviders.map((provider) => `"${provider}"`)
+          : ``
+      }],
       chunks: [${chunks.map(
         (chunk) => `{
         name: "${chunk.name}",
