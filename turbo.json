@@ -10,10 +10,7 @@
         "UPSTASH_REDIS_REST_TOKEN",
         "COMPONENTS_REGISTRY_URL",
         "npm_config_user_agent",
-        "https_proxy",
-        "V0_URL",
-        "V0_EDIT_SECRET",
-        "DEPLOYMENT_PROTECTION_BYPASS"
+        "https_proxy"
       ],
       "outputs": ["dist/**", ".next/**"]
     },

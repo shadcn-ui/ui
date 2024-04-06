@@ -4,25 +4,27 @@ import * as React from "react"
 import Link from "next/link"
 
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { BreadcrumbPage } from "@/registry/default/ui/breadcrumb"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerTrigger,
+} from "@/registry/default/ui/drawer"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/registry/new-york/ui/breadcrumb"
 import { Button } from "@/registry/new-york/ui/button"
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
 } from "@/registry/new-york/ui/drawer"
 import {
   DropdownMenu,
