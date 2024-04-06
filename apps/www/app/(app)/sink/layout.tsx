@@ -1,8 +1,8 @@
 import Link from "next/link"
 
-import { cn } from "@/lib/utils"
 import { ThemeWrapper } from "@/components/theme-wrapper"
 import { styles } from "@/registry/styles"
+import { cn } from "@/lib/utils"
 
 interface SinkLayoutProps {
   children: React.ReactNode

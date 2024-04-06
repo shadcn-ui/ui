@@ -70,9 +70,6 @@ exports[`transform tailwind prefix 4`] = `
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 20% 98%;
  
-    --informative: 210 84.2% 60.2%;
-    --informative-foreground: 210 20% 98%;
- 
     --ring: 217.9 10.6% 64.9%;
  
     --radius: 0.5rem;
@@ -105,9 +102,6 @@ exports[`transform tailwind prefix 4`] = `
  
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
- 
-    --informative: 210 62.8% 30.6%;
-    --informative-foreground: 210 85.7% 97.3%;
  
     --ring: 215 27.9% 16.9%;
   }

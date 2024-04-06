@@ -89,10 +89,6 @@ module.exports = {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
-        informative: {
-          DEFAULT: "hsl(var(--informative))",
-          foreground: "hsl(var(--informative-foreground))",
-        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -212,10 +208,6 @@ const config = {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
-        },
-        informative: {
-          DEFAULT: "hsl(var(--informative))",
-          foreground: "hsl(var(--informative-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
