@@ -13,6 +13,7 @@ import { absoluteUrl, cn } from "@/lib/utils"
 import { Mdx } from "@/components/mdx-components"
 import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
+import { badgeVariants } from "@/registry/new-york/ui/badge"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -20,7 +21,6 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/registry/new-york/ui/breadcrumb"
-import { badgeVariants } from "@/registry/new-york/ui/badge"
 import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
 
 interface DocPageProps {
