@@ -263,11 +263,6 @@ export const ui: Registry = [
     files: ["ui/toast.tsx", "ui/use-toast.ts", "ui/toaster.tsx"],
   },
   {
-    name: "toc",
-    type: "components:ui",
-    files: ["ui/toc.tsx"],
-  },
-  {
     name: "toggle",
     type: "components:ui",
     dependencies: ["@radix-ui/react-toggle"],
