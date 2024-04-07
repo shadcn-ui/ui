@@ -606,6 +606,12 @@ export const examples: Registry = [
     files: ["example/stepper-demo.tsx"],
   },
   {
+    name: "stepper-custom-styles",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-custom-styles.tsx"],
+  },
+  {
     name: "stepper-orientation",
     type: "components:example",
     registryDependencies: ["stepper"],

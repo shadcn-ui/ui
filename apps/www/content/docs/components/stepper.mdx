@@ -254,6 +254,34 @@ You can also use the component with server actions.
 
 ### Custom styles
 
+In this example we will change the style of the steps and the separator. In addition, we will also change the variables that define the size and gap of the icon for each step.
+
+```tsx {5-13,15-17}
+...
+  <Stepper
+    initialStep={0}
+    steps={steps}
+    styles={{
+      "step-button-container": cn(
+        "text-purple-700 rounded-none",
+        "data-[current=true]:border-purple-500 data-[current=true]:bg-purple-50",
+        "data-[active=true]:bg-purple-500 data-[active=true]:border-purple-500"
+      ),
+      "horizontal-step":
+        "data-[completed=true]:[&:not(:last-child)]:after:bg-purple-500",
+    }}
+    variables={{
+      "--step-icon-size": "60px",
+      "--step-gap": "20px",
+    }}
+  >
+  // Rest of the code
+  </Stepper>
+...
+```
+
+<ComponentPreview name="stepper-custom-styles" />
+
 To customize the styles of the Steps component, `Stepper` provides a list of css classes for each part of the component. You can use these classes to override the default styles. Below is a list of the classes that are available.
 
 - `main-container`: The main container of the stepper.
