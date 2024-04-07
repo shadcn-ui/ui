@@ -264,6 +264,7 @@ const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
           expandVerticalSteps,
           steps,
           scrollTracking,
+          styles
         }}
       >
         <div
