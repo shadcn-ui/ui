@@ -94,12 +94,6 @@ export default function ComponentsPage() {
 }
 
 function GridListPreview({ side = "left" }: { side?: "left" | "right" }) {
-  const getCompLabel = (componentName: string) => {
-    return Object.values(docsConfig.sidebarNav[1].items).find(
-      (item) => item.title.toLowerCase().split(" ").join("-") === componentName
-    )?.label
-  }
-
   return (
     <div className="flex flex-col gap-3 xl:gap-4 2xl:gap-6">
       {registry
@@ -107,7 +101,7 @@ function GridListPreview({ side = "left" }: { side?: "left" | "right" }) {
         .filter((_, index) => (index + (side === "right" ? 1 : 0)) % 2 === 0)
         .map((component, index) => (
           <Card
-            key={side + index + component.name}
+            key={side + index}
             className="relative flex h-min flex-col transition-colors hover:bg-accent/70"
           >
             <Link
@@ -122,9 +116,19 @@ function GridListPreview({ side = "left" }: { side?: "left" | "right" }) {
                   {component.name.charAt(0).toLocaleUpperCase() +
                     component.name.slice(1)}
                 </span>
-                {getCompLabel(component.name) && (
+                {docsConfig.sidebarNav.find(
+                  (item) =>
+                    item.title.toLowerCase().split(" ").join("-") ===
+                    component.name
+                )?.label && (
                   <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                    {getCompLabel(component.name)}
+                    {
+                      docsConfig.sidebarNav.find(
+                        (item) =>
+                          item.title.toLowerCase().split(" ").join("-") ===
+                          component.name
+                      )?.label
+                    }
                   </span>
                 )}
               </CardTitle>
