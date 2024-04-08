@@ -20,7 +20,7 @@ export function MainNav() {
           {siteConfig.name}
         </span>
       </Link>
-      <nav className="flex items-center gap-4 text-sm lg:gap-6">
+      <nav className="flex items-center gap-6 text-sm">
         <Link
           href="/docs"
           className={cn(
@@ -62,17 +62,6 @@ export function MainNav() {
           )}
         >
           Examples
-        </Link>
-        <Link
-          href="/blocks"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/blocks")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Blocks
         </Link>
         <Link
           href={siteConfig.links.github}

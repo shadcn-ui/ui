@@ -424,13 +424,6 @@
     "type": "components:ui"
   },
   {
-    "name": "toc",
-    "files": [
-      "ui/toc.tsx"
-    ],
-    "type": "components:ui"
-  },
-  {
     "name": "toggle",
     "dependencies": [
       "@radix-ui/react-toggle"

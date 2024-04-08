@@ -7,18 +7,23 @@ import {
 
 export default function InputOTPDemo() {
   return (
-    <InputOTP maxLength={6}>
-      <InputOTPGroup>
-        <InputOTPSlot index={0} />
-        <InputOTPSlot index={1} />
-        <InputOTPSlot index={2} />
-      </InputOTPGroup>
-      <InputOTPSeparator />
-      <InputOTPGroup>
-        <InputOTPSlot index={3} />
-        <InputOTPSlot index={4} />
-        <InputOTPSlot index={5} />
-      </InputOTPGroup>
-    </InputOTP>
+    <InputOTP
+      maxLength={6}
+      render={({ slots }) => (
+        <>
+          <InputOTPGroup>
+            {slots.slice(0, 3).map((slot, index) => (
+              <InputOTPSlot key={index} {...slot} />
+            ))}{" "}
+          </InputOTPGroup>
+          <InputOTPSeparator />
+          <InputOTPGroup>
+            {slots.slice(3).map((slot, index) => (
+              <InputOTPSlot key={index + 3} {...slot} />
+            ))}
+          </InputOTPGroup>
+        </>
+      )}
+    />
   )
 }

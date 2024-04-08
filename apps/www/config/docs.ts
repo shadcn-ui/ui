@@ -24,8 +24,18 @@ export const docsConfig: DocsConfig = {
       href: "/examples",
     },
     {
-      title: "Blocks",
-      href: "/blocks",
+      title: "Figma",
+      href: "/docs/figma",
+    },
+    {
+      title: "GitHub",
+      href: "https://github.com/shadcn/ui",
+      external: true,
+    },
+    {
+      title: "Twitter",
+      href: "https://twitter.com/shadcn",
+      external: true,
     },
   ],
   sidebarNav: [
@@ -309,12 +319,6 @@ export const docsConfig: DocsConfig = {
           title: "Toast",
           href: "/docs/components/toast",
           items: [],
-        },
-        {
-          title: "TOC",
-          href: "/docs/components/toc",
-          items: [],
-          label: "New",
         },
         {
           title: "Toggle",
