@@ -376,6 +376,9 @@ export const Index: Record<string, any> = {
       registryDependencies: ["alert"],
       component: React.lazy(() => import("@/registry/default/example/alert-destructive")),
       files: ["registry/default/example/alert-destructive.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
     },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
@@ -411,6 +414,9 @@ export const Index: Record<string, any> = {
       registryDependencies: ["badge"],
       component: React.lazy(() => import("@/registry/default/example/badge-destructive")),
       files: ["registry/default/example/badge-destructive.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
     },
     "badge-outline": {
       name: "badge-outline",
@@ -1277,6 +1283,9 @@ export const Index: Record<string, any> = {
       registryDependencies: ["toast"],
       component: React.lazy(() => import("@/registry/default/example/toast-destructive")),
       files: ["registry/default/example/toast-destructive.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
     },
     "toast-simple": {
       name: "toast-simple",
@@ -1895,6 +1904,9 @@ export const Index: Record<string, any> = {
       registryDependencies: ["alert"],
       component: React.lazy(() => import("@/registry/new-york/example/alert-destructive")),
       files: ["registry/new-york/example/alert-destructive.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
     },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
@@ -1930,6 +1942,9 @@ export const Index: Record<string, any> = {
       registryDependencies: ["badge"],
       component: React.lazy(() => import("@/registry/new-york/example/badge-destructive")),
       files: ["registry/new-york/example/badge-destructive.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
     },
     "badge-outline": {
       name: "badge-outline",
@@ -2796,6 +2811,9 @@ export const Index: Record<string, any> = {
       registryDependencies: ["toast"],
       component: React.lazy(() => import("@/registry/new-york/example/toast-destructive")),
       files: ["registry/new-york/example/toast-destructive.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
     },
     "toast-simple": {
       name: "toast-simple",
