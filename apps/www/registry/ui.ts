@@ -185,7 +185,7 @@ export const ui: Registry = [
   {
     name: "rating",
     type: "components:ui",
-    dependencies: ["@radix-ui/react-rating"],
+    dependencies: ["@radix-ui/react-radio-group"],
     files: ["ui/radio-group.tsx"],
   },
   {

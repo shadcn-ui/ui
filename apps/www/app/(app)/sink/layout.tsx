@@ -1,6 +1,5 @@
 import Link from "next/link"
 
-import { cn } from "@/lib/utils"
 import { ThemeWrapper } from "@/components/theme-wrapper"
 import { styles } from "@/registry/styles"
 
