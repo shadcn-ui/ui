@@ -86,7 +86,7 @@ interface ExampleCodeLinkProps {
   pathname: string | null
 }
 
-function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
+export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
   const example = examples.find((example) => pathname?.startsWith(example.href))
 
   if (!example?.code) {
