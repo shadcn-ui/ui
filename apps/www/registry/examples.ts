@@ -504,42 +504,6 @@ export const examples: Registry = [
     files: ["example/radio-group-form.tsx"],
   },
   {
-    name: "rating-demo",
-    type: "components:example",
-    registryDependencies: ["rating"],
-    files: ["example/rating-demo.tsx"],
-  },
-  {
-    name: "rating-count",
-    type: "components:example",
-    registryDependencies: ["rating"],
-    files: ["example/rating-count.tsx"],
-  },
-  {
-    name: "rating-custom-icon",
-    type: "components:example",
-    registryDependencies: ["rating"],
-    files: ["example/rating-custom-icon.tsx"],
-  },
-  {
-    name: "rating-custom-label",
-    type: "components:example",
-    registryDependencies: ["rating"],
-    files: ["example/rating-custom-label.tsx"],
-  },
-  {
-    name: "rating-disabled",
-    type: "components:example",
-    registryDependencies: ["rating"],
-    files: ["example/rating-disabled.tsx"],
-  },
-  {
-    name: "rating-readonly",
-    type: "components:example",
-    registryDependencies: ["rating"],
-    files: ["example/rating-readonly.tsx"],
-  },
-  {
     name: "resizable-demo",
     type: "components:example",
     registryDependencies: ["resizable"],
