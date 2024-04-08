@@ -27,9 +27,6 @@
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 240 5.9% 10%;
 
   --radius: 0.5rem;
@@ -63,9 +60,6 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 240 4.9% 83.9%;
 }
 
@@ -96,9 +90,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 222.2 84% 4.9%;
 
@@ -133,9 +124,6 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 212.7 26.8% 83.9;
 }
 
@@ -166,9 +154,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 20 14.3% 4.1%;
 
@@ -203,9 +188,6 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 60 9.1% 97.8%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 24 5.7% 82.9%;
 }
 
@@ -236,9 +218,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 20% 98%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 224 71.4% 4.1%;
 
@@ -273,9 +252,6 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 20% 98%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 216 12.2% 83.9%;
 }
 
@@ -306,9 +282,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 0 0% 3.9%;
 
@@ -343,9 +316,6 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 0 0% 83.1%;
 }
 
@@ -376,9 +346,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 0 72.2% 50.6%;
 
@@ -413,9 +380,6 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 0 72.2% 50.6%;
 }
 
@@ -446,9 +410,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 346.8 77.2% 49.8%;
 
@@ -483,9 +444,6 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 85.7% 97.3%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 346.8 77.2% 49.8%;
 }
 
@@ -516,9 +474,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 24.6 95% 53.1%;
 
@@ -553,9 +508,6 @@
   --destructive: 0 72.2% 50.6%;
   --destructive-foreground: 60 9.1% 97.8%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 20.5 90.2% 48.2%;
 }
 
@@ -586,9 +538,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 142.1 76.2% 36.3%;
 
@@ -623,9 +572,6 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 85.7% 97.3%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 142.4 71.8% 29.2%;
 }
 
@@ -656,9 +602,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 221.2 83.2% 53.3%;
 
@@ -693,9 +636,6 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 224.3 76.3% 48%;
 }
 
@@ -726,9 +666,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 20 14.3% 4.1%;
 
@@ -763,9 +700,6 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 60 9.1% 97.8%;
 
-  --informative: ;
-  --informative-foreground: ;
-
   --ring: 35.5 91.7% 32.9%;
 }
 
@@ -796,9 +730,6 @@
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 20% 98%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 262.1 83.3% 57.8%;
 
@@ -832,9 +763,6 @@
 
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 20% 98%;
-
-  --informative: ;
-  --informative-foreground: ;
 
   --ring: 263.4 70% 50.4%;
 }
