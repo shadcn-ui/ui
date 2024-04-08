@@ -75,9 +75,9 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
             </Link>
           ))}
         </div>
+        <ExampleCodeLink pathname={pathname} />
         <ScrollBar orientation="horizontal" className="invisible" />
       </ScrollArea>
-      <ExampleCodeLink pathname={pathname} />
     </div>
   )
 }
