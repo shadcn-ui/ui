@@ -9,12 +9,6 @@ import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
 import {
-  ContextMenu,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
-  ContextMenuTrigger,
-} from "@/registry/new-york/ui/context-menu"
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -166,47 +160,13 @@ export function CopyNpmCommandButton({
         },
       })
       setHasCopied(true)
-      localStorage.setItem("shadcn-ui_last-used-pm", pm)
     },
     []
   )
 
-  type PM = "npm" | "pnpm" | "yarn" | "bun" | null
-  let lastUsedPm: PM = null
-  if (typeof window !== "undefined" && window.localStorage) {
-    lastUsedPm =
-      (localStorage.getItem("shadcn-ui_last-used-pm") as
-        | "npm"
-        | "pnpm"
-        | "yarn"
-        | "bun"
-        | null) ?? null
-  }
-
-  const getCodeForLastUsedPm = React.useCallback(() => {
-    switch (lastUsedPm) {
-      case "npm":
-        return commands.__npmCommand__
-      case "pnpm":
-        return commands.__pnpmCommand__
-      case "yarn":
-        return commands.__yarnCommand__
-      case "bun":
-        return commands.__bunCommand__
-      default:
-        return commands.__npmCommand__
-    }
-  }, [
-    commands.__bunCommand__,
-    commands.__npmCommand__,
-    commands.__pnpmCommand__,
-    commands.__yarnCommand__,
-    lastUsedPm,
-  ])
-
   return (
-    <ContextMenu>
-      <ContextMenuTrigger asChild>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
         <Button
           size="icon"
           variant="ghost"
@@ -214,9 +174,6 @@ export function CopyNpmCommandButton({
             "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
             className
           )}
-          onClick={() => {
-            copyCommand(getCodeForLastUsedPm(), lastUsedPm ?? "npm")
-          }}
         >
           {hasCopied ? (
             <CheckIcon className="h-3 w-3" />
@@ -225,33 +182,29 @@ export function CopyNpmCommandButton({
           )}
           <span className="sr-only">Copy</span>
         </Button>
-      </ContextMenuTrigger>
-      <ContextMenuContent>
-        <ContextMenuCheckboxItem
-          checked={lastUsedPm === "npm"}
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem
           onClick={() => copyCommand(commands.__npmCommand__, "npm")}
         >
           npm
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem
-          checked={lastUsedPm === "yarn"}
+        </DropdownMenuItem>
+        <DropdownMenuItem
           onClick={() => copyCommand(commands.__yarnCommand__, "yarn")}
         >
           yarn
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem
-          checked={lastUsedPm === "pnpm"}
+        </DropdownMenuItem>
+        <DropdownMenuItem
           onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
         >
           pnpm
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem
-          checked={lastUsedPm === "bun"}
+        </DropdownMenuItem>
+        <DropdownMenuItem
           onClick={() => copyCommand(commands.__bunCommand__, "bun")}
         >
           bun
-        </ContextMenuCheckboxItem>
-      </ContextMenuContent>
-    </ContextMenu>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
