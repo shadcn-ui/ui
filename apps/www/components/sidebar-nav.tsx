@@ -18,18 +18,10 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
       {items.map((item, index) => (
         <div key={index} className={cn("pb-4")}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
-            {item.href ? (
-              <Link href={item.href}>{item.title}</Link>
-            ) : (
-              item.title
-            )}
+            {item.title}
           </h4>
           {item?.items?.length && (
-            <DocsSidebarNavItems
-              inset={!!item.href}
-              items={item.items}
-              pathname={pathname}
-            />
+            <DocsSidebarNavItems items={item.items} pathname={pathname} />
           )}
         </div>
       ))}
@@ -40,21 +32,14 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
 interface DocsSidebarNavItemsProps {
   items: SidebarNavItem[]
   pathname: string | null
-  inset?: boolean
 }
 
 export function DocsSidebarNavItems({
   items,
   pathname,
-  inset,
 }: DocsSidebarNavItemsProps) {
   return items?.length ? (
-    <div
-      className={cn(
-        "grid grid-flow-row auto-rows-max text-sm",
-        inset && "pl-2"
-      )}
-    >
+    <div className="grid grid-flow-row auto-rows-max text-sm">
       {items.map((item, index) =>
         item.href && !item.disabled ? (
           <Link
