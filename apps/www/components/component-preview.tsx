@@ -40,6 +40,10 @@ export function ComponentPreview({
   const Code = Codes[index]
 
   const Preview = React.useMemo(() => {
+    if (!styles.map((style) => style.name).includes(config.style)) {
+      throw new Error(`Style \`${config.style}\` not found in registry. Please clear your local storage and try again.`)
+    }
+
     const Component = Index[config.style][name]?.component
 
     if (!Component) {
