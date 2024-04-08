@@ -7,6 +7,9 @@ import { NpmCommands } from "types/unist"
 
 import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
+import { useConfig } from "@/hooks/use-config"
+import { useMounted } from "@/hooks/use-mounted"
+import { Badge } from "@/registry/new-york/ui/badge"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   ContextMenu,
@@ -20,6 +23,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/new-york/ui/dropdown-menu"
+import { Skeleton } from "@/registry/new-york/ui/skeleton"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/new-york/ui/tooltip"
 
 interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   value: string
@@ -149,6 +154,8 @@ export function CopyNpmCommandButton({
   ...props
 }: CopyNpmCommandButtonProps) {
   const [hasCopied, setHasCopied] = React.useState(false)
+  const [config, setConfig] = useConfig()
+  const mounted = useMounted()
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -166,25 +173,16 @@ export function CopyNpmCommandButton({
         },
       })
       setHasCopied(true)
-      localStorage.setItem("shadcn-ui_last-used-pm", pm)
+      setConfig((prev) => ({
+        ...prev,
+        pm,
+      }))
     },
     []
   )
 
-  type PM = "npm" | "pnpm" | "yarn" | "bun" | null
-  let lastUsedPm: PM = null
-  if (typeof window !== "undefined" && window.localStorage) {
-    lastUsedPm =
-      (localStorage.getItem("shadcn-ui_last-used-pm") as
-        | "npm"
-        | "pnpm"
-        | "yarn"
-        | "bun"
-        | null) ?? null
-  }
-
   const getCodeForLastUsedPm = React.useCallback(() => {
-    switch (lastUsedPm) {
+    switch (config.pm ?? "npm") {
       case "npm":
         return commands.__npmCommand__
       case "pnpm":
@@ -201,57 +199,74 @@ export function CopyNpmCommandButton({
     commands.__npmCommand__,
     commands.__pnpmCommand__,
     commands.__yarnCommand__,
-    lastUsedPm,
+    config,
   ])
 
   return (
-    <ContextMenu>
-      <ContextMenuTrigger asChild>
-        <Button
-          size="icon"
-          variant="ghost"
-          className={cn(
-            "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
-            className
-          )}
-          onClick={() => {
-            copyCommand(getCodeForLastUsedPm(), lastUsedPm ?? "npm")
-          }}
-        >
-          {hasCopied ? (
-            <CheckIcon className="h-3 w-3" />
-          ) : (
-            <CopyIcon className="h-3 w-3" />
-          )}
-          <span className="sr-only">Copy</span>
-        </Button>
-      </ContextMenuTrigger>
-      <ContextMenuContent>
-        <ContextMenuCheckboxItem
-          checked={lastUsedPm === "npm"}
-          onClick={() => copyCommand(commands.__npmCommand__, "npm")}
-        >
-          npm
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem
-          checked={lastUsedPm === "yarn"}
-          onClick={() => copyCommand(commands.__yarnCommand__, "yarn")}
-        >
-          yarn
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem
-          checked={lastUsedPm === "pnpm"}
-          onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
-        >
-          pnpm
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem
-          checked={lastUsedPm === "bun"}
-          onClick={() => copyCommand(commands.__bunCommand__, "bun")}
-        >
-          bun
-        </ContextMenuCheckboxItem>
-      </ContextMenuContent>
-    </ContextMenu>
+    <div
+      className={cn("flex flex-row items-center flex-nowrap gap-1", className)}
+    >
+      {config.pm ? (
+        mounted ? (
+          <Badge className="pointer-events-none text-white bg-[rgb(63_63_70_/_0.5)]">
+            {config.pm}
+          </Badge>
+        ) : (
+          <Skeleton className="h-6 w-12 rounded-md bg-zinc-300" />
+        )
+      ) : null}
+      <ContextMenu>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <ContextMenuTrigger asChild>
+              <Button
+                size="icon"
+                variant="ghost"
+                className={cn(
+                  "z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50"
+                )}
+                onClick={() => {
+                  copyCommand(getCodeForLastUsedPm(), config.pm ?? "npm")
+                }}
+              >
+                {hasCopied ? (
+                  <CheckIcon className="h-3 w-3" />
+                ) : (
+                  <CopyIcon className="h-3 w-3" />
+                )}
+                <span className="sr-only">Copy</span>
+              </Button>
+            </ContextMenuTrigger>
+          </TooltipTrigger>
+          <TooltipContent>Right click to change package manager</TooltipContent>
+        </Tooltip>
+        <ContextMenuContent>
+          <ContextMenuCheckboxItem
+            checked={config.pm === "npm"}
+            onClick={() => copyCommand(commands.__npmCommand__, "npm")}
+          >
+            npm
+          </ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem
+            checked={config.pm === "yarn"}
+            onClick={() => copyCommand(commands.__yarnCommand__, "yarn")}
+          >
+            yarn
+          </ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem
+            checked={config.pm === "pnpm"}
+            onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
+          >
+            pnpm
+          </ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem
+            checked={config.pm === "bun"}
+            onClick={() => copyCommand(commands.__bunCommand__, "bun")}
+          >
+            bun
+          </ContextMenuCheckboxItem>
+        </ContextMenuContent>
+      </ContextMenu>
+    </div>
   )
 }
