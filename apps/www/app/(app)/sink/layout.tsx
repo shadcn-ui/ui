@@ -14,10 +14,7 @@ export default function SinkLayout({ children }: SinkLayoutProps) {
       <div className="container">
         <div className="flex space-x-2 px-2 py-4">
           {styles.map((style) => (
-            <Link
-              href={`/sink/${style.name === "default" ? "" : style.name}`}
-              key={style.name}
-            >
+            <Link href={`/sink/${style.name}`} key={style.name}>
               {style.label}
             </Link>
           ))}
