@@ -327,12 +327,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "TOC",
-          href: "/docs/components/toc",
-          items: [],
-          label: "New",
-        },
-        {
           title: "Toggle",
           href: "/docs/components/toggle",
           items: [],
