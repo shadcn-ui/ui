@@ -26,7 +26,7 @@ const RatingItem = React.forwardRef<
         ref={ref}
         value={value}
         className={cn(
-          "aspect-square fill-transparent px-1.5 text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>svg]:stroke-primary",
+          "aspect-square fill-transparent px-1 text-primary ring-offset-background md:px-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>svg]:stroke-primary",
           props["aria-readonly"] && "pointer-events-none",
           selectedValue >= Number(value) && "[&>svg]:text-primary",
           className
@@ -69,35 +69,35 @@ const RatingGroup = React.forwardRef<
     )
 
     return (
-      <RadioGroupPrimitive.Root
-        className={cn(
-          "flex items-center",
-          props.disabled && "pointer-events-none",
-          className
-        )}
-        {...props}
-        ref={ref}
-        aria-readonly={readonly}
-        onValueChange={(value) => {
-          if (readonly) return
-          setSelectedValue(Number(value))
-          props.onValueChange && props.onValueChange(value)
-        }}
-        tabIndex={readonly ? -1 : 0}
-      >
-        {Array.from({ length: ratingSteps }, (_, i) => i + 1).map((value) => (
-          <RatingItem
-            key={value}
-            value={value.toString()}
-            Icon={Icon}
-            selectedValue={selectedValue}
-            aria-readonly={readonly}
-          />
-        ))}
-        <p className={cn("ml-2", !customLabel && "w-14")}>
-          {customLabel ? customLabel : `(${selectedValue} / ${ratingSteps})`}
-        </p>
-      </RadioGroupPrimitive.Root>
+      <div className="flex gap-x-2 gap-y-1 items-start flex-col-reverse flex-wrap md:items-center md:flex-row">
+        <RadioGroupPrimitive.Root
+          className={cn(
+            "flex items-center",
+            props.disabled && "cursor-not-allowed opacity-50",
+            className
+          )}
+          {...props}
+          ref={ref}
+          aria-readonly={readonly}
+          onValueChange={(value) => {
+            if (readonly) return
+            setSelectedValue(Number(value))
+            props.onValueChange && props.onValueChange(value)
+          }}
+          tabIndex={readonly ? -1 : 0}
+        >
+          {Array.from({ length: ratingSteps }, (_, i) => i + 1).map((value) => (
+            <RatingItem
+              key={value}
+              value={value.toString()}
+              Icon={Icon}
+              selectedValue={selectedValue}
+              aria-readonly={readonly}
+            />
+          ))}
+        </RadioGroupPrimitive.Root>
+        <p>{customLabel ?? `(${selectedValue} / ${ratingSteps})`}</p>
+      </div>
     )
   }
 )

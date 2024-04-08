@@ -305,7 +305,7 @@
       "@radix-ui/react-radio-group"
     ],
     "files": [
-      "ui/radio-group.tsx"
+      "ui/rating.tsx"
     ],
     "type": "components:ui"
   },

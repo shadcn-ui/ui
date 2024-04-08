@@ -330,7 +330,7 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/rating")),
       source: "",
-      files: ["registry/default/ui/radio-group.tsx"],
+      files: ["registry/default/ui/rating.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -2797,7 +2797,7 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/rating")),
       source: "",
-      files: ["registry/new-york/ui/radio-group.tsx"],
+      files: ["registry/new-york/ui/rating.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
