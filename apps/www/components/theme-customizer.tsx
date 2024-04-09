@@ -471,6 +471,7 @@ function CustomizerCode() {
               "muted",
               "accent",
               "destructive",
+              "informative",
             ].map((prefix) => (
               <>
                 <span className="line text-white">
@@ -527,6 +528,7 @@ function CustomizerCode() {
               "muted",
               "accent",
               "destructive",
+              "informative",
             ].map((prefix) => (
               <>
                 <span className="line text-white">
@@ -600,6 +602,8 @@ const BASE_STYLES_WITH_VARIABLES = `
     --accent-foreground: <%- colors.light["accent-foreground"] %>;
     --destructive: <%- colors.light["destructive"] %>;
     --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
+    --informative: <%- colors.light["informative"] %>;
+    --informative-foreground: <%- colors.light["informative-foreground"] %>;
     --border: <%- colors.light["border"] %>;
     --input: <%- colors.light["input"] %>;
     --ring: <%- colors.light["ring"] %>;
@@ -623,6 +627,8 @@ const BASE_STYLES_WITH_VARIABLES = `
     --accent-foreground: <%- colors.dark["accent-foreground"] %>;
     --destructive: <%- colors.dark["destructive"] %>;
     --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
+    --informative: <%- colors.dark["informative"] %>;
+    --informative-foreground: <%- colors.dark["informative-foreground"] %>;
     --border: <%- colors.dark["border"] %>;
     --input: <%- colors.dark["input"] %>;
     --ring: <%- colors.dark["ring"] %>;
