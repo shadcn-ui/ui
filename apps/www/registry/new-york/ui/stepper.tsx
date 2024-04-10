@@ -455,12 +455,15 @@ type VerticalStepProps = StepSharedProps & {
 }
 
 const verticalStepVariants = cva(
-  "flex flex-col relative transition-all duration-200",
-  {
+	[
+		"flex flex-col relative transition-all duration-200",
+		"data-[completed=true]:[&:not(:last-child)]:after:bg-blue-500",
+		"data-[invalid=true]:[&:not(:last-child)]:after:bg-destructive",
+	],  {
     variants: {
       variant: {
         circle: cn(
-          "pb-[var(--step-gap)] gap-[var(--step-gap)]",
+					"[&:not(:last-child)]:pb-[var(--step-gap)] [&:not(:last-child)]:gap-[var(--step-gap)]",
           "[&:not(:last-child)]:after:content-[''] [&:not(:last-child)]:after:w-[2px] [&:not(:last-child)]:after:bg-border",
           "[&:not(:last-child)]:after:inset-x-[calc(var(--step-icon-size)/2)]",
           "[&:not(:last-child)]:after:absolute",
@@ -511,6 +514,8 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
     const localIsLoading = isLoading || state === "loading"
     const localIsError = isError || state === "error"
 
+    const isLastStep = index === steps.length - 1;
+
     const active =
       variant === "line" ? isCompletedStep || isCurrentStep : isCompletedStep
     const checkIcon = checkIconProp || checkIconContext
@@ -537,8 +542,6 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
           verticalStepVariants({
             variant: variant?.includes("circle") ? "circle" : "line",
           }),
-          "data-[completed=true]:[&:not(:last-child)]:after:bg-blue-500",
-          "data-[invalid=true]:[&:not(:last-child)]:after:bg-destructive",
           styles?.["vertical-step"]
         )}
         data-optional={steps[index || 0]?.optional}
@@ -595,7 +598,7 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
           }}
           className={cn(
             "stepper__vertical-step-content",
-            "min-h-4",
+						!isLastStep && "min-h-4",
             variant !== "line" && "ps-[--step-icon-size]",
             variant === "line" && orientation === "vertical" && "min-h-0",
             styles?.["vertical-step-content"]
