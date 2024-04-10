@@ -57,8 +57,8 @@ importers:
         specifier: ^7.32.2
         version: 7.32.2(eslint@8.41.0)
       eslint-plugin-tailwindcss:
-        specifier: ^3.14.1
-        version: 3.14.1(tailwindcss@3.4.3)
+        specifier: ^3.15.1
+        version: 3.15.1(tailwindcss@3.4.3)
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -227,7 +227,7 @@ importers:
         version: 2.30.0
       embla-carousel-autoplay:
         specifier: 8.0.0-rc15
-        version: 8.0.0-rc15(embla-carousel@8.0.0-rc15)
+        version: 8.0.0-rc15(embla-carousel@8.0.1)
       embla-carousel-react:
         specifier: 8.0.0-rc15
         version: 8.0.0-rc15(react@18.2.0)
@@ -532,8 +532,8 @@ importers:
         specifier: ^7.32.2
         version: 7.32.2(eslint@8.44.0)
       eslint-plugin-tailwindcss:
-        specifier: ^3.14.1
-        version: 3.14.1(tailwindcss@3.4.3)
+        specifier: ^3.15.1
+        version: 3.15.1(tailwindcss@3.4.3)
       postcss:
         specifier: ^8.4.38
         version: 8.4.38
@@ -5972,12 +5972,12 @@ packages:
   /electron-to-chromium@1.4.731:
     resolution: {integrity: sha512-+TqVfZjpRz2V/5SPpmJxq9qK620SC5SqCnxQIOi7i/U08ZDcTpKbT7Xjj9FU5CbXTMUb4fywbIr8C7cGv4hcjw==}
 
-  /embla-carousel-autoplay@8.0.0-rc15(embla-carousel@8.0.0-rc15):
+  /embla-carousel-autoplay@8.0.0-rc15(embla-carousel@8.0.1):
     resolution: {integrity: sha512-ABTbDJGNb9jzI9OV2vSpbUvxUA0ELmK0SI3yPm8Haj3ghssS+vElfahoDqp7zuFkWBRih6w3B51oMPKdF5J55A==}
     peerDependencies:
       embla-carousel: 8.0.0-rc15
     dependencies:
-      embla-carousel: 8.0.0-rc15
+      embla-carousel: 8.0.1
     dev: false
 
   /embla-carousel-react@8.0.0-rc15(react@18.2.0):
@@ -6000,6 +6000,10 @@ packages:
 
   /embla-carousel@8.0.0-rc15:
     resolution: {integrity: sha512-s7VPexK2h8VEYjEVQFnJAPcRnY5YqJYicFxKVVyWXP3Hk9FFDkT0kqVxMM1PcL187qHOUgmGVHOrfC8xWy3OKQ==}
+    dev: false
+
+  /embla-carousel@8.0.1:
+    resolution: {integrity: sha512-RsaMRyBCd144N95gb3XoI+H9zj3RI4y0qcfvKYEh2tIAIEenL9CW9vwzltCeoYkWYipGdkvup+HGT9ewG1YTEw==}
     dev: false
 
   /emoji-regex@10.2.1:
@@ -6564,8 +6568,8 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-tailwindcss@3.14.1(tailwindcss@3.4.3):
-    resolution: {integrity: sha512-orNkVzJ1fdCkj5d8AHE3tAbixNpMJRoKoHPnxZbZ6iBHTsNvOEmeBz62C3THPhFnXCXaD55SRbNjqGzMEXRoZA==}
+  /eslint-plugin-tailwindcss@3.15.1(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-4RXRMIaMG07C2TBEW1k0VM4+dDazz1kxcZhkK4zirvmHGZTA4jnlSO2kq5mamuSPi+Wo17dh2SlC8IyFBuCd7Q==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       tailwindcss: ^3.4.0
