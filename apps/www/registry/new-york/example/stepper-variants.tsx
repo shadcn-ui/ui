@@ -23,29 +23,42 @@ export default function StepperDemo() {
 
   return (
     <div className="flex w-full flex-col gap-4">
-      <RadioGroup
-        className="mb-10"
-        value={variant}
-        onValueChange={(value) => setVariant(value as StepperProps["variant"])}
-      >
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="circle" id="circle" />
-          <Label htmlFor="circle">circle</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="circle-alt" id="circle-alt" />
-          <Label htmlFor="circle-alt">circle-alt</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="line" id="line" />
-          <Label htmlFor="line">line</Label>
-        </div>
-      </RadioGroup>
+			<RadioGroup
+				className="mb-2 flex"
+				value={variant}
+				onValueChange={(value) => setVariant(value as StepperProps["variant"])}
+			>
+				<Label
+					htmlFor="circle"
+					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
+				>
+					<RadioGroupItem value="circle" id="circle" className="sr-only" />
+					<h2 className="font-semibold">circle</h2>
+				</Label>
+				<Label
+					htmlFor="circle-alt"
+					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
+				>
+					<RadioGroupItem
+						value="circle-alt"
+						id="circle-alt"
+						className="sr-only"
+					/>
+					<h2 className="font-semibold">circle-alt</h2>
+				</Label>
+				<Label
+					htmlFor="line"
+					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
+				>
+					<RadioGroupItem value="line" id="line" className="sr-only" />
+					<h2 className="font-semibold">line</h2>
+				</Label>
+			</RadioGroup>
       <Stepper variant={variant} initialStep={0} steps={steps}>
         {steps.map((stepProps, index) => {
           return (
             <Step key={stepProps.label} {...stepProps}>
-              <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
+              <div className="h-40 flex items-center justify-center my-2 border bg-secondary text-primary rounded-md">
                 <h1 className="text-xl">Step {index + 1}</h1>
               </div>
             </Step>
@@ -70,7 +83,7 @@ const Footer = () => {
   return (
     <>
       {hasCompletedAllSteps && (
-        <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
+        <div className="h-40 flex items-center justify-center my-2 border bg-secondary text-primary rounded-md">
           <h1 className="text-xl">Woohoo! All steps completed! 🎉</h1>
         </div>
       )}

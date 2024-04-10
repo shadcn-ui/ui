@@ -22,29 +22,38 @@ export default function StepperDemo() {
 
   return (
     <div className="flex w-full flex-col gap-4">
-      <RadioGroup
-        className="mb-10"
-        value={size}
-        onValueChange={(value) => setSize(value as StepperProps["size"])}
-      >
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="sm" id="sm" />
-          <Label htmlFor="sm">sm</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="md" id="md" />
-          <Label htmlFor="md">md</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="lg" id="lg" />
-          <Label htmlFor="lg">lg</Label>
-        </div>
-      </RadioGroup>
+			<RadioGroup
+				className="mb-2 flex"
+				value={size}
+				onValueChange={(value) => setSize(value as StepperProps["size"])}
+			>
+				<Label
+					htmlFor="sm"
+					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
+				>
+					<RadioGroupItem value="sm" id="sm" className="sr-only" />
+					<h2 className="font-semibold">sm</h2>
+				</Label>
+				<Label
+					htmlFor="md"
+					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
+				>
+					<RadioGroupItem value="md" id="md" className="sr-only" />
+					<h2 className="font-semibold">md</h2>
+				</Label>
+				<Label
+					htmlFor="lg"
+					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
+				>
+					<RadioGroupItem value="lg" id="lg" className="sr-only" />
+					<h2 className="font-semibold">lg</h2>
+				</Label>
+			</RadioGroup>
       <Stepper size={size} initialStep={0} steps={steps}>
         {steps.map((stepProps, index) => {
           return (
             <Step key={stepProps.label} {...stepProps}>
-              <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
+              <div className="h-40 flex items-center justify-center my-2 border bg-secondary text-primary rounded-md">
                 <h1 className="text-xl">Step {index + 1}</h1>
               </div>
             </Step>
@@ -69,7 +78,7 @@ const Footer = () => {
   return (
     <>
       {hasCompletedAllSteps && (
-        <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
+        <div className="h-40 flex items-center justify-center my-2 border bg-secondary text-primary rounded-md">
           <h1 className="text-xl">Woohoo! All steps completed! 🎉</h1>
         </div>
       )}

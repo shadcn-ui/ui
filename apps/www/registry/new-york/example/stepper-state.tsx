@@ -19,7 +19,7 @@ export default function StepperDemo() {
         {steps.map((stepProps, index) => {
           return (
             <Step key={stepProps.label} {...stepProps}>
-              <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
+              <div className="h-40 flex items-center justify-center my-2 border bg-secondary text-primary rounded-md">
                 <h1 className="text-xl">Step {index + 1}</h1>
               </div>
             </Step>
@@ -45,7 +45,7 @@ const Footer = () => {
   return (
     <>
       {hasCompletedAllSteps && (
-        <div className="h-40 flex items-center justify-center my-4 border bg-secondary text-primary rounded-md">
+        <div className="h-40 flex items-center justify-center my-2 border bg-secondary text-primary rounded-md">
           <h1 className="text-xl">Woohoo! All steps completed! 🎉</h1>
         </div>
       )}
