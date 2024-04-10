@@ -33,7 +33,7 @@ export default function StepperDemo() {
 					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
 				>
 					<RadioGroupItem value="circle" id="circle" className="sr-only" />
-					<h2 className="font-semibold">circle</h2>
+					<h2 className="font-medium">circle</h2>
 				</Label>
 				<Label
 					htmlFor="circle-alt"
@@ -44,14 +44,14 @@ export default function StepperDemo() {
 						id="circle-alt"
 						className="sr-only"
 					/>
-					<h2 className="font-semibold">circle-alt</h2>
+					<h2 className="font-medium">circle-alt</h2>
 				</Label>
 				<Label
 					htmlFor="line"
 					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
 				>
 					<RadioGroupItem value="line" id="line" className="sr-only" />
-					<h2 className="font-semibold">line</h2>
+					<h2 className="font-medium">line</h2>
 				</Label>
 			</RadioGroup>
       <Stepper variant={variant} initialStep={0} steps={steps}>

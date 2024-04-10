@@ -39,14 +39,14 @@ export default function StepperOrientation() {
 						id="horizontal"
 						className="sr-only"
 					/>
-					<h2 className="font-semibold">Horizontal</h2>
+					<h2 className="font-medium">Horizontal</h2>
 				</Label>
 				<Label
 					htmlFor="vertical"
 					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
 				>
 					<RadioGroupItem value="vertical" id="vertical" className="sr-only" />
-					<h2 className="font-semibold">Vertical</h2>
+					<h2 className="font-medium">Vertical</h2>
 				</Label>
 			</RadioGroup>
 			<Stepper orientation={orientation} initialStep={0} steps={steps}>
