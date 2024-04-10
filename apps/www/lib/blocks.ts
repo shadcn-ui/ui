@@ -55,7 +55,9 @@ export async function getBlock(
 
       return {
         ...chunk,
-        code: sourceFile.getText(),
+        code: sourceFile
+          .getText()
+          .replaceAll(`@/registry/${style}/`, "@/components/"),
       }
     })
   )
