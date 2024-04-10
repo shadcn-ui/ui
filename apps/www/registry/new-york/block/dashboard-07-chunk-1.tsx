@@ -115,7 +115,7 @@ export default function Component() {
       </CardContent>
       <CardFooter className="justify-center border-t p-4">
         <Button size="sm" variant="ghost" className="gap-1">
-          <PlusCircle className="h-3.5 w-3.5" />
+          <PlusCircle className="size-3.5" />
           Add Variant
         </Button>
       </CardFooter>

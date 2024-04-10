@@ -40,9 +40,9 @@ export default function Component() {
             <Button
               size="icon"
               variant="outline"
-              className="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100"
+              className="size-6 opacity-0 transition-opacity group-hover:opacity-100"
             >
-              <Copy className="h-3 w-3" />
+              <Copy className="size-3" />
               <span className="sr-only">Copy Order ID</span>
             </Button>
           </CardTitle>
@@ -50,15 +50,15 @@ export default function Component() {
         </div>
         <div className="ml-auto flex items-center gap-1">
           <Button size="sm" variant="outline" className="h-8 gap-1">
-            <Truck className="h-3.5 w-3.5" />
+            <Truck className="size-3.5" />
             <span className="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">
               Track Order
             </span>
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button size="icon" variant="outline" className="h-8 w-8">
-                <MoreVertical className="h-3.5 w-3.5" />
+              <Button size="icon" variant="outline" className="size-8">
+                <MoreVertical className="size-3.5" />
                 <span className="sr-only">More</span>
               </Button>
             </DropdownMenuTrigger>
@@ -153,7 +153,7 @@ export default function Component() {
           <dl className="grid gap-3">
             <div className="flex items-center justify-between">
               <dt className="flex items-center gap-1 text-muted-foreground">
-                <CreditCard className="h-4 w-4" />
+                <CreditCard className="size-4" />
                 Visa
               </dt>
               <dd>**** **** **** 4532</dd>
@@ -168,14 +168,14 @@ export default function Component() {
         <Pagination className="ml-auto mr-0 w-auto">
           <PaginationContent>
             <PaginationItem>
-              <Button size="icon" variant="outline" className="h-6 w-6">
-                <ChevronLeft className="h-3.5 w-3.5" />
+              <Button size="icon" variant="outline" className="size-6">
+                <ChevronLeft className="size-3.5" />
                 <span className="sr-only">Previous Order</span>
               </Button>
             </PaginationItem>
             <PaginationItem>
-              <Button size="icon" variant="outline" className="h-6 w-6">
-                <ChevronRight className="h-3.5 w-3.5" />
+              <Button size="icon" variant="outline" className="size-6">
+                <ChevronRight className="size-3.5" />
                 <span className="sr-only">Next Order</span>
               </Button>
             </PaginationItem>

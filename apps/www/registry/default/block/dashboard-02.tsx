@@ -46,11 +46,11 @@ export default function Dashboard() {
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link href="/" className="flex items-center gap-2 font-semibold">
-              <Package2 className="h-6 w-6" />
+              <Package2 className="size-6" />
               <span className="">Acme Inc</span>
             </Link>
-            <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-              <Bell className="h-4 w-4" />
+            <Button variant="outline" size="icon" className="ml-auto size-8">
+              <Bell className="size-4" />
               <span className="sr-only">Toggle notifications</span>
             </Button>
           </div>
@@ -60,16 +60,16 @@ export default function Dashboard() {
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <Home className="h-4 w-4" />
+                <Home className="size-4" />
                 Dashboard
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <ShoppingCart className="h-4 w-4" />
+                <ShoppingCart className="size-4" />
                 Orders
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                <Badge className="ml-auto flex size-6 shrink-0 items-center justify-center rounded-full">
                   6
                 </Badge>
               </Link>
@@ -77,21 +77,21 @@ export default function Dashboard() {
                 href="#"
                 className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
               >
-                <Package className="h-4 w-4" />
+                <Package className="size-4" />
                 Products{" "}
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <Users className="h-4 w-4" />
+                <Users className="size-4" />
                 Customers
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <LineChart className="h-4 w-4" />
+                <LineChart className="size-4" />
                 Analytics
               </Link>
             </nav>
@@ -123,7 +123,7 @@ export default function Dashboard() {
                 size="icon"
                 className="shrink-0 md:hidden"
               >
-                <Menu className="h-5 w-5" />
+                <Menu className="size-5" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
@@ -133,23 +133,23 @@ export default function Dashboard() {
                   href="#"
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
-                  <Package2 className="h-6 w-6" />
+                  <Package2 className="size-6" />
                   <span className="sr-only">Acme Inc</span>
                 </Link>
                 <Link
                   href="#"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
-                  <Home className="h-5 w-5" />
+                  <Home className="size-5" />
                   Dashboard
                 </Link>
                 <Link
                   href="#"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
                 >
-                  <ShoppingCart className="h-5 w-5" />
+                  <ShoppingCart className="size-5" />
                   Orders
-                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                  <Badge className="ml-auto flex size-6 shrink-0 items-center justify-center rounded-full">
                     6
                   </Badge>
                 </Link>
@@ -157,21 +157,21 @@ export default function Dashboard() {
                   href="#"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
-                  <Package className="h-5 w-5" />
+                  <Package className="size-5" />
                   Products
                 </Link>
                 <Link
                   href="#"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
-                  <Users className="h-5 w-5" />
+                  <Users className="size-5" />
                   Customers
                 </Link>
                 <Link
                   href="#"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
-                  <LineChart className="h-5 w-5" />
+                  <LineChart className="size-5" />
                   Analytics
                 </Link>
               </nav>
@@ -196,7 +196,7 @@ export default function Dashboard() {
           <div className="w-full flex-1">
             <form>
               <div className="relative">
-                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
                 <Input
                   type="search"
                   placeholder="Search products..."
@@ -208,7 +208,7 @@ export default function Dashboard() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
-                <CircleUser className="h-5 w-5" />
+                <CircleUser className="size-5" />
                 <span className="sr-only">Toggle user menu</span>
               </Button>
             </DropdownMenuTrigger>

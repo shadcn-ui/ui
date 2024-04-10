@@ -60,7 +60,7 @@ export default function Dashboard() {
             href="#"
             className="flex items-center gap-2 text-lg font-semibold md:text-base"
           >
-            <Package2 className="h-6 w-6" />
+            <Package2 className="size-6" />
             <span className="sr-only">Acme Inc</span>
           </Link>
           <Link
@@ -101,7 +101,7 @@ export default function Dashboard() {
               size="icon"
               className="shrink-0 md:hidden"
             >
-              <Menu className="h-5 w-5" />
+              <Menu className="size-5" />
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
           </SheetTrigger>
@@ -111,7 +111,7 @@ export default function Dashboard() {
                 href="#"
                 className="flex items-center gap-2 text-lg font-semibold"
               >
-                <Package2 className="h-6 w-6" />
+                <Package2 className="size-6" />
                 <span className="sr-only">Acme Inc</span>
               </Link>
               <Link href="#" className="hover:text-foreground">
@@ -147,7 +147,7 @@ export default function Dashboard() {
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
           <form className="ml-auto flex-1 sm:flex-initial">
             <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
               <Input
                 type="search"
                 placeholder="Search products..."
@@ -158,7 +158,7 @@ export default function Dashboard() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
-                <CircleUser className="h-5 w-5" />
+                <CircleUser className="size-5" />
                 <span className="sr-only">Toggle user menu</span>
               </Button>
             </DropdownMenuTrigger>
@@ -180,7 +180,7 @@ export default function Dashboard() {
               <CardTitle className="text-sm font-medium">
                 Total Revenue
               </CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
+              <DollarSign className="size-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">$45,231.89</div>
@@ -194,7 +194,7 @@ export default function Dashboard() {
               <CardTitle className="text-sm font-medium">
                 Subscriptions
               </CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
+              <Users className="size-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">+2350</div>
@@ -206,7 +206,7 @@ export default function Dashboard() {
           <Card x-chunk="A card showing the total sales and the percentage difference from last month.">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Sales</CardTitle>
-              <CreditCard className="h-4 w-4 text-muted-foreground" />
+              <CreditCard className="size-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">+12,234</div>
@@ -218,7 +218,7 @@ export default function Dashboard() {
           <Card x-chunk="A card showing the total active users and the percentage difference from last hour.">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Active Now</CardTitle>
-              <Activity className="h-4 w-4 text-muted-foreground" />
+              <Activity className="size-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">+573</div>
@@ -243,7 +243,7 @@ export default function Dashboard() {
               <Button asChild size="sm" className="ml-auto gap-1">
                 <Link href="#">
                   View All
-                  <ArrowUpRight className="h-4 w-4" />
+                  <ArrowUpRight className="size-4" />
                 </Link>
               </Button>
             </CardHeader>
@@ -375,7 +375,7 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent className="grid gap-8">
               <div className="flex items-center gap-4">
-                <Avatar className="hidden h-9 w-9 sm:flex">
+                <Avatar className="hidden size-9 sm:flex">
                   <AvatarImage src="/avatars/01.png" alt="Avatar" />
                   <AvatarFallback>OM</AvatarFallback>
                 </Avatar>
@@ -390,7 +390,7 @@ export default function Dashboard() {
                 <div className="ml-auto font-medium">+$1,999.00</div>
               </div>
               <div className="flex items-center gap-4">
-                <Avatar className="hidden h-9 w-9 sm:flex">
+                <Avatar className="hidden size-9 sm:flex">
                   <AvatarImage src="/avatars/02.png" alt="Avatar" />
                   <AvatarFallback>JL</AvatarFallback>
                 </Avatar>
@@ -405,7 +405,7 @@ export default function Dashboard() {
                 <div className="ml-auto font-medium">+$39.00</div>
               </div>
               <div className="flex items-center gap-4">
-                <Avatar className="hidden h-9 w-9 sm:flex">
+                <Avatar className="hidden size-9 sm:flex">
                   <AvatarImage src="/avatars/03.png" alt="Avatar" />
                   <AvatarFallback>IN</AvatarFallback>
                 </Avatar>
@@ -420,7 +420,7 @@ export default function Dashboard() {
                 <div className="ml-auto font-medium">+$299.00</div>
               </div>
               <div className="flex items-center gap-4">
-                <Avatar className="hidden h-9 w-9 sm:flex">
+                <Avatar className="hidden size-9 sm:flex">
                   <AvatarImage src="/avatars/04.png" alt="Avatar" />
                   <AvatarFallback>WK</AvatarFallback>
                 </Avatar>
@@ -435,7 +435,7 @@ export default function Dashboard() {
                 <div className="ml-auto font-medium">+$99.00</div>
               </div>
               <div className="flex items-center gap-4">
-                <Avatar className="hidden h-9 w-9 sm:flex">
+                <Avatar className="hidden size-9 sm:flex">
                   <AvatarImage src="/avatars/05.png" alt="Avatar" />
                   <AvatarFallback>SD</AvatarFallback>
                 </Avatar>

@@ -29,7 +29,7 @@ export default function BreadcrumbWithDropdown() {
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1">
               Components
-              <ChevronDown className="h-4 w-4" />
+              <ChevronDown className="size-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuItem>Documentation</DropdownMenuItem>

@@ -90,18 +90,18 @@ export default function Dashboard() {
         <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
           <Link
             href="#"
-            className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
+            className="group flex size-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:size-8 md:text-base"
           >
-            <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
+            <Package2 className="size-4 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
           </Link>
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex size-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:size-8"
               >
-                <Home className="h-5 w-5" />
+                <Home className="size-5" />
                 <span className="sr-only">Dashboard</span>
               </Link>
             </TooltipTrigger>
@@ -111,9 +111,9 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex size-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:size-8"
               >
-                <ShoppingCart className="h-5 w-5" />
+                <ShoppingCart className="size-5" />
                 <span className="sr-only">Orders</span>
               </Link>
             </TooltipTrigger>
@@ -123,9 +123,9 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex size-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:size-8"
               >
-                <Package className="h-5 w-5" />
+                <Package className="size-5" />
                 <span className="sr-only">Products</span>
               </Link>
             </TooltipTrigger>
@@ -135,9 +135,9 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex size-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:size-8"
               >
-                <Users2 className="h-5 w-5" />
+                <Users2 className="size-5" />
                 <span className="sr-only">Customers</span>
               </Link>
             </TooltipTrigger>
@@ -147,9 +147,9 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex size-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:size-8"
               >
-                <LineChart className="h-5 w-5" />
+                <LineChart className="size-5" />
                 <span className="sr-only">Analytics</span>
               </Link>
             </TooltipTrigger>
@@ -161,9 +161,9 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex size-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:size-8"
               >
-                <Settings className="h-5 w-5" />
+                <Settings className="size-5" />
                 <span className="sr-only">Settings</span>
               </Link>
             </TooltipTrigger>
@@ -176,7 +176,7 @@ export default function Dashboard() {
           <Sheet>
             <SheetTrigger asChild>
               <Button size="icon" variant="outline" className="sm:hidden">
-                <PanelLeft className="h-5 w-5" />
+                <PanelLeft className="size-5" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
@@ -184,44 +184,44 @@ export default function Dashboard() {
               <nav className="grid gap-6 text-lg font-medium">
                 <Link
                   href="#"
-                  className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
+                  className="group flex size-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
                 >
-                  <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
+                  <Package2 className="size-5 transition-all group-hover:scale-110" />
                   <span className="sr-only">Acme Inc</span>
                 </Link>
                 <Link
                   href="#"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
-                  <Home className="h-5 w-5" />
+                  <Home className="size-5" />
                   Dashboard
                 </Link>
                 <Link
                   href="#"
                   className="flex items-center gap-4 px-2.5 text-foreground"
                 >
-                  <ShoppingCart className="h-5 w-5" />
+                  <ShoppingCart className="size-5" />
                   Orders
                 </Link>
                 <Link
                   href="#"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
-                  <Package className="h-5 w-5" />
+                  <Package className="size-5" />
                   Products
                 </Link>
                 <Link
                   href="#"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
-                  <Users2 className="h-5 w-5" />
+                  <Users2 className="size-5" />
                   Customers
                 </Link>
                 <Link
                   href="#"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
-                  <LineChart className="h-5 w-5" />
+                  <LineChart className="size-5" />
                   Settings
                 </Link>
               </nav>
@@ -247,7 +247,7 @@ export default function Dashboard() {
             </BreadcrumbList>
           </Breadcrumb>
           <div className="relative ml-auto flex-1 md:grow-0">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
             <Input
               type="search"
               placeholder="Search..."
@@ -342,7 +342,7 @@ export default function Dashboard() {
                         size="sm"
                         className="h-7 gap-1 text-sm"
                       >
-                        <ListFilter className="h-3.5 w-3.5" />
+                        <ListFilter className="size-3.5" />
                         <span className="sr-only sm:not-sr-only">Filter</span>
                       </Button>
                     </DropdownMenuTrigger>
@@ -365,7 +365,7 @@ export default function Dashboard() {
                     variant="outline"
                     className="h-7 gap-1 text-sm"
                   >
-                    <File className="h-3.5 w-3.5" />
+                    <File className="size-3.5" />
                     <span className="sr-only sm:not-sr-only">Export</span>
                   </Button>
                 </div>
@@ -575,9 +575,9 @@ export default function Dashboard() {
                     <Button
                       size="icon"
                       variant="outline"
-                      className="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100"
+                      className="size-6 opacity-0 transition-opacity group-hover:opacity-100"
                     >
-                      <Copy className="h-3 w-3" />
+                      <Copy className="size-3" />
                       <span className="sr-only">Copy Order ID</span>
                     </Button>
                   </CardTitle>
@@ -585,15 +585,15 @@ export default function Dashboard() {
                 </div>
                 <div className="ml-auto flex items-center gap-1">
                   <Button size="sm" variant="outline" className="h-8 gap-1">
-                    <Truck className="h-3.5 w-3.5" />
+                    <Truck className="size-3.5" />
                     <span className="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">
                       Track Order
                     </span>
                   </Button>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button size="icon" variant="outline" className="h-8 w-8">
-                        <MoreVertical className="h-3.5 w-3.5" />
+                      <Button size="icon" variant="outline" className="size-8">
+                        <MoreVertical className="size-3.5" />
                         <span className="sr-only">More</span>
                       </Button>
                     </DropdownMenuTrigger>
@@ -688,7 +688,7 @@ export default function Dashboard() {
                   <dl className="grid gap-3">
                     <div className="flex items-center justify-between">
                       <dt className="flex items-center gap-1 text-muted-foreground">
-                        <CreditCard className="h-4 w-4" />
+                        <CreditCard className="size-4" />
                         Visa
                       </dt>
                       <dd>**** **** **** 4532</dd>
@@ -703,14 +703,14 @@ export default function Dashboard() {
                 <Pagination className="ml-auto mr-0 w-auto">
                   <PaginationContent>
                     <PaginationItem>
-                      <Button size="icon" variant="outline" className="h-6 w-6">
-                        <ChevronLeft className="h-3.5 w-3.5" />
+                      <Button size="icon" variant="outline" className="size-6">
+                        <ChevronLeft className="size-3.5" />
                         <span className="sr-only">Previous Order</span>
                       </Button>
                     </PaginationItem>
                     <PaginationItem>
-                      <Button size="icon" variant="outline" className="h-6 w-6">
-                        <ChevronRight className="h-3.5 w-3.5" />
+                      <Button size="icon" variant="outline" className="size-6">
+                        <ChevronRight className="size-3.5" />
                         <span className="sr-only">Next Order</span>
                       </Button>
                     </PaginationItem>

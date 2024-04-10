@@ -12,7 +12,7 @@ export default function Component() {
     <Card x-chunk="dashboard-01-chunk-1">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium">Subscriptions</CardTitle>
-        <Users className="h-4 w-4 text-muted-foreground" />
+        <Users className="size-4 text-muted-foreground" />
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold">+2350</div>

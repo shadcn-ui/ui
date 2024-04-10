@@ -61,7 +61,7 @@ export default function BreadcrumbResponsive() {
                     className="flex items-center gap-1"
                     aria-label="Toggle menu"
                   >
-                    <BreadcrumbEllipsis className="h-4 w-4" />
+                    <BreadcrumbEllipsis className="size-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     {items.slice(1, -2).map((item, index) => (
@@ -76,7 +76,7 @@ export default function BreadcrumbResponsive() {
               ) : (
                 <Drawer open={open} onOpenChange={setOpen}>
                   <DrawerTrigger aria-label="Toggle Menu">
-                    <BreadcrumbEllipsis className="h-4 w-4" />
+                    <BreadcrumbEllipsis className="size-4" />
                   </DrawerTrigger>
                   <DrawerContent>
                     <DrawerHeader className="text-left">
