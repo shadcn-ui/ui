@@ -19,7 +19,7 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   setApi?: (api: CarouselApi) => void
   orientation?: "horizontal" | "vertical"
-  dotsSide?: "top" | "bottom" | "left" | "right"
+  dotsPosition?: "top" | "bottom" | "left" | "right"
 }
 
 type CarouselContextProps = {
@@ -56,7 +56,7 @@ const Carousel = React.forwardRef<
       plugins,
       setApi,
       orientation = "horizontal",
-      dotsSide = "bottom",
+      dotsPosition = "bottom",
       className,
       children,
       ...props
@@ -137,23 +137,23 @@ const Carousel = React.forwardRef<
       }
     }, [api, onSelect])
 
-    let effectiveDotsSide = dotsSide
+    let effectiveDotsPosition = dotsPosition
     if (
       orientation === "horizontal" &&
-      (dotsSide === "left" || dotsSide === "right")
+      (dotsPosition === "left" || dotsPosition === "right")
     ) {
       console.warn(
-        `Invalid dotsSide "${dotsSide}" for horizontal orientation, defaulting to "bottom".`
+        `Invalid dotsPosition "${dotsPosition}" for horizontal orientation, defaulting to "bottom".`
       )
-      effectiveDotsSide = "bottom"
+      effectiveDotsPosition = "bottom"
     } else if (
       orientation === "vertical" &&
-      (dotsSide === "top" || dotsSide === "bottom")
+      (dotsPosition === "top" || dotsPosition === "bottom")
     ) {
       console.warn(
-        `Invalid dotsSide "${dotsSide}" for vertical orientation, defaulting to "left".`
+        `Invalid dotsPosition "${dotsPosition}" for vertical orientation, defaulting to "left".`
       )
-      effectiveDotsSide = "left"
+      effectiveDotsPosition = "left"
     }
 
     return (
@@ -164,7 +164,7 @@ const Carousel = React.forwardRef<
           opts,
           orientation:
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
-          dotsSide: effectiveDotsSide,
+          dotsPosition: effectiveDotsPosition,
           scrollPrev,
           scrollNext,
           scrollTo,
@@ -296,7 +296,7 @@ const CarouselDots = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const { orientation, dotsSide, totalSlides, currentIndex, scrollTo } =
+  const { orientation, dotsPosition, totalSlides, currentIndex, scrollTo } =
     useCarousel()
 
   if (totalSlides <= 1) return null
@@ -309,13 +309,13 @@ const CarouselDots = React.forwardRef<
         orientation === "horizontal"
           ? "inset-x-0 flex-row"
           : "inset-y-0 flex-col",
-        dotsSide === "top"
+        dotsPosition === "top"
           ? "-top-10"
-          : dotsSide === "right"
+          : dotsPosition === "right"
           ? "-right-10"
-          : dotsSide === "bottom"
+          : dotsPosition === "bottom"
           ? "-bottom-10"
-          : dotsSide === "left"
+          : dotsPosition === "left"
           ? "-left-10"
           : "",
         className
