@@ -874,6 +874,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "carousel-dots": {
+      name: "carousel-dots",
+      type: "components:example",
+      registryDependencies: ["carousel"],
+      component: React.lazy(() => import("@/registry/default/example/carousel-dots")),
+      source: "",
+      files: ["registry/default/example/carousel-dots.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "carousel-api": {
       name: "carousel-api",
       type: "components:example",
@@ -3264,6 +3275,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "carousel-dots": {
+      name: "carousel-dots",
+      type: "components:example",
+      registryDependencies: ["carousel"],
+      component: React.lazy(() => import("@/registry/new-york/example/carousel-dots")),
+      source: "",
+      files: ["registry/new-york/example/carousel-dots.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "carousel-api": {
       name: "carousel-api",
       type: "components:example",
@@ -4525,17 +4547,9 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-06-chunk-0",
-        description: "A breadcrumb with two links and a page indicator.",
+        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-0")),
         file: "registry/new-york/block/dashboard-06-chunk-0.tsx",
-        container: {
-          className: "undefined"
-        }
-      },{
-        name: "dashboard-06-chunk-1",
-        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
-        component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-1")),
-        file: "registry/new-york/block/dashboard-06-chunk-1.tsx",
         container: {
           className: "undefined"
         }
