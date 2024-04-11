@@ -216,7 +216,7 @@ export default function Dashboard() {
               </nav>
             </SheetContent>
           </Sheet>
-          <Breadcrumb className="hidden md:flex">
+          <Breadcrumb className="hidden md:flex" x-chunk="dashboard-06-chunk-0">
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
@@ -317,7 +317,7 @@ export default function Dashboard() {
               </div>
             </div>
             <TabsContent value="all">
-              <Card x-chunk="dashboard-06-chunk-0">
+              <Card x-chunk="dashboard-06-chunk-1">
                 <CardHeader>
                   <CardTitle>Products</CardTitle>
                   <CardDescription>
