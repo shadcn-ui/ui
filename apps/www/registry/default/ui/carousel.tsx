@@ -358,6 +358,7 @@ const CarouselDots = React.forwardRef<HTMLDivElement, CarouselDotsProps>(
     return (
       <div
         ref={ref}
+        role="tablist"
         className={cn(
           dotsContainerVariants({
             orientation,
@@ -372,12 +373,14 @@ const CarouselDots = React.forwardRef<HTMLDivElement, CarouselDotsProps>(
         {Array.from({ length: totalSlides }).map((_, index) => (
           <button
             key={index}
+            role="tab"
+            aria-selected={currentIndex === index}
+            aria-label={`Go to slide ${index + 1}`}
+            onClick={() => scrollTo(index)}
             className={cn(
               dotsVariants({ size }),
               currentIndex === index ? "bg-card-foreground" : "bg-muted"
             )}
-            onClick={() => scrollTo(index)}
-            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
