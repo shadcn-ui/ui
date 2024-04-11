@@ -17,8 +17,9 @@ type CarouselPlugin = UseCarouselParameters[1]
 type CarouselProps = {
   opts?: CarouselOptions
   plugins?: CarouselPlugin
-  orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
+  orientation?: "horizontal" | "vertical"
+  dotsSide?: "top" | "bottom" | "left" | "right"
 }
 
 type CarouselContextProps = {
@@ -26,8 +27,11 @@ type CarouselContextProps = {
   api: ReturnType<typeof useEmblaCarousel>[1]
   scrollPrev: () => void
   scrollNext: () => void
+  scrollTo: (index: number) => void
   canScrollPrev: boolean
   canScrollNext: boolean
+  totalSlides: number
+  currentIndex: number
 } & CarouselProps
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
@@ -48,10 +52,11 @@ const Carousel = React.forwardRef<
 >(
   (
     {
-      orientation = "horizontal",
       opts,
-      setApi,
       plugins,
+      setApi,
+      orientation = "horizontal",
+      dotsSide = "bottom",
       className,
       children,
       ...props
@@ -68,6 +73,9 @@ const Carousel = React.forwardRef<
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
+    const [currentIndex, setCurrentIndex] = React.useState(0)
+    const [totalSlides, setTotalSlides] = React.useState(0)
+
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
         return
@@ -75,7 +83,16 @@ const Carousel = React.forwardRef<
 
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
+      setCurrentIndex(api.selectedScrollSnap())
+      setTotalSlides(api.scrollSnapList().length)
     }, [])
+
+    const scrollTo = React.useCallback(
+      (index: number) => {
+        api?.scrollTo(index)
+      },
+      [api]
+    )
 
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev()
@@ -120,6 +137,25 @@ const Carousel = React.forwardRef<
       }
     }, [api, onSelect])
 
+    let effectiveDotsSide = dotsSide
+    if (
+      orientation === "horizontal" &&
+      (dotsSide === "left" || dotsSide === "right")
+    ) {
+      console.warn(
+        `Invalid dotsSide "${dotsSide}" for horizontal orientation, defaulting to "bottom".`
+      )
+      effectiveDotsSide = "bottom"
+    } else if (
+      orientation === "vertical" &&
+      (dotsSide === "top" || dotsSide === "bottom")
+    ) {
+      console.warn(
+        `Invalid dotsSide "${dotsSide}" for vertical orientation, defaulting to "left".`
+      )
+      effectiveDotsSide = "left"
+    }
+
     return (
       <CarouselContext.Provider
         value={{
@@ -128,10 +164,14 @@ const Carousel = React.forwardRef<
           opts,
           orientation:
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+          dotsSide: effectiveDotsSide,
           scrollPrev,
           scrollNext,
+          scrollTo,
           canScrollPrev,
           canScrollNext,
+          totalSlides,
+          currentIndex,
         }}
       >
         <div
@@ -252,6 +292,51 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+const CarouselDots = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const { orientation, dotsSide, totalSlides, currentIndex, scrollTo } =
+    useCarousel()
+
+  if (totalSlides <= 1) return null
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "absolute flex justify-center gap-1 p-4",
+        orientation === "horizontal"
+          ? "inset-x-0 flex-row"
+          : "inset-y-0 flex-col",
+        dotsSide === "top"
+          ? "-top-10"
+          : dotsSide === "right"
+          ? "-right-10"
+          : dotsSide === "bottom"
+          ? "-bottom-10"
+          : dotsSide === "left"
+          ? "-left-10"
+          : "",
+        className
+      )}
+      {...props}
+    >
+      {Array.from({ length: totalSlides }).map((_, index) => (
+        <button
+          key={index}
+          className={`size-3 rounded-full border ${
+            currentIndex === index ? "bg-card-foreground" : "bg-card"
+          }`}
+          onClick={() => scrollTo(index)}
+          aria-label={`Go to slide ${index + 1}`}
+        />
+      ))}
+    </div>
+  )
+})
+CarouselDots.displayName = "CarouselDots"
+
 export {
   type CarouselApi,
   Carousel,
@@ -259,4 +344,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 }
