@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons"
+import { VariantProps, cva } from "class-variance-authority"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
@@ -292,49 +293,97 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
-const CarouselDots = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  const { orientation, dotsPosition, totalSlides, currentIndex, scrollTo } =
-    useCarousel()
-
-  if (totalSlides <= 1) return null
-
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "absolute flex justify-center gap-1 p-4",
-        orientation === "horizontal"
-          ? "inset-x-0 flex-row"
-          : "inset-y-0 flex-col",
-        dotsPosition === "top"
-          ? "-top-10"
-          : dotsPosition === "right"
-          ? "-right-10"
-          : dotsPosition === "bottom"
-          ? "-bottom-10"
-          : dotsPosition === "left"
-          ? "-left-10"
-          : "",
-        className
-      )}
-      {...props}
-    >
-      {Array.from({ length: totalSlides }).map((_, index) => (
-        <button
-          key={index}
-          className={`size-3 rounded-full border ${
-            currentIndex === index ? "bg-card-foreground" : "bg-card"
-          }`}
-          onClick={() => scrollTo(index)}
-          aria-label={`Go to slide ${index + 1}`}
-        />
-      ))}
-    </div>
-  )
+const dotsContainerVariants = cva("absolute flex justify-center", {
+  variants: {
+    orientation: {
+      horizontal: "inset-x-0 flex-row",
+      vertical: "inset-y-0 flex-col",
+    },
+    size: {
+      default: "p-4",
+      sm: "p-4",
+      md: "p-1",
+      lg: "p-0",
+    },
+    position: {
+      top: "-top-10",
+      right: "-right-10",
+      bottom: "-bottom-10",
+      left: "-left-10",
+    },
+    gap: {
+      default: "gap-2",
+      sm: "gap-2",
+      md: "gap-4",
+      lg: "gap-6",
+    },
+  },
+  defaultVariants: {
+    orientation: "horizontal",
+    size: "default",
+    position: "bottom",
+    gap: "default",
+  },
 })
+
+const dotsVariants = cva(
+  "rounded-full ring-1 ring-muted ring-offset-1 ring-offset-background transition-all duration-300",
+  {
+    variants: {
+      size: {
+        default: "size-3",
+        sm: "size-3",
+        md: "size-4",
+        lg: "size-6",
+      },
+    },
+    defaultVariants: {
+      size: "default",
+    },
+  }
+)
+
+interface CarouselDotsProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof dotsContainerVariants>,
+    VariantProps<typeof dotsVariants> {}
+
+const CarouselDots = React.forwardRef<HTMLDivElement, CarouselDotsProps>(
+  ({ className, size, gap, ...props }, ref) => {
+    const { orientation, dotsPosition, totalSlides, currentIndex, scrollTo } =
+      useCarousel()
+
+    if (totalSlides <= 1) return null
+
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          dotsContainerVariants({
+            orientation,
+            size,
+            position: dotsPosition,
+            gap,
+          }),
+          className
+        )}
+        {...props}
+      >
+        {Array.from({ length: totalSlides }).map((_, index) => (
+          <button
+            key={index}
+            className={cn(
+              dotsVariants({ size }),
+              currentIndex === index ? "bg-card-foreground" : "bg-muted"
+            )}
+            onClick={() => scrollTo(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    )
+  }
+)
 CarouselDots.displayName = "CarouselDots"
 
 export {

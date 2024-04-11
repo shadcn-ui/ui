@@ -160,7 +160,15 @@ Use the `orientation` prop to set the orientation of the carousel.
 
 ### Dots
 
-Add the `CarouselDots` component to show dots for each item in the carousel.
+Enhance carousel navigation with the CarouselDots component, which presents interactive indicators for each slide.
+
+#### Usage
+
+Embed within the Carousel, connecting automatically to its context for slide information and active index.
+
+- `dotsPosition`: Dots placement - "top", "bottom", "left", or "right".
+- `size`: Size of Dot - "default", "sm", "md", "lg".
+- `gap`: Space between dots - "default", "sm", "md", "lg".
 
 <ComponentPreview name="carousel-dots" />
 
@@ -175,7 +183,7 @@ Add the `CarouselDots` component to show dots for each item in the carousel.
     <CarouselItem>...</CarouselItem>
     ...
   </CarouselContent>
-  <CarouselDots />
+  <CarouselDots size="sm | md | lg" gap="sm | md | lg" />
   ...
 </Carousel>
 ```
