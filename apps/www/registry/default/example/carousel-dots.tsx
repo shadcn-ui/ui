@@ -10,7 +10,7 @@ import {
   CarouselPrevious,
 } from "@/registry/default/ui/carousel"
 
-export default function CarouselSize() {
+export default function CarouselDotsDemo() {
   return (
     <Carousel
       opts={{
