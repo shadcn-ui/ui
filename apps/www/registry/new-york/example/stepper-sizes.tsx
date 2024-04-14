@@ -22,33 +22,33 @@ export default function StepperDemo() {
 
   return (
     <div className="flex w-full flex-col gap-4">
-			<RadioGroup
-				className="mb-2 flex"
-				value={size}
-				onValueChange={(value) => setSize(value as StepperProps["size"])}
-			>
-				<Label
-					htmlFor="sm"
-					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
-				>
-					<RadioGroupItem value="sm" id="sm" className="sr-only" />
-					<h2 className="font-medium">sm</h2>
-				</Label>
-				<Label
-					htmlFor="md"
-					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
-				>
-					<RadioGroupItem value="md" id="md" className="sr-only" />
-					<h2 className="font-medium">md</h2>
-				</Label>
-				<Label
-					htmlFor="lg"
-					className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
-				>
-					<RadioGroupItem value="lg" id="lg" className="sr-only" />
-					<h2 className="font-medium">lg</h2>
-				</Label>
-			</RadioGroup>
+      <RadioGroup
+        className="mb-2 flex"
+        value={size}
+        onValueChange={(value) => setSize(value as StepperProps["size"])}
+      >
+        <Label
+          htmlFor="sm"
+          className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
+        >
+          <RadioGroupItem value="sm" id="sm" className="sr-only" />
+          <h2 className="font-medium">sm</h2>
+        </Label>
+        <Label
+          htmlFor="md"
+          className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
+        >
+          <RadioGroupItem value="md" id="md" className="sr-only" />
+          <h2 className="font-medium">md</h2>
+        </Label>
+        <Label
+          htmlFor="lg"
+          className="flex w-fit flex-col gap-3 rounded-md border bg-background px-2 py-1 hover:bg-gray-3 [&:has([data-state=checked])]:border-primary"
+        >
+          <RadioGroupItem value="lg" id="lg" className="sr-only" />
+          <h2 className="font-medium">lg</h2>
+        </Label>
+      </RadioGroup>
       <Stepper size={size} initialStep={0} steps={steps}>
         {steps.map((stepProps, index) => {
           return (
