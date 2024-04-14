@@ -39,7 +39,7 @@ Here's how I configure Inter for Next.js:
 
 **1. Import the font in the root layout:**
 
-```js showLineNumbers title=app/layout.tsx {2,5-8,16-17}
+```js showLineNumbers title=app/layout.tsx {2-8,16-17}
 import "@/styles/globals.css"
 import { Inter as FontSans } from "next/font/google"
 
@@ -69,7 +69,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
 **2. Configure `theme.extend.fontFamily` in `tailwind.config.js`**
 
-```js showLineNumbers title=tailwind.config.js {9-11}
+```js showLineNumbers title=tailwind.config.js {1,9-11}
 const { fontFamily } = require("tailwindcss/defaultTheme")
 
 /** @type {import('tailwindcss').Config} */
