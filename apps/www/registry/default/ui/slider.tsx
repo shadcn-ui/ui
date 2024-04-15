@@ -14,8 +14,8 @@ const Slider = React.forwardRef<
     // eslint-disable-next-line tailwindcss/no-contradicting-classname
     className={cn(
       "relative flex touch-none select-none",
-      "data-[orientation='horizontal']:w-full data-[orientation='horizontal']:items-center",
-      "data-[orientation='vertical']:h-full data-[orientation='vertical']:justify-center",
+      "data-[orientation='horizontal']:h-2 data-[orientation='horizontal']:w-full data-[orientation='horizontal']:items-center",
+      "data-[orientation='vertical']:h-full data-[orientation='vertical']:w-2 data-[orientation='vertical']:justify-center",
       className
     )}
     {...props}

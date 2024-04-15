@@ -62,7 +62,7 @@ export default function KitchenSinkPage() {
             <ComponentWrapper>
               <SliderHorizontalDemo className="w-full" />
             </ComponentWrapper>
-            <ComponentWrapper className="flex h-[300px] w-full justify-center">
+            <ComponentWrapper className="h-[300px] w-full">
               <SliderVerticalDemo />
             </ComponentWrapper>
             <ComponentWrapper
