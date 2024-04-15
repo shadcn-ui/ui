@@ -28,9 +28,6 @@ export default function TimelineDemo() {
         <TimelineHeading side="right" className="text-destructive">
           Design
         </TimelineHeading>
-        <TimelineHeading side="right" className="text-destructive">
-          Design
-        </TimelineHeading>
         <TimelineDot status="error" />
         <TimelineLine done />
         <TimelineContent>
