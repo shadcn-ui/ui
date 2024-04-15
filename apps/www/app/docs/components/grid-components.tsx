@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { Suspense } from "react"
 import Link from "next/link"
 
 import { docsConfig } from "@/config/docs"
@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/default/ui/card"
+import { Skeleton } from "@/registry/new-york/ui/skeleton"
 import { registry } from "@/registry/registry"
 
 import PreviewComponentOverview from "./previews"
@@ -71,7 +72,9 @@ function GridListPreview({
               </CardTitle>
             </CardHeader>
             <CardContent className="pointer-events-none flex min-h-24 flex-1 items-center justify-center">
-              <PreviewComponentOverview name={`${component.name}-demo`} />
+              <Suspense fallback={<Skeleton className="h-44 w-full" />}>
+                <PreviewComponentOverview name={`${component.name}-demo`} />
+              </Suspense>
             </CardContent>
           </Card>
         ))}
