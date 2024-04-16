@@ -55,7 +55,7 @@ export function DocsSidebarNavItems({
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
           >
-            <span className="hover:underline">{item.title}</span>
+            <span className="group-hover:underline">{item.title}</span>
             {item.label && (
               <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
                 {item.label}
@@ -70,7 +70,7 @@ export function DocsSidebarNavItems({
               item.disabled && "cursor-not-allowed opacity-60"
             )}
           >
-            <span className="hover:underline">{item.title}</span>
+            <span className="group-hover:underline">{item.title}</span>
             {item.label && (
               <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs leading-none text-muted-foreground no-underline group-hover:no-underline">
                 {item.label}
