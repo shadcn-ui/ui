@@ -2,12 +2,12 @@
 
 import * as React from "react"
 import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu"
-import { CheckIcon, CopyIcon } from "@radix-ui/react-icons"
+import { CheckIcon, ClipboardIcon } from "lucide-react"
 import { NpmCommands } from "types/unist"
 
 import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/new-york/ui/button"
+import { Button, ButtonProps } from "@/registry/new-york/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/new-york/ui/dropdown-menu"
 
-interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface CopyButtonProps extends ButtonProps {
   value: string
   src?: string
   event?: Event["name"]
@@ -32,6 +32,7 @@ export function CopyButton({
   value,
   className,
   src,
+  variant = "ghost",
   event,
   ...props
 }: CopyButtonProps) {
@@ -46,9 +47,9 @@ export function CopyButton({
   return (
     <Button
       size="icon"
-      variant="ghost"
+      variant={variant}
       className={cn(
-        "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
+        "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:size-3",
         className
       )}
       onClick={() => {
@@ -68,11 +69,7 @@ export function CopyButton({
       {...props}
     >
       <span className="sr-only">Copy</span>
-      {hasCopied ? (
-        <CheckIcon className="h-3 w-3" />
-      ) : (
-        <CopyIcon className="h-3 w-3" />
-      )}
+      {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
     </Button>
   )
 }
@@ -178,7 +175,7 @@ export function CopyNpmCommandButton({
           {hasCopied ? (
             <CheckIcon className="h-3 w-3" />
           ) : (
-            <CopyIcon className="h-3 w-3" />
+            <ClipboardIcon className="h-3 w-3" />
           )}
           <span className="sr-only">Copy</span>
         </Button>
