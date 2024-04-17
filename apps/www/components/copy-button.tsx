@@ -113,7 +113,7 @@ export function CopyWithClassNames({
           {hasCopied ? (
             <CheckIcon className="h-3 w-3" />
           ) : (
-            <CopyIcon className="h-3 w-3" />
+            <ClipboardIcon className="h-3 w-3" />
           )}
           <span className="sr-only">Copy</span>
         </Button>
