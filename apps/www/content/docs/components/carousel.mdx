@@ -7,7 +7,7 @@ links:
   api: https://www.embla-carousel.com/api
 ---
 
-<ComponentPreview name="carousel-demo" description="A carousel with 5 items." />
+<ComponentPreview name="carousel-demo" />
 
 ## About
 
@@ -82,10 +82,7 @@ import {
 
 To set the size of the items, you can use the `basis` utility class on the `<CarouselItem />`.
 
-<ComponentPreview
-  name="carousel-size"
-  description="A carousel showing 3 items at a time."
-/>
+<ComponentPreview name="carousel-size" />
 
 ```tsx title="Example" showLineNumbers {4-6}
 // 33% of the carousel width.
@@ -123,10 +120,7 @@ You can always adjust this in your own project if you need to.
 
 </Callout>
 
-<ComponentPreview
-  name="carousel-spacing"
-  description="A carousel with custom spacing."
-/>
+<ComponentPreview name="carousel-spacing" />
 
 ```tsx title="Example" showLineNumbers /-ml-4/ /pl-4/
 <Carousel>
@@ -152,10 +146,7 @@ You can always adjust this in your own project if you need to.
 
 Use the `orientation` prop to set the orientation of the carousel.
 
-<ComponentPreview
-  name="carousel-orientation"
-  description="A vertical carousel"
-/>
+<ComponentPreview name="carousel-orientation" />
 
 ```tsx showLineNumbers /vertical | horizontal/
 <Carousel orientation="vertical | horizontal">
