@@ -113,11 +113,11 @@ export function BlockToolbar({
           {block.hasLiftMode && (
             <>
               <div className="flex h-7 items-center justify-between gap-2">
-                <Label htmlFor="lift-mode" className="text-xs">
+                <Label htmlFor={`lift-mode-${block.name}`} className="text-xs">
                   Lift Mode
                 </Label>
                 <Switch
-                  id="lift-mode"
+                  id={`lift-mode-${block.name}`}
                   checked={isLiftMode}
                   onCheckedChange={(value) => {
                     resizablePanelRef.current?.resize(100)
