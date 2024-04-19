@@ -654,6 +654,12 @@ export const examples: Registry = [
     files: ["example/stepper-footer-inside.tsx"],
   },
   {
+    name: "stepper-scroll-tracking",
+    type: "components:example",
+    registryDependencies: ["stepper"],
+    files: ["example/stepper-scroll-tracking.tsx"],
+  },
+  {
     name: "stepper-clickable-steps",
     type: "components:example",
     registryDependencies: ["stepper"],

@@ -242,6 +242,16 @@ When using the vertical orientation, we may want to have the footer buttons insi
 
 If you would like the stepper to scroll to the active step when it is not in view you can do so using the `scrollTracking` prop on the Stepper component.
 
+<ComponentPreview name="stepper-scroll-tracking" />
+
+<Callout>
+  For scroll tracking to make sense, the content of each step should ideally
+  include the buttons that allow the user to move forward or backward in the
+  stepper, since the user should be able to see the content of the active step
+  and not need to scroll to the end of the stepper in order to move forward or
+  backward.
+</Callout>
+
 ### With Forms
 
 If you want to use the stepper with forms, you can do so by using the `useStepper` hook to control the component.
@@ -585,5 +595,10 @@ The values returned by the hook are the following:
       type: "StepItem",
       description: "The current step object.",
     },
+    {
+      name: "previousActiveStep",
+      type: "number",
+      description: "The previous active step. It allows us to know which was the previous active step",
+    }
   ]}
 />

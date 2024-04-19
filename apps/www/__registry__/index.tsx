@@ -1699,6 +1699,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "stepper-scroll-tracking": {
+      name: "stepper-scroll-tracking",
+      type: "components:example",
+      registryDependencies: ["stepper"],
+      component: React.lazy(() => import("@/registry/default/example/stepper-scroll-tracking")),
+      source: "",
+      files: ["registry/default/example/stepper-scroll-tracking.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "stepper-clickable-steps": {
       name: "stepper-clickable-steps",
       type: "components:example",
@@ -4228,6 +4239,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/stepper-footer-inside")),
       source: "",
       files: ["registry/new-york/example/stepper-footer-inside.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "stepper-scroll-tracking": {
+      name: "stepper-scroll-tracking",
+      type: "components:example",
+      registryDependencies: ["stepper"],
+      component: React.lazy(() => import("@/registry/new-york/example/stepper-scroll-tracking")),
+      source: "",
+      files: ["registry/new-york/example/stepper-scroll-tracking.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
