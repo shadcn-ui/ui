@@ -50,6 +50,7 @@ export const TAILWIND_CONFIG: TailwindConfig = {
       },
     },
   },
+  // Added through transform before writing to file
   // plugins: [require("tailwindcss-animate")],
 }
 
@@ -127,5 +128,6 @@ export const TAILWIND_CONFIG_WITH_VARIABLES: TailwindConfig = {
       },
     },
   },
-  plugins: [],
+  // Added through transform before writing to file
+  // plugins: [require("tailwindcss-animate")],
 }
