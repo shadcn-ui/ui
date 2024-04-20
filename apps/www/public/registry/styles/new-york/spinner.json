@@ -1,0 +1,13 @@
+{
+  "name": "spinner",
+  "dependencies": [
+    "spinner"
+  ],
+  "files": [
+    {
+      "name": "spinner.tsx",
+      "content": "import React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Spinner = React.forwardRef<\n  HTMLDivElement,\n  React.ComponentPropsWithoutRef<\"div\">\n>(({ className, ...props }, ref) => {\n  const computeDelay = (i: number) => `${-1.2 + i * 0.1}s`\n  const computeRotation = (i: number) => `${i * 30}deg`\n  return (\n    <div\n      className={cn(\"size-5\", className)}\n      role=\"status\"\n      aria-label=\"Loading\"\n      ref={ref}\n      {...props}\n    >\n      <div className=\"relative left-1/2 top-1/2 size-full\">\n        {[...Array(12)].map((_, i) => (\n          <div\n            key={i}\n            className=\"absolute left-[-10%] top-[-3.9%] h-[8%] w-[24%] animate-spinner bg-foreground\"\n            style={{\n              animationDelay: computeDelay(i),\n              transform: `rotate(${computeRotation(i)}) translate(146%)`,\n            }}\n          />\n        ))}\n      </div>\n    </div>\n  )\n})\nSpinner.displayName = \"Spinner\"\n\nexport { Spinner }\n"
+    }
+  ],
+  "type": "components:ui"
+}
