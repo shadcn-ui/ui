@@ -1,6 +1,9 @@
+import { existsSync } from "fs"
 import path from "path"
 import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
+import createJiti from "jiti"
+import type { Config as TailwindConfig } from "tailwindcss"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -100,4 +103,14 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
   } catch (error) {
     throw new Error(`Invalid configuration found in ${cwd}/components.json.`)
   }
+}
+
+export function getExistingTailwindConfig(
+  resolvedPath: string
+): TailwindConfig {
+  if (!existsSync(resolvedPath)) {
+    return { content: [] }
+  }
+  const dir = path.dirname(resolvedPath)
+  return createJiti(dir)(resolvedPath).default
 }

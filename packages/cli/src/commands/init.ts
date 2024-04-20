@@ -6,6 +6,7 @@ import {
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
   getConfig,
+  getExistingTailwindConfig,
   rawConfigSchema,
   resolveConfigPaths,
   type Config,
@@ -22,6 +23,7 @@ import {
 import * as templates from "@/src/utils/templates"
 import chalk from "chalk"
 import { Command } from "commander"
+import { defu } from "defu"
 import { execa } from "execa"
 import template from "lodash.template"
 import ora from "ora"
@@ -334,21 +336,46 @@ export async function runInit(cwd: string, config: Config) {
     config.resolvedPaths.tailwindConfig
   )
 
-  let tailwindConfigTemplate: string
+  const existingTailwindConfig = getExistingTailwindConfig(
+    config.resolvedPaths.tailwindConfig
+  )
+
+  let tailwindConfigTemplate = config.tailwind.cssVariables
+    ? templates.TAILWIND_CONFIG_WITH_VARIABLES
+    : templates.TAILWIND_CONFIG
+  const mergedConfig = defu(tailwindConfigTemplate, existingTailwindConfig)
+  if (mergedConfig.prefix === "") delete mergedConfig.prefix
+  const stringedConfig = JSON.stringify(
+    mergedConfig,
+    (key, value) => {
+      if (key === "plugins") {
+        return [...value, "<%- animatePlugin %>"]
+      }
+      return value
+    },
+    2
+  )
+
+  let configStr: string
   if (tailwindConfigExtension === ".ts") {
-    tailwindConfigTemplate = config.tailwind.cssVariables
-      ? templates.TAILWIND_CONFIG_TS_WITH_VARIABLES
-      : templates.TAILWIND_CONFIG_TS
+    configStr = `import type { Config } from "tailwindcss";
+import tailwindAnimate from "tailwindcss-animate";
+
+export default ${stringedConfig} satisfies Config`
+    configStr = configStr.replace('"<%- animatePlugin %>"', `tailwindAnimate`)
   } else {
-    tailwindConfigTemplate = config.tailwind.cssVariables
-      ? templates.TAILWIND_CONFIG_WITH_VARIABLES
-      : templates.TAILWIND_CONFIG
+    configStr = `/** @type {import('tailwindcss').Config} */
+module.exports = ${stringedConfig} satisfies Config`
+    configStr = configStr.replace(
+      "<%- animatePlugin %>",
+      `require("tailwindcss-animate")`
+    )
   }
 
   // Write tailwind config.
   await fs.writeFile(
     config.resolvedPaths.tailwindConfig,
-    template(tailwindConfigTemplate)({
+    template(configStr)({
       extension,
       prefix: config.tailwind.prefix,
     }),
