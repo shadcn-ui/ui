@@ -34,6 +34,8 @@ export async function editInV0({
     })
 
     if (!response.ok) {
+      console.log(response.status, response.statusText)
+
       if (response.status === 403) {
         throw new Error("Unauthorized")
       }
@@ -43,6 +45,8 @@ export async function editInV0({
 
     return await response.json()
   } catch (error) {
+    console.log(error)
+
     if (error instanceof Error) {
       return { error: error.message }
     }
