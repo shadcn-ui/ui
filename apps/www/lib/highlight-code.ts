@@ -4,11 +4,13 @@ import { promises as fs } from "fs"
 import path from "path"
 import { getHighlighter } from "shiki"
 
+// Highlighting is failing in server components.
+// Disabling this in development.
+// TODO: Remove this when we figure out the issue.
+const highlightCodeEnabled = process.env.NODE_ENV !== "development"
+
 export async function highlightCode(code: string) {
-  // Highlighting is failing in server components.
-  // Disabling this in development.
-  // TODO: Remove this when we figure out the issue.
-  if (process.env.NODE_ENV === "development") {
+  if (!highlightCodeEnabled) {
     return code
   }
 

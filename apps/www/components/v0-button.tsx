@@ -7,39 +7,90 @@ import { useFormStatus } from "react-dom"
 import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/new-york/ui/button"
+import { Button, ButtonProps } from "@/registry/new-york/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/registry/new-york/ui/tooltip"
+import { Block } from "@/registry/schema"
 import { Style } from "@/registry/styles"
 
+type Size = "default" | "icon"
+
+function V0Tooltip({
+  size,
+  style = "default",
+  children,
+}: React.PropsWithChildren<{ size: Size; style?: Style["name"] }>) {
+  if (size === "default") {
+    return <>{children}</>
+  }
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        {style === "new-york" ? (
+          <span tabIndex={-1}>{children}</span>
+        ) : (
+          <>{children}</>
+        )}
+      </TooltipTrigger>
+      <TooltipContent>
+        {style === "new-york" ? (
+          <>Not available in New York</>
+        ) : (
+          <>Edit in v0</>
+        )}
+      </TooltipContent>
+    </Tooltip>
+  )
+}
+
 export function V0Button({
-  name,
-  description,
-  code,
-  style,
+  block,
+  size = "default",
+  disabled,
+  className,
+  ...props
 }: {
-  name: string
-  description: string
-  code: string
-  style: Style["name"]
-}) {
-  if (style === "new-york") {
+  block: Pick<Block, "name" | "description" | "code" | "style">
+  size?: Size
+} & ButtonProps) {
+  if (block.style === "new-york") {
     return (
-      <Button
-        aria-label="Edit in v0"
-        className="h-7 gap-1"
-        size="sm"
-        onClick={() =>
-          toast("New York not available.", {
-            description: (
-              <div className="flex items-center">
-                Only the Default style is available in{" "}
-                <V0Logo className="ml-1 text-foreground" aria-label="v0" />.
-              </div>
-            ),
-          })
-        }
-      >
-        Edit in <V0Logo />
-      </Button>
+      <V0Tooltip size={size} style={block.style}>
+        <Button
+          aria-label="Edit in v0"
+          className={cn(
+            "z-50 h-[calc(theme(spacing.7)_-_1px)] gap-1 rounded-[6px] bg-black px-3 text-xs text-white hover:bg-black hover:text-white dark:bg-white dark:text-black",
+            size === "icon" && "h-7 w-7 p-0",
+            className
+          )}
+          onClick={() => {
+            toast("New York not available.", {
+              description: (
+                <div className="flex items-center">
+                  Only the Default style is available in{" "}
+                  <V0Logo className="ml-1 text-foreground" aria-label="v0" />.
+                </div>
+              ),
+            })
+          }}
+          disabled={
+            block.style === "new-york" && size === "icon" ? true : disabled
+          }
+          {...props}
+        >
+          {size === "icon" ? (
+            <V0Logo className="h-4 w-4" />
+          ) : (
+            <>
+              Edit in <V0Logo />
+            </>
+          )}
+        </Button>
+      </V0Tooltip>
     )
   }
   return (
@@ -47,10 +98,10 @@ export function V0Button({
       action={async () => {
         try {
           const result = await editInV0({
-            name,
-            description,
-            code,
-            style,
+            name: block.name,
+            description: block.description || "",
+            code: block.code,
+            style: block.style,
           })
 
           if (result?.error) {
@@ -74,28 +125,49 @@ export function V0Button({
         }
       }}
     >
-      <Form />
+      <Form size={size} {...props} />
     </form>
   )
 }
 
-function Form() {
+function Form({
+  disabled,
+  size = "default",
+  ...props
+}: Omit<React.ComponentProps<typeof V0Button>, "block">) {
   const { pending } = useFormStatus()
 
   return (
-    <Button
-      aria-label="Edit in v0"
-      className="h-7 gap-1"
-      size="sm"
-      disabled={pending}
-    >
-      {pending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
-      Edit in <V0Logo />
-    </Button>
+    <V0Tooltip size={size}>
+      <Button
+        aria-label="Edit in v0"
+        className={cn(
+          "z-50 h-[calc(theme(spacing.7)_-_1px)] gap-1 rounded-[6px] bg-black px-3 text-xs text-white hover:bg-black hover:text-white dark:bg-white dark:text-black",
+          size === "icon" && "h-7 w-7 p-0"
+        )}
+        disabled={disabled || pending}
+        {...props}
+      >
+        {size === "icon" ? (
+          <>
+            {pending ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <V0Logo className="h-4 w-4" />
+            )}
+          </>
+        ) : (
+          <>
+            {pending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
+            Edit in <V0Logo />
+          </>
+        )}
+      </Button>
+    </V0Tooltip>
   )
 }
 
-function V0Logo({ className, ...props }: React.ComponentProps<"svg">) {
+export function V0Logo({ className, ...props }: React.ComponentProps<"svg">) {
   return (
     <svg
       viewBox="0 0 40 20"
