@@ -58,7 +58,7 @@ export default function IndexPage() {
         />
       </section>
       <section className="hidden md:block">
-        <div className="overflow-hidden rounded-lg border bg-background shadow-lg">
+        <div className="overflow-hidden rounded-lg border bg-background shadow">
           <MailPage />
         </div>
       </section>
