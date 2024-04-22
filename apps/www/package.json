@@ -7,6 +7,7 @@
     "dev": "next dev -p 3003",
     "build": "contentlayer build && pnpm build:registry && next build",
     "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
+    "build:docs": "contentlayer build",
     "seed:tasks": "tsx --tsconfig ./tsconfig.scripts.json ./app/(app)/examples/tasks/data/seed.ts",
     "start": "next start -p 3001",
     "lint": "next lint",
