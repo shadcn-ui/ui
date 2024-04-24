@@ -1,4 +1,5 @@
 
+
 # Contributing
 
 Thanks for your interest in contributing to ui.shadcn.com. 
@@ -82,13 +83,15 @@ packages
  
  <br>
 
-### Clone on your local machine
+### Clone your fork repo on local machine
 
 ```bash
 
 git  clone  https://github.com/your-username/ui.git
 
 ```
+*At (your-username) change to your github username.*
+
 <br>
 <br>
 <br>
