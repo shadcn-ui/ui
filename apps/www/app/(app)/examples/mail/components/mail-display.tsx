@@ -103,7 +103,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     >
                       Later today{" "}
                       <span className="ml-auto text-muted-foreground">
-                        {format(addHours(today, 4), "E, h:m b")}
+                        {format(addHours(today, 4), "E, h:mm b")}
                       </span>
                     </Button>
                     <Button
@@ -112,7 +112,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     >
                       Tomorrow
                       <span className="ml-auto text-muted-foreground">
-                        {format(addDays(today, 1), "E, h:m b")}
+                        {format(addDays(today, 1), "E, h:mm b")}
                       </span>
                     </Button>
                     <Button
@@ -121,7 +121,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     >
                       This weekend
                       <span className="ml-auto text-muted-foreground">
-                        {format(nextSaturday(today), "E, h:m b")}
+                        {format(nextSaturday(today), "E, h:mm b")}
                       </span>
                     </Button>
                     <Button
@@ -130,7 +130,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     >
                       Next week
                       <span className="ml-auto text-muted-foreground">
-                        {format(addDays(today, 7), "E, h:m b")}
+                        {format(addDays(today, 7), "E, h:mm b")}
                       </span>
                     </Button>
                   </div>
