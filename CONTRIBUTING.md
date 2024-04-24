@@ -1,23 +1,17 @@
-
-
 # Contributing
 
 Thanks for your interest in contributing to ui.shadcn.com. 
-<br>
+
 <h4>We're happy to have you here.</h4>
 
-<br>
 <br>
 
 # Before Starting
 
 Please take a moment to review this document before submitting your first pull request. We also strongly recommend that you check for open issues and pull requests to see if someone else is working on something similar.
-<br>
-<br>
 
 <h4>If you need any help, feel free to reach out to [@shadcn](https://twitter.com/shadcn).</h4>
 
-<br>
 <br>
 
 # About this repository
@@ -31,8 +25,6 @@ Please take a moment to review this document before submitting your first pull r
 - We use [changesets](https://github.com/changesets/changesets) for managing releases.
 
 <br>
-<br>
-  
 
 # Structure
 
@@ -56,7 +48,6 @@ packages
 ```
 
 <br>
-  
 
 | Path                  | Description                              |
 | --------------------- | ---------------------------------------- |
@@ -66,8 +57,6 @@ packages
 | `apps/www/registry`   | The registry for the components.         |
 | `packages/cli`        | The `shadcn-ui` package.                 |
 
-
-<br>
 <br>
 <br>
 
@@ -83,7 +72,7 @@ packages
  
  <br>
 
-### Clone your fork repo on local machine
+### Clone on your local machine
 
 ```bash
 
@@ -94,9 +83,6 @@ git  clone  https://github.com/your-username/ui.git
 
 <br>
 <br>
-<br>
-
- 
 
 # After Coning project
 
@@ -109,7 +95,6 @@ cd  ui
 ```
 <br>
   
-
 ### Create a new Branch
 
 ```bash
@@ -130,7 +115,7 @@ git  checkout  -b  my-new-branch
 pnpm  install
 
 ```
-<br>
+
 <br>
 <br>
   
