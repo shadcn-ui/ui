@@ -1,6 +1,6 @@
 import React from "react"
+import { CheckIcon, CircleIcon, Cross1Icon } from "@radix-ui/react-icons"
 import { VariantProps, cva } from "class-variance-authority"
-import { Check, Circle, X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -68,12 +68,12 @@ const timelineDotVariants = cva(
   {
     variants: {
       status: {
-        default: "[&>svg]:hidden",
+        default: "[&>*]:hidden",
         current:
-          "[&>.lucide-circle]:fill-current [&>.lucide-circle]:text-current [&>svg:not(.lucide-circle)]:hidden",
-        done: "bg-primary [&>.lucide-check]:text-background [&>svg:not(.lucide-check)]:hidden",
+          "[&>*:not(.radix-circle)]:hidden [&>.radix-circle]:bg-current [&>.radix-circle]:fill-current",
+        done: "bg-primary [&>*:not(.radix-check)]:hidden [&>.radix-check]:text-background",
         error:
-          "border-destructive bg-destructive [&>.lucide-x]:text-background [&>svg:not(.lucide-x)]:hidden",
+          "border-destructive bg-destructive [&>*:not(.radix-cross)]:hidden [&>.radix-cross]:text-background",
       },
     },
     defaultVariants: {
@@ -96,9 +96,9 @@ const TimelineDot = React.forwardRef<HTMLDivElement, TimelineDotProps>(
       ref={ref}
       {...props}
     >
-      <Circle className="size-2.5" />
-      <Check className="size-3" />
-      <X className="size-3" />
+      <div className="radix-circle size-2.5 rounded-full" />
+      <CheckIcon className="radix-check size-3" />
+      <Cross1Icon className="radix-cross size-2.5" />
       {customIcon}
     </div>
   )
