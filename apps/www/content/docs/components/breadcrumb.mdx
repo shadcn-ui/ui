@@ -4,7 +4,11 @@ description: Displays the path to the current resource using a hierarchy of link
 component: true
 ---
 
-<ComponentPreview name="breadcrumb-demo" className="[&_.preview]:p-2" />
+<ComponentPreview
+  name="breadcrumb-demo"
+  className="[&_.preview]:p-2"
+  description="A breadcrumb with a collapsible dropdown."
+/>
 
 ## Installation
 
@@ -75,7 +79,10 @@ import {
 
 Use a custom component as `children` for `<BreadcrumbSeparator />` to create a custom separator.
 
-<ComponentPreview name="breadcrumb-separator" />
+<ComponentPreview
+  name="breadcrumb-separator"
+  description="A breadcrumb with a custom separator"
+/>
 
 ```tsx showLineNumbers {1,10-12}
 import { Slash } from "lucide-react"
@@ -103,7 +110,11 @@ import { Slash } from "lucide-react"
 
 You can compose `<BreadcrumbItem />` with a `<DropdownMenu />` to create a dropdown in the breadcrumb.
 
-<ComponentPreview name="breadcrumb-dropdown" className="[&_.preview]:p-2" />
+<ComponentPreview
+  name="breadcrumb-dropdown"
+  className="[&_.preview]:p-2"
+  description="A breadcrumb with a dropdown."
+/>
 
 ```tsx showLineNumbers {1-6,11-21}
 import {
@@ -136,7 +147,11 @@ import {
 
 We provide a `<BreadcrumbEllipsis />` component to show a collapsed state when the breadcrumb is too long.
 
-<ComponentPreview name="breadcrumb-ellipsis" className="[&_.preview]:p-2" />
+<ComponentPreview
+  name="breadcrumb-ellipsis"
+  className="[&_.preview]:p-2"
+  description="A breadcrumb showing a collapsed state."
+/>
 
 ```tsx showLineNumbers {1,9}
 import { BreadcrumbEllipsis } from "@/components/ui/breadcrumb"
@@ -160,7 +175,10 @@ import { BreadcrumbEllipsis } from "@/components/ui/breadcrumb"
 
 To use a custom link component from your routing library, you can use the `asChild` prop on `<BreadcrumbLink />`.
 
-<ComponentPreview name="breadcrumb-link" />
+<ComponentPreview
+  name="breadcrumb-link"
+  description="A breadcrumb with a custom Link component"
+/>
 
 ```tsx showLineNumbers {1,8-10}
 import { Link } from "next/link"
@@ -187,4 +205,8 @@ Here's an example of a responsive breadcrumb that composes `<BreadcrumbItem />` 
 
 It displays a dropdown on desktop and a drawer on mobile.
 
-<ComponentPreview name="breadcrumb-responsive" className="[&_.preview]:p-2" />
+<ComponentPreview
+  name="breadcrumb-responsive"
+  className="[&_.preview]:p-2"
+  description="A responsive breadcrumb. It displays a dropdown on desktop and a drawer on mobile."
+/>
