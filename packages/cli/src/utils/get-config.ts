@@ -2,7 +2,7 @@ import path from "path"
 import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import { loadConfig } from "tsconfig-paths"
-import * as z from "zod"
+import { z } from "zod"
 
 export const DEFAULT_STYLE = "default"
 export const DEFAULT_COMPONENTS = "@/components"
@@ -28,10 +28,12 @@ export const rawConfigSchema = z
       css: z.string(),
       baseColor: z.string(),
       cssVariables: z.boolean().default(true),
+      prefix: z.string().default("").optional(),
     }),
     aliases: z.object({
       components: z.string(),
       utils: z.string(),
+      ui: z.string().optional(),
     }),
   })
   .strict()
@@ -44,6 +46,7 @@ export const configSchema = rawConfigSchema.extend({
     tailwindCss: z.string(),
     utils: z.string(),
     components: z.string(),
+    ui: z.string(),
   }),
 })
 
@@ -78,6 +81,9 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
       tailwindCss: path.resolve(cwd, config.tailwind.css),
       utils: await resolveImport(config.aliases["utils"], tsConfig),
       components: await resolveImport(config.aliases["components"], tsConfig),
+      ui: config.aliases["ui"]
+        ? await resolveImport(config.aliases["ui"], tsConfig)
+        : await resolveImport(config.aliases["components"], tsConfig),
     },
   })
 }
