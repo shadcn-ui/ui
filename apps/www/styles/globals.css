@@ -74,6 +74,15 @@
     @apply ml-[-50px] mt-[-4px];
     content: counter(step);
   }
+
+  .chunk-container {
+    @apply shadow-none;
+  }
+
+  .chunk-container::after {
+    content: "";
+    @apply absolute -inset-4 shadow-xl rounded-xl border;
+  }
 }
 
 @media (max-width: 640px) {
