@@ -172,6 +172,7 @@ export const add = new Command()
             baseColor,
           })
           if (!config.storybook && filePath.includes(".stories.tsx")) {
+            // NOTE: Skip writing storybook files if storybook is disabled.
             return
           }
 

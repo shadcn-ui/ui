@@ -41,11 +41,14 @@ export const Index: Record<string, any> = {
 
     // Build style index.
     for (const item of registry) {
-      const resolveFiles = item.files.map((file) =>
-        file.includes(".stories.tsx")
-          ? `registry/${file}`
-          : `registry/${style.name}/${file}`
-      )
+      const resolveFiles = item.files.map((file) => {
+        switch (file.split(".")[1]) {
+          case "stories":
+            return `registry/${file}`
+          default:
+            return `registry/${style.name}/${file}`
+        }
+      })
       const type = item.type.split(":")[1]
       let sourceFilename = ""
 
@@ -287,16 +290,23 @@ async function buildStyles(registry: Registry) {
       }
 
       const files = item.files?.map((file) => {
-        const content = file.includes(".stories.tsx")
-          ? readFileSync(path.join(process.cwd(), "registry", file), "utf8")
-          : readFileSync(
-              path.join(process.cwd(), "registry", style.name, file),
-              "utf8"
-            )
-
-        return {
-          name: basename(file),
-          content,
+        switch (file.split(".")[1]) {
+          case "stories":
+            return {
+              name: basename(file),
+              content: readFileSync(
+                path.join(process.cwd(), "registry", file),
+                "utf8"
+              ),
+            }
+          default:
+            return {
+              name: basename(file),
+              content: readFileSync(
+                path.join(process.cwd(), "registry", style.name, file),
+                "utf8"
+              ),
+            }
         }
       })
 
