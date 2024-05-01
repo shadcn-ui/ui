@@ -68,12 +68,13 @@ const timelineDotVariants = cva(
   {
     variants: {
       status: {
-        default: "[&>svg]:hidden",
+        default: "[&>*]:hidden",
         current:
-          "[&>.lucide-circle]:fill-current [&>.lucide-circle]:text-current [&>svg:not(.lucide-circle)]:hidden",
-        done: "bg-primary [&>.lucide-check]:text-background [&>svg:not(.lucide-check)]:hidden",
+          "[&>*:not(.lucide-circle)]:hidden [&>.lucide-circle]:fill-current [&>.lucide-circle]:text-current",
+        done: "bg-primary [&>*:not(.lucide-check)]:hidden [&>.lucide-check]:text-background",
         error:
-          "border-destructive bg-destructive [&>.lucide-x]:text-background [&>svg:not(.lucide-x)]:hidden",
+          "border-destructive bg-destructive [&>*:not(.lucide-x)]:hidden [&>.lucide-x]:text-background",
+        custom: "[&>*:not(:nth-child(4))]:hidden [&>*:nth-child(4)]:block",
       },
     },
     defaultVariants: {
@@ -120,19 +121,20 @@ const timelineContentVariants = cva(
   }
 )
 
-interface TimelineConent
+interface TimelineContentProps
   extends React.HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof timelineContentVariants> {}
 
-const TimelineContent = React.forwardRef<HTMLParagraphElement, TimelineConent>(
-  ({ className, side, ...props }, ref) => (
-    <p
-      className={cn(timelineContentVariants({ side }), className)}
-      ref={ref}
-      {...props}
-    />
-  )
-)
+const TimelineContent = React.forwardRef<
+  HTMLParagraphElement,
+  TimelineContentProps
+>(({ className, side, ...props }, ref) => (
+  <p
+    className={cn(timelineContentVariants({ side }), className)}
+    ref={ref}
+    {...props}
+  />
+))
 TimelineContent.displayName = "TimelineContent"
 
 const timelineHeadingVariants = cva(
@@ -155,21 +157,22 @@ const timelineHeadingVariants = cva(
   }
 )
 
-interface TimelineConent
+interface TimelineHeadingProps
   extends React.HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof timelineHeadingVariants> {}
 
-const TimelineHeading = React.forwardRef<HTMLParagraphElement, TimelineConent>(
-  ({ className, side, variant, ...props }, ref) => (
-    <p
-      role="heading"
-      aria-level={variant === "primary" ? 2 : 3}
-      className={cn(timelineHeadingVariants({ side, variant }), className)}
-      ref={ref}
-      {...props}
-    />
-  )
-)
+const TimelineHeading = React.forwardRef<
+  HTMLParagraphElement,
+  TimelineHeadingProps
+>(({ className, side, variant, ...props }, ref) => (
+  <p
+    role="heading"
+    aria-level={variant === "primary" ? 2 : 3}
+    className={cn(timelineHeadingVariants({ side, variant }), className)}
+    ref={ref}
+    {...props}
+  />
+))
 TimelineHeading.displayName = "TimelineHeading"
 
 interface TimelineLineProps extends React.HTMLAttributes<HTMLHRElement> {
