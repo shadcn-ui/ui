@@ -146,7 +146,7 @@ export function BlockToolbar({
               type="single"
               defaultValue="100"
               onValueChange={(value) => {
-                if (resizablePanelRef.current) {
+                if (resizablePanelRef.current && value) {
                   resizablePanelRef.current.resize(parseInt(value))
                 }
               }}
