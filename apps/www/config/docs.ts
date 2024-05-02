@@ -1,8 +1,9 @@
 import { MainNavItem, SidebarNavItem } from "types/nav"
 
-interface DocsConfig {
+export interface DocsConfig {
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
+  chartsNav: SidebarNavItem[]
 }
 
 export const docsConfig: DocsConfig = {
@@ -322,6 +323,43 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
+          items: [],
+        },
+      ],
+    },
+  ],
+  chartsNav: [
+    {
+      title: "Getting Started",
+      items: [
+        {
+          title: "Introduction",
+          href: "/docs/charts",
+          items: [],
+        },
+        {
+          title: "Theming",
+          href: "/docs/theming",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Charts",
+      items: [
+        {
+          title: "Line Chart",
+          href: "/docs/charts/line-chart",
+          items: [],
+        },
+        {
+          title: "Bar Chart",
+          href: "/docs/charts/bar-chart",
+          items: [],
+        },
+        {
+          title: "Pie Chart",
+          href: "/docs/charts/pie-chart",
           items: [],
         },
       ],

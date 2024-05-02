@@ -42,6 +42,28 @@ export function MainNav() {
           Components
         </Link>
         <Link
+          href="/blocks"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/blocks")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          Blocks
+        </Link>
+        <Link
+          href="/charts"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/docs/charts")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          Charts
+        </Link>
+        <Link
           href="/themes"
           className={cn(
             "transition-colors hover:text-foreground/80",
@@ -62,25 +84,6 @@ export function MainNav() {
           )}
         >
           Examples
-        </Link>
-        <Link
-          href="/blocks"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/blocks")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Blocks
-        </Link>
-        <Link
-          href={siteConfig.links.github}
-          className={cn(
-            "hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
-          )}
-        >
-          GitHub
         </Link>
       </nav>
     </div>

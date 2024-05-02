@@ -2394,6 +2394,94 @@ export const Index: Record<string, any> = {
       subcategory: "Login",
       chunks: []
     },
+    "line-chart-demo": {
+      name: "line-chart-demo",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/line-chart-demo")),
+      source: "",
+      files: ["registry/default/chart/line-chart-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-curve": {
+      name: "line-chart-curve",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/line-chart-curve")),
+      source: "",
+      files: ["registry/default/chart/line-chart-curve.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-area": {
+      name: "line-chart-area",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/line-chart-area")),
+      source: "",
+      files: ["registry/default/chart/line-chart-area.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-area-solid": {
+      name: "line-chart-area-solid",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/line-chart-area-solid")),
+      source: "",
+      files: ["registry/default/chart/line-chart-area-solid.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-area-gradient": {
+      name: "line-chart-area-gradient",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/line-chart-area-gradient")),
+      source: "",
+      files: ["registry/default/chart/line-chart-area-gradient.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-tooltip": {
+      name: "line-chart-tooltip",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/line-chart-tooltip")),
+      source: "",
+      files: ["registry/default/chart/line-chart-tooltip.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-legend": {
+      name: "line-chart-legend",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/line-chart-legend")),
+      source: "",
+      files: ["registry/default/chart/line-chart-legend.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-events": {
+      name: "line-chart-events",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/line-chart-events")),
+      source: "",
+      files: ["registry/default/chart/line-chart-events.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
   },  "new-york": {
     "accordion": {
       name: "accordion",
@@ -4525,17 +4613,9 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-06-chunk-0",
-        description: "A breadcrumb with two links and a page indicator.",
+        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-0")),
         file: "registry/new-york/block/dashboard-06-chunk-0.tsx",
-        container: {
-          className: "undefined"
-        }
-      },{
-        name: "dashboard-06-chunk-1",
-        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
-        component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-1")),
-        file: "registry/new-york/block/dashboard-06-chunk-1.tsx",
         container: {
           className: "undefined"
         }
@@ -4790,6 +4870,94 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/authentication-04.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
+    },
+    "line-chart-demo": {
+      name: "line-chart-demo",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/line-chart-demo")),
+      source: "",
+      files: ["registry/new-york/chart/line-chart-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-curve": {
+      name: "line-chart-curve",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/line-chart-curve")),
+      source: "",
+      files: ["registry/new-york/chart/line-chart-curve.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-area": {
+      name: "line-chart-area",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/line-chart-area")),
+      source: "",
+      files: ["registry/new-york/chart/line-chart-area.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-area-solid": {
+      name: "line-chart-area-solid",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/line-chart-area-solid")),
+      source: "",
+      files: ["registry/new-york/chart/line-chart-area-solid.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-area-gradient": {
+      name: "line-chart-area-gradient",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/line-chart-area-gradient")),
+      source: "",
+      files: ["registry/new-york/chart/line-chart-area-gradient.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-tooltip": {
+      name: "line-chart-tooltip",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/line-chart-tooltip")),
+      source: "",
+      files: ["registry/new-york/chart/line-chart-tooltip.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-legend": {
+      name: "line-chart-legend",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/line-chart-legend")),
+      source: "",
+      files: ["registry/new-york/chart/line-chart-legend.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-events": {
+      name: "line-chart-events",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/line-chart-events")),
+      source: "",
+      files: ["registry/new-york/chart/line-chart-events.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
       chunks: []
     },
   },

@@ -1,0 +1,130 @@
+---
+title: Line Chart
+description: A line chart is a type of chart that displays information as a series of data points called 'markers' connected by straight line segments.
+component: true
+links:
+  doc: https://nivo.rocks/line
+---
+
+<ComponentPreview
+  name="line-chart-demo"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+## Area
+
+Use the `enableArea` prop to fill the area below the line.
+
+```tsx showLineNumbers /enableArea/
+<ResponsiveLine
+  data={/* data */}
+  enableArea
+/>
+```
+
+<ComponentPreview
+  name="line-chart-area"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+### Opacity
+
+To change the opacity of the area, use the `areaOpacity` prop.
+
+```tsx showLineNumbers /areaOpacity={0.1}/
+<ResponsiveLine
+  data={/* data */}
+  enableArea
+  areaOpacity={0.1}
+/>
+```
+
+### Solid Color
+
+<ComponentPreview
+  name="line-chart-area-solid"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+You can change the color of the area using `defs` and `fill` props. First, define a linear gradient in the `defs` prop, then use the `fill` prop to apply the gradient to the area.
+
+```tsx showLineNumbers {4-14}
+<ResponsiveLine
+  data={/* data */}
+  enableArea
+  defs={[
+    {
+      id: "solid",
+      type: "linearGradient",
+      colors: [{ offset: 0, color: "hsla(var(--muted))" }],
+    },
+  ]}
+  fill={[{ match: "*", id: "solid" }]}
+/>
+```
+
+### Gradient
+
+<ComponentPreview
+  name="line-chart-area-gradient"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+Use two different stop colors to create a gradient. You can pass in the `opacity` property to change the opacity of the gradient.
+
+```tsx showLineNumbers {8-11}
+<ResponsiveLine
+  data={/* data */}
+  enableArea
+  defs={[
+    {
+      id: "gradient-1",
+      type: "linearGradient",
+      colors: [
+        { offset: 0, color: "hsla(var(--primary))", opacity: 0.5 },
+        { offset: 90, color: "hsla(var(--muted))", opacity: 0.2 },
+      ],
+    },
+  ]}
+  fill={[{ match: "*", id: "gradient-1" }]}
+/>
+```
+
+## Curve
+
+Use the `curve` prop to change the curve of the line.
+
+```tsx showLineNumbers /curve="linear"/
+<ResponsiveLine
+  data={/* data */}
+  curve="linear"
+/>
+```
+
+<ComponentPreview
+  name="line-chart-curve"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+## Tooltip
+
+Use the `tooltip` prop to customize the tooltip content.
+
+```tsx showLineNumbers {3}
+<ResponsiveLine
+  data={/* data */}
+  tooltip={({ point }) => (<div>{point.data.yFormatted}</div>)}
+/>
+```
+
+<ComponentPreview
+  name="line-chart-tooltip"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+## Legend
+
+<ComponentPreview
+  name="line-chart-legend"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
