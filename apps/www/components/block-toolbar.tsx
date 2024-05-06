@@ -34,6 +34,7 @@ export function BlockToolbar({
   resizablePanelRef: React.RefObject<ImperativePanelHandle>
 }) {
   const { isLiftMode, toggleLiftMode } = useLiftMode(block.name)
+  const [currentSize, setCurrentSize] = React.useState("100")
 
   return (
     <div className="flex flex-col items-center gap-4 sm:flex-row">
@@ -144,10 +145,13 @@ export function BlockToolbar({
             <ToggleGroup
               disabled={isLiftMode}
               type="single"
-              defaultValue="100"
+              value={currentSize}
               onValueChange={(value) => {
-                if (resizablePanelRef.current && value) {
-                  resizablePanelRef.current.resize(parseInt(value))
+                if (value) setCurrentSize(value)
+                if (resizablePanelRef.current) {
+                  resizablePanelRef.current.resize(
+                    parseInt(value || currentSize)
+                  )
                 }
               }}
             >
