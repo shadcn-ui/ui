@@ -186,7 +186,7 @@ export async function preFlight(cwd: string) {
 
   if (!tailwindConfig.length) {
     throw new Error(
-      "Tailwind CSS is not installed. Visit https://tailwindcss.com/docs/installation to get started."
+      "Tailwind CSS configuration does not exist. Visit https://tailwindcss.com/docs/installation to get started."
     )
   }
 
