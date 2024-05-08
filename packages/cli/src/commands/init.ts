@@ -390,7 +390,7 @@ export async function runInit(cwd: string, config: Config) {
 
   await execa(
     packageManager,
-    [packageManager === "npm" ? "install" : "add", ...deps],
+    [packageManager === "npm" ? "install" : "add", ...(packageManager === "pnpm" ? ["--ignore-workspace-root-check"] : []), ...deps],
     {
       cwd,
     }
