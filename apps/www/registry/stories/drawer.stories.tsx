@@ -41,7 +41,7 @@ const meta: Meta<typeof Drawer> = {
   parameters: {
     layout: "centered",
   },
-} satisfies Meta<typeof Drawer>
+}
 
 export default meta
 
