@@ -59,7 +59,11 @@
 }
 
 [data-rehype-pretty-code-title] {
-  @apply mt-2 pt-6 px-4 text-sm font-medium;
+  @apply mt-2 pt-6 px-4 text-sm font-medium text-zinc-900;
+}
+
+.dark [data-rehype-pretty-code-title] {
+  @apply text-zinc-50;
 }
 
 [data-rehype-pretty-code-title] + pre {
