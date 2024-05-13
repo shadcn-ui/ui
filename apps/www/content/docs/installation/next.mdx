@@ -70,7 +70,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 **2. Configure `theme.extend.fontFamily` in `tailwind.config.js`**
 
 ```js showLineNumbers title=tailwind.config.js {9-11}
-const { fontFamily } = require("tailwindcss/defaultTheme")
+import { fontFamily } from "tailwindcss/defaultTheme"
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
