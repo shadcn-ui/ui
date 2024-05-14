@@ -35,7 +35,7 @@ You will be asked a few questions to configure your project:
 
 ### Edit tsconfig.json file
 
-Add the code below to the `tsconfig.json` file to resolve paths:
+Add the following code to the `tsconfig.json` file to resolve paths:
 
 ```ts {4-9} showLineNumbers
 {
@@ -106,7 +106,7 @@ npx shadcn-ui@latest add button
 The command above will add the `Button` component to your project. You can then import it like this:
 
 ```tsx {1,6} showLineNumbers
-import { Button } from "@/components/ui"
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
   return (

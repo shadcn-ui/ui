@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { z } from "zod"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
@@ -103,10 +103,10 @@ export default function ComboboxForm() {
                     <CommandGroup>
                       {languages.map((language) => (
                         <CommandItem
-                          value={language.value}
+                          value={language.label}
                           key={language.value}
-                          onSelect={(value) => {
-                            form.setValue("language", value)
+                          onSelect={() => {
+                            form.setValue("language", language.value)
                           }}
                         >
                           {language.label}

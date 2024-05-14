@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { Cross2Icon } from "@radix-ui/react-icons"
 import * as ToastPrimitives from "@radix-ui/react-toast"
@@ -27,7 +29,7 @@ const toastVariants = cva(
   {
     variants: {
       variant: {
-        default: "border bg-background",
+        default: "border bg-background text-foreground",
         destructive:
           "destructive group border-destructive bg-destructive text-destructive-foreground",
       },
