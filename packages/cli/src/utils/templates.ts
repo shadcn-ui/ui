@@ -23,6 +23,7 @@ module.exports = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
   ],
+  prefix: "<%- prefix %>",
   theme: {
     container: {
       center: true,
@@ -60,6 +61,7 @@ module.exports = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
   ],
+  prefix: "<%- prefix %>",
   theme: {
     container: {
       center: true,
@@ -138,6 +140,7 @@ const config = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
   ],
+  prefix: "<%- prefix %>",
   theme: {
     container: {
       center: true,
@@ -178,6 +181,7 @@ const config = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
 	],
+  prefix: "<%- prefix %>",
   theme: {
     container: {
       center: true,
