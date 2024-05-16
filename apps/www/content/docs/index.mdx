@@ -66,7 +66,7 @@ But hey, let me know if you do. I'd love to see what you build.
 
 <AccordionItem value="faq-5">
 <AccordionTrigger>
-Why dont i get tailwind auto completion in vscode / webstorm when using `cn()`?
+Why don't I get tailwind auto completion in vscode / WebStorm when using `cn()`?
 </AccordionTrigger>
 <AccordionContent>
 
@@ -77,10 +77,12 @@ Add the following to your editor settings:
 ```json title="settings.json"
 {
   "tailwindCSS.experimental.classRegex": [
-    ["(c(lsx|n)|twMerge)\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+    ["(cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ]
 }
 ```
+
+Other examples may be found via the [tailwind-intellisense-regex-list](https://github.com/paolotiu/tailwind-intellisense-regex-list).
 
 </AccordionContent>
 </AccordionItem>
