@@ -64,4 +64,25 @@ But hey, let me know if you do. I'd love to see what you build.
 
 </AccordionItem>
 
+<AccordionItem value="faq-5">
+<AccordionTrigger>
+Why dont i get tailwind auto completion in vscode / webstorm when using `cn()`?
+</AccordionTrigger>
+<AccordionContent>
+
+Intellisense needs to know what to look for, and does not natively know about cn() as it is a local utility function that combines [clsx](https://github.com/lukeed/clsx) and [tailwind-merge](https://github.com/dcastil/tailwind-merge).
+
+Add the following to your editor settings:
+
+```json title="settings.json"
+{
+  "tailwindCSS.experimental.classRegex": [
+    ["(c(lsx|n)|twMerge)\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ]
+}
+```
+
+</AccordionContent>
+</AccordionItem>
+
 </Accordion>
