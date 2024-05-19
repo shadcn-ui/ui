@@ -1,7 +1,7 @@
 import * as React from "react"
 
-import { Button } from "@/registry/new-york/ui/button"
-import { TourFactory } from "@/registry/new-york/ui/tour"
+import { Button } from "@/registry/default/ui/button"
+import { TourFactory } from "@/registry/default/ui/tour"
 
 const tour = TourFactory([
   "buttonOne",

@@ -1,6 +1,46 @@
-import * as React from "react"
+---
+title: Tour
+description: An overlay that outlines provided refs for touring an application.
+component: true
+---
 
-import { Button } from "@/registry/new-york/ui/button"
+<ComponentPreview name="tour-demo" description="A tooltip component." />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add tour
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tour" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx filename="tour.tsx"
 import { TourFactory } from "@/registry/new-york/ui/tour"
 
 const tour = TourFactory([
@@ -9,6 +49,12 @@ const tour = TourFactory([
   "missingButton",
   "buttonFour",
 ])
+
+export default tour
+```
+
+```tsx filename="app.tsx"
+import tour from "./tourApp.tsx"
 
 const TourApplication = () => {
   const ctx = tour.useContext()
@@ -70,6 +116,12 @@ const TourApplication = () => {
   )
 }
 
+export default TourApplication
+```
+
+```tsx filename="index.tsx"
+import TourApplication from "./tourApp.tsx"
+
 export default function TourDemo() {
   return (
     <tour.TourProvider>
@@ -77,3 +129,4 @@ export default function TourDemo() {
     </tour.TourProvider>
   )
 }
+```

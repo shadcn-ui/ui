@@ -10,7 +10,7 @@ import { createPortal } from "react-dom"
 
 import { cn } from "@/lib/utils"
 
-export type TourContext<T extends string> = {
+type Context<T extends string> = {
   nodes: Map<
     string,
     {
@@ -31,14 +31,14 @@ export type TourProps = {
   children?: React.ReactNode
 }
 
-export type TourFocusProps<T extends string> = {
+type TourFocusProps<T extends string> = {
   children: React.ReactNode
   tourRender: (currentIdx: number) => React.ReactNode
   name: T
 }
 
 export const TourFactory = <T extends string>(order: T[]) => {
-  const tourContext = createContext<TourContext<T>>({
+  const tourContext = createContext<Context<T>>({
     nodes: new Map(),
     show: false,
     current: 0,
@@ -126,7 +126,7 @@ export const TourFactory = <T extends string>(order: T[]) => {
 
   return {
     TourProvider: function TourProvider(props: TourProps) {
-      const nodes = useRef<TourContext<T>["nodes"]>(new Map())
+      const nodes = useRef<Context<T>["nodes"]>(new Map())
 
       const [show, setShow] = useState(false)
       const [current, setCurrent] = useState(0)
