@@ -100,7 +100,7 @@ exports[`transform tailwind prefix 4`] = `
     --accent: 215 27.9% 16.9%;
     --accent-foreground: 210 20% 98%;
  
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 72.8% 47%;
     --destructive-foreground: 0 85.7% 97.3%;
  
     --ring: 215 27.9% 16.9%;
