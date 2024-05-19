@@ -4,7 +4,7 @@ import { VariantProps, cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-const timelineVariants = cva("flex flex-col items-stretch", {
+const timelineVariants = cva("grid", {
   variants: {
     positions: {
       left: "[&>li]:grid-cols-[0_min-content_1fr]",
