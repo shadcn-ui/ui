@@ -122,19 +122,18 @@ const timelineContentVariants = cva(
 )
 
 interface TimelineConentProps
-  extends React.HTMLAttributes<HTMLParagraphElement>,
+  extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof timelineContentVariants> {}
 
-const TimelineContent = React.forwardRef<
-  HTMLParagraphElement,
-  TimelineConentProps
->(({ className, side, ...props }, ref) => (
-  <p
-    className={cn(timelineContentVariants({ side }), className)}
-    ref={ref}
-    {...props}
-  />
-))
+const TimelineContent = React.forwardRef<HTMLDivElement, TimelineConentProps>(
+  ({ className, side, ...props }, ref) => (
+    <div
+      className={cn(timelineContentVariants({ side }), className)}
+      ref={ref}
+      {...props}
+    />
+  )
+)
 TimelineContent.displayName = "TimelineContent"
 
 const timelineHeadingVariants = cva(
