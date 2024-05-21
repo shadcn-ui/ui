@@ -24,6 +24,7 @@ export function BlockPreview({
   const [config] = useConfig()
   const { isLiftMode } = useLiftMode(block.name)
   const [isLoading, setIsLoading] = React.useState(true)
+  const [isDragging, setIsDragging] = React.useState(false)
   const ref = React.useRef<ImperativePanelHandle>(null)
 
   if (config.style !== block.style) {
@@ -65,7 +66,10 @@ export function BlockPreview({
             <iframe
               src={`/blocks/${block.style}/${block.name}`}
               height={block.container?.height}
-              className="chunk-mode relative z-20 w-full bg-background"
+              className={cn(
+                "chunk-mode relative z-20 w-full bg-background",
+                isDragging && "pointer-events-none"
+              )}
               onLoad={() => {
                 setIsLoading(false)
               }}
@@ -76,6 +80,9 @@ export function BlockPreview({
               "relative hidden w-3 bg-transparent p-0 after:absolute after:right-0 after:top-1/2 after:h-8 after:w-[6px] after:-translate-y-1/2 after:translate-x-[-1px] after:rounded-full after:bg-border after:transition-all after:hover:h-10 sm:block",
               isLiftMode && "invisible"
             )}
+            onDragging={(isDragging) => {
+              setIsDragging(isDragging)
+            }}
           />
           <ResizablePanel defaultSize={0} minSize={0} />
         </ResizablePanelGroup>
