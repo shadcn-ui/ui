@@ -135,12 +135,19 @@ import {
 
 Use the `pattern` prop to define a custom pattern for the OTP input.
 
+<Callout className="mt-6">
+  **Note:** For patterns that contain characters, add the following props:
+  - `spellCheck="false"` to deactivate the spell checker
+  - `inputMode="text"` to open the correct virtual keyboard
+
+</Callout>
+
 <ComponentPreview
   name="input-otp-pattern"
   description="An input OTP with alphanumeric pattern."
 />
 
-```tsx showLineNumbers {1,7}
+```tsx showLineNumbers {1,7-9}
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 
 ...
@@ -148,6 +155,8 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 <InputOTP
   maxLength={6}
   pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
+  inputMode="text"
+  spellCheck="false"
 >
   <InputOTPGroup>
     <InputOTPSlot index={0} />
