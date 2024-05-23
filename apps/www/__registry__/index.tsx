@@ -962,6 +962,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "combobox-add-option": {
+      name: "combobox-add-option",
+      type: "components:example",
+      registryDependencies: ["command"],
+      component: React.lazy(() => import("@/registry/default/example/combobox-add-option")),
+      source: "",
+      files: ["registry/default/example/combobox-add-option.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "combobox-demo": {
       name: "combobox-demo",
       type: "components:example",
@@ -3352,6 +3363,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "combobox-add-option": {
+      name: "combobox-add-option",
+      type: "components:example",
+      registryDependencies: ["command"],
+      component: React.lazy(() => import("@/registry/new-york/example/combobox-add-option")),
+      source: "",
+      files: ["registry/new-york/example/combobox-add-option.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "combobox-demo": {
       name: "combobox-demo",
       type: "components:example",
@@ -4525,17 +4547,9 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-06-chunk-0",
-        description: "A breadcrumb with two links and a page indicator.",
+        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-0")),
         file: "registry/new-york/block/dashboard-06-chunk-0.tsx",
-        container: {
-          className: "undefined"
-        }
-      },{
-        name: "dashboard-06-chunk-1",
-        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
-        component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-1")),
-        file: "registry/new-york/block/dashboard-06-chunk-1.tsx",
         container: {
           className: "undefined"
         }
