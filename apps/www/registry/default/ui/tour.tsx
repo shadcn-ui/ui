@@ -15,7 +15,7 @@ export type TourContext<T extends string> = {
     string,
     {
       ref: HTMLElement
-      render: (currentIdx: number) => React.ReactNode
+      render: React.ReactNode
       name: T
     }
   >
@@ -33,7 +33,7 @@ export type TourProps = {
 
 export type TourFocusProps<T extends string> = {
   children: React.ReactNode
-  tourRender: (currentIdx: number) => React.ReactNode
+  tourRender: React.ReactNode
   name: T
 }
 
@@ -73,9 +73,11 @@ export const TourFactory = <T extends string>(order: T[]) => {
       }
 
       window.addEventListener("resize", handleResize)
+      window.addEventListener("scroll", handleResize)
 
       return () => {
         window.removeEventListener("resize", handleResize)
+        window.removeEventListener("scroll", handleResize)
       }
     }, [])
 
@@ -90,6 +92,45 @@ export const TourFactory = <T extends string>(order: T[]) => {
     }
 
     const currentElementRect = currentElement.ref.getBoundingClientRect()
+
+    const height = ref.current?.getBoundingClientRect().height ?? 0
+    const width = ref.current?.getBoundingClientRect().width ?? 0
+
+    const closest = (): React.CSSProperties => {
+      const isCloseToTop = currentElementRect.top < height
+      const isCloseToLeft = currentElementRect.left < width
+      const isCloseToRight =
+        currentElementRect.right > window.innerWidth - width
+
+      if (isCloseToLeft) {
+        return {
+          left: currentElementRect.x + currentElementRect.width,
+          top:
+            currentElementRect.y - height / 2 + currentElementRect.height / 2,
+        }
+      }
+
+      if (isCloseToRight) {
+        return {
+          left: currentElementRect.x - width,
+          top:
+            currentElementRect.y - height / 2 + currentElementRect.height / 2,
+        }
+      }
+
+      if (isCloseToTop) {
+        return {
+          left: currentElementRect.x - width / 2 + currentElementRect.width / 2,
+          top: currentElementRect.y + currentElementRect.height,
+        }
+      }
+
+      return {
+        left: currentElementRect.x - width / 2 + currentElementRect.width / 2,
+        top: currentElementRect.y - height,
+      }
+    }
+
     return createPortal(
       <div
         id="tour"
@@ -100,15 +141,14 @@ export const TourFactory = <T extends string>(order: T[]) => {
       >
         <div
           ref={ref}
-          className="absolute -top-8 z-50 transition-all duration-500 ease-in-out"
+          className={cn(
+            `absolute z-50 transition-all duration-500 ease-in-out`
+          )}
           style={{
-            left: currentElementRect.x,
-            top:
-              currentElementRect.y -
-              (ref.current?.getBoundingClientRect()?.height ?? 0),
+            ...closest(),
           }}
         >
-          {currentElement.render(ctx.current)}
+          {currentElement.render}
         </div>
         <div
           className={`absolute z-40 h-screen w-screen overflow-hidden opacity-80 shadow-[0_0_0_100vw_rgba(0,0,0,.99)] transition-all duration-500 ease-in-out`}
