@@ -349,17 +349,42 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Line Chart",
-          href: "/docs/charts/line-chart",
+          href: "/docs/charts/line",
           items: [],
         },
         {
           title: "Bar Chart",
-          href: "/docs/charts/bar-chart",
+          href: "/docs/charts/bar",
+          items: [],
+        },
+        {
+          title: "Area Chart",
+          href: "/docs/charts/area",
           items: [],
         },
         {
           title: "Pie Chart",
-          href: "/docs/charts/pie-chart",
+          href: "/docs/charts/pie",
+          items: [],
+        },
+        {
+          title: "Scatter Chart",
+          href: "/docs/charts/scatter",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Components",
+      items: [
+        {
+          title: "Tooltip",
+          href: "/docs/charts/tooltip",
+          items: [],
+        },
+        {
+          title: "Legend",
+          href: "/docs/charts/legend",
           items: [],
         },
       ],

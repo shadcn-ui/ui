@@ -1,11 +1,10 @@
 import {
+  Bar,
+  BarChart,
   CartesianGrid,
-  Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
-  YAxis,
 } from "recharts"
 
 const data = [
@@ -22,12 +21,12 @@ export default function Component() {
   return (
     <div className="aspect-video w-full">
       <ResponsiveContainer className="h-full w-full text-xs">
-        <LineChart
+        <BarChart
           data={data}
           margin={{
             top: 15,
             right: 15,
-            left: -15,
+            left: 15,
             bottom: 0,
           }}
         >
@@ -37,28 +36,15 @@ export default function Component() {
             tickLine={false}
             axisLine={{ className: "stroke-border" }}
           />
-          <YAxis
-            tickLine={false}
-            axisLine={{ className: "stroke-border" }}
-            tickFormatter={(value) => (value === 0 ? "" : `${value}k`)}
-          />
-          <Line
+          <Bar
             dataKey="desktop"
-            type="natural"
-            strokeWidth={2}
-            className="stroke-primary"
-            stroke=""
-            dot={{
-              className: "fill-background",
-            }}
-            activeDot={{
-              r: 6,
-              className: "fill-primary",
-              fill: "",
-              onClick: (e, d) => {
-                console.log(e, d)
-              },
-            }}
+            className="rounded-t-xl fill-primary"
+            radius={[4, 4, 0, 0]}
+          />
+          <Bar
+            dataKey="mobile"
+            className="fill-muted-foreground/50"
+            radius={[4, 4, 0, 0]}
           />
           <Tooltip
             cursor={false}
@@ -81,7 +67,7 @@ export default function Component() {
               )
             }}
           />
-        </LineChart>
+        </BarChart>
       </ResponsiveContainer>
     </div>
   )

@@ -1,7 +1,7 @@
 import {
+  Area,
+  AreaChart,
   CartesianGrid,
-  Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -9,7 +9,7 @@ import {
 } from "recharts"
 
 const data = [
-  { month: "January", desktop: 186, mobile: 120 },
+  { month: "January", desktop: 86, mobile: 120 },
   { month: "February", desktop: 305, mobile: 200 },
   { month: "March", desktop: 237, mobile: 150 },
   { month: "April", desktop: 73, mobile: 50 },
@@ -22,7 +22,7 @@ export default function Component() {
   return (
     <div className="aspect-video w-full">
       <ResponsiveContainer className="h-full w-full text-xs">
-        <LineChart
+        <AreaChart
           data={data}
           margin={{
             top: 15,
@@ -42,23 +42,12 @@ export default function Component() {
             axisLine={{ className: "stroke-border" }}
             tickFormatter={(value) => (value === 0 ? "" : `${value}k`)}
           />
-          <Line
+          <Area
             dataKey="desktop"
-            type="natural"
-            strokeWidth={2}
-            className="stroke-primary"
+            className="rounded-t-xl fill-muted-foreground/30 stroke-primary stroke-2"
             stroke=""
-            dot={{
-              className: "fill-background",
-            }}
-            activeDot={{
-              r: 6,
-              className: "fill-primary",
-              fill: "",
-              onClick: (e, d) => {
-                console.log(e, d)
-              },
-            }}
+            fill=""
+            type="monotone"
           />
           <Tooltip
             cursor={false}
@@ -81,7 +70,7 @@ export default function Component() {
               )
             }}
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   )
