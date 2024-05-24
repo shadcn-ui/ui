@@ -1,7 +1,7 @@
 import path from "path"
 import { expect, test } from "vitest"
 
-import { getConfig, getRawConfig } from "../../src/utils/get-config"
+import { getConfig, getRawConfig, loadProjectConfig } from "../../src/utils/get-config"
 
 test("get raw config", async () => {
   expect(
@@ -128,6 +128,98 @@ test("get config", async () => {
   })
 
   expect(
+    await getConfig(path.resolve(__dirname, "../fixtures/config-ts-nx/"), "tsconfig.base.json")
+  ).toEqual({
+    style: "new-york",
+    rsc: false,
+    tsx: true,
+    tailwind: {
+      config: "tailwind.config.ts",
+      baseColor: "zinc",
+      css: "src/app/globals.css",
+      cssVariables: true,
+      prefix: "tw-",
+    },
+    aliases: {
+      components: "~/components",
+      utils: "~/lib/utils",
+    },
+    resolvedPaths: {
+      tailwindConfig: path.resolve(
+        __dirname,
+        "../fixtures/config-ts-nx",
+        "tailwind.config.ts"
+      ),
+      tailwindCss: path.resolve(
+        __dirname,
+        "../fixtures/config-ts-nx",
+        "./src/app/globals.css"
+      ),
+      components: path.resolve(
+        __dirname,
+        "../fixtures/config-ts-nx",
+        "./src/components"
+      ),
+      ui: path.resolve(
+        __dirname,
+        "../fixtures/config-ts-nx",
+        "./src/components"
+      ),
+      utils: path.resolve(
+        __dirname,
+        "../fixtures/config-ts-nx",
+        "./src/lib/utils"
+      ),
+    },
+  })
+
+  expect(
+    await getConfig(path.resolve(__dirname, "../fixtures/config-full/"), undefined)
+  ).toEqual({
+    style: "new-york",
+    rsc: false,
+    tsx: true,
+    tailwind: {
+      config: "tailwind.config.ts",
+      baseColor: "zinc",
+      css: "src/app/globals.css",
+      cssVariables: true,
+      prefix: "tw-",
+    },
+    aliases: {
+      components: "~/components",
+      utils: "~/lib/utils",
+    },
+    resolvedPaths: {
+      tailwindConfig: path.resolve(
+        __dirname,
+        "../fixtures/config-full",
+        "tailwind.config.ts"
+      ),
+      tailwindCss: path.resolve(
+        __dirname,
+        "../fixtures/config-full",
+        "./src/app/globals.css"
+      ),
+      components: path.resolve(
+        __dirname,
+        "../fixtures/config-full",
+        "./src/components"
+      ),
+      ui: path.resolve(
+        __dirname,
+        "../fixtures/config-full",
+        "./src/components"
+      ),
+      utils: path.resolve(
+        __dirname,
+        "../fixtures/config-full",
+        "./src/lib/utils"
+      ),
+    },
+  })
+
+  expect(
     await getConfig(path.resolve(__dirname, "../fixtures/config-jsx"))
   ).toEqual({
     style: "default",
@@ -162,5 +254,45 @@ test("get config", async () => {
       ui: path.resolve(__dirname, "../fixtures/config-jsx", "./components"),
       utils: path.resolve(__dirname, "../fixtures/config-jsx", "./lib/utils"),
     },
+  })
+})
+
+test("get project config", async () => {
+  expect(
+    loadProjectConfig(path.resolve(__dirname, "../fixtures/config-ts-nx/"), true, "tsconfig.base.json")
+  ).toEqual({
+    absoluteBaseUrl: path.resolve(__dirname, "../fixtures/config-ts-nx/"),
+    configFileAbsolutePath: path.resolve(__dirname, "../fixtures/config-ts-nx/tsconfig.base.json"),
+    resultType: "success",
+    baseUrl: ".",
+    paths: {
+      "~/*": ["./src/*"]
+    },
+    addMatchAll: true,
+  })
+
+  expect(
+    loadProjectConfig(path.resolve(__dirname, "../fixtures/config-jsx"), false, "jsconfig.json")
+  ).toEqual({
+    absoluteBaseUrl: path.resolve(__dirname, "../fixtures/config-jsx/"),
+    configFileAbsolutePath: path.resolve(__dirname, "../fixtures/config-jsx/jsconfig.json"),
+    resultType: "success",
+    paths: {
+      "@/*": ["./*"]
+    },
+    addMatchAll: false,
+  })
+
+  expect(
+    loadProjectConfig(path.resolve(__dirname, "../fixtures/config-full"), false, "tsconfig.json")
+  ).toEqual({
+    absoluteBaseUrl: path.resolve(__dirname, "../fixtures/config-full/"),
+    configFileAbsolutePath: path.resolve(__dirname, "../fixtures/config-full/tsconfig.json"),
+    resultType: "success",
+    baseUrl: ".",
+    paths: {
+      "~/*": ["./src/*"]
+    },
+    addMatchAll: true,
   })
 })
