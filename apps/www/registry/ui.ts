@@ -276,4 +276,9 @@ export const ui: Registry = [
     dependencies: ["@radix-ui/react-tooltip"],
     files: ["ui/tooltip.tsx"],
   },
+  {
+    name: "tour",
+    type: "components:ui",
+    files: ["ui/tour.tsx"],
+  },
 ]

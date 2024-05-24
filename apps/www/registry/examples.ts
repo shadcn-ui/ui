@@ -847,4 +847,9 @@ export const examples: Registry = [
     type: "components:example",
     files: ["example/cards/cards.tsx"],
   },
+  {
+    name: "tour-demo",
+    type: "components:example",
+    files: ["example/tour-demo.tsx"],
+  },
 ]
