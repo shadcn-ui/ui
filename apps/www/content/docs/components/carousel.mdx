@@ -177,6 +177,24 @@ You can pass options to the carousel using the `opts` prop. See the [Embla Carou
 </Carousel>
 ```
 
+You can also indicate if the `CarouselNext` (resp. CarouselNext) should be `hidden` at the 
+`End` (resp. start). By default the 
+
+```tsx showLineNumbers {2-2}
+<CarouselNext
+  hideOnEnd={true}
+  className={cn(...)}
+/>
+```
+
+```tsx showLineNumbers {2-2}
+<CarouselPrevious
+  hideOnStart={true}
+  className={cn(...)}
+/>
+```
+
+
 ## API
 
 Use a state and the `setApi` props to get an instance of the carousel API.
