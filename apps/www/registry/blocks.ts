@@ -2,6 +2,12 @@ import { Registry } from "@/registry/schema"
 
 export const blocks: Registry = [
   {
+    name: "chart-01",
+    type: "components:block",
+    registryDependencies: ["chart"],
+    files: ["block/chart-01.tsx"],
+  },
+  {
     name: "dashboard-05",
     type: "components:block",
     registryDependencies: [

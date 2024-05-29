@@ -9,7 +9,7 @@ export type ChartConfig = {
   [k in string]: {
     label: React.ReactNode
     icon?: React.ComponentType
-    colors: {
+    colors?: {
       light: string
       dark: string
     }
@@ -41,12 +41,13 @@ const Chart = React.forwardRef<
     >["children"]
   }
 >(({ className, children, config, ...props }, ref) => {
-  const id = React.useId()
+  const uniqueId = React.useId()
+  const chartId = `chart-${uniqueId.replace(/:/g, "")}`
 
   return (
     <ChartContext.Provider value={{ config }}>
       <div
-        data-chart={id}
+        data-chart={chartId}
         ref={ref}
         className={cn(
           "aspect-video w-full text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-accent",
@@ -54,7 +55,7 @@ const Chart = React.forwardRef<
         )}
         {...props}
       >
-        <ChartStyle id={id} />
+        <ChartStyle id={chartId} />
         <RechartsPrimitive.ResponsiveContainer>
           {children}
         </RechartsPrimitive.ResponsiveContainer>
@@ -70,23 +71,23 @@ const ChartStyle = ({ id }: { id: string }) => {
   return (
     <style>
       {`
-        [data-chart="${id}"] {
+        [data-chart=${id}] {
           ${Object.entries(config)
             .map(([key, { colors }]) => {
               return `
-                --color-${key}: ${colors.light};
-              `
-            })
-            .join("")}
-        .dark & {
-          ${Object.entries(config)
-            .map(([key, { colors }]) => {
-              return `
-                --color-${key}: ${colors.dark};
+                --color-${key}: ${colors?.light};
               `
             })
             .join("")}
         }
+        .dark [data-chart=${id}] {
+          ${Object.entries(config)
+            .map(([key, { colors }]) => {
+              return `
+                --color-${key}: ${colors?.dark};
+              `
+            })
+            .join("")}
         }
       `}
     </style>
@@ -113,6 +114,8 @@ const ChartTooltip = React.forwardRef<
       label,
       labelFormatter,
       labelClassName,
+      formatter,
+      color,
     },
     ref
   ) => {
@@ -146,7 +149,7 @@ const ChartTooltip = React.forwardRef<
       >
         {!nestLabel && tooltipLabel}
         <div className="grid gap-1.5">
-          {payload.map((item) => {
+          {payload.map((item, index) => {
             const itemConfig = config[item.dataKey as keyof typeof config]
 
             return (
@@ -157,42 +160,52 @@ const ChartTooltip = React.forwardRef<
                   indicator === "dot" && "items-center"
                 )}
               >
-                {itemConfig.icon ? (
-                  <itemConfig.icon />
+                {formatter && item.value && item.name ? (
+                  formatter(item.value, item.name, item, index, item.payload)
                 ) : (
-                  indicator !== "none" && (
+                  <>
+                    {itemConfig?.icon ? (
+                      <itemConfig.icon />
+                    ) : (
+                      indicator !== "none" && (
+                        <div
+                          className={cn("shrink-0", {
+                            "h-2.5 w-2.5 rounded-[2px]": indicator === "dot",
+                            "w-1 rounded-[2px]": indicator === "line",
+                            "w-0 border border-dashed": indicator === "dashed",
+                            "my-0.5": nestLabel && indicator === "dashed",
+                          })}
+                          style={{
+                            backgroundColor:
+                              color ||
+                              item.payload.fill ||
+                              (indicator === "dashed"
+                                ? "transparent"
+                                : item.color),
+                            borderColor: item.color,
+                          }}
+                        />
+                      )
+                    )}
                     <div
-                      className={cn("shrink-0", {
-                        "h-2.5 w-2.5 rounded-[2px]": indicator === "dot",
-                        "w-1 rounded-[2px]": indicator === "line",
-                        "w-0 border border-dashed": indicator === "dashed",
-                        "my-0.5": nestLabel && indicator === "dashed",
-                      })}
-                      style={{
-                        backgroundColor:
-                          indicator === "dashed" ? "transparent" : item.color,
-                        borderColor: item.color,
-                      }}
-                    />
-                  )
+                      className={cn(
+                        "flex flex-1 justify-between leading-none",
+                        flipped && "flex-row-reverse",
+                        nestLabel ? "items-end" : "items-center"
+                      )}
+                    >
+                      <div className="grid gap-1.5">
+                        {nestLabel && tooltipLabel}
+                        <span className="text-muted-foreground">
+                          {itemConfig?.label || item.name}
+                        </span>
+                      </div>
+                      <span className="font-mono font-medium tabular-nums text-foreground">
+                        {item.value}
+                      </span>
+                    </div>
+                  </>
                 )}
-                <div
-                  className={cn(
-                    "flex flex-1 justify-between leading-none",
-                    flipped && "flex-row-reverse",
-                    nestLabel ? "items-end" : "items-center"
-                  )}
-                >
-                  <div className="grid gap-1.5">
-                    {nestLabel && tooltipLabel}
-                    <span className="text-muted-foreground">
-                      {itemConfig.label}
-                    </span>
-                  </div>
-                  <span className="font-mono font-medium tabular-nums text-foreground">
-                    {item.value}
-                  </span>
-                </div>
               </div>
             )
           })}
@@ -233,7 +246,7 @@ const ChartLegend = React.forwardRef<
               "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
             )}
           >
-            {itemConfig.icon && !hideIcon ? (
+            {itemConfig?.icon && !hideIcon ? (
               <itemConfig.icon />
             ) : (
               <div

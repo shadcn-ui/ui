@@ -5,13 +5,11 @@ import {
   CartesianGrid,
   LabelList,
   Legend,
-  Text,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts"
 
-import { Badge } from "@/registry/new-york/ui/badge"
 import {
   Card,
   CardContent,
@@ -53,7 +51,13 @@ const config = {
   },
 } satisfies ChartConfig
 
-export default function Component() {
+export const description = "A chart"
+
+export const iframeHeight = "730px"
+
+export const containerClassName = "w-full h-full"
+
+export default function Dashboard() {
   return (
     <div className="grid w-full max-w-md items-start gap-8">
       <Card>

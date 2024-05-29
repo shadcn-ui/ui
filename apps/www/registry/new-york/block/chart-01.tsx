@@ -1,3 +1,5 @@
+"use client"
+
 import { TrendingUp } from "lucide-react"
 import {
   Bar,
@@ -5,13 +7,13 @@ import {
   CartesianGrid,
   LabelList,
   Legend,
-  Text,
+  Line,
+  LineChart,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts"
 
-import { Badge } from "@/registry/new-york/ui/badge"
 import {
   Card,
   CardContent,
@@ -53,13 +55,19 @@ const config = {
   },
 } satisfies ChartConfig
 
-export default function Component() {
+export const description = "A chart"
+
+export const iframeHeight = "730px"
+
+export const containerClassName = "w-full h-full"
+
+export default function Dashboard() {
   return (
-    <div className="grid w-full max-w-md items-start gap-8">
+    <div className="mx-auto grid w-full max-w-7xl grid-cols-3 items-start gap-6 py-10">
       <Card>
         <CardHeader>
           <CardTitle>Monthly Active Users</CardTitle>
-          <CardDescription>January - July 2024</CardDescription>
+          <CardDescription>January - June 2024</CardDescription>
         </CardHeader>
         <CardContent>
           <Chart config={config}>
@@ -97,7 +105,7 @@ export default function Component() {
       <Card>
         <CardHeader>
           <CardTitle>Monthly Active Users</CardTitle>
-          <CardDescription>January - July 2024</CardDescription>
+          <CardDescription>January - June 2024</CardDescription>
         </CardHeader>
         <CardContent>
           <Chart config={config}>
@@ -116,11 +124,24 @@ export default function Component() {
             </BarChart>
           </Chart>
         </CardContent>
+        <CardFooter>
+          <div className="flex w-full items-start gap-2 text-sm">
+            <div className="grid gap-2">
+              <div className="flex items-center gap-2 font-medium leading-none">
+                Trending up by 5.2% this month{" "}
+                <TrendingUp className="h-4 w-4" />
+              </div>
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">
+                Showing total visitors for the last 7 months
+              </div>
+            </div>
+          </div>
+        </CardFooter>
       </Card>
       <Card>
         <CardHeader>
           <CardTitle>Monthly Active Users</CardTitle>
-          <CardDescription>January - July 2024</CardDescription>
+          <CardDescription>January - June 2024</CardDescription>
         </CardHeader>
         <CardContent>
           <Chart config={config}>
@@ -150,11 +171,24 @@ export default function Component() {
             </BarChart>
           </Chart>
         </CardContent>
+        <CardFooter>
+          <div className="flex w-full items-start gap-2 text-sm">
+            <div className="grid gap-2">
+              <div className="flex items-center gap-2 font-medium leading-none">
+                Trending up by 5.2% this month{" "}
+                <TrendingUp className="h-4 w-4" />
+              </div>
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">
+                Showing total visitors for the last 7 months
+              </div>
+            </div>
+          </div>
+        </CardFooter>
       </Card>
       <Card>
         <CardHeader>
           <CardTitle>Monthly Active Users</CardTitle>
-          <CardDescription>January - July 2024</CardDescription>
+          <CardDescription>January - June 2024</CardDescription>
         </CardHeader>
         <CardContent>
           <Chart config={config}>
@@ -201,6 +235,112 @@ export default function Component() {
             </BarChart>
           </Chart>
         </CardContent>
+        <CardFooter>
+          <div className="flex w-full items-start gap-2 text-sm">
+            <div className="grid gap-2">
+              <div className="flex items-center gap-2 font-medium leading-none">
+                Trending up by 5.2% this month{" "}
+                <TrendingUp className="h-4 w-4" />
+              </div>
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">
+                Showing total visitors for the last 7 months
+              </div>
+            </div>
+          </div>
+        </CardFooter>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Line Chart</CardTitle>
+          <CardDescription>January - June 2024</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Chart config={config}>
+            <LineChart
+              data={data}
+              margin={{
+                top: 0,
+                left: 12,
+                right: 10,
+              }}
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(value) => value.slice(0, 3)}
+              />
+              <Tooltip cursor={false} content={<ChartTooltip hideLabel />} />
+              <Line
+                dataKey="desktop"
+                stroke="var(--color-desktop)"
+                strokeWidth={2}
+                dot={false}
+              />
+            </LineChart>
+          </Chart>
+        </CardContent>
+        <CardFooter>
+          <div className="flex w-full items-start gap-2 text-sm">
+            <div className="grid gap-2">
+              <div className="flex items-center gap-2 font-medium leading-none">
+                Trending up by 5.2% this month{" "}
+                <TrendingUp className="h-4 w-4" />
+              </div>
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">
+                Showing total visitors for the last 7 months
+              </div>
+            </div>
+          </div>
+        </CardFooter>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Line Chart - Curved</CardTitle>
+          <CardDescription>January - June 2024</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Chart config={config}>
+            <LineChart
+              data={data}
+              margin={{
+                top: 0,
+                left: 12,
+                right: 10,
+              }}
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(value) => value.slice(0, 3)}
+              />
+              <Tooltip cursor={false} content={<ChartTooltip hideLabel />} />
+              <Line
+                dataKey="desktop"
+                type="natural"
+                stroke="var(--color-desktop)"
+                strokeWidth={2}
+                dot={false}
+              />
+            </LineChart>
+          </Chart>
+        </CardContent>
+        <CardFooter>
+          <div className="flex w-full items-start gap-2 text-sm">
+            <div className="grid gap-2">
+              <div className="flex items-center gap-2 font-medium leading-none">
+                Trending up by 5.2% this month{" "}
+                <TrendingUp className="h-4 w-4" />
+              </div>
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">
+                Showing total visitors for the last 7 months
+              </div>
+            </div>
+          </div>
+        </CardFooter>
       </Card>
     </div>
   )
