@@ -36,7 +36,7 @@ export function rehypeNpmCommand() {
         )
         node.properties["__pnpmCommand__"] = npmCommand.replace(
           "npx create-",
-          "pnpm create "
+          "pnpm dlx create "
         )
         node.properties["__bunCommand__"] = npmCommand.replace(
           "npx",
