@@ -35,7 +35,7 @@ export function BlockCopyButton({
         <Button
           size="icon"
           variant="outline"
-          className="h-7 w-7 rounded-[6px] [&_svg]:size-3.5"
+          className="[&_svg]-h-3.5 h-7 w-7 rounded-[6px] [&_svg]:w-3.5"
           onClick={() => {
             navigator.clipboard.writeText(code)
             trackEvent({

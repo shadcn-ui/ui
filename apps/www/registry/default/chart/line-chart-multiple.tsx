@@ -1,10 +1,11 @@
 import {
-  Bar,
-  BarChart,
   CartesianGrid,
+  Line,
+  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
+  YAxis,
 } from "recharts"
 
 const data = [
@@ -20,13 +21,13 @@ const data = [
 export default function Component() {
   return (
     <div className="aspect-video w-full">
-      <ResponsiveContainer className="h-full w-full text-xs">
-        <BarChart
+      <ResponsiveContainer className="size-full text-xs">
+        <LineChart
           data={data}
           margin={{
             top: 15,
             right: 15,
-            left: 15,
+            left: -15,
             bottom: 0,
           }}
         >
@@ -36,15 +37,46 @@ export default function Component() {
             tickLine={false}
             axisLine={{ className: "stroke-border" }}
           />
-          <Bar
-            dataKey="desktop"
-            className="rounded-t-xl fill-primary"
-            radius={[4, 4, 0, 0]}
+          <YAxis
+            tickLine={false}
+            axisLine={{ className: "stroke-border" }}
+            tickFormatter={(value) => (value === 0 ? "" : `${value}k`)}
           />
-          <Bar
-            dataKey="mobile"
-            className="fill-muted-foreground/50"
-            radius={[4, 4, 0, 0]}
+          <Line
+            dataKey="desktop"
+            type="natural"
+            strokeWidth={2}
+            className="stroke-primary"
+            stroke=""
+            dot={{
+              className: "fill-background",
+            }}
+            activeDot={{
+              r: 6,
+              className: "fill-primary",
+              fill: "",
+              onClick: (e, d) => {
+                console.log(e, d)
+              },
+            }}
+          />
+          <Line
+            dataKey="desktop"
+            type="natural"
+            strokeWidth={2}
+            className="stroke-primary"
+            stroke=""
+            dot={{
+              className: "fill-background",
+            }}
+            activeDot={{
+              r: 6,
+              className: "fill-primary",
+              fill: "",
+              onClick: (e, d) => {
+                console.log(e, d)
+              },
+            }}
           />
           <Tooltip
             cursor={false}
@@ -67,7 +99,7 @@ export default function Component() {
               )
             }}
           />
-        </BarChart>
+        </LineChart>
       </ResponsiveContainer>
     </div>
   )

@@ -1,74 +1,207 @@
+import { TrendingUp } from "lucide-react"
 import {
   Bar,
   BarChart,
   CartesianGrid,
-  ResponsiveContainer,
+  LabelList,
+  Legend,
+  Text,
   Tooltip,
   XAxis,
+  YAxis,
 } from "recharts"
+
+import { Badge } from "@/registry/new-york/ui/badge"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/registry/new-york/ui/card"
+import {
+  Chart,
+  ChartLegend,
+  ChartTooltip,
+  type ChartConfig,
+} from "@/registry/new-york/ui/chart"
 
 const data = [
   { month: "January", desktop: 186, mobile: 120 },
   { month: "February", desktop: 305, mobile: 200 },
   { month: "March", desktop: 237, mobile: 150 },
-  { month: "April", desktop: 73, mobile: 50 },
+  { month: "April", desktop: 73, mobile: 150 },
   { month: "May", desktop: 209, mobile: 130 },
   { month: "June", desktop: 214, mobile: 140 },
-  { month: "July", desktop: 260, mobile: 170 },
 ]
+
+const config = {
+  desktop: {
+    label: "Desktop",
+    colors: {
+      light: "#3b82f6",
+      dark: "#f43f5e",
+    },
+  },
+  mobile: {
+    label: "Mobile",
+    colors: {
+      light: "#93c5fd",
+      dark: "#fecdd3",
+    },
+  },
+} satisfies ChartConfig
 
 export default function Component() {
   return (
-    <div className="aspect-video w-full">
-      <ResponsiveContainer className="h-full w-full text-xs">
-        <BarChart
-          data={data}
-          margin={{
-            top: 15,
-            right: 15,
-            left: 15,
-            bottom: 0,
-          }}
-        >
-          <CartesianGrid vertical={false} className="stroke-border/40" />
-          <XAxis
-            dataKey="month"
-            tickLine={false}
-            axisLine={{ className: "stroke-border" }}
-          />
-          <Bar
-            dataKey="desktop"
-            className="rounded-t-xl fill-primary"
-            radius={[4, 4, 0, 0]}
-          />
-          <Bar
-            dataKey="mobile"
-            className="fill-muted-foreground/50"
-            radius={[4, 4, 0, 0]}
-          />
-          <Tooltip
-            cursor={false}
-            content={({ payload, active }) => {
-              if (!active || !payload?.length) return null
-
-              return (
-                <div className="flex min-w-[140px] items-center gap-2 rounded-lg border bg-background px-2.5 py-1.5 text-xs shadow-sm">
-                  <div className="h-[1.8rem] w-1 rounded-full bg-primary" />
-                  <div className="flex w-full flex-col gap-0.5">
-                    <div className="font-medium">Visitors</div>
-                    <div className="flex w-full items-center text-muted-foreground">
-                      {payload[0]?.dataKey}
-                      <div className="ml-auto font-mono font-medium text-foreground">
-                        {payload[0]?.payload?.desktop}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )
-            }}
-          />
-        </BarChart>
-      </ResponsiveContainer>
+    <div className="grid w-full max-w-md items-start gap-8">
+      <Card>
+        <CardHeader>
+          <CardTitle>Monthly Active Users</CardTitle>
+          <CardDescription>January - July 2024</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Chart config={config}>
+            <BarChart data={data}>
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                tickMargin={10}
+                axisLine={false}
+                tickFormatter={(value) => value.slice(0, 3)}
+              />
+              <Tooltip
+                cursor={false}
+                content={<ChartTooltip indicator="line" />}
+              />
+              <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
+            </BarChart>
+          </Chart>
+        </CardContent>
+        <CardFooter>
+          <div className="flex w-full items-start gap-2 text-sm">
+            <div className="grid gap-2">
+              <div className="flex items-center gap-2 font-medium leading-none">
+                Trending up by 5.2% this month{" "}
+                <TrendingUp className="h-4 w-4" />
+              </div>
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">
+                Showing total visitors for the last 7 months
+              </div>
+            </div>
+          </div>
+        </CardFooter>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Monthly Active Users</CardTitle>
+          <CardDescription>January - July 2024</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Chart config={config}>
+            <BarChart data={data}>
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                tickMargin={10}
+                axisLine={false}
+                tickFormatter={(value) => value.slice(0, 3)}
+              />
+              <Tooltip cursor={false} content={<ChartTooltip />} />
+              <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+              <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+            </BarChart>
+          </Chart>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Monthly Active Users</CardTitle>
+          <CardDescription>January - July 2024</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Chart config={config}>
+            <BarChart data={data}>
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                tickMargin={10}
+                axisLine={false}
+                tickFormatter={(value) => value.slice(0, 3)}
+              />
+              <Tooltip content={<ChartTooltip hideLabel />} />
+              <Legend content={<ChartLegend />} />
+              <Bar
+                dataKey="desktop"
+                stackId="a"
+                fill="var(--color-desktop)"
+                radius={[0, 0, 4, 4]}
+              />
+              <Bar
+                dataKey="mobile"
+                stackId="a"
+                fill="var(--color-mobile)"
+                radius={[4, 4, 0, 0]}
+              />
+            </BarChart>
+          </Chart>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Monthly Active Users</CardTitle>
+          <CardDescription>January - July 2024</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Chart config={config}>
+            <BarChart
+              data={data}
+              layout="vertical"
+              margin={{
+                right: 12,
+              }}
+            >
+              <CartesianGrid horizontal={false} />
+              <YAxis
+                dataKey="month"
+                type="category"
+                tickLine={false}
+                tickMargin={10}
+                axisLine={false}
+                tickFormatter={(value) => value.slice(0, 3)}
+                hide
+              />
+              <XAxis dataKey="desktop" type="number" hide />
+              <Tooltip cursor={false} content={<ChartTooltip hideLabel />} />
+              <Bar
+                dataKey="desktop"
+                layout="vertical"
+                fill="var(--color-desktop)"
+                radius={4}
+              >
+                <LabelList
+                  dataKey="month"
+                  position="insideLeft"
+                  offset={12}
+                  fill="white"
+                  fontSize={12}
+                />
+                <LabelList
+                  dataKey="desktop"
+                  position="right"
+                  offset={8}
+                  fill="#000"
+                  fontSize={12}
+                />
+              </Bar>
+            </BarChart>
+          </Chart>
+        </CardContent>
+      </Card>
     </div>
   )
 }

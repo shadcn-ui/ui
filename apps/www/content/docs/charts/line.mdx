@@ -8,123 +8,65 @@ links:
 
 <ComponentPreview
   name="line-chart-demo"
-  className="[&_.preview]:p-6 [&_.preview]:border-t"
+  className="[&_.preview]:p-12 [&_.preview]:border-t"
 />
 
-## Area
+## Installation
 
-Use the `enableArea` prop to fill the area below the line.
+<Tabs defaultValue="cli">
 
-```tsx showLineNumbers /enableArea/
-<ResponsiveLine
-  data={/* data */}
-  enableArea
-/>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add chart
 ```
 
-<ComponentPreview
-  name="line-chart-area"
-  className="[&_.preview]:p-8 [&_.preview]:border-t"
-/>
+</TabsContent>
 
-## Opacity
+<TabsContent value="manual">
 
-To change the opacity of the area, use the `areaOpacity` prop.
+<Steps>
 
-```tsx showLineNumbers /areaOpacity={0.1}/
-<ResponsiveLine
-  data={/* data */}
-  enableArea
-  areaOpacity={0.1}
-/>
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install recharts
 ```
 
-## Solid Color
+<Step>Copy and paste the following code into your project.</Step>
 
-<ComponentPreview
-  name="line-chart-area-solid"
-  className="[&_.preview]:p-8 [&_.preview]:border-t"
-/>
+<ComponentSource name="chart" />
 
-You can change the color of the area using `defs` and `fill` props. First, define a linear gradient in the `defs` prop, then use the `fill` prop to apply the gradient to the area.
+<Step>Update the import paths to match your project setup.</Step>
 
-```tsx showLineNumbers {4-14}
-<ResponsiveLine
-  data={/* data */}
-  enableArea
-  defs={[
-    {
-      id: "solid",
-      type: "linearGradient",
-      colors: [{ offset: 0, color: "hsla(var(--muted))" }],
-    },
-  ]}
-  fill={[{ match: "*", id: "solid" }]}
-/>
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Chart } from "@/components/ui/chart"
 ```
 
-## Gradient
+## Examples
+
+### Multiple
 
 <ComponentPreview
-  name="line-chart-area-gradient"
-  className="[&_.preview]:p-8 [&_.preview]:border-t"
+  name="line-chart-multiple"
+  className="[&_.preview]:p-12 [&_.preview]:border-t"
 />
 
-Use two different stop colors to create a gradient. You can pass in the `opacity` property to change the opacity of the gradient.
-
-```tsx showLineNumbers {8-11}
-<ResponsiveLine
-  data={/* data */}
-  enableArea
-  defs={[
-    {
-      id: "gradient-1",
-      type: "linearGradient",
-      colors: [
-        { offset: 0, color: "hsla(var(--primary))", opacity: 0.5 },
-        { offset: 90, color: "hsla(var(--muted))", opacity: 0.2 },
-      ],
-    },
-  ]}
-  fill={[{ match: "*", id: "gradient-1" }]}
-/>
-```
-
-## Curve
-
-Use the `curve` prop to change the curve of the line.
-
-```tsx showLineNumbers /curve="linear"/
-<ResponsiveLine
-  data={/* data */}
-  curve="linear"
-/>
-```
+### Shape
 
 <ComponentPreview
-  name="line-chart-curve"
-  className="[&_.preview]:p-8 [&_.preview]:border-t"
-/>
-
-## Tooltip
-
-Use the `tooltip` prop to customize the tooltip content.
-
-```tsx showLineNumbers {3}
-<ResponsiveLine
-  data={/* data */}
-  tooltip={({ point }) => (<div>{point.data.yFormatted}</div>)}
-/>
-```
-
-<ComponentPreview
-  name="line-chart-tooltip"
-  className="[&_.preview]:p-8 [&_.preview]:border-t"
-/>
-
-## Legend
-
-<ComponentPreview
-  name="line-chart-legend"
-  className="[&_.preview]:p-8 [&_.preview]:border-t"
+  name="line-chart-shape"
+  className="[&_.preview]:p-12 [&_.preview]:border-t"
 />

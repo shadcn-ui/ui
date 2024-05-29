@@ -2405,6 +2405,28 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "line-chart-multiple": {
+      name: "line-chart-multiple",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/line-chart-multiple")),
+      source: "",
+      files: ["registry/default/chart/line-chart-multiple.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-shape": {
+      name: "line-chart-shape",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/line-chart-shape")),
+      source: "",
+      files: ["registry/default/chart/line-chart-shape.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "area-chart-demo": {
       name: "area-chart-demo",
       type: "components:chart",
@@ -2423,6 +2445,28 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/chart/bar-chart-demo")),
       source: "",
       files: ["registry/default/chart/bar-chart-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "bar-chart-multiple": {
+      name: "bar-chart-multiple",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/bar-chart-multiple")),
+      source: "",
+      files: ["registry/default/chart/bar-chart-multiple.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "bar-chart-horizontal": {
+      name: "bar-chart-horizontal",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/default/chart/bar-chart-horizontal")),
+      source: "",
+      files: ["registry/default/chart/bar-chart-horizontal.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -4839,6 +4883,28 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "line-chart-multiple": {
+      name: "line-chart-multiple",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/line-chart-multiple")),
+      source: "",
+      files: ["registry/new-york/chart/line-chart-multiple.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "line-chart-shape": {
+      name: "line-chart-shape",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/line-chart-shape")),
+      source: "",
+      files: ["registry/new-york/chart/line-chart-shape.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "area-chart-demo": {
       name: "area-chart-demo",
       type: "components:chart",
@@ -4857,6 +4923,28 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/chart/bar-chart-demo")),
       source: "",
       files: ["registry/new-york/chart/bar-chart-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "bar-chart-multiple": {
+      name: "bar-chart-multiple",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/bar-chart-multiple")),
+      source: "",
+      files: ["registry/new-york/chart/bar-chart-multiple.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "bar-chart-horizontal": {
+      name: "bar-chart-horizontal",
+      type: "components:chart",
+      registryDependencies: [],
+      component: React.lazy(() => import("@/registry/new-york/chart/bar-chart-horizontal")),
+      source: "",
+      files: ["registry/new-york/chart/bar-chart-horizontal.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

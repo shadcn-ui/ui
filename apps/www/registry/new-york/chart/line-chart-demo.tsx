@@ -1,27 +1,41 @@
 import {
   CartesianGrid,
+  Label,
+  Legend,
   Line,
   LineChart,
-  ResponsiveContainer,
+  Text,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts"
 
+import { Chart, ChartLegend, ChartTooltip } from "@/registry/new-york/ui/chart"
+
 const data = [
-  { month: "January", desktop: 186, mobile: 120 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 150 },
-  { month: "April", desktop: 73, mobile: 50 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-  { month: "July", desktop: 260, mobile: 170 },
+  { month: "January", desktop: 186 },
+  { month: "February", desktop: 305 },
+  { month: "March", desktop: 237 },
+  { month: "April", desktop: 73 },
+  { month: "May", desktop: 209 },
+  { month: "June", desktop: 214 },
+  { month: "July", desktop: 260 },
 ]
+
+const config = {
+  desktop: {
+    label: "Desktop",
+    colors: {
+      light: "#000000",
+      dark: "#a1a1aa",
+    },
+  },
+}
 
 export default function Component() {
   return (
-    <div className="aspect-video w-full">
-      <ResponsiveContainer className="h-full w-full text-xs">
+    <div className="grid w-full gap-4">
+      <Chart config={config}>
         <LineChart
           data={data}
           margin={{
@@ -31,58 +45,40 @@ export default function Component() {
             bottom: 0,
           }}
         >
-          <CartesianGrid vertical={false} className="stroke-border/40" />
+          <CartesianGrid vertical={false} />
           <XAxis
             dataKey="month"
             tickLine={false}
-            axisLine={{ className: "stroke-border" }}
+            tickMargin={10}
+            axisLine={false}
+            tickFormatter={(value) => value.slice(0, 3)}
           />
           <YAxis
+            axisLine={false}
             tickLine={false}
-            axisLine={{ className: "stroke-border" }}
+            tickMargin={10}
             tickFormatter={(value) => (value === 0 ? "" : `${value}k`)}
           />
+          <Tooltip cursor={false} content={<ChartTooltip indicator="line" />} />
           <Line
             dataKey="desktop"
             type="natural"
             strokeWidth={2}
-            className="stroke-primary"
-            stroke=""
+            stroke="var(--color-desktop)"
             dot={{
-              className: "fill-background",
+              r: 0,
+              fill: "var(--color-desktop)",
             }}
             activeDot={{
-              r: 6,
-              className: "fill-primary",
-              fill: "",
-              onClick: (e, d) => {
-                console.log(e, d)
-              },
-            }}
-          />
-          <Tooltip
-            cursor={false}
-            content={({ payload, active }) => {
-              if (!active || !payload?.length) return null
-
-              return (
-                <div className="flex min-w-[140px] items-center gap-2 rounded-lg border bg-background px-2.5 py-1.5 text-xs shadow-sm">
-                  <div className="h-[1.8rem] w-1 rounded-full bg-primary" />
-                  <div className="flex w-full flex-col gap-0.5">
-                    <div className="font-medium">Visitors</div>
-                    <div className="flex w-full items-center text-muted-foreground">
-                      {payload[0]?.dataKey}
-                      <div className="ml-auto font-mono font-medium text-foreground">
-                        {payload[0]?.payload?.desktop}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )
+              fill: "var(--color-desktop)",
+              stroke: "transparent",
             }}
           />
         </LineChart>
-      </ResponsiveContainer>
+      </Chart>
+      <div className="text-center text-xs text-muted-foreground">
+        Total visitors for the last 6 months
+      </div>
     </div>
   )
 }

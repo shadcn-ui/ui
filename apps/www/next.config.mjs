@@ -53,6 +53,11 @@ const nextConfig = {
         destination: "/docs/components/form",
         permanent: false,
       },
+      {
+        source: "/charts",
+        destination: "/docs/charts",
+        permanent: false,
+      },
     ]
   },
 }
