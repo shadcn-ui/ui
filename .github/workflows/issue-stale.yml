@@ -17,9 +17,8 @@ jobs:
         with:
           repo-token: ${{ secrets.STALE_TOKEN }}
           close-issue-message: "This issue has been automatically closed because it received no activity for a while. If you think it was closed by accident, please leave a comment. Thank you."
-          days-before-issue-close: 7
+          days-before-issue-close: 1
           days-before-issue-stale: 15
-          stale-pr-label: "stale?"
           days-before-pr-close: -1
           days-before-pr-stale: -1
           exempt-issue-labels: "roadmap,next,bug"

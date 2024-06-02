@@ -1,12 +1,10 @@
-"use client"
-
 // Inspired by react-hot-toast library
 import * as React from "react"
 
 import type {
   ToastActionElement,
   ToastProps,
-} from "@/registry/new-york/ui/toast"
+} from "@/registry/default/ui/toast"
 
 const TOAST_LIMIT = 1
 const TOAST_REMOVE_DELAY = 1000000

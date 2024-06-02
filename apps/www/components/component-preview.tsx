@@ -9,7 +9,6 @@ import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
 import { StyleSwitcher } from "@/components/style-switcher"
 import { ThemeWrapper } from "@/components/theme-wrapper"
-import { V0Button } from "@/components/v0-button"
 import {
   Tabs,
   TabsContent,
@@ -23,7 +22,6 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   extractClassname?: boolean
   extractedClassNames?: string
   align?: "center" | "start" | "end"
-  description?: string
 }
 
 export function ComponentPreview({
@@ -33,7 +31,6 @@ export function ComponentPreview({
   extractClassname,
   extractedClassNames,
   align = "center",
-  description,
   ...props
 }: ComponentPreviewProps) {
   const [config] = useConfig()
@@ -64,7 +61,7 @@ export function ComponentPreview({
     if (
       typeof Code?.props["data-rehype-pretty-code-fragment"] !== "undefined"
     ) {
-      const [Button] = React.Children.toArray(
+      const [, Button] = React.Children.toArray(
         Code.props.children
       ) as React.ReactElement[]
       return Button?.props?.value || Button?.props?.__rawString__ || null
@@ -96,23 +93,14 @@ export function ComponentPreview({
         <TabsContent value="preview" className="relative rounded-md border">
           <div className="flex items-center justify-between p-4">
             <StyleSwitcher />
-            <div className="flex items-center gap-2">
-              {config.style === "default" && description ? (
-                <V0Button
-                  block={{
-                    code: codeString,
-                    name,
-                    style: config.style,
-                    description,
-                  }}
-                />
-              ) : null}
-              <CopyButton
+            {extractedClassNames ? (
+              <CopyWithClassNames
                 value={codeString}
-                variant="outline"
-                className="h-7 w-7 text-foreground opacity-100 hover:bg-muted hover:text-foreground [&_svg]:size-3.5"
+                classNames={extractedClassNames}
               />
-            </div>
+            ) : (
+              codeString && <CopyButton value={codeString} />
+            )}
           </div>
           <ThemeWrapper defaultTheme="zinc">
             <div

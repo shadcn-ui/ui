@@ -3,8 +3,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "es6",
-    "module": "ESNext",
-    "moduleResolution": "node",
+    "module": "commonjs",
     "esModuleInterop": true,
     "isolatedModules": false
   },
