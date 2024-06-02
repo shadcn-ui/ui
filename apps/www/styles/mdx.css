@@ -18,6 +18,14 @@
   @apply relative text-white;
 }
 
+[data-rehype-pretty-code-fragment] {
+  @apply text-white;
+}
+
+[data-rehype-pretty-code-fragment]>*:not([data-rehype-pretty-code-title]) {
+  @apply text-white;
+}
+
 [data-rehype-pretty-code-fragment] code {
   @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
   counter-reset: line;
