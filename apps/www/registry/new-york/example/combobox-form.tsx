@@ -10,10 +10,10 @@ import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
   CommandEmpty,
-  CommandList,
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "@/registry/new-york/ui/command"
 import {
   Form,
