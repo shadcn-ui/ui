@@ -21,7 +21,7 @@ const DrawerContent = forwardRef<
       )}
       {...props}
     >
-      <div className="absolute left-1/2 top-3 h-2 w-[100px] translate-x-[-50%] rounded-full bg-muted" />
+      <div className="absolute left-1/2 top-3 h-2 w-[100px] -translate-x-1/2 rounded-full bg-muted" />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPrimitive.Portal>
