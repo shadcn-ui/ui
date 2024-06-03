@@ -158,6 +158,36 @@ Use the `orientation` prop to set the orientation of the carousel.
 </Carousel>
 ```
 
+### Dots
+
+Enhance carousel navigation with the CarouselDots component, which presents interactive indicators for each slide.
+
+#### Usage
+
+Embed within the Carousel, connecting automatically to its context for slide information and active index.
+
+- `dotsPosition`: Dots placement - "top", "bottom", "left", or "right".
+- `size`: Size of Dot - "default", "sm", "md", "lg".
+- `gap`: Space between dots - "default", "sm", "md", "lg".
+
+<ComponentPreview name="carousel-dots" />
+
+```tsx showLineNumbers {3,11}
+<Carousel
+  orientation="vertical | horizontal"
+  dotsPosition="top | bottom | left | right"
+>
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    ...
+  </CarouselContent>
+  <CarouselDots size="sm | md | lg" gap="sm | md | lg" />
+  ...
+</Carousel>
+```
+
 ## Options
 
 You can pass options to the carousel using the `opts` prop. See the [Embla Carousel docs](https://www.embla-carousel.com/api/options/) for more information.
