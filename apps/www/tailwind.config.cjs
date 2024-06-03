@@ -7,5 +7,7 @@ module.exports = {
     ...baseConfig.content,
     "content/**/*.mdx",
     "registry/**/*.{ts,tsx}",
+    "stories/**/*.{ts,tsx,mdx}",
+    ".storybook/**/*.{ts,tsx}",
   ],
 }

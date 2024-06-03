@@ -5,7 +5,8 @@
     "next/core-web-vitals",
     "turbo",
     "prettier",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+    "plugin:storybook/recommended"
   ],
   "plugins": ["tailwindcss"],
   "rules": {
