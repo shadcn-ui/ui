@@ -165,6 +165,40 @@ export const transformTwPrefixes: Transformer = async ({
           })
       }
     }
+
+    // Handling cases where there are descendant classNames, e.g., in a Sonner component.
+    if (node.isKind(SyntaxKind.JsxAttribute)) {
+      const attributeInitializer = node.getInitializer()
+
+      if (attributeInitializer?.isKind(SyntaxKind.JsxExpression)) {
+        const expressionContent = attributeInitializer.getExpression()
+
+        if (
+          expressionContent &&
+          expressionContent.getKind() === SyntaxKind.ObjectLiteralExpression
+        ) {
+          const propertyAssignments = expressionContent.getDescendantsOfKind(
+            SyntaxKind.PropertyAssignment
+          )
+
+          propertyAssignments.forEach((property) => {
+            if (property.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
+              if (property.getName() !== "variant") {
+                const classValue = property.getInitializer()
+                if (classValue) {
+                  classValue.replaceWithText(
+                    `"${applyPrefix(
+                      classValue.getText()?.replace(/"/g, ""),
+                      config.tailwind.prefix
+                    )}"`
+                  )
+                }
+              }
+            }
+          })
+        }
+      }
+    }
   })
 
   return sourceFile
