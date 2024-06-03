@@ -80,6 +80,7 @@ export function ComboboxDemo() {
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandInput placeholder="Search framework..." />
+          <CommandList>
           <CommandEmpty>No framework found.</CommandEmpty>
           <CommandGroup>
             {frameworks.map((framework) => (
@@ -101,6 +102,7 @@ export function ComboboxDemo() {
               </CommandItem>
             ))}
           </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>
