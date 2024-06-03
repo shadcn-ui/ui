@@ -4,7 +4,7 @@ import { execa } from "execa"
 import { afterEach, expect, test, vi } from "vitest"
 
 import { runInit } from "../../src/commands/init"
-import { getConfig } from "../../src/utils/get-config"
+import { Config, getConfig } from "../../src/utils/get-config"
 import * as getPackageManger from "../../src/utils/get-package-manager"
 import * as registry from "../../src/utils/registry"
 
@@ -149,6 +149,55 @@ test("init config-partial", async () => {
     {
       cwd: targetDir,
     }
+  )
+
+  mockMkdir.mockRestore()
+  mockWriteFile.mockRestore()
+})
+
+test("init merges existing tailwind config", async () => {
+  vi.spyOn(getPackageManger, "getPackageManager").mockResolvedValue("npm")
+  vi.spyOn(registry, "getRegistryBaseColor").mockResolvedValue({
+    inlineColors: {},
+    cssVars: {},
+    inlineColorsTemplate:
+      "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
+    cssVarsTemplate:
+      "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
+  })
+  const mockMkdir = vi.spyOn(fs.promises, "mkdir").mockResolvedValue(undefined)
+  const mockWriteFile = vi.spyOn(fs.promises, "writeFile").mockResolvedValue()
+
+  const targetDir = path.resolve(__dirname, "../fixtures/t3-app")
+  await runInit(targetDir, {
+    resolvedPaths: {
+      tailwindConfig: targetDir + "/tailwind.config.ts",
+      tailwindCss: targetDir + "/src/styles/globals.css",
+      utils: targetDir + "/src/lib/utils.ts",
+      components: targetDir + "/src/components",
+      ui: targetDir + "/src/components",
+    },
+    tsx: true,
+    tailwind: {
+      config: targetDir + "/tailwind.config.ts",
+      css: targetDir + "/src/styles/globals.css",
+      baseColor: "slate",
+      cssVariables: true,
+      prefix: "tw-",
+    },
+    aliases: {
+      utils: "~/lib/utils",
+      components: "~/components",
+    },
+    rsc: true,
+    style: "default",
+  } satisfies Config)
+
+  expect(mockWriteFile).toHaveBeenNthCalledWith(
+    1,
+    expect.stringMatching(/tailwind.config.ts$/),
+    expect.stringContaining(`"fontFamily": {`),
+    "utf8"
   )
 
   mockMkdir.mockRestore()
