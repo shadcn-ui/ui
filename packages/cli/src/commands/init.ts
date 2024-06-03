@@ -31,10 +31,13 @@ import { z } from "zod"
 import { applyPrefixesCss } from "../utils/transformers/transform-tw-prefix"
 
 const PROJECT_DEPENDENCIES = [
-  "tailwindcss-animate",
   "class-variance-authority",
   "clsx",
   "tailwind-merge",
+]
+
+const PROJECT_DEV_DEPENDENCIES = [
+  "tailwindcss-animate",
 ]
 
 const initOptionsSchema = z.object({
@@ -395,5 +398,18 @@ export async function runInit(cwd: string, config: Config) {
       cwd,
     }
   )
+
+  const devDeps = [
+    ...PROJECT_DEV_DEPENDENCIES,
+  ]
+
+  await execa(
+    packageManager,
+    [packageManager === "npm" ? "install -D" : "add -D", ...devDeps],
+    {
+      cwd,
+    }
+  )
+
   dependenciesSpinner?.succeed()
 }
