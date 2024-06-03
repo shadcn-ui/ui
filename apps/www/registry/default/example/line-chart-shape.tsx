@@ -31,7 +31,7 @@ const config = {
 
 export default function Component() {
   return (
-    <Chart config={config}>
+    <ChartContainer config={config}>
       <LineChart
         data={data}
         margin={{
@@ -93,7 +93,7 @@ export default function Component() {
                 <div className="grid gap-1">
                   {payload.map((item) => (
                     <div key={item.dataKey} className="flex items-center gap-2">
-                      <div className="aspect-square size-2 shrink-0 rounded-[2px] bg-primary" />
+                      <div className="size-2 aspect-square shrink-0 rounded-[2px] bg-primary" />
                       <div className="flex w-full flex-col gap-0.5">
                         <div className="flex w-full items-center leading-none text-muted-foreground">
                           {item.name}
@@ -110,6 +110,6 @@ export default function Component() {
           }}
         />
       </LineChart>
-    </Chart>
+    </ChartContainer>
   )
 }

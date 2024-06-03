@@ -18,7 +18,6 @@ import {
   YAxis,
 } from "recharts"
 
-import { ModeToggle } from "@/components/mode-toggle"
 import {
   Card,
   CardContent,
@@ -28,7 +27,7 @@ import {
   CardTitle,
 } from "@/registry/new-york/ui/card"
 import {
-  Chart,
+  ChartContainer,
   ChartLegend,
   ChartTooltip,
   type ChartConfig,
@@ -53,7 +52,7 @@ const browserData = [
 
 export default function ChartsPage() {
   const [BASE_LIGHT, setBaseLight] = React.useState("#3b82f6")
-  const [BASE_DARK] = React.useState("#f43f5e")
+  const [BASE_DARK, setBaseDark] = React.useState("#f43f5e")
   const { theme, setTheme } = useTheme()
 
   const config = {
@@ -116,11 +115,13 @@ export default function ChartsPage() {
 
   return (
     <>
-      <div className="fixed inset-y-0 right-0 flex w-20 flex-col items-center gap-2 py-12">
-        {["#10b981", "#f97316", "#3b82f6"].map((color) => (
+      <div className="font-mon fixed inset-y-0 right-0 flex w-20 flex-col items-center gap-2 py-12">
+        {["#111111", "#c6afa3", "#f97316", "#3b82f6"].map((color) => (
           <button
             key={color}
-            onClick={() => setBaseLight(color)}
+            onClick={() =>
+              theme === "dark" ? setBaseDark(color) : setBaseLight(color)
+            }
             className="h-4 w-4 shrink-0 rounded-full"
             style={{
               backgroundColor: color,
@@ -143,7 +144,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <AreaChart data={data}>
                 <CartesianGrid vertical={false} />
                 <XAxis
@@ -174,7 +175,7 @@ export default function ChartsPage() {
                   stackId="a"
                 />
               </AreaChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -196,7 +197,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <BarChart data={data}>
                 <CartesianGrid vertical={false} />
                 <XAxis
@@ -212,7 +213,7 @@ export default function ChartsPage() {
                 />
                 <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
               </BarChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -234,7 +235,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <BarChart data={data}>
                 <CartesianGrid vertical={false} />
                 <XAxis
@@ -248,7 +249,7 @@ export default function ChartsPage() {
                 <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
                 <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
               </BarChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -270,7 +271,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <BarChart data={data}>
                 <CartesianGrid vertical={false} />
                 <XAxis
@@ -295,7 +296,7 @@ export default function ChartsPage() {
                   radius={[4, 4, 0, 0]}
                 />
               </BarChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -317,7 +318,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <BarChart
                 data={data}
                 layout="vertical"
@@ -359,7 +360,7 @@ export default function ChartsPage() {
                   />
                 </Bar>
               </BarChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -381,7 +382,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={browserConfig}>
+            <ChartContainer config={browserConfig}>
               <BarChart
                 data={browserData}
                 layout="vertical"
@@ -413,7 +414,7 @@ export default function ChartsPage() {
                   />
                 </Bar>
               </BarChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -435,7 +436,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <AreaChart data={data}>
                 <CartesianGrid vertical={false} />
                 <XAxis
@@ -457,7 +458,7 @@ export default function ChartsPage() {
                   stroke="var(--color-desktop)"
                 />
               </AreaChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -479,7 +480,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <LineChart
                 data={data}
                 margin={{
@@ -504,7 +505,7 @@ export default function ChartsPage() {
                   dot={false}
                 />
               </LineChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -526,7 +527,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <LineChart
                 data={data}
                 margin={{
@@ -552,7 +553,7 @@ export default function ChartsPage() {
                   dot={false}
                 />
               </LineChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -574,7 +575,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <LineChart
                 data={data}
                 margin={{
@@ -591,7 +592,7 @@ export default function ChartsPage() {
                   tickMargin={8}
                   tickFormatter={(value) => value.slice(0, 3)}
                 />
-                <Tooltip cursor={false} content={<ChartTooltip hideLabel />} />
+                <Tooltip cursor={false} content={<ChartTooltip />} />
                 <Line
                   dataKey="desktop"
                   type="monotone"
@@ -607,7 +608,7 @@ export default function ChartsPage() {
                   dot={false}
                 />
               </LineChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -629,7 +630,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <LineChart
                 data={data}
                 margin={{
@@ -657,7 +658,7 @@ export default function ChartsPage() {
                   }}
                 />
               </LineChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
@@ -679,7 +680,7 @@ export default function ChartsPage() {
             <CardDescription>January - June 2024</CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart config={config}>
+            <ChartContainer config={config}>
               <LineChart
                 data={data}
                 margin={{
@@ -717,7 +718,7 @@ export default function ChartsPage() {
                   />
                 </Line>
               </LineChart>
-            </Chart>
+            </ChartContainer>
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">

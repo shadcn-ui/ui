@@ -10,7 +10,7 @@ import {
   YAxis,
 } from "recharts"
 
-import { Chart, ChartTooltip } from "@/registry/new-york/ui/chart"
+import { ChartContainer, ChartTooltip } from "@/registry/new-york/ui/chart"
 
 const data = [
   { month: "January", desktop: 186, mobile: 120 },
@@ -39,7 +39,7 @@ const config = {
 
 export default function Component() {
   return (
-    <Chart config={config} className="aspect-[8/3]">
+    <ChartContainer config={config} className="aspect-[8/3]">
       <BarChart
         data={data}
         layout="vertical"
@@ -77,6 +77,6 @@ export default function Component() {
           />
         </Bar>
       </BarChart>
-    </Chart>
+    </ChartContainer>
   )
 }

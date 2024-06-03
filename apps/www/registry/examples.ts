@@ -847,4 +847,52 @@ export const examples: Registry = [
     type: "components:example",
     files: ["example/cards/cards.tsx"],
   },
+  {
+    name: "line-chart-demo",
+    type: "components:example",
+    registryDependencies: [],
+    files: ["example/line-chart-demo.tsx"],
+  },
+  {
+    name: "line-chart-multiple",
+    type: "components:example",
+    registryDependencies: [],
+    files: ["example/line-chart-multiple.tsx"],
+  },
+  {
+    name: "line-chart-shape",
+    type: "components:example",
+    registryDependencies: [],
+    files: ["example/line-chart-shape.tsx"],
+  },
+  {
+    name: "area-chart-demo",
+    type: "components:example",
+    registryDependencies: [],
+    files: ["example/area-chart-demo.tsx"],
+  },
+  {
+    name: "bar-chart-demo",
+    type: "components:example",
+    registryDependencies: [],
+    files: ["example/bar-chart-demo.tsx"],
+  },
+  {
+    name: "bar-chart-multiple",
+    type: "components:example",
+    registryDependencies: [],
+    files: ["example/bar-chart-multiple.tsx"],
+  },
+  {
+    name: "bar-chart-horizontal",
+    type: "components:example",
+    registryDependencies: [],
+    files: ["example/bar-chart-horizontal.tsx"],
+  },
+  {
+    name: "tooltip-chart-demo",
+    type: "components:example",
+    registryDependencies: [],
+    files: ["example/tooltip-chart-demo.tsx"],
+  },
 ]

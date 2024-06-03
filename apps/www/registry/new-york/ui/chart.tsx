@@ -26,13 +26,13 @@ function useChart() {
   const context = React.useContext(ChartContext)
 
   if (!context) {
-    throw new Error("useChart must be used within a <Chart />")
+    throw new Error("useChart must be used within a <ChartContainer />")
   }
 
   return context
 }
 
-const Chart = React.forwardRef<
+const ChartContainer = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
     config: ChartConfig
@@ -63,7 +63,7 @@ const Chart = React.forwardRef<
     </ChartContext.Provider>
   )
 })
-Chart.displayName = "Chart"
+ChartContainer.displayName = "Chart"
 
 const ChartStyle = ({ id }: { id: string }) => {
   const { config } = useChart()
@@ -265,4 +265,4 @@ const ChartLegend = React.forwardRef<
 })
 ChartLegend.displayName = "ChartLegend"
 
-export { Chart, ChartTooltip, ChartLegend }
+export { ChartContainer, ChartTooltip, ChartLegend }

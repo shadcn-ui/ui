@@ -53,10 +53,11 @@ export function MainNav() {
           Blocks
         </Link>
         <Link
-          href="/docs/charts"
+          href="/charts"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/charts")
+            pathname?.startsWith("/docs/charts") ||
+              pathname?.startsWith("/charts")
               ? "text-foreground"
               : "text-foreground/60"
           )}

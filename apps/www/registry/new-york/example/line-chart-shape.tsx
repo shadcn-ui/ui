@@ -8,7 +8,11 @@ import {
   YAxis,
 } from "recharts"
 
-import { Chart, ChartLegend, ChartTooltip } from "@/registry/new-york/ui/chart"
+import {
+  ChartContainer,
+  ChartLegend,
+  ChartTooltip,
+} from "@/registry/new-york/ui/chart"
 
 const data = [
   { month: "January", desktop: 186, mobile: 120 },
@@ -39,7 +43,7 @@ const config = {
 
 export default function Component() {
   return (
-    <Chart config={config}>
+    <ChartContainer config={config}>
       <LineChart
         data={data}
         margin={{
@@ -82,6 +86,6 @@ export default function Component() {
           }}
         />
       </LineChart>
-    </Chart>
+    </ChartContainer>
   )
 }

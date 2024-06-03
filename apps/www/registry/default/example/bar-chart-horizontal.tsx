@@ -31,7 +31,7 @@ const config = {
 
 export default function Component() {
   return (
-    <Chart config={config}>
+    <ChartContainer config={config}>
       <BarChart
         data={data}
         margin={{
@@ -86,6 +86,6 @@ export default function Component() {
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={5} />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={5} />
       </BarChart>
-    </Chart>
+    </ChartContainer>
   )
 }

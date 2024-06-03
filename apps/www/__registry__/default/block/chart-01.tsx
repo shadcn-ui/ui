@@ -66,7 +66,7 @@ export default function Dashboard() {
           <CardDescription>January - July 2024</CardDescription>
         </CardHeader>
         <CardContent>
-          <Chart config={config}>
+          <ChartContainer config={config}>
             <BarChart data={data}>
               <CartesianGrid vertical={false} />
               <XAxis
@@ -82,7 +82,7 @@ export default function Dashboard() {
               />
               <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
             </BarChart>
-          </Chart>
+          </ChartContainer>
         </CardContent>
         <CardFooter>
           <div className="flex w-full items-start gap-2 text-sm">
@@ -104,7 +104,7 @@ export default function Dashboard() {
           <CardDescription>January - July 2024</CardDescription>
         </CardHeader>
         <CardContent>
-          <Chart config={config}>
+          <ChartContainer config={config}>
             <BarChart data={data}>
               <CartesianGrid vertical={false} />
               <XAxis
@@ -118,7 +118,7 @@ export default function Dashboard() {
               <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
               <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
             </BarChart>
-          </Chart>
+          </ChartContainer>
         </CardContent>
       </Card>
       <Card>
@@ -127,7 +127,7 @@ export default function Dashboard() {
           <CardDescription>January - July 2024</CardDescription>
         </CardHeader>
         <CardContent>
-          <Chart config={config}>
+          <ChartContainer config={config}>
             <BarChart data={data}>
               <CartesianGrid vertical={false} />
               <XAxis
@@ -152,7 +152,7 @@ export default function Dashboard() {
                 radius={[4, 4, 0, 0]}
               />
             </BarChart>
-          </Chart>
+          </ChartContainer>
         </CardContent>
       </Card>
       <Card>
@@ -161,7 +161,7 @@ export default function Dashboard() {
           <CardDescription>January - July 2024</CardDescription>
         </CardHeader>
         <CardContent>
-          <Chart config={config}>
+          <ChartContainer config={config}>
             <BarChart
               data={data}
               layout="vertical"
@@ -203,7 +203,7 @@ export default function Dashboard() {
                 />
               </Bar>
             </BarChart>
-          </Chart>
+          </ChartContainer>
         </CardContent>
       </Card>
     </div>

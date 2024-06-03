@@ -10,7 +10,11 @@ import {
   YAxis,
 } from "recharts"
 
-import { Chart, ChartLegend, ChartTooltip } from "@/registry/new-york/ui/chart"
+import {
+  ChartContainer,
+  ChartLegend,
+  ChartTooltip,
+} from "@/registry/new-york/ui/chart"
 
 const data = [
   { month: "January", desktop: 186 },
@@ -35,7 +39,7 @@ const config = {
 export default function Component() {
   return (
     <div className="grid w-full gap-4">
-      <Chart config={config}>
+      <ChartContainer config={config}>
         <LineChart
           data={data}
           margin={{
@@ -75,7 +79,7 @@ export default function Component() {
             }}
           />
         </LineChart>
-      </Chart>
+      </ChartContainer>
       <div className="text-center text-xs text-muted-foreground">
         Total visitors for the last 6 months
       </div>
