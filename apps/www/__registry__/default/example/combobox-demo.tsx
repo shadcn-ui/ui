@@ -47,12 +47,13 @@ export default function ComboboxDemo() {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild role="combobox">
         <Button
           variant="outline"
-          role="combobox"
+          aria-haspopup="listbox"
           aria-expanded={open}
           className="w-[200px] justify-between"
+          aria-label="Select framework"
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
