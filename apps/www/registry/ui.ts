@@ -252,6 +252,11 @@ export const ui: Registry = [
     files: ["ui/textarea.tsx"],
   },
   {
+    name: "timeline",
+    type: "components:ui",
+    files: ["ui/timeline.tsx"],
+  },
+  {
     name: "toast",
     type: "components:ui",
     dependencies: ["@radix-ui/react-toast"],

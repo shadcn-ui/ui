@@ -456,6 +456,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "timeline": {
+      name: "timeline",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/timeline")),
+      source: "",
+      files: ["registry/default/ui/timeline.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "toast": {
       name: "toast",
       type: "components:ui",
@@ -1699,6 +1710,50 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "timeline-demo": {
+      name: "timeline-demo",
+      type: "components:example",
+      registryDependencies: ["timeline"],
+      component: React.lazy(() => import("@/registry/default/example/timeline-demo")),
+      source: "",
+      files: ["registry/default/example/timeline-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "timeline-right": {
+      name: "timeline-right",
+      type: "components:example",
+      registryDependencies: ["timeline"],
+      component: React.lazy(() => import("@/registry/default/example/timeline-right")),
+      source: "",
+      files: ["registry/default/example/timeline-right.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "timeline-alternate": {
+      name: "timeline-alternate",
+      type: "components:example",
+      registryDependencies: ["timeline"],
+      component: React.lazy(() => import("@/registry/default/example/timeline-alternate")),
+      source: "",
+      files: ["registry/default/example/timeline-alternate.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "timeline-labels": {
+      name: "timeline-labels",
+      type: "components:example",
+      registryDependencies: ["timeline"],
+      component: React.lazy(() => import("@/registry/default/example/timeline-labels")),
+      source: "",
+      files: ["registry/default/example/timeline-labels.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "toast-demo": {
       name: "toast-demo",
       type: "components:example",
@@ -2842,6 +2897,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/ui/textarea")),
       source: "",
       files: ["registry/new-york/ui/textarea.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "timeline": {
+      name: "timeline",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/timeline")),
+      source: "",
+      files: ["registry/new-york/ui/timeline.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -4085,6 +4151,50 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/textarea-with-text")),
       source: "",
       files: ["registry/new-york/example/textarea-with-text.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "timeline-demo": {
+      name: "timeline-demo",
+      type: "components:example",
+      registryDependencies: ["timeline"],
+      component: React.lazy(() => import("@/registry/new-york/example/timeline-demo")),
+      source: "",
+      files: ["registry/new-york/example/timeline-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "timeline-right": {
+      name: "timeline-right",
+      type: "components:example",
+      registryDependencies: ["timeline"],
+      component: React.lazy(() => import("@/registry/new-york/example/timeline-right")),
+      source: "",
+      files: ["registry/new-york/example/timeline-right.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "timeline-alternate": {
+      name: "timeline-alternate",
+      type: "components:example",
+      registryDependencies: ["timeline"],
+      component: React.lazy(() => import("@/registry/new-york/example/timeline-alternate")),
+      source: "",
+      files: ["registry/new-york/example/timeline-alternate.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "timeline-labels": {
+      name: "timeline-labels",
+      type: "components:example",
+      registryDependencies: ["timeline"],
+      component: React.lazy(() => import("@/registry/new-york/example/timeline-labels")),
+      source: "",
+      files: ["registry/new-york/example/timeline-labels.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
