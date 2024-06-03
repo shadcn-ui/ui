@@ -378,6 +378,16 @@
     "type": "components:ui"
   },
   {
+    "name": "spinner",
+    "dependencies": [
+      "spinner"
+    ],
+    "files": [
+      "ui/spinner.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "switch",
     "dependencies": [
       "@radix-ui/react-switch"

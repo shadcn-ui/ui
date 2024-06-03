@@ -71,11 +71,16 @@ module.exports = {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
         },
+        "spinner": {
+          "0%": { opacity: 1 },
+          "to": { opacity: .15 }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
+        "spinner": "spinner 1.2s linear infinite"
       },
     },
   },

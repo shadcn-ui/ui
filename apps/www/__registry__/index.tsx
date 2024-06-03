@@ -412,6 +412,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "spinner": {
+      name: "spinner",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/spinner")),
+      source: "",
+      files: ["registry/default/ui/spinner.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "switch": {
       name: "switch",
       type: "components:ui",
@@ -1585,6 +1596,28 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/sonner-demo")),
       source: "",
       files: ["registry/default/example/sonner-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "spinner-demo": {
+      name: "spinner-demo",
+      type: "components:example",
+      registryDependencies: ["spinner"],
+      component: React.lazy(() => import("@/registry/default/example/spinner-demo")),
+      source: "",
+      files: ["registry/default/example/spinner-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "spinner-size": {
+      name: "spinner-size",
+      type: "components:example",
+      registryDependencies: ["spinner"],
+      component: React.lazy(() => import("@/registry/default/example/spinner-size")),
+      source: "",
+      files: ["registry/default/example/spinner-size.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -2802,6 +2835,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "spinner": {
+      name: "spinner",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/spinner")),
+      source: "",
+      files: ["registry/new-york/ui/spinner.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "switch": {
       name: "switch",
       type: "components:ui",
@@ -3979,6 +4023,28 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "spinner-demo": {
+      name: "spinner-demo",
+      type: "components:example",
+      registryDependencies: ["spinner"],
+      component: React.lazy(() => import("@/registry/new-york/example/spinner-demo")),
+      source: "",
+      files: ["registry/new-york/example/spinner-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "spinner-size": {
+      name: "spinner-size",
+      type: "components:example",
+      registryDependencies: ["spinner"],
+      component: React.lazy(() => import("@/registry/new-york/example/spinner-size")),
+      source: "",
+      files: ["registry/new-york/example/spinner-size.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "switch-demo": {
       name: "switch-demo",
       type: "components:example",
@@ -4525,17 +4591,9 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-06-chunk-0",
-        description: "A breadcrumb with two links and a page indicator.",
+        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-0")),
         file: "registry/new-york/block/dashboard-06-chunk-0.tsx",
-        container: {
-          className: "undefined"
-        }
-      },{
-        name: "dashboard-06-chunk-1",
-        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
-        component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-1")),
-        file: "registry/new-york/block/dashboard-06-chunk-1.tsx",
         container: {
           className: "undefined"
         }
