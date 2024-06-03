@@ -254,6 +254,12 @@ export const examples: Registry = [
     files: ["example/collapsible-demo.tsx"],
   },
   {
+    name: "combobox-add-option",
+    type: "components:example",
+    registryDependencies: ["command"],
+    files: ["example/combobox-add-option.tsx"],
+  },
+  {
     name: "combobox-demo",
     type: "components:example",
     registryDependencies: ["command"],
