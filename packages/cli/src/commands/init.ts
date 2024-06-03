@@ -1,5 +1,6 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
+import { applyCSSUpdates } from "@/src/utils/css"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -357,16 +358,17 @@ export async function runInit(cwd: string, config: Config) {
 
   // Write css file.
   const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+
   if (baseColor) {
-    await fs.writeFile(
+    const cssFileInput = await fs.readFile(
       config.resolvedPaths.tailwindCss,
-      config.tailwind.cssVariables
-        ? config.tailwind.prefix
-          ? applyPrefixesCss(baseColor.cssVarsTemplate, config.tailwind.prefix)
-          : baseColor.cssVarsTemplate
-        : baseColor.inlineColorsTemplate,
       "utf8"
     )
+    // const cssFileTemplate = config.tailwind.cssVariables
+    //   ? baseColor.cssVarsTemplate
+    //   : baseColor.inlineColorsTemplate
+    const cssFileContent = applyCSSUpdates(cssFileInput, baseColor, config)
+    await fs.writeFile(config.resolvedPaths.tailwindCss, cssFileContent, "utf8")
   }
 
   // Write cn file.
