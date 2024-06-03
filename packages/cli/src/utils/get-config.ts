@@ -1,7 +1,7 @@
 import path from "path"
 import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
-import { loadConfig } from "tsconfig-paths"
+import { ConfigLoaderSuccessResult, loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
 export const DEFAULT_STYLE = "default"
@@ -52,28 +52,23 @@ export const configSchema = rawConfigSchema.extend({
 
 export type Config = z.infer<typeof configSchema>
 
-export async function getConfig(cwd: string) {
+export async function getConfig(cwd: string, configFileName?: string) {
   const config = await getRawConfig(cwd)
 
   if (!config) {
     return null
   }
 
-  return await resolveConfigPaths(cwd, config)
+  const tsConfig = loadProjectConfig(cwd, config.tsx, configFileName)
+
+  return await resolveConfigPaths(cwd, config, tsConfig)
 }
 
-export async function resolveConfigPaths(cwd: string, config: RawConfig) {
-  // Read tsconfig.json.
-  const tsConfig = await loadConfig(cwd)
-
-  if (tsConfig.resultType === "failed") {
-    throw new Error(
-      `Failed to load ${config.tsx ? "tsconfig" : "jsconfig"}.json. ${
-        tsConfig.message ?? ""
-      }`.trim()
-    )
-  }
-
+export async function resolveConfigPaths(
+  cwd: string,
+  config: RawConfig,
+  tsConfig: ConfigLoaderSuccessResult
+) {
   return configSchema.parse({
     ...config,
     resolvedPaths: {
@@ -100,4 +95,22 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
   } catch (error) {
     throw new Error(`Invalid configuration found in ${cwd}/components.json.`)
   }
+}
+
+export function loadProjectConfig(
+  cwd: string,
+  isTsx: boolean,
+  configFileName?: string
+) {
+  const tsConfig = loadConfig(path.join(cwd, configFileName ?? ""))
+
+  if (tsConfig.resultType === "failed") {
+    throw new Error(
+      `Failed to load ${isTsx ? "tsconfig" : "jsconfig"}.json. ${
+        tsConfig.message ?? ""
+      }`.trim()
+    )
+  }
+
+  return tsConfig
 }

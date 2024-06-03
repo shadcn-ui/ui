@@ -26,6 +26,7 @@ const addOptionsSchema = z.object({
   cwd: z.string(),
   all: z.boolean(),
   path: z.string().optional(),
+  tsconfig: z.string().optional(),
 })
 
 export const add = new Command()
@@ -41,6 +42,7 @@ export const add = new Command()
   )
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
+  .option("-t, --tsconfig <tsconfig>", "the name of your tsconfig file")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -55,7 +57,7 @@ export const add = new Command()
         process.exit(1)
       }
 
-      const config = await getConfig(cwd)
+      const config = await getConfig(cwd, options.tsconfig)
       if (!config) {
         logger.warn(
           `Configuration is missing. Please run ${chalk.green(
