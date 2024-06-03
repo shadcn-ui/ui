@@ -1215,6 +1215,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "input-error": {
+      name: "input-error",
+      type: "components:example",
+      registryDependencies: ["input"],
+      component: React.lazy(() => import("@/registry/default/example/input-error")),
+      files: ["registry/default/example/input-error.tsx"],
+    },
     "input-file": {
       name: "input-file",
       type: "components:example",
@@ -3604,6 +3611,13 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "input-error": {
+      name: "input-error",
+      type: "components:example",
+      registryDependencies: ["input"],
+      component: React.lazy(() => import("@/registry/new-york/example/input-error")),
+      files: ["registry/new-york/example/input-error.tsx"],
     },
     "input-file": {
       name: "input-file",
