@@ -1,18 +1,19 @@
 "use client"
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import {zodResolver} from "@hookform/resolvers/zod"
+import {Check, ChevronsUpDown} from "lucide-react"
+import {useForm} from "react-hook-form"
+import {z} from "zod"
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/registry/default/ui/button"
+import {cn} from "@/lib/utils"
+import {Button} from "@/registry/default/ui/button"
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "@/registry/default/ui/command"
 import {
   Form,
@@ -28,18 +29,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/default/ui/popover"
-import { toast } from "@/registry/default/ui/use-toast"
+import {toast} from "@/registry/default/ui/use-toast"
 
 const languages = [
-  { label: "English", value: "en" },
-  { label: "French", value: "fr" },
-  { label: "German", value: "de" },
-  { label: "Spanish", value: "es" },
-  { label: "Portuguese", value: "pt" },
-  { label: "Russian", value: "ru" },
-  { label: "Japanese", value: "ja" },
-  { label: "Korean", value: "ko" },
-  { label: "Chinese", value: "zh" },
+  {label: "English", value: "en"},
+  {label: "French", value: "fr"},
+  {label: "German", value: "de"},
+  {label: "Spanish", value: "es"},
+  {label: "Portuguese", value: "pt"},
+  {label: "Russian", value: "ru"},
+  {label: "Japanese", value: "ja"},
+  {label: "Korean", value: "ko"},
+  {label: "Chinese", value: "zh"},
 ] as const
 
 const FormSchema = z.object({
@@ -70,7 +71,7 @@ export default function ComboboxForm() {
         <FormField
           control={form.control}
           name="language"
-          render={({ field }) => (
+          render={({field}) => (
             <FormItem className="flex flex-col">
               <FormLabel>Language</FormLabel>
               <Popover>
@@ -86,45 +87,47 @@ export default function ComboboxForm() {
                     >
                       {field.value
                         ? languages.find(
-                            (language) => language.value === field.value
-                          )?.label
+                          (language) => language.value === field.value
+                        )?.label
                         : "Select language"}
-                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50"/>
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
-                    <CommandInput placeholder="Search language..." />
-                    <CommandEmpty>No language found.</CommandEmpty>
-                    <CommandGroup>
-                      {languages.map((language) => (
-                        <CommandItem
-                          value={language.label}
-                          key={language.value}
-                          onSelect={() => {
-                            form.setValue("language", language.value)
-                          }}
-                        >
-                          <Check
-                            className={cn(
-                              "mr-2 h-4 w-4",
-                              language.value === field.value
-                                ? "opacity-100"
-                                : "opacity-0"
-                            )}
-                          />
-                          {language.label}
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
+                    <CommandInput placeholder="Search language..."/>
+                    <CommandList>
+                      <CommandEmpty>No language found.</CommandEmpty>
+                      <CommandGroup>
+                        {languages.map((language) => (
+                          <CommandItem
+                            value={language.label}
+                            key={language.value}
+                            onSelect={() => {
+                              form.setValue("language", language.value)
+                            }}
+                          >
+                            <Check
+                              className={cn(
+                                "mr-2 h-4 w-4",
+                                language.value === field.value
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              )}
+                            />
+                            {language.label}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
                   </Command>
                 </PopoverContent>
               </Popover>
               <FormDescription>
                 This is the language that will be used in the dashboard.
               </FormDescription>
-              <FormMessage />
+              <FormMessage/>
             </FormItem>
           )}
         />
