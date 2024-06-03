@@ -80,9 +80,7 @@ export const add = new Command()
           choices: registryIndex.map((entry) => ({
             title: entry.name,
             value: entry.name,
-            selected: options.all
-              ? true
-              : options.components?.includes(entry.name),
+            selected: options.components?.includes(entry.name),
           })),
         })
         selectedComponents = components
