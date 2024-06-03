@@ -1248,6 +1248,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "input-with-icons": {
+      name: "input-with-icons",
+      type: "components:example",
+      registryDependencies: ["input","label"],
+      component: React.lazy(() => import("@/registry/default/example/input-with-icons")),
+      files: ["registry/default/example/input-with-icons.tsx"],
+    },
     "input-with-label": {
       name: "input-with-label",
       type: "components:example",
@@ -3637,6 +3644,13 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "input-with-icons": {
+      name: "input-with-icons",
+      type: "components:example",
+      registryDependencies: ["input","label"],
+      component: React.lazy(() => import("@/registry/new-york/example/input-with-icons")),
+      files: ["registry/new-york/example/input-with-icons.tsx"],
     },
     "input-with-label": {
       name: "input-with-label",
