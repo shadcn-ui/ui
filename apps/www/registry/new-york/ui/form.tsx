@@ -11,7 +11,7 @@ import {
 } from "react-hook-form"
 
 import { cn } from "@/lib/utils"
-import { Label } from "@/registry/new-york/ui/label"
+import { Label } from "@/registry/default/ui/label"
 
 const Form = FormProvider
 
@@ -32,8 +32,10 @@ const FormField = <
 >({
   ...props
 }: ControllerProps<TFieldValues, TName>) => {
+  const value = React.useMemo(() => ({ name: props.name }), [props.name])
+
   return (
-    <FormFieldContext.Provider value={{ name: props.name }}>
+    <FormFieldContext.Provider value={value}>
       <Controller {...props} />
     </FormFieldContext.Provider>
   )
@@ -75,9 +77,10 @@ const FormItem = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   const id = React.useId()
+  const contextValue = React.useMemo(() => ({ id }), [id])
 
   return (
-    <FormItemContext.Provider value={{ id }}>
+    <FormItemContext.Provider value={contextValue}>
       <div ref={ref} className={cn("space-y-2", className)} {...props} />
     </FormItemContext.Provider>
   )
@@ -133,7 +136,7 @@ const FormDescription = React.forwardRef<
     <p
       ref={ref}
       id={formDescriptionId}
-      className={cn("text-[0.8rem] text-muted-foreground", className)}
+      className={cn("text-sm text-muted-foreground", className)}
       {...props}
     />
   )
@@ -155,7 +158,7 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={cn("text-[0.8rem] font-medium text-destructive", className)}
+      className={cn("text-sm font-medium text-destructive", className)}
       {...props}
     >
       {body}
