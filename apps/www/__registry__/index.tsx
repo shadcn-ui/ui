@@ -291,6 +291,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "phone-input": {
+      name: "phone-input",
+      type: "components:ui",
+      registryDependencies: ["button","command","input","popover"],
+      component: React.lazy(() => import("@/registry/default/ui/phone-input")),
+      files: ["registry/default/ui/phone-input.tsx"],
+    },
     "popover": {
       name: "popover",
       type: "components:ui",
@@ -1368,6 +1375,48 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "phone-input-demo": {
+      name: "phone-input-demo",
+      type: "components:example",
+      registryDependencies: ["phone-input"],
+      component: React.lazy(() => import("@/registry/default/example/phone-input-demo")),
+      files: ["registry/default/example/phone-input-demo.tsx"],
+    },
+    "phone-input-default": {
+      name: "phone-input-default",
+      type: "components:example",
+      registryDependencies: ["phone-input"],
+      component: React.lazy(() => import("@/registry/default/example/phone-input-default")),
+      files: ["registry/default/example/phone-input-default.tsx"],
+    },
+    "phone-input-international": {
+      name: "phone-input-international",
+      type: "components:example",
+      registryDependencies: ["phone-input"],
+      component: React.lazy(() => import("@/registry/default/example/phone-input-international")),
+      files: ["registry/default/example/phone-input-international.tsx"],
+    },
+    "phone-input-national": {
+      name: "phone-input-national",
+      type: "components:example",
+      registryDependencies: ["phone-input"],
+      component: React.lazy(() => import("@/registry/default/example/phone-input-national")),
+      files: ["registry/default/example/phone-input-national.tsx"],
+    },
+    "phone-input-initial": {
+      name: "phone-input-initial",
+      type: "components:example",
+      registryDependencies: ["phone-input"],
+      component: React.lazy(() => import("@/registry/default/example/phone-input-initial")),
+      files: ["registry/default/example/phone-input-initial.tsx"],
+    },
+    "phone-input-form": {
+      name: "phone-input-form",
+      type: "components:example",
+      registryDependencies: ["phone-input","form"],
+      component: React.lazy(() => import("@/registry/default/example/phone-input-form")),
+      files: ["registry/default/example/phone-input-form.tsx"],
     },
     "popover-demo": {
       name: "popover-demo",
@@ -2681,6 +2730,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "phone-input": {
+      name: "phone-input",
+      type: "components:ui",
+      registryDependencies: ["button","command","input","popover"],
+      component: React.lazy(() => import("@/registry/new-york/ui/phone-input")),
+      files: ["registry/new-york/ui/phone-input.tsx"],
+    },
     "popover": {
       name: "popover",
       type: "components:ui",
@@ -3758,6 +3814,48 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "phone-input-demo": {
+      name: "phone-input-demo",
+      type: "components:example",
+      registryDependencies: ["phone-input"],
+      component: React.lazy(() => import("@/registry/new-york/example/phone-input-demo")),
+      files: ["registry/new-york/example/phone-input-demo.tsx"],
+    },
+    "phone-input-default": {
+      name: "phone-input-default",
+      type: "components:example",
+      registryDependencies: ["phone-input"],
+      component: React.lazy(() => import("@/registry/new-york/example/phone-input-default")),
+      files: ["registry/new-york/example/phone-input-default.tsx"],
+    },
+    "phone-input-international": {
+      name: "phone-input-international",
+      type: "components:example",
+      registryDependencies: ["phone-input"],
+      component: React.lazy(() => import("@/registry/new-york/example/phone-input-international")),
+      files: ["registry/new-york/example/phone-input-international.tsx"],
+    },
+    "phone-input-national": {
+      name: "phone-input-national",
+      type: "components:example",
+      registryDependencies: ["phone-input"],
+      component: React.lazy(() => import("@/registry/new-york/example/phone-input-national")),
+      files: ["registry/new-york/example/phone-input-national.tsx"],
+    },
+    "phone-input-initial": {
+      name: "phone-input-initial",
+      type: "components:example",
+      registryDependencies: ["phone-input"],
+      component: React.lazy(() => import("@/registry/new-york/example/phone-input-initial")),
+      files: ["registry/new-york/example/phone-input-initial.tsx"],
+    },
+    "phone-input-form": {
+      name: "phone-input-form",
+      type: "components:example",
+      registryDependencies: ["phone-input","form"],
+      component: React.lazy(() => import("@/registry/new-york/example/phone-input-form")),
+      files: ["registry/new-york/example/phone-input-form.tsx"],
     },
     "popover-demo": {
       name: "popover-demo",

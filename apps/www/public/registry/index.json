@@ -270,6 +270,22 @@
     "type": "components:ui"
   },
   {
+    "name": "phone-input",
+    "dependencies": [
+      "react-phone-number-input"
+    ],
+    "registryDependencies": [
+      "button",
+      "command",
+      "input",
+      "popover"
+    ],
+    "files": [
+      "ui/phone-input.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "popover",
     "dependencies": [
       "@radix-ui/react-popover"

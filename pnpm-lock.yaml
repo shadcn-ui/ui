@@ -273,6 +273,9 @@ importers:
       react-hook-form:
         specifier: ^7.44.2
         version: 7.44.2(react@18.2.0)
+      react-phone-number-input:
+        specifier: ^3.3.9
+        version: 3.3.9(react-dom@18.2.0)(react@18.2.0)
       react-resizable-panels:
         specifier: ^0.0.55
         version: 0.0.55(react-dom@18.2.0)(react@18.2.0)
@@ -5422,6 +5425,10 @@ packages:
       path-type: 4.0.0
     dev: false
 
+  /country-flag-icons@1.5.9:
+    resolution: {integrity: sha512-9jrjv2w7kRbqNtdtMdK2j3gmDIZzd5l9L2pZiQjF9J0mUcB+NKIGDNADTDHBEp8EQtjOkCOcciJGGSOpERdXPQ==}
+    dev: false
+
   /create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
 
@@ -7447,6 +7454,12 @@ packages:
     resolution: {integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==}
     dev: false
 
+  /input-format@0.3.9:
+    resolution: {integrity: sha512-99Gew2huiuYpNsyZoucauy5OT3oXEoWUeINGES4SlU74eFxbtYqNO+yEP6uKFhfB0UKTvq4gOC+6/3Oskru+IQ==}
+    dependencies:
+      prop-types: 15.8.1
+    dev: false
+
   /input-otp@1.2.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-9x6UurPuc9Tb+ywWFcFrG4ryvScSmfLyj8D35dl/HNpSr9jZNtWiXufU65kaDHD/KYUop7hDFH+caZCUKdYNsg==}
     peerDependencies:
@@ -7926,6 +7939,10 @@ packages:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
+
+  /libphonenumber-js@1.10.55:
+    resolution: {integrity: sha512-MrTg2JFLscgmTY6/oT9vopYETlgUls/FU6OaeeamGwk4LFxjIgOUML/ZSZICgR0LPYXaonVJo40lzMvaaTJlQA==}
+    dev: false
 
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}

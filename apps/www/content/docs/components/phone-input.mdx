@@ -1,0 +1,101 @@
+---
+title: Phone Input
+description: This component provides phone number input based on the selected country.
+component: true
+links:
+  doc: https://catamphetamine.gitlab.io/react-phone-number-input
+---
+
+<ComponentPreview
+  name="phone-input-demo"
+  className="[&_phone-input]:max-w-xs"
+/>
+
+## About
+
+The `PhoneInput` component is built on top of [React Phone Number Input](https://catamphetamine.gitlab.io/react-phone-number-input).
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add phone-input
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="phone-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { PhoneInput } from "@/components/ui/phone-input"
+```
+
+```tsx
+const [value, setValue] = React.useState("")
+
+return <PhoneInput value={value} onChange={setValue} />
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview
+  name="phone-input-demo"
+  className="[&_phone-input]:max-w-xs"
+/>
+
+### Setting default country
+
+<ComponentPreview
+  name="phone-input-default"
+  className="[&_phone-input]:max-w-xs"
+/>
+
+### Setting force international format
+
+<ComponentPreview
+  name="phone-input-international"
+  className="[&_phone-input]:max-w-xs"
+/>
+
+### Setting force national format
+
+<ComponentPreview
+  name="phone-input-national"
+  className="[&_phone-input]:max-w-xs"
+/>
+
+### Setting initial value format
+
+<ComponentPreview
+  name="phone-input-initial"
+  className="[&_phone-input]:max-w-xs"
+/>
+
+### Form
+
+<ComponentPreview name="phone-input-form" />
