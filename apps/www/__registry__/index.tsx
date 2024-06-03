@@ -2394,6 +2394,15 @@ export const Index: Record<string, any> = {
       subcategory: "Login",
       chunks: []
     },
+    "pricing-01": {
+      name: "pricing-01",
+      type: "components:block",
+      registryDependencies: ["badge","button","card","tabs"],
+      component: React.lazy(() => import("@/registry/default/block/pricing-01")),
+      files: ["registry/default/block/pricing-01.tsx"],
+      category: "Commerce",
+      subcategory: "Pricing",
+    },
   },  "new-york": {
     "accordion": {
       name: "accordion",
@@ -4791,6 +4800,15 @@ export const Index: Record<string, any> = {
       category: "Authentication",
       subcategory: "Login",
       chunks: []
+    },
+    "pricing-01": {
+      name: "pricing-01",
+      type: "components:block",
+      registryDependencies: ["badge","button","card","tabs"],
+      component: React.lazy(() => import("@/registry/new-york/block/pricing-01")),
+      files: ["registry/new-york/block/pricing-01.tsx"],
+      category: "Commerce",
+      subcategory: "Pricing",
     },
   },
 }
