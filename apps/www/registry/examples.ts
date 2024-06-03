@@ -242,6 +242,12 @@ export const examples: Registry = [
     files: ["example/checkbox-form-single.tsx"],
   },
   {
+    name: "checkbox-indeterminate",
+    type: "components:example",
+    registryDependencies: ["checkbox"],
+    files: ["example/checkbox-indeterminate.tsx"],
+  },
+  {
     name: "checkbox-with-text",
     type: "components:example",
     registryDependencies: ["checkbox"],

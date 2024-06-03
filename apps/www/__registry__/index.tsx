@@ -940,6 +940,15 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "checkbox-indeterminate": {
+      name: "checkbox-indeterminate",
+      type: "components:example",
+      registryDependencies: ["checkbox"],
+      component: React.lazy(() => import("@/registry/default/example/checkbox-indeterminate")),
+      files: ["registry/default/example/checkbox-indeterminate.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+    },
     "checkbox-with-text": {
       name: "checkbox-with-text",
       type: "components:example",
@@ -3329,6 +3338,15 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "checkbox-indeterminate": {
+      name: "checkbox-indeterminate",
+      type: "components:example",
+      registryDependencies: ["checkbox"],
+      component: React.lazy(() => import("@/registry/new-york/example/checkbox-indeterminate")),
+      files: ["registry/new-york/example/checkbox-indeterminate.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "checkbox-with-text": {
       name: "checkbox-with-text",
