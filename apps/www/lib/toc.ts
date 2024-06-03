@@ -1,17 +1,17 @@
-// @ts-nocheck
-// TODO: I'll fix this later.
-
 import { toc } from "mdast-util-toc"
+import { Node } from "mdast-util-toc/lib"
 import { remark } from "remark"
 import { visit } from "unist-util-visit"
+import type { VFile } from "vfile"
+import type { Text, InlineCode } from 'mdast'
 
-const textTypes = ["text", "emphasis", "strong", "inlineCode"]
+const textTypes = ["text", "inlineCode"]
 
-function flattenNode(node) {
-  const p = []
+function flattenNode(node: Node) {
+  const p: string[] = []
   visit(node, (node) => {
     if (!textTypes.includes(node.type)) return
-    p.push(node.value)
+    p.push((node as Text | InlineCode).value)
   })
   return p.join(``)
 }
@@ -26,30 +26,33 @@ interface Items {
   items?: Item[]
 }
 
-function getItems(node, current): Items {
+function getItems(node: Node | null = null, current: Item | Object): Item | Object {
   if (!node) {
     return {}
   }
 
+  let result = current as Item
+
   if (node.type === "paragraph") {
     visit(node, (item) => {
+      
       if (item.type === "link") {
-        current.url = item.url
-        current.title = flattenNode(node)
+        result.url = item.url
+        result.title = flattenNode(node)
       }
 
       if (item.type === "text") {
-        current.title = flattenNode(node)
+        result.title = flattenNode(node)
       }
     })
 
-    return current
+    return result
   }
 
   if (node.type === "list") {
-    current.items = node.children.map((i) => getItems(i, {}))
+    result.items = node.children.map((i) => getItems(i, {})) as Item[]
 
-    return current
+    return result
   } else if (node.type === "listItem") {
     const heading = getItems(node.children[0], {})
 
@@ -63,11 +66,11 @@ function getItems(node, current): Items {
   return {}
 }
 
-const getToc = () => (node, file) => {
+const getToc = () => (node: Node, file: VFile) => {
   const table = toc(node)
   const items = getItems(table.map, {})
 
-  file.data = items
+  file.data = items as Record<string, Item>
 }
 
 export type TableOfContents = Items
