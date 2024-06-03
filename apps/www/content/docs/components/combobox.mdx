@@ -83,6 +83,7 @@ export function ComboboxDemo() {
           <CommandEmpty>No framework found.</CommandEmpty>
           <CommandGroup>
             {frameworks.map((framework) => (
+            <CommandList>
               <CommandItem
                 key={framework.value}
                 value={framework.value}
@@ -99,6 +100,7 @@ export function ComboboxDemo() {
                 />
                 {framework.label}
               </CommandItem>
+            </CommandList>
             ))}
           </CommandGroup>
         </Command>
