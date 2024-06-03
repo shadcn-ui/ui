@@ -1,0 +1,289 @@
+---
+title: RedwoodJS
+description: Install and figure in a RedwoodJS project.
+---
+
+<Steps>
+
+### Create project
+
+If you haven't already created a project, you can do so with the following command.
+Also be sure you are using the correct versions of node and yarn.
+
+```bash
+yarn create redwood-app [APP_NAME]
+```
+
+### Add Tailwind
+
+Redwood has a built-in utility for setting up tailwind.
+
+```bash
+yarn rw setup ui tailwindcss
+```
+
+### Add dependencies
+
+Redwood uses yarn workspaces, so install the necessary dependencies for the web with the following command:
+
+```bash
+yarn workspace web add tailwindcss-animate class-variance-authority clsx tailwind-merge
+```
+
+### Add icon library
+
+If you're using the `default` style, install `lucide-react`:
+
+```bash
+yarn workspace web add lucide-react
+```
+
+If you're using the `new-york` style, install `@radix-ui/react-icons`:
+
+```bash
+yarn workspace web add @radix-ui/react-icons
+```
+
+### Configure tailwind.config.js
+
+Here's what my `tailwind.config.js` file looks like:
+
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+
+module.exports = {
+  darkMode: ["class"],
+  content: ["src/**/*.{js,jsx,ts,tsx}"], // specific to redwood
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+}
+```
+
+### Configure styles
+
+Copy the following into your `web/src/index.css` file. You can learn more about using CSS variables for theming in the [theming section](/docs/theming).
+
+```css title="web/src/index.css"
+/** These only need to show up once in this file */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+```
+
+### Add a cn helper
+
+I use a `cn` helper to make it easier to conditionally add Tailwind CSS classes. Here's how I define it in `web/src/lib/utils.ts`:
+
+```ts title="web/src/lib/utils.ts"
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+### Create components.json file
+
+Typically this would be set up by the shadcn CLI `init` command, but copy it manually from here:
+
+```json title="web/components.json"
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "aliases": {
+    "components": "src/components",
+    "ui": "src/components/ui",
+    "utils": "src/lib/utils"
+  },
+  "style": "default",
+  "tailwind": {
+    "baseColor": "neutral",
+    "config": "./config/tailwind.config.js",
+    "css": "./src/index.css",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "rsc": false,
+  "tsx": true
+}
+```
+
+### (optional) Create npm alias for the shad CLI
+
+In order to add components via the CLI, you will need to run it inside the `web/` directory, so:
+
+```bash
+cd web
+npx shadcn-ui@latest add button
+```
+
+Since most work is done at the root directory of a redwood project, consider adding a new
+npm script which does this for you:
+
+```diff title="package.json"
+ {
+   "private": true,
++  "scripts": {
++    "shad": "cd web && npx shadcn-ui@latest add"
++  },
+   "workspaces": {
+     "packages": [
+       "api",
+       "web"
+     ]
+   },
+```
+
+Now, you'll be able to add shad components from the root folder:
+
+```bash
+yarn shad button tooltip calendar
+```
+
+### That's it
+
+You can now start adding components to your project.
+
+</Steps>
