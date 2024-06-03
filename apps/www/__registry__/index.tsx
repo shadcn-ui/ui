@@ -1567,13 +1567,24 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "slider-demo": {
-      name: "slider-demo",
+    "slider-horizontal-demo": {
+      name: "slider-horizontal-demo",
       type: "components:example",
       registryDependencies: ["slider"],
-      component: React.lazy(() => import("@/registry/default/example/slider-demo")),
+      component: React.lazy(() => import("@/registry/default/example/slider-horizontal-demo")),
+      files: ["registry/default/example/slider-horizontal-demo.tsx"],
       source: "",
-      files: ["registry/default/example/slider-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "slider-vertical-demo": {
+      name: "slider-vertical-demo",
+      type: "components:example",
+      registryDependencies: ["slider"],
+      component: React.lazy(() => import("@/registry/default/example/slider-vertical-demo")),
+      files: ["registry/default/example/slider-vertical-demo.tsx"],
+      source: "",
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -3957,13 +3968,24 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "slider-demo": {
-      name: "slider-demo",
+    "slider-horizontal-demo": {
+      name: "slider-horizontal-demo",
       type: "components:example",
       registryDependencies: ["slider"],
-      component: React.lazy(() => import("@/registry/new-york/example/slider-demo")),
+      component: React.lazy(() => import("@/registry/new-york/example/slider-horizontal-demo")),
+      files: ["registry/new-york/example/slider-horizontal-demo.tsx"],
       source: "",
-      files: ["registry/new-york/example/slider-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "slider-vertical-demo": {
+      name: "slider-vertical-demo",
+      type: "components:example",
+      registryDependencies: ["slider"],
+      component: React.lazy(() => import("@/registry/new-york/example/slider-vertical-demo")),
+      files: ["registry/new-york/example/slider-vertical-demo.tsx"],
+      source: "",
       category: "undefined",
       subcategory: "undefined",
       chunks: []
