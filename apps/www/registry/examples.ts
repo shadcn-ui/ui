@@ -492,6 +492,12 @@ export const examples: Registry = [
     files: ["example/progress-demo.tsx"],
   },
   {
+    name: "progress-max",
+    type: "components:example",
+    registryDependencies: ["progress"],
+    files: ["example/progress-max.tsx"],
+  },
+  {
     name: "radio-group-demo",
     type: "components:example",
     registryDependencies: ["radio-group"],
