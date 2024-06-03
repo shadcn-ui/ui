@@ -28,20 +28,23 @@ apps
         ├── default
         │   ├── example
         │   └── ui
+        │   └── block
         └── new-york
             ├── example
             └── ui
+            └── block
+
 packages
 └── cli
 ```
 
-| Path                  | Description                              |
-| --------------------- | ---------------------------------------- |
-| `apps/www/app`        | The Next.js application for the website. |
-| `apps/www/components` | The React components for the website.    |
-| `apps/www/content`    | The content for the website.             |
-| `apps/www/registry`   | The registry for the components.         |
-| `packages/cli`        | The `shadcn-ui` package.                 |
+| Path                  | Description                                 |
+| --------------------- | ------------------------------------------- |
+| `apps/www/app`        | The Next.js application for the website.    |
+| `apps/www/components` | The React components for the website.       |
+| `apps/www/content`    | The content for the website.                |
+| `apps/www/registry`   | The registry for the components and blocks. |
+| `packages/cli`        | The `shadcn-ui` package.                    |
 
 ## Development
 
@@ -101,9 +104,9 @@ pnpm --filter=www dev
 
 Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `apps/www/content/docs` directory.
 
-## Components
+## Components and Blocks
 
-We use a registry system for developing components. You can find the source code for the components under `apps/www/registry`. The components are organized by styles.
+We use a registry system for developing components and blocks. You can find the source code for the components and blocks under `apps/www/registry`. The components and blocks are organized by styles.
 
 ```bash
 apps
@@ -112,9 +115,11 @@ apps
         ├── default
         │   ├── example
         │   └── ui
+        │   └── block
         └── new-york
             ├── example
             └── ui
+            └── block
 ```
 
 When adding or modifying components, please ensure that:
@@ -154,9 +159,9 @@ If you are interested in the detailed specification you can visit
 https://www.conventionalcommits.org/ or check out the
 [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
 
-## Requests for new components
+## Requests for new components and blocks
 
-If you have a request for a new component, please open a discussion on GitHub. We'll be happy to help you out.
+If you have a request for a new component or block, please open a discussion on GitHub. We'll be happy to help you out.
 
 ## CLI
 
