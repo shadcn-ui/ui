@@ -42,7 +42,7 @@
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
-    "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
+    "@ianvs/prettier-plugin-sort-imports": "^4.0.0",
     "@manypkg/cli": "^0.20.0",
     "@typescript-eslint/parser": "^5.59.7",
     "autoprefixer": "^10.4.14",
