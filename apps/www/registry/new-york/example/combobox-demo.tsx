@@ -64,9 +64,9 @@ export default function ComboboxDemo() {
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandInput placeholder="Search framework..." className="h-9" />
-          <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandGroup>
-            <CommandList>
+          <CommandList>
+            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandGroup>
               {frameworks.map((framework) => (
                 <CommandItem
                   key={framework.value}
@@ -85,8 +85,8 @@ export default function ComboboxDemo() {
                   />
                 </CommandItem>
               ))}
-            </CommandList>
-          </CommandGroup>
+            </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>
