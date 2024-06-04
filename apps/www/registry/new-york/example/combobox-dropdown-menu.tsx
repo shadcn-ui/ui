@@ -72,18 +72,20 @@ export default function ComboboxDropdownMenu() {
                   <CommandList>
                     <CommandEmpty>No label found.</CommandEmpty>
                     <CommandGroup>
-                      {labels.map((label) => (
-                        <CommandItem
-                          key={label}
-                          value={label}
-                          onSelect={(value) => {
-                            setLabel(value)
-                            setOpen(false)
-                          }}
-                        >
-                          {label}
-                        </CommandItem>
-                      ))}
+                      <CommandList>
+                        {labels.map((label) => (
+                          <CommandItem
+                            key={label}
+                            value={label}
+                            onSelect={(value) => {
+                              setLabel(value)
+                              setOpen(false)
+                            }}
+                          >
+                            {label}
+                          </CommandItem>
+                        ))}
+                      </CommandList>
                     </CommandGroup>
                   </CommandList>
                 </Command>
