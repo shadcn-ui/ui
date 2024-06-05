@@ -39,8 +39,16 @@ export function ComponentPreview({
   const [config] = useConfig()
   const index = styles.findIndex((style) => style.name === config.style)
 
+
+  // React.Children.toArray(children) is a utility function provided by React to work with children in a more manageable way. 
+  // The children prop in React can be a variety of types: a single child, multiple children, an array, or even null or undefined. 
+  // This utility helps standardize these into an array, making it easier to iterate over or manipulate.
+
   const Codes = React.Children.toArray(children) as React.ReactElement[]
+  // console.log("React.Children==", Codes);
+
   const Code = Codes[index]
+  console.log("React.Children==", Code);
 
   const Preview = React.useMemo(() => {
     const Component = Index[config.style][name]?.component
@@ -71,6 +79,9 @@ export function ComponentPreview({
     }
   }, [Code])
 
+  console.log("React.codeString==", codeString);
+
+
   return (
     <div
       className={cn("group relative my-4 flex flex-col space-y-2", className)}
@@ -83,7 +94,7 @@ export function ComponentPreview({
               value="preview"
               className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
             >
-              Preview
+              Preview @2
             </TabsTrigger>
             <TabsTrigger
               value="code"
@@ -125,6 +136,7 @@ export function ComponentPreview({
                 }
               )}
             >
+              {/* <Suspense> lets you display a fallback until its children have finished loading. */}
               <React.Suspense
                 fallback={
                   <div className="flex items-center text-sm text-muted-foreground">
