@@ -317,10 +317,8 @@ export async function runInit(cwd: string, config: Config) {
 
     // If the utils alias is set to something like "@/lib/utils",
     // assume this is a file and remove the "utils" file name.
-    // TODO: In future releases we should add support for individual utils.
-    if (key === "utils" && resolvedPath.endsWith("/utils")) {
-      // Remove /utils at the end.
-      dirname = dirname.replace(/\/utils$/, "")
+    if (key === "utils") {
+      dirname = path.dirname(resolvedPath)
     }
 
     if (!existsSync(dirname)) {
