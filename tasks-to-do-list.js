@@ -28,4 +28,23 @@
 
 // {/* <Suspense> lets you display a fallback until its children have finished loading. */}
 
+
 // ======================================= Day 2 =======================================
+// How to do SEO? How is it done in the project?
+// Optimize performance a bit
+// Implement useCallback
+
+// How to do SEO? How is it done in the project?
+    // Structured data, Google has its own schema, and we need to match the data to it. This makes it easier for Google to crawl the data. For specific requirements, Google has development documentation.
+    // Title, meta, and a tags need to follow standards
+    // Content must be relevant
+
+// Implement useCallback
+// Optimize performance a bit
+
+
+// ======================================= Day 3 =======================================
+// How does system design relate to this project?
+// Deploy this project
+// Design complex test cases with Jest
+// Webpack
