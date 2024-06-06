@@ -1,0 +1,169 @@
+---
+title: Refine
+description: Install and configure Refine.
+---
+
+<Steps>
+
+### Create project
+
+Start by creating a new Refine project using `create refine-app`:
+
+```bash
+npm create refine-app@latest -- --preset vite-tailwindcss
+```
+
+
+This preset configures Tailwind CSS and bootstraps a Refine app using Vite with pre-defined options for a quick start.
+
+
+
+
+### Edit tsconfig.json file
+
+Add the following code to the `tsconfig.json` file to resolve paths:
+
+```ts {4-9} showLineNumbers
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
+```
+
+### Update vite.config.ts
+
+Add the following code to the vite.config.ts so your app can resolve paths without error
+
+```typescript
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
+
+### Run the CLI
+
+Run the `shadcn-ui` init command to setup your project:
+
+```bash
+npx shadcn-ui@latest init
+```
+
+### Configure components.json
+
+You will be asked a few questions to configure `components.json`:
+
+```txt showLineNumbers
+Would you like to use TypeScript (recommended)? yes
+Which style would you like to use? › Default
+Which color would you like to use as base color? › Slate
+Where is your global CSS file? › src/App.css
+Would you like to use CSS variables for colors? … no / yes
+Where is your tailwind.config.js located? › tailwind.config.js
+Configure the import alias for components: › @/components
+Configure the import alias for utils: › @/lib/utils
+Are you using React Server Components? › no
+```
+
+### That's it
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn-ui@latest add table
+```
+
+The command above will add the `Table` component to your project. For a quick test, you can import it into `App.tsx` like this:
+
+```tsx {7-15, 25-43} showLineNumbers
+import { Refine, useTable } from "@refinedev/core"
+import routerBindings from "@refinedev/react-router-v6"
+import dataProvider from "@refinedev/simple-rest"
+
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+import "./App.css"
+
+const ProductsTable = () => {
+  const { tableQueryResult } = useTable()
+  const products = tableQueryResult?.data?.data || []
+
+  return (
+    <div className="p-10 max-w-screen-lg mx-auto">
+      <Table>
+        <TableCaption>Products</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead>#ID</TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Price</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {products.map((product) => (
+            <TableRow key={product.id}>
+              <TableCell>{product.id}</TableCell>
+              <TableCell>{product.name}</TableCell>
+              <TableCell>{product.price}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Refine
+        resources={[
+          {
+            name: "products",
+            list: "/",
+          },
+        ]}
+        routerProvider={routerBindings}
+        dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+        options={{
+          syncWithLocation: true,
+        }}
+      >
+        <Routes>
+          <Route index element={<ProductsTable />} />
+        </Routes>
+      </Refine>
+    </BrowserRouter>
+  )
+}
+
+export default App
+```
+
+</Steps>
