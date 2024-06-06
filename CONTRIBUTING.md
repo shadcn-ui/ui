@@ -101,6 +101,9 @@ pnpm --filter=www dev
 
 Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `apps/www/content/docs` directory.
 
+If the documentation running locally doesn't reflect the file changes, you can delete the `contentlayer` folder and run
+the `pnpm --filter=www dev` command again.
+
 ## Components
 
 We use a registry system for developing components. You can find the source code for the components under `apps/www/registry`. The components are organized by styles.
