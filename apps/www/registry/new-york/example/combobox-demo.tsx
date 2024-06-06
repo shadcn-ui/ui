@@ -8,6 +8,7 @@ import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
   CommandEmpty,
+  CommandList,
   CommandGroup,
   CommandInput,
   CommandItem,
