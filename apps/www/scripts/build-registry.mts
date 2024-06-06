@@ -290,9 +290,13 @@ async function buildStyles(registry: Registry) {
           "utf8"
         )
 
+        const CRLF = "\r\n"
+        const LF = "\n"
+        const normalizedContent = content.replace(new RegExp(CRLF, "g"), LF)
+
         return {
           name: basename(file),
-          content,
+          content: normalizedContent,
         }
       })
 
