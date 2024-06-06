@@ -8,10 +8,10 @@ import { Button } from "@/registry/default/ui/button"
 import {
   Command,
   CommandEmpty,
-  CommandList,
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "@/registry/default/ui/command"
 import {
   Popover,
