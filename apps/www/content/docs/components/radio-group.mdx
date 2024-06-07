@@ -59,13 +59,13 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 ```tsx
 <RadioGroup defaultValue="option-one">
-  <div className="flex items-center space-x-2">
+  <div className="flex items-center">
     <RadioGroupItem value="option-one" id="option-one" />
-    <Label htmlFor="option-one">Option One</Label>
+    <Label htmlFor="option-one" className="pl-2">Option One</Label>
   </div>
-  <div className="flex items-center space-x-2">
+  <div className="flex items-center">
     <RadioGroupItem value="option-two" id="option-two" />
-    <Label htmlFor="option-two">Option Two</Label>
+    <Label htmlFor="option-two" className="pl-2">Option Two</Label>
   </div>
 </RadioGroup>
 ```

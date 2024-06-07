@@ -4,17 +4,17 @@ import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 export default function RadioGroupDemo() {
   return (
     <RadioGroup defaultValue="comfortable">
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center">
         <RadioGroupItem value="default" id="r1" />
-        <Label htmlFor="r1">Default</Label>
+        <Label htmlFor="r1" className="pl-2">Default</Label>
       </div>
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center">
         <RadioGroupItem value="comfortable" id="r2" />
-        <Label htmlFor="r2">Comfortable</Label>
+        <Label htmlFor="r2" className="pl-2">Comfortable</Label>
       </div>
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center">
         <RadioGroupItem value="compact" id="r3" />
-        <Label htmlFor="r3">Compact</Label>
+        <Label htmlFor="r3" className="pl-2">Compact</Label>
       </div>
     </RadioGroup>
   )
