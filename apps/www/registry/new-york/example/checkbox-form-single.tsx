@@ -50,6 +50,7 @@ export default function CheckboxReactHookFormSingle() {
             <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
               <FormControl>
                 <Checkbox
+                  ref={field.ref}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
