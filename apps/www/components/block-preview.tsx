@@ -24,6 +24,7 @@ export function BlockPreview({
   const [config] = useConfig()
   const { isLiftMode } = useLiftMode(block.name)
   const [isLoading, setIsLoading] = React.useState(true)
+  // useRef 好处是什么？
   const ref = React.useRef<ImperativePanelHandle>(null)
 
   if (config.style !== block.style) {

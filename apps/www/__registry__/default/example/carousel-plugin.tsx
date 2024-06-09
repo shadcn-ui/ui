@@ -11,7 +11,12 @@ import {
 } from "@/registry/default/ui/carousel"
 
 export default function CarouselPlugin() {
+  // Storing the plugin instance in useRef allows it to be referenced throughout the component's lifecycle without needing to reinitialize it during each render. 
+  // This ensures the plugin remains accessible during the component's lifetime.
+  
   const plugin = React.useRef(
+    // Avoid redundant plugin initialization during re-renders:
+    // avoid memory leaks.
     Autoplay({ delay: 2000, stopOnInteraction: true })
   )
 
@@ -19,6 +24,7 @@ export default function CarouselPlugin() {
     <Carousel
       plugins={[plugin.current]}
       className="w-full max-w-xs"
+      // Control plugin behavior in event handlers:
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >

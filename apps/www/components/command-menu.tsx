@@ -41,6 +41,7 @@ export function CommandMenu({ ...props }: DialogProps) {
         ) {
           return
         }
+        const leg = f
 
         e.preventDefault()
         setOpen((open) => !open)

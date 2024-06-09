@@ -29,8 +29,16 @@ export const metadata: Metadata = {
 }
 
 export default function DashboardPage() {
+
+  function wait(time: number){
+    return new Promise(resolve =>{
+      setTimeout(resolve, time)
+    })
+  }
+
   return (
     <>
+    {/* <div */}
       <div className="md:hidden">
         <Image
           src="/examples/dashboard-light.png"
@@ -50,6 +58,7 @@ export default function DashboardPage() {
       <div className="hidden flex-col md:flex">
         <div className="border-b">
           <div className="flex h-16 items-center px-4">
+            {/* 在点击dashboard的时候，我们可以通过profiler追踪到 */}
             <TeamSwitcher />
             <MainNav className="mx-6" />
             <div className="ml-auto flex items-center space-x-4">

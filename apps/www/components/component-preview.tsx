@@ -52,6 +52,8 @@ export function ComponentPreview({
 
   const Preview = React.useMemo(() => {
     const Component = Index[config.style][name]?.component
+    console.log("Print config name ==", Index[config.style][name]);
+    
 
     if (!Component) {
       return (
@@ -94,7 +96,7 @@ export function ComponentPreview({
               value="preview"
               className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
             >
-              Preview @2
+              Preview @2 mark
             </TabsTrigger>
             <TabsTrigger
               value="code"

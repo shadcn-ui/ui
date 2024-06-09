@@ -11,9 +11,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/new-york/ui/dropdown-menu"
+import { log } from "console"
 
 export function ModeToggle() {
-  const { setTheme } = useTheme()
+  // const { setTheme } = useTheme()
 
   return (
     <DropdownMenu>
@@ -25,15 +26,23 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuItem onClick={ async () =>{
+          // Code spliting, 动态加入进来
+          // 第一个页面，并没有引入
+          const nextThemes = await import("next-themes");
+          console.log("打印1==", nextThemes);
+          
+          const { setTheme } = nextThemes.useTheme()
+          setTheme("light")
+        }}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        {/* <DropdownMenuItem onClick={() => setTheme("dark")}>
           Dark
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           System
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
       </DropdownMenuContent>
     </DropdownMenu>
   )

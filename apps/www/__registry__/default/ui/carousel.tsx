@@ -4,6 +4,7 @@ import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
+// Embla Carousel React is a lightweight, dependency-free carousel library designed for fluid motion and precise swipe interactions. I
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -42,6 +43,7 @@ function useCarousel() {
   return context
 }
 
+// ========================================== Carousel 主体 ==========================================
 const Carousel = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & CarouselProps
@@ -68,6 +70,9 @@ const Carousel = React.forwardRef<
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
+    // useCallback,提升性能，避免函数重新创建;
+    // 什么情况不需要使用 useCallback。因为里面的callback每次都重新引用，其实也影响性能，所以依赖改成[]即可
+    // api 是EmblaCarousel修改用的接口obj
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
         return
@@ -77,6 +82,9 @@ const Carousel = React.forwardRef<
       setCanScrollNext(api.canScrollNext())
     }, [])
 
+
+    // 什么情况应该使用useCallback，什么情况不需要？
+    // 父传子的时候，避免子组件反复调用
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev()
     }, [api])
@@ -137,6 +145,9 @@ const Carousel = React.forwardRef<
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
+          // 为什么这里用callback? 
+          // 类似连环缓存，当哪一部分ready，在读进来
+          // 因为他很多的东西，都是异步的，都是调用类库，比如 scrollPrev
           className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
@@ -172,6 +183,8 @@ const CarouselContent = React.forwardRef<
 })
 CarouselContent.displayName = "CarouselContent"
 
+
+// ========================================== CarouselItem ==========================================
 const CarouselItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -194,6 +207,7 @@ const CarouselItem = React.forwardRef<
 })
 CarouselItem.displayName = "CarouselItem"
 
+// ========================================== CarouselPrevious ==========================================
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
@@ -223,6 +237,7 @@ const CarouselPrevious = React.forwardRef<
 })
 CarouselPrevious.displayName = "CarouselPrevious"
 
+// ========================================== CarouselNext ==========================================
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
