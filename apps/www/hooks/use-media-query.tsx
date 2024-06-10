@@ -4,7 +4,7 @@ export function useMediaQuery(query: string) {
   const subscribe = React.useCallback((callback: (e: MediaQueryListEvent) => void) => {
     matchMedia(query).addEventListener("change", callback);
     return () => matchMedia(query).removeEventListener("change", callback);
-  }, [query, callback]);
+  }, [query]);
 
   const getSnapshot = React.useCallback(() => matchMedia(query).matches, [query]);
 
