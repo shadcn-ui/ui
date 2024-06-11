@@ -1292,6 +1292,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "input-otp-input-mode": {
+      name: "input-otp-input-mode",
+      type: "components:example",
+      registryDependencies: ["input-otp"],
+      component: React.lazy(() => import("@/registry/default/example/input-otp-input-mode")),
+      source: "",
+      files: ["registry/default/example/input-otp-input-mode.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "input-otp-separator": {
       name: "input-otp-separator",
       type: "components:example",
@@ -3682,6 +3693,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "input-otp-input-mode": {
+      name: "input-otp-input-mode",
+      type: "components:example",
+      registryDependencies: ["input-otp"],
+      component: React.lazy(() => import("@/registry/new-york/example/input-otp-input-mode")),
+      source: "",
+      files: ["registry/new-york/example/input-otp-input-mode.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "input-otp-separator": {
       name: "input-otp-separator",
       type: "components:example",
@@ -4525,17 +4547,9 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-06-chunk-0",
-        description: "A breadcrumb with two links and a page indicator.",
+        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-0")),
         file: "registry/new-york/block/dashboard-06-chunk-0.tsx",
-        container: {
-          className: "undefined"
-        }
-      },{
-        name: "dashboard-06-chunk-1",
-        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
-        component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-1")),
-        file: "registry/new-york/block/dashboard-06-chunk-1.tsx",
         container: {
           className: "undefined"
         }
