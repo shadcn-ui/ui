@@ -1,20 +1,21 @@
 "use client"
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
-import { format } from "date-fns"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import {zodResolver} from "@hookform/resolvers/zod"
+import {CalendarIcon, CaretSortIcon, CheckIcon} from "@radix-ui/react-icons"
+import {format} from "date-fns"
+import {useForm} from "react-hook-form"
+import {z} from "zod"
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/registry/new-york/ui/button"
-import { Calendar } from "@/registry/new-york/ui/calendar"
+import {cn} from "@/lib/utils"
+import {Button} from "@/registry/new-york/ui/button"
+import {Calendar} from "@/registry/new-york/ui/calendar"
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "@/registry/new-york/ui/command"
 import {
   Form,
@@ -25,24 +26,24 @@ import {
   FormLabel,
   FormMessage,
 } from "@/registry/new-york/ui/form"
-import { Input } from "@/registry/new-york/ui/input"
+import {Input} from "@/registry/new-york/ui/input"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
-import { toast } from "@/registry/new-york/ui/use-toast"
+import {toast} from "@/registry/new-york/ui/use-toast"
 
 const languages = [
-  { label: "English", value: "en" },
-  { label: "French", value: "fr" },
-  { label: "German", value: "de" },
-  { label: "Spanish", value: "es" },
-  { label: "Portuguese", value: "pt" },
-  { label: "Russian", value: "ru" },
-  { label: "Japanese", value: "ja" },
-  { label: "Korean", value: "ko" },
-  { label: "Chinese", value: "zh" },
+  {label: "English", value: "en"},
+  {label: "French", value: "fr"},
+  {label: "German", value: "de"},
+  {label: "Spanish", value: "es"},
+  {label: "Portuguese", value: "pt"},
+  {label: "Russian", value: "ru"},
+  {label: "Japanese", value: "ja"},
+  {label: "Korean", value: "ko"},
+  {label: "Chinese", value: "zh"},
 ] as const
 
 const accountFormSchema = z.object({
@@ -93,7 +94,7 @@ export function AccountForm() {
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => (
+          render={({field}) => (
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
@@ -103,14 +104,14 @@ export function AccountForm() {
                 This is the name that will be displayed on your profile and in
                 emails.
               </FormDescription>
-              <FormMessage />
+              <FormMessage/>
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
           name="dob"
-          render={({ field }) => (
+          render={({field}) => (
             <FormItem className="flex flex-col">
               <FormLabel>Date of birth</FormLabel>
               <Popover>
@@ -128,7 +129,7 @@ export function AccountForm() {
                       ) : (
                         <span>Pick a date</span>
                       )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50"/>
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
@@ -147,14 +148,14 @@ export function AccountForm() {
               <FormDescription>
                 Your date of birth is used to calculate your age.
               </FormDescription>
-              <FormMessage />
+              <FormMessage/>
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
           name="language"
-          render={({ field }) => (
+          render={({field}) => (
             <FormItem className="flex flex-col">
               <FormLabel>Language</FormLabel>
               <Popover>
@@ -170,45 +171,47 @@ export function AccountForm() {
                     >
                       {field.value
                         ? languages.find(
-                            (language) => language.value === field.value
-                          )?.label
+                          (language) => language.value === field.value
+                        )?.label
                         : "Select language"}
-                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50"/>
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
-                    <CommandInput placeholder="Search language..." />
+                    <CommandInput placeholder="Search language..."/>
                     <CommandEmpty>No language found.</CommandEmpty>
-                    <CommandGroup>
-                      {languages.map((language) => (
-                        <CommandItem
-                          value={language.label}
-                          key={language.value}
-                          onSelect={() => {
-                            form.setValue("language", language.value)
-                          }}
-                        >
-                          <CheckIcon
-                            className={cn(
-                              "mr-2 h-4 w-4",
-                              language.value === field.value
-                                ? "opacity-100"
-                                : "opacity-0"
-                            )}
-                          />
-                          {language.label}
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
+                    <CommandList>
+                      <CommandGroup>
+                        {languages.map((language) => (
+                          <CommandItem
+                            value={language.label}
+                            key={language.value}
+                            onSelect={() => {
+                              form.setValue("language", language.value)
+                            }}
+                          >
+                            <CheckIcon
+                              className={cn(
+                                "mr-2 h-4 w-4",
+                                language.value === field.value
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              )}
+                            />
+                            {language.label}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
                   </Command>
                 </PopoverContent>
               </Popover>
               <FormDescription>
                 This is the language that will be used in the dashboard.
               </FormDescription>
-              <FormMessage />
+              <FormMessage/>
             </FormItem>
           )}
         />
