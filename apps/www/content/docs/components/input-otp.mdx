@@ -156,6 +156,32 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 </InputOTP>
 ```
 
+### Input Mode
+
+Use the `inputMode` prop to change virtual keyboard layout on mobile devices. The default value is `numeric`. Possible values are `numeric`, `tel`, `text`, `email`, `url`, `search`, `password`.
+
+<ComponentPreview
+  name="input-otp-input-mode"
+  description="An input OTP with input mode as text."
+/>
+
+```tsx showLineNumbers {8}
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
+
+...
+
+<InputOTP
+  maxLength={6}
+  pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
+  inputMode="text"
+>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    {/* ... */}
+  </InputOTPGroup>
+</InputOTP>
+```
+
 ### Separator
 
 You can use the `<InputOTPSeparator />` component to add a separator between the input groups.

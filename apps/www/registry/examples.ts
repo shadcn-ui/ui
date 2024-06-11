@@ -438,6 +438,12 @@ export const examples: Registry = [
     files: ["example/input-otp-pattern.tsx"],
   },
   {
+    name: "input-otp-input-mode",
+    type: "components:example",
+    registryDependencies: ["input-otp"],
+    files: ["example/input-otp-input-mode.tsx"],
+  },
+  {
     name: "input-otp-separator",
     type: "components:example",
     registryDependencies: ["input-otp"],
