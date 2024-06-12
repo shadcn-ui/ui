@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/registry/default/ui/button"
 import {
   Command,
+  CommandList,
   CommandEmpty,
   CommandGroup,
   CommandInput,
