@@ -9,7 +9,7 @@ import {
 } from "@/src/utils/registry/schema"
 import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
-import * as z from "zod"
+import { z } from "zod"
 
 const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "https://ui.shadcn.com"
 const agent = process.env.https_proxy
@@ -117,9 +117,12 @@ export async function getItemTargetPath(
   item: Pick<z.infer<typeof registryItemWithContentSchema>, "type">,
   override?: string
 ) {
-  // Allow overrides for all items but ui.
-  if (override && item.type !== "components:ui") {
+  if (override) {
     return override
+  }
+
+  if (item.type === "components:ui" && config.aliases.ui) {
+    return config.resolvedPaths.ui
   }
 
   const [parent, type] = item.type.split(":")
