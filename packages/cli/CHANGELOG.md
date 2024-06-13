@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.8.1
+
+### Patch Changes
+
+- [#2473](https://github.com/shadcn-ui/ui/pull/2473) [`343b20f`](https://github.com/shadcn-ui/ui/commit/343b20fc5c49ee8968fe56e42527ba1cc8ede0ec) Thanks [@kevinmitch14](https://github.com/kevinmitch14)! - update zod imports
+
 ## 0.8.0
 
 ### Minor Changes
