@@ -594,6 +594,12 @@ export const examples: Registry = [
     files: ["example/slider-demo.tsx"],
   },
   {
+    name: "slider-ranges",
+    type: "components:example",
+    registryDependencies: ["slider"],
+    files: ["example/slider-ranges.tsx"],
+  },
+  {
     name: "sonner-demo",
     type: "components:example",
     registryDependencies: ["sonner"],
