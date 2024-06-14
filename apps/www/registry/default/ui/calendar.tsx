@@ -17,7 +17,7 @@ function Calendar({
 }: CalendarProps) {
   const DAYS_PER_WEEK = 7
   const containerRef = React.useRef<HTMLDivElement>(null)
-  const [cellSize, setCellSize] = React.useState<number>(0)
+  const [cellSize, setCellSize] = React.useState<number | null>(null)
 
   const updateCellSize = React.useCallback(() => {
     if (!containerRef.current) return
@@ -27,9 +27,9 @@ function Calendar({
       padding = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight),
       border =
         parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth),
-      containerWidth = width + margin - padding + border;
+      containerWidth = width + margin - padding + border
 
-    setCellSize(containerWidth / DAYS_PER_WEEK);
+    setCellSize(containerWidth / DAYS_PER_WEEK)
   }, [])
 
   React.useEffect(() => {
@@ -42,7 +42,8 @@ function Calendar({
   }, [updateCellSize])
 
   return (
-      <div ref={containerRef} className={cn("w-full p-3", className)}>
+    <div ref={containerRef} className={cn("w-full p-3", className)}>
+      {cellSize && (
         <DayPicker
           showOutsideDays={showOutsideDays}
           styles={{
@@ -99,7 +100,8 @@ function Calendar({
           }}
           {...props}
         />
-      </div>
+      )}
+    </div>
   )
 }
 Calendar.displayName = "Calendar"
