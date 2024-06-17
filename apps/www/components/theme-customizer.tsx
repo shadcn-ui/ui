@@ -148,7 +148,7 @@ export function ThemeCustomizer() {
           </PopoverTrigger>
           <PopoverContent
             align="center"
-            className="z-40 w-[340px] rounded-[0.5rem] bg-white p-6 dark:bg-zinc-950"
+            className="z-40 w-[340px] rounded-[0.5rem] bg-white p-6 dark:bg-zinc-950" 
           >
             <Customizer />
           </PopoverContent>
@@ -170,33 +170,40 @@ function Customizer() {
 
   return (
     <ThemeWrapper
-      defaultTheme="zinc"
-      className="flex flex-col space-y-4 md:space-y-6"
+    defaultTheme="zinc"
+    className="flex flex-col space-y-4 md:space-y-6"
     >
-      <div className="flex items-start pt-4 md:pt-0">
-        <div className="space-y-1 pr-2">
-          <div className="font-semibold leading-none tracking-tight">
-            Customize
-          </div>
-          <div className="text-xs text-muted-foreground">
-            Pick a style and color for your components.
-          </div>
+    <div className="flex items-start pt-4 md:pt-0">
+      <div className="space-y-1 pr-2">
+        <div className="font-semibold leading-none tracking-tight">
+          Customize
         </div>
+        <div className="text-xs text-muted-foreground">
+          Pick a style and color for your components.
+        </div>
+      </div>
+      <Tooltip>
         <Button
-          variant="ghost"
-          size="icon"
-          className="ml-auto rounded-[0.5rem]"
-          onClick={() => {
-            setConfig({
-              ...config,
-              theme: "zinc",
-              radius: 0.5,
-            })
-          }}
-        >
-          <ResetIcon />
-          <span className="sr-only">Reset</span>
+        variant="ghost"
+        size="icon"
+        className="ml-auto rounded-[0.5rem]"
+        onClick={() => {
+          setConfig({
+            ...config,
+            theme: "zinc",
+            radius: 0.5,
+          })
+        }}
+      >
+      <TooltipTrigger> 
+        <ResetIcon />
+            <span className="sr-only">Reset</span>
+        </TooltipTrigger>
+        <TooltipContent align="center" className="rounded-[0.5rem] bg-zinc-900 text-zinc-50">
+          Reset to default
+        </TooltipContent>
         </Button>
+      </Tooltip>
       </div>
       <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
         <div className="space-y-1.5">
