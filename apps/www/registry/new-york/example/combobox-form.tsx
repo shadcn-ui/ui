@@ -1,19 +1,20 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/registry/new-york/ui/button"
+import { cn } from "@/lib/utils";
+import { Button } from "@/registry/new-york/ui/button";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/registry/new-york/ui/command"
+  CommandList,
+} from "@/registry/new-york/ui/command";
 import {
   Form,
   FormControl,
@@ -22,13 +23,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/registry/new-york/ui/form"
+} from "@/registry/new-york/ui/form";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/new-york/ui/popover"
-import { toast } from "@/registry/new-york/ui/use-toast"
+} from "@/registry/new-york/ui/popover";
+import { toast } from "@/registry/new-york/ui/use-toast";
 
 const languages = [
   { label: "English", value: "en" },
@@ -40,18 +41,18 @@ const languages = [
   { label: "Japanese", value: "ja" },
   { label: "Korean", value: "ko" },
   { label: "Chinese", value: "zh" },
-] as const
+] as const;
 
 const FormSchema = z.object({
   language: z.string({
     required_error: "Please select a language.",
   }),
-})
+});
 
 export default function ComboboxForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-  })
+  });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
@@ -61,7 +62,7 @@ export default function ComboboxForm() {
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    })
+    });
   }
 
   return (
@@ -99,28 +100,30 @@ export default function ComboboxForm() {
                       placeholder="Search framework..."
                       className="h-9"
                     />
-                    <CommandEmpty>No framework found.</CommandEmpty>
-                    <CommandGroup>
-                      {languages.map((language) => (
-                        <CommandItem
-                          value={language.label}
-                          key={language.value}
-                          onSelect={() => {
-                            form.setValue("language", language.value)
-                          }}
-                        >
-                          {language.label}
-                          <CheckIcon
-                            className={cn(
-                              "ml-auto h-4 w-4",
-                              language.value === field.value
-                                ? "opacity-100"
-                                : "opacity-0"
-                            )}
-                          />
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
+                    <CommandList>
+                      <CommandEmpty>No framework found.</CommandEmpty>
+                      <CommandGroup>
+                        {languages.map((language) => (
+                          <CommandItem
+                            value={language.label}
+                            key={language.value}
+                            onSelect={() => {
+                              form.setValue("language", language.value);
+                            }}
+                          >
+                            {language.label}
+                            <CheckIcon
+                              className={cn(
+                                "ml-auto h-4 w-4",
+                                language.value === field.value
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              )}
+                            />
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
                   </Command>
                 </PopoverContent>
               </Popover>
@@ -134,5 +137,5 @@ export default function ComboboxForm() {
         <Button type="submit">Submit</Button>
       </form>
     </Form>
-  )
+  );
 }
