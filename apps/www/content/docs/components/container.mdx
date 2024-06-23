@@ -1,0 +1,90 @@
+---
+title: Container
+description: A flexible container component with various layout options based on Tailwind UI classes.
+component: true
+---
+
+<ComponentPreview name="container-demo" />
+
+## Installation
+
+```bash
+npx shadcn-ui@latest add container
+```
+
+## Usage
+
+```tsx
+import { Container } from "@/components/ui/container"
+
+export function ContainerDemo() {
+  return (
+    <Container variant="constrainedPadded">
+      <h1>Your content here</h1>
+    </Container>
+  )
+}
+```
+
+## Examples
+
+### Default (narrowConstrainedPadded)
+
+<ComponentPreview name="container-default" />
+
+### Constrained Padded
+
+<ComponentPreview name="container-constrained-padded" />
+
+### Full Mobile, Breakpoint Padded
+
+<ComponentPreview name="container-full-mobile-breakpoint-padded" />
+
+### As Child (Fragment)
+
+<ComponentPreview name="container-as-child" />
+
+## Props
+
+The Container component accepts all standard `div` props and the following additional props:
+
+| Prop      | Type      | Default                     | Description                                  |
+| --------- | --------- | --------------------------- | -------------------------------------------- |
+| `variant` | `string`  | `"narrowConstrainedPadded"` | Specifies the layout variant                 |
+| `asChild` | `boolean` | `false`                     | If true, renders the container as a fragment |
+
+## Variants
+
+The Container component supports the following variants:
+
+- `fullMobileConstrainedPadded`: Full width on mobile, constrained with padding on larger screens
+- `constrainedPadded`: Constrained width with padding on all screen sizes
+- `fullMobileBreakpointPadded`: Full width on mobile, uses container class with padding on larger screens
+- `breakpointPadded`: Uses container class with padding on all screen sizes
+- `narrowConstrainedPadded`: Constrained width with additional max-width for narrow content
+
+## Custom styling
+
+You can customize the Container component by passing additional className props:
+
+```tsx
+<Container className="bg-gray-100 rounded-lg shadow-md">
+  <p>
+    This container will have a gray background, rounded corners, and a shadow.
+  </p>
+</Container>
+```
+
+## Examples
+
+### Container with custom content
+
+<ComponentPreview name="container-custom-content" />
+
+### Responsive container
+
+<ComponentPreview name="container-responsive" />
+
+### Container in a form
+
+<ComponentPreview name="container-form" />
