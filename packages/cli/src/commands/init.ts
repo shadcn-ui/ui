@@ -372,7 +372,9 @@ export async function runInit(cwd: string, config: Config) {
   // Write cn file.
   await fs.writeFile(
     `${config.resolvedPaths.utils}.${extension}`,
-    extension === "ts" ? templates.UTILS : templates.UTILS_JS,
+    template(extension === "ts" ? templates.UTILS : templates.UTILS_JS)({
+      prefix: config.tailwind.prefix,
+    }),
     "utf8"
   )
 
