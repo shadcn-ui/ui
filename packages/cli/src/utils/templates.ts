@@ -1,5 +1,6 @@
 export const UTILS = `import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { extendTailwindMerge } from "tailwind-merge"
+const twMerge = extendTailwindMerge({ prefix: "<%- prefix %>" })
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -7,7 +8,8 @@ export function cn(...inputs: ClassValue[]) {
 `
 
 export const UTILS_JS = `import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { extendTailwindMerge } from "tailwind-merge"
+const twMerge = extendTailwindMerge({ prefix: "<%- prefix %>" })
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs))
