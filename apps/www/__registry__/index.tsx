@@ -1094,6 +1094,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "date-picker-input": {
+      name: "date-picker-input",
+      type: "components:example",
+      registryDependencies: ["button","calendar","input","popover","select"],
+      component: React.lazy(() => import("@/registry/default/example/date-picker-input")),
+      files: ["registry/default/example/date-picker-input.tsx"],
+    },
     "date-picker-with-range": {
       name: "date-picker-with-range",
       type: "components:example",
@@ -3483,6 +3490,13 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "date-picker-input": {
+      name: "date-picker-input",
+      type: "components:example",
+      registryDependencies: ["button","calendar","input","popover","select"],
+      component: React.lazy(() => import("@/registry/new-york/example/date-picker-input")),
+      files: ["registry/new-york/example/date-picker-input.tsx"],
     },
     "date-picker-with-range": {
       name: "date-picker-with-range",
