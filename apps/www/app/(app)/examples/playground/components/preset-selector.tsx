@@ -13,6 +13,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList
 } from "@/registry/new-york/ui/command"
 import {
   Popover,
@@ -49,27 +50,29 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
         <Command>
           <CommandInput placeholder="Search presets..." />
           <CommandEmpty>No presets found.</CommandEmpty>
-          <CommandGroup heading="Examples">
-            {presets.map((preset) => (
-              <CommandItem
-                key={preset.id}
-                onSelect={() => {
-                  setSelectedPreset(preset)
-                  setOpen(false)
-                }}
-              >
-                {preset.name}
-                <CheckIcon
-                  className={cn(
-                    "ml-auto h-4 w-4",
-                    selectedPreset?.id === preset.id
-                      ? "opacity-100"
-                      : "opacity-0"
-                  )}
-                />
-              </CommandItem>
-            ))}
-          </CommandGroup>
+          <CommandList>
+            <CommandGroup heading="Examples">
+              {presets.map((preset) => (
+                <CommandItem
+                  key={preset.id}
+                  onSelect={() => {
+                    setSelectedPreset(preset)
+                    setOpen(false)
+                  }}
+                >
+                  {preset.name}
+                  <CheckIcon
+                    className={cn(
+                      "ml-auto h-4 w-4",
+                      selectedPreset?.id === preset.id
+                        ? "opacity-100"
+                        : "opacity-0"
+                    )}
+                  />
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
           <CommandGroup className="pt-0">
             <CommandItem onSelect={() => router.push("/examples")}>
               More examples
