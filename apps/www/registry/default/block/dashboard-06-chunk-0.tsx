@@ -70,7 +70,7 @@ export default function Component() {
                 Laser Lemonade Machine
               </TableCell>
               <TableCell>
-                <Badge variant="outline">Draft</Badge>
+                <Badge variant="secondary">Draft</Badge>
               </TableCell>
               <TableCell className="hidden md:table-cell">$499.99</TableCell>
               <TableCell className="hidden md:table-cell">25</TableCell>
