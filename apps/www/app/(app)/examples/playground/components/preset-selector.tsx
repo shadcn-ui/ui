@@ -49,8 +49,8 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
       <PopoverContent className="w-[300px] p-0">
         <Command>
           <CommandInput placeholder="Search presets..." />
-          <CommandEmpty>No presets found.</CommandEmpty>
           <CommandList>
+            <CommandEmpty>No presets found.</CommandEmpty>
             <CommandGroup heading="Examples">
               {presets.map((preset) => (
                 <CommandItem

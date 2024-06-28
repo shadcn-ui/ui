@@ -100,8 +100,8 @@ export default function ComboboxForm() {
                       placeholder="Search framework..."
                       className="h-9"
                     />
-                    <CommandEmpty>No framework found.</CommandEmpty>
                     <CommandList>
+                      <CommandEmpty>No framework found.</CommandEmpty>
                       <CommandGroup>
                         {languages.map((language) => (
                           <CommandItem
