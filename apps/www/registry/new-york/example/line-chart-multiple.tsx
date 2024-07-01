@@ -1,19 +1,11 @@
-import { ArrowLeftFromLine, Book, Lamp, Settings2 } from "lucide-react"
-import {
-  CartesianGrid,
-  Dot,
-  Legend,
-  Line,
-  LineChart,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
 import {
   ChartContainer,
   ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
+  ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
 const data = [
@@ -69,7 +61,7 @@ export default function Component() {
           tickMargin={10}
           tickFormatter={(value) => (value === 0 ? "" : `${value}k`)}
         />
-        <Tooltip content={<ChartTooltip indicator="dot" />} />
+        <ChartTooltip content={<ChartTooltipContent indicator="dot" />} />
         <Line
           dataKey="desktop"
           type="linear"
@@ -88,7 +80,10 @@ export default function Component() {
             r: 0,
           }}
         />
-        <Legend verticalAlign="bottom" content={<ChartLegend hideIcon />} />
+        <ChartLegend
+          verticalAlign="bottom"
+          content={<ChartLegendContent hideIcon />}
+        />
       </LineChart>
     </ChartContainer>
   )

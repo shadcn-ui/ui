@@ -46,7 +46,7 @@ export default function Component() {
             className="fill-muted-foreground/50"
             radius={[4, 4, 0, 0]}
           />
-          <Tooltip
+          <ChartTooltip
             cursor={false}
             content={({ payload, active }) => {
               if (!active || !payload?.length) return null

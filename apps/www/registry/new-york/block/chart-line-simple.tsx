@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Area, AreaChart, CartesianGrid, Tooltip, XAxis } from "recharts"
+import { CartesianGrid, Line, LineChart, Tooltip, XAxis } from "recharts"
 
 import {
   Card,
@@ -15,15 +15,10 @@ import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
+  ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
-export const description = "An area chart"
-
-export const iframeHeight = "600px"
-
-export const containerClassName = "w-full flex items-center justify-center"
-
-const data = [
+const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
   { month: "February", desktop: 305, mobile: 200 },
   { month: "March", desktop: 237, mobile: 120 },
@@ -32,7 +27,7 @@ const data = [
   { month: "June", desktop: 214, mobile: 140 },
 ]
 
-const config = {
+const chartConfig = {
   desktop: {
     label: "Desktop",
     colors: {
@@ -51,14 +46,21 @@ const config = {
 
 export default function Component() {
   return (
-    <Card className="w-full max-w-md">
+    <Card>
       <CardHeader>
-        <CardTitle>Area Chart</CardTitle>
+        <CardTitle>Line Chart</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={config}>
-          <AreaChart data={data}>
+        <ChartContainer config={chartConfig}>
+          <LineChart
+            data={chartData}
+            margin={{
+              top: 0,
+              left: 12,
+              right: 10,
+            }}
+          >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
@@ -67,27 +69,17 @@ export default function Component() {
               tickMargin={8}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <Tooltip
+            <ChartTooltip
               cursor={false}
-              content={<ChartTooltip indicator="line" />}
+              content={<ChartTooltipContent hideLabel />}
             />
-            <Area
-              dataKey="mobile"
-              type="natural"
-              fill="var(--color-mobile)"
-              fillOpacity={0.2}
-              stroke="var(--color-mobile)"
-              stackId="a"
-            />
-            <Area
+            <Line
               dataKey="desktop"
-              type="natural"
-              fill="var(--color-desktop)"
-              fillOpacity={0.2}
               stroke="var(--color-desktop)"
-              stackId="a"
+              strokeWidth={3}
+              dot={false}
             />
-          </AreaChart>
+          </LineChart>
         </ChartContainer>
       </CardContent>
       <CardFooter>
@@ -97,7 +89,7 @@ export default function Component() {
               Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Showing total visitors for the last 7 months
+              Showing total visitors for the last 6 months
             </div>
           </div>
         </div>

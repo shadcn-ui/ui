@@ -76,7 +76,7 @@
     "react-hook-form": "^7.44.2",
     "react-resizable-panels": "^0.0.55",
     "react-wrap-balancer": "^0.4.1",
-    "recharts": "2.13.0-alpha.2",
+    "recharts": "2.12.7",
     "sharp": "^0.31.3",
     "sonner": "^1.2.3",
     "swr": "^2.2.5",

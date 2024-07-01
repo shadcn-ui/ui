@@ -23,24 +23,22 @@ export default function ChartsLayout({
 }) {
   return (
     <div className="container relative">
-      <PageHeader className="max-w-3xl">
+      <PageHeader>
         <Announcement />
-        <PageHeaderHeading className="text-balance">
-          Beautiful Charts
-        </PageHeaderHeading>
+        <PageHeaderHeading>Beautiful Charts</PageHeaderHeading>
         <PageHeaderDescription>
           Built using Recharts. Copy and paste into your apps. Open Source.
         </PageHeaderDescription>
         <PageActions>
-          <Button asChild>
+          <Button asChild size="sm">
             <a href="#charts">Browse Charts</a>
           </Button>
-          <Button asChild variant="outline">
+          <Button asChild variant="ghost" size="sm">
             <Link href="/docs/charts">Documentation</Link>
           </Button>
         </PageActions>
       </PageHeader>
-      <section id="charts" className="grid scroll-mt-24 gap-24 lg:gap-48">
+      <section id="charts" className="scroll-mt-20">
         {children}
       </section>
     </div>

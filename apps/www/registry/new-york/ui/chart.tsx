@@ -50,7 +50,7 @@ const ChartContainer = React.forwardRef<
         data-chart={chartId}
         ref={ref}
         className={cn(
-          "aspect-video w-full text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-accent",
+          "aspect-video w-full text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-accent [&_.recharts-sector[stroke='#fff']]:stroke-background",
           className
         )}
         {...props}
@@ -67,6 +67,10 @@ ChartContainer.displayName = "Chart"
 
 const ChartStyle = ({ id }: { id: string }) => {
   const { config } = useChart()
+
+  if (!config) {
+    return null
+  }
 
   return (
     <style>
@@ -94,13 +98,17 @@ const ChartStyle = ({ id }: { id: string }) => {
   )
 }
 
-const ChartTooltip = React.forwardRef<
+const ChartTooltip = RechartsPrimitive.Tooltip
+
+const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
     React.ComponentProps<"div"> & {
       hideLabel?: boolean
       flipped?: boolean
       indicator?: "line" | "dot" | "dashed" | "none"
+      nameKey?: string
+      labelKey?: string
     }
 >(
   (
@@ -116,6 +124,8 @@ const ChartTooltip = React.forwardRef<
       labelClassName,
       formatter,
       color,
+      nameKey,
+      labelKey,
     },
     ref
   ) => {
@@ -132,8 +142,34 @@ const ChartTooltip = React.forwardRef<
         )
       }
 
-      return <div className={cn("font-medium", labelClassName)}>{label}</div>
-    }, [label, labelFormatter, payload, hideLabel, labelClassName])
+      const item = payload[0]
+      const key = labelKey || item.dataKey || item.name
+      const configLabelKey =
+        item.payload[key as keyof typeof item.payload] || key
+      const itemConfig =
+        typeof configLabelKey === "string"
+          ? config[configLabelKey]
+          : config[key as keyof typeof config]
+
+      console.log(label, key, labelKey, item.payload, config, itemConfig)
+
+      return (
+        <div className={cn("font-medium", labelClassName)}>
+          {typeof label === "string"
+            ? label
+            : itemConfig?.label ||
+              item.payload[key as keyof typeof item.payload]}
+        </div>
+      )
+    }, [
+      label,
+      labelFormatter,
+      payload,
+      hideLabel,
+      labelClassName,
+      config,
+      labelKey,
+    ])
 
     if (!active || !payload?.length) return null
 
@@ -150,7 +186,13 @@ const ChartTooltip = React.forwardRef<
         {!nestLabel && tooltipLabel}
         <div className="grid gap-1.5">
           {payload.map((item, index) => {
-            const itemConfig = config[item.dataKey as keyof typeof config]
+            const key = nameKey || item.name || item.dataKey
+            const configLabelKey =
+              item.payload[key as keyof typeof item.payload] || key
+            const itemConfig =
+              typeof configLabelKey === "string"
+                ? config[configLabelKey]
+                : config[key as keyof typeof config]
 
             return (
               <div
@@ -214,9 +256,11 @@ const ChartTooltip = React.forwardRef<
     )
   }
 )
-ChartTooltip.displayName = "ChartTooltip"
+ChartTooltipContent.displayName = "ChartTooltip"
 
-const ChartLegend = React.forwardRef<
+const ChartLegend = RechartsPrimitive.Legend
+
+const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> &
     Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
@@ -263,6 +307,12 @@ const ChartLegend = React.forwardRef<
     </div>
   )
 })
-ChartLegend.displayName = "ChartLegend"
+ChartLegendContent.displayName = "ChartLegend"
 
-export { ChartContainer, ChartTooltip, ChartLegend }
+export {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+}

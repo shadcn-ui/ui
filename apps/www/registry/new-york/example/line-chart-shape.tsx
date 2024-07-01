@@ -1,17 +1,11 @@
-import {
-  CartesianGrid,
-  Legend,
-  Line,
-  LineChart,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
 import {
   ChartContainer,
   ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
+  ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
 const data = [
@@ -65,8 +59,8 @@ export default function Component() {
           axisLine={false}
           tickFormatter={(value) => (value === 0 ? "" : `${value}k`)}
         />
-        <Tooltip content={<ChartTooltip />} />
-        <Legend content={<ChartLegend />} />
+        <ChartTooltip content={<ChartTooltipContent />} />
+        <ChartLegend content={<ChartLegendContent />} />
         <Line
           dataKey="desktop"
           type="linear"

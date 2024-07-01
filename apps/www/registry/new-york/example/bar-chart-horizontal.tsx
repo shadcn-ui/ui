@@ -1,16 +1,10 @@
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Label,
-  LabelList,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts"
 
-import { ChartContainer, ChartTooltip } from "@/registry/new-york/ui/chart"
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/registry/new-york/ui/chart"
 
 const data = [
   { month: "January", desktop: 186, mobile: 120 },
@@ -61,7 +55,7 @@ export default function Component() {
           hide
         />
         <XAxis dataKey="desktop" type="number" hide />
-        <Tooltip cursor={false} content={<ChartTooltip />} />
+        <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
         <Bar
           dataKey="desktop"
           layout="vertical"

@@ -15,6 +15,7 @@ import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
+  ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
 export const description = "An area chart"
@@ -97,7 +98,7 @@ export default function Component() {
               Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Showing total visitors for the last 7 months
+              Showing total visitors for the last 6 months
             </div>
           </div>
         </div>

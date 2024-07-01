@@ -14,6 +14,7 @@ import {
   ChartContainer,
   ChartLegend,
   ChartTooltip,
+  ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
 const data = [
@@ -63,7 +64,10 @@ export default function Component() {
             tickMargin={10}
             tickFormatter={(value) => (value === 0 ? "" : `${value}k`)}
           />
-          <Tooltip cursor={false} content={<ChartTooltip indicator="line" />} />
+          <ChartTooltip
+            cursor={false}
+            content={<ChartTooltipContent indicator="line" />}
+          />
           <Line
             dataKey="desktop"
             type="natural"

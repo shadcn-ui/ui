@@ -1,9 +1,11 @@
-import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, Legend, XAxis } from "recharts"
 
 import {
-  Chart,
+  ChartContainer,
   ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
+  ChartTooltipContent,
   type ChartConfig,
 } from "@/registry/new-york/ui/chart"
 
@@ -53,8 +55,12 @@ export default function Component() {
           tickMargin={10}
           axisLine={false}
         />
-        <Tooltip cursor={false} label={false} content={<ChartTooltip />} />
-        <Legend content={<ChartLegend />} />
+        <ChartTooltip
+          cursor={false}
+          label={false}
+          content={<ChartTooltipContent />}
+        />
+        <ChartLegend content={<ChartLegendContent />} />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={8} />
       </BarChart>

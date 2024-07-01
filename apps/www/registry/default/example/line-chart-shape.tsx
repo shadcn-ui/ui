@@ -83,7 +83,7 @@ export default function Component() {
             fill: "",
           }}
         />
-        <Tooltip
+        <ChartTooltip
           content={({ payload, active }) => {
             if (!active || !payload?.length) return null
 

@@ -49,7 +49,7 @@ export default function Component() {
             fill=""
             type="monotone"
           />
-          <Tooltip
+          <ChartTooltip
             cursor={false}
             content={({ payload, active }) => {
               if (!active || !payload?.length) return null

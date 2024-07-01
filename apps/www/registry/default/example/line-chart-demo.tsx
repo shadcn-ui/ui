@@ -48,7 +48,7 @@ export default function Component() {
               },
             }}
           />
-          <Tooltip
+          <ChartTooltip
             cursor={false}
             content={({ payload, active }) => {
               if (!active || !payload?.length) return null

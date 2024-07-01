@@ -10,11 +10,11 @@ export const charts: Registry = [
     subcategory: "Area",
   },
   {
-    name: "chart-bar-01",
+    name: "chart-area-02",
     type: "components:block",
     registryDependencies: ["card", "chart"],
-    files: ["block/chart-bar-01.tsx"],
+    files: ["block/chart-area-02.tsx"],
     category: "Charts",
-    subcategory: "Bar",
+    subcategory: "Area",
   },
 ]

@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
 import {
   Card,
@@ -11,37 +11,28 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/new-york/ui/card"
-import { ChartConfig, ChartContainer } from "@/registry/new-york/ui/chart"
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/registry/new-york/ui/chart"
 
-export const description = "An area chart"
-
-export const iframeHeight = "600px"
-
-export const containerClassName =
-  "w-full flex-1 flex items-center justify-center"
-
-const data = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+const chartData = [
+  { month: "January", desktop: 186 },
+  { month: "February", desktop: 305 },
+  { month: "March", desktop: 237 },
+  { month: "April", desktop: 73 },
+  { month: "May", desktop: 209 },
+  { month: "June", desktop: 214 },
 ]
 
-const config = {
+const chartConfig = {
   desktop: {
     label: "Desktop",
     colors: {
       light: "#3b82f6",
       dark: "#f43f5e",
-    },
-  },
-  mobile: {
-    label: "Mobile",
-    colors: {
-      light: "#93c5fd",
-      dark: "#fda4af",
     },
   },
 } satisfies ChartConfig
@@ -50,30 +41,40 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Monthly Active Users</CardTitle>
-        <CardDescription>January - July 2024</CardDescription>
+        <CardTitle>Area Chart</CardTitle>
+        <CardDescription>
+          Showing total visitors for the last 6 months
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={config}>
-          <BarChart
-            data={data}
+        <ChartContainer config={chartConfig}>
+          <AreaChart
+            data={chartData}
             margin={{
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
+              left: 12,
+              right: 12,
             }}
           >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
               tickLine={false}
-              tickMargin={10}
               axisLine={false}
+              tickMargin={8}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
-          </BarChart>
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent indicator="line" />}
+            />
+            <Area
+              dataKey="desktop"
+              type="natural"
+              fill="var(--color-desktop)"
+              fillOpacity={0.4}
+              stroke="var(--color-desktop)"
+            />
+          </AreaChart>
         </ChartContainer>
       </CardContent>
       <CardFooter>
@@ -83,7 +84,7 @@ export default function Component() {
               Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Showing total visitors for the last 7 months
+              January - June 2024
             </div>
           </div>
         </div>

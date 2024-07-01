@@ -76,9 +76,9 @@ export default function Dashboard() {
                 axisLine={false}
                 tickFormatter={(value) => value.slice(0, 3)}
               />
-              <Tooltip
+              <ChartTooltip
                 cursor={false}
-                content={<ChartTooltip indicator="line" />}
+                content={<ChartTooltipContent indicator="line" />}
               />
               <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
             </BarChart>
@@ -92,7 +92,7 @@ export default function Dashboard() {
                 <TrendingUp className="h-4 w-4" />
               </div>
               <div className="flex items-center gap-2 leading-none text-muted-foreground">
-                Showing total visitors for the last 7 months
+                Showing total visitors for the last 6 months
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function Dashboard() {
                 axisLine={false}
                 tickFormatter={(value) => value.slice(0, 3)}
               />
-              <Tooltip cursor={false} content={<ChartTooltip />} />
+              <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
               <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
               <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
             </BarChart>
@@ -137,7 +137,7 @@ export default function Dashboard() {
                 axisLine={false}
                 tickFormatter={(value) => value.slice(0, 3)}
               />
-              <Tooltip content={<ChartTooltip hideLabel />} />
+              <ChartTooltip content={<ChartTooltipContent hideLabel />} />
               <Legend content={<ChartLegend />} />
               <Bar
                 dataKey="desktop"
@@ -180,7 +180,10 @@ export default function Dashboard() {
                 hide
               />
               <XAxis dataKey="desktop" type="number" hide />
-              <Tooltip cursor={false} content={<ChartTooltip hideLabel />} />
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
               <Bar
                 dataKey="desktop"
                 layout="vertical"

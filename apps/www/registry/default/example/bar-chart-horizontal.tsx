@@ -49,7 +49,7 @@ export default function Component() {
           axisLine={false}
           tickFormatter={(value) => value.slice(0, 3)}
         />
-        <Tooltip
+        <ChartTooltip
           cursor={false}
           content={({ payload, active }) => {
             if (!active || !payload?.length) return null

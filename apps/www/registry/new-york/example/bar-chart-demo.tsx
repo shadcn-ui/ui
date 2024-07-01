@@ -5,7 +5,6 @@ import {
   CartesianGrid,
   LabelList,
   Legend,
-  Tooltip,
   XAxis,
   YAxis,
 } from "recharts"
@@ -19,9 +18,11 @@ import {
   CardTitle,
 } from "@/registry/new-york/ui/card"
 import {
-  Chart,
+  ChartContainer,
   ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
+  ChartTooltipContent,
   type ChartConfig,
 } from "@/registry/new-york/ui/chart"
 
@@ -70,9 +71,9 @@ export default function Component() {
                 axisLine={false}
                 tickFormatter={(value) => value.slice(0, 3)}
               />
-              <Tooltip
+              <ChartTooltip
                 cursor={false}
-                content={<ChartTooltip indicator="line" />}
+                content={<ChartTooltipContent indicator="line" />}
               />
               <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
             </BarChart>
@@ -86,7 +87,7 @@ export default function Component() {
                 <TrendingUp className="h-4 w-4" />
               </div>
               <div className="flex items-center gap-2 leading-none text-muted-foreground">
-                Showing total visitors for the last 7 months
+                Showing total visitors for the last 6 months
               </div>
             </div>
           </div>
@@ -108,7 +109,7 @@ export default function Component() {
                 axisLine={false}
                 tickFormatter={(value) => value.slice(0, 3)}
               />
-              <Tooltip cursor={false} content={<ChartTooltip />} />
+              <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
               <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
               <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
             </BarChart>
@@ -131,8 +132,8 @@ export default function Component() {
                 axisLine={false}
                 tickFormatter={(value) => value.slice(0, 3)}
               />
-              <Tooltip content={<ChartTooltip hideLabel />} />
-              <Legend content={<ChartLegend />} />
+              <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+              <ChartLegend content={<ChartLegendContent />} />
               <Bar
                 dataKey="desktop"
                 stackId="a"
@@ -174,7 +175,10 @@ export default function Component() {
                 hide
               />
               <XAxis dataKey="desktop" type="number" hide />
-              <Tooltip cursor={false} content={<ChartTooltip hideLabel />} />
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
               <Bar
                 dataKey="desktop"
                 layout="vertical"
