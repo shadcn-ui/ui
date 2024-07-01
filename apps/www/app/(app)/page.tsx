@@ -12,7 +12,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { buttonVariants } from "@/registry/new-york/ui/button"
+import { Button, buttonVariants } from "@/registry/new-york/ui/button"
 import MailPage from "@/app/(app)/examples/mail/page"
 
 export default function IndexPage() {
@@ -26,18 +26,18 @@ export default function IndexPage() {
           apps. Accessible. Customizable. Open Source.
         </PageHeaderDescription>
         <PageActions>
-          <Link href="/docs" className={cn(buttonVariants())}>
-            Get Started
-          </Link>
-          <Link
-            target="_blank"
-            rel="noreferrer"
-            href={siteConfig.links.github}
-            className={cn(buttonVariants({ variant: "outline" }))}
-          >
-            <Icons.gitHub className="mr-2 h-4 w-4" />
-            GitHub
-          </Link>
+          <Button asChild size="sm">
+            <Link href="/docs">Get Started</Link>
+          </Button>
+          <Button asChild size="sm" variant="ghost">
+            <Link
+              target="_blank"
+              rel="noreferrer"
+              href={siteConfig.links.github}
+            >
+              GitHub
+            </Link>
+          </Button>
         </PageActions>
       </PageHeader>
       <ExamplesNav className="[&>a:first-child]:text-primary" />
