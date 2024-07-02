@@ -1897,6 +1897,24 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "tooltip-outline": {
+      name: "tooltip-outline",
+      type: "components:example",
+      registryDependencies: ["tooltip"],
+      component: React.lazy(() => import("@/registry/default/example/tooltip-outline")),
+      files: ["registry/default/example/tooltip-outline.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+    },
+    "tooltip-secondary": {
+      name: "tooltip-secondary",
+      type: "components:example",
+      registryDependencies: ["tooltip"],
+      component: React.lazy(() => import("@/registry/default/example/tooltip-secondary")),
+      files: ["registry/default/example/tooltip-secondary.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+    },
     "typography-blockquote": {
       name: "typography-blockquote",
       type: "components:example",
@@ -4286,6 +4304,24 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "tooltip-outline": {
+      name: "tooltip-outline",
+      type: "components:example",
+      registryDependencies: ["tooltip"],
+      component: React.lazy(() => import("@/registry/new-york/example/tooltip-outline")),
+      files: ["registry/new-york/example/tooltip-outline.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+    },
+    "tooltip-secondary": {
+      name: "tooltip-secondary",
+      type: "components:example",
+      registryDependencies: ["tooltip"],
+      component: React.lazy(() => import("@/registry/new-york/example/tooltip-secondary")),
+      files: ["registry/new-york/example/tooltip-secondary.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "typography-blockquote": {
       name: "typography-blockquote",
