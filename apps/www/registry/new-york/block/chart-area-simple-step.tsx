@@ -1,6 +1,6 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
+import { Activity, TrendingUp } from "lucide-react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
 import {
@@ -30,6 +30,7 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
+    icon: Activity,
     colors: {
       light: "#3b82f6",
       dark: "#f43f5e",
@@ -65,13 +66,13 @@ export default function Component() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
+              content={<ChartTooltipContent hideLabel />}
             />
             <Area
               dataKey="desktop"
               type="step"
               fill="var(--color-desktop)"
-              fillOpacity={0.4}
+              fillOpacity={0.2}
               stroke="var(--color-desktop)"
             />
           </AreaChart>

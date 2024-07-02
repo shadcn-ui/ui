@@ -21,6 +21,7 @@
     "cli:dev": "turbo --filter=shadcn-ui dev",
     "cli:start": "pnpm --filter=shadcn-ui start:dev",
     "www:dev": "pnpm --filter=www dev",
+    "www:build": "pnpm --filter=www build",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "preview": "turbo run preview",

@@ -54,8 +54,8 @@ const chartConfig = {
 export default function Component() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Radar Chart</CardTitle>
+      <CardHeader className="items-center">
+        <CardTitle>Radar Chart - Dots</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
         </CardDescription>

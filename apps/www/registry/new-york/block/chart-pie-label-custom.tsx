@@ -1,19 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import {
-  Bar,
-  BarChart,
-  Label,
-  LabelList,
-  Pie,
-  PieChart,
-  Rectangle,
-  Text,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { Pie, PieChart } from "recharts"
 
 import {
   Card,
@@ -81,14 +69,12 @@ const chartConfig = {
 
 export default function Component() {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Pie Chart - Label (Custom)</CardTitle>
-        <CardDescription>
-          Showing total visitors for the last 6 months
-        </CardDescription>
+    <Card className="flex flex-col">
+      <CardHeader className="items-center pb-0">
+        <CardTitle>Pie Chart - Custom Label</CardTitle>
+        <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
           className="aspect-square max-h-[250px]"
@@ -103,12 +89,12 @@ export default function Component() {
               labelLine={false}
               label={({ payload, ...props }) => {
                 return (
-                  <Text {...props} fill="hsla(var(--foreground))">
-                    {
+                  <text {...props} fill="hsla(var(--foreground))">
+                    {`${
                       chartConfig[payload.browser as keyof typeof chartConfig]
                         ?.label
-                    }
-                  </Text>
+                    } (${payload.visitors})`}
+                  </text>
                 )
               }}
               nameKey="browser"
@@ -120,8 +106,8 @@ export default function Component() {
         <div className="flex items-center gap-2 font-medium leading-none">
           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="flex items-center gap-2 leading-none text-muted-foreground">
-          January - June 2024
+        <div className="leading-none text-muted-foreground">
+          Showing total visitors for the last 6 months
         </div>
       </CardFooter>
     </Card>

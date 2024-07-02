@@ -71,7 +71,7 @@ export default function Component() {
               dataKey="desktop"
               type="natural"
               fill="var(--color-desktop)"
-              fillOpacity={0.4}
+              fillOpacity={0.2}
               stroke="var(--color-desktop)"
             />
           </AreaChart>

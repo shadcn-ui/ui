@@ -18,14 +18,7 @@ import {
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
-export const description = "An area chart"
-
-export const iframeHeight = "600px"
-
-export const containerClassName =
-  "w-full flex-1 flex items-center justify-center"
-
-const data = [
+const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
   { month: "February", desktop: 305, mobile: 200 },
   { month: "March", desktop: 237, mobile: 120 },
@@ -34,7 +27,7 @@ const data = [
   { month: "June", desktop: 214, mobile: 140 },
 ]
 
-const config = {
+const chartConfig = {
   desktop: {
     label: "Desktop",
     colors: {
@@ -53,16 +46,21 @@ const config = {
 
 export default function Component() {
   return (
-    <Card className="w-full max-w-md">
+    <Card>
       <CardHeader>
-        <CardTitle>Area Chart</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Area Chart - Gradient</CardTitle>
+        <CardDescription>
+          Showing total visitors for the last 6 months
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={config}>
+        <ChartContainer config={chartConfig}>
           <AreaChart
-            data={data}
-            margin={{ left: 0, right: 0, top: 0, bottom: 0 }}
+            data={chartData}
+            margin={{
+              left: 12,
+              right: 12,
+            }}
           >
             <CartesianGrid vertical={false} />
             <XAxis
@@ -72,10 +70,37 @@ export default function Component() {
               tickMargin={8}
               tickFormatter={(value) => value.slice(0, 3)}
             />
+            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+            <defs>
+              <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="5%"
+                  stopColor="var(--color-desktop)"
+                  stopOpacity={0.8}
+                />
+                <stop
+                  offset="95%"
+                  stopColor="var(--color-desktop)"
+                  stopOpacity={0.1}
+                />
+              </linearGradient>
+              <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="5%"
+                  stopColor="var(--color-mobile)"
+                  stopOpacity={0.8}
+                />
+                <stop
+                  offset="95%"
+                  stopColor="var(--color-mobile)"
+                  stopOpacity={0.1}
+                />
+              </linearGradient>
+            </defs>
             <Area
               dataKey="mobile"
               type="natural"
-              fill="var(--color-mobile)"
+              fill="url(#fillMobile)"
               fillOpacity={0.2}
               stroke="var(--color-mobile)"
               stackId="a"
@@ -83,7 +108,7 @@ export default function Component() {
             <Area
               dataKey="desktop"
               type="natural"
-              fill="var(--color-desktop)"
+              fill="url(#fillDesktop)"
               fillOpacity={0.2}
               stroke="var(--color-desktop)"
               stackId="a"
@@ -98,7 +123,7 @@ export default function Component() {
               Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Showing total visitors for the last 6 months
+              January - June 2024
             </div>
           </div>
         </div>

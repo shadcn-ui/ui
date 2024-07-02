@@ -1,22 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import {
-  Bar,
-  BarChart,
-  LabelList,
-  Pie,
-  PieChart,
-  PolarAngleAxis,
-  PolarGrid,
-  PolarRadiusAxis,
-  Radar,
-  RadarChart,
-  Text,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
 
 import {
   Card,
@@ -56,7 +41,7 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Radar Chart - Grid (circle - no lines)</CardTitle>
+        <CardTitle>Radar Chart - Grid Circle - No lines</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
         </CardDescription>
@@ -73,11 +58,7 @@ export default function Component() {
             }}
           >
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <PolarGrid
-              gridType="circle"
-              radialLines={false}
-              className="fill-muted"
-            />
+            <PolarGrid gridType="circle" radialLines={false} />
             <PolarAngleAxis dataKey="month" />
             <Radar
               dataKey="desktop"

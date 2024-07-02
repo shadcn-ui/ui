@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Area, AreaChart, CartesianGrid, Tooltip, XAxis } from "recharts"
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
 import {
   Card,
@@ -55,7 +55,7 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Area Chart - Stacked (Expand)</CardTitle>
+        <CardTitle>Area Chart - Stacked Expanded</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6months
         </CardDescription>
@@ -87,7 +87,7 @@ export default function Component() {
               dataKey="other"
               type="natural"
               fill="var(--color-other)"
-              fillOpacity={0.2}
+              fillOpacity={0.1}
               stroke="var(--color-other)"
               stackId="a"
             />
@@ -103,7 +103,7 @@ export default function Component() {
               dataKey="desktop"
               type="natural"
               fill="var(--color-desktop)"
-              fillOpacity={0.2}
+              fillOpacity={0.4}
               stroke="var(--color-desktop)"
               stackId="a"
             />

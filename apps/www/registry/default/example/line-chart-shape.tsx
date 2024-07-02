@@ -1,6 +1,6 @@
-import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
-import { Chart } from "@/registry/new-york/ui/chart"
+import { ChartContainer } from "@/registry/new-york/ui/chart"
 
 const data = [
   { month: "January", desktop: 186, mobile: 120 },
@@ -81,32 +81,6 @@ export default function Component() {
             r: 6,
             className: "fill-[--color-mobile]",
             fill: "",
-          }}
-        />
-        <ChartTooltip
-          content={({ payload, active }) => {
-            if (!active || !payload?.length) return null
-
-            return (
-              <div className="grid min-w-[140px] gap-1 rounded-lg border bg-background px-2.5 py-1.5 text-xs shadow-sm">
-                <div className="font-medium">Visitors</div>
-                <div className="grid gap-1">
-                  {payload.map((item) => (
-                    <div key={item.dataKey} className="flex items-center gap-2">
-                      <div className="size-2 aspect-square shrink-0 rounded-[2px] bg-primary" />
-                      <div className="flex w-full flex-col gap-0.5">
-                        <div className="flex w-full items-center leading-none text-muted-foreground">
-                          {item.name}
-                          <span className="ml-auto font-mono font-medium text-foreground">
-                            {item.value}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )
           }}
         />
       </LineChart>

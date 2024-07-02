@@ -14,17 +14,19 @@ import {
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 },
 ]
 
 const chartConfig = {
@@ -35,13 +37,20 @@ const chartConfig = {
       dark: "#f43f5e",
     },
   },
+  mobile: {
+    label: "Mobile",
+    colors: {
+      light: "#93c5fd",
+      dark: "#fda4af",
+    },
+  },
 } satisfies ChartConfig
 
 export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Area Chart</CardTitle>
+        <CardTitle>Area Chart - Legend</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
         </CardDescription>
@@ -68,12 +77,22 @@ export default function Component() {
               content={<ChartTooltipContent indicator="line" />}
             />
             <Area
+              dataKey="mobile"
+              type="natural"
+              fill="var(--color-mobile)"
+              fillOpacity={0.2}
+              stroke="var(--color-mobile)"
+              stackId="a"
+            />
+            <Area
               dataKey="desktop"
               type="natural"
               fill="var(--color-desktop)"
-              fillOpacity={0.4}
+              fillOpacity={0.2}
               stroke="var(--color-desktop)"
+              stackId="a"
             />
+            <ChartLegend content={<ChartLegendContent />} />
           </AreaChart>
         </ChartContainer>
       </CardContent>

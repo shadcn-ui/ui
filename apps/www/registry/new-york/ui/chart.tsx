@@ -151,8 +151,6 @@ const ChartTooltipContent = React.forwardRef<
           ? config[configLabelKey]
           : config[key as keyof typeof config]
 
-      console.log(label, key, labelKey, item.payload, config, itemConfig)
-
       return (
         <div className={cn("font-medium", labelClassName)}>
           {typeof label === "string"
@@ -265,48 +263,68 @@ const ChartLegendContent = React.forwardRef<
   React.ComponentProps<"div"> &
     Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
       hideIcon?: boolean
+      nameKey?: string
     }
->(({ className, hideIcon = false, payload, verticalAlign = "bottom" }, ref) => {
-  const { config } = useChart()
+>(
+  (
+    {
+      className,
+      hideIcon = false,
+      payload,
+      verticalAlign = "bottom",
+      nameKey,
+      ...props
+    },
+    ref
+  ) => {
+    const { config } = useChart()
 
-  if (!payload?.length) return null
+    if (!payload?.length) return null
 
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "flex items-center justify-center gap-4",
-        verticalAlign === "top" ? "pb-3" : "pt-3",
-        className
-      )}
-    >
-      {payload.map((item) => {
-        const itemConfig = config[item.dataKey as keyof typeof config]
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "flex items-center justify-center gap-4",
+          verticalAlign === "top" ? "pb-3" : "pt-3",
+          className
+        )}
+        {...props}
+      >
+        {payload.map((item) => {
+          const key = nameKey || item.dataKey
+          const configLabelKey =
+            item.payload?.[key as keyof typeof item.payload] || key
+          const itemConfig =
+            typeof configLabelKey === "string"
+              ? config[configLabelKey]
+              : config[key as keyof typeof config]
 
-        return (
-          <div
-            key={item.value}
-            className={cn(
-              "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
-            )}
-          >
-            {itemConfig?.icon && !hideIcon ? (
-              <itemConfig.icon />
-            ) : (
-              <div
-                className="h-2 w-2 shrink-0 rounded-[2px]"
-                style={{
-                  backgroundColor: item.color,
-                }}
-              />
-            )}
-            {itemConfig.label}
-          </div>
-        )
-      })}
-    </div>
-  )
-})
+          return (
+            <div
+              key={item.value}
+              className={cn(
+                "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
+              )}
+            >
+              {itemConfig?.icon && !hideIcon ? (
+                <itemConfig.icon />
+              ) : (
+                <div
+                  className="h-2 w-2 shrink-0 rounded-[2px]"
+                  style={{
+                    backgroundColor: item.color,
+                  }}
+                />
+              )}
+              {itemConfig?.label}
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+)
 ChartLegendContent.displayName = "ChartLegend"
 
 export {

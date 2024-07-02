@@ -1,8 +1,9 @@
 import { Bar, BarChart, CartesianGrid, Tooltip, XAxis } from "recharts"
 
 import {
-  Chart,
+  ChartContainer,
   ChartTooltip,
+  ChartTooltipContent,
   type ChartConfig,
 } from "@/registry/new-york/ui/chart"
 

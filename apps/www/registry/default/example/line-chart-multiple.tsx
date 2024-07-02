@@ -3,7 +3,6 @@ import {
   Line,
   LineChart,
   ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
 } from "recharts"
@@ -76,27 +75,6 @@ export default function Component() {
               onClick: (e, d) => {
                 console.log(e, d)
               },
-            }}
-          />
-          <ChartTooltip
-            cursor={false}
-            content={({ payload, active }) => {
-              if (!active || !payload?.length) return null
-
-              return (
-                <div className="flex min-w-[140px] items-center gap-2 rounded-lg border bg-background px-2.5 py-1.5 text-xs shadow-sm">
-                  <div className="h-[1.8rem] w-1 rounded-full bg-primary" />
-                  <div className="flex w-full flex-col gap-0.5">
-                    <div className="font-medium">Visitors</div>
-                    <div className="flex w-full items-center text-muted-foreground">
-                      {payload[0]?.dataKey}
-                      <div className="ml-auto font-mono font-medium text-foreground">
-                        {payload[0]?.payload?.desktop}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )
             }}
           />
         </LineChart>

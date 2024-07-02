@@ -82,6 +82,7 @@ export default function Component() {
             />
             <XAxis dataKey="desktop" type="number" hide />
             <ChartTooltip
+              defaultIndex={1}
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />

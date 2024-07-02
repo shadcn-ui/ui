@@ -1,6 +1,6 @@
-import { Bar, BarChart, CartesianGrid, Tooltip, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
-import { Chart } from "@/registry/new-york/ui/chart"
+import { ChartContainer } from "@/registry/new-york/ui/chart"
 
 const data = [
   { month: "January", desktop: 186, mobile: 120 },
@@ -48,40 +48,6 @@ export default function Component() {
           tickMargin={10}
           axisLine={false}
           tickFormatter={(value) => value.slice(0, 3)}
-        />
-        <ChartTooltip
-          cursor={false}
-          content={({ payload, active }) => {
-            if (!active || !payload?.length) return null
-
-            return (
-              <div className="grid min-w-[140px] gap-1 rounded-lg border bg-background px-2.5 py-1.5 text-xs shadow-sm">
-                <div className="font-medium">Visitors</div>
-                <div className="grid gap-1">
-                  {payload.map((item) => (
-                    <div key={item.dataKey} className="flex items-center gap-2">
-                      <div
-                        className="aspect-square h-2 w-2 shrink-0 rounded-[2px] bg-[--color]"
-                        style={
-                          {
-                            "--color": `var(--color-${item.dataKey})`,
-                          } as React.CSSProperties
-                        }
-                      />
-                      <div className="flex w-full flex-col gap-0.5">
-                        <div className="flex w-full items-center leading-none text-muted-foreground">
-                          {config[item.dataKey as keyof typeof config].label}
-                          <span className="ml-auto font-mono font-medium text-foreground">
-                            {item.value}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )
-          }}
         />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={5} />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={5} />

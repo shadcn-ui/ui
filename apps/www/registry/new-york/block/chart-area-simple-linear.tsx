@@ -65,13 +65,15 @@ export default function Component() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
+              content={
+                <ChartTooltipContent indicator="dot" flipped hideLabel />
+              }
             />
             <Area
               dataKey="desktop"
               type="linear"
               fill="var(--color-desktop)"
-              fillOpacity={0.4}
+              fillOpacity={0.2}
               stroke="var(--color-desktop)"
             />
           </AreaChart>

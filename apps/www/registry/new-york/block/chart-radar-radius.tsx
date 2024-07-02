@@ -54,7 +54,7 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Radar Chart - Radius Axis</CardTitle>
+        <CardTitle>Radar Chart - With Radius Axis</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
         </CardDescription>

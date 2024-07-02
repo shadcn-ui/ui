@@ -1,7 +1,17 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
+import {
+  Label,
+  LabelList,
+  PolarAngleAxis,
+  PolarGrid,
+  Radar,
+  RadarChart,
+  Rectangle,
+  Sector,
+  Text,
+} from "recharts"
 
 import {
   Card,
@@ -14,8 +24,6 @@ import {
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
@@ -49,8 +57,8 @@ const chartConfig = {
 export default function Component() {
   return (
     <Card>
-      <CardHeader className="items-center pb-4">
-        <CardTitle>Radar Chart - Legend</CardTitle>
+      <CardHeader>
+        <CardTitle>Radar Chart - Custom Label</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
         </CardDescription>
@@ -63,15 +71,46 @@ export default function Component() {
           <RadarChart
             data={chartData}
             margin={{
-              top: -40,
-              bottom: -10,
+              top: 10,
+              right: 10,
+              bottom: 10,
+              left: 10,
             }}
           >
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="line" />}
             />
-            <PolarAngleAxis dataKey="month" />
+            <PolarAngleAxis
+              dataKey="month"
+              tick={({ x, y, textAnchor, value, index, ...props }) => {
+                const data = chartData[index]
+
+                return (
+                  <text
+                    x={x}
+                    y={index === 0 ? y - 10 : y}
+                    textAnchor={textAnchor}
+                    fontSize={13}
+                    fontWeight={500}
+                    {...props}
+                  >
+                    <tspan>{data.desktop}</tspan>
+                    <tspan className="fill-muted-foreground">/</tspan>
+                    <tspan>{data.mobile}</tspan>
+                    <tspan
+                      x={x}
+                      dy="1.2em"
+                      fontSize={12}
+                      className="fill-muted-foreground  font-sans"
+                    >
+                      {data.month}
+                    </tspan>
+                  </text>
+                )
+              }}
+            />
+
             <PolarGrid />
             <Radar
               dataKey="desktop"
@@ -79,11 +118,10 @@ export default function Component() {
               fillOpacity={0.6}
             />
             <Radar dataKey="mobile" fill="var(--color-mobile)" />
-            <ChartLegend className="pt-8" content={<ChartLegendContent />} />
           </RadarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-2 pt-4 text-sm">
+      <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>

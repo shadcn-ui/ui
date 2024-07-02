@@ -56,7 +56,7 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Radar Chart - Grid (circle)</CardTitle>
+        <CardTitle>Radar Chart - Grid Circle</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
         </CardDescription>

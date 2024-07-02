@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { PolarAngleAxis, Radar, RadarChart } from "recharts"
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
 
 import {
   Card,
@@ -20,11 +20,11 @@ import {
 
 const chartData = [
   { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
+  { month: "February", desktop: 285 },
   { month: "March", desktop: 237 },
-  { month: "April", desktop: 273 },
+  { month: "April", desktop: 203 },
   { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { month: "June", desktop: 264 },
 ]
 
 const chartConfig = {
@@ -40,8 +40,8 @@ const chartConfig = {
 export default function Component() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Radar Chart - Grid None</CardTitle>
+      <CardHeader className="items-center">
+        <CardTitle>Radar Chart - Grid Circle Filled</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
         </CardDescription>
@@ -51,17 +51,22 @@ export default function Component() {
           config={chartConfig}
           className="aspect-square max-h-[250px]"
         >
-          <RadarChart data={chartData}>
+          <RadarChart
+            data={chartData}
+            margin={{
+              bottom: 20,
+            }}
+          >
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+            <PolarGrid
+              className="fill-[--color-desktop] opacity-20"
+              gridType="circle"
+            />
             <PolarAngleAxis dataKey="month" />
             <Radar
               dataKey="desktop"
               fill="var(--color-desktop)"
-              fillOpacity={0.6}
-              dot={{
-                r: 4,
-                fillOpacity: 1,
-              }}
+              fillOpacity={0.5}
             />
           </RadarChart>
         </ChartContainer>
