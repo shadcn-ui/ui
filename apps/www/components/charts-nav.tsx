@@ -28,6 +28,10 @@ const examples = [
     name: "Radar Chart",
     href: "/charts#radar-chart",
   },
+  {
+    name: "Radial Chart",
+    href: "/charts#radial-chart",
+  },
 ]
 
 export function ChartsNav({

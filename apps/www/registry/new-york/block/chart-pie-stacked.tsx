@@ -93,7 +93,7 @@ const chartConfig = {
 export default function Component() {
   return (
     <Card className="flex flex-col">
-      <CardHeader>
+      <CardHeader className="items-center pb-0">
         <CardTitle>Pie Chart - Stacked</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
@@ -122,7 +122,7 @@ export default function Component() {
               data={mobileData}
               dataKey="mobile"
               innerRadius={70}
-              outerRadius={100}
+              outerRadius={90}
             />
           </PieChart>
         </ChartContainer>

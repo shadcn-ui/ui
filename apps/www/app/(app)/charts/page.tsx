@@ -70,6 +70,7 @@ export default function ChartsPage() {
             <Charts.ChartPieDonutActive />
             <Charts.ChartPieDonutText />
             <Charts.ChartPieStacked />
+            <Charts.ChartPieInteractive />
           </div>
           <Separator />
           <div
@@ -90,6 +91,18 @@ export default function ChartsPage() {
             <Charts.ChartRadarGridCircleFill />
             <Charts.ChartRadarLegend />
             <Charts.ChartRadarLegendIcons />
+          </div>
+          <Separator />
+          <div
+            id="radial-chart"
+            className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
+          >
+            <Charts.ChartRadialSimple />
+            <Charts.ChartRadialLabel />
+            <Charts.ChartRadialGrid />
+            <Charts.ChartRadialText />
+            <Charts.ChartRadialShape />
+            <Charts.ChartRadialStacked />
           </div>
         </div>
         <ChartsToolbar className="sticky top-20" />

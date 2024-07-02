@@ -22,7 +22,7 @@ export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
   const { theme } = useTheme()
 
   const cssVars = React.useMemo(() => {
-    if (BASE_LIGHT === "colors") {
+    if (BASE_LIGHT === "colors" || BASE_DARK === "colors") {
       return {
         light: {
           "--color-desktop": `#2a9d8f`,
@@ -63,6 +63,11 @@ export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
         "--color-firefox": `${BASE_LIGHT}99`,
         "--color-edge": `${BASE_LIGHT}80`,
         "--color-other": `${BASE_LIGHT}66`,
+        "--color-january": BASE_LIGHT,
+        "--color-february": `${BASE_LIGHT}CC`,
+        "--color-march": `${BASE_LIGHT}99`,
+        "--color-april": `${BASE_LIGHT}80`,
+        "--color-may": `${BASE_LIGHT}66`,
       },
       dark: {
         "--color-desktop": BASE_DARK,
@@ -72,6 +77,11 @@ export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
         "--color-firefox": `${BASE_DARK}99`,
         "--color-edge": `${BASE_DARK}80`,
         "--color-other": `${BASE_DARK}66`,
+        "--color-january": BASE_DARK,
+        "--color-february": `${BASE_DARK}CC`,
+        "--color-march": `${BASE_DARK}99`,
+        "--color-april": `${BASE_DARK}80`,
+        "--color-may": `${BASE_DARK}66`,
       },
     }
   }, [BASE_LIGHT, BASE_DARK])
@@ -82,9 +92,10 @@ export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
         {COLOR_PALETTE.map((color) => (
           <button
             key={color}
-            onClick={() =>
-              theme === "dark" ? setBaseDark(color) : setBaseLight(color)
-            }
+            onClick={() => {
+              setBaseDark(color)
+              setBaseLight(color)
+            }}
             className="h-4 w-4 shrink-0 rounded-full"
             style={{
               backgroundColor: color,
@@ -105,12 +116,12 @@ export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
       </div>
       <style>
         {`
-          .recharts-wrapper:not(.no-tint) {
+          html, [data-chart] {
             ${Object.entries(cssVars["light"])
               .map(([key, value]) => `${key}: ${value} !important;`)
               .join("\n")}
           }
-          .dark .recharts-wrapper:not(.no-tint) {
+          .dark [data-chart] {
             ${Object.entries(cssVars["dark"])
               .map(([key, value]) => `${key}: ${value} !important;`)
               .join("\n")}

@@ -31,6 +31,7 @@ export { default as ChartPieDonut } from "@/registry/new-york/block/chart-pie-do
 export { default as ChartPieDonutActive } from "@/registry/new-york/block/chart-pie-donut-active"
 export { default as ChartPieDonutText } from "@/registry/new-york/block/chart-pie-donut-text"
 export { default as ChartPieStacked } from "@/registry/new-york/block/chart-pie-stacked"
+export { default as ChartPieInteractive } from "@/registry/new-york/block/chart-pie-interactive"
 
 export { default as ChartRadarSimple } from "@/registry/new-york/block/chart-radar-simple"
 export { default as ChartRadarDots } from "@/registry/new-york/block/chart-radar-dots"
@@ -46,3 +47,10 @@ export { default as ChartRadarMultiple } from "@/registry/new-york/block/chart-r
 export { default as ChartRadarLegend } from "@/registry/new-york/block/chart-radar-legend"
 export { default as ChartRadarLegendIcons } from "@/registry/new-york/block/chart-radar-legend-icons"
 export { default as ChartRadarRadius } from "@/registry/new-york/block/chart-radar-radius"
+
+export { default as ChartRadialSimple } from "@/registry/new-york/block/chart-radial-simple"
+export { default as ChartRadialLabel } from "@/registry/new-york/block/chart-radial-label"
+export { default as ChartRadialGrid } from "@/registry/new-york/block/chart-radial-grid"
+export { default as ChartRadialText } from "@/registry/new-york/block/chart-radial-text"
+export { default as ChartRadialShape } from "@/registry/new-york/block/chart-radial-shape"
+export { default as ChartRadialStacked } from "@/registry/new-york/block/chart-radial-stacked"
