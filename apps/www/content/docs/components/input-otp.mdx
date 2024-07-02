@@ -6,7 +6,7 @@ links:
   doc: https://input-otp.rodz.dev
 ---
 
-<ComponentPreview name="input-otp-demo" />
+<ComponentPreview name="input-otp-demo" description="An 6 digits input OTP." />
 
 ## About
 
@@ -135,7 +135,10 @@ import {
 
 Use the `pattern` prop to define a custom pattern for the OTP input.
 
-<ComponentPreview name="input-otp-pattern" />
+<ComponentPreview
+  name="input-otp-pattern"
+  description="An input OTP with alphanumeric pattern."
+/>
 
 ```tsx showLineNumbers {1,7}
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
@@ -157,7 +160,10 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 
 You can use the `<InputOTPSeparator />` component to add a separator between the input groups.
 
-<ComponentPreview name="input-otp-separator" />
+<ComponentPreview
+  name="input-otp-separator"
+  description="An input OTP with custom separator."
+/>
 
 ```tsx showLineNumbers {4,15}
 import {
