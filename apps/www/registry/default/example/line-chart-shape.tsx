@@ -1,6 +1,6 @@
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
-import { ChartContainer } from "@/registry/new-york/ui/chart"
+import { ChartContainer } from "@/registry/default/ui/chart"
 
 const data = [
   { month: "January", desktop: 186, mobile: 120 },

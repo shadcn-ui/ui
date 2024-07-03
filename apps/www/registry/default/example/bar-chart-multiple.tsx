@@ -5,7 +5,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/registry/new-york/ui/chart"
+} from "@/registry/default/ui/chart"
 
 const data = [
   { month: "January", desktop: 186, mobile: 120 },

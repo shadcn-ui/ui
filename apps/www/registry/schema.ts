@@ -45,7 +45,7 @@ export const blockSchema = registryEntrySchema.extend({
   component: z.any(),
   container: z
     .object({
-      height: z.string().optional(),
+      height: z.string().nullish(),
       className: z.string().nullish(),
     })
     .optional(),

@@ -8,6 +8,7 @@ import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
+import { description } from "@/registry/default/block/dashboard-05"
 import { BlockChunk, blockSchema, registryEntrySchema } from "@/registry/schema"
 import { Style } from "@/registry/styles"
 
@@ -68,6 +69,7 @@ export async function getBlock(
     ...entry,
     ...content,
     chunks,
+    description: content.description || "",
     type: "components:block",
   })
 }
@@ -85,6 +87,10 @@ async function _getBlockCode(
   style: Style["name"] = DEFAULT_BLOCKS_STYLE
 ) {
   const entry = Index[style][name]
+  if (!entry) {
+    console.error(`Block ${name} not found in style ${style}`)
+    return ""
+  }
   const block = registryEntrySchema.parse(entry)
 
   if (!block.source) {

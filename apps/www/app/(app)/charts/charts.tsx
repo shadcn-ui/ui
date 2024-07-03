@@ -15,7 +15,7 @@ export { default as ChartBarMultiple } from "@/registry/new-york/block/chart-bar
 export { default as ChartBarStacked } from "@/registry/new-york/block/chart-bar-stacked"
 export { default as ChartBarLabel } from "@/registry/new-york/block/chart-bar-label"
 export { default as ChartBarLabelCustom } from "@/registry/new-york/block/chart-bar-label-custom"
-export { default as ChartBarMixedLabel } from "@/registry/new-york/block/chart-bar-mixed"
+export { default as ChartBarMixed } from "@/registry/new-york/block/chart-bar-mixed"
 export { default as ChartBarActive } from "@/registry/new-york/block/chart-bar-active"
 export { default as ChartBarNegative } from "@/registry/new-york/block/chart-bar-negative"
 export { default as ChartBarInteractive } from "@/registry/new-york/block/chart-bar-interactive"
@@ -32,7 +32,7 @@ export { default as ChartLineLabelCustom } from "@/registry/new-york/block/chart
 export { default as ChartLineInteractive } from "@/registry/new-york/block/chart-line-interactive"
 
 export { default as ChartPieSimple } from "@/registry/new-york/block/chart-pie-simple"
-export { default as ChartPieSimpleSeparatorNone } from "@/registry/new-york/block/chart-pie-separator-none"
+export { default as ChartPieSeparatorNone } from "@/registry/new-york/block/chart-pie-separator-none"
 export { default as ChartPieLabel } from "@/registry/new-york/block/chart-pie-label"
 export { default as ChartPieLabelCustom } from "@/registry/new-york/block/chart-pie-label-custom"
 export { default as ChartPieLabelList } from "@/registry/new-york/block/chart-pie-label-list"
