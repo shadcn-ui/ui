@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
@@ -41,15 +40,21 @@ export function ChartsNav({
   const pathname = usePathname()
 
   return (
-    <div className="relative">
+    <div className="relative px-1 pb-4 md:px-0 md:pb-0">
       <ScrollArea className="max-w-[600px] lg:max-w-none">
-        <div className={cn("mb-4 flex items-center", className)} {...props}>
+        <div
+          className={cn(
+            "flex flex-col gap-2 sm:items-center md:flex-row",
+            className
+          )}
+          {...props}
+        >
           {examples.map((example, index) => (
             <Link
               href={example.href}
               key={example.href}
               className={cn(
-                "flex h-7 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
+                "flex h-7 rounded-full px-4 text-left text-sm transition-colors hover:text-primary sm:items-center sm:justify-center sm:text-center",
                 pathname?.startsWith(example.href) ||
                   (index === 0 && pathname === "/")
                   ? "bg-muted font-medium text-primary"
@@ -63,29 +68,5 @@ export function ChartsNav({
         <ScrollBar orientation="horizontal" className="invisible" />
       </ScrollArea>
     </div>
-  )
-}
-
-interface ExampleCodeLinkProps {
-  pathname: string | null
-}
-
-export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
-  const example = examples.find((example) => pathname?.startsWith(example.href))
-
-  if (!example?.code) {
-    return null
-  }
-
-  return (
-    <Link
-      href={example?.code}
-      target="_blank"
-      rel="nofollow"
-      className="absolute right-0 top-0 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
-    >
-      View code
-      <ArrowRightIcon className="ml-1 h-4 w-4" />
-    </Link>
   )
 }

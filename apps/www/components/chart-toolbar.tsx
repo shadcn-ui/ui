@@ -19,7 +19,7 @@ export function ChartToolbar({
         asChild
         variant="link"
         size="sm"
-        className="-translate-x-1 gap-1 text-sm"
+        className="-translate-x-1 gap-1 text-sm text-foreground"
       >
         <Link href={`/docs/charts/${chart.category?.toLowerCase()}`}>
           Docs <ArrowRight className="h-3 w-3" />

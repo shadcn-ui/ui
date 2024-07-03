@@ -1,4 +1,5 @@
 import { ChartDisplay } from "@/components/chart-display"
+import { ChartsMobileDrawer } from "@/components/charts-mobile-drawer"
 import { ChartsNav } from "@/components/charts-nav"
 import { ChartsThemeSwitcher } from "@/components/charts-theme-switcher"
 import { Separator } from "@/registry/new-york/ui/separator"
@@ -7,10 +8,10 @@ import * as Charts from "@/app/(app)/charts/charts"
 export default function ChartsPage() {
   return (
     <div>
-      <div className="flex items-start gap-6">
-        <ChartsThemeSwitcher className="fixed inset-x-0 bottom-0 z-30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:sticky md:bottom-auto md:top-20" />
+      <div className="gap-6 md:flex md:flex-row-reverse md:items-start">
+        <ChartsThemeSwitcher className="fixed inset-x-0 bottom-0 z-30 flex bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:sticky md:bottom-auto md:top-20" />
         <div className="grid flex-1 gap-12">
-          <div className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
+          <div className="chart-wrapper grid flex-1 scroll-mt-20 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10">
             <ChartDisplay name="chart-area-stacked">
               <Charts.ChartAreaStacked />
             </ChartDisplay>
@@ -21,13 +22,13 @@ export default function ChartsPage() {
               <Charts.ChartPieDonutText />
             </ChartDisplay>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden gap-4 md:grid">
             <ChartsNav />
             <Separator />
           </div>
           <div
             id="area-chart"
-            className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
+            className="chart-wrapper grid flex-1 scroll-mt-20 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
           >
             <ChartDisplay name="chart-area-default">
               <Charts.ChartAreaDefault />
@@ -65,7 +66,7 @@ export default function ChartsPage() {
           <Separator />
           <div
             id="bar-chart"
-            className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
+            className="chart-wrapper grid flex-1 scroll-mt-20 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
           >
             <ChartDisplay name="chart-bar-default">
               <Charts.ChartBarDefault />
@@ -103,7 +104,7 @@ export default function ChartsPage() {
           <Separator />
           <div
             id="line-chart"
-            className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
+            className="chart-wrapper grid flex-1 scroll-mt-20 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
           >
             <ChartDisplay name="chart-line-default">
               <Charts.ChartLineDefault />
@@ -141,7 +142,7 @@ export default function ChartsPage() {
           <Separator />
           <div
             id="pie-chart"
-            className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
+            className="chart-wrapper grid flex-1 scroll-mt-20 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
           >
             <ChartDisplay name="chart-pie-simple">
               <Charts.ChartPieSimple />
