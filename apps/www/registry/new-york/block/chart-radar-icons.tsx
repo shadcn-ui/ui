@@ -32,19 +32,13 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
+    color: "hsl(var(--chart-1))",
     icon: ArrowDownFromLine,
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
   },
   mobile: {
     label: "Mobile",
+    color: "hsl(var(--chart-2))",
     icon: ArrowUpFromLine,
-    colors: {
-      light: "#93c5fd",
-      dark: "#fda4af",
-    },
   },
 } satisfies ChartConfig
 
@@ -77,10 +71,10 @@ export default function Component() {
             <PolarGrid />
             <Radar
               dataKey="desktop"
-              fill="var(--color-desktop)"
+              fill="var(--chart-desktop)"
               fillOpacity={0.6}
             />
-            <Radar dataKey="mobile" fill="var(--color-mobile)" />
+            <Radar dataKey="mobile" fill="var(--chart-mobile)" />
             <ChartLegend className="mt-8" content={<ChartLegendContent />} />
           </RadarChart>
         </ChartContainer>

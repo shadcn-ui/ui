@@ -30,10 +30,7 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
 
@@ -54,13 +51,13 @@ export default function Component() {
           <RadarChart data={chartData}>
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <PolarGrid
-              className="fill-[--color-desktop] opacity-20"
+              className="fill-[--chart-desktop] opacity-20"
               gridType="circle"
             />
             <PolarAngleAxis dataKey="month" />
             <Radar
               dataKey="desktop"
-              fill="var(--color-desktop)"
+              fill="var(--chart-desktop)"
               fillOpacity={0.5}
             />
           </RadarChart>

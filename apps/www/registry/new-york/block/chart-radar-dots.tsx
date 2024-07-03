@@ -44,10 +44,7 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
 
@@ -71,7 +68,7 @@ export default function Component() {
             <PolarGrid />
             <Radar
               dataKey="desktop"
-              fill="var(--color-desktop)"
+              fill="var(--chart-desktop)"
               fillOpacity={0.6}
               dot={{
                 r: 4,

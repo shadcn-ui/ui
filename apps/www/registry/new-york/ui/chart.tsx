@@ -9,11 +9,10 @@ export type ChartConfig = {
   [k in string]: {
     label: React.ReactNode
     icon?: React.ComponentType
-    colors?: {
-      light: string
-      dark: string
-    }
-  }
+  } & (
+    | { color?: string; theme?: never }
+    | { color?: never; theme: { light: string; dark: string } }
+  )
 }
 
 type ChartContextProps = {
@@ -50,7 +49,7 @@ const ChartContainer = React.forwardRef<
         data-chart={chartId}
         ref={ref}
         className={cn(
-          "aspect-video w-full text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-accent [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-accent [&_.recharts-reference-line-line]:stroke-border [&_.recharts-sector[stroke='#fff']]:stroke-transparent",
+          "aspect-video w-full text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line-line]:stroke-border [&_.recharts-sector[stroke='#fff']]:stroke-transparent",
           className
         )}
         {...props}
@@ -75,20 +74,20 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
       {`
         [data-chart=${id}] {
           ${Object.entries(config)
-            .filter(([_, { colors }]) => colors?.light)
-            .map(([key, { colors }]) => {
+            .filter(([_, { theme, color }]) => theme?.light || color)
+            .map(([key, { theme, color }]) => {
               return `
-                --color-${key}: ${colors?.light};
+                --chart-${key}: ${theme?.light || color};
               `
             })
             .join("")}
         }
         .dark [data-chart=${id}] {
           ${Object.entries(config)
-            .filter(([_, { colors }]) => colors?.dark)
-            .map(([key, { colors }]) => {
+            .filter(([_, { theme, color }]) => theme?.dark || color)
+            .map(([key, { theme, color }]) => {
               return `
-                --color-${key}: ${colors?.dark};
+                --chart-${key}: ${theme?.dark || color};
               `
             })
             .join("")}

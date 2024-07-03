@@ -1,7 +1,7 @@
 export function themeColorsToCssVariables(
   colors: Record<string, string>
 ): Record<string, string> {
-  return colors
+  const cssVars = colors
     ? Object.fromEntries(
         Object.entries(colors).map(([name, value]) => {
           if (value === undefined) return []
@@ -10,6 +10,14 @@ export function themeColorsToCssVariables(
         })
       )
     : {}
+
+  // for (const key of Array.from({ length: 5 }, (_, index) => index)) {
+  //   cssVars[`--chart-${key + 1}`] =
+  //     cssVars[`--chart-${key + 1}`] ||
+  //     `${cssVars["--primary"]} / ${100 - key * 20}%`
+  // }
+
+  return cssVars
 }
 
 export function themeColorNameToCssVariable(name: string) {

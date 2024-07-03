@@ -30,11 +30,8 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
+    color: "hsl(var(--chart-1))",
     icon: Activity,
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
   },
 } satisfies ChartConfig
 
@@ -71,9 +68,9 @@ export default function Component() {
             <Area
               dataKey="desktop"
               type="step"
-              fill="var(--color-desktop)"
+              fill="var(--chart-desktop)"
               fillOpacity={0.4}
-              stroke="var(--color-desktop)"
+              stroke="var(--chart-desktop)"
             />
           </AreaChart>
         </ChartContainer>

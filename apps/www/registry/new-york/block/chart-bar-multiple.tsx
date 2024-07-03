@@ -30,17 +30,11 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-1))",
   },
   mobile: {
     label: "Mobile",
-    colors: {
-      light: "#93c5fd",
-      dark: "#fda4af",
-    },
+    color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig
 
@@ -63,8 +57,8 @@ export default function Component() {
               tickFormatter={(value) => value.slice(0, 3)}
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+            <Bar dataKey="desktop" fill="var(--chart-desktop)" radius={4} />
+            <Bar dataKey="mobile" fill="var(--chart-mobile)" radius={4} />
           </BarChart>
         </ChartContainer>
       </CardContent>

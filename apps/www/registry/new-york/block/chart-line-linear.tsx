@@ -30,10 +30,7 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
 
@@ -68,7 +65,7 @@ export default function Component() {
             <Line
               dataKey="desktop"
               type="linear"
-              stroke="var(--color-desktop)"
+              stroke="var(--chart-desktop)"
               strokeWidth={2}
               dot={false}
             />

@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { useTheme } from "next-themes"
 
-import { CHART_THEMES, ChartTheme } from "@/lib/chart-themes"
-import { themeColorsToCssVariables } from "@/lib/charts"
+import { getChartThemes } from "@/lib/chart-themes"
 import { cn } from "@/lib/utils"
 import {
   Tooltip,
@@ -11,87 +11,77 @@ import {
   TooltipTrigger,
 } from "@/registry/new-york/ui/tooltip"
 
+const chartThemes = getChartThemes()
+
 export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
-  const [activeTheme, setActiveTheme] = React.useState<ChartTheme>(
-    CHART_THEMES[1]
-  )
-
-  const cssVars = React.useMemo(() => {
-    const { colors } = activeTheme
-    const cssVars = themeColorsToCssVariables(colors)
-
-    for (const key of Array.from({ length: 5 }, (_, index) => index)) {
-      cssVars[`--chart${key + 1}`] = `hsl(${
-        cssVars[`--chart${key + 1}`] ||
-        `${cssVars["--primary"]} / ${100 - key * 20}%`
-      })`
-    }
-
-    return {
-      light: {
-        ...cssVars,
-        "--color-desktop": cssVars["--chart1"],
-        "--color-mobile": cssVars["--chart3"],
-        "--color-visitors": cssVars["--chart1"],
-        "--color-chrome": cssVars["--chart1"],
-        "--color-safari": cssVars["--chart2"],
-        "--color-firefox": cssVars["--chart3"],
-        "--color-edge": cssVars["--chart4"],
-        "--color-other": cssVars["--chart5"],
-        "--color-january": cssVars["--chart1"],
-        "--color-february": cssVars["--chart2"],
-        "--color-march": cssVars["--chart3"],
-        "--color-april": cssVars["--chart4"],
-        "--color-may": cssVars["--chart5"],
-      },
-      dark: {
-        ...cssVars,
-      },
-    }
-  }, [activeTheme])
+  const { theme } = useTheme()
+  const [activeChartTheme, setActiveChartTheme] = React.useState(chartThemes[0])
 
   return (
     <>
-      <div className={cn("flex flex-col items-center gap-3", className)}>
-        {CHART_THEMES.map((theme) => (
-          <Tooltip key={theme.name}>
-            <TooltipTrigger asChild>
-              <button
-                onClick={() => setActiveTheme(theme)}
-                className={cn(
-                  "flex h-4 w-4 rounded-sm bg-[--color] ring-2 ring-offset-4 ring-offset-background",
-                  theme.name === activeTheme.name
-                    ? "ring-[--color]"
-                    : "ring-transparent"
-                )}
-                style={
-                  {
-                    "--color": `hsl(${theme.colors.primary})`,
-                    "--background": `hsl(${theme.colors.background})`,
-                  } as React.CSSProperties
-                }
-              >
-                <span className="sr-only">{theme.name}</span>
-              </button>
-            </TooltipTrigger>
-            <TooltipContent side="left" className="bg-black text-white">
-              {theme.name}
-            </TooltipContent>
-          </Tooltip>
-        ))}
+      <div className={cn("flex flex-col items-center gap-1 py-4", className)}>
+        {chartThemes.map((chartTheme) => {
+          const isActive = chartTheme.name === activeChartTheme.name
+          const isDarkTheme = ["Midnight"].includes(chartTheme.name)
+          const cssVars =
+            theme === "dark"
+              ? chartTheme.cssVars.dark
+              : chartTheme.cssVars.light
+          return (
+            <Tooltip key={chartTheme.name}>
+              <TooltipTrigger asChild>
+                <button
+                  onClick={() => setActiveChartTheme(chartTheme)}
+                  className={cn(
+                    "group flex h-7 w-7 items-center justify-center rounded-lg border-2",
+                    isActive ? "border-[--color-1]" : "border-transparent",
+                    isDarkTheme && theme !== "dark" ? "invert-[1]" : ""
+                  )}
+                  style={
+                    {
+                      ...cssVars,
+                      "--color-1": "hsl(var(--chart-1))",
+                      "--color-2": "hsl(var(--chart-2))",
+                      "--color-3": "hsl(var(--chart-3))",
+                      "--color-4": "hsl(var(--chart-4))",
+                    } as React.CSSProperties
+                  }
+                >
+                  <div className="h-4 w-4 overflow-hidden rounded-sm">
+                    <div
+                      className={cn(
+                        "grid h-8 w-8 -translate-x-1/4 -translate-y-1/4 grid-cols-2 overflow-hidden rounded-md transition-all ease-in-out group-hover:rotate-45",
+                        isActive ? "rotate-45" : "rotate-0"
+                      )}
+                    >
+                      <span className="flex h-4 w-4 bg-[--color-1]" />
+                      <span className="flex h-4 w-4 bg-[--color-2]" />
+                      <span className="flex h-4 w-4 bg-[--color-3]" />
+                      <span className="flex h-4 w-4 bg-[--color-4]" />
+                      <span className="sr-only">{chartTheme.name}</span>
+                    </div>
+                  </div>
+                </button>
+              </TooltipTrigger>
+              <TooltipContent side="left" className="bg-black text-white">
+                {chartTheme.name}
+              </TooltipContent>
+            </Tooltip>
+          )
+        })}
       </div>
       <style>
         {`
           .chart-wrapper,
           [data-chart] {
-            ${Object.entries(cssVars["light"])
+            ${Object.entries(activeChartTheme.cssVars.light)
               .map(([key, value]) => `${key}: ${value};`)
               .join("\n")}
           }
 
           .dark .chart-wrapper,
           .dark [data-chart] {
-            ${Object.entries(cssVars["dark"])
+            ${Object.entries(activeChartTheme.cssVars.dark)
               .map(([key, value]) => `${key}: ${value};`)
               .join("\n")}
           }

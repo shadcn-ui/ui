@@ -20,19 +20,19 @@ import {
 } from "@/registry/new-york/ui/chart"
 
 const desktopData = [
-  { month: "january", desktop: 186, fill: "var(--color-january)" },
-  { month: "february", desktop: 305, fill: "var(--color-february)" },
-  { month: "march", desktop: 237, fill: "var(--color-march)" },
-  { month: "april", desktop: 173, fill: "var(--color-april)" },
-  { month: "may", desktop: 209, fill: "var(--color-may)" },
+  { month: "january", desktop: 186, fill: "var(--chart-january)" },
+  { month: "february", desktop: 305, fill: "var(--chart-february)" },
+  { month: "march", desktop: 237, fill: "var(--chart-march)" },
+  { month: "april", desktop: 173, fill: "var(--chart-april)" },
+  { month: "may", desktop: 209, fill: "var(--chart-may)" },
 ]
 
 const mobileData = [
-  { month: "january", mobile: 80, fill: "var(--color-january)" },
-  { month: "february", mobile: 200, fill: "var(--color-february)" },
-  { month: "march", mobile: 120, fill: "var(--color-march)" },
-  { month: "april", mobile: 190, fill: "var(--color-april)" },
-  { month: "may", mobile: 130, fill: "var(--color-may)" },
+  { month: "january", mobile: 80, fill: "var(--chart-january)" },
+  { month: "february", mobile: 200, fill: "var(--chart-february)" },
+  { month: "march", mobile: 120, fill: "var(--chart-march)" },
+  { month: "april", mobile: 190, fill: "var(--chart-april)" },
+  { month: "may", mobile: 130, fill: "var(--chart-may)" },
 ]
 
 const chartConfig = {
@@ -41,52 +41,29 @@ const chartConfig = {
   },
   desktop: {
     label: "Desktop",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
   },
   mobile: {
     label: "Mobile",
-    colors: {
-      light: "#93c5fd",
-      dark: "#fda4af",
-    },
   },
   january: {
     label: "January",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-1))",
   },
   february: {
     label: "February",
-    colors: {
-      light: "#60a5fa",
-      dark: "#fb7185",
-    },
+    color: "hsl(var(--chart-2))",
   },
   march: {
     label: "March",
-    colors: {
-      light: "#93c5fd",
-      dark: "#fda4af",
-    },
+    color: "hsl(var(--chart-3))",
   },
   april: {
     label: "April",
-    colors: {
-      light: "#bfdbfe",
-      dark: "#fecdd3",
-    },
+    color: "hsl(var(--chart-4))",
   },
   may: {
     label: "May",
-    colors: {
-      light: "#dbeafe",
-      dark: "#ffe4e6",
-    },
+    color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig
 

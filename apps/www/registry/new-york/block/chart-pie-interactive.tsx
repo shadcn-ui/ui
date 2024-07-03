@@ -31,11 +31,11 @@ import {
 } from "@/registry/new-york/ui/select"
 
 const desktopData = [
-  { month: "january", desktop: 186, fill: "var(--color-january)" },
-  { month: "february", desktop: 305, fill: "var(--color-february)" },
-  { month: "march", desktop: 237, fill: "var(--color-march)" },
-  { month: "april", desktop: 173, fill: "var(--color-april)" },
-  { month: "may", desktop: 209, fill: "var(--color-may)" },
+  { month: "january", desktop: 186, fill: "var(--chart-january)" },
+  { month: "february", desktop: 305, fill: "var(--chart-february)" },
+  { month: "march", desktop: 237, fill: "var(--chart-march)" },
+  { month: "april", desktop: 173, fill: "var(--chart-april)" },
+  { month: "may", desktop: 209, fill: "var(--chart-may)" },
 ]
 
 const chartConfig = {
@@ -50,38 +50,23 @@ const chartConfig = {
   },
   january: {
     label: "January",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-1))",
   },
   february: {
     label: "February",
-    colors: {
-      light: "#60a5fa",
-      dark: "#fb7185",
-    },
+    color: "hsl(var(--chart-2))",
   },
   march: {
     label: "March",
-    colors: {
-      light: "#93c5fd",
-      dark: "#fda4af",
-    },
+    color: "hsl(var(--chart-3))",
   },
   april: {
     label: "April",
-    colors: {
-      light: "#bfdbfe",
-      dark: "#fecdd3",
-    },
+    color: "hsl(var(--chart-4))",
   },
   may: {
     label: "May",
-    colors: {
-      light: "#dbeafe",
-      dark: "#ffe4e6",
-    },
+    color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig
 
@@ -125,7 +110,7 @@ export default function Component() {
                     <span
                       className={cn("flex h-3 w-3 shrink-0 rounded-sm")}
                       style={{
-                        backgroundColor: `var(--color-${key})`,
+                        backgroundColor: `var(--chart-${key})`,
                       }}
                     />
                     {config?.label}

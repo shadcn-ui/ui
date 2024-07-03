@@ -40,17 +40,11 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-1))",
   },
   mobile: {
     label: "Mobile",
-    colors: {
-      light: "#93c5fd",
-      dark: "#fda4af",
-    },
+    color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig
 
@@ -88,14 +82,14 @@ export default function Component() {
             <Bar
               dataKey="desktop"
               layout="vertical"
-              fill="var(--color-desktop)"
+              fill="var(--chart-desktop)"
               radius={4}
             >
               <LabelList
                 dataKey="month"
                 position="insideLeft"
                 offset={8}
-                className="fill-background"
+                className="fill-background mix-blend-difference"
                 fontSize={12}
               />
               <LabelList

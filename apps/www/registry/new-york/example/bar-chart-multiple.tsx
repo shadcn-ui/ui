@@ -22,14 +22,14 @@ const data = [
 const config = {
   desktop: {
     label: "Desktop",
-    colors: {
+    theme: {
       light: "#3b82f6",
       dark: "#93c5fd",
     },
   },
   mobile: {
     label: "Mobile",
-    colors: {
+    theme: {
       light: "#93c5fd",
       dark: "#27272a",
     },
@@ -61,8 +61,8 @@ export default function Component() {
           content={<ChartTooltipContent />}
         />
         <ChartLegend content={<ChartLegendContent />} />
-        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
-        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={8} />
+        <Bar dataKey="desktop" fill="var(--chart-desktop)" radius={8} />
+        <Bar dataKey="mobile" fill="var(--chart-mobile)" radius={8} />
       </BarChart>
     </ChartContainer>
   )

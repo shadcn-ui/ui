@@ -64,7 +64,7 @@ export default function Component() {
         <Line
           dataKey="desktop"
           type="linear"
-          stroke="var(--color-desktop)"
+          stroke="var(--chart-desktop)"
           strokeWidth={2}
           dot={{
             r: 3,
@@ -73,7 +73,7 @@ export default function Component() {
         <Line
           dataKey="mobile"
           type="linear"
-          stroke="var(--color-mobile)"
+          stroke="var(--chart-mobile)"
           strokeWidth={2}
           dot={{
             r: 0,

@@ -26,55 +26,37 @@ import {
 } from "@/registry/new-york/ui/chart"
 
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 90, fill: "var(--color-other)" },
+  { browser: "chrome", visitors: 275, fill: "var(--chart-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--chart-safari)" },
+  { browser: "firefox", visitors: 187, fill: "var(--chart-firefox)" },
+  { browser: "edge", visitors: 173, fill: "var(--chart-edge)" },
+  { browser: "other", visitors: 90, fill: "var(--chart-other)" },
 ]
 
 const chartConfig = {
   visitors: {
     label: "Visitors",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-2))",
   },
   chrome: {
     label: "Chrome",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-1))",
   },
   safari: {
     label: "Safari",
-    colors: {
-      light: "#60a5fa",
-      dark: "#fb7185",
-    },
+    color: "hsl(var(--chart-2))",
   },
   firefox: {
     label: "Firefox",
-    colors: {
-      light: "#93c5fd",
-      dark: "#fda4af",
-    },
+    color: "hsl(var(--chart-3))",
   },
   edge: {
     label: "Edge",
-    colors: {
-      light: "#bfdbfe",
-      dark: "#fecdd3",
-    },
+    color: "hsl(var(--chart-4))",
   },
   other: {
     label: "Other",
-    colors: {
-      light: "#dbeafe",
-      dark: "#ffe4e6",
-    },
+    color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig
 
@@ -109,10 +91,10 @@ export default function Component() {
             <Line
               dataKey="visitors"
               type="natural"
-              stroke="var(--color-visitors)"
+              stroke="var(--chart-visitors)"
               strokeWidth={2}
               dot={{
-                fill: "var(--color-visitors)",
+                fill: "var(--chart-visitors)",
               }}
               activeDot={{
                 r: 6,

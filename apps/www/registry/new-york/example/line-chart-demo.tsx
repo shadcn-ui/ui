@@ -72,13 +72,13 @@ export default function Component() {
             dataKey="desktop"
             type="natural"
             strokeWidth={2}
-            stroke="var(--color-desktop)"
+            stroke="var(--chart-desktop)"
             dot={{
               r: 0,
-              fill: "var(--color-desktop)",
+              fill: "var(--chart-desktop)",
             }}
             activeDot={{
-              fill: "var(--color-desktop)",
+              fill: "var(--chart-desktop)",
               stroke: "transparent",
             }}
           />

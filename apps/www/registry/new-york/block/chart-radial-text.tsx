@@ -20,7 +20,7 @@ import {
 import { ChartConfig, ChartContainer } from "@/registry/new-york/ui/chart"
 
 const chartData = [
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "safari", visitors: 200, fill: "var(--chart-safari)" },
 ]
 
 const chartConfig = {
@@ -29,10 +29,7 @@ const chartConfig = {
   },
   safari: {
     label: "Safari",
-    colors: {
-      light: "#60a5fa",
-      dark: "#fb7185",
-    },
+    color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig
 

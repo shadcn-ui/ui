@@ -59,7 +59,7 @@ export default function Component() {
         <Bar
           dataKey="desktop"
           layout="vertical"
-          fill="var(--color-desktop)"
+          fill="var(--chart-desktop)"
           radius={5}
         >
           <LabelList

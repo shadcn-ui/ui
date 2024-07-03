@@ -30,10 +30,7 @@ const chartData = [
 const chartConfig = {
   visitors: {
     label: "Visitors",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig
 
@@ -52,12 +49,16 @@ export default function Component() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="visitors" fill="var(--color-visitors)">
+            <Bar dataKey="visitors" fill="var(--chart-visitors)">
               <LabelList position="top" dataKey="month" fillOpacity={1} />
               {chartData.map((item) => (
                 <Cell
                   key={item.month}
-                  fillOpacity={item.visitors < 0 ? 0.5 : 1}
+                  fill={
+                    item.visitors > 0
+                      ? "hsl(var(--chart-1))"
+                      : "hsl(var(--chart-2))"
+                  }
                 />
               ))}
             </Bar>

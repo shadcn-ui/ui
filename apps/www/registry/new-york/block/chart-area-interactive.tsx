@@ -126,17 +126,11 @@ const chartConfig = {
   },
   desktop: {
     label: "Desktop",
-    colors: {
-      light: "#3b82f6",
-      dark: "#f43f5e",
-    },
+    color: "hsl(var(--chart-1))",
   },
   mobile: {
     label: "Mobile",
-    colors: {
-      light: "#93c5fd",
-      dark: "#fda4af",
-    },
+    color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig
 
@@ -189,24 +183,24 @@ export default function Component() {
               <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="var(--color-desktop)"
+                  stopColor="var(--chart-desktop)"
                   stopOpacity={0.8}
                 />
                 <stop
                   offset="95%"
-                  stopColor="var(--color-desktop)"
+                  stopColor="var(--chart-desktop)"
                   stopOpacity={0.1}
                 />
               </linearGradient>
               <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="var(--color-mobile)"
+                  stopColor="var(--chart-mobile)"
                   stopOpacity={0.8}
                 />
                 <stop
                   offset="95%"
-                  stopColor="var(--color-mobile)"
+                  stopColor="var(--chart-mobile)"
                   stopOpacity={0.1}
                 />
               </linearGradient>
@@ -244,14 +238,14 @@ export default function Component() {
               dataKey="mobile"
               type="natural"
               fill="url(#fillMobile)"
-              stroke="var(--color-mobile)"
+              stroke="var(--chart-mobile)"
               stackId="a"
             />
             <Area
               dataKey="desktop"
               type="natural"
               fill="url(#fillDesktop)"
-              stroke="var(--color-desktop)"
+              stroke="var(--chart-desktop)"
               stackId="a"
             />
             <ChartLegend content={<ChartLegendContent />} />
