@@ -79,12 +79,12 @@ export default function Component() {
               dataKey="desktop"
               stackId="a"
               cornerRadius={5}
-              fill="var(--chart-desktop)"
+              fill="var(--color-desktop)"
               className="stroke-transparent stroke-2"
             />
             <RadialBar
               dataKey="mobile"
-              fill="var(--chart-mobile)"
+              fill="var(--color-mobile)"
               stackId="a"
               cornerRadius={5}
               className="stroke-transparent stroke-2"

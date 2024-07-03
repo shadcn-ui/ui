@@ -31,11 +31,11 @@ import {
 } from "@/registry/new-york/ui/select"
 
 const desktopData = [
-  { month: "january", desktop: 186, fill: "var(--chart-january)" },
-  { month: "february", desktop: 305, fill: "var(--chart-february)" },
-  { month: "march", desktop: 237, fill: "var(--chart-march)" },
-  { month: "april", desktop: 173, fill: "var(--chart-april)" },
-  { month: "may", desktop: 209, fill: "var(--chart-may)" },
+  { month: "january", desktop: 186, fill: "var(--color-january)" },
+  { month: "february", desktop: 305, fill: "var(--color-february)" },
+  { month: "march", desktop: 237, fill: "var(--color-march)" },
+  { month: "april", desktop: 173, fill: "var(--color-april)" },
+  { month: "may", desktop: 209, fill: "var(--color-may)" },
 ]
 
 const chartConfig = {
@@ -110,7 +110,7 @@ export default function Component() {
                     <span
                       className={cn("flex h-3 w-3 shrink-0 rounded-sm")}
                       style={{
-                        backgroundColor: `var(--chart-${key})`,
+                        backgroundColor: `var(--color-${key})`,
                       }}
                     />
                     {config?.label}

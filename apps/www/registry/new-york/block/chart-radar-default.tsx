@@ -68,7 +68,7 @@ export default function Component() {
             <PolarGrid />
             <Radar
               dataKey="desktop"
-              fill="var(--chart-desktop)"
+              fill="var(--color-desktop)"
               fillOpacity={0.6}
             />
           </RadarChart>

@@ -55,7 +55,7 @@ export default function Component() {
           axisLine={false}
         />
         <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-        <Bar dataKey="desktop" fill="var(--chart-desktop)" radius={8} />
+        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
       </BarChart>
     </ChartContainer>
   )

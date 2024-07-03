@@ -65,7 +65,7 @@ export default function Component() {
             <Line
               dataKey="desktop"
               type="linear"
-              stroke="var(--chart-desktop)"
+              stroke="var(--color-desktop)"
               strokeWidth={2}
               dot={false}
             />

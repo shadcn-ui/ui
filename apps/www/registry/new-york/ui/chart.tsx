@@ -77,7 +77,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
             .filter(([_, { theme, color }]) => theme?.light || color)
             .map(([key, { theme, color }]) => {
               return `
-                --chart-${key}: ${theme?.light || color};
+                --color-${key}: ${theme?.light || color};
               `
             })
             .join("")}
@@ -87,7 +87,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
             .filter(([_, { theme, color }]) => theme?.dark || color)
             .map(([key, { theme, color }]) => {
               return `
-                --chart-${key}: ${theme?.dark || color};
+                --color-${key}: ${theme?.dark || color};
               `
             })
             .join("")}

@@ -69,9 +69,9 @@ export default function Component() {
             <Area
               dataKey="desktop"
               type="linear"
-              fill="var(--chart-desktop)"
+              fill="var(--color-desktop)"
               fillOpacity={0.4}
-              stroke="var(--chart-desktop)"
+              stroke="var(--color-desktop)"
             />
           </AreaChart>
         </ChartContainer>

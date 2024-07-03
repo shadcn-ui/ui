@@ -66,14 +66,14 @@ export default function Component() {
             <Line
               dataKey="desktop"
               type="monotone"
-              stroke="var(--chart-desktop)"
+              stroke="var(--color-desktop)"
               strokeWidth={2}
               dot={false}
             />
             <Line
               dataKey="mobile"
               type="monotone"
-              stroke="var(--chart-mobile)"
+              stroke="var(--color-mobile)"
               strokeWidth={2}
               dot={false}
             />

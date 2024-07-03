@@ -63,13 +63,13 @@ export default function Component() {
             <Bar
               dataKey="desktop"
               stackId="a"
-              fill="var(--chart-desktop)"
+              fill="var(--color-desktop)"
               radius={[0, 0, 4, 4]}
             />
             <Bar
               dataKey="mobile"
               stackId="a"
-              fill="var(--chart-mobile)"
+              fill="var(--color-mobile)"
               radius={[4, 4, 0, 0]}
             />
           </BarChart>

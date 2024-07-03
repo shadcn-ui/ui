@@ -69,7 +69,7 @@ export default function Component() {
             <PolarAngleAxis dataKey="month" />
             <Radar
               dataKey="desktop"
-              fill="var(--chart-desktop)"
+              fill="var(--color-desktop)"
               fillOpacity={0.6}
               dot={{
                 r: 4,

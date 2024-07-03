@@ -209,7 +209,7 @@ export default function Component() {
                 />
               }
             />
-            <Bar dataKey={activeChart} fill={`var(--chart-${activeChart})`} />
+            <Bar dataKey={activeChart} fill={`var(--color-${activeChart})`} />
           </BarChart>
         </ChartContainer>
       </CardContent>

@@ -51,13 +51,13 @@ export default function Component() {
           <RadarChart data={chartData}>
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <PolarGrid
-              className="fill-[--chart-desktop] opacity-20"
+              className="fill-[--color-desktop] opacity-20"
               gridType="circle"
             />
             <PolarAngleAxis dataKey="month" />
             <Radar
               dataKey="desktop"
-              fill="var(--chart-desktop)"
+              fill="var(--color-desktop)"
               fillOpacity={0.5}
             />
           </RadarChart>

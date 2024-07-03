@@ -20,7 +20,7 @@ import {
 import { ChartConfig, ChartContainer } from "@/registry/new-york/ui/chart"
 
 const chartData = [
-  { browser: "safari", visitors: 1260, fill: "var(--chart-safari)" },
+  { browser: "safari", visitors: 1260, fill: "var(--color-safari)" },
 ]
 
 const chartConfig = {

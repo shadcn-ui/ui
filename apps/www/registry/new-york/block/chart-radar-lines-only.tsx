@@ -61,16 +61,16 @@ export default function Component() {
             <PolarGrid radialLines={false} />
             <Radar
               dataKey="desktop"
-              fill="var(--chart-desktop)"
+              fill="var(--color-desktop)"
               fillOpacity={0}
-              stroke="var(--chart-desktop)"
+              stroke="var(--color-desktop)"
               strokeWidth={2}
             />
             <Radar
               dataKey="mobile"
-              fill="var(--chart-mobile)"
+              fill="var(--color-mobile)"
               fillOpacity={0}
-              stroke="var(--chart-mobile)"
+              stroke="var(--color-mobile)"
               strokeWidth={2}
             />
           </RadarChart>

@@ -30,7 +30,6 @@ const chartData = [
 const chartConfig = {
   visitors: {
     label: "Visitors",
-    color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig
 
@@ -47,9 +46,9 @@ export default function Component() {
             <CartesianGrid vertical={false} />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={<ChartTooltipContent hideLabel indicator="none" />}
             />
-            <Bar dataKey="visitors" fill="var(--chart-visitors)">
+            <Bar dataKey="visitors">
               <LabelList position="top" dataKey="month" fillOpacity={1} />
               {chartData.map((item) => (
                 <Cell

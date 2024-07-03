@@ -69,7 +69,7 @@ export default function Component() {
                 cursor={false}
                 content={<ChartTooltipContent indicator="line" />}
               />
-              <Bar dataKey="desktop" fill="var(--chart-desktop)" radius={8} />
+              <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
             </BarChart>
           </ChartContainer>
         </CardContent>
@@ -104,8 +104,8 @@ export default function Component() {
                 tickFormatter={(value) => value.slice(0, 3)}
               />
               <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-              <Bar dataKey="desktop" fill="var(--chart-desktop)" radius={4} />
-              <Bar dataKey="mobile" fill="var(--chart-mobile)" radius={4} />
+              <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+              <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
             </BarChart>
           </ChartContainer>
         </CardContent>
@@ -131,13 +131,13 @@ export default function Component() {
               <Bar
                 dataKey="desktop"
                 stackId="a"
-                fill="var(--chart-desktop)"
+                fill="var(--color-desktop)"
                 radius={[0, 0, 4, 4]}
               />
               <Bar
                 dataKey="mobile"
                 stackId="a"
-                fill="var(--chart-mobile)"
+                fill="var(--color-mobile)"
                 radius={[4, 4, 0, 0]}
               />
             </BarChart>
@@ -176,7 +176,7 @@ export default function Component() {
               <Bar
                 dataKey="desktop"
                 layout="vertical"
-                fill="var(--chart-desktop)"
+                fill="var(--color-desktop)"
                 radius={4}
               >
                 <LabelList

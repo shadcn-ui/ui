@@ -49,8 +49,8 @@ export default function Component() {
           axisLine={false}
           tickFormatter={(value) => value.slice(0, 3)}
         />
-        <Bar dataKey="desktop" fill="var(--chart-desktop)" radius={5} />
-        <Bar dataKey="mobile" fill="var(--chart-mobile)" radius={5} />
+        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={5} />
+        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={5} />
       </BarChart>
     </ChartContainer>
   )

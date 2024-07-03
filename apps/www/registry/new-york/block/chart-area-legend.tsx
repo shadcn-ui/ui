@@ -73,17 +73,17 @@ export default function Component() {
             <Area
               dataKey="mobile"
               type="natural"
-              fill="var(--chart-mobile)"
+              fill="var(--color-mobile)"
               fillOpacity={0.4}
-              stroke="var(--chart-mobile)"
+              stroke="var(--color-mobile)"
               stackId="a"
             />
             <Area
               dataKey="desktop"
               type="natural"
-              fill="var(--chart-desktop)"
+              fill="var(--color-desktop)"
               fillOpacity={0.4}
-              stroke="var(--chart-desktop)"
+              stroke="var(--color-desktop)"
               stackId="a"
             />
             <ChartLegend content={<ChartLegendContent />} />

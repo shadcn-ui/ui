@@ -71,10 +71,10 @@ export default function Component() {
             <PolarGrid />
             <Radar
               dataKey="desktop"
-              fill="var(--chart-desktop)"
+              fill="var(--color-desktop)"
               fillOpacity={0.6}
             />
-            <Radar dataKey="mobile" fill="var(--chart-mobile)" />
+            <Radar dataKey="mobile" fill="var(--color-mobile)" />
             <ChartLegend className="mt-8" content={<ChartLegendContent />} />
           </RadarChart>
         </ChartContainer>

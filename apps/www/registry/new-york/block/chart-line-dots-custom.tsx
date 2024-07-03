@@ -69,7 +69,7 @@ export default function Component() {
             <Line
               dataKey="desktop"
               type="natural"
-              stroke="var(--chart-desktop)"
+              stroke="var(--color-desktop)"
               strokeWidth={2}
               dot={({ cx, cy }) => {
                 const r = 24
@@ -80,7 +80,7 @@ export default function Component() {
                     width={r}
                     height={r}
                     fill="hsl(var(--background))"
-                    stroke="var(--chart-desktop)"
+                    stroke="var(--color-desktop)"
                   />
                 )
               }}

@@ -57,8 +57,8 @@ export default function Component() {
               tickFormatter={(value) => value.slice(0, 3)}
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <Bar dataKey="desktop" fill="var(--chart-desktop)" radius={4} />
-            <Bar dataKey="mobile" fill="var(--chart-mobile)" radius={4} />
+            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
           </BarChart>
         </ChartContainer>
       </CardContent>

@@ -61,8 +61,8 @@ export default function Component() {
           content={<ChartTooltipContent />}
         />
         <ChartLegend content={<ChartLegendContent />} />
-        <Bar dataKey="desktop" fill="var(--chart-desktop)" radius={8} />
-        <Bar dataKey="mobile" fill="var(--chart-mobile)" radius={8} />
+        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
+        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={8} />
       </BarChart>
     </ChartContainer>
   )

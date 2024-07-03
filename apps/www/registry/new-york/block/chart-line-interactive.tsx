@@ -212,7 +212,7 @@ export default function Component() {
             <Line
               dataKey={activeChart}
               type="monotone"
-              stroke={`var(--chart-${activeChart})`}
+              stroke={`var(--color-${activeChart})`}
               strokeWidth={2}
               dot={false}
             />
