@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, ArrowRightToLine } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { BlockCopyButton } from "@/components/block-copy-button"
@@ -37,20 +37,20 @@ export function ChartToolbar({
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="flex flex-col gap-0 p-0 sm:max-w-[700px] [&>button]:hidden"
+            className="flex flex-col gap-0 p-0 sm:max-w-[600px]"
           >
             <div className="[&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
               {children}
             </div>
-            <div className="relative h-full flex-1 overflow-hidden p-6">
+            <div className="relative h-full flex-1 overflow-hidden p-4">
               <BlockCopyButton
                 event="copy_block_code"
                 name={chart.name}
                 code={chart.code}
                 className="[&_svg]-h-3 absolute right-9 top-9 z-10 h-6 w-6 rounded-[6px] border-muted-foreground/50 bg-black text-white shadow-none [&_svg]:w-3"
               />
-              <div className="relative h-full overflow-auto rounded-xl">
-                <div className="relative overflow-auto ">
+              <div className="relative h-full overflow-auto rounded-lg">
+                <div className="relative overflow-auto">
                   <div>
                     <div
                       data-rehype-pretty-code-fragment
@@ -63,11 +63,6 @@ export function ChartToolbar({
                 </div>
               </div>
             </div>
-            <SheetFooter className="border-t p-4">
-              <SheetClose asChild>
-                <Button variant="outline">Close</Button>
-              </SheetClose>
-            </SheetFooter>
           </SheetContent>
         </Sheet>
         <Separator orientation="vertical" className="mx-0 hidden h-4 md:flex" />
