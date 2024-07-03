@@ -18,6 +18,11 @@ export function ChartsThemeSwitcher({
 }: React.ComponentProps<"div">) {
   const { theme } = useTheme()
   const [activeChartTheme, setActiveChartTheme] = React.useState(chartThemes[0])
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <>
@@ -31,7 +36,7 @@ export function ChartsThemeSwitcher({
           const isActive = chartTheme.name === activeChartTheme.name
           const isDarkTheme = ["Midnight"].includes(chartTheme.name)
           const cssVars =
-            theme === "dark"
+            mounted && theme === "dark"
               ? chartTheme.cssVars.dark
               : chartTheme.cssVars.light
           return (
@@ -42,7 +47,9 @@ export function ChartsThemeSwitcher({
                   className={cn(
                     "group flex h-10 w-10 items-center justify-center rounded-lg border-2",
                     isActive ? "border-[--color-1]" : "border-transparent",
-                    isDarkTheme && theme !== "dark" ? "invert-[1]" : ""
+                    mounted && isDarkTheme && theme !== "dark"
+                      ? "invert-[1]"
+                      : ""
                   )}
                   style={
                     {
