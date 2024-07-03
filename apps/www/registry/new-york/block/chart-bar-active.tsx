@@ -85,7 +85,7 @@ export default function Component() {
                 return (
                   <Rectangle
                     {...props}
-                    fillOpacity={0.5}
+                    fillOpacity={0.8}
                     stroke={props.payload.fill}
                     strokeDasharray={4}
                     strokeDashoffset={4}

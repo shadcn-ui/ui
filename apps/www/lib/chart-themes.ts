@@ -50,10 +50,10 @@ export const CHART_THEMES = [
       input: "240 3.7% 15.9%",
       ring: "240 4.9% 83.9%",
       "chart-1": "220 70% 50%",
-      "chart-2": "160 60% 45%",
+      "chart-5": "160 60% 45%",
       "chart-3": "30 80% 55%",
       "chart-4": "280 65% 60%",
-      "chart-5": "340 75% 55%",
+      "chart-2": "340 75% 55%",
     },
     fontFamily: {
       heading: {

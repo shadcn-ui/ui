@@ -72,9 +72,9 @@ export default function Component() {
               data={chartData}
               dataKey="visitors"
               labelLine={false}
-              label={({ payload, ...props }) => {
+              label={({ payload }) => {
                 return (
-                  <text {...props} fill="hsla(var(--foreground))">
+                  <text fill="hsla(var(--foreground))">
                     {`${
                       chartConfig[payload.browser as keyof typeof chartConfig]
                         ?.label

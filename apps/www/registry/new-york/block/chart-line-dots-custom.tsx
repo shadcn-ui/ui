@@ -71,10 +71,11 @@ export default function Component() {
               type="natural"
               stroke="var(--color-desktop)"
               strokeWidth={2}
-              dot={({ cx, cy }) => {
+              dot={({ cx, cy, payload }) => {
                 const r = 24
                 return (
                   <GitCommitVertical
+                    key={payload.month}
                     x={cx - r / 2}
                     y={cy - r / 2}
                     width={r}
