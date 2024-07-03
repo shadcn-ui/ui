@@ -45,6 +45,19 @@ const frameworks = [
 export default function ComboboxDemo() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+
+  const handleKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setOpen(true);
+
+      if (buttonRef.current) {
+        buttonRef.current.focus(); 
+      }
+    }
+  }, [buttonRef]); 
+
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -54,6 +67,8 @@ export default function ComboboxDemo() {
           role="combobox"
           aria-expanded={open}
           className="w-[200px] justify-between"
+          onKeyDown={handleKeyDown}
+
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
