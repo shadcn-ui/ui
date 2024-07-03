@@ -1,14 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import {
-  CartesianGrid,
-  LabelList,
-  Line,
-  LineChart,
-  Tooltip,
-  XAxis,
-} from "recharts"
+import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis } from "recharts"
 
 import {
   Card,
@@ -21,6 +14,8 @@ import {
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
@@ -55,59 +50,47 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart - Label</CardTitle>
+        <CardTitle>Bar Chart - Interactive</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <LineChart
-            data={chartData}
-            margin={{
-              top: 20,
-              left: 12,
-              right: 12,
-            }}
-          >
+          <BarChart data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
               tickLine={false}
+              tickMargin={10}
               axisLine={false}
-              tickMargin={8}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
-            />
-            <Line
+            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+            <ChartLegend content={<ChartLegendContent />} />
+            <Bar
               dataKey="desktop"
-              type="natural"
-              stroke="var(--color-desktop)"
-              strokeWidth={2}
-              dot={{
-                fill: "var(--color-desktop)",
-              }}
-              activeDot={{
-                r: 6,
-              }}
-            >
-              <LabelList
-                position="top"
-                offset={12}
-                className="fill-foreground"
-                fontSize={12}
-              />
-            </Line>
-          </LineChart>
+              stackId="a"
+              fill="var(--color-desktop)"
+              radius={[0, 0, 4, 4]}
+            />
+            <Bar
+              dataKey="mobile"
+              stackId="a"
+              fill="var(--color-mobile)"
+              radius={[4, 4, 0, 0]}
+            />
+          </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+      <CardFooter>
+        <div className="flex w-full items-start gap-2 text-sm">
+          <div className="grid gap-2">
+            <div className="flex items-center gap-2 font-medium leading-none">
+              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+            </div>
+            <div className="flex items-center gap-2 leading-none text-muted-foreground">
+              Showing total visitors for the last 6 months
+            </div>
+          </div>
         </div>
       </CardFooter>
     </Card>

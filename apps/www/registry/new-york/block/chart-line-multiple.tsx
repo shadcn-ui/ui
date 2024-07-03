@@ -56,9 +56,8 @@ export default function Component() {
           <LineChart
             data={chartData}
             margin={{
-              top: 0,
               left: 12,
-              right: 10,
+              right: 12,
             }}
           >
             <CartesianGrid vertical={false} />
@@ -74,14 +73,14 @@ export default function Component() {
               dataKey="desktop"
               type="monotone"
               stroke="var(--color-desktop)"
-              strokeWidth={3}
+              strokeWidth={2}
               dot={false}
             />
             <Line
               dataKey="mobile"
               type="monotone"
               stroke="var(--color-mobile)"
-              strokeWidth={3}
+              strokeWidth={2}
               dot={false}
             />
           </LineChart>

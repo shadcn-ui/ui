@@ -26,27 +26,54 @@ import {
 } from "@/registry/new-york/ui/chart"
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
+  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
+  { browser: "other", visitors: 90, fill: "var(--color-other)" },
 ]
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  visitors: {
+    label: "Visitors",
     colors: {
       light: "#3b82f6",
       dark: "#f43f5e",
     },
   },
-  mobile: {
-    label: "Mobile",
+  chrome: {
+    label: "Chrome",
+    colors: {
+      light: "#3b82f6",
+      dark: "#f43f5e",
+    },
+  },
+  safari: {
+    label: "Safari",
+    colors: {
+      light: "#60a5fa",
+      dark: "#fb7185",
+    },
+  },
+  firefox: {
+    label: "Firefox",
     colors: {
       light: "#93c5fd",
       dark: "#fda4af",
+    },
+  },
+  edge: {
+    label: "Edge",
+    colors: {
+      light: "#bfdbfe",
+      dark: "#fecdd3",
+    },
+  },
+  other: {
+    label: "Other",
+    colors: {
+      light: "#dbeafe",
+      dark: "#ffe4e6",
     },
   },
 } satisfies ChartConfig
@@ -55,7 +82,7 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart - Label</CardTitle>
+        <CardTitle>Line Chart - Custom Label</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
@@ -63,30 +90,29 @@ export default function Component() {
           <LineChart
             data={chartData}
             margin={{
-              top: 20,
-              left: 12,
-              right: 12,
+              top: 24,
+              left: 24,
+              right: 24,
             }}
           >
             <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
+              content={
+                <ChartTooltipContent
+                  indicator="line"
+                  nameKey="visitors"
+                  hideLabel
+                />
+              }
             />
             <Line
-              dataKey="desktop"
+              dataKey="visitors"
               type="natural"
-              stroke="var(--color-desktop)"
+              stroke="var(--color-visitors)"
               strokeWidth={2}
               dot={{
-                fill: "var(--color-desktop)",
+                fill: "var(--color-visitors)",
               }}
               activeDot={{
                 r: 6,
@@ -97,6 +123,10 @@ export default function Component() {
                 offset={12}
                 className="fill-foreground"
                 fontSize={12}
+                dataKey="browser"
+                formatter={(value: keyof typeof chartConfig) =>
+                  chartConfig[value]?.label
+                }
               />
             </Line>
           </LineChart>

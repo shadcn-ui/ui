@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 
@@ -19,7 +18,6 @@ const COLOR_PALETTE = [
 export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
   const [BASE_LIGHT, setBaseLight] = React.useState("#3b82f6")
   const [BASE_DARK, setBaseDark] = React.useState("#a3e635")
-  const { theme } = useTheme()
 
   const cssVars = React.useMemo(() => {
     if (BASE_LIGHT === "colors" || BASE_DARK === "colors") {
@@ -27,6 +25,7 @@ export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
         light: {
           "--color-desktop": `#2a9d8f`,
           "--color-mobile": `#e76f51`,
+          "--color-visitors": `#2a9d8f`,
           "--color-chrome": "#264653",
           "--color-safari": "#2a9d8f",
           "--color-firefox": "#e9c46a",
@@ -41,6 +40,7 @@ export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
         dark: {
           "--color-desktop": `#2a9d8f`,
           "--color-mobile": `#e76f51`,
+          "--color-visitors": `#2a9d8f`,
           "--color-chrome": "#264653",
           "--color-safari": "#2a9d8f",
           "--color-firefox": "#e9c46a",
@@ -58,6 +58,7 @@ export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
       light: {
         "--color-desktop": BASE_LIGHT,
         "--color-mobile": `${BASE_LIGHT}80`,
+        "--color-visitors": BASE_LIGHT,
         "--color-chrome": BASE_LIGHT,
         "--color-safari": `${BASE_LIGHT}CC`,
         "--color-firefox": `${BASE_LIGHT}99`,
@@ -72,6 +73,7 @@ export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
       dark: {
         "--color-desktop": BASE_DARK,
         "--color-mobile": `${BASE_DARK}80`,
+        "--color-visitors": BASE_DARK,
         "--color-chrome": BASE_DARK,
         "--color-safari": `${BASE_DARK}CC`,
         "--color-firefox": `${BASE_DARK}99`,

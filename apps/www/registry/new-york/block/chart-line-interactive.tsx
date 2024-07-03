@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
+import { cn } from "@/lib/utils"
 import {
   Card,
   CardContent,
@@ -13,18 +14,9 @@ import {
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/new-york/ui/select"
 
 const chartData = [
   { date: "2024-04-01", desktop: 222, mobile: 150 },
@@ -121,8 +113,8 @@ const chartData = [
 ]
 
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
+  views: {
+    label: "Page Views",
   },
   desktop: {
     label: "Desktop",
@@ -141,83 +133,58 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export default function Component() {
-  const [timeRange, setTimeRange] = React.useState("90d")
+  const [activeChart, setActiveChart] =
+    React.useState<keyof typeof chartConfig>("desktop")
 
-  const filteredData = chartData.filter((item) => {
-    const date = new Date(item.date)
-    const now = new Date()
-    let daysToSubtract = 90
-    if (timeRange === "30d") {
-      daysToSubtract = 30
-    } else if (timeRange === "7d") {
-      daysToSubtract = 7
-    }
-    now.setDate(now.getDate() - daysToSubtract)
-    return date >= now
-  })
+  const total = React.useMemo(
+    () => ({
+      desktop: chartData.reduce((acc, curr) => acc + curr.desktop, 0),
+      mobile: chartData.reduce((acc, curr) => acc + curr.mobile, 0),
+    }),
+    []
+  )
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center">
-        <div className="grid flex-1 gap-1">
-          <CardTitle>Area Chart - Interactive</CardTitle>
+      <CardHeader className="flex flex-row items-stretch space-y-0 border-b p-0">
+        <div className="grid flex-1 gap-1 px-6 py-5">
+          <CardTitle>Line Chart - Interactive</CardTitle>
           <CardDescription>
             Showing total visitors for the last 3 months
           </CardDescription>
         </div>
-        <Select value={timeRange} onValueChange={setTimeRange}>
-          <SelectTrigger className="ml-auto w-[160px] rounded-lg">
-            <SelectValue placeholder="Last 3 months" />
-          </SelectTrigger>
-          <SelectContent className="rounded-xl">
-            <SelectItem value="90d" className="rounded-lg">
-              Last 3 months
-            </SelectItem>
-            <SelectItem value="30d" className="rounded-lg">
-              Last 30 days
-            </SelectItem>
-            <SelectItem value="7d" className="rounded-lg">
-              Last 7 days
-            </SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="flex">
+          {["desktop", "mobile"].map((key) => {
+            const chart = key as keyof typeof chartConfig
+            return (
+              <button
+                key={chart}
+                className={cn(
+                  "flex flex-col justify-center gap-1 border-l px-8 text-left",
+                  activeChart === chart && "bg-muted/50"
+                )}
+                onClick={() => setActiveChart(chart)}
+              >
+                <span className="text-xs text-muted-foreground">
+                  {chartConfig[chart].label}
+                </span>
+                <span className="text-3xl font-bold leading-none">
+                  {total[key as keyof typeof total].toLocaleString()}
+                </span>
+              </button>
+            )
+          })}
+        </div>
       </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig} className="max-h-[300px]">
-          <AreaChart
-            data={filteredData}
+      <CardContent className="pt-6">
+        <ChartContainer config={chartConfig} className="max-h-[250px]">
+          <LineChart
+            data={chartData}
             margin={{
-              left: 10,
-              right: 0,
-              top: 10,
+              left: 12,
+              right: 12,
             }}
           >
-            <defs>
-              <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-desktop)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-desktop)"
-                  stopOpacity={0.1}
-                />
-              </linearGradient>
-              <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-mobile)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-mobile)"
-                  stopOpacity={0.1}
-                />
-              </linearGradient>
-            </defs>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="date"
@@ -234,35 +201,28 @@ export default function Component() {
               }}
             />
             <ChartTooltip
-              cursor={false}
               content={
                 <ChartTooltipContent
+                  className="w-[150px]"
+                  nameKey="views"
                   labelFormatter={(value) => {
                     return new Date(value).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
+                      year: "numeric",
                     })
                   }}
-                  indicator="dot"
                 />
               }
             />
-            <Area
-              dataKey="mobile"
-              type="natural"
-              fill="url(#fillMobile)"
-              stroke="var(--color-mobile)"
-              stackId="a"
+            <Line
+              dataKey={activeChart}
+              type="monotone"
+              stroke={`var(--color-${activeChart})`}
+              strokeWidth={2}
+              dot={false}
             />
-            <Area
-              dataKey="desktop"
-              type="natural"
-              fill="url(#fillDesktop)"
-              stroke="var(--color-desktop)"
-              stackId="a"
-            />
-            <ChartLegend content={<ChartLegendContent />} />
-          </AreaChart>
+          </LineChart>
         </ChartContainer>
       </CardContent>
     </Card>

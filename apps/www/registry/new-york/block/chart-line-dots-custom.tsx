@@ -1,7 +1,7 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Line, LineChart, Tooltip, XAxis } from "recharts"
+import { GitCommitVertical, TrendingUp } from "lucide-react"
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
 import {
   Card,
@@ -48,7 +48,7 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart - Curved</CardTitle>
+        <CardTitle>Line Chart - Custom Dots</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
@@ -56,9 +56,8 @@ export default function Component() {
           <LineChart
             data={chartData}
             margin={{
-              top: 0,
               left: 12,
-              right: 10,
+              right: 12,
             }}
           >
             <CartesianGrid vertical={false} />
@@ -77,22 +76,30 @@ export default function Component() {
               dataKey="desktop"
               type="natural"
               stroke="var(--color-desktop)"
-              strokeWidth={3}
-              dot={false}
+              strokeWidth={2}
+              dot={({ cx, cy }) => {
+                const r = 24
+                return (
+                  <GitCommitVertical
+                    x={cx - r / 2}
+                    y={cy - r / 2}
+                    width={r}
+                    height={r}
+                    fill="hsl(var(--background))"
+                    stroke="var(--color-desktop)"
+                  />
+                )
+              }}
             />
           </LineChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter>
-        <div className="flex w-full items-start gap-2 text-sm">
-          <div className="grid gap-2">
-            <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-            </div>
-            <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Showing total visitors for the last 6 months
-            </div>
-          </div>
+      <CardFooter className="flex-col items-start gap-2 text-sm">
+        <div className="flex gap-2 font-medium leading-none">
+          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+        </div>
+        <div className="leading-none text-muted-foreground">
+          Showing total visitors for the last 6 months
         </div>
       </CardFooter>
     </Card>

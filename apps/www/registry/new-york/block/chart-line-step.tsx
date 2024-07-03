@@ -1,14 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import {
-  CartesianGrid,
-  LabelList,
-  Line,
-  LineChart,
-  Tooltip,
-  XAxis,
-} from "recharts"
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
 import {
   Card,
@@ -26,12 +19,12 @@ import {
 } from "@/registry/new-york/ui/chart"
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { month: "January", desktop: 186 },
+  { month: "February", desktop: 305 },
+  { month: "March", desktop: 237 },
+  { month: "April", desktop: 73 },
+  { month: "May", desktop: 209 },
+  { month: "June", desktop: 214 },
 ]
 
 const chartConfig = {
@@ -42,20 +35,13 @@ const chartConfig = {
       dark: "#f43f5e",
     },
   },
-  mobile: {
-    label: "Mobile",
-    colors: {
-      light: "#93c5fd",
-      dark: "#fda4af",
-    },
-  },
 } satisfies ChartConfig
 
 export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart - Label</CardTitle>
+        <CardTitle>Line Chart - Step</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
@@ -63,7 +49,6 @@ export default function Component() {
           <LineChart
             data={chartData}
             margin={{
-              top: 20,
               left: 12,
               right: 12,
             }}
@@ -78,27 +63,15 @@ export default function Component() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
+              content={<ChartTooltipContent hideLabel />}
             />
             <Line
               dataKey="desktop"
-              type="natural"
+              type="step"
               stroke="var(--color-desktop)"
               strokeWidth={2}
-              dot={{
-                fill: "var(--color-desktop)",
-              }}
-              activeDot={{
-                r: 6,
-              }}
-            >
-              <LabelList
-                position="top"
-                offset={12}
-                className="fill-foreground"
-                fontSize={12}
-              />
-            </Line>
+              dot={false}
+            />
           </LineChart>
         </ChartContainer>
       </CardContent>

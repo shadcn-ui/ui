@@ -21,9 +21,9 @@ export default function ChartsPage() {
             id="area-chart"
             className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           >
-            <Charts.ChartAreaSimple />
-            <Charts.ChartAreaSimpleLinear />
-            <Charts.ChartAreaSimpleStep />
+            <Charts.ChartAreaDefault />
+            <Charts.ChartAreaLinear />
+            <Charts.ChartAreaStep />
             <Charts.ChartAreaStacked />
             <Charts.ChartAreaStackedExpand />
             <Charts.ChartAreaLegend />
@@ -49,11 +49,18 @@ export default function ChartsPage() {
             id="line-chart"
             className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           >
-            <Charts.ChartLineSimple />
-            <Charts.ChartLineCurved />
+            <Charts.ChartLineDefault />
+            <Charts.ChartLineLinear />
+            <Charts.ChartLineStep />
             <Charts.ChartLineMultiple />
             <Charts.ChartLineDots />
+            <Charts.ChartLineDotsCustom />
+            <Charts.ChartLineDotsColors />
             <Charts.ChartLineLabel />
+            <Charts.ChartLineLabelCustom />
+            <div className="col-span-3">
+              <Charts.ChartLineInteractive />
+            </div>
           </div>
           <Separator />
           <div
