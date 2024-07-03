@@ -342,7 +342,7 @@ importers:
         version: 6.1.1
       rehype-pretty-code:
         specifier: ^0.6.0
-        version: 0.6.0(shiki@1.6.1)
+        version: 0.6.0(shiki@1.10.1)
       rehype-slug:
         specifier: ^5.1.0
         version: 5.1.0
@@ -359,8 +359,8 @@ importers:
         specifier: ^4.1.3
         version: 4.4.1
       shiki:
-        specifier: ^1.1.7
-        version: 1.6.1
+        specifier: ^1.10.1
+        version: 1.10.1
       tailwindcss:
         specifier: 3.3.7
         version: 3.3.7(ts-node@10.9.2(@types/node@17.0.45)(typescript@5.4.5))
@@ -2550,6 +2550,9 @@ packages:
 
   '@shikijs/compat@1.6.1':
     resolution: {integrity: sha512-8HAXddHKTOx7sxEjV70/+RjEMQ2liq7owz8S1fz8b5g98QBmRmfU8Gu97b4rcJ3CgR2aVahEhzbAR+ZABQ4cnw==}
+
+  '@shikijs/core@1.10.1':
+    resolution: {integrity: sha512-qdiJS5a/QGCff7VUFIqd0hDdWly9rDp8lhVmXVrS11aazX8LOTRLHAXkkEeONNsS43EcCd7gax9LLoOz4vlFQA==}
 
   '@shikijs/core@1.6.1':
     resolution: {integrity: sha512-CqYyepN4SnBopaoXYwng4NO8riB5ask/LTCkhOFq+GNGtr2X+aKeD767eYdqYukeixEUvv4bXdyTYVaogj7KBw==}
@@ -5843,6 +5846,9 @@ packages:
   shell-quote@1.8.1:
     resolution: {integrity: sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==}
 
+  shiki@1.10.1:
+    resolution: {integrity: sha512-uafV7WCgN4YYrccH6yxpnps6k38sSTlFRrwc4jycWmhWxJIm9dPrk+XkY1hZ2t0I7jmacMNb15Lf2fspa/Y3lg==}
+
   shiki@1.6.1:
     resolution: {integrity: sha512-1Pu/A1rtsG6HZvQm4W0NExQ45e02og+rPog7PDaFDiMumZgOYnZIu4JtGQeAIfMwdbKSjJQoCUr79vDLKUUxWA==}
 
@@ -8889,6 +8895,8 @@ snapshots:
       '@shikijs/core': 1.6.1
       '@shikijs/transformers': 1.6.1
       shiki: 1.6.1
+
+  '@shikijs/core@1.10.1': {}
 
   '@shikijs/core@1.6.1': {}
 
@@ -12664,12 +12672,12 @@ snapshots:
       parse5: 6.0.1
       unified: 10.1.2
 
-  rehype-pretty-code@0.6.0(shiki@1.6.1):
+  rehype-pretty-code@0.6.0(shiki@1.10.1):
     dependencies:
       hash-obj: 4.0.0
       nanoid: 4.0.2
       parse-numeric-range: 1.3.0
-      shiki: 1.6.1
+      shiki: 1.10.1
 
   rehype-slug@5.1.0:
     dependencies:
@@ -12947,6 +12955,10 @@ snapshots:
   shebang-regex@3.0.0: {}
 
   shell-quote@1.8.1: {}
+
+  shiki@1.10.1:
+    dependencies:
+      '@shikijs/core': 1.10.1
 
   shiki@1.6.1:
     dependencies:
