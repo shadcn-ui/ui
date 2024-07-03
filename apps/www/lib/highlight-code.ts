@@ -7,7 +7,7 @@ import { getHighlighter } from "shiki"
 // Highlighting is failing in server components.
 // Disabling this in development.
 // TODO: Remove this when we figure out the issue.
-const highlightCodeEnabled = process.env.NODE_ENV !== "development"
+const highlightCodeEnabled = false //process.env.NODE_ENV !== "development"
 
 export async function highlightCode(code: string) {
   if (!highlightCodeEnabled) {
