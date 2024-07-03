@@ -13,13 +13,20 @@ import {
 
 const chartThemes = getChartThemes()
 
-export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
+export function ChartsThemeSwitcher({
+  className,
+}: React.ComponentProps<"div">) {
   const { theme } = useTheme()
   const [activeChartTheme, setActiveChartTheme] = React.useState(chartThemes[0])
 
   return (
     <>
-      <div className={cn("flex flex-col items-center gap-1 py-4", className)}>
+      <div
+        className={cn(
+          "flex items-center justify-center gap-1 py-4 md:flex-col md:justify-start",
+          className
+        )}
+      >
         {chartThemes.map((chartTheme) => {
           const isActive = chartTheme.name === activeChartTheme.name
           const isDarkTheme = ["Midnight"].includes(chartTheme.name)

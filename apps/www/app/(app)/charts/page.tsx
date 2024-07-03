@@ -1,6 +1,6 @@
 import { ChartDisplay } from "@/components/chart-display"
 import { ChartsNav } from "@/components/charts-nav"
-import { ChartsToolbar } from "@/components/charts-toolbar"
+import { ChartsThemeSwitcher } from "@/components/charts-theme-switcher"
 import { Separator } from "@/registry/new-york/ui/separator"
 import * as Charts from "@/app/(app)/charts/charts"
 
@@ -8,6 +8,7 @@ export default function ChartsPage() {
   return (
     <div>
       <div className="flex items-start gap-6">
+        <ChartsThemeSwitcher className="fixed inset-x-0 bottom-0 z-30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:sticky md:bottom-auto md:top-20" />
         <div className="grid flex-1 gap-12">
           <div className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
             <ChartDisplay name="chart-area-stacked">
@@ -20,7 +21,7 @@ export default function ChartsPage() {
               <Charts.ChartPieDonutText />
             </ChartDisplay>
           </div>
-          <div>
+          <div className="hidden md:block">
             <ChartsNav />
             <Separator />
           </div>
@@ -55,7 +56,7 @@ export default function ChartsPage() {
             <ChartDisplay name="chart-area-axes">
               <Charts.ChartAreaAxes />
             </ChartDisplay>
-            <div className="col-span-3">
+            <div className="md:col-span-2 lg:col-span-3">
               <ChartDisplay name="chart-area-interactive">
                 <Charts.ChartAreaInteractive />
               </ChartDisplay>
@@ -93,7 +94,7 @@ export default function ChartsPage() {
             <ChartDisplay name="chart-bar-negative">
               <Charts.ChartBarNegative />
             </ChartDisplay>
-            <div className="col-span-3">
+            <div className="md:col-span-2 lg:col-span-3">
               <ChartDisplay name="chart-bar-interactive">
                 <Charts.ChartBarInteractive />
               </ChartDisplay>
@@ -131,7 +132,7 @@ export default function ChartsPage() {
             <ChartDisplay name="chart-line-label-custom">
               <Charts.ChartLineLabelCustom />
             </ChartDisplay>
-            <div className="col-span-3">
+            <div className="md:col-span-2 lg:col-span-3">
               <ChartDisplay name="chart-line-interactive">
                 <Charts.ChartLineInteractive />
               </ChartDisplay>
@@ -247,7 +248,6 @@ export default function ChartsPage() {
             </ChartDisplay>
           </div>
         </div>
-        <ChartsToolbar className="sticky top-20" />
       </div>
     </div>
   )
