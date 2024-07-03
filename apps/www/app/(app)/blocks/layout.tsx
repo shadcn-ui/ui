@@ -29,10 +29,10 @@ export default function BlocksLayout({
           Beautifully designed. Copy and paste into your apps. Open Source.
         </PageHeaderDescription>
         <PageActions>
-          <Button asChild>
+          <Button asChild size="sm">
             <a href="#blocks">Browse</a>
           </Button>
-          <Button asChild variant="outline">
+          <Button asChild variant="ghost" size="sm">
             <a
               href="https://github.com/shadcn-ui/ui/discussions/new?category=blocks-request"
               target="_blank"

@@ -40,7 +40,8 @@ export function ChartToolbar({
             code: chart.code,
             style: chart.style,
           }}
-          className="h-6"
+          className="h-6 disabled:cursor-not-allowed disabled:opacity-100"
+          disabled
         />
       </div>
     </div>

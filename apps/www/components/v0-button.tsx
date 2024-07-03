@@ -125,7 +125,7 @@ export function V0Button({
         }
       }}
     >
-      <Form size={size} className={className} {...props} />
+      <Form size={size} className={className} disabled={disabled} {...props} />
     </form>
   )
 }
