@@ -101,7 +101,7 @@ export default function Component() {
               dataKey="mobile"
               type="natural"
               fill="url(#fillMobile)"
-              fillOpacity={0.2}
+              fillOpacity={0.4}
               stroke="var(--color-mobile)"
               stackId="a"
             />
@@ -109,7 +109,7 @@ export default function Component() {
               dataKey="desktop"
               type="natural"
               fill="url(#fillDesktop)"
-              fillOpacity={0.2}
+              fillOpacity={0.4}
               stroke="var(--color-desktop)"
               stackId="a"
             />

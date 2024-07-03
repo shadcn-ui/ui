@@ -52,7 +52,7 @@ export default function Component() {
             data={chartData}
             endAngle={180}
             innerRadius={80}
-            outerRadius={140}
+            outerRadius={130}
           >
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
@@ -86,14 +86,14 @@ export default function Component() {
               stackId="a"
               cornerRadius={5}
               fill="var(--color-desktop)"
-              className="stroke-background stroke-2"
+              className="stroke-transparent stroke-2"
             />
             <RadialBar
               dataKey="mobile"
               fill="var(--color-mobile)"
               stackId="a"
               cornerRadius={5}
-              className="stroke-background stroke-2"
+              className="stroke-transparent stroke-2"
             />
           </RadialBarChart>
         </ChartContainer>

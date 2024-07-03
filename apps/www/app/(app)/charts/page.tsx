@@ -8,10 +8,10 @@ export default function ChartsPage() {
     <div>
       <div className="flex items-start gap-6">
         <div className="grid flex-1 gap-12">
-          <div className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8">
+          <div className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8">
             <Charts.ChartAreaStacked />
             <Charts.ChartBarMultiple />
-            <Charts.ChartBarHorizontal />
+            <Charts.ChartPieDonutText />
           </div>
           <div>
             <ChartsNav />
@@ -19,7 +19,7 @@ export default function ChartsPage() {
           </div>
           <div
             id="area-chart"
-            className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
+            className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           >
             <Charts.ChartAreaDefault />
             <Charts.ChartAreaLinear />
@@ -37,7 +37,7 @@ export default function ChartsPage() {
           <Separator />
           <div
             id="bar-chart"
-            className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
+            className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           >
             <Charts.ChartBarDefault />
             <Charts.ChartBarHorizontal />
@@ -55,7 +55,7 @@ export default function ChartsPage() {
           <Separator />
           <div
             id="line-chart"
-            className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
+            className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           >
             <Charts.ChartLineDefault />
             <Charts.ChartLineLinear />
@@ -73,7 +73,7 @@ export default function ChartsPage() {
           <Separator />
           <div
             id="pie-chart"
-            className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
+            className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           >
             <Charts.ChartPieSimple />
             <Charts.ChartPieSimpleSeparatorNone />
@@ -90,7 +90,7 @@ export default function ChartsPage() {
           <Separator />
           <div
             id="radar-chart"
-            className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
+            className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           >
             <Charts.ChartRadarDefault />
             <Charts.ChartRadarDots />
@@ -110,7 +110,7 @@ export default function ChartsPage() {
           <Separator />
           <div
             id="radial-chart"
-            className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
+            className="chart-wrapper grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           >
             <Charts.ChartRadialSimple />
             <Charts.ChartRadialLabel />

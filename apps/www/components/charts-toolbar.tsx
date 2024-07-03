@@ -2,130 +2,97 @@
 
 import * as React from "react"
 
+import { CHART_THEMES, ChartTheme } from "@/lib/chart-themes"
+import { themeColorsToCssVariables } from "@/lib/charts"
 import { cn } from "@/lib/utils"
-
-const COLOR_PALETTE = [
-  "#111111",
-  "#3b82f6",
-  "#f43f5e",
-  "#00f03f",
-  "#f97316",
-  "#9d7e55",
-  "#82bd69",
-  "#c6afa3",
-]
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/registry/new-york/ui/tooltip"
 
 export function ChartsToolbar({ className }: React.ComponentProps<"div">) {
-  const [BASE_LIGHT, setBaseLight] = React.useState("#3b82f6")
-  const [BASE_DARK, setBaseDark] = React.useState("#a3e635")
+  const [activeTheme, setActiveTheme] = React.useState<ChartTheme>(
+    CHART_THEMES[1]
+  )
 
   const cssVars = React.useMemo(() => {
-    if (BASE_LIGHT === "colors" || BASE_DARK === "colors") {
-      return {
-        light: {
-          "--color-desktop": `#2a9d8f`,
-          "--color-mobile": `#e76f51`,
-          "--color-visitors": `#2a9d8f`,
-          "--color-chrome": "#264653",
-          "--color-safari": "#2a9d8f",
-          "--color-firefox": "#e9c46a",
-          "--color-edge": "#e76f51",
-          "--color-other": "#f4a261",
-          "--color-january": "#264653",
-          "--color-february": "#2a9d8f",
-          "--color-march": "#e9c46a",
-          "--color-april": "#e76f51",
-          "--color-may": "#f4a261",
-        },
-        dark: {
-          "--color-desktop": `#2a9d8f`,
-          "--color-mobile": `#e76f51`,
-          "--color-visitors": `#2a9d8f`,
-          "--color-chrome": "#264653",
-          "--color-safari": "#2a9d8f",
-          "--color-firefox": "#e9c46a",
-          "--color-edge": "#e76f51",
-          "--color-other": "#f4a261",
-          "--color-january": "#264653",
-          "--color-february": "#2a9d8f",
-          "--color-march": "#e9c46a",
-          "--color-april": "#e76f51",
-          "--color-may": "#f4a261",
-        },
-      }
+    const { colors } = activeTheme
+    const cssVars = themeColorsToCssVariables(colors)
+
+    for (const key of Array.from({ length: 5 }, (_, index) => index)) {
+      cssVars[`--chart${key + 1}`] = `hsl(${
+        cssVars[`--chart${key + 1}`] ||
+        `${cssVars["--primary"]} / ${100 - key * 20}%`
+      })`
     }
+
     return {
       light: {
-        "--color-desktop": BASE_LIGHT,
-        "--color-mobile": `${BASE_LIGHT}80`,
-        "--color-visitors": BASE_LIGHT,
-        "--color-chrome": BASE_LIGHT,
-        "--color-safari": `${BASE_LIGHT}CC`,
-        "--color-firefox": `${BASE_LIGHT}99`,
-        "--color-edge": `${BASE_LIGHT}80`,
-        "--color-other": `${BASE_LIGHT}66`,
-        "--color-january": BASE_LIGHT,
-        "--color-february": `${BASE_LIGHT}CC`,
-        "--color-march": `${BASE_LIGHT}99`,
-        "--color-april": `${BASE_LIGHT}80`,
-        "--color-may": `${BASE_LIGHT}66`,
+        ...cssVars,
+        "--color-desktop": cssVars["--chart1"],
+        "--color-mobile": cssVars["--chart3"],
+        "--color-visitors": cssVars["--chart1"],
+        "--color-chrome": cssVars["--chart1"],
+        "--color-safari": cssVars["--chart2"],
+        "--color-firefox": cssVars["--chart3"],
+        "--color-edge": cssVars["--chart4"],
+        "--color-other": cssVars["--chart5"],
+        "--color-january": cssVars["--chart1"],
+        "--color-february": cssVars["--chart2"],
+        "--color-march": cssVars["--chart3"],
+        "--color-april": cssVars["--chart4"],
+        "--color-may": cssVars["--chart5"],
       },
       dark: {
-        "--color-desktop": BASE_DARK,
-        "--color-mobile": `${BASE_DARK}80`,
-        "--color-visitors": BASE_DARK,
-        "--color-chrome": BASE_DARK,
-        "--color-safari": `${BASE_DARK}CC`,
-        "--color-firefox": `${BASE_DARK}99`,
-        "--color-edge": `${BASE_DARK}80`,
-        "--color-other": `${BASE_DARK}66`,
-        "--color-january": BASE_DARK,
-        "--color-february": `${BASE_DARK}CC`,
-        "--color-march": `${BASE_DARK}99`,
-        "--color-april": `${BASE_DARK}80`,
-        "--color-may": `${BASE_DARK}66`,
+        ...cssVars,
       },
     }
-  }, [BASE_LIGHT, BASE_DARK])
+  }, [activeTheme])
 
   return (
     <>
-      <div className={cn("flex flex-col items-center gap-2", className)}>
-        {COLOR_PALETTE.map((color) => (
-          <button
-            key={color}
-            onClick={() => {
-              setBaseDark(color)
-              setBaseLight(color)
-            }}
-            className="h-4 w-4 shrink-0 rounded-full"
-            style={{
-              backgroundColor: color,
-            }}
-          >
-            <span className="sr-only">Toggle</span>
-          </button>
+      <div className={cn("flex flex-col items-center gap-3", className)}>
+        {CHART_THEMES.map((theme) => (
+          <Tooltip key={theme.name}>
+            <TooltipTrigger asChild>
+              <button
+                onClick={() => setActiveTheme(theme)}
+                className={cn(
+                  "flex h-4 w-4 rounded-sm bg-[--color] ring-2 ring-offset-4 ring-offset-background",
+                  theme.name === activeTheme.name
+                    ? "ring-[--color]"
+                    : "ring-transparent"
+                )}
+                style={
+                  {
+                    "--color": `hsl(${theme.colors.primary})`,
+                    "--background": `hsl(${theme.colors.background})`,
+                  } as React.CSSProperties
+                }
+              >
+                <span className="sr-only">{theme.name}</span>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="left" className="bg-black text-white">
+              {theme.name}
+            </TooltipContent>
+          </Tooltip>
         ))}
-        <button
-          onClick={() => {
-            setBaseLight("colors")
-            setBaseDark("colors")
-          }}
-          className="h-4 w-4 shrink-0 rounded-full bg-gradient-to-l from-sky-400 via-rose-400 to-lime-400"
-        >
-          <span className="sr-only">Toggle</span>
-        </button>
       </div>
       <style>
         {`
-          html, [data-chart] {
+          .chart-wrapper,
+          [data-chart] {
             ${Object.entries(cssVars["light"])
-              .map(([key, value]) => `${key}: ${value} !important;`)
+              .map(([key, value]) => `${key}: ${value};`)
               .join("\n")}
           }
+
+          .dark .chart-wrapper,
           .dark [data-chart] {
             ${Object.entries(cssVars["dark"])
-              .map(([key, value]) => `${key}: ${value} !important;`)
+              .map(([key, value]) => `${key}: ${value};`)
               .join("\n")}
           }
         `}
