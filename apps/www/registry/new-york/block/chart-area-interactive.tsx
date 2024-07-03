@@ -176,7 +176,7 @@ export default function Component() {
           </SelectContent>
         </Select>
       </CardHeader>
-      <CardContent className="px-2 sm:px-6">
+      <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
         <ChartContainer config={chartConfig} className="max-h-[250px]">
           <AreaChart data={filteredData}>
             <defs>

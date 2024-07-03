@@ -40,7 +40,7 @@ export function ChartsThemeSwitcher({
                 <button
                   onClick={() => setActiveChartTheme(chartTheme)}
                   className={cn(
-                    "group flex h-10 w-10 items-center justify-center rounded-lg border-2 md:h-7 md:w-7",
+                    "group flex h-10 w-10 items-center justify-center rounded-lg border-2",
                     isActive ? "border-[--color-1]" : "border-transparent",
                     isDarkTheme && theme !== "dark" ? "invert-[1]" : ""
                   )}
@@ -54,17 +54,17 @@ export function ChartsThemeSwitcher({
                     } as React.CSSProperties
                   }
                 >
-                  <div className="h-6 w-6 overflow-hidden rounded-sm md:h-4 md:w-4">
+                  <div className="h-6 w-6 overflow-hidden rounded-sm">
                     <div
                       className={cn(
-                        "grid h-12 w-12 -translate-x-1/4 -translate-y-1/4 grid-cols-2 overflow-hidden rounded-md transition-all ease-in-out group-hover:rotate-45 md:h-8 md:w-8 ",
-                        isActive ? "rotate-45" : "rotate-0"
+                        "grid h-12 w-12 -translate-x-1/4 -translate-y-1/4 grid-cols-2 overflow-hidden rounded-md transition-all ease-in-out group-hover:rotate-45",
+                        isActive ? "rotate-45 group-hover:rotate-0" : "rotate-0"
                       )}
                     >
-                      <span className="flex h-6 w-6 bg-[--color-1] md:h-4 md:w-4" />
-                      <span className="flex h-6 w-6 bg-[--color-2] md:h-4 md:w-4" />
-                      <span className="flex h-6 w-6 bg-[--color-3] md:h-4 md:w-4" />
-                      <span className="flex h-6 w-6 bg-[--color-4] md:h-4 md:w-4" />
+                      <span className="flex h-6 w-6 bg-[--color-1]" />
+                      <span className="flex h-6 w-6 bg-[--color-2]" />
+                      <span className="flex h-6 w-6 bg-[--color-3]" />
+                      <span className="flex h-6 w-6 bg-[--color-4]" />
                       <span className="sr-only">{chartTheme.name}</span>
                     </div>
                   </div>

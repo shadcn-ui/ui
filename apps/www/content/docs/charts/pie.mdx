@@ -1,0 +1,177 @@
+---
+title: Pie Chart
+description: An area chart is a type of chart that displays information as a series of data points called 'markers' connected by straight line segments.
+component: true
+links:
+  doc: https://recharts.org/en-US/api/AreaChart
+---
+
+<ComponentPreview
+  name="area-chart-demo"
+  className="[&_.preview]:p-6 [&_.preview]:border-t"
+/>
+
+## Area
+
+Use the `enableArea` prop to fill the area below the line.
+
+```tsx showLineNumbers /enableArea/
+<ResponsiveContainer className="h-full w-full text-xs">
+  <AreaChart
+    data={data}
+    margin={{
+      top: 15,
+      right: 15,
+      left: -15,
+      bottom: 0,
+    }}
+  >
+    <CartesianGrid vertical={false} className="stroke-border/40" />
+    <XAxis
+      dataKey="month"
+      tickLine={false}
+      axisLine={{ className: "stroke-border" }}
+    />
+    <YAxis
+      tickLine={false}
+      axisLine={{ className: "stroke-border" }}
+      tickFormatter={(value) => (value === 0 ? "" : `${value}k`)}
+    />
+    <Area
+      dataKey="desktop"
+      className="rounded-t-xl fill-muted-foreground/30 stroke-primary stroke-2"
+      stroke=""
+      fill=""
+      type="monotone"
+    />
+    <Tooltip
+      cursor={false}
+      content={({ payload, active }) => {
+        if (!active || !payload?.length) return null
+
+        return (
+          <div className="flex min-w-[140px] items-center gap-2 rounded-lg border bg-background px-2.5 py-1.5 text-xs shadow-sm">
+            <div className="h-[1.8rem] w-1 rounded-full bg-primary" />
+            <div className="flex w-full flex-col gap-0.5">
+              <div className="font-medium">Visitors</div>
+              <div className="flex w-full items-center text-muted-foreground">
+                {payload[0]?.dataKey}
+                <div className="ml-auto font-mono font-medium text-foreground">
+                  {payload[0]?.payload?.desktop}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      }}
+    />
+  </AreaChart>
+</ResponsiveContainer>
+```
+
+<ComponentPreview
+  name="line-chart-area"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+## Opacity
+
+To change the opacity of the area, use the `areaOpacity` prop.
+
+```tsx showLineNumbers /areaOpacity={0.1}/
+<ResponsiveLine
+  data={/* data */}
+  enableArea
+  areaOpacity={0.1}
+/>
+```
+
+## Solid Color
+
+<ComponentPreview
+  name="line-chart-area-solid"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+You can change the color of the area using `defs` and `fill` props. First, define a linear gradient in the `defs` prop, then use the `fill` prop to apply the gradient to the area.
+
+```tsx showLineNumbers {4-14}
+<ResponsiveLine
+  data={/* data */}
+  enableArea
+  defs={[
+    {
+      id: "solid",
+      type: "linearGradient",
+      colors: [{ offset: 0, color: "hsla(var(--muted))" }],
+    },
+  ]}
+  fill={[{ match: "*", id: "solid" }]}
+/>
+```
+
+## Gradient
+
+<ComponentPreview
+  name="line-chart-area-gradient"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+Use two different stop colors to create a gradient. You can pass in the `opacity` property to change the opacity of the gradient.
+
+```tsx showLineNumbers {8-11}
+<ResponsiveLine
+  data={/* data */}
+  enableArea
+  defs={[
+    {
+      id: "gradient-1",
+      type: "linearGradient",
+      colors: [
+        { offset: 0, color: "hsla(var(--primary))", opacity: 0.5 },
+        { offset: 90, color: "hsla(var(--muted))", opacity: 0.2 },
+      ],
+    },
+  ]}
+  fill={[{ match: "*", id: "gradient-1" }]}
+/>
+```
+
+## Curve
+
+Use the `curve` prop to change the curve of the line.
+
+```tsx showLineNumbers /curve="linear"/
+<ResponsiveLine
+  data={/* data */}
+  curve="linear"
+/>
+```
+
+<ComponentPreview
+  name="line-chart-curve"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+## Tooltip
+
+Use the `tooltip` prop to customize the tooltip content.
+
+```tsx showLineNumbers {3}
+<ResponsiveLine
+  data={/* data */}
+  tooltip={({ point }) => (<div>{point.data.yFormatted}</div>)}
+/>
+```
+
+<ComponentPreview
+  name="line-chart-tooltip"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>
+
+## Legend
+
+<ComponentPreview
+  name="line-chart-legend"
+  className="[&_.preview]:p-8 [&_.preview]:border-t"
+/>

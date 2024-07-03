@@ -11,7 +11,7 @@ export default function ChartsPage() {
       <div className="gap-6 md:flex md:flex-row-reverse md:items-start">
         <ChartsThemeSwitcher className="fixed inset-x-0 bottom-0 z-30 flex bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:sticky md:bottom-auto md:top-20" />
         <div className="grid flex-1 gap-12">
-          <div className="chart-wrapper grid flex-1 scroll-mt-20 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10">
+          <div className="chart-wrapper grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10">
             <ChartDisplay name="chart-area-stacked">
               <Charts.ChartAreaStacked />
             </ChartDisplay>
@@ -174,7 +174,9 @@ export default function ChartsPage() {
             <ChartDisplay name="chart-pie-stacked">
               <Charts.ChartPieStacked />
             </ChartDisplay>
-            <Charts.ChartPieInteractive />
+            <ChartDisplay name="chart-pie-interactive">
+              <Charts.ChartPieInteractive />
+            </ChartDisplay>
           </div>
           <Separator />
           <div

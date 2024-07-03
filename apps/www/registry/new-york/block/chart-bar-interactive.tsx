@@ -154,7 +154,7 @@ export default function Component() {
               <button
                 key={chart}
                 className={cn(
-                  "flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-l sm:border-t-0 sm:px-8 sm:py-6",
+                  "relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-l sm:border-t-0 sm:px-8 sm:py-6",
                   activeChart === chart && "bg-muted/50"
                 )}
                 onClick={() => setActiveChart(chart)}
