@@ -40,7 +40,7 @@ const chartConfig = {
 export default function Component() {
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="items-center pb-4">
         <CardTitle>Radar Chart - Grid Circle - No lines</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
@@ -51,12 +51,7 @@ export default function Component() {
           config={chartConfig}
           className="aspect-square max-h-[250px]"
         >
-          <RadarChart
-            data={chartData}
-            margin={{
-              bottom: 20,
-            }}
-          >
+          <RadarChart data={chartData}>
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <PolarGrid gridType="circle" radialLines={false} />
             <PolarAngleAxis dataKey="month" />

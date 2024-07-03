@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, Cell, LabelList } from "recharts"
 
 import {
   Card,
@@ -19,17 +19,17 @@ import {
 } from "@/registry/new-york/ui/chart"
 
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { month: "January", visitors: 186 },
+  { month: "February", visitors: 205 },
+  { month: "March", visitors: -207 },
+  { month: "April", visitors: 173 },
+  { month: "May", visitors: -209 },
+  { month: "June", visitors: 214 },
 ]
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  visitors: {
+    label: "Visitors",
     colors: {
       light: "#3b82f6",
       dark: "#f43f5e",
@@ -41,32 +41,26 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart - Horizontal</CardTitle>
+        <CardTitle>Bar Chart - Negative</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <BarChart
-            data={chartData}
-            layout="vertical"
-            margin={{
-              left: -20,
-            }}
-          >
-            <XAxis type="number" dataKey="desktop" hide />
-            <YAxis
-              dataKey="month"
-              type="category"
-              tickLine={false}
-              tickMargin={10}
-              axisLine={false}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
+          <BarChart data={chartData}>
+            <CartesianGrid vertical={false} />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={5} />
+            <Bar dataKey="visitors" fill="var(--color-visitors)">
+              <LabelList position="top" dataKey="month" fillOpacity={1} />
+              {chartData.map((item) => (
+                <Cell
+                  key={item.month}
+                  fillOpacity={item.visitors < 0 ? 0.5 : 1}
+                />
+              ))}
+            </Bar>
           </BarChart>
         </ChartContainer>
       </CardContent>

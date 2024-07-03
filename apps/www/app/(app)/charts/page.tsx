@@ -39,10 +39,18 @@ export default function ChartsPage() {
             id="bar-chart"
             className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           >
-            <Charts.ChartBarMultiple />
+            <Charts.ChartBarDefault />
             <Charts.ChartBarHorizontal />
+            <Charts.ChartBarMultiple />
+            <Charts.ChartBarLabel />
+            <Charts.ChartBarLabelCustom />
+            <Charts.ChartBarMixedLabel />
             <Charts.ChartBarStacked />
-            <Charts.ChartBarHorizontalMixed />
+            <Charts.ChartBarActive />
+            <Charts.ChartBarNegative />
+            <div className="col-span-3">
+              <Charts.ChartBarInteractive />
+            </div>
           </div>
           <Separator />
           <div
@@ -84,20 +92,20 @@ export default function ChartsPage() {
             id="radar-chart"
             className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
           >
-            <Charts.ChartRadarSimple />
+            <Charts.ChartRadarDefault />
             <Charts.ChartRadarDots />
             <Charts.ChartRadarMultiple />
             <Charts.ChartRadarLinesOnly />
             <Charts.ChartRadarLabelCustom />
             <Charts.ChartRadarRadius />
-            <Charts.ChartRadarGridRadius />
+            <Charts.ChartRadarGridCustom />
             <Charts.ChartRadarGridFill />
             <Charts.ChartRadarGridNone />
             <Charts.ChartRadarGridCircle />
             <Charts.ChartRadarGridCircleNoLines />
             <Charts.ChartRadarGridCircleFill />
             <Charts.ChartRadarLegend />
-            <Charts.ChartRadarLegendIcons />
+            <Charts.ChartRadarIcons />
           </div>
           <Separator />
           <div

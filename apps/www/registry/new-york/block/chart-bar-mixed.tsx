@@ -19,20 +19,50 @@ import {
 } from "@/registry/new-york/ui/chart"
 
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
+  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
+  { browser: "other", visitors: 90, fill: "var(--color-other)" },
 ]
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  visitors: {
+    label: "Visitors",
+  },
+  chrome: {
+    label: "Chrome",
     colors: {
       light: "#3b82f6",
       dark: "#f43f5e",
+    },
+  },
+  safari: {
+    label: "Safari",
+    colors: {
+      light: "#60a5fa",
+      dark: "#fb7185",
+    },
+  },
+  firefox: {
+    label: "Firefox",
+    colors: {
+      light: "#93c5fd",
+      dark: "#fda4af",
+    },
+  },
+  edge: {
+    label: "Edge",
+    colors: {
+      light: "#bfdbfe",
+      dark: "#fecdd3",
+    },
+  },
+  other: {
+    label: "Other",
+    colors: {
+      light: "#dbeafe",
+      dark: "#ffe4e6",
     },
   },
 } satisfies ChartConfig
@@ -41,7 +71,7 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart - Horizontal</CardTitle>
+        <CardTitle>Bar Chart - Mixed</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
@@ -50,23 +80,25 @@ export default function Component() {
             data={chartData}
             layout="vertical"
             margin={{
-              left: -20,
+              left: 0,
             }}
           >
-            <XAxis type="number" dataKey="desktop" hide />
             <YAxis
-              dataKey="month"
+              dataKey="browser"
               type="category"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) => value.slice(0, 3)}
+              tickFormatter={(value) =>
+                chartConfig[value as keyof typeof chartConfig]?.label
+              }
             />
+            <XAxis dataKey="visitors" type="number" hide />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={5} />
+            <Bar dataKey="visitors" layout="vertical" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>

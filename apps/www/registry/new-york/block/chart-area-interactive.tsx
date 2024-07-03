@@ -158,7 +158,7 @@ export default function Component() {
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center">
+      <CardHeader className="flex flex-row items-center space-y-0 border-b py-5">
         <div className="grid flex-1 gap-1">
           <CardTitle>Area Chart - Interactive</CardTitle>
           <CardDescription>
@@ -183,15 +183,8 @@ export default function Component() {
         </Select>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="max-h-[300px]">
-          <AreaChart
-            data={filteredData}
-            margin={{
-              left: 10,
-              right: 0,
-              top: 10,
-            }}
-          >
+        <ChartContainer config={chartConfig} className="max-h-[250px]">
+          <AreaChart data={filteredData}>
             <defs>
               <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
                 <stop

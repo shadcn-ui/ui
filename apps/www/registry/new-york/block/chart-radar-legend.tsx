@@ -79,7 +79,7 @@ export default function Component() {
               fillOpacity={0.6}
             />
             <Radar dataKey="mobile" fill="var(--color-mobile)" />
-            <ChartLegend className="pt-8" content={<ChartLegendContent />} />
+            <ChartLegend className="mt-8" content={<ChartLegendContent />} />
           </RadarChart>
         </ChartContainer>
       </CardContent>

@@ -57,13 +57,13 @@ const chartConfig = {
 export default function Component() {
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="items-center pb-4">
         <CardTitle>Radar Chart - Custom Label</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pb-0">
         <ChartContainer
           config={chartConfig}
           className="aspect-square max-h-[250px]"
@@ -100,9 +100,9 @@ export default function Component() {
                     <tspan>{data.mobile}</tspan>
                     <tspan
                       x={x}
-                      dy="1.2em"
+                      dy={"1rem"}
                       fontSize={12}
-                      className="fill-muted-foreground  font-sans"
+                      className="fill-muted-foreground"
                     >
                       {data.month}
                     </tspan>

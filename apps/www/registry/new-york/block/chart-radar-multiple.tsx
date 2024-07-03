@@ -47,13 +47,13 @@ const chartConfig = {
 export default function Component() {
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="items-center pb-4">
         <CardTitle>Radar Chart - Multiple</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pb-0">
         <ChartContainer
           config={chartConfig}
           className="aspect-square max-h-[250px]"
