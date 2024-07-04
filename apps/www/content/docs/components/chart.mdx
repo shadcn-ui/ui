@@ -1,25 +1,25 @@
 ---
 title: Chart
-description: Beautiful charts. Built using Recharts. Copy and paste into your apps. Open source.
+description: Beautiful charts. Built using Recharts. Copy and paste into your apps.
 component: true
 links:
   doc: https://recharts.org
 ---
 
-Introduction **shadcn/charts**. A collection of chart components that you can copy and paste into your apps.
+Introduction **Charts**. A collection of chart components that you can copy and paste into your apps. [Browse the Charts Library](/charts).
 
-The charts are designed to look great out of the box. They work well with the other components and are fully customizable to fit your project.
+Charts are designed to look great out of the box. They work well with the other components and are fully customizable to fit your project.
 
 <ComponentPreview
   name="chart-bar-interactive"
   className="mt-6 [&_.preview]:p-0 [&_.preview]:border-t [&_.preview>div]:shadow-none [&_.preview>div]:border-none [&_.preview>div]:w-full"
 />
 
-## Composition
+## Component
 
 We use [Recharts](https://recharts.org/) under the hood.
 
-We designed the `chart` component with composition in mind i.e you build your charts using Recharts components and only bring in custom components, such as `ChartTootlip`, where you need it.
+We designed the `chart` component with composition in mind. **You build your charts using Recharts components and only bring in custom components, such as `ChartTootlip`, when and where you need it**.
 
 ```tsx showLineNumbers /ChartContainer/ /ChartTooltipContent/
 import { Bar, BarChart } from "recharts"
@@ -38,9 +38,9 @@ export function MyChart() {
 }
 ```
 
-We do not wrap Recharts components. This means you're not locked into an abstraction. When a new Recharts version is released, you can follow the official upgrade path.
+We do not wrap Recharts. This means you're not locked into an abstraction. When a new Recharts version is released, you can follow the official upgrade path to upgrade your charts.
 
-The components are yours.
+**The components are yours**.
 
 ## Installation
 
@@ -82,11 +82,19 @@ npm install recharts
 
 ## Your First Chart
 
-Let's build your first chart. We'll build a simple bar chart.
+Let's build your first chart. We'll build a bar chart, add a grid, axis, tooltip and legend.
 
 <Steps>
 
 <Step>Start by defining your data</Step>
+
+The following data represents the number of desktop and mobile users for each month.
+
+<Callout className="mt-4">
+
+**Note:** Your data can be in any shape. You are not limited to the shape of the data below. Use the `dataKey` prop to map your data to the chart.
+
+</Callout>
 
 ```tsx
 const chartData = [
@@ -99,12 +107,12 @@ const chartData = [
 ]
 ```
 
-This data represents the number of desktop and mobile users for each month.
-
 <Step>Define your chart config</Step>
 
+The chart config holds configuration for the chart. This is where you place human-readable strings, such as labels, icons and color tokens for theming.
+
 ```tsx
-import { ChartConfig } from "@/components/ui/chart"
+import { type ChartConfig } from "@/components/ui/chart"
 
 const chartConfig = {
   desktop: {
@@ -117,8 +125,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 ```
-
-The chart config holds configuration for the chart. This is where you place human-readable strings, such as labels and color tokens for theming.
 
 <Step>Build your chart</Step>
 
@@ -139,7 +145,7 @@ You can now build your chart using Recharts components.
 
 </Steps>
 
-### Grid
+### Add a Grid
 
 Let's add a grid to the chart.
 
@@ -170,9 +176,9 @@ import { Bar, BarChart, CartesianGrid } from "recharts"
 
 </Steps>
 
-### Axis
+### Add an Axis
 
-To add an x-axis to the, we'll use the `XAxis` component.
+To add an x-axis to the chart, we'll use the `XAxis` component.
 
 <Steps>
 
@@ -208,7 +214,7 @@ import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 </Steps>
 
-### Tooltip
+### Add Tooltip
 
 So far we've only used components from Recharts. They look great out of the box thanks to some customization in the `chart` component.
 
@@ -218,7 +224,7 @@ To add a tooltip, we'll use the custom `ChartTooltip` and `ChartTooltipContent` 
 
 <Step>Import the `ChartTooltip` and `ChartTooltipContent` components.</Step>
 
-```tsx /ChartTooltip/ /ChartTooltipContent/
+```tsx
 import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 ```
 
@@ -247,11 +253,11 @@ import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
   className="[&_.preview]:p-4 [&_.preview]:min-h-[250px]"
 />
 
-Easy, right? Two components, and we've got a beautiful tooltip.
+Hover to see the tooltips. Easy, right? Two components, and we've got a beautiful tooltip.
 
 </Steps>
 
-### Legend
+### Add Legend
 
 We'll do the same for the legend. We'll use the `ChartLegend` and `ChartLegendContent` components from `chart`.
 
@@ -259,7 +265,7 @@ We'll do the same for the legend. We'll use the `ChartLegend` and `ChartLegendCo
 
 <Step>Import the `ChartLegend` and `ChartLegendContent` components.</Step>
 
-```tsx /ChartLegend/ /ChartLegendContent/
+```tsx
 import { ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 ```
 
@@ -291,30 +297,33 @@ import { ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 
 </Steps>
 
-You've built your first chart! What's next?
+Done. You've built your first chart! What's next?
 
-- [Themes and Colors](/docs/components/chart#themes)
+- [Themes and Colors](/docs/components/chart#theming)
 - [Tooltip](/docs/components/chart#tooltip)
 - [Legend](/docs/components/chart#legend)
 
 ## Chart Config
 
-The chart config is where you define the colors and labels for the chart.
+The chart config is where you define the labels, icons and colors for a chart.
 
 It is intentionally decoupled from chart data.
 
-This means you can share config and color tokens between charts. It can also works independently for cases where your data lives remotely or in a different format.
+This allows you to share config and color tokens between charts. It can also works independently for cases where your data or color tokens live remotely or in a different format.
 
 ```tsx /ChartConfig/
+import { Monitor } from "lucide-react"
+
 import { type ChartConfig } from "@/components/ui/chart"
 
 const chartConfig = {
   desktop: {
     label: "Desktop",
+    icon: Monitor,
     // A color like 'hsl(220, 98%, 61%)' or 'var(--color-name)'
     color: "#2563eb",
+    // OR a theme object with 'light' and 'dark' keys
     theme: {
-      // OR a theme object with 'light' and 'dark' keys
       light: "#2563eb",
       dark: "#dc2626",
     },
@@ -369,7 +378,7 @@ const chartConfig = {
 
 <Callout className="mt-4">
 
-**Note:** We're wrapping the value in `hsl()` here because we define the colors without color function.
+We're wrapping the value in `hsl()` here because we define the colors without color space function.
 
 This is not required. You can use full color values, such as hex, hsl or oklch.
 
@@ -387,7 +396,7 @@ color: "var(--chart-1)",
 
 ### hex, hsl or oklch
 
-You can also define your colors in any color format, such as hex, hsl or oklch.
+You can also define your colors directly in the chart config. Use the color format you prefer.
 
 ```tsx
 const chartConfig = {
@@ -400,7 +409,7 @@ const chartConfig = {
 
 ### Using Colors
 
-To use your theme colors in your chart, you reference the colors using the format `var(--color-KEY)`.
+To use the theme colors in your chart, reference the colors using the format `var(--color-KEY)`.
 
 #### Components
 
@@ -422,3 +431,120 @@ const chartData = [
 ```tsx
 <LabelList className="fill-[--color-desktop]" />
 ```
+
+## Tooltip
+
+A chart tooltip contains a label, name, indicator and value. You can use a combination of these to customize your tooltip.
+
+<ComponentPreview
+  name="chart-tooltip-demo"
+  className="[&_.preview]:py-0"
+  hideCode
+/>
+
+You can turn on/off any of these using the `hideLabel`, `hideIndicator` props and customize the indicator style using the `indicator` prop.
+
+Use `labelKey` and `nameKey` to use a custom key for the tooltip label and name.
+
+Chart comes with the `<ChartTooltip>` and `<ChartTooltipContent>` components. You can use these two components to add custom tooltips to your chart.
+
+```tsx
+import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+```
+
+```tsx
+<ChartTooltip content={<ChartTooltipContent />} />
+```
+
+### Props
+
+Use the following props to customize the tooltip.
+
+| Prop            | Type                     | Description                                  |
+| :-------------- | :----------------------- | :------------------------------------------- |
+| `labelKey`      | string                   | The config or data key to use for the label. |
+| `nameKey`       | string                   | The config or data key to use for the name.  |
+| `indicator`     | `dot` `line` or `dashed` | The indicator style for the tooltip.         |
+| `hideLabel`     | boolean                  | Whether to hide the label.                   |
+| `hideIndicator` | boolean                  | Whether to hide the indicator.               |
+
+### Colors
+
+Colors are automatically referenced from the chart config.
+
+### Custom
+
+To use a custom key for tooltip label and names, use the `labelKey` and `nameKey` props.
+
+```tsx /browser/
+const chartData = [
+  { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+]
+
+const chartConfig = {
+  visitors: {
+    label: "Total Visitors",
+  },
+  chrome: {
+    label: "Chrome",
+    color: "hsl(var(--chart-1))",
+  },
+  safari: {
+    label: "Safari",
+    color: "hsl(var(--chart-2))",
+  },
+} satisfies ChartConfig
+```
+
+```tsx
+<ChartTooltip
+  content={<ChartTooltipContent labelKey="visitors" nameKey="browser" />}
+/>
+```
+
+This will use `Total Visitors` for label and `Chrome` and `Safari` for the tooltip names.
+
+## Legend
+
+You can use the custom `<ChartLegend>` and `<ChartLegendContent>` components to add a legend to your chart.
+
+```tsx
+import { ChartLegend, ChartLegendContent } from "@/components/ui/chart"
+```
+
+```tsx
+<ChartLegend content={<ChartLegendContent />} />
+```
+
+### Colors
+
+Colors are automatically referenced from the chart config.
+
+### Custom
+
+To use a custom key for legend names, use the `nameKey` prop.
+
+```tsx /browser/
+const chartData = [
+  { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+]
+
+const chartConfig = {
+  chrome: {
+    label: "Chrome",
+    color: "hsl(var(--chart-1))",
+  },
+  safari: {
+    label: "Safari",
+    color: "hsl(var(--chart-2))",
+  },
+} satisfies ChartConfig
+```
+
+```tsx
+<ChartLegend content={<ChartLegendContent nameKey="browser" />} />
+```
+
+This will use `Chrome` and `Safari` for the legend names.

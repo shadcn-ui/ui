@@ -2139,6 +2139,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "chart-tooltip-demo": {
+      name: "chart-tooltip-demo",
+      type: "components:example",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/example/chart-tooltip-demo")),
+      source: "",
+      files: ["registry/default/example/chart-tooltip-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "dashboard-05": {
       name: "dashboard-05",
       type: "components:block",
@@ -5262,6 +5273,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/chart-bar-demo-legend")),
       source: "",
       files: ["registry/new-york/example/chart-bar-demo-legend.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "chart-tooltip-demo": {
+      name: "chart-tooltip-demo",
+      type: "components:example",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/example/chart-tooltip-demo")),
+      source: "",
+      files: ["registry/new-york/example/chart-tooltip-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

@@ -872,4 +872,9 @@ export const examples: Registry = [
     type: "components:example",
     files: ["example/chart-bar-demo-legend.tsx"],
   },
+  {
+    name: "chart-tooltip-demo",
+    type: "components:example",
+    files: ["example/chart-tooltip-demo.tsx"],
+  },
 ]
