@@ -161,7 +161,7 @@ import { Bar, BarChart, CartesianGrid } from "recharts"
 
 ```tsx showLineNumbers {3}
 <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-  <BarChart data={chartData}>
+  <BarChart accessibilityLayer data={chartData}>
     <CartesianGrid vertical={false} />
     <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
     <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
@@ -192,7 +192,7 @@ import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 ```tsx showLineNumbers {4-10}
 <ChartContainer config={chartConfig} className="h-[200px] w-full">
-  <BarChart data={chartData}>
+  <BarChart accessibilityLayer data={chartData}>
     <CartesianGrid vertical={false} />
     <XAxis
       dataKey="month"
@@ -232,7 +232,7 @@ import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 ```tsx showLineNumbers {11}
 <ChartContainer config={chartConfig} className="h-[200px] w-full">
-  <BarChart data={chartData}>
+  <BarChart accessibilityLayer data={chartData}>
     <CartesianGrid vertical={false} />
     <XAxis
       dataKey="month"
@@ -273,7 +273,7 @@ import { ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 
 ```tsx showLineNumbers {12}
 <ChartContainer config={chartConfig} className="h-[200px] w-full">
-  <BarChart data={chartData}>
+  <BarChart accessibilityLayer data={chartData}>
     <CartesianGrid vertical={false} />
     <XAxis
       dataKey="month"
@@ -548,3 +548,13 @@ const chartConfig = {
 ```
 
 This will use `Chrome` and `Safari` for the legend names.
+
+## Accessibility
+
+You can turn on the `accessibilityLayer` prop to add an accessible layer to your chart.
+
+This prop adds keyboard access and screen reader support to your charts.
+
+```tsx
+<LineChart accessibilityLayer />
+```

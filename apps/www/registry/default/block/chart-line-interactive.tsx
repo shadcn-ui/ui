@@ -176,6 +176,7 @@ export default function Component() {
           className="aspect-auto h-[250px] w-full"
         >
           <LineChart
+            accessibilityLayer
             data={chartData}
             margin={{
               left: 12,

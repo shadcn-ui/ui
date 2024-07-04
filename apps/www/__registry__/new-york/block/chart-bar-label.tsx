@@ -44,6 +44,7 @@ export default function Component() {
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart
+            accessibilityLayer
             data={chartData}
             margin={{
               top: 20,
