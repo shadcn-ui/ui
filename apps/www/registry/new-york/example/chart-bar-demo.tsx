@@ -1,16 +1,7 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, XAxis, YAxis } from "recharts"
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/registry/new-york/ui/card"
 import {
   ChartConfig,
   ChartContainer,

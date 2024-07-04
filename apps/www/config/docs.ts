@@ -343,7 +343,7 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Theming",
-          href: "/docs/theming",
+          href: "/docs/charts/theming",
           items: [],
         },
       ],
@@ -352,8 +352,8 @@ export const docsConfig: DocsConfig = {
       title: "Charts",
       items: [
         {
-          title: "Line Chart",
-          href: "/docs/charts/line",
+          title: "Area Chart",
+          href: "/docs/charts/area",
           items: [],
         },
         {
@@ -362,8 +362,8 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Area Chart",
-          href: "/docs/charts/area",
+          title: "Line Chart",
+          href: "/docs/charts/line",
           items: [],
         },
         {
@@ -372,8 +372,13 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Scatter Chart",
-          href: "/docs/charts/scatter",
+          title: "Radar Chart",
+          href: "/docs/charts/radar",
+          items: [],
+        },
+        {
+          title: "Radial Chart",
+          href: "/docs/charts/radial",
           items: [],
         },
       ],
