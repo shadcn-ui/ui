@@ -160,7 +160,10 @@ export default function Component() {
           </CardDescription>
         </div>
         <Select value={timeRange} onValueChange={setTimeRange}>
-          <SelectTrigger className="w-[160px] rounded-lg sm:ml-auto">
+          <SelectTrigger
+            className="w-[160px] rounded-lg sm:ml-auto"
+            aria-label="Select a value"
+          >
             <SelectValue placeholder="Last 3 months" />
           </SelectTrigger>
           <SelectContent className="rounded-xl">
