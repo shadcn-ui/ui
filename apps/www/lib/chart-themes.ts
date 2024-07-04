@@ -3,6 +3,7 @@ import { themeColorsToCssVariables } from "@/lib/charts"
 export const CHART_THEMES = [
   {
     name: "Default",
+    id: "default-shadcn",
     colors: {
       background: "0 0% 100%",
       foreground: "240 10% 3.9%",
@@ -69,6 +70,7 @@ export const CHART_THEMES = [
   },
   {
     name: "Sapphire",
+    id: "default-sapphire",
     colors: {
       background: "0 0% 100%",
       foreground: "222.2 84% 4.9%",
@@ -135,6 +137,7 @@ export const CHART_THEMES = [
   },
   {
     name: "Ruby",
+    id: "default-ruby",
     colors: {
       background: "0 0% 100%",
       foreground: "240 10% 3.9%",
@@ -201,6 +204,7 @@ export const CHART_THEMES = [
   },
   {
     name: "Emerald",
+    id: "default-emerald",
     colors: {
       background: "0 0% 100%",
       foreground: "240 10% 3.9%",
@@ -267,6 +271,7 @@ export const CHART_THEMES = [
   },
   {
     name: "Daylight",
+    id: "default-daylight",
     colors: {
       background: "36 39% 88%",
       foreground: "36 45% 15%",
@@ -332,6 +337,7 @@ export const CHART_THEMES = [
   },
   {
     name: "Midnight",
+    id: "default-midnight",
     colors: {
       background: "240 5% 6%",
       foreground: "60 5% 90%",
@@ -398,6 +404,7 @@ export const CHART_THEMES = [
   },
   {
     name: "Deep Sea",
+    id: "default-deep-sea",
     colors: {
       background: "210 100% 6%",
       foreground: "180 100% 90%",
@@ -464,6 +471,7 @@ export const CHART_THEMES = [
   },
   {
     name: "Palette",
+    id: "default-palette",
     colors: {
       background: "0 0% 100%",
       foreground: "240 10% 3.9%",
@@ -530,7 +538,7 @@ export const CHART_THEMES = [
   },
 ] as const
 
-export type ChartTheme = (typeof CHART_THEMES)[number]
+export type ChartTheme = ReturnType<typeof getChartThemes>[number]
 
 export function getChartThemes() {
   return CHART_THEMES.map((theme) => ({

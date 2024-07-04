@@ -289,8 +289,8 @@ importers:
         specifier: ^1.2.3
         version: 1.4.41(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       swr:
-        specifier: ^2.2.5
-        version: 2.2.5(react@18.3.1)
+        specifier: 2.2.6-beta.3
+        version: 2.2.6-beta.3(react@18.3.1)
       tailwind-merge:
         specifier: ^1.12.0
         version: 1.14.0
@@ -6072,10 +6072,10 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  swr@2.2.5:
-    resolution: {integrity: sha512-QtxqyclFeAsxEUeZIYmsaQ0UjimSq1RZ9Un7I68/0ClKK/U3LoyQunwkQfJZr2fc22DfIXLNDc2wFyTEikCUpg==}
+  swr@2.2.6-beta.3:
+    resolution: {integrity: sha512-m6Ms7v9QYEoqIaW+5QFBXscNHNa+eVxynrW+WBzJQ3veFxoPdYvAXHKlgRTq5mJkL4Q3JKH/10V6iPvmv9g00Q==}
     peerDependencies:
-      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-0
 
   tailwind-merge@1.14.0:
     resolution: {integrity: sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==}
@@ -13193,9 +13193,8 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  swr@2.2.5(react@18.3.1):
+  swr@2.2.6-beta.3(react@18.3.1):
     dependencies:
-      client-only: 0.0.1
       react: 18.3.1
       use-sync-external-store: 1.2.2(react@18.3.1)
 

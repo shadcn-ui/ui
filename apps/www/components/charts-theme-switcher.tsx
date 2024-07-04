@@ -5,34 +5,58 @@ import { useTheme } from "next-themes"
 
 import { getChartThemes } from "@/lib/chart-themes"
 import { cn } from "@/lib/utils"
+import { useChartConfig } from "@/hooks/use-chart-config"
+import { Skeleton } from "@/registry/new-york/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/new-york/ui/tooltip"
 
-const chartThemes = getChartThemes()
+type Themes = ReturnType<typeof getChartThemes>
 
 export function ChartsThemeSwitcher({
+  themes,
   className,
-}: React.ComponentProps<"div">) {
+}: { themes: Themes } & React.ComponentProps<"div">) {
   const { theme } = useTheme()
-  const [activeChartTheme, setActiveChartTheme] = React.useState(chartThemes[0])
   const [mounted, setMounted] = React.useState(false)
+  const { chartConfig, setChartConfig } = useChartConfig()
+  const activeChartTheme = chartConfig?.theme || themes[0]
 
   React.useEffect(() => {
     setMounted(true)
   }, [])
 
+  if (!mounted) {
+    return (
+      <div
+        className={cn(
+          "flex items-center justify-center gap-0.5 py-4 lg:flex-col lg:justify-start lg:gap-1",
+          className
+        )}
+      >
+        {themes.map((theme) => (
+          <div
+            key={theme.id}
+            className="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-transparent"
+          >
+            <Skeleton className="h-6 w-6 rounded-sm" />
+          </div>
+        ))}
+      </div>
+    )
+  }
+
   return (
     <>
       <div
         className={cn(
-          "flex items-center justify-center gap-0.5 py-4 md:flex-col md:justify-start md:gap-1",
+          "flex items-center justify-center gap-0.5 py-4 lg:flex-col lg:justify-start lg:gap-1",
           className
         )}
       >
-        {chartThemes.map((chartTheme) => {
+        {themes.map((chartTheme) => {
           const isActive = chartTheme.name === activeChartTheme.name
           const isDarkTheme = ["Midnight"].includes(chartTheme.name)
           const cssVars =
@@ -43,7 +67,9 @@ export function ChartsThemeSwitcher({
             <Tooltip key={chartTheme.name}>
               <TooltipTrigger asChild>
                 <button
-                  onClick={() => setActiveChartTheme(chartTheme)}
+                  onClick={() =>
+                    setChartConfig({ ...chartConfig, theme: chartTheme })
+                  }
                   className={cn(
                     "group flex h-10 w-10 items-center justify-center rounded-lg border-2",
                     isActive ? "border-[--color-1]" : "border-transparent",

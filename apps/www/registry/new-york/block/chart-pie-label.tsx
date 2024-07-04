@@ -62,7 +62,7 @@ export default function Component() {
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="aspect-square max-h-[250px] pb-0"
+          className="mx-auto aspect-square max-h-[250px] pb-0"
         >
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />

@@ -171,7 +171,10 @@ export default function Component() {
         </div>
       </CardHeader>
       <CardContent className="px-2 sm:p-6">
-        <ChartContainer config={chartConfig} className="max-h-[250px]">
+        <ChartContainer
+          config={chartConfig}
+          className="aspect-auto h-[250px] w-full"
+        >
           <LineChart
             data={chartData}
             margin={{
