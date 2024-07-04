@@ -21,8 +21,6 @@ export function ChartToolbar({
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <div className="flex items-center gap-2">
-        <ChartCodeViewer chart={chart}>{children}</ChartCodeViewer>
-        <Separator orientation="vertical" className="mx-0 hidden h-4 md:flex" />
         <Button
           asChild
           variant="link"
@@ -41,17 +39,8 @@ export function ChartToolbar({
           code={chart.code}
           className="[&_svg]-h-3 h-6 w-6 rounded-[6px] shadow-none [&_svg]:w-3"
         />
-        <V0Button
-          id={`v0-button-${chart.name}`}
-          block={{
-            name: chart.name,
-            description: chart.description || "Edit in v0",
-            code: chart.code,
-            style: chart.style,
-          }}
-          className="h-[1.45rem] shadow-none disabled:cursor-not-allowed disabled:opacity-100"
-          disabled
-        />
+        <Separator orientation="vertical" className="mx-0 hidden h-4 md:flex" />
+        <ChartCodeViewer chart={chart}>{children}</ChartCodeViewer>
       </div>
     </div>
   )

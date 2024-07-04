@@ -34,7 +34,10 @@ export default function ChartsPage() {
               <ChartDisplay name="chart-bar-multiple">
                 <Charts.ChartBarMultiple />
               </ChartDisplay>
-              <ChartDisplay name="chart-pie-donut-text">
+              <ChartDisplay
+                name="chart-pie-donut-text"
+                className="[&_[data-chart]]:xl:max-h-[243px]"
+              >
                 <Charts.ChartPieDonutText />
               </ChartDisplay>
             </div>
@@ -44,7 +47,7 @@ export default function ChartsPage() {
             </div>
             <div
               id="area-chart"
-              className="chart-wrapper grid flex-1 scroll-mt-20 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
+              className="chart-wrapper grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
             >
               <ChartDisplay name="chart-area-default">
                 <Charts.ChartAreaDefault />
@@ -82,7 +85,7 @@ export default function ChartsPage() {
             <Separator />
             <div
               id="bar-chart"
-              className="chart-wrapper grid flex-1 scroll-mt-20 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
+              className="chart-wrapper grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
             >
               <ChartDisplay name="chart-bar-default">
                 <Charts.ChartBarDefault />
@@ -120,7 +123,7 @@ export default function ChartsPage() {
             <Separator />
             <div
               id="line-chart"
-              className="chart-wrapper grid flex-1 scroll-mt-20 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
+              className="chart-wrapper grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
             >
               <ChartDisplay name="chart-line-default">
                 <Charts.ChartLineDefault />
@@ -158,7 +161,7 @@ export default function ChartsPage() {
             <Separator />
             <div
               id="pie-chart"
-              className="chart-wrapper grid flex-1 scroll-mt-20 gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
+              className="chart-wrapper grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
             >
               <ChartDisplay name="chart-pie-simple">
                 <Charts.ChartPieSimple />
