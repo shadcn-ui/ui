@@ -25,7 +25,7 @@ jobs:
       - name: Use PNPM
         uses: pnpm/action-setup@v4
         with:
-          version: 8.6.1
+          version: 9.0.6
 
       - name: Use Node.js 18
         uses: actions/setup-node@v3
