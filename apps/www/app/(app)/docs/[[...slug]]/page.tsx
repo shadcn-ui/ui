@@ -92,7 +92,7 @@ export default async function DocPage({ params }: DocPageProps) {
         <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
           <div className="truncate">Docs</div>
           <ChevronRightIcon className="h-3.5 w-3.5" />
-          {params.slug.includes("charts") && (
+          {params?.slug?.includes("charts") && (
             <>
               <Link href="/charts" className="hover:text-foreground">
                 Charts
