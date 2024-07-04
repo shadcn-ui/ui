@@ -296,3 +296,129 @@ You've built your first chart! What's next?
 - [Themes and Colors](/docs/components/chart#themes)
 - [Tooltip](/docs/components/chart#tooltip)
 - [Legend](/docs/components/chart#legend)
+
+## Chart Config
+
+The chart config is where you define the colors and labels for the chart.
+
+It is intentionally decoupled from chart data.
+
+This means you can share config and color tokens between charts. It can also works independently for cases where your data lives remotely or in a different format.
+
+```tsx /ChartConfig/
+import { type ChartConfig } from "@/components/ui/chart"
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    // A color like 'hsl(220, 98%, 61%)' or 'var(--color-name)'
+    color: "#2563eb",
+    theme: {
+      // OR a theme object with 'light' and 'dark' keys
+      light: "#2563eb",
+      dark: "#dc2626",
+    },
+  },
+} satisfies ChartConfig
+```
+
+## Theming
+
+Charts has built-in support for theming. You can use css variables (recommended) or color values in any color format, such as hex, hsl or oklch.
+
+### CSS Variables
+
+<Steps>
+
+<Step>Define your colors in your css file</Step>
+
+```css {6-7,14-15} title="globals.css"
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    // ...
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+  }
+
+  .dark: {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 100%;
+    // ...
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+  }
+}
+```
+
+<Step>Add the color to your `chartConfig`</Step>
+
+```tsx {4,8}
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "hsl(var(--chart-1))",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "hsl(var(--chart-2))",
+  },
+} satisfies ChartConfig
+```
+
+<Callout className="mt-4">
+
+**Note:** We're wrapping the value in `hsl()` here because we define the colors without color function.
+
+This is not required. You can use full color values, such as hex, hsl or oklch.
+
+```css
+--chart-1: oklch(70% 0.227 154.59);
+```
+
+```tsx
+color: "var(--chart-1)",
+```
+
+</Callout>
+
+</Steps>
+
+### hex, hsl or oklch
+
+You can also define your colors in any color format, such as hex, hsl or oklch.
+
+```tsx
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "#2563eb",
+  },
+} satisfies ChartConfig
+```
+
+### Using Colors
+
+To use your theme colors in your chart, you reference the colors using the format `var(--color-KEY)`.
+
+#### Components
+
+```tsx
+<Bar dataKey="desktop" fill="var(--color-desktop)" />
+```
+
+#### Chart Data
+
+```tsx
+const chartData = [
+  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+]
+```
+
+#### Tailwind
+
+```tsx
+<LabelList className="fill-[--color-desktop]" />
+```
