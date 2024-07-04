@@ -5,7 +5,7 @@ import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
+import { CopyButton } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
 import { StyleSwitcher } from "@/components/style-switcher"
 import { ThemeWrapper } from "@/components/theme-wrapper"
@@ -131,7 +131,7 @@ export function ComponentPreview({
             >
               <React.Suspense
                 fallback={
-                  <div className="flex items-center text-sm text-muted-foreground">
+                  <div className="flex w-full items-center justify-center text-sm text-muted-foreground">
                     <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                     Loading...
                   </div>

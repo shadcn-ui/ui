@@ -1,17 +1,20 @@
 "use client"
 
-import Link from "next/link"
-
 import { cn } from "@/lib/utils"
 import { BlockCopyButton } from "@/components/block-copy-button"
-import { V0Button } from "@/components/v0-button"
-import { Button } from "@/registry/new-york/ui/button"
+import { ChartCodeViewer } from "@/components/chart-code-viewer"
 import { Separator } from "@/registry/new-york/ui/separator"
-import { Sheet, SheetContent, SheetTrigger } from "@/registry/new-york/ui/sheet"
 import { Block } from "@/registry/schema"
 
 import "@/styles/mdx.css"
-import { ChartCodeViewer } from "@/components/chart-code-viewer"
+import {
+  AreaChart,
+  BarChartBig,
+  Hexagon,
+  LineChart,
+  PieChart,
+  Radar,
+} from "lucide-react"
 
 export function ChartToolbar({
   chart,
@@ -20,19 +23,14 @@ export function ChartToolbar({
 }: { chart: Block } & React.ComponentProps<"div">) {
   return (
     <div className={cn("flex items-center gap-2", className)}>
-      <div className="flex items-center gap-2">
-        <Button
-          asChild
-          variant="link"
-          size="sm"
-          className="h-6 gap-1 rounded-[6px] px-1 text-xs text-foreground"
-        >
-          <Link
-            href={`/docs/component/charts#${chart.subcategory?.toLowerCase()}-chart`}
-          >
-            Docs
-          </Link>
-        </Button>
+      <div className="flex items-center gap-1.5 pl-1 text-[13px] text-muted-foreground [&>svg]:h-[0.9rem] [&>svg]:w-[0.9rem]">
+        {chart.subcategory === "Line" && <LineChart />}
+        {chart.subcategory === "Bar" && <BarChartBig />}
+        {chart.subcategory === "Pie" && <PieChart />}
+        {chart.subcategory === "Area" && <AreaChart />}
+        {chart.subcategory === "Radar" && <Hexagon />}
+        {chart.subcategory === "Radial" && <Radar />}
+        {chart.subcategory} Chart
       </div>
       <div className="ml-auto flex items-center gap-2 [&>form]:flex">
         <BlockCopyButton

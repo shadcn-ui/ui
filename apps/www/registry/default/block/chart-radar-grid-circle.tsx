@@ -1,22 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import {
-  Bar,
-  BarChart,
-  LabelList,
-  Pie,
-  PieChart,
-  PolarAngleAxis,
-  PolarGrid,
-  PolarRadiusAxis,
-  Radar,
-  RadarChart,
-  Text,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
 
 import {
   Card,
@@ -61,10 +46,13 @@ export default function Component() {
       <CardContent className="pb-0">
         <ChartContainer
           config={chartConfig}
-          className="aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-h-[250px]"
         >
           <RadarChart data={chartData}>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
             <PolarGrid gridType="circle" />
             <PolarAngleAxis dataKey="month" />
             <Radar

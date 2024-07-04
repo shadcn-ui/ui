@@ -66,7 +66,7 @@ export default function Component() {
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
+              content={<ChartTooltipContent indicator="dot" />}
             />
             <Area
               dataKey="mobile"

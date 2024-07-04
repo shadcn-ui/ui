@@ -125,7 +125,7 @@ export default function Component() {
         <ChartContainer
           id={id}
           config={chartConfig}
-          className="aspect-square max-w-[280px]"
+          className="mx-auto aspect-square w-full max-w-[300px]"
         >
           <PieChart>
             <ChartTooltip

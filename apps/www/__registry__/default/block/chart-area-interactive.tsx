@@ -152,15 +152,15 @@ export default function Component() {
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center space-y-0 border-b py-5">
-        <div className="grid flex-1 gap-1">
+      <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
+        <div className="grid flex-1 gap-1 text-center sm:text-left">
           <CardTitle>Area Chart - Interactive</CardTitle>
           <CardDescription>
             Showing total visitors for the last 3 months
           </CardDescription>
         </div>
         <Select value={timeRange} onValueChange={setTimeRange}>
-          <SelectTrigger className="ml-auto w-[160px] rounded-lg">
+          <SelectTrigger className="w-[160px] rounded-lg sm:ml-auto">
             <SelectValue placeholder="Last 3 months" />
           </SelectTrigger>
           <SelectContent className="rounded-xl">
@@ -176,8 +176,11 @@ export default function Component() {
           </SelectContent>
         </Select>
       </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig} className="max-h-[250px]">
+      <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
+        <ChartContainer
+          config={chartConfig}
+          className="aspect-auto h-[250px] w-full"
+        >
           <AreaChart data={filteredData}>
             <defs>
               <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">

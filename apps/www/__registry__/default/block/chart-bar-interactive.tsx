@@ -140,8 +140,8 @@ export default function Component() {
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-stretch space-y-0 border-b p-0">
-        <div className="grid flex-1 gap-1 px-6 py-5">
+      <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
+        <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
           <CardTitle>Bar Chart - Interactive</CardTitle>
           <CardDescription>
             Showing total visitors for the last 3 months
@@ -154,7 +154,7 @@ export default function Component() {
               <button
                 key={chart}
                 className={cn(
-                  "flex flex-col justify-center gap-1 border-l px-8 text-left",
+                  "relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-l sm:border-t-0 sm:px-8 sm:py-6",
                   activeChart === chart && "bg-muted/50"
                 )}
                 onClick={() => setActiveChart(chart)}
@@ -162,7 +162,7 @@ export default function Component() {
                 <span className="text-xs text-muted-foreground">
                   {chartConfig[chart].label}
                 </span>
-                <span className="text-3xl font-bold leading-none">
+                <span className="text-lg font-bold leading-none sm:text-3xl">
                   {total[key as keyof typeof total].toLocaleString()}
                 </span>
               </button>
@@ -170,8 +170,11 @@ export default function Component() {
           })}
         </div>
       </CardHeader>
-      <CardContent className="pt-6">
-        <ChartContainer config={chartConfig} className="max-h-[250px]">
+      <CardContent className="px-2 sm:p-6">
+        <ChartContainer
+          config={chartConfig}
+          className="aspect-auto h-[250px] w-full"
+        >
           <BarChart
             data={chartData}
             margin={{
