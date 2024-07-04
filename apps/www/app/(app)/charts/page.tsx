@@ -24,7 +24,7 @@ export default function ChartsPage() {
         <div className="gap-6 md:flex md:flex-row-reverse md:items-start">
           <ChartsThemeSwitcher
             themes={chartThemes}
-            className="fixed inset-x-0 bottom-0 z-30 flex bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:sticky lg:bottom-auto lg:top-20"
+            className="fixed inset-x-0 bottom-0 z-40 flex bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:sticky lg:bottom-auto lg:top-20"
           />
           <div className="grid flex-1 gap-12">
             <div className="chart-wrapper grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10">
