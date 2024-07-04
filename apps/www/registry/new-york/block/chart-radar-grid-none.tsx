@@ -49,7 +49,10 @@ export default function Component() {
           className="mx-auto aspect-square max-h-[250px]"
         >
           <RadarChart data={chartData}>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
             <PolarAngleAxis dataKey="month" />
             <Radar
               dataKey="desktop"

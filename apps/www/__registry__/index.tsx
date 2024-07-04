@@ -2073,90 +2073,24 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "line-chart-demo": {
-      name: "line-chart-demo",
+    "chart-bar-demo": {
+      name: "chart-bar-demo",
       type: "components:example",
       registryDependencies: [],
-      component: React.lazy(() => import("@/registry/default/example/line-chart-demo")),
+      component: React.lazy(() => import("@/registry/default/example/chart-bar-demo")),
       source: "",
-      files: ["registry/default/example/line-chart-demo.tsx"],
+      files: ["registry/default/example/chart-bar-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
     },
-    "line-chart-multiple": {
-      name: "line-chart-multiple",
+    "chart-pie-demo": {
+      name: "chart-pie-demo",
       type: "components:example",
       registryDependencies: [],
-      component: React.lazy(() => import("@/registry/default/example/line-chart-multiple")),
+      component: React.lazy(() => import("@/registry/default/example/chart-pie-demo")),
       source: "",
-      files: ["registry/default/example/line-chart-multiple.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "line-chart-shape": {
-      name: "line-chart-shape",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/default/example/line-chart-shape")),
-      source: "",
-      files: ["registry/default/example/line-chart-shape.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "area-chart-demo": {
-      name: "area-chart-demo",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/default/example/area-chart-demo")),
-      source: "",
-      files: ["registry/default/example/area-chart-demo.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "bar-chart-demo": {
-      name: "bar-chart-demo",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/default/example/bar-chart-demo")),
-      source: "",
-      files: ["registry/default/example/bar-chart-demo.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "bar-chart-multiple": {
-      name: "bar-chart-multiple",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/default/example/bar-chart-multiple")),
-      source: "",
-      files: ["registry/default/example/bar-chart-multiple.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "bar-chart-horizontal": {
-      name: "bar-chart-horizontal",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/default/example/bar-chart-horizontal")),
-      source: "",
-      files: ["registry/default/example/bar-chart-horizontal.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "tooltip-chart-demo": {
-      name: "tooltip-chart-demo",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/default/example/tooltip-chart-demo")),
-      source: "",
-      files: ["registry/default/example/tooltip-chart-demo.tsx"],
+      files: ["registry/default/example/chart-pie-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -5222,90 +5156,24 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "line-chart-demo": {
-      name: "line-chart-demo",
+    "chart-bar-demo": {
+      name: "chart-bar-demo",
       type: "components:example",
       registryDependencies: [],
-      component: React.lazy(() => import("@/registry/new-york/example/line-chart-demo")),
+      component: React.lazy(() => import("@/registry/new-york/example/chart-bar-demo")),
       source: "",
-      files: ["registry/new-york/example/line-chart-demo.tsx"],
+      files: ["registry/new-york/example/chart-bar-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
     },
-    "line-chart-multiple": {
-      name: "line-chart-multiple",
+    "chart-pie-demo": {
+      name: "chart-pie-demo",
       type: "components:example",
       registryDependencies: [],
-      component: React.lazy(() => import("@/registry/new-york/example/line-chart-multiple")),
+      component: React.lazy(() => import("@/registry/new-york/example/chart-pie-demo")),
       source: "",
-      files: ["registry/new-york/example/line-chart-multiple.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "line-chart-shape": {
-      name: "line-chart-shape",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/new-york/example/line-chart-shape")),
-      source: "",
-      files: ["registry/new-york/example/line-chart-shape.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "area-chart-demo": {
-      name: "area-chart-demo",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/new-york/example/area-chart-demo")),
-      source: "",
-      files: ["registry/new-york/example/area-chart-demo.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "bar-chart-demo": {
-      name: "bar-chart-demo",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/new-york/example/bar-chart-demo")),
-      source: "",
-      files: ["registry/new-york/example/bar-chart-demo.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "bar-chart-multiple": {
-      name: "bar-chart-multiple",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/new-york/example/bar-chart-multiple")),
-      source: "",
-      files: ["registry/new-york/example/bar-chart-multiple.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "bar-chart-horizontal": {
-      name: "bar-chart-horizontal",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/new-york/example/bar-chart-horizontal")),
-      source: "",
-      files: ["registry/new-york/example/bar-chart-horizontal.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "tooltip-chart-demo": {
-      name: "tooltip-chart-demo",
-      type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/new-york/example/tooltip-chart-demo")),
-      source: "",
-      files: ["registry/new-york/example/tooltip-chart-demo.tsx"],
+      files: ["registry/new-york/example/chart-pie-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

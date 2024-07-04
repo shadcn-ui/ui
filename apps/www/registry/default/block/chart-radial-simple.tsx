@@ -67,9 +67,7 @@ export default function Component() {
           <RadialBarChart data={chartData} innerRadius={30} outerRadius={110}>
             <ChartTooltip
               cursor={false}
-              content={
-                <ChartTooltipContent hideLabel nameKey="browser" flipped />
-              }
+              content={<ChartTooltipContent hideLabel nameKey="browser" />}
             />
             <RadialBar dataKey="visitors" background />
           </RadialBarChart>

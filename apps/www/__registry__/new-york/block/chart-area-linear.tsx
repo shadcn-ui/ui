@@ -62,9 +62,7 @@ export default function Component() {
             />
             <ChartTooltip
               cursor={false}
-              content={
-                <ChartTooltipContent indicator="dot" flipped hideLabel />
-              }
+              content={<ChartTooltipContent indicator="dot" hideLabel />}
             />
             <Area
               dataKey="desktop"

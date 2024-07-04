@@ -89,8 +89,10 @@ export default function Component() {
               dot={({ payload, ...props }) => {
                 return (
                   <Dot
-                    {...props}
+                    key={payload.browser}
                     r={5}
+                    cx={props.cx}
+                    cy={props.cy}
                     fill={payload.fill}
                     stroke={payload.fill}
                   />
