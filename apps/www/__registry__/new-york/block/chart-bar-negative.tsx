@@ -46,7 +46,7 @@ export default function Component() {
             <CartesianGrid vertical={false} />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel indicator="none" />}
+              content={<ChartTooltipContent hideLabel hideIndicator />}
             />
             <Bar dataKey="visitors">
               <LabelList position="top" dataKey="month" fillOpacity={1} />
