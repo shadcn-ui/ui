@@ -1,6 +1,6 @@
 "use client"
 
-import { Bar, BarChart } from "recharts"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 import { ChartConfig, ChartContainer } from "@/registry/new-york/ui/chart"
 
@@ -26,10 +26,12 @@ const chartConfig = {
 
 export default function Component() {
   return (
-    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+    <ChartContainer config={chartConfig} className="h-[200px] w-full">
       <BarChart data={chartData}>
-        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+        <CartesianGrid vertical={false} />
+        <XAxis dataKey="month" />
+        <Bar dataKey="desktop" fill="var(--color-desktop)" />
+        <Bar dataKey="mobile" fill="var(--color-mobile)" />
       </BarChart>
     </ChartContainer>
   )

@@ -121,7 +121,6 @@ export const docsConfig: DocsConfig = {
           title: "Breadcrumb",
           href: "/docs/components/breadcrumb",
           items: [],
-          label: "New",
         },
         {
           title: "Button",
@@ -141,6 +140,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Carousel",
           href: "/docs/components/carousel",
+          items: [],
+        },
+        {
+          title: "Chart",
+          href: "/docs/components/chart",
+          label: "New",
           items: [],
         },
         {
@@ -212,7 +217,6 @@ export const docsConfig: DocsConfig = {
           title: "Input OTP",
           href: "/docs/components/input-otp",
           items: [],
-          label: "New",
         },
         {
           title: "Label",
@@ -339,6 +343,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Introduction",
           href: "/docs/charts",
+          items: [],
+        },
+        {
+          title: "Installation",
+          href: "/docs/charts/installation",
           items: [],
         },
         {

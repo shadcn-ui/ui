@@ -34,7 +34,7 @@ export default function ChartsLayout({
             <a href="#charts">Browse Charts</a>
           </Button>
           <Button asChild variant="ghost" size="sm">
-            <Link href="/docs/charts">Documentation</Link>
+            <Link href="/docs/components/chart">Documentation</Link>
           </Button>
         </PageActions>
       </PageHeader>

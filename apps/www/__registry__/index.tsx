@@ -126,6 +126,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "chart": {
+      name: "chart",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/chart")),
+      source: "",
+      files: ["registry/default/ui/chart.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "checkbox": {
       name: "checkbox",
       type: "components:ui",
@@ -2076,7 +2087,7 @@ export const Index: Record<string, any> = {
     "chart-bar-demo": {
       name: "chart-bar-demo",
       type: "components:example",
-      registryDependencies: [],
+      registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/example/chart-bar-demo")),
       source: "",
       files: ["registry/default/example/chart-bar-demo.tsx"],
@@ -2084,13 +2095,46 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "chart-pie-demo": {
-      name: "chart-pie-demo",
+    "chart-bar-demo-grid": {
+      name: "chart-bar-demo-grid",
       type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/default/example/chart-pie-demo")),
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/example/chart-bar-demo-grid")),
       source: "",
-      files: ["registry/default/example/chart-pie-demo.tsx"],
+      files: ["registry/default/example/chart-bar-demo-grid.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "chart-bar-demo-axis": {
+      name: "chart-bar-demo-axis",
+      type: "components:example",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/example/chart-bar-demo-axis")),
+      source: "",
+      files: ["registry/default/example/chart-bar-demo-axis.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "chart-bar-demo-tooltip": {
+      name: "chart-bar-demo-tooltip",
+      type: "components:example",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/example/chart-bar-demo-tooltip")),
+      source: "",
+      files: ["registry/default/example/chart-bar-demo-tooltip.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "chart-bar-demo-legend": {
+      name: "chart-bar-demo-legend",
+      type: "components:example",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/example/chart-bar-demo-legend")),
+      source: "",
+      files: ["registry/default/example/chart-bar-demo-legend.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -3205,6 +3249,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/ui/carousel")),
       source: "",
       files: ["registry/new-york/ui/carousel.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "chart": {
+      name: "chart",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/chart")),
+      source: "",
+      files: ["registry/new-york/ui/chart.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -5159,7 +5214,7 @@ export const Index: Record<string, any> = {
     "chart-bar-demo": {
       name: "chart-bar-demo",
       type: "components:example",
-      registryDependencies: [],
+      registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/example/chart-bar-demo")),
       source: "",
       files: ["registry/new-york/example/chart-bar-demo.tsx"],
@@ -5167,13 +5222,46 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "chart-pie-demo": {
-      name: "chart-pie-demo",
+    "chart-bar-demo-grid": {
+      name: "chart-bar-demo-grid",
       type: "components:example",
-      registryDependencies: [],
-      component: React.lazy(() => import("@/registry/new-york/example/chart-pie-demo")),
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/example/chart-bar-demo-grid")),
       source: "",
-      files: ["registry/new-york/example/chart-pie-demo.tsx"],
+      files: ["registry/new-york/example/chart-bar-demo-grid.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "chart-bar-demo-axis": {
+      name: "chart-bar-demo-axis",
+      type: "components:example",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/example/chart-bar-demo-axis")),
+      source: "",
+      files: ["registry/new-york/example/chart-bar-demo-axis.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "chart-bar-demo-tooltip": {
+      name: "chart-bar-demo-tooltip",
+      type: "components:example",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/example/chart-bar-demo-tooltip")),
+      source: "",
+      files: ["registry/new-york/example/chart-bar-demo-tooltip.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "chart-bar-demo-legend": {
+      name: "chart-bar-demo-legend",
+      type: "components:example",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/example/chart-bar-demo-legend")),
+      source: "",
+      files: ["registry/new-york/example/chart-bar-demo-legend.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

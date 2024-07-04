@@ -27,7 +27,9 @@ export function ChartToolbar({
           size="sm"
           className="h-6 gap-1 rounded-[6px] px-1 text-xs text-foreground"
         >
-          <Link href={`/docs/charts/${chart.subcategory?.toLowerCase()}`}>
+          <Link
+            href={`/docs/component/charts#${chart.subcategory?.toLowerCase()}-chart`}
+          >
             Docs
           </Link>
         </Button>

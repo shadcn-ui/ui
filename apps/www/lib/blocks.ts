@@ -8,7 +8,6 @@ import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
-import { description } from "@/registry/default/block/dashboard-05"
 import { BlockChunk, blockSchema, registryEntrySchema } from "@/registry/schema"
 import { Style } from "@/registry/styles"
 

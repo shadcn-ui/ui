@@ -850,13 +850,26 @@ export const examples: Registry = [
   {
     name: "chart-bar-demo",
     type: "components:example",
-    registryDependencies: [],
     files: ["example/chart-bar-demo.tsx"],
   },
   {
-    name: "chart-pie-demo",
+    name: "chart-bar-demo-grid",
     type: "components:example",
-    registryDependencies: [],
-    files: ["example/chart-pie-demo.tsx"],
+    files: ["example/chart-bar-demo-grid.tsx"],
+  },
+  {
+    name: "chart-bar-demo-axis",
+    type: "components:example",
+    files: ["example/chart-bar-demo-axis.tsx"],
+  },
+  {
+    name: "chart-bar-demo-tooltip",
+    type: "components:example",
+    files: ["example/chart-bar-demo-tooltip.tsx"],
+  },
+  {
+    name: "chart-bar-demo-legend",
+    type: "components:example",
+    files: ["example/chart-bar-demo-legend.tsx"],
   },
 ]
