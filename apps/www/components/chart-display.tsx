@@ -17,8 +17,6 @@ export async function ChartDisplay({
     return null
   }
 
-  console.log(chart.description)
-
   return (
     <div
       className={cn(
