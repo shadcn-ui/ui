@@ -43,11 +43,10 @@ export async function editInV0({
 
     const result = await response.json()
 
-    if (process.env.NODE_ENV !== "production") {
-      result.url = `${process.env.V0_URL}/edit/${result.id}`
+    return {
+      ...result,
+      url: `${process.env.V0_URL}/edit/${result.id}`,
     }
-
-    return result
   } catch (error) {
     if (error instanceof Error) {
       return { error: error.message }
