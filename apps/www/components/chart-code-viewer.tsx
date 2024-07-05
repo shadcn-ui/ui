@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { useChartConfig } from "@/hooks/use-chart-config"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { BlockCopyButton } from "@/components/block-copy-button"
+import { V0Button } from "@/components/v0-button"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Drawer,
@@ -49,7 +50,8 @@ ${Object.entries(chartConfig.theme.cssVars.dark)
   const button = (
     <Button
       size="sm"
-      className="h-6 rounded-[6px] border border-zinc-800 bg-black px-2 text-xs text-white shadow-none hover:bg-zinc-950"
+      variant="outline"
+      className="h-6 rounded-[6px] border bg-transparent px-2 text-xs text-foreground shadow-none hover:bg-muted dark:text-foreground"
     >
       View Code
     </Button>
@@ -82,12 +84,23 @@ ${Object.entries(chartConfig.theme.cssVars.dark)
             </TabsTrigger>
           </TabsList>
           {tab === "code" && (
-            <BlockCopyButton
-              event="copy_chart_code"
-              name={chart.name}
-              code={chart.code}
-              className="ml-auto"
-            />
+            <div className="ml-auto flex items-center justify-center gap-2">
+              <BlockCopyButton
+                event="copy_chart_code"
+                name={chart.name}
+                code={chart.code}
+              />
+              <V0Button
+                id={`v0-button-${chart.name}`}
+                block={{
+                  name: chart.name,
+                  description: chart.description || "Edit in v0",
+                  code: chart.code,
+                  style: "default",
+                }}
+                className="h-7"
+              />
+            </div>
           )}
           {tab === "theme" && (
             <BlockCopyButton
