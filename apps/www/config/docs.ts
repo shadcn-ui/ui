@@ -24,18 +24,8 @@ export const docsConfig: DocsConfig = {
       href: "/examples",
     },
     {
-      title: "Figma",
-      href: "/docs/figma",
-    },
-    {
-      title: "GitHub",
-      href: "https://github.com/shadcn/ui",
-      external: true,
-    },
-    {
-      title: "Twitter",
-      href: "https://twitter.com/shadcn",
-      external: true,
+      title: "Blocks",
+      href: "/blocks",
     },
   ],
   sidebarNav: [
@@ -123,6 +113,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Breadcrumb",
+          href: "/docs/components/breadcrumb",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Button",
           href: "/docs/components/button",
           items: [],
@@ -141,7 +137,6 @@ export const docsConfig: DocsConfig = {
           title: "Carousel",
           href: "/docs/components/carousel",
           items: [],
-          label: "New",
         },
         {
           title: "Checkbox",
@@ -187,7 +182,6 @@ export const docsConfig: DocsConfig = {
           title: "Drawer",
           href: "/docs/components/drawer",
           items: [],
-          label: "New",
         },
         {
           title: "Dropdown Menu",
@@ -210,6 +204,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Input OTP",
+          href: "/docs/components/input-otp",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Label",
           href: "/docs/components/label",
           items: [],
@@ -228,7 +228,6 @@ export const docsConfig: DocsConfig = {
           title: "Pagination",
           href: "/docs/components/pagination",
           items: [],
-          label: "New",
         },
         {
           title: "Popover",
@@ -255,7 +254,6 @@ export const docsConfig: DocsConfig = {
           title: "Resizable",
           href: "/docs/components/resizable",
           items: [],
-          label: "New",
         },
         {
           title: "Scroll Area",
@@ -291,7 +289,6 @@ export const docsConfig: DocsConfig = {
           title: "Sonner",
           href: "/docs/components/sonner",
           items: [],
-          label: "New",
         },
         {
           title: "Switch",
