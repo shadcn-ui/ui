@@ -1,17 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { TrendingUp } from "lucide-react"
-import { useTheme } from "next-themes"
 import { Label, Pie, PieChart, Sector } from "recharts"
 import { PieSectorDataItem } from "recharts/types/polar/Pie"
 
-import { cn } from "@/lib/utils"
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/default/ui/card"
@@ -111,7 +107,7 @@ export default function Component() {
                 >
                   <div className="flex items-center gap-2 text-xs">
                     <span
-                      className={cn("flex h-3 w-3 shrink-0 rounded-sm")}
+                      className="flex h-3 w-3 shrink-0 rounded-sm"
                       style={{
                         backgroundColor: `var(--color-${key})`,
                       }}

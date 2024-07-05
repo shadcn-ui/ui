@@ -3,7 +3,6 @@
 import * as React from "react"
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
-import { cn } from "@/lib/utils"
 import {
   Card,
   CardContent,
@@ -153,10 +152,8 @@ export default function Component() {
             return (
               <button
                 key={chart}
-                className={cn(
-                  "flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-l sm:border-t-0 sm:px-8 sm:py-6",
-                  activeChart === chart && "bg-muted/50"
-                )}
+                data-active={activeChart === chart}
+                className="flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l data-[active=true]:bg-muted/50 sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
                 onClick={() => setActiveChart(chart)}
               >
                 <span className="text-xs text-muted-foreground">
