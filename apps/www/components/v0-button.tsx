@@ -125,7 +125,7 @@ export function V0Button({
         }
       }}
     >
-      <Form size={size} {...props} />
+      <Form size={size} className={className} disabled={disabled} {...props} />
     </form>
   )
 }
@@ -133,6 +133,7 @@ export function V0Button({
 function Form({
   disabled,
   size = "default",
+  className,
   ...props
 }: Omit<React.ComponentProps<typeof V0Button>, "block">) {
   const { pending } = useFormStatus()
@@ -143,7 +144,8 @@ function Form({
         aria-label="Edit in v0"
         className={cn(
           "z-50 h-[calc(theme(spacing.7)_-_1px)] gap-1 rounded-[6px] bg-black px-3 text-xs text-white hover:bg-black hover:text-white dark:bg-white dark:text-black",
-          size === "icon" && "h-7 w-7 p-0"
+          size === "icon" && "h-7 w-7 p-0",
+          className
         )}
         disabled={disabled || pending}
         {...props}

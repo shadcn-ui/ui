@@ -1,8 +1,9 @@
 import { MainNavItem, SidebarNavItem } from "types/nav"
 
-interface DocsConfig {
+export interface DocsConfig {
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
+  chartsNav: SidebarNavItem[]
 }
 
 export const docsConfig: DocsConfig = {
@@ -16,16 +17,20 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components/accordion",
     },
     {
+      title: "Blocks",
+      href: "/blocks",
+    },
+    {
+      title: "Charts",
+      href: "/charts",
+    },
+    {
       title: "Themes",
       href: "/themes",
     },
     {
       title: "Examples",
       href: "/examples",
-    },
-    {
-      title: "Blocks",
-      href: "/blocks",
     },
   ],
   sidebarNav: [
@@ -116,7 +121,6 @@ export const docsConfig: DocsConfig = {
           title: "Breadcrumb",
           href: "/docs/components/breadcrumb",
           items: [],
-          label: "New",
         },
         {
           title: "Button",
@@ -136,6 +140,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Carousel",
           href: "/docs/components/carousel",
+          items: [],
+        },
+        {
+          title: "Chart",
+          href: "/docs/components/chart",
+          label: "New",
           items: [],
         },
         {
@@ -207,7 +217,6 @@ export const docsConfig: DocsConfig = {
           title: "Input OTP",
           href: "/docs/components/input-otp",
           items: [],
-          label: "New",
         },
         {
           title: "Label",
@@ -322,6 +331,78 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
+          items: [],
+        },
+      ],
+    },
+  ],
+  chartsNav: [
+    {
+      title: "Getting Started",
+      items: [
+        {
+          title: "Introduction",
+          href: "/docs/charts",
+          items: [],
+        },
+        {
+          title: "Installation",
+          href: "/docs/charts/installation",
+          items: [],
+        },
+        {
+          title: "Theming",
+          href: "/docs/charts/theming",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Charts",
+      items: [
+        {
+          title: "Area Chart",
+          href: "/docs/charts/area",
+          items: [],
+        },
+        {
+          title: "Bar Chart",
+          href: "/docs/charts/bar",
+          items: [],
+        },
+        {
+          title: "Line Chart",
+          href: "/docs/charts/line",
+          items: [],
+        },
+        {
+          title: "Pie Chart",
+          href: "/docs/charts/pie",
+          items: [],
+        },
+        {
+          title: "Radar Chart",
+          href: "/docs/charts/radar",
+          items: [],
+        },
+        {
+          title: "Radial Chart",
+          href: "/docs/charts/radial",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Components",
+      items: [
+        {
+          title: "Tooltip",
+          href: "/docs/charts/tooltip",
+          items: [],
+        },
+        {
+          title: "Legend",
+          href: "/docs/charts/legend",
           items: [],
         },
       ],

@@ -111,6 +111,16 @@
     "type": "components:ui"
   },
   {
+    "name": "chart",
+    "dependencies": [
+      "recharts"
+    ],
+    "files": [
+      "ui/chart.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "checkbox",
     "dependencies": [
       "@radix-ui/react-checkbox"
