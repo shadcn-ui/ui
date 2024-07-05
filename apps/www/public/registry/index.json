@@ -113,7 +113,11 @@
   {
     "name": "chart",
     "dependencies": [
-      "recharts"
+      "recharts",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "card"
     ],
     "files": [
       "ui/chart.tsx"
