@@ -7,7 +7,7 @@ import { Separator } from "@/registry/new-york/ui/separator"
 export function Announcement() {
   return (
     <Link
-      href="/docs/changelog"
+      href="/docs/components/chart"
       className="group inline-flex items-center px-0.5 text-sm font-medium"
     >
       <PieChart className="h-4 w-4" />{" "}
