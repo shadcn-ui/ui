@@ -71,7 +71,8 @@ export const ui: Registry = [
     name: "chart",
     type: "components:ui",
     files: ["ui/chart.tsx"],
-    dependencies: ["recharts"],
+    registryDependencies: ["card"],
+    dependencies: ["recharts", "lucide-react"],
   },
   {
     name: "checkbox",

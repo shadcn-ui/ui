@@ -129,7 +129,7 @@ export const Index: Record<string, any> = {
     "chart": {
       name: "chart",
       type: "components:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["card"],
       component: React.lazy(() => import("@/registry/default/ui/chart")),
       source: "",
       files: ["registry/default/ui/chart.tsx"],
@@ -3267,7 +3267,7 @@ export const Index: Record<string, any> = {
     "chart": {
       name: "chart",
       type: "components:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["card"],
       component: React.lazy(() => import("@/registry/new-york/ui/chart")),
       source: "",
       files: ["registry/new-york/ui/chart.tsx"],
