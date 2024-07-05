@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react"
 import { Star } from "lucide-react"
 
@@ -9,8 +11,8 @@ const ratingVariants = {
     emptyStar: "text-muted-foreground",
   },
   destructive: {
-    star: "text-red-500",
-    emptyStar: "text-red-200",
+    star: "text-destructive",
+    emptyStar: "text-destructive/70",
   },
   yellow: {
     star: "text-yellow-500",
@@ -19,32 +21,40 @@ const ratingVariants = {
 }
 
 interface RatingsProps extends React.HTMLAttributes<HTMLDivElement> {
-  rating: number
   totalStars?: number
   size?: number
   fill?: boolean
   Icon?: React.ReactElement
   variant?: keyof typeof ratingVariants
+  asInput?: boolean
+  value: number
+  onValueChange?: (value: number) => void
 }
 
 const Ratings = ({ ...props }: RatingsProps) => {
   const {
-    rating,
     totalStars = 5,
     size = 20,
     fill = true,
     Icon = <Star />,
     variant = "default",
+    asInput = false,
+    onValueChange,
+    value,
   } = props
 
-  const fullStars = Math.floor(rating)
+  const ratings = value
+
+  const fullStars = Math.floor(ratings)
   const partialStar =
-    rating % 1 > 0 ? (
+    ratings % 1 > 0 ? (
       <PartialStar
-        fillPercentage={rating % 1}
+        fillPercentage={ratings % 1}
         size={size}
         className={cn(ratingVariants[variant].star)}
         Icon={Icon}
+        asInput={asInput}
+        onValueChange={() => onValueChange && onValueChange(fullStars + 1)}
       />
     ) : null
 
@@ -56,8 +66,11 @@ const Ratings = ({ ...props }: RatingsProps) => {
           size,
           className: cn(
             fill ? "fill-current" : "fill-transparent",
-            ratingVariants[variant].star
+            ratingVariants[variant].star,
+            asInput ? "cursor-pointer" : ""
           ),
+          role: props.asInput && "input",
+          onClick: () => onValueChange && onValueChange(i + 1),
         })
       )}
       {partialStar}
@@ -65,7 +78,14 @@ const Ratings = ({ ...props }: RatingsProps) => {
         React.cloneElement(Icon, {
           key: i + fullStars + 1,
           size,
-          className: cn(ratingVariants[variant].emptyStar),
+          className: cn(
+            ratingVariants[variant].emptyStar,
+            asInput ? "cursor-pointer" : ""
+          ),
+          role: props.asInput && "input",
+          onClick: () =>
+            onValueChange &&
+            onValueChange(fullStars + i + 1 + (partialStar ? 1 : 0)),
         })
       )}
     </div>
@@ -77,12 +97,20 @@ interface PartialStarProps {
   size: number
   className?: string
   Icon: React.ReactElement
+  asInput?: boolean
+  onValueChange?: () => void
 }
+
 const PartialStar = ({ ...props }: PartialStarProps) => {
-  const { fillPercentage, size, className, Icon } = props
+  const { fillPercentage, size, className, Icon, asInput, onValueChange } =
+    props
 
   return (
-    <div style={{ position: "relative", display: "inline-block" }}>
+    <div
+      role={asInput ? "input" : undefined}
+      onClick={() => onValueChange && onValueChange()}
+      className={cn("relative inline-block", asInput && "cursor-pointer")}
+    >
       {React.cloneElement(Icon, {
         size,
         className: cn("fill-transparent", className),
@@ -104,4 +132,4 @@ const PartialStar = ({ ...props }: PartialStarProps) => {
   )
 }
 
-export { Ratings }
+export default Ratings

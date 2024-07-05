@@ -1,5 +1,5 @@
-import { Ratings } from "@/registry/new-york/ui/ratings"
+import Ratings from "../ui/ratings"
 
 export default function RatingsDemo() {
-  return <Ratings rating={1.5} />
+  return <Ratings value={1.5} />
 }

@@ -329,7 +329,11 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/default/ui/ratings")),
+      source: "",
       files: ["registry/default/ui/ratings.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
     },
     "resizable": {
       name: "resizable",
@@ -1409,20 +1413,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "ratings-demo": {
-      name: "ratings-demo",
-      type: "components:example",
-      registryDependencies: ["ratings"],
-      component: React.lazy(() => import("@/registry/default/example/ratings-demo")),
-      files: ["registry/default/example/ratings-demo.tsx"],
-    },
-    "ratings-variants": {
-      name: "ratings-variants",
-      type: "components:example",
-      registryDependencies: ["ratings"],
-      component: React.lazy(() => import("@/registry/default/example/ratings-variants")),
-      files: ["registry/default/example/ratings-variants.tsx"],
-    },
     "radio-group-form": {
       name: "radio-group-form",
       type: "components:example",
@@ -1430,6 +1420,39 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/radio-group-form")),
       source: "",
       files: ["registry/default/example/radio-group-form.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-demo": {
+      name: "ratings-demo",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/default/example/ratings-demo")),
+      source: "",
+      files: ["registry/default/example/ratings-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-variants": {
+      name: "ratings-variants",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/default/example/ratings-variants")),
+      source: "",
+      files: ["registry/default/example/ratings-variants.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-as-input": {
+      name: "ratings-as-input",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/default/example/ratings-as-input")),
+      source: "",
+      files: ["registry/default/example/ratings-as-input.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -2740,7 +2763,11 @@ export const Index: Record<string, any> = {
       type: "components:ui",
       registryDependencies: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/ratings")),
+      source: "",
       files: ["registry/new-york/ui/ratings.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
     },
     "resizable": {
       name: "resizable",
@@ -3820,20 +3847,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "ratings-demo": {
-      name: "ratings-demo",
-      type: "components:example",
-      registryDependencies: ["ratings"],
-      component: React.lazy(() => import("@/registry/new-york/example/ratings-demo")),
-      files: ["registry/new-york/example/ratings-demo.tsx"],
-    },
-    "ratings-variants": {
-      name: "ratings-variants",
-      type: "components:example",
-      registryDependencies: ["ratings"],
-      component: React.lazy(() => import("@/registry/new-york/example/ratings-variants")),
-      files: ["registry/new-york/example/ratings-variants.tsx"],
-    },
     "radio-group-form": {
       name: "radio-group-form",
       type: "components:example",
@@ -3841,6 +3854,39 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/radio-group-form")),
       source: "",
       files: ["registry/new-york/example/radio-group-form.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-demo": {
+      name: "ratings-demo",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/new-york/example/ratings-demo")),
+      source: "",
+      files: ["registry/new-york/example/ratings-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-variants": {
+      name: "ratings-variants",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/new-york/example/ratings-variants")),
+      source: "",
+      files: ["registry/new-york/example/ratings-variants.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-as-input": {
+      name: "ratings-as-input",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/new-york/example/ratings-as-input")),
+      source: "",
+      files: ["registry/new-york/example/ratings-as-input.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -4567,17 +4613,9 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-06-chunk-0",
-        description: "A breadcrumb with two links and a page indicator.",
+        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-0")),
         file: "registry/new-york/block/dashboard-06-chunk-0.tsx",
-        container: {
-          className: "undefined"
-        }
-      },{
-        name: "dashboard-06-chunk-1",
-        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
-        component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-1")),
-        file: "registry/new-york/block/dashboard-06-chunk-1.tsx",
         container: {
           className: "undefined"
         }

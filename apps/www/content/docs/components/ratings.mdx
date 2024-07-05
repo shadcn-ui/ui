@@ -50,16 +50,18 @@ import { Ratings } from "@/components/ui/ratings"
 <Ratings rating={3} />
 ```
 
-## Props API
+## Props
 
 | Name       | Type               | Default   | Description                             |
-| ---------- | ------------------ | --------- | --------------------------------------- |
-| rating     | number (required)  | -         | Rating value.                           |
+|------------|--------------------|-----------|-----------------------------------------|
+| value      | number (required)  | -         | Rating value.                           |
 | totalStars | number             | 5         | Total number of stars.                  |
 | size       | number             | 20        | Size of each star.                      |
 | fill       | boolean            | true      | Whether to fill the stars or not.       |
-| Icon       | React.ReactElement | Star      | Custom icon instead of Star.            |
-| variant    | enum               | "default" | "default", "destructive", and "yellow". |
+| Icon       | React.ReactElement | `<Star />`| Custom icon instead of Star.            |
+| variant    | enum               | "default" | One of "default", "destructive", "yellow". |
+| asInput    | boolean            | false     | If true, makes the rating component interactive. |
+| onValueChange | (value: number) => void | undefined | Callback function when the rating value changes. |
 
 ## Examples
 
@@ -70,3 +72,7 @@ import { Ratings } from "@/components/ui/ratings"
 ### Variants
 
 <ComponentPreview name="ratings-variants" />
+
+### As Input
+
+<ComponentPreview name="ratings-as-input" />
