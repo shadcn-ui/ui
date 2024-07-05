@@ -18,6 +18,8 @@ import {
   ChartTooltipContent,
 } from "@/registry/default/ui/chart"
 
+export const description = "A simple area chart"
+
 const chartData = [
   { month: "January", desktop: 186 },
   { month: "February", desktop: 305 },

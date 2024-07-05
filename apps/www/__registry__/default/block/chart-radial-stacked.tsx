@@ -18,6 +18,8 @@ import {
   ChartTooltipContent,
 } from "@/registry/default/ui/chart"
 
+export const description = "A radial chart with stacked sections"
+
 const chartData = [{ month: "january", desktop: 1260, mobile: 570 }]
 
 const chartConfig = {

@@ -1,7 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import { LabelList, Pie, PieChart, RadialBar, RadialBarChart } from "recharts"
+import { LabelList, RadialBar, RadialBarChart } from "recharts"
 
 import {
   Card,
@@ -17,6 +17,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
+
+export const description = "A radial chart with a label"
 
 const chartData = [
   { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },

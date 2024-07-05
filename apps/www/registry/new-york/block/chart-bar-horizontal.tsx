@@ -18,6 +18,8 @@ import {
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
+export const description = "A horizontal bar chart"
+
 const chartData = [
   { month: "January", desktop: 186 },
   { month: "February", desktop: 305 },

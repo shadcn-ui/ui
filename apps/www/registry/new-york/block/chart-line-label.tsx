@@ -18,6 +18,8 @@ import {
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
+export const description = "A line chart with a label"
+
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
   { month: "February", desktop: 305, mobile: 200 },

@@ -18,6 +18,8 @@ import {
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
+export const description = "A radar chart with a grid filled"
+
 const chartData = [
   { month: "January", desktop: 186 },
   { month: "February", desktop: 285 },

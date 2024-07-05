@@ -18,6 +18,8 @@ import {
   ChartTooltipContent,
 } from "@/registry/default/ui/chart"
 
+export const description = "A bar chart with negative values"
+
 const chartData = [
   { month: "January", visitors: 186 },
   { month: "February", visitors: 205 },

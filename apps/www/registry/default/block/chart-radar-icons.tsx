@@ -20,6 +20,8 @@ import {
   ChartTooltipContent,
 } from "@/registry/default/ui/chart"
 
+export const description = "A radar chart with icons"
+
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
   { month: "February", desktop: 305, mobile: 200 },

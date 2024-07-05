@@ -18,6 +18,8 @@ import {
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
+export const description = "A stacked area chart with expand stacking"
+
 const chartData = [
   { month: "January", desktop: 186, mobile: 80, other: 45 },
   { month: "February", desktop: 305, mobile: 200, other: 100 },

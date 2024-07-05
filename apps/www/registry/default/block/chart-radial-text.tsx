@@ -19,6 +19,8 @@ import {
 } from "@/registry/default/ui/card"
 import { ChartConfig, ChartContainer } from "@/registry/default/ui/chart"
 
+export const description = "A radial chart with text"
+
 const chartData = [
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
 ]

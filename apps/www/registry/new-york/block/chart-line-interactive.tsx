@@ -17,6 +17,8 @@ import {
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
+export const description = "An interactive line chart"
+
 const chartData = [
   { date: "2024-04-01", desktop: 222, mobile: 150 },
   { date: "2024-04-02", desktop: 97, mobile: 180 },

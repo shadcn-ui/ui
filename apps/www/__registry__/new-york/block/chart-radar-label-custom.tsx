@@ -1,17 +1,7 @@
 "use client"
 
 import { TrendingUp } from "lucide-react"
-import {
-  Label,
-  LabelList,
-  PolarAngleAxis,
-  PolarGrid,
-  Radar,
-  RadarChart,
-  Rectangle,
-  Sector,
-  Text,
-} from "recharts"
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
 
 import {
   Card,
@@ -27,6 +17,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
+
+export const description = "A radar chart with a custom label"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
