@@ -1908,6 +1908,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "tooltip-with-toggle-demo": {
+      name: "tooltip-with-toggle-demo",
+      type: "components:example",
+      registryDependencies: ["tooltip"],
+      component: React.lazy(() => import("@/registry/default/example/tooltip-with-toggle-demo")),
+      source: "",
+      files: ["registry/default/example/tooltip-with-toggle-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "typography-blockquote": {
       name: "typography-blockquote",
       type: "components:example",
@@ -5042,6 +5053,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/tooltip-demo")),
       source: "",
       files: ["registry/new-york/example/tooltip-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "tooltip-with-toggle-demo": {
+      name: "tooltip-with-toggle-demo",
+      type: "components:example",
+      registryDependencies: ["tooltip"],
+      component: React.lazy(() => import("@/registry/new-york/example/tooltip-with-toggle-demo")),
+      source: "",
+      files: ["registry/new-york/example/tooltip-with-toggle-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
