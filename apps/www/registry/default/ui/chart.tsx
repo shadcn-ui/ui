@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as RechartsPrimitive from "recharts"
+import { Payload } from "recharts/types/component/DefaultLegendContent"
 
 import { cn } from "@/lib/utils"
 
@@ -262,10 +263,22 @@ const ChartLegendContent = React.forwardRef<
     Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
       hideIcon?: boolean
       nameKey?: string
+      itemClicked?: (item: Payload) => void
+      itemHoverEnter?: (item: Payload) => void
+      itemHoverLeave?: (item: Payload) => void
     }
 >(
   (
-    { className, hideIcon = false, payload, verticalAlign = "bottom", nameKey },
+    {
+      className,
+      hideIcon = false,
+      payload,
+      verticalAlign = "bottom",
+      nameKey,
+      itemClicked,
+      itemHoverEnter,
+      itemHoverLeave,
+    },
     ref
   ) => {
     const { config } = useChart()
@@ -290,8 +303,12 @@ const ChartLegendContent = React.forwardRef<
           return (
             <div
               key={item.value}
+              onClick={() => itemClicked?.(item)}
+              onMouseEnter={() => itemHoverEnter?.(item)}
+              onMouseLeave={() => itemHoverLeave?.(item)}
               className={cn(
-                "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
+                "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground",
+                item.inactive && "opacity-50"
               )}
             >
               {itemConfig?.icon && !hideIcon ? (
