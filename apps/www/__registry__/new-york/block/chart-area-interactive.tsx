@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { Payload } from "recharts/types/component/DefaultLegendContent"
 
 import {
   Card,
@@ -138,6 +139,28 @@ const chartConfig = {
 
 export default function Component() {
   const [timeRange, setTimeRange] = React.useState("90d")
+  const [legendInteraction, setLegendInteraction] = React.useState<
+    Record<string, null | string | boolean>
+  >({
+    hover: null,
+  })
+  function handleLegendMouseEnter({ dataKey }: Payload) {
+    if (typeof dataKey !== "string" || !!legendInteraction.dataKey) return
+    if (!legendInteraction[dataKey]) {
+      setLegendInteraction({ ...legendInteraction, hover: dataKey ?? null })
+    }
+  }
+  function handleLegendMouseLeave() {
+    setLegendInteraction({ ...legendInteraction, hover: null })
+  }
+  function selectBar({ dataKey }: Payload) {
+    if (typeof dataKey !== "string") return
+    setLegendInteraction({
+      ...legendInteraction,
+      [dataKey]: !legendInteraction[dataKey],
+      hover: null,
+    })
+  }
 
   const filteredData = chartData.filter((item) => {
     const date = new Date(item.date)
@@ -244,6 +267,12 @@ export default function Component() {
             />
             <Area
               dataKey="mobile"
+              hide={legendInteraction.mobile === true}
+              opacity={
+                legendInteraction.hover === "mobile" || !legendInteraction.hover
+                  ? 1
+                  : 0.5
+              }
               type="natural"
               fill="url(#fillMobile)"
               stroke="var(--color-mobile)"
@@ -252,11 +281,26 @@ export default function Component() {
             <Area
               dataKey="desktop"
               type="natural"
+              hide={legendInteraction.desktop === true}
+              opacity={
+                legendInteraction.hover === "desktop" ||
+                !legendInteraction.hover
+                  ? 1
+                  : 0.5
+              }
               fill="url(#fillDesktop)"
               stroke="var(--color-desktop)"
               stackId="a"
             />
-            <ChartLegend content={<ChartLegendContent />} />
+            <ChartLegend
+              content={
+                <ChartLegendContent
+                  itemClicked={selectBar}
+                  itemHoverEnter={handleLegendMouseEnter}
+                  itemHoverLeave={handleLegendMouseLeave}
+                />
+              }
+            />
           </AreaChart>
         </ChartContainer>
       </CardContent>
