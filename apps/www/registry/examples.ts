@@ -843,6 +843,11 @@ export const examples: Registry = [
     files: ["example/mode-toggle.tsx"],
   },
   {
+    name: "mode-toggle-group",
+    type: "components:example",
+    files: ["example/mode-toggle-group.tsx"],
+  },
+  {
     name: "cards",
     type: "components:example",
     files: ["example/cards/cards.tsx"],

@@ -117,7 +117,9 @@ export const action = createThemeAction(themeSessionResolver)
 
 ### Add a mode toggle
 
-Place a mode toggle on your site to toggle between light and dark mode.
+**Example 1** using Dropdown Menu
+
+in this example, we will use a `Dropdown Menu` component to toggle between light, dark mode.
 
 ```tsx title="components/mode-toggle.tsx"
 import { Moon, Sun } from "lucide-react"
@@ -132,7 +134,7 @@ import {
 } from "./ui/dropdown-menu"
 
 export function ModeToggle() {
-  const [, setTheme] = useTheme()
+  const [ setTheme ] = useTheme()
 
   return (
     <DropdownMenu>
@@ -152,6 +154,43 @@ export function ModeToggle() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+  )
+}
+```
+
+**Example 2** using Toggle Group
+
+in this example, we will use a `Toggle Group` component to toggle between light, dark mode. also, we can change `scale` of this for smaller view.
+
+```tsx title="components/mode-toggle.tsx"
+import { Moon, Sun } from "lucide-react"
+import { Theme, useTheme } from "remix-themes"
+
+import { 
+  ToggleGroup, 
+  ToggleGroupItem 
+} from "@/components/ui/toggle-group"
+
+export function ModeToggle() {
+  const [ setTheme ] = useTheme()
+
+  return (
+    <ToggleGroup type="single" className="border p-1 rounded-full">
+      <ToggleGroupItem
+        value="Light"
+        className="rounded-full"
+        onClick={() => setTheme(Theme.LIGHT)}
+      >
+        <Sun className="h-5 w-5" />
+      </ToggleGroupItem>
+      <ToggleGroupItem
+        value="Dark"
+        className="rounded-full"
+        onClick={() => setTheme(Theme.DARK)}
+      >
+        <Moon className="h-5 w-5" />
+      </ToggleGroupItem>
+    </ToggleGroup>
   )
 }
 ```

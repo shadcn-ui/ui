@@ -2073,6 +2073,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "mode-toggle-group": {
+      name: "mode-toggle-group",
+      type: "components:example",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/example/mode-toggle-group")),
+      source: "",
+      files: ["registry/default/example/mode-toggle-group.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "cards": {
       name: "cards",
       type: "components:example",
@@ -5207,6 +5218,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/mode-toggle")),
       source: "",
       files: ["registry/new-york/example/mode-toggle.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "mode-toggle-group": {
+      name: "mode-toggle-group",
+      type: "components:example",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/example/mode-toggle-group")),
+      source: "",
+      files: ["registry/new-york/example/mode-toggle-group.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
