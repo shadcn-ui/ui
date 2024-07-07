@@ -48,7 +48,10 @@ export const Index: Record<string, any> = {
       let sourceFilename = ""
 
       let chunks: any = []
-      if (item.type === "components:block") {
+      if (
+        item.type === "components:block" ||
+        item.type === "components:chart"
+      ) {
         const file = resolveFiles[0]
         const filename = path.basename(file)
         const raw = await fs.readFile(file, "utf8")
@@ -231,7 +234,7 @@ export const Index: Record<string, any> = {
       chunks: [${chunks.map(
         (chunk) => `{
         name: "${chunk.name}",
-        description: "${chunk.description}",
+        description: "${chunk.description ?? "No description"}",
         component: ${chunk.component}
         file: "${chunk.file}",
         container: {
