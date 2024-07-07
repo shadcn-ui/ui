@@ -111,6 +111,20 @@
     "type": "components:ui"
   },
   {
+    "name": "chart",
+    "dependencies": [
+      "recharts",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "card"
+    ],
+    "files": [
+      "ui/chart.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "checkbox",
     "dependencies": [
       "@radix-ui/react-checkbox"
