@@ -572,6 +572,20 @@ import { ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 <ChartLegend content={<ChartLegendContent />} />
 ```
 
+You can use the Props `itemClicked`, `itemHoverEnter` and `itemHoverLeave` to add interactivity for the legend items.
+
+```tsx
+<ChartLegend
+  content={
+    <ChartLegendContent
+      itemClicke={console.log}
+      itemHoverLeave={console.log}
+      interactivity={console.log}
+    />
+  }
+/>
+```
+
 ### Colors
 
 Colors are automatically referenced from the chart config.
