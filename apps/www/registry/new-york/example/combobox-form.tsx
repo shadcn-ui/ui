@@ -103,10 +103,10 @@ export default function ComboboxForm() {
                     <CommandGroup>
                       {languages.map((language) => (
                         <CommandItem
-                          value={language.label}
                           key={language.value}
-                          onSelect={() => {
-                            form.setValue("language", language.value)
+                          value={language.label}
+                          onSelect={(value) => {
+                            form.setValue("language", value)
                           }}
                         >
                           {language.label}
