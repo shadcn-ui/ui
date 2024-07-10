@@ -59,12 +59,9 @@ ${Object.entries(chartConfig.theme.cssVars.dark)
 
   const content = (
     <>
-      <div className="chart-wrapper hidden sm:block [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
-        {children}
-      </div>
       <Tabs
         defaultValue="code"
-        className="relative flex h-full flex-1 flex-col overflow-hidden p-4"
+        className="relative flex h-full flex-1 flex-col overflow-hidden p-4 mt-8"
         value={tab}
         onValueChange={setTab}
       >
