@@ -510,25 +510,21 @@ function CustomizerCode() {
             <span className="line text-white">
               &nbsp;&nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
             </span>
-            {[
-              "chart-1",
-              "chart-2",
-              "chart-3",
-              "chart-4",
-              "chart-5",
-            ].map((prefix) => (
-              <>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                  {
-                    activeTheme?.cssVars.light[
-                      prefix as keyof typeof activeTheme.cssVars.light
-                    ]
-                  }
-                  ;
-                </span>
-              </>
-            ))}
+            {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+              (prefix) => (
+                <>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                    {
+                      activeTheme?.cssVars.light[
+                        prefix as keyof typeof activeTheme.cssVars.light
+                      ]
+                    }
+                    ;
+                  </span>
+                </>
+              )
+            )}
             <span className="line text-white">&nbsp;&nbsp;&#125;</span>
             <span className="line text-white">&nbsp;</span>
             <span className="line text-white">&nbsp;&nbsp;.dark &#123;</span>
@@ -582,25 +578,21 @@ function CustomizerCode() {
               &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
               {activeTheme?.cssVars.dark["ring"]};
             </span>
-            {[
-              "chart-1",
-              "chart-2",
-              "chart-3",
-              "chart-4",
-              "chart-5",
-            ].map((prefix) => (
-              <>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                  {
-                    activeTheme?.cssVars.dark[
-                      prefix as keyof typeof activeTheme.cssVars.dark
-                    ]
-                  }
-                  ;
-                </span>
-              </>
-            ))}
+            {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+              (prefix) => (
+                <>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                    {
+                      activeTheme?.cssVars.dark[
+                        prefix as keyof typeof activeTheme.cssVars.dark
+                      ]
+                    }
+                    ;
+                  </span>
+                </>
+              )
+            )}
             <span className="line text-white">&nbsp;&nbsp;&#125;</span>
             <span className="line text-white">&#125;</span>
           </code>
