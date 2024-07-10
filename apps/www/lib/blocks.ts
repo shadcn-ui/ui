@@ -68,6 +68,7 @@ export async function getBlock(
     ...entry,
     ...content,
     chunks,
+    description: content.description || "",
     type: "components:block",
   })
 }
@@ -85,6 +86,10 @@ async function _getBlockCode(
   style: Style["name"] = DEFAULT_BLOCKS_STYLE
 ) {
   const entry = Index[style][name]
+  if (!entry) {
+    console.error(`Block ${name} not found in style ${style}`)
+    return ""
+  }
   const block = registryEntrySchema.parse(entry)
 
   if (!block.source) {
