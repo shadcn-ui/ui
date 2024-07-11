@@ -64,7 +64,7 @@ export function BlockPreview({
             ) : null}
             <iframe
               src={`/blocks/${block.style}/${block.name}`}
-              height={block.container?.height}
+              height={block.container?.height ?? 450}
               className="chunk-mode relative z-20 w-full bg-background"
               onLoad={() => {
                 setIsLoading(false)
