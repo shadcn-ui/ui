@@ -5,7 +5,7 @@ import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
+import { CopyButton } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
 import { StyleSwitcher } from "@/components/style-switcher"
 import { ThemeWrapper } from "@/components/theme-wrapper"
@@ -24,6 +24,7 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   extractedClassNames?: string
   align?: "center" | "start" | "end"
   description?: string
+  hideCode?: boolean
 }
 
 export function ComponentPreview({
@@ -34,6 +35,7 @@ export function ComponentPreview({
   extractedClassNames,
   align = "center",
   description,
+  hideCode = false,
   ...props
 }: ComponentPreviewProps) {
   const [config] = useConfig()
@@ -78,20 +80,22 @@ export function ComponentPreview({
     >
       <Tabs defaultValue="preview" className="relative mr-auto w-full">
         <div className="flex items-center justify-between pb-3">
-          <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
-            <TabsTrigger
-              value="preview"
-              className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
-            >
-              Preview
-            </TabsTrigger>
-            <TabsTrigger
-              value="code"
-              className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
-            >
-              Code
-            </TabsTrigger>
-          </TabsList>
+          {!hideCode && (
+            <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
+              <TabsTrigger
+                value="preview"
+                className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+              >
+                Preview
+              </TabsTrigger>
+              <TabsTrigger
+                value="code"
+                className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+              >
+                Code
+              </TabsTrigger>
+            </TabsList>
+          )}
         </div>
         <TabsContent value="preview" className="relative rounded-md border">
           <div className="flex items-center justify-between p-4">
@@ -110,7 +114,7 @@ export function ComponentPreview({
               <CopyButton
                 value={codeString}
                 variant="outline"
-                className="h-7 w-7 text-foreground opacity-100 hover:bg-muted hover:text-foreground [&_svg]:size-3.5"
+                className="h-7 w-7 text-foreground opacity-100 hover:bg-muted hover:text-foreground [&_svg]:h-3.5 [&_svg]:w-3.5"
               />
             </div>
           </div>
@@ -127,7 +131,7 @@ export function ComponentPreview({
             >
               <React.Suspense
                 fallback={
-                  <div className="flex items-center text-sm text-muted-foreground">
+                  <div className="flex w-full items-center justify-center text-sm text-muted-foreground">
                     <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                     Loading...
                   </div>
