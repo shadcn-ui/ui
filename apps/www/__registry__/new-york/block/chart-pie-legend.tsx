@@ -1,6 +1,6 @@
 "use client"
 
-import { LabelList, Pie, PieChart } from "recharts"
+import { Pie, PieChart } from "recharts"
 
 import {
   Card,
@@ -65,14 +65,7 @@ export default function Component() {
           className="mx-auto aspect-square max-h-[300px]"
         >
           <PieChart>
-            <Pie data={chartData} dataKey="visitors">
-              <LabelList
-                dataKey="visitors"
-                className="fill-background"
-                stroke="none"
-                fontSize={12}
-              />
-            </Pie>
+            <Pie data={chartData} dataKey="visitors" />
             <ChartLegend
               content={<ChartLegendContent nameKey="browser" />}
               className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/4 [&>*]:justify-center"
