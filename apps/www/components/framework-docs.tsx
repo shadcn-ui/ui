@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { allDocs } from "contentlayer/generated"
+import { allDocs } from "content-collections"
 
 import { Mdx } from "./mdx-components"
 

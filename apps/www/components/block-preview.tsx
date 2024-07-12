@@ -64,7 +64,7 @@ export function BlockPreview({
             ) : null}
             <iframe
               src={`/blocks/${block.style}/${block.name}`}
-              height={block.container?.height}
+              height={block.container?.height ?? 450}
               className="chunk-mode relative z-20 w-full bg-background"
               onLoad={() => {
                 setIsLoading(false)
@@ -82,7 +82,7 @@ export function BlockPreview({
       </TabsContent>
       <TabsContent value="code">
         <div
-          data-rehype-pretty-code-fragment
+          data-rehype-pretty-code-figure
           dangerouslySetInnerHTML={{ __html: block.highlightedCode }}
           className="w-full overflow-hidden rounded-md [&_pre]:my-0 [&_pre]:h-[--container-height] [&_pre]:overflow-auto [&_pre]:whitespace-break-spaces [&_pre]:p-6 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed"
         />

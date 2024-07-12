@@ -14,25 +14,25 @@
   display: block;
 }
 
-[data-rehype-pretty-code-fragment] {
+[data-rehype-pretty-code-figure] {
   @apply relative text-white;
 }
 
-[data-rehype-pretty-code-fragment] code {
+[data-rehype-pretty-code-figure] code {
   @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
   counter-reset: line;
   box-decoration-break: clone;
 }
 
-[data-rehype-pretty-code-fragment] .line {
+[data-rehype-pretty-code-figure] [data-line] {
   @apply px-4 min-h-[1rem] py-0.5 w-full inline-block;
 }
 
-[data-rehype-pretty-code-fragment] [data-line-numbers] .line {
+[data-rehype-pretty-code-figure] [data-line-numbers] [data-line] {
   @apply px-2;
 }
 
-[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+[data-rehype-pretty-code-figure] [data-line-numbers] > [data-line]::before {
   @apply text-zinc-50/40 text-xs;
   counter-increment: line;
   content: counter(line);
@@ -42,24 +42,24 @@
   text-align: right;
 }
 
-[data-rehype-pretty-code-fragment] .line--highlighted {
+[data-rehype-pretty-code-figure] .line--highlighted {
   @apply bg-zinc-700/50;
 }
 
-[data-rehype-pretty-code-fragment] .line-highlighted span {
+[data-rehype-pretty-code-figure] .line-highlighted span {
   @apply relative;
 }
 
-[data-rehype-pretty-code-fragment] .word--highlighted {
+[data-rehype-pretty-code-figure] .word--highlighted {
   @apply rounded-md bg-zinc-700/50 border-zinc-700/70 p-1;
 }
 
-.dark [data-rehype-pretty-code-fragment] .word--highlighted {
+.dark [data-rehype-pretty-code-figure] .word--highlighted {
   @apply bg-zinc-900;
 }
 
 [data-rehype-pretty-code-title] {
-  @apply mt-2 pt-6 px-4 text-sm font-medium;
+  @apply mt-2 pt-6 px-4 text-sm font-medium text-foreground;
 }
 
 [data-rehype-pretty-code-title] + pre {

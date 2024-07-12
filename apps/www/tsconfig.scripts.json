@@ -8,6 +8,6 @@
     "esModuleInterop": true,
     "isolatedModules": false
   },
-  "include": [".contentlayer/generated", "scripts/**/*.ts"],
+  "include": [".content-collections/generated", "scripts/**/*.ts"],
   "exclude": ["node_modules"]
 }

@@ -2,5 +2,5 @@ dist
 node_modules
 .next
 build
-.contentlayer
+.content-collections
 apps/www/pages/api/registry.json

@@ -9,4 +9,4 @@ dist
 node_modules
 .next
 build
-.contentlayer
+.content-collections
