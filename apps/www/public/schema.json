@@ -27,6 +27,9 @@
       },
       "required": ["config", "css", "baseColor", "cssVariables"]
     },
+    "reExport": {
+      "type": "boolean"
+    },
     "rsc": {
       "type": "boolean"
     },
