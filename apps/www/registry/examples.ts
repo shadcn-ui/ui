@@ -1,4 +1,4 @@
-import { Registry } from "@/registry/schema"
+import { Registry } from "@/registry/schema";
 
 export const examples: Registry = [
   {
@@ -282,6 +282,12 @@ export const examples: Registry = [
     type: "components:example",
     registryDependencies: ["combobox", "popover", "drawer"],
     files: ["example/combobox-responsive.tsx"],
+  },
+  {
+    name: "combobox-disable-items",
+    type: "components:example",
+    registryDependencies: ["command"],
+    files: ["example/combobox-disable-items.tsx"],
   },
   {
     name: "command-demo",

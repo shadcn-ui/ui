@@ -1,27 +1,10 @@
----
-title: Combobox
-description: Autocomplete input and command palette with a list of suggestions.
-component: true
----
-
-<ComponentPreview name="combobox-demo" />
-
-## Installation
-
-The Combobox is built using a composition of the `<Popover />` and the `<Command />` components.
-
-See installation instructions for the [Popover](/docs/components/popover#installation) and the [Command](/docs/components/command#installation) components.
-
-## Usage
-
-```tsx
 "use client"
 
 import * as React from "react"
 import { Check, ChevronsUpDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -29,37 +12,22 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command"
+} from "@/registry/new-york/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/registry/new-york/ui/popover"
 
 const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
+  { value: "next.js", label: "Next.js" },
+  { value: "sveltekit", label: "SvelteKit", disabled: true },
+  { value: "nuxt.js", label: "Nuxt.js" },
+  { value: "remix", label: "Remix", disabled: true },
+  { value: "astro", label: "Astro" },
 ]
 
-export function ComboboxDemo() {
+export default function ComboboxDemo() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
 
@@ -88,6 +56,7 @@ export function ComboboxDemo() {
                 <CommandItem
                   key={framework.value}
                   value={framework.value}
+                  disabled={framework.disabled}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue)
                     setOpen(false)
@@ -103,39 +72,9 @@ export function ComboboxDemo() {
                 </CommandItem>
               ))}
             </CommandGroup>
-        </CommandList>
+          </CommandList>
+        </Command>
       </PopoverContent>
     </Popover>
   )
 }
-```
-
-## Examples
-
-### Combobox
-
-<ComponentPreview name="combobox-demo" />
-
-### Popover
-
-<ComponentPreview name="combobox-popover" />
-
-### Dropdown menu
-
-<ComponentPreview name="combobox-dropdown-menu" />
-
-### Disable items
-
-Add `disabled` property to list items and pass it to the `<CommandItem />` for displaying non-selectable items.
-
-<ComponentPreview name="combobox-disable-items" />
-
-### Responsive
-
-You can create a responsive combobox by using the `<Popover />` on desktop and the `<Drawer />` components on mobile.
-
-<ComponentPreview name="combobox-responsive" />
-
-### Form
-
-<ComponentPreview name="combobox-form" />
