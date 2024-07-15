@@ -27,6 +27,30 @@ npx tailwindcss init -p
 
 Add the following code to the `tsconfig.json` file to resolve paths:
 
+```ts {11-16} showLineNumbers
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+### Edit tsconfig.app.json file
+
+Add the following code to the `tsconfig.app.json` file to resolve paths, for your IDE:
+
 ```ts {4-9} showLineNumbers
 {
   "compilerOptions": {
