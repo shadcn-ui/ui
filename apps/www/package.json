@@ -55,7 +55,7 @@
     "@vercel/og": "^0.0.21",
     "class-variance-authority": "^0.7.0",
     "clsx": "^1.2.1",
-    "cmdk": "^0.2.0",
+    "cmdk": "^1.0.0",
     "contentlayer2": "^0.4.6",
     "date-fns": "^2.30.0",
     "embla-carousel-autoplay": "8.0.0-rc15",
