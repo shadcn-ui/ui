@@ -20,6 +20,7 @@ test("get raw config", async () => {
     },
     rsc: false,
     tsx: true,
+    reExport: false,
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
@@ -52,6 +53,7 @@ test("get config", async () => {
     },
     rsc: false,
     tsx: true,
+    reExport: false,
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
@@ -87,6 +89,7 @@ test("get config", async () => {
     style: "new-york",
     rsc: false,
     tsx: true,
+    reExport: false,
     tailwind: {
       config: "tailwind.config.ts",
       baseColor: "zinc",
@@ -139,6 +142,7 @@ test("get config", async () => {
     },
     rsc: false,
     tsx: false,
+    reExport: false,
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",
@@ -162,5 +166,52 @@ test("get config", async () => {
       ui: path.resolve(__dirname, "../fixtures/config-jsx", "./components"),
       utils: path.resolve(__dirname, "../fixtures/config-jsx", "./lib/utils"),
     },
+  })
+
+  expect(
+    await getConfig(path.resolve(__dirname, "../fixtures/config-reexport"))
+  ).toEqual({
+      style: "new-york",
+      rsc: false,
+      tsx: true,
+      reExport: true,
+      tailwind: {
+        config: "tailwind.config.ts",
+        baseColor: "zinc",
+        css: "src/app/globals.css",
+        cssVariables: true,
+        prefix: "tw-",
+      },
+      aliases: {
+        components: "~/components",
+        utils: "~/lib/utils",
+      },
+      resolvedPaths: {
+        tailwindConfig: path.resolve(
+          __dirname,
+          "../fixtures/config-reexport",
+          "tailwind.config.ts"
+        ),
+        tailwindCss: path.resolve(
+          __dirname,
+          "../fixtures/config-reexport",
+          "./src/app/globals.css"
+        ),
+        components: path.resolve(
+          __dirname,
+          "../fixtures/config-reexport",
+          "./src/components"
+        ),
+        ui: path.resolve(
+          __dirname,
+          "../fixtures/config-reexport",
+          "./src/components"
+        ),
+        utils: path.resolve(
+          __dirname,
+          "../fixtures/config-reexport",
+          "./src/lib/utils"
+        ),
+      },
   })
 })

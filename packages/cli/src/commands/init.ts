@@ -171,6 +171,16 @@ export async function promptForConfig(
       initial: defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS,
     },
     {
+      type: "toggle",
+      name: "reExport",
+      message: `Would you like to ${highlight(
+        "re-export"
+      )} components from the components directory?`,
+      initial: false,
+      active: "yes",
+      inactive: "no",
+    },
+    {
       type: "text",
       name: "utils",
       message: `Configure the import alias for ${highlight("utils")}:`,
@@ -198,6 +208,7 @@ export async function promptForConfig(
     },
     rsc: options.rsc,
     tsx: options.typescript,
+    reExport: options.reExport,
     aliases: {
       utils: options.utils,
       components: options.components,
