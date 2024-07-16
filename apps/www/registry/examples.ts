@@ -1,4 +1,4 @@
-import { Registry } from "@/registry/schema";
+import { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
   {
