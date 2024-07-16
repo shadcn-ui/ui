@@ -36,7 +36,7 @@ export default function Component() {
           config={{
             time: {
               label: "Time",
-              color: "hsl(var(--chart-1))",
+              color: "hsl(var(--chart-2))",
             },
           }}
         >
@@ -105,6 +105,17 @@ export default function Component() {
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
+              formatter={(value) => (
+                <div className="flex min-w-[120px] items-center text-xs text-muted-foreground">
+                  Time in bed
+                  <div className="ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums text-foreground">
+                    {value}
+                    <span className="font-normal text-muted-foreground">
+                      hr
+                    </span>
+                  </div>
+                </div>
+              )}
             />
           </AreaChart>
         </ChartContainer>

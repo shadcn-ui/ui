@@ -46,11 +46,11 @@ export default function Component() {
             },
             exercise: {
               label: "Exercise",
-              color: "hsla(var(--chart-1) / 60%)",
+              color: "hsl(var(--chart-2))",
             },
             stand: {
               label: "Stand",
-              color: "hsla(var(--chart-1) / 40%)",
+              color: "hsl(var(--chart-3))",
             },
           }}
           className="mx-auto aspect-square w-full max-w-[80%]"
