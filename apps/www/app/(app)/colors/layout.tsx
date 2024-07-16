@@ -33,7 +33,7 @@ export default function ChartsLayout({
             <a href="#colors">Browse Colors</a>
           </Button>
           <Button asChild variant="ghost" size="sm">
-            <Link target="_blank" href="https://tailwindcss.com/docs/customizing-colors">Documentation</Link>
+            <Link href="/docs/theming">Documentation</Link>
           </Button>
         </PageActions>
       </PageHeader>
