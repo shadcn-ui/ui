@@ -558,6 +558,12 @@ export const examples: Registry = [
     files: ["example/select-form.tsx"],
   },
   {
+    name: "select-controlled",
+    type: "components:example",
+    registryDependencies: ["select"],
+    files: ["example/select-controlled.tsx"],
+  },
+  {
     name: "separator-demo",
     type: "components:example",
     registryDependencies: ["separator"],

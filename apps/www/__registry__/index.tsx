@@ -1523,6 +1523,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "select-controlled": {
+      name: "select-controlled",
+      type: "components:example",
+      registryDependencies: ["select"],
+      component: React.lazy(() => import("@/registry/default/example/select-controlled")),
+      source: "",
+      files: ["registry/default/example/select-controlled.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "separator-demo": {
       name: "separator-demo",
       type: "components:example",
@@ -4657,6 +4668,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/select-form")),
       source: "",
       files: ["registry/new-york/example/select-form.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "select-controlled": {
+      name: "select-controlled",
+      type: "components:example",
+      registryDependencies: ["select"],
+      component: React.lazy(() => import("@/registry/new-york/example/select-controlled")),
+      source: "",
+      files: ["registry/new-york/example/select-controlled.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
