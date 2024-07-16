@@ -180,6 +180,8 @@ export const Index: Record<string, any> = {
             })
 
             const code = `
+            'use client'
+
             ${componnetImportLines.join("\n")}
 
             export default function Component() {
