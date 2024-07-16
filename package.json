@@ -16,10 +16,11 @@
   "scripts": {
     "build": "turbo run build",
     "build:cli": "turbo --filter=shadcn-ui build",
-    "build:registry": "pnpm --filter=www build:registry",
+    "build:registry": "pnpm --filter=www build:registry && pnpm format:write",
     "dev": "turbo run dev --parallel",
     "cli:dev": "turbo --filter=shadcn-ui dev",
     "cli:start": "pnpm --filter=shadcn-ui start:dev",
+    "docs:build": "pnpm --filter=www build:docs",
     "www:dev": "pnpm --filter=www dev",
     "www:build": "pnpm --filter=www build",
     "lint": "turbo run lint",
@@ -70,6 +71,6 @@
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
-    "typescript": "^5.4.2"
+    "typescript": "^5.5.3"
   }
 }
