@@ -12,6 +12,7 @@ import {
   BarChartBig,
   Hexagon,
   LineChart,
+  MousePointer2,
   PieChart,
   Radar,
 } from "lucide-react"
@@ -24,13 +25,7 @@ export function ChartToolbar({
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <div className="flex items-center gap-1.5 pl-1 text-[13px] text-muted-foreground [&>svg]:h-[0.9rem] [&>svg]:w-[0.9rem]">
-        {chart.subcategory === "Line" && <LineChart />}
-        {chart.subcategory === "Bar" && <BarChartBig />}
-        {chart.subcategory === "Pie" && <PieChart />}
-        {chart.subcategory === "Area" && <AreaChart />}
-        {chart.subcategory === "Radar" && <Hexagon />}
-        {chart.subcategory === "Radial" && <Radar />}
-        {chart.subcategory} Chart
+        <ChartTitle chart={chart} />
       </div>
       <div className="ml-auto flex items-center gap-2 [&>form]:flex">
         <BlockCopyButton
@@ -44,4 +39,71 @@ export function ChartToolbar({
       </div>
     </div>
   )
+}
+
+function ChartTitle({ chart }: { chart: Block }) {
+  const { subcategory } = chart
+
+  if (!subcategory) {
+    return null
+  }
+
+  if (subcategory === "Line") {
+    return (
+      <>
+        <LineChart /> Chart
+      </>
+    )
+  }
+
+  if (subcategory === "Bar") {
+    return (
+      <>
+        <BarChartBig /> Chart
+      </>
+    )
+  }
+
+  if (subcategory === "Pie") {
+    return (
+      <>
+        <PieChart /> Chart
+      </>
+    )
+  }
+
+  if (subcategory === "Area") {
+    return (
+      <>
+        <AreaChart /> Chart
+      </>
+    )
+  }
+
+  if (subcategory === "Radar") {
+    return (
+      <>
+        <Hexagon /> Chart
+      </>
+    )
+  }
+
+  if (subcategory === "Radial") {
+    return (
+      <>
+        <Radar /> Chart
+      </>
+    )
+  }
+
+  if (subcategory === "Tooltip") {
+    return (
+      <>
+        <MousePointer2 />
+        Tooltip
+      </>
+    )
+  }
+
+  return subcategory
 }

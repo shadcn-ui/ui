@@ -270,6 +270,39 @@ export default function ChartsPage() {
                 <Charts.ChartRadialStacked />
               </ChartDisplay>
             </div>
+            <Separator />
+            <div
+              id="tooltip"
+              className="chart-wrapper grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
+            >
+              <ChartDisplay name="chart-tooltip-default">
+                <Charts.ChartTooltipDefault />
+              </ChartDisplay>
+              <ChartDisplay name="chart-tooltip-indicator-line">
+                <Charts.ChartTooltipIndicatorLine />
+              </ChartDisplay>
+              <ChartDisplay name="chart-tooltip-indicator-none">
+                <Charts.ChartTooltipIndicatorNone />
+              </ChartDisplay>
+              <ChartDisplay name="chart-tooltip-label-custom">
+                <Charts.ChartTooltipLabelCustom />
+              </ChartDisplay>
+              <ChartDisplay name="chart-tooltip-label-formatter">
+                <Charts.ChartTooltipLabelFormatter />
+              </ChartDisplay>
+              <ChartDisplay name="chart-tooltip-label-none">
+                <Charts.ChartTooltipLabelNone />
+              </ChartDisplay>
+              <ChartDisplay name="chart-tooltip-formatter">
+                <Charts.ChartTooltipFormatter />
+              </ChartDisplay>
+              <ChartDisplay name="chart-tooltip-icons">
+                <Charts.ChartTooltipIcons />
+              </ChartDisplay>
+              <ChartDisplay name="chart-tooltip-advanced">
+                <Charts.ChartTooltipAdvanced />
+              </ChartDisplay>
+            </div>
           </div>
         </div>
       </div>

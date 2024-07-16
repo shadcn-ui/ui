@@ -31,6 +31,10 @@ const examples = [
     name: "Radial Chart",
     href: "/charts#radial-chart",
   },
+  {
+    name: "Tooltip",
+    href: "/charts#tooltip",
+  },
 ]
 
 export function ChartsNav({
