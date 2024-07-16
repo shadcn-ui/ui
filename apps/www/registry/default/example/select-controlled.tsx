@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@/registry/default/ui/select"
 
-export default function SelectDemo() {
+export default function SelectControlled() {
   const [animal, setAnimal] = React.useState<string | undefined>()
 
   return (
