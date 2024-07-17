@@ -8,12 +8,12 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/new-york/ui/card"
-import { ChartContainer } from "@/registry/new-york/ui/chart"
+} from "@/registry/new-york//ui/card"
+import { ChartContainer } from "@/registry/new-york//ui/chart"
 
 export default function Component() {
   return (
-    <Card x-chunk="charts-01-chunk-6">
+    <Card className="max-w-xs" x-chunk="charts-01-chunk-6">
       <CardHeader className="p-4 pb-0">
         <CardTitle>Active Energy</CardTitle>
         <CardDescription>
@@ -80,14 +80,8 @@ export default function Component() {
               fill="var(--color-calories)"
               radius={2}
               fillOpacity={0.2}
-              shape={(props: any) => {
-                return (
-                  <Rectangle
-                    {...props}
-                    fillOpacity={props.payload.date === "2024-01-07" ? 1 : 0.2}
-                  />
-                )
-              }}
+              activeIndex={6}
+              activeBar={<Rectangle fillOpacity={0.8} />}
             />
             <XAxis
               dataKey="date"

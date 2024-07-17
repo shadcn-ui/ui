@@ -8,12 +8,12 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/new-york/ui/card"
-import { ChartContainer } from "@/registry/new-york/ui/chart"
+} from "@/registry/new-york//ui/card"
+import { ChartContainer } from "@/registry/new-york//ui/chart"
 
 export default function Component() {
   return (
-    <Card x-chunk="charts-01-chunk-2">
+    <Card className="max-w-xs" x-chunk="charts-01-chunk-2">
       <CardHeader>
         <CardTitle>Progress</CardTitle>
         <CardDescription>
