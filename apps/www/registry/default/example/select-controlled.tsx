@@ -11,7 +11,9 @@ import {
 } from "@/registry/default/ui/select"
 
 export default function SelectControlled() {
-  const [animal, setAnimal] = React.useState<string | undefined>()
+  const [animal, setAnimal] = React.useState<string>("")
+
+  console.log("animal:", animal)
 
   return (
     <Select value={animal} onValueChange={setAnimal}>
