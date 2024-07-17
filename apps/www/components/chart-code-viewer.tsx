@@ -59,7 +59,7 @@ ${Object.entries(chartConfig.theme.cssVars.dark)
 
   const content = (
     <>
-      <div className="chart-wrapper hidden sm:block [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
+      <div className="chart-wrapper hidden sm:block [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none [&_[data-chart]]:mx-auto [&_[data-chart]]:max-h-[35vh]">
         {children}
       </div>
       <Tabs
