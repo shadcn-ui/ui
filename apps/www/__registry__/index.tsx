@@ -2150,6 +2150,81 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "charts-01": {
+      name: "charts-01",
+      type: "components:block",
+      registryDependencies: ["chart"],
+      component: React.lazy(() => import("@/registry/default/block/charts-01")),
+      source: "__registry__/default/block/charts-01.tsx",
+      files: ["registry/default/block/charts-01.tsx"],
+      category: "Application",
+      subcategory: "Charts",
+      chunks: [{
+        name: "charts-01-chunk-0",
+        description: "A bar chart showing the number of steps you have walked in the past 7 days.",
+        component: React.lazy(() => import("@/registry/default/block/charts-01-chunk-0")),
+        file: "registry/default/block/charts-01-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-1",
+        description: "A line chart showing the resting heart rate for the past 7 days.",
+        component: React.lazy(() => import("@/registry/default/block/charts-01-chunk-1")),
+        file: "registry/default/block/charts-01-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-2",
+        description: "Two horizontal bar charts showing total steps taken during the current year and last year.",
+        component: React.lazy(() => import("@/registry/default/block/charts-01-chunk-2")),
+        file: "registry/default/block/charts-01-chunk-2.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-3",
+        description: "A bar chart showing the walking and running distance for the past 7 days.",
+        component: React.lazy(() => import("@/registry/default/block/charts-01-chunk-3")),
+        file: "registry/default/block/charts-01-chunk-3.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-4",
+        description: "A bar chart showing move, exercise, and stand progress.",
+        component: React.lazy(() => import("@/registry/default/block/charts-01-chunk-4")),
+        file: "registry/default/block/charts-01-chunk-4.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-5",
+        description: "A radial bar chart showing the percentage of time spent moving, exercising, and standing.",
+        component: React.lazy(() => import("@/registry/default/block/charts-01-chunk-5")),
+        file: "registry/default/block/charts-01-chunk-5.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-6",
+        description: "A bar chart showing active energy in the past 7 days.",
+        component: React.lazy(() => import("@/registry/default/block/charts-01-chunk-6")),
+        file: "registry/default/block/charts-01-chunk-6.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-7",
+        description: "An area chart showing the time spent in bed for the past 7 days.",
+        component: React.lazy(() => import("@/registry/default/block/charts-01-chunk-7")),
+        file: "registry/default/block/charts-01-chunk-7.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
+    },
     "dashboard-05": {
       name: "dashboard-05",
       type: "components:block",
@@ -5287,6 +5362,81 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "charts-01": {
+      name: "charts-01",
+      type: "components:block",
+      registryDependencies: ["chart"],
+      component: React.lazy(() => import("@/registry/new-york/block/charts-01")),
+      source: "__registry__/new-york/block/charts-01.tsx",
+      files: ["registry/new-york/block/charts-01.tsx"],
+      category: "Application",
+      subcategory: "Charts",
+      chunks: [{
+        name: "charts-01-chunk-0",
+        description: "A bar chart showing the number of steps you have walked in the past 7 days.",
+        component: React.lazy(() => import("@/registry/new-york/block/charts-01-chunk-0")),
+        file: "registry/new-york/block/charts-01-chunk-0.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-1",
+        description: "A line chart showing the resting heart rate for the past 7 days.",
+        component: React.lazy(() => import("@/registry/new-york/block/charts-01-chunk-1")),
+        file: "registry/new-york/block/charts-01-chunk-1.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-2",
+        description: "Two horizontal bar charts showing total steps taken during the current year and last year.",
+        component: React.lazy(() => import("@/registry/new-york/block/charts-01-chunk-2")),
+        file: "registry/new-york/block/charts-01-chunk-2.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-3",
+        description: "A bar chart showing the walking and running distance for the past 7 days.",
+        component: React.lazy(() => import("@/registry/new-york/block/charts-01-chunk-3")),
+        file: "registry/new-york/block/charts-01-chunk-3.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-4",
+        description: "A bar chart showing move, exercise, and stand progress.",
+        component: React.lazy(() => import("@/registry/new-york/block/charts-01-chunk-4")),
+        file: "registry/new-york/block/charts-01-chunk-4.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-5",
+        description: "A radial bar chart showing the percentage of time spent moving, exercising, and standing.",
+        component: React.lazy(() => import("@/registry/new-york/block/charts-01-chunk-5")),
+        file: "registry/new-york/block/charts-01-chunk-5.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-6",
+        description: "A bar chart showing active energy in the past 7 days.",
+        component: React.lazy(() => import("@/registry/new-york/block/charts-01-chunk-6")),
+        file: "registry/new-york/block/charts-01-chunk-6.tsx",
+        container: {
+          className: "undefined"
+        }
+      },{
+        name: "charts-01-chunk-7",
+        description: "An area chart showing the time spent in bed for the past 7 days.",
+        component: React.lazy(() => import("@/registry/new-york/block/charts-01-chunk-7")),
+        file: "registry/new-york/block/charts-01-chunk-7.tsx",
+        container: {
+          className: "undefined"
+        }
+      }]
     },
     "dashboard-05": {
       name: "dashboard-05",
