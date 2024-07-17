@@ -5,8 +5,13 @@ import { useTheme } from "next-themes"
 
 import { THEMES, Theme } from "@/lib/themes"
 import { cn } from "@/lib/utils"
+import { useMediaQuery } from "@/hooks/use-media-query"
 import { useThemesConfig } from "@/hooks/use-themes-config"
 import { Skeleton } from "@/registry/new-york/ui/skeleton"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/registry/new-york/ui/toggle-group"
 import {
   Tooltip,
   TooltipContent,
@@ -21,6 +26,7 @@ export function ThemesSwitcher({
   const [mounted, setMounted] = React.useState(false)
   const { themesConfig, setThemesConfig } = useThemesConfig()
   const activeTheme = themesConfig.activeTheme
+  const isDesktop = useMediaQuery("(min-width: 1024px)")
 
   React.useEffect(() => {
     setMounted(true)
@@ -34,7 +40,7 @@ export function ThemesSwitcher({
           className
         )}
       >
-        {THEMES.map((theme) => (
+        {themes.map((theme) => (
           <div
             key={theme.id}
             className="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-transparent"
@@ -47,7 +53,17 @@ export function ThemesSwitcher({
   }
 
   return (
-    <div
+    <ToggleGroup
+      type="single"
+      value={activeTheme.name}
+      onValueChange={(value) => {
+        const theme = themes.find((theme) => theme.name === value)
+        if (!theme) {
+          return
+        }
+
+        setThemesConfig({ ...themesConfig, activeTheme: theme })
+      }}
       className={cn(
         "flex items-center justify-center gap-0.5 py-4 lg:flex-col lg:justify-start lg:gap-1",
         className
@@ -58,20 +74,14 @@ export function ThemesSwitcher({
         const isDarkTheme = ["Midnight"].includes(theme.name)
         const cssVars =
           mounted && mode === "dark" ? theme.cssVars.dark : theme.cssVars.light
+
         return (
           <Tooltip key={theme.name}>
             <TooltipTrigger asChild>
-              <button
-                onClick={() => {
-                  console.log({ theme })
-                  return setThemesConfig({
-                    ...themesConfig,
-                    activeTheme: theme,
-                  })
-                }}
+              <ToggleGroupItem
+                value={theme.name}
                 className={cn(
-                  "group flex h-10 w-10 items-center justify-center rounded-lg border-2",
-                  isActive ? "border-[--color-1]" : "border-transparent",
+                  "group flex h-10 w-10 p-0 shrink-0 items-center justify-center rounded-lg border-2 border-transparent aria-checked:border-[--color-1] hover:bg-transparent focus-visible:bg-transparent",
                   mounted && isDarkTheme && mode !== "dark" ? "invert-[1]" : ""
                 )}
                 style={
@@ -98,14 +108,17 @@ export function ThemesSwitcher({
                     <span className="sr-only">{theme.name}</span>
                   </div>
                 </div>
-              </button>
+              </ToggleGroupItem>
             </TooltipTrigger>
-            <TooltipContent side="left" className="bg-black text-white">
+            <TooltipContent
+              side={isDesktop ? "left" : "top"}
+              className="bg-black text-white"
+            >
               {theme.name}
             </TooltipContent>
           </Tooltip>
         )
       })}
-    </div>
+    </ToggleGroup>
   )
 }
