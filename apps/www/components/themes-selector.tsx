@@ -81,7 +81,7 @@ export function ThemesSwitcher({
               <ToggleGroupItem
                 value={theme.name}
                 className={cn(
-                  "group flex h-10 w-10 p-0 shrink-0 items-center justify-center rounded-lg border-2 border-transparent aria-checked:border-[--color-1] hover:bg-transparent focus-visible:bg-transparent",
+                  "group flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border-2 border-transparent p-0 hover:bg-transparent focus-visible:bg-transparent aria-checked:border-[--color-1]",
                   mounted && isDarkTheme && mode !== "dark" ? "invert-[1]" : ""
                 )}
                 style={
