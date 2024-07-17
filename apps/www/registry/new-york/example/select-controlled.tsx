@@ -23,11 +23,11 @@ export default function SelectControlled() {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Animals</SelectLabel>
-          <SelectItem value="cat">Cat</SelectItem>
-          <SelectItem value="dog">Dog</SelectItem>
-          <SelectItem value="rabbit">Rabbit</SelectItem>
-          <SelectItem value="bird">Bird</SelectItem>
-          <SelectItem value="horse">Horse</SelectItem>
+          <SelectItem value="Cat">Cat</SelectItem>
+          <SelectItem value="Dog">Dog</SelectItem>
+          <SelectItem value="Rabbit">Rabbit</SelectItem>
+          <SelectItem value="Bird">Bird</SelectItem>
+          <SelectItem value="Horse">Horse</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
