@@ -69,6 +69,7 @@ export function BlockPreview({
               onLoad={() => {
                 setIsLoading(false)
               }}
+              allowTransparency
             />
           </ResizablePanel>
           <ResizableHandle
