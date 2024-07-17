@@ -1,6 +1,6 @@
 import { themeColorsToCssVariables } from "@/lib/charts"
 
-export const CHART_THEMES = [
+const _THEMES = [
   {
     name: "Default",
     id: "default-shadcn",
@@ -177,8 +177,8 @@ export const CHART_THEMES = [
       secondaryForeground: "222.2 47.4% 11.2%",
       muted: "240 3.7% 15.9%",
       "muted-foreground": "240 5% 64.9%",
-      accent: "210 40% 96.1%",
-      accentForeground: "222.2 47.4% 11.2%",
+      accent: "240 3.7% 15.9%",
+      "accent-foreground": "0 0% 98%",
       destructive: "0 72% 51%",
       destructiveForeground: "210 40% 98%",
       border: "240 3.7% 15.9%",
@@ -244,8 +244,8 @@ export const CHART_THEMES = [
       secondaryForeground: "240 5.9% 10%",
       muted: "240 3.7% 15.9%",
       "muted-foreground": "240 5% 64.9%",
-      accent: "240 4.8% 95.9%",
-      accentForeground: "240 5.9% 10%",
+      accent: "240 3.7% 15.9%",
+      "accent-foreground": "0 0% 98%",
       destructive: "0 72% 51%",
       destructiveForeground: "0 0% 98%",
       border: "240 3.7% 15.9%",
@@ -311,8 +311,8 @@ export const CHART_THEMES = [
       secondaryForeground: "240 5.9% 10%",
       muted: "240 3.7% 15.9%",
       "muted-foreground": "240 5% 64.9%",
-      accent: "240 4.8% 95.9%",
-      accentForeground: "240 5.9% 10%",
+      accent: "240 3.7% 15.9%",
+      "accent-foreground": "0 0% 98%",
       destructive: "0 72% 51%",
       destructiveForeground: "0 0% 98%",
       border: "240 3.7% 15.9%",
@@ -471,14 +471,12 @@ export const CHART_THEMES = [
   },
 ] as const
 
-export type ChartTheme = ReturnType<typeof getChartThemes>[number]
+export const THEMES = _THEMES.map((theme) => ({
+  ...theme,
+  cssVars: {
+    light: themeColorsToCssVariables(theme.colors),
+    dark: themeColorsToCssVariables(theme.colorsDark),
+  },
+}))
 
-export function getChartThemes() {
-  return CHART_THEMES.map((theme) => ({
-    ...theme,
-    cssVars: {
-      light: themeColorsToCssVariables(theme.colors),
-      dark: themeColorsToCssVariables(theme.colorsDark),
-    },
-  }))
-}
+export type Theme = (typeof THEMES)[number]
