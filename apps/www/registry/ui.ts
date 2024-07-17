@@ -190,6 +190,12 @@ export const ui: Registry = [
     files: ["ui/radio-group.tsx"],
   },
   {
+    name: "ratings",
+    type: "components:ui",
+    dependencies: [],
+    files: ["ui/ratings.tsx"],
+  },
+  {
     name: "resizable",
     type: "components:ui",
     dependencies: ["react-resizable-panels"],

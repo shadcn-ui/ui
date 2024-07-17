@@ -314,6 +314,14 @@
     "type": "components:ui"
   },
   {
+    "name": "ratings",
+    "dependencies": [],
+    "files": [
+      "ui/ratings.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "resizable",
     "dependencies": [
       "react-resizable-panels"

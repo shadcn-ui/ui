@@ -335,6 +335,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "ratings": {
+      name: "ratings",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/ratings")),
+      source: "",
+      files: ["registry/default/ui/ratings.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "resizable": {
       name: "resizable",
       type: "components:ui",
@@ -1420,6 +1431,39 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/radio-group-form")),
       source: "",
       files: ["registry/default/example/radio-group-form.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-demo": {
+      name: "ratings-demo",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/default/example/ratings-demo")),
+      source: "",
+      files: ["registry/default/example/ratings-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-variants": {
+      name: "ratings-variants",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/default/example/ratings-variants")),
+      source: "",
+      files: ["registry/default/example/ratings-variants.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-as-input": {
+      name: "ratings-as-input",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/default/example/ratings-as-input")),
+      source: "",
+      files: ["registry/default/example/ratings-as-input.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -3473,6 +3517,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "ratings": {
+      name: "ratings",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/ratings")),
+      source: "",
+      files: ["registry/new-york/ui/ratings.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "resizable": {
       name: "resizable",
       type: "components:ui",
@@ -4558,6 +4613,39 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/radio-group-form")),
       source: "",
       files: ["registry/new-york/example/radio-group-form.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-demo": {
+      name: "ratings-demo",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/new-york/example/ratings-demo")),
+      source: "",
+      files: ["registry/new-york/example/ratings-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-variants": {
+      name: "ratings-variants",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/new-york/example/ratings-variants")),
+      source: "",
+      files: ["registry/new-york/example/ratings-variants.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ratings-as-input": {
+      name: "ratings-as-input",
+      type: "components:example",
+      registryDependencies: ["ratings"],
+      component: React.lazy(() => import("@/registry/new-york/example/ratings-as-input")),
+      source: "",
+      files: ["registry/new-york/example/ratings-as-input.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
