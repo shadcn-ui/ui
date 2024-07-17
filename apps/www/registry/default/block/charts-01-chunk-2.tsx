@@ -64,7 +64,7 @@ export default function Component() {
                   dataKey="date"
                   offset={8}
                   fontSize={12}
-                  fill="black"
+                  fill="white"
                 />
               </Bar>
               <YAxis dataKey="date" type="category" tickCount={1} hide />

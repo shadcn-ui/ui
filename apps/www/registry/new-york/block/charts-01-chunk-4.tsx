@@ -18,11 +18,11 @@ export default function Component() {
             },
             stand: {
               label: "Stand",
-              color: "hsl(var(--chart-1))",
+              color: "hsl(var(--chart-2))",
             },
             exercise: {
               label: "Exercise",
-              color: "hsl(var(--chart-1))",
+              color: "hsl(var(--chart-3))",
             },
           }}
           className="h-[140px] w-full"

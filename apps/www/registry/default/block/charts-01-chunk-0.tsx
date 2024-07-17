@@ -126,6 +126,7 @@ export default function Component() {
                 position="insideBottomLeft"
                 value="Average Steps"
                 offset={10}
+                fill="hsl(var(--foreground))"
               />
               <Label
                 position="insideTopLeft"
