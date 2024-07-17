@@ -7,7 +7,7 @@ import { ChartContainer } from "@/registry/default/ui/chart"
 
 export default function Component() {
   return (
-    <Card x-chunk="charts-01-chunk-5">
+    <Card className="max-w-xs" x-chunk="charts-01-chunk-5">
       <CardContent className="flex gap-4 p-4">
         <div className="grid items-center gap-2">
           <div className="grid flex-1 auto-rows-min gap-0.5">

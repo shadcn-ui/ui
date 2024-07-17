@@ -3217,6 +3217,105 @@ export const Index: Record<string, any> = {
       subcategory: "Radial",
       chunks: []
     },
+    "chart-tooltip-default": {
+      name: "chart-tooltip-default",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/default/block/chart-tooltip-default")),
+      source: "__registry__/default/block/chart-tooltip-default.tsx",
+      files: ["registry/default/block/chart-tooltip-default.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-indicator-line": {
+      name: "chart-tooltip-indicator-line",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/default/block/chart-tooltip-indicator-line")),
+      source: "__registry__/default/block/chart-tooltip-indicator-line.tsx",
+      files: ["registry/default/block/chart-tooltip-indicator-line.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-indicator-none": {
+      name: "chart-tooltip-indicator-none",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/default/block/chart-tooltip-indicator-none")),
+      source: "__registry__/default/block/chart-tooltip-indicator-none.tsx",
+      files: ["registry/default/block/chart-tooltip-indicator-none.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-label-none": {
+      name: "chart-tooltip-label-none",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/default/block/chart-tooltip-label-none")),
+      source: "__registry__/default/block/chart-tooltip-label-none.tsx",
+      files: ["registry/default/block/chart-tooltip-label-none.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-label-custom": {
+      name: "chart-tooltip-label-custom",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/default/block/chart-tooltip-label-custom")),
+      source: "__registry__/default/block/chart-tooltip-label-custom.tsx",
+      files: ["registry/default/block/chart-tooltip-label-custom.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-label-formatter": {
+      name: "chart-tooltip-label-formatter",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/default/block/chart-tooltip-label-formatter")),
+      source: "__registry__/default/block/chart-tooltip-label-formatter.tsx",
+      files: ["registry/default/block/chart-tooltip-label-formatter.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-formatter": {
+      name: "chart-tooltip-formatter",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/default/block/chart-tooltip-formatter")),
+      source: "__registry__/default/block/chart-tooltip-formatter.tsx",
+      files: ["registry/default/block/chart-tooltip-formatter.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-icons": {
+      name: "chart-tooltip-icons",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/default/block/chart-tooltip-icons")),
+      source: "__registry__/default/block/chart-tooltip-icons.tsx",
+      files: ["registry/default/block/chart-tooltip-icons.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-advanced": {
+      name: "chart-tooltip-advanced",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/default/block/chart-tooltip-advanced")),
+      source: "__registry__/default/block/chart-tooltip-advanced.tsx",
+      files: ["registry/default/block/chart-tooltip-advanced.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
   },  "new-york": {
     "accordion": {
       name: "accordion",
@@ -6428,6 +6527,105 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/chart-radial-text.tsx"],
       category: "Charts",
       subcategory: "Radial",
+      chunks: []
+    },
+    "chart-tooltip-default": {
+      name: "chart-tooltip-default",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-default")),
+      source: "__registry__/new-york/block/chart-tooltip-default.tsx",
+      files: ["registry/new-york/block/chart-tooltip-default.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-indicator-line": {
+      name: "chart-tooltip-indicator-line",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-indicator-line")),
+      source: "__registry__/new-york/block/chart-tooltip-indicator-line.tsx",
+      files: ["registry/new-york/block/chart-tooltip-indicator-line.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-indicator-none": {
+      name: "chart-tooltip-indicator-none",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-indicator-none")),
+      source: "__registry__/new-york/block/chart-tooltip-indicator-none.tsx",
+      files: ["registry/new-york/block/chart-tooltip-indicator-none.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-label-none": {
+      name: "chart-tooltip-label-none",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-label-none")),
+      source: "__registry__/new-york/block/chart-tooltip-label-none.tsx",
+      files: ["registry/new-york/block/chart-tooltip-label-none.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-label-custom": {
+      name: "chart-tooltip-label-custom",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-label-custom")),
+      source: "__registry__/new-york/block/chart-tooltip-label-custom.tsx",
+      files: ["registry/new-york/block/chart-tooltip-label-custom.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-label-formatter": {
+      name: "chart-tooltip-label-formatter",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-label-formatter")),
+      source: "__registry__/new-york/block/chart-tooltip-label-formatter.tsx",
+      files: ["registry/new-york/block/chart-tooltip-label-formatter.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-formatter": {
+      name: "chart-tooltip-formatter",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-formatter")),
+      source: "__registry__/new-york/block/chart-tooltip-formatter.tsx",
+      files: ["registry/new-york/block/chart-tooltip-formatter.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-icons": {
+      name: "chart-tooltip-icons",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-icons")),
+      source: "__registry__/new-york/block/chart-tooltip-icons.tsx",
+      files: ["registry/new-york/block/chart-tooltip-icons.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
+      chunks: []
+    },
+    "chart-tooltip-advanced": {
+      name: "chart-tooltip-advanced",
+      type: "components:block",
+      registryDependencies: ["card","chart"],
+      component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-advanced")),
+      source: "__registry__/new-york/block/chart-tooltip-advanced.tsx",
+      files: ["registry/new-york/block/chart-tooltip-advanced.tsx"],
+      category: "Charts",
+      subcategory: "Tooltip",
       chunks: []
     },
   },
