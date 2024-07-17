@@ -42,15 +42,8 @@ export const containerClassName = "min-h-screen py-12"
 
 export default function Charts() {
   return (
-    <div
-      style={
-        {
-          "--gap": "1.4rem",
-        } as React.CSSProperties
-      }
-      className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-[--gap] p-6 sm:flex-row sm:p-8"
-    >
-      <div className="grid w-full gap-[--gap] sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[25rem]">
+    <div className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-6 p-6 sm:flex-row sm:p-8">
+      <div className="grid w-full gap-6 sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[25rem]">
         <Card x-chunk="A bar chart showing the number of steps you have walked in the past 7 days.">
           <CardHeader className="space-y-0 pb-2">
             <CardDescription>Today</CardDescription>
@@ -310,7 +303,7 @@ export default function Charts() {
           </CardContent>
         </Card>
       </div>
-      <div className="grid w-full flex-1 gap-[--gap] lg:max-w-[20rem]">
+      <div className="grid w-full flex-1 gap-6 lg:max-w-[20rem]">
         <Card x-chunk="Two horizontal bar charts showing total steps taken during the current year and last year.">
           <CardHeader>
             <CardTitle>Progress</CardTitle>
@@ -619,7 +612,7 @@ export default function Charts() {
           </CardFooter>
         </Card>
       </div>
-      <div className="grid w-full flex-1 gap-[--gap]">
+      <div className="grid w-full flex-1 gap-6">
         <Card x-chunk="A radial bar chart showing the percentage of time spent moving, exercising, and standing.">
           <CardContent className="flex gap-4 p-4">
             <div className="grid items-center gap-2">
