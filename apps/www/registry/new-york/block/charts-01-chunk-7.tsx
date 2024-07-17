@@ -8,16 +8,16 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/new-york/ui/card"
+} from "@/registry/new-york//ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/registry/new-york/ui/chart"
+} from "@/registry/new-york//ui/chart"
 
 export default function Component() {
   return (
-    <Card x-chunk="charts-01-chunk-7">
+    <Card className="max-w-xs" x-chunk="charts-01-chunk-7">
       <CardHeader className="space-y-0 pb-0">
         <CardDescription>Time in Bed</CardDescription>
         <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">

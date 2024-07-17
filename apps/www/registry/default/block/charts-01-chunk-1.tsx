@@ -17,7 +17,7 @@ import {
 
 export default function Component() {
   return (
-    <Card className="flex flex-col" x-chunk="charts-01-chunk-1">
+    <Card className="flex flex-col lg:max-w-md" x-chunk="charts-01-chunk-1">
       <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2 [&>div]:flex-1">
         <div>
           <CardDescription>Resting HR</CardDescription>

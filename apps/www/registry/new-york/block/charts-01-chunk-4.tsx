@@ -2,13 +2,13 @@
 
 import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts"
 
-import { Card, CardContent, CardFooter } from "@/registry/new-york/ui/card"
-import { ChartContainer } from "@/registry/new-york/ui/chart"
-import { Separator } from "@/registry/new-york/ui/separator"
+import { Card, CardContent, CardFooter } from "@/registry/new-york//ui/card"
+import { ChartContainer } from "@/registry/new-york//ui/chart"
+import { Separator } from "@/registry/new-york//ui/separator"
 
 export default function Component() {
   return (
-    <Card x-chunk="charts-01-chunk-4">
+    <Card className="max-w-xs" x-chunk="charts-01-chunk-4">
       <CardContent className="flex gap-4 p-4 pb-2">
         <ChartContainer
           config={{

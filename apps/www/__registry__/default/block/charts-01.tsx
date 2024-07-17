@@ -44,7 +44,7 @@ export default function Charts() {
   return (
     <div className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-6 p-6 sm:flex-row sm:p-8">
       <div className="grid w-full gap-6 sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[25rem]">
-        <Card x-chunk="charts-01-chunk-0">
+        <Card className="lg:max-w-md" x-chunk="charts-01-chunk-0">
           <CardHeader className="space-y-0 pb-2">
             <CardDescription>Today</CardDescription>
             <CardTitle className="text-4xl tabular-nums">
@@ -104,18 +104,8 @@ export default function Charts() {
                   dataKey="steps"
                   fill="var(--color-steps)"
                   radius={5}
-                  fillOpacity={0.4}
+                  fillOpacity={0.6}
                   activeBar={<Rectangle fillOpacity={0.8} />}
-                  shape={(props: any) => {
-                    return (
-                      <Rectangle
-                        {...props}
-                        fillOpacity={
-                          props.payload.date === "2024-01-03" ? 1 : 0.2
-                        }
-                      />
-                    )
-                  }}
                 />
                 <XAxis
                   dataKey="date"
@@ -180,7 +170,7 @@ export default function Charts() {
             </CardDescription>
           </CardFooter>
         </Card>
-        <Card className="flex flex-col" x-chunk="charts-01-chunk-1">
+        <Card className="flex flex-col lg:max-w-md" x-chunk="charts-01-chunk-1">
           <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2 [&>div]:flex-1">
             <div>
               <CardDescription>Resting HR</CardDescription>
@@ -301,7 +291,7 @@ export default function Charts() {
         </Card>
       </div>
       <div className="grid w-full flex-1 gap-6 lg:max-w-[20rem]">
-        <Card x-chunk="charts-01-chunk-2">
+        <Card className="max-w-xs" x-chunk="charts-01-chunk-2">
           <CardHeader>
             <CardTitle>Progress</CardTitle>
             <CardDescription>
@@ -413,7 +403,7 @@ export default function Charts() {
             </div>
           </CardContent>
         </Card>
-        <Card x-chunk="charts-01-chunk-3">
+        <Card className="max-w-xs" x-chunk="charts-01-chunk-3">
           <CardHeader className="p-4 pb-0">
             <CardTitle>Walking Distance</CardTitle>
             <CardDescription>
@@ -481,16 +471,8 @@ export default function Charts() {
                   fill="var(--color-steps)"
                   radius={2}
                   fillOpacity={0.2}
-                  shape={(props: any) => {
-                    return (
-                      <Rectangle
-                        {...props}
-                        fillOpacity={
-                          props.payload.date === "2024-01-07" ? 1 : 0.2
-                        }
-                      />
-                    )
-                  }}
+                  activeIndex={6}
+                  activeBar={<Rectangle fillOpacity={0.8} />}
                 />
                 <XAxis
                   dataKey="date"
@@ -503,7 +485,7 @@ export default function Charts() {
             </ChartContainer>
           </CardContent>
         </Card>
-        <Card x-chunk="charts-01-chunk-4">
+        <Card className="max-w-xs" x-chunk="charts-01-chunk-4">
           <CardContent className="flex gap-4 p-4 pb-2">
             <ChartContainer
               config={{
@@ -610,7 +592,7 @@ export default function Charts() {
         </Card>
       </div>
       <div className="grid w-full flex-1 gap-6">
-        <Card x-chunk="charts-01-chunk-5">
+        <Card className="max-w-xs" x-chunk="charts-01-chunk-5">
           <CardContent className="flex gap-4 p-4">
             <div className="grid items-center gap-2">
               <div className="grid flex-1 auto-rows-min gap-0.5">
@@ -698,7 +680,7 @@ export default function Charts() {
             </ChartContainer>
           </CardContent>
         </Card>
-        <Card x-chunk="charts-01-chunk-6">
+        <Card className="max-w-xs" x-chunk="charts-01-chunk-6">
           <CardHeader className="p-4 pb-0">
             <CardTitle>Active Energy</CardTitle>
             <CardDescription>
@@ -765,16 +747,8 @@ export default function Charts() {
                   fill="var(--color-calories)"
                   radius={2}
                   fillOpacity={0.2}
-                  shape={(props: any) => {
-                    return (
-                      <Rectangle
-                        {...props}
-                        fillOpacity={
-                          props.payload.date === "2024-01-07" ? 1 : 0.2
-                        }
-                      />
-                    )
-                  }}
+                  activeIndex={6}
+                  activeBar={<Rectangle fillOpacity={0.8} />}
                 />
                 <XAxis
                   dataKey="date"
@@ -787,7 +761,7 @@ export default function Charts() {
             </ChartContainer>
           </CardContent>
         </Card>
-        <Card x-chunk="charts-01-chunk-7">
+        <Card className="max-w-xs" x-chunk="charts-01-chunk-7">
           <CardHeader className="space-y-0 pb-0">
             <CardDescription>Time in Bed</CardDescription>
             <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">

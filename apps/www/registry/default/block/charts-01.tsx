@@ -44,7 +44,10 @@ export default function Charts() {
   return (
     <div className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-6 p-6 sm:flex-row sm:p-8">
       <div className="grid w-full gap-6 sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[25rem]">
-        <Card x-chunk="A bar chart showing the number of steps you have walked in the past 7 days.">
+        <Card
+          x-chunk="A bar chart showing the number of steps you have walked in the past 7 days."
+          className="lg:max-w-md"
+        >
           <CardHeader className="space-y-0 pb-2">
             <CardDescription>Today</CardDescription>
             <CardTitle className="text-4xl tabular-nums">
@@ -104,18 +107,8 @@ export default function Charts() {
                   dataKey="steps"
                   fill="var(--color-steps)"
                   radius={5}
-                  fillOpacity={0.4}
+                  fillOpacity={0.6}
                   activeBar={<Rectangle fillOpacity={0.8} />}
-                  shape={(props: any) => {
-                    return (
-                      <Rectangle
-                        {...props}
-                        fillOpacity={
-                          props.payload.date === "2024-01-03" ? 1 : 0.2
-                        }
-                      />
-                    )
-                  }}
                 />
                 <XAxis
                   dataKey="date"
@@ -182,7 +175,7 @@ export default function Charts() {
         </Card>
         <Card
           x-chunk="A line chart showing the resting heart rate for the past 7 days."
-          className="flex flex-col"
+          className="flex flex-col lg:max-w-md"
         >
           <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2 [&>div]:flex-1">
             <div>
@@ -304,7 +297,10 @@ export default function Charts() {
         </Card>
       </div>
       <div className="grid w-full flex-1 gap-6 lg:max-w-[20rem]">
-        <Card x-chunk="Two horizontal bar charts showing total steps taken during the current year and last year.">
+        <Card
+          x-chunk="Two horizontal bar charts showing total steps taken during the current year and last year."
+          className="max-w-xs"
+        >
           <CardHeader>
             <CardTitle>Progress</CardTitle>
             <CardDescription>
@@ -416,7 +412,10 @@ export default function Charts() {
             </div>
           </CardContent>
         </Card>
-        <Card x-chunk="A bar chart showing the walking and running distance for the past 7 days.">
+        <Card
+          x-chunk="A bar chart showing the walking and running distance for the past 7 days."
+          className="max-w-xs"
+        >
           <CardHeader className="p-4 pb-0">
             <CardTitle>Walking Distance</CardTitle>
             <CardDescription>
@@ -484,16 +483,8 @@ export default function Charts() {
                   fill="var(--color-steps)"
                   radius={2}
                   fillOpacity={0.2}
-                  shape={(props: any) => {
-                    return (
-                      <Rectangle
-                        {...props}
-                        fillOpacity={
-                          props.payload.date === "2024-01-07" ? 1 : 0.2
-                        }
-                      />
-                    )
-                  }}
+                  activeIndex={6}
+                  activeBar={<Rectangle fillOpacity={0.8} />}
                 />
                 <XAxis
                   dataKey="date"
@@ -506,7 +497,10 @@ export default function Charts() {
             </ChartContainer>
           </CardContent>
         </Card>
-        <Card x-chunk="A bar chart showing move, exercise, and stand progress.">
+        <Card
+          x-chunk="A bar chart showing move, exercise, and stand progress."
+          className="max-w-xs"
+        >
           <CardContent className="flex gap-4 p-4 pb-2">
             <ChartContainer
               config={{
@@ -613,7 +607,10 @@ export default function Charts() {
         </Card>
       </div>
       <div className="grid w-full flex-1 gap-6">
-        <Card x-chunk="A radial bar chart showing the percentage of time spent moving, exercising, and standing.">
+        <Card
+          x-chunk="A radial bar chart showing the percentage of time spent moving, exercising, and standing."
+          className="max-w-xs"
+        >
           <CardContent className="flex gap-4 p-4">
             <div className="grid items-center gap-2">
               <div className="grid flex-1 auto-rows-min gap-0.5">
@@ -701,7 +698,10 @@ export default function Charts() {
             </ChartContainer>
           </CardContent>
         </Card>
-        <Card x-chunk="A bar chart showing active energy in the past 7 days.">
+        <Card
+          x-chunk="A bar chart showing active energy in the past 7 days."
+          className="max-w-xs"
+        >
           <CardHeader className="p-4 pb-0">
             <CardTitle>Active Energy</CardTitle>
             <CardDescription>
@@ -768,16 +768,8 @@ export default function Charts() {
                   fill="var(--color-calories)"
                   radius={2}
                   fillOpacity={0.2}
-                  shape={(props: any) => {
-                    return (
-                      <Rectangle
-                        {...props}
-                        fillOpacity={
-                          props.payload.date === "2024-01-07" ? 1 : 0.2
-                        }
-                      />
-                    )
-                  }}
+                  activeIndex={6}
+                  activeBar={<Rectangle fillOpacity={0.8} />}
                 />
                 <XAxis
                   dataKey="date"
@@ -790,7 +782,10 @@ export default function Charts() {
             </ChartContainer>
           </CardContent>
         </Card>
-        <Card x-chunk="An area chart showing the time spent in bed for the past 7 days.">
+        <Card
+          x-chunk="An area chart showing the time spent in bed for the past 7 days."
+          className="max-w-xs"
+        >
           <CardHeader className="space-y-0 pb-0">
             <CardDescription>Time in Bed</CardDescription>
             <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">
