@@ -1,3 +1,5 @@
+"use client"
+
 import { CreditCard } from "lucide-react"
 
 import {
