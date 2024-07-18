@@ -8,7 +8,8 @@ import * as Charts from "@/app/(app)/charts/charts"
 
 export default function ChartsPage() {
   return (
-    <>
+    <div className="grid gap-4">
+      <ChartsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
       <ThemesStyle />
       <div className="gap-6 md:flex md:flex-row-reverse md:items-start">
         <ThemesSwitcher
@@ -17,7 +18,10 @@ export default function ChartsPage() {
         />
         <div className="grid flex-1 gap-12">
           <h2 className="sr-only">Examples</h2>
-          <div className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10">
+          <div
+            id="examples"
+            className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
+          >
             <ChartDisplay name="chart-area-stacked">
               <Charts.ChartAreaStacked />
             </ChartDisplay>
@@ -31,10 +35,7 @@ export default function ChartsPage() {
               <Charts.ChartPieDonutText />
             </ChartDisplay>
           </div>
-          <div className="hidden gap-4 md:grid">
-            <ChartsNav />
-            <Separator />
-          </div>
+          <Separator />
           <div
             id="area-chart"
             className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -259,8 +260,41 @@ export default function ChartsPage() {
               <Charts.ChartRadialStacked />
             </ChartDisplay>
           </div>
+          <Separator />
+          <div
+            id="tooltip"
+            className="chart-wrapper grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
+          >
+            <ChartDisplay name="chart-tooltip-default">
+              <Charts.ChartTooltipDefault />
+            </ChartDisplay>
+            <ChartDisplay name="chart-tooltip-indicator-line">
+              <Charts.ChartTooltipIndicatorLine />
+            </ChartDisplay>
+            <ChartDisplay name="chart-tooltip-indicator-none">
+              <Charts.ChartTooltipIndicatorNone />
+            </ChartDisplay>
+            <ChartDisplay name="chart-tooltip-label-custom">
+              <Charts.ChartTooltipLabelCustom />
+            </ChartDisplay>
+            <ChartDisplay name="chart-tooltip-label-formatter">
+              <Charts.ChartTooltipLabelFormatter />
+            </ChartDisplay>
+            <ChartDisplay name="chart-tooltip-label-none">
+              <Charts.ChartTooltipLabelNone />
+            </ChartDisplay>
+            <ChartDisplay name="chart-tooltip-formatter">
+              <Charts.ChartTooltipFormatter />
+            </ChartDisplay>
+            <ChartDisplay name="chart-tooltip-icons">
+              <Charts.ChartTooltipIcons />
+            </ChartDisplay>
+            <ChartDisplay name="chart-tooltip-advanced">
+              <Charts.ChartTooltipAdvanced />
+            </ChartDisplay>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

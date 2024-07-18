@@ -9,16 +9,16 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/new-york/ui/card"
+} from "@/registry/new-york//ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/registry/new-york/ui/chart"
+} from "@/registry/new-york//ui/chart"
 
 export default function Component() {
   return (
-    <Card x-chunk="charts-01-chunk-0">
+    <Card className="lg:max-w-md" x-chunk="charts-01-chunk-0">
       <CardHeader className="space-y-0 pb-2">
         <CardDescription>Today</CardDescription>
         <CardTitle className="text-4xl tabular-nums">
@@ -78,16 +78,8 @@ export default function Component() {
               dataKey="steps"
               fill="var(--color-steps)"
               radius={5}
-              fillOpacity={0.4}
+              fillOpacity={0.6}
               activeBar={<Rectangle fillOpacity={0.8} />}
-              shape={(props: any) => {
-                return (
-                  <Rectangle
-                    {...props}
-                    fillOpacity={props.payload.date === "2024-01-03" ? 1 : 0.2}
-                  />
-                )
-              }}
             />
             <XAxis
               dataKey="date"

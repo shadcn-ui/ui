@@ -8,7 +8,7 @@ import { Separator } from "@/registry/default/ui/separator"
 
 export default function Component() {
   return (
-    <Card x-chunk="charts-01-chunk-4">
+    <Card className="max-w-xs" x-chunk="charts-01-chunk-4">
       <CardContent className="flex gap-4 p-4 pb-2">
         <ChartContainer
           config={{
