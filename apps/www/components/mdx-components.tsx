@@ -4,7 +4,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useMDXComponent } from "next-contentlayer/hooks"
+import { useMDXComponent } from "next-contentlayer2/hooks"
 import { NpmCommands } from "types/unist"
 
 import { Event } from "@/lib/events"
@@ -139,15 +139,15 @@ const components = {
     <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-y-auto">
-      <table className={cn("w-full", className)} {...props} />
+    <div className="my-6 w-full overflow-y-auto rounded-lg">
+      <table
+        className={cn("w-full overflow-hidden rounded-lg", className)}
+        {...props}
+      />
     </div>
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr
-      className={cn("m-0 border-t p-0 even:bg-muted", className)}
-      {...props}
-    />
+    <tr className={cn("m-0 border-t p-0", className)} {...props} />
   ),
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th

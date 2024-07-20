@@ -1,3 +1,5 @@
+"use client"
+
 import { Bird, Rabbit, Turtle } from "lucide-react"
 
 import { Input } from "@/registry/default/ui/input"

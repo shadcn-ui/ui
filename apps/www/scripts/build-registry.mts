@@ -48,7 +48,10 @@ export const Index: Record<string, any> = {
       let sourceFilename = ""
 
       let chunks: any = []
-      if (item.type === "components:block") {
+      if (
+        item.type === "components:block" ||
+        item.type === "components:chart"
+      ) {
         const file = resolveFiles[0]
         const filename = path.basename(file)
         const raw = await fs.readFile(file, "utf8")
@@ -177,6 +180,8 @@ export const Index: Record<string, any> = {
             })
 
             const code = `
+            'use client'
+
             ${componnetImportLines.join("\n")}
 
             export default function Component() {
@@ -231,7 +236,7 @@ export const Index: Record<string, any> = {
       chunks: [${chunks.map(
         (chunk) => `{
         name: "${chunk.name}",
-        description: "${chunk.description}",
+        description: "${chunk.description ?? "No description"}",
         component: ${chunk.component}
         file: "${chunk.file}",
         container: {
@@ -372,86 +377,79 @@ async function buildThemes() {
   // Build registry/colors/[base].json.
   // ----------------------------------------------------------------------------
   const BASE_STYLES = `@tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
   `
 
   const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
-  @layer base {
-    :root {
-      --background: <%- colors.light["background"] %>;
-      --foreground: <%- colors.light["foreground"] %>;
-
-      --card: <%- colors.light["card"] %>;
-      --card-foreground: <%- colors.light["card-foreground"] %>;
-
-      --popover: <%- colors.light["popover"] %>;
-      --popover-foreground: <%- colors.light["popover-foreground"] %>;
-
-      --primary: <%- colors.light["primary"] %>;
-      --primary-foreground: <%- colors.light["primary-foreground"] %>;
-
-      --secondary: <%- colors.light["secondary"] %>;
-      --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
-
-      --muted: <%- colors.light["muted"] %>;
-      --muted-foreground: <%- colors.light["muted-foreground"] %>;
-
-      --accent: <%- colors.light["accent"] %>;
-      --accent-foreground: <%- colors.light["accent-foreground"] %>;
-
-      --destructive: <%- colors.light["destructive"] %>;
-      --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
-
-      --border: <%- colors.light["border"] %>;
-      --input: <%- colors.light["input"] %>;
-      --ring: <%- colors.light["ring"] %>;
-
-      --radius: 0.5rem;
-    }
-
-    .dark {
-      --background: <%- colors.dark["background"] %>;
-      --foreground: <%- colors.dark["foreground"] %>;
-
-      --card: <%- colors.dark["card"] %>;
-      --card-foreground: <%- colors.dark["card-foreground"] %>;
-
-      --popover: <%- colors.dark["popover"] %>;
-      --popover-foreground: <%- colors.dark["popover-foreground"] %>;
-
-      --primary: <%- colors.dark["primary"] %>;
-      --primary-foreground: <%- colors.dark["primary-foreground"] %>;
-
-      --secondary: <%- colors.dark["secondary"] %>;
-      --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
-
-      --muted: <%- colors.dark["muted"] %>;
-      --muted-foreground: <%- colors.dark["muted-foreground"] %>;
-
-      --accent: <%- colors.dark["accent"] %>;
-      --accent-foreground: <%- colors.dark["accent-foreground"] %>;
-
-      --destructive: <%- colors.dark["destructive"] %>;
-      --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
-
-      --border: <%- colors.dark["border"] %>;
-      --input: <%- colors.dark["input"] %>;
-      --ring: <%- colors.dark["ring"] %>;
-    }
+@layer base {
+  :root {
+    --background: <%- colors.light["background"] %>;
+    --foreground: <%- colors.light["foreground"] %>;
+    --card: <%- colors.light["card"] %>;
+    --card-foreground: <%- colors.light["card-foreground"] %>;
+    --popover: <%- colors.light["popover"] %>;
+    --popover-foreground: <%- colors.light["popover-foreground"] %>;
+    --primary: <%- colors.light["primary"] %>;
+    --primary-foreground: <%- colors.light["primary-foreground"] %>;
+    --secondary: <%- colors.light["secondary"] %>;
+    --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
+    --muted: <%- colors.light["muted"] %>;
+    --muted-foreground: <%- colors.light["muted-foreground"] %>;
+    --accent: <%- colors.light["accent"] %>;
+    --accent-foreground: <%- colors.light["accent-foreground"] %>;
+    --destructive: <%- colors.light["destructive"] %>;
+    --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
+    --border: <%- colors.light["border"] %>;
+    --input: <%- colors.light["input"] %>;
+    --ring: <%- colors.light["ring"] %>;
+    --radius: 0.5rem;
+    --chart-1: <%- colors.light["chart-1"] %>;
+    --chart-2: <%- colors.light["chart-2"] %>;
+    --chart-3: <%- colors.light["chart-3"] %>;
+    --chart-4: <%- colors.light["chart-4"] %>;
+    --chart-5: <%- colors.light["chart-5"] %>;
   }
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
-  }`
+  .dark {
+    --background: <%- colors.dark["background"] %>;
+    --foreground: <%- colors.dark["foreground"] %>;
+    --card: <%- colors.dark["card"] %>;
+    --card-foreground: <%- colors.dark["card-foreground"] %>;
+    --popover: <%- colors.dark["popover"] %>;
+    --popover-foreground: <%- colors.dark["popover-foreground"] %>;
+    --primary: <%- colors.dark["primary"] %>;
+    --primary-foreground: <%- colors.dark["primary-foreground"] %>;
+    --secondary: <%- colors.dark["secondary"] %>;
+    --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
+    --muted: <%- colors.dark["muted"] %>;
+    --muted-foreground: <%- colors.dark["muted-foreground"] %>;
+    --accent: <%- colors.dark["accent"] %>;
+    --accent-foreground: <%- colors.dark["accent-foreground"] %>;
+    --destructive: <%- colors.dark["destructive"] %>;
+    --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
+    --border: <%- colors.dark["border"] %>;
+    --input: <%- colors.dark["input"] %>;
+    --ring: <%- colors.dark["ring"] %>;
+    --chart-1: <%- colors.dark["chart-1"] %>;
+    --chart-2: <%- colors.dark["chart-2"] %>;
+    --chart-3: <%- colors.dark["chart-3"] %>;
+    --chart-4: <%- colors.dark["chart-4"] %>;
+    --chart-5: <%- colors.dark["chart-5"] %>;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}`
 
   for (const baseColor of ["slate", "gray", "zinc", "neutral", "stone"]) {
     const base: Record<string, any> = {
@@ -463,6 +461,12 @@ async function buildThemes() {
       base["cssVars"][mode] = {}
       for (const [key, value] of Object.entries(values)) {
         if (typeof value === "string") {
+          // Chart colors do not have a 1-to-1 mapping with tailwind colors.
+          if (key.startsWith("chart-")) {
+            base["cssVars"][mode][key] = value
+            continue
+          }
+
           const resolvedColor = value.replace(/{{base}}-/g, `${baseColor}-`)
           base["inlineColors"][mode][key] = resolvedColor
 

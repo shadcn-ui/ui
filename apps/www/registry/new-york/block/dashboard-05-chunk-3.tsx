@@ -1,3 +1,5 @@
+"use client"
+
 import { Badge } from "@/registry/new-york/ui/badge"
 import {
   Card,
