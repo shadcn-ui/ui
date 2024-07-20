@@ -102,7 +102,7 @@ const MenubarContent: React.FC<
 MenubarContent.displayName = MenubarPrimitive.Content.displayName
 
 const MenubarItem: React.FC<
-  React.ComponentProps<typeof MenubarPrimitive.Root> & InsetProps
+  React.ComponentProps<typeof MenubarPrimitive.Item> & InsetProps
 > = ({ className, inset, ...props }) => (
   <MenubarPrimitive.Item
     className={cn(
