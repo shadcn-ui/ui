@@ -1,5 +1,7 @@
 "use client"
 
+import * as React from "react"
+
 import {
   Toast,
   ToastClose,
@@ -10,7 +12,7 @@ import {
 } from "@/registry/default/ui/toast"
 import { useToast } from "@/registry/default/ui/use-toast"
 
-export function Toaster() {
+const Toaster: React.FC = () => {
   const { toasts } = useToast()
 
   return (
@@ -33,3 +35,5 @@ export function Toaster() {
     </ToastProvider>
   )
 }
+
+export { Toaster }
