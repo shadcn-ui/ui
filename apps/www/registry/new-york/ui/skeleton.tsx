@@ -7,7 +7,7 @@ const Skeleton: React.FC<React.ComponentProps<"div">> = ({
   ...props
 }) => (
   <div
-    className={cn("animate-pulse rounded-md bg-primary/10", className)}
+    className={cn("bg-primary/10 animate-pulse rounded-md", className)}
     {...props}
   />
 )

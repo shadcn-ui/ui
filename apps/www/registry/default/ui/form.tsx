@@ -131,7 +131,7 @@ const FormDescription: React.FC<React.ComponentProps<"p">> = ({
   return (
     <p
       id={formDescriptionId}
-      className={cn("text-sm text-muted-foreground", className)}
+      className={cn("text-muted-foreground text-sm", className)}
       {...props}
     />
   )
@@ -153,7 +153,7 @@ const FormMessage: React.FC<React.ComponentProps<"p">> = ({
   return (
     <p
       id={formMessageId}
-      className={cn("text-sm font-medium text-destructive", className)}
+      className={cn("text-destructive text-sm font-medium", className)}
       {...props}
     >
       {body}

@@ -37,7 +37,7 @@ const AccordionContent: React.FC<
   React.ComponentProps<typeof AccordionPrimitive.Content>
 > = ({ className, children, ...props }) => (
   <AccordionPrimitive.Content
-    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm transition-all"
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>

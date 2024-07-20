@@ -8,7 +8,7 @@ const Card: React.FC<React.ComponentProps<"div">> = ({
 }) => (
   <div
     className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      "bg-card text-card-foreground rounded-lg border shadow-sm",
       className
     )}
     {...props}
@@ -42,7 +42,7 @@ const CardDescription: React.FC<React.ComponentProps<"p">> = ({
   className,
   ...props
 }) => (
-  <p className={cn("text-sm text-muted-foreground", className)} {...props} />
+  <p className={cn("text-muted-foreground text-sm", className)} {...props} />
 )
 CardDescription.displayName = "CardDescription"
 
