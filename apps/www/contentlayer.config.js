@@ -4,7 +4,7 @@ import {
   defineDocumentType,
   defineNestedType,
   makeSource,
-} from "contentlayer/source-files"
+} from "contentlayer2/source-files"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
@@ -116,7 +116,7 @@ export default makeSource({
         {
           getHighlighter: async () => {
             const theme = await loadTheme(
-              path.join(process.cwd(), "/lib/themes/dark.json")
+              path.join(process.cwd(), "/lib/highlighter-theme.json")
             )
             return await getHighlighter({ theme })
           },
