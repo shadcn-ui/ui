@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Check, ChevronsUpDown } from "lucide-react"
 import { useForm } from "react-hook-form"
@@ -30,6 +31,8 @@ import {
   PopoverTrigger,
 } from "@/registry/default/ui/popover"
 import { toast } from "@/registry/default/ui/use-toast"
+
+const [sheetOpen, setSheetOpen] = useState(false);
 
 const languages = [
   { label: "English", value: "en" },
@@ -74,7 +77,7 @@ export default function ComboboxForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Language</FormLabel>
-              <Popover>
+              <Popover open={sheetOpen} onOpenChange={setSheetOpen}>
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
@@ -84,6 +87,7 @@ export default function ComboboxForm() {
                         "w-[200px] justify-between",
                         !field.value && "text-muted-foreground"
                       )}
+                      onClick={()=> setSheetOpen(!sheetOpen)}
                     >
                       {field.value
                         ? languages.find(
