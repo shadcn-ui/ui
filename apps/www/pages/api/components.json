@@ -83,7 +83,7 @@
   },
   {
     "name": "calendar",
-    "dependencies": ["react-day-picker", "date-fns"],
+    "dependencies": ["react-day-picker"],
     "registryDependencies": ["button"],
     "files": [
       {
