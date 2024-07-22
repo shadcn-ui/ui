@@ -20,7 +20,7 @@ export async function ChartDisplay({
   return (
     <div
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-xl border shadow transition-all duration-200 ease-in-out hover:z-30",
+        "themes-wrapper group relative flex flex-col overflow-hidden rounded-xl border shadow transition-all duration-200 ease-in-out hover:z-30",
         className
       )}
     >
