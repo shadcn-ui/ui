@@ -57,6 +57,16 @@
     "type": "components:ui"
   },
   {
+    "name": "breadcrumb",
+    "dependencies": [
+      "@radix-ui/react-slot"
+    ],
+    "files": [
+      "ui/breadcrumb.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "button",
     "dependencies": [
       "@radix-ui/react-slot"
@@ -97,6 +107,20 @@
     ],
     "files": [
       "ui/carousel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "chart",
+    "dependencies": [
+      "recharts",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "card"
+    ],
+    "files": [
+      "ui/chart.tsx"
     ],
     "type": "components:ui"
   },
@@ -206,6 +230,16 @@
     "name": "input",
     "files": [
       "ui/input.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "input-otp",
+    "dependencies": [
+      "input-otp"
+    ],
+    "files": [
+      "ui/input-otp.tsx"
     ],
     "type": "components:ui"
   },
