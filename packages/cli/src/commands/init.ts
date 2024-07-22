@@ -190,8 +190,8 @@ export async function promptForConfig(
     $schema: "https://ui.shadcn.com/schema.json",
     style: options.style,
     tailwind: {
-      config: options.tailwindConfig,
-      css: options.tailwindCss,
+      config: options.tailwindConfig?.trim(),
+      css: options.tailwindCss?.trim(),
       baseColor: options.tailwindBaseColor,
       cssVariables: options.tailwindCssVariables,
       prefix: options.tailwindPrefix,
