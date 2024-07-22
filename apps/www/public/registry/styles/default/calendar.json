@@ -1,7 +1,11 @@
 {
   "name": "calendar",
-  "dependencies": ["react-day-picker"],
-  "registryDependencies": ["button"],
+  "dependencies": [
+    "react-day-picker"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "name": "calendar.tsx",
