@@ -3,7 +3,7 @@ import { existsSync, promises as fs, readFileSync } from "fs"
 import { tmpdir } from "os"
 import path, { basename } from "path"
 import { cwd } from "process"
-import template from "lodash.template"
+import { template } from "lodash"
 import { rimraf } from "rimraf"
 import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 
