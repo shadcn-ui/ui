@@ -52,7 +52,7 @@ interface MailProps {
 export function Mail({
   accounts,
   mails,
-  defaultLayout = [265, 440, 655],
+  defaultLayout = [20, 32, 48],
   defaultCollapsed = false,
   navCollapsedSize,
 }: MailProps) {
@@ -62,9 +62,10 @@ export function Mail({
   return (
     <TooltipProvider delayDuration={0}>
       <ResizablePanelGroup
+        disablePointerEventsDuringResize
         direction="horizontal"
         onLayout={(sizes: number[]) => {
-          document.cookie = `react-resizable-panels:layout=${JSON.stringify(
+          document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify(
             sizes
           )}`
         }}
