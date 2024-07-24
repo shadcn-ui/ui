@@ -62,7 +62,6 @@ export function Mail({
   return (
     <TooltipProvider delayDuration={0}>
       <ResizablePanelGroup
-        disablePointerEventsDuringResize
         direction="horizontal"
         onLayout={(sizes: number[]) => {
           document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify(
@@ -77,10 +76,16 @@ export function Mail({
           collapsible={true}
           minSize={15}
           maxSize={20}
-          onCollapse={(collapsed) => {
-            setIsCollapsed(collapsed)
+          onCollapse={() => {
+            setIsCollapsed(true)
             document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-              collapsed
+              true
+            )}`
+          }}
+          onResize={() => {
+            setIsCollapsed(false)
+            document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
+              false
             )}`
           }}
           className={cn(
