@@ -271,8 +271,8 @@ importers:
         specifier: ^7.44.2
         version: 7.44.2(react@18.2.0)
       react-resizable-panels:
-        specifier: ^0.0.55
-        version: 0.0.55(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: ^2.0.22
+        version: 2.0.22(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-wrap-balancer:
         specifier: ^0.4.1
         version: 0.4.1(react@18.2.0)
@@ -5758,8 +5758,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-resizable-panels@0.0.55:
-    resolution: {integrity: sha512-J/LTFzUEjJiqwSjVh8gjUXkQDA8MRPjARASfn++d2+KOgA+9UcRYUfE3QBJixer2vkk+ffQ4cq3QzWzzHgqYpQ==}
+  react-resizable-panels@2.0.22:
+    resolution: {integrity: sha512-G8x8o7wjQxCG+iF4x4ngKVBpe0CY+DAZ/SaiDoqBEt0yuKJe9OE/VVYMBMMugQ3GyQ65NnSJt23tujlaZZe75A==}
     peerDependencies:
       react: ^16.14.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
@@ -13266,7 +13266,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.67
 
-  react-resizable-panels@0.0.55(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  react-resizable-panels@2.0.22(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
