@@ -59,9 +59,6 @@ importers:
       eslint-plugin-tailwindcss:
         specifier: 3.13.1
         version: 3.13.1(tailwindcss@3.3.7(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.5.3)))
-      husky:
-        specifier: ^8.0.3
-        version: 8.0.3
       postcss:
         specifier: ^8.4.24
         version: 8.4.24
@@ -274,8 +271,8 @@ importers:
         specifier: ^7.44.2
         version: 7.44.2(react@18.2.0)
       react-resizable-panels:
-        specifier: ^0.0.55
-        version: 0.0.55(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: ^2.0.22
+        version: 2.0.22(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-wrap-balancer:
         specifier: ^0.4.1
         version: 0.4.1(react@18.2.0)
@@ -4334,11 +4331,6 @@ packages:
     resolution: {integrity: sha512-nZXjEF2nbo7lIw3mgYjItAfgQXog3OjJogSbKa2CQIIvSGWcKgeJnQlNXip6NglNzYH45nSRiEVimMvYL8DDqQ==}
     engines: {node: '>=14.18.0'}
 
-  husky@8.0.3:
-    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
-    engines: {node: '>=14'}
-    hasBin: true
-
   hyperdyperid@1.2.0:
     resolution: {integrity: sha512-Y93lCzHYgGWdrJ66yIktxiaGULYc6oGiABxhcO5AufBeOyoIdZF7bIfLaOrbM0iGIOXQQgxxRrFEnb+Y6w1n4A==}
     engines: {node: '>=10.18'}
@@ -5764,8 +5756,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-resizable-panels@0.0.55:
-    resolution: {integrity: sha512-J/LTFzUEjJiqwSjVh8gjUXkQDA8MRPjARASfn++d2+KOgA+9UcRYUfE3QBJixer2vkk+ffQ4cq3QzWzzHgqYpQ==}
+  react-resizable-panels@2.0.22:
+    resolution: {integrity: sha512-G8x8o7wjQxCG+iF4x4ngKVBpe0CY+DAZ/SaiDoqBEt0yuKJe9OE/VVYMBMMugQ3GyQ65NnSJt23tujlaZZe75A==}
     peerDependencies:
       react: ^16.14.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
@@ -11489,8 +11481,6 @@ snapshots:
 
   human-signals@4.3.1: {}
 
-  husky@8.0.3: {}
-
   hyperdyperid@1.2.0: {}
 
   iconv-lite@0.4.24:
@@ -13272,7 +13262,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.67
 
-  react-resizable-panels@0.0.55(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  react-resizable-panels@2.0.22(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
