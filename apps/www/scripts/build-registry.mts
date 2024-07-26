@@ -386,7 +386,7 @@ async function buildThemes() {
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root, .light {
     --background: <%- colors.light["background"] %>;
     --foreground: <%- colors.light["foreground"] %>;
     --card: <%- colors.light["card"] %>;
