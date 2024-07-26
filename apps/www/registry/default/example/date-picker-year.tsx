@@ -13,7 +13,7 @@ import {
   PopoverTrigger,
 } from "@/registry/default/ui/popover"
 
-export default function DatePickerDemo() {
+export default function DatePickeYear() {
   const [date, setDate] = React.useState<Date>()
 
   return (
@@ -27,11 +27,17 @@ export default function DatePickerDemo() {
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {date ? format(date, "PPP") : <span>Select your birth date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <Calendar mode="single" selected={date} onSelect={setDate} autoFocus />
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          autoFocus
+          showYearSwitcher
+        />
       </PopoverContent>
     </Popover>
   )

@@ -84,7 +84,17 @@ export default async function DocPage({ params }: DocPageProps) {
     notFound()
   }
 
-  const toc = await getTableOfContents(doc.body.raw)
+  const toc = await getTableOfContents(doc.body.raw).then((toc) => ({
+    ...toc,
+    items: toc.items?.map((item) => ({
+      ...item,
+      items: item.items?.map((item) => ({
+        ...item,
+        title: item.title.replace("New", ""),
+        url: item.url.replace(/span[^]*?span/g, ""),
+      })),
+    })),
+  }))
 
   return (
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">

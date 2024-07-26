@@ -64,12 +64,28 @@ const components = {
       {...props}
     />
   ),
-  h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  h3: ({
+    className,
+    id,
+    ...props
+  }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "font-heading mt-8 flex scroll-m-20 items-center text-xl font-semibold tracking-tight",
         className
       )}
+      id={
+        props.children
+          ?.toString()
+          .toLowerCase()
+          .replace(/[^a-z0-9]/g, "-")
+          .replace(/-+/g, "-")
+          .replace(/span[^]*?span/g, "")
+          .replaceAll("-object", "")
+          .replace("New", "")
+          .replace("new", "")
+          .replace(/^-/, "") ?? id
+      }
       {...props}
     />
   ),
