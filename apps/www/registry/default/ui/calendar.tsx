@@ -43,9 +43,10 @@ function Calendar({
         weekday: "text-muted-foreground w-9 font-normal text-xs",
         weeks: "",
         week: "flex mt-2",
-        range_middle:
-          "aria-selected:bg-accent aria-selected:text-accent-foreground",
-        range_end: "day-range-end",
+        day: "p-0",
+        range_middle: "bg-accent last:rounded-e-md first:rounded-s-md",
+        range_start: "bg-accent rounded-s-md",
+        range_end: "bg-accent rounded-e-md",
         ...classNames,
       }}
       components={{
@@ -60,14 +61,19 @@ function Calendar({
                 modifiers?.selected &&
                   "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
                 modifiers?.outside &&
-                  "day-outside text-muted-foreground opacity-50 pointer-events-none",
+                  "text-muted-foreground opacity-50 pointer-events-none",
                 modifiers.outside &&
                   modifiers.selected &&
                   "bg-accent text-muted-foreground opacity-50",
                 modifiers?.disabled && "opacity-50 text-muted-foreground",
-                modifiers?.hidden && "invisible"
+                modifiers?.hidden && "invisible",
+                modifiers.range_middle &&
+                  "bg-accent text-accent-foreground hover:bg-accent hover:text-accent-foreground rounded-none last:rounded-e-md first:rounded-s-md"
               )}
               {...buttonProps}
+              aria-selected={modifiers.selected || buttonProps["aria-selected"]}
+              aria-disabled={modifiers.disabled || buttonProps["aria-disabled"]}
+              aria-hidden={modifiers.hidden || buttonProps["aria-hidden"]}
             />
           )
         },
