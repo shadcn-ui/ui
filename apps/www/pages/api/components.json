@@ -83,7 +83,7 @@
   },
   {
     "name": "calendar",
-    "dependencies": ["react-day-picker"],
+    "dependencies": ["react-day-picker@^9.0"],
     "registryDependencies": ["button"],
     "files": [
       {

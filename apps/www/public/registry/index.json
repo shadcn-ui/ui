@@ -79,7 +79,7 @@
   {
     "name": "calendar",
     "dependencies": [
-      "react-day-picker"
+      "react-day-picker@^9.0"
     ],
     "registryDependencies": [
       "button"
