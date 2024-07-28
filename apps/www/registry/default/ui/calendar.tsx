@@ -4,7 +4,7 @@ import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from "lucide-react"
 import { DayPicker, type DayPickerProps } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/registry/default/ui/button"
+import { Button, buttonVariants } from "@/registry/default/ui/button"
 
 export type CalendarProps = DayPickerProps
 
@@ -43,27 +43,34 @@ function Calendar({
         weekday: "text-muted-foreground w-9 font-normal text-xs",
         weeks: "",
         week: "flex mt-2",
-        day: cn(
-          buttonVariants({
-            variant: "ghost",
-            className:
-              "h-9 w-9 p-0 font-normal aria-selected:opacity-100 relative overflow-hidden",
-          })
-        ),
-        day_button: "w-full h-full absolute",
-        today: "bg-accent text-accent-foreground",
-        selected:
-          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-        outside:
-          "day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
-        disabled: "text-muted-foreground opacity-50",
-        hidden: "invisible",
         range_middle:
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         range_end: "day-range-end",
         ...classNames,
       }}
       components={{
+        DayButton({ day, modifiers, className, ...buttonProps }) {
+          return (
+            <Button
+              variant={"ghost"}
+              className={cn(
+                className,
+                "h-9 w-9 p-0 font-normal",
+                modifiers?.today && "bg-accent text-accent-foreground",
+                modifiers?.selected &&
+                  "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+                modifiers?.outside &&
+                  "day-outside text-muted-foreground opacity-50 pointer-events-none",
+                modifiers.outside &&
+                  modifiers.selected &&
+                  "bg-accent text-muted-foreground opacity-50",
+                modifiers?.disabled && "opacity-50 text-muted-foreground",
+                modifiers?.hidden && "invisible"
+              )}
+              {...buttonProps}
+            />
+          )
+        },
         Chevron({ orientation, disabled, className }) {
           const Component =
             orientation === "left"
