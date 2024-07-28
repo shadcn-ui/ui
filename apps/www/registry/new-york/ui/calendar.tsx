@@ -4,7 +4,7 @@ import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from "lucide-react"
 import { DayPicker, type DayPickerProps } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/registry/new-york/ui/button"
+import { Button, buttonVariants } from "@/registry/new-york/ui/button"
 
 export type CalendarProps = DayPickerProps
 
@@ -19,51 +19,68 @@ function Calendar({
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{
-        months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
+        months:
+          "relative flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
-        month_caption: "flex justify-center pt-1 relative items-center",
-        caption_label: "text-sm font-medium",
-        nav: "space-x-1 flex items-center",
-        button_previous: buttonVariants({
-          variant: "outline",
-          className:
-            "size-7 bg-transparent p-0 opacity-50 hover:opacity-100 absolute start-1",
-        }),
-        button_next: buttonVariants({
-          variant: "outline",
-          className:
-            "size-7 bg-transparent p-0 opacity-50 hover:opacity-100 absolute end-1",
-        }),
-        month_grid: "w-full border-collapse space-y-1",
-        weekdays: "flex",
-        weekday:
-          "text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]",
-        week: "flex w-full mt-2",
-        today: "bg-accent text-accent-foreground",
-        day: cn(
-          "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected].day-range-end)]:rounded-r-md",
-          props.mode === "range"
-            ? "[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md"
-            : "[&:has([aria-selected])]:rounded-md"
+        nav: "flex items-center justify-between absolute w-full z-10 px-1",
+        button_previous: cn(
+          buttonVariants({
+            variant: "outline",
+            className:
+              "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+          })
         ),
-        day_button: buttonVariants({
-          variant: "ghost",
-          className: "h-8 w-8 p-0 font-normal aria-selected:opacity-100",
-        }),
-        range_start: "day-range-start",
-
-        range_middle:
-          "aria-selected:bg-accent aria-selected:text-accent-foreground",
-        range_end: "day-range-end",
-        selected:
-          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-        outside:
-          "day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
-        disabled: "text-muted-foreground opacity-50",
-        hidden: "invisible",
+        button_next: cn(
+          buttonVariants({
+            variant: "outline",
+            className:
+              "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+          })
+        ),
+        month_caption: "flex justify-center items-center h-7",
+        caption_label: "text-sm font-medium",
+        month_grid: "border-collapse space-y-1",
+        weekdays: "flex",
+        weekday: "text-muted-foreground w-9 font-normal text-xs",
+        weeks: "",
+        week: "flex mt-2",
+        day: "p-0",
+        outside: "bg-accent/40",
+        range_middle: "bg-accent last:rounded-e-md first:rounded-s-md",
+        range_start: "bg-accent rounded-s-md",
+        range_end: "bg-accent rounded-e-md",
         ...classNames,
       }}
       components={{
+        DayButton({ day, modifiers, className, ...buttonProps }) {
+          return (
+            <Button
+              variant={"ghost"}
+              className={cn(
+                className,
+                "h-9 w-9 p-0 font-normal",
+                modifiers?.today && "bg-accent text-accent-foreground",
+                modifiers?.selected &&
+                  "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+                modifiers?.outside &&
+                  "text-muted-foreground opacity-50 pointer-events-none",
+                modifiers?.disabled && "opacity-50 text-muted-foreground",
+                modifiers?.hidden && "invisible",
+                modifiers.range_start && "rounded-e-none",
+                modifiers.range_end && "rounded-s-none",
+                modifiers.range_middle &&
+                  "bg-accent text-accent-foreground hover:bg-accent hover:text-accent-foreground rounded-none last:rounded-e-md first:rounded-s-md",
+                modifiers.outside &&
+                  modifiers.selected &&
+                  "bg-accent/40 text-muted-foreground"
+              )}
+              {...buttonProps}
+              aria-selected={modifiers.selected || buttonProps["aria-selected"]}
+              aria-disabled={modifiers.disabled || buttonProps["aria-disabled"]}
+              aria-hidden={modifiers.hidden || buttonProps["aria-hidden"]}
+            />
+          )
+        },
         Chevron({ orientation, disabled, className }) {
           const Component =
             orientation === "left"
@@ -76,7 +93,7 @@ function Calendar({
 
           return (
             <Component
-              className={cn("size-4", className)}
+              className={cn("w-4 h-4", className)}
               aria-disabled={disabled}
             />
           )

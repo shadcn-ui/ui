@@ -19,7 +19,8 @@ function Calendar({
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{
-        months: "relative",
+        months:
+          "relative flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
         nav: "flex items-center justify-between absolute w-full z-10 px-1",
         button_previous: cn(
@@ -44,6 +45,7 @@ function Calendar({
         weeks: "",
         week: "flex mt-2",
         day: "p-0",
+        outside: "bg-accent/40",
         range_middle: "bg-accent last:rounded-e-md first:rounded-s-md",
         range_start: "bg-accent rounded-s-md",
         range_end: "bg-accent rounded-e-md",
@@ -62,13 +64,13 @@ function Calendar({
                   "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
                 modifiers?.outside &&
                   "text-muted-foreground opacity-50 pointer-events-none",
-                modifiers.outside &&
-                  modifiers.selected &&
-                  "bg-accent text-muted-foreground opacity-50",
                 modifiers?.disabled && "opacity-50 text-muted-foreground",
                 modifiers?.hidden && "invisible",
                 modifiers.range_middle &&
-                  "bg-accent text-accent-foreground hover:bg-accent hover:text-accent-foreground rounded-none last:rounded-e-md first:rounded-s-md"
+                  "bg-accent text-accent-foreground hover:bg-accent hover:text-accent-foreground rounded-none last:rounded-e-md first:rounded-s-md",
+                modifiers.outside &&
+                  modifiers.selected &&
+                  "bg-accent/40 text-muted-foreground"
               )}
               {...buttonProps}
               aria-selected={modifiers.selected || buttonProps["aria-selected"]}
