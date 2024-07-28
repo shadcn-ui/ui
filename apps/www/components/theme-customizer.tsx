@@ -510,6 +510,21 @@ function CustomizerCode() {
             <span className="line text-white">
               &nbsp;&nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
             </span>
+            {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+              (prefix) => (
+                <>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                    {
+                      activeTheme?.cssVars.light[
+                        prefix as keyof typeof activeTheme.cssVars.light
+                      ]
+                    }
+                    ;
+                  </span>
+                </>
+              )
+            )}
             <span className="line text-white">&nbsp;&nbsp;&#125;</span>
             <span className="line text-white">&nbsp;</span>
             <span className="line text-white">&nbsp;&nbsp;.dark &#123;</span>
@@ -563,6 +578,21 @@ function CustomizerCode() {
               &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
               {activeTheme?.cssVars.dark["ring"]};
             </span>
+            {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+              (prefix) => (
+                <>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                    {
+                      activeTheme?.cssVars.dark[
+                        prefix as keyof typeof activeTheme.cssVars.dark
+                      ]
+                    }
+                    ;
+                  </span>
+                </>
+              )
+            )}
             <span className="line text-white">&nbsp;&nbsp;&#125;</span>
             <span className="line text-white">&#125;</span>
           </code>
@@ -606,6 +636,11 @@ const BASE_STYLES_WITH_VARIABLES = `
     --input: <%- colors.light["input"] %>;
     --ring: <%- colors.light["ring"] %>;
     --radius: <%- radius %>rem;
+    --chart-1: <%- colors.light["chart-1"] %>;
+    --chart-2: <%- colors.light["chart-2"] %>;
+    --chart-3: <%- colors.light["chart-3"] %>;
+    --chart-4: <%- colors.light["chart-4"] %>;
+    --chart-5: <%- colors.light["chart-5"] %>;
   }
 
   .dark {
@@ -628,6 +663,11 @@ const BASE_STYLES_WITH_VARIABLES = `
     --border: <%- colors.dark["border"] %>;
     --input: <%- colors.dark["input"] %>;
     --ring: <%- colors.dark["ring"] %>;
+    --chart-1: <%- colors.dark["chart-1"] %>;
+    --chart-2: <%- colors.dark["chart-2"] %>;
+    --chart-3: <%- colors.dark["chart-3"] %>;
+    --chart-4: <%- colors.dark["chart-4"] %>;
+    --chart-5: <%- colors.dark["chart-5"] %>;
   }
 }
 `
