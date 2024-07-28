@@ -51,7 +51,7 @@ export const ui: Registry = [
   {
     name: "calendar",
     type: "components:ui",
-    dependencies: ["react-day-picker", "date-fns"],
+    dependencies: ["react-day-picker@8.10.1", "date-fns"],
     registryDependencies: ["button"],
     files: ["ui/calendar.tsx", "stories/calendar.stories.tsx"],
   },
@@ -66,6 +66,13 @@ export const ui: Registry = [
     files: ["ui/carousel.tsx"],
     registryDependencies: ["button"],
     dependencies: ["embla-carousel-react", "stories/carousel.stories.tsx"],
+  },
+  {
+    name: "chart",
+    type: "components:ui",
+    files: ["ui/chart.tsx"],
+    registryDependencies: ["card"],
+    dependencies: ["recharts", "lucide-react"],
   },
   {
     name: "checkbox",

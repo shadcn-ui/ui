@@ -1,3 +1,5 @@
+"use client"
+
 import { PlusCircle } from "lucide-react"
 
 import { Button } from "@/registry/new-york/ui/button"
