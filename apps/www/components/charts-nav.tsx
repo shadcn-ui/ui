@@ -1,68 +1,50 @@
 "use client"
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-
-import { cn } from "@/lib/utils"
-import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
+import { TabsList, TabsTrigger } from "@/registry/new-york/ui/tabs"
 
 const links = [
   {
+    name: "Examples",
+    tab: "examples",
+  },
+  {
     name: "Area Chart",
-    href: "/charts#area-chart",
+    tab: "area-chart",
   },
   {
     name: "Bar Chart",
-    href: "/charts#bar-chart",
+    tab: "bar-chart",
   },
   {
     name: "Line Chart",
-    href: "/charts#line-chart",
+    tab: "line-chart",
   },
   {
     name: "Pie Chart",
-    href: "/charts#pie-chart",
+    tab: "pie-chart",
   },
   {
     name: "Radar Chart",
-    href: "/charts#radar-chart",
+    tab: "radar-chart",
   },
   {
     name: "Radial Chart",
-    href: "/charts#radial-chart",
+    tab: "radial-chart",
   },
   {
     name: "Tooltip",
-    href: "/charts#tooltip",
+    tab: "tooltip",
   },
 ]
 
-export function ChartsNav({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  const pathname = usePathname()
-
+export function ChartsNav() {
   return (
-    <ScrollArea className="max-w-[600px] lg:max-w-none">
-      <div className={cn("flex items-center", className)} {...props}>
-        {links.map((example, index) => (
-          <Link
-            href={example.href}
-            key={example.href}
-            className={cn(
-              "flex h-7 shrink-0 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
-              pathname?.startsWith(example.href) ||
-                (index === 0 && pathname === "/")
-                ? "bg-muted font-medium text-primary"
-                : "text-muted-foreground"
-            )}
-          >
-            {example.name}
-          </Link>
-        ))}
-      </div>
-      <ScrollBar orientation="horizontal" className="invisible" />
-    </ScrollArea>
+    <TabsList>
+      {links.map((link) => (
+        <TabsTrigger key={link.tab} value={link.tab}>
+          {link.name}
+        </TabsTrigger>
+      ))}
+    </TabsList>
   )
 }
