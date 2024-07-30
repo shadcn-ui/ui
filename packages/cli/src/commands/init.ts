@@ -35,6 +35,7 @@ const PROJECT_DEPENDENCIES = [
   "class-variance-authority",
   "clsx",
   "tailwind-merge",
+  "cinccino"
 ]
 
 const initOptionsSchema = z.object({
