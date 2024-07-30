@@ -6,7 +6,7 @@ import { Loader2 } from "lucide-react"
 import { useFormStatus } from "react-dom"
 import { toast } from "sonner"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { Button, ButtonProps } from "@/registry/new-york/ui/button"
 import {
   Tooltip,

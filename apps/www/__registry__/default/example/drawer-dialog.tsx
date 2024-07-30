@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/registry/default/ui/button"
 import {

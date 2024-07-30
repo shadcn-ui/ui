@@ -1,5 +1,5 @@
 import { getBlock } from "@/lib/blocks"
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { ChartToolbar } from "@/components/chart-toolbar"
 
 export async function ChartDisplay({

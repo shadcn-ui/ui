@@ -1,7 +1,7 @@
 import * as React from "react"
 import Link from "next/link"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import AccordionDemo from "@/registry/default/example/accordion-demo"
 import AlertDialogDemo from "@/registry/default/example/alert-dialog-demo"
 import AspectRatioDemo from "@/registry/default/example/aspect-ratio-demo"

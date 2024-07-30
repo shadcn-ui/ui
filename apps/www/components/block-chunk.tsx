@@ -3,7 +3,7 @@
 import * as React from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useLiftMode } from "@/hooks/use-lift-mode"
 import { BlockCopyButton } from "@/components/block-copy-button"
 import { V0Button } from "@/components/v0-button"

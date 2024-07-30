@@ -5,7 +5,7 @@ import { CircleHelp, Monitor, Smartphone, Tablet } from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
 
 import { trackEvent } from "@/lib/events"
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useLiftMode } from "@/hooks/use-lift-mode"
 import { BlockCopyButton } from "@/components/block-copy-button"
 import { StyleSwitcher } from "@/components/style-switcher"

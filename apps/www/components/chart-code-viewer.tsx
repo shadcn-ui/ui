@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { useThemesConfig } from "@/hooks/use-themes-config"
 import { BlockCopyButton } from "@/components/block-copy-button"

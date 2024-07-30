@@ -5,7 +5,7 @@ import { ChevronDownIcon } from "@radix-ui/react-icons"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { Button, buttonVariants } from "@/registry/new-york/ui/button"
 import {
   Form,

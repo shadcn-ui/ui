@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { getColorFormat, type Color } from "@/lib/colors"
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useColors } from "@/hooks/use-colors"
 import {
   Select,

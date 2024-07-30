@@ -4,7 +4,7 @@ import * as React from "react"
 import { useTheme } from "next-themes"
 
 import { THEMES, Theme } from "@/lib/themes"
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { useThemesConfig } from "@/hooks/use-themes-config"
 import { Skeleton } from "@/registry/new-york/ui/skeleton"

@@ -4,7 +4,7 @@ import { Doc } from "contentlayer/generated"
 import { NavItem, NavItemWithChildren } from "types/nav"
 
 import { docsConfig } from "@/config/docs"
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { buttonVariants } from "@/registry/new-york/ui/button"
 
 interface DocsPagerProps {

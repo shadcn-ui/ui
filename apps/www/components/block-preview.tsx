@@ -3,7 +3,7 @@
 import * as React from "react"
 import { ImperativePanelHandle } from "react-resizable-panels"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useConfig } from "@/hooks/use-config"
 import { useLiftMode } from "@/hooks/use-lift-mode"
 import { BlockToolbar } from "@/components/block-toolbar"

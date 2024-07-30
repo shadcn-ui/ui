@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import Link from "next/link"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { Announcement } from "@/components/announcement"
 import { ExamplesNav } from "@/components/examples-nav"
 import {

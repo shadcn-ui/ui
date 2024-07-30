@@ -7,7 +7,7 @@ import { ViewVerticalIcon } from "@radix-ui/react-icons"
 
 import { docsConfig } from "@/config/docs"
 import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { Icons } from "@/components/icons"
 import { Button } from "@/registry/new-york/ui/button"
 import { ScrollArea } from "@/registry/new-york/ui/scroll-area"

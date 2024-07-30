@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { LucideIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { buttonVariants } from "@/registry/default/ui/button"
 import {
   Tooltip,

@@ -3,7 +3,7 @@
 import { forwardRef } from "react"
 import { Drawer as DrawerPrimitive } from "vaul"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 
 const DrawerTrigger = DrawerPrimitive.Trigger
 

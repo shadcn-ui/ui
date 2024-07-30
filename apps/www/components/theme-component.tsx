@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Index } from "@/__registry__"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useConfig } from "@/hooks/use-config"
 import { Icons } from "@/components/icons"
 

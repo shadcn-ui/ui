@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { Button } from "@/registry/new-york/ui/button"
 import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
 

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,

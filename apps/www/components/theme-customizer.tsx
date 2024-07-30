@@ -13,7 +13,7 @@ import template from "lodash.template"
 import { Paintbrush } from "lucide-react"
 import { useTheme } from "next-themes"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { ThemeWrapper } from "@/components/theme-wrapper"

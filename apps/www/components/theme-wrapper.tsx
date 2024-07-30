@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useConfig } from "@/hooks/use-config"
 
 interface ThemeWrapperProps extends React.ComponentProps<"div"> {

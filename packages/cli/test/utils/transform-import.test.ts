@@ -12,7 +12,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "@/registry/new-york/box"
 
-    import { cn } from "@/lib/utils"
+    import { cn } from "cinccino"
     `,
       config: {
         tsx: true,
@@ -59,7 +59,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "@/registry/new-york/box"
 
-    import { cn } from "@/lib/utils"
+    import { cn } from "cinccino"
     import { bar } from "@/lib/utils/bar"
     `,
       config: {
@@ -81,7 +81,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "@/registry/new-york/box"
 
-    import { cn } from "@/lib/utils"
+    import { cn } from "cinccino"
     import { bar } from "@/lib/utils/bar"
     `,
       config: {
@@ -104,7 +104,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "@/registry/new-york/box"
 
-    import { cn } from "@/lib/utils"
+    import { cn } from "cinccino"
     import { bar } from "@/lib/utils/bar"
     `,
       config: {

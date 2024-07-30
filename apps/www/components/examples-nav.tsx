@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 
 const examples = [

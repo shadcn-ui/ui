@@ -4,7 +4,7 @@ import * as React from "react"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { Event, trackEvent } from "@/lib/events"
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { Button, ButtonProps } from "@/registry/new-york/ui/button"
 import {
   Tooltip,

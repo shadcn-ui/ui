@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Collapsible,

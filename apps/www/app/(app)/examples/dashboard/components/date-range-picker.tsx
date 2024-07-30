@@ -5,7 +5,7 @@ import { CalendarIcon } from "@radix-ui/react-icons"
 import { addDays, format } from "date-fns"
 import { DateRange } from "react-day-picker"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { Button } from "@/registry/new-york/ui/button"
 import { Calendar } from "@/registry/new-york/ui/calendar"
 import {

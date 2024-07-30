@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { BlockCopyButton } from "@/components/block-copy-button"
 import { ChartCodeViewer } from "@/components/chart-code-viewer"
 import { Separator } from "@/registry/new-york/ui/separator"

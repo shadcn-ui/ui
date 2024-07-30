@@ -8,7 +8,7 @@ import { useMDXComponent } from "next-contentlayer2/hooks"
 import { NpmCommands } from "types/unist"
 
 import { Event } from "@/lib/events"
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useConfig } from "@/hooks/use-config"
 import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"

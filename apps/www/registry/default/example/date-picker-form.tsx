@@ -6,7 +6,7 @@ import { CalendarIcon } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { Button } from "@/registry/default/ui/button"
 import { Calendar } from "@/registry/default/ui/calendar"
 import {

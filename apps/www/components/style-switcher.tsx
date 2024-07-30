@@ -3,7 +3,7 @@
 import * as React from "react"
 import { type SelectTriggerProps } from "@radix-ui/react-select"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useConfig } from "@/hooks/use-config"
 import {
   Select,

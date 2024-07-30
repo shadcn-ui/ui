@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import Image from "next/image"
 
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 
 import { DemoCookieSettings } from "./components/cookie-settings"
 import { DemoCreateAccount } from "./components/create-account"

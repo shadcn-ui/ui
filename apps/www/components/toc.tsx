@@ -4,7 +4,7 @@
 import * as React from "react"
 
 import { TableOfContents } from "@/lib/toc"
-import { cn } from "@/lib/utils"
+import { cn } from "cinccino"
 import { useMounted } from "@/hooks/use-mounted"
 
 interface TocProps {
