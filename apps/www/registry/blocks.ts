@@ -2,6 +2,14 @@ import { Registry } from "@/registry/schema"
 
 export const blocks: Registry = [
   {
+    name: "charts-01",
+    type: "components:block",
+    registryDependencies: ["chart"],
+    files: ["block/charts-01.tsx"],
+    category: "Application",
+    subcategory: "Charts",
+  },
+  {
     name: "dashboard-05",
     type: "components:block",
     registryDependencies: [
@@ -65,18 +73,10 @@ export const blocks: Registry = [
     subcategory: "Dashboard",
   },
   {
-    name: "dashboard-01",
+    name: "dashboard-04",
     type: "components:block",
-    registryDependencies: ["button", "dropdown-menu", "input", "sheet"],
-    files: ["block/dashboard-01.tsx"],
-    category: "Application",
-    subcategory: "Dashboard",
-  },
-  {
-    name: "dashboard-02",
-    type: "components:block",
-    registryDependencies: ["badge", "button", "card", "dropdown-menu", "input"],
-    files: ["block/dashboard-02.tsx"],
+    registryDependencies: ["button", "card", "dropdown-menu", "input"],
+    files: ["block/dashboard-04.tsx"],
     category: "Application",
     subcategory: "Dashboard",
   },
@@ -98,10 +98,18 @@ export const blocks: Registry = [
     subcategory: "Dashboard",
   },
   {
-    name: "dashboard-04",
+    name: "dashboard-02",
     type: "components:block",
-    registryDependencies: ["button", "card", "dropdown-menu", "input"],
-    files: ["block/dashboard-04.tsx"],
+    registryDependencies: ["badge", "button", "card", "dropdown-menu", "input"],
+    files: ["block/dashboard-02.tsx"],
+    category: "Application",
+    subcategory: "Dashboard",
+  },
+  {
+    name: "dashboard-01",
+    type: "components:block",
+    registryDependencies: ["button", "dropdown-menu", "input", "sheet"],
+    files: ["block/dashboard-01.tsx"],
     category: "Application",
     subcategory: "Dashboard",
   },

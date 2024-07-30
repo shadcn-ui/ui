@@ -4,10 +4,12 @@ import { notFound } from "next/navigation"
 import { siteConfig } from "@/config/site"
 import { getAllBlockIds, getBlock } from "@/lib/blocks"
 import { absoluteUrl, cn } from "@/lib/utils"
+import { BlockChunk } from "@/components/block-chunk"
+import { BlockWrapper } from "@/components/block-wrapper"
+import { ThemesStyle } from "@/components/themes-styles"
 import { Style, styles } from "@/registry/styles"
 
 import "@/styles/mdx.css"
-import "public/registry/themes.css"
 
 export async function generateMetadata({
   params,
@@ -80,9 +82,32 @@ export default async function BlockPage({
 
   const Component = block.component
 
+  const chunks = block.chunks?.map((chunk) => ({ ...chunk }))
+  delete block.component
+  block.chunks?.map((chunk) => delete chunk.component)
+
   return (
-    <div className={cn(block.container?.className || "", "theme-zinc")}>
-      <Component />
-    </div>
+    <>
+      <ThemesStyle />
+      <div
+        className={cn(
+          "themes-wrapper bg-background",
+          block.container?.className
+        )}
+      >
+        <BlockWrapper block={block}>
+          <Component />
+          {chunks?.map((chunk, index) => (
+            <BlockChunk
+              key={chunk.name}
+              block={block}
+              chunk={block.chunks?.[index]}
+            >
+              <chunk.component />
+            </BlockChunk>
+          ))}
+        </BlockWrapper>
+      </div>
+    </>
   )
 }
