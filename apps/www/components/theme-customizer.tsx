@@ -636,11 +636,11 @@ const BASE_STYLES_WITH_VARIABLES = `
     --input: <%- colors.light["input"] %>;
     --ring: <%- colors.light["ring"] %>;
     --radius: <%- radius %>rem;
-    --chart-1: <%- colors.light["chart1"] %>;
-    --chart-2: <%- colors.light["chart2"] %>;
-    --chart-3: <%- colors.light["chart3"] %>;
-    --chart-4: <%- colors.light["chart4"] %>;
-    --chart-5: <%- colors.light["chart5"] %>;
+    --chart-1: <%- colors.light["chart-1"] %>;
+    --chart-2: <%- colors.light["chart-2"] %>;
+    --chart-3: <%- colors.light["chart-3"] %>;
+    --chart-4: <%- colors.light["chart-4"] %>;
+    --chart-5: <%- colors.light["chart-5"] %>;
   }
 
   .dark {
@@ -663,11 +663,11 @@ const BASE_STYLES_WITH_VARIABLES = `
     --border: <%- colors.dark["border"] %>;
     --input: <%- colors.dark["input"] %>;
     --ring: <%- colors.dark["ring"] %>;
-    --chart-1: <%- colors.dark["chart1"] %>;
-    --chart-2: <%- colors.dark["chart2"] %>;
-    --chart-3: <%- colors.dark["chart3"] %>;
-    --chart-4: <%- colors.dark["chart4"] %>;
-    --chart-5: <%- colors.dark["chart5"] %>;
+    --chart-1: <%- colors.dark["chart-1"] %>;
+    --chart-2: <%- colors.dark["chart-2"] %>;
+    --chart-3: <%- colors.dark["chart-3"] %>;
+    --chart-4: <%- colors.dark["chart-4"] %>;
+    --chart-5: <%- colors.dark["chart-5"] %>;
   }
 }
 `
