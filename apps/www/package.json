@@ -71,7 +71,7 @@
     "next-contentlayer2": "^0.4.6",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
-    "react-day-picker": "^9.0.1",
+    "react-day-picker": "^9.0.5",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.44.2",
     "react-resizable-panels": "^2.0.22",
