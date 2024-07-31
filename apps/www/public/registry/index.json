@@ -57,6 +57,16 @@
     "type": "components:ui"
   },
   {
+    "name": "breadcrumb",
+    "dependencies": [
+      "@radix-ui/react-slot"
+    ],
+    "files": [
+      "ui/breadcrumb.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "button",
     "dependencies": [
       "@radix-ui/react-slot"
@@ -69,7 +79,7 @@
   {
     "name": "calendar",
     "dependencies": [
-      "react-day-picker",
+      "react-day-picker@8.10.1",
       "date-fns"
     ],
     "registryDependencies": [
@@ -84,6 +94,33 @@
     "name": "card",
     "files": [
       "ui/card.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "carousel",
+    "dependencies": [
+      "embla-carousel-react"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      "ui/carousel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "chart",
+    "dependencies": [
+      "recharts",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "card"
+    ],
+    "files": [
+      "ui/chart.tsx"
     ],
     "type": "components:ui"
   },
@@ -141,6 +178,17 @@
     "type": "components:ui"
   },
   {
+    "name": "drawer",
+    "dependencies": [
+      "vaul",
+      "@radix-ui/react-dialog"
+    ],
+    "files": [
+      "ui/drawer.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "dropdown-menu",
     "dependencies": [
       "@radix-ui/react-dropdown-menu"
@@ -186,6 +234,16 @@
     "type": "components:ui"
   },
   {
+    "name": "input-otp",
+    "dependencies": [
+      "input-otp"
+    ],
+    "files": [
+      "ui/input-otp.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "label",
     "dependencies": [
       "@radix-ui/react-label"
@@ -216,6 +274,16 @@
     "type": "components:ui"
   },
   {
+    "name": "pagination",
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      "ui/pagination.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "popover",
     "dependencies": [
       "@radix-ui/react-popover"
@@ -242,6 +310,16 @@
     ],
     "files": [
       "ui/radio-group.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "resizable",
+    "dependencies": [
+      "react-resizable-panels"
+    ],
+    "files": [
+      "ui/resizable.tsx"
     ],
     "type": "components:ui"
   },
@@ -303,6 +381,17 @@
     "type": "components:ui"
   },
   {
+    "name": "sonner",
+    "dependencies": [
+      "sonner",
+      "next-themes"
+    ],
+    "files": [
+      "ui/sonner.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "switch",
     "dependencies": [
       "@radix-ui/react-switch"
@@ -355,6 +444,19 @@
     ],
     "files": [
       "ui/toggle.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "toggle-group",
+    "dependencies": [
+      "@radix-ui/react-toggle-group"
+    ],
+    "registryDependencies": [
+      "toggle"
+    ],
+    "files": [
+      "ui/toggle-group.tsx"
     ],
     "type": "components:ui"
   },

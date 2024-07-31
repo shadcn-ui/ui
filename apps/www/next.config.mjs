@@ -1,11 +1,20 @@
-import { createContentlayerPlugin } from "next-contentlayer"
+import { createContentlayerPlugin } from "next-contentlayer2"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["avatars.githubusercontent.com", "images.unsplash.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
   redirects() {
     return [
@@ -21,7 +30,7 @@ const nextConfig = {
       },
       {
         source: "/examples",
-        destination: "/examples/dashboard",
+        destination: "/examples/mail",
         permanent: false,
       },
       {

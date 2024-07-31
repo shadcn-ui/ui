@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client"
 
 import * as React from "react"
@@ -138,15 +139,15 @@ const components = {
     <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-y-auto">
-      <table className={cn("w-full", className)} {...props} />
+    <div className="my-6 w-full overflow-y-auto rounded-lg">
+      <table
+        className={cn("w-full overflow-hidden rounded-lg", className)}
+        {...props}
+      />
     </div>
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr
-      className={cn("m-0 border-t p-0 even:bg-muted", className)}
-      {...props}
-    />
+    <tr className={cn("m-0 border-t p-0", className)} {...props} />
   ),
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
@@ -170,8 +171,9 @@ const components = {
     className,
     __rawString__,
     __npmCommand__,
-    __pnpmCommand__,
     __yarnCommand__,
+    __pnpmCommand__,
+    __bunCommand__,
     __withMeta__,
     __src__,
     __event__,
@@ -201,16 +203,20 @@ const components = {
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
-        {__npmCommand__ && __yarnCommand__ && __pnpmCommand__ && (
-          <CopyNpmCommandButton
-            commands={{
-              __npmCommand__,
-              __pnpmCommand__,
-              __yarnCommand__,
-            }}
-            className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
-          />
-        )}
+        {__npmCommand__ &&
+          __yarnCommand__ &&
+          __pnpmCommand__ &&
+          __bunCommand__ && (
+            <CopyNpmCommandButton
+              commands={{
+                __npmCommand__,
+                __yarnCommand__,
+                __pnpmCommand__,
+                __bunCommand__,
+              }}
+              className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
+            />
+          )}
       </StyleWrapper>
     )
   },

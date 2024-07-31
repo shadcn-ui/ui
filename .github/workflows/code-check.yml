@@ -7,7 +7,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Lint
+    name: pnpm lint
     steps:
       - uses: actions/checkout@v3
         with:
@@ -16,13 +16,13 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.6.1
+          version: 9.0.6
           run_install: false
 
       - name: Get pnpm store directory
@@ -43,7 +43,7 @@ jobs:
 
   format:
     runs-on: ubuntu-latest
-    name: Format
+    name: pnpm format:check
     steps:
       - uses: actions/checkout@v3
         with:
@@ -52,13 +52,13 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.6.1
+          version: 9.0.6
           run_install: false
 
       - name: Get pnpm store directory
@@ -81,7 +81,7 @@ jobs:
 
   tsc:
     runs-on: ubuntu-latest
-    name: TypeScript
+    name: pnpm typecheck
     steps:
       - uses: actions/checkout@v3
         with:
@@ -90,13 +90,13 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.6.1
+          version: 9.0.6
           run_install: false
 
       - name: Get pnpm store directory
