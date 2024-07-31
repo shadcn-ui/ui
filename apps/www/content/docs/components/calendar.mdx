@@ -84,3 +84,58 @@ You can use the `<Calendar>` component to build a date picker. See the [Date Pic
 ### Form
 
 <ComponentPreview name="calendar-form" />
+
+
+## Changelog
+
+### 2024-08-01 `react-day-picker` v9 Support
+
+We upgraded the component to use `react-day-picker` [v9](https://daypicker.dev/upgrading)
+
+<Callout className="mt-6">
+  **Note:** You are not required to update your code if you want to stick with v8
+</Callout>
+
+<Steps>
+
+<Step>Update to the latest version of `react-day-picker`.</Step>
+
+```bash
+npm install react-day-picker@9
+```
+
+<Step>Update `calendar.tsx`</Step>
+
+```bash
+npx shadcn-ui@latest add calendar --overwrite
+```
+
+<Step>Update `initialFocus` prop `autoFocus`</Step>
+
+```diff showLineNumbers title="calendar-demo.tsx" {5-6}
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+- initialFocus
++ autoFocus
+/>
+```
+
+<Step>Update `fromDate` and `toDate` props `startMonth` and `endMonth`</Step>
+
+```diff showLineNumbers title="calendar-demo.tsx" {5-8}
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+- fromDate={new Date(2010, 11, 03)}
++ startMonth={new Date(2010, 11)}
+- toDate={new Date(2030, 5, 10)}
++ endMonth={new Date(2030, 5)}
+/>
+```
+
+Refer to the [DayPicker upgrade guide](https://daypicker.dev/upgrading) for more information.
+
+</Steps>
