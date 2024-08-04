@@ -57,18 +57,19 @@ export function BlockPreview({
             minSize={30}
           >
             {isLoading ? (
-              <div className="absolute inset-0 z-10 flex h-[--container-height] w-full items-center justify-center gap-2 text-sm text-muted-foreground">
+              <div className="absolute inset-0 z-10 flex h-[--container-height] w-full items-center justify-center gap-2 bg-background text-sm text-muted-foreground">
                 <Icons.spinner className="h-4 w-4 animate-spin" />
                 Loading...
               </div>
             ) : null}
             <iframe
               src={`/blocks/${block.style}/${block.name}`}
-              height={block.container?.height}
+              height={block.container?.height ?? 450}
               className="chunk-mode relative z-20 w-full bg-background"
               onLoad={() => {
                 setIsLoading(false)
               }}
+              allowTransparency
             />
           </ResizablePanel>
           <ResizableHandle

@@ -79,7 +79,7 @@
   {
     "name": "calendar",
     "dependencies": [
-      "react-day-picker",
+      "react-day-picker@8.10.1",
       "date-fns"
     ],
     "registryDependencies": [
@@ -107,6 +107,20 @@
     ],
     "files": [
       "ui/carousel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "chart",
+    "dependencies": [
+      "recharts",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "card"
+    ],
+    "files": [
+      "ui/chart.tsx"
     ],
     "type": "components:ui"
   },
