@@ -72,14 +72,14 @@ export default function ComboboxDemo() {
                   key={framework.value}
                   value={framework.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
-                    setOpen(false);
+                    setValue(currentValue === value ? "" : currentValue)
+                    setOpen(false)
                   }}
                 >
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === framework.value ? "opacity-100" : "opacity-0",
+                      value === framework.value ? "opacity-100" : "opacity-0"
                     )}
                   />
                   {framework.label}
