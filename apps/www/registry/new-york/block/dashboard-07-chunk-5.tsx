@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
