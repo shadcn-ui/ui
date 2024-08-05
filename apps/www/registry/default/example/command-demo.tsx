@@ -33,7 +33,7 @@ export default function CommandDemo() {
             <Smile className="mr-2 h-4 w-4" />
             <span>Search Emoji</span>
           </CommandItem>
-          <CommandItem>
+          <CommandItem disabled>
             <Calculator className="mr-2 h-4 w-4" />
             <span>Calculator</span>
           </CommandItem>
