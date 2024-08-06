@@ -147,7 +147,7 @@
   {
     "name": "command",
     "dependencies": [
-      "cmdk"
+      "cmdk@1.0.0"
     ],
     "registryDependencies": [
       "dialog"
