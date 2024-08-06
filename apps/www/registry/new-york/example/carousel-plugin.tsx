@@ -12,18 +12,16 @@ import {
 
 export default function CarouselPlugin() {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000,
+    Autoplay({
+      delay: 2000,
       stopOnInteraction: false,
       stopOnMouseEnter: true,
-      stopOnFocusIn: false
+      stopOnFocusIn: false,
     })
   )
 
   return (
-    <Carousel
-      plugins={[plugin.current]}
-      className="w-full max-w-xs"
-    >
+    <Carousel plugins={[plugin.current]} className="w-full max-w-xs">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>
