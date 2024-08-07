@@ -3,14 +3,14 @@ title: Calendar
 description: A date field component that allows users to enter and edit date.
 component: true
 links:
-  doc: https://react-day-picker.js.org
+  doc: https://daypicker.dev
 ---
 
 <ComponentPreview name="calendar-demo" />
 
 ## About
 
-The `Calendar` component is built on top of [React DayPicker](https://react-day-picker.js.org).
+The `Calendar` component is built on top of [React DayPicker](https://daypicker.dev).
 
 ## Installation
 
@@ -35,7 +35,7 @@ npx shadcn-ui@latest add calendar
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install react-day-picker date-fns
+npm install react-day-picker@^9.0
 ```
 
 <Step>Add the `Button` component to your project.</Step>
@@ -73,7 +73,7 @@ return (
 )
 ```
 
-See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
+See the [React DayPicker](https://daypicker.dev) documentation for more information.
 
 ## Date Picker
 
@@ -84,3 +84,58 @@ You can use the `<Calendar>` component to build a date picker. See the [Date Pic
 ### Form
 
 <ComponentPreview name="calendar-form" />
+
+
+## Changelog
+
+### 2024-08-01 `react-day-picker` v9 Support
+
+We upgraded the component to use `react-day-picker` [v9](https://daypicker.dev/upgrading)
+
+<Callout className="mt-6">
+  **Note:** You are not required to update your code if you want to stick with v8
+</Callout>
+
+<Steps>
+
+<Step>Update to the latest version of `react-day-picker`.</Step>
+
+```bash
+npm install react-day-picker@9
+```
+
+<Step>Update `calendar.tsx`</Step>
+
+```bash
+npx shadcn-ui@latest add calendar --overwrite
+```
+
+<Step>Update `initialFocus` prop `autoFocus`</Step>
+
+```diff showLineNumbers title="calendar-demo.tsx" {5-6}
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+- initialFocus
++ autoFocus
+/>
+```
+
+<Step>Update `fromDate` and `toDate` props `startMonth` and `endMonth`</Step>
+
+```diff showLineNumbers title="calendar-demo.tsx" {5-8}
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+- fromDate={new Date(2010, 11, 03)}
++ startMonth={new Date(2010, 11)}
+- toDate={new Date(2030, 5, 10)}
++ endMonth={new Date(2030, 5)}
+/>
+```
+
+Refer to the [DayPicker upgrade guide](https://daypicker.dev/upgrading) for more information.
+
+</Steps>
