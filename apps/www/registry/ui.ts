@@ -89,7 +89,7 @@ export const ui: Registry = [
   {
     name: "command",
     type: "components:ui",
-    dependencies: ["cmdk"],
+    dependencies: ["cmdk@1.0.0"],
     registryDependencies: ["dialog"],
     files: ["ui/command.tsx", "stories/command.stories.tsx"],
   },
