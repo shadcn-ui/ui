@@ -1,8 +1,9 @@
 import { MainNavItem, SidebarNavItem } from "types/nav"
 
-interface DocsConfig {
+export interface DocsConfig {
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
+  chartsNav: SidebarNavItem[]
 }
 
 export const docsConfig: DocsConfig = {
@@ -16,6 +17,14 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components/accordion",
     },
     {
+      title: "Blocks",
+      href: "/blocks",
+    },
+    {
+      title: "Charts",
+      href: "/charts",
+    },
+    {
       title: "Themes",
       href: "/themes",
     },
@@ -24,18 +33,8 @@ export const docsConfig: DocsConfig = {
       href: "/examples",
     },
     {
-      title: "Figma",
-      href: "/docs/figma",
-    },
-    {
-      title: "GitHub",
-      href: "https://github.com/shadcn/ui",
-      external: true,
-    },
-    {
-      title: "Twitter",
-      href: "https://twitter.com/shadcn",
-      external: true,
+      title: "Colors",
+      href: "/colors",
     },
   ],
   sidebarNav: [
@@ -123,6 +122,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Breadcrumb",
+          href: "/docs/components/breadcrumb",
+          items: [],
+        },
+        {
           title: "Button",
           href: "/docs/components/button",
           items: [],
@@ -141,7 +145,12 @@ export const docsConfig: DocsConfig = {
           title: "Carousel",
           href: "/docs/components/carousel",
           items: [],
+        },
+        {
+          title: "Chart",
+          href: "/docs/components/chart",
           label: "New",
+          items: [],
         },
         {
           title: "Checkbox",
@@ -187,7 +196,6 @@ export const docsConfig: DocsConfig = {
           title: "Drawer",
           href: "/docs/components/drawer",
           items: [],
-          label: "New",
         },
         {
           title: "Dropdown Menu",
@@ -210,6 +218,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Input OTP",
+          href: "/docs/components/input-otp",
+          items: [],
+        },
+        {
           title: "Label",
           href: "/docs/components/label",
           items: [],
@@ -228,7 +241,6 @@ export const docsConfig: DocsConfig = {
           title: "Pagination",
           href: "/docs/components/pagination",
           items: [],
-          label: "New",
         },
         {
           title: "Popover",
@@ -249,7 +261,6 @@ export const docsConfig: DocsConfig = {
           title: "Resizable",
           href: "/docs/components/resizable",
           items: [],
-          label: "New",
         },
         {
           title: "Scroll Area",
@@ -285,7 +296,6 @@ export const docsConfig: DocsConfig = {
           title: "Sonner",
           href: "/docs/components/sonner",
           items: [],
-          label: "New",
         },
         {
           title: "Switch",
@@ -325,6 +335,78 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
+          items: [],
+        },
+      ],
+    },
+  ],
+  chartsNav: [
+    {
+      title: "Getting Started",
+      items: [
+        {
+          title: "Introduction",
+          href: "/docs/charts",
+          items: [],
+        },
+        {
+          title: "Installation",
+          href: "/docs/charts/installation",
+          items: [],
+        },
+        {
+          title: "Theming",
+          href: "/docs/charts/theming",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Charts",
+      items: [
+        {
+          title: "Area Chart",
+          href: "/docs/charts/area",
+          items: [],
+        },
+        {
+          title: "Bar Chart",
+          href: "/docs/charts/bar",
+          items: [],
+        },
+        {
+          title: "Line Chart",
+          href: "/docs/charts/line",
+          items: [],
+        },
+        {
+          title: "Pie Chart",
+          href: "/docs/charts/pie",
+          items: [],
+        },
+        {
+          title: "Radar Chart",
+          href: "/docs/charts/radar",
+          items: [],
+        },
+        {
+          title: "Radial Chart",
+          href: "/docs/charts/radial",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Components",
+      items: [
+        {
+          title: "Tooltip",
+          href: "/docs/charts/tooltip",
+          items: [],
+        },
+        {
+          title: "Legend",
+          href: "/docs/charts/legend",
           items: [],
         },
       ],
