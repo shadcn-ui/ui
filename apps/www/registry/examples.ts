@@ -498,6 +498,12 @@ export const examples: Registry = [
     files: ["example/radio-group-demo.tsx"],
   },
   {
+    name: "radio-group-card-demo",
+    type: "components:example",
+    registryDependencies: ["radio-group"],
+    files: ["example/radio-group-card-demo.tsx"],
+  },
+  {
     name: "radio-group-form",
     type: "components:example",
     registryDependencies: ["radio-group", "form"],

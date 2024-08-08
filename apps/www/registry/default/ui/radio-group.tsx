@@ -41,4 +41,25 @@ const RadioGroupItem = React.forwardRef<
 })
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName
 
-export { RadioGroup, RadioGroupItem }
+const RadioGroupCard = React.forwardRef<
+  React.ElementRef<typeof RadioGroupPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <RadioGroupPrimitive.Item
+      ref={ref}
+      className={cn(
+        "rounded-lg border bg-card text-card-foreground shadow-sm data-[state=checked]:border-2 data-[state=checked]:border-ring data-[state=checked]:outline-none",
+        className
+      )}
+      {...props}
+      asChild={false}
+    >
+      {children}
+    </RadioGroupPrimitive.Item>
+  )
+})
+
+RadioGroupCard.displayName = "RadioGroupCards.Item"
+
+export { RadioGroup, RadioGroupItem, RadioGroupCard }

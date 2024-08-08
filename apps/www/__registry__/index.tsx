@@ -1413,6 +1413,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "radio-group-card-demo": {
+      name: "radio-group-card-demo",
+      type: "components:example",
+      registryDependencies: ["radio-group"],
+      component: React.lazy(() => import("@/registry/default/example/radio-group-card-demo")),
+      source: "",
+      files: ["registry/default/example/radio-group-card-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "radio-group-form": {
       name: "radio-group-form",
       type: "components:example",
@@ -4721,6 +4732,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/radio-group-demo")),
       source: "",
       files: ["registry/new-york/example/radio-group-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "radio-group-card-demo": {
+      name: "radio-group-card-demo",
+      type: "components:example",
+      registryDependencies: ["radio-group"],
+      component: React.lazy(() => import("@/registry/new-york/example/radio-group-card-demo")),
+      source: "",
+      files: ["registry/new-york/example/radio-group-card-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

@@ -54,8 +54,14 @@ npm install @radix-ui/react-radio-group
 
 ```tsx
 import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import {
+  RadioGroup,
+  RadioGroupCard,
+  RadioGroupItem,
+} from "@/components/ui/radio-group"
 ```
+
+### Radio
 
 ```tsx
 <RadioGroup defaultValue="option-one">
@@ -70,7 +76,26 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 </RadioGroup>
 ```
 
+### Card
+
+```tsx
+<RadioGroup defaultValue="option-one">
+  <RadioGroupCard value="option-one" id="option-one">
+    <Label htmlFor="option-one">Option One</Label>
+    <p>Description for option one</p>
+  </RadioGroupCard>
+  <RadioGroupCard value="option-two" id="option-two">
+    <Label htmlFor="option-one">Option Two</Label>
+    <p>Description for option two</p>
+  </RadioGroupCard>
+</RadioGroup>
+```
+
 ## Examples
+
+### Card
+
+<ComponentPreview name="radio-group-card-demo" />
 
 ### Form
 
