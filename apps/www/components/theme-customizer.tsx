@@ -57,11 +57,10 @@ export function ThemeCustomizer() {
   }, [])
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center gap-2">
       <Drawer>
         <DrawerTrigger asChild>
-          <Button variant="outline" className="md:hidden">
-            <Paintbrush className="mr-2 h-4 w-4" />
+          <Button size="sm" className="md:hidden">
             Customize
           </Button>
         </DrawerTrigger>
@@ -69,8 +68,19 @@ export function ThemeCustomizer() {
           <Customizer />
         </DrawerContent>
       </Drawer>
-      <div className="hidden md:flex">
-        <div className="mr-2 hidden items-center space-x-0.5 lg:flex">
+      <div className="hidden items-center md:flex">
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button size="sm">Customize</Button>
+          </PopoverTrigger>
+          <PopoverContent
+            align="start"
+            className="z-40 w-[340px] rounded-[12px] bg-white p-6 dark:bg-zinc-950"
+          >
+            <Customizer />
+          </PopoverContent>
+        </Popover>
+        <div className="ml-2 hidden items-center gap-0.5">
           {mounted ? (
             <>
               {["zinc", "rose", "blue", "green", "orange"].map((color) => {
@@ -92,7 +102,7 @@ export function ThemeCustomizer() {
                           })
                         }
                         className={cn(
-                          "flex h-9 w-9 items-center justify-center rounded-full border-2 text-xs",
+                          "flex h-8 w-8 items-center justify-center rounded-full border-2 text-xs",
                           isActive
                             ? "border-[--theme-primary]"
                             : "border-transparent"
@@ -109,7 +119,7 @@ export function ThemeCustomizer() {
                       >
                         <span
                           className={cn(
-                            "flex h-6 w-6 items-center justify-center rounded-full bg-[--theme-primary]"
+                            "flex h-5 w-5 items-center justify-center rounded-full bg-[--theme-primary]"
                           )}
                         >
                           {isActive && (
@@ -131,30 +141,16 @@ export function ThemeCustomizer() {
             </>
           ) : (
             <div className="mr-1 flex items-center gap-4">
-              <Skeleton className="h-6 w-6 rounded-full" />
-              <Skeleton className="h-6 w-6 rounded-full" />
-              <Skeleton className="h-6 w-6 rounded-full" />
-              <Skeleton className="h-6 w-6 rounded-full" />
-              <Skeleton className="h-6 w-6 rounded-full" />
+              <Skeleton className="h-5 w-5 rounded-full" />
+              <Skeleton className="h-5 w-5 rounded-full" />
+              <Skeleton className="h-5 w-5 rounded-full" />
+              <Skeleton className="h-5 w-5 rounded-full" />
+              <Skeleton className="h-5 w-5 rounded-full" />
             </div>
           )}
         </div>
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant="outline">
-              <Paintbrush className="mr-2 h-4 w-4" />
-              Customize
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent
-            align="center"
-            className="z-40 w-[340px] rounded-[0.5rem] bg-white p-6 dark:bg-zinc-950"
-          >
-            <Customizer />
-          </PopoverContent>
-        </Popover>
       </div>
-      <CopyCodeButton />
+      <CopyCodeButton variant="ghost" size="sm" className="[&_svg]:hidden" />
     </div>
   )
 }
@@ -363,7 +359,10 @@ function Customizer() {
   )
 }
 
-function CopyCodeButton() {
+function CopyCodeButton({
+  className,
+  ...props
+}: React.ComponentProps<typeof Button>) {
   const [config] = useConfig()
   const activeTheme = themes.find((theme) => theme.name === config.theme)
   const [hasCopied, setHasCopied] = React.useState(false)
@@ -388,19 +387,22 @@ function CopyCodeButton() {
             })
             setHasCopied(true)
           }}
-          className="md:hidden"
+          className={cn("md:hidden", className)}
+          {...props}
         >
           {hasCopied ? (
             <CheckIcon className="mr-2 h-4 w-4" />
           ) : (
             <CopyIcon className="mr-2 h-4 w-4" />
           )}
-          Copy
+          Copy code
         </Button>
       )}
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="hidden md:flex">Copy code</Button>
+          <Button className={cn("hidden md:flex", className)} {...props}>
+            Copy code
+          </Button>
         </DialogTrigger>
         <DialogContent className="max-w-2xl outline-none">
           <DialogHeader>
@@ -508,6 +510,21 @@ function CustomizerCode() {
             <span className="line text-white">
               &nbsp;&nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
             </span>
+            {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+              (prefix) => (
+                <>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                    {
+                      activeTheme?.cssVars.light[
+                        prefix as keyof typeof activeTheme.cssVars.light
+                      ]
+                    }
+                    ;
+                  </span>
+                </>
+              )
+            )}
             <span className="line text-white">&nbsp;&nbsp;&#125;</span>
             <span className="line text-white">&nbsp;</span>
             <span className="line text-white">&nbsp;&nbsp;.dark &#123;</span>
@@ -561,6 +578,21 @@ function CustomizerCode() {
               &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
               {activeTheme?.cssVars.dark["ring"]};
             </span>
+            {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+              (prefix) => (
+                <>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                    {
+                      activeTheme?.cssVars.dark[
+                        prefix as keyof typeof activeTheme.cssVars.dark
+                      ]
+                    }
+                    ;
+                  </span>
+                </>
+              )
+            )}
             <span className="line text-white">&nbsp;&nbsp;&#125;</span>
             <span className="line text-white">&#125;</span>
           </code>
@@ -604,6 +636,11 @@ const BASE_STYLES_WITH_VARIABLES = `
     --input: <%- colors.light["input"] %>;
     --ring: <%- colors.light["ring"] %>;
     --radius: <%- radius %>rem;
+    --chart-1: <%- colors.light["chart-1"] %>;
+    --chart-2: <%- colors.light["chart-2"] %>;
+    --chart-3: <%- colors.light["chart-3"] %>;
+    --chart-4: <%- colors.light["chart-4"] %>;
+    --chart-5: <%- colors.light["chart-5"] %>;
   }
 
   .dark {
@@ -626,6 +663,11 @@ const BASE_STYLES_WITH_VARIABLES = `
     --border: <%- colors.dark["border"] %>;
     --input: <%- colors.dark["input"] %>;
     --ring: <%- colors.dark["ring"] %>;
+    --chart-1: <%- colors.dark["chart-1"] %>;
+    --chart-2: <%- colors.dark["chart-2"] %>;
+    --chart-3: <%- colors.dark["chart-3"] %>;
+    --chart-4: <%- colors.dark["chart-4"] %>;
+    --chart-5: <%- colors.dark["chart-5"] %>;
   }
 }
 `
