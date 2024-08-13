@@ -34,32 +34,6 @@ const PROJECT_SHARED_IGNORE = [
   "build",
 ]
 
-export async function getProjectInfo() {
-  const info = {
-    tsconfig: null,
-    srcDir: false,
-    appDir: false,
-    srcComponentsUiDir: false,
-    componentsUiDir: false,
-  }
-
-  try {
-    const tsconfig = await getTsConfig()
-
-    return {
-      tsconfig,
-      srcDir: existsSync(path.resolve("./src")),
-      appDir:
-        existsSync(path.resolve("./app")) ||
-        existsSync(path.resolve("./src/app")),
-      srcComponentsUiDir: existsSync(path.resolve("./src/components/ui")),
-      componentsUiDir: existsSync(path.resolve("./components/ui")),
-    }
-  } catch (error) {
-    return info
-  }
-}
-
 export async function getTsConfig() {
   try {
     const tsconfigPath = path.join("tsconfig.json")
