@@ -1,15 +1,15 @@
 import path from "path"
+import { getHighlighter, loadTheme } from "@shikijs/compat"
 import {
   defineDocumentType,
   defineNestedType,
   makeSource,
-} from "contentlayer/source-files"
+} from "contentlayer2/source-files"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import { codeImport } from "remark-code-import"
 import remarkGfm from "remark-gfm"
-import { getHighlighter, loadTheme } from "shiki"
 import { visit } from "unist-util-visit"
 
 import { rehypeComponent } from "./lib/rehype-component"
@@ -116,7 +116,7 @@ export default makeSource({
         {
           getHighlighter: async () => {
             const theme = await loadTheme(
-              path.join(process.cwd(), "/lib/themes/dark.json")
+              path.join(process.cwd(), "/lib/highlighter-theme.json")
             )
             return await getHighlighter({ theme })
           },
