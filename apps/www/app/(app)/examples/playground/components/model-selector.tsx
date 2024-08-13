@@ -135,21 +135,24 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
   const ref = React.useRef<HTMLDivElement>(null)
 
   useMutationObserver(ref, (mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.type === "attributes") {
-        if (mutation.attributeName === "aria-selected") {
-          onPeek(model)
-        }
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "aria-selected" &&
+        ref.current?.getAttribute("aria-selected") === "true"
+      ) {
+        onPeek(model);
       }
-    }
-  })
+    });
+  });
+  
 
   return (
     <CommandItem
       key={model.id}
       onSelect={onSelect}
       ref={ref}
-      className="aria-selected:bg-primary aria-selected:text-primary-foreground"
+      className="data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground"
     >
       {model.name}
       <CheckIcon

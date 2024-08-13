@@ -33,7 +33,7 @@ export default function CommandDemo() {
             <FaceIcon className="mr-2 h-4 w-4" />
             <span>Search Emoji</span>
           </CommandItem>
-          <CommandItem>
+          <CommandItem disabled>
             <RocketIcon className="mr-2 h-4 w-4" />
             <span>Launch</span>
           </CommandItem>

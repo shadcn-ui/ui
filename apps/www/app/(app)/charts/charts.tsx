@@ -64,3 +64,13 @@ export { default as ChartRadialGrid } from "@/registry/new-york/block/chart-radi
 export { default as ChartRadialText } from "@/registry/new-york/block/chart-radial-text"
 export { default as ChartRadialShape } from "@/registry/new-york/block/chart-radial-shape"
 export { default as ChartRadialStacked } from "@/registry/new-york/block/chart-radial-stacked"
+
+export { default as ChartTooltipDefault } from "@/registry/new-york/block/chart-tooltip-default"
+export { default as ChartTooltipIndicatorLine } from "@/registry/new-york/block/chart-tooltip-indicator-line"
+export { default as ChartTooltipIndicatorNone } from "@/registry/new-york/block/chart-tooltip-indicator-none"
+export { default as ChartTooltipLabelCustom } from "@/registry/new-york/block/chart-tooltip-label-custom"
+export { default as ChartTooltipLabelFormatter } from "@/registry/new-york/block/chart-tooltip-label-formatter"
+export { default as ChartTooltipLabelNone } from "@/registry/new-york/block/chart-tooltip-label-none"
+export { default as ChartTooltipFormatter } from "@/registry/new-york/block/chart-tooltip-formatter"
+export { default as ChartTooltipIcons } from "@/registry/new-york/block/chart-tooltip-icons"
+export { default as ChartTooltipAdvanced } from "@/registry/new-york/block/chart-tooltip-advanced"
