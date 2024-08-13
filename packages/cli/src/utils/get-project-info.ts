@@ -14,12 +14,17 @@ import { loadConfig } from "tsconfig-paths"
 // We'll start with Next.js for now.
 const PROJECT_TYPES = [
   "next-app",
-  "next-app-src",
   "next-pages",
-  "next-pages-src",
+  "remix",
+  "astro",
+  "vite",
 ] as const
 
-type ProjectType = (typeof PROJECT_TYPES)[number]
+type ProjectType = {
+  framework: (typeof PROJECT_TYPES)[number]
+  isUsingSrcDir: boolean
+  isTypescript: boolean
+}
 
 const PROJECT_SHARED_IGNORE = [
   "**/node_modules/**",
@@ -89,7 +94,7 @@ export async function getProjectConfig(cwd: string): Promise<Config | null> {
 
   const config: RawConfig = {
     $schema: "https://ui.shadcn.com/schema.json",
-    rsc: ["next-app", "next-app-src"].includes(projectType),
+    rsc: ["next-app", "next-app-src"].includes(projectType.framework),
     tsx: isTsx,
     style: "new-york",
     tailwind: {
@@ -109,27 +114,53 @@ export async function getProjectConfig(cwd: string): Promise<Config | null> {
 }
 
 export async function getProjectType(cwd: string): Promise<ProjectType | null> {
-  const files = await fg.glob("**/*", {
-    cwd,
-    deep: 3,
-    ignore: PROJECT_SHARED_IGNORE,
-  })
-
-  const isNextProject = files.find((file) => file.startsWith("next.config."))
-  if (!isNextProject) {
-    return null
-  }
-
-  const isUsingSrcDir = await fs.pathExists(path.resolve(cwd, "src"))
+  const [configFiles, isUsingSrcDir, isTypescript] = await Promise.all([
+    fg.glob("**/{next,vite,astro}.config.*", {
+      cwd,
+      deep: 3,
+      ignore: PROJECT_SHARED_IGNORE,
+    }),
+    fs.pathExists(path.resolve(cwd, "src")),
+    isTypeScriptProject(cwd),
+  ])
   const isUsingAppDir = await fs.pathExists(
     path.resolve(cwd, `${isUsingSrcDir ? "src/" : ""}app`)
   )
 
-  if (isUsingAppDir) {
-    return isUsingSrcDir ? "next-app-src" : "next-app"
+  if (!configFiles.length) {
+    return null
   }
 
-  return isUsingSrcDir ? "next-pages-src" : "next-pages"
+  const type: ProjectType = {
+    framework: "next-app",
+    isUsingSrcDir,
+    isTypescript,
+  }
+
+  // Next.js.
+  if (configFiles.find((file) => file.startsWith("next.config."))?.length) {
+    type.framework = isUsingAppDir ? "next-app" : "next-pages"
+    return type
+  }
+
+  // Astro.
+  if (configFiles.find((file) => file.startsWith("astro.config."))?.length) {
+    type.framework = "astro"
+    type.isTypescript = true
+    return type
+  }
+
+  // Vite and Remix.
+  // They both have a vite.config.* file.
+  if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
+    // We'll assume that if the project has an app dir, it's a Remix project.
+    // Otherwise, it's a Vite project.
+    // TODO: Maybe check for `@remix-run/react` in package.json?
+    type.framework = isUsingAppDir ? "remix" : "vite"
+    return type
+  }
+
+  return null
 }
 
 export async function getTailwindCssFile(cwd: string) {

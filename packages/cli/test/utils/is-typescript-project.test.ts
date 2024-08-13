@@ -31,7 +31,9 @@ describe("is TypeScript project", async () => {
     },
   ])(`isTypeScriptProject($name) -> $result`, async ({ name, result }) => {
     expect(
-      await isTypeScriptProject(path.resolve(__dirname, `../fixtures/${name}`))
+      await isTypeScriptProject(
+        path.resolve(__dirname, `../fixtures/frameworks/${name}`)
+      )
     ).toBe(result)
   })
 })

@@ -27,7 +27,9 @@ describe("get tailwind css file", async () => {
     },
   ])(`getTailwindCssFile($name) -> $file`, async ({ name, file }) => {
     expect(
-      await getTailwindCssFile(path.resolve(__dirname, `../fixtures/${name}`))
+      await getTailwindCssFile(
+        path.resolve(__dirname, `../fixtures/frameworks/${name}`)
+      )
     ).toBe(file)
   })
 })

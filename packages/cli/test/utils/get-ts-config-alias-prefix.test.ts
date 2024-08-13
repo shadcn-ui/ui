@@ -28,7 +28,7 @@ describe("get ts config alias prefix", async () => {
   ])(`getTsConfigAliasPrefix($name) -> $prefix`, async ({ name, prefix }) => {
     expect(
       await getTsConfigAliasPrefix(
-        path.resolve(__dirname, `../fixtures/${name}`)
+        path.resolve(__dirname, `../fixtures/frameworks/${name}`)
       )
     ).toBe(prefix)
   })
