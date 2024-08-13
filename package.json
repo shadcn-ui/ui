@@ -63,7 +63,7 @@
     "tsx": "^4.1.4",
     "turbo": "^1.9.9",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.31.1"
+    "vitest": "^2.0.5"
   },
   "devDependencies": {
     "@types/node": "^20.11.27",
