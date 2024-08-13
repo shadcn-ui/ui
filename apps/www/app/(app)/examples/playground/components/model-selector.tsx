@@ -141,11 +141,10 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
         mutation.attributeName === "aria-selected" &&
         ref.current?.getAttribute("aria-selected") === "true"
       ) {
-        onPeek(model);
+        onPeek(model)
       }
-    });
-  });
-  
+    })
+  })
 
   return (
     <CommandItem

@@ -131,6 +131,8 @@ export default function Component() {
   const [activeChart, setActiveChart] =
     React.useState<keyof typeof chartConfig>("desktop")
 
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
+
   const total = React.useMemo(
     () => ({
       desktop: chartData.reduce((acc, curr) => acc + curr.desktop, 0),
@@ -167,6 +169,13 @@ export default function Component() {
               </button>
             )
           })}
+          {/* Button to toggle drawer */}
+          <button
+            className="ml-4 text-gray-600 hover:text-gray-900"
+            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+          >
+            View Code
+          </button>
         </div>
       </CardHeader>
       <CardContent className="px-2 sm:p-6">
@@ -216,6 +225,22 @@ export default function Component() {
           </BarChart>
         </ChartContainer>
       </CardContent>
+
+      {/* Drawer Implementation */}
+      {isDrawerOpen && (
+        <div className="fixed right-0 top-0 w-[400px] h-full bg-white shadow-lg z-50">
+          <div className="flex justify-between items-center p-4 border-b">
+            <h2 className="text-xl">Code</h2>
+            <button
+              className="text-gray-600 hover:text-gray-900"
+              onClick={() => setIsDrawerOpen(false)}
+            >
+              X
+            </button>
+          </div>
+          <div className="p-4">{/* Your code content goes here */}</div>
+        </div>
+      )}
     </Card>
   )
 }
