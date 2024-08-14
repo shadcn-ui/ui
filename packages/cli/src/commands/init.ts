@@ -125,7 +125,7 @@ export async function promptForConfig(
     {
       type: "select",
       name: "tailwindBaseColor",
-      message: `Which color would you like to use as ${highlight(
+      message: `Which color would you like to use as the ${highlight(
         "base color"
       )}?`,
       choices: baseColors.map((color) => ({
@@ -144,7 +144,7 @@ export async function promptForConfig(
       name: "tailwindCssVariables",
       message: `Would you like to use ${highlight(
         "CSS variables"
-      )} for colors?`,
+      )} for theming?`,
       initial: defaultConfig?.tailwind.cssVariables ?? true,
       active: "yes",
       inactive: "no",
@@ -258,7 +258,7 @@ export async function promptForMinimalConfig(
       {
         type: "select",
         name: "tailwindBaseColor",
-        message: `Which color would you like to use as ${highlight(
+        message: `Which color would you like to use as the ${highlight(
           "base color"
         )}?`,
         choices: baseColors.map((color) => ({
@@ -271,7 +271,7 @@ export async function promptForMinimalConfig(
         name: "tailwindCssVariables",
         message: `Would you like to use ${highlight(
           "CSS variables"
-        )} for colors?`,
+        )} for theming?`,
         initial: defaultConfig?.tailwind.cssVariables,
         active: "yes",
         inactive: "no",
