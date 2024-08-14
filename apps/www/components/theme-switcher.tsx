@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { useSelectedLayoutSegment } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 import { useConfig } from "@/hooks/use-config"
 
 export function ThemeSwitcher() {
   const [config] = useConfig()
-  const segment = useSelectedLayoutSegment()
+  const segment = usePathname()
 
   React.useEffect(() => {
     document.body.classList.forEach((className) => {
@@ -16,7 +16,7 @@ export function ThemeSwitcher() {
       }
     })
 
-    const theme = segment === "themes" ? config.theme : null
+    const theme = segment === "/themes" ? config.theme : null
     if (theme) {
       return document.body.classList.add(`theme-${theme}`)
     }
