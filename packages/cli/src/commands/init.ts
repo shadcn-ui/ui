@@ -1,5 +1,6 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
+import * as ERRORS from "@/src/utils/errors"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -11,9 +12,10 @@ import {
   type Config,
 } from "@/src/utils/get-config"
 import { getPackageManager } from "@/src/utils/get-package-manager"
-import { getProjectConfig, preFlight } from "@/src/utils/get-project-info"
+import { getProjectConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
+import { preFlight } from "@/src/utils/preflight"
 import {
   getRegistryBaseColor,
   getRegistryBaseColors,
@@ -57,29 +59,65 @@ export const init = new Command()
     try {
       const options = initOptionsSchema.parse(opts)
       const cwd = path.resolve(options.cwd)
+      const preflightResult = await preFlight(cwd)
 
-      // Ensure target directory exists.
-      if (!existsSync(cwd)) {
-        logger.error(`The path ${cwd} does not exist. Please try again.`)
+      if (preflightResult.error === ERRORS.MISSING_DIR) {
+        logger.error(
+          `The path ${cwd} does not exist. Make sure it exists and try again.`
+        )
+        logger.error("")
         process.exit(1)
       }
 
-      preFlight(cwd)
+      if (preflightResult.error === ERRORS.EXISTING_CONFIG) {
+        logger.error(`The path ${cwd} already contains a components.json file.`)
+        logger.error(
+          "To start over, remove the components.json file and try again."
+        )
+        logger.error("")
+        process.exit(1)
+      }
+
+      if (preflightResult.error === ERRORS.TAILWIND_NOT_CONFIGURED) {
+        const framework =
+          preflightResult.info?.framework &&
+          ["next-app", "next-pages"].includes(preflightResult.info?.framework)
+            ? "nextjs"
+            : preflightResult.info?.framework
+        const tailwindInstallationUrl = framework
+          ? `https://tailwindcss.com/docs/guides/${framework}`
+          : "https://tailwindcss.com/docs/installation/framework-guides"
+
+        logger.error(
+          "Tailwind CSS is not configured. Install Tailwind CSS then run init again.\n" +
+            `Visit ${tailwindInstallationUrl} to get started.\n`
+        )
+        process.exit(1)
+      }
+
+      if (preflightResult.error === ERRORS.IMPORT_ALIAS_MISSING) {
+        const framework =
+          preflightResult.info?.framework &&
+          ["next-app", "next-pages"].includes(preflightResult.info?.framework)
+            ? "next"
+            : preflightResult.info?.framework
+        logger.error(
+          `No import alias found in your tsconfig.json file. \nVisit ${chalk.cyan(
+            `https://ui.shadcn.com/docs/installation/${framework}`
+          )} to learn how to set an import alias.`
+        )
+        logger.error("")
+        process.exit(1)
+      }
 
       const projectConfig = await getProjectConfig(cwd)
-      if (projectConfig) {
-        const config = await promptForMinimalConfig(
-          cwd,
-          projectConfig,
-          opts.defaults
-        )
-        await runInit(cwd, config)
-      } else {
-        // Read config.
-        const existingConfig = await getConfig(cwd)
-        const config = await promptForConfig(cwd, existingConfig, options.yes)
-        await runInit(cwd, config)
-      }
+      const config = projectConfig
+        ? // If we can determine the project config, prompt for minimal config.
+          await promptForMinimalConfig(cwd, projectConfig, opts.defaults)
+        : // Otherwise, prompt for full config.
+          await promptForConfig(cwd, await getConfig(cwd), options.yes)
+
+      await runInit(cwd, config)
 
       logger.info("")
       logger.info(
@@ -100,8 +138,10 @@ export async function promptForConfig(
 ) {
   const highlight = (text: string) => chalk.cyan(text)
 
-  const styles = await getRegistryStyles()
-  const baseColors = await getRegistryBaseColors()
+  const [styles, baseColors] = await Promise.all([
+    getRegistryStyles(),
+    getRegistryBaseColors(),
+  ])
 
   const options = await prompts([
     {
@@ -240,8 +280,10 @@ export async function promptForMinimalConfig(
   let cssVariables = defaultConfig.tailwind.cssVariables
 
   if (!defaults) {
-    const styles = await getRegistryStyles()
-    const baseColors = await getRegistryBaseColors()
+    const [styles, baseColors] = await Promise.all([
+      getRegistryStyles(),
+      getRegistryBaseColors(),
+    ])
 
     const options = await prompts([
       {
@@ -252,6 +294,7 @@ export async function promptForMinimalConfig(
           title: style.label,
           value: style.name,
         })),
+        initial: styles.findIndex((s) => s.name === style),
       },
       {
         type: "select",

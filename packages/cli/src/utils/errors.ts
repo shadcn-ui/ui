@@ -1,0 +1,5 @@
+export const MISSING_DIR = "0"
+export const EXISTING_CONFIG = "1"
+export const EMPTY_PROJECT = "2"
+export const TAILWIND_NOT_CONFIGURED = "3"
+export const IMPORT_ALIAS_MISSING = "4"

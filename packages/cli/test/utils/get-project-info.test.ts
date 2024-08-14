@@ -1,9 +1,9 @@
 import path from "path"
 import { describe, expect, test } from "vitest"
 
-import { getProjectType } from "../../src/utils/get-project-info"
+import { getProjectInfo } from "../../src/utils/get-project-info"
 
-describe("get project type", async () => {
+describe("get project info", async () => {
   test.each([
     {
       name: "next-app",
@@ -11,6 +11,9 @@ describe("get project type", async () => {
         framework: "next-app",
         isUsingSrcDir: false,
         isTypescript: true,
+        tailwindConfigFile: "tailwind.config.ts",
+        tailwindCssFile: "app/globals.css",
+        tsConfigAliasPrefix: "@",
       },
     },
     {
@@ -19,6 +22,9 @@ describe("get project type", async () => {
         framework: "next-app",
         isUsingSrcDir: true,
         isTypescript: true,
+        tailwindConfigFile: "tailwind.config.ts",
+        tailwindCssFile: "src/app/styles.css",
+        tsConfigAliasPrefix: "#",
       },
     },
     {
@@ -27,6 +33,9 @@ describe("get project type", async () => {
         framework: "next-pages",
         isUsingSrcDir: false,
         isTypescript: true,
+        tailwindConfigFile: "tailwind.config.ts",
+        tailwindCssFile: "styles/globals.css",
+        tsConfigAliasPrefix: "~",
       },
     },
     {
@@ -35,14 +44,9 @@ describe("get project type", async () => {
         framework: "next-pages",
         isUsingSrcDir: true,
         isTypescript: true,
-      },
-    },
-    {
-      name: "t3-pages",
-      type: {
-        framework: "next-pages",
-        isUsingSrcDir: true,
-        isTypescript: true,
+        tailwindConfigFile: "tailwind.config.ts",
+        tailwindCssFile: "src/styles/globals.css",
+        tsConfigAliasPrefix: "@",
       },
     },
     {
@@ -51,22 +55,20 @@ describe("get project type", async () => {
         framework: "next-app",
         isUsingSrcDir: true,
         isTypescript: true,
+        tailwindConfigFile: "tailwind.config.ts",
+        tailwindCssFile: "src/styles/globals.css",
+        tsConfigAliasPrefix: "~",
       },
     },
     {
-      name: "astro",
+      name: "t3-pages",
       type: {
-        framework: "astro",
+        framework: "next-pages",
         isUsingSrcDir: true,
         isTypescript: true,
-      },
-    },
-    {
-      name: "vite",
-      type: {
-        framework: "vite",
-        isUsingSrcDir: true,
-        isTypescript: false,
+        tailwindConfigFile: "tailwind.config.ts",
+        tailwindCssFile: "src/styles/globals.css",
+        tsConfigAliasPrefix: "~",
       },
     },
     {
@@ -75,11 +77,25 @@ describe("get project type", async () => {
         framework: "remix",
         isUsingSrcDir: false,
         isTypescript: true,
+        tailwindConfigFile: "tailwind.config.ts",
+        tailwindCssFile: "app/tailwind.css",
+        tsConfigAliasPrefix: "~",
+      },
+    },
+    {
+      name: "vite",
+      type: {
+        framework: "vite",
+        isUsingSrcDir: true,
+        isTypescript: true,
+        tailwindConfigFile: "tailwind.config.js",
+        tailwindCssFile: "src/index.css",
+        tsConfigAliasPrefix: null,
       },
     },
   ])(`getProjectType($name) -> $type`, async ({ name, type }) => {
     expect(
-      await getProjectType(
+      await getProjectInfo(
         path.resolve(__dirname, `../fixtures/frameworks/${name}`)
       )
     ).toStrictEqual(type)

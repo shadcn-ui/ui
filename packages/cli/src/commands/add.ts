@@ -57,11 +57,12 @@ export const add = new Command()
 
       const config = await getConfig(cwd)
       if (!config) {
-        logger.warn(
+        logger.error(
           `Configuration is missing. Please run ${chalk.green(
             `init`
           )} to create a components.json file.`
         )
+        logger.error("")
         process.exit(1)
       }
 
