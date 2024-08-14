@@ -1,4 +1,5 @@
 import path from "path"
+import { FRAMEWORKS, Framework } from "@/src/utils/frameworks"
 import {
   Config,
   RawConfig,
@@ -6,18 +7,11 @@ import {
   resolveConfigPaths,
 } from "@/src/utils/get-config"
 import fg from "fast-glob"
-import fs, { pathExists } from "fs-extra"
+import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
 
-const SUPPORTED_FRAMEWORKS = [
-  "next-app",
-  "next-pages",
-  "remix",
-  "vite",
-] as const
-
 type ProjectInfo = {
-  framework: (typeof SUPPORTED_FRAMEWORKS)[number]
+  framework: Framework
   isSrcDir: boolean
   isRSC: boolean
   isTsx: boolean
@@ -43,7 +37,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindCssFile,
     aliasPrefix,
   ] = await Promise.all([
-    fg.glob("**/{next,vite,astro}.config.*", {
+    fg.glob("**/{next,vite,astro}.config.*|gatsby-config.*|composer.json", {
       cwd,
       deep: 3,
       ignore: PROJECT_SHARED_IGNORE,
@@ -59,12 +53,8 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     path.resolve(cwd, `${isSrcDir ? "src/" : ""}app`)
   )
 
-  if (!configFiles.length) {
-    return null
-  }
-
   const type: ProjectInfo = {
-    framework: "next-app",
+    framework: FRAMEWORKS["manual"],
     isSrcDir,
     isRSC: false,
     isTsx,
@@ -73,9 +63,15 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     aliasPrefix,
   }
 
+  if (!configFiles.length) {
+    return type
+  }
+
   // Next.js.
   if (configFiles.find((file) => file.startsWith("next.config."))?.length) {
-    type.framework = isUsingAppDir ? "next-app" : "next-pages"
+    type.framework = isUsingAppDir
+      ? FRAMEWORKS["next-app"]
+      : FRAMEWORKS["next-pages"]
     type.isRSC = isUsingAppDir
     return type
   }
@@ -86,11 +82,29 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     // We'll assume that if the project has an app dir, it's a Remix project.
     // Otherwise, it's a Vite project.
     // TODO: Maybe check for `@remix-run/react` in package.json?
-    type.framework = isUsingAppDir ? "remix" : "vite"
+    type.framework = isUsingAppDir ? FRAMEWORKS["remix"] : FRAMEWORKS["vite"]
     return type
   }
 
-  return null
+  // Astro.
+  if (configFiles.find((file) => file.startsWith("astro.config."))?.length) {
+    type.framework = FRAMEWORKS["astro"]
+    return type
+  }
+
+  // Gatsby.
+  if (configFiles.find((file) => file.startsWith("gatsby-config."))?.length) {
+    type.framework = FRAMEWORKS["gatsby"]
+    return type
+  }
+
+  // Laravel.
+  if (configFiles.find((file) => file.startsWith("composer.json"))?.length) {
+    type.framework = FRAMEWORKS["laravel"]
+    return type
+  }
+
+  return type
 }
 
 export async function getTailwindCssFile(cwd: string) {

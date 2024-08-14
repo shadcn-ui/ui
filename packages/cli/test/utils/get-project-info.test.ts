@@ -1,6 +1,7 @@
 import path from "path"
 import { describe, expect, test } from "vitest"
 
+import { FRAMEWORKS } from "../../src/utils/frameworks"
 import { getProjectInfo } from "../../src/utils/get-project-info"
 
 describe("get project info", async () => {
@@ -8,7 +9,7 @@ describe("get project info", async () => {
     {
       name: "next-app",
       type: {
-        framework: "next-app",
+        framework: FRAMEWORKS["next-app"],
         isSrcDir: false,
         isRSC: true,
         isTsx: true,
@@ -20,7 +21,7 @@ describe("get project info", async () => {
     {
       name: "next-app-src",
       type: {
-        framework: "next-app",
+        framework: FRAMEWORKS["next-app"],
         isSrcDir: true,
         isRSC: true,
         isTsx: true,
@@ -32,7 +33,7 @@ describe("get project info", async () => {
     {
       name: "next-pages",
       type: {
-        framework: "next-pages",
+        framework: FRAMEWORKS["next-pages"],
         isSrcDir: false,
         isRSC: false,
         isTsx: true,
@@ -44,7 +45,7 @@ describe("get project info", async () => {
     {
       name: "next-pages-src",
       type: {
-        framework: "next-pages",
+        framework: FRAMEWORKS["next-pages"],
         isSrcDir: true,
         isRSC: false,
         isTsx: true,
@@ -56,7 +57,7 @@ describe("get project info", async () => {
     {
       name: "t3-app",
       type: {
-        framework: "next-app",
+        framework: FRAMEWORKS["next-app"],
         isSrcDir: true,
         isRSC: true,
         isTsx: true,
@@ -68,7 +69,7 @@ describe("get project info", async () => {
     {
       name: "t3-pages",
       type: {
-        framework: "next-pages",
+        framework: FRAMEWORKS["next-pages"],
         isSrcDir: true,
         isRSC: false,
         isTsx: true,
@@ -80,7 +81,7 @@ describe("get project info", async () => {
     {
       name: "remix",
       type: {
-        framework: "remix",
+        framework: FRAMEWORKS["remix"],
         isSrcDir: false,
         isRSC: false,
         isTsx: true,
@@ -92,7 +93,7 @@ describe("get project info", async () => {
     {
       name: "vite",
       type: {
-        framework: "vite",
+        framework: FRAMEWORKS["vite"],
         isSrcDir: true,
         isRSC: false,
         isTsx: true,

@@ -11,7 +11,7 @@ export async function preFlight(cwd: string) {
 
   // Ensure target directory exists.
   // Check for empty project. We assume if no package.json exists, the project is empty.
-  const projectSpinner = ora(`Running preflight checks...`).start()
+  const projectSpinner = ora(`Running preflight checks.`).start()
   if (
     !fs.existsSync(cwd) ||
     !fs.existsSync(path.resolve(cwd, "package.json"))
@@ -34,9 +34,11 @@ export async function preFlight(cwd: string) {
 
     if (errors[ERRORS.EXISTING_CONFIG]) {
       logger.error(
-        `A components.json file already exists at ${chalk.cyan(
+        `A ${chalk.cyan("components.json")} file already exists at ${chalk.cyan(
           cwd
-        )}.\nTo start over, remove the components.json file and try again.`
+        )}.\nTo start over, remove the ${chalk.cyan(
+          "components.json"
+        )} file and run ${chalk.cyan("init")} again.`
       )
     }
 
@@ -44,70 +46,59 @@ export async function preFlight(cwd: string) {
     process.exit(1)
   }
 
-  projectSpinner?.succeed("Running preflight checks.")
+  projectSpinner?.succeed()
 
   const projectInfo = await getProjectInfo(cwd)
 
-  const frameworkSpinner = ora(`Checking for framework...`).start()
-  if (!projectInfo?.framework) {
+  const frameworkSpinner = ora(`Verifying framework.`).start()
+  if (projectInfo?.framework.name === "manual") {
     errors[ERRORS.UNSUPPORTED_FRAMEWORK] = true
     frameworkSpinner?.fail()
     logger.info("")
     logger.error(
-      `We couldn't detect a supported framework at ${chalk.cyan(cwd)}.\n` +
+      `We could not detect a supported framework at ${chalk.cyan(cwd)}.\n` +
         `Visit ${chalk.cyan(
-          "https://ui.shadcn.com/docs/installation/manual"
-        )} to manually create a components.json file.\n`
+          projectInfo?.framework.links.installation
+        )} to manually configure your project.\nOnce configured, you can use the cli to add components.`
     )
     logger.info("")
     process.exit(1)
   } else {
-    frameworkSpinner?.succeed("Checking for framework.")
+    frameworkSpinner?.succeed()
   }
 
-  const tailwindSpinner = ora(`Checking for Tailwind CSS...`).start()
+  const tailwindSpinner = ora(`Validating Tailwind CSS.`).start()
   if (!projectInfo?.tailwindConfigFile || !projectInfo?.tailwindCssFile) {
     errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
     tailwindSpinner?.fail()
   } else {
-    tailwindSpinner?.succeed("Checking for Tailwind CSS.")
+    tailwindSpinner?.succeed()
   }
 
-  const tsConfigSpinner = ora(`Checking for import alias...`).start()
+  const tsConfigSpinner = ora(`Validating import alias.`).start()
   if (!projectInfo?.aliasPrefix) {
     errors[ERRORS.IMPORT_ALIAS_MISSING] = true
     tsConfigSpinner?.fail()
   } else {
-    tsConfigSpinner?.succeed("Checking for import alias.")
+    tsConfigSpinner?.succeed()
   }
 
   if (Object.keys(errors).length > 0) {
     logger.info("")
 
     if (errors[ERRORS.TAILWIND_NOT_CONFIGURED]) {
-      const framework =
-        projectInfo?.framework &&
-        ["next-app", "next-pages"].includes(projectInfo?.framework)
-          ? "nextjs"
-          : projectInfo?.framework
-      const tailwindInstallationUrl = framework
-        ? `https://tailwindcss.com/docs/guides/${framework}`
-        : "https://tailwindcss.com/docs/installation/framework-guides"
       logger.error(
         "Tailwind CSS is not configured. Install Tailwind CSS then run init again.\n" +
-          `Visit ${chalk.cyan(tailwindInstallationUrl)} to get started.\n`
+          `Visit ${chalk.cyan(
+            projectInfo?.framework.links.tailwind
+          )} to get started.\n`
       )
     }
 
     if (errors[ERRORS.IMPORT_ALIAS_MISSING]) {
-      const framework =
-        projectInfo?.framework &&
-        ["next-app", "next-pages"].includes(projectInfo?.framework)
-          ? "next"
-          : projectInfo?.framework
       logger.error(
         `No import alias found in your tsconfig.json file. \nVisit ${chalk.cyan(
-          `https://ui.shadcn.com/docs/installation/${framework}`
+          projectInfo?.framework.links.installation
         )} to learn how to set an import alias.`
       )
     }
