@@ -1,3 +1,5 @@
+"use client"
+
 import { CornerDownLeft, Mic, Paperclip } from "lucide-react"
 
 import { Button } from "@/registry/default/ui/button"
