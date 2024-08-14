@@ -76,16 +76,6 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
-  // Vite and Remix.
-  // They both have a vite.config.* file.
-  if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
-    // We'll assume that if the project has an app dir, it's a Remix project.
-    // Otherwise, it's a Vite project.
-    // TODO: Maybe check for `@remix-run/react` in package.json?
-    type.framework = isUsingAppDir ? FRAMEWORKS["remix"] : FRAMEWORKS["vite"]
-    return type
-  }
-
   // Astro.
   if (configFiles.find((file) => file.startsWith("astro.config."))?.length) {
     type.framework = FRAMEWORKS["astro"]
@@ -101,6 +91,16 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   // Laravel.
   if (configFiles.find((file) => file.startsWith("composer.json"))?.length) {
     type.framework = FRAMEWORKS["laravel"]
+    return type
+  }
+
+  // Vite and Remix.
+  // They both have a vite.config.* file.
+  if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
+    // We'll assume that if the project has an app dir, it's a Remix project.
+    // Otherwise, it's a Vite project.
+    // TODO: Maybe check for `@remix-run/react` in package.json?
+    type.framework = isUsingAppDir ? FRAMEWORKS["remix"] : FRAMEWORKS["vite"]
     return type
   }
 
@@ -155,7 +155,8 @@ export async function getTsConfigAliasPrefix(cwd: string) {
     if (
       paths.includes("./*") ||
       paths.includes("./src/*") ||
-      paths.includes("./app/*")
+      paths.includes("./app/*") ||
+      paths.includes("./resources/js/*") // Laravel.
     ) {
       return alias.at(0) ?? null
     }
