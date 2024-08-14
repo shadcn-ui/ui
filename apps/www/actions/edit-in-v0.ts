@@ -22,6 +22,10 @@ export async function editInV0({
       style,
     })
 
+    // Replace "use client" in the code.
+    // v0 will handle this for us.
+    code = code.replace(`"use client"`, "")
+
     const response = await fetch(`${process.env.V0_URL}/api/edit`, {
       method: "POST",
       body: JSON.stringify({ description, code, source: EDIT_IN_V0_SOURCE }),
@@ -41,7 +45,12 @@ export async function editInV0({
       throw new Error("Something went wrong. Please try again later.")
     }
 
-    return await response.json()
+    const result = await response.json()
+
+    return {
+      ...result,
+      url: `${process.env.V0_URL}/edit/${result.id}`,
+    }
   } catch (error) {
     if (error instanceof Error) {
       return { error: error.message }
