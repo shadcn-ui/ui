@@ -9,9 +9,11 @@ import ora from "ora"
 export async function preFlight(cwd: string) {
   const errors: Record<string, boolean> = {}
 
+  logger.info("")
+
   // Ensure target directory exists.
   // Check for empty project. We assume if no package.json exists, the project is empty.
-  const projectSpinner = ora(`Running preflight checks.`).start()
+  const projectSpinner = ora(`Preflight checks.`).start()
   if (
     !fs.existsSync(cwd) ||
     !fs.existsSync(path.resolve(cwd, "package.json"))
@@ -64,7 +66,9 @@ export async function preFlight(cwd: string) {
     logger.info("")
     process.exit(1)
   } else {
-    frameworkSpinner?.succeed()
+    frameworkSpinner?.succeed(
+      `Verifying framework: ${projectInfo?.framework.label}.`
+    )
   }
 
   const tailwindSpinner = ora(`Validating Tailwind CSS.`).start()
