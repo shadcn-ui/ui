@@ -18,11 +18,12 @@ const SUPPORTED_FRAMEWORKS = [
 
 type ProjectInfo = {
   framework: (typeof SUPPORTED_FRAMEWORKS)[number]
-  isUsingSrcDir: boolean
-  isTypescript: boolean
+  isSrcDir: boolean
+  isRSC: boolean
+  isTsx: boolean
   tailwindConfigFile: string | null
   tailwindCssFile: string | null
-  tsConfigAliasPrefix: string | null
+  aliasPrefix: string | null
 }
 
 const PROJECT_SHARED_IGNORE = [
@@ -36,11 +37,11 @@ const PROJECT_SHARED_IGNORE = [
 export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   const [
     configFiles,
-    isUsingSrcDir,
-    isTypescript,
+    isSrcDir,
+    isTsx,
     tailwindConfigFile,
     tailwindCssFile,
-    tsConfigAliasPrefix,
+    aliasPrefix,
   ] = await Promise.all([
     fg.glob("**/{next,vite,astro}.config.*", {
       cwd,
@@ -55,7 +56,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   ])
 
   const isUsingAppDir = await fs.pathExists(
-    path.resolve(cwd, `${isUsingSrcDir ? "src/" : ""}app`)
+    path.resolve(cwd, `${isSrcDir ? "src/" : ""}app`)
   )
 
   if (!configFiles.length) {
@@ -64,16 +65,18 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 
   const type: ProjectInfo = {
     framework: "next-app",
-    isUsingSrcDir,
-    isTypescript,
+    isSrcDir,
+    isRSC: false,
+    isTsx,
     tailwindConfigFile,
     tailwindCssFile,
-    tsConfigAliasPrefix,
+    aliasPrefix,
   }
 
   // Next.js.
   if (configFiles.find((file) => file.startsWith("next.config."))?.length) {
     type.framework = isUsingAppDir ? "next-app" : "next-pages"
+    type.isRSC = isUsingAppDir
     return type
   }
 
@@ -93,7 +96,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 export async function getTailwindCssFile(cwd: string) {
   const files = await fg.glob("**/*.css", {
     cwd,
-    deep: 3,
+    deep: 5,
     ignore: PROJECT_SHARED_IGNORE,
   })
 
@@ -193,8 +196,8 @@ export async function getProjectConfig(cwd: string): Promise<Config | null> {
 
   const config: RawConfig = {
     $schema: "https://ui.shadcn.com/schema.json",
-    rsc: ["next-app", "next-app-src"].includes(projectInfo.framework),
-    tsx: projectInfo.isTypescript,
+    rsc: projectInfo.isRSC,
+    tsx: projectInfo.isTsx,
     style: "new-york",
     tailwind: {
       config: projectInfo.tailwindConfigFile,
@@ -204,8 +207,8 @@ export async function getProjectConfig(cwd: string): Promise<Config | null> {
       prefix: "",
     },
     aliases: {
-      utils: `${projectInfo.tsConfigAliasPrefix}/lib/utils`,
-      components: `${projectInfo.tsConfigAliasPrefix}/components`,
+      utils: `${projectInfo.aliasPrefix}/lib/utils`,
+      components: `${projectInfo.aliasPrefix}/components`,
     },
   }
 

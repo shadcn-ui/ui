@@ -59,52 +59,11 @@ export const init = new Command()
     try {
       const options = initOptionsSchema.parse(opts)
       const cwd = path.resolve(options.cwd)
-      const preflightResult = await preFlight(cwd)
+      const { errors, projectInfo } = await preFlight(cwd)
 
-      if (preflightResult.error === ERRORS.MISSING_DIR) {
+      if (Object.keys(errors).length > 0) {
         logger.error(
-          `The path ${cwd} does not exist. Make sure it exists and try again.`
-        )
-        logger.error("")
-        process.exit(1)
-      }
-
-      if (preflightResult.error === ERRORS.EXISTING_CONFIG) {
-        logger.error(`The path ${cwd} already contains a components.json file.`)
-        logger.error(
-          "To start over, remove the components.json file and try again."
-        )
-        logger.error("")
-        process.exit(1)
-      }
-
-      if (preflightResult.error === ERRORS.TAILWIND_NOT_CONFIGURED) {
-        const framework =
-          preflightResult.info?.framework &&
-          ["next-app", "next-pages"].includes(preflightResult.info?.framework)
-            ? "nextjs"
-            : preflightResult.info?.framework
-        const tailwindInstallationUrl = framework
-          ? `https://tailwindcss.com/docs/guides/${framework}`
-          : "https://tailwindcss.com/docs/installation/framework-guides"
-
-        logger.error(
-          "Tailwind CSS is not configured. Install Tailwind CSS then run init again.\n" +
-            `Visit ${tailwindInstallationUrl} to get started.\n`
-        )
-        process.exit(1)
-      }
-
-      if (preflightResult.error === ERRORS.IMPORT_ALIAS_MISSING) {
-        const framework =
-          preflightResult.info?.framework &&
-          ["next-app", "next-pages"].includes(preflightResult.info?.framework)
-            ? "next"
-            : preflightResult.info?.framework
-        logger.error(
-          `No import alias found in your tsconfig.json file. \nVisit ${chalk.cyan(
-            `https://ui.shadcn.com/docs/installation/${framework}`
-          )} to learn how to set an import alias.`
+          `Something went wrong during the preflight check. Please check the output above for more details.`
         )
         logger.error("")
         process.exit(1)
