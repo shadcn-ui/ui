@@ -1,0 +1,93 @@
+---
+title: Number Field
+description: Displays a number field input with formatting.
+component: true
+links:
+  doc: https://s-yadav.github.io/react-number-format/docs/intro
+  api: https://s-yadav.github.io/react-number-format/docs/numeric_format
+---
+
+<ComponentPreview
+  name="number-field-demo"
+  description="A number field input component."
+/>
+
+## About
+
+The number field component is built using the [React Number Format](https://s-yadav.github.io/react-number-format/) library.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add number-field
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="number-field" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { NumberFieldInput } from "@/components/ui/number-field"
+```
+
+```tsx
+<NumberFieldInput />
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview
+  name="number-field-demo"
+  className="[&_input]:max-w-xs"
+  description="A form input component."
+/>
+
+### Number Field Disabled
+
+<ComponentPreview
+  name="number-field-disabled"
+  className="[&_input]:max-w-xs"
+  description="A disabled input component."
+/>
+
+### With Prefix
+
+<ComponentPreview
+  name="number-field-prefix"
+  className="[&_input]:max-w-xs"
+  description="An input component with a label."
+/>
+
+### With Increment Only
+
+<ComponentPreview
+  name="number-field-increment-only"
+  className="[&_input]:max-w-xs"
+  description="An input component with a button."
+/>

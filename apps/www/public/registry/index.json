@@ -274,6 +274,19 @@
     "type": "components:ui"
   },
   {
+    "name": "number-field",
+    "dependencies": [
+      "react-number-field"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      "ui/number-field.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "pagination",
     "registryDependencies": [
       "button"

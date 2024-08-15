@@ -238,6 +238,17 @@
     "type": "ui"
   },
   {
+    "name": "number-field",
+    "dependencies": ["react-number-format"],
+    "files": [
+      {
+        "name": "number-field.tsx",
+        "dir": "components/ui",
+        "content": "\"use client\"\n\nimport * as React from \"react\"\nimport NumberFormat from \"react-number-format\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface NumberFieldProps\n  extends Omit<React.ComponentProps<typeof NumberFormat>, \"value\"> {\n  value: number\n  onChange: (value: number) => void\n}\n\nconst NumberField = React.forwardRef<\n  React.ElementRef<typeof NumberFormat>,\n  NumberFieldProps\n>(({ className, value, onChange, ...props }, ref) => {\n  return (\n    <NumberFormat\n      ref={ref}\n      className={cn(\n        \"flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50\",\n        className\n      )}\n      value={value}\n      onValueChange={({ floatValue }) => onChange(floatValue)}\n      {...props}\n    />\n  )\n})\nNumberField.displayName = \"NumberField\"\n\nexport { NumberField }\n"
+      }
+    ]
+  },
+  {
     "name": "popover",
     "dependencies": ["@radix-ui/react-popover"],
     "files": [

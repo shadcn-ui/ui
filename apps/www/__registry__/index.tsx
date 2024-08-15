@@ -291,6 +291,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "number-field": {
+      name: "number-field",
+      type: "components:ui",
+      registryDependencies: ["button"],
+      component: React.lazy(() => import("@/registry/default/ui/number-field")),
+      source: "",
+      files: ["registry/default/ui/number-field.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "pagination": {
       name: "pagination",
       type: "components:ui",
@@ -1365,6 +1376,50 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/navigation-menu-demo")),
       source: "",
       files: ["registry/default/example/navigation-menu-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-demo": {
+      name: "number-field-demo",
+      type: "components:example",
+      registryDependencies: ["number-field"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-demo")),
+      source: "",
+      files: ["registry/default/example/number-field-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-disabled": {
+      name: "number-field-disabled",
+      type: "components:example",
+      registryDependencies: ["number-field"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-disabled")),
+      source: "",
+      files: ["registry/default/example/number-field-disabled.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-prefix": {
+      name: "number-field-prefix",
+      type: "components:example",
+      registryDependencies: ["number-field"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-prefix")),
+      source: "",
+      files: ["registry/default/example/number-field-prefix.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-increment-only": {
+      name: "number-field-increment-only",
+      type: "components:example",
+      registryDependencies: ["number-field"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-increment-only")),
+      source: "",
+      files: ["registry/default/example/number-field-increment-only.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -3603,6 +3658,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "number-field": {
+      name: "number-field",
+      type: "components:ui",
+      registryDependencies: ["button"],
+      component: React.lazy(() => import("@/registry/new-york/ui/number-field")),
+      source: "",
+      files: ["registry/new-york/ui/number-field.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "pagination": {
       name: "pagination",
       type: "components:ui",
@@ -4677,6 +4743,50 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/navigation-menu-demo")),
       source: "",
       files: ["registry/new-york/example/navigation-menu-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-demo": {
+      name: "number-field-demo",
+      type: "components:example",
+      registryDependencies: ["number-field"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-demo")),
+      source: "",
+      files: ["registry/new-york/example/number-field-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-disabled": {
+      name: "number-field-disabled",
+      type: "components:example",
+      registryDependencies: ["number-field"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-disabled")),
+      source: "",
+      files: ["registry/new-york/example/number-field-disabled.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-prefix": {
+      name: "number-field-prefix",
+      type: "components:example",
+      registryDependencies: ["number-field"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-prefix")),
+      source: "",
+      files: ["registry/new-york/example/number-field-prefix.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-increment-only": {
+      name: "number-field-increment-only",
+      type: "components:example",
+      registryDependencies: ["number-field"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-increment-only")),
+      source: "",
+      files: ["registry/new-york/example/number-field-increment-only.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
