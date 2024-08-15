@@ -166,6 +166,13 @@ export const ui: Registry = [
     files: ["ui/navigation-menu.tsx"],
   },
   {
+    name: "number-field",
+    type: "components:ui",
+    dependencies: ["react-number-field"],
+    registryDependencies: ["button"],
+    files: ["ui/number-field.tsx"],
+  },
+  {
     name: "pagination",
     type: "components:ui",
     registryDependencies: ["button"],

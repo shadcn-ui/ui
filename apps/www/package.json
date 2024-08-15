@@ -74,6 +74,7 @@
     "react-day-picker": "^8.7.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.44.2",
+    "react-number-format": "^5.4.0",
     "react-resizable-panels": "^2.0.22",
     "react-wrap-balancer": "^0.4.1",
     "recharts": "2.12.7",
