@@ -33,7 +33,7 @@ const NumberField = React.forwardRef<HTMLDivElement, NumberFieldProps>(
         <div
           ref={ref}
           className={cn(
-            "relative rounded-md border overflow-hidden flex w-full",
+            "relative rounded-md border overflow-hidden w-fit",
             !disabled ? "focus-within:ring-1 focus-within:ring-ring" : "",
             className
           )}
@@ -51,14 +51,15 @@ const NumberFieldInput = React.forwardRef<HTMLDivElement, NumericFormatProps>(
 
     React.useEffect(() => {
       if (!context) return
-      context.setValue(props.value)
+      context.setValue(props.value || props.defaultValue)
     }, [])
 
     return (
       <NumericFormat
         getInputRef={ref}
         className={cn(
-          "h-9 min-w-full px-3 py-1 bg-transparent placeholder:text-muted-foreground text-sm rounded-md border transition-colors outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+          "h-9 w-full px-3 py-1 bg-transparent placeholder:text-muted-foreground text-sm rounded-md transition-colors outline-none disabled:cursor-not-allowed disabled:opacity-50",
+          !context ? "border focus:ring-1 focus:ring-ring" : "",
           className
         )}
         disabled={
