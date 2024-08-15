@@ -486,10 +486,10 @@ export const examples: Registry = [
     files: ["example/number-field-disabled.tsx"],
   },
   {
-    name: "number-field-prefix",
+    name: "number-field-prefix-suffix",
     type: "components:example",
     registryDependencies: ["number-field"],
-    files: ["example/number-field-prefix.tsx"],
+    files: ["example/number-field-prefix-suffix.tsx"],
   },
   {
     name: "number-field-increment-only",

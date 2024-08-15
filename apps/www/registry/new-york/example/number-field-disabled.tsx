@@ -7,7 +7,7 @@ import {
 
 export default function NumberFieldDisabled() {
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex flex-col gap-4 items-center">
       <div className="w-full flex flex-col gap-2">
         <strong>Input Only Disabled</strong>
         <NumberField>

@@ -1402,13 +1402,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "number-field-prefix": {
-      name: "number-field-prefix",
+    "number-field-prefix-suffix": {
+      name: "number-field-prefix-suffix",
       type: "components:example",
       registryDependencies: ["number-field"],
-      component: React.lazy(() => import("@/registry/default/example/number-field-prefix")),
+      component: React.lazy(() => import("@/registry/default/example/number-field-prefix-suffix")),
       source: "",
-      files: ["registry/default/example/number-field-prefix.tsx"],
+      files: ["registry/default/example/number-field-prefix-suffix.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -4769,13 +4769,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "number-field-prefix": {
-      name: "number-field-prefix",
+    "number-field-prefix-suffix": {
+      name: "number-field-prefix-suffix",
       type: "components:example",
       registryDependencies: ["number-field"],
-      component: React.lazy(() => import("@/registry/new-york/example/number-field-prefix")),
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-prefix-suffix")),
       source: "",
-      files: ["registry/new-york/example/number-field-prefix.tsx"],
+      files: ["registry/new-york/example/number-field-prefix-suffix.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
