@@ -7,10 +7,8 @@ import { cn } from "@/lib/utils"
 import { Button, ButtonProps } from "./button"
 
 interface NumberFieldContextProps {
-  value: string | number | null | undefined
-  setValue: React.Dispatch<
-    React.SetStateAction<string | number | null | undefined>
-  >
+  delta: number
+  setDelta: React.Dispatch<React.SetStateAction<number>>
   disableNumberField: boolean
 }
 const NumberFieldContext = React.createContext<
@@ -22,13 +20,11 @@ interface NumberFieldProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 const NumberField = React.forwardRef<HTMLDivElement, NumberFieldProps>(
   ({ className, children, disabled = false }, ref) => {
-    const [value, setValue] = React.useState<
-      string | number | null | undefined
-    >(undefined)
+    const [delta, setDelta] = React.useState<number>(0)
 
     return (
       <NumberFieldContext.Provider
-        value={{ value, setValue, disableNumberField: disabled }}
+        value={{ delta, setDelta, disableNumberField: disabled }}
       >
         <div
           ref={ref}
@@ -45,35 +41,49 @@ const NumberField = React.forwardRef<HTMLDivElement, NumberFieldProps>(
   }
 )
 
-const NumberFieldInput = React.forwardRef<HTMLDivElement, NumericFormatProps>(
-  ({ className, step = 1, ...props }, ref) => {
-    const context = React.useContext(NumberFieldContext)
+const convertToNumber = (value: string | number | null | undefined) => {
+  if (typeof value === "number") return value
+  const parsed = parseFloat(`${value}`)
+  return isNaN(parsed) ? undefined : parsed
+}
 
-    React.useEffect(() => {
-      if (!context) return
-      context.setValue(props.value)
-    }, [])
+interface NumberFieldInputProps
+  extends Omit<NumericFormatProps, "onValueChange"> {
+  onValueChange?: (value: number | undefined) => void
+}
+const NumberFieldInput = React.forwardRef<
+  HTMLInputElement,
+  NumberFieldInputProps
+>(({ className, onValueChange, ...props }, ref) => {
+  const context = React.useContext(NumberFieldContext)
+  const [value, setValue] = React.useState(props.value)
 
-    return (
-      <NumericFormat
-        getInputRef={ref}
-        className={cn(
-          "h-9 w-full px-3 py-1 bg-transparent placeholder:text-muted-foreground text-sm rounded-md border transition-colors outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
-          className
-        )}
-        disabled={
-          context ? context.disableNumberField || props.disabled : false
-        }
-        value={context ? context.value : props.value}
-        onValueChange={(inputValue, changeMeta) => {
-          context && context.setValue(inputValue.value)
-          props.onValueChange && props.onValueChange(inputValue, changeMeta)
-        }}
-        {...props}
-      />
-    )
-  }
-)
+  React.useEffect(() => {
+    if (!context || context.delta === 0) return
+    const newValue = (convertToNumber(value) || 0) + context.delta
+    setValue(newValue)
+    onValueChange && onValueChange(newValue)
+    context.setDelta(0)
+  }, [context?.delta])
+
+  return (
+    <NumericFormat
+      getInputRef={ref}
+      className={cn(
+        "h-9 w-full px-3 py-1 bg-transparent placeholder:text-muted-foreground text-sm rounded-md transition-colors outline-none disabled:cursor-not-allowed disabled:opacity-50",
+        !context ? "border focus:ring-1 focus:ring-ring" : "",
+        className
+      )}
+      disabled={context ? context.disableNumberField || props.disabled : false}
+      value={value}
+      onValueChange={(inputValue) => {
+        setValue(inputValue.floatValue)
+        onValueChange && onValueChange(inputValue.floatValue)
+      }}
+      {...props}
+    />
+  )
+})
 
 interface NumberFieldStepperProps extends ButtonProps {
   step?: number
@@ -99,7 +109,7 @@ const NumberFieldIncrement = React.forwardRef<
         className
       )}
       variant="outline"
-      onClick={() => context.setValue(Number(context.value || 0) + step)}
+      onClick={() => context.setDelta(step)}
       disabled={context ? context.disableNumberField || props.disabled : false}
       {...props}
     >
@@ -130,7 +140,7 @@ const NumberFieldDecrement = React.forwardRef<
         className
       )}
       variant="outline"
-      onClick={() => context.setValue(Number(context.value || 0) - step)}
+      onClick={() => context.setDelta(-step)}
       disabled={context ? context.disableNumberField || props.disabled : false}
       {...props}
     >
