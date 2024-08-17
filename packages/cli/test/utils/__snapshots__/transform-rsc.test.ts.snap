@@ -15,7 +15,7 @@ import { Foo } from "bar"
 `;
 
 exports[`transform rsc 3`] = `
-"      import * as React from "react"
+"import * as React from "react"
 import { Foo } from "bar"
     "
 `;

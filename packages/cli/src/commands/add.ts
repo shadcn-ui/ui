@@ -171,6 +171,7 @@ export const add = new Command()
             raw: file.content,
             config,
             baseColor,
+            transformJsx: !config.tsx,
           })
 
           if (!config.tsx) {

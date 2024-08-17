@@ -1,6 +1,5 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import * as ERRORS from "@/src/utils/errors"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -14,23 +13,18 @@ import {
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { getProjectConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
+import { initializeTailwindConfig } from "@/src/utils/initializers/initialize-tailwind-config"
+import { initializeTailwindCss } from "@/src/utils/initializers/initialize-tailwind-css"
+import { initializeUtils } from "@/src/utils/initializers/initialize-utils"
 import { logger } from "@/src/utils/logger"
 import { preFlight } from "@/src/utils/preflight"
-import {
-  getRegistryBaseColor,
-  getRegistryBaseColors,
-  getRegistryStyles,
-} from "@/src/utils/registry"
-import * as templates from "@/src/utils/templates"
+import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
 import chalk from "chalk"
 import { Command } from "commander"
 import { execa } from "execa"
-import template from "lodash.template"
 import ora from "ora"
 import prompts from "prompts"
 import { z } from "zod"
-
-import { applyPrefixesCss } from "../utils/transformers/transform-tw-prefix"
 
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
@@ -307,8 +301,6 @@ export async function promptForMinimalConfig(
 }
 
 export async function runInit(cwd: string, config: Config) {
-  const spinner = ora(`Initializing project...`)?.start()
-
   // Ensure all resolved paths directories exist.
   for (const [key, resolvedPath] of Object.entries(config.resolvedPaths)) {
     // Determine if the path is a file or directory.
@@ -330,55 +322,12 @@ export async function runInit(cwd: string, config: Config) {
     }
   }
 
-  const extension = config.tsx ? "ts" : "js"
-
-  const tailwindConfigExtension = path.extname(
-    config.resolvedPaths.tailwindConfig
-  )
-
-  let tailwindConfigTemplate: string
-  if (tailwindConfigExtension === ".ts") {
-    tailwindConfigTemplate = config.tailwind.cssVariables
-      ? templates.TAILWIND_CONFIG_TS_WITH_VARIABLES
-      : templates.TAILWIND_CONFIG_TS
-  } else {
-    tailwindConfigTemplate = config.tailwind.cssVariables
-      ? templates.TAILWIND_CONFIG_WITH_VARIABLES
-      : templates.TAILWIND_CONFIG
-  }
-
-  // Write tailwind config.
-  await fs.writeFile(
-    config.resolvedPaths.tailwindConfig,
-    template(tailwindConfigTemplate)({
-      extension,
-      prefix: config.tailwind.prefix,
-    }),
-    "utf8"
-  )
-
-  // Write css file.
-  const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
-  if (baseColor) {
-    await fs.writeFile(
-      config.resolvedPaths.tailwindCss,
-      config.tailwind.cssVariables
-        ? config.tailwind.prefix
-          ? applyPrefixesCss(baseColor.cssVarsTemplate, config.tailwind.prefix)
-          : baseColor.cssVarsTemplate
-        : baseColor.inlineColorsTemplate,
-      "utf8"
-    )
-  }
-
-  // Write cn file.
-  await fs.writeFile(
-    `${config.resolvedPaths.utils}.${extension}`,
-    extension === "ts" ? templates.UTILS : templates.UTILS_JS,
-    "utf8"
-  )
-
-  spinner?.succeed()
+  // Run initializers.
+  const initializersSpinner = ora(`Initializing project...`)?.start()
+  await initializeTailwindConfig(config)
+  await initializeTailwindCss(config)
+  await initializeUtils(config)
+  initializersSpinner?.succeed()
 
   // Install dependencies.
   const dependenciesSpinner = ora(`Installing dependencies...`)?.start()

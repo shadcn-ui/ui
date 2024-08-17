@@ -49,12 +49,6 @@ test("init config-full", async () => {
     expect.anything()
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
-    1,
-    expect.stringMatching(/tailwind.config.ts$/),
-    expect.stringContaining(`import type { Config } from "tailwindcss"`),
-    "utf8"
-  )
-  expect(mockWriteFile).toHaveBeenNthCalledWith(
     2,
     expect.stringMatching(/src\/app\/globals.css$/),
     expect.stringContaining(`@tailwind base`),
@@ -117,12 +111,6 @@ test("init config-partial", async () => {
     3,
     expect.stringMatching(/components$/),
     expect.anything()
-  )
-  expect(mockWriteFile).toHaveBeenNthCalledWith(
-    1,
-    expect.stringMatching(/tailwind.config.ts$/),
-    expect.stringContaining(`import type { Config } from "tailwindcss"`),
-    "utf8"
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     2,
