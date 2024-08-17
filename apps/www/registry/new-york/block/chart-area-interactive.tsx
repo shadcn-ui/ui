@@ -74,7 +74,7 @@ export default function Component() {
       daysToSubtract = 7
     }
     now.setDate(now.getDate() - daysToSubtract)
-    return new Date(date) >= new Date(now)
+    return date >= now;
   });
 
   return (
