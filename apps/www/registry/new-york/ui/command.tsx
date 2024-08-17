@@ -7,8 +7,7 @@ import { Command as CommandPrimitive } from "cmdk"
 
 
 import { cn } from "@/lib/utils"
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/registry/new-york/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/registry/new-york/ui/dialog"
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
