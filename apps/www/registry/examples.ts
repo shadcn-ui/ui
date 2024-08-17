@@ -480,6 +480,12 @@ export const examples: Registry = [
     files: ["example/number-field-demo.tsx"],
   },
   {
+    name: "number-field-controlled",
+    type: "components:example",
+    registryDependencies: ["number-field", "slider"],
+    files: ["example/number-field-controlled.tsx"],
+  },
+  {
     name: "number-field-disabled",
     type: "components:example",
     registryDependencies: ["number-field"],

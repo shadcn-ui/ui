@@ -1391,6 +1391,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "number-field-controlled": {
+      name: "number-field-controlled",
+      type: "components:example",
+      registryDependencies: ["number-field","slider"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-controlled")),
+      source: "",
+      files: ["registry/default/example/number-field-controlled.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "number-field-disabled": {
       name: "number-field-disabled",
       type: "components:example",
@@ -4754,6 +4765,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/number-field-demo")),
       source: "",
       files: ["registry/new-york/example/number-field-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-controlled": {
+      name: "number-field-controlled",
+      type: "components:example",
+      registryDependencies: ["number-field","slider"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-controlled")),
+      source: "",
+      files: ["registry/new-york/example/number-field-controlled.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
