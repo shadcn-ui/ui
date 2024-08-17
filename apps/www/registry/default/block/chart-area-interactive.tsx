@@ -42,7 +42,7 @@ const generateRandomData = (days: number) => {
       mobile: mobileValue
     })
   }
-  return data;
+  return data.sort((a:any,b:any) => new Date(a.date).getTime() - new Date(b.date).getTime());
 }
 
 const chartData = generateRandomData(90);
@@ -75,7 +75,7 @@ export default function Component() {
     }
     now.setDate(now.getDate() - daysToSubtract)
     return new Date(date) >= new Date(now)
-  }).sort((a:any,b:any) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  });
 
   return (
     <Card>
