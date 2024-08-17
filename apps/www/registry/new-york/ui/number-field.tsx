@@ -1,6 +1,12 @@
 import * as React from "react"
 import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons"
-import { NumericFormat, type NumericFormatProps } from "react-number-format"
+import {
+  NumberFormatBase,
+  useNumericFormat,
+  type NumberFormatBaseProps,
+  type NumberFormatValues,
+  type NumericFormatProps,
+} from "react-number-format"
 
 import { cn } from "@/lib/utils"
 
@@ -48,26 +54,40 @@ const convertToNumber = (value: string | number | null | undefined) => {
 }
 
 interface NumberFieldInputProps
-  extends Omit<NumericFormatProps, "onValueChange"> {
-  onValueChange?: (value: number | undefined) => void
+  extends Omit<NumericFormatProps & NumberFormatBaseProps, "onValueChange"> {
+  onValueChange?: (value: number) => void
 }
 const NumberFieldInput = React.forwardRef<
   HTMLInputElement,
   NumberFieldInputProps
 >(({ className, onValueChange, ...props }, ref) => {
+  const isControlled = props.value !== undefined
   const context = React.useContext(NumberFieldContext)
-  const [value, setValue] = React.useState(props.value)
+  const [value, setValue] = React.useState(
+    convertToNumber(props.value || props.defaultValue)
+  )
+  const numericFormat = useNumericFormat({
+    ...props,
+    value: isControlled ? props.value : value,
+  })
 
   React.useEffect(() => {
     if (!context || context.delta === 0) return
-    const newValue = (convertToNumber(value) || 0) + context.delta
+    const newValue = (value || 0) + context.delta
+
+    if (
+      numericFormat &&
+      numericFormat.isAllowed &&
+      !numericFormat.isAllowed({ floatValue: newValue } as NumberFormatValues)
+    )
+      return
     setValue(newValue)
     onValueChange && onValueChange(newValue)
     context.setDelta(0)
   }, [context?.delta])
 
   return (
-    <NumericFormat
+    <NumberFormatBase
       getInputRef={ref}
       className={cn(
         "h-9 w-full px-3 py-1 bg-transparent placeholder:text-muted-foreground text-sm rounded-md transition-colors outline-none disabled:cursor-not-allowed disabled:opacity-50",
@@ -75,12 +95,13 @@ const NumberFieldInput = React.forwardRef<
         className
       )}
       disabled={context ? context.disableNumberField || props.disabled : false}
-      value={value}
+      {...numericFormat}
+      {...(props.format && { format: props.format })}
       onValueChange={(inputValue) => {
+        if (!inputValue.floatValue) return
         setValue(inputValue.floatValue)
         onValueChange && onValueChange(inputValue.floatValue)
       }}
-      {...props}
     />
   )
 })
