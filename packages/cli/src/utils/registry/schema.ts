@@ -1,5 +1,10 @@
 import { z } from "zod"
 
+export const registryCssVarsSchema = z.object({
+  light: z.record(z.string(), z.string()).optional(),
+  dark: z.record(z.string(), z.string()).optional(),
+})
+
 // TODO: Extract this to a shared package.
 export const registryItemSchema = z.object({
   name: z.string(),
@@ -19,12 +24,7 @@ export const registryItemSchema = z.object({
       }),
     })
     .optional(),
-  cssVars: z
-    .object({
-      light: z.record(z.string(), z.string()).optional(),
-      dark: z.record(z.string(), z.string()).optional(),
-    })
-    .optional(),
+  cssVars: registryCssVarsSchema.optional(),
 })
 
 export const registryIndexSchema = z.array(registryItemSchema)

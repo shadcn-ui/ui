@@ -340,7 +340,11 @@ export async function runInit(config: Config) {
   if (payload.tailwind?.config) {
     await updateTailwindConfig(payload.tailwind?.config, config)
   }
-  await updateTailwindCss(config)
+
+  if (payload.cssVars) {
+    await updateTailwindCss(payload.cssVars, config)
+  }
+
   await updateUtils(config)
   initializersSpinner?.succeed()
 
