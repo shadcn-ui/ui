@@ -29,23 +29,25 @@ import {
 export const description = "An interactive area chart"
 
 const generateRandomData = (days: number) => {
-  const data = [];
+  const data = []
   for (let i = 0; i < days; i++) {
-    const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() - i);
-    const formattedDate = currentDate.toISOString().split('T')[0];
-    const desktopValue = Math.floor(Math.random() * 400);
-    const mobileValue = Math.floor(Math.random() * 400);
+    const currentDate = new Date()
+    currentDate.setDate(currentDate.getDate() - i)
+    const formattedDate = currentDate.toISOString().split("T")[0]
+    const desktopValue = Math.floor(Math.random() * 400)
+    const mobileValue = Math.floor(Math.random() * 400)
     data.push({
       date: formattedDate,
       desktop: desktopValue,
-      mobile: mobileValue
+      mobile: mobileValue,
     })
   }
-  return data.sort((a:any,b:any) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  return data.sort(
+    (a: any, b: any) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  )
 }
 
-const chartData = generateRandomData(90);
+const chartData = generateRandomData(90)
 
 const chartConfig = {
   visitors: {
@@ -74,8 +76,8 @@ export default function Component() {
       daysToSubtract = 7
     }
     now.setDate(now.getDate() - daysToSubtract)
-    return date >= now;
-  });
+    return date >= now
+  })
 
   return (
     <Card>
