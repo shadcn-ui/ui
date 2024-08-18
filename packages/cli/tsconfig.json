@@ -9,9 +9,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "test/utils/initializers/initialize-tailwind-config.test.ts"
-  ],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "test/fixtures"]
 }

@@ -3,7 +3,7 @@ import { Config } from "@/src/utils/get-config"
 import { getRegistryBaseColor } from "@/src/utils/registry"
 import { applyPrefixesCss } from "@/src/utils/transformers/transform-tw-prefix"
 
-export async function initializeTailwindCss(config: Config) {
+export async function updateTailwindCss(config: Config) {
   // Write css file.
   const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
   if (baseColor) {

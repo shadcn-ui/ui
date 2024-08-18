@@ -25,6 +25,41 @@ test("init config-full", async () => {
     cssVarsTemplate:
       "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
   })
+  vi.spyOn(registry, "getRegistryStyleIndex").mockResolvedValue({
+    name: "new-york",
+    dependencies: [
+      "tailwindcss-animate",
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge",
+      "lucide-react",
+      "@radix-ui/react-icons",
+    ],
+    registryDependencies: [],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            borderRadius: {
+              lg: "var(--radius)",
+              md: "calc(var(--radius) - 2px)",
+              sm: "calc(var(--radius) - 4px)",
+            },
+          },
+        },
+        plugins: ['require("tailwindcss-animate")'],
+      },
+    },
+    files: [],
+    cssVariables: {
+      light: {
+        "--radius": "0.5rem",
+      },
+      dark: {
+        "--radius": "0.5rem",
+      },
+    },
+  })
   const mockMkdir = vi.spyOn(fs.promises, "mkdir").mockResolvedValue(undefined)
   const mockWriteFile = vi.spyOn(fs.promises, "writeFile").mockResolvedValue()
 
@@ -68,6 +103,7 @@ test("init config-full", async () => {
       "class-variance-authority",
       "clsx",
       "tailwind-merge",
+      "lucide-react",
       "@radix-ui/react-icons",
     ],
     {
@@ -88,6 +124,40 @@ test("init config-partial", async () => {
       "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
     cssVarsTemplate:
       "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
+  })
+  vi.spyOn(registry, "getRegistryStyleIndex").mockResolvedValue({
+    name: "new-york",
+    dependencies: [
+      "tailwindcss-animate",
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge",
+      "lucide-react",
+    ],
+    registryDependencies: [],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            borderRadius: {
+              lg: "var(--radius)",
+              md: "calc(var(--radius) - 2px)",
+              sm: "calc(var(--radius) - 4px)",
+            },
+          },
+        },
+        plugins: ['require("tailwindcss-animate")'],
+      },
+    },
+    files: [],
+    cssVariables: {
+      light: {
+        "--radius": "0.5rem",
+      },
+      dark: {
+        "--radius": "0.5rem",
+      },
+    },
   })
   const mockMkdir = vi.spyOn(fs.promises, "mkdir").mockResolvedValue(undefined)
   const mockWriteFile = vi.spyOn(fs.promises, "writeFile").mockResolvedValue()

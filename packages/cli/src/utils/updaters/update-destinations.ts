@@ -2,7 +2,7 @@ import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { Config } from "@/src/utils/get-config"
 
-export async function initializeDestinations(config: Config) {
+export async function updateDestinations(config: Config) {
   // Ensure all resolved paths directories exist.
   for (const [key, resolvedPath] of Object.entries(config.resolvedPaths)) {
     // Determine if the path is a file or directory.

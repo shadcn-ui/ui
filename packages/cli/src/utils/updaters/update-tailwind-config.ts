@@ -15,14 +15,14 @@ import {
   VariableStatement,
 } from "ts-morph"
 
-export type InitializerTailwindConfig = Omit<TailwindConfig, "plugins"> & {
+export type UpdaterTailwindConfig = Omit<TailwindConfig, "plugins"> & {
   // We only want string plugins for now.
   plugins?: string[]
 }
 
-export async function initializeTailwindConfig(
-  config: Config,
-  tailwindConfig: InitializerTailwindConfig
+export async function updateTailwindConfig(
+  tailwindConfig: UpdaterTailwindConfig,
+  config: Config
 ) {
   const raw = await fs.readFile(config.resolvedPaths.tailwindConfig, "utf8")
   const output = await transformTailwindConfig(raw, tailwindConfig, {
@@ -33,7 +33,7 @@ export async function initializeTailwindConfig(
 
 export async function transformTailwindConfig(
   input: string,
-  tailwindConfig: InitializerTailwindConfig,
+  tailwindConfig: UpdaterTailwindConfig,
   {
     config,
   }: {
@@ -150,7 +150,7 @@ function addTailwindConfigProperty(
 
 async function addTailwindConfigTheme(
   configObject: ObjectLiteralExpression,
-  theme: InitializerTailwindConfig["theme"]
+  theme: UpdaterTailwindConfig["theme"]
 ) {
   // Ensure there is a theme property.
   if (!configObject.getProperty("theme")) {

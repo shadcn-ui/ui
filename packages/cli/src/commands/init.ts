@@ -12,18 +12,6 @@ import {
 } from "@/src/utils/get-config"
 import { getProjectConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
-import {
-  INITIAL_TAILWIND_CONFIG,
-  INITIAL_TAILWIND_CONFIG_WITH_CSS_VARIABLES,
-} from "@/src/utils/initializers/defaults"
-import { initializeDependencies } from "@/src/utils/initializers/initialize-dependencies"
-import { initializeDestinations } from "@/src/utils/initializers/initialize-destinations"
-import {
-  buildTailwindThemeColorsFromCssVars,
-  initializeTailwindConfig,
-} from "@/src/utils/initializers/initialize-tailwind-config"
-import { initializeTailwindCss } from "@/src/utils/initializers/initialize-tailwind-css"
-import { initializeUtils } from "@/src/utils/initializers/initialize-utils"
 import { logger } from "@/src/utils/logger"
 import { preFlight } from "@/src/utils/preflight"
 import {
@@ -32,6 +20,14 @@ import {
   getRegistryStyleIndex,
   getRegistryStyles,
 } from "@/src/utils/registry"
+import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
+import { updateDestinations } from "@/src/utils/updaters/update-destinations"
+import {
+  buildTailwindThemeColorsFromCssVars,
+  updateTailwindConfig,
+} from "@/src/utils/updaters/update-tailwind-config"
+import { updateTailwindCss } from "@/src/utils/updaters/update-tailwind-css"
+import { updateUtils } from "@/src/utils/updaters/update-utils"
 import chalk from "chalk"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
@@ -307,11 +303,8 @@ export async function promptForMinimalConfig(
 }
 
 export async function runInit(config: Config) {
-  await initializeDestinations(config)
-
-  // Run initializers.
   const initializersSpinner = ora(`Initializing project...`)?.start()
-
+  await updateDestinations(config)
   const [payload, baseColor] = await Promise.all([
     getRegistryStyleIndex(config.style),
     getRegistryBaseColor(config.tailwind.baseColor),
@@ -331,7 +324,7 @@ export async function runInit(config: Config) {
     }
 
     // Move the css vars to the tailwind config.
-    if (payload.tailwind?.config) {
+    if (payload.tailwind?.config && baseColor.cssVars?.light) {
       payload.tailwind.config = deepmerge(payload.tailwind.config, {
         theme: {
           extend: {
@@ -345,14 +338,16 @@ export async function runInit(config: Config) {
   }
 
   if (payload.tailwind?.config) {
-    await initializeTailwindConfig(config, payload.tailwind?.config)
+    await updateTailwindConfig(payload.tailwind?.config, config)
   }
-  await initializeTailwindCss(config)
-  await initializeUtils(config)
+  await updateTailwindCss(config)
+  await updateUtils(config)
   initializersSpinner?.succeed()
 
   // Install dependencies.
-  const dependenciesSpinner = ora(`Installing dependencies...`)?.start()
-  await initializeDependencies(config)
-  dependenciesSpinner?.succeed()
+  if (payload.dependencies) {
+    const dependenciesSpinner = ora(`Installing dependencies...`)?.start()
+    await updateDependencies(payload.dependencies, config)
+    dependenciesSpinner?.succeed()
+  }
 }
