@@ -1,4 +1,4 @@
-import { existsSync, promises as fs } from "fs"
+import { promises as fs } from "fs"
 import path from "path"
 import {
   DEFAULT_COMPONENTS,
@@ -10,9 +10,10 @@ import {
   resolveConfigPaths,
   type Config,
 } from "@/src/utils/get-config"
-import { getPackageManager } from "@/src/utils/get-package-manager"
 import { getProjectConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
+import { initializeDependencies } from "@/src/utils/initializers/initialize-dependencies"
+import { initializeDestinations } from "@/src/utils/initializers/initialize-destinations"
 import { initializeTailwindConfig } from "@/src/utils/initializers/initialize-tailwind-config"
 import { initializeTailwindCss } from "@/src/utils/initializers/initialize-tailwind-css"
 import { initializeUtils } from "@/src/utils/initializers/initialize-utils"
@@ -21,17 +22,9 @@ import { preFlight } from "@/src/utils/preflight"
 import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
 import chalk from "chalk"
 import { Command } from "commander"
-import { execa } from "execa"
 import ora from "ora"
 import prompts from "prompts"
 import { z } from "zod"
-
-const PROJECT_DEPENDENCIES = [
-  "tailwindcss-animate",
-  "class-variance-authority",
-  "clsx",
-  "tailwind-merge",
-]
 
 const initOptionsSchema = z.object({
   cwd: z.string(),
@@ -53,7 +46,7 @@ export const init = new Command()
     try {
       const options = initOptionsSchema.parse(opts)
       const cwd = path.resolve(options.cwd)
-      const { errors, projectInfo } = await preFlight(cwd)
+      const { errors } = await preFlight(cwd)
 
       if (Object.keys(errors).length > 0) {
         logger.error(
@@ -70,7 +63,7 @@ export const init = new Command()
         : // Otherwise, prompt for full config.
           await promptForConfig(cwd, await getConfig(cwd), options.yes)
 
-      await runInit(cwd, config)
+      await runInit(config)
 
       logger.info("")
       logger.info(
@@ -300,27 +293,8 @@ export async function promptForMinimalConfig(
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function runInit(cwd: string, config: Config) {
-  // Ensure all resolved paths directories exist.
-  for (const [key, resolvedPath] of Object.entries(config.resolvedPaths)) {
-    // Determine if the path is a file or directory.
-    // TODO: is there a better way to do this?
-    let dirname = path.extname(resolvedPath)
-      ? path.dirname(resolvedPath)
-      : resolvedPath
-
-    // If the utils alias is set to something like "@/lib/utils",
-    // assume this is a file and remove the "utils" file name.
-    // TODO: In future releases we should add support for individual utils.
-    if (key === "utils" && resolvedPath.endsWith("/utils")) {
-      // Remove /utils at the end.
-      dirname = dirname.replace(/\/utils$/, "")
-    }
-
-    if (!existsSync(dirname)) {
-      await fs.mkdir(dirname, { recursive: true })
-    }
-  }
+export async function runInit(config: Config) {
+  await initializeDestinations(config)
 
   // Run initializers.
   const initializersSpinner = ora(`Initializing project...`)?.start()
@@ -331,20 +305,6 @@ export async function runInit(cwd: string, config: Config) {
 
   // Install dependencies.
   const dependenciesSpinner = ora(`Installing dependencies...`)?.start()
-  const packageManager = await getPackageManager(cwd)
-
-  // TODO: add support for other icon libraries.
-  const deps = [
-    ...PROJECT_DEPENDENCIES,
-    config.style === "new-york" ? "@radix-ui/react-icons" : "lucide-react",
-  ]
-
-  await execa(
-    packageManager,
-    [packageManager === "npm" ? "install" : "add", ...deps],
-    {
-      cwd,
-    }
-  )
+  await initializeDependencies(config)
   dependenciesSpinner?.succeed()
 }

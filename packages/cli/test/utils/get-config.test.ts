@@ -57,6 +57,7 @@ test("get config", async () => {
       utils: "@/lib/utils",
     },
     resolvedPaths: {
+      cwd: path.resolve(__dirname, "../fixtures/config-partial"),
       tailwindConfig: path.resolve(
         __dirname,
         "../fixtures/config-partial",
@@ -99,6 +100,7 @@ test("get config", async () => {
       utils: "~/lib/utils",
     },
     resolvedPaths: {
+      cwd: path.resolve(__dirname, "../fixtures/config-full"),
       tailwindConfig: path.resolve(
         __dirname,
         "../fixtures/config-full",
@@ -144,6 +146,7 @@ test("get config", async () => {
       utils: "@/lib/utils",
     },
     resolvedPaths: {
+      cwd: path.resolve(__dirname, "../fixtures/config-jsx"),
       tailwindConfig: path.resolve(
         __dirname,
         "../fixtures/config-jsx",

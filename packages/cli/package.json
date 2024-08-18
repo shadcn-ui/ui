@@ -60,7 +60,6 @@
     "lodash.template": "^4.5.0",
     "node-fetch": "^3.3.0",
     "ora": "^6.1.2",
-    "prettier": "^2.8.8",
     "prompts": "^2.4.2",
     "recast": "^0.23.2",
     "stringify-object": "^5.0.0",

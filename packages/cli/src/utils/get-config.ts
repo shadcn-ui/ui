@@ -42,6 +42,7 @@ export type RawConfig = z.infer<typeof rawConfigSchema>
 
 export const configSchema = rawConfigSchema.extend({
   resolvedPaths: z.object({
+    cwd: z.string(),
     tailwindConfig: z.string(),
     tailwindCss: z.string(),
     utils: z.string(),
@@ -77,6 +78,7 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
   return configSchema.parse({
     ...config,
     resolvedPaths: {
+      cwd,
       tailwindConfig: path.resolve(cwd, config.tailwind.config),
       tailwindCss: path.resolve(cwd, config.tailwind.css),
       utils: await resolveImport(config.aliases["utils"], tsConfig),

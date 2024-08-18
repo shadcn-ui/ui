@@ -31,7 +31,7 @@ test("init config-full", async () => {
   const targetDir = path.resolve(__dirname, "../fixtures/config-full")
   const config = await getConfig(targetDir)
 
-  await runInit(targetDir, config)
+  await runInit(config)
 
   expect(mockMkdir).toHaveBeenNthCalledWith(
     1,
@@ -95,7 +95,7 @@ test("init config-partial", async () => {
   const targetDir = path.resolve(__dirname, "../fixtures/config-partial")
   const config = await getConfig(targetDir)
 
-  await runInit(targetDir, config)
+  await runInit(config)
 
   expect(mockMkdir).toHaveBeenNthCalledWith(
     1,
