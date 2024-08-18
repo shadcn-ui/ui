@@ -1,0 +1,37 @@
+{
+  "name": "new-york",
+  "dependencies": [
+    "tailwindcss-animate",
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge",
+    "lucide-react",
+    "@radix-ui/react-icons"
+  ],
+  "registryDependencies": [],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "borderRadius": {
+            "lg": "var(--radius)",
+            "md": "calc(var(--radius) - 2px)",
+            "sm": "calc(var(--radius) - 4px)"
+          }
+        }
+      },
+      "plugins": [
+        "require(\"tailwindcss-animate\")"
+      ]
+    }
+  },
+  "files": [],
+  "cssVariables": {
+    "light": {
+      "--radius": "0.5rem"
+    },
+    "dark": {
+      "--radius": "0.5rem"
+    }
+  }
+}

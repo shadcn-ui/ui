@@ -12,16 +12,29 @@ import {
 } from "@/src/utils/get-config"
 import { getProjectConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
+import {
+  INITIAL_TAILWIND_CONFIG,
+  INITIAL_TAILWIND_CONFIG_WITH_CSS_VARIABLES,
+} from "@/src/utils/initializers/defaults"
 import { initializeDependencies } from "@/src/utils/initializers/initialize-dependencies"
 import { initializeDestinations } from "@/src/utils/initializers/initialize-destinations"
-import { initializeTailwindConfig } from "@/src/utils/initializers/initialize-tailwind-config"
+import {
+  buildTailwindThemeColorsFromCssVars,
+  initializeTailwindConfig,
+} from "@/src/utils/initializers/initialize-tailwind-config"
 import { initializeTailwindCss } from "@/src/utils/initializers/initialize-tailwind-css"
 import { initializeUtils } from "@/src/utils/initializers/initialize-utils"
 import { logger } from "@/src/utils/logger"
 import { preFlight } from "@/src/utils/preflight"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
+import {
+  getRegistryBaseColor,
+  getRegistryBaseColors,
+  getRegistryStyleIndex,
+  getRegistryStyles,
+} from "@/src/utils/registry"
 import chalk from "chalk"
 import { Command } from "commander"
+import deepmerge from "deepmerge"
 import ora from "ora"
 import prompts from "prompts"
 import { z } from "zod"
@@ -298,7 +311,42 @@ export async function runInit(config: Config) {
 
   // Run initializers.
   const initializersSpinner = ora(`Initializing project...`)?.start()
-  await initializeTailwindConfig(config)
+
+  const [payload, baseColor] = await Promise.all([
+    getRegistryStyleIndex(config.style),
+    getRegistryBaseColor(config.tailwind.baseColor),
+  ])
+
+  // Inline the base color in the tailwind config.
+  if (config.tailwind.cssVariables) {
+    payload.cssVars = {
+      light: {
+        ...baseColor.cssVars.light,
+        ...payload.cssVars?.light,
+      },
+      dark: {
+        ...baseColor.cssVars.dark,
+        ...payload.cssVars?.dark,
+      },
+    }
+
+    // Move the css vars to the tailwind config.
+    if (payload.tailwind?.config) {
+      payload.tailwind.config = deepmerge(payload.tailwind.config, {
+        theme: {
+          extend: {
+            colors: buildTailwindThemeColorsFromCssVars(
+              baseColor.cssVars.light
+            ),
+          },
+        },
+      })
+    }
+  }
+
+  if (payload.tailwind?.config) {
+    await initializeTailwindConfig(config, payload.tailwind?.config)
+  }
   await initializeTailwindCss(config)
   await initializeUtils(config)
   initializersSpinner?.succeed()

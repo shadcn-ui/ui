@@ -22,6 +22,7 @@ const SHARED_CONFIG = {
     utils: "@/lib/utils",
   },
   resolvedPaths: {
+    cwd: ".",
     tailwindConfig: "tailwind.config.ts",
     tailwindCss: "app/globals.css",
     components: "./components",
@@ -471,40 +472,40 @@ export default config
 })
 
 describe("transformTailwindConfig -> theme", () => {
-  //   test("should add theme if not in config", async () => {
-  //     expect(
-  //       await transformTailwindConfig(
-  //         `import type { Config } from 'tailwindcss'
+  test("should add theme if not in config", async () => {
+    expect(
+      await transformTailwindConfig(
+        `import type { Config } from 'tailwindcss'
 
-  // const config: Config = {
-  //   content: [
-  //     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-  //     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-  //     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  //   ],
-  // }
-  // export default config
-  //   `,
-  //         {
-  //           theme: {
-  //             extend: {
-  //               colors: {
-  //                 background: "hsl(var(--background))",
-  //                 foreground: "hsl(var(--foreground))",
-  //                 primary: {
-  //                   DEFAULT: "hsl(var(--primary))",
-  //                   foreground: "hsl(var(--primary-foreground))",
-  //                 },
-  //               },
-  //             },
-  //           },
-  //         },
-  //         {
-  //           config: SHARED_CONFIG,
-  //         }
-  //       )
-  //     ).toMatchSnapshot()
-  //   })
+  const config: Config = {
+    content: [
+      "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+      "./components/**/*.{js,ts,jsx,tsx,mdx}",
+      "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+  }
+  export default config
+    `,
+        {
+          theme: {
+            extend: {
+              colors: {
+                background: "hsl(var(--background))",
+                foreground: "hsl(var(--foreground))",
+                primary: {
+                  DEFAULT: "hsl(var(--primary))",
+                  foreground: "hsl(var(--primary-foreground))",
+                },
+              },
+            },
+          },
+        },
+        {
+          config: SHARED_CONFIG,
+        }
+      )
+    ).toMatchSnapshot()
+  })
 
   test("should merge existing theme", async () => {
     expect(

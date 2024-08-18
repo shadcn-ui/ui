@@ -36,6 +36,17 @@ export async function getRegistryStyles() {
   }
 }
 
+export async function getRegistryStyleIndex(style: string) {
+  try {
+    const [result] = await fetchRegistry([`styles/${style}/index.json`])
+
+    return registryItemWithContentSchema.parse(result)
+  } catch (error) {
+    console.log(error)
+    throw new Error(`Failed to fetch style index from registry.`)
+  }
+}
+
 export async function getRegistryBaseColors() {
   return [
     {
@@ -125,7 +136,7 @@ export async function getItemTargetPath(
     return config.resolvedPaths.ui
   }
 
-  const [parent, type] = item.type.split(":")
+  const [parent, type] = item.type?.split(":") ?? []
   if (!(parent in config.resolvedPaths)) {
     return null
   }

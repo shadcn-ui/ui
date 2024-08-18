@@ -7,7 +7,24 @@ export const registryItemSchema = z.object({
   devDependencies: z.array(z.string()).optional(),
   registryDependencies: z.array(z.string()).optional(),
   files: z.array(z.string()),
-  type: z.enum(["components:ui", "components:component", "components:example"]),
+  type: z
+    .enum(["components:ui", "components:component", "components:example"])
+    .optional(),
+  tailwind: z
+    .object({
+      config: z.object({
+        content: z.array(z.string()).optional(),
+        theme: z.record(z.string(), z.any()).optional(),
+        plugins: z.array(z.string()).optional(),
+      }),
+    })
+    .optional(),
+  cssVars: z
+    .object({
+      light: z.record(z.string(), z.string()).optional(),
+      dark: z.record(z.string(), z.string()).optional(),
+    })
+    .optional(),
 })
 
 export const registryIndexSchema = z.array(registryItemSchema)
@@ -17,6 +34,11 @@ export const registryItemWithContentSchema = registryItemSchema.extend({
     z.object({
       name: z.string(),
       content: z.string(),
+      type: z.enum([
+        "components:ui",
+        "components:component",
+        "components:example",
+      ]),
     })
   ),
 })

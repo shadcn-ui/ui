@@ -15,6 +15,14 @@ import { themes } from "../registry/themes"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/registry")
 
+const SHARED_DEPENDENCIES = [
+  "tailwindcss-animate",
+  "class-variance-authority",
+  "clsx",
+  "tailwind-merge",
+  "lucide-react",
+]
+
 // ----------------------------------------------------------------------------
 // Build __registry__/index.tsx.
 // ----------------------------------------------------------------------------
@@ -323,6 +331,54 @@ async function buildStyles(registry: Registry) {
     stylesJson,
     "utf8"
   )
+}
+
+// ----------------------------------------------------------------------------
+// Build registry/styles/[name]/index.json.
+// ----------------------------------------------------------------------------
+async function buildStylesIndex() {
+  for (const style of styles) {
+    const targetPath = path.join(REGISTRY_PATH, "styles", style.name)
+
+    const payload = {
+      name: style.name,
+      dependencies: [
+        ...SHARED_DEPENDENCIES,
+        // TODO: Remove this when we migrate to lucide-react.
+        style.name === "new-york" ? "@radix-ui/react-icons" : "",
+      ],
+      registryDependencies: [],
+      tailwind: {
+        config: {
+          theme: {
+            extend: {
+              borderRadius: {
+                lg: "var(--radius)",
+                md: "calc(var(--radius) - 2px)",
+                sm: "calc(var(--radius) - 4px)",
+              },
+            },
+          },
+          plugins: [`require("tailwindcss-animate")`],
+        },
+      },
+      files: [],
+      cssVariables: {
+        light: {
+          "--radius": "0.5rem",
+        },
+        dark: {
+          "--radius": "0.5rem",
+        },
+      },
+    }
+
+    await fs.writeFile(
+      path.join(targetPath, "index.json"),
+      JSON.stringify(payload, null, 2),
+      "utf8"
+    )
+  }
 }
 
 // ----------------------------------------------------------------------------
@@ -637,6 +693,7 @@ try {
 
   await buildRegistry(result.data)
   await buildStyles(result.data)
+  await buildStylesIndex()
   await buildThemes()
 
   console.log("✅ Done!")

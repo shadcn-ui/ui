@@ -15,84 +15,17 @@ import {
   VariableStatement,
 } from "ts-morph"
 
-type InitializerTailwindConfig = Omit<TailwindConfig, "plugins"> & {
+export type InitializerTailwindConfig = Omit<TailwindConfig, "plugins"> & {
   // We only want string plugins for now.
   plugins?: string[]
 }
 
-const DEFAULT_TAILWIND_CONFIG = {
-  content: [],
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-    extend: {
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
-  },
-  plugins: [`require("tailwindcss-animate")`],
-} satisfies InitializerTailwindConfig
-
-export async function initializeTailwindConfig(config: Config) {
+export async function initializeTailwindConfig(
+  config: Config,
+  tailwindConfig: InitializerTailwindConfig
+) {
   const raw = await fs.readFile(config.resolvedPaths.tailwindConfig, "utf8")
-  const output = await transformTailwindConfig(raw, DEFAULT_TAILWIND_CONFIG, {
+  const output = await transformTailwindConfig(raw, tailwindConfig, {
     config,
   })
   await fs.writeFile(config.resolvedPaths.tailwindConfig, output, "utf8")
@@ -219,6 +152,14 @@ async function addTailwindConfigTheme(
   configObject: ObjectLiteralExpression,
   theme: InitializerTailwindConfig["theme"]
 ) {
+  // Ensure there is a theme property.
+  if (!configObject.getProperty("theme")) {
+    configObject.addPropertyAssignment({
+      name: "theme",
+      initializer: "{}",
+    })
+  }
+
   // Nest all spread properties.
   nestSpreadProperties(configObject)
 
@@ -427,4 +368,42 @@ function parseValue(node: any): any {
     default:
       return node.getText()
   }
+}
+
+export function buildTailwindThemeColorsFromCssVars(
+  cssVars: Record<string, string>
+) {
+  const result: Record<string, any> = {}
+
+  for (const key of Object.keys(cssVars)) {
+    const parts = key.split("-")
+    const colorName = parts[0]
+    const subType = parts.slice(1).join("-")
+
+    if (subType === "") {
+      if (typeof result[colorName] === "object") {
+        result[colorName].DEFAULT = `hsl(var(--${key}))`
+      } else {
+        result[colorName] = `hsl(var(--${key}))`
+      }
+    } else {
+      if (typeof result[colorName] !== "object") {
+        result[colorName] = { DEFAULT: `hsl(var(--${colorName}))` }
+      }
+      result[colorName][subType] = `hsl(var(--${key}))`
+    }
+  }
+
+  // Remove DEFAULT if it's not in the original cssVars
+  for (const [colorName, value] of Object.entries(result)) {
+    if (
+      typeof value === "object" &&
+      value.DEFAULT === `hsl(var(--${colorName}))` &&
+      !(colorName in cssVars)
+    ) {
+      delete value.DEFAULT
+    }
+  }
+
+  return result
 }
