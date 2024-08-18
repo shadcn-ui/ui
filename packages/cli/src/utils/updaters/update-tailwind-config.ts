@@ -25,20 +25,14 @@ export async function updateTailwindConfig(
   config: Config
 ) {
   const raw = await fs.readFile(config.resolvedPaths.tailwindConfig, "utf8")
-  const output = await transformTailwindConfig(raw, tailwindConfig, {
-    config,
-  })
+  const output = await transformTailwindConfig(raw, tailwindConfig, config)
   await fs.writeFile(config.resolvedPaths.tailwindConfig, output, "utf8")
 }
 
 export async function transformTailwindConfig(
   input: string,
   tailwindConfig: UpdaterTailwindConfig,
-  {
-    config,
-  }: {
-    config: Config
-  }
+  config: Config
 ) {
   const sourceFile = await _createSourceFile(input, config)
   // Find the object with content property.
@@ -231,7 +225,7 @@ function addTailwindConfigPlugin(
 async function _createSourceFile(input: string, config: Config | null) {
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   const resolvedPath =
-    config?.resolvedPaths.tailwindConfig || "tailwind.config.ts"
+    config?.resolvedPaths?.tailwindConfig || "tailwind.config.ts"
   const tempFile = path.join(dir, `shadcn-${path.basename(resolvedPath)}`)
 
   const project = new Project({

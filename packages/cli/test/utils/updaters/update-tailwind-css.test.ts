@@ -35,6 +35,14 @@ describe("transformTailwindCss", () => {
               --foreground: white
           }
       }
+      @layer base {
+          * {
+              @apply border-border;
+          }
+          body {
+              @apply bg-background text-foreground;
+          }
+      }
         "
     `)
   })
@@ -80,6 +88,74 @@ describe("transformTailwindCss", () => {
         .dark{
           --background: 222.2 84% 4.9%;
           --foreground: 60 9.1% 97.8%;
+        }
+      }
+
+      @layer base {
+
+        * {
+
+          @apply border-border;
+        }
+
+        body {
+
+          @apply bg-background text-foreground;
+        }
+      }
+        "
+    `)
+  })
+
+  test("should not add the base layer if it is already present", async () => {
+    expect(
+      await transformTailwindCss(
+        `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  :root{
+    --background: 210 40% 98%;
+  }
+
+  .dark{
+    --background: 222.2 84% 4.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+  `,
+        {}
+      )
+    ).toMatchInlineSnapshot(`
+      "@tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      @layer base{
+        :root{
+          --background: 210 40% 98%;
+        }
+
+        .dark{
+          --background: 222.2 84% 4.9%;
+        }
+      }
+
+      @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
         }
       }
         "

@@ -70,16 +70,11 @@ test("init config-full", async () => {
 
   expect(mockMkdir).toHaveBeenNthCalledWith(
     1,
-    expect.stringMatching(/src\/app$/),
-    expect.anything()
-  )
-  expect(mockMkdir).toHaveBeenNthCalledWith(
-    2,
     expect.stringMatching(/src\/lib$/),
     expect.anything()
   )
   expect(mockMkdir).toHaveBeenNthCalledWith(
-    3,
+    2,
     expect.stringMatching(/src\/components$/),
     expect.anything()
   )
@@ -184,12 +179,6 @@ test("init config-partial", async () => {
   )
   expect(mockWriteFile).toHaveBeenNthCalledWith(
     2,
-    expect.stringMatching(/src\/assets\/css\/tailwind.css$/),
-    expect.stringContaining(`@tailwind base`),
-    "utf8"
-  )
-  expect(mockWriteFile).toHaveBeenNthCalledWith(
-    3,
     expect.stringMatching(/utils.ts$/),
     expect.stringContaining(`import { type ClassValue, clsx } from "clsx"`),
     "utf8"
