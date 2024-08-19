@@ -79,7 +79,7 @@ export async function transformTailwindConfig(
 
   // Add Tailwind config plugins.
   tailwindConfig.plugins?.forEach((plugin) => {
-    addTailwindConfigPlugin(configObject, plugin, { quoteChar })
+    addTailwindConfigPlugin(configObject, plugin)
   })
 
   // Add Tailwind config theme.
@@ -190,20 +190,14 @@ async function addTailwindConfigTheme(
 
 function addTailwindConfigPlugin(
   configObject: ObjectLiteralExpression,
-  plugin: string,
-  {
-    quoteChar,
-  }: {
-    quoteChar: string
-  }
+  plugin: string
 ) {
   const existingPlugins = configObject.getProperty("plugins")
-  const newPlugin = `require(${quoteChar}${plugin}${quoteChar})`
 
   if (!existingPlugins) {
     configObject.addPropertyAssignment({
       name: "plugins",
-      initializer: `[${newPlugin}]`,
+      initializer: `[${plugin}]`,
     })
 
     return configObject
@@ -219,11 +213,11 @@ function addTailwindConfigPlugin(
         initializer
           .getElements()
           .map((element) => element.getText())
-          .includes(newPlugin)
+          .includes(plugin)
       ) {
         return configObject
       }
-      initializer.addElement(newPlugin)
+      initializer.addElement(plugin)
     }
 
     return configObject

@@ -34,6 +34,8 @@ export const rawConfigSchema = z
       components: z.string(),
       utils: z.string(),
       ui: z.string().optional(),
+      lib: z.string().optional(),
+      hooks: z.string().optional(),
     }),
   })
   .strict()
@@ -47,6 +49,8 @@ export const configSchema = rawConfigSchema.extend({
     tailwindCss: z.string(),
     utils: z.string(),
     components: z.string(),
+    lib: z.string(),
+    hooks: z.string(),
     ui: z.string(),
   }),
 })
@@ -85,7 +89,27 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
       components: await resolveImport(config.aliases["components"], tsConfig),
       ui: config.aliases["ui"]
         ? await resolveImport(config.aliases["ui"], tsConfig)
-        : await resolveImport(config.aliases["components"], tsConfig),
+        : path.resolve(
+            (await resolveImport(config.aliases["components"], tsConfig)) ??
+              cwd,
+            "ui"
+          ),
+      // TODO: Make this configurable.
+      // For now, we assume the lib and hooks directories are one level up from the components directory.
+      lib: config.aliases["lib"]
+        ? await resolveImport(config.aliases["lib"], tsConfig)
+        : path.resolve(
+            (await resolveImport(config.aliases["utils"], tsConfig)) ?? cwd,
+            ".."
+          ),
+      hooks: config.aliases["hooks"]
+        ? await resolveImport(config.aliases["hooks"], tsConfig)
+        : path.resolve(
+            (await resolveImport(config.aliases["components"], tsConfig)) ??
+              cwd,
+            "..",
+            "hooks"
+          ),
     },
   })
 }

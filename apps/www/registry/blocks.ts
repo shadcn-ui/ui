@@ -3,9 +3,18 @@ import { Registry } from "@/registry/schema"
 export const blocks: Registry = [
   {
     name: "hello-block",
-    type: "components:block",
-    registryDependencies: ["button", "use-media-query"],
-    files: ["block/hello-block.tsx"],
+    type: "registry:block",
+    registryDependencies: ["button", "use-media-query", "card"],
+    files: [
+      {
+        path: "block/hello-block/hello-block.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "block/hello-block/components/hello-card.tsx",
+        type: "registry:block",
+      },
+    ],
     tailwind: {
       config: {
         theme: {
@@ -38,7 +47,7 @@ export const blocks: Registry = [
   },
   {
     name: "charts-01",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: ["chart"],
     files: ["block/charts-01.tsx"],
     category: "Application",
@@ -46,7 +55,7 @@ export const blocks: Registry = [
   },
   {
     name: "dashboard-05",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: [
       "badge",
       "breadcrumb",
@@ -68,7 +77,7 @@ export const blocks: Registry = [
   },
   {
     name: "dashboard-06",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: [
       "badge",
       "breadcrumb",
@@ -87,7 +96,7 @@ export const blocks: Registry = [
   },
   {
     name: "dashboard-07",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: [
       "badge",
       "breadcrumb",
@@ -109,7 +118,7 @@ export const blocks: Registry = [
   },
   {
     name: "dashboard-04",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: ["button", "card", "dropdown-menu", "input"],
     files: ["block/dashboard-04.tsx"],
     category: "Application",
@@ -117,7 +126,7 @@ export const blocks: Registry = [
   },
   {
     name: "dashboard-03",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: [
       "badge",
       "button",
@@ -134,7 +143,7 @@ export const blocks: Registry = [
   },
   {
     name: "dashboard-02",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: ["badge", "button", "card", "dropdown-menu", "input"],
     files: ["block/dashboard-02.tsx"],
     category: "Application",
@@ -142,7 +151,7 @@ export const blocks: Registry = [
   },
   {
     name: "dashboard-01",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: ["button", "dropdown-menu", "input", "sheet"],
     files: ["block/dashboard-01.tsx"],
     category: "Application",
@@ -150,7 +159,7 @@ export const blocks: Registry = [
   },
   {
     name: "authentication-01",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: ["button", "card", "input", "label"],
     files: ["block/authentication-01.tsx"],
     category: "Authentication",
@@ -158,7 +167,7 @@ export const blocks: Registry = [
   },
   {
     name: "authentication-02",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: ["button", "card", "input", "label"],
     files: ["block/authentication-02.tsx"],
     category: "Authentication",
@@ -166,7 +175,7 @@ export const blocks: Registry = [
   },
   {
     name: "authentication-03",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: ["button", "card", "input", "label"],
     files: ["block/authentication-03.tsx"],
     category: "Authentication",
@@ -174,7 +183,7 @@ export const blocks: Registry = [
   },
   {
     name: "authentication-04",
-    type: "components:block",
+    type: "registry:block",
     registryDependencies: ["button", "card", "input", "label"],
     files: ["block/authentication-04.tsx"],
     category: "Authentication",

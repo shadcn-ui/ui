@@ -20,7 +20,7 @@ import {
   registryResolveItemsTree,
 } from "@/src/utils/registry"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
-import { updateDestinations } from "@/src/utils/updaters/update-destinations"
+import { updateFiles } from "@/src/utils/updaters/update-files"
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
 import { updateTailwindCss } from "@/src/utils/updaters/update-tailwind-css"
 import { Command } from "commander"
@@ -214,6 +214,9 @@ export async function promptForConfig(defaultConfig: Config | null = null) {
     aliases: {
       utils: options.utils,
       components: options.components,
+      // TODO: fix this.
+      lib: options.components.replace(/\/components$/, "lib"),
+      hooks: options.components.replace(/\/components$/, "hooks"),
     },
   })
 }
@@ -285,8 +288,6 @@ export async function promptForMinimalConfig(
 }
 
 export async function runInit(config: Config) {
-  await updateDestinations(config)
-
   const initializersSpinner = ora(`Initializing project.`)?.start()
   const tree = await registryResolveItemsTree(["index"], config)
 
@@ -301,7 +302,13 @@ export async function runInit(config: Config) {
   initializersSpinner?.succeed()
 
   const dependenciesSpinner = ora(`Installing dependencies.`)?.start()
-  // await updateRegistryDependencies(tree.registryDependencies, config)
   await updateDependencies(tree.dependencies, config)
   dependenciesSpinner?.succeed()
+
+  const filesSpinner = ora(`Writing files.`)?.start()
+  await updateFiles(tree.files, config, {
+    // Init will always overwrite files.
+    overwrite: true,
+  })
+  filesSpinner?.succeed()
 }

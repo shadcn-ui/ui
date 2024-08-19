@@ -1,30 +1,30 @@
 [
   {
     "name": "accordion",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-accordion"
     ],
     "files": [
       {
         "path": "ui/accordion.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "alert",
-    "type": "components:ui",
+    "type": "registry:ui",
     "files": [
       {
         "path": "ui/alert.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "alert-dialog",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-alert-dialog"
     ],
@@ -34,75 +34,75 @@
     "files": [
       {
         "path": "ui/alert-dialog.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "aspect-ratio",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-aspect-ratio"
     ],
     "files": [
       {
         "path": "ui/aspect-ratio.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "avatar",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-avatar"
     ],
     "files": [
       {
         "path": "ui/avatar.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "badge",
-    "type": "components:ui",
+    "type": "registry:ui",
     "files": [
       {
         "path": "ui/badge.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "breadcrumb",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-slot"
     ],
     "files": [
       {
         "path": "ui/breadcrumb.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "button",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-slot"
     ],
     "files": [
       {
         "path": "ui/button.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "calendar",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "react-day-picker@8.10.1",
       "date-fns"
@@ -113,23 +113,23 @@
     "files": [
       {
         "path": "ui/calendar.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "card",
-    "type": "components:ui",
+    "type": "registry:ui",
     "files": [
       {
         "path": "ui/card.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "carousel",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "embla-carousel-react"
     ],
@@ -139,13 +139,13 @@
     "files": [
       {
         "path": "ui/carousel.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "chart",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "recharts",
       "lucide-react"
@@ -156,39 +156,39 @@
     "files": [
       {
         "path": "ui/chart.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "checkbox",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-checkbox"
     ],
     "files": [
       {
         "path": "ui/checkbox.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "collapsible",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-collapsible"
     ],
     "files": [
       {
         "path": "ui/collapsible.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "command",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "cmdk@1.0.0"
     ],
@@ -198,39 +198,39 @@
     "files": [
       {
         "path": "ui/command.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "context-menu",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-context-menu"
     ],
     "files": [
       {
         "path": "ui/context-menu.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "dialog",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-dialog"
     ],
     "files": [
       {
         "path": "ui/dialog.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "drawer",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "vaul",
       "@radix-ui/react-dialog"
@@ -238,26 +238,26 @@
     "files": [
       {
         "path": "ui/drawer.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "dropdown-menu",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-dropdown-menu"
     ],
     "files": [
       {
         "path": "ui/dropdown-menu.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "form",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-label",
       "@radix-ui/react-slot",
@@ -272,228 +272,228 @@
     "files": [
       {
         "path": "ui/form.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "hover-card",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-hover-card"
     ],
     "files": [
       {
         "path": "ui/hover-card.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "input",
-    "type": "components:ui",
+    "type": "registry:ui",
     "files": [
       {
         "path": "ui/input.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "input-otp",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "input-otp"
     ],
     "files": [
       {
         "path": "ui/input-otp.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "label",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-label"
     ],
     "files": [
       {
         "path": "ui/label.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "menubar",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-menubar"
     ],
     "files": [
       {
         "path": "ui/menubar.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "navigation-menu",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-navigation-menu"
     ],
     "files": [
       {
         "path": "ui/navigation-menu.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "pagination",
-    "type": "components:ui",
+    "type": "registry:ui",
     "registryDependencies": [
       "button"
     ],
     "files": [
       {
         "path": "ui/pagination.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "popover",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-popover"
     ],
     "files": [
       {
         "path": "ui/popover.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "progress",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-progress"
     ],
     "files": [
       {
         "path": "ui/progress.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "radio-group",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-radio-group"
     ],
     "files": [
       {
         "path": "ui/radio-group.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "resizable",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "react-resizable-panels"
     ],
     "files": [
       {
         "path": "ui/resizable.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "scroll-area",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-scroll-area"
     ],
     "files": [
       {
         "path": "ui/scroll-area.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "select",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-select"
     ],
     "files": [
       {
         "path": "ui/select.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "separator",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-separator"
     ],
     "files": [
       {
         "path": "ui/separator.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "sheet",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-dialog"
     ],
     "files": [
       {
         "path": "ui/sheet.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "skeleton",
-    "type": "components:ui",
+    "type": "registry:ui",
     "files": [
       {
         "path": "ui/skeleton.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "slider",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-slider"
     ],
     "files": [
       {
         "path": "ui/slider.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "sonner",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "sonner",
       "next-themes"
@@ -501,93 +501,93 @@
     "files": [
       {
         "path": "ui/sonner.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "switch",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-switch"
     ],
     "files": [
       {
         "path": "ui/switch.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "table",
-    "type": "components:ui",
+    "type": "registry:ui",
     "files": [
       {
         "path": "ui/table.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "tabs",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-tabs"
     ],
     "files": [
       {
         "path": "ui/tabs.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "textarea",
-    "type": "components:ui",
+    "type": "registry:ui",
     "files": [
       {
         "path": "ui/textarea.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "toast",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-toast"
     ],
     "files": [
       {
         "path": "ui/toast.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       },
       {
         "path": "ui/use-toast.ts",
-        "type": "components:ui"
+        "type": "registry:ui"
       },
       {
         "path": "ui/toaster.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "toggle",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-toggle"
     ],
     "files": [
       {
         "path": "ui/toggle.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "toggle-group",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-toggle-group"
     ],
@@ -597,34 +597,39 @@
     "files": [
       {
         "path": "ui/toggle-group.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "tooltip",
-    "type": "components:ui",
+    "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-tooltip"
     ],
     "files": [
       {
         "path": "ui/tooltip.tsx",
-        "type": "components:ui"
+        "type": "registry:ui"
       }
     ]
   },
   {
     "name": "hello-block",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "button",
-      "use-media-query"
+      "use-media-query",
+      "card"
     ],
     "files": [
       {
-        "path": "block/hello-block.tsx",
-        "type": "components:block"
+        "path": "block/hello-block/hello-block.tsx",
+        "type": "registry:block"
+      },
+      {
+        "path": "block/hello-block/components/hello-card.tsx",
+        "type": "registry:block"
       }
     ],
     "tailwind": {
@@ -659,14 +664,14 @@
   },
   {
     "name": "charts-01",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "chart"
     ],
     "files": [
       {
         "path": "block/charts-01.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Application",
@@ -674,7 +679,7 @@
   },
   {
     "name": "dashboard-05",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "badge",
       "breadcrumb",
@@ -693,7 +698,7 @@
     "files": [
       {
         "path": "block/dashboard-05.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Application",
@@ -701,7 +706,7 @@
   },
   {
     "name": "dashboard-06",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "badge",
       "breadcrumb",
@@ -717,7 +722,7 @@
     "files": [
       {
         "path": "block/dashboard-06.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Application",
@@ -725,7 +730,7 @@
   },
   {
     "name": "dashboard-07",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "badge",
       "breadcrumb",
@@ -744,7 +749,7 @@
     "files": [
       {
         "path": "block/dashboard-07.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Application",
@@ -752,7 +757,7 @@
   },
   {
     "name": "dashboard-04",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "button",
       "card",
@@ -762,7 +767,7 @@
     "files": [
       {
         "path": "block/dashboard-04.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Application",
@@ -770,7 +775,7 @@
   },
   {
     "name": "dashboard-03",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "badge",
       "button",
@@ -784,7 +789,7 @@
     "files": [
       {
         "path": "block/dashboard-03.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Application",
@@ -792,7 +797,7 @@
   },
   {
     "name": "dashboard-02",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "badge",
       "button",
@@ -803,7 +808,7 @@
     "files": [
       {
         "path": "block/dashboard-02.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Application",
@@ -811,7 +816,7 @@
   },
   {
     "name": "dashboard-01",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "button",
       "dropdown-menu",
@@ -821,7 +826,7 @@
     "files": [
       {
         "path": "block/dashboard-01.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Application",
@@ -829,7 +834,7 @@
   },
   {
     "name": "authentication-01",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "button",
       "card",
@@ -839,7 +844,7 @@
     "files": [
       {
         "path": "block/authentication-01.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Authentication",
@@ -847,7 +852,7 @@
   },
   {
     "name": "authentication-02",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "button",
       "card",
@@ -857,7 +862,7 @@
     "files": [
       {
         "path": "block/authentication-02.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Authentication",
@@ -865,7 +870,7 @@
   },
   {
     "name": "authentication-03",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "button",
       "card",
@@ -875,7 +880,7 @@
     "files": [
       {
         "path": "block/authentication-03.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Authentication",
@@ -883,7 +888,7 @@
   },
   {
     "name": "authentication-04",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "button",
       "card",
@@ -893,7 +898,7 @@
     "files": [
       {
         "path": "block/authentication-04.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Authentication",
@@ -901,7 +906,7 @@
   },
   {
     "name": "chart-area-axes",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -909,7 +914,7 @@
     "files": [
       {
         "path": "block/chart-area-axes.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -917,7 +922,7 @@
   },
   {
     "name": "chart-area-default",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -925,7 +930,7 @@
     "files": [
       {
         "path": "block/chart-area-default.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -933,7 +938,7 @@
   },
   {
     "name": "chart-area-gradient",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -941,7 +946,7 @@
     "files": [
       {
         "path": "block/chart-area-gradient.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -949,7 +954,7 @@
   },
   {
     "name": "chart-area-icons",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -957,7 +962,7 @@
     "files": [
       {
         "path": "block/chart-area-icons.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -965,7 +970,7 @@
   },
   {
     "name": "chart-area-interactive",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -973,7 +978,7 @@
     "files": [
       {
         "path": "block/chart-area-interactive.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -981,7 +986,7 @@
   },
   {
     "name": "chart-area-legend",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -989,7 +994,7 @@
     "files": [
       {
         "path": "block/chart-area-legend.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -997,7 +1002,7 @@
   },
   {
     "name": "chart-area-linear",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1005,7 +1010,7 @@
     "files": [
       {
         "path": "block/chart-area-linear.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1013,7 +1018,7 @@
   },
   {
     "name": "chart-area-stacked-expand",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1021,7 +1026,7 @@
     "files": [
       {
         "path": "block/chart-area-stacked-expand.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1029,7 +1034,7 @@
   },
   {
     "name": "chart-area-stacked",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1037,7 +1042,7 @@
     "files": [
       {
         "path": "block/chart-area-stacked.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1045,7 +1050,7 @@
   },
   {
     "name": "chart-area-step",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1053,7 +1058,7 @@
     "files": [
       {
         "path": "block/chart-area-step.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1061,7 +1066,7 @@
   },
   {
     "name": "chart-bar-active",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1069,7 +1074,7 @@
     "files": [
       {
         "path": "block/chart-bar-active.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1077,7 +1082,7 @@
   },
   {
     "name": "chart-bar-default",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1085,7 +1090,7 @@
     "files": [
       {
         "path": "block/chart-bar-default.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1093,7 +1098,7 @@
   },
   {
     "name": "chart-bar-horizontal",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1101,7 +1106,7 @@
     "files": [
       {
         "path": "block/chart-bar-horizontal.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1109,7 +1114,7 @@
   },
   {
     "name": "chart-bar-interactive",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1117,7 +1122,7 @@
     "files": [
       {
         "path": "block/chart-bar-interactive.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1125,7 +1130,7 @@
   },
   {
     "name": "chart-bar-label-custom",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1133,7 +1138,7 @@
     "files": [
       {
         "path": "block/chart-bar-label-custom.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1141,7 +1146,7 @@
   },
   {
     "name": "chart-bar-label",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1149,7 +1154,7 @@
     "files": [
       {
         "path": "block/chart-bar-label.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1157,7 +1162,7 @@
   },
   {
     "name": "chart-bar-mixed",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1165,7 +1170,7 @@
     "files": [
       {
         "path": "block/chart-bar-mixed.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1173,7 +1178,7 @@
   },
   {
     "name": "chart-bar-multiple",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1181,7 +1186,7 @@
     "files": [
       {
         "path": "block/chart-bar-multiple.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1189,7 +1194,7 @@
   },
   {
     "name": "chart-bar-negative",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1197,7 +1202,7 @@
     "files": [
       {
         "path": "block/chart-bar-negative.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1205,7 +1210,7 @@
   },
   {
     "name": "chart-bar-stacked",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1213,7 +1218,7 @@
     "files": [
       {
         "path": "block/chart-bar-stacked.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1221,7 +1226,7 @@
   },
   {
     "name": "chart-line-default",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1229,7 +1234,7 @@
     "files": [
       {
         "path": "block/chart-line-default.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1237,7 +1242,7 @@
   },
   {
     "name": "chart-line-dots-colors",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1245,7 +1250,7 @@
     "files": [
       {
         "path": "block/chart-line-dots-colors.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1253,7 +1258,7 @@
   },
   {
     "name": "chart-line-dots-custom",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1261,7 +1266,7 @@
     "files": [
       {
         "path": "block/chart-line-dots-custom.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1269,7 +1274,7 @@
   },
   {
     "name": "chart-line-dots",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1277,7 +1282,7 @@
     "files": [
       {
         "path": "block/chart-line-dots.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1285,7 +1290,7 @@
   },
   {
     "name": "chart-line-interactive",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1293,7 +1298,7 @@
     "files": [
       {
         "path": "block/chart-line-interactive.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1301,7 +1306,7 @@
   },
   {
     "name": "chart-line-label-custom",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1309,7 +1314,7 @@
     "files": [
       {
         "path": "block/chart-line-label-custom.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1317,7 +1322,7 @@
   },
   {
     "name": "chart-line-label",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1325,7 +1330,7 @@
     "files": [
       {
         "path": "block/chart-line-label.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1333,7 +1338,7 @@
   },
   {
     "name": "chart-line-linear",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1341,7 +1346,7 @@
     "files": [
       {
         "path": "block/chart-line-linear.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1349,7 +1354,7 @@
   },
   {
     "name": "chart-line-multiple",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1357,7 +1362,7 @@
     "files": [
       {
         "path": "block/chart-line-multiple.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1365,7 +1370,7 @@
   },
   {
     "name": "chart-line-step",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1373,7 +1378,7 @@
     "files": [
       {
         "path": "block/chart-line-step.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1381,7 +1386,7 @@
   },
   {
     "name": "chart-pie-donut-active",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1389,7 +1394,7 @@
     "files": [
       {
         "path": "block/chart-pie-donut-active.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1397,7 +1402,7 @@
   },
   {
     "name": "chart-pie-donut-text",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1405,7 +1410,7 @@
     "files": [
       {
         "path": "block/chart-pie-donut-text.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1413,7 +1418,7 @@
   },
   {
     "name": "chart-pie-donut",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1421,7 +1426,7 @@
     "files": [
       {
         "path": "block/chart-pie-donut.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1429,7 +1434,7 @@
   },
   {
     "name": "chart-pie-interactive",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1437,7 +1442,7 @@
     "files": [
       {
         "path": "block/chart-pie-interactive.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1445,7 +1450,7 @@
   },
   {
     "name": "chart-pie-label-custom",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1453,7 +1458,7 @@
     "files": [
       {
         "path": "block/chart-pie-label-custom.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1461,7 +1466,7 @@
   },
   {
     "name": "chart-pie-label-list",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1469,7 +1474,7 @@
     "files": [
       {
         "path": "block/chart-pie-label-list.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1477,7 +1482,7 @@
   },
   {
     "name": "chart-pie-label",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1485,7 +1490,7 @@
     "files": [
       {
         "path": "block/chart-pie-label.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1493,7 +1498,7 @@
   },
   {
     "name": "chart-pie-legend",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1501,7 +1506,7 @@
     "files": [
       {
         "path": "block/chart-pie-legend.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1509,7 +1514,7 @@
   },
   {
     "name": "chart-pie-separator-none",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1517,7 +1522,7 @@
     "files": [
       {
         "path": "block/chart-pie-separator-none.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1525,7 +1530,7 @@
   },
   {
     "name": "chart-pie-simple",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1533,7 +1538,7 @@
     "files": [
       {
         "path": "block/chart-pie-simple.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1541,7 +1546,7 @@
   },
   {
     "name": "chart-pie-stacked",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1549,7 +1554,7 @@
     "files": [
       {
         "path": "block/chart-pie-stacked.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1557,7 +1562,7 @@
   },
   {
     "name": "chart-radar-default",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1565,7 +1570,7 @@
     "files": [
       {
         "path": "block/chart-radar-default.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1573,7 +1578,7 @@
   },
   {
     "name": "chart-radar-dots",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1581,7 +1586,7 @@
     "files": [
       {
         "path": "block/chart-radar-dots.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1589,7 +1594,7 @@
   },
   {
     "name": "chart-radar-grid-circle-fill",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1597,7 +1602,7 @@
     "files": [
       {
         "path": "block/chart-radar-grid-circle-fill.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1605,7 +1610,7 @@
   },
   {
     "name": "chart-radar-grid-circle-no-lines",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1613,7 +1618,7 @@
     "files": [
       {
         "path": "block/chart-radar-grid-circle-no-lines.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1621,7 +1626,7 @@
   },
   {
     "name": "chart-radar-grid-circle",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1629,7 +1634,7 @@
     "files": [
       {
         "path": "block/chart-radar-grid-circle.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1637,7 +1642,7 @@
   },
   {
     "name": "chart-radar-grid-custom",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1645,7 +1650,7 @@
     "files": [
       {
         "path": "block/chart-radar-grid-custom.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1653,7 +1658,7 @@
   },
   {
     "name": "chart-radar-grid-fill",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1661,7 +1666,7 @@
     "files": [
       {
         "path": "block/chart-radar-grid-fill.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1669,7 +1674,7 @@
   },
   {
     "name": "chart-radar-grid-none",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1677,7 +1682,7 @@
     "files": [
       {
         "path": "block/chart-radar-grid-none.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1685,7 +1690,7 @@
   },
   {
     "name": "chart-radar-icons",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1693,7 +1698,7 @@
     "files": [
       {
         "path": "block/chart-radar-icons.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1701,7 +1706,7 @@
   },
   {
     "name": "chart-radar-label-custom",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1709,7 +1714,7 @@
     "files": [
       {
         "path": "block/chart-radar-label-custom.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1717,7 +1722,7 @@
   },
   {
     "name": "chart-radar-legend",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1725,7 +1730,7 @@
     "files": [
       {
         "path": "block/chart-radar-legend.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1733,7 +1738,7 @@
   },
   {
     "name": "chart-radar-lines-only",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1741,7 +1746,7 @@
     "files": [
       {
         "path": "block/chart-radar-lines-only.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1749,7 +1754,7 @@
   },
   {
     "name": "chart-radar-multiple",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1757,7 +1762,7 @@
     "files": [
       {
         "path": "block/chart-radar-multiple.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1765,7 +1770,7 @@
   },
   {
     "name": "chart-radar-radius",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1773,7 +1778,7 @@
     "files": [
       {
         "path": "block/chart-radar-radius.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1781,7 +1786,7 @@
   },
   {
     "name": "chart-radial-grid",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1789,7 +1794,7 @@
     "files": [
       {
         "path": "block/chart-radial-grid.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1797,7 +1802,7 @@
   },
   {
     "name": "chart-radial-label",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1805,7 +1810,7 @@
     "files": [
       {
         "path": "block/chart-radial-label.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1813,7 +1818,7 @@
   },
   {
     "name": "chart-radial-shape",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1821,7 +1826,7 @@
     "files": [
       {
         "path": "block/chart-radial-shape.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1829,7 +1834,7 @@
   },
   {
     "name": "chart-radial-simple",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1837,7 +1842,7 @@
     "files": [
       {
         "path": "block/chart-radial-simple.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1845,7 +1850,7 @@
   },
   {
     "name": "chart-radial-stacked",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1853,7 +1858,7 @@
     "files": [
       {
         "path": "block/chart-radial-stacked.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1861,7 +1866,7 @@
   },
   {
     "name": "chart-radial-text",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1869,7 +1874,7 @@
     "files": [
       {
         "path": "block/chart-radial-text.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1877,7 +1882,7 @@
   },
   {
     "name": "chart-tooltip-default",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1885,7 +1890,7 @@
     "files": [
       {
         "path": "block/chart-tooltip-default.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1893,7 +1898,7 @@
   },
   {
     "name": "chart-tooltip-indicator-line",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1901,7 +1906,7 @@
     "files": [
       {
         "path": "block/chart-tooltip-indicator-line.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1909,7 +1914,7 @@
   },
   {
     "name": "chart-tooltip-indicator-none",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1917,7 +1922,7 @@
     "files": [
       {
         "path": "block/chart-tooltip-indicator-none.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1925,7 +1930,7 @@
   },
   {
     "name": "chart-tooltip-label-none",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1933,7 +1938,7 @@
     "files": [
       {
         "path": "block/chart-tooltip-label-none.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1941,7 +1946,7 @@
   },
   {
     "name": "chart-tooltip-label-custom",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1949,7 +1954,7 @@
     "files": [
       {
         "path": "block/chart-tooltip-label-custom.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1957,7 +1962,7 @@
   },
   {
     "name": "chart-tooltip-label-formatter",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1965,7 +1970,7 @@
     "files": [
       {
         "path": "block/chart-tooltip-label-formatter.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1973,7 +1978,7 @@
   },
   {
     "name": "chart-tooltip-formatter",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1981,7 +1986,7 @@
     "files": [
       {
         "path": "block/chart-tooltip-formatter.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -1989,7 +1994,7 @@
   },
   {
     "name": "chart-tooltip-icons",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -1997,7 +2002,7 @@
     "files": [
       {
         "path": "block/chart-tooltip-icons.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -2005,7 +2010,7 @@
   },
   {
     "name": "chart-tooltip-advanced",
-    "type": "components:block",
+    "type": "registry:block",
     "registryDependencies": [
       "card",
       "chart"
@@ -2013,7 +2018,7 @@
     "files": [
       {
         "path": "block/chart-tooltip-advanced.tsx",
-        "type": "components:block"
+        "type": "registry:block"
       }
     ],
     "category": "Charts",
@@ -2030,6 +2035,19 @@
       {
         "path": "lib/utils.ts",
         "type": "registry:lib"
+      }
+    ]
+  },
+  {
+    "name": "use-media-query",
+    "type": "registry:hook",
+    "dependencies": [
+      "@react-hook/window-size@1.0.3"
+    ],
+    "files": [
+      {
+        "path": "hooks/use-media-query.ts",
+        "type": "registry:hook"
       }
     ]
   }

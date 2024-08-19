@@ -6,21 +6,26 @@ import { cwd } from "process"
 import template from "lodash.template"
 import { rimraf } from "rimraf"
 import { Project, ScriptKind, SyntaxKind } from "ts-morph"
+import { z } from "zod"
 
 import { colorMapping, colors } from "../registry/colors"
 import { registry } from "../registry/registry"
-import { Registry, RegistryEntry, registrySchema } from "../registry/schema"
+import {
+  Registry,
+  RegistryEntry,
+  registryItemTypeSchema,
+  registrySchema,
+} from "../registry/schema"
 import { styles } from "../registry/styles"
 import { themes } from "../registry/themes"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/registry")
 
-const REGISTRY_INDEX_WHITELIST = [
-  "components:ui",
-  "components:block",
+const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
+  "registry:block",
   "registry:lib",
   "registry:ui",
-  "registry:hooks",
+  "registry:hook",
 ]
 
 // ----------------------------------------------------------------------------
@@ -50,7 +55,10 @@ export const Index: Record<string, any> = {
     // Build style index.
     for (const item of registry) {
       const resolveFiles = item.files?.map(
-        (file) => `registry/${style.name}/${file}`
+        (file) =>
+          `registry/${style.name}/${
+            typeof file === "string" ? file : file.path
+          }`
       )
       if (!resolveFiles) {
         continue
@@ -60,10 +68,7 @@ export const Index: Record<string, any> = {
       let sourceFilename = ""
 
       let chunks: any = []
-      if (
-        item.type === "components:block" ||
-        item.type === "components:chart"
-      ) {
+      if (item.type === "registry:block") {
         const file = resolveFiles[0]
         const filename = path.basename(file)
         const raw = await fs.readFile(file, "utf8")

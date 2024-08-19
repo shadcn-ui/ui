@@ -224,6 +224,8 @@ export async function getProjectConfig(cwd: string): Promise<Config | null> {
     aliases: {
       utils: `${projectInfo.aliasPrefix}/lib/utils`,
       components: `${projectInfo.aliasPrefix}/components`,
+      lib: `${projectInfo.aliasPrefix}/lib`,
+      hooks: `${projectInfo.aliasPrefix}/hooks`,
     },
   }
 

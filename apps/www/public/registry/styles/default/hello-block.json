@@ -1,15 +1,21 @@
 {
   "name": "hello-block",
-  "type": "components:block",
+  "type": "registry:block",
   "registryDependencies": [
     "button",
-    "use-media-query"
+    "use-media-query",
+    "card"
   ],
   "files": [
     {
-      "path": "block/hello-block.tsx",
-      "type": "components:block",
-      "content": "\"use client\"\n\nimport { useMediaQuery } from \"@/registry/default/hooks/use-media-query\"\nimport { cn } from \"@/registry/default/lib/utils\"\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ExampleBlock() {\n  const isDesktop = useMediaQuery(\"(min-width: 768px)\")\n\n  return (\n    <div\n      className={cn(\n        \"shadow-brand p-12\",\n        isDesktop\n          ? \"bg-muted text-muted-foreground\"\n          : \"bg-primary text-primary-foreground\"\n      )}\n    >\n      <Button className=\"bg-brand-primary border-brand-secondary border-4\">\n        A button\n      </Button>\n    </div>\n  )\n}\n"
+      "path": "block/hello-block/hello-block.tsx",
+      "type": "registry:block",
+      "content": "\"use client\"\n\nimport { HelloCard } from \"@/registry/default/block/hello-block/components/hello-card\"\nimport { useMediaQuery } from \"@/registry/default/hooks/use-media-query\"\nimport { cn } from \"@/registry/default/lib/utils\"\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function HelloBlock() {\n  const isDesktop = useMediaQuery(\"(min-width: 768px)\")\n\n  return (\n    <HelloCard\n      title=\"Hello Block\"\n      className={cn(\n        \"p-12\",\n        isDesktop\n          ? \"bg-muted text-muted-foreground\"\n          : \"bg-primary text-primary-foreground\"\n      )}\n    >\n      <p>Hello. This is a component inside a block.</p>\n      <p>You are currently on {isDesktop ? \"desktop\" : \"mobile\"}</p>\n      <Button>Click me</Button>\n    </HelloCard>\n  )\n}\n"
+    },
+    {
+      "path": "block/hello-block/components/hello-card.tsx",
+      "type": "registry:block",
+      "content": "import {\n  Card,\n  CardContent,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/default/ui/card\"\n\nexport function HelloCard({\n  title,\n  children,\n  className,\n}: {\n  title: string\n} & React.ComponentProps<typeof Card>) {\n  return (\n    <Card className={className}>\n      <CardHeader>\n        <CardTitle className=\"text-brand-secondary text-4xl\">{title}</CardTitle>\n      </CardHeader>\n      <CardContent>{children}</CardContent>\n    </Card>\n  )\n}\n"
     }
   ],
   "tailwind": {

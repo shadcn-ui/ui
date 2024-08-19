@@ -8,15 +8,42 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
 
     // Replace @/registry/[style] with the components alias.
     if (moduleSpecifier.startsWith("@/registry/")) {
-      if (config.aliases.ui) {
-        importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(/^@\/registry\/[^/]+\/ui/, config.aliases.ui)
-        )
-      } else {
+      if (moduleSpecifier.match(/^@\/registry\/(.+)\/ui/)) {
         importDeclaration.setModuleSpecifier(
           moduleSpecifier.replace(
-            /^@\/registry\/[^/]+/,
+            /^@\/registry\/(.+)\/ui/,
+            config.aliases.ui ?? `${config.aliases.components}/ui`
+          )
+        )
+      } else if (
+        config.aliases.components &&
+        moduleSpecifier.match(/^@\/registry\/(.+)\/components/)
+      ) {
+        importDeclaration.setModuleSpecifier(
+          moduleSpecifier.replace(
+            /^@\/registry\/(.+)\/components/,
             config.aliases.components
+          )
+        )
+      }
+
+      if (
+        config.aliases.lib &&
+        moduleSpecifier.match(/^@\/registry\/(.+)\/lib/)
+      ) {
+        importDeclaration.setModuleSpecifier(
+          moduleSpecifier.replace(/^@\/registry\/(.+)\/lib/, config.aliases.lib)
+        )
+      }
+
+      if (
+        config.aliases.hooks &&
+        moduleSpecifier.match(/^@\/registry\/(.+)\/hooks/)
+      ) {
+        importDeclaration.setModuleSpecifier(
+          moduleSpecifier.replace(
+            /^@\/registry\/(.+)\/hooks/,
+            config.aliases.hooks
           )
         )
       }

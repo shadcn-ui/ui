@@ -7,7 +7,6 @@ import {
   registryIndexSchema,
   registryItemFileSchema,
   registryItemSchema,
-  registryItemTypeSchema,
   registryResolvedItemsTreeSchema,
   stylesSchema,
 } from "@/src/utils/registry/schema"
@@ -145,7 +144,7 @@ export async function getItemTargetPath(
     return override
   }
 
-  if (item.type === "components:ui" && config.aliases.ui) {
+  if (item.type === "registry:ui" && config.aliases.ui) {
     return config.resolvedPaths.ui
   }
 
@@ -190,7 +189,7 @@ async function fetchRegistry(paths: string[]) {
   }
 }
 
-export async function getRegistryItemFileTargetPath(
+export function getRegistryItemFileTargetPath(
   file: z.infer<typeof registryItemFileSchema>,
   config: Config,
   override?: string
@@ -204,14 +203,18 @@ export async function getRegistryItemFileTargetPath(
   }
 
   if (file.type === "registry:lib") {
-    return config.resolvedPaths.utils
+    return config.resolvedPaths.lib
   }
 
-  if (file.type === "registry:component") {
+  if (file.type === "registry:block") {
     return config.resolvedPaths.components
   }
 
-  return null
+  if (file.type === "registry:hook") {
+    return config.resolvedPaths.hooks
+  }
+
+  return config.resolvedPaths.components
 }
 
 export async function registryResolveItemsTree(
