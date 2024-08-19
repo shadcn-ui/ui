@@ -1,17 +1,23 @@
 import path from "path"
 import { Config } from "@/src/utils/get-config"
+import { handleError } from "@/src/utils/handle-error"
+import { logger } from "@/src/utils/logger"
 import {
   registryBaseColorSchema,
   registryIndexSchema,
+  registryItemSchema,
   registryItemWithContentSchema,
   registryWithContentSchema,
   stylesSchema,
 } from "@/src/utils/registry/schema"
 import { HttpsProxyAgent } from "https-proxy-agent"
+import { cyan } from "kleur/colors"
 import fetch from "node-fetch"
 import { z } from "zod"
 
-const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "https://ui.shadcn.com"
+const REGISTRY_BASE_URL =
+  process.env.COMPONENTS_REGISTRY_URL ?? "https://ui.shadcn.com"
+
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined
@@ -36,14 +42,15 @@ export async function getRegistryStyles() {
   }
 }
 
-export async function getRegistryStyleIndex(style: string) {
+export async function getRegistryItem(style: string, name: string) {
   try {
-    const [result] = await fetchRegistry([`styles/${style}/index.json`])
+    const [result] = await fetchRegistry([`styles/${style}/${name}.json`])
 
-    return registryItemWithContentSchema.parse(result)
+    return registryItemSchema.parse(result)
   } catch (error) {
-    console.log(error)
-    throw new Error(`Failed to fetch style index from registry.`)
+    handleError(error)
+
+    return null
   }
 }
 
@@ -78,7 +85,7 @@ export async function getRegistryBaseColor(baseColor: string) {
 
     return registryBaseColorSchema.parse(result)
   } catch (error) {
-    throw new Error(`Failed to fetch base color from registry.`)
+    handleError(error)
   }
 }
 
@@ -151,16 +158,28 @@ async function fetchRegistry(paths: string[]) {
   try {
     const results = await Promise.all(
       paths.map(async (path) => {
-        const response = await fetch(`${baseUrl}/registry/${path}`, {
-          agent,
-        })
-        return await response.json()
+        const url = `${REGISTRY_BASE_URL}/registry/${path}`
+        const response = await fetch(url, { agent })
+
+        if (!response.ok) {
+          const errorMessages: { [key: number]: string } = {
+            404: "Not found",
+            401: "Unauthorized",
+            403: "Forbidden",
+            500: "Internal server error",
+          }
+          const message = errorMessages[response.status] || response.statusText
+          throw new Error(`Failed to fetch from ${cyan(url)}. ${message}`)
+        }
+
+        return response.json()
       })
     )
 
     return results
   } catch (error) {
-    console.log(error)
-    throw new Error(`Failed to fetch registry from ${baseUrl}.`)
+    logger.error("\n")
+    handleError(error)
+    return []
   }
 }

@@ -15,14 +15,6 @@ import { themes } from "../registry/themes"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/registry")
 
-const SHARED_DEPENDENCIES = [
-  "tailwindcss-animate",
-  "class-variance-authority",
-  "clsx",
-  "tailwind-merge",
-  "lucide-react",
-]
-
 // ----------------------------------------------------------------------------
 // Build __registry__/index.tsx.
 // ----------------------------------------------------------------------------
@@ -343,7 +335,11 @@ async function buildStylesIndex() {
     const payload = {
       name: style.name,
       dependencies: [
-        ...SHARED_DEPENDENCIES,
+        "tailwindcss-animate",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge",
+        "lucide-react",
         // TODO: Remove this when we migrate to lucide-react.
         style.name === "new-york" ? "@radix-ui/react-icons" : "",
       ],
@@ -362,12 +358,20 @@ async function buildStylesIndex() {
           plugins: [`require("tailwindcss-animate")`],
         },
       },
-      files: [],
+      files: [
+        {
+          name: "utils.ts",
+          content: `import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}`,
+          type: "utils",
+        },
+      ],
       cssVariables: {
         light: {
-          "--radius": "0.5rem",
-        },
-        dark: {
           "--radius": "0.5rem",
         },
       },

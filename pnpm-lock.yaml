@@ -388,9 +388,6 @@ importers:
       '@babel/plugin-transform-typescript':
         specifier: ^7.22.5
         version: 7.22.5(@babel/core@7.22.1)
-      chalk:
-        specifier: 5.2.0
-        version: 5.2.0
       commander:
         specifier: ^10.0.0
         version: 10.0.0
@@ -415,6 +412,9 @@ importers:
       https-proxy-agent:
         specifier: ^6.2.0
         version: 6.2.0
+      kleur:
+        specifier: ^4.1.5
+        version: 4.1.5
       lodash.template:
         specifier: ^4.5.0
         version: 4.5.0

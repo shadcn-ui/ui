@@ -11,9 +11,9 @@ import {
 } from "@/src/utils/registry"
 import { registryIndexSchema } from "@/src/utils/registry/schema"
 import { transform } from "@/src/utils/transformers"
-import chalk from "chalk"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
+import { green, red } from "kleur/colors"
 import { z } from "zod"
 
 const updateOptionsSchema = z.object({
@@ -50,7 +50,7 @@ export const diff = new Command()
       const config = await getConfig(cwd)
       if (!config) {
         logger.warn(
-          `Configuration is missing. Please run ${chalk.green(
+          `Configuration is missing. Please run ${green(
             `init`
           )} to create a components.json file.`
         )
@@ -99,9 +99,7 @@ export const diff = new Command()
           }
         }
         logger.break()
-        logger.info(
-          `Run ${chalk.green(`diff <component>`)} to see the changes.`
-        )
+        logger.info(`Run ${green(`diff <component>`)} to see the changes.`)
         process.exit(0)
       }
 
@@ -112,7 +110,7 @@ export const diff = new Command()
 
       if (!component) {
         logger.error(
-          `The component ${chalk.green(options.component)} does not exist.`
+          `The component ${green(options.component)} does not exist.`
         )
         process.exit(1)
       }
@@ -184,10 +182,10 @@ async function printDiff(diff: Change[]) {
   diff.forEach((part) => {
     if (part) {
       if (part.added) {
-        return process.stdout.write(chalk.green(part.value))
+        return process.stdout.write(green(part.value))
       }
       if (part.removed) {
-        return process.stdout.write(chalk.red(part.value))
+        return process.stdout.write(red(part.value))
       }
 
       return process.stdout.write(part.value)

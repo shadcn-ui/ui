@@ -25,7 +25,7 @@ test("init config-full", async () => {
     cssVarsTemplate:
       "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
   })
-  vi.spyOn(registry, "getRegistryStyleIndex").mockResolvedValue({
+  vi.spyOn(registry, "getRegistryItem").mockResolvedValue({
     name: "new-york",
     dependencies: [
       "tailwindcss-animate",
@@ -53,9 +53,6 @@ test("init config-full", async () => {
     files: [],
     cssVariables: {
       light: {
-        "--radius": "0.5rem",
-      },
-      dark: {
         "--radius": "0.5rem",
       },
     },
@@ -120,7 +117,7 @@ test("init config-partial", async () => {
     cssVarsTemplate:
       "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n",
   })
-  vi.spyOn(registry, "getRegistryStyleIndex").mockResolvedValue({
+  vi.spyOn(registry, "getRegistryItem").mockResolvedValue({
     name: "new-york",
     dependencies: [
       "tailwindcss-animate",
@@ -147,9 +144,6 @@ test("init config-partial", async () => {
     files: [],
     cssVariables: {
       light: {
-        "--radius": "0.5rem",
-      },
-      dark: {
         "--radius": "0.5rem",
       },
     },

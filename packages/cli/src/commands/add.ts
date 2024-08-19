@@ -12,9 +12,9 @@ import {
   resolveTree,
 } from "@/src/utils/registry"
 import { transform } from "@/src/utils/transformers"
-import chalk from "chalk"
 import { Command } from "commander"
 import { execa } from "execa"
+import { green } from "kleur/colors"
 import ora from "ora"
 import prompts from "prompts"
 import { z } from "zod"
@@ -58,7 +58,7 @@ export const add = new Command()
       const config = await getConfig(cwd)
       if (!config) {
         logger.error(
-          `Configuration is missing. Please run ${chalk.green(
+          `Configuration is missing. Please run ${green(
             `init`
           )} to create a components.json file.`
         )
@@ -149,7 +149,7 @@ export const add = new Command()
 
             if (!overwrite) {
               logger.info(
-                `Skipped ${item.name}. To overwrite, run with the ${chalk.green(
+                `Skipped ${item.name}. To overwrite, run with the ${green(
                   "--overwrite"
                 )} flag.`
               )

@@ -1,12 +1,7 @@
 import { z } from "zod"
 
-export const registryCssVarsSchema = z.object({
-  light: z.record(z.string(), z.string()).optional(),
-  dark: z.record(z.string(), z.string()).optional(),
-})
-
 // TODO: Extract this to a shared package.
-export const registryItemSchema = z.object({
+export const legacyRegistryItemSchema = z.object({
   name: z.string(),
   dependencies: z.array(z.string()).optional(),
   devDependencies: z.array(z.string()).optional(),
@@ -15,21 +10,11 @@ export const registryItemSchema = z.object({
   type: z
     .enum(["components:ui", "components:component", "components:example"])
     .optional(),
-  tailwind: z
-    .object({
-      config: z.object({
-        content: z.array(z.string()).optional(),
-        theme: z.record(z.string(), z.any()).optional(),
-        plugins: z.array(z.string()).optional(),
-      }),
-    })
-    .optional(),
-  cssVars: registryCssVarsSchema.optional(),
 })
 
-export const registryIndexSchema = z.array(registryItemSchema)
+export const registryIndexSchema = z.array(legacyRegistryItemSchema)
 
-export const registryItemWithContentSchema = registryItemSchema.extend({
+export const registryItemWithContentSchema = legacyRegistryItemSchema.extend({
   files: z.array(
     z.object({
       name: z.string(),
@@ -64,3 +49,34 @@ export const registryBaseColorSchema = z.object({
   inlineColorsTemplate: z.string(),
   cssVarsTemplate: z.string(),
 })
+
+export const registryCssVarsSchema = z.object({
+  light: z.record(z.string(), z.string()).optional(),
+  dark: z.record(z.string(), z.string()).optional(),
+})
+
+export const registryItemSchema = z.object({
+  name: z.string(),
+  dependencies: z.array(z.string()).optional(),
+  devDependencies: z.array(z.string()).optional(),
+  registryDependencies: z.array(z.string()).optional(),
+  files: z.array(
+    z.object({
+      name: z.string(),
+      content: z.string(),
+      type: z.enum(["utils", "ui", "component"]),
+    })
+  ),
+  tailwind: z
+    .object({
+      config: z.object({
+        content: z.array(z.string()).optional(),
+        theme: z.record(z.string(), z.any()).optional(),
+        plugins: z.array(z.string()).optional(),
+      }),
+    })
+    .optional(),
+  cssVars: registryCssVarsSchema.optional(),
+})
+
+export type RegistryItem = z.infer<typeof registryItemSchema>
