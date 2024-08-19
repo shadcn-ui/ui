@@ -1,19 +1,27 @@
 // @sts-nocheck
 import { existsSync, promises as fs, readFileSync } from "fs"
 import { tmpdir } from "os"
-import path, { basename } from "path"
+import path from "path"
 import { cwd } from "process"
 import template from "lodash.template"
 import { rimraf } from "rimraf"
-import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
+import { Project, ScriptKind, SyntaxKind } from "ts-morph"
 
 import { colorMapping, colors } from "../registry/colors"
 import { registry } from "../registry/registry"
-import { Registry, registrySchema } from "../registry/schema"
+import { Registry, RegistryEntry, registrySchema } from "../registry/schema"
 import { styles } from "../registry/styles"
 import { themes } from "../registry/themes"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/registry")
+
+const REGISTRY_INDEX_WHITELIST = [
+  "components:ui",
+  "components:block",
+  "registry:lib",
+  "registry:ui",
+  "registry:hooks",
+]
 
 // ----------------------------------------------------------------------------
 // Build __registry__/index.tsx.
@@ -41,9 +49,13 @@ export const Index: Record<string, any> = {
 
     // Build style index.
     for (const item of registry) {
-      const resolveFiles = item.files.map(
+      const resolveFiles = item.files?.map(
         (file) => `registry/${style.name}/${file}`
       )
+      if (!resolveFiles) {
+        continue
+      }
+
       const type = item.type.split(":")[1]
       let sourceFilename = ""
 
@@ -258,8 +270,25 @@ export const Index: Record<string, any> = {
   // ----------------------------------------------------------------------------
   // Build registry/index.json.
   // ----------------------------------------------------------------------------
-  const names = registry.filter((item) => item.type === "components:ui")
-  const registryJson = JSON.stringify(names, null, 2)
+  const items = registry
+    .filter((item) => REGISTRY_INDEX_WHITELIST.includes(item.type))
+    .map((item) => {
+      return {
+        ...item,
+        files: item.files?.map((_file) => {
+          const file =
+            typeof _file === "string"
+              ? {
+                  path: _file,
+                  type: item.type,
+                }
+              : _file
+
+          return file
+        }),
+      }
+    })
+  const registryJson = JSON.stringify(items, null, 2)
   rimraf.sync(path.join(REGISTRY_PATH, "index.json"))
   await fs.writeFile(
     path.join(REGISTRY_PATH, "index.json"),
@@ -285,19 +314,27 @@ async function buildStyles(registry: Registry) {
     }
 
     for (const item of registry) {
-      if (item.type !== "components:ui") {
+      if (!REGISTRY_INDEX_WHITELIST.includes(item.type)) {
         continue
       }
 
-      const files = item.files?.map((file) => {
-        const content = readFileSync(
-          path.join(process.cwd(), "registry", style.name, file),
-          "utf8"
-        )
+      const files = item.files?.map((_file) => {
+        const file =
+          typeof _file === "string"
+            ? {
+                path: _file,
+                type: item.type,
+                content: "",
+              }
+            : _file
 
         return {
-          name: basename(file),
-          content,
+          path: file.path,
+          type: file.type,
+          content: readFileSync(
+            path.join(process.cwd(), "registry", style.name, file.path),
+            "utf8"
+          ),
         }
       })
 
@@ -332,18 +369,17 @@ async function buildStylesIndex() {
   for (const style of styles) {
     const targetPath = path.join(REGISTRY_PATH, "styles", style.name)
 
-    const payload = {
+    const payload: RegistryEntry = {
       name: style.name,
+      type: "registry:style",
       dependencies: [
         "tailwindcss-animate",
         "class-variance-authority",
-        "clsx",
-        "tailwind-merge",
         "lucide-react",
         // TODO: Remove this when we migrate to lucide-react.
         style.name === "new-york" ? "@radix-ui/react-icons" : "",
       ],
-      registryDependencies: [],
+      registryDependencies: ["utils", "hello-block", "command"],
       tailwind: {
         config: {
           theme: {
@@ -358,23 +394,12 @@ async function buildStylesIndex() {
           plugins: [`require("tailwindcss-animate")`],
         },
       },
-      files: [
-        {
-          name: "utils.ts",
-          content: `import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}`,
-          type: "utils",
-        },
-      ],
-      cssVariables: {
+      cssVars: {
         light: {
           "--radius": "0.5rem",
         },
       },
+      files: [],
     }
 
     await fs.writeFile(
@@ -533,7 +558,7 @@ async function buildThemes() {
           const [resolvedBase, scale] = resolvedColor.split("-")
           const color = scale
             ? colorsData[resolvedBase].find(
-                (item) => item.scale === parseInt(scale)
+                (item: any) => item.scale === parseInt(scale)
               )
             : colorsData[resolvedBase]
           if (color) {

@@ -1,23 +1,30 @@
 [
   {
     "name": "accordion",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-accordion"
     ],
     "files": [
-      "ui/accordion.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/accordion.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "alert",
+    "type": "components:ui",
     "files": [
-      "ui/alert.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/alert.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "alert-dialog",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-alert-dialog"
     ],
@@ -25,59 +32,77 @@
       "button"
     ],
     "files": [
-      "ui/alert-dialog.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/alert-dialog.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "aspect-ratio",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-aspect-ratio"
     ],
     "files": [
-      "ui/aspect-ratio.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/aspect-ratio.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "avatar",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-avatar"
     ],
     "files": [
-      "ui/avatar.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/avatar.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "badge",
+    "type": "components:ui",
     "files": [
-      "ui/badge.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/badge.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "breadcrumb",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-slot"
     ],
     "files": [
-      "ui/breadcrumb.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/breadcrumb.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "button",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-slot"
     ],
     "files": [
-      "ui/button.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/button.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "calendar",
+    "type": "components:ui",
     "dependencies": [
       "react-day-picker@8.10.1",
       "date-fns"
@@ -86,19 +111,25 @@
       "button"
     ],
     "files": [
-      "ui/calendar.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/calendar.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "card",
+    "type": "components:ui",
     "files": [
-      "ui/card.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/card.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "carousel",
+    "type": "components:ui",
     "dependencies": [
       "embla-carousel-react"
     ],
@@ -106,12 +137,15 @@
       "button"
     ],
     "files": [
-      "ui/carousel.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/carousel.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "chart",
+    "type": "components:ui",
     "dependencies": [
       "recharts",
       "lucide-react"
@@ -120,32 +154,41 @@
       "card"
     ],
     "files": [
-      "ui/chart.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/chart.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "checkbox",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-checkbox"
     ],
     "files": [
-      "ui/checkbox.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/checkbox.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "collapsible",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-collapsible"
     ],
     "files": [
-      "ui/collapsible.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/collapsible.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "command",
+    "type": "components:ui",
     "dependencies": [
       "cmdk@1.0.0"
     ],
@@ -153,53 +196,68 @@
       "dialog"
     ],
     "files": [
-      "ui/command.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/command.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "context-menu",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-context-menu"
     ],
     "files": [
-      "ui/context-menu.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/context-menu.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "dialog",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-dialog"
     ],
     "files": [
-      "ui/dialog.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/dialog.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "drawer",
+    "type": "components:ui",
     "dependencies": [
       "vaul",
       "@radix-ui/react-dialog"
     ],
     "files": [
-      "ui/drawer.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/drawer.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "dropdown-menu",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-dropdown-menu"
     ],
     "files": [
-      "ui/dropdown-menu.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/dropdown-menu.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "form",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-label",
       "@radix-ui/react-slot",
@@ -212,243 +270,324 @@
       "label"
     ],
     "files": [
-      "ui/form.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/form.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "hover-card",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-hover-card"
     ],
     "files": [
-      "ui/hover-card.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/hover-card.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "input",
+    "type": "components:ui",
     "files": [
-      "ui/input.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/input.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "input-otp",
+    "type": "components:ui",
     "dependencies": [
       "input-otp"
     ],
     "files": [
-      "ui/input-otp.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/input-otp.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "label",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-label"
     ],
     "files": [
-      "ui/label.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/label.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "menubar",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-menubar"
     ],
     "files": [
-      "ui/menubar.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/menubar.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "navigation-menu",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-navigation-menu"
     ],
     "files": [
-      "ui/navigation-menu.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/navigation-menu.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "pagination",
+    "type": "components:ui",
     "registryDependencies": [
       "button"
     ],
     "files": [
-      "ui/pagination.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/pagination.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "popover",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-popover"
     ],
     "files": [
-      "ui/popover.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/popover.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "progress",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-progress"
     ],
     "files": [
-      "ui/progress.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/progress.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "radio-group",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-radio-group"
     ],
     "files": [
-      "ui/radio-group.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/radio-group.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "resizable",
+    "type": "components:ui",
     "dependencies": [
       "react-resizable-panels"
     ],
     "files": [
-      "ui/resizable.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/resizable.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "scroll-area",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-scroll-area"
     ],
     "files": [
-      "ui/scroll-area.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/scroll-area.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "select",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-select"
     ],
     "files": [
-      "ui/select.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/select.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "separator",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-separator"
     ],
     "files": [
-      "ui/separator.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/separator.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "sheet",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-dialog"
     ],
     "files": [
-      "ui/sheet.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/sheet.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "skeleton",
+    "type": "components:ui",
     "files": [
-      "ui/skeleton.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/skeleton.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "slider",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-slider"
     ],
     "files": [
-      "ui/slider.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/slider.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "sonner",
+    "type": "components:ui",
     "dependencies": [
       "sonner",
       "next-themes"
     ],
     "files": [
-      "ui/sonner.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/sonner.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "switch",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-switch"
     ],
     "files": [
-      "ui/switch.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/switch.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "table",
+    "type": "components:ui",
     "files": [
-      "ui/table.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/table.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "tabs",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-tabs"
     ],
     "files": [
-      "ui/tabs.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/tabs.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "textarea",
+    "type": "components:ui",
     "files": [
-      "ui/textarea.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/textarea.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "toast",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-toast"
     ],
     "files": [
-      "ui/toast.tsx",
-      "ui/use-toast.ts",
-      "ui/toaster.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/toast.tsx",
+        "type": "components:ui"
+      },
+      {
+        "path": "ui/use-toast.ts",
+        "type": "components:ui"
+      },
+      {
+        "path": "ui/toaster.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "toggle",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-toggle"
     ],
     "files": [
-      "ui/toggle.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/toggle.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "toggle-group",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-toggle-group"
     ],
@@ -456,18 +595,1442 @@
       "toggle"
     ],
     "files": [
-      "ui/toggle-group.tsx"
-    ],
-    "type": "components:ui"
+      {
+        "path": "ui/toggle-group.tsx",
+        "type": "components:ui"
+      }
+    ]
   },
   {
     "name": "tooltip",
+    "type": "components:ui",
     "dependencies": [
       "@radix-ui/react-tooltip"
     ],
     "files": [
-      "ui/tooltip.tsx"
+      {
+        "path": "ui/tooltip.tsx",
+        "type": "components:ui"
+      }
+    ]
+  },
+  {
+    "name": "hello-block",
+    "type": "components:block",
+    "registryDependencies": [
+      "button",
+      "use-media-query"
     ],
-    "type": "components:ui"
+    "files": [
+      {
+        "path": "block/hello-block.tsx",
+        "type": "components:block"
+      }
+    ],
+    "tailwind": {
+      "config": {
+        "theme": {
+          "extend": {
+            "colors": {
+              "brand": {
+                "primary": "var(--brand-primary)",
+                "secondary": "var(--brand-secondary)"
+              }
+            },
+            "boxShadow": {
+              "brand": "0px 0px 10px 0px rgba(255, 255, 255, 0.10)"
+            }
+          }
+        }
+      }
+    },
+    "cssVars": {
+      "light": {
+        "brand-primary": "#a855f7",
+        "brand-secondary": "#10b981"
+      },
+      "dark": {
+        "brand-primary": "#831843",
+        "brand-secondary": "#ccfbf1"
+      }
+    },
+    "category": "Application",
+    "subcategory": "Examples"
+  },
+  {
+    "name": "charts-01",
+    "type": "components:block",
+    "registryDependencies": [
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/charts-01.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Application",
+    "subcategory": "Charts"
+  },
+  {
+    "name": "dashboard-05",
+    "type": "components:block",
+    "registryDependencies": [
+      "badge",
+      "breadcrumb",
+      "button",
+      "card",
+      "dropdown-menu",
+      "input",
+      "pagination",
+      "progress",
+      "separator",
+      "sheet",
+      "table",
+      "tabs",
+      "tooltip"
+    ],
+    "files": [
+      {
+        "path": "block/dashboard-05.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Application",
+    "subcategory": "Dashboard"
+  },
+  {
+    "name": "dashboard-06",
+    "type": "components:block",
+    "registryDependencies": [
+      "badge",
+      "breadcrumb",
+      "button",
+      "card",
+      "dropdown-menu",
+      "input",
+      "sheet",
+      "table",
+      "tabs",
+      "tooltip"
+    ],
+    "files": [
+      {
+        "path": "block/dashboard-06.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Application",
+    "subcategory": "Dashboard"
+  },
+  {
+    "name": "dashboard-07",
+    "type": "components:block",
+    "registryDependencies": [
+      "badge",
+      "breadcrumb",
+      "button",
+      "card",
+      "dropdown-menu",
+      "input",
+      "pagination",
+      "progress",
+      "separator",
+      "sheet",
+      "table",
+      "tabs",
+      "tooltip"
+    ],
+    "files": [
+      {
+        "path": "block/dashboard-07.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Application",
+    "subcategory": "Dashboard"
+  },
+  {
+    "name": "dashboard-04",
+    "type": "components:block",
+    "registryDependencies": [
+      "button",
+      "card",
+      "dropdown-menu",
+      "input"
+    ],
+    "files": [
+      {
+        "path": "block/dashboard-04.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Application",
+    "subcategory": "Dashboard"
+  },
+  {
+    "name": "dashboard-03",
+    "type": "components:block",
+    "registryDependencies": [
+      "badge",
+      "button",
+      "drawer",
+      "input",
+      "label",
+      "select",
+      "textarea",
+      "tooltip"
+    ],
+    "files": [
+      {
+        "path": "block/dashboard-03.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Application",
+    "subcategory": "Dashboard"
+  },
+  {
+    "name": "dashboard-02",
+    "type": "components:block",
+    "registryDependencies": [
+      "badge",
+      "button",
+      "card",
+      "dropdown-menu",
+      "input"
+    ],
+    "files": [
+      {
+        "path": "block/dashboard-02.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Application",
+    "subcategory": "Dashboard"
+  },
+  {
+    "name": "dashboard-01",
+    "type": "components:block",
+    "registryDependencies": [
+      "button",
+      "dropdown-menu",
+      "input",
+      "sheet"
+    ],
+    "files": [
+      {
+        "path": "block/dashboard-01.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Application",
+    "subcategory": "Dashboard"
+  },
+  {
+    "name": "authentication-01",
+    "type": "components:block",
+    "registryDependencies": [
+      "button",
+      "card",
+      "input",
+      "label"
+    ],
+    "files": [
+      {
+        "path": "block/authentication-01.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Authentication",
+    "subcategory": "Login"
+  },
+  {
+    "name": "authentication-02",
+    "type": "components:block",
+    "registryDependencies": [
+      "button",
+      "card",
+      "input",
+      "label"
+    ],
+    "files": [
+      {
+        "path": "block/authentication-02.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Authentication",
+    "subcategory": "Login"
+  },
+  {
+    "name": "authentication-03",
+    "type": "components:block",
+    "registryDependencies": [
+      "button",
+      "card",
+      "input",
+      "label"
+    ],
+    "files": [
+      {
+        "path": "block/authentication-03.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Authentication",
+    "subcategory": "Login"
+  },
+  {
+    "name": "authentication-04",
+    "type": "components:block",
+    "registryDependencies": [
+      "button",
+      "card",
+      "input",
+      "label"
+    ],
+    "files": [
+      {
+        "path": "block/authentication-04.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Authentication",
+    "subcategory": "Login"
+  },
+  {
+    "name": "chart-area-axes",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-area-axes.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Area"
+  },
+  {
+    "name": "chart-area-default",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-area-default.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Area"
+  },
+  {
+    "name": "chart-area-gradient",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-area-gradient.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Area"
+  },
+  {
+    "name": "chart-area-icons",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-area-icons.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Area"
+  },
+  {
+    "name": "chart-area-interactive",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-area-interactive.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Area"
+  },
+  {
+    "name": "chart-area-legend",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-area-legend.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Area"
+  },
+  {
+    "name": "chart-area-linear",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-area-linear.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Area"
+  },
+  {
+    "name": "chart-area-stacked-expand",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-area-stacked-expand.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Area"
+  },
+  {
+    "name": "chart-area-stacked",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-area-stacked.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Area"
+  },
+  {
+    "name": "chart-area-step",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-area-step.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Area"
+  },
+  {
+    "name": "chart-bar-active",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-bar-active.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Bar"
+  },
+  {
+    "name": "chart-bar-default",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-bar-default.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Bar"
+  },
+  {
+    "name": "chart-bar-horizontal",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-bar-horizontal.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Bar"
+  },
+  {
+    "name": "chart-bar-interactive",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-bar-interactive.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Bar"
+  },
+  {
+    "name": "chart-bar-label-custom",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-bar-label-custom.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Bar"
+  },
+  {
+    "name": "chart-bar-label",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-bar-label.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Bar"
+  },
+  {
+    "name": "chart-bar-mixed",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-bar-mixed.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Bar"
+  },
+  {
+    "name": "chart-bar-multiple",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-bar-multiple.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Bar"
+  },
+  {
+    "name": "chart-bar-negative",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-bar-negative.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Bar"
+  },
+  {
+    "name": "chart-bar-stacked",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-bar-stacked.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Bar"
+  },
+  {
+    "name": "chart-line-default",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-line-default.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Line"
+  },
+  {
+    "name": "chart-line-dots-colors",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-line-dots-colors.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Line"
+  },
+  {
+    "name": "chart-line-dots-custom",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-line-dots-custom.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Line"
+  },
+  {
+    "name": "chart-line-dots",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-line-dots.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Line"
+  },
+  {
+    "name": "chart-line-interactive",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-line-interactive.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Line"
+  },
+  {
+    "name": "chart-line-label-custom",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-line-label-custom.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Line"
+  },
+  {
+    "name": "chart-line-label",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-line-label.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Line"
+  },
+  {
+    "name": "chart-line-linear",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-line-linear.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Line"
+  },
+  {
+    "name": "chart-line-multiple",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-line-multiple.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Line"
+  },
+  {
+    "name": "chart-line-step",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-line-step.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Line"
+  },
+  {
+    "name": "chart-pie-donut-active",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-donut-active.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-pie-donut-text",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-donut-text.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-pie-donut",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-donut.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-pie-interactive",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-interactive.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-pie-label-custom",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-label-custom.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-pie-label-list",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-label-list.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-pie-label",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-label.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-pie-legend",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-legend.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-pie-separator-none",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-separator-none.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-pie-simple",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-simple.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-pie-stacked",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-pie-stacked.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Pie"
+  },
+  {
+    "name": "chart-radar-default",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-default.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-dots",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-dots.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-grid-circle-fill",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-grid-circle-fill.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-grid-circle-no-lines",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-grid-circle-no-lines.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-grid-circle",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-grid-circle.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-grid-custom",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-grid-custom.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-grid-fill",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-grid-fill.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-grid-none",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-grid-none.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-icons",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-icons.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-label-custom",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-label-custom.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-legend",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-legend.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-lines-only",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-lines-only.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-multiple",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-multiple.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radar-radius",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radar-radius.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radar"
+  },
+  {
+    "name": "chart-radial-grid",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radial-grid.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radial"
+  },
+  {
+    "name": "chart-radial-label",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radial-label.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radial"
+  },
+  {
+    "name": "chart-radial-shape",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radial-shape.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radial"
+  },
+  {
+    "name": "chart-radial-simple",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radial-simple.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radial"
+  },
+  {
+    "name": "chart-radial-stacked",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radial-stacked.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radial"
+  },
+  {
+    "name": "chart-radial-text",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-radial-text.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Radial"
+  },
+  {
+    "name": "chart-tooltip-default",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-tooltip-default.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Tooltip"
+  },
+  {
+    "name": "chart-tooltip-indicator-line",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-tooltip-indicator-line.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Tooltip"
+  },
+  {
+    "name": "chart-tooltip-indicator-none",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-tooltip-indicator-none.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Tooltip"
+  },
+  {
+    "name": "chart-tooltip-label-none",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-tooltip-label-none.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Tooltip"
+  },
+  {
+    "name": "chart-tooltip-label-custom",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-tooltip-label-custom.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Tooltip"
+  },
+  {
+    "name": "chart-tooltip-label-formatter",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-tooltip-label-formatter.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Tooltip"
+  },
+  {
+    "name": "chart-tooltip-formatter",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-tooltip-formatter.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Tooltip"
+  },
+  {
+    "name": "chart-tooltip-icons",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-tooltip-icons.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Tooltip"
+  },
+  {
+    "name": "chart-tooltip-advanced",
+    "type": "components:block",
+    "registryDependencies": [
+      "card",
+      "chart"
+    ],
+    "files": [
+      {
+        "path": "block/chart-tooltip-advanced.tsx",
+        "type": "components:block"
+      }
+    ],
+    "category": "Charts",
+    "subcategory": "Tooltip"
+  },
+  {
+    "name": "utils",
+    "type": "registry:lib",
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "path": "lib/utils.ts",
+        "type": "registry:lib"
+      }
+    ]
   }
 ]

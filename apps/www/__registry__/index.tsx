@@ -2150,6 +2150,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "hello-block": {
+      name: "hello-block",
+      type: "components:block",
+      registryDependencies: ["button","use-media-query"],
+      component: React.lazy(() => import("@/registry/new-york/block/hello-block")),
+      source: "__registry__/new-york/block/hello-block.tsx",
+      files: ["registry/new-york/block/hello-block.tsx"],
+      category: "Application",
+      subcategory: "Examples",
+      chunks: []
+    },
     "charts-01": {
       name: "charts-01",
       type: "components:block",
@@ -3314,6 +3325,28 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/chart-tooltip-advanced.tsx"],
       category: "Charts",
       subcategory: "Tooltip",
+      chunks: []
+    },
+    "utils": {
+      name: "utils",
+      type: "registry:lib",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/lib/utils")),
+      source: "",
+      files: ["registry/new-york/[object Object]"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "use-media-query": {
+      name: "use-media-query",
+      type: "registry:hook",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/hook/use-media-query")),
+      source: "",
+      files: ["registry/new-york/[object Object]"],
+      category: "undefined",
+      subcategory: "undefined",
       chunks: []
     },
   },  "default": {
@@ -5462,6 +5495,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "hello-block": {
+      name: "hello-block",
+      type: "components:block",
+      registryDependencies: ["button","use-media-query"],
+      component: React.lazy(() => import("@/registry/default/block/hello-block")),
+      source: "__registry__/default/block/hello-block.tsx",
+      files: ["registry/default/block/hello-block.tsx"],
+      category: "Application",
+      subcategory: "Examples",
+      chunks: []
+    },
     "charts-01": {
       name: "charts-01",
       type: "components:block",
@@ -6626,6 +6670,28 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/chart-tooltip-advanced.tsx"],
       category: "Charts",
       subcategory: "Tooltip",
+      chunks: []
+    },
+    "utils": {
+      name: "utils",
+      type: "registry:lib",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/lib/utils")),
+      source: "",
+      files: ["registry/default/[object Object]"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "use-media-query": {
+      name: "use-media-query",
+      type: "registry:hook",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/hook/use-media-query")),
+      source: "",
+      files: ["registry/default/[object Object]"],
+      category: "undefined",
+      subcategory: "undefined",
       chunks: []
     },
   },

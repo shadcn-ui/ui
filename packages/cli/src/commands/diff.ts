@@ -59,13 +59,18 @@ export const diff = new Command()
 
       const registryIndex = await getRegistryIndex()
 
+      if (!registryIndex) {
+        handleError(new Error("Failed to fetch registry index."))
+        process.exit(1)
+      }
+
       if (!options.component) {
         const targetDir = config.resolvedPaths.components
 
         // Find all components that exist in the project.
         const projectComponents = registryIndex.filter((item) => {
-          for (const file of item.files) {
-            const filePath = path.resolve(targetDir, file)
+          for (const file of item.files ?? []) {
+            const filePath = path.resolve(targetDir, file.path)
             if (existsSync(filePath)) {
               return true
             }
@@ -139,6 +144,10 @@ async function diffComponent(
   const payload = await fetchTree(config.style, [component])
   const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
 
+  if (!payload) {
+    return []
+  }
+
   const changes = []
 
   for (const item of payload) {
@@ -148,8 +157,8 @@ async function diffComponent(
       continue
     }
 
-    for (const file of item.files) {
-      const filePath = path.resolve(targetDir, file.name)
+    for (const file of item.files ?? []) {
+      const filePath = path.resolve(targetDir, file.path)
 
       if (!existsSync(filePath)) {
         continue
@@ -157,8 +166,12 @@ async function diffComponent(
 
       const fileContent = await fs.readFile(filePath, "utf8")
 
+      if (!file.content) {
+        continue
+      }
+
       const registryContent = await transform({
-        filename: file.name,
+        filename: file.path,
         raw: file.content,
         config,
         baseColor,
@@ -167,7 +180,6 @@ async function diffComponent(
       const patch = diffLines(registryContent as string, fileContent)
       if (patch.length > 1) {
         changes.push({
-          file: file.name,
           filePath,
           patch,
         })

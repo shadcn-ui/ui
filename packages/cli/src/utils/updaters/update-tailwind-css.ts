@@ -1,6 +1,6 @@
 import { promises as fs } from "fs"
 import { Config } from "@/src/utils/get-config"
-import { registryCssVarsSchema } from "@/src/utils/registry/schema"
+import { registryItemCssVarsSchema } from "@/src/utils/registry/schema"
 import postcss from "postcss"
 import AtRule from "postcss/lib/at-rule"
 import Root from "postcss/lib/root"
@@ -8,9 +8,13 @@ import Rule from "postcss/lib/rule"
 import { z } from "zod"
 
 export async function updateTailwindCss(
-  cssVars: z.infer<typeof registryCssVarsSchema>,
+  cssVars: z.infer<typeof registryItemCssVarsSchema> | undefined,
   config: Config
 ) {
+  if (!cssVars) {
+    return
+  }
+
   const raw = await fs.readFile(config.resolvedPaths.tailwindCss, "utf8")
   let output = await transformTailwindCss(raw, cssVars)
 
@@ -19,7 +23,7 @@ export async function updateTailwindCss(
 
 export async function transformTailwindCss(
   input: string,
-  cssVars: z.infer<typeof registryCssVarsSchema>
+  cssVars: z.infer<typeof registryItemCssVarsSchema>
 ) {
   const result = await postcss([
     updateCssVarsPlugin(cssVars),
@@ -94,7 +98,9 @@ function updateBaseLayerPlugin() {
   }
 }
 
-function updateCssVarsPlugin(cssVars: z.infer<typeof registryCssVarsSchema>) {
+function updateCssVarsPlugin(
+  cssVars: z.infer<typeof registryItemCssVarsSchema>
+) {
   return {
     postcssPlugin: "update-css-vars",
     Once(root: Root) {
@@ -140,7 +146,7 @@ function addOrUpdateVars(
   }
 
   Object.entries(vars).forEach(([key, value]) => {
-    const prop = `--${key}`
+    const prop = `--${key.replace(/^--/, "")}`
     const newDecl = postcss.decl({
       prop,
       value,

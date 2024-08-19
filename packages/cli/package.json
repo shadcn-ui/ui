@@ -41,7 +41,8 @@
     "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:dev": "COMPONENTS_REGISTRY_URL=http://localhost:3003 vitest run"
   },
   "dependencies": {
     "@antfu/ni": "^0.21.4",

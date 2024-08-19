@@ -1,14 +1,17 @@
 {
   "name": "default",
+  "type": "registry:style",
   "dependencies": [
     "tailwindcss-animate",
     "class-variance-authority",
-    "clsx",
-    "tailwind-merge",
     "lucide-react",
     ""
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils",
+    "hello-block",
+    "command"
+  ],
   "tailwind": {
     "config": {
       "theme": {
@@ -25,16 +28,10 @@
       ]
     }
   },
-  "files": [
-    {
-      "name": "utils.ts",
-      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}",
-      "type": "utils"
-    }
-  ],
-  "cssVariables": {
+  "cssVars": {
     "light": {
       "--radius": "0.5rem"
     }
-  }
+  },
+  "files": []
 }

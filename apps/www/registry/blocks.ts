@@ -2,6 +2,41 @@ import { Registry } from "@/registry/schema"
 
 export const blocks: Registry = [
   {
+    name: "hello-block",
+    type: "components:block",
+    registryDependencies: ["button", "use-media-query"],
+    files: ["block/hello-block.tsx"],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                primary: "var(--brand-primary)",
+                secondary: "var(--brand-secondary)",
+              },
+            },
+            boxShadow: {
+              brand: "0px 0px 10px 0px rgba(255, 255, 255, 0.10)",
+            },
+          },
+        },
+      },
+    },
+    cssVars: {
+      light: {
+        "brand-primary": "#a855f7",
+        "brand-secondary": "#10b981",
+      },
+      dark: {
+        "brand-primary": "#831843",
+        "brand-secondary": "#ccfbf1",
+      },
+    },
+    category: "Application",
+    subcategory: "Examples",
+  },
+  {
     name: "charts-01",
     type: "components:block",
     registryDependencies: ["chart"],

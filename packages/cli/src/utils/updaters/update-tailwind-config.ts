@@ -2,6 +2,10 @@ import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
 import { Config } from "@/src/utils/get-config"
+import {
+  RegistryItem,
+  registryItemTailwindSchema,
+} from "@/src/utils/registry/schema"
 import deepmerge from "deepmerge"
 import objectToString from "stringify-object"
 import { type Config as TailwindConfig } from "tailwindcss"
@@ -14,6 +18,7 @@ import {
   SyntaxKind,
   VariableStatement,
 } from "ts-morph"
+import { z } from "zod"
 
 export type UpdaterTailwindConfig = Omit<TailwindConfig, "plugins"> & {
   // We only want string plugins for now.
@@ -21,9 +26,14 @@ export type UpdaterTailwindConfig = Omit<TailwindConfig, "plugins"> & {
 }
 
 export async function updateTailwindConfig(
-  tailwindConfig: UpdaterTailwindConfig,
+  tailwindConfig:
+    | z.infer<typeof registryItemTailwindSchema>["config"]
+    | undefined,
   config: Config
 ) {
+  if (!tailwindConfig) {
+    return
+  }
   const raw = await fs.readFile(config.resolvedPaths.tailwindConfig, "utf8")
   const output = await transformTailwindConfig(raw, tailwindConfig, config)
   await fs.writeFile(config.resolvedPaths.tailwindConfig, output, "utf8")

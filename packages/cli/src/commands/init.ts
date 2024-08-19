@@ -19,10 +19,11 @@ import {
   getRegistryBaseColors,
   getRegistryItem,
   getRegistryStyles,
+  registryResolveItemsTree,
 } from "@/src/utils/registry"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateDestinations } from "@/src/utils/updaters/update-destinations"
-import { updateFiles } from "@/src/utils/updaters/update-files"
+import { updateRegistryDependencies } from "@/src/utils/updaters/update-registry-dependencies"
 import {
   buildTailwindThemeColorsFromCssVars,
   updateTailwindConfig,
@@ -97,10 +98,10 @@ export const init = new Command()
       if (!opts.force && !opts.defaults) {
         logger.info("")
       }
-      const spinner = ora(`Writing components.json...`).start()
+      const spinner = ora(`Writing components.json.`).start()
       const targetPath = path.resolve(cwd, "components.json")
       await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
-      spinner.succeed(`Writing components.json.`)
+      spinner.succeed()
 
       const fullConfig = await resolveConfigPaths(cwd, config)
 
@@ -291,60 +292,25 @@ export async function promptForMinimalConfig(
 }
 
 export async function runInit(config: Config) {
-  const initializersSpinner = ora(`Initializing project...`)?.start()
   await updateDestinations(config)
-  const [payload, baseColor] = await Promise.all([
-    getRegistryItem(config.style, "index"),
-    getRegistryBaseColor(config.tailwind.baseColor),
-  ])
 
-  if (!payload) {
+  const initializersSpinner = ora(`Initializing project.`)?.start()
+  const tree = await registryResolveItemsTree(["index"], config)
+
+  if (!tree) {
+    initializersSpinner?.fail()
     logger.error(`Something went wrong during the initialization process.`)
     process.exit(1)
   }
 
-  // Inline the base color in the tailwind config.
-  if (config.tailwind.cssVariables && baseColor) {
-    payload.cssVars = {
-      light: {
-        ...baseColor.cssVars.light,
-        ...payload.cssVars?.light,
-      },
-      dark: {
-        ...baseColor.cssVars.dark,
-        ...payload.cssVars?.dark,
-      },
-    }
+  console.log(tree.tailwind?.config?.theme)
 
-    // Move the css vars to the tailwind config.
-    if (payload.tailwind?.config && baseColor.cssVars?.light) {
-      payload.tailwind.config = deepmerge(payload.tailwind.config, {
-        theme: {
-          extend: {
-            colors: buildTailwindThemeColorsFromCssVars(
-              baseColor.cssVars.light
-            ),
-          },
-        },
-      })
-    }
-  }
+  await updateTailwindConfig(tree.tailwind?.config, config)
+  await updateTailwindCss(tree.cssVars, config)
+  initializersSpinner?.succeed()
 
-  if (payload.tailwind?.config) {
-    await updateTailwindConfig(payload.tailwind?.config, config)
-  }
-
-  if (payload.cssVars) {
-    await updateTailwindCss(payload.cssVars, config)
-  }
-
-  await updateFiles(payload.files, config)
-  initializersSpinner?.succeed(`Initializing project.`)
-
-  // Install dependencies.
-  if (payload.dependencies) {
-    const dependenciesSpinner = ora(`Installing dependencies...`)?.start()
-    await updateDependencies(payload.dependencies, config)
-    dependenciesSpinner?.succeed(`Installing dependencies.`)
-  }
+  const dependenciesSpinner = ora(`Installing dependencies.`)?.start()
+  // await updateRegistryDependencies(tree.registryDependencies, config)
+  await updateDependencies(tree.dependencies, config)
+  dependenciesSpinner?.succeed()
 }

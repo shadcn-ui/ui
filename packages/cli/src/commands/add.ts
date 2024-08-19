@@ -68,6 +68,11 @@ export const add = new Command()
 
       const registryIndex = await getRegistryIndex()
 
+      if (!registryIndex) {
+        handleError(new Error("Failed to fetch registry index."))
+        process.exit(1)
+      }
+
       let selectedComponents = options.all
         ? registryIndex.map((entry) => entry.name)
         : options.components
@@ -98,7 +103,7 @@ export const add = new Command()
       const payload = await fetchTree(config.style, tree)
       const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
 
-      if (!payload.length) {
+      if (!payload?.length) {
         logger.warn("Selected components not found. Exiting.")
         process.exit(0)
       }
@@ -133,11 +138,11 @@ export const add = new Command()
           await fs.mkdir(targetDir, { recursive: true })
         }
 
-        const existingComponent = item.files.filter((file) =>
-          existsSync(path.resolve(targetDir, file.name))
+        const existingComponent = item.files?.filter((file) =>
+          existsSync(path.resolve(targetDir, file.path))
         )
 
-        if (existingComponent.length && !options.overwrite) {
+        if (existingComponent?.length && !options.overwrite) {
           if (selectedComponents.includes(item.name)) {
             spinner.stop()
             const { overwrite } = await prompts({
@@ -162,12 +167,16 @@ export const add = new Command()
           }
         }
 
-        for (const file of item.files) {
-          let filePath = path.resolve(targetDir, file.name)
+        for (const file of item.files ?? []) {
+          let filePath = path.resolve(targetDir, file.path)
 
           // Run transformers.
+          if (!file.content) {
+            continue
+          }
+
           const content = await transform({
-            filename: file.name,
+            filename: file.path,
             raw: file.content,
             config,
             baseColor,
