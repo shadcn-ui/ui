@@ -15,22 +15,15 @@ import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { preFlight } from "@/src/utils/preflight"
 import {
-  getRegistryBaseColor,
   getRegistryBaseColors,
-  getRegistryItem,
   getRegistryStyles,
   registryResolveItemsTree,
 } from "@/src/utils/registry"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateDestinations } from "@/src/utils/updaters/update-destinations"
-import { updateRegistryDependencies } from "@/src/utils/updaters/update-registry-dependencies"
-import {
-  buildTailwindThemeColorsFromCssVars,
-  updateTailwindConfig,
-} from "@/src/utils/updaters/update-tailwind-config"
+import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
 import { updateTailwindCss } from "@/src/utils/updaters/update-tailwind-css"
 import { Command } from "commander"
-import deepmerge from "deepmerge"
 import { cyan, green } from "kleur/colors"
 import ora from "ora"
 import prompts from "prompts"
@@ -302,8 +295,6 @@ export async function runInit(config: Config) {
     logger.error(`Something went wrong during the initialization process.`)
     process.exit(1)
   }
-
-  console.log(tree.tailwind?.config?.theme)
 
   await updateTailwindConfig(tree.tailwind?.config, config)
   await updateTailwindCss(tree.cssVars, config)

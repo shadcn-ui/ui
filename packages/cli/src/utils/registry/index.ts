@@ -248,16 +248,24 @@ export async function registryResolveItemsTree(
     return null
   }
 
+  // Add the index item to the beginning of the payload.
   if (names.includes("index")) {
-    const index = await getInitRegistryItem(config)
+    const index = await getRegistryItem(config.style, "index")
     if (index) {
       payload.unshift(index)
     }
   }
 
+  // Fetch the theme item if a base color is provided.
+  if (config.tailwind.baseColor) {
+    const theme = await registryGetTheme(config.tailwind.baseColor)
+    if (theme) {
+      payload.unshift(theme)
+    }
+  }
+
   let tailwind = {}
   payload.forEach((item) => {
-    console.log(item.tailwind?.config?.theme)
     tailwind = deepmerge(tailwind, item.tailwind ?? {})
   })
 
@@ -277,42 +285,39 @@ export async function registryResolveItemsTree(
   })
 }
 
-async function getInitRegistryItem(config: Config) {
-  const [payload, baseColor] = await Promise.all([
-    getRegistryItem(config.style, "index"),
-    getRegistryBaseColor(config.tailwind.baseColor),
-  ])
-
-  if (!payload || !baseColor) {
+export async function registryGetTheme(name: string) {
+  const baseColor = await getRegistryBaseColor(name)
+  if (!baseColor) {
     return null
   }
 
-  // Inline the base color in the tailwind config.
-  // TODO: Remove this when we have theme handling.
-  if (config.tailwind.cssVariables && baseColor) {
-    payload.cssVars = {
-      light: {
-        ...baseColor.cssVars.light,
-        ...payload.cssVars?.light,
-      },
-      dark: {
-        ...baseColor.cssVars.dark,
-        ...payload.cssVars?.dark,
-      },
-    }
-
-    if (payload.tailwind?.config && baseColor.cssVars?.light) {
-      payload.tailwind.config = deepmerge(payload.tailwind.config, {
+  return {
+    name,
+    type: "registry:theme",
+    tailwind: {
+      config: {
         theme: {
           extend: {
+            borderRadius: {
+              lg: "var(--radius)",
+              md: "calc(var(--radius) - 2px)",
+              sm: "calc(var(--radius) - 4px)",
+            },
             colors: buildTailwindThemeColorsFromCssVars(
               baseColor.cssVars.light
             ),
           },
         },
-      })
-    }
-  }
-
-  return payload
+      },
+    },
+    cssVars: {
+      light: {
+        ...baseColor.cssVars.light,
+        radius: "0.5rem",
+      },
+      dark: {
+        ...baseColor.cssVars.dark,
+      },
+    },
+  } satisfies z.infer<typeof registryItemSchema>
 }

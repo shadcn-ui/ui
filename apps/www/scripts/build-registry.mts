@@ -382,23 +382,10 @@ async function buildStylesIndex() {
       registryDependencies: ["utils", "hello-block", "command"],
       tailwind: {
         config: {
-          theme: {
-            extend: {
-              borderRadius: {
-                lg: "var(--radius)",
-                md: "calc(var(--radius) - 2px)",
-                sm: "calc(var(--radius) - 4px)",
-              },
-            },
-          },
           plugins: [`require("tailwindcss-animate")`],
         },
       },
-      cssVars: {
-        light: {
-          "--radius": "0.5rem",
-        },
-      },
+      cssVars: {},
       files: [],
     }
 
@@ -670,23 +657,22 @@ async function buildThemes() {
     // ----------------------------------------------------------------------------
     rimraf.sync(path.join(REGISTRY_PATH, "themes"))
     for (const baseColor of ["slate", "gray", "zinc", "neutral", "stone"]) {
-      const payload = {
+      const payload: Record<string, any> = {
         name: baseColor,
         label: baseColor.charAt(0).toUpperCase() + baseColor.slice(1),
         cssVars: {},
       }
-
       for (const [mode, values] of Object.entries(colorMapping)) {
-        payload["cssVars"][mode] = {}
+        payload.cssVars[mode] = {}
         for (const [key, value] of Object.entries(values)) {
           if (typeof value === "string") {
             const resolvedColor = value.replace(/{{base}}-/g, `${baseColor}-`)
-            payload["cssVars"][mode][key] = resolvedColor
+            payload.cssVars[mode][key] = resolvedColor
 
             const [resolvedBase, scale] = resolvedColor.split("-")
             const color = scale
               ? colorsData[resolvedBase].find(
-                  (item) => item.scale === parseInt(scale)
+                  (item: any) => item.scale === parseInt(scale)
                 )
               : colorsData[resolvedBase]
             if (color) {
