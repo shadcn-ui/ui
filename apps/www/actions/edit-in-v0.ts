@@ -24,11 +24,21 @@ export async function editInV0({
 
     // Replace "use client" in the code.
     // v0 will handle this for us.
-    code = code.replace(`"use client"`, "")
+    // code = code.replace(`"use client"`, "")
 
-    const response = await fetch(`${process.env.V0_URL}/api/edit`, {
+    const payload = {
+      title: description,
+      description,
+      code,
+      source: {
+        title: "shadcn/ui",
+        url: "https://ui.shadcn.com",
+      },
+    }
+
+    const response = await fetch(`${process.env.V0_URL}/chat/api/edit`, {
       method: "POST",
-      body: JSON.stringify({ description, code, source: EDIT_IN_V0_SOURCE }),
+      body: JSON.stringify(payload),
       headers: {
         "x-v0-edit-secret": process.env.V0_EDIT_SECRET!,
         "x-vercel-protection-bypass":
@@ -49,7 +59,7 @@ export async function editInV0({
 
     return {
       ...result,
-      url: `${process.env.V0_URL}/edit/${result.id}`,
+      url: `${process.env.V0_URL}/chat/api/edit/${result.id}`,
     }
   } catch (error) {
     if (error instanceof Error) {
