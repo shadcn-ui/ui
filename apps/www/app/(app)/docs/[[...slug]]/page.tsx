@@ -1,7 +1,17 @@
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
 
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/registry/new-york/ui/breadcrumb"
+
 import "@/styles/mdx.css"
+import { Fragment } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons"
@@ -90,9 +100,33 @@ export default async function DocPage({ params }: DocPageProps) {
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
-          <div className="truncate">Docs</div>
-          <ChevronRightIcon className="h-3.5 w-3.5" />
-          <div className="text-foreground">{doc.title}</div>
+          <Breadcrumb className="mb-4">
+            <BreadcrumbList className="gap-1 sm:gap-1">
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/docs">Docs</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              {doc.slugAsParams
+                .split("/")
+                .slice(0, -1)
+                .map((link: string) => (
+                  <Fragment key={link}>
+                    <BreadcrumbItem>
+                      <BreadcrumbLink
+                        className="capitalize"
+                        href={`/docs/${link}`}
+                      >
+                        {link}
+                      </BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                  </Fragment>
+                ))}
+              <BreadcrumbItem>
+                <BreadcrumbPage>{doc.title}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </div>
         <div className="space-y-2">
           <h1 className={cn("scroll-m-20 text-3xl font-bold tracking-tight")}>
