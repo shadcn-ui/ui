@@ -21,10 +21,7 @@ export default function CarouselPlugin() {
   )
 
   return (
-    <Carousel
-      plugins={[plugin.current]}
-      className="w-full max-w-xs"
-    >
+    <Carousel plugins={[plugin.current]} className="w-full max-w-xs">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>
