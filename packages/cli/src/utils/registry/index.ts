@@ -261,7 +261,7 @@ export async function registryResolveItemsTree(
 
   // Fetch the theme item if a base color is provided.
   if (config.tailwind.baseColor) {
-    const theme = await registryGetTheme(config.tailwind.baseColor)
+    const theme = await registryGetTheme(config.tailwind.baseColor, config)
     if (theme) {
       payload.unshift(theme)
     }
@@ -288,13 +288,13 @@ export async function registryResolveItemsTree(
   })
 }
 
-export async function registryGetTheme(name: string) {
+export async function registryGetTheme(name: string, config: Config) {
   const baseColor = await getRegistryBaseColor(name)
   if (!baseColor) {
     return null
   }
 
-  return {
+  const theme = {
     name,
     type: "registry:theme",
     tailwind: {
@@ -306,21 +306,35 @@ export async function registryGetTheme(name: string) {
               md: "calc(var(--radius) - 2px)",
               sm: "calc(var(--radius) - 4px)",
             },
-            colors: buildTailwindThemeColorsFromCssVars(
-              baseColor.cssVars.light
-            ),
+            colors: {},
           },
         },
       },
     },
     cssVars: {
       light: {
-        ...baseColor.cssVars.light,
         radius: "0.5rem",
+      },
+      dark: {},
+    },
+  } satisfies z.infer<typeof registryItemSchema>
+
+  if (config.tailwind.cssVariables) {
+    theme.tailwind.config.theme.extend.colors = {
+      ...theme.tailwind.config.theme.extend.colors,
+      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark),
+    }
+    theme.cssVars = {
+      light: {
+        ...baseColor.cssVars.light,
+        ...theme.cssVars.light,
       },
       dark: {
         ...baseColor.cssVars.dark,
+        ...theme.cssVars.dark,
       },
-    },
-  } satisfies z.infer<typeof registryItemSchema>
+    }
+  }
+
+  return theme
 }

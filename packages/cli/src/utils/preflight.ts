@@ -86,23 +86,23 @@ export async function preFlight(cwd: string, options: { force: boolean }) {
   }
 
   if (Object.keys(errors).length > 0) {
-    logger.info("")
-
     if (errors[ERRORS.TAILWIND_NOT_CONFIGURED]) {
+      logger.info("")
       logger.error(
         `Tailwind CSS is not configured. Install Tailwind CSS then run init again.`
       )
       if (projectInfo?.framework.links.tailwind) {
-        logger.info(
+        logger.error(
           `Visit ${cyan(projectInfo?.framework.links.tailwind)} to get started.`
         )
       }
     }
 
     if (errors[ERRORS.IMPORT_ALIAS_MISSING]) {
+      logger.info("")
       logger.error(`No import alias found in your tsconfig.json file.`)
       if (projectInfo?.framework.links.installation) {
-        logger.info(
+        logger.error(
           `Visit ${cyan(
             projectInfo?.framework.links.installation
           )} to learn how to set an import alias.`
