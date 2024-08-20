@@ -22,19 +22,17 @@ export default function BlocksLayout({
 }) {
   return (
     <div className="container relative">
-      <PageHeader className="max-w-3xl">
+      <PageHeader>
         <Announcement />
-        <PageHeaderHeading className="text-balance">
-          Building Blocks for the Web
-        </PageHeaderHeading>
+        <PageHeaderHeading>Building Blocks for the Web</PageHeaderHeading>
         <PageHeaderDescription>
           Beautifully designed. Copy and paste into your apps. Open Source.
         </PageHeaderDescription>
         <PageActions>
-          <Button asChild>
-            <a href="#blocks">Browse</a>
+          <Button asChild size="sm">
+            <a href="#blocks">Browse Blocks</a>
           </Button>
-          <Button asChild variant="outline">
+          <Button asChild variant="ghost" size="sm">
             <a
               href="https://github.com/shadcn-ui/ui/discussions/new?category=blocks-request"
               target="_blank"
@@ -44,7 +42,7 @@ export default function BlocksLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <section id="blocks" className="grid scroll-mt-24 gap-24 lg:gap-48">
+      <section id="blocks" className="scroll-mt-24">
         {children}
       </section>
     </div>
