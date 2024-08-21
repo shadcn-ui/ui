@@ -12,13 +12,19 @@ export async function editInV0({
   url,
 }: {
   name: string
-  title: string
+  title?: string
   description: string
   style: string
   code: string
   url: string
 }) {
   try {
+    title =
+      title ??
+      capitalCase(
+        name.replace(/\d+/g, "").replace("-demo", "").replace("-", " ")
+      )
+
     await track("edit_in_v0", {
       name,
       title,
@@ -32,11 +38,7 @@ export async function editInV0({
     // code = code.replace(`"use client"`, "")
 
     const payload = {
-      title:
-        title ??
-        capitalCase(
-          name.replace(/\d+/g, "").replace("-demo", "").replace("-", " ")
-        ),
+      title,
       description,
       code,
       source: {
