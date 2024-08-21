@@ -51,7 +51,7 @@ export async function editInV0({
       },
     }
 
-    const response = await fetch(`${process.env.V0_URL}/chat/api/edit`, {
+    const response = await fetch(`${process.env.V0_URL}/chat/api/open-in-v0`, {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
@@ -76,7 +76,7 @@ export async function editInV0({
 
     return {
       ...result,
-      url: `${process.env.V0_URL}/chat/api/edit/${result.id}`,
+      url: `${process.env.V0_URL}/chat/api/open-in-v0/${result.id}`,
     }
   } catch (error) {
     console.error(error)
