@@ -1,25 +1,30 @@
 "use server"
 
 import { track } from "@vercel/analytics/server"
-
-const EDIT_IN_V0_SOURCE = "ui.shadcn.com"
+import { capitalCase } from "change-case"
 
 export async function editInV0({
   name,
+  title,
   description,
   style,
   code,
+  url,
 }: {
   name: string
+  title: string
   description: string
   style: string
   code: string
+  url: string
 }) {
   try {
     await track("edit_in_v0", {
       name,
+      title,
       description,
       style,
+      url,
     })
 
     // Replace "use client" in the code.
@@ -27,12 +32,20 @@ export async function editInV0({
     // code = code.replace(`"use client"`, "")
 
     const payload = {
-      title: description,
+      title:
+        title ??
+        capitalCase(
+          name.replace(/\d+/g, "").replace("-demo", "").replace("-", " ")
+        ),
       description,
       code,
       source: {
         title: "shadcn/ui",
-        url: "https://ui.shadcn.com",
+        url,
+      },
+      meta: {
+        project: capitalCase(name.replace(/\d+/g, "")),
+        file: `${name}.tsx`,
       },
     }
 
@@ -52,6 +65,8 @@ export async function editInV0({
         throw new Error("Unauthorized")
       }
 
+      console.error(response.statusText)
+
       throw new Error("Something went wrong. Please try again later.")
     }
 
@@ -62,6 +77,7 @@ export async function editInV0({
       url: `${process.env.V0_URL}/chat/api/edit/${result.id}`,
     }
   } catch (error) {
+    console.error(error)
     if (error instanceof Error) {
       return { error: error.message }
     }

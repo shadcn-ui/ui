@@ -57,6 +57,12 @@ export function V0Button({
   block: Pick<Block, "name" | "description" | "code" | "style">
   size?: Size
 } & ButtonProps) {
+  const [url, setUrl] = React.useState("https://ui.shadcn.com")
+
+  React.useEffect(() => {
+    setUrl(window.location.href)
+  }, [])
+
   if (block.style === "new-york") {
     return (
       <V0Tooltip size={size} style={block.style}>
@@ -102,6 +108,7 @@ export function V0Button({
             description: block.description || "",
             code: block.code,
             style: block.style,
+            url,
           })
 
           if (result?.error) {
