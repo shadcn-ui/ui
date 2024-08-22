@@ -3,7 +3,7 @@
   "files": [
     {
       "name": "skeleton.tsx",
-      "content": "import { cn } from \"@/lib/utils\"\n\nfunction Skeleton({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\"animate-pulse rounded-md bg-primary/10\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n"
+      "content": "import React from 'react';\nimport { cn } from \"@/lib/utils\";\n\ninterface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {\n  loading?: boolean;\n}\n\nfunction Skeleton({\n  className,\n  children,\n  loading = true,\n  ...props\n}: SkeletonProps) {\n  if (!loading) return children;\n\n  return (\n    <div className=\"relative inline-block\">\n      <div\n        className={cn(\n          'absolute inset-0 animate-pulse rounded-md bg-secondary',\n          className,\n        )}\n        {...props}\n      />\n      <div className=\"invisible\">{children}</div>\n    </div>\n  );\n}\n\nexport { Skeleton };\n"
     }
   ],
   "type": "components:ui"

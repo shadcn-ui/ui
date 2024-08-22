@@ -1,4 +1,4 @@
-import { Skeleton } from '@/registry/default/ui/skeleton';
+import { Skeleton } from "@/registry/default/ui/skeleton"
 
 export default function SkeletonWrapper() {
   return (
@@ -13,5 +13,5 @@ export default function SkeletonWrapper() {
         felis tellus, efficitur id convallis a, viverra
       </Skeleton>
     </div>
-  );
+  )
 }
