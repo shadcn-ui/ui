@@ -9,15 +9,15 @@ test("get item target path", async () => {
   let appDir = path.resolve(__dirname, "../fixtures/config-full")
   expect(
     await getItemTargetPath(await getConfig(appDir), {
-      type: "components:ui",
+      type: "registry:ui",
     })
-  ).toEqual(path.resolve(appDir, "./src/components/ui"))
+  ).toEqual(path.resolve(appDir, "./src/ui"))
 
   // Partial config.
   appDir = path.resolve(__dirname, "../fixtures/config-partial")
   expect(
     await getItemTargetPath(await getConfig(appDir), {
-      type: "components:ui",
+      type: "registry:ui",
     })
   ).toEqual(path.resolve(appDir, "./components/ui"))
 
@@ -25,7 +25,7 @@ test("get item target path", async () => {
   appDir = path.resolve(__dirname, "../fixtures/config-jsx")
   expect(
     await getItemTargetPath(await getConfig(appDir), {
-      type: "components:ui",
+      type: "registry:ui",
     })
   ).toEqual(path.resolve(appDir, "./components/ui"))
 
@@ -33,7 +33,7 @@ test("get item target path", async () => {
   appDir = path.resolve(__dirname, "../fixtures/config-ui")
   expect(
     await getItemTargetPath(await getConfig(appDir), {
-      type: "components:ui",
+      type: "registry:ui",
     })
   ).toEqual(path.resolve(appDir, "./src/ui"))
 })

@@ -144,8 +144,8 @@ export async function getItemTargetPath(
     return override
   }
 
-  if (item.type === "registry:ui" && config.aliases.ui) {
-    return config.resolvedPaths.ui
+  if (item.type === "registry:ui") {
+    return config.resolvedPaths.ui ?? config.resolvedPaths.components
   }
 
   const [parent, type] = item.type?.split(":") ?? []
@@ -251,19 +251,21 @@ export async function registryResolveItemsTree(
     return null
   }
 
-  // Add the index item to the beginning of the payload.
+  // If we're resolving the index, we want it to go first.
   if (names.includes("index")) {
     const index = await getRegistryItem(config.style, "index")
     if (index) {
       payload.unshift(index)
     }
-  }
 
-  // Fetch the theme item if a base color is provided.
-  if (config.tailwind.baseColor) {
-    const theme = await registryGetTheme(config.tailwind.baseColor, config)
-    if (theme) {
-      payload.unshift(theme)
+    // Fetch the theme item if a base color is provided.
+    // We do this for index only.
+    // Other components will ship with their theme tokens.
+    if (config.tailwind.baseColor) {
+      const theme = await registryGetTheme(config.tailwind.baseColor, config)
+      if (theme) {
+        payload.unshift(theme)
+      }
     }
   }
 
@@ -294,6 +296,7 @@ export async function registryGetTheme(name: string, config: Config) {
     return null
   }
 
+  // TODO: Move this to the registry i.e registry:theme.
   const theme = {
     name,
     type: "registry:theme",

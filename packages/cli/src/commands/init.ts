@@ -1,5 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
+import { addComponents } from "@/src/utils/add-components"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -98,7 +99,10 @@ export const init = new Command()
 
       const fullConfig = await resolveConfigPaths(cwd, config)
 
-      await runInit(fullConfig)
+      await addComponents(["index"], fullConfig, {
+        // Init will always overwrite files.
+        overwrite: true,
+      })
 
       logger.info("")
       logger.info(
@@ -285,30 +289,4 @@ export async function promptForMinimalConfig(
     tsx: defaultConfig?.tsx,
     aliases: defaultConfig?.aliases,
   })
-}
-
-export async function runInit(config: Config) {
-  const initializersSpinner = ora(`Initializing project.`)?.start()
-  const tree = await registryResolveItemsTree(["index"], config)
-
-  if (!tree) {
-    initializersSpinner?.fail()
-    logger.error(`Something went wrong during the initialization process.`)
-    process.exit(1)
-  }
-
-  await updateTailwindConfig(tree.tailwind?.config, config)
-  await updateTailwindCss(tree.cssVars, config)
-  initializersSpinner?.succeed()
-
-  const dependenciesSpinner = ora(`Installing dependencies.`)?.start()
-  await updateDependencies(tree.dependencies, config)
-  dependenciesSpinner?.succeed()
-
-  const filesSpinner = ora(`Writing files.`)?.start()
-  await updateFiles(tree.files, config, {
-    // Init will always overwrite files.
-    overwrite: true,
-  })
-  filesSpinner?.succeed()
 }

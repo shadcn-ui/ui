@@ -2,10 +2,7 @@ import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
 import { Config } from "@/src/utils/get-config"
-import {
-  RegistryItem,
-  registryItemTailwindSchema,
-} from "@/src/utils/registry/schema"
+import { registryItemTailwindSchema } from "@/src/utils/registry/schema"
 import deepmerge from "deepmerge"
 import objectToString from "stringify-object"
 import { type Config as TailwindConfig } from "tailwindcss"

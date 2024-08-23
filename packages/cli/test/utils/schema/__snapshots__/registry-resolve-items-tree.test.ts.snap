@@ -8,9 +8,9 @@ exports[`registryResolveItemTree > should resolve index 1`] = `
       "brand-secondary": "#ccfbf1",
     },
     "light": {
-      "--radius": "0.5rem",
       "brand-primary": "#a855f7",
       "brand-secondary": "#10b981",
+      "radius": "0.5rem",
     },
   },
   "dependencies": [
@@ -22,6 +22,7 @@ exports[`registryResolveItemTree > should resolve index 1`] = `
     "clsx",
     "tailwind-merge",
     "@radix-ui/react-slot",
+    "@react-hook/window-size@1.0.3",
     "cmdk@1.0.0",
     "@radix-ui/react-dialog",
   ],
@@ -56,7 +57,7 @@ Label.displayName = LabelPrimitive.Root.displayName
 export { Label }
 ",
       "path": "ui/label.tsx",
-      "type": "components:ui",
+      "type": "registry:ui",
     },
     {
       "content": "import { clsx, type ClassValue } from "clsx"
@@ -72,31 +73,61 @@ export function cn(...inputs: ClassValue[]) {
     {
       "content": ""use client"
 
+import { HelloCard } from "@/registry/default/block/hello-block/components/hello-card"
 import { useMediaQuery } from "@/registry/default/hooks/use-media-query"
 import { cn } from "@/registry/default/lib/utils"
 import { Button } from "@/registry/default/ui/button"
 
-export default function ExampleBlock() {
+export default function HelloBlock() {
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
   return (
-    <div
+    <HelloCard
+      title="Hello Block"
       className={cn(
-        "shadow-brand p-12",
+        "p-12",
         isDesktop
           ? "bg-muted text-muted-foreground"
           : "bg-primary text-primary-foreground"
       )}
     >
-      <Button className="bg-brand-primary border-brand-secondary border-4">
-        A button
-      </Button>
-    </div>
+      <p>Hello. This is a component inside a block.</p>
+      <p>You are currently on {isDesktop ? "desktop" : "mobile"}</p>
+      <Button>Click me</Button>
+    </HelloCard>
   )
 }
 ",
-      "path": "block/hello-block.tsx",
-      "type": "components:block",
+      "path": "block/hello-block/hello-block.tsx",
+      "type": "registry:block",
+    },
+    {
+      "content": "import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/registry/default/ui/card"
+
+export function HelloCard({
+  title,
+  children,
+  className,
+}: {
+  title: string
+} & React.ComponentProps<typeof Card>) {
+  return (
+    <Card className={className}>
+      <CardHeader>
+        <CardTitle className="text-brand-secondary text-4xl">{title}</CardTitle>
+      </CardHeader>
+      <CardContent>{children}</CardContent>
+    </Card>
+  )
+}
+",
+      "path": "block/hello-block/components/hello-card.tsx",
+      "type": "registry:block",
     },
     {
       "content": "import * as React from "react"
@@ -157,7 +188,115 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
-      "type": "components:ui",
+      "type": "registry:ui",
+    },
+    {
+      "content": "import * as React from "react"
+
+export function useMediaQuery(query: string) {
+  const [value, setValue] = React.useState(false)
+
+  React.useEffect(() => {
+    function onChange(event: MediaQueryListEvent) {
+      setValue(event.matches)
+    }
+
+    const result = matchMedia(query)
+    result.addEventListener("change", onChange)
+    setValue(result.matches)
+
+    return () => result.removeEventListener("change", onChange)
+  }, [query])
+
+  return value
+}
+",
+      "path": "hooks/use-media-query.ts",
+      "type": "registry:hook",
+    },
+    {
+      "content": "import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+const Card = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      className
+    )}
+    {...props}
+  />
+))
+Card.displayName = "Card"
+
+const CardHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    {...props}
+  />
+))
+CardHeader.displayName = "CardHeader"
+
+const CardTitle = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h3
+    ref={ref}
+    className={cn(
+      "text-2xl font-semibold leading-none tracking-tight",
+      className
+    )}
+    {...props}
+  />
+))
+CardTitle.displayName = "CardTitle"
+
+const CardDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
+CardDescription.displayName = "CardDescription"
+
+const CardContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+))
+CardContent.displayName = "CardContent"
+
+const CardFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex items-center p-6 pt-0", className)}
+    {...props}
+  />
+))
+CardFooter.displayName = "CardFooter"
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+",
+      "path": "ui/card.tsx",
+      "type": "registry:ui",
     },
     {
       "content": ""use client"
@@ -317,7 +456,7 @@ export {
 }
 ",
       "path": "ui/command.tsx",
-      "type": "components:ui",
+      "type": "registry:ui",
     },
     {
       "content": ""use client"
@@ -444,7 +583,7 @@ export {
 }
 ",
       "path": "ui/dialog.tsx",
-      "type": "components:ui",
+      "type": "registry:ui",
     },
   ],
   "tailwind": {
@@ -462,6 +601,12 @@ export {
           "boxShadow": {
             "brand": "0px 0px 10px 0px rgba(255, 255, 255, 0.10)",
           },
+          "colors": {
+            "brand": {
+              "primary": "var(--brand-primary)",
+              "secondary": "var(--brand-secondary)",
+            },
+          },
         },
       },
     },
@@ -471,7 +616,12 @@ export {
 
 exports[`registryResolveItemTree > should resolve items tree 1`] = `
 {
-  "cssVars": {},
+  "cssVars": {
+    "dark": {},
+    "light": {
+      "radius": "0.5rem",
+    },
+  },
   "dependencies": [
     "@radix-ui/react-slot",
   ],
@@ -537,16 +687,34 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
-      "type": "components:ui",
+      "type": "registry:ui",
     },
   ],
-  "tailwind": {},
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "borderRadius": {
+            "lg": "var(--radius)",
+            "md": "calc(var(--radius) - 2px)",
+            "sm": "calc(var(--radius) - 4px)",
+          },
+          "colors": {},
+        },
+      },
+    },
+  },
 }
 `;
 
 exports[`registryResolveItemTree > should resolve multiple items tree 1`] = `
 {
-  "cssVars": {},
+  "cssVars": {
+    "dark": {},
+    "light": {
+      "radius": "0.5rem",
+    },
+  },
   "dependencies": [
     "@radix-ui/react-slot",
     "cmdk@1.0.0",
@@ -613,7 +781,7 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
-      "type": "components:ui",
+      "type": "registry:ui",
     },
     {
       "content": "import * as React from "react"
@@ -643,7 +811,7 @@ Input.displayName = "Input"
 export { Input }
 ",
       "path": "ui/input.tsx",
-      "type": "components:ui",
+      "type": "registry:ui",
     },
     {
       "content": ""use client"
@@ -803,7 +971,7 @@ export {
 }
 ",
       "path": "ui/command.tsx",
-      "type": "components:ui",
+      "type": "registry:ui",
     },
     {
       "content": ""use client"
@@ -930,9 +1098,22 @@ export {
 }
 ",
       "path": "ui/dialog.tsx",
-      "type": "components:ui",
+      "type": "registry:ui",
     },
   ],
-  "tailwind": {},
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "borderRadius": {
+            "lg": "var(--radius)",
+            "md": "calc(var(--radius) - 2px)",
+            "sm": "calc(var(--radius) - 4px)",
+          },
+          "colors": {},
+        },
+      },
+    },
+  },
 }
 `;

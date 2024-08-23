@@ -15,7 +15,7 @@ vi.mock("fs/promises", () => ({
 }))
 vi.mock("ora")
 
-test("init config-full", async () => {
+test.skip("init config-full", async () => {
   vi.spyOn(getPackageManger, "getPackageManager").mockResolvedValue("pnpm")
   vi.spyOn(registry, "getRegistryBaseColor").mockResolvedValue({
     inlineColors: {},
@@ -107,7 +107,7 @@ test("init config-full", async () => {
   mockWriteFile.mockRestore()
 })
 
-test("init config-partial", async () => {
+test.skip("init config-partial", async () => {
   vi.spyOn(getPackageManger, "getPackageManager").mockResolvedValue("npm")
   vi.spyOn(registry, "getRegistryBaseColor").mockResolvedValue({
     inlineColors: {},

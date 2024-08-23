@@ -222,9 +222,10 @@ export async function getProjectConfig(cwd: string): Promise<Config | null> {
       prefix: "",
     },
     aliases: {
-      utils: `${projectInfo.aliasPrefix}/lib/utils`,
+      ui: `${projectInfo.aliasPrefix}/ui`,
       components: `${projectInfo.aliasPrefix}/components`,
       lib: `${projectInfo.aliasPrefix}/lib`,
+      utils: `${projectInfo.aliasPrefix}/lib/utils`,
       hooks: `${projectInfo.aliasPrefix}/hooks`,
     },
   }
