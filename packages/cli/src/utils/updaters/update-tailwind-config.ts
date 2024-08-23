@@ -175,12 +175,14 @@ async function addTailwindConfigTheme(
   if (themeInitializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
     const themeObjectString = themeInitializer.getText()
     const themeObject = await parseObjectLiteral(themeObjectString)
-    const result = deepmerge(themeObject, theme) as Record<string, any>
+    const result = deepmerge(themeObject, theme)
     const resultString = objectToString(result)
       .replace(/\'\"/g, "'")
       .replace(/\"\'/g, "'")
       .replace(/\'\[/g, "[")
       .replace(/\]\'/g, "]")
+      .replace(/\\\'/g, "")
+      .replace(/\\\'/g, "")
     themeInitializer.replaceWithText(resultString)
   }
 
@@ -206,14 +208,14 @@ function addTailwindConfigPlugin(
   if (existingPlugins.isKind(SyntaxKind.PropertyAssignment)) {
     const initializer = existingPlugins.getInitializer()
 
-    // If property is an array, append.
     if (initializer?.isKind(SyntaxKind.ArrayLiteralExpression)) {
-      // Check if the array already contains the value.
       if (
         initializer
           .getElements()
-          .map((element) => element.getText())
-          .includes(plugin)
+          .map((element) => {
+            return element.getText().replace(/["']/g, "")
+          })
+          .includes(plugin.replace(/["']/g, ""))
       ) {
         return configObject
       }
@@ -303,7 +305,6 @@ export function unnestSpreadProperties(obj: ObjectLiteralExpression) {
           propAssignment.remove()
         }
       } else if (initializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
-        // Recursively process nested object literals
         unnestSpreadProperties(initializer as ObjectLiteralExpression)
       }
     }
@@ -334,7 +335,7 @@ function parseObjectLiteralExpression(node: ObjectLiteralExpression): any {
   const result: any = {}
   for (const property of node.getProperties()) {
     if (property.isKind(SyntaxKind.PropertyAssignment)) {
-      const name = property.getName()
+      const name = property.getName().replace(/\'/g, "")
       if (
         property.getInitializer()?.isKind(SyntaxKind.ObjectLiteralExpression)
       ) {
