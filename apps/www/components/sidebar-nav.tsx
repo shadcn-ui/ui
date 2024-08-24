@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { SidebarNavItem } from "types/nav"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { SidebarNavItem } from "types/nav";
 
-import { type DocsConfig } from "@/config/docs"
-import { cn } from "@/lib/utils"
+import { type DocsConfig } from "@/config/docs";
+import { cn } from "@/lib/utils";
 
 export interface DocsSidebarNavProps {
-  config: DocsConfig
+  config: DocsConfig;
 }
 
 export function DocsSidebarNav({ config }: DocsSidebarNavProps) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const items = pathname?.startsWith("/charts")
     ? config.chartsNav
-    : config.sidebarNav
+    : config.sidebarNav;
 
   return items.length ? (
     <div className="w-full">
@@ -31,12 +31,12 @@ export function DocsSidebarNav({ config }: DocsSidebarNavProps) {
         </div>
       ))}
     </div>
-  ) : null
+  ) : null;
 }
 
 interface DocsSidebarNavItemsProps {
-  items: SidebarNavItem[]
-  pathname: string | null
+  items: SidebarNavItem[];
+  pathname: string | null;
 }
 
 export function DocsSidebarNavItems({
@@ -51,18 +51,18 @@ export function DocsSidebarNavItems({
             key={index}
             href={item.href}
             className={cn(
-              "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
-              item.disabled && "cursor-not-allowed opacity-60",
+              "group flex w-full items-center rounded-md bg-gray-600 mt-4 px-3 py-2 text-white",
               pathname === item.href
-                ? "font-medium text-foreground"
-                : "text-muted-foreground"
+                ? "font-semibold text-white border border-[#525252]"
+                : "text-white border border-transparent",
+              "hover:bg-gray-500 hover:border-gray-400"
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
           >
             {item.title}
             {item.label && (
-              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+              <span className="ml-auto rounded-md bg-[#adfa1d] px-2 py-0.5 text-xs leading-none text-[#000000]">
                 {item.label}
               </span>
             )}
@@ -71,13 +71,13 @@ export function DocsSidebarNavItems({
           <span
             key={index}
             className={cn(
-              "flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground hover:underline",
-              item.disabled && "cursor-not-allowed opacity-60"
+              "flex w-full items-center rounded-md bg-gray-600 mt-4 px-3 py-2 text-white cursor-not-allowed",
+              "hover:bg-gray-500"
             )}
           >
             {item.title}
             {item.label && (
-              <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs leading-none text-muted-foreground no-underline group-hover:no-underline">
+              <span className="ml-auto rounded-md bg-[#4a4a4a] px-2 py-0.5 text-xs leading-none text-[#d1d1d1]">
                 {item.label}
               </span>
             )}
@@ -85,5 +85,5 @@ export function DocsSidebarNavItems({
         )
       )}
     </div>
-  ) : null
+  ) : null;
 }
