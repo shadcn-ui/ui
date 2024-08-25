@@ -1,26 +1,34 @@
 import path from "path"
+import { initOptionsSchema } from "@/src/commands/init"
 import * as ERRORS from "@/src/utils/errors"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { logger } from "@/src/utils/logger"
 import fs from "fs-extra"
 import { cyan } from "kleur/colors"
 import ora from "ora"
+import { z } from "zod"
 
-export async function preFlight(cwd: string, options: { force: boolean }) {
+export async function preFlightInit(
+  options: z.infer<typeof initOptionsSchema>
+) {
+  logger.info("")
   const errors: Record<string, boolean> = {}
 
   // Ensure target directory exists.
   // Check for empty project. We assume if no package.json exists, the project is empty.
   const projectSpinner = ora(`Preflight checks.`).start()
   if (
-    !fs.existsSync(cwd) ||
-    !fs.existsSync(path.resolve(cwd, "package.json"))
+    !fs.existsSync(options.cwd) ||
+    !fs.existsSync(path.resolve(options.cwd, "package.json"))
   ) {
     errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT] = true
   }
 
   // Check for existing components.json file.
-  if (fs.existsSync(path.resolve(cwd, "components.json")) && !options.force) {
+  if (
+    fs.existsSync(path.resolve(options.cwd, "components.json")) &&
+    !options.force
+  ) {
     errors[ERRORS.EXISTING_CONFIG] = true
   }
 
@@ -29,13 +37,13 @@ export async function preFlight(cwd: string, options: { force: boolean }) {
 
     logger.info("")
     if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-      logger.error(`The path ${cyan(cwd)} does not exist or is empty.`)
+      logger.error(`The path ${cyan(options.cwd)} does not exist or is empty.`)
     }
 
     if (errors[ERRORS.EXISTING_CONFIG]) {
       logger.error(
         `A ${cyan("components.json")} file already exists at ${cyan(
-          cwd
+          options.cwd
         )}.\nTo start over, remove the ${cyan(
           "components.json"
         )} file and run ${cyan("init")} again.`
@@ -48,7 +56,7 @@ export async function preFlight(cwd: string, options: { force: boolean }) {
 
   projectSpinner?.succeed()
 
-  const projectInfo = await getProjectInfo(cwd)
+  const projectInfo = await getProjectInfo(options.cwd)
 
   const frameworkSpinner = ora(`Verifying framework.`).start()
   if (projectInfo?.framework.name === "manual") {
@@ -56,7 +64,7 @@ export async function preFlight(cwd: string, options: { force: boolean }) {
     frameworkSpinner?.fail()
     logger.info("")
     logger.error(
-      `We could not detect a supported framework at ${cyan(cwd)}.\n` +
+      `We could not detect a supported framework at ${cyan(options.cwd)}.\n` +
         `Visit ${cyan(
           projectInfo?.framework.links.installation
         )} to manually configure your project.\nOnce configured, you can use the cli to add components.`
@@ -115,7 +123,6 @@ export async function preFlight(cwd: string, options: { force: boolean }) {
   }
 
   return {
-    errors,
     projectInfo,
   }
 }

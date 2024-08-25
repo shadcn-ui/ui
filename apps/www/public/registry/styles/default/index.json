@@ -8,9 +8,7 @@
     ""
   ],
   "registryDependencies": [
-    "utils",
-    "hello-block",
-    "command"
+    "utils"
   ],
   "tailwind": {
     "config": {

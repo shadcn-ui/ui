@@ -1,5 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
+import { preFlightInit } from "@/src/preflights/preflight-init"
 import { addComponents } from "@/src/utils/add-components"
 import {
   DEFAULT_COMPONENTS,
@@ -14,30 +15,19 @@ import {
 import { getProjectConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
-import { preFlight } from "@/src/utils/preflight"
-import {
-  getRegistryBaseColors,
-  getRegistryStyles,
-  registryResolveItemsTree,
-} from "@/src/utils/registry"
-import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
-import { updateFiles } from "@/src/utils/updaters/update-files"
-import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
-import { updateTailwindCss } from "@/src/utils/updaters/update-tailwind-css"
+import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
 import { Command } from "commander"
 import { cyan, green } from "kleur/colors"
 import ora from "ora"
 import prompts from "prompts"
 import { z } from "zod"
 
-const initOptionsSchema = z.object({
+export const initOptionsSchema = z.object({
   cwd: z.string(),
   yes: z.boolean(),
   defaults: z.boolean(),
   force: z.boolean(),
 })
-
-type InitOptions = z.infer<typeof initOptionsSchema>
 
 export const init = new Command()
   .name("init")
@@ -52,26 +42,16 @@ export const init = new Command()
   )
   .action(async (opts) => {
     try {
-      const options = initOptionsSchema.parse(opts)
-      const cwd = path.resolve(options.cwd)
+      const options = initOptionsSchema.parse({
+        cwd: path.resolve(opts.cwd),
+        ...opts,
+      })
 
-      logger.info("")
-      const { errors } = await preFlight(cwd, options)
-
-      if (Object.keys(errors).length > 0) {
-        logger.error(
-          `Something went wrong during the preflight check. Please check the output above for more details.`
-        )
-        logger.error("")
-        process.exit(1)
-      }
-
-      const projectConfig = await getProjectConfig(cwd)
+      const { projectInfo } = await preFlightInit(options)
+      const projectConfig = await getProjectConfig(options.cwd, projectInfo)
       const config = projectConfig
-        ? // If we can determine the project config, prompt for minimal config.
-          await promptForMinimalConfig(projectConfig, options)
-        : // Otherwise, prompt for full config.
-          await promptForConfig(await getConfig(cwd))
+        ? await promptForMinimalConfig(projectConfig, options)
+        : await promptForConfig(await getConfig(options.cwd))
 
       if (!opts.yes) {
         const { proceed } = await prompts({
@@ -88,17 +68,17 @@ export const init = new Command()
         }
       }
 
-      // Write to file.
+      // Write components.json.
       if (!opts.force && !opts.defaults) {
         logger.info("")
       }
       const spinner = ora(`Writing components.json.`).start()
-      const targetPath = path.resolve(cwd, "components.json")
+      const targetPath = path.resolve(options.cwd, "components.json")
       await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
       spinner.succeed()
 
-      const fullConfig = await resolveConfigPaths(cwd, config)
-
+      // Add components.
+      const fullConfig = await resolveConfigPaths(options.cwd, config)
       await addComponents(["index"], fullConfig, {
         // Init will always overwrite files.
         overwrite: true,
@@ -117,7 +97,7 @@ export const init = new Command()
     }
   })
 
-export async function promptForConfig(defaultConfig: Config | null = null) {
+async function promptForConfig(defaultConfig: Config | null = null) {
   const [styles, baseColors] = await Promise.all([
     getRegistryStyles(),
     getRegistryBaseColors(),
@@ -225,9 +205,9 @@ export async function promptForConfig(defaultConfig: Config | null = null) {
   })
 }
 
-export async function promptForMinimalConfig(
+async function promptForMinimalConfig(
   defaultConfig: Config,
-  opts: InitOptions
+  opts: z.infer<typeof initOptionsSchema>
 ) {
   let style = defaultConfig.style
   let baseColor = defaultConfig.tailwind.baseColor
@@ -239,7 +219,6 @@ export async function promptForMinimalConfig(
       getRegistryBaseColors(),
     ])
 
-    logger.info("")
     const options = await prompts([
       {
         type: "select",

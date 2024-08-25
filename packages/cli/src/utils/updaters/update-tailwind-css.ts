@@ -1,6 +1,9 @@
 import { promises as fs } from "fs"
+import path from "path"
 import { Config } from "@/src/utils/get-config"
 import { registryItemCssVarsSchema } from "@/src/utils/registry/schema"
+import { cyan } from "kleur/colors"
+import ora from "ora"
 import postcss from "postcss"
 import AtRule from "postcss/lib/at-rule"
 import Root from "postcss/lib/root"
@@ -11,14 +14,21 @@ export async function updateTailwindCss(
   cssVars: z.infer<typeof registryItemCssVarsSchema> | undefined,
   config: Config
 ) {
-  if (!cssVars) {
+  if (!cssVars || !Object.keys(cssVars).length) {
     return
   }
 
+  console.log(cssVars)
+
+  const tailwindCssFileRelativePath = path.relative(
+    config.resolvedPaths.cwd,
+    config.resolvedPaths.tailwindCss
+  )
+  const spinner = ora(`Updating ${cyan(tailwindCssFileRelativePath)}`).start()
   const raw = await fs.readFile(config.resolvedPaths.tailwindCss, "utf8")
   let output = await transformTailwindCss(raw, cssVars)
-
   await fs.writeFile(config.resolvedPaths.tailwindCss, output, "utf8")
+  spinner.succeed()
 }
 
 export async function transformTailwindCss(

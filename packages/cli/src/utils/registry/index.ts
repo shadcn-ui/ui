@@ -137,7 +137,7 @@ export async function fetchTree(
 
 export async function getItemTargetPath(
   config: Config,
-  item: z.infer<typeof registryItemSchema>,
+  item: Pick<z.infer<typeof registryItemSchema>, "type">,
   override?: string
 ) {
   if (override) {

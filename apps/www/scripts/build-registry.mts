@@ -22,9 +22,8 @@ import { themes } from "../registry/themes"
 const REGISTRY_PATH = path.join(process.cwd(), "public/registry")
 
 const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
-  "registry:block",
-  "registry:lib",
   "registry:ui",
+  "registry:lib",
   "registry:hook",
 ]
 
@@ -384,7 +383,7 @@ async function buildStylesIndex() {
         // TODO: Remove this when we migrate to lucide-react.
         style.name === "new-york" ? "@radix-ui/react-icons" : "",
       ],
-      registryDependencies: ["utils", "hello-block", "command"],
+      registryDependencies: ["utils"],
       tailwind: {
         config: {
           plugins: [`require("tailwindcss-animate")`],

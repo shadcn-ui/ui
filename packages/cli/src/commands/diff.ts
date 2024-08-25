@@ -70,7 +70,10 @@ export const diff = new Command()
         // Find all components that exist in the project.
         const projectComponents = registryIndex.filter((item) => {
           for (const file of item.files ?? []) {
-            const filePath = path.resolve(targetDir, file.path)
+            const filePath = path.resolve(
+              targetDir,
+              typeof file === "string" ? file : file.path
+            )
             if (existsSync(filePath)) {
               return true
             }
@@ -158,7 +161,10 @@ async function diffComponent(
     }
 
     for (const file of item.files ?? []) {
-      const filePath = path.resolve(targetDir, file.path)
+      const filePath = path.resolve(
+        targetDir,
+        typeof file === "string" ? file : file.path
+      )
 
       if (!existsSync(filePath)) {
         continue
@@ -166,7 +172,7 @@ async function diffComponent(
 
       const fileContent = await fs.readFile(filePath, "utf8")
 
-      if (!file.content) {
+      if (typeof file === "string" || !file.content) {
         continue
       }
 

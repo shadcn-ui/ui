@@ -190,11 +190,16 @@ export async function getTsConfig() {
   }
 }
 
-export async function getProjectConfig(cwd: string): Promise<Config | null> {
+export async function getProjectConfig(
+  cwd: string,
+  defaultProjectInfo: ProjectInfo | null = null
+): Promise<Config | null> {
   // Check for existing component config.
   const [existingConfig, projectInfo] = await Promise.all([
     getConfig(cwd),
-    getProjectInfo(cwd),
+    !defaultProjectInfo
+      ? getProjectInfo(cwd)
+      : Promise.resolve(defaultProjectInfo),
   ])
 
   if (existingConfig) {

@@ -8,9 +8,7 @@
     "@radix-ui/react-icons"
   ],
   "registryDependencies": [
-    "utils",
-    "hello-block",
-    "command"
+    "utils"
   ],
   "tailwind": {
     "config": {

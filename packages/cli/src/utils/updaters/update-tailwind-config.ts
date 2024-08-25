@@ -2,8 +2,11 @@ import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
 import { Config } from "@/src/utils/get-config"
+import { logger } from "@/src/utils/logger"
 import { registryItemTailwindSchema } from "@/src/utils/registry/schema"
 import deepmerge from "deepmerge"
+import { cyan } from "kleur/colors"
+import ora from "ora"
 import objectToString from "stringify-object"
 import { type Config as TailwindConfig } from "tailwindcss"
 import {
@@ -31,9 +34,16 @@ export async function updateTailwindConfig(
   if (!tailwindConfig) {
     return
   }
+
+  const tailwindFileRelativePath = path.relative(
+    config.resolvedPaths.cwd,
+    config.resolvedPaths.tailwindConfig
+  )
+  const spinner = ora(`Updating ${cyan(tailwindFileRelativePath)}`).start()
   const raw = await fs.readFile(config.resolvedPaths.tailwindConfig, "utf8")
   const output = await transformTailwindConfig(raw, tailwindConfig, config)
   await fs.writeFile(config.resolvedPaths.tailwindConfig, output, "utf8")
+  spinner.succeed()
 }
 
 export async function transformTailwindConfig(
