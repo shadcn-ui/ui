@@ -1,6 +1,7 @@
 import path from "path"
 import { Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
+import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import {
   registryBaseColorSchema,
@@ -13,7 +14,6 @@ import {
 import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
 import deepmerge from "deepmerge"
 import { HttpsProxyAgent } from "https-proxy-agent"
-import { cyan } from "kleur/colors"
 import fetch from "node-fetch"
 import { z } from "zod"
 
@@ -174,7 +174,9 @@ async function fetchRegistry(paths: string[]) {
             500: "Internal server error",
           }
           const message = errorMessages[response.status] || response.statusText
-          throw new Error(`Failed to fetch from ${cyan(url)}. ${message}`)
+          throw new Error(
+            `Failed to fetch from ${highlighter.info(url)}. ${message}`
+          )
         }
 
         return response.json()

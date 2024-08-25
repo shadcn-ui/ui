@@ -2,16 +2,16 @@ import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
 import * as ERRORS from "@/src/utils/errors"
 import { getProjectInfo } from "@/src/utils/get-project-info"
+import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import fs from "fs-extra"
-import { cyan } from "kleur/colors"
 import ora from "ora"
 import { z } from "zod"
 
 export async function preFlightInit(
   options: z.infer<typeof initOptionsSchema>
 ) {
-  logger.info("")
+  logger.break()
   const errors: Record<string, boolean> = {}
 
   // Ensure target directory exists.
@@ -24,7 +24,6 @@ export async function preFlightInit(
     errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT] = true
   }
 
-  // Check for existing components.json file.
   if (
     fs.existsSync(path.resolve(options.cwd, "components.json")) &&
     !options.force
@@ -35,47 +34,56 @@ export async function preFlightInit(
   if (Object.keys(errors).length > 0) {
     projectSpinner?.fail()
 
-    logger.info("")
+    logger.break()
     if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-      logger.error(`The path ${cyan(options.cwd)} does not exist or is empty.`)
+      logger.error(
+        `The path ${highlighter.info(options.cwd)} does not exist or is empty.`
+      )
     }
 
     if (errors[ERRORS.EXISTING_CONFIG]) {
       logger.error(
-        `A ${cyan("components.json")} file already exists at ${cyan(
-          options.cwd
-        )}.\nTo start over, remove the ${cyan(
+        `A ${highlighter.info(
           "components.json"
-        )} file and run ${cyan("init")} again.`
+        )} file already exists at ${highlighter.info(
+          options.cwd
+        )}.\nTo start over, remove the ${highlighter.info(
+          "components.json"
+        )} file and run ${highlighter.info("init")} again.`
       )
     }
 
-    logger.info("")
+    logger.break()
     process.exit(1)
   }
 
   projectSpinner?.succeed()
 
-  const projectInfo = await getProjectInfo(options.cwd)
-
   const frameworkSpinner = ora(`Verifying framework.`).start()
-  if (projectInfo?.framework.name === "manual") {
+  const projectInfo = await getProjectInfo(options.cwd)
+  if (!projectInfo || projectInfo?.framework.name === "manual") {
     errors[ERRORS.UNSUPPORTED_FRAMEWORK] = true
     frameworkSpinner?.fail()
-    logger.info("")
-    logger.error(
-      `We could not detect a supported framework at ${cyan(options.cwd)}.\n` +
-        `Visit ${cyan(
-          projectInfo?.framework.links.installation
-        )} to manually configure your project.\nOnce configured, you can use the cli to add components.`
-    )
-    logger.info("")
+    logger.break()
+    if (projectInfo?.framework.links.installation) {
+      logger.error(
+        `We could not detect a supported framework at ${highlighter.info(
+          options.cwd
+        )}.\n` +
+          `Visit ${highlighter.info(
+            projectInfo?.framework.links.installation
+          )} to manually configure your project.\nOnce configured, you can use the cli to add components.`
+      )
+    }
+    logger.break()
     process.exit(1)
-  } else {
-    frameworkSpinner?.succeed(
-      `Verifying framework: ${projectInfo?.framework.label}.`
-    )
   }
+
+  frameworkSpinner?.succeed(
+    `Verifying framework. Found ${highlighter.info(
+      projectInfo.framework.label
+    )}.`
+  )
 
   const tailwindSpinner = ora(`Validating Tailwind CSS.`).start()
   if (!projectInfo?.tailwindConfigFile || !projectInfo?.tailwindCssFile) {
@@ -95,30 +103,32 @@ export async function preFlightInit(
 
   if (Object.keys(errors).length > 0) {
     if (errors[ERRORS.TAILWIND_NOT_CONFIGURED]) {
-      logger.info("")
+      logger.break()
       logger.error(
         `Tailwind CSS is not configured. Install Tailwind CSS then run init again.`
       )
       if (projectInfo?.framework.links.tailwind) {
         logger.error(
-          `Visit ${cyan(projectInfo?.framework.links.tailwind)} to get started.`
+          `Visit ${highlighter.info(
+            projectInfo?.framework.links.tailwind
+          )} to get started.`
         )
       }
     }
 
     if (errors[ERRORS.IMPORT_ALIAS_MISSING]) {
-      logger.info("")
+      logger.break()
       logger.error(`No import alias found in your tsconfig.json file.`)
       if (projectInfo?.framework.links.installation) {
         logger.error(
-          `Visit ${cyan(
+          `Visit ${highlighter.info(
             projectInfo?.framework.links.installation
           )} to learn how to set an import alias.`
         )
       }
     }
 
-    logger.info("")
+    logger.break()
     process.exit(1)
   }
 

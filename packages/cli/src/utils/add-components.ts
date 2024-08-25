@@ -1,10 +1,10 @@
 import { type Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { registryResolveItemsTree } from "@/src/utils/registry"
+import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateFiles } from "@/src/utils/updaters/update-files"
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
-import { updateTailwindCss } from "@/src/utils/updaters/update-tailwind-css"
 import ora from "ora"
 
 export async function addComponents(
@@ -26,7 +26,7 @@ export async function addComponents(
   registrySpinner?.succeed()
 
   await updateTailwindConfig(tree.tailwind?.config, config)
-  await updateTailwindCss(tree.cssVars, config)
+  await updateCssVars(tree.cssVars, config)
 
   await updateDependencies(tree.dependencies, config)
   await updateFiles(tree.files, config, {

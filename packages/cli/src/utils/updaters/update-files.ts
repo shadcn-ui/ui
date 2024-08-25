@@ -1,6 +1,7 @@
 import { existsSync, promises as fs } from "fs"
 import path, { basename } from "path"
 import { Config } from "@/src/utils/get-config"
+import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import {
   getRegistryBaseColor,
@@ -12,7 +13,6 @@ import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
-import { cyan } from "kleur/colors"
 import ora from "ora"
 import prompts from "prompts"
 
@@ -52,7 +52,7 @@ export async function updateFiles(
       const { overwrite } = await prompts({
         type: "confirm",
         name: "overwrite",
-        message: `The file ${cyan(
+        message: `The file ${highlighter.info(
           fileName
         )} already exists. Would you like to overwrite?`,
         initial: false,

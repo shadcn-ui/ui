@@ -14,10 +14,10 @@ import {
 } from "@/src/utils/get-config"
 import { getProjectConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
+import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
 import { Command } from "commander"
-import { cyan, green } from "kleur/colors"
 import ora from "ora"
 import prompts from "prompts"
 import { z } from "zod"
@@ -57,7 +57,7 @@ export const init = new Command()
         const { proceed } = await prompts({
           type: "confirm",
           name: "proceed",
-          message: `Write configuration to ${cyan(
+          message: `Write configuration to ${highlighter.info(
             "components.json"
           )}. Proceed?`,
           initial: true,
@@ -85,8 +85,8 @@ export const init = new Command()
       })
 
       logger.info("")
-      logger.info(
-        `${green(
+      logger.log(
+        `${highlighter.success(
           "Success!"
         )} Project initialization completed.\nYou may now add components.`
       )
@@ -108,7 +108,9 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     {
       type: "toggle",
       name: "typescript",
-      message: `Would you like to use ${cyan("TypeScript")} (recommended)?`,
+      message: `Would you like to use ${highlighter.info(
+        "TypeScript"
+      )} (recommended)?`,
       initial: defaultConfig?.tsx ?? true,
       active: "yes",
       inactive: "no",
@@ -116,7 +118,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     {
       type: "select",
       name: "style",
-      message: `Which ${cyan("style")} would you like to use?`,
+      message: `Which ${highlighter.info("style")} would you like to use?`,
       choices: styles.map((style) => ({
         title: style.label,
         value: style.name,
@@ -125,7 +127,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     {
       type: "select",
       name: "tailwindBaseColor",
-      message: `Which color would you like to use as the ${cyan(
+      message: `Which color would you like to use as the ${highlighter.info(
         "base color"
       )}?`,
       choices: baseColors.map((color) => ({
@@ -136,13 +138,15 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     {
       type: "text",
       name: "tailwindCss",
-      message: `Where is your ${cyan("global CSS")} file?`,
+      message: `Where is your ${highlighter.info("global CSS")} file?`,
       initial: defaultConfig?.tailwind.css ?? DEFAULT_TAILWIND_CSS,
     },
     {
       type: "toggle",
       name: "tailwindCssVariables",
-      message: `Would you like to use ${cyan("CSS variables")} for theming?`,
+      message: `Would you like to use ${highlighter.info(
+        "CSS variables"
+      )} for theming?`,
       initial: defaultConfig?.tailwind.cssVariables ?? true,
       active: "yes",
       inactive: "no",
@@ -150,7 +154,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     {
       type: "text",
       name: "tailwindPrefix",
-      message: `Are you using a custom ${cyan(
+      message: `Are you using a custom ${highlighter.info(
         "tailwind prefix eg. tw-"
       )}? (Leave blank if not)`,
       initial: "",
@@ -158,25 +162,29 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     {
       type: "text",
       name: "tailwindConfig",
-      message: `Where is your ${cyan("tailwind.config.js")} located?`,
+      message: `Where is your ${highlighter.info(
+        "tailwind.config.js"
+      )} located?`,
       initial: defaultConfig?.tailwind.config ?? DEFAULT_TAILWIND_CONFIG,
     },
     {
       type: "text",
       name: "components",
-      message: `Configure the import alias for ${cyan("components")}:`,
+      message: `Configure the import alias for ${highlighter.info(
+        "components"
+      )}:`,
       initial: defaultConfig?.aliases["components"] ?? DEFAULT_COMPONENTS,
     },
     {
       type: "text",
       name: "utils",
-      message: `Configure the import alias for ${cyan("utils")}:`,
+      message: `Configure the import alias for ${highlighter.info("utils")}:`,
       initial: defaultConfig?.aliases["utils"] ?? DEFAULT_UTILS,
     },
     {
       type: "toggle",
       name: "rsc",
-      message: `Are you using ${cyan("React Server Components")}?`,
+      message: `Are you using ${highlighter.info("React Server Components")}?`,
       initial: defaultConfig?.rsc ?? true,
       active: "yes",
       inactive: "no",
@@ -223,7 +231,7 @@ async function promptForMinimalConfig(
       {
         type: "select",
         name: "style",
-        message: `Which ${cyan("style")} would you like to use?`,
+        message: `Which ${highlighter.info("style")} would you like to use?`,
         choices: styles.map((style) => ({
           title: style.label,
           value: style.name,
@@ -233,7 +241,7 @@ async function promptForMinimalConfig(
       {
         type: "select",
         name: "tailwindBaseColor",
-        message: `Which color would you like to use as the ${cyan(
+        message: `Which color would you like to use as the ${highlighter.info(
           "base color"
         )}?`,
         choices: baseColors.map((color) => ({
@@ -244,7 +252,9 @@ async function promptForMinimalConfig(
       {
         type: "toggle",
         name: "tailwindCssVariables",
-        message: `Would you like to use ${cyan("CSS variables")} for theming?`,
+        message: `Would you like to use ${highlighter.info(
+          "CSS variables"
+        )} for theming?`,
         initial: defaultConfig?.tailwind.cssVariables,
         active: "yes",
         inactive: "no",

@@ -2,9 +2,9 @@ import path from "path"
 import { addOptionsSchema } from "@/src/commands/add"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
+import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import fs from "fs-extra"
-import { cyan } from "kleur/colors"
 import ora from "ora"
 import { z } from "zod"
 
@@ -13,7 +13,7 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
 
   let projectSpinner
   if (options.verbose) {
-    logger.info("")
+    logger.break()
     projectSpinner = ora(`Preflight checks.`).start()
   }
 
@@ -39,27 +39,35 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
   if (Object.keys(errors).length > 0) {
     projectSpinner?.fail()
 
-    logger.info("")
+    logger.break()
     if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-      logger.error(`The path ${cyan(options.cwd)} does not exist or is empty.`)
+      logger.error(
+        `The path ${highlighter.info(options.cwd)} does not exist or is empty.`
+      )
     }
 
     if (errors[ERRORS.MISSING_CONFIG]) {
       logger.error(
-        `A ${cyan("components.json")} file was not found at ${cyan(
-          options.cwd
-        )}.\nBefore you can add components, you must create a ${cyan(
+        `A ${highlighter.info(
           "components.json"
-        )} file by running the ${cyan("init")} command.`
+        )} file was not found at ${highlighter.info(
+          options.cwd
+        )}.\nBefore you can add components, you must create a ${highlighter.info(
+          "components.json"
+        )} file by running the ${highlighter.info("init")} command.`
       )
       logger.error(
-        `Learn more at ${cyan("https://ui.shadcn.com/docs/components-json")}.`
+        `Learn more at ${highlighter.info(
+          "https://ui.shadcn.com/docs/components-json"
+        )}.`
       )
     } else if (errors[ERRORS.FAILED_CONFIG_READ]) {
-      logger.error(`Failed to read the ${cyan("components.json")} file.`)
+      logger.error(
+        `Failed to read the ${highlighter.info("components.json")} file.`
+      )
     }
 
-    logger.info("")
+    logger.break()
     process.exit(1)
   }
 

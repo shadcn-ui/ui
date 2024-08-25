@@ -1,8 +1,8 @@
 import { Config } from "@/src/utils/get-config"
 import { getPackageManager } from "@/src/utils/get-package-manager"
+import { highlighter } from "@/src/utils/highlighter"
 import { RegistryItem } from "@/src/utils/registry/schema"
 import { execa } from "execa"
-import { cyan } from "kleur/colors"
 import ora from "ora"
 
 export async function updateDependencies(
@@ -14,7 +14,7 @@ export async function updateDependencies(
   }
 
   const dependenciesSpinner = ora(
-    `Installing ${dependencies.map((d) => cyan(d)).join(", ")}.`
+    `Installing ${dependencies.map((d) => highlighter.info(d)).join(", ")}.`
   )?.start()
   const packageManager = await getPackageManager(config.resolvedPaths.cwd)
 

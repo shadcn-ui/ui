@@ -2,6 +2,7 @@ import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { Config, getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
+import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import {
   fetchTree,
@@ -13,7 +14,6 @@ import { registryIndexSchema } from "@/src/utils/registry/schema"
 import { transform } from "@/src/utils/transformers"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
-import { green, red } from "kleur/colors"
 import { z } from "zod"
 
 const updateOptionsSchema = z.object({
@@ -50,7 +50,7 @@ export const diff = new Command()
       const config = await getConfig(cwd)
       if (!config) {
         logger.warn(
-          `Configuration is missing. Please run ${green(
+          `Configuration is missing. Please run ${highlighter.success(
             `init`
           )} to create a components.json file.`
         )
@@ -107,7 +107,9 @@ export const diff = new Command()
           }
         }
         logger.break()
-        logger.info(`Run ${green(`diff <component>`)} to see the changes.`)
+        logger.info(
+          `Run ${highlighter.success(`diff <component>`)} to see the changes.`
+        )
         process.exit(0)
       }
 
@@ -118,7 +120,9 @@ export const diff = new Command()
 
       if (!component) {
         logger.error(
-          `The component ${green(options.component)} does not exist.`
+          `The component ${highlighter.success(
+            options.component
+          )} does not exist.`
         )
         process.exit(1)
       }
@@ -200,10 +204,10 @@ async function printDiff(diff: Change[]) {
   diff.forEach((part) => {
     if (part) {
       if (part.added) {
-        return process.stdout.write(green(part.value))
+        return process.stdout.write(highlighter.success(part.value))
       }
       if (part.removed) {
-        return process.stdout.write(red(part.value))
+        return process.stdout.write(highlighter.error(part.value))
       }
 
       return process.stdout.write(part.value)

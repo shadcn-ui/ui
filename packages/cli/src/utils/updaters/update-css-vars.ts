@@ -1,8 +1,8 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { Config } from "@/src/utils/get-config"
+import { highlighter } from "@/src/utils/highlighter"
 import { registryItemCssVarsSchema } from "@/src/utils/registry/schema"
-import { cyan } from "kleur/colors"
 import ora from "ora"
 import postcss from "postcss"
 import AtRule from "postcss/lib/at-rule"
@@ -10,24 +10,29 @@ import Root from "postcss/lib/root"
 import Rule from "postcss/lib/rule"
 import { z } from "zod"
 
-export async function updateTailwindCss(
+export async function updateCssVars(
   cssVars: z.infer<typeof registryItemCssVarsSchema> | undefined,
   config: Config
 ) {
-  if (!cssVars || !Object.keys(cssVars).length) {
+  if (
+    !cssVars ||
+    !Object.keys(cssVars).length ||
+    !config.resolvedPaths.tailwindCss
+  ) {
     return
   }
 
-  console.log(cssVars)
-
-  const tailwindCssFileRelativePath = path.relative(
+  const cssFilepath = config.resolvedPaths.tailwindCss
+  const cssFilepathRelative = path.relative(
     config.resolvedPaths.cwd,
-    config.resolvedPaths.tailwindCss
+    cssFilepath
   )
-  const spinner = ora(`Updating ${cyan(tailwindCssFileRelativePath)}`).start()
-  const raw = await fs.readFile(config.resolvedPaths.tailwindCss, "utf8")
+  const spinner = ora(
+    `Updating ${highlighter.info(cssFilepathRelative)}`
+  ).start()
+  const raw = await fs.readFile(cssFilepath, "utf8")
   let output = await transformTailwindCss(raw, cssVars)
-  await fs.writeFile(config.resolvedPaths.tailwindCss, output, "utf8")
+  await fs.writeFile(cssFilepath, output, "utf8")
   spinner.succeed()
 }
 
@@ -140,7 +145,6 @@ function updateCssVarsPlugin(
   }
 }
 
-// Function to add or update variables for a given selector
 function addOrUpdateVars(
   baseLayer: AtRule,
   selector: string,

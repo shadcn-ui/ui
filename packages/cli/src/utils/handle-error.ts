@@ -1,5 +1,5 @@
+import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { cyan } from "kleur/colors"
 import { z } from "zod"
 
 export function handleError(error: unknown) {
@@ -10,7 +10,7 @@ export function handleError(error: unknown) {
   logger.error("")
   if (typeof error === "string") {
     logger.error(error)
-    logger.error("\n")
+    logger.break()
     process.exit(1)
   }
 
@@ -18,18 +18,18 @@ export function handleError(error: unknown) {
     console.log(error.issues)
     logger.error("Validation failed:")
     for (const [key, value] of Object.entries(error.flatten().fieldErrors)) {
-      logger.error(`- ${cyan(key)}: ${value}`)
+      logger.error(`- ${highlighter.info(key)}: ${value}`)
     }
-    logger.error("\n")
+    logger.break()
     process.exit(1)
   }
 
   if (error instanceof Error) {
     logger.error(error.message)
-    logger.error("\n")
+    logger.break()
     process.exit(1)
   }
 
-  logger.error("\n")
+  logger.break()
   process.exit(1)
 }
