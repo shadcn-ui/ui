@@ -128,6 +128,17 @@ export default async function DocPage({ params }: DocPageProps) {
                 <ExternalLinkIcon className="h-3 w-3" />
               </Link>
             )}
+            {doc.links?.source && (
+              <Link
+                href={doc.links.source}
+                target="_blank"
+                rel="noreferrer"
+                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
+              >
+                Source
+                <ExternalLinkIcon className="h-3 w-3" />
+              </Link>
+            )}
           </div>
         ) : null}
         <div className="pb-12 pt-8">
