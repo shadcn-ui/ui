@@ -31,19 +31,24 @@ export async function updateCssVars(
     `Updating ${highlighter.info(cssFilepathRelative)}`
   ).start()
   const raw = await fs.readFile(cssFilepath, "utf8")
-  let output = await transformTailwindCss(raw, cssVars)
+  let output = await transformCssVars(raw, cssVars, config)
   await fs.writeFile(cssFilepath, output, "utf8")
   spinner.succeed()
 }
 
-export async function transformTailwindCss(
+export async function transformCssVars(
   input: string,
-  cssVars: z.infer<typeof registryItemCssVarsSchema>
+  cssVars: z.infer<typeof registryItemCssVarsSchema>,
+  config: Config
 ) {
-  const result = await postcss([
-    updateCssVarsPlugin(cssVars),
-    updateBaseLayerPlugin(),
-  ]).process(input, {
+  const plugins = [updateCssVarsPlugin(cssVars)]
+
+  // Only add the base layer plugin if we're using css variables.
+  if (config.tailwind.cssVariables) {
+    plugins.push(updateBaseLayerPlugin())
+  }
+
+  const result = await postcss(plugins).process(input, {
     from: undefined,
   })
 
@@ -83,7 +88,7 @@ function updateBaseLayerPlugin() {
         baseLayer = postcss.atRule({
           name: "layer",
           params: "base",
-          raws: { semicolon: true, between: " " },
+          raws: { semicolon: true, between: " ", before: "\n\n" },
         })
         root.append(baseLayer)
       }
@@ -131,7 +136,7 @@ function updateCssVarsPlugin(
           name: "layer",
           params: "base",
           nodes: [],
-          raws: { semicolon: true },
+          raws: { semicolon: true, before: "\n\n", after: "\n\n" },
         })
         root.append(baseLayer)
       }

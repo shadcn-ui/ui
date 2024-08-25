@@ -32,8 +32,9 @@ export async function updateFiles(
     force: false,
     ...options,
   }
-  const filesUpdatedSpinner = ora(`Updating files.`)?.start()
+  const filesCreatedSpinner = ora(`Updating files.`)?.start()
   const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+  const filesCreated = []
   const filesUpdated = []
   const filesSkipped = []
 
@@ -46,9 +47,15 @@ export async function updateFiles(
     const fileName = basename(file.path)
     let filePath = path.join(targetDir, fileName)
 
+    if (!config.tsx) {
+      filePath = filePath.replace(/\.tsx?$/, (match) =>
+        match === ".tsx" ? ".jsx" : ".js"
+      )
+    }
+
     const existingFile = existsSync(filePath)
     if (existingFile && !options.overwrite) {
-      filesUpdatedSpinner.stop()
+      filesCreatedSpinner.stop()
       const { overwrite } = await prompts({
         type: "confirm",
         name: "overwrite",
@@ -62,7 +69,7 @@ export async function updateFiles(
         filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
         continue
       }
-      filesUpdatedSpinner?.start()
+      filesCreatedSpinner?.start()
     }
 
     // Create the target directory if it doesn't exist.
@@ -82,29 +89,36 @@ export async function updateFiles(
       [transformImport, transformRsc, transformCssVars, transformTwPrefixes]
     )
 
-    if (!config.tsx) {
-      filePath = filePath.replace(/\.tsx?$/, (match) =>
-        match === ".tsx" ? ".jsx" : ".js"
-      )
-    }
-
     await fs.writeFile(filePath, content, "utf-8")
-    filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
+    existingFile
+      ? filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
+      : filesCreated.push(path.relative(config.resolvedPaths.cwd, filePath))
+  }
+
+  const hasUpdatedFiles = filesCreated.length || filesUpdated.length
+  if (!hasUpdatedFiles && !filesSkipped.length) {
+    filesCreatedSpinner?.info("No files updated.")
+  }
+
+  if (filesCreated.length) {
+    filesCreatedSpinner?.succeed(
+      `Created ${filesCreated.length} ${
+        filesCreated.length === 1 ? "file" : "files"
+      }:`
+    )
+    for (const file of filesCreated) {
+      logger.log(`  - ${file}`)
+    }
+  } else {
+    filesCreatedSpinner?.stop()
   }
 
   if (filesUpdated.length) {
-    filesUpdatedSpinner?.succeed(
+    ora(
       `Updated ${filesUpdated.length} ${
         filesUpdated.length === 1 ? "file" : "files"
       }:`
-    )
-  }
-
-  if (!filesUpdated.length && !filesSkipped.length) {
-    filesUpdatedSpinner?.info("No files updated.")
-  }
-
-  if (filesUpdated.length) {
+    )?.info()
     for (const file of filesUpdated) {
       logger.log(`  - ${file}`)
     }
@@ -120,4 +134,6 @@ export async function updateFiles(
       logger.log(`  - ${file}`)
     }
   }
+
+  logger.break()
 }

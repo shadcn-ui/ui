@@ -1,11 +1,11 @@
 import { describe, expect, test } from "vitest"
 
-import { transformTailwindCss } from "../../../src/utils/updaters/update-tailwind-css"
+import { transformCssVars } from "../../../src/utils/updaters/update-css-vars"
 
-describe("transformTailwindCss", () => {
+describe("transformCssVars", () => {
   test("should add light and dark css vars if not present", async () => {
     expect(
-      await transformTailwindCss(
+      await transformCssVars(
         `@tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,6 +19,11 @@ describe("transformTailwindCss", () => {
             background: "black",
             foreground: "white",
           },
+        },
+        {
+          tailwind: {
+            cssVariables: true,
+          },
         }
       )
     ).toMatchInlineSnapshot(`
@@ -29,19 +34,25 @@ describe("transformTailwindCss", () => {
           :root{
               --background: white;
               --foreground: black
+
           }
           .dark{
               --background: black;
               --foreground: white
+
           }
+
       }
       @layer base {
           * {
               @apply border-border;
+
           }
           body {
               @apply bg-background text-foreground;
+
           }
+
       }
         "
     `)
@@ -49,7 +60,7 @@ describe("transformTailwindCss", () => {
 
   test("should update light and dark css vars if present", async () => {
     expect(
-      await transformTailwindCss(
+      await transformCssVars(
         `@tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -71,6 +82,11 @@ describe("transformTailwindCss", () => {
           },
           dark: {
             foreground: "60 9.1% 97.8%",
+          },
+        },
+        {
+          tailwind: {
+            cssVariables: true,
           },
         }
       )
@@ -109,7 +125,7 @@ describe("transformTailwindCss", () => {
 
   test("should not add the base layer if it is already present", async () => {
     expect(
-      await transformTailwindCss(
+      await transformCssVars(
         `@tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -133,7 +149,12 @@ describe("transformTailwindCss", () => {
   }
 }
   `,
-        {}
+        {},
+        {
+          tailwind: {
+            cssVariables: true,
+          },
+        }
       )
     ).toMatchInlineSnapshot(`
       "@tailwind base;

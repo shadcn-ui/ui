@@ -17,8 +17,8 @@ import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
 import { z } from "zod"
 
-const REGISTRY_BASE_URL =
-  process.env.COMPONENTS_REGISTRY_URL ?? "https://ui.shadcn.com"
+const REGISTRY_URL =
+  process.env.REGISTRY_URL ?? "https://ui.shadcn.com/registry"
 
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
@@ -47,15 +47,16 @@ export async function getRegistryStyles() {
   }
 }
 
-export async function getRegistryItem(style: string, name: string) {
+export async function getRegistryItem(name: string, style: string) {
   try {
-    const [result] = await fetchRegistry([`styles/${style}/${name}.json`])
+    const [result] = await fetchRegistry([
+      isUrl(name) ? name : `styles/${style}/${name}.json`,
+    ])
 
     return registryItemSchema.parse(result)
   } catch (error) {
-    logger.error("\n")
+    logger.break()
     handleError(error)
-
     return null
   }
 }
@@ -163,19 +164,20 @@ async function fetchRegistry(paths: string[]) {
   try {
     const results = await Promise.all(
       paths.map(async (path) => {
-        const url = `${REGISTRY_BASE_URL}/registry/${path}`
+        const url = getRegistryUrl(path)
         const response = await fetch(url, { agent })
 
         if (!response.ok) {
           const errorMessages: { [key: number]: string } = {
-            404: "Not found",
+            400: "Bad request",
             401: "Unauthorized",
             403: "Forbidden",
+            404: "Not found",
             500: "Internal server error",
           }
-          const message = errorMessages[response.status] || response.statusText
+          const message = response.statusText || errorMessages[response.status]
           throw new Error(
-            `Failed to fetch from ${highlighter.info(url)}. ${message}`
+            `Failed to fetch from ${highlighter.info(url)}. ${message}.`
           )
         }
 
@@ -208,7 +210,7 @@ export function getRegistryItemFileTargetPath(
     return config.resolvedPaths.lib
   }
 
-  if (file.type === "registry:block") {
+  if (file.type === "registry:block" || file.type === "registry:component") {
     return config.resolvedPaths.components
   }
 
@@ -223,73 +225,83 @@ export async function registryResolveItemsTree(
   names: z.infer<typeof registryItemSchema>["name"][],
   config: Config
 ) {
-  const index = await getRegistryIndex()
-  if (!index) {
-    return null
-  }
-
-  let items = (
-    await Promise.all(
-      names.map(async (name) => {
-        const item = await getRegistryItem(config.style, name)
-        return item
-      })
-    )
-  ).filter((item): item is NonNullable<typeof item> => item !== null)
-
-  if (!items.length) {
-    return null
-  }
-
-  const registryDependencies: string[] = items
-    .map((item) => item.registryDependencies ?? [])
-    .flat()
-
-  const uniqueDependencies = Array.from(new Set(registryDependencies))
-  const tree = await resolveTree(index, [...names, ...uniqueDependencies])
-  let payload = await fetchTree(config.style, tree)
-
-  if (!payload) {
-    return null
-  }
-
-  // If we're resolving the index, we want it to go first.
-  if (names.includes("index")) {
-    const index = await getRegistryItem(config.style, "index")
-    if (index) {
-      payload.unshift(index)
+  try {
+    const index = await getRegistryIndex()
+    if (!index) {
+      return null
     }
 
-    // Fetch the theme item if a base color is provided.
-    // We do this for index only.
-    // Other components will ship with their theme tokens.
-    if (config.tailwind.baseColor) {
-      const theme = await registryGetTheme(config.tailwind.baseColor, config)
-      if (theme) {
-        payload.unshift(theme)
+    let items = (
+      await Promise.all(
+        names.map(async (name) => {
+          const item = await getRegistryItem(name, config.style)
+          return item
+        })
+      )
+    ).filter((item): item is NonNullable<typeof item> => item !== null)
+
+    if (!items.length) {
+      return null
+    }
+
+    const registryDependencies: string[] = items
+      .map((item) => item.registryDependencies ?? [])
+      .flat()
+
+    const uniqueDependencies = Array.from(new Set(registryDependencies))
+    const urls = Array.from([...names, ...uniqueDependencies]).map((name) =>
+      getRegistryUrl(isUrl(name) ? name : `styles/${config.style}/${name}.json`)
+    )
+    let result = await fetchRegistry(urls)
+    const payload = z.array(registryItemSchema).parse(result)
+
+    if (!payload) {
+      return null
+    }
+
+    // If we're resolving the index, we want it to go first.
+    if (names.includes("index")) {
+      const index = await getRegistryItem("index", config.style)
+      if (index) {
+        payload.unshift(index)
+      }
+
+      // Fetch the theme item if a base color is provided.
+      // We do this for index only.
+      // Other components will ship with their theme tokens.
+      if (config.tailwind.baseColor) {
+        const theme = await registryGetTheme(config.tailwind.baseColor, config)
+        if (theme) {
+          payload.unshift(theme)
+        }
       }
     }
+
+    let tailwind = {}
+    payload.forEach((item) => {
+      tailwind = deepmerge(tailwind, item.tailwind ?? {})
+    })
+
+    let cssVars = {}
+    payload.forEach((item) => {
+      cssVars = deepmerge(cssVars, item.cssVars ?? {})
+    })
+
+    return registryResolvedItemsTreeSchema.parse({
+      dependencies: deepmerge.all(
+        payload.map((item) => item.dependencies ?? [])
+      ),
+      devDependencies: deepmerge.all(
+        payload.map((item) => item.devDependencies ?? [])
+      ),
+      files: deepmerge.all(payload.map((item) => item.files ?? [])),
+      tailwind,
+      cssVars,
+    })
+  } catch (error) {
+    handleError(error)
+    return null
   }
-
-  let tailwind = {}
-  payload.forEach((item) => {
-    tailwind = deepmerge(tailwind, item.tailwind ?? {})
-  })
-
-  let cssVars = {}
-  payload.forEach((item) => {
-    cssVars = deepmerge(cssVars, item.cssVars ?? {})
-  })
-
-  return registryResolvedItemsTreeSchema.parse({
-    dependencies: deepmerge.all(payload.map((item) => item.dependencies ?? [])),
-    devDependencies: deepmerge.all(
-      payload.map((item) => item.devDependencies ?? [])
-    ),
-    files: deepmerge.all(payload.map((item) => item.files ?? [])),
-    tailwind,
-    cssVars,
-  })
 }
 
 export async function registryGetTheme(name: string, config: Config) {
@@ -342,4 +354,21 @@ export async function registryGetTheme(name: string, config: Config) {
   }
 
   return theme
+}
+
+function getRegistryUrl(path: string) {
+  if (isUrl(path)) {
+    return path
+  }
+
+  return `${REGISTRY_URL}/${path}`
+}
+
+function isUrl(path: string) {
+  try {
+    new URL(path)
+    return true
+  } catch (error) {
+    return false
+  }
 }

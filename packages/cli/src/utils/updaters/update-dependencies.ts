@@ -13,6 +13,8 @@ export async function updateDependencies(
     return
   }
 
+  dependencies = Array.from(new Set(dependencies))
+
   const dependenciesSpinner = ora(
     `Installing ${dependencies.map((d) => highlighter.info(d)).join(", ")}.`
   )?.start()
