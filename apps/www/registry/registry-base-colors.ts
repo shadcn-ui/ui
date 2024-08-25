@@ -1,4 +1,4 @@
-export const themes = [
+export const baseColors = [
   {
     name: "zinc",
     label: "Zinc",
@@ -753,4 +753,4 @@ export const themes = [
   },
 ] as const
 
-export type Theme = (typeof themes)[number]
+export type BaseColor = (typeof baseColors)[number]

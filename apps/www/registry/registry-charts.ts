@@ -37,8 +37,13 @@ export const charts: Registry = [
   {
     name: "chart-area-interactive",
     type: "registry:block",
-    registryDependencies: ["card", "chart"],
-    files: ["block/chart-area-interactive.tsx"],
+    registryDependencies: ["card", "chart", "select"],
+    files: [
+      {
+        path: "block/chart-area-interactive.tsx",
+        type: "registry:component",
+      },
+    ],
     category: "Charts",
     subcategory: "Area",
   },

@@ -8,16 +8,17 @@ import { rimraf } from "rimraf"
 import { Project, ScriptKind, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
-import { colorMapping, colors } from "../registry/colors"
-import { registry } from "../registry/registry"
+import { registry } from "../registry"
+import { baseColors } from "../registry/registry-base-colors"
+import { colorMapping, colors } from "../registry/registry-colors"
+import { styles } from "../registry/registry-styles"
 import {
   Registry,
   RegistryEntry,
+  registryEntrySchema,
   registryItemTypeSchema,
   registrySchema,
 } from "../registry/schema"
-import { styles } from "../registry/styles"
-import { themes } from "../registry/themes"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/registry")
 
@@ -25,6 +26,7 @@ const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:ui",
   "registry:lib",
   "registry:hook",
+  "registry:theme",
 ]
 
 // ----------------------------------------------------------------------------
@@ -242,11 +244,11 @@ export const Index: Record<string, any> = {
       name: "${item.name}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
+      files: [${resolveFiles.map((file) => `"${file}"`)}],
       component: React.lazy(() => import("@/registry/${style.name}/${type}/${
         item.name
       }")),
       source: "${sourceFilename}",
-      files: [${resolveFiles.map((file) => `"${file}"`)}],
       category: "${item.category}",
       subcategory: "${item.subcategory}",
       chunks: [${chunks.map(
@@ -342,16 +344,25 @@ async function buildStyles(registry: Registry) {
         }
       })
 
-      const payload = {
-        ...item,
-        files,
-      }
+      const payload = registryEntrySchema
+        .omit({
+          source: true,
+          category: true,
+          subcategory: true,
+          chunks: true,
+        })
+        .safeParse({
+          ...item,
+          files,
+        })
 
-      await fs.writeFile(
-        path.join(targetPath, `${item.name}.json`),
-        JSON.stringify(payload, null, 2),
-        "utf8"
-      )
+      if (payload.success) {
+        await fs.writeFile(
+          path.join(targetPath, `${item.name}.json`),
+          JSON.stringify(payload.data, null, 2),
+          "utf8"
+        )
+      }
     }
   }
 
@@ -640,7 +651,7 @@ async function buildThemes() {
 }`
 
     const themeCSS = []
-    for (const theme of themes) {
+    for (const theme of baseColors) {
       themeCSS.push(
         // @ts-ignore
         template(THEME_STYLES_WITH_VARIABLES)({

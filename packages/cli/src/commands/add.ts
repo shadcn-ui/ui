@@ -2,6 +2,7 @@ import path from "path"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { addComponents } from "@/src/utils/add-components"
 import { handleError } from "@/src/utils/handle-error"
+import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { getRegistryIndex } from "@/src/utils/registry"
 import { Command } from "commander"
@@ -25,7 +26,7 @@ export const add = new Command()
     "[components...]",
     "the components to add or a url to the component."
   )
-  .option("-y, --yes", "skip confirmation prompt.", true)
+  .option("-y, --yes", "skip confirmation prompt.", false)
   .option("-o, --overwrite", "overwrite existing files.", false)
   .option(
     "-c, --cwd <cwd>",
@@ -49,6 +50,28 @@ export const add = new Command()
         logger.info("")
         options.components = await promptForRegistryComponents(options)
         logger.info("")
+      }
+
+      // Confirm if user is installing themes.
+      // For now, we assume a theme is prefixed with "theme-".
+      const isTheme = options.components?.some((component) =>
+        component.startsWith("theme-")
+      )
+      if (!options.yes && isTheme) {
+        logger.break()
+        const { confirm } = await prompts({
+          type: "confirm",
+          name: "confirm",
+          message: highlighter.warn(
+            "You are about to install a new theme. \nExisting CSS variables will be overwritten. Continue?"
+          ),
+        })
+        if (!confirm) {
+          logger.break()
+          logger.log("Theme installation cancelled.")
+          logger.break()
+          process.exit(1)
+        }
       }
 
       await addComponents(options.components, config, options)

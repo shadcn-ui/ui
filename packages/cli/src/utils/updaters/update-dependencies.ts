@@ -9,11 +9,11 @@ export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
   config: Config
 ) {
-  if (!dependencies) {
+  dependencies = Array.from(new Set(dependencies))
+
+  if (!dependencies?.length) {
     return
   }
-
-  dependencies = Array.from(new Set(dependencies))
 
   const dependenciesSpinner = ora(
     `Installing ${dependencies.map((d) => highlighter.info(d)).join(", ")}.`
