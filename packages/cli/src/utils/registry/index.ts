@@ -218,6 +218,12 @@ export function getRegistryItemFileTargetPath(
     return config.resolvedPaths.hooks
   }
 
+  // TODO: we put this in components for now.
+  // We should move this to pages as per framework.
+  if (file.type === "registry:page") {
+    return config.resolvedPaths.components
+  }
+
   return config.resolvedPaths.components
 }
 

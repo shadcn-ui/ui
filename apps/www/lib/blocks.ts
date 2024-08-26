@@ -68,7 +68,6 @@ export async function getBlock(
     ...entry,
     ...content,
     chunks,
-    description: content.description || "",
     type: "registry:block",
   })
 }
@@ -116,7 +115,6 @@ async function _getBlockContent(name: string, style: Style["name"]) {
   })
 
   // Extract meta.
-  const description = _extractVariable(sourceFile, "description")
   const iframeHeight = _extractVariable(sourceFile, "iframeHeight")
   const containerClassName = _extractVariable(sourceFile, "containerClassName")
 
@@ -126,7 +124,6 @@ async function _getBlockContent(name: string, style: Style["name"]) {
   code = code.replaceAll("export default", "export")
 
   return {
-    description,
     code,
     container: {
       height: iframeHeight,
