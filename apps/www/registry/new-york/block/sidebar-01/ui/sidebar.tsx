@@ -6,7 +6,6 @@ import { PanelLeft } from "lucide-react"
 import { useIsMobile } from "@/registry/new-york/hooks/use-mobile"
 import { cn } from "@/registry/new-york/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
-import { Drawer } from "@/registry/new-york/ui/drawer"
 import { Sheet, SheetContent } from "@/registry/new-york/ui/sheet"
 
 export const SIDEBAR_STATE_COOKIE = "sidebar:state"
@@ -190,13 +189,13 @@ const SidebarLabel = React.forwardRef<
 SidebarLabel.displayName = "SidebarLabel"
 
 export {
-  useSidebar,
-  SidebarLayout,
-  SidebarTrigger,
   Sidebar,
-  SidebarHeader,
-  SidebarFooter,
   SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
   SidebarItem,
   SidebarLabel,
+  SidebarLayout,
+  SidebarTrigger,
+  useSidebar,
 }

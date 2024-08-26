@@ -2,7 +2,6 @@ import { cookies } from "next/headers"
 
 import { AppSidebar } from "@/registry/new-york/block/sidebar-01/components/app-sidebar"
 import {
-  SIDEBAR_STATE_COOKIE,
   SidebarLayout,
   SidebarTrigger,
 } from "@/registry/new-york/block/sidebar-01/ui/sidebar"

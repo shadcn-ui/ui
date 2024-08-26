@@ -332,42 +332,45 @@ async function buildStyles(registry: Registry) {
     }
 
     for (const item of registry) {
-      if (!REGISTRY_INDEX_WHITELIST.includes(item.type) || !item.files) {
+      if (!REGISTRY_INDEX_WHITELIST.includes(item.type)) {
         continue
       }
 
-      const files = await Promise.all(
-        item.files.map(async (_file) => {
-          const file =
-            typeof _file === "string"
-              ? {
-                  path: _file,
-                  type: item.type,
-                  content: "",
-                }
-              : _file
+      let files
+      if (item.files) {
+        files = await Promise.all(
+          item.files.map(async (_file) => {
+            const file =
+              typeof _file === "string"
+                ? {
+                    path: _file,
+                    type: item.type,
+                    content: "",
+                  }
+                : _file
 
-          const content = await fs.readFile(
-            path.join(process.cwd(), "registry", style.name, file.path),
-            "utf8"
-          )
+            const content = await fs.readFile(
+              path.join(process.cwd(), "registry", style.name, file.path),
+              "utf8"
+            )
 
-          const tempFile = await createTempSourceFile(file.path)
-          const sourceFile = project.createSourceFile(tempFile, content, {
-            scriptKind: ScriptKind.TSX,
+            const tempFile = await createTempSourceFile(file.path)
+            const sourceFile = project.createSourceFile(tempFile, content, {
+              scriptKind: ScriptKind.TSX,
+            })
+
+            sourceFile.getVariableDeclaration("iframeHeight")?.remove()
+            sourceFile.getVariableDeclaration("containerClassName")?.remove()
+            sourceFile.getVariableDeclaration("description")?.remove()
+
+            return {
+              path: file.path,
+              type: file.type,
+              content: sourceFile.getText(),
+            }
           })
-
-          sourceFile.getVariableDeclaration("iframeHeight")?.remove()
-          sourceFile.getVariableDeclaration("containerClassName")?.remove()
-          sourceFile.getVariableDeclaration("description")?.remove()
-
-          return {
-            path: file.path,
-            type: file.type,
-            content: sourceFile.getText(),
-          }
-        })
-      )
+        )
+      }
 
       const payload = registryEntrySchema
         .omit({

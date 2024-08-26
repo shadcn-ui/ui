@@ -227,7 +227,7 @@ export async function getProjectConfig(
       prefix: "",
     },
     aliases: {
-      ui: `${projectInfo.aliasPrefix}/ui`,
+      ui: `${projectInfo.aliasPrefix}/components/ui`,
       components: `${projectInfo.aliasPrefix}/components`,
       lib: `${projectInfo.aliasPrefix}/lib`,
       utils: `${projectInfo.aliasPrefix}/lib/utils`,
