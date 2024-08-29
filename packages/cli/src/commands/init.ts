@@ -30,6 +30,7 @@ export const initOptionsSchema = z.object({
   defaults: z.boolean(),
   force: z.boolean(),
   silent: z.boolean(),
+  isNewProject: z.boolean(),
 })
 
 export const init = new Command()
@@ -48,13 +49,12 @@ export const init = new Command()
     try {
       const options = initOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
+        isNewProject: false,
         ...opts,
       })
 
-      logger.break()
       await runInit(options)
 
-      logger.break()
       logger.log(
         `${highlighter.success(
           "Success!"
@@ -81,6 +81,7 @@ export async function runInit(
         process.exit(1)
       }
       options.cwd = projectPath
+      options.isNewProject = true
     }
     projectInfo = preflight.projectInfo
   } else {
@@ -119,6 +120,8 @@ export async function runInit(
     // Init will always overwrite files.
     overwrite: true,
     silent: options.silent,
+    isNewProject:
+      options.isNewProject || projectInfo?.framework.name === "next-app",
   })
 
   return fullConfig

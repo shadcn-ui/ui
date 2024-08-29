@@ -14,6 +14,7 @@ export async function updateCssVars(
   cssVars: z.infer<typeof registryItemCssVarsSchema> | undefined,
   config: Config,
   options: {
+    cleanupDefaultNextStyles?: boolean
     silent?: boolean
   }
 ) {
@@ -26,6 +27,7 @@ export async function updateCssVars(
   }
 
   options = {
+    cleanupDefaultNextStyles: false,
     silent: false,
     ...options,
   }
@@ -41,7 +43,9 @@ export async function updateCssVars(
     }
   ).start()
   const raw = await fs.readFile(cssFilepath, "utf8")
-  let output = await transformCssVars(raw, cssVars, config)
+  let output = await transformCssVars(raw, cssVars, config, {
+    cleanupDefaultNextStyles: options.cleanupDefaultNextStyles,
+  })
   await fs.writeFile(cssFilepath, output, "utf8")
   cssVarsSpinner.succeed()
 }
@@ -49,9 +53,20 @@ export async function updateCssVars(
 export async function transformCssVars(
   input: string,
   cssVars: z.infer<typeof registryItemCssVarsSchema>,
-  config: Config
+  config: Config,
+  options: {
+    cleanupDefaultNextStyles?: boolean
+  }
 ) {
+  options = {
+    cleanupDefaultNextStyles: false,
+    ...options,
+  }
+
   const plugins = [updateCssVarsPlugin(cssVars)]
+  if (options.cleanupDefaultNextStyles) {
+    plugins.push(cleanupDefaultNextStylesPlugin())
+  }
 
   // Only add the base layer plugin if we're using css variables.
   if (config.tailwind.cssVariables) {
@@ -98,7 +113,7 @@ function updateBaseLayerPlugin() {
         baseLayer = postcss.atRule({
           name: "layer",
           params: "base",
-          raws: { semicolon: true, between: " ", before: "\n\n" },
+          raws: { semicolon: true, between: " ", before: "\n" },
         })
         root.append(baseLayer)
       }
@@ -117,9 +132,10 @@ function updateBaseLayerPlugin() {
                 postcss.atRule({
                   name: "apply",
                   params: apply,
+                  raws: { semicolon: true, before: "\n    " },
                 }),
               ],
-              raws: { semicolon: true, between: " " },
+              raws: { semicolon: true, between: " ", before: "\n  " },
             })
           )
         }
@@ -146,7 +162,11 @@ function updateCssVarsPlugin(
           name: "layer",
           params: "base",
           nodes: [],
-          raws: { semicolon: true, before: "\n\n", after: "\n\n" },
+          raws: {
+            semicolon: true,
+            before: "\n",
+            between: " ",
+          },
         })
         root.append(baseLayer)
       }
@@ -156,6 +176,45 @@ function updateCssVarsPlugin(
         const selector = key === "light" ? ":root" : `.${key}`
         addOrUpdateVars(baseLayer, selector, vars)
       })
+    },
+  }
+}
+
+function cleanupDefaultNextStylesPlugin() {
+  return {
+    postcssPlugin: "cleanup-default-next-styles",
+    Once(root: Root) {
+      const bodyRule = root.nodes.find(
+        (node): node is Rule => node.type === "rule" && node.selector === "body"
+      )
+      if (bodyRule) {
+        // Remove color from the body node.
+        bodyRule.nodes
+          .find(
+            (node): node is postcss.Declaration =>
+              node.type === "decl" &&
+              node.prop === "color" &&
+              node.value === "rgb(var(--foreground-rgb))"
+          )
+          ?.remove()
+
+        // Remove background: linear-gradient.
+        bodyRule.nodes
+          .find((node): node is postcss.Declaration => {
+            return (
+              node.type === "decl" &&
+              node.prop === "background" &&
+              // This is only going to run on create project, so all good.
+              node.value.startsWith("linear-gradient")
+            )
+          })
+          ?.remove()
+
+        // If the body rule is empty, remove it.
+        if (bodyRule.nodes.length === 0) {
+          bodyRule.remove()
+        }
+      }
     },
   }
 }
@@ -170,8 +229,13 @@ function addOrUpdateVars(
   )
 
   if (!ruleNode) {
-    ruleNode = postcss.rule({ selector })
-    baseLayer.append(ruleNode)
+    if (Object.keys(vars).length > 0) {
+      ruleNode = postcss.rule({
+        selector,
+        raws: { between: " ", before: "\n  " },
+      })
+      baseLayer.append(ruleNode)
+    }
   }
 
   Object.entries(vars).forEach(([key, value]) => {
@@ -182,11 +246,11 @@ function addOrUpdateVars(
       raws: { semicolon: true },
     })
 
-    const existingDecl = ruleNode.nodes.find(
+    const existingDecl = ruleNode?.nodes.find(
       (node): node is postcss.Declaration =>
         node.type === "decl" && node.prop === prop
     )
 
-    existingDecl ? existingDecl.replaceWith(newDecl) : ruleNode.append(newDecl)
+    existingDecl ? existingDecl.replaceWith(newDecl) : ruleNode?.append(newDecl)
   })
 }

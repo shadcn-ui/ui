@@ -15,11 +15,6 @@ async function main() {
   const program = new Command()
     .name("shadcn")
     .description("add components and dependencies to your project")
-    .option(
-      "-c, --cwd <cwd>",
-      "the working directory. defaults to the current directory.",
-      process.cwd()
-    )
     .version(
       packageInfo.version || "1.0.0",
       "-v, --version",

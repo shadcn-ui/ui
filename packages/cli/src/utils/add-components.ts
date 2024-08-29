@@ -10,11 +10,16 @@ import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-confi
 export async function addComponents(
   components: string[],
   config: Config,
-  options: { overwrite?: boolean; silent?: boolean }
+  options: {
+    overwrite?: boolean
+    silent?: boolean
+    isNewProject?: boolean
+  }
 ) {
   options = {
     overwrite: false,
     silent: false,
+    isNewProject: false,
     ...options,
   }
 
@@ -32,6 +37,7 @@ export async function addComponents(
     silent: options.silent,
   })
   await updateCssVars(tree.cssVars, config, {
+    cleanupDefaultNextStyles: options.isNewProject,
     silent: options.silent,
   })
 

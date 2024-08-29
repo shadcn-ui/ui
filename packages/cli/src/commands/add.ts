@@ -1,7 +1,6 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
-import { preFlightInit } from "@/src/preflights/preflight-init"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
@@ -99,6 +98,7 @@ export const add = new Command()
           defaults: false,
           skipPreflight: false,
           silent: true,
+          isNewProject: false,
         })
       }
 
@@ -120,6 +120,7 @@ export const add = new Command()
           defaults: false,
           skipPreflight: true,
           silent: true,
+          isNewProject: true,
         })
       }
 
