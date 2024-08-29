@@ -13,8 +13,13 @@ async function main() {
   const packageInfo = await getPackageInfo()
 
   const program = new Command()
-    .name("shadcn-ui")
+    .name("shadcn")
     .description("add components and dependencies to your project")
+    .option(
+      "-c, --cwd <cwd>",
+      "the working directory. defaults to the current directory.",
+      process.cwd()
+    )
     .version(
       packageInfo.version || "1.0.0",
       "-v, --version",
