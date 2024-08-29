@@ -6,7 +6,6 @@ import { highlighter } from "@/src/utils/highlighter"
 import { registryItemTailwindSchema } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import deepmerge from "deepmerge"
-import ora from "ora"
 import objectToString from "stringify-object"
 import { type Config as TailwindConfig } from "tailwindcss"
 import {

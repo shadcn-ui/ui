@@ -19,8 +19,8 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
+import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
-import ora from "ora"
 import prompts from "prompts"
 import { z } from "zod"
 
@@ -108,10 +108,10 @@ export async function runInit(
   }
 
   // Write components.json.
-  const spinner = ora(`Writing components.json.`).start()
+  const componentSpinner = spinner(`Writing components.json.`).start()
   const targetPath = path.resolve(options.cwd, "components.json")
   await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
-  spinner.succeed()
+  componentSpinner.succeed()
 
   // Add components.
   const fullConfig = await resolveConfigPaths(options.cwd, config)

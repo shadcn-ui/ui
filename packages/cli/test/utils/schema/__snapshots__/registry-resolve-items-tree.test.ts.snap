@@ -52,6 +52,7 @@ Label.displayName = LabelPrimitive.Root.displayName
 export { Label }
 ",
       "path": "ui/label.tsx",
+      "target": "",
       "type": "registry:ui",
     },
     {
@@ -155,6 +156,7 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
+      "target": "",
       "type": "registry:ui",
     },
   ],
@@ -231,6 +233,7 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
+      "target": "",
       "type": "registry:ui",
     },
     {
@@ -261,6 +264,7 @@ Input.displayName = "Input"
 export { Input }
 ",
       "path": "ui/input.tsx",
+      "target": "",
       "type": "registry:ui",
     },
     {
@@ -421,6 +425,7 @@ export {
 }
 ",
       "path": "ui/command.tsx",
+      "target": "",
       "type": "registry:ui",
     },
     {
@@ -548,6 +553,7 @@ export {
 }
 ",
       "path": "ui/dialog.tsx",
+      "target": "",
       "type": "registry:ui",
     },
   ],

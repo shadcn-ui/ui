@@ -3,9 +3,9 @@ import { initOptionsSchema } from "@/src/commands/init"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
-import ora from "ora"
 import prompts from "prompts"
 import { z } from "zod"
 
@@ -71,7 +71,7 @@ export async function createProject(
     process.exit(1)
   }
 
-  const spinner = ora(`Creating a new Next.js project.`).start()
+  const createSpinner = spinner(`Creating a new Next.js project.`).start()
 
   // Note: pnpm fails here. Fallback to npx with --use-PACKAGE-MANAGER.
   const args = [
@@ -100,7 +100,7 @@ export async function createProject(
     process.exit(1)
   }
 
-  spinner.succeed()
+  createSpinner?.succeed()
 
   return {
     projectPath,
