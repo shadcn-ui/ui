@@ -346,6 +346,7 @@ async function buildStyles(registry: Registry) {
                     path: _file,
                     type: item.type,
                     content: "",
+                    target: "",
                   }
                 : _file
 
@@ -367,6 +368,7 @@ async function buildStyles(registry: Registry) {
               path: file.path,
               type: file.type,
               content: sourceFile.getText(),
+              target: file.target,
             }
           })
         )

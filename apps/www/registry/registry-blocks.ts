@@ -24,6 +24,7 @@ export const blocks: Registry = [
       {
         path: "block/sidebar-01/page.tsx",
         type: "registry:page",
+        target: "app/dashboard/page.tsx",
       },
       {
         path: "block/sidebar-01/components/app-sidebar.tsx",
@@ -64,6 +65,20 @@ export const blocks: Registry = [
     ],
     category: "Application",
     subcategory: "Dashboard",
+  },
+  {
+    name: "login-01",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "block/login-01/page.tsx",
+        target: "app/login/page.tsx",
+        type: "registry:page",
+      },
+    ],
+    category: "Authentication",
+    subcategory: "Login",
   },
   {
     name: "charts-01",

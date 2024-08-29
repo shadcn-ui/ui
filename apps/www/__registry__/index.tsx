@@ -2150,6 +2150,17 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: []
     },
+    "login-01": {
+      name: "login-01",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: ["registry/new-york/block/login-01/page.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/block/login-01/page.tsx")),
+      source: "__registry__/new-york/block/login-01.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
     "charts-01": {
       name: "charts-01",
       type: "registry:block",
@@ -5482,6 +5493,17 @@ export const Index: Record<string, any> = {
       source: "__registry__/default/block/sidebar-01.tsx",
       category: "Application",
       subcategory: "Dashboard",
+      chunks: []
+    },
+    "login-01": {
+      name: "login-01",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: ["registry/default/block/login-01/page.tsx"],
+      component: React.lazy(() => import("@/registry/default/block/login-01/page.tsx")),
+      source: "__registry__/default/block/login-01.tsx",
+      category: "Authentication",
+      subcategory: "Login",
       chunks: []
     },
     "charts-01": {

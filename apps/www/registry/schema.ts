@@ -31,6 +31,7 @@ export const registryItemFileSchema = z.union([
     path: z.string(),
     content: z.string().optional(),
     type: registryItemTypeSchema,
+    target: z.string().optional(),
   }),
 ])
 

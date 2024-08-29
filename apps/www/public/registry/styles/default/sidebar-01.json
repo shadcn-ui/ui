@@ -20,7 +20,8 @@
     {
       "path": "block/sidebar-01/page.tsx",
       "content": "import { AppSidebar } from \"@/registry/new-york/block/sidebar-01/components/app-sidebar\"\nimport {\n  SidebarLayout,\n  SidebarTrigger,\n} from \"@/registry/new-york/block/sidebar-01/ui/sidebar\"\n\nexport default function Page() {\n  return (\n    <SidebarLayout>\n      <AppSidebar />\n      <main className=\"flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out\">\n        <div className=\"h-full rounded-md border-2 border-dashed p-2\">\n          <SidebarTrigger />\n        </div>\n      </main>\n    </SidebarLayout>\n  )\n}\n",
-      "type": "registry:page"
+      "type": "registry:page",
+      "target": "app/dashboard/page.tsx"
     },
     {
       "path": "block/sidebar-01/components/app-sidebar.tsx",
