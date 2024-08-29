@@ -18,7 +18,10 @@ import fetch from "node-fetch"
 import { z } from "zod"
 
 const REGISTRY_URL =
-  process.env.REGISTRY_URL ?? "https://ui.shadcn.com/registry"
+  process.env.REGISTRY_URL ??
+  "https://ui-private-www-git-shadcn-cli-2-shadcn-pro.vercel.app/registry"
+
+// "https://ui.shadcn.com/registry"
 
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
