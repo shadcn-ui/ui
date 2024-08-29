@@ -2,6 +2,8 @@ import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import { addComponents } from "@/src/utils/add-components"
+import { createProject } from "@/src/utils/create-project"
+import * as ERRORS from "@/src/utils/errors"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -12,7 +14,7 @@ import {
   resolveConfigPaths,
   type Config,
 } from "@/src/utils/get-config"
-import { getProjectConfig } from "@/src/utils/get-project-info"
+import { getProjectConfig, getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -27,6 +29,7 @@ export const initOptionsSchema = z.object({
   yes: z.boolean(),
   defaults: z.boolean(),
   force: z.boolean(),
+  silent: z.boolean(),
 })
 
 export const init = new Command()
@@ -40,6 +43,7 @@ export const init = new Command()
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
+  .option("-s, --silent", "mute output.", false)
   .action(async (opts) => {
     try {
       const options = initOptionsSchema.parse({
@@ -47,55 +51,78 @@ export const init = new Command()
         ...opts,
       })
 
-      const { projectInfo } = await preFlightInit(options)
-      const projectConfig = await getProjectConfig(options.cwd, projectInfo)
-      const config = projectConfig
-        ? await promptForMinimalConfig(projectConfig, options)
-        : await promptForConfig(await getConfig(options.cwd))
+      logger.break()
+      await runInit(options)
 
-      if (!opts.yes) {
-        const { proceed } = await prompts({
-          type: "confirm",
-          name: "proceed",
-          message: `Write configuration to ${highlighter.info(
-            "components.json"
-          )}. Proceed?`,
-          initial: true,
-        })
-
-        if (!proceed) {
-          process.exit(0)
-        }
-      }
-
-      // Write components.json.
-      if (!opts.force && !opts.defaults) {
-        logger.info("")
-      }
-      const spinner = ora(`Writing components.json.`).start()
-      const targetPath = path.resolve(options.cwd, "components.json")
-      await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
-      spinner.succeed()
-
-      // Add components.
-      const fullConfig = await resolveConfigPaths(options.cwd, config)
-      await addComponents(["index"], fullConfig, {
-        // Init will always overwrite files.
-        overwrite: true,
-      })
-
-      logger.info("")
+      logger.break()
       logger.log(
         `${highlighter.success(
           "Success!"
         )} Project initialization completed.\nYou may now add components.`
       )
-      logger.info("")
+      logger.break()
     } catch (error) {
-      logger.error("")
+      logger.break()
       handleError(error)
     }
   })
+
+export async function runInit(
+  options: z.infer<typeof initOptionsSchema> & {
+    skipPreflight?: boolean
+  }
+) {
+  let projectInfo
+  if (!options.skipPreflight) {
+    const preflight = await preFlightInit(options)
+    if (preflight.errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
+      const { projectPath } = await createProject(options)
+      if (!projectPath) {
+        process.exit(1)
+      }
+      options.cwd = projectPath
+    }
+    projectInfo = preflight.projectInfo
+  } else {
+    projectInfo = await getProjectInfo(options.cwd)
+  }
+
+  const projectConfig = await getProjectConfig(options.cwd, projectInfo)
+  const config = projectConfig
+    ? await promptForMinimalConfig(projectConfig, options)
+    : await promptForConfig(await getConfig(options.cwd))
+
+  if (!options.yes) {
+    const { proceed } = await prompts({
+      type: "confirm",
+      name: "proceed",
+      message: `Write configuration to ${highlighter.info(
+        "components.json"
+      )}. Proceed?`,
+      initial: true,
+    })
+
+    if (!proceed) {
+      process.exit(0)
+    }
+  }
+
+  // Write components.json.
+  const spinner = ora(`Writing components.json.`).start()
+  const targetPath = path.resolve(options.cwd, "components.json")
+  await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
+  spinner.succeed()
+
+  // Add components.
+  const fullConfig = await resolveConfigPaths(options.cwd, config)
+  await addComponents(["index"], fullConfig, {
+    // Init will always overwrite files.
+    overwrite: true,
+    silent: options.silent,
+  })
+
+  return fullConfig
+}
 
 async function promptForConfig(defaultConfig: Config | null = null) {
   const [styles, baseColors] = await Promise.all([

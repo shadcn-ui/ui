@@ -4,6 +4,7 @@ import path from "path"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { registryItemTailwindSchema } from "@/src/utils/registry/schema"
+import { spinner } from "@/src/utils/spinner"
 import deepmerge from "deepmerge"
 import ora from "ora"
 import objectToString from "stringify-object"
@@ -28,23 +29,34 @@ export async function updateTailwindConfig(
   tailwindConfig:
     | z.infer<typeof registryItemTailwindSchema>["config"]
     | undefined,
-  config: Config
+  config: Config,
+  options: {
+    silent?: boolean
+  }
 ) {
   if (!tailwindConfig) {
     return
+  }
+
+  options = {
+    silent: false,
+    ...options,
   }
 
   const tailwindFileRelativePath = path.relative(
     config.resolvedPaths.cwd,
     config.resolvedPaths.tailwindConfig
   )
-  const spinner = ora(
-    `Updating ${highlighter.info(tailwindFileRelativePath)}`
+  const tailwindSpinner = spinner(
+    `Updating ${highlighter.info(tailwindFileRelativePath)}`,
+    {
+      silent: options.silent,
+    }
   ).start()
   const raw = await fs.readFile(config.resolvedPaths.tailwindConfig, "utf8")
   const output = await transformTailwindConfig(raw, tailwindConfig, config)
   await fs.writeFile(config.resolvedPaths.tailwindConfig, output, "utf8")
-  spinner.succeed()
+  tailwindSpinner?.succeed()
 }
 
 export async function transformTailwindConfig(

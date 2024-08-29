@@ -1,4 +1,5 @@
 import path from "path"
+import { highlighter } from "@/src/utils/highlighter"
 import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import { loadConfig } from "tsconfig-paths"
@@ -124,6 +125,9 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
 
     return rawConfigSchema.parse(configResult.config)
   } catch (error) {
-    throw new Error(`Invalid configuration found in ${cwd}/components.json.`)
+    const componentPath = `${cwd}/component.json`
+    throw new Error(
+      `Invalid configuration found in ${highlighter.info(componentPath)}.`
+    )
   }
 }

@@ -2,20 +2,15 @@ import path from "path"
 import { addOptionsSchema } from "@/src/commands/add"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
+import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { spinner } from "@/src/utils/spinner"
 import fs from "fs-extra"
-import ora from "ora"
 import { z } from "zod"
 
 export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
   const errors: Record<string, boolean> = {}
-
-  let projectSpinner
-  if (options.verbose) {
-    logger.break()
-    projectSpinner = ora(`Preflight checks.`).start()
-  }
 
   // Ensure target directory exists.
   // Check for empty project. We assume if no package.json exists, the project is empty.
@@ -24,57 +19,68 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
     !fs.existsSync(path.resolve(options.cwd, "package.json"))
   ) {
     errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT] = true
+    return {
+      errors,
+      config: null,
+    }
   }
 
   // Check for existing components.json file.
   if (!fs.existsSync(path.resolve(options.cwd, "components.json"))) {
     errors[ERRORS.MISSING_CONFIG] = true
+    return {
+      errors,
+      config: null,
+    }
+    // logger.break()
+    // logger.error(
+    //   `A ${highlighter.info(
+    //     "components.json"
+    //   )} file was not found at ${highlighter.info(
+    //     options.cwd
+    //   )}.\nBefore you can add components, you must create a ${highlighter.info(
+    //     "components.json"
+    //   )} file by running the ${highlighter.info("init")} command.`
+    // )
+    // logger.error(
+    //   `Learn more at ${highlighter.info(
+    //     "https://ui.shadcn.com/docs/components-json"
+    //   )}.`
+    // )
+    // logger.break()
+    // process.exit(1)
   }
 
-  const config = await getConfig(options.cwd)
-  if (!config) {
-    errors[ERRORS.FAILED_CONFIG_READ] = true
-  }
+  const projectSpinner = spinner(`Preflight checks.`, {
+    silent: options.silent,
+  })?.start()
 
-  if (Object.keys(errors).length > 0) {
+  try {
+    const config = await getConfig(options.cwd)
+    projectSpinner?.succeed()
+
+    return {
+      errors,
+      config: config!,
+    }
+  } catch (error) {
     projectSpinner?.fail()
-
     logger.break()
-    if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-      logger.error(
-        `The path ${highlighter.info(options.cwd)} does not exist or is empty.`
-      )
-    }
-
-    if (errors[ERRORS.MISSING_CONFIG]) {
-      logger.error(
-        `A ${highlighter.info(
-          "components.json"
-        )} file was not found at ${highlighter.info(
-          options.cwd
-        )}.\nBefore you can add components, you must create a ${highlighter.info(
-          "components.json"
-        )} file by running the ${highlighter.info("init")} command.`
-      )
-      logger.error(
-        `Learn more at ${highlighter.info(
-          "https://ui.shadcn.com/docs/components-json"
-        )}.`
-      )
-    } else if (errors[ERRORS.FAILED_CONFIG_READ]) {
-      logger.error(
-        `Failed to read the ${highlighter.info("components.json")} file.`
-      )
-    }
-
+    logger.error(
+      `An invalid ${highlighter.info(
+        "components.json"
+      )} file was found at ${highlighter.info(
+        options.cwd
+      )}.\nBefore you can add components, you must create a valid ${highlighter.info(
+        "components.json"
+      )} file by running the ${highlighter.info("init")} command.`
+    )
+    logger.error(
+      `Learn more at ${highlighter.info(
+        "https://ui.shadcn.com/docs/components-json"
+      )}.`
+    )
     logger.break()
     process.exit(1)
-  }
-
-  projectSpinner?.succeed()
-
-  return {
-    errors,
-    config: config!,
   }
 }

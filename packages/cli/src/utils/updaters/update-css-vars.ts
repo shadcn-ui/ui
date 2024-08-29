@@ -3,7 +3,7 @@ import path from "path"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { registryItemCssVarsSchema } from "@/src/utils/registry/schema"
-import ora from "ora"
+import { spinner } from "@/src/utils/spinner"
 import postcss from "postcss"
 import AtRule from "postcss/lib/at-rule"
 import Root from "postcss/lib/root"
@@ -12,7 +12,10 @@ import { z } from "zod"
 
 export async function updateCssVars(
   cssVars: z.infer<typeof registryItemCssVarsSchema> | undefined,
-  config: Config
+  config: Config,
+  options: {
+    silent?: boolean
+  }
 ) {
   if (
     !cssVars ||
@@ -22,18 +25,25 @@ export async function updateCssVars(
     return
   }
 
+  options = {
+    silent: false,
+    ...options,
+  }
   const cssFilepath = config.resolvedPaths.tailwindCss
   const cssFilepathRelative = path.relative(
     config.resolvedPaths.cwd,
     cssFilepath
   )
-  const spinner = ora(
-    `Updating ${highlighter.info(cssFilepathRelative)}`
+  const cssVarsSpinner = spinner(
+    `Updating ${highlighter.info(cssFilepathRelative)}`,
+    {
+      silent: options.silent,
+    }
   ).start()
   const raw = await fs.readFile(cssFilepath, "utf8")
   let output = await transformCssVars(raw, cssVars, config)
   await fs.writeFile(cssFilepath, output, "utf8")
-  spinner.succeed()
+  cssVarsSpinner.succeed()
 }
 
 export async function transformCssVars(

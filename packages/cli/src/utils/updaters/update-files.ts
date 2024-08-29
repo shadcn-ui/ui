@@ -8,12 +8,12 @@ import {
   getRegistryItemFileTargetPath,
 } from "@/src/utils/registry"
 import { RegistryItem } from "@/src/utils/registry/schema"
+import { spinner } from "@/src/utils/spinner"
 import { transform } from "@/src/utils/transformers"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
-import ora from "ora"
 import prompts from "prompts"
 
 export async function updateFiles(
@@ -22,6 +22,7 @@ export async function updateFiles(
   options: {
     overwrite?: boolean
     force?: boolean
+    silent?: boolean
   }
 ) {
   if (!files?.length) {
@@ -30,9 +31,12 @@ export async function updateFiles(
   options = {
     overwrite: false,
     force: false,
+    silent: false,
     ...options,
   }
-  const filesCreatedSpinner = ora(`Updating files.`)?.start()
+  const filesCreatedSpinner = spinner(`Updating files.`, {
+    silent: options.silent,
+  })?.start()
   const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
   const filesCreated = []
   const filesUpdated = []
@@ -43,9 +47,14 @@ export async function updateFiles(
       continue
     }
 
-    const targetDir = getRegistryItemFileTargetPath(file, config)
+    let targetDir = getRegistryItemFileTargetPath(file, config)
     const fileName = basename(file.path)
     let filePath = path.join(targetDir, fileName)
+
+    if (file.target) {
+      filePath = path.join(config.resolvedPaths.cwd, file.target)
+      targetDir = path.dirname(filePath)
+    }
 
     if (!config.tsx) {
       filePath = filePath.replace(/\.tsx?$/, (match) =>
@@ -106,34 +115,48 @@ export async function updateFiles(
         filesCreated.length === 1 ? "file" : "files"
       }:`
     )
-    for (const file of filesCreated) {
-      logger.log(`  - ${file}`)
+    if (!options.silent) {
+      for (const file of filesCreated) {
+        logger.log(`  - ${file}`)
+      }
     }
   } else {
     filesCreatedSpinner?.stop()
   }
 
   if (filesUpdated.length) {
-    ora(
+    spinner(
       `Updated ${filesUpdated.length} ${
         filesUpdated.length === 1 ? "file" : "files"
-      }:`
+      }:`,
+      {
+        silent: options.silent,
+      }
     )?.info()
-    for (const file of filesUpdated) {
-      logger.log(`  - ${file}`)
+    if (!options.silent) {
+      for (const file of filesUpdated) {
+        logger.log(`  - ${file}`)
+      }
     }
   }
 
   if (filesSkipped.length) {
-    ora(
+    spinner(
       `Skipped ${filesSkipped.length} ${
         filesUpdated.length === 1 ? "file" : "files"
-      }:`
+      }:`,
+      {
+        silent: options.silent,
+      }
     )?.info()
-    for (const file of filesSkipped) {
-      logger.log(`  - ${file}`)
+    if (!options.silent) {
+      for (const file of filesSkipped) {
+        logger.log(`  - ${file}`)
+      }
     }
   }
 
-  logger.break()
+  if (!options.silent) {
+    logger.break()
+  }
 }

@@ -4,62 +4,56 @@ import * as ERRORS from "@/src/utils/errors"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { spinner } from "@/src/utils/spinner"
 import fs from "fs-extra"
-import ora from "ora"
 import { z } from "zod"
 
 export async function preFlightInit(
   options: z.infer<typeof initOptionsSchema>
 ) {
-  logger.break()
   const errors: Record<string, boolean> = {}
 
   // Ensure target directory exists.
   // Check for empty project. We assume if no package.json exists, the project is empty.
-  const projectSpinner = ora(`Preflight checks.`).start()
   if (
     !fs.existsSync(options.cwd) ||
     !fs.existsSync(path.resolve(options.cwd, "package.json"))
   ) {
     errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT] = true
+    return {
+      errors,
+      projectInfo: null,
+    }
   }
+
+  const projectSpinner = spinner(`Preflight checks.`, {
+    silent: options.silent,
+  }).start()
 
   if (
     fs.existsSync(path.resolve(options.cwd, "components.json")) &&
     !options.force
   ) {
-    errors[ERRORS.EXISTING_CONFIG] = true
-  }
-
-  if (Object.keys(errors).length > 0) {
     projectSpinner?.fail()
-
     logger.break()
-    if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-      logger.error(
-        `The path ${highlighter.info(options.cwd)} does not exist or is empty.`
-      )
-    }
-
-    if (errors[ERRORS.EXISTING_CONFIG]) {
-      logger.error(
-        `A ${highlighter.info(
-          "components.json"
-        )} file already exists at ${highlighter.info(
-          options.cwd
-        )}.\nTo start over, remove the ${highlighter.info(
-          "components.json"
-        )} file and run ${highlighter.info("init")} again.`
-      )
-    }
-
+    logger.error(
+      `A ${highlighter.info(
+        "components.json"
+      )} file already exists at ${highlighter.info(
+        options.cwd
+      )}.\nTo start over, remove the ${highlighter.info(
+        "components.json"
+      )} file and run ${highlighter.info("init")} again.`
+    )
     logger.break()
     process.exit(1)
   }
 
   projectSpinner?.succeed()
 
-  const frameworkSpinner = ora(`Verifying framework.`).start()
+  const frameworkSpinner = spinner(`Verifying framework.`, {
+    silent: options.silent,
+  }).start()
   const projectInfo = await getProjectInfo(options.cwd)
   if (!projectInfo || projectInfo?.framework.name === "manual") {
     errors[ERRORS.UNSUPPORTED_FRAMEWORK] = true
@@ -78,14 +72,15 @@ export async function preFlightInit(
     logger.break()
     process.exit(1)
   }
-
   frameworkSpinner?.succeed(
     `Verifying framework. Found ${highlighter.info(
       projectInfo.framework.label
     )}.`
   )
 
-  const tailwindSpinner = ora(`Validating Tailwind CSS.`).start()
+  const tailwindSpinner = spinner(`Validating Tailwind CSS.`, {
+    silent: options.silent,
+  }).start()
   if (!projectInfo?.tailwindConfigFile || !projectInfo?.tailwindCssFile) {
     errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
     tailwindSpinner?.fail()
@@ -93,7 +88,9 @@ export async function preFlightInit(
     tailwindSpinner?.succeed()
   }
 
-  const tsConfigSpinner = ora(`Validating import alias.`).start()
+  const tsConfigSpinner = spinner(`Validating import alias.`, {
+    silent: options.silent,
+  }).start()
   if (!projectInfo?.aliasPrefix) {
     errors[ERRORS.IMPORT_ALIAS_MISSING] = true
     tsConfigSpinner?.fail()
@@ -105,8 +102,14 @@ export async function preFlightInit(
     if (errors[ERRORS.TAILWIND_NOT_CONFIGURED]) {
       logger.break()
       logger.error(
-        `Tailwind CSS is not configured. Install Tailwind CSS then run init again.`
+        `No Tailwind CSS configuration found at ${highlighter.info(
+          options.cwd
+        )}.`
       )
+      logger.error(
+        `It is likely you do not have Tailwind CSS installed or have an invalid configuration.`
+      )
+      logger.error(`Install Tailwind CSS then try again.`)
       if (projectInfo?.framework.links.tailwind) {
         logger.error(
           `Visit ${highlighter.info(
@@ -133,6 +136,7 @@ export async function preFlightInit(
   }
 
   return {
+    errors,
     projectInfo,
   }
 }

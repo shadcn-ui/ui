@@ -1,6 +1,10 @@
 import path from "path"
+import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
+import { preFlightInit } from "@/src/preflights/preflight-init"
 import { addComponents } from "@/src/utils/add-components"
+import { createProject } from "@/src/utils/create-project"
+import * as ERRORS from "@/src/utils/errors"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -16,7 +20,7 @@ export const addOptionsSchema = z.object({
   cwd: z.string(),
   all: z.boolean(),
   path: z.string().optional(),
-  verbose: z.boolean(),
+  silent: z.boolean(),
 })
 
 export const add = new Command()
@@ -35,7 +39,7 @@ export const add = new Command()
   )
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
-  .option("-v, --verbose", "verbose output.", false)
+  .option("-s, --silent", "mute output.", false)
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -44,18 +48,10 @@ export const add = new Command()
         ...opts,
       })
 
-      const { config } = await preFlightAdd(options)
-
-      if (!options.components?.length) {
-        logger.info("")
-        options.components = await promptForRegistryComponents(options)
-        logger.info("")
-      }
-
       // Confirm if user is installing themes.
       // For now, we assume a theme is prefixed with "theme-".
       const isTheme = options.components?.some((component) =>
-        component.startsWith("theme-")
+        component.includes("theme-")
       )
       if (!options.yes && isTheme) {
         logger.break()
@@ -74,8 +70,68 @@ export const add = new Command()
         }
       }
 
+      if (!options.components?.length) {
+        options.components = await promptForRegistryComponents(options)
+      }
+
+      let { errors, config } = await preFlightAdd(options)
+
+      // No component.json file. Prompt the user to run init.
+      if (errors[ERRORS.MISSING_CONFIG]) {
+        const { proceed } = await prompts({
+          type: "confirm",
+          name: "proceed",
+          message: `You need to create a ${highlighter.info(
+            "component.json"
+          )} file to add components. Proceed?`,
+          initial: true,
+        })
+
+        if (!proceed) {
+          logger.break()
+          process.exit(1)
+        }
+
+        config = await runInit({
+          cwd: options.cwd,
+          yes: true,
+          force: true,
+          defaults: false,
+          skipPreflight: false,
+          silent: true,
+        })
+      }
+
+      if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
+        const { projectPath } = await createProject({
+          cwd: options.cwd,
+          force: options.overwrite,
+        })
+        if (!projectPath) {
+          logger.break()
+          process.exit(1)
+        }
+        options.cwd = projectPath
+
+        config = await runInit({
+          cwd: options.cwd,
+          yes: true,
+          force: true,
+          defaults: false,
+          skipPreflight: true,
+          silent: true,
+        })
+      }
+
+      if (!config) {
+        throw new Error(
+          `Failed to read config at ${highlighter.info(options.cwd)}.`
+        )
+      }
+
       await addComponents(options.components, config, options)
     } catch (error) {
+      logger.break()
       handleError(error)
     }
   })
@@ -85,7 +141,7 @@ async function promptForRegistryComponents(
 ) {
   const registryIndex = await getRegistryIndex()
   if (!registryIndex) {
-    logger.error("")
+    logger.break()
     handleError(new Error("Failed to fetch registry index."))
     return []
   }

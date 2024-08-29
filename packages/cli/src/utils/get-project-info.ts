@@ -227,11 +227,11 @@ export async function getProjectConfig(
       prefix: "",
     },
     aliases: {
-      ui: `${projectInfo.aliasPrefix}/components/ui`,
       components: `${projectInfo.aliasPrefix}/components`,
+      ui: `${projectInfo.aliasPrefix}/components/ui`,
+      hooks: `${projectInfo.aliasPrefix}/hooks`,
       lib: `${projectInfo.aliasPrefix}/lib`,
       utils: `${projectInfo.aliasPrefix}/lib/utils`,
-      hooks: `${projectInfo.aliasPrefix}/hooks`,
     },
   }
 
