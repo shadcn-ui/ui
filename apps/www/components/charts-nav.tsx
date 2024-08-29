@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 
-const examples = [
+const links = [
   {
     name: "Area Chart",
     href: "/charts#area-chart",
@@ -31,6 +31,10 @@ const examples = [
     name: "Radial Chart",
     href: "/charts#radial-chart",
   },
+  {
+    name: "Tooltip",
+    href: "/charts#tooltip",
+  },
 ]
 
 export function ChartsNav({
@@ -40,33 +44,25 @@ export function ChartsNav({
   const pathname = usePathname()
 
   return (
-    <div className="relative px-1 pb-4 md:px-0 md:pb-0">
-      <ScrollArea className="max-w-[600px] lg:max-w-none">
-        <div
-          className={cn(
-            "flex flex-col gap-2 sm:items-center md:flex-row",
-            className
-          )}
-          {...props}
-        >
-          {examples.map((example, index) => (
-            <Link
-              href={example.href}
-              key={example.href}
-              className={cn(
-                "flex h-7 rounded-full px-4 text-left text-sm transition-colors hover:text-primary sm:items-center sm:justify-center sm:text-center",
-                pathname?.startsWith(example.href) ||
-                  (index === 0 && pathname === "/")
-                  ? "bg-muted font-medium text-primary"
-                  : "text-muted-foreground"
-              )}
-            >
-              {example.name}
-            </Link>
-          ))}
-        </div>
-        <ScrollBar orientation="horizontal" className="invisible" />
-      </ScrollArea>
-    </div>
+    <ScrollArea className="max-w-[600px] lg:max-w-none">
+      <div className={cn("flex items-center", className)} {...props}>
+        {links.map((example, index) => (
+          <Link
+            href={example.href}
+            key={example.href}
+            className={cn(
+              "flex h-7 shrink-0 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
+              pathname?.startsWith(example.href) ||
+                (index === 0 && pathname === "/")
+                ? "bg-muted font-medium text-primary"
+                : "text-muted-foreground"
+            )}
+          >
+            {example.name}
+          </Link>
+        ))}
+      </div>
+      <ScrollBar orientation="horizontal" className="invisible" />
+    </ScrollArea>
   )
 }
