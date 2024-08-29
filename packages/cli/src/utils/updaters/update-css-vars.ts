@@ -171,11 +171,12 @@ function updateCssVarsPlugin(
         root.append(baseLayer)
       }
 
-      if (baseLayer) {
+      if (baseLayer !== undefined) {
         // Add variables for each key in cssVars
         Object.entries(cssVars).forEach(([key, vars]) => {
           const selector = key === "light" ? ":root" : `.${key}`
-          addOrUpdateVars(baseLayer, selector, vars)
+          // TODO: Fix typecheck.
+          addOrUpdateVars(baseLayer as AtRule, selector, vars)
         })
       }
     },
