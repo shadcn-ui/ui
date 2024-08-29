@@ -119,13 +119,13 @@ function updateBaseLayerPlugin() {
       }
 
       requiredRules.forEach(({ selector, apply }) => {
-        const existingRule = baseLayer.nodes?.find(
+        const existingRule = baseLayer?.nodes?.find(
           (node): node is Rule =>
             node.type === "rule" && node.selector === selector
         )
 
         if (!existingRule) {
-          baseLayer.append(
+          baseLayer?.append(
             postcss.rule({
               selector,
               nodes: [
@@ -171,11 +171,13 @@ function updateCssVarsPlugin(
         root.append(baseLayer)
       }
 
-      // Add variables for each key in cssVars
-      Object.entries(cssVars).forEach(([key, vars]) => {
-        const selector = key === "light" ? ":root" : `.${key}`
-        addOrUpdateVars(baseLayer, selector, vars)
-      })
+      if (baseLayer) {
+        // Add variables for each key in cssVars
+        Object.entries(cssVars).forEach(([key, vars]) => {
+          const selector = key === "light" ? ":root" : `.${key}`
+          addOrUpdateVars(baseLayer, selector, vars)
+        })
+      }
     },
   }
 }
