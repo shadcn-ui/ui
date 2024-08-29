@@ -180,7 +180,7 @@ async function fetchRegistry(paths: string[]) {
           }
           const message = response.statusText || errorMessages[response.status]
           throw new Error(
-            `Failed to fetch from ${highlighter.info(url)}. ${message}.`
+            `Failed to fetch from ${highlighter.info(url)}.\n${message}`
           )
         }
 
