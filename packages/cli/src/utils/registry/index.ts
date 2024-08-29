@@ -364,6 +364,12 @@ export async function registryGetTheme(name: string, config: Config) {
 
 function getRegistryUrl(path: string) {
   if (isUrl(path)) {
+    // If the url contains /chat/b/, we assume it's the v0 registry.
+    // We need to add the /json suffix if it's missing.
+    if (path.match(/\/chat\/b\//) && !path.endsWith("/json")) {
+      path = `${path}/json`
+    }
+
     return path
   }
 

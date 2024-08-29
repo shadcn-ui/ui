@@ -8,6 +8,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { getRegistryIndex } from "@/src/utils/registry"
+import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
@@ -102,6 +103,7 @@ export const add = new Command()
         })
       }
 
+      let shouldUpdateAppIndex = false
       if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
         const { projectPath } = await createProject({
           cwd: options.cwd,
@@ -122,6 +124,10 @@ export const add = new Command()
           silent: true,
           isNewProject: true,
         })
+
+        shouldUpdateAppIndex =
+          options.components?.length === 1 &&
+          !!options.components[0].match(/\/chat\/b\//)
       }
 
       if (!config) {
@@ -131,6 +137,12 @@ export const add = new Command()
       }
 
       await addComponents(options.components, config, options)
+
+      // If we're adding a single component and it's from the v0 registry,
+      // let's update the app/page.tsx file to import the component.
+      if (shouldUpdateAppIndex) {
+        await updateAppIndex(options.components[0], config)
+      }
     } catch (error) {
       logger.break()
       handleError(error)

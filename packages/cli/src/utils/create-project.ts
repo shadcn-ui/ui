@@ -71,7 +71,9 @@ export async function createProject(
     process.exit(1)
   }
 
-  const createSpinner = spinner(`Creating a new Next.js project.`).start()
+  const createSpinner = spinner(
+    `Creating a new Next.js project. This may take a few minutes.`
+  ).start()
 
   // Note: pnpm fails here. Fallback to npx with --use-PACKAGE-MANAGER.
   const args = [
@@ -100,7 +102,7 @@ export async function createProject(
     process.exit(1)
   }
 
-  createSpinner?.succeed()
+  createSpinner?.succeed("Creating a new Next.js project.")
 
   return {
     projectPath,
