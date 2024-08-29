@@ -1,5 +1,3 @@
-import { cookies } from "next/headers"
-
 import { AppSidebar } from "@/registry/new-york/block/sidebar-01/components/app-sidebar"
 import {
   SidebarLayout,
@@ -10,7 +8,8 @@ export const iframeHeight = "870px"
 
 export const containerClassName = "w-full h-full"
 
-export default function Page() {
+export default async function Page() {
+  const { cookies } = await import("next/headers")
   return (
     <SidebarLayout
       defaultOpen={cookies().get("sidebar:state")?.value === "true"}

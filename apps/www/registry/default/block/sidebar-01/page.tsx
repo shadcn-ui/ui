@@ -8,9 +8,12 @@ export const iframeHeight = "870px"
 
 export const containerClassName = "w-full h-full"
 
-export default function Page() {
+export default async function Page() {
+  const { cookies } = await import("next/headers")
   return (
-    <SidebarLayout>
+    <SidebarLayout
+      defaultOpen={cookies().get("sidebar:state")?.value === "true"}
+    >
       <AppSidebar />
       <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out">
         <div className="h-full rounded-md border-2 border-dashed p-2">

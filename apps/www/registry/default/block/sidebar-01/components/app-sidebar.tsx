@@ -26,7 +26,14 @@ import { NavSecondary } from "@/registry/new-york/block/sidebar-01/components/na
 import { NavUser } from "@/registry/new-york/block/sidebar-01/components/nav-user"
 import { StorageCard } from "@/registry/new-york/block/sidebar-01/components/storage-card"
 import { TeamSwitcher } from "@/registry/new-york/block/sidebar-01/components/team-switcher"
-import { Sidebar } from "@/registry/new-york/block/sidebar-01/ui/sidebar"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarItem,
+  SidebarLabel,
+} from "@/registry/new-york/block/sidebar-01/ui/sidebar"
 
 export const iframeHeight = "870px"
 
@@ -60,6 +67,7 @@ const data = {
       title: "Playground",
       url: "#",
       icon: SquareTerminal,
+      isActive: true,
       items: [
         {
           title: "History",
@@ -247,24 +255,29 @@ const data = {
 export function AppSidebar() {
   return (
     <Sidebar>
-      <div className="group relative flex h-12 items-center gap-2 border-b px-2.5 py-2 transition-all ease-in-out">
+      <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
-      </div>
-      <div className="flex flex-1 flex-col gap-5 overflow-auto py-4">
-        <NavProjects projects={data.projects} />
-        <NavMain
-          heading="Platform"
-          items={data.navMain}
-          searchResults={data.searchResults}
-        />
-        <NavSecondary heading="Help" items={data.navSecondary} />
-        <div className="px-4">
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarItem>
+          <SidebarLabel>Platform</SidebarLabel>
+          <NavMain items={data.navMain} searchResults={data.searchResults} />
+        </SidebarItem>
+        <SidebarItem>
+          <SidebarLabel>Projects</SidebarLabel>
+          <NavProjects projects={data.projects} />
+        </SidebarItem>
+        <SidebarItem className="mt-auto">
+          <SidebarLabel>Help</SidebarLabel>
+          <NavSecondary items={data.navSecondary} />
+        </SidebarItem>
+        <SidebarItem>
           <StorageCard />
-        </div>
-      </div>
-      <div className="border-t p-2">
+        </SidebarItem>
+      </SidebarContent>
+      <SidebarFooter>
         <NavUser user={data.user} />
-      </div>
+      </SidebarFooter>
     </Sidebar>
   )
 }
