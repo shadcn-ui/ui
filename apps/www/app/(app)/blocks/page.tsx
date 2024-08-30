@@ -5,7 +5,10 @@ import { ThemesSwitcher } from "@/components/themes-selector"
 
 export default async function BlocksPage() {
   const blocks = (await getAllBlockIds()).filter(
-    (name) => !name.startsWith("chart-")
+    (name) =>
+      !name.startsWith("chart-") &&
+      !name.startsWith("sidebar-01") &&
+      !name.startsWith("login-01")
   )
 
   // These themes are not compatible with the blocks yet.
