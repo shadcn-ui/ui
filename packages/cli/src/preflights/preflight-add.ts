@@ -2,10 +2,8 @@ import path from "path"
 import { addOptionsSchema } from "@/src/commands/add"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
-import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
 import fs from "fs-extra"
 import { z } from "zod"
 
@@ -32,39 +30,16 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
       errors,
       config: null,
     }
-    // logger.break()
-    // logger.error(
-    //   `A ${highlighter.info(
-    //     "components.json"
-    //   )} file was not found at ${highlighter.info(
-    //     options.cwd
-    //   )}.\nBefore you can add components, you must create a ${highlighter.info(
-    //     "components.json"
-    //   )} file by running the ${highlighter.info("init")} command.`
-    // )
-    // logger.error(
-    //   `Learn more at ${highlighter.info(
-    //     "https://ui.shadcn.com/docs/components-json"
-    //   )}.`
-    // )
-    // logger.break()
-    // process.exit(1)
   }
-
-  const projectSpinner = spinner(`Preflight checks.`, {
-    silent: options.silent,
-  })?.start()
 
   try {
     const config = await getConfig(options.cwd)
-    projectSpinner?.succeed()
 
     return {
       errors,
       config: config!,
     }
   } catch (error) {
-    projectSpinner?.fail()
     logger.break()
     logger.error(
       `An invalid ${highlighter.info(

@@ -28,8 +28,16 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
 }
 
 function updateImportAliases(moduleSpecifier: string, config: Config) {
-  if (!moduleSpecifier.startsWith("@/registry/")) {
+  // Not a local import.
+  if (!moduleSpecifier.startsWith("@/")) {
     return moduleSpecifier
+  }
+
+  // Not a registry import.
+  if (!moduleSpecifier.startsWith("@/registry/")) {
+    // We fix the alias an return.
+    const alias = config.aliases.components.charAt(0)
+    return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
 
   if (moduleSpecifier.match(/^@\/registry\/(.+)\/ui/)) {
