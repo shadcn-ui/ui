@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev -p 3003",
+    "dev": "next dev -p 3333",
     "build": "contentlayer2 build && pnpm build:registry && next build",
     "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
     "build:docs": "contentlayer2 build",
@@ -53,6 +53,7 @@
     "@tanstack/react-table": "^8.9.1",
     "@vercel/analytics": "^1.2.2",
     "@vercel/og": "^0.0.21",
+    "change-case": "^5.4.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^1.2.1",
     "cmdk": "^1.0.0",
