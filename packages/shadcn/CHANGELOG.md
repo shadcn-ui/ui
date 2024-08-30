@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.0.0
+
+### Major Changes
+
+- [#4569](https://github.com/shadcn-ui/ui/pull/4569) [`a62a155`](https://github.com/shadcn-ui/ui/commit/a62a155aac6409d41ea27529be2eef65e3db2723) Thanks [@shadcn](https://github.com/shadcn)! - npx shadcn init
+
 ## 0.8.0
 
 ### Minor Changes
