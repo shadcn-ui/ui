@@ -38,6 +38,7 @@ import SeparatorDemo from "@/registry/default/example/separator-demo"
 import SheetDemo from "@/registry/default/example/sheet-demo"
 import SkeletonDemo from "@/registry/default/example/skeleton-demo"
 import SliderDemo from "@/registry/default/example/slider-demo"
+import SliderRanges from "@/registry/default/example/slider-ranges"
 import SwitchDemo from "@/registry/default/example/switch-demo"
 import TabsDemo from "@/registry/default/example/tabs-demo"
 import ToastDemo from "@/registry/default/example/toast-demo"
@@ -60,6 +61,9 @@ export default function KitchenSinkPage() {
             </ComponentWrapper>
             <ComponentWrapper>
               <SliderDemo className="w-full" />
+            </ComponentWrapper>
+            <ComponentWrapper>
+              <SliderRanges className="w-full" />
             </ComponentWrapper>
             <ComponentWrapper
               className="spa flex-col items-start space-x-0

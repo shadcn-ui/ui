@@ -1589,6 +1589,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "slider-ranges": {
+      name: "slider-ranges",
+      type: "components:example",
+      registryDependencies: ["slider"],
+      component: React.lazy(() => import("@/registry/default/example/slider-ranges")),
+      source: "",
+      files: ["registry/default/example/slider-ranges.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "sonner-demo": {
       name: "sonner-demo",
       type: "components:example",
@@ -4897,6 +4908,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/example/slider-demo")),
       source: "",
       files: ["registry/new-york/example/slider-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "slider-ranges": {
+      name: "slider-ranges",
+      type: "components:example",
+      registryDependencies: ["slider"],
+      component: React.lazy(() => import("@/registry/new-york/example/slider-ranges")),
+      source: "",
+      files: ["registry/new-york/example/slider-ranges.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
