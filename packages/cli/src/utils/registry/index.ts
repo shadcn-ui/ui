@@ -178,7 +178,11 @@ async function fetchRegistry(paths: string[]) {
             404: "Not found",
             500: "Internal server error",
           }
-          const message = response.statusText || errorMessages[response.status]
+          const result = await response.json()
+          const message =
+            result && typeof result === "object" && "error" in result
+              ? result.error
+              : response.statusText || errorMessages[response.status]
           throw new Error(
             `Failed to fetch from ${highlighter.info(url)}.\n${message}`
           )
@@ -369,11 +373,12 @@ function getRegistryUrl(path: string) {
   if (isUrl(path)) {
     // If the url contains /chat/b/, we assume it's the v0 registry.
     // We need to add the /json suffix if it's missing.
-    if (path.match(/\/chat\/b\//) && !path.endsWith("/json")) {
-      path = `${path}/json`
+    const url = new URL(path)
+    if (url.pathname.match(/\/chat\/b\//) && !url.pathname.endsWith("/json")) {
+      url.pathname = `${url.pathname}/json`
     }
 
-    return path
+    return url.toString()
   }
 
   return `${REGISTRY_URL}/${path}`
