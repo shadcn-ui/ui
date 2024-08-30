@@ -40,7 +40,7 @@ jobs:
         run: node .github/version-script-beta.js
 
       - name: Authenticate to NPM
-        run: echo "//registry.npmjs.org/:_authToken=$NPM_ACCESS_TOKEN" >> packages/cli/.npmrc
+        run: echo "//registry.npmjs.org/:_authToken=$NPM_ACCESS_TOKEN" >> packages/shadcn/.npmrc
         env:
           NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
@@ -51,10 +51,10 @@ jobs:
         id: package-version
         uses: martinbeentjes/npm-get-version-action@main
         with:
-          path: packages/cli
+          path: packages/shadcn
 
       - name: Upload packaged artifact
         uses: actions/upload-artifact@v2
         with:
           name: npm-package-shadcn-ui@${{ steps.package-version.outputs.current-version }}-pr-${{ github.event.number }} # encode the PR number into the artifact name
-          path: packages/cli/dist/index.js
+          path: packages/shadcn/dist/index.js
