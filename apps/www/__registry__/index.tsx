@@ -2145,7 +2145,7 @@ export const Index: Record<string, any> = {
       registryDependencies: ["avatar","button","collapsible","dropdown-menu","drawer","separator","input","popover","sheet","progress","card","use-mobile"],
       files: ["registry/new-york/block/sidebar-01/page.tsx","registry/new-york/block/sidebar-01/components/app-sidebar.tsx","registry/new-york/block/sidebar-01/components/nav-main.tsx","registry/new-york/block/sidebar-01/components/nav-projects.tsx","registry/new-york/block/sidebar-01/components/nav-secondary.tsx","registry/new-york/block/sidebar-01/components/nav-user.tsx","registry/new-york/block/sidebar-01/components/storage-card.tsx","registry/new-york/block/sidebar-01/components/team-switcher.tsx","registry/new-york/block/sidebar-01/hooks/use-sidebar.tsx","registry/new-york/block/sidebar-01/ui/sidebar.tsx"],
       component: React.lazy(() => import("@/registry/new-york/block/sidebar-01/page.tsx")),
-      source: "__registry__/new-york/block/sidebar-01.tsx",
+      source: "__registry__/new-york/block/sidebar-01/page.tsx",
       category: "Application",
       subcategory: "Dashboard",
       chunks: []
@@ -2156,7 +2156,7 @@ export const Index: Record<string, any> = {
       registryDependencies: ["button","card","input","label"],
       files: ["registry/new-york/block/login-01/page.tsx","registry/new-york/block/login-01/components/login-form.tsx"],
       component: React.lazy(() => import("@/registry/new-york/block/login-01/page.tsx")),
-      source: "__registry__/new-york/block/login-01.tsx",
+      source: "__registry__/new-york/block/login-01/page.tsx",
       category: "Authentication",
       subcategory: "Login",
       chunks: []
@@ -5501,7 +5501,7 @@ export const Index: Record<string, any> = {
       registryDependencies: ["avatar","button","collapsible","dropdown-menu","drawer","separator","input","popover","sheet","progress","card","use-mobile"],
       files: ["registry/default/block/sidebar-01/page.tsx","registry/default/block/sidebar-01/components/app-sidebar.tsx","registry/default/block/sidebar-01/components/nav-main.tsx","registry/default/block/sidebar-01/components/nav-projects.tsx","registry/default/block/sidebar-01/components/nav-secondary.tsx","registry/default/block/sidebar-01/components/nav-user.tsx","registry/default/block/sidebar-01/components/storage-card.tsx","registry/default/block/sidebar-01/components/team-switcher.tsx","registry/default/block/sidebar-01/hooks/use-sidebar.tsx","registry/default/block/sidebar-01/ui/sidebar.tsx"],
       component: React.lazy(() => import("@/registry/default/block/sidebar-01/page.tsx")),
-      source: "__registry__/default/block/sidebar-01.tsx",
+      source: "__registry__/default/block/sidebar-01/page.tsx",
       category: "Application",
       subcategory: "Dashboard",
       chunks: []
@@ -5512,7 +5512,7 @@ export const Index: Record<string, any> = {
       registryDependencies: ["button","card","input","label"],
       files: ["registry/default/block/login-01/page.tsx","registry/default/block/login-01/components/login-form.tsx"],
       component: React.lazy(() => import("@/registry/default/block/login-01/page.tsx")),
-      source: "__registry__/default/block/login-01.tsx",
+      source: "__registry__/default/block/login-01/page.tsx",
       category: "Authentication",
       subcategory: "Login",
       chunks: []

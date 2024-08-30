@@ -231,6 +231,18 @@ export const Index: Record<string, any> = {
 
         // // Write the source file for blocks only.
         sourceFilename = `__registry__/${style.name}/${type}/${item.name}.tsx`
+
+        if (item.files) {
+          const files = item.files.map((file) =>
+            typeof file === "string"
+              ? { type: "registry:page", path: file }
+              : file
+          )
+          if (files?.length) {
+            sourceFilename = `__registry__/${style.name}/${files[0].path}`
+          }
+        }
+
         const sourcePath = path.join(process.cwd(), sourceFilename)
         if (!existsSync(sourcePath)) {
           await fs.mkdir(sourcePath, { recursive: true })
