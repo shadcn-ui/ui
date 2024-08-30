@@ -14,6 +14,12 @@ type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
 type CarouselOptions = UseCarouselParameters[0]
 type CarouselPlugin = UseCarouselParameters[1]
 
+type UseDotButtonType = {
+  onDotButtonClick: (index: number) => void
+  scrollSnaps: number[]
+  selectedIndex: number
+}
+
 type CarouselProps = {
   opts?: CarouselOptions
   plugins?: CarouselPlugin
@@ -28,7 +34,8 @@ type CarouselContextProps = {
   scrollNext: () => void
   canScrollPrev: boolean
   canScrollNext: boolean
-} & CarouselProps
+} & CarouselProps &
+  UseDotButtonType
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
 
@@ -40,6 +47,47 @@ function useCarousel() {
   }
 
   return context
+}
+
+export const useDotButton = (
+  emblaApi: CarouselApi | undefined
+): UseDotButtonType => {
+  const [selectedIndex, setSelectedIndex] = React.useState(0)
+  const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([])
+
+  const onDotButtonClick = React.useCallback(
+    (index: number) => {
+      if (!emblaApi) return
+      emblaApi.scrollTo(index)
+    },
+    [emblaApi]
+  )
+
+  const onInit = React.useCallback((emblaApi: CarouselApi) => {
+    if (!emblaApi) return
+    setScrollSnaps(emblaApi.scrollSnapList())
+  }, [])
+
+  const onSelect = React.useCallback((emblaApi: CarouselApi) => {
+    if (!emblaApi) return
+    setSelectedIndex(emblaApi.selectedScrollSnap())
+  }, [])
+
+  React.useEffect(() => {
+    if (!emblaApi) return
+
+    onInit(emblaApi)
+    onSelect(emblaApi)
+    emblaApi.on("reInit", onInit)
+    emblaApi.on("reInit", onSelect)
+    emblaApi.on("select", onSelect)
+  }, [emblaApi, onInit, onSelect])
+
+  return {
+    selectedIndex,
+    scrollSnaps,
+    onDotButtonClick,
+  }
 }
 
 const Carousel = React.forwardRef<
@@ -67,6 +115,7 @@ const Carousel = React.forwardRef<
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
+    const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(api)
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
@@ -132,6 +181,9 @@ const Carousel = React.forwardRef<
           scrollNext,
           canScrollPrev,
           canScrollNext,
+          selectedIndex,
+          scrollSnaps,
+          onDotButtonClick,
         }}
       >
         <div
@@ -252,6 +304,32 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+const CarouselDots = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const { scrollSnaps, selectedIndex, onDotButtonClick } = useCarousel()
+
+  if (!scrollSnaps.length) return null
+
+  return (
+    <div className={cn("flex gap-3", className)} ref={ref} {...props}>
+      {scrollSnaps.map((_, index) => (
+        <button
+          key={index}
+          aria-label={`Slide - ${index}`}
+          className={cn(
+            "size-2.5 cursor-pointer rounded-full border border-primary",
+            index === selectedIndex && "bg-primary"
+          )}
+          onClick={() => onDotButtonClick(index)}
+        />
+      ))}
+    </div>
+  )
+})
+CarouselDots.displayName = "CarouselDots"
+
 export {
   type CarouselApi,
   Carousel,
@@ -259,4 +337,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 }

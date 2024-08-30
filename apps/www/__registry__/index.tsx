@@ -885,6 +885,15 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "carousel-dots": {
+      name: "carousel-dots",
+      type: "components:example",
+      registryDependencies: ["carousel"],
+      component: React.lazy(() => import("@/registry/default/example/carousel-dots")),
+      files: ["registry/default/example/carousel-dots.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+    },
     "carousel-api": {
       name: "carousel-api",
       type: "components:example",
@@ -4196,6 +4205,15 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+    },
+    "carousel-dots": {
+      name: "carousel-dots",
+      type: "components:example",
+      registryDependencies: ["carousel"],
+      component: React.lazy(() => import("@/registry/new-york/example/carousel-dots")),
+      files: ["registry/new-york/example/carousel-dots.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
     },
     "carousel-api": {
       name: "carousel-api",
