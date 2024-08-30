@@ -23,7 +23,7 @@
     "cli:start": "pnpm --filter=shadcn-ui start:dev",
     "cli:build": "pnpm --filter=shadcn-ui build",
     "shadcn:dev": "turbo --filter=shadcn dev",
-    "shadcn:start": "pnpm --filter=shadcn start:dev",
+    "shadcn": "pnpm --filter=shadcn start:dev",
     "shadcn:build": "pnpm --filter=shadcn build",
     "docs:build": "pnpm --filter=www build:docs",
     "www:dev": "pnpm --filter=www dev",
