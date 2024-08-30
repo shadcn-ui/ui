@@ -26,6 +26,7 @@ import { z } from "zod"
 
 export const initOptionsSchema = z.object({
   cwd: z.string(),
+  components: z.array(z.string()).optional(),
   yes: z.boolean(),
   defaults: z.boolean(),
   force: z.boolean(),
@@ -36,6 +37,10 @@ export const initOptionsSchema = z.object({
 export const init = new Command()
   .name("init")
   .description("initialize your project and install dependencies")
+  .argument(
+    "[components...]",
+    "the components to add or a url to the component."
+  )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("-d, --defaults,", "use default configuration.", false)
   .option("-f, --force", "force overwrite of existing configuration.", false)
@@ -45,11 +50,12 @@ export const init = new Command()
     process.cwd()
   )
   .option("-s, --silent", "mute output.", false)
-  .action(async (opts) => {
+  .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
         isNewProject: false,
+        components,
         ...opts,
       })
 
@@ -116,7 +122,8 @@ export async function runInit(
 
   // Add components.
   const fullConfig = await resolveConfigPaths(options.cwd, config)
-  await addComponents(["index"], fullConfig, {
+  const components = ["index", ...(options.components || [])]
+  await addComponents(components, fullConfig, {
     // Init will always overwrite files.
     overwrite: true,
     silent: options.silent,
