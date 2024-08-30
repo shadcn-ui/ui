@@ -57,7 +57,6 @@ test("get config", async () => {
       utils: "@/lib/utils",
     },
     resolvedPaths: {
-      cwd: path.resolve(__dirname, "../fixtures/config-partial"),
       tailwindConfig: path.resolve(
         __dirname,
         "../fixtures/config-partial",
@@ -78,13 +77,7 @@ test("get config", async () => {
         "../fixtures/config-partial",
         "./lib/utils"
       ),
-      ui: path.resolve(
-        __dirname,
-        "../fixtures/config-partial",
-        "./components/ui"
-      ),
-      hooks: path.resolve(__dirname, "../fixtures/config-partial", "./hooks"),
-      lib: path.resolve(__dirname, "../fixtures/config-partial", "./lib"),
+      ui: path.resolve(__dirname, "../fixtures/config-partial", "./components"),
     },
   })
 
@@ -104,12 +97,8 @@ test("get config", async () => {
     aliases: {
       components: "~/components",
       utils: "~/lib/utils",
-      lib: "~/lib",
-      hooks: "~/lib/hooks",
-      ui: "~/ui",
     },
     resolvedPaths: {
-      cwd: path.resolve(__dirname, "../fixtures/config-full"),
       tailwindConfig: path.resolve(
         __dirname,
         "../fixtures/config-full",
@@ -125,13 +114,11 @@ test("get config", async () => {
         "../fixtures/config-full",
         "./src/components"
       ),
-      ui: path.resolve(__dirname, "../fixtures/config-full", "./src/ui"),
-      hooks: path.resolve(
+      ui: path.resolve(
         __dirname,
         "../fixtures/config-full",
-        "./src/lib/hooks"
+        "./src/components"
       ),
-      lib: path.resolve(__dirname, "../fixtures/config-full", "./src/lib"),
       utils: path.resolve(
         __dirname,
         "../fixtures/config-full",
@@ -157,7 +144,6 @@ test("get config", async () => {
       utils: "@/lib/utils",
     },
     resolvedPaths: {
-      cwd: path.resolve(__dirname, "../fixtures/config-jsx"),
       tailwindConfig: path.resolve(
         __dirname,
         "../fixtures/config-jsx",
@@ -173,10 +159,8 @@ test("get config", async () => {
         "../fixtures/config-jsx",
         "./components"
       ),
-      ui: path.resolve(__dirname, "../fixtures/config-jsx", "./components/ui"),
+      ui: path.resolve(__dirname, "../fixtures/config-jsx", "./components"),
       utils: path.resolve(__dirname, "../fixtures/config-jsx", "./lib/utils"),
-      hooks: path.resolve(__dirname, "../fixtures/config-jsx", "./hooks"),
-      lib: path.resolve(__dirname, "../fixtures/config-jsx", "./lib"),
     },
   })
 })

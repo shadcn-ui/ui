@@ -3,7 +3,7 @@ import { describe, expect, test } from "vitest"
 
 import { getTailwindCssFile } from "../../src/utils/get-project-info"
 
-describe("get tailwindcss file", async () => {
+describe("get tailwind css file", async () => {
   test.each([
     {
       name: "next-app",
@@ -25,23 +25,9 @@ describe("get tailwindcss file", async () => {
       name: "t3-app",
       file: "src/styles/globals.css",
     },
-    {
-      name: "t3-pages",
-      file: "src/styles/globals.css",
-    },
-    {
-      name: "remix",
-      file: "app/tailwind.css",
-    },
-    {
-      name: "vite",
-      file: "src/index.css",
-    },
   ])(`getTailwindCssFile($name) -> $file`, async ({ name, file }) => {
     expect(
-      await getTailwindCssFile(
-        path.resolve(__dirname, `../fixtures/frameworks/${name}`)
-      )
+      await getTailwindCssFile(path.resolve(__dirname, `../fixtures/${name}`))
     ).toBe(file)
   })
 })

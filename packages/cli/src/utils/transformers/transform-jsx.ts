@@ -61,7 +61,7 @@ const PARSE_OPTIONS: ParserOptions = {
   ],
 }
 
-export const transformJsx: Transformer<string> = async ({
+export const transformJsx: Transformer<String> = async ({
   sourceFile,
   config,
 }) => {

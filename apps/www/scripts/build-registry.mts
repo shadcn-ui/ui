@@ -20,7 +20,7 @@ import {
   registrySchema,
 } from "../registry/schema"
 
-const REGISTRY_PATH = path.join(process.cwd(), "public/registry")
+const REGISTRY_PATH = path.join(process.cwd(), "public/r")
 
 const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:ui",

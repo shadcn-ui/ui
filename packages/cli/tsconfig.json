@@ -3,12 +3,11 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "isolatedModules": false,
-    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "test/fixtures"]
+  "exclude": ["node_modules"]
 }

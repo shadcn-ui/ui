@@ -17,7 +17,6 @@ export type TransformOpts = {
   raw: string
   config: Config
   baseColor?: z.infer<typeof registryBaseColorSchema>
-  transformJsx?: boolean
 }
 
 export type Transformer<Output = SourceFile> = (
@@ -25,6 +24,13 @@ export type Transformer<Output = SourceFile> = (
     sourceFile: SourceFile
   }
 ) => Promise<Output>
+
+const transformers: Transformer[] = [
+  transformImport,
+  transformRsc,
+  transformCssVars,
+  transformTwPrefixes,
+]
 
 const project = new Project({
   compilerOptions: {},
@@ -35,15 +41,7 @@ async function createTempSourceFile(filename: string) {
   return path.join(dir, filename)
 }
 
-export async function transform(
-  opts: TransformOpts,
-  transformers: Transformer[] = [
-    transformImport,
-    transformRsc,
-    transformCssVars,
-    transformTwPrefixes,
-  ]
-) {
+export async function transform(opts: TransformOpts) {
   const tempFile = await createTempSourceFile(opts.filename)
   const sourceFile = project.createSourceFile(tempFile, opts.raw, {
     scriptKind: ScriptKind.TSX,
@@ -53,12 +51,8 @@ export async function transform(
     transformer({ sourceFile, ...opts })
   }
 
-  if (opts.transformJsx) {
-    return await transformJsx({
-      sourceFile,
-      ...opts,
-    })
-  }
-
-  return sourceFile.getText()
+  return await transformJsx({
+    sourceFile,
+    ...opts,
+  })
 }

@@ -10,9 +10,6 @@
   "rsc": false,
   "aliases": {
     "utils": "~/lib/utils",
-    "components": "~/components",
-    "lib": "~/lib",
-    "hooks": "~/lib/hooks",
-    "ui": "~/ui"
+    "components": "~/components"
   }
 }
