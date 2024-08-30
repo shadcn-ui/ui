@@ -164,6 +164,7 @@ async function fetchRegistry(paths: string[]) {
     const results = await Promise.all(
       paths.map(async (path) => {
         const url = getRegistryUrl(path)
+        console.log("👉", url)
         const response = await fetch(url, { agent })
 
         if (!response.ok) {
