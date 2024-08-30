@@ -1,15 +1,15 @@
 import Link from "next/link"
 import { MoreHorizontal, PlusSquare, type LucideIcon } from "lucide-react"
 
-import { cn } from "@/registry/new-york/lib/utils"
-import { Button } from "@/registry/new-york/ui/button"
+import { cn } from "@/registry/default/lib/utils"
+import { Button } from "@/registry/default/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/new-york/ui/dropdown-menu"
+} from "@/registry/default/ui/dropdown-menu"
 
 export function NavProjects({
   projects,

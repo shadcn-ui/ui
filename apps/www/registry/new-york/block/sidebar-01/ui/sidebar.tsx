@@ -103,7 +103,10 @@ const Sidebar = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
     if (isMobile) {
       return (
         <Sheet open={open} onOpenChange={onOpenChange}>
-          <SheetContent className="w-[--sidebar-width] p-0" side="left">
+          <SheetContent
+            className="w-[260px] p-0 md:w-[--sidebar-width] [&>button]:hidden"
+            side="left"
+          >
             {sidebar}
           </SheetContent>
         </Sheet>

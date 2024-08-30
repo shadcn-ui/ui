@@ -10,7 +10,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { buttonVariants } from "@/registry/new-york/ui/button"
+import { Button, buttonVariants } from "@/registry/new-york/ui/button"
 
 export const metadata: Metadata = {
   title: "Examples",
@@ -35,18 +35,12 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
           components. Use this as a guide to build your own.
         </PageHeaderDescription>
         <PageActions>
-          <Link href="/docs" className={cn(buttonVariants(), "rounded-[6px]")}>
-            Get Started
-          </Link>
-          <Link
-            href="/components"
-            className={cn(
-              buttonVariants({ variant: "outline" }),
-              "rounded-[6px]"
-            )}
-          >
-            Components
-          </Link>
+          <Button asChild size="sm">
+            <Link href="/docs">Get Started</Link>
+          </Button>
+          <Button asChild size="sm" variant="ghost">
+            <Link href="/components">Components</Link>
+          </Button>
         </PageActions>
       </PageHeader>
       <section>

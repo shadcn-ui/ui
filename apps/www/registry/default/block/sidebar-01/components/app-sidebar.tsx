@@ -20,12 +20,12 @@ import {
   Turtle,
 } from "lucide-react"
 
-import { NavMain } from "@/registry/new-york/block/sidebar-01/components/nav-main"
-import { NavProjects } from "@/registry/new-york/block/sidebar-01/components/nav-projects"
-import { NavSecondary } from "@/registry/new-york/block/sidebar-01/components/nav-secondary"
-import { NavUser } from "@/registry/new-york/block/sidebar-01/components/nav-user"
-import { StorageCard } from "@/registry/new-york/block/sidebar-01/components/storage-card"
-import { TeamSwitcher } from "@/registry/new-york/block/sidebar-01/components/team-switcher"
+import { NavMain } from "@/registry/default/block/sidebar-01/components/nav-main"
+import { NavProjects } from "@/registry/default/block/sidebar-01/components/nav-projects"
+import { NavSecondary } from "@/registry/default/block/sidebar-01/components/nav-secondary"
+import { NavUser } from "@/registry/default/block/sidebar-01/components/nav-user"
+import { StorageCard } from "@/registry/default/block/sidebar-01/components/storage-card"
+import { TeamSwitcher } from "@/registry/default/block/sidebar-01/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -33,7 +33,7 @@ import {
   SidebarHeader,
   SidebarItem,
   SidebarLabel,
-} from "@/registry/new-york/block/sidebar-01/ui/sidebar"
+} from "@/registry/default/block/sidebar-01/ui/sidebar"
 
 export const iframeHeight = "870px"
 

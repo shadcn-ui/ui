@@ -1,7 +1,7 @@
 import { Database } from "lucide-react"
 
-import { Card, CardContent } from "@/registry/new-york/ui/card"
-import { Progress } from "@/registry/new-york/ui/progress"
+import { Card, CardContent } from "@/registry/default/ui/card"
+import { Progress } from "@/registry/default/ui/progress"
 
 export function StorageCard() {
   return (

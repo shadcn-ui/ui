@@ -593,8 +593,8 @@
         "type": "registry:ui"
       },
       {
-        "path": "ui/use-toast.ts",
-        "type": "registry:ui"
+        "path": "hooks/use-toast.ts",
+        "type": "registry:hook"
       },
       {
         "path": "ui/toaster.tsx",

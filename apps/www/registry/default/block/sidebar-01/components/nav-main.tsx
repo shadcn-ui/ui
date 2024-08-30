@@ -3,26 +3,26 @@
 import Link from "next/link"
 import { ChevronRight, Search, type LucideIcon } from "lucide-react"
 
-import { useIsMobile } from "@/registry/new-york/hooks/use-mobile"
-import { cn } from "@/registry/new-york/lib/utils"
-import { Button } from "@/registry/new-york/ui/button"
+import { useIsMobile } from "@/registry/default/hooks/use-mobile"
+import { cn } from "@/registry/default/lib/utils"
+import { Button } from "@/registry/default/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/new-york/ui/collapsible"
+} from "@/registry/default/ui/collapsible"
 import {
   Drawer,
   DrawerContent,
   DrawerTrigger,
-} from "@/registry/new-york/ui/drawer"
-import { Input } from "@/registry/new-york/ui/input"
+} from "@/registry/default/ui/drawer"
+import { Input } from "@/registry/default/ui/input"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/new-york/ui/popover"
-import { Separator } from "@/registry/new-york/ui/separator"
+} from "@/registry/default/ui/popover"
+import { Separator } from "@/registry/default/ui/separator"
 
 export function NavMain({
   className,

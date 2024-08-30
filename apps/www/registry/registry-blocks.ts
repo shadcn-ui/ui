@@ -76,6 +76,10 @@ export const blocks: Registry = [
         target: "app/login/page.tsx",
         type: "registry:page",
       },
+      {
+        path: "block/login-01/components/login-form.tsx",
+        type: "registry:component",
+      },
     ],
     category: "Authentication",
     subcategory: "Login",

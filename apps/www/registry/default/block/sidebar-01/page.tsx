@@ -1,8 +1,8 @@
-import { AppSidebar } from "@/registry/new-york/block/sidebar-01/components/app-sidebar"
+import { AppSidebar } from "@/registry/default/block/sidebar-01/components/app-sidebar"
 import {
   SidebarLayout,
   SidebarTrigger,
-} from "@/registry/new-york/block/sidebar-01/ui/sidebar"
+} from "@/registry/default/block/sidebar-01/ui/sidebar"
 
 export const iframeHeight = "870px"
 

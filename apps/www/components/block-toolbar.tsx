@@ -36,7 +36,7 @@ export function BlockToolbar({
   const { isLiftMode, toggleLiftMode } = useLiftMode(block.name)
 
   return (
-    <div className="flex flex-col items-center gap-4 sm:flex-row">
+    <div className="flex items-center gap-4">
       <div className="flex items-center gap-2">
         <TabsList className="hidden h-7 rounded-md p-0 px-[calc(theme(spacing.1)_-_2px)] py-[theme(spacing.1)] sm:flex">
           <TabsTrigger
@@ -109,10 +109,10 @@ export function BlockToolbar({
         </div>
       </div>
       {block.code && (
-        <div className="flex items-center gap-2 pr-[14px] sm:ml-auto">
+        <div className="ml-auto flex items-center gap-2 md:pr-[14px]">
           {block.hasLiftMode && (
             <>
-              <div className="flex h-7 items-center justify-between gap-2">
+              <div className="hidden h-7 items-center justify-between gap-2 md:flex">
                 <Label htmlFor={`lift-mode-${block.name}`} className="text-xs">
                   Lift Mode
                 </Label>
@@ -182,8 +182,11 @@ export function BlockToolbar({
             disabled={isLiftMode}
           />
           <V0Button
+            className="hidden md:flex"
             id={`v0-button-${block.name}`}
-            disabled={isLiftMode}
+            disabled={
+              isLiftMode || ["login-01", "sidebar-01"].includes(block.name)
+            }
             block={{
               name: block.name,
               description: block.description || "Edit in v0",
