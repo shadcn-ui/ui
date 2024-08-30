@@ -37,8 +37,8 @@
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
     "check": "turbo lint typecheck format:check",
     "release": "changeset version",
-    "pub:beta": "cd packages/cli && pnpm pub:beta",
-    "pub:release": "cd packages/cli && pnpm pub:release",
+    "pub:beta": "cd packages/shadcn && pnpm pub:beta",
+    "pub:release": "cd packages/shadcn && pnpm pub:release",
     "test": "turbo run test --force"
   },
   "packageManager": "pnpm@9.0.6",
