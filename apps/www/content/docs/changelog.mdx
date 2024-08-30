@@ -4,6 +4,33 @@ description: Latest updates and announcements.
 toc: false
 ---
 
+## August 2024 - npx shadcn init
+
+The new CLI is now available. It's a complete rewrite with a lot of new features and improvements.
+
+### Update Your Project
+
+To update an existing project to use the new CLI, update your `components.json` file to include import aliases for your **components**, **utils**, **ui**, **lib** and **hooks**.
+
+```json showLineNumbers {7-13} title="components.json"
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "tailwind": {
+    // ...
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  }
+}
+```
+
+If you're using a different import alias prefix eg `~`, replace `@` with your prefix.
+
 ## April 2024 - Introducing Lift Mode
 
 We're introducing a new mode for [Blocks](/blocks) called **Lift Mode**.
