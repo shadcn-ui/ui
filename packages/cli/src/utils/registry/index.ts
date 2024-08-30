@@ -39,8 +39,8 @@ export async function getRegistryStyles() {
 export async function getRegistryBaseColors() {
   return [
     {
-      name: "neutral",
-      label: "Neutral",
+      name: "slate",
+      label: "Slate",
     },
     {
       name: "gray",
@@ -51,12 +51,12 @@ export async function getRegistryBaseColors() {
       label: "Zinc",
     },
     {
-      name: "stone",
-      label: "Stone",
+      name: "neutral",
+      label: "Neutral",
     },
     {
-      name: "slate",
-      label: "Slate",
+      name: "stone",
+      label: "Stone",
     },
   ]
 }

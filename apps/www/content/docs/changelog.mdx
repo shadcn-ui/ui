@@ -4,6 +4,48 @@ description: Latest updates and announcements.
 toc: false
 ---
 
+## August 2024 - npx shadcn init
+
+The new CLI is now available. It's a complete rewrite with a lot of new features and improvements. You can now install components, themes, hooks, utils and more using `npx shadcn add`.
+
+This is a major step towards distributing code that you and your LLMs can access and use.
+
+1. First up, the cli now has support for all major React framework out of the box. Next.js, Remix, Vite and Laravel. And when you init into a new app, we update your existing Tailwind files instead of overriding.
+2. A component now ship its own dependencies. Take the accordion for example, it can define its Tailwind keyframes. When you add it to your project, we’ll update your tailwind.config.ts file accordingly.
+3. You can also install remote components using url. `npx shadcn add https://acme.com/registry/navbar.json`.
+4. We have also improve the init command. It does framework detection and can even init a brand new Next.js app in one command. `npx shadcn init`.
+5. We have created a new schema that you can use to ship your own component registry. And since it has support for urls, you can even use it to distribute private components.
+6. And a few more updates like better error handling and monorepo support.
+
+You can try the new cli today.
+
+```bash
+npx shadcn init sidebar-01 login-01
+```
+
+### Update Your Project
+
+To update an existing project to use the new CLI, update your `components.json` file to include import aliases for your **components**, **utils**, **ui**, **lib** and **hooks**.
+
+```json showLineNumbers {7-13} title="components.json"
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "tailwind": {
+    // ...
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  }
+}
+```
+
+If you're using a different import alias prefix eg `~`, replace `@` with your prefix.
+
 ## April 2024 - Introducing Lift Mode
 
 We're introducing a new mode for [Blocks](/blocks) called **Lift Mode**.

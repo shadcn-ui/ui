@@ -1,6 +1,5 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import * as ERRORS from "@/src/utils/errors"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -12,10 +11,9 @@ import {
   type Config,
 } from "@/src/utils/get-config"
 import { getPackageManager } from "@/src/utils/get-package-manager"
-import { getProjectConfig } from "@/src/utils/get-project-info"
+import { getProjectConfig, preFlight } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
-import { preFlight } from "@/src/utils/preflight"
 import {
   getRegistryBaseColor,
   getRegistryBaseColors,
@@ -59,24 +57,29 @@ export const init = new Command()
     try {
       const options = initOptionsSchema.parse(opts)
       const cwd = path.resolve(options.cwd)
-      const { errors, projectInfo } = await preFlight(cwd)
 
-      if (Object.keys(errors).length > 0) {
-        logger.error(
-          `Something went wrong during the preflight check. Please check the output above for more details.`
-        )
-        logger.error("")
+      // Ensure target directory exists.
+      if (!existsSync(cwd)) {
+        logger.error(`The path ${cwd} does not exist. Please try again.`)
         process.exit(1)
       }
 
-      const projectConfig = await getProjectConfig(cwd)
-      const config = projectConfig
-        ? // If we can determine the project config, prompt for minimal config.
-          await promptForMinimalConfig(cwd, projectConfig, opts.defaults)
-        : // Otherwise, prompt for full config.
-          await promptForConfig(cwd, await getConfig(cwd), options.yes)
+      preFlight(cwd)
 
-      await runInit(cwd, config)
+      const projectConfig = await getProjectConfig(cwd)
+      if (projectConfig) {
+        const config = await promptForMinimalConfig(
+          cwd,
+          projectConfig,
+          opts.defaults
+        )
+        await runInit(cwd, config)
+      } else {
+        // Read config.
+        const existingConfig = await getConfig(cwd)
+        const config = await promptForConfig(cwd, existingConfig, options.yes)
+        await runInit(cwd, config)
+      }
 
       logger.info("")
       logger.info(
@@ -97,10 +100,8 @@ export async function promptForConfig(
 ) {
   const highlight = (text: string) => chalk.cyan(text)
 
-  const [styles, baseColors] = await Promise.all([
-    getRegistryStyles(),
-    getRegistryBaseColors(),
-  ])
+  const styles = await getRegistryStyles()
+  const baseColors = await getRegistryBaseColors()
 
   const options = await prompts([
     {
@@ -125,7 +126,7 @@ export async function promptForConfig(
     {
       type: "select",
       name: "tailwindBaseColor",
-      message: `Which color would you like to use as the ${highlight(
+      message: `Which color would you like to use as ${highlight(
         "base color"
       )}?`,
       choices: baseColors.map((color) => ({
@@ -144,7 +145,7 @@ export async function promptForConfig(
       name: "tailwindCssVariables",
       message: `Would you like to use ${highlight(
         "CSS variables"
-      )} for theming?`,
+      )} for colors?`,
       initial: defaultConfig?.tailwind.cssVariables ?? true,
       active: "yes",
       inactive: "no",
@@ -239,10 +240,8 @@ export async function promptForMinimalConfig(
   let cssVariables = defaultConfig.tailwind.cssVariables
 
   if (!defaults) {
-    const [styles, baseColors] = await Promise.all([
-      getRegistryStyles(),
-      getRegistryBaseColors(),
-    ])
+    const styles = await getRegistryStyles()
+    const baseColors = await getRegistryBaseColors()
 
     const options = await prompts([
       {
@@ -253,12 +252,11 @@ export async function promptForMinimalConfig(
           title: style.label,
           value: style.name,
         })),
-        initial: styles.findIndex((s) => s.name === style),
       },
       {
         type: "select",
         name: "tailwindBaseColor",
-        message: `Which color would you like to use as the ${highlight(
+        message: `Which color would you like to use as ${highlight(
           "base color"
         )}?`,
         choices: baseColors.map((color) => ({
@@ -271,7 +269,7 @@ export async function promptForMinimalConfig(
         name: "tailwindCssVariables",
         message: `Would you like to use ${highlight(
           "CSS variables"
-        )} for theming?`,
+        )} for colors?`,
         initial: defaultConfig?.tailwind.cssVariables,
         active: "yes",
         inactive: "no",

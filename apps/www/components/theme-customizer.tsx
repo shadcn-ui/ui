@@ -10,7 +10,6 @@ import {
   SunIcon,
 } from "@radix-ui/react-icons"
 import template from "lodash.template"
-import { Paintbrush } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
@@ -38,14 +37,14 @@ import {
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
 import { Skeleton } from "@/registry/new-york/ui/skeleton"
-import { Theme, themes } from "@/registry/themes"
-
-import "@/styles/mdx.css"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/new-york/ui/tooltip"
+import { BaseColor, baseColors } from "@/registry/registry-base-colors"
+
+import "@/styles/mdx.css"
 
 export function ThemeCustomizer() {
   const [config, setConfig] = useConfig()
@@ -84,21 +83,23 @@ export function ThemeCustomizer() {
           {mounted ? (
             <>
               {["zinc", "rose", "blue", "green", "orange"].map((color) => {
-                const theme = themes.find((theme) => theme.name === color)
+                const baseColor = baseColors.find(
+                  (baseColor) => baseColor.name === color
+                )
                 const isActive = config.theme === color
 
-                if (!theme) {
+                if (!baseColor) {
                   return null
                 }
 
                 return (
-                  <Tooltip key={theme.name}>
+                  <Tooltip key={baseColor.name}>
                     <TooltipTrigger asChild>
                       <button
                         onClick={() =>
                           setConfig({
                             ...config,
-                            theme: theme.name,
+                            theme: baseColor.name,
                           })
                         }
                         className={cn(
@@ -110,7 +111,7 @@ export function ThemeCustomizer() {
                         style={
                           {
                             "--theme-primary": `hsl(${
-                              theme?.activeColor[
+                              baseColor?.activeColor[
                                 mode === "dark" ? "dark" : "light"
                               ]
                             })`,
@@ -126,14 +127,14 @@ export function ThemeCustomizer() {
                             <CheckIcon className="h-4 w-4 text-white" />
                           )}
                         </span>
-                        <span className="sr-only">{theme.label}</span>
+                        <span className="sr-only">{baseColor.label}</span>
                       </button>
                     </TooltipTrigger>
                     <TooltipContent
                       align="center"
                       className="rounded-[0.5rem] bg-zinc-900 text-zinc-50"
                     >
-                      {theme.label}
+                      {baseColor.label}
                     </TooltipContent>
                   </Tooltip>
                 )
@@ -255,7 +256,7 @@ function Customizer() {
         <div className="space-y-1.5">
           <Label className="text-xs">Color</Label>
           <div className="grid grid-cols-3 gap-2">
-            {themes.map((theme) => {
+            {baseColors.map((theme) => {
               const isActive = config.theme === theme.name
 
               return mounted ? (
@@ -364,7 +365,7 @@ function CopyCodeButton({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const [config] = useConfig()
-  const activeTheme = themes.find((theme) => theme.name === config.theme)
+  const activeTheme = baseColors.find((theme) => theme.name === config.theme)
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
@@ -448,7 +449,7 @@ function CopyCodeButton({
 
 function CustomizerCode() {
   const [config] = useConfig()
-  const activeTheme = themes.find((theme) => theme.name === config.theme)
+  const activeTheme = baseColors.find((theme) => theme.name === config.theme)
 
   return (
     <ThemeWrapper defaultTheme="zinc" className="relative space-y-4">
@@ -602,7 +603,7 @@ function CustomizerCode() {
   )
 }
 
-function getThemeCode(theme: Theme, radius: number) {
+function getThemeCode(theme: BaseColor, radius: number) {
   if (!theme) {
     return ""
   }

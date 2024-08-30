@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { useConfig } from "@/hooks/use-config"
-import { Style } from "@/registry/styles"
+import { Style } from "@/registry/registry-styles"
 
 interface StyleWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   styleName?: Style["name"]

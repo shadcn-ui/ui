@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { toast } from "@/registry/default/hooks/use-toast"
 import { Button } from "@/registry/default/ui/button"
 import { Checkbox } from "@/registry/default/ui/checkbox"
 import {
@@ -15,7 +16,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/registry/default/ui/form"
-import { toast } from "@/registry/default/ui/use-toast"
 
 const items = [
   {
