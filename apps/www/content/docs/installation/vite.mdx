@@ -118,6 +118,24 @@ Which color would you like to use as base color? › Zinc
 Do you want to use CSS variables for colors? › no / yes
 ```
 
+### Update tailwind.config.js
+
+Add the following code to the `tailwind.config.js` so your app can find which files to scan
+
+```
+export default {
+  darkMode: ['class'],
+    // ...
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
+    // ...
+}
+```
+
 ### That's it
 
 You can now start adding components to your project.
