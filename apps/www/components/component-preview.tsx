@@ -121,7 +121,7 @@ export function ComponentPreview({
           <ThemeWrapper defaultTheme="zinc">
             <div
               className={cn(
-                "preview flex min-h-[350px] w-full justify-center p-10",
+                "preview flex min-h-[350px] w-full justify-center p-10 overflow-x-auto",
                 {
                   "items-center": align === "center",
                   "items-start": align === "start",
