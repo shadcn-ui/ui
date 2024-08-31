@@ -174,13 +174,21 @@ async function fetchRegistry(paths: string[]) {
             404: "Not found",
             500: "Internal server error",
           }
-          const result = await response.json()
-          const message =
-            result && typeof result === "object" && "error" in result
-              ? result.error
-              : response.statusText || errorMessages[response.status]
+
+          let errorMessage =
+            response.statusText ||
+            errorMessages[response.status] ||
+            "Unknown error"
+
+          try {
+            const result = await response.json()
+            if (result && typeof result === "object" && "error" in result) {
+              errorMessage = `${result.error}`
+            }
+          } catch (error) {}
+
           throw new Error(
-            `Failed to fetch from ${highlighter.info(url)}.\n${message}`
+            `Failed to fetch from ${highlighter.info(url)}.\n${errorMessage}`
           )
         }
 
