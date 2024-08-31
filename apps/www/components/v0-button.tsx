@@ -13,8 +13,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/new-york/ui/tooltip"
+import { Style } from "@/registry/registry-styles"
 import { Block } from "@/registry/schema"
-import { Style } from "@/registry/styles"
 
 type Size = "default" | "icon"
 

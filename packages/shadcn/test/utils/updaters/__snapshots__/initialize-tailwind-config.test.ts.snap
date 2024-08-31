@@ -1,0 +1,433 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`transformTailwindConfig -> darkMode property > should add darkMode property if not in config 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [],
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> darkMode property > should add darkMode property if not in config 2`] = `
+"/** @type {import('tailwindcss').Config} */
+
+export default {
+    darkMode: ['class'],
+    content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	theme: {
+		extend: {},
+	},
+	plugins: [],
+}
+  "
+`;
+
+exports[`transformTailwindConfig -> darkMode property > should add darkMode property if not in config 3`] = `
+"/** @type {import('tailwindcss').Config} */
+const foo = {
+  bar: 'baz',
+}
+
+export default {
+    darkMode: ['class'],
+    content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	theme: {
+		extend: {},
+	},
+	plugins: [],
+}
+  "
+`;
+
+exports[`transformTailwindConfig -> darkMode property > should append class to darkMode property if existing array 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  darkMode: ["selector", "class"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [],
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> darkMode property > should convert string to array and add class if darkMode is string 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  darkMode: ["selector", "class"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [],
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> darkMode property > should not add darkMode property if already in config 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  darkMode: ['class'],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [],
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> darkMode property > should not add darkMode property if already in config 2`] = `
+"import type { Config } from 'tailwindcss'
+
+  const config: Config = {
+  darkMode: ['class', 'selector'],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [],
+  }
+  export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> darkMode property > should preserve quote kind 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  darkMode: ['selector', '[data-mode="dark"]', 'class'],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [],
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> darkMode property > should work with multiple darkMode selectors 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  darkMode: ['variant', [
+    '@media (prefers-color-scheme: dark) { &:not(.light *) }',
+    '&:is(.dark *)',
+  ], 'class'],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [],
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> plugin > should add plugin if not in config 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+    plugins: [require("tailwindcss-animate")]
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> plugin > should append plugin to existing array 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> plugin > should not add plugin if already in config 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+    },
+  },
+  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> theme > should add theme if not in config 1`] = `
+"import type { Config } from 'tailwindcss'
+
+  const config: Config = {
+      darkMode: ["class"],
+    content: [
+      "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+      "./components/**/*.{js,ts,jsx,tsx,mdx}",
+      "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+      theme: {
+      	extend: {
+      		colors: {
+      			background: 'hsl(var(--background))',
+      			foreground: 'hsl(var(--foreground))',
+      			primary: {
+      				DEFAULT: 'hsl(var(--primary))',
+      				foreground: 'hsl(var(--primary-foreground))'
+      			}
+      		}
+      	}
+      }
+}
+  export default config
+    "
+`;
+
+exports[`transformTailwindConfig -> theme > should handle multiple properties 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+  	extend: {
+  		fontFamily: {
+  			sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+  			mono: ["var(--font-mono)", ...fontFamily.mono],
+  			heading: [
+  				'var(--font-geist-sans)'
+  			]
+  		},
+  		colors: {
+                ...defaultColors,
+  			background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
+  			border: 'hsl(var(--border))',
+  			input: 'hsl(var(--input))',
+  			ring: 'hsl(var(--ring))',
+  			primary: {
+  				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
+  			card: {
+  				DEFAULT: 'hsl(var(--card))',
+  				foreground: 'hsl(var(--card-foreground))'
+  			}
+  		},
+  		boxShadow: {
+                ...defaultBoxShadow,
+  			'3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
+  		},
+  		borderRadius: {
+  			'3xl': '2rem',
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		animation: {
+                ...defaultAnimation,
+  			'spin-slow': 'spin 3s linear infinite',
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
+  		}
+  	}
+  },
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> theme > should keep spread assignments 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+  	extend: {
+  		colors: {
+                ...defaultColors,
+  			background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
+  			primary: {
+  				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
+  			card: {
+  				DEFAULT: 'hsl(var(--card))',
+  				foreground: 'hsl(var(--card-foreground))'
+  			}
+  		}
+  	}
+  },
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> theme > should merge existing theme 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+  	extend: {
+  		colors: {
+  			background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
+  			primary: {
+  				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
+  			card: {
+  				DEFAULT: 'hsl(var(--card))',
+  				foreground: 'hsl(var(--card-foreground))'
+  			}
+  		}
+  	}
+  },
+}
+export default config
+  "
+`;
