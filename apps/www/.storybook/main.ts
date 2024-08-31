@@ -15,9 +15,7 @@ const config = {
     name: "@storybook/nextjs",
     options: {},
   },
-  docs: {
-    autodocs: "tag",
-  },
+  docs: {},
 } satisfies StorybookConfig
 
 export default config
