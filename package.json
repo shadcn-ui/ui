@@ -15,11 +15,16 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "build:cli": "turbo --filter=shadcn-ui build",
-    "build:registry": "pnpm --filter=www build:registry && pnpm format:write",
+    "build:cli": "turbo --filter=shadcn build",
+    "build:registry": "pnpm --filter=www build:registry && pnpm format:write -- --loglevel silent",
+    "registry:build": "pnpm --filter=www build:registry && pnpm format:write -- --loglevel silent",
     "dev": "turbo run dev --parallel",
     "cli:dev": "turbo --filter=shadcn-ui dev",
     "cli:start": "pnpm --filter=shadcn-ui start:dev",
+    "cli:build": "pnpm --filter=shadcn-ui build",
+    "shadcn:dev": "turbo --filter=shadcn dev",
+    "shadcn": "pnpm --filter=shadcn start:dev",
+    "shadcn:build": "pnpm --filter=shadcn build",
     "docs:build": "pnpm --filter=www build:docs",
     "www:dev": "pnpm --filter=www dev",
     "www:build": "pnpm --filter=www build",
@@ -32,8 +37,8 @@
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
     "check": "turbo lint typecheck format:check",
     "release": "changeset version",
-    "pub:beta": "cd packages/cli && pnpm pub:beta",
-    "pub:release": "cd packages/cli && pnpm pub:release",
+    "pub:beta": "cd packages/shadcn && pnpm pub:beta",
+    "pub:release": "cd packages/shadcn && pnpm pub:release",
     "test": "turbo run test --force"
   },
   "packageManager": "pnpm@9.0.6",
@@ -63,8 +68,9 @@
     "tailwindcss-animate": "^1.0.5",
     "tsx": "^4.1.4",
     "turbo": "^1.9.9",
+    "vite": "^5.4.1",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.31.1"
+    "vitest": "^2.0.5"
   },
   "devDependencies": {
     "@types/node": "^20.11.27",

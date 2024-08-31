@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { toast } from "@/registry/default/hooks/use-toast"
 import { Button } from "@/registry/default/ui/button"
 import {
   Form,
@@ -22,7 +23,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/default/ui/select"
-import { toast } from "@/registry/default/ui/use-toast"
 
 const FormSchema = z.object({
   email: z

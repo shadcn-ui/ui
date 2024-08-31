@@ -1,7 +1,7 @@
 "use client"
 
+import { useToast } from "@/registry/new-york/hooks/use-toast"
 import { Button } from "@/registry/new-york/ui/button"
-import { useToast } from "@/registry/new-york/ui/use-toast"
 
 export default function ToastWithTitle() {
   const { toast } = useToast()

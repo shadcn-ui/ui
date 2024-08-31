@@ -28,8 +28,8 @@ jobs:
 
             for (const artifact of allArtifacts.data.artifacts) {
               // Extract the PR number and package version from the artifact name
-              const match = /^npm-package-shadcn-ui@(.*?)-pr-(\d+)/.exec(artifact.name);
-              
+              const match = /^npm-package-shadcn@(.*?)-pr-(\d+)/.exec(artifact.name);
+
               if (match) {
                 require("fs").appendFileSync(
                   process.env.GITHUB_ENV,
@@ -49,7 +49,7 @@ jobs:
             A new prerelease is available for testing:
 
             ```sh
-            npx shadcn-ui@${{ env.BETA_PACKAGE_VERSION }}
+            npx shadcn@${{ env.BETA_PACKAGE_VERSION }}
             ```
 
       - name: "Remove the autorelease label once published"
