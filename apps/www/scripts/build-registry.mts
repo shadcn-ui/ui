@@ -28,6 +28,7 @@ const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:hook",
   "registry:theme",
   "registry:block",
+  "registry:story",
 ]
 
 const project = new Project({
@@ -362,11 +363,16 @@ async function buildStyles(registry: Registry) {
                   }
                 : _file
 
-            const content = await fs.readFile(
-              path.join(process.cwd(), "registry", style.name, file.path),
-              "utf8"
-            )
-
+            const content =
+              file.type == "registry:story"
+                ? await fs.readFile(
+                    path.join(process.cwd(), "registry", file.path),
+                    "utf8"
+                  )
+                : await fs.readFile(
+                    path.join(process.cwd(), "registry", style.name, file.path),
+                    "utf8"
+                  )
             const tempFile = await createTempSourceFile(file.path)
             const sourceFile = project.createSourceFile(tempFile, content, {
               scriptKind: ScriptKind.TSX,
@@ -762,7 +768,6 @@ try {
     console.error(result.error)
     process.exit(1)
   }
-
   await buildRegistry(result.data)
   await buildStyles(result.data)
   await buildStylesIndex()

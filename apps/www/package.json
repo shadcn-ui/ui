@@ -80,6 +80,7 @@
     "react-resizable-panels": "^2.0.22",
     "react-wrap-balancer": "^0.4.1",
     "recharts": "2.12.7",
+    "rimraf": "^6.0.1",
     "sharp": "^0.31.3",
     "sonner": "^1.2.3",
     "swr": "2.2.6-beta.3",
@@ -89,6 +90,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@shikijs/compat": "^1.1.7",
     "@storybook/addon-actions": "^8.2.6",
     "@storybook/addon-essentials": "^8.2.6",
     "@storybook/addon-interactions": "^8.2.6",
@@ -97,7 +99,6 @@
     "@storybook/nextjs": "^8.2.6",
     "@storybook/react": "^8.2.6",
     "@storybook/test": "^8.2.6",
-    "@shikijs/compat": "^1.1.7",
     "@types/lodash.template": "^4.5.1",
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.65",
@@ -118,7 +119,6 @@
     "storybook": "^8.2.6",
     "tailwindcss": "3.3.7",
     "typescript": "^5.5.3",
-
     "unist-builder": "3.0.0",
     "unist-util-visit": "^4.1.2"
   },
