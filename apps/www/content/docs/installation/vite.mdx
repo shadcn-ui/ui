@@ -23,6 +23,14 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
+Update the `index.css` file with the tailwind headers:
+
+```index.css tailwind headers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
 ### Edit tsconfig.json file
 
 The current version of Vite splits TypeScript configuration into three files, two of which need to be edited.
