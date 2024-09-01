@@ -25,6 +25,10 @@ describe("get ts config alias prefix", async () => {
       name: "t3-app",
       prefix: "~",
     },
+    {
+      name: "general-alias",
+      prefix: "/shadcn",
+    },
   ])(`getTsConfigAliasPrefix($name) -> $prefix`, async ({ name, prefix }) => {
     expect(
       await getTsConfigAliasPrefix(
