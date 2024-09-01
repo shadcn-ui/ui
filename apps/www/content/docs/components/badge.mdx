@@ -4,7 +4,11 @@ description: Displays a badge or a component that looks like a badge.
 component: true
 ---
 
-<ComponentPreview name="badge-demo" description="A badge" />
+<ComponentPreview
+  name="badge-demo"
+  title="Badge"
+  description="A default badge"
+/>
 
 ## Installation
 
@@ -17,7 +21,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add badge
+npx shadcn@latest add badge
 ```
 
 </TabsContent>
@@ -64,7 +68,11 @@ import { badgeVariants } from "@/components/ui/badge"
 
 ### Default
 
-<ComponentPreview name="badge-demo" description="A badge" />
+<ComponentPreview
+  name="badge-demo"
+  title="Badge"
+  description="A default badge"
+/>
 
 ---
 
@@ -72,6 +80,7 @@ import { badgeVariants } from "@/components/ui/badge"
 
 <ComponentPreview
   name="badge-secondary"
+  title="Badge"
   description="A badge using secondary as variant."
 />
 
@@ -81,6 +90,7 @@ import { badgeVariants } from "@/components/ui/badge"
 
 <ComponentPreview
   name="badge-outline"
+  title="Badge"
   description="A badge using outline as variant."
 />
 

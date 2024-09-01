@@ -36,7 +36,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
-import { Style } from "@/registry/styles"
+import { Style } from "@/registry/registry-styles"
 
 const components = {
   Accordion,

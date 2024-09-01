@@ -4,6 +4,7 @@ import * as React from "react"
 import { Dialog } from "@radix-ui/react-dialog"
 import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 
+import { toast } from "@/registry/new-york/hooks/use-toast"
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -30,7 +31,6 @@ import {
 } from "@/registry/new-york/ui/dropdown-menu"
 import { Label } from "@/registry/new-york/ui/label"
 import { Switch } from "@/registry/new-york/ui/switch"
-import { toast } from "@/registry/new-york/ui/use-toast"
 
 export function PresetActions() {
   const [open, setIsOpen] = React.useState(false)
