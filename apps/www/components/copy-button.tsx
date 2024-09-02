@@ -219,22 +219,22 @@ export function CopyNpmCommandButton({
           <DropdownMenuItem
             onClick={() => copyCommand(commands.__npmCommand__, "npm")}
           >
-            npm
+            npm {selectedPackageManager === "npm" && "✓"}
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => copyCommand(commands.__yarnCommand__, "yarn")}
           >
-            yarn
+            yarn {selectedPackageManager === "yarn" && "✓"}
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
           >
-            pnpm
+            pnpm {selectedPackageManager === "pnpm" && "✓"}
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => copyCommand(commands.__bunCommand__, "bun")}
           >
-            bun
+            bun {selectedPackageManager === "bun" && "✓"}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
