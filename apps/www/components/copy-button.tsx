@@ -140,6 +140,8 @@ export function CopyNpmCommandButton({
   ...props
 }: CopyNpmCommandButtonProps) {
   const [hasCopied, setHasCopied] = React.useState(false)
+  const [selectedPackageManager, setSelectedPackageManager] =
+    React.useState<string>("npm")
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -157,9 +159,20 @@ export function CopyNpmCommandButton({
         },
       })
       setHasCopied(true)
+      localStorage.setItem("selectedPackageManager", pm)
+      setSelectedPackageManager(pm)
     },
     []
   )
+
+  React.useEffect(() => {
+    const savedPackageManager = localStorage.getItem("selectedPackageManager")
+    if (savedPackageManager) {
+      setSelectedPackageManager(savedPackageManager)
+    }
+  }, [])
+
+  console.log("Selected package manager:", selectedPackageManager)
 
   return (
     <DropdownMenu>
