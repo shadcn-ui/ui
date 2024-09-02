@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "ui/collapsible.tsx",
-      "content": "\"use client\"\n\nimport * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\"\n\nconst Collapsible = CollapsiblePrimitive.Root\n\nconst CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger\n\nconst CollapsibleContent = CollapsiblePrimitive.CollapsibleContent\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n",
+      "content": "\"use client\"\r\n\r\nimport * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\"\r\n\r\nconst Collapsible = CollapsiblePrimitive.Root\r\n\r\nconst CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger\r\n\r\nconst CollapsibleContent = CollapsiblePrimitive.CollapsibleContent\r\n\r\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\r\n",
       "type": "registry:ui",
       "target": ""
     }
