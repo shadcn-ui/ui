@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
+import { CheckIcon, ChevronDownIcon, ClipboardIcon } from "lucide-react"
 import { NpmCommands } from "types/unist"
 
 import { Event, trackEvent } from "@/lib/events"
@@ -172,49 +172,72 @@ export function CopyNpmCommandButton({
     }
   }, [])
 
-  console.log("Selected package manager:", selectedPackageManager)
-
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          size="icon"
-          variant="ghost"
-          className={cn(
-            "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
-            className
-          )}
-        >
-          {hasCopied ? (
-            <CheckIcon className="h-3 w-3" />
-          ) : (
-            <ClipboardIcon className="h-3 w-3" />
-          )}
-          <span className="sr-only">Copy</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem
-          onClick={() => copyCommand(commands.__npmCommand__, "npm")}
-        >
-          npm
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => copyCommand(commands.__yarnCommand__, "yarn")}
-        >
-          yarn
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
-        >
-          pnpm
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => copyCommand(commands.__bunCommand__, "bun")}
-        >
-          bun
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className="flex items-center">
+      <Button
+        size="icon"
+        variant="ghost"
+        // added mr-4 here to move the dropdown to the right
+        className={cn(
+          "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 mr-4",
+          className
+        )}
+        onClick={() => {
+          if (selectedPackageManager === "npm") {
+            copyCommand(commands.__npmCommand__, "npm")
+          } else if (selectedPackageManager === "yarn") {
+            copyCommand(commands.__yarnCommand__, "yarn")
+          } else if (selectedPackageManager === "pnpm") {
+            copyCommand(commands.__pnpmCommand__, "pnpm")
+          } else if (selectedPackageManager === "bun") {
+            copyCommand(commands.__bunCommand__, "bun")
+          }
+        }}
+      >
+        {hasCopied ? (
+          <CheckIcon className="h-3 w-3" />
+        ) : (
+          <ClipboardIcon className="h-3 w-3" />
+        )}
+        <span className="sr-only">Copy</span>
+      </Button>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            size="icon"
+            variant="ghost"
+            className={cn(
+              "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
+              className
+            )}
+          >
+            <ChevronDownIcon className="h-3 w-3" />
+            <span className="sr-only">Select package manager</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem
+            onClick={() => copyCommand(commands.__npmCommand__, "npm")}
+          >
+            npm
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => copyCommand(commands.__yarnCommand__, "yarn")}
+          >
+            yarn
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
+          >
+            pnpm
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => copyCommand(commands.__bunCommand__, "bun")}
+          >
+            bun
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   )
 }
