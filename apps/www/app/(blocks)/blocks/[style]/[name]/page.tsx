@@ -7,7 +7,7 @@ import { absoluteUrl, cn } from "@/lib/utils"
 import { BlockChunk } from "@/components/block-chunk"
 import { BlockWrapper } from "@/components/block-wrapper"
 import { ThemesStyle } from "@/components/themes-styles"
-import { Style, styles } from "@/registry/styles"
+import { Style, styles } from "@/registry/registry-styles"
 
 import "@/styles/mdx.css"
 
@@ -88,7 +88,7 @@ export default async function BlockPage({
 
   return (
     <>
-      <ThemesStyle />
+      {/* <ThemesStyle /> */}
       <div
         className={cn(
           "themes-wrapper bg-background",
