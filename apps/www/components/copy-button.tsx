@@ -167,7 +167,12 @@ export function CopyNpmCommandButton({
 
   React.useEffect(() => {
     const savedPackageManager = localStorage.getItem("selectedPackageManager")
-    if (savedPackageManager) {
+    if (
+      savedPackageManager === "npm" ||
+      savedPackageManager === "pnpm" ||
+      savedPackageManager === "yarn" ||
+      savedPackageManager === "bun"
+    ) {
       setSelectedPackageManager(savedPackageManager)
     }
   }, [])
@@ -177,7 +182,6 @@ export function CopyNpmCommandButton({
       <Button
         size="icon"
         variant="ghost"
-        // added mr-4 here to move the dropdown to the right
         className={cn(
           "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 mr-4",
           className
