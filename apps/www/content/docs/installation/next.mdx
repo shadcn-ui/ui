@@ -13,6 +13,16 @@ Run the `init` command to create a new Next.js project or to setup an existing o
 npx shadcn@latest init
 ```
 
+<Callout className="mt-4">
+
+You can use the `-d` flag for defaults i.e `new-york`, `zinc` and `yes` for the css variables.
+
+```bash
+npx shadcn@latest init -d
+```
+
+</Callout>
+
 ### Configure components.json
 
 You will be asked a few questions to configure `components.json`:
@@ -22,40 +32,6 @@ Which style would you like to use? › New York
 Which color would you like to use as base color? › Zinc
 Do you want to use CSS variables for colors? › no / yes
 ```
-
-### App structure
-
-Here's how I structure my Next.js apps. You can use this as a reference:
-
-```txt {6-10,14-15}
-.
-├── app
-│   ├── layout.tsx
-│   └── page.tsx
-├── components
-│   ├── ui
-│   │   ├── alert-dialog.tsx
-│   │   ├── button.tsx
-│   │   ├── dropdown-menu.tsx
-│   │   └── ...
-│   ├── main-nav.tsx
-│   ├── page-header.tsx
-│   └── ...
-├── lib
-│   └── utils.ts
-├── styles
-│   └── globals.css
-├── next.config.js
-├── package.json
-├── postcss.config.js
-├── tailwind.config.ts
-└── tsconfig.json
-```
-
-- I place the UI components in the `components/ui` folder.
-- The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
-- The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
-- The `styles` folder contains the global CSS.
 
 ### That's it
 
