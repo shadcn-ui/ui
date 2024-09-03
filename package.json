@@ -25,6 +25,7 @@
     "shadcn:dev": "turbo --filter=shadcn dev",
     "shadcn": "pnpm --filter=shadcn start:dev",
     "shadcn:build": "pnpm --filter=shadcn build",
+    "shadcn:test": "pnpm --filter=shadcn test",
     "docs:build": "pnpm --filter=www build:docs",
     "www:dev": "pnpm --filter=www dev",
     "www:build": "pnpm --filter=www build",

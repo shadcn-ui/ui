@@ -369,6 +369,41 @@ export default config
   "
 `;
 
+exports[`transformTailwindConfig -> theme > should keep quotes in strings 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+  	extend: {
+  		fontFamily: {
+  			sans: ['Figtree', ...defaultTheme.fontFamily.sans]
+  		},
+  		colors: {
+                ...defaultColors,
+  			background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
+  			primary: {
+  				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
+  			card: {
+  				DEFAULT: 'hsl(var(--card))',
+  				foreground: 'hsl(var(--card-foreground))'
+  			}
+  		}
+  	}
+  },
+}
+export default config
+  "
+`;
+
 exports[`transformTailwindConfig -> theme > should keep spread assignments 1`] = `
 "import type { Config } from 'tailwindcss'
 
