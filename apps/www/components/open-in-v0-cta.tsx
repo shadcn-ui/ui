@@ -23,7 +23,7 @@ export function OpenInV0Cta({ className }: React.ComponentProps<"div">) {
         Deploy Now
       </Button>
       <Link
-        href="https://vercel.com/signup?utm_source=shad&utm_medium=web&utm_campaign=docs_cta_signup"
+        href="https://vercel.com/new?utm_source=shadcn_site&utm_medium=web&utm_campaign=docs_cta_deploy_now_callout"
         target="_blank"
         rel="noreferrer"
         className="absolute inset-0"
