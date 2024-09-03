@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 2.0.3
+
+### Patch Changes
+
+- [#4729](https://github.com/shadcn-ui/ui/pull/4729) [`701e116`](https://github.com/shadcn-ui/ui/commit/701e1160ea86b2ddd9f43121b447477caaf7aefa) Thanks [@shadcn](https://github.com/shadcn)! - add --src-dir
+
+- [#4731](https://github.com/shadcn-ui/ui/pull/4731) [`faa7a67`](https://github.com/shadcn-ui/ui/commit/faa7a67fb30c741c2f2559fc64b34f103aac9d79) Thanks [@shadcn](https://github.com/shadcn)! - fix routes for src dir
+
 ## 2.0.0
 
 ### Major Changes
