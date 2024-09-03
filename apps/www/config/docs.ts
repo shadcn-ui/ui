@@ -81,6 +81,7 @@ export const docsConfig: DocsConfig = {
           title: "Open in v0",
           href: "/docs/v0",
           items: [],
+          label: "New",
         },
         {
           title: "Figma",
