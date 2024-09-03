@@ -1,17 +1,36 @@
-export const UTILS = `import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+export const UTILS = `
+import { type ClassValue, clsx } from "clsx"
+<% if (prefix) { %>import { extendTailwindMerge } from "tailwind-merge"<% } else { %>import { twMerge } from "tailwind-merge"<% } %>
 
+<% if (prefix) { %>
+const customTwMerge = extendTailwindMerge({
+  prefix: "<%- prefix %>",
+});
+export function cn(...inputs: ClassValue[]) {
+  return customTwMerge(clsx(inputs))
+}
+<% } else { %>
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+<% } %>
 `
 
 export const UTILS_JS = `import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+<% if (prefix) { %>import { extendTailwindMerge } from "tailwind-merge"<% } else { %>import { twMerge } from "tailwind-merge"<% } %>
 
+<% if (prefix) { %>
+const customTwMerge = extendTailwindMerge({
+  prefix: "<%- prefix %>",
+});
+export function cn(...inputs) {
+  return customTwMerge(clsx(inputs))
+}
+<% } else { %>
 export function cn(...inputs) {
   return twMerge(clsx(inputs))
 }
+<% } %>
 `
 
 export const TAILWIND_CONFIG = `/** @type {import('tailwindcss').Config} */
