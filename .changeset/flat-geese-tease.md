@@ -2,4 +2,4 @@
 "shadcn": patch
 ---
 
-npx shadcn init
+add --src-dir
