@@ -32,6 +32,7 @@ export const initOptionsSchema = z.object({
   force: z.boolean(),
   silent: z.boolean(),
   isNewProject: z.boolean(),
+  srcDir: z.boolean().optional(),
 })
 
 export const init = new Command()
@@ -50,6 +51,11 @@ export const init = new Command()
     process.cwd()
   )
   .option("-s, --silent", "mute output.", false)
+  .option(
+    "--src-dir",
+    "use the src directory when creating a new project.",
+    false
+  )
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
