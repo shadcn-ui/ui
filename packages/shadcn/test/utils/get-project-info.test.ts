@@ -102,6 +102,18 @@ describe("get project info", async () => {
         aliasPrefix: null,
       },
     },
+    {
+      name: "general-alias",
+      type: {
+        framework: FRAMEWORKS["next-app"],
+        isSrcDir: false,
+        isRSC: true,
+        isTsx: true,
+        tailwindConfigFile: "tailwind.config.ts",
+        tailwindCssFile: "app/globals.css",
+        aliasPrefix: "/shadcn",
+      },
+    },
   ])(`getProjectType($name) -> $type`, async ({ name, type }) => {
     expect(
       await getProjectInfo(
