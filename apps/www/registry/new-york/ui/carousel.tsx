@@ -203,6 +203,9 @@ const CarouselDots = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }) => {
   const { selectedIndex, scrollTo, api } = useCarousel()
+
+  const handleScrollTo = (index: number) => () => scrollTo(index)
+
   return (
     <div
       className={cn(
@@ -211,7 +214,7 @@ const CarouselDots = React.forwardRef<
       )}
       {...props}
     >
-      {api?.scrollSnapList().map((_, index) => (
+      {api?.scrollSnapList()?.map((_, index) => (
         <Button
           key={index}
           className={cn(
@@ -220,7 +223,7 @@ const CarouselDots = React.forwardRef<
               ? "embla__dot--selected"
               : "bg-primary-foreground"
           )}
-          onClick={() => scrollTo(index)}
+          onClick={handleScrollTo(index)}
         />
       ))}
     </div>
