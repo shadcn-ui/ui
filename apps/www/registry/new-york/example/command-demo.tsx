@@ -20,7 +20,7 @@ import {
 
 export default function CommandDemo() {
   return (
-    <Command className="rounded-lg border shadow-md">
+    <Command className="rounded-lg border shadow-md md:min-w-[450px]">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
@@ -33,7 +33,7 @@ export default function CommandDemo() {
             <FaceIcon className="mr-2 h-4 w-4" />
             <span>Search Emoji</span>
           </CommandItem>
-          <CommandItem>
+          <CommandItem disabled>
             <RocketIcon className="mr-2 h-4 w-4" />
             <span>Launch</span>
           </CommandItem>

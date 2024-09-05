@@ -7,18 +7,10 @@ description: Install and configure Next.js.
 
 ### Create project
 
-Start by creating a new Next.js project using `create-next-app`:
+Run the `init` command to create a new Next.js project or to setup an existing one:
 
 ```bash
-npx create-next-app@latest my-app --typescript --tailwind --eslint
-```
-
-### Run the CLI
-
-Run the `shadcn-ui` init command to setup your project:
-
-```bash
-npx shadcn-ui@latest init
+npx shadcn@latest init
 ```
 
 ### Configure components.json
@@ -26,64 +18,9 @@ npx shadcn-ui@latest init
 You will be asked a few questions to configure `components.json`:
 
 ```txt showLineNumbers
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
 Do you want to use CSS variables for colors? › no / yes
-```
-
-### Fonts
-
-I use [Inter](https://rsms.me/inter/) as the default font. Inter is not required. You can replace it with any other font.
-
-Here's how I configure Inter for Next.js:
-
-**1. Import the font in the root layout:**
-
-```js showLineNumbers title=app/layout.tsx {2,5-8,16-17}
-import "@/styles/globals.css"
-import { Inter as FontSans } from "next/font/google"
-
-import { cn } from "@/lib/utils"
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-
-export default function RootLayout({ children }: RootLayoutProps) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        ...
-      </body>
-    </html>
-  )
-}
-```
-
-**2. Configure `theme.extend.fontFamily` in `tailwind.config.js`**
-
-```js showLineNumbers title=tailwind.config.js {9-11}
-const { fontFamily } = require("tailwindcss/defaultTheme")
-
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: ["class"],
-  content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-      },
-    },
-  },
-}
 ```
 
 ### App structure
@@ -111,7 +48,7 @@ Here's how I structure my Next.js apps. You can use this as a reference:
 ├── next.config.js
 ├── package.json
 ├── postcss.config.js
-├── tailwind.config.js
+├── tailwind.config.ts
 └── tsconfig.json
 ```
 
@@ -125,7 +62,7 @@ Here's how I structure my Next.js apps. You can use this as a reference:
 You can now start adding components to your project.
 
 ```bash
-npx shadcn-ui@latest add button
+npx shadcn@latest add button
 ```
 
 The command above will add the `Button` component to your project. You can then import it like this:

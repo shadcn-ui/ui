@@ -84,7 +84,7 @@ Add the following code to the `tsconfig.json` file to resolve paths:
 Run the `shadcn-ui` init command to setup your project:
 
 ```bash
-npx shadcn-ui@latest init
+npx shadcn@latest init
 ```
 
 ### Configure components.json
@@ -129,7 +129,7 @@ export default defineConfig({
 
 ### Update tailwind.config.mjs
 
-When running `npx shadcn-ui@latest init`, your tailwind config for content will be overwritten. To fix this, change the `module.exports` to `export default` and the `content` section with the code below to your `tailwind.config.mjs` file:
+When running `npx shadcn@latest init`, your tailwind config for content will be overwritten. To fix this, change the `module.exports` to `export default` and the `content` section with the code below to your `tailwind.config.mjs` file:
 
 ```js {1-4} showLineNumbers
 export default {
@@ -142,7 +142,7 @@ export default {
 You can now start adding components to your project.
 
 ```bash
-npx shadcn-ui@latest add button
+npx shadcn@latest add button
 ```
 
 The command above will add the `Button` component to your project. You can then import it like this:
