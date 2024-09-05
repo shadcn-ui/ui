@@ -140,7 +140,8 @@ export function applyColorMapping(
   mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"]
 ) {
   // Handle border classes.
-  if (input.includes(" border ")) {
+  // Fix “border-border “border-primary” duplicates (e.g. “checkbox”, “radio-group”)
+  if (input.includes(" border ") && !input.includes("border-primary")) {
     input = input.replace(" border ", " border border-border ")
   }
 
