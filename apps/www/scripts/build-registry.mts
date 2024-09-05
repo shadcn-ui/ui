@@ -426,16 +426,21 @@ async function buildStylesIndex() {
   for (const style of styles) {
     const targetPath = path.join(REGISTRY_PATH, "styles", style.name)
 
+    const dependencies = [
+      "tailwindcss-animate",
+      "class-variance-authority",
+      "lucide-react",
+    ]
+
+    // TODO: Remove this when we migrate to lucide-react.
+    if (style.name === "new-york") {
+      dependencies.push("@radix-ui/react-icons")
+    }
+
     const payload: RegistryEntry = {
       name: style.name,
       type: "registry:style",
-      dependencies: [
-        "tailwindcss-animate",
-        "class-variance-authority",
-        "lucide-react",
-        // TODO: Remove this when we migrate to lucide-react.
-        style.name === "new-york" ? "@radix-ui/react-icons" : "",
-      ],
+      dependencies,
       registryDependencies: ["utils"],
       tailwind: {
         config: {
