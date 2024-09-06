@@ -37,7 +37,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindCssFile,
     aliasPrefix,
   ] = await Promise.all([
-    fg.glob("**/{next,vite,astro}.config.*|gatsby-config.*|composer.json", {
+    fg.glob("**/{next,vite?(.[a-zA-Z]+),astro}.config.*|gatsby-config.*|composer.json", {
       cwd,
       deep: 3,
       ignore: PROJECT_SHARED_IGNORE,
@@ -96,7 +96,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 
   // Vite and Remix.
   // They both have a vite.config.* file.
-  if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
+  if (configFiles.find((file) => /vite((\.[a-zA-Z]+)?)\.config./.test(file))?.length) {
     // We'll assume that if the project has an app dir, it's a Remix project.
     // Otherwise, it's a Vite project.
     // TODO: Maybe check for `@remix-run/react` in package.json?
