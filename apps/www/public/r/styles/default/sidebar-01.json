@@ -19,7 +19,7 @@
   "files": [
     {
       "path": "block/sidebar-01/page.tsx",
-      "content": "import { AppSidebar } from \"@/registry/default/block/sidebar-01/components/app-sidebar\"\nimport {\n  SidebarLayout,\n  SidebarTrigger,\n} from \"@/registry/default/block/sidebar-01/ui/sidebar\"\n\nexport default async function Page() {\n  const { cookies } = await import(\"next/headers\")\n  return (\n    <SidebarLayout\n      defaultOpen={cookies().get(\"sidebar:state\")?.value === \"true\"}\n    >\n      <AppSidebar />\n      <main className=\"flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out\">\n        <div className=\"h-full rounded-md border-2 border-dashed p-2\">\n          <SidebarTrigger />\n        </div>\n      </main>\n    </SidebarLayout>\n  )\n}\n",
+      "content": "import { cookies } from \"next/headers\"\n\nimport { AppSidebar } from \"@/registry/default/block/sidebar-01/components/app-sidebar\"\nimport {\n  SidebarLayout,\n  SidebarTrigger,\n} from \"@/registry/default/block/sidebar-01/ui/sidebar\"\nconst SIDEBAR_STATE_COOKIE = \"sidebar:state\"\n\nexport default async function Page() {\n  const sidebarState = cookies().get(SIDEBAR_STATE_COOKIE)?.value ?? \"true\"\n  const isSidebarOpen = sidebarState === \"true\"\n\n  return (\n    <SidebarLayout defaultOpen={isSidebarOpen}>\n      <AppSidebar />\n      <main className=\"flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out\">\n        <div className=\"h-full rounded-md border-2 border-dashed p-2\">\n          <SidebarTrigger />\n        </div>\n      </main>\n    </SidebarLayout>\n  )\n}\n",
       "type": "registry:page",
       "target": "app/dashboard/page.tsx"
     },
