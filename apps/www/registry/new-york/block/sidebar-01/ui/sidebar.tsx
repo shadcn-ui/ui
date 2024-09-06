@@ -8,7 +8,7 @@ import { cn } from "@/registry/new-york/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
 import { Sheet, SheetContent } from "@/registry/new-york/ui/sheet"
 
-export const SIDEBAR_STATE_COOKIE = "sidebar:state"
+const SIDEBAR_STATE_COOKIE = "sidebar:state"
 
 type SidebarContext = {
   state: "open" | "closed"
