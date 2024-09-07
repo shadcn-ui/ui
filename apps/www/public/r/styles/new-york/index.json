@@ -1,0 +1,22 @@
+{
+  "name": "new-york",
+  "type": "registry:style",
+  "dependencies": [
+    "tailwindcss-animate",
+    "class-variance-authority",
+    "lucide-react",
+    "@radix-ui/react-icons"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "tailwind": {
+    "config": {
+      "plugins": [
+        "require(\"tailwindcss-animate\")"
+      ]
+    }
+  },
+  "cssVars": {},
+  "files": []
+}
