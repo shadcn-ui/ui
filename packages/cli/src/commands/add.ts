@@ -17,7 +17,7 @@ import { Command } from "commander"
 import { execa } from "execa"
 import ora from "ora"
 import prompts from "prompts"
-import * as z from "zod"
+import { z } from "zod"
 
 const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),

@@ -16,7 +16,7 @@ We use it to understand how your project is set up and how to generate component
 You can create a `components.json` file in your project by running the following command:
 
 ```bash
-npx shadcn-ui@latest init
+npx shadcn@latest init
 ```
 
 See the <Link href="/docs/cli">CLI section</Link> for more information.
@@ -184,6 +184,30 @@ The CLI will use the `aliases.ui` value to determine where to place your `ui` co
 {
   "aliases": {
     "ui": "@/app/ui"
+  }
+}
+```
+
+### aliases.lib
+
+Import alias for `lib` functions such as `format-date` or `generate-id`.
+
+```json title="components.json"
+{
+  "aliases": {
+    "lib": "@/lib"
+  }
+}
+```
+
+### aliases.hooks
+
+Import alias for `hooks` such as `use-media-query` or `use-toast`.
+
+```json title="components.json"
+{
+  "aliases": {
+    "hooks": "@/hooks"
   }
 }
 ```
