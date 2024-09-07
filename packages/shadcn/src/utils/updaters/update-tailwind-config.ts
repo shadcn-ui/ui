@@ -196,12 +196,14 @@ async function addTailwindConfigTheme(
     const themeObject = await parseObjectLiteral(themeObjectString)
     const result = deepmerge(themeObject, theme)
     const resultString = objectToString(result)
-      .replace(/\'\"/g, "'")
-      .replace(/\"\'/g, "'")
-      .replace(/\'\[/g, "[")
-      .replace(/\]\'/g, "]")
-      .replace(/\\\'/g, "")
-      .replace(/\\\'/g, "")
+      .replace(/\'\"/g, "'") // Replace `\" with "
+      .replace(/\"\'/g, "'") // Replace `\" with "
+      .replace(/\'\[/g, "[") // Replace `[ with [
+      .replace(/\]\'/g, "]") // Replace `] with ]
+      .replace(/\'\\\'/g, "'") // Replace `\' with '
+      .replace(/\\\'/g, "'") // Replace \' with '
+      .replace(/\\\'\'/g, "'")
+      .replace(/\'\'/g, "'")
     themeInitializer.replaceWithText(resultString)
   }
 
