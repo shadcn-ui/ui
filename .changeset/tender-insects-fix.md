@@ -2,4 +2,4 @@
 "shadcn": patch
 ---
 
-npx shadcn init
+better error handling
