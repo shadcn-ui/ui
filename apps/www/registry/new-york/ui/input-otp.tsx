@@ -6,8 +6,10 @@ import { Minus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const ERROR_CONTEXT_NOT_AVAILABLE = "OTPInputContext not available. Make sure you're rendering InputOTPSlot inside an OTPInput component"
-const ERROR_SLOT_NOT_EXIST = (index: number) => `InputOTPSlot with index ${index} does not exist`
+const ERROR_CONTEXT_NOT_AVAILABLE =
+  "OTPInputContext not available. Make sure you're rendering InputOTPSlot inside an OTPInput component"
+const ERROR_SLOT_NOT_EXIST = (index: number) =>
+  `InputOTPSlot with index ${index} does not exist`
 
 // Custom hook for context and slot retrieval
 const useOTPInputSlot = (index: number) => {
