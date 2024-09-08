@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.0.4
+
+### Patch Changes
+
+- [#4776](https://github.com/shadcn-ui/ui/pull/4776) [`49373ee`](https://github.com/shadcn-ui/ui/commit/49373eed9672d6ecf82219f6e682cab914e7cc41) Thanks [@shadcn](https://github.com/shadcn)! - better error handling
+
 ## 2.0.3
 
 ### Patch Changes
