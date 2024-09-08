@@ -43,7 +43,8 @@
     "test": "turbo run test --force"
   },
   "packageManager": "pnpm@9.0.6",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@babel/core": "^7.22.1",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.1",
@@ -51,7 +52,11 @@
     "@commitlint/config-conventional": "^17.6.3",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.20.0",
+    "@types/node": "^20.11.27",
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.22",
     "@typescript-eslint/parser": "^5.59.7",
+    "turbo": "^1.9.9",
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
@@ -67,15 +72,9 @@
     "tailwindcss": "3.3.7",
     "tailwindcss-animate": "^1.0.5",
     "tsx": "^4.1.4",
-    "turbo": "^1.9.9",
+    "typescript": "^5.5.3",
     "vite": "^5.4.1",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^2.0.5"
-  },
-  "devDependencies": {
-    "@types/node": "^20.11.27",
-    "@types/react": "^18.2.65",
-    "@types/react-dom": "^18.2.22",
-    "typescript": "^5.5.3"
   }
 }
