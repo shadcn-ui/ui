@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.0.5
+
+### Patch Changes
+
+- [#4787](https://github.com/shadcn-ui/ui/pull/4787) [`99ff9ca`](https://github.com/shadcn-ui/ui/commit/99ff9caf7180c8c19df130969bdef3d0fb78b218) Thanks [@shadcn](https://github.com/shadcn)! - add src to content for tailwind
+
 ## 2.0.4
 
 ### Patch Changes
