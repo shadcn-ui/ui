@@ -55,6 +55,7 @@
     "diff": "^5.1.0",
     "execa": "^7.0.0",
     "fast-glob": "^3.3.2",
+    "find-up": "^7.0.0",
     "fs-extra": "^11.1.0",
     "https-proxy-agent": "^6.2.0",
     "kleur": "^4.1.5",
