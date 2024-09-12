@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.0.6
+
+### Patch Changes
+
+- [#4820](https://github.com/shadcn-ui/ui/pull/4820) [`64b2f1a`](https://github.com/shadcn-ui/ui/commit/64b2f1a5ad865c831045c954fec85e0fec2289e7) Thanks [@shadcn](https://github.com/shadcn)! - add docs support
+
 ## 2.0.5
 
 ### Patch Changes
