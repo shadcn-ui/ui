@@ -18,18 +18,12 @@ npm create astro@latest
 You will be asked a few questions to configure your project:
 
 ```txt showLineNumbers
-- Where should we create your new project?
-./your-app-name
-- How would you like to start your new project?
-Choose a starter template (or Empty)
-- Install dependencies?
-Yes
-- Do you plan to write TypeScript?
-Yes
-- How strict should TypeScript be?
-Strict
-- Initialize a new git repository? (optional)
-Yes/No
+- Where should we create your new project? ./your-app-name
+- How would you like to start your new project? Choose a template
+- Do you plan to write TypeScript? Yes
+- How strict should TypeScript be? Strict
+- Install dependencies? Yes
+- Initialize a new git repository? (optional) Yes/No
 ```
 
 ### Add React to your project
@@ -48,23 +42,47 @@ Answer `Yes` to all the question prompted by the CLI when installing React.
 
 ### Add Tailwind CSS to your project
 
-Install Tailwind CSS using the Astro CLI:
-
 ```bash
 npx astro add tailwind
 ```
 
-<Callout className="mt-4">
+<Step>Create a `styles/globals.css` file in the `src` folder.</Step>
 
-Answer `Yes` to all the question prompted by the CLI when installing Tailwind CSS.
+```css title="styles/globals.css" showLineNumbers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
 
-</Callout>
+<Step>Import the `globals.css` file</Step>
+
+Import the `styles/globals.css` file in the `src/pages/index.astro` file:
+
+```ts title="src/pages/index.astro" showLineNumbers
+---
+import '@/styles/globals.css'
+---
+```
+
+<Step>Update `astro.config.mjs` and set `applyBaseStyles` to `false`</Step>
+
+To prevent serving the Tailwind base styles twice, we need to tell Astro not to apply the base styles, since we already include them in our own `globals.css` file. To do this, set the `applyBaseStyles` config option for the tailwind plugin in `astro.config.mjs` to `false`.
+
+```js title="astro.config.mjs" {3-5} showLineNumbers
+export default defineConfig({
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+  ],
+})
+```
 
 ### Edit tsconfig.json file
 
 Add the following code to the `tsconfig.json` file to resolve paths:
 
-```ts {4-9} showLineNumbers
+```ts title="tsconfig.json" {4-9} showLineNumbers
 {
   "compilerOptions": {
     // ...
@@ -81,60 +99,10 @@ Add the following code to the `tsconfig.json` file to resolve paths:
 
 ### Run the CLI
 
-Run the `shadcn-ui` init command to setup your project:
+Run the `shadcn` init command to setup your project:
 
 ```bash
-npx shadcn-ui@latest init
-```
-
-### Configure components.json
-
-You will be asked a few questions to configure `components.json`:
-
-```txt showLineNumbers
-Would you like to use TypeScript (recommended)? no / yes
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › › ./src/styles/globals.css
-Do you want to use CSS variables for colors? › no / yes
-Where is your tailwind.config.js located? › tailwind.config.mjs
-Configure the import alias for components: › @/components
-Configure the import alias for utils: › @/lib/utils
-Are you using React Server Components? › no
-```
-
-### Import the globals.css file
-
-Import the `globals.css` file in the `src/pages/index.astro` file:
-
-```ts {2} showLineNumbers
----
-import '@/styles/globals.css'
----
-```
-
-### Update astro tailwind config
-
-To prevent serving the Tailwind base styles twice, we need to tell Astro not to apply the base styles, since we already include them in our own `globals.css` file. To do this, set the `applyBaseStyles` config option for the tailwind plugin in `astro.config.mjs` to `false`.
-
-```ts {3-5} showLineNumbers
-export default defineConfig({
-  integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
-  ],
-})
-```
-
-### Update tailwind.config.mjs
-
-When running `npx shadcn-ui@latest init`, your tailwind config for content will be overwritten. To fix this, change the `module.exports` to `export default` and the `content` section with the code below to your `tailwind.config.mjs` file:
-
-```js {1-4} showLineNumbers
-export default {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-}
+npx shadcn@latest init
 ```
 
 ### That's it
@@ -142,7 +110,7 @@ export default {
 You can now start adding components to your project.
 
 ```bash
-npx shadcn-ui@latest add button
+npx shadcn@latest add button
 ```
 
 The command above will add the `Button` component to your project. You can then import it like this:
