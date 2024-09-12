@@ -20,6 +20,7 @@ exports[`registryResolveItemTree > should resolve index 1`] = `
     "tailwind-merge",
   ],
   "devDependencies": [],
+  "docs": "",
   "files": [
     {
       "content": ""use client"
@@ -93,6 +94,7 @@ exports[`registryResolveItemTree > should resolve items tree 1`] = `
     "@radix-ui/react-slot",
   ],
   "devDependencies": [],
+  "docs": "",
   "files": [
     {
       "content": "import * as React from "react"
@@ -171,6 +173,7 @@ exports[`registryResolveItemTree > should resolve multiple items tree 1`] = `
     "@radix-ui/react-dialog",
   ],
   "devDependencies": [],
+  "docs": "",
   "files": [
     {
       "content": "import * as React from "react"

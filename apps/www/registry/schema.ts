@@ -62,6 +62,7 @@ export const registryEntrySchema = z.object({
   category: z.string().optional(),
   subcategory: z.string().optional(),
   chunks: z.array(blockChunkSchema).optional(),
+  docs: z.string().optional(),
 })
 
 export const registrySchema = z.array(registryEntrySchema)
