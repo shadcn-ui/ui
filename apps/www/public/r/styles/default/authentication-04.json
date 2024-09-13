@@ -1,0 +1,18 @@
+{
+  "name": "authentication-04",
+  "type": "registry:block",
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "block/authentication-04.tsx",
+      "content": "import Image from \"next/image\"\nimport Link from \"next/link\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Input } from \"@/registry/default/ui/input\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport default function Dashboard() {\n  return (\n    <div className=\"w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]\">\n      <div className=\"flex items-center justify-center py-12\">\n        <div className=\"mx-auto grid w-[350px] gap-6\">\n          <div className=\"grid gap-2 text-center\">\n            <h1 className=\"text-3xl font-bold\">Login</h1>\n            <p className=\"text-balance text-muted-foreground\">\n              Enter your email below to login to your account\n            </p>\n          </div>\n          <div className=\"grid gap-4\">\n            <div className=\"grid gap-2\">\n              <Label htmlFor=\"email\">Email</Label>\n              <Input\n                id=\"email\"\n                type=\"email\"\n                placeholder=\"m@example.com\"\n                required\n              />\n            </div>\n            <div className=\"grid gap-2\">\n              <div className=\"flex items-center\">\n                <Label htmlFor=\"password\">Password</Label>\n                <Link\n                  href=\"/forgot-password\"\n                  className=\"ml-auto inline-block text-sm underline\"\n                >\n                  Forgot your password?\n                </Link>\n              </div>\n              <Input id=\"password\" type=\"password\" required />\n            </div>\n            <Button type=\"submit\" className=\"w-full\">\n              Login\n            </Button>\n            <Button variant=\"outline\" className=\"w-full\">\n              Login with Google\n            </Button>\n          </div>\n          <div className=\"mt-4 text-center text-sm\">\n            Don&apos;t have an account?{\" \"}\n            <Link href=\"#\" className=\"underline\">\n              Sign up\n            </Link>\n          </div>\n        </div>\n      </div>\n      <div className=\"hidden bg-muted lg:block\">\n        <Image\n          src=\"/placeholder.svg\"\n          alt=\"Image\"\n          width=\"1920\"\n          height=\"1080\"\n          className=\"h-full w-full object-cover dark:brightness-[0.2] dark:grayscale\"\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": ""
+    }
+  ]
+}

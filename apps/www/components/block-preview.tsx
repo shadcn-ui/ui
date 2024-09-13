@@ -57,7 +57,7 @@ export function BlockPreview({
             minSize={30}
           >
             {isLoading ? (
-              <div className="absolute inset-0 z-10 flex h-[--container-height] w-full items-center justify-center gap-2 text-sm text-muted-foreground">
+              <div className="absolute inset-0 z-10 flex h-[--container-height] w-full items-center justify-center gap-2 bg-background text-sm text-muted-foreground">
                 <Icons.spinner className="h-4 w-4 animate-spin" />
                 Loading...
               </div>
@@ -69,6 +69,7 @@ export function BlockPreview({
               onLoad={() => {
                 setIsLoading(false)
               }}
+              allowTransparency
             />
           </ResizablePanel>
           <ResizableHandle

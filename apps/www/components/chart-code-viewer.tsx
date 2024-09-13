@@ -1,8 +1,8 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { useChartConfig } from "@/hooks/use-chart-config"
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { useThemesConfig } from "@/hooks/use-themes-config"
 import { BlockCopyButton } from "@/components/block-copy-button"
 import { V0Button } from "@/components/v0-button"
 import { Button } from "@/registry/new-york/ui/button"
@@ -26,26 +26,26 @@ export function ChartCodeViewer({
   children,
 }: { chart: Block } & React.ComponentProps<"div">) {
   const [tab, setTab] = React.useState("code")
-  const { chartConfig } = useChartConfig()
+  const { themesConfig } = useThemesConfig()
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
   const themeCode = React.useMemo(() => {
     return `\
 @layer base {
   :root {
-${Object.entries(chartConfig.theme.cssVars.light)
+${Object.entries(themesConfig?.activeTheme.cssVars.light || {})
   .map(([key, value]) => `    ${key}: ${value};`)
   .join("\n")}
   }
 
   .dark {
-${Object.entries(chartConfig.theme.cssVars.dark)
+${Object.entries(themesConfig?.activeTheme.cssVars.dark || {})
   .map(([key, value]) => `    ${key}: ${value};`)
   .join("\n")}
-  }
+    }
 }
 `
-  }, [chartConfig])
+  }, [themesConfig])
 
   const button = (
     <Button
@@ -59,7 +59,7 @@ ${Object.entries(chartConfig.theme.cssVars.dark)
 
   const content = (
     <>
-      <div className="chart-wrapper hidden sm:block [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
+      <div className="chart-wrapper hidden sm:block [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none [&_[data-chart]]:mx-auto [&_[data-chart]]:max-h-[35vh]">
         {children}
       </div>
       <Tabs
@@ -135,7 +135,7 @@ ${Object.entries(chartConfig.theme.cssVars.dark)
           >
             <pre className="bg-black font-mono text-sm leading-relaxed">
               <code data-line-numbers="">
-                <span className="line text-zinc-700">{`/* ${chartConfig.theme.name} */`}</span>
+                <span className="line text-zinc-700">{`/* ${themesConfig?.activeTheme.name} */`}</span>
                 {themeCode.split("\n").map((line, index) => (
                   <span key={index} className="line">
                     {line}
