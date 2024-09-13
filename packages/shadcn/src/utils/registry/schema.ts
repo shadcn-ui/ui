@@ -46,6 +46,7 @@ export const registryItemSchema = z.object({
   tailwind: registryItemTailwindSchema.optional(),
   cssVars: registryItemCssVarsSchema.optional(),
   meta: z.record(z.string(), z.any()).optional(),
+  docs: z.string().optional(),
 })
 
 export type RegistryItem = z.infer<typeof registryItemSchema>
@@ -82,4 +83,5 @@ export const registryResolvedItemsTreeSchema = registryItemSchema.pick({
   files: true,
   tailwind: true,
   cssVars: true,
+  docs: true,
 })
