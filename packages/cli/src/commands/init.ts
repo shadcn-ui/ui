@@ -41,6 +41,7 @@ const initOptionsSchema = z.object({
   cwd: z.string(),
   yes: z.boolean(),
   defaults: z.boolean(),
+  noInstall: z.boolean().default(false),
 })
 
 export const init = new Command()
@@ -48,6 +49,7 @@ export const init = new Command()
   .description("initialize your project and install dependencies")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option("-d, --defaults,", "use default configuration.", false)
+  .option("-n, --no-install,", "Skip Installing Dependencies.", false)
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
@@ -73,12 +75,12 @@ export const init = new Command()
           projectConfig,
           opts.defaults
         )
-        await runInit(cwd, config)
+        await runInit(cwd, config, options.noInstall)
       } else {
         // Read config.
         const existingConfig = await getConfig(cwd)
         const config = await promptForConfig(cwd, existingConfig, options.yes)
-        await runInit(cwd, config)
+        await runInit(cwd, config, options.noInstall)
       }
 
       logger.info("")
@@ -304,7 +306,7 @@ export async function promptForMinimalConfig(
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function runInit(cwd: string, config: Config) {
+export async function runInit(cwd: string, config: Config, noInstall = false) {
   const spinner = ora(`Initializing project...`)?.start()
 
   // Ensure all resolved paths directories exist.
@@ -377,6 +379,9 @@ export async function runInit(cwd: string, config: Config) {
   )
 
   spinner?.succeed()
+
+  if(noInstall) 
+    return
 
   // Install dependencies.
   const dependenciesSpinner = ora(`Installing dependencies...`)?.start()

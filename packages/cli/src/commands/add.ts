@@ -26,6 +26,7 @@ const addOptionsSchema = z.object({
   cwd: z.string(),
   all: z.boolean(),
   path: z.string().optional(),
+  noInstall: z.boolean().default(false),
 })
 
 export const add = new Command()
@@ -41,6 +42,7 @@ export const add = new Command()
   )
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
+  .option("-n, --no-install", "Skip Installing Dependencies.", false)
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -106,7 +108,7 @@ export const add = new Command()
         const { proceed } = await prompts({
           type: "confirm",
           name: "proceed",
-          message: `Ready to install components and dependencies. Proceed?`,
+          message: `Ready to install components ${options.noInstall ? 'without' : 'and'} dependencies. Proceed?`,
           initial: true,
         })
 
@@ -179,6 +181,9 @@ export const add = new Command()
 
           await fs.writeFile(filePath, content)
         }
+
+        if (options.noInstall)
+          continue
 
         const packageManager = await getPackageManager(cwd)
 
