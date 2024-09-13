@@ -321,6 +321,13 @@ export async function registryResolveItemsTree(
       cssVars = deepmerge(cssVars, item.cssVars ?? {})
     })
 
+    let docs = ""
+    payload.forEach((item) => {
+      if (item.docs) {
+        docs += `${item.docs}\n`
+      }
+    })
+
     return registryResolvedItemsTreeSchema.parse({
       dependencies: deepmerge.all(
         payload.map((item) => item.dependencies ?? [])
@@ -331,6 +338,7 @@ export async function registryResolveItemsTree(
       files: deepmerge.all(payload.map((item) => item.files ?? [])),
       tailwind,
       cssVars,
+      docs,
     })
   } catch (error) {
     handleError(error)
