@@ -1,6 +1,6 @@
 import { getBlock } from "@/lib/blocks"
 import { BlockPreview } from "@/components/block-preview"
-import { styles } from "@/registry/styles"
+import { styles } from "@/registry/registry-styles"
 
 export async function BlockDisplay({ name }: { name: string }) {
   const blocks = await Promise.all(
