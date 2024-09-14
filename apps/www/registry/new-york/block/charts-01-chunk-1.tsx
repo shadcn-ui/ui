@@ -8,12 +8,12 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/new-york//ui/card"
+} from "@/registry/new-york/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/registry/new-york//ui/chart"
+} from "@/registry/new-york/ui/chart"
 
 export default function Component() {
   return (

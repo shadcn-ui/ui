@@ -26,13 +26,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/new-york//ui/card"
+} from "@/registry/new-york/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/registry/new-york//ui/chart"
-import { Separator } from "@/registry/new-york//ui/separator"
+} from "@/registry/new-york/ui/chart"
+import { Separator } from "@/registry/new-york/ui/separator"
 
 export const description = "A collection of health charts."
 
