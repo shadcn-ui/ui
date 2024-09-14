@@ -9,13 +9,15 @@ import deepmerge from "deepmerge"
 import objectToString from "stringify-object"
 import { type Config as TailwindConfig } from "tailwindcss"
 import {
+  Expression,
+  Node,
   ObjectLiteralExpression,
   Project,
   PropertyAssignment,
   QuoteKind,
   ScriptKind,
   SyntaxKind,
-  VariableStatement,
+  ts,
 } from "ts-morph"
 import { z } from "zod"
 
@@ -192,18 +194,13 @@ async function addTailwindConfigTheme(
 
   const themeInitializer = themeProperty.getInitializer()
   if (themeInitializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
+    // TODO: Rework to use TS AST rather than parse string and deep merge
     const themeObjectString = themeInitializer.getText()
+
     const themeObject = await parseObjectLiteral(themeObjectString)
     const result = deepmerge(themeObject, theme)
     const resultString = objectToString(result)
-      .replace(/\'\"/g, "'") // Replace `\" with "
-      .replace(/\"\'/g, "'") // Replace `\" with "
-      .replace(/\'\[/g, "[") // Replace `[ with [
-      .replace(/\]\'/g, "]") // Replace `] with ]
-      .replace(/\'\\\'/g, "'") // Replace `\' with '
-      .replace(/\\\'/g, "'") // Replace \' with '
-      .replace(/\\\'\'/g, "'")
-      .replace(/\'\'/g, "'")
+
     themeInitializer.replaceWithText(resultString)
   }
 
@@ -339,13 +336,11 @@ async function parseObjectLiteral(objectLiteralString: string): Promise<any> {
   )
 
   const statement = sourceFile.getStatements()[0]
-  if (statement?.getKind() === SyntaxKind.VariableStatement) {
-    const declaration = (statement as VariableStatement)
-      .getDeclarationList()
-      ?.getDeclarations()[0]
+  if (statement?.isKind(SyntaxKind.VariableStatement)) {
+    const declaration = statement.getDeclarationList()?.getDeclarations()[0]
     const initializer = declaration.getInitializer()
     if (initializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
-      return await parseObjectLiteralExpression(initializer)
+      return parseObjectLiteralExpression(initializer)
     }
   }
 
@@ -357,37 +352,44 @@ function parseObjectLiteralExpression(node: ObjectLiteralExpression): any {
   for (const property of node.getProperties()) {
     if (property.isKind(SyntaxKind.PropertyAssignment)) {
       const name = property.getName().replace(/\'/g, "")
-      if (
-        property.getInitializer()?.isKind(SyntaxKind.ObjectLiteralExpression)
-      ) {
-        result[name] = parseObjectLiteralExpression(
-          property.getInitializer() as ObjectLiteralExpression
-        )
-      } else {
-        result[name] = parseValue(property.getInitializer())
+
+      const initializer = property.getInitializer()
+      if (initializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
+        result[name] = parseObjectLiteralExpression(initializer)
+      } else if (initializer) {
+        result[name] = parseValue(initializer)
       }
     }
   }
   return result
 }
 
-function parseValue(node: any): any {
-  switch (node.kind) {
-    case SyntaxKind.StringLiteral:
-      return node.text
-    case SyntaxKind.NumericLiteral:
-      return Number(node.text)
-    case SyntaxKind.TrueKeyword:
-      return true
-    case SyntaxKind.FalseKeyword:
-      return false
-    case SyntaxKind.NullKeyword:
-      return null
-    case SyntaxKind.ArrayLiteralExpression:
-      return node.elements.map(parseValue)
-    default:
-      return node.getText()
+function parseValue(node: Expression<ts.Expression>): any {
+  console.log("kind: ", SyntaxKind[node.getKind()], node.getText())
+  if (node.isKind(SyntaxKind.StringLiteral)) {
+    return node.getLiteralText()
   }
+  if (node.isKind(SyntaxKind.NumericLiteral)) {
+    return Number(node.getText())
+  }
+  if (node.isKind(SyntaxKind.TrueKeyword)) {
+    return true
+  }
+  if (node.isKind(SyntaxKind.FalseKeyword)) {
+    return false
+  }
+  if (node.isKind(SyntaxKind.NullKeyword)) {
+    return null
+  }
+  if (node.isKind(SyntaxKind.ArrayLiteralExpression)) {
+    return node.getElements().map((v) => parseValue(v))
+  }
+  if (node.isKind(SyntaxKind.ObjectLiteralExpression)) {
+    return parseObjectLiteralExpression(node)
+  }
+
+  console.log("unknown", node.getText())
+  return `__spread__${node.getText()}__`
 }
 
 export function buildTailwindThemeColorsFromCssVars(
