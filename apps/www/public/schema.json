@@ -44,6 +44,12 @@
         },
         "ui": {
           "type": "string"
+        },
+        "lib": {
+          "type": "string"
+        },
+        "hooks": {
+          "type": "string"
         }
       },
       "required": ["utils", "components"]
