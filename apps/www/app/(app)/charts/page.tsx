@@ -9,7 +9,9 @@ import * as Charts from "@/app/(app)/charts/charts"
 export default function ChartsPage() {
   return (
     <div className="grid gap-4">
-      <ChartsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
+      <div className="sticky top-14 z-50 border-border/40 bg-background/95 py-2 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <ChartsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
+      </div>
       <ThemesStyle />
       <div className="gap-6 md:flex md:flex-row-reverse md:items-start">
         <ThemesSwitcher
