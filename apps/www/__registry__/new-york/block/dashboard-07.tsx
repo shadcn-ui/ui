@@ -535,7 +535,8 @@ export default function Dashboard() {
                   </CardContent>
                 </Card>
                 <Card
-                  className="overflow-hidden" x-chunk="dashboard-07-chunk-4"
+                  className="overflow-hidden"
+                  x-chunk="dashboard-07-chunk-4"
                 >
                   <CardHeader>
                     <CardTitle>Product Images</CardTitle>
