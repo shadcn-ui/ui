@@ -36,6 +36,21 @@ describe("resolveTargetDir", () => {
   test("should handle a simple target", () => {
     const targetDir = resolveTargetDir(
       {
+        isSrcDir: false,
+      },
+      {
+        resolvedPaths: {
+          cwd: "/foo/bar",
+        },
+      },
+      "./components/ui/button.tsx"
+    )
+    expect(targetDir).toBe("/foo/bar/components/ui/button.tsx")
+  })
+
+  test("should handle a simple target with src directory", () => {
+    const targetDir = resolveTargetDir(
+      {
         isSrcDir: true,
       },
       {
