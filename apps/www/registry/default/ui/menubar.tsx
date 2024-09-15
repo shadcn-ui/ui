@@ -2,10 +2,9 @@
 
 import * as React from "react"
 import * as MenubarPrimitive from "@radix-ui/react-menubar"
-import { Check, ChevronLeft, ChevronRight, Circle } from "lucide-react"
+import { Check, ChevronRight, Circle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { useDirection } from "@radix-ui/react-direction"
 
 const MenubarMenu = MenubarPrimitive.Menu
 
@@ -52,27 +51,20 @@ const MenubarSubTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.SubTrigger> & {
     inset?: boolean
   }
->(({ className, inset, children, ...props }, ref) => {
-  const dir = useDirection()
-  return (
-    <MenubarPrimitive.SubTrigger
-      ref={ref}
-      className={cn(
-        "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
-        inset && "ps-8",
-        className
-      )}
-      {...props}
-    >
-      {children}
-      {dir === "rtl" ? (
-        <ChevronLeft className="ms-auto h-4 w-4" />
-      ) : (
-        <ChevronRight className="ms-auto h-4 w-4" />
-      )}
-    </MenubarPrimitive.SubTrigger>
-  )
-})
+>(({ className, inset, children, ...props }, ref) => (
+  <MenubarPrimitive.SubTrigger
+    ref={ref}
+    className={cn(
+      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+      inset && "ps-8",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <ChevronRight className="ms-auto h-4 w-4 rtl:rotate-180" />
+  </MenubarPrimitive.SubTrigger>
+))
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
 
 const MenubarSubContent = React.forwardRef<

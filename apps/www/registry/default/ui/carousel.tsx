@@ -203,7 +203,7 @@ const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
 >(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { orientation, scrollPrev, canScrollPrev, direction } = useCarousel()
+  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
     <Button
@@ -222,13 +222,7 @@ const CarouselPrevious = React.forwardRef<
       {...props}
     >
       {orientation === "horizontal" ? (
-        <>
-          {direction === "rtl" ? (
-            <ArrowRight className="h-4 w-4" />
-          ) : (
-            <ArrowLeft className="h-4 w-4" />
-          )}
-        </>
+        <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
       ) : (
         <ArrowLeft className="h-4 w-4" />
       )}
@@ -242,7 +236,7 @@ const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
 >(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { orientation, scrollNext, canScrollNext, direction } = useCarousel()
+  const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
     <Button
@@ -261,13 +255,7 @@ const CarouselNext = React.forwardRef<
       {...props}
     >
       {orientation === "horizontal" ? (
-        <>
-          {direction === "rtl" ? (
-            <ArrowLeft className="h-4 w-4" />
-          ) : (
-            <ArrowRight className="h-4 w-4" />
-          )}
-        </>
+        <ArrowRight className="h-4 w-4 rtl:rotate-180" />
       ) : (
         <ArrowRight className="h-4 w-4" />
       )}

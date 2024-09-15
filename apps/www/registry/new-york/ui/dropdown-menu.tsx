@@ -5,7 +5,6 @@ import { useDirection } from "@radix-ui/react-direction"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import {
   CheckIcon,
-  ChevronLeftIcon,
   ChevronRightIcon,
   DotFilledIcon,
 } from "@radix-ui/react-icons"
@@ -29,27 +28,20 @@ const DropdownMenuSubTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
     inset?: boolean
   }
->(({ className, inset, children, ...props }, ref) => {
-  const dir = useDirection()
-  return (
-    <DropdownMenuPrimitive.SubTrigger
-      ref={ref}
-      className={cn(
-        "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent",
-        inset && "ps-8",
-        className
-      )}
-      {...props}
-    >
-      {children}
-      {dir === "rtl" ? (
-        <ChevronLeftIcon className="ms-auto h-4 w-4" />
-      ) : (
-        <ChevronRightIcon className="ms-auto h-4 w-4" />
-      )}
-    </DropdownMenuPrimitive.SubTrigger>
-  )
-})
+>(({ className, inset, children, ...props }, ref) => (
+  <DropdownMenuPrimitive.SubTrigger
+    ref={ref}
+    className={cn(
+      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent",
+      inset && "ps-8",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <ChevronRightIcon className="ms-auto h-4 w-4 rtl:rotate-180" />
+  </DropdownMenuPrimitive.SubTrigger>
+))
 DropdownMenuSubTrigger.displayName =
   DropdownMenuPrimitive.SubTrigger.displayName
 

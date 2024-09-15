@@ -2,10 +2,8 @@
 
 import * as React from "react"
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu"
-import { useDirection } from "@radix-ui/react-direction"
 import {
   CheckIcon,
-  ChevronLeftIcon,
   ChevronRightIcon,
   DotFilledIcon,
 } from "@radix-ui/react-icons"
@@ -29,27 +27,20 @@ const ContextMenuSubTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubTrigger> & {
     inset?: boolean
   }
->(({ className, inset, children, ...props }, ref) => {
-  const dir = useDirection()
-  return (
-    <ContextMenuPrimitive.SubTrigger
-      ref={ref}
-      className={cn(
-        "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
-        inset && "ps-8",
-        className
-      )}
-      {...props}
-    >
-      {children}
-      {dir === "rtl" ? (
-        <ChevronLeftIcon className="ms-auto h-4 w-4" />
-      ) : (
-        <ChevronRightIcon className="ms-auto h-4 w-4" />
-      )}
-    </ContextMenuPrimitive.SubTrigger>
-  )
-})
+>(({ className, inset, children, ...props }, ref) => (
+  <ContextMenuPrimitive.SubTrigger
+    ref={ref}
+    className={cn(
+      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+      inset && "ps-8",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <ChevronRightIcon className="ms-auto h-4 w-4 rtl:rotate-180" />
+  </ContextMenuPrimitive.SubTrigger>
+))
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName
 
 const ContextMenuSubContent = React.forwardRef<
