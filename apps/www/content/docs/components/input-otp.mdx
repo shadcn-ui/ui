@@ -6,7 +6,7 @@ links:
   doc: https://input-otp.rodz.dev
 ---
 
-<ComponentPreview name="input-otp-demo" />
+<ComponentPreview name="input-otp-demo" description="An 6 digits input OTP." />
 
 ## About
 
@@ -27,7 +27,7 @@ Input OTP is built on top of [input-otp](https://github.com/guilhermerodz/input-
 <Step>Run the following command:</Step>
 
 ```bash
-npx shadcn-ui@latest add input-otp
+npx shadcn@latest add input-otp
 ```
 
 <Step>Update `tailwind.config.js`</Step>
@@ -114,24 +114,19 @@ import {
 ```
 
 ```tsx
-<InputOTP
-  maxLength={6}
-  render={({ slots }) => (
-    <>
-      <InputOTPGroup>
-        {slots.slice(0, 3).map((slot, index) => (
-          <InputOTPSlot key={index} {...slot} />
-        ))}{" "}
-      </InputOTPGroup>
-      <InputOTPSeparator />
-      <InputOTPGroup>
-        {slots.slice(3).map((slot, index) => (
-          <InputOTPSlot key={index} {...slot} />
-        ))}
-      </InputOTPGroup>
-    </>
-  )}
-/>
+<InputOTP maxLength={6}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>
 ```
 
 ## Examples
@@ -140,7 +135,10 @@ import {
 
 Use the `pattern` prop to define a custom pattern for the OTP input.
 
-<ComponentPreview name="input-otp-pattern" />
+<ComponentPreview
+  name="input-otp-pattern"
+  description="An input OTP with alphanumeric pattern."
+/>
 
 ```tsx showLineNumbers {1,7}
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
@@ -150,45 +148,44 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 <InputOTP
   maxLength={6}
   pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
-  render={({ slots }) => (
-    <InputOTPGroup>
-      {slots.map((slot, index) => (
-        <InputOTPSlot key={index} {...slot} />
-      ))}{" "}
-    </InputOTPGroup>
-  )}
-/>
+>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    {/* ... */}
+  </InputOTPGroup>
+</InputOTP>
 ```
 
 ### Separator
 
 You can use the `<InputOTPSeparator />` component to add a separator between the input groups.
 
-<ComponentPreview name="input-otp-separator" />
+<ComponentPreview
+  name="input-otp-separator"
+  description="An input OTP with custom separator."
+/>
 
-```tsx showLineNumbers {4,17}
+```tsx showLineNumbers {4,15}
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/registry/new-york/ui/input-otp"
+} from "@/components/ui/input-otp"
 
 ...
 
-<InputOTP
-  maxLength={6}
-  render={({ slots }) => (
-    <InputOTPGroup className="gap-2">
-      {slots.map((slot, index) => (
-        <React.Fragment key={index}>
-          <InputOTPSlot className="rounded-md border" {...slot} />
-          {index !== slots.length - 1 && <InputOTPSeparator />}
-        </React.Fragment>
-      ))}{" "}
-    </InputOTPGroup>
-  )}
-/>
+<InputOTP maxLength={4}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={2} />
+    <InputOTPSlot index={3} />
+  </InputOTPGroup>
+</InputOTP>
 ```
 
 ### Controlled
@@ -200,3 +197,80 @@ You can use the `value` and `onChange` props to control the input value.
 ### Form
 
 <ComponentPreview name="input-otp-form" />
+
+## Changelog
+
+### 2024-03-19 Composition
+
+We've made some updates and replaced the render props pattern with composition. Here's how to update your code if you prefer the composition pattern.
+
+<Callout className="mt-6">
+  **Note:** You are not required to update your code if you are using the
+  `render` prop. It is still supported.
+</Callout>
+
+<Steps>
+
+<Step>Update to the latest version of `input-otp`.</Step>
+
+```bash
+npm install input-otp@latest
+```
+
+<Step>Update `input-otp.tsx`</Step>
+
+```diff showLineNumbers title="input-otp.tsx" {2,8-11}
+- import { OTPInput, SlotProps } from "input-otp"
++ import { OTPInput, OTPInputContext } from "input-otp"
+
+ const InputOTPSlot = React.forwardRef<
+   React.ElementRef<"div">,
+-   SlotProps & React.ComponentPropsWithoutRef<"div">
+-  >(({ char, hasFakeCaret, isActive, className, ...props }, ref) => {
++   React.ComponentPropsWithoutRef<"div"> & { index: number }
++  >(({ index, className, ...props }, ref) => {
++   const inputOTPContext = React.useContext(OTPInputContext)
++   const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index]
+```
+
+<Step>Then replace the `render` prop in your code.</Step>
+
+```diff showLineNumbers {2-12}
+<InputOTP maxLength={6}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>
+```
+
+</Steps>
+
+### 2024-03-19 Disabled
+
+To add a disabled state to the input, update `<InputOTP />` as follows:
+
+```tsx showLineNumbers title="input-otp.tsx" {4,7-11}
+const InputOTP = React.forwardRef<
+  React.ElementRef<typeof OTPInput>,
+  React.ComponentPropsWithoutRef<typeof OTPInput>
+>(({ className, containerClassName, ...props }, ref) => (
+  <OTPInput
+    ref={ref}
+    containerClassName={cn(
+      "flex items-center gap-2 has-[:disabled]:opacity-50",
+      containerClassName
+    )}
+    className={cn("disabled:cursor-not-allowed", className)}
+    {...props}
+  />
+))
+InputOTP.displayName = "InputOTP"
+```

@@ -4,7 +4,7 @@ description: Use to show a placeholder while content is loading.
 component: true
 ---
 
-<ComponentPreview name="skeleton-demo" />
+<ComponentPreview name="skeleton-demo" description="A skeleton component." />
 
 ## Installation
 
@@ -17,7 +17,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add skeleton
+npx shadcn@latest add skeleton
 ```
 
 </TabsContent>
@@ -52,4 +52,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 ### Card
 
-<ComponentPreview name="skeleton-card" />
+<ComponentPreview
+  name="skeleton-card"
+  description="A card with skeleton showing a loading state."
+/>

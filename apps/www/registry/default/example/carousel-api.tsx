@@ -24,13 +24,12 @@ export default function CarouselDApiDemo() {
     setCurrent(api.selectedScrollSnap() + 1)
 
     api.on("select", () => {
-      console.log("current")
       setCurrent(api.selectedScrollSnap() + 1)
     })
   }, [api])
 
   return (
-    <div>
+    <div className="mx-auto max-w-xs">
       <Carousel setApi={setApi} className="w-full max-w-xs">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (

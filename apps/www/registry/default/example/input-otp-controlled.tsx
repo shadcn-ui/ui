@@ -17,14 +17,16 @@ export default function InputOTPControlled() {
         maxLength={6}
         value={value}
         onChange={(value) => setValue(value)}
-        render={({ slots }) => (
-          <InputOTPGroup>
-            {slots.map((slot, index) => (
-              <InputOTPSlot key={index} {...slot} />
-            ))}{" "}
-          </InputOTPGroup>
-        )}
-      />
+      >
+        <InputOTPGroup>
+          <InputOTPSlot index={0} />
+          <InputOTPSlot index={1} />
+          <InputOTPSlot index={2} />
+          <InputOTPSlot index={3} />
+          <InputOTPSlot index={4} />
+          <InputOTPSlot index={5} />
+        </InputOTPGroup>
+      </InputOTP>
       <div className="text-center text-sm">
         {value === "" ? (
           <>Enter your one-time password.</>
