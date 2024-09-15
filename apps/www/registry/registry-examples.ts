@@ -474,6 +474,42 @@ export const examples: Registry = [
     files: ["example/navigation-menu-demo.tsx"],
   },
   {
+    name: "number-field-demo",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    files: ["example/number-field-demo.tsx"],
+  },
+  {
+    name: "number-field-disabled",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    files: ["example/number-field-disabled.tsx"],
+  },
+  {
+    name: "number-field-form",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    files: ["example/number-field-form.tsx"],
+  },
+  {
+    name: "number-field-btn-position",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    files: ["example/number-field-btn-position.tsx"],
+  },
+  {
+    name: "number-field-label-position",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    files: ["example/number-field-label-position.tsx"],
+  },
+  {
+    name: "number-field-number-formatting",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    files: ["example/number-field-number-formatting.tsx"],
+  },
+  {
     name: "pagination-demo",
     type: "registry:example",
     registryDependencies: ["pagination"],
