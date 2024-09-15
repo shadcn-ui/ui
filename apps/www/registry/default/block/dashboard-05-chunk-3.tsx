@@ -1,3 +1,5 @@
+"use client"
+
 import { Badge } from "@/registry/default/ui/badge"
 import {
   Card,

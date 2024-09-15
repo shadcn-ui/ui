@@ -8,8 +8,8 @@ import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
+import { Style } from "@/registry/registry-styles"
 import { BlockChunk, blockSchema, registryEntrySchema } from "@/registry/schema"
-import { Style } from "@/registry/styles"
 
 const DEFAULT_BLOCKS_STYLE = "default" satisfies Style["name"]
 
@@ -68,16 +68,14 @@ export async function getBlock(
     ...entry,
     ...content,
     chunks,
-    type: "components:block",
+    type: "registry:block",
   })
 }
 
 async function _getAllBlocks(style: Style["name"] = DEFAULT_BLOCKS_STYLE) {
   const index = z.record(registryEntrySchema).parse(Index[style])
 
-  return Object.values(index).filter(
-    (block) => block.type === "components:block"
-  )
+  return Object.values(index).filter((block) => block.type === "registry:block")
 }
 
 async function _getBlockCode(
@@ -85,6 +83,10 @@ async function _getBlockCode(
   style: Style["name"] = DEFAULT_BLOCKS_STYLE
 ) {
   const entry = Index[style][name]
+  if (!entry) {
+    console.error(`Block ${name} not found in style ${style}`)
+    return ""
+  }
   const block = registryEntrySchema.parse(entry)
 
   if (!block.source) {
@@ -113,7 +115,6 @@ async function _getBlockContent(name: string, style: Style["name"]) {
   })
 
   // Extract meta.
-  const description = _extractVariable(sourceFile, "description")
   const iframeHeight = _extractVariable(sourceFile, "iframeHeight")
   const containerClassName = _extractVariable(sourceFile, "containerClassName")
 
@@ -123,7 +124,6 @@ async function _getBlockContent(name: string, style: Style["name"]) {
   code = code.replaceAll("export default", "export")
 
   return {
-    description,
     code,
     container: {
       height: iframeHeight,
