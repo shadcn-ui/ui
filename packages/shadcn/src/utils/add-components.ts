@@ -1,5 +1,6 @@
 import { type Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
+import { logger } from "@/src/utils/logger"
 import { registryResolveItemsTree } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
@@ -48,4 +49,8 @@ export async function addComponents(
     overwrite: options.overwrite,
     silent: options.silent,
   })
+
+  if (tree.docs) {
+    logger.info(tree.docs)
+  }
 }
