@@ -44,7 +44,7 @@ export function ChartsNav({
   const fragmentIdentifier = useFragmentIdentifier()
 
   return (
-    <ScrollArea className="max-w-[600px] lg:max-w-none">
+    <ScrollArea>
       <div className={cn("flex items-center", className)} {...props}>
         {links.map((example) => (
           <Link
