@@ -30,7 +30,7 @@ export default function BlocksLayout({
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
-            <a href="#blocks">Browse</a>
+            <a href="#blocks">Browse Blocks</a>
           </Button>
           <Button asChild variant="ghost" size="sm">
             <a
@@ -42,7 +42,7 @@ export default function BlocksLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <section id="blocks" className="grid scroll-mt-24 gap-24 lg:gap-48">
+      <section id="blocks" className="scroll-mt-24">
         {children}
       </section>
     </div>

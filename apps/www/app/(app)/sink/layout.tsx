@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { ThemeWrapper } from "@/components/theme-wrapper"
-import { styles } from "@/registry/styles"
+import { styles } from "@/registry/registry-styles"
 
 interface SinkLayoutProps {
   children: React.ReactNode
