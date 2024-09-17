@@ -23,7 +23,7 @@ export async function createProject(
       name: "proceed",
       message: `The path ${highlighter.info(
         options.cwd
-      )} is does not contain a package.json file. Would you like to start a new ${highlighter.info(
+      )} does not contain a package.json file. Would you like to start a new ${highlighter.info(
         "Next.js"
       )} project?`,
       initial: true,
