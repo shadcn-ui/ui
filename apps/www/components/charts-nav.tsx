@@ -1,9 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
+import { useFragmentIdentifier } from "@/hooks/use-fragment-identifier"
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 
 const links = [
@@ -41,19 +41,18 @@ export function ChartsNav({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const pathname = usePathname()
+  const fragmentIdentifier = useFragmentIdentifier()
 
   return (
     <ScrollArea className="max-w-[600px] lg:max-w-none">
       <div className={cn("flex items-center", className)} {...props}>
-        {links.map((example, index) => (
+        {links.map((example) => (
           <Link
             href={example.href}
             key={example.href}
             className={cn(
               "flex h-7 shrink-0 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
-              pathname?.startsWith(example.href) ||
-                (index === 0 && pathname === "/")
+              fragmentIdentifier && example.href.endsWith(fragmentIdentifier)
                 ? "bg-muted font-medium text-primary"
                 : "text-muted-foreground"
             )}
