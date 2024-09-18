@@ -8,6 +8,27 @@ export function rehypeNpmCommand() {
         return
       }
 
+      //npm create
+      if (node.properties?.["__rawString__"]?.startsWith("npm create")) {
+        const npmCommand = node.properties?.["__rawString__"]
+        node.properties["__npmCommand__"] = npmCommand
+
+        if (npmCommand.includes("@latest")) {
+          node.properties["__yarnCommand__"] = npmCommand
+            .replace("npm create", "yarn create")
+            .replace("@latest", "")
+        }
+
+        node.properties["__pnpmCommand__"] = npmCommand.replace(
+          "npm create",
+          "pnpm create"
+        )
+        node.properties["__bunCommand__"] = npmCommand.replace(
+          "npm create",
+          "bun create"
+        )
+      }
+
       // npm install.
       if (node.properties?.["__rawString__"]?.startsWith("npm install")) {
         const npmCommand = node.properties?.["__rawString__"]
