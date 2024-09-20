@@ -98,6 +98,12 @@ export const examples: Registry = [
     files: ["example/breadcrumb-responsive.tsx"],
   },
   {
+    name: "breadcrumb-without-border",
+    type: "components:example",
+    registryDependencies: ["breadcrumb"],
+    files: ["example/breadcrumb-without-border.tsx"],
+  },
+  {
     name: "button-demo",
     type: "components:example",
     registryDependencies: ["button"],
@@ -502,6 +508,12 @@ export const examples: Registry = [
     type: "components:example",
     registryDependencies: ["radio-group", "form"],
     files: ["example/radio-group-form.tsx"],
+  },
+  {
+    name: "radio-group-block",
+    type: "components:example",
+    registryDependencies: ["radio-group", "block"],
+    files: ["example/radio-group-block.tsx"],
   },
   {
     name: "resizable-demo",

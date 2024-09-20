@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 
 import { Button } from "@/registry/sydney/ui/button"
 import {
@@ -13,7 +12,9 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/sydney/ui/dropdown-menu"
 
-export function DropdownMenuCheckboxes() {
+export function DropdownMenuwithHeader() {
+  const userEmail = "nzha9876@uni.sydney.edu.au"
+
   const [selectedOptions, setSelectedOptions] = React.useState([])
 
   const toggleOption = (option) => {
@@ -35,6 +36,8 @@ export function DropdownMenuCheckboxes() {
         <Button variant="outline">{getButtonLabel()}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel>Signed in as</DropdownMenuLabel>
+        <div className="email">{userEmail}</div>
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem
           checked={selectedOptions.includes("Account Settings")}
@@ -65,4 +68,4 @@ export function DropdownMenuCheckboxes() {
   )
 }
 
-export default DropdownMenuCheckboxes
+export default DropdownMenuwithHeader
