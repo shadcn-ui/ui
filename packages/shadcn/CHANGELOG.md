@@ -1,5 +1,19 @@
 # @shadcn/ui
 
+## 2.0.7
+
+### Patch Changes
+
+- [#4848](https://github.com/shadcn-ui/ui/pull/4848) [`1af66c2`](https://github.com/shadcn-ui/ui/commit/1af66c2d08df7dd7f6a8d4d1544d965e41a1fb0d) Thanks [@jherr](https://github.com/jherr)! - add support for ~ dir in target path
+
+- [#4815](https://github.com/shadcn-ui/ui/pull/4815) [`408760a`](https://github.com/shadcn-ui/ui/commit/408760a93b398b7d02a0a522a74a7a195ccda7c4) Thanks [@rana-haris-ali](https://github.com/rana-haris-ali)! - fix typo in error message
+
+## 2.0.6
+
+### Patch Changes
+
+- [#4820](https://github.com/shadcn-ui/ui/pull/4820) [`64b2f1a`](https://github.com/shadcn-ui/ui/commit/64b2f1a5ad865c831045c954fec85e0fec2289e7) Thanks [@shadcn](https://github.com/shadcn)! - add docs support
+
 ## 2.0.5
 
 ### Patch Changes
