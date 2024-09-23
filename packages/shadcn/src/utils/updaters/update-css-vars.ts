@@ -183,6 +183,27 @@ function updateCssVarsPlugin(
   }
 }
 
+function removeConflictVars(root: Rule | Root) {
+  const rootRule = root.nodes.find(
+    (node): node is Rule => node.type === "rule" && node.selector === ":root"
+  )
+
+  if (rootRule) {
+    const propsToRemove = ["--background", "--foreground"]
+
+    rootRule.nodes
+      .filter(
+        (node): node is postcss.Declaration =>
+          node.type === "decl" && propsToRemove.includes(node.prop)
+      )
+      .forEach((node) => node.remove())
+
+    if (rootRule.nodes.length === 0) {
+      rootRule.remove()
+    }
+  }
+}
+
 function cleanupDefaultNextStylesPlugin() {
   return {
     postcssPlugin: "cleanup-default-next-styles",
@@ -197,7 +218,9 @@ function cleanupDefaultNextStylesPlugin() {
             (node): node is postcss.Declaration =>
               node.type === "decl" &&
               node.prop === "color" &&
-              node.value === "rgb(var(--foreground-rgb))"
+              ["rgb(var(--foreground-rgb))", "var(--foreground)"].includes(
+                node.value
+              )
           )
           ?.remove()
 
@@ -208,7 +231,8 @@ function cleanupDefaultNextStylesPlugin() {
               node.type === "decl" &&
               node.prop === "background" &&
               // This is only going to run on create project, so all good.
-              node.value.startsWith("linear-gradient")
+              (node.value.startsWith("linear-gradient") ||
+                node.value === "var(--background)")
             )
           })
           ?.remove()
@@ -216,6 +240,21 @@ function cleanupDefaultNextStylesPlugin() {
         // If the body rule is empty, remove it.
         if (bodyRule.nodes.length === 0) {
           bodyRule.remove()
+        }
+      }
+
+      removeConflictVars(root)
+
+      const darkRootRule = root.nodes.find(
+        (node): node is Rule =>
+          node.type === "atrule" &&
+          node.params === "(prefers-color-scheme: dark)"
+      )
+
+      if (darkRootRule) {
+        removeConflictVars(darkRootRule)
+        if (darkRootRule.nodes.length === 0) {
+          darkRootRule.remove()
         }
       }
     },
