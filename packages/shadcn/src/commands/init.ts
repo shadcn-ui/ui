@@ -34,6 +34,7 @@ export const initOptionsSchema = z.object({
   silent: z.boolean(),
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
+  registry: z.string().optional(),
 })
 
 export const init = new Command()
@@ -57,8 +58,10 @@ export const init = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option("-r, --registry <url>", "custom registry URL")
   .action(async (components, opts) => {
     try {
+      console.log(opts)
       const options = initOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
         isNewProject: false,
@@ -100,12 +103,14 @@ export async function runInit(
   } else {
     projectInfo = await getProjectInfo(options.cwd)
   }
-
-  const projectConfig = await getProjectConfig(options.cwd, projectInfo)
+  
+  const projectConfig = await getProjectConfig(options.cwd, projectInfo, options.registry)
+  console.log(projectConfig)
   const config = projectConfig
     ? await promptForMinimalConfig(projectConfig, options)
-    : await promptForConfig(await getConfig(options.cwd))
+    : await promptForConfig(await getConfig(options.cwd), options.registry)
 
+    
   if (!options.yes) {
     const { proceed } = await prompts({
       type: "confirm",
@@ -130,13 +135,15 @@ export async function runInit(
   // Add components.
   const fullConfig = await resolveConfigPaths(options.cwd, config)
   const components = ["index", ...(options.components || [])]
+  console.log("Full config:", fullConfig)
   await addComponents(components, fullConfig, {
     // Init will always overwrite files.
     overwrite: true,
     silent: options.silent,
     isNewProject:
-      options.isNewProject || projectInfo?.framework.name === "next-app",
+    options.isNewProject || projectInfo?.framework.name === "next-app",
   })
+  console.log(2)
 
   // If a new project is using src dir, let's update the tailwind content config.
   // TODO: Handle this per framework.
@@ -153,13 +160,14 @@ export async function runInit(
   return fullConfig
 }
 
-async function promptForConfig(defaultConfig: Config | null = null) {
+async function promptForConfig(defaultConfig: Config | null = null, registry?: string) {
   const [styles, baseColors] = await Promise.all([
-    getRegistryStyles(),
+    getRegistryStyles(registry),
     getRegistryBaseColors(),
   ])
 
   logger.info("")
+
   const options = await prompts([
     {
       type: "toggle",
@@ -171,15 +179,16 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       active: "yes",
       inactive: "no",
     },
-    {
+    ...(styles.length > 1 ? [{
       type: "select",
       name: "style",
       message: `Which ${highlighter.info("style")} would you like to use?`,
       choices: styles.map((style) => ({
         title: style.label,
         value: style.name,
-      })),
-    },
+        })),
+      },
+    ] : [] as any),
     {
       type: "select",
       name: "tailwindBaseColor",
@@ -266,6 +275,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       lib: options.components.replace(/\/components$/, "lib"),
       hooks: options.components.replace(/\/components$/, "hooks"),
     },
+    registry,
   })
 }
 
@@ -279,21 +289,22 @@ async function promptForMinimalConfig(
 
   if (!opts.defaults) {
     const [styles, baseColors] = await Promise.all([
-      getRegistryStyles(),
+      getRegistryStyles(opts.registry),
       getRegistryBaseColors(),
     ])
 
     const options = await prompts([
-      {
+      ...(styles.length > 1 ? [{
         type: "select",
         name: "style",
         message: `Which ${highlighter.info("style")} would you like to use?`,
+        initial: styles.findIndex((s) => s.name === style),
         choices: styles.map((style) => ({
           title: style.label,
           value: style.name,
-        })),
-        initial: styles.findIndex((s) => s.name === style),
-      },
+          })),
+        },
+      ] : [] as any),
       {
         type: "select",
         name: "tailwindBaseColor",
@@ -317,9 +328,12 @@ async function promptForMinimalConfig(
       },
     ])
 
-    style = options.style
-    baseColor = options.tailwindBaseColor
-    cssVariables = options.tailwindCssVariables
+    console.log("Prompt results:", options)
+
+    // Fallback to default values if prompts return an empty object
+    style = options.style || style
+    baseColor = options.tailwindBaseColor || baseColor
+    cssVariables = options.tailwindCssVariables || cssVariables
   }
 
   return rawConfigSchema.parse({
@@ -333,5 +347,6 @@ async function promptForMinimalConfig(
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
     aliases: defaultConfig?.aliases,
+    registry: opts.registry,
   })
 }

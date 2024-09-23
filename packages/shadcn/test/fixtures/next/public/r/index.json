@@ -1,0 +1,13 @@
+[
+  {
+    "name": "test",
+    "type": "registry:ui",
+    "dependencies": ["@radix-ui/react-slot"],
+    "files": [
+      {
+        "path": "ui/test.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  }
+]

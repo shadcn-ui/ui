@@ -22,6 +22,7 @@ export const addOptionsSchema = z.object({
   path: z.string().optional(),
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
+  registry: z.string().optional(),
 })
 
 export const add = new Command()
@@ -46,6 +47,7 @@ export const add = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option("-r, --registry <url>", "custom registry URL")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -53,7 +55,7 @@ export const add = new Command()
         cwd: path.resolve(opts.cwd),
         ...opts,
       })
-
+      
       // Confirm if user is installing themes.
       // For now, we assume a theme is prefixed with "theme-".
       const isTheme = options.components?.some((component) =>
@@ -74,10 +76,6 @@ export const add = new Command()
           logger.break()
           process.exit(1)
         }
-      }
-
-      if (!options.components?.length) {
-        options.components = await promptForRegistryComponents(options)
       }
 
       let { errors, config } = await preFlightAdd(options)
@@ -107,7 +105,17 @@ export const add = new Command()
           silent: true,
           isNewProject: false,
           srcDir: options.srcDir,
+          registry: options.registry,
         })
+      }
+      
+      // Use the registry from the config if it exists, otherwise use the one from options
+      options.registry = config?.registry || options.registry
+
+      if (!options.components?.length) {
+        options.components = await promptForRegistryComponents(
+          options,
+        )
       }
 
       let shouldUpdateAppIndex = false
@@ -132,6 +140,7 @@ export const add = new Command()
           silent: true,
           isNewProject: true,
           srcDir: options.srcDir,
+          registry: options.registry,
         })
 
         shouldUpdateAppIndex =
@@ -145,7 +154,14 @@ export const add = new Command()
         )
       }
 
-      await addComponents(options.components, config, options)
+      await addComponents(
+        options.components,
+        {
+          ...config,
+          registry: options.registry,
+        },
+        options
+      )
 
       // If we're adding a single component and it's from the v0 registry,
       // let's update the app/page.tsx file to import the component.
@@ -159,9 +175,9 @@ export const add = new Command()
   })
 
 async function promptForRegistryComponents(
-  options: z.infer<typeof addOptionsSchema>
+  options: z.infer<typeof addOptionsSchema>,
 ) {
-  const registryIndex = await getRegistryIndex()
+  const registryIndex = await getRegistryIndex(options.registry)
   if (!registryIndex) {
     logger.break()
     handleError(new Error("Failed to fetch registry index."))

@@ -38,6 +38,7 @@ export const rawConfigSchema = z
       lib: z.string().optional(),
       hooks: z.string().optional(),
     }),
+    registry: z.string().optional(),
   })
   .strict()
 

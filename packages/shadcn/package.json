@@ -37,6 +37,8 @@
     "start": "node dist/index.js",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "registry:init": "rimraf test/fixtures/next/components.json && node dist/index.js init -c test/fixtures/next -r http://localhost:3334/r",
+    "registry:add": "node dist/index.js add -c test/fixtures/next",
     "release": "changeset version",
     "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
