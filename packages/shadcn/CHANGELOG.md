@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 2.0.8
+
+### Patch Changes
+
+- [#4922](https://github.com/shadcn-ui/ui/pull/4922) [`c62167a`](https://github.com/shadcn-ui/ui/commit/c62167a449a5cf82d8ed93a7af986d5e503893bb) Thanks [@sapenlei](https://github.com/sapenlei)! - remove next.js default vars
+
+- [#4871](https://github.com/shadcn-ui/ui/pull/4871) [`ce3adfa`](https://github.com/shadcn-ui/ui/commit/ce3adfa075793a46b4fb2ff797ce87ad22bfa2cd) Thanks [@bcorbold](https://github.com/bcorbold)! - support tw prefixes for registry files with single quote formatting
+
 ## 2.0.7
 
 ### Patch Changes
