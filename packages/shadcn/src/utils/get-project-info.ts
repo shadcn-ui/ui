@@ -108,7 +108,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 }
 
 export async function getTailwindCssFile(cwd: string) {
-  const files = await fg.glob("**/*.css", {
+  const files = await fg.glob(["**/*.css", "**/*.scss"], {
     cwd,
     deep: 5,
     ignore: PROJECT_SHARED_IGNORE,
