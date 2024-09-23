@@ -14,7 +14,7 @@ export function OpenInV0Cta({ className }: React.ComponentProps<"div">) {
       <div className="text-balance text-lg font-semibold leading-tight group-hover:underline">
         Bring your app built with shadcn to life on Vercel
       </div>
-      <div>Trusted by OpenAI, Sonos, Chick-fil-A, and more.</div>
+      <div>Trusted by Sonos, Chick-fil-A, and more.</div>
       <div>
         Vercel provides tools and infrastructure to deploy apps and features at
         scale.
