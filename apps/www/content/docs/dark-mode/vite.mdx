@@ -42,7 +42,9 @@ export function ThemeProvider({
     () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
   )
   const root = window.document.documentElement
-  const isDarkSystemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+  const systemThemeMediaQuery = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  )
 
   const addThemeClass = useCallback(
     (themeClass: Exclude<Theme, "system">) => {
@@ -56,17 +58,18 @@ export function ThemeProvider({
   }, [root.classList])
 
   const handleSystemThemeChange = useCallback(() => {
+    const isDarkTheme = systemThemeMediaQuery.matches
     removeThemeClasses()
-    addThemeClass(isDarkSystemTheme.matches ? "dark" : "light")
-  }, [addThemeClass, isDarkSystemTheme.matches, removeThemeClasses])
+    addThemeClass(isDarkTheme ? "dark" : "light")
+  }, [addThemeClass, systemThemeMediaQuery.matches, removeThemeClasses])
 
   const addSystemThemeListener = useCallback(() => {
-    isDarkSystemTheme.addEventListener("change", handleSystemThemeChange)
-  }, [handleSystemThemeChange, isDarkSystemTheme])
+    systemThemeMediaQuery.addEventListener("change", handleSystemThemeChange)
+  }, [handleSystemThemeChange, systemThemeMediaQuery])
 
   const removeSystemThemeListener = useCallback(() => {
-    isDarkSystemTheme.removeEventListener("change", handleSystemThemeChange)
-  }, [handleSystemThemeChange, isDarkSystemTheme])
+    systemThemeMediaQuery.removeEventListener("change", handleSystemThemeChange)
+  }, [handleSystemThemeChange, systemThemeMediaQuery])
 
   useEffect(() => {
     if (theme === "system") {
@@ -80,14 +83,12 @@ export function ThemeProvider({
     removeThemeClasses()
     addThemeClass(theme)
 
-    return () => {
-      isDarkSystemTheme.removeEventListener("change", handleSystemThemeChange)
-    }
+    return removeSystemThemeListener
   }, [
     addSystemThemeListener,
     addThemeClass,
     handleSystemThemeChange,
-    isDarkSystemTheme,
+    systemThemeMediaQuery,
     removeSystemThemeListener,
     removeThemeClasses,
     theme,
