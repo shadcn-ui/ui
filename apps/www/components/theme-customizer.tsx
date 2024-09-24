@@ -45,6 +45,13 @@ import {
 import { BaseColor, baseColors } from "@/registry/registry-base-colors"
 
 import "@/styles/mdx.css"
+import { ThemeColorPicker } from "@/components/theme-color-picker"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/new-york/ui/tabs"
 
 export function ThemeCustomizer() {
   const [config, setConfig] = useConfig()
@@ -184,9 +191,14 @@ function Customizer() {
           size="icon"
           className="ml-auto rounded-[0.5rem]"
           onClick={() => {
+            const defaultTheme = baseColors.find(
+              (theme) => theme.name === "zinc"
+            )
             setConfig({
               ...config,
               theme: "zinc",
+              light: defaultTheme!.cssVars.light,
+              dark: defaultTheme!.cssVars.dark,
               radius: 0.5,
             })
           }}
@@ -254,48 +266,84 @@ function Customizer() {
           </div>
         </div>
         <div className="space-y-1.5">
-          <Label className="text-xs">Color</Label>
-          <div className="grid grid-cols-3 gap-2">
-            {baseColors.map((theme) => {
-              const isActive = config.theme === theme.name
+          <Tabs defaultValue="general">
+            <TabsList>
+              <TabsTrigger value="general">General</TabsTrigger>
+              <TabsTrigger value="advanced">Advanced</TabsTrigger>
+            </TabsList>
+            <TabsContent value="general">
+              <Label className="text-xs">Color</Label>
+              <div className="grid grid-cols-3 gap-2">
+                {baseColors.map((theme) => {
+                  const isActive = config.theme === theme.name
 
-              return mounted ? (
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  key={theme.name}
-                  onClick={() => {
-                    setConfig({
-                      ...config,
-                      theme: theme.name,
-                    })
-                  }}
-                  className={cn(
-                    "justify-start",
-                    isActive && "border-2 border-primary"
-                  )}
-                  style={
-                    {
-                      "--theme-primary": `hsl(${
-                        theme?.activeColor[mode === "dark" ? "dark" : "light"]
-                      })`,
-                    } as React.CSSProperties
-                  }
-                >
-                  <span
-                    className={cn(
-                      "mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-[--theme-primary]"
-                    )}
-                  >
-                    {isActive && <CheckIcon className="h-4 w-4 text-white" />}
-                  </span>
-                  {theme.label}
-                </Button>
-              ) : (
-                <Skeleton className="h-8 w-full" key={theme.name} />
-              )
-            })}
-          </div>
+                  return mounted ? (
+                    <Button
+                      variant={"outline"}
+                      size="sm"
+                      key={theme.name}
+                      onClick={() => {
+                        const selectedTheme = baseColors.find(
+                          (t) => t.name === theme.name
+                        )
+                        if (selectedTheme) {
+                          setConfig({
+                            ...config,
+                            light: selectedTheme.cssVars.light,
+                            dark: selectedTheme.cssVars.dark,
+                            theme: theme.name,
+                          })
+                        }
+                      }}
+                      className={cn(
+                        "justify-start",
+                        isActive && "border-2 border-primary"
+                      )}
+                      style={
+                        {
+                          "--theme-primary": `hsl(${
+                            theme?.activeColor[
+                              mode === "dark" ? "dark" : "light"
+                            ]
+                          })`,
+                        } as React.CSSProperties
+                      }
+                    >
+                      <span
+                        className={cn(
+                          "mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-[--theme-primary]"
+                        )}
+                      >
+                        {isActive && (
+                          <CheckIcon className="h-4 w-4 text-white" />
+                        )}
+                      </span>
+                      {theme.label}
+                    </Button>
+                  ) : (
+                    <Skeleton className="h-8 w-full" key={theme.name} />
+                  )
+                })}
+              </div>
+            </TabsContent>
+            <TabsContent value="advanced">
+              <Label className="text-xs">Colors</Label>
+              <div className="grid grid-cols-2 gap-2">
+                <ThemeColorPicker variableName="background" />
+                <ThemeColorPicker variableName="foreground" />
+                <ThemeColorPicker variableName="primary" />
+                <ThemeColorPicker variableName="secondary" />
+                <ThemeColorPicker variableName="accent" hasForeground />
+                <ThemeColorPicker variableName="destructive" hasForeground />
+                <ThemeColorPicker variableName="card" hasForeground />
+                <ThemeColorPicker variableName="popover" hasForeground />
+                <ThemeColorPicker variableName="muted" hasForeground />
+                <ThemeColorPicker variableName="border" />
+                <ThemeColorPicker variableName="input" />
+                <ThemeColorPicker variableName="ring" />
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
         <div className="space-y-1.5">
           <Label className="text-xs">Radius</Label>

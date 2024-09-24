@@ -65,6 +65,7 @@
     "geist": "^1.2.2",
     "input-otp": "^1.2.2",
     "jotai": "^2.1.0",
+    "lodash.debounce": "^4.0.8",
     "lodash.template": "^4.5.0",
     "lucide-react": "0.359.0",
     "markdown-wasm": "^1.2.0",
@@ -72,6 +73,7 @@
     "next-contentlayer2": "^0.4.6",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
+    "react-colorful": "^5.6.1",
     "react-day-picker": "^8.7.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.44.2",
@@ -88,6 +90,7 @@
   },
   "devDependencies": {
     "@shikijs/compat": "^1.1.7",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/lodash.template": "^4.5.1",
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.65",
