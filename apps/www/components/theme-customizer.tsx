@@ -328,20 +328,37 @@ function Customizer() {
             </TabsContent>
             <TabsContent value="advanced">
               <Label className="text-xs">Colors</Label>
-              <div className="grid grid-cols-2 gap-2">
-                <ThemeColorPicker variableName="background" />
-                <ThemeColorPicker variableName="foreground" />
-                <ThemeColorPicker variableName="primary" />
-                <ThemeColorPicker variableName="secondary" />
-                <ThemeColorPicker variableName="accent" hasForeground />
-                <ThemeColorPicker variableName="destructive" hasForeground />
-                <ThemeColorPicker variableName="card" hasForeground />
-                <ThemeColorPicker variableName="popover" hasForeground />
-                <ThemeColorPicker variableName="muted" hasForeground />
-                <ThemeColorPicker variableName="border" />
-                <ThemeColorPicker variableName="input" />
-                <ThemeColorPicker variableName="ring" />
-              </div>
+              {mounted ? (
+                <div className="grid grid-cols-2 gap-2">
+                  <ThemeColorPicker variableName="background" />
+                  <ThemeColorPicker variableName="foreground" />
+                  <ThemeColorPicker variableName="primary" hasForeground />
+                  <ThemeColorPicker variableName="secondary" hasForeground />
+                  <ThemeColorPicker variableName="accent" hasForeground />
+                  <ThemeColorPicker variableName="destructive" hasForeground />
+                  <ThemeColorPicker variableName="card" hasForeground />
+                  <ThemeColorPicker variableName="popover" hasForeground />
+                  <ThemeColorPicker variableName="muted" hasForeground />
+                  <ThemeColorPicker variableName="border" />
+                  <ThemeColorPicker variableName="input" />
+                  <ThemeColorPicker variableName="ring" />
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 gap-2">
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                </div>
+              )}
             </TabsContent>
           </Tabs>
         </div>

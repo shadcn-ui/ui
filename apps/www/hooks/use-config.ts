@@ -28,13 +28,14 @@ export interface ConfigThemeCssVars {
 
 export type ConfigThemeCssVarsKey = keyof ConfigThemeCssVars
 
-type Config = {
+export type Config = {
   style: Style["name"]
   theme: BaseColor["name"]
   // light and dark can be undefined for existing users who have
   // a saved config without these values
   light: ConfigThemeCssVars
   dark: ConfigThemeCssVars
+  wcagOpen: boolean
   radius: number
 }
 
@@ -45,6 +46,7 @@ const configAtom = atomWithStorage<Config>(
     theme: "zinc",
     light: baseColors.find((color) => color.name === "zinc")!.cssVars.light,
     dark: baseColors.find((color) => color.name === "zinc")!.cssVars.dark,
+    wcagOpen: false,
     radius: 0.5,
   },
   createJSONStorage(() => {
@@ -63,6 +65,9 @@ const configAtom = atomWithStorage<Config>(
       }
       parsedJson.light = selectedTheme.cssVars.light
       parsedJson.dark = selectedTheme.cssVars.dark
+      if (parsedJson.wcagOpen === undefined) {
+        parsedJson.wcagOpen = false
+      }
       localStorage.setItem("config", JSON.stringify(parsedJson))
     }
     return localStorage
