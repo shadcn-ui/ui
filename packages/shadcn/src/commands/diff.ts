@@ -21,7 +21,7 @@ const updateOptionsSchema = z.object({
   yes: z.boolean(),
   cwd: z.string(),
   path: z.string().optional(),
-  registry: z.string().optional(), // Changed from registryUrl to registry
+  registry: z.string().optional(),
 })
 
 export const diff = new Command()
@@ -34,7 +34,7 @@ export const diff = new Command()
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
-  .option("--registry <url>", "custom registry URL") // Changed from -r to --registry
+  .option("--registry <url>", "custom registry URL")
   .action(async (name, opts) => {
     try {
       const options = updateOptionsSchema.parse({
@@ -59,7 +59,7 @@ export const diff = new Command()
         process.exit(1)
       }
 
-      const registryIndex = await getRegistryIndex(options.registry) // Changed from registryUrl to registry
+      const registryIndex = await getRegistryIndex(options.registry)
 
       if (!registryIndex) {
         handleError(new Error("Failed to fetch registry index."))

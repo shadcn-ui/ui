@@ -375,7 +375,6 @@ async function promptForMinimalConfig(
       },
     ])
 
-    // Fallback to default values if prompts return an empty object
     style = options.style ?? style
     baseColor = options.tailwindBaseColor ?? baseColor
     cssVariables = options.tailwindCssVariables ?? cssVariables
