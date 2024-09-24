@@ -5,15 +5,13 @@ description: Use the CLI to add components to your project.
 
 <Callout>
 
-**Note:** We just released a new `shadcn` CLI. See the [changelog](/docs/changelog) for more information.
+**Note:** We've updated the CLI with support for multiple registries. See the [changelog](/docs/changelog) for more information.
 
 </Callout>
 
 ## init
 
 Use the `init` command to initialize configuration and dependencies for a new project.
-
-The `init` command installs dependencies, adds the `cn` util, configures `tailwind.config.js`, and CSS variables for the project.
 
 ```bash
 npx shadcn@latest init
@@ -30,19 +28,16 @@ Do you want to use CSS variables for colors? › no / yes
 ### Options
 
 ```txt
-Usage: shadcn init [options] [components...]
+Usage: shadcn init [options]
 
 initialize your project and install dependencies
 
-Arguments:
-  components         the components to add or a url to the component.
-
 Options:
-  -d, --defaults    use default values i.e new-york, zinc and css variables. (default: false)
-  -f, --force       force overwrite of existing components.json. (default: false)
-  -y, --yes         skip confirmation prompt. (default: false)
-  -c, --cwd <cwd>   the working directory. defaults to the current directory.
-  -h, --help       display help for command
+  -y, --yes          skip confirmation prompt. (default: false)
+  -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  -u, --url <url>    custom registry URL.
+  -n, --name <name>  registry name (requires -u to be set).
+  -h, --help         display help for command
 ```
 
 ## add
@@ -51,24 +46,6 @@ Use the `add` command to add components and dependencies to your project.
 
 ```bash
 npx shadcn@latest add [component]
-```
-
-You will be presented with a list of components to choose from:
-
-```txt
-Which components would you like to add? › Space to select. A to toggle all.
-Enter to submit.
-
-◯  accordion
-◯  alert
-◯  alert-dialog
-◯  aspect-ratio
-◯  avatar
-◯  badge
-◯  button
-◯  calendar
-◯  card
-◯  checkbox
 ```
 
 ### Options
@@ -82,11 +59,13 @@ Arguments:
   components         the components to add or a url to the component.
 
 Options:
-  -y, --yes          skip confirmation prompt. (default: false)
-  -o, --overwrite    overwrite existing files. (default: false)
-  -c, --cwd <cwd>    the working directory. defaults to the current directory.
-  -p, --path <path>  the path to add the component to.
-  -h, --help         display help for command
+  -y, --yes                   skip confirmation prompt. (default: false)
+  -o, --overwrite             overwrite existing files. (default: false)
+  -c, --cwd <cwd>             the working directory. defaults to the current directory.
+  -p, --path <path>           the path to add the component to.
+  -r, --registry <registry>   registry name or URL. (default: https://ui.shadcn.com/r)
+  -l, --list                  list all available registries. (default: false)
+  -h, --help                  display help for command
 ```
 
 ## Monorepo
@@ -102,3 +81,79 @@ or
 ```bash
 npx shadcn@latest add alert-dialog -c ./apps/www
 ```
+
+## Multiple Registries
+
+The CLI supports multiple registry configurations.
+
+1. Initialize your project with a custom registry:
+   ```bash
+   npx shadcn@latest init -u https://custom-registry.com -n my-registry
+   ```
+   This adds a new registry named `my-registry` to your `components.json` file. The `-u` option is required when using `-n`.
+
+2. Add components using a specific registry:
+   ```bash
+   npx shadcn@latest add button -r my-registry
+   ```
+   Or use the URL directly:
+   ```bash
+   npx shadcn@latest add button -r https://another-registry.com
+   ```
+
+   List available registries before adding a component:
+   ```bash
+   npx shadcn@latest add -l
+   ```
+   This prompts you to select from the available registries configured in your project.
+
+4. Add more registries to your project:
+   ```bash
+   npx shadcn@latest init -u https://another-registry.com -n another-registry
+   ```
+   This adds another registry to your `components.json` without overwriting the existing configuration.
+
+Registry configurations inherit from the top-level config in your `components.json` file. This is useful for customizing `style`, `aliases.ui`, or `tailwind.prefix` that could differ from the default config.
+
+When you initialize a named registry with CSS variables, the CLI adds a `data-registry` attribute to your `globals.css` file. To enable the styling for a specific registry, use this attribute on a parent element:
+
+```html
+<div data-registry="my-registry">
+  <!-- Content using the "my-registry" components and styles -->
+</div>
+```
+
+Example `components.json` with multiple registries:
+
+```json
+{
+  "style": "new-york",
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "app/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  },
+  "registries": {
+    "plate": {
+      "url": "https://platejs.org/r",
+      "style": "default",
+      "aliases": {
+        "ui": "@/components/plate-ui"
+      }
+    },
+    "themed": {
+      "url": "https://themed.shadcn.com/r",
+      "tailwind": {
+        "prefix": "themed-"
+      }
+    }
+  }
+}
+```
+
+In this example, `plate` registry uses a different path for UI components, while `themed` one uses a different Tailwind prefix.

@@ -9,5 +9,15 @@
         "type": "registry:ui"
       }
     ]
+  },
+  {
+    "name": "test2",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/test2.tsx",
+        "type": "registry:ui"
+      }
+    ]
   }
 ]

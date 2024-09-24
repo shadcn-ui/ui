@@ -18,12 +18,20 @@ import { getProjectConfig, getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
+import {
+  REGISTRY_URL,
+  getDefaultConfig,
+  getRegistryBaseColors,
+  getRegistryStyles,
+} from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
+import deepmerge from "deepmerge"
 import prompts from "prompts"
 import { z } from "zod"
+
+import { getDifferences } from "../utils/is-different"
 
 export const initOptionsSchema = z.object({
   cwd: z.string(),
@@ -34,7 +42,8 @@ export const initOptionsSchema = z.object({
   silent: z.boolean(),
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
-  registry: z.string().optional(),
+  url: z.string().optional(),
+  name: z.string().optional(),
 })
 
 export const init = new Command()
@@ -58,10 +67,10 @@ export const init = new Command()
     "use the src directory when creating a new project.",
     false
   )
-  .option("-r, --registry <url>", "custom registry URL")
+  .option("-u, --url <url>", "registry URL", REGISTRY_URL)
+  .option("-n, --name <name>", "registry name")
   .action(async (components, opts) => {
     try {
-      console.log(opts)
       const options = initOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
         isNewProject: false,
@@ -103,14 +112,26 @@ export async function runInit(
   } else {
     projectInfo = await getProjectInfo(options.cwd)
   }
-  
-  const projectConfig = await getProjectConfig(options.cwd, projectInfo, options.registry)
-  console.log(projectConfig)
-  const config = projectConfig
-    ? await promptForMinimalConfig(projectConfig, options)
-    : await promptForConfig(await getConfig(options.cwd), options.registry)
 
-    
+  const res = await getProjectConfig(options.cwd, projectInfo)
+  let projectConfig = res?.[0]
+  const isNew = res?.[1]
+
+  let config: Config
+  if (projectConfig) {
+    if (isNew || options.url === projectConfig.url) {
+      projectConfig = await getDefaultConfig(projectConfig, options.url)
+      // Updating top-level config
+      config = await promptForMinimalConfig(projectConfig, options)
+    } else {
+      // Updating nested registry config
+      config = await promptForNestedRegistryConfig(projectConfig, options)
+    }
+  } else {
+    // New configuration
+    config = await promptForConfig(await getConfig(options.cwd), options.url)
+  }
+
   if (!options.yes) {
     const { proceed } = await prompts({
       type: "confirm",
@@ -126,24 +147,38 @@ export async function runInit(
     }
   }
 
+  if (config.url === REGISTRY_URL) {
+    delete config.url
+  }
+
   // Write components.json.
   const componentSpinner = spinner(`Writing components.json.`).start()
   const targetPath = path.resolve(options.cwd, "components.json")
   await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
   componentSpinner.succeed()
 
+  let registryConfig = config
+  let registryName: string | undefined
+  const id = options.name ?? options.url
+  if (id) {
+    const registry = config.registries?.[id]
+    if (registry) {
+      registryName = id
+      registryConfig = deepmerge(config, registry) as any
+    }
+  }
+
   // Add components.
-  const fullConfig = await resolveConfigPaths(options.cwd, config)
+  const fullConfig = await resolveConfigPaths(options.cwd, registryConfig)
   const components = ["index", ...(options.components || [])]
-  console.log("Full config:", fullConfig)
   await addComponents(components, fullConfig, {
     // Init will always overwrite files.
     overwrite: true,
     silent: options.silent,
+    registryName,
     isNewProject:
-    options.isNewProject || projectInfo?.framework.name === "next-app",
+      options.isNewProject || projectInfo?.framework.name === "next-app",
   })
-  console.log(2)
 
   // If a new project is using src dir, let's update the tailwind content config.
   // TODO: Handle this per framework.
@@ -160,14 +195,16 @@ export async function runInit(
   return fullConfig
 }
 
-async function promptForConfig(defaultConfig: Config | null = null, registry?: string) {
+async function promptForConfig(
+  defaultConfig: Config | null = null,
+  registryUrl?: string
+) {
   const [styles, baseColors] = await Promise.all([
-    getRegistryStyles(registry),
+    getRegistryStyles(registryUrl),
     getRegistryBaseColors(),
   ])
 
   logger.info("")
-
   const options = await prompts([
     {
       type: "toggle",
@@ -179,16 +216,21 @@ async function promptForConfig(defaultConfig: Config | null = null, registry?: s
       active: "yes",
       inactive: "no",
     },
-    ...(styles.length > 1 ? [{
-      type: "select",
-      name: "style",
-      message: `Which ${highlighter.info("style")} would you like to use?`,
-      choices: styles.map((style) => ({
-        title: style.label,
-        value: style.name,
-        })),
-      },
-    ] : [] as any),
+    ...(styles.length > 1
+      ? [
+          {
+            type: "select",
+            name: "style",
+            message: `Which ${highlighter.info(
+              "style"
+            )} would you like to use?`,
+            choices: styles.map((style) => ({
+              title: style.label,
+              value: style.name,
+            })),
+          },
+        ]
+      : ([] as any)),
     {
       type: "select",
       name: "tailwindBaseColor",
@@ -258,6 +300,7 @@ async function promptForConfig(defaultConfig: Config | null = null, registry?: s
 
   return rawConfigSchema.parse({
     $schema: "https://ui.shadcn.com/schema.json",
+    url: options.url,
     style: options.style,
     tailwind: {
       config: options.tailwindConfig,
@@ -275,8 +318,7 @@ async function promptForConfig(defaultConfig: Config | null = null, registry?: s
       lib: options.components.replace(/\/components$/, "lib"),
       hooks: options.components.replace(/\/components$/, "hooks"),
     },
-    registry,
-  })
+  }) as Config
 }
 
 async function promptForMinimalConfig(
@@ -289,22 +331,27 @@ async function promptForMinimalConfig(
 
   if (!opts.defaults) {
     const [styles, baseColors] = await Promise.all([
-      getRegistryStyles(opts.registry),
+      getRegistryStyles(opts.url),
       getRegistryBaseColors(),
     ])
 
     const options = await prompts([
-      ...(styles.length > 1 ? [{
-        type: "select",
-        name: "style",
-        message: `Which ${highlighter.info("style")} would you like to use?`,
-        initial: styles.findIndex((s) => s.name === style),
-        choices: styles.map((style) => ({
-          title: style.label,
-          value: style.name,
-          })),
-        },
-      ] : [] as any),
+      ...(styles.length > 1
+        ? [
+            {
+              type: "select",
+              name: "style",
+              message: `Which ${highlighter.info(
+                "style"
+              )} would you like to use?`,
+              initial: styles.findIndex((s) => s.name === style),
+              choices: styles.map((style) => ({
+                title: style.label,
+                value: style.name,
+              })),
+            },
+          ]
+        : ([] as any)),
       {
         type: "select",
         name: "tailwindBaseColor",
@@ -328,12 +375,10 @@ async function promptForMinimalConfig(
       },
     ])
 
-    console.log("Prompt results:", options)
-
     // Fallback to default values if prompts return an empty object
-    style = options.style || style
-    baseColor = options.tailwindBaseColor || baseColor
-    cssVariables = options.tailwindCssVariables || cssVariables
+    style = options.style ?? style
+    baseColor = options.tailwindBaseColor ?? baseColor
+    cssVariables = options.tailwindCssVariables ?? cssVariables
   }
 
   return rawConfigSchema.parse({
@@ -347,6 +392,46 @@ async function promptForMinimalConfig(
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
     aliases: defaultConfig?.aliases,
-    registry: opts.registry,
-  })
+    url: opts.url,
+    registries: defaultConfig?.registries,
+  }) as Config
+}
+
+async function promptForNestedRegistryConfig(
+  defaultConfig: Config,
+  opts: z.infer<typeof initOptionsSchema>
+) {
+  const nestedDefaultConfig = await getDefaultConfig(
+    { ...defaultConfig },
+    opts.url
+  )
+
+  let newConfig = await promptForMinimalConfig(nestedDefaultConfig, opts)
+
+  const relevantFields = ["style", "tailwind", "rsc", "tsx", "aliases"]
+
+  const defaultConfigSubset = Object.fromEntries(
+    relevantFields.map((field) => [field, defaultConfig[field as keyof Config]])
+  ) as any
+
+  const newConfigSubset = Object.fromEntries(
+    relevantFields.map((field) => [field, newConfig[field as keyof Config]])
+  )
+
+  const registryConfig: Config = getDifferences(
+    newConfigSubset,
+    defaultConfigSubset
+  )
+
+  registryConfig.url = opts.url
+
+  const { resolvedPaths, ...topLevelConfig } = defaultConfig
+
+  return {
+    ...topLevelConfig,
+    registries: {
+      ...defaultConfig.registries,
+      [opts.name ?? opts.url!]: registryConfig,
+    },
+  } as Config
 }
