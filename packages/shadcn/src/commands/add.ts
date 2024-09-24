@@ -15,7 +15,7 @@ import { merge } from "diff"
 import prompts from "prompts"
 import { z } from "zod"
 
-import type { Config } from "../utils/get-config"
+import { resolveConfigPaths, type Config } from "../utils/get-config"
 
 export const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -200,7 +200,7 @@ async function getRegistryConfig(
     if (selectedRegistry === "default") {
       return { ...config }
     } else {
-      return deepmerge(config, config.registries[selectedRegistry]) as Config
+      return await resolveConfigPaths(opts.cwd, deepmerge(config, config.registries[selectedRegistry]) as Config)
     }
   }
 
@@ -214,7 +214,7 @@ async function getRegistryConfig(
           (reg) => reg.url === registry
         )
         if (registryConfig) {
-          return deepmerge(config, registryConfig) as Config
+          return await resolveConfigPaths(opts.cwd, deepmerge(config, registryConfig) as Config)
         }
       }
 
@@ -223,7 +223,7 @@ async function getRegistryConfig(
 
     // If it's a named registry in the config, use that
     if (config.registries?.[registry]) {
-      return deepmerge(config, config.registries[registry]) as Config
+      return await resolveConfigPaths(opts.cwd, deepmerge(config, config.registries[registry]) as Config)
     }
 
     // If it's neither a URL nor a known registry name, warn the user and fallback to the default config
