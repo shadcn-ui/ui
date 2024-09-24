@@ -15,6 +15,7 @@ export async function addComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    registryName?: string
   }
 ) {
   options = {
@@ -40,6 +41,7 @@ export async function addComponents(
   await updateCssVars(tree.cssVars, config, {
     cleanupDefaultNextStyles: options.isNewProject,
     silent: options.silent,
+    registryName: options.registryName,
   })
 
   await updateDependencies(tree.dependencies, config, {

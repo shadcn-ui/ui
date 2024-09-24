@@ -1,0 +1,12 @@
+{
+  "name": "test2",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "ui/test2.tsx",
+      "content": "export const a = 1;",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}
