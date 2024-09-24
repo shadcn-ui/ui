@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york/ui/select"
-import { Style, styles } from "@/registry/styles"
+import { Style, styles } from "@/registry/registry-styles"
 
 export function StyleSwitcher({ className, ...props }: SelectTriggerProps) {
   const [config, setConfig] = useConfig()
