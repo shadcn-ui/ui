@@ -12,16 +12,24 @@ exports[`registryResolveItemTree > should resolve index 1`] = `
     "tailwindcss-animate",
     "class-variance-authority",
     "lucide-react",
-    "tailwindcss-animate",
-    "class-variance-authority",
-    "lucide-react",
-    "@radix-ui/react-label",
     "clsx",
     "tailwind-merge",
+    "@radix-ui/react-label",
   ],
   "devDependencies": [],
   "docs": "",
   "files": [
+    {
+      "content": "import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+",
+      "path": "lib/utils.ts",
+      "type": "registry:lib",
+    },
     {
       "content": ""use client"
 
@@ -54,22 +62,10 @@ export { Label }
       "target": "",
       "type": "registry:ui",
     },
-    {
-      "content": "import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-",
-      "path": "lib/utils.ts",
-      "type": "registry:lib",
-    },
   ],
   "tailwind": {
     "config": {
       "plugins": [
-        "require("tailwindcss-animate")",
         "require("tailwindcss-animate")",
       ],
       "theme": {
