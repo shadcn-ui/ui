@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.9.1
+
+### Patch Changes
+
+- [#4797](https://github.com/shadcn-ui/ui/pull/4797) [`207b69f`](https://github.com/shadcn-ui/ui/commit/207b69fe8dd59b10dddc9337d333416976e2a30d) Thanks [@Wiper-R](https://github.com/Wiper-R)! - add scss support
+
 ## 0.9.0
 
 ### Minor Changes

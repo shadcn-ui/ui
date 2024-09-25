@@ -20,6 +20,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
+import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
@@ -136,6 +137,18 @@ export async function runInit(
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
+
+  // If a new project is using src dir, let's update the tailwind content config.
+  // TODO: Handle this per framework.
+  if (options.isNewProject && options.srcDir) {
+    await updateTailwindContent(
+      ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+      fullConfig,
+      {
+        silent: options.silent,
+      }
+    )
+  }
 
   return fullConfig
 }
