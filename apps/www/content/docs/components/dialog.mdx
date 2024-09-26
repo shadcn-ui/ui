@@ -118,3 +118,78 @@ To activate the `Dialog` component from within a `Context Menu` or `Dropdown Men
   </DialogContent>
 </Dialog>
 ```
+
+This approach is not feasible if you plan to activate different types of dialogs from the same `Context Menu` or
+`Dropdown Menu`. In such cases, it is recommended to colocate the dialogs and control their visibility by making them
+controlled components. To achieve this, you can use the following utility hook, as suggested [here](https://github.com/radix-ui/primitives/issues/1836#issuecomment-2051812652):
+
+```ts showLineNumbers
+"use client"
+
+import { useRef, useState } from "react"
+
+function useDialog<TriggerRef extends HTMLElement>() {
+  const [isOpen, setIsOpen] = useState(false)
+  const triggerRef = useRef<TriggerRef>(null)
+
+  function trigger() {
+    setIsOpen(true)
+  }
+
+  function dismiss() {
+    setIsOpen(false)
+    triggerRef.current?.focus()
+  }
+
+  return {
+    triggerProps: {
+      ref: triggerRef,
+      onClick: trigger,
+    },
+    dialogProps: {
+      open: isOpen,
+      onOpenChange: (open: boolean) => {
+        if (open) trigger()
+        else dismiss()
+      },
+    },
+    trigger,
+    dismiss,
+  }
+}
+```
+
+The `useDialog` hook allows you to spread the necessary props to both the trigger, which toggles the `Dialog`, and the
+`Dialog` itself, making it a controlled component. Additionally, to ensure accessibility, the hook will attempt to focus
+the trigger (such as a button) when the `Dialog` closes.
+
+```tsx {1-2,12,15,20,23}
+import { ElementRef } from "react"
+
+const editDialog = useDialog<ElementRef<typeof DropdownMenuItem>>()
+const deleteDialog = useDialog<ElementRef<typeof DropdownMenuItem>>()
+
+<>
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="ghost" className="h-8 w-8 p-0">
+        Actions
+      </Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end">
+      <DropdownMenuItem {...editDialog.triggerProps}>
+        Edit
+      </DropdownMenuItem>
+      <DropdownMenuItem {...deleteDialog.triggerProps}>
+        Delete
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+  <Dialog {...editDialog.dialogProps}>
+    {/* ... */}
+  </Dialog>
+  <Dialog {...deleteDialog.dialogProps}>
+    {/* ... */}
+  </Dialog>
+</>
+```
