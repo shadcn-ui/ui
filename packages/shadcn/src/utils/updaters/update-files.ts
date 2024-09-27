@@ -34,6 +34,7 @@ export async function updateFiles(
   files: RegistryItem["files"],
   config: Config,
   options: {
+    registry?: string
     overwrite?: boolean
     force?: boolean
     silent?: boolean
@@ -54,7 +55,7 @@ export async function updateFiles(
 
   const [projectInfo, baseColor] = await Promise.all([
     getProjectInfo(config.resolvedPaths.cwd),
-    getRegistryBaseColor(config.tailwind.baseColor),
+    getRegistryBaseColor(options.registry, config.tailwind.baseColor),
   ])
 
   const filesCreated = []
