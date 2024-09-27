@@ -6,6 +6,7 @@ import {
   getConfig,
   resolveConfigPaths,
 } from "@/src/utils/get-config"
+import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"
 import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
@@ -36,6 +37,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindConfigFile,
     tailwindCssFile,
     aliasPrefix,
+    packageJson,
   ] = await Promise.all([
     fg.glob("**/{next,vite,astro}.config.*|gatsby-config.*|composer.json", {
       cwd,
@@ -47,6 +49,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     getTailwindConfigFile(cwd),
     getTailwindCssFile(cwd),
     getTsConfigAliasPrefix(cwd),
+    getPackageInfo(cwd, false),
   ])
 
   const isUsingAppDir = await fs.pathExists(
@@ -61,10 +64,6 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindConfigFile,
     tailwindCssFile,
     aliasPrefix,
-  }
-
-  if (!configFiles.length) {
-    return type
   }
 
   // Next.js.
@@ -94,13 +93,21 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
-  // Vite and Remix.
-  // They both have a vite.config.* file.
+  // Remix.
+  if (
+    Object.keys(packageJson?.dependencies ?? {}).find((dep) =>
+      dep.startsWith("@remix-run/")
+    )
+  ) {
+    type.framework = FRAMEWORKS["remix"]
+    return type
+  }
+
+  // Vite.
+  // Some Remix templates also have a vite.config.* file.
+  // We'll assume that it got caught by the Remix check above.
   if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
-    // We'll assume that if the project has an app dir, it's a Remix project.
-    // Otherwise, it's a Vite project.
-    // TODO: Maybe check for `@remix-run/react` in package.json?
-    type.framework = isUsingAppDir ? FRAMEWORKS["remix"] : FRAMEWORKS["vite"]
+    type.framework = FRAMEWORKS["vite"]
     return type
   }
 
