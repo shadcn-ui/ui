@@ -17,6 +17,19 @@ import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
 
+export function resolveTargetDir(
+  projectInfo: Awaited<ReturnType<typeof getProjectInfo>>,
+  config: Config,
+  target: string
+) {
+  if (target.startsWith("~/")) {
+    return path.join(config.resolvedPaths.cwd, target.replace("~/", ""))
+  }
+  return projectInfo?.isSrcDir
+    ? path.join(config.resolvedPaths.cwd, "src", target)
+    : path.join(config.resolvedPaths.cwd, target)
+}
+
 export async function updateFiles(
   files: RegistryItem["files"],
   config: Config,
@@ -58,9 +71,7 @@ export async function updateFiles(
     let filePath = path.join(targetDir, fileName)
 
     if (file.target) {
-      filePath = projectInfo?.isSrcDir
-        ? path.join(config.resolvedPaths.cwd, "src", file.target)
-        : path.join(config.resolvedPaths.cwd, file.target)
+      filePath = resolveTargetDir(projectInfo, config, file.target)
       targetDir = path.dirname(filePath)
     }
 
