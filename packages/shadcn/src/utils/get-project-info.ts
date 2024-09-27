@@ -6,7 +6,7 @@ import {
   getConfig,
   resolveConfigPaths,
 } from "@/src/utils/get-config"
-import { getPackageInfo } from "@/src/utils/get-package-info";
+import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"
 import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
@@ -94,7 +94,11 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   }
 
   // Remix.
-  if (Object.keys(packageJson?.dependencies ?? {}).find((dep) => dep.startsWith("@remix-run/"))) {
+  if (
+    Object.keys(packageJson?.dependencies ?? {}).find((dep) =>
+      dep.startsWith("@remix-run/")
+    )
+  ) {
     type.framework = FRAMEWORKS["remix"]
     return type
   }
