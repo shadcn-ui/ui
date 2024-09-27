@@ -1,0 +1,15 @@
+{
+  "name": "test-cli-config-full",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "shadcn",
+  "license": "MIT",
+  "dependencies": {
+    "@hookform/resolvers": "^3.1.0",
+    "@radix-ui/react-alert-dialog": "^1.0.4",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "react-hook-form": "^7.44.2",
+    "zod": "^3.22.4"
+  }
+}

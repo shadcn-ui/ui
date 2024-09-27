@@ -2,6 +2,7 @@
 import { add } from "@/src/commands/add"
 import { diff } from "@/src/commands/diff"
 import { init } from "@/src/commands/init"
+import { createRemoveCommand } from "@/src/commands/remove"
 import { Command } from "commander"
 
 import { getPackageInfo } from "./utils/get-package-info"
@@ -14,14 +15,18 @@ async function main() {
 
   const program = new Command()
     .name("shadcn-ui")
-    .description("add components and dependencies to your project")
+    .description("Manage shadcn/ui components and dependencies to your project")
     .version(
       packageInfo.version || "1.0.0",
       "-v, --version",
       "display the version number"
     )
 
-  program.addCommand(init).addCommand(add).addCommand(diff)
+  program
+    .addCommand(init)
+    .addCommand(add)
+    .addCommand(diff)
+    .addCommand(createRemoveCommand())
 
   program.parse()
 }
