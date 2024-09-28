@@ -24,6 +24,13 @@ const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
 >(({ className, ...props }, ref) => {
+  React.useEffect(() => {
+    document.querySelectorAll<HTMLInputElement>('input[type="radio"]').forEach(input => {
+      if (input.value) {
+        input.id = `radio-${input.value.replace(/\s+/g, '-').toLowerCase()}`
+      }
+    })
+  }, [])
   return (
     <RadioGroupPrimitive.Item
       ref={ref}
