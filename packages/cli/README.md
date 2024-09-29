@@ -2,6 +2,9 @@
 
 A CLI for adding components to your project.
 
+> [!WARNING]
+> The shadcn-ui CLI is going to be deprecated soon. Bug fixes and new features should be added to the `.packages/shadcn` instead.
+
 ## Usage
 
 Use the `init` command to initialize dependencies for a new project.
@@ -36,7 +39,7 @@ npx shadcn-ui add
 
 ## Documentation
 
-Visit http://ui.shadcn.com/docs to view the documentation.
+Visit https://ui.shadcn.com/docs/cli to view the documentation.
 
 ## License
 

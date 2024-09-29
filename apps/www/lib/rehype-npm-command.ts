@@ -20,6 +20,10 @@ export function rehypeNpmCommand() {
           "npm install",
           "pnpm add"
         )
+        node.properties["__bunCommand__"] = npmCommand.replace(
+          "npm install",
+          "bun add"
+        )
       }
 
       // npx create.
@@ -34,6 +38,10 @@ export function rehypeNpmCommand() {
           "npx create-",
           "pnpm create "
         )
+        node.properties["__bunCommand__"] = npmCommand.replace(
+          "npx",
+          "bunx --bun"
+        )
       }
 
       // npx.
@@ -47,6 +55,10 @@ export function rehypeNpmCommand() {
         node.properties["__pnpmCommand__"] = npmCommand.replace(
           "npx",
           "pnpm dlx"
+        )
+        node.properties["__bunCommand__"] = npmCommand.replace(
+          "npx",
+          "bunx --bun"
         )
       }
     })

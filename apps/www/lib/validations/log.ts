@@ -1,4 +1,4 @@
-import * as z from "zod"
+import { z } from "zod"
 
 export const logSchema = z.object({
   event: z.enum(["copy_primitive"]),

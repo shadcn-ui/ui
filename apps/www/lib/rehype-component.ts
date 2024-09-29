@@ -5,24 +5,46 @@ import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
 import { Index } from "../__registry__"
-import { styles } from "../registry/styles"
+import { styles } from "../registry/registry-styles"
 
 export function rehypeComponent() {
   return async (tree: UnistTree) => {
     visit(tree, (node: UnistNode) => {
-      const { value: src } = getNodeAttributeByName(node, "src") || {}
+      // src prop overrides both name and fileName.
+      const { value: srcPath } =
+        (getNodeAttributeByName(node, "src") as {
+          name: string
+          value?: string
+          type?: string
+        }) || {}
 
       if (node.name === "ComponentSource") {
         const name = getNodeAttributeByName(node, "name")?.value as string
+        const fileName = getNodeAttributeByName(node, "fileName")?.value as
+          | string
+          | undefined
 
-        if (!name) {
+        if (!name && !srcPath) {
           return null
         }
 
         try {
           for (const style of styles) {
-            const component = Index[style.name][name]
-            const src = component.files[0]
+            let src: string
+
+            if (srcPath) {
+              src = srcPath
+            } else {
+              const component = Index[style.name][name]
+              src = fileName
+                ? component.files.find((file: string) => {
+                    return (
+                      file.endsWith(`${fileName}.tsx`) ||
+                      file.endsWith(`${fileName}.ts`)
+                    )
+                  }) || component.files[0]
+                : component.files[0]
+            }
 
             // Read the source file.
             const filePath = path.join(process.cwd(), src)
