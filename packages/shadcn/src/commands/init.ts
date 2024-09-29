@@ -266,6 +266,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       lib: options.components.replace(/\/components$/, "lib"),
       hooks: options.components.replace(/\/components$/, "hooks"),
     },
+    components: [],
   })
 }
 

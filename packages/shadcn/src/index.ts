@@ -2,6 +2,7 @@
 import { add } from "@/src/commands/add"
 import { diff } from "@/src/commands/diff"
 import { init } from "@/src/commands/init"
+import { remove } from "@/src/commands/remove"
 import { Command } from "commander"
 
 import packageJson from "../package.json"
@@ -19,7 +20,7 @@ async function main() {
       "display the version number"
     )
 
-  program.addCommand(init).addCommand(add).addCommand(diff)
+  program.addCommand(init).addCommand(add).addCommand(remove).addCommand(diff)
 
   program.parse()
 }

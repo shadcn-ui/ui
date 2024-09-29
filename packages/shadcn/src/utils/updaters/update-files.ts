@@ -179,3 +179,119 @@ export async function updateFiles(
     logger.break()
   }
 }
+
+export async function removeFiles(
+  files: RegistryItem["files"],
+  config: Config,
+  options: {
+    force?: boolean
+    silent?: boolean
+  }
+  // components: string[]
+) {
+  if (!files?.length) {
+    return
+  }
+  options = {
+    force: false,
+    silent: false,
+    ...options,
+  }
+
+  const filesDeletedSpinner = spinner(`removing files.`, {
+    silent: options.silent,
+  })?.start()
+
+  const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
+
+  const filesDeleted: string[] = []
+  // const filesSkipped: string[] = []
+  const filesNotFound: string[] = []
+
+  for (const file of files) {
+    let targetDir = getRegistryItemFileTargetPath(file, config)
+    const fileName = basename(file.path)
+    let filePath = path.join(targetDir, fileName)
+
+    if (file.target) {
+      filePath = resolveTargetDir(projectInfo, config, file.target)
+      targetDir = path.dirname(filePath)
+    }
+
+    if (!config.tsx) {
+      filePath = filePath.replace(/\.tsx?$/, (match) =>
+        match === ".tsx" ? ".jsx" : ".js"
+      )
+    }
+    const existingFile = existsSync(filePath)
+    if (!existingFile) {
+      filesNotFound.push(path.relative(config.resolvedPaths.cwd, filePath))
+      continue
+    }
+    // if (!options.recursive && !components.includes(basename(filePath))) {
+    //   filesDeletedSpinner.stop()
+    //   const { confirm } = await prompts({
+    //     type: "confirm",
+    //     name: "confirm",
+    //     message: `The component ${highlighter.info(
+    //       fileName
+    //     )}will also . are you sure you want to delete it?`,
+    //     initial: false,
+    //   })
+    //   if (!confirm) {
+    //     filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+    //     continue
+    //   }
+    //   filesDeletedSpinner?.start()
+    // }
+    await fs.rm(filePath)
+    filesDeleted.push(path.relative(config.resolvedPaths.cwd, filePath))
+  }
+  filesDeletedSpinner.stop()
+
+  if (filesNotFound.length) {
+    spinner(
+      `${filesNotFound.length} ${
+        filesNotFound.length === 1 ? "file" : "files"
+      } Not found :`
+    )?.fail()
+    if (!options.silent) {
+      for (const file of filesNotFound) {
+        logger.log(`  - ${file}`)
+      }
+    }
+  }
+  if (!filesDeleted.length) {
+    spinner("No files deleted.").fail()
+    return
+  }
+  spinner(
+    `deleted ${filesDeleted.length} ${
+      filesDeleted.length === 1 ? "file" : "files"
+    }:`
+  )?.succeed()
+  if (!options.silent) {
+    for (const file of filesDeleted) {
+      logger.log(`  - ${file}`)
+    }
+  }
+  // if (filesSkipped.length) {
+  //   spinner(
+  //     `Skipped ${filesSkipped.length} ${
+  //       filesSkipped.length === 1 ? "file" : "files"
+  //     }:`,
+  //     {
+  //       silent: options.silent,
+  //     }
+  //   )?.info()
+  //   if (!options.silent) {
+  //     for (const file of filesSkipped) {
+  //       logger.log(`  - ${file}`)
+  //     }
+  //   }
+  // }
+
+  if (!options.silent) {
+    logger.break()
+  }
+}

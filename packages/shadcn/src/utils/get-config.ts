@@ -38,6 +38,7 @@ export const rawConfigSchema = z
       lib: z.string().optional(),
       hooks: z.string().optional(),
     }),
+    components: z.array(z.string()).default([]),
   })
   .strict()
 
@@ -127,7 +128,9 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
   } catch (error) {
     const componentPath = `${cwd}/component.json`
     throw new Error(
-      `Invalid configuration found in ${highlighter.info(componentPath)}.`
+      `Invalid configuration found in ${
+        (highlighter.info(componentPath), error)
+      }.`
     )
   }
 }

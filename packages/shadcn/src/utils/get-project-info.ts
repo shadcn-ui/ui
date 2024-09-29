@@ -61,6 +61,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindConfigFile,
     tailwindCssFile,
     aliasPrefix,
+
   }
 
   if (!configFiles.length) {
@@ -233,6 +234,7 @@ export async function getProjectConfig(
       lib: `${projectInfo.aliasPrefix}/lib`,
       utils: `${projectInfo.aliasPrefix}/lib/utils`,
     },
+    components: [],
   }
 
   return await resolveConfigPaths(cwd, config)

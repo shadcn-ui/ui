@@ -34,3 +34,31 @@ export async function updateDependencies(
   )
   dependenciesSpinner?.succeed()
 }
+
+export async function removeDependencies(
+  dependencies: RegistryItem["dependencies"],
+  config: Config,
+  options: {
+    silent?: boolean
+  }
+) {
+  dependencies = Array.from(new Set(dependencies))
+  if (!dependencies?.length) {
+    return
+  }
+
+  options = {
+    silent: false,
+    ...options,
+  }
+    const dependenciesSpinner = spinner(`Removing dependencies.`, {
+      silent: options.silent,
+    })?.start()
+    const packageManager = await getPackageManager(config.resolvedPaths.cwd)
+    await execa(packageManager, ["remove", ...dependencies], {
+      cwd: config.resolvedPaths.cwd,
+    })
+    dependenciesSpinner?.succeed()
+
+    return  
+}
