@@ -4,7 +4,7 @@ import { logger } from "@/src/utils/logger"
 import { registryResolveItemsTree } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { updateComponentJson } from "@/src/utils/updaters/update-component-json"
-import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
+// import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { removeDependencies } from "@/src/utils/updaters/update-dependencies"
 import { removeFiles } from "@/src/utils/updaters/update-files"
 
@@ -34,22 +34,18 @@ export async function removeComponents(
     return handleError(new Error("Failed to fetch components from registry."))
   }
   registrySpinner?.succeed()
-
-  await updateCssVars(tree.cssVars, config, {
-    cleanupDefaultNextStyles: options.isNewProject,
-    silent: options.silent,
-  })
+  // To Do Write removeCssVars function
+  // await updateCssVars(tree.cssVars, config, {
+  //   cleanupDefaultNextStyles: options.isNewProject,
+  //   silent: options.silent,
+  // })
 
   await removeDependencies(tree.dependencies, config, {
     silent: options.silent,
   })
-  await removeFiles(
-    tree.files,
-    config,
-    {
-      silent: options.silent,
-    },
-  )
+  await removeFiles(tree.files, config, {
+    silent: options.silent,
+  })
   await updateComponentJson(components, config, "remove")
   if (tree.docs) {
     logger.info(tree.docs)

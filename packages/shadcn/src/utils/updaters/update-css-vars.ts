@@ -10,8 +10,6 @@ import Root from "postcss/lib/root"
 import Rule from "postcss/lib/rule"
 import { z } from "zod"
 
-
-
 export async function updateCssVars(
   cssVars: z.infer<typeof registryItemCssVarsSchema> | undefined,
   config: Config,

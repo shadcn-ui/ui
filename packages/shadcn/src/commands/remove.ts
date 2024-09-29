@@ -1,3 +1,4 @@
+import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightRemove } from "@/src/preflights/preflight-remove"
 import { createProject } from "@/src/utils/create-project"
@@ -11,6 +12,7 @@ import prompts from "prompts"
 import { z } from "zod"
 
 import { type Config } from "../utils/get-config"
+import { updateComponentsJsonLegacy } from "../utils/updaters/update-component-json"
 
 export const removeOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -51,11 +53,7 @@ export const remove = new Command()
       })
 
       let { errors, config } = await preFlightRemove(options.cwd)
-      if (!config?.components.length) {
-        logger.warn("No components intalled. Exiting.")
-        logger.info("")
-        process.exit(1)
-      }
+
       // No component.json file. Prompt the user to run init.
       if (errors[ERRORS.MISSING_CONFIG]) {
         const { proceed } = await prompts({
@@ -106,12 +104,19 @@ export const remove = new Command()
           isNewProject: true,
           srcDir: options.srcDir,
         })
-        if (!config) {
-          throw new Error(
-            `Failed to read config at ${highlighter.info(options.cwd)}.`
-          )
-        }
       }
+
+      if (!config) {
+        throw new Error(
+          `Failed to read config at ${highlighter.info(options.cwd)}.`
+        )
+      }
+
+      let updatedConfig = await updateComponentsJsonLegacy(config)
+      if (updatedConfig) {
+        config = updatedConfig
+      }
+
       if (options.all) {
         const { proceed } = await prompts({
           type: "confirm",
@@ -127,7 +132,8 @@ export const remove = new Command()
           process.exit(1)
         }
       }
-      if (!options.components?.length) {
+
+      if (!options.components?.length || options.all) {
         options.components = await promptForInstalledComponents(options, config)
       }
       await removeComponents(options.components, config, options)

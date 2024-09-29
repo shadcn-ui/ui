@@ -35,5 +35,7 @@ yarn-error.log*
 .contentlayer
 tsconfig.tsbuildinfo
 
-#vscode
+# ide
+.idea
+.fleet
 .vscode
