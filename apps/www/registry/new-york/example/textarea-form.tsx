@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { toast } from "@/registry/new-york/hooks/use-toast"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Form,
@@ -15,7 +16,6 @@ import {
   FormMessage,
 } from "@/registry/new-york/ui/form"
 import { Textarea } from "@/registry/new-york/ui/textarea"
-import { toast } from "@/registry/new-york/ui/use-toast"
 
 const FormSchema = z.object({
   bio: z
