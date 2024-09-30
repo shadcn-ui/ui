@@ -1,5 +1,17 @@
 # @shadcn/ui
 
+## 2.1.0
+
+### Minor Changes
+
+- [#4961](https://github.com/shadcn-ui/ui/pull/4961) [`28f34ed`](https://github.com/shadcn-ui/ui/commit/28f34ed3c3e944287cd6f521ff0310d39664329c) Thanks [@shadcn](https://github.com/shadcn)! - recursively resolve registry dependencies
+
+### Patch Changes
+
+- [#4972](https://github.com/shadcn-ui/ui/pull/4972) [`4b546bf`](https://github.com/shadcn-ui/ui/commit/4b546bfb13346fdbaf0fca4e8041ddba35d23f47) Thanks [@Fluf22](https://github.com/Fluf22)! - update remix detection
+
+- [#4977](https://github.com/shadcn-ui/ui/pull/4977) [`96880e7`](https://github.com/shadcn-ui/ui/commit/96880e7c9afad3fed6749c5862d05dbfd65c4327) Thanks [@nsunami](https://github.com/nsunami)! - fix typo in components.json
+
 ## 2.0.8
 
 ### Patch Changes
