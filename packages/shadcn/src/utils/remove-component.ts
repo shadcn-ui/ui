@@ -27,18 +27,15 @@ export async function removeComponents(
     silent: options.silent,
   })?.start()
 
-  //TODO:create endpoint to return just required feilds
+  //TODO:create endpoint to return just required feilds instead of this
   const tree = await registryResolveItemsTree(components, config)
   if (!tree) {
     registrySpinner?.fail()
     return handleError(new Error("Failed to fetch components from registry."))
   }
   registrySpinner?.succeed()
-  // To Do Write removeCssVars function
-  // await updateCssVars(tree.cssVars, config, {
-  //   cleanupDefaultNextStyles: options.isNewProject,
-  //   silent: options.silent,
-  // })
+
+  // TODO:Write removeCssVars function
 
   await removeDependencies(tree.dependencies, config, {
     silent: options.silent,
@@ -46,7 +43,7 @@ export async function removeComponents(
   await removeFiles(tree.files, config, {
     silent: options.silent,
   })
-  await updateComponentJson(components, config, "remove")
+  await updateComponentJson(components, config, options, "remove")
   if (tree.docs) {
     logger.info(tree.docs)
   }

@@ -228,22 +228,7 @@ export async function removeFiles(
       filesNotFound.push(path.relative(config.resolvedPaths.cwd, filePath))
       continue
     }
-    // if (!options.recursive && !components.includes(basename(filePath))) {
-    //   filesDeletedSpinner.stop()
-    //   const { confirm } = await prompts({
-    //     type: "confirm",
-    //     name: "confirm",
-    //     message: `The component ${highlighter.info(
-    //       fileName
-    //     )}will also . are you sure you want to delete it?`,
-    //     initial: false,
-    //   })
-    //   if (!confirm) {
-    //     filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
-    //     continue
-    //   }
-    //   filesDeletedSpinner?.start()
-    // }
+ 
     await fs.rm(filePath)
     filesDeleted.push(path.relative(config.resolvedPaths.cwd, filePath))
   }
@@ -275,21 +260,6 @@ export async function removeFiles(
       logger.log(`  - ${file}`)
     }
   }
-  // if (filesSkipped.length) {
-  //   spinner(
-  //     `Skipped ${filesSkipped.length} ${
-  //       filesSkipped.length === 1 ? "file" : "files"
-  //     }:`,
-  //     {
-  //       silent: options.silent,
-  //     }
-  //   )?.info()
-  //   if (!options.silent) {
-  //     for (const file of filesSkipped) {
-  //       logger.log(`  - ${file}`)
-  //     }
-  //   }
-  // }
 
   if (!options.silent) {
     logger.break()

@@ -50,8 +50,7 @@ export async function addComponents(
     silent: options.silent,
   })
 
-  // update component.json file while installing each component
-  await updateComponentJson(components, config)
+  await updateComponentJson(components, config, options)
   if (tree.docs) {
     logger.info(tree.docs)
   }
