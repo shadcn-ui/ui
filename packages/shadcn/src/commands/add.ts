@@ -82,13 +82,13 @@ export const add = new Command()
 
       let { errors, config } = await preFlightAdd(options)
 
-      // No component.json file. Prompt the user to run init.
+      // No components.json file. Prompt the user to run init.
       if (errors[ERRORS.MISSING_CONFIG]) {
         const { proceed } = await prompts({
           type: "confirm",
           name: "proceed",
           message: `You need to create a ${highlighter.info(
-            "component.json"
+            "components.json"
           )} file to add components. Proceed?`,
           initial: true,
         })
