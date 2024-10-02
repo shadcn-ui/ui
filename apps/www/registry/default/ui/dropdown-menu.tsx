@@ -59,7 +59,7 @@ DropdownMenuSubContent.displayName =
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content> & {
-    container?: Element | null | undefined;
+    container?: HTMLElement | null | undefined;
   }
 >(({ className, sideOffset = 8, container, ...props }, ref) => (
   <DropdownMenuPrimitive.Portal {...(container && { container })}>
