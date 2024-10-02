@@ -18,48 +18,16 @@ export default function IndexPage() {
     <div className="container relative">
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>Build your component library</PageHeaderHeading>
+        <PageHeaderHeading>Welcome to the Project</PageHeaderHeading>
         <PageHeaderDescription>
-          Beautifully designed components that you can copy and paste into your
-          apps.
+        Forty Eight Point One’s award-winning DMO platform, proudly powering over 100 regions and countries worldwide. Use this guide to get set up and seamlessly join the project.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
             <Link href="/docs">Get Started</Link>
           </Button>
-          <Button asChild size="sm" variant="ghost">
-            <Link
-              target="_blank"
-              rel="noreferrer"
-              href={siteConfig.links.github}
-            >
-              GitHub
-            </Link>
-          </Button>
         </PageActions>
       </PageHeader>
-      <ExamplesNav className="[&>a:first-child]:text-primary" />
-      <section className="overflow-hidden rounded-lg border bg-background shadow-md md:hidden md:shadow-xl">
-        <Image
-          src="/examples/mail-dark.png"
-          width={1280}
-          height={727}
-          alt="Mail"
-          className="hidden dark:block"
-        />
-        <Image
-          src="/examples/mail-light.png"
-          width={1280}
-          height={727}
-          alt="Mail"
-          className="block dark:hidden"
-        />
-      </section>
-      <section className="hidden md:block">
-        <div className="overflow-hidden rounded-lg border bg-background shadow">
-          <MailPage />
-        </div>
-      </section>
     </div>
   )
 }
