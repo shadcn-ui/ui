@@ -172,4 +172,69 @@ describe("transformCssVars", () => {
         "
     `)
   })
+
+  test("should remove existing light and dark variables when providing null", async () => {
+    expect(
+      await transformCssVars(
+        `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  :root{
+    --background: 210 40% 98%;
+    --foreground: black;
+  }
+
+  .dark{
+    --background: 222.2 84% 4.9%;
+    --foreground: white;
+  }
+}
+  `,
+        {
+          light: {
+            background: "215 20.2% 65.1%",
+            foreground: null,
+            custom: '255 0% 0%'
+          },
+          dark: {
+            custom: "0 0% 0%",
+            foreground: null,
+          },
+        },
+        {
+          tailwind: {
+            cssVariables: true,
+          },
+        }
+      )
+    ).toMatchInlineSnapshot(`
+"@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  :root{
+    --background: 215 20.2% 65.1%;
+    --custom: 255 0% 0%;
+  }
+
+  .dark{
+    --background: 222.2 84% 4.9%;
+    --custom: 0 0% 0%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+  "
+`)
+  })
 })

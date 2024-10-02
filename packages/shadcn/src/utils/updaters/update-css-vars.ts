@@ -264,7 +264,7 @@ function cleanupDefaultNextStylesPlugin() {
 function addOrUpdateVars(
   baseLayer: AtRule,
   selector: string,
-  vars: Record<string, string>
+  vars: Record<string, string | null>
 ) {
   let ruleNode = baseLayer.nodes?.find(
     (node): node is Rule => node.type === "rule" && node.selector === selector
@@ -282,17 +282,24 @@ function addOrUpdateVars(
 
   Object.entries(vars).forEach(([key, value]) => {
     const prop = `--${key.replace(/^--/, "")}`
-    const newDecl = postcss.decl({
-      prop,
-      value,
-      raws: { semicolon: true },
-    })
 
+    // Gets the var declaration based on the key
     const existingDecl = ruleNode?.nodes.find(
       (node): node is postcss.Declaration =>
         node.type === "decl" && node.prop === prop
     )
-
-    existingDecl ? existingDecl.replaceWith(newDecl) : ruleNode?.append(newDecl)
+    if (value === null) {
+      // Key is set to null, remove it
+      existingDecl?.remove()
+    } else {
+      const newDecl = postcss.decl({
+        prop,
+        value,
+        raws: { semicolon: true },
+      })
+      existingDecl
+        ? existingDecl.replaceWith(newDecl)
+        : ruleNode?.append(newDecl)
+    }
   })
 }

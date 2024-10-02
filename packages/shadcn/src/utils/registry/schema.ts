@@ -31,8 +31,8 @@ export const registryItemTailwindSchema = z.object({
 })
 
 export const registryItemCssVarsSchema = z.object({
-  light: z.record(z.string(), z.string()).optional(),
-  dark: z.record(z.string(), z.string()).optional(),
+  light: z.record(z.string(), z.string().nullable()).optional(),
+  dark: z.record(z.string(), z.string().nullable()).optional(),
 })
 
 export const registryItemSchema = z.object({
