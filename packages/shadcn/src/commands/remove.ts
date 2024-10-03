@@ -49,7 +49,7 @@ export const remove = new Command()
   )
   .option(
     "--update-config",
-    "update Configuration file and adds all pre installed components to components field",
+    "update Configuration file and adds all pre installed components to installed field",
     false
   )
   .action(async (components, opts) => {
