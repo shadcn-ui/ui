@@ -175,7 +175,7 @@ export default function Dashboard() {
       </header>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
-          <Card>
+          <Card x-chunk="A card showing the total revenue in USD and the percentage difference from last month.">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Total Revenue
@@ -189,7 +189,7 @@ export default function Dashboard() {
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card x-chunk="A card showing the total subscriptions and the percentage difference from last month.">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Subscriptions
@@ -203,7 +203,7 @@ export default function Dashboard() {
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card x-chunk="A card showing the total sales and the percentage difference from last month.">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Sales</CardTitle>
               <CreditCard className="h-4 w-4 text-muted-foreground" />
@@ -215,7 +215,7 @@ export default function Dashboard() {
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card x-chunk="A card showing the total active users and the percentage difference from last hour.">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Active Now</CardTitle>
               <Activity className="h-4 w-4 text-muted-foreground" />
@@ -229,7 +229,10 @@ export default function Dashboard() {
           </Card>
         </div>
         <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
-          <Card className="xl:col-span-2">
+          <Card
+            className="xl:col-span-2"
+            x-chunk="A card showing a table of recent transactions with a link to view all transactions."
+          >
             <CardHeader className="flex flex-row items-center">
               <div className="grid gap-2">
                 <CardTitle>Transactions</CardTitle>
@@ -366,7 +369,7 @@ export default function Dashboard() {
               </Table>
             </CardContent>
           </Card>
-          <Card>
+          <Card x-chunk="A card showing a list of recent sales with customer names and email addresses.">
             <CardHeader>
               <CardTitle>Recent Sales</CardTitle>
             </CardHeader>

@@ -8,8 +8,8 @@ import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
-import { blockSchema, registryEntrySchema } from "@/registry/schema"
-import { Style } from "@/registry/styles"
+import { Style } from "@/registry/registry-styles"
+import { BlockChunk, blockSchema, registryEntrySchema } from "@/registry/schema"
 
 const DEFAULT_BLOCKS_STYLE = "default" satisfies Style["name"]
 
@@ -32,21 +32,50 @@ export async function getBlock(
 
   const content = await _getBlockContent(name, style)
 
+  const chunks = await Promise.all(
+    entry.chunks?.map(async (chunk: BlockChunk) => {
+      const code = await readFile(chunk.file)
+
+      const tempFile = await createTempSourceFile(`${chunk.name}.tsx`)
+      const sourceFile = project.createSourceFile(tempFile, code, {
+        scriptKind: ScriptKind.TSX,
+      })
+
+      sourceFile
+        .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
+        .filter((node) => {
+          return node.getAttribute("x-chunk") !== undefined
+        })
+        ?.map((component) => {
+          component
+            .getAttribute("x-chunk")
+            ?.asKind(SyntaxKind.JsxAttribute)
+            ?.remove()
+        })
+
+      return {
+        ...chunk,
+        code: sourceFile
+          .getText()
+          .replaceAll(`@/registry/${style}/`, "@/components/"),
+      }
+    })
+  )
+
   return blockSchema.parse({
     style,
     highlightedCode: content.code ? await highlightCode(content.code) : "",
     ...entry,
     ...content,
-    type: "components:block",
+    chunks,
+    type: "registry:block",
   })
 }
 
 async function _getAllBlocks(style: Style["name"] = DEFAULT_BLOCKS_STYLE) {
   const index = z.record(registryEntrySchema).parse(Index[style])
 
-  return Object.values(index).filter(
-    (block) => block.type === "components:block"
-  )
+  return Object.values(index).filter((block) => block.type === "registry:block")
 }
 
 async function _getBlockCode(
@@ -54,18 +83,30 @@ async function _getBlockCode(
   style: Style["name"] = DEFAULT_BLOCKS_STYLE
 ) {
   const entry = Index[style][name]
+  if (!entry) {
+    console.error(`Block ${name} not found in style ${style}`)
+    return ""
+  }
   const block = registryEntrySchema.parse(entry)
 
-  const filepath = path.join(process.cwd(), block.files[0])
+  if (!block.source) {
+    return ""
+  }
+
+  return await readFile(block.source)
+}
+
+async function readFile(source: string) {
+  const filepath = path.join(process.cwd(), source)
   return await fs.readFile(filepath, "utf-8")
 }
 
-async function _getBlockContent(name: string, style: Style["name"]) {
-  async function createTempSourceFile(filename: string) {
-    const dir = await fs.mkdtemp(path.join(tmpdir(), "codex-"))
-    return path.join(dir, filename)
-  }
+async function createTempSourceFile(filename: string) {
+  const dir = await fs.mkdtemp(path.join(tmpdir(), "codex-"))
+  return path.join(dir, filename)
+}
 
+async function _getBlockContent(name: string, style: Style["name"]) {
   const raw = await _getBlockCode(name, style)
 
   const tempFile = await createTempSourceFile(`${name}.tsx`)
@@ -74,7 +115,6 @@ async function _getBlockContent(name: string, style: Style["name"]) {
   })
 
   // Extract meta.
-  const description = _extractVariable(sourceFile, "description")
   const iframeHeight = _extractVariable(sourceFile, "iframeHeight")
   const containerClassName = _extractVariable(sourceFile, "containerClassName")
 
@@ -84,7 +124,6 @@ async function _getBlockContent(name: string, style: Style["name"]) {
   code = code.replaceAll("export default", "export")
 
   return {
-    description,
     code,
     container: {
       height: iframeHeight,

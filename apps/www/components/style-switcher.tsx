@@ -12,9 +12,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york/ui/select"
-import { Style, styles } from "@/registry/styles"
+import { Style, styles } from "@/registry/registry-styles"
 
-export function StyleSwitcher({ className }: SelectTriggerProps) {
+export function StyleSwitcher({ className, ...props }: SelectTriggerProps) {
   const [config, setConfig] = useConfig()
 
   return (
@@ -32,6 +32,7 @@ export function StyleSwitcher({ className }: SelectTriggerProps) {
           "h-7 w-[145px] text-xs [&_svg]:h-4 [&_svg]:w-4",
           className
         )}
+        {...props}
       >
         <span className="text-muted-foreground">Style: </span>
         <SelectValue placeholder="Select style" />

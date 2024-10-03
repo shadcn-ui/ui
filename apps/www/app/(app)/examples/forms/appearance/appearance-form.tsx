@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { cn } from "@/lib/utils"
+import { toast } from "@/registry/new-york/hooks/use-toast"
 import { Button, buttonVariants } from "@/registry/new-york/ui/button"
 import {
   Form,
@@ -17,7 +18,6 @@ import {
   FormMessage,
 } from "@/registry/new-york/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
-import { toast } from "@/registry/new-york/ui/use-toast"
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {

@@ -301,7 +301,10 @@ export default function Dashboard() {
           </Button>
         </header>
         <main className="grid flex-1 gap-4 overflow-auto p-4 md:grid-cols-2 lg:grid-cols-3">
-          <div className="relative hidden flex-col items-start gap-8 md:flex">
+          <div
+            className="relative hidden flex-col items-start gap-8 md:flex"
+            x-chunk="A settings form a configuring an AI model and messages."
+          >
             <form className="grid w-full items-start gap-6">
               <fieldset className="grid gap-6 rounded-lg border p-4">
                 <legend className="-ml-1 px-1 text-sm font-medium">
@@ -416,7 +419,10 @@ export default function Dashboard() {
               Output
             </Badge>
             <div className="flex-1" />
-            <form className="relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring">
+            <form
+              className="relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
+              x-chunk="A form for sending a message to an AI chatbot. The form has a textarea and buttons to upload files and record audio."
+            >
               <Label htmlFor="message" className="sr-only">
                 Message
               </Label>

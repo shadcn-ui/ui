@@ -1,3 +1,4 @@
+import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -79,7 +80,7 @@ import {
 export const description =
   "An orders dashboard with a sidebar navigation. The sidebar has icon navigation. The content area has a breadcrumb and search in the header. The main area has a list of recent orders with a filter and export button. The main area also has a detailed view of a single order with order details, shipping information, billing information, customer information, and payment information."
 
-export const iframeHeight = "956px"
+export const iframeHeight = "906px"
 
 export const containerClassName = "w-full h-full"
 
@@ -266,7 +267,7 @@ export default function Dashboard() {
                   width={36}
                   height={36}
                   alt="Avatar"
-                  className="overflow-hidden"
+                  className="overflow-hidden rounded-full"
                 />
               </Button>
             </DropdownMenuTrigger>
@@ -283,10 +284,13 @@ export default function Dashboard() {
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
           <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-              <Card className="sm:col-span-2">
+              <Card
+                className="sm:col-span-2"
+                x-chunk="A card for an orders dashboard with a description and a button to create a new order."
+              >
                 <CardHeader className="pb-3">
                   <CardTitle>Your Orders</CardTitle>
-                  <CardDescription className="max-w-lg text-balance leading-relaxed">
+                  <CardDescription className="text-balance max-w-lg leading-relaxed">
                     Introducing Our Dynamic Orders Dashboard for Seamless
                     Management and Insightful Analysis.
                   </CardDescription>
@@ -295,10 +299,10 @@ export default function Dashboard() {
                   <Button>Create New Order</Button>
                 </CardFooter>
               </Card>
-              <Card>
+              <Card x-chunk="A stats card showing this week's total sales in USD, the percentage difference from last week, and a progress bar.">
                 <CardHeader className="pb-2">
                   <CardDescription>This Week</CardDescription>
-                  <CardTitle className="text-4xl">$1329</CardTitle>
+                  <CardTitle className="text-4xl">$1,329</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-xs text-muted-foreground">
@@ -309,10 +313,10 @@ export default function Dashboard() {
                   <Progress value={25} aria-label="25% increase" />
                 </CardFooter>
               </Card>
-              <Card>
+              <Card x-chunk="A stats card showing this month's total sales in USD, the percentage difference from last month, and a progress bar.">
                 <CardHeader className="pb-2">
                   <CardDescription>This Month</CardDescription>
-                  <CardTitle className="text-3xl">$5,329</CardTitle>
+                  <CardTitle className="text-4xl">$5,329</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-xs text-muted-foreground">
@@ -368,7 +372,7 @@ export default function Dashboard() {
                 </div>
               </div>
               <TabsContent value="week">
-                <Card>
+                <Card x-chunk="A table of recent orders showing the following columns: Customer, Type, Status, Date, and Amount.">
                   <CardHeader className="px-7">
                     <CardTitle>Orders</CardTitle>
                     <CardDescription>
@@ -433,7 +437,7 @@ export default function Dashboard() {
                           </TableCell>
                           <TableCell className="text-right">$150.00</TableCell>
                         </TableRow>
-                        <TableRow>
+                        {/* <TableRow>
                           <TableCell>
                             <div className="font-medium">Liam Johnson</div>
                             <div className="hidden text-sm text-muted-foreground md:inline">
@@ -452,7 +456,7 @@ export default function Dashboard() {
                             2023-06-23
                           </TableCell>
                           <TableCell className="text-right">$250.00</TableCell>
-                        </TableRow>
+                        </TableRow> */}
                         <TableRow>
                           <TableCell>
                             <div className="font-medium">Noah Williams</div>
@@ -561,11 +565,14 @@ export default function Dashboard() {
             </Tabs>
           </div>
           <div>
-            <Card className="overflow-hidden">
+            <Card
+              className="overflow-hidden"
+              x-chunk="An order details card with order details, shipping information, customer information and payment information."
+            >
               <CardHeader className="flex flex-row items-start bg-muted/50">
                 <div className="grid gap-0.5">
                   <CardTitle className="group flex items-center gap-2 text-lg">
-                    Order ID: Oe31b70H
+                    Order Oe31b70H
                     <Button
                       size="icon"
                       variant="outline"

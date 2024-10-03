@@ -22,9 +22,9 @@ export default function ThemesPage() {
     <div className="container">
       <ThemeWrapper
         defaultTheme="zinc"
-        className="relative flex flex-col items-start md:flex-row md:items-center"
+        className="relative flex w-full flex-col items-start md:flex-row"
       >
-        <PageHeader>
+        <PageHeader className="w-full">
           <Announcement />
           <PageHeaderHeading className="hidden md:block">
             Add colors. Make it yours.
