@@ -10,10 +10,10 @@ import { removeComponents } from "@/src/utils/remove-component"
 
 import "@/src/utils/updaters/update-component-json"
 import { removeComponentsSafely } from "@/src/utils/remove-safely"
+import { resetComponentsJson } from "@/src/utils/updaters/update-component-json"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
-import { resetComponentsJson } from "@/src/utils/updaters/update-component-json"
 
 export const removeOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -68,7 +68,7 @@ export const remove = new Command()
           name: "proceed",
           message: `You need to create a ${highlighter.info(
             "component.json"
-          )} file to add components. Proceed?`,
+          )} file to add or remove components. Proceed?`,
           initial: true,
         })
 
@@ -111,6 +111,12 @@ export const remove = new Command()
           isNewProject: true,
           srcDir: options.srcDir,
         })
+        logger.log(
+          `${highlighter.success(
+            "Success!"
+          )} Project initialization completed.\nYou may now add or remove components.`
+        )
+        logger.break()
       }
 
       if (!config) {
@@ -118,7 +124,26 @@ export const remove = new Command()
           `Failed to read config at ${highlighter.info(options.cwd)}.`
         )
       }
+      if (
+        !options.components?.length &&
+        !config.installed.ui?.length &&
+        !options.updateConfig
+      ) {
+        const { proceed } = await prompts({
+          type: "confirm",
+          name: "proceed",
+          message: `nothing to ${highlighter.warn(
+            "remove"
+          )} try --update-config option`,
+          initial: true,
+        })
 
+        if (!proceed) {
+          logger.break()
+          process.exit(1)
+        }
+        options.updateConfig = true
+      }
       if (options.updateConfig) {
         let updatedConfig = await resetComponentsJson(config, options)
         if (updatedConfig) {
