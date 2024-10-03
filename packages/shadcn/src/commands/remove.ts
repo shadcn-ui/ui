@@ -1,22 +1,19 @@
-import { rmSync } from "fs"
-import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightRemove } from "@/src/preflights/preflight-remove"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
-import { type Config } from "@/src/utils/get-config"
+import { type InstalledField } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { removeComponents } from "@/src/utils/remove-component"
-import { spinner } from "@/src/utils/spinner"
-import {
-  resetComponentsJson,
-  updateComponentJson,
-} from "@/src/utils/updaters/update-component-json"
+
+import "@/src/utils/updaters/update-component-json"
+import { removeComponentsSafely } from "@/src/utils/remove-safely"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
+import { resetComponentsJson } from "@/src/utils/updaters/update-component-json"
 
 export const removeOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -121,6 +118,7 @@ export const remove = new Command()
           `Failed to read config at ${highlighter.info(options.cwd)}.`
         )
       }
+
       if (options.updateConfig) {
         let updatedConfig = await resetComponentsJson(config, options)
         if (updatedConfig) {
@@ -145,7 +143,7 @@ export const remove = new Command()
       if (!options.components?.length || options.all) {
         options.components = await promptForInstalledComponents(
           options,
-          config.components
+          config.installed
         )
       }
       if (!options.recursive && !options.yes) {
@@ -199,20 +197,21 @@ export const remove = new Command()
 // show list of installed components
 async function promptForInstalledComponents(
   options: z.infer<typeof removeOptionsSchema>,
-  installedComponents: string[]
+  installed: InstalledField
 ) {
-  if (!installedComponents.length) {
-    logger.warn("No components installed. Exiting.")
+  if (!installed.ui || !installed.ui.length) {
+    logger.warn("Nothing to remove from ui. Exiting.")
     logger.info("")
     process.exit(1)
   }
+
   const { components } = await prompts({
     type: "multiselect",
     name: "components",
     message: "Which components would you like to remove?",
     hint: "Space to select. A to toggle all. Enter to submit.",
     instructions: false,
-    choices: installedComponents.map((entry) => ({
+    choices: installed.ui.map((entry: string) => ({
       title: entry,
       value: entry,
       selected: options.all ? true : options.components?.includes(entry),
@@ -231,58 +230,4 @@ async function promptForInstalledComponents(
     return []
   }
   return result.data
-}
-
-async function removeComponentsSafely(
-  components: string[],
-  config: Config,
-  silent: boolean
-) {
-  const filesDeletedSpinner = spinner(`removing files.`, {
-    silent,
-  })?.start()
-  const filesDeleted: string[] = []
-  const filesFailed: string[] = []
-  let removedComponents: string[] = []
-  const componentSet = new Set(config.components)
-  components.forEach(async (component) => {
-    let componentFile = component + (config.tsx ? ".tsx" : "jsx")
-    let filePath = path.join(config.resolvedPaths.ui, componentFile)
-    if (componentSet.has(component)) {
-      try {
-        rmSync(filePath)
-        filesDeleted.push(path.relative(config.resolvedPaths.cwd, filePath))
-        removedComponents.push(component)
-      } catch (error: any) {
-        filesFailed.push(path.relative(config.resolvedPaths.cwd, filePath))
-        logger.info(error.message)
-      }
-    } else {
-      filesFailed.push(path.relative(config.resolvedPaths.cwd, filePath))
-    }
-  })
-  filesDeletedSpinner.succeed()
-  if (filesFailed.length) {
-    spinner(
-      `failed to delete ${filesFailed.length} ${
-        filesFailed.length === 1 ? "file" : "files"
-      }:`
-    )?.fail()
-    if (!silent) {
-      for (const file of filesFailed) {
-        logger.log(`  - ${file}`)
-      }
-    }
-  }
-  spinner(
-    `deleted ${filesDeleted.length} ${
-      filesDeleted.length === 1 ? "file" : "files"
-    }:`
-  )?.succeed()
-  if (!silent) {
-    for (const file of filesDeleted) {
-      logger.log(`  - ${file}`)
-    }
-  }
-  await updateComponentJson(removedComponents, config, { silent }, "remove")
 }

@@ -41,7 +41,6 @@ export async function addComponents(
     cleanupDefaultNextStyles: options.isNewProject,
     silent: options.silent,
   })
-
   await updateDependencies(tree.dependencies, config, {
     silent: options.silent,
   })
@@ -50,7 +49,8 @@ export async function addComponents(
     silent: options.silent,
   })
 
-  await updateComponentJson(components, config, options)
+
+  await updateComponentJson(tree.files, config, options)
   if (tree.docs) {
     logger.info(tree.docs)
   }

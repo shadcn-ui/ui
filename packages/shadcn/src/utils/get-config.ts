@@ -18,6 +18,20 @@ const explorer = cosmiconfig("components", {
   searchPlaces: ["components.json"],
 })
 
+const installedFieldSchema = z
+  .object({
+    components: z.array(z.string()).optional(),
+    ui: z.array(z.string()).optional(),
+    hooks: z.array(z.string()).optional(),
+    lib: z.array(z.string()).optional(),
+  })
+  .default({
+    components: [],
+    ui: [],
+    hooks: [],
+    lib: [],
+  })
+
 export const rawConfigSchema = z
   .object({
     $schema: z.string().optional(),
@@ -38,11 +52,13 @@ export const rawConfigSchema = z
       lib: z.string().optional(),
       hooks: z.string().optional(),
     }),
-    components: z.array(z.string()).default([]),
+    installed: installedFieldSchema,
   })
   .strict()
 
 export type RawConfig = z.infer<typeof rawConfigSchema>
+
+export type InstalledField = z.infer<typeof installedFieldSchema>
 
 export const configSchema = rawConfigSchema.extend({
   resolvedPaths: z.object({

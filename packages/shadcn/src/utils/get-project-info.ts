@@ -64,7 +64,6 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindConfigFile,
     tailwindCssFile,
     aliasPrefix,
-
   }
 
   // Next.js.
@@ -241,7 +240,7 @@ export async function getProjectConfig(
       lib: `${projectInfo.aliasPrefix}/lib`,
       utils: `${projectInfo.aliasPrefix}/lib/utils`,
     },
-    components: [],
+    installed: {},
   }
 
   return await resolveConfigPaths(cwd, config)

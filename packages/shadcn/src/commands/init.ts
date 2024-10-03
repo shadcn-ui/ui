@@ -102,6 +102,7 @@ export async function runInit(
   }
 
   const projectConfig = await getProjectConfig(options.cwd, projectInfo)
+
   const config = projectConfig
     ? await promptForMinimalConfig(projectConfig, options)
     : await promptForConfig(await getConfig(options.cwd))
@@ -266,7 +267,6 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       lib: options.components.replace(/\/components$/, "lib"),
       hooks: options.components.replace(/\/components$/, "hooks"),
     },
-    components: [],
   })
 }
 

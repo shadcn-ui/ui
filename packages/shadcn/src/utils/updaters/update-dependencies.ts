@@ -46,19 +46,18 @@ export async function removeDependencies(
   if (!dependencies?.length) {
     return
   }
-
   options = {
     silent: false,
     ...options,
   }
-    const dependenciesSpinner = spinner(`Removing dependencies.`, {
-      silent: options.silent,
-    })?.start()
-    const packageManager = await getPackageManager(config.resolvedPaths.cwd)
-    await execa(packageManager, ["remove", ...dependencies], {
-      cwd: config.resolvedPaths.cwd,
-    })
-    dependenciesSpinner?.succeed()
+  const dependenciesSpinner = spinner(`Removing dependencies.`, {
+    silent: options.silent,
+  })?.start()
+  const packageManager = await getPackageManager(config.resolvedPaths.cwd)
+  await execa(packageManager, ["remove", ...dependencies], {
+    cwd: config.resolvedPaths.cwd,
+  })
+  dependenciesSpinner?.succeed()
 
-    return  
+  return
 }

@@ -9,7 +9,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { getRegistryIndex } from "@/src/utils/registry"
 import { updateAppIndex } from "@/src/utils/update-app-index"
-import { resetComponentsJson } from "@/src/utils/updaters/update-component-json"
+// import { resetComponentsJson } from "@/src/utils/updaters/update-component-json"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
@@ -152,12 +152,12 @@ export const add = new Command()
         )
       }
 
-      if (options.updateConfig) {
-        let updatedConfig = await resetComponentsJson(config, options)
-        if (updatedConfig) {
-          config = updatedConfig
-        }
-      }
+      // if (options.updateConfig) {
+      //   let updatedConfig = await resetComponentsJson(config, options)
+      //   if (updatedConfig) {
+      //     config = updatedConfig
+      //   }
+      // }
       await addComponents(options.components, config, options)
 
       // If we're adding a single component and it's from the v0 registry,
