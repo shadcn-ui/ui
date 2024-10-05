@@ -65,7 +65,9 @@ function getItems(node, current): Items {
 
 const getToc = () => (node, file) => {
   const table = toc(node)
-  file.data = getItems(table.map, {})
+  const items = getItems(table.map, {})
+
+  file.data = items
 }
 
 export type TableOfContents = Items

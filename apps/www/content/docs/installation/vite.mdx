@@ -1,0 +1,135 @@
+---
+title: Vite
+description: Install and configure Vite.
+---
+
+<Steps>
+
+### Create project
+
+Start by creating a new React project using `vite`:
+
+```bash
+npm create vite@latest
+```
+
+### Add Tailwind and its configuration
+
+Install `tailwindcss` and its peer dependencies, then generate your `tailwind.config.js` and `postcss.config.js` files:
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+
+npx tailwindcss init -p
+```
+
+### Edit tsconfig.json file
+
+The current version of Vite splits TypeScript configuration into three files, two of which need to be edited.
+Add the `baseUrl` and `paths` properties to the `compilerOptions` section of the `tsconfig.json` and
+`tsconfig.app.json` files:
+
+```ts {11-16} showLineNumbers
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+### Edit tsconfig.app.json file
+
+Add the following code to the `tsconfig.app.json` file to resolve paths, for your IDE:
+
+```ts {4-9} showLineNumbers
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
+```
+
+### Update vite.config.ts
+
+Add the following code to the vite.config.ts so your app can resolve paths without error
+
+```bash
+# (so you can import "path" without error)
+npm i -D @types/node
+```
+
+```typescript
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
+
+### Run the CLI
+
+Run the `shadcn-ui` init command to setup your project:
+
+```bash
+npx shadcn@latest init
+```
+
+### Configure components.json
+
+You will be asked a few questions to configure `components.json`:
+
+```txt showLineNumbers
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
+Do you want to use CSS variables for colors? › no / yes
+```
+
+### That's it
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn@latest add button
+```
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx {1,6} showLineNumbers
+import { Button } from "@/components/ui/button"
+
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+```
+
+</Steps>

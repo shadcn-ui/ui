@@ -1,0 +1,13 @@
+{
+  "name": "accordion",
+  "dependencies": [
+    "@radix-ui/react-accordion"
+  ],
+  "files": [
+    {
+      "name": "accordion.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as AccordionPrimitive from \"@radix-ui/react-accordion\"\nimport { ChevronDownIcon } from \"@radix-ui/react-icons\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Accordion = AccordionPrimitive.Root\n\nconst AccordionItem = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Item>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>\n>(({ className, ...props }, ref) => (\n  <AccordionPrimitive.Item\n    ref={ref}\n    className={cn(\"border-b\", className)}\n    {...props}\n  />\n))\nAccordionItem.displayName = \"AccordionItem\"\n\nconst AccordionTrigger = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Trigger>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>\n>(({ className, children, ...props }, ref) => (\n  <AccordionPrimitive.Header className=\"flex\">\n    <AccordionPrimitive.Trigger\n      ref={ref}\n      className={cn(\n        \"flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n      <ChevronDownIcon className=\"h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200\" />\n    </AccordionPrimitive.Trigger>\n  </AccordionPrimitive.Header>\n))\nAccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName\n\nconst AccordionContent = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>\n>(({ className, children, ...props }, ref) => (\n  <AccordionPrimitive.Content\n    ref={ref}\n    className=\"overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\"\n    {...props}\n  >\n    <div className={cn(\"pb-4 pt-0\", className)}>{children}</div>\n  </AccordionPrimitive.Content>\n))\nAccordionContent.displayName = AccordionPrimitive.Content.displayName\n\nexport { Accordion, AccordionItem, AccordionTrigger, AccordionContent }\n"
+    }
+  ],
+  "type": "components:ui"
+}

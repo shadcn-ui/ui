@@ -4,14 +4,19 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { SidebarNavItem } from "types/nav"
 
+import { type DocsConfig } from "@/config/docs"
 import { cn } from "@/lib/utils"
 
 export interface DocsSidebarNavProps {
-  items: SidebarNavItem[]
+  config: DocsConfig
 }
 
-export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
+export function DocsSidebarNav({ config }: DocsSidebarNavProps) {
   const pathname = usePathname()
+
+  const items = pathname?.startsWith("/charts")
+    ? config.chartsNav
+    : config.sidebarNav
 
   return items.length ? (
     <div className="w-full">
