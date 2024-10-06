@@ -92,22 +92,14 @@ export default defineConfig({
 })
 ```
 
-### Update tailwind.config.js
+### Update src/index.css
 
-Add the following code to the tailwind.config.js so tailwind would be added to your components
+Add the following three lines at top of the file for Tailwind CSS configuration
 
 ```javascript
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ```
 
 ### Run the CLI
