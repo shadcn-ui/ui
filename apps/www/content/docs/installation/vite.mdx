@@ -92,6 +92,24 @@ export default defineConfig({
 })
 ```
 
+### Update tailwind.config.js
+
+Add the following code to the tailwind.config.js so tailwind would be added to your components
+
+```javascript
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
 ### Run the CLI
 
 Run the `shadcn-ui` init command to setup your project:
