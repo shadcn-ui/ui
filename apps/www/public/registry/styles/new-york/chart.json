@@ -1,12 +1,7 @@
 {
   "name": "chart",
-  "dependencies": [
-    "recharts",
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "card"
-  ],
+  "dependencies": ["recharts", "lucide-react"],
+  "registryDependencies": ["card"],
   "files": [
     {
       "name": "chart.tsx",
