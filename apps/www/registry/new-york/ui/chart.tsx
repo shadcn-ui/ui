@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import * as RechartsPrimitive from "recharts"
-import {
+import type {
   NameType,
   Payload,
   ValueType,
