@@ -23,6 +23,29 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
+### Edit tailwind.conifg.js file
+
+```ts {3} showLineNumbers
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+### Add the Tailwind directives to your CSS
+
+Add the fllowing code to the `index.css` file:
+
+```css showLineNumbers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
 ### Edit tsconfig.json file
 
 The current version of Vite splits TypeScript configuration into three files, two of which need to be edited.
