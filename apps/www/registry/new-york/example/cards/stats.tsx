@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/new-york/ui/card"
-import { themes } from "@/registry/themes"
+import { baseColors } from "@/registry/registry-base-colors"
 
 const data = [
   {
@@ -49,7 +49,9 @@ export function CardsStats() {
   const { theme: mode } = useTheme()
   const [config] = useConfig()
 
-  const theme = themes.find((theme) => theme.name === config.theme)
+  const baseColor = baseColors.find(
+    (baseColor) => baseColor.name === config.theme
+  )
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
@@ -85,7 +87,7 @@ export function CardsStats() {
                     {
                       stroke: "var(--theme-primary)",
                       "--theme-primary": `hsl(${
-                        theme?.cssVars[mode === "dark" ? "dark" : "light"]
+                        baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
                           .primary
                       })`,
                     } as React.CSSProperties
@@ -115,7 +117,7 @@ export function CardsStats() {
                       fill: "var(--theme-primary)",
                       opacity: 1,
                       "--theme-primary": `hsl(${
-                        theme?.cssVars[mode === "dark" ? "dark" : "light"]
+                        baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
                           .primary
                       })`,
                     } as React.CSSProperties
