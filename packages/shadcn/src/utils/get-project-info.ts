@@ -240,6 +240,7 @@ export async function getProjectConfig(
       lib: `${projectInfo.aliasPrefix}/lib`,
       utils: `${projectInfo.aliasPrefix}/lib/utils`,
     },
+    installed: {},
   }
 
   return await resolveConfigPaths(cwd, config)

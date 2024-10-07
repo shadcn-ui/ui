@@ -51,7 +51,7 @@ export async function getRegistryItem(name: string, style: string) {
     const [result] = await fetchRegistry([
       isUrl(name) ? name : `styles/${style}/${name}.json`,
     ])
-
+    console.log("\n my Logg: ", registryItemSchema.parse(result))
     return registryItemSchema.parse(result)
   } catch (error) {
     logger.break()

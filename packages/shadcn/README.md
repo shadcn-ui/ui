@@ -34,6 +34,30 @@ You can also run the command without any arguments to view a list of all availab
 npx shadcn add
 ```
 
+
+## remove
+
+Use the `remove` command to remove components from your project.
+
+The `remove` command remove a component from your project and uninstalls all its dependencies.
+
+```bash
+npx shadcn remove [component]
+```
+
+### Example
+
+```bash
+npx shadcn remove alert-dialog
+```
+
+You can also run the command without any arguments to view a list of all installed components:
+
+```bash
+npx shadcn remove
+```
+
+
 ## Documentation
 
 Visit https://ui.shadcn.com/docs/cli to view the documentation.
