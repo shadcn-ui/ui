@@ -54,6 +54,11 @@ export const ui: Registry = [
     files: ["ui/avatar.tsx"],
   },
   {
+    name: "avatar-group",
+    type: "components:ui",
+    files: ["ui/avatar-group.tsx"],
+  },
+  {
     name: "badge",
     type: "registry:ui",
     files: ["ui/badge.tsx"],

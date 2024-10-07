@@ -38,6 +38,18 @@ export const examples: Registry = [
     files: ["example/avatar-demo.tsx"],
   },
   {
+    name: "avatar-group-demo",
+    type: "components:example",
+    registryDependencies: ["avatar"],
+    files: ["example/avatar-group-demo.tsx"],
+  },
+  {
+    name: "avatar-group-tooltip",
+    type: "components:example",
+    registryDependencies: ["avatar"],
+    files: ["example/avatar-group-tooltip.tsx"],
+  },
+  {
     name: "badge-demo",
     type: "registry:example",
     registryDependencies: ["badge"],
