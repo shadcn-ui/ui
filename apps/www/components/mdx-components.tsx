@@ -28,6 +28,7 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
+  AlertCloseButton,
 } from "@/registry/new-york/ui/alert"
 import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
 import {
@@ -46,6 +47,7 @@ const components = {
   Alert,
   AlertTitle,
   AlertDescription,
+  AlertCloseButton,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(

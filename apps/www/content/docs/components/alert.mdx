@@ -45,7 +45,7 @@ npx shadcn@latest add alert
 ## Usage
 
 ```tsx
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle, AlertCloseButton } from "@/components/ui/alert"
 ```
 
 ```tsx
@@ -55,6 +55,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
   <AlertDescription>
     You can add components and dependencies to your app using the cli.
   </AlertDescription>
+  <AlertCloseButton onClick={handleCloseAlert} />
 </Alert>
 ```
 
