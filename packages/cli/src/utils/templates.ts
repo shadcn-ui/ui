@@ -23,15 +23,7 @@ module.exports = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
   ],
-  prefix: "<%- prefix %>",
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
+    prefix: "<%- prefix %>",
     extend: {
       keyframes: {
         "accordion-down": {
@@ -61,15 +53,7 @@ module.exports = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
   ],
-  prefix: "<%- prefix %>",
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
+    prefix: "<%- prefix %>",
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -140,15 +124,7 @@ const config = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
   ],
-  prefix: "<%- prefix %>",
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
+    prefix: "<%- prefix %>",
     extend: {
       keyframes: {
         "accordion-down": {
@@ -181,15 +157,7 @@ const config = {
     './app/**/*.{<%- extension %>,<%- extension %>x}',
     './src/**/*.{<%- extension %>,<%- extension %>x}',
 	],
-  prefix: "<%- prefix %>",
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
+    prefix: "<%- prefix %>",
     extend: {
       colors: {
         border: "hsl(var(--border))",
