@@ -8,7 +8,7 @@ import { cn } from "@/registry/default/lib/utils"
 import { Button } from "@/registry/default/ui/button"
 import { Sheet, SheetContent } from "@/registry/default/ui/sheet"
 
-export const SIDEBAR_STATE_COOKIE = "sidebar:state"
+const SIDEBAR_STATE_COOKIE = "sidebar:state"
 
 type SidebarContext = {
   state: "open" | "closed"
@@ -36,10 +36,13 @@ const SidebarLayout = React.forwardRef<
 
   const onOpenChange = React.useCallback((open: boolean) => {
     setOpen(open)
+  }, [])
+
+  React.useEffect(() => {
     document.cookie = `${SIDEBAR_STATE_COOKIE}=${open}; path=/; max-age=${
       60 * 60 * 24 * 7
     }`
-  }, [])
+  }, [open])
 
   const state = open ? "open" : "closed"
 
