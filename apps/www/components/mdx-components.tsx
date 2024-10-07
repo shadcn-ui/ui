@@ -49,7 +49,7 @@ const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
-        "font-heading mt-2 scroll-m-20 text-4xl font-bold",
+        "font-heading group mt-2 scroll-m-20 text-4xl font-bold",
         className
       )}
       {...props}
@@ -58,7 +58,7 @@ const components = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        "font-heading mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0",
+        "font-heading group mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0",
         className
       )}
       {...props}
@@ -67,7 +67,7 @@ const components = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "font-heading group mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -76,7 +76,7 @@ const components = {
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        "font-heading group mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -85,7 +85,7 @@ const components = {
   h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h5
       className={cn(
-        "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        "group mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -94,18 +94,40 @@ const components = {
   h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h6
       className={cn(
-        "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+        "group mt-8 scroll-m-20 text-base font-semibold tracking-tight",
         className
       )}
       {...props}
     />
   ),
-  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
-    <a
-      className={cn("font-medium underline underline-offset-4", className)}
-      {...props}
-    />
-  ),
+  a: ({
+    className,
+    __isSubheadingAnchor__,
+    ...props
+  }: React.HTMLAttributes<HTMLAnchorElement> & {
+    __isSubheadingAnchor__: boolean
+  }) => {
+    if (__isSubheadingAnchor__) {
+      return (
+        <a
+          className={cn(
+            "ml-2 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100",
+            className
+          )}
+          {...props}
+        >
+          #
+        </a>
+      )
+    }
+
+    return (
+      <a
+        className={cn("font-medium underline underline-offset-4", className)}
+        {...props}
+      />
+    )
+  },
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
