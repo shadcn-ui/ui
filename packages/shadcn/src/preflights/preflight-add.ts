@@ -4,6 +4,7 @@ import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { findUpSync } from "find-up"
 import fs from "fs-extra"
 import { z } from "zod"
 
@@ -14,7 +15,7 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
   // Check for empty project. We assume if no package.json exists, the project is empty.
   if (
     !fs.existsSync(options.cwd) ||
-    !fs.existsSync(path.resolve(options.cwd, "package.json"))
+    !findUpSync("package.json", { cwd: options.cwd })
   ) {
     errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT] = true
     return {
