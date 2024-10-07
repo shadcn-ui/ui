@@ -22,7 +22,7 @@ export const transformTwPrefixes: Transformer = async ({
         if (defaultClassNames) {
           defaultClassNames.replaceWithText(
             `"${applyPrefix(
-              defaultClassNames.getText()?.replace(/"/g, ""),
+              defaultClassNames.getText()?.replace(/"|'/g, ""),
               config.tailwind.prefix
             )}"`
           )
@@ -46,7 +46,7 @@ export const transformTwPrefixes: Transformer = async ({
                 if (classNames) {
                   classNames?.replaceWithText(
                     `"${applyPrefix(
-                      classNames.getText()?.replace(/"/g, ""),
+                      classNames.getText()?.replace(/"|'/g, ""),
                       config.tailwind.prefix
                     )}"`
                   )
@@ -65,7 +65,7 @@ export const transformTwPrefixes: Transformer = async ({
         if (value) {
           value.replaceWithText(
             `"${applyPrefix(
-              value.getText()?.replace(/"/g, ""),
+              value.getText()?.replace(/"|'/g, ""),
               config.tailwind.prefix
             )}"`
           )
@@ -91,7 +91,7 @@ export const transformTwPrefixes: Transformer = async ({
                 .forEach((node) => {
                   node.replaceWithText(
                     `"${applyPrefix(
-                      node.getText()?.replace(/"/g, ""),
+                      node.getText()?.replace(/"|'/g, ""),
                       config.tailwind.prefix
                     )}"`
                   )
@@ -101,7 +101,7 @@ export const transformTwPrefixes: Transformer = async ({
             if (node.isKind(SyntaxKind.StringLiteral)) {
               node.replaceWithText(
                 `"${applyPrefix(
-                  node.getText()?.replace(/"/g, ""),
+                  node.getText()?.replace(/"|'/g, ""),
                   config.tailwind.prefix
                 )}"`
               )
@@ -130,7 +130,7 @@ export const transformTwPrefixes: Transformer = async ({
                       .forEach((node) => {
                         node.replaceWithText(
                           `"${applyPrefix(
-                            node.getText()?.replace(/"/g, ""),
+                            node.getText()?.replace(/"|'/g, ""),
                             config.tailwind.prefix
                           )}"`
                         )
@@ -140,7 +140,7 @@ export const transformTwPrefixes: Transformer = async ({
                   if (arg.isKind(SyntaxKind.StringLiteral)) {
                     arg.replaceWithText(
                       `"${applyPrefix(
-                        arg.getText()?.replace(/"/g, ""),
+                        arg.getText()?.replace(/"|'/g, ""),
                         config.tailwind.prefix
                       )}"`
                     )
@@ -155,7 +155,7 @@ export const transformTwPrefixes: Transformer = async ({
                 if (classNames) {
                   classNames.replaceWithText(
                     `"${applyPrefix(
-                      classNames.getText()?.replace(/"/g, ""),
+                      classNames.getText()?.replace(/"|'/g, ""),
                       config.tailwind.prefix
                     )}"`
                   )
