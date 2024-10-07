@@ -141,7 +141,7 @@ export default function Component() {
 
   const filteredData = chartData.filter((item) => {
     const date = new Date(item.date)
-    const now = new Date()
+    const now = new Date("2024-06-30")
     let daysToSubtract = 90
     if (timeRange === "30d") {
       daysToSubtract = 30
