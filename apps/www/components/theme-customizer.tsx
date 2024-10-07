@@ -616,7 +616,7 @@ function getThemeCode(theme: BaseColor, radius: number) {
 
 const BASE_STYLES_WITH_VARIABLES = `
 @layer base {
-  :root {
+  :root, .light {
     --background: <%- colors.light["background"] %>;
     --foreground: <%- colors.light["foreground"] %>;
     --card: <%- colors.light["card"] %>;
