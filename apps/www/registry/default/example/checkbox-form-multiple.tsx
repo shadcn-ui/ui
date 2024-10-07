@@ -96,6 +96,7 @@ export default function CheckboxReactHookFormMultiple() {
                       >
                         <FormControl>
                           <Checkbox
+                            ref={field.ref}
                             checked={field.value?.includes(item.id)}
                             onCheckedChange={(checked) => {
                               return checked
