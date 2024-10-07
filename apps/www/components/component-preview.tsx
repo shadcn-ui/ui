@@ -38,6 +38,7 @@ export function ComponentPreview({
   hideCode = false,
   ...props
 }: ComponentPreviewProps) {
+  
   const [config] = useConfig()
   const index = styles.findIndex((style) => style.name === config.style)
 
