@@ -188,6 +188,13 @@ export const ui: Registry = [
     files: ["ui/navigation-menu.tsx"],
   },
   {
+    name: "number-field",
+    type: "registry:ui",
+    dependencies: ["react-aria", "react-stately", "@react-types/shared"],
+    registryDependencies: ["button", "input"],
+    files: ["ui/number-field.tsx"],
+  },
+  {
     name: "pagination",
     type: "registry:ui",
     registryDependencies: ["button"],

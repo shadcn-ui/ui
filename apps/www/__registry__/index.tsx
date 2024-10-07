@@ -291,6 +291,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "number-field": {
+      name: "number-field",
+      type: "registry:ui",
+      registryDependencies: ["button","input"],
+      files: ["registry/new-york/ui/number-field.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/ui/number-field.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "pagination": {
       name: "pagination",
       type: "registry:ui",
@@ -1364,6 +1375,72 @@ export const Index: Record<string, any> = {
       registryDependencies: ["navigation-menu"],
       files: ["registry/new-york/example/navigation-menu-demo.tsx"],
       component: React.lazy(() => import("@/registry/new-york/example/navigation-menu-demo.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-demo": {
+      name: "number-field-demo",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/new-york/example/number-field-demo.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-demo.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-disabled": {
+      name: "number-field-disabled",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/new-york/example/number-field-disabled.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-disabled.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-form": {
+      name: "number-field-form",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/new-york/example/number-field-form.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-form.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-btn-position": {
+      name: "number-field-btn-position",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/new-york/example/number-field-btn-position.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-btn-position.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-label-position": {
+      name: "number-field-label-position",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/new-york/example/number-field-label-position.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-label-position.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-number-formatting": {
+      name: "number-field-number-formatting",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/new-york/example/number-field-number-formatting.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/number-field-number-formatting.tsx")),
       source: "",
       category: "undefined",
       subcategory: "undefined",
@@ -3647,6 +3724,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "number-field": {
+      name: "number-field",
+      type: "registry:ui",
+      registryDependencies: ["button","input"],
+      files: ["registry/default/ui/number-field.tsx"],
+      component: React.lazy(() => import("@/registry/default/ui/number-field.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "pagination": {
       name: "pagination",
       type: "registry:ui",
@@ -4720,6 +4808,72 @@ export const Index: Record<string, any> = {
       registryDependencies: ["navigation-menu"],
       files: ["registry/default/example/navigation-menu-demo.tsx"],
       component: React.lazy(() => import("@/registry/default/example/navigation-menu-demo.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-demo": {
+      name: "number-field-demo",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/default/example/number-field-demo.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-demo.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-disabled": {
+      name: "number-field-disabled",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/default/example/number-field-disabled.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-disabled.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-form": {
+      name: "number-field-form",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/default/example/number-field-form.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-form.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-btn-position": {
+      name: "number-field-btn-position",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/default/example/number-field-btn-position.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-btn-position.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-label-position": {
+      name: "number-field-label-position",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/default/example/number-field-label-position.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-label-position.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "number-field-number-formatting": {
+      name: "number-field-number-formatting",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: ["registry/default/example/number-field-number-formatting.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/number-field-number-formatting.tsx")),
       source: "",
       category: "undefined",
       subcategory: "undefined",

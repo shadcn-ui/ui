@@ -382,6 +382,25 @@
     ]
   },
   {
+    "name": "number-field",
+    "type": "registry:ui",
+    "dependencies": [
+      "react-aria",
+      "react-stately",
+      "@react-types/shared"
+    ],
+    "registryDependencies": [
+      "button",
+      "input"
+    ],
+    "files": [
+      {
+        "path": "ui/number-field.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "pagination",
     "type": "registry:ui",
     "registryDependencies": [

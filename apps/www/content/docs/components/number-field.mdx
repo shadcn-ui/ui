@@ -1,0 +1,119 @@
+---
+title: Number Field
+description: A component used to create a number input field.
+component: true
+links:
+  doc: https://github.com/thought7878/andi-ui
+  api: https://github.com/thought7878/andi-ui?tab=readme-ov-file#api-reference
+---
+
+<ComponentPreview
+  name="number-field-demo"
+  description="A number field component."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add number-field
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-stately react-aria @react-types/shared
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="number-field" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  NumberField,
+  NumberFieldDecrement,
+  NumberFieldGroup,
+  NumberFieldIncrement,
+  NumberFieldInput,
+  NumberFieldLabel,
+} from "@/components/ui/number-field"
+```
+
+```tsx
+<NumberField>
+  <NumberFieldLabel>Amount</NumberFieldLabel>
+  <NumberFieldGroup>
+    <NumberFieldIncrement>{custom icon}</NumberFieldIncrement>
+    <NumberFieldInput />
+    <NumberFieldDecrement>{custom icon}</NumberFieldDecrement>
+  </NumberFieldGroup>
+</NumberField>
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview
+  name="number-field-demo"
+  description="A number field component."
+/>
+
+### Form
+
+<ComponentPreview
+  name="number-field-form"
+  description="A number field component with form controls."
+/>
+
+### Disabled
+
+<ComponentPreview
+  name="number-field-disabled"
+  description="A number field component with disabled state."
+/>
+
+### Button position
+
+<ComponentPreview
+  name="number-field-btn-position"
+  description="A number field component with button position."
+/>
+
+### Label position
+
+<ComponentPreview
+  name="number-field-label-position"
+  description="A number field component with label position."
+/>
+
+### Number formatting
+
+<ComponentPreview
+  name="number-field-number-formatting"
+  description="A number field component with number formatting."
+/>
