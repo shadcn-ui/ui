@@ -9,14 +9,43 @@ import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
+/**
+ * Validates a project name against Next.js naming conventions
+ * @param name - The project name to validate
+ * @returns An object containing isValid boolean and optional error message
+ */
+function isValidProjectName(name: string): { isValid: boolean; message?: string } {
+  if (!name) {
+    return { isValid: false, message: "Project name cannot be empty." }
+  }
+
+  if (name.length > 128) {
+    return { isValid: false, message: "Project name should be less than 128 characters." }
+  }
+  
+  if (!/^[a-z][a-z0-9-]*$/.test(name)) {
+    return { 
+      isValid: false, 
+      message: "Project name must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens."
+    }
+  }
+  
+  return { isValid: true }
+}
+
+/**
+ * Creates a new Next.js project with shadcn-ui configuration
+ */
 export async function createProject(
   options: Pick<z.infer<typeof initOptionsSchema>, "cwd" | "force" | "srcDir">
 ) {
+  // Set default options
   options = {
     srcDir: false,
     ...options,
   }
 
+  // Confirm project creation if not forced
   if (!options.force) {
     const { proceed } = await prompts({
       type: "confirm",
@@ -28,7 +57,6 @@ export async function createProject(
       )} project?`,
       initial: true,
     })
-
     if (!proceed) {
       return {
         projectPath: null,
@@ -37,21 +65,25 @@ export async function createProject(
     }
   }
 
+  // Get package manager preference
   const packageManager = await getPackageManager(options.cwd)
-
+  
+  // Prompt for project name with validation
   const { name } = await prompts({
     type: "text",
     name: "name",
-    message: `What is your project named?`,
+    message: "What is your project named?",
     initial: "my-app",
     format: (value: string) => value.trim(),
-    validate: (value: string) =>
-      value.length > 128 ? `Name should be less than 128 characters.` : true,
+    validate: (value: string) => {
+      const validation = isValidProjectName(value)
+      return validation.isValid || validation.message
+    },
   })
 
-  const projectPath = `${options.cwd}/${name}`
+  const projectPath = path.join(options.cwd, name)
 
-  // Check if path is writable.
+  // Verify write permissions
   try {
     await fs.access(options.cwd, fs.constants.W_OK)
   } catch (error) {
@@ -66,7 +98,8 @@ export async function createProject(
     process.exit(1)
   }
 
-  if (fs.existsSync(path.resolve(options.cwd, name, "package.json"))) {
+  // Check if project already exists
+  if (fs.existsSync(path.resolve(projectPath, "package.json"))) {
     logger.break()
     logger.error(
       `A project with the name ${highlighter.info(name)} already exists.`
@@ -76,11 +109,11 @@ export async function createProject(
     process.exit(1)
   }
 
+  // Start project creation
   const createSpinner = spinner(
     `Creating a new Next.js project. This may take a few minutes.`
   ).start()
 
-  // Note: pnpm fails here. Fallback to npx with --use-PACKAGE-MANAGER.
   const args = [
     "--tailwind",
     "--eslint",
@@ -99,15 +132,30 @@ export async function createProject(
         cwd: options.cwd,
       }
     )
+    createSpinner?.succeed("Created a new Next.js project successfully.")
   } catch (error) {
+    createSpinner?.fail("Failed to create Next.js project")
     logger.break()
-    logger.error(
-      `Something went wrong creating a new Next.js project. Please try again.`
-    )
+    
+    // Handle different types of errors
+    if (error instanceof Error) {
+      logger.error(`Error creating Next.js project: ${error.message}`)
+      
+      // Log additional context for common errors
+      if (error.message.includes("EACCES")) {
+        logger.error("This appears to be a permissions error. Please check your file system permissions.")
+      } else if (error.message.includes("NETWORK")) {
+        logger.error("This appears to be a network error. Please check your internet connection.")
+      }
+    } else {
+      logger.error(
+        "Something went wrong creating a new Next.js project. Please ensure your project name follows Next.js naming conventions (lowercase letters, numbers, and hyphens only)."
+      )
+    }
+    
+    logger.break()
     process.exit(1)
   }
-
-  createSpinner?.succeed("Creating a new Next.js project.")
 
   return {
     projectPath,
