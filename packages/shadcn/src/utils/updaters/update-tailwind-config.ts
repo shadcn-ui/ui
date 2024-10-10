@@ -196,12 +196,14 @@ async function addTailwindConfigTheme(
     const themeObject = await parseObjectLiteral(themeObjectString)
     const result = deepmerge(themeObject, theme)
     const resultString = objectToString(result)
-      .replace(/\'\"/g, "'")
-      .replace(/\"\'/g, "'")
-      .replace(/\'\[/g, "[")
-      .replace(/\]\'/g, "]")
-      .replace(/\\\'/g, "")
-      .replace(/\\\'/g, "")
+      .replace(/\'\"/g, "'") // Replace `\" with "
+      .replace(/\"\'/g, "'") // Replace `\" with "
+      .replace(/\'\[/g, "[") // Replace `[ with [
+      .replace(/\]\'/g, "]") // Replace `] with ]
+      .replace(/\'\\\'/g, "'") // Replace `\' with '
+      .replace(/\\\'/g, "'") // Replace \' with '
+      .replace(/\\\'\'/g, "'")
+      .replace(/\'\'/g, "'")
     themeInitializer.replaceWithText(resultString)
   }
 
@@ -247,7 +249,7 @@ function addTailwindConfigPlugin(
   return configObject
 }
 
-async function _createSourceFile(input: string, config: Config | null) {
+export async function _createSourceFile(input: string, config: Config | null) {
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   const resolvedPath =
     config?.resolvedPaths?.tailwindConfig || "tailwind.config.ts"
@@ -266,7 +268,7 @@ async function _createSourceFile(input: string, config: Config | null) {
   return sourceFile
 }
 
-function _getQuoteChar(configObject: ObjectLiteralExpression) {
+export function _getQuoteChar(configObject: ObjectLiteralExpression) {
   return configObject
     .getFirstDescendantByKind(SyntaxKind.StringLiteral)
     ?.getQuoteKind() === QuoteKind.Single

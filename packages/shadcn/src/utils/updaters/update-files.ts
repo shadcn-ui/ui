@@ -1,6 +1,7 @@
 import { existsSync, promises as fs } from "fs"
 import path, { basename } from "path"
 import { Config } from "@/src/utils/get-config"
+import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import {
@@ -15,6 +16,19 @@ import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
+
+export function resolveTargetDir(
+  projectInfo: Awaited<ReturnType<typeof getProjectInfo>>,
+  config: Config,
+  target: string
+) {
+  if (target.startsWith("~/")) {
+    return path.join(config.resolvedPaths.cwd, target.replace("~/", ""))
+  }
+  return projectInfo?.isSrcDir
+    ? path.join(config.resolvedPaths.cwd, "src", target)
+    : path.join(config.resolvedPaths.cwd, target)
+}
 
 export async function updateFiles(
   files: RegistryItem["files"],
@@ -37,7 +51,12 @@ export async function updateFiles(
   const filesCreatedSpinner = spinner(`Updating files.`, {
     silent: options.silent,
   })?.start()
-  const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+
+  const [projectInfo, baseColor] = await Promise.all([
+    getProjectInfo(config.resolvedPaths.cwd),
+    getRegistryBaseColor(config.tailwind.baseColor),
+  ])
+
   const filesCreated = []
   const filesUpdated = []
   const filesSkipped = []
@@ -52,7 +71,7 @@ export async function updateFiles(
     let filePath = path.join(targetDir, fileName)
 
     if (file.target) {
-      filePath = path.join(config.resolvedPaths.cwd, file.target)
+      filePath = resolveTargetDir(projectInfo, config, file.target)
       targetDir = path.dirname(filePath)
     }
 

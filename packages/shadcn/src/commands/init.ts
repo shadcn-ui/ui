@@ -20,6 +20,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
+import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
@@ -32,6 +33,7 @@ export const initOptionsSchema = z.object({
   force: z.boolean(),
   silent: z.boolean(),
   isNewProject: z.boolean(),
+  srcDir: z.boolean().optional(),
 })
 
 export const init = new Command()
@@ -50,6 +52,11 @@ export const init = new Command()
     process.cwd()
   )
   .option("-s, --silent", "mute output.", false)
+  .option(
+    "--src-dir",
+    "use the src directory when creating a new project.",
+    false
+  )
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
@@ -130,6 +137,18 @@ export async function runInit(
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
+
+  // If a new project is using src dir, let's update the tailwind content config.
+  // TODO: Handle this per framework.
+  if (options.isNewProject && options.srcDir) {
+    await updateTailwindContent(
+      ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+      fullConfig,
+      {
+        silent: options.silent,
+      }
+    )
+  }
 
   return fullConfig
 }
