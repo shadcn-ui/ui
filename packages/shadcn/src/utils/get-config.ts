@@ -125,7 +125,7 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
 
     return rawConfigSchema.parse(configResult.config)
   } catch (error) {
-    const componentPath = `${cwd}/component.json`
+    const componentPath = `${cwd}/components.json`
     throw new Error(
       `Invalid configuration found in ${highlighter.info(componentPath)}.`
     )
