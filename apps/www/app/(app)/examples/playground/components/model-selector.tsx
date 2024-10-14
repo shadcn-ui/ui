@@ -5,7 +5,6 @@ import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
 
 import { cn } from "@/lib/utils"
-import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
@@ -134,32 +133,32 @@ interface ModelItemProps {
 function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
   const ref = React.useRef<HTMLDivElement>(null)
 
-  useMutationObserver(ref, (mutations) => {
-    mutations.forEach((mutation) => {
-      if (
-        mutation.type === "attributes" &&
-        mutation.attributeName === "aria-selected" &&
-        ref.current?.getAttribute("aria-selected") === "true"
-      ) {
-        onPeek(model)
+  React.useEffect(() => {
+    const current = ref.current
+    if (current) {
+      const handleMouseEnter = () => onPeek(model)
+      current.addEventListener("mouseenter", handleMouseEnter)
+      return () => {
+        current.removeEventListener("mouseenter", handleMouseEnter)
       }
-    })
-  })
+    }
+  }, [model, onPeek])
 
   return (
-    <CommandItem
-      key={model.id}
-      onSelect={onSelect}
-      ref={ref}
-      className="data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground"
-    >
-      {model.name}
-      <CheckIcon
-        className={cn(
-          "ml-auto h-4 w-4",
-          isSelected ? "opacity-100" : "opacity-0"
-        )}
-      />
-    </CommandItem>
+    <div ref={ref}>
+      <CommandItem
+        key={model.id}
+        onSelect={onSelect}
+        className="data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground"
+      >
+        {model.name}
+        <CheckIcon
+          className={cn(
+            "ml-auto h-4 w-4",
+            isSelected ? "opacity-100" : "opacity-0"
+          )}
+        />
+      </CommandItem>
+    </div>
   )
 }
