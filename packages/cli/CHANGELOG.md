@@ -1,5 +1,27 @@
 # @shadcn/ui
 
+## 0.9.2
+
+### Patch Changes
+
+- [#4988](https://github.com/shadcn-ui/ui/pull/4988) [`5fc9ade`](https://github.com/shadcn-ui/ui/commit/5fc9ade413ea10da422a2439b5cc2027fb2a055e) Thanks [@shadcn](https://github.com/shadcn)! - add deprecation notice
+
+## 0.9.1
+
+### Patch Changes
+
+- [#4797](https://github.com/shadcn-ui/ui/pull/4797) [`207b69f`](https://github.com/shadcn-ui/ui/commit/207b69fe8dd59b10dddc9337d333416976e2a30d) Thanks [@Wiper-R](https://github.com/Wiper-R)! - add scss support
+
+## 0.9.0
+
+### Minor Changes
+
+- [#4569](https://github.com/shadcn-ui/ui/pull/4569) [`a62a155`](https://github.com/shadcn-ui/ui/commit/a62a155aac6409d41ea27529be2eef65e3db2723) Thanks [@shadcn](https://github.com/shadcn)! - Add support for frameworks
+
+### Patch Changes
+
+- [#2473](https://github.com/shadcn-ui/ui/pull/2473) [`343b20f`](https://github.com/shadcn-ui/ui/commit/343b20fc5c49ee8968fe56e42527ba1cc8ede0ec) Thanks [@kevinmitch14](https://github.com/kevinmitch14)! - update zod imports
+
 ## 0.8.0
 
 ### Minor Changes
