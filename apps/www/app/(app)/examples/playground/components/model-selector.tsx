@@ -73,6 +73,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
               align="start"
               forceMount
               className="min-h-[280px]"
+              noAnimation={true}
             >
               <div className="grid gap-2">
                 <h4 className="font-medium leading-none">{peekedModel.name}</h4>
