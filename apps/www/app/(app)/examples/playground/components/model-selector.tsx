@@ -5,6 +5,7 @@ import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
 
 import { cn } from "@/lib/utils"
+import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
@@ -134,16 +135,17 @@ interface ModelItemProps {
 function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
   const ref = React.useRef<HTMLDivElement>(null)
 
-  React.useEffect(() => {
-    const current = ref.current
-    if (current) {
-      const handleMouseEnter = () => onPeek(model)
-      current.addEventListener("mouseenter", handleMouseEnter)
-      return () => {
-        current.removeEventListener("mouseenter", handleMouseEnter)
+  useMutationObserver(ref, (mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "aria-selected" &&
+        ref.current?.firstElementChild?.getAttribute("aria-selected") === "true"
+      ) {
+        onPeek(model)
       }
-    }
-  }, [model, onPeek])
+    })
+  })
 
   return (
     <div ref={ref}>
