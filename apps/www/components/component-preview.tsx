@@ -25,10 +25,12 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: "center" | "start" | "end"
   description?: string
   hideCode?: boolean
+  type?: "block" | "component" | "example"
 }
 
 export function ComponentPreview({
   name,
+  type,
   children,
   className,
   extractClassname,
@@ -72,6 +74,19 @@ export function ComponentPreview({
       return Button?.props?.value || Button?.props?.__rawString__ || null
     }
   }, [Code])
+
+  if (type === "block") {
+    return (
+      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border">
+        <div className="absolute inset-0 w-[1600px] bg-background">
+          <iframe
+            src={`/blocks/${config.style}/${name}`}
+            className="size-full"
+          />
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div
