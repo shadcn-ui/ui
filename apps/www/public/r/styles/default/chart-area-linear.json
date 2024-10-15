@@ -1,6 +1,7 @@
 {
   "name": "chart-area-linear",
   "type": "registry:block",
+  "description": "A linear area chart",
   "registryDependencies": [
     "card",
     "chart"

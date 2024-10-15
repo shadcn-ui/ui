@@ -1,6 +1,7 @@
 {
   "name": "chart-line-dots-colors",
   "type": "registry:block",
+  "description": "A line chart with dots and colors",
   "registryDependencies": [
     "card",
     "chart"

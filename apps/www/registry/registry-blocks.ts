@@ -3,7 +3,6 @@ import { Registry } from "@/registry/schema"
 export const blocks: Registry = [
   {
     name: "sidebar-01",
-    description: "A simple sidebar with navigation grouped by section.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -36,7 +35,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-02",
-    description: "A sidebar with collapsible sections.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -69,7 +67,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-03",
-    description: "A sidebar with submenus.",
     type: "registry:block",
     registryDependencies: ["sidebar", "breadcrumb"],
     files: [
@@ -88,7 +85,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-04",
-    description: "A floating sidebar with submenus.",
     type: "registry:block",
     registryDependencies: ["sidebar", "breadcrumb", "separator"],
     files: [
@@ -107,7 +103,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-05",
-    description: "A sidebar with collapsible submenus.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -136,7 +131,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-06",
-    description: "A sidebar with submenus as dropdowns.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -169,7 +163,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-07",
-    description: "A sidebar that collapses to icons.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -207,7 +200,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-08",
-    description: "An inset sidebar with secondary navigation.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -249,7 +241,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-09",
-    description: "Collapsible nested sidebars.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -287,7 +278,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-10",
-    description: "A sidebar in a popover.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -337,7 +327,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-11",
-    description: "A sidebar with a collapsible file tree.",
     type: "registry:block",
     registryDependencies: ["sidebar", "breadcrumb", "separator", "collapsible"],
     files: [
@@ -356,7 +345,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-12",
-    description: "A sidebar with a calendar.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -394,7 +382,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-13",
-    description: "A sidebar in a dialog.",
     type: "registry:block",
     registryDependencies: ["sidebar", "breadcrumb", "button", "dialog"],
     files: [
@@ -413,7 +400,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-14",
-    description: "A sidebar on the right.",
     type: "registry:block",
     registryDependencies: ["sidebar", "breadcrumb"],
     files: [
@@ -432,7 +418,6 @@ export const blocks: Registry = [
   },
   {
     name: "sidebar-15",
-    description: "A left and right sidebar.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",

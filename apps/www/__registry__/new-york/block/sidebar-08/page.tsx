@@ -16,7 +16,7 @@ import {
 
 export const iframeHeight = "800px"
 
-export const teaser = "An inset sidebar with secondary navigation."
+export const description = "An inset sidebar with secondary navigation."
 
 export default function Page() {
   return (

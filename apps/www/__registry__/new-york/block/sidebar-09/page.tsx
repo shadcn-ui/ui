@@ -16,7 +16,7 @@ import {
 
 export const iframeHeight = "800px"
 
-export const teaser = "Collapsible nested sidebars."
+export const description = "Collapsible nested sidebars."
 
 export default function Page() {
   return (

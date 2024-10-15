@@ -14,7 +14,7 @@ import {
 
 export const iframeHeight = "800px"
 
-export const teaser = "A sidebar with a calendar."
+export const description = "A sidebar with a calendar."
 
 export default function Page() {
   return (

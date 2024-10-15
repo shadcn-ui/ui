@@ -105,6 +105,9 @@ importers:
 
   apps/www:
     dependencies:
+      '@emotion/is-prop-valid':
+        specifier: ^1.3.1
+        version: 1.3.1
       '@faker-js/faker':
         specifier: ^8.2.0
         version: 8.2.0
@@ -236,7 +239,7 @@ importers:
         version: 8.0.0-rc15(react@18.2.0)
       framer-motion:
         specifier: ^11.0.24
-        version: 11.0.24(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 11.0.24(@emotion/is-prop-valid@1.3.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       geist:
         specifier: ^1.2.2
         version: 1.2.2(next@14.3.0-canary.43(@babel/core@7.22.1)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
@@ -998,6 +1001,12 @@ packages:
 
   '@emnapi/runtime@1.2.0':
     resolution: {integrity: sha512-bV21/9LQmcQeCPEg3BDFtvwL6cwiTMksYNWQQ4KOxCZikEGalWtenoZ0wCiukJINlGCIi2KXx01g4FoH/LxpzQ==}
+
+  '@emotion/is-prop-valid@1.3.1':
+    resolution: {integrity: sha512-/ACwoqx7XQi9knQs/G0qKvv5teDMhD7bXYns9N/wM8ah8iNb8jZ2uNO0YOgiq2o2poIvVtJS2YALasQuMSQ7Kw==}
+
+  '@emotion/memoize@0.9.0':
+    resolution: {integrity: sha512-30FAj7/EoJ5mwVPOWhAyCX+FPfMDrVecJAM+Iw9NRoSl4BBAQeqj4cApHHUXOVvIPgLVDsCFoz/hGD+5QQD1GQ==}
 
   '@esbuild-plugins/node-resolve@0.2.2':
     resolution: {integrity: sha512-+t5FdX3ATQlb53UFDBRb4nqjYBz492bIrnVWvpQHpzZlu9BQL5HasMZhqc409ygUwOWCXZhrWr6NyZ6T6Y+cxw==}
@@ -7921,6 +7930,12 @@ snapshots:
       tslib: 2.6.2
     optional: true
 
+  '@emotion/is-prop-valid@1.3.1':
+    dependencies:
+      '@emotion/memoize': 0.9.0
+
+  '@emotion/memoize@0.9.0': {}
+
   '@esbuild-plugins/node-resolve@0.2.2(esbuild@0.17.19)':
     dependencies:
       '@types/resolve': 1.20.6
@@ -11384,10 +11399,11 @@ snapshots:
 
   fraction.js@4.3.7: {}
 
-  framer-motion@11.0.24(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  framer-motion@11.0.24(@emotion/is-prop-valid@1.3.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       tslib: 2.6.2
     optionalDependencies:
+      '@emotion/is-prop-valid': 1.3.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 

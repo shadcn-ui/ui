@@ -16,7 +16,7 @@ import {
 
 export const iframeHeight = "800px"
 
-export const teaser = "A sidebar that collapses to icons."
+export const description = "A sidebar that collapses to icons."
 
 export default function Page() {
   return (

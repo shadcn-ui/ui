@@ -28,6 +28,7 @@ const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:hook",
   "registry:theme",
   "registry:block",
+  "registry:example",
 ]
 
 const project = new Project({
@@ -83,6 +84,14 @@ export const Index: Record<string, any> = {
         const sourceFile = project.createSourceFile(tempFile, raw, {
           scriptKind: ScriptKind.TSX,
         })
+
+        const description = sourceFile
+          .getVariableDeclaration("description")
+          ?.getInitializerOrThrow()
+          .asKindOrThrow(SyntaxKind.StringLiteral)
+          .getLiteralValue()
+
+        item.description = description ?? ""
 
         // Find all imports.
         const imports = new Map<
@@ -273,14 +282,14 @@ export const Index: Record<string, any> = {
       index += `
     "${item.name}": {
       name: "${item.name}",
-      title: "${item.name}",
+      description: "${item.description ?? ""}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       files: [${resolveFiles.map((file) => `"${file}"`)}],
       component: React.lazy(() => import("${componentPath}")),
       source: "${sourceFilename}",
-      category: "${item.category}",
-      subcategory: "${item.subcategory}",
+      category: "${item.category ?? ""}",
+      subcategory: "${item.subcategory ?? ""}",
       chunks: [${chunks.map(
         (chunk) => `{
         name: "${chunk.name}",
@@ -386,7 +395,6 @@ async function buildStyles(registry: Registry) {
             sourceFile.getVariableDeclaration("iframeHeight")?.remove()
             sourceFile.getVariableDeclaration("containerClassName")?.remove()
             sourceFile.getVariableDeclaration("description")?.remove()
-            sourceFile.getVariableDeclaration("teaser")?.remove()
 
             return {
               path: file.path,

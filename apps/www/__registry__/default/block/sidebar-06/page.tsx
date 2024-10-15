@@ -16,7 +16,7 @@ import {
 
 export const iframeHeight = "800px"
 
-export const teaser = "A sidebar with submenus as dropdowns."
+export const description = "A sidebar with submenus as dropdowns."
 
 export default function Page() {
   return (

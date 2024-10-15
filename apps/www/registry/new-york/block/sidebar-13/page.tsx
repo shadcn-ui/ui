@@ -2,7 +2,7 @@ import { SettingsDialog } from "@/registry/new-york/block/sidebar-13/components/
 
 export const iframeHeight = "800px"
 
-export const teaser = "A sidebar in a dialog."
+export const description = "A sidebar in a dialog."
 
 export default function Page() {
   return (

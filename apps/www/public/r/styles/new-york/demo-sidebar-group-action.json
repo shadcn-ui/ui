@@ -1,6 +1,7 @@
 {
   "name": "demo-sidebar-group-action",
   "type": "registry:block",
+  "description": "",
   "files": [
     {
       "path": "block/demo-sidebar-group-action.tsx",

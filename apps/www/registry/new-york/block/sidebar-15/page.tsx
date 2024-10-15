@@ -15,7 +15,7 @@ import {
 
 export const iframeHeight = "800px"
 
-export const teaser = "A left and right sidebar."
+export const description = "A left and right sidebar."
 
 export default function Page() {
   return (

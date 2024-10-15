@@ -15,7 +15,7 @@ import {
 
 export const iframeHeight = "800px"
 
-export const teaser = "A sidebar in a popover."
+export const description = "A sidebar in a popover."
 
 export default function Page() {
   return (

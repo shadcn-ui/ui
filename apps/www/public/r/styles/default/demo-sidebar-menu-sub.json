@@ -1,6 +1,7 @@
 {
   "name": "demo-sidebar-menu-sub",
   "type": "registry:block",
+  "description": "",
   "files": [
     {
       "path": "block/demo-sidebar-menu-sub.tsx",

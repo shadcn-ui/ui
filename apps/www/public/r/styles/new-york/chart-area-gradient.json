@@ -1,6 +1,7 @@
 {
   "name": "chart-area-gradient",
   "type": "registry:block",
+  "description": "An area chart with gradient fill",
   "registryDependencies": [
     "card",
     "chart"

@@ -1,6 +1,7 @@
 {
   "name": "demo-sidebar-group-collapsible",
   "type": "registry:block",
+  "description": "",
   "files": [
     {
       "path": "block/demo-sidebar-group-collapsible.tsx",

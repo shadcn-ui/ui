@@ -1,6 +1,7 @@
 {
   "name": "demo-sidebar-footer",
   "type": "registry:block",
+  "description": "",
   "files": [
     {
       "path": "block/demo-sidebar-footer.tsx",

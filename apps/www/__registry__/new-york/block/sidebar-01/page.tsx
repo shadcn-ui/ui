@@ -16,7 +16,8 @@ import {
 
 export const iframeHeight = "800px"
 
-export const teaser = "A simple sidebar with navigation grouped by section."
+export const description =
+  "A simple sidebar with navigation grouped by section."
 
 export default function Page() {
   return (
