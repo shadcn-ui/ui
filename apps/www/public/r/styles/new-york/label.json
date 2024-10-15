@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "ui/label.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as LabelPrimitive from \"@radix-ui/react-label\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst labelVariants = cva(\n  \"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n)\n\nconst Label = React.forwardRef<\n  React.ElementRef<typeof LabelPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &\n    VariantProps<typeof labelVariants>\n>(({ className, ...props }, ref) => (\n  <LabelPrimitive.Root\n    ref={ref}\n    className={cn(labelVariants(), className)}\n    {...props}\n  />\n))\nLabel.displayName = LabelPrimitive.Root.displayName\n\nexport { Label }\n",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport * as LabelPrimitive from \"@radix-ui/react-label\"\r\nimport { cva, type VariantProps } from \"class-variance-authority\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst labelVariants = cva(\r\n  \"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\r\n)\r\n\r\nconst Label = React.forwardRef<\r\n  React.ElementRef<typeof LabelPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &\r\n    VariantProps<typeof labelVariants>\r\n>(({ className, ...props }, ref) => (\r\n  <LabelPrimitive.Root\r\n    ref={ref}\r\n    className={cn(labelVariants(), className)}\r\n    {...props}\r\n  />\r\n))\r\nLabel.displayName = LabelPrimitive.Root.displayName\r\n\r\nexport { Label }\r\n",
       "type": "registry:ui",
       "target": ""
     }

@@ -15,10 +15,11 @@ export const hooks: Registry = [
     name: "use-toast",
     type: "registry:hook",
     files: [
-      {
-        path: "hooks/use-toast.ts",
-        type: "registry:hook",
-      },
+      // {
+      // path: "hooks/use-toast.ts",
+      "hooks/use-toast.ts",
+      // type: "registry:hook",
+      // },
     ],
   },
 ]
