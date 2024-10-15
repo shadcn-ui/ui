@@ -37,6 +37,9 @@ export async function editInV0({
     // v0 will handle this for us.
     // code = code.replace(`"use client"`, "")
 
+    // Remove export const description = "..."
+    code = code.replace(/export const description =\s*".*";?/, "")
+
     const payload = {
       title,
       description,
