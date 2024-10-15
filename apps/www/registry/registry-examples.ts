@@ -872,4 +872,114 @@ export const examples: Registry = [
     type: "registry:example",
     files: ["example/chart-tooltip-demo.tsx"],
   },
+  {
+    name: "demo-sidebar",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "demo-sidebar-header",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-header.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "demo-sidebar-footer",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-footer.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "demo-sidebar-group",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-group.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "demo-sidebar-group-collapsible",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-group-collapsible.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "demo-sidebar-group-action",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-group-action.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "demo-sidebar-menu",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-menu.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "demo-sidebar-menu-action",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-menu-action.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "demo-sidebar-menu-sub",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-menu-sub.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "demo-sidebar-menu-collapsible",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-menu-collapsible.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "demo-sidebar-menu-badge",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-menu-badge.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]
