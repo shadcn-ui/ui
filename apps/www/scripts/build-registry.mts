@@ -73,7 +73,12 @@ export const Index: Record<string, any> = {
       if (item.type === "registry:block") {
         const file = resolveFiles[0]
         const filename = path.basename(file)
-        const raw = await fs.readFile(file, "utf8")
+        let raw: string
+        try {
+          raw = await fs.readFile(file, "utf8")
+        } catch (error) {
+          continue
+        }
         const tempFile = await createTempSourceFile(filename)
         const sourceFile = project.createSourceFile(tempFile, raw, {
           scriptKind: ScriptKind.TSX,
@@ -268,6 +273,7 @@ export const Index: Record<string, any> = {
       index += `
     "${item.name}": {
       name: "${item.name}",
+      title: "${item.name}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       files: [${resolveFiles.map((file) => `"${file}"`)}],
@@ -362,10 +368,15 @@ async function buildStyles(registry: Registry) {
                   }
                 : _file
 
-            const content = await fs.readFile(
-              path.join(process.cwd(), "registry", style.name, file.path),
-              "utf8"
-            )
+            let content: string
+            try {
+              content = await fs.readFile(
+                path.join(process.cwd(), "registry", style.name, file.path),
+                "utf8"
+              )
+            } catch (error) {
+              return
+            }
 
             const tempFile = await createTempSourceFile(file.path)
             const sourceFile = project.createSourceFile(tempFile, content, {
@@ -375,6 +386,7 @@ async function buildStyles(registry: Registry) {
             sourceFile.getVariableDeclaration("iframeHeight")?.remove()
             sourceFile.getVariableDeclaration("containerClassName")?.remove()
             sourceFile.getVariableDeclaration("description")?.remove()
+            sourceFile.getVariableDeclaration("teaser")?.remove()
 
             return {
               path: file.path,
