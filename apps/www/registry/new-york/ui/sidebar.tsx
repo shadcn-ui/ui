@@ -52,14 +52,14 @@ const SidebarProvider = React.forwardRef<
   React.ComponentProps<"div"> & {
     defaultOpen?: boolean
     open?: boolean
-    setOpen?: (open: boolean) => void
+    onOpenChange?: (open: boolean) => void
   }
 >(
   (
     {
       defaultOpen = true,
       open: openProp,
-      setOpen: setOpenProp,
+      onOpenChange: setOpenProp,
       className,
       style,
       children,
@@ -75,12 +75,14 @@ const SidebarProvider = React.forwardRef<
     const [_open, _setOpen] = React.useState(defaultOpen)
     const open = openProp ?? _open
     const setOpen = React.useCallback(
-      (open: boolean) => {
+      (value: boolean | ((value: boolean) => boolean)) => {
         if (setOpenProp) {
-          return setOpenProp?.(open)
+          return setOpenProp?.(
+            typeof value === "function" ? value(open) : value
+          )
         }
 
-        _setOpen(open)
+        _setOpen(value)
 
         // This sets the cookie to keep the sidebar state.
         document.cookie = `${SIDEBAR_COOKIE_NAME}=${open}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
@@ -90,15 +92,14 @@ const SidebarProvider = React.forwardRef<
 
     // Helper to toggle the sidebar.
     const toggleSidebar = React.useCallback(() => {
-      if (isMobile) {
-        return setOpenMobile(!openMobile)
-      }
-      return setOpen(!open)
-    }, [isMobile, open, setOpen, openMobile, setOpenMobile])
+      return isMobile
+        ? setOpenMobile((open) => !open)
+        : setOpen((open) => !open)
+    }, [isMobile, setOpen, setOpenMobile])
 
     // Adds a keyboard shortcut to toggle the sidebar.
-    const handleKeyDown = React.useCallback(
-      (event: KeyboardEvent) => {
+    React.useEffect(() => {
+      const handleKeyDown = (event: KeyboardEvent) => {
         if (
           event.key === SIDEBAR_KEYBOARD_SHORTCUT &&
           (event.metaKey || event.ctrlKey)
@@ -106,13 +107,11 @@ const SidebarProvider = React.forwardRef<
           event.preventDefault()
           toggleSidebar()
         }
-      },
-      [toggleSidebar]
-    )
-    React.useEffect(() => {
+      }
+
       window.addEventListener("keydown", handleKeyDown)
       return () => window.removeEventListener("keydown", handleKeyDown)
-    }, [handleKeyDown])
+    }, [toggleSidebar])
 
     // We add a state so that we can do data-state="expanded" or "collapsed".
     // This makes it easier to style the sidebar with Tailwind classes.
@@ -630,7 +629,7 @@ const SidebarMenuBadge = React.forwardRef<
     ref={ref}
     data-sidebar="menu-badge"
     className={cn(
-      "absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums text-sidebar-foreground",
+      "absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums text-sidebar-foreground select-none pointer-events-none",
       "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground",
       "peer-data-[size=sm]/menu-button:top-1",
       "peer-data-[size=default]/menu-button:top-1.5",
