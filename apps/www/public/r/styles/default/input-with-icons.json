@@ -1,0 +1,15 @@
+{
+  "name": "input-with-icons",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "example/input-with-icons.tsx",
+      "content": "import { MapIcon, MapPin } from \"lucide-react\"\n\nimport { Input } from \"@/registry/default/ui/input\"\n\nexport default function InputWithIcons() {\n  return (\n    <div>\n      <Input>\n        <Input.Icon side=\"left\">\n          <MapIcon />\n        </Input.Icon>\n        <Input.Icon side=\"right\">\n          <MapPin />\n        </Input.Icon>\n      </Input>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
