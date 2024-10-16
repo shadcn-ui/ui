@@ -1,5 +1,51 @@
 # @shadcn/ui
 
+## 2.1.0
+
+### Minor Changes
+
+- [#4961](https://github.com/shadcn-ui/ui/pull/4961) [`28f34ed`](https://github.com/shadcn-ui/ui/commit/28f34ed3c3e944287cd6f521ff0310d39664329c) Thanks [@shadcn](https://github.com/shadcn)! - recursively resolve registry dependencies
+
+### Patch Changes
+
+- [#4972](https://github.com/shadcn-ui/ui/pull/4972) [`4b546bf`](https://github.com/shadcn-ui/ui/commit/4b546bfb13346fdbaf0fca4e8041ddba35d23f47) Thanks [@Fluf22](https://github.com/Fluf22)! - update remix detection
+
+- [#4977](https://github.com/shadcn-ui/ui/pull/4977) [`96880e7`](https://github.com/shadcn-ui/ui/commit/96880e7c9afad3fed6749c5862d05dbfd65c4327) Thanks [@nsunami](https://github.com/nsunami)! - fix typo in components.json
+
+## 2.0.8
+
+### Patch Changes
+
+- [#4922](https://github.com/shadcn-ui/ui/pull/4922) [`c62167a`](https://github.com/shadcn-ui/ui/commit/c62167a449a5cf82d8ed93a7af986d5e503893bb) Thanks [@sapenlei](https://github.com/sapenlei)! - remove next.js default vars
+
+- [#4871](https://github.com/shadcn-ui/ui/pull/4871) [`ce3adfa`](https://github.com/shadcn-ui/ui/commit/ce3adfa075793a46b4fb2ff797ce87ad22bfa2cd) Thanks [@bcorbold](https://github.com/bcorbold)! - support tw prefixes for registry files with single quote formatting
+
+## 2.0.7
+
+### Patch Changes
+
+- [#4848](https://github.com/shadcn-ui/ui/pull/4848) [`1af66c2`](https://github.com/shadcn-ui/ui/commit/1af66c2d08df7dd7f6a8d4d1544d965e41a1fb0d) Thanks [@jherr](https://github.com/jherr)! - add support for ~ dir in target path
+
+- [#4815](https://github.com/shadcn-ui/ui/pull/4815) [`408760a`](https://github.com/shadcn-ui/ui/commit/408760a93b398b7d02a0a522a74a7a195ccda7c4) Thanks [@rana-haris-ali](https://github.com/rana-haris-ali)! - fix typo in error message
+
+## 2.0.6
+
+### Patch Changes
+
+- [#4820](https://github.com/shadcn-ui/ui/pull/4820) [`64b2f1a`](https://github.com/shadcn-ui/ui/commit/64b2f1a5ad865c831045c954fec85e0fec2289e7) Thanks [@shadcn](https://github.com/shadcn)! - add docs support
+
+## 2.0.5
+
+### Patch Changes
+
+- [#4787](https://github.com/shadcn-ui/ui/pull/4787) [`99ff9ca`](https://github.com/shadcn-ui/ui/commit/99ff9caf7180c8c19df130969bdef3d0fb78b218) Thanks [@shadcn](https://github.com/shadcn)! - add src to content for tailwind
+
+## 2.0.4
+
+### Patch Changes
+
+- [#4776](https://github.com/shadcn-ui/ui/pull/4776) [`49373ee`](https://github.com/shadcn-ui/ui/commit/49373eed9672d6ecf82219f6e682cab914e7cc41) Thanks [@shadcn](https://github.com/shadcn)! - better error handling
+
 ## 2.0.3
 
 ### Patch Changes

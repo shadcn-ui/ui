@@ -12,15 +12,24 @@ exports[`registryResolveItemTree > should resolve index 1`] = `
     "tailwindcss-animate",
     "class-variance-authority",
     "lucide-react",
-    "tailwindcss-animate",
-    "class-variance-authority",
-    "lucide-react",
-    "@radix-ui/react-label",
     "clsx",
     "tailwind-merge",
+    "@radix-ui/react-label",
   ],
   "devDependencies": [],
+  "docs": "",
   "files": [
+    {
+      "content": "import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+",
+      "path": "lib/utils.ts",
+      "type": "registry:lib",
+    },
     {
       "content": ""use client"
 
@@ -53,22 +62,10 @@ export { Label }
       "target": "",
       "type": "registry:ui",
     },
-    {
-      "content": "import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-",
-      "path": "lib/utils.ts",
-      "type": "registry:lib",
-    },
   ],
   "tailwind": {
     "config": {
       "plugins": [
-        "require("tailwindcss-animate")",
         "require("tailwindcss-animate")",
       ],
       "theme": {
@@ -93,6 +90,7 @@ exports[`registryResolveItemTree > should resolve items tree 1`] = `
     "@radix-ui/react-slot",
   ],
   "devDependencies": [],
+  "docs": "",
   "files": [
     {
       "content": "import * as React from "react"
@@ -171,6 +169,7 @@ exports[`registryResolveItemTree > should resolve multiple items tree 1`] = `
     "@radix-ui/react-dialog",
   ],
   "devDependencies": [],
+  "docs": "",
   "files": [
     {
       "content": "import * as React from "react"
@@ -248,7 +247,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={cn(
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
         ref={ref}
