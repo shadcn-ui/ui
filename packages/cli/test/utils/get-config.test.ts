@@ -19,6 +19,7 @@ test("get raw config", async () => {
       cssVariables: false,
     },
     rsc: false,
+    storybook: false,
     tsx: true,
     aliases: {
       components: "@/components",
@@ -51,6 +52,7 @@ test("get config", async () => {
       cssVariables: false,
     },
     rsc: false,
+    storybook: false,
     tsx: true,
     aliases: {
       components: "@/components",
@@ -86,6 +88,7 @@ test("get config", async () => {
   ).toEqual({
     style: "new-york",
     rsc: false,
+    storybook: false,
     tsx: true,
     tailwind: {
       config: "tailwind.config.ts",
@@ -138,6 +141,7 @@ test("get config", async () => {
       cssVariables: false,
     },
     rsc: false,
+    storybook: false,
     tsx: false,
     aliases: {
       components: "@/components",
