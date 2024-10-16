@@ -53,6 +53,11 @@ const nextConfig = {
         destination: "/docs/components/form",
         permanent: false,
       },
+      {
+        source: "/sink",
+        destination: "/sink/default",
+        permanent: false,
+      },
     ]
   },
 }
