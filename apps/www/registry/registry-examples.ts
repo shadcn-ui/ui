@@ -426,6 +426,12 @@ export const examples: Registry = [
     files: ["example/input-with-text.tsx"],
   },
   {
+    name: "input-with-icons",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: ["example/input-with-icons.tsx"],
+  },
+  {
     name: "input-otp-demo",
     type: "registry:example",
     registryDependencies: ["input-otp"],

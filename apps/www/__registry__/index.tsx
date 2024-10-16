@@ -1281,6 +1281,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "input-with-icons": {
+      name: "input-with-icons",
+      type: "registry:example",
+      registryDependencies: ["input"],
+      files: ["registry/new-york/example/input-with-icons.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/input-with-icons.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "input-otp-demo": {
       name: "input-otp-demo",
       type: "registry:example",
@@ -4632,6 +4643,17 @@ export const Index: Record<string, any> = {
       registryDependencies: ["input","button","label"],
       files: ["registry/default/example/input-with-text.tsx"],
       component: React.lazy(() => import("@/registry/default/example/input-with-text.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "input-with-icons": {
+      name: "input-with-icons",
+      type: "registry:example",
+      registryDependencies: ["input"],
+      files: ["registry/default/example/input-with-icons.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/input-with-icons.tsx")),
       source: "",
       category: "undefined",
       subcategory: "undefined",
