@@ -43,6 +43,9 @@ export default function BlocksLayout({
         </PageActions>
       </PageHeader>
       <section id="blocks" className="scroll-mt-24">
+        <div className="text-sm text-center px-4 py-8 md:hidden text-red-600">
+          Note: The blocks preview does not work on mobile yet.
+        </div>
         {children}
       </section>
     </div>
