@@ -1,20 +1,7 @@
 "use client"
 
-import {
-  Frame,
-  LifeBuoy,
-  Map,
-  MoreHorizontal,
-  PieChart,
-  Send,
-} from "lucide-react"
+import { Frame, LifeBuoy, Map, PieChart, Send } from "lucide-react"
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/registry/new-york/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -22,7 +9,6 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,

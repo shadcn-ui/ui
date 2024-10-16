@@ -1,5 +1,4 @@
-"use client"
-
+import * as React from "react"
 import { Frame, LifeBuoy, Map, PieChart, Send } from "lucide-react"
 
 import {
@@ -9,9 +8,9 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSkeleton,
   SidebarProvider,
 } from "@/registry/new-york/ui/sidebar"
 
@@ -48,6 +47,12 @@ const projects = [
   },
 ]
 
+// Dummy fetch function
+async function fetchProjects() {
+  await new Promise((resolve) => setTimeout(resolve, 3000))
+  return projects
+}
+
 export default function AppSidebar() {
   return (
     <SidebarProvider>
@@ -56,26 +61,44 @@ export default function AppSidebar() {
           <SidebarGroup>
             <SidebarGroupLabel>Projects</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu>
-                {projects.map((project) => (
-                  <SidebarMenuItem key={project.name}>
-                    <SidebarMenuButton
-                      asChild
-                      className="group-has-[[data-state=open]]/menu-item:bg-sidebar-accent"
-                    >
-                      <a href={project.url}>
-                        <project.icon />
-                        <span>{project.name}</span>
-                      </a>
-                    </SidebarMenuButton>
-                    <SidebarMenuBadge>{project.badge}</SidebarMenuBadge>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
+              <React.Suspense fallback={<NavProjectsSkeleton />}>
+                <NavProjects />
+              </React.Suspense>
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
       </Sidebar>
     </SidebarProvider>
+  )
+}
+
+function NavProjectsSkeleton() {
+  return (
+    <SidebarMenu>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <SidebarMenuItem key={index}>
+          <SidebarMenuSkeleton showIcon />
+        </SidebarMenuItem>
+      ))}
+    </SidebarMenu>
+  )
+}
+
+async function NavProjects() {
+  const projects = await fetchProjects()
+
+  return (
+    <SidebarMenu>
+      {projects.map((project) => (
+        <SidebarMenuItem key={project.name}>
+          <SidebarMenuButton asChild>
+            <a href={project.url}>
+              <project.icon />
+              <span>{project.name}</span>
+            </a>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      ))}
+    </SidebarMenu>
   )
 }

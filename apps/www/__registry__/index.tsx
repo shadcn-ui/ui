@@ -429,7 +429,7 @@ export const Index: Record<string, any> = {
       name: "sidebar",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile"],
+      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
       files: ["registry/new-york/ui/sidebar.tsx"],
       component: React.lazy(() => import("@/registry/new-york/ui/sidebar.tsx")),
       source: "",
@@ -2477,6 +2477,18 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "demo-sidebar-rsc": {
+      name: "demo-sidebar-rsc",
+      description: "",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: ["registry/new-york/block/demo-sidebar-rsc.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/block/demo-sidebar-rsc.tsx")),
+      source: "__registry__/new-york/block/demo-sidebar-rsc.tsx",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "sidebar-01": {
       name: "sidebar-01",
       description: "A simple sidebar with navigation grouped by section.",
@@ -3970,7 +3982,7 @@ export const Index: Record<string, any> = {
       name: "sidebar",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile"],
+      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
       files: ["registry/default/ui/sidebar.tsx"],
       component: React.lazy(() => import("@/registry/default/ui/sidebar.tsx")),
       source: "",
@@ -6014,6 +6026,18 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/demo-sidebar-menu-badge.tsx"],
       component: React.lazy(() => import("@/registry/default/block/demo-sidebar-menu-badge.tsx")),
       source: "__registry__/default/block/demo-sidebar-menu-badge.tsx",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "demo-sidebar-rsc": {
+      name: "demo-sidebar-rsc",
+      description: "",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: ["registry/default/block/demo-sidebar-rsc.tsx"],
+      component: React.lazy(() => import("@/registry/default/block/demo-sidebar-rsc.tsx")),
+      source: "__registry__/default/block/demo-sidebar-rsc.tsx",
       category: "",
       subcategory: "",
       chunks: []

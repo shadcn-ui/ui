@@ -256,14 +256,15 @@ export const ui: Registry = [
       "tooltip",
       "input",
       "use-mobile",
+      "skeleton",
     ],
     files: ["ui/sidebar.tsx"],
     cssVars: {
       light: {
         "sidebar-background": "0 0% 98%",
         "sidebar-foreground": "240 5.3% 26.1%",
-        "sidebar-primary": "220 100% 50%",
-        "sidebar-primary-foreground": "0 0% 100%",
+        "sidebar-primary": "240 5.9% 10%",
+        "sidebar-primary-foreground": "0 0% 98%",
         "sidebar-accent": "240 4.8% 95.9%",
         "sidebar-accent-foreground": "240 5.9% 10%",
         "sidebar-border": "220 13% 91%",
@@ -272,8 +273,8 @@ export const ui: Registry = [
       dark: {
         "sidebar-background": "240 5.9% 10%",
         "sidebar-foreground": "240 4.8% 95.9%",
-        "sidebar-primary": "220 100% 50%",
-        "sidebar-primary-foreground": "0 0% 100%",
+        "sidebar-primary": "0 0% 98%",
+        "sidebar-primary-foreground": "240 5.9% 10%",
         "sidebar-accent": "240 3.7% 15.9%",
         "sidebar-accent-foreground": "240 4.8% 95.9%",
         "sidebar-border": "240 3.7% 15.9%",

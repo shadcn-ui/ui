@@ -13,7 +13,7 @@ component: true
     className="w-full"
   />
   <figcaption className="text-center text-sm text-gray-500">
-    A simple collapsible sidebar.
+    A sidebar that collapses to icons.
   </figcaption>
 </figure>
 
@@ -50,15 +50,15 @@ npx shadcn@latest add sidebar
 
 The command above should install the colors for you. It not, copy and paste the following in your CSS file.
 
-We'll go over the colors later in the theming section.
+We'll go over the colors later in the [theming section](/docs/components/sidebar#theming).
 
 ```css
 @layer base {
   :root {
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 220 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
@@ -68,8 +68,8 @@ We'll go over the colors later in the theming section.
   .dark {
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 220 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
@@ -101,8 +101,8 @@ We'll go over the colors later in the theming section.
   :root {
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 220 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
@@ -112,8 +112,8 @@ We'll go over the colors later in the theming section.
   .dark {
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 220 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
@@ -156,7 +156,7 @@ A `Sidebar` component is composed of the following parts:
 
 ## Usage
 
-```tsx showLineNumbers {12-20,22}
+```tsx showLineNumbers title="app/layout.tsx"
 import {
   Sidebar,
   SidebarContent,
@@ -164,6 +164,7 @@ import {
   SidebarGroup,
   SidebarHeader,
   SidebarProvider,
+  SidebarTrigger,
 } from "@/components/ui/sidebar"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -177,7 +178,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </SidebarContent>
         <SidebarFooter />
       </Sidebar>
-      <main>{children}</main>
+      <main>
+        <SidebarTrigger />
+        {children}
+      </main>
     </SidebarProvider>
   )
 }
@@ -237,8 +241,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 ```
-
-If you click the trigger, the sidebar should slide in and out from the left.
 
 <Step>Now, let's add a `SidebarMenu` to the sidebar.</Step>
 
@@ -316,6 +318,8 @@ export function AppSidebar() {
   )
 }
 ```
+
+<Step>You've created your first sidebar.</Step>
 
 </Steps>
 
@@ -1021,6 +1025,24 @@ The `SidebarMenuBadge` component is used to render a badge within a `SidebarMenu
   </figcaption>
 </figure>
 
+## SidebarMenuSkeleton
+
+The `SidebarMenuSkeleton` component is used to render a skeleton for a `SidebarMenu`. You can use this to show a loading state when using React Server Components or swr or react-query.
+
+```tsx showLineNumbers
+function NavProjectsSkeleton() {
+  return (
+    <SidebarMenu>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <SidebarMenuItem key={index}>
+          <SidebarMenuSkeleton />
+        </SidebarMenuItem>
+      ))}
+    </SidebarMenu>
+  )
+}
+```
+
 ## SidebarSeparator
 
 The `SidebarSeparator` component is used to render a separator within a `Sidebar`.
@@ -1081,6 +1103,157 @@ The `SidebarRail` component is used to render a rail within a `Sidebar`. This ra
 </Sidebar>
 ```
 
+## Data Fetching
+
+### React Server Components
+
+Here's an example of a `SidebarMenu` component rendering a list of projects using React Server Components.
+
+```tsx showLineNumbers {6} title="Skeleton to show loading state."
+function NavProjectsSkeleton() {
+  return (
+    <SidebarMenu>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <SidebarMenuItem key={index}>
+          <SidebarMenuSkeleton showIcon />
+        </SidebarMenuItem>
+      ))}
+    </SidebarMenu>
+  )
+}
+```
+
+```tsx showLineNumbers {2} title="Server component fetching data."
+async function NavProjects() {
+  const projects = await fetchProjects()
+
+  return (
+    <SidebarMenu>
+      {projects.map((project) => (
+        <SidebarMenuItem key={project.name}>
+          <SidebarMenuButton asChild>
+            <a href={project.url}>
+              <project.icon />
+              <span>{project.name}</span>
+            </a>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      ))}
+    </SidebarMenu>
+  )
+}
+```
+
+```tsx showLineNumbers {8-10} title="Usage with React Suspense."
+function AppSidebar() {
+  return (
+    <Sidebar>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Projects</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <React.Suspense fallback={<NavProjectsSkeleton />}>
+              <NavProjects />
+            </React.Suspense>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  )
+}
+```
+
+<figure className="flex flex-col gap-4">
+  <ComponentPreview
+    name="demo-sidebar-rsc"
+    title="Sidebar Menu RSC"
+    type="block"
+    description="A sidebar menu using React Server Components."
+    className="w-full"
+  />
+  <figcaption className="text-center text-sm text-gray-500">
+    Right-click and reload frame to see the skeleton.
+  </figcaption>
+</figure>
+
+### SWR and React Query
+
+You can use the same approach with [SWR](https://swr.vercel.app/) or [react-query](https://tanstack.com/query/latest/docs/framework/react/overview).
+
+```tsx showLineNumbers title="SWR"
+function NavProjects() {
+  const { data, isLoading } = useSWR("/api/projects", fetcher)
+
+  if (isLoading) {
+    return (
+      <SidebarMenu>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <SidebarMenuItem key={index}>
+            <SidebarMenuSkeleton showIcon />
+          </SidebarMenuItem>
+        ))}
+      </SidebarMenu>
+    )
+  }
+
+  if (!data) {
+    return ...
+  }
+
+  return (
+    <SidebarMenu>
+      {data.map((project) => (
+        <SidebarMenuItem key={project.name}>
+          <SidebarMenuButton asChild>
+            <a href={project.url}>
+              <project.icon />
+              <span>{project.name}</span>
+            </a>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      ))}
+    </SidebarMenu>
+  )
+}
+```
+
+```tsx showLineNumbers title="React Query"
+function NavProjects() {
+  const { data, isLoading } = useQuery()
+
+  if (isLoading) {
+    return (
+      <SidebarMenu>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <SidebarMenuItem key={index}>
+            <SidebarMenuSkeleton showIcon />
+          </SidebarMenuItem>
+        ))}
+      </SidebarMenu>
+    )
+  }
+
+  if (!data) {
+    return ...
+  }
+
+  return (
+    <SidebarMenu>
+      {data.map((project) => (
+        <SidebarMenuItem key={project.name}>
+          <SidebarMenuButton asChild>
+            <a href={project.url}>
+              <project.icon />
+              <span>{project.name}</span>
+            </a>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      ))}
+    </SidebarMenu>
+  )
+}
+```
+
 ## Theming
 
 We use the following CSS variables to theme the sidebar.
@@ -1090,8 +1263,8 @@ We use the following CSS variables to theme the sidebar.
   :root {
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 220 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
@@ -1101,8 +1274,8 @@ We use the following CSS variables to theme the sidebar.
   .dark {
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 220 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
