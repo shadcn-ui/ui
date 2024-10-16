@@ -28,6 +28,46 @@ Customizable.
 
 Let's get started.
 
+## Beta Testers
+
+<Steps>
+
+<Step>Create a new Next.js app.</Step>
+
+```bash
+pnpm create next-app --tailwind --eslint --typescript --app --no-src-dir --no-import-alias
+```
+
+<Step>Init `shadcn`</Step>
+
+```bash
+pnpm dlx shadcn@latest init -d
+```
+
+<Step>Add the `sidebar.tsx` component.</Step>
+
+It is not available in the registry yet. Use the beta url.
+
+```bash
+pnpm dlx shadcn@latest add https://ui-rc.vercel.app/r/styles/new-york/sidebar.json -o
+```
+
+<Step>Install one of the example sidebars.</Step>
+
+```bash
+pnpm dlx shadcn@latest add https://ui-rc.vercel.app/r/styles/new-york/sidebar-01.json -o
+```
+
+To install other sidebars, replace `sidebar-01` with `sidebar-02`, `sidebar-03` or `sidebar-15`.
+
+<Step>Run the app and visit `http://localhost:3000/dashboard`.</Step>
+
+```bash
+pnpm dev
+```
+
+</Steps>
+
 ## Installation
 
 <Tabs defaultValue="cli">
