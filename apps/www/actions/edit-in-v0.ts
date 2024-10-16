@@ -57,30 +57,31 @@ export async function editInV0({
       return { error: "Something went wrong. Please try again later." }
     }
 
-    const title = capitalCase(
-      registryItem.name
-        .replace(/\d+/g, "")
-        .replace("-demo", "")
-        .replace("-", " ")
-    )
-
-    const description = registryItem.description ?? title
-
     await track("edit_in_v0", {
       name,
-      title,
-      description,
+      title: registryItem.name,
+      description: registryItem.description ?? registryItem.name,
       style,
       url,
     })
 
-    // TODO: support multiple files.
-    let code = registryItem.files?.[0]?.content
+    // const payload = {
+    //   title: registryItem.name,
+    //   description: registryItem.description ?? registryItem.name,
+    //   code: registryItem.files?.[0]?.content,
+    //   source: {
+    //     title: "shadcn/ui",
+    //     url,
+    //   },
+    //   meta: {
+    //     project: capitalCase(name.replace(/\d+/g, "")),
+    //     file: `${name}.tsx`,
+    //   },
+    // }
 
     const payload = {
-      title,
-      description,
-      code,
+      version: 2,
+      payload: registryItem,
       source: {
         title: "shadcn/ui",
         url,
@@ -90,8 +91,6 @@ export async function editInV0({
         file: `${name}.tsx`,
       },
     }
-
-    console.log(payload)
 
     const response = await fetch(`${process.env.V0_URL}/chat/api/open-in-v0`, {
       method: "POST",

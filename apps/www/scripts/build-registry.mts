@@ -19,6 +19,7 @@ import {
   registryItemTypeSchema,
   registrySchema,
 } from "../registry/schema"
+import { fixImport } from "./fix-import.mts"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r")
 
@@ -279,6 +280,13 @@ export const Index: Record<string, any> = {
         }
       }
 
+      // Temporary remove sidebar as a dependency.
+      if (item.registryDependencies?.includes("sidebar")) {
+        item.registryDependencies = item.registryDependencies.filter(
+          (dependency) => dependency !== "sidebar"
+        )
+      }
+
       index += `
     "${item.name}": {
       name: "${item.name}",
@@ -383,6 +391,7 @@ async function buildStyles(registry: Registry) {
                 path.join(process.cwd(), "registry", style.name, file.path),
                 "utf8"
               )
+              content = fixImport(content)
             } catch (error) {
               return
             }
@@ -396,11 +405,36 @@ async function buildStyles(registry: Registry) {
             sourceFile.getVariableDeclaration("containerClassName")?.remove()
             sourceFile.getVariableDeclaration("description")?.remove()
 
+            let target = file.target
+
+            if (!target || target === "") {
+              const fileName = file.path.split("/").pop()
+              if (
+                file.type === "registry:block" ||
+                file.type === "registry:component" ||
+                file.type === "registry:example"
+              ) {
+                target = `components/${fileName}`
+              }
+
+              if (file.type === "registry:ui") {
+                target = `components/ui/${fileName}`
+              }
+
+              if (file.type === "registry:hook") {
+                target = `hooks/${fileName}`
+              }
+
+              if (file.type === "registry:lib") {
+                target = `lib/${fileName}`
+              }
+            }
+
             return {
               path: file.path,
               type: file.type,
               content: sourceFile.getText(),
-              target: file.target,
+              target,
             }
           })
         )

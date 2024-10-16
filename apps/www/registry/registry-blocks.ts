@@ -249,6 +249,7 @@ export const blocks: Registry = [
       "collapsible",
       "dropdown-menu",
       "avatar",
+      "switch",
     ],
     files: [
       {
@@ -314,7 +315,7 @@ export const blocks: Registry = [
         type: "registry:component",
       },
       {
-        path: "block/sidebar-10/components/nav-workspace.tsx",
+        path: "block/sidebar-10/components/nav-workspaces.tsx",
         type: "registry:component",
       },
       {
@@ -353,6 +354,7 @@ export const blocks: Registry = [
       "collapsible",
       "calendar",
       "dropdown-menu",
+      "avatar",
     ],
     files: [
       {
@@ -427,6 +429,7 @@ export const blocks: Registry = [
       "collapsible",
       "dropdown-menu",
       "calendar",
+      "avatar",
     ],
     files: [
       {
@@ -435,11 +438,11 @@ export const blocks: Registry = [
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-15/components/app-sidebar.tsx",
+        path: "block/sidebar-15/components/calendars.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/nav-actions.tsx",
+        path: "block/sidebar-15/components/date-picker.tsx",
         type: "registry:component",
       },
       {
@@ -455,23 +458,23 @@ export const blocks: Registry = [
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/nav-workspace.tsx",
+        path: "block/sidebar-15/components/nav-user.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "block/sidebar-15/components/nav-workspaces.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "block/sidebar-15/components/sidebar-left.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "block/sidebar-15/components/sidebar-right.tsx",
         type: "registry:component",
       },
       {
         path: "block/sidebar-15/components/team-switcher.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/sidebar-15/components/calendars.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/sidebar-15/components/date-picker.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/sidebar-15/components/nav-user.tsx",
         type: "registry:component",
       },
     ],
