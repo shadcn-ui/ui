@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "registries": {
+    "r1": {
+      "url": "http://localhost:3334/r",
+      "style": "default",
+      "tailwind": {
+        "css": "app/globals-r1.css",
+        "baseColor": "gray",
+        "prefix": "custom-"
+      },
+      "aliases": {
+        "ui": "@/components/custom-ui"
+      }
+    },
+    "r2": {
+      "style": "default",
+      "tailwind": {
+        "prefix": "custom-"
+      },
+      "aliases": {
+        "ui": "@/components/custom-ui"
+      },
+      "url": "http://localhost:3334/r"
+    }
+  }
+}

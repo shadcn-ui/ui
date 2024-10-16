@@ -4,6 +4,57 @@ description: Latest updates and announcements.
 toc: false
 ---
 
+## September 2024 - CLI Registries
+
+We've improved our support for multiple registries, making it easier to work with components from different sources.
+
+1. Configure multiple registry sources in your `components.json` file. Switch between different component libraries or use private registries alongside the default one.
+
+2. List all components from a specific registry. Get a quick overview of available components without checking documentation.
+
+3. Install components by name once you've configured a registry. No need to use full URLs for each component anymore.
+
+4. Use the new `-r` or `--registry` option to specify which registry to use when adding components.
+
+5. The `-l` or `--list` option lets you view and select from all available registries configured in your project.
+
+6. For named registries with CSS variables, we now add a `data-registry` attribute to your `globals.css`. This allows you to easily enable registry-specific styles by adding the attribute to a parent element in your HTML.
+
+Try it now:
+
+```bash
+# Default registry
+npx shadcn@latest init
+
+# Another registry
+npx shadcn@latest init -u https://platejs.org/r -n plate
+```
+
+After initializing, you can update your `components.json` file to customize `aliases.ui` for the new registry:
+
+```json showLineNumbers {9-11} title="components.json"
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  // ...
+  "registries": {
+    "plate": {
+      "url": "https://platejs.org/r",
+      "style": "default",
+      "aliases": {
+        "ui": "@/components/plate-ui"
+      }
+    }
+  }
+}
+```
+
+Now you can add components from the new registry:
+
+```bash
+npx shadcn@latest add -r plate
+```
+
 ## August 2024 - npx shadcn init
 
 The new CLI is now available. It's a complete rewrite with a lot of new features and improvements. You can now install components, themes, hooks, utils and more using `npx shadcn add`.

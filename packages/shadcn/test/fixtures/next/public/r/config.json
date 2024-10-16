@@ -1,0 +1,10 @@
+{
+  "style": "default",
+  "tailwind": {
+    "baseColor": "slate",
+    "prefix": "custom-"
+  },
+  "aliases": {
+    "ui": "@/components/custom-ui"
+  }
+}

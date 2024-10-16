@@ -10,8 +10,12 @@ import { logger } from "@/src/utils/logger"
 import { getRegistryIndex } from "@/src/utils/registry"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
+import deepmerge from "deepmerge"
+import { merge } from "diff"
 import prompts from "prompts"
 import { z } from "zod"
+
+import { resolveConfigPaths, type Config } from "../utils/get-config"
 
 export const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -22,6 +26,8 @@ export const addOptionsSchema = z.object({
   path: z.string().optional(),
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
+  registry: z.string().optional(),
+  list: z.boolean().optional(),
 })
 
 export const add = new Command()
@@ -46,6 +52,8 @@ export const add = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option("-r, --registry <registry>", "registry name or url")
+  .option("-l, --list", "list all available registries", false)
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -76,10 +84,6 @@ export const add = new Command()
         }
       }
 
-      if (!options.components?.length) {
-        options.components = await promptForRegistryComponents(options)
-      }
-
       let { errors, config } = await preFlightAdd(options)
 
       // No components.json file. Prompt the user to run init.
@@ -107,7 +111,17 @@ export const add = new Command()
           silent: true,
           isNewProject: false,
           srcDir: options.srcDir,
+          url: options.registry,
         })
+      }
+
+      const registryConfig = await getRegistryConfig(config as any, options)
+
+      if (!options.components?.length) {
+        options.components = await promptForRegistryComponents(
+          options,
+          registryConfig.url
+        )
       }
 
       let shouldUpdateAppIndex = false
@@ -132,6 +146,7 @@ export const add = new Command()
           silent: true,
           isNewProject: true,
           srcDir: options.srcDir,
+          url: options.registry,
         })
 
         shouldUpdateAppIndex =
@@ -145,7 +160,7 @@ export const add = new Command()
         )
       }
 
-      await addComponents(options.components, config, options)
+      await addComponents(options.components, registryConfig, options)
 
       // If we're adding a single component and it's from the v0 registry,
       // let's update the app/page.tsx file to import the component.
@@ -158,10 +173,75 @@ export const add = new Command()
     }
   })
 
+async function getRegistryConfig(
+  config: Config,
+  opts: z.infer<typeof addOptionsSchema>
+): Promise<Config> {
+  const { registry } = opts
+
+  if (
+    opts.list &&
+    config.registries &&
+    Object.keys(config.registries).length > 0
+  ) {
+    const { selectedRegistry } = await prompts({
+      type: "select",
+      name: "selectedRegistry",
+      message: "Select a registry:",
+      choices: [
+        { title: "default", value: "default" },
+        ...Object.entries(config.registries).map(([name, reg]) => ({
+          title: name,
+          value: name,
+        })),
+      ],
+    })
+
+    if (selectedRegistry === "default") {
+      return { ...config }
+    } else {
+      return await resolveConfigPaths(opts.cwd, deepmerge(config, config.registries[selectedRegistry]) as Config)
+    }
+  }
+
+  // If a registry is specified
+  if (registry) {
+    // If it's a URL, use it directly
+    if (registry.startsWith("http://") || registry.startsWith("https://")) {
+      // Find registry by url
+      if (config.registries) {
+        const registryConfig = Object.values(config.registries)?.find(
+          (reg) => reg.url === registry
+        )
+        if (registryConfig) {
+          return await resolveConfigPaths(opts.cwd, deepmerge(config, registryConfig) as Config)
+        }
+      }
+
+      return { ...config, url: registry }
+    }
+
+    // If it's a named registry in the config, use that
+    if (config.registries?.[registry]) {
+      return await resolveConfigPaths(opts.cwd, deepmerge(config, config.registries[registry]) as Config)
+    }
+
+    // If it's neither a URL nor a known registry name, warn the user and fallback to the default config
+    logger.warn(
+      `Registry "${registry}" not found in configuration. Using the default registry.`
+    )
+    return { ...config }
+  }
+
+  // If no registry is specified and no registries in config, use the default config
+  return { ...config }
+}
+
 async function promptForRegistryComponents(
-  options: z.infer<typeof addOptionsSchema>
+  options: z.infer<typeof addOptionsSchema>,
+  registryUrl?: string
 ) {
-  const registryIndex = await getRegistryIndex()
+  const registryIndex = await getRegistryIndex(registryUrl)
   if (!registryIndex) {
     logger.break()
     handleError(new Error("Failed to fetch registry index."))

@@ -7,6 +7,7 @@ import {
   resolveConfigPaths,
 } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
+import { REGISTRY_URL } from "@/src/utils/registry"
 import fg from "fast-glob"
 import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
@@ -200,7 +201,7 @@ export async function getTsConfig() {
 export async function getProjectConfig(
   cwd: string,
   defaultProjectInfo: ProjectInfo | null = null
-): Promise<Config | null> {
+): Promise<[Config, boolean] | null> {
   // Check for existing component config.
   const [existingConfig, projectInfo] = await Promise.all([
     getConfig(cwd),
@@ -210,7 +211,7 @@ export async function getProjectConfig(
   ])
 
   if (existingConfig) {
-    return existingConfig
+    return [{ ...existingConfig, url: REGISTRY_URL }, false]
   }
 
   if (
@@ -240,7 +241,8 @@ export async function getProjectConfig(
       lib: `${projectInfo.aliasPrefix}/lib`,
       utils: `${projectInfo.aliasPrefix}/lib/utils`,
     },
+    url: REGISTRY_URL,
   }
 
-  return await resolveConfigPaths(cwd, config)
+  return [await resolveConfigPaths(cwd, config), true] as any
 }

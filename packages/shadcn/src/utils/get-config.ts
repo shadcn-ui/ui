@@ -18,6 +18,31 @@ const explorer = cosmiconfig("components", {
   searchPlaces: ["components.json"],
 })
 
+const registrySchema = z.object({
+  url: z.string(),
+  style: z.string().optional(),
+  rsc: z.coerce.boolean().optional(),
+  tsx: z.coerce.boolean().optional(),
+  tailwind: z
+    .object({
+      config: z.string().optional(),
+      css: z.string().optional(),
+      baseColor: z.string().optional(),
+      cssVariables: z.boolean().optional(),
+      prefix: z.string().optional(),
+    })
+    .optional(),
+  aliases: z
+    .object({
+      components: z.string().optional(),
+      utils: z.string().optional(),
+      ui: z.string().optional(),
+      lib: z.string().optional(),
+      hooks: z.string().optional(),
+    })
+    .optional(),
+})
+
 export const rawConfigSchema = z
   .object({
     $schema: z.string().optional(),
@@ -38,6 +63,8 @@ export const rawConfigSchema = z
       lib: z.string().optional(),
       hooks: z.string().optional(),
     }),
+    url: z.string().optional(),
+    registries: z.record(z.string(), registrySchema).optional(),
   })
   .strict()
 

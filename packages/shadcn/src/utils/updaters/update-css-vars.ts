@@ -16,6 +16,7 @@ export async function updateCssVars(
   options: {
     cleanupDefaultNextStyles?: boolean
     silent?: boolean
+    registryName?: string
   }
 ) {
   if (
@@ -45,6 +46,7 @@ export async function updateCssVars(
   const raw = await fs.readFile(cssFilepath, "utf8")
   let output = await transformCssVars(raw, cssVars, config, {
     cleanupDefaultNextStyles: options.cleanupDefaultNextStyles,
+    registryName: options.registryName,
   })
   await fs.writeFile(cssFilepath, output, "utf8")
   cssVarsSpinner.succeed()
@@ -56,6 +58,7 @@ export async function transformCssVars(
   config: Config,
   options: {
     cleanupDefaultNextStyles?: boolean
+    registryName?: string
   }
 ) {
   options = {
@@ -63,14 +66,14 @@ export async function transformCssVars(
     ...options,
   }
 
-  const plugins = [updateCssVarsPlugin(cssVars)]
+  const plugins = [updateCssVarsPlugin(cssVars, options.registryName)]
   if (options.cleanupDefaultNextStyles) {
     plugins.push(cleanupDefaultNextStylesPlugin())
   }
 
   // Only add the base layer plugin if we're using css variables.
   if (config.tailwind.cssVariables) {
-    plugins.push(updateBaseLayerPlugin())
+    plugins.push(updateBaseLayerPlugin(options.registryName))
   }
 
   const result = await postcss(plugins).process(input, {
@@ -80,7 +83,7 @@ export async function transformCssVars(
   return result.css
 }
 
-function updateBaseLayerPlugin() {
+function updateBaseLayerPlugin(registryName?: string) {
   return {
     postcssPlugin: "update-base-layer",
     Once(root: Root) {
@@ -127,7 +130,9 @@ function updateBaseLayerPlugin() {
         if (!existingRule) {
           baseLayer?.append(
             postcss.rule({
-              selector,
+              selector: registryName
+                ? `[data-registry="${registryName}"] ${selector}`
+                : selector,
               nodes: [
                 postcss.atRule({
                   name: "apply",
@@ -145,7 +150,8 @@ function updateBaseLayerPlugin() {
 }
 
 function updateCssVarsPlugin(
-  cssVars: z.infer<typeof registryItemCssVarsSchema>
+  cssVars: z.infer<typeof registryItemCssVarsSchema>,
+  registryName?: string
 ) {
   return {
     postcssPlugin: "update-css-vars",
@@ -174,8 +180,14 @@ function updateCssVarsPlugin(
       if (baseLayer !== undefined) {
         // Add variables for each key in cssVars
         Object.entries(cssVars).forEach(([key, vars]) => {
-          const selector = key === "light" ? ":root" : `.${key}`
-          // TODO: Fix typecheck.
+          const selector =
+            key === "light"
+              ? registryName
+                ? `[data-registry="${registryName}"]`
+                : ":root"
+              : registryName
+              ? `[data-registry="${registryName}"].dark`
+              : ".dark"
           addOrUpdateVars(baseLayer as AtRule, selector, vars)
         })
       }
