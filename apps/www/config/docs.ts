@@ -284,6 +284,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Number Field",
+          href: "/docs/components/number-field",
+          items: [],
+        },
+        {
           title: "Pagination",
           href: "/docs/components/pagination",
           items: [],
