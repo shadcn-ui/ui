@@ -1,56 +1,63 @@
 "use client"
 
-import { Frame, LifeBuoy, Map, PieChart, Send } from "lucide-react"
+import * as React from "react"
+import {
+  Frame,
+  LifeBuoy,
+  Map,
+  PanelLeftClose,
+  PanelLeftOpen,
+  PieChart,
+  Send,
+} from "lucide-react"
 
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarInset,
   SidebarMenu,
-  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/registry/default/ui/sidebar"
+} from "@/registry/new-york/ui/sidebar"
 
 const projects = [
   {
     name: "Design Engineering",
     url: "#",
     icon: Frame,
-    badge: "24",
   },
   {
     name: "Sales & Marketing",
     url: "#",
     icon: PieChart,
-    badge: "12",
   },
   {
     name: "Travel",
     url: "#",
     icon: Map,
-    badge: "3",
   },
   {
     name: "Support",
     url: "#",
     icon: LifeBuoy,
-    badge: "21",
   },
   {
     name: "Feedback",
     url: "#",
     icon: Send,
-    badge: "8",
   },
 ]
 
 export default function AppSidebar() {
+  const [open, setOpen] = React.useState(true)
+
   return (
-    <SidebarProvider>
+    <SidebarProvider open={open} onOpenChange={setOpen}>
       <Sidebar>
         <SidebarContent>
           <SidebarGroup>
@@ -59,16 +66,12 @@ export default function AppSidebar() {
               <SidebarMenu>
                 {projects.map((project) => (
                   <SidebarMenuItem key={project.name}>
-                    <SidebarMenuButton
-                      asChild
-                      className="group-has-[[data-state=open]]/menu-item:bg-sidebar-accent"
-                    >
+                    <SidebarMenuButton asChild>
                       <a href={project.url}>
                         <project.icon />
                         <span>{project.name}</span>
                       </a>
                     </SidebarMenuButton>
-                    <SidebarMenuBadge>{project.badge}</SidebarMenuBadge>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
@@ -76,6 +79,18 @@ export default function AppSidebar() {
           </SidebarGroup>
         </SidebarContent>
       </Sidebar>
+      <SidebarInset>
+        <header className="flex items-center h-12 px-4 justify-between">
+          <Button
+            onClick={() => setOpen((open) => !open)}
+            size="sm"
+            variant="ghost"
+          >
+            {open ? <PanelLeftClose /> : <PanelLeftOpen />}
+            <span>{open ? "Open" : "Close"} Sidebar</span>
+          </Button>
+        </header>
+      </SidebarInset>
     </SidebarProvider>
   )
 }

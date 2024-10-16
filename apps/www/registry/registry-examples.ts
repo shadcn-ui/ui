@@ -992,4 +992,14 @@ export const examples: Registry = [
       },
     ],
   },
+  {
+    name: "demo-sidebar-controlled",
+    type: "registry:block",
+    files: [
+      {
+        path: "block/demo-sidebar-controlled.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

@@ -28,7 +28,7 @@ export default function AppSidebar() {
             <SidebarMenuItem>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton>
+                  <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                     Select Workspace
                     <ChevronDown className="ml-auto" />
                   </SidebarMenuButton>

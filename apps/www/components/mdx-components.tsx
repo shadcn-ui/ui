@@ -142,7 +142,7 @@ const components = {
     <div className="my-6 w-full overflow-y-auto rounded-lg">
       <table
         className={cn(
-          "w-full text-sm overflow-hidden after:rounded-lg after:ring-1 after:absolute after:inset-0 relative after:ring-border",
+          "relative w-full overflow-hidden text-sm after:absolute after:inset-0 after:rounded-lg after:ring-1 after:ring-border",
           className
         )}
         {...props}

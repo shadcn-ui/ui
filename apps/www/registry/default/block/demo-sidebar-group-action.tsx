@@ -9,6 +9,7 @@ import {
   Plus,
   Send,
 } from "lucide-react"
+import { Toaster, toast } from "sonner"
 
 import {
   Sidebar,
@@ -26,11 +27,20 @@ import {
 export default function AppSidebar() {
   return (
     <SidebarProvider>
+      <Toaster
+        position="bottom-left"
+        toastOptions={{
+          className: "ml-[160px]",
+        }}
+      />
       <Sidebar>
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>Projects</SidebarGroupLabel>
-            <SidebarGroupAction title="Add Project">
+            <SidebarGroupAction
+              title="Add Project"
+              onClick={() => toast("You clicked the group action!")}
+            >
               <Plus /> <span className="sr-only">Add Project</span>
             </SidebarGroupAction>
             <SidebarGroupContent>

@@ -2489,6 +2489,18 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "demo-sidebar-controlled": {
+      name: "demo-sidebar-controlled",
+      description: "",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: ["registry/new-york/block/demo-sidebar-controlled.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/block/demo-sidebar-controlled.tsx")),
+      source: "__registry__/new-york/block/demo-sidebar-controlled.tsx",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "sidebar-01": {
       name: "sidebar-01",
       description: "A simple sidebar with navigation grouped by section.",
@@ -6042,6 +6054,18 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "demo-sidebar-controlled": {
+      name: "demo-sidebar-controlled",
+      description: "",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: ["registry/default/block/demo-sidebar-controlled.tsx"],
+      component: React.lazy(() => import("@/registry/default/block/demo-sidebar-controlled.tsx")),
+      source: "__registry__/default/block/demo-sidebar-controlled.tsx",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "sidebar-01": {
       name: "sidebar-01",
       description: "A simple sidebar with navigation grouped by section.",
@@ -6140,7 +6164,7 @@ export const Index: Record<string, any> = {
     },
     "sidebar-09": {
       name: "sidebar-09",
-      description: "Collapsible nested sidebars",
+      description: "Collapsible nested sidebars.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
       files: ["registry/default/block/sidebar-09/page.tsx","registry/default/block/sidebar-09/components/app-sidebar.tsx","registry/default/block/sidebar-09/components/nav-main.tsx","registry/default/block/sidebar-09/components/nav-projects.tsx","registry/default/block/sidebar-09/components/nav-user.tsx"],

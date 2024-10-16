@@ -1,7 +1,7 @@
 {
   "name": "sidebar-09",
   "type": "registry:block",
-  "description": "Collapsible nested sidebars",
+  "description": "Collapsible nested sidebars.",
   "registryDependencies": [
     "sidebar",
     "breadcrumb",

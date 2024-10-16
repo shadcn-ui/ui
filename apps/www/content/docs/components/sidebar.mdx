@@ -1215,6 +1215,35 @@ function NavProjects() {
 }
 ```
 
+## Controlled Sidebar
+
+Use the `open` and `onOpenChange` props to control the sidebar.
+
+<figure className="flex flex-col gap-4 mt-6">
+  <ComponentPreview
+    name="demo-sidebar-controlled"
+    title="Sidebar Controlled"
+    type="block"
+    description="A controlled sidebar."
+    className="w-full"
+  />
+  <figcaption className="text-center text-sm text-gray-500">
+    A controlled sidebar.
+  </figcaption>
+</figure>
+
+```tsx showLineNumbers
+export function AppSidebar() {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <SidebarProvider open={open} onOpenChange={setOpen}>
+      <Sidebar />
+    </SidebarProvider>
+  )
+}
+```
+
 ## Theming
 
 We use the following CSS variables to theme the sidebar.
