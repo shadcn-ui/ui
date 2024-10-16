@@ -46,7 +46,7 @@ export async function editInV0({
   url,
 }: {
   name: string
-  style: Style["name"]
+  style?: Style["name"]
   url: string
 }) {
   style = style ?? "new-york"
