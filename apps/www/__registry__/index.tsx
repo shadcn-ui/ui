@@ -3749,6 +3749,18 @@ export const Index: Record<string, any> = {
       subcategory: "Sidebars",
       chunks: []
     },
+    "v0-login-01": {
+      name: "v0-login-01",
+      description: "A simple login form.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: ["registry/new-york/v0/login-01.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/v0/login-01.tsx")),
+      source: "__registry__/new-york/v0/login-01.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
   },  "default": {
     "accordion": {
       name: "accordion",
@@ -7492,6 +7504,18 @@ export const Index: Record<string, any> = {
       source: "__registry__/default/v0/sidebar-15.tsx",
       category: "Application",
       subcategory: "Sidebars",
+      chunks: []
+    },
+    "v0-login-01": {
+      name: "v0-login-01",
+      description: "A simple login form.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: ["registry/default/v0/login-01.tsx"],
+      component: React.lazy(() => import("@/registry/default/v0/login-01.tsx")),
+      source: "__registry__/default/v0/login-01.tsx",
+      category: "Authentication",
+      subcategory: "Login",
       chunks: []
     },
   },

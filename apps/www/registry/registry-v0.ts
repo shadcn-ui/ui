@@ -268,7 +268,7 @@ export const v0: Registry = [
     subcategory: "Sidebars",
   },
   {
-    name: "login-01",
+    name: "v0-login-01",
     type: "registry:block",
     registryDependencies: ["button", "card", "input", "label"],
     files: [
