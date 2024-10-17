@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Check, ChevronRight } from "lucide-react"
 
-import { Checkbox } from "@/registry/default/ui/checkbox"
 import {
   Collapsible,
   CollapsibleContent,

@@ -262,18 +262,6 @@ export const blocks: Registry = [
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-09/components/app-sidebar.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/sidebar-09/components/nav-main.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/sidebar-09/components/nav-projects.tsx",
-        type: "registry:component",
-      },
-      {
         path: "block/sidebar-09/components/nav-user.tsx",
         type: "registry:component",
       },

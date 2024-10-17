@@ -79,6 +79,9 @@ export async function editInV0({
     //   },
     // }
 
+    // Remove v0 prefix from the name
+    registryItem.name = registryItem.name.replace(/^v0-/, "")
+
     const payload = {
       version: 2,
       payload: registryItem,

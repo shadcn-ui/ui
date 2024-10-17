@@ -102,7 +102,7 @@ export function BlockToolbar({
         <V0Button
           className="hidden shadow-none md:flex"
           id={`v0-button-${block.name}`}
-          name={block.name}
+          name={`v0-${block.name}`}
         />
       </div>
     </div>
