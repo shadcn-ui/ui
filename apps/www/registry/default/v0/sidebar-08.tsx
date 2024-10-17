@@ -24,7 +24,6 @@ import {
   Trash2,
 } from "lucide-react"
 
-import { useIsMobile } from "@/registry/default/hooks/use-mobile"
 import {
   Avatar,
   AvatarFallback,
@@ -202,8 +201,6 @@ const data = {
 }
 
 export default function Page() {
-  const isMobile = useIsMobile()
-
   return (
     <SidebarProvider>
       <Sidebar variant="inset">
@@ -289,8 +286,8 @@ export default function Page() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
                       className="w-48"
-                      side={isMobile ? "bottom" : "right"}
-                      align={isMobile ? "end" : "start"}
+                      side="bottom"
+                      align="end"
                     >
                       <DropdownMenuItem>
                         <Folder className="text-muted-foreground" />
@@ -363,7 +360,7 @@ export default function Page() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-                  side={isMobile ? "bottom" : "right"}
+                  side="bottom"
                   align="end"
                   sideOffset={4}
                 >
