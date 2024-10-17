@@ -17,7 +17,7 @@ export default async function BlocksPage() {
 
   return (
     <div className="gap-3 md:flex md:flex-row-reverse md:items-start">
-      <div className="grid flex-1 gap-24 lg:gap-48">
+      <div className="grid flex-1 gap-12 md:gap-24 lg:gap-48">
         {blocks.map((name, index) => (
           <React.Suspense key={`${name}-${index}`}>
             <BlockDisplay name={name} />

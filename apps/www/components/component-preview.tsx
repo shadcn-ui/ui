@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
@@ -78,7 +79,21 @@ export function ComponentPreview({
   if (type === "block") {
     return (
       <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border">
-        <div className="absolute inset-0 w-[1600px] bg-background">
+        <Image
+          src={`/images/blocks/${name}.png`}
+          alt={name}
+          width={1440}
+          height={900}
+          className="absolute top-0 left-0 w-[970px] sm:w-[1280px] bg-background z-20 max-w-none md:hidden dark:hidden md:dark:hidden"
+        />
+        <Image
+          src={`/images/blocks/${name}-dark.png`}
+          alt={name}
+          width={1440}
+          height={900}
+          className="absolute top-0 hidden dark:block left-0 w-[970px] sm:w-[1280px] bg-background z-20 max-w-none md:hidden md:dark:hidden"
+        />
+        <div className="absolute hidden md:block inset-0 w-[1600px] bg-background">
           <iframe
             src={`/blocks/${config.style}/${name}`}
             className="size-full"

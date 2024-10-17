@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import { ImperativePanelHandle } from "react-resizable-panels"
 
 import { BlockToolbar } from "@/components/block-toolbar"
@@ -32,14 +33,29 @@ export function BlockPreview({
       <ResizablePanelGroup direction="horizontal" className="relative z-10">
         <ResizablePanel
           ref={ref}
-          className="relative rounded-lg border bg-background"
+          className="relative aspect-[4/2.5] md:aspect-auto rounded-lg border bg-background"
           defaultSize={100}
           minSize={30}
         >
+          <Image
+            src={`/images/blocks/${block.name}.png`}
+            alt={block.name}
+            data-block={block.name}
+            width={1440}
+            height={900}
+            className="bg-background absolute top-0 left-0 w-[970px] sm:w-[1280px] z-20 max-w-none dark:hidden md:dark:hidden md:hidden data-[block=sidebar-10]:right-0 data-[block=sidebar-10]:left-auto data-[block=sidebar-11]:-top-1/2 data-[block=sidebar-13]:max-w-full data-[block=sidebar-14]:right-0 data-[block=sidebar-14]:left-auto data-[block=sidebar-15]:max-w-full data-[block=login-01]:max-w-full"
+          />
+          <Image
+            src={`/images/blocks/${block.name}-dark.png`}
+            alt={block.name}
+            width={1440}
+            height={900}
+            className="bg-background z-20 hidden dark:block md:dark:hidden md:hidden"
+          />
           <iframe
             src={`/blocks/${block.style}/${block.name}`}
             height={block.container?.height ?? 450}
-            className="chunk-mode relative z-20 w-full bg-background"
+            className="chunk-mode relative hidden md:block z-20 w-full bg-background"
           />
         </ResizablePanel>
         <ResizableHandle className="relative hidden w-3 bg-transparent p-0 after:absolute after:right-0 after:top-1/2 after:h-8 after:w-[6px] after:-translate-y-1/2 after:translate-x-[-1px] after:rounded-full after:bg-border after:transition-all after:hover:h-10 sm:block" />
