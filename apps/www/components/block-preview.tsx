@@ -50,7 +50,7 @@ export function BlockPreview({
             alt={block.name}
             width={1440}
             height={900}
-            className="z-20 hidden bg-background dark:block md:hidden md:dark:hidden"
+            className="z-20 hidden bg-background data-[block=sidebar-10]:left-auto data-[block=sidebar-10]:right-0 data-[block=sidebar-11]:-top-1/2 data-[block=sidebar-14]:left-auto data-[block=sidebar-14]:right-0 data-[block=login-01]:max-w-full data-[block=sidebar-13]:max-w-full data-[block=sidebar-15]:max-w-full dark:block md:hidden md:dark:hidden"
           />
           <iframe
             src={`/blocks/${block.style}/${block.name}`}
