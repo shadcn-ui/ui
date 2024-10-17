@@ -31,9 +31,9 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
 ### Wrap your root layout
 
-Add the `ThemeProvider` to your root layout.
+Add the `ThemeProvider` to your root layout and include `suppressHydrationWarning` on the `<html>` tag to prevent hydration mismatch error.
 
-```tsx {1,9-11} title="app/layout.tsx"
+```tsx {1,6,9-14} title="app/layout.tsx"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export default function RootLayout({ children }: RootLayoutProps) {
