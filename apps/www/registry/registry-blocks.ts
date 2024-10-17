@@ -194,6 +194,10 @@ export const blocks: Registry = [
         path: "block/sidebar-07/components/nav-user.tsx",
         type: "registry:component",
       },
+      {
+        path: "block/sidebar-07/components/team-switcher.tsx",
+        type: "registry:component",
+      },
     ],
     category: "Application",
     subcategory: "Sidebars",
