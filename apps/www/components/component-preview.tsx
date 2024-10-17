@@ -84,16 +84,16 @@ export function ComponentPreview({
           alt={name}
           width={1440}
           height={900}
-          className="absolute top-0 left-0 w-[970px] sm:w-[1280px] bg-background z-20 max-w-none md:hidden dark:hidden md:dark:hidden"
+          className="absolute left-0 top-0 z-20 w-[970px] max-w-none bg-background dark:hidden sm:w-[1280px] md:hidden md:dark:hidden"
         />
         <Image
           src={`/images/blocks/${name}-dark.png`}
           alt={name}
           width={1440}
           height={900}
-          className="absolute top-0 hidden dark:block left-0 w-[970px] sm:w-[1280px] bg-background z-20 max-w-none md:hidden md:dark:hidden"
+          className="absolute left-0 top-0 z-20 hidden w-[970px] max-w-none bg-background dark:block sm:w-[1280px] md:hidden md:dark:hidden"
         />
-        <div className="absolute hidden md:block inset-0 w-[1600px] bg-background">
+        <div className="absolute inset-0 hidden w-[1600px] bg-background md:block">
           <iframe
             src={`/blocks/${config.style}/${name}`}
             className="size-full"

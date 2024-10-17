@@ -33,10 +33,10 @@ export function BlockToolbar({
 
   return (
     <div className="flex items-center gap-2 md:gap-4">
-      <Button asChild variant="link" className="px-1 whitespace-normal md:px-2">
+      <Button asChild variant="link" className="whitespace-normal px-1 md:px-2">
         <a href={`#${block.name}`}>{block.description}</a>
       </Button>
-      <div className="ml-auto hidden md:flex items-center gap-2 md:pr-[14px]">
+      <div className="ml-auto hidden items-center gap-2 md:flex md:pr-[14px]">
         <Button
           variant="ghost"
           className="h-7 rounded-md border bg-muted shadow-none"
