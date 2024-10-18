@@ -3,6 +3,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { registryResolveItemsTree } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
+import { updateComponentJson } from "@/src/utils/updaters/update-component-json"
 import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateFiles } from "@/src/utils/updaters/update-files"
@@ -23,7 +24,6 @@ export async function addComponents(
     isNewProject: false,
     ...options,
   }
-
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
@@ -41,7 +41,6 @@ export async function addComponents(
     cleanupDefaultNextStyles: options.isNewProject,
     silent: options.silent,
   })
-
   await updateDependencies(tree.dependencies, config, {
     silent: options.silent,
   })
@@ -50,6 +49,8 @@ export async function addComponents(
     silent: options.silent,
   })
 
+
+  await updateComponentJson(tree.files, config, options)
   if (tree.docs) {
     logger.info(tree.docs)
   }
