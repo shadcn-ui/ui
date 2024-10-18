@@ -1,5 +1,7 @@
 import { LoginForm } from "@/registry/default/block/login-01/components/login-form"
 
+export const description = "A simple login form."
+
 export const iframeHeight = "870px"
 
 export const containerClassName = "w-full h-full"
