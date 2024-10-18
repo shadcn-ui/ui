@@ -2,9 +2,9 @@
 
 import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts"
 
-import { Card, CardContent, CardFooter } from "@/registry/new-york//ui/card"
-import { ChartContainer } from "@/registry/new-york//ui/chart"
-import { Separator } from "@/registry/new-york//ui/separator"
+import { Card, CardContent, CardFooter } from "@/registry/new-york/ui/card"
+import { ChartContainer } from "@/registry/new-york/ui/chart"
+import { Separator } from "@/registry/new-york/ui/separator"
 
 export default function Component() {
   return (
