@@ -90,7 +90,7 @@ export default async function BlockPage({
 
   return (
     <>
-      {/* <ThemesStyle /> */}
+      <ThemesStyle />
       <div
         className={cn(
           "themes-wrapper bg-background",
