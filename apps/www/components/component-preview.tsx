@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
@@ -25,10 +26,12 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: "center" | "start" | "end"
   description?: string
   hideCode?: boolean
+  type?: "block" | "component" | "example"
 }
 
 export function ComponentPreview({
   name,
+  type,
   children,
   className,
   extractClassname,
@@ -73,6 +76,33 @@ export function ComponentPreview({
     }
   }, [Code])
 
+  if (type === "block") {
+    return (
+      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border">
+        <Image
+          src={`/images/blocks/${name}.png`}
+          alt={name}
+          width={1440}
+          height={900}
+          className="absolute left-0 top-0 z-20 w-[970px] max-w-none bg-background dark:hidden sm:w-[1280px] md:hidden md:dark:hidden"
+        />
+        <Image
+          src={`/images/blocks/${name}-dark.png`}
+          alt={name}
+          width={1440}
+          height={900}
+          className="absolute left-0 top-0 z-20 hidden w-[970px] max-w-none bg-background dark:block sm:w-[1280px] md:hidden md:dark:hidden"
+        />
+        <div className="absolute inset-0 hidden w-[1600px] bg-background md:block">
+          <iframe
+            src={`/blocks/${config.style}/${name}`}
+            className="size-full"
+          />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div
       className={cn("group relative my-4 flex flex-col space-y-2", className)}
@@ -101,16 +131,7 @@ export function ComponentPreview({
           <div className="flex items-center justify-between p-4">
             <StyleSwitcher />
             <div className="flex items-center gap-2">
-              {config.style === "default" && description ? (
-                <V0Button
-                  block={{
-                    code: codeString,
-                    name,
-                    style: config.style,
-                    description,
-                  }}
-                />
-              ) : null}
+              {description ? <V0Button name={name} /> : null}
               <CopyButton
                 value={codeString}
                 variant="outline"
