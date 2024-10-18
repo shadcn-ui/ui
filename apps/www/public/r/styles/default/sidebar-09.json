@@ -3,6 +3,7 @@
   "type": "registry:block",
   "description": "Collapsible nested sidebars.",
   "registryDependencies": [
+    "sidebar",
     "breadcrumb",
     "separator",
     "collapsible",

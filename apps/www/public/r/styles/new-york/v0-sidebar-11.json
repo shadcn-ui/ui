@@ -3,6 +3,7 @@
   "type": "registry:block",
   "description": "A sidebar with a collapsible file tree.",
   "registryDependencies": [
+    "sidebar",
     "breadcrumb",
     "separator",
     "collapsible"

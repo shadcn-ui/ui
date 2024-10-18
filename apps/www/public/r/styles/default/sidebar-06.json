@@ -3,6 +3,7 @@
   "type": "registry:block",
   "description": "A sidebar with submenus as dropdowns.",
   "registryDependencies": [
+    "sidebar",
     "breadcrumb",
     "separator",
     "card",

@@ -3,6 +3,7 @@
   "type": "registry:block",
   "description": "A sidebar with submenus.",
   "registryDependencies": [
+    "sidebar",
     "breadcrumb"
   ],
   "files": [

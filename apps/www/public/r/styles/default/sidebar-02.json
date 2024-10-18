@@ -3,6 +3,7 @@
   "type": "registry:block",
   "description": "A sidebar with collapsible sections.",
   "registryDependencies": [
+    "sidebar",
     "breadcrumb",
     "separator",
     "label",

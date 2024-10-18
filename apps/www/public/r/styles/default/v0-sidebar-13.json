@@ -3,6 +3,7 @@
   "type": "registry:block",
   "description": "A sidebar in a dialog.",
   "registryDependencies": [
+    "sidebar",
     "breadcrumb",
     "button",
     "dialog"

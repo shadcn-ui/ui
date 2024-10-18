@@ -3,6 +3,7 @@
   "type": "registry:block",
   "description": "A left and right sidebar.",
   "registryDependencies": [
+    "sidebar",
     "breadcrumb",
     "separator",
     "popover",

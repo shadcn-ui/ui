@@ -280,13 +280,6 @@ export const Index: Record<string, any> = {
         }
       }
 
-      // Temporary remove sidebar as a dependency.
-      if (item.registryDependencies?.includes("sidebar")) {
-        item.registryDependencies = item.registryDependencies.filter(
-          (dependency) => dependency !== "sidebar"
-        )
-      }
-
       index += `
     "${item.name}": {
       name: "${item.name}",
