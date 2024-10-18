@@ -48,6 +48,11 @@ const examples = [
     href: "/examples/authentication",
     code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/authentication",
   },
+  {
+    name: "Chat",
+    href: "/examples/chat",
+    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/chat",
+  }
 ]
 
 interface ExamplesNavProps extends React.HTMLAttributes<HTMLDivElement> {}
