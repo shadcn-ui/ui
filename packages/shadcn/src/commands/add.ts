@@ -20,6 +20,7 @@ export const addOptionsSchema = z.object({
   cwd: z.string(),
   all: z.boolean(),
   path: z.string().optional(),
+  registry: z.string().optional(),
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
 })
@@ -40,6 +41,7 @@ export const add = new Command()
   )
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
+  .option("-r, --registry <registry>", "the registry to use.")
   .option("-s, --silent", "mute output.", false)
   .option(
     "--src-dir",
@@ -77,6 +79,10 @@ export const add = new Command()
       }
 
       if (!options.components?.length) {
+        options.components = await promptForRegistryComponents(options)
+      }
+
+      if (options.registry) {
         options.components = await promptForRegistryComponents(options)
       }
 
@@ -161,7 +167,7 @@ export const add = new Command()
 async function promptForRegistryComponents(
   options: z.infer<typeof addOptionsSchema>
 ) {
-  const registryIndex = await getRegistryIndex()
+  const registryIndex = await getRegistryIndex(options.registry)
   if (!registryIndex) {
     logger.break()
     handleError(new Error("Failed to fetch registry index."))
