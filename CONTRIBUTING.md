@@ -33,6 +33,7 @@ apps
             └── ui
 packages
 └── cli
+└── shadcn
 ```
 
 | Path                  | Description                              |
@@ -42,6 +43,7 @@ packages
 | `apps/www/content`    | The content for the website.             |
 | `apps/www/registry`   | The registry for the components.         |
 | `packages/cli`        | The `shadcn-ui` package.                 |
+| `packages/shadcn`     | The `shadcn` package.                    |
 
 ## Development
 
@@ -160,9 +162,11 @@ If you have a request for a new component, please open a discussion on GitHub. W
 
 ## CLI
 
-The `shadcn-ui` package is a CLI for adding components to your project. You can find the documentation for the CLI [here](https://ui.shadcn.com/docs/cli).
+The `shadcn` package is a new CLI for adding components to your project. You can find the documentation for the CLI [here](https://ui.shadcn.com/docs/cli).
 
-Any changes to the CLI should be made in the `packages/cli` directory. If you can, it would be great if you could add tests for your changes.
+The `shadcn-ui` package is an old CLI for adding components to your project. You can find the changelog for the CLI [here](https://ui.shadcn.com/docs/changelog).
+
+Any changes to the CLI should be made in the `packages/shadcn` directory. If you can, it would be great if you could add tests for your changes.
 
 ## Testing
 

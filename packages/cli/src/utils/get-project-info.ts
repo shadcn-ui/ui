@@ -164,7 +164,7 @@ export async function getTsConfigAliasPrefix(cwd: string) {
   // This assume that the first alias is the prefix.
   for (const [alias, paths] of Object.entries(tsConfig.paths)) {
     if (paths.includes("./*") || paths.includes("./src/*")) {
-      return alias.at(0)
+      return alias.split("/").slice(0, -1).join("/")
     }
   }
 
