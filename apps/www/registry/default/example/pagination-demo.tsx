@@ -2,7 +2,9 @@ import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
+  PaginationFirst,
   PaginationItem,
+  PaginationLast,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
@@ -12,6 +14,7 @@ export default function PaginationDemo() {
   return (
     <Pagination>
       <PaginationContent>
+        <PaginationFirst href="#" />
         <PaginationItem>
           <PaginationPrevious href="#" />
         </PaginationItem>
@@ -32,6 +35,7 @@ export default function PaginationDemo() {
         <PaginationItem>
           <PaginationNext href="#" />
         </PaginationItem>
+        <PaginationLast href="#" />
       </PaginationContent>
     </Pagination>
   )
