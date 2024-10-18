@@ -171,6 +171,22 @@ function addTailwindConfigProperty(
   return configObject
 }
 
+function removeNull(obj: Record<string, any>) {
+  return Object.entries(obj).reduce<Record<string, any>>(
+    (acc, [key, value]) => {
+      if (value) {
+        if (typeof value === "object" && !Array.isArray(value)) {
+          acc[key] = removeNull(value)
+        } else {
+          acc[key] = value
+        }
+      }
+      return acc
+    },
+    {}
+  )
+}
+
 async function addTailwindConfigTheme(
   configObject: ObjectLiteralExpression,
   theme: UpdaterTailwindConfig["theme"]
@@ -195,7 +211,8 @@ async function addTailwindConfigTheme(
     const themeObjectString = themeInitializer.getText()
     const themeObject = await parseObjectLiteral(themeObjectString)
     const result = deepmerge(themeObject, theme)
-    const resultString = objectToString(result)
+
+    const resultString = objectToString(removeNull(result ?? {}))
       .replace(/\'\"/g, "'") // Replace `\" with "
       .replace(/\"\'/g, "'") // Replace `\" with "
       .replace(/\'\[/g, "[") // Replace `[ with [
