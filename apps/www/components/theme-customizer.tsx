@@ -9,7 +9,7 @@ import {
   ResetIcon,
   SunIcon,
 } from "@radix-ui/react-icons"
-import template from "lodash.template"
+import { template } from "lodash"
 import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"

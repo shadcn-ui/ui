@@ -67,7 +67,7 @@
     "geist": "^1.2.2",
     "input-otp": "^1.2.2",
     "jotai": "^2.1.0",
-    "lodash.template": "^4.5.0",
+    "lodash": "^4.17.21",
     "lucide-react": "0.359.0",
     "markdown-wasm": "^1.2.0",
     "next": "14.3.0-canary.43",
@@ -90,7 +90,7 @@
   },
   "devDependencies": {
     "@shikijs/compat": "^1.1.7",
-    "@types/lodash.template": "^4.5.1",
+    "@types/lodash": "^4.17.7",
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.65",
     "@types/react-color": "^3.0.6",
