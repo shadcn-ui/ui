@@ -336,18 +336,22 @@ export default function Dashboard() {
                     <Table>
                       <TableHeader>
                         <TableRow>
-                          <TableHead className="w-[100px]">SKU</TableHead>
-                          <TableHead>Stock</TableHead>
-                          <TableHead>Price</TableHead>
-                          <TableHead className="w-[100px]">Size</TableHead>
+                          <TableHead className="w-[100px] px-2 sm:px-4">
+                            SKU
+                          </TableHead>
+                          <TableHead className="px-2 sm:px-4">Stock</TableHead>
+                          <TableHead className="px-2 sm:px-4">Price</TableHead>
+                          <TableHead className="w-[100px] px-2 sm:px-4">
+                            Size
+                          </TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         <TableRow>
-                          <TableCell className="font-semibold">
+                          <TableCell className="p-2 font-semibold sm:p-4">
                             GGPC-001
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="p-2 sm:p-4">
                             <Label htmlFor="stock-1" className="sr-only">
                               Stock
                             </Label>
@@ -357,7 +361,7 @@ export default function Dashboard() {
                               defaultValue="100"
                             />
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="p-2 sm:p-4">
                             <Label htmlFor="price-1" className="sr-only">
                               Price
                             </Label>
@@ -367,7 +371,7 @@ export default function Dashboard() {
                               defaultValue="99.99"
                             />
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="p-2 sm:p-4">
                             <ToggleGroup
                               type="single"
                               defaultValue="s"
@@ -380,10 +384,10 @@ export default function Dashboard() {
                           </TableCell>
                         </TableRow>
                         <TableRow>
-                          <TableCell className="font-semibold">
+                          <TableCell className="p-2 font-semibold sm:p-4">
                             GGPC-002
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="p-2 sm:p-4">
                             <Label htmlFor="stock-2" className="sr-only">
                               Stock
                             </Label>
@@ -393,7 +397,7 @@ export default function Dashboard() {
                               defaultValue="143"
                             />
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="p-2 sm:p-4">
                             <Label htmlFor="price-2" className="sr-only">
                               Price
                             </Label>
@@ -403,7 +407,7 @@ export default function Dashboard() {
                               defaultValue="99.99"
                             />
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="p-2 sm:p-4">
                             <ToggleGroup
                               type="single"
                               defaultValue="m"
@@ -416,10 +420,10 @@ export default function Dashboard() {
                           </TableCell>
                         </TableRow>
                         <TableRow>
-                          <TableCell className="font-semibold">
+                          <TableCell className="p-2 font-semibold sm:p-4">
                             GGPC-003
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="p-2 sm:p-4">
                             <Label htmlFor="stock-3" className="sr-only">
                               Stock
                             </Label>
@@ -429,7 +433,7 @@ export default function Dashboard() {
                               defaultValue="32"
                             />
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="p-2 sm:p-4">
                             <Label htmlFor="price-3" className="sr-only">
                               Stock
                             </Label>
@@ -439,7 +443,7 @@ export default function Dashboard() {
                               defaultValue="99.99"
                             />
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="p-2 sm:p-4">
                             <ToggleGroup
                               type="single"
                               defaultValue="s"
