@@ -88,7 +88,7 @@ export default function Component() {
               fill="var(--color-desktop)"
               fillOpacity={0.4}
               stroke="var(--color-desktop)"
-              stackId="a"
+              stackId="b"
             />
           </AreaChart>
         </ChartContainer>
