@@ -28,7 +28,6 @@ export async function createProject(
       )} project?`,
       initial: true,
     })
-
     if (!proceed) {
       return {
         projectPath: null,
@@ -38,20 +37,18 @@ export async function createProject(
   }
 
   const packageManager = await getPackageManager(options.cwd)
-
+  
   const { name } = await prompts({
     type: "text",
     name: "name",
-    message: `What is your project named?`,
+    message: "What is your project named?",
     initial: "my-app",
     format: (value: string) => value.trim(),
-    validate: (value: string) =>
-      value.length > 128 ? `Name should be less than 128 characters.` : true,
   })
 
-  const projectPath = `${options.cwd}/${name}`
+  const projectPath = path.join(options.cwd, name)
 
-  // Check if path is writable.
+  // Check if path is writable
   try {
     await fs.access(options.cwd, fs.constants.W_OK)
   } catch (error) {
@@ -66,7 +63,7 @@ export async function createProject(
     process.exit(1)
   }
 
-  if (fs.existsSync(path.resolve(options.cwd, name, "package.json"))) {
+  if (fs.existsSync(path.resolve(projectPath, "package.json"))) {
     logger.break()
     logger.error(
       `A project with the name ${highlighter.info(name)} already exists.`
@@ -80,7 +77,6 @@ export async function createProject(
     `Creating a new Next.js project. This may take a few minutes.`
   ).start()
 
-  // Note: pnpm fails here. Fallback to npx with --use-PACKAGE-MANAGER.
   const args = [
     "--tailwind",
     "--eslint",
@@ -92,6 +88,16 @@ export async function createProject(
   ]
 
   try {
+    // Run create-next-app in dry-run mode first to validate the project name
+    await execa(
+      "npx",
+      ["create-next-app@latest", projectPath, "--dry-run", ...args],
+      {
+        cwd: options.cwd,
+      }
+    )
+
+    // If dry-run succeeds, proceed with actual creation
     await execa(
       "npx",
       ["create-next-app@latest", projectPath, "--silent", ...args],
@@ -99,15 +105,30 @@ export async function createProject(
         cwd: options.cwd,
       }
     )
+    
+    createSpinner?.succeed("Created a new Next.js project successfully.")
   } catch (error) {
+    createSpinner?.fail("Failed to create Next.js project")
     logger.break()
-    logger.error(
-      `Something went wrong creating a new Next.js project. Please try again.`
-    )
+    
+    if (error instanceof Error) {
+      // Extract and format the Next.js error message
+      const errorMessage = error.message
+      const nextJsError = errorMessage.includes('Invalid project name:') 
+        ? errorMessage.split('Invalid project name:')[1].trim()
+        : 'Project name validation failed. Please ensure your project name follows Next.js naming conventions.'
+      
+      logger.error(`Next.js validation error: ${nextJsError}`)
+      logger.info("Next.js requires project names to be lowercase, with no spaces.")
+    } else {
+      logger.error(
+        "Something went wrong creating a new Next.js project. Please try again with a different project name."
+      )
+    }
+    
+    logger.break()
     process.exit(1)
   }
-
-  createSpinner?.succeed("Creating a new Next.js project.")
 
   return {
     projectPath,
