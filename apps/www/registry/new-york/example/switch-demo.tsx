@@ -3,9 +3,9 @@ import { Switch } from "@/registry/new-york/ui/switch"
 
 export default function SwitchDemo() {
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center">
       <Switch id="airplane-mode" />
-      <Label htmlFor="airplane-mode">Airplane Mode</Label>
+      <Label htmlFor="airplane-mode" className="pl-2">Airplane Mode</Label>
     </div>
   )
 }
