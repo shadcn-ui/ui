@@ -87,7 +87,7 @@ export default function AppSidebar() {
             variant="ghost"
           >
             {open ? <PanelLeftClose /> : <PanelLeftOpen />}
-            <span>{open ? "Open" : "Close"} Sidebar</span>
+            <span>{open ? "Close" : "Open"} Sidebar</span>
           </Button>
         </header>
       </SidebarInset>
