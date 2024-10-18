@@ -14,7 +14,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Components",
-      href: "/docs/components/accordion",
+      href: "/docs/components/sidebar",
     },
     {
       title: "Blocks",
