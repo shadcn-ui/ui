@@ -40,6 +40,7 @@ import { Textarea } from "@/registry/default/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
+  TooltipProvider,
   TooltipTrigger,
 } from "@/registry/default/ui/tooltip"
 
@@ -60,7 +61,7 @@ export default function Dashboard() {
           </Button>
         </div>
         <nav className="grid gap-1 p-2">
-          <Tooltip>
+          <TooltipProvider><Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
@@ -75,7 +76,8 @@ export default function Dashboard() {
               Playground
             </TooltipContent>
           </Tooltip>
-          <Tooltip>
+          </TooltipProvider>
+          <TooltipProvider><Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
@@ -90,7 +92,8 @@ export default function Dashboard() {
               Models
             </TooltipContent>
           </Tooltip>
-          <Tooltip>
+          </TooltipProvider>
+          <TooltipProvider><Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
@@ -105,7 +108,8 @@ export default function Dashboard() {
               API
             </TooltipContent>
           </Tooltip>
-          <Tooltip>
+          </TooltipProvider>
+          <TooltipProvider><Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
@@ -120,7 +124,8 @@ export default function Dashboard() {
               Documentation
             </TooltipContent>
           </Tooltip>
-          <Tooltip>
+          </TooltipProvider>
+          <TooltipProvider><Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
@@ -134,10 +139,10 @@ export default function Dashboard() {
             <TooltipContent side="right" sideOffset={5}>
               Settings
             </TooltipContent>
-          </Tooltip>
+          </Tooltip></TooltipProvider>
         </nav>
         <nav className="mt-auto grid gap-1 p-2">
-          <Tooltip>
+          <TooltipProvider><Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
@@ -151,8 +156,8 @@ export default function Dashboard() {
             <TooltipContent side="right" sideOffset={5}>
               Help
             </TooltipContent>
-          </Tooltip>
-          <Tooltip>
+          </Tooltip></TooltipProvider>
+          <TooltipProvider><Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
@@ -166,7 +171,7 @@ export default function Dashboard() {
             <TooltipContent side="right" sideOffset={5}>
               Account
             </TooltipContent>
-          </Tooltip>
+          </Tooltip></TooltipProvider>
         </nav>
       </aside>
       <div className="flex flex-col">
@@ -432,7 +437,7 @@ export default function Dashboard() {
                 className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0"
               />
               <div className="flex items-center p-3 pt-0">
-                <Tooltip>
+                <TooltipProvider><Tooltip>
                   <TooltipTrigger asChild>
                     <Button variant="ghost" size="icon">
                       <Paperclip className="size-4" />
@@ -440,8 +445,8 @@ export default function Dashboard() {
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent side="top">Attach File</TooltipContent>
-                </Tooltip>
-                <Tooltip>
+                </Tooltip></TooltipProvider>
+                <TooltipProvider><Tooltip>
                   <TooltipTrigger asChild>
                     <Button variant="ghost" size="icon">
                       <Mic className="size-4" />
@@ -449,7 +454,7 @@ export default function Dashboard() {
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent side="top">Use Microphone</TooltipContent>
-                </Tooltip>
+                </Tooltip></TooltipProvider>
                 <Button type="submit" size="sm" className="ml-auto gap-1.5">
                   Send Message
                   <CornerDownLeft className="size-3.5" />
