@@ -16,11 +16,12 @@ jobs:
         name: "Close stale issues with no reproduction"
         with:
           repo-token: ${{ secrets.STALE_TOKEN }}
-          close-issue-message: "This issue has been automatically closed because it received no activity for a while. If you think it was closed by accident, please leave a comment. Thank you."
+          close-issue-message: "This issue has been automatically closed because it received no activity for a while. If you think it was closed by accident, please reopen or leave a comment. Thank you.\n(This is an automated message.)"
           days-before-issue-close: 7
-          days-before-issue-stale: 15
+          days-before-issue-stale: 30
           stale-pr-label: "stale?"
-          days-before-pr-close: -1
-          days-before-pr-stale: -1
+          days-before-pr-close: 7
+          days-before-pr-stale: 15
+          only-pr-labels: "postpone: more info or changes requested,please add a reproduction"
           exempt-issue-labels: "roadmap,next,bug"
           operations-per-run: 300 # 1 operation per 100 issues, the rest is to label/comment/close

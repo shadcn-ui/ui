@@ -37,7 +37,7 @@ jobs:
       #   run: pnpm check
 
       - name: Build the package
-        run: pnpm build:cli
+        run: pnpm shadcn:build
 
       - name: Create Version PR or Publish to NPM
         id: changesets
