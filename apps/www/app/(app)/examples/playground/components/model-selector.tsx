@@ -74,6 +74,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
               align="start"
               forceMount
               className="min-h-[280px]"
+              noAnimation={true}
             >
               <div className="grid gap-2">
                 <h4 className="font-medium leading-none">{peekedModel.name}</h4>
@@ -139,7 +140,7 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
       if (
         mutation.type === "attributes" &&
         mutation.attributeName === "aria-selected" &&
-        ref.current?.getAttribute("aria-selected") === "true"
+        ref.current?.firstElementChild?.getAttribute("aria-selected") === "true"
       ) {
         onPeek(model)
       }
@@ -147,19 +148,20 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
   })
 
   return (
-    <CommandItem
-      key={model.id}
-      onSelect={onSelect}
-      ref={ref}
-      className="data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground"
-    >
-      {model.name}
-      <CheckIcon
-        className={cn(
-          "ml-auto h-4 w-4",
-          isSelected ? "opacity-100" : "opacity-0"
-        )}
-      />
-    </CommandItem>
+    <div ref={ref}>
+      <CommandItem
+        key={model.id}
+        onSelect={onSelect}
+        className="data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground"
+      >
+        {model.name}
+        <CheckIcon
+          className={cn(
+            "ml-auto h-4 w-4",
+            isSelected ? "opacity-100" : "opacity-0"
+          )}
+        />
+      </CommandItem>
+    </div>
   )
 }
