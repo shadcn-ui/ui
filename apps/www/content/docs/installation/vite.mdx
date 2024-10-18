@@ -23,6 +23,14 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
+Update the `index.css` file with the tailwind headers:
+
+```index.css tailwind headers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
 ### Edit tsconfig.json file
 
 The current version of Vite splits TypeScript configuration into three files, two of which need to be edited.
@@ -108,6 +116,24 @@ You will be asked a few questions to configure `components.json`:
 Which style would you like to use? › New York
 Which color would you like to use as base color? › Zinc
 Do you want to use CSS variables for colors? › no / yes
+```
+
+### Update tailwind.config.js
+
+Add the following code to the `tailwind.config.js` so your app can find which files to scan
+
+```
+export default {
+  darkMode: ['class'],
+    // ...
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
+    // ...
+}
 ```
 
 ### That's it
