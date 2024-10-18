@@ -362,7 +362,7 @@ export default function Dashboard() {
                           Laser Lemonade Machine
                         </TableCell>
                         <TableCell>
-                          <Badge variant="outline">Draft</Badge>
+                          <Badge variant="secondary">Draft</Badge>
                         </TableCell>
                         <TableCell className="hidden md:table-cell">
                           $499.99
