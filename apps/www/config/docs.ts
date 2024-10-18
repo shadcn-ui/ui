@@ -168,6 +168,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Avatar Group",
+          href: "/docs/components/avatar-group",
+          items: [],
+        },
+        {
           title: "Badge",
           href: "/docs/components/badge",
           items: [],

@@ -1,0 +1,10 @@
+{
+  "name": "avatar-group",
+  "files": [
+    {
+      "name": "avatar-group.tsx",
+      "content": "import * as React from \"react\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\ninterface AvatarGroupProps {\r\n  className?: string\r\n  orientation?: \"horizontal\" | \"vertical\"\r\n  limit?: number\r\n  size?: \"small\" | \"medium\" | \"large\"\r\n  spacing?: string\r\n  children: React.ReactNode\r\n}\r\n\r\ninterface AvatarWrapperProps {\r\n  children: React.ReactNode\r\n  index: number\r\n}\r\n\r\nconst AvatarWrapper: React.FC<AvatarWrapperProps> = ({ children, index }) => {\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"relative flex shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-background bg-background text-foreground\"\r\n      )}\r\n      style={{\r\n        zIndex: index !== 0 ? index : undefined,\r\n      }}\r\n      role=\"img\"\r\n      aria-label={`Avatar ${index + 1}`}\r\n    >\r\n      {children}\r\n    </div>\r\n  )\r\n}\r\n\r\nexport const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(\r\n  (\r\n    {\r\n      children,\r\n      className = \"\",\r\n      orientation = \"horizontal\",\r\n      limit,\r\n      spacing = \"0.75rem\",\r\n      ...props\r\n    },\r\n    ref\r\n  ) => {\r\n    const childrenArray = React.Children.toArray(children)\r\n    const limitedChildren = limit\r\n      ? childrenArray.slice(0, limit)\r\n      : childrenArray\r\n\r\n    const styledChildren = limitedChildren.map((child, index) => (\r\n      <AvatarWrapper key={index} index={index}>\r\n        {child}\r\n      </AvatarWrapper>\r\n    ))\r\n\r\n    return (\r\n      <div\r\n        ref={ref}\r\n        className={cn(\r\n          \"flex select-none\",\r\n          orientation === \"horizontal\"\r\n            ? `flex-row -space-x-3`\r\n            : `flex-col -space-y-3`,\r\n          className\r\n        )}\r\n        {...props}\r\n      >\r\n        {styledChildren}\r\n      </div>\r\n    )\r\n  }\r\n)\r\n\r\nAvatarGroup.displayName = \"AvatarGroup\"\r\n"
+    }
+  ],
+  "type": "components:ui"
+}

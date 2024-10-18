@@ -50,6 +50,13 @@
     "type": "components:ui"
   },
   {
+    "name": "avatar-group",
+    "files": [
+      "ui/avatar-group.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "badge",
     "files": [
       "ui/badge.tsx"

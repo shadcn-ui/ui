@@ -1,0 +1,74 @@
+---
+title: Avatar Group
+description: A group of image element each with a fallback for representing multiple users.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="avatar-group-demo"
+  title="Avatar Group"
+  description="A group of avatars each with a fallback."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add avatar-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar-group" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { AvatarGroup } from "@/components/ui/avatar-group"
+```
+
+```tsx
+<AvatarGroup orientation="horizontal">
+  <Avatar>
+    <AvatarImage src="https://github.com/shadcn.png" />
+    <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarImage src="https://github.com/dpaulos6.png" />
+    <AvatarFallback>DP</AvatarFallback>
+  </Avatar>
+</AvatarGroup>
+```
+
+## Examples
+
+### Tooltip
+
+<ComponentPreview
+  name="avatar-group-tooltip"
+  title="Avatar Group with Tooltip"
+  description="A group of avatars with a tooltip."
+/>
