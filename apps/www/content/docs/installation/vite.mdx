@@ -22,6 +22,21 @@ npm install -D tailwindcss postcss autoprefixer
 
 npx tailwindcss init -p
 ```
+Add the paths to all of your template files in your `tailwind.config.js` file.
+
+```ts {3-4} showLineNumbers
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
 
 ### Edit tsconfig.json file
 
