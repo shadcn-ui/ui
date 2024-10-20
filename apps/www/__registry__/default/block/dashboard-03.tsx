@@ -56,7 +56,7 @@ export default function Dashboard() {
       <aside className="inset-y fixed  left-0 z-20 flex h-full flex-col border-r">
         <div className="border-b p-2">
           <Button variant="outline" size="icon" aria-label="Home">
-            <Triangle className="size-5 fill-foreground" />
+            <Triangle className="w-5 h-5 fill-foreground" />
           </Button>
         </div>
         <nav className="grid gap-1 p-2">
@@ -68,7 +68,7 @@ export default function Dashboard() {
                 className="rounded-lg bg-muted"
                 aria-label="Playground"
               >
-                <SquareTerminal className="size-5" />
+                <SquareTerminal className="w-5 h-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -83,7 +83,7 @@ export default function Dashboard() {
                 className="rounded-lg"
                 aria-label="Models"
               >
-                <Bot className="size-5" />
+                <Bot className="w-5 h-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -98,7 +98,7 @@ export default function Dashboard() {
                 className="rounded-lg"
                 aria-label="API"
               >
-                <Code2 className="size-5" />
+                <Code2 className="w-5 h-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -113,7 +113,7 @@ export default function Dashboard() {
                 className="rounded-lg"
                 aria-label="Documentation"
               >
-                <Book className="size-5" />
+                <Book className="w-5 h-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -128,7 +128,7 @@ export default function Dashboard() {
                 className="rounded-lg"
                 aria-label="Settings"
               >
-                <Settings2 className="size-5" />
+                <Settings2 className="w-5 h-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -145,7 +145,7 @@ export default function Dashboard() {
                 className="mt-auto rounded-lg"
                 aria-label="Help"
               >
-                <LifeBuoy className="size-5" />
+                <LifeBuoy className="w-5 h-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -160,7 +160,7 @@ export default function Dashboard() {
                 className="mt-auto rounded-lg"
                 aria-label="Account"
               >
-                <SquareUser className="size-5" />
+                <SquareUser className="w-5 h-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
@@ -175,7 +175,7 @@ export default function Dashboard() {
           <Drawer>
             <DrawerTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
-                <Settings className="size-4" />
+                <Settings className="w-4 h-4" />
                 <span className="sr-only">Settings</span>
               </Button>
             </DrawerTrigger>
@@ -203,7 +203,7 @@ export default function Dashboard() {
                       <SelectContent>
                         <SelectItem value="genesis">
                           <div className="flex items-start gap-3 text-muted-foreground">
-                            <Rabbit className="size-5" />
+                            <Rabbit className="w-5 h-5" />
                             <div className="grid gap-0.5">
                               <p>
                                 Neural{" "}
@@ -219,7 +219,7 @@ export default function Dashboard() {
                         </SelectItem>
                         <SelectItem value="explorer">
                           <div className="flex items-start gap-3 text-muted-foreground">
-                            <Bird className="size-5" />
+                            <Bird className="w-5 h-5" />
                             <div className="grid gap-0.5">
                               <p>
                                 Neural{" "}
@@ -235,7 +235,7 @@ export default function Dashboard() {
                         </SelectItem>
                         <SelectItem value="quantum">
                           <div className="flex items-start gap-3 text-muted-foreground">
-                            <Turtle className="size-5" />
+                            <Turtle className="w-5 h-5" />
                             <div className="grid gap-0.5">
                               <p>
                                 Neural{" "}
@@ -296,7 +296,7 @@ export default function Dashboard() {
             size="sm"
             className="ml-auto gap-1.5 text-sm"
           >
-            <Share className="size-3.5" />
+            <Share className="w-3.5 h-3.5" />
             Share
           </Button>
         </header>
@@ -322,7 +322,7 @@ export default function Dashboard() {
                     <SelectContent>
                       <SelectItem value="genesis">
                         <div className="flex items-start gap-3 text-muted-foreground">
-                          <Rabbit className="size-5" />
+                          <Rabbit className="w-5 h-5" />
                           <div className="grid gap-0.5">
                             <p>
                               Neural{" "}
@@ -338,7 +338,7 @@ export default function Dashboard() {
                       </SelectItem>
                       <SelectItem value="explorer">
                         <div className="flex items-start gap-3 text-muted-foreground">
-                          <Bird className="size-5" />
+                          <Bird className="w-5 h-5" />
                           <div className="grid gap-0.5">
                             <p>
                               Neural{" "}
@@ -354,7 +354,7 @@ export default function Dashboard() {
                       </SelectItem>
                       <SelectItem value="quantum">
                         <div className="flex items-start gap-3 text-muted-foreground">
-                          <Turtle className="size-5" />
+                          <Turtle className="w-5 h-5" />
                           <div className="grid gap-0.5">
                             <p>
                               Neural{" "}
@@ -435,7 +435,7 @@ export default function Dashboard() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button variant="ghost" size="icon">
-                      <Paperclip className="size-4" />
+                      <Paperclip className="w-4 h-4" />
                       <span className="sr-only">Attach file</span>
                     </Button>
                   </TooltipTrigger>
@@ -444,7 +444,7 @@ export default function Dashboard() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button variant="ghost" size="icon">
-                      <Mic className="size-4" />
+                      <Mic className="w-4 h-4" />
                       <span className="sr-only">Use Microphone</span>
                     </Button>
                   </TooltipTrigger>
@@ -452,7 +452,7 @@ export default function Dashboard() {
                 </Tooltip>
                 <Button type="submit" size="sm" className="ml-auto gap-1.5">
                   Send Message
-                  <CornerDownLeft className="size-3.5" />
+                  <CornerDownLeft className="w-3.5 h-3.5" />
                 </Button>
               </div>
             </form>

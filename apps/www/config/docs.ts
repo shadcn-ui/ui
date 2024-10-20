@@ -77,6 +77,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Open in v0",
+          href: "/docs/v0",
+          items: [],
+        },
+        {
           title: "Figma",
           href: "/docs/figma",
           items: [],
@@ -89,8 +94,54 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Installation",
+      items: [
+        {
+          title: "Next.js",
+          href: "/docs/installation/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/installation/vite",
+          items: [],
+        },
+        {
+          title: "Remix",
+          href: "/docs/installation/remix",
+          items: [],
+        },
+        {
+          title: "Astro",
+          href: "/docs/installation/astro",
+          items: [],
+        },
+        {
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
+          title: "Gatsby",
+          href: "/docs/installation/gatsby",
+          items: [],
+        },
+        {
+          title: "Manual",
+          href: "/docs/installation/manual",
+          items: [],
+        },
+      ],
+    },
+    {
       title: "Components",
       items: [
+        {
+          title: "Sidebar",
+          href: "/docs/components/sidebar",
+          items: [],
+          label: "New",
+        },
         {
           title: "Accordion",
           href: "/docs/components/accordion",
@@ -149,7 +200,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Chart",
           href: "/docs/components/chart",
-          label: "New",
           items: [],
         },
         {

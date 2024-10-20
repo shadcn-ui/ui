@@ -1,0 +1,15 @@
+{
+  "name": "command-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "command"
+  ],
+  "files": [
+    {
+      "path": "example/command-demo.tsx",
+      "content": "import {\n  CalendarIcon,\n  EnvelopeClosedIcon,\n  FaceIcon,\n  GearIcon,\n  PersonIcon,\n  RocketIcon,\n} from \"@radix-ui/react-icons\"\n\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n  CommandSeparator,\n  CommandShortcut,\n} from \"@/components/ui/command\"\n\nexport default function CommandDemo() {\n  return (\n    <Command className=\"rounded-lg border shadow-md md:min-w-[450px]\">\n      <CommandInput placeholder=\"Type a command or search...\" />\n      <CommandList>\n        <CommandEmpty>No results found.</CommandEmpty>\n        <CommandGroup heading=\"Suggestions\">\n          <CommandItem>\n            <CalendarIcon />\n            <span>Calendar</span>\n          </CommandItem>\n          <CommandItem>\n            <FaceIcon />\n            <span>Search Emoji</span>\n          </CommandItem>\n          <CommandItem disabled>\n            <RocketIcon />\n            <span>Launch</span>\n          </CommandItem>\n        </CommandGroup>\n        <CommandSeparator />\n        <CommandGroup heading=\"Settings\">\n          <CommandItem>\n            <PersonIcon />\n            <span>Profile</span>\n            <CommandShortcut>⌘P</CommandShortcut>\n          </CommandItem>\n          <CommandItem>\n            <EnvelopeClosedIcon />\n            <span>Mail</span>\n            <CommandShortcut>⌘B</CommandShortcut>\n          </CommandItem>\n          <CommandItem>\n            <GearIcon />\n            <span>Settings</span>\n            <CommandShortcut>⌘S</CommandShortcut>\n          </CommandItem>\n        </CommandGroup>\n      </CommandList>\n    </Command>\n  )\n}\n",
+      "type": "registry:example",
+      "target": "components/command-demo.tsx"
+    }
+  ]
+}
