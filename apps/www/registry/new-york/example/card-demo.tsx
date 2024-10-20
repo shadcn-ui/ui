@@ -70,7 +70,7 @@ export default function CardDemo({ className, ...props }: CardProps) {
       </CardContent>
       <CardFooter>
         <Button className="w-full">
-          <CheckIcon className="mr-2 h-4 w-4" /> Mark all as read
+          <CheckIcon /> Mark all as read
         </Button>
       </CardFooter>
     </Card>
