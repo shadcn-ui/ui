@@ -30,8 +30,8 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn } from "~/lib/utils"
-    import { bar } from "~/lib/utils/bar"
+    import { cn } from "~/src/utils"
+    import { bar } from "~/src/utils/bar"
     "
 `;
 
@@ -42,8 +42,8 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn } from "~/lib/utils"
-    import { bar } from "~/lib/utils/bar"
+    import { cn } from "~/src/utils"
+    import { bar } from "~/src/utils/bar"
     "
 `;
 
@@ -54,7 +54,47 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn } from "~/lib/utils"
-    import { bar } from "~/lib/utils/bar"
+    import { cn } from "~/src/lib/utils"
+    import { bar } from "~/src/lib/utils/bar"
     "
 `;
+
+exports[`transform import 6`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "#app/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "#app/components/box"
+
+    import { cn } from "#app/utils"
+    "
+`;
+
+exports[`transform import 7`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "#app/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "#app/components/box"
+
+    import { cn } from "~/somepahte/file"
+    "
+`;
+
+exports[`transform import 8`] = `
+"import Link from "next/link"
+
+import { Button } from "#app/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "#app/components/ui/card"
+import { Input } from "#app/components/ui/input"
+import { Label } from "#app/components/ui/label"
+    "
+`;
+
+exports[`transform import 9`] = `"import { LoginForm } from "#app/components/login-form""`;

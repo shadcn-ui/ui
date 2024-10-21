@@ -13,14 +13,20 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
     importDeclaration.setModuleSpecifier(moduleSpecifier)
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (moduleSpecifier == "@/lib/utils") {
-      const namedImports = importDeclaration.getNamedImports()
-      const cnImport = namedImports.find((i) => i.getName() === "cn")
-      if (cnImport) {
-        importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(/^@\/lib\/utils/, config.aliases.utils)
-        )
-      }
+    if (moduleSpecifier.startsWith("@/lib/utils")) {
+      // const namedImports = importDeclaration.getNamedImports()
+      // const cnImport = namedImports.find((i) => i.getName() === "cn")
+      importDeclaration.setModuleSpecifier(
+        moduleSpecifier.replace(/^@\/lib\/utils/, config.aliases.utils)
+      )
+
+      // if (cnImport) {
+      //   console.log("found")
+      //   console.log(config.aliases.utils)
+      //   importDeclaration.setModuleSpecifier(
+      //     moduleSpecifier.replace(/^@\/lib\/utils/, config.aliases.utils)
+      //   )
+      // }
     }
   }
 
@@ -32,14 +38,17 @@ function updateImportAliases(moduleSpecifier: string, config: Config) {
   if (!moduleSpecifier.startsWith("@/")) {
     return moduleSpecifier
   }
-
   // Not a registry import.
   if (!moduleSpecifier.startsWith("@/registry/")) {
-    // We fix the alias an return.
-    const alias = config.aliases.components.charAt(0)
-    return moduleSpecifier.replace(/^@\//, `${alias}/`)
+    if (!moduleSpecifier.startsWith("@/lib/utils")) {
+      // We fix the alias an return.
+      const alias =
+        config.aliases.components.split("/")[0] ??
+        config.aliases.components.charAt(0)
+      return moduleSpecifier.replace(/^@/, `${alias}`)
+    }
+    return moduleSpecifier
   }
-
   if (moduleSpecifier.match(/^@\/registry\/(.+)\/ui/)) {
     return moduleSpecifier.replace(
       /^@\/registry\/(.+)\/ui/,
