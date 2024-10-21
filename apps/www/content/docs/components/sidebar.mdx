@@ -1300,3 +1300,14 @@ Here are some tips for styling the sidebar based on different states.
 ```
 
 You can find more tips on using states for styling in this [Twitter thread](https://x.com/shadcn/status/1842329158879420864).
+
+## Chanelog
+
+### 2024-10-20 Typo in `useSidebar` hook.
+
+Fixed typo in `useSidebar` hook.
+
+```diff showLineNumbers title="sidebar.tsx"
+-  throw new Error("useSidebar must be used within a Sidebar.")
++  throw new Error("useSidebar must be used within a SidebarProvider.")
+```
