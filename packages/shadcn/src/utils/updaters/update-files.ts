@@ -69,11 +69,10 @@ export async function updateFiles(
     let targetDir = getRegistryItemFileTargetPath(file, config)
     const fileName = basename(file.path)
     let filePath = path.join(targetDir, fileName)
-
-    if (file.target) {
-      filePath = resolveTargetDir(projectInfo, config, file.target)
-      targetDir = path.dirname(filePath)
-    }
+    // if (file.target) {
+    //   filePath = resolveTargetDir(projectInfo, config, file.target)
+    //   targetDir = path.dirname(filePath)
+    // }
 
     if (!config.tsx) {
       filePath = filePath.replace(/\.tsx?$/, (match) =>
