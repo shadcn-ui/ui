@@ -48,7 +48,7 @@ npx shadcn@latest add sidebar
 
 <Step>Add the following colors to your CSS file</Step>
 
-The command above should install the colors for you. It not, copy and paste the following in your CSS file.
+The command above should install the colors for you. If not, copy and paste the following in your CSS file.
 
 We'll go over the colors later in the [theming section](/docs/components/sidebar#theming).
 
@@ -157,7 +157,7 @@ A `Sidebar` component is composed of the following parts:
 ## Usage
 
 ```tsx showLineNumbers title="app/layout.tsx"
-import { SidebarProvider } from "@/components/ui/sidebar"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -346,7 +346,7 @@ The `SidebarProvider` component is used to provide the sidebar context to the `S
 | ------------- | ------------------------- | -------------------------------------------- |
 | `defaultOpen` | `boolean`                 | Default open state of the sidebar.           |
 | `open`        | `boolean`                 | Open state of the sidebar (controlled).      |
-| `setOpen`     | `(open: boolean) => void` | Sets open state of the sidebar (controlled). |
+| `onOpenChange`| `(open: boolean) => void` | Sets open state of the sidebar (controlled). |
 
 ### Width
 
@@ -1300,3 +1300,14 @@ Here are some tips for styling the sidebar based on different states.
 ```
 
 You can find more tips on using states for styling in this [Twitter thread](https://x.com/shadcn/status/1842329158879420864).
+
+## Chanelog
+
+### 2024-10-20 Typo in `useSidebar` hook.
+
+Fixed typo in `useSidebar` hook.
+
+```diff showLineNumbers title="sidebar.tsx"
+-  throw new Error("useSidebar must be used within a Sidebar.")
++  throw new Error("useSidebar must be used within a SidebarProvider.")
+```
