@@ -53,6 +53,7 @@ const SidebarProvider = React.forwardRef<
     defaultOpen?: boolean
     open?: boolean
     onOpenChange?: (open: boolean) => void
+    callback?: (open: boolean, openMobile: boolean) => void
   }
 >(
   (
@@ -63,6 +64,7 @@ const SidebarProvider = React.forwardRef<
       className,
       style,
       children,
+      callback,
       ...props
     },
     ref
@@ -116,6 +118,9 @@ const SidebarProvider = React.forwardRef<
     // We add a state so that we can do data-state="expanded" or "collapsed".
     // This makes it easier to style the sidebar with Tailwind classes.
     const state = open ? "expanded" : "collapsed"
+
+    // Added a callback to send the state data SidebarProvider, access via callback function
+    callback?.(open, openMobile)
 
     const contextValue = React.useMemo<SidebarContext>(
       () => ({
