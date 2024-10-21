@@ -120,10 +120,3 @@
     @apply px-4;
   }
 }
-
-h1, h2 {
-  span.icon-link::before {
-    content: "#";
-    @apply pr-2;
-  }
-}
