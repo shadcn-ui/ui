@@ -91,6 +91,18 @@ describe("get project info", async () => {
       },
     },
     {
+      name: "remix-indie-stack",
+      type: {
+        framework: FRAMEWORKS["remix"],
+        isSrcDir: false,
+        isRSC: false,
+        isTsx: true,
+        tailwindConfigFile: "tailwind.config.ts",
+        tailwindCssFile: "app/tailwind.css",
+        aliasPrefix: "~",
+      },
+    },
+    {
       name: "vite",
       type: {
         framework: FRAMEWORKS["vite"],
