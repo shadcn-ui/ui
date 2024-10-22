@@ -122,6 +122,26 @@ We'll go over the colors later in the [theming section](/docs/components/sidebar
 }
 ```
 
+<Step>Add the Sidebar tailwind config into `tailwind.config.js`</Step>
+
+Add the following object in the `theme.extend.colors` section of your `tailwind.config.js` file
+this config enable sidebar related style utilities like bg-sidebar
+
+```javascript title="tailwind.config.js"
+// ...
+sidebar: {
+  DEFAULT: 'hsl(var(--sidebar-background))',
+  foreground: 'hsl(var(--sidebar-foreground))',
+  primary: 'hsl(var(--sidebar-primary))',
+  'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  accent: 'hsl(var(--sidebar-accent))',
+  'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  border: 'hsl(var(--sidebar-border))',
+  ring: 'hsl(var(--sidebar-ring))',
+},
+// ...
+```
+
 </Steps>
 
 </TabsContent>
