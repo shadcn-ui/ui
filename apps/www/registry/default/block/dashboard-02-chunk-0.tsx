@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/registry/default/ui/button"
 import {
   Card,

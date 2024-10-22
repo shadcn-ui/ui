@@ -1,4 +1,4 @@
-import { createContentlayerPlugin } from "next-contentlayer"
+import { createContentlayerPlugin } from "next-contentlayer2"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -52,6 +52,11 @@ const nextConfig = {
         source: "/docs/forms/react-hook-form",
         destination: "/docs/components/form",
         permanent: false,
+      },
+      {
+        source: "/sidebar",
+        destination: "/docs/components/sidebar",
+        permanent: true,
       },
     ]
   },

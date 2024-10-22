@@ -4,14 +4,11 @@ import { notFound } from "next/navigation"
 import { siteConfig } from "@/config/site"
 import { getAllBlockIds, getBlock } from "@/lib/blocks"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { Style, styles } from "@/registry/styles"
-
-import "@/styles/mdx.css"
-import "public/registry/themes.css"
-import { AnimatePresence } from "framer-motion"
-
 import { BlockChunk } from "@/components/block-chunk"
 import { BlockWrapper } from "@/components/block-wrapper"
+import { Style, styles } from "@/registry/registry-styles"
+
+import "@/styles/mdx.css"
 
 export async function generateMetadata({
   params,
@@ -28,12 +25,15 @@ export async function generateMetadata({
     return {}
   }
 
+  const title = block.name
+  const description = block.description
+
   return {
-    title: block.name,
-    description: block.description,
+    title: `${block.description} - ${block.name}`,
+    description,
     openGraph: {
-      title: block.name,
-      description: block.description,
+      title,
+      description,
       type: "article",
       url: absoluteUrl(`/blocks/${block.name}`),
       images: [
@@ -47,8 +47,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: block.name,
-      description: block.description,
+      title,
+      description,
       images: [siteConfig.ogImage],
       creator: "@shadcn",
     },
@@ -89,19 +89,27 @@ export default async function BlockPage({
   block.chunks?.map((chunk) => delete chunk.component)
 
   return (
-    <div className={cn(block.container?.className || "", "theme-zinc")}>
-      <BlockWrapper block={block}>
-        <Component />
-        {chunks?.map((chunk, index) => (
-          <BlockChunk
-            key={chunk.name}
-            block={block}
-            chunk={block.chunks?.[index]}
-          >
-            <chunk.component />
-          </BlockChunk>
-        ))}
-      </BlockWrapper>
-    </div>
+    <>
+      {/* <ThemesStyle /> */}
+      <div
+        className={cn(
+          "themes-wrapper bg-background",
+          block.container?.className
+        )}
+      >
+        <BlockWrapper block={block}>
+          <Component />
+          {chunks?.map((chunk, index) => (
+            <BlockChunk
+              key={chunk.name}
+              block={block}
+              chunk={block.chunks?.[index]}
+            >
+              <chunk.component />
+            </BlockChunk>
+          ))}
+        </BlockWrapper>
+      </div>
+    </>
   )
 }

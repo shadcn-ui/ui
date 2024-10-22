@@ -8,10 +8,10 @@ import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
+import { Style } from "@/registry/registry-styles"
 import { BlockChunk, blockSchema, registryEntrySchema } from "@/registry/schema"
-import { Style } from "@/registry/styles"
 
-const DEFAULT_BLOCKS_STYLE = "default" satisfies Style["name"]
+const DEFAULT_BLOCKS_STYLE = "new-york" satisfies Style["name"]
 
 const project = new Project({
   compilerOptions: {},
@@ -32,52 +32,61 @@ export async function getBlock(
 
   const content = await _getBlockContent(name, style)
 
-  const chunks = await Promise.all(
-    entry.chunks?.map(async (chunk: BlockChunk) => {
-      const code = await readFile(chunk.file)
+  const chunks = entry?.chunks
+    ? await Promise.all(
+        entry?.chunks?.map(async (chunk: BlockChunk) => {
+          const code = await readFile(chunk.file)
 
-      const tempFile = await createTempSourceFile(`${chunk.name}.tsx`)
-      const sourceFile = project.createSourceFile(tempFile, code, {
-        scriptKind: ScriptKind.TSX,
-      })
+          const tempFile = await createTempSourceFile(`${chunk.name}.tsx`)
+          const sourceFile = project.createSourceFile(tempFile, code, {
+            scriptKind: ScriptKind.TSX,
+          })
 
-      sourceFile
-        .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
-        .filter((node) => {
-          return node.getAttribute("x-chunk") !== undefined
+          sourceFile
+            .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
+            .filter((node) => {
+              return node.getAttribute("x-chunk") !== undefined
+            })
+            ?.map((component) => {
+              component
+                .getAttribute("x-chunk")
+                ?.asKind(SyntaxKind.JsxAttribute)
+                ?.remove()
+            })
+
+          return {
+            ...chunk,
+            code: sourceFile
+              .getText()
+              .replaceAll(`@/registry/${style}/`, "@/components/"),
+          }
         })
-        ?.map((component) => {
-          component
-            .getAttribute("x-chunk")
-            ?.asKind(SyntaxKind.JsxAttribute)
-            ?.remove()
-        })
+      )
+    : []
 
-      return {
-        ...chunk,
-        code: sourceFile
-          .getText()
-          .replaceAll(`@/registry/${style}/`, "@/components/"),
-      }
-    })
-  )
-
-  return blockSchema.parse({
+  const block = {
     style,
     highlightedCode: content.code ? await highlightCode(content.code) : "",
     ...entry,
     ...content,
     chunks,
-    type: "components:block",
-  })
+    type: "registry:block",
+  }
+
+  const result = blockSchema.safeParse(block)
+
+  if (!result.success) {
+    console.log(block)
+    return null
+  }
+
+  return result.data
 }
 
 async function _getAllBlocks(style: Style["name"] = DEFAULT_BLOCKS_STYLE) {
   const index = z.record(registryEntrySchema).parse(Index[style])
 
-  return Object.values(index).filter(
-    (block) => block.type === "components:block"
-  )
+  return Object.values(index).filter((block) => block.type === "registry:block")
 }
 
 async function _getBlockCode(
@@ -85,6 +94,10 @@ async function _getBlockCode(
   style: Style["name"] = DEFAULT_BLOCKS_STYLE
 ) {
   const entry = Index[style][name]
+  if (!entry) {
+    console.error(`Block ${name} not found in style ${style}`)
+    return ""
+  }
   const block = registryEntrySchema.parse(entry)
 
   if (!block.source) {
@@ -113,7 +126,6 @@ async function _getBlockContent(name: string, style: Style["name"]) {
   })
 
   // Extract meta.
-  const description = _extractVariable(sourceFile, "description")
   const iframeHeight = _extractVariable(sourceFile, "iframeHeight")
   const containerClassName = _extractVariable(sourceFile, "containerClassName")
 
@@ -123,7 +135,6 @@ async function _getBlockContent(name: string, style: Style["name"]) {
   code = code.replaceAll("export default", "export")
 
   return {
-    description,
     code,
     container: {
       height: iframeHeight,

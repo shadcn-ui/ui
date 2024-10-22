@@ -20,38 +20,38 @@ import {
 
 export default function CommandDemo() {
   return (
-    <Command className="rounded-lg border shadow-md">
+    <Command className="rounded-lg border shadow-md md:min-w-[450px]">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
           <CommandItem>
-            <CalendarIcon className="mr-2 h-4 w-4" />
+            <CalendarIcon />
             <span>Calendar</span>
           </CommandItem>
           <CommandItem>
-            <FaceIcon className="mr-2 h-4 w-4" />
+            <FaceIcon />
             <span>Search Emoji</span>
           </CommandItem>
-          <CommandItem>
-            <RocketIcon className="mr-2 h-4 w-4" />
+          <CommandItem disabled>
+            <RocketIcon />
             <span>Launch</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Settings">
           <CommandItem>
-            <PersonIcon className="mr-2 h-4 w-4" />
+            <PersonIcon />
             <span>Profile</span>
             <CommandShortcut>⌘P</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
+            <EnvelopeClosedIcon />
             <span>Mail</span>
             <CommandShortcut>⌘B</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <GearIcon className="mr-2 h-4 w-4" />
+            <GearIcon />
             <span>Settings</span>
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>
