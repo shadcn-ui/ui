@@ -140,7 +140,7 @@ export async function runInit(
 
   // If a new project is using src dir, let's update the tailwind content config.
   // TODO: Handle this per framework.
-  if (options.isNewProject && options.srcDir) {
+  if ((options.isNewProject || projectInfo?.framework.name === "next-app") && options.srcDir) {
     await updateTailwindContent(
       ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
       fullConfig,
