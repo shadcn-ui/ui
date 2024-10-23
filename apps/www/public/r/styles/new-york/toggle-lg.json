@@ -1,0 +1,15 @@
+{
+  "name": "toggle-lg",
+  "type": "registry:example",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "example/toggle-lg.tsx",
+      "content": "import { FontItalicIcon } from \"@radix-ui/react-icons\"\n\nimport { Toggle } from \"@/components/ui/toggle\"\n\nexport default function ToggleLg() {\n  return (\n    <Toggle size=\"lg\" aria-label=\"Toggle italic\">\n      <FontItalicIcon className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n",
+      "type": "registry:example",
+      "target": "components/toggle-lg.tsx"
+    }
+  ]
+}

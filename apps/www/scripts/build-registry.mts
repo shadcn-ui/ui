@@ -19,6 +19,7 @@ import {
   registryItemTypeSchema,
   registrySchema,
 } from "../registry/schema"
+import { fixImport } from "./fix-import.mts"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r")
 
@@ -28,6 +29,7 @@ const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:hook",
   "registry:theme",
   "registry:block",
+  "registry:example",
 ]
 
 const project = new Project({
@@ -73,11 +75,24 @@ export const Index: Record<string, any> = {
       if (item.type === "registry:block") {
         const file = resolveFiles[0]
         const filename = path.basename(file)
-        const raw = await fs.readFile(file, "utf8")
+        let raw: string
+        try {
+          raw = await fs.readFile(file, "utf8")
+        } catch (error) {
+          continue
+        }
         const tempFile = await createTempSourceFile(filename)
         const sourceFile = project.createSourceFile(tempFile, raw, {
           scriptKind: ScriptKind.TSX,
         })
+
+        const description = sourceFile
+          .getVariableDeclaration("description")
+          ?.getInitializerOrThrow()
+          .asKindOrThrow(SyntaxKind.StringLiteral)
+          .getLiteralValue()
+
+        item.description = description ?? ""
 
         // Find all imports.
         const imports = new Map<
@@ -268,13 +283,14 @@ export const Index: Record<string, any> = {
       index += `
     "${item.name}": {
       name: "${item.name}",
+      description: "${item.description ?? ""}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       files: [${resolveFiles.map((file) => `"${file}"`)}],
       component: React.lazy(() => import("${componentPath}")),
       source: "${sourceFilename}",
-      category: "${item.category}",
-      subcategory: "${item.subcategory}",
+      category: "${item.category ?? ""}",
+      subcategory: "${item.subcategory ?? ""}",
       chunks: [${chunks.map(
         (chunk) => `{
         name: "${chunk.name}",
@@ -362,10 +378,16 @@ async function buildStyles(registry: Registry) {
                   }
                 : _file
 
-            const content = await fs.readFile(
-              path.join(process.cwd(), "registry", style.name, file.path),
-              "utf8"
-            )
+            let content: string
+            try {
+              content = await fs.readFile(
+                path.join(process.cwd(), "registry", style.name, file.path),
+                "utf8"
+              )
+              content = fixImport(content)
+            } catch (error) {
+              return
+            }
 
             const tempFile = await createTempSourceFile(file.path)
             const sourceFile = project.createSourceFile(tempFile, content, {
@@ -376,11 +398,36 @@ async function buildStyles(registry: Registry) {
             sourceFile.getVariableDeclaration("containerClassName")?.remove()
             sourceFile.getVariableDeclaration("description")?.remove()
 
+            let target = file.target
+
+            if (!target || target === "") {
+              const fileName = file.path.split("/").pop()
+              if (
+                file.type === "registry:block" ||
+                file.type === "registry:component" ||
+                file.type === "registry:example"
+              ) {
+                target = `components/${fileName}`
+              }
+
+              if (file.type === "registry:ui") {
+                target = `components/ui/${fileName}`
+              }
+
+              if (file.type === "registry:hook") {
+                target = `hooks/${fileName}`
+              }
+
+              if (file.type === "registry:lib") {
+                target = `lib/${fileName}`
+              }
+            }
+
             return {
               path: file.path,
               type: file.type,
               content: sourceFile.getText(),
-              target: file.target,
+              target,
             }
           })
         )
