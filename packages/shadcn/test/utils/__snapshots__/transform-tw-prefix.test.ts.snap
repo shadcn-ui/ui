@@ -25,6 +25,14 @@ export function Foo() {
 `;
 
 exports[`transform tailwind prefix 4`] = `
+"import * as React from "react"
+export function Foo() {
+	return <div className={cn("tw-bg-background hover:tw-bg-muted", true && "tw-text-primary-foreground sm:focus:tw-text-accent-foreground")}>foo</div>
+}
+    "
+`;
+
+exports[`transform tailwind prefix 5`] = `
 "@tailwind base;
 @tailwind components;
 @tailwind utilities;

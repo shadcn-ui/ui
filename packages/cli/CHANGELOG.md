@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 0.9.2
+
+### Patch Changes
+
+- [#4988](https://github.com/shadcn-ui/ui/pull/4988) [`5fc9ade`](https://github.com/shadcn-ui/ui/commit/5fc9ade413ea10da422a2439b5cc2027fb2a055e) Thanks [@shadcn](https://github.com/shadcn)! - add deprecation notice
+
 ## 0.9.1
 
 ### Patch Changes

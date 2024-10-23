@@ -14,7 +14,6 @@ import {
   TooltipTrigger,
 } from "@/registry/new-york/ui/tooltip"
 import { Style } from "@/registry/registry-styles"
-import { Block } from "@/registry/schema"
 
 type Size = "default" | "icon"
 
@@ -48,13 +47,13 @@ function V0Tooltip({
 }
 
 export function V0Button({
-  block,
+  name,
   size = "default",
   disabled,
   className,
   ...props
 }: {
-  block: Pick<Block, "name" | "description" | "code" | "style">
+  name: string
   size?: Size
 } & ButtonProps) {
   const [url, setUrl] = React.useState("https://ui.shadcn.com")
@@ -63,51 +62,12 @@ export function V0Button({
     setUrl(window.location.href)
   }, [])
 
-  if (block.style === "new-york") {
-    return (
-      <V0Tooltip size={size} style={block.style}>
-        <Button
-          aria-label="Open in v0"
-          className={cn(
-            "z-50 h-[calc(theme(spacing.7)_-_1px)] gap-1 rounded-[6px] bg-black px-3 text-xs text-white hover:bg-black hover:text-white dark:bg-white dark:text-black",
-            size === "icon" && "h-7 w-7 p-0",
-            className
-          )}
-          onClick={() => {
-            toast("New York not available.", {
-              description: (
-                <div className="flex items-center">
-                  Only the Default style is available in{" "}
-                  <V0Logo className="ml-1 text-foreground" aria-label="v0" />.
-                </div>
-              ),
-            })
-          }}
-          disabled={
-            block.style === "new-york" && size === "icon" ? true : disabled
-          }
-          {...props}
-        >
-          {size === "icon" ? (
-            <V0Logo className="h-4 w-4" />
-          ) : (
-            <>
-              Open in <V0Logo />
-            </>
-          )}
-        </Button>
-      </V0Tooltip>
-    )
-  }
   return (
     <form
       action={async () => {
         try {
           const result = await editInV0({
-            name: block.name,
-            description: block.description || "",
-            code: block.code,
-            style: block.style,
+            name,
             url,
           })
 
@@ -142,7 +102,7 @@ function Form({
   size = "default",
   className,
   ...props
-}: Omit<React.ComponentProps<typeof V0Button>, "block">) {
+}: Omit<React.ComponentProps<typeof V0Button>, "name">) {
   const { pending } = useFormStatus()
 
   return (

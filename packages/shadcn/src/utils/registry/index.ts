@@ -265,44 +265,33 @@ export async function registryResolveItemsTree(
       return null
     }
 
-    let items = (
-      await Promise.all(
-        names.map(async (name) => {
-          const item = await getRegistryItem(name, config.style)
-          return item
-        })
-      )
-    ).filter((item): item is NonNullable<typeof item> => item !== null)
-
-    if (!items.length) {
-      return null
+    // If we're resolving the index, we want it to go first.
+    if (names.includes("index")) {
+      names.unshift("index")
     }
 
-    const registryDependencies: string[] = items
-      .map((item) => item.registryDependencies ?? [])
-      .flat()
+    let registryDependencies: string[] = []
+    for (const name of names) {
+      const itemRegistryDependencies = await resolveRegistryDependencies(
+        name,
+        config
+      )
+      registryDependencies.push(...itemRegistryDependencies)
+    }
 
-    const uniqueDependencies = Array.from(new Set(registryDependencies))
-    const urls = Array.from([...names, ...uniqueDependencies]).map((name) =>
-      getRegistryUrl(isUrl(name) ? name : `styles/${config.style}/${name}.json`)
-    )
-    let result = await fetchRegistry(urls)
+    const uniqueRegistryDependencies = Array.from(new Set(registryDependencies))
+    let result = await fetchRegistry(uniqueRegistryDependencies)
     const payload = z.array(registryItemSchema).parse(result)
 
     if (!payload) {
       return null
     }
 
-    // If we're resolving the index, we want it to go first.
+    // If we're resolving the index, we want to fetch
+    // the theme item if a base color is provided.
+    // We do this for index only.
+    // Other components will ship with their theme tokens.
     if (names.includes("index")) {
-      const index = await getRegistryItem("index", config.style)
-      if (index) {
-        payload.unshift(index)
-      }
-
-      // Fetch the theme item if a base color is provided.
-      // We do this for index only.
-      // Other components will ship with their theme tokens.
       if (config.tailwind.baseColor) {
         const theme = await registryGetTheme(config.tailwind.baseColor, config)
         if (theme) {
@@ -344,6 +333,46 @@ export async function registryResolveItemsTree(
     handleError(error)
     return null
   }
+}
+
+async function resolveRegistryDependencies(
+  url: string,
+  config: Config
+): Promise<string[]> {
+  const visited = new Set<string>()
+  const payload: string[] = []
+
+  async function resolveDependencies(itemUrl: string) {
+    const url = getRegistryUrl(
+      isUrl(itemUrl) ? itemUrl : `styles/${config.style}/${itemUrl}.json`
+    )
+
+    if (visited.has(url)) {
+      return
+    }
+
+    visited.add(url)
+
+    try {
+      const [result] = await fetchRegistry([url])
+      const item = registryItemSchema.parse(result)
+      payload.push(url)
+
+      if (item.registryDependencies) {
+        for (const dependency of item.registryDependencies) {
+          await resolveDependencies(dependency)
+        }
+      }
+    } catch (error) {
+      console.error(
+        `Error fetching or parsing registry item at ${itemUrl}:`,
+        error
+      )
+    }
+  }
+
+  await resolveDependencies(url)
+  return Array.from(new Set(payload))
 }
 
 export async function registryGetTheme(name: string, config: Config) {
