@@ -58,17 +58,17 @@ export default function ComboboxDropdownMenu() {
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              <User className="mr-2 h-4 w-4" />
+              <User />
               Assign to...
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Calendar className="mr-2 h-4 w-4" />
+              <Calendar />
               Set due date...
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
-                <Tags className="mr-2 h-4 w-4" />
+                <Tags />
                 Apply label
               </DropdownMenuSubTrigger>
               <DropdownMenuSubContent className="p-0">
@@ -99,7 +99,7 @@ export default function ComboboxDropdownMenu() {
             </DropdownMenuSub>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="text-red-600">
-              <Trash className="mr-2 h-4 w-4" />
+              <Trash />
               Delete
               <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
             </DropdownMenuItem>
