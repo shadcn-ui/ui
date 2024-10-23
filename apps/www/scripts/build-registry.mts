@@ -384,7 +384,11 @@ async function buildStyles(registry: Registry) {
                 path.join(process.cwd(), "registry", style.name, file.path),
                 "utf8"
               )
-              content = fixImport(content)
+
+              // Only fix imports for v0- blocks.
+              if (item.name.startsWith("v0-")) {
+                content = fixImport(content)
+              }
             } catch (error) {
               return
             }
@@ -400,7 +404,7 @@ async function buildStyles(registry: Registry) {
 
             let target = file.target
 
-            if (!target || target === "") {
+            if ((!target || target === "") && item.name.startsWith("v0-")) {
               const fileName = file.path.split("/").pop()
               if (
                 file.type === "registry:block" ||

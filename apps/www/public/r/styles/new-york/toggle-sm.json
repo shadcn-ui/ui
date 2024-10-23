@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/toggle-sm.tsx",
-      "content": "import { FontItalicIcon } from \"@radix-ui/react-icons\"\n\nimport { Toggle } from \"@/components/ui/toggle\"\n\nexport default function ToggleSm() {\n  return (\n    <Toggle size=\"sm\" aria-label=\"Toggle italic\">\n      <FontItalicIcon className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n",
+      "content": "import { FontItalicIcon } from \"@radix-ui/react-icons\"\n\nimport { Toggle } from \"@/registry/new-york/ui/toggle\"\n\nexport default function ToggleSm() {\n  return (\n    <Toggle size=\"sm\" aria-label=\"Toggle italic\">\n      <FontItalicIcon className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/toggle-sm.tsx"
+      "target": ""
     }
   ]
 }
