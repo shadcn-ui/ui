@@ -6,6 +6,7 @@ import { execa } from "execa"
 
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
+  devDependencies: RegistryItem["devDependencies"],
   config: Config,
   options: {
     silent?: boolean
@@ -28,6 +29,13 @@ export async function updateDependencies(
   await execa(
     packageManager,
     [packageManager === "npm" ? "install" : "add", ...dependencies],
+    {
+      cwd: config.resolvedPaths.cwd,
+    }
+  )
+  await execa(
+    packageManager,
+    [packageManager === "npm" ? "install" : "add", "-D", ...devDependencies],
     {
       cwd: config.resolvedPaths.cwd,
     }
