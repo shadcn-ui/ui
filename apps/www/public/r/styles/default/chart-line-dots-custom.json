@@ -1,6 +1,7 @@
 {
   "name": "chart-line-dots-custom",
   "type": "registry:block",
+  "description": "A line chart with custom dots",
   "registryDependencies": [
     "card",
     "chart"

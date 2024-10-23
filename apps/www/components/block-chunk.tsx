@@ -46,15 +46,7 @@ export function BlockChunk({
                   name={chunk.name}
                   code={chunk.code}
                 />
-                <V0Button
-                  size="icon"
-                  block={{
-                    name: chunk.name,
-                    description: chunk.description || "",
-                    code: chunk.code,
-                    style: block.style,
-                  }}
-                />
+                <V0Button size="icon" name={chunk.name} />
               </div>
             </div>
           )}

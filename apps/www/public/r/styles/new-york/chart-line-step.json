@@ -1,6 +1,7 @@
 {
   "name": "chart-line-step",
   "type": "registry:block",
+  "description": "A line chart with step",
   "registryDependencies": [
     "card",
     "chart"

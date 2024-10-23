@@ -1,6 +1,7 @@
 {
   "name": "chart-radial-shape",
   "type": "registry:block",
+  "description": "A radial chart with a custom shape",
   "registryDependencies": [
     "card",
     "chart"

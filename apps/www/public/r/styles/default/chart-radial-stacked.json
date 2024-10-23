@@ -1,6 +1,7 @@
 {
   "name": "chart-radial-stacked",
   "type": "registry:block",
+  "description": "A radial chart with stacked sections",
   "registryDependencies": [
     "card",
     "chart"

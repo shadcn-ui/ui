@@ -1,6 +1,7 @@
 {
   "name": "chart-radial-label",
   "type": "registry:block",
+  "description": "A radial chart with a label",
   "registryDependencies": [
     "card",
     "chart"
