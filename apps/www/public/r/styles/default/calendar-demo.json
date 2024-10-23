@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/calendar-demo.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/components/ui/calendar\"\n\nexport default function CalendarDemo() {\n  const [date, setDate] = React.useState<Date | undefined>(new Date())\n\n  return (\n    <Calendar\n      mode=\"single\"\n      selected={date}\n      onSelect={setDate}\n      className=\"rounded-md border\"\n    />\n  )\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/registry/default/ui/calendar\"\n\nexport default function CalendarDemo() {\n  const [date, setDate] = React.useState<Date | undefined>(new Date())\n\n  return (\n    <Calendar\n      mode=\"single\"\n      selected={date}\n      onSelect={setDate}\n      className=\"rounded-md border\"\n    />\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/calendar-demo.tsx"
+      "target": ""
     }
   ]
 }

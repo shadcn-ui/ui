@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/alert-destructive.tsx",
-      "content": "import { ExclamationTriangleIcon } from \"@radix-ui/react-icons\"\n\nimport {\n  Alert,\n  AlertDescription,\n  AlertTitle,\n} from \"@/components/ui/alert\"\n\nexport default function AlertDestructive() {\n  return (\n    <Alert variant=\"destructive\">\n      <ExclamationTriangleIcon className=\"h-4 w-4\" />\n      <AlertTitle>Error</AlertTitle>\n      <AlertDescription>\n        Your session has expired. Please log in again.\n      </AlertDescription>\n    </Alert>\n  )\n}\n",
+      "content": "import { ExclamationTriangleIcon } from \"@radix-ui/react-icons\"\n\nimport {\n  Alert,\n  AlertDescription,\n  AlertTitle,\n} from \"@/registry/new-york/ui/alert\"\n\nexport default function AlertDestructive() {\n  return (\n    <Alert variant=\"destructive\">\n      <ExclamationTriangleIcon className=\"h-4 w-4\" />\n      <AlertTitle>Error</AlertTitle>\n      <AlertDescription>\n        Your session has expired. Please log in again.\n      </AlertDescription>\n    </Alert>\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/alert-destructive.tsx"
+      "target": ""
     }
   ]
 }

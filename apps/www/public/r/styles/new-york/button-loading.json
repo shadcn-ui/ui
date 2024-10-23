@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/button-loading.tsx",
-      "content": "import { ReloadIcon } from \"@radix-ui/react-icons\"\n\nimport { Button } from \"@/components/ui/button\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button disabled>\n      <ReloadIcon className=\"mr-2 h-4 w-4 animate-spin\" />\n      Please wait\n    </Button>\n  )\n}\n",
+      "content": "import { ReloadIcon } from \"@radix-ui/react-icons\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button disabled>\n      <ReloadIcon className=\"mr-2 h-4 w-4 animate-spin\" />\n      Please wait\n    </Button>\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/button-loading.tsx"
+      "target": ""
     }
   ]
 }

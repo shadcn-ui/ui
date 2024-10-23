@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/toggle-disabled.tsx",
-      "content": "import { UnderlineIcon } from \"@radix-ui/react-icons\"\n\nimport { Toggle } from \"@/components/ui/toggle\"\n\nexport default function ToggleDisabled() {\n  return (\n    <Toggle aria-label=\"Toggle italic\" disabled>\n      <UnderlineIcon className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n",
+      "content": "import { UnderlineIcon } from \"@radix-ui/react-icons\"\n\nimport { Toggle } from \"@/registry/new-york/ui/toggle\"\n\nexport default function ToggleDisabled() {\n  return (\n    <Toggle aria-label=\"Toggle italic\" disabled>\n      <UnderlineIcon className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/toggle-disabled.tsx"
+      "target": ""
     }
   ]
 }
