@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-default",
   "type": "registry:block",
+  "description": "A radar chart",
   "registryDependencies": [
     "card",
     "chart"

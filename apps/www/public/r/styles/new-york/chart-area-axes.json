@@ -1,6 +1,7 @@
 {
   "name": "chart-area-axes",
   "type": "registry:block",
+  "description": "An area chart with axes",
   "registryDependencies": [
     "card",
     "chart"

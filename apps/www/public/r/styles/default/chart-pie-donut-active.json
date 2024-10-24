@@ -1,6 +1,7 @@
 {
   "name": "chart-pie-donut-active",
   "type": "registry:block",
+  "description": "A donut chart with an active sector",
   "registryDependencies": [
     "card",
     "chart"

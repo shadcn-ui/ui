@@ -1,6 +1,7 @@
 {
   "name": "chart-radial-simple",
   "type": "registry:block",
+  "description": "A radial chart",
   "registryDependencies": [
     "card",
     "chart"
