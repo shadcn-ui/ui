@@ -48,7 +48,7 @@ npx shadcn@latest add sidebar
 
 <Step>Add the following colors to your CSS file</Step>
 
-The command above should install the colors for you. It not, copy and paste the following in your CSS file.
+The command above should install the colors for you. If not, copy and paste the following in your CSS file.
 
 We'll go over the colors later in the [theming section](/docs/components/sidebar#theming).
 
@@ -122,6 +122,26 @@ We'll go over the colors later in the [theming section](/docs/components/sidebar
 }
 ```
 
+<Step>Add the Sidebar tailwind config into `tailwind.config.js`</Step>
+
+Add the following object in the `theme.extend.colors` section of your `tailwind.config.js` file
+this config enable sidebar related style utilities like bg-sidebar
+
+```javascript title="tailwind.config.js"
+// ...
+sidebar: {
+  DEFAULT: 'hsl(var(--sidebar-background))',
+  foreground: 'hsl(var(--sidebar-foreground))',
+  primary: 'hsl(var(--sidebar-primary))',
+  'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  accent: 'hsl(var(--sidebar-accent))',
+  'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  border: 'hsl(var(--sidebar-border))',
+  ring: 'hsl(var(--sidebar-ring))',
+},
+// ...
+```
+
 </Steps>
 
 </TabsContent>
@@ -157,7 +177,7 @@ A `Sidebar` component is composed of the following parts:
 ## Usage
 
 ```tsx showLineNumbers title="app/layout.tsx"
-import { SidebarProvider } from "@/components/ui/sidebar"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -342,11 +362,11 @@ The `SidebarProvider` component is used to provide the sidebar context to the `S
 
 ### Props
 
-| Name          | Type                      | Description                                  |
-| ------------- | ------------------------- | -------------------------------------------- |
-| `defaultOpen` | `boolean`                 | Default open state of the sidebar.           |
-| `open`        | `boolean`                 | Open state of the sidebar (controlled).      |
-| `setOpen`     | `(open: boolean) => void` | Sets open state of the sidebar (controlled). |
+| Name           | Type                      | Description                                  |
+| -------------- | ------------------------- | -------------------------------------------- |
+| `defaultOpen`  | `boolean`                 | Default open state of the sidebar.           |
+| `open`         | `boolean`                 | Open state of the sidebar (controlled).      |
+| `onOpenChange` | `(open: boolean) => void` | Sets open state of the sidebar (controlled). |
 
 ### Width
 
@@ -1300,3 +1320,18 @@ Here are some tips for styling the sidebar based on different states.
 ```
 
 You can find more tips on using states for styling in this [Twitter thread](https://x.com/shadcn/status/1842329158879420864).
+
+## Changelog
+
+### 2024-10-21
+
+- [#5491](https://github.com/shadcn-ui/ui/pull/5491) - Moved `text-sidebar-foreground` from `<SidebarProvider>` to `<Sidebar>` component.
+
+### 2024-10-20 Typo in `useSidebar` hook.
+
+Fixed typo in `useSidebar` hook.
+
+```diff showLineNumbers title="sidebar.tsx"
+-  throw new Error("useSidebar must be used within a Sidebar.")
++  throw new Error("useSidebar must be used within a SidebarProvider.")
+```

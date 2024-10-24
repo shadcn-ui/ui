@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/button-icon.tsx",
-      "content": "import { ChevronRightIcon } from \"@radix-ui/react-icons\"\n\nimport { Button } from \"@/components/ui/button\"\n\nexport default function ButtonIcon() {\n  return (\n    <Button variant=\"outline\" size=\"icon\">\n      <ChevronRightIcon className=\"h-4 w-4\" />\n    </Button>\n  )\n}\n",
+      "content": "import { ChevronRightIcon } from \"@radix-ui/react-icons\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\n\nexport default function ButtonIcon() {\n  return (\n    <Button variant=\"outline\" size=\"icon\">\n      <ChevronRightIcon className=\"h-4 w-4\" />\n    </Button>\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/button-icon.tsx"
+      "target": ""
     }
   ]
 }

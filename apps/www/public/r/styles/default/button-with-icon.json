@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/button-with-icon.tsx",
-      "content": "import { Mail } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\n\nexport default function ButtonWithIcon() {\n  return (\n    <Button>\n      <Mail /> Login with Email\n    </Button>\n  )\n}\n",
+      "content": "import { Mail } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonWithIcon() {\n  return (\n    <Button>\n      <Mail /> Login with Email\n    </Button>\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/button-with-icon.tsx"
+      "target": ""
     }
   ]
 }

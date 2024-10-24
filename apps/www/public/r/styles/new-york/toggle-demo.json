@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/toggle-demo.tsx",
-      "content": "import { FontBoldIcon } from \"@radix-ui/react-icons\"\n\nimport { Toggle } from \"@/components/ui/toggle\"\n\nexport default function ToggleDemo() {\n  return (\n    <Toggle aria-label=\"Toggle italic\">\n      <FontBoldIcon className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n",
+      "content": "import { FontBoldIcon } from \"@radix-ui/react-icons\"\n\nimport { Toggle } from \"@/registry/new-york/ui/toggle\"\n\nexport default function ToggleDemo() {\n  return (\n    <Toggle aria-label=\"Toggle italic\">\n      <FontBoldIcon className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/toggle-demo.tsx"
+      "target": ""
     }
   ]
 }

@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/aspect-ratio-demo.tsx",
-      "content": "import Image from \"next/image\"\n\nimport { AspectRatio } from \"@/components/ui/aspect-ratio\"\n\nexport default function AspectRatioDemo() {\n  return (\n    <AspectRatio ratio={16 / 9} className=\"bg-muted\">\n      <Image\n        src=\"https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80\"\n        alt=\"Photo by Drew Beamer\"\n        fill\n        className=\"h-full w-full rounded-md object-cover\"\n      />\n    </AspectRatio>\n  )\n}\n",
+      "content": "import Image from \"next/image\"\n\nimport { AspectRatio } from \"@/registry/default/ui/aspect-ratio\"\n\nexport default function AspectRatioDemo() {\n  return (\n    <AspectRatio ratio={16 / 9} className=\"bg-muted\">\n      <Image\n        src=\"https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80\"\n        alt=\"Photo by Drew Beamer\"\n        fill\n        className=\"h-full w-full rounded-md object-cover\"\n      />\n    </AspectRatio>\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/aspect-ratio-demo.tsx"
+      "target": ""
     }
   ]
 }
