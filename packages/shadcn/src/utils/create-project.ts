@@ -94,7 +94,7 @@ export async function createProject(
   try {
     await execa(
       "npx",
-      ["create-next-app@latest", projectPath, "--silent", ...args],
+      ["create-next-app@14.2.16", projectPath, "--silent", ...args],
       {
         cwd: options.cwd,
       }

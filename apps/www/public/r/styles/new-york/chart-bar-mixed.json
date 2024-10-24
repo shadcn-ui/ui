@@ -1,6 +1,7 @@
 {
   "name": "chart-bar-mixed",
   "type": "registry:block",
+  "description": "A mixed bar chart",
   "registryDependencies": [
     "card",
     "chart"

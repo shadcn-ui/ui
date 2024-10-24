@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-multiple",
   "type": "registry:block",
+  "description": "A radar chart with multiple data",
   "registryDependencies": [
     "card",
     "chart"

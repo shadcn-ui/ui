@@ -1,6 +1,7 @@
 {
   "name": "chart-tooltip-label-custom",
   "type": "registry:block",
+  "description": "A stacked bar chart with a legend",
   "registryDependencies": [
     "card",
     "chart"
