@@ -9,6 +9,7 @@ export async function updateDependencies(
   config: Config,
   options: {
     silent?: boolean
+    forceInstall?: boolean
   }
 ) {
   dependencies = Array.from(new Set(dependencies))
@@ -18,6 +19,7 @@ export async function updateDependencies(
 
   options = {
     silent: false,
+    forceInstall: false,
     ...options,
   }
 
@@ -27,7 +29,9 @@ export async function updateDependencies(
   const packageManager = await getPackageManager(config.resolvedPaths.cwd)
   await execa(
     packageManager,
-    [packageManager === "npm" ? "install" : "add", ...dependencies],
+    [packageManager === "npm" ? "install" : "add", 
+      options.forceInstall ? "--force" : "",
+      ...dependencies],
     {
       cwd: config.resolvedPaths.cwd,
     }

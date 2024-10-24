@@ -34,6 +34,7 @@ export const initOptionsSchema = z.object({
   silent: z.boolean(),
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
+  forceInstall: z.boolean().optional(),
 })
 
 export const init = new Command()
@@ -57,6 +58,7 @@ export const init = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option("-fi, --forceInstall", "force install dependencies", false)
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
@@ -136,6 +138,7 @@ export async function runInit(
     silent: options.silent,
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",
+    forceInstall: options.forceInstall,
   })
 
   // If a new project is using src dir, let's update the tailwind content config.

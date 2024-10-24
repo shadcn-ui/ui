@@ -15,12 +15,14 @@ export async function addComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    forceInstall?: boolean
   }
 ) {
   options = {
     overwrite: false,
     silent: false,
     isNewProject: false,
+    forceInstall: false,
     ...options,
   }
 
@@ -44,6 +46,7 @@ export async function addComponents(
 
   await updateDependencies(tree.dependencies, config, {
     silent: options.silent,
+    forceInstall: options.forceInstall,
   })
   await updateFiles(tree.files, config, {
     overwrite: options.overwrite,

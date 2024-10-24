@@ -22,6 +22,7 @@ export const addOptionsSchema = z.object({
   path: z.string().optional(),
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
+  forceInstall: z.boolean().optional(),
 })
 
 export const add = new Command()
@@ -46,6 +47,7 @@ export const add = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option("-fi, --forceInstall", "force install dependencies", false)
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
