@@ -600,6 +600,18 @@ export const examples: Registry = [
     files: ["example/sonner-demo.tsx"],
   },
   {
+    name: "spinner-demo",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: ["example/spinner-demo.tsx"],
+  },
+  {
+    name: "spinner-sizes",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: ["example/spinner-sizes.tsx"],
+  },
+  {
     name: "switch-demo",
     type: "registry:example",
     registryDependencies: ["switch"],

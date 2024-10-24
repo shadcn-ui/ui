@@ -1,0 +1,12 @@
+{
+  "name": "spinner",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "ui/spinner.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst spinnerVariants = cva(\"relative block opacity-[0.65]\", {\n  variants: {\n    size: {\n      sm: \"h-4 w-4\",\n      md: \"h-6 w-6\",\n      lg: \"h-8 w-8\",\n    },\n  },\n  defaultVariants: {\n    size: \"sm\",\n  },\n})\n\nexport interface SpinnerProps\n  extends React.HTMLAttributes<HTMLSpanElement>,\n    VariantProps<typeof spinnerVariants> {\n  loading?: boolean\n  asChild?: boolean\n}\n\nconst Spinner = React.forwardRef<HTMLSpanElement, SpinnerProps>(\n  ({ className, size, loading = true, asChild = false, ...props }, ref) => {\n    const Comp = asChild ? Slot : \"span\"\n\n    const [bgColorClass, filteredClassName] = React.useMemo(() => {\n      const bgClass = className?.match(/(?:dark:bg-|bg-)\\S+/g) || []\n      const filteredClasses = className\n        ?.replace(/(?:dark:bg-|bg-)\\S+/g, \"\")\n        .trim()\n      return [bgClass, filteredClasses]\n    }, [className])\n\n    if (!loading) return null\n\n    return (\n      <Comp\n        className={cn(spinnerVariants({ size, className: filteredClassName }))}\n        ref={ref}\n        {...props}\n      >\n        {Array.from({ length: 8 }).map((_, i) => (\n          <span\n            key={i}\n            className=\"absolute left-1/2 top-0 h-full w-[12.5%] animate-spinner-leaf-fade\"\n            style={{\n              transform: `rotate(${i * 45}deg)`,\n              animationDelay: `${-(7 - i) * 100}ms`,\n            }}\n          >\n            <span\n              className={cn(\"block h-[30%] w-full rounded-full\", bgColorClass)}\n            ></span>\n          </span>\n        ))}\n      </Comp>\n    )\n  }\n)\n\nSpinner.displayName = \"Spinner\"\n\nexport { Spinner }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}
