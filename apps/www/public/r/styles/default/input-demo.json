@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/input-demo.tsx",
-      "content": "import { Input } from \"@/components/ui/input\"\n\nexport default function InputDemo() {\n  return <Input type=\"email\" placeholder=\"Email\" />\n}\n",
+      "content": "import { Input } from \"@/registry/default/ui/input\"\n\nexport default function InputDemo() {\n  return <Input type=\"email\" placeholder=\"Email\" />\n}\n",
       "type": "registry:example",
-      "target": "components/input-demo.tsx"
+      "target": ""
     }
   ]
 }
