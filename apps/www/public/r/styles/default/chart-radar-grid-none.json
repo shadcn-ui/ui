@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-grid-none",
   "type": "registry:block",
+  "description": "A radar chart with no grid",
   "registryDependencies": [
     "card",
     "chart"

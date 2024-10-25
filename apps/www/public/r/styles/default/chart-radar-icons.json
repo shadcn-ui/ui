@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-icons",
   "type": "registry:block",
+  "description": "A radar chart with icons",
   "registryDependencies": [
     "card",
     "chart"

@@ -10,15 +10,20 @@ import prompts from "prompts"
 import { z } from "zod"
 
 export async function createProject(
-  options: Pick<z.infer<typeof initOptionsSchema>, "cwd" | "force">
+  options: Pick<z.infer<typeof initOptionsSchema>, "cwd" | "force" | "srcDir">
 ) {
+  options = {
+    srcDir: false,
+    ...options,
+  }
+
   if (!options.force) {
     const { proceed } = await prompts({
       type: "confirm",
       name: "proceed",
       message: `The path ${highlighter.info(
         options.cwd
-      )} is empty. Would you like to start a new ${highlighter.info(
+      )} does not contain a package.json file. Would you like to start a new ${highlighter.info(
         "Next.js"
       )} project?`,
       initial: true,
@@ -32,7 +37,9 @@ export async function createProject(
     }
   }
 
-  const packageManager = await getPackageManager(options.cwd)
+  const packageManager = await getPackageManager(options.cwd, {
+    withFallback: true,
+  })
 
   const { name } = await prompts({
     type: "text",
@@ -81,7 +88,7 @@ export async function createProject(
     "--eslint",
     "--typescript",
     "--app",
-    "--no-src-dir",
+    options.srcDir ? "--src-dir" : "--no-src-dir",
     "--no-import-alias",
     `--use-${packageManager}`,
   ]
@@ -89,7 +96,7 @@ export async function createProject(
   try {
     await execa(
       "npx",
-      ["create-next-app@latest", projectPath, "--silent", ...args],
+      ["create-next-app@14.2.16", projectPath, "--silent", ...args],
       {
         cwd: options.cwd,
       }
@@ -97,7 +104,7 @@ export async function createProject(
   } catch (error) {
     logger.break()
     logger.error(
-      `Something went wront creating a new Next.js project. Please try again.`
+      `Something went wrong creating a new Next.js project. Please try again.`
     )
     process.exit(1)
   }

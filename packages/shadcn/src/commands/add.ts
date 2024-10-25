@@ -21,6 +21,7 @@ export const addOptionsSchema = z.object({
   all: z.boolean(),
   path: z.string().optional(),
   silent: z.boolean(),
+  srcDir: z.boolean().optional(),
 })
 
 export const add = new Command()
@@ -40,6 +41,11 @@ export const add = new Command()
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .option("-s, --silent", "mute output.", false)
+  .option(
+    "--src-dir",
+    "use the src directory when creating a new project.",
+    false
+  )
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -76,13 +82,13 @@ export const add = new Command()
 
       let { errors, config } = await preFlightAdd(options)
 
-      // No component.json file. Prompt the user to run init.
+      // No components.json file. Prompt the user to run init.
       if (errors[ERRORS.MISSING_CONFIG]) {
         const { proceed } = await prompts({
           type: "confirm",
           name: "proceed",
           message: `You need to create a ${highlighter.info(
-            "component.json"
+            "components.json"
           )} file to add components. Proceed?`,
           initial: true,
         })
@@ -100,6 +106,7 @@ export const add = new Command()
           skipPreflight: false,
           silent: true,
           isNewProject: false,
+          srcDir: options.srcDir,
         })
       }
 
@@ -108,6 +115,7 @@ export const add = new Command()
         const { projectPath } = await createProject({
           cwd: options.cwd,
           force: options.overwrite,
+          srcDir: options.srcDir,
         })
         if (!projectPath) {
           logger.break()
@@ -123,6 +131,7 @@ export const add = new Command()
           skipPreflight: true,
           silent: true,
           isNewProject: true,
+          srcDir: options.srcDir,
         })
 
         shouldUpdateAppIndex =
