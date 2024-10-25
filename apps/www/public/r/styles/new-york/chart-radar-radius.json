@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-radius",
   "type": "registry:block",
+  "description": "A radar chart with a radius axis",
   "registryDependencies": [
     "card",
     "chart"

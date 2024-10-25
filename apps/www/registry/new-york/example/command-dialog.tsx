@@ -50,32 +50,32 @@ export default function CommandDialogDemo() {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
             <CommandItem>
-              <CalendarIcon className="mr-2 h-4 w-4" />
+              <CalendarIcon />
               <span>Calendar</span>
             </CommandItem>
             <CommandItem>
-              <FaceIcon className="mr-2 h-4 w-4" />
+              <FaceIcon />
               <span>Search Emoji</span>
             </CommandItem>
             <CommandItem>
-              <RocketIcon className="mr-2 h-4 w-4" />
+              <RocketIcon />
               <span>Launch</span>
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Settings">
             <CommandItem>
-              <PersonIcon className="mr-2 h-4 w-4" />
+              <PersonIcon />
               <span>Profile</span>
               <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
+              <EnvelopeClosedIcon />
               <span>Mail</span>
               <CommandShortcut>⌘B</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <GearIcon className="mr-2 h-4 w-4" />
+              <GearIcon />
               <span>Settings</span>
               <CommandShortcut>⌘S</CommandShortcut>
             </CommandItem>

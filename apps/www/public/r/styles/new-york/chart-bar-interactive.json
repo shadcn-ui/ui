@@ -1,6 +1,7 @@
 {
   "name": "chart-bar-interactive",
   "type": "registry:block",
+  "description": "An interactive bar chart",
   "registryDependencies": [
     "card",
     "chart"

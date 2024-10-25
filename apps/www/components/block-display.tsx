@@ -1,29 +1,32 @@
+import { unstable_cache } from "next/cache"
+
 import { getBlock } from "@/lib/blocks"
 import { BlockPreview } from "@/components/block-preview"
-import { styles } from "@/registry/registry-styles"
+
+const getBlockByName = unstable_cache(
+  async (name: string) => {
+    const block = await getBlock(name)
+
+    if (!block) {
+      return null
+    }
+
+    return {
+      name: block.name,
+      style: block.style,
+      description: block.description,
+      container: block.container,
+    }
+  },
+  ["block"]
+)
 
 export async function BlockDisplay({ name }: { name: string }) {
-  const blocks = await Promise.all(
-    styles.map(async (style) => {
-      const block = await getBlock(name, style.name)
-      const hasLiftMode = block?.chunks ? block?.chunks?.length > 0 : false
+  const block = await getBlockByName(name)
 
-      // Cannot (and don't need to) pass to the client.
-      delete block?.component
-      delete block?.chunks
-
-      return {
-        ...block,
-        hasLiftMode,
-      }
-    })
-  )
-
-  if (!blocks?.length) {
+  if (!block) {
     return null
   }
 
-  return blocks.map((block) => (
-    <BlockPreview key={`${block.style}-${block.name}`} block={block} />
-  ))
+  return <BlockPreview key={block.name} block={block} />
 }

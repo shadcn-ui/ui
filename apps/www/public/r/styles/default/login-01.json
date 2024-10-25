@@ -1,6 +1,7 @@
 {
   "name": "login-01",
   "type": "registry:block",
+  "description": "A simple login form.",
   "registryDependencies": [
     "button",
     "card",

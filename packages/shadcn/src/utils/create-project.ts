@@ -37,7 +37,9 @@ export async function createProject(
     }
   }
 
-  const packageManager = await getPackageManager(options.cwd)
+  const packageManager = await getPackageManager(options.cwd, {
+    withFallback: true,
+  })
 
   const { name } = await prompts({
     type: "text",
@@ -94,7 +96,7 @@ export async function createProject(
   try {
     await execa(
       "npx",
-      ["create-next-app@latest", projectPath, "--silent", ...args],
+      ["create-next-app@14.2.16", projectPath, "--silent", ...args],
       {
         cwd: options.cwd,
       }

@@ -1,6 +1,7 @@
 {
   "name": "chart-area-interactive",
   "type": "registry:block",
+  "description": "An interactive area chart",
   "registryDependencies": [
     "card",
     "chart",
