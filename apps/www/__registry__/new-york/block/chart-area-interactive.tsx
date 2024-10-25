@@ -120,14 +120,16 @@ const chartData = [
   { desktop: 149, mobile: 200 },
   { desktop: 103, mobile: 160 },
   { desktop: 446, mobile: 400 },
-].map((entry, index) => {
-  const today = new Date()
-  const date = new Date(new Date().setDate(today.getDate() - index))
-    .toISOString()
-    .split("T")[0]
+]
+  .map((entry, index) => {
+    const today = new Date()
+    const date = new Date(new Date().setDate(today.getDate() - index))
+      .toISOString()
+      .split("T")[0]
 
-  return { ...entry, date }
-})
+    return { ...entry, date }
+  })
+  .reverse()
 
 const chartConfig = {
   visitors: {
