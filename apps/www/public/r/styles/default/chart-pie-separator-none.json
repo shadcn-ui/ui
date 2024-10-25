@@ -1,6 +1,7 @@
 {
   "name": "chart-pie-separator-none",
   "type": "registry:block",
+  "description": "A pie chart with no separator",
   "registryDependencies": [
     "card",
     "chart"

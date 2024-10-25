@@ -1,6 +1,7 @@
 {
   "name": "chart-area-icons",
   "type": "registry:block",
+  "description": "An area chart with icons",
   "registryDependencies": [
     "card",
     "chart"

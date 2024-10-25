@@ -28,6 +28,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 ",
       "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
       "type": "registry:lib",
     },
     {
@@ -59,7 +60,7 @@ Label.displayName = LabelPrimitive.Root.displayName
 export { Label }
 ",
       "path": "ui/label.tsx",
-      "target": "",
+      "target": "components/ui/label.tsx",
       "type": "registry:ui",
     },
   ],
@@ -100,7 +101,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -152,7 +153,7 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
-      "target": "",
+      "target": "components/ui/button.tsx",
       "type": "registry:ui",
     },
   ],
@@ -179,7 +180,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -230,7 +231,7 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
-      "target": "",
+      "target": "components/ui/button.tsx",
       "type": "registry:ui",
     },
     {
@@ -261,7 +262,7 @@ Input.displayName = "Input"
 export { Input }
 ",
       "path": "ui/input.tsx",
-      "target": "",
+      "target": "components/ui/input.tsx",
       "type": "registry:ui",
     },
     {
@@ -273,7 +274,7 @@ import { Command as CommandPrimitive } from "cmdk"
 import { Search } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Dialog, DialogContent } from "@/registry/default/ui/dialog"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -422,7 +423,7 @@ export {
 }
 ",
       "path": "ui/command.tsx",
-      "target": "",
+      "target": "components/ui/command.tsx",
       "type": "registry:ui",
     },
     {
@@ -550,7 +551,7 @@ export {
 }
 ",
       "path": "ui/dialog.tsx",
-      "target": "",
+      "target": "components/ui/dialog.tsx",
       "type": "registry:ui",
     },
   ],

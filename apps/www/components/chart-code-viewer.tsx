@@ -92,12 +92,7 @@ ${Object.entries(themesConfig?.activeTheme.cssVars.dark || {})
               />
               <V0Button
                 id={`v0-button-${chart.name}`}
-                block={{
-                  name: chart.name,
-                  description: chart.description || "Edit in v0",
-                  code: chart.code,
-                  style: "default",
-                }}
+                name={chart.name}
                 className="h-7"
               />
             </div>

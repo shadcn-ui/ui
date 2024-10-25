@@ -1,6 +1,7 @@
 {
   "name": "chart-line-interactive",
   "type": "registry:block",
+  "description": "An interactive line chart",
   "registryDependencies": [
     "card",
     "chart"

@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-grid-fill",
   "type": "registry:block",
+  "description": "A radar chart with a grid filled",
   "registryDependencies": [
     "card",
     "chart"
