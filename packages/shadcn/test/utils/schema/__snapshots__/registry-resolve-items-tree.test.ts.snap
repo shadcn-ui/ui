@@ -28,7 +28,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 ",
       "path": "lib/utils.ts",
-      "target": "lib/utils.ts",
       "type": "registry:lib",
     },
     {
@@ -60,7 +59,7 @@ Label.displayName = LabelPrimitive.Root.displayName
 export { Label }
 ",
       "path": "ui/label.tsx",
-      "target": "components/ui/label.tsx",
+      "target": "",
       "type": "registry:ui",
     },
   ],
@@ -153,7 +152,7 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
-      "target": "components/ui/button.tsx",
+      "target": "",
       "type": "registry:ui",
     },
   ],
@@ -231,7 +230,7 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
-      "target": "components/ui/button.tsx",
+      "target": "",
       "type": "registry:ui",
     },
     {
@@ -262,7 +261,7 @@ Input.displayName = "Input"
 export { Input }
 ",
       "path": "ui/input.tsx",
-      "target": "components/ui/input.tsx",
+      "target": "",
       "type": "registry:ui",
     },
     {
@@ -274,7 +273,7 @@ import { Command as CommandPrimitive } from "cmdk"
 import { Search } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent } from "@/registry/default/ui/dialog"
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -423,7 +422,7 @@ export {
 }
 ",
       "path": "ui/command.tsx",
-      "target": "components/ui/command.tsx",
+      "target": "",
       "type": "registry:ui",
     },
     {
@@ -551,7 +550,7 @@ export {
 }
 ",
       "path": "ui/dialog.tsx",
-      "target": "components/ui/dialog.tsx",
+      "target": "",
       "type": "registry:ui",
     },
   ],
