@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.1.2
+
+### Patch Changes
+
+- [#5299](https://github.com/shadcn-ui/ui/pull/5299) [`986c00e`](https://github.com/shadcn-ui/ui/commit/986c00ee0e661bf2391b305c2b24800be63e681e) Thanks [@fourcels](https://github.com/fourcels)! - fix package manager fallback
+
 ## 2.1.1
 
 ### Patch Changes
