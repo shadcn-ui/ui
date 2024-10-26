@@ -17,7 +17,7 @@ const Spinner = React.forwardRef<
       {...props}
     >
       <div className="relative left-1/2 top-1/2 size-full">
-        {[...Array(12)].map((_, i) => (
+        {[...Array<number>(12)].map((_, i) => (
           <div
             key={i}
             className="absolute left-[-10%] top-[-3.9%] h-[8%] w-[24%] animate-spinner bg-foreground"
