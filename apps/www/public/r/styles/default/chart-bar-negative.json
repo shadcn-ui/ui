@@ -1,6 +1,7 @@
 {
   "name": "chart-bar-negative",
   "type": "registry:block",
+  "description": "A bar chart with negative values",
   "registryDependencies": [
     "card",
     "chart"

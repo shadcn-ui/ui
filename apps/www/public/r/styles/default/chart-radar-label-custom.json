@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-label-custom",
   "type": "registry:block",
+  "description": "A radar chart with a custom label",
   "registryDependencies": [
     "card",
     "chart"

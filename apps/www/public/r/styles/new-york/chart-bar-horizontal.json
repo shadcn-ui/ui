@@ -1,6 +1,7 @@
 {
   "name": "chart-bar-horizontal",
   "type": "registry:block",
+  "description": "A horizontal bar chart",
   "registryDependencies": [
     "card",
     "chart"

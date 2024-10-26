@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-grid-circle-no-lines",
   "type": "registry:block",
+  "description": "A radar chart with a grid and circle fill",
   "registryDependencies": [
     "card",
     "chart"

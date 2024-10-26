@@ -1,6 +1,7 @@
 {
   "name": "chart-pie-legend",
   "type": "registry:block",
+  "description": "A pie chart with a legend",
   "registryDependencies": [
     "card",
     "chart"
