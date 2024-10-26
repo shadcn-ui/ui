@@ -72,8 +72,8 @@ module.exports = {
           "20%,50%": { opacity: "0" },
         },
         "spinner": {
-          "0%": { opacity: 1 },
-          "to": { opacity: .15 }
+          from: { opacity: "1" },
+          to: { opacity: "0.15" }
         }
       },
       animation: {
