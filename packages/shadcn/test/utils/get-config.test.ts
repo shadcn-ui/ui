@@ -5,11 +5,14 @@ import { getConfig, getRawConfig } from "../../src/utils/get-config"
 
 test("get raw config", async () => {
   expect(
-    await getRawConfig(path.resolve(__dirname, "../fixtures/config-none"))
+    await getRawConfig(path.resolve(__dirname, "../fixtures/config-none"), ".")
   ).toEqual(null)
 
   expect(
-    await getRawConfig(path.resolve(__dirname, "../fixtures/config-partial"))
+    await getRawConfig(
+      path.resolve(__dirname, "../fixtures/config-partial"),
+      "."
+    )
   ).toEqual({
     style: "default",
     tailwind: {
@@ -27,21 +30,21 @@ test("get raw config", async () => {
   })
 
   expect(
-    getRawConfig(path.resolve(__dirname, "../fixtures/config-invalid"))
+    getRawConfig(path.resolve(__dirname, "../fixtures/config-invalid"), ".")
   ).rejects.toThrowError()
 })
 
 test("get config", async () => {
   expect(
-    await getConfig(path.resolve(__dirname, "../fixtures/config-none"))
+    await getConfig(path.resolve(__dirname, "../fixtures/config-none"), ".")
   ).toEqual(null)
 
   expect(
-    getConfig(path.resolve(__dirname, "../fixtures/config-invalid"))
+    getConfig(path.resolve(__dirname, "../fixtures/config-invalid"), ".")
   ).rejects.toThrowError()
 
   expect(
-    await getConfig(path.resolve(__dirname, "../fixtures/config-partial"))
+    await getConfig(path.resolve(__dirname, "../fixtures/config-partial"), ".")
   ).toEqual({
     style: "default",
     tailwind: {
@@ -89,7 +92,7 @@ test("get config", async () => {
   })
 
   expect(
-    await getConfig(path.resolve(__dirname, "../fixtures/config-full"))
+    await getConfig(path.resolve(__dirname, "../fixtures/config-full"), ".")
   ).toEqual({
     style: "new-york",
     rsc: false,
@@ -141,7 +144,7 @@ test("get config", async () => {
   })
 
   expect(
-    await getConfig(path.resolve(__dirname, "../fixtures/config-jsx"))
+    await getConfig(path.resolve(__dirname, "../fixtures/config-jsx"), ".")
   ).toEqual({
     style: "default",
     tailwind: {

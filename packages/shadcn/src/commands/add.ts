@@ -18,6 +18,7 @@ export const addOptionsSchema = z.object({
   yes: z.boolean(),
   overwrite: z.boolean(),
   cwd: z.string(),
+  configDir: z.string(),
   all: z.boolean(),
   path: z.string().optional(),
   silent: z.boolean(),
@@ -37,6 +38,11 @@ export const add = new Command()
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
     process.cwd()
+  )
+  .option(
+    "-d, --config-dir <config-dir>",
+    "directory containing `components.json`. relative to `cwd`.",
+    "."
   )
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")

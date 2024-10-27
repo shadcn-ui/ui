@@ -58,8 +58,8 @@ export const configSchema = rawConfigSchema.extend({
 
 export type Config = z.infer<typeof configSchema>
 
-export async function getConfig(cwd: string) {
-  const config = await getRawConfig(cwd)
+export async function getConfig(cwd: string, configDir: string) {
+  const config = await getRawConfig(cwd, configDir)
 
   if (!config) {
     return null
@@ -115,9 +115,12 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
   })
 }
 
-export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
+export async function getRawConfig(
+  cwd: string,
+  configDir: string
+): Promise<RawConfig | null> {
   try {
-    const configResult = await explorer.search(cwd)
+    const configResult = await explorer.search(path.resolve(cwd, configDir))
 
     if (!configResult) {
       return null
@@ -125,7 +128,7 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
 
     return rawConfigSchema.parse(configResult.config)
   } catch (error) {
-    const componentPath = `${cwd}/components.json`
+    const componentPath = `${path.resolve(cwd, configDir)}/components.json`
     throw new Error(
       `Invalid configuration found in ${highlighter.info(componentPath)}.`
     )
