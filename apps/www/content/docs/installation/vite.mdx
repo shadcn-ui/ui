@@ -92,6 +92,34 @@ export default defineConfig({
 })
 ```
 
+### Configure your tailwind
+
+Add the paths to all of your template files in your `tailwind.config.js` file.
+
+```javascript
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Add the Tailwind directives to your `index.css` CSS file
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+If there is anything miss, visit https://tailwindcss.com/docs/guides/vite to get more references.
+
 ### Run the CLI
 
 Run the `shadcn-ui` init command to setup your project:
