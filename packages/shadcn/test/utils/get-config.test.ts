@@ -144,6 +144,58 @@ test("get config", async () => {
   })
 
   expect(
+    await getConfig(path.resolve(__dirname, "../fixtures/config-dir"), "config")
+  ).toEqual({
+    style: "new-york",
+    rsc: false,
+    tsx: true,
+    tailwind: {
+      config: "tailwind.config.ts",
+      baseColor: "zinc",
+      css: "src/app/globals.css",
+      cssVariables: true,
+      prefix: "tw-",
+    },
+    aliases: {
+      components: "~/components",
+      utils: "~/lib/utils",
+      lib: "~/lib",
+      hooks: "~/lib/hooks",
+      ui: "~/ui",
+    },
+    resolvedPaths: {
+      cwd: path.resolve(__dirname, "../fixtures/config-dir"),
+      tailwindConfig: path.resolve(
+        __dirname,
+        "../fixtures/config-dir",
+        "tailwind.config.ts"
+      ),
+      tailwindCss: path.resolve(
+        __dirname,
+        "../fixtures/config-dir",
+        "./src/app/globals.css"
+      ),
+      components: path.resolve(
+        __dirname,
+        "../fixtures/config-dir",
+        "./src/components"
+      ),
+      ui: path.resolve(__dirname, "../fixtures/config-dir", "./src/ui"),
+      hooks: path.resolve(
+        __dirname,
+        "../fixtures/config-dir",
+        "./src/lib/hooks"
+      ),
+      lib: path.resolve(__dirname, "../fixtures/config-dir", "./src/lib"),
+      utils: path.resolve(
+        __dirname,
+        "../fixtures/config-dir",
+        "./src/lib/utils"
+      ),
+    },
+  })
+
+  expect(
     await getConfig(path.resolve(__dirname, "../fixtures/config-jsx"), ".")
   ).toEqual({
     style: "default",
