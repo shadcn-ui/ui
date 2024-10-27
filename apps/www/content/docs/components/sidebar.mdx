@@ -406,6 +406,38 @@ You can change the keyboard shortcut by updating the `SIDEBAR_KEYBOARD_SHORTCUT`
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 ```
 
+### Persisting State with SSR
+
+The `SidebarProvider` supports persisting the sidebar state across page reloads and server-side rendering. It uses cookies to store the current state of the sidebar. When the sidebar state changes, a default cookie named `sidebar:state` is set with the current open/closed state. This cookie is then read on subsequent page loads to restore the sidebar state.
+
+To persist sidebar state with SSR, set up your `SidebarProvider` in `app/layout.tsx` like this:
+
+```tsx showLineNumbers title="app/layout.tsx"
+import { cookies } from "next/headers"
+
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
+
+export async function Layout({ children }: { children: React.ReactNode }) {
+  const sidebarState = cookies().get("sidebar:state")
+
+  let defaultOpen = true
+  if (sidebarState) {
+    defaultOpen = sidebarState.value === "true"
+  }
+
+  return (
+    <SidebarProvider defaultOpen={defaultOpen}>
+      <AppSidebar />
+      <main>
+        <SidebarTrigger />
+        {children}
+      </main>
+    </SidebarProvider>
+  )
+}
+```
+
 ## Sidebar
 
 The main `Sidebar` component used to render a collapsible sidebar.
@@ -1322,6 +1354,13 @@ Here are some tips for styling the sidebar based on different states.
 You can find more tips on using states for styling in this [Twitter thread](https://x.com/shadcn/status/1842329158879420864).
 
 ## Changelog
+
+### 2024-10-27 Refactor `<SidebarProvider>`
+
+- Improved setOpen callback logic in `<SidebarProvider>`
+  - Simplify state handling.
+  - Ensure consistent cookie setting.
+  - Added ability for users to persist sidebar state via cookies.
 
 ### 2024-10-21
 
