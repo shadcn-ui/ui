@@ -372,11 +372,11 @@ function parseObjectLiteralExpression(node: ObjectLiteralExpression): any {
 }
 
 function parseValue(node: any): any {
-  switch (node.kind) {
+  switch (node.getKind()) {
     case SyntaxKind.StringLiteral:
-      return node.text
+      return node.getText()
     case SyntaxKind.NumericLiteral:
-      return Number(node.text)
+      return Number(node.getText())
     case SyntaxKind.TrueKeyword:
       return true
     case SyntaxKind.FalseKeyword:
@@ -384,7 +384,7 @@ function parseValue(node: any): any {
     case SyntaxKind.NullKeyword:
       return null
     case SyntaxKind.ArrayLiteralExpression:
-      return node.elements.map(parseValue)
+      return node.getElements().map(parseValue)
     default:
       return node.getText()
   }
