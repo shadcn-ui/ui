@@ -1,11 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { useFragmentIdentifier } from "@/hooks/use-fragment-identifier"
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
+import { ChartsNavItem } from "@/components/charts-nav-item"
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 
 const links = [
@@ -67,19 +67,17 @@ export function ChartsNav({
     <ScrollArea className="max-w-[calc(100vw-2rem)]">
       <div className={cn("flex items-center", className)} {...props}>
         {links.map((example) => (
-          <Link
-            href={example.href}
+          <ChartsNavItem
             key={example.href}
-            className={cn(
-              "flex h-7 shrink-0 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
-              fragmentIdentifier?.fragment &&
-                example.href.endsWith(fragmentIdentifier.fragment)
-                ? "bg-muted font-medium text-primary"
-                : "text-muted-foreground"
-            )}
+            href={example.href}
+            isActive={
+              (fragmentIdentifier?.fragment &&
+                example.href.endsWith(fragmentIdentifier.fragment)) ||
+              false
+            }
           >
             {example.name}
-          </Link>
+          </ChartsNavItem>
         ))}
       </div>
       <ScrollBar orientation="horizontal" className="invisible" />
