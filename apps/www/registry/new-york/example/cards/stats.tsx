@@ -87,8 +87,9 @@ export function CardsStats() {
                     {
                       stroke: "var(--theme-primary)",
                       "--theme-primary": `hsl(${
-                        baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                          .primary
+                        baseColor?.cssVars[mode === "dark" ? "dark" : "light"][
+                          "primary-foreground"
+                        ]
                       })`,
                     } as React.CSSProperties
                   }
@@ -117,8 +118,9 @@ export function CardsStats() {
                       fill: "var(--theme-primary)",
                       opacity: 1,
                       "--theme-primary": `hsl(${
-                        baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                          .primary
+                        baseColor?.cssVars[mode === "dark" ? "dark" : "light"][
+                          "primary-foreground"
+                        ]
                       })`,
                     } as React.CSSProperties
                   }
