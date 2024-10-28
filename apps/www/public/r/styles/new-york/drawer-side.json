@@ -1,0 +1,15 @@
+{
+  "name": "drawer-side",
+  "type": "registry:example",
+  "registryDependencies": [
+    "drawer"
+  ],
+  "files": [
+    {
+      "path": "example/drawer-side.tsx",
+      "content": "import * as React from \"react\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport {\n  Drawer,\n  DrawerContent,\n  DrawerDescription,\n  DrawerHeader,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/registry/new-york/ui/drawer\"\n\nexport default function DrawerDemo() {\n  return (\n    <Drawer>\n      <DrawerTrigger asChild>\n        <Button variant=\"outline\">Open Drawer</Button>\n      </DrawerTrigger>\n      <DrawerContent>\n        <div className=\"mx-auto w-full max-w-sm\">\n          <DrawerHeader>\n            <DrawerTitle>It supports all directions.</DrawerTitle>\n            <DrawerDescription>\n              This one specifically is not touching the edge of the screen, but\n              that's not required for a side drawer.\n            </DrawerDescription>\n          </DrawerHeader>\n        </div>\n      </DrawerContent>\n    </Drawer>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

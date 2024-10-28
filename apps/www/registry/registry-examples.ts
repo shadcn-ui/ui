@@ -360,6 +360,18 @@ export const examples: Registry = [
     files: ["example/drawer-dialog.tsx"],
   },
   {
+    name: "drawer-side",
+    type: "registry:example",
+    registryDependencies: ["drawer"],
+    files: ["example/drawer-side.tsx"],
+  },
+  {
+    name: "drawer-nested",
+    type: "registry:example",
+    registryDependencies: ["drawer"],
+    files: ["example/drawer-nested.tsx"],
+  },
+  {
     name: "dropdown-menu-demo",
     type: "registry:example",
     registryDependencies: ["dropdown-menu"],

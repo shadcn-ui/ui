@@ -1,0 +1,15 @@
+{
+  "name": "drawer-nested",
+  "type": "registry:example",
+  "registryDependencies": [
+    "drawer"
+  ],
+  "files": [
+    {
+      "path": "example/drawer-nested.tsx",
+      "content": "import * as React from \"react\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport {\n  Drawer,\n  DrawerContent,\n  DrawerDescription,\n  DrawerHeader,\n  DrawerNested,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/registry/new-york/ui/drawer\"\n\nexport default function DrawerDemo() {\n  return (\n    <Drawer direction=\"right\">\n      <DrawerTrigger asChild>\n        <Button variant=\"outline\">Open Drawer</Button>\n      </DrawerTrigger>\n      <DrawerContent>\n        <div className=\"mx-auto w-[300px] max-w-sm\">\n          <DrawerHeader>\n            <DrawerTitle>It supports all directions.</DrawerTitle>\n            <DrawerDescription>\n              It's also draggable and supports velocity-based swiping.\n            </DrawerDescription>\n          </DrawerHeader>\n        </div>\n      </DrawerContent>\n      <DrawerNested>\n        <DrawerContent>\n          <DrawerHeader>\n            <DrawerTitle>This drawer is nested</DrawerTitle>\n            <DrawerDescription>\n              It's also draggable and supports velocity-based swiping.\n            </DrawerDescription>\n          </DrawerHeader>\n          <DrawerClose>Close nested drawer</DrawerClose>\n        </DrawerContent>\n      </DrawerNested>\n    </Drawer>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
