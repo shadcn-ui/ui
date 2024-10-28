@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "example/button-with-icon.tsx",
-      "content": "import { EnvelopeOpenIcon } from \"@radix-ui/react-icons\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\n\nexport default function ButtonWithIcon() {\n  return (\n    <Button>\n      <EnvelopeOpenIcon /> Login with Email\n    </Button>\n  )\n}\n",
+      "content": "import { MailOpen } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\n\nexport default function ButtonWithIcon() {\n  return (\n    <Button>\n      <MailOpen /> Login with Email\n    </Button>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }

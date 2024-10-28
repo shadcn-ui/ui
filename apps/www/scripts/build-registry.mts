@@ -484,9 +484,9 @@ async function buildStylesIndex() {
     ]
 
     // TODO: Remove this when we migrate to lucide-react.
-    if (style.name === "new-york") {
-      dependencies.push("@radix-ui/react-icons")
-    }
+    // if (style.name === "new-york") {
+    //   dependencies.push("@radix-ui/react-icons")
+    // }
 
     const payload: RegistryEntry = {
       name: style.name,
