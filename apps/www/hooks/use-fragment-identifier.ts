@@ -20,7 +20,7 @@ export function useFragmentIdentifier() {
   }, [params])
 
   if (isClient) {
-    return fragment
+    return { fragment, setFragment }
   }
 }
 
