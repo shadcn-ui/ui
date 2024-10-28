@@ -3,6 +3,7 @@ import * as React from "react"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Drawer,
+  DrawerClose,
   DrawerContent,
   DrawerDescription,
   DrawerHeader,
@@ -11,33 +12,48 @@ import {
   DrawerTrigger,
 } from "@/registry/new-york/ui/drawer"
 
-export default function DrawerDemo() {
+export default function DrawerNestedDemo() {
   return (
-    <Drawer direction="right">
+    <Drawer>
       <DrawerTrigger asChild>
         <Button variant="outline">Open Drawer</Button>
       </DrawerTrigger>
       <DrawerContent>
-        <div className="mx-auto w-[300px] max-w-sm">
+        <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
-            <DrawerTitle>It supports all directions.</DrawerTitle>
+            <DrawerTitle>Nested drawer.</DrawerTitle>
             <DrawerDescription>
-              It's also draggable and supports velocity-based swiping.
+              Click on the button to open a second drawer.
             </DrawerDescription>
           </DrawerHeader>
+          <div className="p-4">
+            <DrawerNested>
+              <DrawerTrigger asChild>
+                <Button variant="outline" className="w-full">
+                  Open Drawer
+                </Button>
+              </DrawerTrigger>
+              <DrawerContent>
+                <div className="mx-auto w-full max-w-sm">
+                  <DrawerHeader>
+                    <DrawerTitle>This drawer is nested</DrawerTitle>
+                    <DrawerDescription>
+                      You can nest as many drawers as you want.
+                    </DrawerDescription>
+                  </DrawerHeader>
+                  <div className="p-4">
+                    <DrawerClose asChild>
+                      <Button variant="outline" className="w-full">
+                        Close nested drawer
+                      </Button>
+                    </DrawerClose>
+                  </div>
+                </div>
+              </DrawerContent>
+            </DrawerNested>
+          </div>
         </div>
       </DrawerContent>
-      <DrawerNested>
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle>This drawer is nested</DrawerTitle>
-            <DrawerDescription>
-              It's also draggable and supports velocity-based swiping.
-            </DrawerDescription>
-          </DrawerHeader>
-          <DrawerClose>Close nested drawer</DrawerClose>
-        </DrawerContent>
-      </DrawerNested>
     </Drawer>
   )
 }

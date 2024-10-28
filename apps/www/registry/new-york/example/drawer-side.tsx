@@ -12,17 +12,16 @@ import {
 
 export default function DrawerDemo() {
   return (
-    <Drawer>
+    <Drawer direction="right">
       <DrawerTrigger asChild>
         <Button variant="outline">Open Drawer</Button>
       </DrawerTrigger>
       <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
+        <div className="mx-auto w-[300px] max-w-sm">
           <DrawerHeader>
             <DrawerTitle>It supports all directions.</DrawerTitle>
             <DrawerDescription>
-              This one specifically is not touching the edge of the screen, but
-              that's not required for a side drawer.
+              It's also draggable and supports velocity-based swiping.
             </DrawerDescription>
           </DrawerHeader>
         </div>
