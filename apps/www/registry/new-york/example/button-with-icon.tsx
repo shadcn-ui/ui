@@ -1,11 +1,11 @@
-import { EnvelopeOpenIcon } from "@radix-ui/react-icons"
+import { Mail } from "lucide-react"
 
 import { Button } from "@/registry/new-york/ui/button"
 
 export default function ButtonWithIcon() {
   return (
     <Button>
-      <EnvelopeOpenIcon /> Login with Email
+      <Mail /> Login with Email
     </Button>
   )
 }

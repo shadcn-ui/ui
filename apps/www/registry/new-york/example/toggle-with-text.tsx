@@ -1,11 +1,11 @@
-import { FontItalicIcon } from "@radix-ui/react-icons"
+import { Bold, Italic, Underline } from "lucide-react"
 
 import { Toggle } from "@/registry/new-york/ui/toggle"
 
 export default function ToggleWithText() {
   return (
     <Toggle aria-label="Toggle italic">
-      <FontItalicIcon />
+      <Italic />
       Italic
     </Toggle>
   )
