@@ -107,9 +107,7 @@ export default function ComboboxForm() {
                           <CommandItem
                             value={language.label}
                             key={language.value}
-                            onSelect={() => {
-                              form.setValue("language", language.value)
-                            }}
+                            onSelect={field.onChange}
                           >
                             {language.label}
                             <CheckIcon

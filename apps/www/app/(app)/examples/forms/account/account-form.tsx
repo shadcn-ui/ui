@@ -188,9 +188,7 @@ export function AccountForm() {
                           <CommandItem
                             value={language.label}
                             key={language.value}
-                            onSelect={() => {
-                              form.setValue("language", language.value)
-                            }}
+                            onSelect={field.onChange}
                           >
                             <CheckIcon
                               className={cn(
