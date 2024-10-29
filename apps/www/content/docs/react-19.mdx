@@ -126,21 +126,39 @@ To make it easy for you track the progress of the upgrade, I've created a table 
 - ✅ - Works with React 19 using npm, pnpm, and bun.
 - 🚧 - Works with React 19 using pnpm and bun. Requires flag for npm. PR is in progress.
 
-| Package                                                                            | Status | Note                                                                                           |
-| ---------------------------------------------------------------------------------- | ------ | ---------------------------------------------------------------------------------------------- |
-| [radix-ui](https://www.npmjs.com/package/@radix-ui/react-icons)                    | ✅     |                                                                                                |
-| [lucide-react](https://www.npmjs.com/package/lucide-react)                         | ✅     |                                                                                                |
-| [class-variance-authority](https://www.npmjs.com/package/class-variance-authority) | ✅     | Does not list React 19 as a peer dependency.                                                   |
-| [tailwindcss-animate](https://www.npmjs.com/package/tailwindcss-animate)           | ✅     | Does not list React 19 as a peer dependency.                                                   |
-| [embla-carousel-react](https://www.npmjs.com/package/embla-carousel-react)         | ✅     |                                                                                                |
-| [recharts](https://www.npmjs.com/package/recharts)                                 | ✅     | Use version 2.13.0. See [release notes](https://github.com/recharts/recharts/discussions/5105) |
-| [react-hook-form](https://www.npmjs.com/package/react-hook-form)                   | ✅     |                                                                                                |
-| [react-resizable-panels](https://www.npmjs.com/package/react-resizable-panels)     | ✅     |                                                                                                |
-| [sonner](https://www.npmjs.com/package/sonner)                                     | ✅     |                                                                                                |
-| [react-day-picker](https://www.npmjs.com/package/react-day-picker)                 | ✅     | Works with flag for npm. Work to upgrade to v9 in progress.                                    |
-| [input-otp](https://www.npmjs.com/package/input-otp)                               | ✅     |                                                                                                |
-| [@radix-ui/react-icons](https://www.npmjs.com/package/@radix-ui/react-icons)       | 🚧     | See [PR #184](https://github.com/radix-ui/icons/pull/184)                                      |
-| [cmdk](https://www.npmjs.com/package/cmdk)                                         | 🚧     | See [PR #318](https://github.com/pacocoursey/cmdk/pull/318)                                    |
-| [vaul](https://www.npmjs.com/package/vaul)                                         | 🚧     | See [PR #498](https://github.com/emilkowalski/vaul/pull/498)                                   |
+| Package                                                                            | Status | Note                                                        |
+| ---------------------------------------------------------------------------------- | ------ | ----------------------------------------------------------- |
+| [radix-ui](https://www.npmjs.com/package/@radix-ui/react-icons)                    | ✅     |                                                             |
+| [lucide-react](https://www.npmjs.com/package/lucide-react)                         | ✅     |                                                             |
+| [class-variance-authority](https://www.npmjs.com/package/class-variance-authority) | ✅     | Does not list React 19 as a peer dependency.                |
+| [tailwindcss-animate](https://www.npmjs.com/package/tailwindcss-animate)           | ✅     | Does not list React 19 as a peer dependency.                |
+| [embla-carousel-react](https://www.npmjs.com/package/embla-carousel-react)         | ✅     |                                                             |
+| [recharts](https://www.npmjs.com/package/recharts)                                 | ✅     | See note [below](#recharts)                                 |
+| [react-hook-form](https://www.npmjs.com/package/react-hook-form)                   | ✅     |                                                             |
+| [react-resizable-panels](https://www.npmjs.com/package/react-resizable-panels)     | ✅     |                                                             |
+| [sonner](https://www.npmjs.com/package/sonner)                                     | ✅     |                                                             |
+| [react-day-picker](https://www.npmjs.com/package/react-day-picker)                 | ✅     | Works with flag for npm. Work to upgrade to v9 in progress. |
+| [input-otp](https://www.npmjs.com/package/input-otp)                               | ✅     |                                                             |
+| [vaul](https://www.npmjs.com/package/vaul)                                         | ✅     |                                                             |
+| [@radix-ui/react-icons](https://www.npmjs.com/package/@radix-ui/react-icons)       | 🚧     | See [PR #184](https://github.com/radix-ui/icons/pull/184)   |
+| [cmdk](https://www.npmjs.com/package/cmdk)                                         | 🚧     | See [PR #318](https://github.com/pacocoursey/cmdk/pull/318) |
 
 If you have any questions, please [open an issue](https://github.com/shadcn/ui/issues) on GitHub.
+
+## Recharts
+
+To use recharts with React 19, you will need to override the `react-is` dependency.
+
+<Steps>
+
+<Step>Add the following to your `package.json`</Step>
+
+```json title="package.json"
+"overrides": {
+  "react-is": "^19.0.0-beta-26f2496093-20240514"
+}
+```
+
+<Step>Run `npm install --legacy-peer-deps`</Step>
+
+</Steps>
