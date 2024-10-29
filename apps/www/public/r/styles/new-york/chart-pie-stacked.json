@@ -1,6 +1,7 @@
 {
   "name": "chart-pie-stacked",
   "type": "registry:block",
+  "description": "A pie chart with stacked sections",
   "registryDependencies": [
     "card",
     "chart"

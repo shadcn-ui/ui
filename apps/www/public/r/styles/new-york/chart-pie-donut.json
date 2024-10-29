@@ -1,6 +1,7 @@
 {
   "name": "chart-pie-donut",
   "type": "registry:block",
+  "description": "A donut chart",
   "registryDependencies": [
     "card",
     "chart"

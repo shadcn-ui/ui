@@ -1,6 +1,7 @@
 {
   "name": "chart-area-stacked-expand",
   "type": "registry:block",
+  "description": "A stacked area chart with expand stacking",
   "registryDependencies": [
     "card",
     "chart"

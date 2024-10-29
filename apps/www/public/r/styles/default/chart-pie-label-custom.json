@@ -1,6 +1,7 @@
 {
   "name": "chart-pie-label-custom",
   "type": "registry:block",
+  "description": "A pie chart with a custom label",
   "registryDependencies": [
     "card",
     "chart"

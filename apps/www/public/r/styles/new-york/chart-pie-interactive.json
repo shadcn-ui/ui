@@ -1,6 +1,7 @@
 {
   "name": "chart-pie-interactive",
   "type": "registry:block",
+  "description": "An interactive pie chart",
   "registryDependencies": [
     "card",
     "chart"
