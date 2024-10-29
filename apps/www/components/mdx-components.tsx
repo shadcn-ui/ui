@@ -142,7 +142,7 @@ const components = {
     <div className="my-6 w-full overflow-y-auto">
       <table
         className={cn(
-          "relative border-none w-full overflow-hidden text-sm",
+          "relative w-full overflow-hidden border-none text-sm",
           className
         )}
         {...props}
@@ -151,7 +151,7 @@ const components = {
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
     <tr
-      className={cn("m-0 border-b last:border-b-none", className)}
+      className={cn("last:border-b-none m-0 border-b", className)}
       {...props}
     />
   ),
