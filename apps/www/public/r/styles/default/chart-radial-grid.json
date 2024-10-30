@@ -1,6 +1,7 @@
 {
   "name": "chart-radial-grid",
   "type": "registry:block",
+  "description": "A radial chart with a grid",
   "registryDependencies": [
     "card",
     "chart"

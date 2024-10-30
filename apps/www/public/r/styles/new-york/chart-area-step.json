@@ -1,6 +1,7 @@
 {
   "name": "chart-area-step",
   "type": "registry:block",
+  "description": "A step area chart",
   "registryDependencies": [
     "card",
     "chart"

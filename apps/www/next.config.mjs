@@ -53,6 +53,16 @@ const nextConfig = {
         destination: "/docs/components/form",
         permanent: false,
       },
+      {
+        source: "/sidebar",
+        destination: "/docs/components/sidebar",
+        permanent: true,
+      },
+      {
+        source: "/react-19",
+        destination: "/docs/react-19",
+        permanent: true,
+      },
     ]
   },
 }
