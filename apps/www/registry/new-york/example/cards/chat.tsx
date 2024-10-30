@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { CheckIcon, PaperPlaneIcon, PlusIcon } from "@radix-ui/react-icons"
 
