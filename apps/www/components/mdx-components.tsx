@@ -139,10 +139,10 @@ const components = {
     <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-y-auto rounded-lg">
+    <div className="my-6 w-full overflow-y-auto">
       <table
         className={cn(
-          "relative w-full overflow-hidden text-sm after:absolute after:inset-0 after:rounded-lg after:ring-1 after:ring-border",
+          "relative w-full overflow-hidden border-none text-sm",
           className
         )}
         {...props}
@@ -150,12 +150,15 @@ const components = {
     </div>
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr className={cn("m-0 border-t", className)} {...props} />
+    <tr
+      className={cn("last:border-b-none m-0 border-b", className)}
+      {...props}
+    />
   ),
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
       className={cn(
-        "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
+        "px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
         className
       )}
       {...props}
@@ -164,7 +167,7 @@ const components = {
   td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td
       className={cn(
-        "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+        "px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
         className
       )}
       {...props}
