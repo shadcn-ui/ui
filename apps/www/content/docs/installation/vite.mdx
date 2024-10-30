@@ -38,10 +38,7 @@ Configure the tailwind template paths in `tailwind.config.js`:
 ```js {3}
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{ts,tsx,js,jsx}",
-    "./index.html"
-  ],
+  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {},
   },
