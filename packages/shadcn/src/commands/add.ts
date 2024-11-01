@@ -16,7 +16,7 @@ import { z } from "zod"
 export const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
   yes: z.boolean(),
-  overwrite: z.boolean(),
+  overwrite: z.boolean().optional(),
   cwd: z.string(),
   all: z.boolean(),
   path: z.string().optional(),
@@ -32,7 +32,8 @@ export const add = new Command()
     "the components to add or a url to the component."
   )
   .option("-y, --yes", "skip confirmation prompt.", false)
-  .option("-o, --overwrite", "overwrite existing files.", false)
+  .option("-o, --overwrite", "overwrite existing files. (default: ask)")
+  .option("--no-overwrite", "never overwrite existing files.")
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
@@ -114,7 +115,7 @@ export const add = new Command()
       if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
         const { projectPath } = await createProject({
           cwd: options.cwd,
-          force: options.overwrite,
+          force: !!options.overwrite,
           srcDir: options.srcDir,
         })
         if (!projectPath) {

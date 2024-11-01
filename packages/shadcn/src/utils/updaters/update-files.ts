@@ -43,7 +43,6 @@ export async function updateFiles(
     return
   }
   options = {
-    overwrite: false,
     force: false,
     silent: false,
     ...options,
@@ -84,14 +83,20 @@ export async function updateFiles(
     const existingFile = existsSync(filePath)
     if (existingFile && !options.overwrite) {
       filesCreatedSpinner.stop()
-      const { overwrite } = await prompts({
-        type: "confirm",
-        name: "overwrite",
-        message: `The file ${highlighter.info(
-          fileName
-        )} already exists. Would you like to overwrite?`,
-        initial: false,
-      })
+      let overwrite = false
+
+      const shouldAsk = typeof options.overwrite === "undefined"
+      if (shouldAsk) {
+        const answer = await prompts({
+          type: "confirm",
+          name: "overwrite",
+          message: `The file ${highlighter.info(
+            fileName
+          )} already exists. Would you like to overwrite?`,
+          initial: false,
+        })
+        overwrite = answer.overwrite
+      }
 
       if (!overwrite) {
         filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
