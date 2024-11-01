@@ -22,9 +22,11 @@ React 19 is now [rc](https://www.npmjs.com/package/react?activeTab=versions) and
 
 To support React 19, package maintainers will need to test and update their packages to include React 19 as a peer dependency. This is [already](https://github.com/radix-ui/primitives/pull/2952) [in](https://github.com/pacocoursey/cmdk/pull/318) [progress](https://github.com/emilkowalski/vaul/pull/498).
 
-```diff /^19.0.0/
+```diff /^19.0/
 "peerDependencies": {
--  "react": "^16.8 || ^17.0 || ^18.0 || ^19.0",
+-  "react": "^16.8 || ^17.0 || ^18.0",
++  "react": "^16.8 || ^17.0 || ^18.0 || ^19.0",
+-  "react-dom": "^16.8 || ^17.0 || ^18.0"
 +  "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0"
 },
 ```
@@ -140,7 +142,7 @@ To make it easy for you track the progress of the upgrade, I've created a table 
 | [react-day-picker](https://www.npmjs.com/package/react-day-picker)                 | ✅     | Works with flag for npm. Work to upgrade to v9 in progress. |
 | [input-otp](https://www.npmjs.com/package/input-otp)                               | ✅     |                                                             |
 | [vaul](https://www.npmjs.com/package/vaul)                                         | ✅     |                                                             |
-| [@radix-ui/react-icons](https://www.npmjs.com/package/@radix-ui/react-icons)       | 🚧     | See [PR #184](https://github.com/radix-ui/icons/pull/184)   |
+| [@radix-ui/react-icons](https://www.npmjs.com/package/@radix-ui/react-icons)       | ✅     |                                                             |
 | [cmdk](https://www.npmjs.com/package/cmdk)                                         | 🚧     | See [PR #318](https://github.com/pacocoursey/cmdk/pull/318) |
 
 If you have any questions, please [open an issue](https://github.com/shadcn/ui/issues) on GitHub.

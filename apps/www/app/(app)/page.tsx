@@ -10,8 +10,8 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
+import CardsNewYork from "@/registry/new-york/example/cards"
 import { Button } from "@/registry/new-york/ui/button"
-import MailPage from "@/app/(app)/examples/mail/page"
 
 export default function IndexPage() {
   return (
@@ -41,24 +41,22 @@ export default function IndexPage() {
       <ExamplesNav className="[&>a:first-child]:text-primary" />
       <section className="overflow-hidden rounded-lg border bg-background shadow-md md:hidden md:shadow-xl">
         <Image
-          src="/examples/mail-dark.png"
+          src="/examples/cards-light.png"
           width={1280}
-          height={727}
-          alt="Mail"
-          className="hidden dark:block"
-        />
-        <Image
-          src="/examples/mail-light.png"
-          width={1280}
-          height={727}
-          alt="Mail"
+          height={1214}
+          alt="Cards"
           className="block dark:hidden"
         />
+        <Image
+          src="/examples/cards-dark.png"
+          width={1280}
+          height={1214}
+          alt="Cards"
+          className="hidden dark:block"
+        />
       </section>
-      <section className="hidden md:block">
-        <div className="overflow-hidden rounded-lg border bg-background shadow">
-          <MailPage />
-        </div>
+      <section className="hidden md:block [&>div]:p-0">
+        <CardsNewYork />
       </section>
     </div>
   )

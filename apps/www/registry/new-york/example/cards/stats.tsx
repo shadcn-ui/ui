@@ -1,3 +1,5 @@
+"use client"
+
 import { useTheme } from "next-themes"
 import { Bar, BarChart, Line, LineChart, ResponsiveContainer } from "recharts"
 
