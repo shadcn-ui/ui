@@ -37,7 +37,9 @@ export async function createProject(
     }
   }
 
-  const packageManager = await getPackageManager(options.cwd)
+  const packageManager = await getPackageManager(options.cwd, {
+    withFallback: true,
+  })
 
   const { name } = await prompts({
     type: "text",
