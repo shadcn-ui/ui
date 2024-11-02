@@ -1,5 +1,25 @@
 # @shadcn/ui
 
+## 2.1.3
+
+### Patch Changes
+
+- [#5621](https://github.com/shadcn-ui/ui/pull/5621) [`64739f8`](https://github.com/shadcn-ui/ui/commit/64739f83991205333867000d7813e82b0d98f871) Thanks [@shadcn](https://github.com/shadcn)! - add flag prompt for npm
+
+## 2.1.2
+
+### Patch Changes
+
+- [#5299](https://github.com/shadcn-ui/ui/pull/5299) [`986c00e`](https://github.com/shadcn-ui/ui/commit/986c00ee0e661bf2391b305c2b24800be63e681e) Thanks [@fourcels](https://github.com/fourcels)! - fix package manager fallback
+
+## 2.1.1
+
+### Patch Changes
+
+- [#5525](https://github.com/shadcn-ui/ui/pull/5525) [`f02b412`](https://github.com/shadcn-ui/ui/commit/f02b412478a2e4e1b20d87f4a253e9305331d066) Thanks [@shadcn](https://github.com/shadcn)! - temporarily pin create-next-app
+
+- [#5518](https://github.com/shadcn-ui/ui/pull/5518) [`bf5a79c`](https://github.com/shadcn-ui/ui/commit/bf5a79c4d427cf499c6196c2eea3df04d9410977) Thanks [@bcorbold](https://github.com/bcorbold)! - fix transofmrRsc for handling use client
+
 ## 2.1.0
 
 ### Minor Changes

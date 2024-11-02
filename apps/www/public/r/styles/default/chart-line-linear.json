@@ -1,6 +1,7 @@
 {
   "name": "chart-line-linear",
   "type": "registry:block",
+  "description": "A linear line chart",
   "registryDependencies": [
     "card",
     "chart"

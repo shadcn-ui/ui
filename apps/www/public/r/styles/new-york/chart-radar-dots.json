@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-dots",
   "type": "registry:block",
+  "description": "A radar chart with dots",
   "registryDependencies": [
     "card",
     "chart"

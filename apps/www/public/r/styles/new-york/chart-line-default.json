@@ -1,6 +1,7 @@
 {
   "name": "chart-line-default",
   "type": "registry:block",
+  "description": "A line chart",
   "registryDependencies": [
     "card",
     "chart"
