@@ -194,7 +194,7 @@ async function addTailwindConfigTheme(
   if (themeInitializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
     const themeObjectString = themeInitializer.getText()
     const themeObject = await parseObjectLiteral(themeObjectString)
-    const result = deepmerge(themeObject, theme)
+    const result = deepmerge(themeObject, theme, { arrayMerge: (dst, src, opts) => src })
     const resultString = objectToString(result)
       .replace(/\'\.\.\.(.*)\'/g, "...$1") // Remove quote around spread element
       .replace(/\'\"/g, "'") // Replace `\" with "
