@@ -196,6 +196,7 @@ async function addTailwindConfigTheme(
     const themeObject = await parseObjectLiteral(themeObjectString)
     const result = deepmerge(themeObject, theme)
     const resultString = objectToString(result)
+      .replace(/\'\.\.\.(.*)\'/g, "...$1") // Remove quote around spread element
       .replace(/\'\"/g, "'") // Replace `\" with "
       .replace(/\"\'/g, "'") // Replace `\" with "
       .replace(/\'\[/g, "[") // Replace `[ with [
@@ -385,6 +386,8 @@ function parseValue(node: any): any {
       return null
     case SyntaxKind.ArrayLiteralExpression:
       return node.getElements().map(parseValue)
+    case SyntaxKind.ObjectLiteralExpression:
+      return parseObjectLiteralExpression(node)
     default:
       return node.getText()
   }
