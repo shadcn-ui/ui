@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, PaperPlaneIcon, PlusIcon } from "@radix-ui/react-icons"
+import { CheckIcon, PlusIcon, SendIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -118,7 +118,7 @@ export function CardsChat() {
                   className="ml-auto rounded-full"
                   onClick={() => setOpen(true)}
                 >
-                  <PlusIcon className="h-4 w-4" />
+                  <PlusIcon />
                   <span className="sr-only">New message</span>
                 </Button>
               </TooltipTrigger>
@@ -168,7 +168,7 @@ export function CardsChat() {
               onChange={(event) => setInput(event.target.value)}
             />
             <Button type="submit" size="icon" disabled={inputLength === 0}>
-              <PaperPlaneIcon className="h-4 w-4" />
+              <SendIcon className="h-4 w-4" />
               <span className="sr-only">Send</span>
             </Button>
           </form>
