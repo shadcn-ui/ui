@@ -25,6 +25,7 @@ export async function updateDependencies(
     silent: options.silent,
   })?.start()
   const packageManager = await getPackageManager(config.resolvedPaths.cwd)
+
   await execa(
     packageManager,
     [packageManager === "npm" ? "install" : "add", ...dependencies],

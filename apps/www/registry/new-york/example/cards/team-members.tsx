@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDownIcon } from "@radix-ui/react-icons"
+import { ChevronDownIcon } from "lucide-react"
 
 import {
   Avatar,
