@@ -38,11 +38,11 @@ function devDependencyCommand(packageManager: PackageManager, devDependencies: s
 
   switch (packageManager) {
     case "npm":
+    case "pnpm":
       commands.push('-D');
-      break;
+    break;
     case "yarn":
     case "bun":
-    case "pnpm":
     case "rush":
       commands.push('--dev');
       break;
