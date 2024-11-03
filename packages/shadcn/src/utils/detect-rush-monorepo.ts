@@ -1,7 +1,6 @@
 
 import { join, dirname } from 'path';
 import { existsSync } from 'fs';
-import { logger } from "@/src/utils/logger"
 
 export interface RushDetectOptions{
   cwd?:string
