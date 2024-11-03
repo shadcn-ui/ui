@@ -72,6 +72,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Next.js 15 + React 19",
+          href: "/docs/react-19",
+          items: [],
+        },
+        {
           title: "Typography",
           href: "/docs/components/typography",
           items: [],
