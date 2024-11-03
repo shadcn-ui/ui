@@ -10,7 +10,7 @@ import { cn } from "@/registry/new-york/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
 import { Input } from "@/registry/new-york/ui/input"
 import { Separator } from "@/registry/new-york/ui/separator"
-import { Sheet, SheetContent } from "@/registry/new-york/ui/sheet"
+import { Sheet, SheetContent, SheetTitle } from "@/registry/new-york/ui/sheet"
 import { Skeleton } from "@/registry/new-york/ui/skeleton"
 import {
   Tooltip,
@@ -195,6 +195,7 @@ const Sidebar = React.forwardRef<
     if (isMobile) {
       return (
         <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+          <SheetTitle></SheetTitle>
           <SheetContent
             data-sidebar="sidebar"
             data-mobile="true"
