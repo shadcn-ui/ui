@@ -11,6 +11,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/new-york/ui/card"
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/registry/new-york/ui/chart"
 import { baseColors } from "@/registry/registry-base-colors"
 
 const data = [
@@ -44,14 +50,18 @@ const data = [
   },
 ]
 
+const chartConfig = {
+  today: {
+    label: "Today",
+    color: "hsl(var(--primary))",
+  },
+  average: {
+    label: "Average",
+    color: "hsl(var(--muted-foreground))",
+  },
+} satisfies ChartConfig
+
 export function CardsMetric() {
-  const { theme: mode } = useTheme()
-  const [config] = useConfig()
-
-  const baseColor = baseColors.find(
-    (baseColor) => baseColor.name === config.theme
-  )
-
   return (
     <Card>
       <CardHeader>
@@ -61,87 +71,39 @@ export function CardsMetric() {
         </CardDescription>
       </CardHeader>
       <CardContent className="pb-4">
-        <div className="h-[200px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              data={data}
-              margin={{
-                top: 5,
-                right: 10,
-                left: 10,
-                bottom: 0,
+        <ChartContainer config={chartConfig} className="h-[200px] w-full">
+          <LineChart
+            data={data}
+            margin={{
+              top: 5,
+              right: 10,
+              left: 10,
+              bottom: 0,
+            }}
+          >
+            <Line
+              type="monotone"
+              strokeWidth={2}
+              dataKey="average"
+              stroke="var(--color-average)"
+              activeDot={{
+                r: 6,
+                fill: "var(--color-average)",
               }}
-            >
-              <Tooltip
-                content={({ active, payload }) => {
-                  if (active && payload && payload.length) {
-                    return (
-                      <div className="rounded-lg border bg-background p-2 shadow-sm">
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="flex flex-col">
-                            <span className="text-[0.70rem] uppercase text-muted-foreground">
-                              Average
-                            </span>
-                            <span className="font-bold text-muted-foreground">
-                              {payload[0].value}
-                            </span>
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-[0.70rem] uppercase text-muted-foreground">
-                              Today
-                            </span>
-                            <span className="font-bold">
-                              {payload[1].value}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  }
-
-                  return null
-                }}
-              />
-              <Line
-                type="monotone"
-                strokeWidth={2}
-                dataKey="average"
-                activeDot={{
-                  r: 6,
-                  style: { fill: "var(--theme-primary)", opacity: 0.25 },
-                }}
-                style={
-                  {
-                    stroke: "var(--theme-primary)",
-                    opacity: 0.25,
-                    "--theme-primary": `hsl(${
-                      baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                        .primary
-                    })`,
-                  } as React.CSSProperties
-                }
-              />
-              <Line
-                type="monotone"
-                dataKey="today"
-                strokeWidth={2}
-                activeDot={{
-                  r: 8,
-                  style: { fill: "var(--theme-primary)" },
-                }}
-                style={
-                  {
-                    stroke: "var(--theme-primary)",
-                    "--theme-primary": `hsl(${
-                      baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                        .primary
-                    })`,
-                  } as React.CSSProperties
-                }
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+            />
+            <Line
+              type="monotone"
+              dataKey="today"
+              strokeWidth={2}
+              stroke="var(--color-today)"
+              activeDot={{
+                r: 8,
+                style: { fill: "var(--color-today)" },
+              }}
+            />
+            <ChartTooltip content={<ChartTooltipContent />} />
+          </LineChart>
+        </ChartContainer>
       </CardContent>
     </Card>
   )

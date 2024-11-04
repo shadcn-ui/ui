@@ -1,16 +1,14 @@
 "use client"
 
-import { useTheme } from "next-themes"
-import { Bar, BarChart, Line, LineChart, ResponsiveContainer } from "recharts"
+import { Bar, BarChart, Line, LineChart } from "recharts"
 
-import { useConfig } from "@/hooks/use-config"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "@/registry/new-york/ui/card"
-import { baseColors } from "@/registry/registry-base-colors"
+import { ChartConfig, ChartContainer } from "@/registry/new-york/ui/chart"
 
 const data = [
   {
@@ -47,14 +45,24 @@ const data = [
   },
 ]
 
+const chartConfig = {
+  revenue: {
+    label: "Revenue",
+    theme: {
+      light: "black",
+      dark: "white",
+    },
+  },
+  subscription: {
+    label: "Subscriptions",
+    theme: {
+      light: "black",
+      dark: "white",
+    },
+  },
+} satisfies ChartConfig
+
 export function CardsStats() {
-  const { theme: mode } = useTheme()
-  const [config] = useConfig()
-
-  const baseColor = baseColors.find(
-    (baseColor) => baseColor.name === config.theme
-  )
-
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
       <Card>
@@ -66,38 +74,28 @@ export function CardsStats() {
           <p className="text-xs text-muted-foreground">
             +20.1% from last month
           </p>
-          <div className="h-[80px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 10,
-                  left: 10,
-                  bottom: 0,
+          <ChartContainer config={chartConfig} className="h-[80px] w-full">
+            <LineChart
+              data={data}
+              margin={{
+                top: 5,
+                right: 10,
+                left: 10,
+                bottom: 0,
+              }}
+            >
+              <Line
+                type="monotone"
+                strokeWidth={2}
+                dataKey="revenue"
+                activeDot={{
+                  r: 6,
+                  fill: "var(--color-revenue)",
                 }}
-              >
-                <Line
-                  type="monotone"
-                  strokeWidth={2}
-                  dataKey="revenue"
-                  activeDot={{
-                    r: 6,
-                    style: { fill: "var(--theme-primary)", opacity: 0.25 },
-                  }}
-                  style={
-                    {
-                      stroke: "var(--theme-primary)",
-                      "--theme-primary": `hsl(${
-                        baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                          .primary
-                      })`,
-                    } as React.CSSProperties
-                  }
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
+                stroke="var(--color-revenue)"
+              />
+            </LineChart>
+          </ChartContainer>
         </CardContent>
       </Card>
       <Card>
@@ -109,25 +107,15 @@ export function CardsStats() {
           <p className="text-xs text-muted-foreground">
             +180.1% from last month
           </p>
-          <div className="mt-4 h-[80px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data}>
-                <Bar
-                  dataKey="subscription"
-                  style={
-                    {
-                      fill: "var(--theme-primary)",
-                      opacity: 1,
-                      "--theme-primary": `hsl(${
-                        baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                          .primary
-                      })`,
-                    } as React.CSSProperties
-                  }
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+          <ChartContainer config={chartConfig} className="mt-2 h-[80px] w-full">
+            <BarChart data={data}>
+              <Bar
+                dataKey="subscription"
+                fill="var(--color-subscription)"
+                radius={4}
+              />
+            </BarChart>
+          </ChartContainer>
         </CardContent>
       </Card>
     </div>
