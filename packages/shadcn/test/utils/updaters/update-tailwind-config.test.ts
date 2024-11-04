@@ -905,6 +905,33 @@ export default config
       )
     ).toMatchSnapshot()
   })
+
+  test("should preserve boolean values", async () => {
+    expect(
+      await transformTailwindConfig(
+        `import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    container: {
+      center: true
+    }
+  },
+}
+export default config
+  `,
+        {},
+        {
+          config: SHARED_CONFIG,
+        }
+      )
+    ).toMatchSnapshot()
+  })
 })
 
 describe("nestSpreadProperties", () => {
