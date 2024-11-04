@@ -48,7 +48,9 @@ import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
+  PaginationFirst,
   PaginationItem,
+  PaginationLast,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
@@ -58,6 +60,7 @@ import {
 ```tsx
 <Pagination>
   <PaginationContent>
+    <PaginationFirst href="#" />
     <PaginationItem>
       <PaginationPrevious href="#" />
     </PaginationItem>
@@ -70,6 +73,7 @@ import {
     <PaginationItem>
       <PaginationNext href="#" />
     </PaginationItem>
+    <PaginationLast href="#" />
   </PaginationContent>
 </Pagination>
 ```
