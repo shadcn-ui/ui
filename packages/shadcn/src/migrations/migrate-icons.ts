@@ -3,7 +3,6 @@ import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
 import { Config } from "@/src/utils/get-config"
-import { getPackageInfo } from "@/src/utils/get-package-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { getRegistryIcons } from "@/src/utils/registry"
@@ -39,25 +38,12 @@ export async function migrateIcons(config: Config) {
     throw new Error("Something went wrong fetching the registry icons.")
   }
 
-  const packageInfo = getPackageInfo(config.resolvedPaths.cwd)
-
-  const projectIconLibraries = packageInfo ? _getIconLibraries(packageInfo) : []
-
   const libraryChoices = Object.entries(iconLibraries).map(
     ([name, packageName]) => ({
       title: packageName,
       value: name,
     })
   )
-
-  let initialSourceLibrary = projectIconLibraries.includes(
-    "@radix-ui/react-icons"
-  )
-    ? libraryChoices.findIndex((choice) => choice.value === "radix")
-    : 0
-  let initialTargetLibrary = projectIconLibraries.includes("lucide-react")
-    ? libraryChoices.findIndex((choice) => choice.value === "lucide")
-    : 0
 
   const migrateOptions = await prompts([
     {
@@ -66,8 +52,8 @@ export async function migrateIcons(config: Config) {
       message: `Which icon library would you like to ${highlighter.info(
         "migrate from"
       )}?`,
-      choices: libraryChoices,
-      initial: initialSourceLibrary,
+      choices: [...libraryChoices].reverse(),
+      initial: 0,
     },
     {
       type: "select",
@@ -76,7 +62,7 @@ export async function migrateIcons(config: Config) {
         "migrate to"
       )}?`,
       choices: libraryChoices,
-      initial: initialTargetLibrary,
+      initial: 0,
     },
   ])
 
