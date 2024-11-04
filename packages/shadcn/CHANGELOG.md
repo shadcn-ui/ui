@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.1.5
+
+### Patch Changes
+
+- [#5707](https://github.com/shadcn-ui/ui/pull/5707) [`cdfecd1`](https://github.com/shadcn-ui/ui/commit/cdfecd1d97af2b4d9de330927edd9fd2eef1234e) Thanks [@shadcn](https://github.com/shadcn)! - temporarily bring back npm flag
+
 ## 2.1.4
 
 ### Patch Changes
