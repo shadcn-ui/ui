@@ -9,6 +9,11 @@ import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 
 const examples = [
   {
+    name: "Examples",
+    href: "/examples/cards",
+    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/mail",
+  },
+  {
     name: "Mail",
     href: "/examples/mail",
     code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/mail",
@@ -17,11 +22,6 @@ const examples = [
     name: "Dashboard",
     href: "/examples/dashboard",
     code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/dashboard",
-  },
-  {
-    name: "Cards",
-    href: "/examples/cards",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/cards",
   },
   {
     name: "Tasks",

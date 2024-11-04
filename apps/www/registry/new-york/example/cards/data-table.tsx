@@ -63,12 +63,6 @@ const data: Payment[] = [
     email: "Monserrat44@gmail.com",
   },
   {
-    id: "5kma53ae",
-    amount: 874,
-    status: "success",
-    email: "Silas22@gmail.com",
-  },
-  {
     id: "bhqecj4p",
     amount: 721,
     status: "failed",
@@ -205,7 +199,7 @@ export function CardsDataTable() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Payments</CardTitle>
+        <CardTitle className="text-xl">Payments</CardTitle>
         <CardDescription>Manage your payments.</CardDescription>
       </CardHeader>
       <CardContent>
