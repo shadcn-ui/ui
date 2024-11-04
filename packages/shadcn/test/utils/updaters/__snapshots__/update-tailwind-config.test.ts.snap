@@ -324,8 +324,14 @@ const config: Config = {
   theme: {
   	extend: {
   		fontFamily: {
-  			sans: ["var(--font-geist-sans)", ...fontFamily.sans],
-  			mono: ["var(--font-mono)", ...fontFamily.mono],
+  			sans: [
+  				'var(--font-geist-sans)',
+  				...fontFamily.sans
+  			],
+  			mono: [
+  				'var(--font-mono)',
+  				...fontFamily.mono
+  			],
   			heading: [
   				'var(--font-geist-sans)'
   			]
@@ -382,7 +388,10 @@ const config: Config = {
   theme: {
   	extend: {
   		fontFamily: {
-  			sans: ['Figtree', ...defaultTheme.fontFamily.sans]
+  			sans: [
+  				'Figtree',
+  				...defaultTheme.fontFamily.sans
+  			]
   		},
   		colors: {
                 ...defaultColors,
@@ -448,6 +457,12 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: [
+  				'ui-sans-serif',
+  				'sans-serif'
+  			]
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
