@@ -4,12 +4,6 @@ description: Beautiful charts. Built using Recharts. Copy and paste into your ap
 component: true
 ---
 
-<Callout className="mb-6">
-
-**Note:** If you are using charts with **React 19** or the **Next.js 15**, see the note [here](/docs/react-19#recharts).
-
-</Callout>
-
 <ComponentPreview
   name="chart-bar-interactive"
   className="-mt-4 [&_.preview]:p-0 [&_.preview]:border-t [&_.preview>div]:shadow-none [&_.preview>div]:border-none [&_.preview>div]:w-full [&_.preview]:lg:min-h-[404px]"
@@ -51,12 +45,6 @@ We do not wrap Recharts. This means you're not locked into an abstraction. When 
 
 ## Installation
 
-<Callout className="mt-4">
-
-**Note:** If you are using charts with **React 19** or the **Next.js 15**, see the note [here](/docs/react-19#recharts).
-
-</Callout>
-
 <Tabs defaultValue="cli">
 
 <TabsList>
@@ -93,6 +81,27 @@ npx shadcn@latest add chart
     --chart-5: 340 75% 55%;
   }
 }
+```
+
+<Step>
+  To use recharts with React 19 and Next.js 15, you will need to override the
+  `react-is` dependency.{" "}
+</Step>
+
+Add the following to your `package.json`
+
+```json title="package.json"
+"overrides": {
+  "react-is": "^19.0.0-rc-69d4b800-20241021"
+}
+```
+
+Note: the `react-is` version needs to match the version of React 19 you are using. The above is an example.
+
+<Step>Run `npm install`</Step>
+
+```bash
+npm install
 ```
 
 </Steps>
@@ -133,6 +142,27 @@ npm install recharts
     --chart-5: 340 75% 55%;
   }
 }
+```
+
+<Step>
+  To use recharts with React 19 and Next.js 15, you will need to override the
+  `react-is` dependency.{" "}
+</Step>
+
+Add the following to your `package.json`
+
+```json title="package.json"
+"overrides": {
+  "react-is": "^19.0.0-rc-69d4b800-20241021"
+}
+```
+
+Note: the `react-is` version needs to match the version of React 19 you are using. The above is an example.
+
+<Step>Run `npm install`</Step>
+
+```bash
+npm install
 ```
 
 </Steps>

@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
-import { ViewVerticalIcon } from "@radix-ui/react-icons"
+import { MenuIcon } from "lucide-react"
 
 import { docsConfig } from "@/config/docs"
 import { siteConfig } from "@/config/site"
@@ -21,36 +21,21 @@ export function MobileNav() {
       <SheetTrigger asChild>
         <Button
           variant="ghost"
-          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="-ml-2 mr-2 h-8 w-8 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
           <svg
-            strokeWidth="1.5"
-            viewBox="0 0 24 24"
-            fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="size-6"
           >
             <path
-              d="M3 5H11"
-              stroke="currentColor"
-              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-            ></path>
-            <path
-              d="M3 12H16"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></path>
-            <path
-              d="M3 19H21"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></path>
+              d="M3.75 9h16.5m-16.5 6.75h16.5"
+            />
           </svg>
           <span className="sr-only">Toggle Menu</span>
         </Button>
