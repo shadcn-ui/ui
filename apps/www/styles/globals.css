@@ -129,6 +129,16 @@
     content: "";
     @apply absolute -inset-4 shadow-xl rounded-xl border;
   }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
 
 @media (max-width: 640px) {
