@@ -1,11 +1,11 @@
 import { Config } from "@/src/utils/get-config"
-import { getPackageInfo } from "@/src/utils/get-package-info"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { logger } from "@/src/utils/logger"
 import { RegistryItem } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import prompts from "prompts"
 import { installDependencies } from "../package-manager-commands"
+import { getPackageInfo } from "../get-package-info"
 
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
@@ -53,6 +53,7 @@ export async function updateDependencies(
   }
 
   dependenciesSpinner?.start()
+
 
   await installDependencies({dependencies},{cwd: config.resolvedPaths.cwd})
 
