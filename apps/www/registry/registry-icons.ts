@@ -107,6 +107,10 @@ export const icons: Record<
     lucide: "MoreHorizontal",
     radix: "DotsHorizontalIcon",
   },
+  PanelLeft: {
+    lucide: "PanelLeft",
+    radix: "ViewVerticalIcon",
+  },
   Plus: {
     lucide: "Plus",
     radix: "PlusIcon",

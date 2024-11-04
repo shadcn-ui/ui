@@ -304,6 +304,18 @@ export const Icons = {
       }))
     ),
   },
+  PanelLeft: {
+    lucide: React.lazy(() =>
+      import("lucide-react").then((mod) => ({
+        default: mod.PanelLeft,
+      }))
+    ),
+    radix: React.lazy(() =>
+      import("@radix-ui/react-icons").then((mod) => ({
+        default: mod.ViewVerticalIcon,
+      }))
+    ),
+  },
   Plus: {
     lucide: React.lazy(() =>
       import("lucide-react").then((mod) => ({
