@@ -3,4 +3,4 @@
 "shadcn-ui": patch
 ---
 
-update icons handling
+move new-york icons to lucide-react
