@@ -1,15 +1,8 @@
 "use client"
 
 import * as React from "react"
-import {
-  CheckIcon,
-  CopyIcon,
-  InfoCircledIcon,
-  MoonIcon,
-  ResetIcon,
-  SunIcon,
-} from "@radix-ui/react-icons"
 import template from "lodash.template"
+import { Check, Copy, HelpCircle, Moon, Repeat, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
@@ -123,9 +116,7 @@ export function ThemeCustomizer() {
                             "flex h-5 w-5 items-center justify-center rounded-full bg-[--theme-primary]"
                           )}
                         >
-                          {isActive && (
-                            <CheckIcon className="h-4 w-4 text-white" />
-                          )}
+                          {isActive && <Check className="h-4 w-4 text-white" />}
                         </span>
                         <span className="sr-only">{baseColor.label}</span>
                       </button>
@@ -191,7 +182,7 @@ function Customizer() {
             })
           }}
         >
-          <ResetIcon />
+          <Repeat />
           <span className="sr-only">Reset</span>
         </Button>
       </div>
@@ -201,7 +192,7 @@ function Customizer() {
             <Label className="text-xs">Style</Label>
             <Popover>
               <PopoverTrigger>
-                <InfoCircledIcon className="ml-1 h-3 w-3" />
+                <HelpCircle className="ml-1 h-3 w-3" />
                 <span className="sr-only">About styles</span>
               </PopoverTrigger>
               <PopoverContent
@@ -287,7 +278,7 @@ function Customizer() {
                       "mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-[--theme-primary]"
                     )}
                   >
-                    {isActive && <CheckIcon className="h-4 w-4 text-white" />}
+                    {isActive && <Check className="h-4 w-4 text-white" />}
                   </span>
                   {theme.label}
                 </Button>
@@ -334,7 +325,7 @@ function Customizer() {
                   onClick={() => setMode("light")}
                   className={cn(mode === "light" && "border-2 border-primary")}
                 >
-                  <SunIcon className="mr-1 -translate-x-1" />
+                  <Sun className="mr-1 -translate-x-1" />
                   Light
                 </Button>
                 <Button
@@ -343,7 +334,7 @@ function Customizer() {
                   onClick={() => setMode("dark")}
                   className={cn(mode === "dark" && "border-2 border-primary")}
                 >
-                  <MoonIcon className="mr-1 -translate-x-1" />
+                  <Moon className="mr-1 -translate-x-1" />
                   Dark
                 </Button>
               </>
@@ -391,11 +382,7 @@ function CopyCodeButton({
           className={cn("md:hidden", className)}
           {...props}
         >
-          {hasCopied ? (
-            <CheckIcon className="mr-2 h-4 w-4" />
-          ) : (
-            <CopyIcon className="mr-2 h-4 w-4" />
-          )}
+          {hasCopied ? <Check /> : <Copy />}
           Copy code
         </Button>
       )}
@@ -432,11 +419,7 @@ function CopyCodeButton({
                 }}
                 className="absolute right-4 top-4 bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground"
               >
-                {hasCopied ? (
-                  <CheckIcon className="mr-2 h-4 w-4" />
-                ) : (
-                  <CopyIcon className="mr-2 h-4 w-4" />
-                )}
+                {hasCopied ? <Check /> : <Copy />}
                 Copy
               </Button>
             )}
