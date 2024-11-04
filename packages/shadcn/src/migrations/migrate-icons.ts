@@ -4,6 +4,7 @@ import { tmpdir } from "os"
 import path from "path"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
+import { ICON_LIBRARIES } from "@/src/utils/icon-libraries"
 import { logger } from "@/src/utils/logger"
 import { getRegistryIcons } from "@/src/utils/registry"
 import { iconsSchema } from "@/src/utils/registry/schema"
@@ -13,11 +14,6 @@ import prompts from "prompts"
 import { Project, ScriptKind, SyntaxKind } from "ts-morph"
 import { PackageJson } from "type-fest"
 import { z } from "zod"
-
-export const iconLibraries = {
-  lucide: "lucide-react",
-  radix: "@radix-ui/react-icons",
-}
 
 export async function migrateIcons(config: Config) {
   if (!config.resolvedPaths.ui) {
@@ -38,7 +34,7 @@ export async function migrateIcons(config: Config) {
     throw new Error("Something went wrong fetching the registry icons.")
   }
 
-  const libraryChoices = Object.entries(iconLibraries).map(
+  const libraryChoices = Object.entries(ICON_LIBRARIES).map(
     ([name, packageName]) => ({
       title: packageName,
       value: name,
@@ -74,17 +70,17 @@ export async function migrateIcons(config: Config) {
 
   if (
     !(
-      migrateOptions.sourceLibrary in iconLibraries &&
-      migrateOptions.targetLibrary in iconLibraries
+      migrateOptions.sourceLibrary in ICON_LIBRARIES &&
+      migrateOptions.targetLibrary in ICON_LIBRARIES
     )
   ) {
     throw new Error("Invalid icon library. Please choose a valid icon library.")
   }
 
   const sourceLibrary =
-    iconLibraries[migrateOptions.sourceLibrary as keyof typeof iconLibraries]
+    ICON_LIBRARIES[migrateOptions.sourceLibrary as keyof typeof ICON_LIBRARIES]
   const targetLibrary =
-    iconLibraries[migrateOptions.targetLibrary as keyof typeof iconLibraries]
+    ICON_LIBRARIES[migrateOptions.targetLibrary as keyof typeof ICON_LIBRARIES]
 
   const { confirm } = await prompts({
     type: "confirm",
@@ -129,12 +125,12 @@ export async function migrateIcons(config: Config) {
 
 export async function migrateIconsFile(
   content: string,
-  sourceLibrary: keyof typeof iconLibraries,
-  targetLibrary: keyof typeof iconLibraries,
+  sourceLibrary: keyof typeof ICON_LIBRARIES,
+  targetLibrary: keyof typeof ICON_LIBRARIES,
   iconsMapping: z.infer<typeof iconsSchema>
 ) {
-  const sourceLibraryName = iconLibraries[sourceLibrary]
-  const targetLibraryName = iconLibraries[targetLibrary]
+  const sourceLibraryName = ICON_LIBRARIES[sourceLibrary]
+  const targetLibraryName = ICON_LIBRARIES[targetLibrary]
 
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   const project = new Project({
@@ -177,13 +173,10 @@ export async function migrateIconsFile(
       specifier.remove()
 
       // Replace with the targeted icon.
-      const jsxElements = sourceFile.getDescendantsOfKind(
-        SyntaxKind.JsxSelfClosingElement
-      )
-      const iconElement = jsxElements.find(
-        (node) => node.getTagNameNode()?.getText() === iconName
-      )
-      iconElement?.getTagNameNode()?.replaceWithText(targetedIcon)
+      sourceFile
+        .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
+        .filter((node) => node.getTagNameNode()?.getText() === iconName)
+        .forEach((node) => node.getTagNameNode()?.replaceWithText(targetedIcon))
     }
 
     // If the named import is empty, remove the import declaration.
@@ -205,7 +198,7 @@ export async function migrateIconsFile(
 }
 
 function _getIconLibraries(packageInfo: PackageJson) {
-  return Object.values(iconLibraries).filter(
+  return Object.values(ICON_LIBRARIES).filter(
     (library) =>
       packageInfo.dependencies?.[library] ||
       packageInfo.devDependencies?.[library]
