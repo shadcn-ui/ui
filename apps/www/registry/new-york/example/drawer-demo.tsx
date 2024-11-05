@@ -1,5 +1,7 @@
+"use client"
+
 import * as React from "react"
-import { MinusIcon, PlusIcon } from "@radix-ui/react-icons"
+import { Minus, Plus } from "lucide-react"
 import { Bar, BarChart, ResponsiveContainer } from "recharts"
 
 import { Button } from "@/registry/new-york/ui/button"
@@ -83,7 +85,7 @@ export default function DrawerDemo() {
                 onClick={() => onClick(-10)}
                 disabled={goal <= 200}
               >
-                <MinusIcon className="h-4 w-4" />
+                <Minus />
                 <span className="sr-only">Decrease</span>
               </Button>
               <div className="flex-1 text-center">
@@ -101,7 +103,7 @@ export default function DrawerDemo() {
                 onClick={() => onClick(10)}
                 disabled={goal >= 400}
               >
-                <PlusIcon className="h-4 w-4" />
+                <Plus />
                 <span className="sr-only">Increase</span>
               </Button>
             </div>

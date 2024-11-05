@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, PlusIcon, SendIcon } from "lucide-react"
+import { Check, Plus, Send } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -118,7 +118,7 @@ export function CardsChat() {
                   className="ml-auto rounded-full"
                   onClick={() => setOpen(true)}
                 >
-                  <PlusIcon />
+                  <Plus />
                   <span className="sr-only">New message</span>
                 </Button>
               </TooltipTrigger>
@@ -168,7 +168,7 @@ export function CardsChat() {
               onChange={(event) => setInput(event.target.value)}
             />
             <Button type="submit" size="icon" disabled={inputLength === 0}>
-              <SendIcon className="h-4 w-4" />
+              <Send />
               <span className="sr-only">Send</span>
             </Button>
           </form>
@@ -221,7 +221,7 @@ export function CardsChat() {
                       </p>
                     </div>
                     {selectedUsers.includes(user) ? (
-                      <CheckIcon className="ml-auto flex h-5 w-5 text-primary" />
+                      <Check className="ml-auto flex h-5 w-5 text-primary" />
                     ) : null}
                   </CommandItem>
                 ))}

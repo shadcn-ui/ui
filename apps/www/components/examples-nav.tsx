@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
+import { ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
@@ -65,8 +65,7 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
               key={example.href}
               className={cn(
                 "flex h-7 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
-                pathname?.startsWith(example.href) ||
-                  (index === 0 && pathname === "/")
+                pathname?.startsWith(example.href)
                   ? "bg-muted font-medium text-primary"
                   : "text-muted-foreground"
               )}
@@ -100,7 +99,7 @@ export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
       className="absolute right-0 top-0 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
     >
       View code
-      <ArrowRightIcon className="ml-1 h-4 w-4" />
+      <ArrowRight className="ml-1 h-4 w-4" />
     </Link>
   )
 }

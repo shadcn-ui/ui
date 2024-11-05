@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CaretSortIcon } from "@radix-ui/react-icons"
+import { ChevronsUpDown } from "lucide-react"
 
 import { Button } from "@/registry/new-york/ui/button"
 import {
@@ -25,7 +25,7 @@ export default function CollapsibleDemo() {
         </h4>
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="sm">
-            <CaretSortIcon className="h-4 w-4" />
+            <ChevronsUpDown className="h-4 w-4" />
             <span className="sr-only">Toggle</span>
           </Button>
         </CollapsibleTrigger>

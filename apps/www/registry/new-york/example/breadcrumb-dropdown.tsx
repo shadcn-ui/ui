@@ -1,4 +1,4 @@
-import { ChevronDownIcon, SlashIcon } from "@radix-ui/react-icons"
+import { ChevronDown, Slash } from "lucide-react"
 
 import {
   Breadcrumb,
@@ -23,13 +23,13 @@ export default function BreadcrumbWithDropdown() {
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <Slash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1">
               Components
-              <ChevronDownIcon />
+              <ChevronDown />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuItem>Documentation</DropdownMenuItem>
@@ -39,7 +39,7 @@ export default function BreadcrumbWithDropdown() {
           </DropdownMenu>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <Slash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>

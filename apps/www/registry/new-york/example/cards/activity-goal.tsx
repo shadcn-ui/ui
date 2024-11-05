@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { MinusIcon, PlusIcon } from "lucide-react"
+import { Minus, Plus } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Bar, BarChart, ResponsiveContainer } from "recharts"
 
@@ -92,7 +92,7 @@ export function CardsActivityGoal() {
             onClick={() => onClick(-10)}
             disabled={goal <= 200}
           >
-            <MinusIcon />
+            <Minus />
             <span className="sr-only">Decrease</span>
           </Button>
           <div className="flex-1 text-center">
@@ -108,7 +108,7 @@ export function CardsActivityGoal() {
             onClick={() => onClick(10)}
             disabled={goal >= 400}
           >
-            <PlusIcon />
+            <Plus />
             <span className="sr-only">Increase</span>
           </Button>
         </div>
