@@ -846,7 +846,7 @@ export const Icons = {
   for (const [icon, libraries] of Object.entries(icons)) {
     index += `  "${icon}": {`
     for (const [library, componentName] of Object.entries(libraries)) {
-      const packageName = iconLibraries[library]
+      const packageName = iconLibraries[library].package
       if (packageName) {
         index += `
   ${library}: React.lazy(() => import("${packageName}").then(mod => ({

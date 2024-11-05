@@ -1,7 +1,7 @@
 import { ICON_LIBRARIES } from "@/src/utils/icon-libraries"
 import { getRegistryIcons } from "@/src/utils/registry"
 import { Transformer } from "@/src/utils/transformers"
-import { SyntaxKind } from "ts-morph"
+import { SourceFile, SyntaxKind } from "ts-morph"
 
 // Lucide is the default icon library in the registry.
 const SOURCE_LIBRARY = "lucide"
@@ -24,7 +24,7 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
   for (const importDeclaration of sourceFile.getImportDeclarations() ?? []) {
     if (
       importDeclaration.getModuleSpecifier()?.getText() !==
-      `"${ICON_LIBRARIES[SOURCE_LIBRARY]}"`
+      `"${ICON_LIBRARIES[SOURCE_LIBRARY].import}"`
     ) {
       continue
     }
@@ -34,7 +34,7 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
 
       const targetedIcon = registryIcons[iconName]?.[targetLibrary]
 
-      if (!targetedIcon) {
+      if (!targetedIcon || targetedIcons.includes(targetedIcon)) {
         continue
       }
 
@@ -57,14 +57,26 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
   }
 
   if (targetedIcons.length > 0) {
-    sourceFile.addImportDeclaration({
+    const iconImportDeclaration = sourceFile.addImportDeclaration({
       moduleSpecifier:
-        ICON_LIBRARIES[targetLibrary as keyof typeof ICON_LIBRARIES],
+        ICON_LIBRARIES[targetLibrary as keyof typeof ICON_LIBRARIES]?.import,
       namedImports: targetedIcons.map((icon) => ({
         name: icon,
       })),
     })
+
+    if (!_useSemicolon(sourceFile)) {
+      iconImportDeclaration.replaceWithText(
+        iconImportDeclaration.getText().replace(";", "")
+      )
+    }
   }
 
   return sourceFile
+}
+
+function _useSemicolon(sourceFile: SourceFile) {
+  return (
+    sourceFile.getImportDeclarations()?.[0]?.getText().endsWith(";") ?? false
+  )
 }

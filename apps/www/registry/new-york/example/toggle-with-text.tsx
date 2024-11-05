@@ -1,4 +1,4 @@
-import { Bold, Italic, Underline } from "lucide-react"
+import { Italic } from "lucide-react"
 
 import { Toggle } from "@/registry/new-york/ui/toggle"
 

@@ -1,6 +1,14 @@
 export const iconLibraries = {
-  lucide: "lucide-react",
-  radix: "@radix-ui/react-icons",
+  lucide: {
+    name: "lucide-react",
+    package: "lucide-react",
+    import: "lucide-react",
+  },
+  radix: {
+    name: "@radix-ui/react-icons",
+    package: "@radix-ui/react-icons",
+    import: "@radix-ui/react-icons",
+  },
 } as const
 
 export const icons: Record<

@@ -9,10 +9,10 @@ import { logger } from "@/src/utils/logger"
 import { getRegistryIcons } from "@/src/utils/registry"
 import { iconsSchema } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
+import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import fg from "fast-glob"
 import prompts from "prompts"
 import { Project, ScriptKind, SyntaxKind } from "ts-morph"
-import { PackageJson } from "type-fest"
 import { z } from "zod"
 
 export async function migrateIcons(config: Config) {
@@ -35,8 +35,8 @@ export async function migrateIcons(config: Config) {
   }
 
   const libraryChoices = Object.entries(ICON_LIBRARIES).map(
-    ([name, packageName]) => ({
-      title: packageName,
+    ([name, iconLibrary]) => ({
+      title: iconLibrary.name,
       value: name,
     })
   )
@@ -48,8 +48,7 @@ export async function migrateIcons(config: Config) {
       message: `Which icon library would you like to ${highlighter.info(
         "migrate from"
       )}?`,
-      choices: [...libraryChoices].reverse(),
-      initial: 0,
+      choices: libraryChoices,
     },
     {
       type: "select",
@@ -58,7 +57,6 @@ export async function migrateIcons(config: Config) {
         "migrate to"
       )}?`,
       choices: libraryChoices,
-      initial: 0,
     },
   ])
 
@@ -81,7 +79,6 @@ export async function migrateIcons(config: Config) {
     ICON_LIBRARIES[migrateOptions.sourceLibrary as keyof typeof ICON_LIBRARIES]
   const targetLibrary =
     ICON_LIBRARIES[migrateOptions.targetLibrary as keyof typeof ICON_LIBRARIES]
-
   const { confirm } = await prompts({
     type: "confirm",
     name: "confirm",
@@ -90,14 +87,20 @@ export async function migrateIcons(config: Config) {
       files.length
     )} files in ${highlighter.info(
       `./${path.relative(config.resolvedPaths.cwd, uiPath)}`
-    )} from ${highlighter.info(sourceLibrary)} to ${highlighter.info(
-      targetLibrary
+    )} from ${highlighter.info(sourceLibrary.name)} to ${highlighter.info(
+      targetLibrary.name
     )}. Continue?`,
   })
 
   if (!confirm) {
     logger.info("Migration cancelled.")
     process.exit(0)
+  }
+
+  if (targetLibrary.package) {
+    await updateDependencies([targetLibrary.package], config, {
+      silent: false,
+    })
   }
 
   const migrationSpinner = spinner(`Migrating icons...`)?.start()
@@ -129,8 +132,8 @@ export async function migrateIconsFile(
   targetLibrary: keyof typeof ICON_LIBRARIES,
   iconsMapping: z.infer<typeof iconsSchema>
 ) {
-  const sourceLibraryName = ICON_LIBRARIES[sourceLibrary]
-  const targetLibraryName = ICON_LIBRARIES[targetLibrary]
+  const sourceLibraryImport = ICON_LIBRARIES[sourceLibrary]?.import
+  const targetLibraryImport = ICON_LIBRARIES[targetLibrary]?.import
 
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   const project = new Project({
@@ -150,7 +153,7 @@ export async function migrateIconsFile(
   for (const importDeclaration of sourceFile.getImportDeclarations() ?? []) {
     if (
       importDeclaration.getModuleSpecifier()?.getText() !==
-      `"${sourceLibraryName}"`
+      `"${sourceLibraryImport}"`
     ) {
       continue
     }
@@ -163,7 +166,7 @@ export async function migrateIconsFile(
         (icon) => icon[sourceLibrary] === iconName
       )?.[targetLibrary]
 
-      if (!targetedIcon) {
+      if (!targetedIcon || targetedIcons.includes(targetedIcon)) {
         continue
       }
 
@@ -187,7 +190,7 @@ export async function migrateIconsFile(
 
   if (targetedIcons.length > 0) {
     sourceFile.addImportDeclaration({
-      moduleSpecifier: targetLibraryName,
+      moduleSpecifier: targetLibraryImport,
       namedImports: targetedIcons.map((icon) => ({
         name: icon,
       })),
@@ -195,12 +198,4 @@ export async function migrateIconsFile(
   }
 
   return await sourceFile.getText()
-}
-
-function _getIconLibraries(packageInfo: PackageJson) {
-  return Object.values(ICON_LIBRARIES).filter(
-    (library) =>
-      packageInfo.dependencies?.[library] ||
-      packageInfo.devDependencies?.[library]
-  )
 }

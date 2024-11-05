@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "example/toggle-with-text.tsx",
-      "content": "import { Bold, Italic, Underline } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/new-york/ui/toggle\"\n\nexport default function ToggleWithText() {\n  return (\n    <Toggle aria-label=\"Toggle italic\">\n      <Italic />\n      Italic\n    </Toggle>\n  )\n}\n",
+      "content": "import { Italic } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/new-york/ui/toggle\"\n\nexport default function ToggleWithText() {\n  return (\n    <Toggle aria-label=\"Toggle italic\">\n      <Italic />\n      Italic\n    </Toggle>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }
