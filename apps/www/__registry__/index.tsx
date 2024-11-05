@@ -1277,6 +1277,30 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "drawer-side": {
+      name: "drawer-side",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["drawer"],
+      files: ["registry/new-york/example/drawer-side.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/drawer-side.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "drawer-nested": {
+      name: "drawer-nested",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["drawer"],
+      files: ["registry/new-york/example/drawer-nested.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/drawer-nested.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "dropdown-menu-demo": {
       name: "dropdown-menu-demo",
       description: "",
@@ -5041,6 +5065,30 @@ export const Index: Record<string, any> = {
       registryDependencies: ["drawer","dialog"],
       files: ["registry/default/example/drawer-dialog.tsx"],
       component: React.lazy(() => import("@/registry/default/example/drawer-dialog.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "drawer-side": {
+      name: "drawer-side",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["drawer"],
+      files: ["registry/default/example/drawer-side.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/drawer-side.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "drawer-nested": {
+      name: "drawer-nested",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["drawer"],
+      files: ["registry/default/example/drawer-nested.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/drawer-nested.tsx")),
       source: "",
       category: "",
       subcategory: "",

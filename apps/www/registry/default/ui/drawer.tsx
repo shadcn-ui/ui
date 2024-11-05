@@ -1,18 +1,56 @@
 "use client"
 
 import * as React from "react"
+import { cva } from "class-variance-authority"
 import { Drawer as DrawerPrimitive } from "vaul"
 
 import { cn } from "@/lib/utils"
 
+type DrawerContextProps = {
+  direction: "left" | "right" | "top" | "bottom"
+}
+
+const DrawerContext = React.createContext<DrawerContextProps | null>(null)
+
+function useDrawer() {
+  const context = React.useContext(DrawerContext)
+
+  if (!context) {
+    throw new Error("useDrawer must be used within a <DrawerContainer />")
+  }
+
+  return context
+}
+
+const drawerVariants = cva(
+  "fixed z-50 flex h-auto flex-col border bg-background",
+  {
+    variants: {
+      direction: {
+        bottom: "bottom-0 mt-24 w-full rounded-t-[10px]",
+        left: "inset-y-0 left-0 w-fit rounded-r-[10px]",
+        right: "inset-y-0 right-0 w-fit rounded-l-[10px]",
+        top: "top-0",
+      },
+    },
+    defaultVariants: {
+      direction: "bottom",
+    },
+  }
+)
+
 const Drawer = ({
-  shouldScaleBackground = true,
+  shouldScaleBackground = false,
+  direction = "bottom",
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
-  <DrawerPrimitive.Root
-    shouldScaleBackground={shouldScaleBackground}
-    {...props}
-  />
+  <DrawerContext.Provider value={{ direction }}>
+    <DrawerPrimitive.Root
+      direction={direction}
+      shouldScaleBackground={shouldScaleBackground}
+      {...props}
+    />
+  </DrawerContext.Provider>
 )
 Drawer.displayName = "Drawer"
 
@@ -22,13 +60,23 @@ const DrawerPortal = DrawerPrimitive.Portal
 
 const DrawerClose = DrawerPrimitive.Close
 
+const DrawerNested = ({
+  shouldScaleBackground = false,
+  ...props
+}: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
+  <DrawerPrimitive.NestedRoot
+    shouldScaleBackground={shouldScaleBackground}
+    {...props}
+  />
+)
+
 const DrawerOverlay = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Overlay
     ref={ref}
-    className={cn("fixed inset-0 z-50 bg-black/80", className)}
+    className={cn("fixed inset-0 z-50 bg-black/50", className)}
     {...props}
   />
 ))
@@ -37,22 +85,25 @@ DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <DrawerPortal>
-    <DrawerOverlay />
-    <DrawerPrimitive.Content
-      ref={ref}
-      className={cn(
-        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
-        className
-      )}
-      {...props}
-    >
-      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
-      {children}
-    </DrawerPrimitive.Content>
-  </DrawerPortal>
-))
+>(({ className, children, ...props }, ref) => {
+  const { direction } = useDrawer()
+  return (
+    <DrawerPortal>
+      <DrawerOverlay />
+      <DrawerPrimitive.Content
+        ref={ref}
+        className={drawerVariants({ direction, className })}
+        {...props}
+      >
+        {direction === "bottom" ? (
+          <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
+        ) : null}
+        {children}
+      </DrawerPrimitive.Content>
+    </DrawerPortal>
+  )
+})
+
 DrawerContent.displayName = "DrawerContent"
 
 const DrawerHeader = ({
@@ -60,7 +111,7 @@ const DrawerHeader = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
+    className={cn("mt-4 grid gap-1.5 p-4 text-center sm:text-left", className)}
     {...props}
   />
 )
@@ -113,6 +164,7 @@ export {
   DrawerContent,
   DrawerHeader,
   DrawerFooter,
+  DrawerNested,
   DrawerTitle,
   DrawerDescription,
 }
