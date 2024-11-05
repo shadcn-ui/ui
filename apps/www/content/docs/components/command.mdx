@@ -137,6 +137,12 @@ export function CommandMenu() {
 
 You can use the `<Command />` component as a combobox. See the [Combobox](/docs/components/combobox) page for more information.
 
+## Troubleshooting
+
+If you use `<Command />` in `<Popover>` you need to add the properties `modal` to `<Popover>` to allow mouse interaction with Command list item that are openned in a portal outside the popover content.
+
+[Radix Popover docs](https://www.radix-ui.com/primitives/docs/components/popover#root)
+
 ## Changelog
 
 ### 2024-10-25 Classes for icons
