@@ -2,8 +2,14 @@
 
 import * as React from "react"
 import { Provider as JotaiProvider } from "jotai"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
+const NextThemesProvider = dynamic(
+	() => import('next-themes').then((e) => e.ThemeProvider),
+	{
+		ssr: false,
+	}
+)
 import { ThemeProviderProps } from "next-themes/dist/types"
+
 
 import { TooltipProvider } from "@/registry/new-york/ui/tooltip"
 
