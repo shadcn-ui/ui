@@ -32,7 +32,7 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
     for (const specifier of importDeclaration.getNamedImports() ?? []) {
       const iconName = specifier.getName()
 
-      const targetedIcon = registryIcons[iconName][targetLibrary]
+      const targetedIcon = registryIcons[iconName]?.[targetLibrary]
 
       if (!targetedIcon) {
         continue
