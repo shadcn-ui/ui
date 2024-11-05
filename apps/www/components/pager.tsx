@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
 import { Doc } from "contentlayer/generated"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { NavItem, NavItemWithChildren } from "types/nav"
 
 import { docsConfig } from "@/config/docs"
@@ -22,7 +22,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
       {pager?.prev?.href && (
         <Button variant="ghost" asChild>
           <Link href={pager.prev.href}>
-            <ChevronLeftIcon />
+            <ChevronLeft />
             {pager.prev.title}
           </Link>
         </Button>
@@ -31,7 +31,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
         <Button variant="ghost" className="ml-auto" asChild>
           <Link href={pager.next.href}>
             {pager.next.title}
-            <ChevronRightIcon />
+            <ChevronRight />
           </Link>
         </Button>
       )}

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: "All colors in all formats.",
 }
 
-export default function ChartsLayout({
+export default function ColorsLayout({
   children,
 }: {
   children: React.ReactNode
@@ -37,7 +37,7 @@ export default function ChartsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <section id="charts" className="scroll-mt-20">
+      <section id="colors" className="scroll-mt-20">
         {children}
       </section>
     </div>
