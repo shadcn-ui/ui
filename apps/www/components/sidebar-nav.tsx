@@ -51,7 +51,7 @@ export function DocsSidebarNavItems({
             key={index}
             href={item.href}
             className={cn(
-              "group flex w-full items-center px-2 py-1 font-normal text-foreground hover:underline underline-offset-2",
+              "group flex w-full items-center px-2 py-1 font-normal text-foreground underline-offset-2 hover:underline",
               item.disabled && "cursor-not-allowed opacity-60",
               pathname === item.href && "underline"
             )}
