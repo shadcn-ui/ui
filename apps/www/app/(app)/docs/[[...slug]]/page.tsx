@@ -4,7 +4,7 @@ import { allDocs } from "contentlayer/generated"
 import "@/styles/mdx.css"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons"
+import { ChevronRight, ExternalLink } from "lucide-react"
 import Balancer from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
@@ -92,7 +92,7 @@ export default async function DocPage({ params }: DocPageProps) {
       <div className="mx-auto w-full min-w-0 max-w-3xl">
         <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
           <div className="truncate">Docs</div>
-          <ChevronRightIcon className="h-3.5 w-3.5" />
+          <ChevronRight className="h-3.5 w-3.5" />
           <div className="text-foreground">{doc.title}</div>
         </div>
         <div className="space-y-2">
@@ -115,7 +115,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
                 Docs
-                <ExternalLinkIcon className="h-3 w-3" />
+                <ExternalLink className="h-3 w-3" />
               </Link>
             )}
             {doc.links?.api && (
@@ -126,7 +126,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
                 API Reference
-                <ExternalLinkIcon className="h-3 w-3" />
+                <ExternalLink className="h-3 w-3" />
               </Link>
             )}
           </div>

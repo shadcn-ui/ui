@@ -4,8 +4,7 @@
   "dependencies": [
     "tailwindcss-animate",
     "class-variance-authority",
-    "lucide-react",
-    "@radix-ui/react-icons"
+    "lucide-react"
   ],
   "registryDependencies": [
     "utils"
