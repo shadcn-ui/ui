@@ -85,7 +85,7 @@
     "swr": "2.2.6-beta.3",
     "tailwind-merge": "^1.12.0",
     "ts-morph": "^22.0.0",
-    "vaul": "0.9.0",
+    "vaul": "1.1.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
