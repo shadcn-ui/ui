@@ -3,22 +3,32 @@
 import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
-import { MenuIcon } from "lucide-react"
 
 import { docsConfig } from "@/config/docs"
-import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/new-york/ui/button"
-import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
-import { Sheet, SheetContent, SheetTrigger } from "@/registry/new-york/ui/sheet"
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/registry/new-york/ui/drawer"
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
+  const { setMetaColor, metaColor } = useMetaColor()
+
+  const onOpenChange = React.useCallback(
+    (open: boolean) => {
+      setOpen(open)
+      setMetaColor(open ? "#09090b" : metaColor)
+    },
+    [setMetaColor, metaColor]
+  )
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
+    <Drawer open={open} onOpenChange={onOpenChange}>
+      <DrawerTrigger asChild>
         <Button
           variant="ghost"
           className="-ml-2 mr-2 h-8 w-8 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
@@ -29,7 +39,7 @@ export function MobileNav() {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-6"
+            className="!size-6"
           >
             <path
               strokeLinecap="round"
@@ -39,17 +49,9 @@ export function MobileNav() {
           </svg>
           <span className="sr-only">Toggle Menu</span>
         </Button>
-      </SheetTrigger>
-      <SheetContent side="left" className="pr-0">
-        <MobileLink
-          href="/"
-          className="flex items-center"
-          onOpenChange={setOpen}
-        >
-          <Icons.logo className="mr-2 h-4 w-4" />
-          <span className="font-bold">{siteConfig.name}</span>
-        </MobileLink>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
+      </DrawerTrigger>
+      <DrawerContent className="max-h-[60svh] p-0">
+        <div className="overflow-auto p-6">
           <div className="flex flex-col space-y-3">
             {docsConfig.mainNav?.map(
               (item) =>
@@ -93,9 +95,9 @@ export function MobileNav() {
               </div>
             ))}
           </div>
-        </ScrollArea>
-      </SheetContent>
-    </Sheet>
+        </div>
+      </DrawerContent>
+    </Drawer>
   )
 }
 
@@ -120,7 +122,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn(className)}
+      className={cn("text-base", className)}
       {...props}
     >
       {children}

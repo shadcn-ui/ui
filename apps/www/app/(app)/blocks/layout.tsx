@@ -21,7 +21,7 @@ export default function BlocksLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="container relative">
+    <div className="relative">
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>Building Blocks for the Web</PageHeaderHeading>
@@ -42,9 +42,11 @@ export default function BlocksLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <section id="blocks" className="scroll-mt-24">
-        {children}
-      </section>
+      <div className="container py-6">
+        <section id="blocks" className="scroll-mt-24">
+          {children}
+        </section>
+      </div>
     </div>
   )
 }
