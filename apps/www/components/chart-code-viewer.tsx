@@ -3,7 +3,8 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { useThemesConfig } from "@/hooks/use-themes-config"
-import { BlockCopyButton } from "@/components/block-copy-button"
+import { ChartCopyButton } from "@/components/chart-copy-button"
+import { Chart } from "@/components/chart-display"
 import { V0Button } from "@/components/v0-button"
 import { Button } from "@/registry/new-york/ui/button"
 import {
@@ -18,13 +19,14 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
-import { Block } from "@/registry/schema"
 
 export function ChartCodeViewer({
   chart,
   className,
   children,
-}: { chart: Block } & React.ComponentProps<"div">) {
+}: {
+  chart: Chart
+} & React.ComponentProps<"div">) {
   const [tab, setTab] = React.useState("code")
   const { themesConfig } = useThemesConfig()
   const isDesktop = useMediaQuery("(min-width: 768px)")
@@ -85,10 +87,10 @@ ${Object.entries(themesConfig?.activeTheme.cssVars.dark || {})
           </TabsList>
           {tab === "code" && (
             <div className="ml-auto flex items-center justify-center gap-2">
-              <BlockCopyButton
+              <ChartCopyButton
                 event="copy_chart_code"
                 name={chart.name}
-                code={chart.code}
+                code={chart.files?.[0]?.content ?? ""}
               />
               <V0Button
                 id={`v0-button-${chart.name}`}
@@ -98,7 +100,7 @@ ${Object.entries(themesConfig?.activeTheme.cssVars.dark || {})
             </div>
           )}
           {tab === "theme" && (
-            <BlockCopyButton
+            <ChartCopyButton
               event="copy_chart_theme"
               name={chart.name}
               code={themeCode}

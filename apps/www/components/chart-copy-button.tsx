@@ -12,7 +12,7 @@ import {
   TooltipTrigger,
 } from "@/registry/new-york/ui/tooltip"
 
-export function BlockCopyButton({
+export function ChartCopyButton({
   event,
   name,
   code,
