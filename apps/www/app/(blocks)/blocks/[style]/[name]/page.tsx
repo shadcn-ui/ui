@@ -1,14 +1,20 @@
+import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { siteConfig } from "@/config/site"
-import { getAllBlockIds, getBlock } from "@/lib/blocks"
+import { getAllBlockIds } from "@/lib/blocks"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { BlockChunk } from "@/components/block-chunk"
-import { BlockWrapper } from "@/components/block-wrapper"
 import { Style, styles } from "@/registry/registry-styles"
 
 import "@/styles/mdx.css"
+import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
+
+const getCachedRegistryItem = React.cache(
+  async (name: string, style: Style["name"]) => {
+    return await getRegistryItem(name, style)
+  }
+)
 
 export async function generateMetadata({
   params,
@@ -19,23 +25,23 @@ export async function generateMetadata({
   }
 }): Promise<Metadata> {
   const { name, style } = params
-  const block = await getBlock(name, style)
+  const item = await getCachedRegistryItem(name, style)
 
-  if (!block) {
+  if (!item) {
     return {}
   }
 
-  const title = block.name
-  const description = block.description
+  const title = item.name
+  const description = item.description
 
   return {
-    title: `${block.description} - ${block.name}`,
+    title: `${item.name}${item.description ? ` - ${item.description}` : ""}`,
     description,
     openGraph: {
       title,
       description,
       type: "article",
-      url: absoluteUrl(`/blocks/${block.name}`),
+      url: absoluteUrl(`/blocks/${style}/${item.name}`),
       images: [
         {
           url: siteConfig.ogImage,
@@ -76,39 +82,22 @@ export default async function BlockPage({
   }
 }) {
   const { name, style } = params
-  const block = await getBlock(name, style)
+  const item = await getCachedRegistryItem(name, style)
+  const Component = getRegistryComponent(name, style)
 
-  if (!block) {
+  if (!item || !Component) {
     return notFound()
   }
 
-  const Component = block.component
-
-  const chunks = block.chunks?.map((chunk) => ({ ...chunk }))
-  delete block.component
-  block.chunks?.map((chunk) => delete chunk.component)
-
   return (
     <>
-      {/* <ThemesStyle /> */}
       <div
         className={cn(
           "themes-wrapper bg-background",
-          block.container?.className
+          item.meta?.containerClassName
         )}
       >
-        <BlockWrapper block={block}>
-          <Component />
-          {chunks?.map((chunk, index) => (
-            <BlockChunk
-              key={chunk.name}
-              block={block}
-              chunk={block.chunks?.[index]}
-            >
-              <chunk.component />
-            </BlockChunk>
-          ))}
-        </BlockWrapper>
+        <Component />
       </div>
     </>
   )

@@ -287,7 +287,20 @@ export const Index: Record<string, any> = {
       description: "${item.description ?? ""}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
-      files: [${resolveFiles.map((file) => `"${file}"`)}],
+      files: [${item.files?.map((file) => {
+        const resolvedFilePath = path.resolve(
+          `registry/${style.name}/${
+            typeof file === "string" ? file : file.path
+          }`
+        )
+        return typeof file === "string"
+          ? `"${resolvedFilePath}"`
+          : `{
+        path: "${resolvedFilePath}",
+        type: "${file.type}",
+        target: "${file.target ?? ""}"
+      }`
+      })}],
       component: React.lazy(() => import("${componentPath}")),
       source: "${sourceFilename}",
       category: "${item.category ?? ""}",
@@ -403,7 +416,7 @@ async function buildStyles(registry: Registry) {
             sourceFile.getVariableDeclaration("containerClassName")?.remove()
             sourceFile.getVariableDeclaration("description")?.remove()
 
-            let target = file.target
+            let target = file.target || ""
 
             if ((!target || target === "") && item.name.startsWith("v0-")) {
               const fileName = file.path.split("/").pop()
