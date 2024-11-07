@@ -87,7 +87,7 @@ export function CardsActivityGoal() {
             onClick={() => onClick(-10)}
             disabled={goal <= 200}
           >
-            <Minus className="h-4 w-4" />
+            <Minus />
             <span className="sr-only">Decrease</span>
           </Button>
           <div className="flex-1 text-center">
@@ -103,7 +103,7 @@ export function CardsActivityGoal() {
             onClick={() => onClick(10)}
             disabled={goal >= 400}
           >
-            <Plus className="h-4 w-4" />
+            <Plus />
             <span className="sr-only">Increase</span>
           </Button>
         </div>

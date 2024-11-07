@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDownIcon } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 
 import {
   Avatar,
@@ -53,8 +53,7 @@ export function CardsTeamMembers() {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" size="sm" className="ml-auto">
-                Owner{" "}
-                <ChevronDownIcon className="ml-2 h-4 w-4 text-muted-foreground" />
+                Owner <ChevronDown className="text-muted-foreground" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="p-0" align="end">
@@ -107,8 +106,7 @@ export function CardsTeamMembers() {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" size="sm" className="ml-auto">
-                Member{" "}
-                <ChevronDownIcon className="ml-2 h-4 w-4 text-muted-foreground" />
+                Member <ChevronDown className="text-muted-foreground" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="p-0" align="end">
@@ -163,8 +161,7 @@ export function CardsTeamMembers() {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" size="sm" className="ml-auto">
-                Member{" "}
-                <ChevronDownIcon className="ml-2 h-4 w-4 text-muted-foreground" />
+                Member <ChevronDown className="text-muted-foreground" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="p-0" align="end">

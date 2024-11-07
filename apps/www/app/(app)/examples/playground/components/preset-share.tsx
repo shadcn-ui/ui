@@ -1,4 +1,4 @@
-import { CopyIcon } from "@radix-ui/react-icons"
+import { Copy } from "lucide-react"
 
 import { Button } from "@/registry/new-york/ui/button"
 import { Input } from "@/registry/new-york/ui/input"
@@ -37,7 +37,7 @@ export function PresetShare() {
           </div>
           <Button type="submit" size="sm" className="px-3">
             <span className="sr-only">Copy</span>
-            <CopyIcon className="h-4 w-4" />
+            <Copy />
           </Button>
         </div>
       </PopoverContent>

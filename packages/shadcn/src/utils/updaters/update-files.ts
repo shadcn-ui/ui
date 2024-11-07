@@ -12,6 +12,7 @@ import { RegistryItem } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import { transform } from "@/src/utils/transformers"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
+import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
@@ -114,7 +115,13 @@ export async function updateFiles(
         baseColor,
         transformJsx: !config.tsx,
       },
-      [transformImport, transformRsc, transformCssVars, transformTwPrefixes]
+      [
+        transformImport,
+        transformRsc,
+        transformCssVars,
+        transformTwPrefixes,
+        transformIcons,
+      ]
     )
 
     await fs.writeFile(filePath, content, "utf-8")
