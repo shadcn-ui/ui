@@ -29,3 +29,27 @@ import { Foo } from "bar"
 "use client"
     "
 `;
+
+exports[`transform rsc 5`] = `
+"'use client'
+
+      import * as React from 'react'
+import { Foo } from 'bar'
+    "
+`;
+
+exports[`transform rsc 6`] = `
+"import * as React from 'react'
+import { Foo } from 'bar'
+    "
+`;
+
+exports[`transform rsc 7`] = `
+"'use foo'
+
+      import * as React from 'react'
+import { Foo } from 'bar'
+
+'use client'
+    "
+`;

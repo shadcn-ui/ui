@@ -10,5 +10,6 @@
   "aliases": {
     "utils": "@/lib/utils",
     "components": "@/components"
-  }
+  },
+  "iconLibrary": "radix"
 }

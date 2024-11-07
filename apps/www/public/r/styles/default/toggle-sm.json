@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/toggle-sm.tsx",
-      "content": "import { Italic } from \"lucide-react\"\n\nimport { Toggle } from \"@/components/ui/toggle\"\n\nexport default function ToggleSm() {\n  return (\n    <Toggle size=\"sm\" aria-label=\"Toggle italic\">\n      <Italic className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n",
+      "content": "import { Italic } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/default/ui/toggle\"\n\nexport default function ToggleSm() {\n  return (\n    <Toggle size=\"sm\" aria-label=\"Toggle italic\">\n      <Italic className=\"h-4 w-4\" />\n    </Toggle>\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/toggle-sm.tsx"
+      "target": ""
     }
   ]
 }
