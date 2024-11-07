@@ -11,7 +11,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/accordion.tsx",
+        path: "registry/new-york/ui/accordion.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -27,7 +27,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/alert.tsx",
+        path: "registry/new-york/ui/alert.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -43,7 +43,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/alert-dialog.tsx",
+        path: "registry/new-york/ui/alert-dialog.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -59,7 +59,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/aspect-ratio.tsx",
+        path: "registry/new-york/ui/aspect-ratio.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -75,7 +75,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/avatar.tsx",
+        path: "registry/new-york/ui/avatar.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -91,7 +91,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/badge.tsx",
+        path: "registry/new-york/ui/badge.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -107,7 +107,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/breadcrumb.tsx",
+        path: "registry/new-york/ui/breadcrumb.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -123,7 +123,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/button.tsx",
+        path: "registry/new-york/ui/button.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -139,7 +139,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/calendar.tsx",
+        path: "registry/new-york/ui/calendar.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -155,7 +155,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/card.tsx",
+        path: "registry/new-york/ui/card.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -171,7 +171,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/carousel.tsx",
+        path: "registry/new-york/ui/carousel.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -187,7 +187,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["card"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/chart.tsx",
+        path: "registry/new-york/ui/chart.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -203,7 +203,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/checkbox.tsx",
+        path: "registry/new-york/ui/checkbox.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -219,7 +219,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/collapsible.tsx",
+        path: "registry/new-york/ui/collapsible.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -235,7 +235,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/command.tsx",
+        path: "registry/new-york/ui/command.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -251,7 +251,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/context-menu.tsx",
+        path: "registry/new-york/ui/context-menu.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -267,7 +267,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/dialog.tsx",
+        path: "registry/new-york/ui/dialog.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -283,7 +283,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/drawer.tsx",
+        path: "registry/new-york/ui/drawer.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -299,7 +299,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/dropdown-menu.tsx",
+        path: "registry/new-york/ui/dropdown-menu.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -315,7 +315,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/form.tsx",
+        path: "registry/new-york/ui/form.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -331,7 +331,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/hover-card.tsx",
+        path: "registry/new-york/ui/hover-card.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -347,7 +347,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/input.tsx",
+        path: "registry/new-york/ui/input.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -363,7 +363,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/input-otp.tsx",
+        path: "registry/new-york/ui/input-otp.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -379,7 +379,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/label.tsx",
+        path: "registry/new-york/ui/label.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -395,7 +395,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/menubar.tsx",
+        path: "registry/new-york/ui/menubar.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -411,7 +411,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/navigation-menu.tsx",
+        path: "registry/new-york/ui/navigation-menu.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -427,7 +427,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/pagination.tsx",
+        path: "registry/new-york/ui/pagination.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -443,7 +443,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/popover.tsx",
+        path: "registry/new-york/ui/popover.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -459,7 +459,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/progress.tsx",
+        path: "registry/new-york/ui/progress.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -475,7 +475,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/radio-group.tsx",
+        path: "registry/new-york/ui/radio-group.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -491,7 +491,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/resizable.tsx",
+        path: "registry/new-york/ui/resizable.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -507,7 +507,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/scroll-area.tsx",
+        path: "registry/new-york/ui/scroll-area.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -523,7 +523,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/select.tsx",
+        path: "registry/new-york/ui/select.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -539,7 +539,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/separator.tsx",
+        path: "registry/new-york/ui/separator.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -555,7 +555,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/sheet.tsx",
+        path: "registry/new-york/ui/sheet.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -571,7 +571,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/sidebar.tsx",
+        path: "registry/new-york/ui/sidebar.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -587,7 +587,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/skeleton.tsx",
+        path: "registry/new-york/ui/skeleton.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -603,7 +603,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/slider.tsx",
+        path: "registry/new-york/ui/slider.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -619,7 +619,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/sonner.tsx",
+        path: "registry/new-york/ui/sonner.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -635,7 +635,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/switch.tsx",
+        path: "registry/new-york/ui/switch.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -651,7 +651,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/table.tsx",
+        path: "registry/new-york/ui/table.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -667,7 +667,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/tabs.tsx",
+        path: "registry/new-york/ui/tabs.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -683,7 +683,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/textarea.tsx",
+        path: "registry/new-york/ui/textarea.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -699,15 +699,15 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/toast.tsx",
+        path: "registry/new-york/ui/toast.tsx",
         type: "registry:ui",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/hooks/use-toast.ts",
+        path: "registry/new-york/hooks/use-toast.ts",
         type: "registry:hook",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/toaster.tsx",
+        path: "registry/new-york/ui/toaster.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -723,7 +723,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/toggle.tsx",
+        path: "registry/new-york/ui/toggle.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -739,7 +739,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/toggle-group.tsx",
+        path: "registry/new-york/ui/toggle-group.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -755,7 +755,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/ui/tooltip.tsx",
+        path: "registry/new-york/ui/tooltip.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -771,7 +771,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["accordion"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/accordion-demo.tsx",
+        path: "registry/new-york/example/accordion-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -787,7 +787,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["alert"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/alert-demo.tsx",
+        path: "registry/new-york/example/alert-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -803,7 +803,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["alert"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/alert-destructive.tsx",
+        path: "registry/new-york/example/alert-destructive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -819,7 +819,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["alert-dialog","button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/alert-dialog-demo.tsx",
+        path: "registry/new-york/example/alert-dialog-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -835,7 +835,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["aspect-ratio"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/aspect-ratio-demo.tsx",
+        path: "registry/new-york/example/aspect-ratio-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -851,7 +851,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/avatar-demo.tsx",
+        path: "registry/new-york/example/avatar-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -867,7 +867,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["badge"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/badge-demo.tsx",
+        path: "registry/new-york/example/badge-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -883,7 +883,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["badge"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/badge-destructive.tsx",
+        path: "registry/new-york/example/badge-destructive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -899,7 +899,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["badge"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/badge-outline.tsx",
+        path: "registry/new-york/example/badge-outline.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -915,7 +915,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["badge"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/badge-secondary.tsx",
+        path: "registry/new-york/example/badge-secondary.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -931,7 +931,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/breadcrumb-demo.tsx",
+        path: "registry/new-york/example/breadcrumb-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -947,7 +947,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/breadcrumb-separator.tsx",
+        path: "registry/new-york/example/breadcrumb-separator.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -963,7 +963,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/breadcrumb-dropdown.tsx",
+        path: "registry/new-york/example/breadcrumb-dropdown.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -979,7 +979,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/breadcrumb-ellipsis.tsx",
+        path: "registry/new-york/example/breadcrumb-ellipsis.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -995,7 +995,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/breadcrumb-link.tsx",
+        path: "registry/new-york/example/breadcrumb-link.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1011,7 +1011,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/breadcrumb-responsive.tsx",
+        path: "registry/new-york/example/breadcrumb-responsive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1027,7 +1027,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/button-demo.tsx",
+        path: "registry/new-york/example/button-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1043,7 +1043,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/button-secondary.tsx",
+        path: "registry/new-york/example/button-secondary.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1059,7 +1059,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/button-destructive.tsx",
+        path: "registry/new-york/example/button-destructive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1075,7 +1075,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/button-outline.tsx",
+        path: "registry/new-york/example/button-outline.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1091,7 +1091,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/button-ghost.tsx",
+        path: "registry/new-york/example/button-ghost.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1107,7 +1107,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/button-link.tsx",
+        path: "registry/new-york/example/button-link.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1123,7 +1123,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/button-with-icon.tsx",
+        path: "registry/new-york/example/button-with-icon.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1139,7 +1139,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/button-loading.tsx",
+        path: "registry/new-york/example/button-loading.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1155,7 +1155,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/button-icon.tsx",
+        path: "registry/new-york/example/button-icon.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1171,7 +1171,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/button-as-child.tsx",
+        path: "registry/new-york/example/button-as-child.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1187,7 +1187,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["calendar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/calendar-demo.tsx",
+        path: "registry/new-york/example/calendar-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1203,7 +1203,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["calendar","form","popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/calendar-form.tsx",
+        path: "registry/new-york/example/calendar-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1219,7 +1219,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["card","button","switch"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/card-demo.tsx",
+        path: "registry/new-york/example/card-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1235,7 +1235,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button","card","input","label","select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/card-with-form.tsx",
+        path: "registry/new-york/example/card-with-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1251,7 +1251,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/carousel-demo.tsx",
+        path: "registry/new-york/example/carousel-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1267,7 +1267,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/carousel-size.tsx",
+        path: "registry/new-york/example/carousel-size.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1283,7 +1283,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/carousel-spacing.tsx",
+        path: "registry/new-york/example/carousel-spacing.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1299,7 +1299,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/carousel-orientation.tsx",
+        path: "registry/new-york/example/carousel-orientation.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1315,7 +1315,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/carousel-api.tsx",
+        path: "registry/new-york/example/carousel-api.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1331,7 +1331,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/carousel-plugin.tsx",
+        path: "registry/new-york/example/carousel-plugin.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1347,7 +1347,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["checkbox"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/checkbox-demo.tsx",
+        path: "registry/new-york/example/checkbox-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1363,7 +1363,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["checkbox"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/checkbox-disabled.tsx",
+        path: "registry/new-york/example/checkbox-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["checkbox","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/checkbox-form-multiple.tsx",
+        path: "registry/new-york/example/checkbox-form-multiple.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1395,7 +1395,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["checkbox","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/checkbox-form-single.tsx",
+        path: "registry/new-york/example/checkbox-form-single.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1411,7 +1411,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["checkbox"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/checkbox-with-text.tsx",
+        path: "registry/new-york/example/checkbox-with-text.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1427,7 +1427,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["collapsible"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/collapsible-demo.tsx",
+        path: "registry/new-york/example/collapsible-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1443,7 +1443,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["command"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/combobox-demo.tsx",
+        path: "registry/new-york/example/combobox-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1459,7 +1459,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["command","dropdown-menu","button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/combobox-dropdown-menu.tsx",
+        path: "registry/new-york/example/combobox-dropdown-menu.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1475,7 +1475,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["command","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/combobox-form.tsx",
+        path: "registry/new-york/example/combobox-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1491,7 +1491,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["combobox","popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/combobox-popover.tsx",
+        path: "registry/new-york/example/combobox-popover.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1507,7 +1507,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["combobox","popover","drawer"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/combobox-responsive.tsx",
+        path: "registry/new-york/example/combobox-responsive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1523,7 +1523,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["command"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/command-demo.tsx",
+        path: "registry/new-york/example/command-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1539,7 +1539,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["command","dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/command-dialog.tsx",
+        path: "registry/new-york/example/command-dialog.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1555,7 +1555,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["context-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/context-menu-demo.tsx",
+        path: "registry/new-york/example/context-menu-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1571,7 +1571,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["data-table"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/data-table-demo.tsx",
+        path: "registry/new-york/example/data-table-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1587,7 +1587,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button","calendar","popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/date-picker-demo.tsx",
+        path: "registry/new-york/example/date-picker-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1603,7 +1603,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button","calendar","form","popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/date-picker-form.tsx",
+        path: "registry/new-york/example/date-picker-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1619,7 +1619,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button","calendar","popover","select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/date-picker-with-presets.tsx",
+        path: "registry/new-york/example/date-picker-with-presets.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1635,7 +1635,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button","calendar","popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/date-picker-with-range.tsx",
+        path: "registry/new-york/example/date-picker-with-range.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1651,7 +1651,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/dialog-demo.tsx",
+        path: "registry/new-york/example/dialog-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1667,7 +1667,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["dialog","button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/dialog-close-button.tsx",
+        path: "registry/new-york/example/dialog-close-button.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1683,7 +1683,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["drawer"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/drawer-demo.tsx",
+        path: "registry/new-york/example/drawer-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1699,7 +1699,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["drawer","dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/drawer-dialog.tsx",
+        path: "registry/new-york/example/drawer-dialog.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1715,7 +1715,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/dropdown-menu-demo.tsx",
+        path: "registry/new-york/example/dropdown-menu-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1731,7 +1731,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["dropdown-menu","checkbox"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/dropdown-menu-checkboxes.tsx",
+        path: "registry/new-york/example/dropdown-menu-checkboxes.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1747,7 +1747,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["dropdown-menu","radio-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/dropdown-menu-radio-group.tsx",
+        path: "registry/new-york/example/dropdown-menu-radio-group.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1763,7 +1763,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["hover-card"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/hover-card-demo.tsx",
+        path: "registry/new-york/example/hover-card-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1779,7 +1779,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-demo.tsx",
+        path: "registry/new-york/example/input-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1795,7 +1795,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-disabled.tsx",
+        path: "registry/new-york/example/input-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1811,7 +1811,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-file.tsx",
+        path: "registry/new-york/example/input-file.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1827,7 +1827,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input","button","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-form.tsx",
+        path: "registry/new-york/example/input-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1843,7 +1843,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input","button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-with-button.tsx",
+        path: "registry/new-york/example/input-with-button.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1859,7 +1859,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input","button","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-with-label.tsx",
+        path: "registry/new-york/example/input-with-label.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1875,7 +1875,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input","button","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-with-text.tsx",
+        path: "registry/new-york/example/input-with-text.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1891,7 +1891,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input-otp"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-otp-demo.tsx",
+        path: "registry/new-york/example/input-otp-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1907,7 +1907,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input-otp"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-otp-pattern.tsx",
+        path: "registry/new-york/example/input-otp-pattern.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1923,7 +1923,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input-otp"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-otp-separator.tsx",
+        path: "registry/new-york/example/input-otp-separator.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1939,7 +1939,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input-otp"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-otp-controlled.tsx",
+        path: "registry/new-york/example/input-otp-controlled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1955,7 +1955,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input-otp","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/input-otp-form.tsx",
+        path: "registry/new-york/example/input-otp-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1971,7 +1971,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/label-demo.tsx",
+        path: "registry/new-york/example/label-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -1987,7 +1987,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["menubar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/menubar-demo.tsx",
+        path: "registry/new-york/example/menubar-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2003,7 +2003,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["navigation-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/navigation-menu-demo.tsx",
+        path: "registry/new-york/example/navigation-menu-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2019,7 +2019,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["pagination"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/pagination-demo.tsx",
+        path: "registry/new-york/example/pagination-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2035,7 +2035,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/popover-demo.tsx",
+        path: "registry/new-york/example/popover-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2051,7 +2051,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["progress"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/progress-demo.tsx",
+        path: "registry/new-york/example/progress-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2067,7 +2067,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["radio-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/radio-group-demo.tsx",
+        path: "registry/new-york/example/radio-group-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2083,7 +2083,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["radio-group","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/radio-group-form.tsx",
+        path: "registry/new-york/example/radio-group-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2099,7 +2099,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["resizable"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/resizable-demo.tsx",
+        path: "registry/new-york/example/resizable-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2115,7 +2115,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["resizable"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/resizable-demo-with-handle.tsx",
+        path: "registry/new-york/example/resizable-demo-with-handle.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2131,7 +2131,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["resizable"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/resizable-vertical.tsx",
+        path: "registry/new-york/example/resizable-vertical.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2147,7 +2147,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["resizable"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/resizable-handle.tsx",
+        path: "registry/new-york/example/resizable-handle.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2163,7 +2163,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["scroll-area"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/scroll-area-demo.tsx",
+        path: "registry/new-york/example/scroll-area-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2179,7 +2179,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["scroll-area"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/scroll-area-horizontal-demo.tsx",
+        path: "registry/new-york/example/scroll-area-horizontal-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2195,7 +2195,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/select-demo.tsx",
+        path: "registry/new-york/example/select-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2211,7 +2211,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/select-scrollable.tsx",
+        path: "registry/new-york/example/select-scrollable.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2227,7 +2227,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/select-form.tsx",
+        path: "registry/new-york/example/select-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2243,7 +2243,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["separator"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/separator-demo.tsx",
+        path: "registry/new-york/example/separator-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2259,7 +2259,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["sheet"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/sheet-demo.tsx",
+        path: "registry/new-york/example/sheet-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2275,7 +2275,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["sheet"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/sheet-side.tsx",
+        path: "registry/new-york/example/sheet-side.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2291,7 +2291,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["skeleton"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/skeleton-demo.tsx",
+        path: "registry/new-york/example/skeleton-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2307,7 +2307,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["skeleton"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/skeleton-card.tsx",
+        path: "registry/new-york/example/skeleton-card.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2323,7 +2323,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["slider"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/slider-demo.tsx",
+        path: "registry/new-york/example/slider-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2339,7 +2339,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["sonner"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/sonner-demo.tsx",
+        path: "registry/new-york/example/sonner-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2355,7 +2355,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["switch"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/switch-demo.tsx",
+        path: "registry/new-york/example/switch-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2371,7 +2371,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["switch","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/switch-form.tsx",
+        path: "registry/new-york/example/switch-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2387,7 +2387,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["table"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/table-demo.tsx",
+        path: "registry/new-york/example/table-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2403,7 +2403,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["tabs"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/tabs-demo.tsx",
+        path: "registry/new-york/example/tabs-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2419,7 +2419,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/textarea-demo.tsx",
+        path: "registry/new-york/example/textarea-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2435,7 +2435,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/textarea-disabled.tsx",
+        path: "registry/new-york/example/textarea-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2451,7 +2451,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/textarea-form.tsx",
+        path: "registry/new-york/example/textarea-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2467,7 +2467,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea","button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/textarea-with-button.tsx",
+        path: "registry/new-york/example/textarea-with-button.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2483,7 +2483,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/textarea-with-label.tsx",
+        path: "registry/new-york/example/textarea-with-label.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2499,7 +2499,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/textarea-with-text.tsx",
+        path: "registry/new-york/example/textarea-with-text.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2515,7 +2515,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toast"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toast-demo.tsx",
+        path: "registry/new-york/example/toast-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2531,7 +2531,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toast"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toast-destructive.tsx",
+        path: "registry/new-york/example/toast-destructive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2547,7 +2547,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toast"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toast-simple.tsx",
+        path: "registry/new-york/example/toast-simple.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2563,7 +2563,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toast"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toast-with-action.tsx",
+        path: "registry/new-york/example/toast-with-action.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2579,7 +2579,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toast"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toast-with-title.tsx",
+        path: "registry/new-york/example/toast-with-title.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2595,7 +2595,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-group-demo.tsx",
+        path: "registry/new-york/example/toggle-group-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2611,7 +2611,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-group-disabled.tsx",
+        path: "registry/new-york/example/toggle-group-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2627,7 +2627,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-group-lg.tsx",
+        path: "registry/new-york/example/toggle-group-lg.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2643,7 +2643,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-group-outline.tsx",
+        path: "registry/new-york/example/toggle-group-outline.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2659,7 +2659,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-group-sm.tsx",
+        path: "registry/new-york/example/toggle-group-sm.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2675,7 +2675,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-group-single.tsx",
+        path: "registry/new-york/example/toggle-group-single.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2691,7 +2691,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-demo.tsx",
+        path: "registry/new-york/example/toggle-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2707,7 +2707,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-disabled.tsx",
+        path: "registry/new-york/example/toggle-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2723,7 +2723,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-lg.tsx",
+        path: "registry/new-york/example/toggle-lg.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2739,7 +2739,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-outline.tsx",
+        path: "registry/new-york/example/toggle-outline.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2755,7 +2755,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-sm.tsx",
+        path: "registry/new-york/example/toggle-sm.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2771,7 +2771,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/toggle-with-text.tsx",
+        path: "registry/new-york/example/toggle-with-text.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2787,7 +2787,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["tooltip"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/tooltip-demo.tsx",
+        path: "registry/new-york/example/tooltip-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2803,7 +2803,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-blockquote.tsx",
+        path: "registry/new-york/example/typography-blockquote.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2819,7 +2819,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-demo.tsx",
+        path: "registry/new-york/example/typography-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2835,7 +2835,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-h1.tsx",
+        path: "registry/new-york/example/typography-h1.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2851,7 +2851,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-h2.tsx",
+        path: "registry/new-york/example/typography-h2.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2867,7 +2867,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-h3.tsx",
+        path: "registry/new-york/example/typography-h3.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2883,7 +2883,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-h4.tsx",
+        path: "registry/new-york/example/typography-h4.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2899,7 +2899,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-inline-code.tsx",
+        path: "registry/new-york/example/typography-inline-code.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2915,7 +2915,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-large.tsx",
+        path: "registry/new-york/example/typography-large.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2931,7 +2931,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-lead.tsx",
+        path: "registry/new-york/example/typography-lead.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2947,7 +2947,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-list.tsx",
+        path: "registry/new-york/example/typography-list.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2963,7 +2963,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-muted.tsx",
+        path: "registry/new-york/example/typography-muted.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2979,7 +2979,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-p.tsx",
+        path: "registry/new-york/example/typography-p.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -2995,7 +2995,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-small.tsx",
+        path: "registry/new-york/example/typography-small.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -3011,7 +3011,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/typography-table.tsx",
+        path: "registry/new-york/example/typography-table.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -3027,7 +3027,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/mode-toggle.tsx",
+        path: "registry/new-york/example/mode-toggle.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -3043,7 +3043,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/chart-bar-demo.tsx",
+        path: "registry/new-york/example/chart-bar-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -3059,7 +3059,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/chart-bar-demo-grid.tsx",
+        path: "registry/new-york/example/chart-bar-demo-grid.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -3075,7 +3075,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/chart-bar-demo-axis.tsx",
+        path: "registry/new-york/example/chart-bar-demo-axis.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -3091,7 +3091,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/chart-bar-demo-tooltip.tsx",
+        path: "registry/new-york/example/chart-bar-demo-tooltip.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -3107,7 +3107,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/chart-bar-demo-legend.tsx",
+        path: "registry/new-york/example/chart-bar-demo-legend.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -3123,7 +3123,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/example/chart-tooltip-demo.tsx",
+        path: "registry/new-york/example/chart-tooltip-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -3139,7 +3139,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar.tsx",
+        path: "registry/new-york/block/demo-sidebar.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3155,7 +3155,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-header.tsx",
+        path: "registry/new-york/block/demo-sidebar-header.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3171,7 +3171,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-footer.tsx",
+        path: "registry/new-york/block/demo-sidebar-footer.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3187,7 +3187,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-group.tsx",
+        path: "registry/new-york/block/demo-sidebar-group.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3203,7 +3203,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-group-collapsible.tsx",
+        path: "registry/new-york/block/demo-sidebar-group-collapsible.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3219,7 +3219,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-group-action.tsx",
+        path: "registry/new-york/block/demo-sidebar-group-action.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3235,7 +3235,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-menu.tsx",
+        path: "registry/new-york/block/demo-sidebar-menu.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3251,7 +3251,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-menu-action.tsx",
+        path: "registry/new-york/block/demo-sidebar-menu-action.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3267,7 +3267,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-menu-sub.tsx",
+        path: "registry/new-york/block/demo-sidebar-menu-sub.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3283,7 +3283,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-menu-collapsible.tsx",
+        path: "registry/new-york/block/demo-sidebar-menu-collapsible.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3299,7 +3299,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-menu-badge.tsx",
+        path: "registry/new-york/block/demo-sidebar-menu-badge.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3315,7 +3315,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-rsc.tsx",
+        path: "registry/new-york/block/demo-sidebar-rsc.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3331,7 +3331,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/demo-sidebar-controlled.tsx",
+        path: "registry/new-york/block/demo-sidebar-controlled.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3347,267 +3347,267 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["accordion","alert","alert-dialog","aspect-ratio","avatar","badge","breadcrumb","button","calendar","card","carousel","chart","checkbox","collapsible","command","context-menu","dialog","drawer","dropdown-menu","hover-card","input","input-otp","label","menubar","navigation-menu","pagination","popover","progress","radio-group","resizable","scroll-area","select","separator","sheet","sidebar","skeleton","slider","sonner","switch","table","tabs","textarea","toast","toggle","toggle-group","tooltip"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/page.tsx",
+        path: "registry/new-york/block/_sink/page.tsx",
         type: "registry:page",
         target: "app/sink/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/app-sidebar.tsx",
+        path: "registry/new-york/block/_sink/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/component-wrapper.tsx",
+        path: "registry/new-york/block/_sink/components/component-wrapper.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/nav-main.tsx",
+        path: "registry/new-york/block/_sink/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/nav-projects.tsx",
+        path: "registry/new-york/block/_sink/components/nav-projects.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/nav-user.tsx",
+        path: "registry/new-york/block/_sink/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/team-switcher.tsx",
+        path: "registry/new-york/block/_sink/components/team-switcher.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/accordion-demo.tsx",
+        path: "registry/new-york/block/_sink/components/accordion-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/alert-demo.tsx",
+        path: "registry/new-york/block/_sink/components/alert-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/alert-dialog-demo.tsx",
+        path: "registry/new-york/block/_sink/components/alert-dialog-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/aspect-ratio-demo.tsx",
+        path: "registry/new-york/block/_sink/components/aspect-ratio-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/avatar-demo.tsx",
+        path: "registry/new-york/block/_sink/components/avatar-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/badge-demo.tsx",
+        path: "registry/new-york/block/_sink/components/badge-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/breadcrumb-demo.tsx",
+        path: "registry/new-york/block/_sink/components/breadcrumb-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/button-demo.tsx",
+        path: "registry/new-york/block/_sink/components/button-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/calendar-demo.tsx",
+        path: "registry/new-york/block/_sink/components/calendar-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/card-demo.tsx",
+        path: "registry/new-york/block/_sink/components/card-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/carousel-demo.tsx",
+        path: "registry/new-york/block/_sink/components/carousel-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/checkbox-demo.tsx",
+        path: "registry/new-york/block/_sink/components/checkbox-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/collapsible-demo.tsx",
+        path: "registry/new-york/block/_sink/components/collapsible-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/combobox-demo.tsx",
+        path: "registry/new-york/block/_sink/components/combobox-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/command-demo.tsx",
+        path: "registry/new-york/block/_sink/components/command-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/context-menu-demo.tsx",
+        path: "registry/new-york/block/_sink/components/context-menu-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/date-picker-demo.tsx",
+        path: "registry/new-york/block/_sink/components/date-picker-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/dialog-demo.tsx",
+        path: "registry/new-york/block/_sink/components/dialog-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/drawer-demo.tsx",
+        path: "registry/new-york/block/_sink/components/drawer-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/dropdown-menu-demo.tsx",
+        path: "registry/new-york/block/_sink/components/dropdown-menu-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/hover-card-demo.tsx",
+        path: "registry/new-york/block/_sink/components/hover-card-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/input-demo.tsx",
+        path: "registry/new-york/block/_sink/components/input-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/input-otp-demo.tsx",
+        path: "registry/new-york/block/_sink/components/input-otp-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/label-demo.tsx",
+        path: "registry/new-york/block/_sink/components/label-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/menubar-demo.tsx",
+        path: "registry/new-york/block/_sink/components/menubar-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/navigation-menu-demo.tsx",
+        path: "registry/new-york/block/_sink/components/navigation-menu-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/pagination-demo.tsx",
+        path: "registry/new-york/block/_sink/components/pagination-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/popover-demo.tsx",
+        path: "registry/new-york/block/_sink/components/popover-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/progress-demo.tsx",
+        path: "registry/new-york/block/_sink/components/progress-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/radio-group-demo.tsx",
+        path: "registry/new-york/block/_sink/components/radio-group-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/resizable-handle.tsx",
+        path: "registry/new-york/block/_sink/components/resizable-handle.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/scroll-area-demo.tsx",
+        path: "registry/new-york/block/_sink/components/scroll-area-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/select-demo.tsx",
+        path: "registry/new-york/block/_sink/components/select-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/separator-demo.tsx",
+        path: "registry/new-york/block/_sink/components/separator-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/sheet-demo.tsx",
+        path: "registry/new-york/block/_sink/components/sheet-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/skeleton-demo.tsx",
+        path: "registry/new-york/block/_sink/components/skeleton-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/slider-demo.tsx",
+        path: "registry/new-york/block/_sink/components/slider-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/sonner-demo.tsx",
+        path: "registry/new-york/block/_sink/components/sonner-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/switch-demo.tsx",
+        path: "registry/new-york/block/_sink/components/switch-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/table-demo.tsx",
+        path: "registry/new-york/block/_sink/components/table-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/tabs-demo.tsx",
+        path: "registry/new-york/block/_sink/components/tabs-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/textarea-demo.tsx",
+        path: "registry/new-york/block/_sink/components/textarea-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/toast-demo.tsx",
+        path: "registry/new-york/block/_sink/components/toast-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/toggle-demo.tsx",
+        path: "registry/new-york/block/_sink/components/toggle-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/toggle-group-demo.tsx",
+        path: "registry/new-york/block/_sink/components/toggle-group-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/tooltip-demo.tsx",
+        path: "registry/new-york/block/_sink/components/tooltip-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/badge-destructive.tsx",
+        path: "registry/new-york/block/_sink/components/badge-destructive.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/badge-outline.tsx",
+        path: "registry/new-york/block/_sink/components/badge-outline.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/badge-secondary.tsx",
+        path: "registry/new-york/block/_sink/components/badge-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/button-destructive.tsx",
+        path: "registry/new-york/block/_sink/components/button-destructive.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/button-ghost.tsx",
+        path: "registry/new-york/block/_sink/components/button-ghost.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/button-link.tsx",
+        path: "registry/new-york/block/_sink/components/button-link.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/button-loading.tsx",
+        path: "registry/new-york/block/_sink/components/button-loading.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/button-outline.tsx",
+        path: "registry/new-york/block/_sink/components/button-outline.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/button-secondary.tsx",
+        path: "registry/new-york/block/_sink/components/button-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/button-with-icon.tsx",
+        path: "registry/new-york/block/_sink/components/button-with-icon.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/toggle-disabled.tsx",
+        path: "registry/new-york/block/_sink/components/toggle-disabled.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/toggle-outline.tsx",
+        path: "registry/new-york/block/_sink/components/toggle-outline.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/_sink/components/toggle-with-text.tsx",
+        path: "registry/new-york/block/_sink/components/toggle-with-text.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3623,19 +3623,19 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-01/page.tsx",
+        path: "registry/new-york/block/sidebar-01/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-01/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-01/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-01/components/search-form.tsx",
+        path: "registry/new-york/block/sidebar-01/components/search-form.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-01/components/version-switcher.tsx",
+        path: "registry/new-york/block/sidebar-01/components/version-switcher.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3651,19 +3651,19 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-02/page.tsx",
+        path: "registry/new-york/block/sidebar-02/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-02/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-02/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-02/components/search-form.tsx",
+        path: "registry/new-york/block/sidebar-02/components/search-form.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-02/components/version-switcher.tsx",
+        path: "registry/new-york/block/sidebar-02/components/version-switcher.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3679,11 +3679,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-03/page.tsx",
+        path: "registry/new-york/block/sidebar-03/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-03/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-03/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3699,11 +3699,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-04/page.tsx",
+        path: "registry/new-york/block/sidebar-04/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-04/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-04/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3719,15 +3719,15 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","collapsible"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-05/page.tsx",
+        path: "registry/new-york/block/sidebar-05/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-05/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-05/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-05/components/search-form.tsx",
+        path: "registry/new-york/block/sidebar-05/components/search-form.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3743,19 +3743,19 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","card","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-06/page.tsx",
+        path: "registry/new-york/block/sidebar-06/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-06/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-06/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-06/components/nav-main.tsx",
+        path: "registry/new-york/block/sidebar-06/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-06/components/sidebar-opt-in-form.tsx",
+        path: "registry/new-york/block/sidebar-06/components/sidebar-opt-in-form.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3771,27 +3771,27 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-07/page.tsx",
+        path: "registry/new-york/block/sidebar-07/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-07/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-07/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-07/components/nav-main.tsx",
+        path: "registry/new-york/block/sidebar-07/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-07/components/nav-projects.tsx",
+        path: "registry/new-york/block/sidebar-07/components/nav-projects.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-07/components/nav-user.tsx",
+        path: "registry/new-york/block/sidebar-07/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-07/components/team-switcher.tsx",
+        path: "registry/new-york/block/sidebar-07/components/team-switcher.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3807,27 +3807,27 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-08/page.tsx",
+        path: "registry/new-york/block/sidebar-08/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-08/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-08/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-08/components/nav-main.tsx",
+        path: "registry/new-york/block/sidebar-08/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-08/components/nav-projects.tsx",
+        path: "registry/new-york/block/sidebar-08/components/nav-projects.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-08/components/nav-secondary.tsx",
+        path: "registry/new-york/block/sidebar-08/components/nav-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-08/components/nav-user.tsx",
+        path: "registry/new-york/block/sidebar-08/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3843,15 +3843,15 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","switch"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-09/page.tsx",
+        path: "registry/new-york/block/sidebar-09/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-09/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-09/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-09/components/nav-user.tsx",
+        path: "registry/new-york/block/sidebar-09/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3867,35 +3867,35 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","popover","collapsible","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-10/page.tsx",
+        path: "registry/new-york/block/sidebar-10/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-10/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-10/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-10/components/nav-actions.tsx",
+        path: "registry/new-york/block/sidebar-10/components/nav-actions.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-10/components/nav-favorites.tsx",
+        path: "registry/new-york/block/sidebar-10/components/nav-favorites.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-10/components/nav-main.tsx",
+        path: "registry/new-york/block/sidebar-10/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-10/components/nav-secondary.tsx",
+        path: "registry/new-york/block/sidebar-10/components/nav-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-10/components/nav-workspaces.tsx",
+        path: "registry/new-york/block/sidebar-10/components/nav-workspaces.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-10/components/team-switcher.tsx",
+        path: "registry/new-york/block/sidebar-10/components/team-switcher.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3911,11 +3911,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-11/page.tsx",
+        path: "registry/new-york/block/sidebar-11/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-11/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-11/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3931,23 +3931,23 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","calendar","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-12/page.tsx",
+        path: "registry/new-york/block/sidebar-12/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-12/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-12/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-12/components/calendars.tsx",
+        path: "registry/new-york/block/sidebar-12/components/calendars.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-12/components/date-picker.tsx",
+        path: "registry/new-york/block/sidebar-12/components/date-picker.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-12/components/nav-user.tsx",
+        path: "registry/new-york/block/sidebar-12/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3963,11 +3963,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","button","dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-13/page.tsx",
+        path: "registry/new-york/block/sidebar-13/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-13/components/settings-dialog.tsx",
+        path: "registry/new-york/block/sidebar-13/components/settings-dialog.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -3983,11 +3983,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-14/page.tsx",
+        path: "registry/new-york/block/sidebar-14/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-14/components/app-sidebar.tsx",
+        path: "registry/new-york/block/sidebar-14/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -4003,47 +4003,47 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","popover","collapsible","dropdown-menu","calendar","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/page.tsx",
+        path: "registry/new-york/block/sidebar-15/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/components/calendars.tsx",
+        path: "registry/new-york/block/sidebar-15/components/calendars.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/components/date-picker.tsx",
+        path: "registry/new-york/block/sidebar-15/components/date-picker.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/components/nav-favorites.tsx",
+        path: "registry/new-york/block/sidebar-15/components/nav-favorites.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/components/nav-main.tsx",
+        path: "registry/new-york/block/sidebar-15/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/components/nav-secondary.tsx",
+        path: "registry/new-york/block/sidebar-15/components/nav-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/components/nav-user.tsx",
+        path: "registry/new-york/block/sidebar-15/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/components/nav-workspaces.tsx",
+        path: "registry/new-york/block/sidebar-15/components/nav-workspaces.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/components/sidebar-left.tsx",
+        path: "registry/new-york/block/sidebar-15/components/sidebar-left.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/components/sidebar-right.tsx",
+        path: "registry/new-york/block/sidebar-15/components/sidebar-right.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/sidebar-15/components/team-switcher.tsx",
+        path: "registry/new-york/block/sidebar-15/components/team-switcher.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -4059,11 +4059,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["button","card","input","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/login-01/page.tsx",
+        path: "registry/new-york/block/login-01/page.tsx",
         type: "registry:page",
         target: "app/login/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/login-01/components/login-form.tsx",
+        path: "registry/new-york/block/login-01/components/login-form.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -4079,7 +4079,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-area-axes.tsx",
+        path: "registry/new-york/block/chart-area-axes.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4095,7 +4095,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-area-default.tsx",
+        path: "registry/new-york/block/chart-area-default.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4111,7 +4111,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-area-gradient.tsx",
+        path: "registry/new-york/block/chart-area-gradient.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4127,7 +4127,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-area-icons.tsx",
+        path: "registry/new-york/block/chart-area-icons.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4143,7 +4143,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart","select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-area-interactive.tsx",
+        path: "registry/new-york/block/chart-area-interactive.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -4159,7 +4159,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-area-legend.tsx",
+        path: "registry/new-york/block/chart-area-legend.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4175,7 +4175,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-area-linear.tsx",
+        path: "registry/new-york/block/chart-area-linear.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4191,7 +4191,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-area-stacked-expand.tsx",
+        path: "registry/new-york/block/chart-area-stacked-expand.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4207,7 +4207,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-area-stacked.tsx",
+        path: "registry/new-york/block/chart-area-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4223,7 +4223,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-area-step.tsx",
+        path: "registry/new-york/block/chart-area-step.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4239,7 +4239,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-bar-active.tsx",
+        path: "registry/new-york/block/chart-bar-active.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4255,7 +4255,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-bar-default.tsx",
+        path: "registry/new-york/block/chart-bar-default.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4271,7 +4271,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-bar-horizontal.tsx",
+        path: "registry/new-york/block/chart-bar-horizontal.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4287,7 +4287,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-bar-interactive.tsx",
+        path: "registry/new-york/block/chart-bar-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4303,7 +4303,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-bar-label-custom.tsx",
+        path: "registry/new-york/block/chart-bar-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4319,7 +4319,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-bar-label.tsx",
+        path: "registry/new-york/block/chart-bar-label.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4335,7 +4335,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-bar-mixed.tsx",
+        path: "registry/new-york/block/chart-bar-mixed.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4351,7 +4351,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-bar-multiple.tsx",
+        path: "registry/new-york/block/chart-bar-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4367,7 +4367,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-bar-negative.tsx",
+        path: "registry/new-york/block/chart-bar-negative.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4383,7 +4383,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-bar-stacked.tsx",
+        path: "registry/new-york/block/chart-bar-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4399,7 +4399,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-line-default.tsx",
+        path: "registry/new-york/block/chart-line-default.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4415,7 +4415,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-line-dots-colors.tsx",
+        path: "registry/new-york/block/chart-line-dots-colors.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4431,7 +4431,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-line-dots-custom.tsx",
+        path: "registry/new-york/block/chart-line-dots-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4447,7 +4447,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-line-dots.tsx",
+        path: "registry/new-york/block/chart-line-dots.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4463,7 +4463,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-line-interactive.tsx",
+        path: "registry/new-york/block/chart-line-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4479,7 +4479,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-line-label-custom.tsx",
+        path: "registry/new-york/block/chart-line-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4495,7 +4495,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-line-label.tsx",
+        path: "registry/new-york/block/chart-line-label.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4511,7 +4511,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-line-linear.tsx",
+        path: "registry/new-york/block/chart-line-linear.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4527,7 +4527,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-line-multiple.tsx",
+        path: "registry/new-york/block/chart-line-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4543,7 +4543,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-line-step.tsx",
+        path: "registry/new-york/block/chart-line-step.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4559,7 +4559,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-donut-active.tsx",
+        path: "registry/new-york/block/chart-pie-donut-active.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4575,7 +4575,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-donut-text.tsx",
+        path: "registry/new-york/block/chart-pie-donut-text.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4591,7 +4591,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-donut.tsx",
+        path: "registry/new-york/block/chart-pie-donut.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4607,7 +4607,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-interactive.tsx",
+        path: "registry/new-york/block/chart-pie-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4623,7 +4623,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-label-custom.tsx",
+        path: "registry/new-york/block/chart-pie-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4639,7 +4639,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-label-list.tsx",
+        path: "registry/new-york/block/chart-pie-label-list.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4655,7 +4655,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-label.tsx",
+        path: "registry/new-york/block/chart-pie-label.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4671,7 +4671,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-legend.tsx",
+        path: "registry/new-york/block/chart-pie-legend.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4687,7 +4687,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-separator-none.tsx",
+        path: "registry/new-york/block/chart-pie-separator-none.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4703,7 +4703,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-simple.tsx",
+        path: "registry/new-york/block/chart-pie-simple.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4719,7 +4719,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-pie-stacked.tsx",
+        path: "registry/new-york/block/chart-pie-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4735,7 +4735,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-default.tsx",
+        path: "registry/new-york/block/chart-radar-default.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4751,7 +4751,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-dots.tsx",
+        path: "registry/new-york/block/chart-radar-dots.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4767,7 +4767,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-grid-circle-fill.tsx",
+        path: "registry/new-york/block/chart-radar-grid-circle-fill.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4783,7 +4783,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-grid-circle-no-lines.tsx",
+        path: "registry/new-york/block/chart-radar-grid-circle-no-lines.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4799,7 +4799,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-grid-circle.tsx",
+        path: "registry/new-york/block/chart-radar-grid-circle.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4815,7 +4815,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-grid-custom.tsx",
+        path: "registry/new-york/block/chart-radar-grid-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4831,7 +4831,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-grid-fill.tsx",
+        path: "registry/new-york/block/chart-radar-grid-fill.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4847,7 +4847,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-grid-none.tsx",
+        path: "registry/new-york/block/chart-radar-grid-none.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4863,7 +4863,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-icons.tsx",
+        path: "registry/new-york/block/chart-radar-icons.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4879,7 +4879,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-label-custom.tsx",
+        path: "registry/new-york/block/chart-radar-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4895,7 +4895,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-legend.tsx",
+        path: "registry/new-york/block/chart-radar-legend.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4911,7 +4911,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-lines-only.tsx",
+        path: "registry/new-york/block/chart-radar-lines-only.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4927,7 +4927,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-multiple.tsx",
+        path: "registry/new-york/block/chart-radar-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4943,7 +4943,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radar-radius.tsx",
+        path: "registry/new-york/block/chart-radar-radius.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4959,7 +4959,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radial-grid.tsx",
+        path: "registry/new-york/block/chart-radial-grid.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4975,7 +4975,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radial-label.tsx",
+        path: "registry/new-york/block/chart-radial-label.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -4991,7 +4991,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radial-shape.tsx",
+        path: "registry/new-york/block/chart-radial-shape.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5007,7 +5007,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radial-simple.tsx",
+        path: "registry/new-york/block/chart-radial-simple.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5023,7 +5023,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radial-stacked.tsx",
+        path: "registry/new-york/block/chart-radial-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5039,7 +5039,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-radial-text.tsx",
+        path: "registry/new-york/block/chart-radial-text.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5055,7 +5055,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-tooltip-default.tsx",
+        path: "registry/new-york/block/chart-tooltip-default.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5071,7 +5071,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-tooltip-indicator-line.tsx",
+        path: "registry/new-york/block/chart-tooltip-indicator-line.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5087,7 +5087,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-tooltip-indicator-none.tsx",
+        path: "registry/new-york/block/chart-tooltip-indicator-none.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5103,7 +5103,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-tooltip-label-none.tsx",
+        path: "registry/new-york/block/chart-tooltip-label-none.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5119,7 +5119,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-tooltip-label-custom.tsx",
+        path: "registry/new-york/block/chart-tooltip-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5135,7 +5135,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-tooltip-label-formatter.tsx",
+        path: "registry/new-york/block/chart-tooltip-label-formatter.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5151,7 +5151,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-tooltip-formatter.tsx",
+        path: "registry/new-york/block/chart-tooltip-formatter.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5167,7 +5167,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-tooltip-icons.tsx",
+        path: "registry/new-york/block/chart-tooltip-icons.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5183,7 +5183,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/block/chart-tooltip-advanced.tsx",
+        path: "registry/new-york/block/chart-tooltip-advanced.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5199,7 +5199,7 @@ export const Index: Record<string, any> = {
       type: "registry:lib",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/lib/utils.ts",
+        path: "registry/new-york/lib/utils.ts",
         type: "registry:lib",
         target: ""
       }],
@@ -5215,7 +5215,7 @@ export const Index: Record<string, any> = {
       type: "registry:hook",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/hooks/use-mobile.tsx",
+        path: "registry/new-york/hooks/use-mobile.tsx",
         type: "registry:hook",
         target: ""
       }],
@@ -5231,7 +5231,7 @@ export const Index: Record<string, any> = {
       type: "registry:hook",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/hooks/use-toast.ts",
+        path: "registry/new-york/hooks/use-toast.ts",
         type: "registry:hook",
         target: ""
       }],
@@ -5247,7 +5247,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-01.tsx",
+        path: "registry/new-york/v0/sidebar-01.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -5263,7 +5263,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-02.tsx",
+        path: "registry/new-york/v0/sidebar-02.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5279,7 +5279,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-03.tsx",
+        path: "registry/new-york/v0/sidebar-03.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5295,7 +5295,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-04.tsx",
+        path: "registry/new-york/v0/sidebar-04.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5311,7 +5311,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","collapsible"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-05.tsx",
+        path: "registry/new-york/v0/sidebar-05.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5327,7 +5327,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","card","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-06.tsx",
+        path: "registry/new-york/v0/sidebar-06.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5343,7 +5343,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-07.tsx",
+        path: "registry/new-york/v0/sidebar-07.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5359,7 +5359,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-08.tsx",
+        path: "registry/new-york/v0/sidebar-08.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5375,7 +5375,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","switch"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-09.tsx",
+        path: "registry/new-york/v0/sidebar-09.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5391,7 +5391,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","popover","collapsible","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-10.tsx",
+        path: "registry/new-york/v0/sidebar-10.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5407,7 +5407,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-11.tsx",
+        path: "registry/new-york/v0/sidebar-11.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5423,7 +5423,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","calendar","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-12.tsx",
+        path: "registry/new-york/v0/sidebar-12.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5439,7 +5439,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","button","dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-13.tsx",
+        path: "registry/new-york/v0/sidebar-13.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5455,7 +5455,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-14.tsx",
+        path: "registry/new-york/v0/sidebar-14.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5471,7 +5471,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","popover","collapsible","dropdown-menu","calendar","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/sidebar-15.tsx",
+        path: "registry/new-york/v0/sidebar-15.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5487,7 +5487,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["button","card","input","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/new-york/v0/login-01.tsx",
+        path: "registry/new-york/v0/login-01.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -5504,7 +5504,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/accordion.tsx",
+        path: "registry/default/ui/accordion.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5520,7 +5520,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/alert.tsx",
+        path: "registry/default/ui/alert.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5536,7 +5536,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/alert-dialog.tsx",
+        path: "registry/default/ui/alert-dialog.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5552,7 +5552,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/aspect-ratio.tsx",
+        path: "registry/default/ui/aspect-ratio.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5568,7 +5568,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/avatar.tsx",
+        path: "registry/default/ui/avatar.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5584,7 +5584,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/badge.tsx",
+        path: "registry/default/ui/badge.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5600,7 +5600,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/breadcrumb.tsx",
+        path: "registry/default/ui/breadcrumb.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5616,7 +5616,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/button.tsx",
+        path: "registry/default/ui/button.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5632,7 +5632,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/calendar.tsx",
+        path: "registry/default/ui/calendar.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5648,7 +5648,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/card.tsx",
+        path: "registry/default/ui/card.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5664,7 +5664,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/carousel.tsx",
+        path: "registry/default/ui/carousel.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5680,7 +5680,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["card"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/chart.tsx",
+        path: "registry/default/ui/chart.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5696,7 +5696,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/checkbox.tsx",
+        path: "registry/default/ui/checkbox.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5712,7 +5712,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/collapsible.tsx",
+        path: "registry/default/ui/collapsible.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5728,7 +5728,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/command.tsx",
+        path: "registry/default/ui/command.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5744,7 +5744,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/context-menu.tsx",
+        path: "registry/default/ui/context-menu.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5760,7 +5760,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/dialog.tsx",
+        path: "registry/default/ui/dialog.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5776,7 +5776,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/drawer.tsx",
+        path: "registry/default/ui/drawer.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5792,7 +5792,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/dropdown-menu.tsx",
+        path: "registry/default/ui/dropdown-menu.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5808,7 +5808,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/form.tsx",
+        path: "registry/default/ui/form.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5824,7 +5824,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/hover-card.tsx",
+        path: "registry/default/ui/hover-card.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5840,7 +5840,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/input.tsx",
+        path: "registry/default/ui/input.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5856,7 +5856,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/input-otp.tsx",
+        path: "registry/default/ui/input-otp.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5872,7 +5872,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/label.tsx",
+        path: "registry/default/ui/label.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5888,7 +5888,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/menubar.tsx",
+        path: "registry/default/ui/menubar.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5904,7 +5904,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/navigation-menu.tsx",
+        path: "registry/default/ui/navigation-menu.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5920,7 +5920,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/pagination.tsx",
+        path: "registry/default/ui/pagination.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5936,7 +5936,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/popover.tsx",
+        path: "registry/default/ui/popover.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5952,7 +5952,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/progress.tsx",
+        path: "registry/default/ui/progress.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5968,7 +5968,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/radio-group.tsx",
+        path: "registry/default/ui/radio-group.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -5984,7 +5984,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/resizable.tsx",
+        path: "registry/default/ui/resizable.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6000,7 +6000,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/scroll-area.tsx",
+        path: "registry/default/ui/scroll-area.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6016,7 +6016,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/select.tsx",
+        path: "registry/default/ui/select.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6032,7 +6032,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/separator.tsx",
+        path: "registry/default/ui/separator.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6048,7 +6048,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/sheet.tsx",
+        path: "registry/default/ui/sheet.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6064,7 +6064,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/sidebar.tsx",
+        path: "registry/default/ui/sidebar.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6080,7 +6080,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/skeleton.tsx",
+        path: "registry/default/ui/skeleton.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6096,7 +6096,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/slider.tsx",
+        path: "registry/default/ui/slider.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6112,7 +6112,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/sonner.tsx",
+        path: "registry/default/ui/sonner.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6128,7 +6128,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/switch.tsx",
+        path: "registry/default/ui/switch.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6144,7 +6144,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/table.tsx",
+        path: "registry/default/ui/table.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6160,7 +6160,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/tabs.tsx",
+        path: "registry/default/ui/tabs.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6176,7 +6176,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/textarea.tsx",
+        path: "registry/default/ui/textarea.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6192,15 +6192,15 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/toast.tsx",
+        path: "registry/default/ui/toast.tsx",
         type: "registry:ui",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/hooks/use-toast.ts",
+        path: "registry/default/hooks/use-toast.ts",
         type: "registry:hook",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/toaster.tsx",
+        path: "registry/default/ui/toaster.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6216,7 +6216,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/toggle.tsx",
+        path: "registry/default/ui/toggle.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6232,7 +6232,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/toggle-group.tsx",
+        path: "registry/default/ui/toggle-group.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6248,7 +6248,7 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/ui/tooltip.tsx",
+        path: "registry/default/ui/tooltip.tsx",
         type: "registry:ui",
         target: ""
       }],
@@ -6264,7 +6264,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["accordion"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/accordion-demo.tsx",
+        path: "registry/default/example/accordion-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6280,7 +6280,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["alert"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/alert-demo.tsx",
+        path: "registry/default/example/alert-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6296,7 +6296,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["alert"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/alert-destructive.tsx",
+        path: "registry/default/example/alert-destructive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6312,7 +6312,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["alert-dialog","button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/alert-dialog-demo.tsx",
+        path: "registry/default/example/alert-dialog-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6328,7 +6328,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["aspect-ratio"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/aspect-ratio-demo.tsx",
+        path: "registry/default/example/aspect-ratio-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6344,7 +6344,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/avatar-demo.tsx",
+        path: "registry/default/example/avatar-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6360,7 +6360,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["badge"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/badge-demo.tsx",
+        path: "registry/default/example/badge-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6376,7 +6376,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["badge"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/badge-destructive.tsx",
+        path: "registry/default/example/badge-destructive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6392,7 +6392,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["badge"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/badge-outline.tsx",
+        path: "registry/default/example/badge-outline.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6408,7 +6408,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["badge"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/badge-secondary.tsx",
+        path: "registry/default/example/badge-secondary.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6424,7 +6424,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/breadcrumb-demo.tsx",
+        path: "registry/default/example/breadcrumb-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6440,7 +6440,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/breadcrumb-separator.tsx",
+        path: "registry/default/example/breadcrumb-separator.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6456,7 +6456,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/breadcrumb-dropdown.tsx",
+        path: "registry/default/example/breadcrumb-dropdown.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6472,7 +6472,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/breadcrumb-ellipsis.tsx",
+        path: "registry/default/example/breadcrumb-ellipsis.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6488,7 +6488,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/breadcrumb-link.tsx",
+        path: "registry/default/example/breadcrumb-link.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6504,7 +6504,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/breadcrumb-responsive.tsx",
+        path: "registry/default/example/breadcrumb-responsive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6520,7 +6520,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/button-demo.tsx",
+        path: "registry/default/example/button-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6536,7 +6536,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/button-secondary.tsx",
+        path: "registry/default/example/button-secondary.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6552,7 +6552,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/button-destructive.tsx",
+        path: "registry/default/example/button-destructive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6568,7 +6568,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/button-outline.tsx",
+        path: "registry/default/example/button-outline.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6584,7 +6584,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/button-ghost.tsx",
+        path: "registry/default/example/button-ghost.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6600,7 +6600,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/button-link.tsx",
+        path: "registry/default/example/button-link.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6616,7 +6616,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/button-with-icon.tsx",
+        path: "registry/default/example/button-with-icon.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6632,7 +6632,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/button-loading.tsx",
+        path: "registry/default/example/button-loading.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6648,7 +6648,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/button-icon.tsx",
+        path: "registry/default/example/button-icon.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6664,7 +6664,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/button-as-child.tsx",
+        path: "registry/default/example/button-as-child.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6680,7 +6680,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["calendar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/calendar-demo.tsx",
+        path: "registry/default/example/calendar-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6696,7 +6696,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["calendar","form","popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/calendar-form.tsx",
+        path: "registry/default/example/calendar-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6712,7 +6712,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["card","button","switch"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/card-demo.tsx",
+        path: "registry/default/example/card-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6728,7 +6728,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button","card","input","label","select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/card-with-form.tsx",
+        path: "registry/default/example/card-with-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6744,7 +6744,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/carousel-demo.tsx",
+        path: "registry/default/example/carousel-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6760,7 +6760,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/carousel-size.tsx",
+        path: "registry/default/example/carousel-size.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6776,7 +6776,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/carousel-spacing.tsx",
+        path: "registry/default/example/carousel-spacing.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6792,7 +6792,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/carousel-orientation.tsx",
+        path: "registry/default/example/carousel-orientation.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6808,7 +6808,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/carousel-api.tsx",
+        path: "registry/default/example/carousel-api.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6824,7 +6824,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/carousel-plugin.tsx",
+        path: "registry/default/example/carousel-plugin.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6840,7 +6840,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["checkbox"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/checkbox-demo.tsx",
+        path: "registry/default/example/checkbox-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6856,7 +6856,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["checkbox"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/checkbox-disabled.tsx",
+        path: "registry/default/example/checkbox-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6872,7 +6872,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["checkbox","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/checkbox-form-multiple.tsx",
+        path: "registry/default/example/checkbox-form-multiple.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6888,7 +6888,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["checkbox","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/checkbox-form-single.tsx",
+        path: "registry/default/example/checkbox-form-single.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6904,7 +6904,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["checkbox"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/checkbox-with-text.tsx",
+        path: "registry/default/example/checkbox-with-text.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6920,7 +6920,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["collapsible"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/collapsible-demo.tsx",
+        path: "registry/default/example/collapsible-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6936,7 +6936,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["command"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/combobox-demo.tsx",
+        path: "registry/default/example/combobox-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6952,7 +6952,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["command","dropdown-menu","button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/combobox-dropdown-menu.tsx",
+        path: "registry/default/example/combobox-dropdown-menu.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6968,7 +6968,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["command","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/combobox-form.tsx",
+        path: "registry/default/example/combobox-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -6984,7 +6984,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["combobox","popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/combobox-popover.tsx",
+        path: "registry/default/example/combobox-popover.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7000,7 +7000,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["combobox","popover","drawer"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/combobox-responsive.tsx",
+        path: "registry/default/example/combobox-responsive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7016,7 +7016,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["command"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/command-demo.tsx",
+        path: "registry/default/example/command-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7032,7 +7032,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["command","dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/command-dialog.tsx",
+        path: "registry/default/example/command-dialog.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7048,7 +7048,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["context-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/context-menu-demo.tsx",
+        path: "registry/default/example/context-menu-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7064,7 +7064,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["data-table"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/data-table-demo.tsx",
+        path: "registry/default/example/data-table-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7080,7 +7080,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button","calendar","popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/date-picker-demo.tsx",
+        path: "registry/default/example/date-picker-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7096,7 +7096,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button","calendar","form","popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/date-picker-form.tsx",
+        path: "registry/default/example/date-picker-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7112,7 +7112,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button","calendar","popover","select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/date-picker-with-presets.tsx",
+        path: "registry/default/example/date-picker-with-presets.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7128,7 +7128,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["button","calendar","popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/date-picker-with-range.tsx",
+        path: "registry/default/example/date-picker-with-range.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7144,7 +7144,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/dialog-demo.tsx",
+        path: "registry/default/example/dialog-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7160,7 +7160,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["dialog","button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/dialog-close-button.tsx",
+        path: "registry/default/example/dialog-close-button.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7176,7 +7176,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["drawer"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/drawer-demo.tsx",
+        path: "registry/default/example/drawer-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7192,7 +7192,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["drawer","dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/drawer-dialog.tsx",
+        path: "registry/default/example/drawer-dialog.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7208,7 +7208,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/dropdown-menu-demo.tsx",
+        path: "registry/default/example/dropdown-menu-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7224,7 +7224,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["dropdown-menu","checkbox"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/dropdown-menu-checkboxes.tsx",
+        path: "registry/default/example/dropdown-menu-checkboxes.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7240,7 +7240,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["dropdown-menu","radio-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/dropdown-menu-radio-group.tsx",
+        path: "registry/default/example/dropdown-menu-radio-group.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7256,7 +7256,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["hover-card"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/hover-card-demo.tsx",
+        path: "registry/default/example/hover-card-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7272,7 +7272,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-demo.tsx",
+        path: "registry/default/example/input-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7288,7 +7288,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-disabled.tsx",
+        path: "registry/default/example/input-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7304,7 +7304,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-file.tsx",
+        path: "registry/default/example/input-file.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7320,7 +7320,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input","button","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-form.tsx",
+        path: "registry/default/example/input-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7336,7 +7336,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input","button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-with-button.tsx",
+        path: "registry/default/example/input-with-button.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7352,7 +7352,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input","button","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-with-label.tsx",
+        path: "registry/default/example/input-with-label.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7368,7 +7368,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input","button","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-with-text.tsx",
+        path: "registry/default/example/input-with-text.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7384,7 +7384,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input-otp"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-otp-demo.tsx",
+        path: "registry/default/example/input-otp-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7400,7 +7400,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input-otp"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-otp-pattern.tsx",
+        path: "registry/default/example/input-otp-pattern.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7416,7 +7416,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input-otp"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-otp-separator.tsx",
+        path: "registry/default/example/input-otp-separator.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7432,7 +7432,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input-otp"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-otp-controlled.tsx",
+        path: "registry/default/example/input-otp-controlled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7448,7 +7448,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input-otp","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/input-otp-form.tsx",
+        path: "registry/default/example/input-otp-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7464,7 +7464,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/label-demo.tsx",
+        path: "registry/default/example/label-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7480,7 +7480,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["menubar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/menubar-demo.tsx",
+        path: "registry/default/example/menubar-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7496,7 +7496,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["navigation-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/navigation-menu-demo.tsx",
+        path: "registry/default/example/navigation-menu-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7512,7 +7512,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["pagination"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/pagination-demo.tsx",
+        path: "registry/default/example/pagination-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7528,7 +7528,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["popover"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/popover-demo.tsx",
+        path: "registry/default/example/popover-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7544,7 +7544,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["progress"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/progress-demo.tsx",
+        path: "registry/default/example/progress-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7560,7 +7560,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["radio-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/radio-group-demo.tsx",
+        path: "registry/default/example/radio-group-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7576,7 +7576,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["radio-group","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/radio-group-form.tsx",
+        path: "registry/default/example/radio-group-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7592,7 +7592,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["resizable"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/resizable-demo.tsx",
+        path: "registry/default/example/resizable-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7608,7 +7608,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["resizable"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/resizable-demo-with-handle.tsx",
+        path: "registry/default/example/resizable-demo-with-handle.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7624,7 +7624,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["resizable"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/resizable-vertical.tsx",
+        path: "registry/default/example/resizable-vertical.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7640,7 +7640,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["resizable"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/resizable-handle.tsx",
+        path: "registry/default/example/resizable-handle.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7656,7 +7656,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["scroll-area"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/scroll-area-demo.tsx",
+        path: "registry/default/example/scroll-area-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7672,7 +7672,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["scroll-area"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/scroll-area-horizontal-demo.tsx",
+        path: "registry/default/example/scroll-area-horizontal-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7688,7 +7688,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/select-demo.tsx",
+        path: "registry/default/example/select-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7704,7 +7704,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/select-scrollable.tsx",
+        path: "registry/default/example/select-scrollable.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7720,7 +7720,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/select-form.tsx",
+        path: "registry/default/example/select-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7736,7 +7736,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["separator"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/separator-demo.tsx",
+        path: "registry/default/example/separator-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7752,7 +7752,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["sheet"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/sheet-demo.tsx",
+        path: "registry/default/example/sheet-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7768,7 +7768,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["sheet"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/sheet-side.tsx",
+        path: "registry/default/example/sheet-side.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7784,7 +7784,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["skeleton"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/skeleton-demo.tsx",
+        path: "registry/default/example/skeleton-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7800,7 +7800,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["skeleton"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/skeleton-card.tsx",
+        path: "registry/default/example/skeleton-card.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7816,7 +7816,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["slider"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/slider-demo.tsx",
+        path: "registry/default/example/slider-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7832,7 +7832,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["sonner"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/sonner-demo.tsx",
+        path: "registry/default/example/sonner-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7848,7 +7848,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["switch"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/switch-demo.tsx",
+        path: "registry/default/example/switch-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7864,7 +7864,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["switch","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/switch-form.tsx",
+        path: "registry/default/example/switch-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7880,7 +7880,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["table"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/table-demo.tsx",
+        path: "registry/default/example/table-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7896,7 +7896,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["tabs"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/tabs-demo.tsx",
+        path: "registry/default/example/tabs-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7912,7 +7912,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/textarea-demo.tsx",
+        path: "registry/default/example/textarea-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7928,7 +7928,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/textarea-disabled.tsx",
+        path: "registry/default/example/textarea-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7944,7 +7944,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea","form"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/textarea-form.tsx",
+        path: "registry/default/example/textarea-form.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7960,7 +7960,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea","button"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/textarea-with-button.tsx",
+        path: "registry/default/example/textarea-with-button.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7976,7 +7976,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/textarea-with-label.tsx",
+        path: "registry/default/example/textarea-with-label.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -7992,7 +7992,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["textarea","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/textarea-with-text.tsx",
+        path: "registry/default/example/textarea-with-text.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8008,7 +8008,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toast"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toast-demo.tsx",
+        path: "registry/default/example/toast-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8024,7 +8024,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toast"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toast-destructive.tsx",
+        path: "registry/default/example/toast-destructive.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8040,7 +8040,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toast"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toast-simple.tsx",
+        path: "registry/default/example/toast-simple.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8056,7 +8056,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toast"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toast-with-action.tsx",
+        path: "registry/default/example/toast-with-action.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8072,7 +8072,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toast"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toast-with-title.tsx",
+        path: "registry/default/example/toast-with-title.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8088,7 +8088,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-group-demo.tsx",
+        path: "registry/default/example/toggle-group-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8104,7 +8104,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-group-disabled.tsx",
+        path: "registry/default/example/toggle-group-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8120,7 +8120,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-group-lg.tsx",
+        path: "registry/default/example/toggle-group-lg.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8136,7 +8136,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-group-outline.tsx",
+        path: "registry/default/example/toggle-group-outline.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8152,7 +8152,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-group-sm.tsx",
+        path: "registry/default/example/toggle-group-sm.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8168,7 +8168,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-group-single.tsx",
+        path: "registry/default/example/toggle-group-single.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8184,7 +8184,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-demo.tsx",
+        path: "registry/default/example/toggle-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8200,7 +8200,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-disabled.tsx",
+        path: "registry/default/example/toggle-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8216,7 +8216,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-lg.tsx",
+        path: "registry/default/example/toggle-lg.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8232,7 +8232,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-outline.tsx",
+        path: "registry/default/example/toggle-outline.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8248,7 +8248,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-sm.tsx",
+        path: "registry/default/example/toggle-sm.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8264,7 +8264,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/toggle-with-text.tsx",
+        path: "registry/default/example/toggle-with-text.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8280,7 +8280,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["tooltip"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/tooltip-demo.tsx",
+        path: "registry/default/example/tooltip-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8296,7 +8296,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-blockquote.tsx",
+        path: "registry/default/example/typography-blockquote.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8312,7 +8312,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-demo.tsx",
+        path: "registry/default/example/typography-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8328,7 +8328,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-h1.tsx",
+        path: "registry/default/example/typography-h1.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8344,7 +8344,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-h2.tsx",
+        path: "registry/default/example/typography-h2.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8360,7 +8360,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-h3.tsx",
+        path: "registry/default/example/typography-h3.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8376,7 +8376,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-h4.tsx",
+        path: "registry/default/example/typography-h4.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8392,7 +8392,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-inline-code.tsx",
+        path: "registry/default/example/typography-inline-code.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8408,7 +8408,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-large.tsx",
+        path: "registry/default/example/typography-large.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8424,7 +8424,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-lead.tsx",
+        path: "registry/default/example/typography-lead.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8440,7 +8440,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-list.tsx",
+        path: "registry/default/example/typography-list.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8456,7 +8456,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-muted.tsx",
+        path: "registry/default/example/typography-muted.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8472,7 +8472,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-p.tsx",
+        path: "registry/default/example/typography-p.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8488,7 +8488,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-small.tsx",
+        path: "registry/default/example/typography-small.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8504,7 +8504,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/typography-table.tsx",
+        path: "registry/default/example/typography-table.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8520,7 +8520,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/mode-toggle.tsx",
+        path: "registry/default/example/mode-toggle.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8536,7 +8536,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/chart-bar-demo.tsx",
+        path: "registry/default/example/chart-bar-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8552,7 +8552,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/chart-bar-demo-grid.tsx",
+        path: "registry/default/example/chart-bar-demo-grid.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8568,7 +8568,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/chart-bar-demo-axis.tsx",
+        path: "registry/default/example/chart-bar-demo-axis.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8584,7 +8584,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/chart-bar-demo-tooltip.tsx",
+        path: "registry/default/example/chart-bar-demo-tooltip.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8600,7 +8600,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/chart-bar-demo-legend.tsx",
+        path: "registry/default/example/chart-bar-demo-legend.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8616,7 +8616,7 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/example/chart-tooltip-demo.tsx",
+        path: "registry/default/example/chart-tooltip-demo.tsx",
         type: "registry:example",
         target: ""
       }],
@@ -8632,7 +8632,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar.tsx",
+        path: "registry/default/block/demo-sidebar.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8648,7 +8648,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-header.tsx",
+        path: "registry/default/block/demo-sidebar-header.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8664,7 +8664,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-footer.tsx",
+        path: "registry/default/block/demo-sidebar-footer.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8680,7 +8680,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-group.tsx",
+        path: "registry/default/block/demo-sidebar-group.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8696,7 +8696,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-group-collapsible.tsx",
+        path: "registry/default/block/demo-sidebar-group-collapsible.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8712,7 +8712,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-group-action.tsx",
+        path: "registry/default/block/demo-sidebar-group-action.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8728,7 +8728,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-menu.tsx",
+        path: "registry/default/block/demo-sidebar-menu.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8744,7 +8744,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-menu-action.tsx",
+        path: "registry/default/block/demo-sidebar-menu-action.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8760,7 +8760,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-menu-sub.tsx",
+        path: "registry/default/block/demo-sidebar-menu-sub.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8776,7 +8776,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-menu-collapsible.tsx",
+        path: "registry/default/block/demo-sidebar-menu-collapsible.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8792,7 +8792,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-menu-badge.tsx",
+        path: "registry/default/block/demo-sidebar-menu-badge.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8808,7 +8808,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-rsc.tsx",
+        path: "registry/default/block/demo-sidebar-rsc.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8824,7 +8824,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/demo-sidebar-controlled.tsx",
+        path: "registry/default/block/demo-sidebar-controlled.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -8840,267 +8840,267 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["accordion","alert","alert-dialog","aspect-ratio","avatar","badge","breadcrumb","button","calendar","card","carousel","chart","checkbox","collapsible","command","context-menu","dialog","drawer","dropdown-menu","hover-card","input","input-otp","label","menubar","navigation-menu","pagination","popover","progress","radio-group","resizable","scroll-area","select","separator","sheet","sidebar","skeleton","slider","sonner","switch","table","tabs","textarea","toast","toggle","toggle-group","tooltip"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/page.tsx",
+        path: "registry/default/block/_sink/page.tsx",
         type: "registry:page",
         target: "app/sink/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/app-sidebar.tsx",
+        path: "registry/default/block/_sink/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/component-wrapper.tsx",
+        path: "registry/default/block/_sink/components/component-wrapper.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/nav-main.tsx",
+        path: "registry/default/block/_sink/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/nav-projects.tsx",
+        path: "registry/default/block/_sink/components/nav-projects.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/nav-user.tsx",
+        path: "registry/default/block/_sink/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/team-switcher.tsx",
+        path: "registry/default/block/_sink/components/team-switcher.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/accordion-demo.tsx",
+        path: "registry/default/block/_sink/components/accordion-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/alert-demo.tsx",
+        path: "registry/default/block/_sink/components/alert-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/alert-dialog-demo.tsx",
+        path: "registry/default/block/_sink/components/alert-dialog-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/aspect-ratio-demo.tsx",
+        path: "registry/default/block/_sink/components/aspect-ratio-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/avatar-demo.tsx",
+        path: "registry/default/block/_sink/components/avatar-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/badge-demo.tsx",
+        path: "registry/default/block/_sink/components/badge-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/breadcrumb-demo.tsx",
+        path: "registry/default/block/_sink/components/breadcrumb-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/button-demo.tsx",
+        path: "registry/default/block/_sink/components/button-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/calendar-demo.tsx",
+        path: "registry/default/block/_sink/components/calendar-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/card-demo.tsx",
+        path: "registry/default/block/_sink/components/card-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/carousel-demo.tsx",
+        path: "registry/default/block/_sink/components/carousel-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/checkbox-demo.tsx",
+        path: "registry/default/block/_sink/components/checkbox-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/collapsible-demo.tsx",
+        path: "registry/default/block/_sink/components/collapsible-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/combobox-demo.tsx",
+        path: "registry/default/block/_sink/components/combobox-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/command-demo.tsx",
+        path: "registry/default/block/_sink/components/command-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/context-menu-demo.tsx",
+        path: "registry/default/block/_sink/components/context-menu-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/date-picker-demo.tsx",
+        path: "registry/default/block/_sink/components/date-picker-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/dialog-demo.tsx",
+        path: "registry/default/block/_sink/components/dialog-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/drawer-demo.tsx",
+        path: "registry/default/block/_sink/components/drawer-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/dropdown-menu-demo.tsx",
+        path: "registry/default/block/_sink/components/dropdown-menu-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/hover-card-demo.tsx",
+        path: "registry/default/block/_sink/components/hover-card-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/input-demo.tsx",
+        path: "registry/default/block/_sink/components/input-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/input-otp-demo.tsx",
+        path: "registry/default/block/_sink/components/input-otp-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/label-demo.tsx",
+        path: "registry/default/block/_sink/components/label-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/menubar-demo.tsx",
+        path: "registry/default/block/_sink/components/menubar-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/navigation-menu-demo.tsx",
+        path: "registry/default/block/_sink/components/navigation-menu-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/pagination-demo.tsx",
+        path: "registry/default/block/_sink/components/pagination-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/popover-demo.tsx",
+        path: "registry/default/block/_sink/components/popover-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/progress-demo.tsx",
+        path: "registry/default/block/_sink/components/progress-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/radio-group-demo.tsx",
+        path: "registry/default/block/_sink/components/radio-group-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/resizable-handle.tsx",
+        path: "registry/default/block/_sink/components/resizable-handle.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/scroll-area-demo.tsx",
+        path: "registry/default/block/_sink/components/scroll-area-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/select-demo.tsx",
+        path: "registry/default/block/_sink/components/select-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/separator-demo.tsx",
+        path: "registry/default/block/_sink/components/separator-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/sheet-demo.tsx",
+        path: "registry/default/block/_sink/components/sheet-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/skeleton-demo.tsx",
+        path: "registry/default/block/_sink/components/skeleton-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/slider-demo.tsx",
+        path: "registry/default/block/_sink/components/slider-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/sonner-demo.tsx",
+        path: "registry/default/block/_sink/components/sonner-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/switch-demo.tsx",
+        path: "registry/default/block/_sink/components/switch-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/table-demo.tsx",
+        path: "registry/default/block/_sink/components/table-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/tabs-demo.tsx",
+        path: "registry/default/block/_sink/components/tabs-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/textarea-demo.tsx",
+        path: "registry/default/block/_sink/components/textarea-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/toast-demo.tsx",
+        path: "registry/default/block/_sink/components/toast-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/toggle-demo.tsx",
+        path: "registry/default/block/_sink/components/toggle-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/toggle-group-demo.tsx",
+        path: "registry/default/block/_sink/components/toggle-group-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/tooltip-demo.tsx",
+        path: "registry/default/block/_sink/components/tooltip-demo.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/badge-destructive.tsx",
+        path: "registry/default/block/_sink/components/badge-destructive.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/badge-outline.tsx",
+        path: "registry/default/block/_sink/components/badge-outline.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/badge-secondary.tsx",
+        path: "registry/default/block/_sink/components/badge-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/button-destructive.tsx",
+        path: "registry/default/block/_sink/components/button-destructive.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/button-ghost.tsx",
+        path: "registry/default/block/_sink/components/button-ghost.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/button-link.tsx",
+        path: "registry/default/block/_sink/components/button-link.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/button-loading.tsx",
+        path: "registry/default/block/_sink/components/button-loading.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/button-outline.tsx",
+        path: "registry/default/block/_sink/components/button-outline.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/button-secondary.tsx",
+        path: "registry/default/block/_sink/components/button-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/button-with-icon.tsx",
+        path: "registry/default/block/_sink/components/button-with-icon.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/toggle-disabled.tsx",
+        path: "registry/default/block/_sink/components/toggle-disabled.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/toggle-outline.tsx",
+        path: "registry/default/block/_sink/components/toggle-outline.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/_sink/components/toggle-with-text.tsx",
+        path: "registry/default/block/_sink/components/toggle-with-text.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9116,19 +9116,19 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-01/page.tsx",
+        path: "registry/default/block/sidebar-01/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-01/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-01/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-01/components/search-form.tsx",
+        path: "registry/default/block/sidebar-01/components/search-form.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-01/components/version-switcher.tsx",
+        path: "registry/default/block/sidebar-01/components/version-switcher.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9144,19 +9144,19 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-02/page.tsx",
+        path: "registry/default/block/sidebar-02/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-02/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-02/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-02/components/search-form.tsx",
+        path: "registry/default/block/sidebar-02/components/search-form.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-02/components/version-switcher.tsx",
+        path: "registry/default/block/sidebar-02/components/version-switcher.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9172,11 +9172,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-03/page.tsx",
+        path: "registry/default/block/sidebar-03/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-03/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-03/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9192,11 +9192,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-04/page.tsx",
+        path: "registry/default/block/sidebar-04/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-04/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-04/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9212,15 +9212,15 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","collapsible"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-05/page.tsx",
+        path: "registry/default/block/sidebar-05/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-05/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-05/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-05/components/search-form.tsx",
+        path: "registry/default/block/sidebar-05/components/search-form.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9236,19 +9236,19 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","card","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-06/page.tsx",
+        path: "registry/default/block/sidebar-06/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-06/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-06/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-06/components/nav-main.tsx",
+        path: "registry/default/block/sidebar-06/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-06/components/sidebar-opt-in-form.tsx",
+        path: "registry/default/block/sidebar-06/components/sidebar-opt-in-form.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9264,27 +9264,27 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-07/page.tsx",
+        path: "registry/default/block/sidebar-07/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-07/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-07/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-07/components/nav-main.tsx",
+        path: "registry/default/block/sidebar-07/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-07/components/nav-projects.tsx",
+        path: "registry/default/block/sidebar-07/components/nav-projects.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-07/components/nav-user.tsx",
+        path: "registry/default/block/sidebar-07/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-07/components/team-switcher.tsx",
+        path: "registry/default/block/sidebar-07/components/team-switcher.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9300,27 +9300,27 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-08/page.tsx",
+        path: "registry/default/block/sidebar-08/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-08/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-08/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-08/components/nav-main.tsx",
+        path: "registry/default/block/sidebar-08/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-08/components/nav-projects.tsx",
+        path: "registry/default/block/sidebar-08/components/nav-projects.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-08/components/nav-secondary.tsx",
+        path: "registry/default/block/sidebar-08/components/nav-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-08/components/nav-user.tsx",
+        path: "registry/default/block/sidebar-08/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9336,15 +9336,15 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","switch"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-09/page.tsx",
+        path: "registry/default/block/sidebar-09/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-09/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-09/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-09/components/nav-user.tsx",
+        path: "registry/default/block/sidebar-09/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9360,35 +9360,35 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","popover","collapsible","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-10/page.tsx",
+        path: "registry/default/block/sidebar-10/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-10/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-10/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-10/components/nav-actions.tsx",
+        path: "registry/default/block/sidebar-10/components/nav-actions.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-10/components/nav-favorites.tsx",
+        path: "registry/default/block/sidebar-10/components/nav-favorites.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-10/components/nav-main.tsx",
+        path: "registry/default/block/sidebar-10/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-10/components/nav-secondary.tsx",
+        path: "registry/default/block/sidebar-10/components/nav-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-10/components/nav-workspaces.tsx",
+        path: "registry/default/block/sidebar-10/components/nav-workspaces.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-10/components/team-switcher.tsx",
+        path: "registry/default/block/sidebar-10/components/team-switcher.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9404,11 +9404,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-11/page.tsx",
+        path: "registry/default/block/sidebar-11/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-11/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-11/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9424,23 +9424,23 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","calendar","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-12/page.tsx",
+        path: "registry/default/block/sidebar-12/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-12/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-12/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-12/components/calendars.tsx",
+        path: "registry/default/block/sidebar-12/components/calendars.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-12/components/date-picker.tsx",
+        path: "registry/default/block/sidebar-12/components/date-picker.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-12/components/nav-user.tsx",
+        path: "registry/default/block/sidebar-12/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9456,11 +9456,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","button","dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-13/page.tsx",
+        path: "registry/default/block/sidebar-13/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-13/components/settings-dialog.tsx",
+        path: "registry/default/block/sidebar-13/components/settings-dialog.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9476,11 +9476,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-14/page.tsx",
+        path: "registry/default/block/sidebar-14/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-14/components/app-sidebar.tsx",
+        path: "registry/default/block/sidebar-14/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9496,47 +9496,47 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","popover","collapsible","dropdown-menu","calendar","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/page.tsx",
+        path: "registry/default/block/sidebar-15/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/components/calendars.tsx",
+        path: "registry/default/block/sidebar-15/components/calendars.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/components/date-picker.tsx",
+        path: "registry/default/block/sidebar-15/components/date-picker.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/components/nav-favorites.tsx",
+        path: "registry/default/block/sidebar-15/components/nav-favorites.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/components/nav-main.tsx",
+        path: "registry/default/block/sidebar-15/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/components/nav-secondary.tsx",
+        path: "registry/default/block/sidebar-15/components/nav-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/components/nav-user.tsx",
+        path: "registry/default/block/sidebar-15/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/components/nav-workspaces.tsx",
+        path: "registry/default/block/sidebar-15/components/nav-workspaces.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/components/sidebar-left.tsx",
+        path: "registry/default/block/sidebar-15/components/sidebar-left.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/components/sidebar-right.tsx",
+        path: "registry/default/block/sidebar-15/components/sidebar-right.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/sidebar-15/components/team-switcher.tsx",
+        path: "registry/default/block/sidebar-15/components/team-switcher.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9552,11 +9552,11 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["button","card","input","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/login-01/page.tsx",
+        path: "registry/default/block/login-01/page.tsx",
         type: "registry:page",
         target: "app/login/page.tsx"
       },{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/login-01/components/login-form.tsx",
+        path: "registry/default/block/login-01/components/login-form.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9572,7 +9572,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-area-axes.tsx",
+        path: "registry/default/block/chart-area-axes.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9588,7 +9588,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-area-default.tsx",
+        path: "registry/default/block/chart-area-default.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9604,7 +9604,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-area-gradient.tsx",
+        path: "registry/default/block/chart-area-gradient.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9620,7 +9620,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-area-icons.tsx",
+        path: "registry/default/block/chart-area-icons.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9636,7 +9636,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart","select"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-area-interactive.tsx",
+        path: "registry/default/block/chart-area-interactive.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -9652,7 +9652,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-area-legend.tsx",
+        path: "registry/default/block/chart-area-legend.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9668,7 +9668,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-area-linear.tsx",
+        path: "registry/default/block/chart-area-linear.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9684,7 +9684,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-area-stacked-expand.tsx",
+        path: "registry/default/block/chart-area-stacked-expand.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9700,7 +9700,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-area-stacked.tsx",
+        path: "registry/default/block/chart-area-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9716,7 +9716,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-area-step.tsx",
+        path: "registry/default/block/chart-area-step.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9732,7 +9732,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-bar-active.tsx",
+        path: "registry/default/block/chart-bar-active.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9748,7 +9748,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-bar-default.tsx",
+        path: "registry/default/block/chart-bar-default.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9764,7 +9764,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-bar-horizontal.tsx",
+        path: "registry/default/block/chart-bar-horizontal.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9780,7 +9780,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-bar-interactive.tsx",
+        path: "registry/default/block/chart-bar-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9796,7 +9796,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-bar-label-custom.tsx",
+        path: "registry/default/block/chart-bar-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9812,7 +9812,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-bar-label.tsx",
+        path: "registry/default/block/chart-bar-label.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9828,7 +9828,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-bar-mixed.tsx",
+        path: "registry/default/block/chart-bar-mixed.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9844,7 +9844,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-bar-multiple.tsx",
+        path: "registry/default/block/chart-bar-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9860,7 +9860,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-bar-negative.tsx",
+        path: "registry/default/block/chart-bar-negative.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9876,7 +9876,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-bar-stacked.tsx",
+        path: "registry/default/block/chart-bar-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9892,7 +9892,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-line-default.tsx",
+        path: "registry/default/block/chart-line-default.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9908,7 +9908,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-line-dots-colors.tsx",
+        path: "registry/default/block/chart-line-dots-colors.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9924,7 +9924,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-line-dots-custom.tsx",
+        path: "registry/default/block/chart-line-dots-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9940,7 +9940,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-line-dots.tsx",
+        path: "registry/default/block/chart-line-dots.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9956,7 +9956,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-line-interactive.tsx",
+        path: "registry/default/block/chart-line-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9972,7 +9972,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-line-label-custom.tsx",
+        path: "registry/default/block/chart-line-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -9988,7 +9988,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-line-label.tsx",
+        path: "registry/default/block/chart-line-label.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10004,7 +10004,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-line-linear.tsx",
+        path: "registry/default/block/chart-line-linear.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10020,7 +10020,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-line-multiple.tsx",
+        path: "registry/default/block/chart-line-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10036,7 +10036,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-line-step.tsx",
+        path: "registry/default/block/chart-line-step.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10052,7 +10052,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-donut-active.tsx",
+        path: "registry/default/block/chart-pie-donut-active.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10068,7 +10068,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-donut-text.tsx",
+        path: "registry/default/block/chart-pie-donut-text.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10084,7 +10084,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-donut.tsx",
+        path: "registry/default/block/chart-pie-donut.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10100,7 +10100,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-interactive.tsx",
+        path: "registry/default/block/chart-pie-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10116,7 +10116,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-label-custom.tsx",
+        path: "registry/default/block/chart-pie-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10132,7 +10132,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-label-list.tsx",
+        path: "registry/default/block/chart-pie-label-list.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10148,7 +10148,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-label.tsx",
+        path: "registry/default/block/chart-pie-label.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10164,7 +10164,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-legend.tsx",
+        path: "registry/default/block/chart-pie-legend.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10180,7 +10180,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-separator-none.tsx",
+        path: "registry/default/block/chart-pie-separator-none.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10196,7 +10196,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-simple.tsx",
+        path: "registry/default/block/chart-pie-simple.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10212,7 +10212,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-pie-stacked.tsx",
+        path: "registry/default/block/chart-pie-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10228,7 +10228,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-default.tsx",
+        path: "registry/default/block/chart-radar-default.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10244,7 +10244,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-dots.tsx",
+        path: "registry/default/block/chart-radar-dots.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10260,7 +10260,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-grid-circle-fill.tsx",
+        path: "registry/default/block/chart-radar-grid-circle-fill.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10276,7 +10276,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-grid-circle-no-lines.tsx",
+        path: "registry/default/block/chart-radar-grid-circle-no-lines.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10292,7 +10292,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-grid-circle.tsx",
+        path: "registry/default/block/chart-radar-grid-circle.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10308,7 +10308,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-grid-custom.tsx",
+        path: "registry/default/block/chart-radar-grid-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10324,7 +10324,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-grid-fill.tsx",
+        path: "registry/default/block/chart-radar-grid-fill.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10340,7 +10340,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-grid-none.tsx",
+        path: "registry/default/block/chart-radar-grid-none.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10356,7 +10356,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-icons.tsx",
+        path: "registry/default/block/chart-radar-icons.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10372,7 +10372,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-label-custom.tsx",
+        path: "registry/default/block/chart-radar-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10388,7 +10388,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-legend.tsx",
+        path: "registry/default/block/chart-radar-legend.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10404,7 +10404,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-lines-only.tsx",
+        path: "registry/default/block/chart-radar-lines-only.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10420,7 +10420,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-multiple.tsx",
+        path: "registry/default/block/chart-radar-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10436,7 +10436,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radar-radius.tsx",
+        path: "registry/default/block/chart-radar-radius.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10452,7 +10452,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radial-grid.tsx",
+        path: "registry/default/block/chart-radial-grid.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10468,7 +10468,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radial-label.tsx",
+        path: "registry/default/block/chart-radial-label.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10484,7 +10484,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radial-shape.tsx",
+        path: "registry/default/block/chart-radial-shape.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10500,7 +10500,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radial-simple.tsx",
+        path: "registry/default/block/chart-radial-simple.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10516,7 +10516,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radial-stacked.tsx",
+        path: "registry/default/block/chart-radial-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10532,7 +10532,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-radial-text.tsx",
+        path: "registry/default/block/chart-radial-text.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10548,7 +10548,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-tooltip-default.tsx",
+        path: "registry/default/block/chart-tooltip-default.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10564,7 +10564,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-tooltip-indicator-line.tsx",
+        path: "registry/default/block/chart-tooltip-indicator-line.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10580,7 +10580,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-tooltip-indicator-none.tsx",
+        path: "registry/default/block/chart-tooltip-indicator-none.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10596,7 +10596,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-tooltip-label-none.tsx",
+        path: "registry/default/block/chart-tooltip-label-none.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10612,7 +10612,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-tooltip-label-custom.tsx",
+        path: "registry/default/block/chart-tooltip-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10628,7 +10628,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-tooltip-label-formatter.tsx",
+        path: "registry/default/block/chart-tooltip-label-formatter.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10644,7 +10644,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-tooltip-formatter.tsx",
+        path: "registry/default/block/chart-tooltip-formatter.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10660,7 +10660,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-tooltip-icons.tsx",
+        path: "registry/default/block/chart-tooltip-icons.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10676,7 +10676,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/block/chart-tooltip-advanced.tsx",
+        path: "registry/default/block/chart-tooltip-advanced.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10692,7 +10692,7 @@ export const Index: Record<string, any> = {
       type: "registry:lib",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/lib/utils.ts",
+        path: "registry/default/lib/utils.ts",
         type: "registry:lib",
         target: ""
       }],
@@ -10708,7 +10708,7 @@ export const Index: Record<string, any> = {
       type: "registry:hook",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/hooks/use-mobile.tsx",
+        path: "registry/default/hooks/use-mobile.tsx",
         type: "registry:hook",
         target: ""
       }],
@@ -10724,7 +10724,7 @@ export const Index: Record<string, any> = {
       type: "registry:hook",
       registryDependencies: undefined,
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/hooks/use-toast.ts",
+        path: "registry/default/hooks/use-toast.ts",
         type: "registry:hook",
         target: ""
       }],
@@ -10740,7 +10740,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-01.tsx",
+        path: "registry/default/v0/sidebar-01.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -10756,7 +10756,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-02.tsx",
+        path: "registry/default/v0/sidebar-02.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10772,7 +10772,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-03.tsx",
+        path: "registry/default/v0/sidebar-03.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10788,7 +10788,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-04.tsx",
+        path: "registry/default/v0/sidebar-04.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10804,7 +10804,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","collapsible"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-05.tsx",
+        path: "registry/default/v0/sidebar-05.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10820,7 +10820,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","card","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-06.tsx",
+        path: "registry/default/v0/sidebar-06.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10836,7 +10836,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-07.tsx",
+        path: "registry/default/v0/sidebar-07.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10852,7 +10852,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-08.tsx",
+        path: "registry/default/v0/sidebar-08.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10868,7 +10868,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","switch"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-09.tsx",
+        path: "registry/default/v0/sidebar-09.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10884,7 +10884,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","popover","collapsible","dropdown-menu"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-10.tsx",
+        path: "registry/default/v0/sidebar-10.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10900,7 +10900,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-11.tsx",
+        path: "registry/default/v0/sidebar-11.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10916,7 +10916,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","calendar","dropdown-menu","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-12.tsx",
+        path: "registry/default/v0/sidebar-12.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10932,7 +10932,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","button","dialog"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-13.tsx",
+        path: "registry/default/v0/sidebar-13.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10948,7 +10948,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-14.tsx",
+        path: "registry/default/v0/sidebar-14.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10964,7 +10964,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","popover","collapsible","dropdown-menu","calendar","avatar"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/sidebar-15.tsx",
+        path: "registry/default/v0/sidebar-15.tsx",
         type: "registry:block",
         target: ""
       }],
@@ -10980,7 +10980,7 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["button","card","input","label"],
       files: [{
-        path: "/Users/shadcn/Code/shadcn/ui/apps/www/registry/default/v0/login-01.tsx",
+        path: "registry/default/v0/login-01.tsx",
         type: "registry:block",
         target: ""
       }],
