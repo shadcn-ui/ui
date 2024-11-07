@@ -326,9 +326,9 @@ export function BlockViewerFileTree() {
         </SidebarGroupLabel>
         <SidebarGroup className="p-0">
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="gap-1.5">
               {tree.map((file, index) => (
-                <Tree key={index} item={file} index={index + 1} />
+                <Tree key={index} item={file} index={1} />
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
@@ -348,12 +348,14 @@ function Tree({ item, index }: { item: FileTree; index: number }) {
           isActive={item.path === activeFile}
           onClick={() => item.path && setActiveFile(item.path)}
           className="whitespace-nowrap rounded-none pl-[--index] hover:bg-zinc-700 hover:text-white focus:bg-zinc-700 focus:text-white focus-visible:bg-zinc-700 focus-visible:text-white active:bg-zinc-700 active:text-white data-[active=true]:bg-zinc-700 data-[active=true]:text-white"
+          data-index={index}
           style={
             {
-              "--index": `${index * 1.6}rem`,
+              "--index": `${index * (index === 2 ? 1.2 : 1.3)}rem`,
             } as React.CSSProperties
           }
         >
+          <ChevronRight className="invisible" />
           <File className="h-4 w-4" />
           {item.name}
         </SidebarMenuButton>
@@ -372,7 +374,7 @@ function Tree({ item, index }: { item: FileTree; index: number }) {
             className="whitespace-nowrap rounded-none pl-[--index] hover:bg-zinc-700 hover:text-white focus-visible:bg-zinc-700 focus-visible:text-white active:bg-zinc-700 active:text-white data-[active=true]:bg-zinc-700 data-[active=true]:text-white data-[state=open]:hover:bg-zinc-700 data-[state=open]:hover:text-white"
             style={
               {
-                "--index": `${index * (index === 1 ? 0.5 : 1)}rem`,
+                "--index": `${index * (index === 1 ? 1 : 1.2)}rem`,
               } as React.CSSProperties
             }
           >
