@@ -2,6 +2,11 @@ import { createContentlayerPlugin } from "next-contentlayer2"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    outputFileTracingIncludes: {
+      "/blocks/*": ["./registry/**/*"],
+    },
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
