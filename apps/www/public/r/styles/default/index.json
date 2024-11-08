@@ -2,10 +2,10 @@
   "name": "default",
   "type": "registry:style",
   "dependencies": [
-    "tailwindcss-animate",
     "class-variance-authority",
     "lucide-react"
   ],
+  "devDependencies": ["tailwindcss-animate"],
   "registryDependencies": [
     "utils"
   ],

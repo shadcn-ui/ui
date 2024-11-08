@@ -1,11 +1,11 @@
 {
   "name": "new-york",
   "type": "registry:style",
-  "dependencies": [
-    "tailwindcss-animate",
+    "dependencies": [
     "class-variance-authority",
     "lucide-react"
   ],
+  "devDependencies": ["tailwindcss-animate"],
   "registryDependencies": [
     "utils"
   ],
