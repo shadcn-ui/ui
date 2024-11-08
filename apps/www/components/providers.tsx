@@ -6,9 +6,10 @@ import { ThemeProvider as NextThemesProvider } from "next-themes"
 
 import { TooltipProvider } from "@/registry/new-york/ui/tooltip"
 
-type ThemeProviderProps = React.ComponentProps<typeof NextThemesProvider>
-
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+export function ThemeProvider({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
   return (
     <JotaiProvider>
       <NextThemesProvider {...props}>
