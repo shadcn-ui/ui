@@ -1,11 +1,11 @@
 import {
-  CalendarIcon,
-  EnvelopeClosedIcon,
-  FaceIcon,
-  GearIcon,
-  PersonIcon,
-  RocketIcon,
-} from "@radix-ui/react-icons"
+  Calculator,
+  Calendar,
+  CreditCard,
+  Settings,
+  Smile,
+  User,
+} from "lucide-react"
 
 import {
   Command,
@@ -26,32 +26,32 @@ export default function CommandDemo() {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
           <CommandItem>
-            <CalendarIcon />
+            <Calendar />
             <span>Calendar</span>
           </CommandItem>
           <CommandItem>
-            <FaceIcon />
+            <Smile />
             <span>Search Emoji</span>
           </CommandItem>
           <CommandItem disabled>
-            <RocketIcon />
-            <span>Launch</span>
+            <Calculator />
+            <span>Calculator</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Settings">
           <CommandItem>
-            <PersonIcon />
+            <User />
             <span>Profile</span>
             <CommandShortcut>⌘P</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <EnvelopeClosedIcon />
-            <span>Mail</span>
+            <CreditCard />
+            <span>Billing</span>
             <CommandShortcut>⌘B</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <GearIcon />
+            <Settings />
             <span>Settings</span>
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>

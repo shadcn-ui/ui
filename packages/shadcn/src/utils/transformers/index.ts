@@ -4,6 +4,7 @@ import path from "path"
 import { Config } from "@/src/utils/get-config"
 import { registryBaseColorSchema } from "@/src/utils/registry/schema"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
+import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformJsx } from "@/src/utils/transformers/transform-jsx"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
@@ -42,6 +43,7 @@ export async function transform(
     transformRsc,
     transformCssVars,
     transformTwPrefixes,
+    transformIcons,
   ]
 ) {
   const tempFile = await createTempSourceFile(opts.filename)
@@ -50,7 +52,7 @@ export async function transform(
   })
 
   for (const transformer of transformers) {
-    transformer({ sourceFile, ...opts })
+    await transformer({ sourceFile, ...opts })
   }
 
   if (opts.transformJsx) {

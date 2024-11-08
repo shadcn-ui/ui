@@ -41,7 +41,7 @@ export function DemoShareDocument() {
         </div>
         <Separator className="my-4" />
         <div className="space-y-4">
-          <h4 className="text-sm font-medium">People with access</h4>
+          <div className="text-sm font-medium">People with access</div>
           <div className="grid gap-6">
             <div className="flex items-center justify-between space-x-4">
               <div className="flex items-center space-x-4">

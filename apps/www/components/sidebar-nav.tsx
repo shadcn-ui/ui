@@ -44,18 +44,16 @@ export function DocsSidebarNavItems({
   pathname,
 }: DocsSidebarNavItemsProps) {
   return items?.length ? (
-    <div className="grid grid-flow-row auto-rows-max text-sm">
+    <div className="grid grid-flow-row auto-rows-max gap-0.5 text-sm">
       {items.map((item, index) =>
         item.href && !item.disabled ? (
           <Link
             key={index}
             href={item.href}
             className={cn(
-              "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
+              "group flex w-full items-center px-2 py-1 font-normal text-foreground underline-offset-2 hover:underline",
               item.disabled && "cursor-not-allowed opacity-60",
-              pathname === item.href
-                ? "font-medium text-foreground"
-                : "text-muted-foreground"
+              pathname === item.href && "underline"
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
