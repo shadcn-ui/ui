@@ -1,5 +1,29 @@
 # @shadcn/ui
 
+## 2.1.6
+
+### Patch Changes
+
+- [#5602](https://github.com/shadcn-ui/ui/pull/5602) [`2c2fe97`](https://github.com/shadcn-ui/ui/commit/2c2fe97eb96b2c5c7d03d1ae2756a851c3790030) Thanks [@shadcn](https://github.com/shadcn)! - move new-york icons to lucide-react
+
+## 2.1.5
+
+### Patch Changes
+
+- [#5707](https://github.com/shadcn-ui/ui/pull/5707) [`cdfecd1`](https://github.com/shadcn-ui/ui/commit/cdfecd1d97af2b4d9de330927edd9fd2eef1234e) Thanks [@shadcn](https://github.com/shadcn)! - temporarily bring back npm flag
+
+## 2.1.4
+
+### Patch Changes
+
+- [#5686](https://github.com/shadcn-ui/ui/pull/5686) [`4ff64ba`](https://github.com/shadcn-ui/ui/commit/4ff64ba818d15a094547f845ea294c2e1ab208d4) Thanks [@shadcn](https://github.com/shadcn)! - remove flag for npm
+
+## 2.1.3
+
+### Patch Changes
+
+- [#5621](https://github.com/shadcn-ui/ui/pull/5621) [`64739f8`](https://github.com/shadcn-ui/ui/commit/64739f83991205333867000d7813e82b0d98f871) Thanks [@shadcn](https://github.com/shadcn)! - add flag prompt for npm
+
 ## 2.1.2
 
 ### Patch Changes

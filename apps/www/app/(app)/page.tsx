@@ -10,18 +10,18 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
+import CardsNewYork from "@/registry/new-york/example/cards"
 import { Button } from "@/registry/new-york/ui/button"
-import MailPage from "@/app/(app)/examples/mail/page"
 
 export default function IndexPage() {
   return (
-    <div className="container relative">
+    <div className="relative">
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>Build your component library</PageHeaderHeading>
         <PageHeaderDescription>
           Beautifully designed components that you can copy and paste into your
-          apps.
+          apps. Made with Tailwind CSS. Open source.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
@@ -38,28 +38,28 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <ExamplesNav className="[&>a:first-child]:text-primary" />
-      <section className="overflow-hidden rounded-lg border bg-background shadow-md md:hidden md:shadow-xl">
-        <Image
-          src="/examples/mail-dark.png"
-          width={1280}
-          height={727}
-          alt="Mail"
-          className="hidden dark:block"
-        />
-        <Image
-          src="/examples/mail-light.png"
-          width={1280}
-          height={727}
-          alt="Mail"
-          className="block dark:hidden"
-        />
-      </section>
-      <section className="hidden md:block">
-        <div className="overflow-hidden rounded-lg border bg-background shadow">
-          <MailPage />
-        </div>
-      </section>
+      <div className="container py-6">
+        <ExamplesNav className="[&>a:first-child]:text-primary" />
+        <section className="overflow-hidden rounded-lg border bg-background shadow-md md:hidden md:shadow-xl">
+          <Image
+            src="/examples/cards-light.png"
+            width={1280}
+            height={1214}
+            alt="Cards"
+            className="block dark:hidden"
+          />
+          <Image
+            src="/examples/cards-dark.png"
+            width={1280}
+            height={1214}
+            alt="Cards"
+            className="hidden dark:block"
+          />
+        </section>
+        <section className="hidden md:block [&>div]:p-0">
+          <CardsNewYork />
+        </section>
+      </div>
     </div>
   )
 }
