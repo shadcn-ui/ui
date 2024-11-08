@@ -18,6 +18,13 @@ const explorer = cosmiconfig("components", {
   searchPlaces: ["components.json"],
 })
 
+const registrySchema = z.object({
+  url: z.string(),
+  style: z.string(),
+})
+
+export type Registry = z.infer<typeof registrySchema>
+
 export const rawConfigSchema = z
   .object({
     $schema: z.string().optional(),
@@ -39,6 +46,7 @@ export const rawConfigSchema = z
       hooks: z.string().optional(),
     }),
     iconLibrary: z.string().optional(),
+    registries: z.record(z.string(), registrySchema).optional(),
   })
   .strict()
 

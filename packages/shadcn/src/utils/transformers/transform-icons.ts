@@ -6,13 +6,17 @@ import { SourceFile, SyntaxKind } from "ts-morph"
 // Lucide is the default icon library in the registry.
 const SOURCE_LIBRARY = "lucide"
 
-export const transformIcons: Transformer = async ({ sourceFile, config }) => {
+export const transformIcons: Transformer = async ({
+  sourceFile,
+  config,
+  registry,
+}) => {
   // No transform if we cannot read the icon library.
   if (!config.iconLibrary || !(config.iconLibrary in ICON_LIBRARIES)) {
     return sourceFile
   }
 
-  const registryIcons = await getRegistryIcons()
+  const registryIcons = await getRegistryIcons(registry)
   const sourceLibrary = SOURCE_LIBRARY
   const targetLibrary = config.iconLibrary
 

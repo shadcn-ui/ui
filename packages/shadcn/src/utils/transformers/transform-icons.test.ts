@@ -64,6 +64,10 @@ return <div><Check /></div>
             ...testConfig,
             iconLibrary: "radix",
           },
+          registry: {
+            style: "default",
+            url: "https://ui.shadcn.com/r",
+          },
         },
         [transformIcons]
       )
@@ -94,6 +98,10 @@ export function Component() {
             ...testConfig,
             iconLibrary: "lucide",
           },
+          registry: {
+            style: "default",
+            url: "https://ui.shadcn.com/r",
+          },
         },
         [transformIcons]
       )
@@ -123,6 +131,10 @@ export function Component() {
           config: {
             ...testConfig,
             iconLibrary: "radix",
+          },
+          registry: {
+            style: "default",
+            url: "https://ui.shadcn.com/r",
           },
         },
         [transformIcons]

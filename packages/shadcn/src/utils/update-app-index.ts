@@ -1,16 +1,20 @@
 import fs from "fs/promises"
 import path from "path"
-import { Config } from "@/src/utils/get-config"
+import { Config, Registry } from "@/src/utils/get-config"
 import { getRegistryItem } from "@/src/utils/registry"
 
-export async function updateAppIndex(component: string, config: Config) {
+export async function updateAppIndex(
+  component: string,
+  config: Config,
+  registry: Registry
+) {
   const indexPath = path.join(config.resolvedPaths.cwd, "app/page.tsx")
 
   if (!(await fs.stat(indexPath)).isFile()) {
     return
   }
 
-  const registryItem = await getRegistryItem(component, config.style)
+  const registryItem = await getRegistryItem(component, registry)
   if (
     !registryItem?.meta?.importSpecifier ||
     !registryItem?.meta?.moduleSpecifier

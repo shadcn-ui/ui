@@ -7,6 +7,8 @@ import { logger } from "@/src/utils/logger"
 import { Command } from "commander"
 import { z } from "zod"
 
+import { getRegistry } from "../utils/registry"
+
 export const migrations = [
   {
     name: "icons",
@@ -28,6 +30,7 @@ export const migrateOptionsSchema = z.object({
       }
     )
     .optional(),
+  registry: z.string().optional(),
 })
 
 export const migrate = new Command()
@@ -40,12 +43,14 @@ export const migrate = new Command()
     process.cwd()
   )
   .option("-l, --list", "list all migrations.", false)
+  .option("-r, --registry <registry>", "name of the registry to use.")
   .action(async (migration, opts) => {
     try {
       const options = migrateOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
         migration,
         list: opts.list,
+        registry: opts.registry,
       })
 
       if (options.list || !options.migration) {
@@ -80,7 +85,8 @@ export const migrate = new Command()
       }
 
       if (options.migration === "icons") {
-        await migrateIcons(config)
+        const registry = getRegistry(config, options.registry)
+        await migrateIcons(config, registry)
       }
     } catch (error) {
       logger.break()

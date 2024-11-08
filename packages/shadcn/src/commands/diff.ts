@@ -1,12 +1,13 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { Config, getConfig } from "@/src/utils/get-config"
+import { Config, Registry, getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import {
   fetchTree,
   getItemTargetPath,
+  getRegistry,
   getRegistryBaseColor,
   getRegistryIndex,
 } from "@/src/utils/registry"
@@ -21,6 +22,7 @@ const updateOptionsSchema = z.object({
   yes: z.boolean(),
   cwd: z.string(),
   path: z.string().optional(),
+  registry: z.string().optional(),
 })
 
 export const diff = new Command()
@@ -33,6 +35,7 @@ export const diff = new Command()
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
+  .option("-r, --registry <registry>", "name of the registry to use.")
   .action(async (name, opts) => {
     try {
       const options = updateOptionsSchema.parse({
@@ -56,8 +59,9 @@ export const diff = new Command()
         )
         process.exit(1)
       }
+      const registry = getRegistry(config, options.registry)
 
-      const registryIndex = await getRegistryIndex()
+      const registryIndex = await getRegistryIndex(registry)
 
       if (!registryIndex) {
         handleError(new Error("Failed to fetch registry index."))
@@ -85,7 +89,7 @@ export const diff = new Command()
         // Check for updates.
         const componentsWithUpdates = []
         for (const component of projectComponents) {
-          const changes = await diffComponent(component, config)
+          const changes = await diffComponent(component, config, registry)
           if (changes.length) {
             componentsWithUpdates.push({
               name: component.name,
@@ -127,7 +131,7 @@ export const diff = new Command()
         process.exit(1)
       }
 
-      const changes = await diffComponent(component, config)
+      const changes = await diffComponent(component, config, registry)
 
       if (!changes.length) {
         logger.info(`No updates found for ${options.component}.`)
@@ -146,10 +150,14 @@ export const diff = new Command()
 
 async function diffComponent(
   component: z.infer<typeof registryIndexSchema>[number],
-  config: Config
+  config: Config,
+  registry: Registry
 ) {
-  const payload = await fetchTree(config.style, [component])
-  const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+  const payload = await fetchTree(registry, [component])
+  const baseColor = await getRegistryBaseColor(
+    config.tailwind.baseColor,
+    registry
+  )
 
   if (!payload) {
     return []
@@ -185,6 +193,7 @@ async function diffComponent(
         raw: file.content,
         config,
         baseColor,
+        registry,
       })
 
       const patch = diffLines(registryContent as string, fileContent)

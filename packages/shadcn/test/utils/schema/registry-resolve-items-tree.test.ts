@@ -10,6 +10,9 @@ describe("registryResolveItemTree", () => {
         tailwind: {
           baseColor: "stone",
         },
+      }, {
+        style: "default",
+        url: "https://ui.shadcn.com/r"
       })
     ).toMatchSnapshot()
   })
@@ -21,6 +24,9 @@ describe("registryResolveItemTree", () => {
         tailwind: {
           baseColor: "zinc",
         },
+      }, {
+        style: "default",
+        url: "https://ui.shadcn.com/r"
       })
     ).toMatchSnapshot()
   })
@@ -32,6 +38,9 @@ describe("registryResolveItemTree", () => {
         tailwind: {
           baseColor: "zinc",
         },
+      }, {
+        style: "default",
+        url: "https://ui.shadcn.com/r"
       })
     ).toMatchSnapshot()
   })

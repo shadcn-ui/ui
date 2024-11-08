@@ -18,7 +18,11 @@ import { getProjectConfig, getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
+import {
+  getRegistry,
+  getRegistryBaseColors,
+  getRegistryStyles,
+} from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
@@ -155,7 +159,7 @@ export async function runInit(
 
 async function promptForConfig(defaultConfig: Config | null = null) {
   const [styles, baseColors] = await Promise.all([
-    getRegistryStyles(),
+    getRegistryStyles(getRegistry(defaultConfig)),
     getRegistryBaseColors(),
   ])
 
@@ -279,7 +283,7 @@ async function promptForMinimalConfig(
 
   if (!opts.defaults) {
     const [styles, baseColors] = await Promise.all([
-      getRegistryStyles(),
+      getRegistryStyles(getRegistry()),
       getRegistryBaseColors(),
     ])
 

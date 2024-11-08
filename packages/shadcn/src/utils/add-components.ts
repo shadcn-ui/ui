@@ -1,7 +1,7 @@
 import { type Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
-import { registryResolveItemsTree } from "@/src/utils/registry"
+import { getRegistry, registryResolveItemsTree } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
@@ -15,6 +15,7 @@ export async function addComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    registry?: string
   }
 ) {
   options = {
@@ -27,7 +28,8 @@ export async function addComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  const tree = await registryResolveItemsTree(components, config)
+  const registry = getRegistry(config, options.registry)
+  const tree = await registryResolveItemsTree(components, config, registry)
   if (!tree) {
     registrySpinner?.fail()
     return handleError(new Error("Failed to fetch components from registry."))
@@ -45,10 +47,15 @@ export async function addComponents(
   await updateDependencies(tree.dependencies, config, {
     silent: options.silent,
   })
-  await updateFiles(tree.files, config, {
-    overwrite: options.overwrite,
-    silent: options.silent,
-  })
+  await updateFiles(
+    tree.files,
+    config,
+    {
+      overwrite: options.overwrite,
+      silent: options.silent,
+    },
+    registry
+  )
 
   if (tree.docs) {
     logger.info(tree.docs)
