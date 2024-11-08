@@ -1,0 +1,178 @@
+---
+title: Adonis
+description: Install and configure Adonis with Inertia
+---
+<Steps>
+### Create project
+Start by creating a new Adonis project with Inertia and React using the adonis installer:
+```bash
+npm init adonisjs@latest -- -K=inertia --adapter=react --ssr
+```
+### Add Tailwind and its configuration
+Install `tailwindcss` and its peer dependencies, then generate your `tailwind.config.js` and `postcss.config.js` files:
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+Add this import header in your main css file, `inertia/css/app.css` in our case:
+```css {1-3} showLineNumbers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* ... */
+```
+Configure the tailwind template paths in `tailwind.config.js`:
+```js {3-6}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './inertia/**/*.edge',
+    './inertia/**/*.{js,ts,jsx,tsx}'
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+### Start your build process
+Run your build process with npm run dev.
+```bash
+npm run dev
+```
+### Start using Tailwind in your project
+Make sure your compiled CSS is included in the `<head>` then start using Tailwind’s utility classes to style your content in `resources/views/inertia_layout.edge`.
+```html {10}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title inertia>AdonisJS x Inertia x React</title>
+  @vite(['inertia/css/app.css', 'inertia/js/app.js'])
+  @viteReactRefresh()
+  @inertiaHead()
+  @vite(['inertia/app/app.tsx', `inertia/pages/${page.component}.tsx`])
+</head>
+<body class="font-regular scroll-smooth h-full">
+  @inertia()
+</body>
+</html>
+```
+### Configure tsconfig.json
+Add import alias:
+```json {6-9} showLineNumbers
+{
+  "extends": "@adonisjs/tsconfig/tsconfig.app.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./build",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "exclude": ["./inertia/**/*", "node_modules", "build"]
+}
+```
+__Note:__ If you direct the alias to `inertia/@/*` this will cause an error:
+```bash {4-7} showLineNumbers
+✔ Preflight checks.
+✔ Verifying framework. Found Vite.
+✔ Validating Tailwind CSS.
+✖ Validating import alias.
+No import alias found in your tsconfig.json file.
+Visit https://ui.shadcn.com/docs/installation/vite to learn how to set an import alias.
+```
+### Run the CLI
+Run the `shadcn` init command to setup your project:
+```bash
+npx shadcn@latest init
+```
+### Configure components.json
+You will be asked a few questions to configure `components.json`:
+```txt
+Which style would you like to use?
+Which color would you like to use as base color?
+Do you want to use CSS variables for colors? › yes
+```
+### Move utils.ts to inertia
+Move `utils.ts` file from `src/lib` folder to `inertia/@/lib`:
+```bash
+mkdir inertia/@/lib
+mv src/lib/utils.ts inertia/@/lib
+rm -r src
+```
+Change the alias in `tsconfig.json` so that the components we install point to the `inertia/@` folder:
+```json {8} showLineNumbers
+{
+  "extends": "@adonisjs/tsconfig/tsconfig.app.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./build",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./inertia/@/*"]
+    }
+  },
+  "exclude": ["./inertia/**/*", "node_modules", "build"]
+}
+```
+### Configure vite.config.ts
+Add import alias:
+```ts {18} showLineNumbers
+export default defineConfig({
+  plugins: [
+    inertia({ ssr: { enabled: true, entrypoint: 'inertia/app/ssr.tsx' } }),
+    react(),
+    adonisjs({
+      entrypoints: ['inertia/app/app.tsx', 'inertia/css/app.css', 'inertia/js/app.js'],
+      reload: ['resources/views/**/*.edge'],
+    }),
+  ],
+  /**
+   * Define aliases for importing modules from
+   * your frontend code
+   */
+  resolve: {
+    alias: {
+      '~/': `${getDirname(import.meta.url)}/inertia/`,
+      '@/': `${getDirname(import.meta.url)}/inertia/@/`,
+    },
+  },
+})
+```
+### Configure Inertia tsconfig.json
+Add import alias in `/inertia/tsconfig.json`:
+```json {9} showLineNumbers
+{
+  "extends": "@adonisjs/tsconfig/tsconfig.client.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./@/*"],
+    }
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"]
+}
+```
+### That's it
+You can now start adding components to your project.
+```bash
+npx shadcn@latest add button
+```
+The command above will add the `Button` component to your project. You can then import it like this:
+```tsx {1,6} showLineNumbers
+import { Button } from "@/components/ui/button"
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+```
+</Steps>
