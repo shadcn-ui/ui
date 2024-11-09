@@ -7,12 +7,13 @@ import * as ERRORS from "@/src/utils/errors"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { getRegistry, getRegistryIndex } from "@/src/utils/registry"
+import { getRegistryIndex } from "@/src/utils/registry"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
-import { Registry } from "../utils/get-config"
+
+import { Config } from "../utils/get-config"
 
 export const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -81,17 +82,8 @@ export const add = new Command()
 
       let { errors, config } = await preFlightAdd(options)
 
-      const registry = getRegistry(config, options.registry)
-
-      if (!options.components?.length) {
-        options.components = await promptForRegistryComponents(
-          options,
-          registry
-        )
-      }
-
       // No components.json file. Prompt the user to run init.
-      if (errors[ERRORS.MISSING_CONFIG]) {
+      if (errors[ERRORS.MISSING_CONFIG] || config == null) {
         const { proceed } = await prompts({
           type: "confirm",
           name: "proceed",
@@ -116,6 +108,10 @@ export const add = new Command()
           isNewProject: false,
           srcDir: options.srcDir,
         })
+      }
+
+      if (!options.components?.length) {
+        options.components = await promptForRegistryComponents(options, config)
       }
 
       let shouldUpdateAppIndex = false
@@ -158,7 +154,7 @@ export const add = new Command()
       // If we're adding a single component and it's from the v0 registry,
       // let's update the app/page.tsx file to import the component.
       if (shouldUpdateAppIndex) {
-        await updateAppIndex(options.components[0], config, registry)
+        await updateAppIndex(options.components[0], config)
       }
     } catch (error) {
       logger.break()
@@ -168,9 +164,9 @@ export const add = new Command()
 
 async function promptForRegistryComponents(
   options: z.infer<typeof addOptionsSchema>,
-  registry: Registry
+  config: Config
 ) {
-  const registryIndex = await getRegistryIndex(registry)
+  const registryIndex = await getRegistryIndex(config.url)
   if (!registryIndex) {
     logger.break()
     handleError(new Error("Failed to fetch registry index."))

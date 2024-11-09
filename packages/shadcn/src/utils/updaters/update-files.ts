@@ -1,6 +1,6 @@
 import { existsSync, promises as fs } from "fs"
 import path, { basename } from "path"
-import { Config, Registry } from "@/src/utils/get-config"
+import { Config } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -38,8 +38,7 @@ export async function updateFiles(
     overwrite?: boolean
     force?: boolean
     silent?: boolean
-  },
-  registry: Registry
+  }
 ) {
   if (!files?.length) {
     return
@@ -56,7 +55,7 @@ export async function updateFiles(
 
   const [projectInfo, baseColor] = await Promise.all([
     getProjectInfo(config.resolvedPaths.cwd),
-    getRegistryBaseColor(config.tailwind.baseColor, registry),
+    getRegistryBaseColor(config.tailwind.baseColor, config.url),
   ])
 
   const filesCreated = []
@@ -115,7 +114,6 @@ export async function updateFiles(
         config,
         baseColor,
         transformJsx: !config.tsx,
-        registry,
       },
       [
         transformImport,

@@ -2,7 +2,7 @@ import { randomBytes } from "crypto"
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { Config, Registry } from "@/src/utils/get-config"
+import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { ICON_LIBRARIES } from "@/src/utils/icon-libraries"
 import { logger } from "@/src/utils/logger"
@@ -15,7 +15,7 @@ import prompts from "prompts"
 import { Project, ScriptKind, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
-export async function migrateIcons(config: Config, registry: Registry) {
+export async function migrateIcons(config: Config) {
   if (!config.resolvedPaths.ui) {
     throw new Error(
       "We could not find a valid `ui` path in your `components.json` file. Please ensure you have a valid `ui` path in your `components.json` file."
@@ -27,7 +27,7 @@ export async function migrateIcons(config: Config, registry: Registry) {
     fg("**/*.{js,ts,jsx,tsx}", {
       cwd: uiPath,
     }),
-    getRegistryIcons(registry),
+    getRegistryIcons(config.url),
   ])
 
   if (Object.keys(registryIcons).length === 0) {

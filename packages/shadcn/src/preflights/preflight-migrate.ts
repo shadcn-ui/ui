@@ -1,5 +1,4 @@
 import path from "path"
-import { addOptionsSchema } from "@/src/commands/add"
 import { migrateOptionsSchema } from "@/src/commands/migrate"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
@@ -36,7 +35,7 @@ export async function preFlightMigrate(
   }
 
   try {
-    const config = await getConfig(options.cwd)
+    const config = await getConfig(options.cwd, options.registry)
 
     return {
       errors,

@@ -33,7 +33,7 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
   }
 
   try {
-    const config = await getConfig(options.cwd)
+    const config = await getConfig(options.cwd, options.registry)
 
     return {
       errors,

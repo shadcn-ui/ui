@@ -7,8 +7,6 @@ import { logger } from "@/src/utils/logger"
 import { Command } from "commander"
 import { z } from "zod"
 
-import { getRegistry } from "../utils/registry"
-
 export const migrations = [
   {
     name: "icons",
@@ -85,8 +83,7 @@ export const migrate = new Command()
       }
 
       if (options.migration === "icons") {
-        const registry = getRegistry(config, options.registry)
-        await migrateIcons(config, registry)
+        await migrateIcons(config)
       }
     } catch (error) {
       logger.break()

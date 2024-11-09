@@ -1,5 +1,5 @@
 import path from "path"
-import { Config, Registry } from "@/src/utils/get-config"
+import { Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -18,15 +18,16 @@ import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
 import { z } from "zod"
 
-const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
+export const DEFAULT_REGISTRY_URL =
+  process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
 
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined
 
-export async function getRegistryIndex(registry: Registry) {
+export async function getRegistryIndex(registryUrl: string) {
   try {
-    const [result] = await fetchRegistry(["index.json"], registry)
+    const [result] = await fetchRegistry(["index.json"], registryUrl)
 
     return registryIndexSchema.parse(result)
   } catch (error) {
@@ -35,9 +36,9 @@ export async function getRegistryIndex(registry: Registry) {
   }
 }
 
-export async function getRegistryStyles(registry: Registry) {
+export async function getRegistryStyles(registryUrl: string) {
   try {
-    const [result] = await fetchRegistry(["styles/index.json"], registry)
+    const [result] = await fetchRegistry(["styles/index.json"], registryUrl)
 
     return stylesSchema.parse(result)
   } catch (error) {
@@ -47,9 +48,9 @@ export async function getRegistryStyles(registry: Registry) {
   }
 }
 
-export async function getRegistryIcons(registry: Registry) {
+export async function getRegistryIcons(registryUrl: string) {
   try {
-    const [result] = await fetchRegistry(["icons/index.json"], registry)
+    const [result] = await fetchRegistry(["icons/index.json"], registryUrl)
     return iconsSchema.parse(result)
   } catch (error) {
     handleError(error)
@@ -57,11 +58,11 @@ export async function getRegistryIcons(registry: Registry) {
   }
 }
 
-export async function getRegistryItem(name: string, registry: Registry) {
+export async function getRegistryItem(name: string, config: Config) {
   try {
     const [result] = await fetchRegistry(
-      [isUrl(name) ? name : `styles/${registry.style}/${name}.json`],
-      registry
+      [isUrl(name) ? name : `styles/${config.style}/${name}.json`],
+      config.url
     )
 
     return registryItemSchema.parse(result)
@@ -99,10 +100,13 @@ export async function getRegistryBaseColors() {
 
 export async function getRegistryBaseColor(
   baseColor: string,
-  registry: Registry
+  registryUrl: string
 ) {
   try {
-    const [result] = await fetchRegistry([`colors/${baseColor}.json`], registry)
+    const [result] = await fetchRegistry(
+      [`colors/${baseColor}.json`],
+      registryUrl
+    )
 
     return registryBaseColorSchema.parse(result)
   } catch (error) {
@@ -138,14 +142,12 @@ export async function resolveTree(
 }
 
 export async function fetchTree(
-  registry: Registry,
+  config: Config,
   tree: z.infer<typeof registryIndexSchema>
 ) {
   try {
-    const paths = tree.map(
-      (item) => `styles/${registry.style}/${item.name}.json`
-    )
-    const result = await fetchRegistry(paths, registry)
+    const paths = tree.map((item) => `styles/${config.style}/${item.name}.json`)
+    const result = await fetchRegistry(paths, config.url)
     return registryIndexSchema.parse(result)
   } catch (error) {
     handleError(error)
@@ -176,11 +178,11 @@ export async function getItemTargetPath(
   )
 }
 
-async function fetchRegistry(paths: string[], registry: Registry) {
+async function fetchRegistry(paths: string[], registryUrl: string) {
   try {
     const results = await Promise.all(
       paths.map(async (path) => {
-        const url = getRegistryUrl(path, registry)
+        const url = getRegistryUrl(path, registryUrl)
         const response = await fetch(url, { agent })
 
         if (!response.ok) {
@@ -272,26 +274,12 @@ export function getRegistryItemFileTargetPath(
   return config.resolvedPaths.components
 }
 
-export function getRegistry(
-  config?: Config | null,
-  registry?: string
-): Registry {
-  if (registry && config?.registries && registry in config.registries) {
-    return config.registries[registry]
-  }
-  return {
-    style: config?.style ?? "default",
-    url: REGISTRY_URL,
-  }
-}
-
 export async function registryResolveItemsTree(
   names: z.infer<typeof registryItemSchema>["name"][],
-  config: Config,
-  registry: Registry
+  config: Config
 ) {
   try {
-    const index = await getRegistryIndex(registry)
+    const index = await getRegistryIndex(config.url)
     if (!index) {
       return null
     }
@@ -305,13 +293,13 @@ export async function registryResolveItemsTree(
     for (const name of names) {
       const itemRegistryDependencies = await resolveRegistryDependencies(
         name,
-        registry
+        config
       )
       registryDependencies.push(...itemRegistryDependencies)
     }
 
     const uniqueRegistryDependencies = Array.from(new Set(registryDependencies))
-    let result = await fetchRegistry(uniqueRegistryDependencies, registry)
+    let result = await fetchRegistry(uniqueRegistryDependencies, config.url)
     const payload = z.array(registryItemSchema).parse(result)
 
     if (!payload) {
@@ -324,11 +312,7 @@ export async function registryResolveItemsTree(
     // Other components will ship with their theme tokens.
     if (names.includes("index")) {
       if (config.tailwind.baseColor) {
-        const theme = await registryGetTheme(
-          config.tailwind.baseColor,
-          config,
-          registry
-        )
+        const theme = await registryGetTheme(config.tailwind.baseColor, config)
         if (theme) {
           payload.unshift(theme)
         }
@@ -372,15 +356,15 @@ export async function registryResolveItemsTree(
 
 async function resolveRegistryDependencies(
   url: string,
-  registry: Registry
+  config: Config
 ): Promise<string[]> {
   const visited = new Set<string>()
   const payload: string[] = []
 
   async function resolveDependencies(itemUrl: string) {
     const url = getRegistryUrl(
-      isUrl(itemUrl) ? itemUrl : `styles/${registry.style}/${itemUrl}.json`,
-      registry
+      isUrl(itemUrl) ? itemUrl : `styles/${config.style}/${itemUrl}.json`,
+      config.url
     )
 
     if (visited.has(url)) {
@@ -390,7 +374,7 @@ async function resolveRegistryDependencies(
     visited.add(url)
 
     try {
-      const [result] = await fetchRegistry([url], registry)
+      const [result] = await fetchRegistry([url], config.url)
       const item = registryItemSchema.parse(result)
       payload.push(url)
 
@@ -411,12 +395,8 @@ async function resolveRegistryDependencies(
   return Array.from(new Set(payload))
 }
 
-export async function registryGetTheme(
-  name: string,
-  config: Config,
-  registry: Registry
-) {
-  const baseColor = await getRegistryBaseColor(name, registry)
+export async function registryGetTheme(name: string, config: Config) {
+  const baseColor = await getRegistryBaseColor(name, config.url)
   if (!baseColor) {
     return null
   }
@@ -467,7 +447,7 @@ export async function registryGetTheme(
   return theme
 }
 
-function getRegistryUrl(path: string, registry: Registry) {
+function getRegistryUrl(path: string, registryUrl: string) {
   if (isUrl(path)) {
     // If the url contains /chat/b/, we assume it's the v0 registry.
     // We need to add the /json suffix if it's missing.
@@ -479,7 +459,7 @@ function getRegistryUrl(path: string, registry: Registry) {
     return url.toString()
   }
 
-  return `${registry.url}/${path}`
+  return `${registryUrl}/${path}`
 }
 
 function isUrl(path: string) {

@@ -19,7 +19,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import {
-  getRegistry,
+  DEFAULT_REGISTRY_URL,
   getRegistryBaseColors,
   getRegistryStyles,
 } from "@/src/utils/registry"
@@ -108,7 +108,7 @@ export async function runInit(
   const projectConfig = await getProjectConfig(options.cwd, projectInfo)
   const config = projectConfig
     ? await promptForMinimalConfig(projectConfig, options)
-    : await promptForConfig(await getConfig(options.cwd))
+    : await promptForConfig(await getConfig(options.cwd, undefined))
 
   if (!options.yes) {
     const { proceed } = await prompts({
@@ -157,9 +157,23 @@ export async function runInit(
   return fullConfig
 }
 
+async function promptForRegistry() {
+  const option = await prompts([
+    {
+      type: "text",
+      name: "registry",
+      message: `What is your default registry?`,
+      initial: DEFAULT_REGISTRY_URL,
+    },
+  ])
+  return option.registry
+}
+
 async function promptForConfig(defaultConfig: Config | null = null) {
+  const registry = await promptForRegistry()
+
   const [styles, baseColors] = await Promise.all([
-    getRegistryStyles(getRegistry(defaultConfig)),
+    getRegistryStyles(registry),
     getRegistryBaseColors(),
   ])
 
@@ -282,8 +296,9 @@ async function promptForMinimalConfig(
   let cssVariables = defaultConfig.tailwind.cssVariables
 
   if (!opts.defaults) {
+    const registry = await promptForRegistry()
     const [styles, baseColors] = await Promise.all([
-      getRegistryStyles(getRegistry()),
+      getRegistryStyles(registry),
       getRegistryBaseColors(),
     ])
 

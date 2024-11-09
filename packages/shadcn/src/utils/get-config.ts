@@ -2,6 +2,7 @@ import path from "path"
 import { highlighter } from "@/src/utils/highlighter"
 import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
+import deepmerge from "deepmerge"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -18,12 +19,13 @@ const explorer = cosmiconfig("components", {
   searchPlaces: ["components.json"],
 })
 
-const registrySchema = z.object({
-  url: z.string(),
-  style: z.string(),
+const aliasSchema = z.object({
+  components: z.string(),
+  utils: z.string(),
+  ui: z.string().optional(),
+  lib: z.string().optional(),
+  hooks: z.string().optional(),
 })
-
-export type Registry = z.infer<typeof registrySchema>
 
 export const rawConfigSchema = z
   .object({
@@ -38,21 +40,25 @@ export const rawConfigSchema = z
       cssVariables: z.boolean().default(true),
       prefix: z.string().default("").optional(),
     }),
-    aliases: z.object({
-      components: z.string(),
-      utils: z.string(),
-      ui: z.string().optional(),
-      lib: z.string().optional(),
-      hooks: z.string().optional(),
-    }),
+    aliases: aliasSchema,
     iconLibrary: z.string().optional(),
-    registries: z.record(z.string(), registrySchema).optional(),
+    registries: z
+      .record(
+        z.string(),
+        z.object({
+          url: z.string(),
+          style: z.string().optional(),
+          aliases: aliasSchema.optional(),
+        })
+      )
+      .optional(),
+    url: z.string().optional(),
   })
   .strict()
 
 export type RawConfig = z.infer<typeof rawConfigSchema>
 
-export const configSchema = rawConfigSchema.extend({
+export const configSchema = rawConfigSchema.omit({ registries: true }).extend({
   resolvedPaths: z.object({
     cwd: z.string(),
     tailwindConfig: z.string(),
@@ -63,11 +69,12 @@ export const configSchema = rawConfigSchema.extend({
     hooks: z.string(),
     ui: z.string(),
   }),
+  url: z.string(),
 })
 
 export type Config = z.infer<typeof configSchema>
 
-export async function getConfig(cwd: string) {
+export async function getConfig(cwd: string, registry?: string) {
   const config = await getRawConfig(cwd)
 
   if (!config) {
@@ -79,7 +86,16 @@ export async function getConfig(cwd: string) {
     config.iconLibrary = config.style === "new-york" ? "radix" : "lucide"
   }
 
-  return await resolveConfigPaths(cwd, config)
+  return await resolveConfigPaths(cwd, mergeConfigs(config, registry))
+}
+
+function mergeConfigs(rawConfig: RawConfig, registry: string | undefined) {
+  const { registries, ...rootConfig } = rawConfig
+  if (registries && registry && registry in registries) {
+    const registryConfig = registries[registry]
+    return deepmerge<RawConfig>(rootConfig, registryConfig)
+  }
+  return rootConfig
 }
 
 export async function resolveConfigPaths(cwd: string, config: RawConfig) {
@@ -96,6 +112,7 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
 
   return configSchema.parse({
     ...config,
+    url: config.url ?? process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r",
     resolvedPaths: {
       cwd,
       tailwindConfig: path.resolve(cwd, config.tailwind.config),
