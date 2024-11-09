@@ -6,6 +6,8 @@ import deepmerge from "deepmerge"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
+import { DEFAULT_REGISTRY_URL } from "./registry"
+
 export const DEFAULT_STYLE = "default"
 export const DEFAULT_COMPONENTS = "@/components"
 export const DEFAULT_UTILS = "@/lib/utils"
@@ -58,7 +60,7 @@ export const rawConfigSchema = z
 
 export type RawConfig = z.infer<typeof rawConfigSchema>
 
-export const configSchema = rawConfigSchema.omit({ registries: true }).extend({
+export const configSchema = rawConfigSchema.extend({
   resolvedPaths: z.object({
     cwd: z.string(),
     tailwindConfig: z.string(),
@@ -86,16 +88,19 @@ export async function getConfig(cwd: string, registry?: string) {
     config.iconLibrary = config.style === "new-york" ? "radix" : "lucide"
   }
 
-  return await resolveConfigPaths(cwd, mergeConfigs(config, registry))
+  return await resolveConfigPaths(cwd, mergeRegistryConfig(config, registry))
 }
 
-function mergeConfigs(rawConfig: RawConfig, registry: string | undefined) {
-  const { registries, ...rootConfig } = rawConfig
+function mergeRegistryConfig(
+  rawConfig: RawConfig,
+  registry: string | undefined
+) {
+  const registries = rawConfig.registries
   if (registries && registry && registry in registries) {
     const registryConfig = registries[registry]
-    return deepmerge<RawConfig>(rootConfig, registryConfig)
+    return deepmerge<RawConfig>(rawConfig, registryConfig)
   }
-  return rootConfig
+  return rawConfig
 }
 
 export async function resolveConfigPaths(cwd: string, config: RawConfig) {
@@ -112,7 +117,7 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
 
   return configSchema.parse({
     ...config,
-    url: config.url ?? process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r",
+    url: config.url ?? DEFAULT_REGISTRY_URL,
     resolvedPaths: {
       cwd,
       tailwindConfig: path.resolve(cwd, config.tailwind.config),

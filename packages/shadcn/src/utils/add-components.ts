@@ -15,7 +15,6 @@ export async function addComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
-    registry?: string
   }
 ) {
   options = {
@@ -28,7 +27,6 @@ export async function addComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-
   const tree = await registryResolveItemsTree(components, config)
   if (!tree) {
     registrySpinner?.fail()
