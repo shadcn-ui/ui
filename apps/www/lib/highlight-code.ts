@@ -1,10 +1,8 @@
-"use server"
-
 import { codeToHtml } from "shiki"
 
 export async function highlightCode(code: string) {
-  const html = codeToHtml(code, {
-    lang: "typescript",
+  const html = await codeToHtml(code, {
+    lang: "jsx",
     theme: "github-dark-default",
     transformers: [
       {

@@ -15,7 +15,7 @@ import { Button } from "@/registry/new-york/ui/button"
 
 export default function IndexPage() {
   return (
-    <div className="container relative">
+    <div className="relative">
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>Build your component library</PageHeaderHeading>
@@ -38,26 +38,28 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <ExamplesNav className="[&>a:first-child]:text-primary" />
-      <section className="overflow-hidden rounded-lg border bg-background shadow-md md:hidden md:shadow-xl">
-        <Image
-          src="/examples/cards-light.png"
-          width={1280}
-          height={1214}
-          alt="Cards"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/cards-dark.png"
-          width={1280}
-          height={1214}
-          alt="Cards"
-          className="hidden dark:block"
-        />
-      </section>
-      <section className="hidden md:block [&>div]:p-0">
-        <CardsNewYork />
-      </section>
+      <div className="container py-6">
+        <ExamplesNav className="[&>a:first-child]:text-primary" />
+        <section className="overflow-hidden rounded-lg border bg-background shadow-md md:hidden md:shadow-xl">
+          <Image
+            src="/examples/cards-light.png"
+            width={1280}
+            height={1214}
+            alt="Cards"
+            className="block dark:hidden"
+          />
+          <Image
+            src="/examples/cards-dark.png"
+            width={1280}
+            height={1214}
+            alt="Cards"
+            className="hidden dark:block"
+          />
+        </section>
+        <section className="hidden md:block [&>div]:p-0">
+          <CardsNewYork />
+        </section>
+      </div>
     </div>
   )
 }

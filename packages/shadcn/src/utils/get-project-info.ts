@@ -233,6 +233,7 @@ export async function getProjectConfig(
       cssVariables: true,
       prefix: "",
     },
+    iconLibrary: "lucide",
     aliases: {
       components: `${projectInfo.aliasPrefix}/components`,
       ui: `${projectInfo.aliasPrefix}/components/ui`,

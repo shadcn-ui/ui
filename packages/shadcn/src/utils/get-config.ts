@@ -38,6 +38,7 @@ export const rawConfigSchema = z
       lib: z.string().optional(),
       hooks: z.string().optional(),
     }),
+    iconLibrary: z.string().optional(),
   })
   .strict()
 
@@ -63,6 +64,11 @@ export async function getConfig(cwd: string) {
 
   if (!config) {
     return null
+  }
+
+  // Set default icon library if not provided.
+  if (!config.iconLibrary) {
+    config.iconLibrary = config.style === "new-york" ? "radix" : "lucide"
   }
 
   return await resolveConfigPaths(cwd, config)

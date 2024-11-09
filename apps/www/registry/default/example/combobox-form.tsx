@@ -108,15 +108,15 @@ export default function ComboboxForm() {
                               form.setValue("language", language.value)
                             }}
                           >
+                            {language.label}
                             <Check
                               className={cn(
-                                "mr-2 h-4 w-4",
+                                "ml-auto",
                                 language.value === field.value
                                   ? "opacity-100"
                                   : "opacity-0"
                               )}
                             />
-                            {language.label}
                           </CommandItem>
                         ))}
                       </CommandGroup>
