@@ -22,7 +22,7 @@ export default function ChartsLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="container relative">
+    <div className="relative">
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>Beautiful Charts</PageHeaderHeading>
@@ -38,9 +38,11 @@ export default function ChartsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <section id="charts" className="scroll-mt-20">
-        {children}
-      </section>
+      <div className="container py-6">
+        <section id="charts" className="scroll-mt-20">
+          {children}
+        </section>
+      </div>
     </div>
   )
 }
