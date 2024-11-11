@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/badge-demo.tsx",
-      "content": "import { Badge } from \"@/components/ui/badge\"\n\nexport default function BadgeDemo() {\n  return <Badge>Badge</Badge>\n}\n",
+      "content": "import { Badge } from \"@/registry/new-york/ui/badge\"\n\nexport default function BadgeDemo() {\n  return <Badge>Badge</Badge>\n}\n",
       "type": "registry:example",
-      "target": "components/badge-demo.tsx"
+      "target": ""
     }
   ]
 }

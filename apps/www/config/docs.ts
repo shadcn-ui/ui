@@ -9,6 +9,10 @@ export interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
+      title: "Home",
+      href: "/",
+    },
+    {
       title: "Documentation",
       href: "/docs",
     },
@@ -69,6 +73,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "CLI",
           href: "/docs/cli",
+          items: [],
+        },
+        {
+          title: "Next.js 15 + React 19",
+          href: "/docs/react-19",
           items: [],
         },
         {
