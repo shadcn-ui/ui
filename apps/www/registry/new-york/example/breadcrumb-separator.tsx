@@ -1,4 +1,4 @@
-import { SlashIcon } from "@radix-ui/react-icons"
+import { Slash } from "lucide-react"
 
 import {
   Breadcrumb,
@@ -17,13 +17,13 @@ export default function BreadcrumbWithCustomSeparator() {
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <Slash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbLink href="/components">Components</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <Slash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>

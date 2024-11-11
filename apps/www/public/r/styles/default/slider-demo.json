@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/slider-demo.tsx",
-      "content": "import { cn } from \"@/lib/utils\"\nimport { Slider } from \"@/components/ui/slider\"\n\ntype SliderProps = React.ComponentProps<typeof Slider>\n\nexport default function SliderDemo({ className, ...props }: SliderProps) {\n  return (\n    <Slider\n      defaultValue={[50]}\n      max={100}\n      step={1}\n      className={cn(\"w-[60%]\", className)}\n      {...props}\n    />\n  )\n}\n",
+      "content": "import { cn } from \"@/lib/utils\"\nimport { Slider } from \"@/registry/default/ui/slider\"\n\ntype SliderProps = React.ComponentProps<typeof Slider>\n\nexport default function SliderDemo({ className, ...props }: SliderProps) {\n  return (\n    <Slider\n      defaultValue={[50]}\n      max={100}\n      step={1}\n      className={cn(\"w-[60%]\", className)}\n      {...props}\n    />\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/slider-demo.tsx"
+      "target": ""
     }
   ]
 }

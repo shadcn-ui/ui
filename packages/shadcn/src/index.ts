@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 import { add } from "@/src/commands/add"
 import { diff } from "@/src/commands/diff"
+import { info } from "@/src/commands/info"
 import { init } from "@/src/commands/init"
+import { migrate } from "@/src/commands/migrate"
 import { Command } from "commander"
 
 import packageJson from "../package.json"
@@ -19,7 +21,12 @@ async function main() {
       "display the version number"
     )
 
-  program.addCommand(init).addCommand(add).addCommand(diff)
+  program
+    .addCommand(init)
+    .addCommand(add)
+    .addCommand(diff)
+    .addCommand(migrate)
+    .addCommand(info)
 
   program.parse()
 }

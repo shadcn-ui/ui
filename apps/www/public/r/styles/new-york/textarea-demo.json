@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/textarea-demo.tsx",
-      "content": "import { Textarea } from \"@/components/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return <Textarea placeholder=\"Type your message here.\" />\n}\n",
+      "content": "import { Textarea } from \"@/registry/new-york/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return <Textarea placeholder=\"Type your message here.\" />\n}\n",
       "type": "registry:example",
-      "target": "components/textarea-demo.tsx"
+      "target": ""
     }
   ]
 }

@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import Image from "next/image"
-import { PlusCircledIcon } from "@radix-ui/react-icons"
+import { PlusCircle } from "lucide-react"
 
 import { Button } from "@/registry/new-york/ui/button"
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
@@ -64,7 +64,7 @@ export default function MusicPage() {
                       </TabsList>
                       <div className="ml-auto mr-4">
                         <Button>
-                          <PlusCircledIcon className="mr-2 h-4 w-4" />
+                          <PlusCircle />
                           Add music
                         </Button>
                       </div>

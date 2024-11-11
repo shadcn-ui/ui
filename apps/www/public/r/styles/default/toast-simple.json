@@ -7,9 +7,9 @@
   "files": [
     {
       "path": "example/toast-simple.tsx",
-      "content": "\"use client\"\n\nimport { useToast } from \"@/hooks/use-toast\"\nimport { Button } from \"@/components/ui/button\"\n\nexport default function ToastSimple() {\n  const { toast } = useToast()\n\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        toast({\n          description: \"Your message has been sent.\",\n        })\n      }}\n    >\n      Show Toast\n    </Button>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { useToast } from \"@/registry/default/hooks/use-toast\"\nimport { Button } from \"@/registry/default/ui/button\"\n\nexport default function ToastSimple() {\n  const { toast } = useToast()\n\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        toast({\n          description: \"Your message has been sent.\",\n        })\n      }}\n    >\n      Show Toast\n    </Button>\n  )\n}\n",
       "type": "registry:example",
-      "target": "components/toast-simple.tsx"
+      "target": ""
     }
   ]
 }
