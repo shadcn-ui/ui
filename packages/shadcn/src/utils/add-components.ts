@@ -44,7 +44,7 @@ export async function addComponents(
 
   await updateDependencies(tree.dependencies, config, {
     silent: options.silent,
-  })
+  }, tree.devDependencies)
   await updateFiles(tree.files, config, {
     overwrite: options.overwrite,
     silent: options.silent,
