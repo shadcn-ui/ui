@@ -491,10 +491,11 @@ async function buildStylesIndex() {
     const targetPath = path.join(REGISTRY_PATH, "styles", style.name)
 
     const dependencies = [
-      "tailwindcss-animate",
       "class-variance-authority",
       "lucide-react",
     ]
+
+    const devDependencies = ["tailwindcss-animate"]
 
     // TODO: Remove this when we migrate to lucide-react.
     // if (style.name === "new-york") {
@@ -505,6 +506,7 @@ async function buildStylesIndex() {
       name: style.name,
       type: "registry:style",
       dependencies,
+      devDependencies,
       registryDependencies: ["utils"],
       tailwind: {
         config: {

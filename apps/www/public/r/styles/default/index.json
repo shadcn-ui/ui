@@ -5,7 +5,9 @@
     "class-variance-authority",
     "lucide-react"
   ],
-  "devDependencies": ["tailwindcss-animate"],
+  "devDependencies": [
+    "tailwindcss-animate"
+  ],
   "registryDependencies": [
     "utils"
   ],
