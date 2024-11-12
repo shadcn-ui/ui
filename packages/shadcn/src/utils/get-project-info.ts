@@ -10,6 +10,7 @@ import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"
 import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
+import { z } from "zod"
 
 type ProjectInfo = {
   framework: Framework
@@ -28,6 +29,12 @@ const PROJECT_SHARED_IGNORE = [
   "dist",
   "build",
 ]
+
+const TS_CONFIG_SCHEMA = z.object({
+  compilerOptions: z.object({
+    paths: z.record(z.string().or(z.array(z.string()))),
+  }),
+})
 
 export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   const [
@@ -153,7 +160,10 @@ export async function getTailwindConfigFile(cwd: string) {
 export async function getTsConfigAliasPrefix(cwd: string) {
   const tsConfig = await loadConfig(cwd)
 
-  if (tsConfig?.resultType === "failed" || !tsConfig?.paths) {
+  if (
+    tsConfig?.resultType === "failed" ||
+    !Object.entries(tsConfig?.paths).length
+  ) {
     return null
   }
 
@@ -169,7 +179,8 @@ export async function getTsConfigAliasPrefix(cwd: string) {
     }
   }
 
-  return null
+  // Use the first alias as the prefix.
+  return Object.keys(tsConfig?.paths)?.[0].replace(/\/\*$/, "") ?? null
 }
 
 export async function isTypeScriptProject(cwd: string) {
@@ -182,19 +193,30 @@ export async function isTypeScriptProject(cwd: string) {
   return files.length > 0
 }
 
-export async function getTsConfig() {
-  try {
-    const tsconfigPath = path.join("tsconfig.json")
-    const tsconfig = await fs.readJSON(tsconfigPath)
-
-    if (!tsconfig) {
-      throw new Error("tsconfig.json is missing")
+export async function getTsConfig(cwd: string) {
+  for (const fallback of [
+    "tsconfig.json",
+    "tsconfig.web.json",
+    "tsconfig.app.json",
+  ]) {
+    const filePath = path.resolve(cwd, fallback)
+    if (!(await fs.pathExists(filePath))) {
+      continue
     }
 
-    return tsconfig
-  } catch (error) {
-    return null
+    // We can't use fs.readJSON because it doesn't support comments.
+    const contents = await fs.readFile(filePath, "utf8")
+    const cleanedContents = contents.replace(/\/\*\s*\*\//g, "")
+    const result = TS_CONFIG_SCHEMA.safeParse(JSON.parse(cleanedContents))
+
+    if (result.error) {
+      continue
+    }
+
+    return result.data
   }
+
+  return null
 }
 
 export async function getProjectConfig(
