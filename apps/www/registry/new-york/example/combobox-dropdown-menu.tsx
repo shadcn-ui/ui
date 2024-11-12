@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { DotsHorizontalIcon } from "@radix-ui/react-icons"
+import { MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/registry/new-york/ui/button"
 import {
@@ -51,7 +51,7 @@ export default function ComboboxDropdownMenu() {
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="sm">
-            <DotsHorizontalIcon />
+            <MoreHorizontal />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[200px]">
