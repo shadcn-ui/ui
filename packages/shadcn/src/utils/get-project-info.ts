@@ -165,7 +165,7 @@ export async function getTsConfigAliasPrefix(cwd: string) {
       paths.includes("./app/*") ||
       paths.includes("./resources/js/*") // Laravel.
     ) {
-      return alias.at(0) ?? null
+      return alias.replace(/\/\*$/, "") ?? null
     }
   }
 

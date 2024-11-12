@@ -136,8 +136,8 @@ import { Foo } from "bar"
           cssVariables: true,
         },
         aliases: {
-          components: "@shad/components",
-          utils: "@/lib/utils",
+          components: "@custom-alias/components",
+          utils: "@custom-alias/lib/utils",
         },
       },
     })
