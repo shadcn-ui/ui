@@ -4073,6 +4073,86 @@ export const Index: Record<string, any> = {
       subcategory: "Login",
       chunks: []
     },
+    "login-02": {
+      name: "login-02",
+      description: "A two column login page with a cover image.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/new-york/block/login-02/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/new-york/block/login-02/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/block/login-02/page.tsx")),
+      source: "__registry__/new-york/block/login-02/page.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-03": {
+      name: "login-03",
+      description: "A login page with a muted background color.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/new-york/block/login-03/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/new-york/block/login-03/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/block/login-03/page.tsx")),
+      source: "__registry__/new-york/block/login-03/page.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-04": {
+      name: "login-04",
+      description: "A login page with form and image.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/new-york/block/login-04/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/new-york/block/login-04/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/block/login-04/page.tsx")),
+      source: "__registry__/new-york/block/login-04/page.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-05": {
+      name: "login-05",
+      description: "A simple email-only login page.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/new-york/block/login-05/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/new-york/block/login-05/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/block/login-05/page.tsx")),
+      source: "__registry__/new-york/block/login-05/page.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "An area chart with axes",
@@ -9562,6 +9642,86 @@ export const Index: Record<string, any> = {
       }],
       component: React.lazy(() => import("@/registry/default/block/login-01/page.tsx")),
       source: "__registry__/default/block/login-01/page.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-02": {
+      name: "login-02",
+      description: "A two column login page with a cover image.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/default/block/login-02/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/default/block/login-02/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/block/login-02/page.tsx")),
+      source: "__registry__/default/block/login-02/page.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-03": {
+      name: "login-03",
+      description: "A login page with a muted background color.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/default/block/login-03/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/default/block/login-03/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/block/login-03/page.tsx")),
+      source: "__registry__/default/block/login-03/page.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-04": {
+      name: "login-04",
+      description: "A login page with form and image.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/default/block/login-04/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/default/block/login-04/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/block/login-04/page.tsx")),
+      source: "__registry__/default/block/login-04/page.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-05": {
+      name: "login-05",
+      description: "A simple email-only login page.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/default/block/login-05/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/default/block/login-05/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/block/login-05/page.tsx")),
+      source: "__registry__/default/block/login-05/page.tsx",
       category: "Authentication",
       subcategory: "Login",
       chunks: []

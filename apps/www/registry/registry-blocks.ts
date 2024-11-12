@@ -816,4 +816,76 @@ export const blocks: Registry = [
     category: "Authentication",
     subcategory: "Login",
   },
+  {
+    name: "login-02",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "block/login-02/page.tsx",
+        target: "app/login/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "block/login-02/components/login-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    category: "Authentication",
+    subcategory: "Login",
+  },
+  {
+    name: "login-03",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "block/login-03/page.tsx",
+        target: "app/login/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "block/login-03/components/login-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    category: "Authentication",
+    subcategory: "Login",
+  },
+  {
+    name: "login-04",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "block/login-04/page.tsx",
+        target: "app/login/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "block/login-04/components/login-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    category: "Authentication",
+    subcategory: "Login",
+  },
+  {
+    name: "login-05",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "block/login-05/page.tsx",
+        target: "app/login/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "block/login-05/components/login-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    category: "Authentication",
+    subcategory: "Login",
+  },
 ]
