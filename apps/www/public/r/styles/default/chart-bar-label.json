@@ -1,6 +1,7 @@
 {
   "name": "chart-bar-label",
   "type": "registry:block",
+  "description": "A bar chart with a label",
   "registryDependencies": [
     "card",
     "chart"

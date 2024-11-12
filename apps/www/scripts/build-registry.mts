@@ -11,6 +11,7 @@ import { z } from "zod"
 import { registry } from "../registry"
 import { baseColors } from "../registry/registry-base-colors"
 import { colorMapping, colors } from "../registry/registry-colors"
+import { iconLibraries, icons } from "../registry/registry-icons"
 import { styles } from "../registry/registry-styles"
 import {
   Registry,
@@ -19,6 +20,7 @@ import {
   registryItemTypeSchema,
   registrySchema,
 } from "../registry/schema"
+import { fixImport } from "./fix-import.mts"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r")
 
@@ -28,6 +30,7 @@ const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:hook",
   "registry:theme",
   "registry:block",
+  "registry:example",
 ]
 
 const project = new Project({
@@ -73,11 +76,24 @@ export const Index: Record<string, any> = {
       if (item.type === "registry:block") {
         const file = resolveFiles[0]
         const filename = path.basename(file)
-        const raw = await fs.readFile(file, "utf8")
+        let raw: string
+        try {
+          raw = await fs.readFile(file, "utf8")
+        } catch (error) {
+          continue
+        }
         const tempFile = await createTempSourceFile(filename)
         const sourceFile = project.createSourceFile(tempFile, raw, {
           scriptKind: ScriptKind.TSX,
         })
+
+        const description = sourceFile
+          .getVariableDeclaration("description")
+          ?.getInitializerOrThrow()
+          .asKindOrThrow(SyntaxKind.StringLiteral)
+          .getLiteralValue()
+
+        item.description = description ?? ""
 
         // Find all imports.
         const imports = new Map<
@@ -268,13 +284,26 @@ export const Index: Record<string, any> = {
       index += `
     "${item.name}": {
       name: "${item.name}",
+      description: "${item.description ?? ""}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
-      files: [${resolveFiles.map((file) => `"${file}"`)}],
+      files: [${item.files?.map((file) => {
+        const filePath = `registry/${style.name}/${
+          typeof file === "string" ? file : file.path
+        }`
+        const resolvedFilePath = path.resolve(filePath)
+        return typeof file === "string"
+          ? `"${resolvedFilePath}"`
+          : `{
+        path: "${filePath}",
+        type: "${file.type}",
+        target: "${file.target ?? ""}"
+      }`
+      })}],
       component: React.lazy(() => import("${componentPath}")),
       source: "${sourceFilename}",
-      category: "${item.category}",
-      subcategory: "${item.subcategory}",
+      category: "${item.category ?? ""}",
+      subcategory: "${item.subcategory ?? ""}",
       chunks: [${chunks.map(
         (chunk) => `{
         name: "${chunk.name}",
@@ -362,10 +391,20 @@ async function buildStyles(registry: Registry) {
                   }
                 : _file
 
-            const content = await fs.readFile(
-              path.join(process.cwd(), "registry", style.name, file.path),
-              "utf8"
-            )
+            let content: string
+            try {
+              content = await fs.readFile(
+                path.join(process.cwd(), "registry", style.name, file.path),
+                "utf8"
+              )
+
+              // Only fix imports for v0- blocks.
+              if (item.name.startsWith("v0-")) {
+                content = fixImport(content)
+              }
+            } catch (error) {
+              return
+            }
 
             const tempFile = await createTempSourceFile(file.path)
             const sourceFile = project.createSourceFile(tempFile, content, {
@@ -376,11 +415,36 @@ async function buildStyles(registry: Registry) {
             sourceFile.getVariableDeclaration("containerClassName")?.remove()
             sourceFile.getVariableDeclaration("description")?.remove()
 
+            let target = file.target || ""
+
+            if ((!target || target === "") && item.name.startsWith("v0-")) {
+              const fileName = file.path.split("/").pop()
+              if (
+                file.type === "registry:block" ||
+                file.type === "registry:component" ||
+                file.type === "registry:example"
+              ) {
+                target = `components/${fileName}`
+              }
+
+              if (file.type === "registry:ui") {
+                target = `components/ui/${fileName}`
+              }
+
+              if (file.type === "registry:hook") {
+                target = `hooks/${fileName}`
+              }
+
+              if (file.type === "registry:lib") {
+                target = `lib/${fileName}`
+              }
+            }
+
             return {
               path: file.path,
               type: file.type,
               content: sourceFile.getText(),
-              target: file.target,
+              target,
             }
           })
         )
@@ -433,9 +497,9 @@ async function buildStylesIndex() {
     ]
 
     // TODO: Remove this when we migrate to lucide-react.
-    if (style.name === "new-york") {
-      dependencies.push("@radix-ui/react-icons")
-    }
+    // if (style.name === "new-york") {
+    //   dependencies.push("@radix-ui/react-icons")
+    // }
 
     const payload: RegistryEntry = {
       name: style.name,
@@ -760,6 +824,65 @@ async function buildThemes() {
   }
 }
 
+// ----------------------------------------------------------------------------
+// Build registry/icons/index.json.
+// ----------------------------------------------------------------------------
+async function buildIcons() {
+  const iconsTargetPath = path.join(REGISTRY_PATH, "icons")
+  rimraf.sync(iconsTargetPath)
+  if (!existsSync(iconsTargetPath)) {
+    await fs.mkdir(iconsTargetPath, { recursive: true })
+  }
+
+  const iconsData = icons
+
+  await fs.writeFile(
+    path.join(iconsTargetPath, "index.json"),
+    JSON.stringify(iconsData, null, 2),
+    "utf8"
+  )
+}
+
+// ----------------------------------------------------------------------------
+// Build __registry__/icons.tsx.
+// ----------------------------------------------------------------------------
+async function buildRegistryIcons() {
+  let index = `// @ts-nocheck
+// This file is autogenerated by scripts/build-registry.ts
+// Do not edit this file directly.
+import * as React from "react"
+
+export const Icons = {
+`
+
+  for (const [icon, libraries] of Object.entries(icons)) {
+    index += `  "${icon}": {`
+    for (const [library, componentName] of Object.entries(libraries)) {
+      const packageName = iconLibraries[library].package
+      if (packageName) {
+        index += `
+  ${library}: React.lazy(() => import("${packageName}").then(mod => ({
+    default: mod.${componentName}
+  }))),`
+      }
+    }
+    index += `
+},`
+  }
+
+  index += `
+}
+`
+
+  // Write style index.
+  rimraf.sync(path.join(process.cwd(), "__registry__/icons.tsx"))
+  await fs.writeFile(
+    path.join(process.cwd(), "__registry__/icons.tsx"),
+    index,
+    "utf8"
+  )
+}
+
 try {
   const result = registrySchema.safeParse(registry)
 
@@ -772,6 +895,9 @@ try {
   await buildStyles(result.data)
   await buildStylesIndex()
   await buildThemes()
+
+  await buildRegistryIcons()
+  await buildIcons()
 
   console.log("✅ Done!")
 } catch (error) {

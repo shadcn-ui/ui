@@ -1,6 +1,7 @@
 {
   "name": "chart-line-multiple",
   "type": "registry:block",
+  "description": "A multiple line chart",
   "registryDependencies": [
     "card",
     "chart"

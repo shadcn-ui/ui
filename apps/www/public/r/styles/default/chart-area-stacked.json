@@ -1,6 +1,7 @@
 {
   "name": "chart-area-stacked",
   "type": "registry:block",
+  "description": "A stacked area chart",
   "registryDependencies": [
     "card",
     "chart"

@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-grid-custom",
   "type": "registry:block",
+  "description": "A radar chart with a custom grid",
   "registryDependencies": [
     "card",
     "chart"
