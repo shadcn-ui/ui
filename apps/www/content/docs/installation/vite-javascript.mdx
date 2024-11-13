@@ -23,9 +23,32 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
+Add this import header in your main css file, `src/index.css` in our case:
+
+```css {1-3} showLineNumbers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ... */
+```
+
+Configure the tailwind template paths in `tailwind.config.js`:
+
+```js {3}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
 ### Create jsconfig.json file
 
-```ts {11-16} showLineNumbers
+```js showLineNumbers
 {
   "files": [],
   "references": [
@@ -83,24 +106,6 @@ export default defineConfig({
     },
   },
 })
-```
-
-### Update index.css
-
-Add the following code to the top of the index.css file
-
-```bash
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-### Update tailwind.config.js
-
-Update the following code inside of tailwind.config.js
-
-```bash
-content: ["./src/**/*.{js,jsx}"],
 ```
 
 ### Run the CLI
