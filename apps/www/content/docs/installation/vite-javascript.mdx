@@ -1,0 +1,146 @@
+---
+title: Vite
+description: Install and configure Vite with JavaScript.
+---
+
+<Steps>
+
+### Create project
+
+Start by creating a new React project using `vite`:
+
+```bash
+npm create vite@latest
+```
+
+### Add Tailwind and its configuration
+
+Install `tailwindcss` and its peer dependencies, then generate your `tailwind.config.js` and `postcss.config.js` files:
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+
+npx tailwindcss init -p
+```
+
+### Create jsconfig.json file
+
+```ts {11-16} showLineNumbers
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./jsconfig.app.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+### Create jsconfig.app.json file
+
+Add the following code to the `jsconfig.app.json` file to resolve paths, for your IDE:
+
+```ts {4-9} showLineNumbers
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
+```
+
+### Update vite.config.js
+
+Add the following code to the vite.config.js so your app can resolve paths without error
+
+```bash
+# (so you can import "path" without error)
+npm i -D @types/node
+```
+
+```typescript
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
+
+### Update index.css
+
+Add the following code to the top of the index.css file
+
+```bash
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Update tailwind.config.js
+
+Update the following code inside of tailwind.config.js
+
+```bash
+content: ["./src/**/*.{js,jsx}"],
+```
+
+### Run the CLI
+
+Run the `shadcn-ui` init command to setup your project:
+
+```bash
+npx shadcn@latest init
+```
+
+### Configure components.json
+
+You will be asked a few questions to configure `components.json`:
+
+```txt showLineNumbers
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
+Do you want to use CSS variables for colors? › no / yes
+```
+
+### That's it
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn@latest add button
+```
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx {1,6} showLineNumbers
+import { Button } from "@/components/ui/button"
+
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+```
+
+</Steps>
