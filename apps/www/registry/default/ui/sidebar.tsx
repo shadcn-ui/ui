@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { VariantProps, cva } from "class-variance-authority"
 import { PanelLeft } from "lucide-react"
 
@@ -195,6 +196,9 @@ const Sidebar = React.forwardRef<
     if (isMobile) {
       return (
         <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+          <VisuallyHidden>
+            <SheetTitle />
+          </VisuallyHidden>
           <SheetContent
             data-sidebar="sidebar"
             data-mobile="true"
