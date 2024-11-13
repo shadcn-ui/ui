@@ -2,6 +2,11 @@ import { createContentlayerPlugin } from "next-contentlayer2"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    outputFileTracingIncludes: {
+      "/blocks/*": ["./registry/**/*"],
+    },
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -56,6 +61,11 @@ const nextConfig = {
       {
         source: "/sidebar",
         destination: "/docs/components/sidebar",
+        permanent: true,
+      },
+      {
+        source: "/react-19",
+        destination: "/docs/react-19",
         permanent: true,
       },
     ]

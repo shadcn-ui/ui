@@ -4,7 +4,7 @@ import {
   ResizablePanelGroup,
 } from "@/registry/new-york/ui/resizable"
 
-export default function ResizableDemo() {
+export default function ResizableHandleDemo() {
   return (
     <ResizablePanelGroup
       direction="horizontal"

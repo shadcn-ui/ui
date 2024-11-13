@@ -1,32 +1,52 @@
-import { unstable_cache } from "next/cache"
+import * as React from "react"
+import { z } from "zod"
 
-import { getBlock } from "@/lib/blocks"
-import { BlockPreview } from "@/components/block-preview"
-
-const getBlockByName = unstable_cache(
-  async (name: string) => {
-    const block = await getBlock(name)
-
-    if (!block) {
-      return null
-    }
-
-    return {
-      name: block.name,
-      style: block.style,
-      description: block.description,
-      container: block.container,
-    }
-  },
-  ["block"]
-)
+import { highlightCode } from "@/lib/highlight-code"
+import {
+  createFileTreeForRegistryItemFiles,
+  getRegistryItem,
+} from "@/lib/registry"
+import { BlockViewer } from "@/components/block-viewer"
+import { registryItemFileSchema } from "@/registry/schema"
 
 export async function BlockDisplay({ name }: { name: string }) {
-  const block = await getBlockByName(name)
+  const item = await getCachedRegistryItem(name)
 
-  if (!block) {
+  if (!item?.files) {
     return null
   }
 
-  return <BlockPreview key={block.name} block={block} />
+  const [tree, highlightedFiles] = await Promise.all([
+    getCachedFileTree(item.files),
+    getCachedHighlightedFiles(item.files),
+  ])
+
+  return (
+    <BlockViewer item={item} tree={tree} highlightedFiles={highlightedFiles} />
+  )
 }
+
+const getCachedRegistryItem = React.cache(async (name: string) => {
+  return await getRegistryItem(name)
+})
+
+const getCachedFileTree = React.cache(
+  async (files: Array<{ path: string; target?: string }>) => {
+    if (!files) {
+      return null
+    }
+
+    return await createFileTreeForRegistryItemFiles(files)
+  }
+)
+
+const getCachedHighlightedFiles = React.cache(
+  async (files: z.infer<typeof registryItemFileSchema>[]) => {
+    return await Promise.all(
+      files.map(async (file) => ({
+        ...file,
+        highlightedContent: await highlightCode(file.content ?? ""),
+      }))
+    )
+  }
+)
