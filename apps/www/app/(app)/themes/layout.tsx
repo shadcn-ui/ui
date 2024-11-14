@@ -26,7 +26,7 @@ export default function ThemesLayout({
         defaultTheme="zinc"
         className="relative flex w-full flex-col items-start md:flex-row"
       >
-        <PageHeader>
+        <PageHeader className="w-full">
           <Announcement />
           <PageHeaderHeading className="hidden md:block">
             Add colors. Make it yours.
