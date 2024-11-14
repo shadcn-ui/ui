@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/registry/new-york/ui/card"
 import {
   Carousel,
   CarouselContent,
+  CarouselDots,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
@@ -33,6 +34,7 @@ export default function CarouselOrientation() {
       </CarouselContent>
       <CarouselPrevious />
       <CarouselNext />
+      <CarouselDots />
     </Carousel>
   )
 }
