@@ -14,5 +14,6 @@
     "lib": "~/lib",
     "hooks": "~/lib/hooks",
     "ui": "~/ui"
-  }
+  },
+  "iconLibrary": "lucide"
 }

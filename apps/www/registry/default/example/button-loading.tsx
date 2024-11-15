@@ -5,7 +5,7 @@ import { Button } from "@/registry/default/ui/button"
 export default function ButtonLoading() {
   return (
     <Button disabled>
-      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+      <Loader2 className="animate-spin" />
       Please wait
     </Button>
   )
