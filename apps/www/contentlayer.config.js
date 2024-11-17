@@ -1,5 +1,4 @@
-import path from "path"
-import { getHighlighter, loadTheme } from "@shikijs/compat"
+import { getHighlighter } from "@shikijs/compat"
 import {
   defineDocumentType,
   defineNestedType,
@@ -114,12 +113,8 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          getHighlighter: async () => {
-            const theme = await loadTheme(
-              path.join(process.cwd(), "/lib/highlighter-theme.json")
-            )
-            return await getHighlighter({ theme })
-          },
+          theme: "github-dark",
+          getHighlighter,
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted

@@ -1,6 +1,7 @@
 {
   "name": "chart-area-legend",
   "type": "registry:block",
+  "description": "An area chart with a legend",
   "registryDependencies": [
     "card",
     "chart"

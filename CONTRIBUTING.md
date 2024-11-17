@@ -91,6 +91,42 @@ pnpm --filter=www dev
 pnpm --filter=shadcn-ui dev
 ```
 
+## Running the CLI Locally
+
+To run the CLI locally, you can follow the workflow:
+
+1. Start by running the registry (main site) to make sure the components are up to date:
+
+   ```bash
+   pnpm www:dev
+   ```
+
+2. Run the development script for the CLI:
+
+   ```bash
+   pnpm shadcn:dev
+   ```
+
+3. In another terminal tab, test the CLI by running:
+
+   ```bash
+   pnpm shadcn
+   ```
+
+   To test the CLI in a specific app, use a command like:
+
+   ```bash
+   pnpm shadcn <init | add | ...> -c ~/Desktop/my-app
+   ```
+
+4. To run the tests for the CLI:
+
+   ```bash
+   pnpm --filter=shadcn test
+   ```
+
+This workflow ensures that you are running the most recent version of the registry and testing the CLI properly in your local environment.
+
 ## Documentation
 
 The documentation for this project is located in the `www` workspace. You can run the documentation locally by running the following command:

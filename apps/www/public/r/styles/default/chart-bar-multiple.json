@@ -1,6 +1,7 @@
 {
   "name": "chart-bar-multiple",
   "type": "registry:block",
+  "description": "A multiple bar chart",
   "registryDependencies": [
     "card",
     "chart"

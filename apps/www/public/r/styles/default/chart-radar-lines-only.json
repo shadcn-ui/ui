@@ -1,6 +1,7 @@
 {
   "name": "chart-radar-lines-only",
   "type": "registry:block",
+  "description": "A radar chart with lines only",
   "registryDependencies": [
     "card",
     "chart"
