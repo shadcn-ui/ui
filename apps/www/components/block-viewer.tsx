@@ -166,7 +166,7 @@ function BlockViewerToolbar() {
           className="hidden h-7 w-7 rounded-md border bg-transparent shadow-none md:flex lg:w-auto"
           size="sm"
           onClick={() => {
-            copyToClipboard(`npx shadcn@latest add ${name}`)
+            copyToClipboard(`npx shadcn@latest add ${item.name}`)
           }}
         >
           {isCopied ? <Check /> : <Terminal />}
