@@ -5,7 +5,7 @@ import { capitalCase } from "change-case"
 import { z } from "zod"
 
 import { Style } from "@/registry/registry-styles"
-import { registryEntrySchema, registryItemTypeSchema } from "@/registry/schema"
+import { registryItemSchema, registryItemTypeSchema } from "@/registry/schema"
 
 async function getRegistryItem(name: string, style: Style["name"]) {
   const registryURL = new URL(
@@ -19,7 +19,7 @@ async function getRegistryItem(name: string, style: Style["name"]) {
 
   const data = await response.json()
 
-  const result = registryEntrySchema
+  const result = registryItemSchema
     .extend({
       files: z.array(
         z.object({

@@ -51,10 +51,10 @@ import {
   ToggleGroupItem,
 } from "@/registry/new-york/ui/toggle-group"
 import { Style } from "@/registry/registry-styles"
-import { registryEntrySchema, registryItemFileSchema } from "@/registry/schema"
+import { registryItemFileSchema, registryItemSchema } from "@/registry/schema"
 
 type BlockViewerContext = {
-  item: z.infer<typeof registryEntrySchema>
+  item: z.infer<typeof registryItemSchema>
   view: "code" | "preview"
   setView: (view: "code" | "preview") => void
   style?: Style["name"]
@@ -260,7 +260,7 @@ function BlockViewerView() {
               className="absolute left-0 top-0 z-20 hidden w-[970px] max-w-none bg-background data-[block=sidebar-10]:left-auto data-[block=sidebar-10]:right-0 data-[block=sidebar-11]:-top-1/3 data-[block=sidebar-14]:left-auto data-[block=sidebar-14]:right-0 data-[block=login-01]:max-w-full data-[block=sidebar-13]:max-w-full data-[block=sidebar-15]:max-w-full dark:block sm:w-[1280px] md:hidden md:dark:hidden"
             />
             <iframe
-              src={`/blocks/${style}/${item.name}`}
+              src={`/view/${style}/${item.name}`}
               height={item.meta?.iframeHeight ?? 450}
               className="chunk-mode relative z-20 hidden w-full bg-background md:block"
             />

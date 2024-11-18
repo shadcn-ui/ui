@@ -6,7 +6,7 @@ import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
 import { Style } from "@/registry/registry-styles"
-import { registryEntrySchema, registryItemFileSchema } from "@/registry/schema"
+import { registryItemFileSchema, registryItemSchema } from "@/registry/schema"
 
 export const DEFAULT_REGISTRY_STYLE = "new-york" satisfies Style["name"]
 
@@ -38,7 +38,7 @@ export async function getRegistryItem(
   )
 
   // Fail early before doing expensive file operations.
-  const result = registryEntrySchema.safeParse(item)
+  const result = registryItemSchema.safeParse(item)
   if (!result.success) {
     return null
   }
@@ -62,7 +62,7 @@ export async function getRegistryItem(
   // Fix file paths.
   files = fixFilePaths(files)
 
-  const parsed = registryEntrySchema.safeParse({
+  const parsed = registryItemSchema.safeParse({
     ...result.data,
     files,
     meta,
@@ -180,7 +180,7 @@ function extractVariable(sourceFile: SourceFile, name: string) {
   return value
 }
 
-function fixFilePaths(files: z.infer<typeof registryEntrySchema>["files"]) {
+function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
   if (!files) {
     return []
   }

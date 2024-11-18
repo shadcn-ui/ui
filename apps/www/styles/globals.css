@@ -141,6 +141,14 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .border-grid {
+    @apply border-border/70 dark:border-border;
+  }
+
+  .container-wrapper {
+    @apply min-[1800px]:max-w-[1536px] min-[1800px]:border-x border-border/50 dark:border-border mx-auto w-full;
+  }
 }
 
 @media (max-width: 640px) {

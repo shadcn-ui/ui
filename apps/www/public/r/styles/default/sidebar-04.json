@@ -20,5 +20,9 @@
       "type": "registry:component",
       "target": ""
     }
+  ],
+  "categories": [
+    "sidebar",
+    "dashboard"
   ]
 }

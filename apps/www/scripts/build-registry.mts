@@ -1,8 +1,6 @@
-// @sts-nocheck
-import { existsSync, promises as fs, readFileSync } from "fs"
+import { existsSync, promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { cwd } from "process"
 import template from "lodash.template"
 import { rimraf } from "rimraf"
 import { Project, ScriptKind, SyntaxKind } from "ts-morph"
@@ -10,13 +8,13 @@ import { z } from "zod"
 
 import { registry } from "../registry"
 import { baseColors } from "../registry/registry-base-colors"
+import { registryCategories } from "../registry/registry-categories"
 import { colorMapping, colors } from "../registry/registry-colors"
 import { iconLibraries, icons } from "../registry/registry-icons"
 import { styles } from "../registry/registry-styles"
 import {
   Registry,
-  RegistryEntry,
-  registryEntrySchema,
+  registryItemSchema,
   registryItemTypeSchema,
   registrySchema,
 } from "../registry/schema"
@@ -69,10 +67,23 @@ export const Index: Record<string, any> = {
         continue
       }
 
+      // Validate categories.
+      if (item.categories) {
+        const invalidCategories = item.categories.filter(
+          (category) => !registryCategories.some((c) => c.slug === category)
+        )
+
+        if (invalidCategories.length > 0) {
+          console.error(
+            `${item.name} has invalid categories: ${invalidCategories}`
+          )
+          process.exit(1)
+        }
+      }
+
       const type = item.type.split(":")[1]
       let sourceFilename = ""
 
-      let chunks: any = []
       if (item.type === "registry:block") {
         const file = resolveFiles[0]
         const filename = path.basename(file)
@@ -123,129 +134,7 @@ export const Index: Record<string, any> = {
           }
         })
 
-        // Find all opening tags with x-chunk attribute.
-        const components = sourceFile
-          .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
-          .filter((node) => {
-            return node.getAttribute("x-chunk") !== undefined
-          })
-
-        chunks = await Promise.all(
-          components.map(async (component, index) => {
-            const chunkName = `${item.name}-chunk-${index}`
-
-            // Get the value of x-chunk attribute.
-            const attr = component
-              .getAttributeOrThrow("x-chunk")
-              .asKindOrThrow(SyntaxKind.JsxAttribute)
-
-            const description = attr
-              .getInitializerOrThrow()
-              .asKindOrThrow(SyntaxKind.StringLiteral)
-              .getLiteralValue()
-
-            // Delete the x-chunk attribute.
-            attr.remove()
-
-            // Add a new attribute to the component.
-            component.addAttribute({
-              name: "x-chunk",
-              initializer: `"${chunkName}"`,
-            })
-
-            // Get the value of x-chunk-container attribute.
-            const containerAttr = component
-              .getAttribute("x-chunk-container")
-              ?.asKindOrThrow(SyntaxKind.JsxAttribute)
-
-            const containerClassName = containerAttr
-              ?.getInitializer()
-              ?.asKindOrThrow(SyntaxKind.StringLiteral)
-              .getLiteralValue()
-
-            containerAttr?.remove()
-
-            const parentJsxElement = component.getParentIfKindOrThrow(
-              SyntaxKind.JsxElement
-            )
-
-            // Find all opening tags on component.
-            const children = parentJsxElement
-              .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
-              .map((node) => {
-                return node.getTagNameNode().getText()
-              })
-              .concat(
-                parentJsxElement
-                  .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
-                  .map((node) => {
-                    return node.getTagNameNode().getText()
-                  })
-              )
-
-            const componentImports = new Map<
-              string,
-              string | string[] | Set<string>
-            >()
-            children.forEach((child) => {
-              const importLine = imports.get(child)
-              if (importLine) {
-                const imports = componentImports.get(importLine.module) || []
-
-                const newImports = importLine.isDefault
-                  ? importLine.text
-                  : new Set([...imports, child])
-
-                componentImports.set(
-                  importLine.module,
-                  importLine?.isDefault ? newImports : Array.from(newImports)
-                )
-              }
-            })
-
-            const componnetImportLines = Array.from(
-              componentImports.keys()
-            ).map((key) => {
-              const values = componentImports.get(key)
-              const specifier = Array.isArray(values)
-                ? `{${values.join(",")}}`
-                : values
-
-              return `import ${specifier} from "${key}"`
-            })
-
-            const code = `
-            'use client'
-
-            ${componnetImportLines.join("\n")}
-
-            export default function Component() {
-              return (${parentJsxElement.getText()})
-            }`
-
-            const targetFile = file.replace(item.name, `${chunkName}`)
-            const targetFilePath = path.join(
-              cwd(),
-              `registry/${style.name}/${type}/${chunkName}.tsx`
-            )
-
-            // Write component file.
-            rimraf.sync(targetFilePath)
-            await fs.writeFile(targetFilePath, code, "utf8")
-
-            return {
-              name: chunkName,
-              description,
-              component: `React.lazy(() => import("@/registry/${style.name}/${type}/${chunkName}")),`,
-              file: targetFile,
-              container: {
-                className: containerClassName,
-              },
-            }
-          })
-        )
-
-        // // Write the source file for blocks only.
+        // Write the source file for blocks only.
         sourceFilename = `__registry__/${style.name}/${type}/${item.name}.tsx`
 
         if (item.files) {
@@ -300,21 +189,9 @@ export const Index: Record<string, any> = {
         target: "${file.target ?? ""}"
       }`
       })}],
+      categories: ${JSON.stringify(item.categories)},
       component: React.lazy(() => import("${componentPath}")),
       source: "${sourceFilename}",
-      category: "${item.category ?? ""}",
-      subcategory: "${item.subcategory ?? ""}",
-      chunks: [${chunks.map(
-        (chunk) => `{
-        name: "${chunk.name}",
-        description: "${chunk.description ?? "No description"}",
-        component: ${chunk.component}
-        file: "${chunk.file}",
-        container: {
-          className: "${chunk.container.className}"
-        }
-      }`
-      )}]
     },`
     }
 
@@ -450,17 +327,10 @@ async function buildStyles(registry: Registry) {
         )
       }
 
-      const payload = registryEntrySchema
-        .omit({
-          source: true,
-          category: true,
-          subcategory: true,
-          chunks: true,
-        })
-        .safeParse({
-          ...item,
-          files,
-        })
+      const payload = registryItemSchema.safeParse({
+        ...item,
+        files,
+      })
 
       if (payload.success) {
         await fs.writeFile(
@@ -490,21 +360,14 @@ async function buildStylesIndex() {
   for (const style of styles) {
     const targetPath = path.join(REGISTRY_PATH, "styles", style.name)
 
-    const dependencies = [
-      "tailwindcss-animate",
-      "class-variance-authority",
-      "lucide-react",
-    ]
-
-    // TODO: Remove this when we migrate to lucide-react.
-    // if (style.name === "new-york") {
-    //   dependencies.push("@radix-ui/react-icons")
-    // }
-
-    const payload: RegistryEntry = {
+    const payload: z.infer<typeof registryItemSchema> = {
       name: style.name,
       type: "registry:style",
-      dependencies,
+      dependencies: [
+        "tailwindcss-animate",
+        "class-variance-authority",
+        "lucide-react",
+      ],
       registryDependencies: ["utils"],
       tailwind: {
         config: {

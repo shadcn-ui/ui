@@ -16,40 +16,43 @@ export const metadata: Metadata = {
   description: "Check out some examples app built using the components.",
 }
 
-interface ExamplesLayoutProps {
+export default function ExamplesLayout({
+  children,
+}: {
   children: React.ReactNode
-}
-
-export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
+}) {
   return (
-    <div className="relative">
+    <>
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading className="hidden md:block">
-          Check out some examples
-        </PageHeaderHeading>
-        <PageHeaderHeading className="md:hidden">Examples</PageHeaderHeading>
+        <PageHeaderHeading>Build your component library</PageHeaderHeading>
         <PageHeaderDescription>
-          Dashboard, cards, authentication. Some examples built using the
-          components. Use this as a guide to build your own.
+          Beautifully designed components that you can copy and paste into your
+          apps. Made with Tailwind CSS. Open source.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
             <Link href="/docs">Get Started</Link>
           </Button>
           <Button asChild size="sm" variant="ghost">
-            <Link href="/components">Components</Link>
+            <Link href="/blocks">Browse Blocks</Link>
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container py-6">
-        <section>
-          <ExamplesNav />
-          <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
-            {children}
+      <div className="border-b border-grid">
+        <div className="container-wrapper">
+          <div className="container py-4">
+            <ExamplesNav />
           </div>
-        </section>
+        </div>
       </div>
-    </div>
+      <div className="container-wrapper">
+        <div className="container py-6">
+          <section className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
+            {children}
+          </section>
+        </div>
+      </div>
+    </>
   )
 }
