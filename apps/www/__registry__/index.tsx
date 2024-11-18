@@ -3705,7 +3705,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-area-axes.tsx")),
       source: "__registry__/new-york/block/chart-area-axes.tsx",
     },
@@ -3719,7 +3719,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-area-default.tsx")),
       source: "__registry__/new-york/block/chart-area-default.tsx",
     },
@@ -3733,7 +3733,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-area-gradient.tsx")),
       source: "__registry__/new-york/block/chart-area-gradient.tsx",
     },
@@ -3747,7 +3747,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-area-icons.tsx")),
       source: "__registry__/new-york/block/chart-area-icons.tsx",
     },
@@ -3761,7 +3761,7 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-area-interactive.tsx")),
       source: "__registry__/new-york/block/chart-area-interactive.tsx",
     },
@@ -3775,7 +3775,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-area-legend.tsx")),
       source: "__registry__/new-york/block/chart-area-legend.tsx",
     },
@@ -3789,7 +3789,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-area-linear.tsx")),
       source: "__registry__/new-york/block/chart-area-linear.tsx",
     },
@@ -3803,7 +3803,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-area-stacked-expand.tsx")),
       source: "__registry__/new-york/block/chart-area-stacked-expand.tsx",
     },
@@ -3817,7 +3817,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-area-stacked.tsx")),
       source: "__registry__/new-york/block/chart-area-stacked.tsx",
     },
@@ -3831,7 +3831,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-area-step.tsx")),
       source: "__registry__/new-york/block/chart-area-step.tsx",
     },
@@ -3845,7 +3845,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-bar-active.tsx")),
       source: "__registry__/new-york/block/chart-bar-active.tsx",
     },
@@ -3859,7 +3859,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-bar-default.tsx")),
       source: "__registry__/new-york/block/chart-bar-default.tsx",
     },
@@ -3873,7 +3873,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-bar-horizontal.tsx")),
       source: "__registry__/new-york/block/chart-bar-horizontal.tsx",
     },
@@ -3887,7 +3887,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-bar-interactive.tsx")),
       source: "__registry__/new-york/block/chart-bar-interactive.tsx",
     },
@@ -3901,7 +3901,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-bar-label-custom.tsx")),
       source: "__registry__/new-york/block/chart-bar-label-custom.tsx",
     },
@@ -3915,7 +3915,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-bar-label.tsx")),
       source: "__registry__/new-york/block/chart-bar-label.tsx",
     },
@@ -3929,7 +3929,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-bar-mixed.tsx")),
       source: "__registry__/new-york/block/chart-bar-mixed.tsx",
     },
@@ -3943,7 +3943,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-bar-multiple.tsx")),
       source: "__registry__/new-york/block/chart-bar-multiple.tsx",
     },
@@ -3957,7 +3957,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-bar-negative.tsx")),
       source: "__registry__/new-york/block/chart-bar-negative.tsx",
     },
@@ -3971,7 +3971,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-bar-stacked.tsx")),
       source: "__registry__/new-york/block/chart-bar-stacked.tsx",
     },
@@ -3985,7 +3985,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-line-default.tsx")),
       source: "__registry__/new-york/block/chart-line-default.tsx",
     },
@@ -3999,7 +3999,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-line-dots-colors.tsx")),
       source: "__registry__/new-york/block/chart-line-dots-colors.tsx",
     },
@@ -4013,7 +4013,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-line-dots-custom.tsx")),
       source: "__registry__/new-york/block/chart-line-dots-custom.tsx",
     },
@@ -4027,7 +4027,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-line-dots.tsx")),
       source: "__registry__/new-york/block/chart-line-dots.tsx",
     },
@@ -4041,7 +4041,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-line-interactive.tsx")),
       source: "__registry__/new-york/block/chart-line-interactive.tsx",
     },
@@ -4055,7 +4055,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-line-label-custom.tsx")),
       source: "__registry__/new-york/block/chart-line-label-custom.tsx",
     },
@@ -4069,7 +4069,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-line-label.tsx")),
       source: "__registry__/new-york/block/chart-line-label.tsx",
     },
@@ -4083,7 +4083,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-line-linear.tsx")),
       source: "__registry__/new-york/block/chart-line-linear.tsx",
     },
@@ -4097,7 +4097,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-line-multiple.tsx")),
       source: "__registry__/new-york/block/chart-line-multiple.tsx",
     },
@@ -4111,7 +4111,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-line-step.tsx")),
       source: "__registry__/new-york/block/chart-line-step.tsx",
     },
@@ -4125,7 +4125,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-donut-active.tsx")),
       source: "__registry__/new-york/block/chart-pie-donut-active.tsx",
     },
@@ -4139,7 +4139,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-donut-text.tsx")),
       source: "__registry__/new-york/block/chart-pie-donut-text.tsx",
     },
@@ -4153,7 +4153,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-donut.tsx")),
       source: "__registry__/new-york/block/chart-pie-donut.tsx",
     },
@@ -4167,7 +4167,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-interactive.tsx")),
       source: "__registry__/new-york/block/chart-pie-interactive.tsx",
     },
@@ -4181,7 +4181,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-label-custom.tsx")),
       source: "__registry__/new-york/block/chart-pie-label-custom.tsx",
     },
@@ -4195,7 +4195,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-label-list.tsx")),
       source: "__registry__/new-york/block/chart-pie-label-list.tsx",
     },
@@ -4209,7 +4209,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-label.tsx")),
       source: "__registry__/new-york/block/chart-pie-label.tsx",
     },
@@ -4223,7 +4223,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-legend.tsx")),
       source: "__registry__/new-york/block/chart-pie-legend.tsx",
     },
@@ -4237,7 +4237,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-separator-none.tsx")),
       source: "__registry__/new-york/block/chart-pie-separator-none.tsx",
     },
@@ -4251,7 +4251,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-simple.tsx")),
       source: "__registry__/new-york/block/chart-pie-simple.tsx",
     },
@@ -4265,7 +4265,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-pie-stacked.tsx")),
       source: "__registry__/new-york/block/chart-pie-stacked.tsx",
     },
@@ -4279,7 +4279,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-default.tsx")),
       source: "__registry__/new-york/block/chart-radar-default.tsx",
     },
@@ -4293,7 +4293,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-dots.tsx")),
       source: "__registry__/new-york/block/chart-radar-dots.tsx",
     },
@@ -4307,7 +4307,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-grid-circle-fill.tsx")),
       source: "__registry__/new-york/block/chart-radar-grid-circle-fill.tsx",
     },
@@ -4321,7 +4321,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-grid-circle-no-lines.tsx")),
       source: "__registry__/new-york/block/chart-radar-grid-circle-no-lines.tsx",
     },
@@ -4335,7 +4335,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-grid-circle.tsx")),
       source: "__registry__/new-york/block/chart-radar-grid-circle.tsx",
     },
@@ -4349,7 +4349,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-grid-custom.tsx")),
       source: "__registry__/new-york/block/chart-radar-grid-custom.tsx",
     },
@@ -4363,7 +4363,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-grid-fill.tsx")),
       source: "__registry__/new-york/block/chart-radar-grid-fill.tsx",
     },
@@ -4377,7 +4377,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-grid-none.tsx")),
       source: "__registry__/new-york/block/chart-radar-grid-none.tsx",
     },
@@ -4391,7 +4391,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-icons.tsx")),
       source: "__registry__/new-york/block/chart-radar-icons.tsx",
     },
@@ -4405,7 +4405,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-label-custom.tsx")),
       source: "__registry__/new-york/block/chart-radar-label-custom.tsx",
     },
@@ -4419,7 +4419,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-legend.tsx")),
       source: "__registry__/new-york/block/chart-radar-legend.tsx",
     },
@@ -4433,7 +4433,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-lines-only.tsx")),
       source: "__registry__/new-york/block/chart-radar-lines-only.tsx",
     },
@@ -4447,7 +4447,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-multiple.tsx")),
       source: "__registry__/new-york/block/chart-radar-multiple.tsx",
     },
@@ -4461,7 +4461,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radar-radius.tsx")),
       source: "__registry__/new-york/block/chart-radar-radius.tsx",
     },
@@ -4475,7 +4475,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radial-grid.tsx")),
       source: "__registry__/new-york/block/chart-radial-grid.tsx",
     },
@@ -4489,7 +4489,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radial-label.tsx")),
       source: "__registry__/new-york/block/chart-radial-label.tsx",
     },
@@ -4503,7 +4503,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radial-shape.tsx")),
       source: "__registry__/new-york/block/chart-radial-shape.tsx",
     },
@@ -4517,7 +4517,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radial-simple.tsx")),
       source: "__registry__/new-york/block/chart-radial-simple.tsx",
     },
@@ -4531,7 +4531,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radial-stacked.tsx")),
       source: "__registry__/new-york/block/chart-radial-stacked.tsx",
     },
@@ -4545,7 +4545,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-radial-text.tsx")),
       source: "__registry__/new-york/block/chart-radial-text.tsx",
     },
@@ -4559,7 +4559,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-default.tsx")),
       source: "__registry__/new-york/block/chart-tooltip-default.tsx",
     },
@@ -4573,7 +4573,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-indicator-line.tsx")),
       source: "__registry__/new-york/block/chart-tooltip-indicator-line.tsx",
     },
@@ -4587,7 +4587,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-indicator-none.tsx")),
       source: "__registry__/new-york/block/chart-tooltip-indicator-none.tsx",
     },
@@ -4601,7 +4601,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-label-none.tsx")),
       source: "__registry__/new-york/block/chart-tooltip-label-none.tsx",
     },
@@ -4615,7 +4615,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-label-custom.tsx")),
       source: "__registry__/new-york/block/chart-tooltip-label-custom.tsx",
     },
@@ -4629,7 +4629,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-label-formatter.tsx")),
       source: "__registry__/new-york/block/chart-tooltip-label-formatter.tsx",
     },
@@ -4643,7 +4643,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-formatter.tsx")),
       source: "__registry__/new-york/block/chart-tooltip-formatter.tsx",
     },
@@ -4657,7 +4657,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-icons.tsx")),
       source: "__registry__/new-york/block/chart-tooltip-icons.tsx",
     },
@@ -4671,7 +4671,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/new-york/block/chart-tooltip-advanced.tsx")),
       source: "__registry__/new-york/block/chart-tooltip-advanced.tsx",
     },
@@ -8642,7 +8642,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/default/block/chart-area-axes.tsx")),
       source: "__registry__/default/block/chart-area-axes.tsx",
     },
@@ -8656,7 +8656,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/default/block/chart-area-default.tsx")),
       source: "__registry__/default/block/chart-area-default.tsx",
     },
@@ -8670,7 +8670,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/default/block/chart-area-gradient.tsx")),
       source: "__registry__/default/block/chart-area-gradient.tsx",
     },
@@ -8684,7 +8684,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/default/block/chart-area-icons.tsx")),
       source: "__registry__/default/block/chart-area-icons.tsx",
     },
@@ -8698,7 +8698,7 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/default/block/chart-area-interactive.tsx")),
       source: "__registry__/default/block/chart-area-interactive.tsx",
     },
@@ -8712,7 +8712,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/default/block/chart-area-legend.tsx")),
       source: "__registry__/default/block/chart-area-legend.tsx",
     },
@@ -8726,7 +8726,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/default/block/chart-area-linear.tsx")),
       source: "__registry__/default/block/chart-area-linear.tsx",
     },
@@ -8740,7 +8740,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/default/block/chart-area-stacked-expand.tsx")),
       source: "__registry__/default/block/chart-area-stacked-expand.tsx",
     },
@@ -8754,7 +8754,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/default/block/chart-area-stacked.tsx")),
       source: "__registry__/default/block/chart-area-stacked.tsx",
     },
@@ -8768,7 +8768,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-area"],
       component: React.lazy(() => import("@/registry/default/block/chart-area-step.tsx")),
       source: "__registry__/default/block/chart-area-step.tsx",
     },
@@ -8782,7 +8782,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/default/block/chart-bar-active.tsx")),
       source: "__registry__/default/block/chart-bar-active.tsx",
     },
@@ -8796,7 +8796,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/default/block/chart-bar-default.tsx")),
       source: "__registry__/default/block/chart-bar-default.tsx",
     },
@@ -8810,7 +8810,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/default/block/chart-bar-horizontal.tsx")),
       source: "__registry__/default/block/chart-bar-horizontal.tsx",
     },
@@ -8824,7 +8824,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/default/block/chart-bar-interactive.tsx")),
       source: "__registry__/default/block/chart-bar-interactive.tsx",
     },
@@ -8838,7 +8838,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/default/block/chart-bar-label-custom.tsx")),
       source: "__registry__/default/block/chart-bar-label-custom.tsx",
     },
@@ -8852,7 +8852,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/default/block/chart-bar-label.tsx")),
       source: "__registry__/default/block/chart-bar-label.tsx",
     },
@@ -8866,7 +8866,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/default/block/chart-bar-mixed.tsx")),
       source: "__registry__/default/block/chart-bar-mixed.tsx",
     },
@@ -8880,7 +8880,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/default/block/chart-bar-multiple.tsx")),
       source: "__registry__/default/block/chart-bar-multiple.tsx",
     },
@@ -8894,7 +8894,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/default/block/chart-bar-negative.tsx")),
       source: "__registry__/default/block/chart-bar-negative.tsx",
     },
@@ -8908,7 +8908,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-bar"],
       component: React.lazy(() => import("@/registry/default/block/chart-bar-stacked.tsx")),
       source: "__registry__/default/block/chart-bar-stacked.tsx",
     },
@@ -8922,7 +8922,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/default/block/chart-line-default.tsx")),
       source: "__registry__/default/block/chart-line-default.tsx",
     },
@@ -8936,7 +8936,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/default/block/chart-line-dots-colors.tsx")),
       source: "__registry__/default/block/chart-line-dots-colors.tsx",
     },
@@ -8950,7 +8950,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/default/block/chart-line-dots-custom.tsx")),
       source: "__registry__/default/block/chart-line-dots-custom.tsx",
     },
@@ -8964,7 +8964,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/default/block/chart-line-dots.tsx")),
       source: "__registry__/default/block/chart-line-dots.tsx",
     },
@@ -8978,7 +8978,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/default/block/chart-line-interactive.tsx")),
       source: "__registry__/default/block/chart-line-interactive.tsx",
     },
@@ -8992,7 +8992,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/default/block/chart-line-label-custom.tsx")),
       source: "__registry__/default/block/chart-line-label-custom.tsx",
     },
@@ -9006,7 +9006,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/default/block/chart-line-label.tsx")),
       source: "__registry__/default/block/chart-line-label.tsx",
     },
@@ -9020,7 +9020,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/default/block/chart-line-linear.tsx")),
       source: "__registry__/default/block/chart-line-linear.tsx",
     },
@@ -9034,7 +9034,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/default/block/chart-line-multiple.tsx")),
       source: "__registry__/default/block/chart-line-multiple.tsx",
     },
@@ -9048,7 +9048,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-line"],
       component: React.lazy(() => import("@/registry/default/block/chart-line-step.tsx")),
       source: "__registry__/default/block/chart-line-step.tsx",
     },
@@ -9062,7 +9062,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-donut-active.tsx")),
       source: "__registry__/default/block/chart-pie-donut-active.tsx",
     },
@@ -9076,7 +9076,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-donut-text.tsx")),
       source: "__registry__/default/block/chart-pie-donut-text.tsx",
     },
@@ -9090,7 +9090,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-donut.tsx")),
       source: "__registry__/default/block/chart-pie-donut.tsx",
     },
@@ -9104,7 +9104,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-interactive.tsx")),
       source: "__registry__/default/block/chart-pie-interactive.tsx",
     },
@@ -9118,7 +9118,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-label-custom.tsx")),
       source: "__registry__/default/block/chart-pie-label-custom.tsx",
     },
@@ -9132,7 +9132,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-label-list.tsx")),
       source: "__registry__/default/block/chart-pie-label-list.tsx",
     },
@@ -9146,7 +9146,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-label.tsx")),
       source: "__registry__/default/block/chart-pie-label.tsx",
     },
@@ -9160,7 +9160,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-legend.tsx")),
       source: "__registry__/default/block/chart-pie-legend.tsx",
     },
@@ -9174,7 +9174,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-separator-none.tsx")),
       source: "__registry__/default/block/chart-pie-separator-none.tsx",
     },
@@ -9188,7 +9188,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-simple.tsx")),
       source: "__registry__/default/block/chart-pie-simple.tsx",
     },
@@ -9202,7 +9202,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-pie"],
       component: React.lazy(() => import("@/registry/default/block/chart-pie-stacked.tsx")),
       source: "__registry__/default/block/chart-pie-stacked.tsx",
     },
@@ -9216,7 +9216,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-default.tsx")),
       source: "__registry__/default/block/chart-radar-default.tsx",
     },
@@ -9230,7 +9230,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-dots.tsx")),
       source: "__registry__/default/block/chart-radar-dots.tsx",
     },
@@ -9244,7 +9244,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-grid-circle-fill.tsx")),
       source: "__registry__/default/block/chart-radar-grid-circle-fill.tsx",
     },
@@ -9258,7 +9258,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-grid-circle-no-lines.tsx")),
       source: "__registry__/default/block/chart-radar-grid-circle-no-lines.tsx",
     },
@@ -9272,7 +9272,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-grid-circle.tsx")),
       source: "__registry__/default/block/chart-radar-grid-circle.tsx",
     },
@@ -9286,7 +9286,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-grid-custom.tsx")),
       source: "__registry__/default/block/chart-radar-grid-custom.tsx",
     },
@@ -9300,7 +9300,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-grid-fill.tsx")),
       source: "__registry__/default/block/chart-radar-grid-fill.tsx",
     },
@@ -9314,7 +9314,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-grid-none.tsx")),
       source: "__registry__/default/block/chart-radar-grid-none.tsx",
     },
@@ -9328,7 +9328,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-icons.tsx")),
       source: "__registry__/default/block/chart-radar-icons.tsx",
     },
@@ -9342,7 +9342,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-label-custom.tsx")),
       source: "__registry__/default/block/chart-radar-label-custom.tsx",
     },
@@ -9356,7 +9356,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-legend.tsx")),
       source: "__registry__/default/block/chart-radar-legend.tsx",
     },
@@ -9370,7 +9370,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-lines-only.tsx")),
       source: "__registry__/default/block/chart-radar-lines-only.tsx",
     },
@@ -9384,7 +9384,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-multiple.tsx")),
       source: "__registry__/default/block/chart-radar-multiple.tsx",
     },
@@ -9398,7 +9398,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radar"],
       component: React.lazy(() => import("@/registry/default/block/chart-radar-radius.tsx")),
       source: "__registry__/default/block/chart-radar-radius.tsx",
     },
@@ -9412,7 +9412,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/default/block/chart-radial-grid.tsx")),
       source: "__registry__/default/block/chart-radial-grid.tsx",
     },
@@ -9426,7 +9426,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/default/block/chart-radial-label.tsx")),
       source: "__registry__/default/block/chart-radial-label.tsx",
     },
@@ -9440,7 +9440,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/default/block/chart-radial-shape.tsx")),
       source: "__registry__/default/block/chart-radial-shape.tsx",
     },
@@ -9454,7 +9454,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/default/block/chart-radial-simple.tsx")),
       source: "__registry__/default/block/chart-radial-simple.tsx",
     },
@@ -9468,7 +9468,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/default/block/chart-radial-stacked.tsx")),
       source: "__registry__/default/block/chart-radial-stacked.tsx",
     },
@@ -9482,7 +9482,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-radial"],
       component: React.lazy(() => import("@/registry/default/block/chart-radial-text.tsx")),
       source: "__registry__/default/block/chart-radial-text.tsx",
     },
@@ -9496,7 +9496,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/default/block/chart-tooltip-default.tsx")),
       source: "__registry__/default/block/chart-tooltip-default.tsx",
     },
@@ -9510,7 +9510,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/default/block/chart-tooltip-indicator-line.tsx")),
       source: "__registry__/default/block/chart-tooltip-indicator-line.tsx",
     },
@@ -9524,7 +9524,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/default/block/chart-tooltip-indicator-none.tsx")),
       source: "__registry__/default/block/chart-tooltip-indicator-none.tsx",
     },
@@ -9538,7 +9538,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/default/block/chart-tooltip-label-none.tsx")),
       source: "__registry__/default/block/chart-tooltip-label-none.tsx",
     },
@@ -9552,7 +9552,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/default/block/chart-tooltip-label-custom.tsx")),
       source: "__registry__/default/block/chart-tooltip-label-custom.tsx",
     },
@@ -9566,7 +9566,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/default/block/chart-tooltip-label-formatter.tsx")),
       source: "__registry__/default/block/chart-tooltip-label-formatter.tsx",
     },
@@ -9580,7 +9580,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/default/block/chart-tooltip-formatter.tsx")),
       source: "__registry__/default/block/chart-tooltip-formatter.tsx",
     },
@@ -9594,7 +9594,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/default/block/chart-tooltip-icons.tsx")),
       source: "__registry__/default/block/chart-tooltip-icons.tsx",
     },
@@ -9608,7 +9608,7 @@ export const Index: Record<string, any> = {
         type: "registry:block",
         target: ""
       }],
-      categories: undefined,
+      categories: ["charts","charts-tooltip"],
       component: React.lazy(() => import("@/registry/default/block/chart-tooltip-advanced.tsx")),
       source: "__registry__/default/block/chart-tooltip-advanced.tsx",
     },

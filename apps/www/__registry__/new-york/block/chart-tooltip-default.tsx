@@ -16,6 +16,8 @@ import {
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
 
+export const iframeHeight = "1200px"
+
 export const description = "A stacked bar chart with a legend"
 
 const chartData = [

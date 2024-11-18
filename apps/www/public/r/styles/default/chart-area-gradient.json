@@ -13,5 +13,9 @@
       "type": "registry:block",
       "target": ""
     }
+  ],
+  "categories": [
+    "charts",
+    "charts-area"
   ]
 }

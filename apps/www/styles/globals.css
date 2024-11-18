@@ -143,11 +143,11 @@
   }
 
   .border-grid {
-    @apply border-border/70 dark:border-border;
+    @apply border-border/30 dark:border-border;
   }
 
   .container-wrapper {
-    @apply min-[1800px]:max-w-[1536px] min-[1800px]:border-x border-border/40 dark:border-border mx-auto w-full;
+    @apply min-[1800px]:max-w-[1536px] min-[1800px]:border-x border-border/30 dark:border-border mx-auto w-full;
   }
 }
 
