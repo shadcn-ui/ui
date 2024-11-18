@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import Link from "next/link"
 
+import { siteConfig } from "@/config/site"
 import { Announcement } from "@/components/announcement"
 import { ExamplesNav } from "@/components/examples-nav"
 import {
@@ -25,20 +26,23 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
     <div className="relative">
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading className="hidden md:block">
-          Check out some examples
-        </PageHeaderHeading>
-        <PageHeaderHeading className="md:hidden">Examples</PageHeaderHeading>
+        <PageHeaderHeading>Build your component library</PageHeaderHeading>
         <PageHeaderDescription>
-          Dashboard, cards, authentication. Some examples built using the
-          components. Use this as a guide to build your own.
+          Beautifully designed components that you can copy and paste into your
+          apps. Made with Tailwind CSS. Open source.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
             <Link href="/docs">Get Started</Link>
           </Button>
           <Button asChild size="sm" variant="ghost">
-            <Link href="/components">Components</Link>
+            <Link
+              target="_blank"
+              rel="noreferrer"
+              href={siteConfig.links.github}
+            >
+              GitHub
+            </Link>
           </Button>
         </PageActions>
       </PageHeader>
