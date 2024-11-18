@@ -147,7 +147,7 @@
   }
 
   .container-wrapper {
-    @apply min-[1800px]:max-w-[1536px] min-[1800px]:border-x border-border/50 dark:border-border mx-auto w-full;
+    @apply min-[1800px]:max-w-[1536px] min-[1800px]:border-x border-border/40 dark:border-border mx-auto w-full;
   }
 }
 
