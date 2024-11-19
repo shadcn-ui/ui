@@ -149,10 +149,8 @@
   .container-wrapper {
     @apply min-[1800px]:max-w-[1536px] min-[1800px]:border-x border-border/30 dark:border-border mx-auto w-full;
   }
-}
 
-@media (max-width: 640px) {
   .container {
-    @apply px-4;
+    @apply px-4 xl:px-6 2xl:px-4 mx-auto max-w-[1536px];
   }
 }

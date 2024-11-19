@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { Announcement } from "@/components/announcement"
+import { CardsDemo } from "@/components/cards"
 import { ExamplesNav } from "@/components/examples-nav"
 import {
   PageActions,
@@ -9,7 +10,6 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import CardsNewYork from "@/registry/new-york/example/cards"
 import { Button } from "@/registry/new-york/ui/button"
 
 export default function IndexPage() {
@@ -31,7 +31,7 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="border-b border-grid">
+      <div className="border-grid border-b">
         <div className="container-wrapper">
           <div className="container py-4">
             <ExamplesNav className="[&>a:first-child]:text-primary" />
@@ -57,7 +57,7 @@ export default function IndexPage() {
             />
           </section>
           <section className="hidden md:block [&>div]:p-0">
-            <CardsNewYork />
+            <CardsDemo />
           </section>
         </div>
       </div>

@@ -7,7 +7,7 @@
     "dev": "next dev -p 3333",
     "build": "contentlayer2 build && pnpm build:registry && next build",
     "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
-    "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-screenshots.mts",
+    "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "build:docs": "contentlayer2 build",
     "seed:tasks": "tsx --tsconfig ./tsconfig.scripts.json ./app/(app)/examples/tasks/data/seed.ts",
     "start": "next start -p 3333",

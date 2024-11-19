@@ -21,6 +21,7 @@ import { z } from "zod"
 import { trackEvent } from "@/lib/events"
 import { FileTree, createFileTreeForRegistryItemFiles } from "@/lib/registry"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { ProjectAddButton } from "@/components/project-add-button"
 import { V0Button } from "@/components/v0-button"
 import { Button } from "@/registry/new-york/ui/button"
 import {
@@ -117,7 +118,7 @@ function BlockViewerProvider({
         className="group/block-view-wrapper flex min-w-0 flex-col items-stretch gap-4"
         style={
           {
-            "--height": item.meta?.iframeHeight ?? 450,
+            "--height": item.meta?.iframeHeight ?? "930px",
           } as React.CSSProperties
         }
       >
@@ -161,18 +162,6 @@ function BlockViewerToolbar() {
         {item.description}
       </a>
       <div className="ml-auto flex items-center gap-2">
-        <Button
-          variant="ghost"
-          className="hidden h-7 w-7 rounded-md border bg-transparent shadow-none md:flex lg:w-auto"
-          size="sm"
-          onClick={() => {
-            copyToClipboard(`npx shadcn@latest add ${item.name}`)
-          }}
-        >
-          {isCopied ? <Check /> : <Terminal />}
-          <span className="hidden lg:inline">npx shadcn add {item.name}</span>
-        </Button>
-        <Separator orientation="vertical" className="mx-2 hidden h-4 md:flex" />
         <div className="hidden h-7 items-center gap-1.5 rounded-md border p-[2px] shadow-none lg:flex">
           <ToggleGroup
             type="single"
@@ -185,21 +174,21 @@ function BlockViewerToolbar() {
           >
             <ToggleGroupItem
               value="100"
-              className="h-[22px] w-[22px] rounded-sm p-0"
+              className="h-[22px] w-[22px] min-w-0 rounded-sm p-0"
               title="Desktop"
             >
               <Monitor className="h-3.5 w-3.5" />
             </ToggleGroupItem>
             <ToggleGroupItem
               value="60"
-              className="h-[22px] w-[22px] rounded-sm p-0"
+              className="h-[22px] w-[22px] min-w-0 rounded-sm p-0"
               title="Tablet"
             >
               <Tablet className="h-3.5 w-3.5" />
             </ToggleGroupItem>
             <ToggleGroupItem
               value="30"
-              className="h-[22px] w-[22px] rounded-sm p-0"
+              className="h-[22px] w-[22px] min-w-0 rounded-sm p-0"
               title="Mobile"
             >
               <Smartphone className="h-3.5 w-3.5" />
@@ -212,14 +201,33 @@ function BlockViewerToolbar() {
               asChild
               title="Open in New Tab"
             >
-              <Link href={`/blocks/${style}/${item.name}`} target="_blank">
+              <Link href={`/view/styles/${style}/${item.name}`} target="_blank">
                 <span className="sr-only">Open in New Tab</span>
                 <Fullscreen className="h-3.5 w-3.5" />
               </Link>
             </Button>
           </ToggleGroup>
         </div>
-        <Separator orientation="vertical" className="mx-2 hidden h-4 xl:flex" />
+        <Separator orientation="vertical" className="mx-1 hidden h-4 md:flex" />
+        <div className="flex h-7 items-center gap-1 rounded-md border p-[2px]">
+          <Button
+            variant="ghost"
+            className="hidden h-[22px] w-auto gap-1 rounded-sm px-2 md:flex lg:w-auto"
+            size="sm"
+            onClick={() => {
+              copyToClipboard(`npx shadcn@latest add ${item.name}`)
+            }}
+          >
+            {isCopied ? <Check /> : <Terminal />}
+            <span className="hidden lg:inline">npx shadcn add {item.name}</span>
+          </Button>
+          <Separator orientation="vertical" className="hidden h-4 xl:flex" />
+          <ProjectAddButton
+            name={item.name}
+            className="h-[22px] w-[22px] gap-1 "
+          />
+        </div>
+        <Separator orientation="vertical" className="mx-1 hidden h-4 xl:flex" />
         <V0Button
           className="hidden shadow-none sm:flex"
           id={`v0-button-${item.name}`}
@@ -244,7 +252,7 @@ function BlockViewerView() {
             minSize={30}
           >
             <Image
-              src={`/images/blocks/${item.name}.png`}
+              src={`/r/styles/${style}/${item.name}.png`}
               alt={item.name}
               data-block={item.name}
               width={1440}
@@ -252,7 +260,7 @@ function BlockViewerView() {
               className="absolute left-0 top-0 z-20 w-[970px] max-w-none bg-background data-[block=sidebar-10]:left-auto data-[block=sidebar-10]:right-0 data-[block=sidebar-11]:-top-1/3 data-[block=sidebar-14]:left-auto data-[block=sidebar-14]:right-0 data-[block=login-01]:max-w-full data-[block=sidebar-13]:max-w-full data-[block=sidebar-15]:max-w-full dark:hidden sm:w-[1280px] md:hidden md:dark:hidden"
             />
             <Image
-              src={`/images/blocks/${item.name}-dark.png`}
+              src={`/r/styles/${style}/${item.name}-dark.png`}
               alt={item.name}
               data-block={item.name}
               width={1440}
@@ -260,9 +268,9 @@ function BlockViewerView() {
               className="absolute left-0 top-0 z-20 hidden w-[970px] max-w-none bg-background data-[block=sidebar-10]:left-auto data-[block=sidebar-10]:right-0 data-[block=sidebar-11]:-top-1/3 data-[block=sidebar-14]:left-auto data-[block=sidebar-14]:right-0 data-[block=login-01]:max-w-full data-[block=sidebar-13]:max-w-full data-[block=sidebar-15]:max-w-full dark:block sm:w-[1280px] md:hidden md:dark:hidden"
             />
             <iframe
-              src={`/view/${style}/${item.name}`}
-              height={item.meta?.iframeHeight ?? 450}
-              className="chunk-mode relative z-20 hidden w-full bg-background md:block"
+              src={`/view/styles/${style}/${item.name}`}
+              height={item.meta?.iframeHeight ?? 930}
+              className="relative z-20 hidden w-full bg-background md:block"
             />
           </ResizablePanel>
           <ResizableHandle className="relative hidden w-3 bg-transparent p-0 after:absolute after:right-0 after:top-1/2 after:h-8 after:w-[6px] after:-translate-y-1/2 after:translate-x-[-1px] after:rounded-full after:bg-border after:transition-all after:hover:h-10 md:block" />

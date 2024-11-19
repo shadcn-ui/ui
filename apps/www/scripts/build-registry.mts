@@ -3,7 +3,7 @@ import { tmpdir } from "os"
 import path from "path"
 import template from "lodash.template"
 import { rimraf } from "rimraf"
-import { Project, ScriptKind, SyntaxKind } from "ts-morph"
+import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
 import { registry } from "../registry"
@@ -20,7 +20,7 @@ import {
 } from "../registry/schema"
 import { fixImport } from "./fix-import.mts"
 
-const REGISTRY_PATH = path.join(process.cwd(), "public/r")
+export const REGISTRY_PATH = path.join(process.cwd(), "public/r")
 
 const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:ui",
@@ -29,6 +29,7 @@ const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:theme",
   "registry:block",
   "registry:example",
+  "registry:internal",
 ]
 
 const project = new Project({
@@ -97,14 +98,6 @@ export const Index: Record<string, any> = {
         const sourceFile = project.createSourceFile(tempFile, raw, {
           scriptKind: ScriptKind.TSX,
         })
-
-        const description = sourceFile
-          .getVariableDeclaration("description")
-          ?.getInitializerOrThrow()
-          .asKindOrThrow(SyntaxKind.StringLiteral)
-          .getLiteralValue()
-
-        item.description = description ?? ""
 
         // Find all imports.
         const imports = new Map<
@@ -192,6 +185,7 @@ export const Index: Record<string, any> = {
       categories: ${JSON.stringify(item.categories)},
       component: React.lazy(() => import("${componentPath}")),
       source: "${sourceFilename}",
+      meta: ${JSON.stringify(item.meta)},
     },`
     }
 
@@ -747,6 +741,7 @@ export const Icons = {
 }
 
 try {
+  console.log("💽 Building registry...")
   const result = registrySchema.safeParse(registry)
 
   if (!result.success) {

@@ -57,7 +57,7 @@ export async function getRegistryItem(
 
   // Get meta.
   // Assume the first file is the main file.
-  const meta = await getFileMeta(files[0].path)
+  // const meta = await getFileMeta(files[0].path)
 
   // Fix file paths.
   files = fixFilePaths(files)
@@ -65,7 +65,7 @@ export async function getRegistryItem(
   const parsed = registryItemSchema.safeParse({
     ...result.data,
     files,
-    meta,
+    // meta,
   })
 
   if (!parsed.success) {

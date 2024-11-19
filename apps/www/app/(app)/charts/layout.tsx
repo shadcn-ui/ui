@@ -39,7 +39,7 @@ export default function ChartsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="border-b border-grid">
+      <div className="border-grid border-b">
         <div className="container-wrapper">
           <div className="container py-4">
             <ChartsNav />

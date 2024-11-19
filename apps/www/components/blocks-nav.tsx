@@ -3,24 +3,30 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 import { registryCategories } from "@/registry/registry-categories"
 
 export function BlocksNav() {
   const pathname = usePathname()
 
   return (
-    <div className="flex items-center">
-      <BlocksNavLink
-        category={{ name: "All Blocks", slug: "", hidden: false }}
-        isActive={pathname === "/blocks"}
-      />
-      {registryCategories.map((category) => (
-        <BlocksNavLink
-          key={category.slug}
-          category={category}
-          isActive={pathname?.startsWith(`/blocks/${category.slug}`) ?? false}
-        />
-      ))}
+    <div className="relative">
+      <ScrollArea className="max-w-none">
+        <div className="flex items-center">
+          <BlocksNavLink
+            category={{ name: "All Blocks", slug: "", hidden: false }}
+            isActive={pathname === "/blocks"}
+          />
+          {registryCategories.map((category) => (
+            <BlocksNavLink
+              key={category.slug}
+              category={category}
+              isActive={pathname === `/blocks/${category.slug}`}
+            />
+          ))}
+        </div>
+        <ScrollBar orientation="horizontal" className="invisible" />
+      </ScrollArea>
     </div>
   )
 }
@@ -40,7 +46,7 @@ function BlocksNavLink({
     <Link
       href={`/blocks/${category.slug}`}
       key={category.slug}
-      className="flex h-7 items-center justify-center rounded-full px-4 text-center text-sm text-muted-foreground transition-colors hover:text-primary data-[active=true]:bg-muted font-medium data-[active=true]:text-primary"
+      className="flex h-7 shrink-0 items-center justify-center whitespace-nowrap rounded-full px-4 text-center text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active=true]:bg-muted data-[active=true]:text-foreground"
       data-active={isActive}
     >
       {category.name}
