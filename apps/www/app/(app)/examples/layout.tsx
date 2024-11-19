@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import Link from "next/link"
 
-import { cn } from "@/lib/utils"
+import { siteConfig } from "@/config/site"
 import { Announcement } from "@/components/announcement"
 import { ExamplesNav } from "@/components/examples-nav"
 import {
@@ -10,7 +10,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { Button, buttonVariants } from "@/registry/new-york/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 
 export const metadata: Metadata = {
   title: "Examples",
@@ -23,32 +23,37 @@ interface ExamplesLayoutProps {
 
 export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
   return (
-    <div className="container relative">
+    <div className="relative">
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading className="hidden md:block">
-          Check out some examples
-        </PageHeaderHeading>
-        <PageHeaderHeading className="md:hidden">Examples</PageHeaderHeading>
+        <PageHeaderHeading>Build your component library</PageHeaderHeading>
         <PageHeaderDescription>
-          Dashboard, cards, authentication. Some examples built using the
-          components. Use this as a guide to build your own.
+          Beautifully designed components that you can copy and paste into your
+          apps. Made with Tailwind CSS. Open source.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
             <Link href="/docs">Get Started</Link>
           </Button>
           <Button asChild size="sm" variant="ghost">
-            <Link href="/components">Components</Link>
+            <Link
+              target="_blank"
+              rel="noreferrer"
+              href={siteConfig.links.github}
+            >
+              GitHub
+            </Link>
           </Button>
         </PageActions>
       </PageHeader>
-      <section>
-        <ExamplesNav />
-        <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
-          {children}
-        </div>
-      </section>
+      <div className="container py-6">
+        <section>
+          <ExamplesNav />
+          <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
+            {children}
+          </div>
+        </section>
+      </div>
     </div>
   )
 }

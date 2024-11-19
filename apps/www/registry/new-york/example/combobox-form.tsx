@@ -1,7 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
+import { Check, ChevronsUpDown } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
@@ -90,7 +90,7 @@ export default function ComboboxForm() {
                             (language) => language.value === field.value
                           )?.label
                         : "Select language"}
-                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                      <ChevronsUpDown className="opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
@@ -112,9 +112,9 @@ export default function ComboboxForm() {
                             }}
                           >
                             {language.label}
-                            <CheckIcon
+                            <Check
                               className={cn(
-                                "ml-auto h-4 w-4",
+                                "ml-auto",
                                 language.value === field.value
                                   ? "opacity-100"
                                   : "opacity-0"
