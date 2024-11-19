@@ -33,98 +33,102 @@ export const blocks: Registry = [
     ],
     categories: ["sidebar", "dashboard"],
   },
-  // {
-  //   name: "sidebar-02",
-  //   type: "registry:block",
-  //   registryDependencies: [
-  //     "sidebar",
-  //     "breadcrumb",
-  //     "separator",
-  //     "label",
-  //     "dropdown-menu",
-  //   ],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-02/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-02/components/app-sidebar.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-02/components/search-form.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-02/components/version-switcher.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
-  // {
-  //   name: "sidebar-03",
-  //   type: "registry:block",
-  //   registryDependencies: ["sidebar", "breadcrumb"],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-03/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-03/components/app-sidebar.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
-  // {
-  //   name: "sidebar-04",
-  //   type: "registry:block",
-  //   registryDependencies: ["sidebar", "breadcrumb", "separator"],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-04/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-04/components/app-sidebar.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
-  // {
-  //   name: "sidebar-05",
-  //   type: "registry:block",
-  //   registryDependencies: [
-  //     "sidebar",
-  //     "breadcrumb",
-  //     "separator",
-  //     "label",
-  //     "collapsible",
-  //   ],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-05/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-05/components/app-sidebar.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-05/components/search-form.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
+  {
+    name: "sidebar-02",
+    description: "A sidebar with collapsible sections.",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "label",
+      "dropdown-menu",
+    ],
+    files: [
+      {
+        path: "blocks/sidebar-02/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-02/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-02/components/search-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-02/components/version-switcher.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
+    name: "sidebar-03",
+    description: "A sidebar with submenus.",
+    type: "registry:block",
+    registryDependencies: ["sidebar", "breadcrumb"],
+    files: [
+      {
+        path: "blocks/sidebar-03/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-03/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
+    name: "sidebar-04",
+    description: "A floating sidebar with submenus.",
+    type: "registry:block",
+    registryDependencies: ["sidebar", "breadcrumb", "separator"],
+    files: [
+      {
+        path: "blocks/sidebar-04/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-04/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
+    name: "sidebar-05",
+    description: "A sidebar with collapsible submenus.",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "label",
+      "collapsible",
+    ],
+    files: [
+      {
+        path: "blocks/sidebar-05/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-05/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-05/components/search-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
   {
     name: "sidebar-06",
     description: "A sidebar with submenus as dropdowns.",
@@ -198,273 +202,281 @@ export const blocks: Registry = [
     ],
     categories: ["sidebar", "dashboard"],
   },
-  // {
-  //   name: "sidebar-08",
-  //   type: "registry:block",
-  //   registryDependencies: [
-  //     "sidebar",
-  //     "breadcrumb",
-  //     "separator",
-  //     "collapsible",
-  //     "dropdown-menu",
-  //     "avatar",
-  //   ],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-08/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-08/components/app-sidebar.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-08/components/nav-main.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-08/components/nav-projects.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-08/components/nav-secondary.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-08/components/nav-user.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
-  // {
-  //   name: "sidebar-09",
-  //   type: "registry:block",
-  //   registryDependencies: [
-  //     "sidebar",
-  //     "breadcrumb",
-  //     "separator",
-  //     "collapsible",
-  //     "dropdown-menu",
-  //     "avatar",
-  //     "switch",
-  //   ],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-09/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-09/components/app-sidebar.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-09/components/nav-user.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
-  // {
-  //   name: "sidebar-10",
-  //   type: "registry:block",
-  //   registryDependencies: [
-  //     "sidebar",
-  //     "breadcrumb",
-  //     "separator",
-  //     "popover",
-  //     "collapsible",
-  //     "dropdown-menu",
-  //   ],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-10/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-10/components/app-sidebar.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-10/components/nav-actions.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-10/components/nav-favorites.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-10/components/nav-main.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-10/components/nav-secondary.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-10/components/nav-workspaces.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-10/components/team-switcher.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
-  // {
-  //   name: "sidebar-11",
-  //   type: "registry:block",
-  //   registryDependencies: ["sidebar", "breadcrumb", "separator", "collapsible"],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-11/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-11/components/app-sidebar.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
-  // {
-  //   name: "sidebar-12",
-  //   type: "registry:block",
-  //   registryDependencies: [
-  //     "sidebar",
-  //     "breadcrumb",
-  //     "separator",
-  //     "collapsible",
-  //     "calendar",
-  //     "dropdown-menu",
-  //     "avatar",
-  //   ],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-12/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-12/components/app-sidebar.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-12/components/calendars.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-12/components/date-picker.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-12/components/nav-user.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
-  // {
-  //   name: "sidebar-13",
-  //   type: "registry:block",
-  //   registryDependencies: ["sidebar", "breadcrumb", "button", "dialog"],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-13/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-13/components/settings-dialog.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
-  // {
-  //   name: "sidebar-14",
-  //   type: "registry:block",
-  //   registryDependencies: ["sidebar", "breadcrumb"],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-14/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-14/components/app-sidebar.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
-  // {
-  //   name: "sidebar-15",
-  //   type: "registry:block",
-  //   registryDependencies: [
-  //     "sidebar",
-  //     "breadcrumb",
-  //     "separator",
-  //     "popover",
-  //     "collapsible",
-  //     "dropdown-menu",
-  //     "calendar",
-  //     "avatar",
-  //   ],
-  //   files: [
-  //     {
-  //       path: "blocks/sidebar-15/page.tsx",
-  //       type: "registry:page",
-  //       target: "app/dashboard/page.tsx",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-15/components/calendars.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-15/components/date-picker.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-15/components/nav-favorites.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-15/components/nav-main.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-15/components/nav-secondary.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-15/components/nav-user.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-15/components/nav-workspaces.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-15/components/sidebar-left.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-15/components/sidebar-right.tsx",
-  //       type: "registry:component",
-  //     },
-  //     {
-  //       path: "blocks/sidebar-15/components/team-switcher.tsx",
-  //       type: "registry:component",
-  //     },
-  //   ],
-  //   categories: ["sidebar", "dashboard"],
-  // },
+  {
+    name: "sidebar-08",
+    description: "An inset sidebar with secondary navigation.",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "collapsible",
+      "dropdown-menu",
+      "avatar",
+    ],
+    files: [
+      {
+        path: "blocks/sidebar-08/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-08/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-08/components/nav-main.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-08/components/nav-projects.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-08/components/nav-secondary.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-08/components/nav-user.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
+    name: "sidebar-09",
+    description: "Collapsible nested sidebars.",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "collapsible",
+      "dropdown-menu",
+      "avatar",
+      "switch",
+    ],
+    files: [
+      {
+        path: "blocks/sidebar-09/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-09/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-09/components/nav-user.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
+    name: "sidebar-10",
+    description: "A sidebar in a popover.",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "popover",
+      "collapsible",
+      "dropdown-menu",
+    ],
+    files: [
+      {
+        path: "blocks/sidebar-10/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-10/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-10/components/nav-actions.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-10/components/nav-favorites.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-10/components/nav-main.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-10/components/nav-secondary.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-10/components/nav-workspaces.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-10/components/team-switcher.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
+    name: "sidebar-11",
+    description: "A sidebar with a collapsible file tree.",
+    type: "registry:block",
+    registryDependencies: ["sidebar", "breadcrumb", "separator", "collapsible"],
+    files: [
+      {
+        path: "blocks/sidebar-11/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-11/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
+    name: "sidebar-12",
+    description: "A sidebar with a calendar.",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "collapsible",
+      "calendar",
+      "dropdown-menu",
+      "avatar",
+    ],
+    files: [
+      {
+        path: "blocks/sidebar-12/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-12/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-12/components/calendars.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-12/components/date-picker.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-12/components/nav-user.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
+    name: "sidebar-13",
+    description: "A sidebar in a dialog.",
+    type: "registry:block",
+    registryDependencies: ["sidebar", "breadcrumb", "button", "dialog"],
+    files: [
+      {
+        path: "blocks/sidebar-13/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-13/components/settings-dialog.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
+    name: "sidebar-14",
+    description: "A sidebar on the right.",
+    type: "registry:block",
+    registryDependencies: ["sidebar", "breadcrumb"],
+    files: [
+      {
+        path: "blocks/sidebar-14/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-14/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
+    name: "sidebar-15",
+    description: "A left and right sidebar.",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "popover",
+      "collapsible",
+      "dropdown-menu",
+      "calendar",
+      "avatar",
+    ],
+    files: [
+      {
+        path: "blocks/sidebar-15/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-15/components/calendars.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-15/components/date-picker.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-15/components/nav-favorites.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-15/components/nav-main.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-15/components/nav-secondary.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-15/components/nav-user.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-15/components/nav-workspaces.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-15/components/sidebar-left.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-15/components/sidebar-right.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-15/components/team-switcher.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
   {
     name: "login-01",
     description: "A simple login form.",
