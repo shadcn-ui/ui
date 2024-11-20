@@ -231,7 +231,7 @@ function BlockViewerToolbar() {
         <V0Button
           className="hidden shadow-none sm:flex"
           id={`v0-button-${item.name}`}
-          name={`v0-${item.name}`}
+          name={`${item.name}`}
         />
       </div>
     </div>

@@ -2,43 +2,9 @@
 
 import { track } from "@vercel/analytics/server"
 import { capitalCase } from "change-case"
-import { z } from "zod"
 
+import { getRegistryItem } from "@/lib/registry"
 import { Style } from "@/registry/registry-styles"
-import { registryItemSchema, registryItemTypeSchema } from "@/registry/schema"
-
-async function getRegistryItem(name: string, style: Style["name"]) {
-  const registryURL = new URL(
-    `${process.env.NEXT_PUBLIC_APP_URL}/r/styles/${style}/${name}.json`
-  )
-  const response = await fetch(registryURL)
-
-  if (!response.ok) {
-    return null
-  }
-
-  const data = await response.json()
-
-  const result = registryItemSchema
-    .extend({
-      files: z.array(
-        z.object({
-          path: z.string(),
-          content: z.string().optional(),
-          type: registryItemTypeSchema,
-          target: z.string().optional(),
-        })
-      ),
-    })
-    .safeParse(data)
-
-  if (!result.success) {
-    console.error(result.error)
-    return null
-  }
-
-  return result.data
-}
 
 export async function editInV0({
   name,
@@ -64,20 +30,6 @@ export async function editInV0({
       style,
       url,
     })
-
-    // const payload = {
-    //   title: registryItem.name,
-    //   description: registryItem.description ?? registryItem.name,
-    //   code: registryItem.files?.[0]?.content,
-    //   source: {
-    //     title: "shadcn/ui",
-    //     url,
-    //   },
-    //   meta: {
-    //     project: capitalCase(name.replace(/\d+/g, "")),
-    //     file: `${name}.tsx`,
-    //   },
-    // }
 
     // Remove v0 prefix from the name
     registryItem.name = registryItem.name.replace(/^v0-/, "")
@@ -120,7 +72,8 @@ export async function editInV0({
 
     return {
       ...result,
-      url: `${process.env.V0_URL}/chat/api/open-in-v0/${result.id}`,
+      url: `http://localhost:3000/chat/api/open-in-v0/${result.id}`,
+      // url: `${process.env.V0_URL}/chat/api/open-in-v0/${result.id}`,
     }
   } catch (error) {
     console.error(error)

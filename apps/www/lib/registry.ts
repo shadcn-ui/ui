@@ -45,7 +45,7 @@ export async function getRegistryItem(
 
   let files: typeof result.data.files = []
   for (const file of item.files) {
-    const content = await getFileContent(file.path)
+    const content = await getFileContent(file)
     const relativePath = path.relative(process.cwd(), file.path)
 
     files.push({
@@ -76,14 +76,14 @@ export async function getRegistryItem(
   return parsed.data
 }
 
-async function getFileContent(filePath: string) {
-  const raw = await fs.readFile(filePath, "utf-8")
+async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
+  const raw = await fs.readFile(file.path, "utf-8")
 
   const project = new Project({
     compilerOptions: {},
   })
 
-  const tempFile = await createTempSourceFile(filePath)
+  const tempFile = await createTempSourceFile(file.path)
   const sourceFile = project.createSourceFile(tempFile, raw, {
     scriptKind: ScriptKind.TSX,
   })
@@ -95,8 +95,12 @@ async function getFileContent(filePath: string) {
 
   let code = sourceFile.getFullText()
 
-  // Format the code.
-  code = code.replaceAll("export default", "export")
+  // Some registry items uses default export.
+  // We want to use named export instead.
+  // TODO: do we really need this? - @shadcn.
+  if (file.type !== "registry:page") {
+    code = code.replaceAll("export default", "export")
+  }
 
   // Fix imports.
   code = fixImport(code)
