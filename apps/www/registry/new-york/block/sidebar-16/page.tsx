@@ -64,7 +64,7 @@ export default function Page() {
 
         <SidebarInset>
           <header className=" flex shrink-0 items-center gap-2 border-b py-2">
-            <div className="flex items-center gap-2 px-4">
+            <div className="flex items-center gap-2 px-4 py-2">
               <div className="flex md:hidden items-center gap-2">
                 <SidebarTrigger />
                 <Separator orientation="vertical" className="mr-2 h-4" />
