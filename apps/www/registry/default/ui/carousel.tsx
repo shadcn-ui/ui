@@ -105,7 +105,7 @@ const Carousel = React.forwardRef<
           }
         }
       },
-      [scrollPrev, scrollNext]
+      [orientation, scrollPrev, scrollNext]
     )
 
     React.useEffect(() => {
