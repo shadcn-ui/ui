@@ -5523,7 +5523,7 @@ export const Index: Record<string, any> = {
     },
     "v0-sidebar-16": {
       name: "v0-sidebar-16",
-      description: "An inset sidebar with secondary navigation.",
+      description: "An inset sidebar with site header navigation.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu","button"],
       files: [{
@@ -11072,7 +11072,7 @@ export const Index: Record<string, any> = {
     },
     "v0-sidebar-16": {
       name: "v0-sidebar-16",
-      description: "An inset sidebar with secondary navigation.",
+      description: "An inset sidebar with site header navigation.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu","button"],
       files: [{
