@@ -278,6 +278,7 @@ export const v0: Registry = [
       "dropdown-menu",
       "avatar",
       "navigation-menu",
+      "button",
     ],
     files: [
       {

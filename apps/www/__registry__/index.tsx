@@ -4057,7 +4057,7 @@ export const Index: Record<string, any> = {
       name: "sidebar-16",
       description: "An inset sidebar with site header navigation.",
       type: "registry:block",
-      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu"],
+      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu","button"],
       files: [{
         path: "registry/new-york/block/sidebar-16/page.tsx",
         type: "registry:page",
@@ -5525,7 +5525,7 @@ export const Index: Record<string, any> = {
       name: "v0-sidebar-16",
       description: "An inset sidebar with secondary navigation.",
       type: "registry:block",
-      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu"],
+      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu","button"],
       files: [{
         path: "registry/new-york/v0/sidebar-16.tsx",
         type: "registry:block",
@@ -9606,7 +9606,7 @@ export const Index: Record<string, any> = {
       name: "sidebar-16",
       description: "An inset sidebar with site header navigation.",
       type: "registry:block",
-      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu"],
+      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu","button"],
       files: [{
         path: "registry/default/block/sidebar-16/page.tsx",
         type: "registry:page",
@@ -11074,7 +11074,7 @@ export const Index: Record<string, any> = {
       name: "v0-sidebar-16",
       description: "An inset sidebar with secondary navigation.",
       type: "registry:block",
-      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu"],
+      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu","button"],
       files: [{
         path: "registry/default/v0/sidebar-16.tsx",
         type: "registry:block",

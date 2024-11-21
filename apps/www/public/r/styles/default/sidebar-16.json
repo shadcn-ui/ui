@@ -9,7 +9,8 @@
     "collapsible",
     "dropdown-menu",
     "avatar",
-    "navigation-menu"
+    "navigation-menu",
+    "button"
   ],
   "files": [
     {
