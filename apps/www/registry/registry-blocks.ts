@@ -808,6 +808,7 @@ export const blocks: Registry = [
       "collapsible",
       "dropdown-menu",
       "avatar",
+      "navigation-menu",
     ],
     files: [
       {

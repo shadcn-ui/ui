@@ -268,6 +268,27 @@ export const v0: Registry = [
     subcategory: "Sidebars",
   },
   {
+    name: "v0-sidebar-16",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "collapsible",
+      "dropdown-menu",
+      "avatar",
+      "navigation-menu",
+    ],
+    files: [
+      {
+        path: "v0/sidebar-16.tsx",
+        type: "registry:block",
+      },
+    ],
+    category: "Application",
+    subcategory: "Sidebars",
+  },
+  {
     name: "v0-login-01",
     type: "registry:block",
     registryDependencies: ["button", "card", "input", "label"],
