@@ -820,6 +820,10 @@ export const blocks: Registry = [
         type: "registry:component",
       },
       {
+        path: "block/sidebar-16/components/nav-header-menu.tsx",
+        type: "registry:component",
+      },
+      {
         path: "block/sidebar-16/components/nav-main.tsx",
         type: "registry:component",
       },

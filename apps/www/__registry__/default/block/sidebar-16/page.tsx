@@ -4,6 +4,7 @@ import * as React from "react"
 import { Command, Sidebar } from "lucide-react"
 
 import { AppSidebar } from "@/registry/default/block/sidebar-16/components/app-sidebar"
+import { NavigationHeaderMenu } from "@/registry/default/block/sidebar-16/components/nav-header-menu"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -19,8 +20,6 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/registry/default/ui/sidebar"
-
-import { NavigationHeaderMenu } from "./components/nav-header-menu"
 
 export const iframeHeight = "800px"
 
