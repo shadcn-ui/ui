@@ -1,0 +1,133 @@
+---
+title: Timeline
+description: A vertical timeline component for displaying chronological events or activities.
+component: true
+---
+
+<ComponentPreview name="timeline-demo" description="A timeline component" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add timeline
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="timeline" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Timeline,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+  TimelineItem,
+} from "@/components/ui/timeline"
+
+export function TimelineDemo() {
+  return (
+    <Timeline>
+      <TimelineItem>
+        <TimelineDot />
+        <TimelineConnector />
+        <TimelineContent>
+          <h3 className="font-semibold">First Event</h3>
+          <p className="text-sm text-muted-foreground">
+            Description of the first event.
+          </p>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineDot variant="success" />
+        <TimelineConnector />
+        <TimelineContent>
+          <h3 className="font-semibold">Second Event</h3>
+          <p className="text-sm text-muted-foreground">
+            Description of the second event.
+          </p>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineDot variant="error" />
+        <TimelineContent>
+          <h3 className="font-semibold">Third Event</h3>
+          <p className="text-sm text-muted-foreground">
+            Description of the third event.
+          </p>
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
+  )
+}
+```
+
+## Examples
+
+### With Custom Colors
+
+You can customize the colors of the timeline dots and connectors using Tailwind CSS classes.
+
+```tsx
+<Timeline>
+  <TimelineItem>
+    <TimelineDot className="bg-blue-50 border-blue-600" />
+    <TimelineConnector className="bg-blue-600" />
+    <TimelineContent>Custom colored timeline item</TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+### With Icons
+
+You can add icons to the timeline dots.
+
+```tsx
+<Timeline>
+  <TimelineItem>
+    <TimelineDot className="flex items-center justify-center">
+      <StarIcon className="h-3 w-3" />
+    </TimelineDot>
+    <TimelineConnector />
+    <TimelineContent>Timeline item with icon</TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+### Vertical Alignment
+
+By default, the content is aligned with the top of the dot. You can modify this by adjusting the `pt-1` class on `TimelineContent`.
+
+```tsx
+<Timeline>
+  <TimelineItem>
+    <TimelineDot />
+    <TimelineConnector />
+    <TimelineContent className="pt-0">Aligned with dot</TimelineContent>
+  </TimelineItem>
+</Timeline>
+```

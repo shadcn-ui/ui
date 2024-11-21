@@ -146,6 +146,12 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Timeline",
+          href: "/docs/components/timeline",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Sidebar",
           href: "/docs/components/sidebar",
           items: [],

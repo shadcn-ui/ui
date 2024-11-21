@@ -698,6 +698,19 @@
     ]
   },
   {
+    "name": "timeline",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "timeline-demo"
+    ],
+    "files": [
+      {
+        "path": "ui/timeline.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "tooltip",
     "type": "registry:ui",
     "dependencies": [
