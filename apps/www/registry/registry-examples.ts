@@ -963,6 +963,17 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "resizable-control",
+    type: "registry:example",
+    registryDependencies: ["resizable"],
+    files: [
+      {
+        path: "example/resizable-control.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "scroll-area-demo",
     type: "registry:example",
     registryDependencies: ["scroll-area"],
