@@ -111,8 +111,8 @@ const DropdownMenuItem = React.forwardRef<
 >(({ className, inset, ...props }, ref) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
-    className={cn(
-      "relative ... gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    className={cn(  
++     "relative ... gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
       inset && "pl-8",
       className
     )}
@@ -125,18 +125,17 @@ const DropdownMenuItem = React.forwardRef<
 
 Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the `<DropdownMenuSubTrigger />` to automatically style icon inside.
 
-Add the following classes to the `cva` call in your `dropdown-menu.tsx` file.
+Add the following classes to the `cn` call in your `dropdown-menu.tsx` file.
 
-```tsx title="dropdown-menu.tsx"
+```diff title="dropdown-menu.tsx"
 <DropdownMenuPrimitive.SubTrigger
   ref={ref}
   className={cn(
-    "flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
++   "flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
     inset && "pl-8",
     className
   )}
-  {...props}
->
+  {...props}>
   {/* ... */}
 </DropdownMenuPrimitive.SubTrigger>
 ```
