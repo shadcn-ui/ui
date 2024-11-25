@@ -14,10 +14,7 @@
         "registry:ui",
         "registry:hook",
         "registry:theme",
-        "registry:page",
-        "registry:example",
-        "registry:style",
-        "registry:internal"
+        "registry:page"
       ]
     },
     "description": {
@@ -61,10 +58,7 @@
               "registry:ui",
               "registry:hook",
               "registry:theme",
-              "registry:page",
-              "registry:example",
-              "registry:style",
-              "registry:internal"
+              "registry:page"
             ]
           },
           "target": {
