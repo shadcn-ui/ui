@@ -10,7 +10,6 @@ import { Registry } from "@/registry/schema"
 
 export const registry: Registry = [
   ...ui,
-  ...examples,
   ...blocks,
   ...charts,
   ...lib,
@@ -19,4 +18,5 @@ export const registry: Registry = [
 
   // Internal use only.
   ...internal,
+  ...examples,
 ]

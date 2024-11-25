@@ -48,7 +48,7 @@ async function syncStyles() {
   const sourceStyle = "new-york"
   const targetStyle = "default"
 
-  const syncDirectories = ["blocks", "hooks", "internal", "lib"]
+  const syncDirectories = ["blocks", "hooks", "internal", "lib", "charts"]
 
   // Clean up sync directories.
   for (const dir of syncDirectories) {

@@ -3460,13 +3460,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-area-axes.tsx",
+        path: "registry/new-york/charts/chart-area-axes.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-area-axes.tsx")),
-      source: "__registry__/new-york/blocks/chart-area-axes.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-area-axes.tsx")),
+      source: "__registry__/new-york/charts/chart-area-axes.tsx",
       meta: undefined,
     },
     "chart-area-default": {
@@ -3475,13 +3475,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-area-default.tsx",
+        path: "registry/new-york/charts/chart-area-default.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-area-default.tsx")),
-      source: "__registry__/new-york/blocks/chart-area-default.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-area-default.tsx")),
+      source: "__registry__/new-york/charts/chart-area-default.tsx",
       meta: undefined,
     },
     "chart-area-gradient": {
@@ -3490,13 +3490,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-area-gradient.tsx",
+        path: "registry/new-york/charts/chart-area-gradient.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-area-gradient.tsx")),
-      source: "__registry__/new-york/blocks/chart-area-gradient.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-area-gradient.tsx")),
+      source: "__registry__/new-york/charts/chart-area-gradient.tsx",
       meta: undefined,
     },
     "chart-area-icons": {
@@ -3505,13 +3505,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-area-icons.tsx",
+        path: "registry/new-york/charts/chart-area-icons.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-area-icons.tsx")),
-      source: "__registry__/new-york/blocks/chart-area-icons.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-area-icons.tsx")),
+      source: "__registry__/new-york/charts/chart-area-icons.tsx",
       meta: undefined,
     },
     "chart-area-interactive": {
@@ -3520,13 +3520,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart","select"],
       files: [{
-        path: "registry/new-york/blocks/chart-area-interactive.tsx",
+        path: "registry/new-york/charts/chart-area-interactive.tsx",
         type: "registry:component",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-area-interactive.tsx")),
-      source: "__registry__/new-york/blocks/chart-area-interactive.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-area-interactive.tsx")),
+      source: "__registry__/new-york/charts/chart-area-interactive.tsx",
       meta: undefined,
     },
     "chart-area-legend": {
@@ -3535,13 +3535,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-area-legend.tsx",
+        path: "registry/new-york/charts/chart-area-legend.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-area-legend.tsx")),
-      source: "__registry__/new-york/blocks/chart-area-legend.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-area-legend.tsx")),
+      source: "__registry__/new-york/charts/chart-area-legend.tsx",
       meta: undefined,
     },
     "chart-area-linear": {
@@ -3550,13 +3550,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-area-linear.tsx",
+        path: "registry/new-york/charts/chart-area-linear.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-area-linear.tsx")),
-      source: "__registry__/new-york/blocks/chart-area-linear.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-area-linear.tsx")),
+      source: "__registry__/new-york/charts/chart-area-linear.tsx",
       meta: undefined,
     },
     "chart-area-stacked-expand": {
@@ -3565,13 +3565,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-area-stacked-expand.tsx",
+        path: "registry/new-york/charts/chart-area-stacked-expand.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-area-stacked-expand.tsx")),
-      source: "__registry__/new-york/blocks/chart-area-stacked-expand.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-area-stacked-expand.tsx")),
+      source: "__registry__/new-york/charts/chart-area-stacked-expand.tsx",
       meta: undefined,
     },
     "chart-area-stacked": {
@@ -3580,13 +3580,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-area-stacked.tsx",
+        path: "registry/new-york/charts/chart-area-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-area-stacked.tsx")),
-      source: "__registry__/new-york/blocks/chart-area-stacked.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-area-stacked.tsx")),
+      source: "__registry__/new-york/charts/chart-area-stacked.tsx",
       meta: undefined,
     },
     "chart-area-step": {
@@ -3595,13 +3595,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-area-step.tsx",
+        path: "registry/new-york/charts/chart-area-step.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-area-step.tsx")),
-      source: "__registry__/new-york/blocks/chart-area-step.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-area-step.tsx")),
+      source: "__registry__/new-york/charts/chart-area-step.tsx",
       meta: undefined,
     },
     "chart-bar-active": {
@@ -3610,13 +3610,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-bar-active.tsx",
+        path: "registry/new-york/charts/chart-bar-active.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-bar-active.tsx")),
-      source: "__registry__/new-york/blocks/chart-bar-active.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-bar-active.tsx")),
+      source: "__registry__/new-york/charts/chart-bar-active.tsx",
       meta: undefined,
     },
     "chart-bar-default": {
@@ -3625,13 +3625,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-bar-default.tsx",
+        path: "registry/new-york/charts/chart-bar-default.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-bar-default.tsx")),
-      source: "__registry__/new-york/blocks/chart-bar-default.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-bar-default.tsx")),
+      source: "__registry__/new-york/charts/chart-bar-default.tsx",
       meta: undefined,
     },
     "chart-bar-horizontal": {
@@ -3640,13 +3640,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-bar-horizontal.tsx",
+        path: "registry/new-york/charts/chart-bar-horizontal.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-bar-horizontal.tsx")),
-      source: "__registry__/new-york/blocks/chart-bar-horizontal.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-bar-horizontal.tsx")),
+      source: "__registry__/new-york/charts/chart-bar-horizontal.tsx",
       meta: undefined,
     },
     "chart-bar-interactive": {
@@ -3655,13 +3655,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-bar-interactive.tsx",
+        path: "registry/new-york/charts/chart-bar-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-bar-interactive.tsx")),
-      source: "__registry__/new-york/blocks/chart-bar-interactive.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-bar-interactive.tsx")),
+      source: "__registry__/new-york/charts/chart-bar-interactive.tsx",
       meta: undefined,
     },
     "chart-bar-label-custom": {
@@ -3670,13 +3670,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-bar-label-custom.tsx",
+        path: "registry/new-york/charts/chart-bar-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-bar-label-custom.tsx")),
-      source: "__registry__/new-york/blocks/chart-bar-label-custom.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-bar-label-custom.tsx")),
+      source: "__registry__/new-york/charts/chart-bar-label-custom.tsx",
       meta: undefined,
     },
     "chart-bar-label": {
@@ -3685,13 +3685,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-bar-label.tsx",
+        path: "registry/new-york/charts/chart-bar-label.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-bar-label.tsx")),
-      source: "__registry__/new-york/blocks/chart-bar-label.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-bar-label.tsx")),
+      source: "__registry__/new-york/charts/chart-bar-label.tsx",
       meta: undefined,
     },
     "chart-bar-mixed": {
@@ -3700,13 +3700,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-bar-mixed.tsx",
+        path: "registry/new-york/charts/chart-bar-mixed.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-bar-mixed.tsx")),
-      source: "__registry__/new-york/blocks/chart-bar-mixed.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-bar-mixed.tsx")),
+      source: "__registry__/new-york/charts/chart-bar-mixed.tsx",
       meta: undefined,
     },
     "chart-bar-multiple": {
@@ -3715,13 +3715,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-bar-multiple.tsx",
+        path: "registry/new-york/charts/chart-bar-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-bar-multiple.tsx")),
-      source: "__registry__/new-york/blocks/chart-bar-multiple.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-bar-multiple.tsx")),
+      source: "__registry__/new-york/charts/chart-bar-multiple.tsx",
       meta: undefined,
     },
     "chart-bar-negative": {
@@ -3730,13 +3730,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-bar-negative.tsx",
+        path: "registry/new-york/charts/chart-bar-negative.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-bar-negative.tsx")),
-      source: "__registry__/new-york/blocks/chart-bar-negative.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-bar-negative.tsx")),
+      source: "__registry__/new-york/charts/chart-bar-negative.tsx",
       meta: undefined,
     },
     "chart-bar-stacked": {
@@ -3745,13 +3745,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-bar-stacked.tsx",
+        path: "registry/new-york/charts/chart-bar-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-bar-stacked.tsx")),
-      source: "__registry__/new-york/blocks/chart-bar-stacked.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-bar-stacked.tsx")),
+      source: "__registry__/new-york/charts/chart-bar-stacked.tsx",
       meta: undefined,
     },
     "chart-line-default": {
@@ -3760,13 +3760,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-line-default.tsx",
+        path: "registry/new-york/charts/chart-line-default.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-line-default.tsx")),
-      source: "__registry__/new-york/blocks/chart-line-default.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-line-default.tsx")),
+      source: "__registry__/new-york/charts/chart-line-default.tsx",
       meta: undefined,
     },
     "chart-line-dots-colors": {
@@ -3775,13 +3775,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-line-dots-colors.tsx",
+        path: "registry/new-york/charts/chart-line-dots-colors.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-line-dots-colors.tsx")),
-      source: "__registry__/new-york/blocks/chart-line-dots-colors.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-line-dots-colors.tsx")),
+      source: "__registry__/new-york/charts/chart-line-dots-colors.tsx",
       meta: undefined,
     },
     "chart-line-dots-custom": {
@@ -3790,13 +3790,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-line-dots-custom.tsx",
+        path: "registry/new-york/charts/chart-line-dots-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-line-dots-custom.tsx")),
-      source: "__registry__/new-york/blocks/chart-line-dots-custom.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-line-dots-custom.tsx")),
+      source: "__registry__/new-york/charts/chart-line-dots-custom.tsx",
       meta: undefined,
     },
     "chart-line-dots": {
@@ -3805,13 +3805,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-line-dots.tsx",
+        path: "registry/new-york/charts/chart-line-dots.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-line-dots.tsx")),
-      source: "__registry__/new-york/blocks/chart-line-dots.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-line-dots.tsx")),
+      source: "__registry__/new-york/charts/chart-line-dots.tsx",
       meta: undefined,
     },
     "chart-line-interactive": {
@@ -3820,13 +3820,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-line-interactive.tsx",
+        path: "registry/new-york/charts/chart-line-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-line-interactive.tsx")),
-      source: "__registry__/new-york/blocks/chart-line-interactive.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-line-interactive.tsx")),
+      source: "__registry__/new-york/charts/chart-line-interactive.tsx",
       meta: undefined,
     },
     "chart-line-label-custom": {
@@ -3835,13 +3835,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-line-label-custom.tsx",
+        path: "registry/new-york/charts/chart-line-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-line-label-custom.tsx")),
-      source: "__registry__/new-york/blocks/chart-line-label-custom.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-line-label-custom.tsx")),
+      source: "__registry__/new-york/charts/chart-line-label-custom.tsx",
       meta: undefined,
     },
     "chart-line-label": {
@@ -3850,13 +3850,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-line-label.tsx",
+        path: "registry/new-york/charts/chart-line-label.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-line-label.tsx")),
-      source: "__registry__/new-york/blocks/chart-line-label.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-line-label.tsx")),
+      source: "__registry__/new-york/charts/chart-line-label.tsx",
       meta: undefined,
     },
     "chart-line-linear": {
@@ -3865,13 +3865,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-line-linear.tsx",
+        path: "registry/new-york/charts/chart-line-linear.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-line-linear.tsx")),
-      source: "__registry__/new-york/blocks/chart-line-linear.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-line-linear.tsx")),
+      source: "__registry__/new-york/charts/chart-line-linear.tsx",
       meta: undefined,
     },
     "chart-line-multiple": {
@@ -3880,13 +3880,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-line-multiple.tsx",
+        path: "registry/new-york/charts/chart-line-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-line-multiple.tsx")),
-      source: "__registry__/new-york/blocks/chart-line-multiple.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-line-multiple.tsx")),
+      source: "__registry__/new-york/charts/chart-line-multiple.tsx",
       meta: undefined,
     },
     "chart-line-step": {
@@ -3895,13 +3895,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-line-step.tsx",
+        path: "registry/new-york/charts/chart-line-step.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-line-step.tsx")),
-      source: "__registry__/new-york/blocks/chart-line-step.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-line-step.tsx")),
+      source: "__registry__/new-york/charts/chart-line-step.tsx",
       meta: undefined,
     },
     "chart-pie-donut-active": {
@@ -3910,13 +3910,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-donut-active.tsx",
+        path: "registry/new-york/charts/chart-pie-donut-active.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-donut-active.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-donut-active.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-donut-active.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-donut-active.tsx",
       meta: undefined,
     },
     "chart-pie-donut-text": {
@@ -3925,13 +3925,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-donut-text.tsx",
+        path: "registry/new-york/charts/chart-pie-donut-text.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-donut-text.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-donut-text.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-donut-text.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-donut-text.tsx",
       meta: undefined,
     },
     "chart-pie-donut": {
@@ -3940,13 +3940,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-donut.tsx",
+        path: "registry/new-york/charts/chart-pie-donut.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-donut.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-donut.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-donut.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-donut.tsx",
       meta: undefined,
     },
     "chart-pie-interactive": {
@@ -3955,13 +3955,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-interactive.tsx",
+        path: "registry/new-york/charts/chart-pie-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-interactive.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-interactive.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-interactive.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-interactive.tsx",
       meta: undefined,
     },
     "chart-pie-label-custom": {
@@ -3970,13 +3970,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-label-custom.tsx",
+        path: "registry/new-york/charts/chart-pie-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-label-custom.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-label-custom.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-label-custom.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-label-custom.tsx",
       meta: undefined,
     },
     "chart-pie-label-list": {
@@ -3985,13 +3985,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-label-list.tsx",
+        path: "registry/new-york/charts/chart-pie-label-list.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-label-list.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-label-list.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-label-list.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-label-list.tsx",
       meta: undefined,
     },
     "chart-pie-label": {
@@ -4000,13 +4000,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-label.tsx",
+        path: "registry/new-york/charts/chart-pie-label.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-label.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-label.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-label.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-label.tsx",
       meta: undefined,
     },
     "chart-pie-legend": {
@@ -4015,13 +4015,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-legend.tsx",
+        path: "registry/new-york/charts/chart-pie-legend.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-legend.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-legend.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-legend.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-legend.tsx",
       meta: undefined,
     },
     "chart-pie-separator-none": {
@@ -4030,13 +4030,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-separator-none.tsx",
+        path: "registry/new-york/charts/chart-pie-separator-none.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-separator-none.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-separator-none.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-separator-none.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-separator-none.tsx",
       meta: undefined,
     },
     "chart-pie-simple": {
@@ -4045,13 +4045,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-simple.tsx",
+        path: "registry/new-york/charts/chart-pie-simple.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-simple.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-simple.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-simple.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-simple.tsx",
       meta: undefined,
     },
     "chart-pie-stacked": {
@@ -4060,13 +4060,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-pie-stacked.tsx",
+        path: "registry/new-york/charts/chart-pie-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-pie-stacked.tsx")),
-      source: "__registry__/new-york/blocks/chart-pie-stacked.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-pie-stacked.tsx")),
+      source: "__registry__/new-york/charts/chart-pie-stacked.tsx",
       meta: undefined,
     },
     "chart-radar-default": {
@@ -4075,13 +4075,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-default.tsx",
+        path: "registry/new-york/charts/chart-radar-default.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-default.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-default.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-default.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-default.tsx",
       meta: undefined,
     },
     "chart-radar-dots": {
@@ -4090,13 +4090,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-dots.tsx",
+        path: "registry/new-york/charts/chart-radar-dots.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-dots.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-dots.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-dots.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-dots.tsx",
       meta: undefined,
     },
     "chart-radar-grid-circle-fill": {
@@ -4105,13 +4105,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-grid-circle-fill.tsx",
+        path: "registry/new-york/charts/chart-radar-grid-circle-fill.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-grid-circle-fill.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-grid-circle-fill.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-grid-circle-fill.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-grid-circle-fill.tsx",
       meta: undefined,
     },
     "chart-radar-grid-circle-no-lines": {
@@ -4120,13 +4120,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-grid-circle-no-lines.tsx",
+        path: "registry/new-york/charts/chart-radar-grid-circle-no-lines.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-grid-circle-no-lines.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-grid-circle-no-lines.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-grid-circle-no-lines.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-grid-circle-no-lines.tsx",
       meta: undefined,
     },
     "chart-radar-grid-circle": {
@@ -4135,13 +4135,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-grid-circle.tsx",
+        path: "registry/new-york/charts/chart-radar-grid-circle.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-grid-circle.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-grid-circle.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-grid-circle.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-grid-circle.tsx",
       meta: undefined,
     },
     "chart-radar-grid-custom": {
@@ -4150,13 +4150,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-grid-custom.tsx",
+        path: "registry/new-york/charts/chart-radar-grid-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-grid-custom.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-grid-custom.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-grid-custom.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-grid-custom.tsx",
       meta: undefined,
     },
     "chart-radar-grid-fill": {
@@ -4165,13 +4165,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-grid-fill.tsx",
+        path: "registry/new-york/charts/chart-radar-grid-fill.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-grid-fill.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-grid-fill.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-grid-fill.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-grid-fill.tsx",
       meta: undefined,
     },
     "chart-radar-grid-none": {
@@ -4180,13 +4180,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-grid-none.tsx",
+        path: "registry/new-york/charts/chart-radar-grid-none.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-grid-none.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-grid-none.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-grid-none.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-grid-none.tsx",
       meta: undefined,
     },
     "chart-radar-icons": {
@@ -4195,13 +4195,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-icons.tsx",
+        path: "registry/new-york/charts/chart-radar-icons.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-icons.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-icons.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-icons.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-icons.tsx",
       meta: undefined,
     },
     "chart-radar-label-custom": {
@@ -4210,13 +4210,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-label-custom.tsx",
+        path: "registry/new-york/charts/chart-radar-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-label-custom.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-label-custom.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-label-custom.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-label-custom.tsx",
       meta: undefined,
     },
     "chart-radar-legend": {
@@ -4225,13 +4225,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-legend.tsx",
+        path: "registry/new-york/charts/chart-radar-legend.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-legend.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-legend.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-legend.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-legend.tsx",
       meta: undefined,
     },
     "chart-radar-lines-only": {
@@ -4240,13 +4240,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-lines-only.tsx",
+        path: "registry/new-york/charts/chart-radar-lines-only.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-lines-only.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-lines-only.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-lines-only.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-lines-only.tsx",
       meta: undefined,
     },
     "chart-radar-multiple": {
@@ -4255,13 +4255,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-multiple.tsx",
+        path: "registry/new-york/charts/chart-radar-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-multiple.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-multiple.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-multiple.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-multiple.tsx",
       meta: undefined,
     },
     "chart-radar-radius": {
@@ -4270,13 +4270,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radar-radius.tsx",
+        path: "registry/new-york/charts/chart-radar-radius.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radar-radius.tsx")),
-      source: "__registry__/new-york/blocks/chart-radar-radius.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radar-radius.tsx")),
+      source: "__registry__/new-york/charts/chart-radar-radius.tsx",
       meta: undefined,
     },
     "chart-radial-grid": {
@@ -4285,13 +4285,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radial-grid.tsx",
+        path: "registry/new-york/charts/chart-radial-grid.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radial-grid.tsx")),
-      source: "__registry__/new-york/blocks/chart-radial-grid.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radial-grid.tsx")),
+      source: "__registry__/new-york/charts/chart-radial-grid.tsx",
       meta: undefined,
     },
     "chart-radial-label": {
@@ -4300,13 +4300,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radial-label.tsx",
+        path: "registry/new-york/charts/chart-radial-label.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radial-label.tsx")),
-      source: "__registry__/new-york/blocks/chart-radial-label.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radial-label.tsx")),
+      source: "__registry__/new-york/charts/chart-radial-label.tsx",
       meta: undefined,
     },
     "chart-radial-shape": {
@@ -4315,13 +4315,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radial-shape.tsx",
+        path: "registry/new-york/charts/chart-radial-shape.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radial-shape.tsx")),
-      source: "__registry__/new-york/blocks/chart-radial-shape.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radial-shape.tsx")),
+      source: "__registry__/new-york/charts/chart-radial-shape.tsx",
       meta: undefined,
     },
     "chart-radial-simple": {
@@ -4330,13 +4330,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radial-simple.tsx",
+        path: "registry/new-york/charts/chart-radial-simple.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radial-simple.tsx")),
-      source: "__registry__/new-york/blocks/chart-radial-simple.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radial-simple.tsx")),
+      source: "__registry__/new-york/charts/chart-radial-simple.tsx",
       meta: undefined,
     },
     "chart-radial-stacked": {
@@ -4345,13 +4345,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radial-stacked.tsx",
+        path: "registry/new-york/charts/chart-radial-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radial-stacked.tsx")),
-      source: "__registry__/new-york/blocks/chart-radial-stacked.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radial-stacked.tsx")),
+      source: "__registry__/new-york/charts/chart-radial-stacked.tsx",
       meta: undefined,
     },
     "chart-radial-text": {
@@ -4360,13 +4360,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-radial-text.tsx",
+        path: "registry/new-york/charts/chart-radial-text.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-radial-text.tsx")),
-      source: "__registry__/new-york/blocks/chart-radial-text.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-radial-text.tsx")),
+      source: "__registry__/new-york/charts/chart-radial-text.tsx",
       meta: undefined,
     },
     "chart-tooltip-default": {
@@ -4375,13 +4375,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-tooltip-default.tsx",
+        path: "registry/new-york/charts/chart-tooltip-default.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-tooltip-default.tsx")),
-      source: "__registry__/new-york/blocks/chart-tooltip-default.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-tooltip-default.tsx")),
+      source: "__registry__/new-york/charts/chart-tooltip-default.tsx",
       meta: undefined,
     },
     "chart-tooltip-indicator-line": {
@@ -4390,13 +4390,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-tooltip-indicator-line.tsx",
+        path: "registry/new-york/charts/chart-tooltip-indicator-line.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-tooltip-indicator-line.tsx")),
-      source: "__registry__/new-york/blocks/chart-tooltip-indicator-line.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-tooltip-indicator-line.tsx")),
+      source: "__registry__/new-york/charts/chart-tooltip-indicator-line.tsx",
       meta: undefined,
     },
     "chart-tooltip-indicator-none": {
@@ -4405,13 +4405,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-tooltip-indicator-none.tsx",
+        path: "registry/new-york/charts/chart-tooltip-indicator-none.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-tooltip-indicator-none.tsx")),
-      source: "__registry__/new-york/blocks/chart-tooltip-indicator-none.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-tooltip-indicator-none.tsx")),
+      source: "__registry__/new-york/charts/chart-tooltip-indicator-none.tsx",
       meta: undefined,
     },
     "chart-tooltip-label-none": {
@@ -4420,13 +4420,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-tooltip-label-none.tsx",
+        path: "registry/new-york/charts/chart-tooltip-label-none.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-tooltip-label-none.tsx")),
-      source: "__registry__/new-york/blocks/chart-tooltip-label-none.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-tooltip-label-none.tsx")),
+      source: "__registry__/new-york/charts/chart-tooltip-label-none.tsx",
       meta: undefined,
     },
     "chart-tooltip-label-custom": {
@@ -4435,13 +4435,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-tooltip-label-custom.tsx",
+        path: "registry/new-york/charts/chart-tooltip-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-tooltip-label-custom.tsx")),
-      source: "__registry__/new-york/blocks/chart-tooltip-label-custom.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-tooltip-label-custom.tsx")),
+      source: "__registry__/new-york/charts/chart-tooltip-label-custom.tsx",
       meta: undefined,
     },
     "chart-tooltip-label-formatter": {
@@ -4450,13 +4450,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-tooltip-label-formatter.tsx",
+        path: "registry/new-york/charts/chart-tooltip-label-formatter.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-tooltip-label-formatter.tsx")),
-      source: "__registry__/new-york/blocks/chart-tooltip-label-formatter.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-tooltip-label-formatter.tsx")),
+      source: "__registry__/new-york/charts/chart-tooltip-label-formatter.tsx",
       meta: undefined,
     },
     "chart-tooltip-formatter": {
@@ -4465,13 +4465,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-tooltip-formatter.tsx",
+        path: "registry/new-york/charts/chart-tooltip-formatter.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-tooltip-formatter.tsx")),
-      source: "__registry__/new-york/blocks/chart-tooltip-formatter.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-tooltip-formatter.tsx")),
+      source: "__registry__/new-york/charts/chart-tooltip-formatter.tsx",
       meta: undefined,
     },
     "chart-tooltip-icons": {
@@ -4480,13 +4480,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-tooltip-icons.tsx",
+        path: "registry/new-york/charts/chart-tooltip-icons.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-tooltip-icons.tsx")),
-      source: "__registry__/new-york/blocks/chart-tooltip-icons.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-tooltip-icons.tsx")),
+      source: "__registry__/new-york/charts/chart-tooltip-icons.tsx",
       meta: undefined,
     },
     "chart-tooltip-advanced": {
@@ -4495,13 +4495,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/new-york/blocks/chart-tooltip-advanced.tsx",
+        path: "registry/new-york/charts/chart-tooltip-advanced.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/chart-tooltip-advanced.tsx")),
-      source: "__registry__/new-york/blocks/chart-tooltip-advanced.tsx",
+      component: React.lazy(() => import("@/registry/new-york/charts/chart-tooltip-advanced.tsx")),
+      source: "__registry__/new-york/charts/chart-tooltip-advanced.tsx",
       meta: undefined,
     },
     "utils": {
@@ -8715,13 +8715,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-area-axes.tsx",
+        path: "registry/default/charts/chart-area-axes.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-area-axes.tsx")),
-      source: "__registry__/default/blocks/chart-area-axes.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-area-axes.tsx")),
+      source: "__registry__/default/charts/chart-area-axes.tsx",
       meta: undefined,
     },
     "chart-area-default": {
@@ -8730,13 +8730,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-area-default.tsx",
+        path: "registry/default/charts/chart-area-default.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-area-default.tsx")),
-      source: "__registry__/default/blocks/chart-area-default.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-area-default.tsx")),
+      source: "__registry__/default/charts/chart-area-default.tsx",
       meta: undefined,
     },
     "chart-area-gradient": {
@@ -8745,13 +8745,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-area-gradient.tsx",
+        path: "registry/default/charts/chart-area-gradient.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-area-gradient.tsx")),
-      source: "__registry__/default/blocks/chart-area-gradient.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-area-gradient.tsx")),
+      source: "__registry__/default/charts/chart-area-gradient.tsx",
       meta: undefined,
     },
     "chart-area-icons": {
@@ -8760,13 +8760,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-area-icons.tsx",
+        path: "registry/default/charts/chart-area-icons.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-area-icons.tsx")),
-      source: "__registry__/default/blocks/chart-area-icons.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-area-icons.tsx")),
+      source: "__registry__/default/charts/chart-area-icons.tsx",
       meta: undefined,
     },
     "chart-area-interactive": {
@@ -8775,13 +8775,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart","select"],
       files: [{
-        path: "registry/default/blocks/chart-area-interactive.tsx",
+        path: "registry/default/charts/chart-area-interactive.tsx",
         type: "registry:component",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-area-interactive.tsx")),
-      source: "__registry__/default/blocks/chart-area-interactive.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-area-interactive.tsx")),
+      source: "__registry__/default/charts/chart-area-interactive.tsx",
       meta: undefined,
     },
     "chart-area-legend": {
@@ -8790,13 +8790,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-area-legend.tsx",
+        path: "registry/default/charts/chart-area-legend.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-area-legend.tsx")),
-      source: "__registry__/default/blocks/chart-area-legend.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-area-legend.tsx")),
+      source: "__registry__/default/charts/chart-area-legend.tsx",
       meta: undefined,
     },
     "chart-area-linear": {
@@ -8805,13 +8805,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-area-linear.tsx",
+        path: "registry/default/charts/chart-area-linear.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-area-linear.tsx")),
-      source: "__registry__/default/blocks/chart-area-linear.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-area-linear.tsx")),
+      source: "__registry__/default/charts/chart-area-linear.tsx",
       meta: undefined,
     },
     "chart-area-stacked-expand": {
@@ -8820,13 +8820,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-area-stacked-expand.tsx",
+        path: "registry/default/charts/chart-area-stacked-expand.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-area-stacked-expand.tsx")),
-      source: "__registry__/default/blocks/chart-area-stacked-expand.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-area-stacked-expand.tsx")),
+      source: "__registry__/default/charts/chart-area-stacked-expand.tsx",
       meta: undefined,
     },
     "chart-area-stacked": {
@@ -8835,13 +8835,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-area-stacked.tsx",
+        path: "registry/default/charts/chart-area-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-area-stacked.tsx")),
-      source: "__registry__/default/blocks/chart-area-stacked.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-area-stacked.tsx")),
+      source: "__registry__/default/charts/chart-area-stacked.tsx",
       meta: undefined,
     },
     "chart-area-step": {
@@ -8850,13 +8850,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-area-step.tsx",
+        path: "registry/default/charts/chart-area-step.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-area"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-area-step.tsx")),
-      source: "__registry__/default/blocks/chart-area-step.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-area-step.tsx")),
+      source: "__registry__/default/charts/chart-area-step.tsx",
       meta: undefined,
     },
     "chart-bar-active": {
@@ -8865,13 +8865,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-bar-active.tsx",
+        path: "registry/default/charts/chart-bar-active.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-bar-active.tsx")),
-      source: "__registry__/default/blocks/chart-bar-active.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-bar-active.tsx")),
+      source: "__registry__/default/charts/chart-bar-active.tsx",
       meta: undefined,
     },
     "chart-bar-default": {
@@ -8880,13 +8880,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-bar-default.tsx",
+        path: "registry/default/charts/chart-bar-default.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-bar-default.tsx")),
-      source: "__registry__/default/blocks/chart-bar-default.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-bar-default.tsx")),
+      source: "__registry__/default/charts/chart-bar-default.tsx",
       meta: undefined,
     },
     "chart-bar-horizontal": {
@@ -8895,13 +8895,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-bar-horizontal.tsx",
+        path: "registry/default/charts/chart-bar-horizontal.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-bar-horizontal.tsx")),
-      source: "__registry__/default/blocks/chart-bar-horizontal.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-bar-horizontal.tsx")),
+      source: "__registry__/default/charts/chart-bar-horizontal.tsx",
       meta: undefined,
     },
     "chart-bar-interactive": {
@@ -8910,13 +8910,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-bar-interactive.tsx",
+        path: "registry/default/charts/chart-bar-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-bar-interactive.tsx")),
-      source: "__registry__/default/blocks/chart-bar-interactive.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-bar-interactive.tsx")),
+      source: "__registry__/default/charts/chart-bar-interactive.tsx",
       meta: undefined,
     },
     "chart-bar-label-custom": {
@@ -8925,13 +8925,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-bar-label-custom.tsx",
+        path: "registry/default/charts/chart-bar-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-bar-label-custom.tsx")),
-      source: "__registry__/default/blocks/chart-bar-label-custom.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-bar-label-custom.tsx")),
+      source: "__registry__/default/charts/chart-bar-label-custom.tsx",
       meta: undefined,
     },
     "chart-bar-label": {
@@ -8940,13 +8940,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-bar-label.tsx",
+        path: "registry/default/charts/chart-bar-label.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-bar-label.tsx")),
-      source: "__registry__/default/blocks/chart-bar-label.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-bar-label.tsx")),
+      source: "__registry__/default/charts/chart-bar-label.tsx",
       meta: undefined,
     },
     "chart-bar-mixed": {
@@ -8955,13 +8955,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-bar-mixed.tsx",
+        path: "registry/default/charts/chart-bar-mixed.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-bar-mixed.tsx")),
-      source: "__registry__/default/blocks/chart-bar-mixed.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-bar-mixed.tsx")),
+      source: "__registry__/default/charts/chart-bar-mixed.tsx",
       meta: undefined,
     },
     "chart-bar-multiple": {
@@ -8970,13 +8970,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-bar-multiple.tsx",
+        path: "registry/default/charts/chart-bar-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-bar-multiple.tsx")),
-      source: "__registry__/default/blocks/chart-bar-multiple.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-bar-multiple.tsx")),
+      source: "__registry__/default/charts/chart-bar-multiple.tsx",
       meta: undefined,
     },
     "chart-bar-negative": {
@@ -8985,13 +8985,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-bar-negative.tsx",
+        path: "registry/default/charts/chart-bar-negative.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-bar-negative.tsx")),
-      source: "__registry__/default/blocks/chart-bar-negative.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-bar-negative.tsx")),
+      source: "__registry__/default/charts/chart-bar-negative.tsx",
       meta: undefined,
     },
     "chart-bar-stacked": {
@@ -9000,13 +9000,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-bar-stacked.tsx",
+        path: "registry/default/charts/chart-bar-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-bar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-bar-stacked.tsx")),
-      source: "__registry__/default/blocks/chart-bar-stacked.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-bar-stacked.tsx")),
+      source: "__registry__/default/charts/chart-bar-stacked.tsx",
       meta: undefined,
     },
     "chart-line-default": {
@@ -9015,13 +9015,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-line-default.tsx",
+        path: "registry/default/charts/chart-line-default.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-line-default.tsx")),
-      source: "__registry__/default/blocks/chart-line-default.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-line-default.tsx")),
+      source: "__registry__/default/charts/chart-line-default.tsx",
       meta: undefined,
     },
     "chart-line-dots-colors": {
@@ -9030,13 +9030,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-line-dots-colors.tsx",
+        path: "registry/default/charts/chart-line-dots-colors.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-line-dots-colors.tsx")),
-      source: "__registry__/default/blocks/chart-line-dots-colors.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-line-dots-colors.tsx")),
+      source: "__registry__/default/charts/chart-line-dots-colors.tsx",
       meta: undefined,
     },
     "chart-line-dots-custom": {
@@ -9045,13 +9045,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-line-dots-custom.tsx",
+        path: "registry/default/charts/chart-line-dots-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-line-dots-custom.tsx")),
-      source: "__registry__/default/blocks/chart-line-dots-custom.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-line-dots-custom.tsx")),
+      source: "__registry__/default/charts/chart-line-dots-custom.tsx",
       meta: undefined,
     },
     "chart-line-dots": {
@@ -9060,13 +9060,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-line-dots.tsx",
+        path: "registry/default/charts/chart-line-dots.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-line-dots.tsx")),
-      source: "__registry__/default/blocks/chart-line-dots.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-line-dots.tsx")),
+      source: "__registry__/default/charts/chart-line-dots.tsx",
       meta: undefined,
     },
     "chart-line-interactive": {
@@ -9075,13 +9075,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-line-interactive.tsx",
+        path: "registry/default/charts/chart-line-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-line-interactive.tsx")),
-      source: "__registry__/default/blocks/chart-line-interactive.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-line-interactive.tsx")),
+      source: "__registry__/default/charts/chart-line-interactive.tsx",
       meta: undefined,
     },
     "chart-line-label-custom": {
@@ -9090,13 +9090,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-line-label-custom.tsx",
+        path: "registry/default/charts/chart-line-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-line-label-custom.tsx")),
-      source: "__registry__/default/blocks/chart-line-label-custom.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-line-label-custom.tsx")),
+      source: "__registry__/default/charts/chart-line-label-custom.tsx",
       meta: undefined,
     },
     "chart-line-label": {
@@ -9105,13 +9105,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-line-label.tsx",
+        path: "registry/default/charts/chart-line-label.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-line-label.tsx")),
-      source: "__registry__/default/blocks/chart-line-label.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-line-label.tsx")),
+      source: "__registry__/default/charts/chart-line-label.tsx",
       meta: undefined,
     },
     "chart-line-linear": {
@@ -9120,13 +9120,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-line-linear.tsx",
+        path: "registry/default/charts/chart-line-linear.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-line-linear.tsx")),
-      source: "__registry__/default/blocks/chart-line-linear.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-line-linear.tsx")),
+      source: "__registry__/default/charts/chart-line-linear.tsx",
       meta: undefined,
     },
     "chart-line-multiple": {
@@ -9135,13 +9135,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-line-multiple.tsx",
+        path: "registry/default/charts/chart-line-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-line-multiple.tsx")),
-      source: "__registry__/default/blocks/chart-line-multiple.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-line-multiple.tsx")),
+      source: "__registry__/default/charts/chart-line-multiple.tsx",
       meta: undefined,
     },
     "chart-line-step": {
@@ -9150,13 +9150,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-line-step.tsx",
+        path: "registry/default/charts/chart-line-step.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-line"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-line-step.tsx")),
-      source: "__registry__/default/blocks/chart-line-step.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-line-step.tsx")),
+      source: "__registry__/default/charts/chart-line-step.tsx",
       meta: undefined,
     },
     "chart-pie-donut-active": {
@@ -9165,13 +9165,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-donut-active.tsx",
+        path: "registry/default/charts/chart-pie-donut-active.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-donut-active.tsx")),
-      source: "__registry__/default/blocks/chart-pie-donut-active.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-donut-active.tsx")),
+      source: "__registry__/default/charts/chart-pie-donut-active.tsx",
       meta: undefined,
     },
     "chart-pie-donut-text": {
@@ -9180,13 +9180,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-donut-text.tsx",
+        path: "registry/default/charts/chart-pie-donut-text.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-donut-text.tsx")),
-      source: "__registry__/default/blocks/chart-pie-donut-text.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-donut-text.tsx")),
+      source: "__registry__/default/charts/chart-pie-donut-text.tsx",
       meta: undefined,
     },
     "chart-pie-donut": {
@@ -9195,13 +9195,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-donut.tsx",
+        path: "registry/default/charts/chart-pie-donut.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-donut.tsx")),
-      source: "__registry__/default/blocks/chart-pie-donut.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-donut.tsx")),
+      source: "__registry__/default/charts/chart-pie-donut.tsx",
       meta: undefined,
     },
     "chart-pie-interactive": {
@@ -9210,13 +9210,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-interactive.tsx",
+        path: "registry/default/charts/chart-pie-interactive.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-interactive.tsx")),
-      source: "__registry__/default/blocks/chart-pie-interactive.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-interactive.tsx")),
+      source: "__registry__/default/charts/chart-pie-interactive.tsx",
       meta: undefined,
     },
     "chart-pie-label-custom": {
@@ -9225,13 +9225,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-label-custom.tsx",
+        path: "registry/default/charts/chart-pie-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-label-custom.tsx")),
-      source: "__registry__/default/blocks/chart-pie-label-custom.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-label-custom.tsx")),
+      source: "__registry__/default/charts/chart-pie-label-custom.tsx",
       meta: undefined,
     },
     "chart-pie-label-list": {
@@ -9240,13 +9240,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-label-list.tsx",
+        path: "registry/default/charts/chart-pie-label-list.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-label-list.tsx")),
-      source: "__registry__/default/blocks/chart-pie-label-list.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-label-list.tsx")),
+      source: "__registry__/default/charts/chart-pie-label-list.tsx",
       meta: undefined,
     },
     "chart-pie-label": {
@@ -9255,13 +9255,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-label.tsx",
+        path: "registry/default/charts/chart-pie-label.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-label.tsx")),
-      source: "__registry__/default/blocks/chart-pie-label.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-label.tsx")),
+      source: "__registry__/default/charts/chart-pie-label.tsx",
       meta: undefined,
     },
     "chart-pie-legend": {
@@ -9270,13 +9270,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-legend.tsx",
+        path: "registry/default/charts/chart-pie-legend.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-legend.tsx")),
-      source: "__registry__/default/blocks/chart-pie-legend.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-legend.tsx")),
+      source: "__registry__/default/charts/chart-pie-legend.tsx",
       meta: undefined,
     },
     "chart-pie-separator-none": {
@@ -9285,13 +9285,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-separator-none.tsx",
+        path: "registry/default/charts/chart-pie-separator-none.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-separator-none.tsx")),
-      source: "__registry__/default/blocks/chart-pie-separator-none.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-separator-none.tsx")),
+      source: "__registry__/default/charts/chart-pie-separator-none.tsx",
       meta: undefined,
     },
     "chart-pie-simple": {
@@ -9300,13 +9300,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-simple.tsx",
+        path: "registry/default/charts/chart-pie-simple.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-simple.tsx")),
-      source: "__registry__/default/blocks/chart-pie-simple.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-simple.tsx")),
+      source: "__registry__/default/charts/chart-pie-simple.tsx",
       meta: undefined,
     },
     "chart-pie-stacked": {
@@ -9315,13 +9315,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-pie-stacked.tsx",
+        path: "registry/default/charts/chart-pie-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-pie"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-pie-stacked.tsx")),
-      source: "__registry__/default/blocks/chart-pie-stacked.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-pie-stacked.tsx")),
+      source: "__registry__/default/charts/chart-pie-stacked.tsx",
       meta: undefined,
     },
     "chart-radar-default": {
@@ -9330,13 +9330,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-default.tsx",
+        path: "registry/default/charts/chart-radar-default.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-default.tsx")),
-      source: "__registry__/default/blocks/chart-radar-default.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-default.tsx")),
+      source: "__registry__/default/charts/chart-radar-default.tsx",
       meta: undefined,
     },
     "chart-radar-dots": {
@@ -9345,13 +9345,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-dots.tsx",
+        path: "registry/default/charts/chart-radar-dots.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-dots.tsx")),
-      source: "__registry__/default/blocks/chart-radar-dots.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-dots.tsx")),
+      source: "__registry__/default/charts/chart-radar-dots.tsx",
       meta: undefined,
     },
     "chart-radar-grid-circle-fill": {
@@ -9360,13 +9360,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-grid-circle-fill.tsx",
+        path: "registry/default/charts/chart-radar-grid-circle-fill.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-grid-circle-fill.tsx")),
-      source: "__registry__/default/blocks/chart-radar-grid-circle-fill.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-grid-circle-fill.tsx")),
+      source: "__registry__/default/charts/chart-radar-grid-circle-fill.tsx",
       meta: undefined,
     },
     "chart-radar-grid-circle-no-lines": {
@@ -9375,13 +9375,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-grid-circle-no-lines.tsx",
+        path: "registry/default/charts/chart-radar-grid-circle-no-lines.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-grid-circle-no-lines.tsx")),
-      source: "__registry__/default/blocks/chart-radar-grid-circle-no-lines.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-grid-circle-no-lines.tsx")),
+      source: "__registry__/default/charts/chart-radar-grid-circle-no-lines.tsx",
       meta: undefined,
     },
     "chart-radar-grid-circle": {
@@ -9390,13 +9390,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-grid-circle.tsx",
+        path: "registry/default/charts/chart-radar-grid-circle.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-grid-circle.tsx")),
-      source: "__registry__/default/blocks/chart-radar-grid-circle.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-grid-circle.tsx")),
+      source: "__registry__/default/charts/chart-radar-grid-circle.tsx",
       meta: undefined,
     },
     "chart-radar-grid-custom": {
@@ -9405,13 +9405,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-grid-custom.tsx",
+        path: "registry/default/charts/chart-radar-grid-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-grid-custom.tsx")),
-      source: "__registry__/default/blocks/chart-radar-grid-custom.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-grid-custom.tsx")),
+      source: "__registry__/default/charts/chart-radar-grid-custom.tsx",
       meta: undefined,
     },
     "chart-radar-grid-fill": {
@@ -9420,13 +9420,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-grid-fill.tsx",
+        path: "registry/default/charts/chart-radar-grid-fill.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-grid-fill.tsx")),
-      source: "__registry__/default/blocks/chart-radar-grid-fill.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-grid-fill.tsx")),
+      source: "__registry__/default/charts/chart-radar-grid-fill.tsx",
       meta: undefined,
     },
     "chart-radar-grid-none": {
@@ -9435,13 +9435,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-grid-none.tsx",
+        path: "registry/default/charts/chart-radar-grid-none.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-grid-none.tsx")),
-      source: "__registry__/default/blocks/chart-radar-grid-none.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-grid-none.tsx")),
+      source: "__registry__/default/charts/chart-radar-grid-none.tsx",
       meta: undefined,
     },
     "chart-radar-icons": {
@@ -9450,13 +9450,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-icons.tsx",
+        path: "registry/default/charts/chart-radar-icons.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-icons.tsx")),
-      source: "__registry__/default/blocks/chart-radar-icons.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-icons.tsx")),
+      source: "__registry__/default/charts/chart-radar-icons.tsx",
       meta: undefined,
     },
     "chart-radar-label-custom": {
@@ -9465,13 +9465,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-label-custom.tsx",
+        path: "registry/default/charts/chart-radar-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-label-custom.tsx")),
-      source: "__registry__/default/blocks/chart-radar-label-custom.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-label-custom.tsx")),
+      source: "__registry__/default/charts/chart-radar-label-custom.tsx",
       meta: undefined,
     },
     "chart-radar-legend": {
@@ -9480,13 +9480,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-legend.tsx",
+        path: "registry/default/charts/chart-radar-legend.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-legend.tsx")),
-      source: "__registry__/default/blocks/chart-radar-legend.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-legend.tsx")),
+      source: "__registry__/default/charts/chart-radar-legend.tsx",
       meta: undefined,
     },
     "chart-radar-lines-only": {
@@ -9495,13 +9495,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-lines-only.tsx",
+        path: "registry/default/charts/chart-radar-lines-only.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-lines-only.tsx")),
-      source: "__registry__/default/blocks/chart-radar-lines-only.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-lines-only.tsx")),
+      source: "__registry__/default/charts/chart-radar-lines-only.tsx",
       meta: undefined,
     },
     "chart-radar-multiple": {
@@ -9510,13 +9510,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-multiple.tsx",
+        path: "registry/default/charts/chart-radar-multiple.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-multiple.tsx")),
-      source: "__registry__/default/blocks/chart-radar-multiple.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-multiple.tsx")),
+      source: "__registry__/default/charts/chart-radar-multiple.tsx",
       meta: undefined,
     },
     "chart-radar-radius": {
@@ -9525,13 +9525,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radar-radius.tsx",
+        path: "registry/default/charts/chart-radar-radius.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radar"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radar-radius.tsx")),
-      source: "__registry__/default/blocks/chart-radar-radius.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radar-radius.tsx")),
+      source: "__registry__/default/charts/chart-radar-radius.tsx",
       meta: undefined,
     },
     "chart-radial-grid": {
@@ -9540,13 +9540,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radial-grid.tsx",
+        path: "registry/default/charts/chart-radial-grid.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radial-grid.tsx")),
-      source: "__registry__/default/blocks/chart-radial-grid.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radial-grid.tsx")),
+      source: "__registry__/default/charts/chart-radial-grid.tsx",
       meta: undefined,
     },
     "chart-radial-label": {
@@ -9555,13 +9555,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radial-label.tsx",
+        path: "registry/default/charts/chart-radial-label.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radial-label.tsx")),
-      source: "__registry__/default/blocks/chart-radial-label.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radial-label.tsx")),
+      source: "__registry__/default/charts/chart-radial-label.tsx",
       meta: undefined,
     },
     "chart-radial-shape": {
@@ -9570,13 +9570,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radial-shape.tsx",
+        path: "registry/default/charts/chart-radial-shape.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radial-shape.tsx")),
-      source: "__registry__/default/blocks/chart-radial-shape.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radial-shape.tsx")),
+      source: "__registry__/default/charts/chart-radial-shape.tsx",
       meta: undefined,
     },
     "chart-radial-simple": {
@@ -9585,13 +9585,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radial-simple.tsx",
+        path: "registry/default/charts/chart-radial-simple.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radial-simple.tsx")),
-      source: "__registry__/default/blocks/chart-radial-simple.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radial-simple.tsx")),
+      source: "__registry__/default/charts/chart-radial-simple.tsx",
       meta: undefined,
     },
     "chart-radial-stacked": {
@@ -9600,13 +9600,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radial-stacked.tsx",
+        path: "registry/default/charts/chart-radial-stacked.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radial-stacked.tsx")),
-      source: "__registry__/default/blocks/chart-radial-stacked.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radial-stacked.tsx")),
+      source: "__registry__/default/charts/chart-radial-stacked.tsx",
       meta: undefined,
     },
     "chart-radial-text": {
@@ -9615,13 +9615,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-radial-text.tsx",
+        path: "registry/default/charts/chart-radial-text.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-radial"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-radial-text.tsx")),
-      source: "__registry__/default/blocks/chart-radial-text.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-radial-text.tsx")),
+      source: "__registry__/default/charts/chart-radial-text.tsx",
       meta: undefined,
     },
     "chart-tooltip-default": {
@@ -9630,13 +9630,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-tooltip-default.tsx",
+        path: "registry/default/charts/chart-tooltip-default.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-tooltip-default.tsx")),
-      source: "__registry__/default/blocks/chart-tooltip-default.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-tooltip-default.tsx")),
+      source: "__registry__/default/charts/chart-tooltip-default.tsx",
       meta: undefined,
     },
     "chart-tooltip-indicator-line": {
@@ -9645,13 +9645,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-tooltip-indicator-line.tsx",
+        path: "registry/default/charts/chart-tooltip-indicator-line.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-tooltip-indicator-line.tsx")),
-      source: "__registry__/default/blocks/chart-tooltip-indicator-line.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-tooltip-indicator-line.tsx")),
+      source: "__registry__/default/charts/chart-tooltip-indicator-line.tsx",
       meta: undefined,
     },
     "chart-tooltip-indicator-none": {
@@ -9660,13 +9660,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-tooltip-indicator-none.tsx",
+        path: "registry/default/charts/chart-tooltip-indicator-none.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-tooltip-indicator-none.tsx")),
-      source: "__registry__/default/blocks/chart-tooltip-indicator-none.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-tooltip-indicator-none.tsx")),
+      source: "__registry__/default/charts/chart-tooltip-indicator-none.tsx",
       meta: undefined,
     },
     "chart-tooltip-label-none": {
@@ -9675,13 +9675,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-tooltip-label-none.tsx",
+        path: "registry/default/charts/chart-tooltip-label-none.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-tooltip-label-none.tsx")),
-      source: "__registry__/default/blocks/chart-tooltip-label-none.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-tooltip-label-none.tsx")),
+      source: "__registry__/default/charts/chart-tooltip-label-none.tsx",
       meta: undefined,
     },
     "chart-tooltip-label-custom": {
@@ -9690,13 +9690,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-tooltip-label-custom.tsx",
+        path: "registry/default/charts/chart-tooltip-label-custom.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-tooltip-label-custom.tsx")),
-      source: "__registry__/default/blocks/chart-tooltip-label-custom.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-tooltip-label-custom.tsx")),
+      source: "__registry__/default/charts/chart-tooltip-label-custom.tsx",
       meta: undefined,
     },
     "chart-tooltip-label-formatter": {
@@ -9705,13 +9705,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-tooltip-label-formatter.tsx",
+        path: "registry/default/charts/chart-tooltip-label-formatter.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-tooltip-label-formatter.tsx")),
-      source: "__registry__/default/blocks/chart-tooltip-label-formatter.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-tooltip-label-formatter.tsx")),
+      source: "__registry__/default/charts/chart-tooltip-label-formatter.tsx",
       meta: undefined,
     },
     "chart-tooltip-formatter": {
@@ -9720,13 +9720,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-tooltip-formatter.tsx",
+        path: "registry/default/charts/chart-tooltip-formatter.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-tooltip-formatter.tsx")),
-      source: "__registry__/default/blocks/chart-tooltip-formatter.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-tooltip-formatter.tsx")),
+      source: "__registry__/default/charts/chart-tooltip-formatter.tsx",
       meta: undefined,
     },
     "chart-tooltip-icons": {
@@ -9735,13 +9735,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-tooltip-icons.tsx",
+        path: "registry/default/charts/chart-tooltip-icons.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-tooltip-icons.tsx")),
-      source: "__registry__/default/blocks/chart-tooltip-icons.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-tooltip-icons.tsx")),
+      source: "__registry__/default/charts/chart-tooltip-icons.tsx",
       meta: undefined,
     },
     "chart-tooltip-advanced": {
@@ -9750,13 +9750,13 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["card","chart"],
       files: [{
-        path: "registry/default/blocks/chart-tooltip-advanced.tsx",
+        path: "registry/default/charts/chart-tooltip-advanced.tsx",
         type: "registry:block",
         target: ""
       }],
       categories: ["charts","charts-tooltip"],
-      component: React.lazy(() => import("@/registry/default/blocks/chart-tooltip-advanced.tsx")),
-      source: "__registry__/default/blocks/chart-tooltip-advanced.tsx",
+      component: React.lazy(() => import("@/registry/default/charts/chart-tooltip-advanced.tsx")),
+      source: "__registry__/default/charts/chart-tooltip-advanced.tsx",
       meta: undefined,
     },
     "utils": {
