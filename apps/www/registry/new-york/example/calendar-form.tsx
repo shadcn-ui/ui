@@ -1,12 +1,13 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { CalendarIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
+import { CalendarIcon } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { cn } from "@/lib/utils"
+import { toast } from "@/registry/new-york/hooks/use-toast"
 import { Button } from "@/registry/new-york/ui/button"
 import { Calendar } from "@/registry/new-york/ui/calendar"
 import {
@@ -23,7 +24,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
-import { toast } from "@/registry/new-york/ui/use-toast"
 
 const FormSchema = z.object({
   dob: z.date({

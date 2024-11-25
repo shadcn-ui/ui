@@ -18,7 +18,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add button
+npx shadcn@latest add button
 ```
 
 </TabsContent>
@@ -134,3 +134,17 @@ Alternatively, you can set the `asChild` parameter and nest the link component.
   name="button-as-child"
   description="A button wrapping a custom Link component"
 />
+
+## Changelog
+
+### 2024-10-16 Classes for icons
+
+Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the button to automatically style icon inside the button.
+
+Add the following classes to the `cva` call in your `button.tsx` file.
+
+```diff showLineNumbers title="button.tsx"
+const buttonVariants = cva(
+  "inline-flex ... gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
+)
+```

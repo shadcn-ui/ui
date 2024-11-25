@@ -1,11 +1,11 @@
-import { ReloadIcon } from "@radix-ui/react-icons"
+import { Loader2 } from "lucide-react"
 
 import { Button } from "@/registry/new-york/ui/button"
 
 export default function ButtonLoading() {
   return (
     <Button disabled>
-      <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+      <Loader2 className="animate-spin" />
       Please wait
     </Button>
   )

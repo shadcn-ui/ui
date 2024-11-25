@@ -1,16 +1,8 @@
 "use client"
 
 import * as React from "react"
-import {
-  CheckIcon,
-  CopyIcon,
-  InfoCircledIcon,
-  MoonIcon,
-  ResetIcon,
-  SunIcon,
-} from "@radix-ui/react-icons"
 import template from "lodash.template"
-import { Paintbrush } from "lucide-react"
+import { Check, Copy, Moon, Repeat, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
@@ -38,14 +30,14 @@ import {
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
 import { Skeleton } from "@/registry/new-york/ui/skeleton"
-import { Theme, themes } from "@/registry/themes"
-
-import "@/styles/mdx.css"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/new-york/ui/tooltip"
+import { BaseColor, baseColors } from "@/registry/registry-base-colors"
+
+import "@/styles/mdx.css"
 
 export function ThemeCustomizer() {
   const [config, setConfig] = useConfig()
@@ -80,75 +72,6 @@ export function ThemeCustomizer() {
             <Customizer />
           </PopoverContent>
         </Popover>
-        <div className="ml-2 hidden items-center gap-0.5">
-          {mounted ? (
-            <>
-              {["zinc", "rose", "blue", "green", "orange"].map((color) => {
-                const theme = themes.find((theme) => theme.name === color)
-                const isActive = config.theme === color
-
-                if (!theme) {
-                  return null
-                }
-
-                return (
-                  <Tooltip key={theme.name}>
-                    <TooltipTrigger asChild>
-                      <button
-                        onClick={() =>
-                          setConfig({
-                            ...config,
-                            theme: theme.name,
-                          })
-                        }
-                        className={cn(
-                          "flex h-8 w-8 items-center justify-center rounded-full border-2 text-xs",
-                          isActive
-                            ? "border-[--theme-primary]"
-                            : "border-transparent"
-                        )}
-                        style={
-                          {
-                            "--theme-primary": `hsl(${
-                              theme?.activeColor[
-                                mode === "dark" ? "dark" : "light"
-                              ]
-                            })`,
-                          } as React.CSSProperties
-                        }
-                      >
-                        <span
-                          className={cn(
-                            "flex h-5 w-5 items-center justify-center rounded-full bg-[--theme-primary]"
-                          )}
-                        >
-                          {isActive && (
-                            <CheckIcon className="h-4 w-4 text-white" />
-                          )}
-                        </span>
-                        <span className="sr-only">{theme.label}</span>
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent
-                      align="center"
-                      className="rounded-[0.5rem] bg-zinc-900 text-zinc-50"
-                    >
-                      {theme.label}
-                    </TooltipContent>
-                  </Tooltip>
-                )
-              })}
-            </>
-          ) : (
-            <div className="mr-1 flex items-center gap-4">
-              <Skeleton className="h-5 w-5 rounded-full" />
-              <Skeleton className="h-5 w-5 rounded-full" />
-              <Skeleton className="h-5 w-5 rounded-full" />
-              <Skeleton className="h-5 w-5 rounded-full" />
-              <Skeleton className="h-5 w-5 rounded-full" />
-            </div>
-          )}
-        </div>
       </div>
       <CopyCodeButton variant="ghost" size="sm" className="[&_svg]:hidden" />
     </div>
@@ -172,10 +95,10 @@ function Customizer() {
       <div className="flex items-start pt-4 md:pt-0">
         <div className="space-y-1 pr-2">
           <div className="font-semibold leading-none tracking-tight">
-            Customize
+            Theme Customizer
           </div>
           <div className="text-xs text-muted-foreground">
-            Pick a style and color for your components.
+            Customize your components colors.
           </div>
         </div>
         <Button
@@ -190,110 +113,58 @@ function Customizer() {
             })
           }}
         >
-          <ResetIcon />
+          <Repeat />
           <span className="sr-only">Reset</span>
         </Button>
       </div>
       <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
         <div className="space-y-1.5">
-          <div className="flex w-full items-center">
-            <Label className="text-xs">Style</Label>
-            <Popover>
-              <PopoverTrigger>
-                <InfoCircledIcon className="ml-1 h-3 w-3" />
-                <span className="sr-only">About styles</span>
-              </PopoverTrigger>
-              <PopoverContent
-                className="space-y-3 rounded-[0.5rem] text-sm"
-                side="right"
-                align="start"
-                alignOffset={-20}
-              >
-                <p className="font-medium">
-                  What is the difference between the New York and Default style?
-                </p>
-                <p>
-                  A style comes with its own set of components, animations,
-                  icons and more.
-                </p>
-                <p>
-                  The <span className="font-medium">Default</span> style has
-                  larger inputs, uses lucide-react for icons and
-                  tailwindcss-animate for animations.
-                </p>
-                <p>
-                  The <span className="font-medium">New York</span> style ships
-                  with smaller buttons and cards with shadows. It uses icons
-                  from Radix Icons.
-                </p>
-              </PopoverContent>
-            </Popover>
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            <Button
-              variant={"outline"}
-              size="sm"
-              onClick={() => setConfig({ ...config, style: "default" })}
-              className={cn(
-                config.style === "default" && "border-2 border-primary"
-              )}
-            >
-              Default
-            </Button>
-            <Button
-              variant={"outline"}
-              size="sm"
-              onClick={() => setConfig({ ...config, style: "new-york" })}
-              className={cn(
-                config.style === "new-york" && "border-2 border-primary"
-              )}
-            >
-              New York
-            </Button>
-          </div>
-        </div>
-        <div className="space-y-1.5">
           <Label className="text-xs">Color</Label>
           <div className="grid grid-cols-3 gap-2">
-            {themes.map((theme) => {
-              const isActive = config.theme === theme.name
-
-              return mounted ? (
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  key={theme.name}
-                  onClick={() => {
-                    setConfig({
-                      ...config,
-                      theme: theme.name,
-                    })
-                  }}
-                  className={cn(
-                    "justify-start",
-                    isActive && "border-2 border-primary"
-                  )}
-                  style={
-                    {
-                      "--theme-primary": `hsl(${
-                        theme?.activeColor[mode === "dark" ? "dark" : "light"]
-                      })`,
-                    } as React.CSSProperties
-                  }
-                >
-                  <span
-                    className={cn(
-                      "mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-[--theme-primary]"
-                    )}
-                  >
-                    {isActive && <CheckIcon className="h-4 w-4 text-white" />}
-                  </span>
-                  {theme.label}
-                </Button>
-              ) : (
-                <Skeleton className="h-8 w-full" key={theme.name} />
+            {baseColors
+              .filter(
+                (theme) =>
+                  !["slate", "stone", "gray", "neutral"].includes(theme.name)
               )
-            })}
+              .map((theme) => {
+                const isActive = config.theme === theme.name
+
+                return mounted ? (
+                  <Button
+                    variant={"outline"}
+                    size="sm"
+                    key={theme.name}
+                    onClick={() => {
+                      setConfig({
+                        ...config,
+                        theme: theme.name,
+                      })
+                    }}
+                    className={cn(
+                      "justify-start",
+                      isActive && "border-2 border-primary"
+                    )}
+                    style={
+                      {
+                        "--theme-primary": `hsl(${
+                          theme?.activeColor[mode === "dark" ? "dark" : "light"]
+                        })`,
+                      } as React.CSSProperties
+                    }
+                  >
+                    <span
+                      className={cn(
+                        "mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-[--theme-primary]"
+                      )}
+                    >
+                      {isActive && <Check className="h-4 w-4 text-white" />}
+                    </span>
+                    {theme.label}
+                  </Button>
+                ) : (
+                  <Skeleton className="h-8 w-full" key={theme.name} />
+                )
+              })}
           </div>
         </div>
         <div className="space-y-1.5">
@@ -333,7 +204,7 @@ function Customizer() {
                   onClick={() => setMode("light")}
                   className={cn(mode === "light" && "border-2 border-primary")}
                 >
-                  <SunIcon className="mr-1 -translate-x-1" />
+                  <Sun className="mr-1 -translate-x-1" />
                   Light
                 </Button>
                 <Button
@@ -342,7 +213,7 @@ function Customizer() {
                   onClick={() => setMode("dark")}
                   className={cn(mode === "dark" && "border-2 border-primary")}
                 >
-                  <MoonIcon className="mr-1 -translate-x-1" />
+                  <Moon className="mr-1 -translate-x-1" />
                   Dark
                 </Button>
               </>
@@ -364,7 +235,7 @@ function CopyCodeButton({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const [config] = useConfig()
-  const activeTheme = themes.find((theme) => theme.name === config.theme)
+  const activeTheme = baseColors.find((theme) => theme.name === config.theme)
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
@@ -390,11 +261,7 @@ function CopyCodeButton({
           className={cn("md:hidden", className)}
           {...props}
         >
-          {hasCopied ? (
-            <CheckIcon className="mr-2 h-4 w-4" />
-          ) : (
-            <CopyIcon className="mr-2 h-4 w-4" />
-          )}
+          {hasCopied ? <Check /> : <Copy />}
           Copy code
         </Button>
       )}
@@ -431,11 +298,7 @@ function CopyCodeButton({
                 }}
                 className="absolute right-4 top-4 bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground"
               >
-                {hasCopied ? (
-                  <CheckIcon className="mr-2 h-4 w-4" />
-                ) : (
-                  <CopyIcon className="mr-2 h-4 w-4" />
-                )}
+                {hasCopied ? <Check /> : <Copy />}
                 Copy
               </Button>
             )}
@@ -448,7 +311,7 @@ function CopyCodeButton({
 
 function CustomizerCode() {
   const [config] = useConfig()
-  const activeTheme = themes.find((theme) => theme.name === config.theme)
+  const activeTheme = baseColors.find((theme) => theme.name === config.theme)
 
   return (
     <ThemeWrapper defaultTheme="zinc" className="relative space-y-4">
@@ -602,7 +465,7 @@ function CustomizerCode() {
   )
 }
 
-function getThemeCode(theme: Theme, radius: number) {
+function getThemeCode(theme: BaseColor, radius: number) {
   if (!theme) {
     return ""
   }

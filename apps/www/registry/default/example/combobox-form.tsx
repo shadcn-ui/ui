@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { cn } from "@/lib/utils"
+import { toast } from "@/registry/default/hooks/use-toast"
 import { Button } from "@/registry/default/ui/button"
 import {
   Command,
@@ -29,7 +30,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/default/ui/popover"
-import { toast } from "@/registry/default/ui/use-toast"
 
 const languages = [
   { label: "English", value: "en" },
@@ -108,15 +108,15 @@ export default function ComboboxForm() {
                               form.setValue("language", language.value)
                             }}
                           >
+                            {language.label}
                             <Check
                               className={cn(
-                                "mr-2 h-4 w-4",
+                                "ml-auto",
                                 language.value === field.value
                                   ? "opacity-100"
                                   : "opacity-0"
                               )}
                             />
-                            {language.label}
                           </CommandItem>
                         ))}
                       </CommandGroup>

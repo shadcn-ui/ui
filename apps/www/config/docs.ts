@@ -9,6 +9,10 @@ export interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
+      title: "Home",
+      href: "/",
+    },
+    {
       title: "Documentation",
       href: "/docs",
     },
@@ -27,10 +31,6 @@ export const docsConfig: DocsConfig = {
     {
       title: "Themes",
       href: "/themes",
-    },
-    {
-      title: "Examples",
-      href: "/examples",
     },
     {
       title: "Colors",
@@ -72,8 +72,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Next.js 15 + React 19",
+          href: "/docs/react-19",
+          items: [],
+        },
+        {
           title: "Typography",
           href: "/docs/components/typography",
+          items: [],
+        },
+        {
+          title: "Open in v0",
+          href: "/docs/v0",
           items: [],
         },
         {
@@ -89,8 +99,54 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Installation",
+      items: [
+        {
+          title: "Next.js",
+          href: "/docs/installation/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/installation/vite",
+          items: [],
+        },
+        {
+          title: "Remix",
+          href: "/docs/installation/remix",
+          items: [],
+        },
+        {
+          title: "Astro",
+          href: "/docs/installation/astro",
+          items: [],
+        },
+        {
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
+          title: "Gatsby",
+          href: "/docs/installation/gatsby",
+          items: [],
+        },
+        {
+          title: "Manual",
+          href: "/docs/installation/manual",
+          items: [],
+        },
+      ],
+    },
+    {
       title: "Components",
       items: [
+        {
+          title: "Sidebar",
+          href: "/docs/components/sidebar",
+          items: [],
+          label: "New",
+        },
         {
           title: "Accordion",
           href: "/docs/components/accordion",
@@ -149,7 +205,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Chart",
           href: "/docs/components/chart",
-          label: "New",
           items: [],
         },
         {

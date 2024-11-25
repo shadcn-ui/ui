@@ -15,7 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/default/ui/card"
-import { themes } from "@/registry/themes"
+import { baseColors } from "@/registry/registry-base-colors"
 
 const data = [
   {
@@ -63,7 +63,9 @@ export function CardsActivityGoal() {
   const { theme: mode } = useTheme()
   const [config] = useConfig()
 
-  const theme = themes.find((theme) => theme.name === config.theme)
+  const baseColor = baseColors.find(
+    (baseColor) => baseColor.name === config.theme
+  )
   const [goal, setGoal] = React.useState(350)
 
   function onClick(adjustment: number) {
@@ -85,7 +87,7 @@ export function CardsActivityGoal() {
             onClick={() => onClick(-10)}
             disabled={goal <= 200}
           >
-            <Minus className="h-4 w-4" />
+            <Minus />
             <span className="sr-only">Decrease</span>
           </Button>
           <div className="flex-1 text-center">
@@ -101,7 +103,7 @@ export function CardsActivityGoal() {
             onClick={() => onClick(10)}
             disabled={goal >= 400}
           >
-            <Plus className="h-4 w-4" />
+            <Plus />
             <span className="sr-only">Increase</span>
           </Button>
         </div>
@@ -115,7 +117,8 @@ export function CardsActivityGoal() {
                     fill: "var(--theme-primary)",
                     opacity: 0.2,
                     "--theme-primary": `hsl(${
-                      theme?.cssVars[mode === "dark" ? "dark" : "light"].primary
+                      baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
+                        .primary
                     })`,
                   } as React.CSSProperties
                 }
