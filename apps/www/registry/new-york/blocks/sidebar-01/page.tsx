@@ -14,8 +14,6 @@ import {
   SidebarTrigger,
 } from "@/registry/new-york/ui/sidebar"
 
-export const iframeHeight = "800px"
-
 export default function Page() {
   return (
     <SidebarProvider>

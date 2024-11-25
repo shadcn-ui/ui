@@ -19,9 +19,6 @@ import {
 } from "@/registry/new-york/ui/chart"
 
 export const description = "An area chart with axes"
-export const iframeHeight = "600px"
-export const containerClassName =
-  "[&>div]:w-full [&>div]:max-w-md flex items-center justify-center min-h-svh"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },

@@ -21,7 +21,6 @@ import { z } from "zod"
 import { trackEvent } from "@/lib/events"
 import { FileTree, createFileTreeForRegistryItemFiles } from "@/lib/registry"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
-import { ProjectAddButton } from "@/components/project-add-button"
 import { V0Button } from "@/components/v0-button"
 import { Button } from "@/registry/new-york/ui/button"
 import {
@@ -221,11 +220,6 @@ function BlockViewerToolbar() {
             {isCopied ? <Check /> : <Terminal />}
             <span className="hidden lg:inline">npx shadcn add {item.name}</span>
           </Button>
-          <Separator orientation="vertical" className="hidden h-4 xl:flex" />
-          <ProjectAddButton
-            name={item.name}
-            className="h-[22px] w-[22px] gap-1 "
-          />
         </div>
         <Separator orientation="vertical" className="mx-1 hidden h-4 xl:flex" />
         <V0Button

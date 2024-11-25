@@ -20,7 +20,7 @@ import {
 } from "../registry/schema"
 import { fixImport } from "./fix-import.mts"
 
-export const REGISTRY_PATH = path.join(process.cwd(), "public/r")
+const REGISTRY_PATH = path.join(process.cwd(), "public/r")
 
 const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:ui",
@@ -39,6 +39,61 @@ const project = new Project({
 async function createTempSourceFile(filename: string) {
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   return path.join(dir, filename)
+}
+
+// ----------------------------------------------------------------------------
+// Sync styles
+// ----------------------------------------------------------------------------
+async function syncStyles() {
+  const sourceStyle = "new-york"
+  const targetStyle = "default"
+
+  const syncDirectories = ["blocks", "hooks", "internal", "lib"]
+
+  // Clean up sync directories.
+  for (const dir of syncDirectories) {
+    rimraf.sync(path.join("registry", targetStyle, dir))
+  }
+
+  for (const item of registry) {
+    if (
+      !REGISTRY_INDEX_WHITELIST.includes(item.type) &&
+      item.type !== "registry:ui"
+    ) {
+      continue
+    }
+
+    const resolveFiles = item.files?.map(
+      (file) =>
+        `registry/${sourceStyle}/${typeof file === "string" ? file : file.path}`
+    )
+    if (!resolveFiles) {
+      continue
+    }
+
+    // Copy files to target style if they don't exist.
+    for (const file of resolveFiles) {
+      const sourcePath = path.join(process.cwd(), file)
+      const targetPath = path.join(
+        process.cwd(),
+        file.replace(sourceStyle, targetStyle)
+      )
+
+      if (!existsSync(targetPath)) {
+        // Create directory if it doesn't exist.
+        await fs.mkdir(path.dirname(targetPath), { recursive: true })
+        await fs.copyFile(sourcePath, targetPath)
+
+        // Replace all @/registry/new-york/ with @/registry/default/.
+        const content = await fs.readFile(targetPath, "utf8")
+        const fixedContent = content.replace(
+          new RegExp(`@/registry/${sourceStyle}/`, "g"),
+          `@/registry/${targetStyle}/`
+        )
+        await fs.writeFile(targetPath, fixedContent, "utf8")
+      }
+    }
+  }
 }
 
 // ----------------------------------------------------------------------------
@@ -749,6 +804,7 @@ try {
     process.exit(1)
   }
 
+  await syncStyles()
   await buildRegistry(result.data)
   await buildStyles(result.data)
   await buildStylesIndex()

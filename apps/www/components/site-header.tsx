@@ -6,7 +6,6 @@ import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
-import { ProjectBuilder } from "@/components/project-builder"
 import { Button } from "@/registry/new-york/ui/button"
 
 export function SiteHeader() {
@@ -21,7 +20,6 @@ export function SiteHeader() {
               <CommandMenu />
             </div>
             <nav className="flex items-center gap-0.5">
-              <ProjectBuilder />
               <Button variant="ghost" size="icon" className="h-8 w-8 px-0">
                 <Link
                   href={siteConfig.links.github}

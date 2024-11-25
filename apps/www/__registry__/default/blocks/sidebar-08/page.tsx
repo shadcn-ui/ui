@@ -14,10 +14,6 @@ import {
   SidebarTrigger,
 } from "@/registry/default/ui/sidebar"
 
-export const iframeHeight = "800px"
-
-export const description = "An inset sidebar with secondary navigation."
-
 export default function Page() {
   return (
     <SidebarProvider>

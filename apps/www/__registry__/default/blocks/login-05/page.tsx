@@ -1,7 +1,5 @@
 import { LoginForm } from "@/registry/default/blocks/login-05/components/login-form"
 
-export const description = "A simple email-only login page."
-
 export default function LoginPage() {
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10">

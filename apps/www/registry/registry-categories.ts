@@ -20,11 +20,6 @@ export const registryCategories = [
     hidden: false,
   },
   {
-    name: "Apps",
-    slug: "apps",
-    hidden: false,
-  },
-  {
     name: "Charts",
     slug: "charts",
     hidden: true,
@@ -63,10 +58,5 @@ export const registryCategories = [
     name: "Charts Tooltip",
     slug: "charts-tooltip",
     hidden: true,
-  },
-  {
-    name: "Misc",
-    slug: "misc",
-    hidden: false,
   },
 ]

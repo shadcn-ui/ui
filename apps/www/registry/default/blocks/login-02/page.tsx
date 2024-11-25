@@ -2,8 +2,6 @@ import { GalleryVerticalEnd } from "lucide-react"
 
 import { LoginForm } from "@/registry/default/blocks/login-02/components/login-form"
 
-export const description = "A two column login page with a cover image."
-
 export default function LoginPage() {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">

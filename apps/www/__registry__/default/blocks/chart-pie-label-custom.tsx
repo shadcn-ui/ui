@@ -64,7 +64,7 @@ export default function Component() {
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-h-[250px] px-0"
         >
           <PieChart>
             <ChartTooltip
@@ -85,10 +85,7 @@ export default function Component() {
                     dominantBaseline={props.dominantBaseline}
                     fill="hsla(var(--foreground))"
                   >
-                    {`${
-                      chartConfig[payload.browser as keyof typeof chartConfig]
-                        ?.label
-                    } (${payload.visitors})`}
+                    {payload.visitors}
                   </text>
                 )
               }}

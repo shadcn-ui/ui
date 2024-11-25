@@ -1,21 +1,18 @@
-import { getAllBlockIds } from "@/lib/blocks"
-import { BlockImage } from "@/components/block-image"
+import { BlockDisplay } from "@/components/block-display"
+
+const FEATURED_BLOCKS = ["sidebar-07", "sidebar-03", "login-03", "login-04"]
 
 export default async function BlocksPage() {
-  const blocks = await getAllBlockIds(["registry:block"])
-
   return (
-    <div className="container py-6">
-      <div className="grid grid-cols-3 gap-6">
-        {blocks.map((name) => (
-          <div
-            key={name}
-            className="aspect-[1440/900] flex items-center justify-center rounded-lg bg-muted p-14"
-          >
-            <BlockImage name={name} width={375} height={250} />
-          </div>
-        ))}
-      </div>
+    <div>
+      {FEATURED_BLOCKS.map((block) => (
+        <div
+          key={block}
+          className="border-grid container border-b py-12 first:pt-6 last:border-b-0"
+        >
+          <BlockDisplay name={block} />
+        </div>
+      ))}
     </div>
   )
 }

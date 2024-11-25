@@ -3454,68 +3454,6 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
-    "app-01": {
-      name: "app-01",
-      description: "A simple task app.",
-      type: "registry:block",
-      registryDependencies: ["card","input","button","skeleton","label"],
-      files: [{
-        path: "registry/new-york/blocks/app-01/page.tsx",
-        type: "registry:page",
-        target: "app/page.tsx"
-      },{
-        path: "registry/new-york/blocks/app-01/api/tasks/route.ts",
-        type: "registry:page",
-        target: "app/api/tasks/route.ts"
-      },{
-        path: "registry/new-york/blocks/app-01/components/add-task-form.tsx",
-        type: "registry:component",
-        target: ""
-      },{
-        path: "registry/new-york/blocks/app-01/components/submit-button.tsx",
-        type: "registry:component",
-        target: ""
-      },{
-        path: "registry/new-york/blocks/app-01/components/tasks-list.tsx",
-        type: "registry:component",
-        target: ""
-      },{
-        path: "registry/new-york/blocks/app-01/hooks/use-tasks.ts",
-        type: "registry:hook",
-        target: ""
-      },{
-        path: "registry/new-york/blocks/app-01/lib/constants.ts",
-        type: "registry:lib",
-        target: ""
-      },{
-        path: "registry/new-york/blocks/app-01/lib/actions.ts",
-        type: "registry:lib",
-        target: ""
-      }],
-      categories: ["apps"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/app-01/page.tsx")),
-      source: "__registry__/new-york/blocks/app-01/page.tsx",
-      meta: undefined,
-    },
-    "button-01": {
-      name: "button-01",
-      description: "A simple button.",
-      type: "registry:block",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york/blocks/button-01/page.tsx",
-        type: "registry:page",
-        target: "app/page.tsx"
-      },{
-        path: "registry/new-york/blocks/button-01/components/amazing-button.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      categories: ["misc"],
-      component: React.lazy(() => import("@/registry/new-york/blocks/button-01/page.tsx")),
-      source: "__registry__/new-york/blocks/button-01/page.tsx",
-      meta: {"iframeHeight":"300px"},
-    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",

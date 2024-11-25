@@ -25,7 +25,7 @@ export default async function BlocksPage({
       key={name}
       className="border-grid container border-b py-12 first:pt-6 last:border-b-0"
     >
-      <BlockDisplay key={name} name={name} />
+      <BlockDisplay name={name} />
     </div>
   ))
 }
