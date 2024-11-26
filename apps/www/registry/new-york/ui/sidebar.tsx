@@ -72,14 +72,12 @@ const SidebarProvider = React.forwardRef<
     const [_openMobile, _setOpenMobile] = React.useState(false)
 
     // This is the internal state of the sidebar.
-    // We use openProp and setOpenProp for control from outside the component.
     const [_open, _setOpen] = React.useState(defaultOpen)
 
     // Unified open state that considers both mobile and desktop scenarios
     const open = openProp ?? (isMobile ? _openMobile : _open)
 
     // Unified state update function to handle both mobile and desktop states
-    // This reduces code duplication and ensures consistent state updates
     const updateOpenState = React.useCallback(
       (value: boolean) => {
         if (setOpenProp) {
