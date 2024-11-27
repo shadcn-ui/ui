@@ -72,8 +72,9 @@ export default function NavigationMenuDemo() {
                       shadcn/ui
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
+                      Beautifully designed components that you can copy and
+                      paste into your apps. Accessible. Customizable. Open
+                      Source.
                     </p>
                   </a>
                 </NavigationMenuLink>

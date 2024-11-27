@@ -2,8 +2,9 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { z } from "zod"
 
+import { toast } from "@/registry/new-york/hooks/use-toast"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Form,
@@ -15,7 +16,6 @@ import {
   FormMessage,
 } from "@/registry/new-york/ui/form"
 import { Input } from "@/registry/new-york/ui/input"
-import { toast } from "@/registry/new-york/ui/use-toast"
 
 const FormSchema = z.object({
   username: z.string().min(2, {
@@ -26,6 +26,9 @@ const FormSchema = z.object({
 export default function InputForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    defaultValues: {
+      username: "",
+    },
   })
 
   function onSubmit(data: z.infer<typeof FormSchema>) {

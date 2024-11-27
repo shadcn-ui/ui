@@ -10,7 +10,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/default/ui/card"
-import { Separator } from "@/registry/default/ui/separator"
 import { Switch } from "@/registry/default/ui/switch"
 
 const notifications = [
@@ -71,7 +70,7 @@ export default function CardDemo({ className, ...props }: CardProps) {
       </CardContent>
       <CardFooter>
         <Button className="w-full">
-          <Check className="mr-2 h-4 w-4" /> Mark all as read
+          <Check /> Mark all as read
         </Button>
       </CardFooter>
     </Card>

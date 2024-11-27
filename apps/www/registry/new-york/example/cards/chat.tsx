@@ -1,5 +1,7 @@
+"use client"
+
 import * as React from "react"
-import { CheckIcon, PaperPlaneIcon, PlusIcon } from "@radix-ui/react-icons"
+import { Check, Plus, Send } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -90,6 +92,8 @@ export function CardsChat() {
       content: "I can't log in.",
     },
   ])
+  const [input, setInput] = React.useState("")
+  const inputLength = input.trim().length
 
   return (
     <>
@@ -114,7 +118,7 @@ export function CardsChat() {
                   className="ml-auto rounded-full"
                   onClick={() => setOpen(true)}
                 >
-                  <PlusIcon className="h-4 w-4" />
+                  <Plus />
                   <span className="sr-only">New message</span>
                 </Button>
               </TooltipTrigger>
@@ -143,15 +147,15 @@ export function CardsChat() {
           <form
             onSubmit={(event) => {
               event.preventDefault()
+              if (inputLength === 0) return
               setMessages([
                 ...messages,
                 {
                   role: "user",
-                  content: event.currentTarget.message.value,
+                  content: input,
                 },
               ])
-
-              event.currentTarget.message.value = ""
+              setInput("")
             }}
             className="flex w-full items-center space-x-2"
           >
@@ -159,9 +163,12 @@ export function CardsChat() {
               id="message"
               placeholder="Type your message..."
               className="flex-1"
+              autoComplete="off"
+              value={input}
+              onChange={(event) => setInput(event.target.value)}
             />
-            <Button type="submit" size="icon">
-              <PaperPlaneIcon className="h-4 w-4" />
+            <Button type="submit" size="icon" disabled={inputLength === 0}>
+              <Send />
               <span className="sr-only">Send</span>
             </Button>
           </form>
@@ -214,7 +221,7 @@ export function CardsChat() {
                       </p>
                     </div>
                     {selectedUsers.includes(user) ? (
-                      <CheckIcon className="ml-auto flex h-5 w-5 text-primary" />
+                      <Check className="ml-auto flex h-5 w-5 text-primary" />
                     ) : null}
                   </CommandItem>
                 ))}

@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/default/ui/card"
-import { themes } from "@/registry/themes"
+import { baseColors } from "@/registry/registry-base-colors"
 
 const data = [
   {
@@ -46,14 +46,16 @@ export function CardsMetric() {
   const { theme: mode } = useTheme()
   const [config] = useConfig()
 
-  const theme = themes.find((theme) => theme.name === config.theme)
+  const baseColor = baseColors.find(
+    (baseColor) => baseColor.name === config.theme
+  )
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>Exercise Minutes</CardTitle>
         <CardDescription>
-          Your excercise minutes are ahead of where you normally are.
+          Your exercise minutes are ahead of where you normally are.
         </CardDescription>
       </CardHeader>
       <CardContent className="pb-4">
@@ -111,7 +113,8 @@ export function CardsMetric() {
                     stroke: "var(--theme-primary)",
                     opacity: 0.25,
                     "--theme-primary": `hsl(${
-                      theme?.cssVars[mode === "dark" ? "dark" : "light"].primary
+                      baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
+                        .primary
                     })`,
                   } as React.CSSProperties
                 }
@@ -128,7 +131,8 @@ export function CardsMetric() {
                   {
                     stroke: "var(--theme-primary)",
                     "--theme-primary": `hsl(${
-                      theme?.cssVars[mode === "dark" ? "dark" : "light"].primary
+                      baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
+                        .primary
                     })`,
                   } as React.CSSProperties
                 }

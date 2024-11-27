@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { MinusIcon, PlusIcon } from "@radix-ui/react-icons"
+import { Minus, Plus } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Bar, BarChart, ResponsiveContainer } from "recharts"
 
@@ -15,7 +15,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/new-york/ui/card"
-import { themes } from "@/registry/themes"
+import { ChartConfig, ChartContainer } from "@/registry/new-york/ui/chart"
+import { baseColors } from "@/registry/registry-base-colors"
 
 const data = [
   {
@@ -59,11 +60,17 @@ const data = [
   },
 ]
 
-export function CardsActivityGoal() {
-  const { theme: mode } = useTheme()
-  const [config] = useConfig()
+const chartConfig = {
+  goal: {
+    label: "Goal",
+    theme: {
+      light: "black",
+      dark: "white",
+    },
+  },
+} satisfies ChartConfig
 
-  const theme = themes.find((theme) => theme.name === config.theme)
+export function CardsActivityGoal() {
   const [goal, setGoal] = React.useState(350)
 
   function onClick(adjustment: number) {
@@ -85,7 +92,7 @@ export function CardsActivityGoal() {
             onClick={() => onClick(-10)}
             disabled={goal <= 200}
           >
-            <MinusIcon className="h-4 w-4" />
+            <Minus />
             <span className="sr-only">Decrease</span>
           </Button>
           <div className="flex-1 text-center">
@@ -101,27 +108,19 @@ export function CardsActivityGoal() {
             onClick={() => onClick(10)}
             disabled={goal >= 400}
           >
-            <PlusIcon className="h-4 w-4" />
+            <Plus />
             <span className="sr-only">Increase</span>
           </Button>
         </div>
         <div className="my-3 h-[60px]">
-          <ResponsiveContainer width="100%" height="100%">
+          <ChartContainer
+            config={chartConfig}
+            className="aspect-auto h-full w-full"
+          >
             <BarChart data={data}>
-              <Bar
-                dataKey="goal"
-                style={
-                  {
-                    fill: "var(--theme-primary)",
-                    opacity: 0.2,
-                    "--theme-primary": `hsl(${
-                      theme?.cssVars[mode === "dark" ? "dark" : "light"].primary
-                    })`,
-                  } as React.CSSProperties
-                }
-              />
+              <Bar dataKey="goal" radius={4} fill="var(--color-goal)" />
             </BarChart>
-          </ResponsiveContainer>
+          </ChartContainer>
         </div>
       </CardContent>
       <CardFooter>

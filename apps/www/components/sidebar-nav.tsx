@@ -4,14 +4,19 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { SidebarNavItem } from "types/nav"
 
+import { type DocsConfig } from "@/config/docs"
 import { cn } from "@/lib/utils"
 
 export interface DocsSidebarNavProps {
-  items: SidebarNavItem[]
+  config: DocsConfig
 }
 
-export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
+export function DocsSidebarNav({ config }: DocsSidebarNavProps) {
   const pathname = usePathname()
+
+  const items = pathname?.startsWith("/charts")
+    ? config.chartsNav
+    : config.sidebarNav
 
   return items.length ? (
     <div className="w-full">
@@ -39,18 +44,16 @@ export function DocsSidebarNavItems({
   pathname,
 }: DocsSidebarNavItemsProps) {
   return items?.length ? (
-    <div className="grid grid-flow-row auto-rows-max text-sm">
+    <div className="grid grid-flow-row auto-rows-max gap-0.5 text-sm">
       {items.map((item, index) =>
         item.href && !item.disabled ? (
           <Link
             key={index}
             href={item.href}
             className={cn(
-              "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
+              "group flex w-full items-center px-2 py-1 font-normal text-foreground underline-offset-2 hover:underline",
               item.disabled && "cursor-not-allowed opacity-60",
-              pathname === item.href
-                ? "font-medium text-foreground"
-                : "text-muted-foreground"
+              pathname === item.href && "underline"
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}

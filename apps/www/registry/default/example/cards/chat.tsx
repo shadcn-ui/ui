@@ -90,6 +90,8 @@ export function CardsChat() {
       content: "I can't log in.",
     },
   ])
+  const [input, setInput] = React.useState("")
+  const inputLength = input.trim().length
 
   return (
     <>
@@ -115,6 +117,7 @@ export function CardsChat() {
                   onClick={() => setOpen(true)}
                 >
                   <Plus className="h-4 w-4" />
+                  <span className="sr-only">New message</span>
                 </Button>
               </TooltipTrigger>
               <TooltipContent sideOffset={10}>New message</TooltipContent>
@@ -142,15 +145,15 @@ export function CardsChat() {
           <form
             onSubmit={(event) => {
               event.preventDefault()
+              if (inputLength === 0) return
               setMessages([
                 ...messages,
                 {
                   role: "user",
-                  content: event.currentTarget.message.value,
+                  content: input,
                 },
               ])
-
-              event.currentTarget.message.value = ""
+              setInput("")
             }}
             className="flex w-full items-center space-x-2"
           >
@@ -158,8 +161,11 @@ export function CardsChat() {
               id="message"
               placeholder="Type your message..."
               className="flex-1"
+              autoComplete="off"
+              value={input}
+              onChange={(event) => setInput(event.target.value)}
             />
-            <Button type="submit" size="icon">
+            <Button type="submit" size="icon" disabled={inputLength === 0}>
               <Send className="h-4 w-4" />
               <span className="sr-only">Send</span>
             </Button>

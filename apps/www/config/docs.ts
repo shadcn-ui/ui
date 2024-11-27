@@ -1,12 +1,17 @@
 import { MainNavItem, SidebarNavItem } from "types/nav"
 
-interface DocsConfig {
+export interface DocsConfig {
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
+  chartsNav: SidebarNavItem[]
 }
 
 export const docsConfig: DocsConfig = {
   mainNav: [
+    {
+      title: "Home",
+      href: "/",
+    },
     {
       title: "Documentation",
       href: "/docs",
@@ -16,26 +21,20 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components/accordion",
     },
     {
+      title: "Blocks",
+      href: "/blocks",
+    },
+    {
+      title: "Charts",
+      href: "/charts",
+    },
+    {
       title: "Themes",
       href: "/themes",
     },
     {
-      title: "Examples",
-      href: "/examples",
-    },
-    {
-      title: "Figma",
-      href: "/docs/figma",
-    },
-    {
-      title: "GitHub",
-      href: "https://github.com/shadcn/ui",
-      external: true,
-    },
-    {
-      title: "Twitter",
-      href: "https://twitter.com/shadcn",
-      external: true,
+      title: "Colors",
+      href: "/colors",
     },
   ],
   sidebarNav: [
@@ -73,8 +72,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Next.js 15 + React 19",
+          href: "/docs/react-19",
+          items: [],
+        },
+        {
           title: "Typography",
           href: "/docs/components/typography",
+          items: [],
+        },
+        {
+          title: "Open in v0",
+          href: "/docs/v0",
           items: [],
         },
         {
@@ -85,11 +94,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Changelog",
           href: "/docs/changelog",
-          items: [],
-        },
-        {
-          title: "About",
-          href: "/docs/about",
           items: [],
         },
       ],
@@ -113,13 +117,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Gatsby",
-          href: "/docs/installation/gatsby",
+          title: "Astro",
+          href: "/docs/installation/astro",
           items: [],
         },
         {
-          title: "Astro",
-          href: "/docs/installation/astro",
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
+          title: "Gatsby",
+          href: "/docs/installation/gatsby",
           items: [],
         },
         {
@@ -130,23 +139,14 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
-      title: "Dark Mode",
-      items: [
-        {
-          title: "Next.js",
-          href: "/docs/dark-mode/next",
-          items: [],
-        },
-        {
-          title: "Vite",
-          href: "/docs/dark-mode/vite",
-          items: [],
-        },
-      ],
-    },
-    {
       title: "Components",
       items: [
+        {
+          title: "Sidebar",
+          href: "/docs/components/sidebar",
+          items: [],
+          label: "New",
+        },
         {
           title: "Accordion",
           href: "/docs/components/accordion",
@@ -178,6 +178,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Breadcrumb",
+          href: "/docs/components/breadcrumb",
+          items: [],
+        },
+        {
           title: "Button",
           href: "/docs/components/button",
           items: [],
@@ -190,6 +195,16 @@ export const docsConfig: DocsConfig = {
         {
           title: "Card",
           href: "/docs/components/card",
+          items: [],
+        },
+        {
+          title: "Carousel",
+          href: "/docs/components/carousel",
+          items: [],
+        },
+        {
+          title: "Chart",
+          href: "/docs/components/chart",
           items: [],
         },
         {
@@ -233,6 +248,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Drawer",
+          href: "/docs/components/drawer",
+          items: [],
+        },
+        {
           title: "Dropdown Menu",
           href: "/docs/components/dropdown-menu",
           items: [],
@@ -253,6 +273,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Input OTP",
+          href: "/docs/components/input-otp",
+          items: [],
+        },
+        {
           title: "Label",
           href: "/docs/components/label",
           items: [],
@@ -268,6 +293,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Pagination",
+          href: "/docs/components/pagination",
+          items: [],
+        },
+        {
           title: "Popover",
           href: "/docs/components/popover",
           items: [],
@@ -280,6 +310,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Radio Group",
           href: "/docs/components/radio-group",
+          items: [],
+        },
+        {
+          title: "Resizable",
+          href: "/docs/components/resizable",
           items: [],
         },
         {
@@ -313,6 +348,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Sonner",
+          href: "/docs/components/sonner",
+          items: [],
+        },
+        {
           title: "Switch",
           href: "/docs/components/switch",
           items: [],
@@ -343,8 +383,85 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Toggle Group",
+          href: "/docs/components/toggle-group",
+          items: [],
+        },
+        {
           title: "Tooltip",
           href: "/docs/components/tooltip",
+          items: [],
+        },
+      ],
+    },
+  ],
+  chartsNav: [
+    {
+      title: "Getting Started",
+      items: [
+        {
+          title: "Introduction",
+          href: "/docs/charts",
+          items: [],
+        },
+        {
+          title: "Installation",
+          href: "/docs/charts/installation",
+          items: [],
+        },
+        {
+          title: "Theming",
+          href: "/docs/charts/theming",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Charts",
+      items: [
+        {
+          title: "Area Chart",
+          href: "/docs/charts/area",
+          items: [],
+        },
+        {
+          title: "Bar Chart",
+          href: "/docs/charts/bar",
+          items: [],
+        },
+        {
+          title: "Line Chart",
+          href: "/docs/charts/line",
+          items: [],
+        },
+        {
+          title: "Pie Chart",
+          href: "/docs/charts/pie",
+          items: [],
+        },
+        {
+          title: "Radar Chart",
+          href: "/docs/charts/radar",
+          items: [],
+        },
+        {
+          title: "Radial Chart",
+          href: "/docs/charts/radial",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Components",
+      items: [
+        {
+          title: "Tooltip",
+          href: "/docs/charts/tooltip",
+          items: [],
+        },
+        {
+          title: "Legend",
+          href: "/docs/charts/legend",
           items: [],
         },
       ],
