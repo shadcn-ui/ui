@@ -103,7 +103,7 @@ const SidebarProvider = React.forwardRef<
           _setOpen(openProp)
         }
       }
-    }, [openProp, isMobile])
+    }, [openProp])
 
     const setOpen = React.useCallback(
       (value: boolean | ((value: boolean) => boolean)) => {
