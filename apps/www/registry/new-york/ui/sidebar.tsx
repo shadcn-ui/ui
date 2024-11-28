@@ -94,6 +94,17 @@ const SidebarProvider = React.forwardRef<
       [isMobile, setOpenProp]
     )
 
+    // When openProp changes, update both mobile and desktop states
+    React.useEffect(() => {
+      if (openProp !== undefined) {
+        if (isMobile) {
+          _setOpenMobile(openProp)
+        } else {
+          _setOpen(openProp)
+        }
+      }
+    }, [openProp, isMobile])
+
     const setOpen = React.useCallback(
       (value: boolean | ((value: boolean) => boolean)) => {
         const openState = typeof value === "function" ? value(open) : value
@@ -104,7 +115,8 @@ const SidebarProvider = React.forwardRef<
 
     const setOpenMobile = React.useCallback(
       (value: boolean | ((value: boolean) => boolean)) => {
-        const openState = typeof value === "function" ? value(_openMobile) : value
+        const openState =
+          typeof value === "function" ? value(_openMobile) : value
         updateOpenState(openState)
       },
       [_openMobile, updateOpenState]
@@ -147,7 +159,15 @@ const SidebarProvider = React.forwardRef<
         setOpenMobile,
         toggleSidebar,
       }),
-      [state, open, setOpen, isMobile, _openMobile, setOpenMobile, toggleSidebar]
+      [
+        state,
+        open,
+        setOpen,
+        isMobile,
+        _openMobile,
+        setOpenMobile,
+        toggleSidebar,
+      ]
     )
 
     return (
