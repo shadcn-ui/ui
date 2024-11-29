@@ -40,7 +40,7 @@ export const rawConfigSchema = z
     }),
     iconLibrary: z.string().optional(),
   })
-  .strict()
+  .passthrough()
 
 export type RawConfig = z.infer<typeof rawConfigSchema>
 
