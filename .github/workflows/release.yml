@@ -13,7 +13,7 @@ jobs:
     name: Create a PR for release workflow
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout 
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -33,7 +33,7 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install
 
-      # - name: Check for errors
+      # - name: Check for 
       #   run: pnpm check
 
       - name: Build the package
