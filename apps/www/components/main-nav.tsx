@@ -12,7 +12,7 @@ export function MainNav() {
 
   return (
     <div className="mr-4 hidden md:flex">
-      <Link href="/" className="mr-4 flex items-center space-x-2 lg:mr-6">
+      <Link href="/" className="mr-4 flex items-center gap-2 lg:mr-6">
         <Icons.logo className="h-6 w-6" />
         <span className="hidden font-bold lg:inline-block">
           {siteConfig.name}
@@ -23,7 +23,7 @@ export function MainNav() {
           href="/docs"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname === "/docs" ? "text-foreground" : "text-foreground/60"
+            pathname === "/docs" ? "text-foreground" : "text-foreground/80"
           )}
         >
           Docs
@@ -35,7 +35,7 @@ export function MainNav() {
             pathname?.startsWith("/docs/components") &&
               !pathname?.startsWith("/docs/component/chart")
               ? "text-foreground"
-              : "text-foreground/60"
+              : "text-foreground/80"
           )}
         >
           Components
@@ -46,7 +46,7 @@ export function MainNav() {
             "transition-colors hover:text-foreground/80",
             pathname?.startsWith("/blocks")
               ? "text-foreground"
-              : "text-foreground/60"
+              : "text-foreground/80"
           )}
         >
           Blocks
@@ -58,7 +58,7 @@ export function MainNav() {
             pathname?.startsWith("/docs/component/chart") ||
               pathname?.startsWith("/charts")
               ? "text-foreground"
-              : "text-foreground/60"
+              : "text-foreground/80"
           )}
         >
           Charts
@@ -69,21 +69,10 @@ export function MainNav() {
             "transition-colors hover:text-foreground/80",
             pathname?.startsWith("/themes")
               ? "text-foreground"
-              : "text-foreground/60"
+              : "text-foreground/80"
           )}
         >
           Themes
-        </Link>
-        <Link
-          href="/examples"
-          className={cn(
-            "hidden transition-colors hover:text-foreground/80 lg:inline-block",
-            pathname?.startsWith("/examples")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Examples
         </Link>
         <Link
           href="/colors"
@@ -91,7 +80,7 @@ export function MainNav() {
             "transition-colors hover:text-foreground/80",
             pathname?.startsWith("/colors")
               ? "text-foreground"
-              : "text-foreground/60"
+              : "text-foreground/80"
           )}
         >
           Colors
