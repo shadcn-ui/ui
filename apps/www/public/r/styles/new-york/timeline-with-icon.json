@@ -1,0 +1,16 @@
+{
+  "name": "timeline-with-icon",
+  "type": "registry:example",
+  "registryDependencies": [
+    "timeline",
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "example/timeline-with-icon.tsx",
+      "content": "import {\r\n    Timeline,\r\n    TimelineConnector,\r\n    TimelineContent,\r\n    TimelineContentDescription,\r\n    TimelineContentLabel,\r\n    TimelineDot,\r\n    TimelineItem,\r\n    TimelineItemLabel,\r\n} from \"@/registry/new-york/ui/timeline\"\r\n\r\nimport {\r\n    Avatar,\r\n    AvatarFallback,\r\n    AvatarImage,\r\n} from \"@/registry/new-york/ui/avatar\"\r\n\r\nimport { FileIcon, LeafIcon } from \"lucide-react\"\r\n\r\nexport default function TimelineWithIcon() {\r\n    return (\r\n        <Timeline>\r\n            <TimelineItemLabel>1 Nov, 2024</TimelineItemLabel>\r\n            <TimelineItem>\r\n                <TimelineConnector>\r\n                    <TimelineDot size=\"lg\" variant=\"outline\">\r\n                        <FileIcon />\r\n                    </TimelineDot>\r\n                </TimelineConnector>\r\n                <TimelineContent>\r\n                    <TimelineContentLabel>Created Task</TimelineContentLabel>\r\n                    <TimelineContentDescription>\r\n                        Find more detailed insctructions here.\r\n                    </TimelineContentDescription>\r\n                </TimelineContent>\r\n            </TimelineItem>\r\n\r\n            <TimelineItem>\r\n                <TimelineConnector>\r\n                    <TimelineDot size=\"lg\" variant=\"outline\">\r\n                        <Avatar>\r\n                            <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\r\n                            <AvatarFallback>CN</AvatarFallback>\r\n                        </Avatar>\r\n                    </TimelineDot>\r\n                </TimelineConnector>\r\n                <TimelineContent>\r\n                    <TimelineContentLabel>Release v5.2.0 quick bug fix</TimelineContentLabel>\r\n                    <TimelineContentDescription>\r\n                        Nov 26, 01:38 PM\r\n                    </TimelineContentDescription>\r\n                </TimelineContent>\r\n            </TimelineItem>\r\n\r\n            <TimelineItemLabel>20 Nov, 2024</TimelineItemLabel>\r\n            <TimelineItem>\r\n                <TimelineConnector hideLine>\r\n                    <TimelineDot size=\"lg\" variant=\"outline\">\r\n                        <LeafIcon />\r\n                    </TimelineDot>\r\n                </TimelineConnector>\r\n                <TimelineContent>\r\n                    <TimelineContentLabel>Take a break</TimelineContentLabel>\r\n                    <TimelineContentDescription>\r\n                        Just chill for now\r\n                    </TimelineContentDescription>\r\n                </TimelineContent>\r\n            </TimelineItem>\r\n        </Timeline>\r\n    )\r\n}",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
