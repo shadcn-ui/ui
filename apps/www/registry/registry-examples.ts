@@ -1205,6 +1205,28 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "timeline-demo",
+    type: "registry:example",
+    registryDependencies: ["timeline"],
+    files: [
+      {
+        path: "example/timeline-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "timeline-with-icon",
+    type: "registry:example",
+    registryDependencies: ["timeline", "avatar"],
+    files: [
+      {
+        path: "example/timeline-with-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "toast-demo",
     type: "registry:example",
     registryDependencies: ["toast"],
