@@ -61,12 +61,10 @@ const data = {
     ],
     [
       "components",
-      ["ui", "button.tsx", "card.tsx"],
-      "header.tsx",
-      "footer.tsx",
+      [["ui", ["button.tsx", "card.tsx"]], "header.tsx", "footer.tsx"],
     ],
     ["lib", ["util.ts"]],
-    ["public", "favicon.ico", "vercel.svg"],
+    ["public", ["favicon.ico", "vercel.svg"]],
     ".eslintrc.json",
     ".gitignore",
     "next.config.js",
@@ -154,9 +152,9 @@ function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 }
 
 function Tree({ item }: { item: string | any[] }) {
-  const [name, ...items] = Array.isArray(item) ? item : [item]
+  const [name, items] = Array.isArray(item) ? item : [item, []]
 
-  if (!items.length) {
+  if (!Array.isArray(items) || !items.length) {
     return (
       <SidebarMenuButton
         isActive={name === "button.tsx"}
