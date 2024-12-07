@@ -1,5 +1,6 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
+import { DEPRECATED_MESSAGE } from "@/src/deprecated"
 import { getConfig } from "@/src/utils/get-config"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
@@ -43,6 +44,8 @@ export const add = new Command()
   .option("-p, --path <path>", "the path to add the component to.")
   .action(async (components, opts) => {
     try {
+      console.log(DEPRECATED_MESSAGE)
+
       const options = addOptionsSchema.parse({
         components,
         ...opts,

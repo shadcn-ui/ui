@@ -1,6 +1,7 @@
 {
   "name": "chart-bar-stacked",
   "type": "registry:block",
+  "description": "A stacked bar chart with a legend",
   "registryDependencies": [
     "card",
     "chart"

@@ -6,9 +6,11 @@ import {
   getConfig,
   resolveConfigPaths,
 } from "@/src/utils/get-config"
+import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"
 import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
+import { z } from "zod"
 
 type ProjectInfo = {
   framework: Framework
@@ -28,6 +30,12 @@ const PROJECT_SHARED_IGNORE = [
   "build",
 ]
 
+const TS_CONFIG_SCHEMA = z.object({
+  compilerOptions: z.object({
+    paths: z.record(z.string().or(z.array(z.string()))),
+  }),
+})
+
 export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   const [
     configFiles,
@@ -36,6 +44,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindConfigFile,
     tailwindCssFile,
     aliasPrefix,
+    packageJson,
   ] = await Promise.all([
     fg.glob("**/{next,vite,astro}.config.*|gatsby-config.*|composer.json", {
       cwd,
@@ -47,6 +56,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     getTailwindConfigFile(cwd),
     getTailwindCssFile(cwd),
     getTsConfigAliasPrefix(cwd),
+    getPackageInfo(cwd, false),
   ])
 
   const isUsingAppDir = await fs.pathExists(
@@ -61,10 +71,6 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindConfigFile,
     tailwindCssFile,
     aliasPrefix,
-  }
-
-  if (!configFiles.length) {
-    return type
   }
 
   // Next.js.
@@ -94,13 +100,21 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
-  // Vite and Remix.
-  // They both have a vite.config.* file.
+  // Remix.
+  if (
+    Object.keys(packageJson?.dependencies ?? {}).find((dep) =>
+      dep.startsWith("@remix-run/")
+    )
+  ) {
+    type.framework = FRAMEWORKS["remix"]
+    return type
+  }
+
+  // Vite.
+  // Some Remix templates also have a vite.config.* file.
+  // We'll assume that it got caught by the Remix check above.
   if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
-    // We'll assume that if the project has an app dir, it's a Remix project.
-    // Otherwise, it's a Vite project.
-    // TODO: Maybe check for `@remix-run/react` in package.json?
-    type.framework = isUsingAppDir ? FRAMEWORKS["remix"] : FRAMEWORKS["vite"]
+    type.framework = FRAMEWORKS["vite"]
     return type
   }
 
@@ -108,7 +122,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 }
 
 export async function getTailwindCssFile(cwd: string) {
-  const files = await fg.glob("**/*.css", {
+  const files = await fg.glob(["**/*.css", "**/*.scss"], {
     cwd,
     deep: 5,
     ignore: PROJECT_SHARED_IGNORE,
@@ -146,7 +160,10 @@ export async function getTailwindConfigFile(cwd: string) {
 export async function getTsConfigAliasPrefix(cwd: string) {
   const tsConfig = await loadConfig(cwd)
 
-  if (tsConfig?.resultType === "failed" || !tsConfig?.paths) {
+  if (
+    tsConfig?.resultType === "failed" ||
+    !Object.entries(tsConfig?.paths).length
+  ) {
     return null
   }
 
@@ -158,11 +175,12 @@ export async function getTsConfigAliasPrefix(cwd: string) {
       paths.includes("./app/*") ||
       paths.includes("./resources/js/*") // Laravel.
     ) {
-      return alias.at(0) ?? null
+      return alias.replace(/\/\*$/, "") ?? null
     }
   }
 
-  return null
+  // Use the first alias as the prefix.
+  return Object.keys(tsConfig?.paths)?.[0].replace(/\/\*$/, "") ?? null
 }
 
 export async function isTypeScriptProject(cwd: string) {
@@ -175,19 +193,30 @@ export async function isTypeScriptProject(cwd: string) {
   return files.length > 0
 }
 
-export async function getTsConfig() {
-  try {
-    const tsconfigPath = path.join("tsconfig.json")
-    const tsconfig = await fs.readJSON(tsconfigPath)
-
-    if (!tsconfig) {
-      throw new Error("tsconfig.json is missing")
+export async function getTsConfig(cwd: string) {
+  for (const fallback of [
+    "tsconfig.json",
+    "tsconfig.web.json",
+    "tsconfig.app.json",
+  ]) {
+    const filePath = path.resolve(cwd, fallback)
+    if (!(await fs.pathExists(filePath))) {
+      continue
     }
 
-    return tsconfig
-  } catch (error) {
-    return null
+    // We can't use fs.readJSON because it doesn't support comments.
+    const contents = await fs.readFile(filePath, "utf8")
+    const cleanedContents = contents.replace(/\/\*\s*\*\//g, "")
+    const result = TS_CONFIG_SCHEMA.safeParse(JSON.parse(cleanedContents))
+
+    if (result.error) {
+      continue
+    }
+
+    return result.data
   }
+
+  return null
 }
 
 export async function getProjectConfig(
@@ -226,6 +255,7 @@ export async function getProjectConfig(
       cssVariables: true,
       prefix: "",
     },
+    iconLibrary: "lucide",
     aliases: {
       components: `${projectInfo.aliasPrefix}/components`,
       ui: `${projectInfo.aliasPrefix}/components/ui`,

@@ -1,5 +1,77 @@
 # @shadcn/ui
 
+## 2.1.6
+
+### Patch Changes
+
+- [#5602](https://github.com/shadcn-ui/ui/pull/5602) [`2c2fe97`](https://github.com/shadcn-ui/ui/commit/2c2fe97eb96b2c5c7d03d1ae2756a851c3790030) Thanks [@shadcn](https://github.com/shadcn)! - move new-york icons to lucide-react
+
+## 2.1.5
+
+### Patch Changes
+
+- [#5707](https://github.com/shadcn-ui/ui/pull/5707) [`cdfecd1`](https://github.com/shadcn-ui/ui/commit/cdfecd1d97af2b4d9de330927edd9fd2eef1234e) Thanks [@shadcn](https://github.com/shadcn)! - temporarily bring back npm flag
+
+## 2.1.4
+
+### Patch Changes
+
+- [#5686](https://github.com/shadcn-ui/ui/pull/5686) [`4ff64ba`](https://github.com/shadcn-ui/ui/commit/4ff64ba818d15a094547f845ea294c2e1ab208d4) Thanks [@shadcn](https://github.com/shadcn)! - remove flag for npm
+
+## 2.1.3
+
+### Patch Changes
+
+- [#5621](https://github.com/shadcn-ui/ui/pull/5621) [`64739f8`](https://github.com/shadcn-ui/ui/commit/64739f83991205333867000d7813e82b0d98f871) Thanks [@shadcn](https://github.com/shadcn)! - add flag prompt for npm
+
+## 2.1.2
+
+### Patch Changes
+
+- [#5299](https://github.com/shadcn-ui/ui/pull/5299) [`986c00e`](https://github.com/shadcn-ui/ui/commit/986c00ee0e661bf2391b305c2b24800be63e681e) Thanks [@fourcels](https://github.com/fourcels)! - fix package manager fallback
+
+## 2.1.1
+
+### Patch Changes
+
+- [#5525](https://github.com/shadcn-ui/ui/pull/5525) [`f02b412`](https://github.com/shadcn-ui/ui/commit/f02b412478a2e4e1b20d87f4a253e9305331d066) Thanks [@shadcn](https://github.com/shadcn)! - temporarily pin create-next-app
+
+- [#5518](https://github.com/shadcn-ui/ui/pull/5518) [`bf5a79c`](https://github.com/shadcn-ui/ui/commit/bf5a79c4d427cf499c6196c2eea3df04d9410977) Thanks [@bcorbold](https://github.com/bcorbold)! - fix transofmrRsc for handling use client
+
+## 2.1.0
+
+### Minor Changes
+
+- [#4961](https://github.com/shadcn-ui/ui/pull/4961) [`28f34ed`](https://github.com/shadcn-ui/ui/commit/28f34ed3c3e944287cd6f521ff0310d39664329c) Thanks [@shadcn](https://github.com/shadcn)! - recursively resolve registry dependencies
+
+### Patch Changes
+
+- [#4972](https://github.com/shadcn-ui/ui/pull/4972) [`4b546bf`](https://github.com/shadcn-ui/ui/commit/4b546bfb13346fdbaf0fca4e8041ddba35d23f47) Thanks [@Fluf22](https://github.com/Fluf22)! - update remix detection
+
+- [#4977](https://github.com/shadcn-ui/ui/pull/4977) [`96880e7`](https://github.com/shadcn-ui/ui/commit/96880e7c9afad3fed6749c5862d05dbfd65c4327) Thanks [@nsunami](https://github.com/nsunami)! - fix typo in components.json
+
+## 2.0.8
+
+### Patch Changes
+
+- [#4922](https://github.com/shadcn-ui/ui/pull/4922) [`c62167a`](https://github.com/shadcn-ui/ui/commit/c62167a449a5cf82d8ed93a7af986d5e503893bb) Thanks [@sapenlei](https://github.com/sapenlei)! - remove next.js default vars
+
+- [#4871](https://github.com/shadcn-ui/ui/pull/4871) [`ce3adfa`](https://github.com/shadcn-ui/ui/commit/ce3adfa075793a46b4fb2ff797ce87ad22bfa2cd) Thanks [@bcorbold](https://github.com/bcorbold)! - support tw prefixes for registry files with single quote formatting
+
+## 2.0.7
+
+### Patch Changes
+
+- [#4848](https://github.com/shadcn-ui/ui/pull/4848) [`1af66c2`](https://github.com/shadcn-ui/ui/commit/1af66c2d08df7dd7f6a8d4d1544d965e41a1fb0d) Thanks [@jherr](https://github.com/jherr)! - add support for ~ dir in target path
+
+- [#4815](https://github.com/shadcn-ui/ui/pull/4815) [`408760a`](https://github.com/shadcn-ui/ui/commit/408760a93b398b7d02a0a522a74a7a195ccda7c4) Thanks [@rana-haris-ali](https://github.com/rana-haris-ali)! - fix typo in error message
+
+## 2.0.6
+
+### Patch Changes
+
+- [#4820](https://github.com/shadcn-ui/ui/pull/4820) [`64b2f1a`](https://github.com/shadcn-ui/ui/commit/64b2f1a5ad865c831045c954fec85e0fec2289e7) Thanks [@shadcn](https://github.com/shadcn)! - add docs support
+
 ## 2.0.5
 
 ### Patch Changes

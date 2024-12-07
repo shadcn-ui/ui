@@ -1,6 +1,7 @@
 {
   "name": "chart-line-label",
   "type": "registry:block",
+  "description": "A line chart with a label",
   "registryDependencies": [
     "card",
     "chart"

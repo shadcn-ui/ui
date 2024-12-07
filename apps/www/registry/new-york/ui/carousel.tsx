@@ -2,10 +2,10 @@
 
 import * as React from "react"
 import { useDirection } from "@radix-ui/react-direction"
-import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
@@ -222,9 +222,9 @@ const CarouselPrevious = React.forwardRef<
       {...props}
     >
       {orientation === "horizontal" ? (
-        <ArrowLeftIcon className="h-4 w-4 rtl:rotate-180" />
+        <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
       ) : (
-        <ArrowLeftIcon className="h-4 w-4" />
+        <ArrowLeft className="h-4 w-4" />
       )}
       <span className="sr-only">Previous slide</span>
     </Button>
@@ -255,9 +255,9 @@ const CarouselNext = React.forwardRef<
       {...props}
     >
       {orientation === "horizontal" ? (
-        <ArrowRightIcon className="h-4 w-4 rtl:rotate-180" />
+        <ArrowRight className="h-4 w-4 rtl:rotate-180" />
       ) : (
-        <ArrowRightIcon className="h-4 w-4" />
+        <ArrowRight className="h-4 w-4" />
       )}
       <span className="sr-only">Next slide</span>
     </Button>
