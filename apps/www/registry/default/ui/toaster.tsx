@@ -9,12 +9,14 @@ import {
   ToastTitle,
   ToastViewport,
 } from "@/registry/default/ui/toast"
+import { useDirection } from "@radix-ui/react-direction"
 
 export function Toaster() {
   const { toasts } = useToast()
+  const dir = useDirection()
 
   return (
-    <ToastProvider>
+    <ToastProvider swipeDirection={dir == "rtl" ? "left" : "right"}>
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
           <Toast key={id} {...props}>
