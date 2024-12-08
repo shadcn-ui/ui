@@ -288,15 +288,14 @@ export const Index: Record<string, any> = {
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       files: [${item.files?.map((file) => {
-        const resolvedFilePath = path.resolve(
-          `registry/${style.name}/${
-            typeof file === "string" ? file : file.path
-          }`
-        )
+        const filePath = `registry/${style.name}/${
+          typeof file === "string" ? file : file.path
+        }`
+        const resolvedFilePath = path.resolve(filePath)
         return typeof file === "string"
           ? `"${resolvedFilePath}"`
           : `{
-        path: "${resolvedFilePath}",
+        path: "${filePath}",
         type: "${file.type}",
         target: "${file.target ?? ""}"
       }`

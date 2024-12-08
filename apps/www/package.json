@@ -72,7 +72,7 @@
     "markdown-wasm": "^1.2.0",
     "next": "14.3.0-canary.43",
     "next-contentlayer2": "^0.4.6",
-    "next-themes": "^0.2.1",
+    "next-themes": "^0.4.3",
     "react": "^18.2.0",
     "react-day-picker": "^8.7.1",
     "react-dom": "^18.2.0",

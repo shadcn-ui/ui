@@ -18,7 +18,7 @@ export function getRegistryComponent(
   name: string,
   style: Style["name"] = DEFAULT_REGISTRY_STYLE
 ) {
-  return memoizedIndex[style][name].component
+  return memoizedIndex[style][name]?.component
 }
 
 export async function getRegistryItem(
