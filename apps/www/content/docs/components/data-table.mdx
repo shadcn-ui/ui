@@ -838,12 +838,14 @@ Make any column header sortable and hideable.
 
 <ComponentSource src="/app/(app)/examples/tasks/components/data-table-column-header.tsx" />
 
-```tsx {5}
+```tsx {6}
 export const columns = [
   {
     accessorKey: "email",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Email" />
+      return{
+        <DataTableColumnHeader column={column} title="Email" />
+      }
     ),
   },
 ]
