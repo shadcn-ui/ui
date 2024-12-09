@@ -599,6 +599,17 @@ export const ui: Registry = [
     ],
   },
   {
+    name: "timeline",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/timeline.tsx",
+        type: "registry:ui",
+      },
+    ],
+    registryDependencies: ["timeline-demo"],
+  },
+  {
     name: "tooltip",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-tooltip"],
