@@ -1,0 +1,15 @@
+{
+  "name": "spinner-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "example/spinner-demo.tsx",
+      "content": "import { Spinner } from \"@/registry/new-york/ui/spinner\"\n\nexport default function SpinnerDemo() {\n  return (\n    <Spinner size=\"sm\" className=\"bg-black dark:bg-white\" />\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

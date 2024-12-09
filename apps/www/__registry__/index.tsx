@@ -629,6 +629,18 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "spinner": {
+      name: "spinner",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/new-york/ui/spinner.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/ui/spinner.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "switch": {
       name: "switch",
       description: "",
@@ -2344,6 +2356,30 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/new-york/example/sonner-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "spinner-demo": {
+      name: "spinner-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: ["registry/new-york/example/spinner-demo.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/spinner-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "spinner-sizes": {
+      name: "spinner-sizes",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: ["registry/new-york/example/spinner-sizes.tsx"],
+      component: React.lazy(() => import("@/registry/new-york/example/spinner-sizes.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -6122,6 +6158,18 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "spinner": {
+      name: "spinner",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/ui/spinner.tsx"],
+      component: React.lazy(() => import("@/registry/default/ui/spinner.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "switch": {
       name: "switch",
       description: "",
@@ -7837,6 +7885,30 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/default/example/sonner-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "spinner-demo": {
+      name: "spinner-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: ["registry/default/example/spinner-demo.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/spinner-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "spinner-sizes": {
+      name: "spinner-sizes",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: ["registry/default/example/spinner-sizes.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/spinner-sizes.tsx")),
       source: "",
       category: "",
       subcategory: "",
