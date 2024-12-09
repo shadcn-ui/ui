@@ -24,7 +24,11 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
   }
 
   // Check for existing components.json file.
-  if (!fs.existsSync(path.resolve(options.cwd, "components.json"))) {
+  if (
+    !fs.existsSync(
+      path.resolve(options.cwd, options.configDir, "components.json")
+    )
+  ) {
     errors[ERRORS.MISSING_CONFIG] = true
     return {
       errors,
@@ -33,7 +37,7 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
   }
 
   try {
-    const config = await getConfig(options.cwd)
+    const config = await getConfig(options.cwd, options.configDir)
 
     return {
       errors,
