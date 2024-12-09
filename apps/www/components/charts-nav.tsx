@@ -1,9 +1,11 @@
 "use client"
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 
 import { cn } from "@/lib/utils"
+import { useFragmentIdentifier } from "@/hooks/use-fragment-identifier"
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
+import { ChartsNavItem } from "@/components/charts-nav-item"
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 
 const links = [
@@ -37,29 +39,45 @@ const links = [
   },
 ]
 
+const fragmentIdentifiers = links.map((link) => link.href.split("#")[1])
+
 export function ChartsNav({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const pathname = usePathname()
+  const fragmentIdentifier = useFragmentIdentifier()
+  const [sections, setSections] = useState<(HTMLElement | null)[]>([])
+
+  useEffect(() => {
+    const sectionDomElements = fragmentIdentifiers.map((id) =>
+      document.getElementById(id)
+    )
+    setSections(sectionDomElements)
+  }, [])
+
+  useIntersectionObserver({
+    config: { rootMargin: "0px 0px -75% 0px", threshold: [0, 0.05, 0.1] },
+    htmlElements: sections,
+    onIntersect: (entry) => {
+      fragmentIdentifier?.setFragment(`#${entry.target.id}`)
+    },
+  })
 
   return (
-    <ScrollArea className="max-w-[600px] lg:max-w-none">
+    <ScrollArea className="max-w-[calc(100vw-2rem)]">
       <div className={cn("flex items-center", className)} {...props}>
-        {links.map((example, index) => (
-          <Link
-            href={example.href}
+        {links.map((example) => (
+          <ChartsNavItem
             key={example.href}
-            className={cn(
-              "flex h-7 shrink-0 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
-              pathname?.startsWith(example.href) ||
-                (index === 0 && pathname === "/")
-                ? "bg-muted font-medium text-primary"
-                : "text-muted-foreground"
-            )}
+            href={example.href}
+            isActive={
+              (fragmentIdentifier?.fragment &&
+                example.href.endsWith(fragmentIdentifier.fragment)) ||
+              false
+            }
           >
             {example.name}
-          </Link>
+          </ChartsNavItem>
         ))}
       </div>
       <ScrollBar orientation="horizontal" className="invisible" />
