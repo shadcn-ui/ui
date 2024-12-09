@@ -693,6 +693,22 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "timeline": {
+      name: "timeline",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/ui/timeline.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/timeline.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "toast": {
       name: "toast",
       description: "",
@@ -2504,6 +2520,38 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/new-york/example/textarea-with-text.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "timeline-demo": {
+      name: "timeline-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline"],
+      files: [{
+        path: "registry/new-york/example/timeline-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/timeline-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "timeline-with-icon": {
+      name: "timeline-with-icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline","avatar"],
+      files: [{
+        path: "registry/new-york/example/timeline-with-icon.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/timeline-with-icon.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -6186,6 +6234,22 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "timeline": {
+      name: "timeline",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/timeline.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/timeline.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "toast": {
       name: "toast",
       description: "",
@@ -7997,6 +8061,38 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/default/example/textarea-with-text.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "timeline-demo": {
+      name: "timeline-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline"],
+      files: [{
+        path: "registry/default/example/timeline-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/timeline-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "timeline-with-icon": {
+      name: "timeline-with-icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline","avatar"],
+      files: [{
+        path: "registry/default/example/timeline-with-icon.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/timeline-with-icon.tsx")),
       source: "",
       category: "",
       subcategory: "",

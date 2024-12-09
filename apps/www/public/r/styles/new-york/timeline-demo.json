@@ -1,0 +1,15 @@
+{
+  "name": "timeline-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "timeline"
+  ],
+  "files": [
+    {
+      "path": "example/timeline-demo.tsx",
+      "content": "import {\n    Timeline,\n    TimelineConnector,\n    TimelineContent,\n    TimelineContentDescription,\n    TimelineContentLabel,\n    TimelineDot,\n    TimelineItem,\n    TimelineItemLabel,\n} from \"@/registry/new-york/ui/timeline\"\n\nexport default function TimelineDemo() {\n    return (\n        <Timeline>\n            <TimelineItemLabel>1 Nov, 2024</TimelineItemLabel>\n            <TimelineItem>\n                <TimelineConnector>\n                    <TimelineDot size=\"sm\" />\n                </TimelineConnector>\n                <TimelineContent>\n                    <TimelineContentLabel>Created Task</TimelineContentLabel>\n                    <TimelineContentDescription>\n                        Find more detailed insctructions here.\n                    </TimelineContentDescription>\n                </TimelineContent>\n            </TimelineItem>\n\n            <TimelineItem>\n                <TimelineConnector>\n                    <TimelineDot size=\"sm\" />\n                </TimelineConnector>\n                <TimelineContent>\n                    <TimelineContentLabel>Release v5.2.0 quick bug fix</TimelineContentLabel>\n                    <TimelineContentDescription>\n                        Nov 26, 01:38 PM\n                    </TimelineContentDescription>\n                </TimelineContent>\n            </TimelineItem>\n\n            <TimelineItemLabel>20 Nov, 2024</TimelineItemLabel>\n            <TimelineItem>\n                <TimelineConnector>\n                    <TimelineDot size=\"sm\" />\n                </TimelineConnector>\n                <TimelineContent>\n                    <TimelineContentLabel>Take a break</TimelineContentLabel>\n                    <TimelineContentDescription>\n                        Just chill for now\n                    </TimelineContentDescription>\n                </TimelineContent>\n            </TimelineItem>\n        </Timeline>\n    )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

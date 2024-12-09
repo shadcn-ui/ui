@@ -557,6 +557,16 @@ export const ui: Registry = [
     ],
   },
   {
+    name: "timeline",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/timeline.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "toast",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-toast"],
