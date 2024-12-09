@@ -3,21 +3,20 @@ import { ChartDisplay } from "@/components/chart-display"
 import { ChartsNav } from "@/components/charts-nav"
 import { ThemesSwitcher } from "@/components/themes-selector"
 import { ThemesStyle } from "@/components/themes-styles"
-import { Separator } from "@/registry/new-york/ui/separator"
+import { Tabs, TabsContent } from "@/registry/new-york/ui/tabs"
 import * as Charts from "@/app/(app)/charts/charts"
 
 export default function ChartsPage() {
   return (
-    <div className="grid gap-4">
-      <ChartsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
-      <ThemesStyle />
-      <div className="gap-6 md:flex md:flex-row-reverse md:items-start">
+    <Tabs defaultValue="examples">
+      <ChartsNav />
+      <div className="mt-2 w-full gap-6 md:flex md:flex-row-reverse md:items-start">
+        <ThemesStyle />
         <ThemesSwitcher
           themes={THEMES}
           className="fixed inset-x-0 bottom-0 z-40 flex bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:sticky lg:bottom-auto lg:top-20"
         />
-        <div className="grid flex-1 gap-12">
-          <h2 className="sr-only">Examples</h2>
+        <TabsContent value="examples" className="w-full">
           <div
             id="examples"
             className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -35,7 +34,8 @@ export default function ChartsPage() {
               <Charts.ChartPieDonutText />
             </ChartDisplay>
           </div>
-          <Separator />
+        </TabsContent>
+        <TabsContent value="area-chart" className="w-full">
           <div
             id="area-chart"
             className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -73,7 +73,8 @@ export default function ChartsPage() {
               </ChartDisplay>
             </div>
           </div>
-          <Separator />
+        </TabsContent>
+        <TabsContent value="bar-chart" className="w-full">
           <div
             id="bar-chart"
             className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -111,7 +112,8 @@ export default function ChartsPage() {
               </ChartDisplay>
             </div>
           </div>
-          <Separator />
+        </TabsContent>
+        <TabsContent value="line-chart" className="w-full">
           <div
             id="line-chart"
             className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -149,7 +151,8 @@ export default function ChartsPage() {
               </ChartDisplay>
             </div>
           </div>
-          <Separator />
+        </TabsContent>
+        <TabsContent value="pie-chart" className="w-full">
           <div
             id="pie-chart"
             className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -188,7 +191,8 @@ export default function ChartsPage() {
               <Charts.ChartPieInteractive />
             </ChartDisplay>
           </div>
-          <Separator />
+        </TabsContent>
+        <TabsContent value="radar-chart" className="w-full">
           <div
             id="radar-chart"
             className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
@@ -236,7 +240,8 @@ export default function ChartsPage() {
               <Charts.ChartRadarIcons />
             </ChartDisplay>
           </div>
-          <Separator />
+        </TabsContent>
+        <TabsContent value="radial-chart" className="w-full">
           <div
             id="radial-chart"
             className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
@@ -260,7 +265,8 @@ export default function ChartsPage() {
               <Charts.ChartRadialStacked />
             </ChartDisplay>
           </div>
-          <Separator />
+        </TabsContent>
+        <TabsContent value="tooltip" className="w-full">
           <div
             id="tooltip"
             className="chart-wrapper grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -293,8 +299,8 @@ export default function ChartsPage() {
               <Charts.ChartTooltipAdvanced />
             </ChartDisplay>
           </div>
-        </div>
+        </TabsContent>
       </div>
-    </div>
+    </Tabs>
   )
 }
