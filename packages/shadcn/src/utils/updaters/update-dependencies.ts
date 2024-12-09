@@ -12,12 +12,15 @@ export async function updateDependencies(
   config: Config,
   options: {
     silent?: boolean
-  }
+  },
+  devDependencies?: RegistryItem["devDependencies"],
 ) {
   dependencies = Array.from(new Set(dependencies))
   if (!dependencies?.length) {
     return
   }
+
+  devDependencies = Array.from(new Set(devDependencies))
 
   options = {
     silent: false,
@@ -67,6 +70,27 @@ export async function updateDependencies(
     }
   )
   dependenciesSpinner?.succeed()
+
+  if (devDependencies?.length) {
+    const devDependenciesSpinner = spinner(`Installing devDependencies.`, {
+      silent: options.silent,
+    })?.start()
+    devDependenciesSpinner?.start()
+
+    await execa(
+      packageManager,
+      [
+        packageManager === "npm" ? "install" : "add",
+        ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
+        "-D",
+        ...devDependencies,
+      ],
+      {
+        cwd: config.resolvedPaths.cwd,
+      }
+    )
+    devDependenciesSpinner?.succeed()
+  }
 }
 
 function isUsingReact19(config: Config) {
