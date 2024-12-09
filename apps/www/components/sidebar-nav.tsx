@@ -50,17 +50,20 @@ export function DocsSidebarNavItems({
           <Link
             key={index}
             href={item.href}
-            className={cn(
-              "group flex w-full items-center px-2 py-1 font-normal text-foreground underline-offset-2 hover:underline",
-              item.disabled && "cursor-not-allowed opacity-60",
-              pathname === item.href && "underline"
-            )}
+            className="group flex w-full items-center px-2 py-1 font-normal text-foreground"
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
           >
-            {item.title}
+            <span
+              className={cn(
+                "underline-offset-2 group-hover:underline",
+                pathname === item.href && "underline"
+              )}
+            >
+              {item.title}
+            </span>
             {item.label && (
-              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000]">
                 {item.label}
               </span>
             )}
@@ -68,14 +71,11 @@ export function DocsSidebarNavItems({
         ) : (
           <span
             key={index}
-            className={cn(
-              "flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground hover:underline",
-              item.disabled && "cursor-not-allowed opacity-60"
-            )}
+            className="flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground opacity-60"
           >
             {item.title}
             {item.label && (
-              <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs leading-none text-muted-foreground no-underline group-hover:no-underline">
+              <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs leading-none text-muted-foreground">
                 {item.label}
               </span>
             )}
