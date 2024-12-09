@@ -26,8 +26,10 @@ type CarouselContextProps = {
   api: ReturnType<typeof useEmblaCarousel>[1]
   scrollPrev: () => void
   scrollNext: () => void
+  scrollTo: (slide: number) => void
   canScrollPrev: boolean
   canScrollNext: boolean
+  currentSlide: number
 } & CarouselProps
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
@@ -67,6 +69,7 @@ const Carousel = React.forwardRef<
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
+    const [currentSlide, setCurrentSlide] = React.useState(0)
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
@@ -75,6 +78,7 @@ const Carousel = React.forwardRef<
 
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
+      setCurrentSlide(api.selectedScrollSnap())
     }, [])
 
     const scrollPrev = React.useCallback(() => {
@@ -84,6 +88,13 @@ const Carousel = React.forwardRef<
     const scrollNext = React.useCallback(() => {
       api?.scrollNext()
     }, [api])
+
+    const scrollTo = React.useCallback(
+      (index: number) => {
+        api?.scrollTo(index)
+      },
+      [api]
+    )
 
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -130,8 +141,10 @@ const Carousel = React.forwardRef<
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
           scrollPrev,
           scrollNext,
+          scrollTo,
           canScrollPrev,
           canScrollNext,
+          currentSlide,
         }}
       >
         <div
@@ -252,6 +265,38 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+const CarouselDots = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const { orientation, currentSlide, scrollTo, api } = useCarousel()
+
+  return (
+    <div
+      className={cn(
+        "absolute flex items-center justify-center gap-2",
+        orientation === "horizontal"
+          ? "-bottom-8 left-1/2 -translate-x-1/2 flex-row"
+          : "-right-8 top-1/2 -translate-y-1/2 flex-col",
+        className
+      )}
+      {...props}
+    >
+      {api?.scrollSnapList().map((_, index) => (
+        <Button
+          key={index}
+          className={cn(
+            "h-3 w-3 rounded-full p-0",
+            index === currentSlide ? "bg-foreground" : "bg-muted"
+          )}
+          onClick={() => scrollTo(index)}
+        />
+      ))}
+    </div>
+  )
+})
+CarouselDots.displayName = "CarouselDots"
+
 export {
   type CarouselApi,
   Carousel,
@@ -259,4 +304,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 }
