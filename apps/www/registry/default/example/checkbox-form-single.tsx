@@ -47,14 +47,14 @@ export default function CheckboxReactHookFormSingle() {
           control={form.control}
           name="mobile"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+            <FormItem className="flex flex-row items-start space-y-0 rounded-md border p-4">
               <FormControl>
                 <Checkbox
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
-              <div className="space-y-1 leading-none">
+              <div className="space-y-1 leading-none pl-3">
                 <FormLabel>
                   Use different settings for my mobile devices
                 </FormLabel>
