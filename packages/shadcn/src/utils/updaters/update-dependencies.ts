@@ -9,6 +9,7 @@ import prompts from "prompts"
 
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
+  devDependencies: RegistryItem["devDependencies"],
   config: Config,
   options: {
     silent?: boolean
@@ -62,6 +63,13 @@ export async function updateDependencies(
       ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
       ...dependencies,
     ],
+    {
+      cwd: config.resolvedPaths.cwd,
+    }
+  )
+  await execa(
+    packageManager,
+    [packageManager === "npm" ? "install" : "add", "-D", ...devDependencies],
     {
       cwd: config.resolvedPaths.cwd,
     }

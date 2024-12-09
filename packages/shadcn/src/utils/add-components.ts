@@ -42,7 +42,7 @@ export async function addComponents(
     silent: options.silent,
   })
 
-  await updateDependencies(tree.dependencies, config, {
+  await updateDependencies(tree.dependencies, tree.devDependencies, config, {
     silent: options.silent,
   })
   await updateFiles(tree.files, config, {
