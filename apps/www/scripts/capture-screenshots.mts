@@ -17,6 +17,7 @@ const BLOCKS = [
   "sidebar-13",
   "sidebar-14",
   "sidebar-15",
+  "sidebar-16",
   "demo-sidebar",
   "demo-sidebar-header",
   "demo-sidebar-footer",
