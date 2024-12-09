@@ -1,0 +1,452 @@
+/**
+ * This is the main configuration file for Rush.
+ * For full documentation, please see https://rushjs.io
+ */
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+
+  /**
+   * (Required) This specifies the version of the Rush engine to be used in this repo.
+   * Rush's "version selector" feature ensures that the globally installed tool will
+   * behave like this release, regardless of which version is installed globally.
+   *
+   * The common/scripts/install-run-rush.js automation script also uses this version.
+   *
+   * NOTE: If you upgrade to a new major version of Rush, you should replace the "v5"
+   * path segment in the "$schema" field for all your Rush config files.  This will ensure
+   * correct error-underlining and tab-completion for editors such as VS Code.
+   */
+  "rushVersion": "5.140.0",
+
+  /**
+   * The next field selects which package manager should be installed and determines its version.
+   * Rush installs its own local copy of the package manager to ensure that your build process
+   * is fully isolated from whatever tools are present in the local environment.
+   *
+   * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
+   * for details about these alternatives.
+   */
+  "pnpmVersion": "8.15.8",
+
+  // "npmVersion": "6.14.15",
+  // "yarnVersion": "1.9.4",
+
+  /**
+   * Older releases of the Node.js engine may be missing features required by your system.
+   * Other releases may have bugs.  In particular, the "latest" version will not be a
+   * Long Term Support (LTS) version and is likely to have regressions.
+   *
+   * Specify a SemVer range to ensure developers use a Node.js version that is appropriate
+   * for your repo.
+   *
+   * LTS schedule: https://nodejs.org/en/about/releases/
+   * LTS versions: https://nodejs.org/en/download/releases/
+   */
+  "nodeSupportedVersionRange": ">=18.20.3 <19.0.0 || >=20.14.0 <21.0.0",
+
+  /**
+   * If the version check above fails, Rush will display a message showing the current
+   * node version and the supported version range. You can use this setting to provide
+   * additional instructions that will display below the warning, if there's a specific
+   * tool or script you'd like the user to use to get in line with the expected version.
+   */
+  // "nodeSupportedVersionInstructions": "Run 'nvs use' to switch to the expected node version.",
+
+  /**
+   * Odd-numbered major versions of Node.js are experimental.  Even-numbered releases
+   * spend six months in a stabilization period before the first Long Term Support (LTS) version.
+   * For example, 8.9.0 was the first LTS version of Node.js 8.  Pre-LTS versions are not recommended
+   * for production usage because they frequently have bugs.  They may cause Rush itself
+   * to malfunction.
+   *
+   * Rush normally prints a warning if it detects a pre-LTS Node.js version.  If you are testing
+   * pre-LTS versions in preparation for supporting the first LTS version, you can use this setting
+   * to disable Rush's warning.
+   */
+  // "suppressNodeLtsWarning": false,
+
+  /**
+   * Rush normally prints a warning if it detects that the current version is not one published to the
+   * public npmjs.org registry. If you need to block calls to the npm registry, you can use this setting to disable
+   * Rush's check.
+   */
+  // "suppressRushIsPublicVersionCheck": false,
+
+  /**
+   * Large monorepos can become intimidating for newcomers if project folder paths don't follow
+   * a consistent and recognizable pattern.  When the system allows nested folder trees,
+   * we've found that teams will often use subfolders to create islands that isolate
+   * their work from others ("shipping the org").  This hinders collaboration and code sharing.
+   *
+   * The Rush developers recommend a "category folder" model, where buildable project folders
+   * must always be exactly two levels below the repo root.  The parent folder acts as the category.
+   * This provides a basic facility for grouping related projects (e.g. "apps", "libraries",
+   * "tools", "prototypes") while still encouraging teams to organize their projects into
+   * a unified taxonomy.  Limiting to 2 levels seems very restrictive at first, but if you have
+   * 20 categories and 20 projects in each category, this scheme can easily accommodate hundreds
+   * of projects.  In practice, you will find that the folder hierarchy needs to be rebalanced
+   * occasionally, but if that's painful, it's a warning sign that your development style may
+   * discourage refactoring.  Reorganizing the categories should be an enlightening discussion
+   * that brings people together, and maybe also identifies poor coding practices (e.g. file
+   * references that reach into other project's folders without using Node.js module resolution).
+   *
+   * The defaults are projectFolderMinDepth=1 and projectFolderMaxDepth=2.
+   *
+   * To remove these restrictions, you could set projectFolderMinDepth=1
+   * and set projectFolderMaxDepth to a large number.
+   */
+  // "projectFolderMinDepth": 2,
+  "projectFolderMaxDepth": 3,
+
+  /**
+   * Today the npmjs.com registry enforces fairly strict naming rules for packages, but in the early
+   * days there was no standard and hardly any enforcement.  A few large legacy projects are still using
+   * nonstandard package names, and private registries sometimes allow it.  Set "allowMostlyStandardPackageNames"
+   * to true to relax Rush's enforcement of package names.  This allows upper case letters and in the future may
+   * relax other rules, however we want to minimize these exceptions.  Many popular tools use certain punctuation
+   * characters as delimiters, based on the assumption that they will never appear in a package name; thus if we relax
+   * the rules too much it is likely to cause very confusing malfunctions.
+   *
+   * The default value is false.
+   */
+  // "allowMostlyStandardPackageNames": true,
+
+  /**
+   * This feature helps you to review and approve new packages before they are introduced
+   * to your monorepo.  For example, you may be concerned about licensing, code quality,
+   * performance, or simply accumulating too many libraries with overlapping functionality.
+   * The approvals are tracked in two config files "browser-approved-packages.json"
+   * and "nonbrowser-approved-packages.json".  See the Rush documentation for details.
+   */
+  // "approvedPackagesPolicy": {
+  //   /**
+  //    * The review categories allow you to say for example "This library is approved for usage
+  //    * in prototypes, but not in production code."
+  //    *
+  //    * Each project can be associated with one review category, by assigning the "reviewCategory" field
+  //    * in the "projects" section of rush.json.  The approval is then recorded in the files
+  //    * "common/config/rush/browser-approved-packages.json" and "nonbrowser-approved-packages.json"
+  //    * which are automatically generated during "rush update".
+  //    *
+  //    * Designate categories with whatever granularity is appropriate for your review process,
+  //    * or you could just have a single category called "default".
+  //    */
+  //   "reviewCategories": [
+  //     // Some example categories:
+  //     "production", // projects that ship to production
+  //     "tools",      // non-shipping projects that are part of the developer toolchain
+  //     "prototypes"  // experiments that should mostly be ignored by the review process
+  //   ],
+  //
+  //   /**
+  //    * A list of NPM package scopes that will be excluded from review.
+  //    * We recommend to exclude TypeScript typings (the "@types" scope), because
+  //    * if the underlying package was already approved, this would imply that the typings
+  //    * are also approved.
+  //    */
+  //   // "ignoredNpmScopes": ["@types"]
+  // },
+
+  /**
+   * If you use Git as your version control system, this section has some additional
+   * optional features you can use.
+   */
+  "gitPolicy": {
+    /**
+     * Work at a big company?  Tired of finding Git commits at work with unprofessional Git
+     * emails such as "beer-lover@my-college.edu"?  Rush can validate people's Git email address
+     * before they get started.
+     *
+     * Define a list of regular expressions describing allowable e-mail patterns for Git commits.
+     * They are case-insensitive anchored JavaScript RegExps.  Example: ".*@example\.com"
+     *
+     * IMPORTANT: Because these are regular expressions encoded as JSON string literals,
+     * RegExp escapes need two backslashes, and ordinary periods should be "\\.".
+     */
+    // "allowedEmailRegExps": [
+    //   "[^@]+@users\\.noreply\\.github\\.com",
+    //   "rush-bot@example\\.org"
+    // ],
+
+    /**
+     * When Rush reports that the address is malformed, the notice can include an example
+     * of a recommended email.  Make sure it conforms to one of the allowedEmailRegExps
+     * expressions.
+     */
+    // "sampleEmail": "example@users.noreply.github.com",
+
+    /**
+     * The commit message to use when committing changes during 'rush publish'.
+     *
+     * For example, if you want to prevent these commits from triggering a CI build,
+     * you might configure your system's trigger to look for a special string such as "[skip-ci]"
+     * in the commit message, and then customize Rush's message to contain that string.
+     */
+    // "versionBumpCommitMessage": "Bump versions [skip ci]",
+
+    /**
+     * The commit message to use when committing changes during 'rush version'.
+     *
+     * For example, if you want to prevent these commits from triggering a CI build,
+     * you might configure your system's trigger to look for a special string such as "[skip-ci]"
+     * in the commit message, and then customize Rush's message to contain that string.
+     */
+    // "changeLogUpdateCommitMessage": "Update changelogs [skip ci]",
+
+    /**
+     * The commit message to use when committing changefiles during 'rush change --commit'
+     *
+     * If no commit message is set it will default to 'Rush change'
+     */
+     // "changefilesCommitMessage": "Rush change"
+  },
+
+  "repository": {
+    /**
+     * The URL of this Git repository, used by "rush change" to determine the base branch for your PR.
+     *
+     * The "rush change" command needs to determine which files are affected by your PR diff.
+     * If you merged or cherry-picked commits from the main branch into your PR branch, those commits
+     * should be excluded from this diff (since they belong to some other PR).  In order to do that,
+     * Rush needs to know where to find the base branch for your PR.  This information cannot be
+     * determined from Git alone, since the "pull request" feature is not a Git concept.  Ideally
+     * Rush would use a vendor-specific protocol to query the information from GitHub, Azure DevOps, etc.
+     * But to keep things simple, "rush change" simply assumes that your PR is against the "main" branch
+     * of the Git remote indicated by the repository.url setting in rush.json.  If you are working in
+     * a GitHub "fork" of the real repo, this setting will be different from the repository URL of your
+     * your PR branch, and in this situation "rush change" will also automatically invoke "git fetch"
+     * to retrieve the latest activity for the remote main branch.
+     */
+    // "url": "https://github.com/microsoft/rush-example",
+
+    /**
+     * The default branch name. This tells "rush change" which remote branch to compare against.
+     * The default value is "main"
+     */
+    // "defaultBranch": "main",
+
+    /**
+     * The default remote. This tells "rush change" which remote to compare against if the remote URL is
+     * not set or if a remote matching the provided remote URL is not found.
+     */
+    // "defaultRemote": "origin"
+  },
+
+  /**
+   * Event hooks are customized script actions that Rush executes when specific events occur
+   */
+  "eventHooks": {
+    /**
+     * A list of shell commands to run before "rush install" or "rush update" starts installation
+     */
+    "preRushInstall": [
+      // "common/scripts/pre-rush-install.js"
+    ],
+
+    /**
+     * A list of shell commands to run after "rush install" or "rush update" finishes installation
+     */
+    "postRushInstall": [],
+
+    /**
+     * A list of shell commands to run before "rush build" or "rush rebuild" starts building
+     */
+    "preRushBuild": [],
+
+    /**
+     * A list of shell commands to run after "rush build" or "rush rebuild" finishes building
+     */
+    "postRushBuild": [],
+
+    /**
+     * A list of shell commands to run before the "rushx" command starts
+     */
+    "preRushx": [],
+
+    /**
+     * A list of shell commands to run after the "rushx" command finishes
+     */
+    "postRushx": []
+  },
+
+  /**
+   * Installation variants allow you to maintain a parallel set of configuration files that can be
+   * used to build the entire monorepo with an alternate set of dependencies.  For example, suppose
+   * you upgrade all your projects to use a new release of an important framework, but during a transition period
+   * you intend to maintain compatibility with the old release.  In this situation, you probably want your
+   * CI validation to build the entire repo twice: once with the old release, and once with the new release.
+   *
+   * Rush "installation variants" correspond to sets of config files located under this folder:
+   *
+   *   common/config/rush/variants/<variant_name>
+   *
+   * The variant folder can contain an alternate common-versions.json file.  Its "preferredVersions" field can be used
+   * to select older versions of dependencies (within a loose SemVer range specified in your package.json files).
+   * To install a variant, run "rush install --variant <variant_name>".
+   *
+   * For more details and instructions, see this article:  https://rushjs.io/pages/advanced/installation_variants/
+   */
+   "variants": [
+    // {
+    //   /**
+    //    * The folder name for this variant.
+    //    */
+    //   "variantName": "old-sdk",
+    //
+    //   /**
+    //    * An informative description
+    //    */
+    //   "description": "Build this repo using the previous release of the SDK"
+    // }
+  ],
+
+  /**
+   * Rush can collect anonymous telemetry about everyday developer activity such as
+   * success/failure of installs, builds, and other operations.  You can use this to identify
+   * problems with your toolchain or Rush itself.  THIS TELEMETRY IS NOT SHARED WITH MICROSOFT.
+   * It is written into JSON files in the common/temp folder.  It's up to you to write scripts
+   * that read these JSON files and do something with them.  These scripts are typically registered
+   * in the "eventHooks" section.
+   */
+  // "telemetryEnabled": false,
+
+  /**
+   * Allows creation of hotfix changes. This feature is experimental so it is disabled by default.
+   * If this is set, 'rush change' only allows a 'hotfix' change type to be specified. This change type
+   * will be used when publishing subsequent changes from the monorepo.
+   */
+  // "hotfixChangeEnabled": false,
+
+  /**
+   * This is an optional, but recommended, list of allowed tags that can be applied to Rush projects
+   * using the "tags" setting in this file.  This list is useful for preventing mistakes such as misspelling,
+   * and it also provides a centralized place to document your tags.  If "allowedProjectTags" list is
+   * not specified, then any valid tag is allowed.  A tag name must be one or more words
+   * separated by hyphens or slashes, where a word may contain lowercase ASCII letters, digits,
+   * ".", and "@" characters.
+   */
+  // "allowedProjectTags": [ "tools", "frontend-team", "1.0.0-release" ],
+
+  /**
+   * (Required) This is the inventory of projects to be managed by Rush.
+   *
+   * Rush does not automatically scan for projects using wildcards, for a few reasons:
+   * 1. Depth-first scans are expensive, particularly when tools need to repeatedly collect the list.
+   * 2. On a caching CI machine, scans can accidentally pick up files left behind from a previous build.
+   * 3. It's useful to have a centralized inventory of all projects and their important metadata.
+   */
+  "projects": [
+    {
+      "packageName": "private-app-1",
+      "projectFolder": "apps/private-apps/private-app-1"
+    },
+    {
+      "packageName": "package-1",
+      "projectFolder": "packages/package-1"
+    }
+    // {
+    //   /**
+    //    * The NPM package name of the project (must match package.json)
+    //    */
+    //   "packageName": "my-app",
+    //
+    //   /**
+    //    * The path to the project folder, relative to the rush.json config file.
+    //    */
+    //   "projectFolder": "apps/my-app",
+    //
+    //   /**
+    //    * This field is only used if "subspacesEnabled" is true in subspaces.json.
+    //    * It specifies the subspace that this project belongs to.  If omitted, then the
+    //    * project belongs to the "default" subspace.
+    //    */
+    //   // "subspaceName": "my-subspace",
+    //
+    //   /**
+    //    * An optional category for usage in the "browser-approved-packages.json"
+    //    * and "nonbrowser-approved-packages.json" files.  The value must be one of the
+    //    * strings from the "reviewCategories" defined above.
+    //    */
+    //   "reviewCategory": "production",
+    //
+    //   /**
+    //    * A list of Rush project names that are to be installed from NPM
+    //    * instead of linking to the local project.
+    //    *
+    //    * If a project's package.json specifies a dependency that is another Rush project
+    //    * in the monorepo workspace, normally Rush will locally link its folder instead of
+    //    * installing from NPM.  If you are using PNPM workspaces, this is indicated by
+    //    * a SemVer range such as "workspace:^1.2.3".  To prevent mistakes, Rush reports
+    //    * an error if the "workspace:" protocol is missing.
+    //    *
+    //    * Locally linking ensures that regressions are caught as early as possible and is
+    //    * a key benefit of monorepos.  However there are occasional situations where
+    //    * installing from NPM is needed.  A classic example is a cyclic dependency.
+    //    * Imagine three Rush projects: "my-toolchain" depends on "my-tester", which depends
+    //    * on "my-library".  Suppose that we add "my-toolchain" to the "devDependencies"
+    //    * of "my-library" so it can be built by our toolchain.  This cycle creates
+    //    * a problem -- Rush can't build a project using a not-yet-built dependency.
+    //    * We can solve it by adding "my-toolchain" to the "decoupledLocalDependencies"
+    //    * of "my-library", so it builds using the last published release.  Choose carefully
+    //    * which package to decouple; some choices are much easier to manage than others.
+    //    *
+    //    * (In older Rush releases, this setting was called "cyclicDependencyProjects".)
+    //    */
+    //   "decoupledLocalDependencies": [
+    //     // "my-toolchain"
+    //   ],
+    //
+    //   /**
+    //    * If true, then this project will be ignored by the "rush check" command.
+    //    * The default value is false.
+    //    */
+    //   // "skipRushCheck": false,
+    //
+    //   /**
+    //    * A flag indicating that changes to this project will be published to npm, which affects
+    //    * the Rush change and publish workflows. The default value is false.
+    //    * NOTE: "versionPolicyName" and "shouldPublish" are alternatives; you cannot specify them both.
+    //    */
+    //   // "shouldPublish": false,
+    //
+    //   /**
+    //    * Facilitates postprocessing of a project's files prior to publishing.
+    //    *
+    //    * If specified, the "publishFolder" is the relative path to a subfolder of the project folder.
+    //    * The "rush publish" command will publish the subfolder instead of the project folder.  The subfolder
+    //    * must contain its own package.json file, which is typically a build output.
+    //    */
+    //   // "publishFolder": "temp/publish",
+    //
+    //   /**
+    //    * An optional version policy associated with the project.  Version policies are defined
+    //    * in "version-policies.json" file.  See the "rush publish" documentation for more info.
+    //    * NOTE: "versionPolicyName" and "shouldPublish" are alternatives; you cannot specify them both.
+    //    */
+    //   // "versionPolicyName": "",
+    //
+    //   /**
+    //    * An optional set of custom tags that can be used to select this project.  For example,
+    //    * adding "my-custom-tag" will allow this project to be selected by the
+    //    * command "rush list --only tag:my-custom-tag".  The tag name must be one or more words
+    //    * separated by hyphens or slashes, where a word may contain lowercase ASCII letters, digits,
+    //    * ".", and "@" characters.
+    //    */
+    //   // "tags": [ "1.0.0-release", "frontend-team" ]
+    // },
+    //
+    // {
+    //   "packageName": "my-controls",
+    //   "projectFolder": "libraries/my-controls",
+    //   "reviewCategory": "production",
+    //   "tags": [ "frontend-team" ]
+    // },
+    //
+    // {
+    //   "packageName": "my-toolchain",
+    //   "projectFolder": "tools/my-toolchain",
+    //   "reviewCategory": "tools",
+    //   "tags": [ "tools" ]
+    // }
+  ]
+}

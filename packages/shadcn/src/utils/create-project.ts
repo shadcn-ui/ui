@@ -1,6 +1,6 @@
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
-import { getPackageManager } from "@/src/utils/get-package-manager"
+import { getPackageManager, PackageManager } from "@/src/utils/get-package-manager"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
@@ -83,6 +83,9 @@ export async function createProject(
   ).start()
 
   // Note: pnpm fails here. Fallback to npx with --use-PACKAGE-MANAGER.
+  // if this happens to run in a rush monorepo, use npm because "--use-rush" is a invalid flag for Next.js CLI
+  const nextPackageManager: PackageManager = packageManager === 'rush' ? 'npm': packageManager;
+
   const args = [
     "--tailwind",
     "--eslint",
@@ -90,7 +93,7 @@ export async function createProject(
     "--app",
     options.srcDir ? "--src-dir" : "--no-src-dir",
     "--no-import-alias",
-    `--use-${packageManager}`,
+    `--use-${nextPackageManager}`,
   ]
 
   try {
