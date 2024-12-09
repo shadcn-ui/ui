@@ -59,7 +59,7 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
     <div className="relative">
       <ScrollArea className="max-w-[600px] lg:max-w-none">
         <div className={cn("mb-4 flex items-center", className)} {...props}>
-          {examples.map((example, index) => (
+          {examples.map((example) => (
             <Link
               href={example.href}
               key={example.href}
