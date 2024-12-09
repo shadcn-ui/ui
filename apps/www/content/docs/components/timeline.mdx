@@ -1,6 +1,6 @@
 ---
 title: Timeline
-description: A vertical timeline component for displaying chronological events or activities.
+description: A timeline component for displaying chronological events or activities in vertical or horizontal layout.
 component: true
 ---
 
@@ -51,7 +51,7 @@ import {
 
 export function TimelineDemo() {
   return (
-    <Timeline>
+    <Timeline direction="horizontal">
       <TimelineItem>
         <TimelineDot />
         <TimelineConnector />
@@ -87,6 +87,30 @@ export function TimelineDemo() {
 ```
 
 ## Examples
+
+### Direction
+
+The Timeline component supports both vertical and horizontal layouts through the `direction` prop.
+
+```tsx
+// Vertical Timeline (default)
+<Timeline direction="vertical">
+  <TimelineItem>
+    <TimelineDot />
+    <TimelineConnector />
+    <TimelineContent>Vertical timeline item</TimelineContent>
+  </TimelineItem>
+</Timeline>
+
+// Horizontal Timeline
+<Timeline direction="horizontal">
+  <TimelineItem>
+    <TimelineDot />
+    <TimelineConnector />
+    <TimelineContent>Horizontal timeline item</TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
 
 ### With Custom Colors
 
@@ -130,4 +154,3 @@ By default, the content is aligned with the top of the dot. You can modify this 
     <TimelineContent className="pt-0">Aligned with dot</TimelineContent>
   </TimelineItem>
 </Timeline>
-```

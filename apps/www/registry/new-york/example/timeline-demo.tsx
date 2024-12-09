@@ -10,7 +10,7 @@ import {
 
 export default function TimelineDemo() {
   return (
-    <Timeline>
+    <Timeline direction="vertical">
       <TimelineItem>
         <TimelineDot>
           <CalendarIcon className="h-3 w-3" />
