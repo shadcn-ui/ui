@@ -18,7 +18,6 @@ export async function addComponents(
   }
 ) {
   options = {
-    overwrite: false,
     silent: false,
     isNewProject: false,
     ...options,
