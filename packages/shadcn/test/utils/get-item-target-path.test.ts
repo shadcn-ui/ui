@@ -7,8 +7,10 @@ import { getItemTargetPath } from "../../src/utils/registry"
 test("get item target path", async () => {
   // Full config.
   let appDir = path.resolve(__dirname, "../fixtures/config-full")
+  const configDir = "."
+
   expect(
-    await getItemTargetPath(await getConfig(appDir), {
+    await getItemTargetPath(await getConfig(appDir, configDir), {
       type: "registry:ui",
     })
   ).toEqual(path.resolve(appDir, "./src/ui"))
@@ -16,7 +18,7 @@ test("get item target path", async () => {
   // Partial config.
   appDir = path.resolve(__dirname, "../fixtures/config-partial")
   expect(
-    await getItemTargetPath(await getConfig(appDir), {
+    await getItemTargetPath(await getConfig(appDir, configDir), {
       type: "registry:ui",
     })
   ).toEqual(path.resolve(appDir, "./components/ui"))
@@ -24,7 +26,7 @@ test("get item target path", async () => {
   // JSX.
   appDir = path.resolve(__dirname, "../fixtures/config-jsx")
   expect(
-    await getItemTargetPath(await getConfig(appDir), {
+    await getItemTargetPath(await getConfig(appDir, configDir), {
       type: "registry:ui",
     })
   ).toEqual(path.resolve(appDir, "./components/ui"))
@@ -32,7 +34,7 @@ test("get item target path", async () => {
   // Custom paths.
   appDir = path.resolve(__dirname, "../fixtures/config-ui")
   expect(
-    await getItemTargetPath(await getConfig(appDir), {
+    await getItemTargetPath(await getConfig(appDir, configDir), {
       type: "registry:ui",
     })
   ).toEqual(path.resolve(appDir, "./src/ui"))
