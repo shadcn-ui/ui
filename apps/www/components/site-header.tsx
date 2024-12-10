@@ -1,3 +1,4 @@
+import { cookies } from "next/headers"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
@@ -7,6 +8,8 @@ import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { Button } from "@/registry/new-york/ui/button"
+
+import { PackageManager } from "./package-manager"
 
 export function SiteHeader() {
   return (
@@ -30,6 +33,11 @@ export function SiteHeader() {
               </Link>
             </Button>
             <ModeSwitcher />
+            <PackageManager
+              defaultPackageManager={
+                cookies().get("package-manager")?.value || "__npmCommand__"
+              }
+            />
           </nav>
         </div>
       </div>

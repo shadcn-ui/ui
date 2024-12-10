@@ -3,6 +3,7 @@
 import * as React from "react"
 import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
+import { toast } from "sonner"
 import { NpmCommands } from "types/unist"
 
 import { Event, trackEvent } from "@/lib/events"
@@ -147,61 +148,42 @@ export function CopyNpmCommandButton({
     }, 2000)
   }, [hasCopied])
 
-  const copyCommand = React.useCallback(
-    (value: string, pm: "npm" | "pnpm" | "yarn" | "bun") => {
-      copyToClipboardWithMeta(value, {
-        name: "copy_npm_command",
-        properties: {
-          command: value,
-          pm,
-        },
-      })
-      setHasCopied(true)
-    },
-    []
-  )
+  const copyCommand = () => {
+    const currentPackageManager =
+      (document.cookie
+        .split(";")
+        .find((c) => c.trim().startsWith("package-manager="))
+        ?.split("=")[1] as keyof NpmCommands) || "__npmCommand__"
+
+    const command = commands[currentPackageManager]
+    toast.success(
+      <div className="space-y-2">
+        <p>Copied successfully 🎉</p>
+        <code className="rounded bg-zinc-100 px-1">{command}</code>
+      </div>
+    )
+    copyToClipboardWithMeta(command, {
+      name: "copy_npm_command",
+      properties: {
+        command,
+        pm: currentPackageManager,
+      },
+    })
+    setHasCopied(true)
+  }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          size="icon"
-          variant="ghost"
-          className={cn(
-            "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
-            className
-          )}
-        >
-          {hasCopied ? (
-            <CheckIcon className="h-3 w-3" />
-          ) : (
-            <ClipboardIcon className="h-3 w-3" />
-          )}
-          <span className="sr-only">Copy</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem
-          onClick={() => copyCommand(commands.__npmCommand__, "npm")}
-        >
-          npm
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => copyCommand(commands.__yarnCommand__, "yarn")}
-        >
-          yarn
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => copyCommand(commands.__pnpmCommand__, "pnpm")}
-        >
-          pnpm
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => copyCommand(commands.__bunCommand__, "bun")}
-        >
-          bun
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Button
+      size="icon"
+      variant="ghost"
+      className={cn(
+        "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:h-3 [&_svg]:w-3",
+        className
+      )}
+      onClick={copyCommand}
+    >
+      <span className="sr-only">Copy</span>
+      {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+    </Button>
   )
 }
