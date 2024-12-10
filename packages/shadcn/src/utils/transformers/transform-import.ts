@@ -5,23 +5,24 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
   const importDeclarations = sourceFile.getImportDeclarations()
 
   for (const importDeclaration of importDeclarations) {
-    const moduleSpecifier = updateImportAliases(
-      importDeclaration.getModuleSpecifierValue(),
-      config
-    )
-
-    importDeclaration.setModuleSpecifier(moduleSpecifier)
+    const moduleSpecifierValue = importDeclaration.getModuleSpecifierValue()
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (moduleSpecifier == "@/lib/utils") {
+    if (moduleSpecifierValue === "@/lib/utils") {
       const namedImports = importDeclaration.getNamedImports()
       const cnImport = namedImports.find((i) => i.getName() === "cn")
+
       if (cnImport) {
         importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(/^@\/lib\/utils/, config.aliases.utils)
+          moduleSpecifierValue.replace(/^@\/lib\/utils/, config.aliases.utils)
         )
+
+        continue
       }
     }
+
+    const moduleSpecifier = updateImportAliases(moduleSpecifierValue, config)
+    importDeclaration.setModuleSpecifier(moduleSpecifier)
   }
 
   return sourceFile
