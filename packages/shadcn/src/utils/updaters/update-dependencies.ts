@@ -1,11 +1,11 @@
 import { Config } from "@/src/utils/get-config"
-import { getPackageInfo } from "@/src/utils/get-package-info"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { logger } from "@/src/utils/logger"
 import { RegistryItem } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
-import { execa } from "execa"
 import prompts from "prompts"
+import { installDependencies } from "../package-manager-commands"
+import { getPackageInfo } from "../get-package-info"
 
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
@@ -28,7 +28,6 @@ export async function updateDependencies(
     silent: options.silent,
   })?.start()
   const packageManager = await getPackageManager(config.resolvedPaths.cwd)
-
   // Offer to use --force or --legacy-peer-deps if using React 19 with npm.
   let flag = ""
   if (isUsingReact19(config) && packageManager === "npm") {
@@ -55,17 +54,9 @@ export async function updateDependencies(
 
   dependenciesSpinner?.start()
 
-  await execa(
-    packageManager,
-    [
-      packageManager === "npm" ? "install" : "add",
-      ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
-      ...dependencies,
-    ],
-    {
-      cwd: config.resolvedPaths.cwd,
-    }
-  )
+
+  await installDependencies({dependencies},{cwd: config.resolvedPaths.cwd})
+
   dependenciesSpinner?.succeed()
 }
 
