@@ -853,6 +853,8 @@ Here's an example of a `SidebarMenu` component rendering a list of projects.
 
 The `SidebarMenuButton` component is used to render a menu button within a `SidebarMenuItem`.
 
+Clicking a `SidebarMenuButton` will automatically close the sidebar on mobile.
+
 ### Link or Anchor
 
 By default, the `SidebarMenuButton` renders a button but you can use the `asChild` prop to render a different component such as a `Link` or an `a` tag.
@@ -954,6 +956,8 @@ Here's an example of a `SidebarMenuAction` component rendering a `DropdownMenu`.
 The `SidebarMenuSub` component is used to render a submenu within a `SidebarMenu`.
 
 Use `<SidebarMenuSubItem />` and `<SidebarMenuSubButton />` to render a submenu item.
+
+Clicking a `SidebarMenuSubButton` will automatically close the sidebar on mobile.
 
 <figure className="flex flex-col gap-4 mt-6">
   <ComponentPreview
