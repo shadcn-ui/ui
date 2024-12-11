@@ -2013,6 +2013,22 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "navigation-menu-persistent": {
+      name: "navigation-menu-persistent",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["navigation-menu"],
+      files: [{
+        path: "registry/new-york/example/navigation-menu-persistent.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/navigation-menu-persistent.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "pagination-demo": {
       name: "pagination-demo",
       description: "",
@@ -7501,6 +7517,22 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/default/example/navigation-menu-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "navigation-menu-persistent": {
+      name: "navigation-menu-persistent",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["navigation-menu"],
+      files: [{
+        path: "registry/default/example/navigation-menu-persistent.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/navigation-menu-persistent.tsx")),
       source: "",
       category: "",
       subcategory: "",

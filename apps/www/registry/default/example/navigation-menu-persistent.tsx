@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useState } from "react"
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
@@ -54,11 +53,20 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 
-export default function NavigationMenuDemo() {
+export default function NavigationMenuPersistent() {
+  const [overrideOpenItem, setOverrideOpenItem] = React.useState<string>("")
+
+  const toggleOpenItem = (item: string) => {
+    setOverrideOpenItem(overrideOpenItem === item ? "" : item)
+  }
+
   return (
-    <NavigationMenu>
+    <NavigationMenu value={overrideOpenItem}>
       <NavigationMenuList>
-        <NavigationMenuItem>
+        <NavigationMenuItem
+          value="getting-started"
+          onClick={() => toggleOpenItem("getting-started")}
+        >
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -92,7 +100,10 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem
+          value="components"
+          onClick={() => toggleOpenItem("components")}
+        >
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
@@ -108,7 +119,10 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem
+          value="documentation"
+          onClick={() => toggleOpenItem("documentation")}
+        >
           <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Documentation

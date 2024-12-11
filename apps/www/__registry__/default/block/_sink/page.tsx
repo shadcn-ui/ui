@@ -36,6 +36,7 @@ import { InputOTPDemo } from "@/registry/default/block/_sink/components/input-ot
 import { LabelDemo } from "@/registry/default/block/_sink/components/label-demo"
 import { MenubarDemo } from "@/registry/default/block/_sink/components/menubar-demo"
 import { NavigationMenuDemo } from "@/registry/default/block/_sink/components/navigation-menu-demo"
+import { NavigationMenuPersistent } from "@/registry/default/block/_sink/components/navigation-menu-persistent"
 import { PaginationDemo } from "@/registry/default/block/_sink/components/pagination-demo"
 import { PopoverDemo } from "@/registry/default/block/_sink/components/popover-demo"
 import { ProgressDemo } from "@/registry/default/block/_sink/components/progress-demo"
@@ -199,6 +200,7 @@ export default function SinkPage() {
             </ComponentWrapper>
             <ComponentWrapper name="NavigationMenu" className="col-span-2">
               <NavigationMenuDemo />
+              <NavigationMenuPersistent />
             </ComponentWrapper>
             <ComponentWrapper name="Pagination">
               <PaginationDemo />

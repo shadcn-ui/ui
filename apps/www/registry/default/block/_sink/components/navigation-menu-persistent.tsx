@@ -1,11 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { useState } from "react"
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -54,28 +52,35 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 
-export default function NavigationMenuDemo() {
+export function NavigationMenuPersistent() {
+  const [overrideOpenItem, setOverrideOpenItem] = React.useState<string>("")
+
+  const toggleOpenItem = (item: string) => {
+    setOverrideOpenItem(overrideOpenItem === item ? "" : item)
+  }
+
   return (
-    <NavigationMenu>
+    <NavigationMenu value={overrideOpenItem}>
       <NavigationMenuList>
-        <NavigationMenuItem>
+        <NavigationMenuItem
+          value="getting-started"
+          onClick={() => toggleOpenItem("getting-started")}
+        >
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <Icons.logo className="h-6 w-6" />
                     <div className="mb-2 mt-4 text-lg font-medium">
                       shadcn/ui
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components that you can copy and
-                      paste into your apps. Accessible. Customizable. Open
-                      Source.
+                      Beautifully designed components built with Radix UI and
+                      Tailwind CSS.
                     </p>
                   </a>
                 </NavigationMenuLink>
@@ -92,7 +97,10 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem
+          value="components"
+          onClick={() => toggleOpenItem("components")}
+        >
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
@@ -108,7 +116,7 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem value="docs" onClick={() => toggleOpenItem("docs")}>
           <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Documentation
