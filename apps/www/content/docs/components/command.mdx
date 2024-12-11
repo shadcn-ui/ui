@@ -28,7 +28,7 @@ The `<Command />` component uses the [`cmdk`](https://cmdk.paco.me) component by
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add command
+npx shadcn@latest add command
 ```
 
 </TabsContent>
@@ -95,7 +95,10 @@ import {
 
 ### Dialog
 
-<ComponentPreview name="command-dialog" />
+<ComponentPreview
+  name="command-dialog"
+  description="A command menu in a dialog"
+/>
 
 To show the command menu in a dialog, use the `<CommandDialog />` component.
 
@@ -133,3 +136,27 @@ export function CommandMenu() {
 ### Combobox
 
 You can use the `<Command />` component as a combobox. See the [Combobox](/docs/components/combobox) page for more information.
+
+## Changelog
+
+### 2024-10-25 Classes for icons
+
+Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the `<CommandItem />` to automatically style icon inside.
+
+Add the following classes to the `cva` call in your `command.tsx` file.
+
+```tsx showLineNumbers title="command.tsx"
+const CommandItem = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive.Item
+    ref={ref}
+    className={cn(
+      "... gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+      className
+    )}
+    {...props}
+  />
+))
+```

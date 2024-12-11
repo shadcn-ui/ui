@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { cn } from "@/lib/utils"
+import { toast } from "@/registry/default/hooks/use-toast"
 import { Button } from "@/registry/default/ui/button"
 import { Calendar } from "@/registry/default/ui/calendar"
 import {
@@ -23,7 +24,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/default/ui/popover"
-import { toast } from "@/registry/default/ui/use-toast"
 
 const FormSchema = z.object({
   dob: z.date({

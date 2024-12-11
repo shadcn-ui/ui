@@ -1,19 +1,27 @@
-import { getBlock } from "@/lib/blocks"
+import * as React from "react"
+import { z } from "zod"
+
+import { highlightCode } from "@/lib/highlight-code"
+import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { ChartToolbar } from "@/components/chart-toolbar"
+import { registryEntrySchema } from "@/registry/schema"
+
+export type Chart = z.infer<typeof registryEntrySchema> & {
+  highlightedCode: string
+}
 
 export async function ChartDisplay({
   name,
   children,
   className,
 }: { name: string } & React.ComponentProps<"div">) {
-  const chart = await getBlock(name)
+  const chart = await getCachedRegistryItem(name)
+  const highlightedCode = await getChartHighlightedCode(
+    chart?.files?.[0]?.content ?? ""
+  )
 
-  // Cannot (and don't need to) pass to the client.
-  delete chart?.component
-  delete chart?.chunks
-
-  if (!chart) {
+  if (!chart || !highlightedCode) {
     return null
   }
 
@@ -25,7 +33,7 @@ export async function ChartDisplay({
       )}
     >
       <ChartToolbar
-        chart={chart}
+        chart={{ ...chart, highlightedCode }}
         className="relative z-20 flex justify-end border-b bg-card px-3 py-2.5 text-card-foreground"
       >
         {children}
@@ -36,3 +44,11 @@ export async function ChartDisplay({
     </div>
   )
 }
+
+const getCachedRegistryItem = React.cache(async (name: string) => {
+  return await getRegistryItem(name)
+})
+
+const getChartHighlightedCode = React.cache(async (content: string) => {
+  return await highlightCode(content)
+})
