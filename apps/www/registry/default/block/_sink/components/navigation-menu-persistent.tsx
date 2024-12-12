@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
+import { CircleX } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -11,8 +11,8 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/registry/default/ui/navigation-menu"
+ import { Button } from "@/registry/default/ui/button"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -58,6 +58,16 @@ export function NavigationMenuPersistent() {
   const toggleOpenItem = (item: string) => {
     setOverrideOpenItem(overrideOpenItem === item ? "" : item)
   }
+
+  React.useEffect(() => {
+    // Support closing the menu when clicking outside of it
+    const closeMenu = () => setOverrideOpenItem("")
+
+    if (overrideOpenItem.length > 0) {
+      document.addEventListener("click", closeMenu)
+      return () => document.removeEventListener("click", closeMenu)
+    }
+  }, [overrideOpenItem])
 
   return (
     <NavigationMenu value={overrideOpenItem}>
@@ -116,12 +126,10 @@ export function NavigationMenuPersistent() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem value="docs" onClick={() => toggleOpenItem("docs")}>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
-          </Link>
+        <NavigationMenuItem value="close">
+          <Button variant="ghost" size="icon" onClick={() => toggleOpenItem("")}>
+            <CircleX />
+          </Button>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

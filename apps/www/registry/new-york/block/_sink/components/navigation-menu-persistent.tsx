@@ -55,9 +55,18 @@ const components: { title: string; href: string; description: string }[] = [
 export function NavigationMenuPersistent() {
   const [overrideOpenItem, setOverrideOpenItem] = React.useState<string>("")
 
-  const toggleOpenItem = (item: string) => {
+  const toggleOpenItem = (item: string) =>
     setOverrideOpenItem(overrideOpenItem === item ? "" : item)
-  }
+
+  React.useEffect(() => {
+    // Support closing the menu when clicking outside of it
+    const closeMenu = () => setOverrideOpenItem("")
+
+    if (overrideOpenItem.length > 0) {
+      document.addEventListener("click", closeMenu)
+      return () => document.removeEventListener("click", closeMenu)
+    }
+  }, [overrideOpenItem])
 
   return (
     <NavigationMenu value={overrideOpenItem}>

@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
+import { CircleX } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import { Button } from "@/registry/default/ui/button"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,8 +13,8 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/registry/default/ui/navigation-menu"
+
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -59,6 +60,16 @@ export default function NavigationMenuPersistent() {
   const toggleOpenItem = (item: string) => {
     setOverrideOpenItem(overrideOpenItem === item ? "" : item)
   }
+
+  React.useEffect(() => {
+    // Support closing the menu when clicking outside of it
+    const closeMenu = () => setOverrideOpenItem("")
+
+    if (overrideOpenItem.length > 0) {
+      document.addEventListener("click", closeMenu)
+      return () => document.removeEventListener("click", closeMenu)
+    }
+  }, [overrideOpenItem])
 
   return (
     <NavigationMenu value={overrideOpenItem}>
@@ -119,15 +130,16 @@ export default function NavigationMenuPersistent() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem
-          value="documentation"
-          onClick={() => toggleOpenItem("documentation")}
-        >
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
-          </Link>
+        <NavigationMenuItem value="close" className="w-1">
+          {overrideOpenItem.length > 0 && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => toggleOpenItem("")}
+            >
+              <CircleX />
+            </Button>
+          )}
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
