@@ -33,7 +33,7 @@ export function rehypeComponent() {
             let src: string
 
             if (srcPath) {
-              src = srcPath
+              src = path.join(process.cwd(), srcPath)
             } else {
               const component = Index[style.name][name]
               src = fileName
