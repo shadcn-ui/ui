@@ -160,7 +160,7 @@ function BlockViewerToolbar() {
       >
         {item.description}
       </a>
-      <div className="ml-auto flex items-center gap-2">
+      <div className="ml-auto hidden items-center gap-2 md:flex">
         <div className="hidden h-7 items-center gap-1.5 rounded-md border p-[2px] shadow-none lg:flex">
           <ToggleGroup
             type="single"
@@ -236,7 +236,7 @@ function BlockViewerView() {
   const { item, style, resizablePanelRef } = useBlockViewer()
 
   return (
-    <div className="h-[--height] group-data-[view=code]/block-view-wrapper:hidden">
+    <div className="group-data-[view=code]/block-view-wrapper:hidden md:h-[--height]">
       <div className="grid w-full gap-4">
         <ResizablePanelGroup direction="horizontal" className="relative z-10">
           <ResizablePanel
@@ -246,12 +246,12 @@ function BlockViewerView() {
             minSize={30}
           >
             <Image
-              src={`/r/styles/${style}/${item.name}.png`}
+              src={`/r/styles/${style}/${item.name}-light.png`}
               alt={item.name}
               data-block={item.name}
               width={1440}
               height={900}
-              className="absolute left-0 top-0 z-20 w-[970px] max-w-none bg-background data-[block=sidebar-10]:left-auto data-[block=sidebar-10]:right-0 data-[block=sidebar-11]:-top-1/3 data-[block=sidebar-14]:left-auto data-[block=sidebar-14]:right-0 data-[block=login-01]:max-w-full data-[block=sidebar-13]:max-w-full data-[block=sidebar-15]:max-w-full dark:hidden sm:w-[1280px] md:hidden md:dark:hidden"
+              className="object-cover dark:hidden md:hidden md:dark:hidden"
             />
             <Image
               src={`/r/styles/${style}/${item.name}-dark.png`}
@@ -259,7 +259,7 @@ function BlockViewerView() {
               data-block={item.name}
               width={1440}
               height={900}
-              className="absolute left-0 top-0 z-20 hidden w-[970px] max-w-none bg-background data-[block=sidebar-10]:left-auto data-[block=sidebar-10]:right-0 data-[block=sidebar-11]:-top-1/3 data-[block=sidebar-14]:left-auto data-[block=sidebar-14]:right-0 data-[block=login-01]:max-w-full data-[block=sidebar-13]:max-w-full data-[block=sidebar-15]:max-w-full dark:block sm:w-[1280px] md:hidden md:dark:hidden"
+              className="hidden object-cover dark:block md:hidden md:dark:hidden"
             />
             <iframe
               src={`/view/styles/${style}/${item.name}`}
@@ -287,7 +287,7 @@ function BlockViewerCode() {
   }
 
   return (
-    <div className="mr-[14px] flex h-[--height] overflow-hidden rounded-xl bg-zinc-950 text-white group-data-[view=preview]/block-view-wrapper:hidden">
+    <div className="mr-[14px] flex overflow-hidden rounded-xl bg-zinc-950 text-white group-data-[view=preview]/block-view-wrapper:hidden md:h-[--height]">
       <div className="w-[280px]">
         <BlockViewerFileTree />
       </div>

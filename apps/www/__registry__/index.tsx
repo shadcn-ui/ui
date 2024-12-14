@@ -720,7 +720,7 @@ export const Index: Record<string, any> = {
     },
     "sidebar-01": {
       name: "sidebar-01",
-      description: "A simple sidebar with navigation grouped by section.dsadsds",
+      description: "A simple sidebar with navigation grouped by section.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
       files: [{
@@ -5975,7 +5975,7 @@ export const Index: Record<string, any> = {
     },
     "sidebar-01": {
       name: "sidebar-01",
-      description: "A simple sidebar with navigation grouped by section.dsadsds",
+      description: "A simple sidebar with navigation grouped by section.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
       files: [{

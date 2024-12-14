@@ -10,7 +10,7 @@ export function BlocksNav() {
   const pathname = usePathname()
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <ScrollArea className="max-w-none">
         <div className="flex items-center">
           <BlocksNavLink

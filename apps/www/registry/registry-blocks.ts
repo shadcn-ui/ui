@@ -4,7 +4,7 @@ export const blocks: Registry = [
   {
     name: "sidebar-01",
     type: "registry:block",
-    description: "A simple sidebar with navigation grouped by section.dsadsds",
+    description: "A simple sidebar with navigation grouped by section.",
     registryDependencies: [
       "sidebar",
       "breadcrumb",
