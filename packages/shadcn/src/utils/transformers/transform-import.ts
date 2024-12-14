@@ -35,8 +35,8 @@ function updateImportAliases(moduleSpecifier: string, config: Config) {
 
   // Not a registry import.
   if (!moduleSpecifier.startsWith("@/registry/")) {
-    // We fix the alias an return.
-    const alias = config.aliases.components.charAt(0)
+    // We fix the alias and return.
+    const alias = config.aliases.components.split("/")[0]
     return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
 

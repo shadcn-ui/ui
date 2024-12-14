@@ -2,10 +2,10 @@ import { Project, SyntaxKind } from "ts-morph"
 import { beforeEach, describe, expect, test } from "vitest"
 
 import {
-  buildTailwindThemeColorsFromCssVars,
+  buildTailwindThemeColorsFromCssVars, nestSpreadElements,
   nestSpreadProperties,
   transformTailwindConfig,
-  unnestSpreadProperties,
+  unnestSpreadProperties, unnsetSpreadElements,
 } from "../../../src/utils/updaters/update-tailwind-config"
 
 const SHARED_CONFIG = {
@@ -522,6 +522,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          "ui-sans-serif",
+          "sans-serif",
+        ],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -809,6 +815,123 @@ export default config
       )
     ).toMatchSnapshot()
   })
+
+  test("should keep arrays when formatted on multilines", async () => {
+    expect(
+      await transformTailwindConfig(
+        `import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: [
+          'Figtree',
+          ...defaultTheme.fontFamily.sans
+        ],
+      },
+    },
+  },
+}
+export default config
+  `,
+        {
+          theme: {
+            extend: {
+              fontFamily: {
+                mono: ['Foo']
+              }
+            },
+          },
+        },
+        {
+          config: SHARED_CONFIG,
+        }
+      )
+    ).toMatchSnapshot()
+  })
+
+  test("should handle objects nested in arrays", async () => {
+    expect(
+      await transformTailwindConfig(
+        `import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      fontSize: {
+        xs: ['0.75rem', { lineHeight: '1rem' }],
+        sm: [
+          '0.875rem',
+          {
+            lineHeight: '1.25rem',
+          },
+        ],
+      },
+    },
+  },
+}
+export default config
+  `,
+        {
+          theme: {
+            extend: {
+              fontSize: {
+                xl: [
+                  'clamp(1.5rem, 1.04vi + 1.17rem, 2rem)',
+                  {
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    fontWeight: '600',
+                  },
+                ],
+              }
+            },
+          },
+        },
+        {
+          config: SHARED_CONFIG,
+        }
+      )
+    ).toMatchSnapshot()
+  })
+
+  test("should preserve boolean values", async () => {
+    expect(
+      await transformTailwindConfig(
+        `import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    container: {
+      center: true
+    }
+  },
+}
+export default config
+  `,
+        {},
+        {
+          config: SHARED_CONFIG,
+        }
+      )
+    ).toMatchSnapshot()
+  })
 })
 
 describe("nestSpreadProperties", () => {
@@ -837,36 +960,137 @@ describe("nestSpreadProperties", () => {
   test("should nest spread properties", () => {
     testTransformation(
       `{ theme: { ...foo, bar: { ...baz, one: "two" }, other: { a: "b", ...c } } }`,
-      `{ theme: { ___foo: "...foo", bar: { ___baz: "...baz", one: "two" }, other: { a: "b", ___c: "...c" } } }`
+      `{ theme: { "___foo": "...foo", bar: { "___baz": "...baz", one: "two" }, other: { a: "b", "___c": "...c" } } }`
     )
   })
 
   test("should handle mixed property assignments", () => {
     testTransformation(
       `{ ...foo, a: 1, b() {}, ...bar, c: { ...baz } }`,
-      `{ ___foo: "...foo", a: 1, b() {}, ___bar: "...bar", c: { ___baz: "...baz" } }`
+      `{ "___foo": "...foo", a: 1, b() {}, "___bar": "...bar", c: { "___baz": "...baz" } }`
     )
   })
 
   test("should handle objects with only spread properties", () => {
     testTransformation(
       `{ ...foo, ...bar, ...baz }`,
-      `{ ___foo: "...foo", ___bar: "...bar", ___baz: "...baz" }`
+      `{ "___foo": "...foo", "___bar": "...bar", "___baz": "...baz" }`
     )
   })
 
   test("should handle property name conflicts", () => {
-    testTransformation(`{ foo: 1, ...foo }`, `{ foo: 1, ___foo: "...foo" }`)
+    testTransformation(`{ foo: 1, ...foo }`, `{ foo: 1, "___foo": "...foo" }`)
   })
 
   test("should handle shorthand property names", () => {
-    testTransformation(`{ a, ...foo, b }`, `{ a, ___foo: "...foo", b }`)
+    testTransformation(`{ a, ...foo, b }`, `{ a, "___foo": "...foo", b }`)
   })
 
   test("should handle computed property names", () => {
     testTransformation(
       `{ ["computed"]: 1, ...foo }`,
-      `{ ["computed"]: 1, ___foo: "...foo" }`
+      `{ ["computed"]: 1, "___foo": "...foo" }`
+    )
+  })
+
+  test("should handle spreads in arrays", () => {
+    testTransformation(
+      `{ foo: [{ ...bar }] }`,
+      `{ foo: [{ "___bar": "...bar" }] }`
+    )
+  })
+
+  test("should handle deep nesting in arrays", () => {
+    testTransformation(
+      `{ foo: [{ baz: { ...other.baz }, ...bar }] }`,
+      `{ foo: [{ baz: { "___other.baz": "...other.baz" }, "___bar": "...bar" }] }`
+    )
+  })
+})
+
+describe("nestSpreadElements", () => {
+  let project: Project
+
+  beforeEach(() => {
+    project = new Project({ useInMemoryFileSystem: true })
+  })
+
+  function testTransformation(input: string, expected: string) {
+    const sourceFile = project.createSourceFile(
+      "test.ts",
+      `const config = ${input};`
+    )
+    const configObject = sourceFile.getFirstDescendantByKind(
+      SyntaxKind.ArrayLiteralExpression
+    )
+    if (!configObject) throw new Error("Config object not found")
+
+    nestSpreadElements(configObject)
+
+    const result = configObject.getText()
+    expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))
+  }
+
+  test("should spread elements", () => {
+    testTransformation(
+      `[...bar]`,
+      `["...bar"]`
+    )
+  })
+
+  test("should handle mixed element types", () => {
+    testTransformation(
+      `['foo', 2, true, ...bar, "baz"]`,
+      `['foo', 2, true, "...bar", "baz"]`
+    )
+  })
+
+  test("should handle arrays with only spread elements", () => {
+    testTransformation(
+      `[...foo, ...foo.bar, ...baz]`,
+      `["...foo", "...foo.bar", "...baz"]`
+    )
+  })
+
+  test("should handle nested arrays with spreads", () => {
+    testTransformation(
+      `[...foo, [...bar]]`,
+      `["...foo", ["...bar"]]`
+    )
+  })
+
+  test("should handle nested arrays within objects", () => {
+    testTransformation(
+      `[{ foo: [...foo] }]`,
+      `[{ foo: ["...foo"] }]`
+    )
+  })
+
+  test("should handle deeply nested arrays within spread objects", () => {
+    testTransformation(
+      `[{ foo: [...foo, { bar: ['bar', ...bar ]}] }]`,
+      `[{ foo: ["...foo", { bar: ['bar', "...bar" ]}] }]`
+    )
+  })
+
+  test("should handle optional paths in spread", () => {
+    testTransformation(
+      `[{ foo: [...foo?.bar] }]`,
+      `[{ foo: ["...foo?.bar"] }]`
+    )
+  })
+
+  test('should handle computed property paths within spread', () => {
+    testTransformation(
+      `[{ foo: [...foo["bar"]] }]`,
+      `[{ foo: ["...foo["bar"]"] }]`
+    )
+  })
+
+  test('should handle indexed paths in spread', () => {
+    testTransformation(
+      `[{ foo: [...foo[0]] }]`,
+      `[{ foo: ["...foo[0]"] }]`
     )
   })
 })
@@ -925,8 +1149,117 @@ describe("unnestSpreadProperties", () => {
 
   test("should handle computed property names", () => {
     testTransformation(
-      `{ ["computed"]: 1, ___foo: "...foo" }`,
+      `{ ["computed"]: 1, "___foo": "...foo" }`,
       `{ ["computed"]: 1, ...foo }`
+    )
+  })
+
+  test("should handle spread objects within arrays", () => {
+    testTransformation(
+      `{ ["computed"]: 1, foo: [{ "___foo": "...foo" }] }`,
+      `{ ["computed"]: 1, foo: [{...foo}] }`
+    )
+  })
+
+  test("should handle deeply nested spread objects within an array", () => {
+    testTransformation(
+      `{ ["computed"]: 1, foo: [{ "___foo": "...foo", bar: { baz: 'baz', "___foo.bar": "...foo.bar" } }] }`,
+      `{ ["computed"]: 1, foo: [{...foo, bar: { baz: 'baz', ...foo.bar } }] }`
+    )
+  })
+})
+
+describe("unnestSpreadElements", () => {
+  let project: Project
+
+  beforeEach(() => {
+    project = new Project({ useInMemoryFileSystem: true })
+  })
+
+  function testTransformation(input: string, expected: string) {
+    const sourceFile = project.createSourceFile(
+      "test.ts",
+      `const config = ${input};`
+    )
+    const configObject = sourceFile.getFirstDescendantByKind(
+      SyntaxKind.ArrayLiteralExpression
+    )
+    if (!configObject) throw new Error("Config object not found")
+
+    unnsetSpreadElements(configObject)
+
+    const result = configObject.getText()
+    expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))
+  }
+
+  test("should spread elements", () => {
+    testTransformation(
+      `["...bar"]`,
+      `[...bar]`,
+    )
+  })
+
+  test("should handle mixed element types", () => {
+    testTransformation(
+      `['foo', 2, true, "...bar", "baz"]`,
+      `['foo', 2, true, ...bar, "baz"]`,
+    )
+  })
+
+  test("should handle arrays with only spread elements", () => {
+    testTransformation(
+      `["...foo", "...foo.bar", "...baz"]`,
+      `[...foo, ...foo.bar, ...baz]`,
+    )
+  })
+
+  test("should handle nested arrays with spreads", () => {
+    testTransformation(
+      `["...foo", ["...bar"]]`,
+      `[...foo, [...bar]]`,
+    )
+  })
+
+  test("should handle nested arrays within objects", () => {
+    testTransformation(
+      `[{ foo: ["...foo"] }]`,
+      `[{ foo: [...foo] }]`,
+    )
+  })
+
+  test("should handle deeply nested arrays within spread objects", () => {
+    testTransformation(
+      `[{ foo: ["...foo", { bar: ['bar', "...bar" ]}] }]`,
+      `[{ foo: [...foo, { bar: ['bar', ...bar ]}] }]`,
+    )
+  })
+
+  test("should handle optional paths in spread", () => {
+    testTransformation(
+      `[{ foo: ["...foo?.bar"] }]`,
+      `[{ foo: [...foo?.bar] }]`,
+
+    )
+  })
+
+  test("should handle computed property paths (') within spread", () => {
+    testTransformation(
+      `[{ foo: ["...foo['bar']"] }]`,
+      `[{ foo: [...foo['bar']] }]`,
+    )
+  })
+
+  test('should handle computed property paths (") within spread', () => {
+    testTransformation(
+      `[{ foo: ['...foo["bar"]'] }]`,
+      `[{ foo: [...foo["bar"]] }]`,
+    )
+  })
+
+  test('should handle indexed paths in spread', () => {
+    testTransformation(
+      `[{ foo: ["...foo[0]"] }]`,
+      `[{ foo: [...foo[0]] }]`,
     )
   })
 })

@@ -64,6 +64,11 @@ export const stylesSchema = z.array(
   })
 )
 
+export const iconsSchema = z.record(
+  z.string(),
+  z.record(z.string(), z.string())
+)
+
 export const registryBaseColorSchema = z.object({
   inlineColors: z.object({
     light: z.record(z.string(), z.string()),

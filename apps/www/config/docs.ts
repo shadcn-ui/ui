@@ -9,6 +9,10 @@ export interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
+      title: "Home",
+      href: "/",
+    },
+    {
       title: "Documentation",
       href: "/docs",
     },
@@ -27,10 +31,6 @@ export const docsConfig: DocsConfig = {
     {
       title: "Themes",
       href: "/themes",
-    },
-    {
-      title: "Examples",
-      href: "/examples",
     },
     {
       title: "Colors",
