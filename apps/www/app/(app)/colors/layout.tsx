@@ -21,7 +21,7 @@ export default function ColorsLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="relative">
+    <>
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>Tailwind Colors</PageHeaderHeading>
@@ -37,11 +37,13 @@ export default function ColorsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container py-6">
-        <section id="colors" className="scroll-mt-20">
-          {children}
-        </section>
+      <div className="container-wrapper">
+        <div className="container py-6">
+          <section id="colors" className="scroll-mt-20">
+            {children}
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   )
 }

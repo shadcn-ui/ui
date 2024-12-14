@@ -2,329 +2,9 @@ import { Registry } from "@/registry/schema"
 
 export const blocks: Registry = [
   {
-    name: "_sink",
-    type: "registry:block",
-    registryDependencies: [
-      // registry:ui
-      "accordion",
-      "alert",
-      "alert-dialog",
-      "aspect-ratio",
-      "avatar",
-      "badge",
-      "breadcrumb",
-      "button",
-      "calendar",
-      "card",
-      "carousel",
-      "chart",
-      "checkbox",
-      "collapsible",
-      "command",
-      "context-menu",
-      "dialog",
-      "drawer",
-      "dropdown-menu",
-      // "form",
-      "hover-card",
-      "input",
-      "input-otp",
-      "label",
-      "menubar",
-      "navigation-menu",
-      "pagination",
-      "popover",
-      "progress",
-      "radio-group",
-      "resizable",
-      "scroll-area",
-      "select",
-      "separator",
-      "sheet",
-      "sidebar",
-      "skeleton",
-      "slider",
-      "sonner",
-      "switch",
-      "table",
-      "tabs",
-      "textarea",
-      "toast",
-      "toggle",
-      "toggle-group",
-      "tooltip",
-    ],
-    files: [
-      {
-        path: "block/_sink/page.tsx",
-        type: "registry:page",
-        target: "app/sink/page.tsx",
-      },
-      {
-        path: "block/_sink/components/app-sidebar.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/component-wrapper.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/nav-main.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/nav-projects.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/nav-user.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/team-switcher.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/accordion-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/alert-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/alert-dialog-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/aspect-ratio-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/avatar-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/badge-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/breadcrumb-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/button-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/calendar-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/card-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/carousel-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/checkbox-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/collapsible-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/combobox-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/command-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/context-menu-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/date-picker-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/dialog-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/drawer-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/dropdown-menu-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/hover-card-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/input-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/input-otp-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/label-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/menubar-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/navigation-menu-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/pagination-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/popover-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/progress-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/radio-group-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/resizable-handle.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/scroll-area-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/select-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/separator-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/sheet-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/skeleton-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/slider-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/sonner-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/switch-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/table-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/tabs-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/textarea-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/toast-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/toggle-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/toggle-group-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/tooltip-demo.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/badge-destructive.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/badge-outline.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/badge-secondary.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/button-destructive.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/button-ghost.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/button-link.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/button-loading.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/button-outline.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/button-secondary.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/button-with-icon.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/toggle-disabled.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/toggle-outline.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/_sink/components/toggle-with-text.tsx",
-        type: "registry:component",
-      },
-    ],
-  },
-  {
     name: "sidebar-01",
     type: "registry:block",
+    description: "A simple sidebar with navigation grouped by section.",
     registryDependencies: [
       "sidebar",
       "breadcrumb",
@@ -334,28 +14,28 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "block/sidebar-01/page.tsx",
+        path: "blocks/sidebar-01/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-01/components/app-sidebar.tsx",
+        path: "blocks/sidebar-01/components/app-sidebar.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-01/components/search-form.tsx",
+        path: "blocks/sidebar-01/components/search-form.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-01/components/version-switcher.tsx",
+        path: "blocks/sidebar-01/components/version-switcher.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-02",
+    description: "A sidebar with collapsible sections.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -366,64 +46,64 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "block/sidebar-02/page.tsx",
+        path: "blocks/sidebar-02/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-02/components/app-sidebar.tsx",
+        path: "blocks/sidebar-02/components/app-sidebar.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-02/components/search-form.tsx",
+        path: "blocks/sidebar-02/components/search-form.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-02/components/version-switcher.tsx",
+        path: "blocks/sidebar-02/components/version-switcher.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-03",
+    description: "A sidebar with submenus.",
     type: "registry:block",
     registryDependencies: ["sidebar", "breadcrumb"],
     files: [
       {
-        path: "block/sidebar-03/page.tsx",
+        path: "blocks/sidebar-03/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-03/components/app-sidebar.tsx",
+        path: "blocks/sidebar-03/components/app-sidebar.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-04",
+    description: "A floating sidebar with submenus.",
     type: "registry:block",
     registryDependencies: ["sidebar", "breadcrumb", "separator"],
     files: [
       {
-        path: "block/sidebar-04/page.tsx",
+        path: "blocks/sidebar-04/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-04/components/app-sidebar.tsx",
+        path: "blocks/sidebar-04/components/app-sidebar.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-05",
+    description: "A sidebar with collapsible submenus.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -434,24 +114,24 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "block/sidebar-05/page.tsx",
+        path: "blocks/sidebar-05/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-05/components/app-sidebar.tsx",
+        path: "blocks/sidebar-05/components/app-sidebar.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-05/components/search-form.tsx",
+        path: "blocks/sidebar-05/components/search-form.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-06",
+    description: "A sidebar with submenus as dropdowns.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -462,29 +142,29 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "block/sidebar-06/page.tsx",
+        path: "blocks/sidebar-06/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-06/components/app-sidebar.tsx",
+        path: "blocks/sidebar-06/components/app-sidebar.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-06/components/nav-main.tsx",
+        path: "blocks/sidebar-06/components/nav-main.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-06/components/sidebar-opt-in-form.tsx",
+        path: "blocks/sidebar-06/components/sidebar-opt-in-form.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-07",
     type: "registry:block",
+    description: "A sidebar that collapses to icons.",
     registryDependencies: [
       "sidebar",
       "breadcrumb",
@@ -495,36 +175,36 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "block/sidebar-07/page.tsx",
+        path: "blocks/sidebar-07/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-07/components/app-sidebar.tsx",
+        path: "blocks/sidebar-07/components/app-sidebar.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-07/components/nav-main.tsx",
+        path: "blocks/sidebar-07/components/nav-main.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-07/components/nav-projects.tsx",
+        path: "blocks/sidebar-07/components/nav-projects.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-07/components/nav-user.tsx",
+        path: "blocks/sidebar-07/components/nav-user.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-07/components/team-switcher.tsx",
+        path: "blocks/sidebar-07/components/team-switcher.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-08",
+    description: "An inset sidebar with secondary navigation.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -536,36 +216,36 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "block/sidebar-08/page.tsx",
+        path: "blocks/sidebar-08/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-08/components/app-sidebar.tsx",
+        path: "blocks/sidebar-08/components/app-sidebar.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-08/components/nav-main.tsx",
+        path: "blocks/sidebar-08/components/nav-main.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-08/components/nav-projects.tsx",
+        path: "blocks/sidebar-08/components/nav-projects.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-08/components/nav-secondary.tsx",
+        path: "blocks/sidebar-08/components/nav-secondary.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-08/components/nav-user.tsx",
+        path: "blocks/sidebar-08/components/nav-user.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-09",
+    description: "Collapsible nested sidebars.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -578,24 +258,24 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "block/sidebar-09/page.tsx",
+        path: "blocks/sidebar-09/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-09/components/app-sidebar.tsx",
+        path: "blocks/sidebar-09/components/app-sidebar.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-09/components/nav-user.tsx",
+        path: "blocks/sidebar-09/components/nav-user.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-10",
+    description: "A sidebar in a popover.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -607,62 +287,62 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "block/sidebar-10/page.tsx",
+        path: "blocks/sidebar-10/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-10/components/app-sidebar.tsx",
+        path: "blocks/sidebar-10/components/app-sidebar.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-10/components/nav-actions.tsx",
+        path: "blocks/sidebar-10/components/nav-actions.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-10/components/nav-favorites.tsx",
+        path: "blocks/sidebar-10/components/nav-favorites.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-10/components/nav-main.tsx",
+        path: "blocks/sidebar-10/components/nav-main.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-10/components/nav-secondary.tsx",
+        path: "blocks/sidebar-10/components/nav-secondary.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-10/components/nav-workspaces.tsx",
+        path: "blocks/sidebar-10/components/nav-workspaces.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-10/components/team-switcher.tsx",
+        path: "blocks/sidebar-10/components/team-switcher.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-11",
+    description: "A sidebar with a collapsible file tree.",
     type: "registry:block",
     registryDependencies: ["sidebar", "breadcrumb", "separator", "collapsible"],
     files: [
       {
-        path: "block/sidebar-11/page.tsx",
+        path: "blocks/sidebar-11/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-11/components/app-sidebar.tsx",
+        path: "blocks/sidebar-11/components/app-sidebar.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-12",
+    description: "A sidebar with a calendar.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -675,68 +355,68 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "block/sidebar-12/page.tsx",
+        path: "blocks/sidebar-12/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-12/components/app-sidebar.tsx",
+        path: "blocks/sidebar-12/components/app-sidebar.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-12/components/calendars.tsx",
+        path: "blocks/sidebar-12/components/calendars.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-12/components/date-picker.tsx",
+        path: "blocks/sidebar-12/components/date-picker.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-12/components/nav-user.tsx",
+        path: "blocks/sidebar-12/components/nav-user.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-13",
+    description: "A sidebar in a dialog.",
     type: "registry:block",
     registryDependencies: ["sidebar", "breadcrumb", "button", "dialog"],
     files: [
       {
-        path: "block/sidebar-13/page.tsx",
+        path: "blocks/sidebar-13/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-13/components/settings-dialog.tsx",
+        path: "blocks/sidebar-13/components/settings-dialog.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-14",
+    description: "A sidebar on the right.",
     type: "registry:block",
     registryDependencies: ["sidebar", "breadcrumb"],
     files: [
       {
-        path: "block/sidebar-14/page.tsx",
+        path: "blocks/sidebar-14/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-14/components/app-sidebar.tsx",
+        path: "blocks/sidebar-14/components/app-sidebar.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "sidebar-15",
+    description: "A left and right sidebar.",
     type: "registry:block",
     registryDependencies: [
       "sidebar",
@@ -750,70 +430,141 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "block/sidebar-15/page.tsx",
+        path: "blocks/sidebar-15/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx",
       },
       {
-        path: "block/sidebar-15/components/calendars.tsx",
+        path: "blocks/sidebar-15/components/calendars.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/date-picker.tsx",
+        path: "blocks/sidebar-15/components/date-picker.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/nav-favorites.tsx",
+        path: "blocks/sidebar-15/components/nav-favorites.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/nav-main.tsx",
+        path: "blocks/sidebar-15/components/nav-main.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/nav-secondary.tsx",
+        path: "blocks/sidebar-15/components/nav-secondary.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/nav-user.tsx",
+        path: "blocks/sidebar-15/components/nav-user.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/nav-workspaces.tsx",
+        path: "blocks/sidebar-15/components/nav-workspaces.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/sidebar-left.tsx",
+        path: "blocks/sidebar-15/components/sidebar-left.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/sidebar-right.tsx",
+        path: "blocks/sidebar-15/components/sidebar-right.tsx",
         type: "registry:component",
       },
       {
-        path: "block/sidebar-15/components/team-switcher.tsx",
+        path: "blocks/sidebar-15/components/team-switcher.tsx",
         type: "registry:component",
       },
     ],
-    category: "Application",
-    subcategory: "Sidebars",
+    categories: ["sidebar", "dashboard"],
   },
   {
     name: "login-01",
+    description: "A simple login form.",
     type: "registry:block",
     registryDependencies: ["button", "card", "input", "label"],
     files: [
       {
-        path: "block/login-01/page.tsx",
+        path: "blocks/login-01/page.tsx",
         target: "app/login/page.tsx",
         type: "registry:page",
       },
       {
-        path: "block/login-01/components/login-form.tsx",
+        path: "blocks/login-01/components/login-form.tsx",
         type: "registry:component",
       },
     ],
-    category: "Authentication",
-    subcategory: "Login",
+    categories: ["authentication", "login"],
+  },
+  {
+    name: "login-02",
+    description: "A two column login page with a cover image.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "blocks/login-02/page.tsx",
+        target: "app/login/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/login-02/components/login-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "login"],
+  },
+  {
+    name: "login-03",
+    description: "A login page with a muted background color.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "blocks/login-03/page.tsx",
+        target: "app/login/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/login-03/components/login-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "login"],
+  },
+  {
+    name: "login-04",
+    description: "A login page with form and image.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "blocks/login-04/page.tsx",
+        target: "app/login/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/login-04/components/login-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "login"],
+  },
+  {
+    name: "login-05",
+    description: "A simple email-only login page.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "blocks/login-05/page.tsx",
+        target: "app/login/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/login-05/components/login-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "login"],
   },
 ]
