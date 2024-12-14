@@ -82,11 +82,25 @@ export const registryBaseColorSchema = z.object({
   cssVarsTemplate: z.string(),
 })
 
-export const registryResolvedItemsTreeSchema = registryItemSchema.pick({
-  dependencies: true,
-  devDependencies: true,
-  files: true,
-  tailwind: true,
-  cssVars: true,
-  docs: true,
-})
+export const registryResolvedItemsTreeSchema = registryItemSchema
+  .pick({
+    dependencies: true,
+    devDependencies: true,
+    files: true,
+    tailwind: true,
+    cssVars: true,
+    docs: true,
+  })
+  .extend({
+    // TODO: We track the ui dependencies here.
+    // Will probably need to track other dependencies here too.
+    // Like hooks, components, etc.
+    // But for now, this is a good start.
+    // ui internal dependencies are tracked in the ui.files field.
+    trackers: z.object({
+      ui: z.object({
+        files: z.record(z.string(), z.literal("registry:ui")).optional(),
+        dependencies: z.array(z.string()).optional(),
+      }),
+    }),
+  })

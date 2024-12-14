@@ -8,7 +8,10 @@ import {
   getRegistryBaseColor,
   getRegistryItemFileTargetPath,
 } from "@/src/utils/registry"
-import { RegistryItem } from "@/src/utils/registry/schema"
+import {
+  RegistryItem,
+  registryResolvedItemsTreeSchema,
+} from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import { transform } from "@/src/utils/transformers"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
@@ -17,6 +20,7 @@ import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
+import { z } from "zod"
 
 export function resolveTargetDir(
   projectInfo: Awaited<ReturnType<typeof getProjectInfo>>,
@@ -38,6 +42,7 @@ export async function updateFiles(
     overwrite?: boolean
     force?: boolean
     silent?: boolean
+    trackers?: z.infer<typeof registryResolvedItemsTreeSchema>["trackers"]
   }
 ) {
   if (!files?.length) {
@@ -74,6 +79,12 @@ export async function updateFiles(
     if (file.target) {
       filePath = resolveTargetDir(projectInfo, config, file.target)
       targetDir = path.dirname(filePath)
+    }
+
+    if (options.trackers?.ui?.files?.[file.path]) {
+      // We assume is two levels up from the ui directory.
+      targetDir = path.join(config.resolvedPaths.ui, "../../")
+      filePath = path.join(targetDir, file.path)
     }
 
     if (!config.tsx) {

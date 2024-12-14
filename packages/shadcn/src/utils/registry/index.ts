@@ -328,7 +328,29 @@ export async function registryResolveItemsTree(
       }
     })
 
+    const trackers: z.infer<
+      typeof registryResolvedItemsTreeSchema
+    >["trackers"] = {
+      ui: {
+        files: payload.reduce((acc, item) => {
+          if (item.files) {
+            item.files.forEach((file) => {
+              if (item.type === "registry:ui" && file.type !== "registry:ui") {
+                acc[file.path] = "registry:ui"
+              }
+            })
+          }
+          return acc
+        }, {} as Record<string, "registry:ui">),
+        dependencies: index
+          .filter((item) => item.dependencies)
+          .flatMap((item) => item.dependencies!)
+          .filter((dep, index, array) => array.indexOf(dep) === index),
+      },
+    }
+
     return registryResolvedItemsTreeSchema.parse({
+      trackers,
       dependencies: deepmerge.all(
         payload.map((item) => item.dependencies ?? [])
       ),
