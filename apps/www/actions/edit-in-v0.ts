@@ -35,7 +35,7 @@ export async function editInV0({
     registryItem.name = registryItem.name.replace(/^v0-/, "")
 
     // Replace `@/registry/new-york/` in files.
-    registryItem.files = registryItem.files.map((file) => {
+    registryItem.files = registryItem.files?.map((file) => {
       if (file.content?.includes("@/registry/new-york/ui")) {
         file.content = file.content?.replaceAll(
           "@/registry/new-york/ui",
@@ -83,8 +83,7 @@ export async function editInV0({
 
     return {
       ...result,
-      url: `http://localhost:3000/chat/api/open-in-v0/${result.id}`,
-      // url: `${process.env.V0_URL}/chat/api/open-in-v0/${result.id}`,
+      url: `${process.env.V0_URL}/chat/api/open-in-v0/${result.id}`,
     }
   } catch (error) {
     console.error(error)
