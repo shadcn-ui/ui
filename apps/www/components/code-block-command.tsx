@@ -51,10 +51,10 @@ export function CodeBlockCommand({
       },
     })
     setHasCopied(true)
-  }, [packageManager])
+  }, [packageManager, tabs])
 
   return (
-    <div className="relative max-h-[650px] overflow-x-auto rounded-xl bg-zinc-950 dark:bg-zinc-900 mt-6">
+    <div className="relative mt-6 max-h-[650px] overflow-x-auto rounded-xl bg-zinc-950 dark:bg-zinc-900">
       <Tabs
         defaultValue={packageManager}
         onValueChange={(value) => {
@@ -64,14 +64,14 @@ export function CodeBlockCommand({
           })
         }}
       >
-        <div className="flex items-center justify-between bg-zinc-900 border-b border-zinc-800 px-3 pt-2.5">
-          <TabsList className="bg-transparent p-0 pl-1 h-7 gap-3 translate-y-[2px]">
+        <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-3 pt-2.5">
+          <TabsList className="h-7 translate-y-[2px] gap-3 bg-transparent p-0 pl-1">
             {Object.entries(tabs).map(([key, value]) => {
               return (
                 <TabsTrigger
                   key={key}
                   value={key}
-                  className="bg-transparent text-zinc-400 data-[state=active]:bg-transparent data-[state=active]:text-zinc-50 p-0 font-mono border-b pb-1.5 border-transparent data-[state=active]:border-b-zinc-50 rounded-none"
+                  className="rounded-none border-b border-transparent bg-transparent p-0 pb-1.5 font-mono text-zinc-400 data-[state=active]:border-b-zinc-50 data-[state=active]:bg-transparent data-[state=active]:text-zinc-50"
                 >
                   {key}
                 </TabsTrigger>
@@ -97,7 +97,7 @@ export function CodeBlockCommand({
       <Button
         size="icon"
         variant="ghost"
-        className="z-10 absolute top-2 right-2.5 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:h-3 [&_svg]:w-3"
+        className="absolute right-2.5 top-2 z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:h-3 [&_svg]:w-3"
         onClick={copyCommand}
       >
         <span className="sr-only">Copy</span>
