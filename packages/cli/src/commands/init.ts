@@ -1,5 +1,6 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
+import { DEPRECATED_MESSAGE } from "@/src/deprecated"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -23,7 +24,7 @@ import * as templates from "@/src/utils/templates"
 import chalk from "chalk"
 import { Command } from "commander"
 import { execa } from "execa"
-import template from "lodash.template"
+import template from "lodash/template"
 import ora from "ora"
 import prompts from "prompts"
 import { z } from "zod"
@@ -55,6 +56,8 @@ export const init = new Command()
   )
   .action(async (opts) => {
     try {
+      console.log(DEPRECATED_MESSAGE)
+
       const options = initOptionsSchema.parse(opts)
       const cwd = path.resolve(options.cwd)
 

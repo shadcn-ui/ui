@@ -24,7 +24,7 @@ links:
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add dropdown-menu
+npx shadcn@latest add dropdown-menu
 ```
 
 </TabsContent>
@@ -93,3 +93,50 @@ import {
   name="dropdown-menu-radio-group"
   description="A dropdown menu with radio items."
 />
+
+## Changelog
+
+### 2024-10-16 Classes for icons
+
+Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the `DropdownMenuItem` to automatically style icon inside the dropdown menu item.
+
+Add the following classes to the `DropdownMenuItem` in your `dropdown-menu.tsx` file.
+
+```diff showLineNumbers title="dropdown-menu.tsx"
+const DropdownMenuItem = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
+    inset?: boolean
+  }
+>(({ className, inset, ...props }, ref) => (
+  <DropdownMenuPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative ... gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+      inset && "pl-8",
+      className
+    )}
+    {...props}
+  />
+))
+```
+
+### 2024-10-25 Classes for `<DropdownMenuSubTrigger />`
+
+Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the `<DropdownMenuSubTrigger />` to automatically style icon inside.
+
+Add the following classes to the `cva` call in your `dropdown-menu.tsx` file.
+
+```tsx title="dropdown-menu.tsx"
+<DropdownMenuPrimitive.SubTrigger
+  ref={ref}
+  className={cn(
+    "flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    inset && "pl-8",
+    className
+  )}
+  {...props}
+>
+  {/* ... */}
+</DropdownMenuPrimitive.SubTrigger>
+```
