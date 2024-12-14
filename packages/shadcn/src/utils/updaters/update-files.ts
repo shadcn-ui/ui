@@ -72,6 +72,7 @@ export async function updateFiles(
       continue
     }
 
+    let trackedFile = false
     let targetDir = getRegistryItemFileTargetPath(file, config)
     const fileName = basename(file.path)
     let filePath = path.join(targetDir, fileName)
@@ -82,6 +83,7 @@ export async function updateFiles(
     }
 
     if (options.trackers?.ui?.files?.[file.path]) {
+      trackedFile = true
       // We assume is two levels up from the ui directory.
       targetDir = path.join(config.resolvedPaths.ui, "../../")
       filePath = path.join(targetDir, file.path)
@@ -94,6 +96,16 @@ export async function updateFiles(
     }
 
     const existingFile = existsSync(filePath)
+
+    if (
+      existingFile &&
+      !options.overwrite &&
+      (file.type === "registry:ui" || trackedFile)
+    ) {
+      filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+      continue
+    }
+
     if (existingFile && !options.overwrite) {
       filesCreatedSpinner.stop()
       const { overwrite } = await prompts({
@@ -181,7 +193,7 @@ export async function updateFiles(
     spinner(
       `Skipped ${filesSkipped.length} ${
         filesUpdated.length === 1 ? "file" : "files"
-      }:`,
+      }: (use --overwrite to overwrite)`,
       {
         silent: options.silent,
       }

@@ -335,6 +335,7 @@ export async function registryResolveItemsTree(
         files: payload.reduce((acc, item) => {
           if (item.files) {
             item.files.forEach((file) => {
+              // Track ui internal dependencies.
               if (item.type === "registry:ui" && file.type !== "registry:ui") {
                 acc[file.path] = "registry:ui"
               }
