@@ -19,6 +19,7 @@ export type TransformOpts = {
   config: Config
   baseColor?: z.infer<typeof registryBaseColorSchema>
   transformJsx?: boolean
+  isWorkspace?: boolean
 }
 
 export type Transformer<Output = SourceFile> = (

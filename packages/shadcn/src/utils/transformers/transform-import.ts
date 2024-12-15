@@ -1,7 +1,11 @@
 import { Config } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
 
-export const transformImport: Transformer = async ({ sourceFile, config }) => {
+export const transformImport: Transformer = async ({
+  sourceFile,
+  config,
+  isWorkspace,
+}) => {
   const importDeclarations = sourceFile.getImportDeclarations()
 
   for (const importDeclaration of importDeclarations) {
@@ -18,7 +22,10 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
       const cnImport = namedImports.find((i) => i.getName() === "cn")
       if (cnImport) {
         importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(/^@\/lib\/utils/, config.aliases.utils)
+          moduleSpecifier.replace(
+            /^@\/lib\/utils/,
+            isWorkspace ? "@workspace/ui/lib/utils" : config.aliases.utils
+          )
         )
       }
     }

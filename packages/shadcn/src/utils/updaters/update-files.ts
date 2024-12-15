@@ -137,6 +137,7 @@ export async function updateFiles(
         config,
         baseColor,
         transformJsx: !config.tsx,
+        isWorkspace: file.type === "registry:ui" || trackedFile,
       },
       [
         transformImport,

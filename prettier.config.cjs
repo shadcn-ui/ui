@@ -21,6 +21,8 @@ module.exports = {
     "^@/styles/(.*)$",
     "^@/app/(.*)$",
     "",
+    "^@workspace/(.*)$",
+    "",
     "^[./]",
   ],
   importOrderSeparation: false,
