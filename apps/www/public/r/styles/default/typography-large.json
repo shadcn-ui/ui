@@ -1,0 +1,12 @@
+{
+  "name": "typography-large",
+  "type": "registry:example",
+  "files": [
+    {
+      "path": "examples/typography-large.tsx",
+      "content": "export default function TypographyLarge() {\n  return <div className=\"text-lg font-semibold\">Are you absolutely sure?</div>\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

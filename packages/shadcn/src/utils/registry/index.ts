@@ -4,6 +4,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import {
+  iconsSchema,
   registryBaseColorSchema,
   registryIndexSchema,
   registryItemFileSchema,
@@ -43,6 +44,16 @@ export async function getRegistryStyles() {
     logger.error("\n")
     handleError(error)
     return []
+  }
+}
+
+export async function getRegistryIcons() {
+  try {
+    const [result] = await fetchRegistry(["icons/index.json"])
+    return iconsSchema.parse(result)
+  } catch (error) {
+    handleError(error)
+    return {}
   }
 }
 

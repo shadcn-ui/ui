@@ -1,5 +1,53 @@
 # @shadcn/ui
 
+## 2.1.7
+
+### Patch Changes
+
+- [#5711](https://github.com/shadcn-ui/ui/pull/5711) [`500dbe2`](https://github.com/shadcn-ui/ui/commit/500dbe2664c04936cc3edb739fc97f6cecff57c5) Thanks [@bcorbold](https://github.com/bcorbold)! - Update spread/unspread helpers to handle ArrayLiteralExpression and nested values within arrays
+
+- [#5678](https://github.com/shadcn-ui/ui/pull/5678) [`fb36ca4`](https://github.com/shadcn-ui/ui/commit/fb36ca41591ae952f3a015e2a4470f26458cf1b5) Thanks [@Tobbe](https://github.com/Tobbe)! - support aliases longer than one char
+
+- [#5813](https://github.com/shadcn-ui/ui/pull/5813) [`d5bf001`](https://github.com/shadcn-ui/ui/commit/d5bf0018fda42faeb314dc3edc87b8cd7c0354c6) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of aliases
+
+## 2.1.6
+
+### Patch Changes
+
+- [#5602](https://github.com/shadcn-ui/ui/pull/5602) [`2c2fe97`](https://github.com/shadcn-ui/ui/commit/2c2fe97eb96b2c5c7d03d1ae2756a851c3790030) Thanks [@shadcn](https://github.com/shadcn)! - move new-york icons to lucide-react
+
+## 2.1.5
+
+### Patch Changes
+
+- [#5707](https://github.com/shadcn-ui/ui/pull/5707) [`cdfecd1`](https://github.com/shadcn-ui/ui/commit/cdfecd1d97af2b4d9de330927edd9fd2eef1234e) Thanks [@shadcn](https://github.com/shadcn)! - temporarily bring back npm flag
+
+## 2.1.4
+
+### Patch Changes
+
+- [#5686](https://github.com/shadcn-ui/ui/pull/5686) [`4ff64ba`](https://github.com/shadcn-ui/ui/commit/4ff64ba818d15a094547f845ea294c2e1ab208d4) Thanks [@shadcn](https://github.com/shadcn)! - remove flag for npm
+
+## 2.1.3
+
+### Patch Changes
+
+- [#5621](https://github.com/shadcn-ui/ui/pull/5621) [`64739f8`](https://github.com/shadcn-ui/ui/commit/64739f83991205333867000d7813e82b0d98f871) Thanks [@shadcn](https://github.com/shadcn)! - add flag prompt for npm
+
+## 2.1.2
+
+### Patch Changes
+
+- [#5299](https://github.com/shadcn-ui/ui/pull/5299) [`986c00e`](https://github.com/shadcn-ui/ui/commit/986c00ee0e661bf2391b305c2b24800be63e681e) Thanks [@fourcels](https://github.com/fourcels)! - fix package manager fallback
+
+## 2.1.1
+
+### Patch Changes
+
+- [#5525](https://github.com/shadcn-ui/ui/pull/5525) [`f02b412`](https://github.com/shadcn-ui/ui/commit/f02b412478a2e4e1b20d87f4a253e9305331d066) Thanks [@shadcn](https://github.com/shadcn)! - temporarily pin create-next-app
+
+- [#5518](https://github.com/shadcn-ui/ui/pull/5518) [`bf5a79c`](https://github.com/shadcn-ui/ui/commit/bf5a79c4d427cf499c6196c2eea3df04d9410977) Thanks [@bcorbold](https://github.com/bcorbold)! - fix transofmrRsc for handling use client
+
 ## 2.1.0
 
 ### Minor Changes

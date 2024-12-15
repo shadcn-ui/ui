@@ -6,14 +6,12 @@ function PageHeader({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <section
-      className={cn(
-        "mx-auto flex flex-col items-start gap-2 px-4 py-8 md:py-12 md:pb-8 lg:py-12 lg:pb-10",
-        className
-      )}
-      {...props}
-    >
-      {children}
+    <section className={cn("border-grid border-b", className)} {...props}>
+      <div className="container-wrapper">
+        <div className="container flex flex-col items-start gap-1 py-8 md:py-10 lg:py-12">
+          {children}
+        </div>
+      </div>
     </section>
   )
 }
@@ -40,7 +38,7 @@ function PageHeaderDescription({
   return (
     <p
       className={cn(
-        "text-balance max-w-2xl text-lg font-light text-foreground",
+        "max-w-2xl text-balance text-lg font-light text-foreground",
         className
       )}
       {...props}
@@ -55,7 +53,7 @@ function PageActions({
   return (
     <div
       className={cn(
-        "flex w-full items-center justify-start gap-2 py-2",
+        "flex w-full items-center justify-start gap-2 pt-2",
         className
       )}
       {...props}
