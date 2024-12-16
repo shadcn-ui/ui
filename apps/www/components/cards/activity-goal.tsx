@@ -2,10 +2,8 @@
 
 import * as React from "react"
 import { Minus, Plus } from "lucide-react"
-import { useTheme } from "next-themes"
-import { Bar, BarChart, ResponsiveContainer } from "recharts"
+import { Bar, BarChart } from "recharts"
 
-import { useConfig } from "@/hooks/use-config"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
@@ -16,7 +14,6 @@ import {
   CardTitle,
 } from "@/registry/new-york/ui/card"
 import { ChartConfig, ChartContainer } from "@/registry/new-york/ui/chart"
-import { baseColors } from "@/registry/registry-base-colors"
 
 const data = [
   {
@@ -63,10 +60,7 @@ const data = [
 const chartConfig = {
   goal: {
     label: "Goal",
-    theme: {
-      light: "black",
-      dark: "white",
-    },
+    color: "hsl(var(--primary))",
   },
 } satisfies ChartConfig
 

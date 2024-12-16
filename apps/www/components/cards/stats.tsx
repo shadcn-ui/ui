@@ -48,17 +48,11 @@ const data = [
 const chartConfig = {
   revenue: {
     label: "Revenue",
-    theme: {
-      light: "black",
-      dark: "white",
-    },
+    color: "hsl(var(--primary))",
   },
   subscription: {
     label: "Subscriptions",
-    theme: {
-      light: "black",
-      dark: "white",
-    },
+    color: "hsl(var(--primary))",
   },
 } satisfies ChartConfig
 
@@ -88,11 +82,10 @@ export function CardsStats() {
                 type="monotone"
                 strokeWidth={2}
                 dataKey="revenue"
+                stroke="var(--color-revenue)"
                 activeDot={{
                   r: 6,
-                  fill: "var(--color-revenue)",
                 }}
-                stroke="var(--color-revenue)"
               />
             </LineChart>
           </ChartContainer>
