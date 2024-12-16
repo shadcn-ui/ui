@@ -17,7 +17,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 /**
- * The default form of the separator.
+ * A separator between horizontal items.
  */
 export const Horizontal: Story = {
   render: () => (
@@ -30,7 +30,7 @@ export const Horizontal: Story = {
 }
 
 /**
- * A vertical separator.
+ * A separator between vertical items.
  */
 export const Vertical: Story = {
   render: () => (
