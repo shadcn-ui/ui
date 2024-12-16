@@ -23,4 +23,16 @@ test("get package manager", async () => {
   expect(
     await getPackageManager(path.resolve(__dirname, "../fixtures/next"))
   ).toBe("pnpm")
+
+  expect(
+    await getPackageManager(path.resolve(__dirname, "../fixtures/project-rush"))
+  ).toBe("rush")
+
+  expect(
+    await getPackageManager(path.resolve(__dirname, "../fixtures/project-rush/packages/package-1"))
+  ).toBe("rush")
+
+  expect(
+    await getPackageManager(path.resolve(__dirname, "../fixtures/project-rush/apps/private-apps/private-app-1"))
+  ).toBe("rush")
 })
