@@ -6,16 +6,11 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-accordion"],
     files: [
-      "ui/accordion.tsx",
+      {
+        path: "ui/accordion.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/accordion.stories.tsx", type: "registry:story" },
-    ],
-  },
-  {
-    name: "alert",
-    type: "registry:ui",
-    files: [
-      "ui/alert.tsx",
-      { path: "stories/alert.stories.tsx", type: "registry:story" },
     ],
     tailwind: {
       config: {
@@ -41,12 +36,26 @@ export const ui: Registry = [
     },
   },
   {
+    name: "alert",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/alert.tsx",
+        type: "registry:ui",
+      },
+      { path: "stories/alert.stories.tsx", type: "registry:story" },
+    ],
+  },
+  {
     name: "alert-dialog",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-alert-dialog"],
     registryDependencies: ["button"],
     files: [
-      "ui/alert-dialog.tsx",
+      {
+        path: "ui/alert-dialog.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/alert-dialog.stories.tsx", type: "registry:story" },
     ],
   },
@@ -55,7 +64,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-aspect-ratio"],
     files: [
-      "ui/aspect-ratio.tsx",
+      {
+        path: "ui/aspect-ratio.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/aspect-ratio.stories.tsx", type: "registry:story" },
     ],
   },
@@ -64,7 +76,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-avatar"],
     files: [
-      "ui/avatar.tsx",
+      {
+        path: "ui/avatar.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/avatar.stories.tsx", type: "registry:story" },
     ],
   },
@@ -72,7 +87,10 @@ export const ui: Registry = [
     name: "badge",
     type: "registry:ui",
     files: [
-      "ui/badge.tsx",
+      {
+        path: "ui/badge.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/badge.stories.tsx", type: "registry:story" },
     ],
   },
@@ -81,7 +99,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slot"],
     files: [
-      "ui/breadcrumb.tsx",
+      {
+        path: "ui/breadcrumb.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/breadcrumb.stories.tsx", type: "registry:story" },
     ],
   },
@@ -90,7 +111,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slot"],
     files: [
-      "ui/button.tsx",
+      {
+        path: "ui/button.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/button.stories.tsx", type: "registry:story" },
     ],
   },
@@ -100,7 +124,10 @@ export const ui: Registry = [
     dependencies: ["react-day-picker@8.10.1", "date-fns"],
     registryDependencies: ["button"],
     files: [
-      "ui/calendar.tsx",
+      {
+        path: "ui/calendar.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/calendar.stories.tsx", type: "registry:story" },
     ],
   },
@@ -108,7 +135,10 @@ export const ui: Registry = [
     name: "card",
     type: "registry:ui",
     files: [
-      "ui/card.tsx",
+      {
+        path: "ui/card.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/card.stories.tsx", type: "registry:story" },
     ],
   },
@@ -116,7 +146,10 @@ export const ui: Registry = [
     name: "carousel",
     type: "registry:ui",
     files: [
-      "ui/carousel.tsx",
+      {
+        path: "ui/carousel.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/carousel.stories.tsx", type: "registry:story" },
     ],
     registryDependencies: ["button"],
@@ -126,7 +159,10 @@ export const ui: Registry = [
     name: "chart",
     type: "registry:ui",
     files: [
-      "ui/chart.tsx",
+      {
+        path: "ui/chart.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/chart.stories.tsx", type: "registry:story" },
     ],
     registryDependencies: ["card"],
@@ -137,7 +173,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-checkbox"],
     files: [
-      "ui/checkbox.tsx",
+      {
+        path: "ui/checkbox.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/checkbox.stories.tsx", type: "registry:story" },
     ],
   },
@@ -146,7 +185,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-collapsible"],
     files: [
-      "ui/collapsible.tsx",
+      {
+        path: "ui/collapsible.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/collapsible.stories.tsx", type: "registry:story" },
     ],
   },
@@ -156,7 +198,10 @@ export const ui: Registry = [
     dependencies: ["cmdk@1.0.0"],
     registryDependencies: ["dialog"],
     files: [
-      "ui/command.tsx",
+      {
+        path: "ui/command.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/command.stories.tsx", type: "registry:story" },
     ],
   },
@@ -165,7 +210,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-context-menu"],
     files: [
-      "ui/context-menu.tsx",
+      {
+        path: "ui/context-menu.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/context-menu.stories.tsx", type: "registry:story" },
     ],
   },
@@ -174,7 +222,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-dialog"],
     files: [
-      "ui/dialog.tsx",
+      {
+        path: "ui/dialog.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/dialog.stories.tsx", type: "registry:story" },
     ],
   },
@@ -183,7 +234,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["vaul", "@radix-ui/react-dialog"],
     files: [
-      "ui/drawer.tsx",
+      {
+        path: "ui/drawer.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/drawer.stories.tsx", type: "registry:story" },
     ],
   },
@@ -192,7 +246,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-dropdown-menu"],
     files: [
-      "ui/dropdown-menu.tsx",
+      {
+        path: "ui/dropdown-menu.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/dropdown-menu.stories.tsx", type: "registry:story" },
     ],
   },
@@ -208,7 +265,10 @@ export const ui: Registry = [
     ],
     registryDependencies: ["button", "label"],
     files: [
-      "ui/form.tsx",
+      {
+        path: "ui/form.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/form.stories.tsx", type: "registry:story" },
     ],
   },
@@ -217,7 +277,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-hover-card"],
     files: [
-      "ui/hover-card.tsx",
+      {
+        path: "ui/hover-card.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/hover-card.stories.tsx", type: "registry:story" },
     ],
   },
@@ -225,7 +288,10 @@ export const ui: Registry = [
     name: "input",
     type: "registry:ui",
     files: [
-      "ui/input.tsx",
+      {
+        path: "ui/input.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/input.stories.tsx", type: "registry:story" },
     ],
   },
@@ -234,7 +300,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["input-otp"],
     files: [
-      "ui/input-otp.tsx",
+      {
+        path: "ui/input-otp.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/input-otp.stories.tsx", type: "registry:story" },
     ],
   },
@@ -243,7 +312,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-label"],
     files: [
-      "ui/label.tsx",
+      {
+        path: "ui/label.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/label.stories.tsx", type: "registry:story" },
     ],
   },
@@ -252,7 +324,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-menubar"],
     files: [
-      "ui/menubar.tsx",
+      {
+        path: "ui/menubar.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/menubar.stories.tsx", type: "registry:story" },
     ],
   },
@@ -261,7 +336,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-navigation-menu"],
     files: [
-      "ui/navigation-menu.tsx",
+      {
+        path: "ui/navigation-menu.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/navigation-menu.stories.tsx", type: "registry:story" },
     ],
   },
@@ -270,7 +348,10 @@ export const ui: Registry = [
     type: "registry:ui",
     registryDependencies: ["button"],
     files: [
-      "ui/pagination.tsx",
+      {
+        path: "ui/pagination.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/pagination.stories.tsx", type: "registry:story" },
     ],
   },
@@ -279,7 +360,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-popover"],
     files: [
-      "ui/popover.tsx",
+      {
+        path: "ui/popover.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/popover.stories.tsx", type: "registry:story" },
     ],
   },
@@ -288,7 +372,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-progress"],
     files: [
-      "ui/progress.tsx",
+      {
+        path: "ui/progress.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/progress.stories.tsx", type: "registry:story" },
     ],
   },
@@ -297,7 +384,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-radio-group"],
     files: [
-      "ui/radio-group.tsx",
+      {
+        path: "ui/radio-group.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/radio-group.stories.tsx", type: "registry:story" },
     ],
   },
@@ -306,7 +396,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["react-resizable-panels"],
     files: [
-      "ui/resizable.tsx",
+      {
+        path: "ui/resizable.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/resizable.stories.tsx", type: "registry:story" },
     ],
   },
@@ -315,7 +408,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-scroll-area"],
     files: [
-      "ui/scroll-area.tsx",
+      {
+        path: "ui/scroll-area.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/scroll-area.stories.tsx", type: "registry:story" },
     ],
   },
@@ -324,7 +420,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-select"],
     files: [
-      "ui/select.tsx",
+      {
+        path: "ui/select.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/select.stories.tsx", type: "registry:story" },
     ],
   },
@@ -333,7 +432,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-separator"],
     files: [
-      "ui/separator.tsx",
+      {
+        path: "ui/separator.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/separator.stories.tsx", type: "registry:story" },
     ],
   },
@@ -342,7 +444,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-dialog"],
     files: [
-      "ui/sheet.tsx",
+      {
+        path: "ui/sheet.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/sheet.stories.tsx", type: "registry:story" },
     ],
   },
@@ -363,7 +468,12 @@ export const ui: Registry = [
       "use-mobile",
       "skeleton",
     ],
-    files: ["ui/sidebar.tsx"],
+    files: [
+      {
+        path: "ui/sidebar.tsx",
+        type: "registry:ui",
+      },
+    ],
     tailwind: {
       config: {
         theme: {
@@ -411,7 +521,10 @@ export const ui: Registry = [
     name: "skeleton",
     type: "registry:ui",
     files: [
-      "ui/skeleton.tsx",
+      {
+        path: "ui/skeleton.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/skeleton.stories.tsx", type: "registry:story" },
     ],
   },
@@ -420,7 +533,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slider"],
     files: [
-      "ui/slider.tsx",
+      {
+        path: "ui/slider.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/slider.stories.tsx", type: "registry:story" },
     ],
   },
@@ -429,7 +545,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["sonner", "next-themes"],
     files: [
-      "ui/sonner.tsx",
+      {
+        path: "ui/sonner.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/sonner.stories.tsx", type: "registry:story" },
     ],
   },
@@ -438,7 +557,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-switch"],
     files: [
-      "ui/switch.tsx",
+      {
+        path: "ui/switch.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/switch.stories.tsx", type: "registry:story" },
     ],
   },
@@ -446,7 +568,10 @@ export const ui: Registry = [
     name: "table",
     type: "registry:ui",
     files: [
-      "ui/table.tsx",
+      {
+        path: "ui/table.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/table.stories.tsx", type: "registry:story" },
     ],
   },
@@ -455,7 +580,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-tabs"],
     files: [
-      "ui/tabs.tsx",
+      {
+        path: "ui/tabs.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/tabs.stories.tsx", type: "registry:story" },
     ],
   },
@@ -463,7 +591,10 @@ export const ui: Registry = [
     name: "textarea",
     type: "registry:ui",
     files: [
-      "ui/textarea.tsx",
+      {
+        path: "ui/textarea.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/textarea.stories.tsx", type: "registry:story" },
     ],
   },
@@ -495,7 +626,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-toggle"],
     files: [
-      "ui/toggle.tsx",
+      {
+        path: "ui/toggle.tsx",
+        type: "registry:ui",
+      },
       {
         path: "stories/toggle.stories.tsx",
         type: "registry:story",
@@ -508,7 +642,10 @@ export const ui: Registry = [
     dependencies: ["@radix-ui/react-toggle-group"],
     registryDependencies: ["toggle"],
     files: [
-      "ui/toggle-group.tsx",
+      {
+        path: "ui/toggle-group.tsx",
+        type: "registry:ui",
+      },
       {
         path: "stories/toggle-group.stories.tsx",
         type: "registry:story",
@@ -520,7 +657,10 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["@radix-ui/react-tooltip"],
     files: [
-      "ui/tooltip.tsx",
+      {
+        path: "ui/tooltip.tsx",
+        type: "registry:ui",
+      },
       { path: "stories/tooltip.stories.tsx", type: "registry:story" },
     ],
   },

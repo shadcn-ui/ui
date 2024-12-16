@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import Image from "next/image"
-import { CounterClockwiseClockIcon } from "@radix-ui/react-icons"
+import { RotateCcw } from "lucide-react"
 
 import { Button } from "@/registry/new-york/ui/button"
 import {
@@ -265,7 +265,7 @@ export default function PlaygroundPage() {
                       <Button>Submit</Button>
                       <Button variant="secondary">
                         <span className="sr-only">Show history</span>
-                        <CounterClockwiseClockIcon className="h-4 w-4" />
+                        <RotateCcw />
                       </Button>
                     </div>
                   </div>
@@ -283,7 +283,7 @@ export default function PlaygroundPage() {
                       <Button>Submit</Button>
                       <Button variant="secondary">
                         <span className="sr-only">Show history</span>
-                        <CounterClockwiseClockIcon className="h-4 w-4" />
+                        <RotateCcw />
                       </Button>
                     </div>
                   </div>
@@ -314,7 +314,7 @@ export default function PlaygroundPage() {
                       <Button>Submit</Button>
                       <Button variant="secondary">
                         <span className="sr-only">Show history</span>
-                        <CounterClockwiseClockIcon className="h-4 w-4" />
+                        <RotateCcw />
                       </Button>
                     </div>
                   </div>
