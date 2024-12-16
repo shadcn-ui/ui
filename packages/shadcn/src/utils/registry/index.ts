@@ -170,7 +170,7 @@ export async function getItemTargetPath(
   )
 }
 
-async function fetchRegistry(paths: string[]) {
+export async function fetchRegistry(paths: string[]) {
   try {
     const results = await Promise.all(
       paths.map(async (path) => {
