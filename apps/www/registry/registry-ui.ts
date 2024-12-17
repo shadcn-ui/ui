@@ -421,6 +421,7 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: [
       "@radix-ui/react-slot",
+      "@radix-ui/react-direction",
       "class-variance-authority",
       "lucide-react",
     ],
