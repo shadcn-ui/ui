@@ -673,6 +673,22 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "toaster": {
+      name: "toaster",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/ui/toaster.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/toaster.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "toggle": {
       name: "toggle",
       description: "",
@@ -5927,6 +5943,22 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/toast.tsx")),
       source: "",
       meta: undefined,
+    },
+    "toaster": {
+      name: "toaster",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/toaster.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/toaster.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
     },
     "toggle": {
       name: "toggle",
