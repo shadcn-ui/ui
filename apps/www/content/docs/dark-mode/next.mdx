@@ -33,9 +33,9 @@ export function ThemeProvider({
 
 ### Wrap your root layout
 
-Add the `ThemeProvider` to your root layout.
+Add the `ThemeProvider` to your root layout and add the `suppressHydrationWarning` prop to the `html` tag.
 
-```tsx {1,9-11} title="app/layout.tsx"
+```tsx {1,6,9-14,16} title="app/layout.tsx"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export default function RootLayout({ children }: RootLayoutProps) {
