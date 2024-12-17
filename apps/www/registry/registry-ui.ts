@@ -4,7 +4,7 @@ export const ui: Registry["items"] = [
   {
     name: "accordion",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-accordion"],
+    dependencies: ["@radix-ui/react-accordion", "@radix-ui/react-slot"],
     files: [
       {
         path: "ui/accordion.tsx",
@@ -194,7 +194,7 @@ export const ui: Registry["items"] = [
   {
     name: "context-menu",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-context-menu"],
+    dependencies: ["@radix-ui/react-context-menu", "@radix-ui/react-slot"],
     files: [
       {
         path: "ui/context-menu.tsx",
@@ -205,7 +205,7 @@ export const ui: Registry["items"] = [
   {
     name: "dialog",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-dialog"],
+    dependencies: ["@radix-ui/react-dialog", "@radix-ui/react-slot"],
     files: [
       {
         path: "ui/dialog.tsx",
@@ -216,7 +216,7 @@ export const ui: Registry["items"] = [
   {
     name: "drawer",
     type: "registry:ui",
-    dependencies: ["vaul", "@radix-ui/react-dialog"],
+    dependencies: ["vaul", "@radix-ui/react-dialog", "@radix-ui/react-slot"],
     files: [
       {
         path: "ui/drawer.tsx",
@@ -227,7 +227,7 @@ export const ui: Registry["items"] = [
   {
     name: "dropdown-menu",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-dropdown-menu"],
+    dependencies: ["@radix-ui/react-dropdown-menu", "@radix-ui/react-slot"],
     files: [
       {
         path: "ui/dropdown-menu.tsx",
@@ -299,7 +299,7 @@ export const ui: Registry["items"] = [
   {
     name: "menubar",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-menubar"],
+    dependencies: ["@radix-ui/react-menubar", "@radix-ui/react-slot"],
     files: [
       {
         path: "ui/menubar.tsx",
@@ -310,7 +310,7 @@ export const ui: Registry["items"] = [
   {
     name: "navigation-menu",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-navigation-menu"],
+    dependencies: ["@radix-ui/react-navigation-menu", "@radix-ui/react-slot"],
     files: [
       {
         path: "ui/navigation-menu.tsx",
@@ -387,7 +387,7 @@ export const ui: Registry["items"] = [
   {
     name: "select",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-select"],
+    dependencies: ["@radix-ui/react-select", "@radix-ui/react-slot"],
     files: [
       {
         path: "ui/select.tsx",
@@ -409,7 +409,7 @@ export const ui: Registry["items"] = [
   {
     name: "sheet",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-dialog"],
+    dependencies: ["@radix-ui/react-dialog", "@radix-ui/react-slot"],
     files: [
       {
         path: "ui/sheet.tsx",
