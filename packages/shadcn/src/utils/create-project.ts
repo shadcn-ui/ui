@@ -34,6 +34,7 @@ export async function createProject(
   const isRemoteComponent =
     options.components?.length === 1 &&
     !!options.components[0].match(/\/chat\/b\//)
+
   if (options.components && isRemoteComponent) {
     try {
       const [result] = await fetchRegistry(options.components)
@@ -52,14 +53,6 @@ export async function createProject(
   }
 
   if (!options.force) {
-    const choices = [{ title: "Next.js", value: "next" }]
-    if (!isRemoteComponent) {
-      choices.push({
-        title: "Next.js (Monorepo)",
-        value: "monorepo",
-      })
-    }
-
     const { type, name } = await prompts([
       {
         type: "select",
@@ -67,7 +60,10 @@ export async function createProject(
         message: `The path ${highlighter.info(
           options.cwd
         )} does not contain a package.json file.\n  Would you like to start a new project?`,
-        choices,
+        choices: [
+          { title: "Next.js", value: "next" },
+          { title: "Next.js (Monorepo)", value: "monorepo" },
+        ],
         initial: 0,
       },
       {
