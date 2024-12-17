@@ -1,8 +1,10 @@
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
 import { getPackageManager } from "@/src/utils/get-package-manager"
+import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { fetchRegistry } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
@@ -10,11 +12,36 @@ import prompts from "prompts"
 import { z } from "zod"
 
 export async function createProject(
-  options: Pick<z.infer<typeof initOptionsSchema>, "cwd" | "force" | "srcDir">
+  options: Pick<
+    z.infer<typeof initOptionsSchema>,
+    "cwd" | "force" | "srcDir" | "components"
+  >
 ) {
   options = {
     srcDir: false,
     ...options,
+  }
+
+  let nextVersion = "14.2.16"
+
+  const isRemoteComponent =
+    options.components?.length === 1 &&
+    !!options.components[0].match(/\/chat\/b\//)
+  if (options.components && isRemoteComponent) {
+    try {
+      const [result] = await fetchRegistry(options.components)
+      const { meta } = z
+        .object({
+          meta: z.object({
+            nextVersion: z.string(),
+          }),
+        })
+        .parse(result)
+      nextVersion = meta.nextVersion
+    } catch (error) {
+      logger.break()
+      handleError(error)
+    }
   }
 
   if (!options.force) {
@@ -93,10 +120,14 @@ export async function createProject(
     `--use-${packageManager}`,
   ]
 
+  if (nextVersion.startsWith("15")) {
+    args.push("--turbopack")
+  }
+
   try {
     await execa(
       "npx",
-      ["create-next-app@14.2.16", projectPath, "--silent", ...args],
+      [`create-next-app@${nextVersion}`, projectPath, "--silent", ...args],
       {
         cwd: options.cwd,
       }
