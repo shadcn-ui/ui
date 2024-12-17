@@ -467,45 +467,6 @@ export async function resolveRegistryItems(names: string[], config: Config) {
   return Array.from(new Set(registryDependencies))
 }
 
-function createFilesTracker(payload: z.infer<typeof registryItemSchema>[]) {
-  const trackedFiles: any = {}
-
-  payload.forEach((item) => {
-    const parentType = item.type
-
-    if (!item.files) {
-      return
-    }
-
-    item.files.forEach((file) => {
-      trackedFiles[file.path] = {
-        type: file.type,
-        parentType,
-      }
-    })
-  })
-
-  return registryResolvedItemsTreeSchema
-    .pick({ trackers: true })
-    .shape.trackers.shape.files.parse(trackedFiles)
-}
-
-function createDependenciesTracker(
-  payload: z.infer<typeof registryItemSchema>[]
-) {
-  return payload.reduce((tracked, item) => {
-    item.dependencies?.forEach((dep) => {
-      if (!tracked[dep]) tracked[dep] = new Set()
-      tracked[dep].add(item.name)
-    })
-    item.registryDependencies?.forEach((dep) => {
-      if (!tracked[dep]) tracked[dep] = new Set()
-      tracked[dep].add(item.name)
-    })
-    return tracked
-  }, {} as Record<string, Set<string>>)
-}
-
 export function getRegistryTypeAliasMap() {
   return new Map<string, string>([
     ["registry:ui", "ui"],

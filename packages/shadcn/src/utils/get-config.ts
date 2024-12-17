@@ -161,12 +161,6 @@ export async function getWorkspaceConfig(config: Config) {
       resolvedPath
     )
 
-    console.log("\n", {
-      key,
-      resolvedPath,
-      packageRoot,
-    })
-
     if (!packageRoot) {
       resolvedAliases[key] = config
       continue
@@ -184,18 +178,7 @@ export async function getWorkspaceConfig(config: Config) {
 }
 
 export async function findPackageRoot(cwd: string, resolvedPath: string) {
-  const parts1 = cwd.split(path.sep)
-  const parts2 = resolvedPath.split(path.sep)
-  const commonParts = []
-
-  for (let i = 0; i < Math.min(parts1.length, parts2.length); i++) {
-    if (parts1[i] !== parts2[i]) {
-      break
-    }
-    commonParts.push(parts1[i])
-  }
-
-  const commonRoot = commonParts.join(path.sep)
+  const commonRoot = findCommonRoot(cwd, resolvedPath)
   const relativePath = path.relative(commonRoot, resolvedPath)
 
   const packageRoots = await fg.glob("**/package.json", {
@@ -218,4 +201,19 @@ function isAliasKey(
   return Object.keys(config.resolvedPaths)
     .filter((key) => key !== "utils")
     .includes(key)
+}
+
+export function findCommonRoot(cwd: string, resolvedPath: string) {
+  const parts1 = cwd.split(path.sep)
+  const parts2 = resolvedPath.split(path.sep)
+  const commonParts = []
+
+  for (let i = 0; i < Math.min(parts1.length, parts2.length); i++) {
+    if (parts1[i] !== parts2[i]) {
+      break
+    }
+    commonParts.push(parts1[i])
+  }
+
+  return commonParts.join(path.sep)
 }
