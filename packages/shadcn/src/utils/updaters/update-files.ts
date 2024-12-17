@@ -8,10 +8,7 @@ import {
   getRegistryBaseColor,
   getRegistryItemFileTargetPath,
 } from "@/src/utils/registry"
-import {
-  RegistryItem,
-  registryResolvedItemsTreeSchema,
-} from "@/src/utils/registry/schema"
+import { RegistryItem } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import { transform } from "@/src/utils/transformers"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
@@ -20,7 +17,6 @@ import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
-import { z } from "zod"
 
 export function resolveTargetDir(
   projectInfo: Awaited<ReturnType<typeof getProjectInfo>>,
@@ -42,7 +38,6 @@ export async function updateFiles(
     overwrite?: boolean
     force?: boolean
     silent?: boolean
-    trackers?: z.infer<typeof registryResolvedItemsTreeSchema>["trackers"]
   }
 ) {
   if (!files?.length) {
@@ -72,7 +67,6 @@ export async function updateFiles(
       continue
     }
 
-    let trackedFile = false
     let targetDir = getRegistryItemFileTargetPath(file, config)
     const fileName = basename(file.path)
     let filePath = path.join(targetDir, fileName)
@@ -82,13 +76,6 @@ export async function updateFiles(
       targetDir = path.dirname(filePath)
     }
 
-    if (options.trackers?.ui?.files?.[file.path]) {
-      trackedFile = true
-      // We assume is two levels up from the ui directory.
-      targetDir = path.join(config.resolvedPaths.ui, "../../")
-      filePath = path.join(targetDir, file.path)
-    }
-
     if (!config.tsx) {
       filePath = filePath.replace(/\.tsx?$/, (match) =>
         match === ".tsx" ? ".jsx" : ".js"
@@ -96,15 +83,6 @@ export async function updateFiles(
     }
 
     const existingFile = existsSync(filePath)
-
-    if (
-      existingFile &&
-      !options.overwrite &&
-      (file.type === "registry:ui" || trackedFile)
-    ) {
-      filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
-      continue
-    }
 
     if (existingFile && !options.overwrite) {
       filesCreatedSpinner.stop()
@@ -137,7 +115,6 @@ export async function updateFiles(
         config,
         baseColor,
         transformJsx: !config.tsx,
-        isWorkspace: file.type === "registry:ui" || trackedFile,
       },
       [
         transformImport,

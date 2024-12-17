@@ -1,11 +1,12 @@
 import { Config } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
 
-export const transformImport: Transformer = async ({
-  sourceFile,
-  config,
-  isWorkspace,
-}) => {
+const COMMON_CN_IMPORTS = {
+  "@/lib/utils": /^@\/lib\/utils/,
+  "@workspace/lib/utils": /^@workspace\/lib\/utils/,
+}
+
+export const transformImport: Transformer = async ({ sourceFile, config }) => {
   const importDeclarations = sourceFile.getImportDeclarations()
 
   for (const importDeclaration of importDeclarations) {
@@ -17,14 +18,16 @@ export const transformImport: Transformer = async ({
     importDeclaration.setModuleSpecifier(moduleSpecifier)
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (moduleSpecifier == "@/lib/utils") {
+    if (COMMON_CN_IMPORTS[moduleSpecifier as keyof typeof COMMON_CN_IMPORTS]) {
       const namedImports = importDeclaration.getNamedImports()
       const cnImport = namedImports.find((i) => i.getName() === "cn")
       if (cnImport) {
         importDeclaration.setModuleSpecifier(
           moduleSpecifier.replace(
-            /^@\/lib\/utils/,
-            isWorkspace ? "@workspace/ui/lib/utils" : config.aliases.utils
+            COMMON_CN_IMPORTS[
+              moduleSpecifier as keyof typeof COMMON_CN_IMPORTS
+            ],
+            config.aliases.utils
           )
         )
       }

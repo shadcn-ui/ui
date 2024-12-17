@@ -170,7 +170,7 @@ export async function getItemTargetPath(
   )
 }
 
-async function fetchRegistry(paths: string[]) {
+export async function fetchRegistry(paths: string[]) {
   try {
     const results = await Promise.all(
       paths.map(async (path) => {
@@ -281,17 +281,8 @@ export async function registryResolveItemsTree(
       names.unshift("index")
     }
 
-    let registryDependencies: string[] = []
-    for (const name of names) {
-      const itemRegistryDependencies = await resolveRegistryDependencies(
-        name,
-        config
-      )
-      registryDependencies.push(...itemRegistryDependencies)
-    }
-
-    const uniqueRegistryDependencies = Array.from(new Set(registryDependencies))
-    let result = await fetchRegistry(uniqueRegistryDependencies)
+    let registryItems = await resolveRegistryItems(names, config)
+    let result = await fetchRegistry(registryItems)
     const payload = z.array(registryItemSchema).parse(result)
 
     if (!payload) {
@@ -328,30 +319,7 @@ export async function registryResolveItemsTree(
       }
     })
 
-    const trackers: z.infer<
-      typeof registryResolvedItemsTreeSchema
-    >["trackers"] = {
-      ui: {
-        files: payload.reduce((acc, item) => {
-          if (item.files) {
-            item.files.forEach((file) => {
-              // Track ui internal dependencies.
-              if (item.type === "registry:ui" && file.type !== "registry:ui") {
-                acc[file.path] = "registry:ui"
-              }
-            })
-          }
-          return acc
-        }, {} as Record<string, "registry:ui">),
-        dependencies: index
-          .filter((item) => item.dependencies)
-          .flatMap((item) => item.dependencies!)
-          .filter((dep, index, array) => array.indexOf(dep) === index),
-      },
-    }
-
     return registryResolvedItemsTreeSchema.parse({
-      trackers,
       dependencies: deepmerge.all(
         payload.map((item) => item.dependencies ?? [])
       ),
@@ -483,4 +451,84 @@ function isUrl(path: string) {
   } catch (error) {
     return false
   }
+}
+
+// TODO: We're double-fetching here. Use a cache.
+export async function resolveRegistryItems(names: string[], config: Config) {
+  let registryDependencies: string[] = []
+  for (const name of names) {
+    const itemRegistryDependencies = await resolveRegistryDependencies(
+      name,
+      config
+    )
+    registryDependencies.push(...itemRegistryDependencies)
+  }
+
+  return Array.from(new Set(registryDependencies))
+}
+
+function createFilesTracker(payload: z.infer<typeof registryItemSchema>[]) {
+  const trackedFiles: any = {}
+
+  payload.forEach((item) => {
+    const parentType = item.type
+
+    if (!item.files) {
+      return
+    }
+
+    item.files.forEach((file) => {
+      trackedFiles[file.path] = {
+        type: file.type,
+        parentType,
+      }
+    })
+  })
+
+  return registryResolvedItemsTreeSchema
+    .pick({ trackers: true })
+    .shape.trackers.shape.files.parse(trackedFiles)
+}
+
+function createDependenciesTracker(
+  payload: z.infer<typeof registryItemSchema>[]
+) {
+  return payload.reduce((tracked, item) => {
+    item.dependencies?.forEach((dep) => {
+      if (!tracked[dep]) tracked[dep] = new Set()
+      tracked[dep].add(item.name)
+    })
+    item.registryDependencies?.forEach((dep) => {
+      if (!tracked[dep]) tracked[dep] = new Set()
+      tracked[dep].add(item.name)
+    })
+    return tracked
+  }, {} as Record<string, Set<string>>)
+}
+
+export function getRegistryTypeAliasMap() {
+  return new Map<string, string>([
+    ["registry:ui", "ui"],
+    ["registry:lib", "lib"],
+    ["registry:hook", "hooks"],
+    ["registry:block", "components"],
+    ["registry:component", "components"],
+  ])
+}
+
+// Track a dependency and its parent.
+export function getRegistryParentMap(
+  registryItems: z.infer<typeof registryItemSchema>[]
+) {
+  const map = new Map<string, z.infer<typeof registryItemSchema>>()
+  registryItems.forEach((item) => {
+    if (!item.registryDependencies) {
+      return
+    }
+
+    item.registryDependencies.forEach((dependency) => {
+      map.set(dependency, item)
+    })
+  })
+  return map
 }
