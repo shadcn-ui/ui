@@ -29,6 +29,7 @@ const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:hook",
   "registry:theme",
   "registry:block",
+  "registry:story",
   "registry:example",
   "registry:internal",
 ]
@@ -320,10 +321,21 @@ async function buildStyles(registry: Registry) {
 
             let content: string
             try {
-              content = await fs.readFile(
-                path.join(process.cwd(), "registry", style.name, file.path),
-                "utf8"
-              )
+              content =
+                file.type == "registry:story"
+                  ? await fs.readFile(
+                      path.join(process.cwd(), "registry", file.path),
+                      "utf8"
+                    )
+                  : await fs.readFile(
+                      path.join(
+                        process.cwd(),
+                        "registry",
+                        style.name,
+                        file.path
+                      ),
+                      "utf8"
+                    )
 
               // Only fix imports for v0- blocks.
               if (item.name.startsWith("v0-")) {

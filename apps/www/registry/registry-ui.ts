@@ -10,6 +10,7 @@ export const ui: Registry = [
         path: "ui/accordion.tsx",
         type: "registry:ui",
       },
+      { path: "stories/accordion.stories.tsx", type: "registry:story" },
     ],
     tailwind: {
       config: {
@@ -42,6 +43,7 @@ export const ui: Registry = [
         path: "ui/alert.tsx",
         type: "registry:ui",
       },
+      { path: "stories/alert.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -54,6 +56,7 @@ export const ui: Registry = [
         path: "ui/alert-dialog.tsx",
         type: "registry:ui",
       },
+      { path: "stories/alert-dialog.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -65,6 +68,7 @@ export const ui: Registry = [
         path: "ui/aspect-ratio.tsx",
         type: "registry:ui",
       },
+      { path: "stories/aspect-ratio.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -76,6 +80,7 @@ export const ui: Registry = [
         path: "ui/avatar.tsx",
         type: "registry:ui",
       },
+      { path: "stories/avatar.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -86,6 +91,7 @@ export const ui: Registry = [
         path: "ui/badge.tsx",
         type: "registry:ui",
       },
+      { path: "stories/badge.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -97,6 +103,7 @@ export const ui: Registry = [
         path: "ui/breadcrumb.tsx",
         type: "registry:ui",
       },
+      { path: "stories/breadcrumb.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -108,6 +115,7 @@ export const ui: Registry = [
         path: "ui/button.tsx",
         type: "registry:ui",
       },
+      { path: "stories/button.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -120,6 +128,7 @@ export const ui: Registry = [
         path: "ui/calendar.tsx",
         type: "registry:ui",
       },
+      { path: "stories/calendar.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -130,6 +139,7 @@ export const ui: Registry = [
         path: "ui/card.tsx",
         type: "registry:ui",
       },
+      { path: "stories/card.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -140,6 +150,7 @@ export const ui: Registry = [
         path: "ui/carousel.tsx",
         type: "registry:ui",
       },
+      { path: "stories/carousel.stories.tsx", type: "registry:story" },
     ],
     registryDependencies: ["button"],
     dependencies: ["embla-carousel-react"],
@@ -152,6 +163,7 @@ export const ui: Registry = [
         path: "ui/chart.tsx",
         type: "registry:ui",
       },
+      { path: "stories/chart.stories.tsx", type: "registry:story" },
     ],
     registryDependencies: ["card"],
     dependencies: ["recharts", "lucide-react"],
@@ -165,6 +177,7 @@ export const ui: Registry = [
         path: "ui/checkbox.tsx",
         type: "registry:ui",
       },
+      { path: "stories/checkbox.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -176,6 +189,7 @@ export const ui: Registry = [
         path: "ui/collapsible.tsx",
         type: "registry:ui",
       },
+      { path: "stories/collapsible.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -188,6 +202,7 @@ export const ui: Registry = [
         path: "ui/command.tsx",
         type: "registry:ui",
       },
+      { path: "stories/command.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -199,6 +214,7 @@ export const ui: Registry = [
         path: "ui/context-menu.tsx",
         type: "registry:ui",
       },
+      { path: "stories/context-menu.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -210,6 +226,7 @@ export const ui: Registry = [
         path: "ui/dialog.tsx",
         type: "registry:ui",
       },
+      { path: "stories/dialog.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -221,6 +238,7 @@ export const ui: Registry = [
         path: "ui/drawer.tsx",
         type: "registry:ui",
       },
+      { path: "stories/drawer.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -232,6 +250,7 @@ export const ui: Registry = [
         path: "ui/dropdown-menu.tsx",
         type: "registry:ui",
       },
+      { path: "stories/dropdown-menu.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -250,6 +269,7 @@ export const ui: Registry = [
         path: "ui/form.tsx",
         type: "registry:ui",
       },
+      { path: "stories/form.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -261,6 +281,7 @@ export const ui: Registry = [
         path: "ui/hover-card.tsx",
         type: "registry:ui",
       },
+      { path: "stories/hover-card.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -271,6 +292,7 @@ export const ui: Registry = [
         path: "ui/input.tsx",
         type: "registry:ui",
       },
+      { path: "stories/input.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -282,6 +304,7 @@ export const ui: Registry = [
         path: "ui/input-otp.tsx",
         type: "registry:ui",
       },
+      { path: "stories/input-otp.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -293,6 +316,7 @@ export const ui: Registry = [
         path: "ui/label.tsx",
         type: "registry:ui",
       },
+      { path: "stories/label.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -304,6 +328,7 @@ export const ui: Registry = [
         path: "ui/menubar.tsx",
         type: "registry:ui",
       },
+      { path: "stories/menubar.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -315,6 +340,7 @@ export const ui: Registry = [
         path: "ui/navigation-menu.tsx",
         type: "registry:ui",
       },
+      { path: "stories/navigation-menu.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -326,6 +352,7 @@ export const ui: Registry = [
         path: "ui/pagination.tsx",
         type: "registry:ui",
       },
+      { path: "stories/pagination.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -337,6 +364,7 @@ export const ui: Registry = [
         path: "ui/popover.tsx",
         type: "registry:ui",
       },
+      { path: "stories/popover.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -348,6 +376,7 @@ export const ui: Registry = [
         path: "ui/progress.tsx",
         type: "registry:ui",
       },
+      { path: "stories/progress.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -359,6 +388,7 @@ export const ui: Registry = [
         path: "ui/radio-group.tsx",
         type: "registry:ui",
       },
+      { path: "stories/radio-group.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -370,6 +400,7 @@ export const ui: Registry = [
         path: "ui/resizable.tsx",
         type: "registry:ui",
       },
+      { path: "stories/resizable.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -381,6 +412,7 @@ export const ui: Registry = [
         path: "ui/scroll-area.tsx",
         type: "registry:ui",
       },
+      { path: "stories/scroll-area.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -392,6 +424,7 @@ export const ui: Registry = [
         path: "ui/select.tsx",
         type: "registry:ui",
       },
+      { path: "stories/select.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -403,6 +436,7 @@ export const ui: Registry = [
         path: "ui/separator.tsx",
         type: "registry:ui",
       },
+      { path: "stories/separator.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -414,6 +448,7 @@ export const ui: Registry = [
         path: "ui/sheet.tsx",
         type: "registry:ui",
       },
+      { path: "stories/sheet.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -490,6 +525,7 @@ export const ui: Registry = [
         path: "ui/skeleton.tsx",
         type: "registry:ui",
       },
+      { path: "stories/skeleton.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -501,6 +537,7 @@ export const ui: Registry = [
         path: "ui/slider.tsx",
         type: "registry:ui",
       },
+      { path: "stories/slider.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -512,6 +549,7 @@ export const ui: Registry = [
         path: "ui/sonner.tsx",
         type: "registry:ui",
       },
+      { path: "stories/sonner.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -523,6 +561,7 @@ export const ui: Registry = [
         path: "ui/switch.tsx",
         type: "registry:ui",
       },
+      { path: "stories/switch.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -533,6 +572,7 @@ export const ui: Registry = [
         path: "ui/table.tsx",
         type: "registry:ui",
       },
+      { path: "stories/table.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -544,6 +584,7 @@ export const ui: Registry = [
         path: "ui/tabs.tsx",
         type: "registry:ui",
       },
+      { path: "stories/tabs.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -554,6 +595,7 @@ export const ui: Registry = [
         path: "ui/textarea.tsx",
         type: "registry:ui",
       },
+      { path: "stories/textarea.stories.tsx", type: "registry:story" },
     ],
   },
   {
@@ -573,6 +615,10 @@ export const ui: Registry = [
         path: "ui/toaster.tsx",
         type: "registry:ui",
       },
+      {
+        path: "stories/toast.stories.tsx",
+        type: "registry:story",
+      },
     ],
   },
   {
@@ -583,6 +629,10 @@ export const ui: Registry = [
       {
         path: "ui/toggle.tsx",
         type: "registry:ui",
+      },
+      {
+        path: "stories/toggle.stories.tsx",
+        type: "registry:story",
       },
     ],
   },
@@ -596,6 +646,10 @@ export const ui: Registry = [
         path: "ui/toggle-group.tsx",
         type: "registry:ui",
       },
+      {
+        path: "stories/toggle-group.stories.tsx",
+        type: "registry:story",
+      },
     ],
   },
   {
@@ -607,6 +661,7 @@ export const ui: Registry = [
         path: "ui/tooltip.tsx",
         type: "registry:ui",
       },
+      { path: "stories/tooltip.stories.tsx", type: "registry:story" },
     ],
   },
 ]
