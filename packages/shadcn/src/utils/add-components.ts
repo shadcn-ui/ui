@@ -199,6 +199,11 @@ async function addWorkspaceComponents(
 
   rootSpinner?.succeed()
 
+  // Sort files.
+  filesCreated.sort()
+  filesUpdated.sort()
+  filesSkipped.sort()
+
   const hasUpdatedFiles = filesCreated.length || filesUpdated.length
   if (!hasUpdatedFiles && !filesSkipped.length) {
     spinner(`No files updated.`, {
