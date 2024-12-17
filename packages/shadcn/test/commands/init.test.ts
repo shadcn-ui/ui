@@ -41,6 +41,7 @@ test.skip("init config-full", async () => {
         theme: {
           extend: {
             borderRadius: {
+              xl: "calc(var(--radius) + 4px)",
               lg: "var(--radius)",
               md: "calc(var(--radius) - 2px)",
               sm: "calc(var(--radius) - 4px)",
@@ -132,6 +133,7 @@ test.skip("init config-partial", async () => {
         theme: {
           extend: {
             borderRadius: {
+              xl: "calc(var(--radius) + 4px)",
               lg: "var(--radius)",
               md: "calc(var(--radius) - 2px)",
               sm: "calc(var(--radius) - 4px)",

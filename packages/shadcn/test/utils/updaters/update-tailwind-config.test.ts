@@ -2,10 +2,12 @@ import { Project, SyntaxKind } from "ts-morph"
 import { beforeEach, describe, expect, test } from "vitest"
 
 import {
-  buildTailwindThemeColorsFromCssVars, nestSpreadElements,
+  buildTailwindThemeColorsFromCssVars,
+  nestSpreadElements,
   nestSpreadProperties,
   transformTailwindConfig,
-  unnestSpreadProperties, unnsetSpreadElements,
+  unnestSpreadProperties,
+  unnsetSpreadElements,
 } from "../../../src/utils/updaters/update-tailwind-config"
 
 const SHARED_CONFIG = {
@@ -664,6 +666,7 @@ export default config
                 },
               },
               borderRadius: {
+                xl: "calc(var(--radius) + 4px)",
                 lg: "var(--radius)",
                 md: "calc(var(--radius) - 2px)",
                 sm: "calc(var(--radius) - 4px)",
@@ -739,6 +742,7 @@ export default config
             },
           },
           borderRadius: {
+            xl: "calc(var(--radius) + 4px)",
             lg: "var(--radius)",
             md: "calc(var(--radius) - 2px)",
             sm: "calc(var(--radius) - 4px)",
@@ -844,8 +848,8 @@ export default config
           theme: {
             extend: {
               fontFamily: {
-                mono: ['Foo']
-              }
+                mono: ["Foo"],
+              },
             },
           },
         },
@@ -888,14 +892,14 @@ export default config
             extend: {
               fontSize: {
                 xl: [
-                  'clamp(1.5rem, 1.04vi + 1.17rem, 2rem)',
+                  "clamp(1.5rem, 1.04vi + 1.17rem, 2rem)",
                   {
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.02em',
-                    fontWeight: '600',
+                    lineHeight: "1.2",
+                    letterSpacing: "-0.02em",
+                    fontWeight: "600",
                   },
                 ],
-              }
+              },
             },
           },
         },
@@ -1032,10 +1036,7 @@ describe("nestSpreadElements", () => {
   }
 
   test("should spread elements", () => {
-    testTransformation(
-      `[...bar]`,
-      `["...bar"]`
-    )
+    testTransformation(`[...bar]`, `["...bar"]`)
   })
 
   test("should handle mixed element types", () => {
@@ -1053,17 +1054,11 @@ describe("nestSpreadElements", () => {
   })
 
   test("should handle nested arrays with spreads", () => {
-    testTransformation(
-      `[...foo, [...bar]]`,
-      `["...foo", ["...bar"]]`
-    )
+    testTransformation(`[...foo, [...bar]]`, `["...foo", ["...bar"]]`)
   })
 
   test("should handle nested arrays within objects", () => {
-    testTransformation(
-      `[{ foo: [...foo] }]`,
-      `[{ foo: ["...foo"] }]`
-    )
+    testTransformation(`[{ foo: [...foo] }]`, `[{ foo: ["...foo"] }]`)
   })
 
   test("should handle deeply nested arrays within spread objects", () => {
@@ -1074,24 +1069,18 @@ describe("nestSpreadElements", () => {
   })
 
   test("should handle optional paths in spread", () => {
-    testTransformation(
-      `[{ foo: [...foo?.bar] }]`,
-      `[{ foo: ["...foo?.bar"] }]`
-    )
+    testTransformation(`[{ foo: [...foo?.bar] }]`, `[{ foo: ["...foo?.bar"] }]`)
   })
 
-  test('should handle computed property paths within spread', () => {
+  test("should handle computed property paths within spread", () => {
     testTransformation(
       `[{ foo: [...foo["bar"]] }]`,
       `[{ foo: ["...foo["bar"]"] }]`
     )
   })
 
-  test('should handle indexed paths in spread', () => {
-    testTransformation(
-      `[{ foo: [...foo[0]] }]`,
-      `[{ foo: ["...foo[0]"] }]`
-    )
+  test("should handle indexed paths in spread", () => {
+    testTransformation(`[{ foo: [...foo[0]] }]`, `[{ foo: ["...foo[0]"] }]`)
   })
 })
 
@@ -1193,74 +1182,58 @@ describe("unnestSpreadElements", () => {
   }
 
   test("should spread elements", () => {
-    testTransformation(
-      `["...bar"]`,
-      `[...bar]`,
-    )
+    testTransformation(`["...bar"]`, `[...bar]`)
   })
 
   test("should handle mixed element types", () => {
     testTransformation(
       `['foo', 2, true, "...bar", "baz"]`,
-      `['foo', 2, true, ...bar, "baz"]`,
+      `['foo', 2, true, ...bar, "baz"]`
     )
   })
 
   test("should handle arrays with only spread elements", () => {
     testTransformation(
       `["...foo", "...foo.bar", "...baz"]`,
-      `[...foo, ...foo.bar, ...baz]`,
+      `[...foo, ...foo.bar, ...baz]`
     )
   })
 
   test("should handle nested arrays with spreads", () => {
-    testTransformation(
-      `["...foo", ["...bar"]]`,
-      `[...foo, [...bar]]`,
-    )
+    testTransformation(`["...foo", ["...bar"]]`, `[...foo, [...bar]]`)
   })
 
   test("should handle nested arrays within objects", () => {
-    testTransformation(
-      `[{ foo: ["...foo"] }]`,
-      `[{ foo: [...foo] }]`,
-    )
+    testTransformation(`[{ foo: ["...foo"] }]`, `[{ foo: [...foo] }]`)
   })
 
   test("should handle deeply nested arrays within spread objects", () => {
     testTransformation(
       `[{ foo: ["...foo", { bar: ['bar', "...bar" ]}] }]`,
-      `[{ foo: [...foo, { bar: ['bar', ...bar ]}] }]`,
+      `[{ foo: [...foo, { bar: ['bar', ...bar ]}] }]`
     )
   })
 
   test("should handle optional paths in spread", () => {
-    testTransformation(
-      `[{ foo: ["...foo?.bar"] }]`,
-      `[{ foo: [...foo?.bar] }]`,
-
-    )
+    testTransformation(`[{ foo: ["...foo?.bar"] }]`, `[{ foo: [...foo?.bar] }]`)
   })
 
   test("should handle computed property paths (') within spread", () => {
     testTransformation(
       `[{ foo: ["...foo['bar']"] }]`,
-      `[{ foo: [...foo['bar']] }]`,
+      `[{ foo: [...foo['bar']] }]`
     )
   })
 
   test('should handle computed property paths (") within spread', () => {
     testTransformation(
       `[{ foo: ['...foo["bar"]'] }]`,
-      `[{ foo: [...foo["bar"]] }]`,
+      `[{ foo: [...foo["bar"]] }]`
     )
   })
 
-  test('should handle indexed paths in spread', () => {
-    testTransformation(
-      `[{ foo: ["...foo[0]"] }]`,
-      `[{ foo: [...foo[0]] }]`,
-    )
+  test("should handle indexed paths in spread", () => {
+    testTransformation(`[{ foo: ["...foo[0]"] }]`, `[{ foo: [...foo[0]] }]`)
   })
 })
 
