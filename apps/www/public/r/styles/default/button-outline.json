@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/button-outline.tsx",
+      "path": "examples/button-outline.tsx",
       "content": "import { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonOutline() {\n  return <Button variant=\"outline\">Outline</Button>\n}\n",
       "type": "registry:example",
       "target": ""

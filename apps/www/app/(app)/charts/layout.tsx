@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 
 import { Announcement } from "@/components/announcement"
+import { ChartsNav } from "@/components/charts-nav"
 import {
   PageActions,
   PageHeader,
@@ -22,7 +23,7 @@ export default function ChartsLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="relative">
+    <>
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>Beautiful Charts</PageHeaderHeading>
@@ -38,11 +39,20 @@ export default function ChartsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container py-6">
-        <section id="charts" className="scroll-mt-20">
-          {children}
-        </section>
+      <div className="border-grid border-b">
+        <div className="container-wrapper">
+          <div className="container py-4">
+            <ChartsNav />
+          </div>
+        </div>
       </div>
-    </div>
+      <div className="container-wrapper">
+        <div className="container py-6">
+          <section id="charts" className="scroll-mt-20">
+            {children}
+          </section>
+        </div>
+      </div>
+    </>
   )
 }
