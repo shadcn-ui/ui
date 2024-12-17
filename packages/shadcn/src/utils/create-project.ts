@@ -1,8 +1,10 @@
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
 import { getPackageManager } from "@/src/utils/get-package-manager"
+import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { fetchRegistry } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
@@ -10,7 +12,10 @@ import prompts from "prompts"
 import { z } from "zod"
 
 export async function createProject(
-  options: Pick<z.infer<typeof initOptionsSchema>, "cwd" | "force" | "srcDir">
+  options: Pick<
+    z.infer<typeof initOptionsSchema>,
+    "cwd" | "force" | "srcDir" | "components"
+  >
 ) {
   options = {
     srcDir: false,
@@ -19,6 +24,27 @@ export async function createProject(
 
   let projectType: "next" | "monorepo" = "next"
   let projectName: string = "my-app"
+  let nextVersion = "14.2.16"
+
+  const isRemoteComponent =
+    options.components?.length === 1 &&
+    !!options.components[0].match(/\/chat\/b\//)
+  if (options.components && isRemoteComponent) {
+    try {
+      const [result] = await fetchRegistry(options.components)
+      const { meta } = z
+        .object({
+          meta: z.object({
+            nextVersion: z.string(),
+          }),
+        })
+        .parse(result)
+      nextVersion = meta.nextVersion
+    } catch (error) {
+      logger.break()
+      handleError(error)
+    }
+  }
 
   if (!options.force) {
     const { type, name } = await prompts([
@@ -97,6 +123,7 @@ export async function createProject(
       cwd: options.cwd,
       packageManager,
       srcDir: !!options.srcDir,
+      nextVersion,
     })
   }
 
@@ -120,6 +147,7 @@ async function createNextProject(
     cwd: string
     packageManager: string
     srcDir: boolean
+    nextVersion: string
   }
 ) {
   const createSpinner = spinner(
@@ -136,6 +164,10 @@ async function createNextProject(
     "--no-import-alias",
     `--use-${options.packageManager}`,
   ]
+
+  if (options.nextVersion.startsWith("15")) {
+    args.push("--turbopack")
+  }
 
   try {
     await execa(

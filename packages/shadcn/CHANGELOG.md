@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.1.8
+
+### Patch Changes
+
+- [#6093](https://github.com/shadcn-ui/ui/pull/6093) [`c8fda09`](https://github.com/shadcn-ui/ui/commit/c8fda09a63f793e9e2e5a86d8f8faad5af9d1ab4) Thanks [@shadcn](https://github.com/shadcn)! - detect and use next version
+
 ## 2.1.7
 
 ### Patch Changes

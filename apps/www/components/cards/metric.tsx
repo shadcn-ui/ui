@@ -1,9 +1,7 @@
 "use client"
 
-import { useTheme } from "next-themes"
-import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts"
+import { Line, LineChart } from "recharts"
 
-import { useConfig } from "@/hooks/use-config"
 import {
   Card,
   CardContent,
@@ -17,7 +15,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/new-york/ui/chart"
-import { baseColors } from "@/registry/registry-base-colors"
 
 const data = [
   {
@@ -57,7 +54,7 @@ const chartConfig = {
   },
   average: {
     label: "Average",
-    color: "hsl(var(--muted-foreground))",
+    color: "hsl(var(--primary))",
   },
 } satisfies ChartConfig
 
@@ -71,7 +68,7 @@ export function CardsMetric() {
         </CardDescription>
       </CardHeader>
       <CardContent className="pb-4">
-        <ChartContainer config={chartConfig} className="h-[200px] w-full">
+        <ChartContainer config={chartConfig} className="w-full md:h-[200px]">
           <LineChart
             data={data}
             margin={{
@@ -86,6 +83,7 @@ export function CardsMetric() {
               strokeWidth={2}
               dataKey="average"
               stroke="var(--color-average)"
+              strokeOpacity={0.5}
               activeDot={{
                 r: 6,
                 fill: "var(--color-average)",
