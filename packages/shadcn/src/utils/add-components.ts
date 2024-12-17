@@ -45,12 +45,11 @@ export async function addComponents(
     workspaceConfig &&
     workspaceConfig?.ui.resolvedPaths.cwd !== config.resolvedPaths.cwd
   ) {
-    return await addWorkspaceComponents(
-      components,
-      config,
-      workspaceConfig,
-      options
-    )
+    return await addWorkspaceComponents(components, config, workspaceConfig, {
+      ...options,
+      isRemote:
+        components?.length === 1 && !!components[0].match(/\/chat\/b\//),
+    })
   }
 
   return await addProjectComponents(components, config, options)
@@ -104,6 +103,7 @@ async function addWorkspaceComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    isRemote?: boolean
   }
 ) {
   const registrySpinner = spinner(`Checking registry.`, {
@@ -181,6 +181,7 @@ async function addWorkspaceComponents(
       overwrite: options.overwrite,
       silent: true,
       rootSpinner,
+      isRemote: options.isRemote,
     })
 
     filesCreated.push(

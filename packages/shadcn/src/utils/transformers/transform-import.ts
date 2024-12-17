@@ -6,13 +6,18 @@ const COMMON_CN_IMPORTS = {
   "@workspace/lib/utils": /^@workspace\/lib\/utils/,
 }
 
-export const transformImport: Transformer = async ({ sourceFile, config }) => {
+export const transformImport: Transformer = async ({
+  sourceFile,
+  config,
+  isRemote,
+}) => {
   const importDeclarations = sourceFile.getImportDeclarations()
 
   for (const importDeclaration of importDeclarations) {
     const moduleSpecifier = updateImportAliases(
       importDeclaration.getModuleSpecifierValue(),
-      config
+      config,
+      isRemote
     )
 
     importDeclaration.setModuleSpecifier(moduleSpecifier)
@@ -37,10 +42,19 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
   return sourceFile
 }
 
-function updateImportAliases(moduleSpecifier: string, config: Config) {
+function updateImportAliases(
+  moduleSpecifier: string,
+  config: Config,
+  isRemote: boolean = false
+) {
   // Not a local import.
-  if (!moduleSpecifier.startsWith("@/")) {
+  if (!moduleSpecifier.startsWith("@/") && !isRemote) {
     return moduleSpecifier
+  }
+
+  // This treats the remote as coming from a faux registry.
+  if (isRemote && moduleSpecifier.startsWith("@/")) {
+    moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/new-york/`)
   }
 
   // Not a registry import.

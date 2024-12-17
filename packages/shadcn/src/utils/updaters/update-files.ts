@@ -39,6 +39,7 @@ export async function updateFiles(
     force?: boolean
     silent?: boolean
     rootSpinner?: ReturnType<typeof spinner>
+    isRemote?: boolean
   }
 ) {
   if (!files?.length) {
@@ -52,6 +53,7 @@ export async function updateFiles(
     overwrite: false,
     force: false,
     silent: false,
+    isRemote: false,
     ...options,
   }
   const filesCreatedSpinner = spinner(`Updating files.`, {
@@ -129,6 +131,7 @@ export async function updateFiles(
         config,
         baseColor,
         transformJsx: !config.tsx,
+        isRemote: options.isRemote,
       },
       [
         transformImport,
