@@ -27,7 +27,7 @@ export function PackageManager({
         ).toUTCString()}`
       }}
     >
-      <SelectTrigger className="w-[80px]">
+      <SelectTrigger className="w-[80px] border-none shadow-none">
         <SelectValue placeholder="Pick you package manager" />
       </SelectTrigger>
       <SelectContent>
