@@ -124,7 +124,9 @@ export async function createProject(
   }
 
   if (projectType === "monorepo") {
-    await createMonorepoProject(projectPath)
+    await createMonorepoProject(projectPath, {
+      packageManager,
+    })
   }
 
   return {
@@ -181,12 +183,18 @@ async function createNextProject(
   createSpinner?.succeed("Creating a new Next.js project.")
 }
 
-async function createMonorepoProject(projectPath: string) {
+async function createMonorepoProject(
+  projectPath: string,
+  options: {
+    packageManager: string
+  }
+) {
   const createSpinner = spinner(
     `Creating a new Next.js monorepo. This may take a few minutes.`
   ).start()
 
   try {
+    // Get the template.
     const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
     await fs.ensureDir(templatePath)
     const response = await fetch(MONOREPO_TEMPLATE_URL)
@@ -209,6 +217,11 @@ async function createMonorepoProject(projectPath: string) {
     await fs.move(extractedPath, projectPath)
     await fs.remove(templatePath)
 
+    // Run install.
+    await execa(options.packageManager, ["install"], {
+      cwd: projectPath,
+    })
+
     // Try git init.
     const cwd = process.cwd()
     await execa("git", ["--version"], { cwd: projectPath })
@@ -218,14 +231,10 @@ async function createMonorepoProject(projectPath: string) {
       cwd: projectPath,
     })
     await execa("cd", [cwd])
-  } catch (error) {
-    console.log(error)
-    logger.break()
-    logger.error(
-      `Something went wrong creating a new Next.js project. Please try again.`
-    )
-    process.exit(1)
-  }
 
-  createSpinner?.succeed("Creating a new Next.js monorepo.")
+    createSpinner?.succeed("Creating a new Next.js monorepo.")
+  } catch (error) {
+    createSpinner?.fail("Something went wrong creating a new Next.js monorepo.")
+    handleError(error)
+  }
 }
