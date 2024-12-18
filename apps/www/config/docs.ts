@@ -72,6 +72,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Monorepo",
+          href: "/docs/monorepo",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Next.js 15 + React 19",
           href: "/docs/react-19",
           items: [],
@@ -141,12 +147,6 @@ export const docsConfig: DocsConfig = {
     {
       title: "Components",
       items: [
-        {
-          title: "Sidebar",
-          href: "/docs/components/sidebar",
-          items: [],
-          label: "New",
-        },
         {
           title: "Accordion",
           href: "/docs/components/accordion",
@@ -335,6 +335,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Sheet",
           href: "/docs/components/sheet",
+          items: [],
+        },
+        {
+          title: "Sidebar",
+          href: "/docs/components/sidebar",
           items: [],
         },
         {

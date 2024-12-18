@@ -1,24 +1,39 @@
 import { Config } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
 
-export const transformImport: Transformer = async ({ sourceFile, config }) => {
+const COMMON_CN_IMPORTS = {
+  "@/lib/utils": /^@\/lib\/utils/,
+  "@workspace/lib/utils": /^@workspace\/lib\/utils/,
+}
+
+export const transformImport: Transformer = async ({
+  sourceFile,
+  config,
+  isRemote,
+}) => {
   const importDeclarations = sourceFile.getImportDeclarations()
 
   for (const importDeclaration of importDeclarations) {
     const moduleSpecifier = updateImportAliases(
       importDeclaration.getModuleSpecifierValue(),
-      config
+      config,
+      isRemote
     )
 
     importDeclaration.setModuleSpecifier(moduleSpecifier)
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (moduleSpecifier == "@/lib/utils") {
+    if (COMMON_CN_IMPORTS[moduleSpecifier as keyof typeof COMMON_CN_IMPORTS]) {
       const namedImports = importDeclaration.getNamedImports()
       const cnImport = namedImports.find((i) => i.getName() === "cn")
       if (cnImport) {
         importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(/^@\/lib\/utils/, config.aliases.utils)
+          moduleSpecifier.replace(
+            COMMON_CN_IMPORTS[
+              moduleSpecifier as keyof typeof COMMON_CN_IMPORTS
+            ],
+            config.aliases.utils
+          )
         )
       }
     }
@@ -27,10 +42,19 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
   return sourceFile
 }
 
-function updateImportAliases(moduleSpecifier: string, config: Config) {
+function updateImportAliases(
+  moduleSpecifier: string,
+  config: Config,
+  isRemote: boolean = false
+) {
   // Not a local import.
-  if (!moduleSpecifier.startsWith("@/")) {
+  if (!moduleSpecifier.startsWith("@/") && !isRemote) {
     return moduleSpecifier
+  }
+
+  // This treats the remote as coming from a faux registry.
+  if (isRemote && moduleSpecifier.startsWith("@/")) {
+    moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/new-york/`)
   }
 
   // Not a registry import.

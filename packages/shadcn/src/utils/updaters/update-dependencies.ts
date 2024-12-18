@@ -66,6 +66,7 @@ export async function updateDependencies(
       cwd: config.resolvedPaths.cwd,
     }
   )
+
   dependenciesSpinner?.succeed()
 }
 

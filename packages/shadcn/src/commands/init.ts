@@ -86,19 +86,26 @@ export async function runInit(
   }
 ) {
   let projectInfo
+  let newProjectType
   if (!options.skipPreflight) {
     const preflight = await preFlightInit(options)
     if (preflight.errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-      const { projectPath } = await createProject(options)
+      const { projectPath, projectType } = await createProject(options)
       if (!projectPath) {
         process.exit(1)
       }
       options.cwd = projectPath
       options.isNewProject = true
+      newProjectType = projectType
     }
     projectInfo = preflight.projectInfo
   } else {
     projectInfo = await getProjectInfo(options.cwd)
+  }
+
+  if (newProjectType === "monorepo") {
+    options.cwd = path.resolve(options.cwd, "apps/web")
+    return await getConfig(options.cwd)
   }
 
   const projectConfig = await getProjectConfig(options.cwd, projectInfo)

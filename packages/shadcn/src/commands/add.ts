@@ -4,6 +4,7 @@ import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
+import { getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -112,7 +113,7 @@ export const add = new Command()
 
       let shouldUpdateAppIndex = false
       if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-        const { projectPath } = await createProject({
+        const { projectPath, projectType } = await createProject({
           cwd: options.cwd,
           force: options.overwrite,
           srcDir: options.srcDir,
@@ -124,20 +125,25 @@ export const add = new Command()
         }
         options.cwd = projectPath
 
-        config = await runInit({
-          cwd: options.cwd,
-          yes: true,
-          force: true,
-          defaults: false,
-          skipPreflight: true,
-          silent: true,
-          isNewProject: true,
-          srcDir: options.srcDir,
-        })
+        if (projectType === "monorepo") {
+          options.cwd = path.resolve(options.cwd, "apps/web")
+          config = await getConfig(options.cwd)
+        } else {
+          config = await runInit({
+            cwd: options.cwd,
+            yes: true,
+            force: true,
+            defaults: false,
+            skipPreflight: true,
+            silent: true,
+            isNewProject: true,
+            srcDir: options.srcDir,
+          })
 
-        shouldUpdateAppIndex =
-          options.components?.length === 1 &&
-          !!options.components[0].match(/\/chat\/b\//)
+          shouldUpdateAppIndex =
+            options.components?.length === 1 &&
+            !!options.components[0].match(/\/chat\/b\//)
+        }
       }
 
       if (!config) {

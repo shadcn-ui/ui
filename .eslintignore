@@ -1,0 +1,8 @@
+node_modules/
+target/
+.next/
+build/
+dist/
+
+/templates/
+/fixtures/
