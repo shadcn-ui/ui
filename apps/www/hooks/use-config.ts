@@ -1,8 +1,9 @@
-import { useAtom } from "jotai"
-import { atomWithStorage } from "jotai/utils"
+import { useAtom, useAtomValue } from "jotai"
+import { atomWithStorage, selectAtom } from "jotai/utils"
 
 import { BaseColor } from "@/registry/registry-base-colors"
 import { Style } from "@/registry/registry-styles"
+import { useMemo } from "react"
 
 type Config = {
   style: Style["name"]
@@ -20,4 +21,12 @@ const configAtom = atomWithStorage<Config>("config", {
 
 export function useConfig() {
   return useAtom(configAtom)
+}
+
+export function useConfigValue<K extends keyof Config>(key: K) {
+  const selectedAtom = useMemo(
+    () => selectAtom(configAtom, (config) => config[key]),
+    [key]
+  )
+  return useAtomValue(selectedAtom)
 }
