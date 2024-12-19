@@ -16,7 +16,8 @@ export function CodeBlockCommand({
   __pnpmCommand__,
   __bunCommand__,
 }: React.ComponentProps<"pre"> & NpmCommands) {
-  const [configPackageManager, setConfigPackageManager] = useConfigPackageManager()
+  const [configPackageManager, setConfigPackageManager] =
+    useConfigPackageManager()
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
