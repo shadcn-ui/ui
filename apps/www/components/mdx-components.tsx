@@ -9,7 +9,7 @@ import { NpmCommands } from "types/unist"
 
 import { Event } from "@/lib/events"
 import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
+import { useConfigValue } from "@/hooks/use-config"
 import { Callout } from "@/components/callout"
 import { CodeBlockCommand } from "@/components/code-block-command"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
@@ -140,7 +140,7 @@ const components = {
     <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-y-auto">
+    <div className="w-full my-6 overflow-y-auto">
       <table
         className={cn(
           "relative w-full overflow-hidden border-none text-sm",
@@ -243,7 +243,7 @@ const components = {
   ComponentSource,
   AspectRatio,
   CodeBlockWrapper: ({ ...props }) => (
-    <CodeBlockWrapper className="rounded-md border" {...props} />
+    <CodeBlockWrapper className="border rounded-md" {...props} />
   ),
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
@@ -327,9 +327,9 @@ interface MdxProps {
 }
 
 export function Mdx({ code }: MdxProps) {
-  const [config] = useConfig()
+  const style = useConfigValue("style")
   const Component = useMDXComponent(code, {
-    style: config.style,
+    style,
   })
 
   return (

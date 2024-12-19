@@ -4,7 +4,7 @@ import * as React from "react"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { NpmCommands } from "@/types/unist"
-import { useConfigPackageManager } from "@/hooks/use-config-package-manager"
+import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Tabs } from "@/registry/default/ui/tabs"
 import { Button } from "@/registry/new-york/ui/button"
@@ -16,8 +16,7 @@ export function CodeBlockCommand({
   __pnpmCommand__,
   __bunCommand__,
 }: React.ComponentProps<"pre"> & NpmCommands) {
-  const [configPackageManager, setConfigPackageManager] =
-    useConfigPackageManager()
+  const [config, setConfig] = useConfig()
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
@@ -27,7 +26,7 @@ export function CodeBlockCommand({
     }
   }, [hasCopied])
 
-  const packageManager = configPackageManager || "pnpm"
+  const packageManager = config.packageManager || "pnpm"
   const tabs = React.useMemo(() => {
     return {
       pnpm: __pnpmCommand__,
@@ -59,7 +58,10 @@ export function CodeBlockCommand({
       <Tabs
         defaultValue={packageManager}
         onValueChange={(value) => {
-          setConfigPackageManager(value as "pnpm" | "npm" | "yarn" | "bun")
+          setConfig({
+            ...config,
+            packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
+          })
         }}
       >
         <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-3 pt-2.5">
