@@ -210,7 +210,7 @@ async function createMonorepoProject(
       "-C",
       templatePath,
       "--strip-components=2",
-      "ui-shadcn-cli-monorepo/templates/monorepo-next",
+      "ui-main/templates/monorepo-next",
     ])
     const extractedPath = path.resolve(templatePath, "monorepo-next")
     await fs.move(extractedPath, projectPath)
