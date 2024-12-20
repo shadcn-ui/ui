@@ -34,6 +34,9 @@ export async function editInV0({
     // Remove v0 prefix from the name
     registryItem.name = registryItem.name.replace(/^v0-/, "")
 
+    const projectName = capitalCase(name.replace(/\d+/g, ""))
+    registryItem.description = registryItem.description || projectName
+
     // Replace `@/registry/new-york/` in files.
     registryItem.files = registryItem.files?.map((file) => {
       if (file.content?.includes("@/registry/new-york/ui")) {
@@ -53,7 +56,7 @@ export async function editInV0({
         url,
       },
       meta: {
-        project: capitalCase(name.replace(/\d+/g, "")),
+        project: projectName,
         file: `${name}.tsx`,
       },
     }
