@@ -3444,6 +3444,36 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "calendar-dropdown-demo": {
+      name: "calendar-dropdown-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/examples/calendar-dropdown-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/calendar-dropdown-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "calendar-full-demo": {
+      name: "calendar-full-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/examples/calendar-full-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/calendar-full-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "calendar-form": {
       name: "calendar-form",
       description: "",
@@ -8696,6 +8726,36 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/calendar-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "calendar-dropdown-demo": {
+      name: "calendar-dropdown-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/examples/calendar-dropdown-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/calendar-dropdown-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "calendar-full-demo": {
+      name: "calendar-full-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/examples/calendar-full-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/calendar-full-demo.tsx")),
       source: "",
       meta: undefined,
     },
