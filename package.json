@@ -10,8 +10,7 @@
   },
   "workspaces": [
     "apps/*",
-    "packages/*",
-    "templates/*"
+    "packages/*"
   ],
   "scripts": {
     "build": "turbo run build",
