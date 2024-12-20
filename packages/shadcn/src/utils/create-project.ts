@@ -28,7 +28,7 @@ export async function createProject(
 
   let projectType: "next" | "monorepo" = "next"
   let projectName: string = "my-app"
-  let nextVersion = "14.2.16"
+  let nextVersion = "15.1.0"
 
   const isRemoteComponent =
     options.components?.length === 1 &&
@@ -60,7 +60,7 @@ export async function createProject(
           options.cwd
         )} does not contain a package.json file.\n  Would you like to start a new project?`,
         choices: [
-          { title: "Next.js", value: "next" },
+          { title: "Next.js 15", value: "next" },
           { title: "Next.js (Monorepo)", value: "monorepo" },
         ],
         initial: 0,
@@ -113,7 +113,7 @@ export async function createProject(
     process.exit(1)
   }
 
-  if (projectType === "next") {
+  if (projectType === "next" || projectType === "next14") {
     await createNextProject(projectPath, {
       version: nextVersion,
       cwd: options.cwd,
