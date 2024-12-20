@@ -299,6 +299,28 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "calendar-dropdown-demo",
+    type: "registry:example",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "examples/calendar-dropdown-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "calendar-full-demo",
+    type: "registry:example",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "examples/calendar-full-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "calendar-form",
     type: "registry:example",
     registryDependencies: ["calendar", "form", "popover"],
