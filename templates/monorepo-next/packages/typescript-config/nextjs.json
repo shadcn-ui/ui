@@ -8,12 +8,6 @@
     "moduleResolution": "Bundler",
     "allowJs": true,
     "jsx": "preserve",
-    "noEmit": true,
-    "paths": {
-      "@/*": ["./*"],
-      "@ui/*": ["../../packages/ui/src/*"],
-      "@ui/components/*": ["../../packages/ui/src/components/ui/*"],
-      "@ui/components/ui/*": ["../../packages/ui/src/components/ui/*"]
-    }
+    "noEmit": true
   }
 }
