@@ -104,7 +104,7 @@ Add the following classes to the `DropdownMenuItem` in your `dropdown-menu.tsx` 
 
 ```diff showLineNumbers title="dropdown-menu.tsx"
 const DropdownMenuItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Item>,
+  React.ComponentRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
     inset?: boolean
   }
