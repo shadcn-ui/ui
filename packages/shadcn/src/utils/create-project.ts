@@ -1,3 +1,4 @@
+import os from "os"
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
 import { getPackageManager } from "@/src/utils/get-package-manager"
@@ -11,6 +12,9 @@ import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
+const MONOREPO_TEMPLATE_URL =
+  "https://codeload.github.com/shadcn-ui/ui/tar.gz/main"
+
 export async function createProject(
   options: Pick<
     z.infer<typeof initOptionsSchema>,
@@ -22,11 +26,14 @@ export async function createProject(
     ...options,
   }
 
-  let nextVersion = "14.2.16"
+  let projectType: "next" | "monorepo" = "next"
+  let projectName: string = "my-app"
+  let nextVersion = "15.1.0"
 
   const isRemoteComponent =
     options.components?.length === 1 &&
     !!options.components[0].match(/\/chat\/b\//)
+
   if (options.components && isRemoteComponent) {
     try {
       const [result] = await fetchRegistry(options.components)
@@ -45,40 +52,41 @@ export async function createProject(
   }
 
   if (!options.force) {
-    const { proceed } = await prompts({
-      type: "confirm",
-      name: "proceed",
-      message: `The path ${highlighter.info(
-        options.cwd
-      )} does not contain a package.json file. Would you like to start a new ${highlighter.info(
-        "Next.js"
-      )} project?`,
-      initial: true,
-    })
+    const { type, name } = await prompts([
+      {
+        type: "select",
+        name: "type",
+        message: `The path ${highlighter.info(
+          options.cwd
+        )} does not contain a package.json file.\n  Would you like to start a new project?`,
+        choices: [
+          { title: "Next.js", value: "next" },
+          { title: "Next.js (Monorepo)", value: "monorepo" },
+        ],
+        initial: 0,
+      },
+      {
+        type: "text",
+        name: "name",
+        message: "What is your project named?",
+        initial: projectName,
+        format: (value: string) => value.trim(),
+        validate: (value: string) =>
+          value.length > 128
+            ? `Name should be less than 128 characters.`
+            : true,
+      },
+    ])
 
-    if (!proceed) {
-      return {
-        projectPath: null,
-        projectName: null,
-      }
-    }
+    projectType = type
+    projectName = name
   }
 
   const packageManager = await getPackageManager(options.cwd, {
     withFallback: true,
   })
 
-  const { name } = await prompts({
-    type: "text",
-    name: "name",
-    message: `What is your project named?`,
-    initial: "my-app",
-    format: (value: string) => value.trim(),
-    validate: (value: string) =>
-      value.length > 128 ? `Name should be less than 128 characters.` : true,
-  })
-
-  const projectPath = `${options.cwd}/${name}`
+  const projectPath = `${options.cwd}/${projectName}`
 
   // Check if path is writable.
   try {
@@ -95,16 +103,47 @@ export async function createProject(
     process.exit(1)
   }
 
-  if (fs.existsSync(path.resolve(options.cwd, name, "package.json"))) {
+  if (fs.existsSync(path.resolve(options.cwd, projectName, "package.json"))) {
     logger.break()
     logger.error(
-      `A project with the name ${highlighter.info(name)} already exists.`
+      `A project with the name ${highlighter.info(projectName)} already exists.`
     )
     logger.error(`Please choose a different name and try again.`)
     logger.break()
     process.exit(1)
   }
 
+  if (projectType === "next") {
+    await createNextProject(projectPath, {
+      version: nextVersion,
+      cwd: options.cwd,
+      packageManager,
+      srcDir: !!options.srcDir,
+    })
+  }
+
+  if (projectType === "monorepo") {
+    await createMonorepoProject(projectPath, {
+      packageManager,
+    })
+  }
+
+  return {
+    projectPath,
+    projectName,
+    projectType,
+  }
+}
+
+async function createNextProject(
+  projectPath: string,
+  options: {
+    version: string
+    cwd: string
+    packageManager: string
+    srcDir: boolean
+  }
+) {
   const createSpinner = spinner(
     `Creating a new Next.js project. This may take a few minutes.`
   ).start()
@@ -117,17 +156,17 @@ export async function createProject(
     "--app",
     options.srcDir ? "--src-dir" : "--no-src-dir",
     "--no-import-alias",
-    `--use-${packageManager}`,
+    `--use-${options.packageManager}`,
   ]
 
-  if (nextVersion.startsWith("15")) {
+  if (options.version.startsWith("15")) {
     args.push("--turbopack")
   }
 
   try {
     await execa(
       "npx",
-      [`create-next-app@${nextVersion}`, projectPath, "--silent", ...args],
+      [`create-next-app@${options.version}`, projectPath, "--silent", ...args],
       {
         cwd: options.cwd,
       }
@@ -141,9 +180,60 @@ export async function createProject(
   }
 
   createSpinner?.succeed("Creating a new Next.js project.")
+}
 
-  return {
-    projectPath,
-    projectName: name,
+async function createMonorepoProject(
+  projectPath: string,
+  options: {
+    packageManager: string
+  }
+) {
+  const createSpinner = spinner(
+    `Creating a new Next.js monorepo. This may take a few minutes.`
+  ).start()
+
+  try {
+    // Get the template.
+    const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
+    await fs.ensureDir(templatePath)
+    const response = await fetch(MONOREPO_TEMPLATE_URL)
+    if (!response.ok) {
+      throw new Error(`Failed to download template: ${response.statusText}`)
+    }
+
+    // Write the tar file
+    const tarPath = path.resolve(templatePath, "template.tar.gz")
+    await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
+    await execa("tar", [
+      "-xzf",
+      tarPath,
+      "-C",
+      templatePath,
+      "--strip-components=2",
+      "ui-main/templates/monorepo-next",
+    ])
+    const extractedPath = path.resolve(templatePath, "monorepo-next")
+    await fs.move(extractedPath, projectPath)
+    await fs.remove(templatePath)
+
+    // Run install.
+    await execa(options.packageManager, ["install"], {
+      cwd: projectPath,
+    })
+
+    // Try git init.
+    const cwd = process.cwd()
+    await execa("git", ["--version"], { cwd: projectPath })
+    await execa("git", ["init"], { cwd: projectPath })
+    await execa("git", ["add", "-A"], { cwd: projectPath })
+    await execa("git", ["commit", "-m", "Initial commit"], {
+      cwd: projectPath,
+    })
+    await execa("cd", [cwd])
+
+    createSpinner?.succeed("Creating a new Next.js monorepo.")
+  } catch (error) {
+    createSpinner?.fail("Something went wrong creating a new Next.js monorepo.")
+    handleError(error)
   }
 }
