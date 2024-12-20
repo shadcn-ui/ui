@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 const DrawerTrigger = DrawerPrimitive.Trigger
 
 const DrawerContent = forwardRef<
-  React.ElementRef<typeof DrawerPrimitive.Content>,
+  React.ComponentRef<typeof DrawerPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
   <DrawerPrimitive.Portal>

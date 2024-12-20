@@ -147,7 +147,7 @@ Add the following classes to the `cva` call in your `command.tsx` file.
 
 ```tsx showLineNumbers title="command.tsx"
 const CommandItem = React.forwardRef<
-  React.ElementRef<typeof CommandPrimitive.Item>,
+  React.ComponentRef<typeof CommandPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.Item
