@@ -5,12 +5,14 @@ description: Using shadcn/ui components and CLI in a monorepo.
 
 <Callout>
   **Note:** We're releasing monorepo support in the CLI as __experimental__.
-  Help us improve it by testing it out and sending feedback.
+  Help us improve it by testing it out and sending feedback. If you have any
+  questions, please [reach out to
+  us](https://github.com/shadcn-ui/ui/discussions).
 </Callout>
 
 Until now, using shadcn/ui in a monorepo was a bit of a pain. You could add
-components using the CLI, but you had to manually manage where the components
-were installed and import paths.
+components using the CLI, but you had to manage where the components
+were installed and manually fix import paths.
 
 With the new monorepo support in the CLI, we've made it a lot easier to use
 shadcn/ui in a monorepo.
@@ -29,7 +31,7 @@ To create a new monorepo project, run the `init` command. You will be prompted
 to select the type of project you are creating.
 
 ```bash
-npx shadcn@latest init
+npx shadcn@canary init
 ```
 
 Select the `Next.js (Monorepo)` option.
@@ -54,15 +56,19 @@ cd apps/web
 ```
 
 ```bash
-npx shadcn@latest add [COMPONENT]
+npx shadcn@canary add [COMPONENT]
 ```
 
 The CLI will figure out what type of component you are adding and install the
-correct files to the correct path. eg. if you run `npx shadcn@latest add button`, the CLI will install the button component under `packages/ui` and update the import path for components in `apps/web`.
+correct files to the correct path.
+
+For example, if you run `npx shadcn@canary add button`, the CLI will install the button component under `packages/ui` and update the import path for components in `apps/web`.
+
+If you run `npx shadcn@canary add login-01`, the CLI will install the `button`, `label`, `input` and `card` components under `packages/ui` and the `login-form` component under `apps/web/components`.
 
 ### Importing components
 
-You can now import components from the `@workspace/ui` package.
+You can import components from the `@workspace/ui` package as follows:
 
 ```tsx
 import { Button } from "@workspace/ui/components/button"
@@ -161,3 +167,9 @@ turbo.json
 3. Ensure you have the same `style`, `iconLibrary` and `baseColor` in both `components.json` files.
 
 By following these requirements, the CLI will be able to install ui components, blocks, libs and hooks to the correct paths and handle imports for you.
+
+## Help us improve monorepo support
+
+We're releasing monorepo support in the CLI as **experimental**. Help us improve it by testing it out and sending feedback.
+
+If you have any questions, please reach out to us on [GitHub Discussions](https://github.com/shadcn-ui/ui/discussions).

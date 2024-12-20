@@ -60,7 +60,7 @@ export async function createProject(
           options.cwd
         )} does not contain a package.json file.\n  Would you like to start a new project?`,
         choices: [
-          { title: "Next.js 15", value: "next" },
+          { title: "Next.js", value: "next" },
           { title: "Next.js (Monorepo)", value: "monorepo" },
         ],
         initial: 0,
