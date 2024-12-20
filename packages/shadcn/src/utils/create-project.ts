@@ -113,7 +113,7 @@ export async function createProject(
     process.exit(1)
   }
 
-  if (projectType === "next" || projectType === "next14") {
+  if (projectType === "next") {
     await createNextProject(projectPath, {
       version: nextVersion,
       cwd: options.cwd,
