@@ -10,6 +10,8 @@ module.exports = {
     "^(next/(.*)$)|^(next$)",
     "<THIRD_PARTY_MODULES>",
     "",
+    "^@workspace/(.*)$",
+    "",
     "^types$",
     "^@/types/(.*)$",
     "^@/config/(.*)$",
