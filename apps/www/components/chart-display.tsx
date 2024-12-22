@@ -5,9 +5,9 @@ import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { ChartToolbar } from "@/components/chart-toolbar"
-import { registryEntrySchema } from "@/registry/schema"
+import { registryItemSchema } from "@/registry/schema"
 
-export type Chart = z.infer<typeof registryEntrySchema> & {
+export type Chart = z.infer<typeof registryItemSchema> & {
   highlightedCode: string
 }
 

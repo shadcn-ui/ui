@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/badge-demo.tsx",
+      "path": "examples/badge-demo.tsx",
       "content": "import { Badge } from \"@/registry/new-york/ui/badge\"\n\nexport default function BadgeDemo() {\n  return <Badge>Badge</Badge>\n}\n",
       "type": "registry:example",
       "target": ""
