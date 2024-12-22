@@ -1,5 +1,39 @@
 # @shadcn/ui
 
+## 2.1.8
+
+### Patch Changes
+
+- [#6093](https://github.com/shadcn-ui/ui/pull/6093) [`c8fda09`](https://github.com/shadcn-ui/ui/commit/c8fda09a63f793e9e2e5a86d8f8faad5af9d1ab4) Thanks [@shadcn](https://github.com/shadcn)! - detect and use next version
+
+## 2.1.7
+
+### Patch Changes
+
+- [#5711](https://github.com/shadcn-ui/ui/pull/5711) [`500dbe2`](https://github.com/shadcn-ui/ui/commit/500dbe2664c04936cc3edb739fc97f6cecff57c5) Thanks [@bcorbold](https://github.com/bcorbold)! - Update spread/unspread helpers to handle ArrayLiteralExpression and nested values within arrays
+
+- [#5678](https://github.com/shadcn-ui/ui/pull/5678) [`fb36ca4`](https://github.com/shadcn-ui/ui/commit/fb36ca41591ae952f3a015e2a4470f26458cf1b5) Thanks [@Tobbe](https://github.com/Tobbe)! - support aliases longer than one char
+
+- [#5813](https://github.com/shadcn-ui/ui/pull/5813) [`d5bf001`](https://github.com/shadcn-ui/ui/commit/d5bf0018fda42faeb314dc3edc87b8cd7c0354c6) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of aliases
+
+## 2.1.6
+
+### Patch Changes
+
+- [#5602](https://github.com/shadcn-ui/ui/pull/5602) [`2c2fe97`](https://github.com/shadcn-ui/ui/commit/2c2fe97eb96b2c5c7d03d1ae2756a851c3790030) Thanks [@shadcn](https://github.com/shadcn)! - move new-york icons to lucide-react
+
+## 2.1.5
+
+### Patch Changes
+
+- [#5707](https://github.com/shadcn-ui/ui/pull/5707) [`cdfecd1`](https://github.com/shadcn-ui/ui/commit/cdfecd1d97af2b4d9de330927edd9fd2eef1234e) Thanks [@shadcn](https://github.com/shadcn)! - temporarily bring back npm flag
+
+## 2.1.4
+
+### Patch Changes
+
+- [#5686](https://github.com/shadcn-ui/ui/pull/5686) [`4ff64ba`](https://github.com/shadcn-ui/ui/commit/4ff64ba818d15a094547f845ea294c2e1ab208d4) Thanks [@shadcn](https://github.com/shadcn)! - remove flag for npm
+
 ## 2.1.3
 
 ### Patch Changes
