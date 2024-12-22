@@ -7,12 +7,10 @@ interface AppLayoutProps {
 
 export default function AppLayout({ children }: AppLayoutProps) {
   return (
-    <div data-wrapper="" className="border-border/40 dark:border-border">
-      <div className="mx-auto w-full border-border/40 dark:border-border min-[1800px]:max-w-[1536px] min-[1800px]:border-x">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
-      </div>
+    <div data-wrapper="" className="border-grid flex flex-1 flex-col">
+      <SiteHeader />
+      <main className="flex flex-1 flex-col">{children}</main>
+      <SiteFooter />
     </div>
   )
 }

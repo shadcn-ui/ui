@@ -6,7 +6,7 @@ import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
 import { Style } from "@/registry/registry-styles"
-import { registryEntrySchema, registryItemFileSchema } from "@/registry/schema"
+import { registryItemFileSchema, registryItemSchema } from "@/registry/schema"
 
 export const DEFAULT_REGISTRY_STYLE = "new-york" satisfies Style["name"]
 
@@ -38,14 +38,14 @@ export async function getRegistryItem(
   )
 
   // Fail early before doing expensive file operations.
-  const result = registryEntrySchema.safeParse(item)
+  const result = registryItemSchema.safeParse(item)
   if (!result.success) {
     return null
   }
 
   let files: typeof result.data.files = []
   for (const file of item.files) {
-    const content = await getFileContent(file.path)
+    const content = await getFileContent(file)
     const relativePath = path.relative(process.cwd(), file.path)
 
     files.push({
@@ -57,15 +57,15 @@ export async function getRegistryItem(
 
   // Get meta.
   // Assume the first file is the main file.
-  const meta = await getFileMeta(files[0].path)
+  // const meta = await getFileMeta(files[0].path)
 
   // Fix file paths.
   files = fixFilePaths(files)
 
-  const parsed = registryEntrySchema.safeParse({
+  const parsed = registryItemSchema.safeParse({
     ...result.data,
     files,
-    meta,
+    // meta,
   })
 
   if (!parsed.success) {
@@ -76,14 +76,14 @@ export async function getRegistryItem(
   return parsed.data
 }
 
-async function getFileContent(filePath: string) {
-  const raw = await fs.readFile(filePath, "utf-8")
+async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
+  const raw = await fs.readFile(file.path, "utf-8")
 
   const project = new Project({
     compilerOptions: {},
   })
 
-  const tempFile = await createTempSourceFile(filePath)
+  const tempFile = await createTempSourceFile(file.path)
   const sourceFile = project.createSourceFile(tempFile, raw, {
     scriptKind: ScriptKind.TSX,
   })
@@ -95,8 +95,12 @@ async function getFileContent(filePath: string) {
 
   let code = sourceFile.getFullText()
 
-  // Format the code.
-  code = code.replaceAll("export default", "export")
+  // Some registry items uses default export.
+  // We want to use named export instead.
+  // TODO: do we really need this? - @shadcn.
+  if (file.type !== "registry:page") {
+    code = code.replaceAll("export default", "export")
+  }
 
   // Fix imports.
   code = fixImport(code)
@@ -180,7 +184,7 @@ function extractVariable(sourceFile: SourceFile, name: string) {
   return value
 }
 
-function fixFilePaths(files: z.infer<typeof registryEntrySchema>["files"]) {
+function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
   if (!files) {
     return []
   }
