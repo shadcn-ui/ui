@@ -8,7 +8,6 @@ import {
   PageHeaderHeading,
 } from "@/components/page-header"
 import { ThemeCustomizer } from "@/components/theme-customizer"
-import { ThemeWrapper } from "@/components/theme-wrapper"
 
 export const metadata: Metadata = {
   title: "Themes",
@@ -21,32 +20,29 @@ export default function ThemesLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="relative">
-      <ThemeWrapper
-        defaultTheme="zinc"
-        className="relative flex w-full flex-col items-start md:flex-row"
-      >
-        <PageHeader>
-          <Announcement />
-          <PageHeaderHeading className="hidden md:block">
-            Add colors. Make it yours.
-          </PageHeaderHeading>
-          <PageHeaderHeading className="md:hidden">
-            Make it yours
-          </PageHeaderHeading>
-          <PageHeaderDescription>
-            Hand-picked themes that you can copy and paste into your apps.
-          </PageHeaderDescription>
-          <PageActions>
-            <ThemeCustomizer />
-          </PageActions>
-        </PageHeader>
-      </ThemeWrapper>
-      <div className="container py-6">
-        <section id="themes" className="scroll-mt-20">
-          {children}
-        </section>
+    <>
+      <PageHeader>
+        <Announcement />
+        <PageHeaderHeading className="hidden md:block">
+          Add colors. Make it yours.
+        </PageHeaderHeading>
+        <PageHeaderHeading className="md:hidden">
+          Make it yours
+        </PageHeaderHeading>
+        <PageHeaderDescription>
+          Hand-picked themes that you can copy and paste into your apps.
+        </PageHeaderDescription>
+        <PageActions>
+          <ThemeCustomizer />
+        </PageActions>
+      </PageHeader>
+      <div className="container-wrapper">
+        <div className="container py-6">
+          <section id="themes" className="scroll-mt-20">
+            {children}
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   )
 }

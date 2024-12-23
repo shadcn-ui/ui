@@ -45,13 +45,13 @@ export function ChartToolbar({
 }
 
 function ChartTitle({ chart }: { chart: Chart }) {
-  const { subcategory } = chart
+  const { categories } = chart
 
-  if (!subcategory) {
+  if (!categories?.length) {
     return null
   }
 
-  if (subcategory === "Line") {
+  if (categories.includes("charts-line")) {
     return (
       <>
         <LineChart /> Chart
@@ -59,7 +59,7 @@ function ChartTitle({ chart }: { chart: Chart }) {
     )
   }
 
-  if (subcategory === "Bar") {
+  if (categories.includes("charts-bar")) {
     return (
       <>
         <BarChartBig /> Chart
@@ -67,7 +67,7 @@ function ChartTitle({ chart }: { chart: Chart }) {
     )
   }
 
-  if (subcategory === "Pie") {
+  if (categories.includes("charts-pie")) {
     return (
       <>
         <PieChart /> Chart
@@ -75,7 +75,7 @@ function ChartTitle({ chart }: { chart: Chart }) {
     )
   }
 
-  if (subcategory === "Area") {
+  if (categories.includes("charts-area")) {
     return (
       <>
         <AreaChart /> Chart
@@ -83,7 +83,7 @@ function ChartTitle({ chart }: { chart: Chart }) {
     )
   }
 
-  if (subcategory === "Radar") {
+  if (categories.includes("charts-radar")) {
     return (
       <>
         <Hexagon /> Chart
@@ -91,7 +91,7 @@ function ChartTitle({ chart }: { chart: Chart }) {
     )
   }
 
-  if (subcategory === "Radial") {
+  if (categories.includes("charts-radial")) {
     return (
       <>
         <Radar /> Chart
@@ -99,7 +99,7 @@ function ChartTitle({ chart }: { chart: Chart }) {
     )
   }
 
-  if (subcategory === "Tooltip") {
+  if (categories.includes("charts-tooltip")) {
     return (
       <>
         <MousePointer2 />
@@ -108,5 +108,5 @@ function ChartTitle({ chart }: { chart: Chart }) {
     )
   }
 
-  return subcategory
+  return categories[0]
 }
