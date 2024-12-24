@@ -1,6 +1,5 @@
 import { THEMES } from "@/lib/themes"
 import { ChartDisplay } from "@/components/chart-display"
-import { ChartsNav } from "@/components/charts-nav"
 import { ThemesSwitcher } from "@/components/themes-selector"
 import { ThemesStyle } from "@/components/themes-styles"
 import { Separator } from "@/registry/new-york/ui/separator"
@@ -9,7 +8,6 @@ import * as Charts from "@/app/(app)/charts/charts"
 export default function ChartsPage() {
   return (
     <div className="grid gap-4">
-      <ChartsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
       <ThemesStyle />
       <div className="gap-6 md:flex md:flex-row-reverse md:items-start">
         <ThemesSwitcher
