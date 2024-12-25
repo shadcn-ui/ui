@@ -110,6 +110,7 @@ packages
     └── package.json
 package.json
 turbo.json
+tsconfig.json
 ```
 
 ## Requirements
@@ -165,6 +166,20 @@ turbo.json
 ```
 
 3. Ensure you have the same `style`, `iconLibrary` and `baseColor` in both `components.json` files.
+
+4. To tell the CLI what `@workspace/ui/*` means, you need to update your `tsconfig.json` file.
+
+```json title="packages/ui/tsconfig.json"
+{
+  "compilerOptions": {
+    ...
+    "baseUrl": ".",
+    "paths": {
+      "@workspace/ui/*": ["./src/*"]
+    }
+  }
+}
+```
 
 By following these requirements, the CLI will be able to install ui components, blocks, libs and hooks to the correct paths and handle imports for you.
 
