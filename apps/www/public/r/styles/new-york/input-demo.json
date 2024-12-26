@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/input-demo.tsx",
+      "path": "examples/input-demo.tsx",
       "content": "import { Input } from \"@/registry/new-york/ui/input\"\n\nexport default function InputDemo() {\n  return <Input type=\"email\" placeholder=\"Email\" />\n}\n",
       "type": "registry:example",
       "target": ""

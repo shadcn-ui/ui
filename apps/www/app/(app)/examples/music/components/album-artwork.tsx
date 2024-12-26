@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { PlusCircledIcon } from "@radix-ui/react-icons"
+import { PlusCircle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -54,7 +54,7 @@ export function AlbumArtwork({
             <ContextMenuSubTrigger>Add to Playlist</ContextMenuSubTrigger>
             <ContextMenuSubContent className="w-48">
               <ContextMenuItem>
-                <PlusCircledIcon className="mr-2 h-4 w-4" />
+                <PlusCircle className="mr-2 h-4 w-4" />
                 New Playlist
               </ContextMenuItem>
               <ContextMenuSeparator />
