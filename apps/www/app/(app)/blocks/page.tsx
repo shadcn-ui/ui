@@ -1,20 +1,18 @@
-import * as React from "react"
-
-import { getAllBlockIds } from "@/lib/blocks"
 import { BlockDisplay } from "@/components/block-display"
 
-import "@/styles/mdx.css"
+const FEATURED_BLOCKS = ["sidebar-07", "sidebar-03", "login-03", "login-04"]
 
 export default async function BlocksPage() {
-  const blocks = await getAllBlockIds()
-
   return (
-    <div className="gap-3 md:flex md:flex-row-reverse md:items-start">
-      <div className="grid flex-1 gap-12 md:gap-24 lg:gap-48">
-        {blocks.map((name) => (
-          <BlockDisplay key={name} name={name} />
-        ))}
-      </div>
+    <div>
+      {FEATURED_BLOCKS.map((block) => (
+        <div
+          key={block}
+          className="border-grid container border-b py-8 first:pt-6 last:border-b-0 md:py-12"
+        >
+          <BlockDisplay name={block} />
+        </div>
+      ))}
     </div>
   )
 }

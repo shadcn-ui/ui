@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/button-demo.tsx",
+      "path": "examples/button-demo.tsx",
       "content": "import { Button } from \"@/registry/new-york/ui/button\"\n\nexport default function ButtonDemo() {\n  return <Button>Button</Button>\n}\n",
       "type": "registry:example",
       "target": ""
