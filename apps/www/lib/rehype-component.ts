@@ -4,6 +4,8 @@ import { UnistNode, UnistTree } from "types/unist"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
+import { type RegistryItem } from "@/registry/schema"
+
 import { Index } from "../__registry__"
 import { styles } from "../registry/registry-styles"
 
@@ -35,18 +37,24 @@ export function rehypeComponent() {
             if (srcPath) {
               src = path.join(process.cwd(), srcPath)
             } else {
-              const component = Index[style.name][name]
-              src = fileName
-                ? component.files.find((file: unknown) => {
-                    if (typeof file === "string") {
+              const component: RegistryItem = Index[style.name][name]
+              if (component.files) {
+                console.log(fileName)
+
+                src = fileName
+                  ? component.files.find((file) => {
                       return (
-                        file.endsWith(`${fileName}.tsx`) ||
-                        file.endsWith(`${fileName}.ts`)
+                        file.path.endsWith(`${fileName}.tsx`) ||
+                        file.path.endsWith(`${fileName}.ts`)
                       )
-                    }
-                    return false
-                  }) || component.files[0]?.path
-                : component.files[0]?.path
+                    })?.path || component.files[0]?.path
+                  : component.files[0]?.path
+              } else {
+                // TODO: Is files always exist in Registry type?
+                // Because in registryItemSchema it is marked like optional.
+                src = component.files![0]?.path
+              }
+              console.log(src);
             }
 
             // Read the source file.
