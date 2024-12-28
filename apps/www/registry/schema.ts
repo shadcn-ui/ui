@@ -53,6 +53,8 @@ export const registryItemSchema = z.object({
 export const registrySchema = z.array(registryItemSchema)
 
 export type Registry = z.infer<typeof registrySchema>
+export type RegistryItem = Registry[number]
+export type FileRegistry = Registry[number]['files']
 
 export const blockSchema = registryItemSchema.extend({
   type: z.literal("registry:block"),
