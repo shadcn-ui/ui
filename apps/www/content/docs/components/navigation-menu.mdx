@@ -95,4 +95,33 @@ import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 </NavigationMenuItem>
 ```
 
+### Content options
+
+`align`: `"start"` | `"center"` | `"end"`
+assign align type for content position
+`contentWidth`: `number[]`
+assign width for every NavigationMenuContent
+
+
+`contentOptions={{ align: "start", contentWidth:  }}`
+
+<ComponentPreview
+  name="navigation-menu-options-demo"
+  componentProps={{ align: "start" }}
+/>
+
+`contentOptions={{ align: "center" }}`
+
+<ComponentPreview
+  name="navigation-menu-options-demo"
+  componentProps={{ align: "center" }}
+/>
+
+`contentOptions={{ align: "end" }}`
+
+<ComponentPreview
+  name="navigation-menu-options-demo"
+  componentProps={{ align: "end" }}
+/>
+
 See also the [Radix UI documentation](https://www.radix-ui.com/docs/primitives/components/navigation-menu#with-client-side-routing) for handling client side routing.

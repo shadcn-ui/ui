@@ -864,6 +864,17 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "navigation-menu-options-demo",
+    type: "registry:example",
+    registryDependencies: ["navigation-menu"],
+    files: [
+      {
+        path: "examples/navigation-menu-options-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "pagination-demo",
     type: "registry:example",
     registryDependencies: ["pagination"],

@@ -4,23 +4,34 @@ import { cva } from "class-variance-authority"
 import { ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import useContentPosition, {
+  type ContentOptions,
+} from "@/hooks/use-content-position"
 
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
->(({ className, children, ...props }, ref) => (
-  <NavigationMenuPrimitive.Root
-    ref={ref}
-    className={cn(
-      "relative z-10 flex max-w-max flex-1 items-center justify-center",
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <NavigationMenuViewport />
-  </NavigationMenuPrimitive.Root>
-))
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root> & {
+    contentOptions?: ContentOptions
+  }
+>(({ className, contentOptions, children, ...props }, ref) => {
+  const [position, _ref] = useContentPosition(contentOptions)
+
+  return (
+    <NavigationMenuPrimitive.Root
+      ref={ref}
+      className={cn(
+        "relative z-10 flex max-w-max flex-1 items-center justify-center",
+        className
+      )}
+      {...props}
+    >
+      <NavigationMenuChildren ref={_ref} contentOptions={contentOptions}>
+        {children}
+      </NavigationMenuChildren>
+      <NavigationMenuViewport {...position} />
+    </NavigationMenuPrimitive.Root>
+  )
+})
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
 
 const NavigationMenuList = React.forwardRef<
@@ -81,9 +92,16 @@ const NavigationMenuLink = NavigationMenuPrimitive.Link
 
 const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
->(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-full flex justify-center")}>
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport> & {
+    x: number
+  }
+>(({ className, x, ...props }, ref) => (
+  <div
+    style={{
+      left: x + "px",
+    }}
+    className={cn("absolute left-0 top-full flex justify-center")}
+  >
     <NavigationMenuPrimitive.Viewport
       className={cn(
         "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
@@ -114,6 +132,29 @@ const NavigationMenuIndicator = React.forwardRef<
 ))
 NavigationMenuIndicator.displayName =
   NavigationMenuPrimitive.Indicator.displayName
+
+const NavigationMenuChildren = React.forwardRef<
+  HTMLLIElement,
+  {
+    contentOptions?: ContentOptions
+  } & React.PropsWithChildren
+>(({ contentOptions, children }, ref) => (
+  <>
+    {contentOptions ? (
+      <>
+        {React.Children.map(children, (child) => {
+          if (React.isValidElement<{ ref?: React.Ref<any> }>(child)) {
+            return React.cloneElement(child, {
+              ref,
+            })
+          }
+        })}
+      </>
+    ) : (
+      children
+    )}
+  </>
+))
 
 export {
   navigationMenuTriggerStyle,
