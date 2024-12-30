@@ -611,6 +611,18 @@ export const examples: Registry = [
     dependencies: ["date-fns"],
   },
   {
+    name: "date-picker-year",
+    type: "registry:example",
+    registryDependencies: ["button", "calendar", "popover"],
+    files: [
+      {
+        path: "example/date-picker-year.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["date-fns"],
+  },
+  {
     name: "dialog-demo",
     type: "registry:example",
     registryDependencies: ["dialog"],
