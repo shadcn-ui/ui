@@ -257,7 +257,7 @@ function Calendar({
                   (_, i) => {
                     const isBefore =
                       differenceInCalendarDays(
-                        new Date(displayYears.from + i, 12, 31),
+                        new Date(displayYears.from + i, 11, 31),
                         startMonth!
                       ) < 0
 
