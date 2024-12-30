@@ -1,0 +1,16 @@
+{
+  "name": "input-with-button",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "examples/input-with-button.tsx",
+      "content": "import { Button } from \"@/registry/new-york/ui/button\"\nimport { Input } from \"@/registry/new-york/ui/input\"\n\nexport default function InputWithButton() {\n  return (\n    <div className=\"flex w-full max-w-sm items-center space-x-2\">\n      <Input type=\"email\" placeholder=\"Email\" />\n      <Button type=\"submit\">Subscribe</Button>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

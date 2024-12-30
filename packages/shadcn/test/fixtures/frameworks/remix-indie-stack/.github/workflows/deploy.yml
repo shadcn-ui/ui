@@ -1,0 +1,144 @@
+name: 🚀 Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  lint:
+    name: ⬣ ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          cache-dependency-path: ./package.json
+          node-version: 18
+
+      - name: 📥 Install deps
+        run: npm install
+
+      - name: 🔬 Lint
+        run: npm run lint
+
+  typecheck:
+    name: ʦ TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          cache-dependency-path: ./package.json
+          node-version: 18
+
+      - name: 📥 Install deps
+        run: npm install
+
+      - name: 🔎 Type check
+        run: npm run typecheck --if-present
+
+  vitest:
+    name: ⚡ Vitest
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          cache-dependency-path: ./package.json
+          node-version: 18
+
+      - name: 📥 Install deps
+        run: npm install
+
+      - name: ⚡ Run vitest
+        run: npm run test -- --coverage
+
+  cypress:
+    name: ⚫️ Cypress
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🏄 Copy test env vars
+        run: cp .env.example .env
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          cache-dependency-path: ./package.json
+          node-version: 18
+
+      - name: 📥 Install deps
+        run: npm install
+
+      - name: 🛠 Setup Database
+        run: npx prisma migrate reset --force
+
+      - name: ⚙️ Build
+        run: npm run build
+
+      - name: 🌳 Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run start:mocks
+          wait-on: http://localhost:8811
+        env:
+          PORT: 8811
+
+  deploy:
+    name: 🚀 Deploy
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, vitest, cypress]
+    # only deploy main/dev branch on pushes
+    if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
+
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 👀 Read app name
+        uses: SebRollen/toml-action@v1.2.0
+        id: app_name
+        with:
+          file: fly.toml
+          field: app
+
+      - name: 🎈 Setup Fly
+        uses: superfly/flyctl-actions/setup-flyctl@v1
+
+      - name: 🚀 Deploy Staging
+        if: ${{ github.ref == 'refs/heads/dev' }}
+        run: flyctl deploy --remote-only --build-arg COMMIT_SHA=${{ github.sha }} --app ${{ steps.app_name.outputs.value }}-staging
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: 🚀 Deploy Production
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: flyctl deploy --remote-only --build-arg COMMIT_SHA=${{ github.sha }} --app ${{ steps.app_name.outputs.value }}
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

@@ -1,0 +1,15 @@
+{
+  "name": "textarea-disabled",
+  "type": "registry:example",
+  "registryDependencies": [
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "examples/textarea-disabled.tsx",
+      "content": "import { Textarea } from \"@/registry/default/ui/textarea\"\n\nexport default function TextareaDisabled() {\n  return <Textarea placeholder=\"Type your message here.\" disabled />\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
