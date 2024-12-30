@@ -616,7 +616,7 @@ export const examples: Registry = [
     registryDependencies: ["button", "calendar", "popover"],
     files: [
       {
-        path: "example/date-picker-year.tsx",
+        path: "examples/date-picker-year.tsx",
         type: "registry:example",
       },
     ],
