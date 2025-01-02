@@ -12,15 +12,18 @@ const isElement = (
   )
 }
 
-export function useComposition(children: React.ReactNode, component: string) {
-  const Child = React.useMemo(
+export function useComposition(
+  children: React.ReactNode,
+  component: string
+): Array<React.ReactNode> {
+  const Children = React.useMemo(
     () =>
-      React.Children.toArray(children).find((child) => {
+      React.Children.toArray(children).filter((child) => {
         if (isElement(child)) return child.type.displayName === component
         return false
       }),
     [children, component]
-  )
+  ) as Array<React.ReactNode>
 
-  return Child ?? null
+  return Children ?? []
 }

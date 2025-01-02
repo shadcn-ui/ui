@@ -14,8 +14,8 @@ const isElement = (
 
 export function useComposition(
   children: React.ReactNode,
-  component: string | undefined
-) {
+  component: string
+): Array<React.ReactNode> {
   const Children = React.useMemo(
     () =>
       React.Children.toArray(children).filter((child) => {
@@ -23,7 +23,8 @@ export function useComposition(
         return false
       }),
     [children, component]
-  )
+  ) as Array<React.ReactNode>
 
-  return Children
+  console.log({ Children })
+  return Children ?? []
 }

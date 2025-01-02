@@ -1,0 +1,12 @@
+{
+  "name": "use-composition",
+  "type": "registry:hook",
+  "files": [
+    {
+      "path": "hooks/use-composition.tsx",
+      "content": "import * as React from \"react\"\n\ntype ReactElementWithDisplayName = React.ReactElement & {\n  type: { displayName: string }\n}\n\nconst isElement = (\n  element: unknown | undefined\n): element is ReactElementWithDisplayName => {\n  return (\n    (element as ReactElementWithDisplayName)?.type?.displayName !== undefined\n  )\n}\n\nexport function useComposition(\n  children: React.ReactNode,\n  component: string\n): Array<React.ReactNode> {\n  const Children = React.useMemo(\n    () =>\n      React.Children.toArray(children).find((child) => {\n        if (isElement(child)) return child.type.displayName === component\n        return false\n      }),\n    [children, component]\n  ) as Array<React.ReactNode>\n\n  return Children ?? []\n}\n",
+      "type": "registry:hook",
+      "target": ""
+    }
+  ]
+}

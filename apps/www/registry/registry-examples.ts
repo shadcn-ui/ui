@@ -781,7 +781,7 @@ export const examples: Registry = [
     registryDependencies: ["input"],
     files: [
       {
-        path: "example/input-with-icons.tsx",
+        path: "examples/input-with-icons.tsx",
         type: "registry:example",
       },
     ],

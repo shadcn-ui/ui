@@ -21,4 +21,14 @@ export const hooks: Registry = [
       },
     ],
   },
+  {
+    name: "use-composition",
+    type: "registry:hook",
+    files: [
+      {
+        path: "hooks/use-composition.tsx",
+        type: "registry:hook",
+      },
+    ],
+  },
 ]

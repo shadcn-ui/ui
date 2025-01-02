@@ -324,7 +324,7 @@ export const Index: Record<string, any> = {
       name: "input",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["use-composition"],
       files: [{
         path: "registry/new-york/ui/input.tsx",
         type: "registry:ui",
@@ -2329,6 +2329,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "use-composition": {
+      name: "use-composition",
+      description: "",
+      type: "registry:hook",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/hooks/use-composition.tsx",
+        type: "registry:hook",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/hooks/use-composition.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "sink": {
       name: "sink",
       description: "",
@@ -4095,15 +4110,14 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input"],
       files: [{
-        path: "registry/new-york/example/input-with-icons.tsx",
+        path: "registry/new-york/examples/input-with-icons.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/example/input-with-icons.tsx")),
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/input-with-icons.tsx")),
       source: "",
-      category: "",
-      subcategory: "",
-      chunks: []
+      meta: undefined,
     },
     "input-otp-demo": {
       name: "input-otp-demo",
@@ -5595,7 +5609,7 @@ export const Index: Record<string, any> = {
       name: "input",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["use-composition"],
       files: [{
         path: "registry/default/ui/input.tsx",
         type: "registry:ui",
@@ -7600,6 +7614,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "use-composition": {
+      name: "use-composition",
+      description: "",
+      type: "registry:hook",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/hooks/use-composition.tsx",
+        type: "registry:hook",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/hooks/use-composition.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "sink": {
       name: "sink",
       description: "",
@@ -9366,15 +9395,14 @@ export const Index: Record<string, any> = {
       type: "registry:example",
       registryDependencies: ["input"],
       files: [{
-        path: "registry/default/example/input-with-icons.tsx",
+        path: "registry/default/examples/input-with-icons.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/input-with-icons.tsx")),
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/input-with-icons.tsx")),
       source: "",
-      category: "",
-      subcategory: "",
-      chunks: []
+      meta: undefined,
     },
     "input-otp-demo": {
       name: "input-otp-demo",

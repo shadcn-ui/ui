@@ -266,6 +266,7 @@ export const ui: Registry = [
   {
     name: "input",
     type: "registry:ui",
+    registryDependencies: ["use-composition"],
     files: [
       {
         path: "ui/input.tsx",

@@ -3,7 +3,7 @@ import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
-import { useComposition } from "@/registry/default/hooks/use-composition"
+import { useComposition } from "@/registry/new-york/hooks/use-composition"
 
 interface InputComposition {
   Icon: typeof InputIcon
@@ -70,7 +70,7 @@ Input.displayName = "Input"
 
 const Root = React.forwardRef<HTMLInputElement, InputProps>(
   ({ children, className, ...props }, ref) => {
-    const Icons = useComposition(children, InputIcon.displayName)
+    const Icons = useComposition(children, InputIcon.displayName!)
 
     if (Icons.length > 0) {
       return (
