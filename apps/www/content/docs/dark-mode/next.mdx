@@ -6,6 +6,16 @@ description: Adding dark mode to your next app.
 ## Dark mode
 
 <Steps>
+### Modify your tailwind.css file
+
+Add `:root[class~="dark"]` to your globals.css file. This will allow you to use the `dark` class on your html element to apply dark mode styles.
+
+```css {2} title="app/globals.css"
+.dark,
+:root[class~="dark"] {
+  ...;
+}
+```
 
 ### Install next-themes
 
