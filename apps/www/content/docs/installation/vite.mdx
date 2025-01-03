@@ -19,13 +19,64 @@ Install `tailwindcss` and its peer dependencies, then generate your `tailwind.co
 
 ```bash
 npm install -D tailwindcss postcss autoprefixer
+```
 
+```bash
 npx tailwindcss init -p
+```
+
+Add this import header in your main css file, `src/index.css` in our case:
+
+```css {1-3} showLineNumbers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ... */
+```
+
+Configure the tailwind template paths in `tailwind.config.js`:
+
+```js {3}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
 ```
 
 ### Edit tsconfig.json file
 
-Add the following code to the `tsconfig.json` file to resolve paths:
+The current version of Vite splits TypeScript configuration into three files, two of which need to be edited.
+Add the `baseUrl` and `paths` properties to the `compilerOptions` section of the `tsconfig.json` and
+`tsconfig.app.json` files:
+
+```ts {11-16} showLineNumbers
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+### Edit tsconfig.app.json file
+
+Add the following code to the `tsconfig.app.json` file to resolve paths, for your IDE:
 
 ```ts {4-9} showLineNumbers
 {
@@ -44,11 +95,10 @@ Add the following code to the `tsconfig.json` file to resolve paths:
 
 ### Update vite.config.ts
 
-Add the following code to the vite.config.ts so your app can resolve paths without error
+Add the following code to the vite.config.ts so your app can resolve paths without error:
 
 ```bash
-# (so you can import "path" without error)
-npm i -D @types/node
+npm install -D @types/node
 ```
 
 ```typescript
@@ -71,7 +121,7 @@ export default defineConfig({
 Run the `shadcn-ui` init command to setup your project:
 
 ```bash
-npx shadcn-ui@latest init
+npx shadcn@latest init
 ```
 
 ### Configure components.json
@@ -79,15 +129,9 @@ npx shadcn-ui@latest init
 You will be asked a few questions to configure `components.json`:
 
 ```txt showLineNumbers
-Would you like to use TypeScript (recommended)? no / yes
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › › src/index.css
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
 Do you want to use CSS variables for colors? › no / yes
-Where is your tailwind.config.js located? › tailwind.config.js
-Configure the import alias for components: › @/components
-Configure the import alias for utils: › @/lib/utils
-Are you using React Server Components? › no / yes (no)
 ```
 
 ### That's it
@@ -95,7 +139,7 @@ Are you using React Server Components? › no / yes (no)
 You can now start adding components to your project.
 
 ```bash
-npx shadcn-ui@latest add button
+npx shadcn@latest add button
 ```
 
 The command above will add the `Button` component to your project. You can then import it like this:

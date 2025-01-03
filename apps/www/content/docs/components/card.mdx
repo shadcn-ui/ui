@@ -17,7 +17,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add card
+npx shadcn@latest add card
 ```
 
 </TabsContent>
@@ -72,3 +72,35 @@ import {
   name="card-demo"
   description="A card showing notifications settings."
 />
+
+## Changelog
+
+### 11-03-2024 a11y for title and description
+
+- Changed the `CardTitle` and `CardDescription` components to use `div` instead of `h3` and `p` to improve accessibility.
+
+```tsx showLineNumbers title="card.tsx"
+const CardTitle = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("font-semibold leading-none tracking-tight", className)}
+    {...props}
+  />
+))
+CardTitle.displayName = "CardTitle"
+
+const CardDescription = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
+CardDescription.displayName = "CardDescription"
+```
