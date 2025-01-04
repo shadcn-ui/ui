@@ -4,7 +4,7 @@ import { logger } from "@/src/utils/logger"
 import { RegistryItem } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import prompts from "prompts"
-import { installDependencies } from "../package-manager-commands"
+import { installDependencies, PackageManagerFlags } from "../package-manager-commands"
 import { getPackageInfo } from "../get-package-info"
 
 export async function updateDependencies(
@@ -55,7 +55,13 @@ export async function updateDependencies(
   dependenciesSpinner?.start()
 
 
-  await installDependencies({dependencies},{cwd: config.resolvedPaths.cwd})
+  // include the flag if package manager is npm and --force or --legacy-peer-deps are selected by user
+  const flags: PackageManagerFlags = {};
+  if (flag) {
+    flags[packageManager] = [`--${flag}`]
+  }
+
+  await installDependencies({ dependencies }, { cwd: config.resolvedPaths.cwd, flags })
 
   dependenciesSpinner?.succeed()
 }

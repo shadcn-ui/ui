@@ -3,7 +3,7 @@
   "type": "registry:example",
   "files": [
     {
-      "path": "example/typography-small.tsx",
+      "path": "examples/typography-small.tsx",
       "content": "export default function TypographySmall() {\n  return (\n    <small className=\"text-sm font-medium leading-none\">Email address</small>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
