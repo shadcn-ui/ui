@@ -6,8 +6,12 @@ export interface Dependencies {
   devDependencies?: string[],
 }
 
+export type PackageManagerFlags = Partial<Record<PackageManager, string[]>>;
+
+
 export interface PackageManagerOptions {
   cwd: string;
+  flags?: PackageManagerFlags;
 }
 
 /**
@@ -33,7 +37,7 @@ function dependencyCommand(packageManager: PackageManager, dependencies: string[
 
   if (packageManager === "rush") {
     // build rush command to install multiple dependencies : reference : https://rushjs.io/pages/commands/rush_add
-    dependencies.forEach(packageName=>commands.push('-p',`${packageName}`));
+    dependencies.forEach(packageName => commands.push('-p', `${packageName}`));
   } else {
     commands.push(...dependencies);
   }
@@ -54,7 +58,7 @@ function devDependencyCommand(packageManager: PackageManager, devDependencies: s
     case "npm":
     case "pnpm":
       commands.push('-D');
-    break;
+      break;
     case "yarn":
     case "bun":
     case "rush":
@@ -70,7 +74,7 @@ function devDependencyCommand(packageManager: PackageManager, devDependencies: s
  * @param {PackageManagerOptions} options - to specify cwd for running the installation command
  * @returns
  */
-export async function installDependencies(dependencies: Dependencies, options:PackageManagerOptions) {
+export async function installDependencies(dependencies: Dependencies, options: PackageManagerOptions) {
 
   if ((!dependencies.dependencies || dependencies.dependencies.length === 0) &&
     (!dependencies.devDependencies || dependencies.devDependencies.length === 0)) {
@@ -81,12 +85,12 @@ export async function installDependencies(dependencies: Dependencies, options:Pa
 
   if (dependencies.dependencies && dependencies.dependencies.length > 0) {
     const commands = dependencyCommand(packageManager, dependencies.dependencies);
-    await execa(packageManager, commands, { cwd:options.cwd });
+    await execa(packageManager, commands, { cwd: options.cwd });
   }
 
   if (dependencies.devDependencies && dependencies.devDependencies.length > 0) {
     const commands = devDependencyCommand(packageManager, dependencies.devDependencies);
-    await execa(packageManager, commands, { cwd:options.cwd });
+    await execa(packageManager, commands, { cwd: options.cwd });
   }
 
 }
