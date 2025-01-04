@@ -119,7 +119,7 @@ const CommandItem = React.forwardRef<
     className={cn(
       "relative flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
       forcedSelected &&
-        "bg-accent group-hover/cmd:bg-transparent hover:!bg-accent",
+        "bg-accent text-accent-foreground group-hover/cmd:bg-transparent group-hover/cmd:text-foreground hover:!bg-accent hover:!text-accent-foreground",
       className
     )}
     data-selected={false}
