@@ -83,17 +83,19 @@ To use the Next.js `<Link />` component, make the following updates to `paginati
 ```diff showLineNumbers /typeof Link/ {1}
 + import Link from "next/link"
 
-- type PaginationLinkProps = ... & React.ComponentProps<"a">
-+ type PaginationLinkProps = ... & React.ComponentProps<typeof Link>
+type PaginationLinkProps = {
+  isActive?: boolean
+} & Pick<ButtonProps, "size"> &
+-  React.ComponentProps<"a">
++  React.ComponentProps<typeof Link>
 
-const PaginationLink = ({...props }: ) => (
-  <PaginationItem>
--   <a>
-+   <Link>
-      // ...
--   </a>
-+   </Link>
-  </PaginationItem>
+const PaginationLink = ({
+   size = "icon",
+   ...props
+ }: PaginationLinkProps) => (
+-  <a
++  <Link
+  // ...
 )
 
 ```
