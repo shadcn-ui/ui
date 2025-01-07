@@ -9,6 +9,7 @@ import deepmerge from "deepmerge"
 import objectToString from "stringify-object"
 import { type Config as TailwindConfig } from "tailwindcss"
 import {
+  ArrayLiteralExpression,
   ObjectLiteralExpression,
   Project,
   PropertyAssignment,
@@ -194,8 +195,11 @@ async function addTailwindConfigTheme(
   if (themeInitializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
     const themeObjectString = themeInitializer.getText()
     const themeObject = await parseObjectLiteral(themeObjectString)
-    const result = deepmerge(themeObject, theme)
+    const result = deepmerge(themeObject, theme, {
+      arrayMerge: (dst, src) => src,
+    })
     const resultString = objectToString(result)
+      .replace(/\'\.\.\.(.*)\'/g, "...$1") // Remove quote around spread element
       .replace(/\'\"/g, "'") // Replace `\" with "
       .replace(/\"\'/g, "'") // Replace `\" with "
       .replace(/\'\[/g, "[") // Replace `[ with [
@@ -287,7 +291,8 @@ export function nestSpreadProperties(obj: ObjectLiteralExpression) {
 
       // Replace spread with a property assignment
       obj.insertPropertyAssignment(i, {
-        name: `___${spreadText.replace(/^\.\.\./, "")}`,
+        // Need to escape the name with " so that deepmerge doesn't mishandle the key
+        name: `"___${spreadText.replace(/^\.\.\./, "")}"`,
         initializer: `"...${spreadText.replace(/^\.\.\./, "")}"`,
       })
 
@@ -305,7 +310,37 @@ export function nestSpreadProperties(obj: ObjectLiteralExpression) {
         nestSpreadProperties(
           initializer.asKindOrThrow(SyntaxKind.ObjectLiteralExpression)
         )
+      } else if (
+        initializer &&
+        initializer.isKind(SyntaxKind.ArrayLiteralExpression)
+      ) {
+        nestSpreadElements(
+          initializer.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
+        )
       }
+    }
+  }
+}
+
+export function nestSpreadElements(arr: ArrayLiteralExpression) {
+  const elements = arr.getElements()
+  for (let j = 0; j < elements.length; j++) {
+    const element = elements[j]
+    if (element.isKind(SyntaxKind.ObjectLiteralExpression)) {
+      // Recursive check on objects within arrays
+      nestSpreadProperties(
+        element.asKindOrThrow(SyntaxKind.ObjectLiteralExpression)
+      )
+    } else if (element.isKind(SyntaxKind.ArrayLiteralExpression)) {
+      // Recursive check on nested arrays
+      nestSpreadElements(
+        element.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
+      )
+    } else if (element.isKind(SyntaxKind.SpreadElement)) {
+      const spreadText = element.getText()
+      // Spread element within an array
+      arr.removeElement(j)
+      arr.insertElement(j, `"${spreadText}"`)
     }
   }
 }
@@ -319,14 +354,49 @@ export function unnestSpreadProperties(obj: ObjectLiteralExpression) {
       const propAssignment = prop as PropertyAssignment
       const initializer = propAssignment.getInitializer()
 
-      if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-        const value = initializer.getLiteralValue()
+      if (initializer && initializer.isKind(SyntaxKind.StringLiteral)) {
+        const value = initializer
+          .asKindOrThrow(SyntaxKind.StringLiteral)
+          .getLiteralValue()
         if (value.startsWith("...")) {
           obj.insertSpreadAssignment(i, { expression: value.slice(3) })
           propAssignment.remove()
         }
       } else if (initializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
         unnestSpreadProperties(initializer as ObjectLiteralExpression)
+      } else if (
+        initializer &&
+        initializer.isKind(SyntaxKind.ArrayLiteralExpression)
+      ) {
+        unnsetSpreadElements(
+          initializer.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
+        )
+      }
+    }
+  }
+}
+
+export function unnsetSpreadElements(arr: ArrayLiteralExpression) {
+  const elements = arr.getElements()
+  for (let j = 0; j < elements.length; j++) {
+    const element = elements[j]
+    if (element.isKind(SyntaxKind.ObjectLiteralExpression)) {
+      // Recursive check on objects within arrays
+      unnestSpreadProperties(
+        element.asKindOrThrow(SyntaxKind.ObjectLiteralExpression)
+      )
+    } else if (element.isKind(SyntaxKind.ArrayLiteralExpression)) {
+      // Recursive check on nested arrays
+      unnsetSpreadElements(
+        element.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
+      )
+    } else if (element.isKind(SyntaxKind.StringLiteral)) {
+      const spreadText = element.getText()
+      // check if spread element
+      const spreadTest = /(?:^['"])(\.\.\..*)(?:['"]$)/g
+      if (spreadTest.test(spreadText)) {
+        arr.removeElement(j)
+        arr.insertElement(j, spreadText.replace(spreadTest, "$1"))
       }
     }
   }
@@ -363,6 +433,12 @@ function parseObjectLiteralExpression(node: ObjectLiteralExpression): any {
         result[name] = parseObjectLiteralExpression(
           property.getInitializer() as ObjectLiteralExpression
         )
+      } else if (
+        property.getInitializer()?.isKind(SyntaxKind.ArrayLiteralExpression)
+      ) {
+        result[name] = parseArrayLiteralExpression(
+          property.getInitializer() as ArrayLiteralExpression
+        )
       } else {
         result[name] = parseValue(property.getInitializer())
       }
@@ -371,12 +447,34 @@ function parseObjectLiteralExpression(node: ObjectLiteralExpression): any {
   return result
 }
 
+function parseArrayLiteralExpression(node: ArrayLiteralExpression): any[] {
+  const result: any[] = []
+  for (const element of node.getElements()) {
+    if (element.isKind(SyntaxKind.ObjectLiteralExpression)) {
+      result.push(
+        parseObjectLiteralExpression(
+          element.asKindOrThrow(SyntaxKind.ObjectLiteralExpression)
+        )
+      )
+    } else if (element.isKind(SyntaxKind.ArrayLiteralExpression)) {
+      result.push(
+        parseArrayLiteralExpression(
+          element.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
+        )
+      )
+    } else {
+      result.push(parseValue(element))
+    }
+  }
+  return result
+}
+
 function parseValue(node: any): any {
-  switch (node.kind) {
+  switch (node.getKind()) {
     case SyntaxKind.StringLiteral:
-      return node.text
+      return node.getText()
     case SyntaxKind.NumericLiteral:
-      return Number(node.text)
+      return Number(node.getText())
     case SyntaxKind.TrueKeyword:
       return true
     case SyntaxKind.FalseKeyword:
@@ -384,7 +482,9 @@ function parseValue(node: any): any {
     case SyntaxKind.NullKeyword:
       return null
     case SyntaxKind.ArrayLiteralExpression:
-      return node.elements.map(parseValue)
+      return node.getElements().map(parseValue)
+    case SyntaxKind.ObjectLiteralExpression:
+      return parseObjectLiteralExpression(node)
     default:
       return node.getText()
   }

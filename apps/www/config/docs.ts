@@ -9,6 +9,10 @@ export interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
+      title: "Home",
+      href: "/",
+    },
+    {
       title: "Documentation",
       href: "/docs",
     },
@@ -27,10 +31,6 @@ export const docsConfig: DocsConfig = {
     {
       title: "Themes",
       href: "/themes",
-    },
-    {
-      title: "Examples",
-      href: "/examples",
     },
     {
       title: "Colors",
@@ -69,7 +69,17 @@ export const docsConfig: DocsConfig = {
         {
           title: "CLI",
           href: "/docs/cli",
-          label: "Updated",
+          items: [],
+        },
+        {
+          title: "Monorepo",
+          href: "/docs/monorepo",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Next.js 15 + React 19",
+          href: "/docs/react-19",
           items: [],
         },
         {
@@ -81,7 +91,6 @@ export const docsConfig: DocsConfig = {
           title: "Open in v0",
           href: "/docs/v0",
           items: [],
-          label: "New",
         },
         {
           title: "Figma",
@@ -326,6 +335,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Sheet",
           href: "/docs/components/sheet",
+          items: [],
+        },
+        {
+          title: "Sidebar",
+          href: "/docs/components/sidebar",
           items: [],
         },
         {

@@ -19,8 +19,33 @@ Install `tailwindcss` and its peer dependencies, then generate your `tailwind.co
 
 ```bash
 npm install -D tailwindcss postcss autoprefixer
+```
 
+```bash
 npx tailwindcss init -p
+```
+
+Add this import header in your main css file, `src/index.css` in our case:
+
+```css {1-3} showLineNumbers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ... */
+```
+
+Configure the tailwind template paths in `tailwind.config.js`:
+
+```js {3}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
 ```
 
 ### Edit tsconfig.json file
@@ -70,11 +95,10 @@ Add the following code to the `tsconfig.app.json` file to resolve paths, for you
 
 ### Update vite.config.ts
 
-Add the following code to the vite.config.ts so your app can resolve paths without error
+Add the following code to the vite.config.ts so your app can resolve paths without error:
 
 ```bash
-# (so you can import "path" without error)
-npm i -D @types/node
+npm install -D @types/node
 ```
 
 ```typescript
