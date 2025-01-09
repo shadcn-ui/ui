@@ -19,7 +19,7 @@
     },
     {
       "path": "ui/toaster.tsx",
-      "content": "\"use client\"\n\nimport { useToast } from \"@/registry/default/hooks/use-toast\"\nimport {\n  Toast,\n  ToastClose,\n  ToastDescription,\n  ToastProvider,\n  ToastTitle,\n  ToastViewport,\n} from \"@/registry/default/ui/toast\"\n\nexport function Toaster() {\n  const { toasts } = useToast()\n\n  return (\n    <ToastProvider>\n      {toasts.map(function ({ id, title, description, action, ...props }) {\n        return (\n          <Toast key={id} {...props}>\n            <div className=\"grid gap-1\">\n              {title && <ToastTitle>{title}</ToastTitle>}\n              {description && (\n                <ToastDescription>{description}</ToastDescription>\n              )}\n            </div>\n            {action}\n            <ToastClose />\n          </Toast>\n        )\n      })}\n      <ToastViewport />\n    </ToastProvider>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { useToast } from \"@/registry/default/hooks/use-toast\"\nimport {\n  Toast,\n  ToastClose,\n  ToastDescription,\n  ToastProvider,\n  ToastTitle,\n  ToastViewport,\n} from \"@/registry/default/ui/toast\"\n\nexport function Toaster() {\n  const { toasts } = useToast()\n\n  return (\n    <ToastProvider>\n      {toasts.map(({ id, title, description, action, ...props }) => (\n        <Toast key={id} {...props}>\n          <div className=\"grid gap-1\">\n            {title && <ToastTitle>{title}</ToastTitle>}\n            {description && <ToastDescription>{description}</ToastDescription>}\n          </div>\n          {action}\n          <ToastClose />\n        </Toast>\n      ))}\n      <ToastViewport />\n    </ToastProvider>\n  )\n}\n",
       "type": "registry:ui",
       "target": ""
     }
