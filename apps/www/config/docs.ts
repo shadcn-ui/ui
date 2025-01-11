@@ -83,11 +83,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Typography",
-          href: "/docs/components/typography",
-          items: [],
-        },
-        {
           title: "Open in v0",
           href: "/docs/v0",
           items: [],
@@ -370,6 +365,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tabs",
           href: "/docs/components/tabs",
+          items: [],
+        },
+        {
+          title: "Text",
+          href: "/docs/components/text",
           items: [],
         },
         {
