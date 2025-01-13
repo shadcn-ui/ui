@@ -1,4 +1,4 @@
-import { Registry } from "shadcn/registry"
+import { Registry } from "@/registry/schema"
 
 export const blocks: Registry = [
   {

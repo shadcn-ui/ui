@@ -38,8 +38,9 @@ export const registryItemCssVarsSchema = z.object({
 })
 
 export const registryItemSchema = z.object({
-  type: registryItemTypeSchema,
+  $schema: z.string().optional(),
   name: z.string(),
+  type: registryItemTypeSchema,
   title: z.string().optional(),
   author: z.string().min(2).optional(),
   description: z.string().optional(),

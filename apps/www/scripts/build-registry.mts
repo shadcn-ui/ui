@@ -376,6 +376,8 @@ async function buildStyles(registry: z.infer<typeof registrySchema>) {
       }
 
       const payload = registryItemSchema.safeParse({
+        $schema: "https://ui.shadcn.com/component.json",
+        author: "shadcn (https://ui.shadcn.com)",
         ...item,
         files,
       })
