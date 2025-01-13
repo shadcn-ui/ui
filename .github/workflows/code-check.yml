@@ -113,4 +113,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build packages
+        run: pnpm --filter=shadcn build
+
       - run: pnpm typecheck
