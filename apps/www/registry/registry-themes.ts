@@ -1,4 +1,4 @@
-import { Registry } from "./schema"
+import { Registry } from "shadcn/registry"
 
 export const themes: Registry = [
   {
