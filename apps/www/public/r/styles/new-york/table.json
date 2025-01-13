@@ -1,5 +1,5 @@
 {
-  "$schema": "https://ui.shadcn.com/component.json",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "table",
   "type": "registry:ui",
   "author": "shadcn (https://ui.shadcn.com)",

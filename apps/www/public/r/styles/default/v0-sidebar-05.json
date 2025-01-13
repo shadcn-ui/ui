@@ -1,5 +1,5 @@
 {
-  "$schema": "https://ui.shadcn.com/component.json",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "v0-sidebar-05",
   "type": "registry:internal",
   "author": "shadcn (https://ui.shadcn.com)",

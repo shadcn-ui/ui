@@ -1,5 +1,5 @@
 {
-  "$schema": "https://ui.shadcn.com/component.json",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dialog-close-button",
   "type": "registry:example",
   "author": "shadcn (https://ui.shadcn.com)",
