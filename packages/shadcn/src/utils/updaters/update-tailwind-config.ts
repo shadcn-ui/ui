@@ -1,7 +1,7 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { registryItemTailwindSchema } from "@/src/registry/api/schema"
+import { registryItemTailwindSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"

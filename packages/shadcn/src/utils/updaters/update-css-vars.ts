@@ -1,6 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { registryItemCssVarsSchema } from "@/src/registry/api/schema"
+import { registryItemCssVarsSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"

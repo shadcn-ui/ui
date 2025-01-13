@@ -1,7 +1,7 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { registryBaseColorSchema } from "@/src/registry/api/schema"
+import { registryBaseColorSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"

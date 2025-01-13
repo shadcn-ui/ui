@@ -1,6 +1,6 @@
 import { expect, test } from "vitest"
 
-import { resolveTree } from "../../src/registry"
+import { resolveTree } from "../../src/registry/api"
 
 test("resolve tree", async () => {
   const index = [

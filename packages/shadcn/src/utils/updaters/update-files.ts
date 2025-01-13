@@ -4,7 +4,7 @@ import {
   getRegistryBaseColor,
   getRegistryItemFileTargetPath,
 } from "@/src/registry/api"
-import { RegistryItem } from "@/src/registry/api/schema"
+import { RegistryItem } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
