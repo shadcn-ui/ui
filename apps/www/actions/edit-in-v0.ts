@@ -48,8 +48,6 @@ export async function editInV0({
       return file
     })
 
-    console.log(registryItem)
-
     const payload = {
       version: 2,
       payload: registryItem,
