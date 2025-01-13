@@ -19,7 +19,9 @@ Install `tailwindcss` and its peer dependencies, then generate your `tailwind.co
 
 ```bash
 npm install -D tailwindcss postcss autoprefixer
+```
 
+```bash
 npx tailwindcss init -p
 ```
 
@@ -93,11 +95,10 @@ Add the following code to the `tsconfig.app.json` file to resolve paths, for you
 
 ### Update vite.config.ts
 
-Add the following code to the vite.config.ts so your app can resolve paths without error
+Add the following code to the vite.config.ts so your app can resolve paths without error:
 
 ```bash
-# (so you can import "path" without error)
-npm i -D @types/node
+npm install -D @types/node
 ```
 
 ```typescript

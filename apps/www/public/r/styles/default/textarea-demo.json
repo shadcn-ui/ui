@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/textarea-demo.tsx",
+      "path": "examples/textarea-demo.tsx",
       "content": "import { Textarea } from \"@/registry/default/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return <Textarea placeholder=\"Type your message here.\" />\n}\n",
       "type": "registry:example",
       "target": ""
