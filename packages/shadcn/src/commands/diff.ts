@@ -6,7 +6,7 @@ import {
   getRegistryBaseColor,
   getRegistryIndex,
 } from "@/src/registry/api"
-import { registryIndexSchema } from "@/src/registry/api/schema"
+import { registryIndexSchema } from "@/src/registry/schema"
 import { Config, getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
