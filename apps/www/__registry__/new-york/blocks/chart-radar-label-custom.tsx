@@ -83,7 +83,7 @@ export default function Component() {
                   >
                     <tspan className="fill-muted-foreground">{data.desktop}</tspan>
                     <tspan className="fill-muted-foreground">/</tspan>
-                    <tspan>{data.mobile}</tspan>
+                    <tspan className="fill-muted-foreground">{data.mobile}</tspan>
                     <tspan
                       x={x}
                       dy={"1rem"}
