@@ -11,6 +11,7 @@ import {
 import { Button } from "@/registry/new-york/ui/button"
 
 import "@/styles/mdx.css"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Building Blocks.",
@@ -37,12 +38,7 @@ export default function BlocksLayout({
             <a href="#blocks">Browse Blocks</a>
           </Button>
           <Button asChild variant="ghost" size="sm">
-            <a
-              href="https://github.com/shadcn-ui/ui/discussions/new?category=blocks-request"
-              target="_blank"
-            >
-              Request a block
-            </a>
+            <Link href="/docs/blocks">Add a block</Link>
           </Button>
         </PageActions>
       </PageHeader>
