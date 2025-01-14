@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sidebar-menu-action",
   "type": "registry:internal",
+  "author": "shadcn (https://ui.shadcn.com)",
   "files": [
     {
       "path": "internal/sidebar-menu-action.tsx",

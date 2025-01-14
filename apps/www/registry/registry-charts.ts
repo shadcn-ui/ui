@@ -1,6 +1,6 @@
-import { Registry } from "@/registry/schema"
+import { type Registry } from "shadcn/registry"
 
-export const charts: Registry = [
+export const charts: Registry["items"] = [
   // Area Charts
   {
     name: "chart-area-axes",

@@ -1,14 +1,14 @@
 import { existsSync, promises as fs } from "fs"
 import path, { basename } from "path"
+import {
+  getRegistryBaseColor,
+  getRegistryItemFileTargetPath,
+} from "@/src/registry/api"
+import { RegistryItem } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import {
-  getRegistryBaseColor,
-  getRegistryItemFileTargetPath,
-} from "@/src/utils/registry"
-import { RegistryItem } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import { transform } from "@/src/utils/transformers"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"

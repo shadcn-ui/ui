@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/registry.json",
+  "name": "facebook",
+  "type": "registry:block",
+  "registryDependencies": [],
+  "dependencies": ["motion"],
+  "devDependencies": [],
+  "tailwind": {},
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "files": [
+    {
+      "path": "facebook.tsx",
+      "content": "'use client';\n\nimport type { Variants } from 'motion/react';\nimport { motion, useAnimation } from 'motion/react';\n\nconst facebookVariants: Variants = {\n  normal: {\n    opacity: 1,\n    pathLength: 1,\n    pathOffset: 0,\n    transition: {\n      duration: 0.4,\n      opacity: { duration: 0.1 },\n    },\n  },\n  animate: {\n    opacity: [0, 1],\n    pathLength: [0, 1],\n    pathOffset: [1, 0],\n    transition: {\n      duration: 0.6,\n      ease: 'linear',\n      opacity: { duration: 0.1 },\n    },\n  },\n};\n\nconst FacebookIcon = () => {\n  const controls = useAnimation();\n\n  return (\n    <div\n      className=\"cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center\"\n      onMouseEnter={() => {\n        controls.start('animate');\n      }}\n      onMouseLeave={() => {\n        controls.start('normal');\n      }}\n    >\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        width=\"24\"\n        height=\"24\"\n        fill=\"none\"\n        stroke=\"currentColor\"\n        strokeWidth=\"2\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n      >\n        <motion.path\n          variants={facebookVariants}\n          animate={controls}\n          initial=\"normal\"\n          d=\"M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z\"\n        />\n      </svg>\n    </div>\n  );\n};\n\nexport { FacebookIcon };\n",
+      "type": "registry:ui"
+    }
+  ]
+}

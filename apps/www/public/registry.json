@@ -20,6 +20,12 @@
     "description": {
       "type": "string"
     },
+    "title": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
     "dependencies": {
       "type": "array",
       "items": {

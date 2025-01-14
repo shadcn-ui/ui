@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "skeleton-card",
   "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
   "registryDependencies": [
     "skeleton"
   ],
