@@ -1,4 +1,4 @@
-import { Registry } from "@/registry/schema"
+import { Registry } from "shadcn/registry"
 
 export const hooks: Registry = [
   {

@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "theme-midnight",
   "type": "registry:theme",
+  "author": "shadcn (https://ui.shadcn.com)",
   "cssVars": {
     "light": {
       "background": "240 5% 6%",
