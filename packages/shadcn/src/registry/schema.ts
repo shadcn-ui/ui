@@ -1,5 +1,8 @@
 import { z } from "zod"
 
+// Note: if you edit the schema here, you must also edit the schema in the
+// apps/www/public/schema/registry-item.json file.
+
 export const registryItemTypeSchema = z.enum([
   "registry:lib",
   "registry:block",
@@ -57,11 +60,15 @@ export const registryItemSchema = z.object({
 
 export type RegistryItem = z.infer<typeof registryItemSchema>
 
-export const registrySchema = z.array(registryItemSchema)
+export const registrySchema = z.object({
+  name: z.string(),
+  homepage: z.string(),
+  items: z.array(registryItemSchema),
+})
 
 export type Registry = z.infer<typeof registrySchema>
 
-export const registryIndexSchema = registrySchema
+export const registryIndexSchema = z.array(registryItemSchema)
 
 export const stylesSchema = z.array(
   z.object({
