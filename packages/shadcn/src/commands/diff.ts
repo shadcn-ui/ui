@@ -1,16 +1,16 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { Config, getConfig } from "@/src/utils/get-config"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
 import {
   fetchTree,
   getItemTargetPath,
   getRegistryBaseColor,
   getRegistryIndex,
-} from "@/src/utils/registry"
-import { registryIndexSchema } from "@/src/utils/registry/schema"
+} from "@/src/registry/api"
+import { registryIndexSchema } from "@/src/registry/schema"
+import { Config, getConfig } from "@/src/utils/get-config"
+import { handleError } from "@/src/utils/handle-error"
+import { highlighter } from "@/src/utils/highlighter"
+import { logger } from "@/src/utils/logger"
 import { transform } from "@/src/utils/transformers"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"

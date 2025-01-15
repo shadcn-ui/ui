@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "2.1.0",
+  "version": "2.1.8",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -26,7 +26,16 @@
     "shadcn"
   ],
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./registry": {
+      "types": "./dist/registry/index.d.ts",
+      "default": "./dist/registry/index.js"
+    }
+  },
   "bin": "./dist/index.js",
   "scripts": {
     "dev": "tsup --watch",
@@ -34,6 +43,7 @@
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist && rimraf components",
     "start:dev": "cross-env REGISTRY_URL=http://localhost:3333/r node dist/index.js",
+    "start:prod": "cross-env REGISTRY_URL=https://ui.shadcn.com/r node dist/index.js",
     "start": "node dist/index.js",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
