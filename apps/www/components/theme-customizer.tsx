@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import template from "lodash.template"
+import template from "lodash/template"
 import { Check, Copy, Moon, Repeat, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 

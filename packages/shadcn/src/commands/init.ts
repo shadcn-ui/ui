@@ -1,6 +1,7 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
+import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
@@ -18,7 +19,6 @@ import { getProjectConfig, getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
@@ -86,19 +86,26 @@ export async function runInit(
   }
 ) {
   let projectInfo
+  let newProjectType
   if (!options.skipPreflight) {
     const preflight = await preFlightInit(options)
     if (preflight.errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-      const { projectPath } = await createProject(options)
+      const { projectPath, projectType } = await createProject(options)
       if (!projectPath) {
         process.exit(1)
       }
       options.cwd = projectPath
       options.isNewProject = true
+      newProjectType = projectType
     }
     projectInfo = preflight.projectInfo
   } else {
     projectInfo = await getProjectInfo(options.cwd)
+  }
+
+  if (newProjectType === "monorepo") {
+    options.cwd = path.resolve(options.cwd, "apps/web")
+    return await getConfig(options.cwd)
   }
 
   const projectConfig = await getProjectConfig(options.cwd, projectInfo)

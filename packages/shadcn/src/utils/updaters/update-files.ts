@@ -1,14 +1,14 @@
 import { existsSync, promises as fs } from "fs"
 import path, { basename } from "path"
+import {
+  getRegistryBaseColor,
+  getRegistryItemFileTargetPath,
+} from "@/src/registry/api"
+import { RegistryItem } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import {
-  getRegistryBaseColor,
-  getRegistryItemFileTargetPath,
-} from "@/src/utils/registry"
-import { RegistryItem } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import { transform } from "@/src/utils/transformers"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
@@ -38,15 +38,22 @@ export async function updateFiles(
     overwrite?: boolean
     force?: boolean
     silent?: boolean
+    rootSpinner?: ReturnType<typeof spinner>
+    isRemote?: boolean
   }
 ) {
   if (!files?.length) {
-    return
+    return {
+      filesCreated: [],
+      filesUpdated: [],
+      filesSkipped: [],
+    }
   }
   options = {
     overwrite: false,
     force: false,
     silent: false,
+    isRemote: false,
     ...options,
   }
   const filesCreatedSpinner = spinner(`Updating files.`, {
@@ -83,8 +90,12 @@ export async function updateFiles(
     }
 
     const existingFile = existsSync(filePath)
+
     if (existingFile && !options.overwrite) {
       filesCreatedSpinner.stop()
+      if (options.rootSpinner) {
+        options.rootSpinner.stop()
+      }
       const { overwrite } = await prompts({
         type: "confirm",
         name: "overwrite",
@@ -96,9 +107,15 @@ export async function updateFiles(
 
       if (!overwrite) {
         filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+        if (options.rootSpinner) {
+          options.rootSpinner.start()
+        }
         continue
       }
       filesCreatedSpinner?.start()
+      if (options.rootSpinner) {
+        options.rootSpinner.start()
+      }
     }
 
     // Create the target directory if it doesn't exist.
@@ -114,6 +131,7 @@ export async function updateFiles(
         config,
         baseColor,
         transformJsx: !config.tsx,
+        isRemote: options.isRemote,
       },
       [
         transformImport,
@@ -170,7 +188,7 @@ export async function updateFiles(
     spinner(
       `Skipped ${filesSkipped.length} ${
         filesUpdated.length === 1 ? "file" : "files"
-      }:`,
+      }: (use --overwrite to overwrite)`,
       {
         silent: options.silent,
       }
@@ -184,5 +202,11 @@ export async function updateFiles(
 
   if (!options.silent) {
     logger.break()
+  }
+
+  return {
+    filesCreated,
+    filesUpdated,
+    filesSkipped,
   }
 }

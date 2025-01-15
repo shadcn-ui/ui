@@ -80,21 +80,24 @@ export function ComponentPreview({
     return (
       <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border">
         <Image
-          src={`/images/blocks/${name}.png`}
+          src={`/r/styles/${config.style}/${name}-light.png`}
           alt={name}
           width={1440}
           height={900}
           className="absolute left-0 top-0 z-20 w-[970px] max-w-none bg-background dark:hidden sm:w-[1280px] md:hidden md:dark:hidden"
         />
         <Image
-          src={`/images/blocks/${name}-dark.png`}
+          src={`/r/styles/${config.style}/${name}-dark.png`}
           alt={name}
           width={1440}
           height={900}
           className="absolute left-0 top-0 z-20 hidden w-[970px] max-w-none bg-background dark:block sm:w-[1280px] md:hidden md:dark:hidden"
         />
         <div className="absolute inset-0 hidden w-[1600px] bg-background md:block">
-          <iframe src={`/blocks/new-york/${name}`} className="size-full" />
+          <iframe
+            src={`/view/styles/${config.style}/${name}`}
+            className="size-full"
+          />
         </div>
       </div>
     )
