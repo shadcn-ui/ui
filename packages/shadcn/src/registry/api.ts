@@ -233,40 +233,6 @@ export async function fetchRegistry(paths: string[]) {
   }
 }
 
-export function getRegistryItemFileTargetPath(
-  file: z.infer<typeof registryItemFileSchema>,
-  config: Config,
-  override?: string
-) {
-  if (override) {
-    return override
-  }
-
-  if (file.type === "registry:ui") {
-    return config.resolvedPaths.ui
-  }
-
-  if (file.type === "registry:lib") {
-    return config.resolvedPaths.lib
-  }
-
-  if (file.type === "registry:block" || file.type === "registry:component") {
-    return config.resolvedPaths.components
-  }
-
-  if (file.type === "registry:hook") {
-    return config.resolvedPaths.hooks
-  }
-
-  // TODO: we put this in components for now.
-  // We should move this to pages as per framework.
-  if (file.type === "registry:page") {
-    return config.resolvedPaths.components
-  }
-
-  return config.resolvedPaths.components
-}
-
 export async function registryResolveItemsTree(
   names: z.infer<typeof registryItemSchema>["name"][],
   config: Config

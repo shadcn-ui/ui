@@ -56,6 +56,8 @@ export async function transformCssVars(
   config: Config,
   options: {
     cleanupDefaultNextStyles?: boolean
+  } = {
+    cleanupDefaultNextStyles: false,
   }
 ) {
   options = {
