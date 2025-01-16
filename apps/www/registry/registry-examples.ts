@@ -1,6 +1,6 @@
-import { Registry } from "@/registry/schema"
+import { type Registry } from "shadcn/registry"
 
-export const examples: Registry = [
+export const examples: Registry["items"] = [
   {
     name: "accordion-demo",
     type: "registry:example",

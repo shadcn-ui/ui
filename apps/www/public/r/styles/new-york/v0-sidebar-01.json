@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "v0-sidebar-01",
   "type": "registry:internal",
+  "author": "shadcn (https://ui.shadcn.com)",
   "registryDependencies": [
     "sidebar",
     "breadcrumb",
