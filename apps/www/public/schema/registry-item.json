@@ -14,7 +14,8 @@
         "registry:ui",
         "registry:hook",
         "registry:theme",
-        "registry:page"
+        "registry:page",
+        "registry:file"
       ]
     },
     "description": {
@@ -64,14 +65,27 @@
               "registry:ui",
               "registry:hook",
               "registry:theme",
-              "registry:page"
+              "registry:page",
+              "registry:file"
             ]
           },
           "target": {
             "type": "string"
           }
         },
-        "required": ["path", "type"]
+        "if": {
+          "properties": {
+            "type": {
+              "enum": ["registry:file", "registry:page"]
+            }
+          }
+        },
+        "then": {
+          "required": ["path", "type", "target"]
+        },
+        "else": {
+          "required": ["path", "type"]
+        }
       }
     },
     "tailwind": {
