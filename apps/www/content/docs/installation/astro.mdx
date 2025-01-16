@@ -46,27 +46,27 @@ Answer `Yes` to all the question prompted by the CLI when installing React.
 npx astro add tailwind
 ```
 
-<Step>Create a `styles/globals.css` file in the `src` folder.</Step>
+<Step>Create a `styles/global.css` file in the `src` folder.</Step>
 
-```css title="styles/globals.css" showLineNumbers
+```css title="styles/global.css" showLineNumbers
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
 
-<Step>Import the `globals.css` file</Step>
+<Step>Import the `global.css` file</Step>
 
-Import the `styles/globals.css` file in the `src/pages/index.astro` file:
+Import the `styles/global.css` file in the `src/pages/index.astro` file:
 
 ```ts title="src/pages/index.astro" showLineNumbers
 ---
-import '@/styles/globals.css'
+import '@/styles/global.css'
 ---
 ```
 
 <Step>Update `astro.config.mjs` and set `applyBaseStyles` to `false`</Step>
 
-To prevent serving the Tailwind base styles twice, we need to tell Astro not to apply the base styles, since we already include them in our own `globals.css` file. To do this, set the `applyBaseStyles` config option for the tailwind plugin in `astro.config.mjs` to `false`.
+To prevent serving the Tailwind base styles twice, we need to tell Astro not to apply the base styles, since we already include them in our own `global.css` file. To do this, set the `applyBaseStyles` config option for the tailwind plugin in `astro.config.mjs` to `false`.
 
 ```js title="astro.config.mjs" {3-5} showLineNumbers
 export default defineConfig({
