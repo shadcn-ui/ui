@@ -139,6 +139,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Adonis",
+          href: "/docs/installation/adonis",
+          items: [],
+        },
+        {
           title: "Gatsby",
           href: "/docs/installation/gatsby",
           items: [],
