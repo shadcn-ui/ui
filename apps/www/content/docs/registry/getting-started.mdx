@@ -60,6 +60,14 @@ registry
     └── hello-world.tsx
 ```
 
+**If you're placing your component in a registry directory, make sure it is configure in your `tailwind.config.ts` file.**
+
+```ts title="tailwind.config.ts" showLineNumbers
+export default {
+  content: ["./registry/**/*.{js,ts,jsx,tsx}"],
+}
+```
+
 ### Add your component to the registry
 
 To add your component to the registry, you need to add your component definition to `registry.json`.
