@@ -164,9 +164,11 @@ export default makeSource({
       [
         rehypeAutolinkHeadings,
         {
+          behavior: "append",
           properties: {
             className: ["subheading-anchor"],
             ariaLabel: "Link to section",
+            __isSubheadingAnchor__: true,
           },
         },
       ],
