@@ -407,6 +407,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Registry",
+      label: "New",
       items: [
         {
           title: "Introduction",
