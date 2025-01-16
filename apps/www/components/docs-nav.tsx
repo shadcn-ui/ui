@@ -19,7 +19,7 @@ export function DocsNav({ config }: { config: DocsConfig }) {
           <h4 className="rounded-md px-2 py-1 text-sm font-semibold">
             {item.title}{" "}
             {item.label && (
-              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] font-normal no-underline group-hover:no-underline">
+              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs font-normal leading-none text-[#000000] no-underline group-hover:no-underline">
                 {item.label}
               </span>
             )}
