@@ -164,13 +164,15 @@ To add new colors, you need to add them to your CSS file and to your `tailwind.c
 }
 ```
 
-```js {5-6} title="tailwind.config.js"
+```js {5-8} title="tailwind.config.js"
 module.exports = {
   theme: {
     extend: {
       colors: {
-        warning: "hsl(var(--warning))",
-        "warning-foreground": "hsl(var(--warning-foreground))",
+        warning: {
+          DEFAULT: 'hsl(var(--warning))',
+          foreground: 'hsl(var(--warning-foreground))',
+        },
       },
     },
   },
