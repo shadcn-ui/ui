@@ -292,7 +292,7 @@ importers:
         specifier: 2.12.7
         version: 2.12.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       shadcn:
-        specifier: 2.1.8
+        specifier: 2.2.0-canary.2
         version: link:../../packages/shadcn
       sharp:
         specifier: ^0.31.3
