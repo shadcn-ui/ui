@@ -1234,6 +1234,33 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "pricing-01": {
+      name: "pricing-01",
+      description: "Basic Pricing Page",
+      type: "registry:block",
+      registryDependencies: ["card","tooltip","tabs","button"],
+      files: [{
+        path: "registry/new-york/blocks/pricing-01/page.tsx",
+        type: "registry:page",
+        target: "app/pricing/page.tsx"
+      },{
+        path: "registry/new-york/blocks/pricing-01/components/pricing-section.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/pricing-01/constants/data.ts",
+        type: "registry:internal",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/pricing-01/types/pricing.ts",
+        type: "registry:lib",
+        target: ""
+      }],
+      categories: ["pricing"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/pricing-01/page.tsx")),
+      source: "__registry__/new-york/blocks/pricing-01/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6487,6 +6514,33 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "pricing-01": {
+      name: "pricing-01",
+      description: "Basic Pricing Page",
+      type: "registry:block",
+      registryDependencies: ["card","tooltip","tabs","button"],
+      files: [{
+        path: "registry/default/blocks/pricing-01/page.tsx",
+        type: "registry:page",
+        target: "app/pricing/page.tsx"
+      },{
+        path: "registry/default/blocks/pricing-01/components/pricing-section.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/pricing-01/constants/data.ts",
+        type: "registry:internal",
+        target: ""
+      },{
+        path: "registry/default/blocks/pricing-01/types/pricing.ts",
+        type: "registry:lib",
+        target: ""
+      }],
+      categories: ["pricing"],
+      component: React.lazy(() => import("@/registry/default/blocks/pricing-01/page.tsx")),
+      source: "__registry__/default/blocks/pricing-01/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {
