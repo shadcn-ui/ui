@@ -79,7 +79,7 @@ describe("resolveFilePath", () => {
       description: "should NOT use src directory for root files",
       file: {
         path: "hello-world/.env",
-        type: "registry:lib",
+        type: "registry:file",
         target: "~/.env",
       },
       resolvedPath: "/foo/bar/.env",
@@ -345,6 +345,26 @@ describe("resolveFilePath", () => {
         }
       )
     ).toBe("/foo/bar/src/hooks/use-foo.ts")
+  })
+
+  test("should resolve registry:file file types", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/.env",
+          type: "registry:file",
+          target: "~/baz/.env",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+          },
+        },
+        {
+          isSrcDir: false,
+        }
+      )
+    ).toBe("/foo/bar/baz/.env")
   })
 
   test("should resolve nested files", () => {
