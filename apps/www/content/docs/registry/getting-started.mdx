@@ -9,15 +9,17 @@ It assumes you already have a project with components and would like to turn it 
 
 If you're starting a new registry project, you can use the [registry template](https://github.com/shadcn-ui/registry-template) as a starting point. We have already configured it for you.
 
-## Getting Started
+## registry.json
+
+The `registry.json` file is only required if you're using the `shadcn` CLI to build your registry.
+
+If you're using a different build system, you can skip this step as long as your build system produces valid JSON files that conform to the [registry-item schema specification](/docs/registry/registry-item-json).
 
 <Steps>
 
 ### Add a registry.json file
 
-Create a `registry.json` file in the root of your project. Your project can be a Next.js, React, or any other project that supports React.
-
-This `registry.json` file must conform to the [registry schema specification](/docs/registry/registry-json).
+Create a `registry.json` file in the root of your project. Your project can be a Next.js, Remix, Vite, or any other project that supports React.
 
 ```json title="registry.json" showLineNumbers
 {
@@ -29,6 +31,8 @@ This `registry.json` file must conform to the [registry schema specification](/d
   ]
 }
 ```
+
+This `registry.json` file must conform to the [registry schema specification](/docs/registry/registry-json).
 
 </Steps>
 
@@ -60,13 +64,18 @@ registry
     └── hello-world.tsx
 ```
 
-**If you're placing your component in a registry directory, make sure it is configure in your `tailwind.config.ts` file.**
+<Callout className="mt-6 [&_[data-rehype-pretty-code-title]]:pt-1 [&_pre]:mb-0">
+  **Important:** If you're placing your component in a custom directory, make
+  sure it is configured in your `tailwind.config.ts` file.
 
-```ts title="tailwind.config.ts" showLineNumbers
+```ts showLineNumbers
+// tailwind.config.ts
 export default {
   content: ["./registry/**/*.{js,ts,jsx,tsx}"],
 }
 ```
+
+</Callout>
 
 ### Add your component to the registry
 
@@ -96,7 +105,7 @@ To add your component to the registry, you need to add your component definition
 
 You define your registry item by adding a `name`, `type`, `title`, `description` and `files`.
 
-For every file you add, you must also specify the `path` and `type` of the file. The `path` is the relative path to the file from the root of your project. The `type` is the type of the file.
+For every file you add, you must specify the `path` and `type` of the file. The `path` is the relative path to the file from the root of your project. The `type` is the type of the file.
 
 You can read more about the registry item schema and file types in the [registry item schema docs](/docs/registry/registry-item-json).
 
@@ -108,7 +117,7 @@ You can read more about the registry item schema and file types in the [registry
 
 ### Install the shadcn CLI
 
-Note: the `build` command is available in the `shadcn@canary` version of the CLI.
+Note: the `build` command is currently only available in the `shadcn@canary` version of the CLI.
 
 ```bash
 npm install shadcn@canary
@@ -158,14 +167,6 @@ Your files will now be served at `http://localhost:3000/r/[NAME].json` eg. `http
 
 To make your registry available to other developers, you can publish it by deploying your project to a public URL.
 
-## CLI
-
-To install a registry item using the `shadcn` CLI, use the `add` command followed by the URL of the registry item.
-
-```bash
-npx shadcn@latest add http://localhost:3000/r/hello-world.json
-```
-
 ## Guidelines
 
 Here are some guidelines to follow when building components for a registry.
@@ -175,3 +176,11 @@ Here are some guidelines to follow when building components for a registry.
 - Make sure to list all dependencies in `dependencies`. A dependency is the name of the package in the registry eg. `zod`, `sonner`, etc. To set a version, you can use the `name@version` format eg. `zod@^3.20.0`.
 - **Imports should always use the `@/registry` path.** eg. `import { HelloWorld } from "@/registry/hello-world/hello-world"`
 - Ideally, place your files within a registry item in `components`, `hooks`, `lib` directories.
+
+## Install using the CLI
+
+To install a registry item using the `shadcn` CLI, use the `add` command followed by the URL of the registry item.
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/hello-world.json
+```

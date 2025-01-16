@@ -20,7 +20,7 @@ Here's an example of a complex component that installs a page, two components, a
     {
       "path": "registry/hello-world/page.tsx",
       "type": "registry:page",
-      "target": "app/hello-world/page.tsx"
+      "target": "app/hello/page.tsx"
     },
     {
       "path": "registry/hello-world/components/hello-world.tsx",
@@ -51,7 +51,7 @@ Here's an example of a complex component that installs a page, two components, a
 
 To add a new color you need to add it to `cssVars` and `tailwind.config.theme.extend.colors`.
 
-```json showLineNumbers
+```json showLineNumbers {10-19} {24-29}
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hello-world",
@@ -94,7 +94,7 @@ The CLI will update the project CSS file and tailwind.config.js file. Once updat
 
 To add a new animation you add it to `tailwind.config.theme.extend.animation` and `tailwind.config.theme.extend.keyframes`.
 
-```json showLineNumbers
+```json showLineNumbers {14-22}
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hello-world",
