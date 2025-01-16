@@ -567,4 +567,38 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "fullscreen-calendar",
+    author: "Ahmed Mayara (https://ahmedmayara.vercel.app)",
+    title: "Fullscreen Calendar",
+    description:
+      "A simple fullscreen calendar that allows to navigate between months and displays events.",
+    type: "registry:block",
+    registryDependencies: ["button", "separator"],
+    dependencies: ["date-fns"],
+    files: [
+      {
+        path: "blocks/fullscreen-calendar/page.tsx",
+        type: "registry:page",
+        target: "app/fullscreen-calendar/page.tsx",
+      },
+      {
+        path: "blocks/fullscreen-calendar/components/fullscreen-calendar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/fullscreen-calendar/components/fullscreen-calendar-day.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/fullscreen-calendar/components/fullscreen-calendar-header.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/fullscreen-calendar/components/fullscreen-calendar-week-days.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendars"],
+  },
 ]
