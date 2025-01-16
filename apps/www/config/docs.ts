@@ -409,8 +409,13 @@ export const docsConfig: DocsConfig = {
       title: "Registry",
       items: [
         {
-          title: "Getting Started",
+          title: "Introduction",
           href: "/docs/registry",
+          items: [],
+        },
+        {
+          title: "Getting Started",
+          href: "/docs/registry/getting-started",
           items: [],
         },
         {

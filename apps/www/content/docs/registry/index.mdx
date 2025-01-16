@@ -13,157 +13,30 @@ You can use the `shadcn` CLI to run your own component registry. Running your ow
 component registry allows you to distribute your custom components, hooks, pages, and
 other files to any React project.
 
+<figure className="flex flex-col gap-4">
+  <Image
+    src="/images/registry-light.png"
+    width="1432"
+    height="960"
+    alt="Registry"
+    className="border dark:hidden shadow-sm rounded-lg overflow-hidden mt-6 w-full"
+  />
+  <Image
+    src="/images/registry-dark.png"
+    width="1432"
+    height="960"
+    alt="Registry"
+    className="border hidden dark:block shadow-sm rounded-lg overflow-hidden mt-6 w-full"
+  />
+  <figcaption className="text-center text-sm text-gray-500">
+    Distribute code to any React project.
+  </figcaption>
+</figure>
+
 Registry items are automatically compatible with the `shadcn` CLI and `Open in v0`.
 
 ## Requirements
 
 You are free to design and host your custom registry as you see fit. The only requirement is that your registry items must be valid JSON files that conform to the [registry-item schema specification](/docs/registry/registry-item-json).
 
-## Getting started
-
-<Steps>
-
-### Add a registry.json file
-
-Create a `registry.json` file in the root of your project. This `registry.json` file must conform to the [registry schema specification](/docs/registry/registry-json).
-
-```json title="registry.json" showLineNumbers
-{
-  "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "acme",
-  "homepage": "https://acme.com",
-  "items": [
-    // ...
-  ]
-}
-```
-
-</Steps>
-
-## Add a registry item
-
-<Steps>
-
-### Create your component
-
-Add your first component. Here's an example of a simple `<HelloWorld />` component:
-
-```tsx title="registry/hello-world/hello-world.tsx" showLineNumbers
-import { Button } from "@/components/ui/button"
-
-export function HelloWorld() {
-  return <Button>Hello World</Button>
-}
-```
-
-<Callout className="mt-6">
-  **Note:** This example places the component in the `registry` directory. You
-  can place it anywhere in your project.
-</Callout>
-
-```txt
-registry
-└── hello-world
-    └── hello-world.tsx
-```
-
-### Add your component to the registry
-
-To add your component to the registry, you need to add your component definition to `registry.json`.
-
-```json title="registry.json" showLineNumbers {6-17}
-{
-  "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "acme",
-  "homepage": "https://acme.com",
-  "items": [
-    {
-      "name": "hello-world",
-      "type": "registry:block",
-      "title": "Hello World",
-      "description": "A simple hello world component.",
-      "files": [
-        {
-          "path": "registry/hello-world/hello-world.tsx",
-          "type": "registry:component"
-        }
-      ]
-    }
-  ]
-}
-```
-
-</Steps>
-
-## Build your registry
-
-<Steps>
-
-### Install the shadcn CLI
-
-Note: the `build` command is available in the `shadcn@canary` version of the CLI.
-
-```bash
-npm install shadcn@canary
-```
-
-### Add a build script
-
-Add a `registry:build` script to your `package.json` file.
-
-```json title="package.json" showLineNumbers
-{
-  "scripts": {
-    "registry:build": "shadcn build"
-  }
-}
-```
-
-### Run the build script
-
-Run the build script to generate the registry JSON files.
-
-```bash
-npm run registry:build
-```
-
-<Callout className="mt-6">
-  **Note:** By default, the build script will generate the registry JSON files
-  in `public/r` e.g `public/r/hello-world.json`.
-
-You can change the output directory by passing the `--output` option. See the [shadcn build command](/docs/cli#build) for more information.
-
-</Callout>
-
-</Steps>
-
-## Serve your registry
-
-If you're running your registry on Next.js, you can now serve your registry by running the next.js server.
-
-```bash
-npm run dev
-```
-
-Your files will now be served at `http://localhost:3000/r/[NAME].json` eg. `http://localhost:3000/r/hello-world.json`.
-
-## Publish your registry
-
-To make your registry available to other developers, you can publish it by deploying your project to a public URL.
-
-## CLI
-
-To install a registry item using the `shadcn` CLI, use the `add` command followed by the URL of the registry item.
-
-```bash
-npx shadcn@latest add http://localhost:3000/r/hello-world.json
-```
-
-## Guidelines
-
-Here are some guidelines to follow when building components for a registry.
-
-- The following properties are required for the block definition: `name`, `description`, `type` and `files`.
-- Make sure to list all registry dependencies in `registryDependencies`. A registry dependency is the name of the component in the registry eg. `input`, `button`, `card`, etc.
-- Make sure to list all dependencies in `dependencies`. A dependency is the name of the package in the registry eg. `zod`, `sonner`, etc.
-- **Imports should always use the `@/registry` path.** eg. `import { HelloWorld } from "@/registry/hello-world/hello-world"`
+If you'd like to see an example of a registry, we can have a [template project](https://github.com/shadcn-ui/registry-template) for you to use as a starting point.
