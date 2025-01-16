@@ -224,7 +224,7 @@ npm install input-otp@latest
 + import { OTPInput, OTPInputContext } from "input-otp"
 
  const InputOTPSlot = React.forwardRef<
-   React.ElementRef<"div">,
+   React.ComponentRef<"div">,
 -   SlotProps & React.ComponentPropsWithoutRef<"div">
 -  >(({ char, hasFakeCaret, isActive, className, ...props }, ref) => {
 +   React.ComponentPropsWithoutRef<"div"> & { index: number }
@@ -259,7 +259,7 @@ To add a disabled state to the input, update `<InputOTP />` as follows:
 
 ```tsx showLineNumbers title="input-otp.tsx" {4,7-11}
 const InputOTP = React.forwardRef<
-  React.ElementRef<typeof OTPInput>,
+  React.ComponentRef<typeof OTPInput>,
   React.ComponentPropsWithoutRef<typeof OTPInput>
 >(({ className, containerClassName, ...props }, ref) => (
   <OTPInput
