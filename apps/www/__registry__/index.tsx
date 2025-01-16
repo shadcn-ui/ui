@@ -4254,6 +4254,13 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "progress-with-label": {
+      name: "progress-with-label",
+      type: "components:example",
+      registryDependencies: ["progress", "label", "separator"],
+      component: React.lazy(() => import("@/registry/default/example/progress-with-label")),
+      files: ["registry/default/example/progress-with-label.tsx"],
+    },
     "radio-group-demo": {
       name: "radio-group-demo",
       description: "",
@@ -9508,6 +9515,13 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/examples/progress-demo.tsx")),
       source: "",
       meta: undefined,
+    },
+    "progress-with-label": {
+      name: "progress-with-label",
+      type: "components:example",
+      registryDependencies: ["progress", "label", "separator"],
+      component: React.lazy(() => import("@/registry/new-york/example/progress-with-label")),
+      files: ["registry/new-york/example/progress-with-label.tsx"],
     },
     "radio-group-demo": {
       name: "radio-group-demo",
