@@ -1,10 +1,7 @@
 import { existsSync, promises as fs } from "fs"
 import path, { basename } from "path"
-import {
-  getRegistryBaseColor,
-  getRegistryItemFileTargetPath,
-} from "@/src/registry/api"
-import { RegistryItem } from "@/src/registry/schema"
+import { getRegistryBaseColor } from "@/src/registry/api"
+import { RegistryItem, registryItemFileSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
@@ -17,19 +14,7 @@ import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
-
-export function resolveTargetDir(
-  projectInfo: Awaited<ReturnType<typeof getProjectInfo>>,
-  config: Config,
-  target: string
-) {
-  if (target.startsWith("~/")) {
-    return path.join(config.resolvedPaths.cwd, target.replace("~/", ""))
-  }
-  return projectInfo?.isSrcDir
-    ? path.join(config.resolvedPaths.cwd, "src", target)
-    : path.join(config.resolvedPaths.cwd, target)
-}
+import { z } from "zod"
 
 export async function updateFiles(
   files: RegistryItem["files"],
@@ -74,14 +59,15 @@ export async function updateFiles(
       continue
     }
 
-    let targetDir = getRegistryItemFileTargetPath(file, config)
+    let filePath = resolveFilePath(file, config, {
+      isSrcDir: projectInfo?.isSrcDir,
+      commonRoot: findCommonRoot(
+        files.map((f) => f.path),
+        file.path
+      ),
+    })
     const fileName = basename(file.path)
-    let filePath = path.join(targetDir, fileName)
-
-    if (file.target) {
-      filePath = resolveTargetDir(projectInfo, config, file.target)
-      targetDir = path.dirname(filePath)
-    }
+    const targetDir = path.dirname(filePath)
 
     if (!config.tsx) {
       filePath = filePath.replace(/\.tsx?$/, (match) =>
@@ -209,4 +195,114 @@ export async function updateFiles(
     filesUpdated,
     filesSkipped,
   }
+}
+
+export function resolveFilePath(
+  file: z.infer<typeof registryItemFileSchema>,
+  config: Config,
+  options: {
+    isSrcDir?: boolean
+    commonRoot?: string
+  }
+) {
+  if (file.target) {
+    if (file.target.startsWith("~/")) {
+      return path.join(config.resolvedPaths.cwd, file.target.replace("~/", ""))
+    }
+
+    return options.isSrcDir
+      ? path.join(
+          config.resolvedPaths.cwd,
+          "src",
+          file.target.replace("src/", "")
+        )
+      : path.join(config.resolvedPaths.cwd, file.target.replace("src/", ""))
+  }
+
+  const targetDir = resolveFileTargetDirectory(file, config)
+
+  const relativePath = resolveNestedFilePath(file.path, targetDir)
+  return path.join(targetDir, relativePath)
+}
+
+function resolveFileTargetDirectory(
+  file: z.infer<typeof registryItemFileSchema>,
+  config: Config
+) {
+  if (file.type === "registry:ui") {
+    return config.resolvedPaths.ui
+  }
+
+  if (file.type === "registry:lib") {
+    return config.resolvedPaths.lib
+  }
+
+  if (file.type === "registry:block" || file.type === "registry:component") {
+    return config.resolvedPaths.components
+  }
+
+  if (file.type === "registry:hook") {
+    return config.resolvedPaths.hooks
+  }
+
+  return config.resolvedPaths.components
+}
+
+export function findCommonRoot(paths: string[], needle: string): string {
+  // Remove leading slashes for consistent handling
+  const normalizedPaths = paths.map((p) => p.replace(/^\//, ""))
+  const normalizedNeedle = needle.replace(/^\//, "")
+
+  // Get the directory path of the needle by removing the file name
+  const needleDir = normalizedNeedle.split("/").slice(0, -1).join("/")
+
+  // If needle is at root level, return empty string
+  if (!needleDir) {
+    return ""
+  }
+
+  // Split the needle directory into segments
+  const needleSegments = needleDir.split("/")
+
+  // Start from the full path and work backwards
+  for (let i = needleSegments.length; i > 0; i--) {
+    const testPath = needleSegments.slice(0, i).join("/")
+    // Check if this is a common root by verifying if any other paths start with it
+    const hasRelatedPaths = normalizedPaths.some(
+      (path) => path !== normalizedNeedle && path.startsWith(testPath + "/")
+    )
+    if (hasRelatedPaths) {
+      return "/" + testPath // Add leading slash back for the result
+    }
+  }
+
+  // If no common root found with other files, return the parent directory of the needle
+  return "/" + needleDir // Add leading slash back for the result
+}
+
+export function resolveNestedFilePath(
+  filePath: string,
+  targetDir: string
+): string {
+  // Normalize paths by removing leading/trailing slashes
+  const normalizedFilePath = filePath.replace(/^\/|\/$/g, "")
+  const normalizedTargetDir = targetDir.replace(/^\/|\/$/g, "")
+
+  // Split paths into segments
+  const fileSegments = normalizedFilePath.split("/")
+  const targetSegments = normalizedTargetDir.split("/")
+
+  // Find the last matching segment from targetDir in filePath
+  const lastTargetSegment = targetSegments[targetSegments.length - 1]
+  const commonDirIndex = fileSegments.findIndex(
+    (segment) => segment === lastTargetSegment
+  )
+
+  if (commonDirIndex === -1) {
+    // Return just the filename if no common directory is found
+    return fileSegments[fileSegments.length - 1]
+  }
+
+  // Return everything after the common directory
+  return fileSegments.slice(commonDirIndex + 1).join("/")
 }
