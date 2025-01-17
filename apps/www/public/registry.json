@@ -14,7 +14,8 @@
         "registry:ui",
         "registry:hook",
         "registry:theme",
-        "registry:page"
+        "registry:page",
+        "registry:file"
       ]
     },
     "description": {
