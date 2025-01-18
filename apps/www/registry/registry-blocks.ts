@@ -567,4 +567,84 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "chat-01",
+    author: "Ahmed Mayara (https://ahmedmayara.vercel.app)",
+    description: "A simple chat app.",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "button",
+      "badge",
+      "collapsible",
+      "avatar",
+      "dropdown-menu",
+      "textarea",
+      "scroll-area",
+      "separator",
+      "aspect-ratio",
+      "tooltip",
+    ],
+    dependencies: ["date-fns"],
+    files: [
+      {
+        path: "blocks/chat-01/page.tsx",
+        target: "app/chat/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/chat-01/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/app-sidebar-header.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/main-navigation.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/secondary-navigation.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/footer-navigation.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/user-button.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/chat.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/message.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/chat-header.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/chat-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/chat-sidebar-header.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/chat-sidebar-messages.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/chat-01/components/chat-input.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["chat", "dashboard"],
+  },
 ]
