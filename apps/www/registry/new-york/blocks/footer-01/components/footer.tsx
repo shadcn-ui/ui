@@ -61,7 +61,10 @@ export function Footer() {
           <nav className="lg:mt-0 lg:col-[4/11]">
             <ul className="list-none flex flex-wrap -my-1 -mx-2 lg:justify-end">
               <li className="my-1 mx-2 shrink-0">
-                <a href="/docs" className="text-sm text-primary underline-offset-4 hover:underline">
+                <a
+                  href="/docs"
+                  className="text-sm text-primary underline-offset-4 hover:underline"
+                >
                   Docs
                 </a>
               </li>
@@ -74,17 +77,26 @@ export function Footer() {
                 </a>
               </li>
               <li className="my-1 mx-2 shrink-0">
-                <a href="/blocks" className="text-sm text-primary underline-offset-4 hover:underline">
+                <a
+                  href="/blocks"
+                  className="text-sm text-primary underline-offset-4 hover:underline"
+                >
                   Blocks
                 </a>
               </li>
               <li className="my-1 mx-2 shrink-0">
-                <a href="/charts" className="text-sm text-primary underline-offset-4 hover:underline">
+                <a
+                  href="/charts"
+                  className="text-sm text-primary underline-offset-4 hover:underline"
+                >
                   Charts
                 </a>
               </li>
               <li className="my-1 mx-2 shrink-0">
-                <a href="/themes" className="text-sm text-primary underline-offset-4 hover:underline">
+                <a
+                  href="/themes"
+                  className="text-sm text-primary underline-offset-4 hover:underline"
+                >
                   Themes
                 </a>
               </li>
@@ -93,12 +105,18 @@ export function Footer() {
           <div className="mt-6 lg:mt-0 lg:col-[4/11]">
             <ul className="list-none flex flex-wrap -my-1 -mx-3 lg:justify-end">
               <li className="my-1 mx-3 shrink-0">
-                <a href="#" className="text-sm text-muted-foreground underline-offset-4 hover:underline">
+                <a
+                  href="#"
+                  className="text-sm text-muted-foreground underline-offset-4 hover:underline"
+                >
                   Privacy Policy
                 </a>
               </li>
               <li className="my-1 mx-3 shrink-0">
-                <a href="#" className="text-sm text-muted-foreground underline-offset-4 hover:underline">
+                <a
+                  href="#"
+                  className="text-sm text-muted-foreground underline-offset-4 hover:underline"
+                >
                   Data Processing Agreement
                 </a>
               </li>

@@ -78,7 +78,6 @@ export function Footer() {
               </li>
               <li className="my-1 mx-2 shrink-0">
                 <a
-                  target=""
                   href="/blocks"
                   className="text-sm text-primary underline-offset-4 hover:underline"
                 >
@@ -87,7 +86,6 @@ export function Footer() {
               </li>
               <li className="my-1 mx-2 shrink-0">
                 <a
-                  target=""
                   href="/charts"
                   className="text-sm text-primary underline-offset-4 hover:underline"
                 >
@@ -96,7 +94,6 @@ export function Footer() {
               </li>
               <li className="my-1 mx-2 shrink-0">
                 <a
-                  target=""
                   href="/themes"
                   className="text-sm text-primary underline-offset-4 hover:underline"
                 >
@@ -109,7 +106,6 @@ export function Footer() {
             <ul className="list-none flex flex-wrap -my-1 -mx-3 lg:justify-end">
               <li className="my-1 mx-3 shrink-0">
                 <a
-                  target=""
                   href="#"
                   className="text-sm text-muted-foreground underline-offset-4 hover:underline"
                 >
@@ -118,7 +114,6 @@ export function Footer() {
               </li>
               <li className="my-1 mx-3 shrink-0">
                 <a
-                  target=""
                   href="#"
                   className="text-sm text-muted-foreground underline-offset-4 hover:underline"
                 >
