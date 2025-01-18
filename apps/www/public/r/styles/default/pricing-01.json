@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-01",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A pricing page with a card.",
+  "registryDependencies": [
+    "card",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/pricing-01/page.tsx",
+      "content": "import { Pricing } from \"@/registry/default/blocks/pricing-01/components/pricing\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex min-h-svh w-full items-center justify-center p-6 md:p-10\">\n      <div className=\"w-full max-w-4xl\">\n        <Pricing />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/pricing/page.tsx"
+    },
+    {
+      "path": "blocks/pricing-01/components/pricing.tsx",
+      "content": "import { PricingCard } from \"@/registry/default/blocks/pricing-01/components/pricing-card\"\nimport { PricingHeader } from \"@/registry/default/blocks/pricing-01/components/pricing-header\"\n\nconst defaultTiers = [\n  {\n    name: \"SELF\",\n    price: 299,\n    description: \"For small teams and growing businesses\",\n    features: [\n      { name: \"Up to 20 team members\", included: true },\n      { name: \"Advanced analytics\", included: true },\n      { name: \"24/7 email support\", included: true },\n      { name: \"API access\", included: true, highlight: true },\n      { name: \"Custom integrations\", included: false },\n      { name: \"Enterprise features\", included: false },\n    ],\n    cta: \"Get started\",\n  },\n  {\n    name: \"TEAM\",\n    price: 999,\n    description: \"For large organizations and enterprises\",\n    highlight: true,\n    features: [\n      { name: \"Unlimited team members\", included: true },\n      { name: \"Advanced analytics\", included: true },\n      { name: \"24/7 priority support\", included: true },\n      { name: \"Unlimited API access\", included: true, highlight: true },\n      { name: \"Custom integrations\", included: true },\n      { name: \"Enterprise features\", included: true },\n    ],\n    cta: \"Get started\",\n  },\n]\n\nexport function Pricing() {\n  return (\n    <div className=\"mx-auto w-full max-w-5xl px-4\">\n      <PricingHeader />\n      <div className=\"grid grid-cols-1 gap-8 md:grid-cols-2\">\n        {defaultTiers.map((tier) => (\n          <PricingCard key={tier.name} {...tier} />\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "blocks/pricing-01/components/pricing-card.tsx",
+      "content": "import { ArrowRight, Check } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardFooter,\n  CardHeader,\n} from \"@/registry/default/ui/card\"\n\ninterface Feature {\n  name: string\n  highlight?: boolean\n  included: boolean\n}\n\ninterface PricingCardProps {\n  name: string\n  price: number\n  description: string\n  features: Feature[]\n  highlight?: boolean\n  cta?: string\n}\n\nexport function PricingCard({\n  name,\n  price,\n  description,\n  features,\n  highlight,\n  cta = \"Get started\",\n}: PricingCardProps) {\n  return (\n    <Card\n      className={cn(\n        \"group relative transition-all duration-500\",\n        highlight ? \"bg-black dark:bg-white\" : \"bg-black dark:bg-white\"\n      )}\n    >\n      <CardHeader className=\"space-y-4 p-10\">\n        <h3\n          className={cn(\n            \"text-lg font-medium uppercase tracking-wider\",\n            \"text-white dark:text-neutral-900\"\n          )}\n        >\n          {name}\n        </h3>\n        <div className=\"flex items-baseline gap-2\">\n          <span\n            className={cn(\n              \"text-5xl font-light\",\n              \"text-white dark:text-neutral-900\"\n            )}\n          >\n            ${price}\n          </span>\n          <span className=\"text-sm text-neutral-400 dark:text-neutral-600\">\n            one-time\n          </span>\n        </div>\n        <p\n          className={cn(\n            \"border-b pb-6 text-sm\",\n            \"border-neutral-800 text-neutral-400 dark:border-neutral-200 dark:text-neutral-600\"\n          )}\n        >\n          {description}\n        </p>\n      </CardHeader>\n\n      <CardContent className=\"space-y-4 p-10 pt-0\">\n        {features.map((feature) => (\n          <div key={feature.name} className=\"flex items-center gap-3\">\n            <div\n              className={cn(\n                \"flex h-5 w-5 shrink-0 items-center justify-center rounded-full\",\n                feature.included\n                  ? \"text-white dark:text-neutral-900\"\n                  : \"text-neutral-600 dark:text-neutral-500\"\n              )}\n            >\n              <Check className=\"h-3.5 w-3.5\" />\n            </div>\n            <span className=\"text-sm text-neutral-300 dark:text-neutral-600\">\n              {feature.name}\n            </span>\n          </div>\n        ))}\n      </CardContent>\n      <CardFooter className=\"p-10 pt-0\">\n        <Button\n          className={cn(\n            \"group relative h-12 w-full\",\n            \"bg-white text-neutral-900 dark:bg-neutral-900 dark:text-white\",\n            \"hover:bg-neutral-100 dark:hover:bg-neutral-800\",\n            \"border border-neutral-800 dark:border-neutral-200\",\n            \"hover:border-neutral-700 dark:hover:border-neutral-300\"\n          )}\n        >\n          <span className=\"relative z-10 flex items-center justify-center gap-2 font-medium tracking-wide\">\n            {cta}\n            <ArrowRight className=\"h-4 w-4 transition-transform group-hover:translate-x-1\" />\n          </span>\n        </Button>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "blocks/pricing-01/components/pricing-header.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nexport function PricingHeader() {\n  return (\n    <div className=\"flex flex-col items-center justify-center space-y-4 py-10\">\n      <h1\n        className={cn(\n          \"text-4xl font-medium uppercase tracking-tighter\",\n          \"text-neutral-900 dark:text-white\"\n        )}\n      >\n        Pricing\n      </h1>\n      <p className=\"text-lg text-neutral-500 dark:text-neutral-400\">\n        Choose the plan that suits your needs\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "pricing"
+  ]
+}
