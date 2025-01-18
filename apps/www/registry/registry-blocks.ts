@@ -567,4 +567,22 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "toolbar-01",
+    description: "A toolbar with action buttons.",
+    type: "registry:block",
+    registryDependencies: ["button", "input", "avatar", "separator"],
+    files: [
+      {
+        path: "blocks/toolbar-01/page.tsx",
+        target: "app/toolbar/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/toolbar-01/components/toolbar.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["toolbar"],
+  },
 ]

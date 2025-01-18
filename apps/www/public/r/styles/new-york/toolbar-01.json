@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toolbar-01",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A toolbar with action buttons.",
+  "registryDependencies": [
+    "button",
+    "input",
+    "avatar",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "blocks/toolbar-01/page.tsx",
+      "content": "import { Toolbar } from \"@/registry/new-york/blocks/toolbar-01/components/toolbar\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex min-h-svh w-full items-center justify-center p-6 md:p-10\">\n      <div className=\"w-full max-w-lg\">\n        <Toolbar />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/toolbar/page.tsx"
+    },
+    {
+      "path": "blocks/toolbar-01/components/toolbar.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport {\n  MousePointerClick,\n  Plus,\n  Search,\n  Sparkles,\n  SunMoon,\n} from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Avatar, AvatarFallback } from \"@/registry/new-york/ui/avatar\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport { Input } from \"@/registry/new-york/ui/input\"\nimport { Separator } from \"@/registry/new-york/ui/separator\"\n\nexport function Toolbar() {\n  const [search, setSearch] = useState(\"\")\n  const [isActive, setIsActive] = useState(true)\n  const [activeButton, setActiveButton] = useState<string | null>(null)\n\n  const handleButtonClick = (buttonName: string) => {\n    setActiveButton(buttonName)\n    setTimeout(() => setActiveButton(null), 1000)\n  }\n\n  const submitSearch = (e: React.FormEvent<HTMLFormElement>) => {\n    e.preventDefault()\n    setActiveButton(\"Search\")\n    setSearch(\"\")\n  }\n\n  return (\n    <div className=\"relative w-fit rounded-xl border border-zinc-200 bg-white p-2 shadow-lg dark:border-zinc-800 dark:bg-zinc-900\">\n      <div className=\"absolute -top-8 left-1/2 -translate-x-1/2 rounded-md text-xs font-medium text-blue-600\">\n        {activeButton && (\n          <div className=\"relative flex flex-col items-center\">\n            <div>{activeButton}</div>\n            <div className=\"relative mt-1 h-0.5 w-24 bg-slate-200\">\n              <div className=\"absolute left-0 h-full bg-blue-500\" />\n            </div>\n          </div>\n        )}\n      </div>\n      <div className=\"flex h-10 items-center gap-2\">\n        <Button\n          variant=\"ghost\"\n          size=\"icon\"\n          onClick={() => handleButtonClick(\"Theme toggle\")}\n        >\n          <SunMoon className=\"h-4 w-4\" />\n        </Button>\n        <Separator orientation=\"vertical\" className=\"h-6\" />\n        <Button\n          variant=\"ghost\"\n          size=\"icon\"\n          onClick={() => handleButtonClick(\"Plus\")}\n        >\n          <Plus className=\"h-4 w-4\" />\n        </Button>\n        <Button\n          variant=\"ghost\"\n          size=\"icon\"\n          onClick={() => handleButtonClick(\"Sparkles\")}\n        >\n          <Sparkles className=\"h-4 w-4\" />\n        </Button>\n        <div className=\"relative flex items-center\">\n          <div className=\"relative flex h-10 items-center gap-2 overflow-hidden rounded-xl bg-zinc-100 px-3 dark:bg-zinc-800\">\n            <Search\n              className={cn(\n                \"h-4 w-4\",\n                isActive && \"text-[#0C8CE9] dark:text-blue-400\"\n              )}\n            />\n            <div className=\"relative flex items-center\">\n              <form onSubmit={submitSearch}>\n                <Input\n                  type=\"search\"\n                  value={search}\n                  placeholder=\"Search...\"\n                  className=\"h-7 border-none bg-transparent px-0 focus-visible:ring-0 focus-visible:ring-offset-0\"\n                  onChange={(e) => setSearch(e.target.value)}\n                />\n              </form>\n            </div>\n          </div>\n        </div>\n        <Button\n          variant=\"ghost\"\n          className=\"h-10 w-10 md:w-20\"\n          onClick={() => handleButtonClick(\"MousePointerClick\")}\n        >\n          <div className=\"relative flex items-center gap-2\">\n            <span className=\"hidden text-sm font-medium  md:block\">Click!</span>\n            <MousePointerClick className=\"h-4 w-4\" />\n          </div>\n        </Button>\n        <Separator orientation=\"vertical\" className=\"h-6\" />\n        <Button\n          variant=\"ghost\"\n          size=\"icon\"\n          onClick={() => handleButtonClick(\"User\")}\n        >\n          <Avatar className=\"h-6 w-6\">\n            <AvatarFallback>D</AvatarFallback>\n          </Avatar>\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "toolbar"
+  ]
+}
