@@ -1234,6 +1234,25 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "toolbar-01": {
+      name: "toolbar-01",
+      description: "A toolbar with action buttons.",
+      type: "registry:block",
+      registryDependencies: ["button","input","avatar","separator"],
+      files: [{
+        path: "registry/new-york/blocks/toolbar-01/page.tsx",
+        type: "registry:page",
+        target: "app/toolbar/page.tsx"
+      },{
+        path: "registry/new-york/blocks/toolbar-01/components/toolbar.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["toolbar"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/toolbar-01/page.tsx")),
+      source: "__registry__/new-york/blocks/toolbar-01/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6487,6 +6506,25 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "toolbar-01": {
+      name: "toolbar-01",
+      description: "A toolbar with action buttons.",
+      type: "registry:block",
+      registryDependencies: ["button","input","avatar","separator"],
+      files: [{
+        path: "registry/default/blocks/toolbar-01/page.tsx",
+        type: "registry:page",
+        target: "app/toolbar/page.tsx"
+      },{
+        path: "registry/default/blocks/toolbar-01/components/toolbar.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["toolbar"],
+      component: React.lazy(() => import("@/registry/default/blocks/toolbar-01/page.tsx")),
+      source: "__registry__/default/blocks/toolbar-01/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {
