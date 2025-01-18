@@ -92,6 +92,7 @@ export function PricingCard({
       </CardContent>
       <CardFooter className="p-10 pt-0">
         <Button
+          aria-label={cta}
           className={cn(
             "group relative h-12 w-full",
             "bg-white text-neutral-900 dark:bg-neutral-900 dark:text-white",
