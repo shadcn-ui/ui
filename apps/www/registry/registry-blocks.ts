@@ -567,4 +567,22 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "footer-01",
+    description: "A simple footer with social icons and links.",
+    type: "registry:block",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/footer-01/page.tsx",
+        target: "app/footer/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/footer-01/components/footer.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["footer"],
+  },
 ]
