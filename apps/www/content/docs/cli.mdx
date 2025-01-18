@@ -3,6 +3,12 @@ title: CLI
 description: Use the CLI to add components to your project.
 ---
 
+<Callout>
+
+**Note:** We just released a new `shadcn` CLI. See the [changelog](/docs/changelog) for more information.
+
+</Callout>
+
 ## init
 
 Use the `init` command to initialize configuration and dependencies for a new project.
@@ -10,33 +16,32 @@ Use the `init` command to initialize configuration and dependencies for a new pr
 The `init` command installs dependencies, adds the `cn` util, configures `tailwind.config.js`, and CSS variables for the project.
 
 ```bash
-npx shadcn-ui@latest init
+npx shadcn@latest init
 ```
 
 You will be asked a few questions to configure `components.json`:
 
 ```txt showLineNumbers
-Would you like to use TypeScript (recommended)? no/yes
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › › app/globals.css
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
 Do you want to use CSS variables for colors? › no / yes
-Where is your tailwind.config.js located? › tailwind.config.js
-Configure the import alias for components: › @/components
-Configure the import alias for utils: › @/lib/utils
-Are you using React Server Components? › no / yes
 ```
 
 ### Options
 
 ```txt
-Usage: shadcn-ui init [options]
+Usage: shadcn init [options] [components...]
 
 initialize your project and install dependencies
 
+Arguments:
+  components         the components to add or a url to the component.
+
 Options:
-  -y, --yes        skip confirmation prompt. (default: false)
-  -c, --cwd <cwd>  the working directory. defaults to the current directory.
+  -d, --defaults    use default values i.e new-york, zinc and css variables. (default: false)
+  -f, --force       force overwrite of existing components.json. (default: false)
+  -y, --yes         skip confirmation prompt. (default: false)
+  -c, --cwd <cwd>   the working directory. defaults to the current directory.
   -h, --help       display help for command
 ```
 
@@ -45,7 +50,7 @@ Options:
 Use the `add` command to add components and dependencies to your project.
 
 ```bash
-npx shadcn-ui@latest add [component]
+npx shadcn@latest add [component]
 ```
 
 You will be presented with a list of components to choose from:
@@ -69,67 +74,32 @@ Enter to submit.
 ### Options
 
 ```txt
-Usage: shadcn-ui add [options] [components...]
+Usage: shadcn add [options] [components...]
 
 add a component to your project
 
 Arguments:
-  components         the components to add
+  components         the components to add or a url to the component.
 
 Options:
   -y, --yes          skip confirmation prompt. (default: false)
   -o, --overwrite    overwrite existing files. (default: false)
   -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  -a, --all          add all available components. (default: false)
   -p, --path <path>  the path to add the component to.
   -h, --help         display help for command
 ```
 
-## diff (experimental)
+## Monorepo
 
-You can use the diff command to check for updates against the registry.
-
-Run the following command to get a list of components that have updates available:
+In a monorepo, you can specify the path to your workspace with the `-c` or `--cwd` option.
 
 ```bash
-npx shadcn-ui diff
+npx shadcn@latest init -c ./apps/www
 ```
 
-```txt
-The following components have updates available:
-- alert
-  - /path/to/my-app/components/ui/alert.tsx
-- button
-  - /path/to/my-app/components/ui/button.tsx
-- toast
-  - /path/to/my-app/components/ui/use-toast.ts
-  - /path/to/my-app/components/ui/toaster.tsx
-```
-
-Then run `diff [component]` to see the changes:
+or
 
 ```bash
-npx shadcn-ui diff alert
-```
-
-```diff /pl-12/
-const alertVariants = cva(
-- "relative w-full rounded-lg border",
-+ "relative w-full pl-12 rounded-lg border"
-)
-```
-
-### Options
-
-```txt
-Usage: shadcn-ui diff [options] [component]
-
-check for updates against the registry
-
-Arguments:
-  component        the component name
-
-Options:
-  -y, --yes        skip confirmation prompt. (default: false)
-  -c, --cwd <cwd>  the working directory. defaults to the current directory.
-  -h, --help       display help for command
+npx shadcn@latest add alert-dialog -c ./apps/www
 ```

@@ -1,7 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
 
-import { cn } from "@/lib/utils"
 import { Announcement } from "@/components/announcement"
 import { ExamplesNav } from "@/components/examples-nav"
 import {
@@ -10,51 +9,50 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { buttonVariants } from "@/registry/new-york/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 
 export const metadata: Metadata = {
   title: "Examples",
   description: "Check out some examples app built using the components.",
 }
 
-interface ExamplesLayoutProps {
+export default function ExamplesLayout({
+  children,
+}: {
   children: React.ReactNode
-}
-
-export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
+}) {
   return (
-    <div className="container relative">
+    <>
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading className="hidden md:block">
-          Check out some examples
-        </PageHeaderHeading>
-        <PageHeaderHeading className="md:hidden">Examples</PageHeaderHeading>
+        <PageHeaderHeading>Build your component library</PageHeaderHeading>
         <PageHeaderDescription>
-          Dashboard, cards, authentication. Some examples built using the
-          components. Use this as a guide to build your own.
+          Beautifully designed components that you can copy and paste into your
+          apps. Made with Tailwind CSS. Open source.
         </PageHeaderDescription>
         <PageActions>
-          <Link href="/docs" className={cn(buttonVariants(), "rounded-[6px]")}>
-            Get Started
-          </Link>
-          <Link
-            href="/components"
-            className={cn(
-              buttonVariants({ variant: "outline" }),
-              "rounded-[6px]"
-            )}
-          >
-            Components
-          </Link>
+          <Button asChild size="sm">
+            <Link href="/docs">Get Started</Link>
+          </Button>
+          <Button asChild size="sm" variant="ghost">
+            <Link href="/blocks">Browse Blocks</Link>
+          </Button>
         </PageActions>
       </PageHeader>
-      <section>
-        <ExamplesNav />
-        <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
-          {children}
+      <div className="border-grid border-b">
+        <div className="container-wrapper">
+          <div className="container py-4">
+            <ExamplesNav />
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
+      <div className="container-wrapper">
+        <div className="container py-6">
+          <section className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
+            {children}
+          </section>
+        </div>
+      </div>
+    </>
   )
 }
