@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "not-found-07",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A simple not found page with typing effect.",
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "blocks/not-found-07/page.tsx",
+      "content": "import { NotFound } from \"@/registry/new-york/blocks/not-found-07/components/not-found\"\n\nexport default function Page() {\n  return (\n    <div className=\"relative flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10\">\n      <NotFound />\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/not-found/page.tsx"
+    },
+    {
+      "path": "blocks/not-found-07/components/not-found.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { Frame, RotateCcw } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\n\nimport { TypingText } from \"./typing-text\"\n\nexport function NotFound() {\n  const [key, setKey] = useState(0)\n\n  const handleRerender = () => {\n    setKey((prevKey) => prevKey + 1)\n  }\n\n  return (\n    <>\n      <div className=\"relative flex flex-col items-start w-64\">\n        <h3 className=\"text-2xl font-semibold\">\n          <Frame className=\"h-6 w-6 mb-2\" />\n          404 Not Found\n        </h3>\n        <p className=\"absolute top-full mt-2 pb-8\">\n          <TypingText\n            key={key}\n            text=\"Found, this link is not. A path to nowhere, it leads. 404, the error is.\"\n          />\n        </p>\n      </div>\n      <Button\n        variant=\"outline\"\n        size=\"icon\"\n        onClick={handleRerender}\n        className=\"absolute top-8 right-8\"\n      >\n        <RotateCcw />\n      </Button>\n    </>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "blocks/not-found-07/components/typing-text.tsx",
+      "content": "\"use client\"\n\n// many thanks to animata.design\nimport { ReactNode, useEffect, useState } from \"react\"\n\nconst ALWAYS_VIBISBLE_COUNT = 1 as const\n\ninterface TypingTextProps {\n  /**\n   * Text to type\n   */\n  text: string\n\n  /**\n   * Delay between typing each character in milliseconds\n   * @default 48\n   */\n  delay?: number\n}\n\nfunction Blinker() {\n  const [show, setShow] = useState(true)\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setShow((prev) => !prev)\n    }, 500)\n    return () => clearInterval(interval)\n  }, [])\n  return <span className={show ? \"\" : \"opacity-0\"}>|</span>\n}\n\nfunction NormalEffect({ text, index }: { text: string; index: number }) {\n  return (\n    <>\n      {text.slice(\n        0,\n        Math.max(index, Math.min(text.length, ALWAYS_VIBISBLE_COUNT))\n      )}\n    </>\n  )\n}\n\nenum TypingDirection {\n  Forward = 1,\n  Backward = -1,\n}\n\nfunction CursorWrapper({\n  visible,\n  children,\n  waiting,\n}: {\n  visible?: boolean\n  waiting?: boolean\n  children: ReactNode\n}) {\n  const [on, setOn] = useState(true)\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setOn((prev) => !prev)\n    }, 100)\n    return () => clearInterval(interval)\n  }, [])\n\n  if (!visible || (!on && !waiting)) {\n    return null\n  }\n\n  return children\n}\n\nfunction Type({ text, delay }: TypingTextProps) {\n  const [index, setIndex] = useState(0)\n  const [direction] = useState<TypingDirection>(TypingDirection.Forward)\n  const [isComplete, setIsComplete] = useState(false)\n\n  const total = text.length\n\n  useEffect(() => {\n    let interval: NodeJS.Timeout\n\n    const startTyping = () => {\n      setIndex((prevDir) => {\n        if (\n          direction === TypingDirection.Backward &&\n          prevDir === TypingDirection.Forward\n        ) {\n          clearInterval(interval)\n        } else if (\n          direction === TypingDirection.Forward &&\n          prevDir === total - 1\n        ) {\n          clearInterval(interval)\n        }\n        return prevDir + direction\n      })\n    }\n\n    interval = setInterval(startTyping, delay)\n    return () => clearInterval(interval)\n  }, [total, direction, delay])\n\n  useEffect(() => {\n    if (index === total) {\n      setIsComplete(true)\n    }\n  }, [index, total])\n\n  const waitingNextCycle = index === total || index === 0\n\n  return (\n    <span className=\"relative whitespace-pre-wrap\">\n      <span>\n        <NormalEffect text={text} index={index} />\n        <CursorWrapper waiting={waitingNextCycle} visible={!isComplete}>\n          <Blinker />\n        </CursorWrapper>\n      </span>\n    </span>\n  )\n}\n\nexport function TypingText({ text, delay = 48 }: TypingTextProps) {\n  return <Type key={text} delay={delay} text={text} />\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "404-pages"
+  ]
+}
