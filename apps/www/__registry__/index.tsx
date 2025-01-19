@@ -1234,6 +1234,147 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "not-found-01": {
+      name: "not-found-01",
+      description: "A simple not found page.",
+      type: "registry:block",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/blocks/not-found-01/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/new-york/blocks/not-found-01/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/not-found-01/page.tsx")),
+      source: "__registry__/new-york/blocks/not-found-01/page.tsx",
+      meta: undefined,
+    },
+    "not-found-02": {
+      name: "not-found-02",
+      description: "A simple not found page split with an image.",
+      type: "registry:block",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/blocks/not-found-02/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/new-york/blocks/not-found-02/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/not-found-02/page.tsx")),
+      source: "__registry__/new-york/blocks/not-found-02/page.tsx",
+      meta: undefined,
+    },
+    "not-found-03": {
+      name: "not-found-03",
+      description: "A simple not found page with links.",
+      type: "registry:block",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/blocks/not-found-03/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/new-york/blocks/not-found-03/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/not-found-03/page.tsx")),
+      source: "__registry__/new-york/blocks/not-found-03/page.tsx",
+      meta: undefined,
+    },
+    "not-found-04": {
+      name: "not-found-04",
+      description: "A simple not found page with card links.",
+      type: "registry:block",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/blocks/not-found-04/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/new-york/blocks/not-found-04/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/not-found-04/page.tsx")),
+      source: "__registry__/new-york/blocks/not-found-04/page.tsx",
+      meta: undefined,
+    },
+    "not-found-05": {
+      name: "not-found-05",
+      description: "A simple not found page with 404 as background image.",
+      type: "registry:block",
+      registryDependencies: ["button","input"],
+      files: [{
+        path: "registry/new-york/blocks/not-found-05/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/new-york/blocks/not-found-05/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/not-found-05/components/illustration.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/not-found-05/page.tsx")),
+      source: "__registry__/new-york/blocks/not-found-05/page.tsx",
+      meta: undefined,
+    },
+    "not-found-06": {
+      name: "not-found-06",
+      description: "A minimum not found page.",
+      type: "registry:block",
+      registryDependencies: ["button","input"],
+      files: [{
+        path: "registry/new-york/blocks/not-found-06/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/new-york/blocks/not-found-06/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/not-found-06/page.tsx")),
+      source: "__registry__/new-york/blocks/not-found-06/page.tsx",
+      meta: undefined,
+    },
+    "not-found-07": {
+      name: "not-found-07",
+      description: "A simple not found page with typing effect.",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [{
+        path: "registry/new-york/blocks/not-found-07/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/new-york/blocks/not-found-07/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/not-found-07/components/typing-text.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/not-found-07/page.tsx")),
+      source: "__registry__/new-york/blocks/not-found-07/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6487,6 +6628,147 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "not-found-01": {
+      name: "not-found-01",
+      description: "A simple not found page.",
+      type: "registry:block",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/blocks/not-found-01/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/default/blocks/not-found-01/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/default/blocks/not-found-01/page.tsx")),
+      source: "__registry__/default/blocks/not-found-01/page.tsx",
+      meta: undefined,
+    },
+    "not-found-02": {
+      name: "not-found-02",
+      description: "A simple not found page split with an image.",
+      type: "registry:block",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/blocks/not-found-02/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/default/blocks/not-found-02/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/default/blocks/not-found-02/page.tsx")),
+      source: "__registry__/default/blocks/not-found-02/page.tsx",
+      meta: undefined,
+    },
+    "not-found-03": {
+      name: "not-found-03",
+      description: "A simple not found page with links.",
+      type: "registry:block",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/blocks/not-found-03/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/default/blocks/not-found-03/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/default/blocks/not-found-03/page.tsx")),
+      source: "__registry__/default/blocks/not-found-03/page.tsx",
+      meta: undefined,
+    },
+    "not-found-04": {
+      name: "not-found-04",
+      description: "A simple not found page with card links.",
+      type: "registry:block",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/blocks/not-found-04/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/default/blocks/not-found-04/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/default/blocks/not-found-04/page.tsx")),
+      source: "__registry__/default/blocks/not-found-04/page.tsx",
+      meta: undefined,
+    },
+    "not-found-05": {
+      name: "not-found-05",
+      description: "A simple not found page with 404 as background image.",
+      type: "registry:block",
+      registryDependencies: ["button","input"],
+      files: [{
+        path: "registry/default/blocks/not-found-05/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/default/blocks/not-found-05/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/not-found-05/components/illustration.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/default/blocks/not-found-05/page.tsx")),
+      source: "__registry__/default/blocks/not-found-05/page.tsx",
+      meta: undefined,
+    },
+    "not-found-06": {
+      name: "not-found-06",
+      description: "A minimum not found page.",
+      type: "registry:block",
+      registryDependencies: ["button","input"],
+      files: [{
+        path: "registry/default/blocks/not-found-06/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/default/blocks/not-found-06/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/default/blocks/not-found-06/page.tsx")),
+      source: "__registry__/default/blocks/not-found-06/page.tsx",
+      meta: undefined,
+    },
+    "not-found-07": {
+      name: "not-found-07",
+      description: "A simple not found page with typing effect.",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [{
+        path: "registry/default/blocks/not-found-07/page.tsx",
+        type: "registry:page",
+        target: "app/not-found/page.tsx"
+      },{
+        path: "registry/default/blocks/not-found-07/components/not-found.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/not-found-07/components/typing-text.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["404-pages"],
+      component: React.lazy(() => import("@/registry/default/blocks/not-found-07/page.tsx")),
+      source: "__registry__/default/blocks/not-found-07/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {
