@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "not-found-01",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A simple not found page.",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/not-found-01/page.tsx",
+      "content": "import { NotFound } from \"@/registry/new-york/blocks/not-found-01/components/not-found\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10\">\n      <NotFound />\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/not-found/page.tsx"
+    },
+    {
+      "path": "blocks/not-found-01/components/not-found.tsx",
+      "content": "import { Button } from \"@/registry/new-york/ui/button\"\n\nexport function NotFound() {\n  return (\n    <div className=\"text-center\">\n      <p className=\"text-base font-semibold text-primary\">404</p>\n      <h1 className=\"mt-4 text-balance text-5xl font-semibold tracking-tight text-primary sm:text-7xl\">\n        Page not found\n      </h1>\n      <p className=\"mt-6 text-pretty text-lg font-medium text-muted-foreground sm:text-xl/8\">\n        Lost, this page is. In another system, it may be.\n      </p>\n      <div className=\"mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-center gap-y-3 gap-x-6\">\n        <Button variant=\"secondary\" asChild>\n          <a href=\"#\">\n            <span aria-hidden=\"true\">&larr;</span> Go back\n          </a>\n        </Button>\n        <Button className=\"-order-1 sm:order-none\" asChild>\n          <a href=\"#\">Take me home</a>\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "404-pages"
+  ]
+}
