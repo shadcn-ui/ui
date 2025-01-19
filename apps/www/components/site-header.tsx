@@ -20,16 +20,16 @@ export function SiteHeader() {
               <CommandMenu />
             </div>
             <nav className="flex items-center gap-0.5">
-              <Button variant="ghost" size="icon" className="h-8 w-8 px-0">
-                <Link
-                  href={siteConfig.links.github}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+              <Link
+                href={siteConfig.links.github}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Button variant="ghost" size="icon" className="h-8 w-8 px-0">
                   <Icons.gitHub className="h-4 w-4" />
                   <span className="sr-only">GitHub</span>
-                </Link>
-              </Button>
+                </Button>
+              </Link>
               <ModeSwitcher />
             </nav>
           </div>
