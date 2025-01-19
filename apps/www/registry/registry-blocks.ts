@@ -567,4 +567,138 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "not-found-01",
+    description: "A simple not found page.",
+    type: "registry:block",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/not-found-01/page.tsx",
+        target: "app/not-found/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/not-found-01/components/not-found.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["404-pages"],
+  },
+  {
+    name: "not-found-02",
+    description: "A simple not found page split with an image.",
+    type: "registry:block",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/not-found-02/page.tsx",
+        target: "app/not-found/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/not-found-02/components/not-found.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["404-pages"],
+  },
+  {
+    name: "not-found-03",
+    description: "A simple not found page with links.",
+    type: "registry:block",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/not-found-03/page.tsx",
+        target: "app/not-found/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/not-found-03/components/not-found.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["404-pages"],
+  },
+  {
+    name: "not-found-04",
+    description: "A simple not found page with card links.",
+    type: "registry:block",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "blocks/not-found-04/page.tsx",
+        target: "app/not-found/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/not-found-04/components/not-found.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["404-pages"],
+  },
+  {
+    name: "not-found-05",
+    description: "A simple not found page with 404 as background image.",
+    type: "registry:block",
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "blocks/not-found-05/page.tsx",
+        target: "app/not-found/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/not-found-05/components/not-found.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/not-found-05/components/illustration.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["404-pages"],
+  },
+  {
+    name: "not-found-06",
+    description: "A minimum not found page.",
+    type: "registry:block",
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "blocks/not-found-06/page.tsx",
+        target: "app/not-found/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/not-found-06/components/not-found.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["404-pages"],
+  },
+  {
+    name: "not-found-07",
+    description: "A simple not found page with typing effect.",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [
+      {
+        path: "blocks/not-found-07/page.tsx",
+        target: "app/not-found/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/not-found-07/components/not-found.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/not-found-07/components/typing-text.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["404-pages"],
+  },
 ]
