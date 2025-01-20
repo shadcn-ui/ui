@@ -157,7 +157,7 @@ function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
     }
   }
 
-  return target
+  return target ?? ""
 }
 
 async function createTempSourceFile(filename: string) {
