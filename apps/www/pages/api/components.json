@@ -344,16 +344,6 @@
     ],
     "type": "ui"
   },
-    {
-    "component": "stepper",
-    "name": "Stepper",
-    "files": [
-      {
-        "name": "stepper.tsx",
-        "dir": "components/ui"
-      }
-    ]
-  },
   {
     "name": "switch",
     "dependencies": ["@radix-ui/react-switch"],
