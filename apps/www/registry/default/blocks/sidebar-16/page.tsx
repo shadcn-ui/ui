@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Command, Settings, Sidebar } from "lucide-react"
+import { Settings, Sidebar } from "lucide-react"
 
-import { AppSidebar } from "@/registry/new-york/block/sidebar-16/components/app-sidebar"
+import { AppSidebar } from "@/registry/default/blocks/sidebar-16/components/app-sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,14 +11,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/new-york/ui/breadcrumb"
-import { Button } from "@/registry/new-york/ui/button"
-import { Separator } from "@/registry/new-york/ui/separator"
+} from "@/registry/default/ui/breadcrumb"
+import { Button } from "@/registry/default/ui/button"
+import { Separator } from "@/registry/default/ui/separator"
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/registry/new-york/ui/sidebar"
+} from "@/registry/default/ui/sidebar"
 
 export const iframeHeight = "800px"
 
@@ -39,35 +39,30 @@ export default function Page() {
     >
       <header className="bg-sidebar/75 sticky h-[--header-height] top-0 z-50 w-full border-b border-border/40 backdrop-blur flex items-center">
         <div className="flex gap-2 items-center px-4 w-full">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setOpen(!open)}
-            >
-              <Sidebar />
-            </Button>
-            <nav className="flex items-center gap-4 text-sm xl:gap-6">
-              <a
-                href="#"
-                className="transition-colors hover:text-foreground/80"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                className="transition-colors hover:text-foreground/80"
-              >
-                About
-              </a>
-            </nav>
-            <Button
-              className="ml-auto"
-              variant="ghost"
-              size="icon"
-              onClick={() => setOpen(!open)}
-            >
-              <Settings />
-            </Button>
+          <Button
+            className="hidden md:flex"
+            variant="ghost"
+            size="icon"
+            onClick={() => setOpen(!open)}
+          >
+            <Sidebar />
+          </Button>
+          <nav className="flex items-center gap-4 text-sm xl:gap-6">
+            <a href="#" className="transition-colors hover:text-foreground/80">
+              Home
+            </a>
+            <a href="#" className="transition-colors hover:text-foreground/80">
+              About
+            </a>
+          </nav>
+          <Button
+            className="ml-auto"
+            variant="ghost"
+            size="icon"
+            onClick={() => setOpen(!open)}
+          >
+            <Settings />
+          </Button>
         </div>
       </header>
       <SidebarProvider open={open} onOpenChange={setOpen}>
@@ -76,6 +71,10 @@ export default function Page() {
         <SidebarInset>
           <header className=" flex shrink-0 items-center gap-2 border-b py-2">
             <div className="flex items-center gap-2 px-4 py-2">
+              <div className="flex md:hidden items-center gap-2">
+                <SidebarTrigger />
+                <Separator orientation="vertical" className="mr-2 h-4" />
+              </div>
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem className="hidden md:block">

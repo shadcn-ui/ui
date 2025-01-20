@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Command, Sidebar } from "lucide-react"
+import { Settings, Sidebar } from "lucide-react"
 
-import { AppSidebar } from "@/registry/default/block/sidebar-16/components/app-sidebar"
+import { AppSidebar } from "@/registry/default/blocks/sidebar-16/components/app-sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -37,61 +37,32 @@ export default function Page() {
         } as React.CSSProperties
       }
     >
-      <header className="bg-sidebar sticky h-[--header-height] top-0 z-50 w-full border-b border-border/40  backdrop-blur">
-        <div className="flex h-14 items-center px-4">
-          <div className="mr-4 hidden md:flex">
-            <Button
-              className="hidden md:flex"
-              variant="ghost"
-              size="icon"
-              onClick={() => setOpen(!open)}
-            >
-              <Sidebar />
-            </Button>
-            <a href="#" className="mr-4 flex items-center gap-2 lg:mr-6">
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                <Command className="size-4" />
-              </div>
+      <header className="bg-sidebar/75 sticky h-[--header-height] top-0 z-50 w-full border-b border-border/40 backdrop-blur flex items-center">
+        <div className="flex gap-2 items-center px-4 w-full">
+          <Button
+            className="hidden md:flex"
+            variant="ghost"
+            size="icon"
+            onClick={() => setOpen(!open)}
+          >
+            <Sidebar />
+          </Button>
+          <nav className="flex items-center gap-4 text-sm xl:gap-6">
+            <a href="#" className="transition-colors hover:text-foreground/80">
+              Home
             </a>
-            <nav className="flex items-center gap-4 text-sm xl:gap-6">
-              <a
-                href="#"
-                className="transition-colors hover:text-foreground/80"
-              >
-                Docs
-              </a>
-              <a
-                href="#"
-                className="transition-colors hover:text-foreground/80"
-              >
-                Components
-              </a>
-              <a
-                href="#"
-                className="transition-colors hover:text-foreground/80"
-              >
-                Blocks
-              </a>
-              <a
-                href="#"
-                className="transition-colors hover:text-foreground/80"
-              >
-                Charts
-              </a>
-              <a
-                href="#"
-                className="transition-colors hover:text-foreground/80"
-              >
-                Themes
-              </a>
-              <a
-                href="#"
-                className="transition-colors hover:text-foreground/80"
-              >
-                Colors
-              </a>
-            </nav>
-          </div>
+            <a href="#" className="transition-colors hover:text-foreground/80">
+              About
+            </a>
+          </nav>
+          <Button
+            className="ml-auto"
+            variant="ghost"
+            size="icon"
+            onClick={() => setOpen(!open)}
+          >
+            <Settings />
+          </Button>
         </div>
       </header>
       <SidebarProvider open={open} onOpenChange={setOpen}>

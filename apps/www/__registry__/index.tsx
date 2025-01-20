@@ -1141,39 +1141,38 @@ export const Index: Record<string, any> = {
     },
     "sidebar-16": {
       name: "sidebar-16",
-      description: "An inset sidebar with site header navigation.",
+      description: "A sidebar with a sticky site header.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button"],
       files: [{
-        path: "registry/new-york/block/sidebar-16/page.tsx",
+        path: "registry/new-york/blocks/sidebar-16/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "registry/new-york/block/sidebar-16/components/app-sidebar.tsx",
+        path: "registry/new-york/blocks/sidebar-16/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "registry/new-york/block/sidebar-16/components/nav-main.tsx",
+        path: "registry/new-york/blocks/sidebar-16/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "registry/new-york/block/sidebar-16/components/nav-projects.tsx",
+        path: "registry/new-york/blocks/sidebar-16/components/nav-projects.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "registry/new-york/block/sidebar-16/components/nav-secondary.tsx",
+        path: "registry/new-york/blocks/sidebar-16/components/nav-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "registry/new-york/block/sidebar-16/components/nav-user.tsx",
+        path: "registry/new-york/blocks/sidebar-16/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/block/sidebar-16/page.tsx")),
-      source: "__registry__/new-york/block/sidebar-16/page.tsx",
-      category: "Application",
-      subcategory: "Sidebars",
-      chunks: []
+      categories: ["sidebar","dashboard"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/sidebar-16/page.tsx")),
+      source: "__registry__/new-york/blocks/sidebar-16/page.tsx",
+      meta: undefined,
     },
     "login-01": {
       name: "login-01",
@@ -3059,22 +3058,6 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/internal/sidebar-15.tsx")),
       source: "",
       meta: undefined,
-    },
-    "v0-sidebar-16": {
-      name: "v0-sidebar-16",
-      description: "An inset sidebar with site header navigation.",
-      type: "registry:block",
-      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu","button"],
-      files: [{
-        path: "registry/new-york/v0/sidebar-16.tsx",
-        type: "registry:block",
-        target: ""
-      }],
-      component: React.lazy(() => import("@/registry/new-york/v0/sidebar-16.tsx")),
-      source: "__registry__/new-york/v0/sidebar-16.tsx",
-      category: "Application",
-      subcategory: "Sidebars",
-      chunks: []
     },
     "v0-login-01": {
       name: "v0-login-01",
@@ -6448,39 +6431,38 @@ export const Index: Record<string, any> = {
     },
     "sidebar-16": {
       name: "sidebar-16",
-      description: "An inset sidebar with site header navigation.",
+      description: "A sidebar with a sticky site header.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button"],
       files: [{
-        path: "registry/default/block/sidebar-16/page.tsx",
+        path: "registry/default/blocks/sidebar-16/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
-        path: "registry/default/block/sidebar-16/components/app-sidebar.tsx",
+        path: "registry/default/blocks/sidebar-16/components/app-sidebar.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "registry/default/block/sidebar-16/components/nav-main.tsx",
+        path: "registry/default/blocks/sidebar-16/components/nav-main.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "registry/default/block/sidebar-16/components/nav-projects.tsx",
+        path: "registry/default/blocks/sidebar-16/components/nav-projects.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "registry/default/block/sidebar-16/components/nav-secondary.tsx",
+        path: "registry/default/blocks/sidebar-16/components/nav-secondary.tsx",
         type: "registry:component",
         target: ""
       },{
-        path: "registry/default/block/sidebar-16/components/nav-user.tsx",
+        path: "registry/default/blocks/sidebar-16/components/nav-user.tsx",
         type: "registry:component",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/block/sidebar-16/page.tsx")),
-      source: "__registry__/default/block/sidebar-16/page.tsx",
-      category: "Application",
-      subcategory: "Sidebars",
-      chunks: []
+      categories: ["sidebar","dashboard"],
+      component: React.lazy(() => import("@/registry/default/blocks/sidebar-16/page.tsx")),
+      source: "__registry__/default/blocks/sidebar-16/page.tsx",
+      meta: undefined,
     },
     "login-01": {
       name: "login-01",
@@ -8366,22 +8348,6 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/internal/sidebar-15.tsx")),
       source: "",
       meta: undefined,
-    },
-    "v0-sidebar-16": {
-      name: "v0-sidebar-16",
-      description: "An inset sidebar with site header navigation.",
-      type: "registry:block",
-      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu","button"],
-      files: [{
-        path: "registry/default/v0/sidebar-16.tsx",
-        type: "registry:block",
-        target: ""
-      }],
-      component: React.lazy(() => import("@/registry/default/v0/sidebar-16.tsx")),
-      source: "__registry__/default/v0/sidebar-16.tsx",
-      category: "Application",
-      subcategory: "Sidebars",
-      chunks: []
     },
     "v0-login-01": {
       name: "v0-login-01",
