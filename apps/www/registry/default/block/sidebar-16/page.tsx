@@ -4,7 +4,6 @@ import * as React from "react"
 import { Command, Sidebar } from "lucide-react"
 
 import { AppSidebar } from "@/registry/default/block/sidebar-16/components/app-sidebar"
-import { NavigationHeaderMenu } from "@/registry/default/block/sidebar-16/components/nav-header-menu"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -38,23 +37,60 @@ export default function Page() {
         } as React.CSSProperties
       }
     >
-      <header className="sticky top-0 bg-sidebar flex h-[--header-height] shrink-0 items-center gap-2 border-b px-4 isolate z-20">
-        <div className="flex items-center gap-2 w-full">
-          <Button
-            className="hidden md:flex"
-            variant="ghost"
-            size="icon"
-            onClick={() => setOpen(!open)}
-          >
-            <Sidebar />
-          </Button>
-
-          <div className="mx-auto flex items-center gap-2">
-            <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-              <Command className="size-4" />
-            </div>
-            <Separator orientation="vertical" className="ml-4 h-4" />
-            <NavigationHeaderMenu />
+      <header className="bg-sidebar sticky h-[--header-height] top-0 z-50 w-full border-b border-border/40  backdrop-blur">
+        <div className="flex h-14 items-center px-4">
+          <div className="mr-4 hidden md:flex">
+            <Button
+              className="hidden md:flex"
+              variant="ghost"
+              size="icon"
+              onClick={() => setOpen(!open)}
+            >
+              <Sidebar />
+            </Button>
+            <a href="#" className="mr-4 flex items-center gap-2 lg:mr-6">
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                <Command className="size-4" />
+              </div>
+            </a>
+            <nav className="flex items-center gap-4 text-sm xl:gap-6">
+              <a
+                href="#"
+                className="transition-colors hover:text-foreground/80"
+              >
+                Docs
+              </a>
+              <a
+                href="#"
+                className="transition-colors hover:text-foreground/80"
+              >
+                Components
+              </a>
+              <a
+                href="#"
+                className="transition-colors hover:text-foreground/80"
+              >
+                Blocks
+              </a>
+              <a
+                href="#"
+                className="transition-colors hover:text-foreground/80"
+              >
+                Charts
+              </a>
+              <a
+                href="#"
+                className="transition-colors hover:text-foreground/80"
+              >
+                Themes
+              </a>
+              <a
+                href="#"
+                className="transition-colors hover:text-foreground/80"
+              >
+                Colors
+              </a>
+            </nav>
           </div>
         </div>
       </header>

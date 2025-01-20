@@ -808,7 +808,6 @@ export const blocks: Registry = [
       "collapsible",
       "dropdown-menu",
       "avatar",
-      "navigation-menu",
       "button",
     ],
     files: [
@@ -819,10 +818,6 @@ export const blocks: Registry = [
       },
       {
         path: "block/sidebar-16/components/app-sidebar.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "block/sidebar-16/components/nav-header-menu.tsx",
         type: "registry:component",
       },
       {

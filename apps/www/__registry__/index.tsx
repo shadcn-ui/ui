@@ -4057,17 +4057,13 @@ export const Index: Record<string, any> = {
       name: "sidebar-16",
       description: "An inset sidebar with site header navigation.",
       type: "registry:block",
-      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu","button"],
+      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button"],
       files: [{
         path: "registry/new-york/block/sidebar-16/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
         path: "registry/new-york/block/sidebar-16/components/app-sidebar.tsx",
-        type: "registry:component",
-        target: ""
-      },{
-        path: "registry/new-york/block/sidebar-16/components/nav-header-menu.tsx",
         type: "registry:component",
         target: ""
       },{
@@ -9606,17 +9602,13 @@ export const Index: Record<string, any> = {
       name: "sidebar-16",
       description: "An inset sidebar with site header navigation.",
       type: "registry:block",
-      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","navigation-menu","button"],
+      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button"],
       files: [{
         path: "registry/default/block/sidebar-16/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
       },{
         path: "registry/default/block/sidebar-16/components/app-sidebar.tsx",
-        type: "registry:component",
-        target: ""
-      },{
-        path: "registry/default/block/sidebar-16/components/nav-header-menu.tsx",
         type: "registry:component",
         target: ""
       },{
