@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog-close-button",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "dialog",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "examples/dialog-close-button.tsx",
+      "content": "import { Copy } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport {\n  Dialog,\n  DialogClose,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/new-york/ui/dialog\"\nimport { Input } from \"@/registry/new-york/ui/input\"\nimport { Label } from \"@/registry/new-york/ui/label\"\n\nexport default function DialogCloseButton() {\n  return (\n    <Dialog>\n      <DialogTrigger asChild>\n        <Button variant=\"outline\">Share</Button>\n      </DialogTrigger>\n      <DialogContent className=\"sm:max-w-md\">\n        <DialogHeader>\n          <DialogTitle>Share link</DialogTitle>\n          <DialogDescription>\n            Anyone who has this link will be able to view this.\n          </DialogDescription>\n        </DialogHeader>\n        <div className=\"flex items-center space-x-2\">\n          <div className=\"grid flex-1 gap-2\">\n            <Label htmlFor=\"link\" className=\"sr-only\">\n              Link\n            </Label>\n            <Input\n              id=\"link\"\n              defaultValue=\"https://ui.shadcn.com/docs/installation\"\n              readOnly\n            />\n          </div>\n          <Button type=\"submit\" size=\"sm\" className=\"px-3\">\n            <span className=\"sr-only\">Copy</span>\n            <Copy />\n          </Button>\n        </div>\n        <DialogFooter className=\"sm:justify-start\">\n          <DialogClose asChild>\n            <Button type=\"button\" variant=\"secondary\">\n              Close\n            </Button>\n          </DialogClose>\n        </DialogFooter>\n      </DialogContent>\n    </Dialog>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

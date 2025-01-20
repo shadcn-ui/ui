@@ -2,12 +2,13 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "es6",
+    "target": "ES2017",
     "module": "ESNext",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "isolatedModules": false
+    "isolatedModules": false,
+    "allowImportingTsExtensions": true
   },
-  "include": [".contentlayer/generated", "scripts/**/*.ts"],
+  "include": ["scripts/**/*.{ts,mts}"],
   "exclude": ["node_modules"]
 }

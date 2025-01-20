@@ -33,3 +33,9 @@ yarn-error.log*
 .turbo
 
 .contentlayer
+tsconfig.tsbuildinfo
+
+# ide
+.idea
+.fleet
+.vscode
