@@ -18,7 +18,6 @@ import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
 import { FrameworkDocs } from "@/components/framework-docs"
-import { PropsTable } from "@/components/props-table"
 import { StyleWrapper } from "@/components/style-wrapper"
 import {
   Accordion,
@@ -239,7 +238,6 @@ const components = {
   ),
   Image,
   Callout,
-  PropsTable,
   ComponentPreview,
   ComponentExample,
   ComponentSource,
