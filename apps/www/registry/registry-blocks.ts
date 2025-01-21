@@ -611,7 +611,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "blocks/profile-01/lib/fill-stars",
+        path: "blocks/profile-01/lib/fill-stars.tsx",
         type: "registry:lib",
       }
     ],
