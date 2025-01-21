@@ -59,4 +59,9 @@ export const registryCategories = [
     slug: "charts-tooltip",
     hidden: true,
   },
+  {
+    name: "Profile",
+    slug: "profile",
+    hidden: false,
+  },
 ]

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "profile-01",
+  "type": "registry:block",
+  "title": "Profile",
+  "author": "javierdev0",
+  "description": "A simple profile block with personal information, description and sections.",
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "blocks/profile-01/page.tsx",
+      "content": "import type { JSX } from \"react\"\nimport Image from \"next/image\"\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"../../ui/avatar\"\n\nexport default function Page(): JSX.Element {\n  return (\n    <header className=\"border-b border-border\">\n      <div className=\"container flex items-center justify-between py-3\">\n        <span className=\"text-lg font-extrabold\">Acme Inc</span>\n        <nav className=\"flex items-center space-x-4 text-foreground/80 \">\n          <a\n            href=\"/about\"\n            className=\"text-sm font-medium transition-colors duration-200 ease-in-out hover:text-foreground\"\n          >\n            About\n          </a>\n          <a\n            href=\"/contact\"\n            className=\"text-sm font-medium transition-colors duration-200 ease-in-out hover:text-foreground\"\n          >\n            Contact\n          </a>\n        </nav>\n\n        <Avatar>\n          <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n          <AvatarFallback>CN</AvatarFallback>\n        </Avatar>\n      </div>\n    </header>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/dashboard/page.tsx"
+    }
+  ],
+  "categories": [
+    "profile"
+  ]
+}

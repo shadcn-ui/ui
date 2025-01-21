@@ -567,4 +567,21 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "profile-01",
+    author: "javierdev0",
+    title: "Profile",
+    description:
+      "A simple profile block with personal information and description.",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [
+      {
+        path: "blocks/profile-01/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+    ],
+    categories: ["profile"],
+  },
 ]

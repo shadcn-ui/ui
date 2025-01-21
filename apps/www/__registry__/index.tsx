@@ -1234,6 +1234,21 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "profile-01": {
+      name: "profile-01",
+      description: "A simple profile block with personal information, description and sections.",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [{
+        path: "registry/new-york/blocks/profile-01/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx"
+      }],
+      categories: ["profile"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/profile-01/page.tsx")),
+      source: "__registry__/new-york/blocks/profile-01/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6487,6 +6502,21 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "profile-01": {
+      name: "profile-01",
+      description: "A simple profile block with personal information, description and sections.",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [{
+        path: "registry/default/blocks/profile-01/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx"
+      }],
+      categories: ["profile"],
+      component: React.lazy(() => import("@/registry/default/blocks/profile-01/page.tsx")),
+      source: "__registry__/default/blocks/profile-01/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {
