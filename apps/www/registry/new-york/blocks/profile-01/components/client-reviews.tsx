@@ -1,4 +1,6 @@
-import { useCallback, useMemo, type JSX } from "react"
+import { useCallback, type JSX } from "react"
+
+import { Badge } from "@/registry/new-york/ui/badge"
 
 import { fillStars } from "../lib/fill-stars"
 
@@ -43,12 +45,9 @@ export default function ClientReviews({
             key={review.reviewer}
             className="flex flex-col gap-4 rounded-lg border border-border bg-background p-4"
           >
-            <div className="flex items-center gap-2">
-              <span className="flex items-center gap-1">
-                <span className="text-sm font-semibold">{review.rating}</span>{" "}
-                {fillStars(review.rating)}
-              </span>
+            <div className="flex items-center justify-between gap-2">
               <p className="text-base font-semibold">{review.reviewer}</p>
+              <Badge>{review.rating}</Badge>
             </div>
             <p className="text-balance text-sm text-foreground/80">
               "{review.review}"
