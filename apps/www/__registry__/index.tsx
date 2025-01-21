@@ -590,6 +590,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "stepper": {
+      name: "stepper",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator"],
+      files: [{
+        path: "registry/new-york/ui/stepper.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/stepper.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "switch": {
       name: "switch",
       description: "",
@@ -4524,6 +4539,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "stepper-demo": {
+      name: "stepper-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york/examples/stepper-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "switch-demo": {
       name: "switch-demo",
       description: "",
@@ -5842,6 +5872,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/ui/sonner.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper": {
+      name: "stepper",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator"],
+      files: [{
+        path: "registry/default/ui/stepper.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/stepper.tsx")),
       source: "",
       meta: undefined,
     },
@@ -9776,6 +9821,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/sonner-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-demo": {
+      name: "stepper-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/default/examples/stepper-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-demo.tsx")),
       source: "",
       meta: undefined,
     },

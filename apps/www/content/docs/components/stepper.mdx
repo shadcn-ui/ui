@@ -1,0 +1,95 @@
+---
+title: Stepper
+description: An opinionated stepper component for React to create step-by-step workflows.
+component: true
+links:
+  doc: https://stepperize.com/docs/react
+  api: https://stepperize.vercel.app/docs/react/api-references/define
+---
+
+<ComponentPreview className="[&_.preview]:justify-start" name="stepper-demo" />
+
+## About
+
+Stepperize is built and maintained by [damianricobelli](https://twitter.com/damianricobelli).
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add stepper
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @stepperize/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="stepper" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Structure
+
+A `Stepper` component is composed of the following parts:
+
+- `Stepper` - Handles the stepper logic.
+- `StepperNavigation` - Contains the buttons and labels to navigate through the steps.
+- `StepperStep` - Step component.
+- `StepperTitle` - Step title.
+- `StepperDescription` - Step description.
+- `StepperPanel` - Section to render the step content based on the current step.
+- `StepperControls` - Step controls to navigate through the steps.
+- `StepperAction` - Next, previous and reset buttons.
+
+## defineStepper
+
+The `defineStepper` function is used to define the steps. It returns a `Stepper` instance with a hook and utils to interact with the stepper.
+
+For example, you can define the steps like this:
+
+```tsx
+const stepperInstance = defineStepper(
+  {
+    id: "step-1",
+    title: "Step 1",
+  },
+  {
+    id: "step-2",
+    title: "Step 2",
+  },
+  {
+    id: "step-3",
+    title: "Step 3",
+  }
+)
+```
+
+Each instance will return:
+
+- `Scoped` - _This will not need to be used as it is already wrapped in Stepper._
+- `steps` - Array of steps.
+- `useStepper` - Hook to interact with the stepper component.
+- `utils` - Provides a set of pure functions for working with steps.
