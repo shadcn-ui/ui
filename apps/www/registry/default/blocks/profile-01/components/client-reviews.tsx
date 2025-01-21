@@ -1,4 +1,6 @@
-import { useCallback, useMemo, type JSX } from "react"
+import { useMemo, type JSX } from "react"
+
+import { Badge } from "@/registry/default/ui/badge"
 
 import { fillStars } from "../lib/fill-stars"
 
@@ -15,7 +17,7 @@ interface ClientReviewsProps {
 export default function ClientReviews({
   reviews = [],
 }: Readonly<ClientReviewsProps>): JSX.Element {
-  const calculateTotalRating = useCallback((): number => {
+  const totalRating = useMemo((): number => {
     const totalRatings = reviews.map((review) => review.rating)
     const ratingFixed = totalRatings.map(
       (rating) => Math.round(rating * 10) / 10
@@ -26,29 +28,26 @@ export default function ClientReviews({
   }, [reviews])
 
   return (
-    <div className="rounded-lg border border-border bg-background p-4">
+    <div className="rounded-lg border border-border bg-background py-4 pl-4">
       <div className="flex items-baseline justify-between text-lg font-semibold">
-        <h3 className="mb-4">Work History</h3>
-        <div className="flex items-center gap-2">
-          <span>{calculateTotalRating()}</span>
+        <h3 className="mb-4">Client Reviews</h3>
+        <div className="flex items-center gap-2 pr-4">
+          <span>{totalRating}</span>
           <span className="relative flex items-center gap-1 text-foreground/80">
-            {fillStars(3.5)}
+            {fillStars(totalRating)}
           </span>
         </div>
       </div>
 
-      <ul className="grid max-h-[320px] grid-cols-1 gap-2 overflow-y-auto px-4 pb-4">
+      <ul className="grid max-h-[320px] grid-cols-1 gap-2 overflow-y-auto pr-4">
         {reviews.map((review) => (
           <article
             key={review.reviewer}
             className="flex flex-col gap-4 rounded-lg border border-border bg-background p-4"
           >
-            <div className="flex items-center gap-2">
-              <span className="flex items-center gap-1">
-                <span className="text-sm font-semibold">{review.rating}</span>{" "}
-                {fillStars(review.rating)}
-              </span>
+            <div className="flex items-center justify-between gap-2">
               <p className="text-base font-semibold">{review.reviewer}</p>
+              <Badge>{review.rating}</Badge>
             </div>
             <p className="text-balance text-sm text-foreground/80">
               "{review.review}"

@@ -1,4 +1,4 @@
-import { useCallback, type JSX } from "react"
+import { useMemo, type JSX } from "react"
 
 import { Badge } from "@/registry/new-york/ui/badge"
 
@@ -17,7 +17,7 @@ interface ClientReviewsProps {
 export default function ClientReviews({
   reviews = [],
 }: Readonly<ClientReviewsProps>): JSX.Element {
-  const calculateTotalRating = useCallback((): number => {
+  const totalRating = useMemo((): number => {
     const totalRatings = reviews.map((review) => review.rating)
     const ratingFixed = totalRatings.map(
       (rating) => Math.round(rating * 10) / 10
@@ -32,9 +32,9 @@ export default function ClientReviews({
       <div className="flex items-baseline justify-between text-lg font-semibold">
         <h3 className="mb-4">Client Reviews</h3>
         <div className="flex items-center gap-2 pr-4">
-          <span>{calculateTotalRating()}</span>
+          <span>{totalRating}</span>
           <span className="relative flex items-center gap-1 text-foreground/80">
-            {fillStars(3.5)}
+            {fillStars(totalRating)}
           </span>
         </div>
       </div>
