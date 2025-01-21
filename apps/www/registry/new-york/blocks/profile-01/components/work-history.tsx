@@ -18,13 +18,13 @@ export default function WorkHistory({
   projects = [],
 }: Readonly<WorkHistoryProps>): JSX.Element {
   return (
-    <div className="rounded-lg border border-border bg-background p-4">
-      <div className="flex items-baseline justify-between">
+    <div className="rounded-lg border border-border bg-background py-4 pl-4">
+      <div className="flex items-baseline justify-between pr-4">
         <h3 className="mb-4 text-lg font-semibold">Work History</h3>
         <Badge>{projects.length} Projects</Badge>
       </div>
 
-      <ul className="grid max-h-[320px] grid-cols-1 gap-2 overflow-y-auto px-4 pb-4">
+      <ul className="grid max-h-[320px] grid-cols-1 gap-2 overflow-y-auto pr-4">
         {projects.map((project) => (
           <article
             key={project.title}

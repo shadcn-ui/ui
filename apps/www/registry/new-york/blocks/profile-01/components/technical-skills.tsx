@@ -13,7 +13,7 @@ export default function TechnicalSkills({
   items = [],
 }: Readonly<TechnicalSkillsProps>): JSX.Element {
   return (
-    <article className="rounded-lg border border-border bg-background p-4">
+    <article className="rounded-lg border border-border bg-background py-4 pl-4">
       <h3 className="mb-4 text-lg font-semibold">Technical Skills</h3>
       <ul className="max-h-[320px] overflow-y-auto">
         {items.map((item) => (

@@ -28,10 +28,10 @@ export default function ClientReviews({
   }, [reviews])
 
   return (
-    <div className="rounded-lg border border-border bg-background p-4">
+    <div className="rounded-lg border border-border bg-background py-4 pl-4">
       <div className="flex items-baseline justify-between text-lg font-semibold">
-        <h3 className="mb-4">Work History</h3>
-        <div className="flex items-center gap-2">
+        <h3 className="mb-4">Client Reviews</h3>
+        <div className="flex items-center gap-2 pr-4">
           <span>{calculateTotalRating()}</span>
           <span className="relative flex items-center gap-1 text-foreground/80">
             {fillStars(3.5)}
@@ -39,7 +39,7 @@ export default function ClientReviews({
         </div>
       </div>
 
-      <ul className="grid max-h-[320px] grid-cols-1 gap-2 overflow-y-auto px-4 pb-4">
+      <ul className="grid max-h-[320px] grid-cols-1 gap-2 overflow-y-auto pr-4">
         {reviews.map((review) => (
           <article
             key={review.reviewer}
