@@ -3,6 +3,12 @@ import { Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
+import deepmerge from "deepmerge"
+import { HttpsProxyAgent } from "https-proxy-agent"
+import fetch from "node-fetch"
+import { z } from "zod"
+
 import {
   iconsSchema,
   registryBaseColorSchema,
@@ -11,12 +17,7 @@ import {
   registryItemSchema,
   registryResolvedItemsTreeSchema,
   stylesSchema,
-} from "@/src/utils/registry/schema"
-import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
-import deepmerge from "deepmerge"
-import { HttpsProxyAgent } from "https-proxy-agent"
-import fetch from "node-fetch"
-import { z } from "zod"
+} from "./schema"
 
 const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
 
@@ -230,40 +231,6 @@ export async function fetchRegistry(paths: string[]) {
     handleError(error)
     return []
   }
-}
-
-export function getRegistryItemFileTargetPath(
-  file: z.infer<typeof registryItemFileSchema>,
-  config: Config,
-  override?: string
-) {
-  if (override) {
-    return override
-  }
-
-  if (file.type === "registry:ui") {
-    return config.resolvedPaths.ui
-  }
-
-  if (file.type === "registry:lib") {
-    return config.resolvedPaths.lib
-  }
-
-  if (file.type === "registry:block" || file.type === "registry:component") {
-    return config.resolvedPaths.components
-  }
-
-  if (file.type === "registry:hook") {
-    return config.resolvedPaths.hooks
-  }
-
-  // TODO: we put this in components for now.
-  // We should move this to pages as per framework.
-  if (file.type === "registry:page") {
-    return config.resolvedPaths.components
-  }
-
-  return config.resolvedPaths.components
 }
 
 export async function registryResolveItemsTree(
