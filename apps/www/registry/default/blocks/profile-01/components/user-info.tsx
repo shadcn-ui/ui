@@ -5,7 +5,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/new-york/ui/avatar"
+} from "@/registry/default/ui/avatar"
 
 import UserActions from "./user-actions"
 

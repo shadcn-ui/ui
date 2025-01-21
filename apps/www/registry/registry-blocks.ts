@@ -574,7 +574,13 @@ export const blocks: Registry["items"] = [
     description:
       "A simple profile block with personal information and description.",
     type: "registry:block",
-    registryDependencies: ["button", "badge", "progress", "avatar", "dropdown-menu"],
+    registryDependencies: [
+      "button",
+      "badge",
+      "progress",
+      "avatar",
+      "dropdown-menu",
+    ],
     files: [
       {
         path: "blocks/profile-01/page.tsx",
@@ -584,36 +590,43 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/profile-01/components/banner.tsx",
         type: "registry:component",
-      }, {
+      },
+      {
         path: "blocks/profile-01/components/certifications.tsx",
         type: "registry:component",
-      }, {
+      },
+      {
         path: "blocks/profile-01/components/client-reviews.tsx",
         type: "registry:component",
-      }, {
+      },
+      {
         path: "blocks/profile-01/components/technical-skills.tsx",
         type: "registry:component",
-      }, {
+      },
+      {
         path: "blocks/profile-01/components/user-actions.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/profile-01/components/user-card.tsx",
         type: "registry:component",
-      }, {
+      },
+      {
         path: "blocks/profile-01/components/user-info.tsx",
         type: "registry:component",
-      }, {
+      },
+      {
         path: "blocks/profile-01/components/user-options.tsx",
         type: "registry:component",
-      }, {
+      },
+      {
         path: "blocks/profile-01/components/work-history.tsx",
         type: "registry:component",
       },
       {
         path: "blocks/profile-01/lib/fill-stars.tsx",
         type: "registry:lib",
-      }
+      },
     ],
     categories: ["profile"],
   },

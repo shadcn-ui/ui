@@ -1,13 +1,13 @@
 import type { JSX } from "react"
 import { Ban, Ellipsis, OctagonAlert, Share } from "lucide-react"
 
-import { Button } from "@/registry/new-york/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/new-york/ui/dropdown-menu"
+} from "@/registry/default/ui/dropdown-menu"
 
 export default function UserOptions(): JSX.Element {
   return (

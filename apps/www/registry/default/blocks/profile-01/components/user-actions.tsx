@@ -2,7 +2,7 @@
 
 import { useState, type JSX } from "react"
 
-import { Button } from "@/registry/new-york/ui/button"
+import { Button } from "@/registry/default/ui/button"
 
 export default function UserActions(): JSX.Element {
   const [isFollowing, setIsFollowing] = useState(false)

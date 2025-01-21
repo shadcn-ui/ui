@@ -1,6 +1,6 @@
 import type { JSX } from "react"
 
-import { Progress } from "@/registry/new-york/ui/progress"
+import { Progress } from "@/registry/default/ui/progress"
 
 interface TechnicalSkillsProps {
   items: {

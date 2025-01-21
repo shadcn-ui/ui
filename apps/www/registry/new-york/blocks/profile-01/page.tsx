@@ -140,14 +140,16 @@ const reviews = [
     rating: 4.8,
     reviewer: "E-commerce Website",
     roleReviewer: "CTO, XYZ Corp",
-    review: "John is a highly skilled developer with a great work ethic. She delivered a top-notch mobile app for our startup. Will definitely hire her again!",
+    review:
+      "John is a highly skilled developer with a great work ethic. She delivered a top-notch mobile app for our startup. Will definitely hire her again!",
     date: "Dec 2022",
   },
   {
     rating: 4.5,
     reviewer: "SaaS Application",
     roleReviewer: "Founder, ABC Corp",
-    review: "John is a true professional. She developed a complex SaaS application for our company and exceeded our expectations. Will hire her again for future projects!",
+    review:
+      "John is a true professional. She developed a complex SaaS application for our company and exceeded our expectations. Will hire her again for future projects!",
     date: "Nov 2022",
   },
 ]
