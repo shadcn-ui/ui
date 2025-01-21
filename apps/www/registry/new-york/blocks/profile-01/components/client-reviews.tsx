@@ -1,6 +1,6 @@
-import { useMemo, type JSX } from "react"
+import { useCallback, useMemo, type JSX } from "react"
 
-import { calculateTotalRating, fillStars } from "../lib"
+import { fillStars } from "../lib/fill-stars"
 
 interface ClientReviewsProps {
   reviews: {
@@ -15,14 +15,20 @@ interface ClientReviewsProps {
 export default function ClientReviews({
   reviews = [],
 }: Readonly<ClientReviewsProps>): JSX.Element {
-  const ratings = useMemo(() => reviews.map(review => review.rating), [reviews]);
   
+  const calculateTotalRating = useCallback((): number => {
+    const totalRatings = reviews.map(review => review.rating);
+    const ratingFixed = totalRatings.map(rating => Math.round(rating * 10) / 10);
+    const totalRating = ratingFixed.reduce((acc, rating) => acc + rating, 0) / totalRatings.length;
+    return Math.round(totalRating * 10) / 10;
+  }, [reviews]);
+
   return (
     <div className="rounded-lg border border-border bg-background p-4">
       <div className="flex items-baseline justify-between text-lg font-semibold">
         <h3 className="mb-4">Work History</h3>
         <div className="flex items-center gap-2">
-          <span>{calculateTotalRating(ratings)}</span>
+          <span>{calculateTotalRating()}</span>
           <span className="relative flex items-center gap-1 text-foreground/80">
             {fillStars(3.5)}
           </span>
