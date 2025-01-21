@@ -19,10 +19,3 @@ export const fillStars = (rating: number): JSX.Element[] => {
   return stars;
 };
 
-export const calculateTotalRating = (ratings: number[]): number => {
-  const ratingFixed = ratings.map(rating => Math.round(rating * 10) / 10);
-
-  const totalRating = ratingFixed.reduce((acc, rating) => acc + rating, 0) / ratings.length;
-
-  return Math.round(totalRating * 10) / 10;
-}
