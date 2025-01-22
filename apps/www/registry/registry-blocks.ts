@@ -567,4 +567,19 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "order-01",
+    description:
+      "A view to display order details, including buyer and seller information, purchased items, shipping status, and related actions.",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [
+      {
+        path: "blocks/order-01/page.tsx",
+        target: "app/order/page.tsx",
+        type: "registry:page",
+      },
+    ],
+    categories: ["orders"],
+  },
 ]

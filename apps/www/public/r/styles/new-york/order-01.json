@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "order-01",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A view to display order details, including buyer and seller information, purchased items, shipping status, and related actions.",
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "blocks/order-01/page.tsx",
+      "content": "import type { JSX } from \"react\"\n\nexport default function Page(): JSX.Element {\n  return (\n    <>\n      <div>This is the Page component</div>\n    </>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/order/page.tsx"
+    }
+  ],
+  "categories": [
+    "orders"
+  ]
+}

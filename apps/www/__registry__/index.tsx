@@ -1234,6 +1234,21 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "order-01": {
+      name: "order-01",
+      description: "A view to display order details, including buyer and seller information, purchased items, shipping status, and related actions.",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [{
+        path: "registry/new-york/blocks/order-01/page.tsx",
+        type: "registry:page",
+        target: "app/order/page.tsx"
+      }],
+      categories: ["orders"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/order-01/page.tsx")),
+      source: "__registry__/new-york/blocks/order-01/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6487,6 +6502,21 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "order-01": {
+      name: "order-01",
+      description: "A view to display order details, including buyer and seller information, purchased items, shipping status, and related actions.",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [{
+        path: "registry/default/blocks/order-01/page.tsx",
+        type: "registry:page",
+        target: "app/order/page.tsx"
+      }],
+      categories: ["orders"],
+      component: React.lazy(() => import("@/registry/default/blocks/order-01/page.tsx")),
+      source: "__registry__/default/blocks/order-01/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {
