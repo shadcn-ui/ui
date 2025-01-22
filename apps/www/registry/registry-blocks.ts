@@ -572,13 +572,41 @@ export const blocks: Registry["items"] = [
     description:
       "A view to display order details, including buyer and seller information, purchased items, shipping status, and related actions.",
     type: "registry:block",
-    registryDependencies: [],
+    registryDependencies: ["button", "separator", "card"],
     files: [
       {
         path: "blocks/order-01/page.tsx",
         target: "app/order/page.tsx",
         type: "registry:page",
       },
+      {
+        path: "blocks/order-01/components/left-side.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/order-01/components/right-side.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/order-01/components/order-state.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/order-01/components/order-summary.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/order-01/components/order-tracking.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/order-01/components/products.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/order-01/components/shipping-address.tsx",
+        type: "registry:component",
+      }
     ],
     categories: ["orders"],
   },
