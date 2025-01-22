@@ -1,7 +1,7 @@
 import { useMemo, type JSX } from "react"
 
-import { Card, CardContent } from "@/registry/new-york/ui/card"
-import { Separator } from "@/registry/new-york/ui/separator"
+import { Card, CardContent } from "@/registry/default/ui/card"
+import { Separator } from "@/registry/default/ui/separator"
 
 interface OrderItem {
   name: string

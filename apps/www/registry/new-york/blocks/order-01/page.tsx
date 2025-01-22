@@ -9,7 +9,7 @@ export default function Page(): JSX.Element {
   return (
     <div className="container my-6 bg-background">
       <div className="flex w-full flex-col justify-between gap-4 sm:flex-row md:items-center md:gap-0">
-        <div className='flex items-center justify-between gap-4 sm:flex-col sm:items-start sm:gap-0'>
+        <div className="flex items-center justify-between gap-4 sm:flex-col sm:items-start sm:gap-0">
           <h2 className="text-2xl font-bold">Order ID: SHAD123CN</h2>
           <small className="text-balance text-foreground/80">
             Order created on 12/12/2022
@@ -17,13 +17,13 @@ export default function Page(): JSX.Element {
         </div>
 
         <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <Button className='w-full sm:w-fit' variant="secondary">
+          <Button className="w-full sm:w-fit" variant="secondary">
             <span>
               <Receipt />
             </span>
             Send Invoice
           </Button>
-          <Button className='w-full sm:w-fit'>
+          <Button className="w-full sm:w-fit">
             <span>
               <Mail />
             </span>

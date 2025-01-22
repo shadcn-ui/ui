@@ -606,7 +606,7 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/order-01/components/shipping-address.tsx",
         type: "registry:component",
-      }
+      },
     ],
     categories: ["orders"],
   },

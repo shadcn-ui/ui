@@ -9,8 +9,8 @@ import {
   Truck,
 } from "lucide-react"
 
-import { Button } from "@/registry/new-york/ui/button"
-import { Separator } from "@/registry/new-york/ui/separator"
+import { Button } from "@/registry/default/ui/button"
+import { Separator } from "@/registry/default/ui/separator"
 
 import OrderState from "./order-state"
 import OrderSummary from "./order-summary"
