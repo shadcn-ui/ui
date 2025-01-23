@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-05",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "Accordion with centered block",
+  "registryDependencies": [
+    "accordion"
+  ],
+  "files": [
+    {
+      "path": "blocks/faq-05/page.tsx",
+      "content": "import { FAQ } from \"@/registry/default/blocks/faq-05/components/faq\"\n\nexport default function LoginPage() {\n  return (\n    <div className=\"flex min-h-svh flex-col\">\n      <FAQ />\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/faq/page.tsx"
+    },
+    {
+      "path": "blocks/faq-05/components/faq.tsx",
+      "content": "import { Search } from \"lucide-react\"\n\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/registry/default/ui/accordion\"\nimport { Input } from \"@/registry/default/ui/input\"\n\nconst items = [\n  {\n    label: \"What is the Force?\",\n    content:\n      \"The Force is a mystical energy field that binds the galaxy together.\",\n    value: \"item-1\",\n  },\n  {\n    label: \"Who are the Jedi and what is their purpose?\",\n    content:\n      \"The Jedi are peacekeepers of the galaxy who use the Force for good. Their purpose is to protect and maintain peace.\",\n    value: \"item-2\",\n  },\n  {\n    label: \"Who are the Sith and what are their goals?\",\n    content:\n      \"The Sith are followers of the dark side who seek power and control. Their ultimate goal is to dominate the galaxy.\",\n    value: \"item-3\",\n  },\n  {\n    label: \"Yoda, who is?\",\n    content:\n      \"A wise and powerful Jedi Master, Yoda is. Trained many Jedi, he has.\",\n    value: \"item-4\",\n  },\n  {\n    label: \"What is the Death Star?\",\n    content:\n      \"The Death Star is a massive space station and superweapon capable of destroying planets.\",\n    value: \"item-5\",\n  },\n  {\n    label: \"What is the Millennium Falcon?\",\n    content:\n      \"The Millennium Falcon is a legendary starship flown by Han Solo and Chewbacca.\",\n    value: \"item-6\",\n  },\n]\n\nexport function FAQ() {\n  return (\n    <div className=\"flex flex-col bg-background gap-6 p-6 md:p-4 w-full max-w-3xl m-auto\">\n      <h2 className=\"text-center font-medium text-4xl md:text-6xl\">\n        Frequently Asked Questions\n      </h2>\n      <p className=\"text-muted-foreground text-center text-xl mb-12\">\n        Can't find the answer you're looking for?{\" \"}\n        <a className=\"cursor-pointer underline underline-offset-2 text-primary\">\n          Chat to our friendly team!\n        </a>\n      </p>\n      <div className=\"flex flex-col gap-6 bg-secondary/50 rounded-xl p-6\">\n        <Accordion\n          type=\"single\"\n          collapsible\n          className=\"w-full gap-y-2 flex flex-col\"\n        >\n          {items.map((item) => (\n            <AccordionItem key={item.value} value={item.value}>\n              <AccordionTrigger className=\"font-medium text-lg [&>svg]:h-7 [&>svg]:w-7\">\n                {item.label}\n              </AccordionTrigger>\n              <AccordionContent className=\"text-lg text-muted-foreground pl-6\">\n                {item.content}\n              </AccordionContent>\n            </AccordionItem>\n          ))}\n        </Accordion>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "faq"
+  ]
+}
