@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-03",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "Centered accordion with groups",
+  "registryDependencies": [
+    "accordion",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/faq-03/page.tsx",
+      "content": "import { FAQ } from \"@/registry/new-york/blocks/faq-03/components/faq\"\n\nexport default function LoginPage() {\n  return (\n    <div className=\"flex min-h-svh flex-col\">\n      <FAQ />\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/faq/page.tsx"
+    },
+    {
+      "path": "blocks/faq-03/components/faq.tsx",
+      "content": "import { Fragment } from \"react\"\n\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/registry/new-york/ui/accordion\"\nimport { Button } from \"@/registry/new-york/ui/button\"\n\nconst groups = [\n  {\n    title: \"General\",\n    items: [\n      {\n        label: \"What is the Force?\",\n        content:\n          \"The Force is a mystical energy field that binds the galaxy together.\",\n        value: \"item-1\",\n      },\n      {\n        label: \"Who are the Jedi and what is their purpose?\",\n        content:\n          \"The Jedi are peacekeepers of the galaxy who use the Force for good. Their purpose is to protect and maintain peace.\",\n        value: \"item-2\",\n      },\n      {\n        label: \"Who are the Sith and what are their goals?\",\n        content:\n          \"The Sith are followers of the dark side who seek power and control. Their ultimate goal is to dominate the galaxy.\",\n        value: \"item-3\",\n      },\n    ],\n  },\n  {\n    title: \"Other\",\n    items: [\n      {\n        label: \"Yoda, who is?\",\n        content:\n          \"A wise and powerful Jedi Master, Yoda is. Trained many Jedi, he has.\",\n        value: \"item-4\",\n      },\n      {\n        label: \"What is the Death Star?\",\n        content:\n          \"The Death Star is a massive space station and superweapon capable of destroying planets.\",\n        value: \"item-5\",\n      },\n      {\n        label: \"What is the Millennium Falcon?\",\n        content:\n          \"The Millennium Falcon is a legendary starship flown by Han Solo and Chewbacca.\",\n        value: \"item-6\",\n      },\n    ],\n  },\n]\n\nexport function FAQ() {\n  return (\n    <div className=\"flex flex-col bg-background p-6 md:p-4 w-full max-w-3xl m-auto\">\n      <div>\n        <h2 className=\"text-center font-bold text-4xl hidden md:block\">\n          Frequently Asked Questions\n        </h2>\n        <h2 className=\"text-center font-bold text-3xl md:hidden\">FAQ</h2>\n        <div className=\"text-center text-lg md:text-xl text-muted-foreground mt-3\">\n          Updated 22 July 2024\n        </div>\n      </div>\n      <div className=\"flex flex-col\">\n        {groups.map((group) => (\n          <Fragment key={group.title}>\n            <div className=\"text-2xl font-semibold mb-7 mt-16\">\n              {group.title}\n            </div>\n            <Accordion\n              type=\"single\"\n              collapsible\n              className=\"w-full gap-y-2 flex flex-col border-t\"\n            >\n              {group.items.map((item) => (\n                <AccordionItem\n                  key={item.value}\n                  value={item.value}\n                  className=\"last-of-type:border-none\"\n                >\n                  <AccordionTrigger className=\"text-primary/85 text-xl font-normal [&>svg]:h-7 [&>svg]:w-7 hover:no-underline\">\n                    {item.label}\n                  </AccordionTrigger>\n                  <AccordionContent className=\"text-muted-foreground text-base\">\n                    {item.content}\n                  </AccordionContent>\n                </AccordionItem>\n              ))}\n            </Accordion>\n          </Fragment>\n        ))}\n      </div>\n      <Button variant=\"secondary\" className=\"w-fit mx-auto mt-8\">\n        Have more questions? Contact us!\n      </Button>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "faq"
+  ]
+}
