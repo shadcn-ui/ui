@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "blocks/faq-06/page.tsx",
-      "content": "import { FAQ } from \"@/registry/default/blocks/faq-06/components/faq\"\n\nexport default function LoginPage() {\n  return (\n    <div className=\"flex min-h-svh flex-col\">\n      <FAQ />\n    </div>\n  )\n}\n",
+      "content": "import { FAQ } from \"@/registry/default/blocks/faq-06/components/faq\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex min-h-svh flex-col\">\n      <FAQ />\n    </div>\n  )\n}\n",
       "type": "registry:page",
       "target": "app/faq/page.tsx"
     },
