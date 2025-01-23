@@ -1234,6 +1234,120 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "faq-01": {
+      name: "faq-01",
+      description: "Offset with supporting text",
+      type: "registry:block",
+      registryDependencies: ["accordion","button"],
+      files: [{
+        path: "registry/new-york/blocks/faq-01/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/new-york/blocks/faq-01/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/faq-01/page.tsx")),
+      source: "__registry__/new-york/blocks/faq-01/page.tsx",
+      meta: undefined,
+    },
+    "faq-02": {
+      name: "faq-02",
+      description: "Accordion with shadowed blocks",
+      type: "registry:block",
+      registryDependencies: ["accordion"],
+      files: [{
+        path: "registry/new-york/blocks/faq-02/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/new-york/blocks/faq-02/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/faq-02/page.tsx")),
+      source: "__registry__/new-york/blocks/faq-02/page.tsx",
+      meta: undefined,
+    },
+    "faq-03": {
+      name: "faq-03",
+      description: "Centered accordion with groups",
+      type: "registry:block",
+      registryDependencies: ["accordion","button"],
+      files: [{
+        path: "registry/new-york/blocks/faq-03/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/new-york/blocks/faq-03/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/faq-03/page.tsx")),
+      source: "__registry__/new-york/blocks/faq-03/page.tsx",
+      meta: undefined,
+    },
+    "faq-04": {
+      name: "faq-04",
+      description: "Accordion with sidebar groups",
+      type: "registry:block",
+      registryDependencies: ["accordion"],
+      files: [{
+        path: "registry/new-york/blocks/faq-04/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/new-york/blocks/faq-04/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/faq-04/page.tsx")),
+      source: "__registry__/new-york/blocks/faq-04/page.tsx",
+      meta: undefined,
+    },
+    "faq-05": {
+      name: "faq-05",
+      description: "Accordion with centered block",
+      type: "registry:block",
+      registryDependencies: ["accordion"],
+      files: [{
+        path: "registry/new-york/blocks/faq-05/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/new-york/blocks/faq-05/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/faq-05/page.tsx")),
+      source: "__registry__/new-york/blocks/faq-05/page.tsx",
+      meta: undefined,
+    },
+    "faq-06": {
+      name: "faq-06",
+      description: "Centered accordion",
+      type: "registry:block",
+      registryDependencies: ["accordion","input"],
+      files: [{
+        path: "registry/new-york/blocks/faq-06/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/new-york/blocks/faq-06/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/faq-06/page.tsx")),
+      source: "__registry__/new-york/blocks/faq-06/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6487,6 +6601,120 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "faq-01": {
+      name: "faq-01",
+      description: "Offset with supporting text",
+      type: "registry:block",
+      registryDependencies: ["accordion","button"],
+      files: [{
+        path: "registry/default/blocks/faq-01/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/default/blocks/faq-01/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/default/blocks/faq-01/page.tsx")),
+      source: "__registry__/default/blocks/faq-01/page.tsx",
+      meta: undefined,
+    },
+    "faq-02": {
+      name: "faq-02",
+      description: "Accordion with shadowed blocks",
+      type: "registry:block",
+      registryDependencies: ["accordion"],
+      files: [{
+        path: "registry/default/blocks/faq-02/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/default/blocks/faq-02/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/default/blocks/faq-02/page.tsx")),
+      source: "__registry__/default/blocks/faq-02/page.tsx",
+      meta: undefined,
+    },
+    "faq-03": {
+      name: "faq-03",
+      description: "Centered accordion with groups",
+      type: "registry:block",
+      registryDependencies: ["accordion","button"],
+      files: [{
+        path: "registry/default/blocks/faq-03/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/default/blocks/faq-03/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/default/blocks/faq-03/page.tsx")),
+      source: "__registry__/default/blocks/faq-03/page.tsx",
+      meta: undefined,
+    },
+    "faq-04": {
+      name: "faq-04",
+      description: "Accordion with sidebar groups",
+      type: "registry:block",
+      registryDependencies: ["accordion"],
+      files: [{
+        path: "registry/default/blocks/faq-04/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/default/blocks/faq-04/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/default/blocks/faq-04/page.tsx")),
+      source: "__registry__/default/blocks/faq-04/page.tsx",
+      meta: undefined,
+    },
+    "faq-05": {
+      name: "faq-05",
+      description: "Accordion with centered block",
+      type: "registry:block",
+      registryDependencies: ["accordion"],
+      files: [{
+        path: "registry/default/blocks/faq-05/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/default/blocks/faq-05/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/default/blocks/faq-05/page.tsx")),
+      source: "__registry__/default/blocks/faq-05/page.tsx",
+      meta: undefined,
+    },
+    "faq-06": {
+      name: "faq-06",
+      description: "Centered accordion",
+      type: "registry:block",
+      registryDependencies: ["accordion","input"],
+      files: [{
+        path: "registry/default/blocks/faq-06/page.tsx",
+        type: "registry:page",
+        target: "app/faq/page.tsx"
+      },{
+        path: "registry/default/blocks/faq-06/components/faq.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["faq"],
+      component: React.lazy(() => import("@/registry/default/blocks/faq-06/page.tsx")),
+      source: "__registry__/default/blocks/faq-06/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {

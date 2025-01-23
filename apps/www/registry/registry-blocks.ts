@@ -567,4 +567,112 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "faq-01",
+    description: "Offset with supporting text",
+    type: "registry:block",
+    registryDependencies: ["accordion", "button"],
+    files: [
+      {
+        path: "blocks/faq-01/page.tsx",
+        target: "app/faq/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/faq-01/components/faq.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["faq"],
+  },
+  {
+    name: "faq-02",
+    description: "Accordion with shadowed blocks",
+    type: "registry:block",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "blocks/faq-02/page.tsx",
+        target: "app/faq/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/faq-02/components/faq.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["faq"],
+  },
+  {
+    name: "faq-03",
+    description: "Centered accordion with groups",
+    type: "registry:block",
+    registryDependencies: ["accordion", "button"],
+    files: [
+      {
+        path: "blocks/faq-03/page.tsx",
+        target: "app/faq/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/faq-03/components/faq.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["faq"],
+  },
+  {
+    name: "faq-04",
+    description: "Accordion with sidebar groups",
+    type: "registry:block",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "blocks/faq-04/page.tsx",
+        target: "app/faq/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/faq-04/components/faq.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["faq"],
+  },
+  {
+    name: "faq-05",
+    description: "Accordion with centered block",
+    type: "registry:block",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "blocks/faq-05/page.tsx",
+        target: "app/faq/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/faq-05/components/faq.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["faq"],
+  },
+  {
+    name: "faq-06",
+    description: "Centered accordion",
+    type: "registry:block",
+    registryDependencies: ["accordion", "input"],
+    files: [
+      {
+        path: "blocks/faq-06/page.tsx",
+        target: "app/faq/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/faq-06/components/faq.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["faq"],
+  },
 ]
