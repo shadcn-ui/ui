@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-01",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "Offset with supporting text",
+  "registryDependencies": [
+    "accordion",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/faq-01/page.tsx",
+      "content": "import { FAQ } from \"@/registry/default/blocks/faq-01/components/faq\"\n\nexport default function LoginPage() {\n  return (\n    <div className=\"flex min-h-svh flex-col\">\n      <FAQ />\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/faq/page.tsx"
+    },
+    {
+      "path": "blocks/faq-01/components/faq.tsx",
+      "content": "import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/registry/default/ui/accordion\"\nimport { Button } from \"@/registry/default/ui/button\"\n\nconst items = [\n  {\n    label: \"What is the Force?\",\n    content:\n      \"The Force is a mystical energy field that binds the galaxy together.\",\n    value: \"item-1\",\n  },\n  {\n    label: \"Who are the Jedi and what is their purpose?\",\n    content:\n      \"The Jedi are peacekeepers of the galaxy who use the Force for good. Their purpose is to protect and maintain peace.\",\n    value: \"item-2\",\n  },\n  {\n    label: \"Who are the Sith and what are their goals?\",\n    content:\n      \"The Sith are followers of the dark side who seek power and control. Their ultimate goal is to dominate the galaxy.\",\n    value: \"item-3\",\n  },\n  {\n    label: \"Yoda, who is?\",\n    content:\n      \"A wise and powerful Jedi Master, Yoda is. Trained many Jedi, he has.\",\n    value: \"item-4\",\n  },\n  {\n    label: \"What is the Death Star?\",\n    content:\n      \"The Death Star is a massive space station and superweapon capable of destroying planets.\",\n    value: \"item-5\",\n  },\n  {\n    label: \"What is the Millennium Falcon?\",\n    content:\n      \"The Millennium Falcon is a legendary starship flown by Han Solo and Chewbacca.\",\n    value: \"item-6\",\n  },\n]\n\nexport function FAQ() {\n  return (\n    <div className=\"flex flex-col bg-background p-6 md:p-10\">\n      <h2 className=\"font-medium text-4xl pb-3 lg:pb-14 lg:text-[4rem] lg:leading-[4.5rem]\">\n        FAQ\n      </h2>\n      <div className=\"flex flex-col-reverse items-start lg:grid-cols-[max-content_1fr] gap-9 lg:grid lg:gap-6\">\n        <div className=\"pt-6 p-8 bg-muted w-full lg:w-auto lg:min-w-96\">\n          <h3 className=\"font-medium text-3xl pb-4\">still need help?</h3>\n          <p className=\"pb-10 text-base lg:text-lg\">\n            Chat to us&nbsp;—\n            <br />\n            we'll&nbsp;respond as&nbsp;soon&nbsp;a&nbsp;possible.\n          </p>\n          <Button tabIndex={-1}>Ask question</Button>\n        </div>\n        <Accordion\n          type=\"single\"\n          collapsible\n          className=\"w-full gap-y-2 flex flex-col\"\n        >\n          {items.map((item) => (\n            <AccordionItem\n              key={item.value}\n              value={item.value}\n              className=\"group/item border border-foreground transition bg-foreground hover:bg-background data-[state=open]:bg-background\"\n            >\n              <AccordionTrigger className=\"font-medium text-xl lg:text-3xl text-primary-foreground p-4 lg:p-6 lg:pl-10 group-hover/item:text-primary group-hover/item:no-underline data-[state=open]:text-primary [&>svg]:h-7 [&>svg]:w-7 [&>svg]:text-primary-foreground group-hover/item:[&>svg]:text-primary [&[data-state=open]>svg]:text-primary\">\n                {item.label}\n              </AccordionTrigger>\n              <AccordionContent className=\"text-sm px-4 pb-8 lg:px-10 lg:pb-10 lg:text-lg\">\n                {item.content}\n              </AccordionContent>\n            </AccordionItem>\n          ))}\n        </Accordion>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "faq"
+  ]
+}
