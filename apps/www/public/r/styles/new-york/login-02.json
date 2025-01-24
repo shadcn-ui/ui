@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "login-02",
   "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
   "description": "A two column login page with a cover image.",
   "registryDependencies": [
     "button",
