@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dropdown-menu-checkboxes",
   "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
   "registryDependencies": [
     "dropdown-menu",
     "checkbox"

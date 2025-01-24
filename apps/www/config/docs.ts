@@ -93,6 +93,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Blocks",
+          href: "/docs/blocks",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Figma",
           href: "/docs/figma",
           items: [],

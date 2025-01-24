@@ -16,6 +16,7 @@ import {
   Terminal,
 } from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
+import { registryItemFileSchema, registryItemSchema } from "shadcn/registry"
 import { z } from "zod"
 
 import { trackEvent } from "@/lib/events"
@@ -51,7 +52,6 @@ import {
   ToggleGroupItem,
 } from "@/registry/new-york/ui/toggle-group"
 import { Style } from "@/registry/registry-styles"
-import { registryItemFileSchema, registryItemSchema } from "@/registry/schema"
 
 type BlockViewerContext = {
   item: z.infer<typeof registryItemSchema>
