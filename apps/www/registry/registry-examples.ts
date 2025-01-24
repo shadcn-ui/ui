@@ -1106,6 +1106,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "stepper-variants",
+    type: "registry:example",
+    registryDependencies: ["stepper"],
+    files: [
+      {
+        path: "examples/stepper-variants.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "switch-demo",
     type: "registry:example",
     registryDependencies: ["switch"],

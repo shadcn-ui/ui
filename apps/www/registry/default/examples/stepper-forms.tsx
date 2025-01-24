@@ -2,12 +2,13 @@ import {
   Stepper,
   StepperAction,
   StepperControls,
+  StepperDescription,
   StepperNavigation,
   StepperPanel,
   StepperStep,
   StepperTitle,
   defineStepper,
-} from "@/registry/new-york/ui/stepper"
+} from "@/registry/default/ui/stepper"
 
 const stepperInstance = defineStepper(
   {
@@ -30,7 +31,8 @@ export default function StepperDemo() {
     <Stepper
       instance={stepperInstance}
       className="space-y-4"
-      variant="horizontal"
+      variant="vertical"
+      labelOrientation="horizontal"
     >
       <StepperNavigation>
         {({ methods }) =>

@@ -2,35 +2,40 @@ import {
   Stepper,
   StepperAction,
   StepperControls,
+  StepperDescription,
   StepperNavigation,
   StepperPanel,
   StepperStep,
   StepperTitle,
   defineStepper,
-} from "@/registry/new-york/ui/stepper"
+} from "@/registry/default/ui/stepper"
 
 const stepperInstance = defineStepper(
   {
     id: "step-1",
     title: "Step 1",
+    description: "This is the first step",
   },
   {
     id: "step-2",
     title: "Step 2",
+    description: "This is the second step",
   },
   {
     id: "step-3",
     title: "Step 3",
+    description: "This is the third step",
   }
 )
 
-export default function StepperDemo() {
+export default function StepperWithDescription() {
   const steps = stepperInstance.steps
   return (
     <Stepper
       instance={stepperInstance}
       className="space-y-4"
-      variant="horizontal"
+      variant="vertical"
+      labelOrientation="horizontal"
     >
       <StepperNavigation>
         {({ methods }) =>
@@ -41,6 +46,7 @@ export default function StepperDemo() {
               onClick={() => methods.goTo(step.id)}
             >
               <StepperTitle>{step.title}</StepperTitle>
+              <StepperDescription>{step.description}</StepperDescription>
             </StepperStep>
           ))
         }

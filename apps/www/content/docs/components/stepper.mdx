@@ -64,6 +64,193 @@ A `Stepper` component is composed of the following parts:
 - `StepperControls` - Step controls to navigate through the steps.
 - `StepperAction` - Next, previous and reset buttons.
 
+## Usage
+
+```tsx showLineNumbers
+import {
+  Stepper,
+  StepperAction,
+  StepperControls,
+  StepperDescription,
+  StepperNavigation,
+  StepperPanel,
+  StepperStep,
+  StepperTitle,
+  defineStepper,
+} from "@/components/ui/stepper"
+
+const stepperInstance = defineStepper(
+  { id: "step-1", title: "Step 1" },
+  { id: "step-2", title: "Step 2" },
+  { id: "step-3", title: "Step 3" }
+)
+
+export function Component() {
+  return (
+    <Stepper>
+      <StepperNavigation>
+        <StepperStep>
+          <StepperTitle />
+          <StepperDescription />
+        </StepperStep>
+        ...
+      </StepperNavigation>
+      <StepperPanel />
+      <StepperControls>
+        <StepperAction />
+        ...
+      </StepperControls>
+    </Stepper>
+  )
+}
+```
+
+## Your first Stepper
+
+Let's start with the most basic stepper. A stepper with a horizontal navigation.
+
+<Steps>
+
+<Step>Create a stepper instance with the `defineStepper` function.</Step>
+
+```tsx
+const stepperInstance = defineStepper(
+  { id: "step-1", title: "Step 1" },
+  { id: "step-2", title: "Step 2" },
+  { id: "step-3", title: "Step 3" }
+)
+```
+
+<Step>
+  Wrap your application in a `Stepper` component and pass the stepper instance.
+</Step>
+
+```tsx
+export function MyFirstStepper() {
+  return <Stepper instance={stepperInstance}>...</Stepper>
+}
+```
+
+<Step>
+  Add a `StepperNavigation` component to render the navigation buttons and
+  labels.
+</Step>
+
+```tsx
+export function MyFirstStepper() {
+  const steps = stepperInstance.steps
+  return (
+    <Stepper instance={stepperInstance}>
+      <StepperNavigation>
+        {({ methods }) =>
+          steps.map((step) => (
+            <StepperStep
+              key={step.id}
+              of={step}
+              onClick={() => methods.goTo(step.id)}
+            >
+              <StepperTitle>{step.title}</StepperTitle>
+            </StepperStep>
+          ))
+        }
+      </StepperNavigation>
+    </Stepper>
+  )
+}
+```
+
+<Step>Add a `StepperPanel` component to render the content of the step.</Step>
+
+```tsx
+export function MyFirstStepper() {
+  const steps = stepperInstance.steps
+  return (
+    <Stepper instance={stepperInstance}>
+      {/* StepperNavigation code */}
+      {steps.map((step) => (
+        <StepperPanel key={step.id} when={step}>
+          {({ step }) => <p>Content for {step.id}</p>}
+        </StepperPanel>
+      ))}
+    </Stepper>
+  )
+}
+```
+
+<Step>
+  Add a `StepperControls` component to render the buttons to navigate through
+  the steps.
+</Step>
+
+```tsx
+export function MyFirstStepper() {
+  const steps = stepperInstance.steps
+  return (
+    <Stepper instance={stepperInstance}>
+      {/* StepperNavigation code */}
+      {/* StepperPanel code */}
+      <StepperControls>
+        <StepperAction action="prev">Previous</StepperAction>
+        <StepperAction action="next">Next</StepperAction>
+        <StepperAction action="reset">Reset</StepperAction>
+      </StepperControls>
+    </Stepper>
+  )
+}
+```
+
+<Step>Add some styles to make it look nice.</Step>
+
+```tsx
+export function MyFirstStepper() {
+  const steps = stepperInstance.steps
+  return (
+    <Stepper instance={stepperInstance} className="space-y-4">
+      <StepperNavigation>
+        {({ methods }) =>
+          steps.map((step) => (
+            <StepperStep
+              key={step.id}
+              of={step}
+              onClick={() => methods.goTo(step.id)}
+            >
+              <StepperTitle>{step.title}</StepperTitle>
+            </StepperStep>
+          ))
+        }
+      </StepperNavigation>
+      {steps.map((step) => (
+        <StepperPanel
+          key={step.id}
+          when={step}
+          className="h-[200px] content-center rounded border bg-slate-50 p-8"
+        >
+          {({ step }) => (
+            <p className="text-xl font-normal">Content for {step.id}</p>
+          )}
+        </StepperPanel>
+      ))}
+      <StepperControls>
+        <StepperAction action="prev">Previous</StepperAction>
+        <StepperAction action="next">Next</StepperAction>
+        <StepperAction action="reset">Reset</StepperAction>
+      </StepperControls>
+    </Stepper>
+  )
+}
+```
+
+</Steps>
+
+## Components
+
+The components in `stepper.tsx` are built to be composable i.e you build your stepper by putting the provided components together.
+They also compose well with other shadcn/ui components such as DropdownMenu, Collapsible or Dialog etc.
+
+**If you need to change the code in `stepper.tsx`, you are encouraged to do so. The code is yours. Use `stepper.tsx` as a starting point and build your own.**
+
+In the next sections, we'll go over each component and how to use them.
+
 ## defineStepper
 
 The `defineStepper` function is used to define the steps. It returns a `Stepper` instance with a hook and utils to interact with the stepper.
@@ -72,18 +259,9 @@ For example, you can define the steps like this:
 
 ```tsx
 const stepperInstance = defineStepper(
-  {
-    id: "step-1",
-    title: "Step 1",
-  },
-  {
-    id: "step-2",
-    title: "Step 2",
-  },
-  {
-    id: "step-3",
-    title: "Step 3",
-  }
+  { id: "step-1", title: "Step 1", description: "Step 1 description" },
+  { id: "step-2", title: "Step 2", description: "Step 2 description" },
+  { id: "step-3", title: "Step 3", description: "Step 3 description" }
 )
 ```
 
@@ -93,3 +271,151 @@ Each instance will return:
 - `steps` - Array of steps.
 - `useStepper` - Hook to interact with the stepper component.
 - `utils` - Provides a set of pure functions for working with steps.
+
+<Callout className="mt-6">
+  Each step in the `defineStepper` needs only an `id` to work and they are not
+  limited to any type. You can define anything within each step, even
+  components!
+</Callout>
+
+## Stepper
+
+The `Stepper` component is used to provide the stepper instance from `defineStepper` to the other components. You should always wrap your application in a `Stepper` component.
+
+**Props**
+
+| Name               | Type                               | Description                                                                        |
+| ------------------ | ---------------------------------- | ---------------------------------------------------------------------------------- |
+| `instance`         | `ReturnType<typeof defineStepper>` | Stepper instance.                                                                  |
+| `variant`          | `horizontal, vertical or circle`   | Style of the stepper.                                                              |
+| `labelOrientation` | `horizontal, vertical`             | Orientation of the labels. This is only applicable if `variant` is `"horizontal"`. |
+| `className`        | `string`                           | Class name to apply to the stepper.                                                |
+
+## StepperNavigation
+
+The `StepperNavigation` component is used to render the navigation buttons and labels.
+
+`children` prop is a function that receives the `methods` prop. The `methods` prop is an object with the `useStepper` hook from your stepper instance.
+
+<Callout className="mt-6">
+  If you don't need the `methods` prop, you can just pass the children directly.
+</Callout>
+
+**Props**
+
+| Name       | Type                                                                             | Description         |
+| ---------- | -------------------------------------------------------------------------------- | ------------------- |
+| `children` | `React.ReactNode or (methods: ReturnType<typeof useStepper>) => React.ReactNode` | Children to render. |
+
+## StepperStep
+
+The `StepperStep` component is a wrapper of the button and labels. You just need to pass the `of` prop which is the step you want to render.
+
+<Callout className="mt-6">
+  This is a good place to add your `onClick` handler.
+</Callout>
+
+**Props**
+
+| Name | Type   | Description     |
+| ---- | ------ | --------------- |
+| `of` | `Step` | Step to render. |
+
+### StepperTitle
+
+The `StepperTitle` component is used to render the title of the step.
+
+**Props**
+
+| Name       | Type              | Description      |
+| ---------- | ----------------- | ---------------- |
+| `children` | `React.ReactNode` | Title to render. |
+| `asChild`  | `boolean`         | Render as child. |
+
+### StepperDescription
+
+The `StepperDescription` component is used to render the description of the step.
+
+**Props**
+
+| Name       | Type              | Description            |
+| ---------- | ----------------- | ---------------------- |
+| `children` | `React.ReactNode` | Description to render. |
+| `asChild`  | `boolean`         | Render as child.       |
+
+## StepperPanel
+
+The `StepperPanel` component is used to render the content of the step. You just need to pass the `when` prop which is the step you want to render.
+
+<Callout className="mt-6">
+  You don't have to worry about the stepper knowing which panel to render. If
+  the step is not correct, the panel will not be rendered.
+</Callout>
+
+**Props**
+
+| Name       | Type              | Description                               |
+| ---------- | ----------------- | ----------------------------------------- |
+| `children` | `React.ReactNode` | Content to render.                        |
+| `when`     | `Step`            | Used to conditionally render the content. |
+| `asChild`  | `boolean`         | Render as child.                          |
+
+## StepperControls
+
+The `StepperControls` component is used to render the buttons to navigate through the steps.
+
+**Props**
+
+| Name       | Type              | Description        |
+| ---------- | ----------------- | ------------------ |
+| `children` | `React.ReactNode` | Buttons to render. |
+| `asChild`  | `boolean`         | Render as child.   |
+
+### StepperAction
+
+The `StepperAction` component is used to render the buttons to navigate through the steps. You just need to pass the `action` prop which is the action you want to perform.
+
+<Callout className="mt-6">
+  If you need to execute a function before the button is executed, you can use
+  the `onBeforeAction` prop.
+</Callout>
+
+**Props**
+
+| Name             | Type                                                                                      | Description                                         |
+| ---------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| `children`       | `React.ReactNode`                                                                         | Buttons to render.                                  |
+| `asChild`        | `boolean`                                                                                 | Render as child.                                    |
+| `action`         | `prev, next or reset`                                                                     | Action to perform.                                  |
+| `onBeforeAction` | `(event: React.MouseEvent<HTMLButtonElement>, prevStep: Step, nextStep: Step) => boolean` | Function to execute before the action is performed. |
+
+## Examples
+
+### Variants
+
+<ComponentPreview
+  className="[&_.preview]:justify-start"
+  name="stepper-variants"
+/>
+
+### Responsive variant
+
+If you need to render the stepper in a responsive way, you can use a custom hook to detect the screen size and render the stepper in a different variant.
+
+### Description
+
+### Label Orientation
+
+### Step tracking
+
+### Forms
+
+### Custom components
+
+If you need to add custom components, you can do so by using the `useStepper` hook and `utils` from your stepper instance.
+
+<Callout className="mt-6">
+  If all this is not enough for you, you can use the
+  [@stepperize/react](https://stepperize.vercel.app/docs/react) API to create
+  your own stepper.
+</Callout>

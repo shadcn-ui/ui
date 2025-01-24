@@ -607,12 +607,10 @@
     "dependencies": [
       "@radix-ui/react-slot",
       "@stepperize/react",
-      "class-variance-authority",
-      "lucide-react"
+      "class-variance-authority"
     ],
     "registryDependencies": [
-      "button",
-      "separator"
+      "button"
     ],
     "files": [
       {

@@ -521,9 +521,8 @@ export const ui: Registry["items"] = [
       "@radix-ui/react-slot",
       "@stepperize/react",
       "class-variance-authority",
-      "lucide-react",
     ],
-    registryDependencies: ["button", "separator"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "ui/stepper.tsx",

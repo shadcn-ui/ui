@@ -2,7 +2,6 @@ import {
   Stepper,
   StepperAction,
   StepperControls,
-  StepperDescription,
   StepperNavigation,
   StepperPanel,
   StepperStep,
@@ -28,7 +27,11 @@ const stepperInstance = defineStepper(
 export default function StepperDemo() {
   const steps = stepperInstance.steps
   return (
-    <Stepper instance={stepperInstance} className="space-y-4">
+    <Stepper
+      instance={stepperInstance}
+      className="space-y-4"
+      variant="horizontal"
+    >
       <StepperNavigation>
         {({ methods }) =>
           steps.map((step) => (

@@ -3,21 +3,22 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import * as Stepperize from "@stepperize/react"
-import { cva } from "class-variance-authority"
+import { VariantProps, cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/registry/default/ui/button"
-import { Separator } from "@/registry/default/ui/separator"
+import { Button } from "@/registry/default/ui/button"
 
 type StepperProviderProps<T extends Stepperize.Step[]> = StepperConfig<T> & {
   children: React.ReactNode
 }
 
 type StepperVariant = "horizontal" | "vertical" | "circle"
+type StepperLabelOrientation = "horizontal" | "vertical"
 
 type StepperConfig<T extends Stepperize.Step[]> = {
   instance: ReturnType<typeof Stepperize.defineStepper<T>>
   variant?: StepperVariant
+  labelOrientation?: StepperLabelOrientation
 }
 
 const StepContext = React.createContext<StepperConfig<any>>({
@@ -49,12 +50,17 @@ function Stepper<T extends Stepperize.Step[]>({
   children,
   variant = "horizontal",
   className,
+  labelOrientation = "horizontal",
   ...props
-}: StepperConfig<T> & JSX.IntrinsicElements["div"]) {
+}: StepperConfig<T> & React.ComponentProps<"div">) {
   const { instance } = props
 
   return (
-    <StepperProvider instance={instance} variant={variant}>
+    <StepperProvider
+      instance={instance}
+      variant={variant}
+      labelOrientation={labelOrientation}
+    >
       <div className={cn("stepper w-full", className)} {...props}>
         {children}
       </div>
@@ -65,9 +71,9 @@ function Stepper<T extends Stepperize.Step[]>({
 const StepperNavigation = ({
   children,
   className,
-  "aria-label": ariaLabel = "Checkout Steps",
+  "aria-label": ariaLabel = "Stepper Navigation",
   ...props
-}: Omit<JSX.IntrinsicElements["nav"], "children"> & {
+}: Omit<React.ComponentProps<"nav">, "children"> & {
   children:
     | React.ReactNode
     | ((props: {
@@ -81,6 +87,7 @@ const StepperNavigation = ({
   return (
     <nav
       aria-label={ariaLabel}
+      role="tablist"
       className={cn("stepper-navigation", className)}
       {...props}
     >
@@ -107,8 +114,10 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
   of,
   icon,
   ...props
-}: JSX.IntrinsicElements["button"] & { of: T; icon?: Icon }) => {
-  const { instance, variant } = useStepper()
+}: React.ComponentProps<"button"> & { of: T; icon?: Icon }) => {
+  const id = React.useId()
+  const { instance, variant, labelOrientation } = useStepper()
+
   const methods = instance.useStepper() as Stepperize.Stepper<Stepperize.Step[]>
 
   const currentStep = methods.current
@@ -116,8 +125,9 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
   const isLast = instance.utils.getLast().id === of.id
   const stepIndex = instance.utils.getIndex(of.id)
   const currentIndex = instance.utils.getIndex(currentStep?.id ?? "")
-  const isCurrent = currentStep?.id === of.id
+  const isActive = currentStep?.id === of.id
 
+  const dataState = getStepState(currentIndex, stepIndex)
   const childMap = useStepChildren(children)
 
   const title = childMap.get("title")
@@ -127,6 +137,7 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
   if (variant === "circle") {
     return (
       <li
+        id={id}
         className={cn(
           "stepper-step flex shrink-0 items-center gap-4 rounded-md transition-colors",
           className
@@ -146,51 +157,66 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
 
   return (
     <>
-      <li className="stepper-step flex items-center gap-4">
-        <button
+      <li
+        id={id}
+        className={cn([
+          "stepper-step group relative flex items-center gap-2",
+          "data-[variant=vertical]:flex-row",
+          "data-[label-orientation=vertical]:w-full",
+          "data-[label-orientation=vertical]:flex-col",
+          "data-[label-orientation=vertical]:justify-center",
+        ])}
+        data-variant={variant}
+        data-label-orientation={labelOrientation}
+        data-state={dataState}
+        data-disabled={props.disabled}
+      >
+        <Button
+          id={`step-${of.id}`}
           type="button"
           role="tab"
-          className={stepVariants()}
-          aria-current={isCurrent ? "step" : undefined}
+          tabIndex={dataState !== "inactive" ? 0 : -1}
+          className="stepper-step-indicator rounded-full"
+          variant={dataState !== "inactive" ? "default" : "secondary"}
+          size="icon"
+          aria-controls={`step-panel-${of.id}`}
+          aria-current={isActive ? "step" : undefined}
           aria-posinset={stepIndex + 1}
           aria-setsize={methods.all.length}
-          aria-selected={isCurrent}
+          aria-selected={isActive}
+          onKeyDown={(e) =>
+            onStepKeyDown(
+              e,
+              instance.utils.getNext(of.id),
+              instance.utils.getPrev(of.id)
+            )
+          }
           {...props}
         >
-          <DefaultStepIndicator
-            stepIndex={stepIndex}
-            fill={currentIndex >= stepIndex}
-            icon={icon}
+          {icon ?? stepIndex + 1}
+        </Button>
+        {variant === "horizontal" && labelOrientation === "vertical" && (
+          <StepperSeparator
+            orientation="horizontal"
+            labelOrientation={labelOrientation}
+            isLast={isLast}
           />
-          <div className="stepper-step-content flex flex-col items-start">
-            {title}
-            {description}
-          </div>
-        </button>
+        )}
+        <div className="stepper-step-content flex flex-col items-start">
+          {title}
+          {description}
+        </div>
       </li>
 
-      {variant === "horizontal" && !isLast && (
-        <Separator
-          className={cn(
-            "flex-1",
-            "transition-all duration-300 ease-in-out",
-            stepIndex < currentIndex ? "bg-primary" : "bg-muted"
-          )}
-        />
+      {variant === "horizontal" && labelOrientation === "horizontal" && (
+        <StepperSeparator orientation="horizontal" isLast={isLast} />
       )}
 
       {variant === "vertical" && (
-        <div className="flex gap-4" data-last={isLast}>
+        <div className="flex gap-4">
           {!isLast && (
             <div className="flex justify-center ps-5">
-              <Separator
-                orientation="vertical"
-                className={cn(
-                  "h-full w-[1px]",
-                  "transition-all duration-300 ease-in-out",
-                  stepIndex < currentIndex ? "bg-primary" : "bg-muted"
-                )}
-              />
+              <StepperSeparator orientation="vertical" isLast={isLast} />
             </div>
           )}
           <div className="my-3 flex-1 ps-4">{panel}</div>
@@ -200,22 +226,75 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
   )
 }
 
-const stepVariants = cva(
+const StepperSeparator = ({
+  orientation,
+  isLast,
+  labelOrientation,
+}: {
+  isLast: boolean
+} & VariantProps<typeof classForSeparator>) => {
+  if (isLast) return null
+  return (
+    <div
+      data-orientation={orientation}
+      role="none"
+      className={classForSeparator({ orientation, labelOrientation })}
+    />
+  )
+}
+
+const classForSeparator = cva(
   [
-    "stepper-step-button flex shrink-0 items-center gap-2 rounded-md transition-colors",
-    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-offset-8 focus-visible:ring-offset-background",
-    "disabled:pointer-events-none disabled:opacity-50",
+    "bg-muted group-data-[state=completed]:bg-primary group-data-[disabled]:opacity-50",
+    "transition-all duration-300 ease-in-out",
   ],
   {
     variants: {
-      variant: {
-        horizontal: "flex-col",
-        vertical: "flex-row",
-        circle: "flex-row",
+      orientation: {
+        horizontal: "h-0.5 flex-1",
+        vertical: "h-full w-0.5",
+      },
+      labelOrientation: {
+        vertical:
+          "absolute left-[calc(50%+30px)] right-[calc(-50%+20px)] top-5 block shrink-0",
       },
     },
   }
 )
+
+const onStepKeyDown = (
+  e: React.KeyboardEvent<HTMLButtonElement>,
+  nextStep: Stepperize.Step,
+  prevStep: Stepperize.Step
+) => {
+  const { key } = e
+  const directions = {
+    next: ["ArrowRight", "ArrowDown"],
+    prev: ["ArrowLeft", "ArrowUp"],
+  }
+
+  if (directions.next.includes(key) || directions.prev.includes(key)) {
+    const direction = directions.next.includes(key) ? "next" : "prev"
+    const step = direction === "next" ? nextStep : prevStep
+
+    if (!step) return
+
+    const stepElement = document.getElementById(`step-${step.id}`)
+    if (!stepElement) return
+
+    const isActive =
+      stepElement.parentElement?.getAttribute("data-state") !== "inactive"
+    if (isActive || direction === "prev") {
+      stepElement.focus()
+    }
+  }
+}
+
+const getStepState = (currentIndex: number, stepIndex: number) => {
+  if (currentIndex === stepIndex) return "active"
+  if (currentIndex > stepIndex) return "completed"
+  return "inactive"
+}
 
 const extractChildren = (children: React.ReactNode) => {
   const childrenArray = React.Children.toArray(children)
@@ -245,7 +324,7 @@ const StepperTitle = ({
   className,
   asChild,
   ...props
-}: JSX.IntrinsicElements["h4"] & { asChild?: boolean }) => {
+}: React.ComponentProps<"h4"> & { asChild?: boolean }) => {
   const Comp = asChild ? Slot : "h4"
 
   return (
@@ -263,7 +342,7 @@ const StepperDescription = ({
   className,
   asChild,
   ...props
-}: JSX.IntrinsicElements["p"] & { asChild?: boolean }) => {
+}: React.ComponentProps<"p"> & { asChild?: boolean }) => {
   const Comp = asChild ? Slot : "p"
 
   return (
@@ -278,25 +357,6 @@ const StepperDescription = ({
     </Comp>
   )
 }
-
-const DefaultStepIndicator = ({
-  stepIndex,
-  fill,
-  icon,
-}: {
-  stepIndex: number
-  fill: boolean
-  icon: React.ReactNode
-}) => (
-  <span
-    className={cn(
-      buttonVariants({ variant: fill ? "default" : "secondary", size: "icon" }),
-      "stepper-step-indicator rounded-full transition-all duration-300 ease-in-out"
-    )}
-  >
-    {icon ?? stepIndex + 1}
-  </span>
-)
 
 type CircleStepIndicatorProps = {
   currentStep: number
@@ -317,7 +377,10 @@ const CircleStepIndicator = ({
   const dashOffset = circumference - (circumference * fillPercentage) / 100
 
   return (
-    <div className="stepper-step-container relative inline-flex items-center justify-center">
+    <div
+      role="progressbar"
+      className="stepper-step-indicator relative inline-flex items-center justify-center"
+    >
       <svg width={size} height={size}>
         <title>Step Indicator</title>
         <circle
@@ -357,7 +420,7 @@ const StepperPanel = <T extends Stepperize.Step>({
   when,
   asChild,
   ...props
-}: Omit<JSX.IntrinsicElements["div"], "children"> & {
+}: Omit<React.ComponentProps<"div">, "children"> & {
   asChild?: boolean
   when: T
   children:
@@ -427,7 +490,7 @@ const StepperControls = ({
   asChild,
   className,
   ...props
-}: Omit<JSX.IntrinsicElements["div"], "children"> & {
+}: Omit<React.ComponentProps<"div">, "children"> & {
   asChild?: boolean
   children:
     | React.ReactNode
@@ -476,7 +539,7 @@ const StepperAction = ({
   className,
   disabled,
   ...props
-}: JSX.IntrinsicElements["button"] & StepperActionProps) => {
+}: React.ComponentProps<"button"> & StepperActionProps) => {
   const { instance } = useStepper()
   const methods = instance.useStepper()
 

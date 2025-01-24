@@ -1,13 +1,15 @@
+import { useMediaQuery } from "@/hooks/use-media-query"
 import {
   Stepper,
   StepperAction,
   StepperControls,
+  StepperDescription,
   StepperNavigation,
   StepperPanel,
   StepperStep,
   StepperTitle,
   defineStepper,
-} from "@/registry/new-york/ui/stepper"
+} from "@/registry/default/ui/stepper"
 
 const stepperInstance = defineStepper(
   {
@@ -24,13 +26,14 @@ const stepperInstance = defineStepper(
   }
 )
 
-export default function StepperDemo() {
+export default function StepperResponsiveOrientation() {
   const steps = stepperInstance.steps
+  const isMobile = useMediaQuery("(max-width: 768px)")
   return (
     <Stepper
       instance={stepperInstance}
       className="space-y-4"
-      variant="horizontal"
+      variant={isMobile ? "vertical" : "horizontal"}
     >
       <StepperNavigation>
         {({ methods }) =>

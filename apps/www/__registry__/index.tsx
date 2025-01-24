@@ -594,7 +594,7 @@ export const Index: Record<string, any> = {
       name: "stepper",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button","separator"],
+      registryDependencies: ["button"],
       files: [{
         path: "registry/new-york/ui/stepper.tsx",
         type: "registry:ui",
@@ -4554,6 +4554,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "stepper-variants": {
+      name: "stepper-variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york/examples/stepper-variants.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-variants.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "switch-demo": {
       name: "switch-demo",
       description: "",
@@ -5879,7 +5894,7 @@ export const Index: Record<string, any> = {
       name: "stepper",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button","separator"],
+      registryDependencies: ["button"],
       files: [{
         path: "registry/default/ui/stepper.tsx",
         type: "registry:ui",
@@ -9836,6 +9851,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/stepper-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-variants": {
+      name: "stepper-variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/default/examples/stepper-variants.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-variants.tsx")),
       source: "",
       meta: undefined,
     },
