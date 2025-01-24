@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper-tracking",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "stepper"
+  ],
+  "files": [
+    {
+      "path": "examples/stepper-tracking.tsx",
+      "content": "import * as React from \"react\"\n\nimport { Label } from \"@/registry/new-york/ui/label\"\nimport { RadioGroup, RadioGroupItem } from \"@/registry/new-york/ui/radio-group\"\nimport {\n  Stepper,\n  StepperAction,\n  StepperControls,\n  StepperNavigation,\n  StepperPanel,\n  StepperStep,\n  StepperTitle,\n  defineStepper,\n} from \"@/registry/new-york/ui/stepper\"\n\nconst stepperInstance = defineStepper(\n  {\n    id: \"step-1\",\n    title: \"Step 1\",\n  },\n  {\n    id: \"step-2\",\n    title: \"Step 2\",\n  },\n  {\n    id: \"step-3\",\n    title: \"Step 3\",\n  },\n  {\n    id: \"step-4\",\n    title: \"Step 4\",\n  },\n  {\n    id: \"step-5\",\n    title: \"Step 5\",\n  },\n  {\n    id: \"step-6\",\n    title: \"Step 6\",\n  }\n)\n\nexport default function StepperVerticalFollow() {\n  const steps = stepperInstance.steps\n\n  const [tracking, setTracking] = React.useState(false)\n  return (\n    <div className=\"flex w-full flex-col gap-8\">\n      <RadioGroup\n        value={tracking.toString()}\n        onValueChange={(value) => setTracking(value === \"true\")}\n      >\n        <div className=\"flex items-center space-x-2\">\n          <RadioGroupItem value=\"true\" id=\"tracking\" />\n          <Label htmlFor=\"tracking\">Tracking</Label>\n        </div>\n        <div className=\"flex items-center space-x-2\">\n          <RadioGroupItem value=\"false\" id=\"no-tracking\" />\n          <Label htmlFor=\"no-tracking\">No Tracking</Label>\n        </div>\n      </RadioGroup>\n      <Stepper\n        instance={stepperInstance}\n        className=\"space-y-4\"\n        variant=\"vertical\"\n        tracking={tracking}\n      >\n        {({ methods }) => (\n          <>\n            <StepperNavigation>\n              {steps.map((step) => (\n                <StepperStep\n                  key={step.id}\n                  of={step}\n                  onClick={() => methods.goTo(step.id)}\n                >\n                  <StepperTitle>{step.title}</StepperTitle>\n                  <StepperPanel key={step.id} when={step} className=\"space-y-4\">\n                    <div className=\"h-[200px] content-center rounded border bg-slate-50 p-8\">\n                      <p className=\"text-xl font-normal\">\n                        Content for {step.id}\n                      </p>\n                    </div>\n                    <StepperControls>\n                      <StepperAction action=\"prev\">Previous</StepperAction>\n                      <StepperAction action=\"next\">Next</StepperAction>\n                      <StepperAction action=\"reset\">Reset</StepperAction>\n                    </StepperControls>\n                  </StepperPanel>\n                </StepperStep>\n              ))}\n            </StepperNavigation>\n          </>\n        )}\n      </Stepper>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

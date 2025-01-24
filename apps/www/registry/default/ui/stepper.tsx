@@ -19,6 +19,7 @@ type StepperConfig<T extends Stepperize.Step[]> = {
   instance: ReturnType<typeof Stepperize.defineStepper<T>>
   variant?: StepperVariant
   labelOrientation?: StepperLabelOrientation
+  tracking?: boolean
 }
 
 const StepContext = React.createContext<StepperConfig<any>>({
@@ -51,18 +52,27 @@ function Stepper<T extends Stepperize.Step[]>({
   variant = "horizontal",
   className,
   labelOrientation = "horizontal",
+  tracking = false,
   ...props
-}: StepperConfig<T> & React.ComponentProps<"div">) {
+}: StepperConfig<T> &
+  Omit<React.ComponentProps<"div">, "children"> & {
+    children:
+      | React.ReactNode
+      | ((props: { methods: Stepperize.Stepper<T> }) => React.ReactNode)
+  }) {
   const { instance } = props
+
+  const methods = instance.useStepper() as Stepperize.Stepper<T>
 
   return (
     <StepperProvider
       instance={instance}
       variant={variant}
       labelOrientation={labelOrientation}
+      tracking={tracking}
     >
       <div className={cn("stepper w-full", className)} {...props}>
-        {children}
+        {typeof children === "function" ? children({ methods }) : children}
       </div>
     </StepperProvider>
   )
@@ -74,11 +84,7 @@ const StepperNavigation = ({
   "aria-label": ariaLabel = "Stepper Navigation",
   ...props
 }: Omit<React.ComponentProps<"nav">, "children"> & {
-  children:
-    | React.ReactNode
-    | ((props: {
-        methods: Stepperize.Stepper<Stepperize.Step[]>
-      }) => React.ReactNode)
+  children: React.ReactNode
 }) => {
   const { variant, instance } = useStepper()
 
@@ -91,9 +97,7 @@ const StepperNavigation = ({
       className={cn("stepper-navigation", className)}
       {...props}
     >
-      <ol className={listVariants({ variant: variant })}>
-        {typeof children === "function" ? children({ methods }) : children}
-      </ol>
+      <ol className={listVariants({ variant: variant })}>{children}</ol>
     </nav>
   )
 }
@@ -160,7 +164,7 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
       <li
         id={id}
         className={cn([
-          "stepper-step group relative flex items-center gap-2",
+          "stepper-step group peer relative flex items-center gap-2",
           "data-[variant=vertical]:flex-row",
           "data-[label-orientation=vertical]:w-full",
           "data-[label-orientation=vertical]:flex-col",
@@ -200,6 +204,8 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
             orientation="horizontal"
             labelOrientation={labelOrientation}
             isLast={isLast}
+            state={dataState}
+            disabled={props.disabled}
           />
         )}
         <div className="stepper-step-content flex flex-col items-start">
@@ -209,14 +215,24 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
       </li>
 
       {variant === "horizontal" && labelOrientation === "horizontal" && (
-        <StepperSeparator orientation="horizontal" isLast={isLast} />
+        <StepperSeparator
+          orientation="horizontal"
+          isLast={isLast}
+          state={dataState}
+          disabled={props.disabled}
+        />
       )}
 
       {variant === "vertical" && (
         <div className="flex gap-4">
           {!isLast && (
             <div className="flex justify-center ps-5">
-              <StepperSeparator orientation="vertical" isLast={isLast} />
+              <StepperSeparator
+                orientation="vertical"
+                isLast={isLast}
+                state={dataState}
+                disabled={props.disabled}
+              />
             </div>
           )}
           <div className="my-3 flex-1 ps-4">{panel}</div>
@@ -230,13 +246,19 @@ const StepperSeparator = ({
   orientation,
   isLast,
   labelOrientation,
+  state,
+  disabled,
 }: {
   isLast: boolean
+  state: string
+  disabled?: boolean
 } & VariantProps<typeof classForSeparator>) => {
   if (isLast) return null
   return (
     <div
       data-orientation={orientation}
+      data-state={state}
+      data-disabled={disabled}
       role="none"
       className={classForSeparator({ orientation, labelOrientation })}
     />
@@ -245,7 +267,8 @@ const StepperSeparator = ({
 
 const classForSeparator = cva(
   [
-    "bg-muted group-data-[state=completed]:bg-primary group-data-[disabled]:opacity-50",
+    "bg-muted",
+    "data-[state=completed]:bg-primary data-[disabled]:opacity-50",
     "transition-all duration-300 ease-in-out",
   ],
   {
@@ -427,7 +450,6 @@ const StepperPanel = <T extends Stepperize.Step>({
     | React.ReactNode
     | ((props: {
         step: T
-        methods: Stepperize.Stepper<Stepperize.Step[]>
         onBeforeAction: (
           action: StepAction,
           callback: (params: {
@@ -438,7 +460,7 @@ const StepperPanel = <T extends Stepperize.Step>({
       }) => React.ReactNode)
 }) => {
   const Comp = asChild ? Slot : "div"
-  const { instance } = useStepper()
+  const { instance, tracking } = useStepper()
 
   const methods = instance.useStepper()
 
@@ -475,14 +497,27 @@ const StepperPanel = <T extends Stepperize.Step>({
   return (
     <>
       {methods.when(when.id, (step) => (
-        <Comp className={cn("stepper-panel flex-1", className)} {...props}>
+        <Comp
+          className={cn("stepper-panel flex-1", className)}
+          ref={(node) => scrollIntoStepperPanel(node, tracking)}
+          {...props}
+        >
           {typeof children === "function"
-            ? children({ step: step as T, methods, onBeforeAction })
+            ? children({ step: step as T, onBeforeAction })
             : children}
         </Comp>
       ))}
     </>
   )
+}
+
+function scrollIntoStepperPanel(
+  node: HTMLDivElement | null,
+  tracking?: boolean
+) {
+  if (tracking) {
+    node?.scrollIntoView({ behavior: "smooth", block: "center" })
+  }
 }
 
 const StepperControls = ({

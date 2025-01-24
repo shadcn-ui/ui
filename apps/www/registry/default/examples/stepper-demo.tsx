@@ -32,35 +32,37 @@ export default function StepperDemo() {
       className="space-y-4"
       variant="horizontal"
     >
-      <StepperNavigation>
-        {({ methods }) =>
-          steps.map((step) => (
-            <StepperStep
+      {({ methods }) => (
+        <>
+          <StepperNavigation>
+            {steps.map((step) => (
+              <StepperStep
+                key={step.id}
+                of={step}
+                onClick={() => methods.goTo(step.id)}
+              >
+                <StepperTitle>{step.title}</StepperTitle>
+              </StepperStep>
+            ))}
+          </StepperNavigation>
+          {steps.map((step) => (
+            <StepperPanel
               key={step.id}
-              of={step}
-              onClick={() => methods.goTo(step.id)}
+              when={step}
+              className="h-[200px] content-center rounded border bg-slate-50 p-8"
             >
-              <StepperTitle>{step.title}</StepperTitle>
-            </StepperStep>
-          ))
-        }
-      </StepperNavigation>
-      {steps.map((step) => (
-        <StepperPanel
-          key={step.id}
-          when={step}
-          className="h-[200px] content-center rounded border bg-slate-50 p-8"
-        >
-          {({ step }) => (
-            <p className="text-xl font-normal">Content for {step.id}</p>
-          )}
-        </StepperPanel>
-      ))}
-      <StepperControls>
-        <StepperAction action="prev">Previous</StepperAction>
-        <StepperAction action="next">Next</StepperAction>
-        <StepperAction action="reset">Reset</StepperAction>
-      </StepperControls>
+              {({ step }) => (
+                <p className="text-xl font-normal">Content for {step.id}</p>
+              )}
+            </StepperPanel>
+          ))}
+          <StepperControls>
+            <StepperAction action="prev">Previous</StepperAction>
+            <StepperAction action="next">Next</StepperAction>
+            <StepperAction action="reset">Reset</StepperAction>
+          </StepperControls>
+        </>
+      )}
     </Stepper>
   )
 }

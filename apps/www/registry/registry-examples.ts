@@ -1128,6 +1128,61 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "stepper-description",
+    type: "registry:example",
+    registryDependencies: ["stepper"],
+    files: [
+      {
+        path: "examples/stepper-description.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "stepper-label-orientation",
+    type: "registry:example",
+    registryDependencies: ["stepper"],
+    files: [
+      {
+        path: "examples/stepper-label-orientation.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "stepper-tracking",
+    type: "registry:example",
+    registryDependencies: ["stepper"],
+    files: [
+      {
+        path: "examples/stepper-tracking.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "stepper-icon",
+    type: "registry:example",
+    registryDependencies: ["stepper"],
+    files: [
+      {
+        path: "examples/stepper-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "stepper-form",
+    type: "registry:example",
+    registryDependencies: ["stepper", "form"],
+    files: [
+      {
+        path: "examples/stepper-form.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "switch-demo",
     type: "registry:example",
     registryDependencies: ["switch"],

@@ -1,3 +1,5 @@
+import { HomeIcon, SettingsIcon, UserIcon } from "lucide-react"
+
 import {
   Stepper,
   StepperAction,
@@ -7,24 +9,27 @@ import {
   StepperStep,
   StepperTitle,
   defineStepper,
-} from "@/registry/new-york/ui/stepper"
+} from "@/registry/default/ui/stepper"
 
 const stepperInstance = defineStepper(
   {
     id: "step-1",
     title: "Step 1",
+    icon: <HomeIcon />,
   },
   {
     id: "step-2",
     title: "Step 2",
+    icon: <SettingsIcon />,
   },
   {
     id: "step-3",
     title: "Step 3",
+    icon: <UserIcon />,
   }
 )
 
-export default function StepperDemo() {
+export default function StepperIcon() {
   const steps = stepperInstance.steps
   return (
     <Stepper
@@ -40,6 +45,7 @@ export default function StepperDemo() {
                 key={step.id}
                 of={step}
                 onClick={() => methods.goTo(step.id)}
+                icon={step.icon}
               >
                 <StepperTitle>{step.title}</StepperTitle>
               </StepperStep>

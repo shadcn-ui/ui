@@ -34,10 +34,10 @@ export default function StepperResponsiveVariant() {
       className="space-y-4"
       variant={isMobile ? "vertical" : "horizontal"}
     >
-      <StepperNavigation>
-        {({ methods }) =>
-          steps.map((step) => (
-            <>
+      {({ methods }) => (
+        <>
+          <StepperNavigation>
+            {steps.map((step) => (
               <StepperStep
                 key={step.id}
                 of={step}
@@ -58,27 +58,27 @@ export default function StepperResponsiveVariant() {
                   </StepperPanel>
                 )}
               </StepperStep>
-            </>
-          ))
-        }
-      </StepperNavigation>
-      {!isMobile &&
-        steps.map((step) => (
-          <StepperPanel
-            key={step.id}
-            when={step}
-            className="h-[200px] content-center rounded border bg-slate-50 p-8"
-          >
-            {({ step }) => (
-              <p className="text-xl font-normal">Content for {step.id}</p>
-            )}
-          </StepperPanel>
-        ))}
-      <StepperControls>
-        <StepperAction action="prev">Previous</StepperAction>
-        <StepperAction action="next">Next</StepperAction>
-        <StepperAction action="reset">Reset</StepperAction>
-      </StepperControls>
+            ))}
+          </StepperNavigation>
+          {!isMobile &&
+            steps.map((step) => (
+              <StepperPanel
+                key={step.id}
+                when={step}
+                className="h-[200px] content-center rounded border bg-slate-50 p-8"
+              >
+                {({ step }) => (
+                  <p className="text-xl font-normal">Content for {step.id}</p>
+                )}
+              </StepperPanel>
+            ))}
+          <StepperControls>
+            <StepperAction action="prev">Previous</StepperAction>
+            <StepperAction action="next">Next</StepperAction>
+            <StepperAction action="reset">Reset</StepperAction>
+          </StepperControls>
+        </>
+      )}
     </Stepper>
   )
 }

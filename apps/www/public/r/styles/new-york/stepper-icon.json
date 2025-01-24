@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper-icon",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "stepper"
+  ],
+  "files": [
+    {
+      "path": "examples/stepper-icon.tsx",
+      "content": "import { HomeIcon, SettingsIcon, UserIcon } from \"lucide-react\"\n\nimport {\n  Stepper,\n  StepperAction,\n  StepperControls,\n  StepperNavigation,\n  StepperPanel,\n  StepperStep,\n  StepperTitle,\n  defineStepper,\n} from \"@/registry/new-york/ui/stepper\"\n\nconst stepperInstance = defineStepper(\n  {\n    id: \"step-1\",\n    title: \"Step 1\",\n    icon: <HomeIcon />,\n  },\n  {\n    id: \"step-2\",\n    title: \"Step 2\",\n    icon: <SettingsIcon />,\n  },\n  {\n    id: \"step-3\",\n    title: \"Step 3\",\n    icon: <UserIcon />,\n  }\n)\n\nexport default function StepperIcon() {\n  const steps = stepperInstance.steps\n  return (\n    <Stepper\n      instance={stepperInstance}\n      className=\"space-y-4\"\n      variant=\"horizontal\"\n    >\n      {({ methods }) => (\n        <>\n          <StepperNavigation>\n            {steps.map((step) => (\n              <StepperStep\n                key={step.id}\n                of={step}\n                onClick={() => methods.goTo(step.id)}\n                icon={step.icon}\n              >\n                <StepperTitle>{step.title}</StepperTitle>\n              </StepperStep>\n            ))}\n          </StepperNavigation>\n          {steps.map((step) => (\n            <StepperPanel\n              key={step.id}\n              when={step}\n              className=\"h-[200px] content-center rounded border bg-slate-50 p-8\"\n            >\n              {({ step }) => (\n                <p className=\"text-xl font-normal\">Content for {step.id}</p>\n              )}\n            </StepperPanel>\n          ))}\n          <StepperControls>\n            <StepperAction action=\"prev\">Previous</StepperAction>\n            <StepperAction action=\"next\">Next</StepperAction>\n            <StepperAction action=\"reset\">Reset</StepperAction>\n          </StepperControls>\n        </>\n      )}\n    </Stepper>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

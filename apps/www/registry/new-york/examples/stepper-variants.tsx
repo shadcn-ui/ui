@@ -38,21 +38,19 @@ export default function StepperVariants() {
     <div className="flex w-full flex-col gap-8">
       <RadioGroup
         value={variant}
-        onValueChange={(value) =>
-          setVariant(value as "horizontal" | "vertical" | "circle")
-        }
+        onValueChange={(value) => setVariant(value as Variant)}
       >
         <div className="flex items-center space-x-2">
-          <RadioGroupItem value="horizontal" id="r1" />
-          <Label htmlFor="r1">Horizontal</Label>
+          <RadioGroupItem value="horizontal" id="horizontal-variant" />
+          <Label htmlFor="horizontal-variant">Horizontal</Label>
         </div>
         <div className="flex items-center space-x-2">
-          <RadioGroupItem value="vertical" id="r2" />
-          <Label htmlFor="r2">Vertical</Label>
+          <RadioGroupItem value="vertical" id="vertical-variant" />
+          <Label htmlFor="vertical-variant">Vertical</Label>
         </div>
         <div className="flex items-center space-x-2">
-          <RadioGroupItem value="circle" id="r3" />
-          <Label htmlFor="r3">Circle</Label>
+          <RadioGroupItem value="circle" id="circle-variant" />
+          <Label htmlFor="circle-variant">Circle</Label>
         </div>
       </RadioGroup>
       {variant === "horizontal" && <HorizontalStepper />}
@@ -70,35 +68,37 @@ const HorizontalStepper = () => {
       className="space-y-4"
       variant="horizontal"
     >
-      <StepperNavigation>
-        {({ methods }) =>
-          steps.map((step) => (
-            <StepperStep
+      {({ methods }) => (
+        <>
+          <StepperNavigation>
+            {steps.map((step) => (
+              <StepperStep
+                key={step.id}
+                of={step}
+                onClick={() => methods.goTo(step.id)}
+              >
+                <StepperTitle>{step.title}</StepperTitle>
+              </StepperStep>
+            ))}
+          </StepperNavigation>
+          {steps.map((step) => (
+            <StepperPanel
               key={step.id}
-              of={step}
-              onClick={() => methods.goTo(step.id)}
+              when={step}
+              className="h-[200px] content-center rounded border bg-slate-50 p-8"
             >
-              <StepperTitle>{step.title}</StepperTitle>
-            </StepperStep>
-          ))
-        }
-      </StepperNavigation>
-      {steps.map((step) => (
-        <StepperPanel
-          key={step.id}
-          when={step}
-          className="h-[200px] content-center rounded border bg-slate-50 p-8"
-        >
-          {({ step }) => (
-            <p className="text-xl font-normal">Content for {step.id}</p>
-          )}
-        </StepperPanel>
-      ))}
-      <StepperControls>
-        <StepperAction action="prev">Previous</StepperAction>
-        <StepperAction action="next">Next</StepperAction>
-        <StepperAction action="reset">Reset</StepperAction>
-      </StepperControls>
+              {({ step }) => (
+                <p className="text-xl font-normal">Content for {step.id}</p>
+              )}
+            </StepperPanel>
+          ))}
+          <StepperControls>
+            <StepperAction action="prev">Previous</StepperAction>
+            <StepperAction action="next">Next</StepperAction>
+            <StepperAction action="reset">Reset</StepperAction>
+          </StepperControls>
+        </>
+      )}
     </Stepper>
   )
 }
@@ -111,10 +111,10 @@ const VerticalStepper = () => {
       className="space-y-4"
       variant="vertical"
     >
-      <StepperNavigation>
-        {({ methods }) =>
-          steps.map((step) => (
-            <>
+      {({ methods }) => (
+        <>
+          <StepperNavigation>
+            {steps.map((step) => (
               <StepperStep
                 key={step.id}
                 of={step}
@@ -131,15 +131,15 @@ const VerticalStepper = () => {
                   )}
                 </StepperPanel>
               </StepperStep>
-            </>
-          ))
-        }
-      </StepperNavigation>
-      <StepperControls>
-        <StepperAction action="prev">Previous</StepperAction>
-        <StepperAction action="next">Next</StepperAction>
-        <StepperAction action="reset">Reset</StepperAction>
-      </StepperControls>
+            ))}
+          </StepperNavigation>
+          <StepperControls>
+            <StepperAction action="prev">Previous</StepperAction>
+            <StepperAction action="next">Next</StepperAction>
+            <StepperAction action="reset">Reset</StepperAction>
+          </StepperControls>
+        </>
+      )}
     </Stepper>
   )
 }
@@ -148,29 +148,31 @@ const CircleStepper = () => {
   const steps = stepperInstance.steps
   return (
     <Stepper instance={stepperInstance} className="space-y-4" variant="circle">
-      <StepperNavigation>
-        {({ methods }) => (
-          <StepperStep of={methods.current}>
-            <StepperTitle>{methods.current.title}</StepperTitle>
-          </StepperStep>
-        )}
-      </StepperNavigation>
-      {steps.map((step) => (
-        <StepperPanel
-          key={step.id}
-          when={step}
-          className="h-[200px] content-center rounded border bg-slate-50 p-8"
-        >
-          {({ step }) => (
-            <p className="text-xl font-normal">Content for {step.id}</p>
-          )}
-        </StepperPanel>
-      ))}
-      <StepperControls>
-        <StepperAction action="prev">Previous</StepperAction>
-        <StepperAction action="next">Next</StepperAction>
-        <StepperAction action="reset">Reset</StepperAction>
-      </StepperControls>
+      {({ methods }) => (
+        <>
+          <StepperNavigation>
+            <StepperStep of={methods.current}>
+              <StepperTitle>{methods.current.title}</StepperTitle>
+            </StepperStep>
+          </StepperNavigation>
+          {steps.map((step) => (
+            <StepperPanel
+              key={step.id}
+              when={step}
+              className="h-[200px] content-center rounded border bg-slate-50 p-8"
+            >
+              {({ step }) => (
+                <p className="text-xl font-normal">Content for {step.id}</p>
+              )}
+            </StepperPanel>
+          ))}
+          <StepperControls>
+            <StepperAction action="prev">Previous</StepperAction>
+            <StepperAction action="next">Next</StepperAction>
+            <StepperAction action="reset">Reset</StepperAction>
+          </StepperControls>
+        </>
+      )}
     </Stepper>
   )
 }

@@ -1,6 +1,6 @@
 ---
 title: Stepper
-description: Accessible stepper component to create step-by-step workflows.
+description: Accessible and typesafe Stepper component to create step-by-step workflows.
 component: true
 links:
   doc: https://stepperize.vercel.app/docs/react
@@ -141,9 +141,9 @@ export function MyFirstStepper() {
   const steps = stepperInstance.steps
   return (
     <Stepper instance={stepperInstance}>
-      <StepperNavigation>
-        {({ methods }) =>
-          steps.map((step) => (
+      {({ methods }) => (
+        <StepperNavigation>
+          {steps.map((step) => (
             <StepperStep
               key={step.id}
               of={step}
@@ -151,9 +151,9 @@ export function MyFirstStepper() {
             >
               <StepperTitle>{step.title}</StepperTitle>
             </StepperStep>
-          ))
-        }
-      </StepperNavigation>
+          ))}
+        </StepperNavigation>
+      )}
     </Stepper>
   )
 }
@@ -206,35 +206,37 @@ export function MyFirstStepper() {
   const steps = stepperInstance.steps
   return (
     <Stepper instance={stepperInstance} className="space-y-4">
-      <StepperNavigation>
-        {({ methods }) =>
-          steps.map((step) => (
-            <StepperStep
+      {({ methods }) => (
+        <>
+          <StepperNavigation>
+            {steps.map((step) => (
+              <StepperStep
+                key={step.id}
+                of={step}
+                onClick={() => methods.goTo(step.id)}
+              >
+                <StepperTitle>{step.title}</StepperTitle>
+              </StepperStep>
+            ))}
+          </StepperNavigation>
+          {steps.map((step) => (
+            <StepperPanel
               key={step.id}
-              of={step}
-              onClick={() => methods.goTo(step.id)}
+              when={step}
+              className="h-[200px] content-center rounded border bg-slate-50 p-8"
             >
-              <StepperTitle>{step.title}</StepperTitle>
-            </StepperStep>
-          ))
-        }
-      </StepperNavigation>
-      {steps.map((step) => (
-        <StepperPanel
-          key={step.id}
-          when={step}
-          className="h-[200px] content-center rounded border bg-slate-50 p-8"
-        >
-          {({ step }) => (
-            <p className="text-xl font-normal">Content for {step.id}</p>
-          )}
-        </StepperPanel>
-      ))}
-      <StepperControls>
-        <StepperAction action="prev">Previous</StepperAction>
-        <StepperAction action="next">Next</StepperAction>
-        <StepperAction action="reset">Reset</StepperAction>
-      </StepperControls>
+              {({ step }) => (
+                <p className="text-xl font-normal">Content for {step.id}</p>
+              )}
+            </StepperPanel>
+          ))}
+          <StepperControls>
+            <StepperAction action="prev">Previous</StepperAction>
+            <StepperAction action="next">Next</StepperAction>
+            <StepperAction action="reset">Reset</StepperAction>
+          </StepperControls>
+        </>
+      )}
     </Stepper>
   )
 }
@@ -250,6 +252,13 @@ They also compose well with other shadcn/ui components such as DropdownMenu, Col
 **If you need to change the code in `stepper.tsx`, you are encouraged to do so. The code is yours. Use `stepper.tsx` as a starting point and build your own.**
 
 In the next sections, we'll go over each component and how to use them.
+
+<Callout className="mt-6">
+  If you want to use
+  [@stepperize/react](https://stepperize.vercel.app/docs/react) API directly,
+  like `when`, `switch`, `match`, etc. you can use the `useStepper` hook from
+  your stepper instance and build your own components.
+</Callout>
 
 ## defineStepper
 
@@ -282,6 +291,13 @@ Each instance will return:
 
 The `Stepper` component is used to provide the stepper instance from `defineStepper` to the other components. You should always wrap your application in a `Stepper` component.
 
+The children accept a function that has as parameters the `methods` prop. The `methods` prop is an object with the `useStepper` hook from your stepper instance.
+
+<Callout className="mt-6">
+  If you don't need the `methods` prop, you can just pass the children directly
+  and get the methods from the `useStepper` hook.
+</Callout>
+
 **Props**
 
 | Name               | Type                               | Description                                                                        |
@@ -295,18 +311,6 @@ The `Stepper` component is used to provide the stepper instance from `defineStep
 
 The `StepperNavigation` component is used to render the navigation buttons and labels.
 
-`children` prop is a function that receives the `methods` prop. The `methods` prop is an object with the `useStepper` hook from your stepper instance.
-
-<Callout className="mt-6">
-  If you don't need the `methods` prop, you can just pass the children directly.
-</Callout>
-
-**Props**
-
-| Name       | Type                                                                             | Description         |
-| ---------- | -------------------------------------------------------------------------------- | ------------------- |
-| `children` | `React.ReactNode or (methods: ReturnType<typeof useStepper>) => React.ReactNode` | Children to render. |
-
 ## StepperStep
 
 The `StepperStep` component is a wrapper of the button and labels. You just need to pass the `of` prop which is the step you want to render.
@@ -317,9 +321,15 @@ The `StepperStep` component is a wrapper of the button and labels. You just need
 
 **Props**
 
-| Name | Type   | Description     |
-| ---- | ------ | --------------- |
-| `of` | `Step` | Step to render. |
+| Name   | Type              | Description                               |
+| ------ | ----------------- | ----------------------------------------- |
+| `of`   | `Step`            | Step to render.                           |
+| `icon` | `React.ReactNode` | Icon to render instead of the step number |
+
+<Callout className="mt-6">
+  To keep the stepper simple and consistent, `StepperStep` only accepts these 3
+  types of children: `StepperTitle`, `StepperDescription` and `StepperPanel`
+</Callout>
 
 ### StepperTitle
 
@@ -347,6 +357,8 @@ The `StepperDescription` component is used to render the description of the step
 
 The `StepperPanel` component is used to render the content of the step. You just need to pass the `when` prop which is the step you want to render.
 
+The children accept a function that has as parameters the step and a function `onBeforeAction` that allows to execute a callback before an action `prev`, `next` or `
+
 <Callout className="mt-6">
   You don't have to worry about the stepper knowing which panel to render. If
   the step is not correct, the panel will not be rendered.
@@ -354,11 +366,11 @@ The `StepperPanel` component is used to render the content of the step. You just
 
 **Props**
 
-| Name       | Type              | Description                               |
-| ---------- | ----------------- | ----------------------------------------- |
-| `children` | `React.ReactNode` | Content to render.                        |
-| `when`     | `Step`            | Used to conditionally render the content. |
-| `asChild`  | `boolean`         | Render as child.                          |
+| Name       | Type                                                    | Description                               |
+| ---------- | ------------------------------------------------------- | ----------------------------------------- |
+| `children` | `React.ReactNode or function({step, onBeforeCallback})` | Content to render.                        |
+| `when`     | `Step`                                                  | Used to conditionally render the content. |
+| `asChild`  | `boolean`                                               | Render as child.                          |
 
 ## StepperControls
 
@@ -376,8 +388,8 @@ The `StepperControls` component is used to render the buttons to navigate throug
 The `StepperAction` component is used to render the buttons to navigate through the steps. You just need to pass the `action` prop which is the action you want to perform.
 
 <Callout className="mt-6">
-  If you need to execute a function before the button is executed, you can use
-  the `onBeforeAction` prop.
+  If you need to execute a function before the button action is executed, you
+  can use the `onBeforeAction` prop.
 </Callout>
 
 **Props**
@@ -402,7 +414,9 @@ The `StepperAction` component is used to render the buttons to navigate through 
 
 If you need to render the stepper in a responsive way, you can use a custom hook to detect the screen size and render the stepper in a different variant.
 
-Please, resize the window to see the stepper in a different variant.
+<Callout className="mt-6">
+  Resize the window to see the stepper in a different variant.
+</Callout>
 
 <ComponentPreview
   className="[&_.preview]:justify-start"
@@ -411,11 +425,44 @@ Please, resize the window to see the stepper in a different variant.
 
 ### Description
 
+You can add a description to each step by using `<StepperDescription />` component inside `<StepperStep />`.
+
+<ComponentPreview
+  className="[&_.preview]:justify-start"
+  name="stepper-description"
+/>
+
 ### Label Orientation
+
+You can change the orientation of the labels by using the `labelOrientation` prop in the `Stepper` component.
+
+<Callout className="mt-6">
+  This is only applicable if `variant` is `"horizontal"`.
+</Callout>
+
+<ComponentPreview
+  className="[&_.preview]:justify-start"
+  name="stepper-label-orientation"
+/>
+
+### Icon
+
+You can add an icon to each step by using the `icon` prop in the `StepperStep` component.
+
+<ComponentPreview className="[&_.preview]:justify-start" name="stepper-icon" />
 
 ### Step tracking
 
+If you need to track the scroll position of the stepper, you can use the `tracking` prop in the `Stepper` component.
+
+<ComponentPreview
+  className="[&_.preview]:justify-start"
+  name="stepper-tracking"
+/>
+
 ### Forms
+
+<ComponentPreview className="[&_.preview]:justify-start" name="stepper-form" />
 
 ### Custom components
 

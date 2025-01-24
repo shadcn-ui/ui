@@ -8,7 +8,7 @@ import {
   StepperStep,
   StepperTitle,
   defineStepper,
-} from "@/registry/default/ui/stepper"
+} from "@/registry/new-york/ui/stepper"
 
 const stepperInstance = defineStepper(
   {
@@ -37,36 +37,38 @@ export default function StepperWithDescription() {
       variant="vertical"
       labelOrientation="horizontal"
     >
-      <StepperNavigation>
-        {({ methods }) =>
-          steps.map((step) => (
-            <StepperStep
+      {({ methods }) => (
+        <>
+          <StepperNavigation>
+            {steps.map((step) => (
+              <StepperStep
+                key={step.id}
+                of={step}
+                onClick={() => methods.goTo(step.id)}
+              >
+                <StepperTitle>{step.title}</StepperTitle>
+                <StepperDescription>{step.description}</StepperDescription>
+              </StepperStep>
+            ))}
+          </StepperNavigation>
+          {steps.map((step) => (
+            <StepperPanel
               key={step.id}
-              of={step}
-              onClick={() => methods.goTo(step.id)}
+              when={step}
+              className="h-[200px] content-center rounded border bg-slate-50 p-8"
             >
-              <StepperTitle>{step.title}</StepperTitle>
-              <StepperDescription>{step.description}</StepperDescription>
-            </StepperStep>
-          ))
-        }
-      </StepperNavigation>
-      {steps.map((step) => (
-        <StepperPanel
-          key={step.id}
-          when={step}
-          className="h-[200px] content-center rounded border bg-slate-50 p-8"
-        >
-          {({ step }) => (
-            <p className="text-xl font-normal">Content for {step.id}</p>
-          )}
-        </StepperPanel>
-      ))}
-      <StepperControls>
-        <StepperAction action="prev">Previous</StepperAction>
-        <StepperAction action="next">Next</StepperAction>
-        <StepperAction action="reset">Reset</StepperAction>
-      </StepperControls>
+              {({ step }) => (
+                <p className="text-xl font-normal">Content for {step.id}</p>
+              )}
+            </StepperPanel>
+          ))}
+          <StepperControls>
+            <StepperAction action="prev">Previous</StepperAction>
+            <StepperAction action="next">Next</StepperAction>
+            <StepperAction action="reset">Reset</StepperAction>
+          </StepperControls>
+        </>
+      )}
     </Stepper>
   )
 }
