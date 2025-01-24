@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-01",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "Input with floating label.",
+  "registryDependencies": [
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "blocks/input-01/page.tsx",
+      "content": "import type { JSX } from \"react\"\nimport { Label } from '../../ui/label';\nimport { Input } from '../../ui/input';\n\nexport default function Page(): JSX.Element {\n  return (\n    <div className=\"relative grid w-full max-w-sm items-center gap-1.5 pt-4\">\n      <Input type=\"email\" id=\"email\" placeholder=\"Email\" className='peer' />\n      <Label htmlFor=\"email\" className='absolute left-0 top-0 transition-all duration-200 peer-placeholder-shown:left-3 peer-placeholder-shown:top-7 peer-placeholder-shown:opacity-0'>Email</Label>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/components/page.tsx"
+    }
+  ],
+  "categories": [
+    "components"
+  ]
+}

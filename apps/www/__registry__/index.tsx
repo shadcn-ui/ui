@@ -1234,6 +1234,21 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "input-01": {
+      name: "input-01",
+      description: "Input with floating label.",
+      type: "registry:block",
+      registryDependencies: ["input","label"],
+      files: [{
+        path: "registry/new-york/blocks/input-01/page.tsx",
+        type: "registry:page",
+        target: "app/components/page.tsx"
+      }],
+      categories: ["components"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/input-01/page.tsx")),
+      source: "__registry__/new-york/blocks/input-01/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6487,6 +6502,21 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "input-01": {
+      name: "input-01",
+      description: "Input with floating label.",
+      type: "registry:block",
+      registryDependencies: ["input","label"],
+      files: [{
+        path: "registry/default/blocks/input-01/page.tsx",
+        type: "registry:page",
+        target: "app/components/page.tsx"
+      }],
+      categories: ["components"],
+      component: React.lazy(() => import("@/registry/default/blocks/input-01/page.tsx")),
+      source: "__registry__/default/blocks/input-01/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {

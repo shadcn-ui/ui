@@ -567,4 +567,18 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "input-01",
+    description: "Input with floating label.",
+    type: "registry:block",
+    registryDependencies: ["input", "label"],
+    files: [
+      {
+        path: "blocks/input-01/page.tsx",
+        target: "app/components/page.tsx",
+        type: "registry:page",
+      },
+    ],
+    categories: ["components"],
+  },
 ]
