@@ -57,6 +57,20 @@ function updateImportAliases(
     moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/new-york/`)
   }
 
+  // Utils import.
+  const commonCnImportKey = Object.keys(COMMON_CN_IMPORTS).find((key) =>
+    COMMON_CN_IMPORTS[key as keyof typeof COMMON_CN_IMPORTS].test(
+      moduleSpecifier
+    )
+  )
+  if (commonCnImportKey) {
+    // Replace with config.aliases.utils
+    return moduleSpecifier.replace(
+      COMMON_CN_IMPORTS[commonCnImportKey as keyof typeof COMMON_CN_IMPORTS],
+      config.aliases.utils
+    )
+  }
+
   // Not a registry import.
   if (!moduleSpecifier.startsWith("@/registry/")) {
     // We fix the alias and return.
