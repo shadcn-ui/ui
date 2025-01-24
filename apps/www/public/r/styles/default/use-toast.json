@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-toast",
   "type": "registry:hook",
+  "author": "shadcn (https://ui.shadcn.com)",
   "files": [
     {
       "path": "hooks/use-toast.ts",

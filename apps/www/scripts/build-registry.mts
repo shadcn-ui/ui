@@ -1,9 +1,14 @@
 import { existsSync, promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { cwd } from "process"
 import template from "lodash/template"
 import { rimraf } from "rimraf"
+import {
+  Registry,
+  registryItemSchema,
+  registryItemTypeSchema,
+  registrySchema,
+} from "shadcn/registry"
 import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
@@ -13,12 +18,6 @@ import { registryCategories } from "../registry/registry-categories"
 import { colorMapping, colors } from "../registry/registry-colors"
 import { iconLibraries, icons } from "../registry/registry-icons"
 import { styles } from "../registry/registry-styles"
-import {
-  Registry,
-  registryItemSchema,
-  registryItemTypeSchema,
-  registrySchema,
-} from "../registry/schema"
 import { fixImport } from "./fix-import.mts"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r")
@@ -56,7 +55,7 @@ async function syncStyles() {
     rimraf.sync(path.join("registry", targetStyle, dir))
   }
 
-  for (const item of registry) {
+  for (const item of registry.items) {
     if (
       !REGISTRY_INDEX_WHITELIST.includes(item.type) &&
       item.type !== "registry:ui"
@@ -113,7 +112,7 @@ export const Index: Record<string, any> = {
     index += `  "${style.name}": {`
 
     // Build style index.
-    for (const item of registry) {
+    for (const item of registry.items) {
       const resolveFiles = item.files?.map(
         (file) =>
           `registry/${style.name}/${
@@ -256,7 +255,7 @@ export const Index: Record<string, any> = {
   // ----------------------------------------------------------------------------
   // Build registry/index.json.
   // ----------------------------------------------------------------------------
-  const items = registry
+  const items = registry.items
     .filter((item) => ["registry:ui"].includes(item.type))
     .map((item) => {
       return {
@@ -299,7 +298,7 @@ async function buildStyles(registry: Registry) {
       await fs.mkdir(targetPath, { recursive: true })
     }
 
-    for (const item of registry) {
+    for (const item of registry.items) {
       if (!REGISTRY_INDEX_WHITELIST.includes(item.type)) {
         continue
       }
@@ -378,6 +377,8 @@ async function buildStyles(registry: Registry) {
       }
 
       const payload = registryItemSchema.safeParse({
+        $schema: "https://ui.shadcn.com/schema/registry-item.json",
+        author: "shadcn (https://ui.shadcn.com)",
         ...item,
         files,
       })

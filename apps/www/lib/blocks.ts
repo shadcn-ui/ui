@@ -1,9 +1,9 @@
 "use server"
 
+import { registryItemSchema } from "shadcn/registry"
 import { z } from "zod"
 
 import { Style } from "@/registry/registry-styles"
-import { registryItemSchema } from "@/registry/schema"
 
 export async function getAllBlockIds(
   types: z.infer<typeof registryItemSchema>["type"][] = [
