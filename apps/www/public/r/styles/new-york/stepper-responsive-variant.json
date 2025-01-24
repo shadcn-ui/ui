@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper-responsive-variant",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "stepper"
+  ],
+  "files": [
+    {
+      "path": "examples/stepper-responsive-variant.tsx",
+      "content": "import { useMediaQuery } from \"@/hooks/use-media-query\"\nimport {\n  Stepper,\n  StepperAction,\n  StepperControls,\n  StepperNavigation,\n  StepperPanel,\n  StepperStep,\n  StepperTitle,\n  defineStepper,\n} from \"@/registry/new-york/ui/stepper\"\n\nconst stepperInstance = defineStepper(\n  {\n    id: \"step-1\",\n    title: \"Step 1\",\n  },\n  {\n    id: \"step-2\",\n    title: \"Step 2\",\n  },\n  {\n    id: \"step-3\",\n    title: \"Step 3\",\n  }\n)\n\nexport default function StepperResponsiveVariant() {\n  const steps = stepperInstance.steps\n  const isMobile = useMediaQuery(\"(max-width: 768px)\")\n  return (\n    <Stepper\n      instance={stepperInstance}\n      className=\"space-y-4\"\n      variant={isMobile ? \"vertical\" : \"horizontal\"}\n    >\n      <StepperNavigation>\n        {({ methods }) =>\n          steps.map((step) => (\n            <>\n              <StepperStep\n                key={step.id}\n                of={step}\n                onClick={() => methods.goTo(step.id)}\n              >\n                <StepperTitle>{step.title}</StepperTitle>\n                {isMobile && (\n                  <StepperPanel\n                    key={step.id}\n                    when={step}\n                    className=\"h-[200px] content-center rounded border bg-slate-50 p-8\"\n                  >\n                    {({ step }) => (\n                      <p className=\"text-xl font-normal\">\n                        Content for {step.id}\n                      </p>\n                    )}\n                  </StepperPanel>\n                )}\n              </StepperStep>\n            </>\n          ))\n        }\n      </StepperNavigation>\n      {!isMobile &&\n        steps.map((step) => (\n          <StepperPanel\n            key={step.id}\n            when={step}\n            className=\"h-[200px] content-center rounded border bg-slate-50 p-8\"\n          >\n            {({ step }) => (\n              <p className=\"text-xl font-normal\">Content for {step.id}</p>\n            )}\n          </StepperPanel>\n        ))}\n      <StepperControls>\n        <StepperAction action=\"prev\">Previous</StepperAction>\n        <StepperAction action=\"next\">Next</StepperAction>\n        <StepperAction action=\"reset\">Reset</StepperAction>\n      </StepperControls>\n    </Stepper>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

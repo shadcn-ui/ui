@@ -4569,6 +4569,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "stepper-responsive-variant": {
+      name: "stepper-responsive-variant",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york/examples/stepper-responsive-variant.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-responsive-variant.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "switch-demo": {
       name: "switch-demo",
       description: "",
@@ -9866,6 +9881,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/stepper-variants.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-responsive-variant": {
+      name: "stepper-responsive-variant",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/default/examples/stepper-responsive-variant.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-responsive-variant.tsx")),
       source: "",
       meta: undefined,
     },
