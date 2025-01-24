@@ -567,4 +567,30 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "pricing-01",
+    description: "Basic Pricing Page",
+    type: "registry:block",
+    registryDependencies: ["card", "tooltip", "tabs", "button"],
+    files: [
+      {
+        path: "blocks/pricing-01/page.tsx",
+        target: "app/pricing/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/pricing-01/components/pricing-section.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/pricing-01/constants/data.ts",
+        type: "registry:internal",
+      },
+      {
+        path: "blocks/pricing-01/types/pricing.ts",
+        type: "registry:lib",
+      },
+    ],
+    categories: ["pricing"],
+  },
 ]
