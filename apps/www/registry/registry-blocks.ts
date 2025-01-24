@@ -585,7 +585,7 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/profile-01/page.tsx",
         type: "registry:page",
-        target: "app/dashboard/page.tsx",
+        target: "app/profile/page.tsx",
       },
       {
         path: "blocks/profile-01/components/banner.tsx",
