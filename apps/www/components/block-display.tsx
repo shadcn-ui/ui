@@ -1,4 +1,5 @@
 import * as React from "react"
+import { registryItemFileSchema } from "shadcn/registry"
 import { z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
@@ -7,7 +8,6 @@ import {
   getRegistryItem,
 } from "@/lib/registry"
 import { BlockViewer } from "@/components/block-viewer"
-import { registryItemFileSchema } from "@/registry/schema"
 
 export async function BlockDisplay({ name }: { name: string }) {
   const item = await getCachedRegistryItem(name)

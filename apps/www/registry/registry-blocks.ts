@@ -1,6 +1,6 @@
-import { Registry } from "@/registry/schema"
+import { type Registry } from "shadcn/registry"
 
-export const blocks: Registry = [
+export const blocks: Registry["items"] = [
   {
     name: "sidebar-01",
     type: "registry:block",
