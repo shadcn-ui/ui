@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { add } from "@/src/commands/add"
+import { build } from "@/src/commands/build"
 import { diff } from "@/src/commands/diff"
 import { info } from "@/src/commands/info"
 import { init } from "@/src/commands/init"
@@ -27,8 +28,11 @@ async function main() {
     .addCommand(diff)
     .addCommand(migrate)
     .addCommand(info)
+    .addCommand(build)
 
   program.parse()
 }
 
 main()
+
+export * from "./registry/api"

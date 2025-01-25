@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "2.1.6",
+  "version": "2.1.8",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -26,7 +26,16 @@
     "shadcn"
   ],
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./registry": {
+      "types": "./dist/registry/index.d.ts",
+      "default": "./dist/registry/index.js"
+    }
+  },
   "bin": "./dist/index.js",
   "scripts": {
     "dev": "tsup --watch",
