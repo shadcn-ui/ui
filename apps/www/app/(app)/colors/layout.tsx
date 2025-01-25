@@ -26,7 +26,7 @@ export default function ColorsLayout({
         <Announcement />
         <PageHeaderHeading>Tailwind Colors</PageHeaderHeading>
         <PageHeaderDescription>
-          Tailwind CSS colors in HSL, RGB, and HEX formats.
+          Tailwind CSS colors in OKLCH, HSL, RGB, and HEX formats.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
