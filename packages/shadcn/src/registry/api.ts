@@ -176,7 +176,12 @@ export async function fetchRegistry(paths: string[]) {
     const results = await Promise.all(
       paths.map(async (path) => {
         const url = getRegistryUrl(path)
-        const response = await fetch(url, { agent })
+        const response = await fetch(url, {
+          agent,
+          headers: {
+            "User-Agent": "shadcn",
+          },
+        })
 
         if (!response.ok) {
           const errorMessages: { [key: number]: string } = {
