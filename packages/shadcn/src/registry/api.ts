@@ -1,5 +1,5 @@
 import path from "path"
-import { Config } from "@/src/utils/get-config"
+import type { Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -13,7 +13,6 @@ import {
   iconsSchema,
   registryBaseColorSchema,
   registryIndexSchema,
-  registryItemFileSchema,
   registryItemSchema,
   registryResolvedItemsTreeSchema,
   stylesSchema,
@@ -176,7 +175,12 @@ export async function fetchRegistry(paths: string[]) {
     const results = await Promise.all(
       paths.map(async (path) => {
         const url = getRegistryUrl(path)
-        const response = await fetch(url, { agent })
+        const response = await fetch(url, {
+          agent,
+          headers: {
+            "User-Agent": "shadcn/ui cli",
+          },
+        })
 
         if (!response.ok) {
           const errorMessages: { [key: number]: string } = {
