@@ -142,6 +142,7 @@ async function fetchRegistry(paths: string[]) {
       paths.map(async (path) => {
         const response = await fetch(`${baseUrl}/registry/${path}`, {
           agent,
+          userAgent: "shadcn/ui cli",
         })
         return await response.json()
       })

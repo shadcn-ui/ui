@@ -196,7 +196,11 @@ async function createMonorepoProject(
     // Get the template.
     const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
     await fs.ensureDir(templatePath)
-    const response = await fetch(MONOREPO_TEMPLATE_URL)
+    const response = await fetch(MONOREPO_TEMPLATE_URL, {
+      headers: {
+        "User-Agent": "shadcn/ui cli",
+      },
+    })
     if (!response.ok) {
       throw new Error(`Failed to download template: ${response.statusText}`)
     }
