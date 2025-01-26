@@ -142,6 +142,9 @@ async function fetchRegistry(paths: string[]) {
       paths.map(async (path) => {
         const response = await fetch(`${baseUrl}/registry/${path}`, {
           agent,
+          headers: {
+            "User-Agent": "shadcn",
+          },
         })
         return await response.json()
       })
