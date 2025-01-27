@@ -3,14 +3,10 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import * as Stepperize from "@stepperize/react"
-import { VariantProps, cva } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
-
-type StepperProviderProps<T extends Stepperize.Step[]> = StepperConfig<T> & {
-  children: React.ReactNode
-}
 
 type StepperVariant = "horizontal" | "vertical" | "circle"
 type StepperLabelOrientation = "horizontal" | "vertical"
@@ -22,59 +18,74 @@ type StepperConfig<T extends Stepperize.Step[]> = {
   tracking?: boolean
 }
 
-const StepContext = React.createContext<StepperConfig<any>>({
-  instance: {} as ReturnType<typeof Stepperize.defineStepper<any>>,
-  variant: "horizontal",
-})
+type StepperProviderProps<T extends Stepperize.Step[]> = StepperConfig<T> & {
+  children: React.ReactNode
+}
+
+const StepContext = React.createContext<StepperConfig<any> | null>(null)
 
 const StepperProvider = <T extends Stepperize.Step[]>({
   children,
   ...props
 }: StepperProviderProps<T>) => {
-  const Scope = props.instance.Scoped
+  const { instance } = props
+  const Scoped = instance.Scoped
   return (
-    <Scope>
+    <Scoped>
       <StepContext.Provider value={props}>{children}</StepContext.Provider>
-    </Scope>
+    </Scoped>
   )
 }
 
 const useStepper = <T extends Stepperize.Step[]>(): StepperConfig<T> => {
   const context = React.useContext(StepContext)
   if (!context) {
-    throw new Error("useStepper must be used within a Stepper")
+    throw new Error("useStepper must be used within a StepperProvider.")
   }
   return context
 }
 
-function Stepper<T extends Stepperize.Step[]>({
-  children,
-  variant = "horizontal",
-  className,
-  labelOrientation = "horizontal",
-  tracking = false,
-  ...props
-}: StepperConfig<T> &
+type StepperProps<T extends Stepperize.Step[]> = StepperConfig<T> &
   Omit<React.ComponentProps<"div">, "children"> & {
     children:
       | React.ReactNode
       | ((props: { methods: Stepperize.Stepper<T> }) => React.ReactNode)
-  }) {
-  const { instance } = props
+  }
 
-  const methods = instance.useStepper() as Stepperize.Stepper<T>
+const Stepper = <T extends Stepperize.Step[]>({
+  children,
+  variant = "horizontal",
+  labelOrientation = "horizontal",
+  tracking = false,
+  instance,
+  ...props
+}: StepperProps<T>) => (
+  <StepperProvider
+    instance={instance}
+    variant={variant}
+    labelOrientation={labelOrientation}
+    tracking={tracking}
+  >
+    <StepperContainer {...props}>{children}</StepperContainer>
+  </StepperProvider>
+)
+
+const StepperContainer = <T extends Stepperize.Step[]>({
+  children,
+  className,
+  ...props
+}: Omit<React.ComponentProps<"div">, "children"> & {
+  children:
+    | React.ReactNode
+    | ((props: { methods: Stepperize.Stepper<T> }) => React.ReactNode)
+}) => {
+  const { instance } = useStepper<T>()
+  const methods = instance.useStepper()
 
   return (
-    <StepperProvider
-      instance={instance}
-      variant={variant}
-      labelOrientation={labelOrientation}
-      tracking={tracking}
-    >
-      <div className={cn("stepper w-full", className)} {...props}>
-        {typeof children === "function" ? children({ methods }) : children}
-      </div>
-    </StepperProvider>
+    <div className={cn("stepper w-full", className)} {...props}>
+      {typeof children === "function" ? children({ methods }) : children}
+    </div>
   )
 }
 
@@ -86,9 +97,7 @@ const StepperNavigation = ({
 }: Omit<React.ComponentProps<"nav">, "children"> & {
   children: React.ReactNode
 }) => {
-  const { variant, instance } = useStepper()
-
-  const methods = instance.useStepper() as Stepperize.Stepper<Stepperize.Step[]>
+  const { variant } = useStepper()
 
   return (
     <nav
@@ -119,10 +128,9 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
   icon,
   ...props
 }: React.ComponentProps<"button"> & { of: T; icon?: Icon }) => {
-  const id = React.useId()
   const { instance, variant, labelOrientation } = useStepper()
 
-  const methods = instance.useStepper() as Stepperize.Stepper<Stepperize.Step[]>
+  const methods = instance.useStepper()
 
   const currentStep = methods.current
 
@@ -141,7 +149,6 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
   if (variant === "circle") {
     return (
       <li
-        id={id}
         className={cn(
           "stepper-step flex shrink-0 items-center gap-4 rounded-md transition-colors",
           className
@@ -162,7 +169,6 @@ const StepperStep = <T extends Stepperize.Step, Icon extends React.ReactNode>({
   return (
     <>
       <li
-        id={id}
         className={cn([
           "stepper-step group peer relative flex items-center gap-2",
           "data-[variant=vertical]:flex-row",
@@ -253,13 +259,16 @@ const StepperSeparator = ({
   state: string
   disabled?: boolean
 } & VariantProps<typeof classForSeparator>) => {
-  if (isLast) return null
+  if (isLast) {
+    return null
+  }
   return (
     <div
       data-orientation={orientation}
       data-state={state}
       data-disabled={disabled}
-      role="none"
+      role="separator"
+      tabIndex={-1}
       className={classForSeparator({ orientation, labelOrientation })}
     />
   )
@@ -300,10 +309,14 @@ const onStepKeyDown = (
     const direction = directions.next.includes(key) ? "next" : "prev"
     const step = direction === "next" ? nextStep : prevStep
 
-    if (!step) return
+    if (!step) {
+      return
+    }
 
     const stepElement = document.getElementById(`step-${step.id}`)
-    if (!stepElement) return
+    if (!stepElement) {
+      return
+    }
 
     const isActive =
       stepElement.parentElement?.getAttribute("data-state") !== "inactive"
@@ -314,8 +327,12 @@ const onStepKeyDown = (
 }
 
 const getStepState = (currentIndex: number, stepIndex: number) => {
-  if (currentIndex === stepIndex) return "active"
-  if (currentIndex > stepIndex) return "completed"
+  if (currentIndex === stepIndex) {
+    return "active"
+  }
+  if (currentIndex > stepIndex) {
+    return "completed"
+  }
   return "inactive"
 }
 
@@ -398,10 +415,13 @@ const CircleStepIndicator = ({
   const circumference = radius * 2 * Math.PI
   const fillPercentage = (currentStep / totalSteps) * 100
   const dashOffset = circumference - (circumference * fillPercentage) / 100
-
   return (
     <div
       role="progressbar"
+      aria-valuenow={currentStep}
+      aria-valuemin={1}
+      aria-valuemax={totalSteps}
+      tabIndex={-1}
       className="stepper-step-indicator relative inline-flex items-center justify-center"
     >
       <svg width={size} height={size}>
@@ -437,77 +457,25 @@ const CircleStepIndicator = ({
   )
 }
 
-const StepperPanel = <T extends Stepperize.Step>({
+const StepperPanel = ({
   children,
   className,
-  when,
   asChild,
   ...props
-}: Omit<React.ComponentProps<"div">, "children"> & {
+}: React.ComponentProps<"div"> & {
   asChild?: boolean
-  when: T
-  children:
-    | React.ReactNode
-    | ((props: {
-        step: T
-        onBeforeAction: (
-          action: StepAction,
-          callback: (params: {
-            prevStep: Stepperize.Step
-            nextStep: Stepperize.Step
-          }) => Promise<boolean> | boolean
-        ) => void
-      }) => React.ReactNode)
 }) => {
   const Comp = asChild ? Slot : "div"
-  const { instance, tracking } = useStepper()
-
-  const methods = instance.useStepper()
-
-  if (instance.utils.getIndex(when.id) === -1) {
-    throw new Error(`Step ${when.id} does not exist in the stepper instance`)
-  }
-
-  const onBeforeAction = React.useCallback(
-    async (
-      action: StepAction,
-      callback: (params: {
-        prevStep: Stepperize.Step
-        nextStep: Stepperize.Step
-      }) => Promise<boolean> | boolean
-    ) => {
-      const prevStep = methods.current
-      const nextStep =
-        action === "next"
-          ? instance.utils.getNext(prevStep.id)
-          : action === "prev"
-          ? instance.utils.getPrev(prevStep.id)
-          : instance.utils.getFirst()
-
-      const shouldProceed = await callback({ prevStep, nextStep })
-      if (shouldProceed) {
-        if (action === "next") methods.next()
-        if (action === "prev") methods.prev()
-        if (action === "reset") methods.reset()
-      }
-    },
-    [methods, instance.utils]
-  )
+  const { tracking } = useStepper()
 
   return (
-    <>
-      {methods.when(when.id, (step) => (
-        <Comp
-          className={cn("stepper-panel flex-1", className)}
-          ref={(node) => scrollIntoStepperPanel(node, tracking)}
-          {...props}
-        >
-          {typeof children === "function"
-            ? children({ step: step as T, onBeforeAction })
-            : children}
-        </Comp>
-      ))}
-    </>
+    <Comp
+      className={cn("stepper-panel flex-1", className)}
+      ref={(node) => scrollIntoStepperPanel(node, tracking)}
+      {...props}
+    >
+      {children}
+    </Comp>
   )
 }
 
@@ -523,116 +491,11 @@ function scrollIntoStepperPanel(
 const StepperControls = ({
   children,
   asChild,
-  className,
   ...props
-}: Omit<React.ComponentProps<"div">, "children"> & {
-  asChild?: boolean
-  children:
-    | React.ReactNode
-    | ((props: {
-        methods: Stepperize.Stepper<Stepperize.Step[]>
-      }) => React.ReactNode)
-}) => {
+}: React.ComponentProps<"div"> & { asChild?: boolean }) => {
   const Comp = asChild ? Slot : "div"
-  const { instance } = useStepper()
-
-  const methods = instance.useStepper()
-
   return (
-    <Comp
-      className={cn("stepper-controls flex justify-end gap-4", className)}
-      {...props}
-    >
-      {typeof children === "function" ? children({ methods }) : children}
-    </Comp>
-  )
-}
-
-type StepAction = "next" | "prev" | "reset"
-
-type StepperActionProps = {
-  action: StepAction
-  children: React.ReactNode
-  asChild?: boolean
-  onBeforeAction?: ({
-    event,
-    prevStep,
-    nextStep,
-  }: {
-    event: React.MouseEvent<HTMLButtonElement>
-    prevStep: Stepperize.Step
-    nextStep: Stepperize.Step
-  }) => Promise<boolean> | boolean
-  className?: string
-}
-
-const StepperAction = ({
-  action,
-  children,
-  asChild = false,
-  onBeforeAction,
-  className,
-  disabled,
-  ...props
-}: React.ComponentProps<"button"> & StepperActionProps) => {
-  const { instance } = useStepper()
-  const methods = instance.useStepper()
-
-  const currentStep = methods.current
-
-  const isDisabled = (action: StepAction) =>
-    action === "prev" && methods.isFirst
-
-  const actionMap = React.useMemo(
-    () => ({
-      next: methods.next,
-      prev: methods.prev,
-      reset: methods.reset,
-    }),
-    [methods]
-  )
-
-  const handleClick = React.useCallback(
-    async (event: React.MouseEvent<HTMLButtonElement>) => {
-      if (onBeforeAction) {
-        const nextStep =
-          action === "next"
-            ? instance.utils.getNext(currentStep.id)
-            : action === "prev"
-            ? instance.utils.getPrev(currentStep.id)
-            : instance.utils.getFirst()
-        const shouldProceed = await onBeforeAction({
-          event,
-          prevStep: currentStep,
-          nextStep,
-        })
-        if (!shouldProceed) {
-          return
-        }
-      }
-
-      actionMap[action]?.()
-    },
-    [onBeforeAction, actionMap, action, instance.utils, currentStep]
-  )
-
-  const Comp = asChild ? Slot : Button
-
-  if (
-    (methods.isLast && (action === "next" || action === "prev")) ||
-    (!methods.isLast && action === "reset")
-  ) {
-    return null
-  }
-
-  return (
-    <Comp
-      onClick={handleClick}
-      variant={action === "prev" ? "secondary" : "default"}
-      disabled={isDisabled(action) || disabled}
-      className={cn("stepper-action", className)}
-      {...props}
-    >
+    <Comp className="stepper-controls flex justify-end gap-4" {...props}>
       {children}
     </Comp>
   )
@@ -641,13 +504,12 @@ const StepperAction = ({
 const defineStepper: typeof Stepperize.defineStepper = Stepperize.defineStepper
 
 export {
+  defineStepper,
   Stepper,
-  StepperAction,
   StepperControls,
   StepperDescription,
   StepperNavigation,
   StepperPanel,
   StepperStep,
   StepperTitle,
-  defineStepper,
 }

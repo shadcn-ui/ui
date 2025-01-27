@@ -1,7 +1,9 @@
+import * as React from "react"
+
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { Button } from "@/registry/default/ui/button"
 import {
   Stepper,
-  StepperAction,
   StepperControls,
   StepperNavigation,
   StepperPanel,
@@ -26,7 +28,6 @@ const stepperInstance = defineStepper(
 )
 
 export default function StepperResponsiveVariant() {
-  const steps = stepperInstance.steps
   const isMobile = useMediaQuery("(max-width: 768px)")
   return (
     <Stepper
@@ -37,48 +38,54 @@ export default function StepperResponsiveVariant() {
       {({ methods }) => (
         <>
           <StepperNavigation>
-            {steps.map((step) => (
+            {methods.all.map((step) => (
               <StepperStep
                 key={step.id}
                 of={step}
                 onClick={() => methods.goTo(step.id)}
               >
                 <StepperTitle>{step.title}</StepperTitle>
-                {isMobile && (
-                  <StepperPanel
-                    key={step.id}
-                    when={step}
-                    className="h-[200px] content-center rounded border bg-slate-50 p-8"
-                  >
-                    {({ step }) => (
+                {isMobile &&
+                  methods.when(step.id, (step) => (
+                    <StepperPanel className="h-[200px] content-center rounded border bg-slate-50 p-8">
                       <p className="text-xl font-normal">
                         Content for {step.id}
                       </p>
-                    )}
-                  </StepperPanel>
-                )}
+                    </StepperPanel>
+                  ))}
               </StepperStep>
             ))}
           </StepperNavigation>
           {!isMobile &&
-            steps.map((step) => (
-              <StepperPanel
-                key={step.id}
-                when={step}
-                className="h-[200px] content-center rounded border bg-slate-50 p-8"
-              >
-                {({ step }) => (
-                  <p className="text-xl font-normal">Content for {step.id}</p>
-                )}
-              </StepperPanel>
-            ))}
+            methods.switch({
+              "step-1": (step) => <Content id={step.id} />,
+              "step-2": (step) => <Content id={step.id} />,
+              "step-3": (step) => <Content id={step.id} />,
+            })}
           <StepperControls>
-            <StepperAction action="prev">Previous</StepperAction>
-            <StepperAction action="next">Next</StepperAction>
-            <StepperAction action="reset">Reset</StepperAction>
+            {!methods.isLast && (
+              <Button
+                variant="secondary"
+                onClick={methods.prev}
+                disabled={methods.isFirst}
+              >
+                Previous
+              </Button>
+            )}
+            <Button onClick={methods.isLast ? methods.reset : methods.next}>
+              {methods.isLast ? "Reset" : "Next"}
+            </Button>
           </StepperControls>
         </>
       )}
     </Stepper>
+  )
+}
+
+const Content = ({ id }: { id: string }) => {
+  return (
+    <StepperPanel className="h-[200px] content-center rounded border bg-slate-50 p-8">
+      <p className="text-xl font-normal">Content for {id}</p>
+    </StepperPanel>
   )
 }

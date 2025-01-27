@@ -1,12 +1,13 @@
+import * as React from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, useFormContext } from "react-hook-form"
 import { z } from "zod"
 
+import { Button } from "@/registry/new-york/ui/button"
 import { Form } from "@/registry/new-york/ui/form"
 import { Input } from "@/registry/new-york/ui/input"
 import {
   Stepper,
-  StepperAction,
   StepperControls,
   StepperNavigation,
   StepperStep,
@@ -28,93 +29,6 @@ const paymentSchema = z.object({
 
 type ShippingFormValues = z.infer<typeof shippingSchema>
 type PaymentFormValues = z.infer<typeof paymentSchema>
-
-const stepperInstance = defineStepper(
-  {
-    id: "shipping",
-    title: "Shipping",
-    schema: shippingSchema,
-  },
-  {
-    id: "payment",
-    title: "Payment",
-    schema: paymentSchema,
-  },
-  {
-    id: "complete",
-    title: "Complete",
-    schema: z.object({}),
-  }
-)
-
-export default function StepperForm() {
-  return (
-    <Stepper instance={stepperInstance}>
-      <FormStepperComponent />
-    </Stepper>
-  )
-}
-
-const FormStepperComponent = () => {
-  const { steps, useStepper, utils } = stepperInstance
-  const methods = useStepper()
-
-  const form = useForm({
-    mode: "onTouched",
-    resolver: zodResolver(methods.current.schema),
-  })
-
-  const onSubmit = (values: z.infer<typeof methods.current.schema>) => {
-    console.log(`Form values for step ${methods.current.id}:`, values)
-  }
-
-  const currentIndex = utils.getIndex(methods.current.id)
-
-  return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <StepperNavigation>
-          {steps.map((step) => (
-            <StepperStep
-              key={step.id}
-              of={step}
-              type={step.id === methods.current.id ? "submit" : "button"}
-              onClick={async () => {
-                const valid = await form.trigger()
-                if (!valid) return
-                if (utils.getIndex(step.id) - currentIndex > 1) return
-                methods.goTo(step.id)
-              }}
-            >
-              <StepperTitle>{step.title}</StepperTitle>
-            </StepperStep>
-          ))}
-        </StepperNavigation>
-        {methods.switch({
-          shipping: () => <ShippingForm />,
-          payment: () => <PaymentForm />,
-          complete: () => <CompleteComponent />,
-        })}
-        <StepperControls>
-          <StepperAction action="prev">Previous</StepperAction>
-          <StepperAction
-            action="next"
-            onBeforeAction={async ({ nextStep }) => {
-              const valid = await form.trigger()
-              if (!valid) return false
-              if (utils.getIndex(nextStep.id as any) - currentIndex > 1)
-                return false
-              return true
-            }}
-          >
-            Next
-          </StepperAction>
-          <StepperAction action="reset">Reset</StepperAction>
-        </StepperControls>
-      </form>
-    </Form>
-  )
-}
 
 const ShippingForm = () => {
   const {
@@ -248,4 +162,101 @@ function PaymentForm() {
 
 function CompleteComponent() {
   return <div className="text-center">Thank you! Your order is complete.</div>
+}
+
+const stepperInstance = defineStepper(
+  {
+    id: "shipping",
+    title: "Shipping",
+    schema: shippingSchema,
+    Component: ShippingForm,
+  },
+  {
+    id: "payment",
+    title: "Payment",
+    schema: paymentSchema,
+    Component: PaymentForm,
+  },
+  {
+    id: "complete",
+    title: "Complete",
+    schema: z.object({}),
+    Component: CompleteComponent,
+  }
+)
+
+export default function StepperForm() {
+  return (
+    <Stepper instance={stepperInstance}>
+      <FormStepperComponent />
+    </Stepper>
+  )
+}
+
+const FormStepperComponent = () => {
+  const { useStepper } = stepperInstance
+  const methods = useStepper()
+
+  const form = useForm({
+    mode: "onTouched",
+    resolver: zodResolver(methods.current.schema),
+  })
+
+  const onSubmit = (values: z.infer<typeof methods.current.schema>) => {
+    console.log(`Form values for step ${methods.current.id}:`, values)
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <StepperNavigation>
+          {methods.all.map((step) => (
+            <StepperStep
+              key={step.id}
+              of={step}
+              type={step.id === methods.current.id ? "submit" : "button"}
+              onClick={async () => {
+                const valid = await form.trigger()
+                if (!valid) return
+                methods.goTo(step.id)
+              }}
+            >
+              <StepperTitle>{step.title}</StepperTitle>
+            </StepperStep>
+          ))}
+        </StepperNavigation>
+        {methods.switch({
+          shipping: ({ Component }) => <Component />,
+          payment: ({ Component }) => <Component />,
+          complete: ({ Component }) => <Component />,
+        })}
+        <StepperControls>
+          {!methods.isLast && (
+            <Button
+              variant="secondary"
+              onClick={methods.prev}
+              disabled={methods.isFirst}
+            >
+              Previous
+            </Button>
+          )}
+          <Button
+            type="submit"
+            onClick={() => {
+              if (methods.isLast) {
+                return methods.reset()
+              }
+              methods.beforeNext(async () => {
+                const valid = await form.trigger()
+                if (!valid) return false
+                return true
+              })
+            }}
+          >
+            {methods.isLast ? "Reset" : "Next"}
+          </Button>
+        </StepperControls>
+      </form>
+    </Form>
+  )
 }

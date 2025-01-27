@@ -1,10 +1,10 @@
 import * as React from "react"
 
+import { Button } from "@/registry/new-york/ui/button"
 import { Label } from "@/registry/new-york/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
 import {
   Stepper,
-  StepperAction,
   StepperControls,
   StepperNavigation,
   StepperPanel,
@@ -41,8 +41,6 @@ const stepperInstance = defineStepper(
 )
 
 export default function StepperVerticalFollow() {
-  const steps = stepperInstance.steps
-
   const [tracking, setTracking] = React.useState(false)
   return (
     <div className="flex w-full flex-col gap-8">
@@ -68,25 +66,40 @@ export default function StepperVerticalFollow() {
         {({ methods }) => (
           <>
             <StepperNavigation>
-              {steps.map((step) => (
+              {methods.all.map((step) => (
                 <StepperStep
                   key={step.id}
                   of={step}
                   onClick={() => methods.goTo(step.id)}
                 >
                   <StepperTitle>{step.title}</StepperTitle>
-                  <StepperPanel key={step.id} when={step} className="space-y-4">
-                    <div className="h-[200px] content-center rounded border bg-slate-50 p-8">
-                      <p className="text-xl font-normal">
-                        Content for {step.id}
-                      </p>
-                    </div>
-                    <StepperControls>
-                      <StepperAction action="prev">Previous</StepperAction>
-                      <StepperAction action="next">Next</StepperAction>
-                      <StepperAction action="reset">Reset</StepperAction>
-                    </StepperControls>
-                  </StepperPanel>
+                  {methods.when(step.id, () => (
+                    <StepperPanel className="space-y-4">
+                      <div className="h-[200px] content-center rounded border bg-slate-50 p-8">
+                        <p className="text-xl font-normal">
+                          Content for {step.id}
+                        </p>
+                      </div>
+                      <StepperControls>
+                        {!methods.isLast && (
+                          <Button
+                            variant="secondary"
+                            onClick={methods.prev}
+                            disabled={methods.isFirst}
+                          >
+                            Previous
+                          </Button>
+                        )}
+                        <Button
+                          onClick={
+                            methods.isLast ? methods.reset : methods.next
+                          }
+                        >
+                          {methods.isLast ? "Reset" : "Next"}
+                        </Button>
+                      </StepperControls>
+                    </StepperPanel>
+                  ))}
                 </StepperStep>
               ))}
             </StepperNavigation>

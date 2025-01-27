@@ -61,15 +61,13 @@ A `Stepper` component is composed of the following parts:
 - `StepperTitle` - Step title.
 - `StepperDescription` - Step description.
 - `StepperPanel` - Section to render the step content based on the current step.
-- `StepperControls` - Step controls to navigate through the steps.
-- `StepperAction` - Next, previous and reset buttons.
+- `StepperControls` - Section to render the buttons to navigate through the steps.
 
 ## Usage
 
 ```tsx showLineNumbers
 import {
   Stepper,
-  StepperAction,
   StepperControls,
   StepperDescription,
   StepperNavigation,
@@ -96,10 +94,7 @@ export function Component() {
         ...
       </StepperNavigation>
       <StepperPanel />
-      <StepperControls>
-        <StepperAction />
-        ...
-      </StepperControls>
+      <StepperControls>...</StepperControls>
     </Stepper>
   )
 }
@@ -138,17 +133,12 @@ export function MyFirstStepper() {
 
 ```tsx
 export function MyFirstStepper() {
-  const steps = stepperInstance.steps
   return (
     <Stepper instance={stepperInstance}>
       {({ methods }) => (
         <StepperNavigation>
-          {steps.map((step) => (
-            <StepperStep
-              key={step.id}
-              of={step}
-              onClick={() => methods.goTo(step.id)}
-            >
+          {methods.all.map((step) => (
+            <StepperStep of={step} onClick={() => methods.goTo(step.id)}>
               <StepperTitle>{step.title}</StepperTitle>
             </StepperStep>
           ))}
@@ -166,12 +156,16 @@ export function MyFirstStepper() {
   const steps = stepperInstance.steps
   return (
     <Stepper instance={stepperInstance}>
-      {/* StepperNavigation code */}
-      {steps.map((step) => (
-        <StepperPanel key={step.id} when={step}>
-          {({ step }) => <p>Content for {step.id}</p>}
-        </StepperPanel>
-      ))}
+      {({ methods }) => (
+        <>
+          {/* StepperNavigation code */}
+          {methods.switch({
+            "step-1": (step) => <StepperPanel />,
+            "step-2": (step) => <StepperPanel />,
+            "step-3": (step) => <StepperPanel />,
+          })}
+        </>
+      )}
     </Stepper>
   )
 }
@@ -187,13 +181,26 @@ export function MyFirstStepper() {
   const steps = stepperInstance.steps
   return (
     <Stepper instance={stepperInstance}>
-      {/* StepperNavigation code */}
-      {/* StepperPanel code */}
-      <StepperControls>
-        <StepperAction action="prev">Previous</StepperAction>
-        <StepperAction action="next">Next</StepperAction>
-        <StepperAction action="reset">Reset</StepperAction>
-      </StepperControls>
+      {({ methods }) => (
+        <>
+          {/* StepperNavigation code */}
+          {/* StepperPanel code */}
+          <StepperControls>
+            {!methods.isLast && (
+              <Button
+                variant="secondary"
+                onClick={methods.prev}
+                disabled={methods.isFirst}
+              >
+                Previous
+              </Button>
+            )}
+            <Button onClick={methods.isLast ? methods.reset : methods.next}>
+              {methods.isLast ? "Reset" : "Next"}
+            </Button>
+          </StepperControls>
+        </>
+      )}
     </Stepper>
   )
 }
@@ -203,41 +210,47 @@ export function MyFirstStepper() {
 
 ```tsx
 export function MyFirstStepper() {
-  const steps = stepperInstance.steps
   return (
     <Stepper instance={stepperInstance} className="space-y-4">
       {({ methods }) => (
         <>
           <StepperNavigation>
-            {steps.map((step) => (
-              <StepperStep
-                key={step.id}
-                of={step}
-                onClick={() => methods.goTo(step.id)}
-              >
+            {methods.all.map((step) => (
+              <StepperStep of={step} onClick={() => methods.goTo(step.id)}>
                 <StepperTitle>{step.title}</StepperTitle>
               </StepperStep>
             ))}
           </StepperNavigation>
-          {steps.map((step) => (
-            <StepperPanel
-              key={step.id}
-              when={step}
-              className="h-[200px] content-center rounded border bg-slate-50 p-8"
-            >
-              {({ step }) => (
-                <p className="text-xl font-normal">Content for {step.id}</p>
-              )}
-            </StepperPanel>
-          ))}
+          {methods.switch({
+            "step-1": (step) => <Content id={step.id} />,
+            "step-2": (step) => <Content id={step.id} />,
+            "step-3": (step) => <Content id={step.id} />,
+          })}
           <StepperControls>
-            <StepperAction action="prev">Previous</StepperAction>
-            <StepperAction action="next">Next</StepperAction>
-            <StepperAction action="reset">Reset</StepperAction>
+            {!methods.isLast && (
+              <Button
+                variant="secondary"
+                onClick={methods.prev}
+                disabled={methods.isFirst}
+              >
+                Previous
+              </Button>
+            )}
+            <Button onClick={methods.isLast ? methods.reset : methods.next}>
+              {methods.isLast ? "Reset" : "Next"}
+            </Button>
           </StepperControls>
         </>
       )}
     </Stepper>
+  )
+}
+
+const Content = ({ id }: { id: string }) => {
+  return (
+    <StepperPanel className="h-[200px] content-center rounded border bg-slate-50 p-8">
+      <p className="text-xl font-normal">Content for {id}</p>
+    </StepperPanel>
   )
 }
 ```
@@ -295,7 +308,7 @@ The children accept a function that has as parameters the `methods` prop. The `m
 
 <Callout className="mt-6">
   If you don't need the `methods` prop, you can just pass the children directly
-  and get the methods from the `useStepper` hook.
+  and get the methods from the `useStepper` hook from your stepper instance.
 </Callout>
 
 **Props**
@@ -355,22 +368,14 @@ The `StepperDescription` component is used to render the description of the step
 
 ## StepperPanel
 
-The `StepperPanel` component is used to render the content of the step. You just need to pass the `when` prop which is the step you want to render.
-
-The children accept a function that has as parameters the step and a function `onBeforeAction` that allows to execute a callback before an action `prev`, `next` or `
-
-<Callout className="mt-6">
-  You don't have to worry about the stepper knowing which panel to render. If
-  the step is not correct, the panel will not be rendered.
-</Callout>
+The `StepperPanel` component is used to render the content of the step.
 
 **Props**
 
-| Name       | Type                                                    | Description                               |
-| ---------- | ------------------------------------------------------- | ----------------------------------------- |
-| `children` | `React.ReactNode or function({step, onBeforeCallback})` | Content to render.                        |
-| `when`     | `Step`                                                  | Used to conditionally render the content. |
-| `asChild`  | `boolean`                                               | Render as child.                          |
+| Name       | Type              | Description        |
+| ---------- | ----------------- | ------------------ |
+| `children` | `React.ReactNode` | Content to render. |
+| `asChild`  | `boolean`         | Render as child.   |
 
 ## StepperControls
 
@@ -383,23 +388,33 @@ The `StepperControls` component is used to render the buttons to navigate throug
 | `children` | `React.ReactNode` | Buttons to render. |
 | `asChild`  | `boolean`         | Render as child.   |
 
-### StepperAction
+## Before/after actions
 
-The `StepperAction` component is used to render the buttons to navigate through the steps. You just need to pass the `action` prop which is the action you want to perform.
+You can add a callback to the `next` and `prev` methods to execute a callback before or after the action is executed.
+**This is useful if you need to validate the form or check if the step is valid before moving to the prev/next step.**
 
-<Callout className="mt-6">
-  If you need to execute a function before the button action is executed, you
-  can use the `onBeforeAction` prop.
-</Callout>
+For example:
 
-**Props**
+```tsx
+methods.beforeNext(async () => {
+  const valid = await form.trigger()
+  if (!valid) return false
+  return true
+})
+```
 
-| Name             | Type                                                                                      | Description                                         |
-| ---------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| `children`       | `React.ReactNode`                                                                         | Buttons to render.                                  |
-| `asChild`        | `boolean`                                                                                 | Render as child.                                    |
-| `action`         | `prev, next or reset`                                                                     | Action to perform.                                  |
-| `onBeforeAction` | `(event: React.MouseEvent<HTMLButtonElement>, prevStep: Step, nextStep: Step) => boolean` | Function to execute before the action is performed. |
+That function will validate the form and check if the step is valid before moving to the next step returning a boolean value.
+
+More info about the `beforeNext` and `beforePrev` methods can be found in the [API References](https://stepperize.vercel.app/docs/react/api-references/hook#beforeafter-functions).
+
+## Skip steps
+
+Through the methods you can access functions like `goTo` to skip to a specific step.
+
+```tsx
+// From step 1 to step 3
+methods.goTo("step-3")
+```
 
 ## Examples
 

@@ -1,10 +1,10 @@
 import * as React from "react"
 
+import { Button } from "@/registry/new-york/ui/button"
 import { Label } from "@/registry/new-york/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/registry/new-york/ui/radio-group"
 import {
   Stepper,
-  StepperAction,
   StepperControls,
   StepperNavigation,
   StepperPanel,
@@ -31,8 +31,6 @@ const stepperInstance = defineStepper(
 )
 
 export default function StepperVariants() {
-  const steps = stepperInstance.steps
-
   const [variant, setVariant] = React.useState<Variant>("horizontal")
   return (
     <div className="flex w-full flex-col gap-8">
@@ -69,7 +67,7 @@ const HorizontalStepper = () => {
       variant="horizontal"
     >
       {({ methods }) => (
-        <>
+        <React.Fragment>
           <StepperNavigation>
             {steps.map((step) => (
               <StepperStep
@@ -81,30 +79,40 @@ const HorizontalStepper = () => {
               </StepperStep>
             ))}
           </StepperNavigation>
-          {steps.map((step) => (
-            <StepperPanel
-              key={step.id}
-              when={step}
-              className="h-[200px] content-center rounded border bg-slate-50 p-8"
-            >
-              {({ step }) => (
-                <p className="text-xl font-normal">Content for {step.id}</p>
-              )}
-            </StepperPanel>
-          ))}
+          {methods.switch({
+            "step-1": (step) => <Content id={step.id} />,
+            "step-2": (step) => <Content id={step.id} />,
+            "step-3": (step) => <Content id={step.id} />,
+          })}
           <StepperControls>
-            <StepperAction action="prev">Previous</StepperAction>
-            <StepperAction action="next">Next</StepperAction>
-            <StepperAction action="reset">Reset</StepperAction>
+            {!methods.isLast && (
+              <Button
+                variant="secondary"
+                onClick={methods.prev}
+                disabled={methods.isFirst}
+              >
+                Previous
+              </Button>
+            )}
+            <Button onClick={methods.isLast ? methods.reset : methods.next}>
+              {methods.isLast ? "Reset" : "Next"}
+            </Button>
           </StepperControls>
-        </>
+        </React.Fragment>
       )}
     </Stepper>
   )
 }
 
+const Content = ({ id }: { id: string }) => {
+  return (
+    <StepperPanel className="h-[200px] content-center rounded border bg-slate-50 p-8">
+      <p className="text-xl font-normal">Content for {id}</p>
+    </StepperPanel>
+  )
+}
+
 const VerticalStepper = () => {
-  const steps = stepperInstance.steps
   return (
     <Stepper
       instance={stepperInstance}
@@ -114,29 +122,34 @@ const VerticalStepper = () => {
       {({ methods }) => (
         <>
           <StepperNavigation>
-            {steps.map((step) => (
+            {methods.all.map((step) => (
               <StepperStep
                 key={step.id}
                 of={step}
                 onClick={() => methods.goTo(step.id)}
               >
                 <StepperTitle>{step.title}</StepperTitle>
-                <StepperPanel
-                  key={step.id}
-                  when={step}
-                  className="h-[200px] content-center rounded border bg-slate-50 p-8"
-                >
-                  {({ step }) => (
+                {methods.when(step.id, () => (
+                  <StepperPanel className="h-[200px] content-center rounded border bg-slate-50 p-8">
                     <p className="text-xl font-normal">Content for {step.id}</p>
-                  )}
-                </StepperPanel>
+                  </StepperPanel>
+                ))}
               </StepperStep>
             ))}
           </StepperNavigation>
           <StepperControls>
-            <StepperAction action="prev">Previous</StepperAction>
-            <StepperAction action="next">Next</StepperAction>
-            <StepperAction action="reset">Reset</StepperAction>
+            {!methods.isLast && (
+              <Button
+                variant="secondary"
+                onClick={methods.prev}
+                disabled={methods.isFirst}
+              >
+                Previous
+              </Button>
+            )}
+            <Button onClick={methods.isLast ? methods.reset : methods.next}>
+              {methods.isLast ? "Reset" : "Next"}
+            </Button>
           </StepperControls>
         </>
       )}
@@ -145,7 +158,6 @@ const VerticalStepper = () => {
 }
 
 const CircleStepper = () => {
-  const steps = stepperInstance.steps
   return (
     <Stepper instance={stepperInstance} className="space-y-4" variant="circle">
       {({ methods }) => (
@@ -155,21 +167,26 @@ const CircleStepper = () => {
               <StepperTitle>{methods.current.title}</StepperTitle>
             </StepperStep>
           </StepperNavigation>
-          {steps.map((step) => (
-            <StepperPanel
-              key={step.id}
-              when={step}
-              className="h-[200px] content-center rounded border bg-slate-50 p-8"
-            >
-              {({ step }) => (
-                <p className="text-xl font-normal">Content for {step.id}</p>
-              )}
+          {methods.when(methods.current.id, () => (
+            <StepperPanel className="h-[200px] content-center rounded border bg-slate-50 p-8">
+              <p className="text-xl font-normal">
+                Content for {methods.current.id}
+              </p>
             </StepperPanel>
           ))}
           <StepperControls>
-            <StepperAction action="prev">Previous</StepperAction>
-            <StepperAction action="next">Next</StepperAction>
-            <StepperAction action="reset">Reset</StepperAction>
+            {!methods.isLast && (
+              <Button
+                variant="secondary"
+                onClick={methods.prev}
+                disabled={methods.isFirst}
+              >
+                Previous
+              </Button>
+            )}
+            <Button onClick={methods.isLast ? methods.reset : methods.next}>
+              {methods.isLast ? "Reset" : "Next"}
+            </Button>
           </StepperControls>
         </>
       )}
