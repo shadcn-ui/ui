@@ -516,6 +516,14 @@ export const blocks: Registry["items"] = [
         path: "blocks/sidebar-16/components/nav-user.tsx",
         type: "registry:component",
       },
+      {
+        path: "blocks/sidebar-16/components/search-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-16/components/site-header.tsx",
+        type: "registry:component",
+      },
     ],
     categories: ["sidebar", "dashboard"],
   },

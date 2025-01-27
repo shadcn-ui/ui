@@ -1168,6 +1168,14 @@ export const Index: Record<string, any> = {
         path: "registry/new-york/blocks/sidebar-16/components/nav-user.tsx",
         type: "registry:component",
         target: ""
+      },{
+        path: "registry/new-york/blocks/sidebar-16/components/search-form.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/sidebar-16/components/site-header.tsx",
+        type: "registry:component",
+        target: ""
       }],
       categories: ["sidebar","dashboard"],
       component: React.lazy(() => import("@/registry/new-york/blocks/sidebar-16/page.tsx")),
@@ -6456,6 +6464,14 @@ export const Index: Record<string, any> = {
         target: ""
       },{
         path: "registry/default/blocks/sidebar-16/components/nav-user.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/sidebar-16/components/search-form.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/sidebar-16/components/site-header.tsx",
         type: "registry:component",
         target: ""
       }],
