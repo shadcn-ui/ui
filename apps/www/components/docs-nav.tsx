@@ -17,7 +17,12 @@ export function DocsNav({ config }: { config: DocsConfig }) {
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
           <h4 className="rounded-md px-2 py-1 text-sm font-semibold">
-            {item.title}
+            {item.title}{" "}
+            {item.label && (
+              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs font-normal leading-none text-[#000000] no-underline group-hover:no-underline">
+                {item.label}
+              </span>
+            )}
           </h4>
           {item?.items?.length && (
             <DocsNavItems items={item.items} pathname={pathname} />

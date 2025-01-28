@@ -90,16 +90,33 @@ Options:
   -h, --help         display help for command
 ```
 
-## Monorepo
+## build
 
-In a monorepo, you can specify the path to your workspace with the `-c` or `--cwd` option.
+Use the `build` command to generate the registry JSON files.
 
 ```bash
-npx shadcn@latest init -c ./apps/www
+npx shadcn@latest build
 ```
 
-or
+This command reads the `registry.json` file and generates the registry JSON files in the `public/r` directory.
+
+```txt
+Usage: shadcn build [options] [registry]
+
+build components for a shadcn registry
+
+Arguments:
+  registry             path to registry.json file (default: "./registry.json")
+
+Options:
+  -o, --output <path>  destination directory for json files (default: "./public/r")
+  -c, --cwd <cwd>      the working directory. defaults to the current directory. (default:
+                       "/Users/shadcn/Code/shadcn/ui/packages/shadcn")
+  -h, --help           display help for command
+```
+
+To customize the output directory, use the `--output` option.
 
 ```bash
-npx shadcn@latest add alert-dialog -c ./apps/www
+npx shadcn@latest build --output ./public/registry
 ```
