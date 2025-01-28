@@ -9,6 +9,10 @@ export interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
+      title: "Home",
+      href: "/",
+    },
+    {
       title: "Documentation",
       href: "/docs",
     },
@@ -27,10 +31,6 @@ export const docsConfig: DocsConfig = {
     {
       title: "Themes",
       href: "/themes",
-    },
-    {
-      title: "Examples",
-      href: "/examples",
     },
     {
       title: "Colors",
@@ -72,6 +72,17 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Monorepo",
+          href: "/docs/monorepo",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Next.js 15 + React 19",
+          href: "/docs/react-19",
+          items: [],
+        },
+        {
           title: "Typography",
           href: "/docs/components/typography",
           items: [],
@@ -80,6 +91,12 @@ export const docsConfig: DocsConfig = {
           title: "Open in v0",
           href: "/docs/v0",
           items: [],
+        },
+        {
+          title: "Blocks",
+          href: "/docs/blocks",
+          items: [],
+          label: "New",
         },
         {
           title: "Figma",
@@ -136,12 +153,6 @@ export const docsConfig: DocsConfig = {
     {
       title: "Components",
       items: [
-        {
-          title: "Sidebar",
-          href: "/docs/components/sidebar",
-          items: [],
-          label: "New",
-        },
         {
           title: "Accordion",
           href: "/docs/components/accordion",
@@ -333,6 +344,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Sidebar",
+          href: "/docs/components/sidebar",
+          items: [],
+        },
+        {
           title: "Skeleton",
           href: "/docs/components/skeleton",
           items: [],
@@ -385,6 +401,42 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Registry",
+      label: "New",
+      items: [
+        {
+          title: "Introduction",
+          href: "/docs/registry",
+          items: [],
+        },
+        {
+          title: "Getting Started",
+          href: "/docs/registry/getting-started",
+          items: [],
+        },
+        {
+          title: "Open in v0",
+          href: "/docs/registry/open-in-v0",
+          items: [],
+        },
+        {
+          title: "FAQ",
+          href: "/docs/registry/faq",
+          items: [],
+        },
+        {
+          title: "registry.json",
+          href: "/docs/registry/registry-json",
+          items: [],
+        },
+        {
+          title: "registry-item.json",
+          href: "/docs/registry/registry-item-json",
           items: [],
         },
       ],

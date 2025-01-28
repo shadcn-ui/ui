@@ -1,8 +1,8 @@
 import { promises as fs } from "fs"
 import path from "path"
+import { registryItemCssVarsSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
-import { registryItemCssVarsSchema } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import postcss from "postcss"
 import AtRule from "postcss/lib/at-rule"
@@ -56,6 +56,8 @@ export async function transformCssVars(
   config: Config,
   options: {
     cleanupDefaultNextStyles?: boolean
+  } = {
+    cleanupDefaultNextStyles: false,
   }
 ) {
   options = {

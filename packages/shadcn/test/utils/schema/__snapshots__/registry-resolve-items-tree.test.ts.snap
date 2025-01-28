@@ -28,7 +28,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 ",
       "path": "lib/utils.ts",
-      "target": "lib/utils.ts",
+      "target": "",
       "type": "registry:lib",
     },
     {
@@ -60,7 +60,7 @@ Label.displayName = LabelPrimitive.Root.displayName
 export { Label }
 ",
       "path": "ui/label.tsx",
-      "target": "components/ui/label.tsx",
+      "target": "",
       "type": "registry:ui",
     },
   ],
@@ -153,7 +153,7 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
-      "target": "components/ui/button.tsx",
+      "target": "",
       "type": "registry:ui",
     },
   ],
@@ -231,7 +231,7 @@ Button.displayName = "Button"
 export { Button, buttonVariants }
 ",
       "path": "ui/button.tsx",
-      "target": "components/ui/button.tsx",
+      "target": "",
       "type": "registry:ui",
     },
     {
@@ -239,16 +239,13 @@ export { Button, buttonVariants }
 
 import { cn } from "@/lib/utils"
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
-
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
   ({ className, type, ...props }, ref) => {
     return (
       <input
         type={type}
         className={cn(
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
           className
         )}
         ref={ref}
@@ -262,7 +259,7 @@ Input.displayName = "Input"
 export { Input }
 ",
       "path": "ui/input.tsx",
-      "target": "components/ui/input.tsx",
+      "target": "",
       "type": "registry:ui",
     },
     {
@@ -274,7 +271,7 @@ import { Command as CommandPrimitive } from "cmdk"
 import { Search } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent } from "@/registry/default/ui/dialog"
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -291,9 +288,7 @@ const Command = React.forwardRef<
 ))
 Command.displayName = CommandPrimitive.displayName
 
-interface CommandDialogProps extends DialogProps {}
-
-const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
+const CommandDialog = ({ children, ...props }: DialogProps) => {
   return (
     <Dialog {...props}>
       <DialogContent className="overflow-hidden p-0 shadow-lg">
@@ -385,7 +380,7 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled=true]:pointer-events-none data-[selected='true']:bg-accent data-[selected=true]:text-accent-foreground data-[disabled=true]:opacity-50",
+      "relative flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled=true]:pointer-events-none data-[selected='true']:bg-accent data-[selected=true]:text-accent-foreground data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
       className
     )}
     {...props}
@@ -423,7 +418,7 @@ export {
 }
 ",
       "path": "ui/command.tsx",
-      "target": "components/ui/command.tsx",
+      "target": "",
       "type": "registry:ui",
     },
     {
@@ -551,7 +546,7 @@ export {
 }
 ",
       "path": "ui/dialog.tsx",
-      "target": "components/ui/dialog.tsx",
+      "target": "",
       "type": "registry:ui",
     },
   ],

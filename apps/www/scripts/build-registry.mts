@@ -1,24 +1,23 @@
-// @sts-nocheck
-import { existsSync, promises as fs, readFileSync } from "fs"
+import { existsSync, promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { cwd } from "process"
-import template from "lodash.template"
+import template from "lodash/template"
 import { rimraf } from "rimraf"
-import { Project, ScriptKind, SyntaxKind } from "ts-morph"
+import {
+  Registry,
+  registryItemSchema,
+  registryItemTypeSchema,
+  registrySchema,
+} from "shadcn/registry"
+import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
 import { registry } from "../registry"
 import { baseColors } from "../registry/registry-base-colors"
+import { registryCategories } from "../registry/registry-categories"
 import { colorMapping, colors } from "../registry/registry-colors"
+import { iconLibraries, icons } from "../registry/registry-icons"
 import { styles } from "../registry/registry-styles"
-import {
-  Registry,
-  RegistryEntry,
-  registryEntrySchema,
-  registryItemTypeSchema,
-  registrySchema,
-} from "../registry/schema"
 import { fixImport } from "./fix-import.mts"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r")
@@ -30,6 +29,7 @@ const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:theme",
   "registry:block",
   "registry:example",
+  "registry:internal",
 ]
 
 const project = new Project({
@@ -39,6 +39,61 @@ const project = new Project({
 async function createTempSourceFile(filename: string) {
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   return path.join(dir, filename)
+}
+
+// ----------------------------------------------------------------------------
+// Sync styles
+// ----------------------------------------------------------------------------
+async function syncStyles() {
+  const sourceStyle = "new-york"
+  const targetStyle = "default"
+
+  const syncDirectories = ["blocks", "hooks", "internal", "lib", "charts"]
+
+  // Clean up sync directories.
+  for (const dir of syncDirectories) {
+    rimraf.sync(path.join("registry", targetStyle, dir))
+  }
+
+  for (const item of registry.items) {
+    if (
+      !REGISTRY_INDEX_WHITELIST.includes(item.type) &&
+      item.type !== "registry:ui"
+    ) {
+      continue
+    }
+
+    const resolveFiles = item.files?.map(
+      (file) =>
+        `registry/${sourceStyle}/${typeof file === "string" ? file : file.path}`
+    )
+    if (!resolveFiles) {
+      continue
+    }
+
+    // Copy files to target style if they don't exist.
+    for (const file of resolveFiles) {
+      const sourcePath = path.join(process.cwd(), file)
+      const targetPath = path.join(
+        process.cwd(),
+        file.replace(sourceStyle, targetStyle)
+      )
+
+      if (!existsSync(targetPath)) {
+        // Create directory if it doesn't exist.
+        await fs.mkdir(path.dirname(targetPath), { recursive: true })
+        await fs.copyFile(sourcePath, targetPath)
+
+        // Replace all @/registry/new-york/ with @/registry/default/.
+        const content = await fs.readFile(targetPath, "utf8")
+        const fixedContent = content.replace(
+          new RegExp(`@/registry/${sourceStyle}/`, "g"),
+          `@/registry/${targetStyle}/`
+        )
+        await fs.writeFile(targetPath, fixedContent, "utf8")
+      }
+    }
+  }
 }
 
 // ----------------------------------------------------------------------------
@@ -57,7 +112,7 @@ export const Index: Record<string, any> = {
     index += `  "${style.name}": {`
 
     // Build style index.
-    for (const item of registry) {
+    for (const item of registry.items) {
       const resolveFiles = item.files?.map(
         (file) =>
           `registry/${style.name}/${
@@ -68,10 +123,23 @@ export const Index: Record<string, any> = {
         continue
       }
 
+      // Validate categories.
+      if (item.categories) {
+        const invalidCategories = item.categories.filter(
+          (category) => !registryCategories.some((c) => c.slug === category)
+        )
+
+        if (invalidCategories.length > 0) {
+          console.error(
+            `${item.name} has invalid categories: ${invalidCategories}`
+          )
+          process.exit(1)
+        }
+      }
+
       const type = item.type.split(":")[1]
       let sourceFilename = ""
 
-      let chunks: any = []
       if (item.type === "registry:block") {
         const file = resolveFiles[0]
         const filename = path.basename(file)
@@ -85,14 +153,6 @@ export const Index: Record<string, any> = {
         const sourceFile = project.createSourceFile(tempFile, raw, {
           scriptKind: ScriptKind.TSX,
         })
-
-        const description = sourceFile
-          .getVariableDeclaration("description")
-          ?.getInitializerOrThrow()
-          .asKindOrThrow(SyntaxKind.StringLiteral)
-          .getLiteralValue()
-
-        item.description = description ?? ""
 
         // Find all imports.
         const imports = new Map<
@@ -122,129 +182,7 @@ export const Index: Record<string, any> = {
           }
         })
 
-        // Find all opening tags with x-chunk attribute.
-        const components = sourceFile
-          .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
-          .filter((node) => {
-            return node.getAttribute("x-chunk") !== undefined
-          })
-
-        chunks = await Promise.all(
-          components.map(async (component, index) => {
-            const chunkName = `${item.name}-chunk-${index}`
-
-            // Get the value of x-chunk attribute.
-            const attr = component
-              .getAttributeOrThrow("x-chunk")
-              .asKindOrThrow(SyntaxKind.JsxAttribute)
-
-            const description = attr
-              .getInitializerOrThrow()
-              .asKindOrThrow(SyntaxKind.StringLiteral)
-              .getLiteralValue()
-
-            // Delete the x-chunk attribute.
-            attr.remove()
-
-            // Add a new attribute to the component.
-            component.addAttribute({
-              name: "x-chunk",
-              initializer: `"${chunkName}"`,
-            })
-
-            // Get the value of x-chunk-container attribute.
-            const containerAttr = component
-              .getAttribute("x-chunk-container")
-              ?.asKindOrThrow(SyntaxKind.JsxAttribute)
-
-            const containerClassName = containerAttr
-              ?.getInitializer()
-              ?.asKindOrThrow(SyntaxKind.StringLiteral)
-              .getLiteralValue()
-
-            containerAttr?.remove()
-
-            const parentJsxElement = component.getParentIfKindOrThrow(
-              SyntaxKind.JsxElement
-            )
-
-            // Find all opening tags on component.
-            const children = parentJsxElement
-              .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
-              .map((node) => {
-                return node.getTagNameNode().getText()
-              })
-              .concat(
-                parentJsxElement
-                  .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
-                  .map((node) => {
-                    return node.getTagNameNode().getText()
-                  })
-              )
-
-            const componentImports = new Map<
-              string,
-              string | string[] | Set<string>
-            >()
-            children.forEach((child) => {
-              const importLine = imports.get(child)
-              if (importLine) {
-                const imports = componentImports.get(importLine.module) || []
-
-                const newImports = importLine.isDefault
-                  ? importLine.text
-                  : new Set([...imports, child])
-
-                componentImports.set(
-                  importLine.module,
-                  importLine?.isDefault ? newImports : Array.from(newImports)
-                )
-              }
-            })
-
-            const componnetImportLines = Array.from(
-              componentImports.keys()
-            ).map((key) => {
-              const values = componentImports.get(key)
-              const specifier = Array.isArray(values)
-                ? `{${values.join(",")}}`
-                : values
-
-              return `import ${specifier} from "${key}"`
-            })
-
-            const code = `
-            'use client'
-
-            ${componnetImportLines.join("\n")}
-
-            export default function Component() {
-              return (${parentJsxElement.getText()})
-            }`
-
-            const targetFile = file.replace(item.name, `${chunkName}`)
-            const targetFilePath = path.join(
-              cwd(),
-              `registry/${style.name}/${type}/${chunkName}.tsx`
-            )
-
-            // Write component file.
-            rimraf.sync(targetFilePath)
-            await fs.writeFile(targetFilePath, code, "utf8")
-
-            return {
-              name: chunkName,
-              description,
-              component: `React.lazy(() => import("@/registry/${style.name}/${type}/${chunkName}")),`,
-              file: targetFile,
-              container: {
-                className: containerClassName,
-              },
-            }
-          })
-        )
-
-        // // Write the source file for blocks only.
+        // Write the source file for blocks only.
         sourceFilename = `__registry__/${style.name}/${type}/${item.name}.tsx`
 
         if (item.files) {
@@ -286,22 +224,23 @@ export const Index: Record<string, any> = {
       description: "${item.description ?? ""}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
-      files: [${resolveFiles.map((file) => `"${file}"`)}],
+      files: [${item.files?.map((file) => {
+        const filePath = `registry/${style.name}/${
+          typeof file === "string" ? file : file.path
+        }`
+        const resolvedFilePath = path.resolve(filePath)
+        return typeof file === "string"
+          ? `"${resolvedFilePath}"`
+          : `{
+        path: "${filePath}",
+        type: "${file.type}",
+        target: "${file.target ?? ""}"
+      }`
+      })}],
+      categories: ${JSON.stringify(item.categories)},
       component: React.lazy(() => import("${componentPath}")),
       source: "${sourceFilename}",
-      category: "${item.category ?? ""}",
-      subcategory: "${item.subcategory ?? ""}",
-      chunks: [${chunks.map(
-        (chunk) => `{
-        name: "${chunk.name}",
-        description: "${chunk.description ?? "No description"}",
-        component: ${chunk.component}
-        file: "${chunk.file}",
-        container: {
-          className: "${chunk.container.className}"
-        }
-      }`
-      )}]
+      meta: ${JSON.stringify(item.meta)},
     },`
     }
 
@@ -316,7 +255,7 @@ export const Index: Record<string, any> = {
   // ----------------------------------------------------------------------------
   // Build registry/index.json.
   // ----------------------------------------------------------------------------
-  const items = registry
+  const items = registry.items
     .filter((item) => ["registry:ui"].includes(item.type))
     .map((item) => {
       return {
@@ -359,7 +298,7 @@ async function buildStyles(registry: Registry) {
       await fs.mkdir(targetPath, { recursive: true })
     }
 
-    for (const item of registry) {
+    for (const item of registry.items) {
       if (!REGISTRY_INDEX_WHITELIST.includes(item.type)) {
         continue
       }
@@ -402,7 +341,7 @@ async function buildStyles(registry: Registry) {
             sourceFile.getVariableDeclaration("containerClassName")?.remove()
             sourceFile.getVariableDeclaration("description")?.remove()
 
-            let target = file.target
+            let target = file.target || ""
 
             if ((!target || target === "") && item.name.startsWith("v0-")) {
               const fileName = file.path.split("/").pop()
@@ -437,17 +376,12 @@ async function buildStyles(registry: Registry) {
         )
       }
 
-      const payload = registryEntrySchema
-        .omit({
-          source: true,
-          category: true,
-          subcategory: true,
-          chunks: true,
-        })
-        .safeParse({
-          ...item,
-          files,
-        })
+      const payload = registryItemSchema.safeParse({
+        $schema: "https://ui.shadcn.com/schema/registry-item.json",
+        author: "shadcn (https://ui.shadcn.com)",
+        ...item,
+        files,
+      })
 
       if (payload.success) {
         await fs.writeFile(
@@ -477,21 +411,14 @@ async function buildStylesIndex() {
   for (const style of styles) {
     const targetPath = path.join(REGISTRY_PATH, "styles", style.name)
 
-    const dependencies = [
-      "tailwindcss-animate",
-      "class-variance-authority",
-      "lucide-react",
-    ]
-
-    // TODO: Remove this when we migrate to lucide-react.
-    if (style.name === "new-york") {
-      dependencies.push("@radix-ui/react-icons")
-    }
-
-    const payload: RegistryEntry = {
+    const payload: z.infer<typeof registryItemSchema> = {
       name: style.name,
       type: "registry:style",
-      dependencies,
+      dependencies: [
+        "tailwindcss-animate",
+        "class-variance-authority",
+        "lucide-react",
+      ],
       registryDependencies: ["utils"],
       tailwind: {
         config: {
@@ -811,7 +738,67 @@ async function buildThemes() {
   }
 }
 
+// ----------------------------------------------------------------------------
+// Build registry/icons/index.json.
+// ----------------------------------------------------------------------------
+async function buildIcons() {
+  const iconsTargetPath = path.join(REGISTRY_PATH, "icons")
+  rimraf.sync(iconsTargetPath)
+  if (!existsSync(iconsTargetPath)) {
+    await fs.mkdir(iconsTargetPath, { recursive: true })
+  }
+
+  const iconsData = icons
+
+  await fs.writeFile(
+    path.join(iconsTargetPath, "index.json"),
+    JSON.stringify(iconsData, null, 2),
+    "utf8"
+  )
+}
+
+// ----------------------------------------------------------------------------
+// Build __registry__/icons.tsx.
+// ----------------------------------------------------------------------------
+async function buildRegistryIcons() {
+  let index = `// @ts-nocheck
+// This file is autogenerated by scripts/build-registry.ts
+// Do not edit this file directly.
+import * as React from "react"
+
+export const Icons = {
+`
+
+  for (const [icon, libraries] of Object.entries(icons)) {
+    index += `  "${icon}": {`
+    for (const [library, componentName] of Object.entries(libraries)) {
+      const packageName = iconLibraries[library].package
+      if (packageName) {
+        index += `
+  ${library}: React.lazy(() => import("${packageName}").then(mod => ({
+    default: mod.${componentName}
+  }))),`
+      }
+    }
+    index += `
+},`
+  }
+
+  index += `
+}
+`
+
+  // Write style index.
+  rimraf.sync(path.join(process.cwd(), "__registry__/icons.tsx"))
+  await fs.writeFile(
+    path.join(process.cwd(), "__registry__/icons.tsx"),
+    index,
+    "utf8"
+  )
+}
+
 try {
+  console.log("💽 Building registry...")
   const result = registrySchema.safeParse(registry)
 
   if (!result.success) {
@@ -819,10 +806,14 @@ try {
     process.exit(1)
   }
 
+  await syncStyles()
   await buildRegistry(result.data)
   await buildStyles(result.data)
   await buildStylesIndex()
   await buildThemes()
+
+  await buildRegistryIcons()
+  await buildIcons()
 
   console.log("✅ Done!")
 } catch (error) {
