@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "progress-demo",
   "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
   "registryDependencies": [
     "progress"
   ],
