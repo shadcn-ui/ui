@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "textarea",
   "type": "registry:ui",
+  "author": "shadcn (https://ui.shadcn.com)",
   "files": [
     {
       "path": "ui/textarea.tsx",

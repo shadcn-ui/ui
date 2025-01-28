@@ -1,5 +1,5 @@
+import { getRegistryIcons } from "@/src/registry/api"
 import { ICON_LIBRARIES } from "@/src/utils/icon-libraries"
-import { getRegistryIcons } from "@/src/utils/registry"
 import { Transformer } from "@/src/utils/transformers"
 import { SourceFile, SyntaxKind } from "ts-morph"
 
