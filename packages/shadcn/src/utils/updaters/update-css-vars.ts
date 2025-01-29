@@ -104,7 +104,7 @@ export async function transformCssVars(
     from: undefined,
   })
 
-  return result.css
+  return result.css.replace(/\/\* ---break--- \*\//g, "")
 }
 
 function updateBaseLayerPlugin() {
@@ -143,6 +143,7 @@ function updateBaseLayerPlugin() {
           raws: { semicolon: true, between: " ", before: "\n" },
         })
         root.append(baseLayer)
+        root.insertBefore(baseLayer, postcss.comment({ text: "---break---" }))
       }
 
       requiredRules.forEach(({ selector, apply }) => {
@@ -345,6 +346,7 @@ function updateCssVarsPluginV4(
             raws: { semicolon: true, between: " ", before: "\n" },
           })
           root.append(ruleNode)
+          root.insertBefore(ruleNode, postcss.comment({ text: "---break---" }))
         }
 
         Object.entries(vars).forEach(([key, value]) => {
@@ -462,6 +464,7 @@ function upsertThemeNode(root: Root): AtRule {
       raws: { semicolon: true, between: " ", before: "\n" },
     })
     root.append(themeNode)
+    root.insertBefore(themeNode, postcss.comment({ text: "---break---" }))
   }
 
   return themeNode
@@ -476,14 +479,13 @@ function addCustomVariant({ params }: { params: string }) {
           node.type === "atrule" && node.name === "custom-variant"
       )
       if (!customVariant) {
-        root.insertAfter(
-          root.nodes[0],
-          postcss.atRule({
-            name: "custom-variant",
-            params,
-            raws: { semicolon: true, before: "\n" },
-          })
-        )
+        const variantNode = postcss.atRule({
+          name: "custom-variant",
+          params,
+          raws: { semicolon: true, before: "\n" },
+        })
+        root.insertAfter(root.nodes[0], variantNode)
+        root.insertBefore(variantNode, postcss.comment({ text: "---break---" }))
       }
     },
   }
@@ -522,14 +524,13 @@ function updateTailwindConfigPlugin(
           continue
         }
 
-        root.insertAfter(
-          lastPluginNode,
-          postcss.atRule({
-            name: "plugin",
-            params: `${quote}${pluginName}${quote}`,
-            raws: { semicolon: true, before: "\n" },
-          })
-        )
+        const pluginNode = postcss.atRule({
+          name: "plugin",
+          params: `${quote}${pluginName}${quote}`,
+          raws: { semicolon: true, before: "\n" },
+        })
+        root.insertAfter(lastPluginNode, pluginNode)
+        root.insertBefore(pluginNode, postcss.comment({ text: "---break---" }))
       }
     },
   }
@@ -577,7 +578,6 @@ function updateTailwindConfigKeyframesPlugin(
               node.params === keyframeName
           )
         ) {
-          console.log("Keyframe already present", keyframeName)
           continue
         }
 
@@ -585,7 +585,7 @@ function updateTailwindConfigKeyframesPlugin(
           name: "keyframes",
           params: keyframeName,
           nodes: [],
-          raws: { semicolon: true, between: " ", before: "\n" },
+          raws: { semicolon: true, between: " ", before: "\n  " },
         })
 
         for (const [key, values] of Object.entries(parsedKeyframeValue.data)) {
@@ -595,15 +595,19 @@ function updateTailwindConfigKeyframesPlugin(
               postcss.decl({
                 prop: key,
                 value,
-                raws: { semicolon: true, before: "\n  " },
+                raws: { semicolon: true, before: "\n      ", between: ": " },
               })
             ),
-            raws: { semicolon: true, between: " ", before: "\n  " },
+            raws: { semicolon: true, between: " ", before: "\n    " },
           })
           keyframeNode.append(rule)
         }
 
         themeNode.append(keyframeNode)
+        themeNode.insertBefore(
+          keyframeNode,
+          postcss.comment({ text: "---break---" })
+        )
       }
     },
   }

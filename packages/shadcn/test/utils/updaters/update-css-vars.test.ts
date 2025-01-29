@@ -43,6 +43,7 @@ describe("transformCssVars", () => {
           --foreground: white
         }
       }
+
       @layer base {
         * {
           @apply border-border;
@@ -103,6 +104,8 @@ describe("transformCssVars", () => {
           --foreground: 60 9.1% 97.8%;
         }
       }
+
+
 
       @layer base {
         * {
@@ -198,19 +201,24 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
+
       :root {
         --background: hsl(0 0% 100%);
         --foreground: hsl(240 10% 3.9%);
       }
+
       .dark {
         --background: hsl(240 10% 3.9%);
         --foreground: hsl(0 0% 98%);
       }
+
       @theme inline {
         --color-background: var(--background);
         --color-foreground: var(--foreground);
       }
+
       @layer base {
         * {
           @apply border-border;
@@ -251,6 +259,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
               :root {
                 --background: hsl(215 20.2% 65.1%);
@@ -264,11 +273,15 @@ describe("transformCssVarsV4", () => {
                 --primary: oklch(0.72 0.11 178);
               }
 
+              
+
               @theme inline {
                 --color-background: var(--background);
                 --color-foreground: var(--foreground);
                 --color-primary: var(--primary);
       }
+
+              
 
               @layer base {
         * {
@@ -314,6 +327,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
               :root {
                 --background: hsl(215 20.2% 65.1%);
@@ -332,6 +346,8 @@ describe("transformCssVarsV4", () => {
                 --color-foreground: var(--foreground);
                 --color-primary: var(--primary);
               }
+
+              
 
               @layer base {
         * {
@@ -378,6 +394,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
               :root {
                 --background: hsl(215 20.2% 65.1%);
@@ -398,6 +415,8 @@ describe("transformCssVarsV4", () => {
                 --color-primary: var(--primary);
                 --foo: var(--foo);
               }
+
+              
 
               @layer base {
         * {
@@ -452,6 +471,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
               :root {
                 --background: hsl(215 20.2% 65.1%);
@@ -503,19 +523,24 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
+
       :root {
         --background: hsl(0 0% 100%);
         --foreground: hsl(240 10% 3.9%);
       }
+
       .dark {
         --background: hsl(240 10% 3.9%);
         --foreground: hsl(0 0% 98%);
       }
+
       @theme inline {
         --color-background: var(--background);
         --color-foreground: var(--foreground);
       }
+
       @layer base {
         * {
           @apply border-border;
@@ -548,19 +573,24 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
+
       :root {
         --background: hsl(0 0% 100%);
         --foreground: hsl(240 10% 3.9%);
       }
+
       .dark {
         --background: hsl(240 10% 3.9%);
         --foreground: hsl(0 0% 98%);
       }
+
       @theme inline {
         --color-background: var(--background);
         --color-foreground: var(--foreground);
       }
+
       @layer base {
         * {
           @apply border-border;
@@ -593,19 +623,24 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
+
       :root {
         --background: rgb(255, 255, 255);
         --foreground: hsl(240 10% 3.9%);
       }
+
       .dark {
         --background: hsl(240 10% 3.9%);
         --foreground: #000fff;
       }
+
       @theme inline {
         --color-background: var(--background);
         --color-foreground: var(--foreground);
       }
+
       @layer base {
         * {
           @apply border-border;
@@ -636,19 +671,24 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
+
       :root {
         --radius: 0.125rem;
       }
+
       .dark {
         --radius: 0.5rem;
       }
+
       @theme inline {
         --radius-sm: calc(var(--radius) - 4px);
         --radius-md: calc(var(--radius) - 2px);
         --radius-lg: var(--radius);
         --radius-xl: calc(var(--radius) + 4px);
       }
+
       @layer base {
         * {
           @apply border-border;
@@ -696,6 +736,7 @@ describe("transformCssVarsV4", () => {
               --radius-lg: var(--radius);
               --radius-xl: calc(var(--radius) + 4px);
             }
+            
             @layer base {
         * {
           @apply border-border;
@@ -722,8 +763,11 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @plugin "tailwindcss-animate";
+
       @custom-variant dark (&:is(.dark *));
+
       @layer base {
         * {
           @apply border-border;
@@ -756,9 +800,12 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
               @plugin "tailwindcss-animate";
+              
               @plugin "@tailwindcss/typography";
+              
               @layer base {
         * {
           @apply border-border;
@@ -790,9 +837,13 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import 'tailwindcss';
+
       @plugin '@tailwindcss/typography';
+
       @plugin 'tailwindcss-animate';
+
       @custom-variant dark (&:is(.dark *));
+
       @layer base {
         * {
           @apply border-border;
@@ -834,32 +885,37 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
+
       @theme inline {
-      @keyframes accordion-down {
-        from {
-        height: 0;
+        
+        @keyframes accordion-down {
+          from {
+            height: 0;
+          }
+          to {
+            height: var(--radix-accordion-content-height);
+          }
+        }
+        
+        @keyframes accordion-up {
+          from {
+            height: var(--radix-accordion-content-height);
+          }
+          to {
+            height: 0;
+          }
+        }
       }
-        to {
-        height: var(--radix-accordion-content-height);
-      }
-      }
-      @keyframes accordion-up {
-        from {
-        height: var(--radix-accordion-content-height);
-      }
-        to {
-        height: 0;
-      }
-      }
-      }
+
       @layer base {
         * {
           @apply border-border;
-      }
+        }
         body {
           @apply bg-background text-foreground;
-      }
+        }
       }
               "
     `)
@@ -905,6 +961,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
 
               @theme inline {
@@ -916,15 +973,18 @@ describe("transformCssVarsV4", () => {
                   height: var(--radix-accordion-content-height);
                 }
               }
-      @keyframes accordion-up {
-        from {
-        height: var(--radix-accordion-content-height);
+        
+        @keyframes accordion-up {
+          from {
+            height: var(--radix-accordion-content-height);
                           }
-        to {
-        height: 0;
+          to {
+            height: 0;
                           }
                 }
               }
+
+              
 
               @layer base {
         * {
@@ -971,27 +1031,32 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
+
       @theme inline {
         --animate-accordion-down: accordion-down 0.2s ease-out;
         --animate-accordion-up: accordion-up 0.2s ease-out;
-      @keyframes accordion-down {
-        from {
-        height: 0;
+        
+        @keyframes accordion-down {
+          from {
+            height: 0;
           }
-        to {
-        height: var(--radix-accordion-content-height);
+          to {
+            height: var(--radix-accordion-content-height);
           }
         }
-      @keyframes accordion-up {
-        from {
-        height: var(--radix-accordion-content-height);
+        
+        @keyframes accordion-up {
+          from {
+            height: var(--radix-accordion-content-height);
           }
-        to {
-        height: 0;
+          to {
+            height: 0;
           }
         }
       }
+
       @layer base {
         * {
           @apply border-border;
@@ -1040,27 +1105,31 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+
       @custom-variant dark (&:is(.dark *));
               @theme inline {
                 --animate-accordion-up: accordion-up 0.3s ease-out;
         --animate-accordion-down: accordion-down 0.2s ease-out;
-      @keyframes accordion-down {
-        from {
-        height: 0;
+        
+        @keyframes accordion-down {
+          from {
+            height: 0;
                           }
-        to {
-        height: var(--radix-accordion-content-height);
+          to {
+            height: var(--radix-accordion-content-height);
                           }
                 }
-      @keyframes accordion-up {
-        from {
-        height: var(--radix-accordion-content-height);
+        
+        @keyframes accordion-up {
+          from {
+            height: var(--radix-accordion-content-height);
                           }
-        to {
-        height: 0;
+          to {
+            height: 0;
                           }
                 }
               }
+              
               @layer base {
         * {
           @apply border-border;
