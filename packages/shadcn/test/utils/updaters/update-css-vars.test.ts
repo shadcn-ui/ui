@@ -240,7 +240,7 @@ describe("transformCssVarsV4", () => {
           },
           dark: {
             foreground: "60 9.1% 97.8%",
-            primary: "222.2 84% 4.9%",
+            primary: "oklch(0.72 0.11 178)",
           },
         },
         { tailwind: { cssVariables: true } },
@@ -258,7 +258,7 @@ describe("transformCssVarsV4", () => {
               .dark {
                 --background: hsl(222.2 84% 4.9%);
                 --foreground: hsl(60 9.1% 97.8%);
-                --primary: hsl(222.2 84% 4.9%);
+                --primary: oklch(0.72 0.11 178);
               }
 
               @theme inline {

@@ -343,7 +343,8 @@ function updateCssVarsPluginV4(
           if (
             !value.startsWith("hsl") &&
             !value.startsWith("rgb") &&
-            !value.startsWith("#")
+            !value.startsWith("#") &&
+            !value.startsWith("oklch")
           ) {
             value = `hsl(${value})`
           }
