@@ -182,12 +182,12 @@ describe("transformCssVarsV4", () => {
         `,
         {
           light: {
-            background: "hsl(0 0% 100%)",
-            foreground: "hsl(240 10% 3.9%)",
+            background: "0 0% 100%",
+            foreground: "240 10% 3.9%",
           },
           dark: {
-            background: "hsl(240 10% 3.9%)",
-            foreground: "hsl(0 0% 98%)",
+            background: "240 10% 3.9%",
+            foreground: "0 0% 98%",
           },
         },
         { tailwind: { cssVariables: true } },
@@ -234,13 +234,13 @@ describe("transformCssVarsV4", () => {
         `,
         {
           light: {
-            background: "hsl(215 20.2% 65.1%)",
-            foreground: "hsl(222.2 84% 4.9%)",
-            primary: "hsl(215 20.2% 65.1%)",
+            background: "215 20.2% 65.1%",
+            foreground: "222.2 84% 4.9%",
+            primary: "215 20.2% 65.1%",
           },
           dark: {
-            foreground: "hsl(60 9.1% 97.8%)",
-            primary: "hsl(222.2 84% 4.9%)",
+            foreground: "60 9.1% 97.8%",
+            primary: "222.2 84% 4.9%",
           },
         },
         { tailwind: { cssVariables: true } },
@@ -297,13 +297,13 @@ describe("transformCssVarsV4", () => {
         `,
         {
           light: {
-            background: "hsl(215 20.2% 65.1%)",
-            foreground: "hsl(222.2 84% 4.9%)",
-            primary: "hsl(215 20.2% 65.1%)",
+            background: "215 20.2% 65.1%",
+            foreground: "222.2 84% 4.9%",
+            primary: "215 20.2% 65.1%",
           },
           dark: {
-            foreground: "hsl(60 9.1% 97.8%)",
-            primary: "hsl(222.2 84% 4.9%)",
+            foreground: "60 9.1% 97.8%",
+            primary: "222.2 84% 4.9%",
           },
         },
         { tailwind: { cssVariables: true } },
@@ -369,13 +369,13 @@ describe("transformCssVarsV4", () => {
         `,
         {
           light: {
-            background: "hsl(215 20.2% 65.1%)",
-            foreground: "hsl(222.2 84% 4.9%)",
-            primary: "hsl(215 20.2% 65.1%)",
+            background: "215 20.2% 65.1%",
+            foreground: "222.2 84% 4.9%",
+            primary: "215 20.2% 65.1%",
           },
           dark: {
-            foreground: "hsl(60 9.1% 97.8%)",
-            primary: "hsl(222.2 84% 4.9%)",
+            foreground: "60 9.1% 97.8%",
+            primary: "222.2 84% 4.9%",
           },
         },
         { tailwind: { cssVariables: true } },
@@ -421,12 +421,12 @@ describe("transformCssVarsV4", () => {
         `,
         {
           light: {
-            background: "hsl(0 0% 100%)",
-            foreground: "hsl(240 10% 3.9%)",
+            background: "0 0% 100%",
+            foreground: "240 10% 3.9%",
           },
           dark: {
-            background: "hsl(240 10% 3.9%)",
-            foreground: "hsl(0 0% 98%)",
+            background: "240 10% 3.9%",
+            foreground: "0 0% 98%",
           },
         },
         { tailwind: { cssVariables: true } },
@@ -442,6 +442,96 @@ describe("transformCssVarsV4", () => {
       .dark {
         --background: hsl(240 10% 3.9%);
         --foreground: hsl(0 0% 98%);
+      }
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+      }
+      @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }
+              "
+    `)
+  })
+
+  test("it should only add hsl() if not already present", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        `,
+        {
+          light: {
+            background: "0 0% 100%",
+            foreground: "hsl(240 10% 3.9%)",
+          },
+          dark: {
+            background: "hsl(240 10% 3.9%)",
+            foreground: "0 0% 98%",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+      :root {
+        --background: hsl(0 0% 100%);
+        --foreground: hsl(240 10% 3.9%);
+      }
+      .dark {
+        --background: hsl(240 10% 3.9%);
+        --foreground: hsl(0 0% 98%);
+      }
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+      }
+      @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }
+              "
+    `)
+  })
+
+  test("it should only add hsl() for rgb and hex values", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        `,
+        {
+          light: {
+            background: "rgb(255, 255, 255)",
+            foreground: "hsl(240 10% 3.9%)",
+          },
+          dark: {
+            background: "hsl(240 10% 3.9%)",
+            foreground: "#000fff",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+      :root {
+        --background: rgb(255, 255, 255);
+        --foreground: hsl(240 10% 3.9%);
+      }
+      .dark {
+        --background: hsl(240 10% 3.9%);
+        --foreground: #000fff;
       }
       @theme inline {
         --color-background: var(--background);

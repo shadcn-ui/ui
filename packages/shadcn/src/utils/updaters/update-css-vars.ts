@@ -339,6 +339,15 @@ function updateCssVarsPluginV4(
 
         Object.entries(vars).forEach(([key, value]) => {
           const prop = `--${key.replace(/^--/, "")}`
+
+          if (
+            !value.startsWith("hsl") &&
+            !value.startsWith("rgb") &&
+            !value.startsWith("#")
+          ) {
+            value = `hsl(${value})`
+          }
+
           const newDecl = postcss.decl({
             prop,
             value,
