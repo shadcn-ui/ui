@@ -779,7 +779,7 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should add --animation if not present", async () => {
+  test("should add --animate if not present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
@@ -814,8 +814,8 @@ describe("transformCssVarsV4", () => {
       "@import "tailwindcss";
       @custom-variant dark (&:is(.dark *));
       @theme inline {
-        --animation-accordion-down: accordion-down 0.2s ease-out;
-        --animation-accordion-up: accordion-up 0.2s ease-out;
+        --animate-accordion-down: accordion-down 0.2s ease-out;
+        --animate-accordion-up: accordion-up 0.2s ease-out;
       @keyframes accordion-down {
         from {
         height: 0;
@@ -845,12 +845,12 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
-  test("should NOT add --animation if already present", async () => {
+  test("should NOT add --animate if already present", async () => {
     expect(
       await transformCssVars(
         `@import "tailwindcss";
         @theme inline {
-          --animation-accordion-up: accordion-up 0.3s ease-out;
+          --animate-accordion-up: accordion-up 0.3s ease-out;
         }
         `,
         {},
@@ -883,8 +883,8 @@ describe("transformCssVarsV4", () => {
       "@import "tailwindcss";
       @custom-variant dark (&:is(.dark *));
               @theme inline {
-                --animation-accordion-up: accordion-up 0.3s ease-out;
-        --animation-accordion-down: accordion-down 0.2s ease-out;
+                --animate-accordion-up: accordion-up 0.3s ease-out;
+        --animate-accordion-down: accordion-down 0.2s ease-out;
       @keyframes accordion-down {
         from {
         height: 0;

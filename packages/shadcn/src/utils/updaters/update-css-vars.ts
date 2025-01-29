@@ -590,7 +590,7 @@ function updateTailwindConfigAnimationPlugin(
       const themeNode = upsertThemeNode(root)
       const existingAnimationNodes = themeNode.nodes?.filter(
         (node): node is postcss.Declaration =>
-          node.type === "decl" && node.prop.startsWith("--animation-")
+          node.type === "decl" && node.prop.startsWith("--animate-")
       )
 
       const parsedAnimationValue = z
@@ -601,7 +601,7 @@ function updateTailwindConfigAnimationPlugin(
       }
 
       for (const [key, value] of Object.entries(parsedAnimationValue.data)) {
-        const prop = `--animation-${key}`
+        const prop = `--animate-${key}`
         if (
           existingAnimationNodes?.find(
             (node): node is postcss.Declaration => node.prop === prop
