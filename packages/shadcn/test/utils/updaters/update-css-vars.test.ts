@@ -105,8 +105,6 @@ describe("transformCssVars", () => {
         }
       }
 
-
-
       @layer base {
         * {
           @apply border-border;
@@ -273,15 +271,11 @@ describe("transformCssVarsV4", () => {
                 --primary: oklch(0.72 0.11 178);
               }
 
-              
-
               @theme inline {
                 --color-background: var(--background);
                 --color-foreground: var(--foreground);
                 --color-primary: var(--primary);
       }
-
-              
 
               @layer base {
         * {
@@ -343,11 +337,9 @@ describe("transformCssVarsV4", () => {
 
               @theme inline {
                 --color-background: var(--background);
-                --color-foreground: var(--foreground);
                 --color-primary: var(--primary);
+                --color-foreground: var(--foreground);
               }
-
-              
 
               @layer base {
         * {
@@ -411,12 +403,10 @@ describe("transformCssVarsV4", () => {
 
               @theme inline {
                 --color-background: var(--background);
-                --color-foreground: var(--foreground);
-                --color-primary: var(--primary);
                 --foo: var(--foo);
+                --color-primary: var(--primary);
+                --color-foreground: var(--foreground);
               }
-
-              
 
               @layer base {
         * {
@@ -487,8 +477,8 @@ describe("transformCssVarsV4", () => {
 
               @theme inline {
                 --color-background: var(--background);
-                --color-foreground: var(--foreground);
                 --color-primary: var(--primary);
+                --color-foreground: var(--foreground);
               }
 
               @layer base {
@@ -803,9 +793,9 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               @plugin "tailwindcss-animate";
-              
+
               @plugin "@tailwindcss/typography";
-              
+
               @layer base {
         * {
           @apply border-border;
@@ -973,7 +963,7 @@ describe("transformCssVarsV4", () => {
                   height: var(--radix-accordion-content-height);
                 }
               }
-        
+
         @keyframes accordion-up {
           from {
             height: var(--radix-accordion-content-height);
@@ -983,8 +973,6 @@ describe("transformCssVarsV4", () => {
                           }
                 }
               }
-
-              
 
               @layer base {
         * {
@@ -1110,7 +1098,7 @@ describe("transformCssVarsV4", () => {
               @theme inline {
                 --animate-accordion-up: accordion-up 0.3s ease-out;
         --animate-accordion-down: accordion-down 0.2s ease-out;
-        
+
         @keyframes accordion-down {
           from {
             height: 0;
@@ -1119,7 +1107,7 @@ describe("transformCssVarsV4", () => {
             height: var(--radix-accordion-content-height);
                           }
                 }
-        
+
         @keyframes accordion-up {
           from {
             height: var(--radix-accordion-content-height);
@@ -1129,7 +1117,7 @@ describe("transformCssVarsV4", () => {
                           }
                 }
               }
-              
+
               @layer base {
         * {
           @apply border-border;

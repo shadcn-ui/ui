@@ -104,7 +104,9 @@ export async function transformCssVars(
     from: undefined,
   })
 
-  return result.css.replace(/\/\* ---break--- \*\//g, "")
+  return result.css
+    .replace(/\/\* ---break--- \*\//g, "")
+    .replace(/(\n\s*\n)+/g, "\n\n")
 }
 
 function updateBaseLayerPlugin() {
@@ -265,6 +267,16 @@ function cleanupDefaultNextStylesPlugin() {
           })
           ?.remove()
 
+        // Remove font-family: Arial, Helvetica, sans-serif;
+        bodyRule.nodes
+          .find(
+            (node): node is postcss.Declaration =>
+              node.type === "decl" &&
+              node.prop === "font-family" &&
+              node.value === "Arial, Helvetica, sans-serif"
+          )
+          ?.remove()
+
         // If the body rule is empty, remove it.
         if (bodyRule.nodes.length === 0) {
           bodyRule.remove()
@@ -393,6 +405,11 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
 
       const themeNode = upsertThemeNode(root)
 
+      const themeVarNodes = themeNode.nodes?.filter(
+        (node): node is postcss.Declaration =>
+          node.type === "decl" && node.prop.startsWith("--")
+      )
+
       for (const variable of variables) {
         const value = Object.values(cssVars).find((vars) => vars[variable])?.[
           variable
@@ -441,7 +458,14 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
             node.type === "decl" && node.prop === cssVarNode.prop
         )
         if (!existingDecl) {
-          themeNode?.append(cssVarNode)
+          if (themeVarNodes?.length) {
+            themeNode?.insertAfter(
+              themeVarNodes[themeVarNodes.length - 1],
+              cssVarNode
+            )
+          } else {
+            themeNode?.append(cssVarNode)
+          }
         }
       }
     },
