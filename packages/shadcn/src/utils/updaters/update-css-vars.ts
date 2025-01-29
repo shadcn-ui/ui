@@ -5,7 +5,7 @@ import {
   registryItemTailwindSchema,
 } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
-import { TailwindVersion, getProjectInfo } from "@/src/utils/get-project-info"
+import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
 import postcss from "postcss"
@@ -87,6 +87,7 @@ export async function transformCssVars(
 
     if (options.tailwindConfig) {
       plugins.push(updateTailwindConfigPlugin(options.tailwindConfig))
+      plugins.push(updateTailwindConfigKeyframesPlugin(options.tailwindConfig))
     }
   }
 
@@ -392,22 +393,7 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
         return
       }
 
-      let themeNode = root.nodes.find(
-        (node): node is AtRule =>
-          node.type === "atrule" &&
-          node.name === "theme" &&
-          node.params === "inline"
-      )
-
-      if (!themeNode) {
-        themeNode = postcss.atRule({
-          name: "theme",
-          params: "inline",
-          nodes: [],
-          raws: { semicolon: true, between: " ", before: "\n" },
-        })
-        root.append(themeNode)
-      }
+      const themeNode = upsertThemeNode(root)
 
       for (const color of colors) {
         const colorVar = postcss.decl({
@@ -425,6 +411,27 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
       }
     },
   }
+}
+
+function upsertThemeNode(root: Root): AtRule {
+  let themeNode = root.nodes.find(
+    (node): node is AtRule =>
+      node.type === "atrule" &&
+      node.name === "theme" &&
+      node.params === "inline"
+  )
+
+  if (!themeNode) {
+    themeNode = postcss.atRule({
+      name: "theme",
+      params: "inline",
+      nodes: [],
+      raws: { semicolon: true, between: " ", before: "\n" },
+    })
+    root.append(themeNode)
+  }
+
+  return themeNode
 }
 
 function addCustomVariant({ params }: { params: string }) {
@@ -490,6 +497,77 @@ function updateTailwindConfigPlugin(
             raws: { semicolon: true, before: "\n" },
           })
         )
+      }
+    },
+  }
+}
+
+function updateTailwindConfigKeyframesPlugin(
+  tailwindConfig: z.infer<typeof registryItemTailwindSchema>["config"]
+) {
+  return {
+    postcssPlugin: "update-tailwind-config-keyframes",
+    Once(root: Root) {
+      if (!tailwindConfig?.theme?.extend?.keyframes) {
+        return
+      }
+
+      const themeNode = upsertThemeNode(root)
+      const keyframesNode = themeNode.nodes?.find(
+        (node): node is AtRule =>
+          node.type === "atrule" && node.name === "keyframes"
+      )
+
+      const keyframeValueSchema = z.record(
+        z.string(),
+        z.record(z.string(), z.string())
+      )
+
+      for (const [keyframeName, keyframeValue] of Object.entries(
+        tailwindConfig.theme.extend.keyframes
+      )) {
+        if (typeof keyframeName !== "string") {
+          continue
+        }
+
+        const parsedKeyframeValue = keyframeValueSchema.safeParse(keyframeValue)
+
+        if (!parsedKeyframeValue.success) {
+          continue
+        }
+
+        if (
+          keyframesNode?.nodes?.find(
+            (node): node is postcss.Declaration =>
+              node.type === "decl" && node.prop === keyframeName
+          )
+        ) {
+          continue
+        }
+
+        const keyframeNode = postcss.atRule({
+          name: "keyframes",
+          params: keyframeName,
+          nodes: [],
+          raws: { semicolon: true, between: " ", before: "\n" },
+        })
+
+        for (const [key, values] of Object.entries(parsedKeyframeValue.data)) {
+          const rule = postcss.rule({
+            selector: key,
+            nodes: Object.entries(values).map(([key, value]) =>
+              postcss.decl({
+                prop: key,
+                value,
+                raws: { semicolon: true, before: "\n  " },
+              })
+            ),
+            raws: { semicolon: true, between: " ", before: "\n  " },
+          })
+          keyframeNode.append(rule)
+        }
+
+        themeNode.append(keyframeNode)
       }
     },
   }
