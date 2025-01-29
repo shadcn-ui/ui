@@ -1,6 +1,9 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { registryItemCssVarsSchema } from "@/src/registry/schema"
+import {
+  registryItemCssVarsSchema,
+  registryItemTailwindSchema,
+} from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { TailwindVersion, getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
@@ -18,13 +21,10 @@ export async function updateCssVars(
     cleanupDefaultNextStyles?: boolean
     silent?: boolean
     tailwindVersion?: TailwindVersion
+    tailwindConfig?: z.infer<typeof registryItemTailwindSchema>["config"]
   }
 ) {
-  if (
-    !cssVars ||
-    !Object.keys(cssVars).length ||
-    !config.resolvedPaths.tailwindCss
-  ) {
+  if (!config.resolvedPaths.tailwindCss) {
     return
   }
 
@@ -46,9 +46,10 @@ export async function updateCssVars(
     }
   ).start()
   const raw = await fs.readFile(cssFilepath, "utf8")
-  let output = await transformCssVars(raw, cssVars, config, {
+  let output = await transformCssVars(raw, cssVars ?? {}, config, {
     cleanupDefaultNextStyles: options.cleanupDefaultNextStyles,
     tailwindVersion: options.tailwindVersion,
+    tailwindConfig: options.tailwindConfig,
   })
   await fs.writeFile(cssFilepath, output, "utf8")
   cssVarsSpinner.succeed()
@@ -61,14 +62,17 @@ export async function transformCssVars(
   options: {
     cleanupDefaultNextStyles?: boolean
     tailwindVersion?: TailwindVersion
+    tailwindConfig?: z.infer<typeof registryItemTailwindSchema>["config"]
   } = {
     cleanupDefaultNextStyles: false,
     tailwindVersion: "v3",
+    tailwindConfig: undefined,
   }
 ) {
   options = {
     cleanupDefaultNextStyles: false,
     tailwindVersion: "v3",
+    tailwindConfig: undefined,
     ...options,
   }
 
@@ -80,6 +84,10 @@ export async function transformCssVars(
       updateCssVarsPluginV4(cssVars),
       updateThemePlugin(cssVars),
     ]
+
+    if (options.tailwindConfig) {
+      plugins.push(updateTailwindConfigPlugin(options.tailwindConfig))
+    }
   }
 
   if (options.cleanupDefaultNextStyles) {
@@ -371,6 +379,19 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
   return {
     postcssPlugin: "update-theme",
     Once(root: Root) {
+      // Find unique color names from light and dark.
+      const colors = Array.from(
+        new Set(
+          Object.keys(cssVars).flatMap((key) =>
+            Object.keys(cssVars[key as keyof typeof cssVars] || {})
+          )
+        )
+      )
+
+      if (!colors.length) {
+        return
+      }
+
       let themeNode = root.nodes.find(
         (node): node is AtRule =>
           node.type === "atrule" &&
@@ -387,15 +408,6 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
         })
         root.append(themeNode)
       }
-
-      // Find unique color names from light and dark.
-      const colors = Array.from(
-        new Set(
-          Object.keys(cssVars).flatMap((key) =>
-            Object.keys(cssVars[key as keyof typeof cssVars] || {})
-          )
-        )
-      )
 
       for (const color of colors) {
         const colorVar = postcss.decl({
@@ -435,4 +447,60 @@ function addCustomVariant({ params }: { params: string }) {
       }
     },
   }
+}
+
+function updateTailwindConfigPlugin(
+  tailwindConfig: z.infer<typeof registryItemTailwindSchema>["config"]
+) {
+  return {
+    postcssPlugin: "update-tailwind-config",
+    Once(root: Root) {
+      if (!tailwindConfig?.plugins) {
+        return
+      }
+
+      const quoteType = getQuoteType(root)
+      const quote = quoteType === "single" ? "'" : '"'
+
+      const pluginNodes = root.nodes.filter(
+        (node): node is AtRule =>
+          node.type === "atrule" && node.name === "plugin"
+      )
+
+      const lastPluginNode =
+        pluginNodes[pluginNodes.length - 1] || root.nodes[0]
+
+      for (const plugin of tailwindConfig.plugins) {
+        const pluginName = plugin.replace(/^require\(["']|["']\)$/g, "")
+
+        // Check if the plugin is already present.
+        if (
+          pluginNodes.some((node) => {
+            return node.params.replace(/["']/g, "") === pluginName
+          })
+        ) {
+          continue
+        }
+
+        root.insertAfter(
+          lastPluginNode,
+          postcss.atRule({
+            name: "plugin",
+            params: `${quote}${pluginName}${quote}`,
+            raws: { semicolon: true, before: "\n" },
+          })
+        )
+      }
+    },
+  }
+}
+
+function getQuoteType(root: Root): "single" | "double" {
+  const firstNode = root.nodes[0]
+  const raw = firstNode.toString()
+
+  if (raw.includes("'")) {
+    return "single"
+  }
+  return "double"
 }

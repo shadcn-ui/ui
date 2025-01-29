@@ -85,6 +85,7 @@ async function addProjectComponents(
     cleanupDefaultNextStyles: options.isNewProject,
     silent: options.silent,
     tailwindVersion,
+    tailwindConfig: tree.tailwind?.config,
   })
 
   await updateDependencies(tree.dependencies, config, {
@@ -176,6 +177,7 @@ async function addWorkspaceComponents(
       await updateCssVars(component.cssVars, targetConfig, {
         silent: true,
         tailwindVersion,
+        tailwindConfig: component.tailwind?.config,
       })
       filesUpdated.push(
         path.relative(workspaceRoot, targetConfig.resolvedPaths.tailwindCss)

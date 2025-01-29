@@ -548,4 +548,101 @@ describe("transformCssVarsV4", () => {
               "
     `)
   })
+
+  test("should add plugin if not present", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        `,
+        {},
+        { tailwind: { cssVariables: true } },
+        {
+          tailwindVersion: "v4",
+          tailwindConfig: { plugins: ['require("tailwindcss-animate")'] },
+        }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @plugin "tailwindcss-animate";
+      @custom-variant dark (&:is(.dark *));
+      @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }
+              "
+    `)
+  })
+
+  test("should NOT add plugin if already present", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        @plugin "tailwindcss-animate";
+        `,
+        {},
+        { tailwind: { cssVariables: true } },
+        {
+          tailwindVersion: "v4",
+          tailwindConfig: {
+            plugins: [
+              'require("tailwindcss-animate")',
+              'require("@tailwindcss/typography")',
+            ],
+          },
+        }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+              @plugin "tailwindcss-animate";
+              @plugin "@tailwindcss/typography";
+              @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }
+              "
+    `)
+  })
+
+  test("should preserve quotes", async () => {
+    expect(
+      await transformCssVars(
+        `@import 'tailwindcss';
+        `,
+        {},
+        { tailwind: { cssVariables: true } },
+        {
+          tailwindVersion: "v4",
+          tailwindConfig: {
+            plugins: [
+              'require("tailwindcss-animate")',
+              'require("@tailwindcss/typography")',
+            ],
+          },
+        }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import 'tailwindcss';
+      @plugin '@tailwindcss/typography';
+      @plugin 'tailwindcss-animate';
+      @custom-variant dark (&:is(.dark *));
+      @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }
+              "
+    `)
+  })
 })
