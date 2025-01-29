@@ -4,7 +4,7 @@ import { useLayoutEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import { BundledLanguage, BundledTheme, TokensResult } from "shiki"
 
-import { getTokens } from "../util/highlight-code"
+import { getTokens } from "../lib/highlight-code"
 import { BlockCopyCodeButton } from "./copy-to-clipboard"
 
 type CodeProps = {
