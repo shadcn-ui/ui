@@ -12,6 +12,8 @@ import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
+export type TailwindVersion = "v3" | "v4" | null
+
 type ProjectInfo = {
   framework: Framework
   isSrcDir: boolean
@@ -19,7 +21,7 @@ type ProjectInfo = {
   isTsx: boolean
   tailwindConfigFile: string | null
   tailwindCssFile: string | null
-  tailwindVersion: "v3" | "v4" | null
+  tailwindVersion: TailwindVersion
   aliasPrefix: string | null
 }
 
@@ -299,4 +301,20 @@ export async function getProjectConfig(
   }
 
   return await resolveConfigPaths(cwd, config)
+}
+
+export async function getProjectTailwindVersionFromConfig(
+  config: Config
+): Promise<TailwindVersion> {
+  if (!config.resolvedPaths.cwd) {
+    return "v3"
+  }
+
+  const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
+
+  if (!projectInfo?.tailwindVersion) {
+    return null
+  }
+
+  return projectInfo.tailwindVersion
 }

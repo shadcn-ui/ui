@@ -173,3 +173,289 @@ describe("transformCssVars", () => {
     `)
   })
 })
+
+describe("transformCssVarsV4", () => {
+  test("should transform css vars for v4", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        `,
+        {
+          light: {
+            background: "hsl(0 0% 100%)",
+            foreground: "hsl(240 10% 3.9%)",
+          },
+          dark: {
+            background: "hsl(240 10% 3.9%)",
+            foreground: "hsl(0 0% 98%)",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+      :root {
+        --background: hsl(0 0% 100%);
+        --foreground: hsl(240 10% 3.9%);
+      }
+      .dark {
+        --background: hsl(240 10% 3.9%);
+        --foreground: hsl(0 0% 98%);
+      }
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+      }
+      @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }
+              "
+    `)
+  })
+
+  test("should update light and dark css vars if present", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        :root {
+          --background: hsl(210 40% 98%);
+        }
+
+        .dark {
+          --background: hsl(222.2 84% 4.9%);
+        }
+        `,
+        {
+          light: {
+            background: "hsl(215 20.2% 65.1%)",
+            foreground: "hsl(222.2 84% 4.9%)",
+            primary: "hsl(215 20.2% 65.1%)",
+          },
+          dark: {
+            foreground: "hsl(60 9.1% 97.8%)",
+            primary: "hsl(222.2 84% 4.9%)",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+              :root {
+                --background: hsl(215 20.2% 65.1%);
+                --foreground: hsl(222.2 84% 4.9%);
+                --primary: hsl(215 20.2% 65.1%);
+              }
+
+              .dark {
+                --background: hsl(222.2 84% 4.9%);
+                --foreground: hsl(60 9.1% 97.8%);
+                --primary: hsl(222.2 84% 4.9%);
+              }
+
+              @theme inline {
+                --color-background: var(--background);
+                --color-foreground: var(--foreground);
+                --color-primary: var(--primary);
+      }
+
+              @layer base {
+        * {
+          @apply border-border;
+                }
+        body {
+          @apply bg-background text-foreground;
+                }
+      }
+              "
+    `)
+  })
+
+  test("should update theme vars if present", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        :root {
+          --background: hsl(210 40% 98%);
+        }
+
+        .dark {
+          --background: hsl(222.2 84% 4.9%);
+        }
+
+        @theme inline {
+          --color-background: var(--background);
+        }
+        `,
+        {
+          light: {
+            background: "hsl(215 20.2% 65.1%)",
+            foreground: "hsl(222.2 84% 4.9%)",
+            primary: "hsl(215 20.2% 65.1%)",
+          },
+          dark: {
+            foreground: "hsl(60 9.1% 97.8%)",
+            primary: "hsl(222.2 84% 4.9%)",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+              :root {
+                --background: hsl(215 20.2% 65.1%);
+                --foreground: hsl(222.2 84% 4.9%);
+                --primary: hsl(215 20.2% 65.1%);
+              }
+
+              .dark {
+                --background: hsl(222.2 84% 4.9%);
+                --foreground: hsl(60 9.1% 97.8%);
+                --primary: hsl(222.2 84% 4.9%);
+              }
+
+              @theme inline {
+                --color-background: var(--background);
+                --color-foreground: var(--foreground);
+                --color-primary: var(--primary);
+              }
+
+              @layer base {
+        * {
+          @apply border-border;
+                }
+        body {
+          @apply bg-background text-foreground;
+                }
+      }
+              "
+    `)
+  })
+
+  test("should not add base layer if it is already present", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        :root {
+          --background: hsl(210 40% 98%);
+        }
+
+        .dark {
+          --background: hsl(222.2 84% 4.9%);
+        }
+
+        @theme inline {
+          --color-background: var(--background);
+        }
+
+        @layer base {
+          * {
+            @apply border-border;
+          }
+          body {
+            @apply bg-background text-foreground;
+          }
+        }
+        `,
+        {
+          light: {
+            background: "hsl(215 20.2% 65.1%)",
+            foreground: "hsl(222.2 84% 4.9%)",
+            primary: "hsl(215 20.2% 65.1%)",
+          },
+          dark: {
+            foreground: "hsl(60 9.1% 97.8%)",
+            primary: "hsl(222.2 84% 4.9%)",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+              :root {
+                --background: hsl(215 20.2% 65.1%);
+                --foreground: hsl(222.2 84% 4.9%);
+                --primary: hsl(215 20.2% 65.1%);
+              }
+
+              .dark {
+                --background: hsl(222.2 84% 4.9%);
+                --foreground: hsl(60 9.1% 97.8%);
+                --primary: hsl(222.2 84% 4.9%);
+              }
+
+              @theme inline {
+                --color-background: var(--background);
+                --color-foreground: var(--foreground);
+                --color-primary: var(--primary);
+              }
+
+              @layer base {
+                * {
+                  @apply border-border;
+                }
+                body {
+                  @apply bg-background text-foreground;
+                }
+              }
+              "
+    `)
+  })
+
+  test("it should add the dark @custom-variant if not present", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        `,
+        {
+          light: {
+            background: "hsl(0 0% 100%)",
+            foreground: "hsl(240 10% 3.9%)",
+          },
+          dark: {
+            background: "hsl(240 10% 3.9%)",
+            foreground: "hsl(0 0% 98%)",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+      :root {
+        --background: hsl(0 0% 100%);
+        --foreground: hsl(240 10% 3.9%);
+      }
+      .dark {
+        --background: hsl(240 10% 3.9%);
+        --foreground: hsl(0 0% 98%);
+      }
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+      }
+      @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }
+              "
+    `)
+  })
+})
