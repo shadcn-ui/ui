@@ -166,11 +166,13 @@ export async function getTailwindCssFile(cwd: string) {
     return null
   }
 
-  const needle =
-    tailwindVersion === "v4" ? `@import "tailwindcss"` : "@tailwind base"
   for (const file of files) {
     const contents = await fs.readFile(path.resolve(cwd, file), "utf8")
-    if (contents.includes(needle)) {
+    if (
+      contents.includes(`@import "tailwindcss"`) ||
+      contents.includes(`@import 'tailwindcss'`) ||
+      contents.includes(`@tailwind base`)
+    ) {
       return file
     }
   }
