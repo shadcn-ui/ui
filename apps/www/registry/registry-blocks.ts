@@ -617,4 +617,34 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "code",
+    author: "shadcn (https://ui.shadcn.com)",
+    title: "Code",
+    description:
+      "A simple code block with syntax highlighting for multiple languages, themes, and line numbers.",
+    type: "registry:block",
+    registryDependencies: ["button"],
+    dependencies: ["shiki"],
+    files: [
+      {
+        path: "blocks/code/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/code/components/code.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/code/components/copy-to-clipboard.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/code/util/highlight-code.ts",
+        type: "registry:lib",
+      },
+    ],
+    categories: ["code"],
+  },
 ]

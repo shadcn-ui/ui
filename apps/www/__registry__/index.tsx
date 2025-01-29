@@ -1277,6 +1277,33 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "code": {
+      name: "code",
+      description: "A simple code block with syntax highlighting for multiple languages, themes, and line numbers.",
+      type: "registry:block",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/blocks/code/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx"
+      },{
+        path: "registry/new-york/blocks/code/components/code.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/code/components/copy-to-clipboard.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/code/util/highlight-code.ts",
+        type: "registry:lib",
+        target: ""
+      }],
+      categories: ["code"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/code/page.tsx")),
+      source: "__registry__/new-york/blocks/code/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6573,6 +6600,33 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "code": {
+      name: "code",
+      description: "A simple code block with syntax highlighting for multiple languages, themes, and line numbers.",
+      type: "registry:block",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/blocks/code/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx"
+      },{
+        path: "registry/default/blocks/code/components/code.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/code/components/copy-to-clipboard.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/code/util/highlight-code.ts",
+        type: "registry:lib",
+        target: ""
+      }],
+      categories: ["code"],
+      component: React.lazy(() => import("@/registry/default/blocks/code/page.tsx")),
+      source: "__registry__/default/blocks/code/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {

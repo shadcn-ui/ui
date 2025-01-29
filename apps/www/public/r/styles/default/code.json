@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code",
+  "type": "registry:block",
+  "title": "Code",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A simple code block with syntax highlighting for multiple languages, themes, and line numbers.",
+  "dependencies": [
+    "shiki"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/code/page.tsx",
+      "content": "import React from \"react\"\n\nimport Code from \"@/registry/default/blocks/code/components/code\"\n\nconst Page = () => {\n  return (\n    <div className=\"flex flex-col min-h-svh max-w-xl mx-auto items-center justify-center gap-4 p-6 md:p-10 pb-20\">\n      <Code code={`npx shadcn@latest add code`} language=\"bash\" />\n      <Code\n        code={`// JavaScript\nconst calculateSum = (a, b) => {\n  return a + b;\n}`}\n        language=\"javascript\"\n      />\n      <Code\n        code={`# Python\ndef greet(name):\n  return f\"Hello, {name}!\"`}\n        language=\"python\"\n      />\n      <Code\n        code={`// Andromeeda theme\nconst calculateSum = (a, b) => {\n  return a + b;\n}`}\n        language=\"javascript\"\n        theme=\"andromeeda\"\n        lineNumbers\n        copyToClipboardTheme=\"dark\"\n      />\n      <Code\n        code={`# Catppuccin Macchiato theme\ndef greet(name):\n  return f\"Hello, {name}!\"`}\n        language=\"python\"\n        theme=\"catppuccin-macchiato\"\n        lineNumbers\n        copyToClipboardTheme=\"dark\"\n      />\n      <Code\n        code={`# Monokai theme\nclass Animal\n  def initialize(name)\n    @name = name\n  end\nend`}\n        language=\"ruby\"\n        theme=\"monokai\"\n        lineNumbers\n        copyToClipboardTheme=\"dark\"\n      />\n    </div>\n  )\n}\n\nexport default Page\n",
+      "type": "registry:page",
+      "target": "app/dashboard/page.tsx"
+    },
+    {
+      "path": "blocks/code/components/code.tsx",
+      "content": "\"use client\"\n\nimport { useLayoutEffect, useState } from \"react\"\nimport { useTheme } from \"next-themes\"\nimport { BundledLanguage, BundledTheme, TokensResult } from \"shiki\"\n\nimport { getTokens } from \"../util/highlight-code\"\nimport { BlockCopyCodeButton } from \"./copy-to-clipboard\"\n\ntype CodeProps = {\n  code: string\n  language?: BundledLanguage\n  theme?: BundledTheme\n  lineNumbers?: boolean\n  copyToClipboardTheme?: \"light\" | \"dark\" | undefined\n}\n\nexport function Code({\n  code,\n  language = \"bash\",\n  theme,\n  lineNumbers = false,\n  copyToClipboardTheme = undefined,\n}: CodeProps) {\n  const [highlightedTokens, setHighlightedTokens] = useState<\n    TokensResult | undefined\n  >(undefined)\n  const { theme: appTheme } = useTheme()\n\n  useLayoutEffect(() => {\n    void getTokens(code, language, appTheme, theme).then(setHighlightedTokens)\n  }, [appTheme])\n\n  return (\n    highlightedTokens && (\n      <div className=\"relative w-full\">\n        <div className=\"absolute right-4 top-4 z-10\">\n          <BlockCopyCodeButton\n            content={code}\n            forceTheme={copyToClipboardTheme}\n          />\n        </div>\n        <div\n          data-rehype-pretty-code-fragment\n          className=\"relative flex-1 overflow-hidden rounded-lg after:absolute after:inset-y-0 after:left-0 after:bg-foreground [&_.line:after]:w-10 [&_.line:before]:sticky [&_.line:before]:left-2 [&_.line:before]:z-10 [&_.line:before]:translate-y-[-1px] [&_.line:before]:pr-1 [&_pre]:h-[--height] [&_pre]:overflow-auto [&_pre]:py-4 [&_pre]:font-mono dark:[&_pre]:bg-zinc-900 [&_pre]:bg-zinc-100 [&_pre]:text-sm [&_pre]:leading-relaxed\"\n        >\n          <pre\n            style={{\n              backgroundColor: theme ? highlightedTokens.bg : undefined,\n            }}\n          >\n            <code {...(lineNumbers ? { \"data-line-numbers\": true } : {})}>\n              {highlightedTokens.tokens.map((lines, index) => (\n                <span className=\"line\" key={index}>\n                  {lines.map((token, tokenIndex) => (\n                    <span key={tokenIndex} style={{ color: token.color }}>\n                      {token.content}\n                    </span>\n                  ))}\n                </span>\n              ))}\n            </code>\n          </pre>\n        </div>\n      </div>\n    )\n  )\n}\n\nexport default Code\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "blocks/code/components/copy-to-clipboard.tsx",
+      "content": "\"use client\"\n\nimport { useRef } from \"react\"\nimport { Check, Clipboard } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { useCopyToClipboard } from \"@/hooks/use-copy-to-clipboard\"\nimport { Button } from \"@/registry/default/ui/button\"\n\ntype BlockCopyCodeButtonProps = {\n  content: string\n  forceTheme?: \"light\" | \"dark\"\n}\n\nexport function BlockCopyCodeButton({\n  content,\n  forceTheme,\n}: BlockCopyCodeButtonProps) {\n  const ref = useRef<HTMLButtonElement>(null)\n  const { copyToClipboard, isCopied } = useCopyToClipboard()\n\n  if (!content) {\n    return null\n  }\n\n  return (\n    <Button\n      ref={ref}\n      onClick={() => {\n        copyToClipboard(content)\n        ref.current?.blur()\n      }}\n      className={cn(\n        \"h-6 w-6 shrink-0 rounded-lg p-0 hover:bg-foreground hover:text-background focus:bg-foreground focus:text-background focus-visible:bg-foreground focus-visible:text-background active:bg-foreground active:text-background data-[active=true]:bg-foreground data-[active=true]:text-background [&>svg]:size-3\",\n        forceTheme === \"dark\" && \"text-white hover:bg-white hover:text-black\",\n        forceTheme === \"light\" && \"text-black hover:bg-black hover:text-white\"\n      )}\n      variant=\"ghost\"\n    >\n      {isCopied ? <Check /> : <Clipboard />}\n    </Button>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "blocks/code/util/highlight-code.ts",
+      "content": "import { BundledLanguage, BundledTheme } from \"shiki\"\n\nexport const getTokens = async (\n  code: string,\n  language: BundledLanguage,\n  appTheme?: string,\n  theme?: BundledTheme\n) => {\n  const { codeToTokens } = await import(\"shiki\")\n\n  return await codeToTokens(code, {\n    lang: language as BundledLanguage,\n    theme:\n      theme ??\n      (appTheme === \"light\" ? \"github-light-default\" : \"github-dark-default\"),\n  })\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "code"
+  ]
+}
