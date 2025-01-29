@@ -87,6 +87,7 @@ export async function transformCssVars(
 
     if (options.tailwindConfig) {
       plugins.push(updateTailwindConfigPlugin(options.tailwindConfig))
+      plugins.push(updateTailwindConfigAnimationPlugin(options.tailwindConfig))
       plugins.push(updateTailwindConfigKeyframesPlugin(options.tailwindConfig))
     }
   }
@@ -513,7 +514,7 @@ function updateTailwindConfigKeyframesPlugin(
       }
 
       const themeNode = upsertThemeNode(root)
-      const keyframesNode = themeNode.nodes?.find(
+      const existingKeyFrameNodes = themeNode.nodes?.filter(
         (node): node is AtRule =>
           node.type === "atrule" && node.name === "keyframes"
       )
@@ -537,11 +538,14 @@ function updateTailwindConfigKeyframesPlugin(
         }
 
         if (
-          keyframesNode?.nodes?.find(
-            (node): node is postcss.Declaration =>
-              node.type === "decl" && node.prop === keyframeName
+          existingKeyFrameNodes?.find(
+            (node): node is postcss.AtRule =>
+              node.type === "atrule" &&
+              node.name === "keyframes" &&
+              node.params === keyframeName
           )
         ) {
+          console.log("Keyframe already present", keyframeName)
           continue
         }
 
@@ -568,6 +572,50 @@ function updateTailwindConfigKeyframesPlugin(
         }
 
         themeNode.append(keyframeNode)
+      }
+    },
+  }
+}
+
+function updateTailwindConfigAnimationPlugin(
+  tailwindConfig: z.infer<typeof registryItemTailwindSchema>["config"]
+) {
+  return {
+    postcssPlugin: "update-tailwind-config-animation",
+    Once(root: Root) {
+      if (!tailwindConfig?.theme?.extend?.animation) {
+        return
+      }
+
+      const themeNode = upsertThemeNode(root)
+      const existingAnimationNodes = themeNode.nodes?.filter(
+        (node): node is postcss.Declaration =>
+          node.type === "decl" && node.prop.startsWith("--animation-")
+      )
+
+      const parsedAnimationValue = z
+        .record(z.string(), z.string())
+        .safeParse(tailwindConfig.theme.extend.animation)
+      if (!parsedAnimationValue.success) {
+        return
+      }
+
+      for (const [key, value] of Object.entries(parsedAnimationValue.data)) {
+        const prop = `--animation-${key}`
+        if (
+          existingAnimationNodes?.find(
+            (node): node is postcss.Declaration => node.prop === prop
+          )
+        ) {
+          continue
+        }
+
+        const animationNode = postcss.decl({
+          prop,
+          value,
+          raws: { semicolon: true, between: ": ", before: "\n  " },
+        })
+        themeNode.append(animationNode)
       }
     },
   }
