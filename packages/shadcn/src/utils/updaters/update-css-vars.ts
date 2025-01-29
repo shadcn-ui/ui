@@ -104,9 +104,13 @@ export async function transformCssVars(
     from: undefined,
   })
 
-  return result.css
-    .replace(/\/\* ---break--- \*\//g, "")
-    .replace(/(\n\s*\n)+/g, "\n\n")
+  let output = result.css.replace(/\/\* ---break--- \*\//g, "")
+
+  if (options.tailwindVersion === "v4") {
+    output = output.replace(/(\n\s*\n)+/g, "\n\n")
+  }
+
+  return output
 }
 
 function updateBaseLayerPlugin() {
@@ -199,6 +203,7 @@ function updateCssVarsPlugin(
           },
         })
         root.append(baseLayer)
+        root.insertBefore(baseLayer, postcss.comment({ text: "---break---" }))
       }
 
       if (baseLayer !== undefined) {

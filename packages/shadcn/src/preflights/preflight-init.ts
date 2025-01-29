@@ -78,7 +78,15 @@ export async function preFlightInit(
     )}.`
   )
 
-  const tailwindSpinner = spinner(`Validating Tailwind CSS.`, {
+  let tailwindSpinnerMessage = "Validating Tailwind CSS."
+
+  if (projectInfo.tailwindVersion === "v4") {
+    tailwindSpinnerMessage = `Validating Tailwind CSS config. Found ${highlighter.info(
+      "v4"
+    )}.`
+  }
+
+  const tailwindSpinner = spinner(tailwindSpinnerMessage, {
     silent: options.silent,
   }).start()
   if (
