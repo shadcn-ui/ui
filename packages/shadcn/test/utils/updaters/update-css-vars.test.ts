@@ -1,6 +1,9 @@
 import { describe, expect, test } from "vitest"
 
-import { transformCssVars } from "../../../src/utils/updaters/update-css-vars"
+import {
+  isLocalHSLValue,
+  transformCssVars,
+} from "../../../src/utils/updaters/update-css-vars"
 
 describe("transformCssVars", () => {
   test("should add light and dark css vars if not present", async () => {
@@ -328,6 +331,72 @@ describe("transformCssVarsV4", () => {
                 --color-background: var(--background);
                 --color-foreground: var(--foreground);
                 --color-primary: var(--primary);
+              }
+
+              @layer base {
+        * {
+          @apply border-border;
+                }
+        body {
+          @apply bg-background text-foreground;
+                }
+      }
+              "
+    `)
+  })
+
+  test("should only add hsl and color vars if color", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        :root {
+          --background: hsl(210 40% 98%);
+        }
+
+        .dark {
+          --background: hsl(222.2 84% 4.9%);
+        }
+
+        @theme inline {
+          --color-background: var(--background);
+        }
+        `,
+        {
+          light: {
+            background: "215 20.2% 65.1%",
+            foreground: "222.2 84% 4.9%",
+            primary: "215 20.2% 65.1%",
+            foo: "0.5rem",
+          },
+          dark: {
+            foreground: "60 9.1% 97.8%",
+            primary: "222.2 84% 4.9%",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+              :root {
+                --background: hsl(215 20.2% 65.1%);
+                --foreground: hsl(222.2 84% 4.9%);
+                --primary: hsl(215 20.2% 65.1%);
+                --foo: 0.5rem;
+              }
+
+              .dark {
+                --background: hsl(222.2 84% 4.9%);
+                --foreground: hsl(60 9.1% 97.8%);
+                --primary: hsl(222.2 84% 4.9%);
+              }
+
+              @theme inline {
+                --color-background: var(--background);
+                --color-foreground: var(--foreground);
+                --color-primary: var(--primary);
+                --foo: var(--foo);
               }
 
               @layer base {
@@ -912,5 +981,17 @@ describe("transformCssVarsV4", () => {
       }
               "
     `)
+  })
+})
+
+describe("isLocalHSLValue", () => {
+  test.each([
+    ["210 40% 98%", true],
+    ["rgb(210 40% 98%)", false],
+    ["oklch(210 40% 98%)", false],
+    ["10 42 98%", false],
+    ["hsl(210 40% 98% / 0.5)", false],
+  ])("%s -> %s", (value, expected) => {
+    expect(isLocalHSLValue(value)).toBe(expected)
   })
 })

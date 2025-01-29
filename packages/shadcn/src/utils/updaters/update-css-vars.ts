@@ -350,12 +350,7 @@ function updateCssVarsPluginV4(
         Object.entries(vars).forEach(([key, value]) => {
           const prop = `--${key.replace(/^--/, "")}`
 
-          if (
-            !value.startsWith("hsl") &&
-            !value.startsWith("rgb") &&
-            !value.startsWith("#") &&
-            !value.startsWith("oklch")
-          ) {
+          if (isLocalHSLValue(value)) {
             value = `hsl(${value})`
           }
 
@@ -397,8 +392,19 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
       const themeNode = upsertThemeNode(root)
 
       for (const color of colors) {
+        const value = Object.values(cssVars).find((vars) => vars[color])?.[
+          color
+        ]
+
+        if (!value) {
+          continue
+        }
+
         const colorVar = postcss.decl({
-          prop: `--color-${color.replace(/^--/, "")}`,
+          prop:
+            isLocalHSLValue(value) || isColorValue(value)
+              ? `--color-${color.replace(/^--/, "")}`
+              : `--${color.replace(/^--/, "")}`,
           value: `var(--${color})`,
           raws: { semicolon: true },
         })
@@ -629,4 +635,31 @@ function getQuoteType(root: Root): "single" | "double" {
     return "single"
   }
   return "double"
+}
+
+export function isLocalHSLValue(value: string) {
+  if (
+    value.startsWith("hsl") ||
+    value.startsWith("rgb") ||
+    value.startsWith("#") ||
+    value.startsWith("oklch")
+  ) {
+    return false
+  }
+
+  const chunks = value.split(" ")
+
+  return (
+    chunks.length === 3 &&
+    chunks.slice(1, 3).every((chunk) => chunk.includes("%"))
+  )
+}
+
+export function isColorValue(value: string) {
+  return (
+    value.startsWith("hsl") ||
+    value.startsWith("rgb") ||
+    value.startsWith("#") ||
+    value.startsWith("oklch")
+  )
 }
