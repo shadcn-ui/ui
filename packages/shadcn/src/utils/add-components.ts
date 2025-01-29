@@ -1,5 +1,13 @@
 import path from "path"
 import {
+  fetchRegistry,
+  getRegistryParentMap,
+  getRegistryTypeAliasMap,
+  registryResolveItemsTree,
+  resolveRegistryItems,
+} from "@/src/registry/api"
+import { registryItemSchema } from "@/src/registry/schema"
+import {
   configSchema,
   findCommonRoot,
   findPackageRoot,
@@ -9,14 +17,6 @@ import {
 } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
-import {
-  fetchRegistry,
-  getRegistryParentMap,
-  getRegistryTypeAliasMap,
-  registryResolveItemsTree,
-  resolveRegistryItems,
-} from "@/src/utils/registry"
-import { registryItemSchema } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"

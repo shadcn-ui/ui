@@ -14,10 +14,17 @@
         "registry:ui",
         "registry:hook",
         "registry:theme",
-        "registry:page"
+        "registry:page",
+        "registry:file"
       ]
     },
     "description": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "author": {
       "type": "string"
     },
     "dependencies": {
