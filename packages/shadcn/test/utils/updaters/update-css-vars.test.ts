@@ -33,6 +33,7 @@ describe("transformCssVars", () => {
       "@tailwind base;
       @tailwind components;
       @tailwind utilities;
+
       @layer base {
         :root {
           --background: white;
@@ -104,6 +105,8 @@ describe("transformCssVars", () => {
           --foreground: 60 9.1% 97.8%;
         }
       }
+
+
 
       @layer base {
         * {
