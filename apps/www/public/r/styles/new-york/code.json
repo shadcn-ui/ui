@@ -31,7 +31,7 @@
       "target": ""
     },
     {
-      "path": "blocks/code/util/highlight-code.ts",
+      "path": "blocks/code/lib/highlight-code.ts",
       "content": "import { BundledLanguage, BundledTheme } from \"shiki\"\n\nexport const getTokens = async (\n  code: string,\n  language: BundledLanguage,\n  appTheme?: string,\n  theme?: BundledTheme\n) => {\n  const { codeToTokens } = await import(\"shiki\")\n\n  return await codeToTokens(code, {\n    lang: language as BundledLanguage,\n    theme:\n      theme ??\n      (appTheme === \"light\" ? \"github-light-default\" : \"github-dark-default\"),\n  })\n}\n",
       "type": "registry:lib",
       "target": ""

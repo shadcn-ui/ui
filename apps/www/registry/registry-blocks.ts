@@ -641,7 +641,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
       {
-        path: "blocks/code/util/highlight-code.ts",
+        path: "blocks/code/lib/highlight-code.ts",
         type: "registry:lib",
       },
     ],

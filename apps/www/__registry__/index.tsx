@@ -1295,7 +1295,7 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: ""
       },{
-        path: "registry/new-york/blocks/code/util/highlight-code.ts",
+        path: "registry/new-york/blocks/code/lib/highlight-code.ts",
         type: "registry:lib",
         target: ""
       }],
@@ -6620,7 +6620,7 @@ export const Index: Record<string, any> = {
         type: "registry:component",
         target: ""
       },{
-        path: "registry/default/blocks/code/util/highlight-code.ts",
+        path: "registry/default/blocks/code/lib/highlight-code.ts",
         type: "registry:lib",
         target: ""
       }],
