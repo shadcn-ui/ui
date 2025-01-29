@@ -377,7 +377,7 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
     postcssPlugin: "update-theme",
     Once(root: Root) {
       // Find unique color names from light and dark.
-      const colors = Array.from(
+      const variables = Array.from(
         new Set(
           Object.keys(cssVars).flatMap((key) =>
             Object.keys(cssVars[key as keyof typeof cssVars] || {})
@@ -385,35 +385,61 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
         )
       )
 
-      if (!colors.length) {
+      if (!variables.length) {
         return
       }
 
       const themeNode = upsertThemeNode(root)
 
-      for (const color of colors) {
-        const value = Object.values(cssVars).find((vars) => vars[color])?.[
-          color
+      for (const variable of variables) {
+        const value = Object.values(cssVars).find((vars) => vars[variable])?.[
+          variable
         ]
 
         if (!value) {
           continue
         }
 
-        const colorVar = postcss.decl({
+        if (variable === "radius") {
+          const radiusVariables = {
+            sm: "calc(var(--radius) - 4px)",
+            md: "calc(var(--radius) - 2px)",
+            lg: "var(--radius)",
+            xl: "calc(var(--radius) + 4px)",
+          }
+          for (const [key, value] of Object.entries(radiusVariables)) {
+            const cssVarNode = postcss.decl({
+              prop: `--radius-${key}`,
+              value,
+              raws: { semicolon: true },
+            })
+            if (
+              themeNode?.nodes?.find(
+                (node): node is postcss.Declaration =>
+                  node.type === "decl" && node.prop === cssVarNode.prop
+              )
+            ) {
+              continue
+            }
+            themeNode?.append(cssVarNode)
+          }
+          break
+        }
+
+        const cssVarNode = postcss.decl({
           prop:
             isLocalHSLValue(value) || isColorValue(value)
-              ? `--color-${color.replace(/^--/, "")}`
-              : `--${color.replace(/^--/, "")}`,
-          value: `var(--${color})`,
+              ? `--color-${variable.replace(/^--/, "")}`
+              : `--${variable.replace(/^--/, "")}`,
+          value: `var(--${variable})`,
           raws: { semicolon: true },
         })
         const existingDecl = themeNode?.nodes?.find(
           (node): node is postcss.Declaration =>
-            node.type === "decl" && node.prop === colorVar.prop
+            node.type === "decl" && node.prop === cssVarNode.prop
         )
         if (!existingDecl) {
-          themeNode?.append(colorVar)
+          themeNode?.append(cssVarNode)
         }
       }
     },

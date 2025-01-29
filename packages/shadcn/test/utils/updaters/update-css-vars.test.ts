@@ -618,6 +618,96 @@ describe("transformCssVarsV4", () => {
     `)
   })
 
+  test("should add --radius-* if radius present", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        `,
+        {
+          light: {
+            radius: "0.125rem",
+          },
+          dark: {
+            radius: "0.5rem",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+      :root {
+        --radius: 0.125rem;
+      }
+      .dark {
+        --radius: 0.5rem;
+      }
+      @theme inline {
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+      }
+      @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }
+              "
+    `)
+  })
+
+  test("should NOT add --radius-* if already present", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+      @custom-variant dark (&:is(.dark *));
+      :root {
+        --radius: 0.125rem;
+      }
+      @theme inline {
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+      }
+        `,
+        {
+          light: {
+            radius: "0.125rem",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+            @custom-variant dark (&:is(.dark *));
+            :root {
+              --radius: 0.125rem;
+            }
+            @theme inline {
+              --radius-sm: calc(var(--radius) - 4px);
+              --radius-md: calc(var(--radius) - 2px);
+              --radius-lg: var(--radius);
+              --radius-xl: calc(var(--radius) + 4px);
+            }
+            @layer base {
+        * {
+          @apply border-border;
+              }
+        body {
+          @apply bg-background text-foreground;
+              }
+      }
+              "
+    `)
+  })
+
   test("should add plugin if not present", async () => {
     expect(
       await transformCssVars(
