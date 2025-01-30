@@ -78,22 +78,25 @@ export async function transformCssVars(
 
   let plugins = [updateCssVarsPlugin(cssVars)]
 
+  if (options.cleanupDefaultNextStyles) {
+    plugins.push(cleanupDefaultNextStylesPlugin())
+  }
+
   if (options.tailwindVersion === "v4") {
-    plugins = [
-      addCustomVariant({ params: "dark (&:is(.dark *))" }),
-      updateCssVarsPluginV4(cssVars),
-      updateThemePlugin(cssVars),
-    ]
+    plugins = [addCustomVariant({ params: "dark (&:is(.dark *))" })]
+
+    if (options.cleanupDefaultNextStyles) {
+      plugins.push(cleanupDefaultNextStylesPlugin())
+    }
+
+    plugins.push(updateCssVarsPluginV4(cssVars))
+    plugins.push(updateThemePlugin(cssVars))
 
     if (options.tailwindConfig) {
       plugins.push(updateTailwindConfigPlugin(options.tailwindConfig))
       plugins.push(updateTailwindConfigAnimationPlugin(options.tailwindConfig))
       plugins.push(updateTailwindConfigKeyframesPlugin(options.tailwindConfig))
     }
-  }
-
-  if (options.cleanupDefaultNextStyles) {
-    plugins.push(cleanupDefaultNextStylesPlugin())
   }
 
   if (config.tailwind.cssVariables) {
@@ -367,7 +370,12 @@ function updateCssVarsPluginV4(
         }
 
         Object.entries(vars).forEach(([key, value]) => {
-          const prop = `--${key.replace(/^--/, "")}`
+          let prop = `--${key.replace(/^--/, "")}`
+
+          // Special case for sidebar-background.
+          if (prop === "--sidebar-background") {
+            prop = "--sidebar"
+          }
 
           if (isLocalHSLValue(value)) {
             value = `hsl(${value})`
@@ -450,12 +458,22 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
           break
         }
 
+        let prop =
+          isLocalHSLValue(value) || isColorValue(value)
+            ? `--color-${variable.replace(/^--/, "")}`
+            : `--${variable.replace(/^--/, "")}`
+        if (prop === "--color-sidebar-background") {
+          prop = "--color-sidebar"
+        }
+
+        let propValue = `var(--${variable})`
+        if (prop === "--color-sidebar") {
+          propValue = "var(--sidebar)"
+        }
+
         const cssVarNode = postcss.decl({
-          prop:
-            isLocalHSLValue(value) || isColorValue(value)
-              ? `--color-${variable.replace(/^--/, "")}`
-              : `--${variable.replace(/^--/, "")}`,
-          value: `var(--${variable})`,
+          prop,
+          value: propValue,
           raws: { semicolon: true },
         })
         const existingDecl = themeNode?.nodes?.find(
