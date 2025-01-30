@@ -50,7 +50,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     aliasPrefix,
     packageJson,
   ] = await Promise.all([
-    fg.glob("**/{next,vite,astro}.config.*|gatsby-config.*|composer.json", {
+    fg.glob("**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json", {
       cwd,
       deep: 3,
       ignore: PROJECT_SHARED_IGNORE,
@@ -113,6 +113,17 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     )
   ) {
     type.framework = FRAMEWORKS["remix"]
+    return type
+  }
+
+  // TanStack Start.
+  if (
+    configFiles.find((file) => file.startsWith("app.config."))?.length &&
+    Object.keys(packageJson?.dependencies ?? {}).find((dep) =>
+      dep.startsWith("@tanstack/start")
+    )
+  ) {
+    type.framework = FRAMEWORKS["tanstack-start"]
     return type
   }
 
