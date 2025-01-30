@@ -12,24 +12,23 @@
     "clsx": "^2.1.1",
     "lucide-react": "0.456.0",
     "next-themes": "^0.4.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@turbo/gen": "^2.2.3",
-    "@types/node": "^22.9.0",
-    "@types/react": "18.3.0",
-    "@types/react-dom": "18.3.1",
+    "@types/node": "^catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
-    "react": "^18.3.1",
-    "tailwindcss": "^3.4.14",
-    "typescript": "^5.6.3"
+    "postcss": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
   },
   "exports": {
     "./globals.css": "./src/styles/globals.css",

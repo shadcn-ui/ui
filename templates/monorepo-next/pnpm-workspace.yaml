@@ -1,3 +1,15 @@
 packages:
   - "apps/*"
   - "packages/*"
+catalog:
+  "typescript": "^5.6.3"
+  "tailwindcss": "^3.4.14"
+  "postcss": "^8.4.47"
+  "eslint": "^9.15.0"
+  "@types/node": "^22.9.0"
+catalogs:
+  react19:
+    "react": "^19.0.0"
+    "react-dom": "^19.0.0"
+    "@types/react": "18.3.0"
+    "@types/react-dom": "18.3.1"
