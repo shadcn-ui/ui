@@ -101,6 +101,9 @@ export async function preFlightInit(
   ) {
     errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
     tailwindSpinner?.fail()
+  } else if (!projectInfo.tailwindVersion) {
+    errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
+    tailwindSpinner?.fail()
   } else {
     tailwindSpinner?.succeed()
   }
