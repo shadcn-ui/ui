@@ -53,7 +53,7 @@
     "embla-carousel-autoplay": "8.0.0-rc15",
     "embla-carousel-react": "8.0.0-rc15",
     "input-otp": "^1.2.2",
-    "lucide-react": "0.359.0",
+    "lucide-react": "0.474.0",
     "next": "15.1.6",
     "postcss": "^8.5.1",
     "react": "^19.0.0",
