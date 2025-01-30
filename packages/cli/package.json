@@ -45,7 +45,7 @@
     "test:dev": "REGISTRY_URL=http://localhost:3333 vitest run"
   },
   "dependencies": {
-    "@antfu/ni": "^0.21.4",
+    "@antfu/ni": "^23.2.0",
     "@babel/core": "^7.22.1",
     "@babel/parser": "^7.22.6",
     "@babel/plugin-transform-typescript": "^7.22.5",
