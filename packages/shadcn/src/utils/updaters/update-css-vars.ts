@@ -2,6 +2,7 @@ import { promises as fs } from "fs"
 import path from "path"
 import { registryItemCssVarsSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
+import { TailwindVersion, getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
 import postcss from "postcss"
@@ -16,6 +17,7 @@ export async function updateCssVars(
   options: {
     cleanupDefaultNextStyles?: boolean
     silent?: boolean
+    tailwindVersion?: TailwindVersion
   }
 ) {
   if (
@@ -29,6 +31,7 @@ export async function updateCssVars(
   options = {
     cleanupDefaultNextStyles: false,
     silent: false,
+    tailwindVersion: "v3",
     ...options,
   }
   const cssFilepath = config.resolvedPaths.tailwindCss
@@ -45,6 +48,7 @@ export async function updateCssVars(
   const raw = await fs.readFile(cssFilepath, "utf8")
   let output = await transformCssVars(raw, cssVars, config, {
     cleanupDefaultNextStyles: options.cleanupDefaultNextStyles,
+    tailwindVersion: options.tailwindVersion,
   })
   await fs.writeFile(cssFilepath, output, "utf8")
   cssVarsSpinner.succeed()
@@ -56,21 +60,32 @@ export async function transformCssVars(
   config: Config,
   options: {
     cleanupDefaultNextStyles?: boolean
+    tailwindVersion?: TailwindVersion
   } = {
     cleanupDefaultNextStyles: false,
+    tailwindVersion: "v3",
   }
 ) {
   options = {
     cleanupDefaultNextStyles: false,
+    tailwindVersion: "v3",
     ...options,
   }
 
-  const plugins = [updateCssVarsPlugin(cssVars)]
+  let plugins = [updateCssVarsPlugin(cssVars)]
+
+  if (options.tailwindVersion === "v4") {
+    plugins = [
+      addCustomVariant({ params: "dark (&:is(.dark *))" }),
+      updateCssVarsPluginV4(cssVars),
+      updateThemePlugin(cssVars),
+    ]
+  }
+
   if (options.cleanupDefaultNextStyles) {
     plugins.push(cleanupDefaultNextStylesPlugin())
   }
 
-  // Only add the base layer plugin if we're using css variables.
   if (config.tailwind.cssVariables) {
     plugins.push(updateBaseLayerPlugin())
   }
@@ -297,4 +312,127 @@ function addOrUpdateVars(
 
     existingDecl ? existingDecl.replaceWith(newDecl) : ruleNode?.append(newDecl)
   })
+}
+
+function updateCssVarsPluginV4(
+  cssVars: z.infer<typeof registryItemCssVarsSchema>
+) {
+  return {
+    postcssPlugin: "update-css-vars-v4",
+    Once(root: Root) {
+      Object.entries(cssVars).forEach(([key, vars]) => {
+        const selector = key === "light" ? ":root" : `.${key}`
+
+        let ruleNode = root.nodes?.find(
+          (node): node is Rule =>
+            node.type === "rule" && node.selector === selector
+        )
+
+        if (!ruleNode) {
+          ruleNode = postcss.rule({
+            selector,
+            nodes: [],
+            raws: { semicolon: true, between: " ", before: "\n" },
+          })
+          root.append(ruleNode)
+        }
+
+        Object.entries(vars).forEach(([key, value]) => {
+          const prop = `--${key.replace(/^--/, "")}`
+
+          if (
+            !value.startsWith("hsl") &&
+            !value.startsWith("rgb") &&
+            !value.startsWith("#") &&
+            !value.startsWith("oklch")
+          ) {
+            value = `hsl(${value})`
+          }
+
+          const newDecl = postcss.decl({
+            prop,
+            value,
+            raws: { semicolon: true },
+          })
+          const existingDecl = ruleNode?.nodes.find(
+            (node): node is postcss.Declaration =>
+              node.type === "decl" && node.prop === prop
+          )
+          existingDecl
+            ? existingDecl.replaceWith(newDecl)
+            : ruleNode?.append(newDecl)
+        })
+      })
+    },
+  }
+}
+
+function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
+  return {
+    postcssPlugin: "update-theme",
+    Once(root: Root) {
+      let themeNode = root.nodes.find(
+        (node): node is AtRule =>
+          node.type === "atrule" &&
+          node.name === "theme" &&
+          node.params === "inline"
+      )
+
+      if (!themeNode) {
+        themeNode = postcss.atRule({
+          name: "theme",
+          params: "inline",
+          nodes: [],
+          raws: { semicolon: true, between: " ", before: "\n" },
+        })
+        root.append(themeNode)
+      }
+
+      // Find unique color names from light and dark.
+      const colors = Array.from(
+        new Set(
+          Object.keys(cssVars).flatMap((key) =>
+            Object.keys(cssVars[key as keyof typeof cssVars] || {})
+          )
+        )
+      )
+
+      for (const color of colors) {
+        const colorVar = postcss.decl({
+          prop: `--color-${color.replace(/^--/, "")}`,
+          value: `var(--${color})`,
+          raws: { semicolon: true },
+        })
+        const existingDecl = themeNode?.nodes?.find(
+          (node): node is postcss.Declaration =>
+            node.type === "decl" && node.prop === colorVar.prop
+        )
+        if (!existingDecl) {
+          themeNode?.append(colorVar)
+        }
+      }
+    },
+  }
+}
+
+function addCustomVariant({ params }: { params: string }) {
+  return {
+    postcssPlugin: "add-custom-variant",
+    Once(root: Root) {
+      const customVariant = root.nodes.find(
+        (node): node is AtRule =>
+          node.type === "atrule" && node.name === "custom-variant"
+      )
+      if (!customVariant) {
+        root.insertAfter(
+          root.nodes[0],
+          postcss.atRule({
+            name: "custom-variant",
+            params,
+            raws: { semicolon: true, before: "\n" },
+          })
+        )
+      }
+    },
+  }
 }
