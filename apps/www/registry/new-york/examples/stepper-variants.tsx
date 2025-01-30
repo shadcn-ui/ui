@@ -120,7 +120,7 @@ const VerticalStepper = () => {
       variant="vertical"
     >
       {({ methods }) => (
-        <>
+        <React.Fragment>
           <StepperNavigation>
             {methods.all.map((step) => (
               <StepperStep
@@ -151,7 +151,7 @@ const VerticalStepper = () => {
               {methods.isLast ? "Reset" : "Next"}
             </Button>
           </StepperControls>
-        </>
+        </React.Fragment>
       )}
     </Stepper>
   )
@@ -161,7 +161,7 @@ const CircleStepper = () => {
   return (
     <Stepper instance={stepperInstance} className="space-y-4" variant="circle">
       {({ methods }) => (
-        <>
+        <React.Fragment>
           <StepperNavigation>
             <StepperStep of={methods.current}>
               <StepperTitle>{methods.current.title}</StepperTitle>
@@ -188,7 +188,7 @@ const CircleStepper = () => {
               {methods.isLast ? "Reset" : "Next"}
             </Button>
           </StepperControls>
-        </>
+        </React.Fragment>
       )}
     </Stepper>
   )

@@ -64,7 +64,7 @@ export default function StepperVerticalFollow() {
         tracking={tracking}
       >
         {({ methods }) => (
-          <>
+          <React.Fragment>
             <StepperNavigation>
               {methods.all.map((step) => (
                 <StepperStep
@@ -103,7 +103,7 @@ export default function StepperVerticalFollow() {
                 </StepperStep>
               ))}
             </StepperNavigation>
-          </>
+          </React.Fragment>
         )}
       </Stepper>
     </div>

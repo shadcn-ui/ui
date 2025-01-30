@@ -36,7 +36,7 @@ export default function StepperResponsiveVariant() {
       variant={isMobile ? "vertical" : "horizontal"}
     >
       {({ methods }) => (
-        <>
+        <React.Fragment>
           <StepperNavigation>
             {methods.all.map((step) => (
               <StepperStep
@@ -76,7 +76,7 @@ export default function StepperResponsiveVariant() {
               {methods.isLast ? "Reset" : "Next"}
             </Button>
           </StepperControls>
-        </>
+        </React.Fragment>
       )}
     </Stepper>
   )
