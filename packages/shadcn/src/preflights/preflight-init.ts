@@ -78,7 +78,15 @@ export async function preFlightInit(
     )}.`
   )
 
-  const tailwindSpinner = spinner(`Validating Tailwind CSS.`, {
+  let tailwindSpinnerMessage = "Validating Tailwind CSS."
+
+  if (projectInfo.tailwindVersion === "v4") {
+    tailwindSpinnerMessage = `Validating Tailwind CSS config. Found ${highlighter.info(
+      "v4"
+    )}.`
+  }
+
+  const tailwindSpinner = spinner(tailwindSpinnerMessage, {
     silent: options.silent,
   }).start()
   if (
@@ -91,6 +99,9 @@ export async function preFlightInit(
     projectInfo.tailwindVersion === "v4" &&
     !projectInfo?.tailwindCssFile
   ) {
+    errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
+    tailwindSpinner?.fail()
+  } else if (!projectInfo.tailwindVersion) {
     errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
     tailwindSpinner?.fail()
   } else {
