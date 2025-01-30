@@ -19,6 +19,7 @@ type ProjectInfo = {
   isTsx: boolean
   tailwindConfigFile: string | null
   tailwindCssFile: string | null
+  tailwindVersion: "v3" | "v4" | null
   aliasPrefix: string | null
 }
 
@@ -43,6 +44,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     isTsx,
     tailwindConfigFile,
     tailwindCssFile,
+    tailwindVersion,
     aliasPrefix,
     packageJson,
   ] = await Promise.all([
@@ -55,6 +57,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     isTypeScriptProject(cwd),
     getTailwindConfigFile(cwd),
     getTailwindCssFile(cwd),
+    getTailwindVersion(cwd),
     getTsConfigAliasPrefix(cwd),
     getPackageInfo(cwd, false),
   ])
@@ -70,6 +73,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     isTsx,
     tailwindConfigFile,
     tailwindCssFile,
+    tailwindVersion,
     aliasPrefix,
   }
 
@@ -121,21 +125,50 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   return type
 }
 
+export async function getTailwindVersion(
+  cwd: string
+): Promise<ProjectInfo["tailwindVersion"]> {
+  const packageInfo = getPackageInfo(cwd)
+
+  if (
+    !packageInfo?.dependencies?.tailwindcss &&
+    !packageInfo?.devDependencies?.tailwindcss
+  ) {
+    return null
+  }
+
+  if (
+    /^(?:\^|~)?3(?:\.\d+)*(?:-.*)?$/.test(
+      packageInfo?.dependencies?.tailwindcss ||
+        packageInfo?.devDependencies?.tailwindcss ||
+        ""
+    )
+  ) {
+    return "v3"
+  }
+
+  return "v4"
+}
+
 export async function getTailwindCssFile(cwd: string) {
-  const files = await fg.glob(["**/*.css", "**/*.scss"], {
-    cwd,
-    deep: 5,
-    ignore: PROJECT_SHARED_IGNORE,
-  })
+  const [files, tailwindVersion] = await Promise.all([
+    fg.glob(["**/*.css", "**/*.scss"], {
+      cwd,
+      deep: 5,
+      ignore: PROJECT_SHARED_IGNORE,
+    }),
+    getTailwindVersion(cwd),
+  ])
 
   if (!files.length) {
     return null
   }
 
+  const needle =
+    tailwindVersion === "v4" ? `@import "tailwindcss"` : "@tailwind base"
   for (const file of files) {
     const contents = await fs.readFile(path.resolve(cwd, file), "utf8")
-    // Assume that if the file contains `@tailwind base` it's the main css file.
-    if (contents.includes("@tailwind base")) {
+    if (contents.includes(needle)) {
       return file
     }
   }
@@ -237,8 +270,8 @@ export async function getProjectConfig(
 
   if (
     !projectInfo ||
-    !projectInfo.tailwindConfigFile ||
-    !projectInfo.tailwindCssFile
+    !projectInfo.tailwindCssFile ||
+    (projectInfo.tailwindVersion === "v3" && !projectInfo.tailwindConfigFile)
   ) {
     return null
   }
@@ -249,7 +282,7 @@ export async function getProjectConfig(
     tsx: projectInfo.isTsx,
     style: "new-york",
     tailwind: {
-      config: projectInfo.tailwindConfigFile,
+      config: projectInfo.tailwindConfigFile ?? "",
       baseColor: "zinc",
       css: projectInfo.tailwindCssFile,
       cssVariables: true,

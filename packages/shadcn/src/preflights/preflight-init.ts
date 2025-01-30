@@ -81,7 +81,16 @@ export async function preFlightInit(
   const tailwindSpinner = spinner(`Validating Tailwind CSS.`, {
     silent: options.silent,
   }).start()
-  if (!projectInfo?.tailwindConfigFile || !projectInfo?.tailwindCssFile) {
+  if (
+    projectInfo.tailwindVersion === "v3" &&
+    (!projectInfo?.tailwindConfigFile || !projectInfo?.tailwindCssFile)
+  ) {
+    errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
+    tailwindSpinner?.fail()
+  } else if (
+    projectInfo.tailwindVersion === "v4" &&
+    !projectInfo?.tailwindCssFile
+  ) {
     errors[ERRORS.TAILWIND_NOT_CONFIGURED] = true
     tailwindSpinner?.fail()
   } else {
