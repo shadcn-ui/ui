@@ -54,7 +54,7 @@ jobs:
           path: packages/shadcn
 
       - name: Upload packaged artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: npm-package-shadcn@${{ steps.package-version.outputs.current-version }}-pr-${{ github.event.number }} # encode the PR number into the artifact name
           path: packages/shadcn/dist/index.js
