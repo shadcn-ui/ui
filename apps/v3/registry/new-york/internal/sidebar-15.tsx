@@ -452,7 +452,7 @@ function Calendars({
                         <SidebarMenuButton>
                           <div
                             data-active={index < 2}
-                            className="group/calendar-item flex aspect-square size-4 shrink-0 items-center justify-center rounded-sm border border-sidebar-border text-sidebar-primary-foreground data-[active=true]:border-sidebar-primary data-[active=true]:bg-sidebar-primary"
+                            className="group/calendar-item flex aspect-square size-4 shrink-0 items-center justify-center rounded-xs border border-sidebar-border text-sidebar-primary-foreground data-[active=true]:border-sidebar-primary data-[active=true]:bg-sidebar-primary"
                           >
                             <Check className="hidden size-3 group-data-[active=true]/calendar-item:block" />
                           </div>
@@ -640,7 +640,7 @@ function NavUser({
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             side={isMobile ? "bottom" : "right"}
             align="start"
             sideOffset={4}
@@ -796,7 +796,7 @@ function TeamSwitcher({
                 onClick={() => setActiveTeam(team)}
                 className="gap-2 p-2"
               >
-                <div className="flex size-6 items-center justify-center rounded-sm border">
+                <div className="flex size-6 items-center justify-center rounded-xs border">
                   <team.logo className="size-4 shrink-0" />
                 </div>
                 {team.name}

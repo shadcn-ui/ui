@@ -267,7 +267,7 @@ export default function Page() {
         } as React.CSSProperties
       }
     >
-      <header className="sticky top-0 bg-sidebar flex h-[--header-height] shrink-0 items-center gap-2 border-b px-4 isolate z-20">
+      <header className="sticky top-0 bg-sidebar flex h-(--header-height) shrink-0 items-center gap-2 border-b px-4 isolate z-20">
         <div className="flex items-center gap-2 w-full">
           <Button
             className="hidden md:flex"
@@ -294,7 +294,7 @@ export default function Page() {
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
                           <a
-                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-muted/50 to-muted p-6 no-underline outline-hidden focus:shadow-md"
                             href="/"
                           >
                             <Icons.logo className="h-6 w-6" />
@@ -311,7 +311,7 @@ export default function Page() {
 
                       <li>
                         <NavigationMenuLink asChild>
-                          <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                          <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                             <div className="text-sm font-medium leading-none">
                               Introduction
                             </div>
@@ -325,7 +325,7 @@ export default function Page() {
 
                       <li>
                         <NavigationMenuLink asChild>
-                          <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                          <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                             <div className="text-sm font-medium leading-none">
                               Installation
                             </div>
@@ -339,7 +339,7 @@ export default function Page() {
 
                       <li>
                         <NavigationMenuLink asChild>
-                          <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                          <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                             <div className="text-sm font-medium leading-none">
                               Typography
                             </div>
@@ -361,7 +361,7 @@ export default function Page() {
                       {components.map((component) => (
                         <li>
                           <NavigationMenuLink key={component.title} asChild>
-                            <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                            <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                               <div className="text-sm font-medium leading-none">
                                 {component.title}
                               </div>
@@ -391,7 +391,7 @@ export default function Page() {
       </header>
       <SidebarProvider open={open} onOpenChange={setOpen}>
         <Sidebar
-          className="top-[--header-height] pb-[--header-height]"
+          className="top-(--header-height) pb-(--header-height)"
           variant="inset"
         >
           <SidebarHeader>
@@ -551,7 +551,7 @@ export default function Page() {
                     </SidebarMenuButton>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent
-                    className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                    className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
                     side={isMobile ? "bottom" : "right"}
                     align="end"
                     sideOffset={4}

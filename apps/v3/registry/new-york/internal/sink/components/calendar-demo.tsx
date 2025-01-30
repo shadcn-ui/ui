@@ -12,7 +12,7 @@ export function CalendarDemo() {
       mode="single"
       selected={date}
       onSelect={setDate}
-      className="rounded-md border shadow"
+      className="rounded-md border shadow-sm"
     />
   )
 }

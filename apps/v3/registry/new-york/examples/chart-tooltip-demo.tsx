@@ -75,7 +75,7 @@ export default function Component() {
           className="w-[8rem]"
         />
       </div>
-      <div className="!hidden md:!flex">
+      <div className="hidden! md:flex!">
         <TooltipDemo
           label="Page Views"
           payload={[
@@ -85,7 +85,7 @@ export default function Component() {
           indicator="line"
         />
       </div>
-      <div className="!items-start !justify-start">
+      <div className="items-start! justify-start!">
         <div className="absolute left-[50px] top-[60px] z-10 text-sm font-medium">
           Indicator
         </div>
@@ -177,7 +177,7 @@ function TooltipDemo({
                 {!hideIndicator && (
                   <div
                     className={cn(
-                      "shrink-0 rounded-[2px] border-[--color-border] bg-[--color-bg]",
+                      "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
                       {
                         "h-2.5 w-2.5": indicator === "dot",
                         "w-1": indicator === "line",

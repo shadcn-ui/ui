@@ -57,7 +57,7 @@ export function TeamSwitcher({
                 onClick={() => setActiveTeam(team)}
                 className="gap-2 p-2"
               >
-                <div className="flex size-6 items-center justify-center rounded-sm border">
+                <div className="flex size-6 items-center justify-center rounded-xs border">
                   <team.logo className="size-4 shrink-0" />
                 </div>
                 {team.name}

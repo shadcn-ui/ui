@@ -55,7 +55,7 @@ export default function Component() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <PolarGrid className="fill-[--color-desktop] opacity-20" />
+            <PolarGrid className="fill-(--color-desktop) opacity-20" />
             <PolarAngleAxis dataKey="month" />
             <Radar
               dataKey="desktop"

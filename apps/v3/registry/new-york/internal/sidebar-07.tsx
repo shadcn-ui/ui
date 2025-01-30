@@ -239,7 +239,7 @@ export default function Page() {
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
-                  className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                  className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
                   align="start"
                   side="bottom"
                   sideOffset={4}
@@ -253,7 +253,7 @@ export default function Page() {
                       onClick={() => setActiveTeam(team)}
                       className="gap-2 p-2"
                     >
-                      <div className="flex size-6 items-center justify-center rounded-sm border">
+                      <div className="flex size-6 items-center justify-center rounded-xs border">
                         <team.logo className="size-4 shrink-0" />
                       </div>
                       {team.name}
@@ -388,7 +388,7 @@ export default function Page() {
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
-                  className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                  className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
                   side="bottom"
                   align="end"
                   sideOffset={4}
@@ -449,7 +449,7 @@ export default function Page() {
         <SidebarRail />
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
