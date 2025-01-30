@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 
 import { cn } from "@/lib/utils"
+import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/new-york/ui/sonner"
 
 export const fontSans = GeistSans
@@ -30,8 +31,15 @@ export default function RootLayout({
           fontMono.variable
         )}
       >
-        {children}
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )
