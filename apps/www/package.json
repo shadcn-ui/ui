@@ -80,7 +80,7 @@
     "react-resizable-panels": "^2.0.22",
     "react-wrap-balancer": "^0.4.1",
     "recharts": "2.12.7",
-    "shadcn": "2.3.0",
+    "shadcn": "2.4.0",
     "sharp": "^0.31.3",
     "sonner": "^1.2.3",
     "swr": "2.2.6-beta.3",
