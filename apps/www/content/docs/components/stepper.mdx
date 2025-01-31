@@ -500,6 +500,30 @@ You can add metadata to each step to store any information you need. This data c
 const { metadata, getMetadata, setMetadata, resetMetadata } = useStepper()
 ```
 
+## Multi Scoped
+
+The `StepperProvider` component can be used multiple times in the same application. Each instance will be independent from the others.
+
+```tsx
+const stepperInstance1 = defineStepper(
+  { id: "step-1", title: "Step 1" },
+  { id: "step-2", title: "Step 2" },
+  { id: "step-3", title: "Step 3" }
+)
+
+const stepperInstance2 = defineStepper(
+  { id: "step-1", title: "Step 1" },
+  { id: "step-2", title: "Step 2" },
+  { id: "step-3", title: "Step 3" }
+)
+
+<stepperInstance1.StepperProvider>
+  <stepperInstance2.StepperProvider>
+    ...
+  </stepperInstance2.StepperProvider>
+</stepperInstance1.StepperProvider>
+```
+
 ## Examples
 
 ### Variants
