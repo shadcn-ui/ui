@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/checkbox-disabled.tsx",
-      "content": "import { Checkbox } from \"@/registry/new-york/ui/checkbox\"\n\nexport default function CheckboxDisabled() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Checkbox id=\"terms2\" disabled />\n      <label\n        htmlFor=\"terms2\"\n        className=\"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n      >\n        Accept terms and conditions\n      </label>\n    </div>\n  )\n}\n",
+      "content": "import { Checkbox } from \"@/registry/new-york/ui/checkbox\"\r\n\r\nexport default function CheckboxDisabled() {\r\n  return (\r\n    <div className=\"flex items-center space-x-2\">\r\n      <Checkbox id=\"terms2\" disabled />\r\n      <label\r\n        htmlFor=\"terms2\"\r\n        className=\"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\r\n      >\r\n        Accept terms and conditions\r\n      </label>\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:example",
       "target": ""
     }
