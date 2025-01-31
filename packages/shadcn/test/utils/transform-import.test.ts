@@ -161,7 +161,6 @@ import { Foo } from "bar"
   import { useViewport } from "@/registry/new-york/hooks/use-viewport"
 
   import { cn } from "@/lib/utils"
-  import { bar } from "@/lib/utils/bar"
   `,
     config: {
       tsx: true,
@@ -172,5 +171,5 @@ import { Foo } from "bar"
   expect(actual).toContain(`import { cn } from "${aliases.utils}"`)
   expect(actual).toContain(`import { Button } from "${aliases.ui}/button"`)
   expect(actual).toContain(`import { Box } from "${aliases.components}/box"`)
-  expect(actual).toContain(`import { useViewport } from "${aliases.hooks}/hooks/use-viewport"`)
+  expect(actual).toContain(`import { useViewport } from "${aliases.hooks}/use-viewport"`)
 })
