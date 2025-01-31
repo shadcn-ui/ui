@@ -159,7 +159,7 @@ import { Foo } from "bar"
   import { Button } from "@/registry/new-york/ui/button"
   import { Label} from "ui/label"
   import { Box } from "@/registry/new-york/box"
-  import { useViewport } from "@/registry/new-york/hooks/use-viewport"
+  import { useIsMobile } from "@/registry/new-york/hooks/use-mobile"
 
   import { bar } from "@/registry/new-york/lib/bar"
   import { cn } from "@/lib/utils"
@@ -173,6 +173,6 @@ import { Foo } from "bar"
   expect(actual).toContain(`import { cn } from "${aliases.utils}"`)
   expect(actual).toContain(`import { Button } from "${aliases.ui}/button"`)
   expect(actual).toContain(`import { Box } from "${aliases.components}/box"`)
-  expect(actual).toContain(`import { useViewport } from "${aliases.hooks}/use-viewport"`)
+  expect(actual).toContain(`import { useIsMobile } from "${aliases.hooks}/use-mobile"`)
   expect(actual).toContain(`import { bar } from "${aliases.lib}/bar"`)
 })
