@@ -149,7 +149,8 @@ test("transform import - multi path aliases", async () => {
     "components": "@custom-alias/nested/ui/components/ui",
     "utils": "@custom-alias/nested/ui/lib/utils",
     "ui": "@custom-alias/nested/ui/components/ui",
-    "hooks": "@custom-alias/nested/ui/hooks"
+    "hooks": "@custom-alias/nested/ui/hooks",
+    "lib": "@custom-alias/nested/ui/lib"
   }
   const actual = await transform({
     filename: "test.ts",
@@ -160,6 +161,7 @@ import { Foo } from "bar"
   import { Box } from "@/registry/new-york/box"
   import { useViewport } from "@/registry/new-york/hooks/use-viewport"
 
+  import { bar } from "@/registry/new-york/lib/bar"
   import { cn } from "@/lib/utils"
   `,
     config: {
@@ -172,4 +174,5 @@ import { Foo } from "bar"
   expect(actual).toContain(`import { Button } from "${aliases.ui}/button"`)
   expect(actual).toContain(`import { Box } from "${aliases.components}/box"`)
   expect(actual).toContain(`import { useViewport } from "${aliases.hooks}/use-viewport"`)
+  expect(actual).toContain(`import { bar } from "${aliases.lib}/bar"`)
 })
