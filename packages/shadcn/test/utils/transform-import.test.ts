@@ -143,3 +143,33 @@ import { Foo } from "bar"
     })
   ).toMatchSnapshot()
 })
+
+test("transform import - multi path aliases", async () => {
+  const aliases = {
+    "components": "@custom-alias/nested/ui/components/ui",
+    "utils": "@custom-alias/nested/ui/lib/utils",
+    "ui": "@custom-alias/nested/ui/components/ui"
+  }
+  const actual = await transform({
+    filename: "test.ts",
+    raw: `import * as React from "react"
+import { Foo } from "bar"
+  import { Button } from "@/registry/new-york/ui/button"
+  import { Label} from "ui/label"
+  import { Box } from "@/registry/new-york/box"
+  import { useViewport } from "@/registry/new-york/hooks/use-viewport"
+
+  import { cn } from "@/lib/utils"
+  import { bar } from "@/lib/utils/bar"
+  `,
+    config: {
+      tsx: true,
+      aliases,
+    },
+  })
+
+  expect(actual).toContain(`import { cn } from "${aliases.utils}"`)
+  expect(actual).toContain(`import { Button } from "${aliases.ui}/button"`)
+  expect(actual).toContain(`import { Box } from "${aliases.components}/box"`)
+  expect(actual).toContain(`import { useViewport } from "${aliases.ui}/hooks/use-viewport"`)
+})
