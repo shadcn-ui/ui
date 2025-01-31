@@ -6,18 +6,8 @@ import { AppSidebar } from "@/registry/new-york/internal/sink/components/app-sid
 import { AspectRatioDemo } from "@/registry/new-york/internal/sink/components/aspect-ratio-demo"
 import { AvatarDemo } from "@/registry/new-york/internal/sink/components/avatar-demo"
 import { BadgeDemo } from "@/registry/new-york/internal/sink/components/badge-demo"
-import { BadgeDestructive } from "@/registry/new-york/internal/sink/components/badge-destructive"
-import { BadgeOutline } from "@/registry/new-york/internal/sink/components/badge-outline"
-import { BadgeSecondary } from "@/registry/new-york/internal/sink/components/badge-secondary"
 import { BreadcrumbDemo } from "@/registry/new-york/internal/sink/components/breadcrumb-demo"
 import { ButtonDemo } from "@/registry/new-york/internal/sink/components/button-demo"
-import { ButtonDestructive } from "@/registry/new-york/internal/sink/components/button-destructive"
-import { ButtonGhost } from "@/registry/new-york/internal/sink/components/button-ghost"
-import { ButtonLink } from "@/registry/new-york/internal/sink/components/button-link"
-import { ButtonLoading } from "@/registry/new-york/internal/sink/components/button-loading"
-import { ButtonOutline } from "@/registry/new-york/internal/sink/components/button-outline"
-import { ButtonSecondary } from "@/registry/new-york/internal/sink/components/button-secondary"
-import { ButtonWithIcon } from "@/registry/new-york/internal/sink/components/button-with-icon"
 import { CalendarDemo } from "@/registry/new-york/internal/sink/components/calendar-demo"
 import { CardDemo } from "@/registry/new-york/internal/sink/components/card-demo"
 import { CarouselDemo } from "@/registry/new-york/internal/sink/components/carousel-demo"
@@ -80,7 +70,7 @@ export default function SinkPage() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+        <header className="flex h-16 sticky top-0 bg-background shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 isolate z-10">
           <div className="flex items-center gap-2 px-4 w-full">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
@@ -103,7 +93,7 @@ export default function SinkPage() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4">
             <ComponentWrapper name="Accordion">
               <AccordionDemo />
             </ComponentWrapper>
@@ -121,39 +111,20 @@ export default function SinkPage() {
             </ComponentWrapper>
             <ComponentWrapper name="Badge">
               <BadgeDemo />
-              <BadgeDestructive />
-              <BadgeOutline />
-              <BadgeSecondary />
             </ComponentWrapper>
             <ComponentWrapper name="Breadcrumb">
               <BreadcrumbDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Button">
-              <div className="flex items-center gap-2">
-                <ButtonDemo />
-                <ButtonDestructive />
-                <ButtonGhost />
-                <ButtonLink />
-              </div>
-              <div className="flex items-center gap-2">
-                <ButtonLoading />
-                <ButtonOutline />
-                <ButtonSecondary />
-              </div>
-              <div className="flex items-center gap-2">
-                <ButtonWithIcon />
-              </div>
+              <ButtonDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Calendar">
               <CalendarDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Card">
-              <CardDemo className="w-full" />
+              <CardDemo />
             </ComponentWrapper>
-            <ComponentWrapper
-              name="Carousel"
-              className="[&_.max-w-xs]:max-w-[70%]"
-            >
+            <ComponentWrapper name="Carousel">
               <CarouselDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Checkbox">
@@ -201,7 +172,7 @@ export default function SinkPage() {
             <ComponentWrapper name="Menubar">
               <MenubarDemo />
             </ComponentWrapper>
-            <ComponentWrapper name="NavigationMenu" className="col-span-2">
+            <ComponentWrapper name="NavigationMenu">
               <NavigationMenuDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Pagination">
@@ -216,7 +187,7 @@ export default function SinkPage() {
             <ComponentWrapper name="RadioGroup">
               <RadioGroupDemo />
             </ComponentWrapper>
-            <ComponentWrapper name="Resizable" className="col-span-2">
+            <ComponentWrapper name="Resizable">
               <ResizableHandleDemo />
             </ComponentWrapper>
             <ComponentWrapper name="ScrollArea">
@@ -243,7 +214,7 @@ export default function SinkPage() {
             <ComponentWrapper name="Switch">
               <SwitchDemo />
             </ComponentWrapper>
-            <ComponentWrapper name="Table" className="col-span-2">
+            <ComponentWrapper name="Table">
               <TableDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Tabs">

@@ -1,6 +1,12 @@
-import { BellRing, Check } from "lucide-react"
+import Image from "next/image"
+import { BathIcon, BedIcon, LandPlotIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/new-york/ui/avatar"
+import { Badge } from "@/registry/new-york/ui/badge"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Card,
@@ -10,69 +16,128 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/new-york/ui/card"
-import { Switch } from "@/registry/new-york/ui/switch"
+import { Input } from "@/registry/new-york/ui/input"
+import { Label } from "@/registry/new-york/ui/label"
 
-const notifications = [
-  {
-    title: "Your call has been confirmed.",
-    description: "1 hour ago",
-  },
-  {
-    title: "You have a new message!",
-    description: "1 hour ago",
-  },
-  {
-    title: "Your subscription is expiring soon!",
-    description: "2 hours ago",
-  },
-]
-
-type CardProps = React.ComponentProps<typeof Card>
-
-export function CardDemo({ className, ...props }: CardProps) {
+export function CardDemo() {
   return (
-    <Card className={cn("w-[380px]", className)} {...props}>
-      <CardHeader>
-        <CardTitle>Notifications</CardTitle>
-        <CardDescription>You have 3 unread messages.</CardDescription>
-      </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className=" flex items-center space-x-4 rounded-md border p-4">
-          <BellRing />
-          <div className="flex-1 space-y-1">
-            <p className="text-sm font-medium leading-none">
-              Push Notifications
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Send notifications to device.
-            </p>
-          </div>
-          <Switch />
-        </div>
-        <div>
-          {notifications.map((notification, index) => (
-            <div
-              key={index}
-              className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
-            >
-              <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">
-                  {notification.title}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {notification.description}
-                </p>
+    <div className="flex flex-col items-start gap-4">
+      <Card>
+        <form>
+          <CardHeader>
+            <CardTitle>Login to your account</CardTitle>
+            <CardDescription>
+              Enter your email below to login to your account
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col gap-6">
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="m@example.com"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <div className="flex items-center">
+                  <Label htmlFor="password">Password</Label>
+                  <a
+                    href="#"
+                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                  >
+                    Forgot your password?
+                  </a>
+                </div>
+                <Input id="password" type="password" required />
               </div>
             </div>
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">
-          <Check /> Mark all as read
-        </Button>
-      </CardFooter>
-    </Card>
+          </CardContent>
+          <CardFooter className="flex-col gap-2">
+            <Button type="submit" className="w-full">
+              Login
+            </Button>
+            <Button variant="outline" className="w-full">
+              Login with Google
+            </Button>
+            <div className="mt-4 text-center text-sm">
+              Don&apos;t have an account?{" "}
+              <a href="#" className="underline underline-offset-4">
+                Sign up
+              </a>
+            </div>
+          </CardFooter>
+        </form>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Meeting Notes</CardTitle>
+          <CardDescription>
+            Transcript from the meeting with the client.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="text-sm">
+          <p>
+            Client requested dashboard redesign with focus on mobile
+            responsiveness.
+          </p>
+          <ol className="list-decimal pl-6 mt-4 flex flex-col gap-2">
+            <li>New analytics widgets for daily/weekly metrics</li>
+            <li>Simplified navigation menu</li>
+            <li>Dark mode support</li>
+            <li>Timeline: 6 weeks</li>
+            <li>Follow-up meeting scheduled for next Tuesday</li>
+          </ol>
+        </CardContent>
+        <CardFooter>
+          <div className="flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+              <AvatarFallback>LR</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage
+                src="https://github.com/evilrabbit.png"
+                alt="@evilrabbit"
+              />
+              <AvatarFallback>ER</AvatarFallback>
+            </Avatar>
+          </div>
+        </CardFooter>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Is this an image?</CardTitle>
+          <CardDescription>This is a card with an image.</CardDescription>
+        </CardHeader>
+        <CardContent className="p-0">
+          <Image
+            src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+            alt="Photo by Drew Beamer"
+            className="aspect-video object-cover"
+            width={500}
+            height={500}
+          />
+        </CardContent>
+        <CardFooter className="flex items-center gap-2 p-6">
+          <Badge variant="outline">
+            <BedIcon /> 4
+          </Badge>
+          <Badge variant="outline">
+            <BathIcon /> 2
+          </Badge>
+          <Badge variant="outline">
+            <LandPlotIcon /> 350m²
+          </Badge>
+          <div className="tabular-nums ml-auto font-medium">$135,000</div>
+        </CardFooter>
+      </Card>
+    </div>
   )
 }
