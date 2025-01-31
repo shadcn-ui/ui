@@ -337,11 +337,15 @@ And the components:
   components!
 </Callout>
 
+## useStepper
+
+The `useStepper` hook is used to interact with the stepper. It provides methods to interact with and render your stepper.
+
 ## StepperProvider
 
 The `StepperProvider` component is used to provide the stepper instance from `defineStepper` to the other components. You should always wrap your application in a `StepperProvider` component.
 
-Allow us to work with the `useStepper` hook in components that are within the provider without needing to be rendered in the stepper component itself.
+Allow us to work with the `useStepper` hook in components that are within the provider.
 
 For example:
 
@@ -362,7 +366,7 @@ export function MyStepper() {
 }
 
 function MyCustomComponent() {
-  const { methods } = useStepper() // ✅ This will work
+  const methods = useStepper() // ✅ This will work
   return <div>{methods.currentStep.title}</div>
 }
 ```
@@ -380,6 +384,11 @@ export function MyStepper() {
   )
 }
 ```
+
+You can set the initial step and metadata for the stepper passing these props:
+
+- `initialStep` - The ID of the initial step to display
+- `initialMetadata` - The initial metadata to set for the steps. See [Metadata](#metadata) for more information.
 
 <Callout className="mt-6">
   If you don't need the `methods` prop, you can just pass the children directly
