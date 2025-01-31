@@ -2,4 +2,4 @@
 "shadcn": minor
 ---
 
-add schema
+add theme vars support

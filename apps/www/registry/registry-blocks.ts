@@ -478,6 +478,56 @@ export const blocks: Registry["items"] = [
     categories: ["sidebar", "dashboard"],
   },
   {
+    name: "sidebar-16",
+    description: "A sidebar with a sticky site header.",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "collapsible",
+      "dropdown-menu",
+      "avatar",
+      "button",
+    ],
+    files: [
+      {
+        path: "blocks/sidebar-16/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-16/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-16/components/nav-main.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-16/components/nav-projects.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-16/components/nav-secondary.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-16/components/nav-user.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-16/components/search-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-16/components/site-header.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
     name: "login-01",
     description: "A simple login form.",
     type: "registry:block",
