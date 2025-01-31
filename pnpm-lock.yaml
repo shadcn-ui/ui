@@ -71,15 +71,18 @@ importers:
       puppeteer:
         specifier: ^23.6.0
         version: 23.6.0(typescript@5.5.3)
+      shadcn:
+        specifier: workspace:2.3.0
+        version: link:packages/shadcn
+      shadcn-ui:
+        specifier: workspace:^
+        version: link:packages/cli
       tailwindcss:
         specifier: 3.4.6
         version: 3.4.6(ts-node@10.9.2(@types/node@20.14.0)(typescript@5.5.3))
       tailwindcss-animate:
         specifier: ^1.0.5
         version: 1.0.6(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.14.0)(typescript@5.5.3)))
-      tsx:
-        specifier: ^4.1.4
-        version: 4.1.4
       turbo:
         specifier: ^1.9.9
         version: 1.9.9
@@ -102,6 +105,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.22
         version: 18.2.22
+      tsx:
+        specifier: ^4.1.4
+        version: 4.1.4
       typescript:
         specifier: ^5.5.3
         version: 5.5.3
@@ -4953,9 +4959,11 @@ packages:
 
   lodash.clone@4.5.0:
     resolution: {integrity: sha512-GhrVeweiTD6uTmmn5hV/lzgCQhccwReIVRLHp7LT4SopOjqEZ5BbX8b5WWEtAKasjmy8hR7ZPwsYlxRCku5odg==}
+    deprecated: This package is deprecated. Use structuredClone instead.
 
   lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.isfunction@3.0.9:
     resolution: {integrity: sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==}

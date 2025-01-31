@@ -1,0 +1,99 @@
+---
+title: "Theme Toggle"
+description: "A customizable dark mode toggle component."
+component: true
+links:
+  doc: https://next-themes.js.org/
+  api: https://next-themes.js.org/docs
+---
+
+<ComponentPreview
+  name="theme-toggle-demo"
+  description="A theme toggle component that switches between light and dark modes."
+/>
+
+# Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="cli">
+    npx shadcn@latest add theme-toggle
+  </TabsContent>
+
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Install the necessary dependencies:</Step>
+      ```bash
+      npm install @shadcn/theme-toggle
+      ```
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="theme-toggle" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+# Wrapping the Application with <ThemeProvider>
+
+install `next-themes` 
+
+```tsx
+npm install next-themes
+```
+
+To use the `ThemeToggle` component, make sure your app is wrapped with the `<ThemeProvider>` to handle theme changes globally.
+
+```tsx
+import { ThemeProvider } from "next-themes";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+## Import the Component 
+```tsx
+import { ThemeToggle } from "@/components/ui/theme-toggle"
+```
+
+## Add it to the Navbar for example
+```tsx
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+
+export default function Header() {
+    return (
+        <nav className="flex justify-between p-4 bg-background">
+            <h1 className="text-2xl font-bold dark:text-white">Shadcn ui</h1>
+            <ThemeToggle />
+        </nav>
+    );
+}
+```
+
+# Examples
+## Default
+<ComponentPreview name="theme-toggle-demo" description="A theme toggle component that switches between light and dark modes." />
+
+## Small
+<ComponentPreview name="theme-toggle-sm" description="A smaller version of the theme toggle." />
+
+## With Custom Label
+<ComponentPreview name="theme-toggle-custom-label" description="A theme toggle with custom labels for dark and light modes." />
+
+## Disabled
+<ComponentPreview name="theme-toggle-disabled" description="A disabled theme toggle component." />
+

@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/toggle-sm.tsx",
-      "content": "import { Italic } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/new-york/ui/toggle\"\n\nexport default function ToggleSm() {\n  return (\n    <Toggle size=\"sm\" aria-label=\"Toggle italic\">\n      <Italic />\n    </Toggle>\n  )\n}\n",
+      "content": "import { Italic } from \"lucide-react\"\r\n\r\nimport { Toggle } from \"@/registry/new-york/ui/toggle\"\r\n\r\nexport default function ToggleSm() {\r\n  return (\r\n    <Toggle size=\"sm\" aria-label=\"Toggle italic\">\r\n      <Italic />\r\n    </Toggle>\r\n  )\r\n}\r\n",
       "type": "registry:example",
       "target": ""
     }
