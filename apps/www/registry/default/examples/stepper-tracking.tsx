@@ -3,17 +3,16 @@ import * as React from "react"
 import { Button } from "@/registry/default/ui/button"
 import { Label } from "@/registry/default/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
-import {
-  Stepper,
+import { defineStepper } from "@/registry/default/ui/stepper"
+
+const {
+  StepperProvider,
   StepperControls,
   StepperNavigation,
   StepperPanel,
   StepperStep,
   StepperTitle,
-  defineStepper,
-} from "@/registry/default/ui/stepper"
-
-const stepperInstance = defineStepper(
+} = defineStepper(
   {
     id: "step-1",
     title: "Step 1",
@@ -57,8 +56,7 @@ export default function StepperVerticalFollow() {
           <Label htmlFor="no-tracking">No Tracking</Label>
         </div>
       </RadioGroup>
-      <Stepper
-        instance={stepperInstance}
+      <StepperProvider
         className="space-y-4"
         variant="vertical"
         tracking={tracking}
@@ -69,7 +67,7 @@ export default function StepperVerticalFollow() {
               {methods.all.map((step) => (
                 <StepperStep
                   key={step.id}
-                  of={step}
+                  of={step.id}
                   onClick={() => methods.goTo(step.id)}
                 >
                   <StepperTitle>{step.title}</StepperTitle>
@@ -105,7 +103,7 @@ export default function StepperVerticalFollow() {
             </StepperNavigation>
           </React.Fragment>
         )}
-      </Stepper>
+      </StepperProvider>
     </div>
   )
 }

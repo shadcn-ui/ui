@@ -3,19 +3,18 @@ import * as React from "react"
 import { Button } from "@/registry/default/ui/button"
 import { Label } from "@/registry/default/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
-import {
-  Stepper,
+import { defineStepper } from "@/registry/default/ui/stepper"
+
+type Variant = "horizontal" | "vertical" | "circle"
+
+const {
+  StepperProvider,
   StepperControls,
   StepperNavigation,
   StepperPanel,
   StepperStep,
   StepperTitle,
-  defineStepper,
-} from "@/registry/default/ui/stepper"
-
-type Variant = "horizontal" | "vertical" | "circle"
-
-const stepperInstance = defineStepper(
+} = defineStepper(
   {
     id: "step-1",
     title: "Step 1",
@@ -59,20 +58,15 @@ export default function StepperVariants() {
 }
 
 const HorizontalStepper = () => {
-  const steps = stepperInstance.steps
   return (
-    <Stepper
-      instance={stepperInstance}
-      className="space-y-4"
-      variant="horizontal"
-    >
+    <StepperProvider className="space-y-4" variant="horizontal">
       {({ methods }) => (
         <React.Fragment>
           <StepperNavigation>
-            {steps.map((step) => (
+            {methods.all.map((step) => (
               <StepperStep
                 key={step.id}
-                of={step}
+                of={step.id}
                 onClick={() => methods.goTo(step.id)}
               >
                 <StepperTitle>{step.title}</StepperTitle>
@@ -100,7 +94,7 @@ const HorizontalStepper = () => {
           </StepperControls>
         </React.Fragment>
       )}
-    </Stepper>
+    </StepperProvider>
   )
 }
 
@@ -114,18 +108,14 @@ const Content = ({ id }: { id: string }) => {
 
 const VerticalStepper = () => {
   return (
-    <Stepper
-      instance={stepperInstance}
-      className="space-y-4"
-      variant="vertical"
-    >
+    <StepperProvider className="space-y-4" variant="vertical">
       {({ methods }) => (
         <>
           <StepperNavigation>
             {methods.all.map((step) => (
               <StepperStep
                 key={step.id}
-                of={step}
+                of={step.id}
                 onClick={() => methods.goTo(step.id)}
               >
                 <StepperTitle>{step.title}</StepperTitle>
@@ -153,17 +143,17 @@ const VerticalStepper = () => {
           </StepperControls>
         </>
       )}
-    </Stepper>
+    </StepperProvider>
   )
 }
 
 const CircleStepper = () => {
   return (
-    <Stepper instance={stepperInstance} className="space-y-4" variant="circle">
+    <StepperProvider className="space-y-4" variant="circle">
       {({ methods }) => (
         <React.Fragment>
           <StepperNavigation>
-            <StepperStep of={methods.current}>
+            <StepperStep of={methods.current.id}>
               <StepperTitle>{methods.current.title}</StepperTitle>
             </StepperStep>
           </StepperNavigation>
@@ -190,6 +180,6 @@ const CircleStepper = () => {
           </StepperControls>
         </React.Fragment>
       )}
-    </Stepper>
+    </StepperProvider>
   )
 }

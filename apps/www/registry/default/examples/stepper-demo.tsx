@@ -1,17 +1,16 @@
 import * as React from "react"
 
 import { Button } from "@/registry/default/ui/button"
-import {
-  Stepper,
+import { defineStepper } from "@/registry/default/ui/stepper"
+
+const {
+  StepperProvider,
   StepperControls,
   StepperNavigation,
   StepperPanel,
   StepperStep,
   StepperTitle,
-  defineStepper,
-} from "@/registry/default/ui/stepper"
-
-const stepperInstance = defineStepper(
+} = defineStepper(
   {
     id: "step-1",
     title: "Step 1",
@@ -28,18 +27,14 @@ const stepperInstance = defineStepper(
 
 export default function StepperDemo() {
   return (
-    <Stepper
-      instance={stepperInstance}
-      className="space-y-4"
-      variant="horizontal"
-    >
+    <StepperProvider className="space-y-4" variant="horizontal">
       {({ methods }) => (
         <React.Fragment>
           <StepperNavigation>
             {methods.all.map((step) => (
               <StepperStep
                 key={step.id}
-                of={step}
+                of={step.id}
                 onClick={() => methods.goTo(step.id)}
               >
                 <StepperTitle>{step.title}</StepperTitle>
@@ -67,7 +62,7 @@ export default function StepperDemo() {
           </StepperControls>
         </React.Fragment>
       )}
-    </Stepper>
+    </StepperProvider>
   )
 }
 

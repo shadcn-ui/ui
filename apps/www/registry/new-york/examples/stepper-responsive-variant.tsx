@@ -2,17 +2,16 @@ import * as React from "react"
 
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/registry/new-york/ui/button"
-import {
-  Stepper,
+import { defineStepper } from "@/registry/new-york/ui/stepper"
+
+const {
+  StepperProvider,
   StepperControls,
   StepperNavigation,
   StepperPanel,
   StepperStep,
   StepperTitle,
-  defineStepper,
-} from "@/registry/new-york/ui/stepper"
-
-const stepperInstance = defineStepper(
+} = defineStepper(
   {
     id: "step-1",
     title: "Step 1",
@@ -30,8 +29,7 @@ const stepperInstance = defineStepper(
 export default function StepperResponsiveVariant() {
   const isMobile = useMediaQuery("(max-width: 768px)")
   return (
-    <Stepper
-      instance={stepperInstance}
+    <StepperProvider
       className="space-y-4"
       variant={isMobile ? "vertical" : "horizontal"}
     >
@@ -41,7 +39,7 @@ export default function StepperResponsiveVariant() {
             {methods.all.map((step) => (
               <StepperStep
                 key={step.id}
-                of={step}
+                of={step.id}
                 onClick={() => methods.goTo(step.id)}
               >
                 <StepperTitle>{step.title}</StepperTitle>
@@ -78,7 +76,7 @@ export default function StepperResponsiveVariant() {
           </StepperControls>
         </React.Fragment>
       )}
-    </Stepper>
+    </StepperProvider>
   )
 }
 

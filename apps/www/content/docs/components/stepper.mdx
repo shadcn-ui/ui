@@ -55,7 +55,7 @@ npm install @stepperize/react
 
 A `Stepper` component is composed of the following parts:
 
-- `Stepper` - Handles the stepper logic.
+- `StepperProvider` - Handles the stepper logic.
 - `StepperNavigation` - Contains the buttons and labels to navigate through the steps.
 - `StepperStep` - Step component.
 - `StepperTitle` - Step title.
@@ -66,18 +66,17 @@ A `Stepper` component is composed of the following parts:
 ## Usage
 
 ```tsx showLineNumbers
-import {
-  Stepper,
+import { defineStepper } from "@/components/ui/stepper"
+
+const {
+  StepperProvider,
   StepperControls,
   StepperDescription,
   StepperNavigation,
   StepperPanel,
   StepperStep,
   StepperTitle,
-  defineStepper,
-} from "@/components/ui/stepper"
-
-const stepperInstance = defineStepper(
+} = defineStepper(
   { id: "step-1", title: "Step 1" },
   { id: "step-2", title: "Step 2" },
   { id: "step-3", title: "Step 3" }
@@ -85,7 +84,7 @@ const stepperInstance = defineStepper(
 
 export function Component() {
   return (
-    <Stepper>
+    <StepperProvider>
       <StepperNavigation>
         <StepperStep>
           <StepperTitle />
@@ -95,7 +94,7 @@ export function Component() {
       </StepperNavigation>
       <StepperPanel />
       <StepperControls>...</StepperControls>
-    </Stepper>
+    </StepperProvider>
   )
 }
 ```
@@ -109,20 +108,18 @@ Let's start with the most basic stepper. A stepper with a horizontal navigation.
 <Step>Create a stepper instance with the `defineStepper` function.</Step>
 
 ```tsx
-const stepperInstance = defineStepper(
+const { StepperProvider, ... } = defineStepper(
   { id: "step-1", title: "Step 1" },
   { id: "step-2", title: "Step 2" },
   { id: "step-3", title: "Step 3" }
 )
 ```
 
-<Step>
-  Wrap your application in a `Stepper` component and pass the stepper instance.
-</Step>
+<Step>Wrap your application in a `StepperProvider` component.</Step>
 
 ```tsx
 export function MyFirstStepper() {
-  return <Stepper instance={stepperInstance}>...</Stepper>
+  return <StepperProvider>...</StepperProvider>
 }
 ```
 
@@ -132,19 +129,25 @@ export function MyFirstStepper() {
 </Step>
 
 ```tsx
+const { StepperProvider, StepperNavigation, StepperStep, StepperTitle } =
+  defineStepper(
+    { id: "step-1", title: "Step 1" },
+    { id: "step-2", title: "Step 2" },
+    { id: "step-3", title: "Step 3" }
+  )
 export function MyFirstStepper() {
   return (
-    <Stepper instance={stepperInstance}>
+    <StepperProvider>
       {({ methods }) => (
         <StepperNavigation>
           {methods.all.map((step) => (
-            <StepperStep of={step} onClick={() => methods.goTo(step.id)}>
+            <StepperStep of={step.id} onClick={() => methods.goTo(step.id)}>
               <StepperTitle>{step.title}</StepperTitle>
             </StepperStep>
           ))}
         </StepperNavigation>
       )}
-    </Stepper>
+    </StepperProvider>
   )
 }
 ```
@@ -152,10 +155,15 @@ export function MyFirstStepper() {
 <Step>Add a `StepperPanel` component to render the content of the step.</Step>
 
 ```tsx
+const { StepperProvider, StepperPanel, ... } = defineStepper(
+  { id: "step-1", title: "Step 1" },
+  { id: "step-2", title: "Step 2" },
+  { id: "step-3", title: "Step 3" }
+)
+
 export function MyFirstStepper() {
-  const steps = stepperInstance.steps
   return (
-    <Stepper instance={stepperInstance}>
+    <StepperProvider>
       {({ methods }) => (
         <>
           {/* StepperNavigation code */}
@@ -166,7 +174,7 @@ export function MyFirstStepper() {
           })}
         </>
       )}
-    </Stepper>
+    </StepperProvider>
   )
 }
 ```
@@ -177,10 +185,15 @@ export function MyFirstStepper() {
 </Step>
 
 ```tsx
+const { StepperProvider, StepperControls, ... } = defineStepper(
+  { id: "step-1", title: "Step 1" },
+  { id: "step-2", title: "Step 2" },
+  { id: "step-3", title: "Step 3" }
+)
+
 export function MyFirstStepper() {
-  const steps = stepperInstance.steps
   return (
-    <Stepper instance={stepperInstance}>
+    <StepperProvider>
       {({ methods }) => (
         <>
           {/* StepperNavigation code */}
@@ -201,7 +214,7 @@ export function MyFirstStepper() {
           </StepperControls>
         </>
       )}
-    </Stepper>
+    </StepperProvider>
   )
 }
 ```
@@ -209,9 +222,22 @@ export function MyFirstStepper() {
 <Step>Add some styles to make it look nice.</Step>
 
 ```tsx
+const {
+  StepperProvider,
+  StepperNavigation,
+  StepperStep,
+  StepperTitle,
+  StepperControls,
+  StepperPanel,
+} = defineStepper(
+  { id: "step-1", title: "Step 1" },
+  { id: "step-2", title: "Step 2" },
+  { id: "step-3", title: "Step 3" }
+)
+
 export function MyFirstStepper() {
   return (
-    <Stepper instance={stepperInstance} className="space-y-4">
+    <StepperProvider className="space-y-4">
       {({ methods }) => (
         <>
           <StepperNavigation>
@@ -242,7 +268,7 @@ export function MyFirstStepper() {
           </StepperControls>
         </>
       )}
-    </Stepper>
+    </StepperProvider>
   )
 }
 
@@ -277,6 +303,8 @@ In the next sections, we'll go over each component and how to use them.
 
 The `defineStepper` function is used to define the steps. It returns a `Stepper` instance with a hook and utils to interact with the stepper.
 
+Unlike `@stepperize/react`, `defineStepper` also offers all the components for rendering the stepper.
+
 For example, you can define the steps like this:
 
 ```tsx
@@ -289,10 +317,19 @@ const stepperInstance = defineStepper(
 
 Each instance will return:
 
-- `Scoped` - _This will not need to be used as it is already wrapped in Stepper._
 - `steps` - Array of steps.
 - `useStepper` - Hook to interact with the stepper component.
 - `utils` - Provides a set of pure functions for working with steps.
+
+And the components:
+
+- `StepperProvider`
+- `StepperNavigation`
+- `StepperStep`
+- `StepperTitle`
+- `StepperDescription`
+- `StepperPanel`
+- `StepperControls`
 
 <Callout className="mt-6">
   Each step in the `defineStepper` needs only an `id` to work and they are not
@@ -300,11 +337,49 @@ Each instance will return:
   components!
 </Callout>
 
-## Stepper
+## StepperProvider
 
-The `Stepper` component is used to provide the stepper instance from `defineStepper` to the other components. You should always wrap your application in a `Stepper` component.
+The `StepperProvider` component is used to provide the stepper instance from `defineStepper` to the other components. You should always wrap your application in a `StepperProvider` component.
 
-The children accept a function that has as parameters the `methods` prop. The `methods` prop is an object with the `useStepper` hook from your stepper instance.
+Allow us to work with the `useStepper` hook in components that are within the provider without needing to be rendered in the stepper component itself.
+
+For example:
+
+```tsx
+const { StepperProvider, useStepper } = defineStepper(
+  { id: "step-1", title: "Step 1" },
+  { id: "step-2", title: "Step 2" },
+  { id: "step-3", title: "Step 3" }
+)
+
+export function MyStepper() {
+  const methods = useStepper() // ❌ This won't work if the component is not within the provider
+  return (
+    <StepperProvider>
+      <MyCustomComponent />
+    </StepperProvider>
+  )
+}
+
+function MyCustomComponent() {
+  const { methods } = useStepper() // ✅ This will work
+  return <div>{methods.currentStep.title}</div>
+}
+```
+
+You also get access to the methods in the children's component
+
+```tsx
+export function MyStepper() {
+  return (
+    <StepperProvider>
+      {({ methods }) => (
+        ...
+      )}
+    </StepperProvider>
+  )
+}
+```
 
 <Callout className="mt-6">
   If you don't need the `methods` prop, you can just pass the children directly
@@ -313,12 +388,13 @@ The children accept a function that has as parameters the `methods` prop. The `m
 
 **Props**
 
-| Name               | Type                               | Description                                                                        |
-| ------------------ | ---------------------------------- | ---------------------------------------------------------------------------------- |
-| `instance`         | `ReturnType<typeof defineStepper>` | Stepper instance.                                                                  |
-| `variant`          | `horizontal, vertical or circle`   | Style of the stepper.                                                              |
-| `labelOrientation` | `horizontal, vertical`             | Orientation of the labels. This is only applicable if `variant` is `"horizontal"`. |
-| `className`        | `string`                           | Class name to apply to the stepper.                                                |
+| Name               | Type                             | Description                                                                        |
+| ------------------ | -------------------------------- | ---------------------------------------------------------------------------------- |
+| `variant`          | `horizontal, vertical or circle` | Style of the stepper.                                                              |
+| `labelOrientation` | `horizontal, vertical`           | Orientation of the labels. This is only applicable if `variant` is `"horizontal"`. |
+| `tracking`         | `boolean`                        | Track the scroll position of the stepper.                                          |
+| `initialStep`      | `string`                         | Initial step to render.                                                            |
+| `initialMetadata`  | `Record<string, any>`            | Initial metadata.                                                                  |
 
 ## StepperNavigation
 
@@ -326,7 +402,7 @@ The `StepperNavigation` component is used to render the navigation buttons and l
 
 ## StepperStep
 
-The `StepperStep` component is a wrapper of the button and labels. You just need to pass the `of` prop which is the step you want to render.
+The `StepperStep` component is a wrapper of the button and labels. You just need to pass the `of` prop which is the step id you want to render.
 
 <Callout className="mt-6">
   This is a good place to add your `onClick` handler.
@@ -336,7 +412,7 @@ The `StepperStep` component is a wrapper of the button and labels. You just need
 
 | Name   | Type              | Description                               |
 | ------ | ----------------- | ----------------------------------------- |
-| `of`   | `Step`            | Step to render.                           |
+| `of`   | `string`          | Step to render.                           |
 | `icon` | `React.ReactNode` | Icon to render instead of the step number |
 
 <Callout className="mt-6">
@@ -414,6 +490,14 @@ Through the methods you can access functions like `goTo` to skip to a specific s
 ```tsx
 // From step 1 to step 3
 methods.goTo("step-3")
+```
+
+## Metadata
+
+You can add metadata to each step to store any information you need. This data can be accessed in the `useStepper` hook and changed at any time.
+
+```tsx
+const { metadata, getMetadata, setMetadata, resetMetadata } = useStepper()
 ```
 
 ## Examples

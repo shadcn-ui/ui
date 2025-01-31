@@ -6,14 +6,7 @@ import { z } from "zod"
 import { Button } from "@/registry/default/ui/button"
 import { Form } from "@/registry/default/ui/form"
 import { Input } from "@/registry/default/ui/input"
-import {
-  Stepper,
-  StepperControls,
-  StepperNavigation,
-  StepperStep,
-  StepperTitle,
-  defineStepper,
-} from "@/registry/default/ui/stepper"
+import { defineStepper } from "@/registry/default/ui/stepper"
 
 const shippingSchema = z.object({
   address: z.string().min(1, "Address is required"),
@@ -164,7 +157,14 @@ function CompleteComponent() {
   return <div className="text-center">Thank you! Your order is complete.</div>
 }
 
-const stepperInstance = defineStepper(
+const {
+  StepperProvider,
+  StepperControls,
+  StepperNavigation,
+  StepperStep,
+  StepperTitle,
+  useStepper,
+} = defineStepper(
   {
     id: "shipping",
     title: "Shipping",
@@ -187,14 +187,13 @@ const stepperInstance = defineStepper(
 
 export default function StepperForm() {
   return (
-    <Stepper instance={stepperInstance}>
+    <StepperProvider>
       <FormStepperComponent />
-    </Stepper>
+    </StepperProvider>
   )
 }
 
 const FormStepperComponent = () => {
-  const { useStepper } = stepperInstance
   const methods = useStepper()
 
   const form = useForm({
@@ -213,7 +212,7 @@ const FormStepperComponent = () => {
           {methods.all.map((step) => (
             <StepperStep
               key={step.id}
-              of={step}
+              of={step.id}
               type={step.id === methods.current.id ? "submit" : "button"}
               onClick={async () => {
                 const valid = await form.trigger()
