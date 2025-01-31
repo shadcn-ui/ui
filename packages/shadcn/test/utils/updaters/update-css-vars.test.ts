@@ -729,7 +729,7 @@ describe("transformCssVarsV4", () => {
               --radius-lg: var(--radius);
               --radius-xl: calc(var(--radius) + 4px);
             }
-            
+
             @layer base {
         * {
           @apply border-border;
@@ -737,6 +737,51 @@ describe("transformCssVarsV4", () => {
         body {
           @apply bg-background text-foreground;
               }
+      }
+              "
+    `)
+  })
+
+  test("should use --sidebar for --sidebar-background", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        `,
+        {
+          light: {
+            "sidebar-background": "hsl(0 0% 98%)",
+          },
+          dark: {
+            "sidebar-background": "hsl(0 0% 10%)",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @custom-variant dark (&:is(.dark *));
+
+      :root {
+        --sidebar: hsl(0 0% 98%);
+      }
+
+      .dark {
+        --sidebar: hsl(0 0% 10%);
+      }
+
+      @theme inline {
+        --color-sidebar: var(--sidebar);
+      }
+
+      @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
       }
               "
     `)
@@ -882,7 +927,7 @@ describe("transformCssVarsV4", () => {
       @custom-variant dark (&:is(.dark *));
 
       @theme inline {
-        
+
         @keyframes accordion-down {
           from {
             height: 0;
@@ -891,7 +936,7 @@ describe("transformCssVarsV4", () => {
             height: var(--radix-accordion-content-height);
           }
         }
-        
+
         @keyframes accordion-up {
           from {
             height: var(--radix-accordion-content-height);
@@ -1028,7 +1073,7 @@ describe("transformCssVarsV4", () => {
       @theme inline {
         --animate-accordion-down: accordion-down 0.2s ease-out;
         --animate-accordion-up: accordion-up 0.2s ease-out;
-        
+
         @keyframes accordion-down {
           from {
             height: 0;
@@ -1037,7 +1082,7 @@ describe("transformCssVarsV4", () => {
             height: var(--radix-accordion-content-height);
           }
         }
-        
+
         @keyframes accordion-up {
           from {
             height: var(--radix-accordion-content-height);
