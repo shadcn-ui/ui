@@ -148,7 +148,8 @@ test("transform import - multi path aliases", async () => {
   const aliases = {
     "components": "@custom-alias/nested/ui/components/ui",
     "utils": "@custom-alias/nested/ui/lib/utils",
-    "ui": "@custom-alias/nested/ui/components/ui"
+    "ui": "@custom-alias/nested/ui/components/ui",
+    "hooks": "@custom-alias/nested/ui/hooks"
   }
   const actual = await transform({
     filename: "test.ts",
@@ -171,5 +172,5 @@ import { Foo } from "bar"
   expect(actual).toContain(`import { cn } from "${aliases.utils}"`)
   expect(actual).toContain(`import { Button } from "${aliases.ui}/button"`)
   expect(actual).toContain(`import { Box } from "${aliases.components}/box"`)
-  expect(actual).toContain(`import { useViewport } from "${aliases.ui}/hooks/use-viewport"`)
+  expect(actual).toContain(`import { useViewport } from "${aliases.hooks}/hooks/use-viewport"`)
 })
