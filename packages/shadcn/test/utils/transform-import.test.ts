@@ -146,11 +146,11 @@ import { Foo } from "bar"
 
 test("transform import - multi path aliases", async () => {
   const aliases = {
-    "components": "@custom-alias/nested/ui/components/ui",
-    "utils": "@custom-alias/nested/ui/lib/utils",
-    "ui": "@custom-alias/nested/ui/components/ui",
-    "hooks": "@custom-alias/nested/ui/hooks",
-    "lib": "@custom-alias/nested/ui/lib"
+    "components": "@custom-alias/nested/components/ui",
+    "utils": "@custom-alias/nested/lib/utils",
+    "ui": "@custom-alias/nested/components/ui",
+    "hooks": "@custom-alias/nested/hooks",
+    "lib": "@custom-alias/nested/lib"
   }
   const actual = await transform({
     filename: "test.ts",
