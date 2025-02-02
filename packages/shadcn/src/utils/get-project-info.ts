@@ -153,21 +153,16 @@ export async function getTailwindVersion(
 }
 
 export async function getTailwindCssFile(cwd: string) {
-  const [files, tailwindVersion] = await Promise.all([
-    fg.glob(["**/*.css", "**/*.scss"], {
-      cwd,
-      deep: 5,
-      ignore: PROJECT_SHARED_IGNORE,
-    }),
-    getTailwindVersion(cwd),
-  ])
+  const files = await fg.glob(["**/*.css", "**/*.scss"], {
+    cwd,
+    deep: 5,
+    ignore: PROJECT_SHARED_IGNORE,
+  })
 
   if (!files.length) {
     return null
   }
 
-  const needle =
-    tailwindVersion === "v4" ? `@import "tailwindcss"` : "@tailwind base"
   for (const file of files) {
     const contents = await fs.readFile(path.resolve(cwd, file), "utf8")
     if (
