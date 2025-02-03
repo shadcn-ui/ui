@@ -29,7 +29,8 @@ export function Toaster() {
           </Toast>
         )
       })}
-      <ToastViewport />
+      {/* Added spacing customization using className */}
+      <ToastViewport className="gap-4" />
     </ToastProvider>
   )
 }
