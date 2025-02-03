@@ -10,27 +10,26 @@ import {
   ToastViewport,
 } from "@/registry/new-york/ui/toast"
 
-export function Toaster() {
+interface ToasterProps {
+  gap?: string;  // Custom gap prop
+}
+
+export function Toaster({ gap = "gap-4" }: ToasterProps) {  // Default to "gap-4"
   const { toasts } = useToast()
 
   return (
     <ToastProvider>
-      {toasts.map(function ({ id, title, description, action, ...props }) {
-        return (
-          <Toast key={id} {...props}>
-            <div className="grid gap-1">
-              {title && <ToastTitle>{title}</ToastTitle>}
-              {description && (
-                <ToastDescription>{description}</ToastDescription>
-              )}
-            </div>
-            {action}
-            <ToastClose />
-          </Toast>
-        )
-      })}
-      {/* Added spacing customization using className */}
-      <ToastViewport className="gap-4" />
+      {toasts.map(({ id, title, description, action, ...props }) => (
+        <Toast key={id} {...props}>
+          <div className="grid gap-1">
+            {title && <ToastTitle>{title}</ToastTitle>}
+            {description && <ToastDescription>{description}</ToastDescription>}
+          </div>
+          {action}
+          <ToastClose />
+        </Toast>
+      ))}
+      <ToastViewport className={gap} />  {/* Apply the custom gap */}
     </ToastProvider>
   )
 }
