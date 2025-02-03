@@ -32,7 +32,7 @@ export const containerClassName = "w-full h-full"
 export default function Dashboard() {
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+      <header className="bg-background sticky top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="#"
@@ -43,31 +43,31 @@ export default function Dashboard() {
           </Link>
           <Link
             href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Dashboard
           </Link>
           <Link
             href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Orders
           </Link>
           <Link
             href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Products
           </Link>
           <Link
             href="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Customers
           </Link>
           <Link
             href="#"
-            className="text-foreground transition-colors hover:text-foreground"
+            className="text-foreground hover:text-foreground transition-colors"
           >
             Settings
           </Link>
@@ -125,7 +125,7 @@ export default function Dashboard() {
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
           <form className="ml-auto flex-1 sm:flex-initial">
             <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
               <Input
                 type="search"
                 placeholder="Search products..."
@@ -151,17 +151,17 @@ export default function Dashboard() {
           </DropdownMenu>
         </div>
       </header>
-      <main className="flex min-h-[calc(100vh-(--spacing(16)))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
+      <main className="bg-muted/40 flex min-h-[calc(100vh-(--spacing(16)))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
         <div className="mx-auto grid w-full max-w-6xl gap-2">
           <h1 className="text-3xl font-semibold">Settings</h1>
         </div>
         <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
           <nav
-            className="grid gap-4 text-sm text-muted-foreground"
+            className="text-muted-foreground grid gap-4 text-sm"
             x-chunk="A sidebar navigation with links to general, security, integrations, support, organizations, and advanced settings."
             x-chunk-container="chunk-container after:right-0"
           >
-            <Link href="#" className="font-semibold text-primary">
+            <Link href="#" className="text-primary font-semibold">
               General
             </Link>
             <Link href="#">Security</Link>
@@ -205,7 +205,7 @@ export default function Dashboard() {
                     <Checkbox id="include" defaultChecked />
                     <label
                       htmlFor="include"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
                       Allow administrators to change the directory.
                     </label>

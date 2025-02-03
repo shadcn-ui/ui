@@ -17,10 +17,10 @@ export function CollapsibleDemo() {
     <Collapsible
       open={isOpen}
       onOpenChange={setIsOpen}
-      className="w-full md:w-[350px] flex flex-col gap-2"
+      className="flex w-full flex-col gap-2 md:w-[350px]"
     >
       <div className="flex items-center justify-between gap-4 px-4">
-        <h4 className="text-sm font-semibold line-clamp-1">
+        <h4 className="line-clamp-1 text-sm font-semibold">
           @peduarte starred 3 repositories
         </h4>
         <CollapsibleTrigger asChild>

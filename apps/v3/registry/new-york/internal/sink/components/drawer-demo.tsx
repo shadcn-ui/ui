@@ -60,7 +60,7 @@ const data = [
 
 export function DrawerDemo() {
   return (
-    <div className="flex flex-col items-start md:items-center gap-4 md:flex-row">
+    <div className="flex flex-col items-start gap-4 md:flex-row md:items-center">
       <DrawerBottom />
       <DrawerScrollableContent />
       <DrawerDirections />
@@ -105,7 +105,7 @@ function DrawerBottom() {
                 <div className="text-7xl font-bold tracking-tighter">
                   {goal}
                 </div>
-                <div className="text-[0.70rem] uppercase text-muted-foreground">
+                <div className="text-muted-foreground text-[0.70rem] uppercase">
                   Calories/day
                 </div>
               </div>
@@ -160,7 +160,7 @@ function DrawerScrollableContent() {
           <DrawerDescription>Set your daily activity goal.</DrawerDescription>
         </DrawerHeader>
         <div className="overflow-y-auto px-4 text-sm">
-          <h4 className="mb-4 text-lg font-medium leading-none">Lorem Ipsum</h4>
+          <h4 className="mb-4 text-lg leading-none font-medium">Lorem Ipsum</h4>
           {Array.from({ length: 10 }).map((_, index) => (
             <p key={index} className="mb-4 leading-normal">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do

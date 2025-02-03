@@ -83,7 +83,7 @@ export function CardDemo() {
             Client requested dashboard redesign with focus on mobile
             responsiveness.
           </p>
-          <ol className="list-decimal pl-6 mt-4 flex flex-col gap-2">
+          <ol className="mt-4 flex list-decimal flex-col gap-2 pl-6">
             <li>New analytics widgets for daily/weekly metrics</li>
             <li>Simplified navigation menu</li>
             <li>Dark mode support</li>
@@ -92,7 +92,7 @@ export function CardDemo() {
           </ol>
         </CardContent>
         <CardFooter>
-          <div className="flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
+          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
@@ -135,7 +135,7 @@ export function CardDemo() {
           <Badge variant="outline">
             <LandPlotIcon /> 350m²
           </Badge>
-          <div className="tabular-nums ml-auto font-medium">$135,000</div>
+          <div className="ml-auto font-medium tabular-nums">$135,000</div>
         </CardFooter>
       </Card>
     </div>

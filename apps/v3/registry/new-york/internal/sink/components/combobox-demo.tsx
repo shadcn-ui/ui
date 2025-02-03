@@ -112,7 +112,7 @@ type Timezone = (typeof timezones)[number]
 
 export function ComboboxDemo() {
   return (
-    <div className="flex flex-col items-start gap-4 md:flex-row w-full">
+    <div className="flex w-full flex-col items-start gap-4 md:flex-row">
       <FrameworkCombobox frameworks={[...frameworks]} />
       <UserCombobox users={[...users]} selectedUserId={users[0].id} />
       <TimezoneCombobox
@@ -134,7 +134,7 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full md:max-w-[200px] justify-between"
+          className="w-full justify-between md:max-w-[200px]"
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
@@ -196,7 +196,7 @@ function UserCombobox({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full md:max-w-[200px] px-2 justify-between"
+          className="w-full justify-between px-2 md:max-w-[200px]"
         >
           {selectedUser ? (
             <div className="flex items-center gap-2">
@@ -287,7 +287,7 @@ function TimezoneCombobox({
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className="w-full md:max-w-[200px] px-2.5 h-12 justify-between"
+          className="h-12 w-full justify-between px-2.5 md:max-w-[200px]"
         >
           {selectedTimezone ? (
             <div className="flex flex-col items-start gap-0.5">
@@ -320,7 +320,7 @@ function TimezoneCombobox({
                   >
                     {timezone.label}
                     <CheckIcon
-                      className="opacity-0 ml-auto data-[selected=true]:opacity-100"
+                      className="ml-auto opacity-0 data-[selected=true]:opacity-100"
                       data-selected={value === timezone.value}
                     />
                   </CommandItem>
@@ -328,7 +328,7 @@ function TimezoneCombobox({
               </CommandGroup>
             ))}
             <CommandSeparator className="sticky bottom-10" />
-            <CommandGroup className="sticky bottom-0 bg-popover">
+            <CommandGroup className="bg-popover sticky bottom-0">
               <CommandItem>
                 <PlusCircleIcon />
                 Create timezone

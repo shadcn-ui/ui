@@ -43,7 +43,7 @@ import {
 
 export function DropdownMenuDemo() {
   return (
-    <div className="flex flex-col md:flex-row gap-4 items-center">
+    <div className="flex flex-col items-center gap-4 md:flex-row">
       <DropdownMenuSimple />
       <DropdownMenuCheckboxes />
       <DropdownMenuRadioGroupDemo />
@@ -200,7 +200,7 @@ function DropdownMenuWithAvatar() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          className="justify-start px-2 h-12 md:max-w-[200px]"
+          className="h-12 justify-start px-2 md:max-w-[200px]"
         >
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
@@ -208,11 +208,11 @@ function DropdownMenuWithAvatar() {
           </Avatar>
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-semibold">shadcn</span>
-            <span className="truncate text-xs text-muted-foreground">
+            <span className="text-muted-foreground truncate text-xs">
               shadcn@example.comdsa sadsa asdd
             </span>
           </div>
-          <ChevronsUpDownIcon className="ml-auto text-muted-foreground" />
+          <ChevronsUpDownIcon className="text-muted-foreground ml-auto" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
@@ -227,7 +227,7 @@ function DropdownMenuWithAvatar() {
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-semibold">shadcn</span>
-              <span className="truncate text-xs text-muted-foreground">
+              <span className="text-muted-foreground truncate text-xs">
                 shadcn@example.com
               </span>
             </div>
@@ -271,7 +271,7 @@ function DropdownMenuAvatarOnly() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          className="p-0 rounded-full size-8 border-none"
+          className="size-8 rounded-full border-none p-0"
         >
           <Avatar>
             <AvatarImage src="https://github.com/leerob.png" alt="leerob" />
@@ -291,7 +291,7 @@ function DropdownMenuAvatarOnly() {
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-semibold">leerob</span>
-              <span className="truncate text-xs text-muted-foreground">
+              <span className="text-muted-foreground truncate text-xs">
                 leerob@example.com
               </span>
             </div>

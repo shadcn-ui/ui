@@ -54,7 +54,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   return (
-    <div className="w-full gap-6 flex flex-col justify-center items-center">
+    <div className="flex w-full flex-col items-center justify-center gap-6">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -64,13 +64,13 @@ export function NavigationMenuDemo() {
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-muted/50 to-muted p-6 no-underline outline-hidden focus:shadow-md"
+                      className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
                       href="/"
                     >
-                      <div className="mb-2 mt-4 text-lg font-medium">
+                      <div className="mt-4 mb-2 text-lg font-medium">
                         shadcn/ui
                       </div>
-                      <p className="text-sm leading-tight text-muted-foreground">
+                      <p className="text-muted-foreground text-sm leading-tight">
                         Beautifully designed components built with Tailwind CSS.
                       </p>
                     </a>
@@ -127,7 +127,7 @@ export function NavigationMenuDemo() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>List</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid gap-4 w-[300px]">
+              <ul className="grid w-[300px] gap-4">
                 <li>
                   <NavigationMenuLink asChild>
                     <Link href="#">
@@ -160,7 +160,7 @@ export function NavigationMenuDemo() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Simple List</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid gap-4 w-[200px]">
+              <ul className="grid w-[200px] gap-4">
                 <li>
                   <NavigationMenuLink asChild>
                     <Link href="#">Components</Link>
@@ -192,8 +192,8 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link href={href}>
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className="text-sm leading-none font-medium">{title}</div>
+          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}
           </p>
         </Link>

@@ -53,10 +53,10 @@ export const containerClassName = "w-full h-full"
 export default function Dashboard() {
   return (
     <div className="grid h-screen w-full pl-[53px]">
-      <aside className="inset-y fixed  left-0 z-20 flex h-full flex-col border-r">
+      <aside className="inset-y fixed left-0 z-20 flex h-full flex-col border-r">
         <div className="border-b p-2">
           <Button variant="outline" size="icon" aria-label="Home">
-            <Triangle className="size-5 fill-foreground" />
+            <Triangle className="fill-foreground size-5" />
           </Button>
         </div>
         <nav className="grid gap-1 p-2">
@@ -65,7 +65,7 @@ export default function Dashboard() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-lg bg-muted"
+                className="bg-muted rounded-lg"
                 aria-label="Playground"
               >
                 <SquareTerminal className="size-5" />
@@ -170,7 +170,7 @@ export default function Dashboard() {
         </nav>
       </aside>
       <div className="flex flex-col">
-        <header className="sticky top-0 z-10 flex h-[53px] items-center gap-1 border-b bg-background px-4">
+        <header className="bg-background sticky top-0 z-10 flex h-[53px] items-center gap-1 border-b px-4">
           <h1 className="text-xl font-semibold">Playground</h1>
           <Drawer>
             <DrawerTrigger asChild>
@@ -202,12 +202,12 @@ export default function Dashboard() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="genesis">
-                          <div className="flex items-start gap-3 text-muted-foreground">
+                          <div className="text-muted-foreground flex items-start gap-3">
                             <Rabbit className="size-5" />
                             <div className="grid gap-0.5">
                               <p>
                                 Neural{" "}
-                                <span className="font-medium text-foreground">
+                                <span className="text-foreground font-medium">
                                   Genesis
                                 </span>
                               </p>
@@ -218,12 +218,12 @@ export default function Dashboard() {
                           </div>
                         </SelectItem>
                         <SelectItem value="explorer">
-                          <div className="flex items-start gap-3 text-muted-foreground">
+                          <div className="text-muted-foreground flex items-start gap-3">
                             <Bird className="size-5" />
                             <div className="grid gap-0.5">
                               <p>
                                 Neural{" "}
-                                <span className="font-medium text-foreground">
+                                <span className="text-foreground font-medium">
                                   Explorer
                                 </span>
                               </p>
@@ -234,12 +234,12 @@ export default function Dashboard() {
                           </div>
                         </SelectItem>
                         <SelectItem value="quantum">
-                          <div className="flex items-start gap-3 text-muted-foreground">
+                          <div className="text-muted-foreground flex items-start gap-3">
                             <Turtle className="size-5" />
                             <div className="grid gap-0.5">
                               <p>
                                 Neural{" "}
-                                <span className="font-medium text-foreground">
+                                <span className="text-foreground font-medium">
                                   Quantum
                                 </span>
                               </p>
@@ -321,12 +321,12 @@ export default function Dashboard() {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="genesis">
-                        <div className="flex items-start gap-3 text-muted-foreground">
+                        <div className="text-muted-foreground flex items-start gap-3">
                           <Rabbit className="size-5" />
                           <div className="grid gap-0.5">
                             <p>
                               Neural{" "}
-                              <span className="font-medium text-foreground">
+                              <span className="text-foreground font-medium">
                                 Genesis
                               </span>
                             </p>
@@ -337,12 +337,12 @@ export default function Dashboard() {
                         </div>
                       </SelectItem>
                       <SelectItem value="explorer">
-                        <div className="flex items-start gap-3 text-muted-foreground">
+                        <div className="text-muted-foreground flex items-start gap-3">
                           <Bird className="size-5" />
                           <div className="grid gap-0.5">
                             <p>
                               Neural{" "}
-                              <span className="font-medium text-foreground">
+                              <span className="text-foreground font-medium">
                                 Explorer
                               </span>
                             </p>
@@ -353,12 +353,12 @@ export default function Dashboard() {
                         </div>
                       </SelectItem>
                       <SelectItem value="quantum">
-                        <div className="flex items-start gap-3 text-muted-foreground">
+                        <div className="text-muted-foreground flex items-start gap-3">
                           <Turtle className="size-5" />
                           <div className="grid gap-0.5">
                             <p>
                               Neural{" "}
-                              <span className="font-medium text-foreground">
+                              <span className="text-foreground font-medium">
                                 Quantum
                               </span>
                             </p>
@@ -414,13 +414,13 @@ export default function Dashboard() {
               </fieldset>
             </form>
           </div>
-          <div className="relative flex h-full min-h-[50vh] flex-col rounded-xl bg-muted/50 p-4 lg:col-span-2">
-            <Badge variant="outline" className="absolute right-3 top-3">
+          <div className="bg-muted/50 relative flex h-full min-h-[50vh] flex-col rounded-xl p-4 lg:col-span-2">
+            <Badge variant="outline" className="absolute top-3 right-3">
               Output
             </Badge>
             <div className="flex-1" />
             <form
-              className="relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
+              className="bg-background focus-within:ring-ring relative overflow-hidden rounded-lg border focus-within:ring-1"
               x-chunk="A form for sending a message to an AI chatbot. The form has a textarea and buttons to upload files and record audio."
             >
               <Label htmlFor="message" className="sr-only">

@@ -7,7 +7,7 @@ import {
 
 export function AccordionDemo() {
   return (
-    <div className="grid gap-4 w-full max-w-xl">
+    <div className="grid w-full max-w-xl gap-4">
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>

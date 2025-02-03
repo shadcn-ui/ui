@@ -2,7 +2,7 @@ import { Input } from "@/registry/new-york/ui/input"
 
 export function InputDemo() {
   return (
-    <div className="flex flex-col md:flex-row gap-4 flex-wrap">
+    <div className="flex flex-col flex-wrap gap-4 md:flex-row">
       <Input type="email" placeholder="Email" />
       <Input type="password" placeholder="Password" />
       <Input type="number" placeholder="Number" />

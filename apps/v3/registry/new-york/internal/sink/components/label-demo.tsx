@@ -5,7 +5,7 @@ import { Textarea } from "@/registry/new-york/ui/textarea"
 
 export function LabelDemo() {
   return (
-    <div className="grid gap-6 w-full max-w-sm">
+    <div className="grid w-full max-w-sm gap-6">
       <div className="flex items-center gap-3">
         <Checkbox id="label-demo-terms" />
         <Label htmlFor="label-demo-terms">Accept terms and conditions</Label>
@@ -14,7 +14,7 @@ export function LabelDemo() {
         <Label htmlFor="label-demo-username">Username</Label>
         <Input id="label-demo-username" placeholder="Username" />
       </div>
-      <div className="grid gap-3 group" data-disabled={true}>
+      <div className="group grid gap-3" data-disabled={true}>
         <Label htmlFor="label-demo-disabled">Disabled</Label>
         <Input id="label-demo-disabled" placeholder="Disabled" disabled />
       </div>

@@ -70,8 +70,8 @@ export default function SinkPage() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset className="pb-[20vh]">
-        <header className="flex h-16 sticky top-0 bg-background shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 isolate z-10">
-          <div className="flex items-center gap-2 px-4 w-full">
+        <header className="bg-background sticky top-0 isolate z-10 flex h-16 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+          <div className="flex w-full items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
@@ -87,7 +87,7 @@ export default function SinkPage() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
-            <div className="flex items-center gap-2 ml-auto">
+            <div className="ml-auto flex items-center gap-2">
               <ModeToggle />
             </div>
           </div>

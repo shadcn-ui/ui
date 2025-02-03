@@ -21,7 +21,7 @@ export function SidebarOptInForm() {
         <CardContent className="grid gap-2.5 p-4">
           <SidebarInput type="email" placeholder="Email" />
           <Button
-            className="w-full bg-sidebar-primary text-sidebar-primary-foreground shadow-none"
+            className="bg-sidebar-primary text-sidebar-primary-foreground w-full shadow-none"
             size="sm"
           >
             Subscribe

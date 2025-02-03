@@ -22,7 +22,7 @@ function ScrollAreaVertical() {
     <div className="flex flex-col gap-6">
       <ScrollArea className="h-72 w-48 rounded-md border">
         <div className="p-4">
-          <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
+          <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
           {tags.map((tag) => (
             <React.Fragment key={tag}>
               <div className="text-sm">{tag}</div>
@@ -52,7 +52,7 @@ export const works = [
 
 function ScrollAreaHorizontalDemo() {
   return (
-    <ScrollArea className="w-96 whitespace-nowrap rounded-md border">
+    <ScrollArea className="w-96 rounded-md border whitespace-nowrap">
       <div className="flex w-max space-x-4 p-4">
         {works.map((artwork) => (
           <figure key={artwork.artist} className="shrink-0">
@@ -65,9 +65,9 @@ function ScrollAreaHorizontalDemo() {
                 height={400}
               />
             </div>
-            <figcaption className="pt-2 text-xs text-muted-foreground">
+            <figcaption className="text-muted-foreground pt-2 text-xs">
               Photo by{" "}
-              <span className="font-semibold text-foreground">
+              <span className="text-foreground font-semibold">
                 {artwork.artist}
               </span>
             </figcaption>

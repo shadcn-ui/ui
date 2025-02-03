@@ -29,9 +29,9 @@ export function HoverCardDemo() {
             <p className="text-sm">
               The React Framework – created and maintained by @vercel.
             </p>
-            <div className="flex items-center gap-2 mt-1">
-              <CalendarIcon className="size-4 text-muted-foreground" />{" "}
-              <span className="text-xs text-muted-foreground">
+            <div className="mt-1 flex items-center gap-2">
+              <CalendarIcon className="text-muted-foreground size-4" />{" "}
+              <span className="text-muted-foreground text-xs">
                 Joined December 2021
               </span>
             </div>

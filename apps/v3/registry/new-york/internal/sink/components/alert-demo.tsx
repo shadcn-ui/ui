@@ -17,7 +17,7 @@ import { Button } from "@/registry/new-york/ui/button"
 
 export function AlertDemo() {
   return (
-    <div className="gap-4 grid items-start max-w-xl">
+    <div className="grid max-w-xl items-start gap-4">
       <Alert>
         <CheckCircle2Icon />
         <AlertTitle>Success! Your changes have been saved</AlertTitle>
@@ -97,12 +97,12 @@ export function AlertDemo() {
         <Button
           size="sm"
           variant="outline"
-          className="absolute top-2.5 h-6 right-3 shadow-none"
+          className="absolute top-2.5 right-3 h-6 shadow-none"
         >
           Undo
         </Button>
       </Alert>
-      <Alert className="bg-amber-50 text-amber-900 border-amber-50 dark:bg-amber-950 dark:text-amber-100 dark:border-amber-950">
+      <Alert className="border-amber-50 bg-amber-50 text-amber-900 dark:border-amber-950 dark:bg-amber-950 dark:text-amber-100">
         <CheckCircle2Icon />
         <AlertTitle>Plot Twist: This Alert is Actually Amber!</AlertTitle>
         <AlertDescription>

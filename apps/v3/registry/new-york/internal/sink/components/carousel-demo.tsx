@@ -11,7 +11,7 @@ import {
 
 export function CarouselDemo() {
   return (
-    <div className="md:flex flex-col gap-4 hidden items-center w-full">
+    <div className="hidden w-full flex-col items-center gap-4 md:flex">
       <Carousel className="max-w-sm *:data-[slot=carousel-next]:hidden *:data-[slot=carousel-previous]:hidden *:data-[slot=carousel-next]:md:inline-flex *:data-[slot=carousel-previous]:md:inline-flex">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
@@ -31,7 +31,7 @@ export function CarouselDemo() {
       </Carousel>
 
       <Carousel
-        className="*:data-[slot=carousel-next]:hidden *:data-[slot=carousel-previous]:hidden *:data-[slot=carousel-next]:md:inline-flex *:data-[slot=carousel-previous]:md:inline-flex max-w-sm"
+        className="max-w-sm *:data-[slot=carousel-next]:hidden *:data-[slot=carousel-previous]:hidden *:data-[slot=carousel-next]:md:inline-flex *:data-[slot=carousel-previous]:md:inline-flex"
         opts={{
           align: "start",
         }}
@@ -52,7 +52,7 @@ export function CarouselDemo() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <Carousel className="*:data-[slot=carousel-next]:hidden *:data-[slot=carousel-previous]:hidden *:data-[slot=carousel-next]:md:inline-flex *:data-[slot=carousel-previous]:md:inline-flex max-w-sm">
+      <Carousel className="max-w-sm *:data-[slot=carousel-next]:hidden *:data-[slot=carousel-previous]:hidden *:data-[slot=carousel-next]:md:inline-flex *:data-[slot=carousel-previous]:md:inline-flex">
         <CarouselContent className="-ml-1">
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index} className="pl-1 md:basis-1/2">

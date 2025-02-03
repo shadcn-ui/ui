@@ -4,7 +4,7 @@ import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
 
 export function AspectRatioDemo() {
   return (
-    <div className="grid items-start gap-4 w-full max-w-sm">
+    <div className="grid w-full max-w-sm items-start gap-4">
       <AspectRatio ratio={16 / 9} className="bg-muted">
         <Image
           src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"

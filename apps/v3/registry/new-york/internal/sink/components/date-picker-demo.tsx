@@ -32,7 +32,7 @@ function DatePickerSimple() {
         <Button
           variant={"outline"}
           className={cn(
-            "min-w-[200px] font-normal justify-start px-2",
+            "min-w-[200px] justify-start px-2 font-normal",
             !date && "text-muted-foreground"
           )}
         >
@@ -65,7 +65,7 @@ function DatePickerWithRange() {
           id="date"
           variant={"outline"}
           className={cn(
-            "w-fit font-normal justify-start px-2",
+            "w-fit justify-start px-2 font-normal",
             !date && "text-muted-foreground"
           )}
         >
