@@ -190,10 +190,10 @@ export default function SinkPage() {
             <ComponentWrapper name="ScrollArea">
               <ScrollAreaDemo />
             </ComponentWrapper>
-            {/* <ComponentWrapper name="Select">
+            <ComponentWrapper name="Select">
               <SelectDemo />
             </ComponentWrapper>
-            <ComponentWrapper name="Separator">
+            {/* <ComponentWrapper name="Separator">
               <SeparatorDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Sheet">
