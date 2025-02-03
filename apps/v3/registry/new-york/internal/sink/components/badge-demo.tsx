@@ -5,7 +5,7 @@ import { Badge } from "@/registry/new-york/ui/badge"
 export function BadgeDemo() {
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className="flex gap-2 w-full">
+      <div className="flex flex-col gap-2 w-full md:flex-row">
         <Badge>Badge</Badge>
         <Badge variant="secondary">Secondary</Badge>
         <Badge variant="destructive">Destructive</Badge>
@@ -22,7 +22,7 @@ export function BadgeDemo() {
           8
         </Badge>
       </div>
-      <div className="flex gap-2 w-full">
+      <div className="flex flex-col gap-2 w-full md:flex-row">
         <Badge asChild>
           <a href="#">
             Link <ArrowRightIcon />

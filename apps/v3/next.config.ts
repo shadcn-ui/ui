@@ -1,9 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    outputFileTracingIncludes: {
-      "/*": ["./registry/**/*"],
-    },
+import type { NextConfig } from "next"
+
+const nextConfig: NextConfig = {
+  outputFileTracingIncludes: {
+    "/*": ["./registry/**/*"],
   },
   images: {
     remotePatterns: [

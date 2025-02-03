@@ -1,9 +1,19 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronsUpDown,
+  PlusCircleIcon,
+} from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/new-york/ui/avatar"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
@@ -12,6 +22,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
 } from "@/registry/new-york/ui/command"
 import {
   Popover,
@@ -42,7 +53,77 @@ const frameworks = [
   },
 ]
 
+type Framework = (typeof frameworks)[number]
+
+const users = [
+  {
+    id: "1",
+    username: "shadcn",
+  },
+  {
+    id: "2",
+    username: "leerob",
+  },
+  {
+    id: "3",
+    username: "evilrabbit",
+  },
+] as const
+
+type User = (typeof users)[number]
+
+const timezones = [
+  {
+    label: "Americas",
+    timezones: [
+      { value: "America/New_York", label: "(GMT-5) New York" },
+      { value: "America/Los_Angeles", label: "(GMT-8) Los Angeles" },
+      { value: "America/Chicago", label: "(GMT-6) Chicago" },
+      { value: "America/Toronto", label: "(GMT-5) Toronto" },
+      { value: "America/Vancouver", label: "(GMT-8) Vancouver" },
+      { value: "America/Sao_Paulo", label: "(GMT-3) São Paulo" },
+    ],
+  },
+  {
+    label: "Europe",
+    timezones: [
+      { value: "Europe/London", label: "(GMT+0) London" },
+      { value: "Europe/Paris", label: "(GMT+1) Paris" },
+      { value: "Europe/Berlin", label: "(GMT+1) Berlin" },
+      { value: "Europe/Rome", label: "(GMT+1) Rome" },
+      { value: "Europe/Madrid", label: "(GMT+1) Madrid" },
+      { value: "Europe/Amsterdam", label: "(GMT+1) Amsterdam" },
+    ],
+  },
+  {
+    label: "Asia/Pacific",
+    timezones: [
+      { value: "Asia/Tokyo", label: "(GMT+9) Tokyo" },
+      { value: "Asia/Shanghai", label: "(GMT+8) Shanghai" },
+      { value: "Asia/Singapore", label: "(GMT+8) Singapore" },
+      { value: "Asia/Dubai", label: "(GMT+4) Dubai" },
+      { value: "Australia/Sydney", label: "(GMT+11) Sydney" },
+      { value: "Asia/Seoul", label: "(GMT+9) Seoul" },
+    ],
+  },
+] as const
+
+type Timezone = (typeof timezones)[number]
+
 export function ComboboxDemo() {
+  return (
+    <div className="flex flex-col items-start gap-4 md:flex-row w-full">
+      <FrameworkCombobox frameworks={[...frameworks]} />
+      <UserCombobox users={[...users]} selectedUserId={users[0].id} />
+      <TimezoneCombobox
+        timezones={[...timezones]}
+        selectedTimezone={timezones[0].timezones[0]}
+      />
+    </div>
+  )
+}
+
+function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
 
@@ -53,17 +134,17 @@ export function ComboboxDemo() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-fit"
+          className="w-full md:max-w-[200px] justify-between"
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
             : "Select framework..."}
-          <ChevronsUpDown className="opacity-50" />
+          <ChevronsUpDown className="text-muted-foreground" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-(--radix-popover-trigger-width) p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." className="h-9" />
+          <CommandInput placeholder="Search framework..." />
           <CommandList>
             <CommandEmpty>No framework found.</CommandEmpty>
             <CommandGroup>
@@ -77,7 +158,7 @@ export function ComboboxDemo() {
                   }}
                 >
                   {framework.label}
-                  <Check
+                  <CheckIcon
                     className={cn(
                       "ml-auto",
                       value === framework.value ? "opacity-100" : "opacity-0"
@@ -85,6 +166,173 @@ export function ComboboxDemo() {
                   />
                 </CommandItem>
               ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
+  )
+}
+
+function UserCombobox({
+  users,
+  selectedUserId,
+}: {
+  users: User[]
+  selectedUserId: string
+}) {
+  const [open, setOpen] = React.useState(false)
+  const [value, setValue] = React.useState(selectedUserId)
+
+  const selectedUser = React.useMemo(
+    () => users.find((user) => user.id === value),
+    [value, users]
+  )
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          role="combobox"
+          aria-expanded={open}
+          className="w-full md:max-w-[200px] px-2 justify-between"
+        >
+          {selectedUser ? (
+            <div className="flex items-center gap-2">
+              <Avatar className="size-5">
+                <AvatarImage
+                  src={`https://github.com/${selectedUser.username}.png`}
+                />
+                <AvatarFallback>{selectedUser.username[0]}</AvatarFallback>
+              </Avatar>
+              {selectedUser.username}
+            </div>
+          ) : (
+            "Select user..."
+          )}
+          <ChevronsUpDown className="text-muted-foreground" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-(--radix-popover-trigger-width) p-0">
+        <Command>
+          <CommandInput placeholder="Search user..." />
+          <CommandList>
+            <CommandEmpty>No user found.</CommandEmpty>
+            <CommandGroup>
+              {users.map((user) => (
+                <CommandItem
+                  key={user.id}
+                  value={user.id}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue === value ? "" : currentValue)
+                    setOpen(false)
+                  }}
+                >
+                  <Avatar className="size-5">
+                    <AvatarImage
+                      src={`https://github.com/${user.username}.png`}
+                    />
+                    <AvatarFallback>{user.username[0]}</AvatarFallback>
+                  </Avatar>
+                  {user.username}
+                  <CheckIcon
+                    className={cn(
+                      "ml-auto",
+                      value === user.id ? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                </CommandItem>
+              ))}
+            </CommandGroup>
+            <CommandSeparator />
+            <CommandGroup>
+              <CommandItem>
+                <PlusCircleIcon />
+                Create user
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
+  )
+}
+
+function TimezoneCombobox({
+  timezones,
+  selectedTimezone,
+}: {
+  timezones: Timezone[]
+  selectedTimezone: Timezone["timezones"][number]
+}) {
+  const [open, setOpen] = React.useState(false)
+  const [value, setValue] = React.useState(selectedTimezone.value)
+
+  const selectedGroup = React.useMemo(
+    () =>
+      timezones.find((group) =>
+        group.timezones.find((tz) => tz.value === value)
+      ),
+    [value, timezones]
+  )
+
+  const selectedTimezoneLabel = React.useMemo(
+    () => selectedGroup?.timezones.find((tz) => tz.value === value)?.label,
+    [value, selectedGroup]
+  )
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          className="w-full md:max-w-[200px] px-2.5 h-12 justify-between"
+        >
+          {selectedTimezone ? (
+            <div className="flex flex-col items-start gap-0.5">
+              <span className="text-muted-foreground text-xs font-normal">
+                {selectedGroup?.label}
+              </span>
+              <span>{selectedTimezoneLabel}</span>
+            </div>
+          ) : (
+            "Select timezone"
+          )}
+          <ChevronDownIcon className="text-muted-foreground" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="p-0" align="start">
+        <Command>
+          <CommandInput placeholder="Search timezone..." />
+          <CommandList className="scroll-pb-12">
+            <CommandEmpty>No timezone found.</CommandEmpty>
+            {timezones.map((region) => (
+              <CommandGroup key={region.label} heading={region.label}>
+                {region.timezones.map((timezone) => (
+                  <CommandItem
+                    key={timezone.value}
+                    value={timezone.value}
+                    onSelect={(currentValue) => {
+                      setValue(currentValue)
+                      setOpen(false)
+                    }}
+                  >
+                    {timezone.label}
+                    <CheckIcon
+                      className="opacity-0 ml-auto data-[selected=true]:opacity-100"
+                      data-selected={value === timezone.value}
+                    />
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            ))}
+            <CommandSeparator className="sticky bottom-10" />
+            <CommandGroup className="sticky bottom-0 bg-popover">
+              <CommandItem>
+                <PlusCircleIcon />
+                Create timezone
+              </CommandItem>
             </CommandGroup>
           </CommandList>
         </Command>

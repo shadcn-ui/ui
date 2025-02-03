@@ -14,7 +14,7 @@ export function CalendarDemo() {
   })
 
   return (
-    <div className="flex items-start gap-2">
+    <div className="flex flex-col items-start gap-2 md:flex-row">
       <Calendar
         mode="single"
         selected={date}

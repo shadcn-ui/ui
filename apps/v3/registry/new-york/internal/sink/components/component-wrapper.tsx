@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 
 import { cn } from "@/registry/new-york/lib/utils"
@@ -11,6 +13,7 @@ export function ComponentWrapper({
   return (
     <ComponentErrorBoundary name={name}>
       <div
+        data-name={name.toLowerCase()}
         className={cn("flex w-full flex-col rounded-lg border", className)}
         {...props}
       >

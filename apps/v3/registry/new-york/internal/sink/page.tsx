@@ -69,7 +69,7 @@ export default function SinkPage() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset>
+      <SidebarInset className="pb-[20vh]">
         <header className="flex h-16 sticky top-0 bg-background shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 isolate z-10">
           <div className="flex items-center gap-2 px-4 w-full">
             <SidebarTrigger className="-ml-1" />
@@ -136,12 +136,9 @@ export default function SinkPage() {
             <ComponentWrapper name="Combobox">
               <ComboboxDemo />
             </ComponentWrapper>
-            <ComponentWrapper
-              name="Command"
-              className="md:[&_[cmdk-root]]:min-w-max"
-            >
+            {/* <ComponentWrapper name="Command">
               <CommandDemo />
-            </ComponentWrapper>
+            </ComponentWrapper> */}
             <ComponentWrapper name="ContextMenu">
               <ContextMenuDemo />
             </ComponentWrapper>
@@ -193,7 +190,7 @@ export default function SinkPage() {
             <ComponentWrapper name="ScrollArea">
               <ScrollAreaDemo />
             </ComponentWrapper>
-            <ComponentWrapper name="Select">
+            {/* <ComponentWrapper name="Select">
               <SelectDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Separator">
@@ -239,7 +236,7 @@ export default function SinkPage() {
             </ComponentWrapper>
             <ComponentWrapper name="Tooltip">
               <TooltipDemo />
-            </ComponentWrapper>
+            </ComponentWrapper> */}
           </div>
         </div>
       </SidebarInset>

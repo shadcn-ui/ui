@@ -59,11 +59,24 @@ const data = [
 ]
 
 export function DrawerDemo() {
+  return (
+    <div className="flex flex-col items-start md:items-center gap-4 md:flex-row">
+      <DrawerBottom />
+      <DrawerScrollableContent />
+      <DrawerDirections />
+    </div>
+  )
+}
+
+function DrawerBottom() {
   const [goal, setGoal] = React.useState(350)
 
-  function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)))
-  }
+  const onClick = React.useCallback(
+    (adjustment: number) => {
+      setGoal((prevGoal) => Math.max(200, Math.min(400, prevGoal + adjustment)))
+    },
+    [goal]
+  )
 
   return (
     <Drawer>
@@ -132,5 +145,87 @@ export function DrawerDemo() {
         </div>
       </DrawerContent>
     </Drawer>
+  )
+}
+
+function DrawerScrollableContent() {
+  return (
+    <Drawer direction="right">
+      <DrawerTrigger asChild>
+        <Button variant="outline">Scrollable Content</Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Move Goal</DrawerTitle>
+          <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+        </DrawerHeader>
+        <div className="overflow-y-auto px-4 text-sm">
+          <h4 className="mb-4 text-lg font-medium leading-none">Lorem Ipsum</h4>
+          {Array.from({ length: 10 }).map((_, index) => (
+            <p key={index} className="mb-4 leading-normal">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          ))}
+        </div>
+        <DrawerFooter>
+          <Button>Submit</Button>
+          <DrawerClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  )
+}
+
+const directions = ["top", "right", "bottom", "left"] as const
+
+function DrawerDirections() {
+  return (
+    <>
+      {directions.map((direction) => (
+        <Drawer key={direction} direction={direction}>
+          <DrawerTrigger asChild>
+            <Button variant="outline" className="capitalize">
+              {direction}
+            </Button>
+          </DrawerTrigger>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Move Goal</DrawerTitle>
+              <DrawerDescription>
+                Set your daily activity goal.
+              </DrawerDescription>
+            </DrawerHeader>
+            <div className="overflow-y-auto px-4 text-sm">
+              {Array.from({ length: 10 }).map((_, index) => (
+                <p key={index} className="mb-4 leading-normal">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </p>
+              ))}
+            </div>
+            <DrawerFooter>
+              <Button>Submit</Button>
+              <DrawerClose asChild>
+                <Button variant="outline">Cancel</Button>
+              </DrawerClose>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
+      ))}
+    </>
   )
 }

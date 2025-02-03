@@ -1,3 +1,5 @@
+import { Code2Icon, PlusIcon, TrashIcon } from "lucide-react"
+
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -36,14 +38,25 @@ export function ContextMenuDemo() {
         <ContextMenuSub>
           <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
           <ContextMenuSubContent className="w-48">
-            <ContextMenuItem>
+            <ContextMenuItem inset>
               Save Page As...
               <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-            <ContextMenuItem>Name Window...</ContextMenuItem>
+            <ContextMenuItem>
+              <PlusIcon />
+              Create Shortcut...
+            </ContextMenuItem>
+            <ContextMenuItem inset>Name Window...</ContextMenuItem>
             <ContextMenuSeparator />
-            <ContextMenuItem>Developer Tools</ContextMenuItem>
+            <ContextMenuItem>
+              <Code2Icon />
+              Developer Tools
+            </ContextMenuItem>
+            <ContextMenuSeparator />
+            <ContextMenuItem variant="destructive">
+              <TrashIcon />
+              Delete
+            </ContextMenuItem>
           </ContextMenuSubContent>
         </ContextMenuSub>
         <ContextMenuSeparator />
@@ -55,7 +68,6 @@ export function ContextMenuDemo() {
         <ContextMenuSeparator />
         <ContextMenuRadioGroup value="pedro">
           <ContextMenuLabel inset>People</ContextMenuLabel>
-          <ContextMenuSeparator />
           <ContextMenuRadioItem value="pedro">
             Pedro Duarte
           </ContextMenuRadioItem>

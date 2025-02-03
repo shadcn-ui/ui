@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+
     "plugins": [
       {
         "name": "next"
@@ -21,7 +22,8 @@
     "baseUrl": ".",
     "paths": {
       "@/www/*": ["../www/*"],
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "react": ["./node_modules/@types/react"]
     }
   },
   "include": [

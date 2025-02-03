@@ -17,10 +17,10 @@ export function CollapsibleDemo() {
     <Collapsible
       open={isOpen}
       onOpenChange={setIsOpen}
-      className="w-[350px] space-y-2"
+      className="w-full md:w-[350px] flex flex-col gap-2"
     >
-      <div className="flex items-center justify-between space-x-4 px-4">
-        <h4 className="text-sm font-semibold">
+      <div className="flex items-center justify-between gap-4 px-4">
+        <h4 className="text-sm font-semibold line-clamp-1">
           @peduarte starred 3 repositories
         </h4>
         <CollapsibleTrigger asChild>
@@ -33,7 +33,7 @@ export function CollapsibleDemo() {
       <div className="rounded-md border px-4 py-2 font-mono text-sm shadow-xs">
         @radix-ui/primitives
       </div>
-      <CollapsibleContent className="space-y-2">
+      <CollapsibleContent className="flex flex-col gap-2">
         <div className="rounded-md border px-4 py-2 font-mono text-sm shadow-xs">
           @radix-ui/colors
         </div>

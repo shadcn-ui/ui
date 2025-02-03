@@ -13,9 +13,9 @@ export function PopoverDemo() {
       <PopoverTrigger asChild>
         <Button variant="outline">Open popover</Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80">
+      <PopoverContent className="w-80" align="start">
         <div className="grid gap-4">
-          <div className="space-y-2">
+          <div className="grid gap-1.5">
             <h4 className="font-medium leading-none">Dimensions</h4>
             <p className="text-sm text-muted-foreground">
               Set the dimensions for the layer.

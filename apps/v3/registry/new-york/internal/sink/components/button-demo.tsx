@@ -4,7 +4,7 @@ import { Button } from "@/registry/new-york/ui/button"
 
 export function ButtonDemo() {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-col items-center gap-2 md:flex-row">
       <Button>Button</Button>
       <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>

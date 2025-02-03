@@ -6,7 +6,7 @@ import {
 
 export function AvatarDemo() {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-col items-center gap-4 md:flex-row">
       <Avatar>
         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
         <AvatarFallback>CN</AvatarFallback>
