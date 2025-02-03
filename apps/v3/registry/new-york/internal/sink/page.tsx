@@ -31,7 +31,7 @@ import { PaginationDemo } from "@/registry/new-york/internal/sink/components/pag
 import { PopoverDemo } from "@/registry/new-york/internal/sink/components/popover-demo"
 import { ProgressDemo } from "@/registry/new-york/internal/sink/components/progress-demo"
 import { RadioGroupDemo } from "@/registry/new-york/internal/sink/components/radio-group-demo"
-import { ResizableHandleDemo } from "@/registry/new-york/internal/sink/components/resizable-handle"
+import { ResizableDemo } from "@/registry/new-york/internal/sink/components/resizable-demo"
 import { ScrollAreaDemo } from "@/registry/new-york/internal/sink/components/scroll-area-demo"
 import { SelectDemo } from "@/registry/new-york/internal/sink/components/select-demo"
 import { SeparatorDemo } from "@/registry/new-york/internal/sink/components/separator-demo"
@@ -185,7 +185,7 @@ export default function SinkPage() {
               <RadioGroupDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Resizable">
-              <ResizableHandleDemo />
+              <ResizableDemo />
             </ComponentWrapper>
             <ComponentWrapper name="ScrollArea">
               <ScrollAreaDemo />
@@ -193,7 +193,7 @@ export default function SinkPage() {
             <ComponentWrapper name="Select">
               <SelectDemo />
             </ComponentWrapper>
-            {/* <ComponentWrapper name="Separator">
+            <ComponentWrapper name="Separator">
               <SeparatorDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Sheet">
@@ -217,7 +217,7 @@ export default function SinkPage() {
             <ComponentWrapper name="Tabs">
               <TabsDemo />
             </ComponentWrapper>
-            <ComponentWrapper name="Textarea">
+            {/* <ComponentWrapper name="Textarea">
               <TextareaDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Toast">

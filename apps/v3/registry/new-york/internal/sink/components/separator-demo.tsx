@@ -3,14 +3,14 @@ import { Separator } from "@/registry/new-york/ui/separator"
 export function SeparatorDemo() {
   return (
     <div>
-      <div className="space-y-1">
-        <h4 className="text-sm leading-none font-medium">Radix Primitives</h4>
-        <p className="text-muted-foreground text-sm">
-          An open-source UI component library.
-        </p>
+      <div className="flex flex-col gap-1">
+        <div className="text-sm leading-none font-medium">Tailwind CSS</div>
+        <div className="text-muted-foreground text-sm">
+          A utility-first CSS framework.
+        </div>
       </div>
       <Separator className="my-4" />
-      <div className="flex h-5 items-center space-x-4 text-sm">
+      <div className="flex h-5 items-center gap-4 text-sm">
         <div>Blog</div>
         <Separator orientation="vertical" />
         <div>Docs</div>

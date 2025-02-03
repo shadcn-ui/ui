@@ -4,9 +4,9 @@ import {
   ResizablePanelGroup,
 } from "@/registry/new-york/ui/resizable"
 
-export function ResizableHandleDemo() {
+export function ResizableDemo() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex w-full flex-col gap-6">
       <ResizablePanelGroup
         direction="horizontal"
         className="max-w-md rounded-lg border md:min-w-[450px]"

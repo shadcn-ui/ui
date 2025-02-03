@@ -60,7 +60,7 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="drawer-header"
-      className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
+      className={cn("flex flex-col gap-1.5 p-4", className)}
       {...props}
     />
   )
@@ -83,10 +83,7 @@ function DrawerTitle({
   return (
     <DrawerPrimitive.Title
       data-slot="drawer-title"
-      className={cn(
-        "text-lg leading-none font-semibold tracking-tight",
-        className
-      )}
+      className={cn("text-foreground font-semibold tracking-tight", className)}
       {...props}
     />
   )
