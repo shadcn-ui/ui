@@ -69,7 +69,11 @@ export const Index: Record<string, any> = {`
       target: "${file.target ?? ""}"
     }`
     })}],
-    component: React.lazy(() => import("${componentPath}")),
+    component: React.lazy(async () => {
+      const mod = await import("${componentPath}")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
     meta: ${JSON.stringify(item.meta)},
   },`
   }

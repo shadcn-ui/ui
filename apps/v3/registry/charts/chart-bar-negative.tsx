@@ -55,11 +55,7 @@ export function ChartBarNegative() {
               {chartData.map((item) => (
                 <Cell
                   key={item.month}
-                  fill={
-                    item.visitors > 0
-                      ? "hsl(var(--chart-1))"
-                      : "hsl(var(--chart-2))"
-                  }
+                  fill={item.visitors > 0 ? "var(--chart-1)" : "var(--chart-2)"}
                 />
               ))}
             </Bar>
