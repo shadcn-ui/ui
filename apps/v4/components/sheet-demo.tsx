@@ -25,7 +25,8 @@ export function SheetDemo() {
           <SheetHeader>
             <SheetTitle>Edit profile</SheetTitle>
             <SheetDescription>
-              Make changes to your profile here. Click save when you're done.
+              Make changes to your profile here. Click save when you&apos;re
+              done.
             </SheetDescription>
           </SheetHeader>
           <div className="grid flex-1 gap-6 py-4">
@@ -58,7 +59,7 @@ export function SheetDemo() {
               <SheetHeader>
                 <SheetTitle>Edit profile</SheetTitle>
                 <SheetDescription>
-                  Make changes to your profile here. Click save when you're
+                  Make changes to your profile here. Click save when you&apos;re
                   done.
                 </SheetDescription>
               </SheetHeader>

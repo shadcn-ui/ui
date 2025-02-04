@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { registryItemSchema, registryItemTypeSchema } from "shadcn/registry"
+import { registryItemSchema } from "shadcn/registry"
 import { z } from "zod"
 
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
@@ -58,17 +58,14 @@ export async function generateMetadata({
 
 export const dynamicParams = false
 
-const RENDERABLE_BLOCK_TYPES = [
-  "registry:block",
-  "registry:component",
-] satisfies z.infer<typeof registryItemTypeSchema>[]
-
 export async function generateStaticParams() {
   const { Index } = await import("@/__registry__")
   const index = z.record(registryItemSchema).parse(Index)
 
   return Object.values(index)
-    .filter((block) => RENDERABLE_BLOCK_TYPES.includes(block.type as any))
+    .filter((block) =>
+      ["registry:block", "registry:component"].includes(block.type)
+    )
     .map((block) => ({
       name: block.name,
     }))

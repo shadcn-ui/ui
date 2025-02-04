@@ -3,7 +3,6 @@
 import * as React from "react"
 import Link from "next/link"
 
-import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -182,7 +181,6 @@ export function NavigationMenuDemo() {
 }
 
 function ListItem({
-  className,
   title,
   children,
   href,

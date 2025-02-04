@@ -71,12 +71,9 @@ export function DrawerDemo() {
 function DrawerBottom() {
   const [goal, setGoal] = React.useState(350)
 
-  const onClick = React.useCallback(
-    (adjustment: number) => {
-      setGoal((prevGoal) => Math.max(200, Math.min(400, prevGoal + adjustment)))
-    },
-    [goal]
-  )
+  const onClick = React.useCallback((adjustment: number) => {
+    setGoal((prevGoal) => Math.max(200, Math.min(400, prevGoal + adjustment)))
+  }, [])
 
   return (
     <Drawer>

@@ -25,7 +25,8 @@ export function AccordionDemo() {
         <AccordionItem value="item-3">
           <AccordionTrigger>Is it animated?</AccordionTrigger>
           <AccordionContent>
-            Yes. It's animated by default, but you can disable it if you prefer.
+            Yes. It&apos;s animated by default, but you can disable it if you
+            prefer.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -41,9 +42,10 @@ export function AccordionDemo() {
             password hashing and storage, multi-factor authentication (MFA)
             implementation, session management, OAuth2 and SSO integration,
             regular security audits, rate limiting to prevent brute force
-            attacks, and maintaining detailed audit logs. Additionally, you'll
-            need to consider scalability, performance impact, and compliance
-            with relevant data protection regulations such as GDPR or HIPAA.
+            attacks, and maintaining detailed audit logs. Additionally,
+            you&apos;ll need to consider scalability, performance impact, and
+            compliance with relevant data protection regulations such as GDPR or
+            HIPAA.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
@@ -58,10 +60,10 @@ export function AccordionDemo() {
             clocks, and gossip protocols. Systems might implement event sourcing
             patterns, utilize message queues for asynchronous updates, and
             employ sophisticated conflict resolution strategies. Popular
-            solutions like Amazon's DynamoDB and Google's Spanner demonstrate
-            different approaches to solving these challenges, balancing between
-            consistency, availability, and partition tolerance as described in
-            the CAP theorem.
+            solutions like Amazon&apos;s DynamoDB and Google&apos;s Spanner
+            demonstrate different approaches to solving these challenges,
+            balancing between consistency, availability, and partition tolerance
+            as described in the CAP theorem.
           </AccordionContent>
         </AccordionItem>
       </Accordion>

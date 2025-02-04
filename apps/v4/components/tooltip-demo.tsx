@@ -1,13 +1,7 @@
 import { InfoIcon } from "lucide-react"
 
-import { Badge } from "@/registry/ui/badge"
 import { Button } from "@/registry/ui/button"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/registry/ui/tooltip"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/ui/tooltip"
 
 export function TooltipDemo() {
   return (

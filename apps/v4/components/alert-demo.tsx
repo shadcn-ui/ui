@@ -1,6 +1,5 @@
 import {
   AlertCircleIcon,
-  ArrowRightIcon,
   BookmarkCheckIcon,
   CheckCircle2Icon,
   GiftIcon,
@@ -34,7 +33,7 @@ export function AlertDemo() {
       </Alert>
       <Alert>
         <PopcornIcon />
-        <AlertTitle>Let's try one with icon and title.</AlertTitle>
+        <AlertTitle>Let&apos;s try one with icon and title.</AlertTitle>
       </Alert>
       <Alert>
         <ShieldAlertIcon />
