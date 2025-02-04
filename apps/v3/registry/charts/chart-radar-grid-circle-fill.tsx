@@ -32,11 +32,11 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
 } satisfies ChartConfig
 
-export default function Component() {
+export function ChartRadarGridCircleFill() {
   return (
     <Card>
       <CardHeader className="items-center pb-4">

@@ -1,11 +1,34 @@
 import type { Metadata, Viewport } from "next"
-
-import "./globals.css"
 import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 
+import "./globals.css"
+import Link from "next/link"
+
 import { cn } from "@/lib/utils"
+import { AppSidebar } from "@/components/app-sidebar"
+import { ModeToggle } from "@/components/mode-toggle"
 import { ThemeProvider } from "@/components/theme-provider"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/registry/ui/breadcrumb"
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/registry/ui/navigation-menu"
+import { Separator } from "@/registry/ui/separator"
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/registry/ui/sidebar"
 import { Toaster } from "@/registry/ui/sonner"
 import { siteConfig } from "@/www/config/site"
 
@@ -83,7 +106,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-background min-h-svh font-sans antialiased",
+          "bg-background min-h-svh overscroll-none font-sans antialiased",
           fontSans.variable,
           fontMono.variable
         )}
@@ -94,7 +117,38 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <SidebarProvider className="flex flex-col pt-(--header-height) [--header-height:calc(--spacing(14))]">
+            <header className="bg-background fixed inset-x-0 top-0 isolate z-10 flex shrink-0 items-center gap-2 border-b">
+              <div className="flex h-(--header-height) w-full items-center gap-2 px-4">
+                <SidebarTrigger className="-ml-1" />
+                <Separator
+                  orientation="vertical"
+                  className="mr-2 data-[orientation=vertical]:h-4"
+                />
+                <NavigationMenu>
+                  <NavigationMenuList className="*:data-[slot=navigation-menu-item]:h-7 **:data-[slot=navigation-menu-link]:py-1 **:data-[slot=navigation-menu-link]:font-medium">
+                    <NavigationMenuItem>
+                      <NavigationMenuLink asChild>
+                        <Link href="/">Home</Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                      <NavigationMenuLink asChild>
+                        <Link href="/charts">Charts</Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+                <div className="ml-auto flex items-center gap-2">
+                  <ModeToggle />
+                </div>
+              </div>
+            </header>
+            <div className="flex flex-1">
+              <AppSidebar />
+              <SidebarInset>{children}</SidebarInset>
+            </div>
+          </SidebarProvider>
           <Toaster />
         </ThemeProvider>
       </body>

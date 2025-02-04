@@ -34,17 +34,17 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
     icon: TrendingDown,
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
     icon: TrendingUp,
   },
 } satisfies ChartConfig
 
-export default function Component() {
+export function ChartAreaIcons() {
   return (
     <Card>
       <CardHeader>

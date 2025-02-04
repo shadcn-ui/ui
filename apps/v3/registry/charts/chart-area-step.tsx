@@ -32,12 +32,12 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
     icon: Activity,
   },
 } satisfies ChartConfig
 
-export default function Component() {
+export function ChartAreaStep() {
   return (
     <Card>
       <CardHeader>

@@ -31,17 +31,17 @@ const chartData = [
 const chartConfig = {
   running: {
     label: "Running",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
     icon: Footprints,
   },
   swimming: {
     label: "Swimming",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
     icon: Waves,
   },
 } satisfies ChartConfig
 
-export default function Component() {
+export function ChartTooltipIcons() {
   return (
     <Card>
       <CardHeader>

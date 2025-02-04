@@ -34,27 +34,27 @@ const chartConfig = {
   },
   chrome: {
     label: "Chrome",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
   safari: {
     label: "Safari",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
   },
   firefox: {
     label: "Firefox",
-    color: "hsl(var(--chart-3))",
+    color: "var(--chart-3)",
   },
   edge: {
     label: "Edge",
-    color: "hsl(var(--chart-4))",
+    color: "var(--chart-4)",
   },
   other: {
     label: "Other",
-    color: "hsl(var(--chart-5))",
+    color: "var(--chart-5)",
   },
 } satisfies ChartConfig
 
-export default function Component() {
+export function ChartRadialSimple() {
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">

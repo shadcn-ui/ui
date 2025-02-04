@@ -35,7 +35,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export default function Component() {
+export function ChartBarNegative() {
   return (
     <Card>
       <CardHeader>

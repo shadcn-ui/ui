@@ -31,11 +31,11 @@ const chartConfig = {
   },
   safari: {
     label: "Safari",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 
-export default function Component() {
+export function ChartRadialText() {
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">

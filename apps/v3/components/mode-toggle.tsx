@@ -6,7 +6,7 @@ import { useTheme } from "next-themes"
 
 import { Button } from "@/registry/ui/button"
 
-export default function ModeToggle() {
+export function ModeToggle() {
   const { setTheme, resolvedTheme } = useTheme()
 
   const toggleTheme = React.useCallback(() => {
