@@ -43,12 +43,8 @@ import { SwitchDemo } from "@/registry/new-york/internal/sink/components/switch-
 import { TableDemo } from "@/registry/new-york/internal/sink/components/table-demo"
 import { TabsDemo } from "@/registry/new-york/internal/sink/components/tabs-demo"
 import { TextareaDemo } from "@/registry/new-york/internal/sink/components/textarea-demo"
-import { ToastDemo } from "@/registry/new-york/internal/sink/components/toast-demo"
 import { ToggleDemo } from "@/registry/new-york/internal/sink/components/toggle-demo"
-import { ToggleDisabled } from "@/registry/new-york/internal/sink/components/toggle-disabled"
 import { ToggleGroupDemo } from "@/registry/new-york/internal/sink/components/toggle-group-demo"
-import { ToggleOutline } from "@/registry/new-york/internal/sink/components/toggle-outline"
-import { ToggleWithText } from "@/registry/new-york/internal/sink/components/toggle-with-text"
 import { TooltipDemo } from "@/registry/new-york/internal/sink/components/tooltip-demo"
 import {
   Breadcrumb,
@@ -217,26 +213,18 @@ export default function SinkPage() {
             <ComponentWrapper name="Tabs">
               <TabsDemo />
             </ComponentWrapper>
-            {/* <ComponentWrapper name="Textarea">
+            <ComponentWrapper name="Textarea">
               <TextareaDemo />
             </ComponentWrapper>
-            <ComponentWrapper name="Toast">
-              <ToastDemo />
-            </ComponentWrapper>
             <ComponentWrapper name="Toggle">
-              <div className="flex items-center gap-2">
-                <ToggleDemo />
-                <ToggleDisabled />
-                <ToggleOutline />
-                <ToggleWithText />
-              </div>
+              <ToggleDemo />
             </ComponentWrapper>
             <ComponentWrapper name="ToggleGroup">
               <ToggleGroupDemo />
             </ComponentWrapper>
             <ComponentWrapper name="Tooltip">
               <TooltipDemo />
-            </ComponentWrapper> */}
+            </ComponentWrapper>
           </div>
         </div>
       </SidebarInset>

@@ -1,11 +1,35 @@
-import { Bold } from "lucide-react"
+import { BoldIcon, BookmarkIcon, ItalicIcon, UnderlineIcon } from "lucide-react"
 
 import { Toggle } from "@/registry/new-york/ui/toggle"
 
 export function ToggleDemo() {
   return (
-    <Toggle aria-label="Toggle italic">
-      <Bold className="h-4 w-4" />
-    </Toggle>
+    <div className="flex items-center gap-6">
+      <Toggle aria-label="Toggle italic">
+        <BoldIcon />
+      </Toggle>
+      <Toggle aria-label="Toggle italic" variant="default">
+        <UnderlineIcon />
+      </Toggle>
+      <Toggle aria-label="Toggle italic" variant="default" disabled>
+        Disabled
+      </Toggle>
+      <Toggle variant="outline" aria-label="Toggle italic">
+        <ItalicIcon />
+        Italic
+      </Toggle>
+      <Toggle
+        aria-label="Toggle book"
+        className="data-[state=on]:[&_svg]:fill-accent-foreground"
+      >
+        <BookmarkIcon />
+      </Toggle>
+      <Toggle variant="outline" aria-label="Toggle italic" size="sm">
+        Small
+      </Toggle>
+      <Toggle variant="outline" aria-label="Toggle italic" size="lg">
+        Large
+      </Toggle>
+    </div>
   )
 }
