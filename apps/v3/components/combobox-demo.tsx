@@ -306,7 +306,9 @@ function TimezoneCombobox({
                     key={timezone.value}
                     value={timezone.value}
                     onSelect={(currentValue) => {
-                      setValue(currentValue)
+                      setValue(
+                        currentValue as Timezone["timezones"][number]["value"]
+                      )
                       setOpen(false)
                     }}
                   >

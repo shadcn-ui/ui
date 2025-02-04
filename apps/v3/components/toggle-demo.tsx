@@ -4,7 +4,7 @@ import { Toggle } from "@/registry/ui/toggle"
 
 export function ToggleDemo() {
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex flex-wrap items-center gap-6">
       <Toggle aria-label="Toggle italic">
         <BoldIcon />
       </Toggle>

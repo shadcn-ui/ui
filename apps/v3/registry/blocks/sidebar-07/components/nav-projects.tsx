@@ -26,25 +26,23 @@ import {
 } from "@/registry/ui/sidebar"
 
 export function NavProjects({
-  projects,
+  components,
 }: {
-  projects: {
+  components: {
     name: string
     url: string
-    icon: LucideIcon
   }[]
 }) {
   const { isMobile } = useSidebar()
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Projects</SidebarGroupLabel>
+      <SidebarGroupLabel>Components</SidebarGroupLabel>
       <SidebarMenu>
-        {projects.map((item) => (
+        {components.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
               <a href={item.url}>
-                <item.icon />
                 <span>{item.name}</span>
               </a>
             </SidebarMenuButton>

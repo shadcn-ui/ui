@@ -205,7 +205,7 @@ function DropdownMenuWithAvatar() {
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-semibold">shadcn</span>
             <span className="text-muted-foreground truncate text-xs">
-              shadcn@example.comdsa sadsa asdd
+              shadcn@example.com
             </span>
           </div>
           <ChevronsUpDownIcon className="text-muted-foreground ml-auto" />

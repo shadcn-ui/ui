@@ -52,8 +52,8 @@ export const works = [
 
 function ScrollAreaHorizontalDemo() {
   return (
-    <ScrollArea className="w-96 rounded-md border whitespace-nowrap">
-      <div className="flex w-max space-x-4 p-4">
+    <ScrollArea className="w-full max-w-96 rounded-md border">
+      <div className="flex gap-4 p-4">
         {works.map((artwork) => (
           <figure key={artwork.artist} className="shrink-0">
             <div className="overflow-hidden rounded-md">

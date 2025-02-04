@@ -1,28 +1,30 @@
 "use client"
 
 import * as React from "react"
+import { Index } from "@/__registry__"
 import {
   AudioWaveform,
   BookOpen,
   Bot,
   Command,
-  Frame,
   GalleryVerticalEnd,
-  Map,
-  PieChart,
   Settings2,
   SquareTerminal,
 } from "lucide-react"
 
 import { NavMain } from "@/registry/blocks/sidebar-07/components/nav-main"
-import { NavProjects } from "@/registry/blocks/sidebar-07/components/nav-projects"
 import { NavUser } from "@/registry/blocks/sidebar-07/components/nav-user"
 import { TeamSwitcher } from "@/registry/blocks/sidebar-07/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
   SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
   SidebarRail,
 } from "@/registry/ui/sidebar"
 
@@ -137,23 +139,9 @@ const data = {
       ],
     },
   ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
+  components: Object.values(Index).filter(
+    (item) => item.type === "registry:ui"
+  ),
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -164,7 +152,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+          <SidebarGroupLabel>Components</SidebarGroupLabel>
+          <SidebarMenu>
+            {data.components.map((item) => (
+              <SidebarMenuItem key={item.name}>
+                <SidebarMenuButton asChild>
+                  <a href={`/#${item.name}`}>
+                    <span>{getComponentName(item.name)}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
@@ -172,4 +173,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarRail />
     </Sidebar>
   )
+}
+
+function getComponentName(name: string) {
+  // convert kebab-case to title case
+  return name.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase())
 }

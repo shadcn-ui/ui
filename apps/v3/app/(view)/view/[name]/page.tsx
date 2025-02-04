@@ -1,8 +1,9 @@
 import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { registryItemSchema, registryItemTypeSchema } from "shadcn/registry"
+import { z } from "zod"
 
-import { getAllBlockIds } from "@/lib/blocks"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { siteConfig } from "@/www/config/site"
@@ -10,8 +11,6 @@ import { siteConfig } from "@/www/config/site"
 const getCachedRegistryItem = React.cache(async (name: string) => {
   return await getRegistryItem(name)
 })
-
-export const dynamicParams = false
 
 export async function generateMetadata({
   params,
@@ -57,11 +56,22 @@ export async function generateMetadata({
   }
 }
 
+export const dynamicParams = false
+
+const RENDERABLE_BLOCK_TYPES = [
+  "registry:block",
+  "registry:component",
+] satisfies z.infer<typeof registryItemTypeSchema>[]
+
 export async function generateStaticParams() {
-  const blockIds = await getAllBlockIds()
-  return blockIds.map((name) => ({
-    name,
-  }))
+  const { Index } = await import("@/__registry__")
+  const index = z.record(registryItemSchema).parse(Index)
+
+  return Object.values(index)
+    .filter((block) => RENDERABLE_BLOCK_TYPES.includes(block.type as any))
+    .map((block) => ({
+      name: block.name,
+    }))
 }
 
 export default async function BlockPage({

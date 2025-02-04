@@ -73,7 +73,7 @@ export const Index: Record<string, any> = {`
   }
 
   index += `
-  },`
+  }`
 
   // Write style index.
   rimraf.sync(path.join(process.cwd(), "__registry__/index.tsx"))

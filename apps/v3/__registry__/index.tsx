@@ -1134,4 +1134,4 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/hooks/use-mobile.ts")),
     meta: undefined,
   },
-  },
+  }
