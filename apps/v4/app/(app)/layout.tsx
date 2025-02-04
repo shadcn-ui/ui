@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { AppSidebar } from "@/components/app-sidebar"
-import { ModeToggle } from "@/components/mode-toggle"
+import { ModeSwitcher } from "@/components/mode-switcher"
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -44,7 +44,7 @@ export default function AppLayout({
             </NavigationMenuList>
           </NavigationMenu>
           <div className="ml-auto flex items-center gap-2">
-            <ModeToggle />
+            <ModeSwitcher />
           </div>
         </div>
       </header>
