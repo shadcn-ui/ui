@@ -1121,6 +1121,916 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/blocks/login-05/page.tsx")),
     meta: undefined,
   },
+  "chart-area-axes": {
+    name: "chart-area-axes",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-area-axes.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-area-axes.tsx")),
+    meta: undefined,
+  },
+  "chart-area-default": {
+    name: "chart-area-default",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-area-default.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-area-default.tsx")),
+    meta: undefined,
+  },
+  "chart-area-gradient": {
+    name: "chart-area-gradient",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-area-gradient.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-area-gradient.tsx")),
+    meta: undefined,
+  },
+  "chart-area-icons": {
+    name: "chart-area-icons",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-area-icons.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-area-icons.tsx")),
+    meta: undefined,
+  },
+  "chart-area-interactive": {
+    name: "chart-area-interactive",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart","select"],
+    files: [{
+      path: "registry/charts/chart-area-interactive.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-area-interactive.tsx")),
+    meta: undefined,
+  },
+  "chart-area-legend": {
+    name: "chart-area-legend",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-area-legend.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-area-legend.tsx")),
+    meta: undefined,
+  },
+  "chart-area-linear": {
+    name: "chart-area-linear",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-area-linear.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-area-linear.tsx")),
+    meta: undefined,
+  },
+  "chart-area-stacked-expand": {
+    name: "chart-area-stacked-expand",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-area-stacked-expand.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-area-stacked-expand.tsx")),
+    meta: undefined,
+  },
+  "chart-area-stacked": {
+    name: "chart-area-stacked",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-area-stacked.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-area-stacked.tsx")),
+    meta: undefined,
+  },
+  "chart-area-step": {
+    name: "chart-area-step",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-area-step.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-area-step.tsx")),
+    meta: undefined,
+  },
+  "chart-bar-active": {
+    name: "chart-bar-active",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-bar-active.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-bar-active.tsx")),
+    meta: undefined,
+  },
+  "chart-bar-default": {
+    name: "chart-bar-default",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-bar-default.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-bar-default.tsx")),
+    meta: undefined,
+  },
+  "chart-bar-horizontal": {
+    name: "chart-bar-horizontal",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-bar-horizontal.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-bar-horizontal.tsx")),
+    meta: undefined,
+  },
+  "chart-bar-interactive": {
+    name: "chart-bar-interactive",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-bar-interactive.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-bar-interactive.tsx")),
+    meta: undefined,
+  },
+  "chart-bar-label-custom": {
+    name: "chart-bar-label-custom",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-bar-label-custom.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-bar-label-custom.tsx")),
+    meta: undefined,
+  },
+  "chart-bar-label": {
+    name: "chart-bar-label",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-bar-label.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-bar-label.tsx")),
+    meta: undefined,
+  },
+  "chart-bar-mixed": {
+    name: "chart-bar-mixed",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-bar-mixed.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-bar-mixed.tsx")),
+    meta: undefined,
+  },
+  "chart-bar-multiple": {
+    name: "chart-bar-multiple",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-bar-multiple.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-bar-multiple.tsx")),
+    meta: undefined,
+  },
+  "chart-bar-negative": {
+    name: "chart-bar-negative",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-bar-negative.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-bar-negative.tsx")),
+    meta: undefined,
+  },
+  "chart-bar-stacked": {
+    name: "chart-bar-stacked",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-bar-stacked.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-bar-stacked.tsx")),
+    meta: undefined,
+  },
+  "chart-line-default": {
+    name: "chart-line-default",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-line-default.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-line-default.tsx")),
+    meta: undefined,
+  },
+  "chart-line-dots-colors": {
+    name: "chart-line-dots-colors",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-line-dots-colors.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-line-dots-colors.tsx")),
+    meta: undefined,
+  },
+  "chart-line-dots-custom": {
+    name: "chart-line-dots-custom",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-line-dots-custom.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-line-dots-custom.tsx")),
+    meta: undefined,
+  },
+  "chart-line-dots": {
+    name: "chart-line-dots",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-line-dots.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-line-dots.tsx")),
+    meta: undefined,
+  },
+  "chart-line-interactive": {
+    name: "chart-line-interactive",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-line-interactive.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-line-interactive.tsx")),
+    meta: undefined,
+  },
+  "chart-line-label-custom": {
+    name: "chart-line-label-custom",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-line-label-custom.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-line-label-custom.tsx")),
+    meta: undefined,
+  },
+  "chart-line-label": {
+    name: "chart-line-label",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-line-label.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-line-label.tsx")),
+    meta: undefined,
+  },
+  "chart-line-linear": {
+    name: "chart-line-linear",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-line-linear.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-line-linear.tsx")),
+    meta: undefined,
+  },
+  "chart-line-multiple": {
+    name: "chart-line-multiple",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-line-multiple.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-line-multiple.tsx")),
+    meta: undefined,
+  },
+  "chart-line-step": {
+    name: "chart-line-step",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-line-step.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-line-step.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-donut-active": {
+    name: "chart-pie-donut-active",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-donut-active.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-donut-active.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-donut-text": {
+    name: "chart-pie-donut-text",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-donut-text.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-donut-text.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-donut": {
+    name: "chart-pie-donut",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-donut.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-donut.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-interactive": {
+    name: "chart-pie-interactive",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-interactive.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-interactive.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-label-custom": {
+    name: "chart-pie-label-custom",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-label-custom.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-label-custom.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-label-list": {
+    name: "chart-pie-label-list",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-label-list.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-label-list.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-label": {
+    name: "chart-pie-label",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-label.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-label.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-legend": {
+    name: "chart-pie-legend",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-legend.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-legend.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-separator-none": {
+    name: "chart-pie-separator-none",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-separator-none.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-separator-none.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-simple": {
+    name: "chart-pie-simple",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-simple.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-simple.tsx")),
+    meta: undefined,
+  },
+  "chart-pie-stacked": {
+    name: "chart-pie-stacked",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-pie-stacked.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-pie-stacked.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-default": {
+    name: "chart-radar-default",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-default.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-default.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-dots": {
+    name: "chart-radar-dots",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-dots.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-dots.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-grid-circle-fill": {
+    name: "chart-radar-grid-circle-fill",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-grid-circle-fill.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-grid-circle-fill.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-grid-circle-no-lines": {
+    name: "chart-radar-grid-circle-no-lines",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-grid-circle-no-lines.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-grid-circle-no-lines.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-grid-circle": {
+    name: "chart-radar-grid-circle",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-grid-circle.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-grid-circle.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-grid-custom": {
+    name: "chart-radar-grid-custom",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-grid-custom.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-grid-custom.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-grid-fill": {
+    name: "chart-radar-grid-fill",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-grid-fill.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-grid-fill.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-grid-none": {
+    name: "chart-radar-grid-none",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-grid-none.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-grid-none.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-icons": {
+    name: "chart-radar-icons",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-icons.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-icons.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-label-custom": {
+    name: "chart-radar-label-custom",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-label-custom.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-label-custom.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-legend": {
+    name: "chart-radar-legend",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-legend.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-legend.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-lines-only": {
+    name: "chart-radar-lines-only",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-lines-only.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-lines-only.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-multiple": {
+    name: "chart-radar-multiple",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-multiple.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-multiple.tsx")),
+    meta: undefined,
+  },
+  "chart-radar-radius": {
+    name: "chart-radar-radius",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radar-radius.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radar-radius.tsx")),
+    meta: undefined,
+  },
+  "chart-radial-grid": {
+    name: "chart-radial-grid",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radial-grid.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radial-grid.tsx")),
+    meta: undefined,
+  },
+  "chart-radial-label": {
+    name: "chart-radial-label",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radial-label.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radial-label.tsx")),
+    meta: undefined,
+  },
+  "chart-radial-shape": {
+    name: "chart-radial-shape",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radial-shape.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radial-shape.tsx")),
+    meta: undefined,
+  },
+  "chart-radial-simple": {
+    name: "chart-radial-simple",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radial-simple.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radial-simple.tsx")),
+    meta: undefined,
+  },
+  "chart-radial-stacked": {
+    name: "chart-radial-stacked",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radial-stacked.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radial-stacked.tsx")),
+    meta: undefined,
+  },
+  "chart-radial-text": {
+    name: "chart-radial-text",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-radial-text.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-radial-text.tsx")),
+    meta: undefined,
+  },
+  "chart-tooltip-default": {
+    name: "chart-tooltip-default",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-tooltip-default.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-tooltip-default.tsx")),
+    meta: undefined,
+  },
+  "chart-tooltip-indicator-line": {
+    name: "chart-tooltip-indicator-line",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-tooltip-indicator-line.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-tooltip-indicator-line.tsx")),
+    meta: undefined,
+  },
+  "chart-tooltip-indicator-none": {
+    name: "chart-tooltip-indicator-none",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-tooltip-indicator-none.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-tooltip-indicator-none.tsx")),
+    meta: undefined,
+  },
+  "chart-tooltip-label-none": {
+    name: "chart-tooltip-label-none",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-tooltip-label-none.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-tooltip-label-none.tsx")),
+    meta: undefined,
+  },
+  "chart-tooltip-label-custom": {
+    name: "chart-tooltip-label-custom",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-tooltip-label-custom.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-tooltip-label-custom.tsx")),
+    meta: undefined,
+  },
+  "chart-tooltip-label-formatter": {
+    name: "chart-tooltip-label-formatter",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-tooltip-label-formatter.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-tooltip-label-formatter.tsx")),
+    meta: undefined,
+  },
+  "chart-tooltip-formatter": {
+    name: "chart-tooltip-formatter",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-tooltip-formatter.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-tooltip-formatter.tsx")),
+    meta: undefined,
+  },
+  "chart-tooltip-icons": {
+    name: "chart-tooltip-icons",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-tooltip-icons.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-tooltip-icons.tsx")),
+    meta: undefined,
+  },
+  "chart-tooltip-advanced": {
+    name: "chart-tooltip-advanced",
+    description: "",
+    type: "registry:block",
+    registryDependencies: ["card","chart"],
+    files: [{
+      path: "registry/charts/chart-tooltip-advanced.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(() => import("@/registry/charts/chart-tooltip-advanced.tsx")),
+    meta: undefined,
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",

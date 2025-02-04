@@ -6,6 +6,7 @@ import { registryItemSchema, type Registry } from "shadcn/registry"
 import { z } from "zod"
 
 import { blocks } from "@/www/registry/registry-blocks"
+import { charts } from "@/www/registry/registry-charts"
 import { ui } from "@/www/registry/registry-ui"
 
 const DEPRECATED_ITEMS = ["toast"]
@@ -17,6 +18,7 @@ const registry = {
     [
       ...ui,
       ...blocks,
+      ...charts,
       {
         name: "use-mobile",
         type: "registry:hook",
