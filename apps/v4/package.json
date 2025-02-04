@@ -82,6 +82,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@typescript-eslint/parser": "^5.59.7",
     "eslint": "^9",
     "eslint-config-next": "15.2.0-canary.33",
     "prettier": "^3.4.2",
