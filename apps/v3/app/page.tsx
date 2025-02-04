@@ -1,3 +1,3 @@
-import SinkPage from "@/registry/new-york/internal/sink/page"
+import SinkPage from "@/registry/internal/sink/page"
 
 export default SinkPage

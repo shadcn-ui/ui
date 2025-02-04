@@ -4,7 +4,7 @@ import * as React from "react"
 import { MoonIcon, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 
-import { Button } from "@/registry/new-york/ui/button"
+import { Button } from "@/registry/ui/button"
 
 export default function ModeToggle() {
   const { setTheme, resolvedTheme } = useTheme()
