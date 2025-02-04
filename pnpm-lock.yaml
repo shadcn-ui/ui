@@ -106,7 +106,7 @@ importers:
         specifier: ^5.5.3
         version: 5.7.3
 
-  apps/v3:
+  apps/v4:
     dependencies:
       '@hookform/resolvers':
         specifier: ^3.10.0
@@ -8924,7 +8924,7 @@ snapshots:
   '@eslint/config-array@0.19.1':
     dependencies:
       '@eslint/object-schema': 2.1.5
-      debug: 4.3.7
+      debug: 4.4.0
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -8950,7 +8950,7 @@ snapshots:
   '@eslint/eslintrc@3.2.0':
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.7
+      debug: 4.4.0
       espree: 10.3.0
       globals: 14.0.0
       ignore: 5.3.1
@@ -11291,7 +11291,7 @@ snapshots:
 
   '@types/reactcss@1.2.12':
     dependencies:
-      '@types/react': 18.3.18
+      '@types/react': 19.0.8
 
   '@types/resolve@1.20.6': {}
 
@@ -13019,7 +13019,7 @@ snapshots:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.6
-      debug: 4.3.7
+      debug: 4.4.0
       escape-string-regexp: 4.0.0
       eslint-scope: 8.2.0
       eslint-visitor-keys: 4.2.0
