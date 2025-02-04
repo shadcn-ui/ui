@@ -7,5 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.0.0"
   }
 }
