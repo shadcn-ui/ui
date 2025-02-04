@@ -4,9 +4,8 @@ import * as React from "react"
 import { MoonIcon, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 
+import { META_THEME_COLORS, useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/ui/button"
-import { META_THEME_COLORS } from "@/www/config/site"
-import { useMetaColor } from "@/www/hooks/use-meta-color"
 
 export function ModeSwitcher() {
   const { setTheme, resolvedTheme } = useTheme()

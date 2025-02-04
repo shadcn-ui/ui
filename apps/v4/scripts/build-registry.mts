@@ -50,7 +50,7 @@ export const Index: Record<string, any> = {`
       continue
     }
 
-    let componentPath = item.files ? `@/registry/${item.files[0].path}` : ""
+    const componentPath = item.files ? `@/registry/${item.files[0].path}` : ""
 
     index += `
   "${item.name}": {
