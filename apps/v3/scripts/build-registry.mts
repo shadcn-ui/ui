@@ -76,8 +76,8 @@ export const Index: Record<string, any> = {`
   },`
 
   // Write style index.
-  rimraf.sync(path.join(process.cwd(), "registry/__index__.tsx"))
-  await fs.writeFile(path.join(process.cwd(), "registry/__index__.tsx"), index)
+  rimraf.sync(path.join(process.cwd(), "__registry__/index.tsx"))
+  await fs.writeFile(path.join(process.cwd(), "__registry__/index.tsx"), index)
 }
 
 async function buildRegistryJsonFile() {
