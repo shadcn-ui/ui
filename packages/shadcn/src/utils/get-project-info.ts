@@ -14,7 +14,7 @@ import { z } from "zod"
 
 export type TailwindVersion = "v3" | "v4" | null
 
-type ProjectInfo = {
+export type ProjectInfo = {
   framework: Framework
   isSrcDir: boolean
   isRSC: boolean
