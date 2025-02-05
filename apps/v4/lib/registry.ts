@@ -33,24 +33,24 @@ export async function getRegistryItem(name: string) {
     return null
   }
 
-  let files: typeof result.data.files = []
-  for (const file of item.files) {
-    const content = await getFileContent(file)
-    const relativePath = path.relative(process.cwd(), file.path)
+  const files: typeof result.data.files = []
+  // for (const file of item.files) {
+  //   const content = await getFileContent(file)
+  //   const relativePath = path.relative(process.cwd(), file.path)
 
-    files.push({
-      ...file,
-      path: relativePath,
-      content,
-    })
-  }
+  //   files.push({
+  //     ...file,
+  //     path: relativePath,
+  //     content,
+  //   })
+  // }
 
   // Get meta.
   // Assume the first file is the main file.
   // const meta = await getFileMeta(files[0].path)
 
   // Fix file paths.
-  files = fixFilePaths(files)
+  // files = fixFilePaths(files)
 
   const parsed = registryItemSchema.safeParse({
     ...result.data,
