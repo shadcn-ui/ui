@@ -1,5 +1,21 @@
 # @shadcn/ui
 
+## 2.4.0
+
+### Minor Changes
+
+- [#6487](https://github.com/shadcn-ui/ui/pull/6487) [`5ef2bc5f455dfc394116267788c0514b696e13b0`](https://github.com/shadcn-ui/ui/commit/5ef2bc5f455dfc394116267788c0514b696e13b0) Thanks [@shadcn](https://github.com/shadcn)! - add theme vars support
+
+- [#6478](https://github.com/shadcn-ui/ui/pull/6478) [`8f6a64f176defdb1f9c493598d952fb4e9844cd0`](https://github.com/shadcn-ui/ui/commit/8f6a64f176defdb1f9c493598d952fb4e9844cd0) Thanks [@shadcn](https://github.com/shadcn)! - add tailwind version detection
+
+- [#6490](https://github.com/shadcn-ui/ui/pull/6490) [`9a14c1d0925d3df2c8f57a3381d212cc3e54f4a6`](https://github.com/shadcn-ui/ui/commit/9a14c1d0925d3df2c8f57a3381d212cc3e54f4a6) Thanks [@shadcn](https://github.com/shadcn)! - add support for tailwind v4
+
+- [#6574](https://github.com/shadcn-ui/ui/pull/6574) [`1e357cb20d6024b2bc9766fb15f61cb989eb7024`](https://github.com/shadcn-ui/ui/commit/1e357cb20d6024b2bc9766fb15f61cb989eb7024) Thanks [@shadcn](https://github.com/shadcn)! - default for new-york for v4
+
+- [#6515](https://github.com/shadcn-ui/ui/pull/6515) [`d1eb24e23a973646d78cf101fa1e0a22861ac9fd`](https://github.com/shadcn-ui/ui/commit/d1eb24e23a973646d78cf101fa1e0a22861ac9fd) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of sidebar colors
+
+- [#6571](https://github.com/shadcn-ui/ui/pull/6571) [`c74a094f14a6e338124709547932dbb20c8d1324`](https://github.com/shadcn-ui/ui/commit/c74a094f14a6e338124709547932dbb20c8d1324) Thanks [@shadcn](https://github.com/shadcn)! - hotswap style for v4
+
 ## 2.2.0
 
 ### Minor Changes
