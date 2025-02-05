@@ -1,10 +1,5 @@
-import { promises as fs } from "fs"
-import { tmpdir } from "os"
-import path from "path"
 import { Index } from "@/__registry__"
-import { registryItemFileSchema, registryItemSchema } from "shadcn/registry"
-import { Project, ScriptKind, SourceFile } from "ts-morph"
-import { z } from "zod"
+import { registryItemSchema } from "shadcn/registry"
 
 const memoizedIndex: typeof Index = Object.fromEntries(
   Object.entries(Index).map(([style, items]) => [style, { ...items }])
@@ -64,94 +59,6 @@ export async function getRegistryItem(name: string) {
   }
 
   return parsed.data
-}
-
-async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
-  const raw = await fs.readFile(file.path, "utf-8")
-
-  const project = new Project({
-    compilerOptions: {},
-  })
-
-  const tempFile = await createTempSourceFile(file.path)
-  const sourceFile = project.createSourceFile(tempFile, raw, {
-    scriptKind: ScriptKind.TSX,
-  })
-
-  // Remove meta variables.
-  removeVariable(sourceFile, "iframeHeight")
-  removeVariable(sourceFile, "containerClassName")
-  removeVariable(sourceFile, "description")
-
-  let code = sourceFile.getFullText()
-
-  // Some registry items uses default export.
-  // We want to use named export instead.
-  // TODO: do we really need this? - @shadcn.
-  if (file.type !== "registry:page") {
-    code = code.replaceAll("export default", "export")
-  }
-
-  // Fix imports.
-  code = fixImport(code)
-
-  return code
-}
-
-function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
-  let target = file.target
-
-  if (!target || target === "") {
-    const fileName = file.path.split("/").pop()
-    if (
-      file.type === "registry:block" ||
-      file.type === "registry:component" ||
-      file.type === "registry:example"
-    ) {
-      target = `components/${fileName}`
-    }
-
-    if (file.type === "registry:ui") {
-      target = `components/ui/${fileName}`
-    }
-
-    if (file.type === "registry:hook") {
-      target = `hooks/${fileName}`
-    }
-
-    if (file.type === "registry:lib") {
-      target = `lib/${fileName}`
-    }
-  }
-
-  return target ?? ""
-}
-
-async function createTempSourceFile(filename: string) {
-  const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
-  return path.join(dir, filename)
-}
-
-function removeVariable(sourceFile: SourceFile, name: string) {
-  sourceFile.getVariableDeclaration(name)?.remove()
-}
-
-function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
-  if (!files) {
-    return []
-  }
-
-  // Resolve all paths relative to the first file's directory.
-  const firstFilePath = files[0].path
-  const firstFilePathDir = path.dirname(firstFilePath)
-
-  return files.map((file) => {
-    return {
-      ...file,
-      path: path.relative(firstFilePathDir, file.path),
-      target: getFileTarget(file),
-    }
-  })
 }
 
 export function fixImport(content: string) {
