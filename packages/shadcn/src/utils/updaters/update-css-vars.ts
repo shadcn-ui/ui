@@ -361,7 +361,7 @@ function updateCssVarsPluginV4(
             node.type === "rule" && node.selector === selector
         )
 
-        if (!ruleNode) {
+        if (!ruleNode && Object.keys(vars).length > 0) {
           ruleNode = postcss.rule({
             selector,
             nodes: [],
