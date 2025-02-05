@@ -1,5 +1,6 @@
 import path from "path"
-import { Config } from "@/src/utils/get-config"
+import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
+import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -311,9 +312,13 @@ async function resolveRegistryDependencies(
   const visited = new Set<string>()
   const payload: string[] = []
 
+  const style = config.resolvedPaths?.cwd
+    ? await getTargetStyleFromConfig(config.resolvedPaths.cwd)
+    : config.style
+
   async function resolveDependencies(itemUrl: string) {
     const url = getRegistryUrl(
-      isUrl(itemUrl) ? itemUrl : `styles/${config.style}/${itemUrl}.json`
+      isUrl(itemUrl) ? itemUrl : `styles/${style}/${itemUrl}.json`
     )
 
     if (visited.has(url)) {
