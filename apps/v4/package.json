@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "pnpm --filter=shadcn build && next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
