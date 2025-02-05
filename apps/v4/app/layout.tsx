@@ -3,6 +3,7 @@ import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 
 import { cn } from "@/lib/utils"
+import { Analytics } from "@/components/analytics"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/new-york-v4/ui/sonner"
 import { siteConfig } from "@/www/config/site"
@@ -109,6 +110,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
