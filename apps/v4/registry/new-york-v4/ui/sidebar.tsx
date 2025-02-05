@@ -25,7 +25,7 @@ import {
   TooltipTrigger,
 } from "@/registry/new-york-v4/ui/tooltip"
 
-const SIDEBAR_COOKIE_NAME = "sidebar:state"
+const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
 const SIDEBAR_WIDTH = "16rem"
 const SIDEBAR_WIDTH_MOBILE = "18rem"
@@ -335,10 +335,7 @@ function SidebarInput({
     <Input
       data-slot="sidebar-input"
       data-sidebar="input"
-      className={cn(
-        "bg-background focus-visible:ring-sidebar-ring h-8 w-full shadow-none focus-visible:ring-2",
-        className
-      )}
+      className={cn("bg-background h-8 w-full shadow-none", className)}
       {...props}
     />
   )

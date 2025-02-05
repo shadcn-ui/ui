@@ -16,7 +16,7 @@ function ScrollAreaRoot({
       className={cn("relative", className)}
       {...props}
     >
-      <ScrollAreaPrimitive.Viewport className="size-full rounded-[inherit] outline-offset-2">
+      <ScrollAreaPrimitive.Viewport className="ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1">
         {children}
       </ScrollAreaPrimitive.Viewport>
       <ScrollBar />

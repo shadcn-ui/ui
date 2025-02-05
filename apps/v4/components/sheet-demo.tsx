@@ -29,7 +29,7 @@ export function SheetDemo() {
               done.
             </SheetDescription>
           </SheetHeader>
-          <div className="grid flex-1 gap-6 py-4">
+          <div className="grid flex-1 auto-rows-min gap-6 px-4">
             <div className="grid gap-3">
               <Label htmlFor="sheet-demo-name">Name</Label>
               <Input id="sheet-demo-name" defaultValue="Pedro Duarte" />
@@ -40,10 +40,10 @@ export function SheetDemo() {
             </div>
           </div>
           <SheetFooter>
-            <SheetClose asChild>
-              <Button variant="ghost">Close</Button>
-            </SheetClose>
             <Button type="submit">Save changes</Button>
+            <SheetClose asChild>
+              <Button variant="outline">Close</Button>
+            </SheetClose>
           </SheetFooter>
         </SheetContent>
       </Sheet>

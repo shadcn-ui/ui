@@ -6,25 +6,37 @@ import {
   AudioWaveform,
   BookOpen,
   Bot,
+  ChevronRightIcon,
   Command,
   GalleryVerticalEnd,
+  Search,
   Settings2,
   SquareTerminal,
 } from "lucide-react"
 
-import { NavMain } from "@/registry/new-york-v4/blocks/sidebar-07/components/nav-main"
 import { NavUser } from "@/registry/new-york-v4/blocks/sidebar-07/components/nav-user"
 import { TeamSwitcher } from "@/registry/new-york-v4/blocks/sidebar-07/components/team-switcher"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/registry/new-york-v4/ui/collapsible"
+import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
+  SidebarInput,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
   SidebarRail,
 } from "@/registry/new-york-v4/ui/sidebar"
 
@@ -153,9 +165,59 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     >
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
+        <SidebarGroup className="py-0 group-data-[collapsible=icon]:hidden">
+          <SidebarGroupContent>
+            <form className="relative">
+              <Label htmlFor="search" className="sr-only">
+                Search
+              </Label>
+              <SidebarInput
+                id="search"
+                placeholder="Search the docs..."
+                className="pl-8"
+              />
+              <Search className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 opacity-50 select-none" />
+            </form>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <SidebarGroup>
+          <SidebarGroupLabel>Platform</SidebarGroupLabel>
+          <SidebarMenu>
+            {data.navMain.map((item) => (
+              <Collapsible
+                key={item.title}
+                asChild
+                defaultOpen={item.isActive}
+                className="group/collapsible"
+              >
+                <SidebarMenuItem>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton tooltip={item.title}>
+                      {item.icon && <item.icon />}
+                      <span>{item.title}</span>
+                      <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                    </SidebarMenuButton>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      {item.items?.map((subItem) => (
+                        <SidebarMenuSubItem key={subItem.title}>
+                          <SidebarMenuSubButton asChild>
+                            <a href={subItem.url}>
+                              <span>{subItem.title}</span>
+                            </a>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      ))}
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
+                </SidebarMenuItem>
+              </Collapsible>
+            ))}
+          </SidebarMenu>
+        </SidebarGroup>
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
           <SidebarGroupLabel>Components</SidebarGroupLabel>
           <SidebarMenu>
