@@ -83,7 +83,7 @@ export default function SinkPage() {
       <ComponentWrapper name="carousel" className="hidden md:flex">
         <CarouselDemo />
       </ComponentWrapper>
-      <ComponentWrapper name="chart">
+      <ComponentWrapper name="chart" className="w-full">
         <ChartDemo />
       </ComponentWrapper>
       <ComponentWrapper name="checkbox">
