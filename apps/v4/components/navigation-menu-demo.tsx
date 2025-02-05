@@ -11,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/registry/ui/navigation-menu"
+} from "@/registry/new-york-v4/ui/navigation-menu"
 
 const components: { title: string; href: string; description: string }[] = [
   {

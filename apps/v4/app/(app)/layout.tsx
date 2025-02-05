@@ -7,13 +7,13 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/registry/ui/navigation-menu"
-import { Separator } from "@/registry/ui/separator"
+} from "@/registry/new-york-v4/ui/navigation-menu"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/registry/ui/sidebar"
+} from "@/registry/new-york-v4/ui/sidebar"
 
 export default function AppLayout({
   children,

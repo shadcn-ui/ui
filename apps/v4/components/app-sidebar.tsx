@@ -12,9 +12,9 @@ import {
   SquareTerminal,
 } from "lucide-react"
 
-import { NavMain } from "@/registry/blocks/sidebar-07/components/nav-main"
-import { NavUser } from "@/registry/blocks/sidebar-07/components/nav-user"
-import { TeamSwitcher } from "@/registry/blocks/sidebar-07/components/team-switcher"
+import { NavMain } from "@/registry/new-york-v4/blocks/sidebar-07/components/nav-main"
+import { NavUser } from "@/registry/new-york-v4/blocks/sidebar-07/components/nav-user"
+import { TeamSwitcher } from "@/registry/new-york-v4/blocks/sidebar-07/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -26,7 +26,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/registry/ui/sidebar"
+} from "@/registry/new-york-v4/ui/sidebar"
 
 // This is sample data.
 const data = {

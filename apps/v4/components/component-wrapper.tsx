@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { cn } from "@/registry/lib/utils"
+import { cn } from "@/registry/new-york-v4/lib/utils"
 
 export function ComponentWrapper({
   className,

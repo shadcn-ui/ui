@@ -4,7 +4,7 @@ import { GeistSans } from "geist/font/sans"
 
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/registry/ui/sonner"
+import { Toaster } from "@/registry/new-york-v4/ui/sonner"
 import { siteConfig } from "@/www/config/site"
 
 import "./globals.css"

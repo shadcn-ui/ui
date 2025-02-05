@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "files": [
     {
-      "path": "registry/ui/textarea.tsx",
+      "path": "registry/new-york-v4/ui/textarea.tsx",
       "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Textarea({ className, ...props }: React.ComponentProps<\"textarea\">) {\n  return (\n    <textarea\n      data-slot=\"textarea\"\n      className={cn(\n        \"border-input placeholder:text-muted-foreground focus-visible:ring-ring aria-invalid:border-destructive flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs focus-visible:ring-1 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:focus-visible:ring-0 md:text-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
       "type": "registry:ui"
     }

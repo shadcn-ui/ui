@@ -17,8 +17,12 @@ import {
   UserIcon,
 } from "lucide-react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/registry/ui/avatar"
-import { Button } from "@/registry/ui/button"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/new-york-v4/ui/avatar"
+import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -35,7 +39,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/ui/dropdown-menu"
+} from "@/registry/new-york-v4/ui/dropdown-menu"
 
 export function DropdownMenuDemo() {
   return (

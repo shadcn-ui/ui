@@ -1,6 +1,6 @@
 import { Loader2Icon, MailOpenIcon } from "lucide-react"
 
-import { Button } from "@/registry/ui/button"
+import { Button } from "@/registry/new-york-v4/ui/button"
 
 export function ButtonDemo() {
   return (

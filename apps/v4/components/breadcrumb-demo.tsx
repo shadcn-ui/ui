@@ -6,13 +6,13 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/ui/breadcrumb"
+} from "@/registry/new-york-v4/ui/breadcrumb"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/ui/dropdown-menu"
+} from "@/registry/new-york-v4/ui/dropdown-menu"
 
 export function BreadcrumbDemo() {
   return (

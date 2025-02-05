@@ -6,9 +6,13 @@ import { CalendarIcon } from "lucide-react"
 import { DateRange } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/ui/button"
-import { Calendar } from "@/registry/ui/calendar"
-import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover"
+import { Button } from "@/registry/new-york-v4/ui/button"
+import { Calendar } from "@/registry/new-york-v4/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/registry/new-york-v4/ui/popover"
 
 export function DatePickerDemo() {
   return (

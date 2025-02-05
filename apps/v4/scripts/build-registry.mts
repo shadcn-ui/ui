@@ -7,6 +7,7 @@ import { z } from "zod"
 
 import { blocks } from "@/www/registry/registry-blocks"
 import { charts } from "@/www/registry/registry-charts"
+import { lib } from "@/www/registry/registry-lib"
 import { ui } from "@/www/registry/registry-ui"
 
 const DEPRECATED_ITEMS = ["toast"]
@@ -16,9 +17,27 @@ const registry = {
   homepage: "https://ui.shadcn.com",
   items: z.array(registryItemSchema).parse(
     [
+      {
+        name: "index",
+        type: "registry:style",
+        dependencies: [
+          "tailwindcss-animate",
+          "class-variance-authority",
+          "lucide-react",
+        ],
+        registryDependencies: ["utils"],
+        tailwind: {
+          config: {
+            plugins: [`require("tailwindcss-animate")`],
+          },
+        },
+        cssVars: {},
+        files: [],
+      },
       ...ui,
       ...blocks,
       ...charts,
+      ...lib,
       {
         name: "use-mobile",
         type: "registry:hook",
@@ -45,12 +64,16 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {`
   for (const item of registry.items) {
-    const resolveFiles = item.files?.map((file) => `registry/${file.path}`)
+    const resolveFiles = item.files?.map(
+      (file) => `registry/new-york-v4/${file.path}`
+    )
     if (!resolveFiles) {
       continue
     }
 
-    const componentPath = item.files ? `@/registry/${item.files[0].path}` : ""
+    const componentPath = item.files?.[0]?.path
+      ? `@/registry/new-york-v4/${item.files[0].path}`
+      : ""
 
     index += `
   "${item.name}": {
@@ -69,11 +92,15 @@ export const Index: Record<string, any> = {`
       target: "${file.target ?? ""}"
     }`
     })}],
-    component: React.lazy(async () => {
+    component: ${
+      componentPath
+        ? `React.lazy(async () => {
       const mod = await import("${componentPath}")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
-    }),
+    })`
+        : "null"
+    },
     meta: ${JSON.stringify(item.meta)},
   },`
   }
@@ -94,7 +121,7 @@ async function buildRegistryJsonFile() {
       const files = item.files?.map((file) => {
         return {
           ...file,
-          path: `registry/${file.path}`,
+          path: `registry/new-york-v4/${file.path}`,
         }
       })
 

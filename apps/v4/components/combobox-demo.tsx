@@ -9,8 +9,12 @@ import {
 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Avatar, AvatarFallback, AvatarImage } from "@/registry/ui/avatar"
-import { Button } from "@/registry/ui/button"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/new-york-v4/ui/avatar"
+import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -19,8 +23,12 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/registry/ui/command"
-import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover"
+} from "@/registry/new-york-v4/ui/command"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/registry/new-york-v4/ui/popover"
 
 const frameworks = [
   {

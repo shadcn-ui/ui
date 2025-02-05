@@ -7,7 +7,7 @@
   ],
   "files": [
     {
-      "path": "registry/ui/aspect-ratio.tsx",
+      "path": "registry/new-york-v4/ui/aspect-ratio.tsx",
       "content": "\"use client\"\n\nimport * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\"\n\nfunction AspectRatio({\n  ...props\n}: React.ComponentProps<typeof AspectRatioPrimitive.Root>) {\n  return <AspectRatioPrimitive.Root data-slot=\"aspect-ratio\" {...props} />\n}\n\nexport { AspectRatio }\n",
       "type": "registry:ui"
     }
