@@ -1,0 +1,6 @@
+dist
+node_modules
+.next
+build
+.contentlayer
+registry/__index__.tsx
