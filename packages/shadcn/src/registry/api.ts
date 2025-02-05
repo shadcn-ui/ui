@@ -1,6 +1,9 @@
 import path from "path"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
-import { getProjectInfo } from "@/src/utils/get-project-info"
+import {
+  getProjectInfo,
+  getProjectTailwindVersionFromConfig,
+} from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -350,7 +353,10 @@ async function resolveRegistryDependencies(
 }
 
 export async function registryGetTheme(name: string, config: Config) {
-  const baseColor = await getRegistryBaseColor(name)
+  const [baseColor, tailwindVersion] = await Promise.all([
+    getRegistryBaseColor(name),
+    getProjectTailwindVersionFromConfig(config),
+  ])
   if (!baseColor) {
     return null
   }
@@ -396,6 +402,11 @@ export async function registryGetTheme(name: string, config: Config) {
         ...theme.cssVars.dark,
       },
     }
+  }
+
+  // Update theme to be v4 compatible.
+  if (tailwindVersion === "v4") {
+    theme.cssVars.light.radius = "0.6rem"
   }
 
   return theme
