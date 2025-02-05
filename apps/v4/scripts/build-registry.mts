@@ -116,7 +116,7 @@ async function buildRegistryJsonFile() {
 async function buildRegistry() {
   return new Promise((resolve, reject) => {
     const process = exec(
-      `pnpm dlx shadcn build registry.json --output ../www/public/registry/styles/new-york-v4`
+      `pnpm dlx shadcn build registry.json --output ../www/public/r/styles/new-york-v4`
     )
 
     process.on("exit", (code) => {
