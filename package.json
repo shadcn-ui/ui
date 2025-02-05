@@ -32,7 +32,7 @@
     "www:build": "pnpm --filter=www build",
     "v4:dev": "pnpm --filter=v4 dev",
     "v4:build": "pnpm --filter=v4 build",
-    "v4:registry:build": "pnpm --filter=v4 registry:build",
+    "v4:registry:build": "pnpm --filter=v4 registry:build && pnpm --filter=v4 lint:fix && pnpm format:write -- --loglevel silent",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "preview": "turbo run preview",

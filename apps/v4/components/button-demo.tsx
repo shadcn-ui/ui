@@ -1,10 +1,4 @@
-import {
-  ArrowRightIcon,
-  Loader2Icon,
-  MailOpenIcon,
-  PlusIcon,
-  SendIcon,
-} from "lucide-react"
+import { ArrowRightIcon, Loader2Icon, SendIcon } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 
