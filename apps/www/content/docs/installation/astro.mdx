@@ -105,6 +105,16 @@ Run the `shadcn` init command to setup your project:
 npx shadcn@latest init
 ```
 
+[!WARNING]
+Currently, the existing instructions and command does not work with Tailwind CSS v4
+
+The workaround is to 
+Install Tailwind v3 and n`px shadcn init`.
+1. Add all components: `npx shadcn add --all`
+2. Run the Tailwind upgrade: `npx @tailwindcss/upgrade@next`
+3. This will upgrade all components and primitives to Tailwind v4.
+
+
 ### That's it
 
 You can now start adding components to your project.
