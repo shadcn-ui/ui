@@ -47,6 +47,14 @@ export const FRAMEWORKS = {
       tailwind: "https://tailwindcss.com/docs/guides/laravel",
     },
   },
+  adonis: {
+    name: "adonis",
+    label: "Adonis",
+    links: {
+      installation: "https://ui.shadcn.com/docs/installation/adonis",
+      tailwind: "https://tailwindcss.com/docs/guides/adonis",
+    },
+  },
   gatsby: {
     name: "gatsby",
     label: "Gatsby",

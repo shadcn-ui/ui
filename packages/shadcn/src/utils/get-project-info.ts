@@ -106,6 +106,12 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
+  // Adonis.
+  if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
+    type.framework = FRAMEWORKS["adonis"]
+    return type
+  }
+
   // Remix.
   if (
     Object.keys(packageJson?.dependencies ?? {}).find((dep) =>
