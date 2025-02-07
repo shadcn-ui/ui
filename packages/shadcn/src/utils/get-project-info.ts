@@ -119,7 +119,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   // TanStack Start.
   if (
     configFiles.find((file) => file.startsWith("app.config."))?.length &&
-    Object.keys(packageJson?.dependencies ?? {}).find((dep) =>
+    [...Object.keys(packageJson?.dependencies ?? {}), ...Object.keys(packageJson?.devDependencies ?? {})].find((dep) =>
       dep.startsWith("@tanstack/start")
     )
   ) {
