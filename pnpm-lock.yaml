@@ -204,6 +204,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.0.1
         version: 4.0.2
+      '@vercel/analytics':
+        specifier: ^1.2.2
+        version: 1.4.1(next@15.2.0-canary.33(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
@@ -11440,6 +11443,11 @@ snapshots:
     optionalDependencies:
       next: 14.3.0-canary.43(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
+
+  '@vercel/analytics@1.4.1(next@15.2.0-canary.33(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
+    optionalDependencies:
+      next: 15.2.0-canary.33(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react: 19.0.0
 
   '@vercel/og@0.0.21':
     dependencies:

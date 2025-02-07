@@ -2,7 +2,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/registry/ui/resizable"
+} from "@/registry/new-york-v4/ui/resizable"
 
 export function ResizableDemo() {
   return (

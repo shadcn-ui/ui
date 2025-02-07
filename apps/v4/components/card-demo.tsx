@@ -1,9 +1,13 @@
 import Image from "next/image"
 import { BathIcon, BedIcon, LandPlotIcon } from "lucide-react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/registry/ui/avatar"
-import { Badge } from "@/registry/ui/badge"
-import { Button } from "@/registry/ui/button"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/new-york-v4/ui/avatar"
+import { Badge } from "@/registry/new-york-v4/ui/badge"
+import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Card,
   CardContent,
@@ -11,9 +15,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/ui/card"
-import { Input } from "@/registry/ui/input"
-import { Label } from "@/registry/ui/label"
+} from "@/registry/new-york-v4/ui/card"
+import { Input } from "@/registry/new-york-v4/ui/input"
+import { Label } from "@/registry/new-york-v4/ui/label"
 
 export function CardDemo() {
   return (

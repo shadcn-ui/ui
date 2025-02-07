@@ -1,4 +1,4 @@
-import { Button } from "@/registry/ui/button"
+import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -8,9 +8,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/ui/dialog"
-import { Input } from "@/registry/ui/input"
-import { Label } from "@/registry/ui/label"
+} from "@/registry/new-york-v4/ui/dialog"
+import { Input } from "@/registry/new-york-v4/ui/input"
+import { Label } from "@/registry/new-york-v4/ui/label"
 
 export function DialogDemo() {
   return (

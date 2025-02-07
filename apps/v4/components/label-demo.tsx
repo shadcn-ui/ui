@@ -1,7 +1,7 @@
-import { Checkbox } from "@/registry/ui/checkbox"
-import { Input } from "@/registry/ui/input"
-import { Label } from "@/registry/ui/label"
-import { Textarea } from "@/registry/ui/textarea"
+import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
+import { Input } from "@/registry/new-york-v4/ui/input"
+import { Label } from "@/registry/new-york-v4/ui/label"
+import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 
 export function LabelDemo() {
   return (

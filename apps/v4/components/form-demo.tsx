@@ -9,9 +9,9 @@ import { toast } from "sonner"
 import { z } from "zod"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/ui/button"
-import { Calendar } from "@/registry/ui/calendar"
-import { Checkbox } from "@/registry/ui/checkbox"
+import { Button } from "@/registry/new-york-v4/ui/button"
+import { Calendar } from "@/registry/new-york-v4/ui/calendar"
+import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
 import {
   Form,
   FormControl,
@@ -20,19 +20,26 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/registry/ui/form"
-import { Input } from "@/registry/ui/input"
-import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover"
-import { RadioGroup, RadioGroupItem } from "@/registry/ui/radio-group"
+} from "@/registry/new-york-v4/ui/form"
+import { Input } from "@/registry/new-york-v4/ui/input"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/registry/new-york-v4/ui/popover"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/registry/new-york-v4/ui/radio-group"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/ui/select"
-import { Switch } from "@/registry/ui/switch"
-import { Textarea } from "@/registry/ui/textarea"
+} from "@/registry/new-york-v4/ui/select"
+import { Switch } from "@/registry/new-york-v4/ui/switch"
+import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 
 const items = [
   {

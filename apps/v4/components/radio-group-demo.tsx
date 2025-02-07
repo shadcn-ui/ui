@@ -1,5 +1,8 @@
-import { Label } from "@/registry/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/registry/ui/radio-group"
+import { Label } from "@/registry/new-york-v4/ui/label"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/registry/new-york-v4/ui/radio-group"
 
 const plans = [
   {
