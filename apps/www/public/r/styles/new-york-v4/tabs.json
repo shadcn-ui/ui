@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "type": "registry:ui",
+  "dependencies": [
+    "@radix-ui/react-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/tabs.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as TabsPrimitive from \"@radix-ui/react-tabs\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Tabs({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Root>) {\n  return (\n    <TabsPrimitive.Root\n      data-slot=\"tabs\"\n      className={cn(\"flex flex-col gap-2\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction TabsList({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.List>) {\n  return (\n    <TabsPrimitive.List\n      data-slot=\"tabs-list\"\n      className={cn(\n        \"bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-1\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TabsTrigger({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Trigger>) {\n  return (\n    <TabsPrimitive.Trigger\n      data-slot=\"tabs-trigger\"\n      className={cn(\n        \"data-[state=active]:bg-background data-[state=active]:text-foreground ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 inline-flex items-center justify-center gap-2 rounded-md px-2 py-1 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 aria-invalid:focus-visible:ring-0 data-[state=active]:shadow-sm [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TabsContent({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Content>) {\n  return (\n    <TabsPrimitive.Content\n      data-slot=\"tabs-content\"\n      className={cn(\n        \"ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 flex-1 transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1 aria-invalid:focus-visible:ring-0\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Tabs, TabsList, TabsTrigger, TabsContent }\n",
+      "type": "registry:ui"
+    }
+  ]
+}
