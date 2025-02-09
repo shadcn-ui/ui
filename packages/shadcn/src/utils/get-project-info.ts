@@ -21,6 +21,7 @@ type ProjectInfo = {
   isTsx: boolean
   tailwindConfigFile: string | null
   tailwindCssFile: string | null
+  tailwindCssPrefix: string | null
   tailwindVersion: TailwindVersion
   aliasPrefix: string | null
 }
@@ -74,7 +75,8 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     isRSC: false,
     isTsx,
     tailwindConfigFile,
-    tailwindCssFile,
+    tailwindCssFile: tailwindCssFile?.file ?? null,
+    tailwindCssPrefix: tailwindCssFile?.prefix ?? null,
     tailwindVersion,
     aliasPrefix,
   }
@@ -175,8 +177,21 @@ export async function getTailwindCssFile(cwd: string) {
       contents.includes(`@import 'tailwindcss'`) ||
       contents.includes(`@tailwind base`)
     ) {
-      return file
+      return {
+        file,
+        prefix: getTailwindPrefixFromTailwindCss(contents, tailwindVersion),
+      }
     }
+  }
+
+  return null
+}
+
+function getTailwindPrefixFromTailwindCss(contents: string, tailwindVersion: TailwindVersion) {
+  if (tailwindVersion === "v4") {
+    // https://github.com/tailwindlabs/tailwindcss/blob/ad001199f6e3ce64472de1b3d5f5a424c9d065c8/packages/%40tailwindcss-upgrade/src/template/codemods/prefix.ts#L117
+    const prefixMatch = contents.match(/^@import\s+["']tailwindcss["'].*prefix\(([a-z]+)\).*;$/);
+    return prefixMatch?.[1] || null
   }
 
   return null
@@ -292,7 +307,7 @@ export async function getProjectConfig(
       baseColor: "zinc",
       css: projectInfo.tailwindCssFile,
       cssVariables: true,
-      prefix: "",
+      prefix: projectInfo.tailwindCssPrefix || "",
     },
     iconLibrary: "lucide",
     aliases: {
