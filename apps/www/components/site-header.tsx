@@ -20,7 +20,12 @@ export function SiteHeader() {
               <CommandMenu />
             </div>
             <nav className="flex items-center gap-0.5">
-              <Button variant="ghost" size="icon" className="h-8 w-8 px-0">
+              <Button
+                asChild
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 px-0"
+              >
                 <Link
                   href={siteConfig.links.github}
                   target="_blank"
