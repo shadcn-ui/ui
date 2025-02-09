@@ -34,13 +34,14 @@ _In a typical library, if you need to change a button’s behavior, you have to 
     </AccordionTrigger>
     <AccordionContent>
       <p>
-        shadcn/ui leverages the headless components approach. This means the
-        core of your app can receive fixes by updating your dependencies, for
-        instance, radix-ui.
+        shadcn/ui follows a headless component architecture. This means the core
+        of your app can receive fixes by updating your dependencies, for
+        instance, radix-ui or input-otp.
       </p>
       <p className="mt-4">
         The topmost layer, i.e., the one closest to your design system, is not
-        coupled with the implementation of the library.
+        coupled with the implementation of the library. It stays open for
+        modification.
       </p>
     </AccordionContent>
   </AccordionItem>
@@ -50,7 +51,7 @@ _In a typical library, if you need to change a button’s behavior, you have to 
 
 Every component in shadcn/ui shares a common, composable interface. **If a component does not exist, we bring it in, make it composable, and adjust its style to match and work with the rest of the design system.**
 
-_A shared, composable interface means it's predictable for both your team and LLMs. You are not learning different APIs for every component. Even for third-party ones._
+_A shared, composable interface means it's predictable for both your team and LLMs. You are not learning different APIs for every new component. Even for third-party ones._
 
 ## Distribution
 
