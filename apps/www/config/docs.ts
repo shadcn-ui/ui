@@ -93,6 +93,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Blocks",
+          href: "/docs/blocks",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Figma",
           href: "/docs/figma",
           items: [],
@@ -131,6 +137,12 @@ export const docsConfig: DocsConfig = {
           title: "Laravel",
           href: "/docs/installation/laravel",
           items: [],
+        },
+        {
+          title: "Tanstack Start",
+          href: "/docs/installation/tanstack",
+          items: [],
+          label: "New",
         },
         {
           title: "Gatsby",
@@ -395,6 +407,42 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Registry",
+      label: "New",
+      items: [
+        {
+          title: "Introduction",
+          href: "/docs/registry",
+          items: [],
+        },
+        {
+          title: "Getting Started",
+          href: "/docs/registry/getting-started",
+          items: [],
+        },
+        {
+          title: "Open in v0",
+          href: "/docs/registry/open-in-v0",
+          items: [],
+        },
+        {
+          title: "FAQ",
+          href: "/docs/registry/faq",
+          items: [],
+        },
+        {
+          title: "registry.json",
+          href: "/docs/registry/registry-json",
+          items: [],
+        },
+        {
+          title: "registry-item.json",
+          href: "/docs/registry/registry-item-json",
           items: [],
         },
       ],

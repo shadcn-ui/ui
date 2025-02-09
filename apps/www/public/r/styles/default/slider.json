@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "slider",
   "type": "registry:ui",
+  "author": "shadcn (https://ui.shadcn.com)",
   "dependencies": [
     "@radix-ui/react-slider"
   ],

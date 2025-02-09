@@ -1,6 +1,6 @@
-import { Registry } from "@/registry/schema"
+import { type Registry } from "shadcn/registry"
 
-export const internal: Registry = [
+export const internal: Registry["items"] = [
   {
     name: "sink",
     type: "registry:internal",

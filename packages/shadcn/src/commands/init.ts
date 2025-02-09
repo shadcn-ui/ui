@@ -1,6 +1,7 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
+import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
@@ -14,11 +15,14 @@ import {
   resolveConfigPaths,
   type Config,
 } from "@/src/utils/get-config"
-import { getProjectConfig, getProjectInfo } from "@/src/utils/get-project-info"
+import {
+  getProjectConfig,
+  getProjectInfo,
+  getProjectTailwindVersionFromConfig,
+} from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
@@ -285,21 +289,23 @@ async function promptForMinimalConfig(
   let cssVariables = defaultConfig.tailwind.cssVariables
 
   if (!opts.defaults) {
-    const [styles, baseColors] = await Promise.all([
+    const [styles, baseColors, tailwindVersion] = await Promise.all([
       getRegistryStyles(),
       getRegistryBaseColors(),
+      getProjectTailwindVersionFromConfig(defaultConfig),
     ])
 
     const options = await prompts([
       {
-        type: "select",
+        type: tailwindVersion === "v4" ? null : "select",
         name: "style",
         message: `Which ${highlighter.info("style")} would you like to use?`,
         choices: styles.map((style) => ({
-          title: style.label,
+          title:
+            style.name === "new-york" ? "New York (Recommended)" : style.label,
           value: style.name,
         })),
-        initial: styles.findIndex((s) => s.name === style),
+        initial: 0,
       },
       {
         type: "select",
@@ -324,7 +330,7 @@ async function promptForMinimalConfig(
       },
     ])
 
-    style = options.style
+    style = options.style ?? "new-york"
     baseColor = options.tailwindBaseColor
     cssVariables = options.tailwindCssVariables
   }

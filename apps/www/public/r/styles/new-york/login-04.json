@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "login-04",
   "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
   "description": "A login page with form and image.",
   "registryDependencies": [
     "button",
