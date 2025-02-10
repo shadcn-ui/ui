@@ -19,8 +19,8 @@ export default function IndexPage() {
         <Announcement />
         <PageHeaderHeading>Build your component library</PageHeaderHeading>
         <PageHeaderDescription>
-          Beautifully designed components that you can copy and paste into your
-          apps. Made with Tailwind CSS. Open source.
+          A set of beautifully-designed, accessible, and customizable components
+          to help you build your component library. Open Source.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
@@ -56,7 +56,14 @@ export default function IndexPage() {
               className="hidden dark:block"
             />
           </section>
-          <section className="hidden md:block [&>div]:p-0">
+          <section
+            className="hidden md:block [&>div]:p-0"
+            style={
+              {
+                "--radius": "0.75rem",
+              } as React.CSSProperties
+            }
+          >
             <CardsDemo />
           </section>
         </div>
