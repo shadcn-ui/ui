@@ -151,6 +151,6 @@
   }
 
   .container {
-    @apply px-4 xl:px-6 2xl:px-4 mx-auto max-w-screen-2xl;
+    @apply px-4 xl:px-6 mx-auto max-w-screen-2xl;
   }
 }
