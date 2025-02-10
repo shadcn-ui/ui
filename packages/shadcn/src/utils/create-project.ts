@@ -1,8 +1,8 @@
 import os from "os"
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
+import { getPackageManager, PackageManager } from "@/src/utils/get-package-manager"
 import { fetchRegistry } from "@/src/registry/api"
-import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -140,7 +140,7 @@ async function createNextProject(
   options: {
     version: string
     cwd: string
-    packageManager: string
+    packageManager: PackageManager
     srcDir: boolean
   }
 ) {
@@ -149,6 +149,9 @@ async function createNextProject(
   ).start()
 
   // Note: pnpm fails here. Fallback to npx with --use-PACKAGE-MANAGER.
+  // if this happens to run in a rush monorepo, use npm because "--use-rush" is a invalid flag for Next.js CLI
+  const nextPackageManager: PackageManager = options.packageManager === 'rush' ? 'npm' : options.packageManager;
+
   const args = [
     "--tailwind",
     "--eslint",
@@ -156,7 +159,7 @@ async function createNextProject(
     "--app",
     options.srcDir ? "--src-dir" : "--no-src-dir",
     "--no-import-alias",
-    `--use-${options.packageManager}`,
+    `--use-${nextPackageManager}`,
   ]
 
   if (options.version.startsWith("15")) {
