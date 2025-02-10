@@ -515,6 +515,22 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "stepper",
+    type: "registry:ui",
+    dependencies: [
+      "@radix-ui/react-slot",
+      "@stepperize/react",
+      "class-variance-authority",
+    ],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/stepper.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "switch",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-switch"],
