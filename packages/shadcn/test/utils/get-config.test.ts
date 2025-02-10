@@ -26,7 +26,7 @@ test("get raw config", async () => {
     },
   })
 
-  expect(
+  await expect(
     getRawConfig(path.resolve(__dirname, "../fixtures/config-invalid"))
   ).rejects.toThrowError()
 })
@@ -36,7 +36,7 @@ test("get config", async () => {
     await getConfig(path.resolve(__dirname, "../fixtures/config-none"))
   ).toEqual(null)
 
-  expect(
+  await expect(
     getConfig(path.resolve(__dirname, "../fixtures/config-invalid"))
   ).rejects.toThrowError()
 

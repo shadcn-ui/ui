@@ -139,6 +139,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Tanstack Start",
+          href: "/docs/installation/tanstack",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Gatsby",
           href: "/docs/installation/gatsby",
           items: [],
