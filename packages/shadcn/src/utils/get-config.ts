@@ -1,4 +1,5 @@
 import path from "path"
+import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
@@ -217,4 +218,10 @@ export function findCommonRoot(cwd: string, resolvedPath: string) {
   }
 
   return commonParts.join(path.sep)
+}
+
+// TODO: Cache this call.
+export async function getTargetStyleFromConfig(cwd: string) {
+  const projectInfo = await getProjectInfo(cwd)
+  return projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : "default"
 }

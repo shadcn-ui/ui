@@ -143,14 +143,14 @@
   }
 
   .border-grid {
-    @apply border-border/30 dark:border-border;
+    @apply border-border/30 dark:border-border border-dashed;
   }
 
   .container-wrapper {
-    @apply min-[1800px]:max-w-[1536px] min-[1800px]:border-x border-border/30 dark:border-border mx-auto w-full;
+    @apply max-w-[1400px] min-[1800px]:max-w-screen-2xl min-[1400px]:border-x border-border/70 dark:border-border mx-auto w-full border-dashed;
   }
 
   .container {
-    @apply px-4 xl:px-6 2xl:px-4 mx-auto max-w-[1536px];
+    @apply px-4 xl:px-6 mx-auto max-w-screen-2xl;
   }
 }
