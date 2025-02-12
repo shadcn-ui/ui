@@ -204,7 +204,11 @@ async function promptForRegistryComponents(
   }
 
   if (options.all) {
-    return registryIndex.map((entry) => entry.name)
+    return registryIndex
+      .map((entry) => entry.name)
+      .filter(
+        (component) => !DEPRECATED_COMPONENTS.some((c) => c.name === component)
+      )
   }
 
   if (options.components?.length) {
