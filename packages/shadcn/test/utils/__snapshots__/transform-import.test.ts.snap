@@ -18,8 +18,8 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn, foo, bar } from "~/lib/utils"
-    import { bar } from "~/lib/utils/bar"
+    import { cn, foo, bar } from "~/lib"
+    import { bar } from "~/lib/bar"
     "
 `;
 
@@ -30,8 +30,8 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn } from "~/lib/utils"
-    import { bar } from "~/lib/utils/bar"
+    import { cn } from "~/src/utils"
+    import { bar } from "~/src/utils/bar"
     "
 `;
 
@@ -42,8 +42,8 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn } from "~/lib/utils"
-    import { bar } from "~/lib/utils/bar"
+    import { cn } from "~/src/utils"
+    import { bar } from "~/src/utils/bar"
     "
 `;
 
@@ -54,8 +54,8 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn } from "~/lib/utils"
-    import { bar } from "~/lib/utils/bar"
+    import { cn } from "~/src/utils"
+    import { bar } from "~/src/utils/bar"
     "
 `;
 
@@ -67,5 +67,28 @@ import { Foo } from "bar"
     import { Box } from "@custom-alias/components/box"
 
     import { cn } from "@custom-alias/lib/utils"
+    "
+`;
+
+exports[`transform import 7`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@custom-alias/other/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@custom-alias/other/components/box"
+
+    import { cn } from "@custom-alias/other/lib/utils"
+    "
+`;
+
+exports[`transform import 8`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@custom-alias/other/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@custom-alias/other/components/box"
+
+    import { cn } from "@custom-alias/other/lib/utils"
+    import { bar } from "@custom-alias/other/lib/bar"
     "
 `;
