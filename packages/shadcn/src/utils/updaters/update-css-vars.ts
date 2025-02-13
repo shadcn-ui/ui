@@ -457,7 +457,7 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
             }
             themeNode?.append(cssVarNode)
           }
-          break
+          continue
         }
 
         let prop =
