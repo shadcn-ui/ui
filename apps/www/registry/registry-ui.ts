@@ -181,7 +181,7 @@ export const ui: Registry["items"] = [
   {
     name: "command",
     type: "registry:ui",
-    dependencies: ["cmdk@1.0.0"],
+    dependencies: ["cmdk@^1.0.4"],
     registryDependencies: ["dialog"],
     files: [
       {
