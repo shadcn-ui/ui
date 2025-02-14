@@ -78,9 +78,10 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
-          title: "Next.js 15 + React 19",
-          href: "/docs/react-19",
+          title: "Tailwind v4",
+          href: "/docs/tailwind-v4",
           items: [],
+          label: "New",
         },
         {
           title: "Typography",

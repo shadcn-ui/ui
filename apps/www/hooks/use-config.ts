@@ -9,6 +9,7 @@ type Config = {
   theme: BaseColor["name"]
   radius: number
   packageManager: "npm" | "yarn" | "pnpm" | "bun"
+  installationType: "cli" | "manual"
 }
 
 const configAtom = atomWithStorage<Config>("config", {
@@ -16,6 +17,7 @@ const configAtom = atomWithStorage<Config>("config", {
   theme: "zinc",
   radius: 0.5,
   packageManager: "pnpm",
+  installationType: "cli",
 })
 
 export function useConfig() {
