@@ -499,58 +499,31 @@ async function buildThemes() {
 
 @layer base {
   :root {
-    --background: <%- colors.light["background"] %>;
-    --foreground: <%- colors.light["foreground"] %>;
-    --card: <%- colors.light["card"] %>;
-    --card-foreground: <%- colors.light["card-foreground"] %>;
-    --popover: <%- colors.light["popover"] %>;
-    --popover-foreground: <%- colors.light["popover-foreground"] %>;
-    --primary: <%- colors.light["primary"] %>;
-    --primary-foreground: <%- colors.light["primary-foreground"] %>;
-    --secondary: <%- colors.light["secondary"] %>;
-    --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
-    --muted: <%- colors.light["muted"] %>;
-    --muted-foreground: <%- colors.light["muted-foreground"] %>;
-    --accent: <%- colors.light["accent"] %>;
-    --accent-foreground: <%- colors.light["accent-foreground"] %>;
-    --destructive: <%- colors.light["destructive"] %>;
-    --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
-    --border: <%- colors.light["border"] %>;
-    --input: <%- colors.light["input"] %>;
-    --ring: <%- colors.light["ring"] %>;
-    --radius: 0.5rem;
-    --chart-1: <%- colors.light["chart-1"] %>;
-    --chart-2: <%- colors.light["chart-2"] %>;
-    --chart-3: <%- colors.light["chart-3"] %>;
-    --chart-4: <%- colors.light["chart-4"] %>;
-    --chart-5: <%- colors.light["chart-5"] %>;
-  }
-
-  .dark {
-    --background: <%- colors.dark["background"] %>;
-    --foreground: <%- colors.dark["foreground"] %>;
-    --card: <%- colors.dark["card"] %>;
-    --card-foreground: <%- colors.dark["card-foreground"] %>;
-    --popover: <%- colors.dark["popover"] %>;
-    --popover-foreground: <%- colors.dark["popover-foreground"] %>;
-    --primary: <%- colors.dark["primary"] %>;
-    --primary-foreground: <%- colors.dark["primary-foreground"] %>;
-    --secondary: <%- colors.dark["secondary"] %>;
-    --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
-    --muted: <%- colors.dark["muted"] %>;
-    --muted-foreground: <%- colors.dark["muted-foreground"] %>;
-    --accent: <%- colors.dark["accent"] %>;
-    --accent-foreground: <%- colors.dark["accent-foreground"] %>;
-    --destructive: <%- colors.dark["destructive"] %>;
-    --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
-    --border: <%- colors.dark["border"] %>;
-    --input: <%- colors.dark["input"] %>;
-    --ring: <%- colors.dark["ring"] %>;
-    --chart-1: <%- colors.dark["chart-1"] %>;
-    --chart-2: <%- colors.dark["chart-2"] %>;
-    --chart-3: <%- colors.dark["chart-3"] %>;
-    --chart-4: <%- colors.dark["chart-4"] %>;
-    --chart-5: <%- colors.dark["chart-5"] %>;
+    --background: light-dark(<%- colors.light["background"] %>, <%- colors.dark["background"] %>);
+    --foreground: light-dark(<%- colors.light["foreground"] %>, <%- colors.dark["foreground"] %>);
+    --card: light-dark(<%- colors.light["card"] %>, <%- colors.dark["card"] %>);
+    --card-foreground: light-dark(<%- colors.light["card-foreground"] %>, <%- colors.dark["card-foreground"] %>);
+    --popover: light-dark(<%- colors.light["popover"] %>, <%- colors.dark["popover"] %>);
+    --popover-foreground: light-dark(<%- colors.light["popover-foreground"] %>, <%- colors.dark["popover-foreground"] %>);
+    --primary: light-dark(<%- colors.light["primary"] %>, <%- colors.dark["primary"] %>);
+    --primary-foreground: light-dark(<%- colors.light["primary-foreground"] %>, <%- colors.dark["primary-foreground"] %>);
+    --secondary: light-dark(<%- colors.light["secondary"] %>, <%- colors.dark["secondary"] %>);
+    --secondary-foreground: light-dark(<%- colors.light["secondary-foreground"] %>, <%- colors.dark["secondary-foreground"] %>);
+    --muted: light-dark(<%- colors.light["muted"] %>, <%- colors.dark["muted"] %>);
+    --muted-foreground: light-dark(<%- colors.light["muted-foreground"] %>, <%- colors.dark["muted-foreground"] %>);
+    --accent: light-dark(<%- colors.light["accent"] %>, <%- colors.dark["accent"] %>);
+    --accent-foreground: light-dark(<%- colors.light["accent-foreground"] %>, <%- colors.dark["accent-foreground"] %>);
+    --destructive: light-dark(<%- colors.light["destructive"] %>, <%- colors.dark["destructive"] %>);
+    --destructive-foreground: light-dark(<%- colors.light["destructive-foreground"] %>, <%- colors.dark["destructive-foreground"] %>);
+    --border: light-dark(<%- colors.light["border"] %>, <%- colors.dark["border"] %>);
+    --input: light-dark(<%- colors.light["input"] %>, <%- colors.dark["input"] %>);
+    --ring: light-dark(<%- colors.light["ring"] %>, <%- colors.dark["ring"] %>);
+      --radius: 0.5rem;
+    --chart-1: light-dark(<%- colors.light["chart-1"] %>, <%- colors.dark["chart-1"] %>);
+    --chart-2: light-dark(<%- colors.light["chart-2"] %>, <%- colors.dark["chart-2"] %>);
+    --chart-3: light-dark(<%- colors.light["chart-3"] %>, <%- colors.dark["chart-3"] %>);
+    --chart-4: light-dark(<%- colors.light["chart-4"] %>, <%- colors.dark["chart-4"] %>);
+    --chart-5: light-dark(<%- colors.light["chart-5"] %>, <%- colors.dark["chart-5"] %>);
   }
 }
 
@@ -615,67 +588,36 @@ async function buildThemes() {
     // ----------------------------------------------------------------------------
     const THEME_STYLES_WITH_VARIABLES = `
 .theme-<%- theme %> {
-  --background: <%- colors.light["background"] %>;
-  --foreground: <%- colors.light["foreground"] %>;
+  --background: light-dark(<%- colors.light["background"] %>, <%- colors.dark["background"] %>);
+  --foreground: light-dark(<%- colors.light["foreground"] %>, <%- colors.dark["foreground"] %>);
+  
+  --muted: light-dark(<%- colors.light["muted"] %>, <%- colors.dark["muted"] %>);
+  --muted-foreground: light-dark(<%- colors.light["muted-foreground"] %>, <%- colors.dark["muted-foreground"] %>);
 
-  --muted: <%- colors.light["muted"] %>;
-  --muted-foreground: <%- colors.light["muted-foreground"] %>;
+  --popover: light-dark(<%- colors.light["popover"] %>, <%- colors.dark["popover"] %>);
+  --popover-foreground: light-dark(<%- colors.light["popover-foreground"] %>, <%- colors.dark["popover-foreground"] %>);
 
-  --popover: <%- colors.light["popover"] %>;
-  --popover-foreground: <%- colors.light["popover-foreground"] %>;
+  --card: light-dark(<%- colors.light["card"] %>, <%- colors.dark["card"] %>);
+  --card-foreground: light-dark(<%- colors.light["card-foreground"] %>, <%- colors.dark["card-foreground"] %>);
+  
+  --border: light-dark(<%- colors.light["border"] %>, <%- colors.dark["border"] %>);
+  --input: light-dark(<%- colors.light["input"] %>, <%- colors.dark["input"] %>);
 
-  --card: <%- colors.light["card"] %>;
-  --card-foreground: <%- colors.light["card-foreground"] %>;
+  --primary: light-dark(<%- colors.light["primary"] %>, <%- colors.dark["primary"] %>);
+  --primary-foreground: light-dark(<%- colors.light["primary-foreground"] %>, <%- colors.dark["primary-foreground"] %>);
 
-  --border: <%- colors.light["border"] %>;
-  --input: <%- colors.light["input"] %>;
+  --secondary: light-dark(<%- colors.light["secondary"] %>, <%- colors.dark["secondary"] %>);
+  --secondary-foreground: light-dark(<%- colors.light["secondary-foreground"] %>, <%- colors.dark["secondary-foreground"] %>);
 
-  --primary: <%- colors.light["primary"] %>;
-  --primary-foreground: <%- colors.light["primary-foreground"] %>;
+  --accent: light-dark(<%- colors.light["accent"] %>, <%- colors.dark["accent"] %>);
+  --accent-foreground: light-dark(<%- colors.light["accent-foreground"] %>, <%- colors.dark["accent-foreground"] %>);
 
-  --secondary: <%- colors.light["secondary"] %>;
-  --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
+  --destructive: light-dark(<%- colors.light["destructive"] %>, <%- colors.dark["destructive"] %>);
+  --destructive-foreground: light-dark(<%- colors.light["destructive-foreground"] %>, <%- colors.dark["destructive-foreground"] %>);
 
-  --accent: <%- colors.light["accent"] %>;
-  --accent-foreground: <%- colors.light["accent-foreground"] %>;
+  --ring: light-dark(<%- colors.light["ring"] %>, <%- colors.dark["ring"] %>);
 
-  --destructive: <%- colors.light["destructive"] %>;
-  --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
-
-  --ring: <%- colors.light["ring"] %>;
-
-  --radius: <%- colors.light["radius"] %>;
-}
-
-.dark .theme-<%- theme %> {
-  --background: <%- colors.dark["background"] %>;
-  --foreground: <%- colors.dark["foreground"] %>;
-
-  --muted: <%- colors.dark["muted"] %>;
-  --muted-foreground: <%- colors.dark["muted-foreground"] %>;
-
-  --popover: <%- colors.dark["popover"] %>;
-  --popover-foreground: <%- colors.dark["popover-foreground"] %>;
-
-  --card: <%- colors.dark["card"] %>;
-  --card-foreground: <%- colors.dark["card-foreground"] %>;
-
-  --border: <%- colors.dark["border"] %>;
-  --input: <%- colors.dark["input"] %>;
-
-  --primary: <%- colors.dark["primary"] %>;
-  --primary-foreground: <%- colors.dark["primary-foreground"] %>;
-
-  --secondary: <%- colors.dark["secondary"] %>;
-  --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
-
-  --accent: <%- colors.dark["accent"] %>;
-  --accent-foreground: <%- colors.dark["accent-foreground"] %>;
-
-  --destructive: <%- colors.dark["destructive"] %>;
-  --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
-
-  --ring: <%- colors.dark["ring"] %>;
+  --radius: <%- colors.light["radius"] %>rem;
 }`
 
     const themeCSS = []
