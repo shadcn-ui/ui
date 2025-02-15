@@ -78,19 +78,11 @@ npx shadcn@latest add chart
 ```css
 @layer base {
   :root {
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-  }
-
-  .dark {
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: light-dark(hsl(12 76% 61%), hsl(220 70% 50%));
+    --chart-2: light-dark(hsl(173 58% 39%), hsl(160 60% 45%));
+    --chart-3: light-dark(hsl(197 37% 24%), hsl(30 80% 55%));
+    --chart-4: light-dark(hsl(43 74% 66%), hsl(280 65% 60%));
+    --chart-5: light-dark(hsl(27 87% 67%), hsl(340 75% 55%));
   }
 }
 ```
@@ -118,19 +110,11 @@ npm install recharts
 ```css
 @layer base {
   :root {
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-  }
-
-  .dark {
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: light-dark(hsl(12 76% 61%), hsl(220 70% 50%));
+    --chart-2: light-dark(hsl(173 58% 39%), hsl(160 60% 45%));
+    --chart-3: light-dark(hsl(197 37% 24%), hsl(30 80% 55%));
+    --chart-4: light-dark(hsl(43 74% 66%), hsl(280 65% 60%));
+    --chart-5: light-dark(hsl(27 87% 67%), hsl(340 75% 55%));
   }
 }
 ```
@@ -405,19 +389,11 @@ Charts has built-in support for theming. You can use css variables (recommended)
 ```css {6-7,14-15} title="globals.css"
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: light-dark(hsl(0 0% 100%), hsl(240 10% 3.9%));
+    --foreground: light-dark(hsl(240 10% 3.9%), hsl(0 0% 100%));
     // ...
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-  }
-
-  .dark: {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 100%;
-    // ...
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
+    --chart-1: light-dark(hsl(12 76% 61%), hsl(220 70% 50%));
+    --chart-2: light-dark(hsl(173 58% 39%), hsl(160 60% 45%));
   }
 }
 ```
@@ -428,30 +404,14 @@ Charts has built-in support for theming. You can use css variables (recommended)
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 ```
-
-<Callout className="mt-4">
-
-We're wrapping the value in `hsl()` here because we define the colors without color space function.
-
-This is not required. You can use full color values, such as hex, hsl or oklch.
-
-```css
---chart-1: oklch(70% 0.227 154.59);
-```
-
-```tsx
-color: "var(--chart-1)",
-```
-
-</Callout>
 
 </Steps>
 
