@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og"
 
-export async function loadAssets(): Promise<
+async function loadAssets(): Promise<
   { name: string; data: Buffer; weight: 400 | 600; style: "normal" }[]
 > {
   const [
