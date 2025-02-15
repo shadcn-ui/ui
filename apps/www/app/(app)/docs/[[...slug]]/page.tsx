@@ -52,10 +52,9 @@ export async function generateMetadata({
       url: absoluteUrl(doc.slug),
       images: [
         {
-          url: siteConfig.ogImage,
-          width: 1200,
-          height: 630,
-          alt: siteConfig.name,
+          url: `/og?title=${encodeURIComponent(
+            doc.title
+          )}&description=${encodeURIComponent(doc.description)}`,
         },
       ],
     },
@@ -63,7 +62,13 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: doc.title,
       description: doc.description,
-      images: [siteConfig.ogImage],
+      images: [
+        {
+          url: `/og?title=${encodeURIComponent(
+            doc.title
+          )}&description=${encodeURIComponent(doc.description)}`,
+        },
+      ],
       creator: "@shadcn",
     },
   }
