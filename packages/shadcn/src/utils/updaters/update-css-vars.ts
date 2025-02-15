@@ -353,49 +353,66 @@ function updateCssVarsPluginV4(
   return {
     postcssPlugin: "update-css-vars-v4",
     Once(root: Root) {
-      Object.entries(cssVars).forEach(([key, vars]) => {
-        const selector = key === "light" ? ":root" : `.${key}`
+      let rootRule = root.nodes?.find(
+        (node): node is Rule =>
+          node.type === "rule" && node.selector === ":root"
+      )
 
-        let ruleNode = root.nodes?.find(
-          (node): node is Rule =>
-            node.type === "rule" && node.selector === selector
-        )
+      if (!rootRule) {
+        rootRule = postcss.rule({
+          selector: ":root",
+          nodes: [],
+          raws: { semicolon: true, between: " ", before: "\n" },
+        })
+        root.append(rootRule)
+        root.insertBefore(rootRule, postcss.comment({ text: "---break---" }))
+      }
 
-        if (!ruleNode && Object.keys(vars).length > 0) {
-          ruleNode = postcss.rule({
-            selector,
-            nodes: [],
-            raws: { semicolon: true, between: " ", before: "\n" },
-          })
-          root.append(ruleNode)
-          root.insertBefore(ruleNode, postcss.comment({ text: "---break---" }))
+      const lightVars = cssVars.light || {}
+      const darkVars = cssVars.dark || {}
+      const allKeys = new Set([
+        ...Object.keys(lightVars),
+        ...Object.keys(darkVars),
+      ])
+
+      allKeys.forEach((key) => {
+        let lightValue = lightVars[key]
+        let darkValue = darkVars[key]
+        let prop = `--${key.replace(/^--/, "")}`
+
+        // Special case for sidebar-background.
+        if (prop === "--sidebar-background") {
+          prop = "--sidebar"
         }
 
-        Object.entries(vars).forEach(([key, value]) => {
-          let prop = `--${key.replace(/^--/, "")}`
+        // Convert HSL values if necessary
+        if (lightValue && isLocalHSLValue(lightValue)) {
+          lightValue = `hsl(${lightValue})`
+        }
+        if (darkValue && isLocalHSLValue(darkValue)) {
+          darkValue = `hsl(${darkValue})`
+        }
 
-          // Special case for sidebar-background.
-          if (prop === "--sidebar-background") {
-            prop = "--sidebar"
-          }
+        // Use light-dark syntax if both light and dark have the key
+        let value =
+          lightValue !== undefined && darkValue !== undefined
+            ? `light-dark(${lightValue}, ${darkValue})`
+            : lightValue ?? darkValue // Use whichever exists
 
-          if (isLocalHSLValue(value)) {
-            value = `hsl(${value})`
-          }
-
-          const newDecl = postcss.decl({
-            prop,
-            value,
-            raws: { semicolon: true },
-          })
-          const existingDecl = ruleNode?.nodes.find(
-            (node): node is postcss.Declaration =>
-              node.type === "decl" && node.prop === prop
-          )
-          existingDecl
-            ? existingDecl.replaceWith(newDecl)
-            : ruleNode?.append(newDecl)
+        const newDecl = postcss.decl({
+          prop,
+          value,
+          raws: { semicolon: true },
         })
+
+        const existingDecl = rootRule?.nodes.find(
+          (node): node is postcss.Declaration =>
+            node.type === "decl" && node.prop === prop
+        )
+
+        existingDecl
+          ? existingDecl.replaceWith(newDecl)
+          : rootRule?.append(newDecl)
       })
     },
   }
