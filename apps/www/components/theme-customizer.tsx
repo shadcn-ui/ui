@@ -316,17 +316,18 @@ function CustomizerCode() {
   return (
     <ThemeWrapper defaultTheme="zinc" className="relative space-y-4">
       <div data-rehype-pretty-code-fragment="">
-        <pre className="max-h-[450px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900">
+        <pre className="max-h-[450px] max-w-[622px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900">
           <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
-            <span className="line text-white">@layer base &#123;</span>
-            <span className="line text-white">&nbsp;&nbsp;:root &#123;</span>
+            <span className="line text-white">:root &#123;</span>
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-              {activeTheme?.cssVars.light["background"]};
+              &nbsp;&nbsp;--background: light-dark(
+              {activeTheme?.cssVars.light["background"]},{" "}
+              {activeTheme?.cssVars.dark["background"]});
             </span>
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-              {activeTheme?.cssVars.light["foreground"]};
+              &nbsp;&nbsp;--foreground: light-dark(
+              {activeTheme?.cssVars.light["foreground"]},{" "}
+              {activeTheme?.cssVars.dark["foreground"]});
             </span>
             {[
               "card",
@@ -339,124 +340,76 @@ function CustomizerCode() {
             ].map((prefix) => (
               <>
                 <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                  &nbsp;&nbsp;--{prefix}: light-dark(
                   {
                     activeTheme?.cssVars.light[
                       prefix as keyof typeof activeTheme.cssVars.light
                     ]
                   }
-                  ;
-                </span>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
-                  {
-                    activeTheme?.cssVars.light[
-                      `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
-                    ]
-                  }
-                  ;
-                </span>
-              </>
-            ))}
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
-              {activeTheme?.cssVars.light["border"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
-              {activeTheme?.cssVars.light["input"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
-              {activeTheme?.cssVars.light["ring"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
-            </span>
-            {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
-              (prefix) => (
-                <>
-                  <span className="line text-white">
-                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                    {
-                      activeTheme?.cssVars.light[
-                        prefix as keyof typeof activeTheme.cssVars.light
-                      ]
-                    }
-                    ;
-                  </span>
-                </>
-              )
-            )}
-            <span className="line text-white">&nbsp;&nbsp;&#125;</span>
-            <span className="line text-white">&nbsp;</span>
-            <span className="line text-white">&nbsp;&nbsp;.dark &#123;</span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-              {activeTheme?.cssVars.dark["background"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-              {activeTheme?.cssVars.dark["foreground"]};
-            </span>
-            {[
-              "card",
-              "popover",
-              "primary",
-              "secondary",
-              "muted",
-              "accent",
-              "destructive",
-            ].map((prefix) => (
-              <>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                  ,{" "}
                   {
                     activeTheme?.cssVars.dark[
                       prefix as keyof typeof activeTheme.cssVars.dark
                     ]
                   }
-                  ;
+                  );
                 </span>
                 <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                  &nbsp;&nbsp;--{prefix}-foreground: light-dark(
+                  {
+                    activeTheme?.cssVars.light[
+                      `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
+                    ]
+                  }
+                  ,
                   {
                     activeTheme?.cssVars.dark[
                       `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
                     ]
                   }
-                  ;
+                  );
                 </span>
               </>
             ))}
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
-              {activeTheme?.cssVars.dark["border"]};
+              &nbsp;&nbsp;--border: light-dark(
+              {activeTheme?.cssVars.light["border"]},{" "}
+              {activeTheme?.cssVars.dark["border"]});
             </span>
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
-              {activeTheme?.cssVars.dark["input"]};
+              &nbsp;&nbsp;--input: light-dark(
+              {activeTheme?.cssVars.light["input"]},{" "}
+              {activeTheme?.cssVars.dark["input"]});
             </span>
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
-              {activeTheme?.cssVars.dark["ring"]};
+              &nbsp;&nbsp;--ring: light-dark(
+              {activeTheme?.cssVars.light["ring"]},{" "}
+              {activeTheme?.cssVars.dark["ring"]});
+            </span>
+            <span className="line text-white">
+              &nbsp;&nbsp;--radius: {config.radius}rem;
             </span>
             {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
               (prefix) => (
                 <>
                   <span className="line text-white">
-                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                    &nbsp;&nbsp;--{prefix}: light-dark(
+                    {
+                      activeTheme?.cssVars.light[
+                        prefix as keyof typeof activeTheme.cssVars.light
+                      ]
+                    }
+                    ,{" "}
                     {
                       activeTheme?.cssVars.dark[
                         prefix as keyof typeof activeTheme.cssVars.dark
                       ]
                     }
-                    ;
+                    );
                   </span>
                 </>
               )
             )}
-            <span className="line text-white">&nbsp;&nbsp;&#125;</span>
             <span className="line text-white">&#125;</span>
           </code>
         </pre>
@@ -477,60 +430,31 @@ function getThemeCode(theme: BaseColor, radius: number) {
 }
 
 const BASE_STYLES_WITH_VARIABLES = `
-@layer base {
-  :root {
-    --background: <%- colors.light["background"] %>;
-    --foreground: <%- colors.light["foreground"] %>;
-    --card: <%- colors.light["card"] %>;
-    --card-foreground: <%- colors.light["card-foreground"] %>;
-    --popover: <%- colors.light["popover"] %>;
-    --popover-foreground: <%- colors.light["popover-foreground"] %>;
-    --primary: <%- colors.light["primary"] %>;
-    --primary-foreground: <%- colors.light["primary-foreground"] %>;
-    --secondary: <%- colors.light["secondary"] %>;
-    --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
-    --muted: <%- colors.light["muted"] %>;
-    --muted-foreground: <%- colors.light["muted-foreground"] %>;
-    --accent: <%- colors.light["accent"] %>;
-    --accent-foreground: <%- colors.light["accent-foreground"] %>;
-    --destructive: <%- colors.light["destructive"] %>;
-    --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
-    --border: <%- colors.light["border"] %>;
-    --input: <%- colors.light["input"] %>;
-    --ring: <%- colors.light["ring"] %>;
-    --radius: <%- radius %>rem;
-    --chart-1: <%- colors.light["chart-1"] %>;
-    --chart-2: <%- colors.light["chart-2"] %>;
-    --chart-3: <%- colors.light["chart-3"] %>;
-    --chart-4: <%- colors.light["chart-4"] %>;
-    --chart-5: <%- colors.light["chart-5"] %>;
-  }
-
-  .dark {
-    --background: <%- colors.dark["background"] %>;
-    --foreground: <%- colors.dark["foreground"] %>;
-    --card: <%- colors.dark["card"] %>;
-    --card-foreground: <%- colors.dark["card-foreground"] %>;
-    --popover: <%- colors.dark["popover"] %>;
-    --popover-foreground: <%- colors.dark["popover-foreground"] %>;
-    --primary: <%- colors.dark["primary"] %>;
-    --primary-foreground: <%- colors.dark["primary-foreground"] %>;
-    --secondary: <%- colors.dark["secondary"] %>;
-    --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
-    --muted: <%- colors.dark["muted"] %>;
-    --muted-foreground: <%- colors.dark["muted-foreground"] %>;
-    --accent: <%- colors.dark["accent"] %>;
-    --accent-foreground: <%- colors.dark["accent-foreground"] %>;
-    --destructive: <%- colors.dark["destructive"] %>;
-    --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
-    --border: <%- colors.dark["border"] %>;
-    --input: <%- colors.dark["input"] %>;
-    --ring: <%- colors.dark["ring"] %>;
-    --chart-1: <%- colors.dark["chart-1"] %>;
-    --chart-2: <%- colors.dark["chart-2"] %>;
-    --chart-3: <%- colors.dark["chart-3"] %>;
-    --chart-4: <%- colors.dark["chart-4"] %>;
-    --chart-5: <%- colors.dark["chart-5"] %>;
-  }
+:root {
+  --background: light-dark(<%- colors.light["background"] %>, <%- colors.dark["background"] %>);
+  --foreground: light-dark(<%- colors.light["foreground"] %>, <%- colors.dark["foreground"] %>);
+  --card: light-dark(<%- colors.light["card"] %>, <%- colors.dark["card"] %>);
+  --card-foreground: light-dark(<%- colors.light["card-foreground"] %>, <%- colors.dark["card-foreground"] %>);
+  --popover: light-dark(<%- colors.light["popover"] %>, <%- colors.dark["popover"] %>);
+  --popover-foreground: light-dark(<%- colors.light["popover-foreground"] %>, <%- colors.dark["popover-foreground"] %>);
+  --primary: light-dark(<%- colors.light["primary"] %>, <%- colors.dark["primary"] %>);
+  --primary-foreground: light-dark(<%- colors.light["primary-foreground"] %>, <%- colors.dark["primary-foreground"] %>);
+  --secondary: light-dark(<%- colors.light["secondary"] %>, <%- colors.dark["secondary"] %>);
+  --secondary-foreground: light-dark(<%- colors.light["secondary-foreground"] %>, <%- colors.dark["secondary-foreground"] %>);
+  --muted: light-dark(<%- colors.light["muted"] %>, <%- colors.dark["muted"] %>);
+  --muted-foreground: light-dark(<%- colors.light["muted-foreground"] %>, <%- colors.dark["muted-foreground"] %>);
+  --accent: light-dark(<%- colors.light["accent"] %>, <%- colors.dark["accent"] %>);
+  --accent-foreground: light-dark(<%- colors.light["accent-foreground"] %>, <%- colors.dark["accent-foreground"] %>);
+  --destructive: light-dark(<%- colors.light["destructive"] %>, <%- colors.dark["destructive"] %>);
+  --destructive-foreground: light-dark(<%- colors.light["destructive-foreground"] %>, <%- colors.dark["destructive-foreground"] %>);
+  --border: light-dark(<%- colors.light["border"] %>, <%- colors.dark["border"] %>);
+  --input: light-dark(<%- colors.light["input"] %>, <%- colors.dark["input"] %>);
+  --ring: light-dark(<%- colors.light["ring"] %>, <%- colors.dark["ring"] %>);
+  --radius: <%- radius %>rem;
+  --chart-1: light-dark(<%- colors.light["chart-1"] %>, <%- colors.dark["chart-1"] %>);
+  --chart-2: light-dark(<%- colors.light["chart-2"] %>, <%- colors.dark["chart-2"] %>);
+  --chart-3: light-dark(<%- colors.light["chart-3"] %>, <%- colors.dark["chart-3"] %>);
+  --chart-4: light-dark(<%- colors.light["chart-4"] %>, <%- colors.dark["chart-4"] %>);
+  --chart-5: light-dark(<%- colors.light["chart-5"] %>, <%- colors.dark["chart-5"] %>);
 }
 `
