@@ -68,3 +68,21 @@ import {
   </Tooltip>
 </TooltipProvider>
 ```
+If you are using several tooltips throughout your application, it's recommended to have a single `TooltipProvider` at the root of your application.
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <TooltipProvider>{children}</TooltipProvider>
+      </body>
+    </html>
+  )
+}
+```
