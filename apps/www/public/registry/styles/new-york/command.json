@@ -1,7 +1,7 @@
 {
   "name": "command",
   "dependencies": [
-    "cmdk@1.0.0"
+    "cmdk@^1.0.4"
   ],
   "registryDependencies": [
     "dialog"
