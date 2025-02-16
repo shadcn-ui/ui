@@ -15,28 +15,12 @@ Start by installing `next-themes`:
 npm install next-themes
 ```
 
-### Create a theme provider
-
-```tsx title="components/theme-provider.tsx"
-"use client"
-
-import * as React from "react"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-
-export function ThemeProvider({
-  children,
-  ...props
-}: React.ComponentProps<typeof NextThemesProvider>) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
-}
-```
-
 ### Wrap your root layout
 
 Add the `ThemeProvider` to your root layout.
 
-```tsx {1,9-11} title="app/layout.tsx"
-import { ThemeProvider } from "@/components/theme-provider"
+```tsx {1,6,9-11} title="app/layout.tsx"
+import { ThemeProvider } from "next-themes"
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
