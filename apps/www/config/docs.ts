@@ -75,13 +75,17 @@ export const docsConfig: DocsConfig = {
           title: "Monorepo",
           href: "/docs/monorepo",
           items: [],
-          label: "New",
         },
         {
           title: "Tailwind v4",
           href: "/docs/tailwind-v4",
           items: [],
           label: "New",
+        },
+        {
+          title: "Next.js 15 + React 19",
+          href: "/docs/react-19",
+          items: [],
         },
         {
           title: "Typography",
@@ -97,7 +101,6 @@ export const docsConfig: DocsConfig = {
           title: "Blocks",
           href: "/docs/blocks",
           items: [],
-          label: "New",
         },
         {
           title: "Figma",
