@@ -29,3 +29,17 @@ To use the components in your app, import them from the `ui` package.
 ```tsx
 import { Button } from "@workspace/ui/components/ui/button"
 ```
+
+## Using Docker
+
+If you want to use Docker for development, you can uncomment the following line in the `next.config.mjs` file:
+
+```mjs
+output: "standalone", // Uncomment this line if you use Docker
+```
+
+And then run the following command:
+
+```bash
+docker compose up --build -d
+```
