@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "not-found-06",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A minimum not found page.",
+  "registryDependencies": [
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "blocks/not-found-06/page.tsx",
+      "content": "import { NotFound } from \"@/registry/default/blocks/not-found-06/components/not-found\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10\">\n      <NotFound />\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/not-found/page.tsx"
+    },
+    {
+      "path": "blocks/not-found-06/components/not-found.tsx",
+      "content": "import { ChevronRight, Search } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Input } from \"@/registry/default/ui/input\"\n\nexport function NotFound() {\n  return (\n    <div className=\"text-center\">\n      <h1 className=\"mt-4 text-balance text-5xl font-semibold tracking-tight text-primary sm:text-7xl max-w-4xl\">\n        The page you're looking for can't be found.\n      </h1>\n      <div className=\"mt-14 flex flex-col items-center justify-center gap-y-4 max-w-md mx-auto\">\n        <div className=\"relative w-full\">\n          <Search className=\"absolute left-2 top-4 h-4 w-4 text-muted-foreground\" />\n          <Input placeholder=\"Search example.com\" className=\"pl-8 h-12\" />\n        </div>\n        <Button variant=\"link\" className=\"gap-x-0.5 text-base\" asChild>\n          <a href=\"#\">\n            Or see our site map\n            <ChevronRight />\n          </a>\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "404-pages"
+  ]
+}
