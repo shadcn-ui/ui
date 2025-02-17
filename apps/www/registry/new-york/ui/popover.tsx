@@ -4,6 +4,8 @@ import * as React from "react"
 import * as PopoverPrimitive from "@radix-ui/react-popover"
 
 import { cn } from "@/lib/utils"
+import { Cross2Icon } from "@radix-ui/react-icons";
+import { buttonVariants } from "./button";
 
 const Popover = PopoverPrimitive.Root
 
@@ -25,9 +27,30 @@ const PopoverContent = React.forwardRef<
         className
       )}
       {...props}
-    />
+    >
+      <PopoverPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+          <Cross2Icon className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </PopoverPrimitive.Close>
+    </PopoverPrimitive.Content>
   </PopoverPrimitive.Portal>
 ))
 PopoverContent.displayName = PopoverPrimitive.Content.displayName
 
-export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor }
+const PopoverClose = React.forwardRef<
+  React.ElementRef<typeof PopoverPrimitive.Close>,
+  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Close>
+>(({ className, ...props }, ref) => (
+  <PopoverPrimitive.Close
+    ref={ref}
+    className={cn(
+      buttonVariants({ variant: "outline" }),
+      "mt-2 sm:mt-0",
+      className
+    )}
+    {...props}
+  />
+));
+PopoverClose.displayName = PopoverPrimitive.Close.displayName;
+
+export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor, PopoverClose };
