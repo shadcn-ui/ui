@@ -39,7 +39,7 @@ npx shadcn@latest add calendar
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install react-day-picker@8.10.1 date-fns
+npm install react-day-picker@^9.5.1
 ```
 
 <Step>Add the `Button` component to your project.</Step>
@@ -96,6 +96,20 @@ You can use the `<Calendar>` component to build a date picker. See the [Date Pic
 - Changed the color of the `day_outside` class to the following to improve contrast:
 
   ```tsx showLineNumbers title="calendar.tsx"
-  "day_outside:
+  "day_outside":
         "day-outside text-muted-foreground aria-selected:bg-accent/50 aria-selected:text-muted-foreground",
   ```
+
+### react-day-picker 9.5.1
+
+  | **Old Class Name** | **New Class Name** |
+  | --- | --- |
+  | `caption` | `month_caption` |
+  | `table` | `month_grid` |
+  | `head_row` | `weekdays` |
+  | `head_cell` | `weekday` |
+  | `row` | `week` |
+  | `cell` | `day`
+  | `nav_button` | Split into `button_previous` and `button_next` |
+
+  find more information [here](https://daypicker.dev/upgrading)
