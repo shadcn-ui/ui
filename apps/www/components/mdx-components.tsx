@@ -32,6 +32,7 @@ import {
   AlertTitle,
 } from "@/registry/new-york/ui/alert"
 import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Tabs,
   TabsContent,
@@ -48,6 +49,7 @@ const components = {
   Alert,
   AlertTitle,
   AlertDescription,
+  Button,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(

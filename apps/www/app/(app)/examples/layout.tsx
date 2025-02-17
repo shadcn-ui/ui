@@ -11,9 +11,31 @@ import {
 } from "@/components/page-header"
 import { Button } from "@/registry/new-york/ui/button"
 
+const title = "Examples"
+const description = "Check out some examples app built using the components."
+
 export const metadata: Metadata = {
-  title: "Examples",
-  description: "Check out some examples app built using the components.",
+  title,
+  description,
+  openGraph: {
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
 }
 
 export default function ExamplesLayout({
@@ -27,8 +49,9 @@ export default function ExamplesLayout({
         <Announcement />
         <PageHeaderHeading>Build your component library</PageHeaderHeading>
         <PageHeaderDescription>
-          Beautifully designed components that you can copy and paste into your
-          apps. Made with Tailwind CSS. Open source.
+          A set of beautifully-designed, accessible components and a code
+          distribution platform. Works with your favorite frameworks. Open
+          Source. Open Code.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
