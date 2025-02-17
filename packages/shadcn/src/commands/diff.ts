@@ -12,9 +12,11 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { transform } from "@/src/utils/transformers"
+import { findCommonRoot, resolveFilePath } from "@/src/utils/updaters/update-files"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
 import { z } from "zod"
+import { getProjectInfo, ProjectInfo } from "../utils/get-project-info"
 
 const updateOptionsSchema = z.object({
   component: z.string().optional(),
@@ -57,6 +59,8 @@ export const diff = new Command()
         process.exit(1)
       }
 
+      const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
+
       const registryIndex = await getRegistryIndex()
 
       if (!registryIndex) {
@@ -65,15 +69,17 @@ export const diff = new Command()
       }
 
       if (!options.component) {
-        const targetDir = config.resolvedPaths.components
-
         // Find all components that exist in the project.
         const projectComponents = registryIndex.filter((item) => {
-          for (const file of item.files ?? []) {
-            const filePath = path.resolve(
-              targetDir,
-              typeof file === "string" ? file : file.path
-            )
+          const files = item.files ?? []
+          for (const file of files) {
+            const filePath = resolveFilePath(file, config, {
+              isSrcDir: projectInfo?.isSrcDir,
+              commonRoot: findCommonRoot(
+                files.map((f) => f.path),
+                file.path
+              ),
+            })
             if (existsSync(filePath)) {
               return true
             }
@@ -85,7 +91,7 @@ export const diff = new Command()
         // Check for updates.
         const componentsWithUpdates = []
         for (const component of projectComponents) {
-          const changes = await diffComponent(component, config)
+          const changes = await diffComponent(component, config, projectInfo)
           if (changes.length) {
             componentsWithUpdates.push({
               name: component.name,
@@ -127,7 +133,7 @@ export const diff = new Command()
         process.exit(1)
       }
 
-      const changes = await diffComponent(component, config)
+      const changes = await diffComponent(component, config, projectInfo)
 
       if (!changes.length) {
         logger.info(`No updates found for ${options.component}.`)
@@ -146,7 +152,8 @@ export const diff = new Command()
 
 async function diffComponent(
   component: z.infer<typeof registryIndexSchema>[number],
-  config: Config
+  config: Config,
+  projectInfo: ProjectInfo | null
 ) {
   const payload = await fetchTree(config.style, [component])
   const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
@@ -158,17 +165,15 @@ async function diffComponent(
   const changes = []
 
   for (const item of payload) {
-    const targetDir = await getItemTargetPath(config, item)
-
-    if (!targetDir) {
-      continue
-    }
-
-    for (const file of item.files ?? []) {
-      const filePath = path.resolve(
-        targetDir,
-        typeof file === "string" ? file : file.path
-      )
+    const files = item.files ?? []
+    for (const file of files) {
+      const filePath = resolveFilePath(file, config, {
+        isSrcDir: projectInfo?.isSrcDir,
+        commonRoot: findCommonRoot(
+          files.map((f) => f.path),
+          file.path
+        ),
+      })
 
       if (!existsSync(filePath)) {
         continue
