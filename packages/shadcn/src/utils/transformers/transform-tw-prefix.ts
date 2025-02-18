@@ -174,18 +174,19 @@ export function applyPrefix(input: string, prefix: string = "") {
   const classNames = input.split(" ")
   const prefixed: string[] = []
   for (let className of classNames) {
-    const [variant, value, modifier] = splitClassName(className)
-    if (variant) {
-      modifier
-        ? prefixed.push(`${variant}:${prefix}${value}/${modifier}`)
-        : prefixed.push(`${variant}:${prefix}${value}`)
-    } else {
-      modifier
-        ? prefixed.push(`${prefix}${value}/${modifier}`)
-        : prefixed.push(`${prefix}${value}`)
-    }
-  }
-  return prefixed.join(" ")
+    prefixed.push(`${prefix}:${className}`);
+  //   const [variant, value, modifier] = splitClassName(className)
+  //   if (variant) {
+  //     modifier
+  //       ? prefixed.push(`${variant}:${prefix}${value}/${modifier}`)
+  //       : prefixed.push(`${variant}:${prefix}${value}`)
+  //   } else {
+  //     modifier
+  //       ? prefixed.push(`${prefix}${value}/${modifier}`)
+  //       : prefixed.push(`${prefix}${value}`)
+  //   }
+  // }
+  // return prefixed.join(" ")
 }
 
 export function applyPrefixesCss(css: string, prefix: string) {
