@@ -1,9 +1,6 @@
 import path from "path"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
-import {
-  getProjectInfo,
-  getProjectTailwindVersionFromConfig,
-} from "@/src/utils/get-project-info"
+import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -17,7 +14,6 @@ import {
   iconsSchema,
   registryBaseColorSchema,
   registryIndexSchema,
-  registryItemFileSchema,
   registryItemSchema,
   registryResolvedItemsTreeSchema,
   stylesSchema,
