@@ -190,15 +190,15 @@ export function FormDemo() {
           control={form.control}
           name="type"
           render={({ field }) => (
-            <FormItem className="space-y-3">
+            <FormItem className="flex flex-col gap-3">
               <FormLabel>Notify me about...</FormLabel>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className="flex flex-col space-y-1"
+                  className="flex flex-col gap-3"
                 >
-                  <FormItem className="flex items-center space-y-0 space-x-3">
+                  <FormItem className="flex items-center gap-2">
                     <FormControl>
                       <RadioGroupItem value="all" />
                     </FormControl>
@@ -206,7 +206,7 @@ export function FormDemo() {
                       All new messages
                     </FormLabel>
                   </FormItem>
-                  <FormItem className="flex items-center space-y-0 space-x-3">
+                  <FormItem className="flex items-center gap-2">
                     <FormControl>
                       <RadioGroupItem value="mentions" />
                     </FormControl>
@@ -214,7 +214,7 @@ export function FormDemo() {
                       Direct messages and mentions
                     </FormLabel>
                   </FormItem>
-                  <FormItem className="flex items-center space-y-0 space-x-3">
+                  <FormItem className="flex items-center gap-2">
                     <FormControl>
                       <RadioGroupItem value="none" />
                     </FormControl>
@@ -230,14 +230,14 @@ export function FormDemo() {
           control={form.control}
           name="mobile"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-y-0 space-x-3 rounded-md border p-4 shadow">
+            <FormItem className="flex flex-row items-start gap-3 rounded-md border p-4 shadow">
               <FormControl>
                 <Checkbox
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
-              <div className="space-y-1 leading-none">
+              <div className="flex flex-col gap-2 leading-none">
                 <FormLabel>
                   Use different settings for my mobile devices
                 </FormLabel>
@@ -269,7 +269,7 @@ export function FormDemo() {
                     return (
                       <FormItem
                         key={item.id}
-                        className="flex flex-row items-start space-y-0 space-x-3"
+                        className="flex flex-row items-start gap-3"
                       >
                         <FormControl>
                           <Checkbox
@@ -343,13 +343,13 @@ export function FormDemo() {
         />
         <div>
           <h3 className="mb-4 text-lg font-medium">Email Notifications</h3>
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             <FormField
               control={form.control}
               name="marketing_emails"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                  <div className="space-y-0.5">
+                <FormItem className="flex flex-row items-start justify-between rounded-lg border p-4 shadow-sm">
+                  <div className="flex flex-col gap-2">
                     <FormLabel>Marketing emails</FormLabel>
                     <FormDescription>
                       Receive emails about new products, features, and more.
@@ -368,8 +368,8 @@ export function FormDemo() {
               control={form.control}
               name="security_emails"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                  <div className="space-y-0.5">
+                <FormItem className="flex flex-row items-start justify-between rounded-lg border p-4 shadow-sm">
+                  <div className="flex flex-col gap-2">
                     <FormLabel>Security emails</FormLabel>
                     <FormDescription>
                       Receive emails about your account security.
