@@ -68,7 +68,7 @@
     "recharts": "2.15.1",
     "rimraf": "^6.0.1",
     "shadcn": "2.3.0",
-    "sonner": "^1.7.4",
+    "sonner": "^2.0.0",
     "tailwind-merge": "^3.0.1",
     "tailwindcss": "^4.0.7",
     "tailwindcss-animate": "^1.0.6",
