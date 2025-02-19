@@ -13,10 +13,32 @@ import { Button } from "@/registry/new-york/ui/button"
 import "@/styles/mdx.css"
 import Link from "next/link"
 
+const title = "Building Blocks for the Web"
+const description =
+  "Clean, modern building blocks. Copy and paste into your apps. Works with all React frameworks. Open Source. Free forever."
+
 export const metadata: Metadata = {
-  title: "Building Blocks.",
-  description:
-    "Beautifully designed. Copy and paste into your apps. Open Source.",
+  title,
+  description,
+  openGraph: {
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
 }
 
 export default function BlocksLayout({
@@ -28,11 +50,8 @@ export default function BlocksLayout({
     <>
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>Building Blocks for the Web</PageHeaderHeading>
-        <PageHeaderDescription>
-          Clean, modern building blocks. Copy and paste into your apps. Works
-          with all React frameworks. Open Source. Free forever.
-        </PageHeaderDescription>
+        <PageHeaderHeading>{title}</PageHeaderHeading>
+        <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
             <a href="#blocks">Browse Blocks</a>
