@@ -1,11 +1,11 @@
 import os from "os"
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
+import { fetchRegistry } from "@/src/registry/api"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { fetchRegistry } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
@@ -28,7 +28,7 @@ export async function createProject(
 
   let projectType: "next" | "monorepo" = "next"
   let projectName: string = "my-app"
-  let nextVersion = "15.1.0"
+  let nextVersion = "canary"
 
   const isRemoteComponent =
     options.components?.length === 1 &&
@@ -159,7 +159,10 @@ async function createNextProject(
     `--use-${options.packageManager}`,
   ]
 
-  if (options.version.startsWith("15")) {
+  if (
+    options.version.startsWith("15") ||
+    options.version.startsWith("canary")
+  ) {
     args.push("--turbopack")
   }
 
