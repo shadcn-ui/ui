@@ -49,8 +49,9 @@ export default function ExamplesLayout({
         <Announcement />
         <PageHeaderHeading>Build your component library</PageHeaderHeading>
         <PageHeaderDescription>
-          A set of beautifully-designed, accessible, and customizable components
-          to help you build your component library. Open Source.
+          A set of beautifully-designed, accessible components and a code
+          distribution platform. Works with your favorite frameworks. Open
+          Source. Open Code.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
