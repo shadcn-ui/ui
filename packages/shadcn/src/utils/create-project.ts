@@ -28,7 +28,7 @@ export async function createProject(
 
   let projectType: "next" | "monorepo" = "next"
   let projectName: string = "my-app"
-  let nextVersion = "15.1.0"
+  let nextVersion = "canary"
 
   const isRemoteComponent =
     options.components?.length === 1 &&
@@ -159,7 +159,10 @@ async function createNextProject(
     `--use-${options.packageManager}`,
   ]
 
-  if (options.version.startsWith("15")) {
+  if (
+    options.version.startsWith("15") ||
+    options.version.startsWith("canary")
+  ) {
     args.push("--turbopack")
   }
 
