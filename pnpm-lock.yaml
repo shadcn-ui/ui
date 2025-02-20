@@ -208,7 +208,7 @@ importers:
         specifier: ^1.2.2
         version: 1.4.1(next@15.2.0-canary.33(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       class-variance-authority:
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: 0.7.1
       clsx:
         specifier: ^2.1.1
@@ -277,7 +277,7 @@ importers:
         specifier: ^4.0.7
         version: 4.0.7
       tailwindcss-animate:
-        specifier: ^1.0.6
+        specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.0.7)
       ts-morph:
         specifier: ^22.0.0
