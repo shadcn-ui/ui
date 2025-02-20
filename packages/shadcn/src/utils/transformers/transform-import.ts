@@ -8,7 +8,7 @@ export const transformImport: Transformer = async ({
 }) => {
   const workspaceAlias = config.aliases?.utils?.split("/")[0]?.slice(1)
   const utilsImport = `@${workspaceAlias}/lib/utils`
-    
+
   const importDeclarations = sourceFile.getImportDeclarations()
 
   for (const importDeclaration of importDeclarations) {
@@ -26,10 +26,7 @@ export const transformImport: Transformer = async ({
       const cnImport = namedImports.find((i) => i.getName() === "cn")
       if (cnImport) {
         importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(
-            utilsImport,
-            config.aliases.utils
-          )
+          moduleSpecifier.replace(utilsImport, config.aliases.utils)
         )
       }
     }
