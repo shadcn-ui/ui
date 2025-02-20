@@ -55,17 +55,25 @@ We'll go over the colors later in the [theming section](/docs/components/sidebar
 ```css title="app/globals.css"
 @layer base {
   :root {
-    --sidebar-background: light-dark(hsl(0 0% 98%), hsl(240 5.9% 10%));
-    --sidebar-foreground: light-dark(hsl(240 5.3% 26.1%), hsl(240 4.8% 95.9%));
-    --sidebar-primary: light-dark(hsl(240 5.9% 10%), hsl(224.3 76.3% 48%));
-    --sidebar-primary-foreground: light-dark(hsl(0 0% 98%), hsl(0 0% 100%));
-    --sidebar-accent: light-dark(hsl(240 4.8% 95.9%), hsl(240 3.7% 15.9%));
-    --sidebar-accent-foreground: light-dark(
-      hsl(240 5.9% 10%),
-      hsl(240 4.8% 95.9%)
-    );
-    --sidebar-border: light-dark(hsl(220 13% 91%), hsl(240 3.7% 15.9%));
-    --sidebar-ring: hsl(217.2 91.2% 59.8%);
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 ```
@@ -91,17 +99,25 @@ We'll go over the colors later in the [theming section](/docs/components/sidebar
 ```css title="app/globals.css"
 @layer base {
   :root {
-    --sidebar-background: light-dark(hsl(0 0% 98%), hsl(240 5.9% 10%));
-    --sidebar-foreground: light-dark(hsl(240 5.3% 26.1%), hsl(240 4.8% 95.9%));
-    --sidebar-primary: light-dark(hsl(240 5.9% 10%), hsl(224.3 76.3% 48%));
-    --sidebar-primary-foreground: light-dark(hsl(0 0% 98%), hsl(0 0% 100%));
-    --sidebar-accent: light-dark(hsl(240 4.8% 95.9%), hsl(240 3.7% 15.9%));
-    --sidebar-accent-foreground: light-dark(
-      hsl(240 5.9% 10%),
-      hsl(240 4.8% 95.9%)
-    );
-    --sidebar-border: light-dark(hsl(220 13% 91%), hsl(240 3.7% 15.9%));
-    --sidebar-ring: hsl(217.2 91.2% 59.8%);
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 ```
@@ -114,14 +130,14 @@ this config enable sidebar related style utilities like bg-sidebar
 ```javascript title="tailwind.config.js"
 // ...
 sidebar: {
-  DEFAULT: 'var(--sidebar-background)',
-  foreground: 'var(--sidebar-foreground)',
-  primary: 'var(--sidebar-primary)',
-  'primary-foreground': 'var(--sidebar-primary-foreground)',
-  accent: 'var(--sidebar-accent)',
-  'accent-foreground': 'var(--sidebar-accent-foreground)',
-  border: 'var(--sidebar-border)',
-  ring: 'var(--sidebar-ring)',
+  DEFAULT: 'hsl(var(--sidebar-background))',
+  foreground: 'hsl(var(--sidebar-foreground))',
+  primary: 'hsl(var(--sidebar-primary))',
+  'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  accent: 'hsl(var(--sidebar-accent))',
+  'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  border: 'hsl(var(--sidebar-border))',
+  ring: 'hsl(var(--sidebar-ring))',
 },
 // ...
 ```
@@ -1289,17 +1305,25 @@ We use the following CSS variables to theme the sidebar.
 ```css
 @layer base {
   :root {
-    --sidebar-background: light-dark(hsl(0 0% 98%), hsl(240 5.9% 10%));
-    --sidebar-foreground: light-dark(hsl(240 5.3% 26.1%), hsl(240 4.8% 95.9%));
-    --sidebar-primary: light-dark(hsl(240 5.9% 10%), hsl(0 0% 98%));
-    --sidebar-primary-foreground: light-dark(hsl(0 0% 98%), hsl(240 5.9% 10%));
-    --sidebar-accent: light-dark(hsl(240 4.8% 95.9%), hsl(240 3.7% 15.9%));
-    --sidebar-accent-foreground: light-dark(
-      hsl(240 5.9% 10%),
-      hsl(240 4.8% 95.9%)
-    );
-    --sidebar-border: light-dark(hsl(220 13% 91%), hsl(240 3.7% 15.9%));
-    --sidebar-ring: hsl(217.2 91.2% 59.8%);
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 ```
