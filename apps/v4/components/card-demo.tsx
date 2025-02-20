@@ -22,8 +22,8 @@ import { Label } from "@/registry/new-york-v4/ui/label"
 export function CardDemo() {
   return (
     <div className="flex flex-col items-start gap-4">
-      <Card>
-        <form>
+      <form>
+        <Card>
           <CardHeader>
             <CardTitle>Login to your account</CardTitle>
             <CardDescription>
@@ -69,8 +69,8 @@ export function CardDemo() {
               </a>
             </div>
           </CardFooter>
-        </form>
-      </Card>
+        </Card>
+      </form>
       <Card>
         <CardHeader>
           <CardTitle>Meeting Notes</CardTitle>
@@ -116,7 +116,7 @@ export function CardDemo() {
           <CardTitle>Is this an image?</CardTitle>
           <CardDescription>This is a card with an image.</CardDescription>
         </CardHeader>
-        <CardContent className="p-0">
+        <CardContent className="px-0">
           <Image
             src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
             alt="Photo by Drew Beamer"
@@ -125,7 +125,7 @@ export function CardDemo() {
             height={500}
           />
         </CardContent>
-        <CardFooter className="flex items-center gap-2 p-6">
+        <CardFooter className="flex items-center gap-2">
           <Badge variant="outline">
             <BedIcon /> 4
           </Badge>

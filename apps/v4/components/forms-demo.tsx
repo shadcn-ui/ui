@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
