@@ -23,7 +23,7 @@
   --destructive-foreground: oklch(0.577 0.245 27.325); /* --color-red-600 */
   --border: oklch(0.923 0.003 48.717); /* --color-stone-200 */
   --input: oklch(0.923 0.003 48.717); /* --color-stone-200 */
-  --ring: oklch(0.709 0.01 56.259); /* --color-stone-400 */
+  --ring: oklch(0.869 0.005 56.366); /* --color-stone-400 */
   --chart-1: oklch(0.646 0.222 41.116); /* --color-orange-600 */
   --chart-2: oklch(0.6 0.118 184.704); /* --color-teal-600 */
   --chart-3: oklch(0.398 0.07 227.392); /* --color-cyan-900 */
@@ -63,7 +63,7 @@
   --destructive-foreground: oklch(0.637 0.237 25.331); /* --color-red-500 */
   --border: oklch(0.268 0.007 34.298); /* --color-stone-800 */
   --input: oklch(0.268 0.007 34.298); /* --color-stone-800 */
-  --ring: oklch(0.442 0.017 285.786); /* --color-zinc-600 */
+  --ring: oklch(0.444 0.011 73.639); /* --color-stone-600 */
   --chart-1: oklch(0.488 0.243 264.376); /* --color-blue-700 */
   --chart-2: oklch(0.696 0.17 162.48); /* --color-emerald-500 */
   --chart-3: oklch(0.769 0.188 70.08); /* --color-amber-500 */
@@ -80,10 +80,12 @@
     0.985 0.001 106.423
   ); /* --color-stone-50 */
   --sidebar-border: oklch(0.268 0.007 34.298); /* --color-stone-800 */
-  --sidebar-ring: oklch(0.442 0.017 285.786); /* --color-zinc-600 */
+  --sidebar-ring: oklch(0.444 0.011 73.639); /* --color-stone-600 */
 }
 
 @theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

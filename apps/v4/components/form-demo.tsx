@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
@@ -159,8 +158,7 @@ export function FormDemo() {
                 </SelectContent>
               </Select>
               <FormDescription>
-                You can manage email addresses in your{" "}
-                <Link href="/examples/forms">email settings</Link>.
+                You can manage email addresses in your email settings.
               </FormDescription>
               <FormMessage />
             </FormItem>
