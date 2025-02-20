@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as MenubarPrimitive from "@radix-ui/react-menubar"
+import { Slottable } from "@radix-ui/react-slot"
 import { Check, ChevronRight, Circle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -81,7 +82,7 @@ const MenubarSubTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children}
+    <Slottable>{children}</Slottable>
     <ChevronRight className="ml-auto h-4 w-4" />
   </MenubarPrimitive.SubTrigger>
 ))
@@ -163,7 +164,7 @@ const MenubarCheckboxItem = React.forwardRef<
         <Check className="h-4 w-4" />
       </MenubarPrimitive.ItemIndicator>
     </span>
-    {children}
+    <Slottable>{children}</Slottable>
   </MenubarPrimitive.CheckboxItem>
 ))
 MenubarCheckboxItem.displayName = MenubarPrimitive.CheckboxItem.displayName
@@ -185,7 +186,7 @@ const MenubarRadioItem = React.forwardRef<
         <Circle className="h-2 w-2 fill-current" />
       </MenubarPrimitive.ItemIndicator>
     </span>
-    {children}
+    <Slottable>{children}</Slottable>
   </MenubarPrimitive.RadioItem>
 ))
 MenubarRadioItem.displayName = MenubarPrimitive.RadioItem.displayName
