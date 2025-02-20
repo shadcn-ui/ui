@@ -47,7 +47,7 @@ describe("transformCssVars", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -110,7 +110,7 @@ describe("transformCssVars", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -176,6 +176,17 @@ describe("transformCssVars", () => {
           @apply bg-background text-foreground;
         }
       }
+
+
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+      }
         "
     `)
   })
@@ -222,7 +233,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -282,7 +293,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
                 }
         body {
           @apply bg-background text-foreground;
@@ -346,7 +357,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
                 }
         body {
           @apply bg-background text-foreground;
@@ -413,7 +424,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
                 }
         body {
           @apply bg-background text-foreground;
@@ -492,6 +503,15 @@ describe("transformCssVarsV4", () => {
                   @apply bg-background text-foreground;
                 }
               }
+
+              @layer base {
+        * {
+          @apply border-border outline-ring/50;
+                }
+        body {
+          @apply bg-background text-foreground;
+                }
+      }
               "
     `)
   })
@@ -536,7 +556,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -586,7 +606,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -636,7 +656,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -684,7 +704,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -732,7 +752,7 @@ describe("transformCssVarsV4", () => {
 
             @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
               }
         body {
           @apply bg-background text-foreground;
@@ -777,7 +797,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -808,7 +828,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -846,7 +866,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -884,7 +904,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -949,7 +969,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -1024,7 +1044,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
                 }
         body {
           @apply bg-background text-foreground;
@@ -1095,7 +1115,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -1168,7 +1188,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
                 }
         body {
           @apply bg-background text-foreground;
