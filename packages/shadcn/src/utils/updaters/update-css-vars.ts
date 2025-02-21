@@ -396,7 +396,7 @@ function updateCssVarsPluginV4(
           rule = postcss.rule({
             selector,
             nodes: [],
-            raws: { semicolon: true, between: " ", before: "\n  " },
+            raws: { semicolon: true, between: " ", before: "\n" },
           })
           root.append(rule)
           root.insertBefore(rule, postcss.comment({ text: "---break---" }))
