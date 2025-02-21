@@ -109,7 +109,7 @@
 
 .theme-login-three {
   --primary: #22c55e;
-  --primary-foreground: #fff;
+  --primary-foreground: #000;
   --ring: #22c55e;
   --radius: 1.5rem;
 
@@ -121,6 +121,10 @@
 
   [data-slot="card"] {
     @apply shadow-xl;
+  }
+
+  [data-slot="input"] {
+    @apply dark:bg-input;
   }
 }
 
