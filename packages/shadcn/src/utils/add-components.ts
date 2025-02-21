@@ -44,7 +44,8 @@ export async function addComponents(
   const workspaceConfig = await getWorkspaceConfig(config)
   if (
     workspaceConfig &&
-    workspaceConfig?.ui.resolvedPaths.cwd !== config.resolvedPaths.cwd
+    workspaceConfig.ui &&
+    workspaceConfig.ui.resolvedPaths.cwd !== config.resolvedPaths.cwd
   ) {
     return await addWorkspaceComponents(components, config, workspaceConfig, {
       ...options,

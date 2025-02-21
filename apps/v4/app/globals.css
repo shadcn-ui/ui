@@ -75,6 +75,59 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
+.theme-login-one {
+  --primary: #ce2a2d;
+  --primary-foreground: #fff;
+  --ring: #ce2a2d9c;
+  --radius: 0rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+
+  font-family: var(--font-sans);
+
+  a {
+    color: var(--primary);
+  }
+
+  [data-slot="card"] {
+    border-radius: 0rem;
+    box-shadow: none;
+  }
+}
+
+.theme-login-two {
+  --primary: #035fa8;
+  --primary-foreground: #fff;
+  --ring: #035fa89c;
+  font-family: var(--font-serif);
+
+  a {
+    color: var(--primary);
+  }
+}
+
+.theme-login-three {
+  --primary: #22c55e;
+  --primary-foreground: #000;
+  --ring: #22c55e;
+  --radius: 1.5rem;
+
+  font-family: var(--font-manrope);
+
+  a {
+    color: var(--primary);
+  }
+
+  [data-slot="card"] {
+    @apply shadow-xl;
+  }
+
+  [data-slot="input"] {
+    @apply dark:bg-input;
+  }
+}
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -114,6 +167,26 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
 @layer base {
