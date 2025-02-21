@@ -274,7 +274,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
               }
@@ -338,7 +338,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
               }
@@ -403,7 +403,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
                 --foo: 0.5rem;
@@ -478,7 +478,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
               }
