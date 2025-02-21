@@ -38,6 +38,7 @@ export const initOptionsSchema = z.object({
   silent: z.boolean(),
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
+  cssVariables: z.boolean(),
 })
 
 export const init = new Command()
@@ -61,6 +62,12 @@ export const init = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option(
+    "--no-src-dir",
+    "do not use the src directory when creating a new project."
+  )
+  .option("--css-variables", "use css variables for theming.", true)
+  .option("--no-css-variables", "do not use css variables for theming.")
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
@@ -318,21 +325,11 @@ async function promptForMinimalConfig(
           value: color.name,
         })),
       },
-      {
-        type: "toggle",
-        name: "tailwindCssVariables",
-        message: `Would you like to use ${highlighter.info(
-          "CSS variables"
-        )} for theming?`,
-        initial: defaultConfig?.tailwind.cssVariables,
-        active: "yes",
-        inactive: "no",
-      },
     ])
 
     style = options.style ?? "new-york"
     baseColor = options.tailwindBaseColor
-    cssVariables = options.tailwindCssVariables
+    cssVariables = opts.cssVariables
   }
 
   return rawConfigSchema.parse({
