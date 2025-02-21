@@ -312,7 +312,7 @@ async function resolveRegistryDependencies(
   const payload: string[] = []
 
   const style = config.resolvedPaths?.cwd
-    ? await getTargetStyleFromConfig(config.resolvedPaths.cwd)
+    ? await getTargetStyleFromConfig(config.resolvedPaths.cwd, config.style)
     : config.style
 
   async function resolveDependencies(itemUrl: string) {
