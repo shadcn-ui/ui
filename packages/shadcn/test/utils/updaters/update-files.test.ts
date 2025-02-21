@@ -1,10 +1,42 @@
-import { describe, expect, test } from "vitest"
+import path from "path"
+import { afterAll, afterEach, describe, expect, test, vi } from "vitest"
 
+import { getConfig } from "../../../src/utils/get-config"
 import {
   findCommonRoot,
   resolveFilePath,
   resolveNestedFilePath,
+  updateFiles,
 } from "../../../src/utils/updaters/update-files"
+
+vi.mock("fs/promises", async () => {
+  const actual = (await vi.importActual(
+    "fs/promises"
+  )) as typeof import("fs/promises")
+  return {
+    ...actual,
+    writeFile: vi.fn(),
+  }
+})
+
+vi.mock("fs", async () => {
+  const actual = (await vi.importActual("fs")) as typeof import("fs")
+  return {
+    ...actual,
+    promises: {
+      ...actual.promises,
+      writeFile: vi.fn(),
+    },
+  }
+})
+
+afterEach(() => {
+  vi.resetAllMocks()
+})
+
+afterAll(() => {
+  vi.resetAllMocks()
+})
 
 describe("resolveFilePath", () => {
   test.each([
@@ -487,5 +519,121 @@ describe("resolveNestedFilePath", () => {
     },
   ])("$description", ({ filePath, targetDir, expected }) => {
     expect(resolveNestedFilePath(filePath, targetDir)).toBe(expected)
+  })
+})
+
+describe("updateFiles", () => {
+  test("should create missing files", async () => {
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+    expect(
+      await updateFiles(
+        [
+          {
+            path: "src/components/hello-world.tsx",
+            type: "registry:component",
+            content: `export function HelloWorld() {
+  return <div>Hello World</div>
+}`,
+          },
+        ],
+        config,
+        {
+          overwrite: false,
+          silent: true,
+        }
+      )
+    ).toMatchInlineSnapshot(`
+      {
+        "filesCreated": [
+          "src/components/hello-world.tsx",
+        ],
+        "filesSkipped": [],
+        "filesUpdated": [],
+      }
+    `)
+  })
+
+  test("should skip existing files if same content", async () => {
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+    expect(
+      await updateFiles(
+        [
+          {
+            path: "src/components/hello-world.tsx",
+            type: "registry:component",
+            content: `export function HelloWorld() {
+return <div>Hello World</div>
+}`,
+          },
+          {
+            path: "registry/default/ui/button.tsx",
+            type: "registry:ui",
+            content: `export function Button() {
+  return <button>Click me</button>
+}`,
+          },
+        ],
+        config,
+        {
+          overwrite: false,
+          silent: true,
+        }
+      )
+    ).toMatchInlineSnapshot(`
+      {
+        "filesCreated": [
+          "src/components/hello-world.tsx",
+        ],
+        "filesSkipped": [
+          "src/components/ui/button.tsx",
+        ],
+        "filesUpdated": [],
+      }
+    `)
+  })
+
+  test("should update file if different content", async () => {
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+    expect(
+      await updateFiles(
+        [
+          {
+            path: "src/components/hello-world.tsx",
+            type: "registry:component",
+            content: `export function HelloWorld() {
+return <div>Hello World</div>
+}`,
+          },
+          {
+            path: "registry/default/ui/button.tsx",
+            type: "registry:ui",
+            content: `export function Button() {
+  return <button>Click this button</button>
+}`,
+          },
+        ],
+        config,
+        {
+          overwrite: true,
+          silent: true,
+        }
+      )
+    ).toMatchInlineSnapshot(`
+      {
+        "filesCreated": [
+          "src/components/hello-world.tsx",
+        ],
+        "filesSkipped": [],
+        "filesUpdated": [
+          "src/components/ui/button.tsx",
+        ],
+      }
+    `)
   })
 })
