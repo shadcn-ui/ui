@@ -375,12 +375,18 @@ function updateCssVarsPluginV4(
       extractVars(":root", "light")
       extractVars(".dark", "dark")
 
-      // Merge new variables
+      // Add new variables
       for (const [key, vars] of Object.entries(cssVars)) {
         for (const [v, value] of Object.entries(vars)) {
           const isColor = isColorValue(value) || isLocalHSLValue(value)
           if (!newCssVars.has(v)) {
             newCssVars.set(v, { color: isColor })
+          }
+          // Do not override existing declarations.
+          // We do not want new components to override existing vars.
+          // Keep user defined vars.
+          if (key in newCssVars.get(v)!) {
+            continue;
           }
           newCssVars.get(v)![key as keyof typeof cssVars] = value
         }
