@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest"
 
-import { registryResolveItemsTree } from "../../../src/utils/registry"
+import { registryResolveItemsTree } from "../../../src/registry/api"
 
 describe("registryResolveItemTree", () => {
   test("should resolve items tree", async () => {

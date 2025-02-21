@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev -p 3333",
-    "build": "contentlayer2 build && pnpm build:registry && next build",
+    "build": "pnpm --filter=shadcn build && contentlayer2 build && pnpm build:registry && next build",
     "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "build:docs": "contentlayer2 build",
@@ -80,6 +80,7 @@
     "react-resizable-panels": "^2.0.22",
     "react-wrap-balancer": "^0.4.1",
     "recharts": "2.12.7",
+    "shadcn": "2.3.0",
     "sharp": "^0.31.3",
     "sonner": "^1.2.3",
     "swr": "2.2.6-beta.3",

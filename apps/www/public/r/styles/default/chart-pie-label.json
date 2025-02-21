@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chart-pie-label",
   "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
   "registryDependencies": [
     "card",
     "chart"
