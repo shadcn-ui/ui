@@ -47,7 +47,6 @@ export async function addComponents(
     workspaceConfig.ui &&
     workspaceConfig.ui.resolvedPaths.cwd !== config.resolvedPaths.cwd
   ) {
-    console.log("here")
     return await addWorkspaceComponents(components, config, workspaceConfig, {
       ...options,
       isRemote:
