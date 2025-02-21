@@ -386,7 +386,7 @@ function updateCssVarsPluginV4(
           // We do not want new components to override existing vars.
           // Keep user defined vars.
           if (key in newCssVars.get(v)!) {
-            continue;
+            continue
           }
           newCssVars.get(v)![key as keyof typeof cssVars] = value
         }
@@ -461,7 +461,6 @@ function updateCssVarsPluginV4(
             existingRootDecl
               ? existingRootDecl.replaceWith(lightDecl)
               : rootRuleNode?.append(lightDecl)
-            
 
             const existingDarkDecl = darkRuleNode?.nodes.find(
               (n) => n.type === "decl" && n.prop === prop
