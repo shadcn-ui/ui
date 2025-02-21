@@ -77,6 +77,38 @@ export async function updateFiles(
 
     const existingFile = existsSync(filePath)
 
+    // Run our transformers.
+    const content = await transform(
+      {
+        filename: file.path,
+        raw: file.content,
+        config,
+        baseColor,
+        transformJsx: !config.tsx,
+        isRemote: options.isRemote,
+      },
+      [
+        transformImport,
+        transformRsc,
+        transformCssVars,
+        transformTwPrefixes,
+        transformIcons,
+      ]
+    )
+
+    // Skip the file if it already exists and the content is the same.
+    if (existingFile) {
+      const existingFileContent = await fs.readFile(filePath, "utf-8")
+      const [normalizedExisting, normalizedNew] = await Promise.all([
+        getNormalizedFileContent(existingFileContent),
+        getNormalizedFileContent(content),
+      ])
+      if (normalizedExisting === normalizedNew) {
+        filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+        continue
+      }
+    }
+
     if (existingFile && !options.overwrite) {
       filesCreatedSpinner.stop()
       if (options.rootSpinner) {
@@ -108,25 +140,6 @@ export async function updateFiles(
     if (!existsSync(targetDir)) {
       await fs.mkdir(targetDir, { recursive: true })
     }
-
-    // Run our transformers.
-    const content = await transform(
-      {
-        filename: file.path,
-        raw: file.content,
-        config,
-        baseColor,
-        transformJsx: !config.tsx,
-        isRemote: options.isRemote,
-      },
-      [
-        transformImport,
-        transformRsc,
-        transformCssVars,
-        transformTwPrefixes,
-        transformIcons,
-      ]
-    )
 
     await fs.writeFile(filePath, content, "utf-8")
     existingFile
@@ -174,7 +187,7 @@ export async function updateFiles(
     spinner(
       `Skipped ${filesSkipped.length} ${
         filesUpdated.length === 1 ? "file" : "files"
-      }: (use --overwrite to overwrite)`,
+      }: (files might be identical, use --overwrite to overwrite)`,
       {
         silent: options.silent,
       }
@@ -305,4 +318,8 @@ export function resolveNestedFilePath(
 
   // Return everything after the common directory
   return fileSegments.slice(commonDirIndex + 1).join("/")
+}
+
+export async function getNormalizedFileContent(content: string) {
+  return content.replace(/\r\n/g, "\n").trim()
 }

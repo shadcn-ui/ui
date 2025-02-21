@@ -138,6 +138,54 @@ export function CardDemo() {
           <div className="ml-auto font-medium tabular-nums">$135,000</div>
         </CardFooter>
       </Card>
+      <div className="flex w-full flex-wrap items-start gap-8 md:*:data-[slot=card]:basis-1/4">
+        <Card>
+          <CardContent className="text-sm">Content Only</CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Header Only</CardTitle>
+            <CardDescription>
+              This is a card with a header and a description.
+            </CardDescription>
+          </CardHeader>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Header and Content</CardTitle>
+            <CardDescription>
+              This is a card with a header and a content.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm">Content</CardContent>
+        </Card>
+        <Card>
+          <CardFooter className="text-sm">Footer Only</CardFooter>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Header + Footer</CardTitle>
+            <CardDescription>
+              This is a card with a header and a footer.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter className="text-sm">Footer</CardFooter>
+        </Card>
+        <Card>
+          <CardContent className="text-sm">Content</CardContent>
+          <CardFooter className="text-sm">Footer</CardFooter>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Header + Footer</CardTitle>
+            <CardDescription>
+              This is a card with a header and a footer.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm">Content</CardContent>
+          <CardFooter className="text-sm">Footer</CardFooter>
+        </Card>
+      </div>
     </div>
   )
 }
