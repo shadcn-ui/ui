@@ -416,7 +416,11 @@ function updateCssVarsPluginV4(
       // Insert CSS variables
       newCssVars.forEach((value, key) => {
         let prop = `--${key.replace(/^--/, "")}`
-        if (prop === "--sidebar-background") prop = "--sidebar"
+
+        // Special case for sidebar-background.
+        if (prop === "--sidebar-background") {
+          prop = "--sidebar"
+        }
 
         const formatValue = (val: string) =>
           isLocalHSLValue(val) ? `hsl(${val})` : val
