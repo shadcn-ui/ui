@@ -177,7 +177,7 @@ export function FormsDemo() {
               >
                 {plans.map((plan) => (
                   <Label
-                    className="has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-ring/10 flex items-start gap-3 rounded-lg border p-4"
+                    className="has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-ring/10 flex items-start gap-3 rounded-lg border p-3"
                     key={plan.id}
                   >
                     <RadioGroupItem

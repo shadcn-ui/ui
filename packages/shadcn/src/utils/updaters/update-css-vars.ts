@@ -428,29 +428,49 @@ function updateCssVarsPluginV4(
                 value.dark
               )})`
             )
-            rootRuleNode?.nodes
-              .find((n) => n.type === "decl" && n.prop === prop)
-              ?.replaceWith(newDecl) || rootRuleNode?.append(newDecl)
+
+            const existingDecl = rootRuleNode?.nodes.find(
+              (n) => n.type === "decl" && n.prop === prop
+            )
+
+            existingDecl
+              ? existingDecl.replaceWith(newDecl)
+              : rootRuleNode?.append(newDecl)
+
             darkRuleNode?.nodes
               .find((n) => n.type === "decl" && n.prop === prop)
               ?.remove()
           } else {
             const lightDecl = createDecl(value.light)
             const darkDecl = createDecl(value.dark)
-            rootRuleNode?.nodes
-              .find((n) => n.type === "decl" && n.prop === prop)
-              ?.replaceWith(lightDecl) || rootRuleNode?.append(lightDecl)
-            darkRuleNode?.nodes
-              .find((n) => n.type === "decl" && n.prop === prop)
-              ?.replaceWith(darkDecl) || darkRuleNode?.append(darkDecl)
+
+            const existingRootDecl = rootRuleNode?.nodes.find(
+              (n) => n.type === "decl" && n.prop === prop
+            )
+
+            existingRootDecl
+              ? existingRootDecl.replaceWith(lightDecl)
+              : rootRuleNode?.append(lightDecl)
+            
+
+            const existingDarkDecl = darkRuleNode?.nodes.find(
+              (n) => n.type === "decl" && n.prop === prop
+            )
+
+            existingDarkDecl
+              ? existingDarkDecl.replaceWith(darkDecl)
+              : darkRuleNode?.append(darkDecl)
           }
         } else {
           const val = value.light || value.dark
           const newDecl = createDecl(val!)
           const targetRule = value.light ? rootRuleNode : darkRuleNode
-          targetRule?.nodes
-            .find((n) => n.type === "decl" && n.prop === prop)
-            ?.replaceWith(newDecl) || targetRule?.append(newDecl)
+          const existingDecl = targetRule?.nodes.find(
+            (n) => n.type === "decl" && n.prop === prop
+          )
+          existingDecl
+            ? existingDecl.replaceWith(newDecl)
+            : targetRule?.append(newDecl)
         }
       })
 

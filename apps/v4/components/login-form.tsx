@@ -1,4 +1,6 @@
-import { cn } from "@/registry/new-york-v4/lib/utils"
+import Image from "next/image"
+
+import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Card, CardContent } from "@/registry/new-york-v4/ui/card"
 import { Input } from "@/registry/new-york-v4/ui/input"
@@ -6,8 +8,11 @@ import { Label } from "@/registry/new-york-v4/ui/label"
 
 export function LoginForm({
   className,
+  imageUrl,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"div"> & {
+  imageUrl?: string
+}) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden p-0">
@@ -86,12 +91,15 @@ export function LoginForm({
               </div>
             </div>
           </form>
-          <div className="bg-muted relative hidden md:block">
-            <img
-              src="/placeholder.svg"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-            />
+          <div className="bg-primary/50 relative hidden md:block">
+            {imageUrl && (
+              <Image
+                fill
+                src={imageUrl}
+                alt="Image"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            )}
           </div>
         </CardContent>
       </Card>
