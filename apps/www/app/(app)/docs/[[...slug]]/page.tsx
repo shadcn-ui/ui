@@ -7,7 +7,6 @@ import Link from "next/link"
 import { ChevronRight, ExternalLink } from "lucide-react"
 import Balancer from "react-wrap-balancer"
 
-import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { Mdx } from "@/components/mdx-components"
@@ -52,10 +51,9 @@ export async function generateMetadata({
       url: absoluteUrl(doc.slug),
       images: [
         {
-          url: siteConfig.ogImage,
-          width: 1200,
-          height: 630,
-          alt: siteConfig.name,
+          url: `/og?title=${encodeURIComponent(
+            doc.title
+          )}&description=${encodeURIComponent(doc.description)}`,
         },
       ],
     },
@@ -63,7 +61,13 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: doc.title,
       description: doc.description,
-      images: [siteConfig.ogImage],
+      images: [
+        {
+          url: `/og?title=${encodeURIComponent(
+            doc.title
+          )}&description=${encodeURIComponent(doc.description)}`,
+        },
+      ],
       creator: "@shadcn",
     },
   }
