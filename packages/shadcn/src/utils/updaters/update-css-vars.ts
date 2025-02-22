@@ -24,7 +24,7 @@ export async function updateCssVars(
     tailwindConfig?: z.infer<typeof registryItemTailwindSchema>["config"]
   }
 ) {
-  if (!config.resolvedPaths.tailwindCss) {
+  if (!config.resolvedPaths.tailwindCss || !Object.keys(cssVars ?? {}).length) {
     return
   }
 
