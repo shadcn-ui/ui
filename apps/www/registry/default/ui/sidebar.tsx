@@ -10,7 +10,13 @@ import { cn } from "@/registry/default/lib/utils"
 import { Button } from "@/registry/default/ui/button"
 import { Input } from "@/registry/default/ui/input"
 import { Separator } from "@/registry/default/ui/separator"
-import { Sheet, SheetContent } from "@/registry/default/ui/sheet"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/registry/default/ui/sheet"
 import { Skeleton } from "@/registry/default/ui/skeleton"
 import {
   Tooltip,
@@ -195,6 +201,10 @@ const Sidebar = React.forwardRef<
     if (isMobile) {
       return (
         <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+          <SheetHeader className="sr-only">
+            <SheetTitle>Sidebar</SheetTitle>
+            <SheetDescription>Displays the mobile sidebar.</SheetDescription>
+          </SheetHeader>
           <SheetContent
             data-sidebar="sidebar"
             data-mobile="true"
