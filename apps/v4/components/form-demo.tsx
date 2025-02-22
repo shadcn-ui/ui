@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
@@ -159,8 +158,7 @@ export function FormDemo() {
                 </SelectContent>
               </Select>
               <FormDescription>
-                You can manage email addresses in your{" "}
-                <Link href="/examples/forms">email settings</Link>.
+                You can manage email addresses in your email settings.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -190,15 +188,15 @@ export function FormDemo() {
           control={form.control}
           name="type"
           render={({ field }) => (
-            <FormItem className="space-y-3">
+            <FormItem className="flex flex-col gap-3">
               <FormLabel>Notify me about...</FormLabel>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className="flex flex-col space-y-1"
+                  className="flex flex-col gap-3"
                 >
-                  <FormItem className="flex items-center space-y-0 space-x-3">
+                  <FormItem className="flex items-center gap-2">
                     <FormControl>
                       <RadioGroupItem value="all" />
                     </FormControl>
@@ -206,7 +204,7 @@ export function FormDemo() {
                       All new messages
                     </FormLabel>
                   </FormItem>
-                  <FormItem className="flex items-center space-y-0 space-x-3">
+                  <FormItem className="flex items-center gap-2">
                     <FormControl>
                       <RadioGroupItem value="mentions" />
                     </FormControl>
@@ -214,7 +212,7 @@ export function FormDemo() {
                       Direct messages and mentions
                     </FormLabel>
                   </FormItem>
-                  <FormItem className="flex items-center space-y-0 space-x-3">
+                  <FormItem className="flex items-center gap-2">
                     <FormControl>
                       <RadioGroupItem value="none" />
                     </FormControl>
@@ -230,20 +228,20 @@ export function FormDemo() {
           control={form.control}
           name="mobile"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-y-0 space-x-3 rounded-md border p-4 shadow">
+            <FormItem className="flex flex-row items-start gap-3 rounded-md border p-4 shadow-xs">
               <FormControl>
                 <Checkbox
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
-              <div className="space-y-1 leading-none">
-                <FormLabel>
+              <div className="flex flex-col gap-1">
+                <FormLabel className="leading-snug">
                   Use different settings for my mobile devices
                 </FormLabel>
-                <FormDescription>
-                  You can manage your mobile notifications in the{" "}
-                  <Link href="/examples/forms">mobile settings</Link> page.
+                <FormDescription className="leading-snug">
+                  You can manage your mobile notifications in the mobile
+                  settings page.
                 </FormDescription>
               </div>
             </FormItem>
@@ -253,46 +251,48 @@ export function FormDemo() {
           control={form.control}
           name="items"
           render={() => (
-            <FormItem>
-              <div className="mb-4">
+            <FormItem className="flex flex-col gap-4">
+              <div>
                 <FormLabel className="text-base">Sidebar</FormLabel>
                 <FormDescription>
                   Select the items you want to display in the sidebar.
                 </FormDescription>
               </div>
-              {items.map((item) => (
-                <FormField
-                  key={item.id}
-                  control={form.control}
-                  name="items"
-                  render={({ field }) => {
-                    return (
-                      <FormItem
-                        key={item.id}
-                        className="flex flex-row items-start space-y-0 space-x-3"
-                      >
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value?.includes(item.id)}
-                            onCheckedChange={(checked) => {
-                              return checked
-                                ? field.onChange([...field.value, item.id])
-                                : field.onChange(
-                                    field.value?.filter(
-                                      (value) => value !== item.id
+              <div className="flex flex-col gap-2">
+                {items.map((item) => (
+                  <FormField
+                    key={item.id}
+                    control={form.control}
+                    name="items"
+                    render={({ field }) => {
+                      return (
+                        <FormItem
+                          key={item.id}
+                          className="flex items-start gap-3"
+                        >
+                          <FormControl>
+                            <Checkbox
+                              checked={field.value?.includes(item.id)}
+                              onCheckedChange={(checked) => {
+                                return checked
+                                  ? field.onChange([...field.value, item.id])
+                                  : field.onChange(
+                                      field.value?.filter(
+                                        (value) => value !== item.id
+                                      )
                                     )
-                                  )
-                            }}
-                          />
-                        </FormControl>
-                        <FormLabel className="text-sm font-normal">
-                          {item.label}
-                        </FormLabel>
-                      </FormItem>
-                    )
-                  }}
-                />
-              ))}
+                              }}
+                            />
+                          </FormControl>
+                          <FormLabel className="text-sm leading-tight font-normal">
+                            {item.label}
+                          </FormLabel>
+                        </FormItem>
+                      )
+                    }}
+                  />
+                ))}
+              </div>
               <FormMessage />
             </FormItem>
           )}
@@ -343,15 +343,17 @@ export function FormDemo() {
         />
         <div>
           <h3 className="mb-4 text-lg font-medium">Email Notifications</h3>
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             <FormField
               control={form.control}
               name="marketing_emails"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                  <div className="space-y-0.5">
-                    <FormLabel>Marketing emails</FormLabel>
-                    <FormDescription>
+                <FormItem className="flex flex-row items-start justify-between rounded-lg border p-4 shadow-xs">
+                  <div className="flex flex-col gap-0.5">
+                    <FormLabel className="leading-normal">
+                      Marketing emails
+                    </FormLabel>
+                    <FormDescription className="leading-snug">
                       Receive emails about new products, features, and more.
                     </FormDescription>
                   </div>
@@ -368,10 +370,12 @@ export function FormDemo() {
               control={form.control}
               name="security_emails"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                  <div className="space-y-0.5">
-                    <FormLabel>Security emails</FormLabel>
-                    <FormDescription>
+                <FormItem className="flex flex-row items-start justify-between rounded-lg border p-4 shadow-xs">
+                  <div className="flex flex-col gap-0.5 opacity-60">
+                    <FormLabel className="leading-normal">
+                      Security emails
+                    </FormLabel>
+                    <FormDescription className="leading-snug">
                       Receive emails about your account security.
                     </FormDescription>
                   </div>

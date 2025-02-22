@@ -18,8 +18,20 @@ export function BadgeDemo() {
           <AlertCircleIcon />
           Alert
         </Badge>
-        <Badge className="size-5 rounded-full p-0 font-mono tabular-nums">
+        <Badge className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
           8
+        </Badge>
+        <Badge
+          className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
+          variant="destructive"
+        >
+          99
+        </Badge>
+        <Badge
+          className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
+          variant="outline"
+        >
+          20+
         </Badge>
       </div>
       <div className="flex w-full flex-col gap-2 md:flex-row">
