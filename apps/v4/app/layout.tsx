@@ -97,7 +97,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "bg-background min-h-svh overscroll-none font-sans antialiased",
+          "bg-background overscroll-none font-sans antialiased",
           fontSans.variable,
           fontMono.variable
         )}

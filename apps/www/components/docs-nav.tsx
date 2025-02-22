@@ -48,10 +48,11 @@ function DocsNavItems({
             key={index}
             href={item.href}
             className={cn(
-              "group flex h-8 w-full items-center rounded-lg px-2 font-normal text-foreground underline-offset-2 hover:bg-accent hover:text-accent-foreground",
+              "group relative flex h-8 w-full items-center rounded-lg px-2 after:absolute after:inset-x-0 after:inset-y-[-2px]  after:rounded-lg hover:bg-accent hover:text-accent-foreground ",
               item.disabled && "cursor-not-allowed opacity-60",
-              pathname === item.href &&
-                "bg-accent font-medium text-accent-foreground"
+              pathname === item.href
+                ? "bg-accent font-medium text-accent-foreground"
+                : "font-normal text-foreground"
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
