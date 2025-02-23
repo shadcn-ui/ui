@@ -332,6 +332,11 @@ function addOrUpdateVars(
 
   Object.entries(vars).forEach(([key, value]) => {
     const prop = `--${key.replace(/^--/, "")}`
+
+    if (value.includes(";")) {
+      value = value.replace(";", "")
+    }
+
     const newDecl = postcss.decl({
       prop,
       value,
@@ -381,6 +386,10 @@ function updateCssVarsPluginV4(
 
           if (isLocalHSLValue(value)) {
             value = `hsl(${value})`
+          }
+
+          if (value.includes(";")) {
+            value = value.replace(";", "")
           }
 
           const newDecl = postcss.decl({
