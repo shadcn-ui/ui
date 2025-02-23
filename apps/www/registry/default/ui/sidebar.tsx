@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ScrollAreaProps } from "@radix-ui/react-scroll-area"
 import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
 import { PanelLeft } from "lucide-react"
@@ -9,6 +10,7 @@ import { useIsMobile } from "@/registry/default/hooks/use-mobile"
 import { cn } from "@/registry/default/lib/utils"
 import { Button } from "@/registry/default/ui/button"
 import { Input } from "@/registry/default/ui/input"
+import { ScrollArea } from "@/registry/default/ui/scroll-area"
 import { Separator } from "@/registry/default/ui/separator"
 import { Sheet, SheetContent } from "@/registry/default/ui/sheet"
 import { Skeleton } from "@/registry/default/ui/skeleton"
@@ -395,22 +397,23 @@ const SidebarSeparator = React.forwardRef<
 })
 SidebarSeparator.displayName = "SidebarSeparator"
 
-const SidebarContent = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      data-sidebar="content"
-      className={cn(
-        "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
-        className
-      )}
-      {...props}
-    />
-  )
-})
+const SidebarContent = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <ScrollArea
+        ref={ref}
+        data-sidebar="content"
+        className={cn(
+          "flex min-h-0 flex-1 flex-col gap-2 group-data-[collapsible=icon]:overflow-hidden",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </ScrollArea>
+    )
+  }
+)
 SidebarContent.displayName = "SidebarContent"
 
 const SidebarGroup = React.forwardRef<
