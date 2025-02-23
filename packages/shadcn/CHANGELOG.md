@@ -1,5 +1,45 @@
 # @shadcn/ui
 
+## 2.4.0
+
+### Minor Changes
+
+- [#6507](https://github.com/shadcn-ui/ui/pull/6507) [`5234c46722750f964d69c92ccbef2c4d260c211d`](https://github.com/shadcn-ui/ui/commit/5234c46722750f964d69c92ccbef2c4d260c211d) Thanks [@shadcn](https://github.com/shadcn)! - add support for TanStack Start
+
+- [#6487](https://github.com/shadcn-ui/ui/pull/6487) [`5ef2bc5f455dfc394116267788c0514b696e13b0`](https://github.com/shadcn-ui/ui/commit/5ef2bc5f455dfc394116267788c0514b696e13b0) Thanks [@shadcn](https://github.com/shadcn)! - add theme vars support
+
+- [#6478](https://github.com/shadcn-ui/ui/pull/6478) [`8f6a64f176defdb1f9c493598d952fb4e9844cd0`](https://github.com/shadcn-ui/ui/commit/8f6a64f176defdb1f9c493598d952fb4e9844cd0) Thanks [@shadcn](https://github.com/shadcn)! - add tailwind version detection
+
+- [#6490](https://github.com/shadcn-ui/ui/pull/6490) [`9a14c1d0925d3df2c8f57a3381d212cc3e54f4a6`](https://github.com/shadcn-ui/ui/commit/9a14c1d0925d3df2c8f57a3381d212cc3e54f4a6) Thanks [@shadcn](https://github.com/shadcn)! - add support for tailwind v4
+
+- [#6707](https://github.com/shadcn-ui/ui/pull/6707) [`3db8a07b3f132d396d7fb2e50da96156efcb4138`](https://github.com/shadcn-ui/ui/commit/3db8a07b3f132d396d7fb2e50da96156efcb4138) Thanks [@shadcn](https://github.com/shadcn)! - default to css vars. add --no-css-variables
+
+- [#6574](https://github.com/shadcn-ui/ui/pull/6574) [`1e357cb20d6024b2bc9766fb15f61cb989eb7024`](https://github.com/shadcn-ui/ui/commit/1e357cb20d6024b2bc9766fb15f61cb989eb7024) Thanks [@shadcn](https://github.com/shadcn)! - default for new-york for v4
+
+- [#6515](https://github.com/shadcn-ui/ui/pull/6515) [`d1eb24e23a973646d78cf101fa1e0a22861ac9fd`](https://github.com/shadcn-ui/ui/commit/d1eb24e23a973646d78cf101fa1e0a22861ac9fd) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of sidebar colors
+
+- [#6693](https://github.com/shadcn-ui/ui/pull/6693) [`3740373f99e39943514a45f5808ecb5f17faf700`](https://github.com/shadcn-ui/ui/commit/3740373f99e39943514a45f5808ecb5f17faf700) Thanks [@shadcn](https://github.com/shadcn)! - add oklch base color
+
+- [#6571](https://github.com/shadcn-ui/ui/pull/6571) [`c74a094f14a6e338124709547932dbb20c8d1324`](https://github.com/shadcn-ui/ui/commit/c74a094f14a6e338124709547932dbb20c8d1324) Thanks [@shadcn](https://github.com/shadcn)! - hotswap style for v4
+
+- [#6576](https://github.com/shadcn-ui/ui/pull/6576) [`9f4d65fc8fe72f632706fafd4036f63fd9317780`](https://github.com/shadcn-ui/ui/commit/9f4d65fc8fe72f632706fafd4036f63fd9317780) Thanks [@shadcn](https://github.com/shadcn)! - add warning for deprecated components
+
+### Patch Changes
+
+- [#6414](https://github.com/shadcn-ui/ui/pull/6414) [`202131cd7bf8829b962ae4027545afbdfe79e688`](https://github.com/shadcn-ui/ui/commit/202131cd7bf8829b962ae4027545afbdfe79e688) Thanks [@palmithor](https://github.com/palmithor)! - upgrade @antfu/ni
+
+- [#6732](https://github.com/shadcn-ui/ui/pull/6732) [`839afa714f61e2c0f83e9417354ea6ba8246c177`](https://github.com/shadcn-ui/ui/commit/839afa714f61e2c0f83e9417354ea6ba8246c177) Thanks [@shadcn](https://github.com/shadcn)! - cache registry calls
+
+- [#6721](https://github.com/shadcn-ui/ui/pull/6721) [`a5122f9029c91963f493e7348ef7681dad4834e5`](https://github.com/shadcn-ui/ui/commit/a5122f9029c91963f493e7348ef7681dad4834e5) Thanks [@shadcn](https://github.com/shadcn)! - do not overwrite user defined vars
+
+- [#6530](https://github.com/shadcn-ui/ui/pull/6530) [`d6159023ed0817adf14b4398874b1f5f05a73b02`](https://github.com/shadcn-ui/ui/commit/d6159023ed0817adf14b4398874b1f5f05a73b02) Thanks [@zwarunek](https://github.com/zwarunek)! - fix cn import bug in monorepo
+
+- [#6617](https://github.com/shadcn-ui/ui/pull/6617) [`bd8533bd265de7765831d398f4db687483a0e53a`](https://github.com/shadcn-ui/ui/commit/bd8533bd265de7765831d398f4db687483a0e53a) Thanks [@shadcn](https://github.com/shadcn)! - filter out deprecated from --all
+
+- [#6733](https://github.com/shadcn-ui/ui/pull/6733) [`779517a1d46f567c8e3fa8fcdea4c75c65ad4eb4`](https://github.com/shadcn-ui/ui/commit/779517a1d46f567c8e3fa8fcdea4c75c65ad4eb4) Thanks [@shadcn](https://github.com/shadcn)! - check for empty css vars
+
+- [#6590](https://github.com/shadcn-ui/ui/pull/6590) [`16d4d38f564c75d4187977275f04d5999ee9e2f4`](https://github.com/shadcn-ui/ui/commit/16d4d38f564c75d4187977275f04d5999ee9e2f4) Thanks [@prateekkumarweb](https://github.com/prateekkumarweb)! - fix tanstack check
+
 ## 2.2.0
 
 ### Minor Changes
