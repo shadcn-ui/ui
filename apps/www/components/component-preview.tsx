@@ -27,6 +27,7 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   description?: string
   hideCode?: boolean
   type?: "block" | "component" | "example"
+  componentProps?: Record<string, string>
 }
 
 export function ComponentPreview({
@@ -39,6 +40,7 @@ export function ComponentPreview({
   align = "center",
   description,
   hideCode = false,
+  componentProps,
   ...props
 }: ComponentPreviewProps) {
   const [config] = useConfig()
@@ -62,7 +64,7 @@ export function ComponentPreview({
       )
     }
 
-    return <Component />
+    return <Component {...componentProps} />
   }, [name, config.style])
 
   const codeString = React.useMemo(() => {
