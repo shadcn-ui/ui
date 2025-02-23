@@ -553,8 +553,19 @@ const SidebarMenuButton = React.forwardRef<
     },
     ref
   ) => {
+    const { isMobile, setOpenMobile, state } = useSidebar()
     const Comp = asChild ? Slot : "button"
-    const { isMobile, state } = useSidebar()
+    // Destructure onClick so we can wrap it.
+    const { onClick, ...rest } = props
+    const handleClick = (
+      event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
+      onClick?.(event)
+      if (isMobile) {
+        // When on mobile, clicking a menu item will close the sidebar.
+        setOpenMobile(false)
+      }
+    }
 
     const button = (
       <Comp
@@ -562,8 +573,9 @@ const SidebarMenuButton = React.forwardRef<
         data-sidebar="menu-button"
         data-size={size}
         data-active={isActive}
+        onClick={handleClick}
         className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
-        {...props}
+        {...rest}
       />
     )
 
@@ -713,7 +725,19 @@ const SidebarMenuSubButton = React.forwardRef<
     isActive?: boolean
   }
 >(({ asChild = false, size = "md", isActive, className, ...props }, ref) => {
+  const { isMobile, setOpenMobile } = useSidebar()
   const Comp = asChild ? Slot : "a"
+  // Destructure onClick so we can wrap it.
+  const { onClick, ...rest } = props
+  const handleClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    onClick?.(event)
+    if (isMobile) {
+      // When on mobile, clicking a submenu item will also close the sidebar.
+      setOpenMobile(false)
+    }
+  }
 
   return (
     <Comp
@@ -721,6 +745,7 @@ const SidebarMenuSubButton = React.forwardRef<
       data-sidebar="menu-sub-button"
       data-size={size}
       data-active={isActive}
+      onClick={handleClick}
       className={cn(
         "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-none ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground",
         "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground",
@@ -729,7 +754,7 @@ const SidebarMenuSubButton = React.forwardRef<
         "group-data-[collapsible=icon]:hidden",
         className
       )}
-      {...props}
+      {...rest}
     />
   )
 })
