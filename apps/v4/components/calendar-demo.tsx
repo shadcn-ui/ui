@@ -12,9 +12,13 @@ export function CalendarDemo() {
     from: new Date(new Date().getFullYear(), 0, 12),
     to: addDays(new Date(new Date().getFullYear(), 0, 12), 30),
   })
+  const [range, setRange] = React.useState<DateRange | undefined>({
+    from: new Date(new Date().getFullYear(), 0, 12),
+    to: addDays(new Date(new Date().getFullYear(), 0, 12), 50),
+  })
 
   return (
-    <div className="flex flex-col items-start gap-2 md:flex-row">
+    <div className="flex flex-col flex-wrap items-start gap-2 md:flex-row">
       <Calendar
         mode="single"
         selected={date}
@@ -29,6 +33,14 @@ export function CalendarDemo() {
         numberOfMonths={2}
         disabled={(date) => date > new Date() || date < new Date("1900-01-01")}
         className="rounded-md border shadow-sm"
+      />
+      <Calendar
+        mode="range"
+        defaultMonth={range?.from}
+        selected={range}
+        onSelect={setRange}
+        numberOfMonths={3}
+        className="rounded-md border shadow-sm [&>div]:gap-5"
       />
     </div>
   )

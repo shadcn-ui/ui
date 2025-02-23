@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
 
 import {
   NavigationMenu,
@@ -169,6 +170,33 @@ export function NavigationMenuDemo() {
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link href="#">Blocks</Link>
+                  </NavigationMenuLink>
+                </li>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid w-[200px] gap-4">
+                <li>
+                  <NavigationMenuLink asChild>
+                    <Link href="#" className="flex-row items-center gap-2">
+                      <CircleHelpIcon />
+                      Backlog
+                    </Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <Link href="#" className="flex-row items-center gap-2">
+                      <CircleIcon />
+                      To Do
+                    </Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <Link href="#" className="flex-row items-center gap-2">
+                      <CircleCheckIcon />
+                      Done
+                    </Link>
                   </NavigationMenuLink>
                 </li>
               </ul>
