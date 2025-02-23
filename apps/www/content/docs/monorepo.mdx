@@ -168,6 +168,52 @@ turbo.json
 
 By following these requirements, the CLI will be able to install ui components, blocks, libs and hooks to the correct paths and handle imports for you.
 
+## Docker Support
+
+Below is a quick guide to running your shadcn/ui monorepo project in Docker.
+
+### Prerequisites
+
+- **Docker:** Ensure [Docker](https://docker.com) is installed and running.
+- **Next.js Configuration:** Update `next.config.mjs` to enable a standalone build:
+
+  ```js
+  export default {
+    output: "standalone",
+    // other settings
+  }
+  ```
+
+### Build the Image
+
+From the repository root, run:
+
+```bash
+docker build -t shadcn-ui-web -f apps/web/Dockerfile .
+```
+
+### Run the Container
+
+To launch the container, run:
+
+```bash
+docker run -p 3000:3000 shadcn-ui-web
+```
+
+Alternatively, if you are using Docker Compose:
+
+```bash
+docker compose up --build -d
+```
+
+Then, visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Notes
+
+- The Dockerfile is set up as a multi-stage build to ensure a minimal, secure runtime image. You can check out our [Dockerfile](https://github.com/shadcn-ui/ui/blob/main/templates/monorepo-next/apps/web/Dockerfile) for more details.
+
+- For more guidance on using Turbo Repo with Docker, please refer to the [Turbo Repo docs](https://turbo.build/repo/docs/guides/tools/docker).
+
 ## Help us improve monorepo support
 
 We're releasing monorepo support in the CLI as **experimental**. Help us improve it by testing it out and sending feedback.
