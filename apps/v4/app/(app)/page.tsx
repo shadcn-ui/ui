@@ -80,6 +80,9 @@ export default function SinkPage() {
       <ComponentWrapper name="calendar">
         <CalendarDemo />
       </ComponentWrapper>
+      <ComponentWrapper name="date-picker">
+        <DatePickerDemo />
+      </ComponentWrapper>
       <ComponentWrapper name="card">
         <CardDemo />
       </ComponentWrapper>
@@ -100,9 +103,6 @@ export default function SinkPage() {
       </ComponentWrapper>
       <ComponentWrapper name="context-menu">
         <ContextMenuDemo />
-      </ComponentWrapper>
-      <ComponentWrapper name="date-picker">
-        <DatePickerDemo />
       </ComponentWrapper>
       <ComponentWrapper name="dialog">
         <DialogDemo />
