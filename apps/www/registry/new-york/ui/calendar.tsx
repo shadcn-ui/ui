@@ -47,9 +47,7 @@ function Calendar({
             ? "[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md"
             : "[&:has([aria-selected])]:rounded-md"
         ),
-        day_button: cn(
-          "h-8 w-8 p-0 font-normal aria-selected:opacity-100"
-        ),
+        day_button: cn("h-8 w-8 p-0 font-normal aria-selected:opacity-100"),
         range_start: "day-range-start",
         range_end: "day-range-end",
         selected:
