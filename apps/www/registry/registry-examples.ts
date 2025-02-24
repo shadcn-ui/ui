@@ -633,6 +633,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "dialog-hide-close-window-button",
+    type: "registry:example",
+    registryDependencies: ["dialog", "button"],
+    files: [
+      {
+        path: "examples/dialog-hide-close-window-button.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "drawer-demo",
     type: "registry:example",
     registryDependencies: ["drawer"],
