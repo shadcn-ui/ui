@@ -13,7 +13,7 @@ import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
 import { registry } from "../registry"
-import { baseColors } from "../registry/registry-base-colors"
+import { baseColors, baseColorsV4 } from "../registry/registry-base-colors"
 import { registryCategories } from "../registry/registry-categories"
 import { colorMapping, colors } from "../registry/registry-colors"
 import { iconLibraries, icons } from "../registry/registry-icons"
@@ -594,6 +594,9 @@ async function buildThemes() {
         }
       }
     }
+
+    // Add v4 css vars.
+    base["cssVarsV4"] = baseColorsV4[baseColor as keyof typeof baseColorsV4]
 
     // Build css vars.
     base["inlineColorsTemplate"] = template(BASE_STYLES)({})
