@@ -627,7 +627,6 @@ export const blocks: Registry["items"] = [
       "input",
       "label",
       "@llamaindex/chat-ui",
-      "ai/react",
     ],
     files: [
       {

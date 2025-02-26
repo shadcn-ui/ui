@@ -1,11 +1,12 @@
-import { ChatSection as ChatSectionUI } from "@llamaindex/chat-ui"
-import { Message, useChat } from "ai/react"
+"use client"
+
+import { ChatSection as ChatSectionUI, Message } from "@llamaindex/chat-ui"
 
 import { cn } from "@/registry/default/lib/utils"
 
 import "@llamaindex/chat-ui/styles/markdown.css"
 
-const initialMessages: Message[] = [
+const initialMessages = [
   {
     id: "1",
     content: "Write simple Javascript hello world code",
@@ -34,11 +35,17 @@ export function ChatSection({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const handler = useChat({ initialMessages })
-
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <ChatSectionUI handler={handler} />
+      <ChatSectionUI
+        handler={{
+          messages: initialMessages as Message[],
+          input: "",
+          setInput: () => {},
+          isLoading: false,
+          append: () => Promise.resolve(null),
+        }}
+      />
     </div>
   )
 }
