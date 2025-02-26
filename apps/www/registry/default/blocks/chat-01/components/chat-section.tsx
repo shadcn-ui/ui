@@ -38,6 +38,8 @@ export function ChatSection({
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <ChatSectionUI
+        // you can replace the handler with a useChat hook (import { useChat } from "ai/react")
+        // const handler = useChat({ initialMessages })
         handler={{
           messages: initialMessages as Message[],
           input: "",
