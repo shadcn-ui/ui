@@ -1,6 +1,6 @@
 import { Message, useChat } from "ai/react"
 import { cn } from "@/registry/new-york/lib/utils"
-import { ChatSection } from "@llamaindex/chat-ui"
+import { ChatSection as ChatSectionUI } from "@llamaindex/chat-ui"
 
 const initialMessages: Message[] = [
   {
@@ -36,7 +36,7 @@ export function ChatSection({
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <ChatSection handler={handler} />
+      <ChatSectionUI handler={handler} />
     </div>
   )
 }
