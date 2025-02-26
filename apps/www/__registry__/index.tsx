@@ -1279,9 +1279,9 @@ export const Index: Record<string, any> = {
     },
     "chat-01": {
       name: "chat-01",
-      description: "A simple chat form.",
+      description: "A simple chat UI for AI applications.",
       type: "registry:block",
-      registryDependencies: ["button","card","input","label"],
+      registryDependencies: ["button","card","input","label","@llamaindex/chat-ui","ai/react"],
       files: [{
         path: "registry/new-york/blocks/chat-01/page.tsx",
         type: "registry:page",
@@ -6596,9 +6596,9 @@ export const Index: Record<string, any> = {
     },
     "chat-01": {
       name: "chat-01",
-      description: "A simple chat form.",
+      description: "A simple chat UI for AI applications.",
       type: "registry:block",
-      registryDependencies: ["button","card","input","label"],
+      registryDependencies: ["button","card","input","label","@llamaindex/chat-ui","ai/react"],
       files: [{
         path: "registry/default/blocks/chat-01/page.tsx",
         type: "registry:page",

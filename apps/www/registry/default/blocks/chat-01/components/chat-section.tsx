@@ -1,5 +1,5 @@
 import { Message, useChat } from "ai/react"
-import { cn } from "@/registry/new-york/lib/utils"
+import { cn } from "@/registry/default/lib/utils"
 import { ChatSection } from "@llamaindex/chat-ui"
 
 const initialMessages: Message[] = [

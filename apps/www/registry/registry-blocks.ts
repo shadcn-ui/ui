@@ -621,7 +621,14 @@ export const blocks: Registry["items"] = [
     name: "chat-01",
     description: "A simple chat UI for AI applications.",
     type: "registry:block",
-    registryDependencies: ["button", "card", "input", "label", "@llamaindex/chat-ui", "ai/react"],
+    registryDependencies: [
+      "button",
+      "card",
+      "input",
+      "label",
+      "@llamaindex/chat-ui",
+      "ai/react",
+    ],
     files: [
       {
         path: "blocks/chat-01/page.tsx",
