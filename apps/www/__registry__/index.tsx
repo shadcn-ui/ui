@@ -1143,7 +1143,7 @@ export const Index: Record<string, any> = {
       name: "sidebar-16",
       description: "A sidebar with a sticky site header.",
       type: "registry:block",
-      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button"],
+      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","label"],
       files: [{
         path: "registry/new-york/blocks/sidebar-16/page.tsx",
         type: "registry:page",
@@ -6441,7 +6441,7 @@ export const Index: Record<string, any> = {
       name: "sidebar-16",
       description: "A sidebar with a sticky site header.",
       type: "registry:block",
-      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button"],
+      registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","label"],
       files: [{
         path: "registry/default/blocks/sidebar-16/page.tsx",
         type: "registry:page",
