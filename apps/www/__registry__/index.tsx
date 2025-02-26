@@ -1277,6 +1277,25 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "chat-01": {
+      name: "chat-01",
+      description: "A simple chat form.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/new-york/blocks/chat-01/page.tsx",
+        type: "registry:page",
+        target: "app/chat/page.tsx"
+      },{
+        path: "registry/new-york/blocks/chat-01/components/chat-section.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["chat"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/chat-01/page.tsx")),
+      source: "__registry__/new-york/blocks/chat-01/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6573,6 +6592,25 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "chat-01": {
+      name: "chat-01",
+      description: "A simple chat form.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/default/blocks/chat-01/page.tsx",
+        type: "registry:page",
+        target: "app/chat/page.tsx"
+      },{
+        path: "registry/default/blocks/chat-01/components/chat-section.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["chat"],
+      component: React.lazy(() => import("@/registry/default/blocks/chat-01/page.tsx")),
+      source: "__registry__/default/blocks/chat-01/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {
