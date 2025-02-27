@@ -234,10 +234,10 @@ export async function fetchRegistry(paths: string[]) {
 
             return response.json()
           } catch (error) {
-            // Check specifically for the EISDIR error
+            // Handle EISDIR error specifically
             if (error instanceof Error && error.message.includes("EISDIR")) {
               throw new Error(
-                `Failed to fetch from ${highlighter.info(url)}.\nIllegal operation on a directory. This is likely because the registry endpoint is misconfigured.`
+                `Failed to fetch from ${highlighter.info(url)}.\nIllegal operation on a directory. This is likely because the component registry path is incorrect.`
               )
             }
             
