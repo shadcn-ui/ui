@@ -1,0 +1,118 @@
+---
+title: Rsbuild
+description: Install and configure Rsbuild.
+---
+
+<Callout className="bg-blue-50 border-blue-600 dark:border-blue-900 dark:bg-blue-950 mb-6 [&_code]:bg-blue-100 dark:[&_code]:bg-blue-900">
+  **Update:** We have added full support for React 19 and Tailwind v4 in the
+  `canary` release. See the docs for [Tailwind v4](/docs/tailwind-v4) for more
+  information.
+</Callout>
+
+<Steps>
+
+### Create project
+
+Start by creating a new React project using `rsbuild`:
+
+```bash
+npm create rsbuild@latest
+```
+
+### Enable Tailwind configuration
+
+Install `tailwindcss`, then generate your `tailwind.config.js` and `postcss.config.cjs` files:
+
+```bash
+npm install -D tailwindcss
+```
+
+```bash
+npx tailwindcss init -p
+```
+
+Add this import header in your main css file, `src/index.css` in our case:
+
+```css {1-3} showLineNumbers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ... */
+```
+
+Configure the tailwind template paths in `tailwind.config.js`:
+
+```js {3}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{html,js,ts,jsx,tsx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+### Edit tsconfig.json file
+
+Add the following code to the `tsconfig.json` file to resolve paths, for your IDE:
+
+```ts {4-9} showLineNumbers
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
+```
+
+### Run the CLI
+
+Run the `shadcn-ui` init command to setup your project:
+
+```bash
+npx shadcn@latest init
+```
+
+### Configure components.json
+
+You will be asked a few questions to configure `components.json`:
+
+```txt showLineNumbers
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
+Do you want to use CSS variables for colors? › no / yes
+```
+
+### That's it
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn@latest add button
+```
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx {1,6} showLineNumbers
+import { Button } from "@/components/ui/button"
+
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+```
+
+</Steps>
+
+

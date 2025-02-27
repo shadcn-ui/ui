@@ -155,6 +155,17 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
+          title: "Gatsby",
+          href: "/docs/installation/gatsby",
+          items: [],
+        },
+        {
+          title: "Rsbuild",
+          href: "/docs/installation/Rsbuild",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Manual",
           href: "/docs/installation/manual",
           items: [],
