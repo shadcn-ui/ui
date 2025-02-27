@@ -63,6 +63,13 @@ export const FRAMEWORKS = {
       tailwind: "https://tailwindcss.com/docs/guides/gatsby",
     },
   },
+  rsbuild:{
+    name: "rsbuild",
+    label: "RSBuild",
+    links: {
+      installation: "https://ui.shadcn.com/docs/installation/rsbuild",
+    },
+  },
   manual: {
     name: "manual",
     label: "Manual",
