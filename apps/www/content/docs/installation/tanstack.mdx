@@ -3,12 +3,6 @@ title: TanStack Start
 description: Install and configure shadcn/ui for TanStack Start.
 ---
 
-<Callout className="bg-blue-50 border-blue-600 dark:border-blue-900 dark:bg-blue-950 mb-6 [&_code]:bg-blue-100 dark:[&_code]:bg-blue-900">
-  **Update:** We have added full support for React 19 and Tailwind v4 in the
-  `canary` release. See the docs for [Tailwind v4](/docs/tailwind-v4) for more
-  information.
-</Callout>
-
 <Steps>
 
 ### Create project
@@ -16,69 +10,10 @@ description: Install and configure shadcn/ui for TanStack Start.
 Start by creating a new TanStack Start project:
 
 ```bash
-npx create-tsrouter-app@latest my-app --template typescript --tailwind
+npx create-tsrouter-app@latest my-app --template file-router --tailwind --add-ons shadcn
 ```
 
-### Edit tsconfig.json file
-
-Add the `baseUrl` and `paths` properties to the `compilerOptions` section of the `tsconfig.json`:
-
-```ts title="tsconfig.json" showLineNumbers {3-6}
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
-}
-```
-
-### Update vite.config.ts
-
-Add the following code to the `vite.config.ts` file so your app can resolve paths without error:
-
-```bash
-npm install -D @types/node
-```
-
-```typescript title="vite.config.ts" showLineNumbers {18-22}
-import path from "path"
-import tailwindcss from "@tailwindcss/vite"
-import { TanStackRouterVite } from "@tanstack/router-plugin/vite"
-import viteReact from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    TanStackRouterVite({ autoCodeSplitting: true }),
-    viteReact(),
-    tailwindcss(),
-  ],
-  test: {
-    globals: true,
-    environment: "jsdom",
-  },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-})
-```
-
-### Run the CLI
-
-Run the `shadcn` init command to setup your project:
-
-```bash
-npx shadcn@canary init -d
-```
-
-This will create a `components.json` file in the root of your project and configure CSS variables inside `src/styles.css`.
-
-### That's it
+### Add Components
 
 You can now start adding components to your project.
 
@@ -88,7 +23,7 @@ npx shadcn@canary add button
 
 The command above will add the `Button` component to your project. You can then import it like this:
 
-```tsx title="app/routes/index.tsx" showLineNumbers {3,12}
+```tsx title="src/routes/index.tsx" showLineNumbers {3,12}
 import { createFileRoute } from "@tanstack/react-router"
 
 import { Button } from "@/components/ui/button"
