@@ -1,31 +1,39 @@
 #!/usr/bin/env node
-import { add } from "@/src/commands/add"
-import { diff } from "@/src/commands/diff"
-import { init } from "@/src/commands/init"
-import { Command } from "commander"
+import chalk from "chalk"
 
-import { DEPRECATED_MESSAGE } from "./deprecated"
-import { getPackageInfo } from "./utils/get-package-info"
+function getInvoker() {
+  const args = process.argv.slice(2)
+  const env = process.env
+  const npmExecPath = env.npm_execpath || ""
+  const packageName = "shadcn@latest"
 
-process.on("SIGINT", () => process.exit(0))
-process.on("SIGTERM", () => process.exit(0))
-
-async function main() {
-  const packageInfo = await getPackageInfo()
-
-  const program = new Command()
-    .name("shadcn-ui")
-    .description("add components and dependencies to your project")
-    .addHelpText("after", DEPRECATED_MESSAGE)
-    .version(
-      packageInfo.version || "1.0.0",
-      "-v, --version",
-      "display the version number"
-    )
-
-  program.addCommand(init).addCommand(add).addCommand(diff)
-
-  program.parse()
+  if (npmExecPath.includes("pnpm")) {
+    return `pnpm dlx ${packageName}${args.length ? ` ${args.join(" ")}` : ""}`
+  } else if (npmExecPath.includes("yarn")) {
+    return `yarn dlx ${packageName}${args.length ? ` ${args.join(" ")}` : ""}`
+  } else if (npmExecPath.includes("bun")) {
+    return `bunx ${packageName}${args.length ? ` ${args.join(" ")}` : ""}`
+  } else {
+    return `npx ${packageName}${args.length ? ` ${args.join(" ")}` : ""}`
+  }
 }
 
-main()
+const main = async () => {
+  console.log(
+    chalk.yellow(
+      "The 'shadcn-ui' package is deprecated. Please use the 'shadcn' package instead:"
+    )
+  )
+  console.log("")
+  console.log(chalk.green(`  ${getInvoker()}`))
+  console.log("")
+  console.log(
+    chalk.yellow("For more information, visit: https://ui.shadcn.com/docs/cli")
+  )
+  console.log("")
+}
+
+main().catch((error) => {
+  console.error(chalk.red("Error:"), error.message)
+  process.exit(1)
+})

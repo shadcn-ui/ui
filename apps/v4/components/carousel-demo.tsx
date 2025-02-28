@@ -11,7 +11,7 @@ import {
 
 export function CarouselDemo() {
   return (
-    <div className="w-full flex-col items-center gap-4 md:flex">
+    <div className="hidden w-full flex-col items-center gap-4 @4xl:flex">
       <Carousel className="max-w-sm *:data-[slot=carousel-next]:hidden *:data-[slot=carousel-previous]:hidden *:data-[slot=carousel-next]:md:inline-flex *:data-[slot=carousel-previous]:md:inline-flex">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
@@ -29,7 +29,6 @@ export function CarouselDemo() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-
       <Carousel
         className="max-w-sm *:data-[slot=carousel-next]:hidden *:data-[slot=carousel-previous]:hidden *:data-[slot=carousel-next]:md:inline-flex *:data-[slot=carousel-previous]:md:inline-flex"
         opts={{

@@ -43,7 +43,7 @@ import {
 
 export function DropdownMenuDemo() {
   return (
-    <div className="flex flex-col items-center gap-4 md:flex-row">
+    <div className="flex flex-wrap items-start gap-4">
       <DropdownMenuSimple />
       <DropdownMenuCheckboxes />
       <DropdownMenuRadioGroupDemo />
