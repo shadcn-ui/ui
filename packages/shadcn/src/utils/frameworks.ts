@@ -23,6 +23,15 @@ export const FRAMEWORKS = {
       tailwind: "https://tailwindcss.com/docs/guides/remix",
     },
   },
+  "react-router": {
+    name: "react-router",
+    label: "React Router",
+    links: {
+      installation: "https://ui.shadcn.com/docs/installation/react-router",
+      tailwind:
+        "https://tailwindcss.com/docs/installation/framework-guides/react-router",
+    },
+  },
   vite: {
     name: "vite",
     label: "Vite",
