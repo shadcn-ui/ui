@@ -444,6 +444,178 @@ describe("resolveFilePath", () => {
   })
 })
 
+describe("resolveFilePath with framework", () => {
+  test("should not resolve for unknown or unsupported framework", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/app/login/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+        }
+      )
+    ).toBe("")
+
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/app/login/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+          framework: "vite",
+        }
+      )
+    ).toBe("")
+  })
+
+  test("should resolve for next-app", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/app/login/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/components/ui",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+          framework: "next-app",
+        }
+      )
+    ).toBe("/foo/bar/app/login/page.tsx")
+  })
+
+  test("should resolve for next-pages", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/app/login/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/src/components",
+            ui: "/foo/bar/src/primitives",
+            lib: "/foo/bar/src/lib",
+            hooks: "/foo/bar/src/hooks",
+          },
+        },
+        {
+          isSrcDir: true,
+          framework: "next-pages",
+        }
+      )
+    ).toBe("/foo/bar/src/pages/login.tsx")
+
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/app/blog/[slug]/page.tsx",
+          type: "registry:page",
+          target: "app/blog/[slug]/page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/components",
+            ui: "/foo/bar/primitives",
+            lib: "/foo/bar/lib",
+            hooks: "/foo/bar/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+          framework: "next-pages",
+        }
+      )
+    ).toBe("/foo/bar/pages/blog/[slug].tsx")
+  })
+
+  test("should resolve for react-router", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/app/login/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/app/components",
+            ui: "/foo/bar/app/components/ui",
+            lib: "/foo/bar/app/lib",
+            hooks: "/foo/bar/app/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+          framework: "react-router",
+        }
+      )
+    ).toBe("/foo/bar/app/routes/login.tsx")
+  })
+
+  test("should resolve for laravel", () => {
+    expect(
+      resolveFilePath(
+        {
+          path: "hello-world/app/login/page.tsx",
+          type: "registry:page",
+          target: "app/login/page.tsx",
+        },
+        {
+          resolvedPaths: {
+            cwd: "/foo/bar",
+            components: "/foo/bar/resources/js/components",
+            ui: "/foo/bar/resources/js/components/ui",
+            lib: "/foo/bar/resources/js/lib",
+            hooks: "/foo/bar/resources/js/hooks",
+          },
+        },
+        {
+          isSrcDir: false,
+          framework: "laravel",
+        }
+      )
+    ).toBe("/foo/bar/resources/js/pages/login.tsx")
+  })
+})
+
 describe("findCommonRoot", () => {
   test.each([
     {
