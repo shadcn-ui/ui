@@ -50,7 +50,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     aliasPrefix,
     packageJson,
   ] = await Promise.all([
-    fg.glob("**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json", {
+    fg.glob("**/{next,vite,astro,app,rsbuild}.config.*|gatsby-config.*|composer.json", {
       cwd,
       deep: 3,
       ignore: PROJECT_SHARED_IGNORE,
@@ -133,6 +133,10 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   // We'll assume that it got caught by the Remix check above.
   if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
     type.framework = FRAMEWORKS["vite"]
+    return type
+  }
+  if (configFiles.find((file) => file.startsWith("rsbuild.config."))?.length) {
+    type.framework = FRAMEWORKS["rsbuild"]
     return type
   }
 
