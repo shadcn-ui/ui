@@ -18,7 +18,7 @@ export function CalendarDemo() {
   })
 
   return (
-    <div className="flex flex-col flex-wrap items-start gap-2 md:flex-row">
+    <div className="flex flex-col flex-wrap items-start gap-2 @md:flex-row">
       <Calendar
         mode="single"
         selected={date}
@@ -40,7 +40,7 @@ export function CalendarDemo() {
         selected={range}
         onSelect={setRange}
         numberOfMonths={3}
-        className="rounded-md border shadow-sm [&>div]:gap-5"
+        className="hidden rounded-md border shadow-sm @4xl:flex [&>div]:gap-5"
       />
     </div>
   )
