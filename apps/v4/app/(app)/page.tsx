@@ -49,7 +49,7 @@ import { TooltipDemo } from "@/components/tooltip-demo"
 
 export default function SinkPage() {
   return (
-    <div className="grid flex-1 gap-4 p-4">
+    <div className="@container grid flex-1 gap-4 p-4">
       <ComponentWrapper name="chart" className="w-full">
         <ChartDemo />
       </ComponentWrapper>
@@ -83,7 +83,7 @@ export default function SinkPage() {
       <ComponentWrapper name="card">
         <CardDemo />
       </ComponentWrapper>
-      <ComponentWrapper name="carousel" className="hidden md:flex">
+      <ComponentWrapper name="carousel">
         <CarouselDemo />
       </ComponentWrapper>
       <ComponentWrapper name="checkbox">

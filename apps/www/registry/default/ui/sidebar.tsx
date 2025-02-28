@@ -15,6 +15,7 @@ import {
   SheetContent,
   SheetDescription,
   SheetHeader,
+  SheetTitle,
 } from "@/registry/default/ui/sheet"
 import { Skeleton } from "@/registry/default/ui/skeleton"
 import {
