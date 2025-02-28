@@ -41,6 +41,9 @@ export function CalendarDemo() {
         onSelect={setRange}
         numberOfMonths={3}
         className="rounded-md border shadow-sm [&>div]:gap-5"
+        classNames={{
+          months: "flex flex-col lg:flex-row gap-2"
+        }}
       />
     </div>
   )
