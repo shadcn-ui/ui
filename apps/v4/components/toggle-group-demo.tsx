@@ -7,7 +7,7 @@ import {
 
 export function ToggleGroupDemo() {
   return (
-    <div className="flex flex-col items-center gap-6 md:flex-row">
+    <div className="flex flex-wrap items-start gap-4">
       <ToggleGroup type="multiple">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <BoldIcon />
