@@ -1,6 +1,7 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
+import { getRegistryIndex } from "@/src/registry/api"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
@@ -8,11 +9,25 @@ import { getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { getRegistryIndex } from "@/src/utils/registry"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
+
+const DEPRECATED_COMPONENTS = [
+  {
+    name: "toast",
+    deprecatedBy: "sonner",
+    message:
+      "The toast component is deprecated. Use the sonner component instead.",
+  },
+  {
+    name: "toaster",
+    deprecatedBy: "sonner",
+    message:
+      "The toaster component is deprecated. Use the sonner component instead.",
+  },
+]
 
 export const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -23,6 +38,7 @@ export const addOptionsSchema = z.object({
   path: z.string().optional(),
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
+  cssVariables: z.boolean(),
 })
 
 export const add = new Command()
@@ -47,6 +63,12 @@ export const add = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option(
+    "--no-src-dir",
+    "do not use the src directory when creating a new project."
+  )
+  .option("--css-variables", "use css variables for theming.", true)
+  .option("--no-css-variables", "do not use css variables for theming.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -81,6 +103,19 @@ export const add = new Command()
         options.components = await promptForRegistryComponents(options)
       }
 
+      const deprecatedComponents = DEPRECATED_COMPONENTS.filter((component) =>
+        options.components?.includes(component.name)
+      )
+
+      if (deprecatedComponents?.length) {
+        logger.break()
+        deprecatedComponents.forEach((component) => {
+          logger.warn(highlighter.warn(component.message))
+        })
+        logger.break()
+        process.exit(1)
+      }
+
       let { errors, config } = await preFlightAdd(options)
 
       // No components.json file. Prompt the user to run init.
@@ -108,6 +143,7 @@ export const add = new Command()
           silent: true,
           isNewProject: false,
           srcDir: options.srcDir,
+          cssVariables: options.cssVariables,
         })
       }
 
@@ -138,6 +174,7 @@ export const add = new Command()
             silent: true,
             isNewProject: true,
             srcDir: options.srcDir,
+            cssVariables: options.cssVariables,
           })
 
           shouldUpdateAppIndex =
@@ -176,7 +213,11 @@ async function promptForRegistryComponents(
   }
 
   if (options.all) {
-    return registryIndex.map((entry) => entry.name)
+    return registryIndex
+      .map((entry) => entry.name)
+      .filter(
+        (component) => !DEPRECATED_COMPONENTS.some((c) => c.name === component)
+      )
   }
 
   if (options.components?.length) {
@@ -190,7 +231,13 @@ async function promptForRegistryComponents(
     hint: "Space to select. A to toggle all. Enter to submit.",
     instructions: false,
     choices: registryIndex
-      .filter((entry) => entry.type === "registry:ui")
+      .filter(
+        (entry) =>
+          entry.type === "registry:ui" &&
+          !DEPRECATED_COMPONENTS.some(
+            (component) => component.name === entry.name
+          )
+      )
       .map((entry) => ({
         title: entry.name,
         value: entry.name,

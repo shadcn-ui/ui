@@ -1,6 +1,7 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
+import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
@@ -14,11 +15,14 @@ import {
   resolveConfigPaths,
   type Config,
 } from "@/src/utils/get-config"
-import { getProjectConfig, getProjectInfo } from "@/src/utils/get-project-info"
+import {
+  getProjectConfig,
+  getProjectInfo,
+  getProjectTailwindVersionFromConfig,
+} from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
@@ -34,6 +38,7 @@ export const initOptionsSchema = z.object({
   silent: z.boolean(),
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
+  cssVariables: z.boolean(),
 })
 
 export const init = new Command()
@@ -57,6 +62,12 @@ export const init = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option(
+    "--no-src-dir",
+    "do not use the src directory when creating a new project."
+  )
+  .option("--css-variables", "use css variables for theming.", true)
+  .option("--no-css-variables", "do not use css variables for theming.")
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
@@ -285,21 +296,23 @@ async function promptForMinimalConfig(
   let cssVariables = defaultConfig.tailwind.cssVariables
 
   if (!opts.defaults) {
-    const [styles, baseColors] = await Promise.all([
+    const [styles, baseColors, tailwindVersion] = await Promise.all([
       getRegistryStyles(),
       getRegistryBaseColors(),
+      getProjectTailwindVersionFromConfig(defaultConfig),
     ])
 
     const options = await prompts([
       {
-        type: "select",
+        type: tailwindVersion === "v4" ? null : "select",
         name: "style",
         message: `Which ${highlighter.info("style")} would you like to use?`,
         choices: styles.map((style) => ({
-          title: style.label,
+          title:
+            style.name === "new-york" ? "New York (Recommended)" : style.label,
           value: style.name,
         })),
-        initial: styles.findIndex((s) => s.name === style),
+        initial: 0,
       },
       {
         type: "select",
@@ -312,21 +325,11 @@ async function promptForMinimalConfig(
           value: color.name,
         })),
       },
-      {
-        type: "toggle",
-        name: "tailwindCssVariables",
-        message: `Would you like to use ${highlighter.info(
-          "CSS variables"
-        )} for theming?`,
-        initial: defaultConfig?.tailwind.cssVariables,
-        active: "yes",
-        inactive: "no",
-      },
     ])
 
-    style = options.style
+    style = options.style ?? "new-york"
     baseColor = options.tailwindBaseColor
-    cssVariables = options.tailwindCssVariables
+    cssVariables = opts.cssVariables
   }
 
   return rawConfigSchema.parse({

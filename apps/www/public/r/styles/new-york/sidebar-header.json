@@ -1,6 +1,8 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sidebar-header",
   "type": "registry:internal",
+  "author": "shadcn (https://ui.shadcn.com)",
   "files": [
     {
       "path": "internal/sidebar-header.tsx",
