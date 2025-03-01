@@ -19,6 +19,9 @@
     "registry:build": "pnpm --filter=www build:registry && pnpm --filter=www lint:fix && pnpm format:write -- --loglevel silent",
     "registry:capture": "pnpm --filter=www registry:capture",
     "dev": "turbo run dev --parallel",
+    "shadcn-ui:dev": "turbo --filter=shadcn-ui dev",
+    "shadcn-ui": "pnpm --filter=shadcn-ui start:dev",
+    "shadcn-ui:test": "pnpm --filter=shadcn-ui test",
     "cli:dev": "turbo --filter=shadcn-ui dev",
     "cli:start": "pnpm --filter=shadcn-ui start:dev",
     "cli:build": "pnpm --filter=shadcn-ui build",
@@ -44,7 +47,7 @@
     "release": "changeset version",
     "pub:beta": "cd packages/shadcn && pnpm pub:beta",
     "pub:release": "cd packages/shadcn && pnpm pub:release",
-    "test": "turbo run test --force"
+    "test": "turbo run test --filter=!shadcn-ui --force"
   },
   "packageManager": "pnpm@9.0.6",
   "dependencies": {

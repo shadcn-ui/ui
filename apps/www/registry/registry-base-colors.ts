@@ -776,13 +776,13 @@ export const baseColorsV4 = {
       "destructive-foreground": "oklch(0.577 0.245 27.325)", // --color-red-600
       border: "oklch(0.923 0.003 48.717)", // --color-stone-200
       input: "oklch(0.923 0.003 48.717)", // --color-stone-200
-      ring: "oklch(0.869 0.005 56.366)", // --color-stone-300
+      ring: "oklch(0.709 0.01 56.259)", // --color-stone-400
       "chart-1": "oklch(0.646 0.222 41.116)", // --color-orange-600
       "chart-2": "oklch(0.6 0.118 184.704)", // --color-teal-600
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem;", // Not a color
+      radius: "0.625rem", // Not a color
       sidebar: "oklch(0.985 0.001 106.423)", // --color-stone-50
       "sidebar-foreground": "oklch(0.147 0.004 49.25)", // --color-stone-950
       "sidebar-primary": "oklch(0.216 0.006 56.043)", // --color-stone-900
@@ -790,7 +790,7 @@ export const baseColorsV4 = {
       "sidebar-accent": "oklch(0.97 0.001 106.424)", // --color-stone-100
       "sidebar-accent-foreground": "oklch(0.216 0.006 56.043)", // --color-stone-900
       "sidebar-border": "oklch(0.923 0.003 48.717)", // --color-stone-200
-      "sidebar-ring": "oklch(0.869 0.005 56.366)", // --color-stone-300
+      "sidebar-ring": "oklch(0.709 0.01 56.259)", // --color-stone-400
     },
     dark: {
       background: "oklch(0.147 0.004 49.25)", // --color-stone-950
@@ -847,13 +847,13 @@ export const baseColorsV4 = {
       "destructive-foreground": "oklch(0.577 0.245 27.325)", // --color-red-600
       border: "oklch(0.92 0.004 286.32)", // --color-zinc-200
       input: "oklch(0.92 0.004 286.32)", // --color-zinc-200
-      ring: "oklch(0.871 0.006 286.286)", // --color-zinc-300
+      ring: "oklch(0.705 0.015 286.067)", // --color-zinc-400
       "chart-1": "oklch(0.646 0.222 41.116)", // --color-orange-600
       "chart-2": "oklch(0.6 0.118 184.704)", // --color-teal-600
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem;", // Not a color
+      radius: "0.625rem", // Not a color
       sidebar: "oklch(0.985 0 0)", // --color-zinc-50
       "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950
       "sidebar-primary": "oklch(0.21 0.006 285.885)", // --color-zinc-900
@@ -861,7 +861,7 @@ export const baseColorsV4 = {
       "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100
       "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900
       "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200
-      "sidebar-ring": "oklch(0.871 0.006 286.286)", // --color-zinc-300
+      "sidebar-ring": "oklch(0.705 0.015 286.067)", // --color-zinc-400
     },
     dark: {
       background: "oklch(0.141 0.005 285.823)", // --color-zinc-950
@@ -918,13 +918,13 @@ export const baseColorsV4 = {
       "destructive-foreground": "oklch(0.577 0.245 27.325)", // --color-red-600
       border: "oklch(0.922 0 0)", // --color-neutral-200
       input: "oklch(0.922 0 0)", // --color-neutral-200
-      ring: "oklch(0.87 0 0)", // --color-neutral-300
+      ring: "oklch(0.708 0 0)", // --color-neutral-400
       "chart-1": "oklch(0.646 0.222 41.116)", // --color-orange-600
       "chart-2": "oklch(0.6 0.118 184.704)", // --color-teal-600
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem;", // Not a color
+      radius: "0.625rem", // Not a color
       sidebar: "oklch(0.985 0 0)", // --color-neutral-50
       "sidebar-foreground": "oklch(0.145 0 0)", // --color-neutral-950
       "sidebar-primary": "oklch(0.205 0 0)", // --color-neutral-900
@@ -932,7 +932,7 @@ export const baseColorsV4 = {
       "sidebar-accent": "oklch(0.97 0 0)", // --color-neutral-100
       "sidebar-accent-foreground": "oklch(0.205 0 0)", // --color-neutral-900
       "sidebar-border": "oklch(0.922 0 0)", // --color-neutral-200
-      "sidebar-ring": "oklch(0.87 0 0)", // --color-neutral-300
+      "sidebar-ring": "oklch(0.708 0 0)", // --color-neutral-400
     },
     dark: {
       background: "oklch(0.145 0 0)", // --color-neutral-950
@@ -989,13 +989,13 @@ export const baseColorsV4 = {
       "destructive-foreground": "oklch(0.577 0.245 27.325)", // --color-red-600
       border: "oklch(0.928 0.006 264.531)", // --color-gray-200
       input: "oklch(0.928 0.006 264.531)", // --color-gray-200
-      ring: "oklch(0.872 0.01 258.338)", // --color-gray-300
+      ring: "oklch(0.707 0.022 261.325)", // --color-gray-400
       "chart-1": "oklch(0.646 0.222 41.116)", // --color-orange-600
       "chart-2": "oklch(0.6 0.118 184.704)", // --color-teal-600
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem;", // Not a color
+      radius: "0.625rem", // Not a color
       sidebar: "oklch(0.985 0.002 247.839)", // --color-gray-50
       "sidebar-foreground": "oklch(0.13 0.028 261.692)", // --color-gray-950
       "sidebar-primary": "oklch(0.21 0.034 264.665)", // --color-gray-900
@@ -1003,7 +1003,7 @@ export const baseColorsV4 = {
       "sidebar-accent": "oklch(0.967 0.003 264.542)", // --color-gray-100
       "sidebar-accent-foreground": "oklch(0.21 0.034 264.665)", // --color-gray-900
       "sidebar-border": "oklch(0.928 0.006 264.531)", // --color-gray-200
-      "sidebar-ring": "oklch(0.872 0.01 258.338)", // --color-gray-300
+      "sidebar-ring": "oklch(0.707 0.022 261.325)", // --color-gray-400
     },
     dark: {
       background: "oklch(0.13 0.028 261.692)", // --color-gray-950
@@ -1060,13 +1060,13 @@ export const baseColorsV4 = {
       "destructive-foreground": "oklch(0.577 0.245 27.325)", // --color-red-600
       border: "oklch(0.929 0.013 255.508)", // --color-slate-200
       input: "oklch(0.929 0.013 255.508)", // --color-slate-200
-      ring: "oklch(0.869 0.022 252.894)", // --color-slate-300
+      ring: "oklch(0.704 0.04 256.788)", // --color-slate-400
       "chart-1": "oklch(0.646 0.222 41.116)", // --color-orange-600
       "chart-2": "oklch(0.6 0.118 184.704)", // --color-teal-600
       "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900
       "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400
       "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500
-      radius: "0.625rem;", // Not a color
+      radius: "0.625rem", // Not a color
       sidebar: "oklch(0.984 0.003 247.858)", // --color-slate-50
       "sidebar-foreground": "oklch(0.129 0.042 264.695)", // --color-slate-950
       "sidebar-primary": "oklch(0.208 0.042 265.755)", // --color-slate-900
@@ -1074,7 +1074,7 @@ export const baseColorsV4 = {
       "sidebar-accent": "oklch(0.968 0.007 247.896)", // --color-slate-100
       "sidebar-accent-foreground": "oklch(0.208 0.042 265.755)", // --color-slate-900
       "sidebar-border": "oklch(0.929 0.013 255.508)", // --color-slate-200
-      "sidebar-ring": "oklch(0.869 0.022 252.894)", // --color-slate-300
+      "sidebar-ring": "oklch(0.704 0.04 256.788)", // --color-slate-400
     },
     dark: {
       background: "oklch(0.129 0.042 264.695)", // --color-slate-950
