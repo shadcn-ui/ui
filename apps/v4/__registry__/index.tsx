@@ -1446,6 +1446,7 @@ export const Index: Record<string, any> = {
       "dropdown-menu",
       "avatar",
       "switch",
+      "label",
     ],
     files: [
       {

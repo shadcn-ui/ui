@@ -997,7 +997,8 @@
         "collapsible",
         "dropdown-menu",
         "avatar",
-        "switch"
+        "switch",
+        "label"
       ],
       "files": [
         {
