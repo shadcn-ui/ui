@@ -3937,6 +3937,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "dialog-hide-close-window-button": {
+      name: "dialog-hide-close-window-button",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dialog","button"],
+      files: [{
+        path: "registry/new-york/examples/dialog-hide-close-window-button.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/dialog-hide-close-window-button.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "drawer-demo": {
       name: "drawer-demo",
       description: "",
@@ -9232,6 +9247,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/dialog-close-button.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "dialog-hide-close-window-button": {
+      name: "dialog-hide-close-window-button",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dialog","button"],
+      files: [{
+        path: "registry/default/examples/dialog-hide-close-window-button.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/dialog-hide-close-window-button.tsx")),
       source: "",
       meta: undefined,
     },
