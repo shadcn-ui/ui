@@ -75,6 +75,11 @@ export const docsConfig: DocsConfig = {
           title: "Monorepo",
           href: "/docs/monorepo",
           items: [],
+        },
+        {
+          title: "Tailwind v4",
+          href: "/docs/tailwind-v4",
+          items: [],
           label: "New",
         },
         {
@@ -96,7 +101,6 @@ export const docsConfig: DocsConfig = {
           title: "Blocks",
           href: "/docs/blocks",
           items: [],
-          label: "New",
         },
         {
           title: "Figma",
@@ -124,6 +128,17 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
+          title: "React Router",
+          href: "/docs/installation/react-router",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Remix",
           href: "/docs/installation/remix",
           items: [],
@@ -134,14 +149,10 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Laravel",
-          href: "/docs/installation/laravel",
+          title: "Tanstack Start",
+          href: "/docs/installation/tanstack",
           items: [],
-        },
-        {
-          title: "Gatsby",
-          href: "/docs/installation/gatsby",
-          items: [],
+          label: "New",
         },
         {
           title: "Manual",
@@ -401,6 +412,42 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Registry",
+      label: "New",
+      items: [
+        {
+          title: "Introduction",
+          href: "/docs/registry",
+          items: [],
+        },
+        {
+          title: "Getting Started",
+          href: "/docs/registry/getting-started",
+          items: [],
+        },
+        {
+          title: "Open in v0",
+          href: "/docs/registry/open-in-v0",
+          items: [],
+        },
+        {
+          title: "FAQ",
+          href: "/docs/registry/faq",
+          items: [],
+        },
+        {
+          title: "registry.json",
+          href: "/docs/registry/registry-json",
+          items: [],
+        },
+        {
+          title: "registry-item.json",
+          href: "/docs/registry/registry-item-json",
           items: [],
         },
       ],
