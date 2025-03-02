@@ -9,7 +9,7 @@ import {
 
 export function TooltipDemo() {
   return (
-    <div className="flex flex-col gap-6 md:flex-row">
+    <div className="flex flex-wrap items-start gap-4">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline">Hover</Button>

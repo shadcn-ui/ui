@@ -100,7 +100,9 @@ export async function transformCssVars(
   }
 
   if (config.tailwind.cssVariables) {
-    plugins.push(updateBaseLayerPlugin())
+    plugins.push(
+      updateBaseLayerPlugin({ tailwindVersion: options.tailwindVersion })
+    )
   }
 
   const result = await postcss(plugins).process(input, {
@@ -118,12 +120,22 @@ export async function transformCssVars(
   return output
 }
 
-function updateBaseLayerPlugin() {
+function updateBaseLayerPlugin({
+  tailwindVersion,
+}: {
+  tailwindVersion?: TailwindVersion
+}) {
   return {
     postcssPlugin: "update-base-layer",
     Once(root: Root) {
       const requiredRules = [
-        { selector: "*", apply: "border-border outline-ring/50" },
+        {
+          selector: "*",
+          apply:
+            tailwindVersion === "v4"
+              ? "border-border outline-ring/50"
+              : "border-border",
+        },
         { selector: "body", apply: "bg-background text-foreground" },
       ]
 
