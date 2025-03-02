@@ -11,7 +11,9 @@ import { Event } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { Callout } from "@/components/callout"
+import { CodeBlockCommand } from "@/components/code-block-command"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
+import { CodeTabs } from "@/components/code-tabs"
 import { ComponentExample } from "@/components/component-example"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
@@ -30,6 +32,7 @@ import {
   AlertTitle,
 } from "@/registry/new-york/ui/alert"
 import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Tabs,
   TabsContent,
@@ -46,6 +49,7 @@ const components = {
   Alert,
   AlertTitle,
   AlertDescription,
+  Button,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -192,16 +196,30 @@ const components = {
     __src__?: string
     __event__?: Event["name"]
   } & NpmCommands) => {
+    const isNpmCommand =
+      __npmCommand__ && __yarnCommand__ && __pnpmCommand__ && __bunCommand__
+
+    if (isNpmCommand) {
+      return (
+        <CodeBlockCommand
+          __npmCommand__={__npmCommand__}
+          __yarnCommand__={__yarnCommand__}
+          __pnpmCommand__={__pnpmCommand__}
+          __bunCommand__={__bunCommand__}
+        />
+      )
+    }
+
     return (
       <StyleWrapper styleName={__style__}>
         <pre
           className={cn(
-            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900",
+            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-xl bg-zinc-950 py-4 dark:bg-zinc-900",
             className
           )}
           {...props}
         />
-        {__rawString__ && !__npmCommand__ && (
+        {__rawString__ && (
           <CopyButton
             value={__rawString__}
             src={__src__}
@@ -209,20 +227,6 @@ const components = {
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
-        {__npmCommand__ &&
-          __yarnCommand__ &&
-          __pnpmCommand__ &&
-          __bunCommand__ && (
-            <CopyNpmCommandButton
-              commands={{
-                __npmCommand__,
-                __yarnCommand__,
-                __pnpmCommand__,
-                __bunCommand__,
-              }}
-              className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
-            />
-          )}
       </StyleWrapper>
     )
   },
@@ -244,6 +248,7 @@ const components = {
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
   ),
+  CodeTabs,
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(

@@ -1,4 +1,14 @@
-# @shadcn/ui
+# shadcn-ui
+
+## 0.9.5
+
+`shadcn-ui` is deprecated. Use the `shadcn` CLI instead.
+
+## 0.9.4
+
+### Patch Changes
+
+- [#4397](https://github.com/shadcn-ui/ui/pull/4397) [`a1bed46`](https://github.com/shadcn-ui/ui/commit/a1bed464f329e9025a7fa1ae7dee094d4c9c6f44) Thanks [@JensAstrup](https://github.com/JensAstrup)! - replace lodash.template
 
 ## 0.9.3
 

@@ -1,24 +1,32 @@
 import { Config } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
 
-export const transformImport: Transformer = async ({ sourceFile, config }) => {
+export const transformImport: Transformer = async ({
+  sourceFile,
+  config,
+  isRemote,
+}) => {
+  const workspaceAlias = config.aliases?.utils?.split("/")[0]?.slice(1)
+  const utilsImport = `@${workspaceAlias}/lib/utils`
+
   const importDeclarations = sourceFile.getImportDeclarations()
 
   for (const importDeclaration of importDeclarations) {
     const moduleSpecifier = updateImportAliases(
       importDeclaration.getModuleSpecifierValue(),
-      config
+      config,
+      isRemote
     )
 
     importDeclaration.setModuleSpecifier(moduleSpecifier)
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (moduleSpecifier == "@/lib/utils") {
+    if (utilsImport === moduleSpecifier) {
       const namedImports = importDeclaration.getNamedImports()
       const cnImport = namedImports.find((i) => i.getName() === "cn")
       if (cnImport) {
         importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(/^@\/lib\/utils/, config.aliases.utils)
+          moduleSpecifier.replace(utilsImport, config.aliases.utils)
         )
       }
     }
@@ -27,16 +35,25 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
   return sourceFile
 }
 
-function updateImportAliases(moduleSpecifier: string, config: Config) {
+function updateImportAliases(
+  moduleSpecifier: string,
+  config: Config,
+  isRemote: boolean = false
+) {
   // Not a local import.
-  if (!moduleSpecifier.startsWith("@/")) {
+  if (!moduleSpecifier.startsWith("@/") && !isRemote) {
     return moduleSpecifier
+  }
+
+  // This treats the remote as coming from a faux registry.
+  if (isRemote && moduleSpecifier.startsWith("@/")) {
+    moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/new-york/`)
   }
 
   // Not a registry import.
   if (!moduleSpecifier.startsWith("@/registry/")) {
-    // We fix the alias an return.
-    const alias = config.aliases.components.charAt(0)
+    // We fix the alias and return.
+    const alias = config.aliases.components.split("/")[0]
     return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
 
