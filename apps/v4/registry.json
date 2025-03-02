@@ -997,7 +997,8 @@
         "collapsible",
         "dropdown-menu",
         "avatar",
-        "switch"
+        "switch",
+        "label"
       ],
       "files": [
         {
@@ -1265,7 +1266,8 @@
         "collapsible",
         "dropdown-menu",
         "avatar",
-        "button"
+        "button",
+        "label"
       ],
       "files": [
         {
