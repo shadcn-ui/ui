@@ -395,6 +395,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "TimePicker",
+          href: "/docs/components/time-picker",
+          items: [],
+        },
+        {
           title: "Toast",
           href: "/docs/components/toast",
           items: [],
