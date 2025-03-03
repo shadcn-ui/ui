@@ -183,7 +183,7 @@ Here's how you do it:
 
 1. Move `:root` and `.dark` out of the `@layer` base.
 2. Wrap the color values in `hsl()`
-3. Add the `inline` option to `@theme` i.e `@theme inline {`
+3. Add the `inline` option to `@theme` i.e `@theme inline`
 4. Remove the `hsl()` wrappers from `@theme`
 
 ```css showLineNumbers
@@ -192,7 +192,7 @@ Here's how you do it:
   --foreground: hsl(0 0% 3.9%);
 }
 
-dark {
+.dark {
   --background: hsl(0 0% 3.9%); // <-- Wrap in hsl
   --foreground: hsl(0 0% 98%);
 }
@@ -241,9 +241,9 @@ pnpm up "@radix-ui/*" cmdk lucide-react recharts tailwind-merge clsx --latest
 
 ### 6. Remove forwardRef
 
-You can use the `preset-19` codemod to migrate your `forwardRef` to props or manually update the primitives.
+You can use the `remove-forward-ref` codemod to migrate your `forwardRef` to props or manually update the primitives.
 
-For the codemod, see https://react.dev/blog/2024/04/25/react-19-upgrade-guide#typescript-changes.
+For the codemod, see https://github.com/reactjs/react-codemod#remove-forward-ref.
 
 If you want to do it manually, here's how to do it step by step:
 
