@@ -619,4 +619,28 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "chat-01",
+    description: "A simple chat UI for AI applications.",
+    type: "registry:block",
+    registryDependencies: [
+      "button",
+      "card",
+      "input",
+      "label",
+      "@llamaindex/chat-ui",
+    ],
+    files: [
+      {
+        path: "blocks/chat-01/page.tsx",
+        target: "app/chat/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/chat-01/components/chat-section.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["chat"],
+  },
 ]
