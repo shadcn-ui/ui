@@ -24,52 +24,56 @@ export default function TimePickerWithDialogDemo() {
           Select Time Period
         </Button>
       </DialogTrigger>
-      <DialogContent className={"w-[70vw] h-[45vh]"}>
+      <DialogContent
+        className={"w-[90vw] h-[45vh] flex flex-col items-center "}
+      >
         <DialogHeader>Time Selector</DialogHeader>
+        <div className={"h-1/6"} />
         <TimePickerContainer>
           <TimePicker
-            className={"w-full"}
-            timeMilliseconds={1}
-            minValue={0}
-            maxValue={1000}
-            prefixLabel={
-              <span className={"w-[15vw] text-center"}>Milliseconds</span>
-            }
-            suffixLabel={(value) => (
-              <span className={"w-[15vw] text-center"}>{value}ms</span>
-            )}
-            value={2}
-            step={1}
-          />
-          <TimePicker
-            className={"w-full"}
+            className={"w-5/6"}
             timeMilliseconds={1000}
             minValue={0}
             maxValue={60}
             prefixLabel={
-              <span className={"w-[15vw] text-center"}>Seconds</span>
+              <span className={"w-24 text-sm text-center"}>Seconds</span>
             }
             suffixLabel={(value) => (
-              <span className={"w-[15vw] text-center"}>{value}s</span>
+              <span className={"w-16 text-sm text-center"}>{value}s</span>
             )}
             value={2}
             step={1}
           />
           <TimePicker
-            className={"w-full"}
+            className={"w-5/6"}
             timeMilliseconds={1000 * 60}
             minValue={0}
             maxValue={60}
             prefixLabel={
-              <span className={"w-[15vw] text-center"}>Minutes</span>
+              <span className={"w-24 text-sm text-center"}>Minutes</span>
             }
             suffixLabel={(value) => (
-              <span className={"w-[15vw] text-center"}>{value}min</span>
+              <span className={"w-16 text-sm text-center"}>{value}min</span>
+            )}
+            value={2}
+            step={1}
+          />
+          <TimePicker
+            className={"w-5/6"}
+            timeMilliseconds={1000 * 60 * 60}
+            minValue={0}
+            maxValue={1000}
+            prefixLabel={
+              <span className={"w-24 text-sm text-center"}>Hours</span>
+            }
+            suffixLabel={(value) => (
+              <span className={"w-16 text-sm text-center"}>{value}h</span>
             )}
             value={2}
             step={1}
           />
         </TimePickerContainer>
+        <div className={"h-1/6"} />
         <DialogClose>
           <Button>Submit</Button>
         </DialogClose>

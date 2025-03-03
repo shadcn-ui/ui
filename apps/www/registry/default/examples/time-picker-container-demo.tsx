@@ -66,7 +66,7 @@ export default function TimePickerContainerDemo() {
           value={1}
         />
       </TimePickerContainer>
-      <span>Total Time:{time}</span>
+      <span>Total Time:{time} ms</span>
     </div>
   )
 }
