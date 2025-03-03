@@ -9,11 +9,11 @@ import React, {
 } from "react"
 
 import { cn } from "@/lib/utils"
-import { Slider } from "@/registry/default/ui/slider"
+import { Slider } from "@/registry/new-york-v4/ui/slider"
 
 const TimePickerContext = createContext({
   time: 0,
-  timeReducer: (value: number) => {},
+  timeReducer:(() => {}) as ((value: number)=>void),
 })
 type TimePickerContainerProps = {
   children?: React.ReactNode
@@ -86,7 +86,7 @@ const TimePicker = ({
     <div
       {...props}
       className={cn(
-        "flex flex-row gap-2 items-center justify-around",
+        "flex flex-row items-center justify-around gap-2",
         props.className
       )}
     >
@@ -95,7 +95,7 @@ const TimePicker = ({
         defaultValue={[timeValue]}
         max={maxValue - minValue}
         step={step}
-        className={cn("flex-grow")}
+        className={cn("")}
         onValueChange={(v) => {
           setTimeValue(v[0])
         }}

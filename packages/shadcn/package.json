@@ -1,5 +1,5 @@
 {
-  "name": "shadcn",
+  "name": "aqua-shadcn",
   "version": "2.3.0",
   "description": "Add components to your apps.",
   "publishConfig": {
@@ -36,7 +36,9 @@
       "default": "./dist/registry/index.js"
     }
   },
-  "bin": "./dist/index.js",
+  "bin": {
+    "aqua-shadcn":"./dist/index.js"
+  },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
