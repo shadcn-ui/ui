@@ -68,6 +68,7 @@
     "fs-extra": "^11.1.0",
     "https-proxy-agent": "^6.2.0",
     "kleur": "^4.1.5",
+    "msw": "^2.7.1",
     "node-fetch": "^3.3.0",
     "ora": "^6.1.2",
     "postcss": "^8.4.24",

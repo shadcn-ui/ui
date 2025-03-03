@@ -14,7 +14,7 @@ import { z } from "zod"
 
 export type TailwindVersion = "v3" | "v4" | null
 
-type ProjectInfo = {
+export type ProjectInfo = {
   framework: Framework
   isSrcDir: boolean
   isRSC: boolean
@@ -50,11 +50,14 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     aliasPrefix,
     packageJson,
   ] = await Promise.all([
-    fg.glob("**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json", {
-      cwd,
-      deep: 3,
-      ignore: PROJECT_SHARED_IGNORE,
-    }),
+    fg.glob(
+      "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
+      {
+        cwd,
+        deep: 3,
+        ignore: PROJECT_SHARED_IGNORE,
+      }
+    ),
     fs.pathExists(path.resolve(cwd, "src")),
     isTypeScriptProject(cwd),
     getTailwindConfigFile(cwd),
@@ -125,6 +128,14 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     ].find((dep) => dep.startsWith("@tanstack/start"))
   ) {
     type.framework = FRAMEWORKS["tanstack-start"]
+    return type
+  }
+
+  // React Router.
+  if (
+    configFiles.find((file) => file.startsWith("react-router.config."))?.length
+  ) {
+    type.framework = FRAMEWORKS["react-router"]
     return type
   }
 

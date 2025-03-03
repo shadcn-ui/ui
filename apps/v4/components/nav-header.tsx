@@ -31,11 +31,6 @@ export function NavHeader() {
             <Link href="/forms">Forms</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild data-active={pathname === "/login"}>
-            <Link href="/login">Login</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   )
