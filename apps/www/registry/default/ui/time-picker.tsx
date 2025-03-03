@@ -51,7 +51,7 @@ type TimePickerProps = {
   suffixLabel?: ((value: number) => React.ReactNode) | React.ReactNode
 
   value: number
-  onValueChange?:(value:number)=>void
+  onValueChange?: (value: number) => void
 } & HTMLAttributes<HTMLDivElement>
 const TimePicker = ({
   timeMilliseconds = 1,
@@ -63,24 +63,24 @@ const TimePicker = ({
   ...props
 }: TimePickerProps) => {
   const timePickerContext = useContext(TimePickerContext)
-  const [timeValue, setTimeValue] = useState(value)
+  const [timeValue, setTimeValue] = useState(value - minValue)
   useEffect(() => {
-    setTimeValue(value)
+    setTimeValue(value - minValue)
   }, [value])
   useEffect(() => {
-    onValueChange?.(timeValue)
-    timePickerContext.timeReducer(timeValue * timeMilliseconds)
+    onValueChange?.(timeValue + minValue)
+    timePickerContext.timeReducer((timeValue + minValue) * timeMilliseconds)
     return () => {
-      timePickerContext.timeReducer(-timeValue * timeMilliseconds)
+      timePickerContext.timeReducer(-(timeValue + minValue) * timeMilliseconds)
     }
   }, [timeValue])
   const prefix =
     typeof props.prefixLabel === "function"
-      ? props.prefixLabel(timeValue)
+      ? props.prefixLabel(timeValue + minValue)
       : props.prefixLabel
   const suffix =
     typeof props.suffixLabel === "function"
-      ? props.suffixLabel(timeValue)
+      ? props.suffixLabel(timeValue + minValue)
       : props.suffixLabel
   return (
     <div

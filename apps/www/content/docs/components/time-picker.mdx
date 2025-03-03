@@ -2,13 +2,58 @@
 title: Time Picker
 description: Some components allow users to choose a period of time.
 component: true
-links:
-  doc: https://www.radix-ui.com/docs/primitives/components/accordion
-  api: https://www.radix-ui.com/docs/primitives/components/accordion#api-reference
 ---
 
 <ComponentPreview
   name="time-picker-container-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Some components allow users to choose a period of time."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add time-picker
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npx shadcn@latest add slider
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="time-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Example
+
+### Dialog
+
+<ComponentPreview
+  name="time-picker-with-dialog-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
   description="Some components allow users to choose a period of time."
 />

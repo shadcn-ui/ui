@@ -1622,4 +1622,14 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "time-picker-with-dialog-demo",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/time-picker-with-dialog-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
