@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/textarea-disabled.tsx",
-      "content": "import { Textarea } from \"@/registry/default/ui/textarea\"\r\n\r\nexport default function TextareaDisabled() {\r\n  return <Textarea placeholder=\"Type your message here.\" disabled />\r\n}\r\n",
+      "content": "import { Textarea } from \"@/registry/default/ui/textarea\"\n\nexport default function TextareaDisabled() {\n  return <Textarea placeholder=\"Type your message here.\" disabled />\n}\n",
       "type": "registry:example",
       "target": ""
     }

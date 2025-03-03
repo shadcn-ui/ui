@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "examples/textarea-with-label.tsx",
-      "content": "import { Label } from \"@/registry/new-york/ui/label\"\r\nimport { Textarea } from \"@/registry/new-york/ui/textarea\"\r\n\r\nexport default function TextareaWithLabel() {\r\n  return (\r\n    <div className=\"grid w-full gap-1.5\">\r\n      <Label htmlFor=\"message\">Your message</Label>\r\n      <Textarea placeholder=\"Type your message here.\" id=\"message\" />\r\n    </div>\r\n  )\r\n}\r\n",
+      "content": "import { Label } from \"@/registry/new-york/ui/label\"\nimport { Textarea } from \"@/registry/new-york/ui/textarea\"\n\nexport default function TextareaWithLabel() {\n  return (\n    <div className=\"grid w-full gap-1.5\">\n      <Label htmlFor=\"message\">Your message</Label>\n      <Textarea placeholder=\"Type your message here.\" id=\"message\" />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }

@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/button-loading.tsx",
-      "content": "import { Loader2 } from \"lucide-react\"\r\n\r\nimport { Button } from \"@/registry/new-york/ui/button\"\r\n\r\nexport default function ButtonLoading() {\r\n  return (\r\n    <Button disabled>\r\n      <Loader2 className=\"animate-spin\" />\r\n      Please wait\r\n    </Button>\r\n  )\r\n}\r\n",
+      "content": "import { Loader2 } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button disabled>\n      <Loader2 className=\"animate-spin\" />\n      Please wait\n    </Button>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }
