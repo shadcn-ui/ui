@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "time-picker-container-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "examples/time-picker-container-demo.tsx",
+      "content": "import {\n  TimePicker,\n  TimePickerContainer,\n} from \"@/registry/default/ui/time-picker\"\n\nexport default function TimePickerContainerDemo() {\n  return (\n    <div>\n      <TimePickerContainer>\n        <TimePicker\n          timeMilliseconds={1}\n          step={1}\n          maxValue={0}\n          minValue={10}\n          label={<>ms</>}\n          defaultValue={2}\n        />\n      </TimePickerContainer>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
