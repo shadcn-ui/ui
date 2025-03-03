@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "time-picker-with-dialog-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "examples/time-picker-with-dialog-demo.tsx",
+      "content": "\"use client\";\n\nimport { TimerIcon } from \"lucide-react\";\n\n\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Dialog, DialogClose, DialogContent, DialogHeader, DialogTrigger } from \"@/registry/default/ui/dialog\";\nimport { TimePicker, TimePickerContainer } from \"@/registry/default/ui/time-picker\";\n\n\n\n\n\nexport default function TimePickerWithDialogDemo() {\n  return (\n    <Dialog>\n      <DialogTrigger asChild>\n        <Button className={\"w-1/2 flex flex-row items-center\"}>\n          <TimerIcon />\n          Select Time Period\n        </Button>\n      </DialogTrigger>\n      <DialogContent className={\"w-[70vw] h-[45vh]\"}>\n        <DialogHeader>Time Selector</DialogHeader>\n        <TimePickerContainer>\n          <TimePicker\n            className={\"w-full\"}\n            timeMilliseconds={1}\n            minValue={0}\n            maxValue={1000}\n            prefixLabel={<span className={\"w-[15vw] text-center\"}>Milliseconds</span>}\n            suffixLabel={value=><span className={\"w-[15vw] text-center\"}>{value}ms</span>}\n            value={2}\n            step={1}\n          />\n          <TimePicker\n            className={\"w-full\"}\n            timeMilliseconds={1000}\n            minValue={0}\n            maxValue={60}\n            prefixLabel={<span className={\"w-[15vw] text-center\"}>Seconds</span>}\n            suffixLabel={value=><span className={\"w-[15vw] text-center\"}>{value}s</span>}\n            value={2}\n            step={1}\n          />\n          <TimePicker\n            className={\"w-full\"}\n            timeMilliseconds={1000 * 60}\n            minValue={0}\n            maxValue={60}\n            prefixLabel={<span className={\"w-[15vw] text-center\"}>Minutes</span>}\n            suffixLabel={value=><span className={\"w-[15vw] text-center\"}>{value}min</span>}\n            value={2}\n            step={1}\n          />\n        </TimePickerContainer>\n        <DialogClose>\n          <Button>Submit</Button>\n        </DialogClose>\n      </DialogContent>\n    </Dialog>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
