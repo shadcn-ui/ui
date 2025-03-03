@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "time-picker",
+  "type": "registry:ui",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "dependencies": [],
+  "registryDependencies": [
+    "slider"
+  ],
+  "files": [
+    {
+      "path": "ui/time-picker.tsx",
+      "content": "\"use client\"\n\nimport React, {\n  HTMLAttributes,\n  createContext,\n  useContext,\n  useEffect,\n  useState,\n} from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Slider } from \"@/registry/default/ui/slider\"\n\nconst TimePickerContext = createContext({\n  time: 0,\n  setTime: (value: number) => {},\n})\ntype TimePickerContainerProps = {\n  children?: React.ReactNode\n  onTimeChange?: (value: number) => void\n}\nconst TimePickerContainer: React.FC<TimePickerContainerProps> = (props) => {\n  const [time, setTime] = useState(0)\n  return (\n    <TimePickerContext.Provider value={{ time: time, setTime }}>\n      <TimePickerTrigger {...props} />\n    </TimePickerContext.Provider>\n  )\n}\nconst TimePickerTrigger = (props: TimePickerContainerProps) => {\n  const timePickerContext = useContext(TimePickerContext)\n  useEffect(() => {\n    props.onTimeChange?.(timePickerContext.time)\n  }, [props, timePickerContext])\n\n  return <>{props.children}</>\n}\ntype TimePickerProps = {\n  timeMilliseconds: number\n  step: number\n  maxValue: number\n  minValue: number\n  label: React.ReactNode\n  defaultValue: number\n} & HTMLAttributes<HTMLDivElement>\nconst TimePicker = ({\n  timeMilliseconds = 1,\n  step = 1,\n  maxValue = 1000,\n  minValue = 0,\n  defaultValue = 0,\n\n  ...props\n}: TimePickerProps) => {\n  const timePickerContext = useContext(TimePickerContext)\n  useEffect(() => {\n    timePickerContext.setTime(\n      timePickerContext.time + defaultValue * timeMilliseconds\n    )\n  }, [])\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"flex flex-row items-center justify-start gap-2\",\n        props.className\n      )}\n    >\n      {props.label}\n      <Slider\n        defaultValue={[50]}\n        max={100}\n        step={1}\n        className={cn(\"w-[60%]\")}\n      />\n    </div>\n  )\n}\n\nexport { TimePicker, TimePickerContainer }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}
