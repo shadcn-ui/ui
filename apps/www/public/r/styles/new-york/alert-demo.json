@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/alert-demo.tsx",
-      "content": "import { Terminal } from \"lucide-react\"\r\n\r\nimport {\r\n  Alert,\r\n  AlertDescription,\r\n  AlertTitle,\r\n} from \"@/registry/new-york/ui/alert\"\r\n\r\nexport default function AlertDemo() {\r\n  return (\r\n    <Alert>\r\n      <Terminal className=\"h-4 w-4\" />\r\n      <AlertTitle>Heads up!</AlertTitle>\r\n      <AlertDescription>\r\n        You can add components to your app using the cli.\r\n      </AlertDescription>\r\n    </Alert>\r\n  )\r\n}\r\n",
+      "content": "import { Terminal } from \"lucide-react\"\n\nimport {\n  Alert,\n  AlertDescription,\n  AlertTitle,\n} from \"@/registry/new-york/ui/alert\"\n\nexport default function AlertDemo() {\n  return (\n    <Alert>\n      <Terminal className=\"h-4 w-4\" />\n      <AlertTitle>Heads up!</AlertTitle>\n      <AlertDescription>\n        You can add components to your app using the cli.\n      </AlertDescription>\n    </Alert>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }

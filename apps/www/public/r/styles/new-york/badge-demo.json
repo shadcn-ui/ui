@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/badge-demo.tsx",
-      "content": "import { Badge } from \"@/registry/new-york/ui/badge\"\r\n\r\nexport default function BadgeDemo() {\r\n  return <Badge>Badge</Badge>\r\n}\r\n",
+      "content": "import { Badge } from \"@/registry/new-york/ui/badge\"\n\nexport default function BadgeDemo() {\n  return <Badge>Badge</Badge>\n}\n",
       "type": "registry:example",
       "target": ""
     }

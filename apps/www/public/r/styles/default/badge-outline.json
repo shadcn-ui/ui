@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/badge-outline.tsx",
-      "content": "import { Badge } from \"@/registry/default/ui/badge\"\r\n\r\nexport default function BadgeOutline() {\r\n  return <Badge variant=\"outline\">Outline</Badge>\r\n}\r\n",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\"\n\nexport default function BadgeOutline() {\n  return <Badge variant=\"outline\">Outline</Badge>\n}\n",
       "type": "registry:example",
       "target": ""
     }

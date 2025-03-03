@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/toast-with-action.tsx",
-      "content": "\"use client\"\r\n\r\nimport { useToast } from \"@/registry/default/hooks/use-toast\"\r\nimport { Button } from \"@/registry/default/ui/button\"\r\nimport { ToastAction } from \"@/registry/default/ui/toast\"\r\n\r\nexport default function ToastWithAction() {\r\n  const { toast } = useToast()\r\n\r\n  return (\r\n    <Button\r\n      variant=\"outline\"\r\n      onClick={() => {\r\n        toast({\r\n          title: \"Uh oh! Something went wrong.\",\r\n          description: \"There was a problem with your request.\",\r\n          action: <ToastAction altText=\"Try again\">Try again</ToastAction>,\r\n        })\r\n      }}\r\n    >\r\n      Show Toast\r\n    </Button>\r\n  )\r\n}\r\n",
+      "content": "\"use client\"\n\nimport { useToast } from \"@/registry/default/hooks/use-toast\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport { ToastAction } from \"@/registry/default/ui/toast\"\n\nexport default function ToastWithAction() {\n  const { toast } = useToast()\n\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        toast({\n          title: \"Uh oh! Something went wrong.\",\n          description: \"There was a problem with your request.\",\n          action: <ToastAction altText=\"Try again\">Try again</ToastAction>,\n        })\n      }}\n    >\n      Show Toast\n    </Button>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }
