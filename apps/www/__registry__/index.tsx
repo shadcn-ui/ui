@@ -5332,6 +5332,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "time-picker-with-dialog-demo": {
+      name: "time-picker-with-dialog-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/examples/time-picker-with-dialog-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/time-picker-with-dialog-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
   },  "default": {
     "accordion": {
       name: "accordion",
@@ -10657,6 +10672,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/time-picker-container-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-with-dialog-demo": {
+      name: "time-picker-with-dialog-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/examples/time-picker-with-dialog-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/time-picker-with-dialog-demo.tsx")),
       source: "",
       meta: undefined,
     },

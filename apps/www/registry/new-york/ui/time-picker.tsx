@@ -9,11 +9,11 @@ import React, {
 } from "react"
 
 import { cn } from "@/lib/utils"
-import { Slider } from "@/registry/default/ui/slider"
+import { Slider } from "@/registry/new-york/ui/slider"
 
 const TimePickerContext = createContext({
   time: 0,
-  setTime: (value: number) => {},
+  timeReducer: (value: number) => {},
 })
 type TimePickerContainerProps = {
   children?: React.ReactNode
@@ -22,7 +22,14 @@ type TimePickerContainerProps = {
 const TimePickerContainer: React.FC<TimePickerContainerProps> = (props) => {
   const [time, setTime] = useState(0)
   return (
-    <TimePickerContext.Provider value={{ time: time, setTime: timeReducer }}>
+    <TimePickerContext.Provider
+      value={{
+        time: time,
+        timeReducer: (value) => {
+          setTime((prev) => prev + value)
+        },
+      }}
+    >
       <TimePickerTrigger {...props} />
     </TimePickerContext.Provider>
   )
@@ -40,34 +47,60 @@ type TimePickerProps = {
   step: number
   maxValue: number
   minValue: number
-  label: React.ReactNode
-  defaultValue: number
+  prefixLabel?: ((value: number) => React.ReactNode) | React.ReactNode
+  suffixLabel?: ((value: number) => React.ReactNode) | React.ReactNode
+
+  value: number
+  onValueChange?: (value: number) => void
 } & HTMLAttributes<HTMLDivElement>
 const TimePicker = ({
   timeMilliseconds = 1,
   step = 1,
   maxValue = 1000,
   minValue = 0,
-  defaultValue = 0,
-
+  value = 0,
+  onValueChange,
   ...props
 }: TimePickerProps) => {
   const timePickerContext = useContext(TimePickerContext)
+  const [timeValue, setTimeValue] = useState(value - minValue)
   useEffect(() => {
-    timePickerContext.setTime(
-      timePickerContext.time + defaultValue * timeMilliseconds
-    )
-  }, [])
+    setTimeValue(value - minValue)
+  }, [value])
+  useEffect(() => {
+    onValueChange?.(timeValue + minValue)
+    timePickerContext.timeReducer((timeValue + minValue) * timeMilliseconds)
+    return () => {
+      timePickerContext.timeReducer(-(timeValue + minValue) * timeMilliseconds)
+    }
+  }, [timeValue])
+  const prefix =
+    typeof props.prefixLabel === "function"
+      ? props.prefixLabel(timeValue + minValue)
+      : props.prefixLabel
+  const suffix =
+    typeof props.suffixLabel === "function"
+      ? props.suffixLabel(timeValue + minValue)
+      : props.suffixLabel
   return (
     <div
       {...props}
       className={cn(
-        "flex flex-row items-center justify-start gap-2",
+        "flex flex-row gap-2 items-center justify-around",
         props.className
       )}
     >
-      {props.prefix}
-      <Slider className={"w-full h-fit"} defaultValue={[defaultValue]} />
+      {prefix}
+      <Slider
+        defaultValue={[timeValue]}
+        max={maxValue - minValue}
+        step={step}
+        className={cn("")}
+        onValueChange={(v) => {
+          setTimeValue(v[0])
+        }}
+      />
+      {suffix}
     </div>
   )
 }
