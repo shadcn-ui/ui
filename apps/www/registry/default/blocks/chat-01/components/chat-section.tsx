@@ -6,8 +6,6 @@ import {
   Message,
 } from "@llamaindex/chat-ui"
 
-import { cn } from "@/registry/default/lib/utils"
-
 import "@llamaindex/chat-ui/styles/markdown.css"
 import { useState } from "react"
 
@@ -32,27 +30,18 @@ const initialMessages: Message[] = [
   },
 ]
 
-export function ChatSection({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+export function ChatSection() {
   // You can replace the handler with a useChat hook from Vercel AI SDK
   const handler = useMockChat(initialMessages)
   return (
-    <div
-      className={cn(
-        "flex max-h-[80vh] flex-col gap-6 overflow-y-auto",
-        className
-      )}
-      {...props}
-    >
+    <div className="flex max-h-[80vh] flex-col gap-6 overflow-y-auto">
       <ChatSectionUI handler={handler} />
     </div>
   )
 }
 
-function useMockChat(initialMessages: Message[]): ChatHandler {
-  const [messages, setMessages] = useState<Message[]>(initialMessages)
+function useMockChat(initMessages: Message[]): ChatHandler {
+  const [messages, setMessages] = useState<Message[]>(initMessages)
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
@@ -75,7 +64,6 @@ function useMockChat(initialMessages: Message[]): ChatHandler {
       await new Promise((resolve) => setTimeout(resolve, 100))
       streamedContent += (streamedContent ? " " : "") + word
       setMessages((prev) => {
-        console.log({ prev })
         return [
           ...prev.slice(0, -1),
           {

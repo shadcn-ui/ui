@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chat-01",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A simple chat UI for AI applications.",
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label",
+    "@llamaindex/chat-ui"
+  ],
+  "files": [
+    {
+      "path": "blocks/chat-01/page.tsx",
+      "content": "import { ChatSection } from \"@/registry/new-york/blocks/chat-01/components/chat-section\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex min-h-svh w-full items-center justify-center p-6 md:p-10\">\n      <div className=\"w-full max-w-2xl\">\n        <ChatSection />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/chat/page.tsx"
+    },
+    {
+      "path": "blocks/chat-01/components/chat-section.tsx",
+      "content": "\"use client\"\n\nimport {\n  ChatHandler,\n  ChatSection as ChatSectionUI,\n  Message,\n} from \"@llamaindex/chat-ui\"\n\nimport \"@llamaindex/chat-ui/styles/markdown.css\"\nimport { useState } from \"react\"\n\nconst initialMessages: Message[] = [\n  {\n    content: \"Write simple Javascript hello world code\",\n    role: \"user\",\n  },\n  {\n    role: \"assistant\",\n    content:\n      'Got it! Here\\'s the simplest JavaScript code to print \"Hello, World!\" to the console:\\n\\n```javascript\\nconsole.log(\"Hello, World!\");\\n```\\n\\nYou can run this code in any JavaScript environment, such as a web browser\\'s console or a Node.js environment. Just paste the code and execute it to see the output.',\n  },\n  {\n    content: \"Write a simple math equation\",\n    role: \"user\",\n  },\n  {\n    role: \"assistant\",\n    content:\n      \"Let's explore a simple mathematical equation using LaTeX:\\n\\n The quadratic formula is: $$x = \\\\frac{-b \\\\pm \\\\sqrt{b^2 - 4ac}}{2a}$$\\n\\nThis formula helps us solve quadratic equations in the form $ax^2 + bx + c = 0$. The solution gives us the x-values where the parabola intersects the x-axis.\",\n  },\n]\n\nexport function ChatSection() {\n  // You can replace the handler with a useChat hook from Vercel AI SDK\n  const handler = useMockChat(initialMessages)\n  return (\n    <div className=\"flex max-h-[80vh] flex-col gap-6 overflow-y-auto\">\n      <ChatSectionUI handler={handler} />\n    </div>\n  )\n}\n\nfunction useMockChat(initMessages: Message[]): ChatHandler {\n  const [messages, setMessages] = useState<Message[]>(initMessages)\n  const [input, setInput] = useState(\"\")\n  const [isLoading, setIsLoading] = useState(false)\n\n  const append = async (message: Message) => {\n    setIsLoading(true)\n\n    const mockResponse: Message = {\n      role: \"assistant\",\n      content: \"\",\n    }\n    setMessages((prev) => [...prev, message, mockResponse])\n\n    const mockContent =\n      \"This is a mock response. In a real implementation, this would be replaced with an actual AI response.\"\n\n    let streamedContent = \"\"\n    const words = mockContent.split(\" \")\n\n    for (const word of words) {\n      await new Promise((resolve) => setTimeout(resolve, 100))\n      streamedContent += (streamedContent ? \" \" : \"\") + word\n      setMessages((prev) => {\n        return [\n          ...prev.slice(0, -1),\n          {\n            role: \"assistant\",\n            content: streamedContent,\n          },\n        ]\n      })\n    }\n\n    setIsLoading(false)\n    return mockContent\n  }\n\n  return {\n    messages,\n    input,\n    setInput,\n    isLoading,\n    append,\n  }\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "chat"
+  ]
+}
