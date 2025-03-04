@@ -31,7 +31,7 @@ export function MobileNav() {
       <DrawerTrigger asChild>
         <Button
           variant="ghost"
-          className="gap-4 h-8 w-full px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="h-8 w-full gap-4 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ export function MobileNav() {
             />
           </svg>
           <span className="sr-only">Toggle Menu</span>
-          <span className="flex-1 flex items-center justify-between h-8 rounded-md bg-muted/50 text-sm font-normal text-muted-foreground shadow-none px-2 border">
+          <span className="flex h-8 flex-1 items-center justify-between rounded-md border bg-muted/50 px-2 text-sm font-normal text-muted-foreground shadow-none">
             Search documentation...
           </span>
         </Button>
@@ -72,7 +72,7 @@ export function MobileNav() {
           <div className="flex flex-col space-y-2">
             {docsConfig.sidebarNav.map((item, index) => (
               <div key={index} className="flex flex-col gap-4 pt-6">
-                <h4 className="font-medium text-xl">{item.title}</h4>
+                <h4 className="text-xl font-medium">{item.title}</h4>
                 {item?.items?.length &&
                   item.items.map((item) => (
                     <React.Fragment key={item.href}>
