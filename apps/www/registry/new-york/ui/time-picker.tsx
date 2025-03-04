@@ -1,19 +1,14 @@
 "use client"
 
-import React, {
-  HTMLAttributes,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react"
+import React, {createContext, HTMLAttributes, useContext, useEffect, useState,} from "react"
 
-import { cn } from "@/lib/utils"
-import { Slider } from "@/registry/new-york/ui/slider"
+import {cn} from "@/lib/utils"
+import {Slider} from "@/registry/new-york/ui/slider"
 
 const TimePickerContext = createContext({
   time: 0,
-  timeReducer: (value: number) => {},
+  timeReducer: (() => {
+  }) as (value: number) => void,
 })
 type TimePickerContainerProps = {
   children?: React.ReactNode
@@ -44,24 +39,25 @@ const TimePickerTrigger = (props: TimePickerContainerProps) => {
 }
 type TimePickerProps = {
   timeMilliseconds: number
-  step: number
+  step?: number
+  minValue?: number
   maxValue: number
-  minValue: number
   prefixLabel?: ((value: number) => React.ReactNode) | React.ReactNode
   suffixLabel?: ((value: number) => React.ReactNode) | React.ReactNode
-
-  value: number
+  value?: number
   onValueChange?: (value: number) => void
 } & HTMLAttributes<HTMLDivElement>
 const TimePicker = ({
-  timeMilliseconds = 1,
-  step = 1,
-  maxValue = 1000,
-  minValue = 0,
-  value = 0,
-  onValueChange,
-  ...props
-}: TimePickerProps) => {
+                      timeMilliseconds = 1,
+                      step = 1,
+                      maxValue = 1000,
+                      minValue = 0,
+                      value = 0,
+                      onValueChange,
+                      prefixLabel,
+                      suffixLabel,
+                      ...props
+                    }: TimePickerProps) => {
   const timePickerContext = useContext(TimePickerContext)
   const [timeValue, setTimeValue] = useState(value - minValue)
   useEffect(() => {
@@ -75,18 +71,18 @@ const TimePicker = ({
     }
   }, [timeValue])
   const prefix =
-    typeof props.prefixLabel === "function"
-      ? props.prefixLabel(timeValue + minValue)
-      : props.prefixLabel
+    typeof prefixLabel === "function"
+      ? prefixLabel(timeValue + minValue)
+      : prefixLabel
   const suffix =
-    typeof props.suffixLabel === "function"
-      ? props.suffixLabel(timeValue + minValue)
-      : props.suffixLabel
+    typeof suffixLabel === "function"
+      ? suffixLabel(timeValue + minValue)
+      : suffixLabel
   return (
     <div
       {...props}
       className={cn(
-        "flex flex-row gap-2 items-center justify-around",
+        "flex flex-row items-center justify-around gap-2 w-full h-fit",
         props.className
       )}
     >
@@ -105,4 +101,4 @@ const TimePicker = ({
   )
 }
 
-export { TimePicker, TimePickerContainer }
+export {TimePicker, TimePickerContainer}

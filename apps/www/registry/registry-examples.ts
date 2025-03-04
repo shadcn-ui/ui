@@ -1632,4 +1632,24 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "time-picker-with-value",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/time-picker-with-value.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "time-picker-with-popover",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/time-picker-with-popover.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

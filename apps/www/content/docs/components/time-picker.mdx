@@ -48,12 +48,38 @@ npx shadcn@latest add slider
 
 </CodeTabs>
 
-## Example
+## Usage
 
-### Dialog
+```typescript jsx
+import {useState} from "react";
+const [time,setTime]=useState(0)
+return <TimePickerContainer onTimeChange={(v)=>setTime(v)}>
+    <TimePicker
+        timeMilliseconds={1}
+        minValue={0}
+        maxValue={1000}
+        prefixLabel={<span>Milliseconds:</span>}
+        suffixLabel={<span>ms</span>}
+        step={1}
+        onValueChange={(value)=>console.log("Time value change to : "+value)}
+    />
+</TimePickerContainer >
+```
+
+## Examples
+
+### Use in a Dialog
 
 <ComponentPreview
   name="time-picker-with-dialog-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="Some components allow users to choose a period of time."
+  description="Use the Time Picker in a Dialog component."
+/>
+
+### Control the Time Picker's value with a state outside
+
+<ComponentPreview
+  name="time-picker-with-value"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Control the Time Picker's value with a state outside."
 />

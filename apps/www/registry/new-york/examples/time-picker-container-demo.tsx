@@ -22,13 +22,13 @@ export default function TimePickerContainerDemo() {
           className={"w-full"}
           timeMilliseconds={1000 * 60 * 60 * 7}
           step={1}
-          maxValue={10}
-          minValue={2}
+          maxValue={20}
+          minValue={0}
           prefixLabel={<span className={"w-20 text-center"}>Week</span>}
           suffixLabel={(value) => (
             <span className={"w-20 text-center"}>{value}w</span>
           )}
-          value={4}
+          value={0}
         />
         <TimePicker
           className={"w-full"}
@@ -40,7 +40,7 @@ export default function TimePickerContainerDemo() {
           suffixLabel={(value) => (
             <span className={"w-20 text-center"}>{value}d</span>
           )}
-          value={3}
+          value={0}
         />
         <TimePicker
           className={"w-full"}
@@ -52,7 +52,7 @@ export default function TimePickerContainerDemo() {
           suffixLabel={(value) => (
             <span className={"w-20 text-center"}>{value}h</span>
           )}
-          value={3}
+          value={0}
         />
         <TimePicker
           className={"w-full"}
@@ -64,7 +64,7 @@ export default function TimePickerContainerDemo() {
           suffixLabel={(value) => (
             <span className={"w-20 text-center"}>{value}min</span>
           )}
-          value={1}
+          value={0}
         />
       </TimePickerContainer>
       <span>Total Time:{time} ms</span>
