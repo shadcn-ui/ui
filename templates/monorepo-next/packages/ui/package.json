@@ -19,13 +19,13 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.8",
     "@turbo/gen": "^2.4.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
-    "@tailwindcss/postcss": "^4.0.8",
     "tailwindcss": "^4.0.8",
     "typescript": "^5.7.3"
   },
