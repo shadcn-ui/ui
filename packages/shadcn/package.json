@@ -36,9 +36,7 @@
       "default": "./dist/registry/index.js"
     }
   },
-  "bin": {
-    "shadcn":"./dist/index.js"
-  },
+  "bin": "./dist/index.js",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
