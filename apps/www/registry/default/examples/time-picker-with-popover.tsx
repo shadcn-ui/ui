@@ -28,10 +28,12 @@ export default function TimePickerWithPopover() {
         <PopoverTrigger asChild>
           <Button>
             <TimerIcon />
-            {days}d,{hours}h
+            {days} Days {hours} Hours
           </Button>
         </PopoverTrigger>
-        <PopoverContent className={"w-96 h-48 flex flex-col items-center"}>
+        <PopoverContent
+          className={"w-80 h-32 flex flex-col items-center gap-2"}
+        >
           <h1 className={"text-2xl font-semibold"}>Time Picker</h1>
           <TimePickerContainer>
             <TimePicker
@@ -40,9 +42,9 @@ export default function TimePickerWithPopover() {
               prefixLabel={
                 <span className={"text-sm text-center w-20"}>Hour:</span>
               }
-              suffixLabel={
-                <span className={"text-sm text-center w-20"}>h</span>
-              }
+              suffixLabel={(value) => (
+                <span className={"text-sm text-center w-20"}>{value} h</span>
+              )}
               value={hours}
               onValueChange={setHours}
             />
@@ -52,9 +54,9 @@ export default function TimePickerWithPopover() {
               prefixLabel={
                 <span className={"text-sm text-center w-20"}>Day:</span>
               }
-              suffixLabel={
-                <span className={"text-sm text-center w-20"}>d</span>
-              }
+              suffixLabel={(value) => (
+                <span className={"text-sm text-center w-20"}>{value} d</span>
+              )}
               value={days}
               onValueChange={setDays}
             />

@@ -1,14 +1,19 @@
 "use client"
 
-import React, {createContext, HTMLAttributes, useContext, useEffect, useState,} from "react"
+import React, {
+  HTMLAttributes,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 
-import {cn} from "@/lib/utils"
-import {Slider} from "@/registry/default/ui/slider"
+import { cn } from "@/lib/utils"
+import { Slider } from "@/registry/default/ui/slider"
 
 const TimePickerContext = createContext({
   time: 0,
-  timeReducer: (() => {
-  }) as (value: number) => void,
+  timeReducer: (() => {}) as (value: number) => void,
 })
 type TimePickerContainerProps = {
   children?: React.ReactNode
@@ -48,16 +53,16 @@ type TimePickerProps = {
   onValueChange?: (value: number) => void
 } & HTMLAttributes<HTMLDivElement>
 const TimePicker = ({
-                      timeMilliseconds = 1,
-                      step = 1,
-                      maxValue = 1000,
-                      minValue = 0,
-                      value = 0,
-                      onValueChange,
-                      prefixLabel,
-                      suffixLabel,
-                      ...props
-                    }: TimePickerProps) => {
+  timeMilliseconds = 1,
+  step = 1,
+  maxValue = 1000,
+  minValue = 0,
+  value = 0,
+  onValueChange,
+  prefixLabel,
+  suffixLabel,
+  ...props
+}: TimePickerProps) => {
   const timePickerContext = useContext(TimePickerContext)
   const [timeValue, setTimeValue] = useState(value - minValue)
   useEffect(() => {
@@ -101,4 +106,4 @@ const TimePicker = ({
   )
 }
 
-export {TimePicker, TimePickerContainer}
+export { TimePicker, TimePickerContainer }
