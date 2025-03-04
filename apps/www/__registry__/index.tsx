@@ -5347,6 +5347,36 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "time-picker-with-value": {
+      name: "time-picker-with-value",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/examples/time-picker-with-value.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/time-picker-with-value.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-with-popover": {
+      name: "time-picker-with-popover",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/examples/time-picker-with-popover.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/time-picker-with-popover.tsx")),
+      source: "",
+      meta: undefined,
+    },
   },  "default": {
     "accordion": {
       name: "accordion",
@@ -10687,6 +10717,36 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/time-picker-with-dialog-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-with-value": {
+      name: "time-picker-with-value",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/examples/time-picker-with-value.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/time-picker-with-value.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-with-popover": {
+      name: "time-picker-with-popover",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/examples/time-picker-with-popover.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/time-picker-with-popover.tsx")),
       source: "",
       meta: undefined,
     },

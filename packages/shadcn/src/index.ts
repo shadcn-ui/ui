@@ -14,7 +14,7 @@ process.on("SIGTERM", () => process.exit(0))
 
 async function main() {
   const program = new Command()
-    .name("aqua-shadcn")
+    .name("shadcn")
     .description("add components and dependencies to your project")
     .version(
       packageJson.version || "1.0.0",
