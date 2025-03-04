@@ -120,7 +120,7 @@ export function FormsDemo() {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-6">
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 md:flex-row">
               <div className="flex flex-col gap-2">
                 <Label htmlFor="name">Name</Label>
                 <Input id="name" placeholder="Evil Rabbit" />
@@ -132,8 +132,12 @@ export function FormsDemo() {
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="card-number">Card Number</Label>
-              <div className="grid grid-cols-[1fr_80px_60px] gap-3">
-                <Input id="card-number" placeholder="1234 1234 1234 1234" />
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-[1fr_80px_60px]">
+                <Input
+                  id="card-number"
+                  placeholder="1234 1234 1234 1234"
+                  className="col-span-2 md:col-span-1"
+                />
                 <Input id="card-number-expiry" placeholder="MM/YY" />
                 <Input id="card-number-cvc" placeholder="CVC" />
               </div>
@@ -145,7 +149,7 @@ export function FormsDemo() {
                   setTheme(value as keyof typeof themes)
                 }
               >
-                <SelectTrigger id="color">
+                <SelectTrigger id="color" className="w-full">
                   <SelectValue placeholder="Select a color" />
                 </SelectTrigger>
                 <SelectContent>
@@ -173,7 +177,7 @@ export function FormsDemo() {
               </p>
               <RadioGroup
                 defaultValue="starter"
-                className="grid grid-cols-2 gap-3"
+                className="grid gap-3 md:grid-cols-2"
               >
                 {plans.map((plan) => (
                   <Label
