@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 
 import { Announcement } from "@/components/announcement"
+import { ChartsNav } from "@/components/charts-nav"
 import {
   PageActions,
   PageHeader,
@@ -10,10 +11,32 @@ import {
 } from "@/components/page-header"
 import { Button } from "@/registry/new-york/ui/button"
 
+const title = "Beautiful Charts"
+const description =
+  "Built using Recharts. Copy and paste into your apps. Open Source."
+
 export const metadata: Metadata = {
-  title: "Beautiful Charts",
-  description:
-    "Built using Recharts. Copy and paste into your apps. Open Source.",
+  title,
+  description,
+  openGraph: {
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
 }
 
 export default function ChartsLayout({
@@ -22,13 +45,11 @@ export default function ChartsLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="relative">
+    <>
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>Beautiful Charts</PageHeaderHeading>
-        <PageHeaderDescription>
-          Built using Recharts. Copy and paste into your apps. Open Source.
-        </PageHeaderDescription>
+        <PageHeaderHeading>{title}</PageHeaderHeading>
+        <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
             <a href="#charts">Browse Charts</a>
@@ -38,11 +59,20 @@ export default function ChartsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container py-6">
-        <section id="charts" className="scroll-mt-20">
-          {children}
-        </section>
+      <div className="border-grid border-b">
+        <div className="container-wrapper">
+          <div className="container py-4">
+            <ChartsNav />
+          </div>
+        </div>
       </div>
-    </div>
+      <div className="container-wrapper">
+        <div className="container py-6">
+          <section id="charts" className="scroll-mt-20">
+            {children}
+          </section>
+        </div>
+      </div>
+    </>
   )
 }
