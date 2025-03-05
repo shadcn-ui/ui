@@ -7,5 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "devDependencies": {
+    "tailwindcss": "4.1.2"
   }
 }

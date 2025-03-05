@@ -23,6 +23,15 @@ export const FRAMEWORKS = {
       tailwind: "https://tailwindcss.com/docs/guides/remix",
     },
   },
+  "react-router": {
+    name: "react-router",
+    label: "React Router",
+    links: {
+      installation: "https://ui.shadcn.com/docs/installation/react-router",
+      tailwind:
+        "https://tailwindcss.com/docs/installation/framework-guides/react-router",
+    },
+  },
   vite: {
     name: "vite",
     label: "Vite",
@@ -45,6 +54,14 @@ export const FRAMEWORKS = {
     links: {
       installation: "https://ui.shadcn.com/docs/installation/laravel",
       tailwind: "https://tailwindcss.com/docs/guides/laravel",
+    },
+  },
+  "tanstack-start": {
+    name: "tanstack-start",
+    label: "TanStack Start",
+    links: {
+      installation: "https://ui.shadcn.com/docs/installation/tanstack",
+      tailwind: "https://tailwindcss.com/docs/installation/using-postcss",
     },
   },
   gatsby: {

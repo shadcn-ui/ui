@@ -69,3 +69,25 @@ import { Foo } from "bar"
     import { cn } from "@custom-alias/lib/utils"
     "
 `;
+
+exports[`transform import for monorepo 1`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@workspace/ui/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@workspace/ui/components/box"
+
+    import { cn } from "@workspace/ui/lib/utils"
+    "
+`;
+
+exports[`transform import for monorepo 2`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@repo/ui/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@repo/ui/components/box"
+
+    import { cn } from "@repo/ui/lib/utils"
+    "
+`;

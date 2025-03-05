@@ -7,7 +7,6 @@ import Link from "next/link"
 import { ChevronRight, ExternalLink } from "lucide-react"
 import Balancer from "react-wrap-balancer"
 
-import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { Mdx } from "@/components/mdx-components"
@@ -52,10 +51,9 @@ export async function generateMetadata({
       url: absoluteUrl(doc.slug),
       images: [
         {
-          url: siteConfig.ogImage,
-          width: 1200,
-          height: 630,
-          alt: siteConfig.name,
+          url: `/og?title=${encodeURIComponent(
+            doc.title
+          )}&description=${encodeURIComponent(doc.description)}`,
         },
       ],
     },
@@ -63,7 +61,13 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: doc.title,
       description: doc.description,
-      images: [siteConfig.ogImage],
+      images: [
+        {
+          url: `/og?title=${encodeURIComponent(
+            doc.title
+          )}&description=${encodeURIComponent(doc.description)}`,
+        },
+      ],
       creator: "@shadcn",
     },
   }
@@ -90,7 +94,9 @@ export default async function DocPage({ params }: DocPageProps) {
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0 max-w-2xl">
         <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
-          <div className="truncate">Docs</div>
+          <Link href="/docs" className="truncate">
+            Docs
+          </Link>
           <ChevronRight className="h-3.5 w-3.5" />
           <div className="text-foreground">{doc.title}</div>
         </div>
