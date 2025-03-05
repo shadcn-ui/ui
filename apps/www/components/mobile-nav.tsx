@@ -105,7 +105,7 @@ export function MobileNav() {
 }
 
 interface MobileLinkProps extends LinkProps {
-  onOpenChange?: (open: boolean) => void
+  onOpenChange?: React.Dispatch<React.SetStateAction<boolean>>
   children: React.ReactNode
   className?: string
 }
