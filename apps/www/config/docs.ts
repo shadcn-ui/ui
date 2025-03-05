@@ -9,6 +9,10 @@ export interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
+      title: "Home",
+      href: "/",
+    },
+    {
       title: "Documentation",
       href: "/docs",
     },
@@ -29,8 +33,8 @@ export const docsConfig: DocsConfig = {
       href: "/themes",
     },
     {
-      title: "Examples",
-      href: "/examples",
+      title: "Colors",
+      href: "/colors",
     },
   ],
   sidebarNav: [
@@ -68,8 +72,34 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Monorepo",
+          href: "/docs/monorepo",
+          items: [],
+        },
+        {
+          title: "Tailwind v4",
+          href: "/docs/tailwind-v4",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Next.js 15 + React 19",
+          href: "/docs/react-19",
+          items: [],
+        },
+        {
           title: "Typography",
           href: "/docs/components/typography",
+          items: [],
+        },
+        {
+          title: "Open in v0",
+          href: "/docs/v0",
+          items: [],
+        },
+        {
+          title: "Blocks",
+          href: "/docs/blocks",
           items: [],
         },
         {
@@ -80,6 +110,53 @@ export const docsConfig: DocsConfig = {
         {
           title: "Changelog",
           href: "/docs/changelog",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Installation",
+      items: [
+        {
+          title: "Next.js",
+          href: "/docs/installation/next",
+          items: [],
+        },
+        {
+          title: "Vite",
+          href: "/docs/installation/vite",
+          items: [],
+        },
+        {
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
+          title: "React Router",
+          href: "/docs/installation/react-router",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Remix",
+          href: "/docs/installation/remix",
+          items: [],
+        },
+        {
+          title: "Astro",
+          href: "/docs/installation/astro",
+          items: [],
+        },
+        {
+          title: "Tanstack Start",
+          href: "/docs/installation/tanstack",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Manual",
+          href: "/docs/installation/manual",
           items: [],
         },
       ],
@@ -145,7 +222,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Chart",
           href: "/docs/components/chart",
-          label: "New",
           items: [],
         },
         {
@@ -279,6 +355,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Sidebar",
+          href: "/docs/components/sidebar",
+          items: [],
+        },
+        {
           title: "Skeleton",
           href: "/docs/components/skeleton",
           items: [],
@@ -331,6 +412,42 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Registry",
+      label: "New",
+      items: [
+        {
+          title: "Introduction",
+          href: "/docs/registry",
+          items: [],
+        },
+        {
+          title: "Getting Started",
+          href: "/docs/registry/getting-started",
+          items: [],
+        },
+        {
+          title: "Open in v0",
+          href: "/docs/registry/open-in-v0",
+          items: [],
+        },
+        {
+          title: "FAQ",
+          href: "/docs/registry/faq",
+          items: [],
+        },
+        {
+          title: "registry.json",
+          href: "/docs/registry/registry-json",
+          items: [],
+        },
+        {
+          title: "registry-item.json",
+          href: "/docs/registry/registry-item-json",
           items: [],
         },
       ],

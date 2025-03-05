@@ -1,0 +1,93 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`transform import 1`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@/components/box"
+
+    import { cn } from "@/lib/utils"
+    "
+`;
+
+exports[`transform import 2`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "~/src/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "~/src/components/box"
+
+    import { cn, foo, bar } from "~/lib/utils"
+    import { bar } from "~/lib/utils/bar"
+    "
+`;
+
+exports[`transform import 3`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "~/src/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "~/src/components/box"
+
+    import { cn } from "~/lib/utils"
+    import { bar } from "~/lib/utils/bar"
+    "
+`;
+
+exports[`transform import 4`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "~/src/components/button"
+    import { Label} from "ui/label"
+    import { Box } from "~/src/components/box"
+
+    import { cn } from "~/lib/utils"
+    import { bar } from "~/lib/utils/bar"
+    "
+`;
+
+exports[`transform import 5`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "~/src/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "~/src/components/box"
+
+    import { cn } from "~/lib/utils"
+    import { bar } from "~/lib/utils/bar"
+    "
+`;
+
+exports[`transform import 6`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@custom-alias/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@custom-alias/components/box"
+
+    import { cn } from "@custom-alias/lib/utils"
+    "
+`;
+
+exports[`transform import for monorepo 1`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@workspace/ui/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@workspace/ui/components/box"
+
+    import { cn } from "@workspace/ui/lib/utils"
+    "
+`;
+
+exports[`transform import for monorepo 2`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@repo/ui/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@repo/ui/components/box"
+
+    import { cn } from "@repo/ui/lib/utils"
+    "
+`;
