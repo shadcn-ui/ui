@@ -1,7 +1,11 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
+import {
+  BASE_COLORS,
+  getRegistryBaseColors,
+  getRegistryStyles,
+} from "@/src/registry/api"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
@@ -53,6 +57,23 @@ export const initOptionsSchema = z.object({
         message: "Invalid template. Please use 'next' or 'next-monorepo'.",
       }
     ),
+  baseColor: z
+    .string()
+    .optional()
+    .refine(
+      (val) => {
+        if (val) {
+          return BASE_COLORS.find((color) => color.name === val)
+        }
+
+        return true
+      },
+      {
+        message: `Invalid base color. Please use '${BASE_COLORS.map(
+          (color) => color.name
+        ).join("', '")}'`,
+      }
+    ),
 })
 
 export const init = new Command()
@@ -64,8 +85,12 @@ export const init = new Command()
   )
   .option(
     "-t, --template <template>",
-    "the template to use. (next, next-monorepo)",
-    ""
+    "the template to use. (next, next-monorepo)"
+  )
+  .option(
+    "-b, --base-color <base-color>",
+    "the base color to use. (neutral, gray, zinc, stone, slate)",
+    undefined
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("-d, --defaults,", "use default configuration.", false)
@@ -311,7 +336,7 @@ async function promptForMinimalConfig(
   opts: z.infer<typeof initOptionsSchema>
 ) {
   let style = defaultConfig.style
-  let baseColor = defaultConfig.tailwind.baseColor
+  let baseColor = opts.baseColor
   let cssVariables = defaultConfig.tailwind.cssVariables
 
   if (!opts.defaults) {
@@ -334,7 +359,7 @@ async function promptForMinimalConfig(
         initial: 0,
       },
       {
-        type: "select",
+        type: opts.baseColor ? null : "select",
         name: "tailwindBaseColor",
         message: `Which color would you like to use as the ${highlighter.info(
           "base color"
@@ -347,7 +372,7 @@ async function promptForMinimalConfig(
     ])
 
     style = options.style ?? "new-york"
-    baseColor = options.tailwindBaseColor
+    baseColor = options.tailwindBaseColor ?? baseColor
     cssVariables = opts.cssVariables
   }
 
