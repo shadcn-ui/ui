@@ -36,7 +36,7 @@ function DatePickerSimple() {
             !date && "text-muted-foreground"
           )}
         >
-          <CalendarIcon />
+          <CalendarIcon className="text-muted-foreground" />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
@@ -69,7 +69,7 @@ function DatePickerWithRange() {
             !date && "text-muted-foreground"
           )}
         >
-          <CalendarIcon />
+          <CalendarIcon className="text-muted-foreground" />
           {date?.from ? (
             date.to ? (
               <>
