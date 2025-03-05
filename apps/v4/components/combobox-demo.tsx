@@ -15,7 +15,6 @@ import {
   AvatarImage,
 } from "@/registry/new-york-v4/ui/avatar"
 import { Button } from "@/registry/new-york-v4/ui/button"
-import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
 import {
   Command,
   CommandEmpty,
