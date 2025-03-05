@@ -140,7 +140,7 @@ export const Index: Record<string, any> = {`
 }
 
 async function buildRegistryJsonFile() {
-  // 1. Fix the path for registry items.
+  // 1. Fix the path and dependencies for registry items.
   const fixedRegistry = {
     ...registry,
     items: registry.items.map((item) => {
@@ -151,8 +151,21 @@ async function buildRegistryJsonFile() {
         }
       })
 
+      let radixUiIncluded = false
+      const dependencies = item.dependencies?.flatMap((dependency) => {
+        if (dependency.startsWith("@radix-ui/")) {
+          if (radixUiIncluded) {
+            return []
+          }
+          radixUiIncluded = true
+          return "radix-ui"
+        }
+        return dependency
+      })
+
       return {
         ...item,
+        dependencies,
         files,
       }
     }),
