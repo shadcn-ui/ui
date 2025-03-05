@@ -3,7 +3,7 @@ import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
 import { addComponents } from "@/src/utils/add-components"
-import { createProject } from "@/src/utils/create-project"
+import { TEMPLATES, createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
 import {
   DEFAULT_COMPONENTS,
@@ -39,6 +39,20 @@ export const initOptionsSchema = z.object({
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
+  template: z
+    .string()
+    .optional()
+    .refine(
+      (val) => {
+        if (val) {
+          return TEMPLATES[val as keyof typeof TEMPLATES]
+        }
+        return true
+      },
+      {
+        message: "Invalid template. Please use 'next' or 'next-monorepo'.",
+      }
+    ),
 })
 
 export const init = new Command()
@@ -47,6 +61,11 @@ export const init = new Command()
   .argument(
     "[components...]",
     "the components to add or a url to the component."
+  )
+  .option(
+    "-t, --template <template>",
+    "the template to use. (next, next-monorepo)",
+    ""
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("-d, --defaults,", "use default configuration.", false)
@@ -97,24 +116,24 @@ export async function runInit(
   }
 ) {
   let projectInfo
-  let newProjectType
+  let newProjectTemplate
   if (!options.skipPreflight) {
     const preflight = await preFlightInit(options)
     if (preflight.errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-      const { projectPath, projectType } = await createProject(options)
+      const { projectPath, template } = await createProject(options)
       if (!projectPath) {
         process.exit(1)
       }
       options.cwd = projectPath
       options.isNewProject = true
-      newProjectType = projectType
+      newProjectTemplate = template
     }
     projectInfo = preflight.projectInfo
   } else {
     projectInfo = await getProjectInfo(options.cwd)
   }
 
-  if (newProjectType === "monorepo") {
+  if (newProjectTemplate === "next-monorepo") {
     options.cwd = path.resolve(options.cwd, "apps/web")
     return await getConfig(options.cwd)
   }
