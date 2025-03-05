@@ -151,18 +151,19 @@ const data = {
       ],
     },
   ],
-  components: Object.values(Index).filter(
-    (item) => item.type === "registry:ui"
-  ),
+  components: Object.values(Index)
+    .filter((item) => item.type === "registry:ui")
+    .concat([
+      {
+        name: "combobox",
+      },
+    ])
+    .sort((a, b) => a.name.localeCompare(b.name)),
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar
-      collapsible="icon"
-      className="top-(--delta) h-[calc(100svh-var(--delta))]! [--delta:calc(var(--header-height)+1px)]"
-      {...props}
-    >
+    <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
         <SidebarGroup className="py-0 group-data-[collapsible=icon]:hidden">
