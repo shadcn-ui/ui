@@ -418,6 +418,18 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "time-picker",
+    type: "registry:ui",
+    dependencies: [],
+    files: [
+      {
+        path: "ui/time-picker.tsx",
+        type: "registry:ui",
+      },
+    ],
+    registryDependencies: ["slider"],
+  },
+  {
     name: "sidebar",
     type: "registry:ui",
     dependencies: [

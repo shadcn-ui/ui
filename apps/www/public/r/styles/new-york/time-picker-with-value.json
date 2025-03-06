@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "time-picker-with-value",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "examples/time-picker-with-value.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  TimePicker,\n  TimePickerContainer,\n} from \"@/registry/new-york/ui/time-picker\"\n\nexport default function TimePickerWithValue() {\n  const [hours, setHours] = useState(0)\n  const [minutes, setMinutes] = useState(0)\n  const [seconds, setSeconds] = useState(0)\n  const [totalTime, setTotalTime] = useState(0)\n  return (\n    <div className={\"w-full h-full flex flex-col items-center gap-6\"}>\n      <TimePickerContainer onTimeChange={setTotalTime}>\n        <TimePicker\n          value={hours}\n          onValueChange={setHours}\n          timeMilliseconds={1000 * 60 * 60}\n          maxValue={24}\n          prefixLabel={\n            <span className={\"text-sm w-24 text-center\"}>Hours</span>\n          }\n        />\n        <TimePicker\n          value={minutes}\n          onValueChange={setMinutes}\n          timeMilliseconds={1000 * 60}\n          maxValue={60}\n          prefixLabel={\n            <span className={\"text-sm w-24 text-center\"}>Minutes</span>\n          }\n        />\n        <TimePicker\n          value={seconds}\n          onValueChange={setSeconds}\n          timeMilliseconds={1000}\n          maxValue={60}\n          prefixLabel={\n            <span className={\"text-sm w-24 text-center\"}>Seconds</span>\n          }\n        />\n      </TimePickerContainer>\n      <span>Total Time : {totalTime} ms</span>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
