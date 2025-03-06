@@ -9,9 +9,32 @@ import {
 } from "@/components/page-header"
 import { ThemeCustomizer } from "@/components/theme-customizer"
 
+const title = "Add colors. Make it yours."
+const description =
+  "Hand-picked themes that you can copy and paste into your apps."
+
 export const metadata: Metadata = {
-  title: "Themes",
-  description: "Hand-picked themes that you can copy and paste into your apps.",
+  title,
+  description,
+  openGraph: {
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
 }
 
 export default function ThemesLayout({
@@ -23,15 +46,8 @@ export default function ThemesLayout({
     <>
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading className="hidden md:block">
-          Add colors. Make it yours.
-        </PageHeaderHeading>
-        <PageHeaderHeading className="md:hidden">
-          Make it yours
-        </PageHeaderHeading>
-        <PageHeaderDescription>
-          Hand-picked themes that you can copy and paste into your apps.
-        </PageHeaderDescription>
+        <PageHeaderHeading>{title}</PageHeaderHeading>
+        <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
           <ThemeCustomizer />
         </PageActions>

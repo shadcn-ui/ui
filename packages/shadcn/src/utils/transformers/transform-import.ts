@@ -1,16 +1,14 @@
 import { Config } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
 
-const COMMON_CN_IMPORTS = {
-  "@/lib/utils": /^@\/lib\/utils/,
-  "@workspace/lib/utils": /^@workspace\/lib\/utils/,
-}
-
 export const transformImport: Transformer = async ({
   sourceFile,
   config,
   isRemote,
 }) => {
+  const workspaceAlias = config.aliases?.utils?.split("/")[0]?.slice(1)
+  const utilsImport = `@${workspaceAlias}/lib/utils`
+
   const importDeclarations = sourceFile.getImportDeclarations()
 
   for (const importDeclaration of importDeclarations) {
@@ -23,17 +21,14 @@ export const transformImport: Transformer = async ({
     importDeclaration.setModuleSpecifier(moduleSpecifier)
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (COMMON_CN_IMPORTS[moduleSpecifier as keyof typeof COMMON_CN_IMPORTS]) {
+    if (utilsImport === moduleSpecifier || moduleSpecifier === "@/lib/utils") {
       const namedImports = importDeclaration.getNamedImports()
       const cnImport = namedImports.find((i) => i.getName() === "cn")
       if (cnImport) {
         importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(
-            COMMON_CN_IMPORTS[
-              moduleSpecifier as keyof typeof COMMON_CN_IMPORTS
-            ],
-            config.aliases.utils
-          )
+          utilsImport === moduleSpecifier
+            ? moduleSpecifier.replace(utilsImport, config.aliases.utils)
+            : config.aliases.utils
         )
       }
     }

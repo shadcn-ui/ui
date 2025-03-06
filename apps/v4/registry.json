@@ -997,7 +997,8 @@
         "collapsible",
         "dropdown-menu",
         "avatar",
-        "switch"
+        "switch",
+        "label"
       ],
       "files": [
         {
@@ -1265,7 +1266,8 @@
         "collapsible",
         "dropdown-menu",
         "avatar",
-        "button"
+        "button",
+        "label"
       ],
       "files": [
         {
@@ -2719,6 +2721,32 @@
         {
           "path": "registry/new-york-v4/hooks/use-mobile.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "products-01",
+      "type": "registry:block",
+      "description": "A table of products",
+      "registryDependencies": [
+        "checkbox",
+        "badge",
+        "button",
+        "dropdown-menu",
+        "pagination",
+        "table",
+        "tabs",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/products-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/products/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/products-01/components/products-table.tsx",
+          "type": "registry:component"
         }
       ]
     }
