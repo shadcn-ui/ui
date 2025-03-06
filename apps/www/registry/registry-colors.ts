@@ -1430,7 +1430,7 @@ export const colors = {
     },
     {
       scale: 950,
-      hex: "#1e1b4b",
+      hex: "#2e1065",
       rgb: "rgb(46,16,101)",
       hsl: "hsl(261.2,72.6%,22.9%)",
       oklch: "oklch(0.28,0.14,291)",
