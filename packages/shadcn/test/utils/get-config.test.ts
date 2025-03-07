@@ -1,17 +1,18 @@
-import path from "path"
-import { expect, test } from "vitest"
+import path from "path";
+import { expect, test } from "vitest";
 
-import { getConfig, getRawConfig } from "../../src/utils/get-config"
+import { getConfig, getRawConfig } from "../../src/utils/get-config";
 
 test("get raw config", async () => {
   expect(
     await getRawConfig(path.resolve(__dirname, "../fixtures/config-none"))
-  ).toEqual(null)
+  ).toEqual(null);
 
   expect(
     await getRawConfig(path.resolve(__dirname, "../fixtures/config-partial"))
   ).toEqual({
     style: "default",
+    linter: "eslint",
     tailwind: {
       config: "./tailwind.config.ts",
       css: "./src/assets/css/tailwind.css",
@@ -24,26 +25,27 @@ test("get raw config", async () => {
       components: "@/components",
       utils: "@/lib/utils",
     },
-  })
+  });
 
   await expect(
     getRawConfig(path.resolve(__dirname, "../fixtures/config-invalid"))
-  ).rejects.toThrowError()
-})
+  ).rejects.toThrowError();
+});
 
 test("get config", async () => {
   expect(
     await getConfig(path.resolve(__dirname, "../fixtures/config-none"))
-  ).toEqual(null)
+  ).toEqual(null);
 
   await expect(
     getConfig(path.resolve(__dirname, "../fixtures/config-invalid"))
-  ).rejects.toThrowError()
+  ).rejects.toThrowError();
 
   expect(
     await getConfig(path.resolve(__dirname, "../fixtures/config-partial"))
   ).toEqual({
     style: "default",
+    linter: "eslint",
     tailwind: {
       config: "./tailwind.config.ts",
       css: "./src/assets/css/tailwind.css",
@@ -87,12 +89,13 @@ test("get config", async () => {
       lib: path.resolve(__dirname, "../fixtures/config-partial", "./lib"),
     },
     iconLibrary: "lucide",
-  })
+  });
 
   expect(
     await getConfig(path.resolve(__dirname, "../fixtures/config-full"))
   ).toEqual({
     style: "new-york",
+    linter: "eslint",
     rsc: false,
     tsx: true,
     tailwind: {
@@ -140,12 +143,13 @@ test("get config", async () => {
         "./src/lib/utils"
       ),
     },
-  })
+  });
 
   expect(
     await getConfig(path.resolve(__dirname, "../fixtures/config-jsx"))
   ).toEqual({
     style: "default",
+    linter: "eslint",
     tailwind: {
       config: "./tailwind.config.js",
       css: "./src/assets/css/tailwind.css",
@@ -181,5 +185,5 @@ test("get config", async () => {
       hooks: path.resolve(__dirname, "../fixtures/config-jsx", "./hooks"),
       lib: path.resolve(__dirname, "../fixtures/config-jsx", "./lib"),
     },
-  })
-})
+  });
+});
