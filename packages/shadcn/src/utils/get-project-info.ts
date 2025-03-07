@@ -153,7 +153,15 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 export async function getTailwindVersion(
   cwd: string
 ): Promise<ProjectInfo["tailwindVersion"]> {
-  const packageInfo = getPackageInfo(cwd)
+  const [packageInfo, config] = await Promise.all([
+    getPackageInfo(cwd),
+    getConfig(cwd),
+  ])
+
+  // If the config file is empty, we can assume that it's a v4 project.
+  if (config?.tailwind?.config === "") {
+    return "v4"
+  }
 
   if (
     !packageInfo?.dependencies?.tailwindcss &&

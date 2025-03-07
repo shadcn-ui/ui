@@ -1446,6 +1446,7 @@ export const Index: Record<string, any> = {
       "dropdown-menu",
       "avatar",
       "switch",
+      "label",
     ],
     files: [
       {
@@ -1783,6 +1784,7 @@ export const Index: Record<string, any> = {
       "dropdown-menu",
       "avatar",
       "button",
+      "label",
     ],
     files: [
       {
