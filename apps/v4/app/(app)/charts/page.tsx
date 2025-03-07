@@ -3,7 +3,7 @@ import * as Charts from "@/app/(app)/charts/charts"
 
 export default function ChartsPage() {
   return (
-    <div className="grid grid-cols-3 items-start gap-4 p-4 2xl:grid-cols-4">
+    <div className="grid flex-1 grid-cols-3 items-start gap-4 p-4 2xl:grid-cols-4">
       {Object.entries(Charts)
         .sort()
         .map(([key, Component]) => (

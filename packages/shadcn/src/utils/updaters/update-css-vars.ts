@@ -24,7 +24,7 @@ export async function updateCssVars(
     tailwindConfig?: z.infer<typeof registryItemTailwindSchema>["config"]
   }
 ) {
-  if (!config.resolvedPaths.tailwindCss) {
+  if (!config.resolvedPaths.tailwindCss || !Object.keys(cssVars ?? {}).length) {
     return
   }
 
@@ -100,7 +100,9 @@ export async function transformCssVars(
   }
 
   if (config.tailwind.cssVariables) {
-    plugins.push(updateBaseLayerPlugin())
+    plugins.push(
+      updateBaseLayerPlugin({ tailwindVersion: options.tailwindVersion })
+    )
   }
 
   const result = await postcss(plugins).process(input, {
@@ -118,12 +120,22 @@ export async function transformCssVars(
   return output
 }
 
-function updateBaseLayerPlugin() {
+function updateBaseLayerPlugin({
+  tailwindVersion,
+}: {
+  tailwindVersion?: TailwindVersion
+}) {
   return {
     postcssPlugin: "update-base-layer",
     Once(root: Root) {
       const requiredRules = [
-        { selector: "*", apply: "border-border outline-ring/50" },
+        {
+          selector: "*",
+          apply:
+            tailwindVersion === "v4"
+              ? "border-border outline-ring/50"
+              : "border-border",
+        },
         { selector: "body", apply: "bg-background text-foreground" },
       ]
 
@@ -392,9 +404,13 @@ function updateCssVarsPluginV4(
             (node): node is postcss.Declaration =>
               node.type === "decl" && node.prop === prop
           )
-          existingDecl
-            ? existingDecl.replaceWith(newDecl)
-            : ruleNode?.append(newDecl)
+
+          // Do not override existing declarations.
+          // We do not want new components to override existing vars.
+          // Keep user defined vars.
+          if (!existingDecl) {
+            ruleNode?.append(newDecl)
+          }
         })
       })
     },
