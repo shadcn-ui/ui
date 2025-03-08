@@ -1,6 +1,10 @@
 import { Transformer } from "@/src/utils/transformers"
 import { SyntaxKind } from "ts-morph"
 
+import {
+  TailwindVersion,
+  getProjectTailwindVersionFromConfig,
+} from "../get-project-info"
 import { splitClassName } from "./transform-css-vars"
 
 export const transformTwPrefixes: Transformer = async ({
@@ -10,6 +14,7 @@ export const transformTwPrefixes: Transformer = async ({
   if (!config.tailwind?.prefix) {
     return sourceFile
   }
+  const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
 
   // Find the cva function calls.
   sourceFile
@@ -23,7 +28,8 @@ export const transformTwPrefixes: Transformer = async ({
           defaultClassNames.replaceWithText(
             `"${applyPrefix(
               defaultClassNames.getText()?.replace(/"|'/g, ""),
-              config.tailwind.prefix
+              config.tailwind.prefix,
+              tailwindVersion
             )}"`
           )
         }
@@ -47,7 +53,8 @@ export const transformTwPrefixes: Transformer = async ({
                   classNames?.replaceWithText(
                     `"${applyPrefix(
                       classNames.getText()?.replace(/"|'/g, ""),
-                      config.tailwind.prefix
+                      config.tailwind.prefix,
+                      tailwindVersion
                     )}"`
                   )
                 }
@@ -66,7 +73,8 @@ export const transformTwPrefixes: Transformer = async ({
           value.replaceWithText(
             `"${applyPrefix(
               value.getText()?.replace(/"|'/g, ""),
-              config.tailwind.prefix
+              config.tailwind.prefix,
+              tailwindVersion
             )}"`
           )
         }
@@ -92,7 +100,8 @@ export const transformTwPrefixes: Transformer = async ({
                   node.replaceWithText(
                     `"${applyPrefix(
                       node.getText()?.replace(/"|'/g, ""),
-                      config.tailwind.prefix
+                      config.tailwind.prefix,
+                      tailwindVersion
                     )}"`
                   )
                 })
@@ -102,7 +111,8 @@ export const transformTwPrefixes: Transformer = async ({
               node.replaceWithText(
                 `"${applyPrefix(
                   node.getText()?.replace(/"|'/g, ""),
-                  config.tailwind.prefix
+                  config.tailwind.prefix,
+                  tailwindVersion
                 )}"`
               )
             }
@@ -131,7 +141,8 @@ export const transformTwPrefixes: Transformer = async ({
                         node.replaceWithText(
                           `"${applyPrefix(
                             node.getText()?.replace(/"|'/g, ""),
-                            config.tailwind.prefix
+                            config.tailwind.prefix,
+                            tailwindVersion
                           )}"`
                         )
                       })
@@ -141,7 +152,8 @@ export const transformTwPrefixes: Transformer = async ({
                     arg.replaceWithText(
                       `"${applyPrefix(
                         arg.getText()?.replace(/"|'/g, ""),
-                        config.tailwind.prefix
+                        config.tailwind.prefix,
+                        tailwindVersion
                       )}"`
                     )
                   }
@@ -156,7 +168,8 @@ export const transformTwPrefixes: Transformer = async ({
                   classNames.replaceWithText(
                     `"${applyPrefix(
                       classNames.getText()?.replace(/"|'/g, ""),
-                      config.tailwind.prefix
+                      config.tailwind.prefix,
+                      tailwindVersion
                     )}"`
                   )
                 }
@@ -170,7 +183,29 @@ export const transformTwPrefixes: Transformer = async ({
   return sourceFile
 }
 
-export function applyPrefix(input: string, prefix: string = "") {
+export function applyPrefix(
+  input: string,
+  prefix: string = "",
+  tailwindVersion: TailwindVersion
+) {
+  if (tailwindVersion === "v3") {
+    return input
+      .split(" ")
+      .map((className) => {
+        const [variant, value, modifier] = splitClassName(className)
+        if (variant) {
+          return modifier
+            ? `${variant}:${prefix}${value}/${modifier}`
+            : `${variant}:${prefix}${value}`
+        } else {
+          return modifier
+            ? `${prefix}${value}/${modifier}`
+            : `${prefix}${value}`
+        }
+      })
+      .join(" ")
+  }
+
   return input
     .split(" ")
     .map((className) =>
@@ -178,15 +213,19 @@ export function applyPrefix(input: string, prefix: string = "") {
         ? className
         : `${prefix}:${className.trim()}`
     )
-    .join(" ");
+    .join(" ")
 }
 
-export function applyPrefixesCss(css: string, prefix: string) {
+export function applyPrefixesCss(
+  css: string,
+  prefix: string,
+  tailwindVersion: TailwindVersion
+) {
   const lines = css.split("\n")
   for (let line of lines) {
     if (line.includes("@apply")) {
       const originalTWCls = line.replace("@apply", "").trim()
-      const prefixedTwCls = applyPrefix(originalTWCls, prefix)
+      const prefixedTwCls = applyPrefix(originalTWCls, prefix, tailwindVersion)
       css = css.replace(originalTWCls, prefixedTwCls)
     }
   }
