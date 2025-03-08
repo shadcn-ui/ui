@@ -1446,6 +1446,7 @@ export const Index: Record<string, any> = {
       "dropdown-menu",
       "avatar",
       "switch",
+      "label",
     ],
     files: [
       {
@@ -1783,6 +1784,7 @@ export const Index: Record<string, any> = {
       "dropdown-menu",
       "avatar",
       "button",
+      "label",
     ],
     files: [
       {
@@ -3776,6 +3778,45 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/hooks/use-mobile.ts")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "products-01": {
+    name: "products-01",
+    description: "A table of products",
+    type: "registry:block",
+    registryDependencies: [
+      "checkbox",
+      "badge",
+      "button",
+      "dropdown-menu",
+      "pagination",
+      "table",
+      "tabs",
+      "select",
+    ],
+    files: [
+      {
+        path: "registry/blocks/products-01/page.tsx",
+        type: "registry:page",
+        target: "app/products/page.tsx",
+      },
+      {
+        path: "registry/blocks/products-01/components/products-table.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/new-york-v4/blocks/products-01/page.tsx"
+      )
       const exportName =
         Object.keys(mod).find(
           (key) =>

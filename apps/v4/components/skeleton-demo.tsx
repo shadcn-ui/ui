@@ -3,7 +3,7 @@ import { Skeleton } from "@/registry/new-york-v4/ui/skeleton"
 
 export function SkeletonDemo() {
   return (
-    <div className="flex w-full max-w-3xl flex-col gap-6">
+    <div className="flex w-full flex-wrap items-start gap-4">
       <div className="flex items-center gap-4">
         <Skeleton className="size-10 shrink-0 rounded-full" />
         <div className="grid gap-2">
@@ -11,9 +11,9 @@ export function SkeletonDemo() {
           <Skeleton className="h-4 w-[100px]" />
         </div>
       </div>
-      <div className="flex w-full flex-col gap-4 md:flex-row">
+      <div className="flex w-full flex-wrap items-start gap-4">
         {Array.from({ length: 3 }).map((_, index) => (
-          <Card key={index} className="w-full">
+          <Card key={index} className="w-full @md:w-auto @md:min-w-sm">
             <CardHeader>
               <Skeleton className="h-4 w-2/3" />
               <Skeleton className="h-4 w-1/2" />

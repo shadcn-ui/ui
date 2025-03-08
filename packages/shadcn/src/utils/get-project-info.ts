@@ -14,7 +14,7 @@ import { z } from "zod"
 
 export type TailwindVersion = "v3" | "v4" | null
 
-type ProjectInfo = {
+export type ProjectInfo = {
   framework: Framework
   isSrcDir: boolean
   isRSC: boolean
@@ -51,11 +51,14 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     aliasPrefix,
     packageJson,
   ] = await Promise.all([
-    fg.glob("**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json", {
-      cwd,
-      deep: 3,
-      ignore: PROJECT_SHARED_IGNORE,
-    }),
+    fg.glob(
+      "**/{next,vite,astro,app}.config.*|gatsby-config.*|composer.json|react-router.config.*",
+      {
+        cwd,
+        deep: 3,
+        ignore: PROJECT_SHARED_IGNORE,
+      }
+    ),
     fs.pathExists(path.resolve(cwd, "src")),
     isTypeScriptProject(cwd),
     getTailwindConfigFile(cwd),
@@ -130,6 +133,14 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
+  // React Router.
+  if (
+    configFiles.find((file) => file.startsWith("react-router.config."))?.length
+  ) {
+    type.framework = FRAMEWORKS["react-router"]
+    return type
+  }
+
   // Vite.
   // Some Remix templates also have a vite.config.* file.
   // We'll assume that it got caught by the Remix check above.
@@ -144,7 +155,15 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 export async function getTailwindVersion(
   cwd: string
 ): Promise<ProjectInfo["tailwindVersion"]> {
-  const packageInfo = getPackageInfo(cwd)
+  const [packageInfo, config] = await Promise.all([
+    getPackageInfo(cwd),
+    getConfig(cwd),
+  ])
+
+  // If the config file is empty, we can assume that it's a v4 project.
+  if (config?.tailwind?.config === "") {
+    return "v4"
+  }
 
   if (
     !packageInfo?.dependencies?.tailwindcss &&
