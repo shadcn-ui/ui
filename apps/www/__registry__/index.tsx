@@ -1182,6 +1182,29 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/sidebar-16/page.tsx",
       meta: undefined,
     },
+    "sidebar-with-chat-01": {
+      name: "sidebar-with-chat-01",
+      description: "A sidebar with a chat component.",
+      type: "registry:block",
+      registryDependencies: ["sidebar","breadcrumb","separator","textarea","button"],
+      files: [{
+        path: "registry/new-york/blocks/sidebar-with-chat-01/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx"
+      },{
+        path: "registry/new-york/blocks/sidebar-with-chat-01/components/app-sidebar.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/sidebar-with-chat-01/components/chat-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["sidebar","dashboard"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/sidebar-with-chat-01/page.tsx")),
+      source: "__registry__/new-york/blocks/sidebar-with-chat-01/page.tsx",
+      meta: undefined,
+    },
     "login-01": {
       name: "login-01",
       description: "A simple login form.",
@@ -6478,6 +6501,29 @@ export const Index: Record<string, any> = {
       categories: ["sidebar","dashboard"],
       component: React.lazy(() => import("@/registry/default/blocks/sidebar-16/page.tsx")),
       source: "__registry__/default/blocks/sidebar-16/page.tsx",
+      meta: undefined,
+    },
+    "sidebar-with-chat-01": {
+      name: "sidebar-with-chat-01",
+      description: "A sidebar with a chat component.",
+      type: "registry:block",
+      registryDependencies: ["sidebar","breadcrumb","separator","textarea","button"],
+      files: [{
+        path: "registry/default/blocks/sidebar-with-chat-01/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx"
+      },{
+        path: "registry/default/blocks/sidebar-with-chat-01/components/app-sidebar.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/sidebar-with-chat-01/components/chat-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["sidebar","dashboard"],
+      component: React.lazy(() => import("@/registry/default/blocks/sidebar-with-chat-01/page.tsx")),
+      source: "__registry__/default/blocks/sidebar-with-chat-01/page.tsx",
       meta: undefined,
     },
     "login-01": {

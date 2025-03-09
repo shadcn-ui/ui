@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-with-chat-01",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A sidebar with a chat component.",
+  "registryDependencies": [
+    "sidebar",
+    "breadcrumb",
+    "separator",
+    "textarea",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/sidebar-with-chat-01/page.tsx",
+      "content": "\"use client\"\n\nimport { AppSidebar } from \"@/registry/new-york/blocks/sidebar-with-chat-01/components/app-sidebar\"\nimport { SidebarInset, SidebarProvider } from \"@/registry/new-york/ui/sidebar\"\n\nimport { ChatForm } from \"./components/chat-form\"\n\nexport default function Page() {\n  return (\n    <div className=\"[--header-height:calc(theme(spacing.14))]\">\n      <SidebarProvider className=\"flex flex-col\">\n        <div className=\"flex flex-1\">\n          <AppSidebar />\n          <SidebarInset>\n            <div className=\"flex h-full flex-1 flex-col items-center justify-center gap-8 p-4\">\n              <h2 className=\"text-center text-4xl font-semibold\">How can we help you?</h2>\n              <ChatForm onSend={({ content }) => console.log(content)} />\n            </div>\n          </SidebarInset>\n        </div>\n      </SidebarProvider>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/dashboard/page.tsx"
+    },
+    {
+      "path": "blocks/sidebar-with-chat-01/components/app-sidebar.tsx",
+      "content": "import * as React from \"react\"\nimport { GalleryVerticalEnd } from \"lucide-react\"\n\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarHeader,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n} from \"@/registry/new-york/ui/sidebar\"\n\n// This is sample data.\nconst data = {\n  navMain: [\n    {\n      title: \"My chat 1\",\n      url: \"#\",\n    },\n    {\n      title: \"My chat 2\",\n      url: \"#\",\n    },\n    {\n      title: \"My chat 3\",\n      url: \"#\",\n    },\n    {\n      title: \"My chat 4\",\n      url: \"#\",\n    },\n    {\n      title: \"My chat 5\",\n      url: \"#\",\n    },\n  ],\n}\n\nexport function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {\n  return (\n    <Sidebar {...props}>\n      <SidebarHeader>\n        <SidebarMenu>\n          <SidebarMenuItem>\n            <SidebarMenuButton size=\"lg\" asChild>\n              <a href=\"#\">\n                <div className=\"flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground\">\n                  <GalleryVerticalEnd className=\"size-4\" />\n                </div>\n                <div className=\"flex flex-col gap-0.5 leading-none\">\n                  <span className=\"font-semibold\">AI Chat</span>\n                </div>\n              </a>\n            </SidebarMenuButton>\n          </SidebarMenuItem>\n        </SidebarMenu>\n      </SidebarHeader>\n      <SidebarContent>\n        <SidebarGroup>\n          <SidebarMenu className=\"gap-2\">\n            {data.navMain.map((item) => (\n              <SidebarMenuItem key={item.title}>\n                <SidebarMenuButton asChild>\n                  <a href={item.url} className=\"font-medium\">\n                    {item.title}\n                  </a>\n                </SidebarMenuButton>\n              </SidebarMenuItem>\n            ))}\n          </SidebarMenu>\n        </SidebarGroup>\n      </SidebarContent>\n    </Sidebar>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "blocks/sidebar-with-chat-01/components/chat-form.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { SendHorizonalIcon } from \"lucide-react\"\n\nimport { cn } from \"@/registry/new-york/lib/utils\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport { Textarea } from \"@/registry/new-york/ui/textarea\"\n\nexport type ChatFormProps = {\n  className?: string\n  onSend?: ({ content }: { content: string }) => void\n} & React.HTMLAttributes<HTMLFormElement>\n\nexport function ChatForm({ className, onSend, ...props }: ChatFormProps) {\n  /**\n   * Handles the form submission and sends the content of the chat form\n   * to the `onSend` prop if it is provided.\n   *\n   * @param {React.FormEvent<HTMLFormElement>} event\n   * The form submission event\n   */\n  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {\n    event.preventDefault()\n    const formData = new FormData(event.currentTarget)\n    const content = formData.get(\"content\") as string\n    if (onSend) {\n      onSend({ content })\n    }\n  }\n\n  return (\n    <form\n      className={cn(\n        \"w-full max-w-2xl space-y-4 rounded-xl border border-input bg-muted px-2 py-4 dark:border-muted\",\n        className\n      )}\n      onSubmit={handleSubmit}\n      {...props}\n    >\n      <Textarea\n        name=\"content\"\n        className=\"w-full resize-none border-none shadow-none focus-visible:ring-0 focus-visible:ring-offset-0\"\n        placeholder=\"Type a message...\"\n        required\n      />\n      <div className=\"mt-2 flex items-center justify-between px-2\">\n        <Button className=\"ml-auto\">\n          <SendHorizonalIcon className=\"size-4\" />\n        </Button>\n      </div>\n    </form>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "sidebar",
+    "dashboard"
+  ]
+}
