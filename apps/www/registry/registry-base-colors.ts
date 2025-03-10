@@ -794,9 +794,9 @@ export const baseColorsV4 = {
     dark: {
       background: "oklch(0.147 0.004 49.25)", // --color-stone-950
       foreground: "oklch(0.985 0.001 106.423)", // --color-stone-50
-      card: "oklch(0.268 0.007 34.298)", // --color-stone-800
+      card: "oklch(0.216 0.006 56.043)", // --color-stone-900
       "card-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
-      popover: "oklch(0.268 0.007 34.298)", // --color-stone-800
+      popover: "oklch(0.216 0.006 56.043)", // --color-stone-900
       "popover-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
       primary: "oklch(0.923 0.003 48.717)", // --color-stone-200
       "primary-foreground": "oklch(0.216 0.006 56.043)", // --color-stone-900
@@ -804,11 +804,11 @@ export const baseColorsV4 = {
       "secondary-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
       muted: "oklch(0.268 0.007 34.298)", // --color-stone-800
       "muted-foreground": "oklch(0.709 0.01 56.259)", // --color-stone-400
-      accent: "oklch(0.374 0.01 67.558)", // --color-stone-700
+      accent: "oklch(0.268 0.007 34.298)", // --color-stone-800
       "accent-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-500
-      border: "oklch(0.374 0.01 67.558)", // --color-stone-700
-      input: "oklch(0.444 0.011 73.639)", // --color-stone-600
+      border: "oklch(0.268 0.007 34.298)", // --color-stone-800
+      input: "oklch(0.374 0.01 67.558)", // --color-stone-700
       ring: "oklch(0.553 0.013 58.071)", // --color-stone-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -819,9 +819,9 @@ export const baseColorsV4 = {
       "sidebar-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
       "sidebar-primary": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "sidebar-primary-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
-      "sidebar-accent": "oklch(0.374 0.01 67.558)", // --color-stone-700
+      "sidebar-accent": "oklch(0.268 0.007 34.298)", // --color-stone-800
       "sidebar-accent-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
-      "sidebar-border": "oklch(0.374 0.01 67.558)", // --color-stone-700
+      "sidebar-border": "oklch(0.268 0.007 34.298)", // --color-stone-800
       "sidebar-ring": "oklch(0.553 0.013 58.071)", // --color-stone-600
     },
   },
@@ -863,9 +863,9 @@ export const baseColorsV4 = {
     dark: {
       background: "oklch(0.141 0.005 285.823)", // --color-zinc-950
       foreground: "oklch(0.985 0 0)", // --color-zinc-50
-      card: "oklch(0.274 0.006 286.033)", // --color-zinc-800
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900
       "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50
-      popover: "oklch(0.274 0.006 286.033)", // --color-zinc-800
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900
       "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50
       primary: "oklch(0.92 0.004 286.32)", // --color-zinc-200
       "primary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900
@@ -873,11 +873,11 @@ export const baseColorsV4 = {
       "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50
       muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800
       "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400
-      accent: "oklch(0.37 0.013 285.805)", // --color-zinc-700
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
-      border: "oklch(0.37 0.013 285.805)", // --color-zinc-700
-      input: "oklch(0.442 0.017 285.786)", // --color-zinc-600
+      border: "oklch(0.274 0.006 286.033)", // --color-zinc-800
+      input: "oklch(0.37 0.013 285.805)", // --color-zinc-700
       ring: "oklch(0.442 0.017 285.786)", // --color-zinc-600
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -888,9 +888,9 @@ export const baseColorsV4 = {
       "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50
       "sidebar-primary": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "sidebar-primary-foreground": "oklch(0.985 0 0)", // --color-zinc-50
-      "sidebar-accent": "oklch(0.37 0.013 285.805)", // --color-zinc-700
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800
       "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50
-      "sidebar-border": "oklch(0.37 0.013 285.805)", // --color-zinc-700
+      "sidebar-border": "oklch(0.274 0.006 286.033)", // --color-zinc-800
       "sidebar-ring": "oklch(0.442 0.017 285.786)", // --color-zinc-600
     },
   },
@@ -932,9 +932,9 @@ export const baseColorsV4 = {
     dark: {
       background: "oklch(0.145 0 0)", // --color-neutral-950
       foreground: "oklch(0.985 0 0)", // --color-neutral-50
-      card: "oklch(0.269 0 0)", // --color-neutral-800
+      card: "oklch(0.205 0 0)", // --color-neutral-900
       "card-foreground": "oklch(0.985 0 0)", // --color-neutral-50
-      popover: "oklch(0.269 0 0)", // --color-neutral-800
+      popover: "oklch(0.205 0 0)", // --color-neutral-900
       "popover-foreground": "oklch(0.985 0 0)", // --color-neutral-50
       primary: "oklch(0.922 0 0)", // --color-neutral-200
       "primary-foreground": "oklch(0.205 0 0)", // --color-neutral-900
@@ -942,11 +942,11 @@ export const baseColorsV4 = {
       "secondary-foreground": "oklch(0.985 0 0)", // --color-neutral-50
       muted: "oklch(0.269 0 0)", // --color-neutral-800
       "muted-foreground": "oklch(0.708 0 0)", // --color-neutral-400
-      accent: "oklch(0.371 0 0)", // --color-neutral-700
+      accent: "oklch(0.269 0 0)", // --color-neutral-800
       "accent-foreground": "oklch(0.985 0 0)", // --color-neutral-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
-      border: "oklch(0.371 0 0)", // --color-neutral-700
-      input: "oklch(0.439 0 0)", // --color-neutral-600
+      border: "oklch(0.269 0 0)", // --color-neutral-800
+      input: "oklch(0.371 0 0)", // --color-neutral-700
       ring: "oklch(0.439 0 0)", // --color-neutral-600
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -957,9 +957,9 @@ export const baseColorsV4 = {
       "sidebar-foreground": "oklch(0.985 0 0)", // --color-neutral-50
       "sidebar-primary": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "sidebar-primary-foreground": "oklch(0.985 0 0)", // --color-neutral-50
-      "sidebar-accent": "oklch(0.371 0 0)", // --color-neutral-700
+      "sidebar-accent": "oklch(0.269 0 0)", // --color-neutral-800
       "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-neutral-50
-      "sidebar-border": "oklch(0.371 0 0)", // --color-neutral-700
+      "sidebar-border": "oklch(0.269 0 0)", // --color-neutral-800
       "sidebar-ring": "oklch(0.439 0 0)", // --color-neutral-600
     },
   },
@@ -1001,9 +1001,9 @@ export const baseColorsV4 = {
     dark: {
       background: "oklch(0.13 0.028 261.692)", // --color-gray-950
       foreground: "oklch(0.985 0.002 247.839)", // --color-gray-50
-      card: "oklch(0.278 0.033 256.848)", // --color-gray-800
+      card: "oklch(0.21 0.034 264.665)", // --color-gray-900
       "card-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
-      popover: "oklch(0.278 0.033 256.848)", // --color-gray-800
+      popover: "oklch(0.21 0.034 264.665)", // --color-gray-900
       "popover-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
       primary: "oklch(0.928 0.006 264.531)", // --color-gray-200
       "primary-foreground": "oklch(0.21 0.034 264.665)", // --color-gray-900
@@ -1011,11 +1011,11 @@ export const baseColorsV4 = {
       "secondary-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
       muted: "oklch(0.278 0.033 256.848)", // --color-gray-800
       "muted-foreground": "oklch(0.707 0.022 261.325)", // --color-gray-400
-      accent: "oklch(0.373 0.034 259.733)", // --color-gray-700
+      accent: "oklch(0.278 0.033 256.848)", // --color-gray-800
       "accent-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
-      border: "oklch(0.373 0.034 259.733)", // --color-gray-700
-      input: "oklch(0.446 0.03 256.802)", // --color-gray-600
+      border: "oklch(0.278 0.033 256.848)", // --color-gray-800
+      input: "oklch(0.373 0.034 259.733)", // --color-gray-700
       ring: "oklch(0.446 0.03 256.802)", // --color-gray-600
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -1026,9 +1026,9 @@ export const baseColorsV4 = {
       "sidebar-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
       "sidebar-primary": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "sidebar-primary-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
-      "sidebar-accent": "oklch(0.373 0.034 259.733)", // --color-gray-700
+      "sidebar-accent": "oklch(0.278 0.033 256.848)", // --color-gray-800
       "sidebar-accent-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
-      "sidebar-border": "oklch(0.373 0.034 259.733)", // --color-gray-700
+      "sidebar-border": "oklch(0.278 0.033 256.848)", // --color-gray-800
       "sidebar-ring": "oklch(0.446 0.03 256.802)", // --color-gray-600
     },
   },
@@ -1070,9 +1070,9 @@ export const baseColorsV4 = {
     dark: {
       background: "oklch(0.129 0.042 264.695)", // --color-slate-950
       foreground: "oklch(0.984 0.003 247.858)", // --color-slate-50
-      card: "oklch(0.279 0.041 260.031)", // --color-slate-800
+      card: "oklch(0.208 0.042 265.755)", // --color-slate-900
       "card-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
-      popover: "oklch(0.279 0.041 260.031)", // --color-slate-800
+      popover: "oklch(0.208 0.042 265.755)", // --color-slate-900
       "popover-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
       primary: "oklch(0.929 0.013 255.508)", // --color-slate-200
       "primary-foreground": "oklch(0.208 0.042 265.755)", // --color-slate-900
@@ -1080,11 +1080,11 @@ export const baseColorsV4 = {
       "secondary-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
       muted: "oklch(0.279 0.041 260.031)", // --color-slate-800
       "muted-foreground": "oklch(0.704 0.04 256.788)", // --color-slate-400
-      accent: "oklch(0.372 0.044 257.287)", // --color-slate-700
+      accent: "oklch(0.279 0.041 260.031)", // --color-slate-800
       "accent-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
-      border: "oklch(0.372 0.044 257.287)", // --color-slate-700
-      input: "oklch(0.446 0.043 257.281)", // --color-slate-600
+      border: "oklch(0.279 0.041 260.031)", // --color-slate-800
+      input: "oklch(0.373 0.034 259.733)", // --color-slate-700
       ring: "oklch(0.446 0.043 257.281)", // --color-slate-600
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
@@ -1095,9 +1095,9 @@ export const baseColorsV4 = {
       "sidebar-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
       "sidebar-primary": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "sidebar-primary-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
-      "sidebar-accent": "oklch(0.372 0.044 257.287)", // --color-slate-700
+      "sidebar-accent": "oklch(0.279 0.041 260.031)", // --color-slate-800
       "sidebar-accent-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
-      "sidebar-border": "oklch(0.372 0.044 257.287)", // --color-slate-700
+      "sidebar-border": "oklch(0.279 0.041 260.031)", // --color-slate-800
       "sidebar-ring": "oklch(0.446 0.043 257.281)", // --color-slate-600
     },
   },
