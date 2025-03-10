@@ -162,7 +162,7 @@ export function FormsDemo() {
                           backgroundColor:
                             themes[theme as keyof typeof themes][
                               mode as keyof (typeof themes)[keyof typeof themes]
-                            ]["--primary"],
+                            ]?.["--primary"],
                         }}
                       />
                       {theme}
