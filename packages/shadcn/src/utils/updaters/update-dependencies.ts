@@ -60,7 +60,7 @@ export async function updateDependencies(
     [
       packageManager === "npm" ? "install" : "add",
       ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
-      ...dependencies,
+      ...(packageManager === "deno" ? dependencies.map((dep) => `npm:${dep}`) : dependencies),
     ],
     {
       cwd: config.resolvedPaths.cwd,
