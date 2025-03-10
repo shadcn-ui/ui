@@ -44,55 +44,52 @@ const plans = [
 ] as const
 
 const themes = {
-  stone: {
+  neutral: {
     light: {
-      "--primary": "oklch(0.216 0.006 56.043)", // --color-stone-900
-      "--primary-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
-      "--accent": "oklch(0.97 0.001 106.424)", // --color-stone-100
-      "--ring": "oklch(0.869 0.005 56.366)", // --color-stone-300
+      "--primary": "oklch(0.205 0 0)",
+      "--primary-foreground": "oklch(0.985 0 0)",
+      "--ring": "oklch(0.708 0 0)",
     },
     dark: {
-      "--primary": "oklch(0.985 0.001 106.423)", // --color-stone-50
-      "--primary-foreground": "oklch(0.216 0.006 56.043)", // --color-stone-900
-      "--accent": "oklch(0.268 0.007 34.298)", // --color-stone-800
-      "--accent-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
-      "--ring": "oklch(0.553 0.013 58.071)", // --color-stone-500
+      "--primary": "oklch(0.922 0 0)",
+      "--primary-foreground": "oklch(0.205 0 0)",
+      "--ring": "oklch(0.556 0 0)",
     },
   },
   blue: {
     light: {
-      "--primary": "oklch(0.546 0.245 262.881)", // --color-blue-600
-      "--primary-foreground": "oklch(0.985 0.001 106.423)", // --color-blue-50
-      "--ring": "oklch(0.707 0.165 254.624)", // --color-blue-400
+      "--primary": "oklch(0.546 0.245 262.881)",
+      "--primary-foreground": "oklch(0.985 0.001 106.423)",
+      "--ring": "oklch(0.546 0.245 262.881)",
     },
     dark: {
-      "--primary": "oklch(0.546 0.245 262.881)", // --color-blue-600
-      "--primary-foreground": "oklch(0.985 0.001 106.423)", // --color-blue-50
-      "--ring": "oklch(0.379 0.146 265.522)", // --color-blue-400
+      "--primary": "oklch(0.623 0.214 259.815)",
+      "--primary-foreground": "oklch(0.985 0.001 106.423)",
+      "--ring": "oklch(0.623 0.214 259.815)",
     },
   },
   amber: {
     light: {
-      "--primary": "oklch(0.769 0.188 70.08)", // --color-blue-600
-      "--primary-foreground": "oklch(0.985 0.001 106.423)", // --color-blue-50
-      "--ring": "oklch(0.82 0.13 92.25)", // --color-blue-400
+      "--primary": "oklch(0.769 0.188 70.08)",
+      "--primary-foreground": "oklch(0.985 0.001 106.423)",
+      "--ring": "oklch(0.82 0.13 92.25)",
     },
     dark: {
-      "--primary": "oklch(0.985 0.001 106.423)", // --color-stone-50
-      "--primary-foreground": "oklch(0.216 0.006 56.043)", // --color-stone-900
-      "--ring": "oklch(0.553 0.013 58.071)", // --color-stone-500
+      "--primary": "oklch(0.769 0.188 70.08)",
+      "--primary-foreground": "oklch(0.216 0.006 56.043)",
+      "--ring": "oklch(0.666 0.179 58.318)",
     },
   },
   teal: {
     light: {
-      "--primary": "oklch(0.627 0.194 149.214)", // --color-blue-600
-      "--primary-foreground": "oklch(0.985 0.001 106.423)", // --color-blue-50
-      "--ring": "oklch(0.79 0.19 153.13)", // --color-blue-400
+      "--primary": "oklch(0.627 0.194 149.214)",
+      "--primary-foreground": "oklch(0.985 0.001 106.423)",
+      "--ring": "oklch(0.79 0.19 153.13)",
     },
     dark: {
-      "--primary": "oklch(0.985 0.001 106.423)", // --color-stone-50
-      "--primary-foreground": "oklch(0.216 0.006 56.043)", // --color-stone-900
-      "--ring": "oklch(0.553 0.013 58.071)", // --color-stone-500
+      "--primary": "oklch(0.704 0.14 182.503)",
+      "--primary-foreground": "oklch(0.216 0.006 56.043)",
+      "--ring": "oklch(0.704 0.14 182.503)",
     },
   },
 } as const
@@ -121,11 +118,11 @@ export function FormsDemo() {
         <CardContent>
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3 md:flex-row">
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-1 flex-col gap-2">
                 <Label htmlFor="name">Name</Label>
                 <Input id="name" placeholder="Evil Rabbit" />
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-1 flex-col gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" placeholder="example@acme.com" />
               </div>
@@ -149,19 +146,23 @@ export function FormsDemo() {
                   setTheme(value as keyof typeof themes)
                 }
               >
-                <SelectTrigger id="color" className="w-full">
+                <SelectTrigger id="color" className="w-full capitalize">
                   <SelectValue placeholder="Select a color" />
                 </SelectTrigger>
                 <SelectContent>
                   {Object.keys(themes).map((theme) => (
-                    <SelectItem key={theme} value={theme}>
+                    <SelectItem
+                      key={theme}
+                      value={theme}
+                      className="capitalize"
+                    >
                       <div
-                        className="size-3.5 rounded-full"
+                        className="size-3.5 rounded-full border"
                         style={{
                           backgroundColor:
-                            themes[theme as keyof typeof themes]["light"][
-                              "--primary"
-                            ],
+                            themes[theme as keyof typeof themes][
+                              mode as keyof (typeof themes)[keyof typeof themes]
+                            ]["--primary"],
                         }}
                       />
                       {theme}
@@ -181,7 +182,7 @@ export function FormsDemo() {
               >
                 {plans.map((plan) => (
                   <Label
-                    className="has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-ring/10 flex items-start gap-3 rounded-lg border p-3"
+                    className="has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-input/50 flex items-start gap-3 rounded-lg border p-3"
                     key={plan.id}
                   >
                     <RadioGroupItem
