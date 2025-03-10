@@ -370,7 +370,7 @@ function updateCssVarsPluginV4(
         { light?: string; dark?: string; color: boolean }
       >()
 
-      function extractVars(selector: string, key: "light" | "dark") {
+      function extractVars(selector: string, variant: "light" | "dark") {
         root.walkRules(selector, (rule) => {
           rule.walkDecls((decl) => {
             if (!decl.prop.startsWith("--") || !isColorValue(decl.value)) return
@@ -378,7 +378,7 @@ function updateCssVarsPluginV4(
             if (!newCssVars.has(name)) {
               newCssVars.set(name, { color: true })
             }
-            newCssVars.get(name)![key] = decl.value
+            newCssVars.get(name)![variant] = decl.value
           })
         })
       }
@@ -388,23 +388,22 @@ function updateCssVarsPluginV4(
       extractVars(".dark", "dark")
 
       // Add new variables
-      for (const [key, vars] of Object.entries(cssVars)) {
-        for (const [v, value] of Object.entries(vars)) {
+      for (const [variant, vars] of Object.entries(cssVars)) {
+        for (const [cssVarName, value] of Object.entries(vars)) {
           const isColor = isColorValue(value) || isLocalHSLValue(value)
-          if (!newCssVars.has(v)) {
-            newCssVars.set(v, { color: isColor })
+          if (!newCssVars.has(cssVarName)) {
+            newCssVars.set(cssVarName, { color: isColor })
           }
           // Do not override existing declarations.
           // We do not want new components to override existing vars.
           // Keep user defined vars.
-          if (key in newCssVars.get(v)!) {
+          if (variant in newCssVars.get(cssVarName)!) {
             continue
           }
-          newCssVars.get(v)![key as keyof typeof cssVars] = value
+          newCssVars.get(cssVarName)![variant as keyof typeof cssVars] = value
         }
       }
 
-      // Ensure root and dark rules exist if needed
       function getOrCreateRule(selector: string) {
         let rule = root.nodes?.find(
           (node): node is Rule =>
@@ -422,12 +421,13 @@ function updateCssVarsPluginV4(
         return rule
       }
 
+      // Ensure root and dark rules exist if needed
       const rootRuleNode = getOrCreateRule(":root")
       const darkRuleNode = getOrCreateRule(".dark")
 
       // Insert CSS variables
-      newCssVars.forEach((value, key) => {
-        let prop = `--${key.replace(/^--/, "")}`
+      newCssVars.forEach((cssVar, cssVarName) => {
+        let prop = `--${cssVarName.replace(/^--/, "")}`
 
         // Special case for sidebar-background.
         if (prop === "--sidebar-background") {
@@ -436,6 +436,7 @@ function updateCssVarsPluginV4(
 
         const formatValue = (val: string) =>
           isLocalHSLValue(val) ? `hsl(${val})` : val
+
         const createDecl = (val: string) =>
           postcss.decl({
             prop,
@@ -443,11 +444,14 @@ function updateCssVarsPluginV4(
             raws: { semicolon: true },
           })
 
-        if (value.light && value.dark) {
-          if (value.color) {
+        if (cssVar.light && cssVar.dark) {
+          if (cssVar.color) {
+            // if css var has both a light and dark value and is a color
+            // use light-dark() function
+
             const newDecl = createDecl(
-              `light-dark(${formatValue(value.light)}, ${formatValue(
-                value.dark
+              `light-dark(${formatValue(cssVar.light)}, ${formatValue(
+                cssVar.dark
               )})`
             )
 
@@ -463,8 +467,12 @@ function updateCssVarsPluginV4(
               .find((n) => n.type === "decl" && n.prop === prop)
               ?.remove()
           } else {
-            const lightDecl = createDecl(value.light)
-            const darkDecl = createDecl(value.dark)
+            // if not a color, but a light and dark variant exist,
+            // light-dark() cannot be used on non-colors and the
+            // dark variant must be put in the .dark class
+
+            const lightDecl = createDecl(cssVar.light)
+            const darkDecl = createDecl(cssVar.dark)
 
             const existingRootDecl = rootRuleNode?.nodes.find(
               (n) => n.type === "decl" && n.prop === prop
@@ -483,9 +491,12 @@ function updateCssVarsPluginV4(
               : darkRuleNode?.append(darkDecl)
           }
         } else {
-          const val = value.light || value.dark
+          // if only one of the two variants is present,
+          // just use that single value in the :root block
+
+          const val = cssVar.light || cssVar.dark
           const newDecl = createDecl(val!)
-          const targetRule = value.light ? rootRuleNode : darkRuleNode
+          const targetRule = cssVar.light ? rootRuleNode : darkRuleNode
           const existingDecl = targetRule?.nodes.find(
             (n) => n.type === "decl" && n.prop === prop
           )
