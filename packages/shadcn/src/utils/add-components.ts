@@ -15,6 +15,7 @@ import {
   workspaceConfigSchema,
   type Config,
 } from "@/src/utils/get-config"
+import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
@@ -43,7 +44,8 @@ export async function addComponents(
   const workspaceConfig = await getWorkspaceConfig(config)
   if (
     workspaceConfig &&
-    workspaceConfig?.ui.resolvedPaths.cwd !== config.resolvedPaths.cwd
+    workspaceConfig.ui &&
+    workspaceConfig.ui.resolvedPaths.cwd !== config.resolvedPaths.cwd
   ) {
     return await addWorkspaceComponents(components, config, workspaceConfig, {
       ...options,
@@ -74,12 +76,17 @@ async function addProjectComponents(
   }
   registrySpinner?.succeed()
 
+  const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
+
   await updateTailwindConfig(tree.tailwind?.config, config, {
     silent: options.silent,
+    tailwindVersion,
   })
   await updateCssVars(tree.cssVars, config, {
     cleanupDefaultNextStyles: options.isNewProject,
     silent: options.silent,
+    tailwindVersion,
+    tailwindConfig: tree.tailwind?.config,
   })
 
   await updateDependencies(tree.dependencies, config, {
@@ -143,6 +150,10 @@ async function addWorkspaceComponents(
         ? workspaceConfig.ui
         : config
 
+    const tailwindVersion = await getProjectTailwindVersionFromConfig(
+      targetConfig
+    )
+
     const workspaceRoot = findCommonRoot(
       config.resolvedPaths.cwd,
       targetConfig.resolvedPaths.ui
@@ -155,6 +166,7 @@ async function addWorkspaceComponents(
     if (component.tailwind?.config) {
       await updateTailwindConfig(component.tailwind?.config, targetConfig, {
         silent: true,
+        tailwindVersion,
       })
       filesUpdated.push(
         path.relative(workspaceRoot, targetConfig.resolvedPaths.tailwindConfig)
@@ -165,6 +177,8 @@ async function addWorkspaceComponents(
     if (component.cssVars) {
       await updateCssVars(component.cssVars, targetConfig, {
         silent: true,
+        tailwindVersion,
+        tailwindConfig: component.tailwind?.config,
       })
       filesUpdated.push(
         path.relative(workspaceRoot, targetConfig.resolvedPaths.tailwindCss)
