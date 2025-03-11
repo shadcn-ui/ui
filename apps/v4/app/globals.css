@@ -4,6 +4,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@import "./themes.css";
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -71,59 +73,6 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
-}
-
-.theme-login-one {
-  --primary: #ce2a2d;
-  --primary-foreground: #fff;
-  --ring: #ce2a2d9c;
-  --radius: 0rem;
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-
-  font-family: var(--font-sans);
-
-  a {
-    color: var(--primary);
-  }
-
-  [data-slot="card"] {
-    border-radius: 0rem;
-    box-shadow: none;
-  }
-}
-
-.theme-login-two {
-  --primary: #035fa8;
-  --primary-foreground: #fff;
-  --ring: #035fa89c;
-  font-family: var(--font-serif);
-
-  a {
-    color: var(--primary);
-  }
-}
-
-.theme-login-three {
-  --primary: #22c55e;
-  --primary-foreground: #000;
-  --ring: #22c55e;
-  --radius: 1.5rem;
-
-  font-family: var(--font-manrope);
-
-  a {
-    color: var(--primary);
-  }
-
-  [data-slot="card"] {
-    @apply shadow-xl;
-  }
-
-  [data-slot="input"] {
-    @apply dark:bg-input;
-  }
 }
 
 @theme inline {
