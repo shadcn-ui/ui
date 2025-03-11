@@ -36,11 +36,11 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "var(--primary)",
+    color: "var(--chart-1)",
   },
   mobile: {
     label: "Mobile",
-    color: "var(--primary)",
+    color: "var(--chart-5)",
   },
 } satisfies ChartConfig
 
@@ -92,7 +92,6 @@ export function ChartRevenue() {
               dataKey="mobile"
               fill="var(--color-mobile)"
               radius={[4, 4, 0, 0]}
-              fillOpacity={0.3}
               stackId={1}
             />
           </BarChart>

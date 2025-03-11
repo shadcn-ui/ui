@@ -3,8 +3,21 @@
   --text-sm: 0.85rem;
   --radius: 0rem;
   --spacing: 0.222222rem;
-  --primary: oklch(0.488 0.243 264.376);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: var(--color-blue-600);
+  --primary-foreground: var(--color-blue-50);
+  --chart-1: var(--color-blue-800);
+  --chart-2: var(--color-blue-700);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-500);
+  --chart-5: var(--color-blue-400);
+
+  [data-slot="chart"] {
+    --chart-1: var(--color-blue-800);
+    --chart-2: var(--color-blue-700);
+    --chart-3: var(--color-blue-600);
+    --chart-4: var(--color-blue-500);
+    --chart-5: var(--color-blue-400);
+  }
 
   .rounded-xl {
     border-radius: var(--radius);
@@ -14,24 +27,63 @@
     box-shadow: none;
   }
 
-  .dark {
-    --primary: oklch(0.488 0.243 264.376);
-    --primary-foreground: oklch(0.985 0 0);
+  @variant dark {
+    --primary: var(--color-blue-600);
+    --primary-foreground: var(--color-blue-50);
+    --chart-1: var(--color-blue-800);
+    --chart-2: var(--color-blue-700);
+    --chart-3: var(--color-blue-600);
+    --chart-4: var(--color-blue-500);
+    --chart-5: var(--color-blue-400);
+
+    [data-slot="chart"] {
+      --chart-1: var(--color-blue-800);
+      --chart-2: var(--color-blue-700);
+      --chart-3: var(--color-blue-600);
+      --chart-4: var(--color-blue-500);
+      --chart-5: var(--color-blue-400);
+    }
   }
 }
 
 .theme-lime {
   --font-sans: var(--font-noto-mono);
   --spacing: 0.225rem;
-  --primary: oklch(0.532 0.157 131.589);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: var(--color-lime-600);
+  --primary-foreground: var(--color-lime-50);
+  --chart-1: var(--color-lime-800);
+  --chart-2: var(--color-lime-700);
+  --chart-3: var(--color-lime-600);
+  --chart-4: var(--color-lime-500);
+  --chart-5: var(--color-lime-400);
+
+  [data-slot="chart"] {
+    --chart-1: var(--color-lime-800);
+    --chart-2: var(--color-lime-700);
+    --chart-3: var(--color-lime-600);
+    --chart-4: var(--color-lime-500);
+    --chart-5: var(--color-lime-400);
+  }
 
   .shadow-sm {
     box-shadow: none;
   }
 
   @variant dark {
-    --primary: oklch(0.532 0.157 131.589);
-    --primary-foreground: oklch(0.986 0.031 120.757);
+    --primary: var(--color-lime-600);
+    --primary-foreground: var(--color-lime-50);
+    --chart-1: var(--color-lime-900);
+    --chart-2: var(--color-lime-800);
+    --chart-3: var(--color-lime-700);
+    --chart-4: var(--color-lime-600);
+    --chart-5: var(--color-lime-500);
+
+    [data-slot="chart"] {
+      --chart-1: var(--color-lime-900);
+      --chart-2: var(--color-lime-800);
+      --chart-3: var(--color-lime-700);
+      --chart-4: var(--color-lime-600);
+      --chart-5: var(--color-lime-500);
+    }
   }
 }
