@@ -2,6 +2,8 @@ import {
   Geist,
   Geist_Mono,
   Instrument_Sans,
+  Inter,
+  Mulish,
   Noto_Sans_Mono,
 } from "next/font/google"
 
@@ -27,9 +29,21 @@ const fontNotoMono = Noto_Sans_Mono({
   variable: "--font-noto-mono",
 })
 
+const fontMullish = Mulish({
+  subsets: ["latin"],
+  variable: "--font-mullish",
+})
+
+const fontInter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
+
 export const fontVariables = cn(
   fontSans.variable,
   fontMono.variable,
   fontInstrument.variable,
-  fontNotoMono.variable
+  fontNotoMono.variable,
+  fontMullish.variable,
+  fontInter.variable
 )

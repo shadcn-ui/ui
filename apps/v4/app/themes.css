@@ -1,8 +1,8 @@
 .theme-blue {
-  --font-sans: var(--font-noto-mono);
+  --font-sans: var(--font-inter);
   --text-sm: 0.85rem;
   --radius: 0rem;
-  --spacing: 0.21rem;
+  --spacing: 0.222222rem;
   --primary: oklch(0.488 0.243 264.376);
   --primary-foreground: oklch(0.985 0 0);
 
@@ -21,7 +21,7 @@
 }
 
 .theme-lime {
-  --font-sans: var(--font-instrument);
+  --font-sans: var(--font-noto-mono);
   --spacing: 0.225rem;
   --primary: oklch(0.532 0.157 131.589);
   --primary-foreground: oklch(0.985 0 0);

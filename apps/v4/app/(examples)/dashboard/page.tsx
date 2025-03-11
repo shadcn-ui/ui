@@ -1,3 +1,4 @@
+import { Metadata } from "next"
 import {
   DownloadIcon,
   FilterIcon,
@@ -24,6 +25,11 @@ import { AnalyticsDatePicker } from "@/app/(examples)/dashboard/components/analy
 import { ChartRevenue } from "@/app/(examples)/dashboard/components/chart-revenue"
 import { ChartVisitors } from "@/app/(examples)/dashboard/components/chart-visitors"
 import { ProductsTable } from "@/app/(examples)/dashboard/components/products-table"
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "An example dashboard to test the new components.",
+}
 
 // Load from database.
 const products = [

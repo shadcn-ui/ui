@@ -15,7 +15,7 @@ export function ModeToggle() {
 
   return (
     <Button
-      variant="outline"
+      variant="secondary"
       size="icon"
       className="group/toggle size-8"
       onClick={toggleTheme}

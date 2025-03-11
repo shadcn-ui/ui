@@ -1,3 +1,5 @@
+import { Metadata } from "next"
+
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -36,6 +38,11 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
+
+export const metadata: Metadata = {
+  title: "Settings",
+  description: "Manage your account settings",
+}
 
 const timezones = [
   {
@@ -331,8 +338,7 @@ export default function SettingsPage() {
                     </Label>
                     <FieldDescription>
                       This will add an extra layer of security to your account.
-                      Make this an extra long description to test the layout so
-                      that we can see how it handles long text.
+                      Make this an extra long description to test the layout.
                     </FieldDescription>
                   </Field>
                 </FieldGroup>
