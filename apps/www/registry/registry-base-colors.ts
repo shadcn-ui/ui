@@ -809,7 +809,7 @@ export const baseColorsV4 = {
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-500
       border: "oklch(0.268 0.007 34.298)", // --color-stone-800
       input: "oklch(0.374 0.01 67.558)", // --color-stone-700
-      ring: "oklch(0.553 0.013 58.071)", // --color-stone-500
+      ring: "oklch(0.444 0.011 73.639)", // --color-stone-600
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
       "chart-3": "oklch(0.769 0.188 70.08)", // --color-amber-500
@@ -822,7 +822,7 @@ export const baseColorsV4 = {
       "sidebar-accent": "oklch(0.268 0.007 34.298)", // --color-stone-800
       "sidebar-accent-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
       "sidebar-border": "oklch(0.268 0.007 34.298)", // --color-stone-800
-      "sidebar-ring": "oklch(0.553 0.013 58.071)", // --color-stone-600
+      "sidebar-ring": "oklch(0.444 0.011 73.639)", // --color-stone-600
     },
   },
   zinc: {
@@ -1085,7 +1085,7 @@ export const baseColorsV4 = {
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
       border: "oklch(0.279 0.041 260.031)", // --color-slate-800
       input: "oklch(0.373 0.034 259.733)", // --color-slate-700
-      ring: "oklch(0.446 0.043 257.281)", // --color-slate-600
+      ring: "oklch(0.372 0.044 257.287)", // --color-slate-700
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
       "chart-3": "oklch(0.769 0.188 70.08)", // --color-amber-500
@@ -1098,7 +1098,7 @@ export const baseColorsV4 = {
       "sidebar-accent": "oklch(0.279 0.041 260.031)", // --color-slate-800
       "sidebar-accent-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
       "sidebar-border": "oklch(0.279 0.041 260.031)", // --color-slate-800
-      "sidebar-ring": "oklch(0.446 0.043 257.281)", // --color-slate-600
+      "sidebar-ring": "oklch(0.372 0.044 257.287)", // --color-slate-700
     },
   },
 } as const
