@@ -1,7 +1,7 @@
+import { RegistryItem } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { logger } from "@/src/utils/logger"
-import { RegistryItem } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import prompts from "prompts"
 import { installDependencies, PackageManagerFlags } from "../package-manager-commands"

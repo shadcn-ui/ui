@@ -1,67 +1,77 @@
 ---
 title: Introduction
-description: Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.
+description: shadcn/ui is a set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks and AI models. Open Source. Open Code.
 ---
 
-This is **NOT** a component library. It's a collection of re-usable components that you can copy and paste into your apps.
+**This is not a component library. It is how you build your component library.**
 
-**What do you mean by not a component library?**
+You know how most traditional component libraries work: you install a package from NPM, import the components, and use them in your app.
 
-I mean you do not install it as a dependency. It is not available or distributed via npm.
+This approach works well until you need to customize a component to fit your design system or require one that isn’t included in the library. **Often, you end up wrapping library components, writing workarounds to override styles, or mixing components from different libraries with incompatible APIs.**
 
-Pick the components you need. Copy and paste the code into your project and customize to your needs. The code is yours.
+This is what shadcn/ui aims to solve. It is built around the following principles:
 
-_Use this as a reference to build your own component libraries._
+- **Open Code:** The top layer of your component code is open for modification.
+- **Composition:** Every component uses a common, composable interface, making them predictable.
+- **Distribution:** A flat-file schema and command-line tool make it easy to distribute components.
+- **Beautiful Defaults:** Carefully chosen default styles, so you get great design out-of-the-box.
+- **AI-Ready:** Open code for LLMs to read, understand, and improve.
 
-## FAQ
+## Open Code
 
-<Accordion type="multiple">
+shadcn/ui hands you the actual component code. You have full control to customize and extend the components to your needs. This means:
 
-<AccordionItem value="faq-1">
-	<AccordionTrigger>
-		Why copy/paste and not packaged as a dependency?
-	</AccordionTrigger>
-	<AccordionContent>
-The idea behind this is to give you ownership and control over the code, allowing you to decide how the components are built and styled.
+- **Full Transparency:** You see exactly how each component is built.
+- **Easy Customization:** Modify any part of a component to fit your design and functionality requirements.
+- **AI Integration:** Access to the code makes it straightforward for LLMs to read, understand, and even improve your components.
 
-Start with some sensible defaults, then customize the components to your needs.
+_In a typical library, if you need to change a button’s behavior, you have to override styles or wrap the component. With shadcn/ui, you simply edit the button code directly._
 
-One of the drawbacks of packaging the components in an npm package is that the style is coupled with the implementation. _The design of your components should be separate from their implementation._
-
-</AccordionContent>
-</AccordionItem>
-
-<AccordionItem value="faq-2">
-  <AccordionTrigger>
-    Do you plan to publish it as an npm package?
-  </AccordionTrigger>
-  <AccordionContent>
-    No. I have no plans to publish it as an npm package.
-  </AccordionContent>
-</AccordionItem>
-
-<AccordionItem value="faq-3">
-<AccordionTrigger>
-Which frameworks are supported?
-</AccordionTrigger>
-<AccordionContent>
-
-You can use any framework that supports React. [Next.js](https://ui.shadcn.com/docs/installation/next), [Astro](https://ui.shadcn.com/docs/installation/astro), [Remix](https://ui.shadcn.com/docs/installation/remix), [Gatsby](https://ui.shadcn.com/docs/installation/gatsby) etc.
-
-</AccordionContent>
-</AccordionItem>
-
-<AccordionItem value="faq-4">
-	<AccordionTrigger>
-	Can I use this in my project?
-	</AccordionTrigger>
-	<AccordionContent>
-Yes. Free to use for personal and commercial projects. No attribution required.
-
-But hey, let me know if you do. I'd love to see what you build.
-
+<Accordion collapsible>
+  <AccordionItem value="faq-1" className="border-none">
+    <AccordionTrigger>
+      How do I pull upstream updates in an Open Code approach?
+    </AccordionTrigger>
+    <AccordionContent>
+      <p>
+        shadcn/ui follows a headless component architecture. This means the core
+        of your app can receive fixes by updating your dependencies, for
+        instance, radix-ui or input-otp.
+      </p>
+      <p className="mt-4">
+        The topmost layer, i.e., the one closest to your design system, is not
+        coupled with the implementation of the library. It stays open for
+        modification.
+      </p>
     </AccordionContent>
-
-</AccordionItem>
-
+  </AccordionItem>
 </Accordion>
+
+## Composition
+
+Every component in shadcn/ui shares a common, composable interface. **If a component does not exist, we bring it in, make it composable, and adjust its style to match and work with the rest of the design system.**
+
+_A shared, composable interface means it's predictable for both your team and LLMs. You are not learning different APIs for every new component. Even for third-party ones._
+
+## Distribution
+
+shadcn/ui is also a code distribution system. It defines a schema for components and a CLI to distribute them.
+
+- **Schema:** A flat-file structure that defines the components, their dependencies, and properties.
+- **CLI:** A command-line tool to distribute and install components across projects with cross-framework support.
+
+_You can use the schema to distribute your components to other projects or have AI generate completely new components based on existing schema._
+
+## Beautiful Defaults
+
+shadcn/ui comes with a large collection of components that have carefully chosen default styles. They are designed to look good on their own and to work well together as a consistent system:
+
+- **Good Out-of-the-Box:** Your UI has a clean and minimal look without extra work.
+- **Unified Design:** Components naturally fit with one another. Each component is built to match the others, keeping your UI consistent.
+- **Easily Customizable:** If you want to change something, it's simple to override and extend the defaults.
+
+## AI-Ready
+
+The design of shadcn/ui makes it easy for AI tools to work with your code. Its open code and consistent API allow AI models to read, understand, and even generate new components.
+
+_An AI model can learn how your components work and suggest improvements or even create new components that integrate with your existing design._

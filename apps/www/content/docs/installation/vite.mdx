@@ -1,51 +1,33 @@
 ---
 title: Vite
-description: Install and configure Vite.
+description: Install and configure shadcn/ui for Vite.
 ---
+
+<Callout className="bg-blue-50 border-blue-600 dark:border-blue-900 dark:bg-blue-950 mb-6 [&_code]:bg-blue-100 dark:[&_code]:bg-blue-900">
+  **Note:** The following guide is for Tailwind v4. If you are using Tailwind
+  v3, use `shadcn@2.3.0`.
+</Callout>
 
 <Steps>
 
 ### Create project
 
-Start by creating a new React project using `vite`:
+Start by creating a new React project using `vite`. Select the **React + TypeScript** template:
 
 ```bash
 npm create vite@latest
 ```
 
-### Add Tailwind and its configuration
-
-Install `tailwindcss` and its peer dependencies, then generate your `tailwind.config.js` and `postcss.config.js` files:
+### Add Tailwind CSS
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer
+npm install tailwindcss @tailwindcss/vite
 ```
 
-```bash
-npx tailwindcss init -p
-```
+Replace everything in `src/index.css` with the following:
 
-Add this import header in your main css file, `src/index.css` in our case:
-
-```css {1-3} showLineNumbers
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ... */
-```
-
-Configure the tailwind template paths in `tailwind.config.js`:
-
-```js {3}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
+```css title="src/index.css"
+@import "tailwindcss";
 ```
 
 ### Edit tsconfig.json file
@@ -101,13 +83,15 @@ Add the following code to the vite.config.ts so your app can resolve paths witho
 npm install -D @types/node
 ```
 
-```typescript
+```typescript title="vite.config.ts" showLineNumbers {1,2,8-13}
 import path from "path"
+import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
+// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -118,23 +102,19 @@ export default defineConfig({
 
 ### Run the CLI
 
-Run the `shadcn-ui` init command to setup your project:
+Run the `shadcn` init command to setup your project:
 
 ```bash
 npx shadcn@latest init
 ```
 
-### Configure components.json
+You will be asked a few questions to configure `components.json`.
 
-You will be asked a few questions to configure `components.json`:
-
-```txt showLineNumbers
-Which style would you like to use? › New York
-Which color would you like to use as base color? › Zinc
-Do you want to use CSS variables for colors? › no / yes
+```txt
+Which color would you like to use as base color? › Neutral
 ```
 
-### That's it
+### Add Components
 
 You can now start adding components to your project.
 
@@ -144,16 +124,18 @@ npx shadcn@latest add button
 
 The command above will add the `Button` component to your project. You can then import it like this:
 
-```tsx {1,6} showLineNumbers
+```tsx showLineNumbers title="src/App.tsx"
 import { Button } from "@/components/ui/button"
 
-export default function Home() {
+function App() {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center min-h-svh">
       <Button>Click me</Button>
     </div>
   )
 }
+
+export default App
 ```
 
 </Steps>

@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "2.1.8",
+  "version": "2.3.0",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -26,7 +26,16 @@
     "shadcn"
   ],
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./registry": {
+      "types": "./dist/registry/index.d.ts",
+      "default": "./dist/registry/index.js"
+    }
+  },
   "bin": "./dist/index.js",
   "scripts": {
     "dev": "tsup --watch",
@@ -46,7 +55,7 @@
     "test:dev": "REGISTRY_URL=http://localhost:3333/r vitest run"
   },
   "dependencies": {
-    "@antfu/ni": "^0.21.4",
+    "@antfu/ni": "^23.2.0",
     "@babel/core": "^7.22.1",
     "@babel/parser": "^7.22.6",
     "@babel/plugin-transform-typescript": "^7.22.5",
@@ -59,7 +68,7 @@
     "fs-extra": "^11.1.0",
     "https-proxy-agent": "^6.2.0",
     "kleur": "^4.1.5",
-    "lodash.template": "^4.5.0",
+    "msw": "^2.7.1",
     "node-fetch": "^3.3.0",
     "ora": "^6.1.2",
     "postcss": "^8.4.24",
@@ -74,7 +83,6 @@
     "@types/babel__core": "^7.20.1",
     "@types/diff": "^5.0.3",
     "@types/fs-extra": "^11.0.1",
-    "@types/lodash.template": "^4.5.1",
     "@types/prompts": "^2.4.2",
     "@types/stringify-object": "^4.0.5",
     "rimraf": "^6.0.1",
