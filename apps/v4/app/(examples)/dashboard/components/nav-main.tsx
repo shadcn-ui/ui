@@ -32,6 +32,7 @@ export function NavMain({
       title: string
       url: string
     }[]
+    disabled?: boolean
   }[]
 }) {
   const pathname = usePathname()
@@ -47,8 +48,13 @@ export function NavMain({
                 asChild
                 tooltip={item.title}
                 isActive={pathname === item.url}
+                disabled={item.disabled}
               >
-                <a href={item.url}>
+                <a
+                  href={item.disabled ? "#" : item.url}
+                  data-disabled={item.disabled}
+                  className="data-[disabled=true]:opacity-50"
+                >
                   <item.icon className="text-muted-foreground" />
                   <span>{item.title}</span>
                 </a>
