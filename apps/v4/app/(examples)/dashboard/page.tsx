@@ -133,11 +133,11 @@ export default function DashboardPage() {
           </TabsList>
           <div className="hidden items-center gap-2 @3xl/page:flex">
             <AnalyticsDatePicker />
-            <Button variant="outline">
+            <Button variant="secondary">
               <FilterIcon />
               Filter
             </Button>
-            <Button>
+            <Button variant="secondary">
               <DownloadIcon />
               Export
             </Button>

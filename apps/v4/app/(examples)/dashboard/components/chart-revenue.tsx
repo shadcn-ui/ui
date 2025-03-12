@@ -40,7 +40,7 @@ const chartConfig = {
   },
   mobile: {
     label: "Mobile",
-    color: "var(--chart-5)",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 
