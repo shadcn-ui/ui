@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { GeistMono } from "geist/font/mono"
-import { GeistSans } from "geist/font/sans"
+import { Geist_Mono as FontMono, Inter as FontSans } from "next/font/google"
 
 import { cn } from "@/lib/utils"
 import { Analytics } from "@/components/analytics"
@@ -10,9 +9,15 @@ import { siteConfig } from "@/www/config/site"
 
 import "./globals.css"
 
-const fontSans = GeistSans
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
-const fontMono = GeistMono
+const fontMono = FontMono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+})
 
 const META_THEME_COLORS = {
   light: "#ffffff",
@@ -97,7 +102,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "bg-background min-h-svh overscroll-none font-sans antialiased",
+          "bg-background overscroll-none font-sans antialiased",
           fontSans.variable,
           fontMono.variable
         )}

@@ -7,7 +7,7 @@ type ThemesConfig = {
   activeTheme: Theme
 }
 
-const configAtom = atomWithStorage<ThemesConfig>("themes:config", {
+const configAtom = atomWithStorage<ThemesConfig>("themes:config2", {
   activeTheme: THEMES[0],
 })
 
