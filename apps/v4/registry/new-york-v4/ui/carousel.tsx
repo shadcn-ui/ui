@@ -19,6 +19,12 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
+  children?:
+    | React.ReactNode
+    | ((props: {
+        canScrollNext: boolean
+        canScrollPrev: boolean
+      }) => React.ReactNode)
 }
 
 type CarouselContextProps = {
@@ -50,7 +56,7 @@ function Carousel({
   className,
   children,
   ...props
-}: React.ComponentProps<"div"> & CarouselProps) {
+}: Omit<React.ComponentProps<"div">, "children"> & CarouselProps) {
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...opts,
@@ -126,7 +132,9 @@ function Carousel({
         data-slot="carousel"
         {...props}
       >
-        {children}
+        {typeof children === "function"
+          ? children({ canScrollNext, canScrollPrev })
+          : children}
       </div>
     </CarouselContext.Provider>
   )

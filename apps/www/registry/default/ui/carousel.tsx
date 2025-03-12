@@ -19,6 +19,12 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
+  children?:
+    | React.ReactNode
+    | ((props: {
+        canScrollNext: boolean
+        canScrollPrev: boolean
+      }) => React.ReactNode)
 }
 
 type CarouselContextProps = {
@@ -44,7 +50,7 @@ function useCarousel() {
 
 const Carousel = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & CarouselProps
+  Omit<React.HTMLAttributes<HTMLDivElement>, "children"> & CarouselProps
 >(
   (
     {
@@ -142,7 +148,9 @@ const Carousel = React.forwardRef<
           aria-roledescription="carousel"
           {...props}
         >
-          {children}
+          {typeof children === "function"
+            ? children({ canScrollNext, canScrollPrev })
+            : children}
         </div>
       </CarouselContext.Provider>
     )
