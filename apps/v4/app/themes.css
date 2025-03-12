@@ -432,3 +432,11 @@
     }
   }
 }
+
+.theme-small {
+  --radius: 0.5rem;
+  --text-lg: 1.05rem;
+  --text-base: 0.85rem;
+  --text-sm: 0.75rem;
+  --spacing: 0.222222rem;
+}

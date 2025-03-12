@@ -1,8 +1,5 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { useTheme } from "next-themes"
-
 import { THEMES } from "@/lib/themes"
 import { useThemeConfig } from "@/components/active-theme"
 import {
@@ -14,17 +11,11 @@ import {
 } from "@/registry/new-york-v4/ui/select"
 
 export function ThemeSelector() {
-  const { resolvedTheme } = useTheme()
   const { activeTheme, setActiveTheme } = useThemeConfig()
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   return (
     <Select value={activeTheme} onValueChange={setActiveTheme}>
-      <SelectTrigger size="sm">
+      <SelectTrigger size="sm" className="w-32">
         <SelectValue placeholder="Select a theme" />
       </SelectTrigger>
       <SelectContent align="end">

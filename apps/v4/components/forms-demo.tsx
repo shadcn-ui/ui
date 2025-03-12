@@ -106,127 +106,129 @@ export function FormsDemo() {
   }, [theme, mode])
 
   return (
-    <div className="flex max-w-md flex-col gap-4">
-      <Card style={themeStyles as React.CSSProperties}>
-        <CardHeader>
-          <CardTitle className="text-lg">Upgrade your subscription</CardTitle>
-          <CardDescription>
-            You are currently on the free plan. Upgrade to the pro plan to get
-            access to all features.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-3 md:flex-row">
-              <div className="flex flex-1 flex-col gap-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" placeholder="Evil Rabbit" />
+    <div>
+      <div className="flex max-w-md flex-col gap-4">
+        <Card style={themeStyles as React.CSSProperties}>
+          <CardHeader>
+            <CardTitle className="text-lg">Upgrade your subscription</CardTitle>
+            <CardDescription className="text-balance">
+              You are currently on the free plan. Upgrade to the pro plan to get
+              access to all features.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-3 md:flex-row">
+                <div className="flex flex-1 flex-col gap-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input id="name" placeholder="Evil Rabbit" />
+                </div>
+                <div className="flex flex-1 flex-col gap-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input id="email" placeholder="example@acme.com" />
+                </div>
               </div>
-              <div className="flex flex-1 flex-col gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" placeholder="example@acme.com" />
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="card-number">Card Number</Label>
+                <div className="grid grid-cols-2 gap-3 md:grid-cols-[1fr_80px_60px]">
+                  <Input
+                    id="card-number"
+                    placeholder="1234 1234 1234 1234"
+                    className="col-span-2 md:col-span-1"
+                  />
+                  <Input id="card-number-expiry" placeholder="MM/YY" />
+                  <Input id="card-number-cvc" placeholder="CVC" />
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="card-number">Card Number</Label>
-              <div className="grid grid-cols-2 gap-3 md:grid-cols-[1fr_80px_60px]">
-                <Input
-                  id="card-number"
-                  placeholder="1234 1234 1234 1234"
-                  className="col-span-2 md:col-span-1"
-                />
-                <Input id="card-number-expiry" placeholder="MM/YY" />
-                <Input id="card-number-cvc" placeholder="CVC" />
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="color">Color</Label>
+                <Select
+                  onValueChange={(value) =>
+                    setTheme(value as keyof typeof themes)
+                  }
+                >
+                  <SelectTrigger id="color" className="w-full capitalize">
+                    <SelectValue placeholder="Select a color" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.keys(themes).map((theme) => (
+                      <SelectItem
+                        key={theme}
+                        value={theme}
+                        className="capitalize"
+                      >
+                        <div
+                          className="size-3.5 rounded-full border"
+                          style={{
+                            backgroundColor:
+                              themes[theme as keyof typeof themes][
+                                mode as keyof (typeof themes)[keyof typeof themes]
+                              ]?.["--primary"],
+                          }}
+                        />
+                        {theme}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="color">Color</Label>
-              <Select
-                onValueChange={(value) =>
-                  setTheme(value as keyof typeof themes)
-                }
-              >
-                <SelectTrigger id="color" className="w-full capitalize">
-                  <SelectValue placeholder="Select a color" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.keys(themes).map((theme) => (
-                    <SelectItem
-                      key={theme}
-                      value={theme}
-                      className="capitalize"
+              <fieldset className="flex flex-col gap-3">
+                <legend className="text-sm font-medium">Plan</legend>
+                <p className="text-muted-foreground text-sm">
+                  Select the plan that best fits your needs.
+                </p>
+                <RadioGroup
+                  defaultValue="starter"
+                  className="grid gap-3 md:grid-cols-2"
+                >
+                  {plans.map((plan) => (
+                    <Label
+                      className="has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-input/30 flex items-start gap-3 rounded-lg border p-3"
+                      key={plan.id}
                     >
-                      <div
-                        className="size-3.5 rounded-full border"
-                        style={{
-                          backgroundColor:
-                            themes[theme as keyof typeof themes][
-                              mode as keyof (typeof themes)[keyof typeof themes]
-                            ]?.["--primary"],
-                        }}
+                      <RadioGroupItem
+                        value={plan.id}
+                        id={plan.name}
+                        className="data-[state=checked]:border-primary"
                       />
-                      {theme}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <fieldset className="flex flex-col gap-3">
-              <legend className="text-sm font-medium">Plan</legend>
-              <p className="text-muted-foreground text-sm">
-                Select the plan that best fits your needs.
-              </p>
-              <RadioGroup
-                defaultValue="starter"
-                className="grid gap-3 md:grid-cols-2"
-              >
-                {plans.map((plan) => (
-                  <Label
-                    className="has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-input/30 flex items-start gap-3 rounded-lg border p-3"
-                    key={plan.id}
-                  >
-                    <RadioGroupItem
-                      value={plan.id}
-                      id={plan.name}
-                      className="data-[state=checked]:border-primary"
-                    />
-                    <div className="grid gap-1 font-normal">
-                      <div className="font-medium">{plan.name}</div>
-                      <div className="text-muted-foreground text-xs leading-snug">
-                        {plan.description}
+                      <div className="grid gap-1 font-normal">
+                        <div className="font-medium">{plan.name}</div>
+                        <div className="text-muted-foreground pr-2 text-xs leading-snug text-balance">
+                          {plan.description}
+                        </div>
                       </div>
-                    </div>
+                    </Label>
+                  ))}
+                </RadioGroup>
+              </fieldset>
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="notes">Notes</Label>
+                <Textarea id="notes" placeholder="Enter notes" />
+              </div>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-2">
+                  <Checkbox id="terms" />
+                  <Label htmlFor="terms" className="font-normal">
+                    I agree to the terms and conditions
                   </Label>
-                ))}
-              </RadioGroup>
-            </fieldset>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="notes">Notes</Label>
-              <Textarea id="notes" placeholder="Enter notes" />
-            </div>
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <Checkbox id="terms" />
-                <Label htmlFor="terms" className="font-normal">
-                  I agree to the terms and conditions
-                </Label>
-              </div>
-              <div className="flex items-center gap-2">
-                <Checkbox id="newsletter" defaultChecked />
-                <Label htmlFor="newsletter" className="font-normal">
-                  Allow us to send you emails
-                </Label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Checkbox id="newsletter" defaultChecked />
+                  <Label htmlFor="newsletter" className="font-normal">
+                    Allow us to send you emails
+                  </Label>
+                </div>
               </div>
             </div>
-          </div>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="outline" size="sm">
-            Cancel
-          </Button>
-          <Button size="sm">Upgrade Plan</Button>
-        </CardFooter>
-      </Card>
+          </CardContent>
+          <CardFooter className="flex justify-between">
+            <Button variant="outline" size="sm">
+              Cancel
+            </Button>
+            <Button size="sm">Upgrade Plan</Button>
+          </CardFooter>
+        </Card>
+      </div>
     </div>
   )
 }

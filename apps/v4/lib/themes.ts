@@ -63,6 +63,13 @@ export const THEMES = [
       dark: "oklch(0.532 0.157 131.589)",
     },
   },
+  {
+    name: "Small",
+    value: "small",
+    colors: {
+      light: "oklch(1 0 0)",
+      dark: "oklch(0.145 0 0)",
+    },
+  },
 ]
-
 export type Theme = (typeof THEMES)[number]
