@@ -25,7 +25,7 @@ export function AnalyticsDatePicker() {
       <PopoverTrigger asChild>
         <Button
           id="date"
-          variant="secondary"
+          variant="outline"
           className={cn(
             "w-fit justify-start px-2 font-normal",
             !date && "text-muted-foreground"

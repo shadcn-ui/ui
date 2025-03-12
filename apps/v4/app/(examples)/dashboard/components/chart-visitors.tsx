@@ -102,11 +102,7 @@ export function ChartVisitors() {
                 const color = "color" in config ? config.color : undefined
 
                 return (
-                  <SelectItem
-                    key={key}
-                    value={key}
-                    className="rounded-lg [&_span]:flex"
-                  >
+                  <SelectItem key={key} value={key}>
                     <div className="flex items-center gap-2 text-xs">
                       <span
                         className="flex h-3 w-3 shrink-0 rounded-sm"

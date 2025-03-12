@@ -16,7 +16,6 @@ import {
 import { Sidebar, SidebarContent } from "@/registry/new-york-v4/ui/sidebar"
 import { NavMain } from "@/app/(examples)/dashboard/components/nav-main"
 import { NavSecondary } from "@/app/(examples)/dashboard/components/nav-secondary"
-import { ThemeSelector } from "@/app/(examples)/dashboard/components/theme-selector"
 
 const data = {
   navMain: [
@@ -78,7 +77,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     >
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <ThemeSelector />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
     </Sidebar>

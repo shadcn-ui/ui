@@ -807,9 +807,9 @@ export const baseColorsV4 = {
       accent: "oklch(0.268 0.007 34.298)", // --color-stone-800
       "accent-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-500
-      border: "oklch(0.268 0.007 34.298)", // --color-stone-800
-      input: "oklch(0.374 0.01 67.558)", // --color-stone-700
-      ring: "oklch(0.444 0.011 73.639)", // --color-stone-600
+      border: "oklch(1 0 0 / 10%)", // --color-white
+      input: "oklch(1 0 0 / 15%)", // --color-white
+      ring: "oklch(0.553 0.013 58.071)", // --color-stone-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
       "chart-3": "oklch(0.769 0.188 70.08)", // --color-amber-500
@@ -821,8 +821,8 @@ export const baseColorsV4 = {
       "sidebar-primary-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
       "sidebar-accent": "oklch(0.268 0.007 34.298)", // --color-stone-800
       "sidebar-accent-foreground": "oklch(0.985 0.001 106.423)", // --color-stone-50
-      "sidebar-border": "oklch(0.268 0.007 34.298)", // --color-stone-800
-      "sidebar-ring": "oklch(0.444 0.011 73.639)", // --color-stone-600
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white
+      "sidebar-ring": "oklch(0.553 0.013 58.071)", // --color-stone-500
     },
   },
   zinc: {
@@ -876,9 +876,9 @@ export const baseColorsV4 = {
       accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800
       "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
-      border: "oklch(0.274 0.006 286.033)", // --color-zinc-800
-      input: "oklch(0.37 0.013 285.805)", // --color-zinc-700
-      ring: "oklch(0.442 0.017 285.786)", // --color-zinc-600
+      border: "oklch(1 0 0 / 10%)", // --color-white
+      input: "oklch(1 0 0 / 15%)", // --color-white
+      ring: "oklch(0.552 0.016 285.938)", // --color-zinc-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
       "chart-3": "oklch(0.769 0.188 70.08)", // --color-amber-500
@@ -890,8 +890,8 @@ export const baseColorsV4 = {
       "sidebar-primary-foreground": "oklch(0.985 0 0)", // --color-zinc-50
       "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800
       "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50
-      "sidebar-border": "oklch(0.274 0.006 286.033)", // --color-zinc-800
-      "sidebar-ring": "oklch(0.442 0.017 285.786)", // --color-zinc-600
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white
+      "sidebar-ring": "oklch(0.552 0.016 285.938)", // --color-zinc-500
     },
   },
   neutral: {
@@ -945,9 +945,9 @@ export const baseColorsV4 = {
       accent: "oklch(0.269 0 0)", // --color-neutral-800
       "accent-foreground": "oklch(0.985 0 0)", // --color-neutral-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
-      border: "oklch(0.269 0 0)", // --color-neutral-800
-      input: "oklch(0.371 0 0)", // --color-neutral-700
-      ring: "oklch(0.439 0 0)", // --color-neutral-600
+      border: "oklch(1 0 0 / 10%)", // --color-white
+      input: "oklch(1 0 0 / 15%)", // --color-white
+      ring: "oklch(0.556 0 0)", // --color-neutral-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
       "chart-3": "oklch(0.769 0.188 70.08)", // --color-amber-500
@@ -959,8 +959,8 @@ export const baseColorsV4 = {
       "sidebar-primary-foreground": "oklch(0.985 0 0)", // --color-neutral-50
       "sidebar-accent": "oklch(0.269 0 0)", // --color-neutral-800
       "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-neutral-50
-      "sidebar-border": "oklch(0.269 0 0)", // --color-neutral-800
-      "sidebar-ring": "oklch(0.439 0 0)", // --color-neutral-600
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white
+      "sidebar-ring": "oklch(0.556 0 0)", // --color-neutral-500
     },
   },
   gray: {
@@ -1014,9 +1014,9 @@ export const baseColorsV4 = {
       accent: "oklch(0.278 0.033 256.848)", // --color-gray-800
       "accent-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
-      border: "oklch(0.278 0.033 256.848)", // --color-gray-800
-      input: "oklch(0.373 0.034 259.733)", // --color-gray-700
-      ring: "oklch(0.446 0.03 256.802)", // --color-gray-600
+      border: "oklch(1 0 0 / 10%)", // --color-white
+      input: "oklch(1 0 0 / 15%)", // --color-white
+      ring: "oklch(0.551 0.027 264.364)", // --color-gray-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
       "chart-3": "oklch(0.769 0.188 70.08)", // --color-amber-500
@@ -1028,8 +1028,8 @@ export const baseColorsV4 = {
       "sidebar-primary-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
       "sidebar-accent": "oklch(0.278 0.033 256.848)", // --color-gray-800
       "sidebar-accent-foreground": "oklch(0.985 0.002 247.839)", // --color-gray-50
-      "sidebar-border": "oklch(0.278 0.033 256.848)", // --color-gray-800
-      "sidebar-ring": "oklch(0.446 0.03 256.802)", // --color-gray-600
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white
+      "sidebar-ring": "oklch(0.551 0.027 264.364)", // --color-gray-500
     },
   },
   slate: {
@@ -1083,9 +1083,9 @@ export const baseColorsV4 = {
       accent: "oklch(0.279 0.041 260.031)", // --color-slate-800
       "accent-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
       destructive: "oklch(0.704 0.191 22.216)", // --color-red-400
-      border: "oklch(0.279 0.041 260.031)", // --color-slate-800
-      input: "oklch(0.373 0.034 259.733)", // --color-slate-700
-      ring: "oklch(0.372 0.044 257.287)", // --color-slate-700
+      border: "oklch(1 0 0 / 10%)", // --color-white
+      input: "oklch(1 0 0 / 15%)", // --color-white
+      ring: "oklch(0.551 0.027 264.364)", // --color-slate-500
       "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700
       "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500
       "chart-3": "oklch(0.769 0.188 70.08)", // --color-amber-500
@@ -1097,8 +1097,8 @@ export const baseColorsV4 = {
       "sidebar-primary-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
       "sidebar-accent": "oklch(0.279 0.041 260.031)", // --color-slate-800
       "sidebar-accent-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
-      "sidebar-border": "oklch(0.279 0.041 260.031)", // --color-slate-800
-      "sidebar-ring": "oklch(0.372 0.044 257.287)", // --color-slate-700
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white
+      "sidebar-ring": "oklch(0.551 0.027 264.364)", // --color-slate-500
     },
   },
 } as const

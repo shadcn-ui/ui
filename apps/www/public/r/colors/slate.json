@@ -148,9 +148,9 @@
       "accent": "oklch(0.279 0.041 260.031)",
       "accent-foreground": "oklch(0.984 0.003 247.858)",
       "destructive": "oklch(0.704 0.191 22.216)",
-      "border": "oklch(0.279 0.041 260.031)",
-      "input": "oklch(0.373 0.034 259.733)",
-      "ring": "oklch(0.372 0.044 257.287)",
+      "border": "oklch(1 0 0 / 10%)",
+      "input": "oklch(1 0 0 / 15%)",
+      "ring": "oklch(0.551 0.027 264.364)",
       "chart-1": "oklch(0.488 0.243 264.376)",
       "chart-2": "oklch(0.696 0.17 162.48)",
       "chart-3": "oklch(0.769 0.188 70.08)",
@@ -162,8 +162,8 @@
       "sidebar-primary-foreground": "oklch(0.984 0.003 247.858)",
       "sidebar-accent": "oklch(0.279 0.041 260.031)",
       "sidebar-accent-foreground": "oklch(0.984 0.003 247.858)",
-      "sidebar-border": "oklch(0.279 0.041 260.031)",
-      "sidebar-ring": "oklch(0.372 0.044 257.287)"
+      "sidebar-border": "oklch(1 0 0 / 10%)",
+      "sidebar-ring": "oklch(0.551 0.027 264.364)"
     }
   },
   "inlineColorsTemplate": "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n  ",

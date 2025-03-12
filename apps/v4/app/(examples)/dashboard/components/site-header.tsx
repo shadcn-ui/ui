@@ -4,6 +4,7 @@ import { Fragment, useMemo } from "react"
 import { usePathname } from "next/navigation"
 import { SidebarIcon } from "lucide-react"
 
+import { ThemeSelector } from "@/components/theme-selector"
 import { SearchForm } from "@/registry/new-york-v4/blocks/sidebar-16/components/search-form"
 import {
   Breadcrumb,
@@ -55,6 +56,12 @@ export function SiteHeader() {
         />
         <Breadcrumb className="hidden sm:block">
           <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/" className="capitalize">
+                Home
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
             {breadcrumbs.map((breadcrumb, index) =>
               index === breadcrumbs.length - 1 ? (
                 <BreadcrumbItem key={index}>
@@ -80,6 +87,7 @@ export function SiteHeader() {
         </Breadcrumb>
         <div className="ml-auto flex items-center gap-2">
           <SearchForm className="w-fullsm:w-auto" />
+          <ThemeSelector />
           <ModeToggle />
           <NavUser
             user={{
