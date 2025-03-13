@@ -1,0 +1,30 @@
+---
+title: Changelog
+description: Update your dark mode colors.
+---
+
+## March 13, 2025 - Update to New Dark Mode Colors
+
+You can update your components to use the new dark mode colors by re-adding your components using the CLI or manually.
+
+If you've made significant changes to your components, we recommend manually updating your components. Otherwise, you can run the following command to update your components.
+
+### Use the CLI
+
+<Steps>
+
+<Step>Update components</Step>
+
+```bash
+npx shadcn@latest add --all --overwrite
+```
+
+<Step>Update colors</Step>
+
+Remove your existing dark mode colors in your `globals.css` file. Then run:
+
+```bash
+npx shadcn@latest init --force
+```
+
+</Steps>
