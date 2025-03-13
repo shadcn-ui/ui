@@ -22,15 +22,15 @@ import { Label } from "@/registry/new-york-v4/ui/label"
 export function CardDemo() {
   return (
     <div className="flex flex-col items-start gap-4">
-      <form>
-        <Card>
-          <CardHeader>
-            <CardTitle>Login to your account</CardTitle>
-            <CardDescription>
-              Enter your email below to login to your account
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+      <Card className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Login to your account</CardTitle>
+          <CardDescription>
+            Enter your email below to login to your account
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
@@ -54,23 +54,23 @@ export function CardDemo() {
                 <Input id="password" type="password" required />
               </div>
             </div>
-          </CardContent>
-          <CardFooter className="flex-col gap-2">
-            <Button type="submit" className="w-full">
-              Login
-            </Button>
-            <Button variant="outline" className="w-full">
-              Login with Google
-            </Button>
-            <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <a href="#" className="underline underline-offset-4">
-                Sign up
-              </a>
-            </div>
-          </CardFooter>
-        </Card>
-      </form>
+          </form>
+        </CardContent>
+        <CardFooter className="flex-col gap-2">
+          <Button type="submit" className="w-full">
+            Login
+          </Button>
+          <Button variant="outline" className="w-full">
+            Login with Google
+          </Button>
+          <div className="mt-4 text-center text-sm">
+            Don&apos;t have an account?{" "}
+            <a href="#" className="underline underline-offset-4">
+              Sign up
+            </a>
+          </div>
+        </CardFooter>
+      </Card>
       <Card>
         <CardHeader>
           <CardTitle>Meeting Notes</CardTitle>
