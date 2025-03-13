@@ -8,6 +8,8 @@
 
 :root {
   --radius: 0.625rem;
+  --background: light-dark(oklch(1 0 0), oklch(0.145 0 0));
+  --foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
   --card: light-dark(oklch(1 0 0), oklch(0.205 0 0));
   --card-foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
   --popover: light-dark(oklch(1 0 0), oklch(0.269 0 0));
@@ -37,8 +39,6 @@
   --sidebar-accent-foreground: light-dark(oklch(0.205 0 0), oklch(0.985 0 0));
   --sidebar-border: light-dark(oklch(0.922 0 0), oklch(1 0 0 / 10%));
   --sidebar-ring: light-dark(oklch(0.708 0 0), oklch(0.439 0 0));
-  --background: light-dark(oklch(1 0 0), oklch(0.145 0 0));
-  --foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
 }
 
 @theme inline {
