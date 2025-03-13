@@ -124,7 +124,7 @@ function DrawerBottom() {
                     dataKey="goal"
                     style={
                       {
-                        fill: "hsl(var(--foreground))",
+                        fill: "var(--primary)",
                         opacity: 0.9,
                       } as React.CSSProperties
                     }
