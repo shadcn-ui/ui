@@ -67,7 +67,7 @@
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.1",
     "rimraf": "^6.0.1",
-    "shadcn": "2.3.0",
+    "shadcn": "2.4.0",
     "sonner": "^2.0.0",
     "tailwind-merge": "^3.0.1",
     "tailwindcss": "^4.0.7",
