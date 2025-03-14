@@ -4,6 +4,20 @@ import { cn } from "@/lib/utils"
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
   ({ className, type, ...props }, ref) => {
+    const validateInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      const isKeycodeInRange =
+        event.keyCode >= 65 &&
+        event.keyCode <= 90 &&
+        !event.metaKey &&
+        !event.shiftKey &&
+        !event.altKey &&
+        !event.ctrlKey
+      const regex = /[a-zA-Z]/i
+      isKeycodeInRange &&
+        type === "tel" &&
+        regex.test(event.key) &&
+        event.preventDefault()
+    }
     return (
       <input
         type={type}
@@ -13,6 +27,10 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
         )}
         ref={ref}
         {...props}
+        onKeyDown={(e) => {
+          validateInput(e)
+          props.onKeyDown?.(e)
+        }}
       />
     )
   }
