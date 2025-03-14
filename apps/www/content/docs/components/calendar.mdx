@@ -91,6 +91,19 @@ You can use the `<Calendar>` component to build a date picker. See the [Date Pic
 
 ## Changelog
 
+### 12-03-2024 components changed
+
+- Changed the components to the following with the `react-day-picker` version upgrade:
+
+```diff showLineNumbers title="calendar.tsx"
+components={{
+-    IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
+-    IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
++    PreviousMonthButton: ({ ...props }) => <ChevronLeftIcon className="h-4 w-4" />,
++    NextMonthButton: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
+}},
+```
+
 ### 11-03-2024 day_outside color
 
 - Changed the color of the `day_outside` class to the following to improve contrast:
