@@ -2,11 +2,11 @@ import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
 import { Index } from "@/__registry__"
+import { registryItemFileSchema, registryItemSchema } from "shadcn/registry"
 import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
 import { Style } from "@/registry/registry-styles"
-import { registryItemFileSchema, registryItemSchema } from "@/registry/schema"
 
 export const DEFAULT_REGISTRY_STYLE = "new-york" satisfies Style["name"]
 
@@ -157,7 +157,7 @@ function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
     }
   }
 
-  return target
+  return target ?? ""
 }
 
 async function createTempSourceFile(filename: string) {

@@ -1,11 +1,11 @@
 import os from "os"
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
+import { fetchRegistry } from "@/src/registry/api"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { fetchRegistry } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
@@ -15,10 +15,15 @@ import { z } from "zod"
 const MONOREPO_TEMPLATE_URL =
   "https://codeload.github.com/shadcn-ui/ui/tar.gz/main"
 
+export const TEMPLATES = {
+  next: "next",
+  "next-monorepo": "next-monorepo",
+} as const
+
 export async function createProject(
   options: Pick<
     z.infer<typeof initOptionsSchema>,
-    "cwd" | "force" | "srcDir" | "components"
+    "cwd" | "force" | "srcDir" | "components" | "template"
   >
 ) {
   options = {
@@ -26,9 +31,13 @@ export async function createProject(
     ...options,
   }
 
-  let projectType: "next" | "monorepo" = "next"
-  let projectName: string = "my-app"
-  let nextVersion = "15.1.0"
+  let template: keyof typeof TEMPLATES =
+    options.template && TEMPLATES[options.template as keyof typeof TEMPLATES]
+      ? (options.template as keyof typeof TEMPLATES)
+      : "next"
+  let projectName: string =
+    template === TEMPLATES.next ? "my-app" : "my-monorepo"
+  let nextVersion = "latest"
 
   const isRemoteComponent =
     options.components?.length === 1 &&
@@ -45,6 +54,9 @@ export async function createProject(
         })
         .parse(result)
       nextVersion = meta.nextVersion
+
+      // Force template to next for remote components.
+      template = TEMPLATES.next
     } catch (error) {
       logger.break()
       handleError(error)
@@ -54,14 +66,14 @@ export async function createProject(
   if (!options.force) {
     const { type, name } = await prompts([
       {
-        type: "select",
+        type: options.template || isRemoteComponent ? null : "select",
         name: "type",
         message: `The path ${highlighter.info(
           options.cwd
         )} does not contain a package.json file.\n  Would you like to start a new project?`,
         choices: [
           { title: "Next.js", value: "next" },
-          { title: "Next.js (Monorepo)", value: "monorepo" },
+          { title: "Next.js (Monorepo)", value: "next-monorepo" },
         ],
         initial: 0,
       },
@@ -78,7 +90,7 @@ export async function createProject(
       },
     ])
 
-    projectType = type
+    template = type ?? template
     projectName = name
   }
 
@@ -113,7 +125,7 @@ export async function createProject(
     process.exit(1)
   }
 
-  if (projectType === "next") {
+  if (template === TEMPLATES.next) {
     await createNextProject(projectPath, {
       version: nextVersion,
       cwd: options.cwd,
@@ -122,7 +134,7 @@ export async function createProject(
     })
   }
 
-  if (projectType === "monorepo") {
+  if (template === TEMPLATES["next-monorepo"]) {
     await createMonorepoProject(projectPath, {
       packageManager,
     })
@@ -131,7 +143,7 @@ export async function createProject(
   return {
     projectPath,
     projectName,
-    projectType,
+    template,
   }
 }
 
@@ -159,7 +171,11 @@ async function createNextProject(
     `--use-${options.packageManager}`,
   ]
 
-  if (options.version.startsWith("15")) {
+  if (
+    options.version.startsWith("15") ||
+    options.version.startsWith("latest") ||
+    options.version.startsWith("canary")
+  ) {
     args.push("--turbopack")
   }
 

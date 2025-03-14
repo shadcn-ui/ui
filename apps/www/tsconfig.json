@@ -12,6 +12,7 @@
     "incremental": true,
     "esModuleInterop": true,
     "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -31,7 +32,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".contentlayer/generated"
+    ".contentlayer/generated",
+    "./scripts/**/*.ts"
   ],
-  "exclude": ["node_modules", "./scripts/build-registry.mts", "__registry__"]
+  "exclude": ["node_modules", "__registry__"]
 }

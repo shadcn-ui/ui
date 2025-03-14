@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "overrides": [
+    {
+      "files": ["scripts/**/*.{ts,mts}"],
+      "parserOptions": {
+        "project": "tsconfig.scripts.json"
+      }
+    }
+  ]
+}
