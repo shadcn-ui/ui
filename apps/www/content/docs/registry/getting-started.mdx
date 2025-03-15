@@ -169,6 +169,18 @@ Your files will now be served at `http://localhost:3000/r/[NAME].json` eg. `http
 
 To make your registry available to other developers, you can publish it by deploying your project to a public URL.
 
+## Adding Auth
+
+The `shadcn` CLI does not offer a built-in way to add auth to your registry. We recommend handling authorization on your registry server.
+
+A common simple approach is to use a `token` query parameter to authenticate requests to your registry. e.g. `http://localhost:3000/r/hello-world.json?token=[SECURE_TOKEN_HERE]`.
+
+Use the secure token to authenticate requests and return a 401 Unauthorized response if the token is invalid. Both the `shadcn` CLI and `Open in v0` will handle the 401 response and display a message to the user.
+
+<Callout className="mt-6">
+  **Note:** Make sure to encrypt and expire tokens.
+</Callout>
+
 ## Guidelines
 
 Here are some guidelines to follow when building components for a registry.

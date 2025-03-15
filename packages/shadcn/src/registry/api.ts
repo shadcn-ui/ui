@@ -422,11 +422,10 @@ export async function registryGetTheme(name: string, config: Config) {
     if (tailwindVersion === "v4" && baseColor.cssVarsV4) {
       theme.cssVars = {
         light: {
-          ...theme.cssVars.light,
+          radius: "0.625rem",
           ...baseColor.cssVarsV4.light,
         },
         dark: {
-          ...theme.cssVars.dark,
           ...baseColor.cssVarsV4.dark,
         },
       }

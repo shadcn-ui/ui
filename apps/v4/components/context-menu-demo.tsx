@@ -39,7 +39,7 @@ export function ContextMenuDemo() {
           <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
           <ContextMenuSubContent className="w-48">
             <ContextMenuItem inset>
-              Save Page As...
+              Save Page...
               <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
             </ContextMenuItem>
             <ContextMenuItem>
