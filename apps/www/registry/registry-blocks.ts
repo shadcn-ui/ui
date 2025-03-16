@@ -255,6 +255,7 @@ export const blocks: Registry["items"] = [
       "dropdown-menu",
       "avatar",
       "switch",
+      "label",
     ],
     files: [
       {
@@ -489,6 +490,7 @@ export const blocks: Registry["items"] = [
       "dropdown-menu",
       "avatar",
       "button",
+      "label",
     ],
     files: [
       {

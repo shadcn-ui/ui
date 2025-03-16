@@ -1,18 +1,15 @@
 import type { Metadata, Viewport } from "next"
-import { GeistMono } from "geist/font/mono"
-import { GeistSans } from "geist/font/sans"
+import { cookies } from "next/headers"
 
-import { cn } from "@/lib/utils"
+import { fontVariables } from "@/lib/fonts"
 import { Analytics } from "@/components/analytics"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/new-york-v4/ui/sonner"
 import { siteConfig } from "@/www/config/site"
 
 import "./globals.css"
-
-const fontSans = GeistSans
-
-const fontMono = GeistMono
+import { cn } from "@/lib/utils"
+import { ActiveThemeProvider } from "@/components/active-theme"
 
 const META_THEME_COLORS = {
   light: "#ffffff",
@@ -75,11 +72,14 @@ export const viewport: Viewport = {
   themeColor: META_THEME_COLORS.light,
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const cookieStore = await cookies()
+  const activeThemeValue = cookieStore.get("active_theme")?.value
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -98,8 +98,8 @@ export default function RootLayout({
       <body
         className={cn(
           "bg-background overscroll-none font-sans antialiased",
-          fontSans.variable,
-          fontMono.variable
+          activeThemeValue ? `theme-${activeThemeValue}` : "",
+          fontVariables
         )}
       >
         <ThemeProvider
@@ -108,9 +108,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <Toaster />
-          <Analytics />
+          <ActiveThemeProvider initialTheme={activeThemeValue}>
+            {children}
+            <Toaster />
+            <Analytics />
+          </ActiveThemeProvider>
         </ThemeProvider>
       </body>
     </html>

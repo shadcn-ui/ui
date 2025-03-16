@@ -47,7 +47,7 @@ describe("transformCssVars", () => {
 
       @layer base {
         * {
-          @apply border-border outline-ring/50;
+          @apply border-border;
         }
         body {
           @apply bg-background text-foreground;
@@ -110,7 +110,7 @@ describe("transformCssVars", () => {
 
       @layer base {
         * {
-          @apply border-border outline-ring/50;
+          @apply border-border;
         }
         body {
           @apply bg-background text-foreground;
@@ -171,17 +171,6 @@ describe("transformCssVars", () => {
       @layer base {
         * {
           @apply border-border;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
-      }
-
-
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
