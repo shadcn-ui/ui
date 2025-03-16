@@ -17,7 +17,7 @@ export default function LoginPage() {
   return (
     <div
       className={cn(
-        "bg-muted flex flex-1 flex-col items-center justify-center gap-16 p-6 md:p-10",
+        "bg-muted dark:bg-background flex flex-1 flex-col items-center justify-center gap-16 p-6 md:p-10",
         fontSans.variable,
         fontSerif.variable,
         fontManrope.variable
