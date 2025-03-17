@@ -1,5 +1,19 @@
 # @shadcn/ui
 
+## 2.2.0
+
+### Minor Changes
+
+- [#6475](https://github.com/shadcn-ui/ui/pull/6475) [`699195b`](https://github.com/shadcn-ui/ui/commit/699195ba77ba41d3da356dd82775ae6db9af3d96) Thanks [@shadcn](https://github.com/shadcn)! - remove unused lodash.template
+
+- [#6350](https://github.com/shadcn-ui/ui/pull/6350) [`cb742e9`](https://github.com/shadcn-ui/ui/commit/cb742e98252fe8aa5cad3377d06e1d8a884953db)) Thanks [@shadcn](https://github.com/shadcn)! - new build command
+
+- [#6369](https://github.com/shadcn-ui/ui/pull/6369) [`f07c7ad`](https://github.com/shadcn-ui/ui/commit/f07c7ad5d0d2c2159f2c81a31ae6cbbe9a6ede30) Thanks [@shadcn](https://github.com/shadcn)! - handle nested file path
+
+- [#6339](https://github.com/shadcn-ui/ui/pull/6339) [`254198b`](https://github.com/shadcn-ui/ui/commit/254198b4bf38ca18361dbcf4373536c55ea8ef11) Thanks [@shadcn](https://github.com/shadcn)! - add schema
+
+- [#6377](https://github.com/shadcn-ui/ui/pull/6377) [`5f7957a`](https://github.com/shadcn-ui/ui/commit/5f7957ab51c3d929f322937147269ef3bdfeb472) Thanks [@shadcn](https://github.com/shadcn)! - new registry:file type
+
 ## 2.1.8
 
 ### Patch Changes

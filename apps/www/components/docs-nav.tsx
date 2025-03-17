@@ -16,8 +16,13 @@ export function DocsNav({ config }: { config: DocsConfig }) {
     <div className="flex flex-col gap-6">
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
-          <h4 className="rounded-md px-2 py-1 text-sm font-semibold">
-            {item.title}
+          <h4 className="rounded-md px-2 py-1 text-sm font-medium">
+            {item.title}{" "}
+            {item.label && (
+              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs font-normal leading-none text-[#000000] no-underline group-hover:no-underline">
+                {item.label}
+              </span>
+            )}
           </h4>
           {item?.items?.length && (
             <DocsNavItems items={item.items} pathname={pathname} />
@@ -43,10 +48,11 @@ function DocsNavItems({
             key={index}
             href={item.href}
             className={cn(
-              "group flex h-8 w-full items-center rounded-lg px-2 font-normal text-foreground underline-offset-2 hover:bg-accent hover:text-accent-foreground",
+              "group relative flex h-8 w-full items-center rounded-lg px-2 after:absolute after:inset-x-0 after:inset-y-[-2px]  after:rounded-lg hover:bg-accent hover:text-accent-foreground ",
               item.disabled && "cursor-not-allowed opacity-60",
-              pathname === item.href &&
-                "bg-accent font-medium text-accent-foreground"
+              pathname === item.href
+                ? "bg-accent font-medium text-accent-foreground"
+                : "font-normal text-foreground"
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
