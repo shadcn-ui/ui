@@ -44,7 +44,7 @@ export default async function DashboardLayout({
             <div className="ml-auto">
               <Button variant="link" asChild size="sm">
                 <a
-                  href="https://github.com/shadcn-ui/ui/tree/main/apps/v4/app/(examples)/dashboard"
+                  href="https://github.com/shadcn-ui/ui/tree/main/apps/v4/app/(examples)/dashboard-02"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
