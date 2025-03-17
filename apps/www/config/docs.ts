@@ -270,6 +270,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Editable",
+          href: "/docs/components/editable",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Dropdown Menu",
           href: "/docs/components/dropdown-menu",
           items: [],

@@ -11,7 +11,6 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import EditableFormDemo from "@/registry/new-york/examples/editable-form-demo"
 import { Button } from "@/registry/new-york/ui/button"
 
 const title = "Build your component library"
@@ -46,7 +45,6 @@ export default function IndexPage() {
   return (
     <>
       <PageHeader>
-        <EditableFormDemo />
         <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
