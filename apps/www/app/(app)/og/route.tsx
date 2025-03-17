@@ -46,7 +46,7 @@ export async function GET(request: Request) {
     (
       <div
         tw="flex h-full w-full bg-black text-white"
-        style={{ fontFamily: "Geist Sans" }}
+        style={{ fontFamily: "Geist" }}
       >
         <div tw="flex border absolute border-stone-700 border-dashed inset-y-0 left-16 w-[1px]" />
         <div tw="flex border absolute border-stone-700 border-dashed inset-y-0 right-16 w-[1px]" />
