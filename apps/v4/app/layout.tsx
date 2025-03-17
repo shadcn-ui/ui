@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL("https://v4.shadcn.com"),
   description: siteConfig.description,
   keywords: [
     "Next.js",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
+    url: "https://v4.shadcn.com",
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
