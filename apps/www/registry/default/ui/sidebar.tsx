@@ -147,7 +147,7 @@ const SidebarProvider = React.forwardRef<
               } as React.CSSProperties
             }
             className={cn(
-              "group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar h-full min-h-full border has-[[data-side=right]]:flex-row-reverse",
+              "group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar has-[[data-wrapped=true]] has-[[data-wrapped=true]]:h-full has-[[data-wrapped=true]]:min-h-full has-[[data-wrapped=true][data-side=right]]:flex-row-reverse",
               className
             )}
             ref={ref}
@@ -176,7 +176,7 @@ const Sidebar = React.forwardRef<
       side = "left",
       variant = "sidebar",
       collapsible = "offcanvas",
-      wrapped = "false",
+      wrapped = false,
       className,
       children,
       ...props
@@ -232,6 +232,7 @@ const Sidebar = React.forwardRef<
         data-collapsible={state === "collapsed" ? collapsible : ""}
         data-variant={variant}
         data-side={side}
+        data-wrapped={wrapped}
       >
         {/* This is what handles the sidebar gap on desktop */}
         <div
@@ -246,10 +247,11 @@ const Sidebar = React.forwardRef<
         />
         <div
           className={cn(
-            "relative inset-y-0 z-10 hidden h-full w-[--sidebar-width] transition-[left,right,width] duration-200 ease-linear md:flex",
+            "fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] duration-200 ease-linear md:flex",
+            wrapped && "relative h-full",
             side === "left"
-              ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] [[data-state=collapsed][data-collapsible=offcanvas]_&]:w-[0]"
-              : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)] [[data-state=collapsed][data-collapsible=offcanvas]_&]:w-[0]",
+              ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] [[data-wrapped=true][data-state=collapsed][data-collapsible=offcanvas]_&]:w-[0]"
+              : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)] [[data-wrapped=true][data-state=collapsed][data-collapsible=offcanvas]_&]:w-[0]",
             // Adjust the padding for floating and inset variants.
             variant === "floating" || variant === "inset"
               ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
