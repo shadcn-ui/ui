@@ -1,4 +1,3 @@
-import { Metadata } from "next"
 import { IconTrendingDown, IconTrendingUp } from "@tabler/icons-react"
 
 import { Badge } from "@/registry/new-york-v4/ui/badge"
@@ -14,11 +13,6 @@ import { ChartAreaInteractive } from "@/app/(examples)/dashboard/components/char
 import { DataTable } from "@/app/(examples)/dashboard/components/data-table"
 
 import data from "./data.json"
-
-export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "A dashboard with tabs, table and sidebar.",
-}
 
 export default async function Dashboard02() {
   return (
