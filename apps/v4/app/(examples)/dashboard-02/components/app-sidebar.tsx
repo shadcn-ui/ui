@@ -2,16 +2,21 @@
 
 import * as React from "react"
 import {
-  IconCloud,
+  IconCamera,
+  IconChartBar,
   IconDashboard,
   IconDatabase,
+  IconFileAi,
+  IconFileDescription,
   IconFileWord,
+  IconFolder,
   IconHelp,
   IconInnerShadowTop,
   IconListDetails,
   IconReport,
   IconSearch,
   IconSettings,
+  IconUsers,
 } from "@tabler/icons-react"
 
 import {
@@ -23,7 +28,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/registry/new-york-v4/ui/sidebar"
-import { NavClouds } from "@/app/(examples)/dashboard-02/components/nav-clouds"
+// import { NavClouds } from "@/app/(examples)/dashboard-02/components/nav-clouds"
 import { NavDocuments } from "@/app/(examples)/dashboard-02/components/nav-documents"
 import { NavMain } from "@/app/(examples)/dashboard-02/components/nav-main"
 import { NavSecondary } from "@/app/(examples)/dashboard-02/components/nav-secondary"
@@ -46,13 +51,26 @@ const data = {
       url: "#",
       icon: IconListDetails,
     },
+    {
+      title: "Analytics",
+      url: "#",
+      icon: IconChartBar,
+    },
+    {
+      title: "Projects",
+      url: "#",
+      icon: IconFolder,
+    },
+    {
+      title: "Team",
+      url: "#",
+      icon: IconUsers,
+    },
   ],
   navClouds: [
     {
       title: "Capture",
-      icon: IconCloud,
-      iconClassName:
-        "fill-amber-500 text-amber-500 dark:fill-amber-400 dark:text-amber-400",
+      icon: IconCamera,
       isActive: true,
       url: "#",
       items: [
@@ -68,9 +86,7 @@ const data = {
     },
     {
       title: "Proposal",
-      icon: IconCloud,
-      iconClassName:
-        "fill-blue-500 text-blue-500 dark:fill-blue-400 dark:text-blue-400",
+      icon: IconFileDescription,
       url: "#",
       items: [
         {
@@ -84,10 +100,8 @@ const data = {
       ],
     },
     {
-      title: "Contract",
-      icon: IconCloud,
-      iconClassName:
-        "fill-teal-500 text-teal-500 dark:fill-teal-400 dark:text-teal-400",
+      title: "Prompts",
+      icon: IconFileAi,
       url: "#",
       items: [
         {
@@ -157,7 +171,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavClouds items={data.navClouds} />
+        {/* <NavClouds items={data.navClouds} /> */}
         <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>

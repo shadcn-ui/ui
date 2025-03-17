@@ -300,6 +300,9 @@ importers:
       ts-morph:
         specifier: ^22.0.0
         version: 22.0.0
+      tw-animate-css:
+        specifier: ^1.2.2
+        version: 1.2.2
       vaul:
         specifier: 1.1.2
         version: 1.1.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -7743,6 +7746,9 @@ packages:
   turbo@1.13.4:
     resolution: {integrity: sha512-1q7+9UJABuBAHrcC4Sxp5lOqYS5mvxRrwa33wpIyM18hlOCpRD/fTJNxZ0vhbMcJmz15o9kkVm743mPn7p6jpQ==}
     hasBin: true
+
+  tw-animate-css@1.2.2:
+    resolution: {integrity: sha512-TdSaQcV+V8MypECoXr6Nnv3EQFz05kxfTUaOHtpWTQZp8r5Bx2OmTnkSZVlOTaRiS20a6wYw0RaAnNX2D8ywrQ==}
 
   typanion@3.14.0:
     resolution: {integrity: sha512-ZW/lVMRabETuYCd9O9ZvMhAh8GslSqaUjxmK/JLPCh6l73CvLBiuXswj/+7LdnWOgYsQ130FqLzFz5aGT4I3Ug==}
@@ -17556,6 +17562,8 @@ snapshots:
       turbo-linux-arm64: 1.13.4
       turbo-windows-64: 1.13.4
       turbo-windows-arm64: 1.13.4
+
+  tw-animate-css@1.2.2: {}
 
   typanion@3.14.0: {}
 
