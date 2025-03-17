@@ -12,4 +12,14 @@ export const lib: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "composition",
+    type: "registry:lib",
+    files: [
+      {
+        path: "lib/composition.ts",
+        type: "registry:lib",
+      },
+    ],
+  },
 ]

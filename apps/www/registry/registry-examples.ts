@@ -688,6 +688,28 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "editable-demo",
+    type: "registry:example",
+    registryDependencies: ["editable"],
+    files: [
+      {
+        path: "examples/editable-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "editable-form-demo",
+    type: "registry:example",
+    registryDependencies: ["editable", "form"],
+    files: [
+      {
+        path: "examples/editable-form-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "hover-card-demo",
     type: "registry:example",
     registryDependencies: ["hover-card"],
