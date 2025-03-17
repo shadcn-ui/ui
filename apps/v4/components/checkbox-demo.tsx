@@ -1,5 +1,3 @@
-"use client"
-
 import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
 import { Label } from "@/registry/new-york-v4/ui/label"
 
