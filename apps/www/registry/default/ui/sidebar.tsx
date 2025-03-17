@@ -147,7 +147,7 @@ const SidebarProvider = React.forwardRef<
               } as React.CSSProperties
             }
             className={cn(
-              "group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:flex-row-reverse h-full min-h-full border has-[[data-side=right]]:flex-row-reverse",
+              "group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar h-full min-h-full border has-[[data-side=right]]:flex-row-reverse",
               className
             )}
             ref={ref}
@@ -168,6 +168,7 @@ const Sidebar = React.forwardRef<
     side?: "left" | "right"
     variant?: "sidebar" | "floating" | "inset"
     collapsible?: "offcanvas" | "icon" | "none"
+    wrapped?: true | false
   }
 >(
   (
@@ -175,6 +176,7 @@ const Sidebar = React.forwardRef<
       side = "left",
       variant = "sidebar",
       collapsible = "offcanvas",
+      wrapped = "false",
       className,
       children,
       ...props
