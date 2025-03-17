@@ -1,0 +1,92 @@
+---
+title: Editable
+description: An accessible inline editable component for editing text content in place.
+component: true
+---
+
+<ComponentPreview
+  name="editable-demo"
+  title="Editable"
+  description="An accessible inline editable component for editing text content in place."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add editable
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+ <Step>
+    Copy the composition utilities into your `lib/composition.ts` file.
+
+    <ComponentSource src="./lib/composition.ts" />
+
+  </Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="editable" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Editable,
+  EditableArea,
+  EditableCancel,
+  EditableInput,
+  EditableLabel,
+  EditablePreview,
+  EditableSubmit,
+  EditableToolbar,
+} from "@/components/ui/editable"
+```
+
+```tsx
+<Editable>
+  <EditableLabel>Fruit</EditableLabel>
+  <EditableArea>
+    <EditablePreview />
+    <EditableInput placeholder="Apple" />
+    <EditableTrigger>Edit</EditableTrigger>
+  </EditableArea>
+  <EditableToolbar>
+    <EditableCancel>Cancel</EditableCancel>
+    <EditableSubmit>Save</EditableSubmit>
+  </EditableToolbar>
+</Editable>
+```
+
+## Examples
+
+### Form
+
+<ComponentPreview name="editable-form-demo" />

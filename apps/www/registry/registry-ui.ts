@@ -236,6 +236,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "editable",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-slot"],
+    files: [
+      {
+        path: "ui/editable.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "lib/composition.ts",
+        type: "registry:lib",
+      },
+    ],
+  },
+  {
     name: "form",
     type: "registry:ui",
     dependencies: [

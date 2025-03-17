@@ -10,12 +10,9 @@ import { Button } from "@/registry/new-york/ui/button"
 import {
   Editable,
   EditableArea,
-  EditableCancel,
   EditableInput,
   EditableLabel,
   EditablePreview,
-  EditableSubmit,
-  EditableToolbar,
   EditableTrigger,
 } from "@/registry/new-york/ui/editable"
 import {
@@ -86,18 +83,6 @@ export default function EditableFormDemo() {
                       </Button>
                     </EditableTrigger>
                   </div>
-                  <EditableToolbar>
-                    <EditableSubmit asChild>
-                      <Button type="button" size="sm">
-                        Save
-                      </Button>
-                    </EditableSubmit>
-                    <EditableCancel asChild>
-                      <Button type="button" variant="outline" size="sm">
-                        Cancel
-                      </Button>
-                    </EditableCancel>
-                  </EditableToolbar>
                   <FormMessage />
                 </Editable>
               </FormControl>
@@ -129,18 +114,6 @@ export default function EditableFormDemo() {
                       </Button>
                     </EditableTrigger>
                   </div>
-                  <EditableToolbar>
-                    <EditableSubmit asChild>
-                      <Button type="button" size="sm">
-                        Save
-                      </Button>
-                    </EditableSubmit>
-                    <EditableCancel asChild>
-                      <Button type="button" variant="outline" size="sm">
-                        Cancel
-                      </Button>
-                    </EditableCancel>
-                  </EditableToolbar>
                   <FormMessage />
                 </Editable>
               </FormControl>
