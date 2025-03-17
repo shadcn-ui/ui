@@ -459,6 +459,7 @@ export function AppSidebar() {
 | `side`        | `left` or `right`                 | The side of the sidebar.          |
 | `variant`     | `sidebar`, `floating`, or `inset` | The variant of the sidebar.       |
 | `collapsible` | `offcanvas`, `icon`, or `none`    | Collapsible state of the sidebar. |
+| `wrapped`     | `true` or `false`                 | The placement of sidebar.         |
 
 ### side
 
@@ -513,6 +514,18 @@ import { Sidebar } from "@/components/ui/sidebar"
 
 export function AppSidebar() {
   return <Sidebar collapsible="offcanvas | icon | none" />
+}
+```
+
+### wrapped
+
+Use the `wrapped` prop to ensure the sidebar remains within the element.
+
+```tsx showLineNumbers
+import { Sidebar } from "@/components/ui/sidebar"
+
+export function AppSidebar() {
+  return <Sidebar wrapped={true | false} />
 }
 ```
 
