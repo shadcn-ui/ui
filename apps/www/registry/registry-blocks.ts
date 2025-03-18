@@ -530,6 +530,34 @@ export const blocks: Registry["items"] = [
     categories: ["sidebar", "dashboard"],
   },
   {
+    name: "sidebar-with-chat-01",
+    description: "A sidebar with a chat component.",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "textarea",
+      "button",
+    ],
+    files: [
+      {
+        path: "blocks/sidebar-with-chat-01/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/sidebar-with-chat-01/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sidebar-with-chat-01/components/chat-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["sidebar", "dashboard"],
+  },
+  {
     name: "login-01",
     description: "A simple login form.",
     type: "registry:block",
