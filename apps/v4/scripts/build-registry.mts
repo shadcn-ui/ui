@@ -74,9 +74,17 @@ const registry = {
           },
         ],
       },
-    ].filter((item) => {
-      return !DEPRECATED_ITEMS.includes(item.name)
-    })
+    ]
+      .filter((item) => {
+        return !DEPRECATED_ITEMS.includes(item.name)
+      })
+      .map((item) => {
+        // Temporary fix for dashboard-01.
+        if (item.name === "dashboard-01") {
+          item.dependencies?.push("@tabler/icons-react")
+        }
+        return item
+      })
   ),
 } satisfies Registry
 
