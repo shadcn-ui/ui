@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL("https://v4.shadcn.com"),
   description: siteConfig.description,
   keywords: [
     "Next.js",
@@ -40,13 +40,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
+    url: "https://v4.shadcn.com",
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: "https://v4.shadcn.com/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    images: ["https://v4.shadcn.com/opengraph-image.png"],
     creator: "@shadcn",
   },
   icons: {
@@ -79,6 +79,7 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies()
   const activeThemeValue = cookieStore.get("active_theme")?.value
+  const isScaled = activeThemeValue?.endsWith("-scaled")
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -99,6 +100,7 @@ export default async function RootLayout({
         className={cn(
           "bg-background overscroll-none font-sans antialiased",
           activeThemeValue ? `theme-${activeThemeValue}` : "",
+          isScaled ? "theme-scaled" : "",
           fontVariables
         )}
       >
@@ -107,6 +109,7 @@ export default async function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          enableColorScheme
         >
           <ActiveThemeProvider initialTheme={activeThemeValue}>
             {children}

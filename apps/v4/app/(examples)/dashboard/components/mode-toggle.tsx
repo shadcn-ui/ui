@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { MoonIcon, SunIcon } from "lucide-react"
+import { IconBrightness } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -20,8 +20,7 @@ export function ModeToggle() {
       className="group/toggle size-8"
       onClick={toggleTheme}
     >
-      <SunIcon className="hidden [html.dark_&]:block" />
-      <MoonIcon className="hidden [html.light_&]:block" />
+      <IconBrightness />
       <span className="sr-only">Toggle theme</span>
     </Button>
   )

@@ -7,6 +7,8 @@ import {
 import { AppSidebar } from "@/app/(examples)/dashboard/components/app-sidebar"
 import { SiteHeader } from "@/app/(examples)/dashboard/components/site-header"
 
+import "./theme.css"
+
 export default async function DashboardLayout({
   children,
 }: {
@@ -16,14 +18,19 @@ export default async function DashboardLayout({
   const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
 
   return (
-    <main className="[--header-height:calc(theme(spacing.14))]">
-      <SidebarProvider defaultOpen={defaultOpen} className="flex flex-col">
+    <SidebarProvider
+      defaultOpen={defaultOpen}
+      style={
+        {
+          "--sidebar-width": "calc(var(--spacing) * 72)",
+        } as React.CSSProperties
+      }
+    >
+      <AppSidebar variant="inset" />
+      <SidebarInset>
         <SiteHeader />
-        <div className="flex flex-1">
-          <AppSidebar />
-          <SidebarInset>{children}</SidebarInset>
-        </div>
-      </SidebarProvider>
-    </main>
+        <div className="flex flex-1 flex-col">{children}</div>
+      </SidebarInset>
+    </SidebarProvider>
   )
 }
