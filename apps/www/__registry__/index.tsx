@@ -718,6 +718,61 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "dashboard-01": {
+      name: "dashboard-01",
+      description: "A dashboard with sidebar, charts and data table.",
+      type: "registry:block",
+      registryDependencies: ["sidebar","breadcrumb","separator","label","chart","card","select","tabs","table","toggle-group","badge","button","checkbox","dropdown-menu","drawer","input","avatar","sheet","sonner"],
+      files: [{
+        path: "registry/new-york/blocks/dashboard-01/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx"
+      },{
+        path: "registry/new-york/blocks/dashboard-01/data.json",
+        type: "registry:file",
+        target: "app/dashboard/data.json"
+      },{
+        path: "registry/new-york/blocks/dashboard-01/components/app-sidebar.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/dashboard-01/components/chart-area-interactive.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/dashboard-01/components/data-table.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/dashboard-01/components/nav-documents.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/dashboard-01/components/nav-main.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/dashboard-01/components/nav-secondary.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/dashboard-01/components/nav-user.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/dashboard-01/components/section-cards.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/dashboard-01/components/site-header.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["dashboard"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/dashboard-01/page.tsx")),
+      source: "__registry__/new-york/blocks/dashboard-01/page.tsx",
+      meta: undefined,
+    },
     "sidebar-01": {
       name: "sidebar-01",
       description: "A simple sidebar with navigation grouped by section.",
@@ -6014,6 +6069,61 @@ export const Index: Record<string, any> = {
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/ui/tooltip.tsx")),
       source: "",
+      meta: undefined,
+    },
+    "dashboard-01": {
+      name: "dashboard-01",
+      description: "A dashboard with sidebar, charts and data table.",
+      type: "registry:block",
+      registryDependencies: ["sidebar","breadcrumb","separator","label","chart","card","select","tabs","table","toggle-group","badge","button","checkbox","dropdown-menu","drawer","input","avatar","sheet","sonner"],
+      files: [{
+        path: "registry/default/blocks/dashboard-01/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx"
+      },{
+        path: "registry/default/blocks/dashboard-01/data.json",
+        type: "registry:file",
+        target: "app/dashboard/data.json"
+      },{
+        path: "registry/default/blocks/dashboard-01/components/app-sidebar.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/dashboard-01/components/chart-area-interactive.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/dashboard-01/components/data-table.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/dashboard-01/components/nav-documents.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/dashboard-01/components/nav-main.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/dashboard-01/components/nav-secondary.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/dashboard-01/components/nav-user.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/dashboard-01/components/section-cards.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/dashboard-01/components/site-header.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["dashboard"],
+      component: React.lazy(() => import("@/registry/default/blocks/dashboard-01/page.tsx")),
+      source: "__registry__/default/blocks/dashboard-01/page.tsx",
       meta: undefined,
     },
     "sidebar-01": {
