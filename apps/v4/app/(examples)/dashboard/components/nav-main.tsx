@@ -44,10 +44,12 @@ export function NavMain({
         </SidebarMenu>
         <SidebarMenu>
           {items.map((item) => (
-            <SidebarMenuButton key={item.title} tooltip={item.title}>
-              {item.icon && <item.icon />}
-              <span>{item.title}</span>
-            </SidebarMenuButton>
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton tooltip={item.title}>
+                {item.icon && <item.icon />}
+                <span>{item.title}</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           ))}
         </SidebarMenu>
       </SidebarGroupContent>

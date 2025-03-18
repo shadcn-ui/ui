@@ -6,7 +6,7 @@ export default function FormsPage() {
       <div className="">
         <FormsDemo />
       </div>
-      <div className="theme-small">
+      <div className="theme-scaled">
         <FormsDemo />
       </div>
     </div>

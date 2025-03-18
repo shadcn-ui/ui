@@ -1,6 +1,7 @@
 "use client"
 
 import { useThemeConfig } from "@/components/active-theme"
+import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Select,
   SelectContent,
@@ -54,8 +55,12 @@ export function ThemeSelector() {
 
   return (
     <div className="flex items-center gap-2">
+      <Label htmlFor="theme-selector" className="sr-only">
+        Theme
+      </Label>
       <Select value={activeTheme} onValueChange={setActiveTheme}>
         <SelectTrigger
+          id="theme-selector"
           size="sm"
           className="justify-start *:data-[slot=select-value]:w-12"
         >
