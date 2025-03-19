@@ -6,7 +6,7 @@
       "name": "index",
       "type": "registry:style",
       "dependencies": [
-        "tailwindcss-animate",
+        "tw-animate-css",
         "class-variance-authority",
         "lucide-react"
       ],
@@ -14,13 +14,6 @@
         "utils"
       ],
       "files": [],
-      "tailwind": {
-        "config": {
-          "plugins": [
-            "require(\"tailwindcss-animate\")"
-          ]
-        }
-      },
       "cssVars": {}
     },
     {
