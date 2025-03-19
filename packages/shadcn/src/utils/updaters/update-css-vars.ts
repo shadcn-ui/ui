@@ -87,12 +87,14 @@ export async function transformCssVars(
     plugins = []
 
     // Only add tw-animate-css if project does not have tailwindcss-animate
-    const packageInfo = getPackageInfo(config.resolvedPaths.cwd)
-    if (
-      !packageInfo?.dependencies?.["tailwindcss-animate"] &&
-      !packageInfo?.devDependencies?.["tailwindcss-animate"]
-    ) {
-      plugins.push(addCustomImport({ params: "tw-animate-css" }))
+    if (config.resolvedPaths?.cwd) {
+      const packageInfo = getPackageInfo(config.resolvedPaths.cwd)
+      if (
+        !packageInfo?.dependencies?.["tailwindcss-animate"] &&
+        !packageInfo?.devDependencies?.["tailwindcss-animate"]
+      ) {
+        plugins.push(addCustomImport({ params: "tw-animate-css" }))
+      }
     }
 
     plugins.push(addCustomVariant({ params: "dark (&:is(.dark *))" }))
