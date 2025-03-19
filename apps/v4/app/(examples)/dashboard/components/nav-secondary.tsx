@@ -45,7 +45,7 @@ export function NavSecondary({
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
-          <SidebarMenu className="group-data-[collapsible=icon]:hidden">
+          <SidebarMenuItem className="group-data-[collapsible=icon]:hidden">
             <SidebarMenuButton asChild>
               <label>
                 <IconBrightness />
@@ -63,7 +63,7 @@ export function NavSecondary({
                 )}
               </label>
             </SidebarMenuButton>
-          </SidebarMenu>
+          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>

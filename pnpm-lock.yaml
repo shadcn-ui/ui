@@ -294,15 +294,12 @@ importers:
       tailwindcss:
         specifier: ^4.0.7
         version: 4.0.7
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.0.7)
       ts-morph:
         specifier: ^22.0.0
         version: 22.0.0
       tw-animate-css:
-        specifier: ^1.2.2
-        version: 1.2.2
+        specifier: ^1.2.4
+        version: 1.2.4
       vaul:
         specifier: 1.1.2
         version: 1.1.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -346,6 +343,18 @@ importers:
 
   apps/www:
     dependencies:
+      '@dnd-kit/core':
+        specifier: ^6.3.1
+        version: 6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/modifiers':
+        specifier: ^9.0.0
+        version: 9.0.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/sortable':
+        specifier: ^10.0.0
+        version: 10.0.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/utilities':
+        specifier: ^3.2.2
+        version: 3.2.2(react@18.3.1)
       '@emotion/is-prop-valid':
         specifier: ^1.3.1
         version: 1.3.1
@@ -445,6 +454,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.0.6
         version: 1.1.7(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@tailwindcss/container-queries':
+        specifier: ^0.1.1
+        version: 0.1.1(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@17.0.45)(typescript@5.7.3)))
       '@tanstack/react-table':
         specifier: ^8.9.1
         version: 8.20.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2979,6 +2991,11 @@ packages:
 
   '@tabler/icons@3.31.0':
     resolution: {integrity: sha512-dblAdeKY3+GA1U+Q9eziZ0ooVlZMHsE8dqP0RkwvRtEsAULoKOYaCUOcJ4oW1DjWegdxk++UAt2SlQVnmeHv+g==}
+
+  '@tailwindcss/container-queries@0.1.1':
+    resolution: {integrity: sha512-p18dswChx6WnTSaJCSGx6lTmrGzNNvm2FtXmiO6AuA1V4U5REyoqwmT6kgAsIMdjo07QdAfYXHJ4hnMtfHzWgA==}
+    peerDependencies:
+      tailwindcss: '>=3.2.0'
 
   '@tailwindcss/node@4.0.2':
     resolution: {integrity: sha512-/q5HXvgEc5GaaAhoVj8oeAw1TPRlZtRAnzWz2ChpFdKsEAVoHUAW6EX/tDr3tkUfQ1VVSBpxeGUg0V0gPZSs1A==}
@@ -7747,8 +7764,8 @@ packages:
     resolution: {integrity: sha512-1q7+9UJABuBAHrcC4Sxp5lOqYS5mvxRrwa33wpIyM18hlOCpRD/fTJNxZ0vhbMcJmz15o9kkVm743mPn7p6jpQ==}
     hasBin: true
 
-  tw-animate-css@1.2.2:
-    resolution: {integrity: sha512-TdSaQcV+V8MypECoXr6Nnv3EQFz05kxfTUaOHtpWTQZp8r5Bx2OmTnkSZVlOTaRiS20a6wYw0RaAnNX2D8ywrQ==}
+  tw-animate-css@1.2.4:
+    resolution: {integrity: sha512-yt+HkJB41NAvOffe4NweJU6fLqAlVx/mBX6XmHRp15kq0JxTtOKaIw8pVSWM1Z+n2nXtyi7cW6C9f0WG/F/QAQ==}
 
   typanion@3.14.0:
     resolution: {integrity: sha512-ZW/lVMRabETuYCd9O9ZvMhAh8GslSqaUjxmK/JLPCh6l73CvLBiuXswj/+7LdnWOgYsQ130FqLzFz5aGT4I3Ug==}
@@ -8816,9 +8833,22 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
+  '@dnd-kit/accessibility@3.1.1(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+      tslib: 2.8.1
+
   '@dnd-kit/accessibility@3.1.1(react@19.0.0)':
     dependencies:
       react: 19.0.0
+      tslib: 2.8.1
+
+  '@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@dnd-kit/accessibility': 3.1.1(react@18.3.1)
+      '@dnd-kit/utilities': 3.2.2(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
       tslib: 2.8.1
 
   '@dnd-kit/core@6.3.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
@@ -8829,6 +8859,13 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
       tslib: 2.8.1
 
+  '@dnd-kit/modifiers@9.0.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@dnd-kit/core': 6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/utilities': 3.2.2(react@18.3.1)
+      react: 18.3.1
+      tslib: 2.8.1
+
   '@dnd-kit/modifiers@9.0.0(@dnd-kit/core@6.3.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@dnd-kit/core': 6.3.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -8836,11 +8873,23 @@ snapshots:
       react: 19.0.0
       tslib: 2.8.1
 
+  '@dnd-kit/sortable@10.0.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@dnd-kit/core': 6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/utilities': 3.2.2(react@18.3.1)
+      react: 18.3.1
+      tslib: 2.8.1
+
   '@dnd-kit/sortable@10.0.0(@dnd-kit/core@6.3.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@dnd-kit/core': 6.3.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@dnd-kit/utilities': 3.2.2(react@19.0.0)
       react: 19.0.0
+      tslib: 2.8.1
+
+  '@dnd-kit/utilities@3.2.2(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
       tslib: 2.8.1
 
   '@dnd-kit/utilities@3.2.2(react@19.0.0)':
@@ -11309,6 +11358,10 @@ snapshots:
       react: 19.0.0
 
   '@tabler/icons@3.31.0': {}
+
+  '@tailwindcss/container-queries@0.1.1(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@17.0.45)(typescript@5.7.3)))':
+    dependencies:
+      tailwindcss: 3.4.6(ts-node@10.9.2(@types/node@17.0.45)(typescript@5.7.3))
 
   '@tailwindcss/node@4.0.2':
     dependencies:
@@ -17175,10 +17228,6 @@ snapshots:
     dependencies:
       tailwindcss: 3.4.6(ts-node@10.9.2(@types/node@20.17.16)(typescript@5.7.3))
 
-  tailwindcss-animate@1.0.7(tailwindcss@4.0.7):
-    dependencies:
-      tailwindcss: 4.0.7
-
   tailwindcss@3.4.6(ts-node@10.9.2(@types/node@17.0.45)(typescript@5.7.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
@@ -17563,7 +17612,7 @@ snapshots:
       turbo-windows-64: 1.13.4
       turbo-windows-arm64: 1.13.4
 
-  tw-animate-css@1.2.2: {}
+  tw-animate-css@1.2.4: {}
 
   typanion@3.14.0: {}
 
