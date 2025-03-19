@@ -6,6 +6,7 @@ import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
+import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -103,17 +104,20 @@ export const add = new Command()
         options.components = await promptForRegistryComponents(options)
       }
 
-      const deprecatedComponents = DEPRECATED_COMPONENTS.filter((component) =>
-        options.components?.includes(component.name)
-      )
+      const projectInfo = await getProjectInfo(options.cwd)
+      if (projectInfo?.tailwindVersion === "v4") {
+        const deprecatedComponents = DEPRECATED_COMPONENTS.filter((component) =>
+          options.components?.includes(component.name)
+        )
 
-      if (deprecatedComponents?.length) {
-        logger.break()
-        deprecatedComponents.forEach((component) => {
-          logger.warn(highlighter.warn(component.message))
-        })
-        logger.break()
-        process.exit(1)
+        if (deprecatedComponents?.length) {
+          logger.break()
+          deprecatedComponents.forEach((component) => {
+            logger.warn(highlighter.warn(component.message))
+          })
+          logger.break()
+          process.exit(1)
+        }
       }
 
       let { errors, config } = await preFlightAdd(options)
