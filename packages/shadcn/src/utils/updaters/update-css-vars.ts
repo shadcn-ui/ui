@@ -5,6 +5,7 @@ import {
   registryItemTailwindSchema,
 } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
+import { getPackageInfo } from "@/src/utils/get-package-info"
 import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
@@ -83,10 +84,18 @@ export async function transformCssVars(
   }
 
   if (options.tailwindVersion === "v4") {
-    plugins = [
-      addCustomImport({ params: "tw-animate-css" }),
-      addCustomVariant({ params: "dark (&:is(.dark *))" }),
-    ]
+    plugins = []
+
+    // Only add tw-animate-css if project does not have tailwindcss-animate
+    const packageInfo = getPackageInfo(config.resolvedPaths.cwd)
+    if (
+      !packageInfo?.dependencies?.["tailwindcss-animate"] &&
+      !packageInfo?.devDependencies?.["tailwindcss-animate"]
+    ) {
+      plugins.push(addCustomImport({ params: "tw-animate-css" }))
+    }
+
+    plugins.push(addCustomVariant({ params: "dark (&:is(.dark *))" }))
 
     if (options.cleanupDefaultNextStyles) {
       plugins.push(cleanupDefaultNextStylesPlugin())
