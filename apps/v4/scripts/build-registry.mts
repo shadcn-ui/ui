@@ -21,16 +21,11 @@ const registry = {
         name: "index",
         type: "registry:style",
         dependencies: [
-          "tailwindcss-animate",
+          "tw-animate-css",
           "class-variance-authority",
           "lucide-react",
         ],
         registryDependencies: ["utils"],
-        tailwind: {
-          config: {
-            plugins: [`require("tailwindcss-animate")`],
-          },
-        },
         cssVars: {},
         files: [],
       },

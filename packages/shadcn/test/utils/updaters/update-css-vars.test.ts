@@ -202,6 +202,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -260,6 +261,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
               :root {
@@ -324,6 +326,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
               :root {
@@ -389,6 +392,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
               :root {
@@ -464,6 +468,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
               :root {
@@ -525,6 +530,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -575,6 +581,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -625,6 +632,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -673,6 +681,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -728,6 +737,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
             @custom-variant dark (&:is(.dark *));
             :root {
               --radius: 0.125rem;
@@ -769,6 +779,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -812,6 +823,7 @@ describe("transformCssVarsV4", () => {
       "@import "tailwindcss";
 
       @plugin "tailwindcss-animate";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -847,6 +859,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
               @plugin "tailwindcss-animate";
@@ -888,6 +901,7 @@ describe("transformCssVarsV4", () => {
       @plugin '@tailwindcss/typography';
 
       @plugin 'tailwindcss-animate';
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -932,6 +946,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -1008,6 +1023,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -1076,6 +1092,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
 
@@ -1150,6 +1167,7 @@ describe("transformCssVarsV4", () => {
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
+      @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));
               @theme inline {
