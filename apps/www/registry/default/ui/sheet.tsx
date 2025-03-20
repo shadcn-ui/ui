@@ -51,17 +51,21 @@ const sheetVariants = cva(
 
 interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
-    VariantProps<typeof sheetVariants> {}
+    VariantProps<typeof sheetVariants> {
+      disableBackdrop?: boolean;
+      closeOnClickOutside?: boolean;
+    }
 
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
->(({ side = "right", className, children, ...props }, ref) => (
+>(({ side = "right", className, children, disableBackdrop=false, closeOnClickOutside=true, ...props }, ref) => (
   <SheetPortal>
-    <SheetOverlay />
+    {!disableBackdrop && <SheetOverlay />}
     <SheetPrimitive.Content
       ref={ref}
       className={cn(sheetVariants({ side }), className)}
+      onPointerDownOutside={!closeOnClickOutside ? ((e) => e.preventDefault()) : undefined} 
       {...props}
     >
       {children}
