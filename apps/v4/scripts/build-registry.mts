@@ -20,11 +20,8 @@ const registry = {
       {
         name: "index",
         type: "registry:style",
-        dependencies: [
-          "tw-animate-css",
-          "class-variance-authority",
-          "lucide-react",
-        ],
+        dependencies: ["class-variance-authority", "lucide-react"],
+        devDependencies: ["tw-animate-css"],
         registryDependencies: ["utils"],
         cssVars: {},
         files: [],
