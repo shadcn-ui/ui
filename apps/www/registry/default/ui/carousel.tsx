@@ -7,7 +7,7 @@ import useEmblaCarousel, {
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/components/ui/button"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -24,10 +24,18 @@ type CarouselProps = {
 type CarouselContextProps = {
   carouselRef: ReturnType<typeof useEmblaCarousel>[0]
   api: ReturnType<typeof useEmblaCarousel>[1]
+
+  // Arrow Props
   scrollPrev: () => void
   scrollNext: () => void
   canScrollPrev: boolean
   canScrollNext: boolean
+
+  // Dot Props
+  selectedIndex: number
+  scrollSnaps: number[]
+  onDotButtonClick: (index: number) => void
+
 } & CarouselProps
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
@@ -65,18 +73,33 @@ const Carousel = React.forwardRef<
       },
       plugins
     )
+    //Arrow States
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
+
+    //Dot States
+    const [selectedIndex, setSelectedIndex] = React.useState(0)
+    const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([])
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
         return
       }
 
+      //On Select for Arrows
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
+
+      //On Select for Dot
+      setSelectedIndex(api.selectedScrollSnap())
     }, [])
 
+    //On init for Dots
+    const onInit = React.useCallback((api: CarouselApi) => {
+      setScrollSnaps(api?.scrollSnapList || [])
+    }, [])
+
+    // Arrow Actions
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev()
     }, [api])
@@ -84,6 +107,11 @@ const Carousel = React.forwardRef<
     const scrollNext = React.useCallback(() => {
       api?.scrollNext()
     }, [api])
+
+    // Dot Actions
+    const onDotButtonClick = (index: number) => {
+      api?.scrollTo(index);
+    };
 
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -111,14 +139,16 @@ const Carousel = React.forwardRef<
         return
       }
 
+      onInit(api)
       onSelect(api)
+      api.on("reInit", onInit)
       api.on("reInit", onSelect)
       api.on("select", onSelect)
 
       return () => {
         api?.off("select", onSelect)
       }
-    }, [api, onSelect])
+    }, [api, onInit, onSelect])
 
     return (
       <CarouselContext.Provider
@@ -132,6 +162,10 @@ const Carousel = React.forwardRef<
           scrollNext,
           canScrollPrev,
           canScrollNext,
+
+          selectedIndex,
+          scrollSnaps,
+          onDotButtonClick,
         }}
       >
         <div
@@ -252,6 +286,49 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+const CarouselDot = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<typeof Button>
+>(({ className, variant = "outline", size = "icon", ...props }, ref) => {
+  const { orientation } = useCarousel()
+  return (
+    <Button
+      ref={ref}
+      variant={variant}
+      size={size}
+      className={cn(
+        "h-6 w-6 rounded-full",
+        orientation === "horizontal"
+          ? ""
+          : "",
+        className
+      )}
+      {...props}
+    >
+    </Button>
+  )
+})
+CarouselDot.displayName = "CarouselDot"
+
+const CarouselDots = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => {
+    const { scrollSnaps, selectedIndex, onDotButtonClick } = useCarousel();
+
+    return (
+      <div ref={ref} className={`flex justify-center space-x-2 p-2 ${className}`} {...props}>
+        {scrollSnaps.map((_, index) => (
+          <CarouselDot
+            key={index}
+            className={`${index === selectedIndex && 'border-white'}`}
+            onClick={() => onDotButtonClick(index)}
+          />
+        ))}
+      </div>
+    );
+  }
+);
+CarouselDots.displayName = "CarouselDots"
+
 export {
   type CarouselApi,
   Carousel,
@@ -259,4 +336,6 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDot,
+  CarouselDots,
 }
