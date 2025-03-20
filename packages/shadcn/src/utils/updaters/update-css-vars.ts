@@ -5,6 +5,7 @@ import {
   registryItemTailwindSchema,
 } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
+import { getPackageInfo } from "@/src/utils/get-package-info"
 import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
@@ -83,7 +84,20 @@ export async function transformCssVars(
   }
 
   if (options.tailwindVersion === "v4") {
-    plugins = [addCustomVariant({ params: "dark (&:is(.dark *))" })]
+    plugins = []
+
+    // Only add tw-animate-css if project does not have tailwindcss-animate
+    if (config.resolvedPaths?.cwd) {
+      const packageInfo = getPackageInfo(config.resolvedPaths.cwd)
+      if (
+        !packageInfo?.dependencies?.["tailwindcss-animate"] &&
+        !packageInfo?.devDependencies?.["tailwindcss-animate"]
+      ) {
+        plugins.push(addCustomImport({ params: "tw-animate-css" }))
+      }
+    }
+
+    plugins.push(addCustomVariant({ params: "dark (&:is(.dark *))" }))
 
     if (options.cleanupDefaultNextStyles) {
       plugins.push(cleanupDefaultNextStylesPlugin())
@@ -543,14 +557,78 @@ function addCustomVariant({ params }: { params: string }) {
         (node): node is AtRule =>
           node.type === "atrule" && node.name === "custom-variant"
       )
+
       if (!customVariant) {
+        // Find all import nodes
+        const importNodes = root.nodes.filter(
+          (node): node is AtRule =>
+            node.type === "atrule" && node.name === "import"
+        )
+
         const variantNode = postcss.atRule({
           name: "custom-variant",
           params,
           raws: { semicolon: true, before: "\n" },
         })
-        root.insertAfter(root.nodes[0], variantNode)
+
+        if (importNodes.length > 0) {
+          // Insert after the last import
+          const lastImport = importNodes[importNodes.length - 1]
+          root.insertAfter(lastImport, variantNode)
+        } else {
+          // If no imports, insert after the first node
+          root.insertAfter(root.nodes[0], variantNode)
+        }
+
         root.insertBefore(variantNode, postcss.comment({ text: "---break---" }))
+      }
+    },
+  }
+}
+
+function addCustomImport({ params }: { params: string }) {
+  return {
+    postcssPlugin: "add-custom-import",
+    Once(root: Root) {
+      const importNodes = root.nodes.filter(
+        (node): node is AtRule =>
+          node.type === "atrule" && node.name === "import"
+      )
+
+      // Find custom variant node (to ensure we insert before it)
+      const customVariantNode = root.nodes.find(
+        (node): node is AtRule =>
+          node.type === "atrule" && node.name === "custom-variant"
+      )
+
+      // Check if our specific import already exists
+      const hasImport = importNodes.some(
+        (node) => node.params.replace(/["']/g, "") === params
+      )
+
+      if (!hasImport) {
+        const importNode = postcss.atRule({
+          name: "import",
+          params: `"${params}"`,
+          raws: { semicolon: true, before: "\n" },
+        })
+
+        if (importNodes.length > 0) {
+          // If there are existing imports, add after the last import
+          const lastImport = importNodes[importNodes.length - 1]
+          root.insertAfter(lastImport, importNode)
+        } else if (customVariantNode) {
+          // If no imports but has custom-variant, insert before it
+          root.insertBefore(customVariantNode, importNode)
+          root.insertBefore(
+            customVariantNode,
+            postcss.comment({ text: "---break---" })
+          )
+        } else {
+          // If no imports and no custom-variant, insert at the start
+          root.prepend(importNode)
+          root.insertAfter(importNode, postcss.comment({ text: "---break---" }))
+        }
       }
     },
   }
