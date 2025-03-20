@@ -22,10 +22,10 @@ const registry = {
         type: "registry:style",
         dependencies: [
           "class-variance-authority",
-          "lucide-react"
+          "lucide-react",
         ],
         "devDependencies": [
-          "tw-animate-css"
+          "tw-animate-css",
         ],
         registryDependencies: ["utils"],
         cssVars: {},
