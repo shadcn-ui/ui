@@ -8,6 +8,7 @@ type Config = {
   style: Style["name"]
   theme: BaseColor["name"]
   radius: number
+  tailwindcssVersion: string
   packageManager: "npm" | "yarn" | "pnpm" | "bun"
   installationType: "cli" | "manual"
 }
@@ -16,6 +17,7 @@ const configAtom = atomWithStorage<Config>("config", {
   style: "new-york",
   theme: "zinc",
   radius: 0.5,
+  tailwindcssVersion: "v4+",
   packageManager: "pnpm",
   installationType: "cli",
 })
