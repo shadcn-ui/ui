@@ -35,7 +35,6 @@ export async function updateDependencies(
   })?.start()
   const packageManager = await getPackageManager(config.resolvedPaths.cwd)
 
-
   // Offer to use --force or --legacy-peer-deps if using React 19 with npm.
   let flag = ""
   if (isUsingReact19(config) && packageManager === "npm") {
