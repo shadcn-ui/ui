@@ -9,13 +9,16 @@ import prompts from "prompts"
 
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
+  devDependencies: RegistryItem["devDependencies"],
   config: Config,
   options: {
     silent?: boolean
   }
 ) {
   dependencies = Array.from(new Set(dependencies))
-  if (!dependencies?.length) {
+  devDependencies = Array.from(new Set(devDependencies))
+  
+  if (!dependencies?.length && !devDependencies?.length) {
     return
   }
 
@@ -59,17 +62,34 @@ export async function updateDependencies(
 
   dependenciesSpinner?.start()
 
-  await execa(
-    packageManager,
-    [
-      packageManager === "npm" ? "install" : "add",
-      ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
-      ...dependencies,
-    ],
-    {
-      cwd: config.resolvedPaths.cwd,
-    }
-  )
+  if (dependencies?.length) {
+    await execa(
+      packageManager,
+      [
+        packageManager === "npm" ? "install" : "add",
+        ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
+        ...dependencies,
+      ],
+      {
+        cwd: config.resolvedPaths.cwd,
+      }
+    )
+  }
+
+  if (devDependencies?.length) {
+    await execa(
+      packageManager,
+      [
+        packageManager === "npm" ? "install" : "add",
+        ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
+        "-D",
+        ...devDependencies,
+      ],
+      {
+        cwd: config.resolvedPaths.cwd,
+      }
+    )
+  }
 
   dependenciesSpinner?.succeed()
 }
