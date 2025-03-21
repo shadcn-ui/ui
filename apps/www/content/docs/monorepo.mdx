@@ -175,7 +175,7 @@ This guide walks you through containerizing your shadcn/ui monorepo project with
 ### Prerequisites
 
 - **Docker:** Ensure [Docker](https://docker.com) is installed on your machine.
-- **Next.js Configuration:** Configure your `next.config.mjs` to enable standalone output, which allows the application to run independently—a requirement for containerization:
+- **Next.js Configuration:** Configure your `next.config.mjs` to enable standalone output.
 
   ```js
   export default {
@@ -183,6 +183,8 @@ This guide walks you through containerizing your shadcn/ui monorepo project with
     // other settings
   }
   ```
+
+This will build the project as a standalone app inside the Docker image.
 
 ### Build the Image
 
@@ -329,12 +331,6 @@ Once the container is running, visit [http://localhost:3000](http://localhost:30
 - The Dockerfile leverages a multi-stage build to create a lightweight, secure runtime image. Explore our [example Dockerfile](https://github.com/shadcn-ui/ui/blob/main/templates/monorepo-next/apps/web/Dockerfile) for more details.
 - For additional guidance on integrating Turbo Repo with Docker, see the [Turbo Repo documentation](https://turbo.build/repo/docs/guides/tools/docker).
 - Customize the Dockerfile or `docker-compose.yml` as needed to fit your project’s requirements.
-
-### Notes
-
-- The Dockerfile is set up as a multi-stage build to ensure a minimal, secure runtime image. You can check out our [Dockerfile](https://github.com/shadcn-ui/ui/blob/main/templates/monorepo-next/apps/web/Dockerfile) for more details.
-
-- For more guidance on using Turbo Repo with Docker, please refer to the [Turbo Repo docs](https://turbo.build/repo/docs/guides/tools/docker).
 
 ## Help us improve monorepo support
 
