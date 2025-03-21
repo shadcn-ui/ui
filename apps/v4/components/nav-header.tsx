@@ -14,7 +14,7 @@ export function NavHeader() {
   const pathname = usePathname()
 
   return (
-    <NavigationMenu>
+    <NavigationMenu className="hidden sm:flex">
       <NavigationMenuList className="gap-2 *:data-[slot=navigation-menu-item]:h-7 **:data-[slot=navigation-menu-link]:py-1 **:data-[slot=navigation-menu-link]:font-medium">
         <NavigationMenuItem>
           <NavigationMenuLink asChild data-active={pathname === "/"}>
@@ -24,6 +24,11 @@ export function NavHeader() {
         <NavigationMenuItem>
           <NavigationMenuLink asChild data-active={pathname === "/charts"}>
             <Link href="/charts">Charts</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild data-active={pathname === "/forms"}>
+            <Link href="/forms">Forms</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>

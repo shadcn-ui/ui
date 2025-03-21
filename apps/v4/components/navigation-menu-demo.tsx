@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import Link from "next/link"
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
@@ -54,7 +52,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   return (
-    <div className="hidden w-full flex-col items-center justify-center gap-6 md:flex">
+    <div className="hidden w-full flex-col items-center justify-center gap-6 @xl:flex">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>

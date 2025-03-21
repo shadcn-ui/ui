@@ -81,6 +81,7 @@ export const ui: Registry["items"] = [
   {
     name: "badge",
     type: "registry:ui",
+    dependencies: ["@radix-ui/react-slot"],
     files: [
       {
         path: "ui/badge.tsx",

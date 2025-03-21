@@ -6,6 +6,7 @@ import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
+import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -38,6 +39,7 @@ export const addOptionsSchema = z.object({
   path: z.string().optional(),
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
+  cssVariables: z.boolean(),
 })
 
 export const add = new Command()
@@ -62,6 +64,12 @@ export const add = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option(
+    "--no-src-dir",
+    "do not use the src directory when creating a new project."
+  )
+  .option("--css-variables", "use css variables for theming.", true)
+  .option("--no-css-variables", "do not use css variables for theming.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -96,17 +104,20 @@ export const add = new Command()
         options.components = await promptForRegistryComponents(options)
       }
 
-      const deprecatedComponents = DEPRECATED_COMPONENTS.filter((component) =>
-        options.components?.includes(component.name)
-      )
+      const projectInfo = await getProjectInfo(options.cwd)
+      if (projectInfo?.tailwindVersion === "v4") {
+        const deprecatedComponents = DEPRECATED_COMPONENTS.filter((component) =>
+          options.components?.includes(component.name)
+        )
 
-      if (deprecatedComponents?.length) {
-        logger.break()
-        deprecatedComponents.forEach((component) => {
-          logger.warn(highlighter.warn(component.message))
-        })
-        logger.break()
-        process.exit(1)
+        if (deprecatedComponents?.length) {
+          logger.break()
+          deprecatedComponents.forEach((component) => {
+            logger.warn(highlighter.warn(component.message))
+          })
+          logger.break()
+          process.exit(1)
+        }
       }
 
       let { errors, config } = await preFlightAdd(options)
@@ -136,12 +147,13 @@ export const add = new Command()
           silent: true,
           isNewProject: false,
           srcDir: options.srcDir,
+          cssVariables: options.cssVariables,
         })
       }
 
       let shouldUpdateAppIndex = false
       if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-        const { projectPath, projectType } = await createProject({
+        const { projectPath, template } = await createProject({
           cwd: options.cwd,
           force: options.overwrite,
           srcDir: options.srcDir,
@@ -153,7 +165,7 @@ export const add = new Command()
         }
         options.cwd = projectPath
 
-        if (projectType === "monorepo") {
+        if (template === "next-monorepo") {
           options.cwd = path.resolve(options.cwd, "apps/web")
           config = await getConfig(options.cwd)
         } else {
@@ -166,6 +178,7 @@ export const add = new Command()
             silent: true,
             isNewProject: true,
             srcDir: options.srcDir,
+            cssVariables: options.cssVariables,
           })
 
           shouldUpdateAppIndex =
@@ -204,7 +217,11 @@ async function promptForRegistryComponents(
   }
 
   if (options.all) {
-    return registryIndex.map((entry) => entry.name)
+    return registryIndex
+      .map((entry) => entry.name)
+      .filter(
+        (component) => !DEPRECATED_COMPONENTS.some((c) => c.name === component)
+      )
   }
 
   if (options.components?.length) {

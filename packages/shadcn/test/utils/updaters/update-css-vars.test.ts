@@ -47,7 +47,7 @@ describe("transformCssVars", () => {
 
       @layer base {
         * {
-          @apply border-border outline-ring/50;
+          @apply border-border;
         }
         body {
           @apply bg-background text-foreground;
@@ -110,7 +110,7 @@ describe("transformCssVars", () => {
 
       @layer base {
         * {
-          @apply border-border outline-ring/50;
+          @apply border-border;
         }
         body {
           @apply bg-background text-foreground;
@@ -171,17 +171,6 @@ describe("transformCssVars", () => {
       @layer base {
         * {
           @apply border-border;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
-      }
-
-
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -274,7 +263,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
               }
@@ -338,7 +327,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
               }
@@ -403,7 +392,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
                 --foo: 0.5rem;
@@ -478,7 +467,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
               }

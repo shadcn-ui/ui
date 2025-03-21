@@ -60,7 +60,7 @@ const data = [
 
 export function DrawerDemo() {
   return (
-    <div className="flex flex-col items-start gap-4 md:flex-row md:items-center">
+    <div className="flex flex-wrap items-start gap-4">
       <DrawerBottom />
       <DrawerScrollableContent />
       <DrawerDirections />
@@ -124,7 +124,7 @@ function DrawerBottom() {
                     dataKey="goal"
                     style={
                       {
-                        fill: "hsl(var(--foreground))",
+                        fill: "var(--primary)",
                         opacity: 0.9,
                       } as React.CSSProperties
                     }
