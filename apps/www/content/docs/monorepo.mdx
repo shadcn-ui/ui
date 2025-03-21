@@ -170,12 +170,12 @@ By following these requirements, the CLI will be able to install ui components, 
 
 ## Docker Support
 
-Below is a quick guide to running your shadcn/ui monorepo project in Docker.
+This guide walks you through containerizing your shadcn/ui monorepo project with Docker, enabling you to run your application in a consistent and isolated environment.
 
 ### Prerequisites
 
-- **Docker:** Ensure [Docker](https://docker.com) is installed and running.
-- **Next.js Configuration:** Update `next.config.mjs` to enable a standalone build:
+- **Docker:** Ensure [Docker](https://docker.com) is installed on your machine.
+- **Next.js Configuration:** Configure your `next.config.mjs` to enable standalone output, which allows the application to run independently—a requirement for containerization:
 
   ```js
   export default {
@@ -186,27 +186,149 @@ Below is a quick guide to running your shadcn/ui monorepo project in Docker.
 
 ### Build the Image
 
-From the repository root, run:
+To containerize your application, create a Dockerfile in your `apps/web` directory. The following multi-stage Dockerfile optimizes the build process and produces a minimal runtime image:
+
+```dockerfile
+# Base image for building stages
+FROM node:20-alpine AS base-build
+# Install required packages
+RUN apk update && apk add --no-cache libc6-compat
+
+# Base image for the runtime environment
+FROM node:20-alpine AS base-runner
+
+# Builder stage: Prepare the monorepo
+FROM base-build AS builder
+WORKDIR /app
+
+# Install Turbo globally for monorepo management
+RUN npm install -g turbo
+
+# Copy the entire monorepo
+COPY . .
+
+# Prune the monorepo to include only the 'web' workspace
+RUN turbo prune --scope=web --docker
+
+# Installer stage: Set up dependencies and build
+FROM base-build AS installer
+WORKDIR /app
+
+# Copy pruned monorepo structure
+COPY --from=builder /app/out/json/ .
+COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
+
+# Install pnpm via corepack
+RUN npm install -g corepack@latest \
+  && corepack enable \
+  && corepack prepare pnpm@9.12.3 --activate
+
+# Install dependencies with a frozen lockfile
+RUN pnpm install --frozen-lockfile
+
+# Copy the full source code
+COPY --from=builder /app/out/full/ .
+
+# Create the public directory
+RUN mkdir -p /app/apps/web/public
+
+# Build the 'web' application
+RUN pnpm dlx turbo run build --filter=web
+
+# Runner stage: Set up the runtime environment
+FROM base-runner AS runner
+WORKDIR /app
+
+# Create a non-root user for security
+RUN addgroup --system --gid 1001 nodejs \
+  && adduser --system --uid 1001 nextjs
+
+# Switch to the non-root user
+USER nextjs
+
+# Copy essential configuration files
+COPY --from=installer /app/apps/web/next.config.mjs .
+COPY --from=installer /app/apps/web/package.json .
+
+# Copy the standalone build output
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
+# Copy static assets
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
+# Copy public directory
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
+
+# Expose the application port
+EXPOSE 3000
+
+# Start the application
+CMD ["node", "apps/web/server.js"]
+```
+
+From the root directory of your monorepo, build the Docker image with:
 
 ```bash
 docker build -t shadcn-ui-web -f apps/web/Dockerfile .
 ```
 
+This command creates an image tagged `shadcn-ui-web` using the Dockerfile in `apps/web`.
+
 ### Run the Container
 
-To launch the container, run:
+You can launch the container using either Docker directly or Docker Compose.
+
+#### Using Docker
+
+Run the container and map port 3000 from the container to your host:
 
 ```bash
 docker run -p 3000:3000 shadcn-ui-web
 ```
 
-Alternatively, if you are using Docker Compose:
+#### Using Docker Compose
+
+Alternatively, use Docker Compose for more configuration options. Create a `docker-compose.yml` file in the root directory:
+
+```yaml
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    name: my_network
+    driver: bridge
+```
+
+Then, start the container in detached mode:
 
 ```bash
 docker compose up --build -d
 ```
 
-Then, visit [http://localhost:3000](http://localhost:3000) in your browser.
+This setup:
+
+- Builds the image from the Dockerfile.
+- Maps port 3000 to your host.
+- Sets the `NODE_ENV` environment variable to `production`.
+- Ensures the container restarts unless manually stopped.
+- Connects to a custom bridge network.
+
+Once the container is running, visit [http://localhost:3000](http://localhost:3000) in your browser to access the application.
+
+### Notes
+
+- The Dockerfile leverages a multi-stage build to create a lightweight, secure runtime image. Explore our [example Dockerfile](https://github.com/shadcn-ui/ui/blob/main/templates/monorepo-next/apps/web/Dockerfile) for more details.
+- For additional guidance on integrating Turbo Repo with Docker, see the [Turbo Repo documentation](https://turbo.build/repo/docs/guides/tools/docker).
+- Customize the Dockerfile or `docker-compose.yml` as needed to fit your project’s requirements.
 
 ### Notes
 

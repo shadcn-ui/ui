@@ -32,14 +32,4 @@ import { Button } from "@workspace/ui/components/ui/button"
 
 ## Using Docker
 
-If you want to use Docker for development, you can uncomment the following line in the `next.config.mjs` file:
-
-```mjs
-output: "standalone", // Uncomment this line if you use Docker
-```
-
-And then run the following command:
-
-```bash
-docker compose up --build -d
-```
+If you want to use Docker for development, please refer to the [Docker documentation](https://ui.shadcn.com/docs/monorepo) for guidance on how to set up your Docker environment.
