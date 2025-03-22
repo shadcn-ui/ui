@@ -619,4 +619,31 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "sign-up-01",
+    description: "A sign up page with e-mail and login, using inset sidebar.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label", "checkbox"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "blocks/sign-up-01/page.tsx",
+        target: "app/sign-up/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/sign-up-01/components/sign-up-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sign-up-01/components/app-sidebar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/sign-up-01/components/terms.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication"],
+  },
 ]

@@ -1277,6 +1277,33 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "sign-up-01": {
+      name: "sign-up-01",
+      description: "A sign up page with e-mail and login, using inset sidebar.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label","checkbox"],
+      files: [{
+        path: "registry/new-york/blocks/sign-up-01/page.tsx",
+        type: "registry:page",
+        target: "app/sign-up/page.tsx"
+      },{
+        path: "registry/new-york/blocks/sign-up-01/components/sign-up-form.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/sign-up-01/components/app-sidebar.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/new-york/blocks/sign-up-01/components/terms.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["authentication"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/sign-up-01/page.tsx")),
+      source: "__registry__/new-york/blocks/sign-up-01/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6573,6 +6600,33 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "sign-up-01": {
+      name: "sign-up-01",
+      description: "A sign up page with e-mail and login, using inset sidebar.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label","checkbox"],
+      files: [{
+        path: "registry/default/blocks/sign-up-01/page.tsx",
+        type: "registry:page",
+        target: "app/sign-up/page.tsx"
+      },{
+        path: "registry/default/blocks/sign-up-01/components/sign-up-form.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/sign-up-01/components/app-sidebar.tsx",
+        type: "registry:component",
+        target: ""
+      },{
+        path: "registry/default/blocks/sign-up-01/components/terms.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["authentication"],
+      component: React.lazy(() => import("@/registry/default/blocks/sign-up-01/page.tsx")),
+      source: "__registry__/default/blocks/sign-up-01/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {
