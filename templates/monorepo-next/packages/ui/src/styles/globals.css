@@ -7,6 +7,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@utility container {
+  @apply mx-auto px-4 sm:px-8 2xl:max-w-[1400px];
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
