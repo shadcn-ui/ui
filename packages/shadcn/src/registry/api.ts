@@ -289,6 +289,14 @@ export async function registryResolveItemsTree(
       }
     }
 
+    // Sort the payload so that registry:theme is always first.
+    payload.sort((a, b) => {
+      if (a.type === "registry:theme") {
+        return -1
+      }
+      return 1
+    })
+
     let tailwind = {}
     payload.forEach((item) => {
       tailwind = deepmerge(tailwind, item.tailwind ?? {})

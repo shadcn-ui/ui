@@ -15,7 +15,8 @@
         "registry:hook",
         "registry:theme",
         "registry:page",
-        "registry:file"
+        "registry:file",
+        "registry:style"
       ]
     },
     "description": {

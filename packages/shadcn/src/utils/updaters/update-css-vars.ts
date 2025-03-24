@@ -20,6 +20,7 @@ export async function updateCssVars(
   config: Config,
   options: {
     cleanupDefaultNextStyles?: boolean
+    overwriteCssVars?: boolean
     silent?: boolean
     tailwindVersion?: TailwindVersion
     tailwindConfig?: z.infer<typeof registryItemTailwindSchema>["config"]
@@ -33,6 +34,7 @@ export async function updateCssVars(
     cleanupDefaultNextStyles: false,
     silent: false,
     tailwindVersion: "v3",
+    overwriteCssVars: false,
     ...options,
   }
   const cssFilepath = config.resolvedPaths.tailwindCss
@@ -51,6 +53,7 @@ export async function updateCssVars(
     cleanupDefaultNextStyles: options.cleanupDefaultNextStyles,
     tailwindVersion: options.tailwindVersion,
     tailwindConfig: options.tailwindConfig,
+    overwriteCssVars: options.overwriteCssVars,
   })
   await fs.writeFile(cssFilepath, output, "utf8")
   cssVarsSpinner.succeed()
@@ -64,16 +67,19 @@ export async function transformCssVars(
     cleanupDefaultNextStyles?: boolean
     tailwindVersion?: TailwindVersion
     tailwindConfig?: z.infer<typeof registryItemTailwindSchema>["config"]
+    overwriteCssVars?: boolean
   } = {
     cleanupDefaultNextStyles: false,
     tailwindVersion: "v3",
     tailwindConfig: undefined,
+    overwriteCssVars: false,
   }
 ) {
   options = {
     cleanupDefaultNextStyles: false,
     tailwindVersion: "v3",
     tailwindConfig: undefined,
+    overwriteCssVars: false,
     ...options,
   }
 
@@ -103,7 +109,11 @@ export async function transformCssVars(
       plugins.push(cleanupDefaultNextStylesPlugin())
     }
 
-    plugins.push(updateCssVarsPluginV4(cssVars))
+    plugins.push(
+      updateCssVarsPluginV4(cssVars, {
+        overwriteCssVars: options.overwriteCssVars,
+      })
+    )
     plugins.push(updateThemePlugin(cssVars))
 
     if (options.tailwindConfig) {
@@ -374,7 +384,10 @@ function addOrUpdateVars(
 }
 
 function updateCssVarsPluginV4(
-  cssVars: z.infer<typeof registryItemCssVarsSchema>
+  cssVars: z.infer<typeof registryItemCssVarsSchema>,
+  options: {
+    overwriteCssVars?: boolean
+  }
 ) {
   return {
     postcssPlugin: "update-css-vars-v4",
@@ -419,11 +432,20 @@ function updateCssVarsPluginV4(
               node.type === "decl" && node.prop === prop
           )
 
-          // Do not override existing declarations.
-          // We do not want new components to override existing vars.
+          // Only overwrite if overwriteCssVars is true
+          // i.e for registry:theme and registry:style
+          // We do not want new components to overwrite existing vars.
           // Keep user defined vars.
-          if (!existingDecl) {
-            ruleNode?.append(newDecl)
+          if (options.overwriteCssVars) {
+            if (existingDecl) {
+              existingDecl.replaceWith(newDecl)
+            } else {
+              ruleNode?.append(newDecl)
+            }
+          } else {
+            if (!existingDecl) {
+              ruleNode?.append(newDecl)
+            }
           }
         })
       })

@@ -82,11 +82,14 @@ async function addProjectComponents(
     silent: options.silent,
     tailwindVersion,
   })
+
+  const overwriteCssVars = await shouldOverwriteCssVars(components, config)
   await updateCssVars(tree.cssVars, config, {
     cleanupDefaultNextStyles: options.isNewProject,
     silent: options.silent,
     tailwindVersion,
     tailwindConfig: tree.tailwind?.config,
+    overwriteCssVars,
   })
 
   await updateDependencies(tree.dependencies, config, {
@@ -175,10 +178,12 @@ async function addWorkspaceComponents(
 
     // 2. Update css vars.
     if (component.cssVars) {
+      const overwriteCssVars = await shouldOverwriteCssVars(components, config)
       await updateCssVars(component.cssVars, targetConfig, {
         silent: true,
         tailwindVersion,
         tailwindConfig: component.tailwind?.config,
+        overwriteCssVars,
       })
       filesUpdated.push(
         path.relative(workspaceRoot, targetConfig.resolvedPaths.tailwindCss)
@@ -270,4 +275,18 @@ async function addWorkspaceComponents(
       logger.log(`  - ${file}`)
     }
   }
+}
+
+async function shouldOverwriteCssVars(
+  components: z.infer<typeof registryItemSchema>["name"][],
+  config: z.infer<typeof configSchema>
+) {
+  let registryItems = await resolveRegistryItems(components, config)
+  let result = await fetchRegistry(registryItems)
+  const payload = z.array(registryItemSchema).parse(result)
+
+  return payload.some(
+    (component) =>
+      component.type === "registry:theme" || component.type === "registry:style"
+  )
 }

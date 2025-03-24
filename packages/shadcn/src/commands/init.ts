@@ -121,6 +121,15 @@ export const init = new Command()
         ...opts,
       })
 
+      // Skip base color if style.
+      // We set a default and let the style override it.
+      const isStyle =
+        components?.length === 1 &&
+        components[0].split("/").pop().startsWith("style-")
+      if (isStyle) {
+        options.baseColor = "neutral"
+      }
+
       await runInit(options)
 
       logger.log(
