@@ -136,7 +136,6 @@ export const docsConfig: DocsConfig = {
           title: "React Router",
           href: "/docs/installation/react-router",
           items: [],
-          label: "New",
         },
         {
           title: "Remix",
@@ -152,7 +151,11 @@ export const docsConfig: DocsConfig = {
           title: "Tanstack Start",
           href: "/docs/installation/tanstack",
           items: [],
-          label: "New",
+        },
+        {
+          title: "Tanstack Router",
+          href: "/docs/installation/tanstack-router",
+          items: [],
         },
         {
           title: "Manual",
