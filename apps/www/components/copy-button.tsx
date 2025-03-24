@@ -148,7 +148,7 @@ export function CopyNpmCommandButton({
   }, [hasCopied])
 
   const copyCommand = React.useCallback(
-    (value: string, pm: "npm" | "pnpm" | "yarn" | "bun") => {
+    (value: string, pm: "npm" | "pnpm" | "yarn" | "bun" | "deno") => {
       copyToClipboardWithMeta(value, {
         name: "copy_npm_command",
         properties: {
@@ -200,6 +200,11 @@ export function CopyNpmCommandButton({
           onClick={() => copyCommand(commands.__bunCommand__, "bun")}
         >
           bun
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => copyCommand(commands.__denoCommand__, "deno")}
+        >
+          deno
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
