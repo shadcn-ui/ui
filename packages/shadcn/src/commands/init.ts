@@ -4,6 +4,7 @@ import { preFlightInit } from "@/src/preflights/preflight-init"
 import {
   BASE_COLORS,
   getRegistryBaseColors,
+  getRegistryItem,
   getRegistryStyles,
 } from "@/src/registry/api"
 import { addComponents } from "@/src/utils/add-components"
@@ -74,6 +75,7 @@ export const initOptionsSchema = z.object({
         ).join("', '")}'`,
       }
     ),
+  style: z.string(),
 })
 
 export const init = new Command()
@@ -118,16 +120,22 @@ export const init = new Command()
         cwd: path.resolve(opts.cwd),
         isNewProject: false,
         components,
+        style: "index",
         ...opts,
       })
 
-      // Skip base color if style.
-      // We set a default and let the style override it.
-      const isStyle =
+      const isProbablyRegistryStyle =
         components?.length === 1 &&
         components[0].split("/").pop().startsWith("style-")
-      if (isStyle) {
-        options.baseColor = "neutral"
+      if (isProbablyRegistryStyle) {
+        const item = await getRegistryItem(components[0], "")
+
+        // Skip base color if style.
+        // We set a default and let the style override it.
+        if (item?.type === "registry:style") {
+          options.baseColor = "neutral"
+          options.style = item.extends ?? "index"
+        }
       }
 
       await runInit(options)
@@ -200,11 +208,15 @@ export async function runInit(
 
   // Add components.
   const fullConfig = await resolveConfigPaths(options.cwd, config)
-  const components = ["index", ...(options.components || [])]
+  const components = [
+    ...(options.style === "none" ? [] : [options.style]),
+    ...(options.components ?? []),
+  ]
   await addComponents(components, fullConfig, {
     // Init will always overwrite files.
     overwrite: true,
     silent: options.silent,
+    style: options.style,
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })

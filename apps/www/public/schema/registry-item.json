@@ -171,6 +171,10 @@
         "type": "string",
         "description": "The categories of the registry item. This is an array of strings."
       }
+    },
+    "extends": {
+      "type": "string",
+      "description": "The name of the registry item to extend. This is used to extend the base shadcn/ui style. Set to none to start fresh. This is available for registry:style items only."
     }
   },
   "required": ["name", "type"]

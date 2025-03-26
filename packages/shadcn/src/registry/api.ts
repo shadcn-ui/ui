@@ -415,11 +415,12 @@ export async function registryGetTheme(name: string, config: Config) {
   if (config.tailwind.cssVariables) {
     theme.tailwind.config.theme.extend.colors = {
       ...theme.tailwind.config.theme.extend.colors,
-      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark),
+      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark ?? {}),
     }
     theme.cssVars = {
       theme: {
-        ...theme.cssVars,
+        ...baseColor.cssVars.theme,
+        ...theme.cssVars.theme,
       },
       light: {
         ...baseColor.cssVars.light,
@@ -434,7 +435,8 @@ export async function registryGetTheme(name: string, config: Config) {
     if (tailwindVersion === "v4" && baseColor.cssVarsV4) {
       theme.cssVars = {
         theme: {
-          ...theme.cssVars,
+          ...baseColor.cssVarsV4.theme,
+          ...theme.cssVars.theme,
         },
         light: {
           radius: "0.625rem",
