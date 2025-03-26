@@ -21,6 +21,7 @@ export async function updateCssVars(
   options: {
     cleanupDefaultNextStyles?: boolean
     overwriteCssVars?: boolean
+    initIndex?: boolean
     silent?: boolean
     tailwindVersion?: TailwindVersion
     tailwindConfig?: z.infer<typeof registryItemTailwindSchema>["config"]
@@ -35,6 +36,7 @@ export async function updateCssVars(
     silent: false,
     tailwindVersion: "v3",
     overwriteCssVars: false,
+    initIndex: true,
     ...options,
   }
   const cssFilepath = config.resolvedPaths.tailwindCss
@@ -54,6 +56,7 @@ export async function updateCssVars(
     tailwindVersion: options.tailwindVersion,
     tailwindConfig: options.tailwindConfig,
     overwriteCssVars: options.overwriteCssVars,
+    initIndex: options.initIndex,
   })
   await fs.writeFile(cssFilepath, output, "utf8")
   cssVarsSpinner.succeed()
@@ -68,11 +71,13 @@ export async function transformCssVars(
     tailwindVersion?: TailwindVersion
     tailwindConfig?: z.infer<typeof registryItemTailwindSchema>["config"]
     overwriteCssVars?: boolean
+    initIndex?: boolean
   } = {
     cleanupDefaultNextStyles: false,
     tailwindVersion: "v3",
     tailwindConfig: undefined,
     overwriteCssVars: false,
+    initIndex: true,
   }
 ) {
   options = {
@@ -80,6 +85,7 @@ export async function transformCssVars(
     tailwindVersion: "v3",
     tailwindConfig: undefined,
     overwriteCssVars: false,
+    initIndex: true,
     ...options,
   }
 
@@ -97,7 +103,8 @@ export async function transformCssVars(
       const packageInfo = getPackageInfo(config.resolvedPaths.cwd)
       if (
         !packageInfo?.dependencies?.["tailwindcss-animate"] &&
-        !packageInfo?.devDependencies?.["tailwindcss-animate"]
+        !packageInfo?.devDependencies?.["tailwindcss-animate"] &&
+        options.initIndex
       ) {
         plugins.push(addCustomImport({ params: "tw-animate-css" }))
       }
@@ -123,7 +130,7 @@ export async function transformCssVars(
     }
   }
 
-  if (config.tailwind.cssVariables) {
+  if (config.tailwind.cssVariables && options.initIndex) {
     plugins.push(
       updateBaseLayerPlugin({ tailwindVersion: options.tailwindVersion })
     )

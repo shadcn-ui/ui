@@ -32,12 +32,14 @@ export async function addComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    style?: string
   }
 ) {
   options = {
     overwrite: false,
     silent: false,
     isNewProject: false,
+    style: "index",
     ...options,
   }
 
@@ -64,12 +66,14 @@ async function addProjectComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    style?: string
   }
 ) {
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
   const tree = await registryResolveItemsTree(components, config)
+
   if (!tree) {
     registrySpinner?.fail()
     return handleError(new Error("Failed to fetch components from registry."))
@@ -90,6 +94,7 @@ async function addProjectComponents(
     tailwindVersion,
     tailwindConfig: tree.tailwind?.config,
     overwriteCssVars,
+    initIndex: options.style ? options.style === "index" : false,
   })
 
   await updateDependencies(tree.dependencies, config, {
@@ -114,6 +119,7 @@ async function addWorkspaceComponents(
     silent?: boolean
     isNewProject?: boolean
     isRemote?: boolean
+    style?: string
   }
 ) {
   const registrySpinner = spinner(`Checking registry.`, {

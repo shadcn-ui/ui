@@ -11,10 +11,10 @@ export const registryItemTypeSchema = z.enum([
   "registry:hook",
   "registry:page",
   "registry:file",
+  "registry:theme",
   "registry:style",
 
   // Internal use only
-  "registry:theme",
   "registry:example",
   "registry:internal",
 ])
@@ -53,6 +53,7 @@ export const registryItemCssVarsSchema = z.object({
 
 export const registryItemSchema = z.object({
   $schema: z.string().optional(),
+  extends: z.string().optional(),
   name: z.string(),
   type: registryItemTypeSchema,
   title: z.string().optional(),
@@ -98,16 +99,8 @@ export const registryBaseColorSchema = z.object({
     light: z.record(z.string(), z.string()),
     dark: z.record(z.string(), z.string()),
   }),
-  cssVars: z.object({
-    light: z.record(z.string(), z.string()),
-    dark: z.record(z.string(), z.string()),
-  }),
-  cssVarsV4: z
-    .object({
-      light: z.record(z.string(), z.string()),
-      dark: z.record(z.string(), z.string()),
-    })
-    .optional(),
+  cssVars: registryItemCssVarsSchema,
+  cssVarsV4: registryItemCssVarsSchema.optional(),
   inlineColorsTemplate: z.string(),
   cssVarsTemplate: z.string(),
 })
