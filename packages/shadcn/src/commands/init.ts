@@ -124,18 +124,16 @@ export const init = new Command()
         ...opts,
       })
 
-      const isProbablyRegistryStyle =
-        components?.length === 1 &&
-        components[0].split("/").pop().startsWith("style-")
-      if (isProbablyRegistryStyle) {
-        const item = await getRegistryItem(components[0], "")
+      // We need to check if we're initializing with a new style.
+      // We fetch the payload of the first item.
+      // This is okay since the request is cached and deduped.
+      const item = await getRegistryItem(components[0], "")
 
-        // Skip base color if style.
-        // We set a default and let the style override it.
-        if (item?.type === "registry:style") {
-          options.baseColor = "neutral"
-          options.style = item.extends ?? "index"
-        }
+      // Skip base color if style.
+      // We set a default and let the style override it.
+      if (item?.type === "registry:style") {
+        options.baseColor = "neutral"
+        options.style = item.extends ?? "index"
       }
 
       await runInit(options)
