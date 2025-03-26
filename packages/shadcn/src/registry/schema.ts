@@ -11,11 +11,11 @@ export const registryItemTypeSchema = z.enum([
   "registry:hook",
   "registry:page",
   "registry:file",
+  "registry:style",
 
   // Internal use only
   "registry:theme",
   "registry:example",
-  "registry:style",
   "registry:internal",
 ])
 
@@ -46,6 +46,7 @@ export const registryItemTailwindSchema = z.object({
 })
 
 export const registryItemCssVarsSchema = z.object({
+  theme: z.record(z.string(), z.string()).optional(),
   light: z.record(z.string(), z.string()).optional(),
   dark: z.record(z.string(), z.string()).optional(),
 })
