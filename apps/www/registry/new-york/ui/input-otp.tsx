@@ -11,6 +11,8 @@ const InputOTP = React.forwardRef<React.ElementRef<typeof OTPInput>, React.Compo
     <OTPInput
       ref={ref}
       spellCheck="false" 
+      inputMode="numeric"
+      pattern="\d*"
       containerClassName={cn(
         "flex items-center gap-2 has-[:disabled]:opacity-50",
         containerClassName
