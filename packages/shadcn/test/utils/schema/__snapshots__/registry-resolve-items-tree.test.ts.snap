@@ -7,6 +7,7 @@ exports[`registryResolveItemTree > should resolve index 1`] = `
     "light": {
       "radius": "0.5rem",
     },
+    "theme": {},
   },
   "dependencies": [
     "tailwindcss-animate",
@@ -166,7 +167,7 @@ exports[`registryResolveItemTree > should resolve multiple items tree 1`] = `
   "cssVars": {},
   "dependencies": [
     "@radix-ui/react-slot",
-    "cmdk@1.0.0",
+    "cmdk",
     "@radix-ui/react-dialog",
   ],
   "devDependencies": [],
