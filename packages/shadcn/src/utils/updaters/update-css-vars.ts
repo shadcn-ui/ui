@@ -393,7 +393,42 @@ function updateCssVarsPluginV4(
     postcssPlugin: "update-css-vars-v4",
     Once(root: Root) {
       Object.entries(cssVars).forEach(([key, vars]) => {
-        const selector = key === "light" ? ":root" : `.${key}`
+        let selector = key === "light" ? ":root" : `.${key}`
+
+        if (key === "theme") {
+          selector = "@theme"
+          const themeNode = upsertThemeNode(root)
+          Object.entries(vars).forEach(([key, value]) => {
+            const prop = `--${key.replace(/^--/, "")}`
+            const newDecl = postcss.decl({
+              prop,
+              value,
+              raws: { semicolon: true },
+            })
+
+            const existingDecl = themeNode?.nodes?.find(
+              (node): node is postcss.Declaration =>
+                node.type === "decl" && node.prop === prop
+            )
+
+            // Only overwrite if overwriteCssVars is true
+            // i.e for registry:theme and registry:style
+            // We do not want new components to overwrite existing vars.
+            // Keep user defined vars.
+            if (options.overwriteCssVars) {
+              if (existingDecl) {
+                existingDecl.replaceWith(newDecl)
+              } else {
+                themeNode?.append(newDecl)
+              }
+            } else {
+              if (!existingDecl) {
+                themeNode?.append(newDecl)
+              }
+            }
+          })
+          return
+        }
 
         let ruleNode = root.nodes?.find(
           (node): node is Rule =>
