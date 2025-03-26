@@ -27,7 +27,7 @@
     },
     "title": {
       "type": "string",
-      "description": "The title of the item. This is human readable and used in the UI."
+      "description": "The human-readable title for your registry item. Keep it short and descriptive."
     },
     "author": {
       "type": "string",
