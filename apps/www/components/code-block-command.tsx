@@ -85,7 +85,7 @@ export function CodeBlockCommand({
               <TabsContent key={key} value={key} className="mt-0">
                 <pre className="px-4 py-5">
                   <code
-                    className="relative font-mono text-sm leading-none"
+                    className="relative w-fit !pr-4 font-mono text-sm leading-none"
                     data-language="bash"
                   >
                     {value}
