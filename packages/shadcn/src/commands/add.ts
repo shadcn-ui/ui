@@ -148,6 +148,7 @@ export const add = new Command()
           isNewProject: false,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
+          style: "index",
         })
       }
 
@@ -179,6 +180,7 @@ export const add = new Command()
             isNewProject: true,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
+            style: "index",
           })
 
           shouldUpdateAppIndex =
