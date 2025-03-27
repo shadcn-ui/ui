@@ -7,8 +7,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/new-york/ui/dialog"
+import { useEffect, useState } from 'react';
 
 export function CodeViewer() {
+  const [fullscreenPortalContainer, setFullscreenPortalContainer] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const updatePortalContainer = () => {
+      setFullscreenPortalContainer((document.fullscreenElement as HTMLElement) || document.body);
+    };
+
+    updatePortalContainer();
+
+    document.addEventListener('fullscreenchange', updatePortalContainer);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', updatePortalContainer);
+    };
+  }, []);
+
   return (
     <Dialog>
       <DialogTrigger asChild>
