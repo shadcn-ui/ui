@@ -57,6 +57,7 @@
     "@commitlint/config-conventional": "^17.6.3",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.20.0",
+    "@radix-ui/react-visually-hidden": "^1.1.2",
     "@typescript-eslint/parser": "^5.59.7",
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.0.1",
