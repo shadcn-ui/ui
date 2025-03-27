@@ -409,3 +409,54 @@ async function promptForMinimalConfig(
     iconLibrary: defaultConfig?.iconLibrary,
   })
 }
+
+function getBaseTheme() {
+  return `
+    @layer base {
+      :root {
+        --background: 0.967 0.005 0;
+        --foreground: 0.12 0.011 20.3;
+        --card: 0.967 0.005 0;
+        --card-foreground: 0.12 0.011 20.3;
+        --popover: 0.967 0.005 0;
+        --popover-foreground: 0.12 0.011 20.3;
+        --primary: 0.651 0.236 47.9;
+        --primary-foreground: 0.98 0.008 26;
+        --secondary: 0.76 0.126 60;
+        --secondary-foreground: 0.165 0.036 24;
+        --muted: 0.76 0.126 60;
+        --muted-foreground: 0.47 0.057 25;
+        --accent: 0.76 0.126 60;
+        --accent-foreground: 0.165 0.036 24;
+        --destructive: 0.37 0.196 0;
+        --destructive-foreground: 0.968 0.031 60;
+        --border: 0.765 0.04 89.5;
+        --input: 0.765 0.04 89.5;
+        --ring: 0.12 0.011 20.3;
+        --radius: 0.5rem;
+      }
+
+      .dark {
+        --background: 0.12 0.011 20.3;
+        --foreground: 0.967 0.005 0;
+        --card: 0.12 0.011 20.3;
+        --card-foreground: 0.967 0.005 0;
+        --popover: 0.12 0.011 20.3;
+        --popover-foreground: 0.967 0.005 0;
+        --primary: 0.651 0.236 47.9;
+        --primary-foreground: 0.12 0.011 20.3;
+        --secondary: 0.194 0.05 230.6;
+        --secondary-foreground: 0.967 0.005 0;
+        --muted: 0.194 0.05 230.6;
+        --muted-foreground: 0.71 0.04 263.4;
+        --accent: 0.194 0.05 230.6;
+        --accent-foreground: 0.967 0.005 0;
+        --destructive: 0.37 0.196 0;
+        --destructive-foreground: 0.967 0.005 0;
+        --border: 0.194 0.05 230.6;
+        --input: 0.194 0.05 230.6;
+        --ring: 0.651 0.236 47.9;
+      }
+    }
+  `
+}
