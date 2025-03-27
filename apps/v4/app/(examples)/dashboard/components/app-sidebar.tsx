@@ -28,7 +28,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/registry/new-york-v4/ui/sidebar"
-// import { NavClouds } from "@/app/(examples)/dashboard-02/components/nav-clouds"
 import { NavDocuments } from "@/app/(examples)/dashboard/components/nav-documents"
 import { NavMain } from "@/app/(examples)/dashboard/components/nav-main"
 import { NavSecondary } from "@/app/(examples)/dashboard/components/nav-secondary"
@@ -171,7 +170,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        {/* <NavClouds items={data.navClouds} /> */}
         <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>

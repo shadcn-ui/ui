@@ -32,12 +32,14 @@ export async function addComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    style?: string
   }
 ) {
   options = {
     overwrite: false,
     silent: false,
     isNewProject: false,
+    style: "index",
     ...options,
   }
 
@@ -64,12 +66,14 @@ async function addProjectComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    style?: string
   }
 ) {
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
   const tree = await registryResolveItemsTree(components, config)
+
   if (!tree) {
     registrySpinner?.fail()
     return handleError(new Error("Failed to fetch components from registry."))
@@ -82,11 +86,15 @@ async function addProjectComponents(
     silent: options.silent,
     tailwindVersion,
   })
+
+  const overwriteCssVars = await shouldOverwriteCssVars(components, config)
   await updateCssVars(tree.cssVars, config, {
     cleanupDefaultNextStyles: options.isNewProject,
     silent: options.silent,
     tailwindVersion,
     tailwindConfig: tree.tailwind?.config,
+    overwriteCssVars,
+    initIndex: options.style ? options.style === "index" : false,
   })
 
   await updateDependencies(tree.dependencies, config, {
@@ -111,6 +119,7 @@ async function addWorkspaceComponents(
     silent?: boolean
     isNewProject?: boolean
     isRemote?: boolean
+    style?: string
   }
 ) {
   const registrySpinner = spinner(`Checking registry.`, {
@@ -175,10 +184,12 @@ async function addWorkspaceComponents(
 
     // 2. Update css vars.
     if (component.cssVars) {
+      const overwriteCssVars = await shouldOverwriteCssVars(components, config)
       await updateCssVars(component.cssVars, targetConfig, {
         silent: true,
         tailwindVersion,
         tailwindConfig: component.tailwind?.config,
+        overwriteCssVars,
       })
       filesUpdated.push(
         path.relative(workspaceRoot, targetConfig.resolvedPaths.tailwindCss)
@@ -270,4 +281,18 @@ async function addWorkspaceComponents(
       logger.log(`  - ${file}`)
     }
   }
+}
+
+async function shouldOverwriteCssVars(
+  components: z.infer<typeof registryItemSchema>["name"][],
+  config: z.infer<typeof configSchema>
+) {
+  let registryItems = await resolveRegistryItems(components, config)
+  let result = await fetchRegistry(registryItems)
+  const payload = z.array(registryItemSchema).parse(result)
+
+  return payload.some(
+    (component) =>
+      component.type === "registry:theme" || component.type === "registry:style"
+  )
 }

@@ -77,7 +77,7 @@
     "turbo": "^1.9.9",
     "vite": "^5.4.1",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^2.0.5"
+    "vitest": "^2.1.9"
   },
   "devDependencies": {
     "@types/node": "^20.11.27",
