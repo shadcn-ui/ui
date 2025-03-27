@@ -425,17 +425,21 @@ function updateCssVarsPluginV4(
       for (const [variant, vars] of Object.entries(cssVars)) {
         // skip theme variables, updated later with no light-dark,
         // since there aren't variants
-        if (variant === 'theme') continue; 
+        if (variant === "theme") continue
         for (const [cssVarName, value] of Object.entries(vars)) {
           const isColor = isColorValue(value) || isLocalHSLValue(value)
           if (!newCssVars.has(cssVarName)) {
             newCssVars.set(cssVarName, { color: isColor })
           }
-          // Do not override existing declarations.
-          // We do not want new components to override existing vars.
+          // Only overwrite if overwriteCssVars is true
+          // i.e for registry:theme and registry:style
+          // We do not want new components to overwrite existing vars.
           // Keep user defined vars.
-          if (options.overwriteCssVars || !(variant in newCssVars.get(cssVarName)!)) {
-            newCssVars.get(cssVarName)![variant as 'light' | 'dark'] = value
+          if (
+            options.overwriteCssVars ||
+            !(variant in newCssVars.get(cssVarName)!)
+          ) {
+            newCssVars.get(cssVarName)![variant as "light" | "dark"] = value
           }
         }
       }
