@@ -54,7 +54,7 @@ export function CodeBlockCommand({
   }, [packageManager, tabs])
 
   return (
-    <div className="relative mt-6 max-h-[650px] overflow-x-auto rounded-xl bg-zinc-950 dark:bg-zinc-900">
+    <div className="relative mt-6 max-h-[650px] overflow-hidden rounded-xl bg-zinc-950 dark:bg-zinc-900">
       <Tabs
         value={packageManager}
         onValueChange={(value) => {
@@ -81,7 +81,7 @@ export function CodeBlockCommand({
         </div>
         {Object.entries(tabs).map(([key, value]) => {
           return (
-            <TabsContent key={key} value={key} className="mt-0">
+            <TabsContent key={key} value={key} className="mt-0 overflow-x-auto">
               <pre className="px-4 py-5">
                 <code
                   className="relative font-mono text-sm leading-none"
