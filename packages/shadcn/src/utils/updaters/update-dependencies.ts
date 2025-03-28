@@ -99,7 +99,7 @@ export async function updateDependencies(
 }
 
 function isUsingReact19(config: Config) {
-  const packageInfo = getPackageInfo(config.resolvedPaths.cwd)
+  const packageInfo = getPackageInfo(config.resolvedPaths.cwd, false)
 
   if (!packageInfo?.dependencies?.react) {
     return false
