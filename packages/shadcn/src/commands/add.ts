@@ -1,7 +1,8 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
-import { getRegistryIndex } from "@/src/registry/api"
+import { getRegistryIndex, getRegistryItem } from "@/src/registry/api"
+import { registryItemTypeSchema } from "@/src/registry/schema"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
@@ -78,23 +79,31 @@ export const add = new Command()
         ...opts,
       })
 
-      // Confirm if user is installing themes.
-      // For now, we assume a theme is prefixed with "theme-".
-      const isTheme = options.components?.some((component) =>
-        component.includes("theme-")
-      )
-      if (!options.yes && isTheme) {
+      let itemType: z.infer<typeof registryItemTypeSchema> | undefined
+
+      if (components.length > 0) {
+        const item = await getRegistryItem(components[0], "")
+        itemType = item?.type
+      }
+
+      if (
+        !options.yes &&
+        (itemType === "registry:style" || itemType === "registry:theme")
+      ) {
         logger.break()
         const { confirm } = await prompts({
           type: "confirm",
           name: "confirm",
           message: highlighter.warn(
-            "You are about to install a new theme. \nExisting CSS variables will be overwritten. Continue?"
+            `You are about to install a new ${itemType.replace(
+              "registry:",
+              ""
+            )}. \nExisting CSS variables and components will be overwritten. Continue?`
           ),
         })
         if (!confirm) {
           logger.break()
-          logger.log("Theme installation cancelled.")
+          logger.log(`Installation cancelled.`)
           logger.break()
           process.exit(1)
         }
