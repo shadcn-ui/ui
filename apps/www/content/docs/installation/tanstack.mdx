@@ -1,21 +1,15 @@
 ---
 title: TanStack Start
-description: Install and configure TanStack Start.
+description: Install and configure shadcn/ui for TanStack Start.
 ---
-
-<Callout>
-  **Note:** This guide is for TanStack Start and Tailwind v4. If you are using
-  Tailwind v3, consider the [Basic Starter](#basic-starter) template. **TanStack
-  Start** works with the **canary** version of `shadcn`.
-</Callout>
-
-## TanStack Start + Tailwind v4
 
 <Steps>
 
 ### Create project
 
 Start by creating a new TanStack Start project by following the [Build a Project from Scratch](https://tanstack.com/start/latest/docs/framework/react/build-from-scratch) guide on the TanStack Start website.
+
+**Do not add Tailwind yet. We'll install Tailwind v4 in the next step.**
 
 ### Add Tailwind
 
@@ -105,50 +99,7 @@ Add the following code to the `tsconfig.json` file to resolve paths.
 Run the `shadcn` init command to setup your project:
 
 ```bash
-npx shadcn@canary init -d
-```
-
-This will create a `components.json` file in the root of your project and configure CSS variables inside `app/styles/app.css`.
-
-### That's it
-
-You can now start adding components to your project.
-
-```bash
-npx shadcn@canary add button
-```
-
-The command above will add the `Button` component to your project. You can then import it like this:
-
-```tsx title="app/routes/index.tsx" showLineNumbers {1,6}
-import { Button } from "@/components/ui/button"
-
-function Home() {
-  const router = useRouter()
-  const state = Route.useLoaderData()
-
-  return (
-    <div>
-      <Button>Click me</Button>
-    </div>
-  )
-}
-```
-
-</Steps>
-
-## Basic Starter
-
-The [Basic Starter](https://tanstack.com/start/latest/docs/framework/react/examples/start-basic) template has Tailwind v3 already configured.
-
-<Steps>
-
-### Run the CLI
-
-Run the `shadcn` init command to setup your project:
-
-```bash
-npx shadcn@canary init -d
+npx shadcn@canary init
 ```
 
 This will create a `components.json` file in the root of your project and configure CSS variables inside `app/styles/app.css`.

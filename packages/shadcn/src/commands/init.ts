@@ -1,9 +1,14 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
+import {
+  BASE_COLORS,
+  getRegistryBaseColors,
+  getRegistryItem,
+  getRegistryStyles,
+} from "@/src/registry/api"
 import { addComponents } from "@/src/utils/add-components"
-import { createProject } from "@/src/utils/create-project"
+import { TEMPLATES, createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
 import {
   DEFAULT_COMPONENTS,
@@ -38,6 +43,39 @@ export const initOptionsSchema = z.object({
   silent: z.boolean(),
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
+  cssVariables: z.boolean(),
+  template: z
+    .string()
+    .optional()
+    .refine(
+      (val) => {
+        if (val) {
+          return TEMPLATES[val as keyof typeof TEMPLATES]
+        }
+        return true
+      },
+      {
+        message: "Invalid template. Please use 'next' or 'next-monorepo'.",
+      }
+    ),
+  baseColor: z
+    .string()
+    .optional()
+    .refine(
+      (val) => {
+        if (val) {
+          return BASE_COLORS.find((color) => color.name === val)
+        }
+
+        return true
+      },
+      {
+        message: `Invalid base color. Please use '${BASE_COLORS.map(
+          (color) => color.name
+        ).join("', '")}'`,
+      }
+    ),
+  style: z.string(),
 })
 
 export const init = new Command()
@@ -46,6 +84,15 @@ export const init = new Command()
   .argument(
     "[components...]",
     "the components to add or a url to the component."
+  )
+  .option(
+    "-t, --template <template>",
+    "the template to use. (next, next-monorepo)"
+  )
+  .option(
+    "-b, --base-color <base-color>",
+    "the base color to use. (neutral, gray, zinc, stone, slate)",
+    undefined
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("-d, --defaults,", "use default configuration.", false)
@@ -61,14 +108,35 @@ export const init = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option(
+    "--no-src-dir",
+    "do not use the src directory when creating a new project."
+  )
+  .option("--css-variables", "use css variables for theming.", true)
+  .option("--no-css-variables", "do not use css variables for theming.")
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
         isNewProject: false,
         components,
+        style: "index",
         ...opts,
       })
+
+      // We need to check if we're initializing with a new style.
+      // We fetch the payload of the first item.
+      // This is okay since the request is cached and deduped.
+      if (components.length > 0) {
+        const item = await getRegistryItem(components[0], "")
+
+        // Skip base color if style.
+        // We set a default and let the style override it.
+        if (item?.type === "registry:style") {
+          options.baseColor = "neutral"
+          options.style = item.extends ?? "index"
+        }
+      }
 
       await runInit(options)
 
@@ -90,24 +158,24 @@ export async function runInit(
   }
 ) {
   let projectInfo
-  let newProjectType
+  let newProjectTemplate
   if (!options.skipPreflight) {
     const preflight = await preFlightInit(options)
     if (preflight.errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-      const { projectPath, projectType } = await createProject(options)
+      const { projectPath, template } = await createProject(options)
       if (!projectPath) {
         process.exit(1)
       }
       options.cwd = projectPath
       options.isNewProject = true
-      newProjectType = projectType
+      newProjectTemplate = template
     }
     projectInfo = preflight.projectInfo
   } else {
     projectInfo = await getProjectInfo(options.cwd)
   }
 
-  if (newProjectType === "monorepo") {
+  if (newProjectTemplate === "next-monorepo") {
     options.cwd = path.resolve(options.cwd, "apps/web")
     return await getConfig(options.cwd)
   }
@@ -140,11 +208,15 @@ export async function runInit(
 
   // Add components.
   const fullConfig = await resolveConfigPaths(options.cwd, config)
-  const components = ["index", ...(options.components || [])]
+  const components = [
+    ...(options.style === "none" ? [] : [options.style]),
+    ...(options.components ?? []),
+  ]
   await addComponents(components, fullConfig, {
     // Init will always overwrite files.
     overwrite: true,
     silent: options.silent,
+    style: options.style,
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
@@ -285,7 +357,7 @@ async function promptForMinimalConfig(
   opts: z.infer<typeof initOptionsSchema>
 ) {
   let style = defaultConfig.style
-  let baseColor = defaultConfig.tailwind.baseColor
+  let baseColor = opts.baseColor
   let cssVariables = defaultConfig.tailwind.cssVariables
 
   if (!opts.defaults) {
@@ -308,7 +380,7 @@ async function promptForMinimalConfig(
         initial: 0,
       },
       {
-        type: "select",
+        type: opts.baseColor ? null : "select",
         name: "tailwindBaseColor",
         message: `Which color would you like to use as the ${highlighter.info(
           "base color"
@@ -318,21 +390,11 @@ async function promptForMinimalConfig(
           value: color.name,
         })),
       },
-      {
-        type: "toggle",
-        name: "tailwindCssVariables",
-        message: `Would you like to use ${highlighter.info(
-          "CSS variables"
-        )} for theming?`,
-        initial: defaultConfig?.tailwind.cssVariables,
-        active: "yes",
-        inactive: "no",
-      },
     ])
 
     style = options.style ?? "new-york"
-    baseColor = options.tailwindBaseColor
-    cssVariables = options.tailwindCssVariables
+    baseColor = options.tailwindBaseColor ?? baseColor
+    cssVariables = opts.cssVariables
   }
 
   return rawConfigSchema.parse({

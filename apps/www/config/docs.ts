@@ -128,6 +128,16 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
+          title: "React Router",
+          href: "/docs/installation/react-router",
+          items: [],
+        },
+        {
           title: "Remix",
           href: "/docs/installation/remix",
           items: [],
@@ -138,19 +148,13 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Laravel",
-          href: "/docs/installation/laravel",
-          items: [],
-        },
-        {
           title: "Tanstack Start",
           href: "/docs/installation/tanstack",
           items: [],
-          label: "New",
         },
         {
-          title: "Gatsby",
-          href: "/docs/installation/gatsby",
+          title: "Tanstack Router",
+          href: "/docs/installation/tanstack-router",
           items: [],
         },
         {
@@ -427,6 +431,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Getting Started",
           href: "/docs/registry/getting-started",
+          items: [],
+        },
+        {
+          title: "Examples",
+          href: "/docs/registry/examples",
           items: [],
         },
         {

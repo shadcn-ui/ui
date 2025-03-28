@@ -97,6 +97,9 @@
   {
     "name": "badge",
     "type": "registry:ui",
+    "dependencies": [
+      "@radix-ui/react-slot"
+    ],
     "files": [
       {
         "path": "ui/badge.tsx",
@@ -220,7 +223,7 @@
     "name": "command",
     "type": "registry:ui",
     "dependencies": [
-      "cmdk@1.0.0"
+      "cmdk"
     ],
     "registryDependencies": [
       "dialog"

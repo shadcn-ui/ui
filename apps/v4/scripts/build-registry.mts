@@ -21,16 +21,11 @@ const registry = {
         name: "index",
         type: "registry:style",
         dependencies: [
-          "tailwindcss-animate",
+          "tw-animate-css",
           "class-variance-authority",
           "lucide-react",
         ],
         registryDependencies: ["utils"],
-        tailwind: {
-          config: {
-            plugins: [`require("tailwindcss-animate")`],
-          },
-        },
         cssVars: {},
         files: [],
       },
@@ -48,9 +43,43 @@ const registry = {
           },
         ],
       },
-    ].filter((item) => {
-      return !DEPRECATED_ITEMS.includes(item.name)
-    })
+      {
+        name: "products-01",
+        description: "A table of products",
+        type: "registry:block",
+        registryDependencies: [
+          "checkbox",
+          "badge",
+          "button",
+          "dropdown-menu",
+          "pagination",
+          "table",
+          "tabs",
+          "select",
+        ],
+        files: [
+          {
+            path: "blocks/products-01/page.tsx",
+            type: "registry:page",
+            target: "app/products/page.tsx",
+          },
+          {
+            path: "blocks/products-01/components/products-table.tsx",
+            type: "registry:component",
+          },
+        ],
+      },
+    ]
+      .filter((item) => {
+        return !DEPRECATED_ITEMS.includes(item.name)
+      })
+      .map((item) => {
+        // Temporary fix for dashboard-01.
+        if (item.name === "dashboard-01") {
+          item.dependencies?.push("@tabler/icons-react")
+        }
+        return item
+      })
   ),
 } satisfies Registry
 

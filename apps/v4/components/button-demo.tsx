@@ -5,7 +5,7 @@ import { Button } from "@/registry/new-york-v4/ui/button"
 export function ButtonDemo() {
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col items-center gap-2 md:flex-row">
+      <div className="flex flex-wrap items-center gap-2 md:flex-row">
         <Button>Button</Button>
         <Button variant="outline">Outline</Button>
         <Button variant="ghost">Ghost</Button>
@@ -23,7 +23,7 @@ export function ButtonDemo() {
           Please wait
         </Button>
       </div>
-      <div className="flex flex-col items-center gap-2 md:flex-row">
+      <div className="flex flex-wrap items-center gap-2 md:flex-row">
         <Button size="sm">Small</Button>
         <Button variant="outline" size="sm">
           Outline
@@ -51,7 +51,7 @@ export function ButtonDemo() {
           Please wait
         </Button>
       </div>
-      <div className="flex flex-col flex-wrap items-center gap-2 md:flex-row">
+      <div className="flex flex-wrap items-center gap-2 md:flex-row">
         <Button size="lg">Large</Button>
         <Button variant="outline" size="lg">
           Outline
