@@ -3,7 +3,9 @@ title: Examples
 description: "Examples of registry items: styles, components, css vars, etc."
 ---
 
-## Custom style that extends shadcn/ui
+## registry:style
+
+### Custom style that extends shadcn/ui
 
 The following registry item is a custom style that extends shadcn/ui. On `npx shadcn init`, it will:
 
@@ -38,7 +40,7 @@ The following registry item is a custom style that extends shadcn/ui. On `npx sh
 }
 ```
 
-## Custom style from scratch
+### Custom style from scratch
 
 The following registry item is a custom style that doesn't extend shadcn/ui. See the `extends: none` field.
 
@@ -87,7 +89,90 @@ On `npx shadcn add`, the following will:
 }
 ```
 
-## Install a block and override primitives
+## registry:theme
+
+### Custom theme
+
+```json title="example-theme.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-theme",
+  "type": "registry:theme",
+  "cssVars": {
+    "light": {
+      "background": "oklch(1 0 0)",
+      "foreground": "oklch(0.141 0.005 285.823)",
+      "primary": "oklch(0.546 0.245 262.881)",
+      "primary-foreground": "oklch(0.97 0.014 254.604)",
+      "ring": "oklch(0.746 0.16 232.661)",
+      "sidebar-primary": "oklch(0.546 0.245 262.881)",
+      "sidebar-primary-foreground": "oklch(0.97 0.014 254.604)",
+      "sidebar-ring": "oklch(0.746 0.16 232.661)"
+    },
+    "dark": {
+      "background": "oklch(1 0 0)",
+      "foreground": "oklch(0.141 0.005 285.823)",
+      "primary": "oklch(0.707 0.165 254.624)",
+      "primary-foreground": "oklch(0.97 0.014 254.604)",
+      "ring": "oklch(0.707 0.165 254.624)",
+      "sidebar-primary": "oklch(0.707 0.165 254.624)",
+      "sidebar-primary-foreground": "oklch(0.97 0.014 254.604)",
+      "sidebar-ring": "oklch(0.707 0.165 254.624)"
+    }
+  }
+}
+```
+
+### Custom colors
+
+The following style will init using shadcn/ui defaults and then add a custom `brand` color.
+
+```json title="example-style.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-style",
+  "type": "registry:style",
+  "cssVars": {
+    "light": {
+      "brand": "oklch(0.99 0.00 0)"
+    },
+    "dark": {
+      "brand": "oklch(0.14 0.00 286)"
+    }
+  }
+}
+```
+
+## registry:block
+
+### Custom block
+
+This blocks installs the `login-01` block from the shadcn/ui registry.
+
+```json title="login-01.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "login-01",
+  "type": "registry:block",
+  "description": "A simple login form.",
+  "registryDependencies": ["button", "card", "input", "label"],
+  "files": [
+    {
+      "path": "blocks/login-01/page.tsx",
+      "content": "import { LoginForm } ...",
+      "type": "registry:page",
+      "target": "app/login/page.tsx"
+    },
+    {
+      "path": "blocks/login-01/components/login-form.tsx",
+      "content": "...",
+      "type": "registry:component"
+    }
+  ]
+}
+```
+
+### Install a block and override primitives
 
 You can install a block fromt the shadcn/ui registry and override the primitives using your custom ones.
 
@@ -110,29 +195,27 @@ On `npx shadcn add`, the following will:
 }
 ```
 
-## Install custom CSS variables
+## CSS Variables
 
-The following style will init using shadcn/ui defaults and then override the background and foreground css vars.
+### Custom Theme Variables
 
-```json title="example-style.json" showLineNumbers
+Add custom theme variables to the `theme` object.
+
+```json title="example-theme.json" showLineNumbers
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "custom-style",
-  "type": "registry:style",
+  "name": "custom-theme",
+  "type": "registry:theme",
   "cssVars": {
-    "light": {
-      "background": "oklch(0.99 0.00 0)",
-      "foreground": "oklch(0.14 0.00 286)"
-    },
-    "dark": {
-      "background": "oklch(0.14 0.00 286)",
-      "foreground": "oklch(0.99 0.00 0)"
+    "theme": {
+      "font-heading": "Inter, sans-serif",
+      "shadow-card": "0 0 0 1px rgba(0, 0, 0, 0.1)"
     }
   }
 }
 ```
 
-## Override Tailwind CSS variables
+### Override Tailwind CSS variables
 
 ```json title="example-theme.json" showLineNumbers
 {
