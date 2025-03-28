@@ -1,5 +1,7 @@
 import "@/styles/globals.css"
 import { Metadata, Viewport } from "next"
+import Link from "next/link"
+import { ArrowRightIcon } from "lucide-react"
 
 import { META_THEME_COLORS, siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
@@ -91,7 +93,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </head>
         <body
           className={cn(
-            "min-h-svh bg-background font-sans antialiased",
+            "bg-background min-h-svh font-sans antialiased",
             fontSans.variable,
             fontMono.variable
           )}
@@ -104,7 +106,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
             enableColorScheme
           >
             <div vaul-drawer-wrapper="">
-              <div className="relative flex min-h-svh flex-col bg-background">
+              <div className="bg-background relative flex min-h-svh flex-col">
+                <div className="text-muted-foreground bg-muted sticky top-0 z-[100] flex h-10 items-center justify-center gap-2 px-4 text-sm">
+                  You are viewing docs for v2.{" "}
+                  <Link
+                    href="https://ui.shadcn.com"
+                    className="text-primary flex items-center gap-1 underline"
+                  >
+                    Switch to latest <ArrowRightIcon className="size-3" />
+                  </Link>
+                </div>
                 {children}
               </div>
             </div>
