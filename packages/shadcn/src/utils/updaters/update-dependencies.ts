@@ -64,7 +64,7 @@ export async function updateDependencies(
     [
       packageManager === "npm" ? "install" : "add",
       ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
-      ...dependencies,
+      ...transformDependencies(dependencies, packageManager, config),
     ],
     {
       cwd: config.resolvedPaths.cwd,
@@ -74,8 +74,20 @@ export async function updateDependencies(
   dependenciesSpinner?.succeed()
 }
 
+type PackageManager = Awaited<ReturnType<typeof getPackageManager>>;
+
+function transformDependencies(dependencies: string[], packageManager: PackageManager, config: Config): string[] {
+  if (packageManager === "deno" && dependencies) {
+    const denoPackagePrefix = config.dependencies?.denoPackagePrefix ?? "npm:"
+    dependencies = dependencies.map(dependency => /^https?\:/.test(dependency)
+      ? dependency : `${denoPackagePrefix}${dependency}`)
+  }
+
+  return dependencies
+}
+
 function isUsingReact19(config: Config) {
-  const packageInfo = getPackageInfo(config.resolvedPaths.cwd)
+  const packageInfo = getPackageInfo(config.resolvedPaths.cwd, false)
 
   if (!packageInfo?.dependencies?.react) {
     return false
