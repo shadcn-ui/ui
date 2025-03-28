@@ -93,7 +93,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </head>
         <body
           className={cn(
-            "bg-background min-h-svh font-sans antialiased",
+            "min-h-svh bg-background font-sans antialiased",
             fontSans.variable,
             fontMono.variable
           )}
@@ -106,12 +106,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
             enableColorScheme
           >
             <div vaul-drawer-wrapper="">
-              <div className="bg-background relative flex min-h-svh flex-col">
-                <div className="text-muted-foreground bg-muted sticky top-0 z-[100] flex h-10 items-center justify-center gap-2 px-4 text-sm">
+              <div className="relative flex min-h-svh flex-col bg-background">
+                <div className="sticky top-0 z-[100] flex h-10 items-center justify-center gap-2 bg-muted px-4 text-sm text-muted-foreground">
                   You are viewing docs for v2.{" "}
                   <Link
                     href="https://ui.shadcn.com"
-                    className="text-primary flex items-center gap-1 underline"
+                    className="flex items-center gap-1 text-primary underline"
                   >
                     Switch to latest <ArrowRightIcon className="size-3" />
                   </Link>
