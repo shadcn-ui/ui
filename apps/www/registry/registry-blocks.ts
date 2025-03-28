@@ -702,4 +702,22 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "feed-01",
+    description: "A simple feed.",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [
+      {
+        path: "blocks/feed-01/page.tsx",
+        target: "app/feed/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/feed-01/components/feed.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["feed"],
+  },
 ]
