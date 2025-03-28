@@ -1,5 +1,6 @@
 {
   "style": "default",
+  "linter": "eslint",
   "tailwind": {
     "config": "./tailwind.config.ts",
     "css": "./src/assets/css/tailwind.css",

@@ -44,6 +44,7 @@ export const initOptionsSchema = z.object({
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
+  linter: z.enum(["eslint", "biome"]).default("eslint"),
   template: z
     .string()
     .optional()
@@ -114,6 +115,7 @@ export const init = new Command()
   )
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
+  .option("--linter <linter>", "the linter to use. (eslint, biome)", "eslint")
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
@@ -162,7 +164,14 @@ export async function runInit(
   if (!options.skipPreflight) {
     const preflight = await preFlightInit(options)
     if (preflight.errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-      const { projectPath, template } = await createProject(options)
+      const { projectPath, template } = await createProject({
+        cwd: options.cwd,
+        force: options.force,
+        srcDir: options.srcDir,
+        components: options.components,
+        template: options.template,
+        linter: options.linter,
+      })
       if (!projectPath) {
         process.exit(1)
       }
@@ -256,6 +265,16 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     },
     {
       type: "select",
+      name: "linter",
+      message: `Which ${highlighter.info("linter")} would you like to use?`,
+      choices: [
+        { title: "ESLint (default)", value: "eslint" },
+        { title: "Biome", value: "biome" },
+      ],
+      initial: 0,
+    },
+    {
+      type: "select",
       name: "style",
       message: `Which ${highlighter.info("style")} would you like to use?`,
       choices: styles.map((style) => ({
@@ -342,6 +361,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     },
     rsc: options.rsc,
     tsx: options.typescript,
+    linter: options.linter,
     aliases: {
       utils: options.utils,
       components: options.components,
@@ -359,6 +379,7 @@ async function promptForMinimalConfig(
   let style = defaultConfig.style
   let baseColor = opts.baseColor
   let cssVariables = defaultConfig.tailwind.cssVariables
+  let linter = opts.linter
 
   if (!opts.defaults) {
     const [styles, baseColors, tailwindVersion] = await Promise.all([
@@ -380,6 +401,16 @@ async function promptForMinimalConfig(
         initial: 0,
       },
       {
+        type: "select",
+        name: "linter",
+        message: `Which ${highlighter.info("linter")} would you like to use?`,
+        choices: [
+          { title: "ESLint (default)", value: "eslint" },
+          { title: "Biome", value: "biome" },
+        ],
+        initial: 0,
+      },
+      {
         type: opts.baseColor ? null : "select",
         name: "tailwindBaseColor",
         message: `Which color would you like to use as the ${highlighter.info(
@@ -395,6 +426,7 @@ async function promptForMinimalConfig(
     style = options.style ?? "new-york"
     baseColor = options.tailwindBaseColor ?? baseColor
     cssVariables = opts.cssVariables
+    linter = options.linter ?? linter
   }
 
   return rawConfigSchema.parse({
@@ -407,6 +439,7 @@ async function promptForMinimalConfig(
     },
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
+    linter,
     aliases: defaultConfig?.aliases,
     iconLibrary: defaultConfig?.iconLibrary,
   })
