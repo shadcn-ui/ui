@@ -71,7 +71,6 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
   return {
     postcssPlugin: "update-css",
     Once(root: Root) {
-      // Process each top-level entry
       for (const [selector, properties] of Object.entries(css)) {
         if (selector.startsWith("@")) {
           // Handle at-rules (@layer, @utility, etc.)
@@ -82,7 +81,6 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
 
           // Special handling for keyframes - place them under @theme inline
           if (name === "keyframes") {
-            // Find or create the @theme inline directive
             let themeInline = root.nodes?.find(
               (node): node is AtRule =>
                 node.type === "atrule" &&
@@ -103,7 +101,6 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
               )
             }
 
-            // Create the keyframes at-rule inside theme inline
             const keyframesRule = postcss.atRule({
               name: "keyframes",
               params,
@@ -112,7 +109,6 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
 
             themeInline.append(keyframesRule)
 
-            // Process keyframe steps
             if (typeof properties === "object") {
               for (const [step, stepProps] of Object.entries(properties)) {
                 processRule(keyframesRule, step, stepProps)
@@ -267,7 +263,6 @@ function processAtRule(
 }
 
 function processRule(parent: Root | AtRule, selector: string, properties: any) {
-  // Find or create the rule
   let rule = parent.nodes?.find(
     (node): node is Rule => node.type === "rule" && node.selector === selector
   ) as Rule | undefined
@@ -280,11 +275,9 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
     parent.append(rule)
   }
 
-  // Process properties
   if (typeof properties === "object") {
     for (const [prop, value] of Object.entries(properties)) {
       if (typeof value === "string") {
-        // Create a CSS declaration with the property and its value
         const decl = postcss.decl({
           prop,
           value: value,
@@ -319,7 +312,7 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
           if (node.type === "decl") {
             const clone = node.clone()
             clone.raws.before = "\n    "
-            rule.append(clone)
+            rule?.append(clone)
           }
         })
       }
