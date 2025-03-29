@@ -156,6 +156,38 @@
         }
       }
     },
+    "css": {
+      "type": "object",
+      "description": "CSS definitions to be added to the project's CSS file. Supports at-rules, selectors, nested rules, utilities, layers, and more.",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Direct CSS string (e.g., 'font-family: sans-serif; line-height: 1.5;')"
+          },
+          {
+            "type": "object",
+            "description": "CSS properties or nested selectors",
+            "additionalProperties": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "description": "CSS property value (e.g., 'blue', 'var(--color-primary)')"
+                },
+                {
+                  "type": "object",
+                  "description": "Nested selector or rule with properties",
+                  "additionalProperties": {
+                    "type": "string",
+                    "description": "CSS property value for nested rule"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     "meta": {
       "type": "object",
       "description": "Additional metadata for the registry item. This is an object with any key value pairs.",
