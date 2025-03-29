@@ -289,6 +289,14 @@ export async function registryResolveItemsTree(
       }
     }
 
+    // Sort the payload so that registry:theme is always first.
+    payload.sort((a, b) => {
+      if (a.type === "registry:theme") {
+        return -1
+      }
+      return 1
+    })
+
     let tailwind = {}
     payload.forEach((item) => {
       tailwind = deepmerge(tailwind, item.tailwind ?? {})
@@ -297,6 +305,11 @@ export async function registryResolveItemsTree(
     let cssVars = {}
     payload.forEach((item) => {
       cssVars = deepmerge(cssVars, item.cssVars ?? {})
+    })
+
+    let css = {}
+    payload.forEach((item) => {
+      css = deepmerge(css, item.css ?? {})
     })
 
     let docs = ""
@@ -316,6 +329,7 @@ export async function registryResolveItemsTree(
       files: deepmerge.all(payload.map((item) => item.files ?? [])),
       tailwind,
       cssVars,
+      css,
       docs,
     })
   } catch (error) {
@@ -396,6 +410,7 @@ export async function registryGetTheme(name: string, config: Config) {
       },
     },
     cssVars: {
+      theme: {},
       light: {
         radius: "0.5rem",
       },
@@ -406,9 +421,13 @@ export async function registryGetTheme(name: string, config: Config) {
   if (config.tailwind.cssVariables) {
     theme.tailwind.config.theme.extend.colors = {
       ...theme.tailwind.config.theme.extend.colors,
-      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark),
+      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark ?? {}),
     }
     theme.cssVars = {
+      theme: {
+        ...baseColor.cssVars.theme,
+        ...theme.cssVars.theme,
+      },
       light: {
         ...baseColor.cssVars.light,
         ...theme.cssVars.light,
@@ -421,6 +440,10 @@ export async function registryGetTheme(name: string, config: Config) {
 
     if (tailwindVersion === "v4" && baseColor.cssVarsV4) {
       theme.cssVars = {
+        theme: {
+          ...baseColor.cssVarsV4.theme,
+          ...theme.cssVars.theme,
+        },
         light: {
           radius: "0.625rem",
           ...baseColor.cssVarsV4.light,
