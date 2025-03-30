@@ -2,9 +2,15 @@
 title: Calendar
 description: A date field component that allows users to enter and edit date.
 component: true
+links:
+  doc: https://react-day-picker.js.org
 ---
 
-<ComponentPreview name="calendar-demo" />
+<ComponentPreview
+  name="calendar-demo"
+  title="Calendar"
+  description="A calendar showing the current date."
+/>
 
 ## About
 
@@ -12,7 +18,7 @@ The `Calendar` component is built on top of [React DayPicker](https://react-day-
 
 ## Installation
 
-<Tabs defaultValue="cli">
+<CodeTabs>
 
 <TabsList>
   <TabsTrigger value="cli">CLI</TabsTrigger>
@@ -21,7 +27,7 @@ The `Calendar` component is built on top of [React DayPicker](https://react-day-
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add calendar
+npx shadcn@latest add calendar
 ```
 
 </TabsContent>
@@ -33,7 +39,7 @@ npx shadcn-ui@latest add calendar
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install react-day-picker date-fns
+npm install react-day-picker@8.10.1 date-fns
 ```
 
 <Step>Add the `Button` component to your project.</Step>
@@ -50,7 +56,7 @@ The `Calendar` component uses the `Button` component. Make sure you have it inst
 
 </TabsContent>
 
-</Tabs>
+</CodeTabs>
 
 ## Usage
 
@@ -82,3 +88,14 @@ You can use the `<Calendar>` component to build a date picker. See the [Date Pic
 ### Form
 
 <ComponentPreview name="calendar-form" />
+
+## Changelog
+
+### 11-03-2024 day_outside color
+
+- Changed the color of the `day_outside` class to the following to improve contrast:
+
+  ```tsx showLineNumbers title="calendar.tsx"
+  "day_outside:
+        "day-outside text-muted-foreground aria-selected:bg-accent/50 aria-selected:text-muted-foreground",
+  ```

@@ -2,16 +2,16 @@
 title: Checkbox
 description: A control that allows the user to toggle between checked and not checked.
 component: true
-radix:
-  link: https://www.radix-ui.com/docs/primitives/components/checkbox
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/checkbox
   api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
 ---
 
-<ComponentPreview name="checkbox-demo" />
+<ComponentPreview name="checkbox-demo" description="A checkbox" />
 
 ## Installation
 
-<Tabs defaultValue="cli">
+<CodeTabs>
 
 <TabsList>
   <TabsTrigger value="cli">CLI</TabsTrigger>
@@ -20,7 +20,7 @@ radix:
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add checkbox
+npx shadcn@latest add checkbox
 ```
 
 </TabsContent>
@@ -45,7 +45,7 @@ npm install @radix-ui/react-checkbox
 
 </TabsContent>
 
-</Tabs>
+</CodeTabs>
 
 ## Usage
 
@@ -61,11 +61,14 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 ### With text
 
-<ComponentPreview name="checkbox-with-text" />
+<ComponentPreview
+  name="checkbox-with-text"
+  description="A checkbox with label and description."
+/>
 
 ### Disabled
 
-<ComponentPreview name="checkbox-disabled" />
+<ComponentPreview name="checkbox-disabled" description="A disabled checkbox" />
 
 ### Form
 

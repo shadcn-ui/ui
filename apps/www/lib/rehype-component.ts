@@ -5,7 +5,7 @@ import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
 import { Index } from "../__registry__"
-import { styles } from "../registry/styles"
+import { styles } from "../registry/registry-styles"
 
 export function rehypeComponent() {
   return async (tree: UnistTree) => {
@@ -33,21 +33,24 @@ export function rehypeComponent() {
             let src: string
 
             if (srcPath) {
-              src = srcPath
+              src = path.join(process.cwd(), srcPath)
             } else {
               const component = Index[style.name][name]
               src = fileName
-                ? component.files.find((file: string) => {
-                    return (
-                      file.endsWith(`${fileName}.tsx`) ||
-                      file.endsWith(`${fileName}.ts`)
-                    )
-                  }) || component.files[0]
-                : component.files[0]
+                ? component.files.find((file: unknown) => {
+                    if (typeof file === "string") {
+                      return (
+                        file.endsWith(`${fileName}.tsx`) ||
+                        file.endsWith(`${fileName}.ts`)
+                      )
+                    }
+                    return false
+                  }) || component.files[0]?.path
+                : component.files[0]?.path
             }
 
             // Read the source file.
-            const filePath = path.join(process.cwd(), src)
+            const filePath = src
             let source = fs.readFileSync(filePath, "utf8")
 
             // Replace imports.
@@ -106,10 +109,10 @@ export function rehypeComponent() {
         try {
           for (const style of styles) {
             const component = Index[style.name][name]
-            const src = component.files[0]
+            const src = component.files[0]?.path
 
             // Read the source file.
-            const filePath = path.join(process.cwd(), src)
+            const filePath = src
             let source = fs.readFileSync(filePath, "utf8")
 
             // Replace imports.

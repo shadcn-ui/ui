@@ -2,15 +2,17 @@
 title: Data Table
 description: Powerful table and datagrids built using TanStack Table.
 component: true
+links:
+  doc: https://tanstack.com/table/v8/docs/introduction
 ---
 
-<ComponentPreview name="data-table-demo" />
+<ComponentPreview name="data-table-demo" className="[&_.preview]:items-start" />
 
 ## Introduction
 
 Every data table or datagrid I've created has been unique. They all behave differently, have specific sorting and filtering requirements, and work with different data sources.
 
-It doesn't make sense to combine all of these variations into a single component. If we do that, we'll lose the flexibility that [headless UI](https://tanstack.com/table/v8/docs/guide/introduction#what-is-headless-ui) provides.
+It doesn't make sense to combine all of these variations into a single component. If we do that, we'll lose the flexibility that [headless UI](https://tanstack.com/table/v8/docs/introduction#what-is-headless-ui) provides.
 
 So instead of a data-table component, I thought it would be more helpful to provide a guide on how to build your own.
 
@@ -40,7 +42,7 @@ This guide will show you how to use [TanStack Table](https://tanstack.com/table)
 1. Add the `<Table />` component to your project:
 
 ```bash
-npx shadcn-ui@latest add table
+npx shadcn@latest add table
 ```
 
 2. Add `tanstack/react-table` dependency:
@@ -513,7 +515,7 @@ We can now update the `email` header cell to add sorting controls.
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import { ArrowUpDown } from "lucide-react"
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -746,7 +748,10 @@ export const columns: ColumnDef<Payment>[] = [
     id: "select",
     header: ({ table }) => (
       <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
       />
@@ -831,7 +836,7 @@ Here are some components you can use to build your data tables. This is from the
 
 Make any column header sortable and hideable.
 
-<ComponentSource src="/app/examples/tasks/components/data-table-column-header.tsx" />
+<ComponentSource src="/app/(app)/examples/tasks/components/data-table-column-header.tsx" />
 
 ```tsx {5}
 export const columns = [
@@ -848,7 +853,7 @@ export const columns = [
 
 Add pagination controls to your table including page size and selection count.
 
-<ComponentSource src="/app/examples/tasks/components/data-table-pagination.tsx" />
+<ComponentSource src="/app/(app)/examples/tasks/components/data-table-pagination.tsx" />
 
 ```tsx
 <DataTablePagination table={table} />
@@ -858,7 +863,7 @@ Add pagination controls to your table including page size and selection count.
 
 A component to toggle column visibility.
 
-<ComponentSource src="/app/examples/tasks/components/data-table-view-options.tsx" />
+<ComponentSource src="/app/(app)/examples/tasks/components/data-table-view-options.tsx" />
 
 ```tsx
 <DataTableViewOptions table={table} />

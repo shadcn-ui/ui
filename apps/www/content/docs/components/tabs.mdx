@@ -2,16 +2,19 @@
 title: Tabs
 description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
 component: true
-radix:
-  link: https://www.radix-ui.com/docs/primitives/components/tabs
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/tabs
   api: https://www.radix-ui.com/docs/primitives/components/tabs#api-reference
 ---
 
-<ComponentPreview name="tabs-demo" />
+<ComponentPreview
+  name="tabs-demo"
+  description="A tabs component with two forms."
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
+<CodeTabs>
 
 <TabsList>
   <TabsTrigger value="cli">CLI</TabsTrigger>
@@ -20,7 +23,7 @@ radix:
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add tabs
+npx shadcn@latest add tabs
 ```
 
 </TabsContent>
@@ -45,7 +48,7 @@ npm install @radix-ui/react-tabs
 
 </TabsContent>
 
-</Tabs>
+</CodeTabs>
 
 ## Usage
 

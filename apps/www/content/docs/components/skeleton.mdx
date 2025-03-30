@@ -4,11 +4,11 @@ description: Use to show a placeholder while content is loading.
 component: true
 ---
 
-<ComponentPreview name="skeleton-demo" />
+<ComponentPreview name="skeleton-demo" description="A skeleton component." />
 
 ## Installation
 
-<Tabs defaultValue="cli">
+<CodeTabs>
 
 <TabsList>
   <TabsTrigger value="cli">CLI</TabsTrigger>
@@ -17,7 +17,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add skeleton
+npx shadcn@latest add skeleton
 ```
 
 </TabsContent>
@@ -36,7 +36,7 @@ npx shadcn-ui@latest add skeleton
 
 </TabsContent>
 
-</Tabs>
+</CodeTabs>
 
 ## Usage
 
@@ -47,3 +47,12 @@ import { Skeleton } from "@/components/ui/skeleton"
 ```tsx
 <Skeleton className="w-[100px] h-[20px] rounded-full" />
 ```
+
+## Examples
+
+### Card
+
+<ComponentPreview
+  name="skeleton-card"
+  description="A card with skeleton showing a loading state."
+/>

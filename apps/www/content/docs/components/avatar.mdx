@@ -2,16 +2,20 @@
 title: Avatar
 description: An image element with a fallback for representing the user.
 component: true
-radix:
-  link: https://www.radix-ui.com/docs/primitives/components/avatar
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/avatar
   api: https://www.radix-ui.com/docs/primitives/components/avatar#api-reference
 ---
 
-<ComponentPreview name="avatar-demo" />
+<ComponentPreview
+  name="avatar-demo"
+  title="Avatar"
+  description="An avatar with a fallback."
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
+<CodeTabs>
 
 <TabsList>
   <TabsTrigger value="cli">CLI</TabsTrigger>
@@ -20,7 +24,7 @@ radix:
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add avatar
+npx shadcn@latest add avatar
 ```
 
 </TabsContent>
@@ -45,7 +49,7 @@ npm install @radix-ui/react-avatar
 
 </TabsContent>
 
-</Tabs>
+</CodeTabs>
 
 ## Usage
 

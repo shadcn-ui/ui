@@ -3,16 +3,19 @@ title: Select
 description: Displays a list of options for the user to pick from—triggered by a button.
 component: true
 featured: true
-radix:
-  link: https://www.radix-ui.com/docs/primitives/components/select
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/select
   api: https://www.radix-ui.com/docs/primitives/components/select#api-reference
 ---
 
-<ComponentPreview name="select-demo" />
+<ComponentPreview
+  name="select-demo"
+  description="A select component with a list of options."
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
+<CodeTabs>
 
 <TabsList>
   <TabsTrigger value="cli">CLI</TabsTrigger>
@@ -21,7 +24,7 @@ radix:
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add select
+npx shadcn@latest add select
 ```
 
 </TabsContent>
@@ -46,7 +49,7 @@ npm install @radix-ui/react-select
 
 </TabsContent>
 
-</Tabs>
+</CodeTabs>
 
 ## Usage
 
@@ -74,6 +77,13 @@ import {
 ```
 
 ## Examples
+
+### Scrollable
+
+<ComponentPreview
+  name="select-scrollable"
+  description="A select component with a scrollable list of options."
+/>
 
 ### Form
 

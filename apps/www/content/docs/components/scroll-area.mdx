@@ -2,16 +2,19 @@
 title: Scroll-area
 description: Augments native scroll functionality for custom, cross-browser styling.
 component: true
-radix:
-  link: https://www.radix-ui.com/docs/primitives/components/scroll-area
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/scroll-area
   api: https://www.radix-ui.com/docs/primitives/components/scroll-area#api-reference
 ---
 
-<ComponentPreview name="scroll-area-demo" />
+<ComponentPreview
+  name="scroll-area-demo"
+  description="A scroll area component."
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
+<CodeTabs>
 
 <TabsList>
   <TabsTrigger value="cli">CLI</TabsTrigger>
@@ -20,7 +23,7 @@ radix:
 <TabsContent value="cli">
 
 ```bash
-npx shadcn-ui@latest add scroll-area
+npx shadcn@latest add scroll-area
 ```
 
 </TabsContent>
@@ -45,7 +48,7 @@ npm install @radix-ui/react-scroll-area
 
 </TabsContent>
 
-</Tabs>
+</CodeTabs>
 
 ## Usage
 
@@ -63,3 +66,9 @@ import { ScrollArea } from "@/components/ui/scroll-area"
   started laughing, they couldn't stop.
 </ScrollArea>
 ```
+
+## Examples
+
+### Horizontal Scrolling
+
+<ComponentPreview name="scroll-area-horizontal-demo" />

@@ -20,6 +20,9 @@
         },
         "cssVariables": {
           "type": "boolean"
+        },
+        "prefix": {
+          "type": "string"
         }
       },
       "required": ["config", "css", "baseColor", "cssVariables"]
@@ -30,6 +33,9 @@
     "tsx": {
       "type": "boolean"
     },
+    "iconLibrary": {
+      "type": "string"
+    },
     "aliases": {
       "type": "object",
       "properties": {
@@ -37,6 +43,15 @@
           "type": "string"
         },
         "components": {
+          "type": "string"
+        },
+        "ui": {
+          "type": "string"
+        },
+        "lib": {
+          "type": "string"
+        },
+        "hooks": {
           "type": "string"
         }
       },

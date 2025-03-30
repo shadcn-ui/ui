@@ -1,16 +1,15 @@
 import "@/styles/globals.css"
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
 
-import { siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
+import { META_THEME_COLORS, siteConfig } from "@/config/site"
+import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Analytics } from "@/components/analytics"
 import { ThemeProvider } from "@/components/providers"
-import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
+import { Toaster as NewYorkSonner } from "@/registry/new-york/ui/sonner"
 import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
 
 export const metadata: Metadata = {
@@ -18,6 +17,7 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
+  metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
   keywords: [
     "Next.js",
@@ -33,10 +33,6 @@ export const metadata: Metadata = {
     },
   ],
   creator: "shadcn",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -68,6 +64,10 @@ export const metadata: Metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
+export const viewport: Viewport = {
+  themeColor: META_THEME_COLORS.light,
+}
+
 interface RootLayoutProps {
   children: React.ReactNode
 }
@@ -76,11 +76,24 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head />
+        <head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              try {
+                if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
+                }
+              } catch (_) {}
+            `,
+            }}
+          />
+        </head>
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
+            "min-h-svh bg-background font-sans antialiased",
+            fontSans.variable,
+            fontMono.variable
           )}
         >
           <ThemeProvider
@@ -88,18 +101,20 @@ export default function RootLayout({ children }: RootLayoutProps) {
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
+            enableColorScheme
           >
-            <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
-              <div className="flex-1">{children}</div>
-              <SiteFooter />
+            <div vaul-drawer-wrapper="">
+              <div className="relative flex min-h-svh flex-col bg-background">
+                {children}
+              </div>
             </div>
             <TailwindIndicator />
+            <ThemeSwitcher />
+            <Analytics />
+            <NewYorkToaster />
+            <DefaultToaster />
+            <NewYorkSonner />
           </ThemeProvider>
-          <ThemeSwitcher />
-          <Analytics />
-          <NewYorkToaster />
-          <DefaultToaster />
         </body>
       </html>
     </>

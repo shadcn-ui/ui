@@ -45,15 +45,31 @@ packages
 
 ## Development
 
-### Start by cloning the repository:
+### Fork this repo
 
+You can fork this repo by clicking the fork button in the top right corner of this page.
+
+### Clone on your local machine
+
+```bash
+git clone https://github.com/your-username/ui.git
 ```
-git clone git@github.com:shadcn-ui/ui.git
+
+### Navigate to project directory
+
+```bash
+cd ui
+```
+
+### Create a new Branch
+
+```bash
+git checkout -b my-new-branch
 ```
 
 ### Install dependencies
 
-```
+```bash
 pnpm install
 ```
 
@@ -65,15 +81,51 @@ You can use the `pnpm --filter=[WORKSPACE]` command to start the development pro
 
 1. To run the `ui.shadcn.com` website:
 
-```
+```bash
 pnpm --filter=www dev
 ```
 
 2. To run the `shadcn-ui` package:
 
-```
+```bash
 pnpm --filter=shadcn-ui dev
 ```
+
+## Running the CLI Locally
+
+To run the CLI locally, you can follow the workflow:
+
+1. Start by running the registry (main site) to make sure the components are up to date:
+
+   ```bash
+   pnpm www:dev
+   ```
+
+2. Run the development script for the CLI:
+
+   ```bash
+   pnpm shadcn:dev
+   ```
+
+3. In another terminal tab, test the CLI by running:
+
+   ```bash
+   pnpm shadcn
+   ```
+
+   To test the CLI in a specific app, use a command like:
+
+   ```bash
+   pnpm shadcn <init | add | ...> -c ~/Desktop/my-app
+   ```
+
+4. To run the tests for the CLI:
+
+   ```bash
+   pnpm --filter=shadcn test
+   ```
+
+This workflow ensures that you are running the most recent version of the registry and testing the CLI properly in your local environment.
 
 ## Documentation
 
@@ -106,6 +158,37 @@ When adding or modifying components, please ensure that:
 1. You make the changes for every style.
 2. You update the documentation.
 3. You run `pnpm build:registry` to update the registry.
+
+## Commit Convention
+
+Before you create a Pull Request, please check whether your commits comply with
+the commit conventions used in this repository.
+
+When you create a commit we kindly ask you to follow the convention
+`category(scope or module): message` in your commit message while using one of
+the following categories:
+
+- `feat / feature`: all changes that introduce completely new code or new
+  features
+- `fix`: changes that fix a bug (ideally you will additionally reference an
+  issue if present)
+- `refactor`: any code related change that is not a fix nor a feature
+- `docs`: changing existing or creating new documentation (i.e. README, docs for
+  usage of a lib or cli usage)
+- `build`: all changes regarding the build of the software, changes to
+  dependencies or the addition of new dependencies
+- `test`: all changes regarding tests (adding new tests or changing existing
+  ones)
+- `ci`: all changes regarding the configuration of continuous integration (i.e.
+  github actions, ci system)
+- `chore`: all changes to the repository that do not fit into any of the above
+  categories
+
+  e.g. `feat(components): add new prop to the avatar component`
+
+If you are interested in the detailed specification you can visit
+https://www.conventionalcommits.org/ or check out the
+[Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
 
 ## Requests for new components
 

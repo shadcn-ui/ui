@@ -1,55 +1,97 @@
 ---
 title: Vite
-description: Install and configure Vite.
+description: Install and configure shadcn/ui for Vite.
 ---
+
+<Callout className="bg-blue-50 border-blue-600 dark:border-blue-900 dark:bg-blue-950 mb-6 [&_code]:bg-blue-100 dark:[&_code]:bg-blue-900">
+  **Note:** The following guide is for Tailwind v4. If you are using Tailwind
+  v3, use `shadcn@2.3.0`.
+</Callout>
 
 <Steps>
 
 ### Create project
 
-Start by creating a new React project using `vite`:
+Start by creating a new React project using `vite`. Select the **React + TypeScript** template:
 
 ```bash
 npm create vite@latest
 ```
 
-### Add Tailwind and its configuration
-
-Install `tailwindcss` and its peer dependencies, then generate your `tailwind.config.js` and `postcss.config.js` files:
+### Add Tailwind CSS
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer
-
-npx tailwindcss init -p
+npm install tailwindcss @tailwindcss/vite
 ```
 
-### Edit tsconfig.json
+Replace everything in `src/index.css` with the following:
 
-Add the code below to the compilerOptions of your tsconfig.json so your app can resolve paths without error
+```css title="src/index.css"
+@import "tailwindcss";
+```
 
-```typescript
-"baseUrl": ".",
-"paths": {
-  "@/*": ["./src/*"]
+### Edit tsconfig.json file
+
+The current version of Vite splits TypeScript configuration into three files, two of which need to be edited.
+Add the `baseUrl` and `paths` properties to the `compilerOptions` section of the `tsconfig.json` and
+`tsconfig.app.json` files:
+
+```ts {11-16} showLineNumbers
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+### Edit tsconfig.app.json file
+
+Add the following code to the `tsconfig.app.json` file to resolve paths, for your IDE:
+
+```ts {4-9} showLineNumbers
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
 }
 ```
 
 ### Update vite.config.ts
 
-Add the code below to the vite.config.ts so your app can resolve paths without error
+Add the following code to the vite.config.ts so your app can resolve paths without error:
 
 ```bash
-# (so you can import "path" without error)
-npm i -D @types/node
+npm install -D @types/node
 ```
 
-```typescript
+```typescript title="vite.config.ts" showLineNumbers {1,2,8-13}
 import path from "path"
+import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
+// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -60,48 +102,40 @@ export default defineConfig({
 
 ### Run the CLI
 
-Run the `shadcn-ui` init command to setup your project:
+Run the `shadcn` init command to setup your project:
 
 ```bash
-npx shadcn-ui@latest init
+npx shadcn@latest init
 ```
 
-### Configure components.json
+You will be asked a few questions to configure `components.json`.
 
-You will be asked a few questions to configure `components.json`:
-
-```txt showLineNumbers
-Would you like to use TypeScript (recommended)? no / yes
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › › src/index.css
-Do you want to use CSS variables for colors? › no / yes
-Where is your tailwind.config.js located? › tailwind.config.js
-Configure the import alias for components: › @/components
-Configure the import alias for utils: › @/lib/utils
-Are you using React Server Components? › no / yes (no)
+```txt
+Which color would you like to use as base color? › Neutral
 ```
 
-### That's it
+### Add Components
 
 You can now start adding components to your project.
 
 ```bash
-npx shadcn-ui@latest add button
+npx shadcn@latest add button
 ```
 
 The command above will add the `Button` component to your project. You can then import it like this:
 
-```tsx {1,6} showLineNumbers
+```tsx showLineNumbers title="src/App.tsx"
 import { Button } from "@/components/ui/button"
 
-export default function Home() {
+function App() {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center min-h-svh">
       <Button>Click me</Button>
     </div>
   )
 }
+
+export default App
 ```
 
 </Steps>
