@@ -7,7 +7,8 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { ThemeCustomizer } from "@/components/theme-customizer"
+import { Customizer } from "@/components/theme-customizer"
+import { Button } from "@/registry/new-york/ui/button"
 
 const title = "Add colors. Make it yours."
 const description =
@@ -48,10 +49,14 @@ export default function ThemesLayout({
         <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
-        <PageActions>
-          <ThemeCustomizer />
-        </PageActions>
       </PageHeader>
+      <div id="themes" className="border-grid scroll-mt-24 border-b">
+        <div className="container-wrapper">
+          <div className="container flex items-center py-4">
+            <Customizer />
+          </div>
+        </div>
+      </div>
       <div className="container-wrapper">
         <div className="container py-6">
           <section id="themes" className="scroll-mt-20">

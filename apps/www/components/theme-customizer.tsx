@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import template from "lodash/template"
-import { Check, Copy, Moon, Repeat, Sun } from "lucide-react"
+import { Check, CheckIcon, ClipboardIcon, Copy } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
@@ -29,15 +29,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
+import { Separator } from "@/registry/new-york/ui/separator"
 import { Skeleton } from "@/registry/new-york/ui/skeleton"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york/ui/tooltip"
 import { BaseColor, baseColors } from "@/registry/registry-base-colors"
 
 import "@/styles/mdx.css"
+import { toast } from "sonner"
 
 export function ThemeCustomizer() {
   const [config, setConfig] = useConfig()
@@ -78,9 +75,9 @@ export function ThemeCustomizer() {
   )
 }
 
-function Customizer() {
+export function Customizer() {
   const [mounted, setMounted] = React.useState(false)
-  const { setTheme: setMode, resolvedTheme: mode } = useTheme()
+  const { resolvedTheme: mode } = useTheme()
   const [config, setConfig] = useConfig()
 
   React.useEffect(() => {
@@ -88,39 +85,11 @@ function Customizer() {
   }, [])
 
   return (
-    <ThemeWrapper
-      defaultTheme="zinc"
-      className="flex flex-col space-y-4 md:space-y-6"
-    >
-      <div className="flex items-start pt-4 md:pt-0">
-        <div className="space-y-1 pr-2">
-          <div className="font-semibold leading-none tracking-tight">
-            Theme Customizer
-          </div>
-          <div className="text-xs text-muted-foreground">
-            Customize your components colors.
-          </div>
-        </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="ml-auto rounded-[0.5rem]"
-          onClick={() => {
-            setConfig({
-              ...config,
-              theme: "zinc",
-              radius: 0.5,
-            })
-          }}
-        >
-          <Repeat />
-          <span className="sr-only">Reset</span>
-        </Button>
-      </div>
-      <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
-        <div className="space-y-1.5">
-          <Label className="text-xs">Color</Label>
-          <div className="grid grid-cols-3 gap-2">
+    <ThemeWrapper defaultTheme="zinc">
+      <div className="flex flex-1 flex-col sm:flex-row items-start sm:items-center w-full gap-2 md:gap-6">
+        <div className="flex flex-col gap-2">
+          <Label className="text-xs sr-only">Color</Label>
+          <div className="flex flex-wrap gap-1 md:gap-2">
             {baseColors
               .filter(
                 (theme) =>
@@ -131,7 +100,7 @@ function Customizer() {
 
                 return mounted ? (
                   <Button
-                    variant={"outline"}
+                    variant="outline"
                     size="sm"
                     key={theme.name}
                     onClick={() => {
@@ -141,8 +110,8 @@ function Customizer() {
                       })
                     }}
                     className={cn(
-                      "justify-start",
-                      isActive && "border-2 border-primary"
+                      "lg:px-2.5 rounded-lg w-[32px] xl:w-[86px]",
+                      isActive && "ring-primary/30 border-primary/50 ring-[2px]"
                     )}
                     style={
                       {
@@ -154,21 +123,27 @@ function Customizer() {
                   >
                     <span
                       className={cn(
-                        "mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-[--theme-primary]"
+                        "flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[--theme-primary]"
                       )}
                     >
-                      {isActive && <Check className="h-4 w-4 text-white" />}
+                      {isActive && <Check className="!size-2.5 text-white" />}
                     </span>
-                    {theme.label}
+                    <span className="hidden xl:block">
+                      {theme.label === "Zinc" ? "Default" : theme.label}
+                    </span>
                   </Button>
                 ) : (
-                  <Skeleton className="h-8 w-full" key={theme.name} />
+                  <Skeleton
+                    className="h-8 w-[32px] xl:w-[86px]"
+                    key={theme.name}
+                  />
                 )
               })}
           </div>
         </div>
-        <div className="space-y-1.5">
-          <Label className="text-xs">Radius</Label>
+        <Separator orientation="vertical" className="h-6 hidden sm:block" />
+        <div className="flex flex-col gap-2">
+          <Label className="text-xs sr-only">Radius</Label>
           <div className="grid grid-cols-5 gap-2">
             {["0", "0.3", "0.5", "0.75", "1.0"].map((value) => {
               return (
@@ -183,8 +158,9 @@ function Customizer() {
                     })
                   }}
                   className={cn(
+                    "rounded-lg w-[40px]",
                     config.radius === parseFloat(value) &&
-                      "border-2 border-primary"
+                      "ring-primary/30 border-primary/50 ring-[2px]"
                   )}
                 >
                   {value}
@@ -193,44 +169,15 @@ function Customizer() {
             })}
           </div>
         </div>
-        <div className="space-y-1.5">
-          <Label className="text-xs">Mode</Label>
-          <div className="grid grid-cols-3 gap-2">
-            {mounted ? (
-              <>
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  onClick={() => setMode("light")}
-                  className={cn(mode === "light" && "border-2 border-primary")}
-                >
-                  <Sun className="mr-1 -translate-x-1" />
-                  Light
-                </Button>
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  onClick={() => setMode("dark")}
-                  className={cn(mode === "dark" && "border-2 border-primary")}
-                >
-                  <Moon className="mr-1 -translate-x-1" />
-                  Dark
-                </Button>
-              </>
-            ) : (
-              <>
-                <Skeleton className="h-8 w-full" />
-                <Skeleton className="h-8 w-full" />
-              </>
-            )}
-          </div>
+        <div className="flex sm:ml-auto gap-2">
+          <CopyCodeButton />
         </div>
       </div>
     </ThemeWrapper>
   )
 }
 
-function CopyCodeButton({
+export function CopyCodeButton({
   className,
   ...props
 }: React.ComponentProps<typeof Button>) {
@@ -257,17 +204,23 @@ function CopyCodeButton({
               },
             })
             setHasCopied(true)
+            toast.success("Theme copied to clipboard")
           }}
-          className={cn("md:hidden", className)}
+          className={cn("md:hidden px-3 rounded-lg h-8", className)}
           {...props}
         >
-          {hasCopied ? <Check /> : <Copy />}
-          Copy code
+          Copy
         </Button>
       )}
       <Dialog>
         <DialogTrigger asChild>
-          <Button className={cn("hidden md:flex", className)} {...props}>
+          <Button
+            className={cn(
+              "hidden h-8 rounded-lg shadow-none md:flex",
+              className
+            )}
+            {...props}
+          >
             Copy code
           </Button>
         </DialogTrigger>
