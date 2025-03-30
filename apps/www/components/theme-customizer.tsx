@@ -146,9 +146,8 @@ function Customizer() {
                     )}
                     style={
                       {
-                        "--theme-primary": `hsl(${
-                          theme?.activeColor[mode === "dark" ? "dark" : "light"]
-                        })`,
+                        "--theme-primary": `hsl(${theme?.activeColor[mode === "dark" ? "dark" : "light"]
+                          })`,
                       } as React.CSSProperties
                     }
                   >
@@ -184,7 +183,33 @@ function Customizer() {
                   }}
                   className={cn(
                     config.radius === parseFloat(value) &&
-                      "border-2 border-primary"
+                    "border-2 border-primary"
+                  )}
+                >
+                  {value}
+                </Button>
+              )
+            })}
+          </div>
+        </div>
+        <div className="space-y-1.5">
+          <Label className="text-xs">Tailwindcss version</Label>
+          <div className="grid grid-cols-5 gap-2">
+            {["<v4", "v4+"].map((value) => {
+              return (
+                <Button
+                  variant={"outline"}
+                  size="sm"
+                  key={value}
+                  onClick={() => {
+                    setConfig({
+                      ...config,
+                      tailwindcssVersion: value,
+                    })
+                  }}
+                  className={cn(
+                    config.tailwindcssVersion === value &&
+                    "border-2 border-primary"
                   )}
                 >
                   {value}
@@ -249,7 +274,7 @@ function CopyCodeButton({
       {activeTheme && (
         <Button
           onClick={() => {
-            copyToClipboardWithMeta(getThemeCode(activeTheme, config.radius), {
+            copyToClipboardWithMeta(getThemeCode(activeTheme, config.radius, config.tailwindcssVersion), {
               name: "copy_theme_code",
               properties: {
                 theme: activeTheme.name,
@@ -285,7 +310,7 @@ function CopyCodeButton({
                 size="sm"
                 onClick={() => {
                   copyToClipboardWithMeta(
-                    getThemeCode(activeTheme, config.radius),
+                    getThemeCode(activeTheme, config.radius, config.tailwindcssVersion),
                     {
                       name: "copy_theme_code",
                       properties: {
@@ -317,157 +342,310 @@ function CustomizerCode() {
     <ThemeWrapper defaultTheme="zinc" className="relative space-y-4">
       <div data-rehype-pretty-code-fragment="">
         <pre className="max-h-[450px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900">
-          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
-            <span className="line text-white">@layer base &#123;</span>
-            <span className="line text-white">&nbsp;&nbsp;:root &#123;</span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-              {activeTheme?.cssVars.light["background"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-              {activeTheme?.cssVars.light["foreground"]};
-            </span>
-            {[
-              "card",
-              "popover",
-              "primary",
-              "secondary",
-              "muted",
-              "accent",
-              "destructive",
-            ].map((prefix) => (
-              <>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                  {
-                    activeTheme?.cssVars.light[
-                      prefix as keyof typeof activeTheme.cssVars.light
-                    ]
-                  }
-                  ;
-                </span>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
-                  {
-                    activeTheme?.cssVars.light[
-                      `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
-                    ]
-                  }
-                  ;
-                </span>
-              </>
-            ))}
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
-              {activeTheme?.cssVars.light["border"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
-              {activeTheme?.cssVars.light["input"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
-              {activeTheme?.cssVars.light["ring"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
-            </span>
-            {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
-              (prefix) => (
+          {config.tailwindcssVersion != "v4+" ? (
+            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+              <span className="line text-white">@layer base &#123;</span>
+              <span className="line text-white">&nbsp;&nbsp;:root &#123;</span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
+                {activeTheme?.cssVars.light["background"]};
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
+                {activeTheme?.cssVars.light["foreground"]};
+              </span>
+              {[
+                "card",
+                "popover",
+                "primary",
+                "secondary",
+                "muted",
+                "accent",
+                "destructive",
+              ].map((prefix) => (
                 <>
                   <span className="line text-white">
                     &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                     {
                       activeTheme?.cssVars.light[
-                        prefix as keyof typeof activeTheme.cssVars.light
+                      prefix as keyof typeof activeTheme.cssVars.light
+                      ]
+                    }
+                    ;
+                  </span>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                    {
+                      activeTheme?.cssVars.light[
+                      `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
                       ]
                     }
                     ;
                   </span>
                 </>
-              )
-            )}
-            <span className="line text-white">&nbsp;&nbsp;&#125;</span>
-            <span className="line text-white">&nbsp;</span>
-            <span className="line text-white">&nbsp;&nbsp;.dark &#123;</span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-              {activeTheme?.cssVars.dark["background"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-              {activeTheme?.cssVars.dark["foreground"]};
-            </span>
-            {[
-              "card",
-              "popover",
-              "primary",
-              "secondary",
-              "muted",
-              "accent",
-              "destructive",
-            ].map((prefix) => (
-              <>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                  {
-                    activeTheme?.cssVars.dark[
-                      prefix as keyof typeof activeTheme.cssVars.dark
-                    ]
-                  }
-                  ;
-                </span>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
-                  {
-                    activeTheme?.cssVars.dark[
-                      `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
-                    ]
-                  }
-                  ;
-                </span>
-              </>
-            ))}
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
-              {activeTheme?.cssVars.dark["border"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
-              {activeTheme?.cssVars.dark["input"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
-              {activeTheme?.cssVars.dark["ring"]};
-            </span>
-            {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
-              (prefix) => (
+              ))}
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
+                {activeTheme?.cssVars.light["border"]};
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
+                {activeTheme?.cssVars.light["input"]};
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
+                {activeTheme?.cssVars.light["ring"]};
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
+              </span>
+              {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+                (prefix) => (
+                  <>
+                    <span className="line text-white">
+                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                      {
+                        activeTheme?.cssVars.light[
+                        prefix as keyof typeof activeTheme.cssVars.light
+                        ]
+                      }
+                      ;
+                    </span>
+                  </>
+                )
+              )}
+              <span className="line text-white">&nbsp;&nbsp;&#125;</span>
+              <span className="line text-white">&nbsp;</span>
+              <span className="line text-white">&nbsp;&nbsp;.dark &#123;</span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
+                {activeTheme?.cssVars.dark["background"]};
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
+                {activeTheme?.cssVars.dark["foreground"]};
+              </span>
+              {[
+                "card",
+                "popover",
+                "primary",
+                "secondary",
+                "muted",
+                "accent",
+                "destructive",
+              ].map((prefix) => (
                 <>
                   <span className="line text-white">
                     &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                     {
                       activeTheme?.cssVars.dark[
-                        prefix as keyof typeof activeTheme.cssVars.dark
+                      prefix as keyof typeof activeTheme.cssVars.dark
+                      ]
+                    }
+                    ;
+                  </span>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                    {
+                      activeTheme?.cssVars.dark[
+                      `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
                       ]
                     }
                     ;
                   </span>
                 </>
-              )
-            )}
-            <span className="line text-white">&nbsp;&nbsp;&#125;</span>
-            <span className="line text-white">&#125;</span>
-          </code>
+              ))}
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
+                {activeTheme?.cssVars.dark["border"]};
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
+                {activeTheme?.cssVars.dark["input"]};
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
+                {activeTheme?.cssVars.dark["ring"]};
+              </span>
+              {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+                (prefix) => (
+                  <>
+                    <span className="line text-white">
+                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                      {
+                        activeTheme?.cssVars.dark[
+                        prefix as keyof typeof activeTheme.cssVars.dark
+                        ]
+                      }
+                      ;
+                    </span>
+                  </>
+                )
+              )}
+              <span className="line text-white">&nbsp;&nbsp;&#125;</span>
+              <span className="line text-white">&#125;</span>
+            </code>
+          ) : (
+            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+              <span className="line text-white">@layer base &#123;</span>
+              <span className="line text-white">&nbsp;&nbsp;:root &#123;</span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
+                hsl({activeTheme?.cssVars.light["background"]});
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
+                hsl({activeTheme?.cssVars.light["foreground"]});
+              </span>
+              {[
+                "card",
+                "popover",
+                "primary",
+                "secondary",
+                "muted",
+                "accent",
+                "destructive",
+              ].map((prefix) => (
+                <>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                    hsl({
+                      activeTheme?.cssVars.light[
+                      prefix as keyof typeof activeTheme.cssVars.light
+                      ]
+                    })
+                    ;
+                  </span>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                    hsl({
+                      activeTheme?.cssVars.light[
+                      `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
+                      ]
+                    })
+                    ;
+                  </span>
+                </>
+              ))}
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
+                hsl({activeTheme?.cssVars.light["border"]});
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
+                hsl({activeTheme?.cssVars.light["input"]});
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
+                hsl({activeTheme?.cssVars.light["ring"]});
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
+              </span>
+              {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+                (prefix) => (
+                  <>
+                    <span className="line text-white">
+                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                      hsl({
+                        activeTheme?.cssVars.light[
+                        prefix as keyof typeof activeTheme.cssVars.light
+                        ]
+                      })
+                      ;
+                    </span>
+                  </>
+                )
+              )}
+              <span className="line text-white">&nbsp;&nbsp;&#125;</span>
+              <span className="line text-white">&nbsp;</span>
+              <span className="line text-white">&nbsp;&nbsp;.dark &#123;</span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
+                hsl({activeTheme?.cssVars.dark["background"]});
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
+                hsl({activeTheme?.cssVars.dark["foreground"]});
+              </span>
+              {[
+                "card",
+                "popover",
+                "primary",
+                "secondary",
+                "muted",
+                "accent",
+                "destructive",
+              ].map((prefix) => (
+                <>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                    hsl({
+                      activeTheme?.cssVars.dark[
+                      prefix as keyof typeof activeTheme.cssVars.dark
+                      ]
+                    })
+                    ;
+                  </span>
+                  <span className="line text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                    hsl({
+                      activeTheme?.cssVars.dark[
+                      `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
+                      ]
+                    })
+                    ;
+                  </span>
+                </>
+              ))}
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
+                hsl({activeTheme?.cssVars.dark["border"]});
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
+                hsl({activeTheme?.cssVars.dark["input"]});
+              </span>
+              <span className="line text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
+                hsl({activeTheme?.cssVars.dark["ring"]});
+              </span>
+              {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+                (prefix) => (
+                  <>
+                    <span className="line text-white">
+                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                      hsl({
+                        activeTheme?.cssVars.dark[
+                        prefix as keyof typeof activeTheme.cssVars.dark
+                        ]
+                      })
+                      ;
+                    </span>
+                  </>
+                )
+              )}
+              <span className="line text-white">&nbsp;&nbsp;&#125;</span>
+              <span className="line text-white">&#125;</span>
+            </code>
+          )
+          }
         </pre>
       </div>
     </ThemeWrapper>
   )
 }
 
-function getThemeCode(theme: BaseColor, radius: number) {
+function getThemeCode(theme: BaseColor, radius: number, tailwindVersion: string) {
   if (!theme) {
     return ""
+  }
+
+  if (tailwindVersion === "v4+") {
+    return template(BASE_STYLES_WITH_VARIABLES_FOR_TAILWINDCSS_V4)({
+      colors: theme.cssVars,
+      radius,
+    })
   }
 
   return template(BASE_STYLES_WITH_VARIABLES)({
@@ -534,3 +712,60 @@ const BASE_STYLES_WITH_VARIABLES = `
   }
 }
 `
+
+const BASE_STYLES_WITH_VARIABLES_FOR_TAILWINDCSS_V4 = `
+:root {
+  --background: hsl(<%- colors.light["background"] %>);
+  --foreground: hsl(<%- colors.light["foreground"] %>);
+  --card: hsl(<%- colors.light["card"] %>);
+  --card-foreground: hsl(<%- colors.light["card-foreground"] %>);
+  --popover: hsl(<%- colors.light["popover"] %>);
+  --popover-foreground: hsl(<%- colors.light["popover-foreground"] %>);
+  --primary: hsl(<%- colors.light["primary"] %>);
+  --primary-foreground: hsl(<%- colors.light["primary-foreground"] %>);
+  --secondary: hsl(<%- colors.light["secondary"] %>);
+  --secondary-foreground: hsl(<%- colors.light["secondary-foreground"] %>);
+  --muted: hsl(<%- colors.light["muted"] %>);
+  --muted-foreground: hsl(<%- colors.light["muted-foreground"] %>);
+  --accent: hsl(<%- colors.light["accent"] %>);
+  --accent-foreground: hsl(<%- colors.light["accent-foreground"] %>);
+  --destructive: hsl(<%- colors.light["destructive"] %>);
+  --destructive-foreground: hsl(<%- colors.light["destructive-foreground"] %>);
+  --border: hsl(<%- colors.light["border"] %>);
+  --input: hsl(<%- colors.light["input"] %>);
+  --ring: hsl(<%- colors.light["ring"] %>);
+  --radius: <%- radius %>rem;
+  --chart-1: hsl(<%- colors.light["chart-1"] %>);
+  --chart-2: hsl(<%- colors.light["chart-2"] %>);
+  --chart-3: hsl(<%- colors.light["chart-3"] %>);
+  --chart-4: hsl(<%- colors.light["chart-4"] %>);
+  --chart-5: hsl(<%- colors.light["chart-5"] %>);
+}
+
+.dark {
+  --background: hsl(<%- colors.dark["background"] %>);
+  --foreground: hsl(<%- colors.dark["foreground"] %>);
+  --card: hsl(<%- colors.dark["card"] %>);
+  --card-foreground: hsl(<%- colors.dark["card-foreground"] %>);
+  --popover: hsl(<%- colors.dark["popover"] %>);
+  --popover-foreground: hsl(<%- colors.dark["popover-foreground"] %>);
+  --primary: hsl(<%- colors.dark["primary"] %>);
+  --primary-foreground: hsl(<%- colors.dark["primary-foreground"] %>);
+  --secondary: hsl(<%- colors.dark["secondary"] %>);
+  --secondary-foreground: hsl(<%- colors.dark["secondary-foreground"] %>);
+  --muted: hsl(<%- colors.dark["muted"] %>);
+  --muted-foreground: hsl(<%- colors.dark["muted-foreground"] %>);
+  --accent: hsl(<%- colors.dark["accent"] %>);
+  --accent-foreground: hsl(<%- colors.dark["accent-foreground"] %>);
+  --destructive: hsl(<%- colors.dark["destructive"] %>);
+  --destructive-foreground: hsl(<%- colors.dark["destructive-foreground"] %>);
+  --border: hsl(<%- colors.dark["border"] %>);
+  --input: hsl(<%- colors.dark["input"] %>);
+  --ring: hsl(<%- colors.dark["ring"] %>);
+  --chart-1: hsl(<%- colors.dark["chart-1"] %>);
+  --chart-2: hsl(<%- colors.dark["chart-2"] %>);
+  --chart-3: hsl(<%- colors.dark["chart-3"] %>);
+  --chart-4: hsl(<%- colors.dark["chart-4"] %>);
+  --chart-5: hsl(<%- colors.dark["chart-5"] %>);
+}
+`;
