@@ -307,6 +307,11 @@ export async function registryResolveItemsTree(
       cssVars = deepmerge(cssVars, item.cssVars ?? {})
     })
 
+    let css = {}
+    payload.forEach((item) => {
+      css = deepmerge(css, item.css ?? {})
+    })
+
     let docs = ""
     payload.forEach((item) => {
       if (item.docs) {
@@ -324,6 +329,7 @@ export async function registryResolveItemsTree(
       files: deepmerge.all(payload.map((item) => item.files ?? [])),
       tailwind,
       cssVars,
+      css,
       docs,
     })
   } catch (error) {
@@ -467,7 +473,7 @@ function getRegistryUrl(path: string) {
   return `${REGISTRY_URL}/${path}`
 }
 
-function isUrl(path: string) {
+export function isUrl(path: string) {
   try {
     new URL(path)
     return true

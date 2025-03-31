@@ -434,6 +434,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Examples",
+          href: "/docs/registry/examples",
+          items: [],
+        },
+        {
           title: "Open in v0",
           href: "/docs/registry/open-in-v0",
           items: [],
