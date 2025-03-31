@@ -473,7 +473,7 @@ function getRegistryUrl(path: string) {
   return `${REGISTRY_URL}/${path}`
 }
 
-function isUrl(path: string) {
+export function isUrl(path: string) {
   try {
     new URL(path)
     return true
