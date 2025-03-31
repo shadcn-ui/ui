@@ -11,11 +11,11 @@ export const registryItemTypeSchema = z.enum([
   "registry:hook",
   "registry:page",
   "registry:file",
+  "registry:theme",
+  "registry:style",
 
   // Internal use only
-  "registry:theme",
   "registry:example",
-  "registry:style",
   "registry:internal",
 ])
 
@@ -46,12 +46,27 @@ export const registryItemTailwindSchema = z.object({
 })
 
 export const registryItemCssVarsSchema = z.object({
+  theme: z.record(z.string(), z.string()).optional(),
   light: z.record(z.string(), z.string()).optional(),
   dark: z.record(z.string(), z.string()).optional(),
 })
 
+export const registryItemCssSchema = z.record(
+  z.string(),
+  z.lazy(() =>
+    z.union([
+      z.string(),
+      z.record(
+        z.string(),
+        z.union([z.string(), z.record(z.string(), z.string())])
+      ),
+    ])
+  )
+)
+
 export const registryItemSchema = z.object({
   $schema: z.string().optional(),
+  extends: z.string().optional(),
   name: z.string(),
   type: registryItemTypeSchema,
   title: z.string().optional(),
@@ -63,6 +78,7 @@ export const registryItemSchema = z.object({
   files: z.array(registryItemFileSchema).optional(),
   tailwind: registryItemTailwindSchema.optional(),
   cssVars: registryItemCssVarsSchema.optional(),
+  css: registryItemCssSchema.optional(),
   meta: z.record(z.string(), z.any()).optional(),
   docs: z.string().optional(),
   categories: z.array(z.string()).optional(),
@@ -97,16 +113,8 @@ export const registryBaseColorSchema = z.object({
     light: z.record(z.string(), z.string()),
     dark: z.record(z.string(), z.string()),
   }),
-  cssVars: z.object({
-    light: z.record(z.string(), z.string()),
-    dark: z.record(z.string(), z.string()),
-  }),
-  cssVarsV4: z
-    .object({
-      light: z.record(z.string(), z.string()),
-      dark: z.record(z.string(), z.string()),
-    })
-    .optional(),
+  cssVars: registryItemCssVarsSchema,
+  cssVarsV4: registryItemCssVarsSchema.optional(),
   inlineColorsTemplate: z.string(),
   cssVarsTemplate: z.string(),
 })
@@ -117,5 +125,6 @@ export const registryResolvedItemsTreeSchema = registryItemSchema.pick({
   files: true,
   tailwind: true,
   cssVars: true,
+  css: true,
   docs: true,
 })
