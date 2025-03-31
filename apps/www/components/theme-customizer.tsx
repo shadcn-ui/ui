@@ -105,9 +105,9 @@ export function Customizer() {
 
   return (
     <ThemeWrapper defaultTheme="zinc">
-      <div className="grid grid-cols-2 sm:flex flex-1 items-start sm:items-center w-full gap-2 md:gap-6 flex-wrap">
+      <div className="grid w-full flex-1 grid-cols-2 flex-wrap items-start gap-2 sm:flex sm:items-center md:gap-6">
         <div className="flex flex-col gap-2">
-          <Label className="text-xs sr-only">Color</Label>
+          <Label className="sr-only text-xs">Color</Label>
           <div className="flex flex-wrap gap-1 md:gap-2">
             {baseColors
               .filter(
@@ -129,8 +129,8 @@ export function Customizer() {
                       })
                     }}
                     className={cn(
-                      "lg:px-2.5 rounded-lg w-[32px] xl:w-[86px]",
-                      isActive && "ring-primary/30 border-primary/50 ring-[2px]"
+                      "w-[32px] rounded-lg lg:px-2.5 xl:w-[86px]",
+                      isActive && "border-primary/50 ring-[2px] ring-primary/30"
                     )}
                     style={
                       {
@@ -160,9 +160,9 @@ export function Customizer() {
               })}
           </div>
         </div>
-        <Separator orientation="vertical" className="h-6 hidden sm:block" />
+        <Separator orientation="vertical" className="hidden h-6 sm:block" />
         <div className="flex flex-col gap-2">
-          <Label className="text-xs sr-only">Radius</Label>
+          <Label className="sr-only text-xs">Radius</Label>
           <div className="flex flex-wrap gap-1 md:gap-2">
             {["0", "0.3", "0.5", "0.75", "1.0"].map((value) => {
               return (
@@ -177,9 +177,9 @@ export function Customizer() {
                     })
                   }}
                   className={cn(
-                    "rounded-lg w-[40px]",
+                    "w-[40px] rounded-lg",
                     config.radius === parseFloat(value) &&
-                      "ring-primary/30 border-primary/50 ring-[2px]"
+                      "border-primary/50 ring-[2px] ring-primary/30"
                   )}
                 >
                   {value}
@@ -188,7 +188,7 @@ export function Customizer() {
             })}
           </div>
         </div>
-        <div className="flex sm:ml-auto gap-2">
+        <div className="flex gap-2 sm:ml-auto">
           <CopyCodeButton />
         </div>
       </div>
@@ -313,7 +313,7 @@ function CustomizerCode() {
                   &nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
                 </span>
                 {Object.entries(activeThemeOKLCH?.light).map(([key, value]) => (
-                  <span className="line text-white">
+                  <span className="line text-white" key={key}>
                     &nbsp;&nbsp;&nbsp;--{key}: {value};
                   </span>
                 ))}
@@ -321,7 +321,7 @@ function CustomizerCode() {
                 <span className="line text-white">&nbsp;</span>
                 <span className="line text-white">&nbsp;.dark &#123;</span>
                 {Object.entries(activeThemeOKLCH?.dark).map(([key, value]) => (
-                  <span className="line text-white">
+                  <span className="line text-white" key={key}>
                     &nbsp;&nbsp;&nbsp;--{key}: {value};
                   </span>
                 ))}

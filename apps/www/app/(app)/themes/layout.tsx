@@ -49,7 +49,7 @@ export default function ThemesLayout({
         <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
-        <div className="text-xs mt-2 bg-blue-600 text-white rounded-full px-3 py-1">
+        <div className="mt-2 rounded-full bg-blue-600 px-3 py-1 text-xs text-white">
           New Theme Editor coming soon
         </div>
       </PageHeader>
