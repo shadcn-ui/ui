@@ -99,9 +99,9 @@ export function ProductsTable({
               <SelectValue placeholder="Select a product" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">In Stock</SelectItem>
-              <SelectItem value="in-stock">Low Stock</SelectItem>
-              <SelectItem value="low-stock">Archived</SelectItem>
+              <SelectItem value="all">All</SelectItem>
+              <SelectItem value="in-stock">In Stock</SelectItem>
+              <SelectItem value="low-stock">Low Stock</SelectItem>
               <SelectItem value="archived">Archived</SelectItem>
             </SelectContent>
           </Select>
