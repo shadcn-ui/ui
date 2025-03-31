@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "time-picker-with-popover",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "examples/time-picker-with-popover.tsx",
+      "content": "\"use client\"\n\nimport {useState} from \"react\"\nimport {TimerIcon} from \"lucide-react\"\n\nimport {Button} from \"@/registry/default/ui/button\"\nimport {Popover, PopoverContent, PopoverTrigger,} from \"@/registry/default/ui/popover\"\nimport {TimePicker, TimePickerContainer,} from \"@/registry/default/ui/time-picker\"\n\nexport default function TimePickerWithPopover() {\n  const [hours, setHours] = useState(0)\n  const [days, setDays] = useState(0)\n  return (\n    <div\n      className={\n        \"w-full h-full flex flex-row items-center justify-center gap-2\"\n      }\n    >\n      <span>The time you want to rent the car:</span>\n      <Popover>\n        <PopoverTrigger asChild>\n          <Button>\n            <TimerIcon/>\n            {days} Days {hours} Hours\n          </Button>\n        </PopoverTrigger>\n        <PopoverContent className={\"w-80 h-32 flex flex-col items-center gap-2\"}>\n          <h1 className={\"text-2xl font-semibold\"}>Time Picker</h1>\n          <TimePickerContainer>\n            <TimePicker\n              timeMilliseconds={1000 * 60 * 60}\n              maxValue={24}\n              prefixLabel={\n                <span className={\"text-sm text-center w-20\"}>Hour:</span>\n              }\n              suffixLabel={\n                (value) => <span className={\"text-sm text-center w-20\"}>{value} h</span>\n              }\n              value={hours}\n              onValueChange={setHours}\n            />\n            <TimePicker\n              timeMilliseconds={1000 * 60 * 60 * 24}\n              maxValue={100}\n              prefixLabel={\n                <span className={\"text-sm text-center w-20\"}>Day:</span>\n              }\n              suffixLabel={\n                (value) => <span className={\"text-sm text-center w-20\"}>{value} d</span>\n              }\n              value={days}\n              onValueChange={setDays}\n            />\n          </TimePickerContainer>\n        </PopoverContent>\n      </Popover>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
