@@ -213,9 +213,14 @@ async function addWorkspaceComponents(
     }
 
     // 4. Update dependencies.
-    await updateDependencies(component.dependencies, component.devDependencies, targetConfig, {
-      silent: true,
-    })
+    await updateDependencies(
+      component.dependencies,
+      component.devDependencies,
+      targetConfig,
+      {
+        silent: true,
+      }
+    )
 
     // 5. Update files.
     const files = await updateFiles(component.files, targetConfig, {

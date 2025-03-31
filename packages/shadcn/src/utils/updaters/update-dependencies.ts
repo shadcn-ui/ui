@@ -17,7 +17,7 @@ export async function updateDependencies(
 ) {
   dependencies = Array.from(new Set(dependencies))
   devDependencies = Array.from(new Set(devDependencies))
-  
+
   if (!dependencies?.length && !devDependencies?.length) {
     return
   }
