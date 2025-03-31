@@ -49,6 +49,9 @@ export default function ThemesLayout({
         <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
+        <div className="text-xs mt-2 bg-blue-600 text-white rounded-full px-3 py-1">
+          New Theme Editor coming soon
+        </div>
       </PageHeader>
       <div id="themes" className="border-grid scroll-mt-24 border-b">
         <div className="container-wrapper">
