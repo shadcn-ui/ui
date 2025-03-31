@@ -1,7 +1,7 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
-import { getRegistryIndex, getRegistryItem } from "@/src/registry/api"
+import { getRegistryIndex, getRegistryItem, isUrl } from "@/src/registry/api"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
@@ -81,7 +81,7 @@ export const add = new Command()
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
 
-      if (components.length > 0) {
+      if (components.length > 0 && isUrl(components[0])) {
         const item = await getRegistryItem(components[0], "")
         itemType = item?.type
       }
