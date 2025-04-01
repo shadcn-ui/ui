@@ -125,6 +125,32 @@ describe("transformCss", () => {
     `)
   })
 
+  test("should add styles with @apply", async () => {
+    const input = `@tailwind base;
+@tailwind components;
+@tailwind utilities;`
+
+    const result = await transformCss(input, {
+      "@layer components": {
+        ".card": {
+          "@apply": "rounded-lg bg-white p-6 shadow-xl",
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      @layer components {
+        .card {
+          @apply rounded-lg bg-white p-6 shadow-xl;
+        }
+      }"
+    `)
+  })
+
   test("should update existing rules", async () => {
     const input = `@import "tailwindcss";
 
@@ -154,6 +180,34 @@ describe("transformCss", () => {
           padding: 1rem;
           border-radius: var(--rounded-lg);
           box-shadow: var(--shadow-xl);
+        }
+      }"
+    `)
+  })
+
+  test("should update existing @apply", async () => {
+    const input = `@import "tailwindcss";
+
+@layer components {
+  .card {
+    @apply bg-white p-4;
+  }
+}`
+
+    const result = await transformCss(input, {
+      "@layer components": {
+        ".card": {
+          "@apply": "rounded-lg bg-background p-6 shadow-xl",
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @layer components {
+        .card {
+          @apply rounded-lg bg-background p-6 shadow-xl;
         }
       }"
     `)
@@ -262,6 +316,31 @@ describe("transformCss", () => {
       @layer base {
         body {
           font-family: var(--font-sans);
+          line-height: 1.5;
+        }
+      }"
+    `)
+  })
+
+  test("should handle direct string content with @apply", async () => {
+    const input = `@tailwind base;
+@tailwind components;
+@tailwind utilities;`
+
+    const result = await transformCss(input, {
+      "@layer base": {
+        body: "@apply bg-background font-sans text-foreground; line-height: 1.5;",
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      @layer base {
+        body {
+          @apply bg-background font-sans text-foreground;
           line-height: 1.5;
         }
       }"
