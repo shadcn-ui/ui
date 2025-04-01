@@ -92,6 +92,8 @@
     "swr": "2.2.6-beta.3",
     "tailwind-merge": "^1.12.0",
     "ts-morph": "^22.0.0",
+    "ua-parser-js": "^2.0.3",
+    "uuid": "^11.1.0",
     "vaul": "1.1.1",
     "zod": "^3.21.4"
   },
@@ -102,6 +104,7 @@
     "@types/react": "^18.2.65",
     "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.2.22",
+    "@types/ua-parser-js": "^0.7.39",
     "esbuild": "^0.17.19",
     "eslint": "^8.41.0",
     "mdast-util-toc": "^6.1.1",
