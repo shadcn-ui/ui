@@ -26,7 +26,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   const activeHeading = useActiveItem(itemIds)
   const mounted = useMounted()
 
-  if (!toc?.items || !mounted) {
+  if (!toc?.items?.length) {
     return null
   }
 
