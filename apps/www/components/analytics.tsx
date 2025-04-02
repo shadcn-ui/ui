@@ -2,13 +2,13 @@
 
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react"
 
-import { VercelInternalAnalytics } from "./analytics-internal"
+import { PageViewTracker } from "./page-view-tracker"
 
 export function Analytics() {
   return (
     <>
       <VercelAnalytics />
-      <VercelInternalAnalytics />
+      <PageViewTracker />
     </>
   )
 }
