@@ -20,9 +20,6 @@ export function useTrackActivity(): {
 
   const pathname = usePathname()
 
-  console.log("PATHNAME", pathname)
-  console.log("UTM sfasdfa", utm)
-
   baseTrackDataRef.current = {
     page_path: pathname,
     utm: JSON.stringify(utm),
