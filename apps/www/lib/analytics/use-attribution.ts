@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
+import { useSearchParams } from "next/navigation"
 
-export const PRODUCT_DOMAIN = "vercel.com"
+export const PRODUCT_DOMAIN = "ui.shadcn.com"
 
 export enum Utm {
   Source = "utm_source",
@@ -50,10 +51,10 @@ export function isolateUtmParameters(
  * are frequently not making it through to the third-party endpoints.
  */
 export function useUrlParameters(): Record<string, string> {
-  const url = useFormSubmissionUrl()
   try {
-    const urlParams = new URL(url).searchParams
-    const params = Object.fromEntries(urlParams.entries())
+    const urlParams = useSearchParams()
+    if (!urlParams) return {}
+    const params = Object.fromEntries(urlParams?.entries())
     return params
   } catch {
     return {}
@@ -79,20 +80,6 @@ export interface Attribution {
   utm: Partial<Record<Utm, string>>
 }
 
-function useFormSubmissionUrl(): string {
-  const [submissionUrl, setSubmissionUrl] = useState("")
-
-  useEffect(() => {
-    const url =
-      window.location.hostname === "localhost"
-        ? `https://${PRODUCT_DOMAIN}/dev-mode${window.location.pathname}${window.location.search}`
-        : window.location.toString()
-    setSubmissionUrl(url)
-  }, [])
-
-  return submissionUrl
-}
-
 export function useReferrer(): string {
   const [referrer, setReferrer] = useState(
     typeof document !== "undefined" ? document.referrer : ""
@@ -106,16 +93,14 @@ export function useReferrer(): string {
 
 export function useAttribution(): Attribution {
   const utmParameters = useUtmParameters()
-  const url = useFormSubmissionUrl()
   const referrer = useReferrer()
 
   const attribution = useMemo(
     () => ({
       utm: utmParameters,
-      url,
       referrer,
     }),
-    [utmParameters, url, referrer]
+    [utmParameters, referrer]
   )
 
   console.log("ATTRIBUTION", attribution)
