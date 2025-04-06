@@ -123,8 +123,13 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Vite",
+          title: "Vite (TypeScript)",
           href: "/docs/installation/vite",
+          items: [],
+        },
+        {
+          title: "Vite (JavaScript)",
+          href: "/docs/installation/vite-javascript",
           items: [],
         },
         {

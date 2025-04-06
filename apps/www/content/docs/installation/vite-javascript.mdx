@@ -32,9 +32,6 @@ Select a framework: React
 Select a variant: JavaScript
 ```
 
-```bash
-npm install
-```
 
 ### Add Tailwind CSS
 
@@ -48,7 +45,7 @@ Replace everything in `src/index.css` with the following:
 @import "tailwindcss";
 ```
 
-### Create a jsconfig.json file inside the root directory
+### Create a jsconfig.json file (inside the root directory)
 
 ```ts {11-16} showLineNumbers
 {
@@ -70,7 +67,7 @@ Add the following code to the vite.config.ts so your app can resolve paths witho
 npm install -D @types/node
 ```
 
-```typescript title="vite.config.ts" showLineNumbers {1,2,8-13}
+```javascript title="vite.config.js" showLineNumbers {1,2,8-13}
 import path from "path"
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
@@ -100,6 +97,16 @@ You will be asked a few questions to configure `components.json`.
 ```txt
 Which color would you like to use as base color? › Neutral
 ```
+
+You might see this message if you are using React 19
+
+```txt
+It looks like you are using React 19.
+Some packages may fail to install due to peer dependency issues in ...
+```
+
+See more info about the solution <Link href="../../docs/react-19#how-to-fix-this" target="_blank" rel="noreferrer">here</Link>
+
 
 ### Add Components
 
