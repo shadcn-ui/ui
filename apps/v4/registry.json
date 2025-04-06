@@ -20,7 +20,8 @@
       "name": "accordion",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-accordion"
+        "@radix-ui/react-accordion",
+        "@radix-ui/react-slot"
       ],
       "files": [
         {
@@ -256,7 +257,8 @@
       "name": "context-menu",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-context-menu"
+        "@radix-ui/react-context-menu",
+        "@radix-ui/react-slot"
       ],
       "files": [
         {
@@ -269,7 +271,8 @@
       "name": "dialog",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-dialog"
+        "@radix-ui/react-dialog",
+        "@radix-ui/react-slot"
       ],
       "files": [
         {
@@ -283,7 +286,8 @@
       "type": "registry:ui",
       "dependencies": [
         "vaul",
-        "@radix-ui/react-dialog"
+        "@radix-ui/react-dialog",
+        "@radix-ui/react-slot"
       ],
       "files": [
         {
@@ -296,7 +300,8 @@
       "name": "dropdown-menu",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-dropdown-menu"
+        "@radix-ui/react-dropdown-menu",
+        "@radix-ui/react-slot"
       ],
       "files": [
         {
@@ -379,7 +384,8 @@
       "name": "menubar",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-menubar"
+        "@radix-ui/react-menubar",
+        "@radix-ui/react-slot"
       ],
       "files": [
         {
@@ -392,7 +398,8 @@
       "name": "navigation-menu",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-navigation-menu"
+        "@radix-ui/react-navigation-menu",
+        "@radix-ui/react-slot"
       ],
       "files": [
         {
@@ -483,7 +490,8 @@
       "name": "select",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-select"
+        "@radix-ui/react-select",
+        "@radix-ui/react-slot"
       ],
       "files": [
         {
@@ -509,7 +517,8 @@
       "name": "sheet",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-dialog"
+        "@radix-ui/react-dialog",
+        "@radix-ui/react-slot"
       ],
       "files": [
         {

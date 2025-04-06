@@ -3,7 +3,10 @@
   "name": "dropdown-menu",
   "type": "registry:ui",
   "author": "shadcn (https://ui.shadcn.com)",
-  "dependencies": ["@radix-ui/react-dropdown-menu", "@radix-ui/react-slot"],
+  "dependencies": [
+    "@radix-ui/react-dropdown-menu",
+    "@radix-ui/react-slot"
+  ],
   "files": [
     {
       "path": "ui/dropdown-menu.tsx",
