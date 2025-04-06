@@ -1,23 +1,15 @@
 import type { Metadata, Viewport } from "next"
-import { Geist_Mono as FontMono, Inter as FontSans } from "next/font/google"
+import { cookies } from "next/headers"
 
-import { cn } from "@/lib/utils"
+import { fontVariables } from "@/lib/fonts"
 import { Analytics } from "@/components/analytics"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/new-york-v4/ui/sonner"
 import { siteConfig } from "@/www/config/site"
 
 import "./globals.css"
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-
-const fontMono = FontMono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
+import { cn } from "@/lib/utils"
+import { ActiveThemeProvider } from "@/components/active-theme"
 
 const META_THEME_COLORS = {
   light: "#ffffff",
@@ -29,7 +21,7 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL("https://v4.shadcn.com"),
   description: siteConfig.description,
   keywords: [
     "Next.js",
@@ -48,13 +40,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
+    url: "https://v4.shadcn.com",
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: "https://v4.shadcn.com/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -65,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    images: ["https://v4.shadcn.com/opengraph-image.png"],
     creator: "@shadcn",
   },
   icons: {
@@ -80,11 +72,15 @@ export const viewport: Viewport = {
   themeColor: META_THEME_COLORS.light,
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const cookieStore = await cookies()
+  const activeThemeValue = cookieStore.get("active_theme")?.value
+  const isScaled = activeThemeValue?.endsWith("-scaled")
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -103,8 +99,9 @@ export default function RootLayout({
       <body
         className={cn(
           "bg-background overscroll-none font-sans antialiased",
-          fontSans.variable,
-          fontMono.variable
+          activeThemeValue ? `theme-${activeThemeValue}` : "",
+          isScaled ? "theme-scaled" : "",
+          fontVariables
         )}
       >
         <ThemeProvider
@@ -112,10 +109,13 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          enableColorScheme
         >
-          {children}
-          <Toaster />
-          <Analytics />
+          <ActiveThemeProvider initialTheme={activeThemeValue}>
+            {children}
+            <Toaster />
+            <Analytics />
+          </ActiveThemeProvider>
         </ThemeProvider>
       </body>
     </html>

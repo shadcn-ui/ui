@@ -292,6 +292,58 @@ function AccordionItem({
 }
 ```
 
-## Share Your Feedback
+## Changelog
 
-We’d love for you to test these updates and share your feedback! If you run into anything weird or have suggestions, add a comment below.
+### March 19, 2025 - Deprecate `tailwindcss-animate`
+
+We've deprecated `tailwindcss-animate` in favor of `tw-animate-css`.
+
+New project will have `tw-animate-css` installed by default.
+
+For existing projects, follow the steps below to migrate.
+
+1. Remove `tailwindcss-animate` from your dependencies.
+2. Remove the `@plugin 'tailwindcss-animate'` from your globals.css file.
+3. Install `tw-animate-css` as a dev dependency.
+4. Add the `@import "tw-animate-css"` to your globals.css file.
+
+```diff showLineNumbers
+- @plugin 'tailwindcss-animate';
++ @import "tw-animate-css";
+```
+
+### March 12, 2025 - New Dark Mode Colors
+
+We've revisted the dark mode colors and updated them to be more accessible.
+
+If you're running an existing Tailwind v4 project (**not an upgraded one**[^1]), you can update your components to use the new dark mode colors by re-adding your components using the CLI[^2].
+
+<Steps>
+
+<Step>Commit any changes</Step>
+
+**The CLI will overwrite your existing components.** We recommend committing any changes you've made to your components before running the CLI.
+
+```bash
+git add .
+git commit -m "..."
+```
+
+<Step>Update components</Step>
+
+```bash
+npx shadcn@latest add --all --overwrite
+```
+
+<Step>Update colors</Step>
+
+Update the dark mode colors in your `globals.css` file to new OKLCH colors. See the [Base Colors](/docs/theming#base-colors) reference for a list of colors.
+
+<Step>Review changes</Step>
+
+Review and re-apply any changes you made to your components.
+
+</Steps>
+
+[^1]: Upgraded projects are not affected by this change. You can continue using the old dark mode colors.
+[^2]: Updating your components will overwrite your existing components.

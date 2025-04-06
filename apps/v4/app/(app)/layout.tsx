@@ -3,6 +3,7 @@ import { cookies } from "next/headers"
 import { AppSidebar } from "@/components/app-sidebar"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { NavHeader } from "@/components/nav-header"
+import { ThemeSelector } from "@/components/theme-selector"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import {
   SidebarInset,
@@ -31,6 +32,7 @@ export default async function AppLayout({
             />
             <NavHeader />
             <div className="ml-auto flex items-center gap-2">
+              <ThemeSelector />
               <ModeSwitcher />
             </div>
           </div>

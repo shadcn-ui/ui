@@ -15,8 +15,8 @@
   "scripts": {
     "build": "turbo run build",
     "build:cli": "turbo --filter=shadcn build",
-    "build:registry": "pnpm --filter=www build:registry && pnpm --filter=www lint:fix && pnpm format:write -- --loglevel silent",
-    "registry:build": "pnpm --filter=www build:registry && pnpm --filter=www lint:fix && pnpm format:write -- --loglevel silent",
+    "build:registry": "pnpm --filter=www,v4 build:registry && pnpm --filter=www,v4 lint:fix && pnpm format:write -- --loglevel silent",
+    "registry:build": "turbo run registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
     "registry:capture": "pnpm --filter=www registry:capture",
     "dev": "turbo run dev --parallel",
     "shadcn-ui:dev": "turbo --filter=shadcn-ui dev",
@@ -35,7 +35,6 @@
     "www:build": "pnpm --filter=www build",
     "v4:dev": "pnpm --filter=v4 dev",
     "v4:build": "pnpm --filter=v4 build",
-    "v4:registry:build": "pnpm --filter=v4 registry:build && pnpm --filter=v4 lint:fix && pnpm format:write -- --loglevel silent",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "preview": "turbo run preview",
@@ -76,9 +75,9 @@
     "tailwindcss-animate": "^1.0.5",
     "tsx": "^4.1.4",
     "turbo": "^1.9.9",
-    "vite": "^5.4.1",
+    "vite": "^5.4.15",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^2.0.5"
+    "vitest": "^2.1.9"
   },
   "devDependencies": {
     "@types/node": "^20.11.27",

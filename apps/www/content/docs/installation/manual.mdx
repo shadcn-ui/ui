@@ -16,7 +16,7 @@ Components are styled using Tailwind CSS. You need to install Tailwind CSS in yo
 Add the following dependencies to your project:
 
 ```bash
-npm install tailwindcss-animate class-variance-authority clsx tailwind-merge lucide-react
+npm install class-variance-authority clsx tailwind-merge lucide-react tw-animate-css
 ```
 
 ### Configure path aliases
@@ -42,8 +42,7 @@ Add the following to your styles/globals.css file. You can learn more about usin
 
 ```css showLineNumbers title="src/styles/globals.css"
 @import "tailwindcss";
-
-@plugin 'tailwindcss-animate';
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
