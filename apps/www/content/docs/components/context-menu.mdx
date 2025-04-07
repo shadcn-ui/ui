@@ -72,3 +72,50 @@ import {
   </ContextMenuContent>
 </ContextMenu>
 ```
+
+## Changelog
+
+### 2025-04-07 Fixed `asChild` API
+
+Wrapped `children` with `<Slottable>` to ensures proper props forwarding and compatibility.
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Import the `<Slottable>` component in your `context-menu.tsx` file</Step>
+
+```diff showLineNumbers{3} title="context-menu.tsx"
+  import * as React from "react"
+  import * as ContextMenuPrimitive from "@radix-ui/react-context-menu"
++ import { Slottable } from "@radix-ui/react-slot"
+```
+
+<Step>
+  Wrap the `children` prop with `<Slottable>` in `<ContextMenuSubTrigger>`, `<ContextMenuCheckboxItem>`, and `<ContextMenuRadioItem>` components:
+</Step>
+
+```diff showLineNumbers{72} title="context-menu.tsx"
+      {...props}
+    >
+-     {children}
++     <Slottable>{children}</Slottable>
+```
+
+```diff showLineNumbers{157} title="context-menu.tsx"
+      </span>
+-     {children}
++     <Slottable>{children}</Slottable>
+```
+
+```diff showLineNumbers{181} title="context-menu.tsx"
+      </span>
+-     {children}
++     <Slottable>{children}</Slottable>
+```
+
+</Steps>

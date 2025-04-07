@@ -101,3 +101,38 @@ import {
   </AccordionItem>
 </Accordion>
 ```
+
+## Changelog
+
+### 2025-04-07 Fixed `asChild` API
+
+Wrapped `children` with `<Slottable>` to ensures proper props forwarding and compatibility.
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Import the `<Slottable>` component in your `accordion.tsx` file</Step>
+
+```diff showLineNumbers{3} title="accordion.tsx"
+  import * as React from "react"
+  import * as AccordionPrimitive from "@radix-ui/react-accordion"
++ import { Slottable } from "@radix-ui/react-slot"
+```
+
+<Step>
+  Wrap the `children` prop with `<Slottable>` in the `<AccordionTrigger>` component:
+</Step>
+
+```diff showLineNumbers{41} title="accordion.tsx"
+      {...props}
+    >
+-     {children}
++     <Slottable>{children}</Slottable>
+```
+
+</Steps>

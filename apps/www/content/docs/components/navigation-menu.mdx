@@ -96,3 +96,47 @@ import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 ```
 
 See also the [Radix UI documentation](https://www.radix-ui.com/docs/primitives/components/navigation-menu#with-client-side-routing) for handling client side routing.
+
+## Changelog
+
+### 2025-04-07 Fixed `asChild` API
+
+Wrapped `children` with `<Slottable>` to ensures proper props forwarding and compatibility.
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Import the `<Slottable>` component in your `navigation-menu.tsx` file</Step>
+
+```diff showLineNumbers{3} title="navigation-menu.tsx"
+  import * as React from "react"
+  import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
++ import { Slottable } from "@radix-ui/react-slot"
+  import { cva } from "class-variance-authority"
+```
+
+<Step>
+  Wrap the `children` prop with `<Slottable>` in `<NavigationMenu>`, and `<NavigationMenuTrigger>` components:
+</Step>
+
+```diff showLineNumbers{24} title="navigation-menu.tsx"
+      {...props}
+    >
+-     {children}
++     <Slottable>{children}</Slottable>
+      {viewport && <NavigationMenuViewport />}
+```
+
+```diff showLineNumbers{74} title="navigation-menu.tsx"
+      {...props}
+    >
+-     {children}{" "}
++     <Slottable>{children}</Slottable>
+```
+
+</Steps>
