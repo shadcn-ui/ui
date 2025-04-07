@@ -98,7 +98,7 @@ export async function migrateIcons(config: Config) {
   }
 
   if (targetLibrary.package) {
-    await updateDependencies([targetLibrary.package], config, {
+    await updateDependencies([targetLibrary.package], [], config, {
       silent: false,
     })
   }

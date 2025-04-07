@@ -103,7 +103,7 @@ async function addProjectComponents(
     silent: options.silent,
   })
 
-  await updateDependencies(tree.dependencies, config, {
+  await updateDependencies(tree.dependencies, tree.devDependencies, config, {
     silent: options.silent,
   })
   await updateFiles(tree.files, config, {
@@ -213,9 +213,14 @@ async function addWorkspaceComponents(
     }
 
     // 4. Update dependencies.
-    await updateDependencies(component.dependencies, targetConfig, {
-      silent: true,
-    })
+    await updateDependencies(
+      component.dependencies,
+      component.devDependencies,
+      targetConfig,
+      {
+        silent: true,
+      }
+    )
 
     // 5. Update files.
     const files = await updateFiles(component.files, targetConfig, {
