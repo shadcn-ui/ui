@@ -377,6 +377,11 @@ const SIDEBAR_WIDTH = "16rem"
 const SIDEBAR_WIDTH_MOBILE = "18rem"
 ```
 
+For collapsed widht in icon variant sidebar 
+```tsx showLineNumbers title="components/ui/sidebar.tsx"
+const SIDEBAR_WIDTH_ICON = "3rem"
+```
+
 For multiple sidebars in your application, you can use the `style` prop to set the width of the sidebar.
 
 To set the width of the sidebar, you can use the `--sidebar-width` and `--sidebar-width-mobile` CSS variables in the `style` prop.
@@ -386,6 +391,7 @@ To set the width of the sidebar, you can use the `--sidebar-width` and `--sideba
   style={{
     "--sidebar-width": "20rem",
     "--sidebar-width-mobile": "20rem",
+    "--sidebar-width-icon": "3.5rem", // for icon variant sidebar, width when collapsed
   }}
 >
   <Sidebar />
