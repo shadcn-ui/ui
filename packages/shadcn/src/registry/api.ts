@@ -6,7 +6,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
 import deepmerge from "deepmerge"
-import { HttpsProxyAgent } from "https-proxy-agent"
+import { ProxyAgent } from "proxy-agent"
 import fetch from "node-fetch"
 import { z } from "zod"
 
@@ -21,9 +21,7 @@ import {
 
 const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
 
-const agent = process.env.https_proxy
-  ? new HttpsProxyAgent(process.env.https_proxy)
-  : undefined
+const agent = new ProxyAgent()
 
 const registryCache = new Map<string, Promise<any>>()
 
