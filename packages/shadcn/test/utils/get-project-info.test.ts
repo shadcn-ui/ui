@@ -15,6 +15,7 @@ describe("get project info", async () => {
         isTsx: true,
         tailwindConfigFile: "tailwind.config.ts",
         tailwindCssFile: "app/globals.css",
+        tailwindCssPrefix: null,
         tailwindVersion: "v3",
         aliasPrefix: "@",
       },
@@ -28,6 +29,7 @@ describe("get project info", async () => {
         isTsx: true,
         tailwindConfigFile: "tailwind.config.ts",
         tailwindCssFile: "src/app/styles.css",
+        tailwindCssPrefix: null,
         tailwindVersion: "v3",
         aliasPrefix: "#",
       },
@@ -41,6 +43,7 @@ describe("get project info", async () => {
         isTsx: true,
         tailwindConfigFile: "tailwind.config.ts",
         tailwindCssFile: "styles/globals.css",
+        tailwindCssPrefix: null,
         tailwindVersion: "v4",
         aliasPrefix: "~",
       },
@@ -54,6 +57,7 @@ describe("get project info", async () => {
         isTsx: true,
         tailwindConfigFile: "tailwind.config.ts",
         tailwindCssFile: "src/styles/globals.css",
+        tailwindCssPrefix: null,
         tailwindVersion: "v4",
         aliasPrefix: "@",
       },
@@ -67,6 +71,7 @@ describe("get project info", async () => {
         isTsx: true,
         tailwindConfigFile: "tailwind.config.ts",
         tailwindCssFile: "src/styles/globals.css",
+        tailwindCssPrefix: null,
         tailwindVersion: "v3",
         aliasPrefix: "~",
       },
@@ -80,6 +85,7 @@ describe("get project info", async () => {
         isTsx: true,
         tailwindConfigFile: "tailwind.config.ts",
         tailwindCssFile: "src/styles/globals.css",
+        tailwindCssPrefix: null,
         tailwindVersion: "v3",
         aliasPrefix: "~",
       },
@@ -93,6 +99,7 @@ describe("get project info", async () => {
         isTsx: true,
         tailwindConfigFile: "tailwind.config.ts",
         tailwindCssFile: "app/tailwind.css",
+        tailwindCssPrefix: null,
         tailwindVersion: "v3",
         aliasPrefix: "~",
       },
@@ -106,6 +113,7 @@ describe("get project info", async () => {
         isTsx: true,
         tailwindConfigFile: "tailwind.config.ts",
         tailwindCssFile: "app/tailwind.css",
+        tailwindCssPrefix: null,
         tailwindVersion: "v3",
         aliasPrefix: "~",
       },
@@ -119,14 +127,29 @@ describe("get project info", async () => {
         isTsx: true,
         tailwindConfigFile: "tailwind.config.js",
         tailwindCssFile: "src/index.css",
+        tailwindCssPrefix: null,
         tailwindVersion: "v3",
         aliasPrefix: null,
       },
     },
+    {
+      name: "config-v4",
+      type: {
+        framework: FRAMEWORKS['manual'],
+        isSrcDir: false,
+        isRSC: false,
+        isTsx: false,
+        tailwindConfigFile: null,
+        tailwindCssFile: "tailwind.css",
+        tailwindCssPrefix: "shadcn",
+        tailwindVersion: "v4",
+        aliasPrefix: '@',
+      },
+    }
   ])(`getProjectType($name) -> $type`, async ({ name, type }) => {
     expect(
       await getProjectInfo(
-        path.resolve(__dirname, `../fixtures/frameworks/${name}`)
+        path.resolve(__dirname, '../fixtures', type.framework.name !== 'manual' ? `frameworks/${name}` : name)
       )
     ).toStrictEqual(type)
   })
