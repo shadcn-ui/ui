@@ -88,6 +88,6 @@
     "rimraf": "^6.0.1",
     "tsup": "^6.6.3",
     "type-fest": "^3.8.0",
-    "typescript": "^4.9.3"
+    "typescript": "^5.8.3"
   }
 }
