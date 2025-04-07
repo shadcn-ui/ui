@@ -96,6 +96,53 @@ import {
 
 ## Changelog
 
+### 2025-04-07 Fixed `asChild` API
+
+Wrapped `children` with `<Slottable>` to ensures proper props forwarding and compatibility.
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Import the `<Slottable>` component in your `dropdown-menu.tsx` file</Step>
+
+```diff showLineNumbers{3} title="dropdown-menu.tsx"
+  import * as React from "react"
+  import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
++ import { Slottable } from "@radix-ui/react-slot"
+```
+
+<Step>
+  Wrap the `children` prop with `<Slottable>` in `<DropdownMenuCheckboxItem>`, `<DropdownMenuRadioItem>`, and `<DropdownMenuSubTrigger>` components:
+</Step>
+
+```diff showLineNumbers{105} title="dropdown-menu.tsx"
+      </span>
+-     {children}
++     <Slottable>{children}</Slottable>
+    </DropdownMenuPrimitive.CheckboxItem>
+```
+
+```diff showLineNumbers{140} title="dropdown-menu.tsx"
+      </span>
+-     {children}
++     <Slottable>{children}</Slottable>
+    </DropdownMenuPrimitive.RadioItem>
+```
+
+```diff showLineNumbers{217} title="dropdown-menu.tsx"
+      {...props}
+    >
+-     {children}
++     <Slottable>{children}</Slottable>
+```
+
+</Steps>
+
 ### 2024-10-16 Classes for icons
 
 Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the `DropdownMenuItem` to automatically style icon inside the dropdown menu item.
