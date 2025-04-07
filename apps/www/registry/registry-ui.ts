@@ -602,7 +602,7 @@ export const ui: Registry["items"] = [
   {
     name: "tooltip",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-tooltip"],
+    dependencies: ["@radix-ui/react-tooltip", "@radix-ui/react-slot"],
     files: [
       {
         path: "ui/tooltip.tsx",
