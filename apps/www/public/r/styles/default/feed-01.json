@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feed-01",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A simple feed.",
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "blocks/feed-01/page.tsx",
+      "content": "import { Feed } from \"@/registry/default/blocks/feed-01/components/feed\"\r\n\r\nexport default function Page() {\r\n  return (\r\n    <div className=\"py-12\">\r\n      <div className=\"mx-auto max-w-lg px-6\">\r\n        <Feed />\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:page",
+      "target": "app/feed/page.tsx"
+    },
+    {
+      "path": "blocks/feed-01/components/feed.tsx",
+      "content": "import { Briefcase, GraduationCap, Star } from \"lucide-react\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst timeline = [\r\n  {\r\n    id: 1,\r\n    content: \"Graduated from\",\r\n    target: \"Harvard University\",\r\n    href: \"#\",\r\n    date: \"May 15\",\r\n    datetime: \"2018-05-15\",\r\n    icon: GraduationCap,\r\n    iconBackground: \"bg-foreground\",\r\n  },\r\n  {\r\n    id: 2,\r\n    content: \"Started working at\",\r\n    target: \"Google\",\r\n    href: \"#\",\r\n    date: \"Jul 10\",\r\n    datetime: \"2018-07-10\",\r\n    icon: Briefcase,\r\n    iconBackground: \"bg-foreground\",\r\n  },\r\n  {\r\n    id: 3,\r\n    content: \"Promoted to\",\r\n    target: \"Senior Developer\",\r\n    href: \"#\",\r\n    date: \"Sep 20\",\r\n    datetime: \"2020-09-20\",\r\n    icon: Star,\r\n    iconBackground: \"bg-foreground\",\r\n  },\r\n  {\r\n    id: 4,\r\n    content: \"Received award for\",\r\n    target: \"Employee of the Year\",\r\n    href: \"#\",\r\n    date: \"Dec 15\",\r\n    datetime: \"2021-12-15\",\r\n    icon: Star,\r\n    iconBackground: \"bg-foreground\",\r\n  },\r\n  {\r\n    id: 5,\r\n    content: \"Started leading\",\r\n    target: \"AI Research Team\",\r\n    href: \"#\",\r\n    date: \"Jan 5\",\r\n    datetime: \"2023-01-05\",\r\n    icon: Briefcase,\r\n    iconBackground: \"bg-foreground\",\r\n  },\r\n]\r\n\r\nexport function Feed() {\r\n  return (\r\n    <div className=\"flow-root\">\r\n      <ul role=\"list\" className=\"-mb-8\">\r\n        {timeline.map((event, eventIdx) => (\r\n          <li key={event.id}>\r\n            <div className=\"relative pb-8\">\r\n              {eventIdx !== timeline.length - 1 ? (\r\n                <span\r\n                  className=\"absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-gray-700\"\r\n                  aria-hidden=\"true\"\r\n                />\r\n              ) : null}\r\n              <div className=\"relative flex space-x-3\">\r\n                <div>\r\n                  <span\r\n                    className={cn(\r\n                      event.iconBackground,\r\n                      \"flex h-8 w-8 items-center justify-center rounded-full ring-8 ring-background\"\r\n                    )}\r\n                  >\r\n                    <event.icon\r\n                      className=\"h-5 w-5 text-background\"\r\n                      aria-hidden=\"true\"\r\n                    />\r\n                  </span>\r\n                </div>\r\n                <div className=\"flex min-w-0 flex-1 justify-between space-x-4 pt-1.5\">\r\n                  <div>\r\n                    <p className=\"text-sm text-gray-500 dark:text-gray-300\">\r\n                      {event.content}{\" \"}\r\n                      <a\r\n                        href={event.href}\r\n                        className=\"font-medium text-gray-900 dark:text-gray-100\"\r\n                      >\r\n                        {event.target}\r\n                      </a>\r\n                    </p>\r\n                  </div>\r\n                  <div className=\"whitespace-nowrap text-right text-sm text-gray-500 dark:text-gray-300\">\r\n                    <time dateTime={event.datetime}>{event.date}</time>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </li>\r\n        ))}\r\n      </ul>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "feed"
+  ]
+}
