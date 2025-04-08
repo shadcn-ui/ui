@@ -590,6 +590,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "stepper": {
+      name: "stepper",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/stepper.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/stepper.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "switch": {
       name: "switch",
       description: "",
@@ -4622,6 +4637,126 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "stepper-demo": {
+      name: "stepper-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york/examples/stepper-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-variants": {
+      name: "stepper-variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york/examples/stepper-variants.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-variants.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-responsive-variant": {
+      name: "stepper-responsive-variant",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york/examples/stepper-responsive-variant.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-responsive-variant.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-description": {
+      name: "stepper-description",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york/examples/stepper-description.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-description.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-label-orientation": {
+      name: "stepper-label-orientation",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york/examples/stepper-label-orientation.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-label-orientation.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-tracking": {
+      name: "stepper-tracking",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york/examples/stepper-tracking.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-tracking.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-icon": {
+      name: "stepper-icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york/examples/stepper-icon.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-icon.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-form": {
+      name: "stepper-form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper","form"],
+      files: [{
+        path: "registry/new-york/examples/stepper-form.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/stepper-form.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "switch-demo": {
       name: "switch-demo",
       description: "",
@@ -5940,6 +6075,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/ui/sonner.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper": {
+      name: "stepper",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/stepper.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/stepper.tsx")),
       source: "",
       meta: undefined,
     },
@@ -9972,6 +10122,126 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/sonner-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-demo": {
+      name: "stepper-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/default/examples/stepper-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-variants": {
+      name: "stepper-variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/default/examples/stepper-variants.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-variants.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-responsive-variant": {
+      name: "stepper-responsive-variant",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/default/examples/stepper-responsive-variant.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-responsive-variant.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-description": {
+      name: "stepper-description",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/default/examples/stepper-description.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-description.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-label-orientation": {
+      name: "stepper-label-orientation",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/default/examples/stepper-label-orientation.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-label-orientation.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-tracking": {
+      name: "stepper-tracking",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/default/examples/stepper-tracking.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-tracking.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-icon": {
+      name: "stepper-icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/default/examples/stepper-icon.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-icon.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "stepper-form": {
+      name: "stepper-form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper","form"],
+      files: [{
+        path: "registry/default/examples/stepper-form.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/stepper-form.tsx")),
       source: "",
       meta: undefined,
     },
