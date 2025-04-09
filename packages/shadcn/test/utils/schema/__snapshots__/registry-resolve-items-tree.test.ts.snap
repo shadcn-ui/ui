@@ -2,6 +2,7 @@
 
 exports[`registryResolveItemTree > should resolve index 1`] = `
 {
+  "css": {},
   "cssVars": {
     "dark": {},
     "light": {
@@ -87,6 +88,7 @@ export { Label }
 
 exports[`registryResolveItemTree > should resolve items tree 1`] = `
 {
+  "css": {},
   "cssVars": {},
   "dependencies": [
     "@radix-ui/react-slot",
@@ -164,6 +166,7 @@ export { Button, buttonVariants }
 
 exports[`registryResolveItemTree > should resolve multiple items tree 1`] = `
 {
+  "css": {},
   "cssVars": {},
   "dependencies": [
     "@radix-ui/react-slot",

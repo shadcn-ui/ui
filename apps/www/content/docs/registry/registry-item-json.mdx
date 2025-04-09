@@ -36,6 +36,10 @@ The `registry-item.json` schema is used to define your custom registry items.
 }
 ```
 
+<div className="flex gap-2 items-center mt-6">
+  <Link href="/docs/registry/examples">See more examples</Link>
+</div>
+
 ## Definitions
 
 You can see the JSON Schema for `registry-item.json` [here](https://ui.shadcn.com/schema/registry-item.json).
@@ -249,6 +253,41 @@ Use to define CSS variables for your registry item.
     },
     "dark": {
       "brand": "20 14.3% 4.1%"
+    }
+  }
+}
+```
+
+### css
+
+Use `css` to add new rules to the project's CSS file eg. `@layer base`, `@layer components`, `@utility`, `@keyframes`, etc.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "css": {
+    "@layer base": {
+      "body": {
+        "font-size": "var(--text-base)",
+        "line-height": "1.5"
+      }
+    },
+    "@layer components": {
+      "button": {
+        "background-color": "var(--color-primary)",
+        "color": "var(--color-white)"
+      }
+    },
+    "@utility text-magic": {
+      "font-size": "var(--text-base)",
+      "line-height": "1.5"
+    },
+    "@keyframes wiggle": {
+      "0%, 100%": {
+        "transform": "rotate(-3deg)"
+      },
+      "50%": {
+        "transform": "rotate(3deg)"
+      }
     }
   }
 }
