@@ -18,7 +18,7 @@ import {
 
 export function SelectDemo() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-wrap items-start gap-4">
       <Select>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Select a fruit" />

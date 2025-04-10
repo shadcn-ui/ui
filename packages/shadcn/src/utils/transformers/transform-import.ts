@@ -21,12 +21,14 @@ export const transformImport: Transformer = async ({
     importDeclaration.setModuleSpecifier(moduleSpecifier)
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (utilsImport === moduleSpecifier) {
+    if (utilsImport === moduleSpecifier || moduleSpecifier === "@/lib/utils") {
       const namedImports = importDeclaration.getNamedImports()
       const cnImport = namedImports.find((i) => i.getName() === "cn")
       if (cnImport) {
         importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(utilsImport, config.aliases.utils)
+          utilsImport === moduleSpecifier
+            ? moduleSpecifier.replace(utilsImport, config.aliases.utils)
+            : config.aliases.utils
         )
       }
     }

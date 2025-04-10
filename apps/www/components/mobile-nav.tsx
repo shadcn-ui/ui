@@ -31,7 +31,7 @@ export function MobileNav() {
       <DrawerTrigger asChild>
         <Button
           variant="ghost"
-          className="-ml-2 mr-2 h-8 w-8 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="h-8 w-full gap-4 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -48,9 +48,12 @@ export function MobileNav() {
             />
           </svg>
           <span className="sr-only">Toggle Menu</span>
+          <span className="flex h-8 flex-1 items-center justify-between rounded-md border bg-muted/50 px-2 text-sm font-normal text-muted-foreground shadow-none">
+            Search documentation...
+          </span>
         </Button>
       </DrawerTrigger>
-      <DrawerContent className="max-h-[60svh] p-0">
+      <DrawerContent className="max-h-[80svh] p-0">
         <div className="overflow-auto p-6">
           <div className="flex flex-col space-y-3">
             {docsConfig.mainNav?.map(
@@ -68,8 +71,8 @@ export function MobileNav() {
           </div>
           <div className="flex flex-col space-y-2">
             {docsConfig.sidebarNav.map((item, index) => (
-              <div key={index} className="flex flex-col space-y-3 pt-6">
-                <h4 className="font-medium">{item.title}</h4>
+              <div key={index} className="flex flex-col gap-4 pt-6">
+                <h4 className="text-xl font-medium">{item.title}</h4>
                 {item?.items?.length &&
                   item.items.map((item) => (
                     <React.Fragment key={item.href}>
@@ -78,7 +81,7 @@ export function MobileNav() {
                           <MobileLink
                             href={item.href}
                             onOpenChange={setOpen}
-                            className="text-muted-foreground"
+                            className="opacity-80"
                           >
                             {item.title}
                             {item.label && (
@@ -122,7 +125,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("text-base", className)}
+      className={cn("text-[1.15rem]", className)}
       {...props}
     >
       {children}

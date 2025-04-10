@@ -3,7 +3,7 @@ import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
 import { RegistryItem, registryItemFileSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
-import { getProjectInfo } from "@/src/utils/get-project-info"
+import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
@@ -61,11 +61,17 @@ export async function updateFiles(
 
     let filePath = resolveFilePath(file, config, {
       isSrcDir: projectInfo?.isSrcDir,
+      framework: projectInfo?.framework.name,
       commonRoot: findCommonRoot(
         files.map((f) => f.path),
         file.path
       ),
     })
+
+    if (!filePath) {
+      continue
+    }
+
     const fileName = basename(file.path)
     const targetDir = path.dirname(filePath)
 
@@ -216,6 +222,7 @@ export function resolveFilePath(
   options: {
     isSrcDir?: boolean
     commonRoot?: string
+    framework?: ProjectInfo["framework"]["name"]
   }
 ) {
   if (file.target) {
@@ -223,13 +230,18 @@ export function resolveFilePath(
       return path.join(config.resolvedPaths.cwd, file.target.replace("~/", ""))
     }
 
+    let target = file.target
+
+    if (file.type === "registry:page") {
+      target = resolvePageTarget(target, options.framework)
+      if (!target) {
+        return ""
+      }
+    }
+
     return options.isSrcDir
-      ? path.join(
-          config.resolvedPaths.cwd,
-          "src",
-          file.target.replace("src/", "")
-        )
-      : path.join(config.resolvedPaths.cwd, file.target.replace("src/", ""))
+      ? path.join(config.resolvedPaths.cwd, "src", target.replace("src/", ""))
+      : path.join(config.resolvedPaths.cwd, target.replace("src/", ""))
   }
 
   const targetDir = resolveFileTargetDirectory(file, config)
@@ -322,4 +334,40 @@ export function resolveNestedFilePath(
 
 export async function getNormalizedFileContent(content: string) {
   return content.replace(/\r\n/g, "\n").trim()
+}
+
+export function resolvePageTarget(
+  target: string,
+  framework?: ProjectInfo["framework"]["name"]
+) {
+  if (!framework) {
+    return ""
+  }
+
+  if (framework === "next-app") {
+    return target
+  }
+
+  if (framework === "next-pages") {
+    let result = target.replace(/^app\//, "pages/")
+    result = result.replace(/\/page(\.[jt]sx?)$/, "$1")
+
+    return result
+  }
+
+  if (framework === "react-router") {
+    let result = target.replace(/^app\//, "app/routes/")
+    result = result.replace(/\/page(\.[jt]sx?)$/, "$1")
+
+    return result
+  }
+
+  if (framework === "laravel") {
+    let result = target.replace(/^app\//, "resources/js/pages/")
+    result = result.replace(/\/page(\.[jt]sx?)$/, "$1")
+
+    return result
+  }
+
+  return ""
 }

@@ -283,7 +283,7 @@ function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         )
                         setOpen(true)
                       }}
-                      isActive={activeItem.title === item.title}
+                      isActive={activeItem?.title === item.title}
                       className="px-2.5 md:px-2"
                     >
                       <item.icon />
@@ -306,7 +306,7 @@ function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarHeader className="gap-3.5 border-b p-4">
           <div className="flex w-full items-center justify-between">
             <div className="text-base font-medium text-foreground">
-              {activeItem.title}
+              {activeItem?.title}
             </div>
             <Label className="flex items-center gap-2 text-sm">
               <span>Unreads</span>

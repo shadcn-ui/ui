@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
