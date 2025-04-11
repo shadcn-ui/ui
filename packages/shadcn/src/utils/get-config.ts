@@ -1,9 +1,9 @@
 import path from "path"
+import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
-import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -27,7 +27,7 @@ export const rawConfigSchema = z
     rsc: z.coerce.boolean().default(false),
     tsx: z.coerce.boolean().default(true),
     tailwind: z.object({
-      config: z.string(),
+      config: z.string().optional(),
       css: z.string(),
       baseColor: z.string(),
       cssVariables: z.boolean().default(true),
@@ -96,7 +96,9 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
     ...config,
     resolvedPaths: {
       cwd,
-      tailwindConfig: path.resolve(cwd, config.tailwind.config),
+      tailwindConfig: config.tailwind.config
+        ? path.resolve(cwd, config.tailwind.config)
+        : "",
       tailwindCss: path.resolve(cwd, config.tailwind.css),
       utils: await resolveImport(config.aliases["utils"], tsConfig),
       components: await resolveImport(config.aliases["components"], tsConfig),
@@ -216,4 +218,10 @@ export function findCommonRoot(cwd: string, resolvedPath: string) {
   }
 
   return commonParts.join(path.sep)
+}
+
+// TODO: Cache this call.
+export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
+  const projectInfo = await getProjectInfo(cwd)
+  return projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : fallback
 }

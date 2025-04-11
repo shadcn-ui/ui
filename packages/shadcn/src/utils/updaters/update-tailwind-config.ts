@@ -1,9 +1,13 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
+import {
+  registryItemCssVarsSchema,
+  registryItemTailwindSchema,
+} from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
+import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
-import { registryItemTailwindSchema } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import deepmerge from "deepmerge"
 import objectToString from "stringify-object"
@@ -32,6 +36,7 @@ export async function updateTailwindConfig(
   config: Config,
   options: {
     silent?: boolean
+    tailwindVersion?: TailwindVersion
   }
 ) {
   if (!tailwindConfig) {
@@ -40,7 +45,13 @@ export async function updateTailwindConfig(
 
   options = {
     silent: false,
+    tailwindVersion: "v3",
     ...options,
+  }
+
+  // No tailwind config in v4.
+  if (options.tailwindVersion === "v4") {
+    return
   }
 
   const tailwindFileRelativePath = path.relative(
@@ -491,7 +502,7 @@ function parseValue(node: any): any {
 }
 
 export function buildTailwindThemeColorsFromCssVars(
-  cssVars: Record<string, string>
+  cssVars: z.infer<typeof registryItemCssVarsSchema>
 ) {
   const result: Record<string, any> = {}
 

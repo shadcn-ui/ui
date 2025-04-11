@@ -7,11 +7,35 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { ThemeCustomizer } from "@/components/theme-customizer"
+import { Customizer } from "@/components/theme-customizer"
+import { Button } from "@/registry/new-york/ui/button"
+
+const title = "Add colors. Make it yours."
+const description =
+  "Hand-picked themes that you can copy and paste into your apps."
 
 export const metadata: Metadata = {
-  title: "Themes",
-  description: "Hand-picked themes that you can copy and paste into your apps.",
+  title,
+  description,
+  openGraph: {
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
 }
 
 export default function ThemesLayout({
@@ -23,19 +47,19 @@ export default function ThemesLayout({
     <>
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading className="hidden md:block">
-          Add colors. Make it yours.
-        </PageHeaderHeading>
-        <PageHeaderHeading className="md:hidden">
-          Make it yours
-        </PageHeaderHeading>
-        <PageHeaderDescription>
-          Hand-picked themes that you can copy and paste into your apps.
-        </PageHeaderDescription>
-        <PageActions>
-          <ThemeCustomizer />
-        </PageActions>
+        <PageHeaderHeading>{title}</PageHeaderHeading>
+        <PageHeaderDescription>{description}</PageHeaderDescription>
+        <div className="mt-2 rounded-full bg-blue-600 px-3 py-1 text-xs text-white">
+          New Theme Editor coming soon
+        </div>
       </PageHeader>
+      <div id="themes" className="border-grid scroll-mt-24 border-b">
+        <div className="container-wrapper">
+          <div className="container flex items-center py-4">
+            <Customizer />
+          </div>
+        </div>
+      </div>
       <div className="container-wrapper">
         <div className="container py-6">
           <section id="themes" className="scroll-mt-20">

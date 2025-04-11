@@ -1,8 +1,8 @@
+import { RegistryItem } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { logger } from "@/src/utils/logger"
-import { RegistryItem } from "@/src/utils/registry/schema"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import prompts from "prompts"
@@ -32,24 +32,28 @@ export async function updateDependencies(
   // Offer to use --force or --legacy-peer-deps if using React 19 with npm.
   let flag = ""
   if (isUsingReact19(config) && packageManager === "npm") {
-    dependenciesSpinner.stopAndPersist()
-    logger.warn(
-      "\nIt looks like you are using React 19. \nSome packages may fail to install due to peer dependency issues in npm (see https://ui.shadcn.com/react-19).\n"
-    )
-    const confirmation = await prompts([
-      {
-        type: "select",
-        name: "flag",
-        message: "How would you like to proceed?",
-        choices: [
-          { title: "Use --force", value: "force" },
-          { title: "Use --legacy-peer-deps", value: "legacy-peer-deps" },
-        ],
-      },
-    ])
+    if (options.silent) {
+      flag = "force"
+    } else {
+      dependenciesSpinner.stopAndPersist()
+      logger.warn(
+        "\nIt looks like you are using React 19. \nSome packages may fail to install due to peer dependency issues in npm (see https://ui.shadcn.com/react-19).\n"
+      )
+      const confirmation = await prompts([
+        {
+          type: "select",
+          name: "flag",
+          message: "How would you like to proceed?",
+          choices: [
+            { title: "Use --force", value: "force" },
+            { title: "Use --legacy-peer-deps", value: "legacy-peer-deps" },
+          ],
+        },
+      ])
 
-    if (confirmation) {
-      flag = confirmation.flag
+      if (confirmation) {
+        flag = confirmation.flag
+      }
     }
   }
 
