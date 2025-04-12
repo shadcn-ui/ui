@@ -1,7 +1,16 @@
-import path from "path"
 import { randomBytes } from "crypto"
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
+import path from "path"
+import { getRegistryIndex } from "@/src/registry/api"
+import { Config, getWorkspaceConfig } from "@/src/utils/get-config"
+import { getPackageInfo } from "@/src/utils/get-package-info"
+import { getPackageManager } from "@/src/utils/get-package-manager"
+import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
+import { handleError } from "@/src/utils/handle-error"
+import { highlighter } from "@/src/utils/highlighter"
+import { logger } from "@/src/utils/logger"
+import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fg from "fast-glob"
 import prompts from "prompts"
@@ -12,15 +21,6 @@ import {
   TypeReferenceNode,
   VariableDeclaration,
 } from "ts-morph"
-import { getRegistryIndex } from "@/src/registry/api"
-import { Config, getWorkspaceConfig } from "@/src/utils/get-config"
-import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
-import { getPackageInfo } from "@/src/utils/get-package-info"
-import { getPackageManager } from "@/src/utils/get-package-manager"
 import { z } from "zod"
 
 export async function migrateRadixUi(config: Config) {
@@ -33,7 +33,11 @@ export async function migrateRadixUi(config: Config) {
   const workspaceConfig = await getWorkspaceConfig(config)
 
   // TODO: Temporary workaround for monorepo. Update the `ui` path and `cwd` to match the workspace config
-  if (workspaceConfig && workspaceConfig.ui && workspaceConfig.ui.resolvedPaths.cwd !== config.resolvedPaths.cwd) {
+  if (
+    workspaceConfig &&
+    workspaceConfig.ui &&
+    workspaceConfig.ui.resolvedPaths.cwd !== config.resolvedPaths.cwd
+  ) {
     config.resolvedPaths.ui = workspaceConfig.ui.resolvedPaths.ui
     config.resolvedPaths.cwd = workspaceConfig.ui.resolvedPaths.cwd
   }
@@ -68,13 +72,12 @@ export async function migrateRadixUi(config: Config) {
       type: "confirm",
       name: "confirm",
       initial: true,
-      message: `${highlighter.info(
-        fileWithRadixImports.length
-      )} ${fileWithRadixImports.length === 1 ? "component" : "components"
-        } will be updated in ${highlighter.info(
-          `./${path.relative(config.resolvedPaths.cwd, uiPath)}`
-        )}. Continue?`,
-    }
+      message: `${highlighter.info(fileWithRadixImports.length)} ${
+        fileWithRadixImports.length === 1 ? "component" : "components"
+      } will be updated in ${highlighter.info(
+        `./${path.relative(config.resolvedPaths.cwd, uiPath)}`
+      )}. Continue?`,
+    },
   ])
 
   logger.break()
@@ -100,10 +103,12 @@ export async function migrateRadixUi(config: Config) {
       {
         type: "toggle",
         name: "update",
-        message: `Would you like to update radix-ui ${highlighter.warn("(Recommended)")}?`,
+        message: `Would you like to update radix-ui ${highlighter.warn(
+          "(Recommended)"
+        )}?`,
         initial: true,
-        active: 'yes',
-        inactive: 'no'
+        active: "yes",
+        inactive: "no",
       },
     ])
 
@@ -119,7 +124,12 @@ export async function migrateRadixUi(config: Config) {
 
   await Promise.all(
     fileWithRadixImports.map(async (file) => {
-      logger.log(`  - ${path.relative(config.resolvedPaths.cwd, path.join(uiPath, file))}`)
+      logger.log(
+        `  - ${path.relative(
+          config.resolvedPaths.cwd,
+          path.join(uiPath, file)
+        )}`
+      )
       // updatingSpinner.text = `Migrating ${file}...`
       const filePath = path.join(uiPath, file)
       const fileContent = await fs.readFile(filePath, "utf-8")
@@ -135,10 +145,12 @@ export async function migrateRadixUi(config: Config) {
     {
       type: "toggle",
       name: "uninstall",
-      message: `Would you like to uninstall @radix-ui/* packages ${highlighter.warn("(Recommended)")}?`,
+      message: `Would you like to uninstall @radix-ui/* packages ${highlighter.warn(
+        "(Recommended)"
+      )}?`,
       initial: true,
-      active: 'yes',
-      inactive: 'no'
+      active: "yes",
+      inactive: "no",
     },
   ])
 
@@ -151,9 +163,7 @@ export async function migrateRadixUi(config: Config) {
   logger.break()
 }
 
-async function updateFilesContent(
-  fileContent: string
-): Promise<string> {
+export async function updateFilesContent(fileContent: string): Promise<string> {
   const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   const tempFile = path.join(
     tempDir,
@@ -346,7 +356,9 @@ async function uninstallRadixUiPackages(config: Config) {
   }).filter((pkg) => pkg.startsWith("@radix-ui/react-"))
 
   const packageManager = await getPackageManager(config.resolvedPaths.cwd)
-  const uninstallSpinner = spinner("Uninstalling @radix-ui/react-* packages...")?.start()
+  const uninstallSpinner = spinner(
+    "Uninstalling @radix-ui/* packages..."
+  )?.start()
 
   await execa(
     packageManager,
@@ -356,5 +368,5 @@ async function uninstallRadixUiPackages(config: Config) {
     }
   )
 
-  uninstallSpinner?.succeed("Uninstalling @radix-ui/react-* packages.")
+  uninstallSpinner?.succeed("Uninstalling @radix-ui/* packages.")
 }
