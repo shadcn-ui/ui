@@ -1,5 +1,6 @@
 import path from "path"
 import { migrateIcons } from "@/src/migrations/migrate-icons"
+import { migrateRadixUi } from "@/src/migrations/migrate-radix-ui"
 import { preFlightMigrate } from "@/src/preflights/preflight-migrate"
 import * as ERRORS from "@/src/utils/errors"
 import { handleError } from "@/src/utils/handle-error"
@@ -11,6 +12,12 @@ export const migrations = [
   {
     name: "icons",
     description: "migrate your ui components to a different icon library.",
+    handler: migrateIcons,
+  },
+  {
+    name: "radix-ui",
+    description: "migrate your ui components to use new radix-ui package.",
+    handler: migrateRadixUi,
   },
 ] as const
 
@@ -79,8 +86,10 @@ export const migrate = new Command()
         )
       }
 
-      if (options.migration === "icons") {
-        await migrateIcons(config)
+      if (options.migration) {
+        await migrations
+          .find((migration) => migration.name === options.migration)
+          ?.handler(config)
       }
     } catch (error) {
       logger.break()
