@@ -1,7 +1,10 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { registryItemTailwindSchema } from "@/src/registry/schema"
+import {
+  registryItemCssVarsSchema,
+  registryItemTailwindSchema,
+} from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
@@ -499,7 +502,7 @@ function parseValue(node: any): any {
 }
 
 export function buildTailwindThemeColorsFromCssVars(
-  cssVars: Record<string, string>
+  cssVars: z.infer<typeof registryItemCssVarsSchema>
 ) {
   const result: Record<string, any> = {}
 

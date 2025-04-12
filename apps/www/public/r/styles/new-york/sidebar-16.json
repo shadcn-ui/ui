@@ -11,7 +11,8 @@
     "collapsible",
     "dropdown-menu",
     "avatar",
-    "button"
+    "button",
+    "label"
   ],
   "files": [
     {
@@ -58,7 +59,7 @@
     },
     {
       "path": "blocks/sidebar-16/components/site-header.tsx",
-      "content": "\"use client\"\n\nimport { SidebarIcon } from \"lucide-react\"\n\nimport { SearchForm } from \"@/registry/new-york/blocks/sidebar-16/components/search-form\"\nimport {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from \"@/registry/new-york/ui/breadcrumb\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport { Separator } from \"@/registry/new-york/ui/separator\"\nimport { useSidebar } from \"@/registry/new-york/ui/sidebar\"\n\nexport function SiteHeader() {\n  const { toggleSidebar } = useSidebar()\n\n  return (\n    <header className=\"fle sticky top-0 z-50 w-full items-center border-b bg-background\">\n      <div className=\"flex h-[--header-height] w-full items-center gap-2 px-4\">\n        <Button\n          className=\"h-8 w-8\"\n          variant=\"ghost\"\n          size=\"icon\"\n          onClick={toggleSidebar}\n        >\n          <SidebarIcon />\n        </Button>\n        <Separator orientation=\"vertical\" className=\"mr-2 h-4\" />\n        <Breadcrumb className=\"hidden sm:block\">\n          <BreadcrumbList>\n            <BreadcrumbItem>\n              <BreadcrumbLink href=\"#\">\n                Building Your Application\n              </BreadcrumbLink>\n            </BreadcrumbItem>\n            <BreadcrumbSeparator />\n            <BreadcrumbItem>\n              <BreadcrumbPage>Data Fetching</BreadcrumbPage>\n            </BreadcrumbItem>\n          </BreadcrumbList>\n        </Breadcrumb>\n        <SearchForm className=\"w-full sm:ml-auto sm:w-auto\" />\n      </div>\n    </header>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { SidebarIcon } from \"lucide-react\"\n\nimport { SearchForm } from \"@/registry/new-york/blocks/sidebar-16/components/search-form\"\nimport {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from \"@/registry/new-york/ui/breadcrumb\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport { Separator } from \"@/registry/new-york/ui/separator\"\nimport { useSidebar } from \"@/registry/new-york/ui/sidebar\"\n\nexport function SiteHeader() {\n  const { toggleSidebar } = useSidebar()\n\n  return (\n    <header className=\"flex sticky top-0 z-50 w-full items-center border-b bg-background\">\n      <div className=\"flex h-[--header-height] w-full items-center gap-2 px-4\">\n        <Button\n          className=\"h-8 w-8\"\n          variant=\"ghost\"\n          size=\"icon\"\n          onClick={toggleSidebar}\n        >\n          <SidebarIcon />\n        </Button>\n        <Separator orientation=\"vertical\" className=\"mr-2 h-4\" />\n        <Breadcrumb className=\"hidden sm:block\">\n          <BreadcrumbList>\n            <BreadcrumbItem>\n              <BreadcrumbLink href=\"#\">\n                Building Your Application\n              </BreadcrumbLink>\n            </BreadcrumbItem>\n            <BreadcrumbSeparator />\n            <BreadcrumbItem>\n              <BreadcrumbPage>Data Fetching</BreadcrumbPage>\n            </BreadcrumbItem>\n          </BreadcrumbList>\n        </Breadcrumb>\n        <SearchForm className=\"w-full sm:ml-auto sm:w-auto\" />\n      </div>\n    </header>\n  )\n}\n",
       "type": "registry:component",
       "target": ""
     }
