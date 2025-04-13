@@ -324,8 +324,14 @@ const config: Config = {
   theme: {
   	extend: {
   		fontFamily: {
-  			sans: ["var(--font-geist-sans)", ...fontFamily.sans],
-  			mono: ["var(--font-mono)", ...fontFamily.mono],
+  			sans: [
+  				'var(--font-geist-sans)',
+                    ...fontFamily.sans
+                ],
+  			mono: [
+  				'var(--font-mono)',
+                    ...fontFamily.mono
+                ],
   			heading: [
   				'var(--font-geist-sans)'
   			]
@@ -369,6 +375,75 @@ export default config
   "
 `;
 
+exports[`transformTailwindConfig -> theme > should handle objects nested in arrays 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+  	extend: {
+  		fontSize: {
+  			xs: [
+  				'0.75rem',
+  				{
+  					lineHeight: '1rem'
+  				}
+  			],
+  			sm: [
+  				'0.875rem',
+  				{
+  					lineHeight: '1.25rem'
+  				}
+  			],
+  			xl: [
+  				'clamp(1.5rem, 1.04vi + 1.17rem, 2rem)',
+  				{
+  					lineHeight: '1.2',
+  					letterSpacing: '-0.02em',
+  					fontWeight: '600'
+  				}
+  			]
+  		}
+  	}
+  },
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> theme > should keep arrays when formatted on multilines 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+  	extend: {
+  		fontFamily: {
+  			sans: [
+  				'Figtree',
+                    ...defaultTheme.fontFamily.sans
+                ],
+  			mono: [
+  				'Foo'
+  			]
+  		}
+  	}
+  },
+}
+export default config
+  "
+`;
+
 exports[`transformTailwindConfig -> theme > should keep quotes in strings 1`] = `
 "import type { Config } from 'tailwindcss'
 
@@ -382,7 +457,10 @@ const config: Config = {
   theme: {
   	extend: {
   		fontFamily: {
-  			sans: ['Figtree', ...defaultTheme.fontFamily.sans]
+  			sans: [
+  				'Figtree',
+                    ...defaultTheme.fontFamily.sans
+                ]
   		},
   		colors: {
                 ...defaultColors,
@@ -448,6 +526,12 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: [
+  				'ui-sans-serif',
+  				'sans-serif'
+  			]
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -461,6 +545,26 @@ const config: Config = {
   			}
   		}
   	}
+  },
+}
+export default config
+  "
+`;
+
+exports[`transformTailwindConfig -> theme > should preserve boolean values 1`] = `
+"import type { Config } from 'tailwindcss'
+
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    container: {
+      center: true
+    }
   },
 }
 export default config

@@ -26,7 +26,7 @@ test("get raw config", async () => {
     },
   })
 
-  expect(
+  await expect(
     getRawConfig(path.resolve(__dirname, "../fixtures/config-invalid"))
   ).rejects.toThrowError()
 })
@@ -36,7 +36,7 @@ test("get config", async () => {
     await getConfig(path.resolve(__dirname, "../fixtures/config-none"))
   ).toEqual(null)
 
-  expect(
+  await expect(
     getConfig(path.resolve(__dirname, "../fixtures/config-invalid"))
   ).rejects.toThrowError()
 
@@ -86,6 +86,7 @@ test("get config", async () => {
       hooks: path.resolve(__dirname, "../fixtures/config-partial", "./hooks"),
       lib: path.resolve(__dirname, "../fixtures/config-partial", "./lib"),
     },
+    iconLibrary: "lucide",
   })
 
   expect(
@@ -108,6 +109,7 @@ test("get config", async () => {
       hooks: "~/lib/hooks",
       ui: "~/ui",
     },
+    iconLibrary: "lucide",
     resolvedPaths: {
       cwd: path.resolve(__dirname, "../fixtures/config-full"),
       tailwindConfig: path.resolve(
@@ -156,6 +158,7 @@ test("get config", async () => {
       components: "@/components",
       utils: "@/lib/utils",
     },
+    iconLibrary: "radix",
     resolvedPaths: {
       cwd: path.resolve(__dirname, "../fixtures/config-jsx"),
       tailwindConfig: path.resolve(

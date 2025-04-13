@@ -1,5 +1,131 @@
 # @shadcn/ui
 
+## 2.4.0
+
+### Minor Changes
+
+- [#6507](https://github.com/shadcn-ui/ui/pull/6507) [`5234c46722750f964d69c92ccbef2c4d260c211d`](https://github.com/shadcn-ui/ui/commit/5234c46722750f964d69c92ccbef2c4d260c211d) Thanks [@shadcn](https://github.com/shadcn)! - add support for TanStack Start
+
+- [#6487](https://github.com/shadcn-ui/ui/pull/6487) [`5ef2bc5f455dfc394116267788c0514b696e13b0`](https://github.com/shadcn-ui/ui/commit/5ef2bc5f455dfc394116267788c0514b696e13b0) Thanks [@shadcn](https://github.com/shadcn)! - add theme vars support
+
+- [#6478](https://github.com/shadcn-ui/ui/pull/6478) [`8f6a64f176defdb1f9c493598d952fb4e9844cd0`](https://github.com/shadcn-ui/ui/commit/8f6a64f176defdb1f9c493598d952fb4e9844cd0) Thanks [@shadcn](https://github.com/shadcn)! - add tailwind version detection
+
+- [#6864](https://github.com/shadcn-ui/ui/pull/6864) [`19665adeeddc4ddb34e91fca219753d15bd46480`](https://github.com/shadcn-ui/ui/commit/19665adeeddc4ddb34e91fca219753d15bd46480) Thanks [@shadcn](https://github.com/shadcn)! - add --base-color flag
+
+- [#6490](https://github.com/shadcn-ui/ui/pull/6490) [`9a14c1d0925d3df2c8f57a3381d212cc3e54f4a6`](https://github.com/shadcn-ui/ui/commit/9a14c1d0925d3df2c8f57a3381d212cc3e54f4a6) Thanks [@shadcn](https://github.com/shadcn)! - add support for tailwind v4
+
+- [#6707](https://github.com/shadcn-ui/ui/pull/6707) [`3db8a07b3f132d396d7fb2e50da96156efcb4138`](https://github.com/shadcn-ui/ui/commit/3db8a07b3f132d396d7fb2e50da96156efcb4138) Thanks [@shadcn](https://github.com/shadcn)! - default to css vars. add --no-css-variables
+
+- [#6968](https://github.com/shadcn-ui/ui/pull/6968) [`205bfc637e093717908ebd2c591b215672950558`](https://github.com/shadcn-ui/ui/commit/205bfc637e093717908ebd2c591b215672950558) Thanks [@shadcn](https://github.com/shadcn)! - replace tailwindcss-animate with tw-animate-css
+
+- [#6574](https://github.com/shadcn-ui/ui/pull/6574) [`1e357cb20d6024b2bc9766fb15f61cb989eb7024`](https://github.com/shadcn-ui/ui/commit/1e357cb20d6024b2bc9766fb15f61cb989eb7024) Thanks [@shadcn](https://github.com/shadcn)! - default for new-york for v4
+
+- [#6515](https://github.com/shadcn-ui/ui/pull/6515) [`d1eb24e23a973646d78cf101fa1e0a22861ac9fd`](https://github.com/shadcn-ui/ui/commit/d1eb24e23a973646d78cf101fa1e0a22861ac9fd) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of sidebar colors
+
+- [#6693](https://github.com/shadcn-ui/ui/pull/6693) [`3740373f99e39943514a45f5808ecb5f17faf700`](https://github.com/shadcn-ui/ui/commit/3740373f99e39943514a45f5808ecb5f17faf700) Thanks [@shadcn](https://github.com/shadcn)! - add oklch base color
+
+- [#6571](https://github.com/shadcn-ui/ui/pull/6571) [`c74a094f14a6e338124709547932dbb20c8d1324`](https://github.com/shadcn-ui/ui/commit/c74a094f14a6e338124709547932dbb20c8d1324) Thanks [@shadcn](https://github.com/shadcn)! - hotswap style for v4
+
+- [#6576](https://github.com/shadcn-ui/ui/pull/6576) [`9f4d65fc8fe72f632706fafd4036f63fd9317780`](https://github.com/shadcn-ui/ui/commit/9f4d65fc8fe72f632706fafd4036f63fd9317780) Thanks [@shadcn](https://github.com/shadcn)! - add warning for deprecated components
+
+- [#6811](https://github.com/shadcn-ui/ui/pull/6811) [`bc7df68620f242ce6aa640839c80ddc8afc7e091`](https://github.com/shadcn-ui/ui/commit/bc7df68620f242ce6aa640839c80ddc8afc7e091) Thanks [@shadcn](https://github.com/shadcn)! - add support for route install for react-router and laravel
+
+- [#7016](https://github.com/shadcn-ui/ui/pull/7016) [`b3b2fe2755e0ec1271c41a2a61b1a6933af42bc6`](https://github.com/shadcn-ui/ui/commit/b3b2fe2755e0ec1271c41a2a61b1a6933af42bc6) Thanks [@shadcn](https://github.com/shadcn)! - add theme prop to registry-item schema
+
+### Patch Changes
+
+- [#6724](https://github.com/shadcn-ui/ui/pull/6724) [`a3fe5074c1375cbd92e1ccdaab38d6808bfec696`](https://github.com/shadcn-ui/ui/commit/a3fe5074c1375cbd92e1ccdaab38d6808bfec696) Thanks [@Kaikaikaifang](https://github.com/Kaikaikaifang)! - support for version detection in monorepo
+
+- [#6414](https://github.com/shadcn-ui/ui/pull/6414) [`202131cd7bf8829b962ae4027545afbdfe79e688`](https://github.com/shadcn-ui/ui/commit/202131cd7bf8829b962ae4027545afbdfe79e688) Thanks [@palmithor](https://github.com/palmithor)! - upgrade @antfu/ni
+
+- [#6965](https://github.com/shadcn-ui/ui/pull/6965) [`69fc8e23cc0631aac6b708ba0481509f1125d3d7`](https://github.com/shadcn-ui/ui/commit/69fc8e23cc0631aac6b708ba0481509f1125d3d7) Thanks [@jherr](https://github.com/jherr)! - allow silent mode with npm
+
+- [#6814](https://github.com/shadcn-ui/ui/pull/6814) [`8539dd6eec948e7a6218c7ca3372d2b1f349d7c0`](https://github.com/shadcn-ui/ui/commit/8539dd6eec948e7a6218c7ca3372d2b1f349d7c0) Thanks [@shadcn](https://github.com/shadcn)! - do not add ring for v3
+
+- [#6732](https://github.com/shadcn-ui/ui/pull/6732) [`839afa714f61e2c0f83e9417354ea6ba8246c177`](https://github.com/shadcn-ui/ui/commit/839afa714f61e2c0f83e9417354ea6ba8246c177) Thanks [@shadcn](https://github.com/shadcn)! - cache registry calls
+
+- [#6863](https://github.com/shadcn-ui/ui/pull/6863) [`c16c58d0f9e672edddd554269fdd0eb0d412cb9d`](https://github.com/shadcn-ui/ui/commit/c16c58d0f9e672edddd554269fdd0eb0d412cb9d) Thanks [@shadcn](https://github.com/shadcn)! - add --template flag
+
+- [#6721](https://github.com/shadcn-ui/ui/pull/6721) [`a5122f9029c91963f493e7348ef7681dad4834e5`](https://github.com/shadcn-ui/ui/commit/a5122f9029c91963f493e7348ef7681dad4834e5) Thanks [@shadcn](https://github.com/shadcn)! - do not overwrite user defined vars
+
+- [#6530](https://github.com/shadcn-ui/ui/pull/6530) [`d6159023ed0817adf14b4398874b1f5f05a73b02`](https://github.com/shadcn-ui/ui/commit/d6159023ed0817adf14b4398874b1f5f05a73b02) Thanks [@zwarunek](https://github.com/zwarunek)! - fix cn import bug in monorepo
+
+- [#6617](https://github.com/shadcn-ui/ui/pull/6617) [`bd8533bd265de7765831d398f4db687483a0e53a`](https://github.com/shadcn-ui/ui/commit/bd8533bd265de7765831d398f4db687483a0e53a) Thanks [@shadcn](https://github.com/shadcn)! - filter out deprecated from --all
+
+- [#6733](https://github.com/shadcn-ui/ui/pull/6733) [`779517a1d46f567c8e3fa8fcdea4c75c65ad4eb4`](https://github.com/shadcn-ui/ui/commit/779517a1d46f567c8e3fa8fcdea4c75c65ad4eb4) Thanks [@shadcn](https://github.com/shadcn)! - check for empty css vars
+
+- [#6967](https://github.com/shadcn-ui/ui/pull/6967) [`9eae13639c10f0219872b5fd28f523a4c25f40df`](https://github.com/shadcn-ui/ui/commit/9eae13639c10f0219872b5fd28f523a4c25f40df) Thanks [@shadcn](https://github.com/shadcn)! - only show deprecated for new projects
+
+- [#6590](https://github.com/shadcn-ui/ui/pull/6590) [`16d4d38f564c75d4187977275f04d5999ee9e2f4`](https://github.com/shadcn-ui/ui/commit/16d4d38f564c75d4187977275f04d5999ee9e2f4) Thanks [@prateekkumarweb](https://github.com/prateekkumarweb)! - fix tanstack check
+
+## 2.2.0
+
+### Minor Changes
+
+- [#6475](https://github.com/shadcn-ui/ui/pull/6475) [`699195b`](https://github.com/shadcn-ui/ui/commit/699195ba77ba41d3da356dd82775ae6db9af3d96) Thanks [@shadcn](https://github.com/shadcn)! - remove unused lodash.template
+
+- [#6350](https://github.com/shadcn-ui/ui/pull/6350) [`cb742e9`](https://github.com/shadcn-ui/ui/commit/cb742e98252fe8aa5cad3377d06e1d8a884953db)) Thanks [@shadcn](https://github.com/shadcn)! - new build command
+
+- [#6369](https://github.com/shadcn-ui/ui/pull/6369) [`f07c7ad`](https://github.com/shadcn-ui/ui/commit/f07c7ad5d0d2c2159f2c81a31ae6cbbe9a6ede30) Thanks [@shadcn](https://github.com/shadcn)! - handle nested file path
+
+- [#6339](https://github.com/shadcn-ui/ui/pull/6339) [`254198b`](https://github.com/shadcn-ui/ui/commit/254198b4bf38ca18361dbcf4373536c55ea8ef11) Thanks [@shadcn](https://github.com/shadcn)! - add schema
+
+- [#6377](https://github.com/shadcn-ui/ui/pull/6377) [`5f7957a`](https://github.com/shadcn-ui/ui/commit/5f7957ab51c3d929f322937147269ef3bdfeb472) Thanks [@shadcn](https://github.com/shadcn)! - new registry:file type
+
+## 2.1.8
+
+### Patch Changes
+
+- [#6093](https://github.com/shadcn-ui/ui/pull/6093) [`c8fda09`](https://github.com/shadcn-ui/ui/commit/c8fda09a63f793e9e2e5a86d8f8faad5af9d1ab4) Thanks [@shadcn](https://github.com/shadcn)! - detect and use next version
+
+## 2.1.7
+
+### Patch Changes
+
+- [#5711](https://github.com/shadcn-ui/ui/pull/5711) [`500dbe2`](https://github.com/shadcn-ui/ui/commit/500dbe2664c04936cc3edb739fc97f6cecff57c5) Thanks [@bcorbold](https://github.com/bcorbold)! - Update spread/unspread helpers to handle ArrayLiteralExpression and nested values within arrays
+
+- [#5678](https://github.com/shadcn-ui/ui/pull/5678) [`fb36ca4`](https://github.com/shadcn-ui/ui/commit/fb36ca41591ae952f3a015e2a4470f26458cf1b5) Thanks [@Tobbe](https://github.com/Tobbe)! - support aliases longer than one char
+
+- [#5813](https://github.com/shadcn-ui/ui/pull/5813) [`d5bf001`](https://github.com/shadcn-ui/ui/commit/d5bf0018fda42faeb314dc3edc87b8cd7c0354c6) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of aliases
+
+## 2.1.6
+
+### Patch Changes
+
+- [#5602](https://github.com/shadcn-ui/ui/pull/5602) [`2c2fe97`](https://github.com/shadcn-ui/ui/commit/2c2fe97eb96b2c5c7d03d1ae2756a851c3790030) Thanks [@shadcn](https://github.com/shadcn)! - move new-york icons to lucide-react
+
+## 2.1.5
+
+### Patch Changes
+
+- [#5707](https://github.com/shadcn-ui/ui/pull/5707) [`cdfecd1`](https://github.com/shadcn-ui/ui/commit/cdfecd1d97af2b4d9de330927edd9fd2eef1234e) Thanks [@shadcn](https://github.com/shadcn)! - temporarily bring back npm flag
+
+## 2.1.4
+
+### Patch Changes
+
+- [#5686](https://github.com/shadcn-ui/ui/pull/5686) [`4ff64ba`](https://github.com/shadcn-ui/ui/commit/4ff64ba818d15a094547f845ea294c2e1ab208d4) Thanks [@shadcn](https://github.com/shadcn)! - remove flag for npm
+
+## 2.1.3
+
+### Patch Changes
+
+- [#5621](https://github.com/shadcn-ui/ui/pull/5621) [`64739f8`](https://github.com/shadcn-ui/ui/commit/64739f83991205333867000d7813e82b0d98f871) Thanks [@shadcn](https://github.com/shadcn)! - add flag prompt for npm
+
+## 2.1.2
+
+### Patch Changes
+
+- [#5299](https://github.com/shadcn-ui/ui/pull/5299) [`986c00e`](https://github.com/shadcn-ui/ui/commit/986c00ee0e661bf2391b305c2b24800be63e681e) Thanks [@fourcels](https://github.com/fourcels)! - fix package manager fallback
+
+## 2.1.1
+
+### Patch Changes
+
+- [#5525](https://github.com/shadcn-ui/ui/pull/5525) [`f02b412`](https://github.com/shadcn-ui/ui/commit/f02b412478a2e4e1b20d87f4a253e9305331d066) Thanks [@shadcn](https://github.com/shadcn)! - temporarily pin create-next-app
+
+- [#5518](https://github.com/shadcn-ui/ui/pull/5518) [`bf5a79c`](https://github.com/shadcn-ui/ui/commit/bf5a79c4d427cf499c6196c2eea3df04d9410977) Thanks [@bcorbold](https://github.com/bcorbold)! - fix transofmrRsc for handling use client
+
 ## 2.1.0
 
 ### Minor Changes

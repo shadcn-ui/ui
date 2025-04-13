@@ -10,24 +10,44 @@ import {
 } from "@/components/page-header"
 import { Button } from "@/registry/new-york/ui/button"
 
+const title = "Color Library"
+const description = "Tailwind CSS colors in HSL, RGB, HEX and OKLCH formats."
+
 export const metadata: Metadata = {
-  title: "Tailwind Colors",
-  description: "All colors in all formats.",
+  title,
+  description,
+  openGraph: {
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
 }
 
-export default function ChartsLayout({
+export default function ColorsLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <div className="container relative">
+    <>
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>Tailwind Colors</PageHeaderHeading>
-        <PageHeaderDescription>
-          Tailwind CSS colors in HSL, RGB, and HEX formats.
-        </PageHeaderDescription>
+        <PageHeaderHeading>{title}</PageHeaderHeading>
+        <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
             <a href="#colors">Browse Colors</a>
@@ -37,9 +57,13 @@ export default function ChartsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <section id="charts" className="scroll-mt-20">
-        {children}
-      </section>
-    </div>
+      <div className="container-wrapper">
+        <div className="container py-6">
+          <section id="colors" className="scroll-mt-20">
+            {children}
+          </section>
+        </div>
+      </div>
+    </>
   )
 }
