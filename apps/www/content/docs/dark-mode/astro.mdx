@@ -118,3 +118,53 @@ import { ModeToggle } from '@/components/ModeToggle';
 ```
 
 </Steps>
+
+## With View transitions
+
+When using Astro [view transitions](https://docs.astro.build/en/guides/view-transitions), theme will not persist between page navigation. To make it work, we need to modify previous script . See [explains](https://docs.astro.build/en/guides/view-transitions/#astrobefore-swap).
+
+<Steps>
+
+### Modify theme script
+
+```astro showLineNumbers {6,23-30} title="src/pages/index.astro"
+---
+import '../styles/globals.css'
+---
+
+<script is:inline>
+  const setDarkMode = (document) => {
+    const getThemePreference = () => {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    const isDark = getThemePreference() === 'dark';
+    document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+
+    if (typeof localStorage !== 'undefined') {
+      const observer = new MutationObserver(() => {
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    }
+  }
+
+  setDarkMode(document)
+
+  document.addEventListener('astro:before-swap', (event) => {
+    // Pass the incoming document to set the theme on it
+    setDarkMode(event.newDocument)
+  })
+</script>
+
+<html lang="en">
+	<body>
+      <h1>Astro</h1>
+	</body>
+</html>
+```
+
+</Steps>
