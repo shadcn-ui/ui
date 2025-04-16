@@ -156,7 +156,7 @@ export async function getTailwindVersion(
   cwd: string
 ): Promise<ProjectInfo["tailwindVersion"]> {
   const [packageInfo, config] = await Promise.all([
-    getPackageInfo(cwd),
+    getPackageInfo(cwd, false),
     getConfig(cwd),
   ])
 
