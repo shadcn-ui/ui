@@ -1,7 +1,17 @@
+import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { afterAll, afterEach, describe, expect, test, vi } from "vitest"
+import {
+  afterAll,
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  test,
+  vi,
+} from "vitest"
 
 import { getConfig } from "../../../src/utils/get-config"
+import * as transformers from "../../../src/utils/transformers"
 import {
   findCommonRoot,
   resolveFilePath,
@@ -9,12 +19,17 @@ import {
   updateFiles,
 } from "../../../src/utils/updaters/update-files"
 
+vi.mock("../../../src/utils/transformers", () => ({
+  transform: vi.fn().mockImplementation((opts) => Promise.resolve(opts.raw)),
+}))
+
 vi.mock("fs/promises", async () => {
   const actual = (await vi.importActual(
     "fs/promises"
   )) as typeof import("fs/promises")
   return {
     ...actual,
+    readFile: vi.fn(),
     writeFile: vi.fn(),
   }
 })
@@ -23,8 +38,10 @@ vi.mock("fs", async () => {
   const actual = (await vi.importActual("fs")) as typeof import("fs")
   return {
     ...actual,
+    existsSync: vi.fn(),
     promises: {
       ...actual.promises,
+      readFile: vi.fn(),
       writeFile: vi.fn(),
     },
   }
@@ -731,6 +748,30 @@ describe("updateFiles", () => {
     const config = await getConfig(
       path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
     )
+
+    // Set up mocks for transform
+    vi.mocked(transformers.transform).mockImplementation((opts) => {
+      if (opts.raw.includes("Button")) {
+        return Promise.resolve(opts.raw)
+      }
+      return Promise.resolve(opts.raw)
+    })
+
+    // Mock existsSync to check for existing files
+    vi.mocked(existsSync).mockImplementation((path) => {
+      return path.toString().includes("button.tsx")
+    })
+
+    // Mock readFile to return content for comparison
+    vi.mocked(fs.readFile).mockImplementation((path) => {
+      if (path.toString().includes("button.tsx")) {
+        return Promise.resolve(`export function Button() {
+  return <button>Click me</button>
+}`)
+      }
+      return Promise.resolve("")
+    })
+
     expect(
       await updateFiles(
         [
@@ -772,6 +813,27 @@ return <div>Hello World</div>
     const config = await getConfig(
       path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
     )
+
+    // Set up mocks for transform
+    vi.mocked(transformers.transform).mockImplementation((opts) => {
+      return Promise.resolve(opts.raw)
+    })
+
+    // Mock existsSync to check for existing files
+    vi.mocked(existsSync).mockImplementation((path) => {
+      return path.toString().includes("button.tsx")
+    })
+
+    // Mock readFile to return content for comparison
+    vi.mocked(fs.readFile).mockImplementation((path) => {
+      if (path.toString().includes("button.tsx")) {
+        return Promise.resolve(`export function Button() {
+  return <button>I'm different</button>
+}`)
+      }
+      return Promise.resolve("")
+    })
+
     expect(
       await updateFiles(
         [
@@ -807,5 +869,250 @@ return <div>Hello World</div>
         ],
       }
     `)
+  })
+})
+
+describe("file actions", () => {
+  test("should append content to existing file", async () => {
+    // Set up mocks
+    vi.mocked(transformers.transform).mockResolvedValue("new-content")
+    vi.mocked(existsSync)
+      .mockReturnValueOnce(true) // First check for file existence
+      .mockReturnValueOnce(true) // Directory exists check
+
+    const existingContent = "existing-content"
+    vi.mocked(fs.readFile)
+      .mockResolvedValueOnce(existingContent) // For content comparison check
+      .mockResolvedValueOnce(existingContent) // For append operation
+
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+
+    const result = await updateFiles(
+      [
+        {
+          path: "components/test.tsx",
+          type: "registry:component",
+          content: "original-content", // This will be transformed to "new-content"
+          action: "append",
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    // Check the file was updated not created
+    expect(result.filesUpdated).toHaveLength(1)
+    expect(result.filesCreated).toHaveLength(0)
+    expect(result.filesSkipped).toHaveLength(0)
+
+    // Check writeFile was called correctly for append
+    expect(fs.writeFile).toHaveBeenCalledWith(
+      expect.any(String),
+      `${existingContent}\nnew-content`,
+      "utf-8"
+    )
+  })
+
+  test("should prepend content to existing file", async () => {
+    // Set up mocks
+    vi.mocked(transformers.transform).mockResolvedValue("new-content")
+    vi.mocked(existsSync)
+      .mockReturnValueOnce(true) // First check for file existence
+      .mockReturnValueOnce(true) // Directory exists check
+
+    const existingContent = "existing-content"
+    vi.mocked(fs.readFile)
+      .mockResolvedValueOnce(existingContent) // For content comparison check
+      .mockResolvedValueOnce(existingContent) // For prepend operation
+
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+
+    const result = await updateFiles(
+      [
+        {
+          path: "components/test.tsx",
+          type: "registry:component",
+          content: "original-content", // This will be transformed to "new-content"
+          action: "prepend",
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    // Check the file was updated not created
+    expect(result.filesUpdated).toHaveLength(1)
+    expect(result.filesCreated).toHaveLength(0)
+    expect(result.filesSkipped).toHaveLength(0)
+
+    // Check writeFile was called correctly for prepend
+    expect(fs.writeFile).toHaveBeenCalledWith(
+      expect.any(String),
+      `new-content\n${existingContent}`,
+      "utf-8"
+    )
+  })
+
+  test("should update file when content is different", async () => {
+    // Set up mocks
+    vi.mocked(transformers.transform).mockResolvedValue("new-content")
+    vi.mocked(existsSync)
+      .mockReturnValueOnce(true) // First check for file existence
+      .mockReturnValueOnce(true) // Directory exists check
+
+    const existingContent = "existing-content"
+    vi.mocked(fs.readFile).mockResolvedValueOnce(existingContent) // For content comparison
+
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+
+    const result = await updateFiles(
+      [
+        {
+          path: "components/test.tsx",
+          type: "registry:component",
+          content: "original-content", // This will be transformed to "new-content"
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    // Check the file was updated not created
+    expect(result.filesUpdated).toHaveLength(1)
+    expect(result.filesCreated).toHaveLength(0)
+    expect(result.filesSkipped).toHaveLength(0)
+
+    // Check writeFile was called with new content
+    expect(fs.writeFile).toHaveBeenCalledWith(
+      expect.any(String),
+      "new-content",
+      "utf-8"
+    )
+  })
+
+  test("should skip file when content is the same", async () => {
+    // Set up mocks
+    const content = "same-content"
+    vi.mocked(transformers.transform).mockResolvedValue(content)
+    vi.mocked(existsSync).mockReturnValue(true)
+    vi.mocked(fs.readFile).mockResolvedValue(content)
+
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+
+    const result = await updateFiles(
+      [
+        {
+          path: "components/test.tsx",
+          type: "registry:component",
+          content,
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    // Check the file was skipped
+    expect(result.filesSkipped).toHaveLength(1)
+    expect(result.filesUpdated).toHaveLength(0)
+    expect(result.filesCreated).toHaveLength(0)
+
+    // Verify writeFile was not called
+    expect(fs.writeFile).not.toHaveBeenCalled()
+  })
+
+  test("should skip file when content is already appended", async () => {
+    // Set up mocks
+    const newContent = "new-content"
+    const existingContent = "existing-content\nnew-content" // Already has the content appended
+
+    vi.mocked(transformers.transform).mockResolvedValue(newContent)
+    vi.mocked(existsSync).mockReturnValue(true)
+    vi.mocked(fs.readFile).mockResolvedValue(existingContent)
+
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+
+    const result = await updateFiles(
+      [
+        {
+          path: "components/test.tsx",
+          type: "registry:component",
+          content: newContent,
+          action: "append",
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    // The file should be skipped because the content is already appended
+    expect(result.filesSkipped).toHaveLength(1)
+    expect(result.filesUpdated).toHaveLength(0)
+    expect(result.filesCreated).toHaveLength(0)
+
+    // Verify writeFile was not called
+    expect(fs.writeFile).not.toHaveBeenCalled()
+  })
+
+  test("should skip file when content is already prepended", async () => {
+    // Set up mocks
+    const newContent = "new-content"
+    const existingContent = "new-content\nexisting-content" // Already has the content prepended
+
+    vi.mocked(transformers.transform).mockResolvedValue(newContent)
+    vi.mocked(existsSync).mockReturnValue(true)
+    vi.mocked(fs.readFile).mockResolvedValue(existingContent)
+
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+
+    const result = await updateFiles(
+      [
+        {
+          path: "components/test.tsx",
+          type: "registry:component",
+          content: newContent,
+          action: "prepend",
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    // The file should be skipped because the content is already prepended
+    expect(result.filesSkipped).toHaveLength(1)
+    expect(result.filesUpdated).toHaveLength(0)
+    expect(result.filesCreated).toHaveLength(0)
+
+    // Verify writeFile was not called
+    expect(fs.writeFile).not.toHaveBeenCalled()
   })
 })
