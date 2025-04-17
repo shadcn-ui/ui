@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.4.1
+
+### Patch Changes
+
+- [#7196](https://github.com/shadcn-ui/ui/pull/7196) [`617483fe9c26d607665fcaf79ee26e35d9825d7c`](https://github.com/shadcn-ui/ui/commit/617483fe9c26d607665fcaf79ee26e35d9825d7c) Thanks [@shadcn](https://github.com/shadcn)! - do not throw if empty dir
+
 ## 2.4.0
 
 ### Minor Changes
