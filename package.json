@@ -10,17 +10,31 @@
   },
   "workspaces": [
     "apps/*",
-    "packages/*",
-    "templates/*"
+    "packages/*"
   ],
   "scripts": {
     "build": "turbo run build",
-    "build:cli": "turbo --filter=shadcn-ui build",
-    "build:registry": "pnpm --filter=www build:registry",
+    "build:cli": "turbo --filter=shadcn build",
+    "build:registry": "pnpm --filter=www,v4 build:registry && pnpm --filter=www,v4 lint:fix && pnpm format:write -- --loglevel silent",
+    "registry:build": "turbo run registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
+    "registry:capture": "pnpm --filter=www registry:capture",
     "dev": "turbo run dev --parallel",
+    "shadcn-ui:dev": "turbo --filter=shadcn-ui dev",
+    "shadcn-ui": "pnpm --filter=shadcn-ui start:dev",
+    "shadcn-ui:test": "pnpm --filter=shadcn-ui test",
     "cli:dev": "turbo --filter=shadcn-ui dev",
     "cli:start": "pnpm --filter=shadcn-ui start:dev",
+    "cli:build": "pnpm --filter=shadcn-ui build",
+    "shadcn:dev": "turbo --filter=shadcn dev",
+    "shadcn": "pnpm --filter=shadcn start:dev",
+    "shadcn:prod": "pnpm --filter=shadcn start:prod",
+    "shadcn:build": "pnpm --filter=shadcn build",
+    "shadcn:test": "pnpm --filter=shadcn test",
+    "docs:build": "pnpm --filter=www build:docs",
     "www:dev": "pnpm --filter=www dev",
+    "www:build": "pnpm --filter=www build",
+    "v4:dev": "pnpm --filter=v4 dev",
+    "v4:build": "pnpm --filter=v4 build",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "preview": "turbo run preview",
@@ -28,14 +42,13 @@
     "format:write": "turbo run format:write",
     "format:check": "turbo run format:check",
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
-    "prepare": "husky install",
     "check": "turbo lint typecheck format:check",
     "release": "changeset version",
-    "pub:beta": "cd packages/cli && pnpm pub:beta",
-    "pub:release": "cd packages/cli && pnpm pub:release",
-    "test": "turbo run test --force"
+    "pub:beta": "cd packages/shadcn && pnpm pub:beta",
+    "pub:release": "cd packages/shadcn && pnpm pub:release",
+    "test": "turbo run test --filter=!shadcn-ui --force"
   },
-  "packageManager": "pnpm@8.5.1",
+  "packageManager": "pnpm@9.0.6",
   "dependencies": {
     "@babel/core": "^7.22.1",
     "@changesets/changelog-github": "^0.4.8",
@@ -53,22 +66,23 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-turbo": "^1.9.9",
     "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-tailwindcss": "^3.12.0",
-    "husky": "^8.0.3",
+    "eslint-plugin-tailwindcss": "3.13.1",
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "pretty-quick": "^3.1.3",
-    "tailwindcss": "^3.4.0",
+    "puppeteer": "^23.6.0",
+    "tailwindcss": "3.4.6",
     "tailwindcss-animate": "^1.0.5",
     "tsx": "^4.1.4",
     "turbo": "^1.9.9",
+    "vite": "^5.4.15",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.31.1"
+    "vitest": "^2.1.9"
   },
   "devDependencies": {
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
-    "typescript": "^5.4.2"
+    "typescript": "^5.5.3"
   }
 }

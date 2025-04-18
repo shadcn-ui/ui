@@ -1,7 +1,12 @@
-import { createContentlayerPlugin } from "next-contentlayer"
+import { createContentlayerPlugin } from "next-contentlayer2"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    outputFileTracingIncludes: {
+      "/blocks/*": ["./registry/**/*"],
+    },
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -52,6 +57,16 @@ const nextConfig = {
         source: "/docs/forms/react-hook-form",
         destination: "/docs/components/form",
         permanent: false,
+      },
+      {
+        source: "/sidebar",
+        destination: "/docs/components/sidebar",
+        permanent: true,
+      },
+      {
+        source: "/react-19",
+        destination: "/docs/react-19",
+        permanent: true,
       },
     ]
   },
