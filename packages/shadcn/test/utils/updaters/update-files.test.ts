@@ -931,7 +931,12 @@ describe("toAliasedImport", () => {
         lib: "@/lib",
       },
     }
-    expect(toAliasedImport(filePath, config)).toBe("@/components/button")
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@/components/button"
+    )
   })
 
   test("should convert ui path to aliased import", () => {
@@ -949,7 +954,12 @@ describe("toAliasedImport", () => {
         lib: "@/lib",
       },
     }
-    expect(toAliasedImport(filePath, config)).toBe("@/components/ui/button")
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@/components/ui/button"
+    )
   })
 
   test("should collapse index files", () => {
@@ -967,7 +977,12 @@ describe("toAliasedImport", () => {
         lib: "@/lib",
       },
     }
-    expect(toAliasedImport(filePath, config)).toBe("@/components/ui/button")
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@/components/ui/button"
+    )
   })
 
   test("should return null when no matching alias found", () => {
@@ -985,7 +1000,10 @@ describe("toAliasedImport", () => {
         lib: "@/lib",
       },
     }
-    expect(toAliasedImport(filePath, config)).toBeNull()
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/src/pages")
   })
 
   test("should handle nested directories", () => {
@@ -1003,7 +1021,10 @@ describe("toAliasedImport", () => {
         lib: "@/lib",
       },
     }
-    expect(toAliasedImport(filePath, config)).toBe(
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "@/components/forms/inputs/text-input"
     )
   })
@@ -1023,7 +1044,10 @@ describe("toAliasedImport", () => {
         lib: "@/lib",
       },
     }
-    expect(toAliasedImport(filePath, config)).toBe(
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
       "@/components/styles/theme.css"
     )
   })
@@ -1041,7 +1065,10 @@ describe("toAliasedImport", () => {
         ui: "@/ui",
       },
     }
-    expect(toAliasedImport(filePath, config)).toBe("@/ui/button")
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/ui/button")
   })
 
   test("should support tilde (~) alias prefix", () => {
@@ -1055,7 +1082,12 @@ describe("toAliasedImport", () => {
         components: "~components",
       },
     }
-    expect(toAliasedImport(filePath, config)).toBe("~components/button")
+    const projectInfo = {
+      aliasPrefix: "~",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "~components/button"
+    )
   })
 
   test("should support @shadcn alias prefix", () => {
@@ -1071,7 +1103,12 @@ describe("toAliasedImport", () => {
         ui: "@shadcn/ui",
       },
     }
-    expect(toAliasedImport(filePath, config)).toBe("@shadcn/ui/button")
+    const projectInfo = {
+      aliasPrefix: "@shadcn",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@shadcn/ui/button"
+    )
   })
 
   test("should support ~cn alias prefix", () => {
@@ -1085,6 +1122,32 @@ describe("toAliasedImport", () => {
         lib: "~cn/lib",
       },
     }
-    expect(toAliasedImport(filePath, config)).toBe("~cn/lib/utils")
+    const projectInfo = {
+      aliasPrefix: "~cn",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("~cn/lib/utils")
+  })
+
+  test("should use project alias prefix when aliasKey is cwd", () => {
+    const filePath = "src/pages/home.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@/src/pages/home"
+    )
   })
 })

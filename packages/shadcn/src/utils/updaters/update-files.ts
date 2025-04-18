@@ -56,7 +56,7 @@ export async function updateFiles(
 
   let filesCreated: string[] = []
   let filesUpdated: string[] = []
-  const filesSkipped: string[] = []
+  let filesSkipped: string[] = []
 
   for (const file of files) {
     if (!file.content) {
@@ -170,6 +170,11 @@ export async function updateFiles(
   if (!hasUpdatedFiles && !filesSkipped.length) {
     filesCreatedSpinner?.info("No files updated.")
   }
+
+  // Remove duplicates.
+  filesCreated = Array.from(new Set(filesCreated))
+  filesUpdated = Array.from(new Set(filesUpdated))
+  filesSkipped = Array.from(new Set(filesSkipped))
 
   if (filesCreated.length) {
     filesCreatedSpinner?.succeed(
@@ -393,7 +398,7 @@ async function resolveImports(filePaths: string[], config: Config) {
   const tsConfig = await loadConfig(config.resolvedPaths.cwd)
   const updatedFiles = []
 
-  if (tsConfig.resultType === "failed") {
+  if (!projectInfo || tsConfig.resultType === "failed") {
     return []
   }
 
@@ -428,14 +433,19 @@ async function resolveImports(filePaths: string[], config: Config) {
         continue
       }
 
+      // Find the probable import file path.
+      // This is where we expect to find the file on disk.
       const probableImportFilePath = await resolveImport(
         moduleSpecifier,
         tsConfig
       )
+
       if (!probableImportFilePath) {
         continue
       }
 
+      // Find the actual import file path.
+      // This is the path where the file has been installed.
       const resolvedImportFilePath = resolveModuleByProbablePath(
         probableImportFilePath,
         filePaths,
@@ -446,14 +456,16 @@ async function resolveImports(filePaths: string[], config: Config) {
         continue
       }
 
-      const newImport = toAliasedImport(resolvedImportFilePath, config)
+      // Convert the resolved import file path to an aliased import.
+      const newImport = toAliasedImport(
+        resolvedImportFilePath,
+        config,
+        projectInfo
+      )
+
       if (!newImport || newImport === moduleSpecifier) {
         continue
       }
-
-      console.log(
-        `📦 Updating ${filepath} from ${moduleSpecifier} to ${newImport}`
-      )
 
       importDeclaration.setModuleSpecifier(newImport)
 
@@ -547,7 +559,8 @@ export function resolveModuleByProbablePath(
 
 export function toAliasedImport(
   filePath: string,
-  config: Config
+  config: Config,
+  projectInfo: ProjectInfo
 ): string | null {
   const abs = path.normalize(path.join(config.resolvedPaths.cwd, filePath))
 
@@ -582,7 +595,10 @@ export function toAliasedImport(
 
   // 5️⃣ Build the aliased path
   //    config.aliases[aliasKey] is e.g. "@/components/ui"
-  const aliasBase = config.aliases[aliasKey as keyof typeof config.aliases]
+  const aliasBase =
+    aliasKey === "cwd"
+      ? projectInfo.aliasPrefix
+      : config.aliases[aliasKey as keyof typeof config.aliases]
   if (!aliasBase) {
     return null
   }
