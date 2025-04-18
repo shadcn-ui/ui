@@ -451,6 +451,10 @@ async function resolveImports(filePaths: string[], config: Config) {
         continue
       }
 
+      console.log(
+        `📦 Updating ${filepath} from ${moduleSpecifier} to ${newImport}`
+      )
+
       importDeclaration.setModuleSpecifier(newImport)
 
       // Write the updated content to the file.
