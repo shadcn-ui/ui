@@ -1003,7 +1003,7 @@ describe("toAliasedImport", () => {
     const projectInfo = {
       aliasPrefix: "@",
     }
-    expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/src/pages")
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/pages")
   })
 
   test("should handle nested directories", () => {
@@ -1146,8 +1146,6 @@ describe("toAliasedImport", () => {
     const projectInfo = {
       aliasPrefix: "@",
     }
-    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
-      "@/src/pages/home"
-    )
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/pages/home")
   })
 })
