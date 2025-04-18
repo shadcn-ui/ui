@@ -1,11 +1,19 @@
 import { detect } from "@antfu/ni"
+import { detectRushMonoRepo } from "./detect-rush-monorepo";
+
+export type PackageManager = "yarn" | "pnpm" | "bun" | "npm" | "rush";
+
 
 export async function getPackageManager(
   targetDir: string,
   { withFallback }: { withFallback?: boolean } = {
     withFallback: false,
   }
-): Promise<"yarn" | "pnpm" | "bun" | "npm" | "deno"> {
+): Promise<PackageManager> {
+
+  if (detectRushMonoRepo({ cwd: targetDir })) {
+    return "rush";
+  }
   const packageManager = await detect({ programmatic: true, cwd: targetDir })
 
   if (packageManager === "yarn@berry") return "yarn"
