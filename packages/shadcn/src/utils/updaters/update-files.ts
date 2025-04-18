@@ -603,7 +603,11 @@ export function toAliasedImport(
     return null
   }
   // if noExt is empty (i.e. file was exactly at the root), we import the root
-  const suffix = noExt === "" ? "" : `/${noExt}`
+  let suffix = noExt === "" ? "" : `/${noExt}`
+
+  // Rremove /src from suffix.
+  // Alias will handle this.
+  suffix = suffix.replace("/src", "")
 
   // 6️⃣ Prepend the prefix from projectInfo (e.g. "@") if needed
   //    but usually config.aliases already include it.
