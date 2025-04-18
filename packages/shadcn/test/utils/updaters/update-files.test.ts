@@ -1,3 +1,4 @@
+import { existsSync } from "fs"
 import path from "path"
 import { afterAll, afterEach, describe, expect, test, vi } from "vitest"
 
@@ -5,7 +6,9 @@ import { getConfig } from "../../../src/utils/get-config"
 import {
   findCommonRoot,
   resolveFilePath,
+  resolveModuleByProbablePath,
   resolveNestedFilePath,
+  toAliasedImport,
   updateFiles,
 } from "../../../src/utils/updaters/update-files"
 
@@ -807,5 +810,281 @@ return <div>Hello World</div>
         ],
       }
     `)
+  })
+})
+
+describe("resolveModuleByProbablePath", () => {
+  test("should resolve exact file match in provided files list", () => {
+    const files = [
+      "components/button.tsx",
+      "components/card.tsx",
+      "lib/utils.ts",
+    ]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config)
+    ).toBe("components/button.tsx")
+  })
+
+  test("should resolve index file", () => {
+    const files = ["components/button/index.tsx", "components/card.tsx"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config)
+    ).toBe("components/button/index.tsx")
+  })
+
+  test("should try different extensions", () => {
+    const files = ["components/button.jsx", "components/card.tsx"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config)
+    ).toBe("components/button.jsx")
+  })
+
+  test("should fallback to basename matching", () => {
+    const files = ["components/ui/button.tsx", "components/card.tsx"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config)
+    ).toBe("components/ui/button.tsx")
+  })
+
+  test("should return null when file not found", () => {
+    const files = ["components/card.tsx", "lib/utils.ts"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config)
+    ).toBeNull()
+  })
+
+  test("should sort by extension priority", () => {
+    const files = [
+      "components/button.jsx",
+      "components/button.tsx",
+      "components/button.js",
+    ]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config, [
+        ".tsx",
+        ".jsx",
+        ".js",
+      ])
+    ).toBe("components/button.tsx")
+  })
+
+  test("should preserve extension if specified in path", () => {
+    const files = ["components/button.tsx", "components/button.css"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath(
+        "/foo/bar/components/button.css",
+        files,
+        config
+      )
+    ).toBe("components/button.css")
+  })
+})
+
+describe("toAliasedImport", () => {
+  test("should convert components path to aliased import", () => {
+    const filePath = "components/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    expect(toAliasedImport(filePath, config)).toBe("@/components/button")
+  })
+
+  test("should convert ui path to aliased import", () => {
+    const filePath = "components/ui/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    expect(toAliasedImport(filePath, config)).toBe("@/components/ui/button")
+  })
+
+  test("should collapse index files", () => {
+    const filePath = "components/ui/button/index.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    expect(toAliasedImport(filePath, config)).toBe("@/components/ui/button")
+  })
+
+  test("should return null when no matching alias found", () => {
+    const filePath = "src/pages/index.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    expect(toAliasedImport(filePath, config)).toBeNull()
+  })
+
+  test("should handle nested directories", () => {
+    const filePath = "components/forms/inputs/text-input.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    expect(toAliasedImport(filePath, config)).toBe(
+      "@/components/forms/inputs/text-input"
+    )
+  })
+
+  test("should keep non-code file extensions", () => {
+    const filePath = "components/styles/theme.css"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    expect(toAliasedImport(filePath, config)).toBe(
+      "@/components/styles/theme.css"
+    )
+  })
+
+  test("should prefer longer matching paths", () => {
+    const filePath = "components/ui/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/ui",
+      },
+    }
+    expect(toAliasedImport(filePath, config)).toBe("@/ui/button")
+  })
+
+  test("should support tilde (~) alias prefix", () => {
+    const filePath = "components/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+      },
+      aliases: {
+        components: "~components",
+      },
+    }
+    expect(toAliasedImport(filePath, config)).toBe("~components/button")
+  })
+
+  test("should support @shadcn alias prefix", () => {
+    const filePath = "components/ui/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+      },
+      aliases: {
+        components: "@shadcn/components",
+        ui: "@shadcn/ui",
+      },
+    }
+    expect(toAliasedImport(filePath, config)).toBe("@shadcn/ui/button")
+  })
+
+  test("should support ~cn alias prefix", () => {
+    const filePath = "lib/utils/index.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        lib: "~cn/lib",
+      },
+    }
+    expect(toAliasedImport(filePath, config)).toBe("~cn/lib/utils")
   })
 })
