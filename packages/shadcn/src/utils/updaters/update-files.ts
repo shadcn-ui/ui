@@ -54,9 +54,9 @@ export async function updateFiles(
     getRegistryBaseColor(config.tailwind.baseColor),
   ])
 
-  let filesCreated = []
-  let filesUpdated = []
-  const filesSkipped = []
+  let filesCreated: string[] = []
+  let filesUpdated: string[] = []
+  const filesSkipped: string[] = []
 
   for (const file of files) {
     if (!file.content) {
