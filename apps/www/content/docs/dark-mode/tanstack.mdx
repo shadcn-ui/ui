@@ -1,0 +1,153 @@
+---
+title: Tanstack Start
+description: Adding dark mode to your TanStack Start app.
+---
+
+## Dark mode
+
+<Steps>
+
+### Create server functions
+
+Start by creating `serverFn`s to get and set the theme in cookies.
+
+```ts title="lib/theme.ts"
+import { type Theme } from "@/components/theme-provider";
+import { createServerFn } from "@tanstack/react-start";
+import { getCookie, setCookie } from "@tanstack/react-start/server";
+
+const storageKey = "ui-theme";
+
+export const getThemeServerFn = createServerFn().handler(async () => {
+  return (getCookie(storageKey) || "light") as Theme;
+});
+
+export const setThemeServerFn = createServerFn({ method: "POST" })
+  .validator((data: unknown) => {
+    if (typeof data != "string" || (data != "dark" && data != "light")) {
+      throw new Error("Invalid theme provided");
+    }
+    return data as Theme;
+  })
+  .handler(async ({ data }) => {
+    setCookie(storageKey, data);
+  });
+```
+
+### Create a theme provider
+
+```tsx title="components/theme-provider.tsx"
+import { setThemeServerFn } from "@/lib/theme";
+import { useRouter } from "@tanstack/react-router";
+import { createContext, PropsWithChildren, use, useState } from "react";
+
+export type Theme = "light" | "dark";
+
+type ThemeContextVal = { theme: Theme; setTheme: (val: Theme) => void };
+type Props = PropsWithChildren<{ theme: Theme }>;
+
+const ThemeContext = createContext<ThemeContextVal | null>(null);
+
+export function ThemeProvider({ children, theme }: Props) {
+  const [_theme, _setTheme] = useState(theme);
+  const router = useRouter();
+
+  function setTheme(val: Theme) {
+    setThemeServerFn({ data: val });
+    _setTheme(val);
+    router.invalidate();
+  }
+
+  return (
+    <ThemeContext value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext>
+  );
+}
+
+export function useTheme() {
+  const val = use(ThemeContext);
+  if (!val) throw new Error("useTheme called outside of ThemeProvider!");
+  return val;
+}
+```
+
+### Wrap your root layout
+
+Wrap your app in the `ThemeProvider` and pass the theme to the `html` tag using `className`.
+
+```tsx {1,10,12,21,23} title="routes/__root.tsx"
+import { ThemeProvider, useTheme } from "@/components/theme-provider";
+import { getThemeServerFn } from "@/lib/theme";
+
+export const Route = createRootRoute({
+  component: RootComponent,
+  loader: () => getThemeServerFn(),
+});
+
+function RootComponent() {
+  const data = Route.useLoaderData();
+  return (
+    <ThemeProvider theme={data}>
+      <RootDocument>
+        <Outlet />
+      </RootDocument>
+    </ThemeProvider>
+  );
+}
+
+function RootDocument({ children }: PropsWithChildren) {
+  const { theme } = useTheme();
+  return (
+    <html className={theme}>
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+### Add a mode toggle
+
+Place a mode toggle on your site to toggle between light and dark mode.
+
+```tsx title="components/mode-toggle.tsx"
+import { Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useTheme } from "@/components/theme-provider";
+
+export function ModeToggle() {
+  const { setTheme } = useTheme();
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon">
+          <Sun className="!h-[1.2rem] !w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute !h-[1.2rem] !w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```
+</Steps>
