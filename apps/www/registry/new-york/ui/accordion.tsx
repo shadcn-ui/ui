@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import { Slottable } from "@radix-ui/react-slot"
 import { ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -33,7 +34,7 @@ const AccordionTrigger = React.forwardRef<
       )}
       {...props}
     >
-      {children}
+      <Slottable>{children}</Slottable>
       <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>

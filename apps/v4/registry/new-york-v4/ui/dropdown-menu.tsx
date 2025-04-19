@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
+import { Slottable } from "@radix-ui/react-slot"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -103,7 +104,7 @@ function DropdownMenuCheckboxItem({
           <CheckIcon className="size-4" />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
-      {children}
+      <Slottable>{children}</Slottable>
     </DropdownMenuPrimitive.CheckboxItem>
   )
 }
@@ -138,7 +139,7 @@ function DropdownMenuRadioItem({
           <CircleIcon className="size-2 fill-current" />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
-      {children}
+      <Slottable>{children}</Slottable>
     </DropdownMenuPrimitive.RadioItem>
   )
 }
@@ -216,7 +217,7 @@ function DropdownMenuSubTrigger({
       )}
       {...props}
     >
-      {children}
+      <Slottable>{children}</Slottable>
       <ChevronRightIcon className="ml-auto size-4" />
     </DropdownMenuPrimitive.SubTrigger>
   )
