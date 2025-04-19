@@ -15,6 +15,7 @@ const Progress = React.forwardRef<
       "relative h-2 w-full overflow-hidden rounded-full bg-primary/20",
       className
     )}
+    value={typeof value === "number" ? value : 0}
     {...props}
   >
     <ProgressPrimitive.Indicator
