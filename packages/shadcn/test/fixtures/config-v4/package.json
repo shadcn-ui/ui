@@ -1,0 +1,10 @@
+{
+  "name": "test-cli-config-v4",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "shadcn",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^4"
+  }
+}
