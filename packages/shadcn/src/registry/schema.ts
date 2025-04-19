@@ -19,6 +19,10 @@ export const registryItemTypeSchema = z.enum([
   "registry:internal",
 ])
 
+export const registryItemFileActionSchema = z
+  .enum(["append", "prepend"])
+  .optional()
+
 export const registryItemFileSchema = z.discriminatedUnion("type", [
   // Target is required for registry:file and registry:page
   z.object({
@@ -26,12 +30,14 @@ export const registryItemFileSchema = z.discriminatedUnion("type", [
     content: z.string().optional(),
     type: z.enum(["registry:file", "registry:page"]),
     target: z.string(),
+    action: registryItemFileActionSchema,
   }),
   z.object({
     path: z.string(),
     content: z.string().optional(),
     type: registryItemTypeSchema.exclude(["registry:file", "registry:page"]),
     target: z.string().optional(),
+    action: registryItemFileActionSchema,
   }),
 ])
 

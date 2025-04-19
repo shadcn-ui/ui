@@ -1,7 +1,11 @@
 import { existsSync, promises as fs } from "fs"
 import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
-import { RegistryItem, registryItemFileSchema } from "@/src/registry/schema"
+import {
+  RegistryItem,
+  registryItemFileActionSchema,
+  registryItemFileSchema,
+} from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
@@ -15,6 +19,31 @@ import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
 import { z } from "zod"
+
+async function applyFileAction(
+  filePath: string,
+  content: string,
+  action: z.infer<typeof registryItemFileActionSchema>
+) {
+  if (!action) {
+    return content
+  }
+
+  // Only try to read existing content if the file exists
+  if (existsSync(filePath)) {
+    const existingContent = await fs.readFile(filePath, "utf-8")
+
+    if (action === "append") {
+      return `${existingContent}\n${content}`
+    }
+
+    if (action === "prepend") {
+      return `${content}\n${existingContent}`
+    }
+  }
+
+  return content
+}
 
 export async function updateFiles(
   files: RegistryItem["files"],
@@ -109,9 +138,28 @@ export async function updateFiles(
         getNormalizedFileContent(existingFileContent),
         getNormalizedFileContent(content),
       ])
+
+      // Check if content is already the same
       if (normalizedExisting === normalizedNew) {
         filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
         continue
+      }
+
+      // Also check if action is already applied
+      if (file.action) {
+        if (file.action === "append") {
+          // Check if the content is already appended
+          if (normalizedExisting.endsWith(normalizedNew)) {
+            filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+            continue
+          }
+        } else if (file.action === "prepend") {
+          // Check if the content is already prepended
+          if (normalizedExisting.startsWith(normalizedNew)) {
+            filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+            continue
+          }
+        }
       }
     }
 
@@ -147,10 +195,24 @@ export async function updateFiles(
       await fs.mkdir(targetDir, { recursive: true })
     }
 
-    await fs.writeFile(filePath, content, "utf-8")
-    existingFile
-      ? filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
-      : filesCreated.push(path.relative(config.resolvedPaths.cwd, filePath))
+    let finalContent = content
+    if (existingFile && file.action) {
+      const existingFileContent = await fs.readFile(filePath, "utf-8")
+      if (file.action === "append") {
+        finalContent = `${existingFileContent}\n${content}`
+      } else if (file.action === "prepend") {
+        finalContent = `${content}\n${existingFileContent}`
+      }
+    }
+
+    await fs.writeFile(filePath, finalContent, "utf-8")
+
+    const relativePath = path.relative(config.resolvedPaths.cwd, filePath)
+    if (existingFile) {
+      filesUpdated.push(relativePath)
+    } else {
+      filesCreated.push(relativePath)
+    }
   }
 
   const hasUpdatedFiles = filesCreated.length || filesUpdated.length
@@ -192,7 +254,7 @@ export async function updateFiles(
   if (filesSkipped.length) {
     spinner(
       `Skipped ${filesSkipped.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+        filesSkipped.length === 1 ? "file" : "files"
       }: (files might be identical, use --overwrite to overwrite)`,
       {
         silent: options.silent,
@@ -332,7 +394,10 @@ export function resolveNestedFilePath(
   return fileSegments.slice(commonDirIndex + 1).join("/")
 }
 
-export async function getNormalizedFileContent(content: string) {
+export async function getNormalizedFileContent(content: string | undefined) {
+  if (!content) {
+    return ""
+  }
   return content.replace(/\r\n/g, "\n").trim()
 }
 

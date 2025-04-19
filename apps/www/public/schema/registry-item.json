@@ -85,6 +85,11 @@
           "target": {
             "type": "string",
             "description": "The target path of the file. This is the path to the file in the project."
+          },
+          "action": {
+            "type": "string",
+            "enum": ["append", "prepend"],
+            "description": "The action to perform on the target file. Can be append or prepend."
           }
         },
         "if": {
