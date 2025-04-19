@@ -426,6 +426,19 @@
       ]
     },
     {
+      "name": "rating",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/rating.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "resizable",
       "type": "registry:ui",
       "dependencies": [

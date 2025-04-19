@@ -363,6 +363,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "rating",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "ui/rating.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "resizable",
     type: "registry:ui",
     dependencies: ["react-resizable-panels"],

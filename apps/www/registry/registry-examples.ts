@@ -907,6 +907,7 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+
   {
     name: "radio-group-form",
     type: "registry:example",
@@ -914,6 +915,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/radio-group-form.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "rating-demo",
+    type: "registry:example",
+    registryDependencies: ["rating"],
+    files: [
+      {
+        path: "examples/rating-demo.tsx",
         type: "registry:example",
       },
     ],
