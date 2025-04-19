@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "not-found-04",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A simple not found page with card links.",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/not-found-04/page.tsx",
+      "content": "import { NotFound } from \"@/registry/default/blocks/not-found-04/components/not-found\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10\">\n      <NotFound />\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/not-found/page.tsx"
+    },
+    {
+      "path": "blocks/not-found-04/components/not-found.tsx",
+      "content": "import { Box, ChevronRight, HelpCircle, Info } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\n\nconst links = [\n  {\n    title: \"Jedi Training\",\n    description: \"Learn the ways of the Force, you will.\",\n    icon: Box,\n  },\n  {\n    title: \"Galactic Support\",\n    description: \"Help you, we can. Answers, you will find.\",\n    icon: HelpCircle,\n  },\n  {\n    title: \"About the Force\",\n    description: \"More about the Force, you must know.\",\n    icon: Info,\n  },\n]\n\nexport function NotFound() {\n  return (\n    <div className=\"text-center\">\n      <p className=\"text-base font-semibold text-primary\">404</p>\n      <h1 className=\"mt-4 text-balance text-5xl font-semibold tracking-tight text-primary sm:text-7xl\">\n        Page not found\n      </h1>\n      <p className=\"mt-6 text-pretty text-lg font-medium text-muted-foreground sm:text-xl/8\">\n        Lost, this page is. In another system, it may be.\n      </p>\n      <div className=\"mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-center gap-y-3 gap-x-6\">\n        <Button variant=\"secondary\" asChild>\n          <a href=\"#\">\n            <span aria-hidden=\"true\">&larr;</span> Go back\n          </a>\n        </Button>\n        <Button className=\"-order-1 sm:order-none\" asChild>\n          <a href=\"#\">Take me home</a>\n        </Button>\n      </div>\n      <ul className=\"mt-16 grid lg:grid-cols-3 gap-y-3 gap-x-6\">\n        {links.map((link) => (\n          <li\n            key={link.title}\n            className=\"relative group/link inline-flex cursor-pointer flex-col gap-12 sm:gap-16 lg:gap-20 bg-muted/50 hover:bg-accent rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring p-6\"\n          >\n            <div className=\"flex items-center justify-between\">\n              <link.icon className=\"h-10 w-10\" />\n              <ChevronRight className=\"h-8 w-8 text-muted-foreground transition-colors group-hover/link:text-primary\" />\n            </div>\n            <div className=\"text-start\">\n              <h3 className=\"text-lg lg:text-xl text-primary font-medium\">\n                {link.title}\n              </h3>\n              <p className=\"text-sm lg:text-base text-muted-foreground\">\n                {link.description}\n              </p>\n              <a\n                href=\"#\"\n                className=\"absolute top-0 left-0 w-full h-full z-[+1]\"\n              />\n            </div>\n          </li>\n        ))}\n      </ul>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "404-pages"
+  ]
+}
