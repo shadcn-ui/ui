@@ -333,6 +333,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Rating",
+          href: "/docs/components/rating",
+          items: [],
+        },
+        {
           title: "Resizable",
           href: "/docs/components/resizable",
           items: [],
