@@ -26,6 +26,7 @@ export const rawConfigSchema = z
     style: z.string(),
     rsc: z.coerce.boolean().default(false),
     tsx: z.coerce.boolean().default(true),
+    linter: z.enum(["eslint", "biome"]).default("eslint"),
     tailwind: z.object({
       config: z.string().optional(),
       css: z.string(),
