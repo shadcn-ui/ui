@@ -1,0 +1,93 @@
+---
+title: Time Picker
+description: Some components allow users to choose a period of time.
+component: true
+---
+
+<ComponentPreview
+  name="time-picker-container-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Some components allow users to choose a period of time."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add time-picker
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npx shadcn@latest add slider
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="time-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```typescript jsx
+import {useState} from "react";
+const [time,setTime]=useState(0)
+return <TimePickerContainer onTimeChange={(v)=>setTime(v)}>
+    <TimePicker
+        timeMilliseconds={1}
+        minValue={0}
+        maxValue={1000}
+        prefixLabel={<span>Milliseconds:</span>}
+        suffixLabel={<span>ms</span>}
+        step={1}
+        onValueChange={(value)=>console.log("Time value change to : "+value)}
+    />
+</TimePickerContainer >
+```
+
+## Examples
+
+### Use in a Dialog
+
+<ComponentPreview
+  name="time-picker-with-dialog-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Use the Time Picker in a Dialog component."
+/>
+
+### Use in a Popover
+
+<ComponentPreview
+  name="time-picker-with-popover"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Use the Time Picker in a Popover component."
+/>
+
+### Control the Time Picker's value with a state outside
+
+<ComponentPreview
+  name="time-picker-with-value"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Control the Time Picker's value with a state outside."
+/>
