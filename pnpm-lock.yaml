@@ -335,7 +335,7 @@ importers:
         specifier: ^0.6.11
         version: 0.6.11(@ianvs/prettier-plugin-sort-imports@3.7.2(prettier@3.4.2))(prettier@3.4.2)
       tw-animate-css:
-        specifier: ^1.2.7
+        specifier: ^1.2.8
         version: 1.2.8
       typescript:
         specifier: ^5
