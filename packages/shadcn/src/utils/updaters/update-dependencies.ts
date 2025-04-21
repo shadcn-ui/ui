@@ -68,7 +68,9 @@ export async function updateDependencies(
       [
         packageManager === "npm" ? "install" : "add",
         ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
-        ...dependencies,
+        ...(packageManager === "deno"
+          ? dependencies.map((dep) => `npm:${dep}`)
+          : dependencies),
       ],
       {
         cwd: config.resolvedPaths.cwd,
@@ -83,7 +85,9 @@ export async function updateDependencies(
         packageManager === "npm" ? "install" : "add",
         ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
         "-D",
-        ...devDependencies,
+        ...(packageManager === "deno"
+          ? devDependencies.map((dep) => `npm:${dep}`)
+          : devDependencies),
       ],
       {
         cwd: config.resolvedPaths.cwd,
