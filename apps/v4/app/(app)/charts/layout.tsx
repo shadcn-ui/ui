@@ -46,7 +46,7 @@ export default function ChartsLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
+    <div className="section-muted">
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
@@ -68,15 +68,13 @@ export default function ChartsLayout({
           </div>
         </div>
       </div>
-      <div className="section-muted">
-        <div className="container-wrapper">
-          <div className="container py-6">
-            <section id="charts" className="theme-container scroll-mt-20">
-              {children}
-            </section>
-          </div>
+      <div className="container-wrapper">
+        <div className="container py-6">
+          <section id="charts" className="theme-container scroll-mt-20">
+            {children}
+          </section>
         </div>
       </div>
-    </>
+    </div>
   )
 }

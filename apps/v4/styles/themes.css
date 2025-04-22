@@ -1,18 +1,9 @@
 .theme-default .theme-container {
-  --primary: var(--color-neutral-600);
-  --primary-foreground: var(--color-neutral-50);
-  --ring: var(--color-neutral-400);
   --chart-1: var(--color-blue-300);
   --chart-2: var(--color-blue-500);
   --chart-3: var(--color-blue-600);
   --chart-4: var(--color-blue-700);
   --chart-5: var(--color-blue-800);
-
-  @variant dark {
-    --primary: var(--color-neutral-500);
-    --primary-foreground: var(--color-neutral-50);
-    --ring: var(--color-neutral-900);
-  }
 }
 
 .theme-blue .theme-container {
@@ -186,18 +177,11 @@
 }
 
 .theme-scaled .theme-container {
-  --primary: var(--color-zinc-600);
-  --primary-foreground: var(--color-zinc-50);
   --chart-1: var(--color-blue-300);
   --chart-2: var(--color-blue-500);
   --chart-3: var(--color-blue-600);
   --chart-4: var(--color-blue-700);
   --chart-5: var(--color-blue-800);
-
-  @variant dark {
-    --primary: var(--color-zinc-500);
-    --primary-foreground: var(--color-zinc-50);
-  }
 
   @media (min-width: 1024px) {
     --radius: 0.45em;

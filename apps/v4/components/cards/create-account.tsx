@@ -53,12 +53,16 @@ export function CardsCreateAccount() {
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" />
+          <Label htmlFor="email-create-account">Email</Label>
+          <Input
+            id="email-create-account"
+            type="email"
+            placeholder="m@example.com"
+          />
         </div>
         <div className="flex flex-col gap-3">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" />
+          <Label htmlFor="password-create-account">Password</Label>
+          <Input id="password-create-account" type="password" />
         </div>
       </CardContent>
       <CardFooter>

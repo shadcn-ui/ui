@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 
 export default function IndexPage() {
   return (
-    <>
+    <div className="section-muted">
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
@@ -66,31 +66,29 @@ export default function IndexPage() {
           </div>
         </div>
       </div>
-      <div className="section-muted">
-        <div className="container-wrapper">
-          <div className="container py-6">
-            <section className="bg-background overflow-hidden rounded-lg border shadow-md md:hidden md:shadow-xl">
-              <Image
-                src="/examples/cards-light.png"
-                width={1280}
-                height={1214}
-                alt="Cards"
-                className="block dark:hidden"
-              />
-              <Image
-                src="/examples/cards-dark.png"
-                width={1280}
-                height={1214}
-                alt="Cards"
-                className="hidden dark:block"
-              />
-            </section>
-            <section className="theme-container hidden md:block">
-              <CardsDemo />
-            </section>
-          </div>
+      <div className="container-wrapper">
+        <div className="container py-6">
+          <section className="bg-background overflow-hidden rounded-lg border shadow-md md:hidden md:shadow-xl">
+            <Image
+              src="/examples/cards-light.png"
+              width={1280}
+              height={1214}
+              alt="Cards"
+              className="block dark:hidden"
+            />
+            <Image
+              src="/examples/cards-dark.png"
+              width={1280}
+              height={1214}
+              alt="Cards"
+              className="hidden dark:block"
+            />
+          </section>
+          <section className="theme-container hidden md:block">
+            <CardsDemo />
+          </section>
         </div>
       </div>
-    </>
+    </div>
   )
 }

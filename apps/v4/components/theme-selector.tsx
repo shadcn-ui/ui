@@ -66,7 +66,7 @@ export function ThemeSelector() {
         <SelectTrigger
           id="theme-selector"
           size="sm"
-          className="justify-start *:data-[slot=select-value]:w-12"
+          className="bg-background dark:bg-input/30 justify-start *:data-[slot=select-value]:w-12"
         >
           <span className="text-muted-foreground block">Theme:</span>
           <SelectValue placeholder="Select a theme" />
