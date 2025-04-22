@@ -1,7 +1,7 @@
-import { ChartAreaDemo } from "@/components/chart-area-demo"
-import { ChartBarDemo } from "@/components/chart-bar-demo"
-import { ChartLineDemo } from "@/components/chart-line-demo"
 import { ChartBarMixed } from "@/registry/new-york-v4/charts/chart-bar-mixed"
+import { ChartAreaDemo } from "@/app/(app)/internal/sink/components/chart-area-demo"
+import { ChartBarDemo } from "@/app/(app)/internal/sink/components/chart-bar-demo"
+import { ChartLineDemo } from "@/app/(app)/internal/sink/components/chart-line-demo"
 
 export function ChartDemo() {
   return (

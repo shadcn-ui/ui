@@ -1,30 +1,90 @@
 "use client"
 
-import { THEMES } from "@/lib/themes"
 import { useThemeConfig } from "@/components/active-theme"
+import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
 
+const DEFAULT_THEMES = [
+  {
+    name: "Default",
+    value: "default",
+  },
+  {
+    name: "Blue",
+    value: "blue",
+  },
+  {
+    name: "Green",
+    value: "green",
+  },
+  {
+    name: "Amber",
+    value: "amber",
+  },
+  {
+    name: "Rose",
+    value: "rose",
+  },
+  {
+    name: "Purple",
+    value: "purple",
+  },
+  {
+    name: "Orange",
+    value: "orange",
+  },
+  {
+    name: "Teal",
+    value: "teal",
+  },
+  {
+    name: "Mono",
+    value: "mono",
+  },
+  {
+    name: "Scaled",
+    value: "scaled",
+  },
+]
+
 export function ThemeSelector() {
   const { activeTheme, setActiveTheme } = useThemeConfig()
 
   return (
-    <Select value={activeTheme} onValueChange={setActiveTheme}>
-      <SelectTrigger size="sm" className="w-32">
-        <SelectValue placeholder="Select a theme" />
-      </SelectTrigger>
-      <SelectContent align="end">
-        {THEMES.map((theme) => (
-          <SelectItem key={theme.name} value={theme.value}>
-            {theme.name}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <div className="flex items-center gap-2">
+      <Label htmlFor="theme-selector" className="sr-only">
+        Theme
+      </Label>
+      <Select value={activeTheme} onValueChange={setActiveTheme}>
+        <SelectTrigger
+          id="theme-selector"
+          size="sm"
+          className="justify-start *:data-[slot=select-value]:w-12"
+        >
+          <span className="text-muted-foreground block">Theme:</span>
+          <SelectValue placeholder="Select a theme" />
+        </SelectTrigger>
+        <SelectContent align="end">
+          <SelectGroup>
+            {DEFAULT_THEMES.map((theme) => (
+              <SelectItem
+                key={theme.name}
+                value={theme.value}
+                className="data-[state=checked]:opacity-50"
+              >
+                {theme.name}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </div>
   )
 }

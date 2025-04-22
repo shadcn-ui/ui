@@ -117,7 +117,30 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+  html {
+    @apply scroll-smooth;
   }
+  body {
+    @apply bg-background text-foreground overscroll-none;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    [data-wrapper] {
+      @apply min-[1800px]:border-t;
+    }
+  }
+}
+
+@utility border-grid {
+  @apply border-border/50 dark:border-border;
+}
+
+@utility container-wrapper {
+  @apply border-border/60 dark:border-border mx-auto w-full max-w-[1400px] min-[1400px]:border-x min-[1800px]:max-w-screen-2xl;
+}
+
+@utility container {
+  @apply mx-auto max-w-screen-2xl px-4 xl:px-6;
 }
