@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { Index } from "@/__registry__"
 import {
   AudioWaveform,
@@ -225,9 +226,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             {data.components.map((item) => (
               <SidebarMenuItem key={item.name}>
                 <SidebarMenuButton asChild>
-                  <a href={`/#${item.name}`}>
+                  <Link href={`/sink#${item.name}`}>
                     <span>{getComponentName(item.name)}</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             ))}

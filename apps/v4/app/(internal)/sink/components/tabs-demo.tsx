@@ -20,8 +20,8 @@ import {
 
 export function TabsDemo() {
   return (
-    <div className="flex flex-col gap-6">
-      <Tabs defaultValue="account" className="max-w-[400px]">
+    <div className="flex w-full max-w-sm flex-col gap-6">
+      <Tabs defaultValue="account">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="account">Account</TabsTrigger>
           <TabsTrigger value="password">Password</TabsTrigger>

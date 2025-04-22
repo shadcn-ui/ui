@@ -25,13 +25,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://v4.shadcn.com"),
   description: siteConfig.description,
-  keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
-  ],
+  keywords: ["Next.js", "React", "Tailwind CSS", "Components", "shadcn"],
   authors: [
     {
       name: "shadcn",

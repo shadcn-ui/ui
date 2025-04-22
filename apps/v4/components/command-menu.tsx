@@ -72,7 +72,7 @@ export function CommandMenu({ ...props }: DialogProps) {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Links">
             {docsConfig.mainNav
-              .filter((navitem) => !navitem.external)
+              .filter((navitem) => !("external" in navitem))
               .map((navItem) => (
                 <CommandItem
                   key={navItem.href}

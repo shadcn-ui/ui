@@ -1,12 +1,4 @@
-import { MainNavItem, SidebarNavItem } from "types/nav"
-
-export interface DocsConfig {
-  mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
-  chartsNav: SidebarNavItem[]
-}
-
-export const docsConfig: DocsConfig = {
+export const docsConfig = {
   mainNav: [
     {
       title: "Home",
@@ -533,4 +525,4 @@ export const docsConfig: DocsConfig = {
       ],
     },
   ],
-}
+} as const

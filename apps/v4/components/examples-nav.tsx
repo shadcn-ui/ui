@@ -51,9 +51,10 @@ const examples = [
   },
 ]
 
-interface ExamplesNavProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
+export function ExamplesNav({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   const pathname = usePathname()
 
   return (

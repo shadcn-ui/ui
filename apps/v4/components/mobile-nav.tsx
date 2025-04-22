@@ -76,23 +76,21 @@ export function MobileNav() {
                 {item?.items?.length &&
                   item.items.map((item) => (
                     <React.Fragment key={item.href}>
-                      {!item.disabled &&
-                        (item.href ? (
+                      {!("disabled" in item) &&
+                        ("href" in item ? (
                           <MobileLink
                             href={item.href}
                             onOpenChange={setOpen}
                             className="opacity-80"
                           >
                             {item.title}
-                            {item.label && (
+                            {"label" in item && (
                               <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
                                 {item.label}
                               </span>
                             )}
                           </MobileLink>
-                        ) : (
-                          item.title
-                        ))}
+                        ) : null)}
                     </React.Fragment>
                   ))}
               </div>
