@@ -23,8 +23,6 @@ const registry = {
         dependencies: [
           "class-variance-authority",
           "lucide-react",
-        ],
-        "devDependencies": [
           "tw-animate-css",
         ],
         registryDependencies: ["utils"],
