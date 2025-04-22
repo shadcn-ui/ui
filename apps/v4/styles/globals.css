@@ -5,6 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @import "./themes.css";
+@import "./mdx.css";
 
 :root {
   --radius: 0.625rem;
@@ -135,6 +136,16 @@
 
 @utility border-grid {
   @apply border-border/50 dark:border-border;
+}
+
+@utility section-muted {
+  .container-wrapper {
+    @apply bg-muted/30 dark:bg-background;
+  }
+}
+
+@utility theme-container {
+  @apply font-sans;
 }
 
 @utility container-wrapper {

@@ -1,10 +1,8 @@
 import { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 
 import { Announcement } from "@/components/announcement"
-import { CardsDemo } from "@/components/cards"
-import { ExamplesNav } from "@/components/examples-nav"
+import { ChartsNav } from "@/components/charts-nav"
 import {
   PageActions,
   PageHeader,
@@ -14,9 +12,9 @@ import {
 import { ThemeSelector } from "@/components/theme-selector"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
-const title = "Build your component library"
+const title = "Beautiful Charts"
 const description =
-  "A set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks. Open Source. Open Code."
+  "Built using Recharts. Copy and paste into your apps. Open Source."
 
 export const metadata: Metadata = {
   title,
@@ -42,7 +40,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function IndexPage() {
+export default function ChartsLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <>
       <PageHeader>
@@ -51,17 +53,17 @@ export default function IndexPage() {
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
-            <Link href="/docs/installation">Get Started</Link>
+            <a href="#charts">Browse Charts</a>
           </Button>
-          <Button asChild size="sm" variant="ghost">
-            <Link href="/blocks">Browse Blocks</Link>
+          <Button asChild variant="ghost" size="sm">
+            <Link href="/docs/components/chart">Documentation</Link>
           </Button>
         </PageActions>
       </PageHeader>
       <div className="border-grid border-b">
         <div className="container-wrapper">
           <div className="container flex items-center justify-between py-4">
-            <ExamplesNav className="[&>a:first-child]:text-primary" />
+            <ChartsNav />
             <ThemeSelector />
           </div>
         </div>
@@ -69,24 +71,8 @@ export default function IndexPage() {
       <div className="section-muted">
         <div className="container-wrapper">
           <div className="container py-6">
-            <section className="bg-background overflow-hidden rounded-lg border shadow-md md:hidden md:shadow-xl">
-              <Image
-                src="/examples/cards-light.png"
-                width={1280}
-                height={1214}
-                alt="Cards"
-                className="block dark:hidden"
-              />
-              <Image
-                src="/examples/cards-dark.png"
-                width={1280}
-                height={1214}
-                alt="Cards"
-                className="hidden dark:block"
-              />
-            </section>
-            <section className="theme-container hidden md:block">
-              <CardsDemo />
+            <section id="charts" className="theme-container scroll-mt-20">
+              {children}
             </section>
           </div>
         </div>

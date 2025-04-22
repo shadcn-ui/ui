@@ -10,8 +10,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/new-york-v4/ui/sonner"
 import { siteConfig } from "@/www/config/site"
 
-import "./globals.css"
-import "./themes.css"
+import "@/styles/globals.css"
 
 const META_THEME_COLORS = {
   light: "#ffffff",
