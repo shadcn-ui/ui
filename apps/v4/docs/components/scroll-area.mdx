@@ -1,0 +1,74 @@
+---
+title: Scroll-area
+description: Augments native scroll functionality for custom, cross-browser styling.
+component: true
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/scroll-area
+  api: https://www.radix-ui.com/docs/primitives/components/scroll-area#api-reference
+---
+
+<ComponentPreview
+  name="scroll-area-demo"
+  description="A scroll area component."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add scroll-area
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-scroll-area
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scroll-area" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { ScrollArea } from "@/components/ui/scroll-area"
+```
+
+```tsx
+<ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
+  Jokester began sneaking into the castle in the middle of the night and leaving
+  jokes all over the place: under the king's pillow, in his soup, even in the
+  royal toilet. The king was furious, but he couldn't seem to stop Jokester. And
+  then, one day, the people of the kingdom discovered that the jokes left by
+  Jokester were so funny that they couldn't help but laugh. And once they
+  started laughing, they couldn't stop.
+</ScrollArea>
+```
+
+## Examples
+
+### Horizontal Scrolling
+
+<ComponentPreview name="scroll-area-horizontal-demo" />

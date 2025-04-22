@@ -2662,6 +2662,2437 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "accordion-demo": {
+    name: "accordion-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [{
+      path: "registry/new-york-v4/examples/accordion-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/accordion-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "alert-demo": {
+    name: "alert-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["alert"],
+    files: [{
+      path: "registry/new-york-v4/examples/alert-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/alert-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "alert-destructive": {
+    name: "alert-destructive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["alert"],
+    files: [{
+      path: "registry/new-york-v4/examples/alert-destructive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/alert-destructive.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "alert-dialog-demo": {
+    name: "alert-dialog-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button"],
+    files: [{
+      path: "registry/new-york-v4/examples/alert-dialog-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/alert-dialog-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "aspect-ratio-demo": {
+    name: "aspect-ratio-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["aspect-ratio"],
+    files: [{
+      path: "registry/new-york-v4/examples/aspect-ratio-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/aspect-ratio-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "avatar-demo": {
+    name: "avatar-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    files: [{
+      path: "registry/new-york-v4/examples/avatar-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/avatar-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "badge-demo": {
+    name: "badge-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [{
+      path: "registry/new-york-v4/examples/badge-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/badge-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "badge-destructive": {
+    name: "badge-destructive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [{
+      path: "registry/new-york-v4/examples/badge-destructive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/badge-destructive.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "badge-outline": {
+    name: "badge-outline",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [{
+      path: "registry/new-york-v4/examples/badge-outline.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/badge-outline.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "badge-secondary": {
+    name: "badge-secondary",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["badge"],
+    files: [{
+      path: "registry/new-york-v4/examples/badge-secondary.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/badge-secondary.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "breadcrumb-demo": {
+    name: "breadcrumb-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb"],
+    files: [{
+      path: "registry/new-york-v4/examples/breadcrumb-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/breadcrumb-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "breadcrumb-separator": {
+    name: "breadcrumb-separator",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb"],
+    files: [{
+      path: "registry/new-york-v4/examples/breadcrumb-separator.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/breadcrumb-separator.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "breadcrumb-dropdown": {
+    name: "breadcrumb-dropdown",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb"],
+    files: [{
+      path: "registry/new-york-v4/examples/breadcrumb-dropdown.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/breadcrumb-dropdown.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "breadcrumb-ellipsis": {
+    name: "breadcrumb-ellipsis",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb"],
+    files: [{
+      path: "registry/new-york-v4/examples/breadcrumb-ellipsis.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/breadcrumb-ellipsis.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "breadcrumb-link": {
+    name: "breadcrumb-link",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb"],
+    files: [{
+      path: "registry/new-york-v4/examples/breadcrumb-link.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/breadcrumb-link.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "breadcrumb-responsive": {
+    name: "breadcrumb-responsive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["breadcrumb"],
+    files: [{
+      path: "registry/new-york-v4/examples/breadcrumb-responsive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/breadcrumb-responsive.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "button-demo": {
+    name: "button-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [{
+      path: "registry/new-york-v4/examples/button-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/button-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "button-secondary": {
+    name: "button-secondary",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [{
+      path: "registry/new-york-v4/examples/button-secondary.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/button-secondary.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "button-destructive": {
+    name: "button-destructive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [{
+      path: "registry/new-york-v4/examples/button-destructive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/button-destructive.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "button-outline": {
+    name: "button-outline",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [{
+      path: "registry/new-york-v4/examples/button-outline.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/button-outline.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "button-ghost": {
+    name: "button-ghost",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [{
+      path: "registry/new-york-v4/examples/button-ghost.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/button-ghost.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "button-link": {
+    name: "button-link",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [{
+      path: "registry/new-york-v4/examples/button-link.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/button-link.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "button-with-icon": {
+    name: "button-with-icon",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [{
+      path: "registry/new-york-v4/examples/button-with-icon.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/button-with-icon.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "button-loading": {
+    name: "button-loading",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [{
+      path: "registry/new-york-v4/examples/button-loading.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/button-loading.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "button-icon": {
+    name: "button-icon",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [{
+      path: "registry/new-york-v4/examples/button-icon.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/button-icon.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "button-as-child": {
+    name: "button-as-child",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [{
+      path: "registry/new-york-v4/examples/button-as-child.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/button-as-child.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "calendar-demo": {
+    name: "calendar-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/examples/calendar-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/calendar-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "calendar-form": {
+    name: "calendar-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["calendar","form","popover"],
+    files: [{
+      path: "registry/new-york-v4/examples/calendar-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/calendar-form.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "card-demo": {
+    name: "card-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["card","button","switch"],
+    files: [{
+      path: "registry/new-york-v4/examples/card-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/card-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "card-with-form": {
+    name: "card-with-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","card","input","label","select"],
+    files: [{
+      path: "registry/new-york-v4/examples/card-with-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/card-with-form.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "carousel-demo": {
+    name: "carousel-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["carousel"],
+    files: [{
+      path: "registry/new-york-v4/examples/carousel-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/carousel-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "carousel-size": {
+    name: "carousel-size",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["carousel"],
+    files: [{
+      path: "registry/new-york-v4/examples/carousel-size.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/carousel-size.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "carousel-spacing": {
+    name: "carousel-spacing",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["carousel"],
+    files: [{
+      path: "registry/new-york-v4/examples/carousel-spacing.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/carousel-spacing.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "carousel-orientation": {
+    name: "carousel-orientation",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["carousel"],
+    files: [{
+      path: "registry/new-york-v4/examples/carousel-orientation.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/carousel-orientation.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "carousel-api": {
+    name: "carousel-api",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["carousel"],
+    files: [{
+      path: "registry/new-york-v4/examples/carousel-api.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/carousel-api.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "carousel-plugin": {
+    name: "carousel-plugin",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["carousel"],
+    files: [{
+      path: "registry/new-york-v4/examples/carousel-plugin.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/carousel-plugin.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "checkbox-demo": {
+    name: "checkbox-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [{
+      path: "registry/new-york-v4/examples/checkbox-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/checkbox-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "checkbox-disabled": {
+    name: "checkbox-disabled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [{
+      path: "registry/new-york-v4/examples/checkbox-disabled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/checkbox-disabled.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "checkbox-form-multiple": {
+    name: "checkbox-form-multiple",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["checkbox","form"],
+    files: [{
+      path: "registry/new-york-v4/examples/checkbox-form-multiple.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/checkbox-form-multiple.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "checkbox-form-single": {
+    name: "checkbox-form-single",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["checkbox","form"],
+    files: [{
+      path: "registry/new-york-v4/examples/checkbox-form-single.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/checkbox-form-single.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "checkbox-with-text": {
+    name: "checkbox-with-text",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [{
+      path: "registry/new-york-v4/examples/checkbox-with-text.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/checkbox-with-text.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "collapsible-demo": {
+    name: "collapsible-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["collapsible"],
+    files: [{
+      path: "registry/new-york-v4/examples/collapsible-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/collapsible-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "combobox-demo": {
+    name: "combobox-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["command"],
+    files: [{
+      path: "registry/new-york-v4/examples/combobox-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/combobox-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "combobox-dropdown-menu": {
+    name: "combobox-dropdown-menu",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["command","dropdown-menu","button"],
+    files: [{
+      path: "registry/new-york-v4/examples/combobox-dropdown-menu.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/combobox-dropdown-menu.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "combobox-form": {
+    name: "combobox-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["command","form"],
+    files: [{
+      path: "registry/new-york-v4/examples/combobox-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/combobox-form.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "combobox-popover": {
+    name: "combobox-popover",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["combobox","popover"],
+    files: [{
+      path: "registry/new-york-v4/examples/combobox-popover.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/combobox-popover.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "combobox-responsive": {
+    name: "combobox-responsive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["combobox","popover","drawer"],
+    files: [{
+      path: "registry/new-york-v4/examples/combobox-responsive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/combobox-responsive.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "command-demo": {
+    name: "command-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["command"],
+    files: [{
+      path: "registry/new-york-v4/examples/command-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/command-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "command-dialog": {
+    name: "command-dialog",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["command","dialog"],
+    files: [{
+      path: "registry/new-york-v4/examples/command-dialog.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/command-dialog.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "context-menu-demo": {
+    name: "context-menu-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["context-menu"],
+    files: [{
+      path: "registry/new-york-v4/examples/context-menu-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/context-menu-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "data-table-demo": {
+    name: "data-table-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["data-table"],
+    files: [{
+      path: "registry/new-york-v4/examples/data-table-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/data-table-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "date-picker-demo": {
+    name: "date-picker-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","calendar","popover"],
+    files: [{
+      path: "registry/new-york-v4/examples/date-picker-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/date-picker-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "date-picker-form": {
+    name: "date-picker-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","calendar","form","popover"],
+    files: [{
+      path: "registry/new-york-v4/examples/date-picker-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/date-picker-form.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "date-picker-with-presets": {
+    name: "date-picker-with-presets",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","calendar","popover","select"],
+    files: [{
+      path: "registry/new-york-v4/examples/date-picker-with-presets.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/date-picker-with-presets.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "date-picker-with-range": {
+    name: "date-picker-with-range",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["button","calendar","popover"],
+    files: [{
+      path: "registry/new-york-v4/examples/date-picker-with-range.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/date-picker-with-range.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dialog-demo": {
+    name: "dialog-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dialog"],
+    files: [{
+      path: "registry/new-york-v4/examples/dialog-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/dialog-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dialog-close-button": {
+    name: "dialog-close-button",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dialog","button"],
+    files: [{
+      path: "registry/new-york-v4/examples/dialog-close-button.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/dialog-close-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "drawer-demo": {
+    name: "drawer-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["drawer"],
+    files: [{
+      path: "registry/new-york-v4/examples/drawer-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/drawer-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "drawer-dialog": {
+    name: "drawer-dialog",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["drawer","dialog"],
+    files: [{
+      path: "registry/new-york-v4/examples/drawer-dialog.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/drawer-dialog.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dropdown-menu-demo": {
+    name: "dropdown-menu-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dropdown-menu"],
+    files: [{
+      path: "registry/new-york-v4/examples/dropdown-menu-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dropdown-menu-checkboxes": {
+    name: "dropdown-menu-checkboxes",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dropdown-menu","checkbox"],
+    files: [{
+      path: "registry/new-york-v4/examples/dropdown-menu-checkboxes.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-checkboxes.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dropdown-menu-radio-group": {
+    name: "dropdown-menu-radio-group",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dropdown-menu","radio-group"],
+    files: [{
+      path: "registry/new-york-v4/examples/dropdown-menu-radio-group.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-radio-group.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "hover-card-demo": {
+    name: "hover-card-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["hover-card"],
+    files: [{
+      path: "registry/new-york-v4/examples/hover-card-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/hover-card-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-demo": {
+    name: "input-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-disabled": {
+    name: "input-disabled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-disabled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-disabled.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-file": {
+    name: "input-file",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-file.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-file.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-form": {
+    name: "input-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input","button","form"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-form.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-with-button": {
+    name: "input-with-button",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input","button"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-with-button.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-with-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-with-label": {
+    name: "input-with-label",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input","button","label"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-with-label.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-with-label.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-with-text": {
+    name: "input-with-text",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input","button","label"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-with-text.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-with-text.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-otp-demo": {
+    name: "input-otp-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input-otp"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-otp-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-otp-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-otp-pattern": {
+    name: "input-otp-pattern",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input-otp"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-otp-pattern.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-otp-pattern.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-otp-separator": {
+    name: "input-otp-separator",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input-otp"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-otp-separator.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-otp-separator.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-otp-controlled": {
+    name: "input-otp-controlled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input-otp"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-otp-controlled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-otp-controlled.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "input-otp-form": {
+    name: "input-otp-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input-otp","form"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-otp-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-otp-form.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "label-demo": {
+    name: "label-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["label"],
+    files: [{
+      path: "registry/new-york-v4/examples/label-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/label-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "menubar-demo": {
+    name: "menubar-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["menubar"],
+    files: [{
+      path: "registry/new-york-v4/examples/menubar-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/menubar-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "navigation-menu-demo": {
+    name: "navigation-menu-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["navigation-menu"],
+    files: [{
+      path: "registry/new-york-v4/examples/navigation-menu-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/navigation-menu-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "pagination-demo": {
+    name: "pagination-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["pagination"],
+    files: [{
+      path: "registry/new-york-v4/examples/pagination-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/pagination-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "popover-demo": {
+    name: "popover-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["popover"],
+    files: [{
+      path: "registry/new-york-v4/examples/popover-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/popover-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "progress-demo": {
+    name: "progress-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [{
+      path: "registry/new-york-v4/examples/progress-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/progress-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "radio-group-demo": {
+    name: "radio-group-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["radio-group"],
+    files: [{
+      path: "registry/new-york-v4/examples/radio-group-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/radio-group-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "radio-group-form": {
+    name: "radio-group-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["radio-group","form"],
+    files: [{
+      path: "registry/new-york-v4/examples/radio-group-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/radio-group-form.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "resizable-demo": {
+    name: "resizable-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["resizable"],
+    files: [{
+      path: "registry/new-york-v4/examples/resizable-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/resizable-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "resizable-demo-with-handle": {
+    name: "resizable-demo-with-handle",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["resizable"],
+    files: [{
+      path: "registry/new-york-v4/examples/resizable-demo-with-handle.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/resizable-demo-with-handle.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "resizable-vertical": {
+    name: "resizable-vertical",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["resizable"],
+    files: [{
+      path: "registry/new-york-v4/examples/resizable-vertical.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/resizable-vertical.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "resizable-handle": {
+    name: "resizable-handle",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["resizable"],
+    files: [{
+      path: "registry/new-york-v4/examples/resizable-handle.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/resizable-handle.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "scroll-area-demo": {
+    name: "scroll-area-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["scroll-area"],
+    files: [{
+      path: "registry/new-york-v4/examples/scroll-area-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/scroll-area-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "scroll-area-horizontal-demo": {
+    name: "scroll-area-horizontal-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["scroll-area"],
+    files: [{
+      path: "registry/new-york-v4/examples/scroll-area-horizontal-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/scroll-area-horizontal-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "select-demo": {
+    name: "select-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    files: [{
+      path: "registry/new-york-v4/examples/select-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/select-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "select-scrollable": {
+    name: "select-scrollable",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    files: [{
+      path: "registry/new-york-v4/examples/select-scrollable.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/select-scrollable.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "select-form": {
+    name: "select-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    files: [{
+      path: "registry/new-york-v4/examples/select-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/select-form.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "separator-demo": {
+    name: "separator-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["separator"],
+    files: [{
+      path: "registry/new-york-v4/examples/separator-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/separator-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "sheet-demo": {
+    name: "sheet-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["sheet"],
+    files: [{
+      path: "registry/new-york-v4/examples/sheet-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/sheet-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "sheet-side": {
+    name: "sheet-side",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["sheet"],
+    files: [{
+      path: "registry/new-york-v4/examples/sheet-side.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/sheet-side.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "skeleton-demo": {
+    name: "skeleton-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["skeleton"],
+    files: [{
+      path: "registry/new-york-v4/examples/skeleton-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/skeleton-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "skeleton-card": {
+    name: "skeleton-card",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["skeleton"],
+    files: [{
+      path: "registry/new-york-v4/examples/skeleton-card.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/skeleton-card.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "slider-demo": {
+    name: "slider-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["slider"],
+    files: [{
+      path: "registry/new-york-v4/examples/slider-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/slider-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "sonner-demo": {
+    name: "sonner-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["sonner"],
+    files: [{
+      path: "registry/new-york-v4/examples/sonner-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/sonner-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "switch-demo": {
+    name: "switch-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["switch"],
+    files: [{
+      path: "registry/new-york-v4/examples/switch-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/switch-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "switch-form": {
+    name: "switch-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["switch","form"],
+    files: [{
+      path: "registry/new-york-v4/examples/switch-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/switch-form.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "table-demo": {
+    name: "table-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["table"],
+    files: [{
+      path: "registry/new-york-v4/examples/table-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/table-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "tabs-demo": {
+    name: "tabs-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    files: [{
+      path: "registry/new-york-v4/examples/tabs-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/tabs-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "textarea-demo": {
+    name: "textarea-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["textarea"],
+    files: [{
+      path: "registry/new-york-v4/examples/textarea-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/textarea-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "textarea-disabled": {
+    name: "textarea-disabled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["textarea"],
+    files: [{
+      path: "registry/new-york-v4/examples/textarea-disabled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/textarea-disabled.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "textarea-form": {
+    name: "textarea-form",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["textarea","form"],
+    files: [{
+      path: "registry/new-york-v4/examples/textarea-form.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/textarea-form.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "textarea-with-button": {
+    name: "textarea-with-button",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["textarea","button"],
+    files: [{
+      path: "registry/new-york-v4/examples/textarea-with-button.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/textarea-with-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "textarea-with-label": {
+    name: "textarea-with-label",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["textarea","label"],
+    files: [{
+      path: "registry/new-york-v4/examples/textarea-with-label.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/textarea-with-label.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "textarea-with-text": {
+    name: "textarea-with-text",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["textarea","label"],
+    files: [{
+      path: "registry/new-york-v4/examples/textarea-with-text.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/textarea-with-text.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-group-demo": {
+    name: "toggle-group-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-group-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-group-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-group-disabled": {
+    name: "toggle-group-disabled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-group-disabled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-group-disabled.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-group-lg": {
+    name: "toggle-group-lg",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-group-lg.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-group-lg.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-group-outline": {
+    name: "toggle-group-outline",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-group-outline.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-group-outline.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-group-sm": {
+    name: "toggle-group-sm",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-group-sm.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-group-sm.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-group-single": {
+    name: "toggle-group-single",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-group-single.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-group-single.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-demo": {
+    name: "toggle-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-disabled": {
+    name: "toggle-disabled",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-disabled.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-disabled.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-lg": {
+    name: "toggle-lg",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-lg.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-lg.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-outline": {
+    name: "toggle-outline",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-outline.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-outline.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-sm": {
+    name: "toggle-sm",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-sm.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-sm.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "toggle-with-text": {
+    name: "toggle-with-text",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["toggle"],
+    files: [{
+      path: "registry/new-york-v4/examples/toggle-with-text.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/toggle-with-text.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "tooltip-demo": {
+    name: "tooltip-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [{
+      path: "registry/new-york-v4/examples/tooltip-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/tooltip-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-blockquote": {
+    name: "typography-blockquote",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-blockquote.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-blockquote.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-demo": {
+    name: "typography-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-h1": {
+    name: "typography-h1",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-h1.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-h1.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-h2": {
+    name: "typography-h2",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-h2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-h2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-h3": {
+    name: "typography-h3",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-h3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-h3.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-h4": {
+    name: "typography-h4",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-h4.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-h4.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-inline-code": {
+    name: "typography-inline-code",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-inline-code.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-inline-code.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-large": {
+    name: "typography-large",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-large.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-large.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-lead": {
+    name: "typography-lead",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-lead.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-lead.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-list": {
+    name: "typography-list",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-list.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-list.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-muted": {
+    name: "typography-muted",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-muted.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-muted.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-p": {
+    name: "typography-p",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-p.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-p.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-small": {
+    name: "typography-small",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-small.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-small.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typography-table": {
+    name: "typography-table",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/typography-table.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/typography-table.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "mode-toggle": {
+    name: "mode-toggle",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/mode-toggle.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/mode-toggle.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "chart-bar-demo": {
+    name: "chart-bar-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/chart-bar-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "chart-bar-demo-grid": {
+    name: "chart-bar-demo-grid",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/chart-bar-demo-grid.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-grid.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "chart-bar-demo-axis": {
+    name: "chart-bar-demo-axis",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/chart-bar-demo-axis.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-axis.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "chart-bar-demo-tooltip": {
+    name: "chart-bar-demo-tooltip",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/chart-bar-demo-tooltip.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-tooltip.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "chart-bar-demo-legend": {
+    name: "chart-bar-demo-legend",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/chart-bar-demo-legend.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/chart-bar-demo-legend.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "chart-tooltip-demo": {
+    name: "chart-tooltip-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/examples/chart-tooltip-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/chart-tooltip-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",

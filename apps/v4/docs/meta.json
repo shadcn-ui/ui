@@ -1,0 +1,4 @@
+{
+  "root": true,
+  "pages": ["(root)", "changelog", "installation", "components", "registry"]
+}

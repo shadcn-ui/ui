@@ -1,0 +1,93 @@
+---
+title: Date Picker
+description: A date picker component with range and presets.
+component: true
+---
+
+<ComponentPreview
+  name="date-picker-demo"
+  description="A date picker in a popover"
+/>
+
+## Installation
+
+The Date Picker is built using a composition of the `<Popover />` and the `<Calendar />` components.
+
+See installation instructions for the [Popover](/docs/components/popover#installation) and the [Calendar](/docs/components/calendar#installation) components.
+
+## Usage
+
+```tsx
+"use client"
+
+import * as React from "react"
+import { format } from "date-fns"
+import { Calendar as CalendarIcon } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+
+export function DatePickerDemo() {
+  const [date, setDate] = React.useState<Date>()
+
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          variant={"outline"}
+          className={cn(
+            "w-[280px] justify-start text-left font-normal",
+            !date && "text-muted-foreground"
+          )}
+        >
+          <CalendarIcon className="mr-2 h-4 w-4" />
+          {date ? format(date, "PPP") : <span>Pick a date</span>}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          initialFocus
+        />
+      </PopoverContent>
+    </Popover>
+  )
+}
+```
+
+See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
+
+## Examples
+
+### Date Picker
+
+<ComponentPreview
+  name="date-picker-demo"
+  description="A date picker in a popover"
+/>
+
+### Date Range Picker
+
+<ComponentPreview
+  name="date-picker-with-range"
+  description="A date range picker"
+/>
+
+### With Presets
+
+<ComponentPreview
+  name="date-picker-with-presets"
+  description="A date picker with presets"
+/>
+
+### Form
+
+<ComponentPreview name="date-picker-form" />

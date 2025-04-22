@@ -7,10 +7,18 @@ import { z } from "zod"
 
 import { blocks } from "@/www/registry/registry-blocks"
 import { charts } from "@/www/registry/registry-charts"
+import { examples } from "@/www/registry/registry-examples"
 import { lib } from "@/www/registry/registry-lib"
 import { ui } from "@/www/registry/registry-ui"
 
-const DEPRECATED_ITEMS = ["toast"]
+const DEPRECATED_ITEMS = [
+  "toast",
+  "toast-demo",
+  "toast-destructive",
+  "toast-simple",
+  "toast-with-action",
+  "toast-with-title",
+]
 
 const registry = {
   name: "shadcn/ui",
@@ -33,6 +41,7 @@ const registry = {
       ...blocks,
       ...charts,
       ...lib,
+      ...examples,
       {
         name: "use-mobile",
         type: "registry:hook",

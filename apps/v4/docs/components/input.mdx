@@ -1,0 +1,99 @@
+---
+title: Input
+description: Displays a form input field or a component that looks like an input field.
+component: true
+---
+
+<ComponentPreview
+  name="input-demo"
+  className="[&_input]:max-w-xs"
+  description="A form input component."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add input
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Input } from "@/components/ui/input"
+```
+
+```tsx
+<Input />
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview
+  name="input-demo"
+  className="[&_input]:max-w-xs"
+  description="A form input component."
+/>
+
+### File
+
+<ComponentPreview
+  name="input-file"
+  className="[&_input]:max-w-xs"
+  description="A file input component."
+/>
+
+### Disabled
+
+<ComponentPreview
+  name="input-disabled"
+  className="[&_input]:max-w-xs"
+  description="A disabled input component."
+/>
+
+### With Label
+
+<ComponentPreview
+  name="input-with-label"
+  className="[&_input]:max-w-xs"
+  description="An input component with a label."
+/>
+
+### With Button
+
+<ComponentPreview
+  name="input-with-button"
+  className="[&_input]:max-w-xs"
+  description="An input component with a button."
+/>
+
+### Form
+
+<ComponentPreview name="input-form" />
