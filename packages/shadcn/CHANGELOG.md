@@ -1,5 +1,17 @@
 # @shadcn/ui
 
+## 2.5.0
+
+### Minor Changes
+
+- [#7220](https://github.com/shadcn-ui/ui/pull/7220) [`d0306774fe0ecc1eae9ef1e918bf7862e866a9e8`](https://github.com/shadcn-ui/ui/commit/d0306774fe0ecc1eae9ef1e918bf7862e866a9e8) Thanks [@shadcn](https://github.com/shadcn)! - resolve imports from anywhere
+
+### Patch Changes
+
+- [#6985](https://github.com/shadcn-ui/ui/pull/6985) [`f1e5cc4666ced2166a859660d769ccee16cde46e`](https://github.com/shadcn-ui/ui/commit/f1e5cc4666ced2166a859660d769ccee16cde46e) Thanks [@nrjdalal](https://github.com/nrjdalal)! - move tw-animate-css to devDependencies
+
+- [#6899](https://github.com/shadcn-ui/ui/pull/6899) [`6f702f5fbf2b82a388e7da6ea08bcc84c2ec19c6`](https://github.com/shadcn-ui/ui/commit/6f702f5fbf2b82a388e7da6ea08bcc84c2ec19c6) Thanks [@justjavac](https://github.com/justjavac)! - add deno support
+
 ## 2.4.1
 
 ### Patch Changes
