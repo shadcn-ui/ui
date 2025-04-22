@@ -252,6 +252,9 @@ importers:
       input-otp:
         specifier: ^1.4.2
         version: 1.4.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      jotai:
+        specifier: ^2.1.0
+        version: 2.11.3(@types/react@19.1.2)(react@19.1.0)
       lucide-react:
         specifier: 0.474.0
         version: 0.474.0(react@19.1.0)
@@ -15240,6 +15243,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.18
       react: 18.3.1
+
+  jotai@2.11.3(@types/react@19.1.2)(react@19.1.0):
+    optionalDependencies:
+      '@types/react': 19.1.2
+      react: 19.1.0
 
   joycon@3.1.1: {}
 

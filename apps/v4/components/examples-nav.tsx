@@ -58,9 +58,9 @@ export function ExamplesNav({
   const pathname = usePathname()
 
   return (
-    <div className="relative">
+    <div className={cn("flex items-center", className)} {...props}>
       <ScrollArea className="max-w-[600px] lg:max-w-none">
-        <div className={cn("flex items-center", className)} {...props}>
+        <div className="flex items-center">
           <ExampleLink
             example={{ name: "Examples", href: "/", code: "", hidden: false }}
             isActive={pathname === "/"}

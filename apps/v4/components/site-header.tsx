@@ -27,7 +27,10 @@ export function SiteHeader() {
               <span className="sr-only">{siteConfig.name}</span>
             </Link>
           </Button>
-          <Separator orientation="vertical" className="ml-0.5" />
+          <Separator
+            orientation="vertical"
+            className="ml-0.5 hidden md:block"
+          />
           <MainNav />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">

@@ -11,6 +11,9 @@ import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Drawer,
   DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
   DrawerTrigger,
 } from "@/registry/new-york-v4/ui/drawer"
 
@@ -54,6 +57,10 @@ export function MobileNav() {
         </Button>
       </DrawerTrigger>
       <DrawerContent className="max-h-[80svh] p-0">
+        <DrawerHeader className="sr-only">
+          <DrawerTitle>Menu</DrawerTitle>
+          <DrawerDescription>Choose a section to get started</DrawerDescription>
+        </DrawerHeader>
         <div className="overflow-auto p-6">
           <div className="flex flex-col space-y-3">
             {docsConfig.mainNav?.map(

@@ -1,5 +1,6 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import {
@@ -54,11 +55,11 @@ const DEFAULT_THEMES = [
   },
 ]
 
-export function ThemeSelector() {
+export function ThemeSelector({ className }: React.ComponentProps<"div">) {
   const { activeTheme, setActiveTheme } = useThemeConfig()
 
   return (
-    <div className="flex items-center gap-2">
+    <div className={cn("flex items-center gap-2", className)}>
       <Label htmlFor="theme-selector" className="sr-only">
         Theme
       </Label>

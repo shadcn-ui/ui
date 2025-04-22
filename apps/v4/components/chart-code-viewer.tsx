@@ -9,19 +9,20 @@ import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Drawer,
   DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
   DrawerTrigger,
 } from "@/registry/new-york-v4/ui/drawer"
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from "@/registry/new-york-v4/ui/sheet"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/new-york-v4/ui/tabs"
+import { Tabs, TabsContent } from "@/registry/new-york-v4/ui/tabs"
 
 export function ChartCodeViewer({
   chart,
@@ -46,7 +47,7 @@ export function ChartCodeViewer({
 
   const content = (
     <>
-      <div className="chart-wrapper hidden sm:block [&_[data-chart]]:mx-auto [&_[data-chart]]:max-h-[35vh] [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
+      <div className="chart-wrapper theme-container hidden sm:block [&_[data-chart]]:mx-auto [&_[data-chart]]:max-h-[35vh] [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
         {children}
       </div>
       <Tabs
@@ -56,20 +57,6 @@ export function ChartCodeViewer({
         onValueChange={setTab}
       >
         <div className="flex w-full items-center">
-          <TabsList className="h-7 w-auto rounded-md p-0 px-[calc(theme(spacing.1)_-_2px)] py-[theme(spacing.1)]">
-            <TabsTrigger
-              value="code"
-              className="h-[1.45rem] rounded-sm px-2 text-xs"
-            >
-              Code
-            </TabsTrigger>
-            <TabsTrigger
-              value="theme"
-              className="h-[1.45rem] rounded-sm px-2 text-xs"
-            >
-              Theme
-            </TabsTrigger>
-          </TabsList>
           {tab === "code" && (
             <div className="ml-auto flex items-center justify-center gap-2">
               <ChartCopyButton
@@ -113,6 +100,10 @@ export function ChartCodeViewer({
             className
           )}
         >
+          <DrawerHeader className="sr-only">
+            <DrawerTitle>Code</DrawerTitle>
+            <DrawerDescription>View the code for the chart.</DrawerDescription>
+          </DrawerHeader>
           <div className="flex h-full flex-col overflow-auto">{content}</div>
         </DrawerContent>
       </Drawer>
@@ -129,6 +120,10 @@ export function ChartCodeViewer({
           className
         )}
       >
+        <SheetHeader className="sr-only">
+          <SheetTitle>Code</SheetTitle>
+          <SheetDescription>View the code for the chart.</SheetDescription>
+        </SheetHeader>
         {content}
       </SheetContent>
     </Sheet>

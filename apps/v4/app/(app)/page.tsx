@@ -60,9 +60,9 @@ export default function IndexPage() {
       </PageHeader>
       <div className="border-grid border-b">
         <div className="container-wrapper">
-          <div className="container flex items-center justify-between py-4">
-            <ExamplesNav className="[&>a:first-child]:text-primary" />
-            <ThemeSelector />
+          <div className="container flex items-center justify-between gap-4 py-4">
+            <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
+            <ThemeSelector className="hidden md:block" />
           </div>
         </div>
       </div>
