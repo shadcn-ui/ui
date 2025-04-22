@@ -4,7 +4,7 @@ import { CardsChat } from "@/components/cards/chat"
 import { CardsCookieSettings } from "@/components/cards/cookie-settings"
 import { CardsCreateAccount } from "@/components/cards/create-account"
 import { CardsExerciseMinutes } from "@/components/cards/exercise-minutes"
-import { CardsPaymentMethod } from "@/components/cards/payment-method"
+import { CardsForms } from "@/components/cards/forms"
 import { CardsPayments } from "@/components/cards/payments"
 import { CardsReportIssue } from "@/components/cards/report-issue"
 import { CardsShare } from "@/components/cards/share"
@@ -27,13 +27,13 @@ export function CardsDemo() {
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
           <div className="flex flex-col gap-4">
-            <CardsPaymentMethod />
+            <CardsForms />
             <CardsTeamMembers />
             <CardsCookieSettings />
           </div>
           <div className="flex flex-col gap-4">
-            <CardsChat />
             <CardsCreateAccount />
+            <CardsChat />
             <div className="hidden xl:block">
               <CardsReportIssue />
             </div>

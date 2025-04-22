@@ -40,15 +40,6 @@ export function CardsCookieSettings() {
           </Label>
           <Switch id="functional" aria-label="Functional" />
         </div>
-        <div className="flex items-center justify-between gap-4">
-          <Label htmlFor="performance" className="flex flex-col items-start">
-            <span>Performance Cookies</span>
-            <span className="text-muted-foreground leading-snug font-normal">
-              These cookies help to improve the performance of the website.
-            </span>
-          </Label>
-          <Switch id="performance" aria-label="Performance" />
-        </div>
       </CardContent>
       <CardFooter>
         <Button variant="outline" className="w-full">

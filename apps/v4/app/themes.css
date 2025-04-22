@@ -95,7 +95,15 @@
 .theme-scaled .theme-container {
   @media (min-width: 1024px) {
     --radius: 0.45em;
-    --text-lg: 1.05rem;
+    --text-lg: 1rem;
+    --text-xl: 1.1rem;
+    --text-2xl: 1.2rem;
+    --text-3xl: 1.3rem;
+    --text-4xl: 1.4rem;
+    --text-5xl: 1.5rem;
+    --text-6xl: 1.6rem;
+    --text-7xl: 1.7rem;
+    --text-8xl: 1.8rem;
     --text-base: 0.85rem;
     --text-sm: 0.8rem;
     --spacing: 0.222222rem;
@@ -116,6 +124,22 @@
   --primary: var(--color-neutral-600);
   --primary-foreground: var(--color-neutral-50);
 
+  @media (min-width: 1024px) {
+    --radius: 0.45em;
+    --text-lg: 1rem;
+    --text-xl: 1.1rem;
+    --text-2xl: 1.2rem;
+    --text-3xl: 1.3rem;
+    --text-4xl: 1.4rem;
+    --text-5xl: 1.5rem;
+    --text-6xl: 1.6rem;
+    --text-7xl: 1.7rem;
+    --text-8xl: 1.8rem;
+    --text-base: 0.85rem;
+    --text-sm: 0.8rem;
+    --spacing: 0.222222rem;
+  }
+
   @variant dark {
     --primary: var(--color-neutral-500);
     --primary-foreground: var(--color-neutral-50);
@@ -126,7 +150,6 @@
   .rounded-md,
   .rounded-lg,
   .rounded-xl {
-    @apply !rounded-none;
     border-radius: 0;
   }
 
@@ -135,7 +158,7 @@
   .shadow-md,
   .shadow-lg,
   .shadow-xl {
-    @apply !shadow-none;
+    box-shadow: none;
   }
 
   [data-slot="toggle-group"],

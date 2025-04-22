@@ -1,8 +1,5 @@
 "use client"
 
-import * as React from "react"
-import { useTheme } from "next-themes"
-
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Card,
@@ -19,13 +16,6 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from "@/registry/new-york-v4/ui/radio-group"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/new-york-v4/ui/select"
 import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 
 const plans = [
@@ -43,72 +33,11 @@ const plans = [
   },
 ] as const
 
-const themes = {
-  neutral: {
-    light: {
-      "--primary": "oklch(0.205 0 0)",
-      "--primary-foreground": "oklch(0.985 0 0)",
-      "--ring": "oklch(0.708 0 0)",
-    },
-    dark: {
-      "--primary": "oklch(0.922 0 0)",
-      "--primary-foreground": "oklch(0.205 0 0)",
-      "--ring": "oklch(0.556 0 0)",
-    },
-  },
-  blue: {
-    light: {
-      "--primary": "oklch(0.546 0.245 262.881)",
-      "--primary-foreground": "oklch(0.985 0.001 106.423)",
-      "--ring": "oklch(0.546 0.245 262.881)",
-    },
-    dark: {
-      "--primary": "oklch(0.623 0.214 259.815)",
-      "--primary-foreground": "oklch(0.985 0.001 106.423)",
-      "--ring": "oklch(0.623 0.214 259.815)",
-    },
-  },
-  amber: {
-    light: {
-      "--primary": "oklch(0.769 0.188 70.08)",
-      "--primary-foreground": "oklch(0.985 0.001 106.423)",
-      "--ring": "oklch(0.82 0.13 92.25)",
-    },
-    dark: {
-      "--primary": "oklch(0.769 0.188 70.08)",
-      "--primary-foreground": "oklch(0.216 0.006 56.043)",
-      "--ring": "oklch(0.666 0.179 58.318)",
-    },
-  },
-  teal: {
-    light: {
-      "--primary": "oklch(0.627 0.194 149.214)",
-      "--primary-foreground": "oklch(0.985 0.001 106.423)",
-      "--ring": "oklch(0.79 0.19 153.13)",
-    },
-    dark: {
-      "--primary": "oklch(0.704 0.14 182.503)",
-      "--primary-foreground": "oklch(0.216 0.006 56.043)",
-      "--ring": "oklch(0.704 0.14 182.503)",
-    },
-  },
-} as const
-
-export function FormsDemo() {
-  const { theme: mode = "light" } = useTheme()
-  const [theme, setTheme] = React.useState<keyof typeof themes | undefined>(
-    undefined
-  )
-
-  const themeStyles = React.useMemo(() => {
-    if (!theme) return undefined
-    return themes[theme][mode as keyof (typeof themes)[typeof theme]]
-  }, [theme, mode])
-
+export function CardsForms() {
   return (
     <div>
       <div className="flex max-w-md flex-col gap-4">
-        <Card style={themeStyles as React.CSSProperties}>
+        <Card>
           <CardHeader>
             <CardTitle className="text-lg">Upgrade your subscription</CardTitle>
             <CardDescription className="text-balance">
@@ -139,38 +68,6 @@ export function FormsDemo() {
                   <Input id="card-number-expiry" placeholder="MM/YY" />
                   <Input id="card-number-cvc" placeholder="CVC" />
                 </div>
-              </div>
-              <div className="flex flex-col gap-2">
-                <Label htmlFor="color">Color</Label>
-                <Select
-                  onValueChange={(value) =>
-                    setTheme(value as keyof typeof themes)
-                  }
-                >
-                  <SelectTrigger id="color" className="w-full capitalize">
-                    <SelectValue placeholder="Select a color" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {Object.keys(themes).map((theme) => (
-                      <SelectItem
-                        key={theme}
-                        value={theme}
-                        className="capitalize"
-                      >
-                        <div
-                          className="size-3.5 rounded-full border"
-                          style={{
-                            backgroundColor:
-                              themes[theme as keyof typeof themes][
-                                mode as keyof (typeof themes)[keyof typeof themes]
-                              ]?.["--primary"],
-                          }}
-                        />
-                        {theme}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
               </div>
               <fieldset className="flex flex-col gap-3">
                 <legend className="text-sm font-medium">Plan</legend>

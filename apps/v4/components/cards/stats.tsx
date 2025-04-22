@@ -95,7 +95,7 @@ export function CardsStats() {
       <Card className="pb-0 lg:hidden xl:flex">
         <CardHeader>
           <CardDescription>Subscriptions</CardDescription>
-          <CardTitle className="text-3xl">+2350</CardTitle>
+          <CardTitle className="text-3xl">+2,350</CardTitle>
           <CardDescription>+180.1% from last month</CardDescription>
           <CardAction>
             <Button variant="ghost" size="sm">
@@ -103,7 +103,7 @@ export function CardsStats() {
             </Button>
           </CardAction>
         </CardHeader>
-        <CardContent className="max-h-[124px] flex-1 p-0">
+        <CardContent className="mt-auto max-h-[124px] flex-1 p-0">
           <ChartContainer config={chartConfig} className="size-full">
             <AreaChart
               data={data}
