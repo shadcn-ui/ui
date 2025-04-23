@@ -9,7 +9,7 @@
 
 @theme inline {
   --font-sans: var(--font-geist);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-ibm-mono);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -177,56 +177,17 @@
 }
 
 @layer components {
-  .shiki {
-    position: relative;
-  }
+  .steps {
+    &:first-child > h3:first-child {
+      @apply !mt-0;
+    }
 
-  .shiki code {
-    display: grid;
-    min-width: 100%;
-    white-space: pre;
-    border: 0;
-    background: transparent;
-    padding: 0;
-    counter-reset: line;
-    box-decoration-break: clone;
-  }
+    > h3 {
+      @apply mt-6 text-base font-semibold;
+    }
 
-  .shiki .line {
-    padding-left: calc(var(--spacing) * 4);
-    padding-right: calc(var(--spacing) * 4);
-    padding-top: calc(var(--spacing) * 0.5);
-    padding-bottom: calc(var(--spacing) * 0.5);
-    min-height: calc(var(--spacing) * 1);
-    width: 100%;
-    display: inline-block;
-  }
-
-  .shiki code .line {
-    padding-left: calc(var(--spacing) * 2);
-    padding-right: calc(var(--spacing) * 2);
-  }
-
-  .shiki code > .line::before {
-    font-size: var(--text-xs);
-    opacity: 0.6;
-    counter-increment: line;
-    content: counter(line);
-    display: inline-block;
-    width: 1.8rem;
-    margin-right: 1.4rem;
-    text-align: right;
-  }
-
-  .shiki .line.highlighted {
-    @apply bg-muted-foreground/10;
-  }
-
-  .shiki .line span {
-    color: var(--shiki-light);
-
-    @variant dark {
-      color: var(--shiki-dark);
+    > h3 + p {
+      @apply !mt-2;
     }
   }
 }

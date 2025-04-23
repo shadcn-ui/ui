@@ -13,7 +13,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarRail,
 } from "@/registry/new-york-v4/ui/sidebar"
 
 export function DocsSidebar({
@@ -24,11 +23,11 @@ export function DocsSidebar({
 
   return (
     <Sidebar
-      className="sticky top-[calc((var(--spacing)*14)+1px)] z-30 h-[calc(100svh-(var(--spacing)*14)+1px)] border-r dark:bg-transparent"
+      className="border-border/40 sticky top-[calc((var(--spacing)*14)+1px)] z-30 hidden h-[calc(100svh-(var(--spacing)*14)+1px)] border-r lg:flex dark:bg-transparent"
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="no-scrollbar px-2">
+      <SidebarContent className="no-scrollbar px-2 pb-12">
         {tree.children.map(
           (item: {
             $id: string
@@ -37,7 +36,9 @@ export function DocsSidebar({
             children: { $id: string; name: string; type: string; url: string }[]
           }) => (
             <SidebarGroup key={item.$id}>
-              <SidebarGroupLabel>{item.name}</SidebarGroupLabel>
+              <SidebarGroupLabel className="text-muted-foreground font-semibold uppercase">
+                {item.name}
+              </SidebarGroupLabel>
               <SidebarGroupContent>
                 {item.type === "folder" && (
                   <SidebarMenu>
@@ -63,7 +64,6 @@ export function DocsSidebar({
           )
         )}
       </SidebarContent>
-      <SidebarRail />
     </Sidebar>
   )
 }
