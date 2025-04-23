@@ -27,7 +27,37 @@
           "path": "registry/new-york-v4/ui/accordion.tsx",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "keyframes": {
+                "accordion-down": {
+                  "from": {
+                    "height": "0"
+                  },
+                  "to": {
+                    "height": "var(--radix-accordion-content-height)"
+                  }
+                },
+                "accordion-up": {
+                  "from": {
+                    "height": "var(--radix-accordion-content-height)"
+                  },
+                  "to": {
+                    "height": "0"
+                  }
+                }
+              },
+              "animation": {
+                "accordion-down": "accordion-down 0.2s ease-out",
+                "accordion-up": "accordion-up 0.2s ease-out"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "alert",
@@ -1489,6 +1519,35 @@
       "categories": [
         "authentication",
         "login"
+      ]
+    },
+    {
+      "name": "signup-01",
+      "type": "registry:block",
+      "title": "Signup Form",
+      "author": "shadcn (https://ui.shadcn.com)",
+      "description": "A simple signup form.",
+      "dependencies": [],
+      "registryDependencies": [
+        "input",
+        "button",
+        "card",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/signup-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/signup-01/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "signup"
       ]
     },
     {

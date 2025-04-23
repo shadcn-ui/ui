@@ -702,4 +702,25 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "signup-01",
+    author: "shadcn (https://ui.shadcn.com)",
+    title: "Signup Form",
+    description: "A simple signup form.",
+    type: "registry:block",
+    registryDependencies: ["input", "button", "card", "label"],
+    dependencies: [],
+    files: [
+      {
+        path: "blocks/signup-01/page.tsx",
+        target: "app/signup/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/signup-01/components/signup-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "signup"],
+  },
 ]
