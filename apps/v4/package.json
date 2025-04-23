@@ -78,6 +78,7 @@
     "react-hook-form": "^7.54.2",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.1",
+    "rehype-pretty-code": "^0.14.1",
     "rimraf": "^6.0.1",
     "shadcn": "2.5.0",
     "shiki": "^1.10.1",
@@ -100,7 +101,6 @@
     "eslint-config-next": "15.3.1",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "rehype-pretty-code": "0.14.1",
     "tailwindcss": "^4.1.4",
     "tw-animate-css": "^1.2.4",
     "typescript": "^5"

@@ -1,6 +1,6 @@
 // source.config.ts
 import { defineConfig, defineDocs } from "fumadocs-mdx/config";
-import { rehypePrettyCode } from "rehype-pretty-code";
+import rehypePrettyCode from "rehype-pretty-code";
 var transformers = [
   {
     code(node) {

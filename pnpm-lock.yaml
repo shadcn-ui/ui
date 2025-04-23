@@ -297,6 +297,9 @@ importers:
       recharts:
         specifier: 2.15.1
         version: 2.15.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      rehype-pretty-code:
+        specifier: ^0.14.1
+        version: 0.14.1(shiki@1.29.2)
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -355,9 +358,6 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
         version: 0.6.11(@ianvs/prettier-plugin-sort-imports@4.4.1(prettier@3.4.2))(prettier@3.4.2)
-      rehype-pretty-code:
-        specifier: 0.14.1
-        version: 0.14.1(shiki@1.29.2)
       tailwindcss:
         specifier: ^4.1.4
         version: 4.1.4
