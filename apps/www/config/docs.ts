@@ -138,11 +138,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Remix",
-          href: "/docs/installation/remix",
-          items: [],
-        },
-        {
           title: "Astro",
           href: "/docs/installation/astro",
           items: [],
