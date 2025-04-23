@@ -2,4 +2,4 @@
 "shadcn": patch
 ---
 
-fix tanstack check
+add deno support
