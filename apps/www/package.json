@@ -60,6 +60,7 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@tanstack/react-table": "^8.9.1",
     "@vercel/analytics": "^1.2.2",
+    "@vercel/data-streaming-interfaces": "^2.110.4",
     "@vercel/og": "^0.0.21",
     "change-case": "^5.4.4",
     "class-variance-authority": "^0.7.0",

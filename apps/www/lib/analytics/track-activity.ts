@@ -10,7 +10,7 @@ import {
 import { useAttribution } from "./use-attribution"
 
 type UiShadcnSiteActivityPayload =
-  TopicRecordPayloads[Topic.UiShadcnSiteActivity]
+  TopicRecordPayloads[Topic.UiShadcnSiteV0Activity]
 
 export function useTrackActivity(): {
   track: typeof trackActivity
@@ -20,12 +20,13 @@ export function useTrackActivity(): {
 
   const pathname = usePathname()
 
-  console.log("PATHNAME", pathname)
-  console.log("UTM sfasdfa", utm)
-
   baseTrackDataRef.current = {
     page_path: pathname,
-    utm: JSON.stringify(utm),
+    utm_source: utm.utm_source || undefined,
+    utm_medium: utm.utm_medium || undefined,
+    utm_campaign: utm.utm_campaign || undefined,
+    utm_term: utm.utm_term || undefined,
+    utm_content: utm.utm_content || undefined,
   }
 
   const track = useRef<typeof trackActivity>((action, payload) => {
@@ -44,13 +45,17 @@ export const trackActivity = async <Action extends UiShadcnSiteActivityAction>(
   action: Action,
   payload: Partial<UiShadcnSiteActivityPayload>
 ): Promise<void> => {
-  const { utm, ...rest } = payload
+  const { ...rest } = payload
 
-  await runStreamInternal(Topic.UiShadcnSiteActivity, {
+  await runStreamInternal(Topic.UiShadcnSiteV0Activity, {
     referrer: document.referrer || null,
     user_agent: navigator.userAgent,
     page_title: document.title,
-    utm,
+    utm_source: payload.utm_source || undefined,
+    utm_medium: payload.utm_medium || undefined,
+    utm_campaign: payload.utm_campaign || undefined,
+    utm_term: payload.utm_term || undefined,
+    utm_content: payload.utm_content || undefined,
     query_string: window.location.search,
     ...rest,
   })

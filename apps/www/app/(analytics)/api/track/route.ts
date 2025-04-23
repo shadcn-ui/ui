@@ -35,7 +35,11 @@ export async function POST(request: NextRequest): Promise<Response> {
   stamHeaders.append("Host", "data.streaming.vercel.sh")
   stamHeaders.append("Client-Id", "ui-shadcn-site")
 
-  console.log(`POST KAFKA`, kafkaMessage)
+  console.log(`Post to Kafka:`, {
+    url: productEndpoint,
+    headers: Object.fromEntries(stamHeaders.entries()),
+    body: kafkaMessage,
+  })
 
   const response = await fetch(productEndpoint, {
     method: "POST",
@@ -86,27 +90,24 @@ async function getRecord<T extends Topic>(
   request: NextRequest
 ): Promise<TopicRecordPayloads[T]> {
   switch (topic) {
-    case Topic.UiShadcnSiteActivity: {
+    case Topic.UiShadcnSiteV0Activity: {
       const baseRecord =
-        record as TopicRecordPayloads[Topic.UiShadcnSiteActivity]
+        record as TopicRecordPayloads[Topic.UiShadcnSiteV0Activity]
 
       const browserInfo = getBrowserInfo(baseRecord)
 
       const stableId: string | undefined = await getStableId(browserInfo)
 
-      const utmString =
-        baseRecord.utm && typeof baseRecord.utm === "object"
-          ? JSON.stringify(baseRecord.utm)
-          : typeof baseRecord.utm === "string"
-          ? baseRecord.utm
-          : undefined
-
-      const finalRecord: TopicRecordPayloads[Topic.UiShadcnSiteActivity] = {
+      const finalRecord: TopicRecordPayloads[Topic.UiShadcnSiteV0Activity] = {
         ...baseRecord,
         stable_id: stableId,
         ip_inferred_country: request.headers.get("x-vercel-ip-country") ?? "",
         device_type: browserInfo?.device.type,
-        utm: utmString,
+        utm_source: baseRecord.utm_source || undefined, // UTM source from query_params
+        utm_medium: baseRecord.utm_medium || undefined, // UTM medium from query_params
+        utm_campaign: baseRecord.utm_campaign || undefined, // UTM campaign from query_params
+        utm_term: baseRecord.utm_term || undefined, // UTM term from query_params
+        utm_content: baseRecord.utm_content || undefined, // UTM content from query_params
         is_logged_in: false,
       }
 
