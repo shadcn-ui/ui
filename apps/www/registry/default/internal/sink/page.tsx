@@ -212,6 +212,9 @@ export default function SinkPage() {
             <ComponentWrapper name="RadioGroup">
               <RadioGroupDemo />
             </ComponentWrapper>
+            <ComponentWrapper name="Rating">
+              {/* <Ratingdemo /> */}
+            </ComponentWrapper>
             <ComponentWrapper name="Resizable" className="col-span-2">
               <ResizableHandleDemo />
             </ComponentWrapper>

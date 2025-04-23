@@ -31,6 +31,7 @@ import { PaginationDemo } from "@/components/pagination-demo"
 import { PopoverDemo } from "@/components/popover-demo"
 import { ProgressDemo } from "@/components/progress-demo"
 import { RadioGroupDemo } from "@/components/radio-group-demo"
+import RatingDemo from "@/components/rating-demo"
 import { ResizableDemo } from "@/components/resizable-demo"
 import { ScrollAreaDemo } from "@/components/scroll-area-demo"
 import { SelectDemo } from "@/components/select-demo"
@@ -145,6 +146,9 @@ export default function SinkPage() {
       </ComponentWrapper>
       <ComponentWrapper name="radio-group">
         <RadioGroupDemo />
+      </ComponentWrapper>
+      <ComponentWrapper name="rating">
+        <RatingDemo />
       </ComponentWrapper>
       <ComponentWrapper name="resizable">
         <ResizableDemo />
