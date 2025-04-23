@@ -464,6 +464,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "collapsible-animated",
+    type: "registry:example",
+    registryDependencies: ["collapsible"],
+    files: [
+      {
+        path: "examples/collapsible-animated.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "combobox-demo",
     type: "registry:example",
     registryDependencies: ["command"],

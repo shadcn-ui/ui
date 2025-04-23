@@ -3767,6 +3767,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "collapsible-animated": {
+      name: "collapsible-animated",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["collapsible"],
+      files: [{
+        path: "registry/new-york/examples/collapsible-animated.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/collapsible-animated.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "combobox-demo": {
       name: "combobox-demo",
       description: "",
@@ -9117,6 +9132,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/collapsible-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "collapsible-animated": {
+      name: "collapsible-animated",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["collapsible"],
+      files: [{
+        path: "registry/default/examples/collapsible-animated.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/collapsible-animated.tsx")),
       source: "",
       meta: undefined,
     },

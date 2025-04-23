@@ -78,7 +78,6 @@
     "tailwind-merge": "^3.0.1",
     "tailwindcss": "^4.0.7",
     "ts-morph": "^22.0.0",
-    "tw-animate-css": "^1.2.4",
     "vaul": "1.1.2",
     "zod": "^3.24.1"
   },
@@ -94,6 +93,7 @@
     "eslint-config-next": "15.2.0-canary.33",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "tw-animate-css": "^1.2.8",
     "typescript": "^5"
   },
   "prettier": {

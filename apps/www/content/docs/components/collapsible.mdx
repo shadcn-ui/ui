@@ -70,3 +70,57 @@ import {
   </CollapsibleContent>
 </Collapsible>
 ```
+
+## Examples
+
+### Animated Collapsible
+
+<Steps>
+
+<Step>Add the following animations to your `tailwind.config.js` file:</Step>
+
+```js title="tailwind.config.js" {5-20}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        // ...
+        "collapsible-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-collapsible-content-height)" },
+        },
+        "collapsible-up": {
+          from: { height: "var(--radix-collapsible-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        // ...
+        "collapsible-down": "collapsible-down 0.2s ease-out",
+        "collapsible-up": "collapsible-up 0.2s ease-out",
+      },
+    },
+  },
+}
+```
+
+<Step>
+  Add the following animation classes to `<CollapsibleContent />`
+</Step>
+
+```js {3}
+<Collapsible>
+  {/* ... */}
+  <CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden">
+    {/* ... */}
+  </CollapsibleContent>
+</Collapsible>
+```
+
+</Steps>
+
+<ComponentPreview
+  name="collapsible-animated"
+  description="A collapsible component with animated content height."
+/>
