@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as SheetPrimitive from "@radix-ui/react-dialog"
+import { Slottable } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import { X } from "lucide-react"
 
@@ -68,7 +69,7 @@ const SheetContent = React.forwardRef<
         <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
-      {children}
+      <Slottable>{children}</Slottable>
     </SheetPrimitive.Content>
   </SheetPortal>
 ))

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as MenubarPrimitive from "@radix-ui/react-menubar"
+import { Slottable } from "@radix-ui/react-slot"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -132,7 +133,7 @@ function MenubarCheckboxItem({
           <CheckIcon className="size-4" />
         </MenubarPrimitive.ItemIndicator>
       </span>
-      {children}
+      <Slottable>{children}</Slottable>
     </MenubarPrimitive.CheckboxItem>
   )
 }
@@ -156,7 +157,7 @@ function MenubarRadioItem({
           <CircleIcon className="size-2 fill-current" />
         </MenubarPrimitive.ItemIndicator>
       </span>
-      {children}
+      <Slottable>{children}</Slottable>
     </MenubarPrimitive.RadioItem>
   )
 }
@@ -234,7 +235,7 @@ function MenubarSubTrigger({
       )}
       {...props}
     >
-      {children}
+      <Slottable>{children}</Slottable>
       <ChevronRightIcon className="ml-auto h-4 w-4" />
     </MenubarPrimitive.SubTrigger>
   )
