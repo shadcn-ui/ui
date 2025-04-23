@@ -18,6 +18,9 @@ const title = "Build your component library"
 const description =
   "A set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks. Open Source. Open Code."
 
+export const dynamic = "force-static"
+export const revalidate = false
+
 export const metadata: Metadata = {
   title,
   description,

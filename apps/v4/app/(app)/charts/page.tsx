@@ -2,6 +2,9 @@ import { ChartDisplay } from "@/components/chart-display"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import * as Charts from "@/app/(app)/charts/charts"
 
+export const dynamic = "force-static"
+export const revalidate = false
+
 export default function ChartsPage() {
   return (
     <div className="grid gap-4">

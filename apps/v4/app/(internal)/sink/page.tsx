@@ -55,6 +55,9 @@ import { ToggleDemo } from "@/app/(internal)/sink/components/toggle-demo"
 import { ToggleGroupDemo } from "@/app/(internal)/sink/components/toggle-group-demo"
 import { TooltipDemo } from "@/app/(internal)/sink/components/tooltip-demo"
 
+export const dynamic = "force-static"
+export const revalidate = false
+
 export const metadata: Metadata = {
   title: "Kitchen Sink",
   description: "A page with all components for testing purposes.",
