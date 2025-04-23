@@ -702,4 +702,21 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "footer-01",
+    author: "shadcn (https://ui.shadcn.com)",
+    title: "Footer",
+    description: "A simple footer with links.",
+    type: "registry:block",
+    registryDependencies: [],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "blocks/footer-01/page.tsx",
+        target: "app/footer/page.tsx",
+        type: "registry:page",
+      },
+    ],
+    categories: ["footer"],
+  },
 ]

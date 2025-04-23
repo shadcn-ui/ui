@@ -1332,6 +1332,21 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "footer-01": {
+      name: "footer-01",
+      description: "A simple footer with links.",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [{
+        path: "registry/new-york/blocks/footer-01/page.tsx",
+        type: "registry:page",
+        target: "app/footer/page.tsx"
+      }],
+      categories: ["footer"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/footer-01/page.tsx")),
+      source: "__registry__/new-york/blocks/footer-01/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6683,6 +6698,21 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "footer-01": {
+      name: "footer-01",
+      description: "A simple footer with links.",
+      type: "registry:block",
+      registryDependencies: [],
+      files: [{
+        path: "registry/default/blocks/footer-01/page.tsx",
+        type: "registry:page",
+        target: "app/footer/page.tsx"
+      }],
+      categories: ["footer"],
+      component: React.lazy(() => import("@/registry/default/blocks/footer-01/page.tsx")),
+      source: "__registry__/default/blocks/footer-01/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {

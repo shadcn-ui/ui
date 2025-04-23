@@ -2086,6 +2086,31 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "footer-01": {
+    name: "footer-01",
+    description: "A simple footer with links.",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [
+      {
+        path: "registry/blocks/footer-01/page.tsx",
+        type: "registry:page",
+        target: "app/footer/page.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/new-york-v4/blocks/footer-01/page.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "chart-area-axes": {
     name: "chart-area-axes",
     description: "",

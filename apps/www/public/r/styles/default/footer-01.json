@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-01",
+  "type": "registry:block",
+  "title": "Footer",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A simple footer with links.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "blocks/footer-01/page.tsx",
+      "content": "import React from \"react\"\nimport { Dribbble, Github, Instagram, Twitter } from \"lucide-react\"\n\nconst socialLinks = [\n  {\n    href: \"https://twitter.com/\",\n    label: \"Twitter\",\n    icon: <Twitter size={20} strokeWidth={1.5} />,\n  },\n  {\n    href: \"https://instagram.com/\",\n    label: \"Instagram\",\n    icon: <Instagram size={20} strokeWidth={1.5} />,\n  },\n  {\n    href: \"https://dribbble.com/\",\n    label: \"Dribbble\",\n    icon: <Dribbble size={20} strokeWidth={1.5} />,\n  },\n  {\n    href: \"https://github.com/\",\n    label: \"GitHub\",\n    icon: <Github size={20} strokeWidth={1.5} />,\n  },\n]\n\nconst footerSections = [\n  {\n    title: \"Company\",\n    links: [\n      { label: \"About Us\", href: \"/about\" },\n      { label: \"Careers\", href: \"/careers\" },\n      { label: \"Press\", href: \"/press\" },\n    ],\n  },\n  {\n    title: \"Resources\",\n    links: [\n      { label: \"Blog\", href: \"/blog\" },\n      { label: \"Help Center\", href: \"/help\" },\n      { label: \"Privacy Policy\", href: \"/privacy\" },\n    ],\n  },\n  {\n    title: \"Contact\",\n    links: [\n      { label: \"Contact Us\", href: \"/contact\" },\n      { label: \"Support\", href: \"/support\" },\n    ],\n  },\n]\n\nconst Footer: React.FC = () => {\n  return (\n    <footer className=\"bg-muted dark:bg-muted/40 border-t\">\n      <div className=\"container mx-auto max-w-6xl px-6 py-16\">\n        <div className=\"grid grid-cols-1 gap-8 md:grid-cols-12\">\n          <div className=\"md:col-span-4 lg:col-span-5\">\n            <div className=\"space-y-5\">\n              <h2 className=\"text-foreground text-2xl font-bold tracking-tight\">\n                Shadcn Studio\n              </h2>\n              <p className=\"text-muted-foreground/80 dark:text-muted-foreground text-sm leading-relaxed\">\n                Crafting digital experiences with precision and passion.\n                Building tomorrow's web solutions today.\n              </p>\n              <div className=\"flex items-center space-x-3\">\n                {socialLinks.map((link) => (\n                  <a\n                    key={link.label}\n                    href={link.href}\n                    target=\"_blank\"\n                    rel=\"noopener noreferrer\"\n                    aria-label={link.label}\n                    className=\"border-border text-muted-foreground/80 dark:text-muted-foreground hover:border-foreground hover:text-foreground rounded-full border p-2 transition-all duration-200 hover:shadow-sm\"\n                  >\n                    {link.icon}\n                  </a>\n                ))}\n              </div>\n            </div>\n          </div>\n          <div className=\"grid grid-cols-2 gap-8 md:col-span-8 lg:col-span-7 lg:grid-cols-3\">\n            {footerSections.map((section) => (\n              <div key={section.title} className=\"space-y-3\">\n                <h3 className=\"text-foreground text-sm font-semibold tracking-wider uppercase\">\n                  {section.title}\n                </h3>\n                <ul className=\"space-y-2.5\">\n                  {section.links.map((link) => (\n                    <li key={link.label}>\n                      <a\n                        href={link.href}\n                        className=\"text-muted-foreground/80 dark:text-muted-foreground hover:text-foreground text-sm transition-colors duration-200\"\n                      >\n                        {link.label}\n                      </a>\n                    </li>\n                  ))}\n                </ul>\n              </div>\n            ))}\n          </div>\n        </div>\n        <div className=\"border-border/50 mt-12 border-t pt-8\">\n          <p className=\"text-muted-foreground/70 dark:text-muted-foreground text-center text-sm\">\n            &copy; {new Date().getFullYear()} Shadcn Studio. All rights\n            reserved.\n          </p>\n        </div>\n      </div>\n    </footer>\n  )\n}\n\nexport default Footer\n",
+      "type": "registry:page",
+      "target": "app/footer/page.tsx"
+    }
+  ],
+  "categories": [
+    "footer"
+  ]
+}
