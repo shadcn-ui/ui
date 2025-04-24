@@ -20,11 +20,8 @@ const registry = {
       {
         name: "index",
         type: "registry:style",
-        dependencies: [
-          "class-variance-authority",
-          "lucide-react",
-          "tw-animate-css",
-        ],
+        dependencies: ["class-variance-authority", "lucide-react"],
+        devDependencies: ["tw-animate-css"],
         registryDependencies: ["utils"],
         cssVars: {},
         files: [],
@@ -78,6 +75,11 @@ const registry = {
         if (item.name === "dashboard-01") {
           item.dependencies?.push("@tabler/icons-react")
         }
+
+        if (item.name === "accordion" && "tailwind" in item) {
+          delete item.tailwind
+        }
+
         return item
       })
   ),
