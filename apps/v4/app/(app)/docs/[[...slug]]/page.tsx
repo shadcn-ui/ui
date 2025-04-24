@@ -74,7 +74,7 @@ export default async function Page(props: {
   return (
     <div
       data-slot="docs"
-      className="flex items-start gap-12 px-4 py-6 text-[15px] lg:py-8 xl:w-full"
+      className="flex items-start gap-12 px-6 py-6 text-[15px] lg:py-8 xl:w-full"
     >
       <div className="flex-1">
         <div className="mx-auto flex max-w-2xl min-w-0 flex-1 flex-col gap-8 text-neutral-800 dark:text-neutral-300">

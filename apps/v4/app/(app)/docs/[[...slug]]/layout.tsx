@@ -9,11 +9,9 @@ export default function DocsLayout({
 }) {
   return (
     <div className="container-wrapper flex flex-1 flex-col">
-      <SidebarProvider className="min-h-min flex-1">
-        <div className="container flex-1 items-start px-0 md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
-          <DocsSidebar tree={source.pageTree} />
-          <div>{children}</div>
-        </div>
+      <SidebarProvider className="container min-h-min flex-1 grid-cols-[var(--sidebar-width)_minmax(0,1fr)] items-start px-0 [--sidebar-width:220px] md:grid lg:[--sidebar-width:240px]">
+        <DocsSidebar tree={source.pageTree} />
+        <div className="border-border/40 h-full border-l">{children}</div>
       </SidebarProvider>
     </div>
   )

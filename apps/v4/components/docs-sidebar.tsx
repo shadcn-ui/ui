@@ -23,7 +23,7 @@ export function DocsSidebar({
 
   return (
     <Sidebar
-      className="border-border/40 sticky top-[calc((var(--spacing)*14)+1px)] z-30 hidden h-[calc(100svh-(var(--spacing)*14)+1px)] border-r lg:flex dark:bg-transparent"
+      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--header-height)-var(--footer-height)+1px)] bg-transparent lg:flex"
       collapsible="none"
       {...props}
     >
@@ -41,7 +41,7 @@ export function DocsSidebar({
               </SidebarGroupLabel>
               <SidebarGroupContent>
                 {item.type === "folder" && (
-                  <SidebarMenu>
+                  <SidebarMenu className="gap-0.5">
                     {item.children.map((item) => {
                       return (
                         item.type === "page" && (
@@ -49,7 +49,7 @@ export function DocsSidebar({
                             <SidebarMenuButton
                               asChild
                               isActive={item.url === pathname}
-                              className="data-[active=true]:bg-background dark:data-[active=true]:bg-input/30 ring-border data-[active=true]:ring"
+                              className="data-[active=true]:bg-accent dark:data-[active=true]:bg-input/30 data-[active=true]:border-border relative h-[30px] border border-transparent after:absolute after:inset-0 after:z-0 after:-my-1 after:rounded-md"
                             >
                               <Link href={item.url}>{item.name}</Link>
                             </SidebarMenuButton>
