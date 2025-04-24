@@ -2086,6 +2086,36 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "login-06": {
+    name: "login-06",
+    description: "A simple email-only login page.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "registry/blocks/login-06/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx",
+      },
+      {
+        path: "registry/blocks/login-06/components/login-form.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/new-york-v4/blocks/login-06/page.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "chart-area-axes": {
     name: "chart-area-axes",
     description: "",

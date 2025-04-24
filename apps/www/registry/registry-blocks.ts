@@ -702,4 +702,22 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "login-06",
+    description: "A simple email-only login page.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "blocks/login-06/page.tsx",
+        target: "app/login/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/login-06/components/login-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "login"],
+  },
 ]
