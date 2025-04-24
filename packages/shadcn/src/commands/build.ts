@@ -17,7 +17,7 @@ export const buildOptionsSchema = z.object({
 
 export const build = new Command()
   .name("build")
-  .description("build components for a shadcn registry")
+  .description("DEPRECATED: use `registry:build` instead")
   .argument("[registry]", "path to registry.json file", "./registry.json")
   .option(
     "-o, --output <path>",
@@ -29,69 +29,9 @@ export const build = new Command()
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
-  .action(async (registry: string, opts) => {
-    try {
-      const options = buildOptionsSchema.parse({
-        cwd: path.resolve(opts.cwd),
-        registryFile: registry,
-        outputDir: opts.output,
-      })
-
-      const { resolvePaths } = await preFlightBuild(options)
-      const content = await fs.readFile(resolvePaths.registryFile, "utf-8")
-
-      const result = registrySchema.safeParse(JSON.parse(content))
-
-      if (!result.success) {
-        logger.error(
-          `Invalid registry file found at ${highlighter.info(
-            resolvePaths.registryFile
-          )}.`
-        )
-        process.exit(1)
-      }
-
-      const buildSpinner = spinner("Building registry...")
-      for (const registryItem of result.data.items) {
-        if (!registryItem.files) {
-          continue
-        }
-
-        buildSpinner.start(`Building ${registryItem.name}...`)
-
-        // Add the schema to the registry item.
-        registryItem["$schema"] =
-          "https://ui.shadcn.com/schema/registry-item.json"
-
-        // Loop through each file in the files array.
-        for (const file of registryItem.files) {
-          file["content"] = await fs.readFile(
-            path.resolve(resolvePaths.cwd, file.path),
-            "utf-8"
-          )
-        }
-
-        // Validate the registry item.
-        const result = registryItemSchema.safeParse(registryItem)
-        if (!result.success) {
-          logger.error(
-            `Invalid registry item found for ${highlighter.info(
-              registryItem.name
-            )}.`
-          )
-          continue
-        }
-
-        // Write the registry item to the output directory.
-        await fs.writeFile(
-          path.resolve(resolvePaths.outputDir, `${result.data.name}.json`),
-          JSON.stringify(result.data, null, 2)
-        )
-      }
-
-      buildSpinner.succeed("Building registry.")
-    } catch (error) {
-      logger.break()
-      handleError(error)
-    }
+  .action(() => {
+    logger.warn(
+      "The `shadcn build` command is deprecated. Use `shadcn registry:build` instead."
+    )
+    logger.break()
   })
