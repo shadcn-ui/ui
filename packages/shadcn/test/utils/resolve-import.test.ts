@@ -79,3 +79,12 @@ test("resolve import without base url", async () => {
     path.resolve(cwd, "foo/bar")
   )
 })
+
+test("resolve import with file extension", async () => {
+  const cwd = path.resolve(__dirname, "../fixtures/with-base-url")
+  const config = (await loadConfig(cwd)) as ConfigLoaderSuccessResult
+
+  expect(await resolveImport("@/components/ui/index.ts", config)).toEqual(
+    path.resolve(cwd, "components/ui")
+  )
+})
