@@ -20,17 +20,9 @@ const registry = {
       {
         name: "index",
         type: "registry:style",
-        dependencies: [
-          "tailwindcss-animate",
-          "class-variance-authority",
-          "lucide-react",
-        ],
+        dependencies: ["class-variance-authority", "lucide-react"],
+        devDependencies: ["tw-animate-css"],
         registryDependencies: ["utils"],
-        tailwind: {
-          config: {
-            plugins: [`require("tailwindcss-animate")`],
-          },
-        },
         cssVars: {},
         files: [],
       },
@@ -74,9 +66,22 @@ const registry = {
           },
         ],
       },
-    ].filter((item) => {
-      return !DEPRECATED_ITEMS.includes(item.name)
-    })
+    ]
+      .filter((item) => {
+        return !DEPRECATED_ITEMS.includes(item.name)
+      })
+      .map((item) => {
+        // Temporary fix for dashboard-01.
+        if (item.name === "dashboard-01") {
+          item.dependencies?.push("@tabler/icons-react")
+        }
+
+        if (item.name === "accordion" && "tailwind" in item) {
+          delete item.tailwind
+        }
+
+        return item
+      })
   ),
 } satisfies Registry
 
