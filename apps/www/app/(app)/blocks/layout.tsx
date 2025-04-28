@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 
 import { Announcement } from "@/components/announcement"
+import { BlocksNav } from "@/components/blocks-nav"
 import {
   PageActions,
   PageHeader,
@@ -9,10 +10,35 @@ import {
 } from "@/components/page-header"
 import { Button } from "@/registry/new-york/ui/button"
 
+import "@/styles/mdx.css"
+import Link from "next/link"
+
+const title = "Building Blocks for the Web"
+const description =
+  "Clean, modern building blocks. Copy and paste into your apps. Works with all React frameworks. Open Source. Free forever."
+
 export const metadata: Metadata = {
-  title: "Building Blocks.",
-  description:
-    "Beautifully designed. Copy and paste into your apps. Open Source.",
+  title,
+  description,
+  openGraph: {
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
 }
 
 export default function BlocksLayout({
@@ -21,32 +47,28 @@ export default function BlocksLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="container relative">
-      <PageHeader className="max-w-3xl">
+    <>
+      <PageHeader>
         <Announcement />
-        <PageHeaderHeading className="text-balance">
-          Building Blocks for the Web
-        </PageHeaderHeading>
-        <PageHeaderDescription>
-          Beautifully designed. Copy and paste into your apps. Open Source.
-        </PageHeaderDescription>
+        <PageHeaderHeading>{title}</PageHeaderHeading>
+        <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild>
-            <a href="#blocks">Browse</a>
+          <Button asChild size="sm">
+            <a href="#blocks">Browse Blocks</a>
           </Button>
-          <Button asChild variant="outline">
-            <a
-              href="https://github.com/shadcn-ui/ui/discussions/new?category=blocks-request"
-              target="_blank"
-            >
-              Request a block
-            </a>
+          <Button asChild variant="ghost" size="sm">
+            <Link href="/docs/blocks">Add a block</Link>
           </Button>
         </PageActions>
       </PageHeader>
-      <section id="blocks" className="grid scroll-mt-24 gap-24 lg:gap-48">
-        {children}
-      </section>
-    </div>
+      <div id="blocks" className="border-grid scroll-mt-24 border-b">
+        <div className="container-wrapper">
+          <div className="container flex items-center py-4">
+            <BlocksNav />
+          </div>
+        </div>
+      </div>
+      <div className="container-wrapper flex-1">{children}</div>
+    </>
   )
 }

@@ -186,7 +186,7 @@ export const accounts = [
   },
   {
     label: "Alicia Koch",
-    email: "alicia@gmail.com",
+    email: "alicia@example.com",
     icon: (
       <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <title>Gmail</title>
@@ -199,7 +199,7 @@ export const accounts = [
   },
   {
     label: "Alicia Koch",
-    email: "alicia@me.com",
+    email: "alicia@example.com",
     icon: (
       <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <title>iCloud</title>

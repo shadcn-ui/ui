@@ -1,4 +1,4 @@
-import { BellIcon, EyeNoneIcon, PersonIcon } from "@radix-ui/react-icons"
+import { Bell, EyeOff, User } from "lucide-react"
 
 import {
   Card,
@@ -19,7 +19,7 @@ export function DemoNotifications() {
       </CardHeader>
       <CardContent className="grid gap-1">
         <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
-          <BellIcon className="mt-px h-5 w-5" />
+          <Bell className="mt-px h-5 w-5" />
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Everything</p>
             <p className="text-sm text-muted-foreground">
@@ -28,7 +28,7 @@ export function DemoNotifications() {
           </div>
         </div>
         <div className="-mx-2 flex items-start space-x-4 rounded-md bg-accent p-2 text-accent-foreground transition-all">
-          <PersonIcon className="mt-px h-5 w-5" />
+          <User className="mt-px h-5 w-5" />
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Available</p>
             <p className="text-sm text-muted-foreground">
@@ -37,7 +37,7 @@ export function DemoNotifications() {
           </div>
         </div>
         <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
-          <EyeNoneIcon className="mt-px h-5 w-5" />
+          <EyeOff className="mt-px h-5 w-5" />
           <div className="space-y-1">
             <p className="text-sm font-medium leading-none">Ignoring</p>
             <p className="text-sm text-muted-foreground">
