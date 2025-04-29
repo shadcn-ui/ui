@@ -41,8 +41,8 @@ export async function migrateRadix(config: Config) {
         }
       )
       // special case for `Sheet`
-      .replace(/\bSheet\s+as\s+SheetPrimitive\b/g, "Dialog as SheetPrimitive")
-      // special cases for `Slot` - type, ternary and JSX
+      .replace(/Sheet\s+as\s+SheetPrimitive/g, "Dialog as SheetPrimitive")
+      // special cases for `Slot` including type, ternary and JSX
       .replace(
         /import\s+\{\s+Slot\s+\}\s+from\s+"@radix-ui\/react-slot"/,
         () => {
