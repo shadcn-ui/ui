@@ -41,7 +41,7 @@ export async function migrateRadix(config: Config) {
         }
       )
       // special case for `Sheet`
-      .replace(/Sheet\s+as\s+SheetPrimitive/g, "Dialog as SheetPrimitive")
+      .replace(/Sheet as SheetPrimitive/g, "Dialog as SheetPrimitive")
       // special cases for `Slot` including type, ternary and JSX
       .replace(
         /import\s+\{\s+Slot\s+\}\s+from\s+"@radix-ui\/react-slot"/,
@@ -50,7 +50,7 @@ export async function migrateRadix(config: Config) {
           return "import { Slot as SlotPrimitive } from 'radix-ui'"
         }
       )
-      .replace(/\btypeof\s+Slot\b/g, "typeof SlotPrimitive.Slot")
+      .replace(/typeof\s+Slot\b/g, "typeof SlotPrimitive.Slot")
       .replace(/\?\s+Slot\s+:/g, "? SlotPrimitive.Slot :")
       .replace(/<Slot\b/g, "<SlotPrimitive.Slot")
     await fs.promises.writeFile(absoluteFilepath, transformedContent, "utf-8")
