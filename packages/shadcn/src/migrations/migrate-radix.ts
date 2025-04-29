@@ -32,8 +32,8 @@ export async function migrateRadix(config: Config) {
     const transformedContent = fileContent
       .replace(
         /import \* as (\w+Primitive) from "@radix-ui\/react-([\w-]+)"/g,
-        (_, primitive, packageName) => {
-          unusedPackages.add(`@radix-ui/react-${packageName}`)
+        (_, primitive, pkg) => {
+          unusedPackages.add(`@radix-ui/react-${pkg}`)
           return `import { ${primitive.replace(
             "Primitive",
             ""
