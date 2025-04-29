@@ -26,7 +26,7 @@ export async function migrateRadix(config: Config) {
 
   const unusedPackages = new Set<string>()
 
-  for (const filepath of files) {
+  const updateFiles = files.map(async (filepath) => {
     const absoluteFilepath = path.resolve(uiPath, filepath)
     const fileContent = await fs.promises.readFile(absoluteFilepath, "utf-8")
     let transformedContent = fileContent
@@ -61,8 +61,10 @@ export async function migrateRadix(config: Config) {
         .replace(/\?\s+Slot\s+:/g, "? SlotPrimitive.Slot :")
         .replace(/<Slot\b/g, "<SlotPrimitive.Slot")
     }
-    await fs.promises.writeFile(absoluteFilepath, transformedContent, "utf-8")
-  }
+    return fs.promises.writeFile(absoluteFilepath, transformedContent, "utf-8")
+  })
+
+  await Promise.all(updateFiles)
 
   migrationSpinner.text = "Removing unused @radix-ui/* packages."
 
