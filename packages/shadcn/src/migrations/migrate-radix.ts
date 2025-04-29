@@ -22,9 +22,9 @@ export async function migrateRadix(config: Config) {
 
   const migrationSpinner = spinner(`Migrating to radix-ui...`)?.start()
 
-  const unusedPackages = new Set<string>()
-
   migrationSpinner.text = "Replacing imports in files."
+
+  const unusedPackages = new Set<string>()
 
   for (const filepath of files) {
     const absoluteFilepath = path.resolve(uiPath, filepath)
@@ -54,20 +54,11 @@ export async function migrateRadix(config: Config) {
       .replace(/\?\s+Slot\s+:/g, "? SlotPrimitive.Slot :")
       .replace(/<Slot\s+/g, "<SlotPrimitive.Slot ")
     await fs.promises.writeFile(absoluteFilepath, transformedContent, "utf-8")
-    migrationSpinner.text = `Updated imports in ${absoluteFilepath}`
   }
 
-  migrationSpinner.text = "Removing unused radix packages."
+  migrationSpinner.text = "Removing unused @radix-ui/* packages."
 
   const packageManager = await getPackageManager(config.resolvedPaths.cwd)
-
-  await execa(
-    packageManager,
-    [packageManager === "npm" ? "install" : "add", "radix-ui"],
-    {
-      cwd: config.resolvedPaths.cwd,
-    }
-  )
 
   if (unusedPackages.size) {
     await execa(
@@ -81,6 +72,14 @@ export async function migrateRadix(config: Config) {
       }
     )
   }
+
+  await execa(
+    packageManager,
+    [packageManager === "npm" ? "install" : "add", "radix-ui"],
+    {
+      cwd: config.resolvedPaths.cwd,
+    }
+  )
 
   migrationSpinner.succeed("Migration complete.")
 }
