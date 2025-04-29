@@ -29,7 +29,7 @@ export async function migrateRadix(config: Config) {
   for (const filepath of files) {
     const absoluteFilepath = path.resolve(uiPath, filepath)
     const fileContent = await fs.promises.readFile(absoluteFilepath, "utf-8")
-    const transformedContent = fileContent
+    let transformedContent = fileContent
       .replace(
         /import \* as (\w+Primitive) from "@radix-ui\/react-([\w-]+)"/g,
         (_, primitive, pkg) => {
@@ -42,17 +42,25 @@ export async function migrateRadix(config: Config) {
       )
       // special case for `Sheet`
       .replace(/Sheet as SheetPrimitive/g, "Dialog as SheetPrimitive")
-      // special cases for `Slot` including type, ternary and JSX
-      .replace(
-        /import\s+\{\s+Slot\s+\}\s+from\s+"@radix-ui\/react-slot"/,
-        () => {
-          unusedPackages.add("@radix-ui/react-slot")
-          return "import { Slot as SlotPrimitive } from 'radix-ui'"
-        }
+
+    // special cases for `Slot` including type, ternary and JSX
+    if (
+      /import\s+\{\s+Slot\s+\}\s+from\s+"@radix-ui\/react-slot"/.test(
+        fileContent
       )
-      .replace(/typeof\s+Slot\b/g, "typeof SlotPrimitive.Slot")
-      .replace(/\?\s+Slot\s+:/g, "? SlotPrimitive.Slot :")
-      .replace(/<Slot\b/g, "<SlotPrimitive.Slot")
+    ) {
+      transformedContent = transformedContent
+        .replace(
+          /import\s+\{\s+Slot\s+\}\s+from\s+"@radix-ui\/react-slot"/,
+          () => {
+            unusedPackages.add("@radix-ui/react-slot")
+            return "import { Slot as SlotPrimitive } from 'radix-ui'"
+          }
+        )
+        .replace(/typeof\s+Slot\b/g, "typeof SlotPrimitive.Slot")
+        .replace(/\?\s+Slot\s+:/g, "? SlotPrimitive.Slot :")
+        .replace(/<Slot\b/g, "<SlotPrimitive.Slot")
+    }
     await fs.promises.writeFile(absoluteFilepath, transformedContent, "utf-8")
   }
 
