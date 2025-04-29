@@ -32,12 +32,12 @@ export async function migrateRadix(config: Config) {
     const transformedContent = fileContent
       .replace(
         /import \* as (\w+Primitive) from "@radix-ui\/react-([\w-]+)"/g,
-        (_, c, packageName) => {
+        (_, primitive, packageName) => {
           unusedPackages.add(`@radix-ui/react-${packageName}`)
-          return `import { ${c.replace(
+          return `import { ${primitive.replace(
             "Primitive",
             ""
-          )} as ${c} } from "radix-ui"`
+          )} as ${primitive} } from "radix-ui"`
         }
       )
       // special case for `Sheet`
