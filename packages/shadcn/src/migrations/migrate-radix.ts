@@ -50,9 +50,9 @@ export async function migrateRadix(config: Config) {
           return "import { Slot as SlotPrimitive } from 'radix-ui'"
         }
       )
-      .replace(/typeof\s+Slot/g, "typeof SlotPrimitive.Slot")
+      .replace(/\btypeof\s+Slot\b/g, "typeof SlotPrimitive.Slot")
       .replace(/\?\s+Slot\s+:/g, "? SlotPrimitive.Slot :")
-      .replace(/<Slot\s+/g, "<SlotPrimitive.Slot")
+      .replace(/<Slot\b/g, "<SlotPrimitive.Slot")
     await fs.promises.writeFile(absoluteFilepath, transformedContent, "utf-8")
   }
 
