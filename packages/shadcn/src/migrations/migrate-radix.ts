@@ -41,7 +41,7 @@ export async function migrateRadix(config: Config) {
         }
       )
       // special case for `Sheet`
-      .replace(/Sheet as SheetPrimitive/g, "Dialog as SheetPrimitive")
+      .replace(/Sheet\s+as\s+SheetPrimitive/g, "Dialog as SheetPrimitive")
 
     // special cases for `Slot` including type, ternary and JSX
     if (
