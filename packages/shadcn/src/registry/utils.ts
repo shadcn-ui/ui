@@ -64,6 +64,12 @@ export async function recursivelyResolveFileImports(
     return { dependencies: [], files: [] }
   }
 
+  // Skip if the file extension is not one of the supported extensions
+  const fileExtension = path.extname(filePath)
+  if (!FILE_EXTENSIONS_FOR_LOOKUP.includes(fileExtension)) {
+    return { dependencies: [], files: [] }
+  }
+
   const content = await fs.readFile(resolvedFilePath, "utf-8")
   const tempFile = await createTempSourceFile(path.basename(resolvedFilePath))
   const sourceFile = project.createSourceFile(tempFile, content, {

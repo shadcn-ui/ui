@@ -17,6 +17,7 @@ export const buildOptionsSchema = z.object({
   cwd: z.string(),
   registryFile: z.string(),
   outputDir: z.string(),
+  verbose: z.boolean().optional().default(false),
 })
 
 export const build = new Command()
@@ -33,11 +34,13 @@ export const build = new Command()
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
+  .option("-v, --verbose", "verbose output")
   .action(async (registry: string, opts) => {
     await buildRegistry({
       cwd: path.resolve(opts.cwd),
       registryFile: registry,
       outputDir: opts.output,
+      verbose: opts.verbose,
     })
   })
 
@@ -94,6 +97,18 @@ async function buildRegistry(opts: z.infer<typeof buildOptionsSchema>) {
       projectInfo
     )
 
+    // Loop through the registry items and remove duplicates files i.e same path.
+    for (const registryItem of resolvedRegistry.items) {
+      if (!registryItem.files) {
+        continue
+      }
+
+      registryItem.files = registryItem.files.filter(
+        (file, index, self) =>
+          index === self.findIndex((t) => t.path === file.path)
+      )
+    }
+
     for (const registryItem of resolvedRegistry.items) {
       if (!registryItem.files) {
         continue
@@ -136,6 +151,20 @@ async function buildRegistry(opts: z.infer<typeof buildOptionsSchema>) {
     )
 
     buildSpinner.succeed("Building registry.")
+
+    if (options.verbose) {
+      spinner(
+        `They registry has ${highlighter.info(
+          resolvedRegistry.items.length.toString()
+        )} items:`
+      ).succeed()
+      for (const item of resolvedRegistry.items) {
+        logger.log(`  - ${item.name} (${highlighter.info(item.type)})`)
+        for (const file of item.files ?? []) {
+          logger.log(`    - ${file.path}`)
+        }
+      }
+    }
   } catch (error) {
     logger.break()
     handleError(error)

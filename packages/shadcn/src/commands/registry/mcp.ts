@@ -16,7 +16,6 @@ export const mcp = new Command()
     try {
       const transport = new StdioServerTransport()
       await server.connect(transport)
-      logger.info("✔️ shadcn/mcp server running on stdio")
     } catch (error) {
       logger.break()
       handleError(error)
