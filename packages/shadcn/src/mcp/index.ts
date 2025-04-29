@@ -25,17 +25,15 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
       {
+        name: "init",
+        description:
+          "Initialize a new project using a registry style project structure.",
+        inputSchema: zodToJsonSchema(z.object({})),
+      },
+      {
         name: "get_items",
         description: "List all the available items in the registry",
-        inputSchema: zodToJsonSchema(
-          z.object({
-            // type: registryItemTypeSchema
-            //   .optional()
-            //   .describe(
-            //     "The type of items to list. This is optional. Use when you want to filter the items by type. Otherwise, leave it blank to list all items."
-            //   ),
-          })
-        ),
+        inputSchema: zodToJsonSchema(z.object({})),
       },
       {
         name: "get_item",
@@ -80,6 +78,64 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
 
     switch (request.params.name) {
+      case "init": {
+        const registry = await getRegistry(REGISTRY_URL)
+        const style = registry.items.find(
+          (item) => item.type === "registry:style"
+        )
+
+        const rules = registry.items.find(
+          (item) => item.type === "registry:file" && item.name === "rules"
+        )
+
+        let text = `To initialize a new project, run the following command:
+                \`\`\`bash
+                npx shadcn@latest init
+                \`\`\`
+                - This will install all the dependencies and theme for the project.
+                `
+
+        if (rules) {
+          text += `
+                You should also install the rules for the project.
+                \`\`\`bash
+                npx shadcn@latest add ${getRegistryItemUrl(
+                  rules.name,
+                  REGISTRY_URL
+                )}
+                \`\`\`
+                `
+        }
+
+        if (!style) {
+          return {
+            content: [
+              {
+                type: "text",
+                text,
+              },
+            ],
+          }
+        }
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: `To initialize a new project using the ${
+                style.name
+              } style, run the following command:
+              \`\`\`bash
+              npx shadcn@latest init ${getRegistryItemUrl(
+                style.name,
+                REGISTRY_URL
+              )}
+              \`\`\`
+              `,
+            },
+          ],
+        }
+      }
       case "get_items": {
         const registry = await getRegistry(REGISTRY_URL)
 
@@ -99,8 +155,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             {
               type: "text",
               text: `The following items are available in the registry:
-              ${JSON.stringify(registry.items, null, 2)}.
-
+              ${JSON.stringify(
+                registry.items.map(
+                  (item) => `- ${item.name} (${item.type}): ${item.description}`
+                ),
+                null,
+                2
+              )}.
               - To install and use an item in your project, you run the following command:
               \`\`\`bash
               npx shadcn@latest add ${getRegistryItemUrl(
@@ -121,6 +182,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 \`\`\`
                 - Before using any item, you need to add it first.
                 - Adding the items will install all dependencies for the item and format the code as per the project.
+              - Example components should not be installed directly unless asked. These components should be used as a reference to build other components.
               `,
             },
           ],
@@ -142,8 +204,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
       }
 
-      case "add_item":
-      case "install_item": {
+      case "add_item": {
         const name = z.string().parse(request.params.arguments.name)
 
         if (!name) {
@@ -188,7 +249,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 })
 
 async function getRegistry(registryUrl: string) {
-  const [registryJson] = await fetchRegistry([registryUrl])
+  const [registryJson] = await fetchRegistry([registryUrl], {
+    useCache: false,
+  })
   return registrySchema.parse(registryJson)
 }
 

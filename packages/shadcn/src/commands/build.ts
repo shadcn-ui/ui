@@ -1,6 +1,6 @@
 import * as fs from "fs/promises"
 import * as path from "path"
-import { preFlightBuild } from "@/src/preflights/preflight-build"
+import { preFlightRegistryBuild } from "@/src/preflights/preflight-registry"
 import { registryItemSchema, registrySchema } from "@/src/registry"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
