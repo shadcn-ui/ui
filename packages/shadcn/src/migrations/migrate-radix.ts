@@ -52,6 +52,7 @@ export async function migrateRadix(config: Config) {
       )
       .replace(/typeof\s+Slot/g, "typeof SlotPrimitive.Slot")
       .replace(/\?\s+Slot\s+:/g, "? SlotPrimitive.Slot :")
+      .replace(/<Slot/g, "<SlotPrimitive.Slot")
     await fs.promises.writeFile(absoluteFilepath, transformedContent, "utf-8")
     migrationSpinner.text = `Updated imports in ${absoluteFilepath}`
   }
