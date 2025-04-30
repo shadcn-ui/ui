@@ -10,13 +10,16 @@ import prompts from "prompts"
 
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
+  devDependencies: RegistryItem["devDependencies"],
   config: Config,
   options: {
     silent?: boolean
   }
 ) {
   dependencies = Array.from(new Set(dependencies))
-  if (!dependencies?.length) {
+  devDependencies = Array.from(new Set(devDependencies))
+
+  if (!dependencies?.length && !devDependencies?.length) {
     return
   }
 
@@ -38,24 +41,28 @@ export async function updateDependencies(
     
     const hasExistingPeerDepsSetting = npmConfig?.["legacy-peer-deps"] === true || npmConfig?.["force"] === true
     if (!hasExistingPeerDepsSetting) {
-      dependenciesSpinner.stopAndPersist()
-      logger.warn(
-        "\nIt looks like you are using React 19. \nSome packages may fail to install due to peer dependency issues in npm (see https://ui.shadcn.com/react-19).\n"
-      )
-      const confirmation = await prompts([
-        {
-          type: "select",
-          name: "flag",
-          message: "How would you like to proceed?",
-          choices: [
-            { title: "Use --force", value: "force" },
-            { title: "Use --legacy-peer-deps", value: "legacy-peer-deps" },
-          ],
-        },
-      ])
+      if (options.silent) {
+        flag = "force"
+      } else {
+        dependenciesSpinner.stopAndPersist()
+        logger.warn(
+          "\nIt looks like you are using React 19. \nSome packages may fail to install due to peer dependency issues in npm (see https://ui.shadcn.com/react-19).\n"
+        )
+        const confirmation = await prompts([
+          {
+            type: "select",
+            name: "flag",
+            message: "How would you like to proceed?",
+            choices: [
+              { title: "Use --force", value: "force" },
+              { title: "Use --legacy-peer-deps", value: "legacy-peer-deps" },
+            ],
+          },
+        ])
 
-      if (confirmation) {
-        flag = confirmation.flag
+        if (confirmation) {
+          flag = confirmation.flag
+        }
       }
     } else {
       const flags = [npmConfig?.["legacy-peer-deps"] && "--legacy-peer-deps", npmConfig?.["force"] && "--force"].filter(Boolean)
@@ -65,23 +72,44 @@ export async function updateDependencies(
 
   dependenciesSpinner?.start()
 
-  await execa(
-    packageManager,
-    [
-      packageManager === "npm" ? "install" : "add",
-      ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
-      ...dependencies,
-    ],
-    {
-      cwd: config.resolvedPaths.cwd,
-    }
-  )
+  if (dependencies?.length) {
+    await execa(
+      packageManager,
+      [
+        packageManager === "npm" ? "install" : "add",
+        ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
+        ...(packageManager === "deno"
+          ? dependencies.map((dep) => `npm:${dep}`)
+          : dependencies),
+      ],
+      {
+        cwd: config.resolvedPaths.cwd,
+      }
+    )
+  }
+
+  if (devDependencies?.length) {
+    await execa(
+      packageManager,
+      [
+        packageManager === "npm" ? "install" : "add",
+        ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
+        "-D",
+        ...(packageManager === "deno"
+          ? devDependencies.map((dep) => `npm:${dep}`)
+          : devDependencies),
+      ],
+      {
+        cwd: config.resolvedPaths.cwd,
+      }
+    )
+  }
 
   dependenciesSpinner?.succeed()
 }
 
 function isUsingReact19(config: Config) {
-  const packageInfo = getPackageInfo(config.resolvedPaths.cwd)
+  const packageInfo = getPackageInfo(config.resolvedPaths.cwd, false)
 
   if (!packageInfo?.dependencies?.react) {
     return false

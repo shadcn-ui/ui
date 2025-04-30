@@ -6,21 +6,16 @@
       "name": "index",
       "type": "registry:style",
       "dependencies": [
-        "tailwindcss-animate",
         "class-variance-authority",
         "lucide-react"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "utils"
       ],
       "files": [],
-      "tailwind": {
-        "config": {
-          "plugins": [
-            "require(\"tailwindcss-animate\")"
-          ]
-        }
-      },
       "cssVars": {}
     },
     {
@@ -34,37 +29,7 @@
           "path": "registry/new-york-v4/ui/accordion.tsx",
           "type": "registry:ui"
         }
-      ],
-      "tailwind": {
-        "config": {
-          "theme": {
-            "extend": {
-              "keyframes": {
-                "accordion-down": {
-                  "from": {
-                    "height": "0"
-                  },
-                  "to": {
-                    "height": "var(--radix-accordion-content-height)"
-                  }
-                },
-                "accordion-up": {
-                  "from": {
-                    "height": "var(--radix-accordion-content-height)"
-                  },
-                  "to": {
-                    "height": "0"
-                  }
-                }
-              },
-              "animation": {
-                "accordion-down": "accordion-down 0.2s ease-out",
-                "accordion-up": "accordion-up 0.2s ease-out"
-              }
-            }
-          }
-        }
-      }
+      ]
     },
     {
       "name": "alert",
@@ -121,6 +86,9 @@
     {
       "name": "badge",
       "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/badge.tsx",
@@ -244,7 +212,7 @@
       "name": "command",
       "type": "registry:ui",
       "dependencies": [
-        "cmdk@1.0.0"
+        "cmdk"
       ],
       "registryDependencies": [
         "dialog"
@@ -711,6 +679,92 @@
           "path": "registry/new-york-v4/ui/tooltip.tsx",
           "type": "registry:ui"
         }
+      ]
+    },
+    {
+      "name": "dashboard-01",
+      "type": "registry:block",
+      "description": "A dashboard with sidebar, charts and data table.",
+      "dependencies": [
+        "@dnd-kit/core",
+        "@dnd-kit/modifiers",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "@tanstack/react-table",
+        "zod",
+        "@tabler/icons-react"
+      ],
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "chart",
+        "card",
+        "select",
+        "tabs",
+        "table",
+        "toggle-group",
+        "badge",
+        "button",
+        "checkbox",
+        "dropdown-menu",
+        "drawer",
+        "input",
+        "avatar",
+        "sheet",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/data.json",
+          "type": "registry:file",
+          "target": "app/dashboard/data.json"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/components/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/components/chart-area-interactive.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/components/data-table.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/components/nav-documents.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/components/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/components/nav-secondary.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/components/nav-user.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/components/section-cards.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/dashboard-01/components/site-header.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "dashboard"
       ]
     },
     {
