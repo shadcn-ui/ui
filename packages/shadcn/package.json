@@ -59,6 +59,7 @@
     "@babel/core": "^7.22.1",
     "@babel/parser": "^7.22.6",
     "@babel/plugin-transform-typescript": "^7.22.5",
+    "@turbo/workspaces": "^2.5.2",
     "commander": "^10.0.0",
     "cosmiconfig": "^8.1.3",
     "deepmerge": "^4.3.1",
