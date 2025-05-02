@@ -222,7 +222,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -263,7 +263,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
               }
@@ -282,7 +282,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
                 }
         body {
           @apply bg-background text-foreground;
@@ -309,6 +309,12 @@ describe("transformCssVarsV4", () => {
         }
         `,
         {
+          theme: {
+            "font-poppins": "Poppins, sans-serif",
+            "breakpoint-3xl": "120rem",
+            "shadow-2xs": "0px 1px 2px 0px rgba(0, 0, 0, 0.05)",
+            "animate-bounce": "bounce 1s infinite",
+          },
           light: {
             background: "215 20.2% 65.1%",
             foreground: "222.2 84% 4.9%",
@@ -321,6 +327,150 @@ describe("transformCssVarsV4", () => {
         },
         { tailwind: { cssVariables: true } },
         { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @custom-variant dark (&:is(.dark *));
+              :root {
+                --background: hsl(210 40% 98%);
+                --foreground: hsl(222.2 84% 4.9%);
+                --primary: hsl(215 20.2% 65.1%);
+              }
+
+              .dark {
+                --background: hsl(222.2 84% 4.9%);
+                --foreground: hsl(60 9.1% 97.8%);
+                --primary: hsl(222.2 84% 4.9%);
+              }
+
+              @theme inline {
+                --color-background: var(--background);
+                --font-poppins: Poppins, sans-serif;
+                --breakpoint-3xl: 120rem;
+                --shadow-2xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+                --animate-bounce: bounce 1s infinite;
+                --color-primary: var(--primary);
+                --color-foreground: var(--foreground);
+              }
+
+              @layer base {
+        * {
+          @apply border-border outline-ring/50;
+                }
+        body {
+          @apply bg-background text-foreground;
+                }
+      }
+              "
+    `)
+  })
+
+  test("should NOT override theme vars if overwriteCssVars is false", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        :root {
+          --background: hsl(210 40% 98%);
+        }
+
+        .dark {
+          --background: hsl(222.2 84% 4.9%);
+        }
+
+        @theme inline {
+          --color-background: var(--background);
+          --font-sans: Inter, sans-serif;
+        }
+        `,
+        {
+          theme: {
+            "font-sans": "Poppins, sans-serif",
+            "breakpoint-3xl": "120rem",
+          },
+          light: {
+            background: "215 20.2% 65.1%",
+            foreground: "222.2 84% 4.9%",
+            primary: "215 20.2% 65.1%",
+          },
+          dark: {
+            foreground: "60 9.1% 97.8%",
+            primary: "222.2 84% 4.9%",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @custom-variant dark (&:is(.dark *));
+              :root {
+                --background: hsl(210 40% 98%);
+                --foreground: hsl(222.2 84% 4.9%);
+                --primary: hsl(215 20.2% 65.1%);
+              }
+
+              .dark {
+                --background: hsl(222.2 84% 4.9%);
+                --foreground: hsl(60 9.1% 97.8%);
+                --primary: hsl(222.2 84% 4.9%);
+              }
+
+              @theme inline {
+                --color-background: var(--background);
+                --font-sans: Inter, sans-serif;
+                --breakpoint-3xl: 120rem;
+                --color-primary: var(--primary);
+                --color-foreground: var(--foreground);
+              }
+
+              @layer base {
+        * {
+          @apply border-border outline-ring/50;
+                }
+        body {
+          @apply bg-background text-foreground;
+                }
+      }
+              "
+    `)
+  })
+
+  test("should override theme vars if overwriteCssVars is true", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        :root {
+          --background: hsl(210 40% 98%);
+        }
+
+        .dark {
+          --background: hsl(222.2 84% 4.9%);
+        }
+
+        @theme inline {
+          --color-background: var(--background);
+          --font-sans: Inter, sans-serif;
+        }
+        `,
+        {
+          theme: {
+            "font-sans": "Poppins, sans-serif",
+            "breakpoint-3xl": "120rem",
+          },
+          light: {
+            background: "215 20.2% 65.1%",
+            foreground: "222.2 84% 4.9%",
+            primary: "215 20.2% 65.1%",
+          },
+          dark: {
+            foreground: "60 9.1% 97.8%",
+            primary: "222.2 84% 4.9%",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4", overwriteCssVars: true }
       )
     ).toMatchInlineSnapshot(`
       "@import "tailwindcss";
@@ -340,13 +490,15 @@ describe("transformCssVarsV4", () => {
 
               @theme inline {
                 --color-background: var(--background);
+                --font-sans: Poppins, sans-serif;
+                --breakpoint-3xl: 120rem;
                 --color-primary: var(--primary);
                 --color-foreground: var(--foreground);
               }
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
                 }
         body {
           @apply bg-background text-foreground;
@@ -392,7 +544,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
                 --foo: 0.5rem;
@@ -413,7 +565,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
                 }
         body {
           @apply bg-background text-foreground;
@@ -467,7 +619,7 @@ describe("transformCssVarsV4", () => {
 
       @custom-variant dark (&:is(.dark *));
               :root {
-                --background: hsl(215 20.2% 65.1%);
+                --background: hsl(210 40% 98%);
                 --foreground: hsl(222.2 84% 4.9%);
                 --primary: hsl(215 20.2% 65.1%);
               }
@@ -492,6 +644,15 @@ describe("transformCssVarsV4", () => {
                   @apply bg-background text-foreground;
                 }
               }
+
+              @layer base {
+        * {
+          @apply border-border outline-ring/50;
+                }
+        body {
+          @apply bg-background text-foreground;
+                }
+      }
               "
     `)
   })
@@ -536,7 +697,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -586,7 +747,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -636,7 +797,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -684,7 +845,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -732,7 +893,7 @@ describe("transformCssVarsV4", () => {
 
             @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
               }
         body {
           @apply bg-background text-foreground;
@@ -777,7 +938,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -808,7 +969,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -846,7 +1007,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -884,7 +1045,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -949,7 +1110,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -1024,7 +1185,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
                 }
         body {
           @apply bg-background text-foreground;
@@ -1095,7 +1256,7 @@ describe("transformCssVarsV4", () => {
 
       @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
         }
         body {
           @apply bg-background text-foreground;
@@ -1168,7 +1329,7 @@ describe("transformCssVarsV4", () => {
 
               @layer base {
         * {
-          @apply border-border;
+          @apply border-border outline-ring/50;
                 }
         body {
           @apply bg-background text-foreground;

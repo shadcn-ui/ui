@@ -30,7 +30,7 @@ Customizable.
 
 ## Installation
 
-<Tabs defaultValue="cli">
+<CodeTabs>
 
 <TabsList>
   <TabsTrigger value="cli">CLI</TabsTrigger>
@@ -146,7 +146,7 @@ sidebar: {
 
 </TabsContent>
 
-</Tabs>
+</CodeTabs>
 
 ## Structure
 
@@ -408,7 +408,7 @@ const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
 ### Persisted State
 
-The `SidebarProvider` supports persisting the sidebar state across page reloads and server-side rendering. It uses cookies to store the current state of the sidebar. When the sidebar state changes, a default cookie named `sidebar:state` is set with the current open/closed state. This cookie is then read on subsequent page loads to restore the sidebar state.
+The `SidebarProvider` supports persisting the sidebar state across page reloads and server-side rendering. It uses cookies to store the current state of the sidebar. When the sidebar state changes, a default cookie named `sidebar_state` is set with the current open/closed state. This cookie is then read on subsequent page loads to restore the sidebar state.
 
 To persist sidebar state in Next.js, set up your `SidebarProvider` in `app/layout.tsx` like this:
 
@@ -420,7 +420,7 @@ import { AppSidebar } from "@/components/app-sidebar"
 
 export async function Layout({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies()
-  const defaultOpen = cookieStore.get("sidebar:state")?.value === "true"
+  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
 
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
@@ -437,7 +437,7 @@ export async function Layout({ children }: { children: React.ReactNode }) {
 You can change the name of the cookie by updating the `SIDEBAR_COOKIE_NAME` variable in `sidebar.tsx`.
 
 ```tsx showLineNumbers title="components/ui/sidebar.tsx"
-const SIDEBAR_COOKIE_NAME = "sidebar:state"
+const SIDEBAR_COOKIE_NAME = "sidebar_state"
 ```
 
 ## Sidebar

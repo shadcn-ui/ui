@@ -1,5 +1,6 @@
 import path from "path"
-import { Config } from "@/src/utils/get-config"
+import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
+import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -13,7 +14,6 @@ import {
   iconsSchema,
   registryBaseColorSchema,
   registryIndexSchema,
-  registryItemFileSchema,
   registryItemSchema,
   registryResolvedItemsTreeSchema,
   stylesSchema,
@@ -24,6 +24,31 @@ const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined
+
+const registryCache = new Map<string, Promise<any>>()
+
+export const BASE_COLORS = [
+  {
+    name: "neutral",
+    label: "Neutral",
+  },
+  {
+    name: "gray",
+    label: "Gray",
+  },
+  {
+    name: "zinc",
+    label: "Zinc",
+  },
+  {
+    name: "stone",
+    label: "Stone",
+  },
+  {
+    name: "slate",
+    label: "Slate",
+  },
+] as const
 
 export async function getRegistryIndex() {
   try {
@@ -73,28 +98,7 @@ export async function getRegistryItem(name: string, style: string) {
 }
 
 export async function getRegistryBaseColors() {
-  return [
-    {
-      name: "neutral",
-      label: "Neutral",
-    },
-    {
-      name: "gray",
-      label: "Gray",
-    },
-    {
-      name: "zinc",
-      label: "Zinc",
-    },
-    {
-      name: "stone",
-      label: "Stone",
-    },
-    {
-      name: "slate",
-      label: "Slate",
-    },
-  ]
+  return BASE_COLORS
 }
 
 export async function getRegistryBaseColor(baseColor: string) {
@@ -176,52 +180,64 @@ export async function fetchRegistry(paths: string[]) {
     const results = await Promise.all(
       paths.map(async (path) => {
         const url = getRegistryUrl(path)
-        const response = await fetch(url, { agent })
 
-        if (!response.ok) {
-          const errorMessages: { [key: number]: string } = {
-            400: "Bad request",
-            401: "Unauthorized",
-            403: "Forbidden",
-            404: "Not found",
-            500: "Internal server error",
-          }
-
-          if (response.status === 401) {
-            throw new Error(
-              `You are not authorized to access the component at ${highlighter.info(
-                url
-              )}.\nIf this is a remote registry, you may need to authenticate.`
-            )
-          }
-
-          if (response.status === 404) {
-            throw new Error(
-              `The component at ${highlighter.info(
-                url
-              )} was not found.\nIt may not exist at the registry. Please make sure it is a valid component.`
-            )
-          }
-
-          if (response.status === 403) {
-            throw new Error(
-              `You do not have access to the component at ${highlighter.info(
-                url
-              )}.\nIf this is a remote registry, you may need to authenticate or a token.`
-            )
-          }
-
-          const result = await response.json()
-          const message =
-            result && typeof result === "object" && "error" in result
-              ? result.error
-              : response.statusText || errorMessages[response.status]
-          throw new Error(
-            `Failed to fetch from ${highlighter.info(url)}.\n${message}`
-          )
+        // Check cache first
+        if (registryCache.has(url)) {
+          return registryCache.get(url)
         }
 
-        return response.json()
+        // Store the promise in the cache before awaiting
+        const fetchPromise = (async () => {
+          const response = await fetch(url, { agent })
+
+          if (!response.ok) {
+            const errorMessages: { [key: number]: string } = {
+              400: "Bad request",
+              401: "Unauthorized",
+              403: "Forbidden",
+              404: "Not found",
+              500: "Internal server error",
+            }
+
+            if (response.status === 401) {
+              throw new Error(
+                `You are not authorized to access the component at ${highlighter.info(
+                  url
+                )}.\nIf this is a remote registry, you may need to authenticate.`
+              )
+            }
+
+            if (response.status === 404) {
+              throw new Error(
+                `The component at ${highlighter.info(
+                  url
+                )} was not found.\nIt may not exist at the registry. Please make sure it is a valid component.`
+              )
+            }
+
+            if (response.status === 403) {
+              throw new Error(
+                `You do not have access to the component at ${highlighter.info(
+                  url
+                )}.\nIf this is a remote registry, you may need to authenticate or a token.`
+              )
+            }
+
+            const result = await response.json()
+            const message =
+              result && typeof result === "object" && "error" in result
+                ? result.error
+                : response.statusText || errorMessages[response.status]
+            throw new Error(
+              `Failed to fetch from ${highlighter.info(url)}.\n${message}`
+            )
+          }
+
+          return response.json()
+        })()
+
+        registryCache.set(url, fetchPromise)
+        return fetchPromise
       })
     )
 
@@ -231,6 +247,10 @@ export async function fetchRegistry(paths: string[]) {
     handleError(error)
     return []
   }
+}
+
+export function clearRegistryCache() {
+  registryCache.clear()
 }
 
 export async function registryResolveItemsTree(
@@ -269,6 +289,14 @@ export async function registryResolveItemsTree(
       }
     }
 
+    // Sort the payload so that registry:theme is always first.
+    payload.sort((a, b) => {
+      if (a.type === "registry:theme") {
+        return -1
+      }
+      return 1
+    })
+
     let tailwind = {}
     payload.forEach((item) => {
       tailwind = deepmerge(tailwind, item.tailwind ?? {})
@@ -277,6 +305,11 @@ export async function registryResolveItemsTree(
     let cssVars = {}
     payload.forEach((item) => {
       cssVars = deepmerge(cssVars, item.cssVars ?? {})
+    })
+
+    let css = {}
+    payload.forEach((item) => {
+      css = deepmerge(css, item.css ?? {})
     })
 
     let docs = ""
@@ -296,6 +329,7 @@ export async function registryResolveItemsTree(
       files: deepmerge.all(payload.map((item) => item.files ?? [])),
       tailwind,
       cssVars,
+      css,
       docs,
     })
   } catch (error) {
@@ -311,9 +345,13 @@ async function resolveRegistryDependencies(
   const visited = new Set<string>()
   const payload: string[] = []
 
+  const style = config.resolvedPaths?.cwd
+    ? await getTargetStyleFromConfig(config.resolvedPaths.cwd, config.style)
+    : config.style
+
   async function resolveDependencies(itemUrl: string) {
     const url = getRegistryUrl(
-      isUrl(itemUrl) ? itemUrl : `styles/${config.style}/${itemUrl}.json`
+      isUrl(itemUrl) ? itemUrl : `styles/${style}/${itemUrl}.json`
     )
 
     if (visited.has(url)) {
@@ -345,7 +383,10 @@ async function resolveRegistryDependencies(
 }
 
 export async function registryGetTheme(name: string, config: Config) {
-  const baseColor = await getRegistryBaseColor(name)
+  const [baseColor, tailwindVersion] = await Promise.all([
+    getRegistryBaseColor(name),
+    getProjectTailwindVersionFromConfig(config),
+  ])
   if (!baseColor) {
     return null
   }
@@ -369,6 +410,7 @@ export async function registryGetTheme(name: string, config: Config) {
       },
     },
     cssVars: {
+      theme: {},
       light: {
         radius: "0.5rem",
       },
@@ -379,9 +421,13 @@ export async function registryGetTheme(name: string, config: Config) {
   if (config.tailwind.cssVariables) {
     theme.tailwind.config.theme.extend.colors = {
       ...theme.tailwind.config.theme.extend.colors,
-      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark),
+      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark ?? {}),
     }
     theme.cssVars = {
+      theme: {
+        ...baseColor.cssVars.theme,
+        ...theme.cssVars.theme,
+      },
       light: {
         ...baseColor.cssVars.light,
         ...theme.cssVars.light,
@@ -390,6 +436,22 @@ export async function registryGetTheme(name: string, config: Config) {
         ...baseColor.cssVars.dark,
         ...theme.cssVars.dark,
       },
+    }
+
+    if (tailwindVersion === "v4" && baseColor.cssVarsV4) {
+      theme.cssVars = {
+        theme: {
+          ...baseColor.cssVarsV4.theme,
+          ...theme.cssVars.theme,
+        },
+        light: {
+          radius: "0.625rem",
+          ...baseColor.cssVarsV4.light,
+        },
+        dark: {
+          ...baseColor.cssVarsV4.dark,
+        },
+      }
     }
   }
 
@@ -411,7 +473,7 @@ function getRegistryUrl(path: string) {
   return `${REGISTRY_URL}/${path}`
 }
 
-function isUrl(path: string) {
+export function isUrl(path: string) {
   try {
     new URL(path)
     return true

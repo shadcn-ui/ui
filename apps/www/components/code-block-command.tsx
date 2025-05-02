@@ -56,7 +56,7 @@ export function CodeBlockCommand({
   return (
     <div className="relative mt-6 max-h-[650px] overflow-x-auto rounded-xl bg-zinc-950 dark:bg-zinc-900">
       <Tabs
-        defaultValue={packageManager}
+        value={packageManager}
         onValueChange={(value) => {
           setConfig({
             ...config,
@@ -79,20 +79,22 @@ export function CodeBlockCommand({
             })}
           </TabsList>
         </div>
-        {Object.entries(tabs).map(([key, value]) => {
-          return (
-            <TabsContent key={key} value={key} className="mt-0">
-              <pre className="px-4 py-5">
-                <code
-                  className="relative font-mono text-sm leading-none"
-                  data-language="bash"
-                >
-                  {value}
-                </code>
-              </pre>
-            </TabsContent>
-          )
-        })}
+        <div className="overflow-x-auto">
+          {Object.entries(tabs).map(([key, value]) => {
+            return (
+              <TabsContent key={key} value={key} className="mt-0">
+                <pre className="px-4 py-5">
+                  <code
+                    className="relative font-mono text-sm leading-none"
+                    data-language="bash"
+                  >
+                    {value}
+                  </code>
+                </pre>
+              </TabsContent>
+            )
+          })}
+        </div>
       </Tabs>
       <Button
         size="icon"

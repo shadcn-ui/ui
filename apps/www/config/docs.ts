@@ -75,6 +75,11 @@ export const docsConfig: DocsConfig = {
           title: "Monorepo",
           href: "/docs/monorepo",
           items: [],
+        },
+        {
+          title: "Tailwind v4",
+          href: "/docs/tailwind-v4",
+          items: [],
           label: "New",
         },
         {
@@ -96,7 +101,6 @@ export const docsConfig: DocsConfig = {
           title: "Blocks",
           href: "/docs/blocks",
           items: [],
-          label: "New",
         },
         {
           title: "Figma",
@@ -124,6 +128,16 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Laravel",
+          href: "/docs/installation/laravel",
+          items: [],
+        },
+        {
+          title: "React Router",
+          href: "/docs/installation/react-router",
+          items: [],
+        },
+        {
           title: "Remix",
           href: "/docs/installation/remix",
           items: [],
@@ -134,13 +148,13 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Laravel",
-          href: "/docs/installation/laravel",
+          title: "Tanstack Start",
+          href: "/docs/installation/tanstack",
           items: [],
         },
         {
-          title: "Gatsby",
-          href: "/docs/installation/gatsby",
+          title: "Tanstack Router",
+          href: "/docs/installation/tanstack-router",
           items: [],
         },
         {
@@ -417,6 +431,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Getting Started",
           href: "/docs/registry/getting-started",
+          items: [],
+        },
+        {
+          title: "Examples",
+          href: "/docs/registry/examples",
           items: [],
         },
         {
