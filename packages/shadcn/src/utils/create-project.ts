@@ -7,6 +7,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
+import { convert } from "@turbo/workspaces"
 import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
@@ -231,6 +232,15 @@ async function createMonorepoProject(
     const extractedPath = path.resolve(templatePath, "monorepo-next")
     await fs.move(extractedPath, projectPath)
     await fs.remove(templatePath)
+
+    await convert({
+      root: projectPath,
+      to: options.packageManager,
+      options: {
+        skipInstall: true,
+        ignoreUnchangedPackageManager: true,
+      },
+    })
 
     // Run install.
     await execa(options.packageManager, ["install"], {
