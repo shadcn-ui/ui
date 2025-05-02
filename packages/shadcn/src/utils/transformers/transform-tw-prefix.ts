@@ -177,8 +177,8 @@ export function applyPrefix(input: string, prefix: string = "") {
     const [variant, value, modifier] = splitClassName(className)
     if (variant) {
       modifier
-        ? prefixed.push(`${variant}:${prefix}${value}/${modifier}`)
-        : prefixed.push(`${variant}:${prefix}${value}`)
+        ? prefixed.push(`${prefix}:${variant}${value}/${modifier}`)
+        : prefixed.push(`${prefix}:${variant}${value}`)
     } else {
       modifier
         ? prefixed.push(`${prefix}${value}/${modifier}`)
