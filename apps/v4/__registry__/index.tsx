@@ -2098,7 +2098,7 @@ export const Index: Record<string, any> = {
         target: "app/login/page.tsx",
       },
       {
-        path: "registry/blocks/login-06/components/login-form.tsx",
+        path: "registry/blocks/login-06/components/auth-form.tsx",
         type: "registry:component",
         target: "",
       },

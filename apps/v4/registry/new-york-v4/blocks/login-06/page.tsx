@@ -1,10 +1,10 @@
-import { LoginForm } from "@/registry/new-york-v4/blocks/login-06/components/login-form"
+import { AuthForm } from "@/registry/new-york/blocks/login-06/components/auth-form"
 
-export default function LoginPage() {
+export default function Page() {
   return (
-    <div className="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm">
-        <LoginForm />
+        <AuthForm />
       </div>
     </div>
   )

@@ -714,7 +714,7 @@ export const blocks: Registry["items"] = [
         type: "registry:page",
       },
       {
-        path: "blocks/login-06/components/login-form.tsx",
+        path: "blocks/login-06/components/auth-form.tsx",
         type: "registry:component",
       },
     ],

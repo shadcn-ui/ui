@@ -1342,7 +1342,7 @@ export const Index: Record<string, any> = {
         type: "registry:page",
         target: "app/login/page.tsx"
       },{
-        path: "registry/new-york/blocks/login-06/components/login-form.tsx",
+        path: "registry/new-york/blocks/login-06/components/auth-form.tsx",
         type: "registry:component",
         target: ""
       }],
@@ -6714,7 +6714,7 @@ export const Index: Record<string, any> = {
         type: "registry:page",
         target: "app/login/page.tsx"
       },{
-        path: "registry/default/blocks/login-06/components/login-form.tsx",
+        path: "registry/default/blocks/login-06/components/auth-form.tsx",
         type: "registry:component",
         target: ""
       }],
