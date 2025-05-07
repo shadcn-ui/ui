@@ -1494,6 +1494,32 @@
       ]
     },
     {
+      "name": "login-06",
+      "type": "registry:block",
+      "description": "A simple email-only login page.",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/login-06/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/login-06/components/auth-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "login"
+      ]
+    },
+    {
       "name": "chart-area-axes",
       "type": "registry:block",
       "registryDependencies": [
