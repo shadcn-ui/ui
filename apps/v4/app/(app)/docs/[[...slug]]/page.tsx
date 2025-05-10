@@ -6,9 +6,12 @@ import { findNeighbour } from "fumadocs-core/server"
 import { source } from "@/lib/docs"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsBreadcrumb } from "@/components/docs-breadcrumb"
+import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { mdxComponents } from "@/components/mdx-components"
+import { OpenInV0Cta } from "@/components/open-in-v0-cta"
 import { Button } from "@/registry/new-york-v4/ui/button"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 export function generateStaticParams() {
   return source.generateParams()
@@ -72,14 +75,33 @@ export default async function Page(props: {
   const neighbours = await findNeighbour(source.pageTree, page.url)
 
   return (
-    <div
-      data-slot="docs"
-      className="flex items-start gap-12 px-6 py-6 text-[15px] lg:py-8 xl:w-full"
-    >
+    <div data-slot="docs" className="flex items-stretch text-[15px] xl:w-full">
       <div className="flex-1">
-        <div className="mx-auto flex max-w-2xl min-w-0 flex-1 flex-col gap-8 text-neutral-800 dark:text-neutral-300">
+        <div className="bg-background/95 supports-[backdrop-filter]:bg-background/60 border-grid sticky top-[calc(var(--header-height)+1px)] z-10 flex h-12 items-center justify-between border-b px-4 backdrop-blur">
+          <DocsBreadcrumb tree={source.pageTree} />
+          <div className="flex items-center gap-2">
+            <DocsCopyPage page={page.data.content} />
+            <Separator orientation="vertical" className="mx-1 !h-4" />
+            {neighbours.previous && (
+              <Button variant="outline" size="icon" className="size-7" asChild>
+                <Link href={neighbours.previous.url}>
+                  <IconArrowLeft />
+                  <span className="sr-only">Previous</span>
+                </Link>
+              </Button>
+            )}
+            {neighbours.next && (
+              <Button variant="outline" size="icon" className="size-7" asChild>
+                <Link href={neighbours.next.url}>
+                  <span className="sr-only">Next</span>
+                  <IconArrowRight />
+                </Link>
+              </Button>
+            )}
+          </div>
+        </div>
+        <div className="mx-auto flex max-w-2xl min-w-0 flex-1 flex-col gap-8 py-6 text-neutral-800 lg:py-8 dark:text-neutral-300">
           <div className="mdx flex flex-col gap-2">
-            <DocsBreadcrumb tree={source.pageTree} />
             <div className="flex flex-col gap-1">
               <h1 className="scroll-m-20 text-3xl font-semibold">
                 {doc.title}
@@ -112,8 +134,17 @@ export default async function Page(props: {
           </div>
         </div>
       </div>
-      <div className="sticky top-24 ml-auto hidden w-72 xl:block">
-        <DocsTableOfContents toc={page.data.toc} />
+      <div className="border-grid sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)+1px)] w-72 flex-col gap-4 overflow-hidden border-l pb-8 xl:flex">
+        <div className="border-grid h-12 border-b" />
+        {page.data.toc && (
+          <div className="no-scrollbar border-grid overflow-y-auto border-b px-8">
+            <DocsTableOfContents toc={page.data.toc} />
+            <div className="h-12" />
+          </div>
+        )}
+        <div className="flex-1 px-6">
+          <OpenInV0Cta />
+        </div>
       </div>
     </div>
   )

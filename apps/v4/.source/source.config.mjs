@@ -1,6 +1,9 @@
 // source.config.ts
 import { defineConfig, defineDocs } from "fumadocs-mdx/config";
 import rehypePrettyCode from "rehype-pretty-code";
+
+// lib/highlight-code.ts
+import { codeToHtml } from "shiki";
 var transformers = [
   {
     code(node) {
@@ -47,6 +50,8 @@ var transformers = [
     }
   }
 ];
+
+// source.config.ts
 var source_config_default = defineConfig({
   mdxOptions: {
     rehypePlugins: (plugins) => {

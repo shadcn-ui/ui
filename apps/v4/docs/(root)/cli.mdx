@@ -15,7 +15,7 @@ npx shadcn@latest init
 
 ### Options
 
-```txt
+```bash
 Usage: shadcn init [options] [components...]
 
 initialize your project and install dependencies
@@ -24,16 +24,18 @@ Arguments:
   components         the components to add or a url to the component.
 
 Options:
-  -y, --yes           skip confirmation prompt. (default: true)
-  -d, --defaults,     use default configuration. (default: false)
-  -f, --force         force overwrite of existing configuration. (default: false)
-  -c, --cwd <cwd>     the working directory. defaults to the current directory. (default: "/Users/shadcn/Desktop")
-  -s, --silent        mute output. (default: false)
-  --src-dir           use the src directory when creating a new project. (default: false)
-  --no-src-dir        do not use the src directory when creating a new project.
-  --css-variables     use css variables for theming. (default: true)
-  --no-css-variables  do not use css variables for theming.
-  -h, --help          display help for command
+  -t, --template <template>      the template to use. (next, next-monorepo)
+  -b, --base-color <base-color>  the base color to use. (neutral, gray, zinc, stone, slate)
+  -y, --yes                      skip confirmation prompt. (default: true)
+  -f, --force                    force overwrite of existing configuration. (default: false)
+  -c, --cwd <cwd>                the working directory. defaults to the current directory. (default:
+                                 "/Users/shadcn/Code/shadcn/ui/packages/shadcn")
+  -s, --silent                   mute output. (default: false)
+  --src-dir                      use the src directory when creating a new project. (default: false)
+  --no-src-dir                   do not use the src directory when creating a new project.
+  --css-variables                use css variables for theming. (default: true)
+  --no-css-variables             do not use css variables for theming.
+  -h, --help                     display help for command
 ```
 
 ## add
@@ -46,7 +48,7 @@ npx shadcn@latest add [component]
 
 ### Options
 
-```txt
+```bash
 Usage: shadcn add [options] [components...]
 
 add a component to your project
@@ -80,7 +82,7 @@ This command reads the `registry.json` file and generates the registry JSON file
 
 ### Options
 
-```txt
+```bash
 Usage: shadcn build [options] [registry]
 
 build components for a shadcn registry

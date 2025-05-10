@@ -6,16 +6,12 @@ import { registryItemFileSchema, registryItemSchema } from "shadcn/registry"
 import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 import { z } from "zod"
 
-const memoizedIndex: typeof Index = Object.fromEntries(
-  Object.entries(Index).map(([style, items]) => [style, { ...items }])
-)
-
 export function getRegistryComponent(name: string) {
-  return memoizedIndex[name]?.component
+  return Index[name]?.component
 }
 
 export async function getRegistryItem(name: string) {
-  const item = memoizedIndex[name]
+  const item = Index[name]
 
   if (!item) {
     return null

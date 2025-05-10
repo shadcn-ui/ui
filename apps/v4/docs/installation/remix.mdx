@@ -3,11 +3,6 @@ title: Remix
 description: Install and configure shadcn/ui for Remix.
 ---
 
-<Callout className="mb-6 border-blue-600 bg-blue-50 dark:border-blue-900 dark:bg-blue-950 [&_code]:bg-blue-100 dark:[&_code]:bg-blue-900">
-  **Note:** The following guide is for Tailwind v4. If you are using Tailwind
-  v3, use `shadcn@2.3.0`.
-</Callout>
-
 <Callout>
 
 **Note:** This guide is for Remix. For React Router, see the [React Router](/docs/installation/react-router) guide.
@@ -36,10 +31,8 @@ npx shadcn@latest init
 
 You will be asked a few questions to configure `components.json`:
 
-```txt showLineNumbers
-Which style would you like to use? › New York
-Which color would you like to use as base color? › Zinc
-Do you want to use CSS variables for colors? › no / yes
+```bash
+Which color would you like to use as base color? › Neutral
 ```
 
 ### App structure
@@ -63,7 +56,7 @@ npm install -D tailwindcss@latest autoprefixer@latest
 
 Then we create a `postcss.config.js` file:
 
-```js
+```js title="postcss.config.js" showLineNumbers
 export default {
   plugins: {
     tailwindcss: {},
@@ -74,7 +67,7 @@ export default {
 
 And finally we add the following to our `remix.config.js` file:
 
-```js {4-5} showLineNumbers title="remix.config.js"
+```js title="remix.config.js" {4-5} showLineNumbers
 /** @type {import('@remix-run/dev').AppConfig} */
 export default {
   ...

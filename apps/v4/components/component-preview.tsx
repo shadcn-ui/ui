@@ -1,72 +1,55 @@
-"use client"
-
-import * as React from "react"
 import Image from "next/image"
 import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
+import { ComponentSource } from "@/components/component-source"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
-import { styles } from "@/registry/registry-styles"
 
 export function ComponentPreview({
   name,
   type,
-  children,
   className,
   align = "center",
   hideCode = false,
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
-  extractClassname?: boolean
-  extractedClassNames?: string
   align?: "center" | "start" | "end"
   description?: string
   hideCode?: boolean
   type?: "block" | "component" | "example"
 }) {
-  const [config] = useConfig()
-  const index = styles.findIndex((style) => style.name === config.style)
+  const Component = Index[name]?.component
 
-  const Codes = React.Children.toArray(children) as React.ReactElement[]
-  const Code = Codes[index]
-
-  const Preview = React.useMemo(() => {
-    const Component = Index[name]?.component
-
-    if (!Component) {
-      return (
-        <p className="text-muted-foreground text-sm">
-          Component{" "}
-          <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
-            {name}
-          </code>{" "}
-          not found in registry.
-        </p>
-      )
-    }
-
-    return <Component />
-  }, [name, config.style])
+  if (!Component) {
+    return (
+      <p className="text-muted-foreground text-sm">
+        Component{" "}
+        <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
+          {name}
+        </code>{" "}
+        not found in registry.
+      </p>
+    )
+  }
 
   if (type === "block") {
     return (
       <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border">
         <Image
-          src={`/r/styles/${config.style}/${name}-light.png`}
+          src={`/r/styles/new-york-v4/${name}-light.png`}
           alt={name}
           width={1440}
           height={900}
           className="bg-background absolute top-0 left-0 z-20 w-[970px] max-w-none sm:w-[1280px] md:hidden dark:hidden md:dark:hidden"
         />
         <Image
-          src={`/r/styles/${config.style}/${name}-dark.png`}
+          src={`/r/styles/new-york-v4/${name}-dark.png`}
           alt={name}
           width={1440}
           height={900}
@@ -74,7 +57,7 @@ export function ComponentPreview({
         />
         <div className="bg-background absolute inset-0 hidden w-[1600px] md:block">
           <iframe
-            src={`/view/styles/${config.style}/${name}`}
+            src={`/view/styles/new-york-v4/${name}`}
             className="size-full"
           />
         </div>
@@ -117,15 +100,15 @@ export function ComponentPreview({
               }
             )}
           >
-            {Preview}
+            <Component />
           </div>
         </TabsContent>
         <TabsContent value="code">
-          <div className="flex flex-col space-y-4">
-            <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
-              {Code}
-            </div>
-          </div>
+          <ComponentSource
+            name={name}
+            collapsible={false}
+            className="[&>figure]:mt-0"
+          />
         </TabsContent>
       </Tabs>
     </div>

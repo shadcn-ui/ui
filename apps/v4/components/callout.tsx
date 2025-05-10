@@ -13,10 +13,18 @@ export function Callout({
   ...props
 }: React.ComponentProps<typeof Alert> & { icon?: React.ReactNode }) {
   return (
-    <Alert className={cn("bg-muted/30 mt-6", className)} {...props}>
+    <Alert
+      className={cn(
+        "from-card to-muted/50 text-card-foreground mt-6 bg-gradient-to-b",
+        className
+      )}
+      {...props}
+    >
       {icon}
       {title && <AlertTitle>{title}</AlertTitle>}
-      <AlertDescription>{children}</AlertDescription>
+      <AlertDescription className="text-card-foreground/80">
+        {children}
+      </AlertDescription>
     </Alert>
   )
 }

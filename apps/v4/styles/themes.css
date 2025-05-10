@@ -139,6 +139,7 @@
   }
 
   @media (min-width: 1024px) {
+    --font-sans: var(--font-mono);
     --radius: 0.45em;
     --text-lg: 1rem;
     --text-xl: 1.1rem;
@@ -196,15 +197,21 @@
     --text-8xl: 1.8rem;
     --text-base: 0.85rem;
     --text-sm: 0.8rem;
-    --spacing: 0.222222rem;
+    --spacing: 0.2rem;
   }
 
   [data-slot="select-trigger"],
   [data-slot="toggle-group-item"] {
-    --spacing: 0.222222rem;
+    --spacing: 0.2rem;
   }
 
   [data-slot="card"] {
     border-radius: var(--radius);
+    padding-block: calc(var(--spacing) * 4);
+    gap: calc(var(--spacing) * 2);
+  }
+
+  [data-slot="card"].pb-0 {
+    padding-bottom: 0;
   }
 }

@@ -1,5 +1,5 @@
 ---
-title: Add a block
+title: Blocks
 description: Contribute components to the blocks library.
 ---
 
@@ -96,7 +96,7 @@ To add your block to the registry, you need to add your block definition to `reg
 
 This follows the registry schema at [https://ui.shadcn.com/schema/registry-item.json](https://ui.shadcn.com/schema/registry-item.json).
 
-```tsx title="apps/www/registry/registry-blocks.tsx"
+```tsx title="apps/www/registry/registry-blocks.tsx" showLineNumbers
 export const blocks = [
   // ...
   {
@@ -158,14 +158,14 @@ Once the build script is finished, you can view your block at `http://localhost:
   width="1432"
   height="960"
   alt="Block preview"
-  className="border dark:hidden shadow-sm rounded-lg overflow-hidden mt-6 w-full"
+  className="mt-6 w-full overflow-hidden rounded-lg border shadow-sm dark:hidden"
 />
 <Image
   src="/images/block-preview-dark.png"
   width="1432"
   height="960"
   alt="Block preview"
-  className="border hidden dark:block shadow-sm rounded-lg overflow-hidden mt-6 w-full"
+  className="mt-6 hidden w-full overflow-hidden rounded-lg border shadow-sm dark:block"
 />
 
 ### Build your block
@@ -216,7 +216,7 @@ The `categories` property is used to organize your block in the registry.
 
 If you need to add a new category, you can do so by adding it to the `registryCategories` array in `apps/www/registry/registry-categories.ts`.
 
-```tsx title="apps/www/registry/registry-categories.ts"
+```tsx title="apps/www/registry/registry-categories.ts" showLineNumbers
 export const registryCategories = [
   // ...
   {

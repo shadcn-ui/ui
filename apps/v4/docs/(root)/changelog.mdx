@@ -269,7 +269,7 @@ Would you like to use TypeScript (recommended)? no
 
 To opt-out of TypeScript, you can use the `tsx` flag in your `components.json` file.
 
-```json {10} title="components.json"
+```json {10} title="components.json" showLineNumbers
 {
   "style": "default",
   "tailwind": {
@@ -289,7 +289,7 @@ To opt-out of TypeScript, you can use the `tsx` flag in your `components.json` f
 
 To configure import aliases, you can use the following `jsconfig.json`:
 
-```json {4} title="jsconfig.json"
+```json {4} title="jsconfig.json" showLineNumbers
 {
   "compilerOptions": {
     "paths": {
@@ -341,7 +341,7 @@ This file contains all the information about your components: where to install t
 
 You can use this file to change the import path of a component, set a baseColor or change the styling method.
 
-```json title="components.json"
+```json title="components.json" showLineNumbers
 {
   "style": "default",
   "tailwind": {
@@ -424,7 +424,7 @@ When you add new components, the CLI will automatically use the correct theming 
 
 To use utility classes for theming set `tailwind.cssVariables` to `false` in your `components.json` file.
 
-```json {6} title="components.json"
+```json {6} title="components.json" showLineNumbers
 {
   "tailwind": {
     "config": "tailwind.config.js",
@@ -443,7 +443,7 @@ To use utility classes for theming set `tailwind.cssVariables` to `false` in you
 
 To use CSS variables classes for theming set `tailwind.cssVariables` to `true` in your `components.json` file.
 
-```json {6} title="components.json"
+```json {6} title="components.json" showLineNumbers
 {
   "tailwind": {
     "config": "tailwind.config.js",
@@ -460,7 +460,7 @@ To use CSS variables classes for theming set `tailwind.cssVariables` to `true` i
 
 You can now configure the base color for your project. This will be used to generate the default color palette for your components.
 
-```json {5} title="components.json"
+```json {5} title="components.json" showLineNumbers
 {
   "tailwind": {
     "config": "tailwind.config.js",
@@ -481,7 +481,7 @@ If you have `cssVariables` set to `true`, we will set the base colors as CSS var
 
 If you're using a framework that does not support React Server Components, you can now opt out by setting `rsc` to `false`. We will automatically append or remove the `use client` directive when adding components.
 
-```json title="components.json"
+```json title="components.json" showLineNumbers
 {
   "rsc": false
 }
@@ -511,7 +511,7 @@ The `new-york` style is a new style. It ships with smaller buttons, cards with s
 
 When you run the `init` command, you will be asked which style you would like to use. This is saved in your `components.json` file.
 
-```json title="components.json"
+```json title="components.json" showLineNumbers
 {
   "style": "new-york"
 }
@@ -574,7 +574,7 @@ Since we follow a copy and paste approach, you will need to manually update your
 
 Creating a `components.json` file at the root:
 
-```json title="components.json"
+```json title="components.json" showLineNumbers
 {
   "style": "default",
   "rsc": true,
@@ -597,7 +597,7 @@ Update the values for `tailwind.css` and `aliases` to match your project structu
 
 Add the `icon` size to the `buttonVariants`:
 
-```tsx {7} title="components/ui/button.tsx"
+```tsx {7} title="components/ui/button.tsx" showLineNumbers
 const buttonVariants = cva({
   variants: {
     size: {
@@ -614,7 +614,7 @@ const buttonVariants = cva({
 
 1. Replace the content of `sheet.tsx` with the following:
 
-```tsx title="components/ui/sheet.tsx"
+```tsx title="components/ui/sheet.tsx" showLineNumbers
 "use client"
 
 import * as React from "react"

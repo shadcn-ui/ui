@@ -31,7 +31,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "scripts/build-registry.mts"
+    "scripts/build-registry.mts",
+    "source.config.ts",
+    "next.config.mjs"
   ],
   "exclude": ["node_modules"]
 }

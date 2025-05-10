@@ -1,10 +1,12 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { FileIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { CodeBlockCommand } from "@/components/code-block-command"
+import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CodeTabs } from "@/components/code-tabs"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
@@ -194,7 +196,7 @@ export const mdxComponents = {
     return (
       <figcaption
         className={cn(
-          "text-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70",
+          "text-foreground [&_svg]:text-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70",
           className
         )}
         {...props}
@@ -320,7 +322,7 @@ export const mdxComponents = {
   }: React.ComponentProps<typeof TabsContent>) => (
     <TabsContent
       className={cn(
-        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
+        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold [&>.steps]:mt-6",
         className
       )}
       {...props}
@@ -342,6 +344,7 @@ export const mdxComponents = {
   CodeTabs,
   ComponentPreview,
   ComponentSource,
+  CodeCollapsibleWrapper,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn("font-medium underline underline-offset-4", className)}
@@ -363,6 +366,8 @@ function getIconExtension(language: string) {
   switch (language) {
     case "json":
       return <Icons.json />
+    case "css":
+      return <Icons.css className="fill-foreground" />
     case "js":
     case "jsx":
     case "ts":
@@ -370,6 +375,6 @@ function getIconExtension(language: string) {
     case "typescript":
       return <Icons.ts className="fill-foreground" />
     default:
-      return null
+      return <FileIcon />
   }
 }
