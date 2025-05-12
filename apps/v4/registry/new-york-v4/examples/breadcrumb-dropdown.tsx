@@ -1,4 +1,4 @@
-import { ChevronDown, Slash } from "lucide-react"
+import { ChevronDownIcon, SlashIcon } from "lucide-react"
 
 import {
   Breadcrumb,
@@ -23,13 +23,13 @@ export default function BreadcrumbWithDropdown() {
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <Slash />
+          <SlashIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1">
+            <DropdownMenuTrigger className="flex items-center gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
               Components
-              <ChevronDown />
+              <ChevronDownIcon />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuItem>Documentation</DropdownMenuItem>
@@ -39,7 +39,7 @@ export default function BreadcrumbWithDropdown() {
           </DropdownMenu>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <Slash />
+          <SlashIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>

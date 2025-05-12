@@ -41,7 +41,7 @@ npm install @radix-ui/react-aspect-ratio
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="aspect-ratio" />
+<ComponentSource name="aspect-ratio" title="components/ui/aspect-ratio.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -53,13 +53,13 @@ npm install @radix-ui/react-aspect-ratio
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import Image from "next/image"
 
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 ```
 
-```tsx
+```tsx showLineNumbers
 <div className="w-[450px]">
   <AspectRatio ratio={16 / 9}>
     <Image src="..." alt="Image" className="rounded-md object-cover" />

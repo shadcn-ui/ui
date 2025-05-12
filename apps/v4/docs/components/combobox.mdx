@@ -17,11 +17,13 @@ See installation instructions for the [Popover](/docs/components/popover#install
 
 ## Usage
 
-```tsx
+<CodeCollapsibleWrapper>
+
+```tsx showLineNumbers title="components/example-combobox.tsx"
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
+import { CheckIcon, ChevronsUpDownIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -62,7 +64,7 @@ const frameworks = [
   },
 ]
 
-export function ComboboxDemo() {
+export function ExampleCombobox() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
 
@@ -78,7 +80,7 @@ export function ComboboxDemo() {
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
             : "Select framework..."}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
@@ -96,7 +98,7 @@ export function ComboboxDemo() {
                     setOpen(false)
                   }}
                 >
-                  <Check
+                  <CheckIcon
                     className={cn(
                       "mr-2 h-4 w-4",
                       value === framework.value ? "opacity-100" : "opacity-0"
@@ -113,6 +115,8 @@ export function ComboboxDemo() {
   )
 }
 ```
+
+</CodeCollapsibleWrapper>
 
 ## Examples
 

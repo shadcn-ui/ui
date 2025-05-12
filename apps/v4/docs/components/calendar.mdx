@@ -48,7 +48,7 @@ The `Calendar` component uses the `Button` component. Make sure you have it inst
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="calendar" />
+<ComponentSource name="calendar" title="components/ui/calendar.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -60,11 +60,11 @@ The `Calendar` component uses the `Button` component. Make sure you have it inst
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { Calendar } from "@/components/ui/calendar"
 ```
 
-```tsx
+```tsx showLineNumbers
 const [date, setDate] = React.useState<Date | undefined>(new Date())
 
 return (

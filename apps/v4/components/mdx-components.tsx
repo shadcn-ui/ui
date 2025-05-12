@@ -1,7 +1,6 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { FileIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
@@ -11,7 +10,7 @@ import { CodeTabs } from "@/components/code-tabs"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton } from "@/components/copy-button"
-import { Icons } from "@/components/icons"
+import { getIconForLanguageExtension } from "@/components/icons"
 import {
   Accordion,
   AccordionContent,
@@ -190,7 +189,7 @@ export const mdxComponents = {
   }: React.ComponentProps<"figcaption">) => {
     const iconExtension =
       "data-language" in props && typeof props["data-language"] === "string"
-        ? getIconExtension(props["data-language"])
+        ? getIconForLanguageExtension(props["data-language"])
         : null
 
     return (
@@ -360,21 +359,4 @@ export const mdxComponents = {
       {...props}
     />
   ),
-}
-
-function getIconExtension(language: string) {
-  switch (language) {
-    case "json":
-      return <Icons.json />
-    case "css":
-      return <Icons.css className="fill-foreground" />
-    case "js":
-    case "jsx":
-    case "ts":
-    case "tsx":
-    case "typescript":
-      return <Icons.ts className="fill-foreground" />
-    default:
-      return <FileIcon />
-  }
 }

@@ -37,7 +37,10 @@ npm install @radix-ui/react-navigation-menu
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="navigation-menu" />
+<ComponentSource
+  name="navigation-menu"
+  title="components/ui/navigation-menu.tsx"
+/>
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -49,7 +52,7 @@ npm install @radix-ui/react-navigation-menu
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -62,7 +65,7 @@ import {
 } from "@/components/ui/navigation-menu"
 ```
 
-```tsx
+```tsx showLineNumbers
 <NavigationMenu>
   <NavigationMenuList>
     <NavigationMenuItem>
@@ -75,24 +78,20 @@ import {
 </NavigationMenu>
 ```
 
-## Examples
+## Link
 
-### Link Component
+You can use the `asChild` prop to make another component look like a navigation menu trigger. Here's an example of a link that looks like a navigation menu trigger.
 
-When using the Next.js `<Link />` component, you can use `navigationMenuTriggerStyle()` to apply the correct styles to the trigger.
+```tsx showLineNumbers title="components/example-navigation-menu.tsx"
+import { Link } from "next/link"
 
-```tsx
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
+export function NavigationMenuDemo() {
+  return (
+    <NavigationMenuItem>
+      <NavigationMenuLink asChild>
+        <Link href="/docs">Documentation</Link>
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  )
+}
 ```
-
-```tsx {3-5}
-<NavigationMenuItem>
-  <Link href="/docs" legacyBehavior passHref>
-    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-      Documentation
-    </NavigationMenuLink>
-  </Link>
-</NavigationMenuItem>
-```
-
-See also the [Radix UI documentation](https://www.radix-ui.com/docs/primitives/components/navigation-menu#with-client-side-routing) for handling client side routing.

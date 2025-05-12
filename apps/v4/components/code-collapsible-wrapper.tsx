@@ -43,7 +43,7 @@ export function CodeCollapsibleWrapper({
       >
         {children}
       </CollapsibleContent>
-      <div className="from-code/80 to-code absolute inset-x-0 -bottom-2 flex h-20 items-center justify-center rounded-b-lg border border-t-0 bg-gradient-to-b" />
+      <div className="from-code/80 to-code absolute inset-x-0 -bottom-2 flex h-20 items-center justify-center rounded-b-lg border border-t-0 bg-gradient-to-b group-data-[state=open]/collapsible:hidden" />
     </Collapsible>
   )
 }

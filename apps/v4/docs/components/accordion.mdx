@@ -42,37 +42,9 @@ npm install @radix-ui/react-accordion
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="accordion" />
+<ComponentSource name="accordion" title="components/ui/accordion.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {5-18}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
-  },
-}
-```
 
 </Steps>
 
@@ -82,7 +54,7 @@ module.exports = {
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import {
   Accordion,
   AccordionContent,
@@ -91,7 +63,7 @@ import {
 } from "@/components/ui/accordion"
 ```
 
-```tsx
+```tsx showLineNumbers
 <Accordion type="single" collapsible>
   <AccordionItem value="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>

@@ -35,7 +35,7 @@ npm install @radix-ui/react-slot
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="button" />
+<ComponentSource name="button" title="components/ui/button.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -47,32 +47,30 @@ npm install @radix-ui/react-slot
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { Button } from "@/components/ui/button"
 ```
 
-```tsx
+```tsx showLineNumbers
 <Button variant="outline">Button</Button>
 ```
 
 ## Link
 
-You can use the `buttonVariants` helper to create a link that looks like a button.
+You can use the `asChild` prop to make another component look like a button. Here's an example of a link that looks like a button.
 
-```tsx
-import { buttonVariants } from "@/components/ui/button"
-```
+```tsx showLineNumbers
+import { Link } from "next/link"
 
-```tsx
-<Link className={buttonVariants({ variant: "outline" })}>Click here</Link>
-```
+import { Button } from "@/components/ui/button"
 
-Alternatively, you can set the `asChild` parameter and nest the link component.
-
-```tsx
-<Button asChild>
-  <Link href="/login">Login</Link>
-</Button>
+export function LinkAsButton() {
+  return (
+    <Button asChild>
+      <Link href="/login">Login</Link>
+    </Button>
+  )
+}
 ```
 
 ## Examples
@@ -143,7 +141,7 @@ Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the
 
 Add the following classes to the `cva` call in your `button.tsx` file.
 
-```diff showLineNumbers title="button.tsx"
+```tsx showLineNumbers title="button.tsx"
 const buttonVariants = cva(
   "inline-flex ... gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
 )

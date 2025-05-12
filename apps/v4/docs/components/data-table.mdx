@@ -246,7 +246,7 @@ export function DataTable<TData, TValue>({
 Finally, we'll render our table in our page component.
 
 ```tsx showLineNumbers title="app/payments/page.tsx" {22}
-import { Payment, columns } from "./columns"
+import { columns, Payment } from "./columns"
 import { DataTable } from "./data-table"
 
 async function getData(): Promise<Payment[]> {
@@ -820,7 +820,7 @@ This adds a checkbox to each row and a checkbox in the header to select all rows
 You can show the number of selected rows using the `table.getFilteredSelectedRowModel()` API.
 
 ```tsx
-<div className="flex-1 text-sm text-muted-foreground">
+<div className="text-muted-foreground flex-1 text-sm">
   {table.getFilteredSelectedRowModel().rows.length} of{" "}
   {table.getFilteredRowModel().rows.length} row(s) selected.
 </div>
@@ -836,9 +836,12 @@ Here are some components you can use to build your data tables. This is from the
 
 Make any column header sortable and hideable.
 
-<ComponentSource src="/app/(app)/examples/tasks/components/data-table-column-header.tsx" />
+<ComponentSource
+  src="/app/(app)/examples/tasks/components/data-table-column-header.tsx"
+  title="components/data-table-column-header.tsx"
+/>
 
-```tsx {5}
+```tsx showLineNumbers {5}
 export const columns = [
   {
     accessorKey: "email",

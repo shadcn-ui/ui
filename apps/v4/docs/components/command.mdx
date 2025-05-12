@@ -45,7 +45,7 @@ npm install cmdk
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="command" />
+<ComponentSource name="command" title="components/ui/command.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -57,7 +57,7 @@ npm install cmdk
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import {
   Command,
   CommandDialog,
@@ -71,7 +71,7 @@ import {
 } from "@/components/ui/command"
 ```
 
-```tsx
+```tsx showLineNumbers
 <Command>
   <CommandInput placeholder="Type a command or search..." />
   <CommandList>
@@ -102,7 +102,7 @@ import {
 
 To show the command menu in a dialog, use the `<CommandDialog />` component.
 
-```tsx
+```tsx showLineNumbers title="components/example-command-menu.tsx"
 export function CommandMenu() {
   const [open, setOpen] = React.useState(false)
 
@@ -145,7 +145,7 @@ Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the
 
 Add the following classes to the `cva` call in your `command.tsx` file.
 
-```tsx showLineNumbers title="command.tsx"
+```tsx showLineNumbers title="components/ui/command.tsx"
 const CommandItem = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
@@ -153,7 +153,7 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
-      "... gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+      "gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 ...",
       className
     )}
     {...props}

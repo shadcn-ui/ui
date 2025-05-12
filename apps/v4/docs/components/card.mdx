@@ -28,7 +28,7 @@ npx shadcn@latest add card
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="card" />
+<ComponentSource name="card" title="components/ui/card.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -40,7 +40,7 @@ npx shadcn@latest add card
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import {
   Card,
   CardContent,
@@ -51,7 +51,7 @@ import {
 } from "@/components/ui/card"
 ```
 
-```tsx
+```tsx showLineNumbers
 <Card>
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
@@ -98,7 +98,7 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-muted-foreground text-sm", className)}
     {...props}
   />
 ))

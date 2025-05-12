@@ -32,7 +32,7 @@ npx shadcn@latest add badge
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="badge" />
+<ComponentSource name="badge" title="components/ui/badge.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -44,24 +44,30 @@ npx shadcn@latest add badge
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { Badge } from "@/components/ui/badge"
 ```
 
-```tsx
+```tsx showLineNumbers
 <Badge variant="outline">Badge</Badge>
 ```
 
 ### Link
 
-You can use the `badgeVariants` helper to create a link that looks like a badge.
+You can use the `asChild` prop to make another component look like a badge. Here's an example of a link that looks like a badge.
 
-```tsx
-import { badgeVariants } from "@/components/ui/badge"
-```
+```tsx showLineNumbers
+import { Link } from "next/link"
 
-```tsx
-<Link className={badgeVariants({ variant: "outline" })}>Badge</Link>
+import { Badge } from "@/components/ui/badge"
+
+export function LinkAsBadge() {
+  return (
+    <Badge asChild>
+      <Link href="/">Badge</Link>
+    </Badge>
+  )
+}
 ```
 
 ## Examples

@@ -46,7 +46,7 @@ npm install embla-carousel-react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="carousel" />
+<ComponentSource name="carousel" title="components/ui/carousel.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -58,7 +58,7 @@ npm install embla-carousel-react
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import {
   Carousel,
   CarouselContent,
@@ -68,7 +68,7 @@ import {
 } from "@/components/ui/carousel"
 ```
 
-```tsx
+```tsx showLineNumbers
 <Carousel>
   <CarouselContent>
     <CarouselItem>...</CarouselItem>
@@ -92,7 +92,7 @@ To set the size of the items, you can use the `basis` utility class on the `<Car
   description="A carousel with 3 active items of equal size."
 />
 
-```tsx title="Example" showLineNumbers {4-6}
+```tsx showLineNumbers {4-6}
 // 33% of the carousel width.
 <Carousel>
   <CarouselContent>
@@ -103,7 +103,7 @@ To set the size of the items, you can use the `basis` utility class on the `<Car
 </Carousel>
 ```
 
-```tsx title="Responsive" showLineNumbers {4-6}
+```tsx showLineNumbers {4-6}
 // 50% on small screens and 33% on larger screens.
 <Carousel>
   <CarouselContent>
@@ -134,7 +134,7 @@ You can always adjust this in your own project if you need to.
   description="A carousel with 3 items with a spacing of 1rem."
 />
 
-```tsx title="Example" showLineNumbers /-ml-4/ /pl-4/
+```tsx showLineNumbers /-ml-4/ /pl-4/
 <Carousel>
   <CarouselContent className="-ml-4">
     <CarouselItem className="pl-4">...</CarouselItem>
@@ -144,7 +144,7 @@ You can always adjust this in your own project if you need to.
 </Carousel>
 ```
 
-```tsx title="Responsive" showLineNumbers /-ml-2/ /pl-2/ /md:-ml-4/ /md:pl-4/
+```tsx showLineNumbers /-ml-2/ /pl-2/ /md:-ml-4/ /md:pl-4/
 <Carousel>
   <CarouselContent className="-ml-2 md:-ml-4">
     <CarouselItem className="pl-2 md:pl-4">...</CarouselItem>

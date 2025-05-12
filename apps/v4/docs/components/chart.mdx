@@ -4,15 +4,9 @@ description: Beautiful charts. Built using Recharts. Copy and paste into your ap
 component: true
 ---
 
-<Callout className="mb-6">
-
-**Note:** If you are using charts with **React 19** or the **Next.js 15**, see the note [here](/docs/react-19#recharts).
-
-</Callout>
-
 <ComponentPreview
   name="chart-bar-interactive"
-  className="-mt-4 [&_.preview]:p-0 [&_.preview]:border-t [&_.preview>div]:shadow-none [&_.preview>div]:border-none [&_.preview>div]:w-full [&_.preview]:lg:min-h-[404px]"
+  className="-mt-4 [&_.preview]:p-0 [&_.preview]:lg:min-h-[404px] [&_.preview>div]:w-full [&_.preview>div]:border-none [&_.preview>div]:shadow-none"
   hideCode
 />
 
@@ -75,22 +69,22 @@ npx shadcn@latest add chart
 
 <Step>Add the following colors to your CSS file</Step>
 
-```css
+```css title="app/globals.css" showLineNumbers
 @layer base {
   :root {
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
   }
 
   .dark {
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
   }
 }
 ```
@@ -111,26 +105,26 @@ npm install recharts
 
 <Step>Copy and paste the following code into `components/ui/chart.tsx`.</Step>
 
-<ComponentSource name="chart" />
+<ComponentSource name="chart" title="components/ui/chart.tsx" />
 
 <Step>Add the following colors to your CSS file</Step>
 
-```css
+```css title="app/globals.css" showLineNumbers
 @layer base {
   :root {
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
   }
 
   .dark {
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
   }
 }
 ```
@@ -157,7 +151,7 @@ The following data represents the number of desktop and mobile users for each mo
 
 </Callout>
 
-```tsx
+```tsx title="components/example-chart.tsx" showLineNumbers
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
   { month: "February", desktop: 305, mobile: 200 },
@@ -172,7 +166,7 @@ const chartData = [
 
 The chart config holds configuration for the chart. This is where you place human-readable strings, such as labels, icons and color tokens for theming.
 
-```tsx
+```tsx title="components/example-chart.tsx" showLineNumbers
 import { type ChartConfig } from "@/components/ui/chart"
 
 const chartConfig = {
@@ -197,11 +191,11 @@ You can now build your chart using Recharts components.
 
 </Callout>
 
-<ComponentSource name="chart-bar-demo" />
+<ComponentSource name="chart-bar-demo" title="components/example-chart.tsx" />
 
 <ComponentPreview
   name="chart-bar-demo"
-  className="[&_.preview]:p-4 [&_.preview]:min-h-[250px]"
+  className="[&_.preview]:min-h-[250px] [&_.preview]:p-4"
 />
 
 </Steps>
@@ -232,7 +226,7 @@ import { Bar, BarChart, CartesianGrid } from "recharts"
 
 <ComponentPreview
   name="chart-bar-demo-grid"
-  className="[&_.preview]:p-4 [&_.preview]:min-h-[250px]"
+  className="[&_.preview]:min-h-[250px] [&_.preview]:p-4"
 />
 
 </Steps>
@@ -270,7 +264,7 @@ import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 <ComponentPreview
   name="chart-bar-demo-axis"
-  className="[&_.preview]:p-4 [&_.preview]:min-h-[250px]"
+  className="[&_.preview]:min-h-[250px] [&_.preview]:p-4"
 />
 
 </Steps>
@@ -311,7 +305,7 @@ import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 <ComponentPreview
   name="chart-bar-demo-tooltip"
-  className="[&_.preview]:p-4 [&_.preview]:min-h-[250px]"
+  className="[&_.preview]:min-h-[250px] [&_.preview]:p-4"
 />
 
 Hover to see the tooltips. Easy, right? Two components, and we've got a beautiful tooltip.
@@ -353,7 +347,7 @@ import { ChartLegend, ChartLegendContent } from "@/components/ui/chart"
 
 <ComponentPreview
   name="chart-bar-demo-legend"
-  className="[&_.preview]:p-4 [&_.preview]:min-h-[250px]"
+  className="[&_.preview]:min-h-[250px] [&_.preview]:p-4"
 />
 
 </Steps>
@@ -372,7 +366,7 @@ It is intentionally decoupled from chart data.
 
 This allows you to share config and color tokens between charts. It can also works independently for cases where your data or color tokens live remotely or in a different format.
 
-```tsx /ChartConfig/
+```tsx showLineNumbers /ChartConfig/
 import { Monitor } from "lucide-react"
 
 import { type ChartConfig } from "@/components/ui/chart"
@@ -402,56 +396,34 @@ Charts has built-in support for theming. You can use css variables (recommended)
 
 <Step>Define your colors in your css file</Step>
 
-```css {6-7,14-15} title="globals.css"
+```css {6-7,14-15} title="app/globals.css" showLineNumbers
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    // ...
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
   }
 
   .dark: {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 100%;
-    // ...
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
   }
 }
 ```
 
 <Step>Add the color to your `chartConfig`</Step>
 
-```tsx {4,8}
+```tsx {4,8} showLineNumbers
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 ```
-
-<Callout className="mt-4">
-
-We're wrapping the value in `hsl()` here because we define the colors without color space function.
-
-This is not required. You can use full color values, such as hex, hsl or oklch.
-
-```css
---chart-1: oklch(70% 0.227 154.59);
-```
-
-```tsx
-color: "var(--chart-1)",
-```
-
-</Callout>
 
 </Steps>
 
@@ -459,7 +431,7 @@ color: "var(--chart-1)",
 
 You can also define your colors directly in the chart config. Use the color format you prefer.
 
-```tsx
+```tsx showLineNumbers
 const chartConfig = {
   desktop: {
     label: "Desktop",
@@ -480,7 +452,7 @@ To use the theme colors in your chart, reference the colors using the format `va
 
 #### Chart Data
 
-```tsx
+```tsx showLineNumbers
 const chartData = [
   { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
@@ -537,7 +509,7 @@ Colors are automatically referenced from the chart config.
 
 To use a custom key for tooltip label and names, use the `labelKey` and `nameKey` props.
 
-```tsx /browser/
+```tsx showLineNumbers /browser/
 const chartData = [
   { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
@@ -586,7 +558,7 @@ Colors are automatically referenced from the chart config.
 
 To use a custom key for legend names, use the `nameKey` prop.
 
-```tsx /browser/
+```tsx showLineNumbers /browser/
 const chartData = [
   { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },

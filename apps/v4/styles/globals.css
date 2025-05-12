@@ -188,7 +188,7 @@
   counter-increment: step;
 
   &:before {
-    @apply bg-code border-grid mr-2 inline-flex h-8 w-8 items-center justify-center rounded-full border text-center -indent-px font-mono text-base font-medium md:absolute md:h-9 md:w-9;
+    @apply bg-code border-grid mr-2 inline-flex size-8 items-center justify-center rounded-full border text-center -indent-px font-mono text-base font-medium md:absolute;
     @apply md:mt-[-4px] md:ml-[-50px];
     content: counter(step);
   }
@@ -201,16 +201,14 @@
     }
 
     > h3 {
-      @apply mt-6 text-base font-semibold;
+      @apply !mt-6 !text-base !font-semibold md:!mt-16;
     }
 
     > h3 + p {
       @apply !mt-2;
     }
   }
-}
 
-@layer components {
   [data-rehype-pretty-code-figure] {
     background-color: var(--color-code);
     color: var(--color-code-foreground);

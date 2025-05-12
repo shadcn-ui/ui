@@ -41,7 +41,7 @@ npm install @radix-ui/react-dialog
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="dialog" />
+<ComponentSource name="dialog" title="components/ui/dialog.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -53,7 +53,7 @@ npm install @radix-ui/react-dialog
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import {
   Dialog,
   DialogContent,
@@ -64,7 +64,7 @@ import {
 } from "@/components/ui/dialog"
 ```
 
-```tsx
+```tsx showLineNumbers
 <Dialog>
   <DialogTrigger>Open</DialogTrigger>
   <DialogContent>
@@ -87,10 +87,10 @@ import {
 
 ## Notes
 
-To activate the `Dialog` component from within a `Context Menu` or `Dropdown Menu`, you must encase the `Context Menu` or
-`Dropdown Menu` component in the `Dialog` component. For more information, refer to the linked issue [here](https://github.com/radix-ui/primitives/issues/1836).
+To use the `Dialog` component from within a `Context Menu` or `Dropdown Menu`, you must encase the `Context Menu` or
+`Dropdown Menu` component in the `Dialog` component.
 
-```tsx {14-25}
+```tsx showLineNumbers title="components/example-dialog-context-menu.tsx" {1, 26}
 <Dialog>
   <ContextMenu>
     <ContextMenuTrigger>Right click</ContextMenuTrigger>

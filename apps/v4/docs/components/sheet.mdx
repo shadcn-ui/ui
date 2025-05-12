@@ -37,7 +37,7 @@ npm install @radix-ui/react-dialog
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="sheet" />
+<ComponentSource name="sheet" title="components/ui/sheet.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -49,7 +49,7 @@ npm install @radix-ui/react-dialog
 
 ### Usage
 
-```tsx
+```tsx showLineNumbers
 import {
   Sheet,
   SheetContent,
@@ -60,7 +60,7 @@ import {
 } from "@/components/ui/sheet"
 ```
 
-```tsx
+```tsx showLineNumbers
 <Sheet>
   <SheetTrigger>Open</SheetTrigger>
   <SheetContent>
@@ -87,7 +87,7 @@ Use the `side` property to `<SheetContent />` to indicate the edge of the screen
 
 You can adjust the size of the sheet using CSS classes:
 
-```tsx {3}
+```tsx showLineNumbers {3}
 <Sheet>
   <SheetTrigger>Open</SheetTrigger>
   <SheetContent className="w-[400px] sm:w-[540px]">

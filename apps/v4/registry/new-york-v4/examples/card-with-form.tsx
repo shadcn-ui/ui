@@ -28,15 +28,15 @@ export default function CardWithForm() {
       </CardHeader>
       <CardContent>
         <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
+          <div className="grid w-full items-center gap-6">
+            <div className="flex flex-col gap-3">
               <Label htmlFor="name">Name</Label>
               <Input id="name" placeholder="Name of your project" />
             </div>
-            <div className="flex flex-col space-y-1.5">
+            <div className="flex flex-col gap-3">
               <Label htmlFor="framework">Framework</Label>
               <Select>
-                <SelectTrigger id="framework">
+                <SelectTrigger id="framework" className="w-full">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent position="popper">

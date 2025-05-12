@@ -52,28 +52,28 @@ The command above should install the colors for you. If not, copy and paste the 
 
 We'll go over the colors later in the [theming section](/docs/components/sidebar#theming).
 
-```css title="app/globals.css"
+```css showLineNumbers title="app/globals.css"
 @layer base {
   :root {
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
   }
 
   .dark {
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.439 0 0);
   }
 }
 ```
@@ -88,7 +88,7 @@ We'll go over the colors later in the [theming section](/docs/components/sidebar
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="sidebar" />
+<ComponentSource name="sidebar" title="components/ui/sidebar.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -96,50 +96,30 @@ We'll go over the colors later in the [theming section](/docs/components/sidebar
 
 We'll go over the colors later in the [theming section](/docs/components/sidebar#theming).
 
-```css title="app/globals.css"
+```css showLineNumbers title="app/globals.css"
 @layer base {
   :root {
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
   }
 
   .dark {
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.439 0 0);
   }
 }
-```
-
-<Step>Add the Sidebar tailwind config into `tailwind.config.js`</Step>
-
-Add the following object in the `theme.extend.colors` section of your `tailwind.config.js` file
-this config enable sidebar related style utilities like bg-sidebar
-
-```javascript title="tailwind.config.js"
-// ...
-sidebar: {
-  DEFAULT: 'hsl(var(--sidebar-background))',
-  foreground: 'hsl(var(--sidebar-foreground))',
-  primary: 'hsl(var(--sidebar-primary))',
-  'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-  accent: 'hsl(var(--sidebar-accent))',
-  'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-  border: 'hsl(var(--sidebar-border))',
-  ring: 'hsl(var(--sidebar-ring))',
-},
-// ...
 ```
 
 </Steps>
@@ -164,14 +144,14 @@ A `Sidebar` component is composed of the following parts:
   width="716"
   height="420"
   alt="Sidebar Structure"
-  className="border dark:hidden rounded-lg overflow-hidden mt-6 w-full"
+  className="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
 />
 <Image
   src="/images/sidebar-structure-dark.png"
   width="716"
   height="420"
   alt="Sidebar Structure"
-  className="border hidden dark:block rounded-lg overflow-hidden mt-6 w-full"
+  className="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
 />
 
 ## Usage
@@ -558,7 +538,7 @@ Use the `SidebarHeader` component to add a sticky header to the sidebar.
 
 The following example adds a `<DropdownMenu>` to the `SidebarHeader`.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-header"
     title="Sidebar"
@@ -604,7 +584,7 @@ Use the `SidebarFooter` component to add a sticky footer to the sidebar.
 
 The following example adds a `<DropdownMenu>` to the `SidebarFooter`.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-footer"
     title="Sidebar"
@@ -683,7 +663,7 @@ Use the `SidebarGroup` component to create a section within the sidebar.
 
 A `SidebarGroup` has a `SidebarGroupLabel`, a `SidebarGroupContent` and an optional `SidebarGroupAction`.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-group"
     title="Sidebar Group"
@@ -720,7 +700,7 @@ export function AppSidebar() {
 
 To make a `SidebarGroup` collapsible, wrap it in a `Collapsible`.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-group-collapsible"
     title="Sidebar Group"
@@ -800,19 +780,19 @@ A `SidebarMenu` component is composed of `SidebarMenuItem`, `SidebarMenuButton`,
   width="716"
   height="420"
   alt="Sidebar Menu"
-  className="border dark:hidden rounded-lg overflow-hidden mt-6 w-full"
+  className="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
 />
 <Image
   src="/images/sidebar-menu-dark.png"
   width="716"
   height="420"
   alt="Sidebar Menu"
-  className="border hidden dark:block rounded-lg overflow-hidden mt-6 w-full"
+  className="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
 />
 
 Here's an example of a `SidebarMenu` component rendering a list of projects.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-menu"
     title="Sidebar Menu"
@@ -910,7 +890,7 @@ This button works independently of the `SidebarMenuButton` i.e you can have the 
 
 Here's an example of a `SidebarMenuAction` component rendering a `DropdownMenu`.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-menu-action"
     title="Sidebar Menu Action"
@@ -955,7 +935,7 @@ The `SidebarMenuSub` component is used to render a submenu within a `SidebarMenu
 
 Use `<SidebarMenuSubItem />` and `<SidebarMenuSubButton />` to render a submenu item.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-menu-sub"
     title="Sidebar Menu Sub"
@@ -986,7 +966,7 @@ Use `<SidebarMenuSubItem />` and `<SidebarMenuSubButton />` to render a submenu 
 
 To make a `SidebarMenu` component collapsible, wrap it and the `SidebarMenuSub` components in a `Collapsible`.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-menu-collapsible"
     title="Sidebar Menu"
@@ -1020,7 +1000,7 @@ To make a `SidebarMenu` component collapsible, wrap it and the `SidebarMenuSub` 
 
 The `SidebarMenuBadge` component is used to render a badge within a `SidebarMenuItem`.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-menu-badge"
     title="Sidebar Menu Badge"
@@ -1124,7 +1104,7 @@ The `SidebarRail` component is used to render a rail within a `Sidebar`. This ra
 
 Here's an example of a `SidebarMenu` component rendering a list of projects using React Server Components.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-rsc"
     title="Sidebar Menu RSC"
@@ -1273,7 +1253,7 @@ function NavProjects() {
 
 Use the `open` and `onOpenChange` props to control the sidebar.
 
-<figure className="flex flex-col gap-4 mt-6">
+<figure className="mt-6 flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-controlled"
     title="Sidebar Controlled"

@@ -41,7 +41,7 @@ npm install @radix-ui/react-dropdown-menu
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="dropdown-menu" />
+<ComponentSource name="dropdown-menu" title="components/ui/dropdown-menu.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -53,7 +53,7 @@ npm install @radix-ui/react-dropdown-menu
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -64,7 +64,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 ```
 
-```tsx
+```tsx showLineNumbers
 <DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
   <DropdownMenuContent>
@@ -102,7 +102,7 @@ Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the
 
 Add the following classes to the `DropdownMenuItem` in your `dropdown-menu.tsx` file.
 
-```diff showLineNumbers title="dropdown-menu.tsx"
+```tsx showLineNumbers title="dropdown-menu.tsx"
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
@@ -112,7 +112,7 @@ const DropdownMenuItem = React.forwardRef<
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "relative ... gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+      "relative gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 ...",
       inset && "pl-8",
       className
     )}
@@ -127,11 +127,11 @@ Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the
 
 Add the following classes to the `cva` call in your `dropdown-menu.tsx` file.
 
-```tsx title="dropdown-menu.tsx"
+```tsx showLineNumbers title="dropdown-menu.tsx"
 <DropdownMenuPrimitive.SubTrigger
   ref={ref}
   className={cn(
-    "flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    "focus:bg-accent data-[state=open]:bg-accent flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
     inset && "pl-8",
     className
   )}

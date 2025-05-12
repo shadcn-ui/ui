@@ -30,29 +30,6 @@ Input OTP is built on top of [input-otp](https://github.com/guilhermerodz/input-
 npx shadcn@latest add input-otp
 ```
 
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js showLineNumbers title="tailwind.config.js" {6-9,12}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      keyframes: {
-        "caret-blink": {
-          "0%,70%,100%": { opacity: "1" },
-          "20%,50%": { opacity: "0" },
-        },
-      },
-      animation: {
-        "caret-blink": "caret-blink 1.25s ease-out infinite",
-      },
-    },
-  },
-}
-```
-
 </Steps>
 
 </TabsContent>
@@ -69,32 +46,9 @@ npm install input-otp
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="input-otp" />
+<ComponentSource name="input-otp" title="components/ui/input-otp.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js showLineNumbers title="tailwind.config.js" {6-9,12}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      keyframes: {
-        "caret-blink": {
-          "0%,70%,100%": { opacity: "1" },
-          "20%,50%": { opacity: "0" },
-        },
-      },
-      animation: {
-        "caret-blink": "caret-blink 1.25s ease-out infinite",
-      },
-    },
-  },
-}
-```
 
 </Steps>
 
@@ -104,7 +58,7 @@ module.exports = {
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import {
   InputOTP,
   InputOTPGroup,
@@ -113,7 +67,7 @@ import {
 } from "@/components/ui/input-otp"
 ```
 
-```tsx
+```tsx showLineNumbers
 <InputOTP maxLength={6}>
   <InputOTPGroup>
     <InputOTPSlot index={0} />

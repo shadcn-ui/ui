@@ -41,12 +41,15 @@ export default function CheckboxReactHookFormSingle() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col items-start gap-4"
+      >
         <FormField
           control={form.control}
           name="mobile"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-y-0 space-x-3 rounded-md border p-4 shadow">
+            <FormItem className="flex flex-row items-start gap-2 rounded-md border p-4 shadow-sm">
               <FormControl>
                 <Checkbox
                   checked={field.value}
