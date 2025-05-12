@@ -15,14 +15,20 @@ import {
   BreadcrumbSeparator,
 } from "@/registry/new-york-v4/ui/breadcrumb"
 
-export function DocsBreadcrumb({ tree }: { tree: PageTree.Root }) {
+export function DocsBreadcrumb({
+  tree,
+  className,
+}: {
+  tree: PageTree.Root
+  className?: string
+}) {
   const pathname = usePathname()
   const items = useBreadcrumb(pathname, tree)
 
   if (items.length === 0) return null
 
   return (
-    <Breadcrumb>
+    <Breadcrumb className={className}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>

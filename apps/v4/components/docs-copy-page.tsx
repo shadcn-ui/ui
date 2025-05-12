@@ -19,7 +19,7 @@ export function DocsCopyPage({ page }: { page: string }) {
         <Button
           variant="outline"
           size="sm"
-          className="h-7 pl-1.5 [&>svg]:size-3.5"
+          className="h-8 pl-1.5 md:h-7 [&>svg]:size-3.5"
           onClick={() => copyToClipboard(page)}
         >
           {isCopied ? <IconCheck /> : <IconCopy />} Copy Page

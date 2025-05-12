@@ -40,7 +40,6 @@ export function SiteHeader() {
             <GitHubLink />
             <Separator orientation="vertical" />
             <ModeSwitcher />
-            <nav className="flex items-center gap-0.5"></nav>
           </div>
         </div>
       </div>

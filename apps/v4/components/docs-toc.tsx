@@ -1,6 +1,17 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
+import { IconList, IconMenu3 } from "@tabler/icons-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/new-york-v4/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/registry/new-york-v4/ui/dropdown-menu"
 
 function useActiveItem(itemIds: string[]) {
   const [activeId, setActiveId] = React.useState<string | null>(null)
@@ -39,13 +50,18 @@ function useActiveItem(itemIds: string[]) {
 
 export function DocsTableOfContents({
   toc,
+  variant = "list",
+  className,
 }: {
   toc: {
-    title: React.ReactNode
+    title?: React.ReactNode
     url: string
     depth: number
   }[]
+  variant?: "dropdown" | "list"
+  className?: string
 }) {
+  const [open, setOpen] = React.useState(false)
   const itemIds = React.useMemo(
     () => toc.map((item) => item.url.replace("#", "")),
     [toc]
@@ -56,8 +72,37 @@ export function DocsTableOfContents({
     return null
   }
 
+  if (variant === "dropdown") {
+    return (
+      <DropdownMenu open={open} onOpenChange={setOpen}>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="outline"
+            size="sm"
+            className={cn("h-8 md:h-7", className)}
+          >
+            <IconMenu3 /> On This Page
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start">
+          {toc.map((item) => (
+            <DropdownMenuItem
+              key={item.url}
+              asChild
+              onClick={() => {
+                setOpen(false)
+              }}
+            >
+              <a href={item.url}>{item.title}</a>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    )
+  }
+
   return (
-    <div className="flex flex-col gap-2 text-sm">
+    <div className={cn("flex flex-col gap-2 text-sm", className)}>
       <p className="font-medium">On This Page</p>
       {toc.map((item) => (
         <a

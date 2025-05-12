@@ -35,7 +35,7 @@ export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
     <h1
       className={cn(
-        "font-heading mt-2 scroll-m-20 text-3xl font-bold tracking-tight",
+        "font-heading mt-2 scroll-m-28 text-3xl font-bold tracking-tight",
         className
       )}
       {...props}
@@ -51,7 +51,7 @@ export const mdxComponents = {
           .replace(/\?/g, "")
           .toLowerCase()}
         className={cn(
-          "font-heading mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0",
+          "font-heading mt-12 scroll-m-28 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0",
           className
         )}
         {...props}
@@ -61,7 +61,7 @@ export const mdxComponents = {
   h3: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "font-heading mt-8 scroll-m-28 text-xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -70,7 +70,7 @@ export const mdxComponents = {
   h4: ({ className, ...props }: React.ComponentProps<"h4">) => (
     <h4
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        "font-heading mt-8 scroll-m-28 text-lg font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -79,7 +79,7 @@ export const mdxComponents = {
   h5: ({ className, ...props }: React.ComponentProps<"h5">) => (
     <h5
       className={cn(
-        "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        "mt-8 scroll-m-28 text-lg font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -88,7 +88,7 @@ export const mdxComponents = {
   h6: ({ className, ...props }: React.ComponentProps<"h6">) => (
     <h6
       className={cn(
-        "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+        "mt-8 scroll-m-28 text-base font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -259,7 +259,7 @@ export const mdxComponents = {
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "font-heading mt-8 scroll-m-32 text-xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -267,7 +267,7 @@ export const mdxComponents = {
   ),
   Steps: ({ ...props }) => (
     <div
-      className="[&>h3]:step steps mb-12 ml-4 border-l pl-8 [counter-reset:step] *:[h3]:first:!mt-0"
+      className="[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8 *:[h3]:first:!mt-0"
       {...props}
     />
   ),
