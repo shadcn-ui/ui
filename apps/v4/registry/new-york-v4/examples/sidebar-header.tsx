@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDown } from "lucide-react"
+import { ChevronDownIcon } from "lucide-react"
 
 import {
   DropdownMenu,
@@ -30,10 +30,10 @@ export default function AppSidebar() {
                 <DropdownMenuTrigger asChild>
                   <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                     Select Workspace
-                    <ChevronDown className="ml-auto" />
+                    <ChevronDownIcon className="ml-auto" />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
+                <DropdownMenuContent className="w-(--radix-popper-anchor-width)">
                   <DropdownMenuItem>
                     <span>Acme Inc</span>
                   </DropdownMenuItem>

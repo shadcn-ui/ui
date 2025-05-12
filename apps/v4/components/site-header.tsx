@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { siteConfig } from "@/lib/config/site"
+import { siteConfig } from "@/lib/config"
 import { CommandMenu } from "@/components/command-menu"
 import { GitHubLink } from "@/components/github-link"
 import { Icons } from "@/components/icons"

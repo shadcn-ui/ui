@@ -89,7 +89,7 @@ export function ComponentPreview({
         <TabsContent value="preview" className="relative rounded-md border">
           <div
             className={cn(
-              "preview flex min-h-[350px] w-full justify-center p-10",
+              "preview flex min-h-[360px] w-full justify-center p-10",
               {
                 "items-center": align === "center",
                 "items-start": align === "start",
@@ -104,7 +104,7 @@ export function ComponentPreview({
           <ComponentSource
             name={name}
             collapsible={false}
-            className="[&>figure]:mt-0"
+            className="min-h-[360px] [&>figure]:mt-0"
           />
         </TabsContent>
       </Tabs>

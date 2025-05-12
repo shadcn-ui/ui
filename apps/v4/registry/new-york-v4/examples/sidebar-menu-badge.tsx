@@ -1,6 +1,12 @@
 "use client"
 
-import { Frame, LifeBuoy, Map, PieChart, Send } from "lucide-react"
+import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  PieChartIcon,
+  SendIcon,
+} from "lucide-react"
 
 import {
   Sidebar,
@@ -19,31 +25,31 @@ const projects = [
   {
     name: "Design Engineering",
     url: "#",
-    icon: Frame,
+    icon: FrameIcon,
     badge: "24",
   },
   {
     name: "Sales & Marketing",
     url: "#",
-    icon: PieChart,
+    icon: PieChartIcon,
     badge: "12",
   },
   {
     name: "Travel",
     url: "#",
-    icon: Map,
+    icon: MapIcon,
     badge: "3",
   },
   {
     name: "Support",
     url: "#",
-    icon: LifeBuoy,
+    icon: LifeBuoyIcon,
     badge: "21",
   },
   {
     name: "Feedback",
     url: "#",
-    icon: Send,
+    icon: SendIcon,
     badge: "8",
   },
 ]

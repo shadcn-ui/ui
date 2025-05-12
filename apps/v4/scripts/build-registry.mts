@@ -1,8 +1,9 @@
 import { exec } from "child_process"
 import { promises as fs } from "fs"
 import path from "path"
-import { registry } from "@/registry"
 import { rimraf } from "rimraf"
+
+import { registry } from "@/registry/index"
 
 async function buildRegistryIndex() {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */

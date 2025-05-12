@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDown, LifeBuoy, Send } from "lucide-react"
+import { ChevronDownIcon, LifeBuoyIcon, SendIcon } from "lucide-react"
 
 import {
   Collapsible,
@@ -32,7 +32,7 @@ export default function AppSidebar() {
               >
                 <CollapsibleTrigger>
                   Help
-                  <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                  <ChevronDownIcon className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                 </CollapsibleTrigger>
               </SidebarGroupLabel>
               <CollapsibleContent>
@@ -40,13 +40,13 @@ export default function AppSidebar() {
                   <SidebarMenu>
                     <SidebarMenuItem>
                       <SidebarMenuButton>
-                        <LifeBuoy />
+                        <LifeBuoyIcon />
                         Support
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
                       <SidebarMenuButton>
-                        <Send />
+                        <SendIcon />
                         Feedback
                       </SidebarMenuButton>
                     </SidebarMenuItem>

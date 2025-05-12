@@ -8,9 +8,7 @@ export const siteConfig = {
     twitter: "https://twitter.com/shadcn",
     github: "https://github.com/shadcn-ui/ui",
   },
-}
-
-export type SiteConfig = typeof siteConfig
+} as const
 
 export const META_THEME_COLORS = {
   light: "#ffffff",

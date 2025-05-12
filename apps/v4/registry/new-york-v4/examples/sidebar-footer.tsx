@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDown, ChevronUp, User2 } from "lucide-react"
+import { ChevronUpIcon } from "lucide-react"
 
 import {
   DropdownMenu,
@@ -34,12 +34,12 @@ export default function AppSidebar() {
                 <DropdownMenuTrigger asChild>
                   <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                     Username
-                    <ChevronUp className="ml-auto" />
+                    <ChevronUpIcon className="ml-auto" />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   side="top"
-                  className="w-[--radix-popper-anchor-width]"
+                  className="w-(--radix-popper-anchor-width)"
                 >
                   <DropdownMenuItem>
                     <span>Account</span>

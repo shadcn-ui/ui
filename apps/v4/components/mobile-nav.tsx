@@ -4,7 +4,6 @@ import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 
-import { docsConfig } from "@/lib/config/docs"
 import { cn } from "@/lib/utils"
 import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -16,6 +15,11 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/registry/new-york-v4/ui/drawer"
+
+const docsConfig = {
+  mainNav: [],
+  sidebarNav: [],
+}
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
@@ -63,7 +67,7 @@ export function MobileNav() {
         </DrawerHeader>
         <div className="overflow-auto p-6">
           <div className="flex flex-col space-y-3">
-            {docsConfig.mainNav?.map(
+            {docsConfig?.mainNav?.map(
               (item) =>
                 item.href && (
                   <MobileLink
@@ -77,7 +81,7 @@ export function MobileNav() {
             )}
           </div>
           <div className="flex flex-col space-y-2">
-            {docsConfig.sidebarNav.map((item, index) => (
+            {docsConfig?.sidebarNav?.map((item, index) => (
               <div key={index} className="flex flex-col gap-4 pt-6">
                 <h4 className="text-xl font-medium">{item.title}</h4>
                 {item?.items?.length &&

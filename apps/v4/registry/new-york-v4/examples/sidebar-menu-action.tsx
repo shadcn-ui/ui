@@ -1,12 +1,12 @@
 "use client"
 
 import {
-  Frame,
-  LifeBuoy,
-  Map,
-  MoreHorizontal,
-  PieChart,
-  Send,
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  MoreHorizontalIcon,
+  PieChartIcon,
+  SendIcon,
 } from "lucide-react"
 
 import {
@@ -32,27 +32,27 @@ const projects = [
   {
     name: "Design Engineering",
     url: "#",
-    icon: Frame,
+    icon: FrameIcon,
   },
   {
     name: "Sales & Marketing",
     url: "#",
-    icon: PieChart,
+    icon: PieChartIcon,
   },
   {
     name: "Travel",
     url: "#",
-    icon: Map,
+    icon: MapIcon,
   },
   {
     name: "Support",
     url: "#",
-    icon: LifeBuoy,
+    icon: LifeBuoyIcon,
   },
   {
     name: "Feedback",
     url: "#",
-    icon: Send,
+    icon: SendIcon,
   },
 ]
 
@@ -65,7 +65,7 @@ export default function AppSidebar() {
             <SidebarGroupLabel>Projects</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {projects.map((project, index) => (
+                {projects.map((project) => (
                   <SidebarMenuItem key={project.name}>
                     <SidebarMenuButton
                       asChild
@@ -79,7 +79,7 @@ export default function AppSidebar() {
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <SidebarMenuAction>
-                          <MoreHorizontal />
+                          <MoreHorizontalIcon />
                           <span className="sr-only">More</span>
                         </SidebarMenuAction>
                       </DropdownMenuTrigger>

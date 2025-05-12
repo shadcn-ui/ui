@@ -76,7 +76,7 @@ export default async function Page(props: {
 
   return (
     <div data-slot="docs" className="flex items-stretch text-[15px] xl:w-full">
-      <div className="flex-1">
+      <div className="flex flex-1 flex-col">
         <div className="bg-background/95 supports-[backdrop-filter]:bg-background/60 border-grid sticky top-[calc(var(--header-height)+1px)] z-10 flex h-12 items-center justify-between border-b px-4 backdrop-blur">
           <DocsBreadcrumb tree={source.pageTree} />
           <div className="flex items-center gap-2">
@@ -101,8 +101,8 @@ export default async function Page(props: {
           </div>
         </div>
         <div className="mx-auto flex max-w-2xl min-w-0 flex-1 flex-col gap-8 py-6 text-neutral-800 lg:py-8 dark:text-neutral-300">
-          <div className="mdx flex flex-col gap-2">
-            <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
               <h1 className="scroll-m-20 text-3xl font-semibold">
                 {doc.title}
               </h1>
@@ -113,25 +113,25 @@ export default async function Page(props: {
               )}
             </div>
           </div>
-          <div>
+          <div className="flex-1 *:data-[slot=alert]:first:mt-0">
             <MDX components={mdxComponents} />
           </div>
-          <div className="flex items-center gap-2">
-            {neighbours.previous && (
-              <Button variant="outline" size="sm" asChild>
-                <Link href={neighbours.previous.url}>
-                  <IconArrowLeft /> {neighbours.previous.name}
-                </Link>
-              </Button>
-            )}
-            {neighbours.next && (
-              <Button variant="outline" size="sm" className="ml-auto" asChild>
-                <Link href={neighbours.next.url}>
-                  {neighbours.next.name} <IconArrowRight />
-                </Link>
-              </Button>
-            )}
-          </div>
+        </div>
+        <div className="border-grid flex h-14 items-center gap-2 border-t px-4">
+          {neighbours.previous && (
+            <Button variant="ghost" size="sm" asChild>
+              <Link href={neighbours.previous.url}>
+                <IconArrowLeft /> {neighbours.previous.name}
+              </Link>
+            </Button>
+          )}
+          {neighbours.next && (
+            <Button variant="ghost" size="sm" className="ml-auto" asChild>
+              <Link href={neighbours.next.url}>
+                {neighbours.next.name} <IconArrowRight />
+              </Link>
+            </Button>
+          )}
         </div>
       </div>
       <div className="border-grid sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)+1px)] w-72 flex-col gap-4 overflow-hidden border-l pb-8 xl:flex">

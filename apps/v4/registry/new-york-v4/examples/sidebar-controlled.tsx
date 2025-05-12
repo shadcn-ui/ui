@@ -2,13 +2,13 @@
 
 import * as React from "react"
 import {
-  Frame,
-  LifeBuoy,
-  Map,
-  PanelLeftClose,
-  PanelLeftOpen,
-  PieChart,
-  Send,
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  PanelLeftCloseIcon,
+  PanelLeftOpenIcon,
+  PieChartIcon,
+  SendIcon,
 } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -29,27 +29,27 @@ const projects = [
   {
     name: "Design Engineering",
     url: "#",
-    icon: Frame,
+    icon: FrameIcon,
   },
   {
     name: "Sales & Marketing",
     url: "#",
-    icon: PieChart,
+    icon: PieChartIcon,
   },
   {
     name: "Travel",
     url: "#",
-    icon: Map,
+    icon: MapIcon,
   },
   {
     name: "Support",
     url: "#",
-    icon: LifeBuoy,
+    icon: LifeBuoyIcon,
   },
   {
     name: "Feedback",
     url: "#",
-    icon: Send,
+    icon: SendIcon,
   },
 ]
 
@@ -86,7 +86,7 @@ export default function AppSidebar() {
             size="sm"
             variant="ghost"
           >
-            {open ? <PanelLeftClose /> : <PanelLeftOpen />}
+            {open ? <PanelLeftCloseIcon /> : <PanelLeftOpenIcon />}
             <span>{open ? "Close" : "Open"} Sidebar</span>
           </Button>
         </header>

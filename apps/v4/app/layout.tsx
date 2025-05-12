@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { cookies } from "next/headers"
 
+import { META_THEME_COLORS, siteConfig } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { ActiveThemeProvider } from "@/components/active-theme"
@@ -8,14 +9,8 @@ import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/new-york-v4/ui/sonner"
-import { siteConfig } from "@/www/config/site"
 
 import "@/styles/globals.css"
-
-const META_THEME_COLORS = {
-  light: "#ffffff",
-  dark: "#09090b",
-}
 
 export const metadata: Metadata = {
   title: {

@@ -1,4 +1,4 @@
-import DatePickerWithRange from "@/registry/default/examples/date-picker-with-range"
+import DatePickerWithRange from "@/registry/new-york-v4/examples/date-picker-with-range"
 import { Card, CardContent } from "@/registry/new-york-v4/ui/card"
 import { Label } from "@/registry/new-york-v4/ui/label"
 

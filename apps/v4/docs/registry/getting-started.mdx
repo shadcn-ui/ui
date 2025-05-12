@@ -66,19 +66,6 @@ registry
         └── hello-world.tsx
 ```
 
-<Callout className="mt-6 [&_[data-rehype-pretty-code-title]]:pt-1 [&_pre]:mb-0">
-  **Important:** If you're placing your component in a custom directory, make
-  sure it is configured in your `tailwind.config.ts` file.
-
-```ts showLineNumbers
-// tailwind.config.ts
-export default {
-  content: ["./registry/**/*.{js,ts,jsx,tsx}"],
-}
-```
-
-</Callout>
-
 ### Add your component to the registry
 
 To add your component to the registry, you need to add your component definition to `registry.json`.

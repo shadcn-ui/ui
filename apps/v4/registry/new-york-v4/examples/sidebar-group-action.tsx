@@ -1,14 +1,6 @@
 "use client"
 
-import {
-  ChevronDown,
-  Frame,
-  LifeBuoy,
-  Map,
-  PieChart,
-  Plus,
-  Send,
-} from "lucide-react"
+import { FrameIcon, MapIcon, PieChartIcon, PlusIcon } from "lucide-react"
 import { toast, Toaster } from "sonner"
 
 import {
@@ -41,14 +33,14 @@ export default function AppSidebar() {
               title="Add Project"
               onClick={() => toast("You clicked the group action!")}
             >
-              <Plus /> <span className="sr-only">Add Project</span>
+              <PlusIcon /> <span className="sr-only">Add Project</span>
             </SidebarGroupAction>
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <a href="#">
-                      <Frame />
+                      <FrameIcon />
                       <span>Design Engineering</span>
                     </a>
                   </SidebarMenuButton>
@@ -56,7 +48,7 @@ export default function AppSidebar() {
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <a href="#">
-                      <PieChart />
+                      <PieChartIcon />
                       <span>Sales & Marketing</span>
                     </a>
                   </SidebarMenuButton>
@@ -64,7 +56,7 @@ export default function AppSidebar() {
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <a href="#">
-                      <Map />
+                      <MapIcon />
                       <span>Travel</span>
                     </a>
                   </SidebarMenuButton>

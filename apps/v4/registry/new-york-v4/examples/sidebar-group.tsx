@@ -1,6 +1,6 @@
 "use client"
 
-import { LifeBuoy, Send } from "lucide-react"
+import { LifeBuoyIcon, SendIcon } from "lucide-react"
 
 import {
   Sidebar,
@@ -25,13 +25,13 @@ export default function AppSidebar() {
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton>
-                    <LifeBuoy />
+                    <LifeBuoyIcon />
                     Support
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton>
-                    <Send />
+                    <SendIcon />
                     Feedback
                   </SidebarMenuButton>
                 </SidebarMenuItem>

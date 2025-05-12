@@ -6,7 +6,6 @@ import { type DialogProps } from "@radix-ui/react-dialog"
 import { Circle, File, Laptop, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
-import { docsConfig } from "@/lib/config/docs"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -18,6 +17,11 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/registry/new-york-v4/ui/command"
+
+const docsConfig = {
+  mainNav: [],
+  sidebarNav: [],
+}
 
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter()

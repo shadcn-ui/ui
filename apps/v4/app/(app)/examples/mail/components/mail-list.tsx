@@ -1,18 +1,13 @@
 import { ComponentProps } from "react"
-import formatDistanceToNow from "date-fns/formatDistanceToNow"
+import { formatDistanceToNow } from "date-fns"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { ScrollArea } from "@/registry/new-york-v4/ui/scroll-area"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { Mail } from "@/app/(app)/examples/mail/data"
 import { useMail } from "@/app/(app)/examples/mail/use-mail"
 
-interface MailListProps {
-  items: Mail[]
-}
-
-export function MailList({ items }: MailListProps) {
+export function MailList({ items }: { items: Mail[] }) {
   const [mail, setMail] = useMail()
 
   return (

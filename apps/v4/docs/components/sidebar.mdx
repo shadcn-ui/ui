@@ -313,6 +313,8 @@ export function AppSidebar() {
 
 <Step>You've created your first sidebar.</Step>
 
+You should see something like this:
+
 <figure className="flex flex-col gap-4">
   <ComponentPreview
     name="sidebar-demo"
@@ -742,6 +744,19 @@ export function AppSidebar() {
 
 Use the `SidebarGroupAction` component to add an action button to the `SidebarGroup`.
 
+<figure className="flex flex-col gap-4">
+  <ComponentPreview
+    name="sidebar-group-action"
+    title="Sidebar Group"
+    type="block"
+    description="A sidebar group with an action button."
+    className="w-full"
+  />
+  <figcaption className="text-center text-sm text-gray-500">
+    A sidebar group with an action button.
+  </figcaption>
+</figure>
+
 ```tsx showLineNumbers {5-7}
 export function AppSidebar() {
   return (
@@ -755,19 +770,6 @@ export function AppSidebar() {
   )
 }
 ```
-
-<figure className="flex flex-col gap-4">
-  <ComponentPreview
-    name="sidebar-group-action"
-    title="Sidebar Group"
-    type="block"
-    description="A sidebar group with an action button."
-    className="w-full"
-  />
-  <figcaption className="text-center text-sm text-gray-500">
-    A sidebar group with an action button.
-  </figcaption>
-</figure>
 
 ## SidebarMenu
 

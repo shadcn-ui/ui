@@ -4,7 +4,7 @@ import Link from "next/link"
 import { LucideIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/registry/default/ui/button"
+import { buttonVariants } from "@/registry/new-york-v4/ui/button"
 import {
   Tooltip,
   TooltipContent,

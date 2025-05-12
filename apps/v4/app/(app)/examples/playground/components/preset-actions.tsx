@@ -3,8 +3,8 @@
 import * as React from "react"
 import { Dialog } from "@radix-ui/react-dialog"
 import { MoreHorizontal } from "lucide-react"
+import { toast } from "sonner"
 
-import { toast } from "@/registry/new-york-v4/hooks/use-toast"
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -107,9 +107,7 @@ export function PresetActions() {
               variant="destructive"
               onClick={() => {
                 setShowDeleteDialog(false)
-                toast({
-                  description: "This preset has been deleted.",
-                })
+                toast.success("This preset has been deleted.")
               }}
             >
               Delete

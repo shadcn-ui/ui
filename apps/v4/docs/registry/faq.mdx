@@ -49,15 +49,6 @@ Here's an example of a complex component that installs a page, two components, a
 
 ### How do I add a new Tailwind color?
 
-<Tabs defaultValue="v4">
-
-<TabsList>
-  <TabsTrigger value="v4">Tailwind CSS v4</TabsTrigger>
-  <TabsTrigger value="v3">Tailwind CSS v3</TabsTrigger>
-</TabsList>
-
-<TabsContent value="v4">
-
 To add a new color you need to add it to `cssVars` under `light` and `dark` keys.
 
 ```json showLineNumbers {10-18}
@@ -85,64 +76,7 @@ To add a new color you need to add it to `cssVars` under `light` and `dark` keys
 
 The CLI will update the project CSS file. Once updated, the new colors will be available to be used as utility classes: `bg-brand` and `text-brand-accent`.
 
-</TabsContent>
-
-<TabsContent value="v3">
-
-To add a new color you need to add it to `cssVars` and `tailwind.config.theme.extend.colors`.
-
-```json showLineNumbers {10-19} {24-29}
-{
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "hello-world",
-  "title": "Hello World",
-  "type": "registry:block",
-  "description": "A complex hello world component",
-  "files": [
-    // ...
-  ],
-  "cssVars": {
-    "light": {
-      "brand-background": "20 14.3% 4.1%",
-      "brand-accent": "20 14.3% 4.1%"
-    },
-    "dark": {
-      "brand-background": "20 14.3% 4.1%",
-      "brand-accent": "20 14.3% 4.1%"
-    }
-  },
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "colors": {
-            "brand": {
-              "DEFAULT": "hsl(var(--brand-background))",
-              "accent": "hsl(var(--brand-accent))"
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-The CLI will update the project CSS file and tailwind.config.js file. Once updated, the new colors will be available to be used as utility classes: `bg-brand` and `text-brand-accent`.
-
-</TabsContent>
-</Tabs>
-
 ### How do I add or override a Tailwind theme variable?
-
-<Tabs defaultValue="v4">
-
-<TabsList>
-  <TabsTrigger value="v4">Tailwind CSS v4</TabsTrigger>
-  <TabsTrigger value="v3">Tailwind CSS v3</TabsTrigger>
-</TabsList>
-
-<TabsContent value="v4">
 
 To add or override a theme variable you add it to `cssVars.theme` under the key you want to add or override.
 
@@ -165,36 +99,3 @@ To add or override a theme variable you add it to `cssVars.theme` under the key 
   }
 }
 ```
-
-</TabsContent>
-
-<TabsContent value="v3">
-
-To override a theme variable you add it to `tailwind.config.theme.extend` under the key you want to override.
-
-```json showLineNumbers {14-22}
-{
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "hello-world",
-  "title": "Hello World",
-  "type": "registry:block",
-  "description": "A complex hello world component",
-  "files": [
-    // ...
-  ],
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "text": {
-            "base": "3rem"
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-</TabsContent>
-</Tabs>

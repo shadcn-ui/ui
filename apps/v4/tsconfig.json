@@ -21,7 +21,6 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/www/*": ["../www/*"],
       "@/*": ["./*"],
       "react": ["./node_modules/@types/react"]
     }

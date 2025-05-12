@@ -28,41 +28,34 @@ export function DocsSidebar({
       {...props}
     >
       <SidebarContent className="no-scrollbar px-2 pb-12">
-        {tree.children.map(
-          (item: {
-            $id: string
-            name: string
-            type: string
-            children: { $id: string; name: string; type: string; url: string }[]
-          }) => (
-            <SidebarGroup key={item.$id}>
-              <SidebarGroupLabel className="text-muted-foreground font-semibold uppercase">
-                {item.name}
-              </SidebarGroupLabel>
-              <SidebarGroupContent>
-                {item.type === "folder" && (
-                  <SidebarMenu className="gap-0.5">
-                    {item.children.map((item) => {
-                      return (
-                        item.type === "page" && (
-                          <SidebarMenuItem key={item.url}>
-                            <SidebarMenuButton
-                              asChild
-                              isActive={item.url === pathname}
-                              className="data-[active=true]:bg-accent dark:data-[active=true]:bg-input/30 data-[active=true]:border-border relative h-[30px] border border-transparent after:absolute after:inset-0 after:z-0 after:-my-1 after:rounded-md"
-                            >
-                              <Link href={item.url}>{item.name}</Link>
-                            </SidebarMenuButton>
-                          </SidebarMenuItem>
-                        )
+        {tree.children.map((item) => (
+          <SidebarGroup key={item.$id}>
+            <SidebarGroupLabel className="text-muted-foreground font-semibold uppercase">
+              {item.name}
+            </SidebarGroupLabel>
+            <SidebarGroupContent>
+              {item.type === "folder" && (
+                <SidebarMenu className="gap-0.5">
+                  {item.children.map((item) => {
+                    return (
+                      item.type === "page" && (
+                        <SidebarMenuItem key={item.url}>
+                          <SidebarMenuButton
+                            asChild
+                            isActive={item.url === pathname}
+                            className="data-[active=true]:bg-accent dark:data-[active=true]:bg-input/30 data-[active=true]:border-border relative h-[30px] border border-transparent after:absolute after:inset-0 after:z-0 after:-my-1 after:rounded-md"
+                          >
+                            <Link href={item.url}>{item.name}</Link>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
                       )
-                    })}
-                  </SidebarMenu>
-                )}
-              </SidebarGroupContent>
-            </SidebarGroup>
-          )
-        )}
+                    )
+                  })}
+                </SidebarMenu>
+              )}
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ))}
       </SidebarContent>
     </Sidebar>
   )

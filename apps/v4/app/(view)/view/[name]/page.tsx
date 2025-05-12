@@ -4,9 +4,9 @@ import { notFound } from "next/navigation"
 import { registryItemSchema } from "shadcn/registry"
 import { z } from "zod"
 
+import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { siteConfig } from "@/www/config/site"
 
 const getCachedRegistryItem = React.cache(async (name: string) => {
   return await getRegistryItem(name)
@@ -36,7 +36,7 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
-      url: absoluteUrl(`/blocks/${item.name}`),
+      url: absoluteUrl(`/view/${item.name}`),
       images: [
         {
           url: siteConfig.ogImage,
@@ -64,7 +64,9 @@ export async function generateStaticParams() {
 
   return Object.values(index)
     .filter((block) =>
-      ["registry:block", "registry:component"].includes(block.type)
+      ["registry:block", "registry:component", "registry:example"].includes(
+        block.type
+      )
     )
     .map((block) => ({
       name: block.name,

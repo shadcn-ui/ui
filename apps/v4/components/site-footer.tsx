@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/config/site"
+import { siteConfig } from "@/lib/config"
 
 export function SiteFooter() {
   return (

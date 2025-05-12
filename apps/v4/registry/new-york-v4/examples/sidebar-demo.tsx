@@ -1,6 +1,12 @@
 "use client"
 
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import {
+  CalendarIcon,
+  HomeIcon,
+  InboxIcon,
+  SearchIcon,
+  SettingsIcon,
+} from "lucide-react"
 
 import {
   Sidebar,
@@ -21,27 +27,27 @@ const items = [
   {
     title: "Home",
     url: "#",
-    icon: Home,
+    icon: HomeIcon,
   },
   {
     title: "Inbox",
     url: "#",
-    icon: Inbox,
+    icon: InboxIcon,
   },
   {
     title: "Calendar",
     url: "#",
-    icon: Calendar,
+    icon: CalendarIcon,
   },
   {
     title: "Search",
     url: "#",
-    icon: Search,
+    icon: SearchIcon,
   },
   {
     title: "Settings",
     url: "#",
-    icon: Settings,
+    icon: SettingsIcon,
   },
 ]
 
