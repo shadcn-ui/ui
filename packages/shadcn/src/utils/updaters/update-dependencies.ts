@@ -9,13 +9,16 @@ import prompts from "prompts"
 
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
+  devDependencies: RegistryItem["devDependencies"],
   config: Config,
   options: {
     silent?: boolean
   }
 ) {
   dependencies = Array.from(new Set(dependencies))
-  if (!dependencies?.length) {
+  devDependencies = Array.from(new Set(devDependencies))
+
+  if (!dependencies?.length && !devDependencies?.length) {
     return
   }
 
@@ -59,23 +62,44 @@ export async function updateDependencies(
 
   dependenciesSpinner?.start()
 
-  await execa(
-    packageManager,
-    [
-      packageManager === "npm" ? "install" : "add",
-      ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
-      ...dependencies,
-    ],
-    {
-      cwd: config.resolvedPaths.cwd,
-    }
-  )
+  if (dependencies?.length) {
+    await execa(
+      packageManager,
+      [
+        packageManager === "npm" ? "install" : "add",
+        ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
+        ...(packageManager === "deno"
+          ? dependencies.map((dep) => `npm:${dep}`)
+          : dependencies),
+      ],
+      {
+        cwd: config.resolvedPaths.cwd,
+      }
+    )
+  }
+
+  if (devDependencies?.length) {
+    await execa(
+      packageManager,
+      [
+        packageManager === "npm" ? "install" : "add",
+        ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
+        "-D",
+        ...(packageManager === "deno"
+          ? devDependencies.map((dep) => `npm:${dep}`)
+          : devDependencies),
+      ],
+      {
+        cwd: config.resolvedPaths.cwd,
+      }
+    )
+  }
 
   dependenciesSpinner?.succeed()
 }
 
 function isUsingReact19(config: Config) {
-  const packageInfo = getPackageInfo(config.resolvedPaths.cwd)
+  const packageInfo = getPackageInfo(config.resolvedPaths.cwd, false)
 
   if (!packageInfo?.dependencies?.react) {
     return false

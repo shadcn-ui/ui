@@ -1,0 +1,10 @@
+{
+  "name": "test-cli-project-npm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "shadcn",
+  "license": "MIT",
+  "dependencies": {
+    "react": "19.0.0"
+  }
+}
