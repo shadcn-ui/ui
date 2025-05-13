@@ -4,7 +4,9 @@
   "type": "registry:style",
   "dependencies": [
     "class-variance-authority",
-    "lucide-react",
+    "lucide-react"
+  ],
+  "devDependencies": [
     "tw-animate-css"
   ],
   "registryDependencies": [
