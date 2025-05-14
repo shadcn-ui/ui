@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  outputFileTracingIncludes: {
+    "/*": ["./registry/**/*"],
+  },
   serverExternalPackages: ["ts-morph", "shiki"],
   images: {
     remotePatterns: [
