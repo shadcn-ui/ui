@@ -4,7 +4,7 @@ import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 
-import { source } from "@/lib/docs"
+import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/new-york-v4/ui/button"

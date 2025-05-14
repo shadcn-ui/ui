@@ -4,7 +4,7 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
 import { findNeighbour } from "fumadocs-core/server"
 import { z } from "zod"
 
-import { source } from "@/lib/docs"
+import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsBreadcrumb } from "@/components/docs-breadcrumb"
 import { DocsCopyPage } from "@/components/docs-copy-page"

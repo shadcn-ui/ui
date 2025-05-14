@@ -7,7 +7,7 @@ import { IconArrowRight } from "@tabler/icons-react"
 import { CornerDownLeftIcon } from "lucide-react"
 
 import { type Color, type ColorPalette } from "@/lib/colors"
-import { source } from "@/lib/docs"
+import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { useIsMac } from "@/hooks/use-is-mac"

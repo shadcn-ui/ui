@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import type { source } from "@/lib/docs"
+import type { source } from "@/lib/source"
 import {
   Sidebar,
   SidebarContent,
