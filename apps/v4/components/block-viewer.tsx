@@ -92,8 +92,6 @@ function BlockViewerProvider({
   >(highlightedFiles?.[0].target ?? null)
   const resizablePanelRef = React.useRef<ImperativePanelHandle>(null)
 
-  console.log(item)
-
   return (
     <BlockViewerContext.Provider
       value={{
