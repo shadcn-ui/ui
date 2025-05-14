@@ -1,9 +1,9 @@
 import * as React from "react"
 
 export const useMutationObserver = (
-  ref: React.RefObject<HTMLElement>,
+  ref: React.RefObject<HTMLElement | null>,
   callback: MutationCallback,
-  options = {
+  options: MutationObserverInit = {
     attributes: true,
     characterData: true,
     childList: true,

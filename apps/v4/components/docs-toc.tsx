@@ -84,7 +84,7 @@ export function DocsTableOfContents({
             <IconMenu3 /> On This Page
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent align="start" className="max-h-[70svh]">
           {toc.map((item) => (
             <DropdownMenuItem
               key={item.url}
@@ -92,6 +92,8 @@ export function DocsTableOfContents({
               onClick={() => {
                 setOpen(false)
               }}
+              data-depth={item.depth}
+              className="data-[depth=3]:pl-6 data-[depth=4]:pl-8"
             >
               <a href={item.url}>{item.title}</a>
             </DropdownMenuItem>

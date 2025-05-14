@@ -184,6 +184,10 @@
   }
 }
 
+@utility border-ghost {
+  @apply after:border-border relative after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten;
+}
+
 @utility step {
   counter-increment: step;
 

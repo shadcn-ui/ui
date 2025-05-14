@@ -105,10 +105,7 @@ export default async function Page(props: {
               variant="dropdown"
               className="xl:hidden"
             />
-            <Separator
-              orientation="vertical"
-              className="mx-1 hidden !h-4 lg:block"
-            />
+            <Separator orientation="vertical" className="mx-1 !h-4 lg:hidden" />
             <DocsBreadcrumb tree={source.pageTree} className="hidden lg:flex" />
           </div>
           <div className="flex items-center gap-2">
