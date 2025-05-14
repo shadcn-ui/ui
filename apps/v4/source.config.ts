@@ -24,5 +24,5 @@ export default defineConfig({
 })
 
 export const docs: ReturnType<typeof defineDocs> = defineDocs({
-  dir: "docs",
+  dir: "content/docs",
 })
