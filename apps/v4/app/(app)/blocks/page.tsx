@@ -3,6 +3,9 @@ import Link from "next/link"
 import { BlockDisplay } from "@/components/block-display"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
+export const dynamic = "force-static"
+export const revalidate = false
+
 const FEATURED_BLOCKS = [
   "dashboard-01",
   "sidebar-07",

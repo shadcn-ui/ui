@@ -12,6 +12,9 @@ import {
 import { ThemeSelector } from "@/components/theme-selector"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
+export const dynamic = "force-static"
+export const revalidate = false
+
 const title = "Examples"
 const description = "Check out some examples app built using the components."
 
