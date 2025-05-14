@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   },
   outputFileTracingIncludes: {
     "/*": ["./registry/**/*"],
+    "/docs/*": ["./docs/**/*"],
   },
   serverExternalPackages: ["ts-morph", "shiki"],
   images: {
