@@ -83,6 +83,9 @@ export const blocks: Registry["items"] = [
       },
     ],
     categories: ["dashboard"],
+    meta: {
+      iframeHeight: "1000px",
+    },
   },
   {
     name: "sidebar-01",

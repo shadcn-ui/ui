@@ -107,7 +107,7 @@ export default async function RootLayout({
           <ActiveThemeProvider initialTheme={activeThemeValue}>
             {children}
             <TailwindIndicator />
-            <Toaster />
+            <Toaster position="top-center" />
             <Analytics />
           </ActiveThemeProvider>
         </ThemeProvider>

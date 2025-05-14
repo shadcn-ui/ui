@@ -52,6 +52,7 @@ export const Index: Record<string, any> = {`
     })`
         : "null"
     },
+    categories: ${JSON.stringify(item.categories)},
     meta: ${JSON.stringify(item.meta)},
   },`
   }

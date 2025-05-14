@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { ChartCopyButton } from "@/components/chart-copy-button"
 import { Chart } from "@/components/chart-display"
-import { V0Button } from "@/components/v0-button"
+import { getIconForLanguageExtension } from "@/components/icons"
+import { OpenInV0Button } from "@/components/open-in-v0-button"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Drawer,
@@ -22,7 +23,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/registry/new-york-v4/ui/sheet"
-import { Tabs, TabsContent } from "@/registry/new-york-v4/ui/tabs"
 
 export function ChartCodeViewer({
   chart,
@@ -31,8 +31,6 @@ export function ChartCodeViewer({
 }: {
   chart: Chart
 } & React.ComponentProps<"div">) {
-  const [tab, setTab] = React.useState("code")
-
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
   const button = (
@@ -46,48 +44,39 @@ export function ChartCodeViewer({
   )
 
   const content = (
-    <>
+    <div className="flex min-h-0 flex-1 flex-col gap-0">
       <div className="chart-wrapper theme-container hidden sm:block [&_[data-chart]]:mx-auto [&_[data-chart]]:max-h-[35vh] [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
         {children}
       </div>
-      <Tabs
-        defaultValue="code"
-        className="relative flex h-full flex-1 flex-col overflow-hidden p-4"
-        value={tab}
-        onValueChange={setTab}
-      >
-        <div className="flex w-full items-center">
-          {tab === "code" && (
-            <div className="ml-auto flex items-center justify-center gap-2">
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden p-4">
+        <figure
+          data-rehype-pretty-code-figure=""
+          className="mt-0 flex h-auto min-w-0 flex-1 flex-col overflow-hidden"
+        >
+          <figcaption
+            className="text-foreground [&>svg]:text-foreground flex h-12 shrink-0 items-center gap-2 border-b py-2 pr-2 pl-4 [&>svg]:size-4 [&>svg]:opacity-70"
+            data-language="tsx"
+          >
+            {getIconForLanguageExtension("tsx")}
+            {chart.name}
+            <div className="ml-auto flex items-center gap-2">
               <ChartCopyButton
                 event="copy_chart_code"
                 name={chart.name}
                 code={chart.files?.[0]?.content ?? ""}
               />
-              <V0Button
-                id={`v0-button-${chart.name}`}
-                name={chart.name}
-                className="h-7"
-              />
+              <OpenInV0Button name={chart.name} className="rounded-sm" />
             </div>
-          )}
-        </div>
-        <TabsContent
-          value="code"
-          className="h-full flex-1 flex-col overflow-hidden data-[state=active]:flex"
-        >
-          <div className="relative overflow-auto rounded-lg bg-black">
-            <div
-              data-rehype-pretty-code-fragment
-              dangerouslySetInnerHTML={{
-                __html: chart.highlightedCode,
-              }}
-              className="w-full overflow-hidden [&_pre]:overflow-auto [&_pre]:!bg-black [&_pre]:py-6 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:leading-relaxed"
-            />
-          </div>
-        </TabsContent>
-      </Tabs>
-    </>
+          </figcaption>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: chart.highlightedCode,
+            }}
+            className="no-scrollbar overflow-y-auto"
+          />
+        </figure>
+      </div>
+    </div>
   )
 
   if (!isDesktop) {

@@ -3,7 +3,7 @@ import { tmpdir } from "os"
 import path from "path"
 import { Index } from "@/__registry__"
 import { registryItemFileSchema, registryItemSchema } from "shadcn/registry"
-import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
+import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
 export function getRegistryComponent(name: string) {
@@ -41,17 +41,12 @@ export async function getRegistryItem(name: string) {
     })
   }
 
-  // Get meta.
-  // Assume the first file is the main file.
-  // const meta = await getFileMeta(files[0].path)
-
   // Fix file paths.
   files = fixFilePaths(files)
 
   const parsed = registryItemSchema.safeParse({
     ...result.data,
     files,
-    // meta,
   })
 
   if (!parsed.success) {
@@ -75,9 +70,9 @@ async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
   })
 
   // Remove meta variables.
-  removeVariable(sourceFile, "iframeHeight")
-  removeVariable(sourceFile, "containerClassName")
-  removeVariable(sourceFile, "description")
+  // removeVariable(sourceFile, "iframeHeight")
+  // removeVariable(sourceFile, "containerClassName")
+  // removeVariable(sourceFile, "description")
 
   let code = sourceFile.getFullText()
 
@@ -92,29 +87,6 @@ async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
   code = fixImport(code)
 
   return code
-}
-
-export async function getFileMeta(filePath: string) {
-  const raw = await fs.readFile(filePath, "utf-8")
-
-  const project = new Project({
-    compilerOptions: {},
-  })
-
-  const tempFile = await createTempSourceFile(filePath)
-  const sourceFile = project.createSourceFile(tempFile, raw, {
-    scriptKind: ScriptKind.TSX,
-  })
-
-  const iframeHeight = extractVariable(sourceFile, "iframeHeight")
-  const containerClassName = extractVariable(sourceFile, "containerClassName")
-  const description = extractVariable(sourceFile, "description")
-
-  return {
-    iframeHeight,
-    containerClassName,
-    description,
-  }
 }
 
 function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
@@ -149,25 +121,6 @@ function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
 async function createTempSourceFile(filename: string) {
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   return path.join(dir, filename)
-}
-
-function removeVariable(sourceFile: SourceFile, name: string) {
-  sourceFile.getVariableDeclaration(name)?.remove()
-}
-
-function extractVariable(sourceFile: SourceFile, name: string) {
-  const variable = sourceFile.getVariableDeclaration(name)
-  if (!variable) {
-    return null
-  }
-
-  const value = variable
-    .getInitializerIfKindOrThrow(SyntaxKind.StringLiteral)
-    .getLiteralValue()
-
-  variable.remove()
-
-  return value
 }
 
 function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {

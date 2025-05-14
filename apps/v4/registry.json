@@ -763,6 +763,9 @@
           "type": "registry:component"
         }
       ],
+      "meta": {
+        "iframeHeight": "1000px"
+      },
       "categories": [
         "dashboard"
       ]
