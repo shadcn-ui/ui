@@ -4,6 +4,7 @@ import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 
+import { source } from "@/lib/docs"
 import { cn } from "@/lib/utils"
 import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -16,12 +17,13 @@ import {
   DrawerTrigger,
 } from "@/registry/new-york-v4/ui/drawer"
 
-const docsConfig = {
-  mainNav: [],
-  sidebarNav: [],
-}
-
-export function MobileNav() {
+export function MobileNav({
+  tree,
+  items,
+}: {
+  tree: typeof source.pageTree
+  items: { href: string; label: string }[]
+}) {
   const [open, setOpen] = React.useState(false)
   const { setMetaColor, metaColor } = useMetaColor()
 
@@ -38,7 +40,7 @@ export function MobileNav() {
       <DrawerTrigger asChild>
         <Button
           variant="ghost"
-          className="h-8 flex-1 gap-4 !px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="h-8 flex-1 touch-manipulation gap-4 !px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,47 +67,42 @@ export function MobileNav() {
           <DrawerTitle>Menu</DrawerTitle>
           <DrawerDescription>Choose a section to get started</DrawerDescription>
         </DrawerHeader>
-        <div className="overflow-auto p-6">
-          <div className="flex flex-col space-y-3">
-            {docsConfig?.mainNav?.map(
-              (item) =>
-                item.href && (
-                  <MobileLink
-                    key={item.href}
-                    href={item.href}
-                    onOpenChange={setOpen}
-                  >
-                    {item.title}
-                  </MobileLink>
-                )
-            )}
-          </div>
-          <div className="flex flex-col space-y-2">
-            {docsConfig?.sidebarNav?.map((item, index) => (
-              <div key={index} className="flex flex-col gap-4 pt-6">
-                <h4 className="text-xl font-medium">{item.title}</h4>
-                {item?.items?.length &&
-                  item.items.map((item) => (
-                    <React.Fragment key={item.href}>
-                      {!("disabled" in item) &&
-                        ("href" in item ? (
-                          <MobileLink
-                            href={item.href}
-                            onOpenChange={setOpen}
-                            className="opacity-80"
-                          >
-                            {item.title}
-                            {"label" in item && (
-                              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                                {item.label}
-                              </span>
-                            )}
-                          </MobileLink>
-                        ) : null)}
-                    </React.Fragment>
-                  ))}
-              </div>
+        <div className="flex flex-col gap-8 overflow-auto p-6">
+          <div className="flex flex-col gap-4">
+            <div className="text-muted-foreground text-sm font-semibold uppercase">
+              Home
+            </div>
+            {items.map((item, index) => (
+              <MobileLink key={index} href={item.href} onOpenChange={setOpen}>
+                {item.label}
+              </MobileLink>
             ))}
+          </div>
+          <div className="flex flex-col gap-8">
+            {tree?.children?.map((group, index) => {
+              if (group.type === "folder") {
+                return (
+                  <div key={index} className="flex flex-col gap-4">
+                    <div className="text-muted-foreground text-sm font-semibold uppercase">
+                      {group.name}
+                    </div>
+                    {group.children.map((item) => {
+                      if (item.type === "page") {
+                        return (
+                          <MobileLink
+                            key={item.$id}
+                            href={item.url}
+                            onOpenChange={setOpen}
+                          >
+                            {item.name}
+                          </MobileLink>
+                        )
+                      }
+                    })}
+                  </div>
+                )
+              }
+            })}
           </div>
         </div>
       </DrawerContent>
@@ -134,7 +131,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("text-[1.15rem]", className)}
+      className={cn("text-2xl", className)}
       {...props}
     >
       {children}

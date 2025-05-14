@@ -97,7 +97,7 @@ export default async function Page(props: {
 
   return (
     <div data-slot="docs" className="flex items-stretch text-[15px] xl:w-full">
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="border-grid flex min-w-0 flex-1 flex-col border-r">
         <div className="bg-background/95 supports-[backdrop-filter]:bg-background/60 border-grid sticky top-[calc(var(--header-height)+1px)] z-10 flex h-12 items-center justify-between border-b px-2 backdrop-blur md:px-4">
           <div className="flex items-center gap-2">
             <DocsTableOfContents
@@ -173,8 +173,8 @@ export default async function Page(props: {
           )}
         </div>
       </div>
-      <div className="border-grid sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)+1px)] w-72 flex-col gap-4 overflow-hidden border-l pb-8 xl:flex">
-        <div className="border-grid h-12 border-b" />
+      <div className="border-grid sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+        <div className="border-grid h-12 shrink-0 border-b" />
         {doc.toc && (
           <div className="no-scrollbar border-grid overflow-y-auto border-b px-8">
             <DocsTableOfContents toc={doc.toc} />

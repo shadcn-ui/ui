@@ -8,7 +8,29 @@ export const siteConfig = {
     twitter: "https://twitter.com/shadcn",
     github: "https://github.com/shadcn-ui/ui",
   },
-} as const
+  navItems: [
+    {
+      href: "/docs/installation",
+      label: "Docs",
+    },
+    {
+      href: "/docs/components",
+      label: "Components",
+    },
+    {
+      href: "/blocks",
+      label: "Blocks",
+    },
+    {
+      href: "/charts",
+      label: "Charts",
+    },
+    {
+      href: "/colors",
+      label: "Colors",
+    },
+  ],
+}
 
 export const META_THEME_COLORS = {
   light: "#ffffff",

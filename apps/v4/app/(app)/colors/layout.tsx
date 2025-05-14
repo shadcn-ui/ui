@@ -49,7 +49,7 @@ export default function ColorsLayout({
   const colors = getColors()
 
   return (
-    <div className="section-muted">
+    <div>
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
@@ -64,14 +64,14 @@ export default function ColorsLayout({
         </PageActions>
       </PageHeader>
       <div className="border-grid border-b">
-        <div className="container-wrapper">
+        <div className="container-wrapper bg-muted/50 dark:bg-background">
           <div className="container flex items-center justify-between gap-8 py-4">
             <ColorsNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
             <ColorFormatSelector color={colors[0].colors[0]} />
           </div>
         </div>
       </div>
-      <div className="container-wrapper">
+      <div className="container-wrapper bg-muted/50 dark:bg-background">
         <div className="container py-6">
           <section id="colors" className="scroll-mt-20">
             {children}

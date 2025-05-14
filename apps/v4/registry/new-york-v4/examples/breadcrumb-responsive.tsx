@@ -49,7 +49,9 @@ export default function BreadcrumbResponsive() {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href={items[0].href}>{items[0].label}</BreadcrumbLink>
+          <BreadcrumbLink asChild>
+            <Link href={items[0].href ?? "/"}>{items[0].label}</Link>
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         {items.length > ITEMS_TO_DISPLAY ? (
@@ -61,7 +63,7 @@ export default function BreadcrumbResponsive() {
                     className="flex items-center gap-1"
                     aria-label="Toggle menu"
                   >
-                    <BreadcrumbEllipsis className="h-4 w-4" />
+                    <BreadcrumbEllipsis className="size-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     {items.slice(1, -2).map((item, index) => (

@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 
 export default function IndexPage() {
   return (
-    <div className="section-muted">
+    <div>
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
@@ -69,7 +69,7 @@ export default function IndexPage() {
           </div>
         </div>
       </div>
-      <div className="container-wrapper">
+      <div className="container-wrapper bg-muted/50 dark:bg-background">
         <div className="container py-6">
           <section className="bg-background overflow-hidden rounded-lg border shadow-md md:hidden md:shadow-xl">
             <Image

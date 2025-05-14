@@ -14,12 +14,13 @@ import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 export function SiteHeader() {
   const colors = getColors()
+  const pageTree = source.pageTree
 
   return (
     <header className="border-grid bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="container-wrapper">
         <div className="container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:!h-6">
-          <MobileNav />
+          <MobileNav tree={pageTree} items={siteConfig.navItems} />
           <Button
             asChild
             variant="ghost"
@@ -35,10 +36,10 @@ export function SiteHeader() {
             orientation="vertical"
             className="ml-0.5 hidden md:block"
           />
-          <MainNav />
+          <MainNav items={siteConfig.navItems} />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
-              <CommandMenu tree={source.pageTree} colors={colors} />
+              <CommandMenu tree={pageTree} colors={colors} />
             </div>
             <Separator orientation="vertical" className="ml-2" />
             <GitHubLink />

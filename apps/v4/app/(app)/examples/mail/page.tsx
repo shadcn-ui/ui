@@ -4,9 +4,10 @@ import Image from "next/image"
 import { Mail } from "@/app/(app)/examples/mail/components/mail"
 import { accounts, mails } from "@/app/(app)/examples/mail/data"
 
-export default function MailPage() {
-  const layout = cookies().get("react-resizable-panels:layout:mail")
-  const collapsed = cookies().get("react-resizable-panels:collapsed")
+export default async function MailPage() {
+  const cookieStore = await cookies()
+  const layout = cookieStore.get("react-resizable-panels:layout:mail")
+  const collapsed = cookieStore.get("react-resizable-panels:collapsed")
 
   const defaultLayout = layout ? JSON.parse(layout.value) : undefined
   const defaultCollapsed = collapsed ? JSON.parse(collapsed.value) : undefined

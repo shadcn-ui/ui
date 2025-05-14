@@ -6,30 +6,13 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
-const navItems = [
-  {
-    href: "/docs/installation",
-    label: "Docs",
-  },
-  {
-    href: "/docs/components",
-    label: "Components",
-  },
-  {
-    href: "/blocks",
-    label: "Blocks",
-  },
-  {
-    href: "/charts",
-    label: "Charts",
-  },
-  {
-    href: "/colors",
-    label: "Colors",
-  },
-]
-
-export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
+export function MainNav({
+  items,
+  className,
+  ...props
+}: React.ComponentProps<"nav"> & {
+  items: { href: string; label: string }[]
+}) {
   const pathname = usePathname()
 
   return (
@@ -37,7 +20,7 @@ export function MainNav({ className, ...props }: React.ComponentProps<"nav">) {
       className={cn("hidden items-center gap-0.5 md:flex", className)}
       {...props}
     >
-      {navItems.map((item) => (
+      {items.map((item) => (
         <Button key={item.href} variant="ghost" asChild size="sm">
           <Link
             href={item.href}

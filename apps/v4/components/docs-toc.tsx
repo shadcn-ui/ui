@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
-import { IconList, IconMenu3 } from "@tabler/icons-react"
+import { IconMenu3 } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"

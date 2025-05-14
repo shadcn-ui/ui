@@ -1,4 +1,5 @@
-import { Slash } from "lucide-react"
+import Link from "next/link"
+import { SlashIcon } from "lucide-react"
 
 import {
   Breadcrumb,
@@ -14,16 +15,20 @@ export default function BreadcrumbWithCustomSeparator() {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink asChild>
+            <Link href="/">Home</Link>
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <Slash />
+          <SlashIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+          <BreadcrumbLink asChild>
+            <Link href="/components">Components</Link>
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <Slash />
+          <SlashIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>

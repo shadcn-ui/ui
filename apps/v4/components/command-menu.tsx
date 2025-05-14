@@ -10,7 +10,6 @@ import { type Color, type ColorPalette } from "@/lib/colors"
 import { source } from "@/lib/docs"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { useIsMac } from "@/hooks/use-is-mac"
 import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
@@ -44,7 +43,6 @@ export function CommandMenu({
   const router = useRouter()
   const isMac = useIsMac()
   const [config] = useConfig()
-  const { copyToClipboard } = useCopyToClipboard()
   const [open, setOpen] = React.useState(false)
   const [selectedType, setSelectedType] = React.useState<
     "color" | "page" | "component" | null
@@ -65,13 +63,16 @@ export function CommandMenu({
         setCopyPayload("")
       }
     },
-    [packageManager]
+    [packageManager, setSelectedType, setCopyPayload]
   )
 
-  const handleColorHighlight = React.useCallback((color: Color) => {
-    setSelectedType("color")
-    setCopyPayload(color.className)
-  }, [])
+  const handleColorHighlight = React.useCallback(
+    (color: Color) => {
+      setSelectedType("color")
+      setCopyPayload(color.className)
+    },
+    [setSelectedType, setCopyPayload]
+  )
 
   const runCommand = React.useCallback((command: () => unknown) => {
     setOpen(false)
@@ -115,7 +116,7 @@ export function CommandMenu({
 
     document.addEventListener("keydown", down)
     return () => document.removeEventListener("keydown", down)
-  }, [copyPayload])
+  }, [copyPayload, runCommand, selectedType, packageManager])
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
