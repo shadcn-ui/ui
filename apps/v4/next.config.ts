@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/*": ["./registry/**/*"],
   },
+  serverExternalPackages: ["ts-morph", "shiki"],
   images: {
     remotePatterns: [
       {
@@ -22,6 +23,6 @@ const nextConfig: NextConfig = {
   },
 }
 
-const withMDX = createMDX({})
+const withMDX = createMDX()
 
 export default withMDX(nextConfig)
