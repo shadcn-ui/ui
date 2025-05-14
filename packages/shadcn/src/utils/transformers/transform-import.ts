@@ -59,9 +59,9 @@ function updateImportAliases(
     return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
 
-  if (moduleSpecifier.match(/^@\/registry\/(.+)\/ui/)) {
+  if (moduleSpecifier.match(/^@\/registry\/(.+)\/ui(?=\/)/)) {
     return moduleSpecifier.replace(
-      /^@\/registry\/(.+)\/ui/,
+      /^@\/registry\/(.+)\/ui(?=\/)/,
       config.aliases.ui ?? `${config.aliases.components}/ui`
     )
   }

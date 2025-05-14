@@ -91,3 +91,14 @@ import { Foo } from "bar"
     import { cn } from "@repo/ui/lib/utils"
     "
 `;
+
+exports[`transform import for monorepo 3`] = `
+"import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@workspace/ui/components/ui/ui-button"
+    import { Label} from "ui/label"
+    import { Box } from "@workspace/ui/components/box"
+
+    import { cn } from "@workspace/ui/lib/utils"
+    "
+`;
