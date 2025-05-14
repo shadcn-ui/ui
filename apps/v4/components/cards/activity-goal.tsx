@@ -72,12 +72,12 @@ export function CardsActivityGoal() {
   }
 
   return (
-    <Card className="gap-5">
+    <Card className="h-full gap-5">
       <CardHeader>
         <CardTitle>Move Goal</CardTitle>
         <CardDescription>Set your daily activity goal.</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-1 flex-col">
         <div className="flex items-center justify-center gap-4">
           <Button
             variant="outline"
@@ -108,7 +108,7 @@ export function CardsActivityGoal() {
             <span className="sr-only">Increase</span>
           </Button>
         </div>
-        <div className="h-[60px]">
+        <div className="flex-1">
           <ChartContainer
             config={chartConfig}
             className="aspect-auto h-full w-full"
