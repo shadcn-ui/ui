@@ -6,7 +6,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   outputFileTracingIncludes: {
-    "/*": ["./registry/**/*"],
+    "/*": ["./registry/**/*", "./content/docs/**/*"],
   },
   images: {
     remotePatterns: [
