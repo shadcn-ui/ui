@@ -1,7 +1,7 @@
-import type { NextConfig } from "next"
 import { createMDX } from "fumadocs-mdx/next"
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
