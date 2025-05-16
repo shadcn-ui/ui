@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-as-child",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "examples/button-as-child.tsx",
+      "content": "import Link from \"next/link\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\n\nexport default function ButtonAsChild() {\n  return (\n    <Button asChild>\n      <Link href=\"/login\">Login</Link>\n    </Button>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
