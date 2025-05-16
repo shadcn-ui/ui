@@ -67,13 +67,14 @@ async function addProjectComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    skipRegistryDeps?: boolean
     style?: string
   }
 ) {
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  const tree = await registryResolveItemsTree(components, config)
+  const tree = await registryResolveItemsTree(components, config, options)
 
   if (!tree) {
     registrySpinner?.fail()
@@ -125,13 +126,16 @@ async function addWorkspaceComponents(
     silent?: boolean
     isNewProject?: boolean
     isRemote?: boolean
+    skipRegistryDeps?: boolean
     style?: string
   }
 ) {
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  let registryItems = await resolveRegistryItems(components, config)
+  let registryItems = options.skipRegistryDeps
+    ? components
+    : await resolveRegistryItems(components, config)
   let result = await fetchRegistry(registryItems)
   const payload = z.array(registryItemSchema).parse(result)
   if (!payload) {
