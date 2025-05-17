@@ -3,7 +3,6 @@ import { notFound } from "next/navigation"
 import { mdxComponents } from "@/mdx-components"
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
 import { findNeighbour } from "fumadocs-core/server"
-import { z } from "zod"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
@@ -72,23 +71,7 @@ export default async function Page(props: {
     notFound()
   }
 
-  // TODO: Revisit fumadocs types.
-  const doc = z
-    .object({
-      title: z.string(),
-      description: z.string(),
-      body: z.any(),
-      content: z.string(),
-      toc: z.array(
-        z.object({
-          title: z.custom<React.ReactNode>(),
-          url: z.string(),
-          depth: z.number(),
-        })
-      ),
-    })
-    .parse(page.data)
-
+  const doc = page.data
   const MDX = doc.body
   const neighbours = await findNeighbour(source.pageTree, page.url)
 
