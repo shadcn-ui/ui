@@ -7,11 +7,9 @@ import { z } from "zod"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
-import { DocsBreadcrumb } from "@/components/docs-breadcrumb"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
 import { Button } from "@/registry/new-york-v4/ui/button"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 export function generateStaticParams() {
   return source.generateParams()
@@ -98,7 +96,7 @@ export default async function Page(props: {
     <div data-slot="docs" className="flex items-stretch text-[15px] xl:w-full">
       <div className="border-grid flex min-w-0 flex-1 flex-col border-r">
         <div className="bg-background/95 supports-[backdrop-filter]:bg-background/60 border-grid sticky top-[calc(var(--header-height)+1px)] z-10 flex h-12 items-center justify-between border-b px-2 backdrop-blur md:px-4">
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <DocsTableOfContents
               toc={doc.toc}
               variant="dropdown"
@@ -106,7 +104,7 @@ export default async function Page(props: {
             />
             <Separator orientation="vertical" className="mx-1 !h-4 lg:hidden" />
             <DocsBreadcrumb tree={source.pageTree} className="hidden lg:flex" />
-          </div>
+          </div> */}
           <div className="flex items-center gap-2">
             {/* <DocsCopyPage page={doc.content} /> */}
             {/* <Separator orientation="vertical" className="mx-1 !h-4" /> */}
