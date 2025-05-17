@@ -16,7 +16,7 @@ export function ColorsNav({
 
   return (
     <div className={cn("flex items-center", className)} {...props}>
-      <ScrollArea className="max-w-[600px] lg:max-w-[940px]">
+      <ScrollArea className="max-w-full">
         <div className="flex items-center">
           {colors.map((colorPalette, index) => (
             <Link

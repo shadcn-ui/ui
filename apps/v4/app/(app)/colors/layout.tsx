@@ -69,7 +69,7 @@ export default function ColorsLayout({
             <ColorsNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
             <ColorFormatSelector
               color={colors[0].colors[0]}
-              className="-translate-x-2"
+              className="hidden -translate-x-2 lg:flex"
             />
           </div>
         </div>
