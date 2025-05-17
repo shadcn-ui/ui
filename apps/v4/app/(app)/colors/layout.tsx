@@ -67,7 +67,10 @@ export default function ColorsLayout({
         <div className="container-wrapper">
           <div className="container flex items-center justify-between gap-8 py-4">
             <ColorsNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
-            <ColorFormatSelector color={colors[0].colors[0]} />
+            <ColorFormatSelector
+              color={colors[0].colors[0]}
+              className="-translate-x-2"
+            />
           </div>
         </div>
       </div>

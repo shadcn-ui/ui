@@ -92,7 +92,7 @@ export default async function Page(props: {
           </div>
           <div className="flex items-center gap-2">
             {/* <DocsCopyPage page={doc.content} /> */}
-            <Separator orientation="vertical" className="mx-1 !h-4" />
+            {/* <Separator orientation="vertical" className="mx-1 !h-4" /> */}
             {neighbours.previous && (
               <Button
                 variant="outline"
