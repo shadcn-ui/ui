@@ -73,7 +73,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `
               try {
@@ -88,6 +88,16 @@ export default async function RootLayout({
           crossOrigin="anonymous"
           src="//unpkg.com/react-scan/dist/auto.global.js"
           async
+        /> */}
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content="#ffffff"
+        />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content="#0a0a0a"
         />
       </head>
       <body
