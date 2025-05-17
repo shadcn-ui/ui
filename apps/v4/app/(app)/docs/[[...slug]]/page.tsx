@@ -8,7 +8,6 @@ import { z } from "zod"
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsBreadcrumb } from "@/components/docs-breadcrumb"
-import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -109,8 +108,8 @@ export default async function Page(props: {
             <DocsBreadcrumb tree={source.pageTree} className="hidden lg:flex" />
           </div>
           <div className="flex items-center gap-2">
-            <DocsCopyPage page={doc.content} />
-            <Separator orientation="vertical" className="mx-1 !h-4" />
+            {/* <DocsCopyPage page={doc.content} /> */}
+            {/* <Separator orientation="vertical" className="mx-1 !h-4" /> */}
             {neighbours.previous && (
               <Button
                 variant="outline"
