@@ -256,7 +256,7 @@ export function clearRegistryCache() {
 export async function registryResolveItemsTree(
   names: z.infer<typeof registryItemSchema>["name"][],
   config: Config,
-  options: {
+  options?: {
     skipRegistryDeps?: boolean
   }
 ) {
@@ -271,7 +271,7 @@ export async function registryResolveItemsTree(
       names.unshift("index")
     }
 
-    let registryItems = options.skipRegistryDeps
+    let registryItems = options?.skipRegistryDeps
       ? names
       : await resolveRegistryItems(names, config)
     let result = await fetchRegistry(registryItems)
