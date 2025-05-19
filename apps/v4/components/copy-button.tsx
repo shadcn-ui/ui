@@ -12,7 +12,7 @@ import {
   TooltipTrigger,
 } from "@/registry/new-york-v4/ui/tooltip"
 
-export async function copyToClipboardWithMeta(value: string, event?: Event) {
+export function copyToClipboardWithMeta(value: string, event?: Event) {
   navigator.clipboard.writeText(value)
   if (event) {
     trackEvent(event)
@@ -36,7 +36,7 @@ export function CopyButton({
     setTimeout(() => {
       setHasCopied(false)
     }, 2000)
-  }, [hasCopied])
+  }, [])
 
   return (
     <Tooltip>
