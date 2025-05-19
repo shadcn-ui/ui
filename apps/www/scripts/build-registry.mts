@@ -1,3 +1,4 @@
+import { exec } from "child_process"
 import { existsSync, promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
@@ -800,6 +801,18 @@ export const Icons = {
   )
 }
 
+async function syncRegistry() {
+  // 1. Call pnpm registry:build for v4.
+  await exec("pnpm --filter=v4 registry:build")
+
+  // 2. Copy the www/public/r directory to v4/public/r.
+  await fs.cp(
+    path.resolve(process.cwd(), "public/r"),
+    path.resolve(process.cwd(), "../v4/public/r"),
+    { recursive: true }
+  )
+}
+
 try {
   console.log("💽 Building registry...")
   const result = registrySchema.safeParse(registry)
@@ -818,7 +831,11 @@ try {
   await buildRegistryIcons()
   await buildIcons()
 
+  console.log("🔄 Syncing registry...")
+  await syncRegistry()
+
   console.log("✅ Done!")
+  process.exit(0)
 } catch (error) {
   console.error(error)
   process.exit(1)
