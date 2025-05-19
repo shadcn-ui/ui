@@ -108,6 +108,19 @@ async function buildRegistry() {
   })
 }
 
+async function syncRegistry() {
+  // 1. Call pnpm registry:build for www.
+  await exec("pnpm --filter=www registry:build")
+
+  // 2. Copy the www/public/r directory to v4/public/r.
+  rimraf.sync(path.join(process.cwd(), "public/r"))
+  await fs.cp(
+    path.resolve(process.cwd(), "../www/public/r"),
+    path.resolve(process.cwd(), "public/r"),
+    { recursive: true }
+  )
+}
+
 try {
   console.log("🗂️ Building registry/__index__.tsx...")
   await buildRegistryIndex()
@@ -117,6 +130,9 @@ try {
 
   console.log("🏗️ Building registry...")
   await buildRegistry()
+
+  console.log("🔄 Syncing registry...")
+  await syncRegistry()
 } catch (error) {
   console.error(error)
   process.exit(1)
