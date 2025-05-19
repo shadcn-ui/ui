@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack --port 4000",
     "build": "pnpm --filter=shadcn build && next build",
-    "start": "next start",
+    "start": "next start --port 4000",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "typecheck": "tsc --noEmit",
