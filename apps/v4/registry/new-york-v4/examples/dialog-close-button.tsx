@@ -1,5 +1,3 @@
-import { Copy } from "lucide-react"
-
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
@@ -27,7 +25,7 @@ export default function DialogCloseButton() {
             Anyone who has this link will be able to view this.
           </DialogDescription>
         </DialogHeader>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <div className="grid flex-1 gap-2">
             <Label htmlFor="link" className="sr-only">
               Link
@@ -38,10 +36,6 @@ export default function DialogCloseButton() {
               readOnly
             />
           </div>
-          <Button type="submit" size="sm" className="px-3">
-            <span className="sr-only">Copy</span>
-            <Copy />
-          </Button>
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>

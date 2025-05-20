@@ -60,7 +60,7 @@ export const Index: Record<string, any> = {`
   index += `
   }`
 
-  console.log("index", Object.keys(registry.items).length)
+  console.log(`#️⃣  ${Object.keys(registry.items).length} components found`)
 
   // Write style index.
   rimraf.sync(path.join(process.cwd(), "registry/__index__.tsx"))
