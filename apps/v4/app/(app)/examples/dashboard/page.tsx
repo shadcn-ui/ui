@@ -21,7 +21,7 @@ export default function Page() {
       }
     >
       <AppSidebar variant="sidebar" />
-      <SidebarInset className="no-scrollbar max-h-[1000px] overflow-y-auto">
+      <SidebarInset>
         <SiteHeader />
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">

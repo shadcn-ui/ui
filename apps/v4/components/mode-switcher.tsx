@@ -3,21 +3,20 @@
 import * as React from "react"
 import { useTheme } from "next-themes"
 
-import { META_THEME_COLORS, useMetaColor } from "@/hooks/use-meta-color"
+import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 export function ModeSwitcher() {
   const { setTheme, resolvedTheme } = useTheme()
-  const { setMetaColor } = useMetaColor()
+  const { setMetaColor, metaColor } = useMetaColor()
+
+  React.useEffect(() => {
+    setMetaColor(metaColor)
+  }, [metaColor, setMetaColor])
 
   const toggleTheme = React.useCallback(() => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
-    setMetaColor(
-      resolvedTheme === "dark"
-        ? META_THEME_COLORS.light
-        : META_THEME_COLORS.dark
-    )
-  }, [resolvedTheme, setTheme, setMetaColor])
+  }, [resolvedTheme, setTheme])
 
   return (
     <Button

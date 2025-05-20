@@ -3,7 +3,7 @@ import { useTheme } from "next-themes"
 
 export const META_THEME_COLORS = {
   light: "#ffffff",
-  dark: "#09090b",
+  dark: "#0a0a0a",
 }
 
 export function useMetaColor() {
@@ -16,9 +16,11 @@ export function useMetaColor() {
   }, [resolvedTheme])
 
   const setMetaColor = React.useCallback((color: string) => {
+    console.log(document.querySelector('meta[name="theme-color"]'))
     document
       .querySelector('meta[name="theme-color"]')
       ?.setAttribute("content", color)
+    console.log(`Setting meta color to ${color}`)
   }, [])
 
   return {

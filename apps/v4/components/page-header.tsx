@@ -4,7 +4,7 @@ function PageHeader({
   className,
   children,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.ComponentProps<"section">) {
   return (
     <section className={cn("border-grid border-b", className)} {...props}>
       <div className="container-wrapper">
@@ -19,11 +19,11 @@ function PageHeader({
 function PageHeaderHeading({
   className,
   ...props
-}: React.HTMLAttributes<HTMLHeadingElement>) {
+}: React.ComponentProps<"h1">) {
   return (
     <h1
       className={cn(
-        "text-2xl leading-tight font-bold tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1]",
+        "text-primary text-3xl leading-tight font-bold tracking-tight text-balance sm:text-3xl md:text-4xl md:tracking-tighter lg:leading-[1.1]",
         className
       )}
       {...props}
@@ -34,7 +34,7 @@ function PageHeaderHeading({
 function PageHeaderDescription({
   className,
   ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
+}: React.ComponentProps<"p">) {
   return (
     <p
       className={cn(
@@ -46,10 +46,7 @@ function PageHeaderDescription({
   )
 }
 
-function PageActions({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+function PageActions({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(

@@ -6,16 +6,12 @@ import { useRouter } from "next/navigation"
 
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
-import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/registry/new-york-v4/ui/drawer"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/registry/new-york-v4/ui/popover"
 
 export function MobileNav({
   tree,
@@ -25,95 +21,91 @@ export function MobileNav({
   items: { href: string; label: string }[]
 }) {
   const [open, setOpen] = React.useState(false)
-  const { setMetaColor, metaColor } = useMetaColor()
-
-  const onOpenChange = React.useCallback(
-    (open: boolean) => {
-      setOpen(open)
-      setMetaColor(open ? "#09090b" : metaColor)
-    },
-    [setMetaColor, metaColor]
-  )
 
   return (
-    <Drawer open={open} onOpenChange={onOpenChange}>
-      <DrawerTrigger asChild>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
         <Button
           variant="ghost"
-          className="h-8 flex-1 touch-manipulation gap-4 !px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="-ml-1.5 flex h-8 flex-1 touch-manipulation items-center justify-center gap-2 !px-0 md:hidden"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="!size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 9h16.5m-16.5 6.75h16.5"
-            />
-          </svg>
-          <span className="sr-only">Toggle Menu</span>
+          <div className="relative flex size-8 items-center justify-center">
+            <div className="relative size-5">
+              <span
+                className={cn(
+                  "bg-foreground absolute left-0 block h-0.5 w-5 transition-all duration-200",
+                  open ? "top-2 -rotate-45" : "top-1.5"
+                )}
+              />
+              <span
+                className={cn(
+                  "bg-foreground absolute left-0 block h-0.5 w-5 transition-all duration-200",
+                  open ? "top-2 rotate-45" : "top-3.5"
+                )}
+              />
+            </div>
+            <span className="sr-only">Toggle Menu</span>
+          </div>
           <span className="bg-muted/50 text-muted-foreground flex h-8 flex-1 items-center justify-between rounded-md border px-2 text-sm font-normal shadow-none">
             Search documentation...
           </span>
         </Button>
-      </DrawerTrigger>
-      <DrawerContent className="max-h-[80svh] p-0">
-        <DrawerHeader className="sr-only">
-          <DrawerTitle>Menu</DrawerTitle>
-          <DrawerDescription>Choose a section to get started</DrawerDescription>
-        </DrawerHeader>
-        <div className="flex flex-col gap-8 overflow-auto p-6">
+      </PopoverTrigger>
+      <PopoverContent
+        className="bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none p-0 shadow-none backdrop-blur"
+        align="start"
+        side="bottom"
+        alignOffset={-16}
+        sideOffset={14}
+      >
+        <div className="flex flex-col gap-12 overflow-auto px-4 py-6">
           <div className="flex flex-col gap-4">
-            <div className="text-muted-foreground text-sm font-semibold uppercase">
-              Home
+            <div className="text-muted-foreground text-sm font-medium">
+              Menu
             </div>
-            {items.map((item, index) => (
-              <MobileLink key={index} href={item.href} onOpenChange={setOpen}>
-                {item.label}
+            <div className="flex flex-col gap-3">
+              <MobileLink href="/" onOpenChange={setOpen}>
+                Home
               </MobileLink>
-            ))}
+              {items.map((item, index) => (
+                <MobileLink key={index} href={item.href} onOpenChange={setOpen}>
+                  {item.label}
+                </MobileLink>
+              ))}
+            </div>
           </div>
           <div className="flex flex-col gap-8">
             {tree?.children?.map((group, index) => {
               if (group.type === "folder") {
                 return (
                   <div key={index} className="flex flex-col gap-4">
-                    <div className="text-muted-foreground text-sm font-semibold uppercase">
+                    <div className="text-muted-foreground text-sm font-medium">
                       {group.name}
                     </div>
-                    {group.children.map((item) => {
-                      if (item.type === "page") {
-                        return (
-                          <MobileLink
-                            key={item.$id}
-                            href={item.url}
-                            onOpenChange={setOpen}
-                          >
-                            {item.name}
-                          </MobileLink>
-                        )
-                      }
-                    })}
+                    <div className="flex flex-col gap-3">
+                      {group.children.map((item) => {
+                        if (item.type === "page") {
+                          return (
+                            <MobileLink
+                              key={`${item.url}-${index}`}
+                              href={item.url}
+                              onOpenChange={setOpen}
+                            >
+                              {item.name}
+                            </MobileLink>
+                          )
+                        }
+                      })}
+                    </div>
                   </div>
                 )
               }
             })}
           </div>
         </div>
-      </DrawerContent>
-    </Drawer>
+      </PopoverContent>
+    </Popover>
   )
-}
-
-interface MobileLinkProps extends LinkProps {
-  onOpenChange?: (open: boolean) => void
-  children: React.ReactNode
-  className?: string
 }
 
 function MobileLink({
@@ -122,7 +114,11 @@ function MobileLink({
   className,
   children,
   ...props
-}: MobileLinkProps) {
+}: LinkProps & {
+  onOpenChange?: (open: boolean) => void
+  children: React.ReactNode
+  className?: string
+}) {
   const router = useRouter()
   return (
     <Link
@@ -131,7 +127,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("text-2xl", className)}
+      className={cn("text-2xl font-medium", className)}
       {...props}
     >
       {children}

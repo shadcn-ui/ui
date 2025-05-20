@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next"
+import type { Metadata } from "next"
 import { cookies } from "next/headers"
 
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
@@ -58,10 +58,6 @@ export const metadata: Metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
-export const viewport: Viewport = {
-  themeColor: META_THEME_COLORS.light,
-}
-
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -73,7 +69,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* <script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               try {
@@ -84,21 +80,7 @@ export default async function RootLayout({
             `,
           }}
         />
-        <script
-          crossOrigin="anonymous"
-          src="//unpkg.com/react-scan/dist/auto.global.js"
-          async
-        /> */}
-        <meta
-          name="theme-color"
-          media="(prefers-color-scheme: light)"
-          content="#ffffff"
-        />
-        <meta
-          name="theme-color"
-          media="(prefers-color-scheme: dark)"
-          content="#0a0a0a"
-        />
+        <meta name="theme-color" content={META_THEME_COLORS.light} />
       </head>
       <body
         className={cn(
@@ -107,13 +89,7 @@ export default async function RootLayout({
           fontVariables
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-          enableColorScheme
-        >
+        <ThemeProvider>
           <ActiveThemeProvider initialTheme={activeThemeValue}>
             {children}
             <TailwindIndicator />
