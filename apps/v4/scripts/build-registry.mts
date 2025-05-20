@@ -60,9 +60,11 @@ export const Index: Record<string, any> = {`
   index += `
   }`
 
+  console.log("index", Object.keys(registry.items).length)
+
   // Write style index.
-  rimraf.sync(path.join(process.cwd(), "__registry__/index.tsx"))
-  await fs.writeFile(path.join(process.cwd(), "__registry__/index.tsx"), index)
+  rimraf.sync(path.join(process.cwd(), "registry/__index__.tsx"))
+  await fs.writeFile(path.join(process.cwd(), "registry/__index__.tsx"), index)
 }
 
 async function buildRegistryJsonFile() {
@@ -109,6 +111,17 @@ async function buildRegistry() {
 }
 
 async function syncRegistry() {
+  // Store the current registry content
+  const registryDir = path.join(process.cwd(), "registry")
+  const registryIndexPath = path.join(registryDir, "__index__.tsx")
+  let registryContent = null
+
+  try {
+    registryContent = await fs.readFile(registryIndexPath, "utf8")
+  } catch {
+    // File might not exist yet, that's ok
+  }
+
   // 1. Call pnpm registry:build for www.
   await exec("pnpm --filter=www registry:build")
 
@@ -119,6 +132,11 @@ async function syncRegistry() {
     path.resolve(process.cwd(), "public/r"),
     { recursive: true }
   )
+
+  // 3. Restore the registry content if we had it
+  if (registryContent) {
+    await fs.writeFile(registryIndexPath, registryContent, "utf8")
+  }
 }
 
 try {

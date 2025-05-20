@@ -1,8 +1,8 @@
 import Image from "next/image"
-import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
 import { ComponentSource } from "@/components/component-source"
+import { Index } from "@/registry/__index__"
 import {
   Tabs,
   TabsContent,

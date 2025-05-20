@@ -802,15 +802,21 @@ export const Icons = {
 }
 
 async function syncRegistry() {
-  // 1. Call pnpm registry:build for v4.
-  await exec("pnpm --filter=v4 registry:build")
+  // Copy the public/r directory to v4/public/r without triggering v4's build
+  const wwwPublicR = path.resolve(process.cwd(), "public/r")
+  const v4PublicR = path.resolve(process.cwd(), "../v4/public/r")
 
-  // 2. Copy the www/public/r directory to v4/public/r.
-  await fs.cp(
-    path.resolve(process.cwd(), "public/r"),
-    path.resolve(process.cwd(), "../v4/public/r"),
-    { recursive: true }
-  )
+  // Ensure the source directory exists
+  if (!existsSync(wwwPublicR)) {
+    await fs.mkdir(wwwPublicR, { recursive: true })
+  }
+
+  // Clean and recreate the v4/public/r directory
+  rimraf.sync(v4PublicR)
+  await fs.mkdir(v4PublicR, { recursive: true })
+
+  // Copy files from www to v4
+  await fs.cp(wwwPublicR, v4PublicR, { recursive: true })
 }
 
 try {

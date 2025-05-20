@@ -59,7 +59,7 @@ export async function generateMetadata({
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  const { Index } = await import("@/__registry__")
+  const { Index } = await import("@/registry/__index__")
   const index = z.record(registryItemSchema).parse(Index)
 
   return Object.values(index)

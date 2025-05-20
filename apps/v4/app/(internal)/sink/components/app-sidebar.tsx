@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Index } from "@/__registry__"
 import {
   AudioWaveform,
   BookOpen,
@@ -15,6 +14,7 @@ import {
   SquareTerminal,
 } from "lucide-react"
 
+import { Index } from "@/registry/__index__"
 import { NavUser } from "@/registry/new-york-v4/blocks/sidebar-07/components/nav-user"
 import { TeamSwitcher } from "@/registry/new-york-v4/blocks/sidebar-07/components/team-switcher"
 import {

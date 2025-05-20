@@ -1,8 +1,9 @@
 import fs from "fs"
 import path from "path"
-import { Index } from "@/__registry__"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
+
+import { Index } from "@/registry/__index__"
 
 interface UnistNode {
   type: string

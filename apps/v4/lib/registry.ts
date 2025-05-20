@@ -1,10 +1,11 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { Index } from "@/__registry__"
 import { registryItemFileSchema, registryItemSchema } from "shadcn/registry"
 import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
+
+import { Index } from "@/registry/__index__"
 
 export function getRegistryComponent(name: string) {
   return Index[name]?.component
