@@ -1,8 +1,7 @@
 "use client"
 
-import { IconCirclePlusFilled, IconMail, type Icon } from "@tabler/icons-react"
+import { type Icon } from "@tabler/icons-react"
 
-import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   SidebarGroup,
   SidebarGroupContent,
