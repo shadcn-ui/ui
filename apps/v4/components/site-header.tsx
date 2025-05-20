@@ -17,7 +17,7 @@ export function SiteHeader() {
   const pageTree = source.pageTree
 
   return (
-    <header className="border-grid bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
+    <header className="border-grid bg-background md:supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b md:supports-[backdrop-filter]:backdrop-blur">
       <div className="container-wrapper">
         <div className="container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:!h-6">
           <MobileNav tree={pageTree} items={siteConfig.navItems} />

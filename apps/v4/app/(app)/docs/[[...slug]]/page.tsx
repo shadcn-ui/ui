@@ -80,7 +80,7 @@ export default async function Page(props: {
   return (
     <div data-slot="docs" className="flex items-stretch text-[15px] xl:w-full">
       <div className="border-grid flex min-w-0 flex-1 flex-col border-r">
-        <div className="bg-background/95 supports-[backdrop-filter]:bg-background/60 border-grid sticky top-[calc(var(--header-height)+1px)] z-20 flex h-12 items-center justify-between border-b px-4 backdrop-blur md:px-4">
+        <div className="bg-background md:bg-background/60 border-grid sticky top-[calc(var(--header-height)+1px)] z-20 flex h-12 items-center justify-between border-b px-4 md:px-4 md:supports-[backdrop-filter]:backdrop-blur">
           <div className="flex items-center gap-2">
             <DocsTableOfContents
               toc={doc.toc}
