@@ -83,7 +83,10 @@ export function DocsTableOfContents({
             <IconMenu3 /> On This Page
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="max-h-[70svh]">
+        <DropdownMenuContent
+          align="start"
+          className="no-scrollbar max-h-[70svh]"
+        >
           {toc.map((item) => (
             <DropdownMenuItem
               key={item.url}

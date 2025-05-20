@@ -82,16 +82,20 @@ export default async function Page(props: {
       <div className="border-grid flex min-w-0 flex-1 flex-col border-r">
         <div className="bg-background md:bg-background/60 border-grid sticky top-[calc(var(--header-height)+1px)] z-20 flex h-12 items-center justify-between border-b px-4 md:px-4 md:supports-[backdrop-filter]:backdrop-blur">
           <div className="flex items-center gap-2">
-            <DocsTableOfContents
-              toc={doc.toc}
-              variant="dropdown"
-              className="xl:hidden"
-            />
-            <Separator
-              orientation="vertical"
-              className="mx-1 hidden !h-4 lg:flex"
-            />
-            <DocsBreadcrumb tree={source.pageTree} className="hidden lg:flex" />
+            {doc.toc ? (
+              <DocsTableOfContents
+                toc={doc.toc}
+                variant="dropdown"
+                className="xl:hidden"
+              />
+            ) : null}
+            {source.pageTree ? (
+              <Separator
+                orientation="vertical"
+                className="mx-1 hidden !h-4 md:flex xl:hidden"
+              />
+            ) : null}
+            <DocsBreadcrumb tree={source.pageTree} className="hidden md:flex" />
           </div>
           <div className="flex items-center gap-2">
             {neighbours.previous && (

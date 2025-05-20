@@ -1,4 +1,11 @@
 {
   "root": true,
-  "pages": ["(root)", "changelog", "installation", "components", "registry"]
+  "pages": [
+    "(root)",
+    "changelog",
+    "components",
+    "installation",
+    "dark-mode",
+    "registry"
+  ]
 }

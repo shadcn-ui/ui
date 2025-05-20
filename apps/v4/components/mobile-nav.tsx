@@ -27,7 +27,7 @@ export function MobileNav({
       <PopoverTrigger asChild>
         <Button
           variant="ghost"
-          className="-ml-1.5 flex h-8 flex-1 touch-manipulation items-center justify-center gap-2 !px-0 md:hidden"
+          className="-ml-1.5 flex h-8 flex-1 touch-manipulation items-center justify-center gap-2 !px-0 hover:bg-transparent focus-visible:bg-transparent active:bg-transparent md:hidden"
         >
           <div className="relative flex size-8 items-center justify-center">
             <div className="relative size-5">
