@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/button-loading.tsx",
-      "content": "import { Loader2 } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button disabled>\n      <Loader2 className=\"animate-spin\" />\n      Please wait\n    </Button>\n  )\n}\n",
+      "content": "import { Loader2Icon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button size=\"sm\" disabled>\n      <Loader2Icon className=\"animate-spin\" />\n      Please wait\n    </Button>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

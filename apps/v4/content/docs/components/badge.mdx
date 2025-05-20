@@ -44,12 +44,12 @@ npx shadcn@latest add badge
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { Badge } from "@/components/ui/badge"
 ```
 
-```tsx showLineNumbers
-<Badge variant="outline">Badge</Badge>
+```tsx
+<Badge variant="default |outline | secondary | destructive">Badge</Badge>
 ```
 
 ### Link
@@ -69,39 +69,3 @@ export function LinkAsBadge() {
   )
 }
 ```
-
-## Examples
-
-### Default
-
-<ComponentPreview
-  name="badge-demo"
-  title="Badge"
-  description="A default badge"
-/>
-
----
-
-### Secondary
-
-<ComponentPreview
-  name="badge-secondary"
-  title="Badge"
-  description="A badge using secondary as variant."
-/>
-
----
-
-### Outline
-
-<ComponentPreview
-  name="badge-outline"
-  title="Badge"
-  description="A badge using outline as variant."
-/>
-
----
-
-### Destructive
-
-<ComponentPreview name="badge-destructive" description="A destructive badge." />

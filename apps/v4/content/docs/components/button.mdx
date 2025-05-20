@@ -75,7 +75,7 @@ export function LinkAsButton() {
 
 ## Examples
 
-### Primary
+### Default
 
 <ComponentPreview name="button-demo" description="A primary button" />
 
@@ -125,24 +125,3 @@ export function LinkAsButton() {
   name="button-loading"
   description="A button with a loading state."
 />
-
-### As Child
-
-<ComponentPreview
-  name="button-as-child"
-  description="A button wrapping a custom Link component"
-/>
-
-## Changelog
-
-### 2024-10-16 Classes for icons
-
-Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the button to automatically style icon inside the button.
-
-Add the following classes to the `cva` call in your `button.tsx` file.
-
-```tsx showLineNumbers title="button.tsx"
-const buttonVariants = cva(
-  "inline-flex ... gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
-)
-```

@@ -4,7 +4,7 @@ description: Displays a card with header, content, and footer.
 component: true
 ---
 
-<ComponentPreview name="card-with-form" description="A card with a form" />
+<ComponentPreview name="card-demo" description="A card with a form" />
 
 ## Installation
 
@@ -43,6 +43,7 @@ npx shadcn@latest add card
 ```tsx showLineNumbers
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -56,6 +57,7 @@ import {
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
     <CardDescription>Card Description</CardDescription>
+    <CardAction>Card Action</CardAction>
   </CardHeader>
   <CardContent>
     <p>Card Content</p>
@@ -64,43 +66,4 @@ import {
     <p>Card Footer</p>
   </CardFooter>
 </Card>
-```
-
-## Examples
-
-<ComponentPreview
-  name="card-demo"
-  description="A card showing notifications settings."
-/>
-
-## Changelog
-
-### 11-03-2024 a11y for title and description
-
-- Changed the `CardTitle` and `CardDescription` components to use `div` instead of `h3` and `p` to improve accessibility.
-
-```tsx showLineNumbers title="card.tsx"
-const CardTitle = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("leading-none font-semibold tracking-tight", className)}
-    {...props}
-  />
-))
-CardTitle.displayName = "CardTitle"
-
-const CardDescription = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("text-muted-foreground text-sm", className)}
-    {...props}
-  />
-))
-CardDescription.displayName = "CardDescription"
 ```

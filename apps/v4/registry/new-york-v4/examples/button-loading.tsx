@@ -1,11 +1,11 @@
-import { Loader2 } from "lucide-react"
+import { Loader2Icon } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 export default function ButtonLoading() {
   return (
-    <Button disabled>
-      <Loader2 className="animate-spin" />
+    <Button size="sm" disabled>
+      <Loader2Icon className="animate-spin" />
       Please wait
     </Button>
   )
