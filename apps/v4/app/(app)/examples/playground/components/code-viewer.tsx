@@ -14,7 +14,7 @@ export function CodeViewer() {
       <DialogTrigger asChild>
         <Button variant="secondary">View code</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[625px]">
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>View code</DialogTitle>
           <DialogDescription>
@@ -25,7 +25,7 @@ export function CodeViewer() {
         <div className="grid gap-4">
           <div className="rounded-md bg-black p-6">
             <pre>
-              <code className="text-muted-foreground grid gap-1 text-sm [&_span]:h-4">
+              <code className="grid gap-1 text-sm text-white [&_span]:h-4">
                 <span>
                   <span className="text-sky-300">import</span> os
                 </span>

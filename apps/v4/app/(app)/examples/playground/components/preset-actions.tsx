@@ -16,6 +16,7 @@ import {
 } from "@/registry/new-york-v4/ui/alert-dialog"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -72,7 +73,7 @@ export function PresetActions() {
             <h4 className="text-muted-foreground text-sm">
               Playground Warnings
             </h4>
-            <div className="flex items-start justify-between space-x-4 pt-3">
+            <div className="flex items-start justify-between gap-4 pt-3">
               <Switch name="show" id="show" defaultChecked={true} />
               <Label className="grid gap-1 font-normal" htmlFor="show">
                 <span className="font-semibold">
@@ -86,9 +87,9 @@ export function PresetActions() {
             </div>
           </div>
           <DialogFooter>
-            <Button variant="secondary" onClick={() => setIsOpen(false)}>
-              Close
-            </Button>
+            <DialogClose asChild>
+              <Button variant="secondary">Close</Button>
+            </DialogClose>
           </DialogFooter>
         </DialogContent>
       </Dialog>

@@ -21,7 +21,7 @@ export function DataTableToolbar<TData>({
 
   return (
     <div className="flex items-center justify-between">
-      <div className="flex flex-1 items-center space-x-2">
+      <div className="flex flex-1 items-center gap-2">
         <Input
           placeholder="Filter tasks..."
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
@@ -47,15 +47,18 @@ export function DataTableToolbar<TData>({
         {isFiltered && (
           <Button
             variant="ghost"
+            size="sm"
             onClick={() => table.resetColumnFilters()}
-            className="h-8 px-2 lg:px-3"
           >
             Reset
             <X />
           </Button>
         )}
       </div>
-      <DataTableViewOptions table={table} />
+      <div className="flex items-center gap-2">
+        <DataTableViewOptions table={table} />
+        <Button size="sm">Add Task</Button>
+      </div>
     </div>
   )
 }

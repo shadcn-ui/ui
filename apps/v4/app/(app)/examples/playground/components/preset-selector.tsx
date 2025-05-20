@@ -14,6 +14,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
 } from "@/registry/new-york-v4/ui/command"
 import {
   Popover,
@@ -30,7 +31,6 @@ interface PresetSelectorProps extends PopoverProps {
 export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
   const [open, setOpen] = React.useState(false)
   const [selectedPreset, setSelectedPreset] = React.useState<Preset>()
-  const router = useRouter()
 
   return (
     <Popover open={open} onOpenChange={setOpen} {...props}>
@@ -72,10 +72,9 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
                 </CommandItem>
               ))}
             </CommandGroup>
-            <CommandGroup className="pt-0">
-              <CommandItem onSelect={() => router.push("/examples")}>
-                More examples
-              </CommandItem>
+            <CommandSeparator />
+            <CommandGroup>
+              <CommandItem>More examples</CommandItem>
             </CommandGroup>
           </CommandList>
         </Command>

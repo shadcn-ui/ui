@@ -77,7 +77,7 @@ export default function ExamplesLayout({
       <div className="container-wrapper bg-muted/50 dark:bg-background flex-1">
         <div className="container py-6">
           <section className="theme-container scroll-mt-20">
-            <div className="bg-background overflow-hidden rounded-lg border bg-clip-padding shadow-sm">
+            <div className="bg-background overflow-hidden rounded-lg border bg-clip-padding">
               {children}
             </div>
           </section>

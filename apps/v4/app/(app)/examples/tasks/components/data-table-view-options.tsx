@@ -13,13 +13,11 @@ import {
   DropdownMenuSeparator,
 } from "@/registry/new-york-v4/ui/dropdown-menu"
 
-interface DataTableViewOptionsProps<TData> {
-  table: Table<TData>
-}
-
 export function DataTableViewOptions<TData>({
   table,
-}: DataTableViewOptionsProps<TData>) {
+}: {
+  table: Table<TData>
+}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

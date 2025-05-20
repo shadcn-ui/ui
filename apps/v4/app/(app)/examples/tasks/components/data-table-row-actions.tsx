@@ -35,7 +35,8 @@ export function DataTableRowActions<TData>({
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="data-[state=open]:bg-muted flex h-8 w-8 p-0"
+          size="icon"
+          className="data-[state=open]:bg-muted size-8"
         >
           <MoreHorizontal />
           <span className="sr-only">Open menu</span>
@@ -59,7 +60,7 @@ export function DataTableRowActions<TData>({
           </DropdownMenuSubContent>
         </DropdownMenuSub>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem variant="destructive">
           Delete
           <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
         </DropdownMenuItem>

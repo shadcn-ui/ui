@@ -40,7 +40,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
   const [peekedModel, setPeekedModel] = React.useState<Model>(models[0])
 
   return (
-    <div className="grid gap-2">
+    <div className="grid gap-3">
       <HoverCard openDelay={200}>
         <HoverCardTrigger asChild>
           <Label htmlFor="model">Model</Label>
@@ -64,7 +64,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
             className="w-full justify-between"
           >
             {selectedModel ? selectedModel.name : "Select a model..."}
-            <ChevronsUpDown className="opacity-50" />
+            <ChevronsUpDown className="text-muted-foreground" />
           </Button>
         </PopoverTrigger>
         <PopoverContent align="end" className="w-[250px] p-0">
@@ -93,7 +93,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
               </div>
             </HoverCardContent>
             <Command loop>
-              <CommandList className="h-[var(--cmdk-list-height)] max-h-[400px]">
+              <CommandList className="h-(--cmdk-list-height) max-h-[400px]">
                 <CommandInput placeholder="Search Models..." />
                 <CommandEmpty>No Models found.</CommandEmpty>
                 <HoverCardTrigger />
