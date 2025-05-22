@@ -70,16 +70,16 @@ export function ComponentPreview({
       <Tabs defaultValue="preview" className="relative mr-auto w-full">
         <div className="flex items-center justify-between">
           {!hideCode && (
-            <TabsList className="justify-start rounded-none bg-transparent p-0">
+            <TabsList className="justify-start gap-4 rounded-none bg-transparent px-2 md:px-0">
               <TabsTrigger
                 value="preview"
-                className="text-muted-foreground data-[state=active]:text-foreground px-2 text-base data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent"
+                className="text-muted-foreground data-[state=active]:text-foreground px-0 text-base data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent"
               >
                 Preview
               </TabsTrigger>
               <TabsTrigger
                 value="code"
-                className="text-muted-foreground data-[state=active]:text-foreground px-2 text-base data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent"
+                className="text-muted-foreground data-[state=active]:text-foreground px-0 text-base data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent"
               >
                 Code
               </TabsTrigger>
@@ -88,7 +88,7 @@ export function ComponentPreview({
         </div>
         <TabsContent
           value="preview"
-          className="ring-surface-foreground/10 relative rounded-lg ring lg:-mx-8"
+          className="ring-surface-foreground/10 relative rounded-lg ring md:-mx-4"
         >
           <div
             className={cn(
@@ -103,7 +103,7 @@ export function ComponentPreview({
             <Component />
           </div>
         </TabsContent>
-        <TabsContent value="code" className="lg:-mx-8">
+        <TabsContent value="code" className="md:-mx-4">
           <ComponentSource
             name={name}
             collapsible={false}

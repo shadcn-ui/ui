@@ -197,8 +197,8 @@
   counter-increment: step;
 
   &:before {
-    @apply mr-2 inline-flex size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
-    @apply text-muted-foreground md:mt-[-2px] md:-ml-10;
+    @apply mr-2 size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
+    @apply text-muted-foreground hidden md:mt-[-2px] md:-ml-10 md:inline-flex;
     content: counter(step);
   }
 }
@@ -229,6 +229,7 @@
     font-size: var(--text-sm);
     outline: none;
     position: relative;
+    @apply md:-mx-4;
 
     &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
       top: calc(var(--spacing) * 1.5) !important;

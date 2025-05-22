@@ -11,7 +11,7 @@ export default function ChartsPage() {
         <h2 className="sr-only">Examples</h2>
         <div
           id="examples"
-          className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
+          className="grid flex-1 scroll-mt-20 items-stretch gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
         >
           <ChartDisplay name="chart-area-stacked">
             <Charts.ChartAreaStacked />
@@ -19,10 +19,7 @@ export default function ChartsPage() {
           <ChartDisplay name="chart-bar-multiple">
             <Charts.ChartBarMultiple />
           </ChartDisplay>
-          <ChartDisplay
-            name="chart-pie-donut-text"
-            className="[&_[data-slot=chart]]:xl:max-h-[211px] [&_[data-slot=chart]]:2xl:max-h-[236px]"
-          >
+          <ChartDisplay name="chart-pie-donut-text">
             <Charts.ChartPieDonutText />
           </ChartDisplay>
         </div>
