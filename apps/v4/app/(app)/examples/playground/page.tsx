@@ -54,7 +54,7 @@ export default function PlaygroundPage() {
           className="hidden dark:block"
         />
       </div>
-      <div className="hidden h-full flex-col md:flex">
+      <div className="hidden flex-1 flex-col md:flex">
         <div className="container flex flex-col items-start justify-between gap-2 py-4 sm:flex-row sm:items-center sm:gap-0 md:h-16">
           <h2 className="pl-0.5 text-lg font-semibold">Playground</h2>
           <div className="ml-auto flex w-full gap-2 sm:justify-end">
@@ -68,9 +68,9 @@ export default function PlaygroundPage() {
           </div>
         </div>
         <Separator />
-        <Tabs defaultValue="complete" className="flex-1">
-          <div className="container h-full py-6">
-            <div className="grid h-full items-stretch gap-6 md:grid-cols-[1fr_200px]">
+        <Tabs defaultValue="complete" className="flex flex-1 flex-col">
+          <div className="container flex flex-1 flex-col py-6">
+            <div className="grid flex-1 items-stretch gap-6 md:grid-cols-[1fr_200px]">
               <div className="hidden flex-col gap-6 sm:flex md:order-2">
                 <div className="grid gap-3">
                   <HoverCard openDelay={200}>
@@ -253,7 +253,7 @@ export default function PlaygroundPage() {
                 <MaxLengthSelector defaultValue={[256]} />
                 <TopPSelector defaultValue={[0.9]} />
               </div>
-              <div className="md:order-1">
+              <div className="flex flex-1 flex-col *:data-[slot=tab-content]:flex-1 md:order-1">
                 <TabsContent value="complete" className="mt-0 border-0 p-0">
                   <div className="flex h-full flex-col gap-4">
                     <Textarea
@@ -269,55 +269,57 @@ export default function PlaygroundPage() {
                     </div>
                   </div>
                 </TabsContent>
-                <TabsContent value="insert" className="mt-0 border-0 p-0">
-                  <div className="flex flex-col gap-4">
-                    <div className="grid h-full grid-rows-2 gap-6 lg:grid-cols-2 lg:grid-rows-1">
-                      <Textarea
-                        placeholder="We're writing to [inset]. Congrats from OpenAI!"
-                        className="h-full min-h-[300px] p-4 lg:min-h-[700px] xl:min-h-[700px]"
-                      />
-                      <div className="bg-muted rounded-md border"></div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Button>Submit</Button>
-                      <Button variant="secondary">
-                        <span className="sr-only">Show history</span>
-                        <RotateCcw />
-                      </Button>
-                    </div>
+                <TabsContent
+                  value="insert"
+                  className="mt-0 flex flex-col gap-4 border-0 p-0"
+                >
+                  <div className="grid h-full grid-rows-2 gap-6 lg:grid-cols-2 lg:grid-rows-1">
+                    <Textarea
+                      placeholder="We're writing to [inset]. Congrats from OpenAI!"
+                      className="h-full min-h-[300px] p-4 lg:min-h-[700px] xl:min-h-[700px]"
+                    />
+                    <div className="bg-muted rounded-md border"></div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button>Submit</Button>
+                    <Button variant="secondary">
+                      <span className="sr-only">Show history</span>
+                      <RotateCcw />
+                    </Button>
                   </div>
                 </TabsContent>
-                <TabsContent value="edit" className="mt-0 border-0 p-0">
-                  <div className="flex flex-col gap-4">
-                    <div className="grid h-full gap-6 lg:grid-cols-2">
-                      <div className="flex flex-col gap-4">
-                        <div className="flex flex-1 flex-col gap-2">
-                          <Label htmlFor="input" className="sr-only">
-                            Input
-                          </Label>
-                          <Textarea
-                            id="input"
-                            placeholder="We is going to the market."
-                            className="flex-1 p-4 lg:min-h-[580px]"
-                          />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                          <Label htmlFor="instructions">Instructions</Label>
-                          <Textarea
-                            id="instructions"
-                            placeholder="Fix the grammar."
-                          />
-                        </div>
+                <TabsContent
+                  value="edit"
+                  className="mt-0 flex flex-col gap-4 border-0 p-0"
+                >
+                  <div className="grid h-full gap-6 lg:grid-cols-2">
+                    <div className="flex flex-col gap-4">
+                      <div className="flex flex-1 flex-col gap-2">
+                        <Label htmlFor="input" className="sr-only">
+                          Input
+                        </Label>
+                        <Textarea
+                          id="input"
+                          placeholder="We is going to the market."
+                          className="flex-1 p-4 lg:min-h-[580px]"
+                        />
                       </div>
-                      <div className="bg-muted min-h-[400px] rounded-md border lg:min-h-[700px]" />
+                      <div className="flex flex-col gap-2">
+                        <Label htmlFor="instructions">Instructions</Label>
+                        <Textarea
+                          id="instructions"
+                          placeholder="Fix the grammar."
+                        />
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Button>Submit</Button>
-                      <Button variant="secondary">
-                        <span className="sr-only">Show history</span>
-                        <RotateCcw />
-                      </Button>
-                    </div>
+                    <div className="bg-muted min-h-[400px] rounded-md border lg:min-h-[700px]" />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button>Submit</Button>
+                    <Button variant="secondary">
+                      <span className="sr-only">Show history</span>
+                      <RotateCcw />
+                    </Button>
                   </div>
                 </TabsContent>
               </div>

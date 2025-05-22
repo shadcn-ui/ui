@@ -16,10 +16,7 @@ export function MainNav({
   const pathname = usePathname()
 
   return (
-    <nav
-      className={cn("hidden items-center gap-0.5 md:flex", className)}
-      {...props}
-    >
+    <nav className={cn("items-center gap-0.5", className)} {...props}>
       {items.map((item) => (
         <Button key={item.href} variant="ghost" asChild size="sm">
           <Link

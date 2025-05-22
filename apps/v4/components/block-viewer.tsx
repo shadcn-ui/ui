@@ -271,7 +271,7 @@ function BlockViewerCode() {
         className="mt-0 flex min-w-0 flex-1 flex-col rounded-xl border-none"
       >
         <figcaption
-          className="text-foreground [&_svg]:text-foreground flex h-12 shrink-0 items-center gap-2 border-b px-4 py-2 [&_svg]:size-4 [&_svg]:opacity-70"
+          className="text-code-foreground [&_svg]:text-code-foreground flex h-12 shrink-0 items-center gap-2 border-b px-4 py-2 [&_svg]:size-4 [&_svg]:opacity-70"
           data-language={language}
         >
           {getIconForLanguageExtension(language)}

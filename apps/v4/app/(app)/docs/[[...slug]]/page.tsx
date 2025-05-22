@@ -77,7 +77,7 @@ export default async function Page(props: {
 
   return (
     <div data-slot="docs" className="flex items-stretch text-[15px] xl:w-full">
-      <div className="border-grid flex min-w-0 flex-1 flex-col">
+      <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
         <div className="mx-auto flex w-full max-w-2xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
           <div className="flex flex-col gap-2">
@@ -127,16 +127,26 @@ export default async function Page(props: {
             <MDX components={mdxComponents} />
           </div>
         </div>
-        <div className="border-grid mx-auto flex h-16 w-full max-w-2xl items-center gap-2">
+        <div className="mx-auto flex h-16 w-full max-w-2xl items-center gap-2 px-4 md:px-0">
           {neighbours.previous && (
-            <Button variant="ghost" size="sm" asChild>
+            <Button
+              variant="secondary"
+              size="sm"
+              asChild
+              className="shadow-none"
+            >
               <Link href={neighbours.previous.url}>
                 <IconArrowLeft /> {neighbours.previous.name}
               </Link>
             </Button>
           )}
           {neighbours.next && (
-            <Button variant="ghost" size="sm" className="ml-auto" asChild>
+            <Button
+              variant="secondary"
+              size="sm"
+              className="ml-auto shadow-none"
+              asChild
+            >
               <Link href={neighbours.next.url}>
                 {neighbours.next.name} <IconArrowRight />
               </Link>
@@ -144,10 +154,10 @@ export default async function Page(props: {
           )}
         </div>
       </div>
-      <div className="border-grid sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
         {doc.toc?.length ? (
-          <div className="no-scrollbar border-grid overflow-y-auto px-8">
+          <div className="no-scrollbar overflow-y-auto px-8">
             <DocsTableOfContents toc={doc.toc} />
             <div className="h-12" />
           </div>

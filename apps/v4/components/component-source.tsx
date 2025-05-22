@@ -87,7 +87,7 @@ function ComponentCode({
       {title && (
         <figcaption
           data-rehype-pretty-code-title=""
-          className="text-foreground [&_svg]:text-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+          className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
           data-language={language}
         >
           {getIconForLanguageExtension(language)}

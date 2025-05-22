@@ -41,7 +41,7 @@ export function ExamplesNav({
 
   return (
     <div className={cn("flex items-center", className)} {...props}>
-      <ScrollArea className="max-w-[600px] lg:max-w-none">
+      <ScrollArea className="max-w-[96%] md:max-w-[600px] lg:max-w-none">
         <div className="flex items-center">
           <ExampleLink
             example={{ name: "Examples", href: "/", code: "", hidden: false }}

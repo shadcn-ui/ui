@@ -53,7 +53,7 @@ export default function IndexPage() {
         <PageHeaderHeading>{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild variant="secondary" size="sm">
+          <Button asChild size="sm">
             <Link href="/docs/installation">Get Started</Link>
           </Button>
           <Button asChild size="sm" variant="ghost">
@@ -61,17 +61,15 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="border-grid">
-        <div className="container-wrapper">
-          <div className="container flex items-center justify-between gap-4 py-4">
-            <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
-            <ThemeSelector className="hidden md:block" />
-          </div>
+      <div className="container-wrapper">
+        <div className="container flex items-center justify-between gap-4 py-4">
+          <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
+          <ThemeSelector className="mr-4 hidden md:block" />
         </div>
       </div>
-      <div className="container-wrapper section-soft">
-        <div className="container py-6">
-          <section className="bg-background overflow-hidden rounded-lg border shadow-md md:hidden md:shadow-xl">
+      <div className="container-wrapper section-soft pb-6">
+        <div className="container">
+          <section className="overflow-hidden rounded-lg md:hidden">
             <Image
               src="/examples/cards-light.png"
               width={1280}

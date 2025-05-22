@@ -88,7 +88,7 @@ export function ComponentPreview({
         </div>
         <TabsContent
           value="preview"
-          className="ring-surface-foreground/10 relative -mx-8 rounded-lg ring"
+          className="ring-surface-foreground/10 relative rounded-lg ring lg:-mx-8"
         >
           <div
             className={cn(
@@ -103,7 +103,7 @@ export function ComponentPreview({
             <Component />
           </div>
         </TabsContent>
-        <TabsContent value="code" className="-mx-8">
+        <TabsContent value="code" className="lg:-mx-8">
           <ComponentSource
             name={name}
             collapsible={false}

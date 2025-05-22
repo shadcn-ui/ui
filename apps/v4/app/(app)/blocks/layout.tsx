@@ -59,7 +59,7 @@ export default function BlocksLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div id="blocks" className="border-grid scroll-mt-24">
+      <div id="blocks" className="scroll-mt-24">
         <div className="container-wrapper">
           <div className="container flex items-center justify-between gap-4 py-4">
             <BlocksNav />
@@ -67,7 +67,7 @@ export default function BlocksLayout({
               asChild
               variant="secondary"
               size="sm"
-              className="translate-x-2 shadow-none"
+              className="hidden translate-x-2 shadow-none lg:flex"
             >
               <Link href="/blocks/sidebar">Browse all blocks</Link>
             </Button>

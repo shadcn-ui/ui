@@ -66,21 +66,17 @@ export default function ExamplesLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="border-grid">
-        <div className="container-wrapper">
-          <div className="container flex items-center justify-between gap-4 py-4">
-            <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
-            <ThemeSelector className="hidden md:block" />
-          </div>
+      <div className="container-wrapper">
+        <div className="container flex items-center justify-between gap-4 py-4">
+          <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
+          <ThemeSelector className="mr-4 hidden md:block" />
         </div>
       </div>
-      <div className="container-wrapper section-soft flex-1">
-        <div className="container py-6">
-          <section className="theme-container scroll-mt-20">
-            <div className="bg-background overflow-hidden rounded-lg border bg-clip-padding">
-              {children}
-            </div>
-          </section>
+      <div className="container-wrapper section-soft flex flex-1 flex-col pb-6">
+        <div className="theme-container container flex flex-1 scroll-mt-20 flex-col">
+          <div className="bg-background flex flex-1 flex-col overflow-hidden rounded-lg border bg-clip-padding">
+            {children}
+          </div>
         </div>
       </div>
     </>
