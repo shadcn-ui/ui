@@ -3,7 +3,6 @@ import Link from "next/link"
 
 import { getColors } from "@/lib/colors"
 import { Announcement } from "@/components/announcement"
-import { ColorFormatSelector } from "@/components/color-format-selector"
 import { ColorsNav } from "@/components/colors-nav"
 import {
   PageActions,
@@ -13,9 +12,9 @@ import {
 } from "@/components/page-header"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
-const title = "Color Library"
+const title = "Tailwind Colors. Every Format."
 const description =
-  "Tailwind CSS colors in HSL, RGB, HEX, OKLCH, and CSS variables. Click to copy to your project."
+  "Here you'll find all the colors in all formats. Click to copy to your project."
 
 export const metadata: Metadata = {
   title,
@@ -63,18 +62,14 @@ export default function ColorsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="border-grid border-b">
+      <div className="border-grid hidden">
         <div className="container-wrapper">
           <div className="container flex items-center justify-between gap-8 py-4">
             <ColorsNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
-            <ColorFormatSelector
-              color={colors[0].colors[0]}
-              className="hidden -translate-x-2 lg:flex"
-            />
           </div>
         </div>
       </div>
-      <div className="container-wrapper bg-muted/50 dark:bg-background">
+      <div className="container-wrapper">
         <div className="container py-6">
           <section id="colors" className="scroll-mt-20">
             {children}

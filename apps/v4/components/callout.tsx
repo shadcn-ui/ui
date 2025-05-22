@@ -15,7 +15,7 @@ export function Callout({
   return (
     <Alert
       className={cn(
-        "from-card to-muted/50 text-card-foreground mt-6 bg-gradient-to-b",
+        "bg-surface text-surface-foreground mt-6 border-none",
         className
       )}
       {...props}

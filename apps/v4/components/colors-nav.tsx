@@ -22,12 +22,12 @@ export function ColorsNav({
             <Link
               href={`/colors#${colorPalette.name}`}
               key={colorPalette.name}
-              className={cn(
-                "hover:text-primary flex h-7 shrink-0 items-center justify-center rounded-full px-4 text-center text-sm font-medium capitalize transition-colors",
+              data-active={
                 pathname?.startsWith(colorPalette.name) ||
-                  (index === 0 && pathname === "/colors")
-                  ? "bg-muted text-primary"
-                  : "text-muted-foreground"
+                (index === 0 && pathname === "/colors")
+              }
+              className={cn(
+                "text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 items-center justify-center px-4 text-center text-base font-medium capitalize transition-colors"
               )}
             >
               {colorPalette.name}

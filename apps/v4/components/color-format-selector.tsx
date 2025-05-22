@@ -29,7 +29,14 @@ export function ColorFormatSelector({
 
   return (
     <Select value={format} onValueChange={setFormat}>
-      <SelectTrigger size="sm" className={cn("", className)} {...props}>
+      <SelectTrigger
+        size="sm"
+        className={cn(
+          "bg-secondary text-secondary-foreground border-secondary shadow-none",
+          className
+        )}
+        {...props}
+      >
         <span className="font-medium">Format: </span>
         <span className="text-muted-foreground font-mono text-xs">
           {format}

@@ -66,7 +66,7 @@ export default function ExamplesLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="border-grid border-b">
+      <div className="border-grid">
         <div className="container-wrapper">
           <div className="container flex items-center justify-between gap-4 py-4">
             <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
@@ -74,7 +74,7 @@ export default function ExamplesLayout({
           </div>
         </div>
       </div>
-      <div className="container-wrapper bg-muted/50 dark:bg-background flex-1">
+      <div className="container-wrapper section-soft flex-1">
         <div className="container py-6">
           <section className="theme-container scroll-mt-20">
             <div className="bg-background overflow-hidden rounded-lg border bg-clip-padding">

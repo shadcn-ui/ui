@@ -6,11 +6,9 @@ import { findNeighbour } from "fumadocs-core/server"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
-import { DocsBreadcrumb } from "@/components/docs-breadcrumb"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
 import { Button } from "@/registry/new-york-v4/ui/button"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 export function generateStaticParams() {
   return source.generateParams()
@@ -79,59 +77,45 @@ export default async function Page(props: {
 
   return (
     <div data-slot="docs" className="flex items-stretch text-[15px] xl:w-full">
-      <div className="border-grid flex min-w-0 flex-1 flex-col border-r">
-        <div className="bg-background md:bg-background/60 border-grid sticky top-[calc(var(--header-height)+1px)] z-20 flex h-12 items-center justify-between border-b px-4 md:px-4 md:supports-[backdrop-filter]:backdrop-blur">
-          <div className="flex items-center gap-2">
-            {doc.toc ? (
-              <DocsTableOfContents
-                toc={doc.toc}
-                variant="dropdown"
-                className="xl:hidden"
-              />
-            ) : null}
-            {source.pageTree ? (
-              <Separator
-                orientation="vertical"
-                className="mx-1 hidden !h-4 md:flex xl:hidden"
-              />
-            ) : null}
-            <DocsBreadcrumb tree={source.pageTree} className="hidden md:flex" />
-          </div>
-          <div className="flex items-center gap-2">
-            {neighbours.previous && (
-              <Button
-                variant="outline"
-                size="icon"
-                className="size-8 md:size-7"
-                asChild
-              >
-                <Link href={neighbours.previous.url}>
-                  <IconArrowLeft />
-                  <span className="sr-only">Previous</span>
-                </Link>
-              </Button>
-            )}
-            {neighbours.next && (
-              <Button
-                variant="outline"
-                size="icon"
-                className="size-8 md:size-7"
-                asChild
-              >
-                <Link href={neighbours.next.url}>
-                  <span className="sr-only">Next</span>
-                  <IconArrowRight />
-                </Link>
-              </Button>
-            )}
-          </div>
-        </div>
+      <div className="border-grid flex min-w-0 flex-1 flex-col">
+        <div className="h-(--top-spacing) shrink-0" />
         <div className="mx-auto flex w-full max-w-2xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2">
-              <h1 className="scroll-m-20 text-3xl font-semibold">
-                {doc.title}
-              </h1>
+              <div className="flex items-center justify-between">
+                <h1 className="scroll-m-20 text-3xl font-semibold tracking-tight xl:text-4xl">
+                  {doc.title}
+                </h1>
+                <div className="flex items-center gap-2">
+                  {neighbours.previous && (
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="size-8 shadow-none md:size-7"
+                      asChild
+                    >
+                      <Link href={neighbours.previous.url}>
+                        <IconArrowLeft />
+                        <span className="sr-only">Previous</span>
+                      </Link>
+                    </Button>
+                  )}
+                  {neighbours.next && (
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="size-8 shadow-none md:size-7"
+                      asChild
+                    >
+                      <Link href={neighbours.next.url}>
+                        <span className="sr-only">Next</span>
+                        <IconArrowRight />
+                      </Link>
+                    </Button>
+                  )}
+                </div>
+              </div>
+
               {doc.description && (
                 <p className="text-muted-foreground text-base text-balance">
                   {doc.description}
@@ -143,7 +127,7 @@ export default async function Page(props: {
             <MDX components={mdxComponents} />
           </div>
         </div>
-        <div className="border-grid flex h-16 items-center gap-2 border-t px-4">
+        <div className="border-grid mx-auto flex h-16 w-full max-w-2xl items-center gap-2">
           {neighbours.previous && (
             <Button variant="ghost" size="sm" asChild>
               <Link href={neighbours.previous.url}>
@@ -161,14 +145,14 @@ export default async function Page(props: {
         </div>
       </div>
       <div className="border-grid sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
-        <div className="border-grid h-12 shrink-0 border-b" />
-        {doc.toc && (
-          <div className="no-scrollbar border-grid overflow-y-auto border-b px-8">
+        <div className="h-(--top-spacing) shrink-0" />
+        {doc.toc?.length ? (
+          <div className="no-scrollbar border-grid overflow-y-auto px-8">
             <DocsTableOfContents toc={doc.toc} />
             <div className="h-12" />
           </div>
-        )}
-        <div className="flex-1 px-6">
+        ) : null}
+        <div className="flex flex-1 flex-col gap-12 px-6">
           <OpenInV0Cta />
         </div>
       </div>

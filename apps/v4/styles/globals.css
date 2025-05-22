@@ -43,6 +43,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
   --color-code: var(--code);
   --color-code-foreground: var(--code-foreground);
   --color-code-highlight: var(--code-highlight);
@@ -84,9 +86,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --code: var(--background);
-  --code-foreground: var(--foreground);
-  --code-highlight: oklch(0.97 0 0);
+  --surface: oklch(0.98 0 0);
+  --surface-foreground: var(--foreground);
+  --code: var(--surface);
+  --code-foreground: var(--surface-foreground);
+  --code-highlight: oklch(0.96 0 0);
   --code-number: oklch(0.56 0 0);
   --selection: oklch(0.145 0 0);
   --selection-foreground: oklch(1 0 0);
@@ -124,8 +128,10 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.439 0 0);
-  --code: oklch(0.2 0 0);
-  --code-foreground: oklch(0.708 0 0);
+  --surface: oklch(0.2 0 0);
+  --surface-foreground: oklch(0.708 0 0);
+  --code: var(--surface);
+  --code-foreground: var(--surface-foreground);
   --code-highlight: oklch(0.27 0 0);
   --code-number: oklch(0.72 0 0);
   --selection: oklch(0.922 0 0);
@@ -158,10 +164,8 @@
   @apply border-border/50 dark:border-border;
 }
 
-@utility section-muted {
-  .container-wrapper {
-    @apply bg-muted/30 dark:bg-background;
-  }
+@utility section-soft {
+  @apply from-background to-surface/40 dark:bg-background bg-gradient-to-b;
 }
 
 @utility theme-container {
@@ -169,11 +173,11 @@
 }
 
 @utility container-wrapper {
-  @apply border-border/60 dark:border-border mx-auto w-full max-w-[1400px] min-[1400px]:border-x min-[1800px]:max-w-screen-2xl;
+  @apply px-2;
 }
 
 @utility container {
-  @apply mx-auto max-w-screen-2xl px-4 xl:px-6;
+  @apply mx-auto max-w-[1400px] px-4 min-[1600px]:max-w-screen-2xl lg:px-8;
 }
 
 @utility no-scrollbar {
@@ -193,8 +197,8 @@
   counter-increment: step;
 
   &:before {
-    @apply bg-code border-grid mr-2 inline-flex size-8 items-center justify-center rounded-full border text-center -indent-px font-mono text-base font-medium md:absolute;
-    @apply md:mt-[-4px] md:ml-[-50px];
+    @apply mr-2 inline-flex size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
+    @apply text-muted-foreground md:mt-[-2px] md:-ml-10;
     content: counter(step);
   }
 }
@@ -218,7 +222,7 @@
     background-color: var(--color-code);
     color: var(--color-code-foreground);
     border-radius: var(--radius-lg);
-    border-width: 1px;
+    border-width: 0px;
     border-color: var(--border);
     margin-top: calc(var(--spacing) * 6);
     overflow: hidden;

@@ -28,9 +28,10 @@ export function DocsSidebar({
       {...props}
     >
       <SidebarContent className="no-scrollbar px-2 pb-12">
+        <div className="h-(--top-spacing) shrink-0" />
         {tree.children.map((item) => (
           <SidebarGroup key={item.$id}>
-            <SidebarGroupLabel className="text-muted-foreground font-semibold uppercase">
+            <SidebarGroupLabel className="text-muted-foreground font-medium">
               {item.name}
             </SidebarGroupLabel>
             <SidebarGroupContent>
@@ -43,7 +44,7 @@ export function DocsSidebar({
                           <SidebarMenuButton
                             asChild
                             isActive={item.url === pathname}
-                            className="data-[active=true]:bg-accent dark:data-[active=true]:bg-input/30 data-[active=true]:border-border relative h-[30px] border border-transparent after:absolute after:inset-0 after:z-0 after:-my-1 after:rounded-md"
+                            className="data-[active=true]:bg-accent data-[active=true]:border-accent relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                           >
                             <Link href={item.url}>{item.name}</Link>
                           </SidebarMenuButton>

@@ -16,7 +16,6 @@ export function useMetaColor() {
   }, [resolvedTheme])
 
   const setMetaColor = React.useCallback((color: string) => {
-    console.log(document.querySelector('meta[name="theme-color"]'))
     document
       .querySelector('meta[name="theme-color"]')
       ?.setAttribute("content", color)

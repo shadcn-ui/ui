@@ -60,7 +60,7 @@ export default function ChartsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="border-grid border-b">
+      <div className="border-grid">
         <div className="container-wrapper">
           <div className="container flex items-center justify-between py-4">
             <ChartsNav />
@@ -68,7 +68,7 @@ export default function ChartsLayout({
           </div>
         </div>
       </div>
-      <div className="container-wrapper bg-muted/50 dark:bg-background">
+      <div className="container-wrapper section-soft">
         <div className="container py-6">
           <section id="charts" className="theme-container scroll-mt-20">
             {children}

@@ -67,9 +67,9 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
         <SelectTrigger
           id="theme-selector"
           size="sm"
-          className="bg-background dark:bg-input/30 justify-start *:data-[slot=select-value]:w-12"
+          className="bg-secondary text-secondary-foreground border-secondary justify-start shadow-none *:data-[slot=select-value]:w-12"
         >
-          <span className="text-muted-foreground block">Theme:</span>
+          <span className="font-medium">Theme:</span>
           <SelectValue placeholder="Select a theme" />
         </SelectTrigger>
         <SelectContent align="end">

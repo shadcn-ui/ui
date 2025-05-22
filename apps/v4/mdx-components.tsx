@@ -9,6 +9,7 @@ import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CodeTabs } from "@/components/code-tabs"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
+import { ComponentsList } from "@/components/components-list"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
 import {
@@ -51,7 +52,7 @@ export const mdxComponents = {
           .replace(/\?/g, "")
           .toLowerCase()}
         className={cn(
-          "font-heading mt-12 scroll-m-28 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0",
+          "font-heading mt-12 scroll-m-28 text-2xl font-semibold tracking-tight first:mt-0 lg:mt-20",
           className
         )}
         {...props}
@@ -267,7 +268,7 @@ export const mdxComponents = {
   ),
   Steps: ({ ...props }) => (
     <div
-      className="[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8 *:[h3]:first:!mt-0"
+      className="[&>h3]:step steps mb-12 [counter-reset:step] *:[h3]:first:!mt-0"
       {...props}
     />
   ),
@@ -296,10 +297,7 @@ export const mdxComponents = {
     ...props
   }: React.ComponentProps<typeof TabsList>) => (
     <TabsList
-      className={cn(
-        "w-full justify-start rounded-none border-b bg-transparent p-0",
-        className
-      )}
+      className={cn("justify-start rounded-none bg-transparent p-0", className)}
       {...props}
     />
   ),
@@ -309,7 +307,7 @@ export const mdxComponents = {
   }: React.ComponentProps<typeof TabsTrigger>) => (
     <TabsTrigger
       className={cn(
-        "text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:text-foreground relative h-9 flex-none rounded-none border-0 border-b-2 border-b-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent",
+        "text-muted-foreground data-[state=active]:text-foreground px-2 text-base data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent",
         className
       )}
       {...props}
@@ -321,7 +319,7 @@ export const mdxComponents = {
   }: React.ComponentProps<typeof TabsContent>) => (
     <TabsContent
       className={cn(
-        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold [&>.steps]:mt-6",
+        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold *:[figure]:first:mt-0 [&>.steps]:mt-6",
         className
       )}
       {...props}
@@ -344,6 +342,7 @@ export const mdxComponents = {
   ComponentPreview,
   ComponentSource,
   CodeCollapsibleWrapper,
+  ComponentsList,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn("font-medium underline underline-offset-4", className)}
@@ -353,7 +352,7 @@ export const mdxComponents = {
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn(
-        "bg-muted/50 text-card-foreground hover:bg-muted/30 flex w-full flex-col items-center rounded-xl border bg-clip-padding p-6 transition-colors sm:p-10",
+        "bg-surface text-surface-foreground hover:bg-surface/80 flex w-full flex-col items-center rounded-xl p-6 transition-colors sm:p-10",
         className
       )}
       {...props}

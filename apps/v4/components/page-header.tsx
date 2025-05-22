@@ -6,9 +6,9 @@ function PageHeader({
   ...props
 }: React.ComponentProps<"section">) {
   return (
-    <section className={cn("border-grid border-b", className)} {...props}>
+    <section className={cn("border-grid", className)} {...props}>
       <div className="container-wrapper">
-        <div className="container flex flex-col items-start gap-1 py-8 md:py-10 lg:py-12">
+        <div className="container flex flex-col items-center gap-1 py-8 text-center md:py-16 lg:py-20">
           {children}
         </div>
       </div>
@@ -23,7 +23,7 @@ function PageHeaderHeading({
   return (
     <h1
       className={cn(
-        "text-primary text-3xl leading-tight font-bold tracking-tight text-balance sm:text-3xl md:text-4xl md:tracking-tighter lg:leading-[1.1]",
+        "text-primary max-w-2xl text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-3xl md:text-4xl md:tracking-tighter lg:leading-[1.1] xl:text-5xl",
         className
       )}
       {...props}
@@ -38,7 +38,7 @@ function PageHeaderDescription({
   return (
     <p
       className={cn(
-        "text-foreground max-w-2xl text-base font-light text-balance sm:text-lg",
+        "text-foreground max-w-3xl text-base font-light text-balance sm:text-lg",
         className
       )}
       {...props}
@@ -50,7 +50,7 @@ function PageActions({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "flex w-full items-center justify-start gap-2 pt-2",
+        "flex w-full items-center justify-center gap-2 pt-2 **:data-[slot=button]:shadow-none",
         className
       )}
       {...props}

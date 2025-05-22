@@ -64,29 +64,32 @@ export function ComponentPreview({
 
   return (
     <div
-      className={cn("group relative my-4 flex flex-col space-y-2", className)}
+      className={cn("group relative my-4 flex flex-col gap-2", className)}
       {...props}
     >
       <Tabs defaultValue="preview" className="relative mr-auto w-full">
-        <div className="flex items-center justify-between pb-3">
+        <div className="flex items-center justify-between">
           {!hideCode && (
-            <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
+            <TabsList className="justify-start rounded-none bg-transparent p-0">
               <TabsTrigger
                 value="preview"
-                className="text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:text-foreground relative h-9 flex-none rounded-none border-0 border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent"
+                className="text-muted-foreground data-[state=active]:text-foreground px-2 text-base data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent"
               >
                 Preview
               </TabsTrigger>
               <TabsTrigger
                 value="code"
-                className="text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:text-foreground relative h-9 flex-none rounded-none border-0 border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent"
+                className="text-muted-foreground data-[state=active]:text-foreground px-2 text-base data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent"
               >
                 Code
               </TabsTrigger>
             </TabsList>
           )}
         </div>
-        <TabsContent value="preview" className="relative rounded-md border">
+        <TabsContent
+          value="preview"
+          className="ring-surface-foreground/10 relative -mx-8 rounded-lg ring"
+        >
           <div
             className={cn(
               "preview flex min-h-[360px] w-full justify-center p-10",
@@ -100,7 +103,7 @@ export function ComponentPreview({
             <Component />
           </div>
         </TabsContent>
-        <TabsContent value="code">
+        <TabsContent value="code" className="-mx-8">
           <ComponentSource
             name={name}
             collapsible={false}

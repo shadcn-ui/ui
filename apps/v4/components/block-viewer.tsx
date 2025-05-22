@@ -108,7 +108,7 @@ function BlockViewerProvider({
       <div
         id={item.name}
         data-view={view}
-        className="group/block-view-wrapper flex min-w-0 flex-col items-stretch gap-4"
+        className="group/block-view-wrapper flex min-w-0 flex-col items-stretch gap-4 overflow-hidden"
         style={
           {
             "--height": item.meta?.iframeHeight ?? "930px",
@@ -214,7 +214,7 @@ function BlockViewerView() {
         <ResizablePanelGroup direction="horizontal" className="relative z-10">
           <ResizablePanel
             ref={resizablePanelRef}
-            className="bg-background relative aspect-[4/2.5] rounded-xl border md:aspect-auto"
+            className="bg-background border-border/50 relative aspect-[4/2.5] rounded-xl border md:aspect-auto"
             defaultSize={100}
             minSize={30}
           >

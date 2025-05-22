@@ -14,7 +14,7 @@ import {
 import { ThemeSelector } from "@/components/theme-selector"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
-const title = "Build your component library"
+const title = "Build your Component Library"
 const description =
   "A set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks. Open Source. Open Code."
 
@@ -53,7 +53,7 @@ export default function IndexPage() {
         <PageHeaderHeading>{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild size="sm">
+          <Button asChild variant="secondary" size="sm">
             <Link href="/docs/installation">Get Started</Link>
           </Button>
           <Button asChild size="sm" variant="ghost">
@@ -61,7 +61,7 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="border-grid border-b">
+      <div className="border-grid">
         <div className="container-wrapper">
           <div className="container flex items-center justify-between gap-4 py-4">
             <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
@@ -69,7 +69,7 @@ export default function IndexPage() {
           </div>
         </div>
       </div>
-      <div className="container-wrapper bg-muted/50 dark:bg-background">
+      <div className="container-wrapper section-soft">
         <div className="container py-6">
           <section className="bg-background overflow-hidden rounded-lg border shadow-md md:hidden md:shadow-xl">
             <Image

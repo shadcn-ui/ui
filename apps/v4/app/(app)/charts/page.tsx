@@ -1,5 +1,4 @@
 import { ChartDisplay } from "@/components/chart-display"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
 import * as Charts from "@/app/(app)/charts/charts"
 
 export const dynamic = "force-static"
@@ -8,7 +7,7 @@ export const revalidate = false
 export default function ChartsPage() {
   return (
     <div className="grid gap-4">
-      <div className="grid flex-1 gap-12">
+      <div className="grid flex-1 gap-12 lg:gap-24">
         <h2 className="sr-only">Examples</h2>
         <div
           id="examples"
@@ -27,7 +26,6 @@ export default function ChartsPage() {
             <Charts.ChartPieDonutText />
           </ChartDisplay>
         </div>
-        <Separator />
         <div
           id="area-chart"
           className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -65,7 +63,6 @@ export default function ChartsPage() {
             </ChartDisplay>
           </div>
         </div>
-        <Separator />
         <div
           id="bar-chart"
           className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -103,7 +100,6 @@ export default function ChartsPage() {
             </ChartDisplay>
           </div>
         </div>
-        <Separator />
         <div
           id="line-chart"
           className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -141,7 +137,6 @@ export default function ChartsPage() {
             </ChartDisplay>
           </div>
         </div>
-        <Separator />
         <div
           id="pie-chart"
           className="grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"
@@ -180,7 +175,6 @@ export default function ChartsPage() {
             <Charts.ChartPieInteractive />
           </ChartDisplay>
         </div>
-        <Separator />
         <div
           id="radar-chart"
           className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
@@ -228,7 +222,6 @@ export default function ChartsPage() {
             <Charts.ChartRadarIcons />
           </ChartDisplay>
         </div>
-        <Separator />
         <div
           id="radial-chart"
           className="grid flex-1 scroll-mt-20 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
@@ -252,7 +245,6 @@ export default function ChartsPage() {
             <Charts.ChartRadialStacked />
           </ChartDisplay>
         </div>
-        <Separator />
         <div
           id="tooltip"
           className="chart-wrapper grid flex-1 scroll-mt-20 items-start gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10"

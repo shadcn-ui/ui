@@ -17,9 +17,9 @@ export function SiteHeader() {
   const pageTree = source.pageTree
 
   return (
-    <header className="border-grid bg-background md:supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b md:supports-[backdrop-filter]:backdrop-blur">
-      <div className="container-wrapper">
-        <div className="container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:!h-6">
+    <header className="border-grid bg-background sticky top-0 z-50 w-full">
+      <div className="container-wrapper px-4 xl:px-6">
+        <div className="flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:!h-4">
           <MobileNav tree={pageTree} items={siteConfig.navItems} />
           <Button
             asChild
@@ -32,10 +32,6 @@ export function SiteHeader() {
               <span className="sr-only">{siteConfig.name}</span>
             </Link>
           </Button>
-          <Separator
-            orientation="vertical"
-            className="ml-0.5 hidden md:block"
-          />
           <MainNav items={siteConfig.navItems} />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">

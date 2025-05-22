@@ -1,5 +1,5 @@
 import {
-  Spline_Sans_Mono as FontMono,
+  Geist_Mono as FontMono,
   Geist as FontSans,
   Inter,
 } from "next/font/google"
