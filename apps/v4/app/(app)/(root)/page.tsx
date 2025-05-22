@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 
 export default function IndexPage() {
   return (
-    <div>
+    <div className="flex flex-1 flex-col">
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
@@ -61,27 +61,27 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container-wrapper">
+      <div className="container-wrapper hidden md:flex">
         <div className="container flex items-center justify-between gap-4 py-4">
           <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
           <ThemeSelector className="mr-4 hidden md:block" />
         </div>
       </div>
-      <div className="container-wrapper section-soft pb-6">
-        <div className="container">
-          <section className="overflow-hidden rounded-lg md:hidden">
+      <div className="container-wrapper section-soft flex-1 pb-6">
+        <div className="container overflow-hidden">
+          <section className="border-border/50 -mx-4 w-[160vw] overflow-hidden rounded-lg border md:hidden md:w-[150vw]">
             <Image
-              src="/examples/cards-light.png"
-              width={1280}
-              height={1214}
-              alt="Cards"
+              src="/r/styles/new-york-v4/dashboard-01-light.png"
+              width={1400}
+              height={875}
+              alt="Dashboard"
               className="block dark:hidden"
             />
             <Image
-              src="/examples/cards-dark.png"
-              width={1280}
-              height={1214}
-              alt="Cards"
+              src="/r/styles/new-york-v4/dashboard-01-dark.png"
+              width={1400}
+              height={875}
+              alt="Dashboard"
               className="hidden dark:block"
             />
           </section>

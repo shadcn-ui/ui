@@ -106,13 +106,13 @@ export function DocsTableOfContents({
   }
 
   return (
-    <div className={cn("flex flex-col gap-2 text-sm", className)}>
-      <p className="font-medium">On This Page</p>
+    <div className={cn("flex flex-col gap-2 p-4 text-sm", className)}>
+      <p className="text-muted-foreground text-xs">On This Page</p>
       {toc.map((item) => (
         <a
           key={item.url}
           href={item.url}
-          className="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
+          className="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
           data-active={item.url === `#${activeHeading}`}
           data-depth={item.depth}
         >

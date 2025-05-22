@@ -5,7 +5,7 @@ export function OpenInV0Cta({ className }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "group bg-surface text-surface-foreground relative flex flex-col gap-2 rounded-lg p-4 text-sm",
+        "group bg-surface text-surface-foreground relative flex flex-col gap-2 rounded-lg p-6 text-sm",
         className
       )}
     >

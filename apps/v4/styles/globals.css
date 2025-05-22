@@ -158,6 +158,11 @@
       @apply min-[1800px]:border-t;
     }
   }
+
+  a:active,
+  button:active {
+    @apply opacity-60 md:opacity-100;
+  }
 }
 
 @utility border-grid {
@@ -197,7 +202,7 @@
   counter-increment: step;
 
   &:before {
-    @apply mr-2 size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
+    @apply mr-2 hidden size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute lg:flex;
     @apply text-muted-foreground hidden md:mt-[-2px] md:-ml-10 md:inline-flex;
     content: counter(step);
   }

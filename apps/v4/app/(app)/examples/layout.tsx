@@ -51,7 +51,7 @@ export default function ExamplesLayout({
     <>
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>Build your component library</PageHeaderHeading>
+        <PageHeaderHeading>Build your Component Library</PageHeaderHeading>
         <PageHeaderDescription>
           A set of beautifully-designed, accessible components and a code
           distribution platform. Works with your favorite frameworks. Open

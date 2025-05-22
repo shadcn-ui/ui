@@ -4811,130 +4811,130 @@
     },
     {
       "name": "sidebar-demo",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-demo.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-header",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-header.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-header.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-footer",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-footer.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-footer.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-group",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-group.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-group.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-group-collapsible",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-group-collapsible.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-group-collapsible.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-group-action",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-group-action.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-group-action.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-menu",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-menu.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-menu.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-menu-action",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-menu-action.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-menu-action.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-menu-sub",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-menu-sub.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-menu-sub.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-menu-collapsible",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-menu-collapsible.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-menu-collapsible.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-menu-badge",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-menu-badge.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-menu-badge.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-rsc",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-rsc.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-rsc.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
       "name": "sidebar-controlled",
-      "type": "registry:example",
+      "type": "registry:internal",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sidebar-controlled.tsx",
+          "path": "registry/new-york-v4/internal/sidebar-controlled.tsx",
           "type": "registry:component"
         }
       ]
