@@ -1,7 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
 
-import { getColors } from "@/lib/colors"
 import { Announcement } from "@/components/announcement"
 import { ColorsNav } from "@/components/colors-nav"
 import {
@@ -45,8 +44,6 @@ export default function ColorsLayout({
 }: {
   children: React.ReactNode
 }) {
-  const colors = getColors()
-
   return (
     <div>
       <PageHeader>
