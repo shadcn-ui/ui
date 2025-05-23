@@ -48,25 +48,27 @@ export function ChartsNav({
   const pathname = usePathname()
 
   return (
-    <ScrollArea className="max-w-[600px] lg:max-w-none">
-      <div className={cn("flex items-center", className)} {...props}>
-        {links.map((example, index) => (
-          <Link
-            href={example.href}
-            key={example.href}
-            data-active={
-              pathname?.startsWith(example.href) ||
-              (index === 0 && pathname === "/charts")
-            }
-            className={cn(
-              "text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 items-center justify-center px-4 text-center text-base font-medium transition-colors"
-            )}
-          >
-            {example.name}
-          </Link>
-        ))}
-      </div>
-      <ScrollBar orientation="horizontal" className="invisible" />
-    </ScrollArea>
+    <div className="relative overflow-hidden">
+      <ScrollArea className="max-w-[600px] lg:max-w-none">
+        <div className={cn("flex items-center", className)} {...props}>
+          {links.map((example, index) => (
+            <Link
+              href={example.href}
+              key={example.href}
+              data-active={
+                pathname?.startsWith(example.href) ||
+                (index === 0 && pathname === "/charts")
+              }
+              className={cn(
+                "text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 shrink-0 items-center justify-center px-4 text-center text-base font-medium transition-colors"
+              )}
+            >
+              {example.name}
+            </Link>
+          ))}
+        </div>
+        <ScrollBar orientation="horizontal" className="invisible" />
+      </ScrollArea>
+    </div>
   )
 }

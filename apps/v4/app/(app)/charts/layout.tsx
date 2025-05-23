@@ -64,7 +64,7 @@ export default function ChartsLayout({
         <div className="container-wrapper">
           <div className="container flex items-center justify-between py-4">
             <ChartsNav />
-            <ThemeSelector />
+            <ThemeSelector className="hidden md:block" />
           </div>
         </div>
       </div>
