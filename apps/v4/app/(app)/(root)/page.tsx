@@ -76,6 +76,7 @@ export default function IndexPage() {
               height={875}
               alt="Dashboard"
               className="block dark:hidden"
+              priority
             />
             <Image
               src="/r/styles/new-york-v4/dashboard-01-dark.png"
@@ -83,6 +84,7 @@ export default function IndexPage() {
               height={875}
               alt="Dashboard"
               className="hidden dark:block"
+              priority
             />
           </section>
           <section className="theme-container hidden md:block">
