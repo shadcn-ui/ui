@@ -28,7 +28,7 @@ const plans = [
   {
     id: "pro",
     name: "Pro Plan",
-    description: "Advanced features with more storage.",
+    description: "More features and storage.",
     price: "$20",
   },
 ] as const
@@ -78,7 +78,7 @@ export function CardsForms() {
             >
               {plans.map((plan) => (
                 <Label
-                  className="has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-input/30 flex items-start gap-3 rounded-lg border p-3"
+                  className="has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-input/20 flex items-start gap-3 rounded-lg border p-3"
                   key={plan.id}
                 >
                   <RadioGroupItem
@@ -88,7 +88,7 @@ export function CardsForms() {
                   />
                   <div className="grid gap-1 font-normal">
                     <div className="font-medium">{plan.name}</div>
-                    <div className="text-muted-foreground pr-2 text-xs leading-snug text-balance">
+                    <div className="text-muted-foreground text-xs leading-snug text-balance">
                       {plan.description}
                     </div>
                   </div>
