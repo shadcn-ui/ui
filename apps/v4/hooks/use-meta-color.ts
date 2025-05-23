@@ -19,7 +19,6 @@ export function useMetaColor() {
     document
       .querySelector('meta[name="theme-color"]')
       ?.setAttribute("content", color)
-    console.log(`Setting meta color to ${color}`)
   }, [])
 
   return {
