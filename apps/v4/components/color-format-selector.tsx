@@ -38,9 +38,7 @@ export function ColorFormatSelector({
         {...props}
       >
         <span className="font-medium">Format: </span>
-        <span className="text-muted-foreground font-mono text-xs">
-          {format}
-        </span>
+        <span className="text-muted-foreground font-mono">{format}</span>
       </SelectTrigger>
       <SelectContent align="end" className="rounded-xl">
         {Object.entries(formats).map(([format, value]) => (
