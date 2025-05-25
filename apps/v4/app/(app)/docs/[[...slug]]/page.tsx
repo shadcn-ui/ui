@@ -10,6 +10,9 @@ import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
+// Add revalidation time
+export const revalidate = 3600 // Revalidate every hour
+
 export function generateStaticParams() {
   return source.generateParams()
 }
@@ -61,6 +64,10 @@ export async function generateMetadata(props: {
     },
   }
 }
+
+// Add cache configuration
+export const dynamic = "force-static"
+export const dynamicParams = false
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>
