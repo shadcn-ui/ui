@@ -58,6 +58,11 @@ const nextConfig = {
         destination: "/docs/react-19",
         permanent: true,
       },
+      {
+        source: "/charts",
+        destination: "/charts/area",
+        permanent: true,
+      },
     ]
   },
 }

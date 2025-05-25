@@ -12,9 +12,9 @@ import {
 import { ThemeSelector } from "@/components/theme-selector"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
-const title = "Beautiful Charts"
+const title = "Beautiful Charts & Graphs"
 const description =
-  "Built using Recharts. Copy and paste into your apps. Open Source."
+  "A collection of ready-to-use chart components built with Recharts. From basic charts to rich data displays, copy and paste into your apps."
 
 export const metadata: Metadata = {
   title,
@@ -60,19 +60,15 @@ export default function ChartsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="border-grid">
-        <div className="container-wrapper">
-          <div className="container flex items-center justify-between py-4">
-            <ChartsNav />
-            <ThemeSelector className="hidden md:block" />
-          </div>
+      <div id="charts" className="container-wrapper scroll-mt-20">
+        <div className="container flex items-center justify-between py-4">
+          <ChartsNav />
+          <ThemeSelector className="hidden md:block" />
         </div>
       </div>
       <div className="container-wrapper section-soft">
         <div className="container py-6">
-          <section id="charts" className="theme-container scroll-mt-20">
-            {children}
-          </section>
+          <section className="theme-container">{children}</section>
         </div>
       </div>
     </div>

@@ -6,6 +6,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --breakpoint-3xl: 1600px;
+  --breakpoint-4xl: 2000px;
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --radius-sm: calc(var(--radius) - 4px);
@@ -182,7 +184,7 @@
 }
 
 @utility container {
-  @apply mx-auto max-w-[1400px] px-4 min-[1600px]:max-w-screen-2xl min-[2000px]:max-w-[2000px] lg:px-8;
+  @apply 3xl:max-w-screen-2xl 4xl:max-w-[2000px] mx-auto max-w-[1400px] px-4 lg:px-8;
 }
 
 @utility no-scrollbar {
