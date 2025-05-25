@@ -22,7 +22,7 @@ export const siteConfig = {
       label: "Blocks",
     },
     {
-      href: "/charts",
+      href: "/charts/area",
       label: "Charts",
     },
     {
