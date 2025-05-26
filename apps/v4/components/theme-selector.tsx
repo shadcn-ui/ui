@@ -8,6 +8,8 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
+  SelectLabel,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
@@ -17,6 +19,17 @@ const DEFAULT_THEMES = [
     name: "Default",
     value: "default",
   },
+  {
+    name: "Scaled",
+    value: "scaled",
+  },
+  {
+    name: "Mono",
+    value: "mono",
+  },
+]
+
+const COLOR_THEMES = [
   {
     name: "Blue",
     value: "blue",
@@ -45,14 +58,6 @@ const DEFAULT_THEMES = [
     name: "Teal",
     value: "teal",
   },
-  {
-    name: "Mono",
-    value: "mono",
-  },
-  {
-    name: "Scaled",
-    value: "scaled",
-  },
 ]
 
 export function ThemeSelector({ className }: React.ComponentProps<"div">) {
@@ -75,6 +80,19 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
         <SelectContent align="end">
           <SelectGroup>
             {DEFAULT_THEMES.map((theme) => (
+              <SelectItem
+                key={theme.name}
+                value={theme.value}
+                className="data-[state=checked]:opacity-50"
+              >
+                {theme.name}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+          <SelectSeparator />
+          <SelectGroup>
+            <SelectLabel>Colors</SelectLabel>
+            {COLOR_THEMES.map((theme) => (
               <SelectItem
                 key={theme.name}
                 value={theme.value}
