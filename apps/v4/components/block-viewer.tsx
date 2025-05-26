@@ -108,7 +108,7 @@ function BlockViewerProvider({
       <div
         id={item.name}
         data-view={view}
-        className="group/block-view-wrapper flex min-w-0 flex-col items-stretch gap-4 overflow-hidden"
+        className="group/block-view-wrapper flex min-w-0 flex-col-reverse items-stretch gap-4 overflow-hidden md:flex-col"
         style={
           {
             "--height": item.meta?.iframeHeight ?? "930px",
@@ -126,7 +126,7 @@ function BlockViewerToolbar() {
   const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   return (
-    <div className="flex w-full items-center gap-2 md:pr-[14px]">
+    <div className="flex w-full items-center gap-2 pl-2 md:pr-[14px]">
       <Tabs
         defaultValue="preview"
         onValueChange={(value) => setView(value as "preview" | "code")}
@@ -140,7 +140,7 @@ function BlockViewerToolbar() {
       <Separator orientation="vertical" className="mx-2 hidden !h-4 lg:flex" />
       <a
         href={`#${item.name}`}
-        className="text-sm font-medium underline-offset-2 hover:underline"
+        className="flex-1 text-center text-sm font-medium underline-offset-2 hover:underline md:flex-auto md:text-left"
       >
         {item.description}
       </a>
@@ -182,7 +182,7 @@ function BlockViewerToolbar() {
         </div>
         <Separator
           orientation="vertical"
-          className="mx-1 hidden !h-4 md:flex"
+          className="mx-1 hidden !h-4 lg:flex"
         />
         <Button
           variant="outline"
@@ -193,7 +193,7 @@ function BlockViewerToolbar() {
           }}
         >
           {isCopied ? <Check /> : <Terminal />}
-          <span className="hidden lg:inline">npx shadcn add {item.name}</span>
+          <span>npx shadcn add {item.name}</span>
         </Button>
         <Separator
           orientation="vertical"
@@ -209,12 +209,12 @@ function BlockViewerView() {
   const { item, resizablePanelRef } = useBlockViewer()
 
   return (
-    <div className="group-data-[view=code]/block-view-wrapper:hidden md:h-(--height)">
+    <div className="group-data-[view=code]/block-view-wrapper:hidden md:h-[calc(var(--height)+10px)]">
       <div className="grid w-full gap-4">
         <ResizablePanelGroup direction="horizontal" className="relative z-10">
           <ResizablePanel
             ref={resizablePanelRef}
-            className="bg-background border-border/50 relative aspect-[4/2.5] rounded-xl border md:aspect-auto"
+            className="bg-background relative aspect-[4/2.5] overflow-hidden rounded-lg border md:aspect-auto md:rounded-xl"
             defaultSize={100}
             minSize={30}
           >
@@ -237,7 +237,7 @@ function BlockViewerView() {
             <iframe
               src={`/view/${item.name}`}
               height={item.meta?.iframeHeight ?? 930}
-              className="bg-background relative z-20 hidden w-full md:block"
+              className="bg-background no-scrollbar relative z-20 hidden w-full md:block"
             />
           </ResizablePanel>
           <ResizableHandle className="after:bg-border relative hidden w-3 bg-transparent p-0 after:absolute after:top-1/2 after:right-0 after:h-8 after:w-[6px] after:translate-x-[-1px] after:-translate-y-1/2 after:rounded-full after:transition-all after:hover:h-10 md:block" />

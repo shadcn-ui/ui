@@ -95,7 +95,7 @@ export default async function Page(props: {
                     <Button
                       variant="secondary"
                       size="icon"
-                      className="size-8 shadow-none md:size-7"
+                      className="extend-touch-target size-8 shadow-none md:size-7"
                       asChild
                     >
                       <Link href={neighbours.previous.url}>
@@ -108,7 +108,7 @@ export default async function Page(props: {
                     <Button
                       variant="secondary"
                       size="icon"
-                      className="size-8 shadow-none md:size-7"
+                      className="extend-touch-target size-8 shadow-none md:size-7"
                       asChild
                     >
                       <Link href={neighbours.next.url}>
@@ -119,7 +119,6 @@ export default async function Page(props: {
                   )}
                 </div>
               </div>
-
               {doc.description && (
                 <p className="text-muted-foreground text-base text-balance">
                   {doc.description}

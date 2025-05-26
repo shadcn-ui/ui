@@ -16,11 +16,9 @@ const FEATURED_BLOCKS = [
 
 export default async function BlocksPage() {
   return (
-    <div>
+    <div className="flex flex-col gap-12 md:gap-24">
       {FEATURED_BLOCKS.map((name) => (
-        <div key={name} className="container py-8 first:pt-6 md:py-12 md:pr-3">
-          <BlockDisplay name={name} />
-        </div>
+        <BlockDisplay name={name} key={name} />
       ))}
       <div className="container-wrapper">
         <div className="container flex justify-center py-6">

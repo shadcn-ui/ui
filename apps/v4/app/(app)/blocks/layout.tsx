@@ -59,22 +59,22 @@ export default function BlocksLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div id="blocks" className="scroll-mt-24">
-        <div className="container-wrapper">
-          <div className="container flex items-center justify-between gap-4 py-4">
-            <BlocksNav />
-            <Button
-              asChild
-              variant="secondary"
-              size="sm"
-              className="hidden translate-x-2 shadow-none lg:flex"
-            >
-              <Link href="/blocks/sidebar">Browse all blocks</Link>
-            </Button>
-          </div>
+      <div id="blocks" className="container-wrapper scroll-mt-24">
+        <div className="container flex items-center justify-between gap-4 py-4">
+          <BlocksNav />
+          <Button
+            asChild
+            variant="secondary"
+            size="sm"
+            className="mr-7 hidden shadow-none lg:flex"
+          >
+            <Link href="/blocks/sidebar">Browse all blocks</Link>
+          </Button>
         </div>
       </div>
-      <div className="container-wrapper section-soft flex-1">{children}</div>
+      <div className="container-wrapper section-soft flex-1 md:py-12">
+        <div className="container">{children}</div>
+      </div>
     </>
   )
 }

@@ -210,6 +210,12 @@
   }
 }
 
+@utility extend-touch-target {
+  @media (pointer: coarse) {
+    @apply relative touch-manipulation after:absolute after:-inset-2 after:bg-blue-50/50;
+  }
+}
+
 @layer components {
   .steps {
     &:first-child > h3:first-child {

@@ -66,7 +66,7 @@ export default function ExamplesLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container-wrapper">
+      <div id="examples" className="container-wrapper scroll-mt-24">
         <div className="container flex items-center justify-between gap-4 py-4">
           <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
           <ThemeSelector className="mr-4 hidden md:block" />
