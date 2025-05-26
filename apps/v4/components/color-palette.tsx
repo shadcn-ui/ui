@@ -5,7 +5,7 @@ import { ColorFormatSelector } from "@/components/color-format-selector"
 export function ColorPalette({ colorPalette }: { colorPalette: ColorPalette }) {
   return (
     <div id={colorPalette.name} className="scroll-mt-20 rounded-lg">
-      <div className="flex items-center">
+      <div className="flex items-center px-4">
         <div className="flex-1 pl-1 text-sm font-medium">
           <h2 className="capitalize">{colorPalette.name}</h2>
         </div>
@@ -14,7 +14,7 @@ export function ColorPalette({ colorPalette }: { colorPalette: ColorPalette }) {
           className="ml-auto"
         />
       </div>
-      <div className="flex flex-col gap-1 py-4 sm:flex-row sm:gap-2">
+      <div className="flex flex-col gap-4 py-4 sm:flex-row sm:gap-2">
         {colorPalette.colors.map((color) => (
           <Color key={color.hex} color={color} />
         ))}

@@ -9,6 +9,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
+import { PageNav } from "@/components/page-nav"
 import { ThemeSelector } from "@/components/theme-selector"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
@@ -66,12 +67,10 @@ export default function ExamplesLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div id="examples" className="container-wrapper scroll-mt-24">
-        <div className="container flex items-center justify-between gap-4 py-4">
-          <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
-          <ThemeSelector className="mr-4 hidden md:block" />
-        </div>
-      </div>
+      <PageNav id="examples">
+        <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
+        <ThemeSelector className="mr-4 hidden md:block" />
+      </PageNav>
       <div className="container-wrapper section-soft flex flex-1 flex-col pb-6">
         <div className="theme-container container flex flex-1 scroll-mt-20 flex-col">
           <div className="bg-background flex flex-col overflow-hidden rounded-lg border bg-clip-padding md:flex-1 xl:rounded-xl">

@@ -9,6 +9,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
+import { PageNav } from "@/components/page-nav"
 import { ThemeSelector } from "@/components/theme-selector"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
@@ -60,14 +61,12 @@ export default function ChartsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div id="charts" className="container-wrapper scroll-mt-20">
-        <div className="container flex items-center justify-between py-4">
-          <ChartsNav />
-          <ThemeSelector className="hidden md:block" />
-        </div>
-      </div>
+      <PageNav id="charts">
+        <ChartsNav />
+        <ThemeSelector className="mr-4 hidden md:flex" />
+      </PageNav>
       <div className="container-wrapper section-soft">
-        <div className="container py-6">
+        <div className="container pb-6">
           <section className="theme-container">{children}</section>
         </div>
       </div>
