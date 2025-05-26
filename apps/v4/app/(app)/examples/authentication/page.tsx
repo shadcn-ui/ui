@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function AuthenticationPage() {
   return (
     <>
-      <div className="md:hidden" data-reverse="true">
+      <div className="md:hidden">
         <Image
           src="/examples/authentication-light.png"
           width={1280}

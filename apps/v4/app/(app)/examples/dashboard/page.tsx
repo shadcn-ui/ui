@@ -34,7 +34,7 @@ export default function Page() {
         />
       </div>
       <SidebarProvider
-        className="hidden md:block"
+        className="hidden md:flex"
         style={
           {
             "--sidebar-width": "calc(var(--spacing) * 64)",
