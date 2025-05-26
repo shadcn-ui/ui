@@ -8,6 +8,10 @@ import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
 
+export const revalidate = false
+export const dynamic = "force-static"
+export const dynamicParams = false
+
 const getCachedRegistryItem = React.cache(async (name: string) => {
   return await getRegistryItem(name)
 })
@@ -55,8 +59,6 @@ export async function generateMetadata({
     },
   }
 }
-
-export const dynamicParams = false
 
 export async function generateStaticParams() {
   const { Index } = await import("@/registry/__index__")
