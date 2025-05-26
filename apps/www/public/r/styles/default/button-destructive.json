@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/button-destructive.tsx",
-      "content": "import { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonDestructive() {\n  return <Button variant=\"destructive\">Destructive</Button>\n}\n",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\r\n\r\nexport default function ButtonDestructive() {\r\n  return <Button variant=\"destructive\">Destructive</Button>\r\n}\r\n",
       "type": "registry:example",
       "target": ""
     }

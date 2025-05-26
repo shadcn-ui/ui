@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "codeblock-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "codeblock"
+  ],
+  "files": [
+    {
+      "path": "examples/codeblock-demo.tsx",
+      "content": "import CodeBlock from \"@/registry/new-york/ui/codeblock\"\r\n\r\nexport default function CodeBlockDemo() {\r\n  return (\r\n    <div className=\"items-top flex space-x-2\">\r\n      <CodeBlock lang=\"js\" maxHeight={300} maxWidth={300} textSize={14}>\r\n        {`\r\nfunction greet() {\r\n  console.log(\"Hello, world!\")\r\n}\r\n\r\ngreet()\r\n`}\r\n      </CodeBlock>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

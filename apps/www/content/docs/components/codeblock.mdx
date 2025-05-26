@@ -1,0 +1,73 @@
+---
+title: Codeblock
+description: A syntax-highlighted code block component powered by Shiki for beautiful code rendering.
+component: true
+links:
+  doc: https://shiki.style/guide/
+  api: https://shiki.style/guide/
+---
+
+<ComponentPreview
+  name="codeblock-demo"
+  className="max-w-full"
+  description="A syntax-highlighted code block component using Shiki"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add codeblock
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install hast-util-to-jsx-runtime shiki
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="codeblock" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import CodeBlock from "@/components/ui/codeblock"
+```
+
+```tsx
+<div className="items-top flex space-x-2">
+  <CodeBlock lang="js" maxHeight={300} maxWidth={300} textSize={14}>
+    {`
+function greet() {
+  console.log("Hello, world!")
+}
+
+greet()
+`}
+  </CodeBlock>
+</div>
+```

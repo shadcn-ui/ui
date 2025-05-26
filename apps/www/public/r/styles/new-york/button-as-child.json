@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/button-as-child.tsx",
-      "content": "import Link from \"next/link\"\n\nimport { Button } from \"@/registry/new-york/ui/button\"\n\nexport default function ButtonAsChild() {\n  return (\n    <Button asChild>\n      <Link href=\"/login\">Login</Link>\n    </Button>\n  )\n}\n",
+      "content": "import Link from \"next/link\"\r\n\r\nimport { Button } from \"@/registry/new-york/ui/button\"\r\n\r\nexport default function ButtonAsChild() {\r\n  return (\r\n    <Button asChild>\r\n      <Link href=\"/login\">Login</Link>\r\n    </Button>\r\n  )\r\n}\r\n",
       "type": "registry:example",
       "target": ""
     }

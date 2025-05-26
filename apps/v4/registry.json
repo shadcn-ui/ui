@@ -196,6 +196,20 @@
       ]
     },
     {
+      "name": "codeblock",
+      "type": "registry:ui",
+      "dependencies": [
+        "shiki",
+        "hast-util-to-jsx-runtime"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/codeblock.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "collapsible",
       "type": "registry:ui",
       "dependencies": [
