@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL("https://v4.shadcn.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
   description: siteConfig.description,
   keywords: ["Next.js", "React", "Tailwind CSS", "Components", "shadcn"],
   authors: [
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://v4.shadcn.com",
+    url: process.env.NEXT_PUBLIC_APP_URL!,
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
       {
-        url: "https://v4.shadcn.com/opengraph-image.png",
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image.png`,
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: ["https://v4.shadcn.com/opengraph-image.png"],
+    images: [`${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image.png`],
     creator: "@shadcn",
   },
   icons: {
