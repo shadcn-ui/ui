@@ -74,7 +74,7 @@ export default function ExamplesLayout({
       </div>
       <div className="container-wrapper section-soft flex flex-1 flex-col pb-6">
         <div className="theme-container container flex flex-1 scroll-mt-20 flex-col">
-          <div className="bg-background flex flex-1 flex-col overflow-hidden rounded-lg border bg-clip-padding">
+          <div className="bg-background flex flex-col overflow-hidden rounded-lg border bg-clip-padding md:flex-1 xl:rounded-xl">
             {children}
           </div>
         </div>
