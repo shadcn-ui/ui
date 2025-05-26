@@ -184,7 +184,7 @@
 }
 
 @utility container {
-  @apply 3xl:max-w-screen-2xl 4xl:max-w-[2000px] mx-auto max-w-[1400px] px-4 lg:px-8;
+  @apply 3xl:max-w-screen-2xl mx-auto max-w-[1400px] px-4 lg:px-8;
 }
 
 @utility no-scrollbar {

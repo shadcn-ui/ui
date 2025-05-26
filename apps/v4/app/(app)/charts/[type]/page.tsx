@@ -47,7 +47,7 @@ export default async function ChartPage({ params }: ChartPageProps) {
       <h2 className="sr-only">
         {type.charAt(0).toUpperCase() + type.slice(1)} Charts
       </h2>
-      <div className="4xl:!grid-cols-4 grid flex-1 scroll-mt-20 items-stretch gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10">
+      <div className="grid flex-1 scroll-mt-20 items-stretch gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10">
         {chartList.map((chart) => (
           <ChartDisplay
             key={chart.id}
