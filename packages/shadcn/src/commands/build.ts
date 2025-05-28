@@ -53,7 +53,8 @@ export const build = new Command()
 
       const buildSpinner = spinner("Building registry...")
       for (const registryItem of result.data.items) {
-        if (!registryItem.files) {
+        // Theme item can be inlined in the registry file.
+        if (!registryItem.files && registryItem.type !== "registry:theme") {
           continue
         }
 
@@ -64,11 +65,13 @@ export const build = new Command()
           "https://ui.shadcn.com/schema/registry-item.json"
 
         // Loop through each file in the files array.
-        for (const file of registryItem.files) {
-          file["content"] = await fs.readFile(
-            path.resolve(resolvePaths.cwd, file.path),
-            "utf-8"
-          )
+        if (registryItem.files) {
+          for (const file of registryItem.files) {
+            file["content"] = await fs.readFile(
+              path.resolve(resolvePaths.cwd, file.path),
+              "utf-8"
+            )
+          }
         }
 
         // Validate the registry item.
