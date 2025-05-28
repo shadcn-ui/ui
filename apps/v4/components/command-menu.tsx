@@ -165,7 +165,11 @@ export function CommandMenu({
                       return (
                         <CommandMenuItem
                           key={item.url}
-                          value={item.name?.toString() ?? ""}
+                          value={
+                            item.name?.toString()
+                              ? `${group.name} ${item.name}`
+                              : ""
+                          }
                           keywords={isComponent ? ["component"] : undefined}
                           onHighlight={() =>
                             handlePageHighlight(isComponent, item)

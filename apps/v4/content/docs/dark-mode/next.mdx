@@ -5,7 +5,7 @@ description: Adding dark mode to your next app.
 
 <Steps>
 
-### Install next-themes
+## Install next-themes
 
 Start by installing `next-themes`:
 
@@ -13,7 +13,7 @@ Start by installing `next-themes`:
 npm install next-themes
 ```
 
-### Create a theme provider
+## Create a theme provider
 
 ```tsx title="components/theme-provider.tsx" showLineNumbers
 "use client"
@@ -29,7 +29,7 @@ export function ThemeProvider({
 }
 ```
 
-### Wrap your root layout
+## Wrap your root layout
 
 Add the `ThemeProvider` to your root layout and add the `suppressHydrationWarning` prop to the `html` tag.
 
@@ -57,7 +57,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 }
 ```
 
-### Add a mode toggle
+## Add a mode toggle
 
 Place a mode toggle on your site to toggle between light and dark mode.
 

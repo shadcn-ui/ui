@@ -122,13 +122,13 @@ function BlockViewerProvider({
 }
 
 function BlockViewerToolbar() {
-  const { setView, item, resizablePanelRef } = useBlockViewer()
+  const { setView, view, item, resizablePanelRef } = useBlockViewer()
   const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   return (
     <div className="flex w-full items-center gap-2 pl-2 md:pr-[14px]">
       <Tabs
-        defaultValue="preview"
+        value={view}
         onValueChange={(value) => setView(value as "preview" | "code")}
         className="hidden lg:flex"
       >
@@ -150,6 +150,7 @@ function BlockViewerToolbar() {
             type="single"
             defaultValue="100"
             onValueChange={(value) => {
+              setView("preview")
               if (resizablePanelRef?.current) {
                 resizablePanelRef.current.resize(parseInt(value))
               }
@@ -299,7 +300,7 @@ export function BlockViewerFileTree() {
 
   return (
     <SidebarProvider className="flex !min-h-full flex-col">
-      <Sidebar collapsible="none" className="w-full flex-1 border-r">
+      <Sidebar collapsible="none" className="w-full flex-1">
         <SidebarGroupLabel className="h-12 rounded-none border-b px-4 text-sm">
           Files
         </SidebarGroupLabel>

@@ -3,9 +3,7 @@ title: Astro
 description: Adding dark mode to your astro app.
 ---
 
-<Steps>
-
-### Create an inline theme script
+## Create an inline theme script
 
 ```astro title="src/pages/index.astro"
 ---
@@ -38,7 +36,7 @@ import '../styles/globals.css'
 </html>
 ```
 
-### Add a mode toggle
+## Add a mode toggle
 
 ```tsx title="src/components/ModeToggle.tsx"
 import * as React from "react"
@@ -95,7 +93,7 @@ export function ModeToggle() {
 }
 ```
 
-### Display the mode toggle
+## Display the mode toggle
 
 Place a mode toggle on your site to toggle between light and dark mode.
 
@@ -114,5 +112,3 @@ import { ModeToggle } from '@/components/ModeToggle';
 	</body>
 </html>
 ```
-
-</Steps>

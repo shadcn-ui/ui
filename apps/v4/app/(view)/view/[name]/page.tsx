@@ -66,9 +66,12 @@ export async function generateStaticParams() {
 
   return Object.values(index)
     .filter((block) =>
-      ["registry:block", "registry:component", "registry:example"].includes(
-        block.type
-      )
+      [
+        "registry:block",
+        "registry:component",
+        "registry:example",
+        "registry:internal",
+      ].includes(block.type)
     )
     .map((block) => ({
       name: block.name,

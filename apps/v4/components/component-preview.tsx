@@ -1,14 +1,8 @@
 import Image from "next/image"
 
-import { cn } from "@/lib/utils"
+import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
 import { ComponentSource } from "@/components/component-source"
 import { Index } from "@/registry/__index__"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/new-york-v4/ui/tabs"
 
 export function ComponentPreview({
   name,
@@ -40,7 +34,7 @@ export function ComponentPreview({
 
   if (type === "block") {
     return (
-      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border">
+      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border md:-mx-4">
         <Image
           src={`/r/styles/new-york-v4/${name}-light.png`}
           alt={name}
@@ -63,54 +57,13 @@ export function ComponentPreview({
   }
 
   return (
-    <div
-      className={cn("group relative my-4 flex flex-col gap-2", className)}
+    <ComponentPreviewTabs
+      className={className}
+      align={align}
+      hideCode={hideCode}
+      component={<Component />}
+      source={<ComponentSource name={name} collapsible={false} />}
       {...props}
-    >
-      <Tabs defaultValue="preview" className="relative mr-auto w-full">
-        <div className="flex items-center justify-between">
-          {!hideCode && (
-            <TabsList className="justify-start gap-4 rounded-none bg-transparent px-2 md:px-0">
-              <TabsTrigger
-                value="preview"
-                className="text-muted-foreground data-[state=active]:text-foreground px-0 text-base data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent"
-              >
-                Preview
-              </TabsTrigger>
-              <TabsTrigger
-                value="code"
-                className="text-muted-foreground data-[state=active]:text-foreground px-0 text-base data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent"
-              >
-                Code
-              </TabsTrigger>
-            </TabsList>
-          )}
-        </div>
-        <TabsContent
-          value="preview"
-          className="ring-surface-foreground/10 relative rounded-lg ring md:-mx-4"
-        >
-          <div
-            className={cn(
-              "preview flex min-h-[360px] w-full justify-center p-10",
-              {
-                "items-center": align === "center",
-                "items-start": align === "start",
-                "items-end": align === "end",
-              }
-            )}
-          >
-            <Component />
-          </div>
-        </TabsContent>
-        <TabsContent value="code" className="md:-mx-4">
-          <ComponentSource
-            name={name}
-            collapsible={false}
-            className="min-h-[360px] [&>figure]:mt-0"
-          />
-        </TabsContent>
-      </Tabs>
-    </div>
+    />
   )
 }
