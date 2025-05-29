@@ -1,9 +1,12 @@
 import { Metadata } from "next"
 import { cookies } from "next/headers"
 
+import { ThemeSelector } from "@/components/theme-selector"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
 import {
   SidebarInset,
   SidebarProvider,
+  SidebarTrigger,
 } from "@/registry/new-york-v4/ui/sidebar"
 import { AccordionDemo } from "@/app/(internal)/sink/components/accordion-demo"
 import { AlertDemo } from "@/app/(internal)/sink/components/alert-demo"
@@ -68,9 +71,15 @@ export default async function SinkPage() {
   const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
 
   return (
-    <SidebarProvider defaultOpen={defaultOpen}>
+    <SidebarProvider defaultOpen={defaultOpen} className="theme-container">
       <AppSidebar />
       <SidebarInset>
+        <header className="bg-background sticky top-0 z-10 flex h-14 items-center border-b p-4">
+          <SidebarTrigger />
+          <Separator orientation="vertical" className="mr-4 ml-2 !h-4" />
+          <h1 className="text-base font-medium">Kitchen Sink</h1>
+          <ThemeSelector className="ml-auto" />
+        </header>
         <div className="@container grid flex-1 gap-4 p-4">
           <ComponentWrapper name="accordion">
             <AccordionDemo />
