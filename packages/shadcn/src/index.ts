@@ -5,6 +5,8 @@ import { diff } from "@/src/commands/diff"
 import { info } from "@/src/commands/info"
 import { init } from "@/src/commands/init"
 import { migrate } from "@/src/commands/migrate"
+import { build as registryBuild } from "@/src/commands/registry/build"
+import { mcp as registryMcp } from "@/src/commands/registry/mcp"
 import { Command } from "commander"
 
 import packageJson from "../package.json"
@@ -29,6 +31,9 @@ async function main() {
     .addCommand(migrate)
     .addCommand(info)
     .addCommand(build)
+
+  // Registry commands
+  program.addCommand(registryBuild).addCommand(registryMcp)
 
   program.parse()
 }
