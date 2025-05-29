@@ -1,5 +1,15 @@
 # @shadcn/ui
 
+## 2.6.0
+
+### Minor Changes
+
+- [#7497](https://github.com/shadcn-ui/ui/pull/7497) [`df91b528871e258d548e4ea318b0376ac78676e0`](https://github.com/shadcn-ui/ui/commit/df91b528871e258d548e4ea318b0376ac78676e0) Thanks [@shadcn](https://github.com/shadcn)! - add registry:build command
+
+### Patch Changes
+
+- [#6885](https://github.com/shadcn-ui/ui/pull/6885) [`2773f9e2e29cf67e521632d15d1ba302a82e39e9`](https://github.com/shadcn-ui/ui/commit/2773f9e2e29cf67e521632d15d1ba302a82e39e9) Thanks [@Joshua-hypt](https://github.com/Joshua-hypt)! - resolved prefixing issue for Tailwind CSS v4 compatibility
+
 ## 2.5.0
 
 ### Minor Changes
