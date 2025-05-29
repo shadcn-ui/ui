@@ -6,7 +6,7 @@ import { Command } from "commander"
 
 export const mcp = new Command()
   .name("registry:mcp")
-  .description("starts the registry MCP server")
+  .description("starts the registry MCP server [EXPERIMENTAL]")
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",

@@ -22,7 +22,7 @@ export const buildOptionsSchema = z.object({
 
 export const build = new Command()
   .name("registry:build")
-  .description("builds the registry")
+  .description("builds the registry [EXPERIMENTAL]")
   .argument("[registry]", "path to registry.json file", "./registry.json")
   .option(
     "-o, --output <path>",
@@ -165,7 +165,7 @@ async function buildRegistry(opts: z.infer<typeof buildOptionsSchema>) {
 
     if (options.verbose) {
       spinner(
-        `They registry has ${highlighter.info(
+        `The registry has ${highlighter.info(
           resolvedRegistry.items.length.toString()
         )} items:`
       ).succeed()
