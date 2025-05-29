@@ -4,6 +4,122 @@ description: Latest updates and announcements.
 toc: false
 ---
 
+## May 2025 - New Site
+
+We've upgraded [ui.shadcn.com](https://ui.shadcn.com) to Next.js 15.3 and Tailwind v4. The site now uses the upgraded `new-york` components.
+
+We've also made some minor design updates to make the site faster and easier to navigate.
+
+This upgrade unlocks a lot of new features that we're working on. More to come.
+
+## April 2025 - MCP
+
+We're working on zero-config MCP support for shadcn/ui registry. One command `npx shadcn registry:mcp` to make any registry mcp-compatible.
+
+<Image
+  src="/images/mcp.jpeg"
+  width="1432"
+  height="1050"
+  alt="Lift Mode"
+  className="mt-6 w-full overflow-hidden rounded-lg border"
+/>
+
+Learn more in the thread here: https://x.com/shadcn/status/1917597228513853603
+
+## March 2025 - shadcn 2.5.0
+
+We tagged shadcn 2.5.0 earlier this week. It comes with a pretty cool feature: **resolve anywhere**.
+
+Registries can now place files anywhere in an app and we’ll properly resolve imports. No need to stick to a fixed file structure. It can even add files outside the registry itself.
+
+On install, we track all files and perform a multi-pass resolution to correctly handle imports and aliases. It’s fast.
+
+## March 2025 - Cross-framework Route Support
+
+The shadcn CLI can now auto-detect your framework and adapts routes for you.
+
+Works with all frameworks including Laravel, Vite and React Router.
+
+## February 2025 - Tailwind v4
+
+We shipped the first preview of Tailwind v4 and React 19. Ready for you to try out. You can start using it today.
+
+What's New:
+
+- The CLI can now initialize projects with Tailwind v4.
+- Full support for the new @theme directive and @theme inline option.
+- All components are updated for Tailwind v4 and React 19.
+- We’ve removed the forwardRefs and adjusted the types.
+- Every primitive now has a data-slot attribute for styling.
+- We've fixed and cleaned up the style of the components.
+- We're deprecating the toast component in favor of sonner.
+- Buttons now use the default cursor.
+- We're deprecating the default style. New projects will use new-york.
+- HSL colors are now converted to OKLCH.
+
+Read more in the [docs](/docs/tailwind-v4).
+
+## February 2025 - Updated Registry Schema
+
+We're updating the registry schema to support more features.
+
+Define code as a flat JSON file and distribute it via the CLI.
+
+- Custom styles: bring your own design system, components & tokens
+- Extend, override, mix & match components from third-party registries and LLMs
+- Install themes, CSS vars, hooks, animations, and Tailwind layers & utilities
+
+## January 2025 - Blocks
+
+We are inviting the community to contribute to the blocks library. Share your components and blocks with other developers and help build a library of high-quality, reusable components.
+
+We'd love to see all types of blocks: applications, marketing, products, and more.
+
+See the [docs](/docs/blocks) page to get started.
+
+## December 2024 - Monorepo Support
+
+Until now, using shadcn/ui in a monorepo was a bit of a pain. You could add
+components using the CLI, but you had to manage where the components
+were installed and manually fix import paths.
+
+With the new monorepo support in the CLI, we've made it a lot easier to use
+shadcn/ui in a monorepo.
+
+The CLI now understands the monorepo structure and will install the components,
+dependencies and registry dependencies to the correct paths and handle imports
+for you.
+
+Read more in the [docs](/docs/monorepo).
+
+## November 2024 - Icons
+
+An update on icons. The new-york style now uses Lucide as the default icon set.
+
+- New projects will use Lucide by default
+- No breaking changes for existing projects
+- Use the CLI to (optionally) migrate primitives to Lucide
+
+For more info on why we're doing this, see the [thread](https://x.com/shadcn/status/1853902179041702169).
+
+## October 2024 - React 19
+
+shadcn/ui is now compatible with React 19 and Next.js 15.
+
+We published a guide to help you upgrade your project to React 19.
+
+Read more [here](/docs/react-19).
+
+## October 2024 - Sidebar
+
+Introducing sidebar.tsx: 25 components to help you build all kinds of sidebars.
+
+I don't like building sidebars. So I built 30+ of them. All types. Then simplified the core into sidebar.tsx: a strong foundation to build on top of.
+
+It works with Next.js, Remix, Vite & Laravel.
+
+See the announcement [here](https://x.com/shadcn/status/1847359896557408461).
+
 ## August 2024 - npx shadcn init
 
 The new CLI is now available. It's a complete rewrite with a lot of new features and improvements. You can now install components, themes, hooks, utils and more using `npx shadcn add`.
