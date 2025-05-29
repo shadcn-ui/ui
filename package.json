@@ -16,7 +16,7 @@
     "build": "turbo run build",
     "build:cli": "turbo --filter=shadcn build",
     "build:registry": "pnpm --filter=www,v4 build:registry && pnpm --filter=www,v4 lint:fix && pnpm format:write -- --loglevel silent",
-    "registry:build": "turbo run registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
+    "registry:build": "pnpm --filter=v4 registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
     "registry:capture": "pnpm --filter=www registry:capture",
     "dev": "turbo run dev --parallel",
     "shadcn-ui:dev": "turbo --filter=shadcn-ui dev",
