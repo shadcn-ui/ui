@@ -19,6 +19,7 @@ import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-inf
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
+import { updateCss } from "@/src/utils/updaters/update-css"
 import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateFiles } from "@/src/utils/updaters/update-files"
@@ -97,7 +98,12 @@ async function addProjectComponents(
     initIndex: options.style ? options.style === "index" : false,
   })
 
-  await updateDependencies(tree.dependencies, config, {
+  // Add CSS updater
+  await updateCss(tree.css, config, {
+    silent: options.silent,
+  })
+
+  await updateDependencies(tree.dependencies, tree.devDependencies, config, {
     silent: options.silent,
   })
   await updateFiles(tree.files, config, {
@@ -196,12 +202,27 @@ async function addWorkspaceComponents(
       )
     }
 
-    // 3. Update dependencies.
-    await updateDependencies(component.dependencies, targetConfig, {
-      silent: true,
-    })
+    // 3. Update CSS
+    if (component.css) {
+      await updateCss(component.css, targetConfig, {
+        silent: true,
+      })
+      filesUpdated.push(
+        path.relative(workspaceRoot, targetConfig.resolvedPaths.tailwindCss)
+      )
+    }
 
-    // 4. Update files.
+    // 4. Update dependencies.
+    await updateDependencies(
+      component.dependencies,
+      component.devDependencies,
+      targetConfig,
+      {
+        silent: true,
+      }
+    )
+
+    // 5. Update files.
     const files = await updateFiles(component.files, targetConfig, {
       overwrite: options.overwrite,
       silent: true,

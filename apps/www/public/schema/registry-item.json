@@ -78,7 +78,8 @@
               "registry:hook",
               "registry:theme",
               "registry:page",
-              "registry:file"
+              "registry:file",
+              "registry:style"
             ],
             "description": "The type of the file. This is used to determine the type of the file when resolved for a project."
           },
@@ -154,6 +155,38 @@
             "type": "string"
           }
         }
+      }
+    },
+    "css": {
+      "type": "object",
+      "description": "CSS definitions to be added to the project's CSS file. Supports at-rules, selectors, nested rules, utilities, layers, and more.",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Direct CSS string (e.g., 'font-family: sans-serif; line-height: 1.5;')"
+          },
+          {
+            "type": "object",
+            "description": "CSS properties or nested selectors",
+            "additionalProperties": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "description": "CSS property value (e.g., 'blue', 'var(--color-primary)')"
+                },
+                {
+                  "type": "object",
+                  "description": "Nested selector or rule with properties",
+                  "additionalProperties": {
+                    "type": "string",
+                    "description": "CSS property value for nested rule"
+                  }
+                }
+              ]
+            }
+          }
+        ]
       }
     },
     "meta": {

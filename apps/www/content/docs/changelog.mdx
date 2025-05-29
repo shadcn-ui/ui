@@ -321,7 +321,7 @@ I've been working on a new CLI for the past few weeks. It's a complete rewrite. 
 ### `init`
 
 ```bash
-npx shadcn-ui@latest init
+npx shadcn@latest init
 ```
 
 When you run the `init` command, you will be asked a few questions to configure `components.json`:
@@ -363,7 +363,7 @@ This means you can now use the CLI with any directory structure including `src` 
 ### `add`
 
 ```bash
-npx shadcn-ui@latest add
+npx shadcn@latest add
 ```
 
 The `add` command is now much more capable. You can now add UI components but also import more complex components (coming soon).
@@ -373,7 +373,7 @@ The CLI will automatically resolve all components and dependencies, format them 
 ### `diff` (experimental)
 
 ```bash
-npx shadcn-ui diff
+npx shadcn diff
 ```
 
 We're also introducing a new `diff` command to help you keep track of upstream updates.
@@ -383,7 +383,7 @@ You can use this command to see what has changed in the upstream repository and 
 Run the `diff` command to get a list of components that have updates available:
 
 ```bash
-npx shadcn-ui diff
+npx shadcn diff
 ```
 
 ```txt
@@ -398,7 +398,7 @@ The following components have updates available:
 Then run `diff [component]` to see the changes:
 
 ```bash
-npx shadcn-ui diff alert
+npx shadcn diff alert
 ```
 
 ```diff /pl-12/
