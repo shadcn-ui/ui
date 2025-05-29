@@ -99,14 +99,18 @@ async function buildRegistry(opts: z.infer<typeof buildOptionsSchema>) {
 
     // Loop through the registry items and remove duplicates files i.e same path.
     for (const registryItem of resolvedRegistry.items) {
-      if (!registryItem.files) {
-        continue
-      }
-
-      registryItem.files = registryItem.files.filter(
+      // Deduplicate files
+      registryItem.files = registryItem.files?.filter(
         (file, index, self) =>
           index === self.findIndex((t) => t.path === file.path)
       )
+
+      // Deduplicate dependencies
+      if (registryItem.dependencies) {
+        registryItem.dependencies = registryItem.dependencies.filter(
+          (dep, index, self) => index === self.findIndex((d) => d === dep)
+        )
+      }
     }
 
     for (const registryItem of resolvedRegistry.items) {
@@ -121,10 +125,17 @@ async function buildRegistry(opts: z.infer<typeof buildOptionsSchema>) {
         "https://ui.shadcn.com/schema/registry-item.json"
 
       for (const file of registryItem.files) {
-        file["content"] = await fs.readFile(
-          path.resolve(resolvePaths.cwd, file.path),
-          "utf-8"
-        )
+        const absPath = path.resolve(resolvePaths.cwd, file.path)
+        try {
+          const stat = await fs.stat(absPath)
+          if (!stat.isFile()) {
+            continue
+          }
+          file["content"] = await fs.readFile(absPath, "utf-8")
+        } catch (err) {
+          console.error("Error reading file in registry build:", absPath, err)
+          continue
+        }
       }
 
       const result = registryItemSchema.safeParse(registryItem)
@@ -182,20 +193,26 @@ async function resolveRegistryItems(
       continue
     }
 
-    const results = await recursivelyResolveFileImports(
-      item.files[0].path,
-      config,
-      projectInfo
-    )
+    // Process all files in the array instead of just the first one
+    for (const file of item.files) {
+      const results = await recursivelyResolveFileImports(
+        file.path,
+        config,
+        projectInfo
+      )
 
-    if (results.files) {
-      item.files.push(...results.files)
-    }
+      // Remove file from results.files
+      results.files = results.files?.filter((f) => f.path !== file.path)
 
-    if (results.dependencies) {
-      item.dependencies = item.dependencies
-        ? item.dependencies.concat(results.dependencies)
-        : results.dependencies
+      if (results.files) {
+        item.files.push(...results.files)
+      }
+
+      if (results.dependencies) {
+        item.dependencies = item.dependencies
+          ? item.dependencies.concat(results.dependencies)
+          : results.dependencies
+      }
     }
   }
 

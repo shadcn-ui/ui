@@ -9,7 +9,7 @@ import { Project, ScriptKind } from "ts-morph"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
-const FILE_EXTENSIONS_FOR_LOOKUP = [".tsx", ".ts", ".jsx", ".js"]
+const FILE_EXTENSIONS_FOR_LOOKUP = [".tsx", ".ts", ".jsx", ".js", ".css"]
 const FILE_PATH_SKIP_LIST = ["lib/utils.ts"]
 const DEPENDENCY_SKIP_LIST = [
   /^(react|react-dom|next)(\/.*)?$/, // Matches react, react-dom, next and their submodules
@@ -51,7 +51,8 @@ export function getDependencyFromModuleSpecifier(
 export async function recursivelyResolveFileImports(
   filePath: string,
   config: z.infer<typeof configSchema>,
-  projectInfo: ProjectInfo
+  projectInfo: ProjectInfo,
+  processedFiles: Set<string> = new Set()
 ): Promise<Pick<z.infer<typeof registryItemSchema>, "files" | "dependencies">> {
   const resolvedFilePath = path.resolve(config.resolvedPaths.cwd, filePath)
   const relativeRegistryFilePath = path.relative(
@@ -70,6 +71,18 @@ export async function recursivelyResolveFileImports(
     return { dependencies: [], files: [] }
   }
 
+  // Prevent infinite loop: skip if already processed
+  if (processedFiles.has(relativeRegistryFilePath)) {
+    return { dependencies: [], files: [] }
+  }
+  processedFiles.add(relativeRegistryFilePath)
+
+  const stat = await fs.stat(resolvedFilePath)
+  if (!stat.isFile()) {
+    // Optionally log or handle this case
+    return { dependencies: [], files: [] }
+  }
+
   const content = await fs.readFile(resolvedFilePath, "utf-8")
   const tempFile = await createTempSourceFile(path.basename(resolvedFilePath))
   const sourceFile = project.createSourceFile(tempFile, content, {
@@ -81,7 +94,6 @@ export async function recursivelyResolveFileImports(
   }
 
   const files: z.infer<typeof registryItemSchema>["files"] = []
-  const processedFiles = new Set<string>()
   const dependencies = new Set<string>()
 
   // Add the original file first
@@ -92,15 +104,19 @@ export async function recursivelyResolveFileImports(
     target: "",
   }
   files.push(originalFile)
-  processedFiles.add(relativeRegistryFilePath)
 
   // 1. Find all import statements in the file.
   const importStatements = sourceFile.getImportDeclarations()
   for (const importStatement of importStatements) {
     const moduleSpecifier = importStatement.getModuleSpecifierValue()
 
+    const isRelativeImport = moduleSpecifier.startsWith(".")
+    const isAliasImport = moduleSpecifier.startsWith(
+      `${projectInfo.aliasPrefix}/`
+    )
+
     // If not a local import, add to the dependencies array.
-    if (!moduleSpecifier.startsWith(`${projectInfo.aliasPrefix}/`)) {
+    if (!isAliasImport && !isRelativeImport) {
       const dependency = getDependencyFromModuleSpecifier(moduleSpecifier)
       if (dependency) {
         dependencies.add(dependency)
@@ -109,6 +125,13 @@ export async function recursivelyResolveFileImports(
     }
 
     let probableImportFilePath = await resolveImport(moduleSpecifier, tsConfig)
+
+    if (isRelativeImport) {
+      probableImportFilePath = path.resolve(
+        path.dirname(resolvedFilePath),
+        moduleSpecifier
+      )
+    }
 
     if (!probableImportFilePath) {
       continue
@@ -130,24 +153,22 @@ export async function recursivelyResolveFileImports(
       }
     }
 
-    const relativeRegistryFilePath = path.relative(
+    const nestedRelativeRegistryFilePath = path.relative(
       config.resolvedPaths.cwd,
       probableImportFilePath
     )
 
     // Skip if we've already processed this file or if it's in the skip list
     if (
-      processedFiles.has(relativeRegistryFilePath) ||
-      FILE_PATH_SKIP_LIST.includes(relativeRegistryFilePath)
+      processedFiles.has(nestedRelativeRegistryFilePath) ||
+      FILE_PATH_SKIP_LIST.includes(nestedRelativeRegistryFilePath)
     ) {
       continue
     }
 
-    processedFiles.add(relativeRegistryFilePath)
-
     const fileType = determineFileType(moduleSpecifier)
     const file = {
-      path: relativeRegistryFilePath,
+      path: nestedRelativeRegistryFilePath,
       type: fileType,
       target: "",
     }
@@ -159,11 +180,12 @@ export async function recursivelyResolveFileImports(
 
     files.push(file)
 
-    // Recursively process the imported file
+    // Recursively process the imported file, passing the shared processedFiles set
     const nestedResults = await recursivelyResolveFileImports(
-      relativeRegistryFilePath,
+      nestedRelativeRegistryFilePath,
       config,
-      projectInfo
+      projectInfo,
+      processedFiles
     )
 
     if (nestedResults.files) {
