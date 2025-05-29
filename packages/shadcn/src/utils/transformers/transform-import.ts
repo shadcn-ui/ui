@@ -11,6 +11,10 @@ export const transformImport: Transformer = async ({
 
   const importDeclarations = sourceFile.getImportDeclarations()
 
+  if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
+    return sourceFile
+  }
+
   for (const importDeclaration of importDeclarations) {
     const moduleSpecifier = updateImportAliases(
       importDeclaration.getModuleSpecifierValue(),

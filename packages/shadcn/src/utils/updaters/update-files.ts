@@ -421,6 +421,11 @@ async function resolveImports(filePaths: string[], config: Config) {
       }
     )
 
+    // Skip if the file extension is not one of the supported extensions.
+    if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
+      continue
+    }
+
     const importDeclarations = sourceFile.getImportDeclarations()
     for (const importDeclaration of importDeclarations) {
       const moduleSpecifier = importDeclaration.getModuleSpecifierValue()
