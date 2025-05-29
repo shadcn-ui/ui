@@ -14,7 +14,7 @@ export default defineConfig({
         {
           theme: {
             dark: "github-dark",
-            light: "github-light",
+            light: "github-light-default",
           },
           transformers,
         },

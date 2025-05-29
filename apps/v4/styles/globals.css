@@ -180,7 +180,11 @@
 }
 
 @utility container-wrapper {
-  @apply px-2;
+  @apply mx-auto w-full px-2;
+
+  .fixed-width & {
+    @apply mx-auto w-full max-w-screen-2xl px-2;
+  }
 }
 
 @utility container {
