@@ -222,6 +222,10 @@
 
 @layer components {
   .steps {
+    &:first-child {
+      @apply !mt-0;
+    }
+
     &:first-child > h3:first-child {
       @apply !mt-0;
     }
