@@ -1332,6 +1332,25 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "login-06": {
+      name: "login-06",
+      description: "A simple email-only login page.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/new-york/blocks/login-06/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/new-york/blocks/login-06/components/auth-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["authentication","login"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/login-06/page.tsx")),
+      source: "__registry__/new-york/blocks/login-06/page.tsx",
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -6683,6 +6702,25 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "login-06": {
+      name: "login-06",
+      description: "A simple email-only login page.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/default/blocks/login-06/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/default/blocks/login-06/components/auth-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["authentication","login"],
+      component: React.lazy(() => import("@/registry/default/blocks/login-06/page.tsx")),
+      source: "__registry__/default/blocks/login-06/page.tsx",
       meta: undefined,
     },
     "chart-area-axes": {
