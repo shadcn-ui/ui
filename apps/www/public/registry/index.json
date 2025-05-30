@@ -2,7 +2,8 @@
   {
     "name": "accordion",
     "dependencies": [
-      "@radix-ui/react-accordion"
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-slot"
     ],
     "files": [
       "ui/accordion.tsx"
@@ -160,7 +161,8 @@
   {
     "name": "context-menu",
     "dependencies": [
-      "@radix-ui/react-context-menu"
+      "@radix-ui/react-context-menu",
+      "@radix-ui/react-slot"
     ],
     "files": [
       "ui/context-menu.tsx"
@@ -170,7 +172,8 @@
   {
     "name": "dialog",
     "dependencies": [
-      "@radix-ui/react-dialog"
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-slot"
     ],
     "files": [
       "ui/dialog.tsx"
@@ -181,7 +184,8 @@
     "name": "drawer",
     "dependencies": [
       "vaul",
-      "@radix-ui/react-dialog"
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-slot"
     ],
     "files": [
       "ui/drawer.tsx"
@@ -191,7 +195,8 @@
   {
     "name": "dropdown-menu",
     "dependencies": [
-      "@radix-ui/react-dropdown-menu"
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-slot"
     ],
     "files": [
       "ui/dropdown-menu.tsx"
@@ -256,7 +261,8 @@
   {
     "name": "menubar",
     "dependencies": [
-      "@radix-ui/react-menubar"
+      "@radix-ui/react-menubar",
+      "@radix-ui/react-slot"
     ],
     "files": [
       "ui/menubar.tsx"
@@ -266,7 +272,8 @@
   {
     "name": "navigation-menu",
     "dependencies": [
-      "@radix-ui/react-navigation-menu"
+      "@radix-ui/react-navigation-menu",
+      "@radix-ui/react-slot"
     ],
     "files": [
       "ui/navigation-menu.tsx"
@@ -336,7 +343,8 @@
   {
     "name": "select",
     "dependencies": [
-      "@radix-ui/react-select"
+      "@radix-ui/react-select",
+      "@radix-ui/react-slot"
     ],
     "files": [
       "ui/select.tsx"
@@ -356,7 +364,8 @@
   {
     "name": "sheet",
     "dependencies": [
-      "@radix-ui/react-dialog"
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-slot"
     ],
     "files": [
       "ui/sheet.tsx"

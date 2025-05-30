@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
+import { Slottable } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority"
 import { ChevronDownIcon } from "lucide-react"
 
@@ -23,7 +24,7 @@ function NavigationMenu({
       )}
       {...props}
     >
-      {children}
+      <Slottable>{children}</Slottable>
       {viewport && <NavigationMenuViewport />}
     </NavigationMenuPrimitive.Root>
   )
@@ -73,7 +74,7 @@ function NavigationMenuTrigger({
       className={cn(navigationMenuTriggerStyle(), "group", className)}
       {...props}
     >
-      {children}{" "}
+      <Slottable>{children}</Slottable>
       <ChevronDownIcon
         className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
         aria-hidden="true"

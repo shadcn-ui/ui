@@ -32,7 +32,7 @@ npx shadcn@latest add sheet
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @radix-ui/react-dialog
+npm install @radix-ui/react-dialog @radix-ui/react-slot
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -101,3 +101,39 @@ You can adjust the size of the sheet using CSS classes:
   </SheetContent>
 </Sheet>
 ```
+
+## Changelog
+
+### 2025-04-07 Fixed `asChild` API
+
+Wrapped `children` with `<Slottable>` to ensures proper props forwarding and compatibility.
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Import the `<Slottable>` component in your `sheet.tsx` file</Step>
+
+```diff showLineNumbers{3} title="sheet.tsx"
+  import * as React from "react"
+  import * as SelectPrimitive from "@radix-ui/react-select"
++ import { Slottable } from "@radix-ui/react-slot"
+```
+
+<Step>
+  Wrap the `children` prop with `<Slottable>` in the `<SheetContent>` component:
+</Step>
+
+```diff showLineNumbers{72} title="sheet.tsx"
+      {...props}
+    >
+-     {children}
++     <Slottable>{children}</Slottable>
+      <SheetPrimitive.Close className="..."
+```
+
+</Steps>

@@ -36,7 +36,7 @@ npx shadcn@latest add dialog
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @radix-ui/react-dialog
+npm install @radix-ui/react-dialog @radix-ui/react-slot
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -118,3 +118,39 @@ To activate the `Dialog` component from within a `Context Menu` or `Dropdown Men
   </DialogContent>
 </Dialog>
 ```
+
+## Changelog
+
+### 2025-04-07 Fixed `asChild` API
+
+Wrapped `children` with `<Slottable>` to ensures proper props forwarding and compatibility.
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Import the `<Slottable>` component in your `dialog.tsx` file</Step>
+
+```diff showLineNumbers{3} title="dialog.tsx"
+  import * as React from "react"
+  import * as DialogPrimitive from "@radix-ui/react-dialog"
++ import { Slottable } from "@radix-ui/react-slot"
+```
+
+<Step>
+  Wrap the `children` prop with `<Slottable>` in the `<DialogContent>` component:
+</Step>
+
+```diff showLineNumbers{63} title="dialog.tsx"
+      {...props}
+    >
+-     {children}
++     <Slottable>{children}</Slottable>
+      <DialogPrimitive.Close className="...
+```
+
+</Steps>

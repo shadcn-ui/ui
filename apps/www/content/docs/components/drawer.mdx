@@ -35,7 +35,7 @@ npx shadcn@latest add drawer
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install vaul
+npm install vaul @radix-ui/react-slot
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -90,3 +90,37 @@ import {
 You can combine the `Dialog` and `Drawer` components to create a responsive dialog. This renders a `Dialog` component on desktop and a `Drawer` on mobile.
 
 <ComponentPreview name="drawer-dialog" />
+
+## Changelog
+
+### 2025-04-07 Fixed `asChild` API
+
+Wrapped `children` with `<Slottable>` to ensures proper props forwarding and compatibility.
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Import the `<Slottable>` component in your `drawer.tsx` file</Step>
+
+```diff showLineNumbers{3} title="drawer.tsx"
+  import * as React from "react"
+  import { Drawer as DrawerPrimitive } from "vaul"
++ import { Slottable } from "@radix-ui/react-slot"
+```
+
+<Step>
+  Wrap the `children` prop with `<Slottable>` in the `<DrawerContent>` component:
+</Step>
+
+```diff showLineNumbers{65} title="drawer.tsx"
+-     {children}
++     <Slottable>{children}</Slottable>
+    </DrawerPrimitive.Content>
+```
+
+</Steps>

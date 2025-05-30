@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu"
+import { Slottable } from "@radix-ui/react-slot"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -71,7 +72,7 @@ function ContextMenuSubTrigger({
       )}
       {...props}
     >
-      {children}
+      <Slottable>{children}</Slottable>
       <ChevronRightIcon className="ml-auto" />
     </ContextMenuPrimitive.SubTrigger>
   )
@@ -155,7 +156,7 @@ function ContextMenuCheckboxItem({
           <CheckIcon className="size-4" />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
-      {children}
+      <Slottable>{children}</Slottable>
     </ContextMenuPrimitive.CheckboxItem>
   )
 }
@@ -179,7 +180,7 @@ function ContextMenuRadioItem({
           <CircleIcon className="size-2 fill-current" />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
-      {children}
+      <Slottable>{children}</Slottable>
     </ContextMenuPrimitive.RadioItem>
   )
 }

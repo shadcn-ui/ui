@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
+import { Slottable } from "@radix-ui/react-slot"
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -42,7 +43,7 @@ function SelectTrigger({
       )}
       {...props}
     >
-      {children}
+      <Slottable>{children}</Slottable>
       <SelectPrimitive.Icon asChild>
         <ChevronDownIcon className="size-4 opacity-50" />
       </SelectPrimitive.Icon>

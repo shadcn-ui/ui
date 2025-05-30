@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Slottable } from "@radix-ui/react-slot"
 import { Drawer as DrawerPrimitive } from "vaul"
 
 import { cn } from "@/lib/utils"
@@ -49,7 +50,7 @@ const DrawerContent = React.forwardRef<
       {...props}
     >
       <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
-      {children}
+      <Slottable>{children}</Slottable>
     </DrawerPrimitive.Content>
   </DrawerPortal>
 ))

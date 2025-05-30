@@ -32,7 +32,7 @@ npx shadcn@latest add tooltip
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @radix-ui/react-tooltip
+npm install @radix-ui/react-tooltip @radix-ui/react-slot
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -68,3 +68,43 @@ import {
   </Tooltip>
 </TooltipProvider>
 ```
+
+## Changelog
+
+### 2025-04-07 Fixed `asChild` API
+
+Wrapped `children` with `<Slottable>` to ensures proper props forwarding and compatibility.
+
+<Callout className="mt-4">
+  Note: this changes only applies to [Tailwind v4](/docs/tailwind-v4) component.
+</Callout>
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Import the `<Slottable>` component in your `tooltip.tsx` file</Step>
+
+```diff showLineNumbers{3} title="tooltip.tsx"
+  import * as React from "react"
+  import * as TooltipPrimitive from "@radix-ui/react-tooltip"
++ import { Slottable } from "@radix-ui/react-slot"
+```
+
+<Step>
+  Wrap the `children` prop with `<Slottable>` in the `<TooltipContent>` component:
+</Step>
+
+```diff showLineNumbers{52} title="tooltip.tsx"
+      {...props}
+    >
+-     {children}
++     <Slottable>{children}</Slottable>
+      <TooltipPrimitive.Arrow className="...""
+```
+
+</Steps>

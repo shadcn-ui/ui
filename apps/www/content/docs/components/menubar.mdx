@@ -32,7 +32,7 @@ npx shadcn@latest add menubar
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @radix-ui/react-menubar
+npm install @radix-ui/react-menubar @radix-ui/react-slot
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -78,3 +78,52 @@ import {
   </MenubarMenu>
 </Menubar>
 ```
+
+## Changelog
+
+### 2025-04-07 Fixed `asChild` API
+
+Wrapped `children` with `<Slottable>` to ensures proper props forwarding and compatibility.
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Import the `<Slottable>` component in your `menubar.tsx` file</Step>
+
+```diff showLineNumbers{3} title="menubar.tsx"
+  import * as React from "react"
+  import * as MenubarPrimitive from "@radix-ui/react-menubar"
++ import { Slottable } from "@radix-ui/react-slot"
+```
+
+<Step>
+  Wrap the `children` prop with `<Slottable>` in `<MenubarCheckboxItem>`, `<MenubarRadioItem>`, and `<MenubarSubTrigger>` components:
+</Step>
+
+```diff showLineNumbers{134} title="menubar.tsx"
+      </span>
+-     {children}
++     <Slottable>{children}</Slottable>
+    </MenubarPrimitive.CheckboxItem>
+```
+
+```diff showLineNumbers{158} title="menubar.tsx"
+      </span>
+-     {children}
++     <Slottable>{children}</Slottable>
+    </MenubarPrimitive.RadioItem>
+```
+
+```diff showLineNumbers{235} title="menubar.tsx"
+      {...props}
+    >
+-     {children}
++     <Slottable>{children}</Slottable>
+```
+
+</Steps>
