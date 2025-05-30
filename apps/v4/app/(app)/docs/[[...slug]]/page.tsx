@@ -9,7 +9,7 @@ import {
 import { findNeighbour } from "fumadocs-core/server"
 
 import { source } from "@/lib/source"
-import { absoluteUrl, cn } from "@/lib/utils"
+import { absoluteUrl } from "@/lib/utils"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
