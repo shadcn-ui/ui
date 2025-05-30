@@ -273,6 +273,9 @@ importers:
       jotai:
         specifier: ^2.1.0
         version: 2.11.3(@types/react@19.1.2)(react@19.1.0)
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       lucide-react:
         specifier: 0.474.0
         version: 0.474.0(react@19.1.0)
@@ -340,6 +343,9 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.4.1
         version: 4.4.2(prettier@3.4.2)
+      '@types/lodash':
+        specifier: ^4.17.7
+        version: 4.17.15
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13
