@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-loading",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/button-loading.tsx",
+      "content": "import { Loader2Icon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button size=\"sm\" disabled>\n      <Loader2Icon className=\"animate-spin\" />\n      Please wait\n    </Button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
