@@ -1,12 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  CheckIcon,
-  ClipboardIcon,
-  SquareTerminalIcon,
-  TerminalIcon,
-} from "lucide-react"
+import { CheckIcon, ClipboardIcon, TerminalIcon } from "lucide-react"
 
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
