@@ -26,6 +26,7 @@ import {
   DrawerTrigger,
 } from "@/registry/new-york-v4/ui/drawer"
 import { Label } from "@/registry/new-york-v4/ui/label"
+import { ScrollArea, ScrollBar } from "@/registry/new-york-v4/ui/scroll-area"
 import {
   Select,
   SelectContent,
@@ -56,15 +57,35 @@ const THEMES = baseColors.filter(
 )
 
 export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
-  const { activeTheme, setActiveTheme } = useThemeConfig()
+  const { activeTheme = "neutral", setActiveTheme } = useThemeConfig()
 
   return (
     <div className={cn("flex w-full items-center gap-2", className)}>
-      <div className="flex items-center gap-2">
+      <ScrollArea className="hidden max-w-[96%] md:max-w-[600px] lg:flex lg:max-w-none">
+        <div className="flex items-center">
+          {THEMES.map((theme) => (
+            <Button
+              key={theme.name}
+              variant="link"
+              size="sm"
+              data-active={activeTheme === theme.name}
+              className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 cursor-pointer items-center justify-center px-4 text-center text-base font-medium capitalize transition-colors hover:no-underline"
+              onClick={() => setActiveTheme(theme.name)}
+            >
+              {theme.name === "neutral" ? "Default" : theme.name}
+            </Button>
+          ))}
+        </div>
+        <ScrollBar orientation="horizontal" className="invisible" />
+      </ScrollArea>
+      <div className="flex items-center gap-2 lg:hidden">
         <Label htmlFor="theme-selector" className="sr-only">
           Theme
         </Label>
-        <Select value={activeTheme} onValueChange={setActiveTheme}>
+        <Select
+          value={activeTheme === "default" ? "neutral" : activeTheme}
+          onValueChange={setActiveTheme}
+        >
           <SelectTrigger
             id="theme-selector"
             size="sm"
@@ -97,6 +118,9 @@ export function CopyCodeButton({
   className,
   ...props
 }: React.ComponentProps<typeof Button>) {
+  let { activeTheme: activeThemeName = "neutral" } = useThemeConfig()
+  activeThemeName = activeThemeName === "default" ? "neutral" : activeThemeName
+
   return (
     <>
       <Drawer>
@@ -107,12 +131,14 @@ export function CopyCodeButton({
         </DrawerTrigger>
         <DrawerContent className="h-auto">
           <DrawerHeader>
-            <DrawerTitle>Theme</DrawerTitle>
+            <DrawerTitle className="capitalize">
+              {activeThemeName === "neutral" ? "Default" : activeThemeName}
+            </DrawerTitle>
             <DrawerDescription>
               Copy and paste the following code into your CSS file.
             </DrawerDescription>
           </DrawerHeader>
-          <CustomizerCode />
+          <CustomizerCode themeName={activeThemeName} />
         </DrawerContent>
       </Drawer>
       <Dialog>
@@ -123,29 +149,30 @@ export function CopyCodeButton({
         </DialogTrigger>
         <DialogContent className="outline-none md:max-w-3xl">
           <DialogHeader>
-            <DialogTitle>Theme</DialogTitle>
+            <DialogTitle className="capitalize">
+              {activeThemeName === "neutral" ? "Default" : activeThemeName}
+            </DialogTitle>
             <DialogDescription>
               Copy and paste the following code into your CSS file.
             </DialogDescription>
           </DialogHeader>
-          <CustomizerCode />
+          <CustomizerCode themeName={activeThemeName} />
         </DialogContent>
       </Dialog>
     </>
   )
 }
 
-function CustomizerCode() {
-  const { activeTheme: activeThemeName } = useThemeConfig()
+function CustomizerCode({ themeName }: { themeName: string }) {
   const [hasCopied, setHasCopied] = React.useState(false)
   const [tailwindVersion, setTailwindVersion] = React.useState("v4")
   const activeTheme = React.useMemo(
-    () => baseColors.find((theme) => theme.name === activeThemeName),
-    [activeThemeName]
+    () => baseColors.find((theme) => theme.name === themeName),
+    [themeName]
   )
   const activeThemeOKLCH = React.useMemo(
-    () => baseColorsOKLCH[activeThemeName as keyof typeof baseColorsOKLCH],
-    [activeThemeName]
+    () => baseColorsOKLCH[themeName as keyof typeof baseColorsOKLCH],
+    [themeName]
   )
 
   React.useEffect(() => {
@@ -195,7 +222,7 @@ function CustomizerCode() {
                     {
                       name: "copy_theme_code",
                       properties: {
-                        theme: activeThemeName,
+                        theme: themeName,
                         radius: 0.5,
                       },
                     }
@@ -275,7 +302,7 @@ function CustomizerCode() {
                     {
                       name: "copy_theme_code",
                       properties: {
-                        theme: activeThemeName,
+                        theme: themeName,
                         radius: 0.5,
                       },
                     }

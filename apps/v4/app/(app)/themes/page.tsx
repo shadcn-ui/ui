@@ -5,7 +5,7 @@ export default function ThemesPage() {
   return (
     <>
       <div id="themes" className="container-wrapper scroll-mt-20">
-        <div className="container flex items-center justify-between gap-8 px-6 py-4 md:px-8 lg:px-12">
+        <div className="container flex items-center justify-between gap-8 px-6 py-4 md:px-8">
           <ThemeCustomizer />
         </div>
       </div>
