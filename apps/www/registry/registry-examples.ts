@@ -453,6 +453,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "codeblock-demo",
+    type: "registry:example",
+    registryDependencies: ["codeblock"],
+    files: [
+      {
+        path: "examples/codeblock-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "collapsible-demo",
     type: "registry:example",
     registryDependencies: ["collapsible"],

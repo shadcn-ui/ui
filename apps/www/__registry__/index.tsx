@@ -200,6 +200,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "codeblock": {
+      name: "codeblock",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/ui/codeblock.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/codeblock.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "collapsible": {
       name: "collapsible",
       description: "",
@@ -3752,6 +3767,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "codeblock-demo": {
+      name: "codeblock-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["codeblock"],
+      files: [{
+        path: "registry/new-york/examples/codeblock-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/codeblock-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "collapsible-demo": {
       name: "collapsible-demo",
       description: "",
@@ -5550,6 +5580,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/ui/checkbox.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "codeblock": {
+      name: "codeblock",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/codeblock.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/codeblock.tsx")),
       source: "",
       meta: undefined,
     },
@@ -9102,6 +9147,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/checkbox-with-text.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "codeblock-demo": {
+      name: "codeblock-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["codeblock"],
+      files: [{
+        path: "registry/default/examples/codeblock-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/codeblock-demo.tsx")),
       source: "",
       meta: undefined,
     },

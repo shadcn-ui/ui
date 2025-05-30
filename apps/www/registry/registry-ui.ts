@@ -169,6 +169,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "codeblock",
+    type: "registry:ui",
+    dependencies: ["shiki", "hast-util-to-jsx-runtime"],
+    files: [
+      {
+        path: "ui/codeblock.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "collapsible",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-collapsible"],
