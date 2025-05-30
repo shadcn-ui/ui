@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "signup-01",
+  "type": "registry:block",
+  "title": "Signup Form",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "A simple signup form.",
+  "dependencies": [],
+  "registryDependencies": [
+    "input",
+    "button",
+    "card",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/blocks/signup-01/page.tsx",
+      "content": "import { SignUpForm } from \"@/registry/new-york-v4/blocks/signup-01/components/signup-form\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex min-h-svh w-full items-center justify-center p-6 md:p-10\">\n      <div className=\"w-full max-w-sm\">\n        <SignUpForm />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/signup/page.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/blocks/signup-01/components/signup-form.tsx",
+      "content": "import { cn } from \"@/registry/new-york-v4/lib/utils\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\nimport { Label } from \"@/registry/new-york-v4/ui/label\"\n\nexport function SignUpForm({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<\"div\">) {\n  return (\n    <div className={cn(\"flex flex-col gap-6\", className)} {...props}>\n      <Card>\n        <CardHeader>\n          <CardTitle className=\"text-2xl\">Create an account</CardTitle>\n          <CardDescription>\n            Enter your details below to create your account\n          </CardDescription>\n        </CardHeader>\n        <CardContent>\n          <form>\n            <div className=\"flex flex-col gap-6\">\n              <div className=\"grid gap-2\">\n                <Label htmlFor=\"name\">Name</Label>\n                <Input id=\"name\" type=\"text\" placeholder=\"John Doe\" required />\n              </div>\n              <div className=\"grid gap-2\">\n                <Label htmlFor=\"email\">Email</Label>\n                <Input\n                  id=\"email\"\n                  type=\"email\"\n                  placeholder=\"m@example.com\"\n                  required\n                />\n              </div>\n              <div className=\"grid gap-2\">\n                <Label htmlFor=\"password\">Password</Label>\n                <Input id=\"password\" type=\"password\" required />\n              </div>\n              <div className=\"grid gap-2\">\n                <Label htmlFor=\"confirmPassword\">Confirm Password</Label>\n                <Input id=\"confirmPassword\" type=\"password\" required />\n              </div>\n              <Button type=\"submit\" className=\"w-full\">\n                Sign Up\n              </Button>\n              <Button variant=\"outline\" className=\"w-full\">\n                Sign Up with Google\n              </Button>\n            </div>\n            <div className=\"mt-4 text-center text-sm\">\n              Already have an account?{\" \"}\n              <a href=\"#\" className=\"underline underline-offset-4\">\n                Login\n              </a>\n            </div>\n          </form>\n        </CardContent>\n      </Card>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "authentication",
+    "signup"
+  ]
+}
