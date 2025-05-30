@@ -11,6 +11,7 @@ import { CardDemo } from "@/components/card-demo"
 import { CarouselDemo } from "@/components/carousel-demo"
 import { ChartDemo } from "@/components/chart-demo"
 import { CheckboxDemo } from "@/components/checkbox-demo"
+import { CollapsibleAnimated } from "@/components/collapsible-animated"
 import { CollapsibleDemo } from "@/components/collapsible-demo"
 import { ComboboxDemo } from "@/components/combobox-demo"
 import { CommandDemo } from "@/components/command-demo"
@@ -91,6 +92,9 @@ export default function SinkPage() {
       </ComponentWrapper>
       <ComponentWrapper name="collapsible">
         <CollapsibleDemo />
+      </ComponentWrapper>
+      <ComponentWrapper name="collapsible-animated">
+        <CollapsibleAnimated />
       </ComponentWrapper>
       <ComponentWrapper name="combobox">
         <ComboboxDemo />
