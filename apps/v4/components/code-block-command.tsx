@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, ClipboardIcon, SquareTerminalIcon } from "lucide-react"
+import {
+  CheckIcon,
+  ClipboardIcon,
+  SquareTerminalIcon,
+  TerminalIcon,
+} from "lucide-react"
 
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
@@ -79,7 +84,9 @@ export function CodeBlockCommand({
         }}
       >
         <div className="border-border/50 flex items-center gap-2 border-b px-3 py-1">
-          <SquareTerminalIcon className="text-foreground size-4 opacity-70" />
+          <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
+            <TerminalIcon className="text-code size-3" />
+          </div>
           <TabsList className="rounded-none bg-transparent p-0">
             {Object.entries(tabs).map(([key]) => {
               return (

@@ -227,7 +227,7 @@
     }
 
     > h3 {
-      @apply !mt-6 !text-base md:!mt-16;
+      @apply !mt-16;
     }
 
     > h3 + p {
