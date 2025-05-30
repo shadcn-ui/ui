@@ -820,6 +820,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "time-picker": {
+    name: "time-picker",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["slider"],
+    files: [
+      {
+        path: "registry/ui/time-picker.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/time-picker.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   sidebar: {
     name: "sidebar",
     description: "",

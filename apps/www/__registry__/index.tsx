@@ -530,6 +530,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "time-picker": {
+      name: "time-picker",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["slider"],
+      files: [{
+        path: "registry/new-york/ui/time-picker.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/time-picker.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "sidebar": {
       name: "sidebar",
       description: "",
@@ -5357,6 +5372,66 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "time-picker-container-demo": {
+      name: "time-picker-container-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/examples/time-picker-container-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/time-picker-container-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-with-dialog-demo": {
+      name: "time-picker-with-dialog-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/examples/time-picker-with-dialog-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/time-picker-with-dialog-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-with-value": {
+      name: "time-picker-with-value",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/examples/time-picker-with-value.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/time-picker-with-value.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-with-popover": {
+      name: "time-picker-with-popover",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/examples/time-picker-with-popover.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/time-picker-with-popover.tsx")),
+      source: "",
+      meta: undefined,
+    },
   },  "default": {
     "accordion": {
       name: "accordion",
@@ -5880,6 +5955,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/ui/sheet.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker": {
+      name: "time-picker",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["slider"],
+      files: [{
+        path: "registry/default/ui/time-picker.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/time-picker.tsx")),
       source: "",
       meta: undefined,
     },
@@ -10707,6 +10797,66 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/chart-tooltip-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-container-demo": {
+      name: "time-picker-container-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/examples/time-picker-container-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/time-picker-container-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-with-dialog-demo": {
+      name: "time-picker-with-dialog-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/examples/time-picker-with-dialog-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/time-picker-with-dialog-demo.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-with-value": {
+      name: "time-picker-with-value",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/examples/time-picker-with-value.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/time-picker-with-value.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "time-picker-with-popover": {
+      name: "time-picker-with-popover",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/examples/time-picker-with-popover.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/time-picker-with-popover.tsx")),
       source: "",
       meta: undefined,
     },

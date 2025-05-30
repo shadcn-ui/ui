@@ -491,6 +491,20 @@
       ]
     },
     {
+      "name": "time-picker",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [
+        "slider"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/time-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "sidebar",
       "type": "registry:ui",
       "dependencies": [

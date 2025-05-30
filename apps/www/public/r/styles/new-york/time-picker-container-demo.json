@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "time-picker-container-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "examples/time-picker-container-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  TimePicker,\n  TimePickerContainer,\n} from \"@/registry/new-york/ui/time-picker\"\n\nexport default function TimePickerContainerDemo() {\n  const [time, setTime] = useState(0)\n  return (\n    <div\n      className={\n        \"flex w-full select-none flex-col items-center justify-center gap-2\"\n      }\n    >\n      <h1>Please set the time</h1>\n\n      <TimePickerContainer onTimeChange={(v) => setTime(v)}>\n        <TimePicker\n          className={\"w-full\"}\n          timeMilliseconds={1000 * 60 * 60 * 7}\n          step={1}\n          maxValue={20}\n          minValue={0}\n          prefixLabel={<span className={\"w-20 text-center\"}>Week</span>}\n          suffixLabel={(value) => (\n            <span className={\"w-20 text-center\"}>{value}w</span>\n          )}\n          value={0}\n        />\n        <TimePicker\n          className={\"w-full\"}\n          timeMilliseconds={1000 * 60 * 60 * 24}\n          step={1}\n          maxValue={7}\n          minValue={0}\n          prefixLabel={<span className={\"w-20 text-center\"}>Day</span>}\n          suffixLabel={(value) => (\n            <span className={\"w-20 text-center\"}>{value}d</span>\n          )}\n          value={0}\n        />\n        <TimePicker\n          className={\"w-full\"}\n          timeMilliseconds={1000 * 60 * 60}\n          step={2}\n          maxValue={24}\n          minValue={0}\n          prefixLabel={<span className={\"w-20 text-center\"}>Hour</span>}\n          suffixLabel={(value) => (\n            <span className={\"w-20 text-center\"}>{value}h</span>\n          )}\n          value={0}\n        />\n        <TimePicker\n          className={\"w-full\"}\n          timeMilliseconds={1000 * 60}\n          step={1}\n          maxValue={60}\n          minValue={0}\n          prefixLabel={<span className={\"w-20 text-center\"}>Minute</span>}\n          suffixLabel={(value) => (\n            <span className={\"w-20 text-center\"}>{value}min</span>\n          )}\n          value={0}\n        />\n      </TimePickerContainer>\n      <span>Total Time:{time} ms</span>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}
