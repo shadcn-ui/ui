@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "slider"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/slider-demo.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\nimport { Slider } from \"@/registry/new-york-v4/ui/slider\"\n\ntype SliderProps = React.ComponentProps<typeof Slider>\n\nexport default function SliderDemo({ className, ...props }: SliderProps) {\n  return (\n    <Slider\n      defaultValue={[50]}\n      max={100}\n      step={1}\n      className={cn(\"w-[60%]\", className)}\n      {...props}\n    />\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
