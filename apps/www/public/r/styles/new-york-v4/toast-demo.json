@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "toast"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/toast-demo.tsx",
+      "content": "\"use client\"\n\nimport { useToast } from \"@/registry/new-york-v4/hooks/use-toast\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { ToastAction } from \"@/registry/new-york-v4/ui/toast\"\n\nexport default function ToastDemo() {\n  const { toast } = useToast()\n\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        toast({\n          title: \"Scheduled: Catch up \",\n          description: \"Friday, February 10, 2023 at 5:57 PM\",\n          action: (\n            <ToastAction altText=\"Goto schedule to undo\">Undo</ToastAction>\n          ),\n        })\n      }}\n    >\n      Add to calendar\n    </Button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "label"
+  ],
+  "files": [
+    {
+      "path": "examples/label-demo.tsx",
+      "content": "import { Checkbox } from \"@/registry/default/ui/checkbox\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport default function LabelDemo() {\n  return (\n    <div>\n      <div className=\"flex items-center space-x-2\">\n        <Checkbox id=\"terms\" />\n        <Label htmlFor=\"terms\">Accept terms and conditions</Label>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

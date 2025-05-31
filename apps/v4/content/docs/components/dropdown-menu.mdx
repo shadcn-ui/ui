@@ -1,0 +1,95 @@
+---
+title: Dropdown Menu
+description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+featured: true
+component: true
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/dropdown-menu
+  api: https://www.radix-ui.com/docs/primitives/components/dropdown-menu#api-reference
+---
+
+<ComponentPreview
+  name="dropdown-menu-demo"
+  description="A dropdown menu with icons, shortcuts and sub menu items."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add dropdown-menu
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-dropdown-menu
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dropdown-menu" title="components/ui/dropdown-menu.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+```
+
+```tsx showLineNumbers
+<DropdownMenu>
+  <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>Profile</DropdownMenuItem>
+    <DropdownMenuItem>Billing</DropdownMenuItem>
+    <DropdownMenuItem>Team</DropdownMenuItem>
+    <DropdownMenuItem>Subscription</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+## Examples
+
+### Checkboxes
+
+<ComponentPreview
+  name="dropdown-menu-checkboxes"
+  description="A dropdown menu with checkboxes."
+/>
+
+### Radio Group
+
+<ComponentPreview
+  name="dropdown-menu-radio-group"
+  description="A dropdown menu with radio items."
+/>
