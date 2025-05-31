@@ -3,7 +3,6 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "isolatedModules": false,
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
