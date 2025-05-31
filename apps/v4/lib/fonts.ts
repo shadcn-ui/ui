@@ -14,7 +14,7 @@ const fontSans = FontSans({
 const fontMono = FontMono({
   subsets: ["latin"],
   variable: "--font-mono",
-  weight: ["400"],
+  weight: ["400", "700"],
 })
 
 const fontInter = Inter({
