@@ -5,6 +5,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@custom-variant fixed (&:is(.layout-fixed *));
+
 @theme inline {
   --breakpoint-3xl: 1600px;
   --breakpoint-4xl: 2000px;
@@ -172,7 +174,7 @@
 }
 
 @utility section-soft {
-  @apply from-background to-surface/40 dark:bg-background bg-gradient-to-b;
+  @apply from-background to-surface/40 dark:bg-background 3xl:fixed:bg-none bg-gradient-to-b;
 }
 
 @utility theme-container {
@@ -180,11 +182,7 @@
 }
 
 @utility container-wrapper {
-  @apply mx-auto w-full px-2;
-
-  .fixed-width & {
-    @apply mx-auto w-full max-w-screen-2xl px-2;
-  }
+  @apply 3xl:fixed:max-w-[calc(var(--breakpoint-2xl)+2rem)] mx-auto w-full px-2;
 }
 
 @utility container {

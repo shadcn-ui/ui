@@ -47,7 +47,7 @@ export default function ChartsLayout({
   children: React.ReactNode
 }) {
   return (
-    <div>
+    <>
       <PageHeader>
         <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
@@ -65,11 +65,11 @@ export default function ChartsLayout({
         <ChartsNav />
         <ThemeSelector className="mr-4 hidden md:flex" />
       </PageNav>
-      <div className="container-wrapper section-soft">
+      <div className="container-wrapper section-soft flex-1">
         <div className="container pb-6">
           <section className="theme-container">{children}</section>
         </div>
       </div>
-    </div>
+    </>
   )
 }
