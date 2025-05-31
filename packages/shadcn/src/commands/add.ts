@@ -39,6 +39,7 @@ export const addOptionsSchema = z.object({
   all: z.boolean(),
   path: z.string().optional(),
   silent: z.boolean(),
+  skipRegistryDeps: z.boolean(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
 })
@@ -60,6 +61,11 @@ export const add = new Command()
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .option("-s, --silent", "mute output.", false)
+  .option(
+    "--skip-registry-deps",
+    "skip installing dependencies from registry",
+    true
+  )
   .option(
     "--src-dir",
     "use the src directory when creating a new project.",
