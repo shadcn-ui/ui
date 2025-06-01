@@ -56,7 +56,15 @@ export function CommandMenu({
         const componentName = item.url.split("/").pop()
         setSelectedType("component")
         setCopyPayload(
-          `${packageManager} dlx shadcn@latest add ${componentName}`
+          `${
+            packageManager === "pnpm"
+              ? "pnpm dlx"
+              : packageManager === "npm"
+                ? "npx"
+                : packageManager === "yarn"
+                  ? "yarn"
+                  : "bunx --bun"
+          } shadcn@latest add ${componentName}`
         )
       } else {
         setSelectedType("page")
