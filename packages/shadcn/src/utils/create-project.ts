@@ -98,7 +98,7 @@ export async function createProject(
     withFallback: true,
   })
 
-  const projectPath = `${options.cwd}/${projectName}`
+  const projectPath = path.resolve(options.cwd, projectName)
 
   // Check if path is writable.
   try {
@@ -114,7 +114,7 @@ export async function createProject(
     logger.break()
     process.exit(1)
   }
-
+  
   if (fs.existsSync(path.resolve(options.cwd, projectName, "package.json"))) {
     logger.break()
     logger.error(
@@ -124,6 +124,8 @@ export async function createProject(
     logger.break()
     process.exit(1)
   }
+
+
 
   if (template === TEMPLATES.next) {
     await createNextProject(projectPath, {
@@ -178,6 +180,7 @@ async function createNextProject(
   ) {
     args.push("--turbopack")
   }
+
 
   try {
     await execa(
