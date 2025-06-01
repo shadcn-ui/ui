@@ -1,35 +1,25 @@
-import type { Metadata, Viewport } from "next"
-import { cookies } from "next/headers"
+import type { Metadata } from "next"
 
+import { META_THEME_COLORS, siteConfig } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
+import { cn } from "@/lib/utils"
+import { LayoutProvider } from "@/hooks/use-layout"
+import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/new-york-v4/ui/sonner"
-import { siteConfig } from "@/www/config/site"
 
-import "./globals.css"
-import { cn } from "@/lib/utils"
-import { ActiveThemeProvider } from "@/components/active-theme"
-
-const META_THEME_COLORS = {
-  light: "#ffffff",
-  dark: "#09090b",
-}
+import "@/styles/globals.css"
 
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL("https://v4.shadcn.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
   description: siteConfig.description,
-  keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
-  ],
+  keywords: ["Next.js", "React", "Tailwind CSS", "Components", "shadcn"],
   authors: [
     {
       name: "shadcn",
@@ -40,13 +30,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://v4.shadcn.com",
+    url: process.env.NEXT_PUBLIC_APP_URL!,
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
       {
-        url: "https://v4.shadcn.com/opengraph-image.png",
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image.png`,
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -57,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: ["https://v4.shadcn.com/opengraph-image.png"],
+    images: [`${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image.png`],
     creator: "@shadcn",
   },
   icons: {
@@ -68,19 +58,11 @@ export const metadata: Metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
-export const viewport: Viewport = {
-  themeColor: META_THEME_COLORS.light,
-}
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const cookieStore = await cookies()
-  const activeThemeValue = cookieStore.get("active_theme")?.value
-  const isScaled = activeThemeValue?.endsWith("-scaled")
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -91,31 +73,30 @@ export default async function RootLayout({
                 if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
                 }
+                if (localStorage.layout) {
+                  document.documentElement.classList.add('layout-' + localStorage.layout)
+                }
               } catch (_) {}
             `,
           }}
         />
+        <meta name="theme-color" content={META_THEME_COLORS.light} />
       </head>
       <body
         className={cn(
-          "bg-background overscroll-none font-sans antialiased",
-          activeThemeValue ? `theme-${activeThemeValue}` : "",
-          isScaled ? "theme-scaled" : "",
+          "text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
           fontVariables
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-          enableColorScheme
-        >
-          <ActiveThemeProvider initialTheme={activeThemeValue}>
-            {children}
-            <Toaster />
-            <Analytics />
-          </ActiveThemeProvider>
+        <ThemeProvider>
+          <LayoutProvider>
+            <ActiveThemeProvider>
+              {children}
+              <TailwindIndicator />
+              <Toaster position="top-center" />
+              <Analytics />
+            </ActiveThemeProvider>
+          </LayoutProvider>
         </ThemeProvider>
       </body>
     </html>

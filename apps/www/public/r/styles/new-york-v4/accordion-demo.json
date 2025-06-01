@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/accordion-demo.tsx",
+      "content": "import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/registry/new-york-v4/ui/accordion\"\n\nexport default function AccordionDemo() {\n  return (\n    <Accordion type=\"single\" collapsible className=\"w-full\">\n      <AccordionItem value=\"item-1\">\n        <AccordionTrigger>Product Information</AccordionTrigger>\n        <AccordionContent className=\"flex flex-col gap-4 text-balance\">\n          <p>\n            Our flagship product combines cutting-edge technology with sleek\n            design. Built with premium materials, it offers unparalleled\n            performance and reliability.\n          </p>\n          <p>\n            Key features include advanced processing capabilities, and an\n            intuitive user interface designed for both beginners and experts.\n          </p>\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-2\">\n        <AccordionTrigger>Shipping Details</AccordionTrigger>\n        <AccordionContent className=\"flex flex-col gap-4 text-balance\">\n          <p>\n            We offer worldwide shipping through trusted courier partners.\n            Standard delivery takes 3-5 business days, while express shipping\n            ensures delivery within 1-2 business days.\n          </p>\n          <p>\n            All orders are carefully packaged and fully insured. Track your\n            shipment in real-time through our dedicated tracking portal.\n          </p>\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-3\">\n        <AccordionTrigger>Return Policy</AccordionTrigger>\n        <AccordionContent className=\"flex flex-col gap-4 text-balance\">\n          <p>\n            We stand behind our products with a comprehensive 30-day return\n            policy. If you&apos;re not completely satisfied, simply return the\n            item in its original condition.\n          </p>\n          <p>\n            Our hassle-free return process includes free return shipping and\n            full refunds processed within 48 hours of receiving the returned\n            item.\n          </p>\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
