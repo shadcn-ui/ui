@@ -2,7 +2,9 @@ import { fetchRegistry } from "@/src/registry/api"
 import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
+import path, { resolve } from "path"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+import { logger } from "@/src/utils/logger"
 
 import { TEMPLATES, createProject } from "./create-project"
 
@@ -16,34 +18,47 @@ vi.mock("@/src/utils/get-package-manager", () => ({
 }))
 
 describe("createProject", () => {
+  let mockLoggerError: ReturnType<typeof vi.spyOn>;
+  let mockExit: any;
+
   beforeEach(() => {
     vi.clearAllMocks()
-    vi.mocked(fs.access).mockResolvedValue(undefined)
-    vi.mocked(fs.existsSync).mockReturnValue(false)
+    
+    mockLoggerError = vi.spyOn(logger, 'error').mockImplementation(() => {});
+    mockExit = vi.spyOn(process, "exit").mockImplementation(() => {
+      return undefined as never
+    })
   })
 
   afterEach(() => {
     vi.resetAllMocks()
+    
+    mockLoggerError.mockRestore();
+    mockExit.mockRestore();
   })
 
   it("should create a Next.js project with default options", async () => {
     vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
 
     const result = await createProject({
-      cwd: "/test",
+      cwd: path.resolve("/test"),
       force: false,
       srcDir: false,
     })
 
+    const cwd = "/test"
+    const projectPath = "my-app"
+    const resolvedPath = path.resolve(cwd, projectPath)
+
     expect(result).toEqual({
-      projectPath: "/test/my-app",
-      projectName: "my-app",
+      projectPath: resolvedPath,
+      projectName: projectPath,
       template: TEMPLATES.next,
     })
 
     expect(execa).toHaveBeenCalledWith(
       "npx",
-      expect.arrayContaining(["create-next-app@latest", "/test/my-app"]),
+      expect.arrayContaining(["create-next-app@latest", resolvedPath]),
       expect.any(Object)
     )
   })
@@ -55,13 +70,13 @@ describe("createProject", () => {
     })
 
     const result = await createProject({
-      cwd: "/test",
+      cwd: path.resolve("/test"),
       force: false,
       srcDir: false,
     })
 
     expect(result).toEqual({
-      projectPath: "/test/my-monorepo",
+      projectPath: path.resolve("/test", "my-monorepo"),
       projectName: "my-monorepo",
       template: TEMPLATES["next-monorepo"],
     })
@@ -83,35 +98,107 @@ describe("createProject", () => {
     expect(result.template).toBe(TEMPLATES.next)
   })
 
-  it("should throw error if project path already exists", async () => {
-    vi.mocked(fs.existsSync).mockReturnValue(true)
-    vi.mocked(prompts).mockResolvedValue({ type: "next", name: "existing-app" })
+  it('should throw error if project path already exists and is not empty (error EEXIST)', async () => {
+    const cwd = '/test';
+    const projectName = 'existing-app';
+    const projectPath = path.resolve(cwd, projectName);
 
-    const mockExit = vi
-      .spyOn(process, "exit")
-      .mockImplementation(() => undefined as never)
+    let mockedDirHandle: any;
 
-    await createProject({
-      cwd: "/test",
-      force: false,
+    vi.mocked(prompts).mockResolvedValue({ type: 'next', name: projectName });
+
+    vi.mocked(fs.mkdirSync).mockImplementation((pathArg) => {
+      const resolvedArg = path.resolve(cwd, String(pathArg));
+      if (resolvedArg === projectPath) {
+        const error: any = new Error('File already exists');
+        error.code = 'EEXIST';
+        throw error;
+      }
+      return undefined;
+    });
+
+    vi.mocked(fs.opendirSync).mockImplementation((pathArg) => {
+      const resolvedArg = path.resolve(cwd, String(pathArg));
+      if (resolvedArg === projectPath) {
+        mockedDirHandle = {
+          readSync: vi.fn().mockReturnValueOnce({ name: 'somefile.txt' }).mockReturnValue(null),
+          closeSync: vi.fn(),
+        } as any;
+        return mockedDirHandle;
+      }
+      return {
+        readSync: vi.fn().mockReturnValue(null),
+        closeSync: vi.fn(),
+      } as any;
+    });
+
+    await createProject({ cwd, force: false });
+
+    expect(mockLoggerError).toHaveBeenCalledWith(`Directory ${projectName} already exists and is not empty.`);
+    expect(mockExit).toHaveBeenCalledWith(1);
+    expect(fs.opendirSync).toHaveBeenCalledWith(projectPath);
+    expect(mockedDirHandle.closeSync).toHaveBeenCalled();
+  });
+
+  it("should throw error if path is not writable (mkdir fails with EACCES)", async () => {
+    const cwd = "/test-unwritable"
+    const projectName = "my-app"
+    const projectPath = path.resolve(cwd, projectName)
+
+    vi.mocked(prompts).mockResolvedValue({ type: "next", name: projectName })
+    vi.mocked(fs.mkdirSync).mockImplementation((pathArg) => {
+      const resolvedArg = path.resolve(cwd, String(pathArg));
+      if (resolvedArg === projectPath) {
+        const error: any = new Error("Permission denied")
+        error.code = "EACCES"
+        throw error
+      }
+      return undefined
     })
 
+    await createProject({ cwd, force: false })
+    
+    
+    expect(mockLoggerError).toHaveBeenCalledWith(`Path ${cwd} is not writable.`);
     expect(mockExit).toHaveBeenCalledWith(1)
   })
 
-  it("should throw error if path is not writable", async () => {
-    vi.mocked(fs.access).mockRejectedValue(new Error("Permission denied"))
-    vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
 
-    const mockExit = vi
-      .spyOn(process, "exit")
-      .mockImplementation(() => undefined as never)
+  it('should proceed if project path already exists but is empty (EEXIST handled gracefully)', async () => {
+    const cwd = '/test';
+    const projectName = 'empty-app';
+    const projectPath = path.resolve(cwd, projectName);
 
-    await createProject({
-      cwd: "/test",
-      force: false,
-    })
+    vi.mocked(prompts).mockResolvedValue({ type: 'next', name: projectName });
 
-    expect(mockExit).toHaveBeenCalledWith(1)
-  })
+    vi.mocked(fs.mkdirSync).mockImplementation((pathArg) => {
+      const resolvedArg = path.resolve(cwd, String(pathArg));
+      if (resolvedArg === projectPath) {
+        const error: any = new Error('File already exists');
+        error.code = 'EEXIST';
+        throw error;
+      }
+      return undefined;
+    });
+
+    vi.mocked(fs.opendirSync).mockImplementation((pathArg) => {
+      const resolvedArg = path.resolve(cwd, String(pathArg));
+      if (resolvedArg === projectPath) {
+        return {
+          readSync: vi.fn().mockReturnValue(null),
+          closeSync: vi.fn(),
+        } as any;
+      }
+      return {
+        readSync: vi.fn().mockReturnValue(null),
+        closeSync: vi.fn(),
+      } as any;
+    });
+
+    await createProject({ cwd, force: false });
+
+    expect(mockLoggerError).not.toHaveBeenCalled();
+    expect(mockExit).not.toHaveBeenCalled();
+    expect(fs.opendirSync).toHaveBeenCalledWith(projectPath);
+  });
 })
