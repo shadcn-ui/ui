@@ -705,4 +705,274 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "calendar-01",
+    description: "A simple calendar.",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-01.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0",
+    },
+  },
+  {
+    name: "calendar-02",
+    description: "Multiple months with single selection.",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-02.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0",
+    },
+  },
+  {
+    name: "calendar-03",
+    description: "Multiple months with multiple selection.",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-03.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0",
+    },
+  },
+  {
+    name: "calendar-04",
+    description: "Single month with range selection",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-04.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-28",
+    },
+  },
+  {
+    name: "calendar-05",
+    description: "Multiple months with range selection",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-05.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
+  {
+    name: "calendar-06",
+    description: "Range selection with minimum days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-06.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
+  {
+    name: "calendar-07",
+    description: "Range selection with minimum and maximum days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-07.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
+  {
+    name: "calendar-08",
+    description: "Calendar with disabled days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-08.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
+  {
+    name: "calendar-09",
+    description: "Calendar with disabled weekends",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-09.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
+  {
+    name: "calendar-10",
+    description: "Today button",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-10.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "card"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
+  {
+    name: "calendar-11",
+    description: "Calendar with start and end month",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-11.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
+  {
+    name: "calendar-12",
+    description: "Localized calendar",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-12.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "card", "select"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
+  {
+    name: "calendar-13",
+    description: "With Month and Year Dropdown",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-13.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "card", "select"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
+  {
+    name: "calendar-14",
+    description: "With Booked/Unavailable Days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-14.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
+  {
+    name: "calendar-15",
+    description: "With Weekdays",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-15.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+    },
+  },
 ]

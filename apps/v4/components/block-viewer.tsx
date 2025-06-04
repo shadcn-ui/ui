@@ -11,6 +11,7 @@ import {
   Folder,
   Fullscreen,
   Monitor,
+  RotateCw,
   Smartphone,
   Tablet,
   Terminal,
@@ -66,6 +67,8 @@ type BlockViewerContext = {
         highlightedContent: string
       })[]
     | null
+  iframeKey?: number
+  setIframeKey?: React.Dispatch<React.SetStateAction<number>>
 }
 
 const BlockViewerContext = React.createContext<BlockViewerContext | null>(null)
@@ -91,6 +94,7 @@ function BlockViewerProvider({
     BlockViewerContext["activeFile"]
   >(highlightedFiles?.[0].target ?? null)
   const resizablePanelRef = React.useRef<ImperativePanelHandle>(null)
+  const [iframeKey, setIframeKey] = React.useState(0)
 
   return (
     <BlockViewerContext.Provider
@@ -103,6 +107,8 @@ function BlockViewerProvider({
         setActiveFile,
         tree,
         highlightedFiles,
+        iframeKey,
+        setIframeKey,
       }}
     >
       <div
@@ -122,7 +128,8 @@ function BlockViewerProvider({
 }
 
 function BlockViewerToolbar() {
-  const { setView, view, item, resizablePanelRef } = useBlockViewer()
+  const { setView, view, item, resizablePanelRef, setIframeKey } =
+    useBlockViewer()
   const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   return (
@@ -142,7 +149,7 @@ function BlockViewerToolbar() {
         href={`#${item.name}`}
         className="flex-1 text-center text-sm font-medium underline-offset-2 hover:underline md:flex-auto md:text-left"
       >
-        {item.description}
+        {item.description?.replace(/\.$/, "")}
       </a>
       <div className="ml-auto hidden items-center gap-2 md:flex">
         <div className="hidden h-8 items-center gap-1.5 rounded-md border p-1 shadow-none lg:flex">
@@ -179,6 +186,21 @@ function BlockViewerToolbar() {
                 <Fullscreen />
               </Link>
             </Button>
+            <Separator orientation="vertical" className="!h-4" />
+            <Button
+              size="icon"
+              variant="ghost"
+              className="size-6 rounded-sm p-0"
+              title="Refresh Preview"
+              onClick={() => {
+                if (setIframeKey) {
+                  setIframeKey((k) => k + 1)
+                }
+              }}
+            >
+              <RotateCw />
+              <span className="sr-only">Refresh Preview</span>
+            </Button>
           </ToggleGroup>
         </div>
         <Separator
@@ -207,7 +229,7 @@ function BlockViewerToolbar() {
 }
 
 function BlockViewerView() {
-  const { item, resizablePanelRef } = useBlockViewer()
+  const { item, resizablePanelRef, iframeKey } = useBlockViewer()
 
   return (
     <div className="group-data-[view=code]/block-view-wrapper:hidden md:h-[calc(var(--height)+10px)]">
@@ -236,6 +258,7 @@ function BlockViewerView() {
               className="hidden object-cover md:hidden dark:block md:dark:hidden"
             />
             <iframe
+              key={iframeKey}
               src={`/view/${item.name}`}
               height={item.meta?.iframeHeight ?? 930}
               className="bg-background no-scrollbar relative z-20 hidden w-full md:block"
@@ -269,7 +292,7 @@ function BlockViewerCode() {
       </div>
       <figure
         data-rehype-pretty-code-figure=""
-        className="mt-0 flex min-w-0 flex-1 flex-col rounded-xl border-none"
+        className="!mx-0 mt-0 flex min-w-0 flex-1 flex-col rounded-xl border-none"
       >
         <figcaption
           className="text-code-foreground [&_svg]:text-code-foreground flex h-12 shrink-0 items-center gap-2 border-b px-4 py-2 [&_svg]:size-4 [&_svg]:opacity-70"
@@ -299,7 +322,7 @@ export function BlockViewerFileTree() {
   }
 
   return (
-    <SidebarProvider className="flex !min-h-full flex-col">
+    <SidebarProvider className="flex !min-h-full flex-col border-r">
       <Sidebar collapsible="none" className="w-full flex-1">
         <SidebarGroupLabel className="h-12 rounded-none border-b px-4 text-sm">
           Files

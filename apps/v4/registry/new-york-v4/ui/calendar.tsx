@@ -16,16 +16,24 @@ function Calendar({
   classNames,
   showOutsideDays = true,
   captionLayout = "label",
+  buttonVariant = "ghost",
   formatters,
   components,
   ...props
-}: React.ComponentProps<typeof DayPicker>) {
+}: React.ComponentProps<typeof DayPicker> & {
+  buttonVariant?: React.ComponentProps<typeof Button>["variant"]
+}) {
   const defaultClassNames = getDefaultClassNames()
 
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      className={cn("bg-background p-3 [--cell-size:--spacing(8)]", className)}
+      className={cn(
+        "bg-background group/calendar p-3 [--cell-size:--spacing(8)]",
+        String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
+        String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
+        className
+      )}
       captionLayout={captionLayout}
       formatters={{
         formatMonthDropdown: (date) => {
@@ -45,13 +53,13 @@ function Calendar({
           defaultClassNames.nav
         ),
         button_previous: cn(
-          buttonVariants({ variant: "ghost" }),
-          "size-(--cell-size) bg-transparent p-0 shadow-none",
+          buttonVariants({ variant: buttonVariant }),
+          "size-(--cell-size) aria-disabled:opacity-50 bg-transparent p-0 shadow-none select-none",
           defaultClassNames.button_previous
         ),
         button_next: cn(
-          buttonVariants({ variant: "ghost" }),
-          "size-(--cell-size) bg-transparent p-0 shadow-none",
+          buttonVariants({ variant: buttonVariant }),
+          "size-(--cell-size) aria-disabled:opacity-50 bg-transparent p-0 shadow-none select-none",
           defaultClassNames.button_next
         ),
         month_caption: cn(
@@ -68,20 +76,29 @@ function Calendar({
         ),
         dropdown: cn("absolute inset-0 opacity-0", defaultClassNames.dropdown),
         caption_label: cn(
+          "select-none font-medium",
           captionLayout === "label"
-            ? "text-sm font-medium"
-            : "rounded-md pl-2 pr-1 flex items-center gap-1 text-sm font-medium h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5",
+            ? "text-sm"
+            : "rounded-md pl-2 pr-1 flex items-center gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5",
           defaultClassNames.caption_label
         ),
         table: "w-full border-collapse",
         weekdays: cn("flex", defaultClassNames.weekdays),
         weekday: cn(
-          "text-muted-foreground rounded-md flex-1 font-normal text-[0.8rem]",
+          "text-muted-foreground rounded-md flex-1 font-normal text-[0.8rem] select-none",
           defaultClassNames.weekday
         ),
         week: cn("flex w-full mt-2", defaultClassNames.week),
+        week_number_header: cn(
+          "select-none w-(--cell-size)",
+          defaultClassNames.week_number_header
+        ),
+        week_number: cn(
+          "text-[0.8rem] select-none text-muted-foreground",
+          defaultClassNames.week_number
+        ),
         day: cn(
-          "relative w-full h-full p-0 text-center [&:first-child[data-selected=true]_button]:rounded-l-md [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square",
+          "relative w-full h-full p-0 text-center [&:first-child[data-selected=true]_button]:rounded-l-md [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square select-none",
           defaultClassNames.day
         ),
         range_start: cn(
@@ -106,9 +123,14 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        Root: ({ className, ...props }) => {
+        Root: ({ className, rootRef, ...props }) => {
           return (
-            <div data-slot="calendar" className={cn(className)} {...props} />
+            <div
+              data-slot="calendar"
+              ref={rootRef}
+              className={cn(className)}
+              {...props}
+            />
           )
         },
         Chevron: ({ className, orientation, ...props }) => {
@@ -132,6 +154,15 @@ function Calendar({
           )
         },
         DayButton: CalendarDayButton,
+        WeekNumber: ({ children, ...props }) => {
+          return (
+            <td {...props}>
+              <div className="flex size-(--cell-size) items-center justify-center text-center">
+                {children}
+              </div>
+            </td>
+          )
+        },
         ...components,
       }}
       {...props}

@@ -1497,6 +1497,326 @@
       ]
     },
     {
+      "name": "calendar-01",
+      "type": "registry:block",
+      "description": "A simple calendar.",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-02",
+      "type": "registry:block",
+      "description": "Multiple months with single selection.",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-02.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-03",
+      "type": "registry:block",
+      "description": "Multiple months with multiple selection.",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-03.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-04",
+      "type": "registry:block",
+      "description": "Single month with range selection",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-04.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-28"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-05",
+      "type": "registry:block",
+      "description": "Multiple months with range selection",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-05.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-06",
+      "type": "registry:block",
+      "description": "Range selection with minimum days",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-06.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-07",
+      "type": "registry:block",
+      "description": "Range selection with minimum and maximum days",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-07.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-08",
+      "type": "registry:block",
+      "description": "Calendar with disabled days",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-08.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-09",
+      "type": "registry:block",
+      "description": "Calendar with disabled weekends",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-09.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-10",
+      "type": "registry:block",
+      "description": "Today button",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-10.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar",
+        "card"
+      ]
+    },
+    {
+      "name": "calendar-11",
+      "type": "registry:block",
+      "description": "Calendar with start and end month",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-11.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-12",
+      "type": "registry:block",
+      "description": "Localized calendar",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-12.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar",
+        "card",
+        "select"
+      ]
+    },
+    {
+      "name": "calendar-13",
+      "type": "registry:block",
+      "description": "With Month and Year Dropdown",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-13.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar",
+        "card",
+        "select"
+      ]
+    },
+    {
+      "name": "calendar-14",
+      "type": "registry:block",
+      "description": "With Booked/Unavailable Days",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-14.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-15",
+      "type": "registry:block",
+      "description": "With Weekdays",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-15.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
       "name": "chart-area-axes",
       "type": "registry:block",
       "registryDependencies": [
