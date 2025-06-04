@@ -27,6 +27,29 @@ const agent = process.env.https_proxy
 
 const registryCache = new Map<string, Promise<any>>()
 
+export const BASE_COLORS = [
+  {
+    name: "neutral",
+    label: "Neutral",
+  },
+  {
+    name: "gray",
+    label: "Gray",
+  },
+  {
+    name: "zinc",
+    label: "Zinc",
+  },
+  {
+    name: "stone",
+    label: "Stone",
+  },
+  {
+    name: "slate",
+    label: "Slate",
+  },
+] as const
+
 export async function getRegistryIndex() {
   try {
     const [result] = await fetchRegistry(["index.json"])
@@ -75,28 +98,7 @@ export async function getRegistryItem(name: string, style: string) {
 }
 
 export async function getRegistryBaseColors() {
-  return [
-    {
-      name: "neutral",
-      label: "Neutral",
-    },
-    {
-      name: "gray",
-      label: "Gray",
-    },
-    {
-      name: "zinc",
-      label: "Zinc",
-    },
-    {
-      name: "stone",
-      label: "Stone",
-    },
-    {
-      name: "slate",
-      label: "Slate",
-    },
-  ]
+  return BASE_COLORS
 }
 
 export async function getRegistryBaseColor(baseColor: string) {
@@ -173,18 +175,26 @@ export async function getItemTargetPath(
   )
 }
 
-export async function fetchRegistry(paths: string[]) {
+export async function fetchRegistry(
+  paths: string[],
+  options: { useCache?: boolean } = {}
+) {
+  options = {
+    useCache: true,
+    ...options,
+  }
+
   try {
     const results = await Promise.all(
       paths.map(async (path) => {
         const url = getRegistryUrl(path)
 
-        // Check cache first
-        if (registryCache.has(url)) {
+        // Check cache first if caching is enabled
+        if (options.useCache && registryCache.has(url)) {
           return registryCache.get(url)
         }
 
-        // Store the promise in the cache before awaiting
+        // Store the promise in the cache before awaiting if caching is enabled
         const fetchPromise = (async () => {
           const response = await fetch(url, { agent })
 
@@ -234,7 +244,9 @@ export async function fetchRegistry(paths: string[]) {
           return response.json()
         })()
 
-        registryCache.set(url, fetchPromise)
+        if (options.useCache) {
+          registryCache.set(url, fetchPromise)
+        }
         return fetchPromise
       })
     )
@@ -287,6 +299,14 @@ export async function registryResolveItemsTree(
       }
     }
 
+    // Sort the payload so that registry:theme is always first.
+    payload.sort((a, b) => {
+      if (a.type === "registry:theme") {
+        return -1
+      }
+      return 1
+    })
+
     let tailwind = {}
     payload.forEach((item) => {
       tailwind = deepmerge(tailwind, item.tailwind ?? {})
@@ -295,6 +315,11 @@ export async function registryResolveItemsTree(
     let cssVars = {}
     payload.forEach((item) => {
       cssVars = deepmerge(cssVars, item.cssVars ?? {})
+    })
+
+    let css = {}
+    payload.forEach((item) => {
+      css = deepmerge(css, item.css ?? {})
     })
 
     let docs = ""
@@ -314,6 +339,7 @@ export async function registryResolveItemsTree(
       files: deepmerge.all(payload.map((item) => item.files ?? [])),
       tailwind,
       cssVars,
+      css,
       docs,
     })
   } catch (error) {
@@ -394,6 +420,7 @@ export async function registryGetTheme(name: string, config: Config) {
       },
     },
     cssVars: {
+      theme: {},
       light: {
         radius: "0.5rem",
       },
@@ -404,9 +431,13 @@ export async function registryGetTheme(name: string, config: Config) {
   if (config.tailwind.cssVariables) {
     theme.tailwind.config.theme.extend.colors = {
       ...theme.tailwind.config.theme.extend.colors,
-      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark),
+      ...buildTailwindThemeColorsFromCssVars(baseColor.cssVars.dark ?? {}),
     }
     theme.cssVars = {
+      theme: {
+        ...baseColor.cssVars.theme,
+        ...theme.cssVars.theme,
+      },
       light: {
         ...baseColor.cssVars.light,
         ...theme.cssVars.light,
@@ -419,12 +450,15 @@ export async function registryGetTheme(name: string, config: Config) {
 
     if (tailwindVersion === "v4" && baseColor.cssVarsV4) {
       theme.cssVars = {
+        theme: {
+          ...baseColor.cssVarsV4.theme,
+          ...theme.cssVars.theme,
+        },
         light: {
-          ...theme.cssVars.light,
+          radius: "0.625rem",
           ...baseColor.cssVarsV4.light,
         },
         dark: {
-          ...theme.cssVars.dark,
           ...baseColor.cssVarsV4.dark,
         },
       }
@@ -449,7 +483,7 @@ function getRegistryUrl(path: string) {
   return `${REGISTRY_URL}/${path}`
 }
 
-function isUrl(path: string) {
+export function isUrl(path: string) {
   try {
     new URL(path)
     return true

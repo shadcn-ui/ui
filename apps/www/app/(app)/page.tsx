@@ -49,10 +49,10 @@ export default function IndexPage() {
         <PageHeaderHeading>{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild size="sm">
+          <Button asChild size="sm" className="rounded-md">
             <Link href="/docs/installation">Get Started</Link>
           </Button>
-          <Button asChild size="sm" variant="ghost">
+          <Button asChild size="sm" variant="ghost" className="rounded-md">
             <Link href="/blocks">Browse Blocks</Link>
           </Button>
         </PageActions>

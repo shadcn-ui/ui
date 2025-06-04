@@ -1,4 +1,8 @@
-# @shadcn/ui
+# shadcn-ui
+
+## 0.9.5
+
+`shadcn-ui` is deprecated. Use the `shadcn` CLI instead.
 
 ## 0.9.4
 
