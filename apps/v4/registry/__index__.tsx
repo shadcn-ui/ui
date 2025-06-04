@@ -1540,7 +1540,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0"},
   },
   "calendar-02": {
     name: "calendar-02",
@@ -1558,7 +1558,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0"},
   },
   "calendar-03": {
     name: "calendar-03",
@@ -1576,7 +1576,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0"},
   },
   "calendar-04": {
     name: "calendar-04",
@@ -1594,7 +1594,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-28"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28"},
   },
   "calendar-05": {
     name: "calendar-05",
@@ -1612,7 +1612,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "calendar-06": {
     name: "calendar-06",
@@ -1630,7 +1630,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "calendar-07": {
     name: "calendar-07",
@@ -1648,7 +1648,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "calendar-08": {
     name: "calendar-08",
@@ -1666,7 +1666,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "calendar-09": {
     name: "calendar-09",
@@ -1684,7 +1684,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "calendar-10": {
     name: "calendar-10",
@@ -1702,7 +1702,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar","card"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "calendar-11": {
     name: "calendar-11",
@@ -1720,7 +1720,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "calendar-12": {
     name: "calendar-12",
@@ -1738,7 +1738,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar","card","select"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "calendar-13": {
     name: "calendar-13",
@@ -1756,7 +1756,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar","card","select"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "calendar-14": {
     name: "calendar-14",
@@ -1774,11 +1774,11 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "calendar-15": {
     name: "calendar-15",
-    description: "With Weekdays",
+    description: "With Week Numbers",
     type: "registry:block",
     registryDependencies: ["calendar"],
     files: [{
@@ -1792,7 +1792,115 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
+  },
+  "calendar-16": {
+    name: "calendar-16",
+    description: "With time picker",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-16.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-16.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","card","input","label"],
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
+  },
+  "calendar-17": {
+    name: "calendar-17",
+    description: "With time picker inline",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-17.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-17.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","card","input","label"],
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
+  },
+  "calendar-18": {
+    name: "calendar-18",
+    description: "Variable size",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-18.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-18.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar"],
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
+  },
+  "calendar-19": {
+    name: "calendar-19",
+    description: "With presets",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-19.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-19.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","card","input","label"],
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
+  },
+  "calendar-20": {
+    name: "calendar-20",
+    description: "With time presets",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-20.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-20.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","card"],
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
+  },
+  "calendar-21": {
+    name: "calendar-21",
+    description: "With custom days and formatters",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-21.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-21.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar"],
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
   },
   "chart-area-axes": {
     name: "chart-area-axes",

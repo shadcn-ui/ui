@@ -720,7 +720,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0",
+        "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
     },
   },
   {
@@ -738,7 +738,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0",
+        "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
     },
   },
   {
@@ -756,7 +756,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0",
+        "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
     },
   },
   {
@@ -774,7 +774,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-28",
+        "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28",
     },
   },
   {
@@ -792,7 +792,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
   {
@@ -810,7 +810,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
   {
@@ -828,7 +828,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
   {
@@ -846,7 +846,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
   {
@@ -864,7 +864,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
   {
@@ -882,7 +882,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
   {
@@ -900,7 +900,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
   {
@@ -918,7 +918,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
   {
@@ -936,7 +936,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
   {
@@ -954,12 +954,12 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
   {
     name: "calendar-15",
-    description: "With Weekdays",
+    description: "With Week Numbers",
     type: "registry:block",
     registryDependencies: ["calendar"],
     files: [
@@ -972,7 +972,116 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex pt-12 items-start md:pt-20 justify-center min-w-0 xl:pt-24",
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-16",
+    description: "With time picker",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-16.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "card", "input", "label"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-17",
+    description: "With time picker inline",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-17.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "card", "input", "label"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-18",
+    description: "Variable size",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-18.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-19",
+    description: "With presets",
+    type: "registry:block",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-19.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "card", "input", "label"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-20",
+    description: "With time presets",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-20.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "card"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-21",
+    description: "With custom days and formatters",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-21.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
     },
   },
 ]
