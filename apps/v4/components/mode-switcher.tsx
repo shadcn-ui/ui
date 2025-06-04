@@ -24,6 +24,7 @@ export function ModeSwitcher() {
       size="icon"
       className="group/toggle extend-touch-target size-8"
       onClick={toggleTheme}
+      title="Toggle theme"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
