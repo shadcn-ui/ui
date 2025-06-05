@@ -19,7 +19,7 @@ export default function Calendar17() {
           mode="single"
           selected={date}
           onSelect={setDate}
-          className="bg-transparent p-0"
+          className="bg-transparent p-0 [--cell-size:--spacing(10.5)]"
         />
       </CardContent>
       <CardFooter className="flex gap-2 border-t px-4 !pt-4 *:[div]:w-full">

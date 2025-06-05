@@ -247,7 +247,7 @@ function BlockViewerView() {
       <div className="grid w-full gap-4">
         <ResizablePanelGroup
           direction="horizontal"
-          className="after:bg-surface/50 bg-background relative z-10 after:absolute after:inset-0 after:right-3 after:z-0 after:rounded-xl"
+          className="after:bg-surface/50 relative z-10 after:absolute after:inset-0 after:right-3 after:z-0 after:rounded-xl"
         >
           <ResizablePanel
             ref={resizablePanelRef}
