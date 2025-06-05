@@ -1810,7 +1810,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0"},
   },
   "calendar-17": {
     name: "calendar-17",
@@ -1864,7 +1864,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0"},
   },
   "calendar-20": {
     name: "calendar-20",
@@ -2008,7 +2008,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"},
+    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0"},
   },
   "calendar-28": {
     name: "calendar-28",
