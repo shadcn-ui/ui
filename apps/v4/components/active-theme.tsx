@@ -1,21 +1,14 @@
 "use client"
 
 import {
-  ReactNode,
   createContext,
+  ReactNode,
   useContext,
   useEffect,
   useState,
 } from "react"
 
-const COOKIE_NAME = "active_theme"
 const DEFAULT_THEME = "default"
-
-function setThemeCookie(theme: string) {
-  if (typeof window === "undefined") return
-
-  document.cookie = `${COOKIE_NAME}=${theme}; path=/; max-age=31536000; SameSite=Lax; ${window.location.protocol === "https:" ? "Secure;" : ""}`
-}
 
 type ThemeContextType = {
   activeTheme: string
@@ -36,8 +29,6 @@ export function ActiveThemeProvider({
   )
 
   useEffect(() => {
-    setThemeCookie(activeTheme)
-
     Array.from(document.body.classList)
       .filter((className) => className.startsWith("theme-"))
       .forEach((className) => {
