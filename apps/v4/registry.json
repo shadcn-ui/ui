@@ -126,7 +126,7 @@
       "name": "calendar",
       "type": "registry:ui",
       "dependencies": [
-        "react-day-picker@8.10.1",
+        "react-day-picker@latest",
         "date-fns"
       ],
       "registryDependencies": [
