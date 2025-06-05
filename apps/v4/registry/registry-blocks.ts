@@ -871,14 +871,14 @@ export const blocks: Registry["items"] = [
     name: "calendar-10",
     description: "Today button",
     type: "registry:block",
-    registryDependencies: ["calendar"],
+    registryDependencies: ["calendar", "card"],
     files: [
       {
         path: "blocks/calendar-10.tsx",
         type: "registry:component",
       },
     ],
-    categories: ["calendar", "card"],
+    categories: ["calendar"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -907,14 +907,14 @@ export const blocks: Registry["items"] = [
     name: "calendar-12",
     description: "Localized calendar",
     type: "registry:block",
-    registryDependencies: ["calendar"],
+    registryDependencies: ["calendar", "card", "select"],
     files: [
       {
         path: "blocks/calendar-12.tsx",
         type: "registry:component",
       },
     ],
-    categories: ["calendar", "card", "select"],
+    categories: ["calendar"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -925,14 +925,14 @@ export const blocks: Registry["items"] = [
     name: "calendar-13",
     description: "With Month and Year Dropdown",
     type: "registry:block",
-    registryDependencies: ["calendar"],
+    registryDependencies: ["calendar", "card", "select"],
     files: [
       {
         path: "blocks/calendar-13.tsx",
         type: "registry:component",
       },
     ],
-    categories: ["calendar", "card", "select"],
+    categories: ["calendar"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -979,14 +979,14 @@ export const blocks: Registry["items"] = [
     name: "calendar-16",
     description: "With time picker",
     type: "registry:block",
-    registryDependencies: ["calendar"],
+    registryDependencies: ["calendar", "card", "input", "label"],
     files: [
       {
         path: "blocks/calendar-16.tsx",
         type: "registry:component",
       },
     ],
-    categories: ["calendar", "card", "input", "label"],
+    categories: ["calendar"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -997,14 +997,14 @@ export const blocks: Registry["items"] = [
     name: "calendar-17",
     description: "With time picker inline",
     type: "registry:block",
-    registryDependencies: ["calendar"],
+    registryDependencies: ["calendar", "card", "input", "label"],
     files: [
       {
         path: "blocks/calendar-17.tsx",
         type: "registry:component",
       },
     ],
-    categories: ["calendar", "card", "input", "label"],
+    categories: ["calendar"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1034,14 +1034,14 @@ export const blocks: Registry["items"] = [
     description: "With presets",
     type: "registry:block",
     dependencies: ["date-fns"],
-    registryDependencies: ["calendar"],
+    registryDependencies: ["calendar", "card", "input", "label"],
     files: [
       {
         path: "blocks/calendar-19.tsx",
         type: "registry:component",
       },
     ],
-    categories: ["calendar", "card", "input", "label"],
+    categories: ["calendar"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1052,14 +1052,14 @@ export const blocks: Registry["items"] = [
     name: "calendar-20",
     description: "With time presets",
     type: "registry:block",
-    registryDependencies: ["calendar"],
+    registryDependencies: ["calendar", "card"],
     files: [
       {
         path: "blocks/calendar-20.tsx",
         type: "registry:component",
       },
     ],
-    categories: ["calendar", "card"],
+    categories: ["calendar"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1074,6 +1074,168 @@ export const blocks: Registry["items"] = [
     files: [
       {
         path: "blocks/calendar-21.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-22",
+    description: "Date picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-22.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-23",
+    description: "Date range picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-23.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-24",
+    description: "Date and Time picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-24.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-25",
+    description: "Date and Time range picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-25.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-26",
+    description: "Date range picker with time",
+    type: "registry:block",
+    registryDependencies: ["calendar", "chart", "card", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-26.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-27",
+    description: "Chart filter",
+    type: "registry:block",
+    registryDependencies: ["calendar", "chart", "card", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-27.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-28",
+    description: "Input with date picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "input", "label", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-28.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-29",
+    description: "Natural language date picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "input", "label", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-29.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    },
+  },
+  {
+    name: "calendar-30",
+    description: "With little-date",
+    type: "registry:block",
+    registryDependencies: ["calendar", "input", "label", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-30.tsx",
         type: "registry:component",
       },
     ],

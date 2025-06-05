@@ -4,7 +4,8 @@
   "type": "registry:block",
   "description": "Today button",
   "registryDependencies": [
-    "calendar"
+    "calendar",
+    "card"
   ],
   "files": [
     {
@@ -18,7 +19,6 @@
     "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
   },
   "categories": [
-    "calendar",
-    "card"
+    "calendar"
   ]
 }

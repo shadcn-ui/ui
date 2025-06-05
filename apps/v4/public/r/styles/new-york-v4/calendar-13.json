@@ -4,7 +4,9 @@
   "type": "registry:block",
   "description": "With Month and Year Dropdown",
   "registryDependencies": [
-    "calendar"
+    "calendar",
+    "card",
+    "select"
   ],
   "files": [
     {
@@ -18,8 +20,6 @@
     "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
   },
   "categories": [
-    "calendar",
-    "card",
-    "select"
+    "calendar"
   ]
 }
