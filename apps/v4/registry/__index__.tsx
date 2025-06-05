@@ -1539,7 +1539,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
   },
   "calendar-02": {
@@ -1557,7 +1557,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
   },
   "calendar-03": {
@@ -1575,7 +1575,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
   },
   "calendar-04": {
@@ -1593,7 +1593,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28","mobile":"component"},
   },
   "calendar-05": {
@@ -1611,7 +1611,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-06": {
@@ -1629,7 +1629,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-07": {
@@ -1647,7 +1647,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-08": {
@@ -1665,7 +1665,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-09": {
@@ -1683,7 +1683,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-10": {
@@ -1701,7 +1701,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-11": {
@@ -1719,7 +1719,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-12": {
@@ -1737,7 +1737,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-13": {
@@ -1755,7 +1755,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-14": {
@@ -1773,7 +1773,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-15": {
@@ -1791,7 +1791,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-16": {
@@ -1809,7 +1809,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
   },
   "calendar-17": {
@@ -1827,7 +1827,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-18": {
@@ -1845,7 +1845,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-19": {
@@ -1863,7 +1863,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
   },
   "calendar-20": {
@@ -1881,7 +1881,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
   },
   "calendar-21": {
@@ -1899,7 +1899,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
   },
   "calendar-22": {
@@ -1917,7 +1917,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-23": {
@@ -1935,7 +1935,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-24": {
@@ -1953,7 +1953,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-25": {
@@ -1971,7 +1971,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-26": {
@@ -1989,7 +1989,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-27": {
@@ -2007,7 +2007,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
   },
   "calendar-28": {
@@ -2025,7 +2025,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-29": {
@@ -2043,7 +2043,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-30": {
@@ -2061,7 +2061,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-31": {
@@ -2079,7 +2079,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"700px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0","mobile":"component"},
   },
   "calendar-32": {
@@ -2097,7 +2097,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["calendar"],
+    categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "chart-area-axes": {

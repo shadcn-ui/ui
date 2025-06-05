@@ -716,7 +716,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -735,7 +735,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -754,7 +754,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -773,7 +773,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -792,7 +792,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -811,7 +811,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -830,7 +830,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -849,7 +849,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -868,7 +868,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -887,7 +887,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -906,7 +906,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -925,7 +925,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -944,7 +944,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -963,7 +963,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -982,7 +982,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1001,7 +1001,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1020,7 +1020,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1039,7 +1039,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1059,7 +1059,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1078,7 +1078,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1097,7 +1097,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1116,7 +1116,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1135,7 +1135,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1154,7 +1154,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1173,7 +1173,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1192,7 +1192,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1211,7 +1211,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1230,7 +1230,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1250,7 +1250,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1269,7 +1269,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:
@@ -1288,7 +1288,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "700px",
       container:
@@ -1307,7 +1307,7 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["calendar"],
+    categories: ["calendar", "date"],
     meta: {
       iframeHeight: "600px",
       container:

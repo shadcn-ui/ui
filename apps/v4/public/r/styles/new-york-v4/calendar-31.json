@@ -21,6 +21,7 @@
     "mobile": "component"
   },
   "categories": [
-    "calendar"
+    "calendar",
+    "date"
   ]
 }
