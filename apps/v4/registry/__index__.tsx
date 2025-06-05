@@ -1540,7 +1540,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
   },
   "calendar-02": {
     name: "calendar-02",
@@ -1558,7 +1558,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
   },
   "calendar-03": {
     name: "calendar-03",
@@ -1576,7 +1576,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
   },
   "calendar-04": {
     name: "calendar-04",
@@ -1594,7 +1594,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28","mobile":"component"},
   },
   "calendar-05": {
     name: "calendar-05",
@@ -1612,7 +1612,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-06": {
     name: "calendar-06",
@@ -1630,7 +1630,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-07": {
     name: "calendar-07",
@@ -1648,7 +1648,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-08": {
     name: "calendar-08",
@@ -1666,7 +1666,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-09": {
     name: "calendar-09",
@@ -1684,7 +1684,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-10": {
     name: "calendar-10",
@@ -1702,7 +1702,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-11": {
     name: "calendar-11",
@@ -1720,7 +1720,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-12": {
     name: "calendar-12",
@@ -1738,7 +1738,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-13": {
     name: "calendar-13",
@@ -1756,7 +1756,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-14": {
     name: "calendar-14",
@@ -1774,7 +1774,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-15": {
     name: "calendar-15",
@@ -1792,7 +1792,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-16": {
     name: "calendar-16",
@@ -1810,7 +1810,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
   },
   "calendar-17": {
     name: "calendar-17",
@@ -1828,7 +1828,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-18": {
     name: "calendar-18",
@@ -1846,7 +1846,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-19": {
     name: "calendar-19",
@@ -1864,7 +1864,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
   },
   "calendar-20": {
     name: "calendar-20",
@@ -1882,7 +1882,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
   },
   "calendar-21": {
     name: "calendar-21",
@@ -1900,7 +1900,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
   },
   "calendar-22": {
     name: "calendar-22",
@@ -1918,7 +1918,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-23": {
     name: "calendar-23",
@@ -1936,7 +1936,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-24": {
     name: "calendar-24",
@@ -1954,7 +1954,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-25": {
     name: "calendar-25",
@@ -1972,7 +1972,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-26": {
     name: "calendar-26",
@@ -1990,7 +1990,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-27": {
     name: "calendar-27",
@@ -2008,7 +2008,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
   },
   "calendar-28": {
     name: "calendar-28",
@@ -2026,7 +2026,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-29": {
     name: "calendar-29",
@@ -2044,7 +2044,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-30": {
     name: "calendar-30",
@@ -2062,7 +2062,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "calendar-31": {
     name: "calendar-31",
@@ -2080,7 +2080,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0","mobile":"component"},
+    meta: {"iframeHeight":"700px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0","mobile":"component"},
   },
   "calendar-32": {
     name: "calendar-32",
@@ -2098,7 +2098,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["calendar"],
-    meta: {"iframeHeight":"600px","container":"w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
   },
   "chart-area-axes": {
     name: "chart-area-axes",

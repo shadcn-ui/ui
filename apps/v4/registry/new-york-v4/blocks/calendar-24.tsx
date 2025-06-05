@@ -56,7 +56,7 @@ export default function Calendar24() {
           id="time"
           step="1"
           defaultValue="10:30:00"
-          className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+          className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
         />
       </div>
     </div>

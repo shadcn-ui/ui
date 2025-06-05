@@ -720,7 +720,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
       mobile: "component",
     },
   },
@@ -739,7 +739,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
       mobile: "component",
     },
   },
@@ -758,7 +758,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
       mobile: "component",
     },
   },
@@ -777,7 +777,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28",
+        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28",
       mobile: "component",
     },
   },
@@ -796,7 +796,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -815,7 +815,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -834,7 +834,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -853,7 +853,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -872,7 +872,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -891,7 +891,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -910,7 +910,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -929,7 +929,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -948,7 +948,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -967,7 +967,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -986,7 +986,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1005,7 +1005,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
       mobile: "component",
     },
   },
@@ -1024,7 +1024,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1043,7 +1043,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1063,7 +1063,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
       mobile: "component",
     },
   },
@@ -1082,7 +1082,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
       mobile: "component",
     },
   },
@@ -1101,7 +1101,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
       mobile: "component",
     },
   },
@@ -1120,7 +1120,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1139,7 +1139,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1158,7 +1158,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1177,7 +1177,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1196,7 +1196,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1215,7 +1215,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
       mobile: "component",
     },
   },
@@ -1234,7 +1234,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1254,7 +1254,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1273,7 +1273,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },
@@ -1290,9 +1290,9 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["calendar"],
     meta: {
-      iframeHeight: "600px",
+      iframeHeight: "700px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0",
       mobile: "component",
     },
   },
@@ -1311,7 +1311,7 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
   },

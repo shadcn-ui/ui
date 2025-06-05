@@ -50,7 +50,7 @@ export default function Calendar28() {
           id="date"
           value={value}
           placeholder="June 01, 2025"
-          className="pr-10"
+          className="bg-background pr-10"
           onChange={(e) => {
             const date = new Date(e.target.value)
             setValue(e.target.value)

@@ -57,7 +57,7 @@ export default function Calendar25() {
             id="time-from"
             step="1"
             defaultValue="10:30:00"
-            className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+            className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
           />
         </div>
         <div className="flex flex-col gap-3">
@@ -69,7 +69,7 @@ export default function Calendar25() {
             id="time-to"
             step="1"
             defaultValue="12:30:00"
-            className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+            className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
           />
         </div>
       </div>

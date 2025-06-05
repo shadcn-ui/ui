@@ -44,7 +44,7 @@ export default function Calendar29() {
           id="date"
           value={value}
           placeholder="Tomorrow or next week"
-          className="pr-10"
+          className="bg-background pr-10"
           onChange={(e) => {
             setValue(e.target.value)
             const date = parseDate(e.target.value)
