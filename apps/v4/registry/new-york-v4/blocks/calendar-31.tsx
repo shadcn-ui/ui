@@ -38,7 +38,7 @@ export default function Calendar31() {
           mode="single"
           selected={date}
           onSelect={setDate}
-          className="p-0"
+          className="bg-transparent p-0"
           required
         />
       </CardContent>

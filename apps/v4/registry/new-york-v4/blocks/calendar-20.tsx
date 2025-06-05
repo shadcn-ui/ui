@@ -40,7 +40,7 @@ export default function Calendar20() {
             modifiersClassNames={{
               booked: "[&>button]:line-through opacity-100",
             }}
-            className="p-0 [--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
+            className="bg-transparent p-0 [--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
             formatters={{
               formatWeekdayName: (date) => {
                 return date.toLocaleString("en-US", { weekday: "short" })

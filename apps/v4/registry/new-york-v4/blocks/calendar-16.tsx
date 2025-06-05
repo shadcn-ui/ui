@@ -20,7 +20,7 @@ export default function Calendar16() {
           mode="single"
           selected={date}
           onSelect={setDate}
-          className="p-0"
+          className="bg-transparent p-0"
         />
       </CardContent>
       <CardFooter className="flex flex-col gap-6 border-t px-4 !pt-4">

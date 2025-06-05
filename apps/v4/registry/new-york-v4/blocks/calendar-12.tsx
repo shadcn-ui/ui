@@ -72,7 +72,7 @@ export default function Calendar12() {
           defaultMonth={dateRange?.from}
           numberOfMonths={2}
           locale={locale === "es" ? es : enUS}
-          className="p-0"
+          className="bg-transparent p-0"
           buttonVariant="outline"
         />
       </CardContent>

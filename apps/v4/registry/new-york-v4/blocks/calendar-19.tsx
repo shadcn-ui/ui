@@ -20,7 +20,7 @@ export default function Calendar19() {
           selected={date}
           onSelect={setDate}
           defaultMonth={date}
-          className="p-0 [--cell-size:--spacing(9.5)]"
+          className="bg-transparent p-0 [--cell-size:--spacing(9.5)]"
         />
       </CardContent>
       <CardFooter className="flex flex-wrap gap-2 border-t px-4 !pt-4">
