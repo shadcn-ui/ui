@@ -28,7 +28,10 @@ export default function Calendar10() {
           <Button
             size="sm"
             variant="outline"
-            onClick={() => setMonth(new Date())}
+            onClick={() => {
+              setMonth(new Date())
+              setDate(new Date())
+            }}
           >
             Today
           </Button>

@@ -721,6 +721,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+      mobile: "component",
     },
   },
   {
@@ -739,6 +740,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+      mobile: "component",
     },
   },
   {
@@ -757,6 +759,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+      mobile: "component",
     },
   },
   {
@@ -775,6 +778,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28",
+      mobile: "component",
     },
   },
   {
@@ -793,6 +797,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -811,6 +816,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -829,6 +835,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -847,6 +854,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -865,13 +873,14 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
     name: "calendar-10",
     description: "Today button",
     type: "registry:block",
-    registryDependencies: ["calendar", "card"],
+    registryDependencies: ["calendar", "card", "button"],
     files: [
       {
         path: "blocks/calendar-10.tsx",
@@ -883,11 +892,12 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
     name: "calendar-11",
-    description: "Calendar with start and end month",
+    description: "Start and end of month",
     type: "registry:block",
     registryDependencies: ["calendar"],
     files: [
@@ -901,6 +911,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -919,13 +930,14 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
     name: "calendar-13",
     description: "With Month and Year Dropdown",
     type: "registry:block",
-    registryDependencies: ["calendar", "card", "select"],
+    registryDependencies: ["calendar", "label", "select"],
     files: [
       {
         path: "blocks/calendar-13.tsx",
@@ -937,6 +949,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -955,6 +968,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -973,6 +987,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -991,6 +1006,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+      mobile: "component",
     },
   },
   {
@@ -1009,6 +1025,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -1027,6 +1044,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -1046,13 +1064,14 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+      mobile: "component",
     },
   },
   {
     name: "calendar-20",
     description: "With time presets",
     type: "registry:block",
-    registryDependencies: ["calendar", "card"],
+    registryDependencies: ["calendar", "card", "button"],
     files: [
       {
         path: "blocks/calendar-20.tsx",
@@ -1063,12 +1082,13 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+      mobile: "component",
     },
   },
   {
     name: "calendar-21",
-    description: "With custom days and formatters",
+    description: "Custom days and formatters",
     type: "registry:block",
     registryDependencies: ["calendar"],
     files: [
@@ -1081,14 +1101,15 @@ export const blocks: Registry["items"] = [
     meta: {
       iframeHeight: "600px",
       container:
-        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+      mobile: "component",
     },
   },
   {
     name: "calendar-22",
     description: "Date picker",
     type: "registry:block",
-    registryDependencies: ["calendar", "popover", "button"],
+    registryDependencies: ["calendar", "popover", "button", "label"],
     files: [
       {
         path: "blocks/calendar-22.tsx",
@@ -1100,13 +1121,14 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
     name: "calendar-23",
     description: "Date range picker",
     type: "registry:block",
-    registryDependencies: ["calendar", "popover", "button"],
+    registryDependencies: ["calendar", "popover", "button", "label"],
     files: [
       {
         path: "blocks/calendar-23.tsx",
@@ -1118,13 +1140,14 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
     name: "calendar-24",
     description: "Date and Time picker",
     type: "registry:block",
-    registryDependencies: ["calendar", "popover", "button"],
+    registryDependencies: ["calendar", "popover", "button", "label"],
     files: [
       {
         path: "blocks/calendar-24.tsx",
@@ -1136,13 +1159,14 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
     name: "calendar-25",
     description: "Date and Time range picker",
     type: "registry:block",
-    registryDependencies: ["calendar", "popover", "button"],
+    registryDependencies: ["calendar", "popover", "button", "label"],
     files: [
       {
         path: "blocks/calendar-25.tsx",
@@ -1154,13 +1178,14 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
     name: "calendar-26",
     description: "Date range picker with time",
     type: "registry:block",
-    registryDependencies: ["calendar", "chart", "card", "popover", "button"],
+    registryDependencies: ["calendar", "popover", "button", "input", "label"],
     files: [
       {
         path: "blocks/calendar-26.tsx",
@@ -1172,6 +1197,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -1190,6 +1216,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+      mobile: "component",
     },
   },
   {
@@ -1208,12 +1235,14 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
     name: "calendar-29",
     description: "Natural language date picker",
     type: "registry:block",
+    dependencies: ["chrono-node"],
     registryDependencies: ["calendar", "input", "label", "popover", "button"],
     files: [
       {
@@ -1226,6 +1255,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
   {
@@ -1244,6 +1274,45 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container:
         "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-31",
+    description: "With event slots",
+    type: "registry:block",
+    registryDependencies: ["calendar", "card", "button"],
+    files: [
+      {
+        path: "blocks/calendar-31.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-32",
+    description: "Date picker in a drawer",
+    type: "registry:block",
+    registryDependencies: ["calendar", "button", "drawer"],
+    files: [
+      {
+        path: "blocks/calendar-32.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
     },
   },
 ]

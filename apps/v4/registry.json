@@ -1511,7 +1511,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0"
+        "container": "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1532,7 +1533,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0"
+        "container": "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1553,7 +1555,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0"
+        "container": "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1574,7 +1577,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28"
+        "container": "w-full min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1595,7 +1599,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1616,7 +1621,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1637,7 +1643,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1658,7 +1665,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1679,7 +1687,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1691,7 +1700,8 @@
       "description": "Today button",
       "registryDependencies": [
         "calendar",
-        "card"
+        "card",
+        "button"
       ],
       "files": [
         {
@@ -1701,7 +1711,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1710,7 +1721,7 @@
     {
       "name": "calendar-11",
       "type": "registry:block",
-      "description": "Calendar with start and end month",
+      "description": "Start and end of month",
       "registryDependencies": [
         "calendar"
       ],
@@ -1722,7 +1733,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1745,7 +1757,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1757,7 +1770,7 @@
       "description": "With Month and Year Dropdown",
       "registryDependencies": [
         "calendar",
-        "card",
+        "label",
         "select"
       ],
       "files": [
@@ -1768,7 +1781,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1789,7 +1803,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1810,7 +1825,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1834,7 +1850,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1858,7 +1875,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1879,7 +1897,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1906,7 +1925,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1918,7 +1938,8 @@
       "description": "With time presets",
       "registryDependencies": [
         "calendar",
-        "card"
+        "card",
+        "button"
       ],
       "files": [
         {
@@ -1928,7 +1949,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1937,7 +1959,7 @@
     {
       "name": "calendar-21",
       "type": "registry:block",
-      "description": "With custom days and formatters",
+      "description": "Custom days and formatters",
       "registryDependencies": [
         "calendar"
       ],
@@ -1949,7 +1971,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1962,7 +1985,8 @@
       "registryDependencies": [
         "calendar",
         "popover",
-        "button"
+        "button",
+        "label"
       ],
       "files": [
         {
@@ -1972,7 +1996,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -1985,7 +2010,8 @@
       "registryDependencies": [
         "calendar",
         "popover",
-        "button"
+        "button",
+        "label"
       ],
       "files": [
         {
@@ -1995,7 +2021,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -2008,7 +2035,8 @@
       "registryDependencies": [
         "calendar",
         "popover",
-        "button"
+        "button",
+        "label"
       ],
       "files": [
         {
@@ -2018,7 +2046,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -2031,7 +2060,8 @@
       "registryDependencies": [
         "calendar",
         "popover",
-        "button"
+        "button",
+        "label"
       ],
       "files": [
         {
@@ -2041,7 +2071,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -2053,10 +2084,10 @@
       "description": "Date range picker with time",
       "registryDependencies": [
         "calendar",
-        "chart",
-        "card",
         "popover",
-        "button"
+        "button",
+        "input",
+        "label"
       ],
       "files": [
         {
@@ -2066,7 +2097,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -2091,7 +2123,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -2116,7 +2149,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -2126,6 +2160,9 @@
       "name": "calendar-29",
       "type": "registry:block",
       "description": "Natural language date picker",
+      "dependencies": [
+        "chrono-node"
+      ],
       "registryDependencies": [
         "calendar",
         "input",
@@ -2141,7 +2178,8 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"
@@ -2166,7 +2204,56 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24"
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-31",
+      "type": "registry:block",
+      "description": "With event slots",
+      "registryDependencies": [
+        "calendar",
+        "card",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-31.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-32",
+      "type": "registry:block",
+      "description": "Date picker in a drawer",
+      "registryDependencies": [
+        "calendar",
+        "button",
+        "drawer"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-32.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
       },
       "categories": [
         "calendar"

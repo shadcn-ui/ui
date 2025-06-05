@@ -12,15 +12,20 @@ export default function Calendar11() {
   })
 
   return (
-    <Calendar
-      mode="range"
-      selected={dateRange}
-      onSelect={setDateRange}
-      numberOfMonths={2}
-      startMonth={new Date(2025, 5, 1)}
-      endMonth={new Date(2025, 6, 31)}
-      disableNavigation
-      className="rounded-lg border shadow-sm"
-    />
+    <div className="flex min-w-0 flex-col gap-2">
+      <Calendar
+        mode="range"
+        selected={dateRange}
+        onSelect={setDateRange}
+        numberOfMonths={2}
+        startMonth={new Date(2025, 5, 1)}
+        endMonth={new Date(2025, 6, 31)}
+        disableNavigation
+        className="rounded-lg border shadow-sm"
+      />
+      <div className="text-muted-foreground text-center text-xs">
+        We are open in June and July only.
+      </div>
+    </div>
   )
 }

@@ -26,7 +26,7 @@ function formatDate(date: Date | undefined) {
   })
 }
 
-export default function Calendar28() {
+export default function Calendar29() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("In 2 days")
   const [date, setDate] = React.useState<Date | undefined>(
@@ -43,6 +43,8 @@ export default function Calendar28() {
         <Input
           id="date"
           value={value}
+          placeholder="Tomorrow or next week"
+          className="pr-10"
           onChange={(e) => {
             setValue(e.target.value)
             const date = parseDate(e.target.value)
@@ -51,8 +53,12 @@ export default function Calendar28() {
               setMonth(date)
             }
           }}
-          placeholder="Tomorrow or next week"
-          className="pr-10"
+          onKeyDown={(e) => {
+            if (e.key === "ArrowDown") {
+              e.preventDefault()
+              setOpen(true)
+            }
+          }}
         />
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>

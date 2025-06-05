@@ -64,7 +64,7 @@ export default function Calendar26() {
           </Popover>
         </div>
         <div className="flex flex-col gap-3">
-          <Label htmlFor="time-from" className="px-1">
+          <Label htmlFor="time-from" className="invisible px-1">
             From
           </Label>
           <Input
@@ -116,7 +116,7 @@ export default function Calendar26() {
           </Popover>
         </div>
         <div className="flex flex-col gap-3">
-          <Label htmlFor="time-to" className="px-1">
+          <Label htmlFor="time-to" className="invisible px-1">
             To
           </Label>
           <Input

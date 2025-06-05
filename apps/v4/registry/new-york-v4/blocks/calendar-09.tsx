@@ -20,6 +20,7 @@ export default function Calendar09() {
       numberOfMonths={2}
       disabled={{ dayOfWeek: [0, 6] }}
       className="rounded-lg border shadow-sm"
+      excludeDisabled
     />
   )
 }

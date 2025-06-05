@@ -49,6 +49,8 @@ export default function Calendar28() {
         <Input
           id="date"
           value={value}
+          placeholder="June 01, 2025"
+          className="pr-10"
           onChange={(e) => {
             const date = new Date(e.target.value)
             setValue(e.target.value)
@@ -57,8 +59,12 @@ export default function Calendar28() {
               setMonth(date)
             }
           }}
-          placeholder="June 01, 2025"
-          className="pr-10"
+          onKeyDown={(e) => {
+            if (e.key === "ArrowDown") {
+              e.preventDefault()
+              setOpen(true)
+            }
+          }}
         />
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
@@ -71,7 +77,12 @@ export default function Calendar28() {
               <span className="sr-only">Select date</span>
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto overflow-hidden p-0" align="end">
+          <PopoverContent
+            className="w-auto overflow-hidden p-0"
+            align="end"
+            alignOffset={-8}
+            sideOffset={10}
+          >
             <Calendar
               mode="single"
               selected={date}

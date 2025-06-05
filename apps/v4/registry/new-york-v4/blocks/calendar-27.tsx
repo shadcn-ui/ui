@@ -66,11 +66,11 @@ const total = chartData.reduce((acc, curr) => acc + curr.visitors, 0)
 const chartConfig = {
   visitors: {
     label: "Visitors",
-    color: "oklch(0.62 0.19 260)",
+    color: "var(--color-primary)",
   },
 } satisfies ChartConfig
 
-export default function Calendar26() {
+export default function Calendar27() {
   const [range, setRange] = React.useState<DateRange | undefined>({
     from: new Date(2025, 5, 5),
     to: new Date(2025, 5, 20),

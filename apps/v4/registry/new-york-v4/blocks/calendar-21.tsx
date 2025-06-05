@@ -19,7 +19,7 @@ export default function Calendar21() {
       onSelect={setRange}
       numberOfMonths={1}
       captionLayout="dropdown"
-      className="rounded-lg border shadow-sm [--cell-size:--spacing(13)]"
+      className="rounded-lg border shadow-sm [--cell-size:--spacing(11)] md:[--cell-size:--spacing(13)]"
       formatters={{
         formatMonthDropdown: (date) => {
           return date.toLocaleString("default", { month: "long" })
