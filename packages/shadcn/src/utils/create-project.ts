@@ -226,7 +226,7 @@ async function createNextProject(
 
   try {
     await execa(
-      "npx",
+      "npx --prefix .",
       [`create-next-app@${options.version}`, projectPath, "--silent", ...args],
       {
         cwd: options.cwd,
@@ -234,6 +234,7 @@ async function createNextProject(
     )
   } catch (error) {
     logger.break()
+    logger.error(error)
     logger.error(
       `Something went wrong creating a new Next.js project. Please try again.`
     )

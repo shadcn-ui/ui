@@ -118,11 +118,11 @@ export const init = new Command()
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
+        isNewProject: false,
+        style: "index",
         ...opts, /** @fixed Place this before setting cwd to ensure the resolved cwd don't get overridden. */
         cwd: path.resolve(opts.cwd),
-        isNewProject: false,
         components,
-        style: "index",
       })
 
       // We need to check if we're initializing with a new style.

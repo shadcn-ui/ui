@@ -646,61 +646,6 @@ importers:
         specifier: ^6.6.3
         version: 6.7.0(postcss@8.5.1)(ts-node@10.9.2(@types/node@22.13.0)(typescript@5.7.3))(typescript@5.7.3)
 
-  packages/my-app:
-    dependencies:
-      class-variance-authority:
-        specifier: ^0.7.1
-        version: 0.7.1
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
-      lucide-react:
-        specifier: ^0.511.0
-        version: 0.511.0(react@19.0.0)
-      next:
-        specifier: 15.3.3
-        version: 15.3.3(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.0.0(react@19.0.0)
-      tailwind-merge:
-        specifier: ^3.3.0
-        version: 3.3.0
-    devDependencies:
-      '@eslint/eslintrc':
-        specifier: ^3
-        version: 3.2.0
-      '@tailwindcss/postcss':
-        specifier: ^4
-        version: 4.0.2
-      '@types/node':
-        specifier: ^20
-        version: 20.17.16
-      '@types/react':
-        specifier: ^19
-        version: 19.0.8
-      '@types/react-dom':
-        specifier: ^19
-        version: 19.0.3(@types/react@19.0.8)
-      eslint:
-        specifier: ^9
-        version: 9.19.0(jiti@2.4.2)
-      eslint-config-next:
-        specifier: 15.3.3
-        version: 15.3.3(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
-      tailwindcss:
-        specifier: ^4
-        version: 4.0.7
-      tw-animate-css:
-        specifier: ^1.2.4
-        version: 1.2.4
-      typescript:
-        specifier: ^5
-        version: 5.7.3
-
   packages/shadcn:
     dependencies:
       '@antfu/ni':
@@ -806,6 +751,61 @@ importers:
       typescript:
         specifier: ^4.9.3
         version: 4.9.5
+
+  packages/shadcn/trial/my-app-3:
+    dependencies:
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      lucide-react:
+        specifier: ^0.511.0
+        version: 0.511.0(react@19.0.0)
+      next:
+        specifier: 15.3.3
+        version: 15.3.3(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      tailwind-merge:
+        specifier: ^3.3.0
+        version: 3.3.0
+    devDependencies:
+      '@eslint/eslintrc':
+        specifier: ^3
+        version: 3.2.0
+      '@tailwindcss/postcss':
+        specifier: ^4
+        version: 4.0.2
+      '@types/node':
+        specifier: ^20
+        version: 20.17.16
+      '@types/react':
+        specifier: ^19
+        version: 19.0.8
+      '@types/react-dom':
+        specifier: ^19
+        version: 19.0.3(@types/react@19.0.8)
+      eslint:
+        specifier: ^9
+        version: 9.19.0(jiti@2.4.2)
+      eslint-config-next:
+        specifier: 15.3.3
+        version: 15.3.3(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
+      tailwindcss:
+        specifier: ^4
+        version: 4.0.7
+      tw-animate-css:
+        specifier: ^1.2.4
+        version: 1.2.4
+      typescript:
+        specifier: ^5
+        version: 5.7.3
 
 packages:
 
@@ -16153,7 +16153,7 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  next@15.3.3(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  next@15.3.3(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@next/env': 15.3.3
       '@swc/counter': 0.1.3
@@ -16163,7 +16163,7 @@ snapshots:
       postcss: 8.4.31
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
-      styled-jsx: 5.1.6(@babel/core@7.26.7)(react@19.0.0)
+      styled-jsx: 5.1.6(react@19.0.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.3.3
       '@next/swc-darwin-x64': 15.3.3
@@ -17725,6 +17725,11 @@ snapshots:
       react: 19.0.0
     optionalDependencies:
       '@babel/core': 7.26.7
+
+  styled-jsx@5.1.6(react@19.0.0):
+    dependencies:
+      client-only: 0.0.1
+      react: 19.0.0
 
   sucrase@3.35.0:
     dependencies:
