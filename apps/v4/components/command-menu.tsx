@@ -40,7 +40,7 @@ export function CommandMenu({
 }: DialogProps & {
   tree: typeof source.pageTree
   colors: ColorPalette[]
-  blocks: { name: string; description: string; categories: string[] }[]
+  blocks?: { name: string; description: string; categories: string[] }[]
 }) {
   const router = useRouter()
   const isMac = useIsMac()
