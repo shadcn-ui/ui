@@ -20,8 +20,9 @@ export function OpenInV0Button({
       {...props}
     >
       <a
-        href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${process.env.NEXT_PUBLIC_APP_URL}/r/styles/${V0_STYLE}/${name}.json`}
+        href={`${process.env.NEXT_PUBLIC_V0_URL ?? 'http://localhost:3000'}/chat/api/open?url=${process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:4000'}/r/styles/${V0_STYLE}/${name}.json`}
         target="_blank"
+        rel="noopener noreferrer"
       >
         Open in <Icons.v0 className="size-5" />
       </a>
