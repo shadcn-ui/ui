@@ -76,6 +76,14 @@ export function CommandMenu({
     [setSelectedType, setCopyPayload]
   )
 
+  const handleBlockHighlight = React.useCallback(
+    (block: { name: string; description: string; categories: string[] }) => {
+      setSelectedType("block")
+      setCopyPayload(`${packageManager} dlx shadcn@latest add ${block.name}`)
+    },
+    [setSelectedType, setCopyPayload, packageManager]
+  )
+
   const runCommand = React.useCallback((command: () => unknown) => {
     setOpen(false)
     command()
@@ -103,6 +111,13 @@ export function CommandMenu({
             copyToClipboardWithMeta(copyPayload, {
               name: "copy_color",
               properties: { color: copyPayload },
+            })
+          }
+
+          if (selectedType === "block") {
+            copyToClipboardWithMeta(copyPayload, {
+              name: "copy_npm_command",
+              properties: { command: copyPayload, pm: packageManager },
             })
           }
 
@@ -238,8 +253,7 @@ export function CommandMenu({
                   key={block.name}
                   value={block.name}
                   onHighlight={() => {
-                    setSelectedType("block")
-                    setCopyPayload(block.name)
+                    handleBlockHighlight(block)
                   }}
                   keywords={[
                     "block",
