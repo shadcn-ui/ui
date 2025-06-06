@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-32",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "description": "Date picker in a drawer",
+  "registryDependencies": [
+    "calendar",
+    "button",
+    "drawer"
+  ],
+  "files": [
+    {
+      "path": "blocks/calendar-32.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { CalendarPlusIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/default/ui/button\"\nimport { Calendar } from \"@/registry/default/ui/calendar\"\nimport {\n  Drawer,\n  DrawerContent,\n  DrawerDescription,\n  DrawerHeader,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/registry/default/ui/drawer\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport default function Calendar32() {\n  const [open, setOpen] = React.useState(false)\n  const [date, setDate] = React.useState<Date | undefined>(undefined)\n\n  return (\n    <div className=\"flex flex-col gap-3\">\n      <Label htmlFor=\"date\" className=\"px-1\">\n        Date of birth\n      </Label>\n      <Drawer open={open} onOpenChange={setOpen}>\n        <DrawerTrigger asChild>\n          <Button\n            variant=\"outline\"\n            id=\"date\"\n            className=\"w-48 justify-between font-normal\"\n          >\n            {date ? date.toLocaleDateString() : \"Select date\"}\n            <CalendarPlusIcon />\n          </Button>\n        </DrawerTrigger>\n        <DrawerContent className=\"w-auto overflow-hidden p-0\">\n          <DrawerHeader className=\"sr-only\">\n            <DrawerTitle>Select date</DrawerTitle>\n            <DrawerDescription>Set your date of birth</DrawerDescription>\n          </DrawerHeader>\n          <Calendar\n            mode=\"single\"\n            selected={date}\n            captionLayout=\"dropdown\"\n            onSelect={(date) => {\n              setDate(date)\n              setOpen(false)\n            }}\n            className=\"mx-auto [--cell-size:clamp(0px,calc(100vw/7.5),52px)]\"\n          />\n        </DrawerContent>\n      </Drawer>\n      <div className=\"text-muted-foreground px-1 text-sm\">\n        This example works best on mobile.\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "meta": {
+    "iframeHeight": "600px",
+    "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    "mobile": "component"
+  },
+  "categories": [
+    "calendar",
+    "date"
+  ]
+}
