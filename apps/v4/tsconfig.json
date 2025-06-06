@@ -18,7 +18,6 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
       "react": ["./node_modules/@types/react"]

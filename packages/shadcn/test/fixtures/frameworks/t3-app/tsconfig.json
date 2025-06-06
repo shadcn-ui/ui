@@ -24,7 +24,6 @@
     "incremental": true,
 
     /* Path Aliases */
-    "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
     }

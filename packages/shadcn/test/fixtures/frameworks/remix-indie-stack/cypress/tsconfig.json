@@ -10,7 +10,6 @@
     "../node_modules/@testing-library/cypress"
   ],
   "compilerOptions": {
-    "baseUrl": "./",
     "noEmit": true,
     "types": ["node", "cypress", "@testing-library/cypress"],
     "esModuleInterop": true,
