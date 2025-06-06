@@ -5970,6 +5970,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "calendar-hijri": {
+    name: "calendar-hijri",
+    description: "A Persian calendar.",
+    type: "registry:example",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/examples/calendar-hijri.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/calendar-hijri.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+  },
   "sidebar-demo": {
     name: "sidebar-demo",
     description: "",

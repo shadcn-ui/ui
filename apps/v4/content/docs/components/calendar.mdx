@@ -18,10 +18,6 @@ We have built a collection of 30+ calendar blocks that you can use to build your
 
 See all calendar blocks in the [Blocks Library](/blocks/calendar) page.
 
-## About
-
-The `Calendar` component is built on top of [React DayPicker](https://react-day-picker.js.org).
-
 ## Installation
 
 <CodeTabs>
@@ -78,18 +74,84 @@ return (
     mode="single"
     selected={date}
     onSelect={setDate}
-    className="rounded-md border"
+    className="rounded-lg border"
   />
 )
 ```
 
 See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
 
+## About
+
+The `Calendar` component is built on top of [React DayPicker](https://react-day-picker.js.org).
+
+## Customization
+
+See the [React DayPicker](https://react-day-picker.js.org/docs/customization) documentation for more information on how to customize the `Calendar` component.
+
 ## Date Picker
 
 You can use the `<Calendar>` component to build a date picker. See the [Date Picker](/docs/components/date-picker) page for more information.
 
+## Persian / Hijri / Jalali Calendar
+
+To use the Persian calendar, edit `components/ui/calendar.tsx` and replace `react-day-picker` with `react-day-picker/persian`.
+
+```diff
+- import { DayPicker } from 'react-day-picker';
++ import { DayPicker } from 'react-day-picker/persian';
+```
+
+<ComponentPreview
+  name="calendar-hijri"
+  title="Persian / Hijri / Jalali Calendar"
+  description="A Persian calendar."
+/>
+
 ## Examples
+
+### Range Calendar
+
+<ComponentPreview
+  name="calendar-02"
+  title="Range Calendar"
+  description="A calendar showing the current date and range selection."
+  className="**:[.preview]:h-auto lg:**:[.preview]:h-[450px]"
+/>
+
+### Month and Year Selector
+
+<ComponentPreview
+  name="calendar-13"
+  title="Month and Year Selector"
+  description="A calendar with month and year dropdowns."
+/>
+
+### Date of Birth Picker
+
+<ComponentPreview
+  name="calendar-22"
+  title="Date of Birth Picker"
+  description="A calendar with date of birth picker."
+/>
+
+### Date and Time Picker
+
+<ComponentPreview
+  name="calendar-24"
+  title="Date and Time Picker"
+  description="A calendar with date and time picker."
+/>
+
+### Natural Language Picker
+
+This component uses the `chrono-node` library to parse natural language dates.
+
+<ComponentPreview
+  name="calendar-29"
+  title="Natural Language Picker"
+  description="A calendar with natural language picker."
+/>
 
 ### Form
 
@@ -113,7 +175,13 @@ Next, follow the [React DayPicker](https://daypicker.dev/upgrading) upgrade guid
 
 #### Installing Blocks
 
-After upgrading the `Calendar` component, you can install the new blocks by running the `shadcn@latest add` command. This will install the latest version of the calendar blocks.
+After upgrading the `Calendar` component, you can install the new blocks by running the `shadcn@latest add` command.
+
+```bash
+npx shadcn@latest add calendar-02
+```
+
+This will install the latest version of the calendar blocks.
 
 ### Tailwind v3
 
@@ -133,7 +201,7 @@ import {
 import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/registry/new-york/ui/button"
 
 function Calendar({
   className,
@@ -160,42 +228,41 @@ function Calendar({
       )}
       captionLayout={captionLayout}
       formatters={{
-        formatMonthDropdown: (date) => {
-          return date.toLocaleString("default", { month: "short" })
-        },
+        formatMonthDropdown: (date) =>
+          date.toLocaleString("default", { month: "short" }),
         ...formatters,
       }}
       classNames={{
         root: cn("w-fit", defaultClassNames.root),
         months: cn(
-          "flex gap-4 flex-col md:flex-row relative",
+          "relative flex flex-col gap-4 md:flex-row",
           defaultClassNames.months
         ),
-        month: cn("flex flex-col w-full gap-4", defaultClassNames.month),
+        month: cn("flex w-full flex-col gap-4", defaultClassNames.month),
         nav: cn(
-          "flex items-center gap-1 w-full absolute top-0 inset-x-0 justify-between",
+          "absolute inset-x-0 top-0 flex w-full items-center justify-between gap-1",
           defaultClassNames.nav
         ),
         button_previous: cn(
           buttonVariants({ variant: buttonVariant }),
-          "size-[--cell-size] aria-disabled:opacity-50 p-0 select-none",
+          "h-[--cell-size] w-[--cell-size] select-none p-0 aria-disabled:opacity-50",
           defaultClassNames.button_previous
         ),
         button_next: cn(
           buttonVariants({ variant: buttonVariant }),
-          "size-[--cell-size] aria-disabled:opacity-50 p-0 select-none",
+          "h-[--cell-size] w-[--cell-size] select-none p-0 aria-disabled:opacity-50",
           defaultClassNames.button_next
         ),
         month_caption: cn(
-          "flex items-center justify-center h-[--cell-size] w-full px-[--cell-size]",
+          "flex h-[--cell-size] w-full items-center justify-center px-[--cell-size]",
           defaultClassNames.month_caption
         ),
         dropdowns: cn(
-          "w-full flex items-center text-sm font-medium justify-center h-[--cell-size] gap-1.5",
+          "flex h-[--cell-size] w-full items-center justify-center gap-1.5 text-sm font-medium",
           defaultClassNames.dropdowns
         ),
         dropdown_root: cn(
-          "relative has-focus:border-ring border border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] rounded-md",
+          "has-focus:border-ring border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] relative rounded-md border",
           defaultClassNames.dropdown_root
         ),
         dropdown: cn("absolute inset-0 opacity-0", defaultClassNames.dropdown),
@@ -203,34 +270,34 @@ function Calendar({
           "select-none font-medium",
           captionLayout === "label"
             ? "text-sm"
-            : "rounded-md pl-2 pr-1 flex items-center gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5",
+            : "[&>svg]:text-muted-foreground flex h-8 items-center gap-1 rounded-md pl-2 pr-1 text-sm [&>svg]:size-3.5",
           defaultClassNames.caption_label
         ),
         table: "w-full border-collapse",
         weekdays: cn("flex", defaultClassNames.weekdays),
         weekday: cn(
-          "text-muted-foreground rounded-md flex-1 font-normal text-[0.8rem] select-none",
+          "text-muted-foreground flex-1 select-none rounded-md text-[0.8rem] font-normal",
           defaultClassNames.weekday
         ),
-        week: cn("flex w-full mt-2", defaultClassNames.week),
+        week: cn("mt-2 flex w-full", defaultClassNames.week),
         week_number_header: cn(
-          "select-none w-[--cell-size]",
+          "w-[--cell-size] select-none",
           defaultClassNames.week_number_header
         ),
         week_number: cn(
-          "text-[0.8rem] select-none text-muted-foreground",
+          "text-muted-foreground select-none text-[0.8rem]",
           defaultClassNames.week_number
         ),
         day: cn(
-          "relative w-full h-full p-0 text-center [&:first-child[data-selected=true]_button]:rounded-l-md [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square select-none",
+          "group/day relative aspect-square h-full w-full select-none p-0 text-center [&:first-child[data-selected=true]_button]:rounded-l-md [&:last-child[data-selected=true]_button]:rounded-r-md",
           defaultClassNames.day
         ),
         range_start: cn(
-          "rounded-l-md bg-accent",
+          "bg-accent rounded-l-md",
           defaultClassNames.range_start
         ),
         range_middle: cn("rounded-none", defaultClassNames.range_middle),
-        range_end: cn("rounded-r-md bg-accent", defaultClassNames.range_end),
+        range_end: cn("bg-accent rounded-r-md", defaultClassNames.range_end),
         today: cn(
           "bg-accent text-accent-foreground rounded-md data-[selected=true]:rounded-none",
           defaultClassNames.today
@@ -323,7 +390,7 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-        "data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground data-[range-middle=true]:bg-accent data-[range-middle=true]:text-accent-foreground data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50 dark:hover:text-accent-foreground flex aspect-square size-auto w-full min-w-[--cell-size] flex-col gap-1 leading-none font-normal group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px] data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md data-[range-start=true]:rounded-l-md [&>span]:text-xs [&>span]:opacity-70",
+        "data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground data-[range-middle=true]:bg-accent data-[range-middle=true]:text-accent-foreground data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50 flex aspect-square h-auto w-full min-w-[--cell-size] flex-col gap-1 font-normal leading-none data-[range-end=true]:rounded-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px] [&>span]:text-xs [&>span]:opacity-70",
         defaultClassNames.day,
         className
       )}
@@ -345,21 +412,8 @@ Then follow the [React DayPicker](https://daypicker.dev/upgrading) upgrade guide
 
 After upgrading the `Calendar` component, you can install the new blocks by running the `shadcn@latest add` command.
 
-**Note: For Tailwind v3, you will need to use the full registry URL when installing the blocks.**
-
 ```bash
--  ✅ npx shadcn@latest add https://ui.shadcn.com/r/styles/new-york-v4/calendar-08.json
--  ❌ npx shadcn@latest add calendar-08
+npx shadcn@latest add calendar-02
 ```
 
-This will install the **Tailwind v4** version of the calendar blocks. You can make it compatible by making the following changes to your blocks file.
-
-- Replace `[--cell-size:--spacing(8)]` with `(--cell-size:calc(0.25*8rem)))` where `8` is the spacing value.
-- Replace child selectors with `&`.
-
-```diff showLineNumbers
-- *:[div]:w-full
-+ [&_div]:w-full
-```
-
-These are standard Tailwind v4 upgrade steps.
+This will install the latest version of the calendar blocks.
