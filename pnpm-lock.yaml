@@ -523,6 +523,9 @@ importers:
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
+      chrono-node:
+        specifier: ^2.8.2
+        version: 2.8.2
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
@@ -556,6 +559,9 @@ importers:
       jotai:
         specifier: ^2.1.0
         version: 2.11.3(@types/react@18.3.18)(react@18.3.1)
+      little-date:
+        specifier: ^1.0.0
+        version: 1.0.0
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -578,8 +584,8 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1
       react-day-picker:
-        specifier: ^8.7.1
-        version: 8.10.1(date-fns@2.30.0)(react@18.3.1)
+        specifier: ^9.7.0
+        version: 9.7.0(react@18.3.1)
       react-dom:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
@@ -8049,12 +8055,6 @@ packages:
   rc@1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
-
-  react-day-picker@8.10.1:
-    resolution: {integrity: sha512-TMx7fNbhLk15eqcMt+7Z7S2KF7mfTId/XJDjKE8f+IUcFn0l08/kI4FiYTL/0yuOLmEcbR4Fwe3GJf/NiiMnPA==}
-    peerDependencies:
-      date-fns: ^2.28.0 || ^3.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
   react-day-picker@9.7.0:
     resolution: {integrity: sha512-urlK4C9XJZVpQ81tmVgd2O7lZ0VQldZeHzNejbwLWZSkzHH498KnArT0EHNfKBOWwKc935iMLGZdxXPRISzUxQ==}
@@ -18660,9 +18660,11 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  react-day-picker@8.10.1(date-fns@2.30.0)(react@18.3.1):
+  react-day-picker@9.7.0(react@18.3.1):
     dependencies:
-      date-fns: 2.30.0
+      '@date-fns/tz': 1.2.0
+      date-fns: 4.1.0
+      date-fns-jalali: 4.1.0-0
       react: 18.3.1
 
   react-day-picker@9.7.0(react@19.1.0):
