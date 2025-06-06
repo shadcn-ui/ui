@@ -42,6 +42,20 @@ describe("get tailwindcss file", async () => {
       await getTailwindCssFile(
         path.resolve(__dirname, `../fixtures/frameworks/${name}`)
       )
-    ).toBe(file)
+    ).toEqual({
+      file,
+      prefix: null,
+    })
+  })
+
+  test(`getTailwindCssFile(config-v4) -> tailwind.css`, async () => {
+    expect(
+      await getTailwindCssFile(
+        path.resolve(__dirname, `../fixtures/config-v4`)
+      )
+    ).toEqual({
+      file: "tailwind.css",
+      prefix: "shadcn",
+    })
   })
 })
