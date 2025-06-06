@@ -244,39 +244,41 @@ export function CommandMenu({
                 ))}
               </CommandGroup>
             ))}
-            <CommandGroup
-              heading="Blocks"
-              className="!p-0 [&_[cmdk-group-heading]]:!p-3"
-            >
-              {blocks.map((block) => (
-                <CommandMenuItem
-                  key={block.name}
-                  value={block.name}
-                  onHighlight={() => {
-                    handleBlockHighlight(block)
-                  }}
-                  keywords={[
-                    "block",
-                    block.name,
-                    block.description,
-                    ...block.categories,
-                  ]}
-                  onSelect={() => {
-                    runCommand(() =>
-                      router.push(
-                        `/blocks/${block.categories[0]}#${block.name}`
+            {blocks?.length ? (
+              <CommandGroup
+                heading="Blocks"
+                className="!p-0 [&_[cmdk-group-heading]]:!p-3"
+              >
+                {blocks.map((block) => (
+                  <CommandMenuItem
+                    key={block.name}
+                    value={block.name}
+                    onHighlight={() => {
+                      handleBlockHighlight(block)
+                    }}
+                    keywords={[
+                      "block",
+                      block.name,
+                      block.description,
+                      ...block.categories,
+                    ]}
+                    onSelect={() => {
+                      runCommand(() =>
+                        router.push(
+                          `/blocks/${block.categories[0]}#${block.name}`
+                        )
                       )
-                    )
-                  }}
-                >
-                  <SquareDashedIcon />
-                  {block.description}
-                  <span className="text-muted-foreground ml-auto font-mono text-xs font-normal tabular-nums">
-                    {block.name}
-                  </span>
-                </CommandMenuItem>
-              ))}
-            </CommandGroup>
+                    }}
+                  >
+                    <SquareDashedIcon />
+                    {block.description}
+                    <span className="text-muted-foreground ml-auto font-mono text-xs font-normal tabular-nums">
+                      {block.name}
+                    </span>
+                  </CommandMenuItem>
+                ))}
+              </CommandGroup>
+            ) : null}
           </CommandList>
         </Command>
         <div className="text-muted-foreground absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-neutral-100 bg-neutral-50 px-4 text-xs font-medium dark:border-t-neutral-700 dark:bg-neutral-800">
