@@ -588,10 +588,16 @@ export function toAliasedImport(
   rel = rel.split(path.sep).join("/") // e.g. "button/index.tsx"
 
   // 3️⃣ Strip code-file extensions, keep others (css, json, etc.)
-  const ext = path.posix.extname(rel)
+  //    We use `lastIndexOf('.')` so that multi-dot filenames (e.g. "message-demo.const.tsx") are split correctly on the final dot.
+  const lastDotIndex = rel.lastIndexOf(".")
+  let ext = ""
+  let noExt = rel
+  if (lastDotIndex !== -1) {
+    ext = rel.slice(lastDotIndex)      // e.g. ".tsx"
+    noExt = rel.slice(0, lastDotIndex) // e.g. "message-demo.const"
+  }
   const codeExts = [".ts", ".tsx", ".js", ".jsx"]
   const keepExt = codeExts.includes(ext) ? "" : ext
-  let noExt = rel.slice(0, rel.length - ext.length)
 
   // 4️⃣ Collapse "/index" to its directory
   if (noExt.endsWith("/index")) {
