@@ -125,7 +125,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     [
       ...Object.keys(packageJson?.dependencies ?? {}),
       ...Object.keys(packageJson?.devDependencies ?? {}),
-    ].find((dep) => dep.startsWith("@tanstack/start"))
+    ].find((dep) => dep.startsWith("@tanstack/react-start"))
   ) {
     type.framework = FRAMEWORKS["tanstack-start"]
     return type
