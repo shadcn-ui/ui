@@ -3,7 +3,7 @@ import { expect, test } from "vitest"
 import { transform } from "../../src/utils/transformers"
 
 
-test.only('transform nested workspace folder for utils, website/src/utils', async () => {
+test('transform nested workspace folder for utils, website/src/utils', async () => {
   expect(
     await transform({
       filename: "test.ts",
