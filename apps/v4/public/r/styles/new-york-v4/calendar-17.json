@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-17",
+  "type": "registry:block",
+  "description": "With time picker inline",
+  "registryDependencies": [
+    "calendar",
+    "card",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/blocks/calendar-17.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\nimport { Card, CardContent, CardFooter } from \"@/registry/new-york-v4/ui/card\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\nimport { Label } from \"@/registry/new-york-v4/ui/label\"\n\nexport default function Calendar17() {\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(2025, 5, 12)\n  )\n\n  return (\n    <Card className=\"w-fit py-4\">\n      <CardContent className=\"px-4\">\n        <Calendar\n          mode=\"single\"\n          selected={date}\n          onSelect={setDate}\n          className=\"bg-transparent p-0 [--cell-size:--spacing(10.5)]\"\n        />\n      </CardContent>\n      <CardFooter className=\"flex gap-2 border-t px-4 !pt-4 *:[div]:w-full\">\n        <div>\n          <Label htmlFor=\"time-from\" className=\"sr-only\">\n            Start Time\n          </Label>\n          <Input\n            id=\"time-from\"\n            type=\"time\"\n            step=\"1\"\n            defaultValue=\"10:30:00\"\n            className=\"appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none\"\n          />\n        </div>\n        <span>-</span>\n        <div>\n          <Label htmlFor=\"time-to\" className=\"sr-only\">\n            End Time\n          </Label>\n          <Input\n            id=\"time-to\"\n            type=\"time\"\n            step=\"1\"\n            defaultValue=\"12:30:00\"\n            className=\"appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none\"\n          />\n        </div>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "iframeHeight": "600px",
+    "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+    "mobile": "component"
+  },
+  "categories": [
+    "calendar",
+    "date"
+  ]
+}
