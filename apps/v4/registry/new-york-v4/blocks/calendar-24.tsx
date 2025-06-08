@@ -20,14 +20,14 @@ export default function Calendar24() {
   return (
     <div className="flex gap-4">
       <div className="flex flex-col gap-3">
-        <Label htmlFor="date" className="px-1">
+        <Label htmlFor="dateTime" className="px-1">
           Date
         </Label>
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <Button
               variant="outline"
-              id="date"
+              id="dateTime"
               className="w-32 justify-between font-normal"
             >
               {date ? date.toLocaleDateString() : "Select date"}
