@@ -1,5 +1,6 @@
 import path from "path"
 import { migrateIcons } from "@/src/migrations/migrate-icons"
+import { migrateRadix } from "@/src/migrations/migrate-radix"
 import { preFlightMigrate } from "@/src/preflights/preflight-migrate"
 import * as ERRORS from "@/src/utils/errors"
 import { handleError } from "@/src/utils/handle-error"
@@ -11,6 +12,10 @@ export const migrations = [
   {
     name: "icons",
     description: "migrate your ui components to a different icon library.",
+  },
+  {
+    name: "radix",
+    description: "migrate from individual Radix UI packages to the unified radix-ui package.",
   },
 ] as const
 
@@ -81,6 +86,10 @@ export const migrate = new Command()
 
       if (options.migration === "icons") {
         await migrateIcons(config)
+      }
+
+      if (options.migration === "radix") {
+        await migrateRadix(config)
       }
     } catch (error) {
       logger.break()
