@@ -4,9 +4,13 @@ import { notFound } from "next/navigation"
 import { registryItemSchema } from "shadcn/registry"
 import { z } from "zod"
 
+import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { siteConfig } from "@/www/config/site"
+
+export const revalidate = false
+export const dynamic = "force-static"
+export const dynamicParams = false
 
 const getCachedRegistryItem = React.cache(async (name: string) => {
   return await getRegistryItem(name)
@@ -30,13 +34,13 @@ export async function generateMetadata({
   const description = item.description
 
   return {
-    title: `${item.name}${item.description ? ` - ${item.description}` : ""}`,
+    title: item.description,
     description,
     openGraph: {
       title,
       description,
       type: "article",
-      url: absoluteUrl(`/blocks/${item.name}`),
+      url: absoluteUrl(`/view/${item.name}`),
       images: [
         {
           url: siteConfig.ogImage,
@@ -56,15 +60,18 @@ export async function generateMetadata({
   }
 }
 
-export const dynamicParams = false
-
 export async function generateStaticParams() {
-  const { Index } = await import("@/__registry__")
+  const { Index } = await import("@/registry/__index__")
   const index = z.record(registryItemSchema).parse(Index)
 
   return Object.values(index)
     .filter((block) =>
-      ["registry:block", "registry:component"].includes(block.type)
+      [
+        "registry:block",
+        "registry:component",
+        "registry:example",
+        "registry:internal",
+      ].includes(block.type)
     )
     .map((block) => ({
       name: block.name,
@@ -88,7 +95,7 @@ export default async function BlockPage({
 
   return (
     <>
-      <div className={cn("themes-wrapper bg-background", item.meta?.container)}>
+      <div className={cn("bg-background", item.meta?.container)}>
         <Component />
       </div>
     </>

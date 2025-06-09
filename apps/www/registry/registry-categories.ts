@@ -20,6 +20,16 @@ export const registryCategories = [
     hidden: false,
   },
   {
+    name: "Calendar",
+    slug: "calendar",
+    hidden: false,
+  },
+  {
+    name: "Date",
+    slug: "date",
+    hidden: true,
+  },
+  {
     name: "Charts",
     slug: "charts",
     hidden: true,
