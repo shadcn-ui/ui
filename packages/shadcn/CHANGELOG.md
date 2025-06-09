@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.6.1
+
+### Patch Changes
+
+- [#7573](https://github.com/shadcn-ui/ui/pull/7573) [`3119f94d47426dae860001a4cfb4ef23396dd41d`](https://github.com/shadcn-ui/ui/commit/3119f94d47426dae860001a4cfb4ef23396dd41d) Thanks [@shadcn](https://github.com/shadcn)! - update npm flag
+
 ## 2.6.0
 
 ### Minor Changes
