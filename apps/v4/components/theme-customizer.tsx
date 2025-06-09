@@ -166,17 +166,17 @@ export function CopyCodeButton({
 function CustomizerCode({ themeName }: { themeName: string }) {
   const [hasCopied, setHasCopied] = React.useState(false)
   const [tailwindVersion, setTailwindVersion] = React.useState("v4")
-  const activeThemeObj = React.useMemo(
+  const activeTheme = React.useMemo(
     () => baseColors.find((theme) => theme.name === themeName),
     [themeName]
   )
 
   const activeThemeOKLCH = React.useMemo(() => {
     return (
-      baseColorsOKLCH[activeThemeObj?.name as keyof typeof baseColorsOKLCH] ??
+      baseColorsOKLCH[activeTheme?.name as keyof typeof baseColorsOKLCH] ??
       baseColorsOKLCH["default"]
     )
-  }, [activeThemeObj])
+  }, [activeTheme])
 
   React.useEffect(() => {
     if (hasCopied) {
@@ -220,7 +220,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 onClick={() => {
                   copyToClipboardWithMeta(
                     tailwindVersion === "v3"
-                      ? getThemeCode(activeThemeObj, 0.65)
+                      ? getThemeCode(activeTheme, 0.65)
                       : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
                     {
                       name: "copy_theme_code",
@@ -300,7 +300,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 onClick={() => {
                   copyToClipboardWithMeta(
                     tailwindVersion === "v3"
-                      ? getThemeCode(activeThemeObj, 0.65)
+                      ? getThemeCode(activeTheme, 0.65)
                       : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
                     {
                       name: "copy_theme_code",
@@ -325,11 +325,11 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-                  {activeThemeObj?.cssVars.light["background"]};
+                  {activeTheme?.cssVars.light["background"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-                  {activeThemeObj?.cssVars.light["foreground"]};
+                  {activeTheme?.cssVars.light["foreground"]};
                 </span>
                 {[
                   "card",
@@ -344,8 +344,8 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                     <span data-line className="line">
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                       {
-                        activeThemeObj?.cssVars.light[
-                          prefix as keyof typeof activeThemeObj.cssVars.light
+                        activeTheme?.cssVars.light[
+                          prefix as keyof typeof activeTheme.cssVars.light
                         ]
                       }
                       ;
@@ -353,8 +353,8 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                     <span data-line className="line">
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
                       {
-                        activeThemeObj?.cssVars.light[
-                          `${prefix}-foreground` as keyof typeof activeThemeObj.cssVars.light
+                        activeTheme?.cssVars.light[
+                          `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
                         ]
                       }
                       ;
@@ -363,15 +363,15 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 ))}
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
-                  {activeThemeObj?.cssVars.light["border"]};
+                  {activeTheme?.cssVars.light["border"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
-                  {activeThemeObj?.cssVars.light["input"]};
+                  {activeTheme?.cssVars.light["input"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
-                  {activeThemeObj?.cssVars.light["ring"]};
+                  {activeTheme?.cssVars.light["ring"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--radius: 0.5rem;
@@ -382,8 +382,8 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                       <span data-line className="line">
                         &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                         {
-                          activeThemeObj?.cssVars.light[
-                            prefix as keyof typeof activeThemeObj.cssVars.light
+                          activeTheme?.cssVars.light[
+                            prefix as keyof typeof activeTheme.cssVars.light
                           ]
                         }
                         ;
@@ -402,11 +402,11 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-                  {activeThemeObj?.cssVars.dark["background"]};
+                  {activeTheme?.cssVars.dark["background"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-                  {activeThemeObj?.cssVars.dark["foreground"]};
+                  {activeTheme?.cssVars.dark["foreground"]};
                 </span>
                 {[
                   "card",
@@ -421,8 +421,8 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                     <span data-line className="line">
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                       {
-                        activeThemeObj?.cssVars.dark[
-                          prefix as keyof typeof activeThemeObj.cssVars.dark
+                        activeTheme?.cssVars.dark[
+                          prefix as keyof typeof activeTheme.cssVars.dark
                         ]
                       }
                       ;
@@ -430,8 +430,8 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                     <span data-line className="line">
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
                       {
-                        activeThemeObj?.cssVars.dark[
-                          `${prefix}-foreground` as keyof typeof activeThemeObj.cssVars.dark
+                        activeTheme?.cssVars.dark[
+                          `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
                         ]
                       }
                       ;
@@ -440,15 +440,15 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 ))}
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
-                  {activeThemeObj?.cssVars.dark["border"]};
+                  {activeTheme?.cssVars.dark["border"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
-                  {activeThemeObj?.cssVars.dark["input"]};
+                  {activeTheme?.cssVars.dark["input"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
-                  {activeThemeObj?.cssVars.dark["ring"]};
+                  {activeTheme?.cssVars.dark["ring"]};
                 </span>
                 {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
                   (prefix) => (
@@ -456,8 +456,8 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                       <span data-line className="line">
                         &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                         {
-                          activeThemeObj?.cssVars.dark[
-                            prefix as keyof typeof activeThemeObj.cssVars.dark
+                          activeTheme?.cssVars.dark[
+                            prefix as keyof typeof activeTheme.cssVars.dark
                           ]
                         }
                         ;
