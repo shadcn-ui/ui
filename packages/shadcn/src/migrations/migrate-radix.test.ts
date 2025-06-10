@@ -34,6 +34,7 @@ vi.mock("@/src/utils/logger", () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),
+    break: vi.fn(),
   },
 }))
 
@@ -67,11 +68,13 @@ export const Dialog = DialogPrimitive.Root
 export const Select = SelectPrimitive.Root`
 
     const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from "radix-ui";
+
 export const Dialog = DialogPrimitive.Root
 export const Select = SelectPrimitive.Root`
 
     const result = await migrateRadixFile(input)
-    expect(result.trim()).toBe(expected.trim())
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
   })
 
   it("should migrate named imports", async () => {
@@ -83,12 +86,14 @@ export const DialogTrigger = Trigger
 export const SelectContent = Content`
 
     const expected = `import { Root, Trigger, Content } from "radix-ui";
+
 export const DialogRoot = Root
 export const DialogTrigger = Trigger
 export const SelectContent = Content`
 
     const result = await migrateRadixFile(input)
-    expect(result.trim()).toBe(expected.trim())
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
   })
 
   it("should handle mixed import types", async () => {
@@ -100,13 +105,15 @@ export const Dialog = DialogPrimitive.Root
 export const Select = SelectRoot`
 
     const expected = `import { Dialog as DialogPrimitive, Root as SelectRoot } from "radix-ui";
+
 import { useState } from "react"
 
 export const Dialog = DialogPrimitive.Root
 export const Select = SelectRoot`
 
     const result = await migrateRadixFile(input)
-    expect(result.trim()).toBe(expected.trim())
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
   })
 
   it("should not modify non-Radix imports", async () => {
@@ -117,10 +124,11 @@ import * as DialogPrimitive from "@radix-ui/react-dialog"
 export const Dialog = DialogPrimitive.Root`
 
     const result = await migrateRadixFile(input)
-    expect(result).toContain('import React from "react"')
-    expect(result).toContain('import { clsx } from "clsx"')
-    expect(result).toContain('import { Dialog as DialogPrimitive } from "radix-ui"')
-    expect(result).not.toContain('@radix-ui/react-dialog')
+    expect(result.content).toContain('import React from "react"')
+    expect(result.content).toContain('import { clsx } from "clsx"')
+    expect(result.content).toContain('import { Dialog as DialogPrimitive } from "radix-ui"')
+    expect(result.content).not.toContain('@radix-ui/react-dialog')
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog"])
   })
 
   it("should handle files with no Radix imports", async () => {
@@ -130,7 +138,8 @@ import { clsx } from "clsx"
 export const Component = () => <div>Hello</div>`
 
     const result = await migrateRadixFile(input)
-    expect(result.trim()).toBe(input.trim())
+    expect(result.content.trim()).toBe(input.trim())
+    expect(result.replacedPackages).toEqual([])
   })
 
   it("should preserve import position in file", async () => {
@@ -149,7 +158,8 @@ import { useState } from "react"
 export const Dialog = DialogPrimitive.Root`
 
     const result = await migrateRadixFile(input)
-    expect(result.trim()).toBe(expected.trim())
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog"])
   })
 
   it("should handle multiple Radix imports without node removal errors", async () => {
@@ -165,13 +175,269 @@ export const Dialog = DialogPrimitive.Root`
     const expected = `"use client"
 
 import { DropdownMenu as DropdownMenuPrimitive, Dialog as DialogPrimitive } from "radix-ui";
+
 import { useState } from "react"
 
 export const DropdownMenu = DropdownMenuPrimitive.Root
 export const Dialog = DialogPrimitive.Root`
 
     const result = await migrateRadixFile(input)
-    expect(result.trim()).toBe(expected.trim())
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dropdown-menu", "@radix-ui/react-dialog"])
+  })
+
+  it("should preserve single quotes if used in original imports", async () => {
+    const input = `import * as DialogPrimitive from '@radix-ui/react-dialog'
+import * as SelectPrimitive from '@radix-ui/react-select'
+
+export const Dialog = DialogPrimitive.Root
+export const Select = SelectPrimitive.Root`
+
+    const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from 'radix-ui';
+
+export const Dialog = DialogPrimitive.Root
+export const Select = SelectPrimitive.Root`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
+  })
+
+  it("should preserve mixed quote styles from first import", async () => {
+    const input = `import * as DialogPrimitive from '@radix-ui/react-dialog'
+import * as SelectPrimitive from "@radix-ui/react-select"
+
+export const Dialog = DialogPrimitive.Root
+export const Select = SelectPrimitive.Root`
+
+    const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from 'radix-ui';
+
+export const Dialog = DialogPrimitive.Root
+export const Select = SelectPrimitive.Root`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
+  })
+
+  it("should handle type-only imports", async () => {
+    const input = `import type { ComponentProps } from "@radix-ui/react-dialog"
+import { type SelectProps, Root } from "@radix-ui/react-select"
+import * as DialogPrimitive from "@radix-ui/react-dialog"
+
+export type MyDialogProps = ComponentProps
+export type MySelectProps = SelectProps
+export const Dialog = DialogPrimitive.Root`
+
+    const expected = `import { type ComponentProps, type SelectProps, Root, Dialog as DialogPrimitive } from "radix-ui";
+
+export type MyDialogProps = ComponentProps
+export type MySelectProps = SelectProps
+export const Dialog = DialogPrimitive.Root`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
+  })
+
+  it("should handle mixed type and value imports", async () => {
+    const input = `import type { DialogProps } from "@radix-ui/react-dialog"
+import { Root, Trigger } from "@radix-ui/react-dialog"
+
+export type Props = DialogProps
+export const DialogRoot = Root`
+
+    const expected = `import { type DialogProps, Root, Trigger } from "radix-ui";
+
+export type Props = DialogProps
+export const DialogRoot = Root`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog"])
+  })
+
+  it("should handle type-only namespace imports", async () => {
+    const input = `import type * as DialogTypes from "@radix-ui/react-dialog"
+import * as DialogPrimitive from "@radix-ui/react-dialog"
+
+export type Props = DialogTypes.ComponentProps
+export const Dialog = DialogPrimitive.Root`
+
+    const expected = `import { type Dialog as DialogTypes, Dialog as DialogPrimitive } from "radix-ui";
+
+export type Props = DialogTypes.ComponentProps
+export const Dialog = DialogPrimitive.Root`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog"])
+  })
+
+  it("should not migrate @radix-ui/react-icons imports", async () => {
+    const input = `import { ChevronDownIcon, Cross2Icon } from "@radix-ui/react-icons"
+import * as DialogPrimitive from "@radix-ui/react-dialog"
+import { Root } from "@radix-ui/react-select"
+
+export const Dialog = DialogPrimitive.Root
+export const ChevronDown = ChevronDownIcon`
+
+    const expected = `import { ChevronDownIcon, Cross2Icon } from "@radix-ui/react-icons"
+import { Dialog as DialogPrimitive, Root } from "radix-ui";
+
+export const Dialog = DialogPrimitive.Root
+export const ChevronDown = ChevronDownIcon`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
+  })
+
+  it("should not migrate type imports from @radix-ui/react-icons", async () => {
+    const input = `import type { IconProps } from "@radix-ui/react-icons/dist/types"
+import type { ComponentProps } from "@radix-ui/react-dialog"
+import { Root } from "@radix-ui/react-dialog"
+
+export type MyIconProps = IconProps
+export type MyDialogProps = ComponentProps`
+
+    const expected = `import type { IconProps } from "@radix-ui/react-icons/dist/types"
+import { type ComponentProps, Root } from "radix-ui";
+
+export type MyIconProps = IconProps
+export type MyDialogProps = ComponentProps`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog"])
+  })
+
+  it("should handle mixed imports with icons and other radix packages", async () => {
+    const input = `import * as Icons from "@radix-ui/react-icons"
+import { ChevronDownIcon } from "@radix-ui/react-icons"
+import type { IconProps } from "@radix-ui/react-icons/dist/types"
+import * as DialogPrimitive from "@radix-ui/react-dialog"
+import { Root } from "@radix-ui/react-select"
+
+export const Dialog = DialogPrimitive.Root
+export const Icon = ChevronDownIcon
+export type Props = IconProps`
+
+    const expected = `import * as Icons from "@radix-ui/react-icons"
+import { ChevronDownIcon } from "@radix-ui/react-icons"
+import type { IconProps } from "@radix-ui/react-icons/dist/types"
+import { Dialog as DialogPrimitive, Root } from "radix-ui";
+
+export const Dialog = DialogPrimitive.Root
+export const Icon = ChevronDownIcon
+export type Props = IconProps`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
+  })
+
+  it("should handle multi-line imports", async () => {
+    const input = `import {
+  Root,
+  Trigger,
+  Content
+} from "@radix-ui/react-dialog"
+import {
+  Value,
+  Item
+} from "@radix-ui/react-select"
+
+export const DialogRoot = Root
+export const SelectValue = Value`
+
+    const expected = `import { Root, Trigger, Content, Value, Item } from "radix-ui";
+
+export const DialogRoot = Root
+export const SelectValue = Value`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
+  })
+
+  it("should handle multi-line imports with mixed formatting", async () => {
+    const input = `import {
+  Root as DialogRoot,
+  Trigger,
+  Content,
+} from "@radix-ui/react-dialog"
+import * as SelectPrimitive from "@radix-ui/react-select"
+
+export const Dialog = DialogRoot
+export const Select = SelectPrimitive.Root`
+
+    const expected = `import { Root as DialogRoot, Trigger, Content, Select as SelectPrimitive } from "radix-ui";
+
+export const Dialog = DialogRoot
+export const Select = SelectPrimitive.Root`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
+  })
+
+  it("should handle multi-line type imports", async () => {
+    const input = `import type {
+  ComponentProps,
+  DialogProps
+} from "@radix-ui/react-dialog"
+import {
+  type SelectProps,
+  Root
+} from "@radix-ui/react-select"
+
+export type Props = DialogProps`
+
+    const expected = `import { type ComponentProps, type DialogProps, type SelectProps, Root } from "radix-ui";
+
+export type Props = DialogProps`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog", "@radix-ui/react-select"])
+  })
+
+  it("should handle complex multi-line imports with comments and extra whitespace", async () => {
+    const input = `import {
+  Root,   // Main component
+  Trigger,
+  
+  Content,   // Content component
+} from "@radix-ui/react-dialog"
+
+export const DialogRoot = Root`
+
+    const expected = `import { Root, Trigger, Content } from "radix-ui";
+
+export const DialogRoot = Root`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog"])
+  })
+
+  it("should handle multi-line imports with block comments", async () => {
+    const input = `import {
+  Root, /* main dialog component */
+  Trigger,
+  Content /* dialog content */,
+} from "@radix-ui/react-dialog"
+
+export const DialogRoot = Root`
+
+    const expected = `import { Root, Trigger, Content } from "radix-ui";
+
+export const DialogRoot = Root`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog"])
   })
 })
 
@@ -201,7 +467,9 @@ describe("migrateRadix - package.json updates", () => {
         "other-package": "^1.0.0",
         "radix-ui": "latest"
       },
-      devDependencies: {}
+      devDependencies: {
+        "@radix-ui/react-toast": "^1.0.0"
+      }
     }
 
     // Mock package info
@@ -211,9 +479,14 @@ describe("migrateRadix - package.json updates", () => {
     // Mock file system
     mockFs.writeFile.mockResolvedValue(undefined)
     
-    // Mock fast-glob to return empty files
+    // Mock fast-glob to return files with Radix imports
     const fg = await import("fast-glob")
-    vi.mocked(fg.default).mockResolvedValue([])
+    vi.mocked(fg.default).mockResolvedValue(["dialog.tsx", "select.tsx"])
+    
+    // Mock file reads to return content with Radix imports
+    mockFs.readFile
+      .mockResolvedValueOnce('import * as DialogPrimitive from "@radix-ui/react-dialog"')
+      .mockResolvedValueOnce('import * as SelectPrimitive from "@radix-ui/react-select"')
     
     // Mock prompts to confirm migration
     const prompts = await import("prompts")
@@ -244,7 +517,10 @@ describe("migrateRadix - package.json updates", () => {
     vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
     
     const fg = await import("fast-glob")
-    vi.mocked(fg.default).mockResolvedValue([])
+    vi.mocked(fg.default).mockResolvedValue(["component.tsx"])
+    
+    // Mock file read to return content with no Radix imports
+    mockFs.readFile.mockResolvedValue('import React from "react"')
     
     const prompts = await import("prompts")
     vi.mocked(prompts.default).mockResolvedValue({ confirm: true })
@@ -263,7 +539,10 @@ describe("migrateRadix - package.json updates", () => {
     vi.mocked(getPackageInfo).mockReturnValue(null)
     
     const fg = await import("fast-glob")
-    vi.mocked(fg.default).mockResolvedValue([])
+    vi.mocked(fg.default).mockResolvedValue(["component.tsx"])
+    
+    // Mock file read
+    mockFs.readFile.mockResolvedValue('import React from "react"')
     
     const prompts = await import("prompts")
     vi.mocked(prompts.default).mockResolvedValue({ confirm: true })
@@ -291,13 +570,114 @@ describe("migrateRadix - package.json updates", () => {
     mockFs.writeFile.mockResolvedValue(undefined)
     
     const fg = await import("fast-glob")
-    vi.mocked(fg.default).mockResolvedValue([])
+    vi.mocked(fg.default).mockResolvedValue(["dialog.tsx"])
+    
+    // Mock file read to return content with Radix imports
+    mockFs.readFile.mockResolvedValue('import * as DialogPrimitive from "@radix-ui/react-dialog"')
     
     const prompts = await import("prompts")
     vi.mocked(prompts.default).mockResolvedValue({ confirm: true })
 
     await migrateRadix(mockConfig)
 
-    expect(logger.info).toHaveBeenCalledWith("  pnpm install")
+    expect(logger.info).toHaveBeenCalledWith("    pnpm install")
+  })
+
+  it("should only remove packages that were found in source files", async () => {
+    const mockPackageJson = {
+      name: "test-project", 
+      dependencies: {
+        "react": "^18.0.0",
+        "@radix-ui/react-dialog": "^1.0.0",
+        "@radix-ui/react-select": "^1.0.0",
+        "@radix-ui/react-toast": "^1.0.0", // This one is NOT in source files
+        "other-package": "^1.0.0"
+      }
+    }
+
+    const expectedPackageJson = {
+      name: "test-project",
+      dependencies: {
+        "react": "^18.0.0", 
+        "@radix-ui/react-toast": "^1.0.0", // Should remain since not found in source
+        "other-package": "^1.0.0",
+        "radix-ui": "latest"
+      }
+    }
+
+    const { getPackageInfo } = await import("@/src/utils/get-package-info")
+    vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
+    
+    const { getPackageManager } = await import("@/src/utils/get-package-manager")
+    vi.mocked(getPackageManager).mockResolvedValue("npm")
+    
+    mockFs.writeFile.mockResolvedValue(undefined)
+    
+    // Mock fast-glob to return files with only dialog and select imports
+    const fg = await import("fast-glob")
+    vi.mocked(fg.default).mockResolvedValue(["dialog.tsx"])
+    
+    // Mock file read to return content with only dialog and select
+    mockFs.readFile.mockResolvedValue(`
+      import * as DialogPrimitive from "@radix-ui/react-dialog"
+      import * as SelectPrimitive from "@radix-ui/react-select"
+      export const Dialog = DialogPrimitive.Root
+    `)
+    
+    const prompts = await import("prompts")
+    vi.mocked(prompts.default).mockResolvedValue({ confirm: true })
+
+    await migrateRadix(mockConfig)
+
+    expect(mockFs.writeFile).toHaveBeenCalledWith(
+      "/test-project/package.json",
+      JSON.stringify(expectedPackageJson, null, 2) + "\n"
+    )
+  })
+
+  it("should not remove @radix-ui/react-icons from package.json", async () => {
+    const mockPackageJson = {
+      name: "test-project", 
+      dependencies: {
+        "react": "^18.0.0",
+        "@radix-ui/react-dialog": "^1.0.0",
+        "@radix-ui/react-icons": "^1.3.0", // Should NOT be removed
+        "other-package": "^1.0.0"
+      }
+    }
+
+    const expectedPackageJson = {
+      name: "test-project",
+      dependencies: {
+        "react": "^18.0.0", 
+        "@radix-ui/react-icons": "^1.3.0", // Should remain
+        "other-package": "^1.0.0",
+        "radix-ui": "latest"
+      }
+    }
+
+    const { getPackageInfo } = await import("@/src/utils/get-package-info")
+    vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
+    
+    const { getPackageManager } = await import("@/src/utils/get-package-manager")
+    vi.mocked(getPackageManager).mockResolvedValue("npm")
+    
+    mockFs.writeFile.mockResolvedValue(undefined)
+    
+    const fg = await import("fast-glob")
+    vi.mocked(fg.default).mockResolvedValue(["dialog.tsx"])
+    
+    // Mock file read to return content with dialog imports but NOT icons
+    mockFs.readFile.mockResolvedValue('import * as DialogPrimitive from "@radix-ui/react-dialog"')
+    
+    const prompts = await import("prompts")
+    vi.mocked(prompts.default).mockResolvedValue({ confirm: true })
+
+    await migrateRadix(mockConfig)
+
+    expect(mockFs.writeFile).toHaveBeenCalledWith(
+      "/test-project/package.json",
+      JSON.stringify(expectedPackageJson, null, 2) + "\n"
+    )
   })
 })
