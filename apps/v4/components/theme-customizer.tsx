@@ -25,6 +25,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/registry/new-york-v4/ui/drawer"
+import { Input } from "@/registry/new-york-v4/ui/input"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import { ScrollArea, ScrollBar } from "@/registry/new-york-v4/ui/scroll-area"
 import {
@@ -57,23 +58,41 @@ const THEMES = baseColors.filter(
 )
 
 export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
-  const { activeTheme = "neutral", setActiveTheme } = useThemeConfig()
+  const {
+    activeTheme = "neutral",
+    setActiveTheme,
+    customColor,
+    setCustomColor,
+  } = useThemeConfig()
 
   return (
     <div className={cn("flex w-full items-center gap-2", className)}>
       <ScrollArea className="hidden max-w-[96%] md:max-w-[600px] lg:flex lg:max-w-none">
         <div className="flex items-center">
           {THEMES.map((theme) => (
-            <Button
-              key={theme.name}
-              variant="link"
-              size="sm"
-              data-active={activeTheme === theme.name}
-              className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 cursor-pointer items-center justify-center px-4 text-center text-base font-medium capitalize transition-colors hover:no-underline"
-              onClick={() => setActiveTheme(theme.name)}
-            >
-              {theme.name === "neutral" ? "Default" : theme.name}
-            </Button>
+            <span key={theme.name} className="flex items-center" >
+              <Button
+                key={theme.name}
+                variant="link"
+                size="sm"
+                data-active={activeTheme === theme.name}
+                className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 cursor-pointer items-center justify-center px-4 text-center text-base font-medium capitalize transition-colors hover:no-underline"
+                onClick={() => setActiveTheme(theme.name)}
+              >
+                {theme.name === "neutral" ? "Default" : theme.name}
+              </Button>
+              {theme.name === "custom" ? (
+                <Input
+                  type="color"
+                  id="Select color.."
+                  value={customColor}
+                  onChange={(e) => {
+                    console.log("color is : ", e.target.value);
+                    setCustomColor(e.target.value)
+                  }}
+                />
+              ) : null}
+            </span >
           ))}
         </div>
         <ScrollBar orientation="horizontal" className="invisible" />
