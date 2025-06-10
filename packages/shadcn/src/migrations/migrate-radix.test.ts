@@ -439,6 +439,175 @@ export const DialogRoot = Root`
     expect(result.content.trim()).toBe(expected.trim())
     expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog"])
   })
+
+  it("should handle real-world shadcn/ui patterns from registry files", async () => {
+    // This test captures all the actual import patterns found in the shadcn/ui registry
+    const input = `import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
+import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio"
+import * as AvatarPrimitive from "@radix-ui/react-avatar"
+import { Slot } from "@radix-ui/react-slot"
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
+import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
+import * as ContextMenuPrimitive from "@radix-ui/react-context-menu"
+import * as DialogPrimitive from "@radix-ui/react-dialog"
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
+import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
+import * as LabelPrimitive from "@radix-ui/react-label"
+import * as MenubarPrimitive from "@radix-ui/react-menubar"
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
+import * as PopoverPrimitive from "@radix-ui/react-popover"
+import * as ProgressPrimitive from "@radix-ui/react-progress"
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
+import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
+import * as SelectPrimitive from "@radix-ui/react-select"
+import * as SeparatorPrimitive from "@radix-ui/react-separator"
+import * as SliderPrimitive from "@radix-ui/react-slider"
+import * as SwitchPrimitive from "@radix-ui/react-switch"
+import * as TabsPrimitive from "@radix-ui/react-tabs"
+import * as TogglePrimitive from "@radix-ui/react-toggle"
+import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
+import * as TooltipPrimitive from "@radix-ui/react-tooltip"
+
+export const Accordion = AccordionPrimitive.Root
+export const AlertDialog = AlertDialogPrimitive.Root
+export const Button = Slot`
+
+    const expected = `import { Accordion as AccordionPrimitive, AlertDialog as AlertDialogPrimitive, AspectRatio as AspectRatioPrimitive, Avatar as AvatarPrimitive, Slot, Checkbox as CheckboxPrimitive, Collapsible as CollapsiblePrimitive, ContextMenu as ContextMenuPrimitive, Dialog as DialogPrimitive, DropdownMenu as DropdownMenuPrimitive, HoverCard as HoverCardPrimitive, Label as LabelPrimitive, Menubar as MenubarPrimitive, NavigationMenu as NavigationMenuPrimitive, Popover as PopoverPrimitive, Progress as ProgressPrimitive, RadioGroup as RadioGroupPrimitive, ScrollArea as ScrollAreaPrimitive, Select as SelectPrimitive, Separator as SeparatorPrimitive, Slider as SliderPrimitive, Switch as SwitchPrimitive, Tabs as TabsPrimitive, Toggle as TogglePrimitive, ToggleGroup as ToggleGroupPrimitive, Tooltip as TooltipPrimitive } from "radix-ui";
+
+export const Accordion = AccordionPrimitive.Root
+export const AlertDialog = AlertDialogPrimitive.Root
+export const Button = Slot`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual([
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-alert-dialog", 
+      "@radix-ui/react-aspect-ratio",
+      "@radix-ui/react-avatar",
+      "@radix-ui/react-slot",
+      "@radix-ui/react-checkbox",
+      "@radix-ui/react-collapsible",
+      "@radix-ui/react-context-menu",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-hover-card",
+      "@radix-ui/react-label",
+      "@radix-ui/react-menubar",
+      "@radix-ui/react-navigation-menu",
+      "@radix-ui/react-popover",
+      "@radix-ui/react-progress",
+      "@radix-ui/react-radio-group",
+      "@radix-ui/react-scroll-area",
+      "@radix-ui/react-select",
+      "@radix-ui/react-separator",
+      "@radix-ui/react-slider",
+      "@radix-ui/react-switch",
+      "@radix-ui/react-tabs",
+      "@radix-ui/react-toggle",
+      "@radix-ui/react-toggle-group",
+      "@radix-ui/react-tooltip"
+    ])
+  })
+
+  it("should handle the special sheet.tsx pattern from registry", async () => {
+    // In shadcn/ui, sheet.tsx imports from react-dialog instead of a dedicated sheet package
+    const input = `import * as SheetPrimitive from "@radix-ui/react-dialog"
+import { cn } from "@/lib/utils"
+
+export const Sheet = SheetPrimitive.Root
+export const SheetTrigger = SheetPrimitive.Trigger`
+
+    const expected = `import { Dialog as SheetPrimitive } from "radix-ui";
+import { cn } from "@/lib/utils"
+
+export const Sheet = SheetPrimitive.Root
+export const SheetTrigger = SheetPrimitive.Trigger`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-dialog"])
+  })
+
+  it("should handle form.tsx mixed pattern from registry", async () => {
+    // form.tsx uses both namespace and named imports
+    const input = `import * as LabelPrimitive from "@radix-ui/react-label"
+import { Slot } from "@radix-ui/react-slot"
+
+export const FormLabel = LabelPrimitive.Root
+export const FormControl = Slot`
+
+    const expected = `import { Label as LabelPrimitive, Slot } from "radix-ui";
+
+export const FormLabel = LabelPrimitive.Root
+export const FormControl = Slot`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual(["@radix-ui/react-label", "@radix-ui/react-slot"])
+  })
+
+  it("should handle all 26 packages used in shadcn/ui registry", async () => {
+    // Test that we correctly handle all packages found in the registry analysis
+    const allPackages = [
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-alert-dialog", 
+      "@radix-ui/react-aspect-ratio",
+      "@radix-ui/react-avatar",
+      "@radix-ui/react-checkbox",
+      "@radix-ui/react-collapsible",
+      "@radix-ui/react-context-menu",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-hover-card",
+      "@radix-ui/react-label",
+      "@radix-ui/react-menubar",
+      "@radix-ui/react-navigation-menu",
+      "@radix-ui/react-popover",
+      "@radix-ui/react-progress",
+      "@radix-ui/react-radio-group",
+      "@radix-ui/react-scroll-area",
+      "@radix-ui/react-select",
+      "@radix-ui/react-separator",
+      "@radix-ui/react-slider",
+      "@radix-ui/react-slot",
+      "@radix-ui/react-switch",
+      "@radix-ui/react-tabs",
+      "@radix-ui/react-toggle",
+      "@radix-ui/react-toggle-group",
+      "@radix-ui/react-tooltip"
+    ]
+    
+    // Create import statements for all packages
+    const imports = allPackages.map(pkg => {
+      const componentName = pkg.replace("@radix-ui/react-", "")
+        .split("-")
+        .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+        .join("")
+      
+      if (pkg === "@radix-ui/react-slot") {
+        return `import { Slot } from "${pkg}"`
+      }
+      return `import * as ${componentName}Primitive from "${pkg}"`
+    }).join("\n")
+    
+    const result = await migrateRadixFile(imports)
+    
+    // Should contain all 26 packages in replacedPackages
+    expect(result.replacedPackages).toHaveLength(26)
+    expect(result.replacedPackages.sort()).toEqual(allPackages.sort())
+    
+    // Should be a single unified import from radix-ui
+    expect(result.content).toContain('from "radix-ui";')
+    expect(result.content.startsWith("import {")).toBe(true)
+    expect(result.content).toContain("Slot") // Slot should be included as named import
+    expect(result.content).toContain("Accordion as AccordionPrimitive") // Namespace should be aliased
+    
+    // Should have transformed all imports into a single statement
+    const importLines = result.content.split('\n').filter(line => line.includes('import'))
+    expect(importLines).toHaveLength(1)
+  })
 })
 
 describe("migrateRadix - package.json updates", () => {
