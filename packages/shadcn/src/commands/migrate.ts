@@ -15,7 +15,7 @@ export const migrations = [
   },
   {
     name: "radix",
-    description: "migrate from individual Radix UI packages to the unified radix-ui package.",
+    description: "migrate to radix-ui.",
   },
 ] as const
 
