@@ -22,6 +22,7 @@ export const migrations = [
 export const migrateOptionsSchema = z.object({
   cwd: z.string(),
   list: z.boolean(),
+  yes: z.boolean(),
   migration: z
     .string()
     .refine(
@@ -45,12 +46,14 @@ export const migrate = new Command()
     process.cwd()
   )
   .option("-l, --list", "list all migrations.", false)
+  .option("-y, --yes", "skip confirmation prompt.", false)
   .action(async (migration, opts) => {
     try {
       const options = migrateOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
         migration,
         list: opts.list,
+        yes: opts.yes,
       })
 
       if (options.list || !options.migration) {
@@ -89,7 +92,7 @@ export const migrate = new Command()
       }
 
       if (options.migration === "radix") {
-        await migrateRadix(config)
+        await migrateRadix(config, { yes: options.yes })
       }
     } catch (error) {
       logger.break()
