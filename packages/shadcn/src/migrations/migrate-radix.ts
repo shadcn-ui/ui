@@ -22,29 +22,29 @@ function processNamedImports(
   imports: Array<{ name: string; alias?: string; isType?: boolean }>,
   packageName: string
 ) {
-  // Clean up multi-line imports by removing comments and extra whitespace
+  // Clean up multi-line imports.
+  // Remove comments and whitespace.
   const cleanedImports = namedImports
-    .replace(/\/\/.*$/gm, "") // Remove single-line comments
-    .replace(/\/\*[\s\S]*?\*\//g, "") // Remove multi-line comments
-    .replace(/\s+/g, " ") // Normalize whitespace
+    .replace(/\/\/.*$/gm, "")
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/\s+/g, " ")
     .trim()
 
   const namedImportList = cleanedImports
     .split(",")
-    .map((imp) => imp.trim())
+    .map((importItem) => importItem.trim())
     .filter(Boolean)
 
-  for (const imp of namedImportList) {
-    const inlineTypeMatch = imp.match(/^type\s+(\w+)(?:\s+as\s+(\w+))?$/)
-    const aliasMatch = imp.match(/^(\w+)\s+as\s+(\w+)$/)
+  for (const importItem of namedImportList) {
+    const inlineTypeMatch = importItem.match(/^type\s+(\w+)(?:\s+as\s+(\w+))?$/)
+    const aliasMatch = importItem.match(/^(\w+)\s+as\s+(\w+)$/)
 
     if (inlineTypeMatch) {
       // Inline type: "type DialogProps" or "type DialogProps as Props"
-      const name = inlineTypeMatch[1]
-      const alias = inlineTypeMatch[2]
-      
-      // Special handling for Slot: always alias it as SlotPrimitive
-      if (packageName === "slot" && name === "Slot" && !alias) {
+      const importName = inlineTypeMatch[1]
+      const importAlias = inlineTypeMatch[2]
+
+      if (packageName === "slot" && importName === "Slot" && !importAlias) {
         imports.push({
           name: "Slot",
           alias: "SlotPrimitive",
@@ -52,18 +52,21 @@ function processNamedImports(
         })
       } else {
         imports.push({
-          name,
-          alias,
+          name: importName,
+          alias: importAlias,
           isType: true,
         })
       }
     } else if (aliasMatch) {
       // Regular import with alias: "Root as DialogRoot"
-      const name = aliasMatch[1]
-      const alias = aliasMatch[2]
-      
-      // Special handling for Slot: always alias it as SlotPrimitive
-      if (packageName === "slot" && name === "Slot" && alias === "Slot") {
+      const importName = aliasMatch[1]
+      const importAlias = aliasMatch[2]
+
+      if (
+        packageName === "slot" &&
+        importName === "Slot" &&
+        importAlias === "Slot"
+      ) {
         imports.push({
           name: "Slot",
           alias: "SlotPrimitive",
@@ -71,15 +74,15 @@ function processNamedImports(
         })
       } else {
         imports.push({
-          name,
-          alias,
+          name: importName,
+          alias: importAlias,
           isType: isTypeOnly,
         })
       }
     } else {
       // Simple import: "Root"
       // Special handling for Slot: always alias it as SlotPrimitive
-      if (packageName === "slot" && imp === "Slot") {
+      if (packageName === "slot" && importItem === "Slot") {
         imports.push({
           name: "Slot",
           alias: "SlotPrimitive",
@@ -87,7 +90,7 @@ function processNamedImports(
         })
       } else {
         imports.push({
-          name: imp,
+          name: importItem,
           isType: isTypeOnly,
         })
       }
@@ -95,7 +98,10 @@ function processNamedImports(
   }
 }
 
-export async function migrateRadix(config: Config, options: { yes?: boolean } = {}) {
+export async function migrateRadix(
+  config: Config,
+  options: { yes?: boolean } = {}
+) {
   if (!config.resolvedPaths.ui) {
     throw new Error(
       "We could not find a valid `ui` path in your `components.json` file. Please ensure you have a valid `ui` path in your `components.json` file."
@@ -174,7 +180,7 @@ export async function migrateRadix(config: Config, options: { yes?: boolean } = 
       }
     }
 
-    // Add radix-ui if we found any Radix packages
+    // Add radix-ui if we found any Radix packages.
     if (foundPackagesArray.length > 0) {
       if (!packageJson.dependencies) {
         packageJson.dependencies = {}
@@ -192,7 +198,7 @@ export async function migrateRadix(config: Config, options: { yes?: boolean } = 
 
       packageSpinner.succeed(`Updated package.json.`)
 
-      // Install radix-ui dependency
+      // Install radix-ui dependency.
       await updateDependencies(["radix-ui"], [], config, { silent: false })
     } else {
       packageSpinner.succeed("No packages found in source files.")
@@ -272,15 +278,16 @@ export async function migrateRadixFile(
     }
   }
 
-  // Remove duplicates (considering name, alias, and type status)
+  // Remove duplicates.
+  // Considering name, alias, and type status.
   const uniqueImports = imports.filter(
-    (imp, index, self) =>
+    (importName, index, self) =>
       index ===
       self.findIndex(
         (i) =>
-          i.name === imp.name &&
-          i.alias === imp.alias &&
-          i.isType === imp.isType
+          i.name === importName.name &&
+          i.alias === importName.alias &&
+          i.isType === importName.isType
       )
   )
 
@@ -308,43 +315,45 @@ export async function migrateRadixFile(
   // Now that we import { Slot as SlotPrimitive }, we need to:
   // 1. Transform: const Comp = asChild ? Slot : [ANYTHING] -> const Comp = asChild ? SlotPrimitive.Slot : [ANYTHING]
   // 2. Transform: React.ComponentProps<typeof Slot> -> React.ComponentProps<typeof SlotPrimitive.Slot>
-  const hasSlotImport = uniqueImports.some(imp => imp.name === "Slot" && imp.alias === "SlotPrimitive")
-  
+  const hasSlotImport = uniqueImports.some(
+    (imp) => imp.name === "Slot" && imp.alias === "SlotPrimitive"
+  )
+
   if (hasSlotImport) {
     // Find all lines that are NOT import lines to avoid transforming the import statement itself
-    const lines = result.split('\n')
-    const transformedLines = lines.map(line => {
+    const lines = result.split("\n")
+    const transformedLines = lines.map((line) => {
       // Skip import lines
-      if (line.trim().startsWith('import ')) {
+      if (line.trim().startsWith("import ")) {
         return line
       }
-      
+
       let transformedLine = line
-      
+
       // Handle all Slot references in one comprehensive pass
       // Use placeholders to avoid double replacements
-      
+
       // First, mark specific patterns with placeholders
       transformedLine = transformedLine.replace(
         /\b(asChild\s*\?\s*)Slot(\s*:)/g,
         "$1__SLOT_PLACEHOLDER__$2"
       )
-      
+
       transformedLine = transformedLine.replace(
         /\bReact\.ComponentProps<typeof\s+Slot>/g,
         "React.ComponentProps<typeof __SLOT_PLACEHOLDER__>"
       )
-      
+
       transformedLine = transformedLine.replace(
         /\bComponentProps<typeof\s+Slot>/g,
         "ComponentProps<typeof __SLOT_PLACEHOLDER__>"
       )
-      
+
       transformedLine = transformedLine.replace(
         /(<\/?)Slot(\s*\/?>)/g,
         "$1__SLOT_PLACEHOLDER__$2"
       )
-      
+
       // Handle any other standalone Slot usage
       transformedLine = transformedLine.replace(
         /\bSlot\b/g,
@@ -353,26 +362,26 @@ export async function migrateRadixFile(
           const beforeMatch = string.substring(0, offset)
           const openQuotes = (beforeMatch.match(/"/g) || []).length
           const openSingleQuotes = (beforeMatch.match(/'/g) || []).length
-          
+
           // If we're inside quotes, don't transform
           if (openQuotes % 2 !== 0 || openSingleQuotes % 2 !== 0) {
             return match
           }
-          
+
           return "__SLOT_PLACEHOLDER__"
         }
       )
-      
+
       // Finally, replace all placeholders with SlotPrimitive.Slot
       transformedLine = transformedLine.replace(
         /__SLOT_PLACEHOLDER__/g,
         "SlotPrimitive.Slot"
       )
-      
+
       return transformedLine
     })
-    
-    result = transformedLines.join('\n')
+
+    result = transformedLines.join("\n")
   }
 
   // Remove duplicate packages
