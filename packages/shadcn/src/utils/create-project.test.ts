@@ -3,7 +3,15 @@ import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
-import { afterEach, beforeEach, describe, expect, it, vi, type MockInstance } from "vitest"
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+  type MockInstance,
+} from "vitest"
 
 import { TEMPLATES, createProject } from "./create-project"
 
