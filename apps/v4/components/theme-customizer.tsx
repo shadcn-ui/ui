@@ -91,7 +91,6 @@ export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
                   id="Select color.."
                   value={customColor}
                   onChange={(e) => {
-                    console.log("color is : ", e.target.value);
                     setCustomColor(e.target.value)
                   }}
                 />
@@ -143,7 +142,6 @@ export function CopyCodeButton({
 }: React.ComponentProps<typeof Button>) {
   let { activeTheme: activeThemeName = "neutral", customColor } = useThemeConfig()
   activeThemeName = activeThemeName === "default" ? "neutral" : activeThemeName
-  console.log("Copy code function", activeThemeName, customColor)
   return (
     <>
       <Drawer>
@@ -187,7 +185,6 @@ export function CopyCodeButton({
 }
 
 function CustomizerCode({ themeName, customColor }: { themeName: string, customColor: string }) {
-  console.log("customizer code function", themeName, customColor)
   const [hasCopied, setHasCopied] = React.useState(false)
   const [tailwindVersion, setTailwindVersion] = React.useState("v4")
 
@@ -542,7 +539,6 @@ function getThemeCodeOKLCH(
   customColor: string,
   themeName: string
 ) {
-  console.log("entered function");
   if (!theme) return ""
 
   let light: Record<string, string> = {}
@@ -553,7 +549,6 @@ function getThemeCodeOKLCH(
     const customVars = generateThemeFromPrimaryOkhCl(oklch)
     light = customVars.light;
     dark = customVars.light;
-    console.log("customVars is : ", customVars);
   } else {
     // fallback to predefined theme
     light = theme.light
