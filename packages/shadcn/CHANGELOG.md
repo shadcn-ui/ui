@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 2.6.2
+
+### Patch Changes
+
+- [#7586](https://github.com/shadcn-ui/ui/pull/7586) [`c5d90c718a186dd6fd90e022c56089eb569a1c10`](https://github.com/shadcn-ui/ui/commit/c5d90c718a186dd6fd90e022c56089eb569a1c10) Thanks [@shadcn](https://github.com/shadcn)! - add migrate-radix
+
+- [#7590](https://github.com/shadcn-ui/ui/pull/7590) [`92cfb9a30e976697ab8770f00393bd5325f9a16a`](https://github.com/shadcn-ui/ui/commit/92cfb9a30e976697ab8770f00393bd5325f9a16a) Thanks [@shadcn](https://github.com/shadcn)! - fix flacky tests
+
 ## 2.6.1
 
 ### Patch Changes
