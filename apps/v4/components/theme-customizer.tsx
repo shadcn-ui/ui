@@ -580,34 +580,36 @@ function getThemeCodeOKLCH(
 function getThemeCode(theme: BaseColor | undefined, radius: number, customColor?: string) {
   if (!theme) return ""
 
+  var mutableTheme = structuredClone(theme) as DeepMutable<BaseColor>
+
   // If it's a custom theme, generate runtime OKLCH-based variables
-  if (theme.name === "custom" && customColor) {
+  if (mutableTheme.name === "custom" && customColor) {
     const oklch = hex2oklch(customColor)
     const customVars = generateThemeFromPrimary(oklch)
 
-    // Convert flat CSS var object to nested cssVars format expected by template
-    const colors = {
-      light: {} as Record<string, string>,
-      dark: {} as Record<string, string>,
-    }
-
     Object.entries(customVars).forEach(([key, value]) => {
-      if (key.startsWith("--dark-")) {
-        colors.dark[key.replace("--dark-", "")] = value
-      } else {
-        colors.light[key.replace("--", "")] = value
+      // LIGHT THEME MAPPING
+      if (key.startsWith("--color-custom-")) {
+        const variable = key.replace("--color-custom-", "");
+        if (variable.startsWith("dark-")) return; // skip dark keys
+        if (mutableTheme && mutableTheme.cssVars.light) {
+          (mutableTheme.cssVars.light as Record<string, string>)[variable] = value;
+        }
       }
-    })
 
-    return template(BASE_STYLES_WITH_VARIABLES)({
-      colors,
-      radius: radius.toString(),
-    })
+      // DARK THEME MAPPING
+      if (key.startsWith("--color-custom-dark-")) {
+        const variable = key.replace("--color-custom-dark-", "");
+        if (mutableTheme && mutableTheme.cssVars.dark) {
+          (mutableTheme.cssVars.dark as Record<string, string>)[variable] = value;
+        }
+      }
+    });
   }
 
   // Fallback for non-custom themes
   return template(BASE_STYLES_WITH_VARIABLES)({
-    colors: theme.cssVars,
+    colors: mutableTheme.cssVars,
     radius: radius.toString(),
   })
 }
