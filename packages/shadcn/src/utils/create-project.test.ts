@@ -3,7 +3,7 @@ import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+import { afterEach, beforeEach, describe, expect, it, vi, type MockInstance } from "vitest"
 
 import { TEMPLATES, createProject } from "./create-project"
 
@@ -25,7 +25,7 @@ vi.mock("@/src/utils/logger", () => ({
 }))
 
 describe("createProject", () => {
-  let mockExit: ReturnType<typeof vi.spyOn>
+  let mockExit: MockInstance
 
   beforeEach(() => {
     vi.clearAllMocks()
@@ -72,8 +72,22 @@ describe("createProject", () => {
       fail: vi.fn().mockReturnThis(),
       stop: vi.fn().mockReturnThis(),
       text: "",
+      prefixText: "",
+      suffixText: "",
+      color: "cyan" as const,
+      indent: 0,
+      spinner: "dots" as const,
+      isSpinning: false,
+      interval: 100,
+      stream: process.stderr,
+      clear: vi.fn(),
+      render: vi.fn(),
+      frame: vi.fn(),
+      stopAndPersist: vi.fn(),
+      warn: vi.fn(),
+      info: vi.fn(),
     }
-    vi.mocked(spinner).mockReturnValue(mockSpinner)
+    vi.mocked(spinner).mockReturnValue(mockSpinner as any)
   })
 
   afterEach(() => {
