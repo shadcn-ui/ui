@@ -215,13 +215,15 @@ export async function migrateRadixFile(
   content: string
 ): Promise<{ content: string; replacedPackages: string[] }> {
   // Enhanced regex to handle type-only imports, but exclude react-icons
+  // Also capture optional semicolon at the end
   const radixImportPattern =
-    /import\s+(?:(type)\s+)?(?:\*\s+as\s+(\w+)|{([^}]+)})\s+from\s+(["'])@radix-ui\/react-([^"']+)\4/g
+    /import\s+(?:(type)\s+)?(?:\*\s+as\s+(\w+)|{([^}]+)})\s+from\s+(["'])@radix-ui\/react-([^"']+)\4(;?)/g
 
   const imports: Array<{ name: string; alias?: string; isType?: boolean }> = []
   const linesToRemove: string[] = []
   const replacedPackages: string[] = []
   let quoteStyle = '"' // Default to double quotes
+  let hasSemicolon = false // Track if any import had a semicolon
 
   let result = content
   let match
@@ -235,6 +237,7 @@ export async function migrateRadixFile(
       namedImports,
       quote,
       packageName,
+      semicolon,
     ] = match
 
     // Skip react-icons package and any sub-paths (like react-icons/dist/types)
@@ -244,9 +247,10 @@ export async function migrateRadixFile(
 
     linesToRemove.push(fullMatch)
 
-    // Use the quote style from the first import
+    // Use the quote style and semicolon style from the first import
     if (linesToRemove.length === 1) {
       quoteStyle = quote
+      hasSemicolon = semicolon === ";"
     }
 
     // Track which package we're replacing
@@ -301,7 +305,9 @@ export async function migrateRadixFile(
     })
     .join(", ")
 
-  const unifiedImport = `import { ${importList} } from ${quoteStyle}radix-ui${quoteStyle};`
+  const unifiedImport = `import { ${importList} } from ${quoteStyle}radix-ui${quoteStyle}${
+    hasSemicolon ? ";" : ""
+  }`
 
   // Replace first import with unified import, remove the rest
   result = linesToRemove.reduce((acc, line, index) => {
