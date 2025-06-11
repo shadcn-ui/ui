@@ -17,6 +17,19 @@ export function hexToOKLCH(hex: string): OKLCH {
   }
 }
 
+function getAutoForeground(bg: OKLCH): OKLCH {
+  if (bg.l > 0.85) {
+    // Too light → use black text
+    return { l: 0.15, c: 0.01, h: 0 }; // black
+  } else if (bg.l < 0.2) {
+    // Too dark → use white text
+    return { l: 0.98, c: 0.01, h: 0 }; // white
+  } else {
+    // Safe middle ground → prefer white text
+    return { l: 0.98, c: 0.01, h: 0 }; // white
+  }
+}
+
 function getForeground(color: OKLCH): OKLCH {
   return {
     l: Math.min(color.l + 1.28, 0.98),
@@ -54,7 +67,7 @@ export function generateThemeFromPrimaryOkhCl(primary: OKLCH) {
       popover: '0 0% 100%',
       'popover-foreground': '240 10% 3.9%',
       primary: formatOKLCH(lightPrimary),
-      'primary-foreground': formatOKLCH(getForeground(rotateHue(primary, 100))),
+      'primary-foreground': formatOKLCH(getAutoForeground(primary)),
       secondary: formatOKLCH(rotateHue(primary, 20)),
       'secondary-foreground': '0 0% 0%',
       muted: formatOKLCH(rotateHue(primary, 60)),
@@ -80,7 +93,7 @@ export function generateThemeFromPrimaryOkhCl(primary: OKLCH) {
       popover: '240 10% 3.9%',
       'popover-foreground': '0 0% 98%',
       primary: formatOKLCH(darkPrimary),
-      'primary-foreground': formatOKLCH(getForeground(rotateHue(primary, 100))), 
+      'primary-foreground': formatOKLCH(getAutoForeground(primary)), 
       secondary: formatOKLCH(lighten(primary, 0.25)),
       'secondary-foreground': '0 0% 100%',
       muted: formatOKLCH(lighten(primary, 0.1)),
