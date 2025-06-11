@@ -88,7 +88,7 @@ import * as SelectPrimitive from "@radix-ui/react-select"
 export const Dialog = DialogPrimitive.Root
 export const Select = SelectPrimitive.Root`
 
-    const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from "radix-ui";
+    const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from "radix-ui"
 
 export const Dialog = DialogPrimitive.Root
 export const Select = SelectPrimitive.Root`
@@ -109,7 +109,7 @@ export const DialogRoot = Root
 export const DialogTrigger = Trigger
 export const SelectContent = Content`
 
-    const expected = `import { Root, Trigger, Content } from "radix-ui";
+    const expected = `import { Root, Trigger, Content } from "radix-ui"
 
 export const DialogRoot = Root
 export const DialogTrigger = Trigger
@@ -131,7 +131,7 @@ import { useState } from "react"
 export const Dialog = DialogPrimitive.Root
 export const Select = SelectRoot`
 
-    const expected = `import { Dialog as DialogPrimitive, Root as SelectRoot } from "radix-ui";
+    const expected = `import { Dialog as DialogPrimitive, Root as SelectRoot } from "radix-ui"
 
 import { useState } from "react"
 
@@ -184,7 +184,7 @@ export const Dialog = DialogPrimitive.Root`
 
     const expected = `"use client"
 
-import { Dialog as DialogPrimitive } from "radix-ui";
+import { Dialog as DialogPrimitive } from "radix-ui"
 import { useState } from "react"
 
 export const Dialog = DialogPrimitive.Root`
@@ -206,7 +206,7 @@ export const Dialog = DialogPrimitive.Root`
 
     const expected = `"use client"
 
-import { DropdownMenu as DropdownMenuPrimitive, Dialog as DialogPrimitive } from "radix-ui";
+import { DropdownMenu as DropdownMenuPrimitive, Dialog as DialogPrimitive } from "radix-ui"
 
 import { useState } from "react"
 
@@ -228,7 +228,7 @@ import * as SelectPrimitive from '@radix-ui/react-select'
 export const Dialog = DialogPrimitive.Root
 export const Select = SelectPrimitive.Root`
 
-    const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from 'radix-ui';
+    const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from 'radix-ui'
 
 export const Dialog = DialogPrimitive.Root
 export const Select = SelectPrimitive.Root`
@@ -248,7 +248,7 @@ import * as SelectPrimitive from "@radix-ui/react-select"
 export const Dialog = DialogPrimitive.Root
 export const Select = SelectPrimitive.Root`
 
-    const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from 'radix-ui';
+    const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from 'radix-ui'
 
 export const Dialog = DialogPrimitive.Root
 export const Select = SelectPrimitive.Root`
@@ -270,7 +270,7 @@ export type MyDialogProps = ComponentProps
 export type MySelectProps = SelectProps
 export const Dialog = DialogPrimitive.Root`
 
-    const expected = `import { type ComponentProps, type SelectProps, Root, Dialog as DialogPrimitive } from "radix-ui";
+    const expected = `import { type ComponentProps, type SelectProps, Root, Dialog as DialogPrimitive } from "radix-ui"
 
 export type MyDialogProps = ComponentProps
 export type MySelectProps = SelectProps
@@ -291,7 +291,7 @@ import { Root, Trigger } from "@radix-ui/react-dialog"
 export type Props = DialogProps
 export const DialogRoot = Root`
 
-    const expected = `import { type DialogProps, Root, Trigger } from "radix-ui";
+    const expected = `import { type DialogProps, Root, Trigger } from "radix-ui"
 
 export type Props = DialogProps
 export const DialogRoot = Root`
@@ -308,7 +308,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog"
 export type Props = DialogTypes.ComponentProps
 export const Dialog = DialogPrimitive.Root`
 
-    const expected = `import { type Dialog as DialogTypes, Dialog as DialogPrimitive } from "radix-ui";
+    const expected = `import { type Dialog as DialogTypes, Dialog as DialogPrimitive } from "radix-ui"
 
 export type Props = DialogTypes.ComponentProps
 export const Dialog = DialogPrimitive.Root`
@@ -327,7 +327,7 @@ export const Dialog = DialogPrimitive.Root
 export const ChevronDown = ChevronDownIcon`
 
     const expected = `import { ChevronDownIcon, Cross2Icon } from "@radix-ui/react-icons"
-import { Dialog as DialogPrimitive, Root } from "radix-ui";
+import { Dialog as DialogPrimitive, Root } from "radix-ui"
 
 export const Dialog = DialogPrimitive.Root
 export const ChevronDown = ChevronDownIcon`
@@ -349,7 +349,7 @@ export type MyIconProps = IconProps
 export type MyDialogProps = ComponentProps`
 
     const expected = `import type { IconProps } from "@radix-ui/react-icons/dist/types"
-import { type ComponentProps, Root } from "radix-ui";
+import { type ComponentProps, Root } from "radix-ui"
 
 export type MyIconProps = IconProps
 export type MyDialogProps = ComponentProps`
@@ -373,7 +373,7 @@ export type Props = IconProps`
     const expected = `import * as Icons from "@radix-ui/react-icons"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import type { IconProps } from "@radix-ui/react-icons/dist/types"
-import { Dialog as DialogPrimitive, Root } from "radix-ui";
+import { Dialog as DialogPrimitive, Root } from "radix-ui"
 
 export const Dialog = DialogPrimitive.Root
 export const Icon = ChevronDownIcon
@@ -401,7 +401,7 @@ import {
 export const DialogRoot = Root
 export const SelectValue = Value`
 
-    const expected = `import { Root, Trigger, Content, Value, Item } from "radix-ui";
+    const expected = `import { Root, Trigger, Content, Value, Item } from "radix-ui"
 
 export const DialogRoot = Root
 export const SelectValue = Value`
@@ -425,7 +425,7 @@ import * as SelectPrimitive from "@radix-ui/react-select"
 export const Dialog = DialogRoot
 export const Select = SelectPrimitive.Root`
 
-    const expected = `import { Root as DialogRoot, Trigger, Content, Select as SelectPrimitive } from "radix-ui";
+    const expected = `import { Root as DialogRoot, Trigger, Content, Select as SelectPrimitive } from "radix-ui"
 
 export const Dialog = DialogRoot
 export const Select = SelectPrimitive.Root`
@@ -450,7 +450,7 @@ import {
 
 export type Props = DialogProps`
 
-    const expected = `import { type ComponentProps, type DialogProps, type SelectProps, Root } from "radix-ui";
+    const expected = `import { type ComponentProps, type DialogProps, type SelectProps, Root } from "radix-ui"
 
 export type Props = DialogProps`
 
@@ -472,7 +472,7 @@ export type Props = DialogProps`
 
 export const DialogRoot = Root`
 
-    const expected = `import { Root, Trigger, Content } from "radix-ui";
+    const expected = `import { Root, Trigger, Content } from "radix-ui"
 
 export const DialogRoot = Root`
 
@@ -490,7 +490,7 @@ export const DialogRoot = Root`
 
 export const DialogRoot = Root`
 
-    const expected = `import { Root, Trigger, Content } from "radix-ui";
+    const expected = `import { Root, Trigger, Content } from "radix-ui"
 
 export const DialogRoot = Root`
 
@@ -532,7 +532,7 @@ export const Accordion = AccordionPrimitive.Root
 export const AlertDialog = AlertDialogPrimitive.Root
 export const Button = Slot`
 
-    const expected = `import { Accordion as AccordionPrimitive, AlertDialog as AlertDialogPrimitive, AspectRatio as AspectRatioPrimitive, Avatar as AvatarPrimitive, Slot as SlotPrimitive, Checkbox as CheckboxPrimitive, Collapsible as CollapsiblePrimitive, ContextMenu as ContextMenuPrimitive, Dialog as DialogPrimitive, DropdownMenu as DropdownMenuPrimitive, HoverCard as HoverCardPrimitive, Label as LabelPrimitive, Menubar as MenubarPrimitive, NavigationMenu as NavigationMenuPrimitive, Popover as PopoverPrimitive, Progress as ProgressPrimitive, RadioGroup as RadioGroupPrimitive, ScrollArea as ScrollAreaPrimitive, Select as SelectPrimitive, Separator as SeparatorPrimitive, Slider as SliderPrimitive, Switch as SwitchPrimitive, Tabs as TabsPrimitive, Toggle as TogglePrimitive, ToggleGroup as ToggleGroupPrimitive, Tooltip as TooltipPrimitive } from "radix-ui";
+    const expected = `import { Accordion as AccordionPrimitive, AlertDialog as AlertDialogPrimitive, AspectRatio as AspectRatioPrimitive, Avatar as AvatarPrimitive, Slot as SlotPrimitive, Checkbox as CheckboxPrimitive, Collapsible as CollapsiblePrimitive, ContextMenu as ContextMenuPrimitive, Dialog as DialogPrimitive, DropdownMenu as DropdownMenuPrimitive, HoverCard as HoverCardPrimitive, Label as LabelPrimitive, Menubar as MenubarPrimitive, NavigationMenu as NavigationMenuPrimitive, Popover as PopoverPrimitive, Progress as ProgressPrimitive, RadioGroup as RadioGroupPrimitive, ScrollArea as ScrollAreaPrimitive, Select as SelectPrimitive, Separator as SeparatorPrimitive, Slider as SliderPrimitive, Switch as SwitchPrimitive, Tabs as TabsPrimitive, Toggle as TogglePrimitive, ToggleGroup as ToggleGroupPrimitive, Tooltip as TooltipPrimitive } from "radix-ui"
 
 export const Accordion = AccordionPrimitive.Root
 export const AlertDialog = AlertDialogPrimitive.Root
@@ -578,7 +578,7 @@ import { cn } from "@/lib/utils"
 export const Sheet = SheetPrimitive.Root
 export const SheetTrigger = SheetPrimitive.Trigger`
 
-    const expected = `import { Dialog as SheetPrimitive } from "radix-ui";
+    const expected = `import { Dialog as SheetPrimitive } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 export const Sheet = SheetPrimitive.Root
@@ -597,7 +597,7 @@ import { Slot } from "@radix-ui/react-slot"
 export const FormLabel = LabelPrimitive.Root
 export const FormControl = Slot`
 
-    const expected = `import { Label as LabelPrimitive, Slot as SlotPrimitive } from "radix-ui";
+    const expected = `import { Label as LabelPrimitive, Slot as SlotPrimitive } from "radix-ui"
 
 export const FormLabel = LabelPrimitive.Root
 export const FormControl = SlotPrimitive.Slot`
@@ -664,7 +664,7 @@ export const FormControl = SlotPrimitive.Slot`
     expect(result.replacedPackages.sort()).toEqual(allPackages.sort())
 
     // Should be a single unified import from radix-ui
-    expect(result.content).toContain('from "radix-ui";')
+    expect(result.content).toContain('from "radix-ui"')
     expect(result.content.startsWith("import {")).toBe(true)
     expect(result.content).toContain("Slot as SlotPrimitive") // Slot should be aliased as SlotPrimitive
     expect(result.content).toContain("Accordion as AccordionPrimitive") // Namespace should be aliased
@@ -685,7 +685,7 @@ const Button = ({ asChild, children }) => {
   return <Comp>{children}</Comp>
 }`
 
-    const expected = `import { Slot as SlotPrimitive } from "radix-ui";
+    const expected = `import { Slot as SlotPrimitive } from "radix-ui"
 
 const Button = ({ asChild, children }) => {
   const Comp = asChild ? SlotPrimitive.Slot : "button"
@@ -708,7 +708,7 @@ const Button = ({ asChild }) => {
   return null
 }`
 
-    const expected = `import { Slot as SlotPrimitive } from "radix-ui";
+    const expected = `import { Slot as SlotPrimitive } from "radix-ui"
 
 const Button = ({ asChild }) => {
   const Comp1 = asChild ? SlotPrimitive.Slot : "button"
@@ -731,7 +731,7 @@ const Button = ({ asChild }) => {
   return null
 }`
 
-    const expected = `import { Slot as SlotComponent } from "radix-ui";
+    const expected = `import { Slot as SlotComponent } from "radix-ui"
 
 const Button = ({ asChild }) => {
   const Comp = asChild ? Slot : "button"
@@ -754,7 +754,7 @@ const Button = ({ asChild }) => {
   return <Slot />
 }`
 
-    const expected = `import { Slot as SlotPrimitive } from "radix-ui";
+    const expected = `import { Slot as SlotPrimitive } from "radix-ui"
 
 const Button = ({ asChild }) => {
   const SlotName = "Slot"
@@ -781,7 +781,7 @@ const Button = ({ asChild, ...props }: ButtonProps) => {
   return <Comp {...props} />
 }`
 
-    const expected = `import { Slot as SlotPrimitive } from "radix-ui";
+    const expected = `import { Slot as SlotPrimitive } from "radix-ui"
 import React from "react"
 
 type ButtonProps = React.ComponentProps<typeof SlotPrimitive.Slot> & {
@@ -811,7 +811,7 @@ const Button = ({ asChild, ...props }: ButtonProps) => {
   return <Comp {...props} />
 }`
 
-    const expected = `import { Slot as SlotPrimitive } from "radix-ui";
+    const expected = `import { Slot as SlotPrimitive } from "radix-ui"
 import { ComponentProps } from "react"
 
 type ButtonProps = ComponentProps<typeof SlotPrimitive.Slot> & {
@@ -826,6 +826,46 @@ const Button = ({ asChild, ...props }: ButtonProps) => {
     const result = await migrateRadixFile(input)
     expect(result.content.trim()).toBe(expected.trim())
     expect(result.replacedPackages).toEqual(["@radix-ui/react-slot"])
+  })
+
+  it("should not add double semicolons when import already ends with semicolon", async () => {
+    const input = `import * as DialogPrimitive from "@radix-ui/react-dialog";
+import * as SelectPrimitive from "@radix-ui/react-select";
+
+export const Dialog = DialogPrimitive.Root
+export const Select = SelectPrimitive.Root`
+
+    const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from "radix-ui";
+
+export const Dialog = DialogPrimitive.Root
+export const Select = SelectPrimitive.Root`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual([
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-select",
+    ])
+  })
+
+  it("should not add semicolon when original imports don't have semicolons", async () => {
+    const input = `import * as DialogPrimitive from "@radix-ui/react-dialog"
+import * as SelectPrimitive from "@radix-ui/react-select"
+
+export const Dialog = DialogPrimitive.Root
+export const Select = SelectPrimitive.Root`
+
+    const expected = `import { Dialog as DialogPrimitive, Select as SelectPrimitive } from "radix-ui"
+
+export const Dialog = DialogPrimitive.Root
+export const Select = SelectPrimitive.Root`
+
+    const result = await migrateRadixFile(input)
+    expect(result.content.trim()).toBe(expected.trim())
+    expect(result.replacedPackages).toEqual([
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-select",
+    ])
   })
 })
 
