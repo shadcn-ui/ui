@@ -68,7 +68,7 @@ export function generateThemeFromPrimary(primary: OKLCH) {
   const theme: Record<string, string> = {
     // Light mode
     "--color-custom-primary": formatOKLCH(primary),
-    "--color-custom-primary-foreground": formatOKLCH(getAutoForeground(primary)), // pure black
+    "--color-custom-primary-foreground": formatOKLCH(getAutoForeground(primary)), 
     "--color-custom-ring": formatOKLCH(adjustLightVariant(rotateHue(primary, 10))),
 
     "--color-custom-chart-1": formatOKLCH(adjustLightVariant(rotateHue(primary, chartOffsets[0]))),
@@ -78,17 +78,17 @@ export function generateThemeFromPrimary(primary: OKLCH) {
     "--color-custom-chart-5": formatOKLCH(adjustLightVariant(rotateHue(primary, chartOffsets[4]))),
 
     "--color-custom-sidebar-primary": formatOKLCH(adjustLightVariant(rotateHue(primary, sidebarOffsets[0]))),
-    "--color-custom-sidebar-primary-foreground": formatOKLCH(getAutoForeground(primary)), // pure black
+    "--color-custom-sidebar-primary-foreground": formatOKLCH(getAutoForeground(primary)), 
     "--color-custom-sidebar-ring": formatOKLCH(adjustLightVariant(rotateHue(primary, sidebarOffsets[1]))),
 
     // Dark mode
     "--color-custom-dark-primary": formatOKLCH(adjustDarkVariant(toDarkVariant(primary))),
-    "--color-custom-dark-primary-foreground": formatOKLCH(getAutoForeground(rotateHue(primary, 10))), // pure white
+    "--color-custom-dark-primary-foreground": formatOKLCH(getAutoForeground(rotateHue(primary, 10))), 
     "--color-custom-dark-ring": formatOKLCH(adjustDarkVariant(toDarkVariant(rotateHue(primary, 10)))),
     "--color-custom-dark-sidebar-primary": formatOKLCH(
       adjustDarkVariant(toDarkVariant(rotateHue(primary, sidebarOffsets[0])))
     ),
-    "--color-custom-dark-sidebar-primary-foreground": formatOKLCH(getAutoForeground(rotateHue(primary, 100))), // pure white
+    "--color-custom-dark-sidebar-primary-foreground": formatOKLCH(getAutoForeground(rotateHue(primary, 100))), 
     "--color-custom-dark-sidebar-ring": formatOKLCH(
       adjustDarkVariant(toDarkVariant(rotateHue(primary, sidebarOffsets[1])))
     ),

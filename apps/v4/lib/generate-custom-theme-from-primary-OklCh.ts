@@ -54,7 +54,7 @@ export function generateThemeFromPrimaryOkhCl(primary: OKLCH) {
       popover: '0 0% 100%',
       'popover-foreground': '240 10% 3.9%',
       primary: formatOKLCH(lightPrimary),
-      'primary-foreground': formatOKLCH(getForeground(rotateHue(primary, 100))), // black
+      'primary-foreground': formatOKLCH(getForeground(rotateHue(primary, 100))),
       secondary: formatOKLCH(rotateHue(primary, 20)),
       'secondary-foreground': '0 0% 0%',
       muted: formatOKLCH(rotateHue(primary, 60)),
@@ -80,7 +80,7 @@ export function generateThemeFromPrimaryOkhCl(primary: OKLCH) {
       popover: '240 10% 3.9%',
       'popover-foreground': '0 0% 98%',
       primary: formatOKLCH(darkPrimary),
-      'primary-foreground': formatOKLCH(getForeground(rotateHue(primary, 100))), // white
+      'primary-foreground': formatOKLCH(getForeground(rotateHue(primary, 100))), 
       secondary: formatOKLCH(lighten(primary, 0.25)),
       'secondary-foreground': '0 0% 100%',
       muted: formatOKLCH(lighten(primary, 0.1)),
