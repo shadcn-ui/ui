@@ -305,7 +305,9 @@ export async function migrateRadixFile(
     })
     .join(", ")
 
-  const unifiedImport = `import { ${importList} } from ${quoteStyle}radix-ui${quoteStyle}${hasSemicolon ? ";" : ""}`
+  const unifiedImport = `import { ${importList} } from ${quoteStyle}radix-ui${quoteStyle}${
+    hasSemicolon ? ";" : ""
+  }`
 
   // Replace first import with unified import, remove the rest
   result = linesToRemove.reduce((acc, line, index) => {
