@@ -47,6 +47,10 @@ import {
   baseColors,
   baseColorsOKLCH,
 } from "@/registry/registry-base-colors"
+import { hex2oklch } from "colorizr"
+import { generateThemeFromPrimary } from "@/lib/generate-custom-theme-from-primary"
+import { generateThemeFromPrimaryOkhCl } from "@/lib/generate-custom-theme-from-primary-OklCh"
+import { DeepMutable } from "@/types/utils"
 
 interface BaseColorOKLCH {
   light: Record<string, string>
@@ -137,9 +141,9 @@ export function CopyCodeButton({
   className,
   ...props
 }: React.ComponentProps<typeof Button>) {
-  let { activeTheme: activeThemeName = "neutral" } = useThemeConfig()
+  let { activeTheme: activeThemeName = "neutral", customColor } = useThemeConfig()
   activeThemeName = activeThemeName === "default" ? "neutral" : activeThemeName
-
+  console.log("Copy code function", activeThemeName, customColor)
   return (
     <>
       <Drawer>
@@ -157,7 +161,7 @@ export function CopyCodeButton({
               Copy and paste the following code into your CSS file.
             </DrawerDescription>
           </DrawerHeader>
-          <CustomizerCode themeName={activeThemeName} />
+          <CustomizerCode themeName={activeThemeName} customColor={customColor} />
         </DrawerContent>
       </Drawer>
       <Dialog>
@@ -175,24 +179,60 @@ export function CopyCodeButton({
               Copy and paste the following code into your CSS file.
             </DialogDescription>
           </DialogHeader>
-          <CustomizerCode themeName={activeThemeName} />
+          <CustomizerCode themeName={activeThemeName} customColor={customColor} />
         </DialogContent>
       </Dialog>
     </>
   )
 }
 
-function CustomizerCode({ themeName }: { themeName: string }) {
+function CustomizerCode({ themeName, customColor }: { themeName: string, customColor: string }) {
+  console.log("customizer code function", themeName, customColor)
   const [hasCopied, setHasCopied] = React.useState(false)
   const [tailwindVersion, setTailwindVersion] = React.useState("v4")
-  const activeTheme = React.useMemo(
-    () => baseColors.find((theme) => theme.name === themeName),
-    [themeName]
-  )
+
+  const activeTheme = React.useMemo<DeepMutable<BaseColor> | undefined>(() => {
+    const theme = baseColors.find((theme) => theme.name === themeName)
+    return theme ? structuredClone(theme) as DeepMutable<BaseColor> : undefined
+  }, [themeName])
+
   const activeThemeOKLCH = React.useMemo(
     () => baseColorsOKLCH[themeName as keyof typeof baseColorsOKLCH],
     [themeName]
   )
+
+  if (themeName == "custom") {
+    const oklch = hex2oklch(customColor)
+
+    const customVars = generateThemeFromPrimary(oklch);
+    Object.entries(customVars).forEach(([key, value]) => {
+      // LIGHT THEME MAPPING
+      if (key.startsWith("--color-custom-")) {
+        const variable = key.replace("--color-custom-", "");
+        if (variable.startsWith("dark-")) return; // skip dark keys
+        if (activeTheme && activeTheme.cssVars.light) {
+          (activeTheme.cssVars.light as Record<string, string>)[variable] = value;
+        }
+      }
+
+      // DARK THEME MAPPING
+      if (key.startsWith("--color-custom-dark-")) {
+        const variable = key.replace("--color-custom-dark-", "");
+        if (activeTheme && activeTheme.cssVars.dark) {
+          (activeTheme.cssVars.dark as Record<string, string>)[variable] = value;
+        }
+      }
+    });
+    const customVarsOkhCl = generateThemeFromPrimaryOkhCl(oklch)
+    Object.entries(customVarsOkhCl.light).forEach(([key, value]) => {
+      activeThemeOKLCH.light[key as keyof typeof baseColorsOKLCH.custom.light] = value;
+    })
+
+    Object.entries(customVarsOkhCl.dark).forEach(([key, value]) => {
+      activeThemeOKLCH.dark[key as keyof typeof baseColorsOKLCH.custom.dark] = value;
+    })
+
+  }
 
   React.useEffect(() => {
     if (hasCopied) {
@@ -236,8 +276,8 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 onClick={() => {
                   copyToClipboardWithMeta(
                     tailwindVersion === "v3"
-                      ? getThemeCode(activeTheme, 0.65)
-                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
+                      ? getThemeCode(activeTheme, 0.65, customColor)
+                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65, customColor, themeName),
                     {
                       name: "copy_theme_code",
                       properties: {
@@ -317,7 +357,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                   copyToClipboardWithMeta(
                     tailwindVersion === "v3"
                       ? getThemeCode(activeTheme, 0.65)
-                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
+                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65, customColor, themeName),
                     {
                       name: "copy_theme_code",
                       properties: {
@@ -361,7 +401,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                       {
                         activeTheme?.cssVars.light[
-                          prefix as keyof typeof activeTheme.cssVars.light
+                        prefix as keyof typeof activeTheme.cssVars.light
                         ]
                       }
                       ;
@@ -370,7 +410,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
                       {
                         activeTheme?.cssVars.light[
-                          `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
+                        `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
                         ]
                       }
                       ;
@@ -399,7 +439,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                         &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                         {
                           activeTheme?.cssVars.light[
-                            prefix as keyof typeof activeTheme.cssVars.light
+                          prefix as keyof typeof activeTheme.cssVars.light
                           ]
                         }
                         ;
@@ -438,7 +478,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                       {
                         activeTheme?.cssVars.dark[
-                          prefix as keyof typeof activeTheme.cssVars.dark
+                        prefix as keyof typeof activeTheme.cssVars.dark
                         ]
                       }
                       ;
@@ -447,7 +487,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
                       {
                         activeTheme?.cssVars.dark[
-                          `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
+                        `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
                         ]
                       }
                       ;
@@ -473,7 +513,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                         &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                         {
                           activeTheme?.cssVars.dark[
-                            prefix as keyof typeof activeTheme.cssVars.dark
+                          prefix as keyof typeof activeTheme.cssVars.dark
                           ]
                         }
                         ;
@@ -496,37 +536,82 @@ function CustomizerCode({ themeName }: { themeName: string }) {
   )
 }
 
-function getThemeCodeOKLCH(theme: BaseColorOKLCH | undefined, radius: number) {
-  if (!theme) {
-    return ""
+function getThemeCodeOKLCH(
+  theme: BaseColorOKLCH | undefined,
+  radius: number,
+  customColor: string,
+  themeName: string
+) {
+  console.log("entered function");
+  if (!theme) return ""
+
+  let light: Record<string, string> = {}
+  let dark: Record<string, string> = {}
+
+  if (themeName === "custom" && customColor) {
+    const oklch = hex2oklch(customColor)
+    const customVars = generateThemeFromPrimaryOkhCl(oklch)
+    light = customVars.light;
+    dark = customVars.light;
+    console.log("customVars is : ", customVars);
+  } else {
+    // fallback to predefined theme
+    light = theme.light
+    dark = theme.dark
   }
 
   const rootSection =
     ":root {\n  --radius: " +
     radius +
     "rem;\n" +
-    Object.entries(theme.light)
-      .map((entry) => "  --" + entry[0] + ": " + entry[1] + ";")
+    Object.entries(light)
+      .map(([key, val]) => `  --${key}: ${val};`)
       .join("\n") +
     "\n}\n\n.dark {\n" +
-    Object.entries(theme.dark)
-      .map((entry) => "  --" + entry[0] + ": " + entry[1] + ";")
+    Object.entries(dark)
+      .map(([key, val]) => `  --${key}: ${val};`)
       .join("\n") +
     "\n}\n"
 
   return rootSection
 }
 
-function getThemeCode(theme: BaseColor | undefined, radius: number) {
-  if (!theme) {
-    return ""
+
+function getThemeCode(theme: BaseColor | undefined, radius: number, customColor?: string) {
+  if (!theme) return ""
+
+  // If it's a custom theme, generate runtime OKLCH-based variables
+  if (theme.name === "custom" && customColor) {
+    const oklch = hex2oklch(customColor)
+    const customVars = generateThemeFromPrimary(oklch)
+
+    // Convert flat CSS var object to nested cssVars format expected by template
+    const colors = {
+      light: {} as Record<string, string>,
+      dark: {} as Record<string, string>,
+    }
+
+    Object.entries(customVars).forEach(([key, value]) => {
+      if (key.startsWith("--dark-")) {
+        colors.dark[key.replace("--dark-", "")] = value
+      } else {
+        colors.light[key.replace("--", "")] = value
+      }
+    })
+
+    return template(BASE_STYLES_WITH_VARIABLES)({
+      colors,
+      radius: radius.toString(),
+    })
   }
 
+  // Fallback for non-custom themes
   return template(BASE_STYLES_WITH_VARIABLES)({
     colors: theme.cssVars,
     radius: radius.toString(),
   })
 }
+
 
 const BASE_STYLES_WITH_VARIABLES = `
 @layer base {
