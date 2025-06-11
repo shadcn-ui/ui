@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.6.3
+
+### Patch Changes
+
+- [#7594](https://github.com/shadcn-ui/ui/pull/7594) [`431af4f7ff294af032c0687b8b655ed6db2e690f`](https://github.com/shadcn-ui/ui/commit/431af4f7ff294af032c0687b8b655ed6db2e690f) Thanks [@shadcn](https://github.com/shadcn)! - fix: semicolon in code style
+
 ## 2.6.2
 
 ### Patch Changes
