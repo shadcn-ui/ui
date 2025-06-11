@@ -126,7 +126,7 @@
       "name": "calendar",
       "type": "registry:ui",
       "dependencies": [
-        "react-day-picker@8.10.1",
+        "react-day-picker@latest",
         "date-fns"
       ],
       "registryDependencies": [
@@ -1494,6 +1494,801 @@
       "categories": [
         "authentication",
         "login"
+      ]
+    },
+    {
+      "name": "calendar-01",
+      "type": "registry:block",
+      "description": "A simple calendar.",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-02",
+      "type": "registry:block",
+      "description": "Multiple months with single selection.",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-02.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-03",
+      "type": "registry:block",
+      "description": "Multiple months with multiple selection.",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-03.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-04",
+      "type": "registry:block",
+      "description": "Single month with range selection",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-04.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-05",
+      "type": "registry:block",
+      "description": "Multiple months with range selection",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-05.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-06",
+      "type": "registry:block",
+      "description": "Range selection with minimum days",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-06.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-07",
+      "type": "registry:block",
+      "description": "Range selection with minimum and maximum days",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-07.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-08",
+      "type": "registry:block",
+      "description": "Calendar with disabled days",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-08.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-09",
+      "type": "registry:block",
+      "description": "Calendar with disabled weekends",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-09.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-10",
+      "type": "registry:block",
+      "description": "Today button",
+      "registryDependencies": [
+        "calendar",
+        "card",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-10.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-11",
+      "type": "registry:block",
+      "description": "Start and end of month",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-11.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-12",
+      "type": "registry:block",
+      "description": "Localized calendar",
+      "registryDependencies": [
+        "calendar",
+        "card",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-12.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-13",
+      "type": "registry:block",
+      "description": "With Month and Year Dropdown",
+      "registryDependencies": [
+        "calendar",
+        "label",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-13.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-14",
+      "type": "registry:block",
+      "description": "With Booked/Unavailable Days",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-14.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-15",
+      "type": "registry:block",
+      "description": "With Week Numbers",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-15.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-16",
+      "type": "registry:block",
+      "description": "With time picker",
+      "registryDependencies": [
+        "calendar",
+        "card",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-16.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-17",
+      "type": "registry:block",
+      "description": "With time picker inline",
+      "registryDependencies": [
+        "calendar",
+        "card",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-17.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-18",
+      "type": "registry:block",
+      "description": "Variable size",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-18.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-19",
+      "type": "registry:block",
+      "description": "With presets",
+      "dependencies": [
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "card",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-19.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-20",
+      "type": "registry:block",
+      "description": "With time presets",
+      "registryDependencies": [
+        "calendar",
+        "card",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-20.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-21",
+      "type": "registry:block",
+      "description": "Custom days and formatters",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-21.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-22",
+      "type": "registry:block",
+      "description": "Date picker",
+      "registryDependencies": [
+        "calendar",
+        "popover",
+        "button",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-22.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-23",
+      "type": "registry:block",
+      "description": "Date range picker",
+      "registryDependencies": [
+        "calendar",
+        "popover",
+        "button",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-23.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-24",
+      "type": "registry:block",
+      "description": "Date and Time picker",
+      "registryDependencies": [
+        "calendar",
+        "popover",
+        "button",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-24.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-25",
+      "type": "registry:block",
+      "description": "Date and Time range picker",
+      "registryDependencies": [
+        "calendar",
+        "popover",
+        "button",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-25.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-26",
+      "type": "registry:block",
+      "description": "Date range picker with time",
+      "registryDependencies": [
+        "calendar",
+        "popover",
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-26.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-27",
+      "type": "registry:block",
+      "description": "Chart filter",
+      "registryDependencies": [
+        "calendar",
+        "chart",
+        "card",
+        "popover",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-27.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-28",
+      "type": "registry:block",
+      "description": "Input with date picker",
+      "registryDependencies": [
+        "calendar",
+        "input",
+        "label",
+        "popover",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-28.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-29",
+      "type": "registry:block",
+      "description": "Natural language date picker",
+      "dependencies": [
+        "chrono-node"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "input",
+        "label",
+        "popover",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-29.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-30",
+      "type": "registry:block",
+      "description": "With little-date",
+      "registryDependencies": [
+        "calendar",
+        "input",
+        "label",
+        "popover",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-30.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-31",
+      "type": "registry:block",
+      "description": "With event slots",
+      "registryDependencies": [
+        "calendar",
+        "card",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-31.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "700px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
+      ]
+    },
+    {
+      "name": "calendar-32",
+      "type": "registry:block",
+      "description": "Date picker in a drawer",
+      "registryDependencies": [
+        "calendar",
+        "button",
+        "drawer"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/calendar-32.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
       ]
     },
     {
@@ -4807,6 +5602,29 @@
           "path": "registry/new-york-v4/examples/chart-tooltip-demo.tsx",
           "type": "registry:example"
         }
+      ]
+    },
+    {
+      "name": "calendar-hijri",
+      "type": "registry:example",
+      "description": "A Persian calendar.",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/calendar-hijri.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "calendar",
+        "date"
       ]
     },
     {

@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
-import { cookies } from "next/headers"
 
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import { LayoutProvider } from "@/hooks/use-layout"
 import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
@@ -58,14 +58,11 @@ export const metadata: Metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const cookieStore = await cookies()
-  const activeThemeValue = cookieStore.get("active_theme")?.value
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -76,6 +73,9 @@ export default async function RootLayout({
                 if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
                 }
+                if (localStorage.layout) {
+                  document.documentElement.classList.add('layout-' + localStorage.layout)
+                }
               } catch (_) {}
             `,
           }}
@@ -84,18 +84,19 @@ export default async function RootLayout({
       </head>
       <body
         className={cn(
-          "text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)]",
-          activeThemeValue ? `theme-${activeThemeValue}` : "",
+          "text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
           fontVariables
         )}
       >
         <ThemeProvider>
-          <ActiveThemeProvider initialTheme={activeThemeValue}>
-            {children}
-            <TailwindIndicator />
-            <Toaster position="top-center" />
-            <Analytics />
-          </ActiveThemeProvider>
+          <LayoutProvider>
+            <ActiveThemeProvider>
+              {children}
+              <TailwindIndicator />
+              <Toaster position="top-center" />
+              <Analytics />
+            </ActiveThemeProvider>
+          </LayoutProvider>
         </ThemeProvider>
       </body>
     </html>

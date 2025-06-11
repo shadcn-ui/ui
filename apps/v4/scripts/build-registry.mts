@@ -3,6 +3,7 @@ import { promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
 
+import { getAllBlocks } from "@/lib/blocks"
 import { registry } from "@/registry/index"
 
 async function buildRegistryIndex() {
@@ -139,9 +140,28 @@ async function syncRegistry() {
   }
 }
 
+async function buildBlocksIndex() {
+  const blocks = await getAllBlocks(["registry:block"])
+
+  const payload = blocks.map((block) => ({
+    name: block.name,
+    description: block.description,
+    categories: block.categories,
+  }))
+
+  rimraf.sync(path.join(process.cwd(), "registry/__blocks__.json"))
+  await fs.writeFile(
+    path.join(process.cwd(), "registry/__blocks__.json"),
+    JSON.stringify(payload, null, 2)
+  )
+}
+
 try {
   console.log("🗂️ Building registry/__index__.tsx...")
   await buildRegistryIndex()
+
+  console.log("🗂️ Building registry/__blocks__.json...")
+  await buildBlocksIndex()
 
   console.log("💅 Building registry.json...")
   await buildRegistryJsonFile()
