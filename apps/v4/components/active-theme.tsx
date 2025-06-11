@@ -41,7 +41,6 @@ export function ActiveThemeProvider({
   )
 
   useEffect(() => {
-    console.log("use effect started");
     Array.from(document.body.classList)
       .filter((className) => className.startsWith("theme-"))
       .forEach((className) => {
@@ -51,12 +50,10 @@ export function ActiveThemeProvider({
     if (activeTheme.endsWith("-scaled")) {
       document.body.classList.add("theme-scaled")
     }
-    console.log("active theme is : ", activeTheme)
     if (activeTheme.endsWith("custom")) {
       const oklch = hex2oklch(customColor)
       const customTheme = generateThemeFromPrimary(oklch)
       Object.entries(customTheme).forEach(([key, value]) => {
-        console.log("key and value are :", key, value);
         document.body.style.setProperty(key, value)
       })
     }
