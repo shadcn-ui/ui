@@ -4,6 +4,25 @@ description: Latest updates and announcements.
 toc: false
 ---
 
+## June 2025 - `radix-ui`
+
+We've added a new command to migrate to the new `radix-ui` package. This command will replace all `@radix-ui/react-*` imports with `radix-ui`.
+
+```bash
+npx shadcn@latest migrate radix
+```
+
+It will automatically update all imports in your `ui` components and install `radix-ui` as a dependency.
+
+```diff showLineNumbers title="components/ui/alert-dialog.tsx"
+- import * as AlertDialogPrimitive from "@radix-ui/react-dialog"
++ import { AlertDialog as AlertDialogPrimitive } from "radix-ui"
+```
+
+Make sure to test your components and project after running the command.
+
+**Note:** To update imports for newly added components, run the migration command again.
+
 ## June 2025 - Calendar Component
 
 We've upgraded the `Calendar` component to the latest version of [React DayPicker](https://daypicker.dev).
@@ -11,6 +30,8 @@ We've upgraded the `Calendar` component to the latest version of [React DayPicke
 This is a major upgrade and includes a lot of new features and improvements. We've also built a collection of 30+ calendar blocks that you can use to build your own calendar components.
 
 See all calendar blocks in the [Blocks Library](/blocks/calendar) page.
+
+<Image src="/images/calendar-2.png" alt="Calendar" width={676} height={895} />
 
 To upgrade your project to the latest version of the `Calendar` component, see the [upgrade guide](/docs/components/calendar#upgrade-guide).
 
@@ -40,9 +61,9 @@ Learn more in the thread here: https://x.com/shadcn/status/1917597228513853603
 
 We tagged shadcn 2.5.0 earlier this week. It comes with a pretty cool feature: **resolve anywhere**.
 
-Registries can now place files anywhere in an app and we’ll properly resolve imports. No need to stick to a fixed file structure. It can even add files outside the registry itself.
+Registries can now place files anywhere in an app and we'll properly resolve imports. No need to stick to a fixed file structure. It can even add files outside the registry itself.
 
-On install, we track all files and perform a multi-pass resolution to correctly handle imports and aliases. It’s fast.
+On install, we track all files and perform a multi-pass resolution to correctly handle imports and aliases. It's fast.
 
 ## March 2025 - Cross-framework Route Support
 
@@ -59,7 +80,7 @@ What's New:
 - The CLI can now initialize projects with Tailwind v4.
 - Full support for the new @theme directive and @theme inline option.
 - All components are updated for Tailwind v4 and React 19.
-- We’ve removed the forwardRefs and adjusted the types.
+- We've removed the forwardRefs and adjusted the types.
 - Every primitive now has a data-slot attribute for styling.
 - We've fixed and cleaned up the style of the components.
 - We're deprecating the toast component in favor of sonner.
@@ -137,7 +158,7 @@ The new CLI is now available. It's a complete rewrite with a lot of new features
 This is a major step towards distributing code that you and your LLMs can access and use.
 
 1. First up, the cli now has support for all major React framework out of the box. Next.js, Remix, Vite and Laravel. And when you init into a new app, we update your existing Tailwind files instead of overriding.
-2. A component now ship its own dependencies. Take the accordion for example, it can define its Tailwind keyframes. When you add it to your project, we’ll update your tailwind.config.ts file accordingly.
+2. A component now ship its own dependencies. Take the accordion for example, it can define its Tailwind keyframes. When you add it to your project, we'll update your tailwind.config.ts file accordingly.
 3. You can also install remote components using url. `npx shadcn add https://acme.com/registry/navbar.json`.
 4. We have also improve the init command. It does framework detection and can even init a brand new Next.js app in one command. `npx shadcn init`.
 5. We have created a new schema that you can use to ship your own component registry. And since it has support for urls, you can even use it to distribute private components.
