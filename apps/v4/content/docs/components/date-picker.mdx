@@ -5,8 +5,9 @@ component: true
 ---
 
 <ComponentPreview
-  name="date-picker-demo"
-  description="A date picker in a popover"
+  name="calendar-22"
+  title="Date of Birth Picker"
+  description="A calendar with date of birth picker."
 />
 
 ## Installation
@@ -40,23 +41,16 @@ export function DatePickerDemo() {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant={"outline"}
-          className={cn(
-            "w-[280px] justify-start text-left font-normal",
-            !date && "text-muted-foreground"
-          )}
+          variant="outline"
+          data-empty={!date}
+          className="data-[empty=true]:text-muted-foreground w-[280px] justify-start text-left font-normal"
         >
-          <CalendarIcon className="mr-2 h-4 w-4" />
+          <CalendarIcon />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
-          initialFocus
-        />
+        <Calendar mode="single" selected={date} onSelect={setDate} />
       </PopoverContent>
     </Popover>
   )
@@ -67,25 +61,38 @@ See the [React DayPicker](https://react-day-picker.js.org) documentation for mor
 
 ## Examples
 
-### Date Picker
+### Date of Birth Picker
 
 <ComponentPreview
-  name="date-picker-demo"
-  description="A date picker in a popover"
+  name="calendar-22"
+  title="Date of Birth Picker"
+  description="A calendar with date of birth picker."
 />
 
-### Date Range Picker
+### Picker with Input
 
 <ComponentPreview
-  name="date-picker-with-range"
-  description="A date range picker"
+  name="calendar-28"
+  title="Picker with Input"
+  description="A calendar with input and picker."
 />
 
-### With Presets
+### Date and Time Picker
 
 <ComponentPreview
-  name="date-picker-with-presets"
-  description="A date picker with presets"
+  name="calendar-24"
+  title="Date and Time Picker"
+  description="A calendar with date and time picker."
+/>
+
+### Natural Language Picker
+
+This component uses the `chrono-node` library to parse natural language dates.
+
+<ComponentPreview
+  name="calendar-29"
+  title="Natural Language Picker"
+  description="A calendar with natural language picker."
 />
 
 ### Form

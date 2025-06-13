@@ -2,9 +2,17 @@ import { fetchRegistry } from "@/src/registry/api"
 import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
-import path, { resolve } from "path"
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+import path from "path"
 import { logger } from "@/src/utils/logger"
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+  type MockInstance,
+} from "vitest"
 
 import { TEMPLATES, createProject } from "./create-project"
 
@@ -16,10 +24,18 @@ vi.mock("@/src/registry/api")
 vi.mock("@/src/utils/get-package-manager", () => ({
   getPackageManager: vi.fn().mockResolvedValue("npm"),
 }))
+vi.mock("@/src/utils/spinner")
+vi.mock("@/src/utils/logger", () => ({
+  logger: {
+    break: vi.fn(),
+    error: vi.fn(),
+    info: vi.fn(),
+  },
+}))
 
 describe("createProject", () => {
   let mockLoggerError: ReturnType<typeof vi.spyOn>;
-  let mockExit: any;
+  let mockExit: MockInstance;
 
   beforeEach(() => {
     vi.clearAllMocks()
