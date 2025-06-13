@@ -226,7 +226,7 @@ async function createNextProject(
 
   try {
     await execa(
-      "npx --prefix .",
+      "npx",
       [`create-next-app@${options.version}`, projectPath, "--silent", ...args],
       {
         cwd: options.cwd,

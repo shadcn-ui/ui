@@ -1,4 +1,5 @@
 import { fetchRegistry } from "@/src/registry/api"
+import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
@@ -39,18 +40,81 @@ describe("createProject", () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
-    
+
+    // Reset all fs mocks
+    vi.mocked(fs.mkdirSync).mockReturnValue(undefined)
+    vi.mocked(fs.opendirSync).mockReturnValue({} as fs.Dir)
+    vi.mocked(fs.access).mockResolvedValue(undefined)
+    vi.mocked(fs.existsSync).mockReturnValue(false)
+    vi.mocked(fs.ensureDir).mockResolvedValue(undefined)
+    vi.mocked(fs.writeFile).mockResolvedValue(undefined)
+    vi.mocked(fs.move).mockResolvedValue(undefined)
+    vi.mocked(fs.remove).mockResolvedValue(undefined) 
+
+    // Mock execa to resolve immediately without actual execution
+    vi.mocked(execa).mockResolvedValue({
+      stdout: "",
+      stderr: "",
+      exitCode: 0,
+      signal: undefined,
+      signalDescription: undefined,
+      command: "",
+      escapedCommand: "",
+      failed: false,
+      timedOut: false,
+      isCanceled: false,
+      killed: false,
+    } as any)
+
     mockLoggerError = vi.spyOn(logger, 'error').mockImplementation(() => {});
     mockExit = vi.spyOn(process, "exit").mockImplementation(() => {
       return undefined as never
     })
-  })
+
+  // Mock fetch for monorepo template
+  global.fetch = vi.fn().mockResolvedValue({
+    ok: true,
+    arrayBuffer: () => Promise.resolve(new ArrayBuffer(0)),
+  } as any)
+
+  // Reset prompts mock
+  vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
+
+  // Reset registry mock
+  vi.mocked(fetchRegistry).mockResolvedValue([])
+  
+  // Mock spinner function
+  const mockSpinner = {
+    start: vi.fn().mockReturnThis(),
+    succeed: vi.fn().mockReturnThis(),
+    fail: vi.fn().mockReturnThis(),
+    stop: vi.fn().mockReturnThis(),
+    text: "",
+    prefixText: "",
+    suffixText: "",
+    color: "cyan" as const,
+    indent: 0,
+    spinner: "dots" as const,
+    isSpinning: false,
+    interval: 100,
+    stream: process.stderr,
+    clear: vi.fn(),
+    render: vi.fn(),
+    frame: vi.fn(),
+    stopAndPersist: vi.fn(),
+    warn: vi.fn(),
+    info: vi.fn(),
+  }
+
+  vi.mocked(spinner).mockReturnValue(mockSpinner as any)  
+})
 
   afterEach(() => {
     vi.resetAllMocks()
     
-    mockLoggerError.mockRestore();
-    mockExit.mockRestore();
+    mockLoggerError.mockRestore()
+    mockExit.mockRestore()
+    delete (global as any).fetch
   })
 
   it("should create a Next.js project with default options", async () => {
@@ -139,13 +203,13 @@ describe("createProject", () => {
         mockedDirHandle = {
           readSync: vi.fn().mockReturnValueOnce({ name: 'somefile.txt' }).mockReturnValue(null),
           closeSync: vi.fn(),
-        } as any;
+        };
         return mockedDirHandle;
       }
       return {
         readSync: vi.fn().mockReturnValue(null),
         closeSync: vi.fn(),
-      } as any;
+      };
     });
 
     await createProject({ cwd, force: false });
