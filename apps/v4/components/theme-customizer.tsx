@@ -101,9 +101,7 @@ export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
         <ScrollBar orientation="horizontal" className="invisible" />
       </ScrollArea>
       <div className="flex items-center gap-2 lg:hidden">
-        <Label htmlFor="theme-selector" className="sr-only">
-          Theme
-        </Label>
+        <Label htmlFor="theme-selector" className="sr-only">Theme</Label>
         <Select
           value={activeTheme === "default" ? "neutral" : activeTheme}
           onValueChange={setActiveTheme}
@@ -130,7 +128,18 @@ export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
             </SelectGroup>
           </SelectContent>
         </Select>
+
+        {activeTheme === "custom" && (
+          <Input
+            type="color"
+            value={customColor}
+            onChange={(e) => setCustomColor(e.target.value)}
+            className="w-8 h-8 p-0 border-none bg-transparent"
+            aria-label="Select custom color"
+          />
+        )}
       </div>
+
       <CopyCodeButton variant="secondary" size="sm" className="ml-auto" />
     </div>
   )
