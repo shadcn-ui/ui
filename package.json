@@ -48,7 +48,7 @@
     "pub:release": "cd packages/shadcn && pnpm pub:release",
     "test": "turbo run test --filter=!shadcn-ui --force"
   },
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@9.0.6",
   "dependencies": {
     "@babel/core": "^7.22.1",
     "@changesets/changelog-github": "^0.4.8",
