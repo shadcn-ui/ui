@@ -6,10 +6,9 @@ import { CheckIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-function Checkbox({
-  className,
-  ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+type CheckboxProps = React.ComponentProps<typeof CheckboxPrimitive.Root>
+
+function Checkbox({ className, ...props }: CheckboxProps) {
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
@@ -30,3 +29,5 @@ function Checkbox({
 }
 
 export { Checkbox }
+
+export type { CheckboxProps }
