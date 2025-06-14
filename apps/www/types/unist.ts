@@ -28,4 +28,5 @@ export interface NpmCommands {
   __yarnCommand__?: string
   __pnpmCommand__?: string
   __bunCommand__?: string
+  __denoCommand__?: string
 }
