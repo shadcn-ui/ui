@@ -379,7 +379,7 @@ export function unnestSpreadProperties(obj: ObjectLiteralExpression) {
         initializer &&
         initializer.isKind(SyntaxKind.ArrayLiteralExpression)
       ) {
-        unnsetSpreadElements(
+        unsetSpreadElements(
           initializer.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
         )
       }
@@ -387,7 +387,7 @@ export function unnestSpreadProperties(obj: ObjectLiteralExpression) {
   }
 }
 
-export function unnsetSpreadElements(arr: ArrayLiteralExpression) {
+export function unsetSpreadElements(arr: ArrayLiteralExpression) {
   const elements = arr.getElements()
   for (let j = 0; j < elements.length; j++) {
     const element = elements[j]
@@ -398,7 +398,7 @@ export function unnsetSpreadElements(arr: ArrayLiteralExpression) {
       )
     } else if (element.isKind(SyntaxKind.ArrayLiteralExpression)) {
       // Recursive check on nested arrays
-      unnsetSpreadElements(
+      unsetSpreadElements(
         element.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
       )
     } else if (element.isKind(SyntaxKind.StringLiteral)) {
