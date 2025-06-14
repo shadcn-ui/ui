@@ -751,6 +751,70 @@ export const baseColors = [
       },
     },
   },
+  {
+    name: "custom",
+    label: "Custom",
+    activeColor: {
+      light: "173 58% 45%",  // Approx. HSL for #1fb8a1
+      dark: "173 40% 60%",   // A muted version for dark
+    },
+    cssVars: {
+      light: {
+        background: "0 0% 100%",
+        foreground: "240 10% 3.9%",
+        card: "0 0% 100%",
+        "card-foreground": "240 10% 3.9%",
+        popover: "0 0% 100%",
+        "popover-foreground": "240 10% 3.9%",
+        primary: "173 58% 45%",
+        "primary-foreground": "0 0% 98%",
+        secondary: "173 40% 90%",
+        "secondary-foreground": "173 58% 20%",
+        muted: "173 40% 90%",
+        "muted-foreground": "173 30% 40%",
+        accent: "173 40% 90%",
+        "accent-foreground": "173 58% 20%",
+        destructive: "0 84.2% 60.2%",
+        "destructive-foreground": "0 0% 98%",
+        border: "173 40% 80%",
+        input: "173 40% 80%",
+        ring: "173 58% 45%",
+        radius: "0.5rem",
+        "chart-1": "173 58% 45%",
+        "chart-2": "153 45% 35%",
+        "chart-3": "200 30% 50%",
+        "chart-4": "43 74% 66%",
+        "chart-5": "27 87% 67%",
+      },
+      dark: {
+        background: "240 10% 3.9%",
+        foreground: "0 0% 98%",
+        card: "240 10% 3.9%",
+        "card-foreground": "0 0% 98%",
+        popover: "240 10% 3.9%",
+        "popover-foreground": "0 0% 98%",
+        primary: "0 0% 98%",
+        "primary-foreground": "173 58% 20%",
+        secondary: "173 20% 20%",
+        "secondary-foreground": "0 0% 98%",
+        muted: "173 20% 20%",
+        "muted-foreground": "173 30% 70%",
+        accent: "173 20% 20%",
+        "accent-foreground": "0 0% 98%",
+        destructive: "0 62.8% 30.6%",
+        "destructive-foreground": "0 0% 98%",
+        border: "173 20% 20%",
+        input: "173 20% 20%",
+        ring: "173 58% 45%",
+        "chart-1": "173 58% 45%",
+        "chart-2": "153 45% 35%",
+        "chart-3": "200 30% 50%",
+        "chart-4": "280 65% 60%",
+        "chart-5": "340 75% 55%",
+      },
+    },
+  }
+  ,
 ] as const
 
 export type BaseColor = (typeof baseColors)[number]
@@ -1719,6 +1783,74 @@ export const baseColorsOKLCH = {
     },
   },
   violet: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.606 0.25 292.717)", // --color-violet-500 (approx HSL 262.1 83.3% 57.8%)
+      "primary-foreground": "oklch(0.969 0.016 293.756)", // --color-violet-50 (approx HSL 210 20% 98%)
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.606 0.25 292.717)", // --color-violet-500 (approx HSL 262.1 83.3% 57.8%)
+      "chart-1": "oklch(0.646 0.222 41.116)", // --color-orange-600 (from zinc)
+      "chart-2": "oklch(0.6 0.118 184.704)", // --color-teal-600 (from zinc)
+      "chart-3": "oklch(0.398 0.07 227.392)", // --color-cyan-900 (from zinc)
+      "chart-4": "oklch(0.828 0.189 84.429)", // --color-amber-400 (from zinc)
+      "chart-5": "oklch(0.769 0.188 70.08)", // --color-amber-500 (from zinc)
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.606 0.25 292.717)", // --color-violet-500 (approx HSL 262.1 83.3% 57.8%)
+      "sidebar-primary-foreground": "oklch(0.969 0.016 293.756)", // --color-violet-50 (approx HSL 210 20% 98%)
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.606 0.25 292.717)", // --color-violet-500 (approx HSL 262.1 83.3% 57.8%)
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.541 0.281 293.009)", // --color-violet-600 (approx HSL 263.4 70% 50.4%)
+      "primary-foreground": "oklch(0.969 0.016 293.756)", // --color-violet-50 (approx HSL 210 20% 98%)
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.541 0.281 293.009)", // --color-violet-600 (approx HSL 263.4 70% 50.4%)
+      "chart-1": "oklch(0.488 0.243 264.376)", // --color-blue-700 (from zinc)
+      "chart-2": "oklch(0.696 0.17 162.48)", // --color-emerald-500 (from zinc)
+      "chart-3": "oklch(0.769 0.188 70.08)", // --color-amber-500 (from zinc)
+      "chart-4": "oklch(0.627 0.265 303.9)", // --color-purple-500 (from zinc)
+      "chart-5": "oklch(0.645 0.246 16.439)", // --color-rose-500 (from zinc)
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.541 0.281 293.009)", // --color-violet-600 (approx HSL 263.4 70% 50.4%)
+      "sidebar-primary-foreground": "oklch(0.969 0.016 293.756)", // --color-violet-50 (approx HSL 210 20% 98%)
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.541 0.281 293.009)", // --color-violet-600 (approx HSL 263.4 70% 50.4%)
+    },
+  },
+  custom: {
     light: {
       background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
       foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)

@@ -332,3 +332,27 @@
     --sidebar-ring: var(--color-violet-900);
   }
 }
+
+.theme-custom .theme-container {
+  --primary: var(--color-custom-primary);
+  --primary-foreground: var(--color-custom-primary-foreground);
+  --ring: var(--color-custom-ring);
+  --chart-1: var(--color-custom-chart-1);
+  --chart-2: var(--color-custom-chart-2);
+  --chart-3: var(--color-custom-chart-3);
+  --chart-4: var(--color-custom-chart-4);
+  --chart-5: var(--color-custom-chart-5);
+  --sidebar-primary: var(--color-custom-sidebar-primary);
+  --sidebar-primary-foreground: var(--color-custom-sidebar-primary-foreground);
+  --sidebar-ring: var(--color-custom-sidebar-ring);
+
+  @variant dark {
+    --primary: var(--color-custom-dark-primary);
+    --primary-foreground: var(--color-custom-dark-primary-foreground);
+    --ring: var(--color-custom-dark-ring);
+    --sidebar-primary: var(--color-custom-dark-sidebar-primary);
+    --sidebar-primary-foreground: var(--color-custom-dark-sidebar-primary-foreground);
+    --sidebar-ring: var(--color-custom-dark-sidebar-ring);
+  }
+}
+
