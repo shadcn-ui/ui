@@ -20,14 +20,14 @@ export default function Calendar24() {
   return (
     <div className="flex gap-4">
       <div className="flex flex-col gap-3">
-        <Label htmlFor="date" className="px-1">
+        <Label htmlFor="date-picker" className="px-1">
           Date
         </Label>
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <Button
               variant="outline"
-              id="date"
+              id="date-picker"
               className="w-32 justify-between font-normal"
             >
               {date ? date.toLocaleDateString() : "Select date"}
@@ -48,12 +48,12 @@ export default function Calendar24() {
         </Popover>
       </div>
       <div className="flex flex-col gap-3">
-        <Label htmlFor="time" className="px-1">
+        <Label htmlFor="time-picker" className="px-1">
           Time
         </Label>
         <Input
           type="time"
-          id="time"
+          id="time-picker"
           step="1"
           defaultValue="10:30:00"
           className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
