@@ -12,12 +12,8 @@
     "build:docs": "contentlayer2 build",
     "seed:tasks": "tsx --tsconfig ./tsconfig.scripts.json ./app/(app)/examples/tasks/data/seed.ts",
     "start": "next start -p 3333",
-    "lint": "npx ultracite lint",
-    "lint:fix": "npx ultracite format",
     "preview": "next build && next start -p 3333",
-    "typecheck": "contentlayer2 build && tsc --noEmit",
-    "format:write": "npx ultracite format",
-    "format:check": "npx ultracite lint"
+    "typecheck": "contentlayer2 build && tsc --noEmit"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

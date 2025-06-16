@@ -7,8 +7,6 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "npx ultracite lint",
-    "lint:fix": "npx ultracite format",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -25,22 +25,6 @@
     "start": {
       "dependsOn": ["^build"]
     },
-    "lint": {
-      "cache": false,
-      "outputs": []
-    },
-    "lint:fix": {
-      "cache": false,
-      "outputs": []
-    },
-    "format:check": {
-      "cache": false,
-      "outputs": []
-    },
-    "format:write": {
-      "cache": false,
-      "outputs": []
-    },
     "typecheck": {},
     "dev": {
       "cache": false

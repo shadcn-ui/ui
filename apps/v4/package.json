@@ -7,11 +7,7 @@
     "dev": "next dev --turbopack --port 4000",
     "build": "pnpm --filter=shadcn build && next build",
     "start": "next start --port 4000",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
     "typecheck": "tsc --noEmit",
-    "format:write": "npx ultracite format",
-    "format:check": "npx ultracite lint",
     "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "postinstall": "fumadocs-mdx"

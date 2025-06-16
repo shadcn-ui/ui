@@ -5,8 +5,8 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "lint": "npx ultracite lint",
+    "format": "npx ultracite format"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
