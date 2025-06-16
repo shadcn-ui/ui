@@ -9,7 +9,55 @@
       "templates",
       "fixtures",
 
-      "packages/shadcn/test/fixtures/**/*"
+      "packages/shadcn/test/fixtures/**/*",
+      "**/*.json",
+
+      "apps/www/__registry__/**/*",
+      "apps/v4/registry/__index__.tsx"
     ]
+  },
+  "organizeImports": {
+    "enabled": false
+  },
+  "linter": {
+    "rules": {
+      "a11y": {
+        "noBlankTarget": "off"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "useFlatMap": "off"
+      },
+      "correctness": {
+        "noUnusedImports": "off"
+      },
+      "style": {
+        "useImportType": "off",
+        "useConst": "off",
+        "useNumberNamespace": "off",
+        "noNegationElse": "off",
+        "useCollapsedElseIf": "off",
+        "noInferrableTypes": "off"
+      },
+      "nursery": {
+        "useSortedClasses": "off",
+        "noUselessEscapeInRegex": "off",
+        "useStrictMode": "off",
+        "useCollapsedIf": "off"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "preserve",
+      "trailingCommas": "es5",
+      "semicolons": "asNeeded",
+      "arrowParentheses": "always",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "quoteStyle": "double",
+      "attributePosition": "auto"
+    }
   }
 }
