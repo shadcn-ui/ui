@@ -126,7 +126,8 @@ export const mdxComponents = {
     />
   ),
   img: ({ className, alt, ...props }: React.ComponentProps<"img">) => (
-    // eslint-disable-next-line @next/next/no-img-element
+    // biome-ignore lint/nursery/noImgElement: "shadcn/ui is framework agnostic"
+    // biome-ignore lint/a11y/useAltText: "alt is up to the user"
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }: React.ComponentProps<"hr">) => (
