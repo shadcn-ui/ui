@@ -38,7 +38,7 @@
     "lint": "npx ultracite lint",
     "preview": "turbo run preview",
     "typecheck": "turbo run typecheck",
-    "format:write": "npx ultracite format",
+    "format": "npx ultracite format",
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
     "check": "turbo lint typecheck && pnpm format",
     "release": "changeset version",
