@@ -55,7 +55,6 @@ const data = {
     ],
     ["lib", ["util.ts"]],
     ["public", "favicon.ico", "vercel.svg"],
-    ".eslintrc.json",
     ".gitignore",
     "next.config.js",
     "tailwind.config.js",
