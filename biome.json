@@ -9,7 +9,7 @@
       "templates",
       "fixtures",
 
-      "packages/shadcn/test/fixtures/**/*"
+      "packages/shadcn/test/fixtures/frameworks/**/*"
     ]
   }
 }
