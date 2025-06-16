@@ -7,8 +7,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint": "npx ultracite lint",
+    "lint:fix": "npx ultracite format",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -23,7 +23,6 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@workspace/eslint-config": "workspace:^",
     "@workspace/typescript-config": "workspace:*",
     "typescript": "^5.7.3"
   }
