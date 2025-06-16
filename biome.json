@@ -2,6 +2,14 @@
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "extends": ["ultracite"],
   "files": {
-    "ignore": ["target", "build", "dist", "templates", "fixtures"]
+    "ignore": [
+      "target",
+      "build",
+      "dist",
+      "templates",
+      "fixtures",
+
+      "packages/shadcn/test/fixtures/**/*"
+    ]
   }
 }
