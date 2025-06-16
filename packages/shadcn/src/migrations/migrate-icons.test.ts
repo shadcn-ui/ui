@@ -51,8 +51,9 @@ describe("migrateIconsFile", () => {
         return <div>No icons here</div>
       }`
 
-    expect(await migrateIconsFile(input, "lucide", "radix", {}))
-      .toMatchInlineSnapshot(`
+    expect(
+      await migrateIconsFile(input, "lucide", "radix", {})
+    ).toMatchInlineSnapshot(`
       "import { Something } from "other-package"
 
             export function Component() {

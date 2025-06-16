@@ -165,9 +165,8 @@ async function addWorkspaceComponents(
         ? workspaceConfig.ui
         : config
 
-    const tailwindVersion = await getProjectTailwindVersionFromConfig(
-      targetConfig
-    )
+    const tailwindVersion =
+      await getProjectTailwindVersionFromConfig(targetConfig)
 
     const workspaceRoot = findCommonRoot(
       config.resolvedPaths.cwd,
