@@ -146,6 +146,12 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
+  // Expo.
+  if (packageJson?.dependencies?.expo) {
+    type.framework = FRAMEWORKS["expo"]
+    return type
+  }
+
   return type
 }
 
