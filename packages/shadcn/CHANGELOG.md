@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.6.4
+
+### Patch Changes
+
+- [#7601](https://github.com/shadcn-ui/ui/pull/7601) [`c86c27a2ffb8d186770afa42bfb62ab46e3db975`](https://github.com/shadcn-ui/ui/commit/c86c27a2ffb8d186770afa42bfb62ab46e3db975) Thanks [@schiller-manuel](https://github.com/schiller-manuel)! - fix tanstack start detection
+
 ## 2.6.3
 
 ### Patch Changes
