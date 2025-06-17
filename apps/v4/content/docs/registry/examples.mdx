@@ -328,6 +328,20 @@ Add custom theme variables to the `theme` object.
 }
 ```
 
+## Add custom plugins
+
+```json title="example-plugin.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-plugin",
+  "type": "registry:component",
+  "css": {
+    "@plugin @tailwindcss/typography": {},
+    "@plugin foo": {}
+  }
+}
+```
+
 ## Add custom animations
 
 Note: you need to define both `@keyframes` in css and `theme` in cssVars to use animations.
