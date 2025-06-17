@@ -101,7 +101,7 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
                 (node): node is AtRule =>
                   node.type === "atrule" && node.name === "import"
               )
-              
+
               const pluginNodes = root.nodes?.filter(
                 (node): node is AtRule =>
                   node.type === "atrule" && node.name === "plugin"
@@ -116,16 +116,28 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
                 const lastImport = importNodes[importNodes.length - 1]
                 root.insertAfter(lastImport, pluginRule)
                 // Add a break comment before the first plugin to create spacing
-                root.insertBefore(pluginRule, postcss.comment({ text: "---break---" }))
+                root.insertBefore(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
                 // Add a break comment after the plugin for spacing from other content
-                root.insertAfter(pluginRule, postcss.comment({ text: "---break---" }))
+                root.insertAfter(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
               } else {
                 // If no imports or plugins, insert at the beginning
                 root.prepend(pluginRule)
                 // Add a break comment before the first plugin for spacing
-                root.insertBefore(pluginRule, postcss.comment({ text: "---break---" }))
+                root.insertBefore(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
                 // Add a break comment after the plugin for spacing from other content
-                root.insertAfter(pluginRule, postcss.comment({ text: "---break---" }))
+                root.insertAfter(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
               }
             }
           }
