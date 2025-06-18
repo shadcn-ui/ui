@@ -12,6 +12,9 @@
       "packages/shadcn/test/fixtures/**/*",
       "**/*.json",
 
+      "apps/www/.source/**/*",
+      "apps/v4/.source/**/*",
+
       "apps/www/__registry__/**/*",
       "apps/v4/registry/__index__.tsx"
     ]
