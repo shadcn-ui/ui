@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 2.7.0
+
+### Minor Changes
+
+- [#7540](https://github.com/shadcn-ui/ui/pull/7540) [`cb19ab84646fc017c15fadc81fc47b695560a04c`](https://github.com/shadcn-ui/ui/commit/cb19ab84646fc017c15fadc81fc47b695560a04c) Thanks [@mrzachnugent](https://github.com/mrzachnugent)! - add support for expo
+
+- [#7640](https://github.com/shadcn-ui/ui/pull/7640) [`7c3d34cdc91681815f8897709917ec9fbcd69245`](https://github.com/shadcn-ui/ui/commit/7c3d34cdc91681815f8897709917ec9fbcd69245) Thanks [@shadcn](https://github.com/shadcn)! - add support for @plugin in css
+
 ## 2.6.4
 
 ### Patch Changes
