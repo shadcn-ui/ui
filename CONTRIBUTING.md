@@ -41,7 +41,7 @@ packages
 | `apps/www/components` | The React components for the website.    |
 | `apps/www/content`    | The content for the website.             |
 | `apps/www/registry`   | The registry for the components.         |
-| `packages/cli`        | The `shadcn` package.                    |
+| `packages/shadcn`     | The `shadcn` package.                    |
 
 ## Development
 
@@ -88,7 +88,7 @@ pnpm --filter=www dev
 2. To run the `shadcn` package:
 
 ```bash
-pnpm --filter=shadcn dev
+pnpm shadcn:dev
 ```
 
 ## Running the CLI Locally
@@ -198,7 +198,7 @@ If you have a request for a new component, please open a discussion on GitHub. W
 
 The `shadcn` package is a CLI for adding components to your project. You can find the documentation for the CLI [here](https://ui.shadcn.com/docs/cli).
 
-Any changes to the CLI should be made in the `packages/cli` directory. If you can, it would be great if you could add tests for your changes.
+Any changes to the CLI should be made in the `packages/shadcn` directory. If you can, it would be great if you could add tests for your changes.
 
 ## Testing
 
