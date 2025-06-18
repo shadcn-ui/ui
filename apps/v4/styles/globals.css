@@ -58,6 +58,32 @@
 }
 
 :root {
+  --color-custom-primary: oklch(70% 0.2 328); /* base: fuchsia-600 */
+  --color-custom-primary-foreground: oklch(98% 0.01 0);
+  --color-custom-ring: oklch(65% 0.18 328);
+
+  /* Chart colors rotated for variety */
+  --color-custom-chart-1: oklch(68% 0.2 300);
+  --color-custom-chart-2: oklch(68% 0.2 320);
+  --color-custom-chart-3: oklch(68% 0.2 340);
+  --color-custom-chart-4: oklch(68% 0.2 0);
+  --color-custom-chart-5: oklch(68% 0.2 20);
+
+  /* Sidebar */
+  --color-custom-sidebar-primary: oklch(70% 0.2 328);
+  --color-custom-sidebar-primary-foreground: oklch(98% 0.01 0);
+  --color-custom-sidebar-ring: oklch(65% 0.18 328);
+
+  /* Dark mode variants */
+  --color-custom-dark-primary: oklch(80% 0.16 328);
+  --color-custom-dark-primary-foreground: oklch(12% 0.01 0);
+  --color-custom-dark-ring: oklch(55% 0.15 328);
+  --color-custom-dark-sidebar-primary: oklch(72% 0.15 328);
+  --color-custom-dark-sidebar-primary-foreground: oklch(15% 0.01 0);
+  --color-custom-dark-sidebar-ring: oklch(55% 0.15 328);
+}
+
+:root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

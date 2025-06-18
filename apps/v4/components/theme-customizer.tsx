@@ -25,6 +25,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/registry/new-york-v4/ui/drawer"
+import { Input } from "@/registry/new-york-v4/ui/input"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import { ScrollArea, ScrollBar } from "@/registry/new-york-v4/ui/scroll-area"
 import {
@@ -46,6 +47,10 @@ import {
   baseColors,
   baseColorsOKLCH,
 } from "@/registry/registry-base-colors"
+import { hex2oklch } from "colorizr"
+import { generateThemeFromPrimary } from "@/lib/generate-custom-theme-from-primary"
+import { generateThemeFromPrimaryOkhCl } from "@/lib/generate-custom-theme-from-primary-OklCh"
+import { DeepMutable } from "@/types/utils"
 
 interface BaseColorOKLCH {
   light: Record<string, string>
@@ -57,31 +62,46 @@ const THEMES = baseColors.filter(
 )
 
 export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
-  const { activeTheme = "neutral", setActiveTheme } = useThemeConfig()
+  const {
+    activeTheme = "neutral",
+    setActiveTheme,
+    customColor,
+    setCustomColor,
+  } = useThemeConfig()
 
   return (
     <div className={cn("flex w-full items-center gap-2", className)}>
       <ScrollArea className="hidden max-w-[96%] md:max-w-[600px] lg:flex lg:max-w-none">
         <div className="flex items-center">
           {THEMES.map((theme) => (
-            <Button
-              key={theme.name}
-              variant="link"
-              size="sm"
-              data-active={activeTheme === theme.name}
-              className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 cursor-pointer items-center justify-center px-4 text-center text-base font-medium capitalize transition-colors hover:no-underline"
-              onClick={() => setActiveTheme(theme.name)}
-            >
-              {theme.name === "neutral" ? "Default" : theme.name}
-            </Button>
+            <span key={theme.name} className="flex items-center" >
+              <Button
+                key={theme.name}
+                variant="link"
+                size="sm"
+                data-active={activeTheme === theme.name}
+                className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 cursor-pointer items-center justify-center px-4 text-center text-base font-medium capitalize transition-colors hover:no-underline"
+                onClick={() => setActiveTheme(theme.name)}
+              >
+                {theme.name === "neutral" ? "Default" : theme.name}
+              </Button>
+              {theme.name === "custom" ? (
+                <Input
+                  type="color"
+                  id="Select color.."
+                  value={customColor}
+                  onChange={(e) => {
+                    setCustomColor(e.target.value)
+                  }}
+                />
+              ) : null}
+            </span >
           ))}
         </div>
         <ScrollBar orientation="horizontal" className="invisible" />
       </ScrollArea>
       <div className="flex items-center gap-2 lg:hidden">
-        <Label htmlFor="theme-selector" className="sr-only">
-          Theme
-        </Label>
+        <Label htmlFor="theme-selector" className="sr-only">Theme</Label>
         <Select
           value={activeTheme === "default" ? "neutral" : activeTheme}
           onValueChange={setActiveTheme}
@@ -108,7 +128,18 @@ export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
             </SelectGroup>
           </SelectContent>
         </Select>
+
+        {activeTheme === "custom" && (
+          <Input
+            type="color"
+            value={customColor}
+            onChange={(e) => setCustomColor(e.target.value)}
+            className="w-8 h-8 p-0 border-none bg-transparent"
+            aria-label="Select custom color"
+          />
+        )}
       </div>
+
       <CopyCodeButton variant="secondary" size="sm" className="ml-auto" />
     </div>
   )
@@ -118,9 +149,8 @@ export function CopyCodeButton({
   className,
   ...props
 }: React.ComponentProps<typeof Button>) {
-  let { activeTheme: activeThemeName = "neutral" } = useThemeConfig()
+  let { activeTheme: activeThemeName = "neutral", customColor } = useThemeConfig()
   activeThemeName = activeThemeName === "default" ? "neutral" : activeThemeName
-
   return (
     <>
       <Drawer>
@@ -138,7 +168,7 @@ export function CopyCodeButton({
               Copy and paste the following code into your CSS file.
             </DrawerDescription>
           </DrawerHeader>
-          <CustomizerCode themeName={activeThemeName} />
+          <CustomizerCode themeName={activeThemeName} customColor={customColor} />
         </DrawerContent>
       </Drawer>
       <Dialog>
@@ -156,24 +186,59 @@ export function CopyCodeButton({
               Copy and paste the following code into your CSS file.
             </DialogDescription>
           </DialogHeader>
-          <CustomizerCode themeName={activeThemeName} />
+          <CustomizerCode themeName={activeThemeName} customColor={customColor} />
         </DialogContent>
       </Dialog>
     </>
   )
 }
 
-function CustomizerCode({ themeName }: { themeName: string }) {
+function CustomizerCode({ themeName, customColor }: { themeName: string, customColor: string }) {
   const [hasCopied, setHasCopied] = React.useState(false)
   const [tailwindVersion, setTailwindVersion] = React.useState("v4")
-  const activeTheme = React.useMemo(
-    () => baseColors.find((theme) => theme.name === themeName),
-    [themeName]
-  )
+
+  const activeTheme = React.useMemo<DeepMutable<BaseColor> | undefined>(() => {
+    const theme = baseColors.find((theme) => theme.name === themeName)
+    return theme ? structuredClone(theme) as DeepMutable<BaseColor> : undefined
+  }, [themeName])
+
   const activeThemeOKLCH = React.useMemo(
     () => baseColorsOKLCH[themeName as keyof typeof baseColorsOKLCH],
     [themeName]
   )
+
+  if (themeName == "custom") {
+    const oklch = hex2oklch(customColor)
+
+    const customVars = generateThemeFromPrimary(oklch);
+    Object.entries(customVars).forEach(([key, value]) => {
+      // LIGHT THEME MAPPING
+      if (key.startsWith("--color-custom-")) {
+        const variable = key.replace("--color-custom-", "");
+        if (variable.startsWith("dark-")) return; // skip dark keys
+        if (activeTheme && activeTheme.cssVars.light) {
+          (activeTheme.cssVars.light as Record<string, string>)[variable] = value;
+        }
+      }
+
+      // DARK THEME MAPPING
+      if (key.startsWith("--color-custom-dark-")) {
+        const variable = key.replace("--color-custom-dark-", "");
+        if (activeTheme && activeTheme.cssVars.dark) {
+          (activeTheme.cssVars.dark as Record<string, string>)[variable] = value;
+        }
+      }
+    });
+    const customVarsOkhCl = generateThemeFromPrimaryOkhCl(oklch)
+    Object.entries(customVarsOkhCl.light).forEach(([key, value]) => {
+      activeThemeOKLCH.light[key as keyof typeof baseColorsOKLCH.custom.light] = value;
+    })
+
+    Object.entries(customVarsOkhCl.dark).forEach(([key, value]) => {
+      activeThemeOKLCH.dark[key as keyof typeof baseColorsOKLCH.custom.dark] = value;
+    })
+
+  }
 
   React.useEffect(() => {
     if (hasCopied) {
@@ -217,8 +282,8 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 onClick={() => {
                   copyToClipboardWithMeta(
                     tailwindVersion === "v3"
-                      ? getThemeCode(activeTheme, 0.65)
-                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
+                      ? getThemeCode(activeTheme, 0.65, customColor)
+                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65, customColor, themeName),
                     {
                       name: "copy_theme_code",
                       properties: {
@@ -298,7 +363,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                   copyToClipboardWithMeta(
                     tailwindVersion === "v3"
                       ? getThemeCode(activeTheme, 0.65)
-                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
+                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65, customColor, themeName),
                     {
                       name: "copy_theme_code",
                       properties: {
@@ -342,7 +407,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                       {
                         activeTheme?.cssVars.light[
-                          prefix as keyof typeof activeTheme.cssVars.light
+                        prefix as keyof typeof activeTheme.cssVars.light
                         ]
                       }
                       ;
@@ -351,7 +416,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
                       {
                         activeTheme?.cssVars.light[
-                          `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
+                        `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
                         ]
                       }
                       ;
@@ -380,7 +445,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                         &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                         {
                           activeTheme?.cssVars.light[
-                            prefix as keyof typeof activeTheme.cssVars.light
+                          prefix as keyof typeof activeTheme.cssVars.light
                           ]
                         }
                         ;
@@ -419,7 +484,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                       {
                         activeTheme?.cssVars.dark[
-                          prefix as keyof typeof activeTheme.cssVars.dark
+                        prefix as keyof typeof activeTheme.cssVars.dark
                         ]
                       }
                       ;
@@ -428,7 +493,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
                       {
                         activeTheme?.cssVars.dark[
-                          `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
+                        `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
                         ]
                       }
                       ;
@@ -454,7 +519,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                         &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
                         {
                           activeTheme?.cssVars.dark[
-                            prefix as keyof typeof activeTheme.cssVars.dark
+                          prefix as keyof typeof activeTheme.cssVars.dark
                           ]
                         }
                         ;
@@ -477,37 +542,82 @@ function CustomizerCode({ themeName }: { themeName: string }) {
   )
 }
 
-function getThemeCodeOKLCH(theme: BaseColorOKLCH | undefined, radius: number) {
-  if (!theme) {
-    return ""
+function getThemeCodeOKLCH(
+  theme: BaseColorOKLCH | undefined,
+  radius: number,
+  customColor: string,
+  themeName: string
+) {
+  if (!theme) return ""
+
+  let light: Record<string, string> = {}
+  let dark: Record<string, string> = {}
+
+  if (themeName === "custom" && customColor) {
+    const oklch = hex2oklch(customColor)
+    const customVars = generateThemeFromPrimaryOkhCl(oklch)
+    light = customVars.light;
+    dark = customVars.light;
+  } else {
+    // fallback to predefined theme
+    light = theme.light
+    dark = theme.dark
   }
 
   const rootSection =
     ":root {\n  --radius: " +
     radius +
     "rem;\n" +
-    Object.entries(theme.light)
-      .map((entry) => "  --" + entry[0] + ": " + entry[1] + ";")
+    Object.entries(light)
+      .map(([key, val]) => `  --${key}: ${val};`)
       .join("\n") +
     "\n}\n\n.dark {\n" +
-    Object.entries(theme.dark)
-      .map((entry) => "  --" + entry[0] + ": " + entry[1] + ";")
+    Object.entries(dark)
+      .map(([key, val]) => `  --${key}: ${val};`)
       .join("\n") +
     "\n}\n"
 
   return rootSection
 }
 
-function getThemeCode(theme: BaseColor | undefined, radius: number) {
-  if (!theme) {
-    return ""
+
+function getThemeCode(theme: BaseColor | undefined, radius: number, customColor?: string) {
+  if (!theme) return ""
+
+  var mutableTheme = structuredClone(theme) as DeepMutable<BaseColor>
+
+  // If it's a custom theme, generate runtime OKLCH-based variables
+  if (mutableTheme.name === "custom" && customColor) {
+    const oklch = hex2oklch(customColor)
+    const customVars = generateThemeFromPrimary(oklch)
+
+    Object.entries(customVars).forEach(([key, value]) => {
+      // LIGHT THEME MAPPING
+      if (key.startsWith("--color-custom-")) {
+        const variable = key.replace("--color-custom-", "");
+        if (variable.startsWith("dark-")) return; // skip dark keys
+        if (mutableTheme && mutableTheme.cssVars.light) {
+          (mutableTheme.cssVars.light as Record<string, string>)[variable] = value;
+        }
+      }
+
+      // DARK THEME MAPPING
+      if (key.startsWith("--color-custom-dark-")) {
+        const variable = key.replace("--color-custom-dark-", "");
+        if (mutableTheme && mutableTheme.cssVars.dark) {
+          (mutableTheme.cssVars.dark as Record<string, string>)[variable] = value;
+        }
+      }
+    });
   }
 
+  // Fallback for non-custom themes
   return template(BASE_STYLES_WITH_VARIABLES)({
-    colors: theme.cssVars,
+    colors: mutableTheme.cssVars,
     radius: radius.toString(),
   })
 }
+
 
 const BASE_STYLES_WITH_VARIABLES = `
 @layer base {
