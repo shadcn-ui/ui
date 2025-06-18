@@ -8,6 +8,10 @@
 
 - [#7640](https://github.com/shadcn-ui/ui/pull/7640) [`7c3d34cdc91681815f8897709917ec9fbcd69245`](https://github.com/shadcn-ui/ui/commit/7c3d34cdc91681815f8897709917ec9fbcd69245) Thanks [@shadcn](https://github.com/shadcn)! - add support for @plugin in css
 
+### Patch Changes
+
+- [#7609](https://github.com/shadcn-ui/ui/pull/7609) [`5b8ee41511fb5ff468d9218f97b8545e145d773c`](https://github.com/shadcn-ui/ui/commit/5b8ee41511fb5ff468d9218f97b8545e145d773c) Thanks [@xabierlameiro](https://github.com/xabierlameiro)! - fix typo in function name unnsetSpreadElements
+
 ## 2.6.4
 
 ### Patch Changes
