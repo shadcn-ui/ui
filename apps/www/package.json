@@ -78,7 +78,7 @@
     "lodash": "^4.17.21",
     "lucide-react": "0.477.0",
     "markdown-wasm": "^1.2.0",
-    "next": "14.3.0-canary.43",
+    "next": "15.3.3",
     "next-contentlayer2": "^0.4.6",
     "next-themes": "^0.4.3",
     "react": "^18.2.0",
