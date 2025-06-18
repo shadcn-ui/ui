@@ -45,7 +45,7 @@ export async function updateCssVars(
     cssFilepath
   )
   const cssVarsSpinner = spinner(
-    `Updating ${highlighter.info(cssFilepathRelative)}`,
+    `Updating CSS variables in ${highlighter.info(cssFilepathRelative)}`,
     {
       silent: options.silent,
     }

@@ -1,0 +1,272 @@
+[
+  {
+    "name": "dashboard-01",
+    "description": "A dashboard with sidebar, charts and data table.",
+    "categories": ["dashboard"]
+  },
+  {
+    "name": "sidebar-01",
+    "description": "A simple sidebar with navigation grouped by section.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-02",
+    "description": "A sidebar with collapsible sections.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-03",
+    "description": "A sidebar with submenus.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-04",
+    "description": "A floating sidebar with submenus.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-05",
+    "description": "A sidebar with collapsible submenus.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-06",
+    "description": "A sidebar with submenus as dropdowns.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-07",
+    "description": "A sidebar that collapses to icons.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-08",
+    "description": "An inset sidebar with secondary navigation.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-09",
+    "description": "Collapsible nested sidebars.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-10",
+    "description": "A sidebar in a popover.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-11",
+    "description": "A sidebar with a collapsible file tree.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-12",
+    "description": "A sidebar with a calendar.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-13",
+    "description": "A sidebar in a dialog.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-14",
+    "description": "A sidebar on the right.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-15",
+    "description": "A left and right sidebar.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "sidebar-16",
+    "description": "A sidebar with a sticky site header.",
+    "categories": ["sidebar", "dashboard"]
+  },
+  {
+    "name": "login-01",
+    "description": "A simple login form.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-02",
+    "description": "A two column login page with a cover image.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-03",
+    "description": "A login page with a muted background color.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-04",
+    "description": "A login page with form and image.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-05",
+    "description": "A simple email-only login page.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "calendar-01",
+    "description": "A simple calendar.",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-02",
+    "description": "Multiple months with single selection.",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-03",
+    "description": "Multiple months with multiple selection.",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-04",
+    "description": "Single month with range selection",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-05",
+    "description": "Multiple months with range selection",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-06",
+    "description": "Range selection with minimum days",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-07",
+    "description": "Range selection with minimum and maximum days",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-08",
+    "description": "Calendar with disabled days",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-09",
+    "description": "Calendar with disabled weekends",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-10",
+    "description": "Today button",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-11",
+    "description": "Start and end of month",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-12",
+    "description": "Localized calendar",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-13",
+    "description": "With Month and Year Dropdown",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-14",
+    "description": "With Booked/Unavailable Days",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-15",
+    "description": "With Week Numbers",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-16",
+    "description": "With time picker",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-17",
+    "description": "With time picker inline",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-18",
+    "description": "Variable size",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-19",
+    "description": "With presets",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-20",
+    "description": "With time presets",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-21",
+    "description": "Custom days and formatters",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-22",
+    "description": "Date picker",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-23",
+    "description": "Date range picker",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-24",
+    "description": "Date and Time picker",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-25",
+    "description": "Date and Time range picker",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-26",
+    "description": "Date range picker with time",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-27",
+    "description": "Chart filter",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-28",
+    "description": "Input with date picker",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-29",
+    "description": "Natural language date picker",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-30",
+    "description": "With little-date",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-31",
+    "description": "With event slots",
+    "categories": ["calendar", "date"]
+  },
+  {
+    "name": "calendar-32",
+    "description": "Date picker in a drawer",
+    "categories": ["calendar", "date"]
+  }
+]
