@@ -6,12 +6,8 @@ import {
   nestSpreadElements,
   nestSpreadProperties,
   transformTailwindConfig,
-<<<<<<< ultracite
   unnestSpreadProperties,
   unnsetSpreadElements,
-=======
-  unnestSpreadProperties, unsetSpreadElements,
->>>>>>> main
 } from "../../../src/utils/updaters/update-tailwind-config"
 
 const SHARED_CONFIG = {
