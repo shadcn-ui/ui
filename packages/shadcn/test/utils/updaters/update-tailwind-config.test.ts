@@ -7,6 +7,7 @@ import {
   nestSpreadProperties,
   transformTailwindConfig,
   unnestSpreadProperties,
+  unsetSpreadElements,
 } from "../../../src/utils/updaters/update-tailwind-config"
 
 const SHARED_CONFIG = {
