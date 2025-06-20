@@ -13,7 +13,7 @@ export default defineConfig({
     rehypePlugins: (plugins) => {
       plugins.shift()
       plugins.push([
-        rehypePrettyCode,
+        rehypePrettyCode as any,
         {
           theme: {
             dark: "github-dark",
