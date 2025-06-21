@@ -1,0 +1,6 @@
+services:
+  frontend:
+    env_file:
+      - ./frontend/.env.prod
+    environment:
+      - NODE_ENV=production

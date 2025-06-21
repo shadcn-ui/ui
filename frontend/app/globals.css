@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* Основные переменные */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #3b82f6;
+  --secondary: #6366f1;
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: #60a5fa;
+    --secondary: #818cf8;
+  }
+}
+
+/* Базовые стили */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+}
+
+/* Переменные шрифтов */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Эффект shimmer для skeleton-загрузки */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 2s infinite linear;
+  opacity: 0.3;
+}
+
+/* Неоновые плитки */
+.tile-card {
+  @apply relative rounded-[28px] p-8 h-64 flex flex-col items-center justify-center overflow-hidden transition-all duration-300 cursor-pointer shadow-[0_0_40px_rgba(0,0,0,0.6)] hover:scale-[1.02];
+  background-color: #141518;
+}
+
+.tile-card::before {
+  content: '';
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 9999px;
+  filter: blur(32px);
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.tile-card:hover::before {
+  opacity: 0.5;
+}
+
+.tile-card .icon {
+  z-index: 10;
+  margin-bottom: 1rem;
+}
+
+.tile-card h2,
+.tile-card p {
+  z-index: 10;
+  text-align: center;
+}
+
+/* Цветовые градиенты для glow-подложки */
+.tile-blue::before {
+  background: linear-gradient(to bottom right, #60a5fa, #8b5cf6);
+}
+.tile-green::before {
+  background: linear-gradient(to bottom right, #34d399, #10b981);
+}
+.tile-purple::before {
+  background: linear-gradient(to bottom right, #a78bfa, #6366f1);
+}
+.tile-yellow::before {
+  background: linear-gradient(to bottom right, #facc15, #f97316);
+}
+
+/* Кнопки */
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary);
+}

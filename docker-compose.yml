@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17
+    container_name: it-otdel-db
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: maks17990
+      POSTGRES_PASSWORD: Ap2so3.1q2w3e4r%T
+      POSTGRES_DB: it_otdel
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    container_name: it-otdel-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+      - '5555:5555'
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - db
+
+  frontend:
+    container_name: it-otdel-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:3000
+    ports:
+      - '3001:3000'
+    env_file:
+      - ./frontend/.env.prod
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
