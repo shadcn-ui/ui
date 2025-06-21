@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/blocks/calendar-02.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\n\nexport default function Calendar02() {\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(2025, 5, 12)\n  )\n\n  return (\n    <Calendar\n      mode=\"single\"\n      defaultMonth={date}\n      numberOfMonths={2}\n      selected={date}\n      onSelect={setDate}\n      className=\"rounded-lg border shadow-sm\"\n    />\n  )\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\n\nexport default function Calendar02() {\n  const [range, setRange] = React.useState<{\n    from: Date | undefined;\n    to: Date | undefined;\n  } | undefined>({\n    from: new Date(2025, 5, 12),\n    to: undefined,\n  })\n\n  return (\n    <Calendar\n      mode=\"range\"\n      defaultMonth={range?.from}\n      numberOfMonths={2}\n      selected={range}\n      onSelect={setRange}\n      className=\"rounded-lg border shadow-sm\"\n    />\n  )\n}\n",
       "type": "registry:component"
     }
   ],
