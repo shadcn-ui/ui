@@ -1524,6 +1524,28 @@ export const Index: Record<string, any> = {
     categories: ["authentication","login"],
     meta: undefined,
   },
+  "register-01": {
+    name: "register-01",
+    description: "A simple register form.",
+    type: "registry:block",
+    registryDependencies: ["avatar","badge","button","card","input","label","progress","separator"],
+    files: [{
+      path: "registry/new-york-v4/blocks/register-01/page.tsx",
+      type: "registry:page",
+      target: "app/register/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/register-01/components/user-registration-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/register-01/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","register"],
+    meta: undefined,
+  },
   "calendar-01": {
     name: "calendar-01",
     description: "A simple calendar.",
