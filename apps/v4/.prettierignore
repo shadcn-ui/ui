@@ -1,7 +1,0 @@
-dist
-node_modules
-.next
-build
-.contentlayer
-registry/__index__.tsx
-content/docs/components/calendar.mdx
