@@ -16,7 +16,7 @@
     "build": "turbo run build",
     "build:cli": "turbo --filter=shadcn build",
     "build:registry": "pnpm --filter=www,v4 build:registry && pnpm --filter=www,v4 lint:fix && pnpm format:write -- --loglevel silent",
-    "registry:build": "turbo run registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
+    "registry:build": "pnpm --filter=v4 registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
     "registry:capture": "pnpm --filter=www registry:capture",
     "dev": "turbo run dev --parallel",
     "shadcn-ui:dev": "turbo --filter=shadcn-ui dev",
@@ -67,6 +67,7 @@
     "eslint-config-turbo": "^1.9.9",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-tailwindcss": "3.13.1",
+    "motion": "^12.12.1",
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "pretty-quick": "^3.1.3",
@@ -80,6 +81,7 @@
     "vitest": "^2.1.9"
   },
   "devDependencies": {
+    "@types/hast": "^3.0.4",
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",

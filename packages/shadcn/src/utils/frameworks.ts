@@ -72,6 +72,14 @@ export const FRAMEWORKS = {
       tailwind: "https://tailwindcss.com/docs/guides/gatsby",
     },
   },
+  expo: {
+    name: "expo",
+    label: "Expo",
+    links: {
+      installation: "https://ui.shadcn.com/docs/installation/expo",
+      tailwind: "https://www.nativewind.dev/docs/getting-started/installation",
+    },
+  },
   manual: {
     name: "manual",
     label: "Manual",

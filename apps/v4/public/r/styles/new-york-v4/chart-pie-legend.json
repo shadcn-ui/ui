@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-pie-legend",
+  "type": "registry:block",
+  "registryDependencies": [
+    "card",
+    "chart"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/charts/chart-pie-legend.tsx",
+      "content": "\"use client\"\n\nimport { Pie, PieChart } from \"recharts\"\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\nimport {\n  ChartConfig,\n  ChartContainer,\n  ChartLegend,\n  ChartLegendContent,\n} from \"@/registry/new-york-v4/ui/chart\"\n\nexport const description = \"A pie chart with a legend\"\n\nconst chartData = [\n  { browser: \"chrome\", visitors: 275, fill: \"var(--color-chrome)\" },\n  { browser: \"safari\", visitors: 200, fill: \"var(--color-safari)\" },\n  { browser: \"firefox\", visitors: 187, fill: \"var(--color-firefox)\" },\n  { browser: \"edge\", visitors: 173, fill: \"var(--color-edge)\" },\n  { browser: \"other\", visitors: 90, fill: \"var(--color-other)\" },\n]\n\nconst chartConfig = {\n  visitors: {\n    label: \"Visitors\",\n  },\n  chrome: {\n    label: \"Chrome\",\n    color: \"var(--chart-1)\",\n  },\n  safari: {\n    label: \"Safari\",\n    color: \"var(--chart-2)\",\n  },\n  firefox: {\n    label: \"Firefox\",\n    color: \"var(--chart-3)\",\n  },\n  edge: {\n    label: \"Edge\",\n    color: \"var(--chart-4)\",\n  },\n  other: {\n    label: \"Other\",\n    color: \"var(--chart-5)\",\n  },\n} satisfies ChartConfig\n\nexport function ChartPieLegend() {\n  return (\n    <Card className=\"flex flex-col\">\n      <CardHeader className=\"items-center pb-0\">\n        <CardTitle>Pie Chart - Legend</CardTitle>\n        <CardDescription>January - June 2024</CardDescription>\n      </CardHeader>\n      <CardContent className=\"flex-1 pb-0\">\n        <ChartContainer\n          config={chartConfig}\n          className=\"mx-auto aspect-square max-h-[300px]\"\n        >\n          <PieChart>\n            <Pie data={chartData} dataKey=\"visitors\" />\n            <ChartLegend\n              content={<ChartLegendContent nameKey=\"browser\" />}\n              className=\"-translate-y-2 flex-wrap gap-2 *:basis-1/4 *:justify-center\"\n            />\n          </PieChart>\n        </ChartContainer>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "categories": [
+    "charts",
+    "charts-pie"
+  ]
+}
