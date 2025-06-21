@@ -1,0 +1,47 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.17",
+    "@mui/lab": "^5.0.0-alpha.162",
+    "@mui/material": "^5.15.17",
+    "axios": "^1.6.7",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.9.2",
+    "html2canvas": "^1.4.1",
+    "jwt-decode": "^4.0.0",
+    "libphonenumber-js": "^1.10.25",
+    "lucide-react": "^0.503.0",
+    "next": "^15.3.1",
+    "react": "^18.2.0",
+    "react-calendar": "^4.2.1",
+    "react-csv": "^2.2.2",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.5.2",
+    "react-icons": "^5.5.0",
+    "react-input-mask": "^2.0.4",
+    "react-qr-code": "^2.0.7",
+    "recharts": "^2.15.3",
+    "socket.io-client": "^4.8.1",
+    "tailwind-variants": "^1.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/node": "^20.5.9",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/socket.io-client": "^1.4.36",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.4.5"
+  }
+}
