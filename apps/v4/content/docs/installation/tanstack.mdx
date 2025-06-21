@@ -13,35 +13,43 @@ Start by creating a new TanStack Start project by following the [Build a Project
 
 ### Add Tailwind
 
-Install `tailwindcss` and its dependencies.
+Install `tailwindcss` and it's Vite plugin.
 
 ```bash
-npm install tailwindcss @tailwindcss/postcss postcss
+npm install tailwindcss @tailwindcss/vite
 ```
 
-### Create postcss.config.ts
+### Configure the Vite plugin
 
-Create a `postcss.config.ts` file at the root of your project.
+Add the `@tailwindcss/vite` plugin to your Vite configuration.
 
-```ts title="postcss.config.ts" showLineNumbers
-export default {
-  plugins: {
-    "@tailwindcss/postcss": {},
-  },
-}
+```ts title="vite.config.ts" showLineNumbers {6,10} showLineNumbers
+import { defineConfig } from 'vite'
+
+import tsConfigPaths from "vite-tsconfig-paths";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(), // Add the Tailwind CSS plugin
+    tsConfigPaths(), tanstackStart()
+  ],
+})
 ```
 
-### Create `app/styles/app.css`
+### Create `src/styles/app.css`
 
-Create an `app.css` file in the `app/styles` directory and import `tailwindcss`
+Create an `app.css` file in the `src/styles` directory and import `tailwindcss`
 
-```css title="app/styles/app.css"
-@import "tailwindcss" source("../");
+```css title="src/styles/app.css"
+@import "tailwindcss";
 ```
 
 ### Import `app.css`
 
-```tsx title="app/routes/__root.tsx" showLineNumbers {5,21-26} showLineNumbers
+```tsx title="src/routes/__root.tsx" showLineNumbers {5,21-26} showLineNumbers
 import type { ReactNode } from "react"
 import { createRootRoute, Outlet } from "@tanstack/react-router"
 import { Meta, Scripts } from "@tanstack/start"
@@ -88,7 +96,7 @@ Add the following code to the `tsconfig.json` file to resolve paths.
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./app/*"]
+      "@/*": ["./src/*"]
     }
   }
 }
@@ -102,7 +110,7 @@ Run the `shadcn` init command to setup your project:
 npx shadcn@canary init
 ```
 
-This will create a `components.json` file in the root of your project and configure CSS variables inside `app/styles/app.css`.
+This will create a `components.json` file in the root of your project and configure CSS variables inside `src/styles/app.css`.
 
 ### That's it
 
@@ -114,7 +122,7 @@ npx shadcn@canary add button
 
 The command above will add the `Button` component to your project. You can then import it like this:
 
-```tsx title="app/routes/index.tsx" showLineNumbers {1,6}
+```tsx title="src/routes/index.tsx" showLineNumbers {1,6}
 import { Button } from "@/components/ui/button"
 
 function Home() {
