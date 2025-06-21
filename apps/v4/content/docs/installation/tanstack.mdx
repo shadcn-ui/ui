@@ -49,7 +49,8 @@ Create an `app.css` file in the `src/styles` directory and import `tailwindcss`
 
 ### Import `app.css`
 
-```tsx title="src/routes/__root.tsx" showLineNumbers {5,21-26} showLineNumbers
+```tsx title="src/routes/__root.tsx" showLineNumbers {1,6,22-27} showLineNumbers
+/// <reference types="vite/client" />
 import type { ReactNode } from "react"
 import { createRootRoute, Outlet } from "@tanstack/react-router"
 import { Meta, Scripts } from "@tanstack/start"
