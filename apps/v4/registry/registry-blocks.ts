@@ -706,6 +706,40 @@ export const blocks: Registry["items"] = [
     categories: ["authentication", "login"],
   },
   {
+    name: "register-01",
+    description: "A simple register form.",
+    type: "registry:block",
+    dependencies: [
+      "@hookform/resolvers",
+      "framer-motion",
+      "lucide-react",
+      "react-hook-form",
+      "zod",
+    ],
+    registryDependencies: [
+      "avatar",
+      "badge",
+      "button",
+      "card",
+      "input",
+      "label",
+      "progress",
+      "separator",
+    ],
+    files: [
+      {
+        path: "blocks/register-01/page.tsx",
+        target: "app/register/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/register-01/components/user-registration-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "register"],
+  },
+  {
     name: "calendar-01",
     description: "A simple calendar.",
     type: "registry:block",

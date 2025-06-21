@@ -110,6 +110,11 @@
     "categories": ["authentication", "login"]
   },
   {
+    "name": "register-01",
+    "description": "A simple register form.",
+    "categories": ["authentication", "register"]
+  },
+  {
     "name": "calendar-01",
     "description": "A simple calendar.",
     "categories": ["calendar", "date"]
