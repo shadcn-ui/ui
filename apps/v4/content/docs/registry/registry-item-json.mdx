@@ -260,11 +260,13 @@ Use to define CSS variables for your registry item.
 
 ### css
 
-Use `css` to add new rules to the project's CSS file eg. `@layer base`, `@layer components`, `@utility`, `@keyframes`, etc.
+Use `css` to add new rules to the project's CSS file eg. `@layer base`, `@layer components`, `@utility`, `@keyframes`, `@plugin`, etc.
 
 ```json title="registry-item.json" showLineNumbers
 {
   "css": {
+    "@plugin @tailwindcss/typography": {},
+    "@plugin foo": {},
     "@layer base": {
       "body": {
         "font-size": "var(--text-base)",
