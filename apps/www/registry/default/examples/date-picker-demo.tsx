@@ -36,6 +36,7 @@ export default function DatePickerDemo() {
           selected={date}
           onSelect={setDate}
           initialFocus
+          enableCustomYearMonthPicker
         />
       </PopoverContent>
     </Popover>
