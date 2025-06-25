@@ -121,11 +121,10 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 
   // TanStack Start.
   if (
-    configFiles.find((file) => file.startsWith("app.config."))?.length &&
     [
       ...Object.keys(packageJson?.dependencies ?? {}),
       ...Object.keys(packageJson?.devDependencies ?? {}),
-    ].find((dep) => dep.startsWith("@tanstack/start"))
+    ].find((dep) => dep.startsWith("@tanstack/react-start"))
   ) {
     type.framework = FRAMEWORKS["tanstack-start"]
     return type
@@ -147,13 +146,27 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
+  // Expo.
+  if (packageJson?.dependencies?.expo) {
+    type.framework = FRAMEWORKS["expo"]
+    return type
+  }
+
   return type
 }
 
 export async function getTailwindVersion(
   cwd: string
 ): Promise<ProjectInfo["tailwindVersion"]> {
-  const packageInfo = getPackageInfo(cwd)
+  const [packageInfo, config] = await Promise.all([
+    getPackageInfo(cwd, false),
+    getConfig(cwd),
+  ])
+
+  // If the config file is empty, we can assume that it's a v4 project.
+  if (config?.tailwind?.config === "") {
+    return "v4"
+  }
 
   if (
     !packageInfo?.dependencies?.tailwindcss &&

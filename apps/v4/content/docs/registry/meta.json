@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "index",
+    "getting-started",
+    "faq",
+    "open-in-v0",
+    "examples",
+    "registry-json",
+    "registry-item-json"
+  ]
+}

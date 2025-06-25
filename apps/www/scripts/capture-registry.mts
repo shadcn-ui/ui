@@ -65,8 +65,8 @@ async function captureScreenshots() {
       await page.reload({ waitUntil: "networkidle2" })
 
       // Wait for animations to complete
-      if (block.startsWith("chart")) {
-        await new Promise((resolve) => setTimeout(resolve, 500))
+      if (block.startsWith("chart") || block.startsWith("dashboard")) {
+        await new Promise((resolve) => setTimeout(resolve, 1000))
       }
 
       // Hide Tailwind indicator

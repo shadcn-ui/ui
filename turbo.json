@@ -51,6 +51,10 @@
     "test": {
       "cache": false,
       "outputs": []
+    },
+    "registry:build": {
+      "cache": false,
+      "outputs": []
     }
   }
 }
