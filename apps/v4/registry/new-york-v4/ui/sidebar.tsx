@@ -40,6 +40,8 @@ type SidebarContextProps = {
   setOpenMobile: (open: boolean) => void
   isMobile: boolean
   toggleSidebar: () => void
+  handleMouseEnter: () => void
+  handleMouseLeave: () => void
 }
 
 const SidebarContext = React.createContext<SidebarContextProps | null>(null)
@@ -57,6 +59,7 @@ function SidebarProvider({
   defaultOpen = true,
   open: openProp,
   onOpenChange: setOpenProp,
+  expandOnHover = false,
   className,
   style,
   children,
@@ -65,14 +68,18 @@ function SidebarProvider({
   defaultOpen?: boolean
   open?: boolean
   onOpenChange?: (open: boolean) => void
+  expandOnHover?: boolean
 }) {
   const isMobile = useIsMobile()
   const [openMobile, setOpenMobile] = React.useState(false)
+  const [isHovered, setIsHovered] = React.useState(false)
+  const hoverTimeoutRef = React.useRef<NodeJS.Timeout | null>(null)
 
   // This is the internal state of the sidebar.
   // We use openProp and setOpenProp for control from outside the component.
   const [_open, _setOpen] = React.useState(defaultOpen)
   const open = openProp ?? _open
+
   const setOpen = React.useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {
       const openState = typeof value === "function" ? value(open) : value
@@ -88,10 +95,40 @@ function SidebarProvider({
     [setOpenProp, open]
   )
 
+  // Handlers for the hover functionality.
+  const handleMouseEnter = React.useCallback(() => {
+    if (!expandOnHover) return
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current)
+    }
+    setIsHovered(true)
+  }, [expandOnHover])
+
+  const handleMouseLeave = React.useCallback(() => {
+    if (!expandOnHover) return
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsHovered(false)
+    }, 300) // 300ms delay before closing
+  }, [expandOnHover])
+
   // Helper to toggle the sidebar.
   const toggleSidebar = React.useCallback(() => {
-    return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open)
-  }, [isMobile, setOpen, setOpenMobile])
+    if (isMobile) {
+      setOpenMobile((current) => !current)
+      return
+    }
+
+    const newState = !open
+    setOpen(newState)
+
+    // If closing, ensure hover state is also cleared.
+    if (!newState && expandOnHover) {
+      setIsHovered(false)
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current)
+      }
+    }
+  }, [isMobile, setOpen, open, setOpenMobile, expandOnHover])
 
   // Adds a keyboard shortcut to toggle the sidebar.
   React.useEffect(() => {
@@ -109,21 +146,36 @@ function SidebarProvider({
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [toggleSidebar])
 
+  // Determine the effective open state, considering hover if enabled.
+  const effectiveOpen = open || (expandOnHover && isHovered)
+
   // We add a state so that we can do data-state="expanded" or "collapsed".
   // This makes it easier to style the sidebar with Tailwind classes.
-  const state = open ? "expanded" : "collapsed"
+  const state = effectiveOpen ? "expanded" : "collapsed"
 
   const contextValue = React.useMemo<SidebarContextProps>(
     () => ({
       state,
-      open,
+      open: effectiveOpen,
       setOpen,
       isMobile,
       openMobile,
       setOpenMobile,
       toggleSidebar,
+      handleMouseEnter,
+      handleMouseLeave,
     }),
-    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]
+    [
+      state,
+      effectiveOpen,
+      setOpen,
+      isMobile,
+      openMobile,
+      setOpenMobile,
+      toggleSidebar,
+      handleMouseEnter,
+      handleMouseLeave,
+    ]
   )
 
   return (
@@ -163,7 +215,14 @@ function Sidebar({
   variant?: "sidebar" | "floating" | "inset"
   collapsible?: "offcanvas" | "icon" | "none"
 }) {
-  const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
+  const {
+    isMobile,
+    state,
+    openMobile,
+    setOpenMobile,
+    handleMouseEnter,
+    handleMouseLeave,
+  } = useSidebar()
 
   if (collapsible === "none") {
     return (
@@ -213,6 +272,8 @@ function Sidebar({
       data-variant={variant}
       data-side={side}
       data-slot="sidebar"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* This is what handles the sidebar gap on desktop */}
       <div
