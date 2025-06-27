@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { PopoverProps } from "@radix-ui/react-popover"
+import { type PopoverProps } from "@radix-ui/react-popover"
 import { Check, ChevronsUpDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
