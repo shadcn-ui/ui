@@ -34,6 +34,6 @@
     ".next/types/**/*.ts",
     ".contentlayer/generated",
     "./scripts/**/*.ts"
-  ],
+, "../v4/app/(app)/examples/stepper/components/stepper.tsx"  ],
   "exclude": ["node_modules", "__registry__"]
 }

@@ -4,10 +4,7 @@
   "private": true,
   "license": "MIT",
   "type": "module",
-  "author": {
-    "name": "shadcn",
-    "url": "https://twitter.com/shadcn"
-  },
+  "author": "shadcn (https://twitter.com/shadcn)",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -86,5 +83,16 @@
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
     "typescript": "^5.5.3"
-  }
+  },
+  "description": "Accessible and customizable components that you can copy and paste into your apps. Free. Open Source. **Use this to build your own component library**.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imrozkhan205/shadcn-ui.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/imrozkhan205/shadcn-ui/issues"
+  },
+  "homepage": "https://github.com/imrozkhan205/shadcn-ui#readme"
 }

@@ -31,6 +31,12 @@ const examples = [
     code: "https://github.com/shadcn/ui/tree/main/apps/v4/app/(app)/examples/authentication",
     hidden: false,
   },
+  {
+    name: "Stepper",
+    href: "/examples/stepper",
+    code: "https://github.com/shadcn/ui/tree/main/apps/v4/app/(app)/examples/stepper",
+    hidden: false,
+  },
 ]
 
 export function ExamplesNav({
