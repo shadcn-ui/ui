@@ -34,6 +34,6 @@
     ".next/types/**/*.ts",
     ".contentlayer/generated",
     "./scripts/**/*.ts"
-  ],
+, "registry/new-york/ui/stepper.tsx"  ],
   "exclude": ["node_modules", "__registry__"]
 }
