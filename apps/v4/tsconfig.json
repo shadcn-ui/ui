@@ -31,6 +31,6 @@
     ".next/types/**/*.ts",
     "scripts/build-registry.mts",
     "next.config.mjs"
-  ],
+, "../www/registry/new-york/ui/stepper.tsx"  ],
   "exclude": ["node_modules"]
 }

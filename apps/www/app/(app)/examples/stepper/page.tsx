@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { Button } from "@/registry/new-york-v4/ui/button";
-import { Stepper } from "./components/stepper";
+import { Button } from "@/registry/default/ui/button";
+import { Stepper } from "../../../../registry/new-york/ui/stepper";
 
 const steps = ["Account Info", "Address", "Payment", "Review"];
 
