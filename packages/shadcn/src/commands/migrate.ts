@@ -1,4 +1,5 @@
 import path from "path"
+import { migrateFormat } from "@/src/migrations/migrate-format"
 import { migrateIcons } from "@/src/migrations/migrate-icons"
 import { migrateRadix } from "@/src/migrations/migrate-radix"
 import { preFlightMigrate } from "@/src/preflights/preflight-migrate"
@@ -16,6 +17,10 @@ export const migrations = [
   {
     name: "radix",
     description: "migrate to radix-ui.",
+  },
+  {
+    name: "format",
+    description: "migrate format of components. (.jsx to .tsx)",
   },
 ] as const
 
@@ -93,6 +98,10 @@ export const migrate = new Command()
 
       if (options.migration === "radix") {
         await migrateRadix(config, { yes: options.yes })
+      }
+
+      if (options.migration === "format") {
+        await migrateFormat(config)
       }
     } catch (error) {
       logger.break()
