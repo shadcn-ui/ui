@@ -304,8 +304,9 @@ async function resolveDependenciesRecursively(
   const registryNames: string[] = []
 
   for (const dep of dependencies) {
+    // Avoid infinite recursion.
     if (visited.has(dep)) {
-      continue // Avoid infinite recursion
+      continue
     }
     visited.add(dep)
 
@@ -362,7 +363,7 @@ export async function registryResolveItemsTree(
   config: Config
 ) {
   try {
-    // Separate local files, URLs, and registry names
+    // Separate local files, URLs, and registry names.
     const localFiles = names.filter((name) => isLocalFile(name))
     const urls = names.filter((name) => isUrl(name))
     const registryNames = names.filter(
@@ -371,7 +372,7 @@ export async function registryResolveItemsTree(
 
     const payload: z.infer<typeof registryItemSchema>[] = []
 
-    // Handle local files and URLs directly, collecting their dependencies
+    // Handle local files and URLs directly, collecting their dependencies.
     const allDependencies: string[] = []
 
     for (const localFile of localFiles) {
@@ -394,23 +395,23 @@ export async function registryResolveItemsTree(
       }
     }
 
-    // Recursively resolve all dependencies
+    // Recursively resolve all dependencies.
     const { items: dependencyItems, registryNames: dependencyRegistryNames } =
       await resolveDependenciesRecursively(allDependencies, config)
 
     payload.push(...dependencyItems)
 
-    // Handle registry names using existing resolveRegistryItems logic
+    // Handle registry names using existing resolveRegistryItems logic.
     const allRegistryNames = [...registryNames, ...dependencyRegistryNames]
     if (allRegistryNames.length > 0) {
       const index = await getRegistryIndex()
       if (!index) {
-        // If we only have local files or URLs, that's fine
+        // If we only have local files or URLs, that's fine.
         if (payload.length === 0) {
           return null
         }
       } else {
-        // Remove duplicates
+        // Remove duplicates.
         const uniqueRegistryNames = Array.from(new Set(allRegistryNames))
 
         // If we're resolving the index, we want it to go first.
@@ -498,10 +499,8 @@ async function resolveRegistryDependencies(
   url: string,
   config: Config
 ): Promise<string[]> {
-  // Use the new function with config to get recursive resolution
   const { registryNames } = await resolveDependenciesRecursively([url], config)
 
-  // Convert registry names to URLs using the same logic as before
   const style = config.resolvedPaths?.cwd
     ? await getTargetStyleFromConfig(config.resolvedPaths.cwd, config.style)
     : config.style
