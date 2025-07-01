@@ -23,8 +23,16 @@ import {
   SelectValue,
 } from "@/registry/new-york/ui/select"
 import { Separator } from "@/registry/new-york/ui/separator"
+import { useRef } from "react"
 
 export function CardsShare() {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const handleCopy = () => {
+    if (inputRef.current) {
+      navigator.clipboard.writeText(inputRef.current.value);
+    }
+  };
+
   return (
     <Card>
       <CardHeader className="pb-3">
@@ -41,9 +49,10 @@ export function CardsShare() {
           <Input
             id="link"
             value="http://example.com/link/to/document"
+            ref={inputRef}
             readOnly
           />
-          <Button className="shrink-0">Copy Link</Button>
+          <Button className="shrink-0" onClick={handleCopy}>Copy Link</Button>
         </div>
         <Separator className="my-4" />
         <div className="space-y-4">
