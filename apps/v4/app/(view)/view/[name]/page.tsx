@@ -34,7 +34,7 @@ export async function generateMetadata({
   const description = item.description
 
   return {
-    title: `${item.name}${item.description ? ` - ${item.description}` : ""}`,
+    title: item.description,
     description,
     openGraph: {
       title,

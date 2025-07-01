@@ -1,5 +1,43 @@
 # @shadcn/ui
 
+## 2.7.0
+
+### Minor Changes
+
+- [#7540](https://github.com/shadcn-ui/ui/pull/7540) [`cb19ab84646fc017c15fadc81fc47b695560a04c`](https://github.com/shadcn-ui/ui/commit/cb19ab84646fc017c15fadc81fc47b695560a04c) Thanks [@mrzachnugent](https://github.com/mrzachnugent)! - add support for expo
+
+- [#7640](https://github.com/shadcn-ui/ui/pull/7640) [`7c3d34cdc91681815f8897709917ec9fbcd69245`](https://github.com/shadcn-ui/ui/commit/7c3d34cdc91681815f8897709917ec9fbcd69245) Thanks [@shadcn](https://github.com/shadcn)! - add support for @plugin in css
+
+### Patch Changes
+
+- [#7609](https://github.com/shadcn-ui/ui/pull/7609) [`5b8ee41511fb5ff468d9218f97b8545e145d773c`](https://github.com/shadcn-ui/ui/commit/5b8ee41511fb5ff468d9218f97b8545e145d773c) Thanks [@xabierlameiro](https://github.com/xabierlameiro)! - fix typo in function name unnsetSpreadElements
+
+## 2.6.4
+
+### Patch Changes
+
+- [#7601](https://github.com/shadcn-ui/ui/pull/7601) [`c86c27a2ffb8d186770afa42bfb62ab46e3db975`](https://github.com/shadcn-ui/ui/commit/c86c27a2ffb8d186770afa42bfb62ab46e3db975) Thanks [@schiller-manuel](https://github.com/schiller-manuel)! - fix tanstack start detection
+
+## 2.6.3
+
+### Patch Changes
+
+- [#7594](https://github.com/shadcn-ui/ui/pull/7594) [`431af4f7ff294af032c0687b8b655ed6db2e690f`](https://github.com/shadcn-ui/ui/commit/431af4f7ff294af032c0687b8b655ed6db2e690f) Thanks [@shadcn](https://github.com/shadcn)! - fix: semicolon in code style
+
+## 2.6.2
+
+### Patch Changes
+
+- [#7586](https://github.com/shadcn-ui/ui/pull/7586) [`c5d90c718a186dd6fd90e022c56089eb569a1c10`](https://github.com/shadcn-ui/ui/commit/c5d90c718a186dd6fd90e022c56089eb569a1c10) Thanks [@shadcn](https://github.com/shadcn)! - add migrate-radix
+
+- [#7590](https://github.com/shadcn-ui/ui/pull/7590) [`92cfb9a30e976697ab8770f00393bd5325f9a16a`](https://github.com/shadcn-ui/ui/commit/92cfb9a30e976697ab8770f00393bd5325f9a16a) Thanks [@shadcn](https://github.com/shadcn)! - fix flacky tests
+
+## 2.6.1
+
+### Patch Changes
+
+- [#7573](https://github.com/shadcn-ui/ui/pull/7573) [`3119f94d47426dae860001a4cfb4ef23396dd41d`](https://github.com/shadcn-ui/ui/commit/3119f94d47426dae860001a4cfb4ef23396dd41d) Thanks [@shadcn](https://github.com/shadcn)! - update npm flag
+
 ## 2.6.0
 
 ### Minor Changes

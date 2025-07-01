@@ -1524,6 +1524,582 @@ export const Index: Record<string, any> = {
     categories: ["authentication","login"],
     meta: undefined,
   },
+  "calendar-01": {
+    name: "calendar-01",
+    description: "A simple calendar.",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-01.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-01.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+  },
+  "calendar-02": {
+    name: "calendar-02",
+    description: "Multiple months with single selection.",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-02.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-02.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+  },
+  "calendar-03": {
+    name: "calendar-03",
+    description: "Multiple months with multiple selection.",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-03.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-03.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+  },
+  "calendar-04": {
+    name: "calendar-04",
+    description: "Single month with range selection",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-04.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-04.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28","mobile":"component"},
+  },
+  "calendar-05": {
+    name: "calendar-05",
+    description: "Multiple months with range selection",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-05.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-05.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-06": {
+    name: "calendar-06",
+    description: "Range selection with minimum days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-06.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-06.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-07": {
+    name: "calendar-07",
+    description: "Range selection with minimum and maximum days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-07.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-07.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-08": {
+    name: "calendar-08",
+    description: "Calendar with disabled days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-08.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-08.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-09": {
+    name: "calendar-09",
+    description: "Calendar with disabled weekends",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-09.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-09.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-10": {
+    name: "calendar-10",
+    description: "Today button",
+    type: "registry:block",
+    registryDependencies: ["calendar","card","button"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-10.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-10.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-11": {
+    name: "calendar-11",
+    description: "Start and end of month",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-11.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-11.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-12": {
+    name: "calendar-12",
+    description: "Localized calendar",
+    type: "registry:block",
+    registryDependencies: ["calendar","card","select"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-12.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-12.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-13": {
+    name: "calendar-13",
+    description: "With Month and Year Dropdown",
+    type: "registry:block",
+    registryDependencies: ["calendar","label","select"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-13.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-13.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-14": {
+    name: "calendar-14",
+    description: "With Booked/Unavailable Days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-14.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-14.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-15": {
+    name: "calendar-15",
+    description: "With Week Numbers",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-15.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-15.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-16": {
+    name: "calendar-16",
+    description: "With time picker",
+    type: "registry:block",
+    registryDependencies: ["calendar","card","input","label"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-16.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-16.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+  },
+  "calendar-17": {
+    name: "calendar-17",
+    description: "With time picker inline",
+    type: "registry:block",
+    registryDependencies: ["calendar","card","input","label"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-17.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-17.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-18": {
+    name: "calendar-18",
+    description: "Variable size",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-18.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-18.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-19": {
+    name: "calendar-19",
+    description: "With presets",
+    type: "registry:block",
+    registryDependencies: ["calendar","card","input","label"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-19.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-19.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+  },
+  "calendar-20": {
+    name: "calendar-20",
+    description: "With time presets",
+    type: "registry:block",
+    registryDependencies: ["calendar","card","button"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-20.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-20.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+  },
+  "calendar-21": {
+    name: "calendar-21",
+    description: "Custom days and formatters",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-21.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-21.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+  },
+  "calendar-22": {
+    name: "calendar-22",
+    description: "Date picker",
+    type: "registry:block",
+    registryDependencies: ["calendar","popover","button","label"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-22.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-22.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-23": {
+    name: "calendar-23",
+    description: "Date range picker",
+    type: "registry:block",
+    registryDependencies: ["calendar","popover","button","label"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-23.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-23.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-24": {
+    name: "calendar-24",
+    description: "Date and Time picker",
+    type: "registry:block",
+    registryDependencies: ["calendar","popover","button","label"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-24.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-24.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-25": {
+    name: "calendar-25",
+    description: "Date and Time range picker",
+    type: "registry:block",
+    registryDependencies: ["calendar","popover","button","label"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-25.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-25.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-26": {
+    name: "calendar-26",
+    description: "Date range picker with time",
+    type: "registry:block",
+    registryDependencies: ["calendar","popover","button","input","label"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-26.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-26.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-27": {
+    name: "calendar-27",
+    description: "Chart filter",
+    type: "registry:block",
+    registryDependencies: ["calendar","chart","card","popover","button"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-27.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-27.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+  },
+  "calendar-28": {
+    name: "calendar-28",
+    description: "Input with date picker",
+    type: "registry:block",
+    registryDependencies: ["calendar","input","label","popover","button"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-28.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-28.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-29": {
+    name: "calendar-29",
+    description: "Natural language date picker",
+    type: "registry:block",
+    registryDependencies: ["calendar","input","label","popover","button"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-29.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-29.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-30": {
+    name: "calendar-30",
+    description: "With little-date",
+    type: "registry:block",
+    registryDependencies: ["calendar","input","label","popover","button"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-30.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-30.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "calendar-31": {
+    name: "calendar-31",
+    description: "With event slots",
+    type: "registry:block",
+    registryDependencies: ["calendar","card","button"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-31.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-31.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"700px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0","mobile":"component"},
+  },
+  "calendar-32": {
+    name: "calendar-32",
+    description: "Date picker in a drawer",
+    type: "registry:block",
+    registryDependencies: ["calendar","button","drawer"],
+    files: [{
+      path: "registry/new-york-v4/blocks/calendar-32.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/calendar-32.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
   "chart-area-axes": {
     name: "chart-area-axes",
     description: "",
@@ -5393,6 +5969,24 @@ export const Index: Record<string, any> = {
     }),
     categories: undefined,
     meta: undefined,
+  },
+  "calendar-hijri": {
+    name: "calendar-hijri",
+    description: "A Persian calendar.",
+    type: "registry:example",
+    registryDependencies: ["calendar"],
+    files: [{
+      path: "registry/new-york-v4/examples/calendar-hijri.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/calendar-hijri.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["calendar","date"],
+    meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
   },
   "sidebar-demo": {
     name: "sidebar-demo",
