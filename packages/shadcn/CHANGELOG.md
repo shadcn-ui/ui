@@ -1,5 +1,15 @@
 # @shadcn/ui
 
+## 2.8.0
+
+### Minor Changes
+
+- [#7720](https://github.com/shadcn-ui/ui/pull/7720) [`d544a7f7a519cd5b171d9ee7cb2fd1a226659ece`](https://github.com/shadcn-ui/ui/commit/d544a7f7a519cd5b171d9ee7cb2fd1a226659ece) Thanks [@shadcn](https://github.com/shadcn)! - refactor registry dependencies resolution
+
+- [#7717](https://github.com/shadcn-ui/ui/pull/7717) [`48fe0d709fd2b244314f95f56e7afb38b117ed8a`](https://github.com/shadcn-ui/ui/commit/48fe0d709fd2b244314f95f56e7afb38b117ed8a) Thanks [@shadcn](https://github.com/shadcn)! - add support for local registry item
+
+- [#6330](https://github.com/shadcn-ui/ui/pull/6330) [`ed244ea0b5abf7db50ac5fcf26e2993133fe94f7`](https://github.com/shadcn-ui/ui/commit/ed244ea0b5abf7db50ac5fcf26e2993133fe94f7) Thanks [@KitsuneDev](https://github.com/KitsuneDev)! - add support for vinxi based framework
+
 ## 2.7.0
 
 ### Minor Changes
