@@ -292,12 +292,78 @@ export function clearRegistryCache() {
   registryCache.clear()
 }
 
+async function resolveDependenciesRecursively(
+  dependencies: string[],
+  config?: Config,
+  visited: Set<string> = new Set()
+): Promise<{
+  items: z.infer<typeof registryItemSchema>[]
+  registryNames: string[]
+}> {
+  const items: z.infer<typeof registryItemSchema>[] = []
+  const registryNames: string[] = []
+
+  for (const dep of dependencies) {
+    // Avoid infinite recursion.
+    if (visited.has(dep)) {
+      continue
+    }
+    visited.add(dep)
+
+    if (isUrl(dep) || isLocalFile(dep)) {
+      const item = await getRegistryItem(dep, "")
+      if (item) {
+        items.push(item)
+        if (item.registryDependencies) {
+          const nested = await resolveDependenciesRecursively(
+            item.registryDependencies,
+            config,
+            visited
+          )
+          items.push(...nested.items)
+          registryNames.push(...nested.registryNames)
+        }
+      }
+    } else {
+      // Registry name - add it to the list
+      registryNames.push(dep)
+
+      // If we have config, we can also fetch the item to get its dependencies
+      if (config) {
+        const style = config.resolvedPaths?.cwd
+          ? await getTargetStyleFromConfig(
+              config.resolvedPaths.cwd,
+              config.style
+            )
+          : config.style
+
+        try {
+          const item = await getRegistryItem(dep, style)
+          if (item && item.registryDependencies) {
+            const nested = await resolveDependenciesRecursively(
+              item.registryDependencies,
+              config,
+              visited
+            )
+            items.push(...nested.items)
+            registryNames.push(...nested.registryNames)
+          }
+        } catch (error) {
+          // If we can't fetch the registry item, that's okay - we'll still include the name
+        }
+      }
+    }
+  }
+
+  return { items, registryNames }
+}
+
 export async function registryResolveItemsTree(
   names: z.infer<typeof registryItemSchema>["name"][],
   config: Config
 ) {
   try {
-    // Separate local files, URLs, and registry names
+    // Separate local files, URLs, and registry names.
     const localFiles = names.filter((name) => isLocalFile(name))
     const urls = names.filter((name) => isUrl(name))
     const registryNames = names.filter(
@@ -306,49 +372,46 @@ export async function registryResolveItemsTree(
 
     const payload: z.infer<typeof registryItemSchema>[] = []
 
-    // Handle local files directly and collect their registry dependencies
-    const registryDependenciesFromLocalFiles: string[] = []
+    // Handle local files and URLs directly, collecting their dependencies.
+    const allDependencies: string[] = []
+
     for (const localFile of localFiles) {
       const item = await getRegistryItem(localFile, "")
       if (item) {
         payload.push(item)
-        // Collect registry dependencies from local files
         if (item.registryDependencies) {
-          registryDependenciesFromLocalFiles.push(...item.registryDependencies)
+          allDependencies.push(...item.registryDependencies)
         }
       }
     }
 
-    // Handle URLs directly and collect their registry dependencies
-    const registryDependenciesFromUrls: string[] = []
     for (const url of urls) {
       const item = await getRegistryItem(url, "")
       if (item) {
         payload.push(item)
-        // Collect registry dependencies from URLs
         if (item.registryDependencies) {
-          registryDependenciesFromUrls.push(...item.registryDependencies)
+          allDependencies.push(...item.registryDependencies)
         }
       }
     }
 
-    // Combine all registry names (original + dependencies from local files/URLs)
-    const allRegistryNames = [
-      ...registryNames,
-      ...registryDependenciesFromLocalFiles,
-      ...registryDependenciesFromUrls,
-    ]
+    // Recursively resolve all dependencies.
+    const { items: dependencyItems, registryNames: dependencyRegistryNames } =
+      await resolveDependenciesRecursively(allDependencies, config)
 
-    // Handle registry names with existing logic
+    payload.push(...dependencyItems)
+
+    // Handle registry names using existing resolveRegistryItems logic.
+    const allRegistryNames = [...registryNames, ...dependencyRegistryNames]
     if (allRegistryNames.length > 0) {
       const index = await getRegistryIndex()
       if (!index) {
-        // If we only have local files or URLs, that's fine
+        // If we only have local files or URLs, that's fine.
         if (payload.length === 0) {
           return null
         }
       } else {
-        // Remove duplicates
+        // Remove duplicates.
         const uniqueRegistryNames = Array.from(new Set(allRegistryNames))
 
         // If we're resolving the index, we want it to go first.
@@ -436,44 +499,17 @@ async function resolveRegistryDependencies(
   url: string,
   config: Config
 ): Promise<string[]> {
-  const visited = new Set<string>()
-  const payload: string[] = []
+  const { registryNames } = await resolveDependenciesRecursively([url], config)
 
   const style = config.resolvedPaths?.cwd
     ? await getTargetStyleFromConfig(config.resolvedPaths.cwd, config.style)
     : config.style
 
-  async function resolveDependencies(itemUrl: string) {
-    const url = getRegistryUrl(
-      isUrl(itemUrl) ? itemUrl : `styles/${style}/${itemUrl}.json`
-    )
+  const urls = registryNames.map((name) =>
+    getRegistryUrl(isUrl(name) ? name : `styles/${style}/${name}.json`)
+  )
 
-    if (visited.has(url)) {
-      return
-    }
-
-    visited.add(url)
-
-    try {
-      const [result] = await fetchRegistry([url])
-      const item = registryItemSchema.parse(result)
-      payload.push(url)
-
-      if (item.registryDependencies) {
-        for (const dependency of item.registryDependencies) {
-          await resolveDependencies(dependency)
-        }
-      }
-    } catch (error) {
-      console.error(
-        `Error fetching or parsing registry item at ${itemUrl}:`,
-        error
-      )
-    }
-  }
-
-  await resolveDependencies(url)
-  return Array.from(new Set(payload))
+  return Array.from(new Set(urls))
 }
 
 export async function registryGetTheme(name: string, config: Config) {
