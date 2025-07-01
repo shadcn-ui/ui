@@ -82,10 +82,7 @@ export const initOptionsSchema = z.object({
 export const init = new Command()
   .name("init")
   .description("initialize your project and install dependencies")
-  .argument(
-    "[components...]",
-    "the components to add or a url to the component."
-  )
+  .argument("[components...]", "names, url or local path to component")
   .option(
     "-t, --template <template>",
     "the template to use. (next, next-monorepo)"
