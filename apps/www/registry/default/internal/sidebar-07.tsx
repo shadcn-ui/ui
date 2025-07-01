@@ -212,6 +212,10 @@ const data = {
 export default function Page() {
   const [activeTeam, setActiveTeam] = React.useState(data.teams[0])
 
+  if (!activeTeam) {
+    return null
+  }
+
   return (
     <SidebarProvider>
       <Sidebar collapsible="icon">

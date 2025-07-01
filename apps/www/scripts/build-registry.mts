@@ -1,24 +1,24 @@
+import { exec } from "child_process"
 import { existsSync, promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { cwd } from "process"
 import template from "lodash/template"
 import { rimraf } from "rimraf"
-import { Project, ScriptKind } from "ts-morph"
-import { z } from "zod"
-
-import { registry } from "../registry"
-import { baseColors } from "../registry/registry-base-colors"
-import { registryCategories } from "../registry/registry-categories"
-import { colorMapping, colors } from "../registry/registry-colors"
-import { iconLibraries, icons } from "../registry/registry-icons"
-import { styles } from "../registry/registry-styles"
 import {
   Registry,
   registryItemSchema,
   registryItemTypeSchema,
   registrySchema,
-} from "../registry/schema"
+} from "shadcn/registry"
+import { Project, ScriptKind } from "ts-morph"
+import { z } from "zod"
+
+import { registry } from "../registry"
+import { baseColors, baseColorsV4 } from "../registry/registry-base-colors"
+import { registryCategories } from "../registry/registry-categories"
+import { colorMapping, colors } from "../registry/registry-colors"
+import { iconLibraries, icons } from "../registry/registry-icons"
+import { styles } from "../registry/registry-styles"
 import { fixImport } from "./fix-import.mts"
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r")
@@ -56,7 +56,7 @@ async function syncStyles() {
     rimraf.sync(path.join("registry", targetStyle, dir))
   }
 
-  for (const item of registry) {
+  for (const item of registry.items) {
     if (
       !REGISTRY_INDEX_WHITELIST.includes(item.type) &&
       item.type !== "registry:ui"
@@ -113,7 +113,7 @@ export const Index: Record<string, any> = {
     index += `  "${style.name}": {`
 
     // Build style index.
-    for (const item of registry) {
+    for (const item of registry.items) {
       const resolveFiles = item.files?.map(
         (file) =>
           `registry/${style.name}/${
@@ -256,7 +256,7 @@ export const Index: Record<string, any> = {
   // ----------------------------------------------------------------------------
   // Build registry/index.json.
   // ----------------------------------------------------------------------------
-  const items = registry
+  const items = registry.items
     .filter((item) => ["registry:ui"].includes(item.type))
     .map((item) => {
       return {
@@ -299,7 +299,7 @@ async function buildStyles(registry: Registry) {
       await fs.mkdir(targetPath, { recursive: true })
     }
 
-    for (const item of registry) {
+    for (const item of registry.items) {
       if (!REGISTRY_INDEX_WHITELIST.includes(item.type)) {
         continue
       }
@@ -378,6 +378,8 @@ async function buildStyles(registry: Registry) {
       }
 
       const payload = registryItemSchema.safeParse({
+        $schema: "https://ui.shadcn.com/schema/registry-item.json",
+        author: "shadcn (https://ui.shadcn.com)",
         ...item,
         files,
       })
@@ -594,6 +596,9 @@ async function buildThemes() {
       }
     }
 
+    // Add v4 css vars.
+    base["cssVarsV4"] = baseColorsV4[baseColor as keyof typeof baseColorsV4]
+
     // Build css vars.
     base["inlineColorsTemplate"] = template(BASE_STYLES)({})
     base["cssVarsTemplate"] = template(BASE_STYLES_WITH_VARIABLES)({
@@ -796,6 +801,24 @@ export const Icons = {
   )
 }
 
+async function syncRegistry() {
+  // Copy the public/r directory to v4/public/r without triggering v4's build
+  const wwwPublicR = path.resolve(process.cwd(), "public/r")
+  const v4PublicR = path.resolve(process.cwd(), "../v4/public/r")
+
+  // Ensure the source directory exists
+  if (!existsSync(wwwPublicR)) {
+    await fs.mkdir(wwwPublicR, { recursive: true })
+  }
+
+  // Clean and recreate the v4/public/r directory
+  rimraf.sync(v4PublicR)
+  await fs.mkdir(v4PublicR, { recursive: true })
+
+  // Copy files from www to v4
+  await fs.cp(wwwPublicR, v4PublicR, { recursive: true })
+}
+
 try {
   console.log("💽 Building registry...")
   const result = registrySchema.safeParse(registry)
@@ -814,7 +837,11 @@ try {
   await buildRegistryIcons()
   await buildIcons()
 
+  console.log("🔄 Syncing registry...")
+  await syncRegistry()
+
   console.log("✅ Done!")
+  process.exit(0)
 } catch (error) {
   console.error(error)
   process.exit(1)

@@ -2,11 +2,13 @@
 
 exports[`registryResolveItemTree > should resolve index 1`] = `
 {
+  "css": {},
   "cssVars": {
     "dark": {},
     "light": {
       "radius": "0.5rem",
     },
+    "theme": {},
   },
   "dependencies": [
     "tailwindcss-animate",
@@ -86,6 +88,7 @@ export { Label }
 
 exports[`registryResolveItemTree > should resolve items tree 1`] = `
 {
+  "css": {},
   "cssVars": {},
   "dependencies": [
     "@radix-ui/react-slot",
@@ -163,10 +166,11 @@ export { Button, buttonVariants }
 
 exports[`registryResolveItemTree > should resolve multiple items tree 1`] = `
 {
+  "css": {},
   "cssVars": {},
   "dependencies": [
     "@radix-ui/react-slot",
-    "cmdk@1.0.0",
+    "cmdk",
     "@radix-ui/react-dialog",
   ],
   "devDependencies": [],
@@ -445,7 +449,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}

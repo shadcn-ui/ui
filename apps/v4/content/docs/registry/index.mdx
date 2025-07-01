@@ -1,0 +1,40 @@
+---
+title: Registry
+description: Run your own component registry.
+---
+
+<Callout>
+  **Note:** This feature is currently experimental. Help us improve it by
+  testing it out and sending feedback. If you have any questions, please [reach
+  out to us](https://github.com/shadcn-ui/ui/discussions).
+</Callout>
+
+You can use the `shadcn` CLI to run your own component registry. Running your own registry allows you to distribute your custom components, hooks, pages, and other files to any React project.
+
+<figure className="flex flex-col gap-4">
+  <Image
+    src="/images/registry-light.png"
+    width="1432"
+    height="960"
+    alt="Registry"
+    className="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
+  />
+  <Image
+    src="/images/registry-dark.png"
+    width="1432"
+    height="960"
+    alt="Registry"
+    className="mt-6 hidden w-full overflow-hidden rounded-lg border shadow-sm dark:block"
+  />
+  <figcaption className="text-center text-sm text-gray-500">
+    Distribute code to any React project.
+  </figcaption>
+</figure>
+
+Registry items are automatically compatible with the `shadcn` CLI and `Open in v0`.
+
+## Requirements
+
+You are free to design and host your custom registry as you see fit. The only requirement is that your registry items must be valid JSON files that conform to the [registry-item schema specification](/docs/registry/registry-item-json).
+
+If you'd like to see an example of a registry, we have a [template project](https://github.com/shadcn-ui/registry-template) for you to use as a starting point.
