@@ -6,8 +6,8 @@ import {
   getRegistryBaseColors,
   getRegistryItem,
   getRegistryStyles,
-  isUrl,
 } from "@/src/registry/api"
+import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
@@ -128,7 +128,10 @@ export const init = new Command()
       // We need to check if we're initializing with a new style.
       // We fetch the payload of the first item.
       // This is okay since the request is cached and deduped.
-      if (components.length > 0 && isUrl(components[0])) {
+      if (
+        components.length > 0 &&
+        (isUrl(components[0]) || isLocalFile(components[0]))
+      ) {
         const item = await getRegistryItem(components[0], "")
 
         // Skip base color if style.
