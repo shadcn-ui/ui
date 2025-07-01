@@ -3,7 +3,15 @@ import { tmpdir } from "os"
 import path from "path"
 import { HttpResponse, http } from "msw"
 import { setupServer } from "msw/node"
-import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest"
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest"
 
 import { clearRegistryCache, fetchRegistry, getRegistryItem } from "./api"
 
@@ -31,9 +39,9 @@ const server = setupServer(
         type: "registry:ui",
       },
       {
-        name: "card", 
+        name: "card",
         type: "registry:ui",
-      }
+      },
     ])
   }),
   http.get(`${REGISTRY_URL}/styles/new-york/button.json`, () => {
@@ -147,7 +155,7 @@ describe("getRegistryItem with local files", () => {
     // Create a temporary file
     const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
     const tempFile = path.join(tempDir, "test-component.json")
-    
+
     const componentData = {
       name: "test-component",
       type: "registry:ui",
@@ -160,12 +168,12 @@ describe("getRegistryItem with local files", () => {
         },
       ],
     }
-    
+
     await fs.writeFile(tempFile, JSON.stringify(componentData, null, 2))
-    
+
     try {
       const result = await getRegistryItem(tempFile, "unused-style")
-      
+
       expect(result).toMatchObject({
         name: "test-component",
         type: "registry:ui",
@@ -188,27 +196,30 @@ describe("getRegistryItem with local files", () => {
   it("should handle relative paths", async () => {
     const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
     const tempFile = path.join(tempDir, "relative-component.json")
-    
+
     const componentData = {
       name: "relative-component",
       type: "registry:ui",
       files: [],
     }
-    
+
     await fs.writeFile(tempFile, JSON.stringify(componentData))
-    
+
     try {
       // Change to temp directory to test relative path
       const originalCwd = process.cwd()
       process.chdir(tempDir)
-      
-      const result = await getRegistryItem("./relative-component.json", "unused-style")
-      
+
+      const result = await getRegistryItem(
+        "./relative-component.json",
+        "unused-style"
+      )
+
       expect(result).toMatchObject({
         name: "relative-component",
         type: "registry:ui",
       })
-      
+
       process.chdir(originalCwd)
     } finally {
       // Clean up
@@ -221,20 +232,20 @@ describe("getRegistryItem with local files", () => {
     const os = await import("os")
     const homeDir = os.homedir()
     const tempFile = path.join(homeDir, "shadcn-test-tilde.json")
-    
+
     const componentData = {
       name: "tilde-component",
       type: "registry:ui",
       files: [],
     }
-    
+
     await fs.writeFile(tempFile, JSON.stringify(componentData))
-    
+
     try {
       // Test with tilde path
       const tildeePath = "~/shadcn-test-tilde.json"
       const result = await getRegistryItem(tildeePath, "unused-style")
-      
+
       expect(result).toMatchObject({
         name: "tilde-component",
         type: "registry:ui",
@@ -246,16 +257,19 @@ describe("getRegistryItem with local files", () => {
   })
 
   it("should return null for non-existent files", async () => {
-    const result = await getRegistryItem("/non/existent/file.json", "unused-style")
+    const result = await getRegistryItem(
+      "/non/existent/file.json",
+      "unused-style"
+    )
     expect(result).toBe(null)
   })
 
   it("should return null for invalid JSON", async () => {
     const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
     const tempFile = path.join(tempDir, "invalid.json")
-    
+
     await fs.writeFile(tempFile, "{ invalid json }")
-    
+
     try {
       const result = await getRegistryItem(tempFile, "unused-style")
       expect(result).toBe(null)
@@ -269,14 +283,14 @@ describe("getRegistryItem with local files", () => {
   it("should return null for JSON that doesn't match registry schema", async () => {
     const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
     const tempFile = path.join(tempDir, "invalid-schema.json")
-    
+
     const invalidData = {
       notAValidRegistryItem: true,
       missing: "required fields",
     }
-    
+
     await fs.writeFile(tempFile, JSON.stringify(invalidData))
-    
+
     try {
       const result = await getRegistryItem(tempFile, "unused-style")
       expect(result).toBe(null)
@@ -296,4 +310,3 @@ describe("getRegistryItem with local files", () => {
     })
   })
 })
-

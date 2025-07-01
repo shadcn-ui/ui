@@ -254,5 +254,5 @@ export function isUrl(path: string) {
 }
 
 export function isLocalFile(path: string) {
-  return path.endsWith('.json') && !isUrl(path)
+  return path.endsWith(".json") && !isUrl(path)
 }

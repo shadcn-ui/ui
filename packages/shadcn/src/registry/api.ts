@@ -298,12 +298,14 @@ export async function registryResolveItemsTree(
 ) {
   try {
     // Separate local files, URLs, and registry names
-    const localFiles = names.filter(name => isLocalFile(name))
-    const urls = names.filter(name => isUrl(name))
-    const registryNames = names.filter(name => !isLocalFile(name) && !isUrl(name))
-    
+    const localFiles = names.filter((name) => isLocalFile(name))
+    const urls = names.filter((name) => isUrl(name))
+    const registryNames = names.filter(
+      (name) => !isLocalFile(name) && !isUrl(name)
+    )
+
     const payload: z.infer<typeof registryItemSchema>[] = []
-    
+
     // Handle local files directly and collect their registry dependencies
     const registryDependenciesFromLocalFiles: string[] = []
     for (const localFile of localFiles) {
@@ -316,7 +318,7 @@ export async function registryResolveItemsTree(
         }
       }
     }
-    
+
     // Handle URLs directly and collect their registry dependencies
     const registryDependenciesFromUrls: string[] = []
     for (const url of urls) {
@@ -329,14 +331,14 @@ export async function registryResolveItemsTree(
         }
       }
     }
-    
+
     // Combine all registry names (original + dependencies from local files/URLs)
     const allRegistryNames = [
       ...registryNames,
       ...registryDependenciesFromLocalFiles,
-      ...registryDependenciesFromUrls
+      ...registryDependenciesFromUrls,
     ]
-    
+
     // Handle registry names with existing logic
     if (allRegistryNames.length > 0) {
       const index = await getRegistryIndex()
@@ -348,13 +350,16 @@ export async function registryResolveItemsTree(
       } else {
         // Remove duplicates
         const uniqueRegistryNames = [...new Set(allRegistryNames)]
-        
+
         // If we're resolving the index, we want it to go first.
         if (uniqueRegistryNames.includes("index")) {
           uniqueRegistryNames.unshift("index")
         }
 
-        let registryItems = await resolveRegistryItems(uniqueRegistryNames, config)
+        let registryItems = await resolveRegistryItems(
+          uniqueRegistryNames,
+          config
+        )
         let result = await fetchRegistry(registryItems)
         const registryPayload = z.array(registryItemSchema).parse(result)
         payload.push(...registryPayload)
@@ -574,10 +579,12 @@ export function isUrl(path: string) {
 // TODO: We're double-fetching here. Use a cache.
 export async function resolveRegistryItems(names: string[], config: Config) {
   let registryDependencies: string[] = []
-  
+
   // Filter out local files and URLs - these should be handled directly by getRegistryItem
-  const registryNames = names.filter(name => !isLocalFile(name) && !isUrl(name))
-  
+  const registryNames = names.filter(
+    (name) => !isLocalFile(name) && !isUrl(name)
+  )
+
   for (const name of registryNames) {
     const itemRegistryDependencies = await resolveRegistryDependencies(
       name,
