@@ -13,9 +13,9 @@ import {
 } from "../../../src/utils/updaters/update-files"
 
 vi.mock("fs/promises", async () => {
-  const actual = (await vi.importActual("fs/promises")) as typeof import(
+  const actual = (await vi.importActual(
     "fs/promises"
-  )
+  )) as typeof import("fs/promises")
   return {
     ...actual,
     writeFile: vi.fn(),

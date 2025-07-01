@@ -139,8 +139,6 @@ const components = {
     alt,
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // biome-ignore lint/nursery/noImgElement: "shadcn/ui is framework agnostic"
-    // biome-ignore lint/a11y/useAltText: "alt tag is provided by the user"
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
