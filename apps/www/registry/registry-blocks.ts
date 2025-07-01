@@ -1312,4 +1312,23 @@ export const blocks: Registry["items"] = [
       mobile: "component",
     },
   },
+  {
+    name: "calendar-33",
+    description: "Enhanced date picker with quick year and month selection",
+    type: "registry:block",
+    registryDependencies: ["calendar", "button", "popover", "label"],
+    files: [
+      {
+        path: "blocks/calendar-33.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
 ]
