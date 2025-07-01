@@ -49,7 +49,6 @@
   "packageManager": "pnpm@9.0.6",
   "dependencies": {
     "@babel/core": "^7.22.1",
-    "@biomejs/biome": "1.9.4",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^17.6.3",
@@ -66,16 +65,17 @@
     "tailwindcss-animate": "^1.0.5",
     "tsx": "^4.1.4",
     "turbo": "^1.9.9",
-    "ultracite": "4.2.10",
     "vite": "^5.4.15",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^2.1.9"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.0.6",
     "@types/hast": "^3.0.4",
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "ultracite": "5.0.29"
   }
 }
