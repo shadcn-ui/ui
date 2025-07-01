@@ -6,8 +6,8 @@ export const transformImport: Transformer = async ({
   config,
   isRemote,
 }) => {
-  const workspaceAlias = config.aliases?.utils?.split("/")[0]?.slice(1)
-  const utilsImport = `@${workspaceAlias}/lib/utils`
+  const workspaceAlias = config.aliases?.utils?.split("/")[0]
+  const utilsImport = `${workspaceAlias}/lib/utils`
 
   const importDeclarations = sourceFile.getImportDeclarations()
 
