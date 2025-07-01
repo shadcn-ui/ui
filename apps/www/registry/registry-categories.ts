@@ -69,4 +69,8 @@ export const registryCategories = [
     slug: "charts-tooltip",
     hidden: true,
   },
+  {
+    name:"Data Grid",
+    slug:"data-grid",
+  }
 ]
