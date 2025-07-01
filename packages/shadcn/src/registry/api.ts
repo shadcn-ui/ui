@@ -1,4 +1,7 @@
+import { promises as fs } from "fs"
+import { homedir } from "os"
 import path from "path"
+import { isLocalFile } from "@/src/registry/utils"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
@@ -85,6 +88,12 @@ export async function getRegistryIcons() {
 
 export async function getRegistryItem(name: string, style: string) {
   try {
+    // Handle local file paths
+    if (isLocalFile(name)) {
+      return await getLocalRegistryItem(name)
+    }
+
+    // Handle URLs and component names
     const [result] = await fetchRegistry([
       isUrl(name) ? name : `styles/${style}/${name}.json`,
     ])
@@ -92,6 +101,26 @@ export async function getRegistryItem(name: string, style: string) {
     return registryItemSchema.parse(result)
   } catch (error) {
     logger.break()
+    handleError(error)
+    return null
+  }
+}
+
+async function getLocalRegistryItem(filePath: string) {
+  try {
+    // Handle tilde expansion for home directory
+    let expandedPath = filePath
+    if (filePath.startsWith("~/")) {
+      expandedPath = path.join(homedir(), filePath.slice(2))
+    }
+
+    const resolvedPath = path.resolve(expandedPath)
+    const content = await fs.readFile(resolvedPath, "utf8")
+    const parsed = JSON.parse(content)
+
+    return registryItemSchema.parse(parsed)
+  } catch (error) {
+    logger.error(`Failed to read local registry file: ${filePath}`)
     handleError(error)
     return null
   }
@@ -268,21 +297,76 @@ export async function registryResolveItemsTree(
   config: Config
 ) {
   try {
-    const index = await getRegistryIndex()
-    if (!index) {
-      return null
+    // Separate local files, URLs, and registry names
+    const localFiles = names.filter((name) => isLocalFile(name))
+    const urls = names.filter((name) => isUrl(name))
+    const registryNames = names.filter(
+      (name) => !isLocalFile(name) && !isUrl(name)
+    )
+
+    const payload: z.infer<typeof registryItemSchema>[] = []
+
+    // Handle local files directly and collect their registry dependencies
+    const registryDependenciesFromLocalFiles: string[] = []
+    for (const localFile of localFiles) {
+      const item = await getRegistryItem(localFile, "")
+      if (item) {
+        payload.push(item)
+        // Collect registry dependencies from local files
+        if (item.registryDependencies) {
+          registryDependenciesFromLocalFiles.push(...item.registryDependencies)
+        }
+      }
     }
 
-    // If we're resolving the index, we want it to go first.
-    if (names.includes("index")) {
-      names.unshift("index")
+    // Handle URLs directly and collect their registry dependencies
+    const registryDependenciesFromUrls: string[] = []
+    for (const url of urls) {
+      const item = await getRegistryItem(url, "")
+      if (item) {
+        payload.push(item)
+        // Collect registry dependencies from URLs
+        if (item.registryDependencies) {
+          registryDependenciesFromUrls.push(...item.registryDependencies)
+        }
+      }
     }
 
-    let registryItems = await resolveRegistryItems(names, config)
-    let result = await fetchRegistry(registryItems)
-    const payload = z.array(registryItemSchema).parse(result)
+    // Combine all registry names (original + dependencies from local files/URLs)
+    const allRegistryNames = [
+      ...registryNames,
+      ...registryDependenciesFromLocalFiles,
+      ...registryDependenciesFromUrls,
+    ]
 
-    if (!payload) {
+    // Handle registry names with existing logic
+    if (allRegistryNames.length > 0) {
+      const index = await getRegistryIndex()
+      if (!index) {
+        // If we only have local files or URLs, that's fine
+        if (payload.length === 0) {
+          return null
+        }
+      } else {
+        // Remove duplicates
+        const uniqueRegistryNames = Array.from(new Set(allRegistryNames))
+
+        // If we're resolving the index, we want it to go first.
+        if (uniqueRegistryNames.includes("index")) {
+          uniqueRegistryNames.unshift("index")
+        }
+
+        let registryItems = await resolveRegistryItems(
+          uniqueRegistryNames,
+          config
+        )
+        let result = await fetchRegistry(registryItems)
+        const registryPayload = z.array(registryItemSchema).parse(result)
+        payload.push(...registryPayload)
+      }
+    }
+
+    if (!payload.length) {
       return null
     }
 
@@ -290,7 +374,7 @@ export async function registryResolveItemsTree(
     // the theme item if a base color is provided.
     // We do this for index only.
     // Other components will ship with their theme tokens.
-    if (names.includes("index")) {
+    if (allRegistryNames.includes("index")) {
       if (config.tailwind.baseColor) {
         const theme = await registryGetTheme(config.tailwind.baseColor, config)
         if (theme) {
@@ -495,7 +579,13 @@ export function isUrl(path: string) {
 // TODO: We're double-fetching here. Use a cache.
 export async function resolveRegistryItems(names: string[], config: Config) {
   let registryDependencies: string[] = []
-  for (const name of names) {
+
+  // Filter out local files and URLs - these should be handled directly by getRegistryItem
+  const registryNames = names.filter(
+    (name) => !isLocalFile(name) && !isUrl(name)
+  )
+
+  for (const name of registryNames) {
     const itemRegistryDependencies = await resolveRegistryDependencies(
       name,
       config
