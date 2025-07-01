@@ -349,7 +349,7 @@ export async function registryResolveItemsTree(
         }
       } else {
         // Remove duplicates
-        const uniqueRegistryNames = [...new Set(allRegistryNames)]
+        const uniqueRegistryNames = Array.from(new Set(allRegistryNames))
 
         // If we're resolving the index, we want it to go first.
         if (uniqueRegistryNames.includes("index")) {
