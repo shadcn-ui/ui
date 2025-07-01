@@ -13,7 +13,12 @@ import {
   vi,
 } from "vitest"
 
-import { clearRegistryCache, fetchRegistry, getRegistryItem, registryResolveItemsTree } from "./api"
+import {
+  clearRegistryCache,
+  fetchRegistry,
+  getRegistryItem,
+  registryResolveItemsTree,
+} from "./api"
 
 // Mock the handleError function to prevent process.exit in tests
 vi.mock("@/src/utils/handle-error", () => ({
@@ -413,7 +418,7 @@ describe("registryResolveItemsTree with URL dependencies", () => {
       expect(result).toBeDefined()
       expect(result?.files).toBeDefined()
       // Should contain files from both the main component and its URL dependency
-      const filePaths = result?.files.map((f: any) => f.path) || []
+      const filePaths = result?.files?.map((f: any) => f.path) ?? []
       expect(filePaths).toContain("ui/component-with-url-deps.tsx")
       expect(filePaths).toContain("ui/url-dependency.tsx")
     } finally {
