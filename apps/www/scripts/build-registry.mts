@@ -1,3 +1,4 @@
+import { exec } from "child_process"
 import { existsSync, promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
@@ -13,7 +14,7 @@ import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
 import { registry } from "../registry"
-import { baseColors } from "../registry/registry-base-colors"
+import { baseColors, baseColorsV4 } from "../registry/registry-base-colors"
 import { registryCategories } from "../registry/registry-categories"
 import { colorMapping, colors } from "../registry/registry-colors"
 import { iconLibraries, icons } from "../registry/registry-icons"
@@ -595,6 +596,9 @@ async function buildThemes() {
       }
     }
 
+    // Add v4 css vars.
+    base["cssVarsV4"] = baseColorsV4[baseColor as keyof typeof baseColorsV4]
+
     // Build css vars.
     base["inlineColorsTemplate"] = template(BASE_STYLES)({})
     base["cssVarsTemplate"] = template(BASE_STYLES_WITH_VARIABLES)({
@@ -797,6 +801,24 @@ export const Icons = {
   )
 }
 
+async function syncRegistry() {
+  // Copy the public/r directory to v4/public/r without triggering v4's build
+  const wwwPublicR = path.resolve(process.cwd(), "public/r")
+  const v4PublicR = path.resolve(process.cwd(), "../v4/public/r")
+
+  // Ensure the source directory exists
+  if (!existsSync(wwwPublicR)) {
+    await fs.mkdir(wwwPublicR, { recursive: true })
+  }
+
+  // Clean and recreate the v4/public/r directory
+  rimraf.sync(v4PublicR)
+  await fs.mkdir(v4PublicR, { recursive: true })
+
+  // Copy files from www to v4
+  await fs.cp(wwwPublicR, v4PublicR, { recursive: true })
+}
+
 try {
   console.log("💽 Building registry...")
   const result = registrySchema.safeParse(registry)
@@ -815,7 +837,11 @@ try {
   await buildRegistryIcons()
   await buildIcons()
 
+  console.log("🔄 Syncing registry...")
+  await syncRegistry()
+
   console.log("✅ Done!")
+  process.exit(0)
 } catch (error) {
   console.error(error)
   process.exit(1)

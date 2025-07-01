@@ -5,11 +5,18 @@ description: Integrate your registry with Open in v0.
 
 If your registry is hosted and publicly accessible via a URL, you can open a registry item in v0 by using the `https://v0.dev/chat/api/open?url=[URL]` endpoint.
 
-eg. [https://v0.dev/chat/api/open?url=https://example.com/r/hello-world.json](https://v0.dev/chat/api/open?url=https://example.com/r/hello-world.json)
+eg. [https://v0.dev/chat/api/open?url=https://ui.shadcn.com/r/styles/new-york/login-01.json](https://v0.dev/chat/api/open?url=https://ui.shadcn.com/r/styles/new-york/login-01.json)
+
+<Callout className="mt-6">
+  **Note:** The `Open in v0` button does not support `cssVars` and `tailwind`
+  properties.
+</Callout>
 
 ## Button
 
-You can copy and paste the following code to add a `Open in v0` button to your site.
+See [Build your Open in v0 button](https://v0.dev/chat/button) for more information on how to build your own `Open in v0` button.
+
+Here's a simple example of how to add a `Open in v0` button to your site.
 
 ```jsx
 import { Button } from "@/components/ui/button"
@@ -48,12 +55,10 @@ export function OpenInV0Button({ url }: { url: string }) {
 }
 ```
 
-## Usage
-
 ```jsx
 <OpenInV0Button url="https://example.com/r/hello-world.json" />
 ```
 
-## Known issues
+## Authentication
 
-- The `Open in v0` button does not support `cssVars` and `tailwind` properties.
+See the [Adding Auth](/docs/registry/getting-started#adding-auth) section for more information on how to authenticate requests to your registry and Open in v0.

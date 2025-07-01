@@ -14,16 +14,31 @@ The `registry-item.json` schema is used to define your custom registry items.
   "description": "A simple hello world component.",
   "files": [
     {
-      "path": "registry/hello-world/hello-world.tsx",
+      "path": "registry/new-york/hello-world/hello-world.tsx",
       "type": "registry:component"
     },
     {
-      "path": "registry/hello-world/use-hello-world.ts",
+      "path": "registry/new-york/hello-world/use-hello-world.ts",
       "type": "registry:hook"
     }
-  ]
+  ],
+  "cssVars": {
+    "theme": {
+      "font-heading": "Poppins, sans-serif"
+    },
+    "light": {
+      "brand": "20 14.3% 4.1%"
+    },
+    "dark": {
+      "brand": "20 14.3% 4.1%"
+    }
+  }
 }
 ```
+
+<div className="flex gap-2 items-center mt-6">
+  <Link href="/docs/registry/examples">See more examples</Link>
+</div>
 
 ## Definitions
 
@@ -41,7 +56,7 @@ The `$schema` property is used to specify the schema for the `registry-item.json
 
 ### name
 
-The `name` property is used to specify the name of your registry item.
+The name of the item. This is used to identify the item in the registry. It should be unique for your registry.
 
 ```json title="registry-item.json" showLineNumbers
 {
@@ -71,7 +86,7 @@ A description of your registry item. This can be longer and more detailed than t
 
 ### type
 
-The `type` property is used to specify the type of your registry item.
+The `type` property is used to specify the type of your registry item. This is used to determine the type and target path of the item when resolved for a project.
 
 ```json title="registry-item.json" showLineNumbers
 {
@@ -90,6 +105,8 @@ The following types are supported:
 | `registry:ui`        | Use for UI components and single-file primitives |
 | `registry:page`      | Use for page or file-based routes.               |
 | `registry:file`      | Use for miscellaneous files.                     |
+| `registry:style`     | Use for registry styles. eg. `new-york`          |
+| `registry:theme`     | Use for themes.                                  |
 
 ### author
 
@@ -122,7 +139,7 @@ Use `@version` to specify the version of your registry item.
 
 ### registryDependencies
 
-Used for registry dependencies. Can be names or URLs.
+Used for registry dependencies. Can be names or URLs. Use the name of the item to reference shadcn/ui components and urls to reference other registries.
 
 - For `shadcn/ui` registry items such as `button`, `input`, `select`, etc use the name eg. `['button', 'input', 'select']`.
 - For custom registry items use the URL of the registry item eg. `['https://example.com/r/hello-world.json']`.
@@ -150,20 +167,20 @@ The `files` property is used to specify the files of your registry item. Each fi
 {
   "files": [
     {
-      "path": "registry/hello-world/page.tsx",
+      "path": "registry/new-york/hello-world/page.tsx",
       "type": "registry:page",
       "target": "app/hello/page.tsx"
     },
     {
-      "path": "registry/hello-world/hello-world.tsx",
+      "path": "registry/new-york/hello-world/hello-world.tsx",
       "type": "registry:component"
     },
     {
-      "path": "registry/hello-world/use-hello-world.ts",
+      "path": "registry/new-york/hello-world/use-hello-world.ts",
       "type": "registry:hook"
     },
     {
-      "path": "registry/hello-world/.env",
+      "path": "registry/new-york/hello-world/.env",
       "type": "registry:file",
       "target": "~/.env"
     }
@@ -188,6 +205,8 @@ By default, the `shadcn` cli will read a project's `components.json` file to det
 Use `~` to refer to the root of the project e.g `~/foo.config.js`.
 
 ### tailwind
+
+**DEPRECATED:** Use `cssVars.theme` instead for Tailwind v4 projects.
 
 The `tailwind` property is used for tailwind configuration such as `theme`, `plugins` and `content`.
 
@@ -225,6 +244,9 @@ Use to define CSS variables for your registry item.
 ```json title="registry-item.json" showLineNumbers
 {
   "cssVars": {
+    "theme": {
+      "font-heading": "Poppins, sans-serif"
+    },
     "light": {
       "brand": "20 14.3% 4.1%",
       "radius": "0.5rem"
@@ -236,10 +258,40 @@ Use to define CSS variables for your registry item.
 }
 ```
 
-<Callout>
-  **Note:** When adding colors, make sure to also add them to the
-  `tailwind.config.theme.extend.colors` property.
-</Callout>
+### css
+
+Use `css` to add new rules to the project's CSS file eg. `@layer base`, `@layer components`, `@utility`, `@keyframes`, etc.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "css": {
+    "@layer base": {
+      "body": {
+        "font-size": "var(--text-base)",
+        "line-height": "1.5"
+      }
+    },
+    "@layer components": {
+      "button": {
+        "background-color": "var(--color-primary)",
+        "color": "var(--color-white)"
+      }
+    },
+    "@utility text-magic": {
+      "font-size": "var(--text-base)",
+      "line-height": "1.5"
+    },
+    "@keyframes wiggle": {
+      "0%, 100%": {
+        "transform": "rotate(-3deg)"
+      },
+      "50%": {
+        "transform": "rotate(3deg)"
+      }
+    }
+  }
+}
+```
 
 ### docs
 

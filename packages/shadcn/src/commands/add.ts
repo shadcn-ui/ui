@@ -1,11 +1,14 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
-import { getRegistryIndex } from "@/src/registry/api"
+import { getRegistryIndex, getRegistryItem } from "@/src/registry/api"
+import { registryItemTypeSchema } from "@/src/registry/schema"
+import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
 import { getConfig } from "@/src/utils/get-config"
+import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -38,15 +41,13 @@ export const addOptionsSchema = z.object({
   path: z.string().optional(),
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
+  cssVariables: z.boolean(),
 })
 
 export const add = new Command()
   .name("add")
   .description("add a component to your project")
-  .argument(
-    "[components...]",
-    "the components to add or a url to the component."
-  )
+  .argument("[components...]", "names, url or local path to component")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option("-o, --overwrite", "overwrite existing files.", false)
   .option(
@@ -62,6 +63,12 @@ export const add = new Command()
     "use the src directory when creating a new project.",
     false
   )
+  .option(
+    "--no-src-dir",
+    "do not use the src directory when creating a new project."
+  )
+  .option("--css-variables", "use css variables for theming.", true)
+  .option("--no-css-variables", "do not use css variables for theming.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -70,23 +77,34 @@ export const add = new Command()
         ...opts,
       })
 
-      // Confirm if user is installing themes.
-      // For now, we assume a theme is prefixed with "theme-".
-      const isTheme = options.components?.some((component) =>
-        component.includes("theme-")
-      )
-      if (!options.yes && isTheme) {
+      let itemType: z.infer<typeof registryItemTypeSchema> | undefined
+
+      if (
+        components.length > 0 &&
+        (isUrl(components[0]) || isLocalFile(components[0]))
+      ) {
+        const item = await getRegistryItem(components[0], "")
+        itemType = item?.type
+      }
+
+      if (
+        !options.yes &&
+        (itemType === "registry:style" || itemType === "registry:theme")
+      ) {
         logger.break()
         const { confirm } = await prompts({
           type: "confirm",
           name: "confirm",
           message: highlighter.warn(
-            "You are about to install a new theme. \nExisting CSS variables will be overwritten. Continue?"
+            `You are about to install a new ${itemType.replace(
+              "registry:",
+              ""
+            )}. \nExisting CSS variables and components will be overwritten. Continue?`
           ),
         })
         if (!confirm) {
           logger.break()
-          logger.log("Theme installation cancelled.")
+          logger.log(`Installation cancelled.`)
           logger.break()
           process.exit(1)
         }
@@ -96,17 +114,20 @@ export const add = new Command()
         options.components = await promptForRegistryComponents(options)
       }
 
-      const deprecatedComponents = DEPRECATED_COMPONENTS.filter((component) =>
-        options.components?.includes(component.name)
-      )
+      const projectInfo = await getProjectInfo(options.cwd)
+      if (projectInfo?.tailwindVersion === "v4") {
+        const deprecatedComponents = DEPRECATED_COMPONENTS.filter((component) =>
+          options.components?.includes(component.name)
+        )
 
-      if (deprecatedComponents?.length) {
-        logger.break()
-        deprecatedComponents.forEach((component) => {
-          logger.warn(highlighter.warn(component.message))
-        })
-        logger.break()
-        process.exit(1)
+        if (deprecatedComponents?.length) {
+          logger.break()
+          deprecatedComponents.forEach((component) => {
+            logger.warn(highlighter.warn(component.message))
+          })
+          logger.break()
+          process.exit(1)
+        }
       }
 
       let { errors, config } = await preFlightAdd(options)
@@ -136,12 +157,14 @@ export const add = new Command()
           silent: true,
           isNewProject: false,
           srcDir: options.srcDir,
+          cssVariables: options.cssVariables,
+          style: "index",
         })
       }
 
       let shouldUpdateAppIndex = false
       if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
-        const { projectPath, projectType } = await createProject({
+        const { projectPath, template } = await createProject({
           cwd: options.cwd,
           force: options.overwrite,
           srcDir: options.srcDir,
@@ -153,7 +176,7 @@ export const add = new Command()
         }
         options.cwd = projectPath
 
-        if (projectType === "monorepo") {
+        if (template === "next-monorepo") {
           options.cwd = path.resolve(options.cwd, "apps/web")
           config = await getConfig(options.cwd)
         } else {
@@ -166,6 +189,8 @@ export const add = new Command()
             silent: true,
             isNewProject: true,
             srcDir: options.srcDir,
+            cssVariables: options.cssVariables,
+            style: "index",
           })
 
           shouldUpdateAppIndex =
