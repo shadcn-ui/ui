@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/typography-h3.tsx",
-      "content": "export default function TypographyH3() {\n  return (\n    <h3 className=\"scroll-m-20 text-2xl font-semibold tracking-tight\">\n      The Joke Tax\n    </h3>\n  )\n}\n",
+      "content": "export default function TypographyH3() {\r\n  return (\r\n    <h3 className=\"scroll-m-20 text-2xl font-semibold tracking-tight\">\r\n      The Joke Tax\r\n    </h3>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ]

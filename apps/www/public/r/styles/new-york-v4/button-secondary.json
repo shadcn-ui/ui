@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/button-secondary.tsx",
-      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonSecondary() {\n  return <Button variant=\"secondary\">Secondary</Button>\n}\n",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\r\n\r\nexport default function ButtonSecondary() {\r\n  return <Button variant=\"secondary\">Secondary</Button>\r\n}\r\n",
       "type": "registry:example"
     }
   ]

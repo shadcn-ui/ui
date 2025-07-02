@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/blocks/calendar-18.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\n\nexport default function Calendar18() {\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(2025, 5, 12)\n  )\n\n  return (\n    <Calendar\n      mode=\"single\"\n      selected={date}\n      onSelect={setDate}\n      className=\"rounded-lg border [--cell-size:--spacing(11)] md:[--cell-size:--spacing(12)]\"\n      buttonVariant=\"ghost\"\n    />\n  )\n}\n",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\n\r\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\r\n\r\nexport default function Calendar18() {\r\n  const [date, setDate] = React.useState<Date | undefined>(\r\n    new Date(2025, 5, 12)\r\n  )\r\n\r\n  return (\r\n    <Calendar\r\n      mode=\"single\"\r\n      selected={date}\r\n      onSelect={setDate}\r\n      className=\"rounded-lg border [--cell-size:--spacing(11)] md:[--cell-size:--spacing(12)]\"\r\n      buttonVariant=\"ghost\"\r\n    />\r\n  )\r\n}\r\n",
       "type": "registry:component"
     }
   ],
