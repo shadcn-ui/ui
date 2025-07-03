@@ -13,30 +13,36 @@ Start by creating a new TanStack Start project by following the [Build a Project
 
 ### Add Tailwind
 
-Install `tailwindcss` and its dependencies.
+Install `tailwindcss` and the `@tailwindcss/vite` plugin.
 
 ```bash
-npm install tailwindcss @tailwindcss/postcss postcss
+npm install tailwindcss @tailwindcss/vite
 ```
 
-### Create postcss.config.ts
+### Configure vite.config.ts
 
-Create a `postcss.config.ts` file at the root of your project.
+Add the `@tailwindcss/vite` plugin to your `vite.config.ts` file.
 
-```ts title="postcss.config.ts" showLineNumbers
-export default {
-  plugins: {
-    "@tailwindcss/postcss": {},
+```ts title="vite.config.ts" showLineNumbers {3,9}
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+import tsConfigPaths from 'vite-tsconfig-paths'
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+
+export default defineConfig({
+  server: {
+    port: 3000,
   },
-}
+  plugins: [tsConfigPaths(), tanstackStart(), tailwindcss()],
+})
 ```
 
 ### Create `app/styles/app.css`
 
-Create an `app.css` file in the `app/styles` directory and import `tailwindcss`
+Create an `app.css` file in the `app/styles` directory and import `tailwindcss`.
 
 ```css title="app/styles/app.css"
-@import "tailwindcss" source("../");
+@import "tailwindcss";
 ```
 
 ### Import `app.css`
