@@ -1,4 +1,7 @@
+import { promises as fs } from "fs"
+import { homedir } from "os"
 import path from "path"
+import { isLocalFile } from "@/src/registry/utils"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
@@ -85,6 +88,12 @@ export async function getRegistryIcons() {
 
 export async function getRegistryItem(name: string, style: string) {
   try {
+    // Handle local file paths
+    if (isLocalFile(name)) {
+      return await getLocalRegistryItem(name)
+    }
+
+    // Handle URLs and component names
     const [result] = await fetchRegistry([
       isUrl(name) ? name : `styles/${style}/${name}.json`,
     ])
@@ -92,6 +101,26 @@ export async function getRegistryItem(name: string, style: string) {
     return registryItemSchema.parse(result)
   } catch (error) {
     logger.break()
+    handleError(error)
+    return null
+  }
+}
+
+async function getLocalRegistryItem(filePath: string) {
+  try {
+    // Handle tilde expansion for home directory
+    let expandedPath = filePath
+    if (filePath.startsWith("~/")) {
+      expandedPath = path.join(homedir(), filePath.slice(2))
+    }
+
+    const resolvedPath = path.resolve(expandedPath)
+    const content = await fs.readFile(resolvedPath, "utf8")
+    const parsed = JSON.parse(content)
+
+    return registryItemSchema.parse(parsed)
+  } catch (error) {
+    logger.error(`Failed to read local registry file: ${filePath}`)
     handleError(error)
     return null
   }
@@ -263,26 +292,144 @@ export function clearRegistryCache() {
   registryCache.clear()
 }
 
+async function resolveDependenciesRecursively(
+  dependencies: string[],
+  config?: Config,
+  visited: Set<string> = new Set()
+): Promise<{
+  items: z.infer<typeof registryItemSchema>[]
+  registryNames: string[]
+}> {
+  const items: z.infer<typeof registryItemSchema>[] = []
+  const registryNames: string[] = []
+
+  for (const dep of dependencies) {
+    // Avoid infinite recursion.
+    if (visited.has(dep)) {
+      continue
+    }
+    visited.add(dep)
+
+    if (isUrl(dep) || isLocalFile(dep)) {
+      const item = await getRegistryItem(dep, "")
+      if (item) {
+        items.push(item)
+        if (item.registryDependencies) {
+          const nested = await resolveDependenciesRecursively(
+            item.registryDependencies,
+            config,
+            visited
+          )
+          items.push(...nested.items)
+          registryNames.push(...nested.registryNames)
+        }
+      }
+    } else {
+      // Registry name - add it to the list
+      registryNames.push(dep)
+
+      // If we have config, we can also fetch the item to get its dependencies
+      if (config) {
+        const style = config.resolvedPaths?.cwd
+          ? await getTargetStyleFromConfig(
+              config.resolvedPaths.cwd,
+              config.style
+            )
+          : config.style
+
+        try {
+          const item = await getRegistryItem(dep, style)
+          if (item && item.registryDependencies) {
+            const nested = await resolveDependenciesRecursively(
+              item.registryDependencies,
+              config,
+              visited
+            )
+            items.push(...nested.items)
+            registryNames.push(...nested.registryNames)
+          }
+        } catch (error) {
+          // If we can't fetch the registry item, that's okay - we'll still include the name
+        }
+      }
+    }
+  }
+
+  return { items, registryNames }
+}
+
 export async function registryResolveItemsTree(
   names: z.infer<typeof registryItemSchema>["name"][],
   config: Config
 ) {
   try {
-    const index = await getRegistryIndex()
-    if (!index) {
-      return null
+    // Separate local files, URLs, and registry names.
+    const localFiles = names.filter((name) => isLocalFile(name))
+    const urls = names.filter((name) => isUrl(name))
+    const registryNames = names.filter(
+      (name) => !isLocalFile(name) && !isUrl(name)
+    )
+
+    const payload: z.infer<typeof registryItemSchema>[] = []
+
+    // Handle local files and URLs directly, collecting their dependencies.
+    const allDependencies: string[] = []
+
+    for (const localFile of localFiles) {
+      const item = await getRegistryItem(localFile, "")
+      if (item) {
+        payload.push(item)
+        if (item.registryDependencies) {
+          allDependencies.push(...item.registryDependencies)
+        }
+      }
     }
 
-    // If we're resolving the index, we want it to go first.
-    if (names.includes("index")) {
-      names.unshift("index")
+    for (const url of urls) {
+      const item = await getRegistryItem(url, "")
+      if (item) {
+        payload.push(item)
+        if (item.registryDependencies) {
+          allDependencies.push(...item.registryDependencies)
+        }
+      }
     }
 
-    let registryItems = await resolveRegistryItems(names, config)
-    let result = await fetchRegistry(registryItems)
-    const payload = z.array(registryItemSchema).parse(result)
+    // Recursively resolve all dependencies.
+    const { items: dependencyItems, registryNames: dependencyRegistryNames } =
+      await resolveDependenciesRecursively(allDependencies, config)
 
-    if (!payload) {
+    payload.push(...dependencyItems)
+
+    // Handle registry names using existing resolveRegistryItems logic.
+    const allRegistryNames = [...registryNames, ...dependencyRegistryNames]
+    if (allRegistryNames.length > 0) {
+      const index = await getRegistryIndex()
+      if (!index) {
+        // If we only have local files or URLs, that's fine.
+        if (payload.length === 0) {
+          return null
+        }
+      } else {
+        // Remove duplicates.
+        const uniqueRegistryNames = Array.from(new Set(allRegistryNames))
+
+        // If we're resolving the index, we want it to go first.
+        if (uniqueRegistryNames.includes("index")) {
+          uniqueRegistryNames.unshift("index")
+        }
+
+        let registryItems = await resolveRegistryItems(
+          uniqueRegistryNames,
+          config
+        )
+        let result = await fetchRegistry(registryItems)
+        const registryPayload = z.array(registryItemSchema).parse(result)
+        payload.push(...registryPayload)
+      }
+    }
+
+    if (!payload.length) {
       return null
     }
 
@@ -290,7 +437,7 @@ export async function registryResolveItemsTree(
     // the theme item if a base color is provided.
     // We do this for index only.
     // Other components will ship with their theme tokens.
-    if (names.includes("index")) {
+    if (allRegistryNames.includes("index")) {
       if (config.tailwind.baseColor) {
         const theme = await registryGetTheme(config.tailwind.baseColor, config)
         if (theme) {
@@ -352,44 +499,17 @@ async function resolveRegistryDependencies(
   url: string,
   config: Config
 ): Promise<string[]> {
-  const visited = new Set<string>()
-  const payload: string[] = []
+  const { registryNames } = await resolveDependenciesRecursively([url], config)
 
   const style = config.resolvedPaths?.cwd
     ? await getTargetStyleFromConfig(config.resolvedPaths.cwd, config.style)
     : config.style
 
-  async function resolveDependencies(itemUrl: string) {
-    const url = getRegistryUrl(
-      isUrl(itemUrl) ? itemUrl : `styles/${style}/${itemUrl}.json`
-    )
+  const urls = registryNames.map((name) =>
+    getRegistryUrl(isUrl(name) ? name : `styles/${style}/${name}.json`)
+  )
 
-    if (visited.has(url)) {
-      return
-    }
-
-    visited.add(url)
-
-    try {
-      const [result] = await fetchRegistry([url])
-      const item = registryItemSchema.parse(result)
-      payload.push(url)
-
-      if (item.registryDependencies) {
-        for (const dependency of item.registryDependencies) {
-          await resolveDependencies(dependency)
-        }
-      }
-    } catch (error) {
-      console.error(
-        `Error fetching or parsing registry item at ${itemUrl}:`,
-        error
-      )
-    }
-  }
-
-  await resolveDependencies(url)
-  return Array.from(new Set(payload))
+  return Array.from(new Set(urls))
 }
 
 export async function registryGetTheme(name: string, config: Config) {
@@ -495,7 +615,13 @@ export function isUrl(path: string) {
 // TODO: We're double-fetching here. Use a cache.
 export async function resolveRegistryItems(names: string[], config: Config) {
   let registryDependencies: string[] = []
-  for (const name of names) {
+
+  // Filter out local files and URLs - these should be handled directly by getRegistryItem
+  const registryNames = names.filter(
+    (name) => !isLocalFile(name) && !isUrl(name)
+  )
+
+  for (const name of registryNames) {
     const itemRegistryDependencies = await resolveRegistryDependencies(
       name,
       config

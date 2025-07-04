@@ -146,6 +146,20 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
+  // Vinxi-based (such as @tanstack/start and @solidjs/solid-start)
+  // They are vite-based, and the same configurations used for Vite should work flawlessly
+  const appConfig = configFiles.find((file) => file.startsWith("app.config"))
+  if (appConfig?.length) {
+    const appConfigContents = await fs.readFile(
+      path.resolve(cwd, appConfig),
+      "utf8"
+    )
+    if (appConfigContents.includes("defineConfig")) {
+      type.framework = FRAMEWORKS["vite"]
+      return type
+    }
+  }
+
   // Expo.
   if (packageJson?.dependencies?.expo) {
     type.framework = FRAMEWORKS["expo"]
