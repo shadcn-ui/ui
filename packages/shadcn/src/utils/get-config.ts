@@ -41,6 +41,7 @@ export const rawConfigSchema = z
       hooks: z.string().optional(),
     }),
     iconLibrary: z.string().optional(),
+    tsconfig: z.string().optional(),
   })
   .strict()
 
@@ -81,8 +82,12 @@ export async function getConfig(cwd: string) {
 }
 
 export async function resolveConfigPaths(cwd: string, config: RawConfig) {
+  const tsconfigPath = config.tsconfig
+    ? path.resolve(cwd, config.tsconfig)
+    : path.resolve(cwd, "tsconfig.json")
+
   // Read tsconfig.json.
-  const tsConfig = await loadConfig(cwd)
+  const tsConfig = await loadConfig(tsconfigPath)
 
   if (tsConfig.resultType === "failed") {
     throw new Error(
