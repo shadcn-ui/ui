@@ -1612,4 +1612,23 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "calendar-hijri",
+    description: "A Persian calendar.",
+    type: "registry:example",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "examples/calendar-hijri.tsx",
+        type: "registry:example",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+      mobile: "component",
+    },
+  },
 ]
