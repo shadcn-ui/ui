@@ -21,15 +21,14 @@ Usage: shadcn init [options] [components...]
 initialize your project and install dependencies
 
 Arguments:
-  components         the components to add or a url to the component.
+  components         name, url or local path to component
 
 Options:
   -t, --template <template>      the template to use. (next, next-monorepo)
   -b, --base-color <base-color>  the base color to use. (neutral, gray, zinc, stone, slate)
   -y, --yes                      skip confirmation prompt. (default: true)
   -f, --force                    force overwrite of existing configuration. (default: false)
-  -c, --cwd <cwd>                the working directory. defaults to the current directory. (default:
-                                 "/Users/shadcn/Code/shadcn/ui/packages/shadcn")
+  -c, --cwd <cwd>                the working directory. defaults to the current directory.
   -s, --silent                   mute output. (default: false)
   --src-dir                      use the src directory when creating a new project. (default: false)
   --no-src-dir                   do not use the src directory when creating a new project.
@@ -54,12 +53,12 @@ Usage: shadcn add [options] [components...]
 add a component to your project
 
 Arguments:
-  components         the components to add or a url to the component.
+  components         name, url or local path to component
 
 Options:
   -y, --yes           skip confirmation prompt. (default: false)
   -o, --overwrite     overwrite existing files. (default: false)
-  -c, --cwd <cwd>     the working directory. defaults to the current directory. (default: "/Users/shadcn/Desktop")
+  -c, --cwd <cwd>     the working directory. defaults to the current directory.
   -a, --all           add all available components (default: false)
   -p, --path <path>   the path to add the component to.
   -s, --silent        mute output. (default: false)
@@ -92,8 +91,7 @@ Arguments:
 
 Options:
   -o, --output <path>  destination directory for json files (default: "./public/r")
-  -c, --cwd <cwd>      the working directory. defaults to the current directory. (default:
-                       "/Users/shadcn/Code/shadcn/ui/packages/shadcn")
+  -c, --cwd <cwd>      the working directory. defaults to the current directory.
   -h, --help           display help for command
 ```
 
