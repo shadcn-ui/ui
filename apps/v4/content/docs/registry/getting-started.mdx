@@ -162,6 +162,8 @@ The `shadcn` CLI does not offer a built-in way to add auth to your registry. We 
 
 A common simple approach is to use a `token` query parameter to authenticate requests to your registry. e.g. `http://localhost:3000/r/hello-world.json?token=[SECURE_TOKEN_HERE]`.
 
+You can also secure your registry using other methods, such as requiring a `Bearer` token in the `Authorization` header.
+
 Use the secure token to authenticate requests and return a 401 Unauthorized response if the token is invalid. Both the `shadcn` CLI and `Open in v0` will handle the 401 response and display a message to the user.
 
 <Callout className="mt-6">
@@ -186,3 +188,35 @@ To install a registry item using the `shadcn` CLI, use the `add` command followe
 ```bash
 npx shadcn@latest add http://localhost:3000/r/hello-world.json
 ```
+
+### Accessing a Private Registry
+
+If you're using a private registry that requires authentication (e.g. Bearer tokens or API keys), you can configure the CLI to send custom headers by adding a `.shadcnrc.json` file in the root of your project:
+
+<Callout className="mt-6">
+  **Note:** Since `.shadcnrc.json` may contain sensitive information such as authentication tokens, be sure to add it to your `.gitignore` file to prevent accidental exposure.
+</Callout>
+
+```json title=".shadcnrc.json" showLineNumbers
+{
+  "registries": {
+    "https://my-registry.com/r1/*": {
+      "headers": {
+        "Authorization": "Bearer YOUR_TOKEN1"
+      }
+    },
+    "https://my-registry.com/r2/*": {
+      "headers": {
+        "Authorization": "Bearer YOUR_TOKEN2"
+      }
+    },
+    //... add more registries as needed
+  }
+}
+```
+
+The CLI will automatically include the defined headers when making requests to matching registry URLs. Wildcard patterns (`*`) are supported to target groups of URLs.
+
+<Callout className="mt-6">
+  **Note:** This only affects CLI usage. The UI ("Open in v0") does not currently read from `.shadcnrc.json`.
+</Callout>
