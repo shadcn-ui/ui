@@ -247,6 +247,12 @@ async function createMonorepoProject(
     })
     await execa("cd", [cwd])
 
+    // Write project name to the package.json
+    const packageJsonPath = path.join(projectPath, "package.json")
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"))
+    packageJson.name = projectPath.split("/").pop()
+    await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))
+
     createSpinner?.succeed("Creating a new Next.js monorepo.")
   } catch (error) {
     createSpinner?.fail("Something went wrong creating a new Next.js monorepo.")
