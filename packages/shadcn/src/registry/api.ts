@@ -204,6 +204,59 @@ export async function getItemTargetPath(
   )
 }
 
+async function loadRegistryConfig() {
+  interface ShadcnRegistryConfig {
+    registries: {
+      [pattern: string]: RegistryEntry
+    }
+  }
+
+  interface RegistryEntry {
+    headers?: Record<string, string>
+  }
+  try {
+    const configPath = path.join(process.cwd(), ".shadcnrc.json")
+    const configContent = await fs.readFile(configPath, "utf-8")
+    return JSON.parse(configContent) as ShadcnRegistryConfig
+  } catch (error) {
+    // no .shadcnrc.json found, return an empty config
+    return {} as ShadcnRegistryConfig
+  }
+}
+
+async function getRegistryHeaders(fetchUrl: string, config: Awaited<ReturnType<typeof loadRegistryConfig>>) {
+
+  const entries = Object.entries(config?.registries || {})
+
+  // Convert each pattern to a regex
+  const patterns = entries.map(([pattern, value]) => ({
+    pattern,
+    regex: new RegExp(
+        "^" +
+        pattern
+            .replace(/[.+?^${}()|[\]\\]/g, "\\$&") // Escape regex chars
+            .replace(/\*/g, ".*") +
+        "$"
+    ),
+    headers: value.headers ?? {},
+  }))
+
+  // Sort by specificity: more non-wildcard characters first
+  patterns.sort(
+      (a, b) =>
+          b.pattern.replace(/\*/g, "").length -
+          a.pattern.replace(/\*/g, "").length
+  )
+
+  for (const { regex, headers } of patterns) {
+    if (regex.test(fetchUrl)) {
+      return headers
+    }
+  }
+
+  return {}
+}
+
 export async function fetchRegistry(
   paths: string[],
   options: { useCache?: boolean } = {}
@@ -214,6 +267,8 @@ export async function fetchRegistry(
   }
 
   try {
+    // Load registry configuration
+    const registryConfig = await loadRegistryConfig()
     const results = await Promise.all(
       paths.map(async (path) => {
         const url = getRegistryUrl(path)
@@ -225,7 +280,8 @@ export async function fetchRegistry(
 
         // Store the promise in the cache before awaiting if caching is enabled
         const fetchPromise = (async () => {
-          const response = await fetch(url, { agent })
+          const headers = await getRegistryHeaders(url, registryConfig)
+          const response = await fetch(url, { agent, headers })
 
           if (!response.ok) {
             const errorMessages: { [key: number]: string } = {
