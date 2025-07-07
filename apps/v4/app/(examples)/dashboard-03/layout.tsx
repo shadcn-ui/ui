@@ -7,8 +7,6 @@ import {
 import { AppSidebar } from "@/app/(examples)/dashboard-03/components/app-sidebar"
 import { SiteHeader } from "@/app/(examples)/dashboard-03/components/site-header"
 
-import "../../themes.css"
-
 export default async function DashboardLayout({
   children,
 }: {

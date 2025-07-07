@@ -1,0 +1,132 @@
+---
+title: TanStack Start
+description: Install and configure shadcn/ui for TanStack Start.
+---
+
+<Steps>
+
+### Create project
+
+Start by creating a new TanStack Start project by following the [Build a Project from Scratch](https://tanstack.com/start/latest/docs/framework/react/build-from-scratch) guide on the TanStack Start website.
+
+**Do not add Tailwind yet. We'll install Tailwind v4 in the next step.**
+
+### Add Tailwind
+
+Install `tailwindcss` and its dependencies.
+
+```bash
+npm install tailwindcss @tailwindcss/postcss postcss
+```
+
+### Create postcss.config.ts
+
+Create a `postcss.config.ts` file at the root of your project.
+
+```ts title="postcss.config.ts" showLineNumbers
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+}
+```
+
+### Create `app/styles/app.css`
+
+Create an `app.css` file in the `app/styles` directory and import `tailwindcss`
+
+```css title="app/styles/app.css"
+@import "tailwindcss" source("../");
+```
+
+### Import `app.css`
+
+```tsx title="app/routes/__root.tsx" showLineNumbers {5,21-26} showLineNumbers
+import type { ReactNode } from "react"
+import { createRootRoute, Outlet } from "@tanstack/react-router"
+import { Meta, Scripts } from "@tanstack/start"
+
+import appCss from "@/styles/app.css?url"
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      {
+        charSet: "utf-8",
+      },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
+      },
+      {
+        title: "TanStack Start Starter",
+      },
+    ],
+    links: [
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+    ],
+  }),
+  component: RootComponent,
+})
+```
+
+### Edit tsconfig.json file
+
+Add the following code to the `tsconfig.json` file to resolve paths.
+
+```ts title="tsconfig.json" showLineNumbers {9-12}
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "target": "ES2022",
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./app/*"]
+    }
+  }
+}
+```
+
+### Run the CLI
+
+Run the `shadcn` init command to setup your project:
+
+```bash
+npx shadcn@canary init
+```
+
+This will create a `components.json` file in the root of your project and configure CSS variables inside `app/styles/app.css`.
+
+### That's it
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn@canary add button
+```
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx title="app/routes/index.tsx" showLineNumbers {1,6}
+import { Button } from "@/components/ui/button"
+
+function Home() {
+  const router = useRouter()
+  const state = Route.useLoaderData()
+
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+```
+
+</Steps>
