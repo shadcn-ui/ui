@@ -22,7 +22,7 @@ export function CodeCollapsibleWrapper({
     <Collapsible
       open={isOpened}
       onOpenChange={setIsOpened}
-      className={cn("group/collapsible relative md:-mx-4", className)}
+      className={cn("group/collapsible relative md:-mx-1", className)}
       {...props}
     >
       <CollapsibleTrigger asChild>
