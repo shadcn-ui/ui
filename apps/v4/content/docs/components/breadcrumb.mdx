@@ -1,0 +1,211 @@
+---
+title: Breadcrumb
+description: Displays the path to the current resource using a hierarchy of links.
+component: true
+---
+
+<ComponentPreview
+  name="breadcrumb-demo"
+  className="[&_.preview]:p-2"
+  description="A breadcrumb with a collapsible dropdown."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add breadcrumb
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="breadcrumb" title="components/ui/breadcrumb.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+```
+
+```tsx showLineNumbers
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+## Examples
+
+### Custom separator
+
+Use a custom component as `children` for `<BreadcrumbSeparator />` to create a custom separator.
+
+<ComponentPreview
+  name="breadcrumb-separator"
+  description="A breadcrumb with a custom separator"
+/>
+
+```tsx showLineNumbers {1,10-12}
+import { SlashIcon } from "lucide-react"
+
+...
+
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator>
+      <SlashIcon />
+    </BreadcrumbSeparator>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+---
+
+### Dropdown
+
+You can compose `<BreadcrumbItem />` with a `<DropdownMenu />` to create a dropdown in the breadcrumb.
+
+<ComponentPreview
+  name="breadcrumb-dropdown"
+  className="[&_.preview]:p-2"
+  description="A breadcrumb with a dropdown."
+/>
+
+```tsx showLineNumbers {1-6,11-21}
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+...
+
+<BreadcrumbItem>
+  <DropdownMenu>
+    <DropdownMenuTrigger>
+      Components
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="start">
+      <DropdownMenuItem>Documentation</DropdownMenuItem>
+      <DropdownMenuItem>Themes</DropdownMenuItem>
+      <DropdownMenuItem>GitHub</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</BreadcrumbItem>
+```
+
+---
+
+### Collapsed
+
+We provide a `<BreadcrumbEllipsis />` component to show a collapsed state when the breadcrumb is too long.
+
+<ComponentPreview
+  name="breadcrumb-ellipsis"
+  className="[&_.preview]:p-2"
+  description="A breadcrumb showing a collapsed state."
+/>
+
+```tsx showLineNumbers {1,9}
+import { BreadcrumbEllipsis } from "@/components/ui/breadcrumb"
+
+...
+
+<Breadcrumb>
+  <BreadcrumbList>
+    {/* ... */}
+    <BreadcrumbItem>
+      <BreadcrumbEllipsis />
+    </BreadcrumbItem>
+    {/* ... */}
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+---
+
+### Link component
+
+To use a custom link component from your routing library, you can use the `asChild` prop on `<BreadcrumbLink />`.
+
+<ComponentPreview
+  name="breadcrumb-link"
+  description="A breadcrumb with a custom Link component"
+/>
+
+```tsx showLineNumbers {1,8-10}
+import { Link } from "next/link"
+
+...
+
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink asChild>
+        <Link href="/">Home</Link>
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    {/* ... */}
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+---
+
+### Responsive
+
+Here's an example of a responsive breadcrumb that composes `<BreadcrumbItem />` with `<BreadcrumbEllipsis />`, `<DropdownMenu />`, and `<Drawer />`.
+
+It displays a dropdown on desktop and a drawer on mobile.
+
+<ComponentPreview
+  name="breadcrumb-responsive"
+  className="[&_.preview]:p-2"
+  description="A responsive breadcrumb. It displays a dropdown on desktop and a drawer on mobile."
+/>
