@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest"
+
 import { isSafeTarget } from "./is-safe-target"
 
 describe("isSafeTarget", () => {
