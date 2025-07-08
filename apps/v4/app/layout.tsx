@@ -9,6 +9,7 @@ import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/new-york-v4/ui/sonner"
+import NProgressBar from "@/components/nprogress-bar"
 
 import "@/styles/globals.css"
 
@@ -91,6 +92,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LayoutProvider>
             <ActiveThemeProvider>
+              <NProgressBar color="#6366f1" />
               {children}
               <TailwindIndicator />
               <Toaster position="top-center" />
