@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/skeleton-demo.tsx",
-      "content": "import { Skeleton } from \"@/registry/new-york-v4/ui/skeleton\"\r\n\r\nexport default function SkeletonDemo() {\r\n  return (\r\n    <div className=\"flex items-center space-x-4\">\r\n      <Skeleton className=\"h-12 w-12 rounded-full\" />\r\n      <div className=\"space-y-2\">\r\n        <Skeleton className=\"h-4 w-[250px]\" />\r\n        <Skeleton className=\"h-4 w-[200px]\" />\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n",
+      "content": "import { Skeleton } from \"@/registry/new-york-v4/ui/skeleton\"\n\nexport default function SkeletonDemo() {\n  return (\n    <div className=\"flex items-center space-x-4\">\n      <Skeleton className=\"h-12 w-12 rounded-full\" />\n      <div className=\"space-y-2\">\n        <Skeleton className=\"h-4 w-[250px]\" />\n        <Skeleton className=\"h-4 w-[200px]\" />\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "blocks/calendar-03.tsx",
-      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\n\r\nimport { Calendar } from \"@/registry/new-york/ui/calendar\"\r\n\r\nexport default function Calendar03() {\r\n  const [dates, setDates] = React.useState<Date[]>([\r\n    new Date(2025, 5, 12),\r\n    new Date(2025, 6, 24),\r\n  ])\r\n\r\n  return (\r\n    <Calendar\r\n      mode=\"multiple\"\r\n      numberOfMonths={2}\r\n      defaultMonth={dates[0]}\r\n      required\r\n      selected={dates}\r\n      onSelect={setDates}\r\n      max={5}\r\n      className=\"rounded-lg border shadow-sm\"\r\n    />\r\n  )\r\n}\r\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/registry/new-york/ui/calendar\"\n\nexport default function Calendar03() {\n  const [dates, setDates] = React.useState<Date[]>([\n    new Date(2025, 5, 12),\n    new Date(2025, 6, 24),\n  ])\n\n  return (\n    <Calendar\n      mode=\"multiple\"\n      numberOfMonths={2}\n      defaultMonth={dates[0]}\n      required\n      selected={dates}\n      onSelect={setDates}\n      max={5}\n      className=\"rounded-lg border shadow-sm\"\n    />\n  )\n}\n",
       "type": "registry:component",
       "target": ""
     }

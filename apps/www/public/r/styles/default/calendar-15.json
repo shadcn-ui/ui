@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "blocks/calendar-15.tsx",
-      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\n\r\nimport { Calendar } from \"@/registry/default/ui/calendar\"\r\n\r\nexport default function Calendar15() {\r\n  const [date, setDate] = React.useState<Date | undefined>(\r\n    new Date(2025, 5, 12)\r\n  )\r\n\r\n  return (\r\n    <Calendar\r\n      mode=\"single\"\r\n      defaultMonth={date}\r\n      selected={date}\r\n      onSelect={setDate}\r\n      className=\"rounded-lg border shadow-sm\"\r\n      showWeekNumber\r\n    />\r\n  )\r\n}\r\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/registry/default/ui/calendar\"\n\nexport default function Calendar15() {\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(2025, 5, 12)\n  )\n\n  return (\n    <Calendar\n      mode=\"single\"\n      defaultMonth={date}\n      selected={date}\n      onSelect={setDate}\n      className=\"rounded-lg border shadow-sm\"\n      showWeekNumber\n    />\n  )\n}\n",
       "type": "registry:component",
       "target": ""
     }

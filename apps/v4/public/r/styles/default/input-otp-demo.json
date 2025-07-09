@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/input-otp-demo.tsx",
-      "content": "import {\r\n  InputOTP,\r\n  InputOTPGroup,\r\n  InputOTPSeparator,\r\n  InputOTPSlot,\r\n} from \"@/registry/default/ui/input-otp\"\r\n\r\nexport default function InputOTPDemo() {\r\n  return (\r\n    <InputOTP maxLength={6}>\r\n      <InputOTPGroup>\r\n        <InputOTPSlot index={0} />\r\n        <InputOTPSlot index={1} />\r\n        <InputOTPSlot index={2} />\r\n      </InputOTPGroup>\r\n      <InputOTPSeparator />\r\n      <InputOTPGroup>\r\n        <InputOTPSlot index={3} />\r\n        <InputOTPSlot index={4} />\r\n        <InputOTPSlot index={5} />\r\n      </InputOTPGroup>\r\n    </InputOTP>\r\n  )\r\n}\r\n",
+      "content": "import {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSeparator,\n  InputOTPSlot,\n} from \"@/registry/default/ui/input-otp\"\n\nexport default function InputOTPDemo() {\n  return (\n    <InputOTP maxLength={6}>\n      <InputOTPGroup>\n        <InputOTPSlot index={0} />\n        <InputOTPSlot index={1} />\n        <InputOTPSlot index={2} />\n      </InputOTPGroup>\n      <InputOTPSeparator />\n      <InputOTPGroup>\n        <InputOTPSlot index={3} />\n        <InputOTPSlot index={4} />\n        <InputOTPSlot index={5} />\n      </InputOTPGroup>\n    </InputOTP>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }

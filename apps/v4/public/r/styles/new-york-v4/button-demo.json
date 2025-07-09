@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/button-demo.tsx",
-      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\r\n\r\nexport default function ButtonDemo() {\r\n  return (\r\n    <div className=\"flex flex-wrap items-center gap-2 md:flex-row\">\r\n      <Button>Button</Button>\r\n    </div>\r\n  )\r\n}\r\n",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2 md:flex-row\">\n      <Button>Button</Button>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

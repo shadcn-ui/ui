@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/input-with-label.tsx",
-      "content": "import { Input } from \"@/registry/new-york-v4/ui/input\"\r\nimport { Label } from \"@/registry/new-york-v4/ui/label\"\r\n\r\nexport default function InputWithLabel() {\r\n  return (\r\n    <div className=\"grid w-full max-w-sm items-center gap-3\">\r\n      <Label htmlFor=\"email\">Email</Label>\r\n      <Input type=\"email\" id=\"email\" placeholder=\"Email\" />\r\n    </div>\r\n  )\r\n}\r\n",
+      "content": "import { Input } from \"@/registry/new-york-v4/ui/input\"\nimport { Label } from \"@/registry/new-york-v4/ui/label\"\n\nexport default function InputWithLabel() {\n  return (\n    <div className=\"grid w-full max-w-sm items-center gap-3\">\n      <Label htmlFor=\"email\">Email</Label>\n      <Input type=\"email\" id=\"email\" placeholder=\"Email\" />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

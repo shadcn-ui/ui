@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/input-demo.tsx",
-      "content": "import { Input } from \"@/registry/new-york/ui/input\"\r\n\r\nexport default function InputDemo() {\r\n  return <Input type=\"email\" placeholder=\"Email\" />\r\n}\r\n",
+      "content": "import { Input } from \"@/registry/new-york/ui/input\"\n\nexport default function InputDemo() {\n  return <Input type=\"email\" placeholder=\"Email\" />\n}\n",
       "type": "registry:example",
       "target": ""
     }

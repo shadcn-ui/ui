@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/toggle-outline.tsx",
-      "content": "import { Italic } from \"lucide-react\"\r\n\r\nimport { Toggle } from \"@/registry/new-york-v4/ui/toggle\"\r\n\r\nexport default function ToggleOutline() {\r\n  return (\r\n    <Toggle variant=\"outline\" aria-label=\"Toggle italic\">\r\n      <Italic />\r\n    </Toggle>\r\n  )\r\n}\r\n",
+      "content": "import { Italic } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/new-york-v4/ui/toggle\"\n\nexport default function ToggleOutline() {\n  return (\n    <Toggle variant=\"outline\" aria-label=\"Toggle italic\">\n      <Italic />\n    </Toggle>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

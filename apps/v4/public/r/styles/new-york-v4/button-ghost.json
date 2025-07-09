@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/button-ghost.tsx",
-      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\r\n\r\nexport default function ButtonGhost() {\r\n  return <Button variant=\"ghost\">Ghost</Button>\r\n}\r\n",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonGhost() {\n  return <Button variant=\"ghost\">Ghost</Button>\n}\n",
       "type": "registry:example"
     }
   ]

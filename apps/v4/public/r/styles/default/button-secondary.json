@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/button-secondary.tsx",
-      "content": "import { Button } from \"@/registry/default/ui/button\"\r\n\r\nexport default function ButtonSecondary() {\r\n  return <Button variant=\"secondary\">Secondary</Button>\r\n}\r\n",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\n\nexport default function ButtonSecondary() {\n  return <Button variant=\"secondary\">Secondary</Button>\n}\n",
       "type": "registry:example",
       "target": ""
     }
