@@ -142,6 +142,11 @@
   --selection-foreground: oklch(0.205 0 0);
 }
 
+/* Ensure TinyMCE popups are always above dialogs */
+.tox {
+  z-index: 9999 !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
