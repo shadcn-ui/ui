@@ -155,7 +155,7 @@ export const ui: Registry["items"] = [
       },
     ],
     registryDependencies: ["card"],
-    dependencies: ["recharts", "lucide-react"],
+    dependencies: ["recharts", "lucide-react", "react-is"],
   },
   {
     name: "checkbox",
