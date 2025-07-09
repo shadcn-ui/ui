@@ -169,7 +169,7 @@
       "name": "chart",
       "type": "registry:ui",
       "dependencies": [
-        "recharts",
+        "recharts@2.15.4",
         "lucide-react"
       ],
       "registryDependencies": [
