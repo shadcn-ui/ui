@@ -39,7 +39,6 @@ export async function updateFiles(
     }
   }
   options = {
-    overwrite: false,
     force: false,
     silent: false,
     isRemote: false,
@@ -106,8 +105,8 @@ export async function updateFiles(
       ]
     )
 
-    // Skip the file if it already exists and the content is the same.
-    if (existingFile) {
+    if (existingFile && !options.overwrite) {
+      // Skip the file if it already exists and the content is the same.
       const existingFileContent = await fs.readFile(filePath, "utf-8")
       const [normalizedExisting, normalizedNew] = await Promise.all([
         getNormalizedFileContent(existingFileContent),
@@ -117,9 +116,8 @@ export async function updateFiles(
         filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
         continue
       }
-    }
+      if (options.silent) continue;
 
-    if (existingFile && !options.overwrite) {
       filesCreatedSpinner.stop()
       if (options.rootSpinner) {
         options.rootSpinner.stop()
@@ -178,8 +176,7 @@ export async function updateFiles(
 
   if (filesCreated.length) {
     filesCreatedSpinner?.succeed(
-      `Created ${filesCreated.length} ${
-        filesCreated.length === 1 ? "file" : "files"
+      `Created ${filesCreated.length} ${filesCreated.length === 1 ? "file" : "files"
       }:`
     )
     if (!options.silent) {
@@ -193,8 +190,7 @@ export async function updateFiles(
 
   if (filesUpdated.length) {
     spinner(
-      `Updated ${filesUpdated.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+      `Updated ${filesUpdated.length} ${filesUpdated.length === 1 ? "file" : "files"
       }:`,
       {
         silent: options.silent,
@@ -209,8 +205,7 @@ export async function updateFiles(
 
   if (filesSkipped.length) {
     spinner(
-      `Skipped ${filesSkipped.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+      `Skipped ${filesSkipped.length} ${filesSkipped.length === 1 ? "file" : "files"
       }: (files might be identical, use --overwrite to overwrite)`,
       {
         silent: options.silent,
