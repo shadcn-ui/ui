@@ -36,11 +36,13 @@ export function CommandMenu({
   tree,
   colors,
   blocks,
+  navItems,
   ...props
 }: DialogProps & {
   tree: typeof source.pageTree
   colors: ColorPalette[]
   blocks?: { name: string; description: string; categories: string[] }[]
+  navItems?: { href: string; label: string }[]
 }) {
   const router = useRouter()
   const isMac = useIsMac()
@@ -162,12 +164,45 @@ export function CommandMenu({
           <DialogTitle>Search documentation...</DialogTitle>
           <DialogDescription>Search for a command to run...</DialogDescription>
         </DialogHeader>
-        <Command className="**:data-[slot=command-input-wrapper]:bg-input/50 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:!h-9 **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:!h-9 **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border">
+        <Command
+          className="**:data-[slot=command-input-wrapper]:bg-input/50 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:!h-9 **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:!h-9 **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border"
+          filter={(value, search, keywords) => {
+            const extendValue = value + " " + (keywords?.join(" ") || "")
+            if (extendValue.toLowerCase().includes(search.toLowerCase())) {
+              return 1
+            }
+            return 0
+          }}
+        >
           <CommandInput placeholder="Search documentation..." />
           <CommandList className="no-scrollbar min-h-80 scroll-pt-2 scroll-pb-1.5">
             <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
               No results found.
             </CommandEmpty>
+            {navItems && navItems.length > 0 && (
+              <CommandGroup
+                heading="Pages"
+                className="!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
+              >
+                {navItems.map((item) => (
+                  <CommandMenuItem
+                    key={item.href}
+                    value={`Navigation ${item.label}`}
+                    keywords={["nav", "navigation", item.label.toLowerCase()]}
+                    onHighlight={() => {
+                      setSelectedType("page")
+                      setCopyPayload("")
+                    }}
+                    onSelect={() => {
+                      runCommand(() => router.push(item.href))
+                    }}
+                  >
+                    <IconArrowRight />
+                    {item.label}
+                  </CommandMenuItem>
+                ))}
+              </CommandGroup>
+            )}
             {tree.children.map((group) => (
               <CommandGroup
                 key={group.$id}
