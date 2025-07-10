@@ -1,13 +1,18 @@
+import fs from "fs"
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { getRegistryIndex, getRegistryItem } from "@/src/registry/api"
 import { registryItemTypeSchema } from "@/src/registry/schema"
-import { isLocalFile, isUrl } from "@/src/registry/utils"
+import {
+  isLocalFile,
+  isUniversalRegistryItem,
+  isUrl,
+} from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import * as ERRORS from "@/src/utils/errors"
-import { getConfig } from "@/src/utils/get-config"
+import { createConfig, getConfig } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
@@ -78,13 +83,14 @@ export const add = new Command()
       })
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
+      let registryItem: any = null
 
       if (
         components.length > 0 &&
         (isUrl(components[0]) || isLocalFile(components[0]))
       ) {
-        const item = await getRegistryItem(components[0], "")
-        itemType = item?.type
+        registryItem = await getRegistryItem(components[0], "")
+        itemType = registryItem?.type
       }
 
       if (
@@ -128,6 +134,22 @@ export const add = new Command()
           logger.break()
           process.exit(1)
         }
+      }
+
+      if (isUniversalRegistryItem(registryItem)) {
+        // Universal items only cares about the cwd.
+        if (!fs.existsSync(options.cwd)) {
+          throw new Error(`Directory ${options.cwd} does not exist`)
+        }
+
+        const minimalConfig = createConfig({
+          resolvedPaths: {
+            cwd: options.cwd,
+          },
+        })
+
+        await addComponents(options.components, minimalConfig, options)
+        return
       }
 
       let { errors, config } = await preFlightAdd(options)
