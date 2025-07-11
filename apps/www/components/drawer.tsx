@@ -9,10 +9,15 @@ const DrawerTrigger = DrawerPrimitive.Trigger
 
 const DrawerContent = forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content> & {
+    overlay: React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>
+  }
+>(({ className, children, overlay, ...props }, ref) => (
   <DrawerPrimitive.Portal>
-    <DrawerPrimitive.Overlay className="fixed inset-0 z-50 bg-black/80" />
+    <DrawerPrimitive.Overlay
+      {...overlay}
+      className={cn("fixed inset-0 z-50 bg-black/80", overlay.className)}
+    />
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
