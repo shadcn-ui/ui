@@ -49,6 +49,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs"
+import Link from "next/link"
 
 interface BaseColorOKLCH {
   light: Record<string, string>
@@ -190,6 +191,11 @@ export function Customizer() {
         </div>
         <div className="flex gap-2 sm:ml-auto">
           <CopyCodeButton />
+          <Link href="https://ui.jln.dev/" target="blank">
+            <Button className="h-8 rounded-lg shadow-none" variant={"outline"}>
+              More themes
+            </Button>
+          </Link>
         </div>
       </div>
     </ThemeWrapper>
