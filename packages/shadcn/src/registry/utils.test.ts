@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest"
 
-import { getDependencyFromModuleSpecifier, isLocalFile, isUrl } from "./utils"
+import {
+  getDependencyFromModuleSpecifier,
+  isLocalFile,
+  isUniversalRegistryItem,
+  isUrl,
+} from "./utils"
 
 describe("getDependencyFromModuleSpecifier", () => {
   it("should return the first part of a non-scoped package with path", () => {
@@ -128,5 +133,141 @@ describe("isLocalFile", () => {
     expect(isLocalFile("./components/")).toBe(false)
     expect(isLocalFile("../shared")).toBe(false)
     expect(isLocalFile("/absolute/path")).toBe(false)
+  })
+})
+
+describe("isUniversalRegistryItem", () => {
+  it("should return true when all files have targets", () => {
+    const registryItem = {
+      files: [
+        {
+          path: "file1.ts",
+          target: "src/file1.ts",
+          type: "registry:lib" as const,
+        },
+        {
+          path: "file2.ts",
+          target: "src/utils/file2.ts",
+          type: "registry:lib" as const,
+        },
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(true)
+  })
+
+  it("should return false when some files lack targets", () => {
+    const registryItem = {
+      files: [
+        {
+          path: "file1.ts",
+          target: "src/file1.ts",
+          type: "registry:lib" as const,
+        },
+        { path: "file2.ts", target: "", type: "registry:lib" as const },
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+  })
+
+  it("should return false when no files have targets", () => {
+    const registryItem = {
+      files: [
+        { path: "file1.ts", target: "", type: "registry:lib" as const },
+        { path: "file2.ts", target: "", type: "registry:lib" as const },
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+  })
+
+  it("should return false when files array is empty", () => {
+    const registryItem = {
+      files: [],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+  })
+
+  it("should return false when files is undefined", () => {
+    const registryItem = {}
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+  })
+
+  it("should return false when registryItem is null", () => {
+    expect(isUniversalRegistryItem(null)).toBe(false)
+  })
+
+  it("should return false when registryItem is undefined", () => {
+    expect(isUniversalRegistryItem(undefined)).toBe(false)
+  })
+
+  it("should return false when target is null", () => {
+    const registryItem = {
+      files: [
+        {
+          path: "file1.ts",
+          target: null as any,
+          type: "registry:lib" as const,
+        },
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+  })
+
+  it("should return false when target is undefined", () => {
+    const registryItem = {
+      files: [{ path: "file1.ts", type: "registry:lib" as const }],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+  })
+
+  it("should handle mixed file types correctly", () => {
+    const registryItem = {
+      files: [
+        {
+          path: "component.tsx",
+          target: "components/ui/component.tsx",
+          type: "registry:ui" as const,
+        },
+        {
+          path: "utils.ts",
+          target: "lib/utils.ts",
+          type: "registry:lib" as const,
+        },
+        {
+          path: "hook.ts",
+          target: "hooks/use-something.ts",
+          type: "registry:hook" as const,
+        },
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(true)
+  })
+
+  it("should return true when all targets are non-empty strings", () => {
+    const registryItem = {
+      files: [
+        { path: "file1.ts", target: " ", type: "registry:lib" as const }, // whitespace is truthy
+        { path: "file2.ts", target: "0", type: "registry:lib" as const }, // "0" is truthy
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(true)
+  })
+
+  it("should handle real-world example with path traversal attempts", () => {
+    const registryItem = {
+      files: [
+        {
+          path: "malicious.ts",
+          target: "../../../etc/passwd",
+          type: "registry:lib" as const,
+        },
+        {
+          path: "normal.ts",
+          target: "src/normal.ts",
+          type: "registry:lib" as const,
+        },
+      ],
+    }
+    // The function should still return true - path validation is handled elsewhere
+    expect(isUniversalRegistryItem(registryItem)).toBe(true)
   })
 })
