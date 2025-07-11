@@ -256,3 +256,20 @@ export function isUrl(path: string) {
 export function isLocalFile(path: string) {
   return path.endsWith(".json") && !isUrl(path)
 }
+
+/**
+ * Check if a registry item is universal (framework-agnostic).
+ * A universal registry item has all files with explicit targets.
+ * It can be installed without framework detection or components.json.
+ */
+export function isUniversalRegistryItem(
+  registryItem:
+    | Pick<z.infer<typeof registryItemSchema>, "files">
+    | null
+    | undefined
+): boolean {
+  return (
+    !!registryItem?.files?.length &&
+    registryItem.files.every((file) => !!file.target)
+  )
+}
