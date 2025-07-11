@@ -81,7 +81,7 @@ export default function ComboboxForm() {
                       variant="outline"
                       role="combobox"
                       className={cn(
-                        "w-[200px] justify-between",
+                        "w-[200px] justify-between focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
                         !field.value && "text-muted-foreground"
                       )}
                     >
