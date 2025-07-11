@@ -1,13 +1,24 @@
 ---
 title: Checkbox
-description: A control that allows the user to toggle between checked and not checked.
+description: A versatile checkbox component that allows users to toggle between checked and unchecked states, with support for labels, descriptions, and form integration.
 component: true
 links:
   doc: https://www.radix-ui.com/docs/primitives/components/checkbox
   api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
 ---
 
-<ComponentPreview name="checkbox-demo" description="A checkbox" />
+<ComponentPreview name="checkbox-demo" description="A modern, accessible checkbox component with multiple states and variants" />
+
+## Features
+
+- Accessible by default with proper ARIA attributes
+- Support for labels and descriptions
+- Form integration with React Hook Form
+- Disabled state
+- Custom styling with Tailwind CSS
+- Keyboard navigation support
+- Controlled and uncontrolled modes
+- Flexible layout options
 
 ## Installation
 
@@ -49,17 +60,103 @@ npm install @radix-ui/react-checkbox
 
 ## Usage
 
-```tsx
-import { Checkbox } from "@/components/ui/checkbox"
-```
+### Basic Usage
 
 ```tsx
-<Checkbox />
+import { Checkbox } from "@/components/ui/checkbox"
+
+export default function Page() {
+  return (
+    <div className="flex items-center space-x-2">
+      <Checkbox id="terms" />
+      <label
+        htmlFor="terms"
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        Accept terms and conditions
+      </label>
+    </div>
+  )
+}
+```
+
+### With Description
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox"
+
+export default function Page() {
+  return (
+    <div className="grid gap-1.5 leading-none">
+      <div className="flex items-center space-x-2">
+        <Checkbox id="marketing" />
+        <label
+          htmlFor="marketing"
+          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+          Marketing emails
+        </label>
+      </div>
+      <p className="text-sm text-muted-foreground">
+        Receive emails about new products, features, and more.
+      </p>
+    </div>
+  )
+}
+```
+
+### With React Hook Form
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox"
+import { useForm } from "react-hook-form"
+
+export default function Page() {
+  const form = useForm({
+    defaultValues: {
+      terms: false,
+      marketing: false,
+    },
+  })
+
+  return (
+    <form onSubmit={form.handleSubmit((data) => console.log(data))}>
+      <div className="space-y-4">
+        <div className="flex items-center space-x-2">
+          <Checkbox
+            id="terms"
+            checked={form.watch("terms")}
+            onCheckedChange={(checked) => form.setValue("terms", checked)}
+          />
+          <label
+            htmlFor="terms"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            Accept terms and conditions
+          </label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <Checkbox
+            id="marketing"
+            checked={form.watch("marketing")}
+            onCheckedChange={(checked) => form.setValue("marketing", checked)}
+          />
+          <label
+            htmlFor="marketing"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            Subscribe to marketing emails
+          </label>
+        </div>
+      </div>
+    </form>
+  )
+}
 ```
 
 ## Examples
 
-### With text
+### With Text
 
 <ComponentPreview
   name="checkbox-with-text"
@@ -70,8 +167,43 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 <ComponentPreview name="checkbox-disabled" description="A disabled checkbox" />
 
-### Form
+### Form Integration
 
-<ComponentPreview name="checkbox-form-single" />
+<ComponentPreview name="checkbox-form-single" description="Single checkbox in a form" />
+<ComponentPreview name="checkbox-form-multiple" description="Multiple checkboxes in a form" />
 
-<ComponentPreview name="checkbox-form-multiple" />
+### With Custom Styling
+
+<ComponentPreview name="checkbox-custom" description="A checkbox with custom styling" />
+
+## API Reference
+
+### Checkbox Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| checked | boolean | undefined | The controlled checked state of the checkbox |
+| defaultChecked | boolean | undefined | The default checked state of the checkbox |
+| disabled | boolean | false | Whether the checkbox is disabled |
+| onCheckedChange | function | undefined | Event handler called when the checked state changes |
+| required | boolean | false | Whether the checkbox is required |
+| name | string | undefined | The name of the checkbox (used in forms) |
+| value | string | undefined | The value of the checkbox (used in forms) |
+
+## Best Practices
+
+1. **Always Use Labels**: Provide clear, descriptive labels for checkboxes
+2. **Group Related Options**: Use checkboxes for multiple selections from a related set of options
+3. **Consider Default States**: Set appropriate default states based on user expectations
+4. **Handle Form Integration**: Use with form libraries like React Hook Form for proper form handling
+5. **Maintain Accessibility**: Ensure proper ARIA attributes and keyboard navigation
+6. **Provide Feedback**: Give visual feedback for checked/unchecked states
+7. **Use Appropriate Spacing**: Maintain consistent spacing between checkbox and label
+
+## Changelog
+
+### 2024-10-16 Accessibility Improvements
+
+- Added proper ARIA attributes for better screen reader support
+- Improved keyboard navigation
+- Enhanced focus styles for better visibility
