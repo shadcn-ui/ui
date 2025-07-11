@@ -67,6 +67,11 @@ describe("isSafeTarget", () => {
         description: "Unicode normalization attacks",
         target: "foo/../\u2025/etc/passwd",
       },
+      {
+        description:
+          "path traversal with square brackets outside [...] pattern",
+        target: "foo/[bar]/../../etc/passwd",
+      },
     ])("$description", ({ target }) => {
       expect(isSafeTarget(target, cwd)).toBe(false)
     })
@@ -101,6 +106,26 @@ describe("isSafeTarget", () => {
       {
         description: "path with special characters",
         target: "components/@ui/button.tsx",
+      },
+      {
+        description: "framework routing with square brackets",
+        target: "pages/[id].tsx",
+      },
+      {
+        description: "catch-all routes with [...param]",
+        target: "server/api/auth/[...].ts",
+      },
+      {
+        description: "optional catch-all routes",
+        target: "pages/[[...slug]].tsx",
+      },
+      {
+        description: "dollar sign routes",
+        target: "routes/$userId.tsx",
+      },
+      {
+        description: "complex routing patterns",
+        target: "app/[locale]/[...segments]/page.tsx",
       },
     ])("$description", ({ target }) => {
       expect(isSafeTarget(target, cwd)).toBe(true)
