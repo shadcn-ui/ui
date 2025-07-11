@@ -42,6 +42,8 @@ function useCarousel() {
   return context
 }
 
+type CarouselRootProps = React.ComponentProps<"div"> & CarouselProps
+
 function Carousel({
   orientation = "horizontal",
   opts,
@@ -50,7 +52,7 @@ function Carousel({
   className,
   children,
   ...props
-}: React.ComponentProps<"div"> & CarouselProps) {
+}: CarouselRootProps) {
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...opts,
@@ -132,7 +134,9 @@ function Carousel({
   )
 }
 
-function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
+type CarouselContentProps = React.ComponentProps<"div">
+
+function CarouselContent({ className, ...props }: CarouselContentProps) {
   const { carouselRef, orientation } = useCarousel()
 
   return (
@@ -153,7 +157,9 @@ function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
+type CarouselItemProps = React.ComponentProps<"div">
+
+function CarouselItem({ className, ...props }: CarouselItemProps) {
   const { orientation } = useCarousel()
 
   return (
@@ -171,12 +177,14 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+type CarouselPreviousProps = React.ComponentProps<typeof Button>
+
 function CarouselPrevious({
   className,
   variant = "outline",
   size = "icon",
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: CarouselPreviousProps) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
@@ -201,12 +209,14 @@ function CarouselPrevious({
   )
 }
 
+type CarouselNextProps = React.ComponentProps<typeof Button>
+
 function CarouselNext({
   className,
   variant = "outline",
   size = "icon",
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: CarouselNextProps) {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
@@ -232,10 +242,19 @@ function CarouselNext({
 }
 
 export {
-  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+}
+
+export type {
+  CarouselApi,
+  CarouselProps,
+  CarouselRootProps,
+  CarouselContentProps,
+  CarouselItemProps,
+  CarouselPreviousProps,
+  CarouselNextProps,
 }
