@@ -43,7 +43,7 @@ jobs:
 
   format:
     runs-on: ubuntu-latest
-    name: pnpm format:check
+    name: pnpm lint
     steps:
       - uses: actions/checkout@v3
         with:
@@ -77,7 +77,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm format:check
+      - run: pnpm lint
 
   tsc:
     runs-on: ubuntu-latest

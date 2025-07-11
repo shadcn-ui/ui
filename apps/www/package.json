@@ -6,18 +6,14 @@
   "scripts": {
     "dev": "next dev -p 3333",
     "build": "pnpm --filter=shadcn build && contentlayer2 build && pnpm build:registry && next build",
-    "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
-    "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
+    "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
+    "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "build:docs": "contentlayer2 build",
     "seed:tasks": "tsx --tsconfig ./tsconfig.scripts.json ./app/(app)/examples/tasks/data/seed.ts",
     "start": "next start -p 3333",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
     "preview": "next build && next start -p 3333",
-    "typecheck": "contentlayer2 build && tsc --noEmit",
-    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
+    "typecheck": "contentlayer2 build && tsc --noEmit"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -105,7 +101,6 @@
     "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.2.22",
     "esbuild": "^0.25.0",
-    "eslint": "^8.41.0",
     "mdast-util-toc": "^6.1.1",
     "postcss": "^8.4.24",
     "rehype": "^12.0.1",
