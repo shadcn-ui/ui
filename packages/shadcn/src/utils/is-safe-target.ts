@@ -27,15 +27,27 @@ export function isSafeTarget(targetPath: string, cwd: string): boolean {
   const normalizedRoot = path.normalize(cwd)
 
   // Check for explicit path traversal sequences in both encoded and decoded forms.
+  // Allow [...] pattern which is common in framework routing (e.g., [...slug])
+  const hasPathTraversal = (path: string) => {
+    // Remove [...] patterns before checking for ..
+    const withoutBrackets = path.replace(/\[\.\.\..*?\]/g, "")
+    return withoutBrackets.includes("..")
+  }
+
   if (
-    normalizedTarget.includes("..") ||
-    decodedPath.includes("..") ||
-    targetPath.includes("..")
+    hasPathTraversal(normalizedTarget) ||
+    hasPathTraversal(decodedPath) ||
+    hasPathTraversal(targetPath)
   ) {
     return false
   }
 
   // Check for current directory references that might be used in traversal.
+  // First, remove [...] patterns to avoid false positives
+  const cleanPath = (path: string) => path.replace(/\[\.\.\..*?\]/g, "")
+  const cleanTarget = cleanPath(targetPath)
+  const cleanDecoded = cleanPath(decodedPath)
+
   const suspiciousPatterns = [
     /\.\.[\/\\]/, // ../ or ..\
     /[\/\\]\.\./, // /.. or \..
@@ -47,7 +59,7 @@ export function isSafeTarget(targetPath: string, cwd: string): boolean {
 
   if (
     suspiciousPatterns.some(
-      (pattern) => pattern.test(targetPath) || pattern.test(decodedPath)
+      (pattern) => pattern.test(cleanTarget) || pattern.test(cleanDecoded)
     )
   ) {
     return false
