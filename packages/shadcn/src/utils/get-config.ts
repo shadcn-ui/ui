@@ -225,3 +225,64 @@ export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
   const projectInfo = await getProjectInfo(cwd)
   return projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : fallback
 }
+
+type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
+}
+
+/**
+ * Creates a config object with sensible defaults.
+ * Useful for universal registry items that bypass framework detection.
+ *
+ * @param partial - Partial config values to override defaults
+ * @returns A complete Config object
+ */
+export function createConfig(partial?: DeepPartial<Config>): Config {
+  const defaultConfig: Config = {
+    resolvedPaths: {
+      cwd: process.cwd(),
+      tailwindConfig: "",
+      tailwindCss: "",
+      utils: "",
+      components: "",
+      ui: "",
+      lib: "",
+      hooks: "",
+    },
+    style: "",
+    tailwind: {
+      config: "",
+      css: "",
+      baseColor: "",
+      cssVariables: false,
+    },
+    rsc: false,
+    tsx: true,
+    aliases: {
+      components: "",
+      utils: "",
+    },
+  }
+
+  // Deep merge the partial config with defaults
+  if (partial) {
+    return {
+      ...defaultConfig,
+      ...partial,
+      resolvedPaths: {
+        ...defaultConfig.resolvedPaths,
+        ...(partial.resolvedPaths || {}),
+      },
+      tailwind: {
+        ...defaultConfig.tailwind,
+        ...(partial.tailwind || {}),
+      },
+      aliases: {
+        ...defaultConfig.aliases,
+        ...(partial.aliases || {}),
+      },
+    }
+  }
+
+  return defaultConfig
+}
