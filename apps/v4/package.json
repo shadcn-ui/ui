@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack --port 4000",
-    "build": "pnpm --filter=shadcn build && next build",
+    "build": "pnpm --filter=shadcn build && pnpm build:external && next build",
     "start": "next start --port 4000",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
