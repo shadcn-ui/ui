@@ -35,6 +35,7 @@
     "www:build": "pnpm --filter=www build",
     "v4:dev": "pnpm --filter=v4 dev",
     "v4:build": "pnpm --filter=v4 build",
+    "build:external": "pnpm --filter=v4 build:external",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "preview": "turbo run preview",

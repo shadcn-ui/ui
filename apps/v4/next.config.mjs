@@ -68,6 +68,11 @@ const nextConfig = {
         destination: "/view/:name",
         permanent: true,
       },
+      {
+        source: "/community",
+        destination: "/docs/components/community",
+        permanent: false,
+      },
     ]
   },
 }

@@ -14,6 +14,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --log-level silent --write \"registry/**/*.{ts,tsx,json,mdx}\" --cache",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
+    "build:external": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-external-registry.mts",
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@faker-js/faker": "^8.2.0",
     "@hookform/resolvers": "^3.10.0",
+    "@orama/orama": "^3.1.11",
     "@radix-ui/react-accessible-icon": "^1.1.1",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.5",
@@ -77,6 +79,7 @@
     "motion": "^12.12.1",
     "next": "15.3.1",
     "next-themes": "0.4.6",
+    "nuqs": "^2.4.3",
     "postcss": "^8.5.1",
     "react": "19.1.0",
     "react-day-picker": "^9.7.0",

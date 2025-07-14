@@ -33,6 +33,10 @@ export const siteConfig = {
       href: "/colors",
       label: "Colors",
     },
+    {
+      href: "/docs/components/community",
+      label: "Community",
+    },
   ],
 }
 

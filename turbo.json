@@ -55,6 +55,10 @@
     "registry:build": {
       "cache": false,
       "outputs": []
+    },
+    "build:external": {
+      "cache": false,
+      "outputs": [".data/external-registries.json", ".data/external-registries-index.json"]
     }
   }
 }
