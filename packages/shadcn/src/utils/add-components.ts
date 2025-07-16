@@ -327,8 +327,7 @@ async function shouldOverwriteCssVars(
   components: z.infer<typeof registryItemSchema>["name"][],
   config: z.infer<typeof configSchema>
 ) {
-  let registryItems = await resolveRegistryItems(components, config)
-  let result = await fetchRegistry(registryItems)
+  let result = await fetchRegistry(components)
   const payload = z.array(registryItemSchema).parse(result)
 
   return payload.some(
