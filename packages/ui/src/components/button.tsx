@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "../utils"
 
-const buttonVariants = cva(
+const buttonVariants = cv(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
@@ -56,3 +56,22 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
+function cv(
+  arg0: string,
+  arg1: {
+    variants: {
+      variant: {
+        default: string
+        destructive: string
+        outline: string
+        secondary: string
+        ghost: string
+        link: string
+      }
+      size: { default: string; sm: string; lg: string; icon: string }
+    }
+    defaultVariants: { variant: string; size: string }
+  }
+) {
+  throw new Error("Function not implemented.")
+}
