@@ -73,7 +73,9 @@ const FormItemContext = React.createContext<FormItemContextValue>(
   {} as FormItemContextValue
 )
 
-function FormItem({ className, ...props }: React.ComponentProps<"div">) {
+type FormItemProps = React.ComponentProps<"div">
+
+function FormItem({ className, ...props }: FormItemProps) {
   const id = React.useId()
 
   return (
@@ -87,10 +89,9 @@ function FormItem({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function FormLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof LabelPrimitive.Root>) {
+type FormLabelProps = React.ComponentProps<typeof LabelPrimitive.Root>
+
+function FormLabel({ className, ...props }: FormLabelProps) {
   const { error, formItemId } = useFormField()
 
   return (
@@ -104,7 +105,9 @@ function FormLabel({
   )
 }
 
-function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+type FormControlProps = React.ComponentProps<typeof Slot>
+
+function FormControl({ ...props }: FormControlProps) {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
   return (
@@ -122,7 +125,9 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
   )
 }
 
-function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
+type FormDescriptionProps = React.ComponentProps<"p">
+
+function FormDescription({ className, ...props }: FormDescriptionProps) {
   const { formDescriptionId } = useFormField()
 
   return (
@@ -135,7 +140,9 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
   )
 }
 
-function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
+type FormMessageProps = React.ComponentProps<"p">
+
+function FormMessage({ className, ...props }: FormMessageProps) {
   const { error, formMessageId } = useFormField()
   const body = error ? String(error?.message ?? "") : props.children
 
@@ -164,4 +171,12 @@ export {
   FormDescription,
   FormMessage,
   FormField,
+}
+
+export type {
+  FormItemProps,
+  FormLabelProps,
+  FormControlProps,
+  FormDescriptionProps,
+  FormMessageProps,
 }
