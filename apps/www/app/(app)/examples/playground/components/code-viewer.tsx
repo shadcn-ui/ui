@@ -87,3 +87,28 @@ export function CodeViewer() {
     </Dialog>
   )
 }
+
+export function renderThemeCSS() {
+  return `
+    @layer base {
+      :root {
+        --background: 0.967 0.005 0;
+        --foreground: 0.12 0.011 20.3;
+        --card: 0.967 0.005 0;
+        --card-foreground: 0.12 0.011 20.3;
+        --popover: 0.967 0.005 0;
+        --popover-foreground: 0.12 0.011 20.3;
+        --primary: 0.651 0.236 47.9;
+        --primary-foreground: 0.98 0.008 26;
+        --secondary: 0.76 0.126 60;
+        --secondary-foreground: 0.165 0.036 24;
+        --muted: 0.76 0.126 60;
+        --muted-foreground: 0.47 0.057 25;
+        --accent: 0.76 0.126 60;
+        --accent-foreground: 0.165 0.036 24;
+        --destructive: 0.37 0.196 0;
+        --destructive-foreground: 0.968 0.031 60;
+      }
+    }
+  `
+}
