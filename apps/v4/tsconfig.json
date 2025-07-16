@@ -21,6 +21,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
+      "@workspace/ui": ["../../packages/ui/src"],
       "react": ["./node_modules/@types/react"]
     }
   },
