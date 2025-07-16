@@ -97,11 +97,11 @@ export default function ComboboxForm() {
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
                     <CommandInput
-                      placeholder="Search framework..."
+                      placeholder="Search language..."
                       className="h-9"
                     />
                     <CommandList>
-                      <CommandEmpty>No framework found.</CommandEmpty>
+                      <CommandEmpty>No language found.</CommandEmpty>
                       <CommandGroup>
                         {languages.map((language) => (
                           <CommandItem
