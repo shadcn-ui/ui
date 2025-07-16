@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
