@@ -24,6 +24,8 @@ export function rehypeNpmCommand() {
           "npm install",
           "bun add"
         )
+        node.properties["__denoCommand__"] = 'deno add ' + (npmCommand
+          .split(' ').slice(2).map((arg) => arg.startsWith('-') ? arg : 'npm:' + arg).join(' '))
       }
 
       // npx create-.
@@ -41,6 +43,10 @@ export function rehypeNpmCommand() {
         node.properties["__bunCommand__"] = npmCommand.replace(
           "npx",
           "bunx --bun"
+        )
+        node.properties["__denoCommand__"] = npmCommand.replace(
+          "npx ",
+          "deno run -A npm:"
         )
       }
 
@@ -60,6 +66,10 @@ export function rehypeNpmCommand() {
           "npm create",
           "bun create"
         )
+        node.properties["__denoCommand__"] = npmCommand.replace(
+          "npm create ",
+          "deno run -A npm:create-"
+        )
       }
 
       // npx.
@@ -78,6 +88,10 @@ export function rehypeNpmCommand() {
           "npx",
           "bunx --bun"
         )
+        node.properties["__denoCommand__"] = npmCommand.replace(
+          "npx ",
+          "deno run -A npm:"
+        )
       }
 
       // npm run.
@@ -93,6 +107,7 @@ export function rehypeNpmCommand() {
           "pnpm"
         )
         node.properties["__bunCommand__"] = npmCommand.replace("npm run", "bun")
+        node.properties["__denoCommand__"] = npmCommand.replace("npm run", "deno task")
       }
     })
   }
