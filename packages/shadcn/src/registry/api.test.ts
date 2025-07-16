@@ -6,6 +6,7 @@ import { setupServer } from "msw/node"
 import {
   afterAll,
   afterEach,
+  beforeEach,
   beforeAll,
   describe,
   expect,
@@ -19,6 +20,7 @@ import {
   getRegistryItem,
   registryResolveItemsTree,
 } from "./api"
+import { handleError } from "@/src/utils/handle-error"
 
 // Mock the handleError function to prevent process.exit in tests
 vi.mock("@/src/utils/handle-error", () => ({
@@ -152,6 +154,153 @@ describe("fetchRegistry", () => {
     expect(result).toHaveLength(2)
     expect(result[0]).toMatchObject({ name: "button" })
     expect(result[1]).toMatchObject({ name: "card" })
+  })
+})
+
+describe("fetchRegistry with .shadcnrc.json auth", () => {
+  const MOCK_PROJECT_DIR = path.resolve(tmpdir(), "shadcn-test-project")
+  const PRIVATE_REGISTRY_URL = "https://private.registry/r"
+
+  let cwdSpy: ReturnType<typeof vi.spyOn>
+  let readFileSpy: ReturnType<typeof vi.spyOn>
+
+  beforeEach(() => {
+    // Mock process.cwd() to control where .shadcnrc.json is looked for
+    cwdSpy = vi.spyOn(process, "cwd").mockReturnValue(MOCK_PROJECT_DIR)
+    // Spy on fs.readFile to provide mock .shadcnrc.json content
+    readFileSpy = vi.spyOn<any, "readFile">(fs, "readFile")
+    clearRegistryCache()
+  })
+
+  afterEach(() => {
+    // Restore mocks
+    cwdSpy.mockRestore()
+    readFileSpy.mockRestore()
+  })
+
+  it("should send auth headers for a matching private registry URL", async () => {
+    const MOCK_TOKEN = "TEST_TOKEN_123"
+    const shadcnrcConfig = {
+      registries: {
+        [PRIVATE_REGISTRY_URL + "/*"]: {
+          headers: {
+            Authorization: `Bearer ${MOCK_TOKEN}`,
+          },
+        },
+      },
+    }
+
+    // Mock .shadcnrc.json
+    readFileSpy.mockResolvedValue(JSON.stringify(shadcnrcConfig))
+
+    let receivedHeaders: Headers | undefined
+    server.use(
+      http.get(`${PRIVATE_REGISTRY_URL}/private-button.json`, ({ request }) => {
+        receivedHeaders = request.headers
+        return HttpResponse.json({ name: "private-button" })
+      })
+    )
+
+    const result = await fetchRegistry([
+      `${PRIVATE_REGISTRY_URL}/private-button.json`,
+    ])
+
+    expect(readFileSpy).toHaveBeenCalledWith(
+      path.join(MOCK_PROJECT_DIR, ".shadcnrc.json"),
+      "utf-8"
+    )
+    expect(result[0]).toMatchObject({ name: "private-button" })
+    expect(receivedHeaders?.get("Authorization")).toBe(`Bearer ${MOCK_TOKEN}`)
+  })
+
+  it("should fail with 401 if auth headers are required but not provided", async () => {
+    // Mock an empty .shadcnrc.json
+    readFileSpy.mockResolvedValue(JSON.stringify({ registries: {} }))
+
+    server.use(
+      http.get(`${PRIVATE_REGISTRY_URL}/protected.json`, ({ request }) => {
+        if (request.headers.get("Authorization")) {
+          return HttpResponse.json({ name: "protected" })
+        }
+        return new HttpResponse(null, { status: 401 })
+      })
+    )
+
+    // We expect this to throw, and handleError to be called.
+    const result = await fetchRegistry([`${PRIVATE_REGISTRY_URL}/protected.json`])
+
+    // handleError is mocked, so the function won't exit.
+    // fetchRegistry will catch the error and return an empty array.
+    expect(result).toEqual([])
+
+    expect(vi.mocked(handleError)).toHaveBeenCalled()
+    expect((vi.mocked(handleError).mock.calls[0][0] as any).message).toContain(
+      "You are not authorized to access the component"
+    )
+  })
+
+  it("should use the most specific matching registry entry", async () => {
+    const MOCK_TOKEN_GENERIC = "GENERIC_TOKEN"
+    const MOCK_TOKEN_SPECIFIC = "SPECIFIC_TOKEN"
+
+    const shadcnrcConfig = {
+      registries: {
+        [PRIVATE_REGISTRY_URL + "/*"]: {
+          headers: {
+            Authorization: `Bearer ${MOCK_TOKEN_GENERIC}`,
+          },
+        },
+        [PRIVATE_REGISTRY_URL + "/specific.json"]: {
+          headers: {
+            Authorization: `Bearer ${MOCK_TOKEN_SPECIFIC}`,
+          },
+        },
+      },
+    }
+    readFileSpy.mockResolvedValue(JSON.stringify(shadcnrcConfig))
+
+    let receivedHeaders: Headers | undefined
+    server.use(
+      http.get(`${PRIVATE_REGISTRY_URL}/specific.json`, ({ request }) => {
+        receivedHeaders = request.headers
+        return HttpResponse.json({ name: "specific-component" })
+      })
+    )
+
+    await fetchRegistry([`${PRIVATE_REGISTRY_URL}/specific.json`])
+
+    expect(receivedHeaders?.get("Authorization")).toBe(
+      `Bearer ${MOCK_TOKEN_SPECIFIC}`
+    )
+  })
+
+  it("should not send auth headers to non-matching URLs", async () => {
+    const MOCK_TOKEN = "TEST_TOKEN_123"
+    const shadcnrcConfig = {
+      registries: {
+        "https://some.other.registry/r/*": {
+          headers: {
+            Authorization: `Bearer ${MOCK_TOKEN}`,
+          },
+        },
+      },
+    }
+    readFileSpy.mockResolvedValue(JSON.stringify(shadcnrcConfig))
+
+    let receivedHeaders: Headers | undefined
+    server.use(
+      http.get(`${REGISTRY_URL}/styles/new-york/button.json`, ({ request }) => {
+        receivedHeaders = request.headers
+        return HttpResponse.json({
+          name: "button",
+          type: "registry:ui",
+        })
+      })
+    )
+
+    await fetchRegistry(["styles/new-york/button.json"])
+
+    expect(receivedHeaders?.get("Authorization")).toBeNull()
   })
 })
 
