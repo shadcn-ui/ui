@@ -1,6 +1,7 @@
 import path from "path"
 import {
   fetchRegistry,
+  getRegistryItem,
   getRegistryParentMap,
   getRegistryTypeAliasMap,
   registryResolveItemsTree,
@@ -327,8 +328,9 @@ async function shouldOverwriteCssVars(
   components: z.infer<typeof registryItemSchema>["name"][],
   config: z.infer<typeof configSchema>
 ) {
-  let registryItems = await resolveRegistryItems(components, config)
-  let result = await fetchRegistry(registryItems)
+  let result = await Promise.all(
+    components.map((component) => getRegistryItem(component, config.style))
+  )
   const payload = z.array(registryItemSchema).parse(result)
 
   return payload.some(
