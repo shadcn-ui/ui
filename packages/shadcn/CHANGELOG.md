@@ -1,5 +1,17 @@
 # @shadcn/ui
 
+## 2.9.2
+
+### Patch Changes
+
+- [#7833](https://github.com/shadcn-ui/ui/pull/7833) [`d9cdc3f7ae69e571de7dc116effc381ad76685c3`](https://github.com/shadcn-ui/ui/commit/d9cdc3f7ae69e571de7dc116effc381ad76685c3) Thanks [@shadcn](https://github.com/shadcn)! - Revert "fix: handling of shouldOverwriteCssVars"
+
+## 2.9.1
+
+### Patch Changes
+
+- [#7829](https://github.com/shadcn-ui/ui/pull/7829) [`ed5237c231f3b70107131bd7ba517e73b8c9014d`](https://github.com/shadcn-ui/ui/commit/ed5237c231f3b70107131bd7ba517e73b8c9014d) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of shouldOverwriteCssVars
+
 ## 2.9.0
 
 ### Minor Changes
