@@ -1812,6 +1812,21 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/calendar-32.tsx",
       meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
     },
+    "calendar-33": {
+      name: "calendar-33",
+      description: "Enhanced date picker with quick year and month selection",
+      type: "registry:block",
+      registryDependencies: ["calendar","button","popover","label"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-33.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-33.tsx")),
+      source: "__registry__/new-york/blocks/calendar-33.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "",
@@ -7643,6 +7658,21 @@ export const Index: Record<string, any> = {
       categories: ["calendar","date"],
       component: React.lazy(() => import("@/registry/default/blocks/calendar-32.tsx")),
       source: "__registry__/default/blocks/calendar-32.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-33": {
+      name: "calendar-33",
+      description: "Enhanced date picker with quick year and month selection",
+      type: "registry:block",
+      registryDependencies: ["calendar","button","popover","label"],
+      files: [{
+        path: "registry/default/blocks/calendar-33.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-33.tsx")),
+      source: "__registry__/default/blocks/calendar-33.tsx",
       meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
     },
     "chart-area-axes": {
