@@ -1,5 +1,29 @@
 # @shadcn/ui
 
+## 2.9.2
+
+### Patch Changes
+
+- [#7833](https://github.com/shadcn-ui/ui/pull/7833) [`d9cdc3f7ae69e571de7dc116effc381ad76685c3`](https://github.com/shadcn-ui/ui/commit/d9cdc3f7ae69e571de7dc116effc381ad76685c3) Thanks [@shadcn](https://github.com/shadcn)! - Revert "fix: handling of shouldOverwriteCssVars"
+
+## 2.9.1
+
+### Patch Changes
+
+- [#7829](https://github.com/shadcn-ui/ui/pull/7829) [`ed5237c231f3b70107131bd7ba517e73b8c9014d`](https://github.com/shadcn-ui/ui/commit/ed5237c231f3b70107131bd7ba517e73b8c9014d) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of shouldOverwriteCssVars
+
+## 2.9.0
+
+### Minor Changes
+
+- [#7782](https://github.com/shadcn-ui/ui/pull/7782) [`06d03d64f437b543bf5fa07ccbc559f285538ffd`](https://github.com/shadcn-ui/ui/commit/06d03d64f437b543bf5fa07ccbc559f285538ffd) Thanks [@shadcn](https://github.com/shadcn)! - add universal registry items support
+
+### Patch Changes
+
+- [#7795](https://github.com/shadcn-ui/ui/pull/7795) [`6c341c16aeaf5ade177a4a1ba4fb9afcd33d5fee`](https://github.com/shadcn-ui/ui/commit/6c341c16aeaf5ade177a4a1ba4fb9afcd33d5fee) Thanks [@shadcn](https://github.com/shadcn)! - fix safe target handling
+
+- [#7757](https://github.com/shadcn-ui/ui/pull/7757) [`db93787712fe51346bf87dbae8b4cf4e38ed8c27`](https://github.com/shadcn-ui/ui/commit/db93787712fe51346bf87dbae8b4cf4e38ed8c27) Thanks [@shadcn](https://github.com/shadcn)! - implement registry path validation
+
 ## 2.8.0
 
 ### Minor Changes
