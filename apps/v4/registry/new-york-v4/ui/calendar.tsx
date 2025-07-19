@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useEffect, useState } from "react"
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -24,6 +25,34 @@ function Calendar({
   buttonVariant?: React.ComponentProps<typeof Button>["variant"]
 }) {
   const defaultClassNames = getDefaultClassNames()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <div className={cn(
+        "bg-background group/calendar p-3 [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
+        className
+      )}>
+        <div className="w-fit">
+          <div className="flex gap-4 flex-col md:flex-row relative">
+            <div className="flex flex-col w-full gap-4">
+              <div className="flex items-center gap-1 w-full absolute top-0 inset-x-0 justify-between">
+                <div className="size-(--cell-size) aria-disabled:opacity-50 p-0 select-none" />
+                <div className="size-(--cell-size) aria-disabled:opacity-50 p-0 select-none" />
+              </div>
+              <div className="flex items-center justify-center h-(--cell-size) w-full px-(--cell-size)">
+                <div className="select-none font-medium text-sm">Loading...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <DayPicker
@@ -36,8 +65,16 @@ function Calendar({
       )}
       captionLayout={captionLayout}
       formatters={{
-        formatMonthDropdown: (date) =>
-          date.toLocaleString("default", { month: "short" }),
+        formatCaption: (date) => {
+          // Use the locale code from props, fallback to default
+          const localeCode = props?.locale?.code || "default"
+          return date.toLocaleString(localeCode, { month: "long", year: "numeric" })
+        },
+        formatMonthDropdown: (date) => {
+          // Use the locale code from props, fallback to default
+          const localeCode = props?.locale?.code || "default"
+          return date.toLocaleString(localeCode, { month: "short" })
+        },
         ...formatters,
       }}
       classNames={{
@@ -190,7 +227,7 @@ function CalendarDayButton({
       ref={ref}
       variant="ghost"
       size="icon"
-      data-day={day.date.toLocaleDateString()}
+      data-day={day.date.toISOString()}
       data-selected-single={
         modifiers.selected &&
         !modifiers.range_start &&
