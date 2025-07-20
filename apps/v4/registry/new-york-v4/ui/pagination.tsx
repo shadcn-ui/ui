@@ -103,7 +103,7 @@ function PaginationNext({
 
 function PaginationEllipsis({
   className,
-  children = "...",
+  children = "More pages",
   ...props
 }: React.ComponentProps<"span"> & { children?: string }) {
   return (
