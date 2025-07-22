@@ -137,18 +137,32 @@ describe("isLocalFile", () => {
 })
 
 describe("isUniversalRegistryItem", () => {
-  it("should return true when all files have targets", () => {
+  it("should return true when all files have targets with registry:file type", () => {
     const registryItem = {
       files: [
         {
           path: "file1.ts",
           target: "src/file1.ts",
-          type: "registry:lib" as const,
+          type: "registry:file" as const,
         },
         {
           path: "file2.ts",
           target: "src/utils/file2.ts",
-          type: "registry:lib" as const,
+          type: "registry:file" as const,
+        },
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(true)
+  })
+
+  it("should return true for any registry item type if all files are registry:file with targets", () => {
+    const registryItem = {
+      type: "registry:ui" as const,
+      files: [
+        {
+          path: "cursor-rules.txt",
+          target: "~/.cursor/rules/react.txt",
+          type: "registry:file" as const,
         },
       ],
     }
@@ -161,9 +175,27 @@ describe("isUniversalRegistryItem", () => {
         {
           path: "file1.ts",
           target: "src/file1.ts",
-          type: "registry:lib" as const,
+          type: "registry:file" as const,
         },
-        { path: "file2.ts", target: "", type: "registry:lib" as const },
+        { path: "file2.ts", target: "", type: "registry:file" as const },
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+  })
+
+  it("should return false when files have non-registry:file type", () => {
+    const registryItem = {
+      files: [
+        {
+          path: "file1.ts",
+          target: "src/file1.ts",
+          type: "registry:file" as const,
+        },
+        {
+          path: "file2.ts",
+          target: "src/lib/file2.ts",
+          type: "registry:lib" as const, // Not registry:file
+        },
       ],
     }
     expect(isUniversalRegistryItem(registryItem)).toBe(false)
@@ -172,8 +204,8 @@ describe("isUniversalRegistryItem", () => {
   it("should return false when no files have targets", () => {
     const registryItem = {
       files: [
-        { path: "file1.ts", target: "", type: "registry:lib" as const },
-        { path: "file2.ts", target: "", type: "registry:lib" as const },
+        { path: "file1.ts", target: "", type: "registry:file" as const },
+        { path: "file2.ts", target: "", type: "registry:file" as const },
       ],
     }
     expect(isUniversalRegistryItem(registryItem)).toBe(false)
@@ -205,7 +237,7 @@ describe("isUniversalRegistryItem", () => {
         {
           path: "file1.ts",
           target: null as any,
-          type: "registry:lib" as const,
+          type: "registry:file" as const,
         },
       ],
     }
@@ -214,60 +246,96 @@ describe("isUniversalRegistryItem", () => {
 
   it("should return false when target is undefined", () => {
     const registryItem = {
-      files: [{ path: "file1.ts", type: "registry:lib" as const }],
+      files: [
+        {
+          path: "file1.ts",
+          type: "registry:file" as const,
+          target: undefined as any,
+        },
+      ],
     }
     expect(isUniversalRegistryItem(registryItem)).toBe(false)
   })
 
-  it("should handle mixed file types correctly", () => {
+  it("should return false when files have registry:component type even with targets", () => {
     const registryItem = {
       files: [
         {
           path: "component.tsx",
           target: "components/ui/component.tsx",
-          type: "registry:ui" as const,
+          type: "registry:component" as const,
         },
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+  })
+
+  it("should return false when files have registry:hook type even with targets", () => {
+    const registryItem = {
+      files: [
+        {
+          path: "use-hook.ts",
+          target: "hooks/use-hook.ts",
+          type: "registry:hook" as const,
+        },
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+  })
+
+  it("should return false when files have registry:lib type even with targets", () => {
+    const registryItem = {
+      files: [
         {
           path: "utils.ts",
           target: "lib/utils.ts",
           type: "registry:lib" as const,
         },
-        {
-          path: "hook.ts",
-          target: "hooks/use-something.ts",
-          type: "registry:hook" as const,
-        },
       ],
     }
-    expect(isUniversalRegistryItem(registryItem)).toBe(true)
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
   })
 
-  it("should return true when all targets are non-empty strings", () => {
+  it("should return true when all targets are non-empty strings for registry:file", () => {
     const registryItem = {
       files: [
-        { path: "file1.ts", target: " ", type: "registry:lib" as const }, // whitespace is truthy
-        { path: "file2.ts", target: "0", type: "registry:lib" as const }, // "0" is truthy
+        { path: "file1.ts", target: " ", type: "registry:file" as const }, // whitespace is truthy
+        { path: "file2.ts", target: "0", type: "registry:file" as const }, // "0" is truthy
       ],
     }
     expect(isUniversalRegistryItem(registryItem)).toBe(true)
   })
 
-  it("should handle real-world example with path traversal attempts", () => {
+  it("should handle real-world example with path traversal attempts for registry:file", () => {
     const registryItem = {
       files: [
         {
           path: "malicious.ts",
           target: "../../../etc/passwd",
-          type: "registry:lib" as const,
+          type: "registry:file" as const,
         },
         {
           path: "normal.ts",
           target: "src/normal.ts",
-          type: "registry:lib" as const,
+          type: "registry:file" as const,
         },
       ],
     }
     // The function should still return true - path validation is handled elsewhere
     expect(isUniversalRegistryItem(registryItem)).toBe(true)
+  })
+
+  it("should return false when files have non-registry:file type in a UI registry item", () => {
+    const registryItem = {
+      type: "registry:ui" as const,
+      files: [
+        {
+          path: "button.tsx",
+          target: "src/components/ui/button.tsx",
+          type: "registry:ui" as const, // Not registry:file
+        },
+      ],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(false)
   })
 })
