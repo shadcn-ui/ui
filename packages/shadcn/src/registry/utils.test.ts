@@ -246,7 +246,13 @@ describe("isUniversalRegistryItem", () => {
 
   it("should return false when target is undefined", () => {
     const registryItem = {
-      files: [{ path: "file1.ts", type: "registry:file" as const, target: undefined as any }],
+      files: [
+        {
+          path: "file1.ts",
+          type: "registry:file" as const,
+          target: undefined as any,
+        },
+      ],
     }
     expect(isUniversalRegistryItem(registryItem)).toBe(false)
   })
