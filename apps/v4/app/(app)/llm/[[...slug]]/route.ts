@@ -11,6 +11,7 @@ export async function GET(
 ) {
   const slug = (await params).slug
   const page = source.getPage(slug)
+
   if (!page) {
     notFound()
   }
