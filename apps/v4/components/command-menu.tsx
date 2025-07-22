@@ -53,13 +53,13 @@ export function CommandMenu({
   >(null)
   const [copyPayload, setCopyPayload] = React.useState("")
   const packageManager = config.packageManager || "pnpm"
-  let installCmd = 'pnpm dlx';
-  if (packageManager == 'npm') {
-    installCmd = 'npx';
-  } else if (packageManager == 'bun') {
-    installCmd = 'bunx --bun';
-  } else if (packageManager == 'yarn') {
-    installCmd = 'yarn';
+  let installCmd = "pnpm dlx";
+  if (packageManager == "npm") {
+    installCmd = "npx";
+  } else if (packageManager == "bun") {
+    installCmd = "bunx --bun";
+  } else if (packageManager == "yarn") {
+    installCmd = "yarn";
   }
   
   const handlePageHighlight = React.useCallback(
