@@ -103,6 +103,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Icons",
+          href: "/docs/icons",
+          items: [],
+        },
+        {
           title: "Figma",
           href: "/docs/figma",
           items: [],
