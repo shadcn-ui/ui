@@ -129,10 +129,11 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
         </DropdownMenu>
         <Separator
           orientation="vertical"
-          className="!border-background absolute top-0 right-8 z-0 !h-8 peer-focus-visible:opacity-0 sm:right-7 sm:!h-7"
+          className="!bg-foreground/10 absolute top-0 right-8 z-0 !h-8 peer-focus-visible:opacity-0 sm:right-7 sm:!h-7"
         />
-
-        <PopoverTrigger asChild>{trigger}</PopoverTrigger>
+        <PopoverTrigger asChild className="flex sm:hidden">
+          {trigger}
+        </PopoverTrigger>
         <PopoverContent
           className="bg-background/70 dark:bg-background/60 w-52 !origin-center rounded-lg p-1 shadow-sm backdrop-blur-sm"
           align="start"
