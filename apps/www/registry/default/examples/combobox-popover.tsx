@@ -74,7 +74,7 @@ export default function ComboboxPopover() {
           <Button
             variant="outline"
             size="sm"
-            className="w-[150px] justify-start"
+            className="w-[150px] justify-start focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
           >
             {selectedStatus ? (
               <>
