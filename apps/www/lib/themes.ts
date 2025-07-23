@@ -469,6 +469,73 @@ const _THEMES = [
     },
     radius: 0.5,
   },
+  {
+    name: "Atari",
+    id: "custom-atari",
+    colors: {
+      background: "0 0% 100%", // white
+      foreground: "0 0% 0%",   // black
+      card: "0 0% 90%",       // light gray
+      "card-foreground": "0 0% 0%", // black
+      popover: "0 0% 90%",    // light gray
+      "popover-foreground": "0 0% 0%", // black
+      primary: "0 0% 0%",     // black
+      "primary-foreground": "0 0% 100%", // white
+      secondary: "0 0% 80%",  // medium gray
+      "secondary-foreground": "0 0% 0%", // black
+      muted: "0 0% 90%",      // light gray
+      "muted-foreground": "0 0% 30%", // dark gray
+      accent: "0 0% 50%",     // gray
+      "accent-foreground": "0 0% 0%", // black
+      destructive: "0 100% 50%", // red (for emphasis on destructive actions)
+      "destructive-foreground": "0 0% 100%", // white
+      border: "0 0% 80%",     // medium gray
+      input: "0 0% 80%",      // medium gray
+      ring: "0 0% 0%",        // black
+      "chart-1": "0 0% 50%",    // gray
+      "chart-2": "0 0% 40%",    // dark gray
+      "chart-3": "0 0% 30%",    // darker gray
+      "chart-4": "0 0% 20%",    // even darker gray
+      "chart-5": "0 0% 10%",    // almost black
+    },
+    colorsDark: {
+      background: "0 0% 0%",   // black
+      foreground: "0 0% 100%", // white
+      card: "0 0% 10%",       // dark gray
+      "card-foreground": "0 0% 100%", // white
+      popover: "0 0% 10%",    // dark gray
+      "popover-foreground": "0 0% 100%", // white
+      primary: "0 0% 100%",   // white
+      "primary-foreground": "0 0% 0%", // black
+      secondary: "0 0% 20%",  // medium gray
+      "secondary-foreground": "0 0% 100%", // white
+      muted: "0 0% 10%",      // dark gray
+      "muted-foreground": "0 0% 70%", // light gray
+      accent: "0 0% 50%",     // gray
+      "accent-foreground": "0 0% 100%", // white
+      destructive: "0 100% 50%", // red
+      "destructive-foreground": "0 0% 0%", // black
+      border: "0 0% 20%",     // medium gray
+      input: "0 0% 20%",      // medium gray
+      ring: "0 0% 100%",      // white
+      "chart-1": "0 0% 50%",    // gray
+      "chart-2": "0 0% 60%",    // light gray
+      "chart-3": "0 0% 70%",    // lighter gray
+      "chart-4": "0 0% 80%",    // even lighter gray
+      "chart-5": "0 0% 90%",    // almost white
+    },
+    fontFamily: {
+      heading: {
+        name: "Press Start 2P",
+        type: "sans-serif", // Though it's a pixel font, sans-serif is a fallback
+      },
+      body: {
+        name: "Inter", // Or your preferred body font
+        type: "sans-serif",
+      },
+    },
+    radius: 0.0, // Chunky themes often have no border radius.
+  },
 ] as const
 
 export const THEMES = _THEMES.map((theme) => ({
