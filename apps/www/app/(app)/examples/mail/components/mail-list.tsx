@@ -1,4 +1,4 @@
-import { ComponentProps } from "react"
+import { type ComponentProps } from "react"
 import formatDistanceToNow from "date-fns/formatDistanceToNow"
 
 import { cn } from "@/lib/utils"
