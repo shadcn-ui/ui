@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 2.9.3
+
+### Patch Changes
+
+- [#7837](https://github.com/shadcn-ui/ui/pull/7837) [`20e913d8e1df1acddc7bd4b8328088a25869ba7c`](https://github.com/shadcn-ui/ui/commit/20e913d8e1df1acddc7bd4b8328088a25869ba7c) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of themes
+
 ## 2.9.2
 
 ### Patch Changes
