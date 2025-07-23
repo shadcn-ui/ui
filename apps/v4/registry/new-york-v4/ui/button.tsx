@@ -9,17 +9,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "",
+        destructive: "",
+        outline: "",
+        secondary: "",
+        ghost: "",
+        link: "",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -27,10 +22,81 @@ const buttonVariants = cva(
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
         icon: "size-9",
       },
+      color: {
+        primary: "",
+        green: "",
+        blue: "",
+        red: "",
+        // Add more colors as needed
+      },
     },
+    compoundVariants: [
+      {
+        variant: "default",
+        color: "primary",
+        className: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+      },
+      {
+        variant: "default",
+        color: "green",
+        className: "bg-green-600 text-white shadow-xs hover:bg-green-700",
+      },
+      {
+        variant: "default",
+        color: "blue",
+        className: "bg-blue-600 text-white shadow-xs hover:bg-blue-700",
+      },
+      {
+        variant: "default",
+        color: "red",
+        className: "bg-red-600 text-white shadow-xs hover:bg-red-700",
+      },
+      {
+        variant: "secondary",
+        color: "primary",
+        className: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+      },
+      {
+        variant: "secondary",
+        color: "green",
+        className: "bg-green-100 text-green-800 shadow-xs hover:bg-green-200",
+      },
+      {
+        variant: "secondary",
+        color: "blue",
+        className: "bg-blue-100 text-blue-800 shadow-xs hover:bg-blue-200",
+      },
+      {
+        variant: "secondary",
+        color: "red",
+        className: "bg-red-100 text-red-800 shadow-xs hover:bg-red-200",
+      },
+      {
+        variant: "destructive",
+        color: "primary",
+        className: "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+      },
+      {
+        variant: "outline",
+        color: "primary",
+        className: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+      },
+      {
+        variant: "ghost",
+        color: "primary",
+        className: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+      },
+      {
+        variant: "link",
+        color: "primary",
+        className: "text-primary underline-offset-4 hover:underline",
+      },
+      // Add more compoundVariants as needed for other variant+color combos
+    ],
     defaultVariants: {
       variant: "default",
       size: "default",
+      color: "primary",
     },
   }
 )
@@ -39,18 +105,20 @@ function Button({
   className,
   variant,
   size,
+  color = "primary",
   asChild = false,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
+    color?: "primary" | "green" | "blue" | "red" // extend as needed
   }) {
   const Comp = asChild ? Slot : "button"
 
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, color, className }))}
       {...props}
     />
   )
