@@ -3,6 +3,7 @@ import { tmpdir } from "os"
 import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
 import { RegistryItem, registryItemFileSchema } from "@/src/registry/schema"
+import { isEnvFile, mergeEnvContent } from "@/src/utils/env-helpers"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
@@ -90,26 +91,30 @@ export async function updateFiles(
     const existingFile = existsSync(filePath)
 
     // Run our transformers.
-    const content = await transform(
-      {
-        filename: file.path,
-        raw: file.content,
-        config,
-        baseColor,
-        transformJsx: !config.tsx,
-        isRemote: options.isRemote,
-      },
-      [
-        transformImport,
-        transformRsc,
-        transformCssVars,
-        transformTwPrefixes,
-        transformIcons,
-      ]
-    )
+    // Skip transformers for .env files to preserve exact content
+    const content = isEnvFile(filePath)
+      ? file.content
+      : await transform(
+          {
+            filename: file.path,
+            raw: file.content,
+            config,
+            baseColor,
+            transformJsx: !config.tsx,
+            isRemote: options.isRemote,
+          },
+          [
+            transformImport,
+            transformRsc,
+            transformCssVars,
+            transformTwPrefixes,
+            transformIcons,
+          ]
+        )
 
     // Skip the file if it already exists and the content is the same.
-    if (existingFile) {
+    // Exception: Don't skip .env files as we merge content instead of replacing
+    if (existingFile && !isEnvFile(filePath)) {
       const existingFileContent = await fs.readFile(filePath, "utf-8")
       const [normalizedExisting, normalizedNew] = await Promise.all([
         getNormalizedFileContent(existingFileContent),
@@ -121,7 +126,8 @@ export async function updateFiles(
       }
     }
 
-    if (existingFile && !options.overwrite) {
+    // Skip overwrite prompt for .env files - we'll handle them specially
+    if (existingFile && !options.overwrite && !isEnvFile(filePath)) {
       filesCreatedSpinner.stop()
       if (options.rootSpinner) {
         options.rootSpinner.stop()
@@ -151,6 +157,22 @@ export async function updateFiles(
     // Create the target directory if it doesn't exist.
     if (!existsSync(targetDir)) {
       await fs.mkdir(targetDir, { recursive: true })
+    }
+
+    // Special handling for .env files - append only new keys
+    if (isEnvFile(filePath) && existingFile) {
+      const existingFileContent = await fs.readFile(filePath, "utf-8")
+      const mergedContent = mergeEnvContent(existingFileContent, content)
+
+      // Skip if no changes were made (all keys already exist)
+      if (mergedContent === existingFileContent) {
+        filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+        continue
+      }
+
+      await fs.writeFile(filePath, mergedContent, "utf-8")
+      filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
+      continue
     }
 
     await fs.writeFile(filePath, content, "utf-8")
