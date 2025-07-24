@@ -11,7 +11,7 @@ export default function Calendar02() {
 
   return (
     <Calendar
-      mode="single"
+      mode="range"
       defaultMonth={date}
       numberOfMonths={2}
       selected={date}
