@@ -2,88 +2,9 @@ import { exec } from "child_process"
 import { promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
-import { registryItemSchema, type Registry } from "shadcn/registry"
-import { z } from "zod"
 
-import { blocks } from "@/www/registry/registry-blocks"
-import { charts } from "@/www/registry/registry-charts"
-import { lib } from "@/www/registry/registry-lib"
-import { ui } from "@/www/registry/registry-ui"
-
-const DEPRECATED_ITEMS = ["toast"]
-
-const registry = {
-  name: "shadcn/ui",
-  homepage: "https://ui.shadcn.com",
-  items: z.array(registryItemSchema).parse(
-    [
-      {
-        name: "index",
-        type: "registry:style",
-        dependencies: ["class-variance-authority", "lucide-react"],
-        devDependencies: ["tw-animate-css"],
-        registryDependencies: ["utils"],
-        cssVars: {},
-        files: [],
-      },
-      ...ui,
-      ...blocks,
-      ...charts,
-      ...lib,
-      {
-        name: "use-mobile",
-        type: "registry:hook",
-        files: [
-          {
-            path: "hooks/use-mobile.ts",
-            type: "registry:hook",
-          },
-        ],
-      },
-      {
-        name: "products-01",
-        description: "A table of products",
-        type: "registry:block",
-        registryDependencies: [
-          "checkbox",
-          "badge",
-          "button",
-          "dropdown-menu",
-          "pagination",
-          "table",
-          "tabs",
-          "select",
-        ],
-        files: [
-          {
-            path: "blocks/products-01/page.tsx",
-            type: "registry:page",
-            target: "app/products/page.tsx",
-          },
-          {
-            path: "blocks/products-01/components/products-table.tsx",
-            type: "registry:component",
-          },
-        ],
-      },
-    ]
-      .filter((item) => {
-        return !DEPRECATED_ITEMS.includes(item.name)
-      })
-      .map((item) => {
-        // Temporary fix for dashboard-01.
-        if (item.name === "dashboard-01") {
-          item.dependencies?.push("@tabler/icons-react")
-        }
-
-        if (item.name === "accordion" && "tailwind" in item) {
-          delete item.tailwind
-        }
-
-        return item
-      })
-  ),
-} satisfies Registry
+import { getAllBlocks } from "@/lib/blocks"
+import { registry } from "@/registry/index"
 
 async function buildRegistryIndex() {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -113,7 +34,7 @@ export const Index: Record<string, any> = {`
     type: "${item.type}",
     registryDependencies: ${JSON.stringify(item.registryDependencies)},
     files: [${item.files?.map((file) => {
-      const filePath = `registry/${typeof file === "string" ? file : file.path}`
+      const filePath = `registry/new-york-v4/${typeof file === "string" ? file : file.path}`
       const resolvedFilePath = path.resolve(filePath)
       return typeof file === "string"
         ? `"${resolvedFilePath}"`
@@ -132,6 +53,7 @@ export const Index: Record<string, any> = {`
     })`
         : "null"
     },
+    categories: ${JSON.stringify(item.categories)},
     meta: ${JSON.stringify(item.meta)},
   },`
   }
@@ -139,9 +61,11 @@ export const Index: Record<string, any> = {`
   index += `
   }`
 
+  console.log(`#️⃣  ${Object.keys(registry.items).length} components found`)
+
   // Write style index.
-  rimraf.sync(path.join(process.cwd(), "__registry__/index.tsx"))
-  await fs.writeFile(path.join(process.cwd(), "__registry__/index.tsx"), index)
+  rimraf.sync(path.join(process.cwd(), "registry/__index__.tsx"))
+  await fs.writeFile(path.join(process.cwd(), "registry/__index__.tsx"), index)
 }
 
 async function buildRegistryJsonFile() {
@@ -187,15 +111,66 @@ async function buildRegistry() {
   })
 }
 
+async function syncRegistry() {
+  // Store the current registry content
+  const registryDir = path.join(process.cwd(), "registry")
+  const registryIndexPath = path.join(registryDir, "__index__.tsx")
+  let registryContent = null
+
+  try {
+    registryContent = await fs.readFile(registryIndexPath, "utf8")
+  } catch {
+    // File might not exist yet, that's ok
+  }
+
+  // 1. Call pnpm registry:build for www.
+  await exec("pnpm --filter=www registry:build")
+
+  // 2. Copy the www/public/r directory to v4/public/r.
+  rimraf.sync(path.join(process.cwd(), "public/r"))
+  await fs.cp(
+    path.resolve(process.cwd(), "../www/public/r"),
+    path.resolve(process.cwd(), "public/r"),
+    { recursive: true }
+  )
+
+  // 3. Restore the registry content if we had it
+  if (registryContent) {
+    await fs.writeFile(registryIndexPath, registryContent, "utf8")
+  }
+}
+
+async function buildBlocksIndex() {
+  const blocks = await getAllBlocks(["registry:block"])
+
+  const payload = blocks.map((block) => ({
+    name: block.name,
+    description: block.description,
+    categories: block.categories,
+  }))
+
+  rimraf.sync(path.join(process.cwd(), "registry/__blocks__.json"))
+  await fs.writeFile(
+    path.join(process.cwd(), "registry/__blocks__.json"),
+    JSON.stringify(payload, null, 2)
+  )
+}
+
 try {
   console.log("🗂️ Building registry/__index__.tsx...")
   await buildRegistryIndex()
+
+  console.log("🗂️ Building registry/__blocks__.json...")
+  await buildBlocksIndex()
 
   console.log("💅 Building registry.json...")
   await buildRegistryJsonFile()
 
   console.log("🏗️ Building registry...")
   await buildRegistry()
+
+  console.log("🔄 Syncing registry...")
+  await syncRegistry()
 } catch (error) {
   console.error(error)
   process.exit(1)

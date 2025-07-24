@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/dropdown-menu-demo.tsx",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuPortal,\n  DropdownMenuSeparator,\n  DropdownMenuShortcut,\n  DropdownMenuSub,\n  DropdownMenuSubContent,\n  DropdownMenuSubTrigger,\n  DropdownMenuTrigger,\n} from \"@/registry/new-york-v4/ui/dropdown-menu\"\n\nexport default function DropdownMenuDemo() {\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger asChild>\n        <Button variant=\"outline\">Open</Button>\n      </DropdownMenuTrigger>\n      <DropdownMenuContent className=\"w-56\" align=\"start\">\n        <DropdownMenuLabel>My Account</DropdownMenuLabel>\n        <DropdownMenuGroup>\n          <DropdownMenuItem>\n            Profile\n            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            Billing\n            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            Settings\n            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            Keyboard shortcuts\n            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>\n          </DropdownMenuItem>\n        </DropdownMenuGroup>\n        <DropdownMenuSeparator />\n        <DropdownMenuGroup>\n          <DropdownMenuItem>Team</DropdownMenuItem>\n          <DropdownMenuSub>\n            <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>\n            <DropdownMenuPortal>\n              <DropdownMenuSubContent>\n                <DropdownMenuItem>Email</DropdownMenuItem>\n                <DropdownMenuItem>Message</DropdownMenuItem>\n                <DropdownMenuSeparator />\n                <DropdownMenuItem>More...</DropdownMenuItem>\n              </DropdownMenuSubContent>\n            </DropdownMenuPortal>\n          </DropdownMenuSub>\n          <DropdownMenuItem>\n            New Team\n            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>\n          </DropdownMenuItem>\n        </DropdownMenuGroup>\n        <DropdownMenuSeparator />\n        <DropdownMenuItem>GitHub</DropdownMenuItem>\n        <DropdownMenuItem>Support</DropdownMenuItem>\n        <DropdownMenuItem disabled>API</DropdownMenuItem>\n        <DropdownMenuSeparator />\n        <DropdownMenuItem>\n          Log out\n          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>\n        </DropdownMenuItem>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

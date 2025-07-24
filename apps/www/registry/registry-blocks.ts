@@ -702,4 +702,614 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "login"],
   },
+  {
+    name: "calendar-01",
+    description: "A simple calendar.",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-01.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-02",
+    description: "Multiple months with single selection.",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-02.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-03",
+    description: "Multiple months with multiple selection.",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-03.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-04",
+    description: "Single month with range selection",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-04.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-05",
+    description: "Multiple months with range selection",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-05.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-06",
+    description: "Range selection with minimum days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-06.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-07",
+    description: "Range selection with minimum and maximum days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-07.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-08",
+    description: "Calendar with disabled days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-08.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-09",
+    description: "Calendar with disabled weekends",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-09.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-10",
+    description: "Today button",
+    type: "registry:block",
+    registryDependencies: ["calendar", "card", "button"],
+    files: [
+      {
+        path: "blocks/calendar-10.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-11",
+    description: "Start and end of month",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-11.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-12",
+    description: "Localized calendar",
+    type: "registry:block",
+    registryDependencies: ["calendar", "card", "select"],
+    files: [
+      {
+        path: "blocks/calendar-12.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-13",
+    description: "With Month and Year Dropdown",
+    type: "registry:block",
+    registryDependencies: ["calendar", "label", "select"],
+    files: [
+      {
+        path: "blocks/calendar-13.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-14",
+    description: "With Booked/Unavailable Days",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-14.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-15",
+    description: "With Week Numbers",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-15.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-16",
+    description: "With time picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "card", "input", "label"],
+    files: [
+      {
+        path: "blocks/calendar-16.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-17",
+    description: "With time picker inline",
+    type: "registry:block",
+    registryDependencies: ["calendar", "card", "input", "label"],
+    files: [
+      {
+        path: "blocks/calendar-17.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-18",
+    description: "Variable size",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-18.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-19",
+    description: "With presets",
+    type: "registry:block",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar", "card", "input", "label"],
+    files: [
+      {
+        path: "blocks/calendar-19.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-20",
+    description: "With time presets",
+    type: "registry:block",
+    registryDependencies: ["calendar", "card", "button"],
+    files: [
+      {
+        path: "blocks/calendar-20.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-21",
+    description: "Custom days and formatters",
+    type: "registry:block",
+    registryDependencies: ["calendar"],
+    files: [
+      {
+        path: "blocks/calendar-21.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-22",
+    description: "Date picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "popover", "button", "label"],
+    files: [
+      {
+        path: "blocks/calendar-22.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-23",
+    description: "Date range picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "popover", "button", "label"],
+    files: [
+      {
+        path: "blocks/calendar-23.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-24",
+    description: "Date and Time picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "popover", "button", "label"],
+    files: [
+      {
+        path: "blocks/calendar-24.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-25",
+    description: "Date and Time range picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "popover", "button", "label"],
+    files: [
+      {
+        path: "blocks/calendar-25.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-26",
+    description: "Date range picker with time",
+    type: "registry:block",
+    registryDependencies: ["calendar", "popover", "button", "input", "label"],
+    files: [
+      {
+        path: "blocks/calendar-26.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-27",
+    description: "Chart filter",
+    type: "registry:block",
+    registryDependencies: ["calendar", "chart", "card", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-27.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-28",
+    description: "Input with date picker",
+    type: "registry:block",
+    registryDependencies: ["calendar", "input", "label", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-28.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-29",
+    description: "Natural language date picker",
+    type: "registry:block",
+    dependencies: ["chrono-node"],
+    registryDependencies: ["calendar", "input", "label", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-29.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-30",
+    description: "With little-date",
+    type: "registry:block",
+    registryDependencies: ["calendar", "input", "label", "popover", "button"],
+    files: [
+      {
+        path: "blocks/calendar-30.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-31",
+    description: "With event slots",
+    type: "registry:block",
+    registryDependencies: ["calendar", "card", "button"],
+    files: [
+      {
+        path: "blocks/calendar-31.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "700px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0",
+      mobile: "component",
+    },
+  },
+  {
+    name: "calendar-32",
+    description: "Date picker in a drawer",
+    type: "registry:block",
+    registryDependencies: ["calendar", "button", "drawer"],
+    files: [
+      {
+        path: "blocks/calendar-32.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
 ]

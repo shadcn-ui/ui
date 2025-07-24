@@ -51,7 +51,9 @@ export async function updateFiles(
 
   const [projectInfo, baseColor] = await Promise.all([
     getProjectInfo(config.resolvedPaths.cwd),
-    getRegistryBaseColor(config.tailwind.baseColor),
+    config.tailwind.baseColor
+      ? getRegistryBaseColor(config.tailwind.baseColor)
+      : Promise.resolve(undefined),
   ])
 
   let filesCreated: string[] = []
@@ -420,6 +422,11 @@ async function resolveImports(filePaths: string[], config: Config) {
         scriptKind: ScriptKind.TSX,
       }
     )
+
+    // Skip if the file extension is not one of the supported extensions.
+    if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
+      continue
+    }
 
     const importDeclarations = sourceFile.getImportDeclarations()
     for (const importDeclaration of importDeclarations) {
