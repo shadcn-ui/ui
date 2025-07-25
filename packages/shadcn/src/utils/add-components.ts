@@ -1,12 +1,16 @@
 import path from "path"
 import {
   fetchRegistry,
+  getRegistryItem,
   getRegistryParentMap,
   getRegistryTypeAliasMap,
   registryResolveItemsTree,
   resolveRegistryItems,
 } from "@/src/registry/api"
-import { registryItemSchema } from "@/src/registry/schema"
+import {
+  registryItemFileSchema,
+  registryItemSchema,
+} from "@/src/registry/schema"
 import {
   configSchema,
   findCommonRoot,
@@ -17,6 +21,7 @@ import {
 } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
+import { isSafeTarget } from "@/src/utils/is-safe-target"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { updateCss } from "@/src/utils/updaters/update-css"
@@ -79,6 +84,14 @@ async function addProjectComponents(
     registrySpinner?.fail()
     return handleError(new Error("Failed to fetch components from registry."))
   }
+
+  try {
+    validateFilesTarget(tree.files ?? [], config.resolvedPaths.cwd)
+  } catch (error) {
+    registrySpinner?.fail()
+    return handleError(error)
+  }
+
   registrySpinner?.succeed()
 
   const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
@@ -146,6 +159,13 @@ async function addWorkspaceComponents(
   const filesCreated: string[] = []
   const filesUpdated: string[] = []
   const filesSkipped: string[] = []
+
+  const files = payload.flatMap((item) => item.files ?? [])
+  try {
+    validateFilesTarget(files, config.resolvedPaths.cwd)
+  } catch (error) {
+    return handleError(error)
+  }
 
   const rootSpinner = spinner(`Installing components.`)?.start()
 
@@ -308,12 +328,30 @@ async function shouldOverwriteCssVars(
   components: z.infer<typeof registryItemSchema>["name"][],
   config: z.infer<typeof configSchema>
 ) {
-  let registryItems = await resolveRegistryItems(components, config)
-  let result = await fetchRegistry(registryItems)
+  let result = await Promise.all(
+    components.map((component) => getRegistryItem(component, config.style))
+  )
   const payload = z.array(registryItemSchema).parse(result)
 
   return payload.some(
     (component) =>
       component.type === "registry:theme" || component.type === "registry:style"
   )
+}
+
+function validateFilesTarget(
+  files: z.infer<typeof registryItemFileSchema>[],
+  cwd: string
+) {
+  for (const file of files) {
+    if (!file?.target) {
+      continue
+    }
+
+    if (!isSafeTarget(file.target, cwd)) {
+      throw new Error(
+        `We found an unsafe file path "${file.target} in the registry item. Installation aborted.`
+      )
+    }
+  }
 }

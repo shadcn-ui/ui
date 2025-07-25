@@ -1,5 +1,93 @@
 # @shadcn/ui
 
+## 2.9.3
+
+### Patch Changes
+
+- [#7837](https://github.com/shadcn-ui/ui/pull/7837) [`20e913d8e1df1acddc7bd4b8328088a25869ba7c`](https://github.com/shadcn-ui/ui/commit/20e913d8e1df1acddc7bd4b8328088a25869ba7c) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of themes
+
+## 2.9.2
+
+### Patch Changes
+
+- [#7833](https://github.com/shadcn-ui/ui/pull/7833) [`d9cdc3f7ae69e571de7dc116effc381ad76685c3`](https://github.com/shadcn-ui/ui/commit/d9cdc3f7ae69e571de7dc116effc381ad76685c3) Thanks [@shadcn](https://github.com/shadcn)! - Revert "fix: handling of shouldOverwriteCssVars"
+
+## 2.9.1
+
+### Patch Changes
+
+- [#7829](https://github.com/shadcn-ui/ui/pull/7829) [`ed5237c231f3b70107131bd7ba517e73b8c9014d`](https://github.com/shadcn-ui/ui/commit/ed5237c231f3b70107131bd7ba517e73b8c9014d) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of shouldOverwriteCssVars
+
+## 2.9.0
+
+### Minor Changes
+
+- [#7782](https://github.com/shadcn-ui/ui/pull/7782) [`06d03d64f437b543bf5fa07ccbc559f285538ffd`](https://github.com/shadcn-ui/ui/commit/06d03d64f437b543bf5fa07ccbc559f285538ffd) Thanks [@shadcn](https://github.com/shadcn)! - add universal registry items support
+
+### Patch Changes
+
+- [#7795](https://github.com/shadcn-ui/ui/pull/7795) [`6c341c16aeaf5ade177a4a1ba4fb9afcd33d5fee`](https://github.com/shadcn-ui/ui/commit/6c341c16aeaf5ade177a4a1ba4fb9afcd33d5fee) Thanks [@shadcn](https://github.com/shadcn)! - fix safe target handling
+
+- [#7757](https://github.com/shadcn-ui/ui/pull/7757) [`db93787712fe51346bf87dbae8b4cf4e38ed8c27`](https://github.com/shadcn-ui/ui/commit/db93787712fe51346bf87dbae8b4cf4e38ed8c27) Thanks [@shadcn](https://github.com/shadcn)! - implement registry path validation
+
+## 2.8.0
+
+### Minor Changes
+
+- [#7720](https://github.com/shadcn-ui/ui/pull/7720) [`d544a7f7a519cd5b171d9ee7cb2fd1a226659ece`](https://github.com/shadcn-ui/ui/commit/d544a7f7a519cd5b171d9ee7cb2fd1a226659ece) Thanks [@shadcn](https://github.com/shadcn)! - refactor registry dependencies resolution
+
+- [#7717](https://github.com/shadcn-ui/ui/pull/7717) [`48fe0d709fd2b244314f95f56e7afb38b117ed8a`](https://github.com/shadcn-ui/ui/commit/48fe0d709fd2b244314f95f56e7afb38b117ed8a) Thanks [@shadcn](https://github.com/shadcn)! - add support for local registry item
+
+- [#6330](https://github.com/shadcn-ui/ui/pull/6330) [`ed244ea0b5abf7db50ac5fcf26e2993133fe94f7`](https://github.com/shadcn-ui/ui/commit/ed244ea0b5abf7db50ac5fcf26e2993133fe94f7) Thanks [@KitsuneDev](https://github.com/KitsuneDev)! - add support for vinxi based framework
+
+## 2.7.0
+
+### Minor Changes
+
+- [#7540](https://github.com/shadcn-ui/ui/pull/7540) [`cb19ab84646fc017c15fadc81fc47b695560a04c`](https://github.com/shadcn-ui/ui/commit/cb19ab84646fc017c15fadc81fc47b695560a04c) Thanks [@mrzachnugent](https://github.com/mrzachnugent)! - add support for expo
+
+- [#7640](https://github.com/shadcn-ui/ui/pull/7640) [`7c3d34cdc91681815f8897709917ec9fbcd69245`](https://github.com/shadcn-ui/ui/commit/7c3d34cdc91681815f8897709917ec9fbcd69245) Thanks [@shadcn](https://github.com/shadcn)! - add support for @plugin in css
+
+### Patch Changes
+
+- [#7609](https://github.com/shadcn-ui/ui/pull/7609) [`5b8ee41511fb5ff468d9218f97b8545e145d773c`](https://github.com/shadcn-ui/ui/commit/5b8ee41511fb5ff468d9218f97b8545e145d773c) Thanks [@xabierlameiro](https://github.com/xabierlameiro)! - fix typo in function name unnsetSpreadElements
+
+## 2.6.4
+
+### Patch Changes
+
+- [#7601](https://github.com/shadcn-ui/ui/pull/7601) [`c86c27a2ffb8d186770afa42bfb62ab46e3db975`](https://github.com/shadcn-ui/ui/commit/c86c27a2ffb8d186770afa42bfb62ab46e3db975) Thanks [@schiller-manuel](https://github.com/schiller-manuel)! - fix tanstack start detection
+
+## 2.6.3
+
+### Patch Changes
+
+- [#7594](https://github.com/shadcn-ui/ui/pull/7594) [`431af4f7ff294af032c0687b8b655ed6db2e690f`](https://github.com/shadcn-ui/ui/commit/431af4f7ff294af032c0687b8b655ed6db2e690f) Thanks [@shadcn](https://github.com/shadcn)! - fix: semicolon in code style
+
+## 2.6.2
+
+### Patch Changes
+
+- [#7586](https://github.com/shadcn-ui/ui/pull/7586) [`c5d90c718a186dd6fd90e022c56089eb569a1c10`](https://github.com/shadcn-ui/ui/commit/c5d90c718a186dd6fd90e022c56089eb569a1c10) Thanks [@shadcn](https://github.com/shadcn)! - add migrate-radix
+
+- [#7590](https://github.com/shadcn-ui/ui/pull/7590) [`92cfb9a30e976697ab8770f00393bd5325f9a16a`](https://github.com/shadcn-ui/ui/commit/92cfb9a30e976697ab8770f00393bd5325f9a16a) Thanks [@shadcn](https://github.com/shadcn)! - fix flacky tests
+
+## 2.6.1
+
+### Patch Changes
+
+- [#7573](https://github.com/shadcn-ui/ui/pull/7573) [`3119f94d47426dae860001a4cfb4ef23396dd41d`](https://github.com/shadcn-ui/ui/commit/3119f94d47426dae860001a4cfb4ef23396dd41d) Thanks [@shadcn](https://github.com/shadcn)! - update npm flag
+
+## 2.6.0
+
+### Minor Changes
+
+- [#7497](https://github.com/shadcn-ui/ui/pull/7497) [`df91b528871e258d548e4ea318b0376ac78676e0`](https://github.com/shadcn-ui/ui/commit/df91b528871e258d548e4ea318b0376ac78676e0) Thanks [@shadcn](https://github.com/shadcn)! - add registry:build command
+
+### Patch Changes
+
+- [#6885](https://github.com/shadcn-ui/ui/pull/6885) [`2773f9e2e29cf67e521632d15d1ba302a82e39e9`](https://github.com/shadcn-ui/ui/commit/2773f9e2e29cf67e521632d15d1ba302a82e39e9) Thanks [@Joshua-hypt](https://github.com/Joshua-hypt)! - resolved prefixing issue for Tailwind CSS v4 compatibility
+
 ## 2.5.0
 
 ### Minor Changes

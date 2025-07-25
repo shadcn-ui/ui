@@ -121,11 +121,10 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 
   // TanStack Start.
   if (
-    configFiles.find((file) => file.startsWith("app.config."))?.length &&
     [
       ...Object.keys(packageJson?.dependencies ?? {}),
       ...Object.keys(packageJson?.devDependencies ?? {}),
-    ].find((dep) => dep.startsWith("@tanstack/start"))
+    ].find((dep) => dep.startsWith("@tanstack/react-start"))
   ) {
     type.framework = FRAMEWORKS["tanstack-start"]
     return type
@@ -144,6 +143,26 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   // We'll assume that it got caught by the Remix check above.
   if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
     type.framework = FRAMEWORKS["vite"]
+    return type
+  }
+
+  // Vinxi-based (such as @tanstack/start and @solidjs/solid-start)
+  // They are vite-based, and the same configurations used for Vite should work flawlessly
+  const appConfig = configFiles.find((file) => file.startsWith("app.config"))
+  if (appConfig?.length) {
+    const appConfigContents = await fs.readFile(
+      path.resolve(cwd, appConfig),
+      "utf8"
+    )
+    if (appConfigContents.includes("defineConfig")) {
+      type.framework = FRAMEWORKS["vite"]
+      return type
+    }
+  }
+
+  // Expo.
+  if (packageJson?.dependencies?.expo) {
+    type.framework = FRAMEWORKS["expo"]
     return type
   }
 
