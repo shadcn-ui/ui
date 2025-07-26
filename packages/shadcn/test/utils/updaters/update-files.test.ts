@@ -923,6 +923,164 @@ ANOTHER_NEW_KEY=another_value
       await fsActual.rm(tempDir, { recursive: true }).catch(() => {})
     }
   })
+
+  test("should use .env.local when .env doesn't exist", async () => {
+    const tempDir = path.join(
+      path.resolve(__dirname, "../../fixtures"),
+      "temp-env-alternative-test"
+    )
+    const fsActual = (await vi.importActual(
+      "fs/promises"
+    )) as typeof import("fs/promises")
+
+    const writeFileMock = fs.writeFile as any
+
+    try {
+      await fsActual.mkdir(tempDir, { recursive: true })
+
+      await fsActual.writeFile(
+        path.join(tempDir, "components.json"),
+        JSON.stringify({
+          $schema: "https://ui.shadcn.com/schema.json",
+          style: "default",
+          tailwind: {
+            config: "tailwind.config.js",
+            css: "src/index.css",
+            baseColor: "slate",
+          },
+          aliases: {
+            components: "@/components",
+            utils: "@/lib/utils",
+          },
+        }),
+        "utf-8"
+      )
+
+      const config = await getConfig(tempDir)
+      if (!config) {
+        throw new Error("Failed to get config")
+      }
+      const envLocalPath = path.join(config.resolvedPaths.cwd, ".env.local")
+
+      // Create .env.local instead of .env
+      await fsActual.writeFile(
+        envLocalPath,
+        `EXISTING_KEY=existing_value
+DATABASE_URL=postgres://localhost:5432/mydb`,
+        "utf-8"
+      )
+
+      const result = await updateFiles(
+        [
+          {
+            path: ".env",
+            type: "registry:file",
+            target: "~/.env",
+            content: `DATABASE_URL=should_not_override
+NEW_API_KEY=new_api_key_value`,
+          },
+        ],
+        config,
+        {
+          overwrite: true,
+          silent: true,
+        }
+      )
+
+      expect(result.filesUpdated).toContain(".env.local")
+      expect(result.filesCreated).not.toContain(".env")
+      expect(result.filesCreated).not.toContain(".env.local")
+
+      expect(writeFileMock).toHaveBeenCalledWith(
+        envLocalPath,
+        `EXISTING_KEY=existing_value
+DATABASE_URL=postgres://localhost:5432/mydb
+
+NEW_API_KEY=new_api_key_value
+`,
+        "utf-8"
+      )
+    } finally {
+      await fsActual.rm(tempDir, { recursive: true }).catch(() => {})
+    }
+  })
+  
+  test("should create .env when no env variants exist", async () => {
+    const tempDir = path.join(
+      path.resolve(__dirname, "../../fixtures"),
+      "temp-env-create-test"
+    )
+    const fsActual = (await vi.importActual(
+      "fs/promises"
+    )) as typeof import("fs/promises")
+
+    const writeFileMock = fs.writeFile as any
+
+    try {
+      await fsActual.mkdir(tempDir, { recursive: true })
+
+      await fsActual.writeFile(
+        path.join(tempDir, "components.json"),
+        JSON.stringify({
+          $schema: "https://ui.shadcn.com/schema.json",
+          style: "default",
+          tailwind: {
+            config: "tailwind.config.js",
+            css: "src/index.css",
+            baseColor: "slate",
+          },
+          aliases: {
+            components: "@/components",
+            utils: "@/lib/utils",
+          },
+        }),
+        "utf-8"
+      )
+
+      const config = await getConfig(tempDir)
+      if (!config) {
+        throw new Error("Failed to get config")
+      }
+      const envPath = path.join(config.resolvedPaths.cwd, ".env")
+
+      // Ensure no env files exist
+      const envVariants = [".env", ".env.local", ".env.development.local", ".env.development"]
+      for (const variant of envVariants) {
+        const variantPath = path.join(config.resolvedPaths.cwd, variant)
+        await fsActual.unlink(variantPath).catch(() => {})
+      }
+
+      const result = await updateFiles(
+        [
+          {
+            path: ".env",
+            type: "registry:file",
+            target: "~/.env",
+            content: `NEW_API_KEY=new_api_key_value
+DATABASE_URL=postgres://localhost:5432/mydb`,
+          },
+        ],
+        config,
+        {
+          overwrite: true,
+          silent: true,
+        }
+      )
+
+      expect(result.filesCreated).toContain(".env")
+      expect(result.filesUpdated).not.toContain(".env")
+      expect(result.filesUpdated).not.toContain(".env.local")
+
+      expect(writeFileMock).toHaveBeenCalledWith(
+        envPath,
+        `NEW_API_KEY=new_api_key_value
+DATABASE_URL=postgres://localhost:5432/mydb`,
+        "utf-8"
+      )
+    } finally {
+      await fsActual.rm(tempDir, { recursive: true }).catch(() => {})
+    }
+  })
 })
 
 describe("resolveModuleByProbablePath", () => {

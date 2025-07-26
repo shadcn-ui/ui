@@ -3,7 +3,11 @@ import { tmpdir } from "os"
 import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
 import { RegistryItem, registryItemFileSchema } from "@/src/registry/schema"
-import { isEnvFile, mergeEnvContent } from "@/src/utils/env-helpers"
+import {
+  findExistingEnvFile,
+  isEnvFile,
+  mergeEnvContent,
+} from "@/src/utils/env-helpers"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
@@ -86,6 +90,25 @@ export async function updateFiles(
       filePath = filePath.replace(/\.tsx?$/, (match) =>
         match === ".tsx" ? ".jsx" : ".js"
       )
+    }
+
+    if (
+      isEnvFile(filePath) &&
+      path.basename(filePath) === ".env" &&
+      !existsSync(filePath)
+    ) {
+      const alternativeEnvFile = findExistingEnvFile(targetDir)
+      if (alternativeEnvFile) {
+        filePath = alternativeEnvFile
+        if (!options.silent) {
+          logger.info(
+            `Using existing env file: ${path.relative(
+              config.resolvedPaths.cwd,
+              alternativeEnvFile
+            )}`
+          )
+        }
+      }
     }
 
     const existingFile = existsSync(filePath)

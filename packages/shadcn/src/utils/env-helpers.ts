@@ -1,8 +1,31 @@
+import { existsSync } from "fs"
 import path from "path"
 
 export function isEnvFile(filePath: string) {
   const fileName = path.basename(filePath)
   return /^\.env(\.|$)/.test(fileName)
+}
+
+/**
+ * Finds a file variant in the project.
+ * TODO: abstract this to a more generic function.
+ */
+export function findExistingEnvFile(targetDir: string): string | null {
+  const variants = [
+    ".env",
+    ".env.local",
+    ".env.development.local",
+    ".env.development",
+  ]
+
+  for (const variant of variants) {
+    const filePath = path.join(targetDir, variant)
+    if (existsSync(filePath)) {
+      return filePath
+    }
+  }
+
+  return null
 }
 
 /**

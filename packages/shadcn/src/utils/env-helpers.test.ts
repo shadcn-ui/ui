@@ -1,6 +1,17 @@
-import { describe, expect, test } from "vitest"
+import { existsSync } from "fs"
+import { beforeEach, describe, expect, test, vi } from "vitest"
 
-import { isEnvFile, mergeEnvContent, parseEnvContent } from "./env-helpers"
+import {
+  findExistingEnvFile,
+  isEnvFile,
+  mergeEnvContent,
+  parseEnvContent,
+} from "./env-helpers"
+
+// Mock fs module
+vi.mock("fs", () => ({
+  existsSync: vi.fn(),
+}))
 
 describe("isEnvFile", () => {
   test("should identify .env files", () => {
@@ -184,5 +195,69 @@ KEY2=value2
 KEY3=value3
 KEY4=value4
 `)
+  })
+})
+
+describe("findExistingEnvFile", () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
+  test("should return .env if it exists", () => {
+    vi.mocked(existsSync).mockImplementation((path) => {
+      const pathStr = typeof path === "string" ? path : path.toString()
+      return pathStr.endsWith(".env")
+    })
+
+    const result = findExistingEnvFile("/test/dir")
+    expect(result).toBe("/test/dir/.env")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
+    expect(existsSync).toHaveBeenCalledTimes(1)
+  })
+
+  test("should return .env.local if .env doesn't exist", () => {
+    vi.mocked(existsSync).mockImplementation((path) => {
+      const pathStr = typeof path === "string" ? path : path.toString()
+      return pathStr.endsWith(".env.local")
+    })
+
+    const result = findExistingEnvFile("/test/dir")
+    expect(result).toBe("/test/dir/.env.local")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.local")
+    expect(existsSync).toHaveBeenCalledTimes(2)
+  })
+
+  test("should return .env.development.local if earlier variants don't exist", () => {
+    vi.mocked(existsSync).mockImplementation((path) => {
+      const pathStr = typeof path === "string" ? path : path.toString()
+      return pathStr.endsWith(".env.development.local")
+    })
+
+    const result = findExistingEnvFile("/test/dir")
+    expect(result).toBe("/test/dir/.env.development.local")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.local")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.development.local")
+    expect(existsSync).toHaveBeenCalledTimes(3)
+  })
+
+  test("should return null if no env files exist", () => {
+    vi.mocked(existsSync).mockReturnValue(false)
+
+    const result = findExistingEnvFile("/test/dir")
+    expect(result).toBeNull()
+    expect(existsSync).toHaveBeenCalledTimes(4) // All variants checked
+  })
+
+  test("should check all variants in correct order", () => {
+    vi.mocked(existsSync).mockReturnValue(false)
+
+    findExistingEnvFile("/test/dir")
+
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.local")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.development.local")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.development")
   })
 })
