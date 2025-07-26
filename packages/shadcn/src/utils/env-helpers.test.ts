@@ -247,7 +247,7 @@ describe("findExistingEnvFile", () => {
 
     const result = findExistingEnvFile("/test/dir")
     expect(result).toBeNull()
-    expect(existsSync).toHaveBeenCalledTimes(4) // All variants checked
+    expect(existsSync).toHaveBeenCalledTimes(4)
   })
 
   test("should check all variants in correct order", () => {

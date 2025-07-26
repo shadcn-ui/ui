@@ -10,7 +10,7 @@ export function isEnvFile(filePath: string) {
  * Finds a file variant in the project.
  * TODO: abstract this to a more generic function.
  */
-export function findExistingEnvFile(targetDir: string): string | null {
+export function findExistingEnvFile(targetDir: string) {
   const variants = [
     ".env",
     ".env.local",

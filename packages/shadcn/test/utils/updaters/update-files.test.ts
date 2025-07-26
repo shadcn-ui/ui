@@ -1004,7 +1004,81 @@ NEW_API_KEY=new_api_key_value
       await fsActual.rm(tempDir, { recursive: true }).catch(() => {})
     }
   })
-  
+
+  test("should use existing .env when target is .env.local but doesn't exist", async () => {
+    const tempDir = path.join(
+      path.resolve(__dirname, "../../fixtures"),
+      "temp-env-target-local-test"
+    )
+    const fsActual = (await vi.importActual(
+      "fs/promises"
+    )) as typeof import("fs/promises")
+
+    const writeFileMock = fs.writeFile as any
+
+    try {
+      await fsActual.mkdir(tempDir, { recursive: true })
+
+      await fsActual.writeFile(
+        path.join(tempDir, "components.json"),
+        JSON.stringify({
+          $schema: "https://ui.shadcn.com/schema.json",
+          style: "default",
+          tailwind: {
+            config: "tailwind.config.js",
+            css: "src/index.css",
+            baseColor: "slate",
+          },
+          aliases: {
+            components: "@/components",
+            utils: "@/lib/utils",
+          },
+        }),
+        "utf-8"
+      )
+
+      const config = await getConfig(tempDir)
+      if (!config) {
+        throw new Error("Failed to get config")
+      }
+      const envPath = path.join(config.resolvedPaths.cwd, ".env")
+
+      // Create .env file (not .env.local)
+      await fsActual.writeFile(envPath, `EXISTING_KEY=existing_value`, "utf-8")
+
+      const result = await updateFiles(
+        [
+          {
+            path: ".env.local",
+            type: "registry:file",
+            target: "~/.env.local",
+            content: `NEW_KEY=new_value`,
+          },
+        ],
+        config,
+        {
+          overwrite: true,
+          silent: true,
+        }
+      )
+
+      // Should update .env instead of creating .env.local
+      expect(result.filesUpdated).toContain(".env")
+      expect(result.filesCreated).not.toContain(".env.local")
+
+      expect(writeFileMock).toHaveBeenCalledWith(
+        envPath,
+        `EXISTING_KEY=existing_value
+
+NEW_KEY=new_value
+`,
+        "utf-8"
+      )
+    } finally {
+      await fsActual.rm(tempDir, { recursive: true }).catch(() => {})
+    }
+  })
+
   test("should create .env when no env variants exist", async () => {
     const tempDir = path.join(
       path.resolve(__dirname, "../../fixtures"),
@@ -1044,7 +1118,12 @@ NEW_API_KEY=new_api_key_value
       const envPath = path.join(config.resolvedPaths.cwd, ".env")
 
       // Ensure no env files exist
-      const envVariants = [".env", ".env.local", ".env.development.local", ".env.development"]
+      const envVariants = [
+        ".env",
+        ".env.local",
+        ".env.development.local",
+        ".env.development",
+      ]
       for (const variant of envVariants) {
         const variantPath = path.join(config.resolvedPaths.cwd, variant)
         await fsActual.unlink(variantPath).catch(() => {})

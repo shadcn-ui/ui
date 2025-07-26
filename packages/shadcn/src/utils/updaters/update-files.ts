@@ -92,22 +92,10 @@ export async function updateFiles(
       )
     }
 
-    if (
-      isEnvFile(filePath) &&
-      path.basename(filePath) === ".env" &&
-      !existsSync(filePath)
-    ) {
+    if (isEnvFile(filePath) && !existsSync(filePath)) {
       const alternativeEnvFile = findExistingEnvFile(targetDir)
       if (alternativeEnvFile) {
         filePath = alternativeEnvFile
-        if (!options.silent) {
-          logger.info(
-            `Using existing env file: ${path.relative(
-              config.resolvedPaths.cwd,
-              alternativeEnvFile
-            )}`
-          )
-        }
       }
     }
 
