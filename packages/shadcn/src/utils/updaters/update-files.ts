@@ -5,8 +5,10 @@ import { getRegistryBaseColor } from "@/src/registry/api"
 import { RegistryItem, registryItemFileSchema } from "@/src/registry/schema"
 import {
   findExistingEnvFile,
+  getNewEnvKeys,
   isEnvFile,
   mergeEnvContent,
+  parseEnvContent,
 } from "@/src/utils/env-helpers"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
@@ -64,6 +66,8 @@ export async function updateFiles(
   let filesCreated: string[] = []
   let filesUpdated: string[] = []
   let filesSkipped: string[] = []
+  let envVarsAdded: string[] = []
+  let envFile: string | null = null
 
   for (const file of files) {
     if (!file.content) {
@@ -174,9 +178,10 @@ export async function updateFiles(
     if (isEnvFile(filePath) && existingFile) {
       const existingFileContent = await fs.readFile(filePath, "utf-8")
       const mergedContent = mergeEnvContent(existingFileContent, content)
+      envVarsAdded = getNewEnvKeys(existingFileContent, content)
+      envFile = path.relative(config.resolvedPaths.cwd, filePath)
 
-      // Skip if no changes were made (all keys already exist)
-      if (mergedContent === existingFileContent) {
+      if (!envVarsAdded.length) {
         filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
         continue
       }
@@ -187,9 +192,18 @@ export async function updateFiles(
     }
 
     await fs.writeFile(filePath, content, "utf-8")
-    existingFile
-      ? filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
-      : filesCreated.push(path.relative(config.resolvedPaths.cwd, filePath))
+
+    // Handle file creation logging
+    if (!existingFile) {
+      filesCreated.push(path.relative(config.resolvedPaths.cwd, filePath))
+
+      if (isEnvFile(filePath)) {
+        envVarsAdded = Object.keys(parseEnvContent(content))
+        envFile = path.relative(config.resolvedPaths.cwd, filePath)
+      }
+    } else {
+      filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
+    }
   }
 
   const allFiles = [...filesCreated, ...filesUpdated, ...filesSkipped]
@@ -254,6 +268,17 @@ export async function updateFiles(
     if (!options.silent) {
       for (const file of filesSkipped) {
         logger.log(`  - ${file}`)
+      }
+    }
+  }
+
+  if (envVarsAdded.length && envFile) {
+    spinner(
+      `Added the following variables to ${highlighter.info(envFile)}:`
+    )?.info()
+    if (!options.silent) {
+      for (const key of envVarsAdded) {
+        logger.log(`  ${highlighter.success("+")} ${key}`)
       }
     }
   }
@@ -430,7 +455,7 @@ async function resolveImports(filePaths: string[], config: Config) {
     compilerOptions: {},
   })
   const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
-  const tsConfig = await loadConfig(config.resolvedPaths.cwd)
+  const tsConfig = loadConfig(config.resolvedPaths.cwd)
   const updatedFiles = []
 
   if (!projectInfo || tsConfig.resultType === "failed") {

@@ -60,6 +60,23 @@ export function parseEnvContent(content: string) {
 }
 
 /**
+ * Get the list of new keys that would be added when merging env content.
+ */
+export function getNewEnvKeys(existingContent: string, newContent: string) {
+  const existingEnv = parseEnvContent(existingContent)
+  const newEnv = parseEnvContent(newContent)
+
+  const newKeys = []
+  for (const key of Object.keys(newEnv)) {
+    if (!(key in existingEnv)) {
+      newKeys.push(key)
+    }
+  }
+
+  return newKeys
+}
+
+/**
  * Merge env content by appending ONLY new keys that don't exist in the existing content.
  * Existing keys are preserved with their original values.
  */

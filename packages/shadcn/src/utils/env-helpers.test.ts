@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 import {
   findExistingEnvFile,
+  getNewEnvKeys,
   isEnvFile,
   mergeEnvContent,
   parseEnvContent,
@@ -195,6 +196,38 @@ KEY2=value2
 KEY3=value3
 KEY4=value4
 `)
+  })
+})
+
+describe("getNewEnvKeys", () => {
+  test("should identify new keys", () => {
+    const existing = `KEY1=value1
+KEY2=value2`
+    const newContent = `KEY1=ignored
+KEY3=value3
+KEY4=value4`
+
+    const result = getNewEnvKeys(existing, newContent)
+    expect(result).toEqual(["KEY3", "KEY4"])
+  })
+
+  test("should return empty array when all keys exist", () => {
+    const existing = `KEY1=value1
+KEY2=value2`
+    const newContent = `KEY1=different
+KEY2=different`
+
+    const result = getNewEnvKeys(existing, newContent)
+    expect(result).toEqual([])
+  })
+
+  test("should handle empty existing content", () => {
+    const existing = ""
+    const newContent = `KEY1=value1
+KEY2=value2`
+
+    const result = getNewEnvKeys(existing, newContent)
+    expect(result).toEqual(["KEY1", "KEY2"])
   })
 })
 
