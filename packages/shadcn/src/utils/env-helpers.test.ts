@@ -91,6 +91,58 @@ ANOTHER_KEY=another_value`
       ANOTHER_KEY: "another_value",
     })
   })
+
+  test("should handle multi-line values (current limitation: breaks them)", () => {
+    // This test documents that multi-line values are NOT properly supported
+    const content = `SINGLE_LINE="This is fine"
+MULTI_LINE="This is line 1
+This is line 2
+This is line 3"
+NEXT_KEY=value`
+
+    const result = parseEnvContent(content)
+
+    // Current behavior: only gets first line of multi-line value
+    expect(result.SINGLE_LINE).toBe("This is fine")
+    expect(result.MULTI_LINE).toBe("This is line 1")
+    // The other lines are lost/treated as malformed
+    expect(result["This is line 2"]).toBeUndefined()
+    expect(result.NEXT_KEY).toBe("value")
+  })
+
+  test("should handle escaped newlines in values", () => {
+    const content = `KEY_WITH_ESCAPED_NEWLINE="Line 1\\nLine 2\\nLine 3"
+REGULAR_KEY=regular_value`
+
+    const result = parseEnvContent(content)
+
+    // Escaped newlines are preserved as literal \n
+    expect(result.KEY_WITH_ESCAPED_NEWLINE).toBe("Line 1\\nLine 2\\nLine 3")
+    expect(result.REGULAR_KEY).toBe("regular_value")
+  })
+
+  test("should handle values with unmatched quotes", () => {
+    const content = `GOOD_KEY="proper quotes"
+BAD_KEY="unmatched quote
+NEXT_KEY=value`
+
+    const result = parseEnvContent(content)
+
+    expect(result.GOOD_KEY).toBe("proper quotes")
+    // Current behavior: strips the opening quote even if unmatched
+    expect(result.BAD_KEY).toBe("unmatched quote")
+    expect(result.NEXT_KEY).toBe("value")
+  })
+
+  test("should handle backtick quotes (not supported)", () => {
+    const content = 'KEY1=`backtick value`\nKEY2="double quotes"'
+
+    const result = parseEnvContent(content)
+
+    // Backticks are not treated as quotes
+    expect(result.KEY1).toBe("`backtick value`")
+    expect(result.KEY2).toBe("double quotes")
+  })
 })
 
 describe("mergeEnvContent", () => {
@@ -196,6 +248,27 @@ KEY2=value2
 KEY3=value3
 KEY4=value4
 `)
+  })
+
+  test("should handle multi-line values in merge (current limitation)", () => {
+    const existing = `EXISTING_KEY=existing_value`
+    const newContent = `MULTI_LINE_KEY="Line 1
+Line 2
+Line 3"
+SIMPLE_KEY=simple`
+
+    const result = mergeEnvContent(existing, newContent)
+
+    // Current behavior: only the first line is added
+    expect(result).toBe(`EXISTING_KEY=existing_value
+
+MULTI_LINE_KEY=Line 1
+SIMPLE_KEY=simple
+`)
+
+    // The multi-line value is broken
+    expect(result).not.toContain("Line 2")
+    expect(result).not.toContain("Line 3")
   })
 })
 
