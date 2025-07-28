@@ -65,6 +65,8 @@ export const registryItemCssSchema = z.record(
   )
 )
 
+export const registryItemEnvVarsSchema = z.record(z.string(), z.string())
+
 export const registryItemSchema = z.object({
   $schema: z.string().optional(),
   extends: z.string().optional(),
@@ -80,6 +82,7 @@ export const registryItemSchema = z.object({
   tailwind: registryItemTailwindSchema.optional(),
   cssVars: registryItemCssVarsSchema.optional(),
   css: registryItemCssSchema.optional(),
+  envVars: registryItemEnvVarsSchema.optional(),
   meta: z.record(z.string(), z.any()).optional(),
   docs: z.string().optional(),
   categories: z.array(z.string()).optional(),
@@ -127,5 +130,6 @@ export const registryResolvedItemsTreeSchema = registryItemSchema.pick({
   tailwind: true,
   cssVars: true,
   css: true,
+  envVars: true,
   docs: true,
 })

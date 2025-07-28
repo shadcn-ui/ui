@@ -12,8 +12,8 @@ export function isEnvFile(filePath: string) {
  */
 export function findExistingEnvFile(targetDir: string) {
   const variants = [
-    ".env",
     ".env.local",
+    ".env",
     ".env.development.local",
     ".env.development",
   ]

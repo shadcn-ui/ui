@@ -476,7 +476,12 @@ export async function registryResolveItemsTree(
       }
     })
 
-    return registryResolvedItemsTreeSchema.parse({
+    let envVars = {}
+    payload.forEach((item) => {
+      envVars = deepmerge(envVars, item.envVars ?? {})
+    })
+
+    const parsed = registryResolvedItemsTreeSchema.parse({
       dependencies: deepmerge.all(
         payload.map((item) => item.dependencies ?? [])
       ),
@@ -489,6 +494,12 @@ export async function registryResolveItemsTree(
       css,
       docs,
     })
+
+    if (Object.keys(envVars).length > 0) {
+      parsed.envVars = envVars
+    }
+
+    return parsed
   } catch (error) {
     handleError(error)
     return null
