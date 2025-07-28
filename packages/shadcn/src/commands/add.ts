@@ -3,6 +3,11 @@ import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { getRegistryIndex, getRegistryItem } from "@/src/registry/api"
+import {
+  clearRegistryContext,
+  setRegistryHeaders,
+} from "@/src/registry/context"
+import { resolveRegistryComponent } from "@/src/registry/resolver"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import {
   isLocalFile,
@@ -81,6 +86,30 @@ export const add = new Command()
         cwd: path.resolve(opts.cwd),
         ...opts,
       })
+
+      // Resolve registry components before processing
+      let initialConfig = await getConfig(options.cwd)
+      const registryHeaders: Record<string, Record<string, string>> = {}
+
+      if (initialConfig?.registries && options.components) {
+        for (let i = 0; i < options.components.length; i++) {
+          const resolved = resolveRegistryComponent(
+            options.components[i],
+            initialConfig.registries
+          )
+          if (resolved) {
+            // Replace registry component with resolved URL
+            options.components[i] = resolved.url
+            // Store headers for this URL
+            if (Object.keys(resolved.headers).length > 0) {
+              registryHeaders[resolved.url] = resolved.headers
+            }
+          }
+        }
+      }
+
+      // Set registry headers in context for fetch operations
+      setRegistryHeaders(registryHeaders)
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
       let registryItem: any = null
@@ -237,6 +266,9 @@ export const add = new Command()
     } catch (error) {
       logger.break()
       handleError(error)
+    } finally {
+      // Clear registry context after command execution
+      clearRegistryContext()
     }
   })
 

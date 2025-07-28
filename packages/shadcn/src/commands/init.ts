@@ -7,6 +7,11 @@ import {
   getRegistryItem,
   getRegistryStyles,
 } from "@/src/registry/api"
+import {
+  clearRegistryContext,
+  setRegistryHeaders,
+} from "@/src/registry/context"
+import { resolveRegistryComponent } from "@/src/registry/resolver"
 import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
@@ -122,6 +127,30 @@ export const init = new Command()
         ...opts,
       })
 
+      // Resolve registry components before processing
+      const config = await getConfig(options.cwd)
+      const registryHeaders: Record<string, Record<string, string>> = {}
+
+      if (config?.registries && options.components) {
+        for (let i = 0; i < options.components.length; i++) {
+          const resolved = resolveRegistryComponent(
+            options.components[i],
+            config.registries
+          )
+          if (resolved) {
+            // Replace registry component with resolved URL
+            options.components[i] = resolved.url
+            // Store headers for this URL
+            if (Object.keys(resolved.headers).length > 0) {
+              registryHeaders[resolved.url] = resolved.headers
+            }
+          }
+        }
+      }
+
+      // Set registry headers in context for fetch operations
+      setRegistryHeaders(registryHeaders)
+
       // We need to check if we're initializing with a new style.
       // We fetch the payload of the first item.
       // This is okay since the request is cached and deduped.
@@ -150,6 +179,9 @@ export const init = new Command()
     } catch (error) {
       logger.break()
       handleError(error)
+    } finally {
+      // Clear registry context after command execution
+      clearRegistryContext()
     }
   })
 

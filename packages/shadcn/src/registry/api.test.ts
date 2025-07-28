@@ -34,7 +34,7 @@ vi.mock("@/src/utils/logger", () => ({
   },
 }))
 
-const REGISTRY_URL = "https://ui.shadcn.com/r"
+const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
 
 const server = setupServer(
   http.get(`${REGISTRY_URL}/index.json`, () => {

@@ -40,6 +40,7 @@ export async function addComponents(
     silent?: boolean
     isNewProject?: boolean
     style?: string
+    registryHeaders?: Record<string, Record<string, string>>
   }
 ) {
   options = {

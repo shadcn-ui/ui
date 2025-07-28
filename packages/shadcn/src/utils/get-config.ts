@@ -41,6 +41,25 @@ export const rawConfigSchema = z
       hooks: z.string().optional(),
     }),
     iconLibrary: z.string().optional(),
+    registries: z
+      .record(
+        z.string(),
+        z.union([
+          // Simple string format: "https://example.com/{name}.json"
+          z.string().refine((s) => s.includes("{name}"), {
+            message: "Registry URL must include {name} placeholder",
+          }),
+          // Advanced object format with auth options
+          z.object({
+            url: z.string().refine((s) => s.includes("{name}"), {
+              message: "Registry URL must include {name} placeholder",
+            }),
+            params: z.record(z.string(), z.string()).optional(),
+            headers: z.record(z.string(), z.string()).optional(),
+          }),
+        ])
+      )
+      .optional(),
   })
   .strict()
 

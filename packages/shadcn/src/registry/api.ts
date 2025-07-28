@@ -1,6 +1,7 @@
 import { promises as fs } from "fs"
 import { homedir } from "os"
 import path from "path"
+import { getRegistryHeadersFromContext } from "@/src/registry/context"
 import { isLocalFile } from "@/src/registry/utils"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
@@ -225,7 +226,15 @@ export async function fetchRegistry(
 
         // Store the promise in the cache before awaiting if caching is enabled
         const fetchPromise = (async () => {
-          const response = await fetch(url, { agent })
+          // Get headers from context for this URL
+          const headers = getRegistryHeadersFromContext(url)
+
+          const response = await fetch(url, {
+            agent,
+            headers: {
+              ...headers,
+            },
+          })
 
           if (!response.ok) {
             const errorMessages: { [key: number]: string } = {
