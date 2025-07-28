@@ -63,7 +63,6 @@ import { Foo } from "bar"
     })
   ).toMatchSnapshot()
 
-
   expect(
     await transform({
       filename: "test.ts",

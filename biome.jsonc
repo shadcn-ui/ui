@@ -1,0 +1,145 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+  "extends": ["ultracite"],
+  "files": {
+    "includes": [
+      "**/*",
+      "!target",
+      "!build",
+      "!dist",
+      "!templates",
+      "!fixtures",
+      "!packages/shadcn/test/fixtures/**/*",
+      "!**/*.json",
+      "!apps/www/.source/**/*",
+      "!apps/v4/.source/**/*",
+      "!apps/www/__registry__/**/*",
+      "!apps/v4/registry/__index__.tsx"
+    ]
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off",
+        "useSortedAttributes": "off"
+      }
+    }
+  },
+  "linter": {
+    "rules": {
+      "a11y": {
+        "useValidAnchor": "off",
+        "useButtonType": "off",
+        "noSvgWithoutTitle": "off",
+        "useSemanticElements": "off",
+        "noRedundantAlt": "off",
+        "noLabelWithoutControl": "off",
+        "useIframeTitle": "off",
+        "useFocusableInteractive": "off",
+        "useGenericFontNames": "off",
+        "noRedundantRoles": "off",
+        "useAriaPropsForRole": "off"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "useFlatMap": "off",
+        "useLiteralKeys": "off",
+        "noExcessiveCognitiveComplexity": "off",
+        "useOptionalChain": "off",
+        "useSimplifiedLogicExpression": "off",
+        "noUselessFragments": "off",
+        "noUselessEscapeInRegex": "off",
+        "noUselessContinue": "off"
+      },
+      "correctness": {
+        "noUnusedImports": "off",
+        "noUndeclaredVariables": "off",
+        "noUnusedVariables": "off",
+        "noUnusedFunctionParameters": "off",
+        "useExhaustiveDependencies": "off",
+        "useJsxKeyInIterable": "off"
+      },
+      "style": {
+        "useImportType": "off",
+        "useConst": "off",
+        "useNumberNamespace": "off",
+        "noNegationElse": "off",
+        "useCollapsedElseIf": "off",
+        "noInferrableTypes": "off",
+        "useNodejsImportProtocol": "off",
+        "useTemplate": "off",
+        "useSelfClosingElements": "off",
+        "noUnusedTemplateLiteral": "off",
+        "noNonNullAssertion": "off",
+        "useBlockStatements": "off",
+        "useExponentiationOperator": "off",
+        "noUselessElse": "off",
+        "noParameterAssign": "off",
+        "useDefaultParameterLast": "off",
+        "useDefaultSwitchClause": "off",
+        "noExportedImports": "off",
+        "noNestedTernary": "off",
+        "useCollapsedIf": "off",
+        "useAtIndex": "off"
+      },
+      "performance": {
+        "useTopLevelRegex": "off",
+        "noDelete": "off",
+        "noNamespaceImport": "off",
+        "noImgElement": "off"
+      },
+      "suspicious": {
+        "noConsole": "off",
+        "noMisplacedAssertion": "off",
+        "noSuspiciousSemicolonInJsx": "off",
+        "useAwait": "off",
+        "noGlobalIsNan": "off",
+        "noRedeclare": "off",
+        "noSkippedTests": "off",
+        "noShadowRestrictedNames": "off",
+        "noExplicitAny": "off",
+        "noEvolvingTypes": "off",
+        "noImplicitAnyLet": "off",
+        "noAssignInExpressions": "off",
+        "noArrayIndexKey": "off",
+        "useStrictMode": "off",
+        "noDuplicateCustomProperties": "off",
+        "noTemplateCurlyInString": "off",
+        "noDocumentCookie": "off",
+        "noDuplicateProperties": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "nursery": {
+        "useSortedClasses": "off",
+        "useConsistentObjectDefinition": "off",
+        "noShadow": "off",
+        "useJsonImportAttribute": "off",
+        "noUnknownAtRule": "off",
+        "noNestedComponentDefinitions": "off",
+        "useParseIntRadix": "off",
+        "useNumericSeparators": "off",
+        "useIterableCallbackReturn": "off",
+        "noAwaitInLoop": "off",
+        "noUselessUndefined": "off",
+        "noTsIgnore": "off",
+        "useIndexOf": "off",
+        "noImportantStyles": "off"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "preserve",
+      "trailingCommas": "es5",
+      "semicolons": "asNeeded",
+      "arrowParentheses": "always",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "quoteStyle": "double",
+      "attributePosition": "auto"
+    }
+  }
+}
