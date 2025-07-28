@@ -1,5 +1,4 @@
 import { existsSync, promises as fs } from "fs"
-import path from "path"
 import type { Config } from "@/src/utils/get-config"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
@@ -32,11 +31,13 @@ vi.mock("@/src/utils/spinner", () => ({
 
 const mockConfig: Config = {
   style: "default",
+  rsc: false,
   tailwind: {
     config: "tailwind.config.js",
     css: "app/globals.css",
     baseColor: "slate",
     prefix: "",
+    cssVariables: false,
   },
   tsx: true,
   aliases: {
@@ -44,6 +45,7 @@ const mockConfig: Config = {
     ui: "@/components/ui",
     lib: "@/lib",
     hooks: "@/hooks",
+    utils: "@/utils",
   },
   resolvedPaths: {
     cwd: "/test/project",
@@ -53,6 +55,7 @@ const mockConfig: Config = {
     ui: "/test/project/components/ui",
     lib: "/test/project/lib",
     hooks: "/test/project/hooks",
+    utils: "/test/project/utils",
   },
 }
 
