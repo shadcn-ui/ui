@@ -309,19 +309,7 @@ describe("findExistingEnvFile", () => {
     vi.clearAllMocks()
   })
 
-  test("should return .env if it exists", () => {
-    vi.mocked(existsSync).mockImplementation((path) => {
-      const pathStr = typeof path === "string" ? path : path.toString()
-      return pathStr.endsWith(".env")
-    })
-
-    const result = findExistingEnvFile("/test/dir")
-    expect(result).toBe("/test/dir/.env")
-    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
-    expect(existsSync).toHaveBeenCalledTimes(1)
-  })
-
-  test("should return .env.local if .env doesn't exist", () => {
+  test("should return .env.local if it exists", () => {
     vi.mocked(existsSync).mockImplementation((path) => {
       const pathStr = typeof path === "string" ? path : path.toString()
       return pathStr.endsWith(".env.local")
@@ -329,8 +317,20 @@ describe("findExistingEnvFile", () => {
 
     const result = findExistingEnvFile("/test/dir")
     expect(result).toBe("/test/dir/.env.local")
-    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
     expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.local")
+    expect(existsSync).toHaveBeenCalledTimes(1)
+  })
+
+  test("should return .env if .env.local doesn't exist", () => {
+    vi.mocked(existsSync).mockImplementation((path) => {
+      const pathStr = typeof path === "string" ? path : path.toString()
+      return pathStr.endsWith(".env")
+    })
+
+    const result = findExistingEnvFile("/test/dir")
+    expect(result).toBe("/test/dir/.env")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.local")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
     expect(existsSync).toHaveBeenCalledTimes(2)
   })
 
@@ -342,8 +342,8 @@ describe("findExistingEnvFile", () => {
 
     const result = findExistingEnvFile("/test/dir")
     expect(result).toBe("/test/dir/.env.development.local")
-    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
     expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.local")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
     expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.development.local")
     expect(existsSync).toHaveBeenCalledTimes(3)
   })
@@ -361,8 +361,8 @@ describe("findExistingEnvFile", () => {
 
     findExistingEnvFile("/test/dir")
 
-    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
     expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.local")
+    expect(existsSync).toHaveBeenCalledWith("/test/dir/.env")
     expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.development.local")
     expect(existsSync).toHaveBeenCalledWith("/test/dir/.env.development")
   })
