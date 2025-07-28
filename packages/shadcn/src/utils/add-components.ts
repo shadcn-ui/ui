@@ -27,6 +27,7 @@ import { spinner } from "@/src/utils/spinner"
 import { updateCss } from "@/src/utils/updaters/update-css"
 import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
+import { updateEnvVars } from "@/src/utils/updaters/update-env-vars"
 import { updateFiles } from "@/src/utils/updaters/update-files"
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
 import { z } from "zod"
@@ -113,6 +114,10 @@ async function addProjectComponents(
 
   // Add CSS updater
   await updateCss(tree.css, config, {
+    silent: options.silent,
+  })
+
+  await updateEnvVars(tree.envVars, config, {
     silent: options.silent,
   })
 
@@ -232,7 +237,14 @@ async function addWorkspaceComponents(
       )
     }
 
-    // 4. Update dependencies.
+    // 4. Update environment variables
+    if (component.envVars) {
+      await updateEnvVars(component.envVars, targetConfig, {
+        silent: true,
+      })
+    }
+
+    // 5. Update dependencies.
     await updateDependencies(
       component.dependencies,
       component.devDependencies,
@@ -242,7 +254,7 @@ async function addWorkspaceComponents(
       }
     )
 
-    // 5. Update files.
+    // 6. Update files.
     const files = await updateFiles(component.files, targetConfig, {
       overwrite: options.overwrite,
       silent: true,
