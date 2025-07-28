@@ -8,15 +8,15 @@ import {
   resolveRegistryItems,
 } from "@/src/registry/api"
 import {
+  configSchema,
   registryItemFileSchema,
   registryItemSchema,
+  workspaceConfigSchema,
 } from "@/src/registry/schema"
 import {
-  configSchema,
   findCommonRoot,
   findPackageRoot,
   getWorkspaceConfig,
-  workspaceConfigSchema,
   type Config,
 } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"

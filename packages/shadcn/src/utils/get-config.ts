@@ -1,4 +1,9 @@
 import path from "path"
+import {
+  configSchema,
+  rawConfigSchema,
+  workspaceConfigSchema,
+} from "@/src/registry"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { resolveImport } from "@/src/utils/resolve-import"
@@ -20,69 +25,7 @@ const explorer = cosmiconfig("components", {
   searchPlaces: ["components.json"],
 })
 
-export const rawConfigSchema = z
-  .object({
-    $schema: z.string().optional(),
-    style: z.string(),
-    rsc: z.coerce.boolean().default(false),
-    tsx: z.coerce.boolean().default(true),
-    tailwind: z.object({
-      config: z.string().optional(),
-      css: z.string(),
-      baseColor: z.string(),
-      cssVariables: z.boolean().default(true),
-      prefix: z.string().default("").optional(),
-    }),
-    aliases: z.object({
-      components: z.string(),
-      utils: z.string(),
-      ui: z.string().optional(),
-      lib: z.string().optional(),
-      hooks: z.string().optional(),
-    }),
-    iconLibrary: z.string().optional(),
-    registries: z
-      .record(
-        z.string(),
-        z.union([
-          // Simple string format: "https://example.com/{name}.json"
-          z.string().refine((s) => s.includes("{name}"), {
-            message: "Registry URL must include {name} placeholder",
-          }),
-          // Advanced object format with auth options
-          z.object({
-            url: z.string().refine((s) => s.includes("{name}"), {
-              message: "Registry URL must include {name} placeholder",
-            }),
-            params: z.record(z.string(), z.string()).optional(),
-            headers: z.record(z.string(), z.string()).optional(),
-          }),
-        ])
-      )
-      .optional(),
-  })
-  .strict()
-
-export type RawConfig = z.infer<typeof rawConfigSchema>
-
-export const configSchema = rawConfigSchema.extend({
-  resolvedPaths: z.object({
-    cwd: z.string(),
-    tailwindConfig: z.string(),
-    tailwindCss: z.string(),
-    utils: z.string(),
-    components: z.string(),
-    lib: z.string(),
-    hooks: z.string(),
-    ui: z.string(),
-  }),
-})
-
 export type Config = z.infer<typeof configSchema>
-
-// TODO: type the key.
-// Okay for now since I don't want a breaking change.
-export const workspaceConfigSchema = z.record(configSchema)
 
 export async function getConfig(cwd: string) {
   const config = await getRawConfig(cwd)
@@ -99,7 +42,10 @@ export async function getConfig(cwd: string) {
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function resolveConfigPaths(cwd: string, config: RawConfig) {
+export async function resolveConfigPaths(
+  cwd: string,
+  config: z.infer<typeof rawConfigSchema>
+) {
   // Read tsconfig.json.
   const tsConfig = await loadConfig(cwd)
 
@@ -148,7 +94,9 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
   })
 }
 
-export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
+export async function getRawConfig(
+  cwd: string
+): Promise<z.infer<typeof rawConfigSchema> | null> {
   try {
     const configResult = await explorer.search(cwd)
 

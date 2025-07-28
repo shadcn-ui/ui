@@ -3,11 +3,8 @@ import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { getRegistryIndex, getRegistryItem } from "@/src/registry/api"
-import {
-  clearRegistryContext,
-  setRegistryHeaders,
-} from "@/src/registry/context"
-import { resolveRegistryComponent } from "@/src/registry/resolver"
+import { clearRegistryContext } from "@/src/registry/context"
+import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import {
   isLocalFile,
@@ -87,29 +84,15 @@ export const add = new Command()
         ...opts,
       })
 
-      // Resolve registry components before processing
-      let initialConfig = await getConfig(options.cwd)
-      const registryHeaders: Record<string, Record<string, string>> = {}
+      const initialConfig = await getConfig(options.cwd)
 
-      if (initialConfig?.registries && options.components) {
-        for (let i = 0; i < options.components.length; i++) {
-          const resolved = resolveRegistryComponent(
-            options.components[i],
-            initialConfig.registries
-          )
-          if (resolved) {
-            // Replace registry component with resolved URL
-            options.components[i] = resolved.url
-            // Store headers for this URL
-            if (Object.keys(resolved.headers).length > 0) {
-              registryHeaders[resolved.url] = resolved.headers
-            }
-          }
-        }
+      // Resolve registry components before processing.
+      if (options.components?.length) {
+        options.components = resolveRegistryItemsFromRegistries(
+          options.components,
+          initialConfig?.registries
+        )
       }
-
-      // Set registry headers in context for fetch operations
-      setRegistryHeaders(registryHeaders)
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
       let registryItem: any = null
@@ -267,7 +250,6 @@ export const add = new Command()
       logger.break()
       handleError(error)
     } finally {
-      // Clear registry context after command execution
       clearRegistryContext()
     }
   })

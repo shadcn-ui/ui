@@ -7,11 +7,9 @@ import {
   getRegistryItem,
   getRegistryStyles,
 } from "@/src/registry/api"
-import {
-  clearRegistryContext,
-  setRegistryHeaders,
-} from "@/src/registry/context"
-import { resolveRegistryComponent } from "@/src/registry/resolver"
+import { clearRegistryContext } from "@/src/registry/context"
+import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
+import { rawConfigSchema } from "@/src/registry/schema"
 import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
@@ -22,7 +20,6 @@ import {
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
   getConfig,
-  rawConfigSchema,
   resolveConfigPaths,
   type Config,
 } from "@/src/utils/get-config"
@@ -127,29 +124,15 @@ export const init = new Command()
         ...opts,
       })
 
-      // Resolve registry components before processing
       const config = await getConfig(options.cwd)
-      const registryHeaders: Record<string, Record<string, string>> = {}
 
-      if (config?.registries && options.components) {
-        for (let i = 0; i < options.components.length; i++) {
-          const resolved = resolveRegistryComponent(
-            options.components[i],
-            config.registries
-          )
-          if (resolved) {
-            // Replace registry component with resolved URL
-            options.components[i] = resolved.url
-            // Store headers for this URL
-            if (Object.keys(resolved.headers).length > 0) {
-              registryHeaders[resolved.url] = resolved.headers
-            }
-          }
-        }
+      // Resolve registry components before processing.
+      if (options.components?.length) {
+        options.components = resolveRegistryItemsFromRegistries(
+          options.components,
+          config?.registries
+        )
       }
-
-      // Set registry headers in context for fetch operations
-      setRegistryHeaders(registryHeaders)
 
       // We need to check if we're initializing with a new style.
       // We fetch the payload of the first item.
@@ -180,7 +163,6 @@ export const init = new Command()
       logger.break()
       handleError(error)
     } finally {
-      // Clear registry context after command execution
       clearRegistryContext()
     }
   })

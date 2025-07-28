@@ -1,19 +1,55 @@
-import { buildRegistryUrl, getRegistryHeaders } from "./builder"
-import { parseRegistryComponent } from "./parser"
-import type { RegistryConfig, ResolvedRegistryComponent } from "./types"
+import { registryConfigSchema } from "@/src/registry/schema"
+import { z } from "zod"
+
+import {
+  buildHeadersFromRegistryConfig,
+  buildUrlFromRegistryConfig,
+} from "./builder"
+import { setRegistryHeaders } from "./context"
+import { parseRegistryAndItemFromString } from "./parser"
 import { validateRegistryConfig } from "./validator"
 
-/**
- * Resolve registry URL for a component
- * @param name - Component name (possibly with registry prefix)
- * @param registries - Registry configuration map
- * @returns Object with URL and headers, or null if not a registry component
- */
-export function resolveRegistryComponent(
+export function resolveRegistryItemsFromRegistries(
+  items: string[],
+  registries?: z.infer<typeof registryConfigSchema>
+) {
+  const registryHeaders: Record<string, Record<string, string>> = {}
+  const resolvedItems = [...items]
+
+  if (!registries) {
+    // Clear any existing headers.
+    setRegistryHeaders({})
+    return resolvedItems
+  }
+
+  for (let i = 0; i < resolvedItems.length; i++) {
+    const resolved = resolveRegistryItemFromRegistries(
+      resolvedItems[i],
+      registries
+    )
+
+    if (resolved) {
+      // Replace registry item with resolved URL.
+      resolvedItems[i] = resolved.url
+
+      // Store headers for this URL if any exist.
+      if (Object.keys(resolved.headers).length > 0) {
+        registryHeaders[resolved.url] = resolved.headers
+      }
+    }
+  }
+
+  // Set registry headers in context for fetch operations.
+  setRegistryHeaders(registryHeaders)
+
+  return resolvedItems
+}
+
+export function resolveRegistryItemFromRegistries(
   name: string,
-  registries: Record<string, RegistryConfig> | undefined
-): ResolvedRegistryComponent | null {
-  const { registry, component } = parseRegistryComponent(name)
+  registries?: z.infer<typeof registryConfigSchema>
+) {
+  const { registry, item } = parseRegistryAndItemFromString(name)
 
   if (!registry || !registries) {
     return null
@@ -30,7 +66,7 @@ export function resolveRegistryComponent(
   validateRegistryConfig(registry, config)
 
   return {
-    url: buildRegistryUrl(registry, component, config),
-    headers: getRegistryHeaders(config),
+    url: buildUrlFromRegistryConfig(item, config),
+    headers: buildHeadersFromRegistryConfig(config),
   }
 }

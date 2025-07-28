@@ -1,12 +1,11 @@
-import { extractEnvVars } from "./env"
-import type { RegistryConfig } from "./types"
+import { z } from "zod"
 
-/**
- * Extract all environment variables from registry config
- * @param config - Registry configuration
- * @returns Array of unique environment variable names
- */
-export function extractRegistryEnvVars(config: RegistryConfig): string[] {
+import { extractEnvVars } from "./env"
+import { registryConfigItemSchema } from "./schema"
+
+export function extractRegistryEnvVars(
+  config: z.infer<typeof registryConfigItemSchema>
+): string[] {
   const vars = new Set<string>()
 
   if (typeof config === "string") {
@@ -30,15 +29,9 @@ export function extractRegistryEnvVars(config: RegistryConfig): string[] {
   return Array.from(vars)
 }
 
-/**
- * Validate registry configuration and check for missing environment variables
- * @param registryName - Name of the registry (for error messages)
- * @param config - Registry configuration
- * @throws Error if required environment variables are missing
- */
 export function validateRegistryConfig(
   registryName: string,
-  config: RegistryConfig
+  config: z.infer<typeof registryConfigItemSchema>
 ): void {
   const requiredVars = extractRegistryEnvVars(config)
   const missing = requiredVars.filter((v) => !process.env[v])

@@ -1,25 +1,18 @@
-import { expandEnvVars } from "./env"
-import type { RegistryConfig } from "./types"
+import { registryConfigItemSchema } from "@/src/registry/schema"
+import { z } from "zod"
 
-/**
- * Build a registry URL with environment variable expansion
- * @param registry - Registry name (e.g., "@v0")
- * @param component - Component name
- * @param config - Registry configuration
- * @returns Resolved URL
- */
-export function buildRegistryUrl(
-  _registry: string,
-  component: string,
-  config: RegistryConfig
+import { expandEnvVars } from "./env"
+
+export function buildUrlFromRegistryConfig(
+  item: string,
+  config: z.infer<typeof registryConfigItemSchema>
 ): string {
   if (typeof config === "string") {
-    return expandEnvVars(config.replace("{name}", component))
+    return expandEnvVars(config.replace("{name}", item))
   }
 
-  let url = expandEnvVars(config.url.replace("{name}", component))
+  let url = expandEnvVars(config.url.replace("{name}", item))
 
-  // Add query parameters
   if (config.params) {
     const params = new URLSearchParams()
     for (const [key, value] of Object.entries(config.params)) {
@@ -37,13 +30,8 @@ export function buildRegistryUrl(
   return url
 }
 
-/**
- * Get authentication headers from registry config
- * @param config - Registry configuration
- * @returns Headers object with expanded environment variables
- */
-export function getRegistryHeaders(
-  config: RegistryConfig
+export function buildHeadersFromRegistryConfig(
+  config: z.infer<typeof registryConfigItemSchema>
 ): Record<string, string> {
   if (typeof config === "string" || !config.headers) {
     return {}
@@ -52,18 +40,13 @@ export function getRegistryHeaders(
   const headers: Record<string, string> = {}
   for (const [key, value] of Object.entries(config.headers)) {
     const expanded = expandEnvVars(value)
-    // Check if expansion resulted in meaningful content
-    // Skip if the value contains env vars but they all expanded to empty
-    const hasEnvVars = value.includes("${")
-    const templateWithoutVars = value.replace(/\${[^}]+}/g, "").trim()
 
-    if (hasEnvVars) {
-      // For values with env vars, only include if expansion added content
+    if (value.includes("${")) {
+      const templateWithoutVars = value.replace(/\${[^}]+}/g, "").trim()
       if (expanded.trim() !== templateWithoutVars) {
         headers[key] = expanded
       }
     } else {
-      // For static values, include if non-empty
       if (expanded.trim()) {
         headers[key] = expanded
       }

@@ -1,39 +1,31 @@
 import { describe, expect, it } from "vitest"
 
-import { parseRegistryComponent } from "./parser"
+import { parseRegistryAndItemFromString } from "./parser"
 
-describe("parseRegistryComponent", () => {
-  it("should parse registry components", () => {
-    expect(parseRegistryComponent("@v0/button")).toEqual({
-      registry: "@v0",
-      component: "button",
-    })
-
-    expect(parseRegistryComponent("@acme/data-table")).toEqual({
-      registry: "@acme",
-      component: "data-table",
-    })
-
-    expect(parseRegistryComponent("@company/nested/component")).toEqual({
-      registry: "@company",
-      component: "nested/component",
-    })
+describe("parseRegistryAndItemFromString", () => {
+  it.each([
+    ["@v0/button", { registry: "@v0", item: "button" }],
+    ["@acme/data-table", { registry: "@acme", item: "data-table" }],
+    [
+      "@company/nested/component",
+      { registry: "@company", item: "nested/component" },
+    ],
+    [
+      "https://example.com/button",
+      { registry: null, item: "https://example.com/button" },
+    ],
+  ])("should parse registry item: %s", (input, expected) => {
+    expect(parseRegistryAndItemFromString(input)).toEqual(expected)
   })
 
-  it("should return null registry for non-registry components", () => {
-    expect(parseRegistryComponent("button")).toEqual({
-      registry: null,
-      component: "button",
-    })
-
-    expect(parseRegistryComponent("components/button")).toEqual({
-      registry: null,
-      component: "components/button",
-    })
-
-    expect(parseRegistryComponent("v0/button")).toEqual({
-      registry: null,
-      component: "v0/button",
-    })
-  })
+  it.each([
+    ["button", { registry: null, item: "button" }],
+    ["components/button", { registry: null, item: "components/button" }],
+    ["v0/button", { registry: null, item: "v0/button" }],
+  ])(
+    "should return null registry for non-registry item: %s",
+    (input, expected) => {
+      expect(parseRegistryAndItemFromString(input)).toEqual(expected)
+    }
+  )
 })

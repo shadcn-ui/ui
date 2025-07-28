@@ -1,9 +1,12 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import { afterEach, beforeEach, describe, expect, it } from "vitest"
 
-import { buildRegistryUrl, getRegistryHeaders } from "./builder"
+import {
+  buildHeadersFromRegistryConfig,
+  buildUrlFromRegistryConfig,
+} from "./builder"
 
-describe("buildRegistryUrl", () => {
+describe("buildUrlFromRegistryConfig", () => {
   beforeEach(() => {
     process.env.TEST_TOKEN = "abc123"
     process.env.API_VERSION = "v2"
@@ -15,8 +18,7 @@ describe("buildRegistryUrl", () => {
   })
 
   it("should build URL from string config", () => {
-    const url = buildRegistryUrl(
-      "@v0",
+    const url = buildUrlFromRegistryConfig(
       "chat-component",
       "https://v0.dev/chat/b/{name}/json"
     )
@@ -24,8 +26,7 @@ describe("buildRegistryUrl", () => {
   })
 
   it("should build URL with env vars", () => {
-    const url = buildRegistryUrl(
-      "@private",
+    const url = buildUrlFromRegistryConfig(
       "button",
       "https://api.com/{name}?token=${TEST_TOKEN}"
     )
@@ -41,7 +42,7 @@ describe("buildRegistryUrl", () => {
       },
     }
 
-    const url = buildRegistryUrl("@acme", "table", config)
+    const url = buildUrlFromRegistryConfig("table", config)
     expect(url).toBe("https://api.com/table?version=v2&format=json")
   })
 
@@ -54,7 +55,7 @@ describe("buildRegistryUrl", () => {
       },
     }
 
-    const url = buildRegistryUrl("@acme", "table", config)
+    const url = buildUrlFromRegistryConfig("table", config)
     expect(url).toBe("https://api.com/table?format=json")
   })
 
@@ -66,12 +67,12 @@ describe("buildRegistryUrl", () => {
       },
     }
 
-    const url = buildRegistryUrl("@acme", "table", config)
+    const url = buildUrlFromRegistryConfig("table", config)
     expect(url).toBe("https://api.com/table?existing=true&new=param")
   })
 })
 
-describe("getRegistryHeaders", () => {
+describe("buildHeadersFromRegistryConfig", () => {
   beforeEach(() => {
     process.env.AUTH_TOKEN = "secret123"
     process.env.CLIENT_ID = "client456"
@@ -83,11 +84,13 @@ describe("getRegistryHeaders", () => {
   })
 
   it("should return empty object for string config", () => {
-    expect(getRegistryHeaders("https://api.com/{name}")).toEqual({})
+    expect(buildHeadersFromRegistryConfig("https://api.com/{name}")).toEqual({})
   })
 
   it("should return empty object for config without headers", () => {
-    expect(getRegistryHeaders({ url: "https://api.com/{name}" })).toEqual({})
+    expect(
+      buildHeadersFromRegistryConfig({ url: "https://api.com/{name}" })
+    ).toEqual({})
   })
 
   it("should expand headers with env vars", () => {
@@ -99,7 +102,7 @@ describe("getRegistryHeaders", () => {
       },
     }
 
-    expect(getRegistryHeaders(config)).toEqual({
+    expect(buildHeadersFromRegistryConfig(config)).toEqual({
       Authorization: "Bearer secret123",
       "X-Client-Id": "client456",
     })
@@ -114,7 +117,7 @@ describe("getRegistryHeaders", () => {
       },
     }
 
-    expect(getRegistryHeaders(config)).toEqual({
+    expect(buildHeadersFromRegistryConfig(config)).toEqual({
       "X-Client-Id": "client456",
     })
   })
