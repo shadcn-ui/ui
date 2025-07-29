@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest"
 
 import {
   createFixtureTestDirectory,
+  fileExists,
   npxShadcn,
   readJson,
 } from "../utils/helpers"
@@ -14,6 +15,8 @@ describe("shadcn init - next-app", () => {
     await npxShadcn(fixturePath, ["init", "--base-color=neutral", "--yes"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
+    expect(await fileExists(componentsJsonPath)).toBe(true)
+    
     const componentsJson = await readJson(componentsJsonPath)
     expect(componentsJson).toMatchObject({
       style: "new-york",
@@ -34,10 +37,7 @@ describe("shadcn init - next-app", () => {
       },
     })
 
-    // Verify utils file exists by attempting to read it
-    await expect(
-      fs.readFile(path.join(fixturePath, "lib/utils.ts"), "utf-8")
-    ).resolves.toBeTruthy()
+    expect(await fileExists(path.join(fixturePath, "lib/utils.ts"))).toBe(true)
 
     const cssPath = path.join(fixturePath, "app/globals.css")
     const cssContent = await fs.readFile(cssPath, "utf-8")
@@ -89,9 +89,8 @@ describe("shadcn init - next-app", () => {
       "button",
     ])
 
-    // Verify button component exists by attempting to read it
-    await expect(
-      fs.readFile(path.join(fixturePath, "components/ui/button.tsx"), "utf-8")
-    ).resolves.toBeTruthy()
+    expect(
+      await fileExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(true)
   })
 })

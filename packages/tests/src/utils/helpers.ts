@@ -9,6 +9,15 @@ const TEMP_DIR = path.join(__dirname, "../../temp")
 const CACHE_DIR = path.join(__dirname, "../../.cache")
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
 
+export async function fileExists(filePath: string): Promise<boolean> {
+  try {
+    await fs.access(filePath)
+    return true
+  } catch {
+    return false
+  }
+}
+
 export async function readJson(filePath: string): Promise<any> {
   return fs.readJSON(filePath)
 }
@@ -69,12 +78,10 @@ export async function npxShadcn(cwd: string, args: string[]) {
 
   await fs.ensureDir(CACHE_DIR)
 
-  const result = await runCommand(cwd, args, {
+  return runCommand(cwd, args, {
     env: {
       REGISTRY_URL: getRegistryUrl(),
       SHADCN_CACHE_DIR: CACHE_DIR,
     },
   })
-
-  return result
 }
