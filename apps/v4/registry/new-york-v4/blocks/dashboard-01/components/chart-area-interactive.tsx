@@ -257,7 +257,6 @@ export function ChartAreaInteractive() {
             />
             <ChartTooltip
               cursor={false}
-              defaultIndex={isMobile ? -1 : 10}
               content={
                 <ChartTooltipContent
                   labelFormatter={(value) => {
