@@ -85,10 +85,5 @@ export async function npxShadcn(cwd: string, args: string[]) {
     },
   })
 
-  // Small delay in CI to ensure files are fully written
-  if (process.env.CI) {
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-  }
-
   return result
 }
