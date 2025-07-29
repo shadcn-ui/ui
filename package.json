@@ -46,7 +46,8 @@
     "release": "changeset version",
     "pub:beta": "cd packages/shadcn && pnpm pub:beta",
     "pub:release": "cd packages/shadcn && pnpm pub:release",
-    "test": "turbo run test --filter=!shadcn-ui --force"
+    "test": "turbo run test --filter=!shadcn-ui --force",
+    "tests:test": "pnpm --filter=tests test"
   },
   "packageManager": "pnpm@9.0.6",
   "dependencies": {
