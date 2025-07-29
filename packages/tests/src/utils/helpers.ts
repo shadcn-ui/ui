@@ -9,10 +9,6 @@ const TEMP_DIR = path.join(__dirname, "../../temp")
 const CACHE_DIR = path.join(__dirname, "../../.cache")
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
 
-export async function fileExists(filePath: string): Promise<boolean> {
-  return fs.pathExists(filePath)
-}
-
 export async function readJson(filePath: string): Promise<any> {
   return fs.readJSON(filePath)
 }
