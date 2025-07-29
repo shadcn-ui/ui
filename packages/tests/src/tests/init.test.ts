@@ -8,7 +8,7 @@ import {
   readJson,
 } from "../utils/helpers"
 
-describe.concurrent("shadcn init - next-app", () => {
+describe("shadcn init - next-app", () => {
   it("should init with default configuration", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--base-color=neutral", "--yes"])
