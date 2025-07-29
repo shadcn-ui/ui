@@ -4,11 +4,11 @@ import { describe, expect, it } from "vitest"
 
 import {
   createFixtureTestDirectory,
-  createRemoteRegistryItemFromPayload,
   cssHasProperties,
   fileExists,
   npxShadcn,
 } from "../utils/helpers"
+import { getRegistryUrl } from "../utils/setup"
 
 describe("shadcn add", () => {
   it("should add item to project", async () => {
@@ -47,54 +47,27 @@ describe("shadcn add", () => {
   it("should add item from url", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    const registryUrl = getRegistryUrl()
+    const url = `${registryUrl}/styles/new-york-v4/login-01.json`
 
-    const server = await createRemoteRegistryItemFromPayload({
-      $schema: "https://ui.shadcn.com/schema/registry-item.json",
-      name: "login-01",
-      type: "registry:block",
-      description: "A simple login form.",
-      registryDependencies: ["button", "card", "input", "label"],
-      files: [
-        {
-          path: "registry/new-york-v4/blocks/login-01/page.tsx",
-          content:
-            'import { LoginForm } from "@/registry/new-york-v4/blocks/login-01/components/login-form"\n\nexport default function Page() {\n  return (\n    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">\n      <div className="w-full max-w-sm">\n        <LoginForm />\n      </div>\n    </div>\n  )\n}\n',
-          type: "registry:page",
-          target: "app/login/page.tsx",
-        },
-        {
-          path: "registry/new-york-v4/blocks/login-01/components/login-form.tsx",
-          content:
-            "export function LoginForm() { return <div>Login Form</div> }",
-          type: "registry:component",
-        },
-      ],
-      categories: ["authentication", "login"],
-    })
+    await npxShadcn(fixturePath, ["add", url])
+    expect(
+      await fileExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(true)
+    expect(
+      await fileExists(path.join(fixturePath, "components/ui/card.tsx"))
+    ).toBe(true)
+    expect(
+      await fileExists(path.join(fixturePath, "components/ui/input.tsx"))
+    ).toBe(true)
+    expect(
+      await fileExists(path.join(fixturePath, "components/ui/label.tsx"))
+    ).toBe(true)
 
-    try {
-      await npxShadcn(fixturePath, ["add", server.url])
-
-      expect(
-        await fileExists(path.join(fixturePath, "components/ui/button.tsx"))
-      ).toBe(true)
-      expect(
-        await fileExists(path.join(fixturePath, "components/ui/card.tsx"))
-      ).toBe(true)
-      expect(
-        await fileExists(path.join(fixturePath, "components/ui/input.tsx"))
-      ).toBe(true)
-      expect(
-        await fileExists(path.join(fixturePath, "components/ui/label.tsx"))
-      ).toBe(true)
-
-      // Check that the example file was created
-      expect(
-        await fileExists(path.join(fixturePath, "app/login/page.tsx"))
-      ).toBe(true)
-    } finally {
-      await server.close()
-    }
+    // Check that the example file was created
+    expect(await fileExists(path.join(fixturePath, "app/login/page.tsx"))).toBe(
+      true
+    )
   })
 
   it("should add component from local file", async () => {
