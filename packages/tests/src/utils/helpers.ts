@@ -44,7 +44,7 @@ export async function runCommand(
   }
 ) {
   try {
-    const result = await execa("node", [SHADCN_CLI_PATH, ...args], {
+    const childProcess = execa("node", [SHADCN_CLI_PATH, ...args], {
       cwd,
       env: {
         ...process.env,
@@ -57,10 +57,12 @@ export async function runCommand(
       timeout: 30000,
     })
 
+    const result = await childProcess
+
     return {
-      stdout: result.stdout,
-      stderr: result.stderr,
-      exitCode: result.exitCode,
+      stdout: result.stdout || "",
+      stderr: result.stderr || "",
+      exitCode: result.exitCode ?? 0,
     }
   } catch (error: any) {
     return {
@@ -82,14 +84,11 @@ export async function npxShadcn(cwd: string, args: string[]) {
       SHADCN_CACHE_DIR: CACHE_DIR,
     },
   })
-  
-  // Only log in CI when there's an error
-  if (process.env.CI && result.exitCode !== 0) {
-    console.log(`\nFailed command: npx shadcn ${args.join(' ')}`)
-    console.log("Exit code:", result.exitCode)
-    console.log("Stdout:", result.stdout)
-    console.log("Stderr:", result.stderr)
+
+  // Small delay in CI to ensure files are fully written
+  if (process.env.CI) {
+    await new Promise((resolve) => setTimeout(resolve, 1000))
   }
-  
+
   return result
 }
