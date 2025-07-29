@@ -12,11 +12,11 @@ import {
 describe("shadcn init - next-app", () => {
   it("should init with default configuration", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral", "--yes"])
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
     expect(await fileExists(componentsJsonPath)).toBe(true)
-    
+
     const componentsJson = await readJson(componentsJsonPath)
     expect(componentsJson).toMatchObject({
       style: "new-york",
@@ -51,7 +51,7 @@ describe("shadcn init - next-app", () => {
 
   it("should init with custom base color", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=zinc", "--yes"])
+    await npxShadcn(fixturePath, ["init", "--base-color=zinc"])
 
     const componentsJson = await readJson(
       path.join(fixturePath, "components.json")
@@ -66,7 +66,6 @@ describe("shadcn init - next-app", () => {
       "init",
       "--base-color=stone",
       "--no-css-variables",
-      "--yes",
     ])
 
     const componentsJson = await readJson(
@@ -82,15 +81,51 @@ describe("shadcn init - next-app", () => {
 
   it("should init with components", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, [
-      "init",
-      "--base-color=neutral",
-      "--yes",
-      "button",
-    ])
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral", "button"])
 
     expect(
       await fileExists(path.join(fixturePath, "components/ui/button.tsx"))
     ).toBe(true)
+  })
+})
+
+describe("shadcn init - vite-app", () => {
+  it("should init with custom alias and src", async () => {
+    const fixturePath = await createFixtureTestDirectory("vite-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=gray", "alert-dialog"])
+
+    const componentsJson = await readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.style).toBe("new-york")
+    expect(componentsJson.tailwind.baseColor).toBe("gray")
+    expect(componentsJson.aliases).toMatchObject({
+      components: "#custom/components",
+      utils: "#custom/lib/utils",
+      ui: "#custom/components/ui",
+      lib: "#custom/lib",
+      hooks: "#custom/hooks",
+    })
+
+    expect(
+      await fileExists(
+        path.join(fixturePath, "src/components/ui/alert-dialog.tsx")
+      )
+    ).toBe(true)
+
+    expect(
+      await fileExists(path.join(fixturePath, "src/components/ui/button.tsx"))
+    ).toBe(true)
+
+    const alertDialogContent = await fs.readFile(
+      path.join(fixturePath, "src/components/ui/alert-dialog.tsx"),
+      "utf-8"
+    )
+    expect(alertDialogContent).toContain(
+      'import { buttonVariants } from "#custom/components/ui/button"'
+    )
+    expect(alertDialogContent).toContain(
+      'import { cn } from "#custom/lib/utils"'
+    )
   })
 })
