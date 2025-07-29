@@ -10,12 +10,7 @@ const CACHE_DIR = path.join(__dirname, "../../.cache")
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
 
 export async function fileExists(filePath: string): Promise<boolean> {
-  try {
-    await fs.access(filePath)
-    return true
-  } catch {
-    return false
-  }
+  return fs.pathExists(filePath)
 }
 
 export async function readJson(filePath: string): Promise<any> {
