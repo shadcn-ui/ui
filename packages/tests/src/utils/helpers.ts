@@ -7,9 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const FIXTURES_DIR = path.join(__dirname, "../../fixtures")
 const TEMP_DIR = path.join(__dirname, "../../temp")
 const CACHE_DIR = path.join(__dirname, "../../.cache")
-
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
-const REGISTRY_URL = process.env.REGISTRY_URL || "http://localhost:4000/r"
 
 export async function fileExists(filePath: string): Promise<boolean> {
   try {
@@ -50,7 +48,6 @@ export async function runCommand(
       cwd,
       env: {
         ...process.env,
-        REGISTRY_URL,
         FORCE_COLOR: "0",
         CI: "true",
         ...options?.env,
