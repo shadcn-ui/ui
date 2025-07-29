@@ -76,10 +76,20 @@ export async function npxShadcn(cwd: string, args: string[]) {
 
   await fs.ensureDir(CACHE_DIR)
 
-  return runCommand(cwd, args, {
+  const result = await runCommand(cwd, args, {
     env: {
       REGISTRY_URL: getRegistryUrl(),
       SHADCN_CACHE_DIR: CACHE_DIR,
     },
   })
+  
+  // Only log in CI when there's an error
+  if (process.env.CI && result.exitCode !== 0) {
+    console.log(`\nFailed command: npx shadcn ${args.join(' ')}`)
+    console.log("Exit code:", result.exitCode)
+    console.log("Stdout:", result.stdout)
+    console.log("Stderr:", result.stderr)
+  }
+  
+  return result
 }
