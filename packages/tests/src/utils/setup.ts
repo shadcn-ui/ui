@@ -28,8 +28,17 @@ afterAll(async () => {
     globalRegistry = null
   }
 
-  // Also clean up temp directory after all tests
   await rimraf(TEMP_DIR)
+
+  const { execa } = await import("execa")
+  try {
+    await execa("pnpm", ["install"], {
+      cwd: path.join(__dirname, "../../../.."),
+      stdio: "inherit",
+    })
+  } catch (error) {
+    console.error("Failed to restore lockfile:", error)
+  }
 })
 
 export function getRegistryUrl(): string {
