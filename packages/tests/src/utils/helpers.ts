@@ -85,3 +85,22 @@ export async function npxShadcn(cwd: string, args: string[]) {
     },
   })
 }
+
+export function cssHasProperties(
+  cssContent: string,
+  checks: Array<{
+    selector: string
+    properties: Record<string, string>
+  }>
+): boolean {
+  return checks.every(({ selector, properties }) => {
+    const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    const regex = new RegExp(`${escapedSelector}\\s*{([^}]+)}`, "s")
+    const match = cssContent.match(regex)
+    const block = match ? match[1] : ""
+
+    return Object.entries(properties).every(([property, value]) =>
+      block.includes(`${property}: ${value};`)
+    )
+  })
+}
