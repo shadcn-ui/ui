@@ -150,7 +150,9 @@ export const registryConfigItemSchema = z.union([
 ])
 
 export const registryConfigSchema = z.record(
-  z.string(),
+  z.string().refine((key) => key.startsWith("@"), {
+    message: "Registry names must start with @ (e.g., @v0, @acme)",
+  }),
   registryConfigItemSchema
 )
 

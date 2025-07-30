@@ -17,9 +17,7 @@ export function resolveRegistryItemsFromRegistries(
   const resolvedItems = [...items]
 
   if (!registries) {
-    // Clear any existing headers.
     setRegistryHeaders({})
-    return resolvedItems
   }
 
   for (let i = 0; i < resolvedItems.length; i++) {
@@ -47,11 +45,11 @@ export function resolveRegistryItemsFromRegistries(
 
 export function resolveRegistryItemFromRegistries(
   name: string,
-  registries?: z.infer<typeof registryConfigSchema>
+  registries: z.infer<typeof registryConfigSchema> = {}
 ) {
   const { registry, item } = parseRegistryAndItemFromString(name)
 
-  if (!registry || !registries) {
+  if (!registry) {
     return null
   }
 
@@ -63,6 +61,7 @@ export function resolveRegistryItemFromRegistries(
     )
   }
 
+  // Validate that required environment variables are set
   validateRegistryConfig(registry, config)
 
   return {

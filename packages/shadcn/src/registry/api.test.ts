@@ -427,4 +427,74 @@ describe("registryResolveItemsTree with URL dependencies", () => {
       await fs.rmdir(tempDir)
     }
   })
+
+  it("should resolve namespace syntax in registryDependencies", async () => {
+    // Mock a namespace registry endpoint
+    const namespaceUrl = "https://custom-registry.com/custom-component.json"
+    server.use(
+      http.get(namespaceUrl, () => {
+        return HttpResponse.json({
+          name: "custom-component",
+          type: "registry:ui",
+          files: [
+            {
+              path: "ui/custom-component.tsx",
+              content: "// custom component content",
+              type: "registry:ui",
+            },
+          ],
+        })
+      })
+    )
+
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+    const tempFile = path.join(tempDir, "component-with-namespace-deps.json")
+
+    const componentData = {
+      name: "component-with-namespace-deps",
+      type: "registry:ui",
+      registryDependencies: ["@custom/custom-component"], // Namespace dependency
+      files: [
+        {
+          path: "ui/component-with-namespace-deps.tsx",
+          content: "// component with namespace deps content",
+          type: "registry:ui",
+        },
+      ],
+    }
+
+    await fs.writeFile(tempFile, JSON.stringify(componentData, null, 2))
+
+    try {
+      const mockConfig = {
+        style: "new-york",
+        tailwind: { baseColor: "neutral", cssVariables: true },
+        resolvedPaths: { cwd: process.cwd() },
+        registries: {
+          "@custom": {
+            url: "https://custom-registry.com/{name}.json",
+          },
+        },
+      } as any
+
+      const result = await registryResolveItemsTree([tempFile], mockConfig)
+
+      expect(result).toBeDefined()
+      expect(result?.files).toBeDefined()
+
+      expect(result?.files?.length).toBe(2)
+      expect(
+        result?.files?.some((f) => f.path === "ui/custom-component.tsx")
+      ).toBe(true)
+      expect(
+        result?.files?.some(
+          (f) => f.path === "ui/component-with-namespace-deps.tsx"
+        )
+      ).toBe(true)
+    } finally {
+      // Clean up
+      await fs.unlink(tempFile)
+      await fs.rmdir(tempDir)
+    }
+  })
 })
