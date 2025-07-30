@@ -112,6 +112,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/changelog",
           items: [],
         },
+        {
+          title: "Atari Theme Demo",
+          href: "/examples/atari-theme-demo",
+          items: [],
+        },
       ],
     },
     {
