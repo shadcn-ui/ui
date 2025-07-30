@@ -15,11 +15,11 @@ export async function setup() {
   await rimraf(TEMP_DIR)
   await fs.ensureDir(TEMP_DIR)
 
-  if (!globalRegistry) {
-    globalRegistry = new Registry()
-    await globalRegistry.start()
-    process.env.REGISTRY_URL = globalRegistry.url
-  }
+  // if (!globalRegistry) {
+  //   globalRegistry = new Registry()
+  //   await globalRegistry.start()
+  //   process.env.REGISTRY_URL = globalRegistry.url
+  // }
 }
 
 export async function teardown() {
@@ -32,10 +32,10 @@ export async function teardown() {
 
     await rimraf(TEMP_DIR)
 
-    if (globalRegistry) {
-      await globalRegistry.stop()
-      globalRegistry = null
-    }
+    // if (globalRegistry) {
+    //   await globalRegistry.stop()
+    //   globalRegistry = null
+    // }
   } catch (error) {
     console.error("Failed to restore lockfile:", error)
   }
