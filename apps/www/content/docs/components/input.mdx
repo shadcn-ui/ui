@@ -1,14 +1,27 @@
 ---
 title: Input
-description: Displays a form input field or a component that looks like an input field.
+description: A versatile input component that supports various types, states, and integrations with form libraries.
 component: true
 ---
 
 <ComponentPreview
   name="input-demo"
   className="[&_input]:max-w-xs"
-  description="A form input component."
+  description="A modern, accessible input component with multiple variants and states"
 />
+
+## Features
+
+- Support for all HTML input types
+- Form integration with React Hook Form
+- Disabled and read-only states
+- Error states with validation
+- Custom styling with Tailwind CSS
+- Accessible by default
+- File upload support
+- Icon support
+- Responsive design
+- Flexible layout options
 
 ## Installation
 
@@ -44,12 +57,105 @@ npx shadcn@latest add input
 
 ## Usage
 
-```tsx
-import { Input } from "@/components/ui/input"
-```
+### Basic Usage
 
 ```tsx
-<Input />
+import { Input } from "@/components/ui/input"
+
+export default function Page() {
+  return (
+    <div className="grid w-full max-w-sm items-center gap-1.5">
+      <Input type="email" placeholder="Email" />
+    </div>
+  )
+}
+```
+
+### With Label and Description
+
+```tsx
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+export default function Page() {
+  return (
+    <div className="grid w-full max-w-sm items-center gap-1.5">
+      <Label htmlFor="email">Email</Label>
+      <Input
+        type="email"
+        id="email"
+        placeholder="Enter your email"
+      />
+      <p className="text-sm text-muted-foreground">
+        We'll never share your email with anyone else.
+      </p>
+    </div>
+  )
+}
+```
+
+### With React Hook Form
+
+```tsx
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { useForm } from "react-hook-form"
+
+export default function Page() {
+  const form = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  })
+
+  return (
+    <form onSubmit={form.handleSubmit((data) => console.log(data))}>
+      <div className="grid w-full max-w-sm items-center gap-4">
+        <div className="grid gap-1.5">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            {...form.register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Invalid email address",
+              },
+            })}
+          />
+          {form.formState.errors.email && (
+            <p className="text-sm text-red-500">
+              {form.formState.errors.email.message}
+            </p>
+          )}
+        </div>
+        <div className="grid gap-1.5">
+          <Label htmlFor="password">Password</Label>
+          <Input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            {...form.register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters",
+              },
+            })}
+          />
+          {form.formState.errors.password && (
+            <p className="text-sm text-red-500">
+              {form.formState.errors.password.message}
+            </p>
+          )}
+        </div>
+      </div>
+    </form>
+  )
+}
 ```
 
 ## Examples
@@ -59,23 +165,23 @@ import { Input } from "@/components/ui/input"
 <ComponentPreview
   name="input-demo"
   className="[&_input]:max-w-xs"
-  description="A form input component."
+  description="A basic input component"
 />
 
-### File
+### File Upload
 
 <ComponentPreview
   name="input-file"
   className="[&_input]:max-w-xs"
-  description="A file input component."
+  description="A file input component with drag and drop support"
 />
 
-### Disabled
+### Disabled State
 
 <ComponentPreview
   name="input-disabled"
   className="[&_input]:max-w-xs"
-  description="A disabled input component."
+  description="A disabled input component"
 />
 
 ### With Label
@@ -83,7 +189,7 @@ import { Input } from "@/components/ui/input"
 <ComponentPreview
   name="input-with-label"
   className="[&_input]:max-w-xs"
-  description="An input component with a label."
+  description="An input component with a label and description"
 />
 
 ### With Button
@@ -91,9 +197,56 @@ import { Input } from "@/components/ui/input"
 <ComponentPreview
   name="input-with-button"
   className="[&_input]:max-w-xs"
-  description="An input component with a button."
+  description="An input component with an action button"
 />
 
-### Form
+### Form Integration
 
-<ComponentPreview name="input-form" />
+<ComponentPreview 
+  name="input-form" 
+  description="An input component integrated with a form"
+/>
+
+### With Icons
+
+<ComponentPreview
+  name="input-with-icons"
+  className="[&_input]:max-w-xs"
+  description="An input component with leading and trailing icons"
+/>
+
+## API Reference
+
+### Input Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| type | string | "text" | The type of input (text, email, password, etc.) |
+| value | string | undefined | The controlled value of the input |
+| defaultValue | string | undefined | The default value of the input |
+| placeholder | string | undefined | Placeholder text when input is empty |
+| disabled | boolean | false | Whether the input is disabled |
+| readOnly | boolean | false | Whether the input is read-only |
+| required | boolean | false | Whether the input is required |
+| name | string | undefined | The name of the input (used in forms) |
+| className | string | undefined | Additional CSS classes to apply |
+
+## Best Practices
+
+1. **Always Use Labels**: Provide clear, descriptive labels for inputs
+2. **Add Placeholders**: Use helpful placeholder text to guide users
+3. **Validate Input**: Implement proper validation for required fields
+4. **Handle Errors**: Display clear error messages when validation fails
+5. **Consider Accessibility**: Ensure proper ARIA attributes and keyboard navigation
+6. **Use Appropriate Types**: Choose the correct input type for the data being collected
+7. **Maintain Consistency**: Keep input styling consistent throughout your application
+8. **Provide Feedback**: Give visual feedback for focus and error states
+
+## Changelog
+
+### 2024-10-16 Accessibility Improvements
+
+- Added proper ARIA attributes for better screen reader support
+- Improved keyboard navigation
+- Enhanced focus styles for better visibility
+- Added support for form validation states
