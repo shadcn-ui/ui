@@ -6,7 +6,11 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:dev": "cross-env REGISTRY_URL=http://localhost:4000/r vitest run",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "shadcn": "workspace:*"
