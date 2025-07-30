@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/input-otp-pattern.tsx",
-      "content": "import { REGEXP_ONLY_DIGITS_AND_CHARS } from \"input-otp\"\n\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSlot,\n} from \"@/registry/default/ui/input-otp\"\n\nexport default function InputOTPPattern() {\n  return (\n    <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>\n      <InputOTPGroup>\n        <InputOTPSlot index={0} />\n        <InputOTPSlot index={1} />\n        <InputOTPSlot index={2} />\n        <InputOTPSlot index={3} />\n        <InputOTPSlot index={4} />\n        <InputOTPSlot index={5} />\n      </InputOTPGroup>\n    </InputOTP>\n  )\n}\n",
+      "content": "import { REGEXP_ONLY_DIGITS_AND_CHARS } from \"input-otp\"\r\n\r\nimport {\r\n  InputOTP,\r\n  InputOTPGroup,\r\n  InputOTPSlot,\r\n} from \"@/registry/default/ui/input-otp\"\r\n\r\nexport default function InputOTPPattern() {\r\n  return (\r\n    <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>\r\n      <InputOTPGroup>\r\n        <InputOTPSlot index={0} />\r\n        <InputOTPSlot index={1} />\r\n        <InputOTPSlot index={2} />\r\n        <InputOTPSlot index={3} />\r\n        <InputOTPSlot index={4} />\r\n        <InputOTPSlot index={5} />\r\n      </InputOTPGroup>\r\n    </InputOTP>\r\n  )\r\n}\r\n",
       "type": "registry:example",
       "target": ""
     }

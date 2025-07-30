@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/alert-destructive.tsx",
-      "content": "import { AlertCircleIcon } from \"lucide-react\"\n\nimport {\n  Alert,\n  AlertDescription,\n  AlertTitle,\n} from \"@/registry/new-york-v4/ui/alert\"\n\nexport default function AlertDestructive() {\n  return (\n    <Alert variant=\"destructive\">\n      <AlertCircleIcon />\n      <AlertTitle>Error</AlertTitle>\n      <AlertDescription>\n        Your session has expired. Please log in again.\n      </AlertDescription>\n    </Alert>\n  )\n}\n",
+      "content": "import { AlertCircleIcon } from \"lucide-react\"\r\n\r\nimport {\r\n  Alert,\r\n  AlertDescription,\r\n  AlertTitle,\r\n} from \"@/registry/new-york-v4/ui/alert\"\r\n\r\nexport default function AlertDestructive() {\r\n  return (\r\n    <Alert variant=\"destructive\">\r\n      <AlertCircleIcon />\r\n      <AlertTitle>Error</AlertTitle>\r\n      <AlertDescription>\r\n        Your session has expired. Please log in again.\r\n      </AlertDescription>\r\n    </Alert>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ]

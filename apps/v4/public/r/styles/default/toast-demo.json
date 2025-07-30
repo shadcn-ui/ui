@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/toast-demo.tsx",
-      "content": "\"use client\"\n\nimport { useToast } from \"@/registry/default/hooks/use-toast\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport { ToastAction } from \"@/registry/default/ui/toast\"\n\nexport default function ToastDemo() {\n  const { toast } = useToast()\n\n  return (\n    <Button\n      variant=\"outline\"\n      onClick={() => {\n        toast({\n          title: \"Scheduled: Catch up \",\n          description: \"Friday, February 10, 2023 at 5:57 PM\",\n          action: (\n            <ToastAction altText=\"Goto schedule to undo\">Undo</ToastAction>\n          ),\n        })\n      }}\n    >\n      Add to calendar\n    </Button>\n  )\n}\n",
+      "content": "\"use client\"\r\n\r\nimport { useToast } from \"@/registry/default/hooks/use-toast\"\r\nimport { Button } from \"@/registry/default/ui/button\"\r\nimport { ToastAction } from \"@/registry/default/ui/toast\"\r\n\r\nexport default function ToastDemo() {\r\n  const { toast } = useToast()\r\n\r\n  return (\r\n    <Button\r\n      variant=\"outline\"\r\n      onClick={() => {\r\n        toast({\r\n          title: \"Scheduled: Catch up \",\r\n          description: \"Friday, February 10, 2023 at 5:57 PM\",\r\n          action: (\r\n            <ToastAction altText=\"Goto schedule to undo\">Undo</ToastAction>\r\n          ),\r\n        })\r\n      }}\r\n    >\r\n      Add to calendar\r\n    </Button>\r\n  )\r\n}\r\n",
       "type": "registry:example",
       "target": ""
     }

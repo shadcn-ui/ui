@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/input-file.tsx",
-      "content": "import { Input } from \"@/registry/default/ui/input\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport default function InputFile() {\n  return (\n    <div className=\"grid w-full max-w-sm items-center gap-1.5\">\n      <Label htmlFor=\"picture\">Picture</Label>\n      <Input id=\"picture\" type=\"file\" />\n    </div>\n  )\n}\n",
+      "content": "import { Input } from \"@/registry/default/ui/input\"\r\nimport { Label } from \"@/registry/default/ui/label\"\r\n\r\nexport default function InputFile() {\r\n  return (\r\n    <div className=\"grid w-full max-w-sm items-center gap-1.5\">\r\n      <Label htmlFor=\"picture\">Picture</Label>\r\n      <Input id=\"picture\" type=\"file\" />\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:example",
       "target": ""
     }

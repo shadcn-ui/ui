@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/calendar-demo.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\n\nexport default function CalendarDemo() {\n  const [date, setDate] = React.useState<Date | undefined>(new Date())\n\n  return (\n    <Calendar\n      mode=\"single\"\n      selected={date}\n      onSelect={setDate}\n      className=\"rounded-md border shadow-sm\"\n      captionLayout=\"dropdown\"\n    />\n  )\n}\n",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\n\r\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\r\n\r\nexport default function CalendarDemo() {\r\n  const [date, setDate] = React.useState<Date | undefined>(new Date())\r\n\r\n  return (\r\n    <Calendar\r\n      mode=\"single\"\r\n      selected={date}\r\n      onSelect={setDate}\r\n      className=\"rounded-md border shadow-sm\"\r\n      captionLayout=\"dropdown\"\r\n    />\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ]

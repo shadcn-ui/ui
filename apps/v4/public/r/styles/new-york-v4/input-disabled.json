@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/input-disabled.tsx",
-      "content": "import { Input } from \"@/registry/new-york-v4/ui/input\"\n\nexport default function InputDisabled() {\n  return <Input disabled type=\"email\" placeholder=\"Email\" />\n}\n",
+      "content": "import { Input } from \"@/registry/new-york-v4/ui/input\"\r\n\r\nexport default function InputDisabled() {\r\n  return <Input disabled type=\"email\" placeholder=\"Email\" />\r\n}\r\n",
       "type": "registry:example"
     }
   ]

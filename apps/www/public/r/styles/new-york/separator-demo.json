@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/separator-demo.tsx",
-      "content": "import { Separator } from \"@/registry/new-york/ui/separator\"\n\nexport default function SeparatorDemo() {\n  return (\n    <div>\n      <div className=\"space-y-1\">\n        <h4 className=\"text-sm font-medium leading-none\">Radix Primitives</h4>\n        <p className=\"text-sm text-muted-foreground\">\n          An open-source UI component library.\n        </p>\n      </div>\n      <Separator className=\"my-4\" />\n      <div className=\"flex h-5 items-center space-x-4 text-sm\">\n        <div>Blog</div>\n        <Separator orientation=\"vertical\" />\n        <div>Docs</div>\n        <Separator orientation=\"vertical\" />\n        <div>Source</div>\n      </div>\n    </div>\n  )\n}\n",
+      "content": "import { Separator } from \"@/registry/new-york/ui/separator\"\r\n\r\nexport default function SeparatorDemo() {\r\n  return (\r\n    <div>\r\n      <div className=\"space-y-1\">\r\n        <h4 className=\"text-sm font-medium leading-none\">Radix Primitives</h4>\r\n        <p className=\"text-sm text-muted-foreground\">\r\n          An open-source UI component library.\r\n        </p>\r\n      </div>\r\n      <Separator className=\"my-4\" />\r\n      <div className=\"flex h-5 items-center space-x-4 text-sm\">\r\n        <div>Blog</div>\r\n        <Separator orientation=\"vertical\" />\r\n        <div>Docs</div>\r\n        <Separator orientation=\"vertical\" />\r\n        <div>Source</div>\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:example",
       "target": ""
     }

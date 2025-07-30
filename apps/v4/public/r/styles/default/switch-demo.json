@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "examples/switch-demo.tsx",
-      "content": "import { Label } from \"@/registry/default/ui/label\"\nimport { Switch } from \"@/registry/default/ui/switch\"\n\nexport default function SwitchDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Switch id=\"airplane-mode\" />\n      <Label htmlFor=\"airplane-mode\">Airplane Mode</Label>\n    </div>\n  )\n}\n",
+      "content": "import { Label } from \"@/registry/default/ui/label\"\r\nimport { Switch } from \"@/registry/default/ui/switch\"\r\n\r\nexport default function SwitchDemo() {\r\n  return (\r\n    <div className=\"flex items-center space-x-2\">\r\n      <Switch id=\"airplane-mode\" />\r\n      <Label htmlFor=\"airplane-mode\">Airplane Mode</Label>\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:example",
       "target": ""
     }
