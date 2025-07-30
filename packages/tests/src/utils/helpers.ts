@@ -3,9 +3,10 @@ import { fileURLToPath } from "url"
 import { execa } from "execa"
 import fs from "fs-extra"
 
+import { TEMP_DIR } from "./setup"
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const FIXTURES_DIR = path.join(__dirname, "../../fixtures")
-const TEMP_DIR = path.join(__dirname, "../../temp")
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
 
 export function getRegistryUrl() {

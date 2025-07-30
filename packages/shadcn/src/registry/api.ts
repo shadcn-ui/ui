@@ -436,12 +436,28 @@ export async function registryResolveItemsTree(
         payload.push(item)
         if (item.registryDependencies) {
           // Resolve namespace syntax and set headers for dependencies
-          const resolvedDependencies = config?.registries
-            ? resolveRegistryItemsFromRegistries(
-                item.registryDependencies,
-                config.registries
+          let resolvedDependencies = item.registryDependencies
+
+          // Check for namespaced dependencies when no registries are configured
+          if (!config?.registries) {
+            const namespacedDeps = item.registryDependencies.filter((dep) =>
+              dep.startsWith("@")
+            )
+            if (namespacedDeps.length > 0) {
+              const { registry } = parseRegistryAndItemFromString(
+                namespacedDeps[0]
               )
-            : item.registryDependencies
+              throw new Error(
+                `The items you're adding depend on unknown registry ${registry}. \nMake sure it is defined in components.json as follows:\n` +
+                  `{\n  "registries": {\n    "${registry}": "https://example.com/{name}.json"\n  }\n}`
+              )
+            }
+          } else {
+            resolvedDependencies = resolveRegistryItemsFromRegistries(
+              item.registryDependencies,
+              config.registries
+            )
+          }
 
           const { items, registryNames } = await resolveDependenciesRecursively(
             resolvedDependencies,
@@ -461,12 +477,28 @@ export async function registryResolveItemsTree(
         payload.push(item)
         if (item.registryDependencies) {
           // Resolve namespace syntax and set headers for dependencies
-          const resolvedDependencies = config?.registries
-            ? resolveRegistryItemsFromRegistries(
-                item.registryDependencies,
-                config.registries
+          let resolvedDependencies = item.registryDependencies
+
+          // Check for namespaced dependencies when no registries are configured
+          if (!config?.registries) {
+            const namespacedDeps = item.registryDependencies.filter((dep) =>
+              dep.startsWith("@")
+            )
+            if (namespacedDeps.length > 0) {
+              const { registry } = parseRegistryAndItemFromString(
+                namespacedDeps[0]
               )
-            : item.registryDependencies
+              throw new Error(
+                `The items you're adding depend on unknown registry ${registry}. \nMake sure it is defined in components.json as follows:\n` +
+                  `{\n  "registries": {\n    "${registry}": "https://example.com/{name}.json"\n  }\n}`
+              )
+            }
+          } else {
+            resolvedDependencies = resolveRegistryItemsFromRegistries(
+              item.registryDependencies,
+              config.registries
+            )
+          }
 
           const { items, registryNames } = await resolveDependenciesRecursively(
             resolvedDependencies,
@@ -474,6 +506,7 @@ export async function registryResolveItemsTree(
             new Set(),
             item.name || url
           )
+
           allDependencyItems.push(...items)
           allDependencyRegistryNames.push(...registryNames)
         }
