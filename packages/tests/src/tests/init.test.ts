@@ -2,12 +2,7 @@ import path from "path"
 import fs from "fs-extra"
 import { describe, expect, it } from "vitest"
 
-import {
-  createFixtureTestDirectory,
-  fileExists,
-  npxShadcn,
-  readJson,
-} from "../utils/helpers"
+import { createFixtureTestDirectory, npxShadcn } from "../utils/helpers"
 
 describe("shadcn init - next-app", () => {
   it("should init with default configuration", async () => {
@@ -15,9 +10,9 @@ describe("shadcn init - next-app", () => {
     await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
-    expect(await fileExists(componentsJsonPath)).toBe(true)
+    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
 
-    const componentsJson = await readJson(componentsJsonPath)
+    const componentsJson = await fs.readJson(componentsJsonPath)
     expect(componentsJson).toMatchObject({
       style: "new-york",
       rsc: true,
@@ -37,7 +32,9 @@ describe("shadcn init - next-app", () => {
       },
     })
 
-    expect(await fileExists(path.join(fixturePath, "lib/utils.ts"))).toBe(true)
+    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+      true
+    )
 
     const cssPath = path.join(fixturePath, "app/globals.css")
     const cssContent = await fs.readFile(cssPath, "utf-8")
@@ -53,7 +50,7 @@ describe("shadcn init - next-app", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--base-color=zinc"])
 
-    const componentsJson = await readJson(
+    const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
     )
     expect(componentsJson.style).toBe("new-york")
@@ -68,7 +65,7 @@ describe("shadcn init - next-app", () => {
       "--no-css-variables",
     ])
 
-    const componentsJson = await readJson(
+    const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
     )
     expect(componentsJson.tailwind.cssVariables).toBe(false)
@@ -84,7 +81,7 @@ describe("shadcn init - next-app", () => {
     await npxShadcn(fixturePath, ["init", "--base-color=neutral", "button"])
 
     expect(
-      await fileExists(path.join(fixturePath, "components/ui/button.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
     ).toBe(true)
   })
 })
@@ -94,7 +91,7 @@ describe("shadcn init - vite-app", () => {
     const fixturePath = await createFixtureTestDirectory("vite-app")
     await npxShadcn(fixturePath, ["init", "--base-color=gray", "alert-dialog"])
 
-    const componentsJson = await readJson(
+    const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
     )
     expect(componentsJson.style).toBe("new-york")
@@ -108,13 +105,15 @@ describe("shadcn init - vite-app", () => {
     })
 
     expect(
-      await fileExists(
+      await fs.pathExists(
         path.join(fixturePath, "src/components/ui/alert-dialog.tsx")
       )
     ).toBe(true)
 
     expect(
-      await fileExists(path.join(fixturePath, "src/components/ui/button.tsx"))
+      await fs.pathExists(
+        path.join(fixturePath, "src/components/ui/button.tsx")
+      )
     ).toBe(true)
 
     const alertDialogContent = await fs.readFile(

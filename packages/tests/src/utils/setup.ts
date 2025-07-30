@@ -41,6 +41,6 @@ afterAll(async () => {
   }
 })
 
-export function getRegistryUrl(): string {
+export function getRegistryUrl() {
   return process.env.REGISTRY_URL || "https://ui.shadcn.com/r"
 }

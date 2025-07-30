@@ -9,19 +9,6 @@ const TEMP_DIR = path.join(__dirname, "../../temp")
 const CACHE_DIR = path.join(__dirname, "../../.cache")
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
 
-export async function fileExists(filePath: string): Promise<boolean> {
-  try {
-    await fs.access(filePath)
-    return true
-  } catch {
-    return false
-  }
-}
-
-export async function readJson(filePath: string): Promise<any> {
-  return fs.readJSON(filePath)
-}
-
 export async function createFixtureTestDirectory(fixtureName: string) {
   const fixturePath = path.join(FIXTURES_DIR, fixtureName)
   const testDir = path.join(
@@ -76,12 +63,17 @@ export async function runCommand(
 export async function npxShadcn(cwd: string, args: string[]) {
   const { getRegistryUrl } = await import("./setup")
 
-  await fs.ensureDir(CACHE_DIR)
+  // Create a unique cache directory for each test to prevent interference
+  const testCacheDir = path.join(
+    CACHE_DIR,
+    `test-cache-${Date.now()}-${Math.random().toString(36).substring(7)}`
+  )
+  await fs.ensureDir(testCacheDir)
 
   return runCommand(cwd, args, {
     env: {
       REGISTRY_URL: getRegistryUrl(),
-      SHADCN_CACHE_DIR: CACHE_DIR,
+      SHADCN_CACHE_DIR: testCacheDir,
     },
   })
 }
@@ -92,7 +84,7 @@ export function cssHasProperties(
     selector: string
     properties: Record<string, string>
   }>
-): boolean {
+) {
   return checks.every(({ selector, properties }) => {
     const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
     const regex = new RegExp(`${escapedSelector}\\s*{([^}]+)}`, "s")
@@ -105,9 +97,7 @@ export function cssHasProperties(
   })
 }
 
-export async function createLocalFileServer(
-  filePath: string
-): Promise<{ url: string; close: () => Promise<void> }> {
+export async function createLocalFileServer(filePath: string) {
   const { createServer } = await import("http")
   const content = await fs.readFile(filePath, "utf-8")
 
@@ -137,9 +127,7 @@ export async function createLocalFileServer(
   }
 }
 
-export async function createRemoteRegistryItemFromPayload(
-  payload: any
-): Promise<{ url: string; close: () => Promise<void> }> {
+export async function createRemoteRegistryItemFromPayload(payload: any) {
   const { createServer } = await import("http")
   const content = JSON.stringify(payload)
   const name = payload.name || "item"
