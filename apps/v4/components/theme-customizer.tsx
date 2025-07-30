@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import template from "lodash/template"
+import { template } from "es-toolkit/compat"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
