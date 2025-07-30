@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto"
 import path from "path"
 import { fileURLToPath } from "url"
 import { execa } from "execa"
@@ -15,12 +16,11 @@ export function getRegistryUrl() {
 
 export async function createFixtureTestDirectory(fixtureName: string) {
   const fixturePath = path.join(FIXTURES_DIR, fixtureName)
-  const testDir = path.join(
-    TEMP_DIR,
-    `test-${Date.now()}-${Math.random().toString(36).substring(7)}`
-  )
 
-  await fs.ensureDir(TEMP_DIR)
+  const uniqueId = `${process.pid}-${randomUUID().substring(0, 8)}`
+  let testDir = path.join(TEMP_DIR, `test-${uniqueId}-${fixtureName}`)
+
+  await fs.ensureDir(testDir)
   await fs.copy(fixturePath, testDir)
 
   return testDir
