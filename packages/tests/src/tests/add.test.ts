@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest"
 import {
   createFixtureTestDirectory,
   cssHasProperties,
-  fileExists,
+  getRegistryUrl,
   npxShadcn,
 } from "../utils/helpers"
 
@@ -15,7 +15,7 @@ describe("shadcn add", () => {
     await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
     await npxShadcn(fixturePath, ["add", "button"])
     expect(
-      await fileExists(path.join(fixturePath, "components/ui/button.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
     ).toBe(true)
   })
 
@@ -24,46 +24,34 @@ describe("shadcn add", () => {
     await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
     await npxShadcn(fixturePath, ["add", "button", "card"])
     expect(
-      await fileExists(path.join(fixturePath, "components/ui/button.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
     ).toBe(true)
     expect(
-      await fileExists(path.join(fixturePath, "components/ui/card.tsx"))
-    ).toBe(true)
-  })
-
-  it("should add item with registryDependencies", async () => {
-    const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
-    await npxShadcn(fixturePath, ["add", "alert-dialog"])
-    expect(
-      await fileExists(path.join(fixturePath, "components/ui/alert-dialog.tsx"))
-    ).toBe(true)
-    expect(
-      await fileExists(path.join(fixturePath, "components/ui/button.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/card.tsx"))
     ).toBe(true)
   })
 
   it("should add item from url", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
-    await npxShadcn(fixturePath, [
-      "add",
-      "https://ui.shadcn.com/r/styles/new-york-v4/login-01.json",
-    ])
+    const registryUrl = getRegistryUrl()
+    const url = `${registryUrl}/styles/new-york-v4/login-01.json`
+    await npxShadcn(fixturePath, ["add", url])
+
     expect(
-      await fileExists(path.join(fixturePath, "components/ui/button.tsx"))
+      await fs.pathExists(path.join(fixturePath, "app/login/page.tsx"))
     ).toBe(true)
     expect(
-      await fileExists(path.join(fixturePath, "components/ui/card.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
     ).toBe(true)
     expect(
-      await fileExists(path.join(fixturePath, "components/ui/input.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/card.tsx"))
     ).toBe(true)
     expect(
-      await fileExists(path.join(fixturePath, "components/ui/label.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/input.tsx"))
     ).toBe(true)
     expect(
-      await fileExists(path.join(fixturePath, "components/login-form.tsx"))
+      await fs.pathExists(path.join(fixturePath, "components/ui/label.tsx"))
     ).toBe(true)
   })
 
@@ -86,9 +74,23 @@ describe("shadcn add", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
     await npxShadcn(fixturePath, ["add", "login-03"])
-    expect(await fileExists(path.join(fixturePath, "app/login/page.tsx"))).toBe(
-      true
-    )
+    expect(
+      await fs.pathExists(path.join(fixturePath, "app/login/page.tsx"))
+    ).toBe(true)
+  })
+
+  it("should add item with registryDependencies", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["add", "alert-dialog"])
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "components/ui/alert-dialog.tsx")
+      )
+    ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(true)
   })
 
   it("should add item with npm dependencies", async () => {
@@ -153,7 +155,7 @@ describe("shadcn add", () => {
       "add",
       "../../fixtures/registry/example-item.json",
     ])
-    expect(await fileExists(path.join(fixturePath, "path/to/foo.txt"))).toBe(
+    expect(await fs.pathExists(path.join(fixturePath, "path/to/foo.txt"))).toBe(
       true
     )
     expect(
@@ -169,7 +171,7 @@ describe("shadcn add", () => {
       "../../fixtures/registry/example-item.json",
     ])
     expect(
-      await fileExists(path.join(fixturePath, "src/path/to/foo.txt"))
+      await fs.pathExists(path.join(fixturePath, "src/path/to/foo.txt"))
     ).toBe(true)
     expect(
       await fs.readFile(path.join(fixturePath, "src/path/to/foo.txt"), "utf-8")
@@ -183,7 +185,9 @@ describe("shadcn add", () => {
       "add",
       "../../fixtures/registry/example-item-to-root.json",
     ])
-    expect(await fileExists(path.join(fixturePath, "config.json"))).toBe(true)
+    expect(await fs.pathExists(path.join(fixturePath, "config.json"))).toBe(
+      true
+    )
     expect(await fs.readJson(path.join(fixturePath, "config.json"))).toEqual({
       foo: "bar",
     })
@@ -196,7 +200,9 @@ describe("shadcn add", () => {
       "add",
       "../../fixtures/registry/example-item-to-root.json",
     ])
-    expect(await fileExists(path.join(fixturePath, "config.json"))).toBe(true)
+    expect(await fs.pathExists(path.join(fixturePath, "config.json"))).toBe(
+      true
+    )
     expect(await fs.readJson(path.join(fixturePath, "config.json"))).toEqual({
       foo: "bar",
     })
@@ -209,7 +215,7 @@ describe("shadcn add", () => {
       "add",
       "../../fixtures/registry/example-env-vars.json",
     ])
-    expect(await fileExists(path.join(fixturePath, ".env.local"))).toBe(true)
+    expect(await fs.pathExists(path.join(fixturePath, ".env.local"))).toBe(true)
     expect(await fs.readFile(path.join(fixturePath, ".env.local"), "utf-8"))
       .toMatchInlineSnapshot(`
       "APP_URL=https://example.com
@@ -235,7 +241,7 @@ describe("shadcn add", () => {
       "../../fixtures/registry/example-env-vars.json",
     ])
 
-    expect(await fileExists(path.join(fixturePath, ".env.local"))).toBe(true)
+    expect(await fs.pathExists(path.join(fixturePath, ".env.local"))).toBe(true)
     expect(await fs.readFile(path.join(fixturePath, ".env.local"), "utf-8"))
       .toMatchInlineSnapshot(`
       "APP_URL=https://foo.com
@@ -260,7 +266,9 @@ describe("shadcn add", () => {
       "../../fixtures/registry/example-env-vars.json",
     ])
 
-    expect(await fileExists(path.join(fixturePath, ".env.local"))).toBe(false)
+    expect(await fs.pathExists(path.join(fixturePath, ".env.local"))).toBe(
+      false
+    )
     expect(await fs.readFile(path.join(fixturePath, ".env"), "utf-8"))
       .toMatchInlineSnapshot(`
       "APP_URL=https://foo.com

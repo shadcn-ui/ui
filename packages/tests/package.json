@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
-    "test:watch": "vitest"
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "shadcn": "workspace:*"
@@ -19,7 +21,6 @@
     "rimraf": "^6.0.1",
     "typescript": "^5.5.3",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^2.1.9",
-    "wait-port": "^1.1.0"
+    "vitest": "^2.1.9"
   }
 }

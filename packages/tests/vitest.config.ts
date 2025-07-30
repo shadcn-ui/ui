@@ -3,13 +3,13 @@ import { defineConfig } from "vitest/config"
 
 export default defineConfig({
   test: {
-    testTimeout: 60000,
+    testTimeout: 120000,
     hookTimeout: 120000,
     globals: true,
     environment: "node",
-    setupFiles: ["./src/utils/setup.ts"],
+    globalSetup: "./src/utils/setup.ts",
     maxConcurrency: 4,
-    isolate: true,
+    isolate: false,
   },
   plugins: [
     tsconfigPaths({
