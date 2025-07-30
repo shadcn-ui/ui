@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import template from "lodash/template"
+import { template } from "es-toolkit/compat"
 import { Check, ClipboardIcon, Copy } from "lucide-react"
 import { useTheme } from "next-themes"
 
@@ -130,7 +130,7 @@ export function Customizer() {
                     }}
                     className={cn(
                       "w-[32px] rounded-lg lg:px-2.5 xl:w-[86px]",
-                      isActive && "border-primary/50 ring-[2px] ring-primary/30"
+                      isActive && "border-primary/50 ring-primary/30 ring-[2px]"
                     )}
                     style={
                       {
@@ -179,7 +179,7 @@ export function Customizer() {
                   className={cn(
                     "w-[40px] rounded-lg",
                     config.radius === parseFloat(value) &&
-                      "border-primary/50 ring-[2px] ring-primary/30"
+                      "border-primary/50 ring-primary/30 ring-[2px]"
                   )}
                 >
                   {value}
@@ -307,7 +307,7 @@ function CustomizerCode() {
         <TabsContent value="v4">
           <div data-rehype-pretty-code-fragment="">
             <pre className="max-h-[450px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900">
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+              <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
                 <span className="line text-white">&nbsp;:root &#123;</span>
                 <span className="line text-white">
                   &nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
@@ -333,7 +333,7 @@ function CustomizerCode() {
         <TabsContent value="v3">
           <div data-rehype-pretty-code-fragment="">
             <pre className="max-h-[450px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900">
-              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+              <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
                 <span className="line text-white">@layer base &#123;</span>
                 <span className="line text-white">
                   &nbsp;&nbsp;:root &#123;
