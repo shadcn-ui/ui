@@ -77,6 +77,7 @@ export const initOptionsSchema = z.object({
       }
     ),
   style: z.string(),
+  tsconfig: z.string().optional(),
 })
 
 export const init = new Command()
@@ -91,6 +92,10 @@ export const init = new Command()
     "-b, --base-color <base-color>",
     "the base color to use. (neutral, gray, zinc, stone, slate)",
     undefined
+  )
+  .option(
+    "--tsconfig <tsconfig>",
+    "the path to the tsconfig.json file to use."
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("-d, --defaults,", "use default configuration.", false)
@@ -184,7 +189,7 @@ export async function runInit(
   const projectConfig = await getProjectConfig(options.cwd, projectInfo)
   const config = projectConfig
     ? await promptForMinimalConfig(projectConfig, options)
-    : await promptForConfig(await getConfig(options.cwd))
+    : await promptForConfig(await getConfig(options.cwd), options)
 
   if (!options.yes) {
     const { proceed } = await prompts({
@@ -237,7 +242,10 @@ export async function runInit(
   return fullConfig
 }
 
-async function promptForConfig(defaultConfig: Config | null = null) {
+async function promptForConfig(
+  defaultConfig: Config | null = null,
+  opts: Pick<z.infer<typeof initOptionsSchema>, "tsconfig"> = {}
+) {
   const [styles, baseColors] = await Promise.all([
     getRegistryStyles(),
     getRegistryBaseColors(),
@@ -350,6 +358,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       lib: options.components.replace(/\/components$/, "lib"),
       hooks: options.components.replace(/\/components$/, "hooks"),
     },
+    tsconfig: opts.tsconfig,
   })
 }
 
@@ -410,5 +419,6 @@ async function promptForMinimalConfig(
     tsx: defaultConfig?.tsx,
     aliases: defaultConfig?.aliases,
     iconLibrary: defaultConfig?.iconLibrary,
+    tsconfig: opts.tsconfig,
   })
 }
