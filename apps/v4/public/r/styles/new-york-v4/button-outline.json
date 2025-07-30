@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/button-outline.tsx",
-      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonOutline() {\n  return <Button variant=\"outline\">Outline</Button>\n}\n",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\r\n\r\nexport default function ButtonOutline() {\r\n  return <Button variant=\"outline\">Outline</Button>\r\n}\r\n",
       "type": "registry:example"
     }
   ]

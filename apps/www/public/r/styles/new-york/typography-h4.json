@@ -6,7 +6,7 @@
   "files": [
     {
       "path": "examples/typography-h4.tsx",
-      "content": "export default function TypographyH4() {\n  return (\n    <h4 className=\"scroll-m-20 text-xl font-semibold tracking-tight\">\n      People stopped telling jokes\n    </h4>\n  )\n}\n",
+      "content": "export default function TypographyH4() {\r\n  return (\r\n    <h4 className=\"scroll-m-20 text-xl font-semibold tracking-tight\">\r\n      People stopped telling jokes\r\n    </h4>\r\n  )\r\n}\r\n",
       "type": "registry:example",
       "target": ""
     }
