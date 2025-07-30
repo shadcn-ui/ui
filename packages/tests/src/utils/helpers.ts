@@ -6,8 +6,11 @@ import fs from "fs-extra"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const FIXTURES_DIR = path.join(__dirname, "../../fixtures")
 const TEMP_DIR = path.join(__dirname, "../../temp")
-const CACHE_DIR = path.join(__dirname, "../../.cache")
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
+
+export function getRegistryUrl() {
+  return process.env.REGISTRY_URL || "http://localhost:4000/r"
+}
 
 export async function createFixtureTestDirectory(fixtureName: string) {
   const fixturePath = path.join(FIXTURES_DIR, fixtureName)
@@ -61,19 +64,9 @@ export async function runCommand(
 }
 
 export async function npxShadcn(cwd: string, args: string[]) {
-  const { getRegistryUrl } = await import("./setup")
-
-  // Create a unique cache directory for each test to prevent interference
-  const testCacheDir = path.join(
-    CACHE_DIR,
-    `test-cache-${Date.now()}-${Math.random().toString(36).substring(7)}`
-  )
-  await fs.ensureDir(testCacheDir)
-
   return runCommand(cwd, args, {
     env: {
       REGISTRY_URL: getRegistryUrl(),
-      SHADCN_CACHE_DIR: testCacheDir,
     },
   })
 }
@@ -95,70 +88,4 @@ export function cssHasProperties(
       block.includes(`${property}: ${value};`)
     )
   })
-}
-
-export async function createLocalFileServer(filePath: string) {
-  const { createServer } = await import("http")
-  const content = await fs.readFile(filePath, "utf-8")
-
-  const server = createServer((_, res) => {
-    res.writeHead(200, {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    })
-    res.end(content)
-  })
-
-  await new Promise<void>((resolve) => {
-    server.listen(0, "127.0.0.1", () => {
-      resolve()
-    })
-  })
-
-  const address = server.address()
-  const port = typeof address === "object" && address ? address.port : 0
-
-  return {
-    url: `http://127.0.0.1:${port}/file.json`,
-    close: () =>
-      new Promise<void>((resolve) => {
-        server.close(() => resolve())
-      }),
-  }
-}
-
-export async function createRemoteRegistryItemFromPayload(payload: any) {
-  const { createServer } = await import("http")
-  const content = JSON.stringify(payload)
-  const name = payload.name || "item"
-
-  const server = createServer((req, res) => {
-    if (req.url?.includes(`/${name}.json`)) {
-      res.writeHead(200, {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      })
-      res.end(content)
-    } else {
-      res.writeHead(404)
-      res.end("Not found")
-    }
-  })
-
-  await new Promise<void>((resolve) => {
-    server.listen(0, "127.0.0.1", () => {
-      resolve()
-    })
-  })
-
-  const address = server.address()
-  const port = typeof address === "object" && address ? address.port : 0
-
-  return {
-    url: `http://127.0.0.1:${port}/r/${name}.json`,
-    close: () =>
-      new Promise<void>((resolve) => {
-        server.close(() => resolve())
-      }),
-  }
 }

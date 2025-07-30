@@ -5,9 +5,9 @@ import { describe, expect, it } from "vitest"
 import {
   createFixtureTestDirectory,
   cssHasProperties,
+  getRegistryUrl,
   npxShadcn,
 } from "../utils/helpers"
-import { getRegistryUrl } from "../utils/setup"
 
 describe("shadcn add", () => {
   it("should add item to project", async () => {
@@ -31,27 +31,16 @@ describe("shadcn add", () => {
     ).toBe(true)
   })
 
-  it("should add item with registryDependencies", async () => {
-    const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
-    await npxShadcn(fixturePath, ["add", "alert-dialog"])
-    expect(
-      await fs.pathExists(
-        path.join(fixturePath, "components/ui/alert-dialog.tsx")
-      )
-    ).toBe(true)
-    expect(
-      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
-    ).toBe(true)
-  })
-
   it("should add item from url", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
     const registryUrl = getRegistryUrl()
     const url = `${registryUrl}/styles/new-york-v4/login-01.json`
-
     await npxShadcn(fixturePath, ["add", url])
+
+    expect(
+      await fs.pathExists(path.join(fixturePath, "app/login/page.tsx"))
+    ).toBe(true)
     expect(
       await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
     ).toBe(true)
@@ -63,11 +52,6 @@ describe("shadcn add", () => {
     ).toBe(true)
     expect(
       await fs.pathExists(path.join(fixturePath, "components/ui/label.tsx"))
-    ).toBe(true)
-
-    // Check that the example file was created
-    expect(
-      await fs.pathExists(path.join(fixturePath, "app/login/page.tsx"))
     ).toBe(true)
   })
 
@@ -92,6 +76,20 @@ describe("shadcn add", () => {
     await npxShadcn(fixturePath, ["add", "login-03"])
     expect(
       await fs.pathExists(path.join(fixturePath, "app/login/page.tsx"))
+    ).toBe(true)
+  })
+
+  it("should add item with registryDependencies", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["add", "alert-dialog"])
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "components/ui/alert-dialog.tsx")
+      )
+    ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
     ).toBe(true)
   })
 
