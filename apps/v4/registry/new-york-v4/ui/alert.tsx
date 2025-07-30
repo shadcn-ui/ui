@@ -4,13 +4,13 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const alertVariants = cva(
-  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[data-slot=alert-icon]:grid-cols-[auto_1fr] grid-cols-[0_1fr] has-[data-slot=alert-icon]:gap-x-3 gap-y-0.5 items-start",
   {
     variants: {
       variant: {
         default: "bg-card text-card-foreground",
         destructive:
-          "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
+          "text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90",
       },
     },
     defaultVariants: {
@@ -29,6 +29,16 @@ function Alert({
       data-slot="alert"
       role="alert"
       className={cn(alertVariants({ variant }), className)}
+      {...props}
+    />
+  )
+}
+
+function AlertIcon({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="alert-icon"
+      className={cn("col-start-1 row-span-full flex items-center justify-center", className)}
       {...props}
     />
   )
@@ -63,4 +73,4 @@ function AlertDescription({
   )
 }
 
-export { Alert, AlertTitle, AlertDescription }
+export { Alert, AlertIcon, AlertTitle, AlertDescription }
