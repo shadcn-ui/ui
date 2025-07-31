@@ -52,7 +52,7 @@ const registryShadcn = await createRegistryServer(
     },
   ],
   {
-    port: 4000,
+    port: 4040,
     path: "/r",
   }
 )
@@ -171,6 +171,8 @@ const registryTwo = await createRegistryServer(
 )
 
 beforeAll(async () => {
+  // This sets the shadcn registry to our mock registry.
+  process.env.REGISTRY_URL = "http://localhost:4040/r"
   await registryShadcn.start()
   await registryOne.start()
   await registryTwo.start()
