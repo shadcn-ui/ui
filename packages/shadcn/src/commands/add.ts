@@ -3,6 +3,8 @@ import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { getRegistryIndex, getRegistryItem } from "@/src/registry/api"
+import { clearRegistryContext } from "@/src/registry/context"
+import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import {
   isLocalFile,
@@ -11,6 +13,7 @@ import {
 } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
+import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import { createConfig, getConfig } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
@@ -81,6 +84,18 @@ export const add = new Command()
         cwd: path.resolve(opts.cwd),
         ...opts,
       })
+
+      await loadEnvFiles(options.cwd)
+
+      const initialConfig = await getConfig(options.cwd)
+
+      // Resolve registry components before processing.
+      if (options.components?.length) {
+        options.components = resolveRegistryItemsFromRegistries(
+          options.components,
+          initialConfig?.registries
+        )
+      }
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
       let registryItem: any = null
@@ -237,6 +252,8 @@ export const add = new Command()
     } catch (error) {
       logger.break()
       handleError(error)
+    } finally {
+      clearRegistryContext()
     }
   })
 

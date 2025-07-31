@@ -7,7 +7,7 @@ export default defineConfig({
     hookTimeout: 120000,
     globals: true,
     environment: "node",
-    globalSetup: "./src/utils/setup.ts",
+    globalSetup: ["./src/utils/setup.ts"],
     maxConcurrency: 4,
     isolate: false,
   },

@@ -7,9 +7,13 @@ import {
   getRegistryItem,
   getRegistryStyles,
 } from "@/src/registry/api"
+import { clearRegistryContext } from "@/src/registry/context"
+import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
+import { rawConfigSchema } from "@/src/registry/schema"
 import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
+import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import {
   DEFAULT_COMPONENTS,
@@ -17,7 +21,6 @@ import {
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
   getConfig,
-  rawConfigSchema,
   resolveConfigPaths,
   type Config,
 } from "@/src/utils/get-config"
@@ -122,6 +125,18 @@ export const init = new Command()
         ...opts,
       })
 
+      await loadEnvFiles(options.cwd)
+
+      const config = await getConfig(options.cwd)
+
+      // Resolve registry components before processing.
+      if (options.components?.length) {
+        options.components = resolveRegistryItemsFromRegistries(
+          options.components,
+          config?.registries
+        )
+      }
+
       // We need to check if we're initializing with a new style.
       // We fetch the payload of the first item.
       // This is okay since the request is cached and deduped.
@@ -150,6 +165,8 @@ export const init = new Command()
     } catch (error) {
       logger.break()
       handleError(error)
+    } finally {
+      clearRegistryContext()
     }
   })
 
