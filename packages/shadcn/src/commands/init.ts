@@ -13,6 +13,7 @@ import { rawConfigSchema } from "@/src/registry/schema"
 import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
+import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import {
   DEFAULT_COMPONENTS,
@@ -123,6 +124,8 @@ export const init = new Command()
         style: "index",
         ...opts,
       })
+
+      await loadEnvFiles(options.cwd)
 
       const config = await getConfig(options.cwd)
 

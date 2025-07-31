@@ -13,6 +13,7 @@ import {
 } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
+import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import { createConfig, getConfig } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
@@ -83,6 +84,8 @@ export const add = new Command()
         cwd: path.resolve(opts.cwd),
         ...opts,
       })
+
+      await loadEnvFiles(options.cwd)
 
       const initialConfig = await getConfig(options.cwd)
 
