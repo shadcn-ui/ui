@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest"
 
 import {
   buildHeadersFromRegistryConfig,
+  buildUrlAndHeadersForRegistryItem,
   buildUrlFromRegistryConfig,
 } from "./builder"
 
@@ -10,11 +11,13 @@ describe("buildUrlFromRegistryConfig", () => {
   beforeEach(() => {
     process.env.TEST_TOKEN = "abc123"
     process.env.API_VERSION = "v2"
+    process.env.API_KEY = "key456"
   })
 
   afterEach(() => {
     delete process.env.TEST_TOKEN
     delete process.env.API_VERSION
+    delete process.env.API_KEY
   })
 
   it("should build URL from string config", () => {
@@ -70,17 +73,100 @@ describe("buildUrlFromRegistryConfig", () => {
     const url = buildUrlFromRegistryConfig("table", config)
     expect(url).toBe("https://api.com/table?existing=true&new=param")
   })
+
+  it("should handle URL with no params", () => {
+    const config = {
+      url: "https://api.com/{name}",
+    }
+
+    const url = buildUrlFromRegistryConfig("table", config)
+    expect(url).toBe("https://api.com/table")
+  })
+
+  it("should handle multiple env vars in params", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      params: {
+        token: "${TEST_TOKEN}",
+        version: "${API_VERSION}",
+        key: "${API_KEY}",
+      },
+    }
+
+    const url = buildUrlFromRegistryConfig("table", config)
+    expect(url).toBe("https://api.com/table?token=abc123&version=v2&key=key456")
+  })
+
+  it("should handle all empty env vars in params", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      params: {
+        token: "${MISSING_VAR1}",
+        key: "${MISSING_VAR2}",
+      },
+    }
+
+    const url = buildUrlFromRegistryConfig("table", config)
+    expect(url).toBe("https://api.com/table")
+  })
+
+  it("should handle mixed static and env var params", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      params: {
+        static: "value",
+        env: "${TEST_TOKEN}",
+        empty: "${MISSING_VAR}",
+      },
+    }
+
+    const url = buildUrlFromRegistryConfig("table", config)
+    expect(url).toBe("https://api.com/table?static=value&env=abc123")
+  })
+
+  it("should handle special characters in params", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      params: {
+        "user-id": "123",
+        "api-key": "${TEST_TOKEN}",
+        "content-type": "application/json",
+      },
+    }
+
+    const url = buildUrlFromRegistryConfig("table", config)
+    expect(url).toBe(
+      "https://api.com/table?user-id=123&api-key=abc123&content-type=application%2Fjson"
+    )
+  })
+
+  it("should handle URL with multiple existing query params", () => {
+    const config = {
+      url: "https://api.com/{name}?param1=value1&param2=value2",
+      params: {
+        newParam: "newValue",
+        envParam: "${TEST_TOKEN}",
+      },
+    }
+
+    const url = buildUrlFromRegistryConfig("table", config)
+    expect(url).toBe(
+      "https://api.com/table?param1=value1&param2=value2&newParam=newValue&envParam=abc123"
+    )
+  })
 })
 
 describe("buildHeadersFromRegistryConfig", () => {
   beforeEach(() => {
     process.env.AUTH_TOKEN = "secret123"
     process.env.CLIENT_ID = "client456"
+    process.env.API_KEY = "key789"
   })
 
   afterEach(() => {
     delete process.env.AUTH_TOKEN
     delete process.env.CLIENT_ID
+    delete process.env.API_KEY
   })
 
   it("should return empty object for string config", () => {
@@ -120,5 +206,227 @@ describe("buildHeadersFromRegistryConfig", () => {
     expect(buildHeadersFromRegistryConfig(config)).toEqual({
       "X-Client-Id": "client456",
     })
+  })
+
+  it("should handle headers with mixed static and env var content", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      headers: {
+        Authorization: "Bearer ${AUTH_TOKEN}",
+        "Content-Type": "application/json",
+        "X-Custom": "prefix-${CLIENT_ID}-suffix",
+      },
+    }
+
+    expect(buildHeadersFromRegistryConfig(config)).toEqual({
+      Authorization: "Bearer secret123",
+      "Content-Type": "application/json",
+      "X-Custom": "prefix-client456-suffix",
+    })
+  })
+
+  it("should skip headers with only env vars that are empty", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      headers: {
+        "X-Missing": "${MISSING_VAR1}",
+        "X-Also-Missing": "${MISSING_VAR2}",
+        "X-Present": "${CLIENT_ID}",
+      },
+    }
+
+    expect(buildHeadersFromRegistryConfig(config)).toEqual({
+      "X-Present": "client456",
+    })
+  })
+
+  it("should handle headers with whitespace-only values", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      headers: {
+        "X-Empty": "   ",
+        "X-Whitespace": "  ${MISSING_VAR}  ",
+        "X-Valid": "  ${CLIENT_ID}  ",
+      },
+    }
+
+    expect(buildHeadersFromRegistryConfig(config)).toEqual({
+      "X-Valid": "  client456  ",
+    })
+  })
+
+  it("should handle complex env var patterns", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      headers: {
+        "X-Complex": "Bearer ${AUTH_TOKEN} with ${CLIENT_ID} and ${API_KEY}",
+        "X-Simple": "${CLIENT_ID}",
+        "X-Mixed": "static-${AUTH_TOKEN}-${MISSING_VAR}-${API_KEY}",
+      },
+    }
+
+    expect(buildHeadersFromRegistryConfig(config)).toEqual({
+      "X-Complex": "Bearer secret123 with client456 and key789",
+      "X-Simple": "client456",
+      "X-Mixed": "static-secret123--key789",
+    })
+  })
+
+  it("should handle headers with only static content", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "User-Agent": "shadcn-ui/1.0.0",
+      },
+    }
+
+    expect(buildHeadersFromRegistryConfig(config)).toEqual({
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      "User-Agent": "shadcn-ui/1.0.0",
+    })
+  })
+
+  it("should handle headers with template-like content but no env vars", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      headers: {
+        "X-Template": "This is a template ${but not an env var}",
+        "X-Regular": "Regular header value",
+      },
+    }
+
+    expect(buildHeadersFromRegistryConfig(config)).toEqual({
+      "X-Template": "This is a template ${but not an env var}",
+      "X-Regular": "Regular header value",
+    })
+  })
+
+  it("should handle case where env var expansion doesn't change the value", () => {
+    const config = {
+      url: "https://api.com/{name}",
+      headers: {
+        "X-No-Change": "static value",
+        "X-With-Env": "prefix-${CLIENT_ID}-suffix",
+      },
+    }
+
+    expect(buildHeadersFromRegistryConfig(config)).toEqual({
+      "X-No-Change": "static value",
+      "X-With-Env": "prefix-client456-suffix",
+    })
+  })
+})
+
+describe("buildUrlAndHeadersForRegistryItem", () => {
+  it("should return null for non-registry items", () => {
+    const input = "button"
+    const registries = {}
+    expect(buildUrlAndHeadersForRegistryItem(input, registries)).toBeNull()
+  })
+
+  it("should throw error for unknown registry", () => {
+    expect(() => {
+      buildUrlAndHeadersForRegistryItem("@unknown/button", {})
+    }).toThrow('Unknown registry "@unknown"')
+  })
+
+  it("should resolve registry items with string config", () => {
+    const registries = {
+      "@v0": "https://v0.dev/chat/b/{name}/json",
+    }
+
+    const result1 = buildUrlAndHeadersForRegistryItem("@v0/button", registries)
+    expect(result1).toEqual({
+      url: "https://v0.dev/chat/b/button/json",
+      headers: {},
+    })
+
+    const result2 = buildUrlAndHeadersForRegistryItem(
+      "@v0/data-table",
+      registries
+    )
+    expect(result2).toEqual({
+      url: "https://v0.dev/chat/b/data-table/json",
+      headers: {},
+    })
+  })
+
+  it("should resolve registry items with object config", () => {
+    const registries = {
+      "@test": {
+        url: "https://api.com/{name}.json",
+        headers: {
+          Authorization: "Bearer token123",
+        },
+      },
+    }
+
+    const result = buildUrlAndHeadersForRegistryItem("@test/button", registries)
+    expect(result).toEqual({
+      url: "https://api.com/button.json",
+      headers: {
+        Authorization: "Bearer token123",
+      },
+    })
+  })
+
+  it("should handle environment variables in config", () => {
+    process.env.TEST_TOKEN = "abc123"
+    process.env.API_URL = "https://api.com"
+
+    const registries = {
+      "@env": {
+        url: "${API_URL}/{name}.json",
+        headers: {
+          Authorization: "Bearer ${TEST_TOKEN}",
+        },
+      },
+    }
+
+    const result = buildUrlAndHeadersForRegistryItem("@env/button", registries)
+    expect(result).toEqual({
+      url: "https://api.com/button.json",
+      headers: {
+        Authorization: "Bearer abc123",
+      },
+    })
+
+    delete process.env.TEST_TOKEN
+    delete process.env.API_URL
+  })
+
+  it("should handle complex item paths", () => {
+    const registries = {
+      "@acme": "https://api.com/{name}.json",
+    }
+
+    const result = buildUrlAndHeadersForRegistryItem(
+      "@acme/ui/button",
+      registries
+    )
+    expect(result).toEqual({
+      url: "https://api.com/ui/button.json",
+      headers: {},
+    })
+  })
+
+  it("should handle URLs and local files", () => {
+    const registries = {}
+
+    // URLs should return null (not registry items)
+    expect(
+      buildUrlAndHeadersForRegistryItem(
+        "https://example.com/button",
+        registries
+      )
+    ).toBeNull()
+
+    // Local files should return null (not registry items)
+    expect(
+      buildUrlAndHeadersForRegistryItem("./local/button", registries)
+    ).toBeNull()
   })
 })

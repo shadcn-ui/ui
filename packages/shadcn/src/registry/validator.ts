@@ -3,7 +3,7 @@ import { z } from "zod"
 import { extractEnvVars } from "./env"
 import { registryConfigItemSchema } from "./schema"
 
-export function extractRegistryEnvVars(
+export function extractEnvVarsFromRegistryConfig(
   config: z.infer<typeof registryConfigItemSchema>
 ): string[] {
   const vars = new Set<string>()
@@ -33,7 +33,7 @@ export function validateRegistryConfig(
   registryName: string,
   config: z.infer<typeof registryConfigItemSchema>
 ): void {
-  const requiredVars = extractRegistryEnvVars(config)
+  const requiredVars = extractEnvVarsFromRegistryConfig(config)
   const missing = requiredVars.filter((v) => !process.env[v])
 
   if (missing.length > 0) {

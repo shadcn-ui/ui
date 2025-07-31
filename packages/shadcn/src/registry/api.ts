@@ -1,12 +1,10 @@
 import { promises as fs } from "fs"
 import { homedir } from "os"
 import path from "path"
+import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { getRegistryHeadersFromContext } from "@/src/registry/context"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
-import {
-  resolveRegistryItemFromRegistries,
-  resolveRegistryItemsFromRegistries,
-} from "@/src/registry/resolver"
+import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
 import { isLocalFile } from "@/src/registry/utils"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
@@ -342,7 +340,7 @@ async function resolveDependenciesRecursively(
     let resolvedDep = dep
     if (config?.registries && !isUrl(dep) && !isLocalFile(dep)) {
       try {
-        const resolved = resolveRegistryItemFromRegistries(
+        const resolved = buildUrlAndHeadersForRegistryItem(
           dep,
           config.registries
         )
@@ -759,7 +757,7 @@ export async function resolveRegistryItems(names: string[], config: Config) {
     let resolvedName = name
     if (config.registries) {
       try {
-        const resolved = resolveRegistryItemFromRegistries(
+        const resolved = buildUrlAndHeadersForRegistryItem(
           name,
           config.registries
         )

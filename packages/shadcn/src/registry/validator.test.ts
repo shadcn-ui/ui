@@ -1,13 +1,16 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import { afterEach, beforeEach, describe, expect, it } from "vitest"
 
-import { extractRegistryEnvVars, validateRegistryConfig } from "./validator"
+import {
+  extractEnvVarsFromRegistryConfig,
+  validateRegistryConfig,
+} from "./validator"
 
-describe("extractRegistryEnvVars", () => {
+describe("extractEnvVarsFromRegistryConfig", () => {
   it("should extract vars from string config", () => {
-    expect(extractRegistryEnvVars("https://api.com?token=${TOKEN}")).toEqual([
-      "TOKEN",
-    ])
+    expect(
+      extractEnvVarsFromRegistryConfig("https://api.com?token=${TOKEN}")
+    ).toEqual(["TOKEN"])
   })
 
   it("should extract vars from object config", () => {
@@ -23,7 +26,7 @@ describe("extractRegistryEnvVars", () => {
       },
     }
 
-    expect(extractRegistryEnvVars(config).sort()).toEqual([
+    expect(extractEnvVarsFromRegistryConfig(config).sort()).toEqual([
       "API_KEY",
       "AUTH_TOKEN",
       "TOKEN",
@@ -35,7 +38,7 @@ describe("extractRegistryEnvVars", () => {
       url: "https://api.com/{name}",
     }
 
-    expect(extractRegistryEnvVars(config)).toEqual([])
+    expect(extractEnvVarsFromRegistryConfig(config)).toEqual([])
   })
 })
 
