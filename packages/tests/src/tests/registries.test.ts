@@ -6,6 +6,57 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest"
 import { createFixtureTestDirectory, npxShadcn } from "../utils/helpers"
 import { configureRegistries, createRegistryServer } from "../utils/registry"
 
+const registryShadcn = await createRegistryServer(
+  [
+    {
+      name: "utils",
+      type: "registry:component",
+      files: [
+        {
+          path: "registry/new-york-v4/lib/utils.ts",
+          content:
+            'import { clsx, type ClassValue } from "clsx"\nimport { twMerge } from "tailwind-merge"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n',
+          type: "registry:lib",
+        },
+      ],
+    },
+    {
+      name: "alert-dialog",
+      type: "registry:ui",
+      files: [
+        {
+          path: "components/ui/alert-dialog.tsx",
+          content:
+            "export function AlertDialog() {\n  return <div>AlertDialog Component from Registry Shadcn</div>\n}",
+          type: "registry:ui",
+        },
+        {
+          path: "components/ui/button.tsx",
+          content:
+            "export function Button() {\n  return <div>Button Component from Registry Shadcn</div>\n}",
+          type: "registry:ui",
+        },
+      ],
+    },
+    {
+      name: "button",
+      type: "registry:ui",
+      files: [
+        {
+          path: "components/ui/button.tsx",
+          content:
+            "export function Button() {\n  return <div>Button Component from Registry Shadcn</div>\n}",
+          type: "registry:ui",
+        },
+      ],
+    },
+  ],
+  {
+    port: 4000,
+    path: "/r",
+  }
+)
+
 const registryOne = await createRegistryServer(
   [
     {
@@ -120,11 +171,13 @@ const registryTwo = await createRegistryServer(
 )
 
 beforeAll(async () => {
+  await registryShadcn.start()
   await registryOne.start()
   await registryTwo.start()
 })
 
 afterAll(async () => {
+  await registryShadcn.stop()
   await registryOne.stop()
   await registryTwo.stop()
 })
@@ -449,6 +502,7 @@ describe("registries", () => {
       },
     })
     await npxShadcn(fixturePath, ["add", "@one/quux"])
+
     expect(
       await fs.pathExists(path.join(fixturePath, "app/quux/page.tsx"))
     ).toBe(true)

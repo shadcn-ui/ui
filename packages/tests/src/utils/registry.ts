@@ -13,7 +13,101 @@ export async function createRegistryServer(
   }
 ) {
   const server = createServer((request, response) => {
-    const urlWithoutQuery = request.url?.split("?")[0]
+    const urlWithoutQuery = request.url?.split("?")[0]?.replace(/\.json$/, "")
+
+    if (urlWithoutQuery?.includes("icons/index")) {
+      response.writeHead(200, { "Content-Type": "application/json" })
+      response.end(
+        JSON.stringify({
+          AlertCircle: {
+            lucide: "AlertCircle",
+            radix: "ExclamationTriangleIcon",
+          },
+          ArrowLeft: {
+            lucide: "ArrowLeft",
+            radix: "ArrowLeftIcon",
+          },
+        })
+      )
+      return
+    }
+
+    if (urlWithoutQuery?.includes("colors/neutral")) {
+      response.writeHead(200, { "Content-Type": "application/json" })
+      response.end(
+        JSON.stringify({
+          inlineColors: {
+            light: {
+              background: "white",
+              foreground: "neutral-950",
+            },
+            dark: {
+              background: "neutral-950",
+              foreground: "neutral-50",
+            },
+          },
+          cssVars: {
+            light: {
+              background: "0 0% 100%",
+              foreground: "0 0% 3.9%",
+            },
+            dark: {
+              background: "0 0% 3.9%",
+              foreground: "0 0% 98%",
+            },
+          },
+          cssVarsV4: {
+            light: {
+              background: "oklch(1 0 0)",
+              foreground: "oklch(0.145 0 0)",
+            },
+            dark: {
+              background: "oklch(0.145 0 0)",
+              foreground: "oklch(0.985 0 0)",
+            },
+          },
+          inlineColorsTemplate:
+            "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n  ",
+          cssVarsTemplate:
+            "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer ",
+        })
+      )
+      return
+    }
+
+    if (urlWithoutQuery?.includes("index")) {
+      response.writeHead(200, { "Content-Type": "application/json" })
+      response.end(
+        JSON.stringify([
+          {
+            name: "alert-dialog",
+            type: "registry:ui",
+            files: [
+              {
+                path: "components/ui/alert-dialog.tsx",
+                type: "registry:ui",
+                content:
+                  "export function AlertDialog() { return <div>AlertDialog Component from Registry Shadcn</div> }",
+              },
+            ],
+          },
+          {
+            name: "button",
+            type: "registry:ui",
+            files: [
+              {
+                path: "components/ui/button.tsx",
+                type: "registry:ui",
+                content:
+                  "export function Button() { return <div>Button Component from Registry Shadcn</div> }",
+              },
+            ],
+          },
+        ])
+      )
+      return
+    }
+
     const match = urlWithoutQuery?.match(
       new RegExp(`^${path}/(?:.*/)?([^/]+)$`)
     )
