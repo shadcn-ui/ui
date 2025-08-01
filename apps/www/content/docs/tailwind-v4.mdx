@@ -195,17 +195,17 @@ Here's how you do it:
 
 ```css showLineNumbers
 :root {
-  --background: hsl(0 0% 100%); // <-- Wrap in hsl
+  --background: hsl(0 0% 100%); /* ← Wrap in hsl */
   --foreground: hsl(0 0% 3.9%);
 }
 
 .dark {
-  --background: hsl(0 0% 3.9%); // <-- Wrap in hsl
+  --background: hsl(0 0% 3.9%); /* ← Wrap in hsl */
   --foreground: hsl(0 0% 98%);
 }
 
 @theme inline {
-  --color-background: var(--background); // <-- Remove hsl
+  --color-background: var(--background); /* ← Remove hsl */
   --color-foreground: var(--foreground);
 }
 ```
