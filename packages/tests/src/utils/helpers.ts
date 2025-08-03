@@ -6,20 +6,10 @@ import fs from "fs-extra"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const FIXTURES_DIR = path.join(__dirname, "../../fixtures")
 const TEMP_DIR = path.join(__dirname, "../../temp")
-const CACHE_DIR = path.join(__dirname, "../../.cache")
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
 
-export async function fileExists(filePath: string): Promise<boolean> {
-  try {
-    await fs.access(filePath)
-    return true
-  } catch {
-    return false
-  }
-}
-
-export async function readJson(filePath: string): Promise<any> {
-  return fs.readJSON(filePath)
+export function getRegistryUrl() {
+  return process.env.REGISTRY_URL || "http://localhost:4000/r"
 }
 
 export async function createFixtureTestDirectory(fixtureName: string) {
@@ -74,14 +64,9 @@ export async function runCommand(
 }
 
 export async function npxShadcn(cwd: string, args: string[]) {
-  const { getRegistryUrl } = await import("./setup")
-
-  await fs.ensureDir(CACHE_DIR)
-
   return runCommand(cwd, args, {
     env: {
       REGISTRY_URL: getRegistryUrl(),
-      SHADCN_CACHE_DIR: CACHE_DIR,
     },
   })
 }
@@ -92,7 +77,7 @@ export function cssHasProperties(
     selector: string
     properties: Record<string, string>
   }>
-): boolean {
+) {
   return checks.every(({ selector, properties }) => {
     const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
     const regex = new RegExp(`${escapedSelector}\\s*{([^}]+)}`, "s")

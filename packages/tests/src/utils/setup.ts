@@ -1,37 +1,18 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
+import { tmpdir } from "os"
 import path from "path"
-import { fileURLToPath } from "url"
+import fs from "fs-extra"
 import { rimraf } from "rimraf"
-import { afterAll, beforeAll } from "vitest"
 
-import { Registry } from "./registry"
+const TEMP_DIR = fs.mkdtempSync(path.join(tmpdir(), "shadcn-tests"))
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const TEMP_DIR = path.join(__dirname, "../../temp")
+console.log("TEMP_DIR", TEMP_DIR)
 
-let globalRegistry: Registry | null = null
-
-beforeAll(async () => {
+export async function setup() {
   await rimraf(TEMP_DIR)
+  await fs.ensureDir(TEMP_DIR)
+}
 
-  if (!globalRegistry) {
-    globalRegistry = new Registry()
-    await globalRegistry.start()
-
-    process.env.TEST_REGISTRY_URL = globalRegistry.url
-  }
-}, 120000)
-
-afterAll(async () => {
-  if (globalRegistry) {
-    await globalRegistry.stop()
-    globalRegistry = null
-  }
-
-  // Also clean up temp directory after all tests
+export async function teardown() {
   await rimraf(TEMP_DIR)
-})
-
-export function getRegistryUrl(): string {
-  return process.env.TEST_REGISTRY_URL || "http://localhost:4000/r"
 }

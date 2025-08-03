@@ -8,6 +8,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: pnpm test
+    env:
+      NEXT_PUBLIC_APP_URL: http://localhost:4000
+      NEXT_PUBLIC_V0_URL: https://v0.dev
     steps:
       - uses: actions/checkout@v3
         with:
