@@ -1,11 +1,13 @@
+import { randomUUID } from "crypto"
 import path from "path"
 import { fileURLToPath } from "url"
 import { execa } from "execa"
 import fs from "fs-extra"
 
+import { TEMP_DIR } from "./setup"
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const FIXTURES_DIR = path.join(__dirname, "../../fixtures")
-const TEMP_DIR = path.join(__dirname, "../../temp")
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
 
 export function getRegistryUrl() {
@@ -14,12 +16,11 @@ export function getRegistryUrl() {
 
 export async function createFixtureTestDirectory(fixtureName: string) {
   const fixturePath = path.join(FIXTURES_DIR, fixtureName)
-  const testDir = path.join(
-    TEMP_DIR,
-    `test-${Date.now()}-${Math.random().toString(36).substring(7)}`
-  )
 
-  await fs.ensureDir(TEMP_DIR)
+  const uniqueId = `${process.pid}-${randomUUID().substring(0, 8)}`
+  let testDir = path.join(TEMP_DIR, `test-${uniqueId}-${fixtureName}`)
+
+  await fs.ensureDir(testDir)
   await fs.copy(fixturePath, testDir)
 
   return testDir

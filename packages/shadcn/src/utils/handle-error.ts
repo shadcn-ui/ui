@@ -3,6 +3,7 @@ import { logger } from "@/src/utils/logger"
 import { z } from "zod"
 
 export function handleError(error: unknown) {
+  logger.break()
   logger.error(
     `Something went wrong. Please check the error below for more details.`
   )
