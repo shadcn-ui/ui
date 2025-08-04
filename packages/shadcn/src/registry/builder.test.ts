@@ -341,13 +341,13 @@ describe("buildHeadersFromRegistryConfig", () => {
 describe("buildUrlAndHeadersForRegistryItem", () => {
   it("should return null for non-registry items", () => {
     const input = "button"
-    const registries = {}
-    expect(buildUrlAndHeadersForRegistryItem(input, registries)).toBeNull()
+    const config = {} as any
+    expect(buildUrlAndHeadersForRegistryItem(input, config)).toBeNull()
   })
 
   it("should throw error for unknown registry", () => {
     expect(() => {
-      buildUrlAndHeadersForRegistryItem("@unknown/button", {})
+      buildUrlAndHeadersForRegistryItem("@unknown/button", {} as any)
     }).toThrow('Unknown registry "@unknown"')
   })
 
