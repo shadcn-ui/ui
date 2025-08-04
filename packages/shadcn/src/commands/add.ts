@@ -4,7 +4,6 @@ import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { getRegistryIndex, getRegistryItem } from "@/src/registry/api"
 import { clearRegistryContext } from "@/src/registry/context"
-import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
 import { registryItemTypeSchema } from "@/src/registry/schema"
 import {
   isLocalFile,
@@ -89,13 +88,7 @@ export const add = new Command()
 
       const initialConfig = await getConfig(options.cwd)
 
-      // Resolve registry components before processing.
-      if (options.components?.length) {
-        options.components = resolveRegistryItemsFromRegistries(
-          options.components,
-          initialConfig?.registries
-        )
-      }
+      // Components will be resolved by downstream functions
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
       let registryItem: any = null
@@ -104,7 +97,10 @@ export const add = new Command()
         components.length > 0 &&
         (isUrl(components[0]) || isLocalFile(components[0]))
       ) {
-        registryItem = await getRegistryItem(components[0], "")
+        registryItem = await getRegistryItem(
+          components[0],
+          initialConfig || undefined
+        )
         itemType = registryItem?.type
       }
 

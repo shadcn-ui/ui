@@ -51,6 +51,38 @@ describe("validateRegistryConfig", () => {
     delete process.env.TOKEN
   })
 
+  describe("reserved registries", () => {
+    it("should throw an error when using @shadcn as a registry name", () => {
+      expect(() => {
+        validateRegistryConfig("@shadcn", {
+          url: "https://example.com/{name}",
+        })
+      }).toThrow('"@shadcn" is a reserved registry namespace')
+    })
+
+    it("should not throw for non-reserved registry names", () => {
+      expect(() => {
+        validateRegistryConfig("@mycompany", {
+          url: "https://example.com/{name}",
+        })
+      }).not.toThrow()
+    })
+
+    it("should not throw for similar but different registry names", () => {
+      expect(() => {
+        validateRegistryConfig("@shadcn-ui", {
+          url: "https://example.com/{name}",
+        })
+      }).not.toThrow()
+
+      expect(() => {
+        validateRegistryConfig("@myshadcn", {
+          url: "https://example.com/{name}",
+        })
+      }).not.toThrow()
+    })
+  })
+
   it("should pass when all env vars are set", () => {
     expect(() => {
       validateRegistryConfig("@test", "https://api.com?token=${TOKEN}")

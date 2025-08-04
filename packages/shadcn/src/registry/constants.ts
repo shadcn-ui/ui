@@ -1,3 +1,5 @@
+export const RESERVED_REGISTRIES = ["@shadcn"] as const
+
 export const BUILTIN_MODULES = new Set([
   [
     // Node.js built-in modules

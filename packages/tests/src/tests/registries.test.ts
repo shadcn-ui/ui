@@ -348,7 +348,12 @@ describe("registries", () => {
       "@one": "http://localhost:4444/r/{name}",
     })
 
-    await npxShadcn(fixturePath, ["add", "@one/foo"])
+    const output = await npxShadcn(fixturePath, ["add", "@one/foo"])
+
+    if (!(await fs.pathExists(path.join(fixturePath, "components/foo.tsx")))) {
+      console.log("Test failed. Command output:", output.stdout)
+      console.log("Command stderr:", output.stderr)
+    }
 
     expect(
       await fs.pathExists(path.join(fixturePath, "components/foo.tsx"))
@@ -440,7 +445,7 @@ describe("registries", () => {
     })
 
     const output = await npxShadcn(fixturePath, ["add", "@two/two"])
-    expect(output.stdout).toContain('Unknown registry "@one"')
+    expect(output.stdout).toContain("unknown registry @one")
   })
 
   it("should show an error when adding multiple namespaced items with unconfigured registry", async () => {
@@ -644,5 +649,255 @@ describe("registries", () => {
     expect(
       await fs.pathExists(path.join(fixturePath, "components/qux.tsx"))
     ).toBe(true)
+  })
+
+  describe("fetchFromRegistry improvements", () => {
+    it("should handle registry resolution transparently", async () => {
+      const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+      await configureRegistries(fixturePath, {
+        "@one": "http://localhost:4444/r/{name}",
+        "@two": {
+          url: "http://localhost:5555/registry/{name}",
+          headers: {
+            Authorization: "Bearer EXAMPLE_BEARER_TOKEN",
+          },
+        },
+      })
+
+      // Test that components can be added without pre-resolution
+      await npxShadcn(fixturePath, ["add", "@one/foo", "@two/two"])
+
+      // Verify all files were created including dependencies
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/foo.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/ui/two.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/example.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/qux.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/baz.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/bar.tsx"))
+      ).toBe(true)
+    })
+
+    it("should maintain type safety with mixed registries", async () => {
+      const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+      await configureRegistries(fixturePath, {
+        "@one": "http://localhost:4444/r/{name}",
+      })
+
+      // Mix of namespaced and non-namespaced components
+      await npxShadcn(fixturePath, ["add", "@one/foo", "button"])
+
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/foo.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+      ).toBe(true)
+    })
+
+    it("should handle circular dependencies gracefully", async () => {
+      const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+      // Create a mock server with circular dependencies
+      const circularServer = await createRegistryServer(
+        [
+          {
+            name: "comp-a",
+            type: "registry:component",
+            registryDependencies: ["@circular/comp-b"],
+            files: [
+              {
+                path: "components/comp-a.tsx",
+                content:
+                  "export function CompA() { return <div>Component A</div> }",
+                type: "registry:component",
+              },
+            ],
+          },
+          {
+            name: "comp-b",
+            type: "registry:component",
+            registryDependencies: ["@circular/comp-a"],
+            files: [
+              {
+                path: "components/comp-b.tsx",
+                content:
+                  "export function CompB() { return <div>Component B</div> }",
+                type: "registry:component",
+              },
+            ],
+          },
+        ],
+        {
+          port: 9999,
+          path: "/circular",
+        }
+      )
+
+      await circularServer.start()
+
+      await configureRegistries(fixturePath, {
+        "@circular": "http://localhost:9999/circular/{name}",
+      })
+
+      // Should handle circular dependency without infinite loop
+      await npxShadcn(fixturePath, ["add", "@circular/comp-a"])
+
+      // Both components should be added once
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/comp-a.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/comp-b.tsx"))
+      ).toBe(true)
+
+      await circularServer.stop()
+    })
+
+    it("should preserve header context across dependency resolution", async () => {
+      const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+      // Create a server that validates headers for all requests
+      const authServer = await createRegistryServer(
+        [
+          {
+            name: "parent",
+            type: "registry:component",
+            registryDependencies: ["@auth/child1", "@auth/child2"],
+            files: [
+              {
+                path: "components/parent.tsx",
+                content:
+                  "export function Parent() { return <div>Parent</div> }",
+                type: "registry:component",
+              },
+            ],
+          },
+          {
+            name: "child1",
+            type: "registry:component",
+            files: [
+              {
+                path: "components/child1.tsx",
+                content:
+                  "export function Child1() { return <div>Child 1</div> }",
+                type: "registry:component",
+              },
+            ],
+          },
+          {
+            name: "child2",
+            type: "registry:component",
+            files: [
+              {
+                path: "components/child2.tsx",
+                content:
+                  "export function Child2() { return <div>Child 2</div> }",
+                type: "registry:component",
+              },
+            ],
+          },
+        ],
+        {
+          port: 10000,
+          path: "/auth-test",
+        }
+      )
+
+      await authServer.start()
+
+      await configureRegistries(fixturePath, {
+        "@auth": {
+          url: "http://localhost:10000/auth-test/bearer/{name}",
+          headers: {
+            Authorization: "Bearer EXAMPLE_BEARER_TOKEN",
+          },
+        },
+      })
+
+      // Add parent which should trigger requests for dependencies
+      await npxShadcn(fixturePath, ["add", "@auth/parent"])
+
+      // All components should be added
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/parent.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/child1.tsx"))
+      ).toBe(true)
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/child2.tsx"))
+      ).toBe(true)
+
+      await authServer.stop()
+    })
+  })
+
+  describe("reserved registries", () => {
+    it("should error when trying to use @shadcn as a registry in config", async () => {
+      const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+      // Read the existing components.json
+      const configPath = path.join(fixturePath, "components.json")
+      const config = await fs.readJson(configPath)
+
+      // Add @shadcn as a registry
+      config.registries = {
+        "@shadcn": "https://my-custom-registry.com/{name}",
+      }
+
+      // Write the updated config
+      await fs.writeJson(configPath, config, { spaces: 2 })
+
+      // Try to run a command that loads the config
+      const output = await npxShadcn(fixturePath, ["info"])
+
+      // Check either stdout or stderr for the error message
+      const combinedOutput = output.stdout + output.stderr
+      expect(combinedOutput).toContain("@shadcn")
+      expect(combinedOutput).toContain("reserved registry namespace")
+    })
+
+    it("should allow similar but different registry names", async () => {
+      const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+      // Read the existing components.json
+      const configPath = path.join(fixturePath, "components.json")
+      const config = await fs.readJson(configPath)
+
+      // Add registries with similar names
+      config.registries = {
+        "@shadcn-ui": "https://my-registry.com/{name}",
+        "@myshadcn": "https://another-registry.com/{name}",
+        "@shadcntest": "https://test-registry.com/{name}",
+      }
+
+      // Write the updated config
+      await fs.writeJson(configPath, config, { spaces: 2 })
+
+      // Try to run a command that loads the config
+      const output = await npxShadcn(fixturePath, ["info"])
+
+      // Should not error - check that registries are shown
+      expect(output.stdout).toContain("@shadcn-ui")
+      expect(output.stdout).toContain("@myshadcn")
+      expect(output.stdout).toContain("@shadcntest")
+      expect(output.stdout).not.toContain("reserved registry namespace")
+    })
   })
 })

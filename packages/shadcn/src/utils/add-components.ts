@@ -342,7 +342,7 @@ async function shouldOverwriteCssVars(
   config: z.infer<typeof configSchema>
 ) {
   let result = await Promise.all(
-    components.map((component) => getRegistryItem(component, config.style))
+    components.map((component) => getRegistryItem(component, config))
   )
   const payload = z.array(registryItemSchema).parse(result)
 
