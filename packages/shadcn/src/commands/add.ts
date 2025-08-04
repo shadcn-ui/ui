@@ -1,15 +1,9 @@
-import fs from "fs"
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { getRegistryIndex, getRegistryItem } from "@/src/registry/api"
 import { clearRegistryContext } from "@/src/registry/context"
-import { registryItemTypeSchema } from "@/src/registry/schema"
-import {
-  isLocalFile,
-  isUniversalRegistryItem,
-  isUrl,
-} from "@/src/registry/utils"
+import { isUniversalRegistryItem } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -86,44 +80,45 @@ export const add = new Command()
 
       await loadEnvFiles(options.cwd)
 
-      const initialConfig = await getConfig(options.cwd)
-
-      // Components will be resolved by downstream functions
-
-      let itemType: z.infer<typeof registryItemTypeSchema> | undefined
-      let registryItem: any = null
-
-      if (
-        components.length > 0 &&
-        (isUrl(components[0]) || isLocalFile(components[0]))
-      ) {
-        registryItem = await getRegistryItem(
-          components[0],
-          initialConfig || undefined
-        )
-        itemType = registryItem?.type
+      let initialConfig = await getConfig(options.cwd)
+      if (!initialConfig) {
+        initialConfig = createConfig({
+          resolvedPaths: {
+            cwd: options.cwd,
+          },
+        })
       }
 
-      if (
-        !options.yes &&
-        (itemType === "registry:style" || itemType === "registry:theme")
-      ) {
-        logger.break()
-        const { confirm } = await prompts({
-          type: "confirm",
-          name: "confirm",
-          message: highlighter.warn(
-            `You are about to install a new ${itemType.replace(
-              "registry:",
-              ""
-            )}. \nExisting CSS variables and components will be overwritten. Continue?`
-          ),
-        })
-        if (!confirm) {
+      if (components.length > 0) {
+        const registryItem = await getRegistryItem(components[0], initialConfig)
+        const itemType = registryItem?.type
+
+        if (isUniversalRegistryItem(registryItem)) {
+          await addComponents(components, initialConfig, options)
+          return
+        }
+
+        if (
+          !options.yes &&
+          (itemType === "registry:style" || itemType === "registry:theme")
+        ) {
           logger.break()
-          logger.log(`Installation cancelled.`)
-          logger.break()
-          process.exit(1)
+          const { confirm } = await prompts({
+            type: "confirm",
+            name: "confirm",
+            message: highlighter.warn(
+              `You are about to install a new ${itemType.replace(
+                "registry:",
+                ""
+              )}. \nExisting CSS variables and components will be overwritten. Continue?`
+            ),
+          })
+          if (!confirm) {
+            logger.break()
+            logger.log(`Installation cancelled.`)
+            logger.break()
+            process.exit(1)
+          }
         }
       }
 
@@ -145,22 +140,6 @@ export const add = new Command()
           logger.break()
           process.exit(1)
         }
-      }
-
-      if (isUniversalRegistryItem(registryItem)) {
-        // Universal items only cares about the cwd.
-        if (!fs.existsSync(options.cwd)) {
-          throw new Error(`Directory ${options.cwd} does not exist`)
-        }
-
-        const minimalConfig = createConfig({
-          resolvedPaths: {
-            cwd: options.cwd,
-          },
-        })
-
-        await addComponents(options.components, minimalConfig, options)
-        return
       }
 
       let { errors, config } = await preFlightAdd(options)

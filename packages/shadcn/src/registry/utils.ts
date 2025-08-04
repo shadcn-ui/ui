@@ -272,7 +272,9 @@ export function isUniversalRegistryItem(
   return (
     !!registryItem?.files?.length &&
     registryItem.files.every(
-      (file) => !!file.target && file.type === "registry:file"
+      (file) =>
+        !!file.target &&
+        (file.type === "registry:file" || file.type === "registry:item")
     )
   )
 }

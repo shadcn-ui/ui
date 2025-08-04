@@ -3,7 +3,11 @@ import path from "path"
 import fs from "fs-extra"
 import { afterAll, beforeAll, describe, expect, it } from "vitest"
 
-import { createFixtureTestDirectory, npxShadcn } from "../utils/helpers"
+import {
+  createFixtureTestDirectory,
+  cssHasProperties,
+  npxShadcn,
+} from "../utils/helpers"
 import { configureRegistries, createRegistryServer } from "../utils/registry"
 
 const registryShadcn = await createRegistryServer(
@@ -47,6 +51,31 @@ const registryShadcn = await createRegistryServer(
           content:
             "export function Button() {\n  return <div>Button Component from Registry Shadcn</div>\n}",
           type: "registry:ui",
+        },
+      ],
+    },
+    {
+      name: "example-button",
+      type: "registry:component",
+      registryDependencies: ["@shadcn/button"],
+      files: [
+        {
+          path: "components/example-button.tsx",
+          content:
+            "export function ExampleButton() {\n  return <div>Example Button Component from Registry Shadcn</div>\n}",
+          type: "registry:component",
+        },
+      ],
+    },
+    {
+      name: "no-framework-item",
+      type: "registry:item",
+      files: [
+        {
+          path: "path/to/foo.txt",
+          content: "Foo Bar",
+          type: "registry:item",
+          target: "path/to/foo.txt",
         },
       ],
     },
@@ -123,6 +152,20 @@ const registryOne = await createRegistryServer(
         },
       ],
     },
+    {
+      name: "foo-theme",
+      type: "registry:theme",
+      cssVars: {
+        light: {
+          background: "white",
+          foreground: "black",
+        },
+        dark: {
+          background: "black",
+          foreground: "white",
+        },
+      },
+    },
   ],
   {
     port: 4444,
@@ -162,6 +205,20 @@ const registryTwo = await createRegistryServer(
           type: "registry:component",
         },
       ],
+    },
+    {
+      name: "theme",
+      type: "registry:theme",
+      cssVars: {
+        light: {
+          background: "red",
+          foreground: "blue",
+          primary: "green",
+        },
+        dark: {
+          foreground: "red",
+        },
+      },
     },
   ],
   {
@@ -904,19 +961,11 @@ describe("registries", () => {
     it("should allow similar but different registry names", async () => {
       const fixturePath = await createFixtureTestDirectory("next-app-init")
 
-      // Read the existing components.json
-      const configPath = path.join(fixturePath, "components.json")
-      const config = await fs.readJson(configPath)
-
-      // Add registries with similar names
-      config.registries = {
-        "@shadcn-ui": "https://my-registry.com/{name}",
-        "@myshadcn": "https://another-registry.com/{name}",
-        "@shadcntest": "https://test-registry.com/{name}",
-      }
-
-      // Write the updated config
-      await fs.writeJson(configPath, config, { spaces: 2 })
+      await configureRegistries(fixturePath, {
+        "@shadcn-ui": "http://localhost:4444/r/{name}",
+        "@myshadcn": "http://localhost:4444/r/{name}",
+        "@shadcntest": "http://localhost:4444/r/{name}",
+      })
 
       // Try to run a command that loads the config
       const output = await npxShadcn(fixturePath, ["info"])
@@ -927,5 +976,173 @@ describe("registries", () => {
       expect(output.stdout).toContain("@shadcntest")
       expect(output.stdout).not.toContain("built-in registry")
     })
+  })
+
+  it("should add registry:item with no framework", async () => {
+    const fixturePath = await createFixtureTestDirectory("no-framework")
+    await npxShadcn(fixturePath, ["add", "no-framework-item"])
+
+    expect(await fs.pathExists(path.join(fixturePath, "path/to/foo.txt"))).toBe(
+      true
+    )
+    expect(
+      await fs.readFile(path.join(fixturePath, "path/to/foo.txt"), "utf-8")
+    ).toBe("Foo Bar")
+  })
+
+  it("should add registry:theme", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+    await configureRegistries(fixturePath, {
+      "@one": "http://localhost:4444/r/{name}",
+    })
+
+    const output = await npxShadcn(fixturePath, [
+      "add",
+      "@one/foo-theme",
+      "--yes",
+    ])
+
+    expect(output.stderr).toContain("Updating CSS variables in app/globals.css")
+
+    const globalCssContent = await fs.readFile(
+      path.join(fixturePath, "app/globals.css"),
+      "utf-8"
+    )
+
+    expect(
+      cssHasProperties(globalCssContent, [
+        {
+          selector: ":root",
+          properties: {
+            "--background": "white",
+            "--foreground": "black",
+          },
+        },
+        {
+          selector: ".dark",
+          properties: {
+            "--background": "black",
+            "--foreground": "white",
+          },
+        },
+      ])
+    ).toBe(true)
+  })
+
+  it("should merge registry:theme with existing theme", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+    await configureRegistries(fixturePath, {
+      "@one": "http://localhost:4444/r/{name}",
+      "@two": {
+        url: "http://localhost:5555/registry/{name}",
+        headers: {
+          Authorization: "Bearer ${BEARER_TOKEN}",
+        },
+      },
+    })
+
+    process.env.BEARER_TOKEN = "1234567890"
+
+    await npxShadcn(fixturePath, [
+      "add",
+      "@one/foo-theme",
+      "@two/theme",
+      "--yes",
+    ])
+    expect(
+      cssHasProperties(
+        await fs.readFile(path.join(fixturePath, "app/globals.css"), "utf-8"),
+        [
+          {
+            selector: ":root",
+            properties: {
+              "--background": "red",
+              "--foreground": "blue",
+              "--primary": "green",
+            },
+          },
+          {
+            selector: ".dark",
+            properties: {
+              "--background": "black",
+              "--foreground": "red",
+            },
+          },
+        ]
+      )
+    ).toBe(true)
+
+    await npxShadcn(fixturePath, [
+      "add",
+      "@two/theme",
+      "@one/foo-theme",
+      "--yes",
+    ])
+    expect(
+      cssHasProperties(
+        await fs.readFile(path.join(fixturePath, "app/globals.css"), "utf-8"),
+        [
+          {
+            selector: ":root",
+            properties: {
+              "--background": "white",
+              "--foreground": "black",
+              "--primary": "green",
+            },
+          },
+          {
+            selector: ".dark",
+            properties: {
+              "--background": "black",
+              "--foreground": "white",
+            },
+          },
+        ]
+      )
+    ).toBe(true)
+  })
+
+  it("should add named item from shadcn registry", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    await npxShadcn(fixturePath, ["add", "button"])
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(true)
+  })
+
+  it("should add namespaced items from the shadcn registry", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    await npxShadcn(fixturePath, [
+      "add",
+      "@shadcn/example-button",
+      "@shadcn/no-framework-item",
+    ])
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "components/example-button.tsx")
+      )
+    ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(true)
+    expect(await fs.pathExists(path.join(fixturePath, "path/to/foo.txt"))).toBe(
+      true
+    )
+    expect(
+      await fs.readFile(path.join(fixturePath, "path/to/foo.txt"), "utf-8")
+    ).toBe("Foo Bar")
+  })
+
+  it("should add namespaced items from shadcn registry with no-framework", async () => {
+    const fixturePath = await createFixtureTestDirectory("no-framework")
+    await npxShadcn(fixturePath, ["add", "@shadcn/no-framework-item"])
+    expect(await fs.pathExists(path.join(fixturePath, "path/to/foo.txt"))).toBe(
+      true
+    )
+    expect(
+      await fs.readFile(path.join(fixturePath, "path/to/foo.txt"), "utf-8")
+    ).toBe("Foo Bar")
   })
 })

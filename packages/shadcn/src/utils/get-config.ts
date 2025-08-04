@@ -252,6 +252,9 @@ export function createConfig(partial?: DeepPartial<Config>): Config {
       components: "",
       utils: "",
     },
+    registries: {
+      ...BUILTIN_REGISTRIES,
+    },
   }
 
   // Deep merge the partial config with defaults

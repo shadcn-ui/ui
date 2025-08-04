@@ -9,7 +9,11 @@ import {
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
 import { isLocalFile } from "@/src/registry/utils"
-import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
+import {
+  Config,
+  createConfig,
+  getTargetStyleFromConfig,
+} from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
@@ -99,18 +103,15 @@ export async function getRegistryItem(
   config?: Config
 ): Promise<RegistryItem | null> {
   try {
-    // Handle local file paths
     if (isLocalFile(name)) {
       return await getLocalRegistryItem(name)
     }
 
-    // Handle URLs
     if (isUrl(name)) {
       const [result] = await fetchFromRegistry([name], config)
       return result
     }
 
-    // Handle namespaced items (e.g., @one/foo)
     if (name.startsWith("@") && config?.registries) {
       const [result] = await fetchFromRegistry([name], config)
       return result
@@ -414,8 +415,7 @@ export async function fetchFromRegistry(
 async function resolveDependenciesRecursively(
   dependencies: string[],
   config?: Config,
-  visited: Set<string> = new Set(),
-  parentName?: string
+  visited: Set<string> = new Set()
 ) {
   const items: z.infer<typeof registryItemSchema>[] = []
   const registryNames: string[] = []
@@ -435,8 +435,7 @@ async function resolveDependenciesRecursively(
           const nested = await resolveDependenciesRecursively(
             item.registryDependencies,
             config,
-            visited,
-            item.name || dep
+            visited
           )
           items.push(...nested.items)
           registryNames.push(...nested.registryNames)
@@ -463,8 +462,7 @@ async function resolveDependenciesRecursively(
           const nested = await resolveDependenciesRecursively(
             item.registryDependencies,
             config,
-            visited,
-            item.name || dep
+            visited
           )
           items.push(...nested.items)
           registryNames.push(...nested.registryNames)
@@ -482,8 +480,7 @@ async function resolveDependenciesRecursively(
             const nested = await resolveDependenciesRecursively(
               item.registryDependencies,
               config,
-              visited,
-              item.name || dep
+              visited
             )
             items.push(...nested.items)
             registryNames.push(...nested.registryNames)
@@ -565,8 +562,7 @@ export async function registryResolveItemsTree(
           const { items, registryNames } = await resolveDependenciesRecursively(
             resolvedDependencies,
             config,
-            new Set(),
-            item.name || localFile
+            new Set()
           )
           allDependencyItems.push(...items)
           allDependencyRegistryNames.push(...registryNames)
@@ -606,8 +602,7 @@ export async function registryResolveItemsTree(
           const { items, registryNames } = await resolveDependenciesRecursively(
             resolvedDependencies,
             config,
-            new Set(),
-            item.name || url
+            new Set()
           )
 
           allDependencyItems.push(...items)
@@ -644,8 +639,7 @@ export async function registryResolveItemsTree(
               await resolveDependenciesRecursively(
                 item.registryDependencies,
                 config,
-                new Set([...namespacedItems]),
-                item.name
+                new Set([...namespacedItems])
               )
             payload.push(...depItems)
 
@@ -703,12 +697,16 @@ export async function registryResolveItemsTree(
       }
     }
 
-    // Sort the payload so that registry:theme is always first.
-    payload.sort((a) => {
-      if (a.type === "registry:theme") {
+    // Sort the payload so that registry:theme items come first,
+    // while maintaining the relative order of all items.
+    payload.sort((a, b) => {
+      if (a.type === "registry:theme" && b.type !== "registry:theme") {
         return -1
       }
-      return 1
+      if (a.type !== "registry:theme" && b.type === "registry:theme") {
+        return 1
+      }
+      return 0
     })
 
     let tailwind = {}
@@ -763,11 +761,7 @@ export async function registryResolveItemsTree(
   }
 }
 
-async function resolveRegistryDependencies(
-  url: string,
-  config: Config,
-  parentName?: string
-) {
+async function resolveRegistryDependencies(url: string, config: Config) {
   if (isUrl(url)) {
     return [url]
   }
@@ -775,8 +769,7 @@ async function resolveRegistryDependencies(
   const { registryNames } = await resolveDependenciesRecursively(
     [url],
     config,
-    new Set(),
-    parentName
+    new Set()
   )
 
   const style = config.resolvedPaths?.cwd
@@ -918,8 +911,7 @@ export async function resolveRegistryItems(names: string[], config: Config) {
 
     const itemRegistryDependencies = await resolveRegistryDependencies(
       resolvedName,
-      config,
-      name
+      config
     )
     registryDependencies.push(...itemRegistryDependencies)
   }

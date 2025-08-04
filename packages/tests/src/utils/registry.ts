@@ -191,6 +191,12 @@ export async function configureRegistries(
   fixturePath: string,
   payload: Record<string, any>
 ) {
+  if (!fs.pathExistsSync(path.join(fixturePath, "components.json"))) {
+    await fs.writeJSON(path.join(fixturePath, "components.json"), {
+      payload,
+    })
+  }
+
   const componentsJson = await fs.readJSON(
     path.join(fixturePath, "components.json")
   )

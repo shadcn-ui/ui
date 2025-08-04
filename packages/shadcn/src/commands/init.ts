@@ -131,10 +131,7 @@ export const init = new Command()
       // We need to check if we're initializing with a new style.
       // We fetch the payload of the first item.
       // This is okay since the request is cached and deduped.
-      if (
-        components.length > 0 &&
-        (isUrl(components[0]) || isLocalFile(components[0]))
-      ) {
+      if (components.length > 0) {
         const item = await getRegistryItem(components[0], config || undefined)
 
         // Skip base color if style.
