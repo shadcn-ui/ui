@@ -278,4 +278,19 @@ describe("shadcn add", () => {
       "
     `)
   })
+
+  it("should add registry:item with no framework", async () => {
+    const fixturePath = await createFixtureTestDirectory("no-framework")
+    await npxShadcn(fixturePath, [
+      "add",
+      "../../fixtures/registry/example-item.json",
+    ])
+
+    expect(await fs.pathExists(path.join(fixturePath, "path/to/foo.txt"))).toBe(
+      true
+    )
+    expect(
+      await fs.readFile(path.join(fixturePath, "path/to/foo.txt"), "utf-8")
+    ).toBe("Foo Bar")
+  })
 })
