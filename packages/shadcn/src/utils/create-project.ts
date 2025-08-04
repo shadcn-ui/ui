@@ -98,32 +98,76 @@ export async function createProject(
     withFallback: true,
   })
 
-  const projectPath = `${options.cwd}/${projectName}`
+  const projectPath = path.resolve(options.cwd, projectName)
 
   // Check if path is writable.
+  // try {
+  //   await fs.access(options.cwd, fs.constants.W_OK)
+  // } catch (error) {
+  //   logger.break()
+  //   logger.error(`The path ${highlighter.info(options.cwd)} is not writable.`)
+  //   logger.error(
+  //     `It is likely you do not have write permissions for this folder or the path ${highlighter.info(
+  //       options.cwd
+  //     )} does not exist.`
+  //   )
+  //   logger.break()
+  //   process.exit(1)
+  // }
+  
+  // if (fs.existsSync(path.resolve(options.cwd, projectName, "package.json"))) {
+  //   logger.break()
+  //   logger.error(
+  //     `A project with the name ${highlighter.info(projectName)} already exists.`
+  //   )
+  //   logger.error(`Please choose a different name and try again.`)
+  //   logger.break()
+  //   process.exit(1)
+  // }
+
+  /**
+   * @fixed 
+   * Attempt to create the project directory.
+   *    - If it already exists, check if it is empty.
+   *    - If not empty, show a clear error and exit.
+   *    - If not writable or path does not exist, show a clear error and exit.
+   *    - if exists but is empty, proceed with project creation.
+   * @Achieved
+   * 1. Proper writable permission check for the target directory.
+   * 2. This prevents cryptic errors when the target folder is not suitable.
+   */
   try {
-    await fs.access(options.cwd, fs.constants.W_OK)
-  } catch (error) {
-    logger.break()
-    logger.error(`The path ${highlighter.info(options.cwd)} is not writable.`)
-    logger.error(
-      `It is likely you do not have write permissions for this folder or the path ${highlighter.info(
-        options.cwd
-      )} does not exist.`
-    )
-    logger.break()
-    process.exit(1)
+    fs.mkdirSync(projectPath);
+  } catch (error: any) {
+    if (error.code === 'EEXIST') {
+      let dirHandle;
+      try {
+        dirHandle = fs.opendirSync(projectPath);
+        const entry = dirHandle.readSync();
+        if (entry !== null) {
+          logger.error(`Directory ${projectName} already exists and is not empty.`);
+          process.exit(1);
+        }
+      } catch (readDirError: any) {
+        logger.error(`Cannot read or check directory ${highlighter.info(projectName)}: ${readDirError.message}`);
+        process.exit(1);
+      } finally {
+        if (dirHandle) {
+          dirHandle.closeSync();
+        }
+      }
+    } else {
+      const msg = (error.code === 'EACCES' || error.code === 'EPERM')
+        ? `Path ${options.cwd} is not writable.`
+        : error.code === 'ENOENT'
+        ? `Path ${options.cwd} does not exist.`
+        : `Failed to create directory: ${error.message}`;
+
+      logger.error(msg);
+      process.exit(1);
+    }
   }
 
-  if (fs.existsSync(path.resolve(options.cwd, projectName, "package.json"))) {
-    logger.break()
-    logger.error(
-      `A project with the name ${highlighter.info(projectName)} already exists.`
-    )
-    logger.error(`Please choose a different name and try again.`)
-    logger.break()
-    process.exit(1)
-  }
 
   if (template === TEMPLATES.next) {
     await createNextProject(projectPath, {
@@ -179,6 +223,7 @@ async function createNextProject(
     args.push("--turbopack")
   }
 
+
   try {
     await execa(
       "npx",
@@ -189,6 +234,7 @@ async function createNextProject(
     )
   } catch (error) {
     logger.break()
+    logger.error(error)
     logger.error(
       `Something went wrong creating a new Next.js project. Please try again.`
     )

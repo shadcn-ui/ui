@@ -117,11 +117,11 @@ export const init = new Command()
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
-        cwd: path.resolve(opts.cwd),
         isNewProject: false,
-        components,
         style: "index",
-        ...opts,
+        ...opts, /** @fixed Place this before setting cwd to ensure the resolved cwd don't get overridden. */
+        cwd: path.resolve(opts.cwd),
+        components,
       })
 
       await loadEnvFiles(options.cwd)
