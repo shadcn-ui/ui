@@ -8,7 +8,6 @@ import {
   getRegistryStyles,
 } from "@/src/registry/api"
 import { clearRegistryContext } from "@/src/registry/context"
-import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
 import { rawConfigSchema } from "@/src/registry/schema"
 import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
@@ -129,14 +128,6 @@ export const init = new Command()
 
       const config = await getConfig(options.cwd)
 
-      // Resolve registry components before processing.
-      if (options.components?.length) {
-        options.components = resolveRegistryItemsFromRegistries(
-          options.components,
-          config?.registries
-        )
-      }
-
       // We need to check if we're initializing with a new style.
       // We fetch the payload of the first item.
       // This is okay since the request is cached and deduped.
@@ -144,7 +135,7 @@ export const init = new Command()
         components.length > 0 &&
         (isUrl(components[0]) || isLocalFile(components[0]))
       ) {
-        const item = await getRegistryItem(components[0], "")
+        const item = await getRegistryItem(components[0], config || undefined)
 
         // Skip base color if style.
         // We set a default and let the style override it.

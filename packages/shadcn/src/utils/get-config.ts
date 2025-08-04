@@ -4,6 +4,7 @@ import {
   rawConfigSchema,
   workspaceConfigSchema,
 } from "@/src/registry"
+import { RESERVED_REGISTRIES } from "@/src/registry/constants"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { resolveImport } from "@/src/utils/resolve-import"
@@ -104,9 +105,25 @@ export async function getRawConfig(
       return null
     }
 
-    return rawConfigSchema.parse(configResult.config)
+    const config = rawConfigSchema.parse(configResult.config)
+
+    // Check for reserved registries
+    if (config.registries) {
+      for (const registryName of Object.keys(config.registries)) {
+        if (RESERVED_REGISTRIES.includes(registryName as any)) {
+          throw new Error(
+            `"${registryName}" is a reserved registry namespace. Please choose a different registry name.`
+          )
+        }
+      }
+    }
+
+    return config
   } catch (error) {
     const componentPath = `${cwd}/components.json`
+    if (error instanceof Error && error.message.includes("reserved registry")) {
+      throw error
+    }
     throw new Error(
       `Invalid configuration found in ${highlighter.info(componentPath)}.`
     )

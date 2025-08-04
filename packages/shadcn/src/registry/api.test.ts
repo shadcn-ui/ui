@@ -7,6 +7,7 @@ import {
   afterAll,
   afterEach,
   beforeAll,
+  beforeEach,
   describe,
   expect,
   it,
@@ -16,6 +17,7 @@ import {
 import {
   clearRegistryCache,
   fetchRegistry,
+  getRegistry,
   getRegistryItem,
   registryResolveItemsTree,
 } from "./api"
@@ -177,7 +179,7 @@ describe("getRegistryItem with local files", () => {
     await fs.writeFile(tempFile, JSON.stringify(componentData, null, 2))
 
     try {
-      const result = await getRegistryItem(tempFile, "unused-style")
+      const result = await getRegistryItem(tempFile)
 
       expect(result).toMatchObject({
         name: "test-component",
@@ -215,10 +217,7 @@ describe("getRegistryItem with local files", () => {
       const originalCwd = process.cwd()
       process.chdir(tempDir)
 
-      const result = await getRegistryItem(
-        "./relative-component.json",
-        "unused-style"
-      )
+      const result = await getRegistryItem("./relative-component.json")
 
       expect(result).toMatchObject({
         name: "relative-component",
@@ -249,7 +248,7 @@ describe("getRegistryItem with local files", () => {
     try {
       // Test with tilde path
       const tildeePath = "~/shadcn-test-tilde.json"
-      const result = await getRegistryItem(tildeePath, "unused-style")
+      const result = await getRegistryItem(tildeePath)
 
       expect(result).toMatchObject({
         name: "tilde-component",
@@ -262,10 +261,7 @@ describe("getRegistryItem with local files", () => {
   })
 
   it("should return null for non-existent files", async () => {
-    const result = await getRegistryItem(
-      "/non/existent/file.json",
-      "unused-style"
-    )
+    const result = await getRegistryItem("/non/existent/file.json")
     expect(result).toBe(null)
   })
 
@@ -276,7 +272,7 @@ describe("getRegistryItem with local files", () => {
     await fs.writeFile(tempFile, "{ invalid json }")
 
     try {
-      const result = await getRegistryItem(tempFile, "unused-style")
+      const result = await getRegistryItem(tempFile)
       expect(result).toBe(null)
     } finally {
       // Clean up
@@ -297,7 +293,7 @@ describe("getRegistryItem with local files", () => {
     await fs.writeFile(tempFile, JSON.stringify(invalidData))
 
     try {
-      const result = await getRegistryItem(tempFile, "unused-style")
+      const result = await getRegistryItem(tempFile)
       expect(result).toBe(null)
     } finally {
       // Clean up
@@ -308,7 +304,7 @@ describe("getRegistryItem with local files", () => {
 
   it("should still handle URLs and component names", async () => {
     // Test that existing functionality still works
-    const result = await getRegistryItem("button", "new-york")
+    const result = await getRegistryItem("button")
     expect(result).toMatchObject({
       name: "button",
       type: "registry:ui",
@@ -353,7 +349,7 @@ describe("getRegistryItem with local files", () => {
     await fs.writeFile(tempFile, JSON.stringify(componentData, null, 2))
 
     try {
-      const result = await getRegistryItem(tempFile, "unused-style")
+      const result = await getRegistryItem(tempFile)
 
       expect(result).toMatchObject({
         name: "component-with-url-deps",
@@ -496,5 +492,112 @@ describe("registryResolveItemsTree with URL dependencies", () => {
       await fs.unlink(tempFile)
       await fs.rmdir(tempDir)
     }
+  })
+})
+
+describe("getRegistry", () => {
+  beforeEach(() => {
+    clearRegistryCache()
+  })
+
+  it("should fetch registry catalog", async () => {
+    const registryData = {
+      name: "@acme/registry",
+      homepage: "https://acme.com",
+      items: [
+        { name: "button", type: "registry:ui" },
+        { name: "card", type: "registry:ui" },
+      ],
+    }
+
+    server.use(
+      http.get("https://acme.com/registry.json", () => {
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@acme/registry", mockConfig)
+
+    expect(result).toMatchObject({
+      name: "@acme/registry",
+      homepage: "https://acme.com",
+      items: [
+        { name: "button", type: "registry:ui" },
+        { name: "card", type: "registry:ui" },
+      ],
+    })
+  })
+
+  it("should handle registry with auth headers", async () => {
+    const registryData = {
+      name: "@private/registry",
+      homepage: "https://private.com",
+      items: [{ name: "secure-component", type: "registry:ui" }],
+    }
+
+    let receivedHeaders: Record<string, string> = {}
+    server.use(
+      http.get("https://private.com/registry.json", ({ request }) => {
+        // Convert headers to a plain object
+        request.headers.forEach((value, key) => {
+          receivedHeaders[key] = value
+        })
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@private": {
+          url: "https://private.com/{name}.json",
+          headers: {
+            Authorization: "Bearer test-token",
+          },
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@private/registry", mockConfig)
+
+    expect(result).toMatchObject({
+      name: "@private/registry",
+      homepage: "https://private.com",
+      items: [{ name: "secure-component", type: "registry:ui" }],
+    })
+
+    expect(receivedHeaders.authorization).toBe("Bearer test-token")
+  })
+
+  it("should return null on error", async () => {
+    server.use(
+      http.get("https://example.com/registry.json", () => {
+        return HttpResponse.json({ error: "Not found" }, { status: 404 })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@example": {
+          url: "https://example.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@example/registry", mockConfig)
+    expect(result).toBe(null)
   })
 })
