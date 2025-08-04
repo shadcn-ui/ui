@@ -1,11 +1,7 @@
 import path from "path"
+import { rawConfigSchema } from "@/src/registry"
 import { FRAMEWORKS, Framework } from "@/src/utils/frameworks"
-import {
-  Config,
-  RawConfig,
-  getConfig,
-  resolveConfigPaths,
-} from "@/src/utils/get-config"
+import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"
 import fs from "fs-extra"
@@ -121,11 +117,10 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 
   // TanStack Start.
   if (
-    configFiles.find((file) => file.startsWith("app.config."))?.length &&
     [
       ...Object.keys(packageJson?.dependencies ?? {}),
       ...Object.keys(packageJson?.devDependencies ?? {}),
-    ].find((dep) => dep.startsWith("@tanstack/start"))
+    ].find((dep) => dep.startsWith("@tanstack/react-start"))
   ) {
     type.framework = FRAMEWORKS["tanstack-start"]
     return type
@@ -147,6 +142,26 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     return type
   }
 
+  // Vinxi-based (such as @tanstack/start and @solidjs/solid-start)
+  // They are vite-based, and the same configurations used for Vite should work flawlessly
+  const appConfig = configFiles.find((file) => file.startsWith("app.config"))
+  if (appConfig?.length) {
+    const appConfigContents = await fs.readFile(
+      path.resolve(cwd, appConfig),
+      "utf8"
+    )
+    if (appConfigContents.includes("defineConfig")) {
+      type.framework = FRAMEWORKS["vite"]
+      return type
+    }
+  }
+
+  // Expo.
+  if (packageJson?.dependencies?.expo) {
+    type.framework = FRAMEWORKS["expo"]
+    return type
+  }
+
   return type
 }
 
@@ -154,7 +169,7 @@ export async function getTailwindVersion(
   cwd: string
 ): Promise<ProjectInfo["tailwindVersion"]> {
   const [packageInfo, config] = await Promise.all([
-    getPackageInfo(cwd),
+    getPackageInfo(cwd, false),
     getConfig(cwd),
   ])
 
@@ -313,7 +328,7 @@ export async function getProjectConfig(
     return null
   }
 
-  const config: RawConfig = {
+  const config: z.infer<typeof rawConfigSchema> = {
     $schema: "https://ui.shadcn.com/schema.json",
     rsc: projectInfo.isRSC,
     tsx: projectInfo.isTsx,

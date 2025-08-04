@@ -1,3 +1,4 @@
+import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { afterAll, afterEach, describe, expect, test, vi } from "vitest"
 
@@ -5,7 +6,9 @@ import { getConfig } from "../../../src/utils/get-config"
 import {
   findCommonRoot,
   resolveFilePath,
+  resolveModuleByProbablePath,
   resolveNestedFilePath,
+  toAliasedImport,
   updateFiles,
 } from "../../../src/utils/updaters/update-files"
 
@@ -13,9 +16,12 @@ vi.mock("fs/promises", async () => {
   const actual = (await vi.importActual(
     "fs/promises"
   )) as typeof import("fs/promises")
+
   return {
     ...actual,
-    writeFile: vi.fn(),
+    writeFile: vi.fn().mockResolvedValue(undefined),
+    readFile: vi.fn().mockImplementation(actual.readFile),
+    mkdir: vi.fn().mockResolvedValue(undefined),
   }
 })
 
@@ -23,15 +29,21 @@ vi.mock("fs", async () => {
   const actual = (await vi.importActual("fs")) as typeof import("fs")
   return {
     ...actual,
+    existsSync: vi.fn().mockImplementation(actual.existsSync),
     promises: {
       ...actual.promises,
-      writeFile: vi.fn(),
+      writeFile: vi.fn().mockResolvedValue(undefined),
     },
   }
 })
 
-afterEach(() => {
-  vi.resetAllMocks()
+vi.mock("prompts")
+
+afterEach(async () => {
+  vi.clearAllMocks()
+  // Restore the actual implementation of existsSync after clearing mocks
+  const actual = (await vi.importActual("fs")) as typeof import("fs")
+  vi.mocked(existsSync).mockImplementation(actual.existsSync)
 })
 
 afterAll(() => {
@@ -807,5 +819,682 @@ return <div>Hello World</div>
         ],
       }
     `)
+  })
+
+  test("should mark .env file as created when it doesn't exist", async () => {
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+
+    const result = await updateFiles(
+      [
+        {
+          path: ".env",
+          type: "registry:file",
+          target: "~/.env",
+          content: `NEW_API_KEY=new_api_key_value
+ANOTHER_NEW_KEY=another_value`,
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    expect(result.filesCreated).toContain(".env")
+    expect(result.filesUpdated).not.toContain(".env")
+  })
+
+  test("should mark .env file as updated when merging content", async () => {
+    const tempDir = path.join(
+      path.resolve(__dirname, "../../fixtures"),
+      "temp-env-test"
+    )
+    const fsActual = (await vi.importActual(
+      "fs/promises"
+    )) as typeof import("fs/promises")
+    const writeFileMock = fs.writeFile as any
+
+    try {
+      await fsActual.mkdir(tempDir, { recursive: true })
+      await fsActual.writeFile(
+        path.join(tempDir, "components.json"),
+        JSON.stringify({
+          $schema: "https://ui.shadcn.com/schema.json",
+          style: "default",
+          tailwind: {
+            config: "tailwind.config.js",
+            css: "src/index.css",
+            baseColor: "slate",
+          },
+          aliases: {
+            components: "@/components",
+            utils: "@/lib/utils",
+          },
+        }),
+        "utf-8"
+      )
+
+      const config = await getConfig(tempDir)
+      const envPath = path.join(config?.resolvedPaths.cwd!, ".env")
+
+      await fsActual.writeFile(
+        envPath,
+        `EXISTING_KEY=existing_value
+DATABASE_URL=postgres://localhost:5432/mydb`,
+        "utf-8"
+      )
+
+      const result = await updateFiles(
+        [
+          {
+            path: ".env",
+            type: "registry:file",
+            target: "~/.env",
+            content: `DATABASE_URL=should_not_override
+NEW_API_KEY=new_api_key_value
+ANOTHER_NEW_KEY=another_value`,
+          },
+        ],
+        config,
+        {
+          overwrite: true,
+          silent: true,
+        }
+      )
+
+      expect(result.filesUpdated).toContain(".env")
+      expect(result.filesCreated).not.toContain(".env")
+
+      // Verify writeFile was called with the correct merged content.
+      expect(writeFileMock).toHaveBeenCalledWith(
+        envPath,
+        `EXISTING_KEY=existing_value
+DATABASE_URL=postgres://localhost:5432/mydb
+
+NEW_API_KEY=new_api_key_value
+ANOTHER_NEW_KEY=another_value
+`,
+        "utf-8"
+      )
+    } finally {
+      await fsActual.rm(tempDir, { recursive: true }).catch(() => {})
+    }
+  })
+
+  test("should use .env.local when .env doesn't exist", async () => {
+    const tempDir = path.join(
+      path.resolve(__dirname, "../../fixtures"),
+      "temp-env-alternative-test"
+    )
+    const fsActual = (await vi.importActual(
+      "fs/promises"
+    )) as typeof import("fs/promises")
+
+    const writeFileMock = fs.writeFile as any
+
+    try {
+      await fsActual.mkdir(tempDir, { recursive: true })
+
+      await fsActual.writeFile(
+        path.join(tempDir, "components.json"),
+        JSON.stringify({
+          $schema: "https://ui.shadcn.com/schema.json",
+          style: "default",
+          tailwind: {
+            config: "tailwind.config.js",
+            css: "src/index.css",
+            baseColor: "slate",
+          },
+          aliases: {
+            components: "@/components",
+            utils: "@/lib/utils",
+          },
+        }),
+        "utf-8"
+      )
+
+      const config = await getConfig(tempDir)
+      if (!config) {
+        throw new Error("Failed to get config")
+      }
+      const envLocalPath = path.join(config.resolvedPaths.cwd, ".env.local")
+
+      // Create .env.local instead of .env
+      await fsActual.writeFile(
+        envLocalPath,
+        `EXISTING_KEY=existing_value
+DATABASE_URL=postgres://localhost:5432/mydb`,
+        "utf-8"
+      )
+
+      const result = await updateFiles(
+        [
+          {
+            path: ".env",
+            type: "registry:file",
+            target: "~/.env",
+            content: `DATABASE_URL=should_not_override
+NEW_API_KEY=new_api_key_value`,
+          },
+        ],
+        config,
+        {
+          overwrite: true,
+          silent: true,
+        }
+      )
+
+      expect(result.filesUpdated).toContain(".env.local")
+      expect(result.filesCreated).not.toContain(".env")
+      expect(result.filesCreated).not.toContain(".env.local")
+
+      expect(writeFileMock).toHaveBeenCalledWith(
+        envLocalPath,
+        `EXISTING_KEY=existing_value
+DATABASE_URL=postgres://localhost:5432/mydb
+
+NEW_API_KEY=new_api_key_value
+`,
+        "utf-8"
+      )
+    } finally {
+      await fsActual.rm(tempDir, { recursive: true }).catch(() => {})
+    }
+  })
+
+  test("should use existing .env when target is .env.local but doesn't exist", async () => {
+    const tempDir = path.join(
+      path.resolve(__dirname, "../../fixtures"),
+      "temp-env-target-local-test"
+    )
+    const fsActual = (await vi.importActual(
+      "fs/promises"
+    )) as typeof import("fs/promises")
+
+    const writeFileMock = fs.writeFile as any
+
+    try {
+      await fsActual.mkdir(tempDir, { recursive: true })
+
+      await fsActual.writeFile(
+        path.join(tempDir, "components.json"),
+        JSON.stringify({
+          $schema: "https://ui.shadcn.com/schema.json",
+          style: "default",
+          tailwind: {
+            config: "tailwind.config.js",
+            css: "src/index.css",
+            baseColor: "slate",
+          },
+          aliases: {
+            components: "@/components",
+            utils: "@/lib/utils",
+          },
+        }),
+        "utf-8"
+      )
+
+      const config = await getConfig(tempDir)
+      if (!config) {
+        throw new Error("Failed to get config")
+      }
+      const envPath = path.join(config.resolvedPaths.cwd, ".env")
+
+      // Create .env file (not .env.local)
+      await fsActual.writeFile(envPath, `EXISTING_KEY=existing_value`, "utf-8")
+
+      const result = await updateFiles(
+        [
+          {
+            path: ".env.local",
+            type: "registry:file",
+            target: "~/.env.local",
+            content: `NEW_KEY=new_value`,
+          },
+        ],
+        config,
+        {
+          overwrite: true,
+          silent: true,
+        }
+      )
+
+      // Should update .env instead of creating .env.local
+      expect(result.filesUpdated).toContain(".env")
+      expect(result.filesCreated).not.toContain(".env.local")
+
+      expect(writeFileMock).toHaveBeenCalledWith(
+        envPath,
+        `EXISTING_KEY=existing_value
+
+NEW_KEY=new_value
+`,
+        "utf-8"
+      )
+    } finally {
+      await fsActual.rm(tempDir, { recursive: true }).catch(() => {})
+    }
+  })
+
+  test("should create .env when no env variants exist", async () => {
+    const tempDir = path.join(
+      path.resolve(__dirname, "../../fixtures"),
+      "temp-env-create-test"
+    )
+    const fsActual = (await vi.importActual(
+      "fs/promises"
+    )) as typeof import("fs/promises")
+
+    const writeFileMock = fs.writeFile as any
+
+    try {
+      await fsActual.mkdir(tempDir, { recursive: true })
+
+      await fsActual.writeFile(
+        path.join(tempDir, "components.json"),
+        JSON.stringify({
+          $schema: "https://ui.shadcn.com/schema.json",
+          style: "default",
+          tailwind: {
+            config: "tailwind.config.js",
+            css: "src/index.css",
+            baseColor: "slate",
+          },
+          aliases: {
+            components: "@/components",
+            utils: "@/lib/utils",
+          },
+        }),
+        "utf-8"
+      )
+
+      const config = await getConfig(tempDir)
+      if (!config) {
+        throw new Error("Failed to get config")
+      }
+      const envPath = path.join(config.resolvedPaths.cwd, ".env")
+
+      // Ensure no env files exist
+      const envVariants = [
+        ".env",
+        ".env.local",
+        ".env.development.local",
+        ".env.development",
+      ]
+      for (const variant of envVariants) {
+        const variantPath = path.join(config.resolvedPaths.cwd, variant)
+        await fsActual.unlink(variantPath).catch(() => {})
+      }
+
+      const result = await updateFiles(
+        [
+          {
+            path: ".env",
+            type: "registry:file",
+            target: "~/.env",
+            content: `NEW_API_KEY=new_api_key_value
+DATABASE_URL=postgres://localhost:5432/mydb`,
+          },
+        ],
+        config,
+        {
+          overwrite: true,
+          silent: true,
+        }
+      )
+
+      expect(result.filesCreated).toContain(".env")
+      expect(result.filesUpdated).not.toContain(".env")
+      expect(result.filesUpdated).not.toContain(".env.local")
+
+      expect(writeFileMock).toHaveBeenCalledWith(
+        envPath,
+        `NEW_API_KEY=new_api_key_value
+DATABASE_URL=postgres://localhost:5432/mydb`,
+        "utf-8"
+      )
+    } finally {
+      await fsActual.rm(tempDir, { recursive: true }).catch(() => {})
+    }
+  })
+})
+
+describe("resolveModuleByProbablePath", () => {
+  test("should resolve exact file match in provided files list", () => {
+    const files = [
+      "components/button.tsx",
+      "components/card.tsx",
+      "lib/utils.ts",
+    ]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config)
+    ).toBe("components/button.tsx")
+  })
+
+  test("should resolve index file", () => {
+    const files = ["components/button/index.tsx", "components/card.tsx"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config)
+    ).toBe("components/button/index.tsx")
+  })
+
+  test("should try different extensions", () => {
+    const files = ["components/button.jsx", "components/card.tsx"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config)
+    ).toBe("components/button.jsx")
+  })
+
+  test("should fallback to basename matching", () => {
+    const files = ["components/ui/button.tsx", "components/card.tsx"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config)
+    ).toBe("components/ui/button.tsx")
+  })
+
+  test("should return null when file not found", () => {
+    const files = ["components/card.tsx", "lib/utils.ts"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config)
+    ).toBeNull()
+  })
+
+  test("should sort by extension priority", () => {
+    const files = [
+      "components/button.jsx",
+      "components/button.tsx",
+      "components/button.js",
+    ]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath("/foo/bar/components/button", files, config, [
+        ".tsx",
+        ".jsx",
+        ".js",
+      ])
+    ).toBe("components/button.tsx")
+  })
+
+  test("should preserve extension if specified in path", () => {
+    const files = ["components/button.tsx", "components/button.css"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    }
+    expect(
+      resolveModuleByProbablePath(
+        "/foo/bar/components/button.css",
+        files,
+        config
+      )
+    ).toBe("components/button.css")
+  })
+})
+
+describe("toAliasedImport", () => {
+  test("should convert components path to aliased import", () => {
+    const filePath = "components/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@/components/button"
+    )
+  })
+
+  test("should convert ui path to aliased import", () => {
+    const filePath = "components/ui/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@/components/ui/button"
+    )
+  })
+
+  test("should collapse index files", () => {
+    const filePath = "components/ui/button/index.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@/components/ui/button"
+    )
+  })
+
+  test("should return null when no matching alias found", () => {
+    const filePath = "src/pages/index.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/pages")
+  })
+
+  test("should handle nested directories", () => {
+    const filePath = "components/forms/inputs/text-input.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@/components/forms/inputs/text-input"
+    )
+  })
+
+  test("should keep non-code file extensions", () => {
+    const filePath = "components/styles/theme.css"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@/components/styles/theme.css"
+    )
+  })
+
+  test("should prefer longer matching paths", () => {
+    const filePath = "components/ui/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/ui",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/ui/button")
+  })
+
+  test("should support tilde (~) alias prefix", () => {
+    const filePath = "components/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+      },
+      aliases: {
+        components: "~components",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "~",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "~components/button"
+    )
+  })
+
+  test("should support @shadcn alias prefix", () => {
+    const filePath = "components/ui/button.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+      },
+      aliases: {
+        components: "@shadcn/components",
+        ui: "@shadcn/ui",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@shadcn",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe(
+      "@shadcn/ui/button"
+    )
+  })
+
+  test("should support ~cn alias prefix", () => {
+    const filePath = "lib/utils/index.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        lib: "~cn/lib",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "~cn",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("~cn/lib/utils")
+  })
+
+  test("should use project alias prefix when aliasKey is cwd", () => {
+    const filePath = "src/pages/home.tsx"
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+        ui: "/foo/bar/components/ui",
+        lib: "/foo/bar/lib",
+      },
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+      },
+    }
+    const projectInfo = {
+      aliasPrefix: "@",
+    }
+    expect(toAliasedImport(filePath, config, projectInfo)).toBe("@/pages/home")
   })
 })

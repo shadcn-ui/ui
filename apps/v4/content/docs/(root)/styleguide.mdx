@@ -1,0 +1,208 @@
+---
+title: Styleguide
+description: A styleguide for writing documentation in mdx.
+---
+
+The OpenAI API provides a simple interface to state-of-the-art AI models for text generation, natural language processing, computer vision, and more. This example generates text output from a prompt, as you might using ChatGPT.
+
+## Analyze image inputs
+
+You can provide image inputs to the model as well. Scan receipts, analyze screenshots, or find objects in the real world with [computer vision](/docs/installation/computer-vision). This is code in a `pre` tag and `npx` command in a `code` tag.
+
+```bash
+npm install foo
+```
+
+```bash
+npx shadcn@latest init
+```
+
+```bash
+npx shadcn@latest add button
+```
+
+```tsx
+<Button>Click me</Button>
+```
+
+```tsx showLineNumbers
+// With line numbers
+export default function Home() {
+  return <div>Hello</div>
+}
+```
+
+```tsx title="Button.tsx"
+export default function Button({ children }: { children: React.ReactNode }) {
+  return <button>{children}</button>
+}
+```
+
+This is a code block with a title.
+
+## Line Numbers and Line Highlighting
+
+Draw attention to a particular line of code.
+
+```tsx {4} showLineNumbers
+import { useFloating } from "@floating-ui/react"
+
+function MyComponent() {
+  const { refs, floatingStyles } = useFloating()
+
+  return (
+    <>
+      <div ref={refs.setReference} />
+      <div ref={refs.setFloating} style={floatingStyles} />
+    </>
+  )
+}
+```
+
+## Word Highlighting
+
+Draw attention to a particular word or series of characters.
+
+```tsx /floatingStyles/
+import { useFloating } from "@floating-ui/react"
+
+function MyComponent() {
+  const { refs, floatingStyles } = useFloating()
+
+  return (
+    <>
+      <div ref={refs.setReference} />
+      <div ref={refs.setFloating} style={floatingStyles} />
+    </>
+  )
+}
+```
+
+How
+
+```tsx title="apps/www/registry/registry-blocks.tsx"
+export const blocks = [
+  // ...
+  {
+    name: "dashboard-01",
+    author: "shadcn (https://ui.shadcn.com)",
+    title: "Dashboard",
+    description: "A simple dashboard with a hello world component.",
+    type: "registry:block",
+    registryDependencies: ["input", "button", "card"],
+    dependencies: ["zod"],
+    files: [
+      {
+        path: "blocks/dashboard-01/page.tsx",
+        type: "registry:page",
+        target: "app/dashboard/page.tsx",
+      },
+      {
+        path: "blocks/dashboard-01/components/hello-world.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/dashboard-01/components/example-card.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/dashboard-01/hooks/use-hello-world.ts",
+        type: "registry:hook",
+      },
+      {
+        path: "blocks/dashboard-01/lib/format-date.ts",
+        type: "registry:lib",
+      },
+    ],
+    categories: ["dashboard"],
+  },
+]
+```
+
+```txt
+apps
+└── web         # Your app goes here.
+    ├── app
+    │   └── page.tsx
+    ├── components
+    │   └── login-form.tsx
+    ├── components.json
+    └── package.json
+packages
+└── ui          # Your components and dependencies are installed here.
+    ├── src
+    │   ├── components
+    │   │   └── button.tsx
+    │   ├── hooks
+    │   ├── lib
+    │   │   └── utils.ts
+    │   └── styles
+    │       └── globals.css
+    ├── components.json
+    └── package.json
+package.json
+turbo.json
+```
+
+```diff showLineNumbers
+- @plugin 'tailwindcss-animate';
++ @import "tw-animate-css";
+```
+
+## CSS Variables
+
+```tsx /bg-background/ /text-foreground/
+<div className="bg-background text-foreground" />
+```
+
+To use CSS variables for theming set `tailwind.cssVariables` to `true` in your `components.json` file.
+
+```json {8} title="components.json"
+{
+  "style": "default",
+  "rsc": true,
+  "tailwind": {
+    "config": "",
+    "css": "app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/registry/new-york-v4/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibrary": "lucide"
+}
+```
+
+## Utility classes
+
+```tsx /bg-zinc-950/ /text-zinc-50/ /dark:bg-white/ /dark:text-zinc-950/
+<div className="bg-zinc-950 dark:bg-white" />
+```
+
+To use utility classes for theming set `tailwind.cssVariables` to `false` in your `components.json` file.
+
+```json {8} title="components.json"
+{
+  "style": "default",
+  "rsc": true,
+  "tailwind": {
+    "config": "",
+    "css": "app/globals.css",
+    "baseColor": "slate",
+    "cssVariables": false
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/registry/new-york-v4/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibrary": "lucide"
+}
+```

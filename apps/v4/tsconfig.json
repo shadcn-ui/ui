@@ -13,7 +13,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-
     "plugins": [
       {
         "name": "next"
@@ -21,7 +20,6 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/www/*": ["../www/*"],
       "@/*": ["./*"],
       "react": ["./node_modules/@types/react"]
     }
@@ -31,7 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "scripts/build-registry.mts"
+    "scripts/build-registry.mts",
+    "next.config.mjs"
   ],
   "exclude": ["node_modules"]
 }
