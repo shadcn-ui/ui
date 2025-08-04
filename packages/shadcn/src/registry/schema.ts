@@ -169,6 +169,7 @@ export const rawConfigSchema = z
       cssVariables: z.boolean().default(true),
       prefix: z.string().default("").optional(),
     }),
+    iconLibrary: z.string().optional(),
     aliases: z.object({
       components: z.string(),
       utils: z.string(),
@@ -176,7 +177,6 @@ export const rawConfigSchema = z
       lib: z.string().optional(),
       hooks: z.string().optional(),
     }),
-    iconLibrary: z.string().optional(),
     registries: registryConfigSchema.optional(),
   })
   .strict()

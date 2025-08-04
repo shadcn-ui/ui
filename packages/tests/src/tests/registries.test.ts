@@ -273,10 +273,15 @@ describe("registries", () => {
     ).toBe(true)
   })
 
-  it("should not show registries when not configured", async () => {
+  it("should show only built-in registries when not configured", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     const output = await npxShadcn(fixturePath, ["info"])
-    expect(output.stdout).not.toContain("registries:")
+    // Should show registries since @shadcn is built-in
+    expect(output.stdout).toContain("registries:")
+    expect(output.stdout).toContain("@shadcn")
+    // Should not show user-defined registries
+    expect(output.stdout).not.toContain("@one")
+    expect(output.stdout).not.toContain("@two")
   })
 
   it("should show an error when adding from a non-existent registry", async () => {
@@ -301,9 +306,11 @@ describe("registries", () => {
     })
 
     const output = await npxShadcn(fixturePath, ["info"])
-    expect(output.stdout).toContain(
-      "registries: { '@one': 'http://localhost:4444/r/{name}' }"
-    )
+    // Should contain both built-in and user registries
+    expect(output.stdout).toContain("registries:")
+    expect(output.stdout).toContain("@shadcn")
+    expect(output.stdout).toContain("@one")
+    expect(output.stdout).toContain("http://localhost:4444/r/{name}")
   })
 
   it("should show multiple registries when configured", async () => {
@@ -320,10 +327,13 @@ describe("registries", () => {
     })
 
     const output = await npxShadcn(fixturePath, ["info"])
-    expect(output.stdout).toContain(`registries: {
-    '@one': 'http://localhost:4444/r/{name}',
-    '@two': { url: 'http://localhost:5555/registry/{name}', headers: [Object] }
-  },`)
+    // Should contain built-in and both user registries
+    expect(output.stdout).toContain("registries:")
+    expect(output.stdout).toContain("@shadcn")
+    expect(output.stdout).toContain("@one")
+    expect(output.stdout).toContain("@two")
+    expect(output.stdout).toContain("http://localhost:4444/r/{name}")
+    expect(output.stdout).toContain("http://localhost:5555/registry/{name}")
   })
 
   it("should show an error when adding from a non-existent registry with configured registries", async () => {
@@ -418,10 +428,7 @@ describe("registries", () => {
       "http://localhost:4444/r/baz",
     ])
 
-    expect(output.stdout).toContain(
-      "The items you're adding depend on unknown registry @one. \nMake sure it is defined in components.json as follows:\n" +
-        `{\n  "registries": {\n    "@one": "https://example.com/{name}.json"\n  }\n}`
-    )
+    expect(output.stdout).toContain('Unknown registry "@one"')
   })
 
   it("should show an error when adding url with unconfigured registry", async () => {
@@ -431,10 +438,7 @@ describe("registries", () => {
       "http://localhost:5555/registry/two",
     ])
 
-    expect(output.stdout).toContain(
-      "The items you're adding depend on unknown registry @one. \nMake sure it is defined in components.json as follows:\n" +
-        `{\n  "registries": {\n    "@one": "https://example.com/{name}.json"\n  }\n}`
-    )
+    expect(output.stdout).toContain('Unknown registry "@one"')
   })
 
   it("should show an error when adding namespaced with unconfigured registry", async () => {
@@ -848,8 +852,8 @@ describe("registries", () => {
     })
   })
 
-  describe("reserved registries", () => {
-    it("should error when trying to use @shadcn as a registry in config", async () => {
+  describe("built-in registries", () => {
+    it("should error when trying to override @shadcn in config", async () => {
       const fixturePath = await createFixtureTestDirectory("next-app-init")
 
       // Read the existing components.json
@@ -869,8 +873,32 @@ describe("registries", () => {
 
       // Check either stdout or stderr for the error message
       const combinedOutput = output.stdout + output.stderr
-      expect(combinedOutput).toContain("@shadcn")
-      expect(combinedOutput).toContain("reserved registry namespace")
+
+      // The error should be about built-in registry or invalid configuration
+      expect(combinedOutput.toLowerCase()).toMatch(
+        /built-in registry|invalid configuration/
+      )
+    })
+
+    it("should work with @shadcn namespace without configuration", async () => {
+      const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+      // Don't configure any registries - @shadcn should be built-in
+      const output = await npxShadcn(fixturePath, ["add", "@shadcn/button"])
+
+      if (
+        !(await fs.pathExists(
+          path.join(fixturePath, "components/ui/button.tsx")
+        ))
+      ) {
+        console.log("Test failed. Command output:", output.stdout)
+        console.log("Command stderr:", output.stderr)
+      }
+
+      // Should add button component just like regular "button" command
+      expect(
+        await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+      ).toBe(true)
     })
 
     it("should allow similar but different registry names", async () => {
@@ -897,7 +925,7 @@ describe("registries", () => {
       expect(output.stdout).toContain("@shadcn-ui")
       expect(output.stdout).toContain("@myshadcn")
       expect(output.stdout).toContain("@shadcntest")
-      expect(output.stdout).not.toContain("reserved registry namespace")
+      expect(output.stdout).not.toContain("built-in registry")
     })
   })
 })

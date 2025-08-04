@@ -1,6 +1,5 @@
 import { z } from "zod"
 
-import { RESERVED_REGISTRIES } from "./constants"
 import { extractEnvVars } from "./env"
 import { registryConfigItemSchema } from "./schema"
 
@@ -34,12 +33,6 @@ export function validateRegistryConfig(
   registryName: string,
   config: z.infer<typeof registryConfigItemSchema>
 ): void {
-  if (RESERVED_REGISTRIES.includes(registryName as any)) {
-    throw new Error(
-      `"${registryName}" is a reserved registry namespace. Please choose a different registry name.`
-    )
-  }
-
   const requiredVars = extractEnvVarsFromRegistryConfig(config)
   const missing = requiredVars.filter((v) => !process.env[v])
 

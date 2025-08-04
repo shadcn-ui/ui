@@ -4,7 +4,7 @@ import {
   rawConfigSchema,
   workspaceConfigSchema,
 } from "@/src/registry"
-import { RESERVED_REGISTRIES } from "@/src/registry/constants"
+import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { resolveImport } from "@/src/utils/resolve-import"
@@ -47,6 +47,12 @@ export async function resolveConfigPaths(
   cwd: string,
   config: z.infer<typeof rawConfigSchema>
 ) {
+  // Merge built-in registries with user registries
+  config.registries = {
+    ...BUILTIN_REGISTRIES,
+    ...(config.registries || {}),
+  }
+
   // Read tsconfig.json.
   const tsConfig = await loadConfig(cwd)
 
@@ -107,12 +113,12 @@ export async function getRawConfig(
 
     const config = rawConfigSchema.parse(configResult.config)
 
-    // Check for reserved registries
+    // Check if user is trying to override built-in registries
     if (config.registries) {
       for (const registryName of Object.keys(config.registries)) {
-        if (RESERVED_REGISTRIES.includes(registryName as any)) {
+        if (registryName in BUILTIN_REGISTRIES) {
           throw new Error(
-            `"${registryName}" is a reserved registry namespace. Please choose a different registry name.`
+            `"${registryName}" is a built-in registry and cannot be overridden.`
           )
         }
       }

@@ -15,7 +15,9 @@ describe("resolveRegistryItemsFromRegistries", () => {
   })
 
   it("should return empty array for empty input", () => {
-    const result = resolveRegistryItemsFromRegistries([], {})
+    const result = resolveRegistryItemsFromRegistries([], {
+      registries: {},
+    } as any)
     expect(result).toEqual([])
     expect(setRegistryHeaders).toHaveBeenCalledWith({})
   })
@@ -28,9 +30,9 @@ describe("resolveRegistryItemsFromRegistries", () => {
 
   it("should return non-registry items unchanged", () => {
     const items = ["button", "card", "dialog"]
-    const registries = {}
+    const config = { registries: {} } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual(items)
     expect(setRegistryHeaders).toHaveBeenCalledWith({})
@@ -38,11 +40,13 @@ describe("resolveRegistryItemsFromRegistries", () => {
 
   it("should resolve registry items with string config", () => {
     const items = ["@v0/button", "@v0/card"]
-    const registries = {
-      "@v0": "https://v0.dev/chat/b/{name}/json",
-    }
+    const config = {
+      registries: {
+        "@v0": "https://v0.dev/chat/b/{name}/json",
+      },
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual([
       "https://v0.dev/chat/b/button/json",
@@ -53,16 +57,18 @@ describe("resolveRegistryItemsFromRegistries", () => {
 
   it("should resolve registry items with object config and headers", () => {
     const items = ["@private/button", "@private/card"]
-    const registries = {
-      "@private": {
-        url: "https://api.com/{name}.json",
-        headers: {
-          Authorization: "Bearer token123",
+    const config = {
+      registries: {
+        "@private": {
+          url: "https://api.com/{name}.json",
+          headers: {
+            Authorization: "Bearer token123",
+          },
         },
       },
-    }
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual([
       "https://api.com/button.json",
@@ -80,17 +86,19 @@ describe("resolveRegistryItemsFromRegistries", () => {
 
   it("should handle mixed registry and non-registry items", () => {
     const items = ["button", "@v0/card", "dialog", "@private/table"]
-    const registries = {
-      "@v0": "https://v0.dev/chat/b/{name}/json",
-      "@private": {
-        url: "https://api.com/{name}.json",
-        headers: {
-          "X-API-Key": "secret123",
+    const config = {
+      registries: {
+        "@v0": "https://v0.dev/chat/b/{name}/json",
+        "@private": {
+          url: "https://api.com/{name}.json",
+          headers: {
+            "X-API-Key": "secret123",
+          },
         },
       },
-    }
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual([
       "button",
@@ -110,16 +118,18 @@ describe("resolveRegistryItemsFromRegistries", () => {
     process.env.API_URL = "https://api.com"
 
     const items = ["@env/button"]
-    const registries = {
-      "@env": {
-        url: "${API_URL}/{name}.json",
-        headers: {
-          Authorization: "Bearer ${API_TOKEN}",
+    const config = {
+      registries: {
+        "@env": {
+          url: "${API_URL}/{name}.json",
+          headers: {
+            Authorization: "Bearer ${API_TOKEN}",
+          },
         },
       },
-    }
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual(["https://api.com/button.json"])
     expect(setRegistryHeaders).toHaveBeenCalledWith({
@@ -134,11 +144,13 @@ describe("resolveRegistryItemsFromRegistries", () => {
 
   it("should handle complex item paths", () => {
     const items = ["@acme/ui/button", "@acme/components/card"]
-    const registries = {
-      "@acme": "https://api.com/{name}.json",
-    }
+    const config = {
+      registries: {
+        "@acme": "https://api.com/{name}.json",
+      },
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual([
       "https://api.com/ui/button.json",
@@ -153,11 +165,13 @@ describe("resolveRegistryItemsFromRegistries", () => {
       "./local/component.json",
       "@v0/card",
     ]
-    const registries = {
-      "@v0": "https://v0.dev/chat/b/{name}/json",
-    }
+    const config = {
+      registries: {
+        "@v0": "https://v0.dev/chat/b/{name}/json",
+      },
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual([
       "https://example.com/button.json",
@@ -169,32 +183,34 @@ describe("resolveRegistryItemsFromRegistries", () => {
 
   it("should throw error for unknown registry", () => {
     const items = ["@unknown/button"]
-    const registries = {}
+    const config = { registries: {} } as any
 
     expect(() => {
-      resolveRegistryItemsFromRegistries(items, registries)
+      resolveRegistryItemsFromRegistries(items, config)
     }).toThrow('Unknown registry "@unknown"')
   })
 
   it("should handle multiple unknown registries", () => {
     const items = ["@unknown1/button", "@unknown2/card"]
-    const registries = {}
+    const config = { registries: {} } as any
 
     expect(() => {
-      resolveRegistryItemsFromRegistries(items, registries)
+      resolveRegistryItemsFromRegistries(items, config)
     }).toThrow('Unknown registry "@unknown1"')
   })
 
   it("should handle empty headers correctly", () => {
     const items = ["@empty/button"]
-    const registries = {
-      "@empty": {
-        url: "https://api.com/{name}.json",
-        headers: {},
+    const config = {
+      registries: {
+        "@empty": {
+          url: "https://api.com/{name}.json",
+          headers: {},
+        },
       },
-    }
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual(["https://api.com/button.json"])
     expect(setRegistryHeaders).toHaveBeenCalledWith({})
@@ -204,16 +220,18 @@ describe("resolveRegistryItemsFromRegistries", () => {
     process.env.EMPTY_TOKEN = "some-value"
 
     const items = ["@empty/button"]
-    const registries = {
-      "@empty": {
-        url: "https://api.com/{name}.json",
-        headers: {
-          Authorization: "Bearer ${EMPTY_TOKEN}",
+    const config = {
+      registries: {
+        "@empty": {
+          url: "https://api.com/{name}.json",
+          headers: {
+            Authorization: "Bearer ${EMPTY_TOKEN}",
+          },
         },
       },
-    }
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual(["https://api.com/button.json"])
     expect(setRegistryHeaders).toHaveBeenCalledWith({
@@ -229,18 +247,20 @@ describe("resolveRegistryItemsFromRegistries", () => {
     process.env.API_TOKEN = "secret123"
 
     const items = ["@mixed/button"]
-    const registries = {
-      "@mixed": {
-        url: "https://api.com/{name}.json",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer ${API_TOKEN}",
-          "X-Custom": "static-value",
+    const config = {
+      registries: {
+        "@mixed": {
+          url: "https://api.com/{name}.json",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer ${API_TOKEN}",
+            "X-Custom": "static-value",
+          },
         },
       },
-    }
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual(["https://api.com/button.json"])
     expect(setRegistryHeaders).toHaveBeenCalledWith({
@@ -256,17 +276,19 @@ describe("resolveRegistryItemsFromRegistries", () => {
 
   it("should handle query parameters in URL config", () => {
     const items = ["@params/button"]
-    const registries = {
-      "@params": {
-        url: "https://api.com/{name}.json",
-        params: {
-          version: "1.0",
-          format: "json",
+    const config = {
+      registries: {
+        "@params": {
+          url: "https://api.com/{name}.json",
+          params: {
+            version: "1.0",
+            format: "json",
+          },
         },
       },
-    }
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual([
       "https://api.com/button.json?version=1.0&format=json",
@@ -278,17 +300,19 @@ describe("resolveRegistryItemsFromRegistries", () => {
     process.env.API_VERSION = "2.0"
 
     const items = ["@params/button"]
-    const registries = {
-      "@params": {
-        url: "https://api.com/{name}.json",
-        params: {
-          version: "${API_VERSION}",
-          format: "json",
+    const config = {
+      registries: {
+        "@params": {
+          url: "https://api.com/{name}.json",
+          params: {
+            version: "${API_VERSION}",
+            format: "json",
+          },
         },
       },
-    }
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual([
       "https://api.com/button.json?version=2.0&format=json",
@@ -300,16 +324,18 @@ describe("resolveRegistryItemsFromRegistries", () => {
 
   it("should handle existing query parameters in URL", () => {
     const items = ["@existing/button"]
-    const registries = {
-      "@existing": {
-        url: "https://api.com/{name}.json?existing=true",
-        params: {
-          version: "1.0",
+    const config = {
+      registries: {
+        "@existing": {
+          url: "https://api.com/{name}.json?existing=true",
+          params: {
+            version: "1.0",
+          },
         },
       },
-    }
+    } as any
 
-    const result = resolveRegistryItemsFromRegistries(items, registries)
+    const result = resolveRegistryItemsFromRegistries(items, config)
 
     expect(result).toEqual([
       "https://api.com/button.json?existing=true&version=1.0",

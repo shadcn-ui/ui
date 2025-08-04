@@ -28,6 +28,24 @@ describe("buildUrlFromRegistryConfig", () => {
     expect(url).toBe("https://v0.dev/chat/b/chat-component/json")
   })
 
+  it("should replace style placeholder in URL", () => {
+    const url = buildUrlFromRegistryConfig(
+      "button",
+      "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      { style: "new-york" } as any
+    )
+    expect(url).toBe("https://ui.shadcn.com/r/styles/new-york/button.json")
+  })
+
+  it("should handle both name and style placeholders", () => {
+    const url = buildUrlFromRegistryConfig(
+      "accordion",
+      "https://example.com/{style}/components/{name}",
+      { style: "default" } as any
+    )
+    expect(url).toBe("https://example.com/default/components/accordion")
+  })
+
   it("should build URL with env vars", () => {
     const url = buildUrlFromRegistryConfig(
       "button",
@@ -334,20 +352,19 @@ describe("buildUrlAndHeadersForRegistryItem", () => {
   })
 
   it("should resolve registry items with string config", () => {
-    const registries = {
-      "@v0": "https://v0.dev/chat/b/{name}/json",
-    }
+    const config = {
+      registries: {
+        "@v0": "https://v0.dev/chat/b/{name}/json",
+      },
+    } as any
 
-    const result1 = buildUrlAndHeadersForRegistryItem("@v0/button", registries)
+    const result1 = buildUrlAndHeadersForRegistryItem("@v0/button", config)
     expect(result1).toEqual({
       url: "https://v0.dev/chat/b/button/json",
       headers: {},
     })
 
-    const result2 = buildUrlAndHeadersForRegistryItem(
-      "@v0/data-table",
-      registries
-    )
+    const result2 = buildUrlAndHeadersForRegistryItem("@v0/data-table", config)
     expect(result2).toEqual({
       url: "https://v0.dev/chat/b/data-table/json",
       headers: {},
@@ -355,16 +372,18 @@ describe("buildUrlAndHeadersForRegistryItem", () => {
   })
 
   it("should resolve registry items with object config", () => {
-    const registries = {
-      "@test": {
-        url: "https://api.com/{name}.json",
-        headers: {
-          Authorization: "Bearer token123",
+    const config = {
+      registries: {
+        "@test": {
+          url: "https://api.com/{name}.json",
+          headers: {
+            Authorization: "Bearer token123",
+          },
         },
       },
-    }
+    } as any
 
-    const result = buildUrlAndHeadersForRegistryItem("@test/button", registries)
+    const result = buildUrlAndHeadersForRegistryItem("@test/button", config)
     expect(result).toEqual({
       url: "https://api.com/button.json",
       headers: {
@@ -377,16 +396,18 @@ describe("buildUrlAndHeadersForRegistryItem", () => {
     process.env.TEST_TOKEN = "abc123"
     process.env.API_URL = "https://api.com"
 
-    const registries = {
-      "@env": {
-        url: "${API_URL}/{name}.json",
-        headers: {
-          Authorization: "Bearer ${TEST_TOKEN}",
+    const config = {
+      registries: {
+        "@env": {
+          url: "${API_URL}/{name}.json",
+          headers: {
+            Authorization: "Bearer ${TEST_TOKEN}",
+          },
         },
       },
-    }
+    } as any
 
-    const result = buildUrlAndHeadersForRegistryItem("@env/button", registries)
+    const result = buildUrlAndHeadersForRegistryItem("@env/button", config)
     expect(result).toEqual({
       url: "https://api.com/button.json",
       headers: {
@@ -399,14 +420,13 @@ describe("buildUrlAndHeadersForRegistryItem", () => {
   })
 
   it("should handle complex item paths", () => {
-    const registries = {
-      "@acme": "https://api.com/{name}.json",
-    }
+    const config = {
+      registries: {
+        "@acme": "https://api.com/{name}.json",
+      },
+    } as any
 
-    const result = buildUrlAndHeadersForRegistryItem(
-      "@acme/ui/button",
-      registries
-    )
+    const result = buildUrlAndHeadersForRegistryItem("@acme/ui/button", config)
     expect(result).toEqual({
       url: "https://api.com/ui/button.json",
       headers: {},
@@ -414,19 +434,16 @@ describe("buildUrlAndHeadersForRegistryItem", () => {
   })
 
   it("should handle URLs and local files", () => {
-    const registries = {}
+    const config = { registries: {} } as any
 
     // URLs should return null (not registry items)
     expect(
-      buildUrlAndHeadersForRegistryItem(
-        "https://example.com/button",
-        registries
-      )
+      buildUrlAndHeadersForRegistryItem("https://example.com/button", config)
     ).toBeNull()
 
     // Local files should return null (not registry items)
     expect(
-      buildUrlAndHeadersForRegistryItem("./local/button", registries)
+      buildUrlAndHeadersForRegistryItem("./local/button", config)
     ).toBeNull()
   })
 })

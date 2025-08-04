@@ -20,6 +20,7 @@ import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
 import { z } from "zod"
 
+import { REGISTRY_URL } from "./constants"
 import {
   iconsSchema,
   registryBaseColorSchema,
@@ -28,11 +29,8 @@ import {
   registryResolvedItemsTreeSchema,
   registrySchema,
   stylesSchema,
-  type Registry,
   type RegistryItem,
 } from "./schema"
-
-const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
 
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
@@ -357,6 +355,17 @@ export function clearRegistryCache() {
   registryCache.clear()
 }
 
+async function getResolvedStyle(config?: Config) {
+  if (!config) {
+    return undefined
+  }
+
+  const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
+  return tailwindVersion === "v4" && config.style === "new-york"
+    ? "new-york-v4"
+    : config.style
+}
+
 export async function fetchFromRegistry(
   items: `${string}/registry`[],
   config?: Config,
@@ -378,8 +387,11 @@ export async function fetchFromRegistry(
 > {
   clearRegistryContext()
 
-  const paths = config?.registries
-    ? resolveRegistryItemsFromRegistries(items, config.registries)
+  const resolvedStyle = await getResolvedStyle(config)
+  const configWithStyle =
+    config && resolvedStyle ? { ...config, style: resolvedStyle } : config
+  const paths = configWithStyle
+    ? resolveRegistryItemsFromRegistries(items, configWithStyle)
     : items
 
   const results = await fetchRegistry(paths, options)
@@ -464,13 +476,6 @@ async function resolveDependenciesRecursively(
       registryNames.push(dep)
 
       if (config) {
-        const style = config.resolvedPaths?.cwd
-          ? await getTargetStyleFromConfig(
-              config.resolvedPaths.cwd,
-              config.style
-            )
-          : config.style
-
         try {
           const item = await getRegistryItem(dep, config)
           if (item && item.registryDependencies) {
@@ -524,6 +529,10 @@ export async function registryResolveItemsTree(
     let allDependencyItems: z.infer<typeof registryItemSchema>[] = []
     let allDependencyRegistryNames: string[] = []
 
+    const resolvedStyle = await getResolvedStyle(config)
+    const configWithStyle =
+      config && resolvedStyle ? { ...config, style: resolvedStyle } : config
+
     for (const localFile of localFiles) {
       const item = await getRegistryItem(localFile)
       if (item) {
@@ -549,7 +558,7 @@ export async function registryResolveItemsTree(
           } else {
             resolvedDependencies = resolveRegistryItemsFromRegistries(
               item.registryDependencies,
-              config.registries
+              configWithStyle
             )
           }
 
@@ -590,7 +599,7 @@ export async function registryResolveItemsTree(
           } else {
             resolvedDependencies = resolveRegistryItemsFromRegistries(
               item.registryDependencies,
-              config.registries
+              configWithStyle
             )
           }
 
@@ -889,13 +898,17 @@ export async function resolveRegistryItems(names: string[], config: Config) {
     (name) => !isLocalFile(name) && !isUrl(name)
   )
 
+  const resolvedStyle = await getResolvedStyle(config)
   for (const name of registryNames) {
     let resolvedName = name
-    if (config.registries) {
+    if (config) {
       try {
+        const configWithStyle =
+          config && resolvedStyle ? { ...config, style: resolvedStyle } : config
+
         const resolved = buildUrlAndHeadersForRegistryItem(
           name,
-          config.registries
+          configWithStyle
         )
         if (resolved) {
           resolvedName = resolved.url

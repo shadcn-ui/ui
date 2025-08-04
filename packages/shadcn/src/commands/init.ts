@@ -416,7 +416,7 @@ async function promptForMinimalConfig(
     },
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
-    aliases: defaultConfig?.aliases,
     iconLibrary: defaultConfig?.iconLibrary,
+    aliases: defaultConfig?.aliases,
   })
 }

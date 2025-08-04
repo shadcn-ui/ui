@@ -1,4 +1,14 @@
-export const RESERVED_REGISTRIES = ["@shadcn"] as const
+import { z } from "zod"
+
+import { registryConfigSchema } from "./schema"
+
+export const REGISTRY_URL =
+  process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
+
+// Built-in registries that are always available and cannot be overridden
+export const BUILTIN_REGISTRIES: z.infer<typeof registryConfigSchema> = {
+  "@shadcn": `${REGISTRY_URL}/styles/{style}/{name}.json`,
+}
 
 export const BUILTIN_MODULES = new Set([
   [

@@ -1,4 +1,4 @@
-import { registryConfigSchema } from "@/src/registry/schema"
+import { configSchema } from "@/src/registry/schema"
 import { z } from "zod"
 
 import { buildUrlAndHeadersForRegistryItem } from "./builder"
@@ -6,20 +6,18 @@ import { setRegistryHeaders } from "./context"
 
 export function resolveRegistryItemsFromRegistries(
   items: string[],
-  registries?: z.infer<typeof registryConfigSchema>
+  config?: z.infer<typeof configSchema>
 ) {
   const registryHeaders: Record<string, Record<string, string>> = {}
   const resolvedItems = [...items]
 
-  if (!registries) {
+  if (!config?.registries) {
     setRegistryHeaders({})
+    return resolvedItems
   }
 
   for (let i = 0; i < resolvedItems.length; i++) {
-    const resolved = buildUrlAndHeadersForRegistryItem(
-      resolvedItems[i],
-      registries
-    )
+    const resolved = buildUrlAndHeadersForRegistryItem(resolvedItems[i], config)
 
     if (resolved) {
       resolvedItems[i] = resolved.url

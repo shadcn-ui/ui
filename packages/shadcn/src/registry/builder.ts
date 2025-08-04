@@ -1,21 +1,19 @@
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
-import {
-  registryConfigItemSchema,
-  registryConfigSchema,
-} from "@/src/registry/schema"
+import { configSchema, registryConfigItemSchema } from "@/src/registry/schema"
 import { validateRegistryConfig } from "@/src/registry/validator"
 import { z } from "zod"
 
 import { expandEnvVars } from "./env"
 
 const NAME_PLACEHOLDER = "{name}"
+const STYLE_PLACEHOLDER = "{style}"
 const ENV_VAR_PATTERN = /\${(\w+)}/g
 const QUERY_PARAM_SEPARATOR = "?"
 const QUERY_PARAM_DELIMITER = "&"
 
 export function buildUrlAndHeadersForRegistryItem(
   name: string,
-  registries: z.infer<typeof registryConfigSchema> = {}
+  config?: z.infer<typeof configSchema>
 ) {
   const { registry, item } = parseRegistryAndItemFromString(name)
 
@@ -23,8 +21,9 @@ export function buildUrlAndHeadersForRegistryItem(
     return null
   }
 
-  const config = registries[registry]
-  if (!config) {
+  const registries = config?.registries || {}
+  const registryConfig = registries[registry]
+  if (!registryConfig) {
     throw new Error(
       `Unknown registry "${registry}". Make sure it is defined in components.json as follows:\n` +
         `{\n  "registries": {\n    "${registry}": "https://example.com/{name}.json"\n  }\n}`
@@ -33,29 +32,38 @@ export function buildUrlAndHeadersForRegistryItem(
 
   // TODO: I don't like this here.
   // But this will do for now.
-  validateRegistryConfig(registry, config)
+  validateRegistryConfig(registry, registryConfig)
 
   return {
-    url: buildUrlFromRegistryConfig(item, config),
-    headers: buildHeadersFromRegistryConfig(config),
+    url: buildUrlFromRegistryConfig(item, registryConfig, config),
+    headers: buildHeadersFromRegistryConfig(registryConfig),
   }
 }
 
 export function buildUrlFromRegistryConfig(
   item: string,
-  config: z.infer<typeof registryConfigItemSchema>
+  registryConfig: z.infer<typeof registryConfigItemSchema>,
+  config?: z.infer<typeof configSchema>
 ) {
-  if (typeof config === "string") {
-    return expandEnvVars(config.replace(NAME_PLACEHOLDER, item))
+  if (typeof registryConfig === "string") {
+    let url = registryConfig.replace(NAME_PLACEHOLDER, item)
+    if (config?.style && url.includes(STYLE_PLACEHOLDER)) {
+      url = url.replace(STYLE_PLACEHOLDER, config.style)
+    }
+    return expandEnvVars(url)
   }
 
-  const baseUrl = expandEnvVars(config.url.replace(NAME_PLACEHOLDER, item))
+  let baseUrl = registryConfig.url.replace(NAME_PLACEHOLDER, item)
+  if (config?.style && baseUrl.includes(STYLE_PLACEHOLDER)) {
+    baseUrl = baseUrl.replace(STYLE_PLACEHOLDER, config.style)
+  }
+  baseUrl = expandEnvVars(baseUrl)
 
-  if (!config.params) {
+  if (!registryConfig.params) {
     return baseUrl
   }
 
-  return appendQueryParams(baseUrl, config.params)
+  return appendQueryParams(baseUrl, registryConfig.params)
 }
 
 export function buildHeadersFromRegistryConfig(

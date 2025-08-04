@@ -51,16 +51,16 @@ describe("validateRegistryConfig", () => {
     delete process.env.TOKEN
   })
 
-  describe("reserved registries", () => {
-    it("should throw an error when using @shadcn as a registry name", () => {
+  describe("built-in registries", () => {
+    it("should not throw for @shadcn since it's now a built-in registry", () => {
       expect(() => {
         validateRegistryConfig("@shadcn", {
           url: "https://example.com/{name}",
         })
-      }).toThrow('"@shadcn" is a reserved registry namespace')
+      }).not.toThrow()
     })
 
-    it("should not throw for non-reserved registry names", () => {
+    it("should not throw for non-built-in registry names", () => {
       expect(() => {
         validateRegistryConfig("@mycompany", {
           url: "https://example.com/{name}",
