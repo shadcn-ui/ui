@@ -2,7 +2,12 @@ import path from "path"
 import fs from "fs-extra"
 import { describe, expect, it } from "vitest"
 
-import { createFixtureTestDirectory, npxShadcn } from "../utils/helpers"
+import {
+  createFixtureTestDirectory,
+  cssHasProperties,
+  npxShadcn,
+} from "../utils/helpers"
+import { createRegistryServer } from "../utils/registry"
 
 describe("shadcn init - next-app", () => {
   it("should init with default configuration", async () => {
@@ -92,7 +97,13 @@ describe("shadcn init - next-app", () => {
 describe("shadcn init - vite-app", () => {
   it("should init with custom alias and src", async () => {
     const fixturePath = await createFixtureTestDirectory("vite-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=gray", "alert-dialog"])
+    await npxShadcn(
+      fixturePath,
+      ["init", "--base-color=gray", "alert-dialog"],
+      {
+        debug: true,
+      }
+    )
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -129,5 +140,283 @@ describe("shadcn init - vite-app", () => {
     expect(alertDialogContent).toContain(
       'import { cn } from "#custom/lib/utils"'
     )
+  })
+})
+
+describe("shadcn init - custom style", async () => {
+  const customRegistry = await createRegistryServer(
+    [
+      {
+        name: "style",
+        type: "registry:style",
+        files: [
+          {
+            path: "path/to/foo.ts",
+            content: "const foo = 'bar'",
+            type: "registry:lib",
+          },
+        ],
+        cssVars: {
+          theme: {
+            "font-sans": "DM Sans, sans-serif",
+          },
+          light: {
+            primary: "#dc2626",
+            "foo-var": "3rem",
+          },
+          dark: {
+            "custom-brand": "#fef3c7",
+            "foo-var": "1rem",
+          },
+        },
+      },
+      {
+        name: "style-extended",
+        type: "registry:style",
+        registryDependencies: ["http://localhost:4445/r/style.json"],
+        files: [
+          {
+            path: "path/to/foo.ts",
+            content: "const foo = 'baz-qux'",
+            type: "registry:lib",
+          },
+        ],
+        cssVars: {
+          theme: {
+            "font-sans": "Geist Sans, sans-serif",
+            "font-mono": "Geist Mono, monospace",
+          },
+          light: {
+            primary: "#059669",
+            secondary: "#06b6d4",
+          },
+          dark: {
+            "foo-var": "2rem",
+          },
+        },
+      },
+    ],
+    {
+      port: 4445,
+    }
+  )
+
+  beforeAll(async () => {
+    await customRegistry.start()
+  })
+
+  afterAll(async () => {
+    await customRegistry.stop()
+  })
+
+  it("should init with style that extends shadcn", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "http://localhost:4445/r/style.json"])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.style).toBe("new-york")
+    expect(componentsJson.tailwind.baseColor).toBe("neutral")
+
+    // Install utils from shadcn.
+    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+      true
+    )
+
+    // Then add foo.ts from the custom registry.
+    expect(
+      await fs.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
+    ).toBe("const foo = 'bar'")
+
+    const globalCssContent = await fs.readFile(
+      path.join(fixturePath, "app/globals.css"),
+      "utf-8"
+    )
+    expect(globalCssContent).toContain("@layer base")
+    expect(globalCssContent).toContain(":root")
+    expect(globalCssContent).toContain(".dark")
+    expect(globalCssContent).toContain("tw-animate-css")
+    expect(
+      cssHasProperties(globalCssContent, [
+        {
+          selector: "@theme inline",
+          properties: {
+            "--font-sans": "DM Sans, sans-serif",
+            "--color-custom-brand": "var(--custom-brand)",
+            "--foo-var": "var(--foo-var)",
+          },
+        },
+        {
+          selector: ":root",
+          properties: {
+            "--background": "oklch(1 0 0)",
+            "--foreground": "oklch(0.145 0 0)",
+            "--primary": "#dc2626",
+            "--foo-var": "3rem",
+          },
+        },
+        {
+          selector: ".dark",
+          properties: {
+            "--background": "oklch(0.145 0 0)",
+            "--foreground": "oklch(0.985 0 0)",
+            "--primary": "oklch(0.922 0 0)",
+            "--custom-brand": "#fef3c7",
+            "--foo-var": "1rem",
+          },
+        },
+      ])
+    ).toBe(true)
+  })
+
+  it("should init with style that extends another style", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, [
+      "init",
+      "http://localhost:4445/r/style-extended.json",
+    ])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.style).toBe("new-york")
+    expect(componentsJson.tailwind.baseColor).toBe("neutral")
+
+    // Install utils from shadcn.
+    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+      true
+    )
+
+    // Then add foo.ts from the custom registry with overriden payload.
+    expect(
+      await fs.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
+    ).toBe("const foo = 'baz-qux'")
+
+    const globalCssContent = await fs.readFile(
+      path.join(fixturePath, "app/globals.css"),
+      "utf-8"
+    )
+
+    expect(globalCssContent).toContain("@layer base")
+    expect(globalCssContent).toContain(":root")
+    expect(globalCssContent).toContain(".dark")
+    expect(globalCssContent).toContain("tw-animate-css")
+
+    expect(
+      cssHasProperties(globalCssContent, [
+        {
+          selector: "@theme inline",
+          properties: {
+            "--font-sans": "Geist Sans, sans-serif",
+            "--font-mono": "Geist Mono, monospace",
+            "--color-custom-brand": "var(--custom-brand)",
+            "--foo-var": "var(--foo-var)",
+          },
+        },
+        {
+          selector: ":root",
+          properties: {
+            "--background": "oklch(1 0 0)",
+            "--foreground": "oklch(0.145 0 0)",
+            "--primary": "#059669",
+            "--secondary": "#06b6d4",
+            "--foo-var": "3rem",
+          },
+        },
+        {
+          selector: ".dark",
+          properties: {
+            "--background": "oklch(0.145 0 0)",
+            "--foreground": "oklch(0.985 0 0)",
+            "--primary": "oklch(0.922 0 0)",
+            "--custom-brand": "#fef3c7",
+            "--foo-var": "2rem",
+          },
+        },
+      ])
+    ).toBe(true)
+  })
+
+  it("should init with --no-style", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--no-style"])
+
+    // We still expect components.json to be created.
+    // With some defaults.
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.style).toBe("new-york")
+    expect(componentsJson.tailwind.baseColor).toBe("neutral")
+
+    // No utils should be installed.
+    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+      false
+    )
+
+    // The css file should only have tailwind imports.
+    expect(
+      await fs.readFile(path.join(fixturePath, "app/globals.css"), "utf-8")
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      "
+    `)
+  })
+
+  it("should init with custom style and --no-style", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, [
+      "init",
+      "http://localhost:4445/r/style-extended.json",
+      "--no-style",
+    ])
+
+    // We still expect components.json to be created.
+    // With some defaults.
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.style).toBe("new-york")
+    expect(componentsJson.tailwind.baseColor).toBe("neutral")
+
+    // No utils should be installed.
+    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+      false
+    )
+
+    // But we should have the foo.ts from the custom style.
+    expect(
+      await fs.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
+    ).toBe("const foo = 'baz-qux'")
+
+    expect(
+      await fs.readFile(path.join(fixturePath, "app/globals.css"), "utf-8")
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @custom-variant dark (&:is(.dark *));
+
+      @theme inline {
+          --font-sans: Geist Sans, sans-serif;
+          --font-mono: Geist Mono, monospace;
+          --color-custom-brand: var(--custom-brand);
+          --color-secondary: var(--secondary);
+          --foo-var: var(--foo-var);
+          --color-primary: var(--primary);
+      }
+
+      :root {
+          --primary: #059669;
+          --foo-var: 3rem;
+          --secondary: #06b6d4;
+      }
+
+      .dark {
+          --custom-brand: #fef3c7;
+          --foo-var: 2rem;
+      }
+      "
+    `)
   })
 })

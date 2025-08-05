@@ -89,6 +89,27 @@ const registryShadcn = await createRegistryServer(
 const registryOne = await createRegistryServer(
   [
     {
+      name: "style",
+      type: "registry:style",
+      cssVars: {
+        theme: {
+          "font-sans": "Inter, sans-serif",
+        },
+        light: {
+          brand: "oklch(20 14.3% 4.1%)",
+          "brand-foreground": "oklch(24 1.3% 10%)",
+        },
+        dark: {
+          brand: "oklch(24 1.3% 10%)",
+        },
+      },
+      css: {
+        button: {
+          cursor: "pointer",
+        },
+      },
+    },
+    {
       name: "foo",
       type: "registry:component",
       files: [
@@ -175,6 +196,27 @@ const registryOne = await createRegistryServer(
 
 const registryTwo = await createRegistryServer(
   [
+    {
+      name: "style",
+      type: "registry:style",
+      cssVars: {
+        theme: {
+          "font-sans": "Inter, sans-serif",
+        },
+        light: {
+          brand: "oklch(20 14.3% 4.1%)",
+          "brand-foreground": "oklch(24 1.3% 10%)",
+        },
+        dark: {
+          brand: "oklch(24 1.3% 10%)",
+        },
+      },
+      css: {
+        button: {
+          cursor: "pointer",
+        },
+      },
+    },
     {
       name: "one",
       type: "registry:file",
@@ -682,12 +724,7 @@ describe("registries", () => {
     process.env.NEXT_PUBLIC_REGISTRY_URL = "http://localhost:4444/r"
     process.env.REGISTRY_TOKEN = "EXAMPLE_REGISTRY_TOKEN"
     process.env.REGISTRY_API_KEY = "EXAMPLE_API_KEY"
-    const output = await npxShadcn(fixturePath, [
-      "add",
-      "@one/foo",
-      "@three/baz",
-      "@two/two",
-    ])
+    await npxShadcn(fixturePath, ["add", "@one/foo", "@three/baz", "@two/two"])
 
     expect(
       await fs.pathExists(path.join(fixturePath, "components/foo.tsx"))
@@ -1144,5 +1181,76 @@ describe("registries", () => {
     expect(
       await fs.readFile(path.join(fixturePath, "path/to/foo.txt"), "utf-8")
     ).toBe("Foo Bar")
+  })
+})
+
+describe("registries styles", () => {
+  it("should error when init with unconfigured registries", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    const output = await npxShadcn(fixturePath, ["init", "@two/style"])
+    expect(output.stdout).toContain('Unknown registry "@two"')
+  })
+
+  it("should init from registry:style", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+
+    await configureRegistries(fixturePath, {
+      "@one": "http://localhost:4444/r/{name}",
+    })
+
+    const output = await npxShadcn(fixturePath, [
+      "init",
+      "@one/style",
+      "--force",
+    ])
+
+    console.log(output)
+
+    const globalCssContent = await fs.readFile(
+      path.join(fixturePath, "app/globals.css"),
+      "utf-8"
+    )
+
+    console.log(globalCssContent)
+
+    expect(
+      cssHasProperties(globalCssContent, [
+        {
+          selector: ":root",
+          properties: {
+            "--background": "white",
+            "--foreground": "black",
+          },
+        },
+        {
+          selector: ".dark",
+          properties: {
+            "--background": "black",
+            "--foreground": "white",
+          },
+        },
+      ])
+    ).toBe(true)
+  })
+
+  it("should init from registry:style with", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+
+    await configureRegistries(fixturePath, {
+      "@two": {
+        url: "http://localhost:5555/registry/{name}",
+        headers: {
+          Authorization: "Bearer ${BEARER_TOKEN}",
+        },
+      },
+    })
+
+    process.env.BEARER_TOKEN = "1234567890"
+
+    const output = await npxShadcn(fixturePath, [
+      "init",
+      "@two/style",
+      "--force",
+    ])
   })
 })

@@ -4,12 +4,12 @@ import { preFlightInit } from "@/src/preflights/preflight-init"
 import {
   BASE_COLORS,
   getRegistryBaseColors,
-  getRegistryItem,
   getRegistryStyles,
 } from "@/src/registry/api"
 import { clearRegistryContext } from "@/src/registry/context"
+import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import { rawConfigSchema } from "@/src/registry/schema"
-import { isLocalFile, isUrl } from "@/src/registry/utils"
+import { isUrl } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -78,7 +78,7 @@ export const initOptionsSchema = z.object({
         ).join("', '")}'`,
       }
     ),
-  style: z.string(),
+  style: z.boolean(),
 })
 
 export const init = new Command()
@@ -114,32 +114,43 @@ export const init = new Command()
   )
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
+  .option("--no-style", "do not install the base shadcn style.")
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
         isNewProject: false,
         components,
-        style: "index",
         ...opts,
       })
 
       await loadEnvFiles(options.cwd)
 
-      const config = await getConfig(options.cwd)
-
       // We need to check if we're initializing with a new style.
-      // We fetch the payload of the first item.
-      // This is okay since the request is cached and deduped.
+      // We assume a registry:style is prefixed with style.
+      // I don't like this hard rule but I dunno how we do this without fetching the payload.
+      // The payload might require authentication.
+      // Which we can't do since we don't have a config at this point.
       if (components.length > 0) {
-        const item = await getRegistryItem(components[0], config || undefined)
-
-        // Skip base color if style.
-        // We set a default and let the style override it.
-        if (item?.type === "registry:style") {
-          options.baseColor = "neutral"
-          options.style = item.extends ?? "index"
+        let item = ""
+        if (isUrl(components[0])) {
+          item = components[0].split("/").pop() ?? ""
+        } else {
+          const parsed = parseRegistryAndItemFromString(components[0])
+          item = parsed.item
         }
+
+        if (item.startsWith("style")) {
+          // Set a default base color so we're not prompted.
+          // The style will extend or override it.
+          options.baseColor = "neutral"
+        }
+      }
+
+      // If we specify --no-style, then we don't want to prompt for a base color either.
+      // The style will extend or override it.
+      if (!options.style) {
+        options.baseColor = "neutral"
       }
 
       await runInit(options)
@@ -187,6 +198,7 @@ export async function runInit(
   }
 
   const projectConfig = await getProjectConfig(options.cwd, projectInfo)
+
   const config = projectConfig
     ? await promptForMinimalConfig(projectConfig, options)
     : await promptForConfig(await getConfig(options.cwd))
@@ -215,7 +227,11 @@ export async function runInit(
   // Add components.
   const fullConfig = await resolveConfigPaths(options.cwd, config)
   const components = [
-    ...(options.style === "none" ? [] : [options.style]),
+    // "index" is the default shadcn style.
+    // Why index? Because when style is true, we read style from components.json and fetch that.
+    // i.e new-york from components.json then fetch /styles/new-york/index.
+    // TODO: Fix this so that we can extend any style i.e --style=new-york.
+    ...(options.style ? ["index"] : []),
     ...(options.components ?? []),
   ]
   await addComponents(components, fullConfig, {
