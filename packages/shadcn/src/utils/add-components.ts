@@ -39,7 +39,7 @@ export async function addComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
-    style?: boolean
+    baseStyle?: boolean
     registryHeaders?: Record<string, Record<string, string>>
   }
 ) {
@@ -47,7 +47,7 @@ export async function addComponents(
     overwrite: false,
     silent: false,
     isNewProject: false,
-    style: true,
+    baseStyle: true,
     ...options,
   }
 
@@ -74,10 +74,10 @@ async function addProjectComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
-    style?: boolean
+    baseStyle?: boolean
   }
 ) {
-  if (!options.style && !components.length) {
+  if (!options.baseStyle && !components.length) {
     return
   }
 
@@ -114,7 +114,7 @@ async function addProjectComponents(
     tailwindVersion,
     tailwindConfig: tree.tailwind?.config,
     overwriteCssVars,
-    initIndex: options.style,
+    initIndex: options.baseStyle,
   })
 
   // Add CSS updater
@@ -148,10 +148,10 @@ async function addWorkspaceComponents(
     silent?: boolean
     isNewProject?: boolean
     isRemote?: boolean
-    style?: boolean
+    baseStyle?: boolean
   }
 ) {
-  if (!options.style && !components.length) {
+  if (!options.baseStyle && !components.length) {
     return
   }
 

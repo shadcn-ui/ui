@@ -338,9 +338,9 @@ describe("shadcn init - custom style", async () => {
     ).toBe(true)
   })
 
-  it("should init with --no-style", async () => {
+  it("should init with --no-base-style", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--no-style"])
+    await npxShadcn(fixturePath, ["init", "--no-base-style"])
 
     // We still expect components.json to be created.
     // With some defaults.
@@ -364,12 +364,12 @@ describe("shadcn init - custom style", async () => {
     `)
   })
 
-  it("should init with custom style and --no-style", async () => {
+  it("should init with custom style and --no-base-style", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, [
       "init",
       "http://localhost:4445/r/style-extended.json",
-      "--no-style",
+      "--no-base-style",
     ])
 
     // We still expect components.json to be created.

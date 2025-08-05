@@ -78,7 +78,7 @@ export const initOptionsSchema = z.object({
         ).join("', '")}'`,
       }
     ),
-  style: z.boolean(),
+  baseStyle: z.boolean(),
 })
 
 export const init = new Command()
@@ -114,7 +114,7 @@ export const init = new Command()
   )
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
-  .option("--no-style", "do not install the base shadcn style.")
+  .option("--no-base-style", "do not install the base shadcn style.")
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
@@ -147,9 +147,9 @@ export const init = new Command()
         }
       }
 
-      // If we specify --no-style, then we don't want to prompt for a base color either.
+      // If we specify --no-base-style, then we don't want to prompt for a base color either.
       // The style will extend or override it.
-      if (!options.style) {
+      if (!options.baseStyle) {
         options.baseColor = "neutral"
       }
 
@@ -231,14 +231,14 @@ export async function runInit(
     // Why index? Because when style is true, we read style from components.json and fetch that.
     // i.e new-york from components.json then fetch /styles/new-york/index.
     // TODO: Fix this so that we can extend any style i.e --style=new-york.
-    ...(options.style ? ["index"] : []),
+    ...(options.baseStyle ? ["index"] : []),
     ...(options.components ?? []),
   ]
   await addComponents(components, fullConfig, {
     // Init will always overwrite files.
     overwrite: true,
     silent: options.silent,
-    style: options.style,
+    baseStyle: options.baseStyle,
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })

@@ -170,7 +170,7 @@ export const add = new Command()
           isNewProject: false,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
-          style: true,
+          baseStyle: true,
         })
       }
 
@@ -202,7 +202,7 @@ export const add = new Command()
             isNewProject: true,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
-            style: true,
+            baseStyle: true,
           })
 
           shouldUpdateAppIndex =
