@@ -1,8 +1,7 @@
 import * as fs from "fs/promises"
 import { tmpdir } from "os"
 import * as path from "path"
-import { registryItemSchema } from "@/src/registry"
-import { configSchema } from "@/src/utils/get-config"
+import { configSchema, registryItemSchema } from "@/src/registry"
 import { ProjectInfo } from "@/src/utils/get-project-info"
 import { resolveImport } from "@/src/utils/resolve-import"
 import { Project, ScriptKind } from "ts-morph"
@@ -273,7 +272,9 @@ export function isUniversalRegistryItem(
   return (
     !!registryItem?.files?.length &&
     registryItem.files.every(
-      (file) => !!file.target && file.type === "registry:file"
+      (file) =>
+        !!file.target &&
+        (file.type === "registry:file" || file.type === "registry:item")
     )
   )
 }

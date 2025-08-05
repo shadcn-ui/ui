@@ -198,7 +198,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
 
         const itemUrl = getRegistryItemUrl(name, REGISTRY_URL)
-        const item = await getRegistryItem(itemUrl, "")
+        const item = await getRegistryItem(itemUrl)
 
         return {
           content: [{ type: "text", text: JSON.stringify(item, null, 2) }],
@@ -213,7 +213,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
 
         const itemUrl = getRegistryItemUrl(name, REGISTRY_URL)
-        const item = await getRegistryItem(itemUrl, "")
+        const item = await getRegistryItem(itemUrl)
 
         if (!item) {
           return {

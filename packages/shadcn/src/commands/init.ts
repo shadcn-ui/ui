@@ -7,9 +7,12 @@ import {
   getRegistryItem,
   getRegistryStyles,
 } from "@/src/registry/api"
+import { clearRegistryContext } from "@/src/registry/context"
+import { rawConfigSchema } from "@/src/registry/schema"
 import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
+import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import {
   DEFAULT_COMPONENTS,
@@ -17,7 +20,6 @@ import {
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
   getConfig,
-  rawConfigSchema,
   resolveConfigPaths,
   type Config,
 } from "@/src/utils/get-config"
@@ -122,14 +124,15 @@ export const init = new Command()
         ...opts,
       })
 
+      await loadEnvFiles(options.cwd)
+
+      const config = await getConfig(options.cwd)
+
       // We need to check if we're initializing with a new style.
       // We fetch the payload of the first item.
       // This is okay since the request is cached and deduped.
-      if (
-        components.length > 0 &&
-        (isUrl(components[0]) || isLocalFile(components[0]))
-      ) {
-        const item = await getRegistryItem(components[0], "")
+      if (components.length > 0) {
+        const item = await getRegistryItem(components[0], config || undefined)
 
         // Skip base color if style.
         // We set a default and let the style override it.
@@ -150,6 +153,8 @@ export const init = new Command()
     } catch (error) {
       logger.break()
       handleError(error)
+    } finally {
+      clearRegistryContext()
     }
   })
 
@@ -408,7 +413,7 @@ async function promptForMinimalConfig(
     },
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
-    aliases: defaultConfig?.aliases,
     iconLibrary: defaultConfig?.iconLibrary,
+    aliases: defaultConfig?.aliases,
   })
 }
