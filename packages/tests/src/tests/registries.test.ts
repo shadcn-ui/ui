@@ -201,14 +201,14 @@ const registryTwo = await createRegistryServer(
       type: "registry:style",
       cssVars: {
         theme: {
-          "font-sans": "Inter, sans-serif",
+          "font-serif": "Garamond, serif",
         },
         light: {
-          brand: "oklch(20 14.3% 4.1%)",
-          "brand-foreground": "oklch(24 1.3% 10%)",
+          neutral: "oklch(10 14.3% 4.1%)",
+          "neutral-foreground": "oklch(24 3% 10%)",
         },
         dark: {
-          brand: "oklch(24 1.3% 10%)",
+          neutral: "oklch(24 1.3% 10%)",
         },
       },
       css: {
@@ -1184,10 +1184,16 @@ describe("registries", () => {
   })
 })
 
-describe("registries styles", () => {
+describe("registries:init", () => {
+  beforeEach(async () => {
+    process.env.REGISTRY_URL = "http://localhost:4000/r"
+  })
+
   it("should error when init with unconfigured registries", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    const output = await npxShadcn(fixturePath, ["init", "@two/style"])
+    const output = await npxShadcn(fixturePath, ["init", "@two/style"], {
+      debug: true,
+    })
     expect(output.stdout).toContain('Unknown registry "@two"')
   })
 
@@ -1198,42 +1204,61 @@ describe("registries styles", () => {
       "@one": "http://localhost:4444/r/{name}",
     })
 
-    const output = await npxShadcn(fixturePath, [
-      "init",
-      "@one/style",
-      "--force",
-    ])
+    await npxShadcn(fixturePath, ["init", "@one/style"])
 
-    console.log(output)
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.style).toBe("new-york")
+    expect(componentsJson.tailwind.baseColor).toBe("neutral")
+    expect(componentsJson.registries).toMatchInlineSnapshot(`
+      {
+        "@one": "http://localhost:4444/r/{name}",
+      }
+    `)
+
+    // Install utils from shadcn.
+    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+      true
+    )
 
     const globalCssContent = await fs.readFile(
       path.join(fixturePath, "app/globals.css"),
       "utf-8"
     )
 
-    console.log(globalCssContent)
-
     expect(
       cssHasProperties(globalCssContent, [
         {
+          selector: "@theme inline",
+          properties: {
+            "--font-sans": "Inter, sans-serif",
+            "--color-brand": "var(--brand)",
+            "--color-brand-foreground": "var(--brand-foreground)",
+          },
+        },
+        {
           selector: ":root",
           properties: {
-            "--background": "white",
-            "--foreground": "black",
+            "--background": "oklch(1 0 0)",
+            "--foreground": "oklch(0.145 0 0)",
+            "--brand": "oklch(20 14.3% 4.1%)",
+            "--brand-foreground": "oklch(24 1.3% 10%)",
           },
         },
         {
           selector: ".dark",
           properties: {
-            "--background": "black",
-            "--foreground": "white",
+            "--background": "oklch(0.145 0 0)",
+            "--foreground": "oklch(0.985 0 0)",
+            "--brand": "oklch(24 1.3% 10%)",
           },
         },
       ])
     ).toBe(true)
   })
 
-  it("should init from registry:style with", async () => {
+  it("should init from registry:style with auth", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
 
     await configureRegistries(fixturePath, {
@@ -1247,10 +1272,61 @@ describe("registries styles", () => {
 
     process.env.BEARER_TOKEN = "1234567890"
 
-    const output = await npxShadcn(fixturePath, [
-      "init",
-      "@two/style",
-      "--force",
-    ])
+    await npxShadcn(fixturePath, ["init", "@two/style"])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.style).toBe("new-york")
+    expect(componentsJson.tailwind.baseColor).toBe("neutral")
+    expect(componentsJson.registries).toMatchInlineSnapshot(`
+      {
+        "@two": {
+          "headers": {
+            "Authorization": "Bearer \${BEARER_TOKEN}",
+          },
+          "url": "http://localhost:5555/registry/{name}",
+        },
+      }
+    `)
+
+    // Install utils from shadcn.
+    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+      true
+    )
+
+    const globalCssContent = await fs.readFile(
+      path.join(fixturePath, "app/globals.css"),
+      "utf-8"
+    )
+    expect(
+      cssHasProperties(globalCssContent, [
+        {
+          selector: "@theme inline",
+          properties: {
+            "--font-serif": "Garamond, serif",
+            "--color-neutral": "var(--neutral)",
+            "--color-neutral-foreground": "var(--neutral-foreground)",
+          },
+        },
+        {
+          selector: ":root",
+          properties: {
+            "--background": "oklch(1 0 0)",
+            "--foreground": "oklch(0.145 0 0)",
+            "--neutral": "oklch(10 14.3% 4.1%)",
+            "--neutral-foreground": "oklch(24 3% 10%)",
+          },
+        },
+        {
+          selector: ".dark",
+          properties: {
+            "--background": "oklch(0.145 0 0)",
+            "--foreground": "oklch(0.985 0 0)",
+            "--neutral": "oklch(24 1.3% 10%)",
+          },
+        },
+      ])
+    ).toBe(true)
   })
 })

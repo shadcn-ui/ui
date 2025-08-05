@@ -94,7 +94,18 @@ export async function getRegistryIcons() {
   }
 }
 
-export async function getRegistryItem(name: string, config?: Config) {
+export async function getRegistryItem(
+  name: string,
+  config?: Parameters<typeof fetchFromRegistry>[1],
+  options?: {
+    useCache?: boolean
+  }
+) {
+  options = {
+    useCache: true,
+    ...options,
+  }
+
   try {
     if (isLocalFile(name)) {
       return await getLocalRegistryItem(name)
@@ -106,13 +117,14 @@ export async function getRegistryItem(name: string, config?: Config) {
     }
 
     if (name.startsWith("@") && config?.registries) {
-      const [result] = await fetchFromRegistry([name], config)
+      const [result] = await fetchFromRegistry([name], config, options)
       return result
     }
 
     // Handles regular component names.
-    const path = `styles/${config?.style ?? "new-york-v4"}/${name}.json`
-    const [result] = await fetchFromRegistry([path], config)
+    const resolvedStyle = await getResolvedStyle(config)
+    const path = `styles/${resolvedStyle ?? "new-york-v4"}/${name}.json`
+    const [result] = await fetchFromRegistry([path], config, options)
     return result
   } catch (error) {
     logger.break()
@@ -141,7 +153,10 @@ async function getLocalRegistryItem(filePath: string) {
   }
 }
 
-export async function getRegistry(name: `${string}/registry`, config?: Config) {
+export async function getRegistry(
+  name: `${string}/registry`,
+  config?: Parameters<typeof fetchFromRegistry>[1]
+) {
   try {
     const results = await fetchFromRegistry([name], config, { useCache: false })
 
@@ -352,7 +367,11 @@ export function clearRegistryCache() {
   registryCache.clear()
 }
 
-async function getResolvedStyle(config?: Config) {
+async function getResolvedStyle(
+  config?: Pick<Config, "style"> & {
+    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+  }
+) {
   if (!config) {
     return undefined
   }
@@ -365,19 +384,25 @@ async function getResolvedStyle(config?: Config) {
 
 export async function fetchFromRegistry(
   items: `${string}/registry`[],
-  config?: Config,
+  config?: Pick<Config, "style" | "registries"> & {
+    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+  },
   options?: { useCache?: boolean }
 ): Promise<z.infer<typeof registrySchema>[]>
 
 export async function fetchFromRegistry(
   items: string[],
-  config?: Config,
+  config?: Pick<Config, "style" | "registries"> & {
+    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+  },
   options?: { useCache?: boolean }
 ): Promise<z.infer<typeof registryItemSchema>[]>
 
 export async function fetchFromRegistry(
   items: string[],
-  config?: Config,
+  config?: Pick<Config, "style" | "registries"> & {
+    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+  },
   options: { useCache?: boolean } = {}
 ): Promise<
   (z.infer<typeof registrySchema> | z.infer<typeof registryItemSchema>)[]
@@ -410,7 +435,7 @@ export async function fetchFromRegistry(
 
 async function resolveDependenciesRecursively(
   dependencies: string[],
-  config?: Config,
+  config?: Pick<Config, "style" | "registries" | "resolvedPaths">,
   visited: Set<string> = new Set()
 ) {
   const items: z.infer<typeof registryItemSchema>[] = []

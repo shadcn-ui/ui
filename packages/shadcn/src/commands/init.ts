@@ -1,14 +1,17 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
+import { buildUrlAndHeadersForRegistryItem } from "@/src/registry"
 import {
   BASE_COLORS,
   getRegistryBaseColors,
+  getRegistryItem,
   getRegistryStyles,
 } from "@/src/registry/api"
 import { clearRegistryContext } from "@/src/registry/context"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
-import { rawConfigSchema } from "@/src/registry/schema"
+import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
+import { configSchema, rawConfigSchema } from "@/src/registry/schema"
 import { isUrl } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
@@ -34,6 +37,8 @@ import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
+import deepmerge from "deepmerge"
+import fsExtra from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
@@ -127,23 +132,48 @@ export const init = new Command()
       await loadEnvFiles(options.cwd)
 
       // We need to check if we're initializing with a new style.
-      // We assume a registry:style is prefixed with style.
-      // I don't like this hard rule but I dunno how we do this without fetching the payload.
-      // The payload might require authentication.
-      // Which we can't do since we don't have a config at this point.
+      // We don't know the full config at this point.
+      // So we'll merge with a shadow config to fetch the first item.
+      // We'll rename the components.json file to a backup file to allow preflight to run.
+      // We'll rename it back after preflight.
+      let backupComponentsJsonPath: string | null = null
       if (components.length > 0) {
-        let item = ""
-        if (isUrl(components[0])) {
-          item = components[0].split("/").pop() ?? ""
-        } else {
-          const parsed = parseRegistryAndItemFromString(components[0])
-          item = parsed.item
+        let shadowConfig: Parameters<typeof getRegistryItem>[1] = {
+          style: "new-york",
+          resolvedPaths: {
+            cwd: "",
+          },
         }
 
-        if (item.startsWith("style")) {
+        // Check if there's a components.json file.
+        // If so, we'll merge with our shadow config to fetch the first item.
+        const componentsJsonPath = path.resolve(options.cwd, "components.json")
+        if (fsExtra.existsSync(componentsJsonPath)) {
+          const existingConfig = await fsExtra.readJson(componentsJsonPath)
+          const config = rawConfigSchema.partial().parse(existingConfig)
+          shadowConfig = {
+            ...shadowConfig,
+            ...config,
+          }
+
+          // If we have an existing components.json, we'll temporarily rename it to allow preflight to run.
+          // We'll rename it back after preflight.
+          backupComponentsJsonPath = `${componentsJsonPath}.bak`
+          await fs.rename(componentsJsonPath, backupComponentsJsonPath)
+        }
+
+        const resolved = resolveRegistryItemsFromRegistries(
+          [components[0]],
+          shadowConfig
+        )
+
+        const item = await getRegistryItem(resolved[0])
+        if (item?.type === "registry:style") {
           // Set a default base color so we're not prompted.
           // The style will extend or override it.
           options.baseColor = "neutral"
+          options.baseStyle =
+            item.extends === "none" ? false : options.baseStyle
         }
       }
 
@@ -153,7 +183,10 @@ export const init = new Command()
         options.baseColor = "neutral"
       }
 
-      await runInit(options)
+      await runInit({
+        ...options,
+        mergeComponentsJsonPath: backupComponentsJsonPath,
+      })
 
       logger.log(
         `${highlighter.success(
@@ -172,6 +205,7 @@ export const init = new Command()
 export async function runInit(
   options: z.infer<typeof initOptionsSchema> & {
     skipPreflight?: boolean
+    mergeComponentsJsonPath?: string | null
   }
 ) {
   let projectInfo
@@ -199,7 +233,7 @@ export async function runInit(
 
   const projectConfig = await getProjectConfig(options.cwd, projectInfo)
 
-  const config = projectConfig
+  let config = projectConfig
     ? await promptForMinimalConfig(projectConfig, options)
     : await promptForConfig(await getConfig(options.cwd))
 
@@ -221,7 +255,27 @@ export async function runInit(
   // Write components.json.
   const componentSpinner = spinner(`Writing components.json.`).start()
   const targetPath = path.resolve(options.cwd, "components.json")
-  await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
+
+  if (
+    options.mergeComponentsJsonPath &&
+    fsExtra.existsSync(options.mergeComponentsJsonPath)
+  ) {
+    const existingConfig = await fsExtra.readJson(
+      options.mergeComponentsJsonPath
+    )
+    config = deepmerge(existingConfig, config)
+
+    // Move registries at the end of the config.
+    const { registries, ...rest } = config
+    config = {
+      ...rest,
+      registries,
+    }
+
+    await fs.unlink(options.mergeComponentsJsonPath)
+    delete options.mergeComponentsJsonPath
+  }
+  await fs.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")
   componentSpinner.succeed()
 
   // Add components.
