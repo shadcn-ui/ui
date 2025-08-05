@@ -270,7 +270,9 @@ function addImportRule(root: Root, importPath: string) {
     (node): node is AtRule =>
       node.type === "atrule" &&
       node.name === "import" &&
-      (node.params === `"${importPath}"` || node.params === `'${importPath}'` || node.params === importPath)
+      (node.params === `"${importPath}"` ||
+        node.params === `'${importPath}'` ||
+        node.params === importPath)
   )
 
   if (!existingImport) {
@@ -287,10 +289,11 @@ function addImportRule(root: Root, importPath: string) {
     })
 
     // Find existing imports to determine insertion point
-    const existingImports = root.nodes?.filter(
-      (node): node is AtRule =>
-        node.type === "atrule" && node.name === "import"
-    ) || []
+    const existingImports =
+      root.nodes?.filter(
+        (node): node is AtRule =>
+          node.type === "atrule" && node.name === "import"
+      ) || []
 
     if (existingImports.length > 0) {
       // Insert after the last existing import
