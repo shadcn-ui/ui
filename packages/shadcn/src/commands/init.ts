@@ -162,6 +162,9 @@ export const init = new Command()
           await fs.rename(componentsJsonPath, backupComponentsJsonPath)
         }
 
+        // This forces a shadowConfig validation early in the process.
+        await buildUrlAndHeadersForRegistryItem(components[0], shadowConfig)
+
         const resolved = resolveRegistryItemsFromRegistries(
           [components[0]],
           shadowConfig
