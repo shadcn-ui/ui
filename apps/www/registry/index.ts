@@ -14,6 +14,40 @@ export const registry = {
   name: "shadcn/ui",
   homepage: "https://ui.shadcn.com",
   items: [
+    {
+      name: "index",
+      type: "registry:style",
+      dependencies: [
+        "tailwindcss-animate",
+        "class-variance-authority",
+        "lucide-react",
+      ],
+      registryDependencies: ["utils"],
+      tailwind: {
+        config: {
+          plugins: ['require("tailwindcss-animate")'],
+        },
+      },
+      cssVars: {},
+      files: [],
+    },
+    {
+      name: "style",
+      type: "registry:style",
+      dependencies: [
+        "tailwindcss-animate",
+        "class-variance-authority",
+        "lucide-react",
+      ],
+      registryDependencies: ["utils"],
+      tailwind: {
+        config: {
+          plugins: ['require("tailwindcss-animate")'],
+        },
+      },
+      cssVars: {},
+      files: [],
+    },
     ...ui,
     ...blocks,
     ...charts,
