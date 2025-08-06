@@ -165,58 +165,7 @@ async function addWorkspaceComponents(
 
   const rootSpinner = spinner(`Installing components.`)?.start()
 
-  // Group files by their type to determine target config.
-  const filesByType = new Map<string, typeof tree.files>()
-
-  for (const file of tree.files ?? []) {
-    const type = file.type || "registry:ui"
-    if (!filesByType.has(type)) {
-      filesByType.set(type, [])
-    }
-    filesByType.get(type)!.push(file)
-  }
-
-  // Process each type of component with its appropriate target config.
-  for (const type of Array.from(filesByType.keys())) {
-    const typeFiles = filesByType.get(type)!
-
-    // Determine target config based on component type
-    let targetConfig = type === "registry:ui" ? workspaceConfig.ui : config
-
-    const workspaceRoot = findCommonRoot(
-      config.resolvedPaths.cwd,
-      targetConfig.resolvedPaths.ui || targetConfig.resolvedPaths.cwd
-    )
-    const packageRoot =
-      (await findPackageRoot(workspaceRoot, targetConfig.resolvedPaths.cwd)) ??
-      targetConfig.resolvedPaths.cwd
-
-    // Update files for this type
-    const files = await updateFiles(typeFiles, targetConfig, {
-      overwrite: options.overwrite,
-      silent: true,
-      rootSpinner,
-      isRemote: options.isRemote,
-    })
-
-    filesCreated.push(
-      ...files.filesCreated.map((file) =>
-        path.relative(workspaceRoot, path.join(packageRoot, file))
-      )
-    )
-    filesUpdated.push(
-      ...files.filesUpdated.map((file) =>
-        path.relative(workspaceRoot, path.join(packageRoot, file))
-      )
-    )
-    filesSkipped.push(
-      ...files.filesSkipped.map((file) =>
-        path.relative(workspaceRoot, path.join(packageRoot, file))
-      )
-    )
-  }
-
-  // Process global updates (tailwind, css vars, dependencies) once for the main target.
+  // Process global updates (tailwind, css vars, dependencies) first for the main target.
   // These should typically go to the UI package in a workspace.
   const mainTargetConfig = workspaceConfig.ui
   const tailwindVersion = await getProjectTailwindVersionFromConfig(
@@ -281,6 +230,59 @@ async function addWorkspaceComponents(
       silent: true,
     }
   )
+
+  // 6. Group files by their type to determine target config and update files.
+  const filesByType = new Map<string, typeof tree.files>()
+
+  for (const file of tree.files ?? []) {
+    const type = file.type || "registry:ui"
+    if (!filesByType.has(type)) {
+      filesByType.set(type, [])
+    }
+    filesByType.get(type)!.push(file)
+  }
+
+  // Process each type of component with its appropriate target config.
+  for (const type of Array.from(filesByType.keys())) {
+    const typeFiles = filesByType.get(type)!
+
+    let targetConfig = type === "registry:ui" ? workspaceConfig.ui : config
+
+    const typeWorkspaceRoot = findCommonRoot(
+      config.resolvedPaths.cwd,
+      targetConfig.resolvedPaths.ui || targetConfig.resolvedPaths.cwd
+    )
+    const packageRoot =
+      (await findPackageRoot(
+        typeWorkspaceRoot,
+        targetConfig.resolvedPaths.cwd
+      )) ?? targetConfig.resolvedPaths.cwd
+
+    // Update files for this type.
+    const files = await updateFiles(typeFiles, targetConfig, {
+      overwrite: options.overwrite,
+      silent: true,
+      rootSpinner,
+      isRemote: options.isRemote,
+      isWorkspace: true,
+    })
+
+    filesCreated.push(
+      ...files.filesCreated.map((file) =>
+        path.relative(typeWorkspaceRoot, path.join(packageRoot, file))
+      )
+    )
+    filesUpdated.push(
+      ...files.filesUpdated.map((file) =>
+        path.relative(typeWorkspaceRoot, path.join(packageRoot, file))
+      )
+    )
+    filesSkipped.push(
+      ...files.filesSkipped.map((file) =>
+        path.relative(typeWorkspaceRoot, path.join(packageRoot, file))
+      )
+    )
+  }
 
   rootSpinner?.succeed()
 

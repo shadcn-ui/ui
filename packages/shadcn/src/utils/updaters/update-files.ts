@@ -3,6 +3,7 @@ import { tmpdir } from "os"
 import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
 import { RegistryItem, registryItemFileSchema } from "@/src/registry/schema"
+import { isContentSame } from "@/src/utils/compare"
 import {
   findExistingEnvFile,
   getNewEnvKeys,
@@ -36,6 +37,7 @@ export async function updateFiles(
     silent?: boolean
     rootSpinner?: ReturnType<typeof spinner>
     isRemote?: boolean
+    isWorkspace?: boolean
   }
 ) {
   if (!files?.length) {
@@ -50,6 +52,7 @@ export async function updateFiles(
     force: false,
     silent: false,
     isRemote: false,
+    isWorkspace: false,
     ...options,
   }
   const filesCreatedSpinner = spinner(`Updating files.`, {
@@ -131,11 +134,14 @@ export async function updateFiles(
     // Exception: Don't skip .env files as we merge content instead of replacing
     if (existingFile && !isEnvFile(filePath)) {
       const existingFileContent = await fs.readFile(filePath, "utf-8")
-      const [normalizedExisting, normalizedNew] = await Promise.all([
-        getNormalizedFileContent(existingFileContent),
-        getNormalizedFileContent(content),
-      ])
-      if (normalizedExisting === normalizedNew) {
+
+      if (
+        isContentSame(existingFileContent, content, {
+          // Ignore import differences for workspace components.
+          // TODO: figure out if we always want this.
+          ignoreImports: options.isWorkspace,
+        })
+      ) {
         filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
         continue
       }
@@ -408,10 +414,6 @@ export function resolveNestedFilePath(
 
   // Return everything after the common directory
   return fileSegments.slice(commonDirIndex + 1).join("/")
-}
-
-export async function getNormalizedFileContent(content: string) {
-  return content.replace(/\r\n/g, "\n").trim()
 }
 
 export function resolvePageTarget(
