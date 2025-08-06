@@ -9,6 +9,9 @@ import {
   npxShadcn,
 } from "../utils/helpers"
 
+// Note: The tests here intentionally do not use a mocked registry.
+// We test this against the real registry.
+
 describe("shadcn add", () => {
   it("should add item to project", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")

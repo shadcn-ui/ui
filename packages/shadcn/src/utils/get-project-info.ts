@@ -353,9 +353,9 @@ export async function getProjectConfig(
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function getProjectTailwindVersionFromConfig(
-  config: Config
-): Promise<TailwindVersion> {
+export async function getProjectTailwindVersionFromConfig(config: {
+  resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+}): Promise<TailwindVersion> {
   if (!config.resolvedPaths?.cwd) {
     return "v3"
   }

@@ -6,32 +6,42 @@
       "name": "index",
       "type": "registry:style",
       "dependencies": [
+        "tailwindcss-animate",
         "class-variance-authority",
         "lucide-react"
-      ],
-      "devDependencies": [
-        "tw-animate-css"
       ],
       "registryDependencies": [
         "utils"
       ],
       "files": [],
+      "tailwind": {
+        "config": {
+          "plugins": [
+            "require(\"tailwindcss-animate\")"
+          ]
+        }
+      },
       "cssVars": {}
     },
     {
       "name": "style",
       "type": "registry:style",
       "dependencies": [
+        "tailwindcss-animate",
         "class-variance-authority",
         "lucide-react"
-      ],
-      "devDependencies": [
-        "tw-animate-css"
       ],
       "registryDependencies": [
         "utils"
       ],
       "files": [],
+      "tailwind": {
+        "config": {
+          "plugins": [
+            "require(\"tailwindcss-animate\")"
+          ]
+        }
+      },
       "cssVars": {}
     },
     {
@@ -42,18 +52,50 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/accordion.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/accordion.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
-      ]
+      ],
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "keyframes": {
+                "accordion-down": {
+                  "from": {
+                    "height": "0"
+                  },
+                  "to": {
+                    "height": "var(--radix-accordion-content-height)"
+                  }
+                },
+                "accordion-up": {
+                  "from": {
+                    "height": "var(--radix-accordion-content-height)"
+                  },
+                  "to": {
+                    "height": "0"
+                  }
+                }
+              },
+              "animation": {
+                "accordion-down": "accordion-down 0.2s ease-out",
+                "accordion-up": "accordion-up 0.2s ease-out"
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "alert",
       "type": "registry:ui",
       "files": [
         {
-          "path": "registry/new-york-v4/ui/alert.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/alert.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -68,8 +110,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/alert-dialog.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -81,8 +124,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/aspect-ratio.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/aspect-ratio.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -94,8 +138,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/avatar.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/avatar.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -107,8 +152,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/badge.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/badge.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -120,8 +166,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/breadcrumb.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/breadcrumb.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -133,8 +180,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/button.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/button.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -150,8 +198,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/calendar.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/calendar.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -160,8 +209,9 @@
       "type": "registry:ui",
       "files": [
         {
-          "path": "registry/new-york-v4/ui/card.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/card.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -176,8 +226,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/carousel.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/carousel.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -193,8 +244,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/chart.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/chart.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -206,8 +258,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/checkbox.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/checkbox.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -219,8 +272,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/collapsible.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/collapsible.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -235,8 +289,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/command.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/command.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -248,8 +303,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/context-menu.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/context-menu.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -261,8 +317,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/dialog.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/dialog.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -275,8 +332,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/drawer.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/drawer.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -288,8 +346,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/dropdown-menu.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -309,8 +368,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/form.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/form.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -322,8 +382,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/hover-card.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/hover-card.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -332,8 +393,9 @@
       "type": "registry:ui",
       "files": [
         {
-          "path": "registry/new-york-v4/ui/input.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/input.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -345,8 +407,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/input-otp.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/input-otp.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -358,8 +421,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/label.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/label.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -371,8 +435,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/menubar.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/menubar.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -384,8 +449,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/navigation-menu.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/navigation-menu.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -397,8 +463,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/pagination.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/pagination.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -410,8 +477,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/popover.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/popover.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -423,8 +491,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/progress.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/progress.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -436,8 +505,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/radio-group.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/radio-group.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -449,8 +519,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/resizable.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/resizable.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -462,8 +533,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/scroll-area.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -475,8 +547,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/select.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/select.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -488,8 +561,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/separator.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -501,8 +575,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/sheet.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/sheet.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -525,8 +600,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/sidebar.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/sidebar.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ],
       "tailwind": {
@@ -577,8 +653,9 @@
       "type": "registry:ui",
       "files": [
         {
-          "path": "registry/new-york-v4/ui/skeleton.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/skeleton.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -590,8 +667,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/slider.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/slider.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -604,8 +682,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/sonner.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/sonner.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -617,8 +696,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/switch.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/switch.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -627,8 +707,9 @@
       "type": "registry:ui",
       "files": [
         {
-          "path": "registry/new-york-v4/ui/table.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/table.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -640,8 +721,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/tabs.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/tabs.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -650,8 +732,33 @@
       "type": "registry:ui",
       "files": [
         {
-          "path": "registry/new-york-v4/ui/textarea.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-toast"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/toast.tsx",
+          "type": "registry:ui",
+          "target": ""
+        },
+        {
+          "path": "registry/default/hooks/use-toast.ts",
+          "type": "registry:hook",
+          "target": ""
+        },
+        {
+          "path": "registry/default/ui/toaster.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -663,8 +770,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/toggle.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/toggle.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -679,8 +787,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/toggle-group.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/toggle-group.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -692,8 +801,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/ui/tooltip.tsx",
-          "type": "registry:ui"
+          "path": "registry/default/ui/tooltip.tsx",
+          "type": "registry:ui",
+          "target": ""
         }
       ]
     },
@@ -707,8 +817,7 @@
         "@dnd-kit/sortable",
         "@dnd-kit/utilities",
         "@tanstack/react-table",
-        "zod",
-        "@tabler/icons-react"
+        "zod"
       ],
       "registryDependencies": [
         "sidebar",
@@ -733,55 +842,61 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/page.tsx",
+          "path": "registry/default/blocks/dashboard-01/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/data.json",
+          "path": "registry/default/blocks/dashboard-01/data.json",
           "type": "registry:file",
           "target": "app/dashboard/data.json"
         },
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/dashboard-01/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/components/chart-area-interactive.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/dashboard-01/components/chart-area-interactive.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/components/data-table.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/dashboard-01/components/data-table.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/components/nav-documents.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/dashboard-01/components/nav-documents.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/components/nav-main.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/dashboard-01/components/nav-main.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/components/nav-secondary.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/dashboard-01/components/nav-secondary.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/components/nav-user.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/dashboard-01/components/nav-user.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/components/section-cards.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/dashboard-01/components/section-cards.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/dashboard-01/components/site-header.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/dashboard-01/components/site-header.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
-      "meta": {
-        "iframeHeight": "1000px"
-      },
       "categories": [
         "dashboard"
       ]
@@ -799,21 +914,24 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-01/page.tsx",
+          "path": "registry/default/blocks/sidebar-01/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-01/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-01/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-01/components/search-form.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-01/components/search-form.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-01/components/version-switcher.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-01/components/version-switcher.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -834,21 +952,24 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-02/page.tsx",
+          "path": "registry/default/blocks/sidebar-02/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-02/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-02/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-02/components/search-form.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-02/components/search-form.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-02/components/version-switcher.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-02/components/version-switcher.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -866,13 +987,14 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-03/page.tsx",
+          "path": "registry/default/blocks/sidebar-03/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-03/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-03/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -891,13 +1013,14 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-04/page.tsx",
+          "path": "registry/default/blocks/sidebar-04/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-04/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-04/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -918,17 +1041,19 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-05/page.tsx",
+          "path": "registry/default/blocks/sidebar-05/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-05/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-05/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-05/components/search-form.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-05/components/search-form.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -949,21 +1074,24 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-06/page.tsx",
+          "path": "registry/default/blocks/sidebar-06/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-06/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-06/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-06/components/nav-main.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-06/components/nav-main.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-06/components/sidebar-opt-in-form.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-06/components/sidebar-opt-in-form.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -985,29 +1113,34 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-07/page.tsx",
+          "path": "registry/default/blocks/sidebar-07/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-07/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-07/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-07/components/nav-main.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-07/components/nav-main.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-07/components/nav-projects.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-07/components/nav-projects.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-07/components/nav-user.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-07/components/nav-user.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-07/components/team-switcher.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-07/components/team-switcher.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1029,29 +1162,34 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-08/page.tsx",
+          "path": "registry/default/blocks/sidebar-08/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-08/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-08/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-08/components/nav-main.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-08/components/nav-main.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-08/components/nav-projects.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-08/components/nav-projects.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-08/components/nav-secondary.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-08/components/nav-secondary.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-08/components/nav-user.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-08/components/nav-user.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1075,17 +1213,19 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-09/page.tsx",
+          "path": "registry/default/blocks/sidebar-09/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-09/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-09/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-09/components/nav-user.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-09/components/nav-user.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1107,37 +1247,44 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-10/page.tsx",
+          "path": "registry/default/blocks/sidebar-10/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-10/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-10/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-10/components/nav-actions.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-10/components/nav-actions.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-10/components/nav-favorites.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-10/components/nav-favorites.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-10/components/nav-main.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-10/components/nav-main.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-10/components/nav-secondary.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-10/components/nav-secondary.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-10/components/nav-workspaces.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-10/components/nav-workspaces.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-10/components/team-switcher.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-10/components/team-switcher.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1157,13 +1304,14 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-11/page.tsx",
+          "path": "registry/default/blocks/sidebar-11/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-11/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-11/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1186,25 +1334,29 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-12/page.tsx",
+          "path": "registry/default/blocks/sidebar-12/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-12/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-12/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-12/components/calendars.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-12/components/calendars.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-12/components/date-picker.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-12/components/date-picker.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-12/components/nav-user.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-12/components/nav-user.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1224,13 +1376,14 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-13/page.tsx",
+          "path": "registry/default/blocks/sidebar-13/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-13/components/settings-dialog.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-13/components/settings-dialog.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1248,13 +1401,14 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-14/page.tsx",
+          "path": "registry/default/blocks/sidebar-14/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-14/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-14/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1278,49 +1432,59 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/page.tsx",
+          "path": "registry/default/blocks/sidebar-15/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/components/calendars.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-15/components/calendars.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/components/date-picker.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-15/components/date-picker.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/components/nav-favorites.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-15/components/nav-favorites.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/components/nav-main.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-15/components/nav-main.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/components/nav-secondary.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-15/components/nav-secondary.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/components/nav-user.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-15/components/nav-user.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/components/nav-workspaces.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-15/components/nav-workspaces.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/components/sidebar-left.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-15/components/sidebar-left.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/components/sidebar-right.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-15/components/sidebar-right.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-15/components/team-switcher.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-15/components/team-switcher.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1344,37 +1508,44 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/sidebar-16/page.tsx",
+          "path": "registry/default/blocks/sidebar-16/page.tsx",
           "type": "registry:page",
           "target": "app/dashboard/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-16/components/app-sidebar.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-16/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-16/components/nav-main.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-16/components/nav-main.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-16/components/nav-projects.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-16/components/nav-projects.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-16/components/nav-secondary.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-16/components/nav-secondary.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-16/components/nav-user.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-16/components/nav-user.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-16/components/search-form.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-16/components/search-form.tsx",
+          "type": "registry:component",
+          "target": ""
         },
         {
-          "path": "registry/new-york-v4/blocks/sidebar-16/components/site-header.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/sidebar-16/components/site-header.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1394,13 +1565,14 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/login-01/page.tsx",
+          "path": "registry/default/blocks/login-01/page.tsx",
           "type": "registry:page",
           "target": "app/login/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/login-01/components/login-form.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/login-01/components/login-form.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1420,13 +1592,14 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/login-02/page.tsx",
+          "path": "registry/default/blocks/login-02/page.tsx",
           "type": "registry:page",
           "target": "app/login/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/login-02/components/login-form.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/login-02/components/login-form.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1446,13 +1619,14 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/login-03/page.tsx",
+          "path": "registry/default/blocks/login-03/page.tsx",
           "type": "registry:page",
           "target": "app/login/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/login-03/components/login-form.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/login-03/components/login-form.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1472,13 +1646,14 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/login-04/page.tsx",
+          "path": "registry/default/blocks/login-04/page.tsx",
           "type": "registry:page",
           "target": "app/login/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/login-04/components/login-form.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/login-04/components/login-form.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1498,13 +1673,14 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/login-05/page.tsx",
+          "path": "registry/default/blocks/login-05/page.tsx",
           "type": "registry:page",
           "target": "app/login/page.tsx"
         },
         {
-          "path": "registry/new-york-v4/blocks/login-05/components/login-form.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/login-05/components/login-form.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -1521,8 +1697,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-01.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-01.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1544,8 +1721,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-02.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-02.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1567,8 +1745,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-03.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-03.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1590,8 +1769,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-04.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-04.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1613,8 +1793,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-05.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-05.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1636,8 +1817,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-06.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-06.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1659,8 +1841,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-07.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-07.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1682,8 +1865,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-08.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-08.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1705,8 +1889,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-09.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-09.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1730,8 +1915,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-10.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-10.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1753,8 +1939,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-11.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-11.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1778,8 +1965,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-12.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-12.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1803,8 +1991,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-13.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-13.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1826,8 +2015,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-14.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-14.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1849,8 +2039,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-15.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-15.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1875,8 +2066,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-16.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-16.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1901,8 +2093,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-17.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-17.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1924,8 +2117,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-18.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-18.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1953,8 +2147,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-19.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-19.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -1978,8 +2173,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-20.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-20.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2001,8 +2197,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-21.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-21.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2027,8 +2224,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-22.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-22.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2053,8 +2251,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-23.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-23.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2079,8 +2278,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-24.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-24.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2105,8 +2305,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-25.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-25.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2132,8 +2333,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-26.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-26.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2159,8 +2361,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-27.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-27.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2186,8 +2389,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-28.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-28.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2216,8 +2420,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-29.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-29.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2243,8 +2448,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-30.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-30.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2268,8 +2474,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-31.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-31.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2293,8 +2500,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/blocks/calendar-32.tsx",
-          "type": "registry:component"
+          "path": "registry/default/blocks/calendar-32.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "meta": {
@@ -2316,8 +2524,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-area-axes.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-area-axes.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2334,8 +2543,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-area-default.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-area-default.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2352,8 +2562,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-area-gradient.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-area-gradient.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2370,8 +2581,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-area-icons.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-area-icons.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2389,8 +2601,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-area-interactive.tsx",
-          "type": "registry:component"
+          "path": "registry/default/charts/chart-area-interactive.tsx",
+          "type": "registry:component",
+          "target": ""
         }
       ],
       "categories": [
@@ -2407,8 +2620,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-area-legend.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-area-legend.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2425,8 +2639,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-area-linear.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-area-linear.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2443,8 +2658,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-area-stacked-expand.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-area-stacked-expand.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2461,8 +2677,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-area-stacked.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-area-stacked.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2479,8 +2696,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-area-step.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-area-step.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2497,8 +2715,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-bar-active.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-bar-active.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2515,8 +2734,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-bar-default.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-bar-default.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2533,8 +2753,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-bar-horizontal.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-bar-horizontal.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2551,8 +2772,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-bar-interactive.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-bar-interactive.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2569,8 +2791,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-bar-label-custom.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-bar-label-custom.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2587,8 +2810,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-bar-label.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-bar-label.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2605,8 +2829,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-bar-mixed.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-bar-mixed.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2623,8 +2848,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-bar-multiple.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-bar-multiple.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2641,8 +2867,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-bar-negative.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-bar-negative.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2659,8 +2886,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-bar-stacked.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-bar-stacked.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2677,8 +2905,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-line-default.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-line-default.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2695,8 +2924,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-line-dots-colors.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-line-dots-colors.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2713,8 +2943,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-line-dots-custom.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-line-dots-custom.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2731,8 +2962,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-line-dots.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-line-dots.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2749,8 +2981,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-line-interactive.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-line-interactive.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2767,8 +3000,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-line-label-custom.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-line-label-custom.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2785,8 +3019,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-line-label.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-line-label.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2803,8 +3038,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-line-linear.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-line-linear.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2821,8 +3057,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-line-multiple.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-line-multiple.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2839,8 +3076,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-line-step.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-line-step.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2857,8 +3095,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-donut-active.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-donut-active.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2875,8 +3114,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-donut-text.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-donut-text.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2893,8 +3133,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-donut.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-donut.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2911,8 +3152,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-interactive.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-interactive.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2929,8 +3171,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-label-custom.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-label-custom.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2947,8 +3190,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-label-list.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-label-list.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2965,8 +3209,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-label.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-label.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -2983,8 +3228,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-legend.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-legend.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3001,8 +3247,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-separator-none.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-separator-none.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3019,8 +3266,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-simple.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-simple.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3037,8 +3285,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-pie-stacked.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-pie-stacked.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3055,8 +3304,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-default.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-default.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3073,8 +3323,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-dots.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-dots.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3091,8 +3342,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-grid-circle-fill.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-grid-circle-fill.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3109,8 +3361,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-grid-circle-no-lines.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-grid-circle-no-lines.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3127,8 +3380,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-grid-circle.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-grid-circle.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3145,8 +3399,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-grid-custom.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-grid-custom.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3163,8 +3418,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-grid-fill.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-grid-fill.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3181,8 +3437,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-grid-none.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-grid-none.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3199,8 +3456,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-icons.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-icons.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3217,8 +3475,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-label-custom.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-label-custom.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3235,8 +3494,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-legend.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-legend.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3253,8 +3513,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-lines-only.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-lines-only.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3271,8 +3532,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-multiple.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-multiple.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3289,8 +3551,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radar-radius.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radar-radius.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3307,8 +3570,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radial-grid.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radial-grid.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3325,8 +3589,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radial-label.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radial-label.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3343,8 +3608,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radial-shape.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radial-shape.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3361,8 +3627,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radial-simple.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radial-simple.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3379,8 +3646,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radial-stacked.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radial-stacked.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3397,8 +3665,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-radial-text.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-radial-text.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3415,8 +3684,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-tooltip-default.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-tooltip-default.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3433,8 +3703,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-tooltip-indicator-line.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-tooltip-indicator-line.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3451,8 +3722,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-tooltip-indicator-none.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-tooltip-indicator-none.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3469,8 +3741,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-tooltip-label-none.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-tooltip-label-none.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3487,8 +3760,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-tooltip-label-custom.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-tooltip-label-custom.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3505,8 +3779,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-tooltip-label-formatter.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-tooltip-label-formatter.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3523,8 +3798,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-tooltip-formatter.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-tooltip-formatter.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3541,8 +3817,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-tooltip-icons.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-tooltip-icons.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3559,8 +3836,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/charts/chart-tooltip-advanced.tsx",
-          "type": "registry:block"
+          "path": "registry/default/charts/chart-tooltip-advanced.tsx",
+          "type": "registry:block",
+          "target": ""
         }
       ],
       "categories": [
@@ -3577,8 +3855,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/lib/utils.ts",
-          "type": "registry:lib"
+          "path": "registry/default/lib/utils.ts",
+          "type": "registry:lib",
+          "target": ""
         }
       ]
     },
@@ -3587,8 +3866,20 @@
       "type": "registry:hook",
       "files": [
         {
-          "path": "registry/new-york-v4/hooks/use-mobile.ts",
-          "type": "registry:hook"
+          "path": "registry/default/hooks/use-mobile.tsx",
+          "type": "registry:hook",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "use-toast",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/default/hooks/use-toast.ts",
+          "type": "registry:hook",
+          "target": ""
         }
       ]
     },
@@ -3767,6 +4058,820 @@
       }
     },
     {
+      "name": "sink",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "accordion",
+        "alert",
+        "alert-dialog",
+        "aspect-ratio",
+        "avatar",
+        "badge",
+        "breadcrumb",
+        "button",
+        "calendar",
+        "card",
+        "carousel",
+        "chart",
+        "checkbox",
+        "collapsible",
+        "command",
+        "context-menu",
+        "dialog",
+        "drawer",
+        "dropdown-menu",
+        "hover-card",
+        "input",
+        "input-otp",
+        "label",
+        "menubar",
+        "navigation-menu",
+        "pagination",
+        "popover",
+        "progress",
+        "radio-group",
+        "resizable",
+        "scroll-area",
+        "select",
+        "separator",
+        "sheet",
+        "sidebar",
+        "skeleton",
+        "slider",
+        "sonner",
+        "switch",
+        "table",
+        "tabs",
+        "textarea",
+        "toast",
+        "toggle",
+        "toggle-group",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sink/page.tsx",
+          "type": "registry:page",
+          "target": "app/sink/page.tsx"
+        },
+        {
+          "path": "registry/default/internal/sink/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/component-wrapper.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/nav-main.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/nav-projects.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/nav-user.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/team-switcher.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/accordion-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/alert-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/alert-dialog-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/aspect-ratio-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/avatar-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/badge-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/breadcrumb-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/button-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/calendar-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/card-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/carousel-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/checkbox-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/collapsible-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/combobox-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/command-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/context-menu-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/date-picker-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/dialog-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/drawer-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/dropdown-menu-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/hover-card-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/input-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/input-otp-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/label-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/menubar-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/navigation-menu-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/pagination-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/popover-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/progress-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/radio-group-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/resizable-handle.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/scroll-area-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/select-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/separator-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/sheet-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/skeleton-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/slider-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/sonner-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/switch-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/table-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/tabs-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/textarea-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/toast-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/toggle-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/toggle-group-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/tooltip-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/badge-destructive.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/badge-outline.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/badge-secondary.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/button-destructive.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/button-ghost.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/button-link.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/button-loading.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/button-outline.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/button-secondary.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/button-with-icon.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/toggle-disabled.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/toggle-outline.tsx",
+          "type": "registry:component",
+          "target": ""
+        },
+        {
+          "path": "registry/default/internal/sink/components/toggle-with-text.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-demo",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-demo.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-header",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-header.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-footer",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-footer.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-group",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-group.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-group-collapsible",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-group-collapsible.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-group-action",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-group-action.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-menu.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu-action",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-menu-action.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu-sub",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-menu-sub.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu-collapsible",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-menu-collapsible.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu-badge",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-menu-badge.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-rsc",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-rsc.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "sidebar-controlled",
+      "type": "registry:internal",
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-controlled.tsx",
+          "type": "registry:component",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-01",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-01.tsx",
+          "type": "registry:component",
+          "target": "components/sidebar-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-02",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-02.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-03",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-03.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-04",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-04.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-05",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "label",
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-05.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-06",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "card",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-06.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-07",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-07.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-08",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-08.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-09",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-09.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-10",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "popover",
+        "collapsible",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-10.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-11",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-11.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-12",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "calendar",
+        "dropdown-menu",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-12.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-13",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "button",
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-13.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-14",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-14.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-sidebar-15",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "popover",
+        "collapsible",
+        "dropdown-menu",
+        "calendar",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/sidebar-15.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "v0-login-01",
+      "type": "registry:internal",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/default/internal/login-01.tsx",
+          "type": "registry:internal",
+          "target": ""
+        }
+      ]
+    },
+    {
       "name": "accordion-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -3774,8 +4879,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/accordion-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/accordion-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3787,8 +4893,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/alert-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/alert-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3800,8 +4907,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/alert-destructive.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/alert-destructive.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3814,8 +4922,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/alert-dialog-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/alert-dialog-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3827,8 +4936,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/aspect-ratio-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/aspect-ratio-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3840,8 +4950,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/avatar-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/avatar-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3853,8 +4964,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/badge-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/badge-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3866,8 +4978,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/badge-destructive.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/badge-destructive.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3879,8 +4992,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/badge-outline.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/badge-outline.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3892,8 +5006,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/badge-secondary.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/badge-secondary.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3905,8 +5020,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/breadcrumb-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/breadcrumb-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3918,8 +5034,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/breadcrumb-separator.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/breadcrumb-separator.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3931,8 +5048,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/breadcrumb-dropdown.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/breadcrumb-dropdown.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3944,8 +5062,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/breadcrumb-ellipsis.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/breadcrumb-ellipsis.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3957,8 +5076,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/breadcrumb-link.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/breadcrumb-link.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3970,8 +5090,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/breadcrumb-responsive.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/breadcrumb-responsive.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3983,8 +5104,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/button-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/button-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -3996,8 +5118,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/button-secondary.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/button-secondary.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4009,8 +5132,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/button-destructive.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/button-destructive.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4022,8 +5146,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/button-outline.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/button-outline.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4035,8 +5160,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/button-ghost.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/button-ghost.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4048,8 +5174,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/button-link.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/button-link.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4061,8 +5188,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/button-with-icon.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/button-with-icon.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4074,8 +5202,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/button-loading.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/button-loading.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4087,8 +5216,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/button-icon.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/button-icon.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4100,8 +5230,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/button-as-child.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/button-as-child.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4113,8 +5244,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/calendar-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/calendar-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4128,8 +5260,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/calendar-form.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/calendar-form.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4143,8 +5276,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/card-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/card-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4160,8 +5294,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/card-with-form.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/card-with-form.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4173,8 +5308,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/carousel-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/carousel-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4186,8 +5322,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/carousel-size.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/carousel-size.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4199,8 +5336,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/carousel-spacing.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/carousel-spacing.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4212,8 +5350,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/carousel-orientation.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/carousel-orientation.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4225,8 +5364,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/carousel-api.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/carousel-api.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4238,8 +5378,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/carousel-plugin.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/carousel-plugin.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4251,8 +5392,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/checkbox-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/checkbox-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4264,8 +5406,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/checkbox-disabled.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/checkbox-disabled.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4278,8 +5421,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/checkbox-form-multiple.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/checkbox-form-multiple.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4292,8 +5436,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/checkbox-form-single.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/checkbox-form-single.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4305,8 +5450,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/checkbox-with-text.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/checkbox-with-text.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4318,8 +5464,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/collapsible-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/collapsible-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4331,8 +5478,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/combobox-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/combobox-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4346,8 +5494,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/combobox-dropdown-menu.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/combobox-dropdown-menu.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4360,8 +5509,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/combobox-form.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/combobox-form.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4374,8 +5524,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/combobox-popover.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/combobox-popover.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4389,8 +5540,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/combobox-responsive.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/combobox-responsive.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4402,8 +5554,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/command-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/command-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4416,8 +5569,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/command-dialog.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/command-dialog.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4429,8 +5583,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/context-menu-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/context-menu-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4442,8 +5597,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/data-table-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/data-table-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4460,8 +5616,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/date-picker-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/date-picker-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4479,8 +5636,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/date-picker-form.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/date-picker-form.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4498,8 +5656,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/date-picker-with-presets.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/date-picker-with-presets.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4516,8 +5675,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/date-picker-with-range.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/date-picker-with-range.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4529,8 +5689,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/dialog-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/dialog-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4543,8 +5704,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/dialog-close-button.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/dialog-close-button.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4556,8 +5718,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/drawer-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/drawer-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4570,8 +5733,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/drawer-dialog.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/drawer-dialog.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4583,8 +5747,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/dropdown-menu-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/dropdown-menu-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4597,8 +5762,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/dropdown-menu-checkboxes.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/dropdown-menu-checkboxes.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4611,8 +5777,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/dropdown-menu-radio-group.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/dropdown-menu-radio-group.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4624,8 +5791,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/hover-card-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/hover-card-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4637,8 +5805,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4650,8 +5819,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-disabled.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-disabled.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4663,8 +5833,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-file.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-file.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4678,8 +5849,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-form.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-form.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4692,8 +5864,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-with-button.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-with-button.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4707,8 +5880,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-with-label.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-with-label.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4722,8 +5896,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-with-text.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-with-text.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4735,8 +5910,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-otp-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-otp-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4748,8 +5924,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-otp-pattern.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-otp-pattern.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4761,8 +5938,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-otp-separator.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-otp-separator.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4774,8 +5952,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-otp-controlled.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-otp-controlled.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4788,8 +5967,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/input-otp-form.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/input-otp-form.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4801,8 +5981,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/label-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/label-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4814,8 +5995,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/menubar-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/menubar-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4827,8 +6009,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/navigation-menu-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/navigation-menu-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4840,8 +6023,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/pagination-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/pagination-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4853,8 +6037,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/popover-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/popover-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4866,8 +6051,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/progress-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/progress-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4879,8 +6065,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/radio-group-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/radio-group-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4893,8 +6080,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/radio-group-form.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/radio-group-form.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4906,8 +6094,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/resizable-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/resizable-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4919,8 +6108,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/resizable-demo-with-handle.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/resizable-demo-with-handle.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4932,8 +6122,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/resizable-vertical.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/resizable-vertical.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4945,8 +6136,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/resizable-handle.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/resizable-handle.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4958,8 +6150,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/scroll-area-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/scroll-area-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4971,8 +6164,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/scroll-area-horizontal-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/scroll-area-horizontal-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4984,8 +6178,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/select-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/select-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -4997,8 +6192,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/select-scrollable.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/select-scrollable.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5010,8 +6206,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/select-form.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/select-form.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5023,8 +6220,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/separator-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/separator-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5036,8 +6234,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sheet-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/sheet-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5049,8 +6248,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sheet-side.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/sheet-side.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5062,8 +6262,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/skeleton-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/skeleton-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5075,8 +6276,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/skeleton-card.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/skeleton-card.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5088,8 +6290,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/slider-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/slider-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5101,8 +6304,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/sonner-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/sonner-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5114,8 +6318,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/switch-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/switch-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5128,8 +6333,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/switch-form.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/switch-form.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5141,8 +6347,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/table-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/table-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5154,8 +6361,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/tabs-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/tabs-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5167,8 +6375,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/textarea-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/textarea-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5180,8 +6389,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/textarea-disabled.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/textarea-disabled.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5194,8 +6404,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/textarea-form.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/textarea-form.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5208,8 +6419,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/textarea-with-button.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/textarea-with-button.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5222,8 +6434,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/textarea-with-label.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/textarea-with-label.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5236,8 +6449,79 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/textarea-with-text.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/textarea-with-text.tsx",
+          "type": "registry:example",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "toast-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toast"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/toast-demo.tsx",
+          "type": "registry:example",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "toast-destructive",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toast"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/toast-destructive.tsx",
+          "type": "registry:example",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "toast-simple",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toast"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/toast-simple.tsx",
+          "type": "registry:example",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "toast-with-action",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toast"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/toast-with-action.tsx",
+          "type": "registry:example",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "toast-with-title",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toast"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/toast-with-title.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5249,8 +6533,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-group-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-group-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5262,8 +6547,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-group-disabled.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-group-disabled.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5275,8 +6561,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-group-lg.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-group-lg.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5288,8 +6575,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-group-outline.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-group-outline.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5301,8 +6589,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-group-sm.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-group-sm.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5314,8 +6603,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-group-single.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-group-single.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5327,8 +6617,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5340,8 +6631,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-disabled.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-disabled.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5353,8 +6645,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-lg.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-lg.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5366,8 +6659,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-outline.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-outline.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5379,8 +6673,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-sm.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-sm.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5392,8 +6687,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/toggle-with-text.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/toggle-with-text.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5405,8 +6701,9 @@
       ],
       "files": [
         {
-          "path": "registry/new-york-v4/examples/tooltip-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/tooltip-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5415,8 +6712,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-blockquote.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-blockquote.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5425,8 +6723,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5435,8 +6734,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-h1.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-h1.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5445,8 +6745,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-h2.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-h2.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5455,8 +6756,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-h3.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-h3.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5465,8 +6767,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-h4.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-h4.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5475,8 +6778,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-inline-code.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-inline-code.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5485,8 +6789,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-large.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-large.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5495,8 +6800,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-lead.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-lead.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5505,8 +6811,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-list.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-list.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5515,8 +6822,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-muted.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-muted.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5525,8 +6833,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-p.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-p.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5535,8 +6844,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-small.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-small.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5545,8 +6855,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/typography-table.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/typography-table.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5555,8 +6866,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/mode-toggle.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/mode-toggle.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5565,8 +6877,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/chart-bar-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/chart-bar-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5575,8 +6888,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/chart-bar-demo-grid.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/chart-bar-demo-grid.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5585,8 +6899,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/chart-bar-demo-axis.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/chart-bar-demo-axis.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5595,8 +6910,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/chart-bar-demo-tooltip.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/chart-bar-demo-tooltip.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5605,8 +6921,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/chart-bar-demo-legend.tsx",
-          "type": "registry:example"
+          "path": "registry/default/examples/chart-bar-demo-legend.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     },
@@ -5615,161 +6932,9 @@
       "type": "registry:example",
       "files": [
         {
-          "path": "registry/new-york-v4/examples/chart-tooltip-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "calendar-hijri",
-      "type": "registry:example",
-      "description": "A Persian calendar.",
-      "registryDependencies": [
-        "calendar"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/calendar-hijri.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "meta": {
-        "iframeHeight": "600px",
-        "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
-        "mobile": "component"
-      },
-      "categories": [
-        "calendar",
-        "date"
-      ]
-    },
-    {
-      "name": "sidebar-demo",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-demo.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-header",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-header.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-footer",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-footer.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-group",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-group.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-group-collapsible",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-group-collapsible.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-group-action",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-group-action.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-menu",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-menu.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-menu-action",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-menu-action.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-menu-sub",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-menu-sub.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-menu-collapsible",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-menu-collapsible.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-menu-badge",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-menu-badge.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-rsc",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-rsc.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "sidebar-controlled",
-      "type": "registry:internal",
-      "files": [
-        {
-          "path": "registry/new-york-v4/internal/sidebar-controlled.tsx",
-          "type": "registry:component"
+          "path": "registry/default/examples/chart-tooltip-demo.tsx",
+          "type": "registry:example",
+          "target": ""
         }
       ]
     }
