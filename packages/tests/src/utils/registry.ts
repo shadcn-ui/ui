@@ -75,6 +75,23 @@ export async function createRegistryServer(
       return
     }
 
+    if (urlWithoutQuery?.includes("styles/index")) {
+      response.writeHead(200, { "Content-Type": "application/json" })
+      response.end(
+        JSON.stringify([
+          {
+            name: "new-york",
+            label: "New York",
+          },
+          {
+            name: "default",
+            label: "Default",
+          },
+        ])
+      )
+      return
+    }
+
     if (urlWithoutQuery?.includes("index")) {
       response.writeHead(200, { "Content-Type": "application/json" })
       response.end(
@@ -193,7 +210,7 @@ export async function configureRegistries(
 ) {
   if (!fs.pathExistsSync(path.join(fixturePath, "components.json"))) {
     await fs.writeJSON(path.join(fixturePath, "components.json"), {
-      payload,
+      registries: payload,
     })
   }
 
