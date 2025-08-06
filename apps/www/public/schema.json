@@ -56,6 +56,42 @@
         }
       },
       "required": ["utils", "components"]
+    },
+    "registries": {
+      "type": "object",
+      "patternProperties": {
+        "^@": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "\\{name\\}"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "pattern": "\\{name\\}"
+                },
+                "params": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "headers": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": ["url"]
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
     }
   },
   "required": ["style", "tailwind", "rsc", "aliases"]
