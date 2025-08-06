@@ -1191,9 +1191,7 @@ describe("registries:init", () => {
 
   it("should error when init with unconfigured registries", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    const output = await npxShadcn(fixturePath, ["init", "@two/style"], {
-      debug: true,
-    })
+    const output = await npxShadcn(fixturePath, ["init", "@two/style"])
     expect(output.stdout).toContain('Unknown registry "@two"')
   })
 
@@ -1263,14 +1261,14 @@ describe("registries:init", () => {
 
     await configureRegistries(fixturePath, {
       "@two": {
-        url: "http://localhost:5555/registry/{name}",
+        url: "http://localhost:5555/registry/bearer/{name}",
         headers: {
           Authorization: "Bearer ${BEARER_TOKEN}",
         },
       },
     })
 
-    process.env.BEARER_TOKEN = "1234567890"
+    process.env.BEARER_TOKEN = "EXAMPLE_BEARER_TOKEN"
 
     await npxShadcn(fixturePath, ["init", "@two/style"])
 
@@ -1285,7 +1283,7 @@ describe("registries:init", () => {
           "headers": {
             "Authorization": "Bearer \${BEARER_TOKEN}",
           },
-          "url": "http://localhost:5555/registry/{name}",
+          "url": "http://localhost:5555/registry/bearer/{name}",
         },
       }
     `)

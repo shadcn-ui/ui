@@ -4,3 +4,4 @@ packages:
   - "!**/test/**"
   - "!**/fixtures/**"
   - "!**/temp/**"
+  - "!**/tests/**"

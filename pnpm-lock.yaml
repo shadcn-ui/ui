@@ -808,37 +808,6 @@ importers:
         specifier: ^4.9.3
         version: 4.9.5
 
-  packages/tests:
-    dependencies:
-      shadcn:
-        specifier: workspace:*
-        version: link:../shadcn
-    devDependencies:
-      '@types/fs-extra':
-        specifier: ^11.0.1
-        version: 11.0.4
-      '@types/node':
-        specifier: ^20.11.27
-        version: 20.17.16
-      execa:
-        specifier: ^7.0.0
-        version: 7.2.0
-      fs-extra:
-        specifier: ^11.1.0
-        version: 11.3.0
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.0.1
-      typescript:
-        specifier: ^5.5.3
-        version: 5.7.3
-      vite-tsconfig-paths:
-        specifier: ^4.2.0
-        version: 4.3.2(typescript@5.7.3)(vite@5.4.15(@types/node@20.17.16)(lightningcss@1.30.1))
-      vitest:
-        specifier: ^2.1.9
-        version: 2.1.9(@types/node@20.17.16)(lightningcss@1.30.1)(msw@2.7.1(@types/node@20.17.16)(typescript@5.7.3))
-
 packages:
 
   '@alloc/quick-lru@5.2.0':
