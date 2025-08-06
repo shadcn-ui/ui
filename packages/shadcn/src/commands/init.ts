@@ -9,14 +9,17 @@ import {
   getRegistryStyles,
 } from "@/src/registry/api"
 import { clearRegistryContext } from "@/src/registry/context"
-import { parseRegistryAndItemFromString } from "@/src/registry/parser"
-import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
-import { configSchema, rawConfigSchema } from "@/src/registry/schema"
-import { isUrl } from "@/src/registry/utils"
+import { rawConfigSchema } from "@/src/registry/schema"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
+import {
+  FILE_BACKUP_SUFFIX,
+  createFileBackup,
+  deleteFileBackup,
+  restoreFileBackup,
+} from "@/src/utils/file-helper"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -41,6 +44,18 @@ import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
+
+process.on("exit", (code) => {
+  const filePath = path.resolve(process.cwd(), "components.json")
+
+  // Delete backup if successful.
+  if (code === 0) {
+    return deleteFileBackup(filePath)
+  }
+
+  // Restore backup if error.
+  return restoreFileBackup(filePath)
+})
 
 export const initOptionsSchema = z.object({
   cwd: z.string(),
@@ -132,12 +147,11 @@ export const init = new Command()
       await loadEnvFiles(options.cwd)
 
       // We need to check if we're initializing with a new style.
-      // We don't know the full config at this point.
-      // So we'll merge with a shadow config to fetch the first item.
-      // We'll rename the components.json file to a backup file to allow preflight to run.
-      // We'll rename it back after preflight.
-      let backupComponentsJsonPath: string | null = null
+      // This will allow us to determine if we need to install the base style.
+      // And if we should prompt the user for a base color.
       if (components.length > 0) {
+        // We don't know the full config at this point.
+        // So we'll use a shadow config to fetch the first item.
         let shadowConfig: Parameters<typeof getRegistryItem>[1] = {
           style: "new-york",
           resolvedPaths: {
@@ -146,7 +160,7 @@ export const init = new Command()
         }
 
         // Check if there's a components.json file.
-        // If so, we'll merge with our shadow config to fetch the first item.
+        // If so, we'll merge with our shadow config.
         const componentsJsonPath = path.resolve(options.cwd, "components.json")
         if (fsExtra.existsSync(componentsJsonPath)) {
           const existingConfig = await fsExtra.readJson(componentsJsonPath)
@@ -156,40 +170,34 @@ export const init = new Command()
             ...config,
           }
 
-          // If we have an existing components.json, we'll temporarily rename it to allow preflight to run.
+          // Since components.json might not be valid at this point.
+          // Temporarily rename components.json to allow preflight to run.
           // We'll rename it back after preflight.
-          backupComponentsJsonPath = `${componentsJsonPath}.bak`
-          await fs.rename(componentsJsonPath, backupComponentsJsonPath)
+          createFileBackup(componentsJsonPath)
         }
 
         // This forces a shadowConfig validation early in the process.
-        await buildUrlAndHeadersForRegistryItem(components[0], shadowConfig)
-
-        // const resolved = resolveRegistryItemsFromRegistries(
-        //   [components[0]],
-        //   shadowConfig
-        // )
+        buildUrlAndHeadersForRegistryItem(components[0], shadowConfig)
 
         const item = await getRegistryItem(components[0], shadowConfig)
         if (item?.type === "registry:style") {
           // Set a default base color so we're not prompted.
           // The style will extend or override it.
           options.baseColor = "neutral"
+
+          // If the style extends none, we don't want to install the base style.
           options.baseStyle =
             item.extends === "none" ? false : options.baseStyle
         }
       }
 
-      // If we specify --no-base-style, then we don't want to prompt for a base color either.
+      // If --no-base-style, we don't want to prompt for a base color either.
       // The style will extend or override it.
       if (!options.baseStyle) {
         options.baseColor = "neutral"
       }
 
-      await runInit({
-        ...options,
-        mergeComponentsJsonPath: backupComponentsJsonPath,
-      })
+      await runInit(options)
 
       logger.log(
         `${highlighter.success(
@@ -208,7 +216,6 @@ export const init = new Command()
 export async function runInit(
   options: z.infer<typeof initOptionsSchema> & {
     skipPreflight?: boolean
-    mergeComponentsJsonPath?: string | null
   }
 ) {
   let projectInfo
@@ -255,29 +262,20 @@ export async function runInit(
     }
   }
 
-  // Write components.json.
   const componentSpinner = spinner(`Writing components.json.`).start()
   const targetPath = path.resolve(options.cwd, "components.json")
+  const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
 
-  if (
-    options.mergeComponentsJsonPath &&
-    fsExtra.existsSync(options.mergeComponentsJsonPath)
-  ) {
-    const existingConfig = await fsExtra.readJson(
-      options.mergeComponentsJsonPath
-    )
-    config = deepmerge(existingConfig, config)
+  // Merge with backup config if it exists and not using --force
+  if (!options.force && fsExtra.existsSync(backupPath)) {
+    const existingConfig = await fsExtra.readJson(backupPath)
 
     // Move registries at the end of the config.
-    const { registries, ...rest } = config
-    config = {
-      ...rest,
-      registries,
-    }
-
-    await fs.unlink(options.mergeComponentsJsonPath)
-    delete options.mergeComponentsJsonPath
+    const { registries, ...merged } = deepmerge(existingConfig, config)
+    config = { ...merged, registries }
   }
+
+  // Write components.json.
   await fs.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")
   componentSpinner.succeed()
 

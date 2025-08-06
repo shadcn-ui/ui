@@ -501,3 +501,59 @@ describe("shadcn init - custom style", async () => {
     `)
   })
 })
+
+describe("shadcn init - existing components.json", () => {
+  it("should override existing components.json when using --force", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+
+    // Run init with default configuration.
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+
+    // Override style in components.json.
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    const config = await fs.readJson(componentsJsonPath)
+    config.style = "custom-style"
+    await fs.writeJson(componentsJsonPath, config)
+
+    // Reinit with --force and different base color.
+    await npxShadcn(fixturePath, ["init", "--force", "--base-color=zinc"])
+
+    const newConfig = await fs.readJson(componentsJsonPath)
+    expect(newConfig.style).toBe("new-york")
+    expect(newConfig.tailwind.baseColor).toBe("zinc")
+    expect(await fs.pathExists(componentsJsonPath + ".bak")).toBe(false)
+  })
+
+  it("should restore backup components.json on error", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+
+    const existingConfig = {
+      $schema: "https://ui.shadcn.com/schema.json",
+      style: "default",
+      tailwind: {
+        css: "app/globals.css",
+        baseColor: "zinc",
+        cssVariables: false,
+      },
+      rsc: true,
+      tsx: true,
+      aliases: {
+        components: "@/components",
+        utils: "@/lib/utils",
+      },
+    }
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    await fs.writeJson(componentsJsonPath, existingConfig)
+
+    // Run init with an invalid component - this should fail and restore
+    await npxShadcn(fixturePath, [
+      "init",
+      "invalid-component-that-does-not-exist",
+    ])
+
+    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
+    const newConfig = await fs.readJson(componentsJsonPath)
+    expect(newConfig).toMatchObject(existingConfig)
+    expect(await fs.pathExists(componentsJsonPath + ".bak")).toBe(false)
+  })
+})
