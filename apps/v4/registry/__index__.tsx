@@ -936,7 +936,7 @@ export const Index: Record<string, any> = {
     name: "sidebar-02",
     description: "A sidebar with collapsible sections.",
     type: "registry:block",
-    registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
+    registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu","collapsible"],
     files: [{
       path: "registry/new-york-v4/blocks/sidebar-02/page.tsx",
       type: "registry:page",
