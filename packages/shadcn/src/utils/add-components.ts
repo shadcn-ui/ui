@@ -39,7 +39,7 @@ export async function addComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
-    style?: string
+    baseStyle?: boolean
     registryHeaders?: Record<string, Record<string, string>>
   }
 ) {
@@ -47,7 +47,7 @@ export async function addComponents(
     overwrite: false,
     silent: false,
     isNewProject: false,
-    style: "index",
+    baseStyle: true,
     ...options,
   }
 
@@ -74,9 +74,13 @@ async function addProjectComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
-    style?: string
+    baseStyle?: boolean
   }
 ) {
+  if (!options.baseStyle && !components.length) {
+    return
+  }
+
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
@@ -110,7 +114,7 @@ async function addProjectComponents(
     tailwindVersion,
     tailwindConfig: tree.tailwind?.config,
     overwriteCssVars,
-    initIndex: options.style ? options.style === "index" : false,
+    initIndex: options.baseStyle,
   })
 
   // Add CSS updater
@@ -144,9 +148,13 @@ async function addWorkspaceComponents(
     silent?: boolean
     isNewProject?: boolean
     isRemote?: boolean
-    style?: string
+    baseStyle?: boolean
   }
 ) {
+  if (!options.baseStyle && !components.length) {
+    return
+  }
+
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()

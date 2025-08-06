@@ -13,7 +13,7 @@ const QUERY_PARAM_DELIMITER = "&"
 
 export function buildUrlAndHeadersForRegistryItem(
   name: string,
-  config?: z.infer<typeof configSchema>
+  config?: Pick<z.infer<typeof configSchema>, "registries" | "style">
 ) {
   const { registry, item } = parseRegistryAndItemFromString(name)
 
@@ -43,7 +43,7 @@ export function buildUrlAndHeadersForRegistryItem(
 export function buildUrlFromRegistryConfig(
   item: string,
   registryConfig: z.infer<typeof registryConfigItemSchema>,
-  config?: z.infer<typeof configSchema>
+  config?: Pick<z.infer<typeof configSchema>, "style">
 ) {
   if (typeof registryConfig === "string") {
     let url = registryConfig.replace(NAME_PLACEHOLDER, item)

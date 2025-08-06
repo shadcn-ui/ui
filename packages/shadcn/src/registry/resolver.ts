@@ -6,7 +6,7 @@ import { setRegistryHeaders } from "./context"
 
 export function resolveRegistryItemsFromRegistries(
   items: string[],
-  config?: z.infer<typeof configSchema>
+  config?: Pick<z.infer<typeof configSchema>, "registries" | "style">
 ) {
   const registryHeaders: Record<string, Record<string, string>> = {}
   const resolvedItems = [...items]
