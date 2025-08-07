@@ -813,3 +813,220 @@ describe("registryResolveItemTree - potential target conflicts", async () => {
     await dependencyRegistry.stop()
   })
 })
+
+describe("registryResolveItemTree - cross-registry dependencies", async () => {
+  const firstRegistry = await createRegistryServer(
+    [
+      {
+        name: "login-01",
+        type: "registry:ui",
+        files: [
+          {
+            path: "ui/login-01.tsx",
+            content: "export const Login01 = () => <div>Login 01</div>",
+            type: "registry:ui",
+          },
+        ],
+      },
+      {
+        name: "login-02",
+        type: "registry:ui",
+        files: [
+          {
+            path: "ui/login-02.tsx",
+            content: "export const Login02 = () => <div>Login 02</div>",
+            type: "registry:ui",
+          },
+        ],
+      },
+    ],
+    { port: 4453 }
+  )
+
+  const secondRegistry = await createRegistryServer(
+    [
+      {
+        name: "block-01",
+        type: "registry:block",
+        files: [
+          {
+            path: "blocks/block-01.tsx",
+            content: "export const Block01 = () => <div>Block 01</div>",
+            type: "registry:block",
+          },
+        ],
+      },
+      {
+        name: "block-02",
+        type: "registry:block",
+        registryDependencies: ["@one/login-02"],
+        files: [
+          {
+            path: "blocks/block-02.tsx",
+            content:
+              "export const Block02 = () => <div>Block 02 with Login</div>",
+            type: "registry:block",
+          },
+        ],
+      },
+    ],
+    { port: 4454 }
+  )
+
+  const thirdRegistry = await createRegistryServer(
+    [
+      {
+        name: "login-01",
+        type: "registry:component",
+        files: [
+          {
+            path: "components/login-form.tsx",
+            content:
+              "export const LoginForm = () => <form>Login Form 01</form>",
+            type: "registry:component",
+          },
+        ],
+      },
+      {
+        name: "login-02",
+        type: "registry:component",
+        files: [
+          {
+            path: "components/login-form.tsx",
+            content:
+              "export const LoginForm = () => <form>Login Form 02</form>",
+            type: "registry:component",
+          },
+        ],
+      },
+    ],
+    { port: 4455 }
+  )
+
+  const fourthRegistry = await createRegistryServer(
+    [
+      {
+        name: "app-01",
+        type: "registry:item",
+        registryDependencies: ["@three/login-02"],
+      },
+    ],
+    { port: 4456 }
+  )
+
+  beforeAll(async () => {
+    await firstRegistry.start()
+    await secondRegistry.start()
+    await thirdRegistry.start()
+    await fourthRegistry.start()
+  })
+
+  afterAll(async () => {
+    await firstRegistry.stop()
+    await secondRegistry.stop()
+    await thirdRegistry.stop()
+    await fourthRegistry.stop()
+  })
+
+  test("should resolve cross-registry dependencies correctly", async () => {
+    const config = {
+      style: "default",
+      tailwind: { baseColor: "neutral" },
+      registries: {
+        "@one": {
+          url: "http://localhost:4453/r/{name}.json",
+        },
+        "@two": {
+          url: "http://localhost:4454/r/{name}.json",
+        },
+      },
+      resolvedPaths: {
+        cwd: process.cwd(),
+        tailwindConfig: "./tailwind.config.js",
+        tailwindCss: "./globals.css",
+        utils: "./lib/utils",
+        components: "./components",
+        lib: "./lib",
+        hooks: "./hooks",
+        ui: "./components/ui",
+      },
+    }
+
+    const result = await registryResolveItemsTree(
+      ["@one/login-01", "@two/block-02"],
+      config
+    )
+
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "css": {},
+        "cssVars": {},
+        "dependencies": [],
+        "devDependencies": [],
+        "docs": "",
+        "files": [
+          {
+            "content": "export const Login01 = () => <div>Login 01</div>",
+            "path": "ui/login-01.tsx",
+            "type": "registry:ui",
+          },
+          {
+            "content": "export const Login02 = () => <div>Login 02</div>",
+            "path": "ui/login-02.tsx",
+            "type": "registry:ui",
+          },
+          {
+            "content": "export const Block02 = () => <div>Block 02 with Login</div>",
+            "path": "blocks/block-02.tsx",
+            "type": "registry:block",
+          },
+        ],
+        "tailwind": {},
+      }
+    `)
+  })
+
+  test("should deduplicate shared dependencies across registry items", async () => {
+    const config = {
+      style: "default",
+      tailwind: { baseColor: "neutral" },
+      registries: {
+        "@three": "http://localhost:4455/r/{name}.json",
+        "@four": "http://localhost:4456/r/{name}.json",
+      },
+      resolvedPaths: {
+        cwd: process.cwd(),
+        tailwindConfig: "./tailwind.config.js",
+        tailwindCss: "./globals.css",
+        utils: "./lib/utils",
+        components: "./components",
+        lib: "./lib",
+        hooks: "./hooks",
+        ui: "./components/ui",
+      },
+    }
+
+    const result = await registryResolveItemsTree(
+      ["@three/login-01", "@four/app-01"],
+      config
+    )
+
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "css": {},
+        "cssVars": {},
+        "dependencies": [],
+        "devDependencies": [],
+        "docs": "",
+        "files": [
+          {
+            "content": "export const LoginForm = () => <form>Login Form 02</form>",
+            "path": "components/login-form.tsx",
+            "type": "registry:component",
+          },
+        ],
+        "tailwind": {},
+      }
+    `)
+  })
+})
