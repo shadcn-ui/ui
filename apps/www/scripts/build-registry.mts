@@ -2,7 +2,7 @@ import { exec } from "child_process"
 import { existsSync, promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import template from "lodash/template"
+import { template } from "es-toolkit/compat"
 import { rimraf } from "rimraf"
 import {
   Registry,
