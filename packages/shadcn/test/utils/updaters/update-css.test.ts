@@ -3,6 +3,47 @@ import { describe, expect, test } from "vitest"
 import { transformCss } from "../../../src/utils/updaters/update-css"
 
 describe("transformCss", () => {
+  test("should add a single import", async () => {
+    const input = `@import "tailwindcss";`
+
+    const result = await transformCss(input, {
+      "@import": "./example.css",
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @import "./example.css";"
+    `)
+  })
+
+  test("should add multiple imports", async () => {
+    const input = `@import "tailwindcss";`
+
+    const result = await transformCss(input, {
+      "@import": ["./styles.css", "./components.css"],
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @import "./styles.css";
+      @import "./components.css";"
+    `)
+  })
+
+  test("should not add duplicate imports", async () => {
+    const input = `@import "tailwindcss";
+@import "./example.css";`
+
+    const result = await transformCss(input, {
+      "@import": "./example.css",
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @import "./example.css";"
+    `)
+  })
+
   test("should add utility classes", async () => {
     const input = `@import "tailwindcss";`
 
