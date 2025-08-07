@@ -171,18 +171,20 @@ function toast({ ...props }: Toast) {
   }
 }
 
-function useToast() {
-  const [state, setState] = React.useState<State>(memoryState)
+function subscribe(listener: (state: State) => void) {
+  listeners.push(listener)
 
-  React.useEffect(() => {
-    listeners.push(setState)
-    return () => {
-      const index = listeners.indexOf(setState)
-      if (index > -1) {
-        listeners.splice(index, 1)
-      }
+  return () => {
+    const index = listeners.indexOf(listener)
+
+    if (index > -1) {
+      listeners.splice(index, 1)
     }
-  }, [state])
+  }
+}
+
+function useToast() {
+  const state = React.useSyncExternalStore(subscribe, () => memoryState)
 
   return {
     ...state,
