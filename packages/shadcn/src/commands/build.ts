@@ -89,6 +89,12 @@ export const build = new Command()
         )
       }
 
+      // Copy registry.json to the output directory.
+      await fs.copyFile(
+        resolvePaths.registryFile,
+        path.resolve(resolvePaths.outputDir, "registry.json")
+      )
+
       buildSpinner.succeed("Building registry.")
     } catch (error) {
       logger.break()
