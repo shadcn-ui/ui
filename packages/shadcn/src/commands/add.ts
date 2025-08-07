@@ -83,6 +83,7 @@ export const add = new Command()
       let initialConfig = await getConfig(options.cwd)
       if (!initialConfig) {
         initialConfig = createConfig({
+          style: "new-york",
           resolvedPaths: {
             cwd: options.cwd,
           },
@@ -170,7 +171,7 @@ export const add = new Command()
           isNewProject: false,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
-          style: "index",
+          baseStyle: true,
         })
       }
 
@@ -202,7 +203,7 @@ export const add = new Command()
             isNewProject: true,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
-            style: "index",
+            baseStyle: true,
           })
 
           shouldUpdateAppIndex =
