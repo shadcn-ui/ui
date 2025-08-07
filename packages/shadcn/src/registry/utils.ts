@@ -1,8 +1,7 @@
 import * as fs from "fs/promises"
 import { tmpdir } from "os"
 import * as path from "path"
-import { registryItemSchema } from "@/src/registry"
-import { configSchema } from "@/src/utils/get-config"
+import { configSchema, registryItemSchema } from "@/src/registry"
 import { ProjectInfo } from "@/src/utils/get-project-info"
 import { resolveImport } from "@/src/utils/resolve-import"
 import { Project, ScriptKind } from "ts-morph"
@@ -259,7 +258,9 @@ export function isLocalFile(path: string) {
 
 /**
  * Check if a registry item is universal (framework-agnostic).
- * A universal registry item has all files with explicit targets.
+ * A universal registry item must have all files with:
+ * 1. Explicit targets
+ * 2. Type "registry:file"
  * It can be installed without framework detection or components.json.
  */
 export function isUniversalRegistryItem(
@@ -270,6 +271,10 @@ export function isUniversalRegistryItem(
 ): boolean {
   return (
     !!registryItem?.files?.length &&
-    registryItem.files.every((file) => !!file.target)
+    registryItem.files.every(
+      (file) =>
+        !!file.target &&
+        (file.type === "registry:file" || file.type === "registry:item")
+    )
   )
 }

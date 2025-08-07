@@ -65,6 +65,8 @@ export const registryItemCssSchema = z.record(
   )
 )
 
+export const registryItemEnvVarsSchema = z.record(z.string(), z.string())
+
 export const registryItemSchema = z.object({
   $schema: z.string().optional(),
   extends: z.string().optional(),
@@ -80,6 +82,7 @@ export const registryItemSchema = z.object({
   tailwind: registryItemTailwindSchema.optional(),
   cssVars: registryItemCssVarsSchema.optional(),
   css: registryItemCssSchema.optional(),
+  envVars: registryItemEnvVarsSchema.optional(),
   meta: z.record(z.string(), z.any()).optional(),
   docs: z.string().optional(),
   categories: z.array(z.string()).optional(),
@@ -127,5 +130,70 @@ export const registryResolvedItemsTreeSchema = registryItemSchema.pick({
   tailwind: true,
   cssVars: true,
   css: true,
+  envVars: true,
   docs: true,
 })
+
+export const registryConfigItemSchema = z.union([
+  // Simple string format: "https://example.com/{name}.json"
+  z.string().refine((s) => s.includes("{name}"), {
+    message: "Registry URL must include {name} placeholder",
+  }),
+  // Advanced object format with auth options
+  z.object({
+    url: z.string().refine((s) => s.includes("{name}"), {
+      message: "Registry URL must include {name} placeholder",
+    }),
+    params: z.record(z.string(), z.string()).optional(),
+    headers: z.record(z.string(), z.string()).optional(),
+  }),
+])
+
+export const registryConfigSchema = z.record(
+  z.string().refine((key) => key.startsWith("@"), {
+    message: "Registry names must start with @ (e.g., @v0, @acme)",
+  }),
+  registryConfigItemSchema
+)
+
+export const rawConfigSchema = z
+  .object({
+    $schema: z.string().optional(),
+    style: z.string(),
+    rsc: z.coerce.boolean().default(false),
+    tsx: z.coerce.boolean().default(true),
+    tailwind: z.object({
+      config: z.string().optional(),
+      css: z.string(),
+      baseColor: z.string(),
+      cssVariables: z.boolean().default(true),
+      prefix: z.string().default("").optional(),
+    }),
+    iconLibrary: z.string().optional(),
+    aliases: z.object({
+      components: z.string(),
+      utils: z.string(),
+      ui: z.string().optional(),
+      lib: z.string().optional(),
+      hooks: z.string().optional(),
+    }),
+    registries: registryConfigSchema.optional(),
+  })
+  .strict()
+
+export const configSchema = rawConfigSchema.extend({
+  resolvedPaths: z.object({
+    cwd: z.string(),
+    tailwindConfig: z.string(),
+    tailwindCss: z.string(),
+    utils: z.string(),
+    components: z.string(),
+    lib: z.string(),
+    hooks: z.string(),
+    ui: z.string(),
+  }),
+})
+
+// TODO: type the key.
+// Okay for now since I don't want a breaking change.
+export const workspaceConfigSchema = z.record(configSchema)

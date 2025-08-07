@@ -31,6 +31,7 @@ const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   "registry:block",
   "registry:example",
   "registry:internal",
+  "registry:style",
 ]
 
 const project = new Project({
@@ -254,7 +255,7 @@ export const Index: Record<string, any> = {
 `
 
   // ----------------------------------------------------------------------------
-  // Build registry/index.json.
+  // Build registry/index.json (central index for all styles).
   // ----------------------------------------------------------------------------
   const items = registry.items
     .filter((item) => ["registry:ui"].includes(item.type))
@@ -298,6 +299,9 @@ async function buildStyles(registry: Registry) {
     if (!existsSync(targetPath)) {
       await fs.mkdir(targetPath, { recursive: true })
     }
+
+    // Build registry.json for this style
+    const styleRegistryItems = []
 
     for (const item of registry.items) {
       if (!REGISTRY_INDEX_WHITELIST.includes(item.type)) {
@@ -390,7 +394,46 @@ async function buildStyles(registry: Registry) {
           JSON.stringify(payload.data, null, 2),
           "utf8"
         )
+
+        // Add item to style registry with fixed paths (without content)
+        styleRegistryItems.push({
+          ...item,
+          files: files
+            ?.map((file: any) => {
+              if (!file) return null
+              // Exclude content from registry.json
+              const { content, ...fileWithoutContent } = file
+              return {
+                ...fileWithoutContent,
+                path: `registry/${style.name}/${file.path}`,
+              }
+            })
+            .filter(Boolean),
+        })
       }
+    }
+
+    // Build registry.json for this style following registrySchema format
+    const styleRegistry = {
+      name: registry.name,
+      homepage: registry.homepage,
+      items: styleRegistryItems,
+    }
+
+    // Validate against registrySchema
+    const validatedRegistry = registrySchema.safeParse(styleRegistry)
+    if (validatedRegistry.success) {
+      const styleRegistryJson = JSON.stringify(validatedRegistry.data, null, 2)
+      await fs.writeFile(
+        path.join(targetPath, "registry.json"),
+        styleRegistryJson,
+        "utf8"
+      )
+    } else {
+      console.error(
+        `Failed to validate registry for style ${style.name}:`,
+        validatedRegistry.error
+      )
     }
   }
 
@@ -831,7 +874,7 @@ try {
   await syncStyles()
   await buildRegistry(result.data)
   await buildStyles(result.data)
-  await buildStylesIndex()
+  // await buildStylesIndex()
   await buildThemes()
 
   await buildRegistryIcons()

@@ -1,5 +1,23 @@
 # @shadcn/ui
 
+## 2.10.0
+
+### Minor Changes
+
+- [#7902](https://github.com/shadcn-ui/ui/pull/7902) [`e6778dee87de1a183843f233b3f27fbfb1a700ec`](https://github.com/shadcn-ui/ui/commit/e6778dee87de1a183843f233b3f27fbfb1a700ec) Thanks [@shadcn](https://github.com/shadcn)! - add support for envVars in schema
+
+- [#7896](https://github.com/shadcn-ui/ui/pull/7896) [`97a8de1c1b2ae590cc9dbe17970a882990c35a59`](https://github.com/shadcn-ui/ui/commit/97a8de1c1b2ae590cc9dbe17970a882990c35a59) Thanks [@shadcn](https://github.com/shadcn)! - add support for env vars in registry
+
+### Patch Changes
+
+- [#7908](https://github.com/shadcn-ui/ui/pull/7908) [`d891132f2a0121e12c92839e19f5d90252f9a640`](https://github.com/shadcn-ui/ui/commit/d891132f2a0121e12c92839e19f5d90252f9a640) Thanks [@shadcn](https://github.com/shadcn)! - remove init tests
+
+## 2.9.3
+
+### Patch Changes
+
+- [#7837](https://github.com/shadcn-ui/ui/pull/7837) [`20e913d8e1df1acddc7bd4b8328088a25869ba7c`](https://github.com/shadcn-ui/ui/commit/20e913d8e1df1acddc7bd4b8328088a25869ba7c) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of themes
+
 ## 2.9.2
 
 ### Patch Changes
