@@ -15,7 +15,6 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwind-merge": "^3.3.1",
-    "tw-animate-css": "^1.3.6",
     "zod": "^3.25.76"
   },
   "devDependencies": {
@@ -28,6 +27,7 @@
     "@workspace/typescript-config": "workspace:*",
     "eslint": "^9.32.0",
     "tailwindcss": "^4.1.11",
+    "tw-animate-css": "^1.3.6",
     "typescript": "^5.9.2"
   },
   "exports": {
