@@ -1315,4 +1315,36 @@ export const blocks: Registry["items"] = [
       mobile: "component",
     },
   },
+  {
+    name: "data-grid",
+    author: "Krishna Kumar (https://github.com/chvvkrishnakumar)", // Replace with your info
+    title: "Custom Data Grid",
+    description:
+      "A flexible and customizable data grid with API search and pagination support.",
+    type: "registry:block",
+    registryDependencies: [
+      "input",
+      "button",
+      "checkbox",
+      "dropdown-menu",
+      "table",
+    ],
+    dependencies: ["@tanstack/react-table", "lucide-react"],
+    files: [
+      {
+        path: "blocks/data-grid/page.tsx",
+        type: "registry:page",
+        target: "app/data-grid/page.tsx",
+      },
+      {
+        path: "blocks/data-grid/components/data-grid.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/data-grid/data-grid-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["data-grid"],
+  },
 ]
