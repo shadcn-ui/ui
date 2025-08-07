@@ -53,14 +53,22 @@ export function CommandMenu({
   >(null)
   const [copyPayload, setCopyPayload] = React.useState("")
   const packageManager = config.packageManager || "pnpm"
-
+  let installCmd = "pnpm dlx";
+  if (packageManager == "npm") {
+    installCmd = "npx";
+  } else if (packageManager == "bun") {
+    installCmd = "bunx --bun";
+  } else if (packageManager == "yarn") {
+    installCmd = "yarn";
+  }
+  
   const handlePageHighlight = React.useCallback(
     (isComponent: boolean, item: { url: string; name?: React.ReactNode }) => {
       if (isComponent) {
         const componentName = item.url.split("/").pop()
         setSelectedType("component")
         setCopyPayload(
-          `${packageManager} dlx shadcn@latest add ${componentName}`
+          `${installCmd} shadcn@latest add ${componentName}`
         )
       } else {
         setSelectedType("page")
@@ -81,7 +89,7 @@ export function CommandMenu({
   const handleBlockHighlight = React.useCallback(
     (block: { name: string; description: string; categories: string[] }) => {
       setSelectedType("block")
-      setCopyPayload(`${packageManager} dlx shadcn@latest add ${block.name}`)
+      setCopyPayload(`${installCmd} shadcn@latest add ${block.name}`)
     },
     [setSelectedType, setCopyPayload, packageManager]
   )
