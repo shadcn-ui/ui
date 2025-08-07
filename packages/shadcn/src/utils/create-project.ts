@@ -245,7 +245,7 @@ async function createMonorepoProject(
     await execa("git", ["commit", "-m", "Initial commit"], {
       cwd: projectPath,
     })
-    await execa("cd", [cwd])
+    // await execa("cd", [cwd])
 
     createSpinner?.succeed("Creating a new Next.js monorepo.")
   } catch (error) {
