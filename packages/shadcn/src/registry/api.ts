@@ -9,7 +9,7 @@ import {
 } from "@/src/registry/context"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
-import { isLocalFile } from "@/src/registry/utils"
+import { deduplicateFilesByTarget, isLocalFile } from "@/src/registry/utils"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
@@ -792,6 +792,12 @@ export async function registryResolveItemsTree(
       envVars = deepmerge(envVars, item.envVars ?? {})
     })
 
+    // Deduplicate files based on resolved target paths.
+    const deduplicatedFiles = await deduplicateFilesByTarget(
+      payload.map((item) => item.files ?? []),
+      config
+    )
+
     const parsed = registryResolvedItemsTreeSchema.parse({
       dependencies: deepmerge.all(
         payload.map((item) => item.dependencies ?? [])
@@ -799,7 +805,7 @@ export async function registryResolveItemsTree(
       devDependencies: deepmerge.all(
         payload.map((item) => item.devDependencies ?? [])
       ),
-      files: deepmerge.all(payload.map((item) => item.files ?? [])),
+      files: deduplicatedFiles,
       tailwind,
       cssVars,
       css,
