@@ -86,7 +86,7 @@
     "recharts": "2.15.1",
     "rehype-pretty-code": "^0.14.1",
     "rimraf": "^6.0.1",
-    "shadcn": "2.10.0",
+    "shadcn": "2.11.0",
     "shiki": "^1.10.1",
     "sonner": "^2.0.0",
     "tailwind-merge": "^3.0.1",
