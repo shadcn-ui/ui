@@ -83,6 +83,7 @@ export const add = new Command()
       let initialConfig = await getConfig(options.cwd)
       if (!initialConfig) {
         initialConfig = createConfig({
+          style: "new-york",
           resolvedPaths: {
             cwd: options.cwd,
           },
