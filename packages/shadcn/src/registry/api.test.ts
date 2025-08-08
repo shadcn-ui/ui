@@ -1,28 +1,26 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
+import { REGISTRY_URL } from "@/src/registry/constants"
 import { HttpResponse, http } from "msw"
 import { setupServer } from "msw/node"
 import {
   afterAll,
   afterEach,
   beforeAll,
-  beforeEach,
   describe,
   expect,
   it,
   vi,
 } from "vitest"
 
-import { getRegistry, getRegistryItem, registryResolveItemsTree } from "./api"
+import { getRegistry, getRegistryItem } from "./api"
 import { clearRegistryCache, fetchRegistry } from "./fetcher"
 
-// Mock the handleError function to prevent process.exit in tests
 vi.mock("@/src/utils/handle-error", () => ({
   handleError: vi.fn(),
 }))
 
-// Mock the logger to prevent console output in tests
 vi.mock("@/src/utils/logger", () => ({
   logger: {
     error: vi.fn(),
@@ -30,8 +28,6 @@ vi.mock("@/src/utils/logger", () => ({
     log: vi.fn(),
   },
 }))
-
-const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
 
 const server = setupServer(
   http.get(`${REGISTRY_URL}/index.json`, () => {
@@ -359,142 +355,7 @@ describe("getRegistryItem with local files", () => {
   })
 })
 
-describe("registryResolveItemsTree with URL dependencies", () => {
-  it("should resolve URL dependencies from local files", async () => {
-    // Mock a URL endpoint for dependency
-    const dependencyUrl = "https://example.com/dependency.json"
-    server.use(
-      http.get(dependencyUrl, () => {
-        return HttpResponse.json({
-          name: "url-dependency",
-          type: "registry:ui",
-          files: [
-            {
-              path: "ui/url-dependency.tsx",
-              content: "// url dependency content",
-              type: "registry:ui",
-            },
-          ],
-        })
-      })
-    )
-
-    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
-    const tempFile = path.join(tempDir, "component-with-url-deps.json")
-
-    const componentData = {
-      name: "component-with-url-deps",
-      type: "registry:ui",
-      registryDependencies: [dependencyUrl], // URL dependency
-      files: [
-        {
-          path: "ui/component-with-url-deps.tsx",
-          content: "// component with url deps content",
-          type: "registry:ui",
-        },
-      ],
-    }
-
-    await fs.writeFile(tempFile, JSON.stringify(componentData, null, 2))
-
-    try {
-      const mockConfig = {
-        style: "new-york",
-        tailwind: { baseColor: "neutral", cssVariables: true },
-        resolvedPaths: { cwd: process.cwd() },
-      } as any
-
-      const result = await registryResolveItemsTree([tempFile], mockConfig)
-
-      expect(result).toBeDefined()
-      expect(result?.files).toBeDefined()
-      // Should contain files from both the main component and its URL dependency
-      const filePaths = result?.files?.map((f: any) => f.path) ?? []
-      expect(filePaths).toContain("ui/component-with-url-deps.tsx")
-      expect(filePaths).toContain("ui/url-dependency.tsx")
-    } finally {
-      // Clean up
-      await fs.unlink(tempFile)
-      await fs.rmdir(tempDir)
-    }
-  })
-
-  it("should resolve namespace syntax in registryDependencies", async () => {
-    // Mock a namespace registry endpoint
-    const namespaceUrl = "https://custom-registry.com/custom-component.json"
-    server.use(
-      http.get(namespaceUrl, () => {
-        return HttpResponse.json({
-          name: "custom-component",
-          type: "registry:ui",
-          files: [
-            {
-              path: "ui/custom-component.tsx",
-              content: "// custom component content",
-              type: "registry:ui",
-            },
-          ],
-        })
-      })
-    )
-
-    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
-    const tempFile = path.join(tempDir, "component-with-namespace-deps.json")
-
-    const componentData = {
-      name: "component-with-namespace-deps",
-      type: "registry:ui",
-      registryDependencies: ["@custom/custom-component"], // Namespace dependency
-      files: [
-        {
-          path: "ui/component-with-namespace-deps.tsx",
-          content: "// component with namespace deps content",
-          type: "registry:ui",
-        },
-      ],
-    }
-
-    await fs.writeFile(tempFile, JSON.stringify(componentData, null, 2))
-
-    try {
-      const mockConfig = {
-        style: "new-york",
-        tailwind: { baseColor: "neutral", cssVariables: true },
-        resolvedPaths: { cwd: process.cwd() },
-        registries: {
-          "@custom": {
-            url: "https://custom-registry.com/{name}.json",
-          },
-        },
-      } as any
-
-      const result = await registryResolveItemsTree([tempFile], mockConfig)
-
-      expect(result).toBeDefined()
-      expect(result?.files).toBeDefined()
-
-      expect(result?.files?.length).toBe(2)
-      expect(
-        result?.files?.some((f) => f.path === "ui/custom-component.tsx")
-      ).toBe(true)
-      expect(
-        result?.files?.some(
-          (f) => f.path === "ui/component-with-namespace-deps.tsx"
-        )
-      ).toBe(true)
-    } finally {
-      // Clean up
-      await fs.unlink(tempFile)
-      await fs.rmdir(tempDir)
-    }
-  })
-})
-
 describe("getRegistry", () => {
-  beforeEach(() => {
-    clearRegistryCache()
-  })
-
   it("should fetch registry catalog", async () => {
     const registryData = {
       name: "@acme/registry",
@@ -532,7 +393,6 @@ describe("getRegistry", () => {
       ],
     })
   })
-
   it("should handle registry with auth headers", async () => {
     const registryData = {
       name: "@private/registry",

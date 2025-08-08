@@ -1,4 +1,8 @@
+// TODO: Move to a separate file to support client-side usage.
 export * from "./schema"
-export { registryResolveItemsTree as internal_registryResolveItemsTree } from "./api"
-export { buildUrlAndHeadersForRegistryItem } from "./builder"
+
+// TODO: Remove these once we have a proper api.
+export { resolveRegistryItems as internal_registryResolveItemsTree } from "./resolver"
 export { fetchRegistry } from "./fetcher"
+
+export { getRegistryItems } from "./api"
