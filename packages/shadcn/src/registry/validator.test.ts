@@ -92,7 +92,7 @@ describe("validateRegistryConfig", () => {
   it("should throw when env vars are missing", () => {
     expect(() => {
       validateRegistryConfig("@test", "https://api.com?token=${MISSING}")
-    }).toThrow(/Registry "@test" requires environment variables/)
+    }).toThrow(/Registry "@test" requires the following environment variables/)
   })
 
   it("should list all missing variables", () => {

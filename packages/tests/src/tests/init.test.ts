@@ -97,13 +97,7 @@ describe("shadcn init - next-app", () => {
 describe("shadcn init - vite-app", () => {
   it("should init with custom alias and src", async () => {
     const fixturePath = await createFixtureTestDirectory("vite-app")
-    await npxShadcn(
-      fixturePath,
-      ["init", "--base-color=gray", "alert-dialog"],
-      {
-        debug: true,
-      }
-    )
+    await npxShadcn(fixturePath, ["init", "--base-color=gray", "alert-dialog"])
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")

@@ -1,3 +1,4 @@
+import { RegistryError } from "@/src/registry/errors"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { z } from "zod"
@@ -11,6 +12,25 @@ export function handleError(error: unknown) {
   logger.error("")
   if (typeof error === "string") {
     logger.error(error)
+    logger.break()
+    process.exit(1)
+  }
+
+  if (error instanceof RegistryError) {
+    if (error.message) {
+      logger.error(error.cause ? "Error:" : "Message:")
+      logger.error(error.message)
+    }
+
+    if (error.cause) {
+      logger.error("\nMessage:")
+      logger.error(error.cause)
+    }
+
+    if (error.suggestion) {
+      logger.error("\nSuggestion:")
+      logger.error(error.suggestion)
+    }
     logger.break()
     process.exit(1)
   }

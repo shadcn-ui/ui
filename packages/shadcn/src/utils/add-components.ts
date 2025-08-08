@@ -1,5 +1,6 @@
 import path from "path"
-import { getRegistryItem, registryResolveItemsTree } from "@/src/registry/api"
+import { getRegistryItems } from "@/src/registry/api"
+import { resolveRegistryItems } from "@/src/registry/resolver"
 import {
   configSchema,
   registryItemFileSchema,
@@ -77,7 +78,7 @@ async function addProjectComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  const tree = await registryResolveItemsTree(components, config)
+  const tree = await resolveRegistryItems(components, config)
 
   if (!tree) {
     registrySpinner?.fail()
@@ -151,7 +152,7 @@ async function addWorkspaceComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  const tree = await registryResolveItemsTree(components, config)
+  const tree = await resolveRegistryItems(components, config)
 
   if (!tree) {
     registrySpinner?.fail()
@@ -357,9 +358,7 @@ async function shouldOverwriteCssVars(
   components: z.infer<typeof registryItemSchema>["name"][],
   config: z.infer<typeof configSchema>
 ) {
-  let result = await Promise.all(
-    components.map((component) => getRegistryItem(component, config))
-  )
+  const result = await getRegistryItems(components, config)
   const payload = z.array(registryItemSchema).parse(result)
 
   return payload.some(
