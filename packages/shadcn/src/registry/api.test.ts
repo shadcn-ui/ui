@@ -3,9 +3,13 @@ import { tmpdir } from "os"
 import path from "path"
 import { REGISTRY_URL } from "@/src/registry/constants"
 import {
+  RegistryErrorCode,
+  RegistryFetchError,
+  RegistryForbiddenError,
   RegistryLocalFileError,
   RegistryNotFoundError,
   RegistryParseError,
+  RegistryUnauthorizedError,
 } from "@/src/registry/errors"
 import { HttpResponse, http } from "msw"
 import { setupServer } from "msw/node"
@@ -390,5 +394,245 @@ describe("getRegistry", () => {
     await expect(getRegistry("@example/registry", mockConfig)).rejects.toThrow(
       RegistryNotFoundError
     )
+  })
+})
+
+describe("Enhanced Error Handling", () => {
+  it("should include error code in RegistryNotFoundError", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/styles/new-york-v4/non-existent.json`, () => {
+        return HttpResponse.json({ error: "Not found" }, { status: 404 })
+      })
+    )
+
+    try {
+      await getRegistryItems(["non-existent"])
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryNotFoundError)
+      if (error instanceof RegistryNotFoundError) {
+        expect(error.code).toBe(RegistryErrorCode.NOT_FOUND)
+        expect(error.statusCode).toBe(404)
+        expect(error.suggestion).toContain("Check if the item name is correct")
+        expect(error.url).toContain("non-existent.json")
+      }
+    }
+  })
+
+  it("should include error code in RegistryUnauthorizedError", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/styles/new-york-v4/protected.json`, () => {
+        return HttpResponse.json({ error: "Unauthorized" }, { status: 401 })
+      })
+    )
+
+    try {
+      await getRegistryItems(["protected"])
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryUnauthorizedError)
+      if (error instanceof RegistryUnauthorizedError) {
+        expect(error.code).toBe(RegistryErrorCode.UNAUTHORIZED)
+        expect(error.statusCode).toBe(401)
+        expect(error.suggestion).toContain(
+          "Check your authentication credentials"
+        )
+        expect(error.url).toContain("protected.json")
+      }
+    }
+  })
+
+  it("should include error code in RegistryForbiddenError", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/styles/new-york-v4/forbidden.json`, () => {
+        return HttpResponse.json({ error: "Forbidden" }, { status: 403 })
+      })
+    )
+
+    try {
+      await getRegistryItems(["forbidden"])
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryForbiddenError)
+      if (error instanceof RegistryForbiddenError) {
+        expect(error.code).toBe(RegistryErrorCode.FORBIDDEN)
+        expect(error.statusCode).toBe(403)
+        expect(error.suggestion).toContain(
+          "Check your authentication credentials"
+        )
+        expect(error.url).toContain("forbidden.json")
+      }
+    }
+  })
+
+  it("should include error code in RegistryFetchError for 500 errors", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/styles/new-york-v4/server-error.json`, () => {
+        return HttpResponse.json(
+          { error: "Internal Server Error" },
+          { status: 500 }
+        )
+      })
+    )
+
+    try {
+      await getRegistryItems(["server-error"])
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryFetchError)
+      if (error instanceof RegistryFetchError) {
+        expect(error.code).toBe(RegistryErrorCode.FETCH_ERROR)
+        expect(error.statusCode).toBe(500)
+        expect(error.suggestion).toContain(
+          "The registry server encountered an error"
+        )
+        expect(error.url).toContain("server-error.json")
+      }
+    }
+  })
+
+  it("should extract Zod validation issues in RegistryParseError", async () => {
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+    const tempFile = path.join(tempDir, "invalid-schema.json")
+
+    const invalidData = {
+      name: "test",
+      // Missing required "type" field
+      // Invalid "files" field (should be array)
+      files: "not-an-array",
+    }
+
+    await fs.writeFile(tempFile, JSON.stringify(invalidData))
+
+    try {
+      await getRegistryItems([tempFile])
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryParseError)
+      if (error instanceof RegistryParseError) {
+        expect(error.code).toBe(RegistryErrorCode.PARSE_ERROR)
+        expect(error.message).toContain("Failed to parse registry item")
+        expect(error.message).toContain(tempFile)
+        // The message should include Zod validation issues
+        expect(error.suggestion).toContain(
+          "may be corrupted or have an invalid format"
+        )
+        expect(error.context?.item).toBe(tempFile)
+      }
+    } finally {
+      await fs.unlink(tempFile)
+      await fs.rmdir(tempDir)
+    }
+  })
+
+  it("should include context in RegistryLocalFileError", async () => {
+    const nonExistentFile = "/path/to/non/existent/file.json"
+
+    try {
+      await getRegistryItems([nonExistentFile])
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryLocalFileError)
+      if (error instanceof RegistryLocalFileError) {
+        expect(error.code).toBe(RegistryErrorCode.LOCAL_FILE_ERROR)
+        expect(error.filePath).toBe(nonExistentFile)
+        expect(error.suggestion).toContain("Check if the file exists")
+        expect(error.context?.filePath).toBe(nonExistentFile)
+      }
+    }
+  })
+
+  it("should serialize error to JSON correctly", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/styles/new-york-v4/test-json.json`, () => {
+        return HttpResponse.json({ error: "Not found" }, { status: 404 })
+      })
+    )
+
+    try {
+      await getRegistryItems(["test-json"])
+    } catch (error) {
+      if (error instanceof RegistryNotFoundError) {
+        const json = error.toJSON()
+        expect(json).toHaveProperty("name", "RegistryNotFoundError")
+        expect(json).toHaveProperty("message")
+        expect(json).toHaveProperty("code", RegistryErrorCode.NOT_FOUND)
+        expect(json).toHaveProperty("statusCode", 404)
+        expect(json).toHaveProperty("context")
+        expect(json).toHaveProperty("suggestion")
+        expect(json).toHaveProperty("timestamp")
+        expect(json).toHaveProperty("stack")
+      }
+    }
+  })
+
+  it("should include timestamp in errors", async () => {
+    server.use(
+      http.get(`${REGISTRY_URL}/styles/new-york-v4/timestamp-test.json`, () => {
+        return HttpResponse.json({ error: "Not found" }, { status: 404 })
+      })
+    )
+
+    try {
+      await getRegistryItems(["timestamp-test"])
+    } catch (error) {
+      if (error instanceof RegistryNotFoundError) {
+        expect(error.timestamp).toBeInstanceOf(Date)
+        expect(error.timestamp.getTime()).toBeLessThanOrEqual(Date.now())
+      }
+    }
+  })
+
+  it("should handle multiple validation errors in RegistryParseError", async () => {
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+    const tempFile = path.join(tempDir, "multiple-errors.json")
+
+    const invalidData = {
+      // Missing name and type
+      files: 123, // Should be array
+      dependencies: "not-an-array", // Should be array
+    }
+
+    await fs.writeFile(tempFile, JSON.stringify(invalidData))
+
+    try {
+      await getRegistryItems([tempFile])
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryParseError)
+      if (error instanceof RegistryParseError) {
+        // The error message should contain multiple validation issues
+        expect(error.message).toContain("Failed to parse registry item")
+        // Check that context contains validation issues
+        if (error.context && "validationIssues" in error.context) {
+          const issues = error.context.validationIssues as Array<{
+            path: string
+            message: string
+          }>
+          expect(Array.isArray(issues)).toBe(true)
+        }
+      }
+    } finally {
+      await fs.unlink(tempFile)
+      await fs.rmdir(tempDir)
+    }
+  })
+
+  it("should include response body in RegistryFetchError", async () => {
+    const errorResponse = {
+      error: "Bad Request",
+      details: "Invalid parameters",
+    }
+    server.use(
+      http.get(`${REGISTRY_URL}/styles/new-york-v4/bad-request.json`, () => {
+        return HttpResponse.json(errorResponse, { status: 400 })
+      })
+    )
+
+    try {
+      await getRegistryItems(["bad-request"])
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryFetchError)
+      if (error instanceof RegistryFetchError) {
+        expect(error.code).toBe(RegistryErrorCode.FETCH_ERROR)
+        expect(error.statusCode).toBe(400)
+        expect(error.suggestion).toContain("client error")
+        // Response body should be available as context
+        expect(error.responseBody).toBeDefined()
+      }
+    }
   })
 })

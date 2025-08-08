@@ -53,7 +53,9 @@ export async function getRegistry(
 
   const [result] = await fetchRegistry([path], { useCache: false })
   if (!result) {
-    throw new RegistryError(`Failed to fetch registry: ${name}`)
+    throw new RegistryError(`Failed to fetch registry: ${name}`, {
+      context: { name, path },
+    })
   }
 
   try {
@@ -84,7 +86,11 @@ export async function getRegistryItems(
 
       if (isUrl(item)) {
         const [result] = await fetchRegistry([item], options)
-        return registryItemSchema.parse(result)
+        try {
+          return registryItemSchema.parse(result)
+        } catch (error) {
+          throw new RegistryParseError(item, error)
+        }
       }
 
       if (item.startsWith("@") && configWithStyle?.registries) {
@@ -93,12 +99,20 @@ export async function getRegistryItems(
           configWithStyle
         )
         const [result] = await fetchRegistry(paths, options)
-        return registryItemSchema.parse(result)
+        try {
+          return registryItemSchema.parse(result)
+        } catch (error) {
+          throw new RegistryParseError(item, error)
+        }
       }
 
       const path = `styles/${resolvedStyle ?? "new-york-v4"}/${item}.json`
       const [result] = await fetchRegistry([path], options)
-      return registryItemSchema.parse(result)
+      try {
+        return registryItemSchema.parse(result)
+      } catch (error) {
+        throw new RegistryParseError(item, error)
+      }
     })
   )
 

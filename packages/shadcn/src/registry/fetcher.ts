@@ -14,6 +14,7 @@ import {
 import { registryItemSchema } from "@/src/registry/schema"
 import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
+import { z } from "zod"
 
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
@@ -44,9 +45,9 @@ export async function fetchRegistry(
           return registryCache.get(url)
         }
 
-        // Store the promise in the cache before awaiting if caching is enabled
+        // Store the promise in the cache before awaiting if caching is enabled.
         const fetchPromise = (async () => {
-          // Get headers from context for this URL
+          // Get headers from context for this URL.
           const headers = getRegistryHeadersFromContext(url)
 
           const response = await fetch(url, {
@@ -57,26 +58,50 @@ export async function fetchRegistry(
           })
 
           if (!response.ok) {
-            let errorDetails: any
-            try {
-              errorDetails = await response.json()
-            } catch {
-              // If we can't parse JSON, that's okay
+            let messageFromServer = undefined
+
+            if (
+              response.headers.get("content-type")?.includes("application/json")
+            ) {
+              const json = await response.json()
+              const parsed = z
+                .object({
+                  // RFC 7807.
+                  detail: z.string().optional(),
+                  title: z.string().optional(),
+                  // Standard error response.
+                  message: z.string().optional(),
+                  error: z.string().optional(),
+                })
+                .safeParse(json)
+
+              if (parsed.success) {
+                // Prefer RFC 7807 detail field, then message field.
+                messageFromServer = parsed.data.detail || parsed.data.message
+
+                if (parsed.data.error) {
+                  messageFromServer = `[${parsed.data.error}] ${messageFromServer}`
+                }
+              }
             }
 
             if (response.status === 401) {
-              throw new RegistryUnauthorizedError(url, errorDetails)
+              throw new RegistryUnauthorizedError(url, messageFromServer)
             }
 
             if (response.status === 404) {
-              throw new RegistryNotFoundError(url, errorDetails)
+              throw new RegistryNotFoundError(url, messageFromServer)
             }
 
             if (response.status === 403) {
-              throw new RegistryForbiddenError(url, errorDetails)
+              throw new RegistryForbiddenError(url, messageFromServer)
             }
 
-            throw new RegistryFetchError(url, response.status, errorDetails)
+            throw new RegistryFetchError(
+              url,
+              response.status,
+              messageFromServer
+            )
           }
 
           return response.json()
