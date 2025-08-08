@@ -1,4 +1,10 @@
 import { REGISTRY_URL } from "@/src/registry/constants"
+import {
+  RegistryFetchError,
+  RegistryForbiddenError,
+  RegistryNotFoundError,
+  RegistryUnauthorizedError,
+} from "@/src/registry/errors"
 import { HttpResponse, http } from "msw"
 import { setupServer } from "msw/node"
 import {
@@ -8,24 +14,9 @@ import {
   describe,
   expect,
   it,
-  vi,
 } from "vitest"
 
 import { clearRegistryCache, fetchRegistry } from "./fetcher"
-
-// Mock the handleError function to prevent process.exit in tests.
-vi.mock("@/src/utils/handle-error", () => ({
-  handleError: vi.fn(),
-}))
-
-// Mock the logger to prevent console output in tests.
-vi.mock("@/src/utils/logger", () => ({
-  logger: {
-    error: vi.fn(),
-    break: vi.fn(),
-    log: vi.fn(),
-  },
-}))
 
 const server = setupServer(
   http.get(`${REGISTRY_URL}/test.json`, () => {
@@ -122,23 +113,25 @@ describe("fetchRegistry", () => {
   })
 
   it("should handle 404 errors", async () => {
-    const result = await fetchRegistry(["not-found.json"])
-    expect(result).toEqual([])
+    await expect(fetchRegistry(["not-found.json"])).rejects.toThrow(
+      RegistryNotFoundError
+    )
   })
 
   it("should handle 401 errors", async () => {
-    const result = await fetchRegistry(["unauthorized.json"])
-    expect(result).toEqual([])
+    await expect(fetchRegistry(["unauthorized.json"])).rejects.toThrow(
+      RegistryUnauthorizedError
+    )
   })
 
   it("should handle 403 errors", async () => {
-    const result = await fetchRegistry(["forbidden.json"])
-    expect(result).toEqual([])
+    await expect(fetchRegistry(["forbidden.json"])).rejects.toThrow(
+      RegistryForbiddenError
+    )
   })
 
   it("should handle network errors", async () => {
-    const result = await fetchRegistry(["error.json"])
-    expect(result).toEqual([])
+    await expect(fetchRegistry(["error.json"])).rejects.toThrow()
   })
 
   it("should fetch registry data", async () => {

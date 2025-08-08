@@ -3,7 +3,7 @@ import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import {
   getRegistryBaseColors,
-  getRegistryItem,
+  getRegistryItems,
   getRegistryStyles,
 } from "@/src/registry/api"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
@@ -152,7 +152,7 @@ export const init = new Command()
       if (components.length > 0) {
         // We don't know the full config at this point.
         // So we'll use a shadow config to fetch the first item.
-        let shadowConfig: Parameters<typeof getRegistryItem>[1] = {
+        let shadowConfig: Parameters<typeof getRegistryItems>[1] = {
           style: "new-york",
           resolvedPaths: {
             cwd: "",
@@ -179,7 +179,7 @@ export const init = new Command()
         // This forces a shadowConfig validation early in the process.
         buildUrlAndHeadersForRegistryItem(components[0], shadowConfig)
 
-        const item = await getRegistryItem(components[0], shadowConfig)
+        const [item] = await getRegistryItems(components[0], shadowConfig)
         if (item?.type === "registry:style") {
           // Set a default base color so we're not prompted.
           // The style will extend or override it.

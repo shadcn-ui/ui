@@ -1,5 +1,6 @@
 import { REGISTRY_URL } from "@/src/registry/constants"
 import { expandEnvVars } from "@/src/registry/env"
+import { RegistryNotConfiguredError } from "@/src/registry/errors"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import { configSchema, registryConfigItemSchema } from "@/src/registry/schema"
 import { isUrl } from "@/src/registry/utils"
@@ -25,10 +26,7 @@ export function buildUrlAndHeadersForRegistryItem(
   const registries = config?.registries || {}
   const registryConfig = registries[registry]
   if (!registryConfig) {
-    throw new Error(
-      `Unknown registry "${registry}". Make sure it is defined in components.json as follows:\n` +
-        `{\n  "registries": {\n    "${registry}": "https://example.com/{name}.json"\n  }\n}`
-    )
+    throw new RegistryNotConfiguredError(registry)
   }
 
   // TODO: I don't like this here.

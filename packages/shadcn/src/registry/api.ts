@@ -1,5 +1,7 @@
 import path from "path"
 import { BASE_COLORS } from "@/src/registry/constants"
+import { clearRegistryContext } from "@/src/registry/context"
+import { RegistryError, RegistryParseError } from "@/src/registry/errors"
 import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
 import {
   getResolvedStyle,
@@ -25,41 +27,39 @@ export async function getRegistry(
     resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
   }
 ) {
+  // Get resolved style once.
+  const resolvedStyle = config ? await getResolvedStyle(config) : undefined
+  const configWithStyle =
+    config && resolvedStyle ? { ...config, style: resolvedStyle } : config
+
+  let path: string
+  if (name.startsWith("@") && config?.registries) {
+    // Scoped registry.
+    const [resolvedPath] = resolveRegistryItemsFromRegistries(
+      [name],
+      configWithStyle || config!
+    )
+    path = resolvedPath
+  } else if (configWithStyle) {
+    // Regular registry path.
+    const [resolvedPath] = resolveRegistryItemsFromRegistries(
+      [name],
+      configWithStyle
+    )
+    path = resolvedPath
+  } else {
+    path = name
+  }
+
+  const [result] = await fetchRegistry([path], { useCache: false })
+  if (!result) {
+    throw new RegistryError(`Failed to fetch registry: ${name}`)
+  }
+
   try {
-    // Get resolved style once.
-    const resolvedStyle = config ? await getResolvedStyle(config) : undefined
-    const configWithStyle =
-      config && resolvedStyle ? { ...config, style: resolvedStyle } : config
-
-    let path: string
-    if (name.startsWith("@") && config?.registries) {
-      // Scoped registry.
-      const [resolvedPath] = resolveRegistryItemsFromRegistries(
-        [name],
-        configWithStyle || config!
-      )
-      path = resolvedPath
-    } else if (configWithStyle) {
-      // Regular registry path.
-      const [resolvedPath] = resolveRegistryItemsFromRegistries(
-        [name],
-        configWithStyle
-      )
-      path = resolvedPath
-    } else {
-      path = name
-    }
-
-    const [result] = await fetchRegistry([path], { useCache: false })
-    if (!result) {
-      return null
-    }
-
     return registrySchema.parse(result)
   } catch (error) {
-    logger.break()
-    handleError(error)
-    return null
+    throw new RegistryParseError(name, error)
   }
 }
 
@@ -68,164 +68,44 @@ export async function getRegistryItems(
   config?: Pick<Config, "style" | "registries"> & {
     resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
   },
-  options?: { useCache?: boolean }
-): Promise<(z.infer<typeof registryItemSchema> | null)[]> {
-  options = {
-    useCache: true,
-    ...options,
-  }
+  options: { useCache?: boolean } = {}
+): Promise<z.infer<typeof registryItemSchema>[]> {
+  clearRegistryContext()
 
-  // Get resolved style once for all items.
-  const resolvedStyle = config ? await getResolvedStyle(config) : undefined
+  const resolvedStyle = await getResolvedStyle(config)
   const configWithStyle =
     config && resolvedStyle ? { ...config, style: resolvedStyle } : config
 
-  // Categorize items for batch processing.
-  const categorized = {
-    local: [] as { index: number; path: string }[],
-    urls: [] as { index: number; url: string }[],
-    scopedPackages: [] as { index: number; item: string }[],
-    regular: [] as { index: number; item: string }[],
-  }
-
-  items.forEach((item, index) => {
-    // Skip registry paths - they should use getRegistry instead.
-    if (item.endsWith("/registry")) {
-      logger.error(
-        `Registry path "${item}" should be fetched using getRegistry() instead`
-      )
-      return
-    }
-
-    if (isLocalFile(item)) {
-      categorized.local.push({ index, path: item })
-    } else if (isUrl(item)) {
-      categorized.urls.push({ index, url: item })
-    } else if (item.startsWith("@") && config?.registries) {
-      categorized.scopedPackages.push({ index, item })
-    } else {
-      categorized.regular.push({ index, item })
-    }
-  })
-
-  // Initialize results array with nulls.
-  const results: (z.infer<typeof registryItemSchema> | null)[] = new Array(
-    items.length
-  ).fill(null)
-
-  // Process local files (no batching needed).
-  await Promise.all(
-    categorized.local.map(async ({ index, path }) => {
-      try {
-        results[index] = await fetchRegistryLocal(path)
-      } catch (error) {
-        const errorMessage =
-          error instanceof Error ? error.message : String(error)
-        logger.error(`Failed to fetch "${path}": ${errorMessage}`)
+  const results = await Promise.all(
+    items.map(async (item) => {
+      if (isLocalFile(item)) {
+        return fetchRegistryLocal(item)
       }
-    })
-  )
 
-  // Batch fetch URLs.
-  if (categorized.urls.length > 0) {
-    try {
-      const urlPaths = categorized.urls.map((u) => u.url)
-      const urlResults = await fetchRegistry(urlPaths, options)
+      if (isUrl(item)) {
+        const [result] = await fetchRegistry([item], options)
+        return registryItemSchema.parse(result)
+      }
 
-      categorized.urls.forEach(({ index, url }, i) => {
-        try {
-          const result = urlResults[i]
-          if (result) {
-            results[index] = registryItemSchema.parse(result)
-          }
-        } catch (error) {
-          const errorMessage =
-            error instanceof Error ? error.message : String(error)
-          logger.error(`Failed to parse "${url}": ${errorMessage}`)
-        }
-      })
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : String(error)
-      logger.error(`Failed to batch fetch URLs: ${errorMessage}`)
-    }
-  }
-
-  // Batch fetch scoped packages.
-  if (categorized.scopedPackages.length > 0 && configWithStyle) {
-    try {
-      const scopedPaths = categorized.scopedPackages.map(({ item }) => {
-        const [resolvedPath] = resolveRegistryItemsFromRegistries(
+      if (item.startsWith("@") && configWithStyle?.registries) {
+        const paths = resolveRegistryItemsFromRegistries(
           [item],
           configWithStyle
         )
-        return resolvedPath
-      })
-      const scopedResults = await fetchRegistry(scopedPaths, options)
+        const [result] = await fetchRegistry(paths, options)
+        return registryItemSchema.parse(result)
+      }
 
-      categorized.scopedPackages.forEach(({ index }, i) => {
-        try {
-          const result = scopedResults[i]
-          if (result) {
-            results[index] = registryItemSchema.parse(result)
-          }
-        } catch (error) {
-          const errorMessage =
-            error instanceof Error ? error.message : String(error)
-          logger.error(
-            `Failed to parse scoped package "${items[index]}": ${errorMessage}`
-          )
-        }
-      })
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : String(error)
-      logger.error(`Failed to batch fetch scoped packages: ${errorMessage}`)
-    }
-  }
-
-  // Batch fetch regular items.
-  if (categorized.regular.length > 0) {
-    try {
-      const regularPaths = categorized.regular.map(
-        ({ item }) => `styles/${resolvedStyle ?? "new-york-v4"}/${item}.json`
-      )
-      const regularResults = await fetchRegistry(regularPaths, options)
-
-      categorized.regular.forEach(({ index }, i) => {
-        try {
-          const result = regularResults[i]
-          if (result) {
-            results[index] = registryItemSchema.parse(result)
-          }
-        } catch (error) {
-          const errorMessage =
-            error instanceof Error ? error.message : String(error)
-          logger.error(`Failed to parse "${items[index]}": ${errorMessage}`)
-        }
-      })
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : String(error)
-      logger.error(`Failed to batch fetch regular items: ${errorMessage}`)
-    }
-  }
+      const path = `styles/${resolvedStyle ?? "new-york-v4"}/${item}.json`
+      const [result] = await fetchRegistry([path], options)
+      return registryItemSchema.parse(result)
+    })
+  )
 
   return results
 }
 
-export async function getRegistryItem(
-  name: string,
-  config?: Parameters<typeof getRegistryItems>[1],
-  options?: {
-    useCache?: boolean
-  }
-) {
-  const [result] = await getRegistryItems([name], config, options)
-  return result
-}
-
-export async function getRegistryIndex() {
+export async function getShadcnRegistryIndex() {
   try {
     const [result] = await fetchRegistry(["index.json"])
 

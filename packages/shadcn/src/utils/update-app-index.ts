@@ -1,6 +1,6 @@
 import fs from "fs/promises"
 import path from "path"
-import { getRegistryItem } from "@/src/registry/api"
+import { getRegistryItems } from "@/src/registry/api"
 import { Config } from "@/src/utils/get-config"
 
 export async function updateAppIndex(component: string, config: Config) {
@@ -10,7 +10,7 @@ export async function updateAppIndex(component: string, config: Config) {
     return
   }
 
-  const registryItem = await getRegistryItem(component, config)
+  const [registryItem] = await getRegistryItems([component], config)
   if (
     !registryItem?.meta?.importSpecifier ||
     !registryItem?.meta?.moduleSpecifier

@@ -3,10 +3,15 @@ import { homedir } from "os"
 import path from "path"
 import { resolveRegistryUrl } from "@/src/registry/builder"
 import { getRegistryHeadersFromContext } from "@/src/registry/context"
+import {
+  RegistryFetchError,
+  RegistryForbiddenError,
+  RegistryLocalFileError,
+  RegistryNotFoundError,
+  RegistryParseError,
+  RegistryUnauthorizedError,
+} from "@/src/registry/errors"
 import { registryItemSchema } from "@/src/registry/schema"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
 import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
 
@@ -52,64 +57,26 @@ export async function fetchRegistry(
           })
 
           if (!response.ok) {
-            const errorMessages: { [key: number]: string } = {
-              400: "Bad request",
-              401: "Unauthorized",
-              403: "Forbidden",
-              404: "Not found",
-              500: "Internal server error",
-            }
-
-            let errorDetails = ""
+            let errorDetails: any
             try {
-              const result = await response.json()
-              if (result && typeof result === "object") {
-                const messages = []
-                if ("error" in result && result.error) {
-                  messages.push(`[${result.error}]: `)
-                }
-                if ("message" in result && result.message) {
-                  messages.push(result.message)
-                }
-                if (messages.length > 0) {
-                  errorDetails = `\n\nServer response: \n${messages.join("")}`
-                }
-              }
+              errorDetails = await response.json()
             } catch {
               // If we can't parse JSON, that's okay
             }
 
             if (response.status === 401) {
-              throw new Error(
-                `You are not authorized to access the component at ${highlighter.info(
-                  url
-                )}.\nIf this is a remote registry, you may need to authenticate.${errorDetails}`
-              )
+              throw new RegistryUnauthorizedError(url, errorDetails)
             }
 
             if (response.status === 404) {
-              throw new Error(
-                `The component at ${highlighter.info(
-                  url
-                )} was not found.\nIt may not exist at the registry. Please make sure it is a valid component.${errorDetails}`
-              )
+              throw new RegistryNotFoundError(url, errorDetails)
             }
 
             if (response.status === 403) {
-              throw new Error(
-                `You do not have access to the component at ${highlighter.info(
-                  url
-                )}.\nIf this is a remote registry, you may need to authenticate or a token.${errorDetails}`
-              )
+              throw new RegistryForbiddenError(url, errorDetails)
             }
 
-            throw new Error(
-              `Failed to fetch from ${highlighter.info(url)}.\n${
-                errorDetails ||
-                response.statusText ||
-                errorMessages[response.status]
-              }`
-            )
+            throw new RegistryFetchError(url, response.status, errorDetails)
           }
 
           return response.json()
@@ -124,9 +91,7 @@ export async function fetchRegistry(
 
     return results
   } catch (error) {
-    logger.error("\n")
-    handleError(error)
-    return []
+    throw error
   }
 }
 
@@ -142,10 +107,25 @@ export async function fetchRegistryLocal(filePath: string) {
     const content = await fs.readFile(resolvedPath, "utf8")
     const parsed = JSON.parse(content)
 
-    return registryItemSchema.parse(parsed)
+    try {
+      return registryItemSchema.parse(parsed)
+    } catch (error) {
+      throw new RegistryParseError(filePath, error)
+    }
   } catch (error) {
-    logger.error(`Failed to read local registry file: ${filePath}`)
-    handleError(error)
-    return null
+    // Check if this is a file not found error
+    if (
+      error instanceof Error &&
+      (error.message.includes("ENOENT") ||
+        error.message.includes("no such file"))
+    ) {
+      throw new RegistryLocalFileError(filePath, error)
+    }
+    // Re-throw parse errors as-is
+    if (error instanceof RegistryParseError) {
+      throw error
+    }
+    // For other errors (like JSON parse errors), throw as local file error
+    throw new RegistryLocalFileError(filePath, error)
   }
 }

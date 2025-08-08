@@ -1,5 +1,5 @@
 import { registrySchema } from "@/src/registry"
-import { getRegistryItem } from "@/src/registry/api"
+import { getRegistryItem, getRegistryItems } from "@/src/registry/api"
 import { fetchRegistry } from "@/src/registry/fetcher"
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
 import {
@@ -198,8 +198,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           throw new Error("Name is required")
         }
 
-        const itemUrl = getRegistryItemUrl(name, REGISTRY_URL)
-        const item = await getRegistryItem(itemUrl)
+        const [item] = await getRegistryItems([name], undefined, {
+          useCache: false,
+        })
 
         return {
           content: [{ type: "text", text: JSON.stringify(item, null, 2) }],
@@ -214,7 +215,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
 
         const itemUrl = getRegistryItemUrl(name, REGISTRY_URL)
-        const item = await getRegistryItem(itemUrl)
+        const item = await getRegistryItems([itemUrl], undefined, {
+          useCache: false,
+        })
 
         if (!item) {
           return {

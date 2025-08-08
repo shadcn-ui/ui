@@ -2,6 +2,11 @@ import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
 import { REGISTRY_URL } from "@/src/registry/constants"
+import {
+  RegistryLocalFileError,
+  RegistryNotFoundError,
+  RegistryParseError,
+} from "@/src/registry/errors"
 import { HttpResponse, http } from "msw"
 import { setupServer } from "msw/node"
 import {
@@ -14,7 +19,7 @@ import {
   vi,
 } from "vitest"
 
-import { getRegistry, getRegistryItem } from "./api"
+import { getRegistry, getRegistryItems } from "./api"
 
 vi.mock("@/src/utils/handle-error", () => ({
   handleError: vi.fn(),
@@ -99,7 +104,7 @@ describe("getRegistryItem", () => {
     await fs.writeFile(tempFile, JSON.stringify(componentData, null, 2))
 
     try {
-      const result = await getRegistryItem(tempFile)
+      const [result] = await getRegistryItems([tempFile])
 
       expect(result).toMatchObject({
         name: "test-component",
@@ -137,7 +142,7 @@ describe("getRegistryItem", () => {
       const originalCwd = process.cwd()
       process.chdir(tempDir)
 
-      const result = await getRegistryItem("./relative-component.json")
+      const [result] = await getRegistryItems(["./relative-component.json"])
 
       expect(result).toMatchObject({
         name: "relative-component",
@@ -168,7 +173,7 @@ describe("getRegistryItem", () => {
     try {
       // Test with tilde path
       const tildeePath = "~/shadcn-test-tilde.json"
-      const result = await getRegistryItem(tildeePath)
+      const [result] = await getRegistryItems([tildeePath])
 
       expect(result).toMatchObject({
         name: "tilde-component",
@@ -180,20 +185,20 @@ describe("getRegistryItem", () => {
     }
   })
 
-  it("should return null for non-existent files", async () => {
-    const result = await getRegistryItem("/non/existent/file.json")
-    expect(result).toBe(null)
+  it("should throw error for non-existent files", async () => {
+    await expect(getRegistryItems(["/non/existent/file.json"])).rejects.toThrow(
+      RegistryLocalFileError
+    )
   })
 
-  it("should return null for invalid JSON", async () => {
+  it("should throw error for invalid JSON", async () => {
     const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
     const tempFile = path.join(tempDir, "invalid.json")
 
     await fs.writeFile(tempFile, "{ invalid json }")
 
     try {
-      const result = await getRegistryItem(tempFile)
-      expect(result).toBe(null)
+      await expect(getRegistryItems([tempFile])).rejects.toThrow()
     } finally {
       // Clean up
       await fs.unlink(tempFile)
@@ -201,7 +206,7 @@ describe("getRegistryItem", () => {
     }
   })
 
-  it("should return null for JSON that doesn't match registry schema", async () => {
+  it("should throw error for JSON that doesn't match registry schema", async () => {
     const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
     const tempFile = path.join(tempDir, "invalid-schema.json")
 
@@ -213,8 +218,9 @@ describe("getRegistryItem", () => {
     await fs.writeFile(tempFile, JSON.stringify(invalidData))
 
     try {
-      const result = await getRegistryItem(tempFile)
-      expect(result).toBe(null)
+      await expect(getRegistryItems([tempFile])).rejects.toThrow(
+        RegistryParseError
+      )
     } finally {
       // Clean up
       await fs.unlink(tempFile)
@@ -224,7 +230,7 @@ describe("getRegistryItem", () => {
 
   it("should still handle URLs and component names", async () => {
     // Test that existing functionality still works
-    const result = await getRegistryItem("button")
+    const [result] = await getRegistryItems(["button"])
     expect(result).toMatchObject({
       name: "button",
       type: "registry:ui",
@@ -269,7 +275,7 @@ describe("getRegistryItem", () => {
     await fs.writeFile(tempFile, JSON.stringify(componentData, null, 2))
 
     try {
-      const result = await getRegistryItem(tempFile)
+      const [result] = await getRegistryItems([tempFile])
 
       expect(result).toMatchObject({
         name: "component-with-url-deps",
@@ -364,7 +370,7 @@ describe("getRegistry", () => {
     expect(receivedHeaders.authorization).toBe("Bearer test-token")
   })
 
-  it("should return null on error", async () => {
+  it("should throw error on 404", async () => {
     server.use(
       http.get("https://example.com/registry.json", () => {
         return HttpResponse.json({ error: "Not found" }, { status: 404 })
@@ -381,7 +387,8 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@example/registry", mockConfig)
-    expect(result).toBe(null)
+    await expect(getRegistry("@example/registry", mockConfig)).rejects.toThrow(
+      RegistryNotFoundError
+    )
   })
 })
