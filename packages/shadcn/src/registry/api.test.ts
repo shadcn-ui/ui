@@ -14,13 +14,8 @@ import {
   vi,
 } from "vitest"
 
-import {
-  clearRegistryCache,
-  fetchRegistry,
-  getRegistry,
-  getRegistryItem,
-  registryResolveItemsTree,
-} from "./api"
+import { getRegistry, getRegistryItem, registryResolveItemsTree } from "./api"
+import { clearRegistryCache, fetchRegistry } from "./fetcher"
 
 // Mock the handleError function to prevent process.exit in tests
 vi.mock("@/src/utils/handle-error", () => ({

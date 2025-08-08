@@ -1,7 +1,4 @@
 export * from "./schema"
-export {
-  registryResolveItemsTree as internal_registryResolveItemsTree,
-  fetchRegistry,
-} from "./api"
-export { BUILTIN_REGISTRIES, REGISTRY_URL } from "./constants"
+export { registryResolveItemsTree as internal_registryResolveItemsTree } from "./api"
 export { buildUrlAndHeadersForRegistryItem } from "./builder"
+export { fetchRegistry } from "./fetcher"

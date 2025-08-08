@@ -1,5 +1,6 @@
 import { registrySchema } from "@/src/registry"
-import { fetchRegistry, getRegistryItem } from "@/src/registry/api"
+import { getRegistryItem } from "@/src/registry/api"
+import { fetchRegistry } from "@/src/registry/fetcher"
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
 import {
   CallToolRequestSchema,

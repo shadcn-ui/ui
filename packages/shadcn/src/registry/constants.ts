@@ -5,6 +5,29 @@ import { registryConfigSchema } from "./schema"
 export const REGISTRY_URL =
   process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
 
+export const BASE_COLORS = [
+  {
+    name: "neutral",
+    label: "Neutral",
+  },
+  {
+    name: "gray",
+    label: "Gray",
+  },
+  {
+    name: "zinc",
+    label: "Zinc",
+  },
+  {
+    name: "stone",
+    label: "Stone",
+  },
+  {
+    name: "slate",
+    label: "Slate",
+  },
+] as const
+
 // Built-in registries that are always available and cannot be overridden
 export const BUILTIN_REGISTRIES: z.infer<typeof registryConfigSchema> = {
   "@shadcn": `${REGISTRY_URL}/styles/{style}/{name}.json`,
