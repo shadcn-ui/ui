@@ -548,7 +548,7 @@ describe("registries", () => {
     })
 
     const output = await npxShadcn(fixturePath, ["add", "@two/two"])
-    expect(output.stdout).toContain("unknown registry @one")
+    expect(output.stdout).toContain('Unknown registry "@one"')
   })
 
   it("should show an error when adding multiple namespaced items with unconfigured registry", async () => {

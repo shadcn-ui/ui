@@ -2,7 +2,6 @@ import { createHash } from "crypto"
 import { promises as fs } from "fs"
 import { homedir } from "os"
 import path from "path"
-import { clearRegistryContext } from "@/src/registry/context"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
 import { isLocalFile, isUrl } from "@/src/registry/utils"
@@ -235,7 +234,6 @@ export async function getRegistryItems(
     useCache: true,
     ...options,
   }
-  clearRegistryContext()
 
   const results = await Promise.all(
     items.map(async (item) => {

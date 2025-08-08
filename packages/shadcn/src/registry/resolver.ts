@@ -98,8 +98,16 @@ async function resolveDependenciesRecursively(
       if (item) {
         items.push(item)
         if (item.registryDependencies) {
+          // Resolve namespaced dependencies to set proper headers
+          const resolvedDeps = config?.registries
+            ? resolveRegistryItemsFromRegistries(
+                item.registryDependencies,
+                config
+              )
+            : item.registryDependencies
+
           const nested = await resolveDependenciesRecursively(
-            item.registryDependencies,
+            resolvedDeps,
             config,
             visited
           )
@@ -125,8 +133,16 @@ async function resolveDependenciesRecursively(
       if (item) {
         items.push(item)
         if (item.registryDependencies) {
+          // Resolve namespaced dependencies to set proper headers
+          const resolvedDeps = config?.registries
+            ? resolveRegistryItemsFromRegistries(
+                item.registryDependencies,
+                config
+              )
+            : item.registryDependencies
+
           const nested = await resolveDependenciesRecursively(
-            item.registryDependencies,
+            resolvedDeps,
             config,
             visited
           )
@@ -143,8 +159,16 @@ async function resolveDependenciesRecursively(
         try {
           const item = await getRegistryItem(dep, config)
           if (item && item.registryDependencies) {
+            // Resolve namespaced dependencies to set proper headers
+            const resolvedDeps = config?.registries
+              ? resolveRegistryItemsFromRegistries(
+                  item.registryDependencies,
+                  config
+                )
+              : item.registryDependencies
+
             const nested = await resolveDependenciesRecursively(
-              item.registryDependencies,
+              resolvedDeps,
               config,
               visited
             )
@@ -500,7 +524,7 @@ export async function resolveRegistryItems(
 
           const { items, registryNames } = await resolveDependenciesRecursively(
             resolvedDependencies,
-            config,
+            configWithStyle,
             new Set(uniqueNames)
           )
           allDependencyItems.push(...items)
@@ -535,7 +559,10 @@ export async function resolveRegistryItems(
 
       // Handle namespaced dependency items
       if (namespacedDepItems.length > 0) {
-        const depResults = await getRegistryItems(namespacedDepItems, config)
+        const depResults = await getRegistryItems(
+          namespacedDepItems,
+          configWithStyle
+        )
 
         for (let i = 0; i < depResults.length; i++) {
           const item = depResults[i]
@@ -569,7 +596,7 @@ export async function resolveRegistryItems(
           for (const name of nonNamespacedItems) {
             const itemDependencies = await resolveRegistryDependencies(
               name,
-              config
+              configWithStyle
             )
             registryUrls.push(...itemDependencies)
           }
