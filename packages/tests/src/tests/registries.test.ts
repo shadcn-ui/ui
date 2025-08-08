@@ -392,7 +392,7 @@ describe("registries", () => {
     expect(output.stdout).toContain('Unknown registry "@non-existent"')
     expect(output.stdout).toContain(
       '"registries": {\n' +
-        '    "@non-existent": "https://example.com/{name}.json"\n' +
+        '    "@non-existent": "[URL_TO_REGISTRY]"\n' +
         "  }\n"
     )
   })
@@ -445,9 +445,7 @@ describe("registries", () => {
     const output = await npxShadcn(fixturePath, ["add", "@acme/component"])
     expect(output.stdout).toContain('Unknown registry "@acme"')
     expect(output.stdout).toContain(
-      '"registries": {\n' +
-        '    "@acme": "https://example.com/{name}.json"\n' +
-        "  }\n"
+      '"registries": {\n' + '    "@acme": "[URL_TO_REGISTRY]"\n' + "  }\n"
     )
   })
 

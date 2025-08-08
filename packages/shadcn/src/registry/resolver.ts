@@ -2,7 +2,6 @@ import { createHash } from "crypto"
 import path from "path"
 import {
   getRegistryBaseColor,
-  getRegistryItems,
   getShadcnRegistryIndex,
 } from "@/src/registry/api"
 import {
@@ -10,8 +9,11 @@ import {
   resolveRegistryUrl,
 } from "@/src/registry/builder"
 import { setRegistryHeaders } from "@/src/registry/context"
-import { RegistryNotConfiguredError } from "@/src/registry/errors"
-import { fetchRegistry } from "@/src/registry/fetcher"
+import {
+  RegistryNotConfiguredError,
+  RegistryParseError,
+} from "@/src/registry/errors"
+import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import {
   configSchema,
@@ -79,6 +81,60 @@ export async function getResolvedStyle(
     : config.style
 }
 
+// Internal function that fetches registry items without clearing context.
+// This is used for recursive dependency resolution.
+export async function fetchRegistryItemsWithContext(
+  items: string[],
+  config?: Pick<Config, "style" | "registries"> & {
+    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+  },
+  options: { useCache?: boolean } = {}
+): Promise<z.infer<typeof registryItemSchema>[]> {
+  const resolvedStyle = await getResolvedStyle(config)
+  const configWithStyle =
+    config && resolvedStyle ? { ...config, style: resolvedStyle } : config
+
+  const results = await Promise.all(
+    items.map(async (item) => {
+      if (isLocalFile(item)) {
+        return fetchRegistryLocal(item)
+      }
+
+      if (isUrl(item)) {
+        const [result] = await fetchRegistry([item], options)
+        try {
+          return registryItemSchema.parse(result)
+        } catch (error) {
+          throw new RegistryParseError(item, error)
+        }
+      }
+
+      if (item.startsWith("@") && configWithStyle?.registries) {
+        const paths = resolveRegistryItemsFromRegistries(
+          [item],
+          configWithStyle
+        )
+        const [result] = await fetchRegistry(paths, options)
+        try {
+          return registryItemSchema.parse(result)
+        } catch (error) {
+          throw new RegistryParseError(item, error)
+        }
+      }
+
+      const path = `styles/${resolvedStyle ?? "new-york-v4"}/${item}.json`
+      const [result] = await fetchRegistry([path], options)
+      try {
+        return registryItemSchema.parse(result)
+      } catch (error) {
+        throw new RegistryParseError(item, error)
+      }
+    })
+  )
+
+  return results
+}
+
 async function resolveDependenciesRecursively(
   dependencies: string[],
   config?: Pick<Config, "style" | "registries" | "resolvedPaths">,
@@ -93,13 +149,13 @@ async function resolveDependenciesRecursively(
     }
     visited.add(dep)
 
-    // Handle URLs and local files directly
+    // Handle URLs and local files directly.
     if (isUrl(dep) || isLocalFile(dep)) {
-      const [item] = await getRegistryItems([dep], config)
+      const [item] = await fetchRegistryItemsWithContext([dep], config)
       if (item) {
         items.push(item)
         if (item.registryDependencies) {
-          // Resolve namespaced dependencies to set proper headers
+          // Resolve namespaced dependencies to set proper headers.
           const resolvedDeps = config?.registries
             ? resolveRegistryItemsFromRegistries(
                 item.registryDependencies,
@@ -117,9 +173,9 @@ async function resolveDependenciesRecursively(
         }
       }
     }
-    // Handle namespaced items (e.g., @one/foo, @two/bar)
+    // Handle namespaced items (e.g., @one/foo, @two/bar).
     else if (dep.startsWith("@") && config?.registries) {
-      // Check if the registry exists
+      // Check if the registry exists.
       const { registry } = parseRegistryAndItemFromString(dep)
       if (registry && !(registry in config.registries)) {
         throw new RegistryNotConfiguredError(registry)
@@ -127,11 +183,11 @@ async function resolveDependenciesRecursively(
 
       // Let getRegistryItem handle the namespaced item with config
       // This ensures proper authentication headers are used
-      const [item] = await getRegistryItems([dep], config)
+      const [item] = await fetchRegistryItemsWithContext([dep], config)
       if (item) {
         items.push(item)
         if (item.registryDependencies) {
-          // Resolve namespaced dependencies to set proper headers
+          // Resolve namespaced dependencies to set proper headers.
           const resolvedDeps = config?.registries
             ? resolveRegistryItemsFromRegistries(
                 item.registryDependencies,
@@ -149,15 +205,15 @@ async function resolveDependenciesRecursively(
         }
       }
     }
-    // Handle regular component names
+    // Handle regular component names.
     else {
       registryNames.push(dep)
 
       if (config) {
         try {
-          const [item] = await getRegistryItems([dep], config)
+          const [item] = await fetchRegistryItemsWithContext([dep], config)
           if (item && item.registryDependencies) {
-            // Resolve namespaced dependencies to set proper headers
+            // Resolve namespaced dependencies to set proper headers.
             const resolvedDeps = config?.registries
               ? resolveRegistryItemsFromRegistries(
                   item.registryDependencies,
@@ -174,7 +230,8 @@ async function resolveDependenciesRecursively(
             registryNames.push(...nested.registryNames)
           }
         } catch (error) {
-          // If we can't fetch the registry item, that's okay - we'll still include the name.
+          // If we can't fetch the registry item, that's okay - we'll still
+          // include the name.
         }
       }
     }
@@ -458,7 +515,10 @@ export async function resolveRegistryItems(
       config && resolvedStyle ? { ...config, style: resolvedStyle } : config
     const uniqueNames = Array.from(new Set(names))
 
-    const results = await getRegistryItems(uniqueNames, configWithStyle)
+    const results = await fetchRegistryItemsWithContext(
+      uniqueNames,
+      configWithStyle
+    )
 
     const resultMap = new Map<string, z.infer<typeof registryItemSchema>>()
     for (let i = 0; i < results.length; i++) {
@@ -527,7 +587,7 @@ export async function resolveRegistryItems(
       // Handle namespaced dependency items
       if (namespacedDepItems.length > 0) {
         // This will now throw specific errors on failure
-        const depResults = await getRegistryItems(
+        const depResults = await fetchRegistryItemsWithContext(
           namespacedDepItems,
           configWithStyle
         )

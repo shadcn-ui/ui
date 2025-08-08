@@ -2,8 +2,9 @@ import path from "path"
 import { BASE_COLORS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { RegistryError, RegistryParseError } from "@/src/registry/errors"
-import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
+import { fetchRegistry } from "@/src/registry/fetcher"
 import {
+  fetchRegistryItemsWithContext,
   getResolvedStyle,
   resolveRegistryItemsFromRegistries,
 } from "@/src/registry/resolver"
@@ -15,7 +16,6 @@ import {
   registrySchema,
   stylesSchema,
 } from "@/src/registry/schema"
-import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
@@ -73,50 +73,7 @@ export async function getRegistryItems(
   options: { useCache?: boolean } = {}
 ): Promise<z.infer<typeof registryItemSchema>[]> {
   clearRegistryContext()
-
-  const resolvedStyle = await getResolvedStyle(config)
-  const configWithStyle =
-    config && resolvedStyle ? { ...config, style: resolvedStyle } : config
-
-  const results = await Promise.all(
-    items.map(async (item) => {
-      if (isLocalFile(item)) {
-        return fetchRegistryLocal(item)
-      }
-
-      if (isUrl(item)) {
-        const [result] = await fetchRegistry([item], options)
-        try {
-          return registryItemSchema.parse(result)
-        } catch (error) {
-          throw new RegistryParseError(item, error)
-        }
-      }
-
-      if (item.startsWith("@") && configWithStyle?.registries) {
-        const paths = resolveRegistryItemsFromRegistries(
-          [item],
-          configWithStyle
-        )
-        const [result] = await fetchRegistry(paths, options)
-        try {
-          return registryItemSchema.parse(result)
-        } catch (error) {
-          throw new RegistryParseError(item, error)
-        }
-      }
-
-      const path = `styles/${resolvedStyle ?? "new-york-v4"}/${item}.json`
-      const [result] = await fetchRegistry([path], options)
-      try {
-        return registryItemSchema.parse(result)
-      } catch (error) {
-        throw new RegistryParseError(item, error)
-      }
-    })
-  )
-
-  return results
+  return fetchRegistryItemsWithContext(items, config, options)
 }
 
 export async function getShadcnRegistryIndex() {
