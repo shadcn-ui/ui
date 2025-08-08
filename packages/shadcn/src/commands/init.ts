@@ -1,12 +1,12 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
-import { buildUrlAndHeadersForRegistryItem } from "@/src/registry"
 import {
   getRegistryBaseColors,
   getRegistryItem,
   getRegistryStyles,
 } from "@/src/registry/api"
+import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { BASE_COLORS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { rawConfigSchema } from "@/src/registry/schema"
