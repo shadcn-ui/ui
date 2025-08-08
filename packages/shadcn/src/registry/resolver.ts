@@ -1,33 +1,34 @@
 import { createHash } from "crypto"
 import path from "path"
+import {
+  getRegistryBaseColor,
+  getRegistryIndex,
+  getRegistryItem,
+  getRegistryItems,
+} from "@/src/registry/api"
+import {
+  buildUrlAndHeadersForRegistryItem,
+  resolveRegistryUrl,
+} from "@/src/registry/builder"
+import { setRegistryHeaders } from "@/src/registry/context"
+import { fetchRegistry } from "@/src/registry/fetcher"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
+import {
+  configSchema,
+  registryItemSchema,
+  registryResolvedItemsTreeSchema,
+} from "@/src/registry/schema"
+import {
+  deduplicateFilesByTarget,
+  isLocalFile,
+  isUrl,
+} from "@/src/registry/utils"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
 import deepmerge from "deepmerge"
 import { z } from "zod"
-
-// Re-export this function from api.ts to avoid circular dependency
-// These functions will remain in api.ts since they're part of the core API
-import {
-  getRegistryBaseColor,
-  getRegistryIndex,
-  getRegistryItem,
-  getRegistryItems,
-} from "./api"
-import {
-  buildUrlAndHeadersForRegistryItem,
-  resolveRegistryUrl,
-} from "./builder"
-import { setRegistryHeaders } from "./context"
-import { fetchRegistry } from "./fetcher"
-import {
-  configSchema,
-  registryItemSchema,
-  registryResolvedItemsTreeSchema,
-} from "./schema"
-import { deduplicateFilesByTarget, isLocalFile, isUrl } from "./utils"
 
 export function resolveRegistryItemsFromRegistries(
   items: string[],
@@ -63,7 +64,7 @@ const registryItemWithSourceSchema = registryItemSchema.extend({
   _source: z.string().optional(),
 })
 
-async function getResolvedStyle(
+export async function getResolvedStyle(
   config?: Pick<Config, "style"> & {
     resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
   }

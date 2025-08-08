@@ -2,6 +2,7 @@ import * as fs from "fs/promises"
 import { tmpdir } from "os"
 import * as path from "path"
 import { configSchema, registryItemSchema } from "@/src/registry"
+import { registryItemFileSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { resolveImport } from "@/src/utils/resolve-import"
@@ -12,8 +13,6 @@ import {
 import { Project, ScriptKind } from "ts-morph"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
-
-import { registryItemFileSchema } from "./schema"
 
 const FILE_EXTENSIONS_FOR_LOOKUP = [".tsx", ".ts", ".jsx", ".js", ".css"]
 const FILE_PATH_SKIP_LIST = ["lib/utils.ts"]

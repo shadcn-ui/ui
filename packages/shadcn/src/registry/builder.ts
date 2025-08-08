@@ -1,11 +1,10 @@
+import { REGISTRY_URL } from "@/src/registry/constants"
+import { expandEnvVars } from "@/src/registry/env"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import { configSchema, registryConfigItemSchema } from "@/src/registry/schema"
 import { isUrl } from "@/src/registry/utils"
 import { validateRegistryConfig } from "@/src/registry/validator"
 import { z } from "zod"
-
-import { REGISTRY_URL } from "./constants"
-import { expandEnvVars } from "./env"
 
 const NAME_PLACEHOLDER = "{name}"
 const STYLE_PLACEHOLDER = "{style}"

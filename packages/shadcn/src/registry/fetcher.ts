@@ -1,5 +1,9 @@
+import { promises as fs } from "fs"
+import { homedir } from "os"
+import path from "path"
 import { resolveRegistryUrl } from "@/src/registry/builder"
 import { getRegistryHeadersFromContext } from "@/src/registry/context"
+import { registryItemSchema } from "@/src/registry/schema"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -123,5 +127,25 @@ export async function fetchRegistry(
     logger.error("\n")
     handleError(error)
     return []
+  }
+}
+
+export async function fetchRegistryLocal(filePath: string) {
+  try {
+    // Handle tilde expansion for home directory
+    let expandedPath = filePath
+    if (filePath.startsWith("~/")) {
+      expandedPath = path.join(homedir(), filePath.slice(2))
+    }
+
+    const resolvedPath = path.resolve(expandedPath)
+    const content = await fs.readFile(resolvedPath, "utf8")
+    const parsed = JSON.parse(content)
+
+    return registryItemSchema.parse(parsed)
+  } catch (error) {
+    logger.error(`Failed to read local registry file: ${filePath}`)
+    handleError(error)
+    return null
   }
 }

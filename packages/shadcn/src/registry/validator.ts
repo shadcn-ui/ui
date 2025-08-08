@@ -1,7 +1,6 @@
+import { extractEnvVars } from "@/src/registry/env"
+import { registryConfigItemSchema } from "@/src/registry/schema"
 import { z } from "zod"
-
-import { extractEnvVars } from "./env"
-import { registryConfigItemSchema } from "./schema"
 
 export function extractEnvVarsFromRegistryConfig(
   config: z.infer<typeof registryConfigItemSchema>

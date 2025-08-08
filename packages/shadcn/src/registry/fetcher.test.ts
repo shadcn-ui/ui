@@ -11,9 +11,7 @@ import {
   vi,
 } from "vitest"
 
-import { resolveRegistryUrl } from "./builder"
 import { clearRegistryCache, fetchRegistry } from "./fetcher"
-import { isUrl } from "./utils"
 
 // Mock the handleError function to prevent process.exit in tests.
 vi.mock("@/src/utils/handle-error", () => ({
@@ -62,45 +60,6 @@ afterEach(() => {
   clearRegistryCache()
 })
 afterAll(() => server.close())
-
-describe("isUrl", () => {
-  it("should return true for valid URLs", () => {
-    expect(isUrl("https://example.com")).toBe(true)
-    expect(isUrl("http://localhost:3000")).toBe(true)
-    expect(isUrl("https://example.com/path/to/file.json")).toBe(true)
-  })
-
-  it("should return false for non-URLs", () => {
-    expect(isUrl("not-a-url")).toBe(false)
-    expect(isUrl("/path/to/file")).toBe(false)
-    expect(isUrl("./relative/path")).toBe(false)
-    expect(isUrl("~/home/path")).toBe(false)
-  })
-})
-
-describe("resolveRegistryUrl", () => {
-  it("should return the URL as-is for valid URLs", () => {
-    const url = "https://example.com/component.json"
-    expect(resolveRegistryUrl(url)).toBe(url)
-  })
-
-  it("should append /json to v0 registry URLs", () => {
-    const v0Url = "https://v0.dev/chat/b/abc123"
-    expect(resolveRegistryUrl(v0Url)).toBe("https://v0.dev/chat/b/abc123/json")
-  })
-
-  it("should not append /json if already present", () => {
-    const v0Url = "https://v0.dev/chat/b/abc123/json"
-    expect(resolveRegistryUrl(v0Url)).toBe(v0Url)
-  })
-
-  it("should prepend REGISTRY_URL for non-URLs", () => {
-    expect(resolveRegistryUrl("test.json")).toBe(`${REGISTRY_URL}/test.json`)
-    expect(resolveRegistryUrl("styles/default/button.json")).toBe(
-      `${REGISTRY_URL}/styles/default/button.json`
-    )
-  })
-})
 
 describe("fetchRegistry", () => {
   it("should fetch a single registry item", async () => {
@@ -180,6 +139,74 @@ describe("fetchRegistry", () => {
   it("should handle network errors", async () => {
     const result = await fetchRegistry(["error.json"])
     expect(result).toEqual([])
+  })
+
+  it("should fetch registry data", async () => {
+    const paths = ["styles/new-york/button.json"]
+    const result = await fetchRegistry(paths)
+
+    expect(result).toHaveLength(1)
+    expect(result[0]).toMatchObject({
+      name: "button",
+      type: "registry:ui",
+      dependencies: ["@radix-ui/react-slot"],
+    })
+  })
+
+  it("should use cache for subsequent requests", async () => {
+    const paths = ["styles/new-york/button.json"]
+    let fetchCount = 0
+
+    // Clear any existing cache before test
+    clearRegistryCache()
+
+    // Define the handler with counter before making requests
+    server.use(
+      http.get(`${REGISTRY_URL}/styles/new-york/button.json`, async () => {
+        // Add a small delay to simulate network latency
+        await new Promise((resolve) => setTimeout(resolve, 10))
+        fetchCount++
+        return HttpResponse.json({
+          name: "button",
+          type: "registry:ui",
+          dependencies: ["@radix-ui/react-slot"],
+          files: [
+            {
+              path: "registry/new-york/ui/button.tsx",
+              content: "// button component content",
+              type: "registry:ui",
+            },
+          ],
+        })
+      })
+    )
+
+    // First request
+    const result1 = await fetchRegistry(paths)
+    expect(fetchCount).toBe(1)
+    expect(result1).toHaveLength(1)
+    expect(result1[0]).toMatchObject({ name: "button" })
+
+    // Second request - should use cache
+    const result2 = await fetchRegistry(paths)
+    expect(fetchCount).toBe(1) // Should still be 1
+    expect(result2).toHaveLength(1)
+    expect(result2[0]).toMatchObject({ name: "button" })
+
+    // Third request - double check cache
+    const result3 = await fetchRegistry(paths)
+    expect(fetchCount).toBe(1) // Should still be 1
+    expect(result3).toHaveLength(1)
+    expect(result3[0]).toMatchObject({ name: "button" })
+  })
+
+  it("should handle multiple paths", async () => {
+    const paths = ["styles/new-york/button.json", "styles/new-york/card.json"]
+    const result = await fetchRegistry(paths)
+
+    expect(result).toHaveLength(2)
+    expect(result[0]).toMatchObject({ name: "button" })
+    expect(result[1]).toMatchObject({ name: "card" })
   })
 })
 

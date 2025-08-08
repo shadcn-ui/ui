@@ -1,18 +1,10 @@
-import { createHash } from "crypto"
-import { promises as fs } from "fs"
-import { homedir } from "os"
 import path from "path"
-import { parseRegistryAndItemFromString } from "@/src/registry/parser"
-import { resolveRegistryItemsFromRegistries } from "@/src/registry/resolver"
-import { isLocalFile, isUrl } from "@/src/registry/utils"
-import { Config } from "@/src/utils/get-config"
-import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
-import { logger } from "@/src/utils/logger"
-import { z } from "zod"
-
-import { BASE_COLORS } from "./constants"
-import { fetchRegistry } from "./fetcher"
+import { BASE_COLORS } from "@/src/registry/constants"
+import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
+import {
+  getResolvedStyle,
+  resolveRegistryItemsFromRegistries,
+} from "@/src/registry/resolver"
 import {
   iconsSchema,
   registryBaseColorSchema,
@@ -20,7 +12,218 @@ import {
   registryItemSchema,
   registrySchema,
   stylesSchema,
-} from "./schema"
+} from "@/src/registry/schema"
+import { isLocalFile, isUrl } from "@/src/registry/utils"
+import { Config } from "@/src/utils/get-config"
+import { handleError } from "@/src/utils/handle-error"
+import { logger } from "@/src/utils/logger"
+import { z } from "zod"
+
+export async function getRegistry(
+  name: `${string}/registry`,
+  config?: Pick<Config, "style" | "registries"> & {
+    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+  }
+) {
+  try {
+    // Get resolved style once.
+    const resolvedStyle = config ? await getResolvedStyle(config) : undefined
+    const configWithStyle =
+      config && resolvedStyle ? { ...config, style: resolvedStyle } : config
+
+    let path: string
+    if (name.startsWith("@") && config?.registries) {
+      // Scoped registry.
+      const [resolvedPath] = resolveRegistryItemsFromRegistries(
+        [name],
+        configWithStyle || config!
+      )
+      path = resolvedPath
+    } else if (configWithStyle) {
+      // Regular registry path.
+      const [resolvedPath] = resolveRegistryItemsFromRegistries(
+        [name],
+        configWithStyle
+      )
+      path = resolvedPath
+    } else {
+      path = name
+    }
+
+    const [result] = await fetchRegistry([path], { useCache: false })
+    if (!result) {
+      return null
+    }
+
+    return registrySchema.parse(result)
+  } catch (error) {
+    logger.break()
+    handleError(error)
+    return null
+  }
+}
+
+export async function getRegistryItems(
+  items: string[],
+  config?: Pick<Config, "style" | "registries"> & {
+    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+  },
+  options?: { useCache?: boolean }
+): Promise<(z.infer<typeof registryItemSchema> | null)[]> {
+  options = {
+    useCache: true,
+    ...options,
+  }
+
+  // Get resolved style once for all items.
+  const resolvedStyle = config ? await getResolvedStyle(config) : undefined
+  const configWithStyle =
+    config && resolvedStyle ? { ...config, style: resolvedStyle } : config
+
+  // Categorize items for batch processing.
+  const categorized = {
+    local: [] as { index: number; path: string }[],
+    urls: [] as { index: number; url: string }[],
+    scopedPackages: [] as { index: number; item: string }[],
+    regular: [] as { index: number; item: string }[],
+  }
+
+  items.forEach((item, index) => {
+    // Skip registry paths - they should use getRegistry instead.
+    if (item.endsWith("/registry")) {
+      logger.error(
+        `Registry path "${item}" should be fetched using getRegistry() instead`
+      )
+      return
+    }
+
+    if (isLocalFile(item)) {
+      categorized.local.push({ index, path: item })
+    } else if (isUrl(item)) {
+      categorized.urls.push({ index, url: item })
+    } else if (item.startsWith("@") && config?.registries) {
+      categorized.scopedPackages.push({ index, item })
+    } else {
+      categorized.regular.push({ index, item })
+    }
+  })
+
+  // Initialize results array with nulls.
+  const results: (z.infer<typeof registryItemSchema> | null)[] = new Array(
+    items.length
+  ).fill(null)
+
+  // Process local files (no batching needed).
+  await Promise.all(
+    categorized.local.map(async ({ index, path }) => {
+      try {
+        results[index] = await fetchRegistryLocal(path)
+      } catch (error) {
+        const errorMessage =
+          error instanceof Error ? error.message : String(error)
+        logger.error(`Failed to fetch "${path}": ${errorMessage}`)
+      }
+    })
+  )
+
+  // Batch fetch URLs.
+  if (categorized.urls.length > 0) {
+    try {
+      const urlPaths = categorized.urls.map((u) => u.url)
+      const urlResults = await fetchRegistry(urlPaths, options)
+
+      categorized.urls.forEach(({ index, url }, i) => {
+        try {
+          const result = urlResults[i]
+          if (result) {
+            results[index] = registryItemSchema.parse(result)
+          }
+        } catch (error) {
+          const errorMessage =
+            error instanceof Error ? error.message : String(error)
+          logger.error(`Failed to parse "${url}": ${errorMessage}`)
+        }
+      })
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : String(error)
+      logger.error(`Failed to batch fetch URLs: ${errorMessage}`)
+    }
+  }
+
+  // Batch fetch scoped packages.
+  if (categorized.scopedPackages.length > 0 && configWithStyle) {
+    try {
+      const scopedPaths = categorized.scopedPackages.map(({ item }) => {
+        const [resolvedPath] = resolveRegistryItemsFromRegistries(
+          [item],
+          configWithStyle
+        )
+        return resolvedPath
+      })
+      const scopedResults = await fetchRegistry(scopedPaths, options)
+
+      categorized.scopedPackages.forEach(({ index }, i) => {
+        try {
+          const result = scopedResults[i]
+          if (result) {
+            results[index] = registryItemSchema.parse(result)
+          }
+        } catch (error) {
+          const errorMessage =
+            error instanceof Error ? error.message : String(error)
+          logger.error(
+            `Failed to parse scoped package "${items[index]}": ${errorMessage}`
+          )
+        }
+      })
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : String(error)
+      logger.error(`Failed to batch fetch scoped packages: ${errorMessage}`)
+    }
+  }
+
+  // Batch fetch regular items.
+  if (categorized.regular.length > 0) {
+    try {
+      const regularPaths = categorized.regular.map(
+        ({ item }) => `styles/${resolvedStyle ?? "new-york-v4"}/${item}.json`
+      )
+      const regularResults = await fetchRegistry(regularPaths, options)
+
+      categorized.regular.forEach(({ index }, i) => {
+        try {
+          const result = regularResults[i]
+          if (result) {
+            results[index] = registryItemSchema.parse(result)
+          }
+        } catch (error) {
+          const errorMessage =
+            error instanceof Error ? error.message : String(error)
+          logger.error(`Failed to parse "${items[index]}": ${errorMessage}`)
+        }
+      })
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : String(error)
+      logger.error(`Failed to batch fetch regular items: ${errorMessage}`)
+    }
+  }
+
+  return results
+}
+
+export async function getRegistryItem(
+  name: string,
+  config?: Parameters<typeof getRegistryItems>[1],
+  options?: {
+    useCache?: boolean
+  }
+) {
+  const [result] = await getRegistryItems([name], config, options)
+  return result
+}
 
 export async function getRegistryIndex() {
   try {
@@ -55,56 +258,6 @@ export async function getRegistryIcons() {
   }
 }
 
-export async function getRegistryItem(
-  name: string,
-  config?: Parameters<typeof getRegistryItems>[1],
-  options?: {
-    useCache?: boolean
-  }
-) {
-  const [result] = await getRegistryItems([name], config, options)
-  return result
-}
-
-async function getLocalRegistryItem(filePath: string) {
-  try {
-    // Handle tilde expansion for home directory
-    let expandedPath = filePath
-    if (filePath.startsWith("~/")) {
-      expandedPath = path.join(homedir(), filePath.slice(2))
-    }
-
-    const resolvedPath = path.resolve(expandedPath)
-    const content = await fs.readFile(resolvedPath, "utf8")
-    const parsed = JSON.parse(content)
-
-    return registryItemSchema.parse(parsed)
-  } catch (error) {
-    logger.error(`Failed to read local registry file: ${filePath}`)
-    handleError(error)
-    return null
-  }
-}
-
-export async function getRegistry(
-  name: `${string}/registry`,
-  config?: Parameters<typeof getRegistryItems>[1]
-) {
-  try {
-    const results = await getRegistryItems([name], config, { useCache: false })
-
-    if (!results?.length) {
-      return null
-    }
-
-    return registrySchema.parse(results[0])
-  } catch (error) {
-    logger.break()
-    handleError(error)
-    return null
-  }
-}
-
 export async function getRegistryBaseColors() {
   return BASE_COLORS
 }
@@ -119,6 +272,9 @@ export async function getRegistryBaseColor(baseColor: string) {
   }
 }
 
+/**
+ * @deprecated This function is deprecated and will be removed in a future version.
+ */
 export async function resolveTree(
   index: z.infer<typeof registryIndexSchema>,
   names: string[]
@@ -146,16 +302,20 @@ export async function resolveTree(
   )
 }
 
+/**
+ * @deprecated This function is deprecated and will be removed in a future version.
+ */
 export async function fetchTree(
   style: string,
   tree: z.infer<typeof registryIndexSchema>
 ) {
   try {
     const paths = tree.map((item) => `styles/${style}/${item.name}.json`)
-    const result = await fetchRegistry(paths)
-    return registryIndexSchema.parse(result)
+    const results = await fetchRegistry(paths)
+    return results.map((result) => registryItemSchema.parse(result))
   } catch (error) {
     handleError(error)
+    return []
   }
 }
 
@@ -184,307 +344,4 @@ export async function getItemTargetPath(
     config.resolvedPaths[parent as keyof typeof config.resolvedPaths],
     type
   )
-}
-
-async function getResolvedStyle(
-  config?: Pick<Config, "style"> & {
-    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
-  }
-) {
-  if (!config) {
-    return undefined
-  }
-
-  const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
-  return tailwindVersion === "v4" && config.style === "new-york"
-    ? "new-york-v4"
-    : config.style
-}
-
-// Overload for registry path.
-export async function getRegistryItems(
-  items: `${string}/registry`[],
-  config?: Pick<Config, "style" | "registries"> & {
-    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
-  },
-  options?: { useCache?: boolean }
-): Promise<(z.infer<typeof registrySchema> | null)[]>
-
-// Overload for registry items.
-export async function getRegistryItems(
-  items: string[],
-  config?: Pick<Config, "style" | "registries"> & {
-    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
-  },
-  options?: { useCache?: boolean }
-): Promise<(z.infer<typeof registryItemSchema> | null)[]>
-
-// Fetches registry items from various sources including local files, URLs,
-// scoped packages, and regular component names.
-export async function getRegistryItems(
-  items: string[],
-  config?: Pick<Config, "style" | "registries"> & {
-    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
-  },
-  options?: { useCache?: boolean }
-): Promise<
-  (z.infer<typeof registryItemSchema> | z.infer<typeof registrySchema> | null)[]
-> {
-  options = {
-    useCache: true,
-    ...options,
-  }
-
-  const results = await Promise.all(
-    items.map(async (item) => {
-      try {
-        if (isLocalFile(item)) {
-          return await getLocalRegistryItem(item)
-        }
-
-        if (isUrl(item)) {
-          const [result] = await fetchRegistry([item], options)
-          if (item.endsWith("/registry.json") || item.endsWith("/registry")) {
-            return registrySchema.parse(result)
-          }
-          return registryItemSchema.parse(result)
-        }
-
-        if (item.endsWith("/registry")) {
-          const resolvedStyle = await getResolvedStyle(config)
-          const configWithStyle =
-            config && resolvedStyle
-              ? { ...config, style: resolvedStyle }
-              : config
-
-          const paths = configWithStyle
-            ? resolveRegistryItemsFromRegistries([item], configWithStyle)
-            : [item]
-
-          const [result] = await fetchRegistry(paths, options)
-          return registrySchema.parse(result)
-        }
-
-        if (item.startsWith("@") && config?.registries) {
-          const resolvedStyle = await getResolvedStyle(config)
-          const configWithStyle =
-            config && resolvedStyle
-              ? { ...config, style: resolvedStyle }
-              : config
-
-          const [resolvedPath] = resolveRegistryItemsFromRegistries(
-            [item],
-            configWithStyle
-          )
-          const [result] = await fetchRegistry([resolvedPath], options)
-          return registryItemSchema.parse(result)
-        }
-
-        const resolvedStyle = config
-          ? await getResolvedStyle(config)
-          : undefined
-        const path = `styles/${resolvedStyle ?? "new-york-v4"}/${item}.json`
-        const [result] = await fetchRegistry([path], options)
-        return registryItemSchema.parse(result)
-      } catch (error) {
-        const errorMessage =
-          error instanceof Error ? error.message : String(error)
-        logger.error(`Failed to fetch "${item}": ${errorMessage}`)
-        return null
-      }
-    })
-  )
-
-  return results
-}
-export function getRegistryTypeAliasMap() {
-  return new Map<string, string>([
-    ["registry:ui", "ui"],
-    ["registry:lib", "lib"],
-    ["registry:hook", "hooks"],
-    ["registry:block", "components"],
-    ["registry:component", "components"],
-  ])
-}
-
-// Track a dependency and its parent.
-export function getRegistryParentMap(
-  registryItems: z.infer<typeof registryItemSchema>[]
-) {
-  const map = new Map<string, z.infer<typeof registryItemSchema>>()
-  registryItems.forEach((item) => {
-    if (!item.registryDependencies) {
-      return
-    }
-
-    item.registryDependencies.forEach((dependency) => {
-      map.set(dependency, item)
-    })
-  })
-  return map
-}
-
-const registryItemWithSourceSchema = registryItemSchema.extend({
-  _source: z.string().optional(),
-})
-
-function computeItemHash(
-  item: Pick<z.infer<typeof registryItemSchema>, "name">,
-  source?: string
-) {
-  const identifier = source || item.name
-
-  const hash = createHash("sha256")
-    .update(identifier)
-    .digest("hex")
-    .substring(0, 8)
-
-  return `${item.name}::${hash}`
-}
-
-function extractItemIdentifierFromDependency(dependency: string) {
-  if (isUrl(dependency)) {
-    const url = new URL(dependency)
-    const pathname = url.pathname
-    const match = pathname.match(/\/([^/]+)\.json$/)
-    const name = match ? match[1] : path.basename(pathname, ".json")
-
-    return {
-      name,
-      hash: computeItemHash({ name }, dependency),
-    }
-  }
-
-  if (isLocalFile(dependency)) {
-    const match = dependency.match(/\/([^/]+)\.json$/)
-    const name = match ? match[1] : path.basename(dependency, ".json")
-
-    return {
-      name,
-      hash: computeItemHash({ name }, dependency),
-    }
-  }
-
-  const { item } = parseRegistryAndItemFromString(dependency)
-  return {
-    name: item,
-    hash: computeItemHash({ name: item }, dependency),
-  }
-}
-
-function topologicalSortRegistryItems(
-  items: z.infer<typeof registryItemSchema>[],
-  sourceMap: Map<z.infer<typeof registryItemSchema>, string>
-) {
-  const itemMap = new Map<string, z.infer<typeof registryItemSchema>>()
-  const hashToItem = new Map<string, z.infer<typeof registryItemSchema>>()
-  const inDegree = new Map<string, number>()
-  const adjacencyList = new Map<string, string[]>()
-
-  items.forEach((item) => {
-    const source = sourceMap.get(item) || item.name
-    const hash = computeItemHash(item, source)
-
-    itemMap.set(hash, item)
-    hashToItem.set(hash, item)
-    inDegree.set(hash, 0)
-    adjacencyList.set(hash, [])
-  })
-
-  // Build a map of dependency to possible items.
-  const depToHashes = new Map<string, string[]>()
-  items.forEach((item) => {
-    const source = sourceMap.get(item) || item.name
-    const hash = computeItemHash(item, source)
-
-    if (!depToHashes.has(item.name)) {
-      depToHashes.set(item.name, [])
-    }
-    depToHashes.get(item.name)!.push(hash)
-
-    if (source !== item.name) {
-      if (!depToHashes.has(source)) {
-        depToHashes.set(source, [])
-      }
-      depToHashes.get(source)!.push(hash)
-    }
-  })
-
-  items.forEach((item) => {
-    const itemSource = sourceMap.get(item) || item.name
-    const itemHash = computeItemHash(item, itemSource)
-
-    if (item.registryDependencies) {
-      item.registryDependencies.forEach((dep) => {
-        let depHash: string | undefined
-
-        const exactMatches = depToHashes.get(dep) || []
-        if (exactMatches.length === 1) {
-          depHash = exactMatches[0]
-        } else if (exactMatches.length > 1) {
-          // Multiple matches - try to disambiguate.
-          // For now, just use the first one and warn.
-          depHash = exactMatches[0]
-        } else {
-          const { name } = extractItemIdentifierFromDependency(dep)
-          const nameMatches = depToHashes.get(name) || []
-          if (nameMatches.length > 0) {
-            depHash = nameMatches[0]
-          }
-        }
-
-        if (depHash && itemMap.has(depHash)) {
-          adjacencyList.get(depHash)!.push(itemHash)
-          inDegree.set(itemHash, inDegree.get(itemHash)! + 1)
-        }
-      })
-    }
-  })
-
-  // Implements Kahn's algorithm.
-  const queue: string[] = []
-  const sorted: z.infer<typeof registryItemSchema>[] = []
-
-  inDegree.forEach((degree, hash) => {
-    if (degree === 0) {
-      queue.push(hash)
-    }
-  })
-
-  while (queue.length > 0) {
-    const currentHash = queue.shift()!
-    const item = itemMap.get(currentHash)!
-    sorted.push(item)
-
-    adjacencyList.get(currentHash)!.forEach((dependentHash) => {
-      const newDegree = inDegree.get(dependentHash)! - 1
-      inDegree.set(dependentHash, newDegree)
-
-      if (newDegree === 0) {
-        queue.push(dependentHash)
-      }
-    })
-  }
-
-  if (sorted.length !== items.length) {
-    console.warn("Circular dependency detected in registry items")
-    // Return all items even if there are circular dependencies
-    // Items not in sorted are part of circular dependencies
-    const sortedHashes = new Set(
-      sorted.map((item) => {
-        const source = sourceMap.get(item) || item.name
-        return computeItemHash(item, source)
-      })
-    )
-
-    items.forEach((item) => {
-      const source = sourceMap.get(item) || item.name
-      const hash = computeItemHash(item, source)
-      if (!sortedHashes.has(hash)) {
-        sorted.push(item)
-      }
-    })
-  }
-
-  return sorted
 }
