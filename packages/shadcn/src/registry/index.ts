@@ -6,3 +6,14 @@ export { resolveRegistryItems as internal_registryResolveItemsTree } from "./res
 export { fetchRegistry } from "./fetcher"
 
 export { getRegistryItems } from "./api"
+export {
+  RegistryError,
+  RegistryNotFoundError,
+  RegistryUnauthorizedError,
+  RegistryForbiddenError,
+  RegistryFetchError,
+  RegistryNotConfiguredError,
+  RegistryLocalFileError,
+  RegistryParseError,
+  RegistryMissingEnvironmentVariablesError,
+} from "./errors"
