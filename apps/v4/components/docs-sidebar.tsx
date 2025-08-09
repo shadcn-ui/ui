@@ -40,13 +40,16 @@ export function DocsSidebar({
                   {item.children.map((item) => {
                     return (
                       item.type === "page" && (
-                        <SidebarMenuItem key={item.url}>
+                        <SidebarMenuItem key={item.url} className="relative">
                           <SidebarMenuButton
                             asChild
                             isActive={item.url === pathname}
-                            className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
+                            className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                           >
-                            <Link href={item.url}>{item.name}</Link>
+                            <Link href={item.url}>
+                              <div className="absolute inset-0" />
+                              {item.name}
+                            </Link>
                           </SidebarMenuButton>
                         </SidebarMenuItem>
                       )
