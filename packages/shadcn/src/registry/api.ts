@@ -28,12 +28,18 @@ import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { z } from "zod"
 
-export async function getRegistry(name: `@${string}`, config?: Config) {
+export async function getRegistry(
+  name: `@${string}`,
+  config?: Partial<Config>
+) {
   if (!name.endsWith("/registry")) {
     name = `${name}/registry`
   }
 
-  const urlAndHeaders = buildUrlAndHeadersForRegistryItem(name, config)
+  const urlAndHeaders = buildUrlAndHeadersForRegistryItem(
+    name,
+    configWithDefaults(config)
+  )
 
   if (!urlAndHeaders?.url) {
     throw new RegistryNotFoundError(name)

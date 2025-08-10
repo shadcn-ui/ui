@@ -1,4 +1,4 @@
-export { getRegistryItems, resolveRegistryItems } from "./api"
+export { getRegistryItems, resolveRegistryItems, getRegistry } from "./api"
 
 export {
   RegistryError,
