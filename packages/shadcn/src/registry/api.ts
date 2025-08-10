@@ -57,7 +57,7 @@ export async function getRegistry(name: `@${string}`, config?: Config) {
 
 export async function getRegistryItems(
   items: string[],
-  config?: Config,
+  config?: Partial<Config>,
   options: { useCache?: boolean } = {}
 ) {
   clearRegistryContext()
@@ -67,7 +67,7 @@ export async function getRegistryItems(
 
 export async function resolveRegistryItems(
   items: string[],
-  config?: Config,
+  config?: Partial<Config>,
   options: { useCache?: boolean } = {}
 ) {
   clearRegistryContext()

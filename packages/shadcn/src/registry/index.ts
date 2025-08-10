@@ -5,7 +5,8 @@ export * from "./schema"
 export { resolveRegistryTree as internal_registryResolveItemsTree } from "./resolver"
 export { fetchRegistry } from "./fetcher"
 
-export { getRegistryItems } from "./api"
+export { getRegistryItems, resolveRegistryItems } from "./api"
+
 export {
   RegistryError,
   RegistryNotFoundError,
