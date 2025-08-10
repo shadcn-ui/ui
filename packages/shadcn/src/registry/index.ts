@@ -1,7 +1,3 @@
-// TODO: Remove these once we have a proper api.
-export { resolveRegistryTree as internal_registryResolveItemsTree } from "./resolver"
-export { fetchRegistry } from "./fetcher"
-
 export { getRegistryItems, resolveRegistryItems } from "./api"
 
 export {
