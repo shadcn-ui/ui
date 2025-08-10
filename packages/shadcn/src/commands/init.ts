@@ -153,7 +153,7 @@ export const init = new Command()
       if (components.length > 0) {
         // We don't know the full config at this point.
         // So we'll use a shadow config to fetch the first item.
-        let shadowConfig: Config | undefined
+        let shadowConfig = configWithDefaults({})
 
         // Check if there's a components.json file.
         // If so, we'll merge with our shadow config.

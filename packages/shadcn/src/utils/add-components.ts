@@ -1,5 +1,6 @@
 import path from "path"
 import { getRegistryItems } from "@/src/registry/api"
+import { configWithDefaults } from "@/src/registry/config"
 import { resolveRegistryTree } from "@/src/registry/resolver"
 import {
   configSchema,
@@ -78,7 +79,7 @@ async function addProjectComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  const tree = await resolveRegistryTree(components, config)
+  const tree = await resolveRegistryTree(components, configWithDefaults(config))
 
   if (!tree) {
     registrySpinner?.fail()
@@ -152,7 +153,7 @@ async function addWorkspaceComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  const tree = await resolveRegistryTree(components, config)
+  const tree = await resolveRegistryTree(components, configWithDefaults(config))
 
   if (!tree) {
     registrySpinner?.fail()
