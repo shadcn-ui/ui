@@ -7,7 +7,7 @@ import {
   registryItemFileSchema,
   registryItemSchema,
   workspaceConfigSchema,
-} from "@/src/registry/schema"
+} from "@/src/schema"
 import {
   findCommonRoot,
   findPackageRoot,

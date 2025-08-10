@@ -1,8 +1,11 @@
 import * as fs from "fs/promises"
 import { tmpdir } from "os"
 import * as path from "path"
-import { configSchema, registryItemSchema } from "@/src/registry"
-import { registryItemFileSchema } from "@/src/registry/schema"
+import {
+  configSchema,
+  registryItemFileSchema,
+  registryItemSchema,
+} from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { resolveImport } from "@/src/utils/resolve-import"
