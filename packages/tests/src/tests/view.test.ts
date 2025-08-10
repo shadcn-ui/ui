@@ -48,7 +48,7 @@ const registryShadcn = await createRegistryServer(
     },
   ],
   {
-    port: 8080,
+    port: 9080,
     path: "/r",
   }
 )
@@ -116,7 +116,7 @@ const registryOne = await createRegistryServer(
     },
   ],
   {
-    port: 8081,
+    port: 9081,
     path: "/r",
   }
 )
@@ -152,14 +152,14 @@ const registryTwo = await createRegistryServer(
     },
   ],
   {
-    port: 8082,
+    port: 9082,
     path: "/registry",
   }
 )
 
 beforeAll(async () => {
   // Set the shadcn registry to our mock registry.
-  process.env.REGISTRY_URL = "http://localhost:8080/r"
+  process.env.REGISTRY_URL = "http://localhost:9080/r"
   await registryShadcn.start()
   await registryOne.start()
   await registryTwo.start()
@@ -171,7 +171,7 @@ afterAll(async () => {
   await registryTwo.stop()
 })
 
-describe.skip("shadcn view", () => {
+describe("shadcn view", () => {
   it("should view a single component from shadcn registry", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     const output = await npxShadcn(fixturePath, ["view", "button"])
@@ -234,7 +234,7 @@ describe.skip("shadcn view", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     const output = await npxShadcn(fixturePath, [
       "view",
-      "http://localhost:8081/r/foo.json",
+      "http://localhost:9081/r/foo.json",
     ])
 
     expect(JSON.parse(output.stdout)).toMatchInlineSnapshot(`
@@ -284,8 +284,8 @@ describe.skip("shadcn view", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     const output = await npxShadcn(fixturePath, [
       "view",
-      "http://localhost:8081/r/foo.json",
-      "http://localhost:8082/registry/item.json",
+      "http://localhost:9081/r/foo.json",
+      "http://localhost:9082/registry/item.json",
     ])
 
     const parsed = JSON.parse(output.stdout)
@@ -296,7 +296,7 @@ describe.skip("shadcn view", () => {
   it("should view component from configured registry", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
+      "@one": "http://localhost:9081/r/{name}",
     })
 
     const output = await npxShadcn(fixturePath, ["view", "@one/foo"])
@@ -325,8 +325,8 @@ describe.skip("shadcn view", () => {
   it("should view multiple components from different registries", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
-      "@two": "http://localhost:8082/registry/{name}",
+      "@one": "http://localhost:9081/r/{name}",
+      "@two": "http://localhost:9082/registry/{name}",
     })
 
     const output = await npxShadcn(fixturePath, [
@@ -344,7 +344,7 @@ describe.skip("shadcn view", () => {
   it("should view component with nested registry dependencies", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
+      "@one": "http://localhost:9081/r/{name}",
     })
 
     const output = await npxShadcn(fixturePath, ["view", "@one/bar"])
@@ -367,8 +367,8 @@ describe.skip("shadcn view", () => {
   it("should view component with cross-registry dependencies", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
-      "@two": "http://localhost:8082/registry/{name}",
+      "@one": "http://localhost:9081/r/{name}",
+      "@two": "http://localhost:9082/registry/{name}",
     })
 
     const output = await npxShadcn(fixturePath, ["view", "@one/complex"])
@@ -392,7 +392,7 @@ describe.skip("shadcn view", () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await configureRegistries(fixturePath, {
       "@two": {
-        url: "http://localhost:8082/registry/bearer/{name}",
+        url: "http://localhost:9082/registry/bearer/{name}",
         headers: {
           Authorization: "Bearer EXAMPLE_BEARER_TOKEN",
         },
@@ -419,7 +419,7 @@ describe.skip("shadcn view", () => {
   it("should fail when viewing secured item without authentication", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await configureRegistries(fixturePath, {
-      "@two": "http://localhost:8082/registry/bearer/{name}",
+      "@two": "http://localhost:9082/registry/bearer/{name}",
     })
 
     const output = await npxShadcn(fixturePath, ["view", "@two/secure-item"])
@@ -429,9 +429,9 @@ describe.skip("shadcn view", () => {
   it("should handle authentication with environment variables", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
+      "@one": "http://localhost:9081/r/{name}",
       "@two": {
-        url: "http://localhost:8082/registry/bearer/{name}",
+        url: "http://localhost:9082/registry/bearer/{name}",
         headers: {
           Authorization: "Bearer ${BEARER_TOKEN}",
         },
@@ -465,12 +465,12 @@ describe.skip("shadcn view", () => {
   it("should mix URLs and named components", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
+      "@one": "http://localhost:9081/r/{name}",
     })
 
     const output = await npxShadcn(fixturePath, [
       "view",
-      "http://localhost:8082/registry/item.json",
+      "http://localhost:9082/registry/item.json",
       "@one/foo",
       "button",
     ])
@@ -511,7 +511,7 @@ describe.skip("shadcn view", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     const output = await npxShadcn(fixturePath, [
       "view",
-      "http://localhost:8081/r/does-not-exist.json",
+      "http://localhost:9081/r/does-not-exist.json",
     ])
 
     expect(output.stdout).toContain("not found")
@@ -520,7 +520,7 @@ describe.skip("shadcn view", () => {
   it("should handle multiple errors in batch", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
+      "@one": "http://localhost:9081/r/{name}",
     })
 
     const output = await npxShadcn(fixturePath, [
@@ -569,7 +569,7 @@ describe.skip("shadcn view", () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await configureRegistries(fixturePath, {
       "@auth": {
-        url: "http://localhost:8082/registry/bearer/{name}",
+        url: "http://localhost:9082/registry/bearer/{name}",
         headers: {
           Authorization: "Bearer ${MISSING_ENV_VAR}",
         },
@@ -598,7 +598,7 @@ describe.skip("shadcn view", () => {
         } as any,
       ],
       {
-        port: 8083,
+        port: 9083,
         path: "/bad",
       }
     )
@@ -608,7 +608,7 @@ describe.skip("shadcn view", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     const output = await npxShadcn(fixturePath, [
       "view",
-      "http://localhost:8083/bad/invalid-schema.json",
+      "http://localhost:9083/bad/invalid-schema.json",
     ])
 
     // Should handle validation error
@@ -622,9 +622,9 @@ describe.skip("shadcn view", () => {
 
     // Configure both registries - @two requires auth, @one doesn't
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
+      "@one": "http://localhost:9081/r/{name}",
       "@two": {
-        url: "http://localhost:8082/registry/bearer/{name}",
+        url: "http://localhost:9082/registry/bearer/{name}",
         headers: {
           Authorization: "Bearer EXAMPLE_BEARER_TOKEN",
         },
@@ -655,8 +655,8 @@ describe.skip("shadcn view", () => {
 
     // Configure registries - @two requires auth but no token provided
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
-      "@two": "http://localhost:8082/registry/bearer/{name}",
+      "@one": "http://localhost:9081/r/{name}",
+      "@two": "http://localhost:9082/registry/bearer/{name}",
     })
 
     // Try to view complex which depends on @two/item (requires auth)
@@ -678,7 +678,7 @@ describe.skip("shadcn view", () => {
     // Configure with proper auth
     await configureRegistries(fixturePath, {
       "@two": {
-        url: "http://localhost:8082/registry/bearer/{name}",
+        url: "http://localhost:9082/registry/bearer/{name}",
         headers: {
           Authorization: "Bearer EXAMPLE_BEARER_TOKEN",
         },
@@ -707,7 +707,7 @@ describe.skip("shadcn view", () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
 
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
+      "@one": "http://localhost:9081/r/{name}",
     })
 
     const output = await npxShadcn(fixturePath, ["view", "@one/foo"])
@@ -807,7 +807,7 @@ describe.skip("shadcn view", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
 
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
+      "@one": "http://localhost:9081/r/{name}",
     })
 
     const output = await npxShadcn(fixturePath, ["view", "@one/foo"])
@@ -820,7 +820,7 @@ describe.skip("shadcn view", () => {
 
     // Configure @one registry, but try to view from @two
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
+      "@one": "http://localhost:9081/r/{name}",
     })
 
     const output = await npxShadcn(fixturePath, ["view", "@two/item"])
@@ -833,7 +833,7 @@ describe.skip("shadcn view", () => {
 
     // Configure @one registry
     await configureRegistries(fixturePath, {
-      "@one": "http://localhost:8081/r/{name}",
+      "@one": "http://localhost:9081/r/{name}",
     })
 
     // Try to view an item that doesn't exist in @one registry
