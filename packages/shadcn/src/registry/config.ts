@@ -18,23 +18,20 @@ function resolveStyleFromConfig(config: Partial<Config> | Config) {
 }
 
 export function configWithDefaults(config?: Partial<Config> | Config) {
-  if (!config) {
-    config = createConfig({
-      style: FALLBACK_STYLE,
-      registries: BUILTIN_REGISTRIES,
-    })
-  }
-
-  const resolvedStyle = resolveStyleFromConfig(config)
-
-  const defaults = {
+  const baseConfig = createConfig({
+    style: FALLBACK_STYLE,
     registries: BUILTIN_REGISTRIES,
+  })
+
+  if (!config) {
+    return baseConfig
   }
 
   return configSchema.parse(
-    deepmerge(defaults, {
+    deepmerge(baseConfig, {
       ...config,
-      style: resolvedStyle,
+      style: resolveStyleFromConfig(config),
+      registries: { ...BUILTIN_REGISTRIES, ...config.registries },
     })
   )
 }
