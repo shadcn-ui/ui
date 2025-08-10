@@ -1,5 +1,5 @@
 ---
-"shadcn": minor
+"shadcn": major
 ---
 
 update registry dependencies resolution algorithm

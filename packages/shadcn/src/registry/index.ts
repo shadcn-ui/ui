@@ -1,7 +1,13 @@
-export * from "./schema"
+export { getRegistryItems, resolveRegistryItems, getRegistry } from "./api"
+
 export {
-  registryResolveItemsTree as internal_registryResolveItemsTree,
-  fetchRegistry,
-} from "./api"
-export { BUILTIN_REGISTRIES, REGISTRY_URL } from "./constants"
-export { buildUrlAndHeadersForRegistryItem } from "./builder"
+  RegistryError,
+  RegistryNotFoundError,
+  RegistryUnauthorizedError,
+  RegistryForbiddenError,
+  RegistryFetchError,
+  RegistryNotConfiguredError,
+  RegistryLocalFileError,
+  RegistryParseError,
+  RegistryMissingEnvironmentVariablesError,
+} from "./errors"
