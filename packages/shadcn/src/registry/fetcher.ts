@@ -11,7 +11,7 @@ import {
   RegistryParseError,
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
-import { registryItemSchema } from "@/src/registry/schema"
+import { registryItemSchema } from "@/src/schema"
 import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
 import { z } from "zod"

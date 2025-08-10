@@ -1,6 +1,6 @@
 import { extractEnvVars } from "@/src/registry/env"
 import { RegistryMissingEnvironmentVariablesError } from "@/src/registry/errors"
-import { registryConfigItemSchema } from "@/src/registry/schema"
+import { registryConfigItemSchema } from "@/src/schema"
 import { z } from "zod"
 
 export function extractEnvVarsFromRegistryConfig(

@@ -1,4 +1,4 @@
-import { registryConfigSchema } from "@/src/registry/schema"
+import { registryConfigSchema } from "@/src/schema"
 import { z } from "zod"
 
 export const REGISTRY_URL =

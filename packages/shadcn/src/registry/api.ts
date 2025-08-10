@@ -22,7 +22,7 @@ import {
   registryItemSchema,
   registrySchema,
   stylesSchema,
-} from "@/src/registry/schema"
+} from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"

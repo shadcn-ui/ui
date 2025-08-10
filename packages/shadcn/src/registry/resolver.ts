@@ -16,14 +16,14 @@ import {
 import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import {
-  registryItemSchema,
-  registryResolvedItemsTreeSchema,
-} from "@/src/registry/schema"
-import {
   deduplicateFilesByTarget,
   isLocalFile,
   isUrl,
 } from "@/src/registry/utils"
+import {
+  registryItemSchema,
+  registryResolvedItemsTreeSchema,
+} from "@/src/schema"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
