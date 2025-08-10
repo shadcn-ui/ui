@@ -33,6 +33,9 @@
     "tsx": {
       "type": "boolean"
     },
+    "unifiedRadixImports": {
+      "type": "boolean"
+    },
     "iconLibrary": {
       "type": "string"
     },
