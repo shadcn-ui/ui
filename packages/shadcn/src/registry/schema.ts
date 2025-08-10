@@ -162,7 +162,7 @@ export const rawConfigSchema = z
     style: z.string(),
     rsc: z.coerce.boolean().default(false),
     tsx: z.coerce.boolean().default(true),
-    unifiedRadixImports: z.coerce.boolean().default(false),
+    unifiedRadixImports: z.coerce.boolean().default(false).optional(),
     tailwind: z.object({
       config: z.string().optional(),
       css: z.string(),

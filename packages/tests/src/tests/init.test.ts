@@ -25,7 +25,6 @@ describe("shadcn init - next-app", () => {
       style: "new-york",
       rsc: true,
       tsx: true,
-      unifiedRadixImports: false,
       tailwind: {
         config: "",
         css: "app/globals.css",
