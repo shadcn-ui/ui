@@ -23,6 +23,7 @@ import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateEnvVars } from "@/src/utils/updaters/update-env-vars"
 import { updateFiles } from "@/src/utils/updaters/update-files"
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
+import { migrateRadixFile } from "@/src/migrations/migrate-radix"
 import { z } from "zod"
 
 export async function addComponents(
@@ -34,6 +35,7 @@ export async function addComponents(
     isNewProject?: boolean
     baseStyle?: boolean
     registryHeaders?: Record<string, Record<string, string>>
+    unifiedRadixImports?: boolean
   }
 ) {
   options = {
@@ -41,6 +43,10 @@ export async function addComponents(
     silent: false,
     isNewProject: false,
     baseStyle: true,
+    unifiedRadixImports:
+      options.unifiedRadixImports ??
+      (config as any).unifiedRadixImports ??
+      false,
     ...options,
   }
 
@@ -68,6 +74,7 @@ async function addProjectComponents(
     silent?: boolean
     isNewProject?: boolean
     baseStyle?: boolean
+    unifiedRadixImports?: boolean
   }
 ) {
   if (!options.baseStyle && !components.length) {
@@ -94,6 +101,10 @@ async function addProjectComponents(
   registrySpinner?.succeed()
 
   const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
+
+  if (options.unifiedRadixImports) {
+    await applyUnifiedRadixImports(tree)
+  }
 
   await updateTailwindConfig(tree.tailwind?.config, config, {
     silent: options.silent,
@@ -142,6 +153,7 @@ async function addWorkspaceComponents(
     isNewProject?: boolean
     isRemote?: boolean
     baseStyle?: boolean
+    unifiedRadixImports?: boolean
   }
 ) {
   if (!options.baseStyle && !components.length) {
@@ -166,6 +178,10 @@ async function addWorkspaceComponents(
   }
 
   registrySpinner?.succeed()
+
+  if (options.unifiedRadixImports) {
+    await applyUnifiedRadixImports(tree)
+  }
 
   const filesCreated: string[] = []
   const filesUpdated: string[] = []
@@ -350,6 +366,51 @@ async function addWorkspaceComponents(
 
   if (tree.docs) {
     logger.info(tree.docs)
+  }
+}
+
+type RegistryResolvedTree = {
+  files?: Array<{ path: string; content?: string }>
+  dependencies?: string[]
+  devDependencies?: string[]
+}
+
+async function applyUnifiedRadixImports(tree: RegistryResolvedTree) {
+  if (!tree?.files?.length) return
+
+  const replacedPackages = new Set<string>()
+
+  for (const file of tree.files) {
+    if (!file.content) continue
+    if (!file.path.match(/\.(?:[jt]sx?|mjs|cjs)$/)) continue
+    const { content, replacedPackages: pkgs } = await migrateRadixFile(
+      file.content
+    )
+    file.content = content
+    pkgs.forEach((p) => replacedPackages.add(p))
+  }
+
+  if (replacedPackages.size === 0) return
+
+  // Normalize arrays
+  tree.dependencies = Array.from(new Set(tree.dependencies ?? []))
+  tree.devDependencies = Array.from(new Set(tree.devDependencies ?? []))
+
+  const removedFromDeps = new Set<string>()
+  const filterFn = (dep: string) => {
+    const shouldRemove = dep.startsWith("@radix-ui/react-")
+    if (shouldRemove) removedFromDeps.add(dep)
+    return !shouldRemove
+  }
+
+  tree.dependencies = tree.dependencies.filter(filterFn)
+  tree.devDependencies = tree.devDependencies.filter(filterFn)
+
+  // Add unified radix-ui when we removed any @radix packages
+  if (removedFromDeps.size > 0) {
+    if (!tree.dependencies.includes("radix-ui")) {
+      tree.dependencies.push("radix-ui")
+    }
   }
 }
 

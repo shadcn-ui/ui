@@ -43,6 +43,8 @@ export const addOptionsSchema = z.object({
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
+  // Preferred flag name
+  unifiedRadixImports: z.boolean().optional(),
 })
 
 export const add = new Command()
@@ -70,6 +72,10 @@ export const add = new Command()
   )
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
+  .option(
+    "--unified-radix-imports",
+    "replace @radix-ui/react-* imports in added files with unified radix-ui imports and install radix-ui"
+  )
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -95,7 +101,14 @@ export const add = new Command()
         const itemType = registryItem?.type
 
         if (isUniversalRegistryItem(registryItem)) {
-          await addComponents(components, initialConfig, options)
+          const useUnifiedRadixImports =
+            options.unifiedRadixImports ??
+            (initialConfig as any)?.unifiedRadixImports ??
+            false
+          await addComponents(components, initialConfig, {
+            ...options,
+            unifiedRadixImports: useUnifiedRadixImports,
+          })
           return
         }
 
@@ -218,7 +231,14 @@ export const add = new Command()
         )
       }
 
-      await addComponents(options.components, config, options)
+      const useUnifiedRadixImports =
+        options.unifiedRadixImports ??
+        (config as any)?.unifiedRadixImports ??
+        false
+      await addComponents(options.components, config, {
+        ...options,
+        unifiedRadixImports: useUnifiedRadixImports,
+      })
 
       // If we're adding a single component and it's from the v0 registry,
       // let's update the app/page.tsx file to import the component.

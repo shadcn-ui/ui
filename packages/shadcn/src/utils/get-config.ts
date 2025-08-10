@@ -240,6 +240,7 @@ export function createConfig(partial?: DeepPartial<Config>): Config {
       hooks: "",
     },
     style: "",
+    unifiedRadixImports: false,
     tailwind: {
       config: "",
       css: "",
