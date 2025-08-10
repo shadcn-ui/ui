@@ -3,10 +3,12 @@ import { getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
 import { clearRegistryContext } from "@/src/registry/context"
 import { validateRegistryConfigForItems } from "@/src/registry/validator"
+import { rawConfigSchema } from "@/src/schema"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import { getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { Command } from "commander"
+import fsExtra from "fs-extra"
 import { z } from "zod"
 
 const viewOptionsSchema = z.object({
@@ -30,13 +32,34 @@ export const view = new Command()
 
       await loadEnvFiles(options.cwd)
 
-      let config = await getConfig(options.cwd)
-      config = configWithDefaults(config || undefined)
+      // Start with a shadow config to support partial components.json.
+      let shadowConfig = configWithDefaults({})
 
+      // Check if there's a components.json file (partial or complete).
+      const componentsJsonPath = path.resolve(options.cwd, "components.json")
+      if (fsExtra.existsSync(componentsJsonPath)) {
+        const existingConfig = await fsExtra.readJson(componentsJsonPath)
+        const partialConfig = rawConfigSchema.partial().parse(existingConfig)
+        shadowConfig = configWithDefaults(partialConfig)
+      }
+
+      // Try to get the full config, but fall back to shadow config if it fails.
+      let config = shadowConfig
+      try {
+        const fullConfig = await getConfig(options.cwd)
+        if (fullConfig) {
+          config = configWithDefaults(fullConfig)
+        }
+      } catch {
+        // Use shadow config if getConfig fails (partial components.json).
+      }
+
+      // Validate registries early for better error messages.
       validateRegistryConfigForItems(items, config)
 
       const payload = await getRegistryItems(items, config)
       console.log(JSON.stringify(payload, null, 2))
+      process.exit(0)
     } catch (error) {
       handleError(error)
     } finally {

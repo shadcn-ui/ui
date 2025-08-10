@@ -802,4 +802,43 @@ describe("shadcn view", () => {
 
     expect(output.stdout).toContain('Unknown registry "@test"')
   })
+
+  it("should view from components.json with registries config only", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+
+    await configureRegistries(fixturePath, {
+      "@one": "http://localhost:8081/r/{name}",
+    })
+
+    const output = await npxShadcn(fixturePath, ["view", "@one/foo"])
+
+    expect(output.stdout).toContain("Foo component from registry one")
+  })
+
+  it("should error when viewing from non-existent registry with configured registries", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+
+    // Configure @one registry, but try to view from @two
+    await configureRegistries(fixturePath, {
+      "@one": "http://localhost:8081/r/{name}",
+    })
+
+    const output = await npxShadcn(fixturePath, ["view", "@two/item"])
+
+    expect(output.stdout).toContain('Unknown registry "@two"')
+  })
+
+  it("should error when viewing non-existent item from configured registry", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+
+    // Configure @one registry
+    await configureRegistries(fixturePath, {
+      "@one": "http://localhost:8081/r/{name}",
+    })
+
+    // Try to view an item that doesn't exist in @one registry
+    const output = await npxShadcn(fixturePath, ["view", "@one/does-not-exist"])
+
+    expect(output.stdout).toContain("not found")
+  })
 })
