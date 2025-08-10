@@ -23,6 +23,7 @@ import {
   it,
   vi,
 } from "vitest"
+import { z } from "zod"
 
 import { getRegistry, getRegistryItems } from "./api"
 
@@ -717,5 +718,288 @@ describe("getRegistry", () => {
     await expect(getRegistry("@error", mockConfig)).rejects.toThrow(
       RegistryFetchError
     )
+  })
+
+  it("should throw RegistryNotConfiguredError when registry is not in config", async () => {
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+    } as any
+
+    await expect(getRegistry("@nonexistent", mockConfig)).rejects.toThrow(
+      RegistryNotConfiguredError
+    )
+  })
+
+  it("should handle registry with no items gracefully", async () => {
+    const registryData = {
+      name: "@empty/registry",
+      homepage: "https://empty.com",
+      items: [],
+    }
+
+    server.use(
+      http.get("https://empty.com/registry.json", () => {
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@empty": {
+          url: "https://empty.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@empty", mockConfig)
+    expect(result).toMatchObject(registryData)
+    expect(result.items).toHaveLength(0)
+  })
+
+  it("should handle 404 error from registry endpoint", async () => {
+    server.use(
+      http.get("https://notfound.com/registry.json", () => {
+        return HttpResponse.json({ error: "Not Found" }, { status: 404 })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@notfound": {
+          url: "https://notfound.com/{name}.json",
+        },
+      },
+    } as any
+
+    await expect(getRegistry("@notfound", mockConfig)).rejects.toThrow(
+      RegistryNotFoundError
+    )
+  })
+
+  it("should handle 401 error from registry endpoint", async () => {
+    server.use(
+      http.get("https://unauthorized.com/registry.json", () => {
+        return HttpResponse.json({ error: "Unauthorized" }, { status: 401 })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@unauthorized": {
+          url: "https://unauthorized.com/{name}.json",
+        },
+      },
+    } as any
+
+    await expect(getRegistry("@unauthorized", mockConfig)).rejects.toThrow(
+      RegistryUnauthorizedError
+    )
+  })
+
+  it("should handle 403 error from registry endpoint", async () => {
+    server.use(
+      http.get("https://forbidden.com/registry.json", () => {
+        return HttpResponse.json({ error: "Forbidden" }, { status: 403 })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@forbidden": {
+          url: "https://forbidden.com/{name}.json",
+        },
+      },
+    } as any
+
+    await expect(getRegistry("@forbidden", mockConfig)).rejects.toThrow(
+      RegistryForbiddenError
+    )
+  })
+
+  it("should set headers in context when provided", async () => {
+    const registryData = {
+      name: "@headers-test/registry",
+      homepage: "https://headers.com",
+      items: [],
+    }
+
+    let receivedHeaders: Record<string, string> = {}
+    server.use(
+      http.get("https://headers.com/registry.json", ({ request }) => {
+        request.headers.forEach((value, key) => {
+          receivedHeaders[key] = value
+        })
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@headers-test": {
+          url: "https://headers.com/{name}.json",
+          headers: {
+            "X-Custom-Header": "test-value",
+            Authorization: "Bearer test-token",
+          },
+        },
+      },
+    } as any
+
+    await getRegistry("@headers-test", mockConfig)
+
+    expect(receivedHeaders["x-custom-header"]).toBe("test-value")
+    expect(receivedHeaders.authorization).toBe("Bearer test-token")
+  })
+
+  it("should not set headers in context when none provided", async () => {
+    const registryData = {
+      name: "@no-headers/registry",
+      homepage: "https://noheaders.com",
+      items: [],
+    }
+
+    server.use(
+      http.get("https://noheaders.com/registry.json", () => {
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@no-headers": {
+          url: "https://noheaders.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@no-headers", mockConfig)
+    expect(result).toMatchObject(registryData)
+  })
+
+  it("should handle registry items with slashes", async () => {
+    const registryData = {
+      name: "@acme/registry",
+      homepage: "https://acme.com",
+      items: [],
+    }
+
+    server.use(
+      http.get("https://acme.com/sub/registry.json", () => {
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@acme/sub", mockConfig)
+    expect(result).toMatchObject(registryData)
+  })
+
+  it("should use configWithDefaults to fill missing config values", async () => {
+    const registryData = {
+      name: "@defaults/registry",
+      homepage: "https://defaults.com",
+      items: [],
+    }
+
+    server.use(
+      http.get("https://defaults.com/registry.json", () => {
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const minimalConfig = {
+      registries: {
+        "@defaults": {
+          url: "https://defaults.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@defaults", minimalConfig)
+    expect(result).toMatchObject(registryData)
+  })
+
+  it("should handle malformed JSON response", async () => {
+    server.use(
+      http.get("https://malformed.com/registry.json", () => {
+        return new Response("{ malformed json }", {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@malformed": {
+          url: "https://malformed.com/{name}.json",
+        },
+      },
+    } as any
+
+    await expect(getRegistry("@malformed", mockConfig)).rejects.toThrow()
+  })
+
+  it("should throw RegistryParseError with proper context", async () => {
+    const invalidData = {
+      homepage: "https://invalid.com",
+      items: "not-an-array",
+    }
+
+    server.use(
+      http.get("https://parsetest.com/registry.json", () => {
+        return HttpResponse.json(invalidData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@parsetest": {
+          url: "https://parsetest.com/{name}.json",
+        },
+      },
+    } as any
+
+    try {
+      await getRegistry("@parsetest/registry", mockConfig)
+      expect.fail("Should have thrown RegistryParseError")
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryParseError)
+      if (error instanceof RegistryParseError) {
+        expect(error.message).toContain("Failed to parse registry")
+        expect(error.message).toContain("@parsetest/registry")
+        expect(error.context?.item).toBe("@parsetest/registry")
+        expect(error.parseError).toBeDefined()
+        if (error.parseError instanceof z.ZodError) {
+          expect(error.parseError.errors.length).toBeGreaterThan(0)
+        }
+      }
+    }
   })
 })
