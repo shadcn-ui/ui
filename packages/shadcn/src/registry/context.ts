@@ -9,7 +9,8 @@ let context: RegistryContext = {
 export function setRegistryHeaders(
   headers: Record<string, Record<string, string>>
 ) {
-  context.headers = headers
+  // Merge new headers with existing ones to preserve headers for nested dependencies
+  context.headers = { ...context.headers, ...headers }
 }
 
 export function getRegistryHeadersFromContext(
