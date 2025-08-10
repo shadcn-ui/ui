@@ -22,6 +22,49 @@ describe("shadcn add", () => {
     ).toBe(true)
   })
 
+  it("should migrate to unified radix imports when enabled via CLI flag", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, [
+      "add",
+      "alert-dialog",
+      "--unified-radix-imports",
+    ])
+
+    const filePath = path.join(
+      fixturePath,
+      "components/ui/alert-dialog.tsx"
+    )
+    const content = await fs.readFile(filePath, "utf-8")
+    expect(content).toContain('from "radix-ui"')
+
+    const pkgJson = await fs.readJson(path.join(fixturePath, "package.json"))
+    expect(pkgJson.dependencies["radix-ui"]).toBeDefined()
+    expect(
+      Object.keys(pkgJson.dependencies).some((d) => d.startsWith("@radix-ui/react-"))
+    ).toBe(false)
+  })
+
+  it("should migrate to unified radix imports when enabled in components.json", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+
+    // toggle unifiedRadixImports in components.json
+    const componentsPath = path.join(fixturePath, "components.json")
+    const cfg = await fs.readJson(componentsPath)
+    cfg.unifiedRadixImports = true
+    await fs.writeJson(componentsPath, cfg)
+
+    await npxShadcn(fixturePath, ["add", "alert-dialog"])
+
+    const filePath = path.join(
+      fixturePath,
+      "components/ui/alert-dialog.tsx"
+    )
+    const content = await fs.readFile(filePath, "utf-8")
+    expect(content).toContain('from "radix-ui"')
+  })
+
   it("should add multiple items to project", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
