@@ -7,6 +7,7 @@ import {
   getRegistryStyles,
 } from "@/src/registry/api"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
+import { configWithDefaults } from "@/src/registry/config"
 import { BASE_COLORS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { rawConfigSchema } from "@/src/registry/schema"
@@ -152,12 +153,7 @@ export const init = new Command()
       if (components.length > 0) {
         // We don't know the full config at this point.
         // So we'll use a shadow config to fetch the first item.
-        let shadowConfig: Parameters<typeof getRegistryItems>[1] = {
-          style: "new-york",
-          resolvedPaths: {
-            cwd: "",
-          },
-        }
+        let shadowConfig: Config | undefined
 
         // Check if there's a components.json file.
         // If so, we'll merge with our shadow config.
@@ -165,10 +161,7 @@ export const init = new Command()
         if (fsExtra.existsSync(componentsJsonPath)) {
           const existingConfig = await fsExtra.readJson(componentsJsonPath)
           const config = rawConfigSchema.partial().parse(existingConfig)
-          shadowConfig = {
-            ...shadowConfig,
-            ...config,
-          }
+          shadowConfig = configWithDefaults(config)
 
           // Since components.json might not be valid at this point.
           // Temporarily rename components.json to allow preflight to run.

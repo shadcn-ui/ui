@@ -18,8 +18,8 @@ import {
 import { createRegistryServer } from "../../../tests/src/utils/registry"
 import { setRegistryHeaders } from "./context"
 import {
-  resolveRegistryItems,
   resolveRegistryItemsFromRegistries,
+  resolveRegistryTree,
 } from "./resolver"
 
 vi.mock("./context", () => ({
@@ -58,7 +58,9 @@ describe("resolveRegistryItemsFromRegistries", () => {
   })
 
   it("should return empty array for empty input with no registries", () => {
-    const result = resolveRegistryItemsFromRegistries([], undefined)
+    const result = resolveRegistryItemsFromRegistries([], {
+      registries: {},
+    } as any)
     expect(result).toEqual([])
     expect(setRegistryHeaders).toHaveBeenCalledWith({})
   })
@@ -427,7 +429,7 @@ describe("resolveRegistryItems with URL dependencies", () => {
         resolvedPaths: { cwd: process.cwd() },
       } as any
 
-      const result = await resolveRegistryItems([tempFile], mockConfig)
+      const result = await resolveRegistryTree([tempFile], mockConfig)
 
       expect(result).toBeDefined()
       expect(result?.files).toBeDefined()
@@ -495,7 +497,7 @@ describe("resolveRegistryItems with URL dependencies", () => {
         },
       } as any
 
-      const result = await resolveRegistryItems([tempFile], mockConfig)
+      const result = await resolveRegistryTree([tempFile], mockConfig)
 
       expect(result).toBeDefined()
       expect(result?.files).toBeDefined()
@@ -518,7 +520,7 @@ describe("resolveRegistryItems with URL dependencies", () => {
   })
 })
 
-describe("registryResolveItemTree - dependency ordering", () => {
+describe("resolveRegistryTree - dependency ordering", () => {
   let customRegistry: Awaited<ReturnType<typeof createRegistryServer>>
 
   beforeAll(async () => {
@@ -606,7 +608,7 @@ describe("registryResolveItemTree - dependency ordering", () => {
   })
 
   test("should order dependencies before items that depend on them", async () => {
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       ["http://localhost:4447/r/extended-component.json"],
       {
         style: "default",
@@ -657,7 +659,7 @@ describe("registryResolveItemTree - dependency ordering", () => {
   })
 
   test("should handle complex dependency chains", async () => {
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       ["http://localhost:4447/r/deep-component.json"],
       {
         style: "new-york",
@@ -698,7 +700,7 @@ describe("registryResolveItemTree - dependency ordering", () => {
   test("should handle circular dependencies gracefully", async () => {
     const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {})
 
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       [
         "http://localhost:4447/r/circular-a.json",
         "http://localhost:4447/r/circular-b.json",
@@ -752,7 +754,7 @@ describe("registryResolveItemTree - dependency ordering", () => {
   })
 
   test("should handle exact duplicate URLs by including only once", async () => {
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       [
         "http://localhost:4447/r/base-component.json",
         "http://localhost:4447/r/base-component.json",
@@ -814,7 +816,7 @@ describe("registryResolveItemTree - dependency ordering", () => {
 
     const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {})
 
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       [
         "http://localhost:4447/r/base-component.json",
         "http://localhost:4448/r/base-component.json",
@@ -862,7 +864,7 @@ describe("registryResolveItemTree - dependency ordering", () => {
   })
 
   test("should correctly resolve dependencies when multiple items have same dependency name", async () => {
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       ["http://localhost:4447/r/extended-component.json"],
       {
         style: "new-york",
@@ -897,7 +899,7 @@ describe("registryResolveItemTree - dependency ordering", () => {
   })
 })
 
-describe("registryResolveItemTree - potential target conflicts", async () => {
+describe("resolveRegistryTree - potential target conflicts", async () => {
   const exampleRegistry = await createRegistryServer(
     [
       {
@@ -1013,7 +1015,7 @@ describe("registryResolveItemTree - potential target conflicts", async () => {
 
   test("should deduplicate files with same resolved target (last wins) and preserve order", async () => {
     expect(
-      await resolveRegistryItems(
+      await resolveRegistryTree(
         [
           "http://localhost:4449/r/button-variant-a.json",
           "http://localhost:4449/r/button-variant-b.json",
@@ -1049,7 +1051,7 @@ describe("registryResolveItemTree - potential target conflicts", async () => {
     `)
 
     expect(
-      await resolveRegistryItems(
+      await resolveRegistryTree(
         [
           "http://localhost:4449/r/button-variant-b.json",
           "http://localhost:4449/r/button-variant-a.json",
@@ -1087,7 +1089,7 @@ describe("registryResolveItemTree - potential target conflicts", async () => {
 
   test("should handle explicit target overrides", async () => {
     expect(
-      await resolveRegistryItems(
+      await resolveRegistryTree(
         [
           "http://localhost:4449/r/button-variant-a.json",
           "http://localhost:4449/r/component-with-explicit-target.json",
@@ -1126,7 +1128,7 @@ describe("registryResolveItemTree - potential target conflicts", async () => {
 
   test("should preserve files with different types even if paths are similar", async () => {
     expect(
-      await resolveRegistryItems(
+      await resolveRegistryTree(
         ["http://localhost:4449/r/lib-and-ui-conflict.json"],
         sharedConfig
       )
@@ -1199,7 +1201,7 @@ describe("registryResolveItemTree - potential target conflicts", async () => {
     await nestedRegistry.start()
 
     expect(
-      await resolveRegistryItems(
+      await resolveRegistryTree(
         [
           "http://localhost:4450/r/nested-a.json",
           "http://localhost:4450/r/nested-b.json",
@@ -1279,7 +1281,7 @@ describe("registryResolveItemTree - potential target conflicts", async () => {
     await multiUtilsRegistry.start()
 
     expect(
-      await resolveRegistryItems(
+      await resolveRegistryTree(
         [
           "http://localhost:4451/r/utils-set-a.json",
           "http://localhost:4451/r/utils-set-b.json",
@@ -1346,7 +1348,7 @@ describe("registryResolveItemTree - potential target conflicts", async () => {
     await dependencyRegistry.start()
 
     expect(
-      await resolveRegistryItems(
+      await resolveRegistryTree(
         ["http://localhost:4452/r/extended-button.json"],
         sharedConfig
       )
@@ -1372,7 +1374,7 @@ describe("registryResolveItemTree - potential target conflicts", async () => {
   })
 })
 
-describe("registryResolveItemTree - cross-registry dependencies", async () => {
+describe("resolveRegistryTree - cross-registry dependencies", async () => {
   const firstRegistry = await createRegistryServer(
     [
       {
@@ -1521,7 +1523,7 @@ describe("registryResolveItemTree - cross-registry dependencies", async () => {
       },
     }
 
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       ["@one/login-01", "@two/block-02"],
       config
     )
@@ -1586,7 +1588,7 @@ describe("registryResolveItemTree - cross-registry dependencies", async () => {
       },
     }
 
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       ["@three/login-01", "@four/app-01"],
       config
     )
@@ -1611,7 +1613,7 @@ describe("registryResolveItemTree - cross-registry dependencies", async () => {
   })
 })
 
-describe("registryResolveItemTree - comprehensive cross-registry tests", async () => {
+describe("resolveRegistryTree - comprehensive cross-registry tests", async () => {
   // Create registries with all possible fields
   const uiRegistry = await createRegistryServer(
     [
@@ -1816,7 +1818,7 @@ describe("registryResolveItemTree - comprehensive cross-registry tests", async (
       },
     }
 
-    const result = await resolveRegistryItems(["@block/dashboard-01"], config)
+    const result = await resolveRegistryTree(["@block/dashboard-01"], config)
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -1955,7 +1957,7 @@ describe("registryResolveItemTree - comprehensive cross-registry tests", async (
       },
     }
 
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       ["@ui/dialog", "@lib/api-client"],
       config
     )
@@ -2081,7 +2083,7 @@ describe("registryResolveItemTree - comprehensive cross-registry tests", async (
       },
     }
 
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       ["@ui/dialog", "@lib/api-client"],
       config
     )
@@ -2109,7 +2111,7 @@ describe("registryResolveItemTree - comprehensive cross-registry tests", async (
   })
 })
 
-describe("registryResolveItemTree - last wins behavior", async () => {
+describe("resolveRegistryTree - last wins behavior", async () => {
   // Create registries with overlapping properties to test last-wins
   const overrideRegistry = await createRegistryServer(
     [
@@ -2247,7 +2249,7 @@ describe("registryResolveItemTree - last wins behavior", async () => {
       },
     }
 
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       ["@override/final-component"],
       config
     )
@@ -2337,7 +2339,7 @@ describe("registryResolveItemTree - last wins behavior", async () => {
     }
 
     // Request multiple items that have the same file path
-    const result = await resolveRegistryItems(
+    const result = await resolveRegistryTree(
       ["@override/base-component", "@override/override-component"],
       config
     )

@@ -1,12 +1,19 @@
 import path from "path"
+import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
+import { configWithDefaults } from "@/src/registry/config"
 import { BASE_COLORS } from "@/src/registry/constants"
-import { clearRegistryContext } from "@/src/registry/context"
-import { RegistryError, RegistryParseError } from "@/src/registry/errors"
+import {
+  clearRegistryContext,
+  setRegistryHeaders,
+} from "@/src/registry/context"
+import {
+  RegistryNotFoundError,
+  RegistryParseError,
+} from "@/src/registry/errors"
 import { fetchRegistry } from "@/src/registry/fetcher"
 import {
-  fetchRegistryItemsWithContext,
-  getResolvedStyle,
-  resolveRegistryItemsFromRegistries,
+  fetchRegistryItems,
+  resolveRegistryTree,
 } from "@/src/registry/resolver"
 import {
   iconsSchema,
@@ -21,42 +28,25 @@ import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { z } from "zod"
 
-export async function getRegistry(
-  name: `${string}/registry`,
-  config?: Pick<Config, "style" | "registries"> & {
-    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
-  }
-) {
-  // Get resolved style once.
-  const resolvedStyle = config ? await getResolvedStyle(config) : undefined
-  const configWithStyle =
-    config && resolvedStyle ? { ...config, style: resolvedStyle } : config
-
-  let path: string
-  if (name.startsWith("@") && config?.registries) {
-    // Scoped registry.
-    const [resolvedPath] = resolveRegistryItemsFromRegistries(
-      [name],
-      configWithStyle || config!
-    )
-    path = resolvedPath
-  } else if (configWithStyle) {
-    // Regular registry path.
-    const [resolvedPath] = resolveRegistryItemsFromRegistries(
-      [name],
-      configWithStyle
-    )
-    path = resolvedPath
-  } else {
-    path = name
+export async function getRegistry(name: `@${string}`, config?: Config) {
+  if (!name.endsWith("/registry")) {
+    name = `${name}/registry`
   }
 
-  const [result] = await fetchRegistry([path], { useCache: false })
-  if (!result) {
-    throw new RegistryError(`Failed to fetch registry: ${name}`, {
-      context: { name, path },
+  const urlAndHeaders = buildUrlAndHeadersForRegistryItem(name, config)
+
+  if (!urlAndHeaders?.url) {
+    throw new RegistryNotFoundError(name)
+  }
+
+  // Set headers in context if provided
+  if (urlAndHeaders.headers && Object.keys(urlAndHeaders.headers).length > 0) {
+    setRegistryHeaders({
+      [urlAndHeaders.url]: urlAndHeaders.headers,
     })
   }
+
+  const [result] = await fetchRegistry([urlAndHeaders.url])
 
   try {
     return registrySchema.parse(result)
@@ -67,13 +57,21 @@ export async function getRegistry(
 
 export async function getRegistryItems(
   items: string[],
-  config?: Pick<Config, "style" | "registries"> & {
-    resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
-  },
+  config?: Config,
   options: { useCache?: boolean } = {}
-): Promise<z.infer<typeof registryItemSchema>[]> {
+) {
   clearRegistryContext()
-  return fetchRegistryItemsWithContext(items, config, options)
+
+  return fetchRegistryItems(items, configWithDefaults(config), options)
+}
+
+export async function resolveRegistryItems(
+  items: string[],
+  config?: Config,
+  options: { useCache?: boolean } = {}
+) {
+  clearRegistryContext()
+  return resolveRegistryTree(items, configWithDefaults(config), options)
 }
 
 export async function getShadcnRegistryIndex() {

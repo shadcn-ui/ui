@@ -7,6 +7,7 @@ import {
   RegistryFetchError,
   RegistryForbiddenError,
   RegistryLocalFileError,
+  RegistryNotConfiguredError,
   RegistryNotFoundError,
   RegistryParseError,
   RegistryUnauthorizedError,
@@ -59,6 +60,21 @@ const server = setupServer(
         {
           path: "registry/new-york/ui/button.tsx",
           content: "// button component content",
+          type: "registry:ui",
+        },
+      ],
+    })
+  }),
+
+  http.get(`${REGISTRY_URL}/styles/new-york-v4/button.json`, () => {
+    return HttpResponse.json({
+      name: "button",
+      type: "registry:ui",
+      dependencies: ["@radix-ui/react-slot"],
+      files: [
+        {
+          path: "registry/new-york/ui/button.tsx",
+          content: "// button component content v4",
           type: "registry:ui",
         },
       ],
@@ -292,112 +308,7 @@ describe("getRegistryItem", () => {
       await fs.rmdir(tempDir)
     }
   })
-})
 
-describe("getRegistry", () => {
-  it("should fetch registry catalog", async () => {
-    const registryData = {
-      name: "@acme/registry",
-      homepage: "https://acme.com",
-      items: [
-        { name: "button", type: "registry:ui" },
-        { name: "card", type: "registry:ui" },
-      ],
-    }
-
-    server.use(
-      http.get("https://acme.com/registry.json", () => {
-        return HttpResponse.json(registryData)
-      })
-    )
-
-    const mockConfig = {
-      style: "new-york",
-      tailwind: { baseColor: "neutral", cssVariables: true },
-      registries: {
-        "@acme": {
-          url: "https://acme.com/{name}.json",
-        },
-      },
-    } as any
-
-    const result = await getRegistry("@acme/registry", mockConfig)
-
-    expect(result).toMatchObject({
-      name: "@acme/registry",
-      homepage: "https://acme.com",
-      items: [
-        { name: "button", type: "registry:ui" },
-        { name: "card", type: "registry:ui" },
-      ],
-    })
-  })
-  it("should handle registry with auth headers", async () => {
-    const registryData = {
-      name: "@private/registry",
-      homepage: "https://private.com",
-      items: [{ name: "secure-component", type: "registry:ui" }],
-    }
-
-    let receivedHeaders: Record<string, string> = {}
-    server.use(
-      http.get("https://private.com/registry.json", ({ request }) => {
-        // Convert headers to a plain object
-        request.headers.forEach((value, key) => {
-          receivedHeaders[key] = value
-        })
-        return HttpResponse.json(registryData)
-      })
-    )
-
-    const mockConfig = {
-      style: "new-york",
-      tailwind: { baseColor: "neutral", cssVariables: true },
-      registries: {
-        "@private": {
-          url: "https://private.com/{name}.json",
-          headers: {
-            Authorization: "Bearer test-token",
-          },
-        },
-      },
-    } as any
-
-    const result = await getRegistry("@private/registry", mockConfig)
-
-    expect(result).toMatchObject({
-      name: "@private/registry",
-      homepage: "https://private.com",
-      items: [{ name: "secure-component", type: "registry:ui" }],
-    })
-
-    expect(receivedHeaders.authorization).toBe("Bearer test-token")
-  })
-
-  it("should throw error on 404", async () => {
-    server.use(
-      http.get("https://example.com/registry.json", () => {
-        return HttpResponse.json({ error: "Not found" }, { status: 404 })
-      })
-    )
-
-    const mockConfig = {
-      style: "new-york",
-      tailwind: { baseColor: "neutral", cssVariables: true },
-      registries: {
-        "@example": {
-          url: "https://example.com/{name}.json",
-        },
-      },
-    } as any
-
-    await expect(getRegistry("@example/registry", mockConfig)).rejects.toThrow(
-      RegistryNotFoundError
-    )
-  })
-})
-
-describe("Enhanced Error Handling", () => {
   it("should include error code in RegistryNotFoundError", async () => {
     server.use(
       http.get(`${REGISTRY_URL}/styles/new-york-v4/non-existent.json`, () => {
@@ -634,5 +545,177 @@ describe("Enhanced Error Handling", () => {
         expect(error.responseBody).toBeDefined()
       }
     }
+  })
+})
+
+describe("getRegistry", () => {
+  it("should fetch registry catalog", async () => {
+    const registryData = {
+      name: "@acme/registry",
+      homepage: "https://acme.com",
+      items: [
+        { name: "button", type: "registry:ui" },
+        { name: "card", type: "registry:ui" },
+      ],
+    }
+
+    server.use(
+      http.get("https://acme.com/registry.json", () => {
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@acme", mockConfig)
+
+    expect(result).toMatchObject({
+      name: "@acme/registry",
+      homepage: "https://acme.com",
+      items: [
+        { name: "button", type: "registry:ui" },
+        { name: "card", type: "registry:ui" },
+      ],
+    })
+  })
+
+  it("should auto-append /registry to registry name", async () => {
+    const registryData = {
+      name: "@acme/registry",
+      homepage: "https://acme.com",
+      items: [],
+    }
+
+    server.use(
+      http.get("https://acme.com/registry.json", () => {
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    // Test both with and without /registry suffix
+    const result1 = await getRegistry("@acme", mockConfig)
+    expect(result1.name).toBe("@acme/registry")
+
+    const result2 = await getRegistry("@acme/registry", mockConfig)
+    expect(result2.name).toBe("@acme/registry")
+  })
+
+  it("should handle registry with auth headers", async () => {
+    const registryData = {
+      name: "@private/registry",
+      homepage: "https://private.com",
+      items: [{ name: "secure-component", type: "registry:ui" }],
+    }
+
+    let receivedHeaders: Record<string, string> = {}
+    server.use(
+      http.get("https://private.com/registry.json", ({ request }) => {
+        // Convert headers to a plain object
+        request.headers.forEach((value, key) => {
+          receivedHeaders[key] = value
+        })
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@private": {
+          url: "https://private.com/{name}.json",
+          headers: {
+            Authorization: "Bearer test-token",
+          },
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@private", mockConfig)
+
+    expect(result).toMatchObject({
+      name: "@private/registry",
+      homepage: "https://private.com",
+      items: [{ name: "secure-component", type: "registry:ui" }],
+    })
+
+    expect(receivedHeaders.authorization).toBe("Bearer test-token")
+  })
+
+  it("should throw RegistryNotConfiguredError when registry is not configured", async () => {
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {},
+    } as any
+
+    await expect(getRegistry("@unknown", mockConfig)).rejects.toThrow(
+      RegistryNotConfiguredError
+    )
+  })
+
+  it("should throw RegistryParseError on invalid registry data", async () => {
+    server.use(
+      http.get("https://invalid.com/registry.json", () => {
+        return HttpResponse.json({
+          // Invalid registry data - missing required fields
+          invalid: "data",
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@invalid": {
+          url: "https://invalid.com/{name}.json",
+        },
+      },
+    } as any
+
+    await expect(getRegistry("@invalid", mockConfig)).rejects.toThrow(
+      RegistryParseError
+    )
+  })
+
+  it("should throw RegistryFetchError on network error", async () => {
+    server.use(
+      http.get("https://error.com/registry.json", () => {
+        return HttpResponse.json({ error: "Server Error" }, { status: 500 })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@error": {
+          url: "https://error.com/{name}.json",
+        },
+      },
+    } as any
+
+    await expect(getRegistry("@error", mockConfig)).rejects.toThrow(
+      RegistryFetchError
+    )
   })
 })

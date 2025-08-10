@@ -2,9 +2,10 @@ import { REGISTRY_URL } from "@/src/registry/constants"
 import { expandEnvVars } from "@/src/registry/env"
 import { RegistryNotConfiguredError } from "@/src/registry/errors"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
-import { configSchema, registryConfigItemSchema } from "@/src/registry/schema"
+import { registryConfigItemSchema } from "@/src/registry/schema"
 import { isUrl } from "@/src/registry/utils"
 import { validateRegistryConfig } from "@/src/registry/validator"
+import { Config } from "@/src/utils/get-config"
 import { z } from "zod"
 
 const NAME_PLACEHOLDER = "{name}"
@@ -15,7 +16,7 @@ const QUERY_PARAM_DELIMITER = "&"
 
 export function buildUrlAndHeadersForRegistryItem(
   name: string,
-  config?: Pick<z.infer<typeof configSchema>, "registries" | "style">
+  config?: Config
 ) {
   const { registry, item } = parseRegistryAndItemFromString(name)
 
@@ -42,7 +43,7 @@ export function buildUrlAndHeadersForRegistryItem(
 export function buildUrlFromRegistryConfig(
   item: string,
   registryConfig: z.infer<typeof registryConfigItemSchema>,
-  config?: Pick<z.infer<typeof configSchema>, "style">
+  config?: Config
 ) {
   if (typeof registryConfig === "string") {
     let url = registryConfig.replace(NAME_PLACEHOLDER, item)
