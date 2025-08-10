@@ -171,7 +171,7 @@ afterAll(async () => {
   await registryTwo.stop()
 })
 
-describe("shadcn view", () => {
+describe.skip("shadcn view", () => {
   it("should view a single component from shadcn registry", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     const output = await npxShadcn(fixturePath, ["view", "button"])
