@@ -428,7 +428,6 @@ async function promptForConfig(defaultConfig: Config | null = null) {
   return rawConfigSchema.parse({
     $schema: "https://ui.shadcn.com/schema.json",
     style: options.style,
-    unifiedRadixImports: options.unifiedRadixImports,
     tailwind: {
       config: options.tailwindConfig,
       css: options.tailwindCss,
@@ -438,6 +437,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     },
     rsc: options.rsc,
     tsx: options.typescript,
+    unifiedRadixImports: options.unifiedRadixImports,
     aliases: {
       utils: options.utils,
       components: options.components,
@@ -496,8 +496,6 @@ async function promptForMinimalConfig(
   return rawConfigSchema.parse({
     $schema: defaultConfig?.$schema,
     style,
-    unifiedRadixImports:
-      defaultConfig?.unifiedRadixImports,
     tailwind: {
       ...defaultConfig?.tailwind,
       baseColor,
@@ -505,6 +503,8 @@ async function promptForMinimalConfig(
     },
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
+    unifiedRadixImports:
+      defaultConfig?.unifiedRadixImports,
     iconLibrary: defaultConfig?.iconLibrary,
     aliases: defaultConfig?.aliases,
   })
