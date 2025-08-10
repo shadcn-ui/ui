@@ -197,6 +197,9 @@ export const init = new Command()
           "Success!"
         )} Project initialization completed.\nYou may now add components.`
       )
+
+      // We need when runninng with custom cwd.
+      deleteFileBackup(path.resolve(options.cwd, "components.json"))
       logger.break()
     } catch (error) {
       logger.break()
