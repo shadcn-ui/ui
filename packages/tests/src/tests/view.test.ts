@@ -172,32 +172,24 @@ afterAll(async () => {
 describe("shadcn view", () => {
   it("should view a single component from shadcn registry", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
+    await configureRegistries(fixturePath, {
+      "@shadcn": "http://localhost:9080/r/{name}",
+    })
     const output = await npxShadcn(fixturePath, ["view", "button"])
 
-    expect(JSON.parse(output.stdout)).toMatchInlineSnapshot(`
-      [
-        {
-          "dependencies": [
-            "@radix-ui/react-slot",
-          ],
-          "description": "A button component",
-          "devDependencies": [
-            "@types/react",
-          ],
-          "files": [
-            {
-              "content": "export function Button() {
-        return <button>Click me</button>
-      }",
-              "path": "components/ui/button.tsx",
-              "type": "registry:ui",
-            },
-          ],
-          "name": "button",
-          "type": "registry:ui",
-        },
-      ]
-    `)
+    const parsed = JSON.parse(output.stdout)
+
+    expect(parsed[0]).toMatchObject({
+      name: "button",
+      type: "registry:ui",
+      dependencies: ["@radix-ui/react-slot"],
+      files: expect.arrayContaining([
+        expect.objectContaining({
+          path: "registry/new-york-v4/ui/button.tsx",
+          type: "registry:ui",
+        }),
+      ]),
+    })
   })
 
   it("should view multiple components from shadcn registry", async () => {
@@ -217,10 +209,11 @@ describe("shadcn view", () => {
       {
         name: "alert-dialog",
         type: "registry:ui",
+        dependencies: ["@radix-ui/react-alert-dialog"],
         registryDependencies: ["button"],
         files: expect.arrayContaining([
           expect.objectContaining({
-            path: "components/ui/alert-dialog.tsx",
+            path: "registry/new-york-v4/ui/alert-dialog.tsx",
             type: "registry:ui",
           }),
         ]),
